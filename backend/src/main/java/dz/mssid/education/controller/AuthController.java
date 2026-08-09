@@ -7,6 +7,7 @@ import dz.mssid.education.dto.UserDto;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.repository.UserRepository;
 import dz.mssid.education.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class AuthController {
     private final UserRepository userRepository;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
         try {
             AuthResponse response = authService.register(request);
             return ResponseEntity.ok(response);
@@ -35,7 +36,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
         try {
             AuthResponse response = authService.login(request);
             return ResponseEntity.ok(response);

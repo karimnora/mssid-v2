@@ -4,6 +4,7 @@ import dz.mssid.education.dto.UpdateProfileRequest;
 import dz.mssid.education.dto.UserDto;
 import dz.mssid.education.dto.UserProfileDto;
 import dz.mssid.education.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +53,7 @@ public class UserController {
     @PutMapping("/me")
     public ResponseEntity<UserDto> updateProfile(
             @AuthenticationPrincipal UserDetails userDetails,
-            @RequestBody UpdateProfileRequest request
+            @Valid @RequestBody UpdateProfileRequest request
     ) {
         UserDto updatedUser = userService.updateNom(userDetails.getUsername(), request.getNom());
         return ResponseEntity.ok(updatedUser);
@@ -65,7 +66,7 @@ public class UserController {
     @PutMapping("/profile")
     public ResponseEntity<UserProfileDto> updateFullProfile(
             @AuthenticationPrincipal UserDetails userDetails,
-            @RequestBody UserProfileDto profileData
+            @Valid @RequestBody UserProfileDto profileData
     ) {
         UserProfileDto updated = userService.updateUserProgress(userDetails.getUsername(), profileData);
         return ResponseEntity.ok(updated);

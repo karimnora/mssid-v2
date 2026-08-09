@@ -264,16 +264,21 @@ async function startServer() {
 
   app.use(authenticateUser);
 
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const handleLogin = (req: express.Request, res: express.Response) => {
     const { email, password } = req.body;
     if (!email || !email.trim()) {
-      return res.status(400).json({ message: "L'adresse email est requise." });
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "L'e-mail est obligatoire", email: "L'e-mail est obligatoire" });
+    }
+    const normEmail = email.trim().toLowerCase();
+    if (!EMAIL_REGEX.test(normEmail)) {
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "Le format de l'e-mail est invalide", email: "Le format de l'e-mail est invalide" });
     }
     if (!password || !password.trim()) {
-      return res.status(400).json({ message: "Le mot de passe est requis." });
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "Le mot de passe est obligatoire" });
     }
 
-    const normEmail = email.trim().toLowerCase();
     let user = usersDb.find(u => u.email.toLowerCase() === normEmail);
 
     if (!user) {
@@ -316,17 +321,20 @@ async function startServer() {
   const handleRegister = (req: express.Request, res: express.Response) => {
     const { email, nom, password, passwordHash, roleName } = req.body;
     if (!email || !email.trim()) {
-      return res.status(400).json({ message: "L'adresse email est requise." });
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "L'e-mail est obligatoire", email: "L'e-mail est obligatoire" });
+    }
+    const normEmail = email.trim().toLowerCase();
+    if (!EMAIL_REGEX.test(normEmail)) {
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "Le format de l'e-mail est invalide", email: "Le format de l'e-mail est invalide" });
     }
     if (!nom || !nom.trim()) {
-      return res.status(400).json({ message: "Le nom complet est requis." });
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "Le nom complet est requis." });
     }
     const reqPassword = password || passwordHash;
     if (!reqPassword || reqPassword.trim().length < 4) {
-      return res.status(400).json({ message: "Le mot de passe doit contenir au moins 4 caractères." });
+      return res.status(400).json({ status: 400, error: "Bad Request", message: "Le mot de passe doit contenir au moins 4 caractères." });
     }
 
-    const normEmail = email.trim().toLowerCase();
     let existing = usersDb.find(u => u.email.toLowerCase() === normEmail);
 
     if (existing) {

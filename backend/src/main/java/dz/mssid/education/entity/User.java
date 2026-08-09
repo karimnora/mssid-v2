@@ -1,6 +1,8 @@
 package dz.mssid.education.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -26,6 +28,8 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String nom;
 
+    @NotBlank(message = "L'e-mail est obligatoire")
+    @Email(message = "Le format de l'e-mail est invalide")
     @Column(nullable = false, unique = true)
     private String email;
 

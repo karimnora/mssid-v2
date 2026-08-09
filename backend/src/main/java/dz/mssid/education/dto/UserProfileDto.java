@@ -1,5 +1,6 @@
 package dz.mssid.education.dto;
 
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,8 @@ public class UserProfileDto {
     private Long id;
     private String nom;
     private String name;
+
+    @Email(message = "Le format de l'e-mail est invalide")
     private String email;
     private String role;
     private Integer score;
