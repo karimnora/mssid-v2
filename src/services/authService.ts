@@ -206,19 +206,14 @@ export class AuthService {
     }
   }
 
-  static login(email: string, pass: string): AuthUser {
+  static login(email: string, pass: string): AuthUser | null {
     const normalized = email.trim().toLowerCase();
-    let user = DEMO_USERS[normalized];
+    const user = DEMO_USERS[normalized];
 
     if (!user) {
-      // Create dynamic free user if not pre-made
-      user = {
-        id: Math.floor(Math.random() * 9000) + 1000,
-        nom: email.split('@')[0],
-        email: email,
-        role: 'ROLE_FREE',
-        token: `jwt.token.${Date.now()}`,
-      };
+      // Do NOT create fake dynamic user! Clean localstorage and return null.
+      this.setCurrentUser(null);
+      return null;
     }
 
     this.setCurrentUser(user);
@@ -227,15 +222,24 @@ export class AuthService {
 
   static async loginAsync(email: string, pass: string): Promise<{ user?: AuthUser; error?: string }> {
     if (!email || !email.trim()) {
-      return { error: 'يرجى إدخال البريد الإلكتروني (Adresse e-mail requise).' };
+      this.setCurrentUser(null);
+      return { error: 'Adresse e-mail requise (البريد الإلكتروني مطلوب).' };
     }
     if (!pass || !pass.trim()) {
-      return { error: 'يرجى إدخال كلمة المرور (Mot de passe requis).' };
+      this.setCurrentUser(null);
+      return { error: 'Mot de passe requis (كلمة المرور مطلوبة).' };
     }
 
     try {
       const response = await springBootApi.login({ email, password: pass });
-      if ((response.status === 200 || response.status === 201) && response.data && typeof response.data.token === 'string' && response.data.token.trim().length > 0) {
+      
+      // STRICT SUCCESS CHECK: Require status 200/201 AND a valid non-empty JWT token string
+      if (
+        (response.status === 200 || response.status === 201) &&
+        response.data &&
+        typeof response.data.token === 'string' &&
+        response.data.token.trim().length > 0
+      ) {
         const u = response.data.user || {};
         const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 140;
         const levelVal = u.level !== undefined ? u.level : Math.floor(scoreVal / 100) + 1;
@@ -258,15 +262,22 @@ export class AuthService {
         return { user: authUser };
       }
 
+      // STRICT FAILURE: Always clear user state on backend error (400, 401, 404, 500, etc.)
+      this.setCurrentUser(null);
+
       const errorMsg = response.error ||
-        (response.status === 401 ? 'البريد الإلكتروني أو كلمة المرور غير صحيحة (401).' :
-         response.status === 400 ? 'بيانات غير صالحة أو حقول ناقصة (400).' :
-         response.status === 0 ? 'تعذر الاتصال بالخادم Backend (0).' :
-         `خطأ من الخادم Backend (رمز ${response.status}).`);
+        (response.status === 401 || response.status === 404
+          ? 'Identifiants incorrects ou compte introuvable.'
+          : response.status === 400
+          ? 'Données invalides ou champs manquants (400).'
+          : response.status === 0
+          ? 'Impossible de contacter le serveur backend (0).'
+          : `Erreur du serveur backend (code ${response.status}).`);
 
       return { error: errorMsg };
     } catch (err: any) {
-      return { error: err?.message || 'تعذر الاتصال بالخادم. يرجى التحقق من الاتصال بالشبكة.' };
+      this.setCurrentUser(null);
+      return { error: err?.message || 'Identifiants incorrects ou compte introuvable.' };
     }
   }
 
@@ -292,18 +303,28 @@ export class AuthService {
 
   static async registerAsync(nom: string, email: string, pass: string): Promise<{ user?: AuthUser; error?: string }> {
     if (!nom || !nom.trim()) {
-      return { error: 'يرجى إدخال الاسم الكامل (Nom complet requis).' };
+      this.setCurrentUser(null);
+      return { error: 'Nom complet requis.' };
     }
     if (!email || !email.trim()) {
-      return { error: 'يرجى إدخال البريد الإلكتروني (Adresse e-mail requise).' };
+      this.setCurrentUser(null);
+      return { error: 'Adresse e-mail requise.' };
     }
     if (!pass || pass.trim().length < 4) {
-      return { error: 'كلمة المرور يجب أن لا تقل عن 4 أحرف (Mot de passe de 4 caractères min).' };
+      this.setCurrentUser(null);
+      return { error: 'Le mot de passe doit contenir au moins 4 caractères.' };
     }
 
     try {
       const response = await springBootApi.register({ nom, email, password: pass });
-      if ((response.status === 200 || response.status === 201) && response.data && typeof response.data.token === 'string' && response.data.token.trim().length > 0) {
+      
+      // STRICT SUCCESS CHECK
+      if (
+        (response.status === 200 || response.status === 201) &&
+        response.data &&
+        typeof response.data.token === 'string' &&
+        response.data.token.trim().length > 0
+      ) {
         const u = response.data.user || {};
         const authUser: AuthUser = {
           id: u.id || Math.floor(Math.random() * 9000) + 1000,
@@ -323,14 +344,20 @@ export class AuthService {
         return { user: authUser };
       }
 
+      // STRICT FAILURE: Clear state
+      this.setCurrentUser(null);
+
       const errorMsg = response.error ||
-        (response.status === 400 ? 'هذا البريد الإلكتروني مستعمل بالفعل أو البيانات غير صالحة.' :
-         response.status === 0 ? 'تعذر الاتصال بالخادم Backend.' :
-         `خطأ من الخادم Backend (رمز ${response.status}).`);
+        (response.status === 400
+          ? 'Cet e-mail est déjà utilisé ou les données sont invalides.'
+          : response.status === 0
+          ? 'Impossible de contacter le serveur backend.'
+          : `Erreur du serveur backend (code ${response.status}).`);
 
       return { error: errorMsg };
     } catch (err: any) {
-      return { error: err?.message || 'تعذر الاتصال بالخادم. يرجى التحقق من الاتصال بالشبكة.' };
+      this.setCurrentUser(null);
+      return { error: err?.message || 'Erreur lors de l\'inscription.' };
     }
   }
 

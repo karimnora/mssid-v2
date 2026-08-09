@@ -107,14 +107,14 @@ class SpringBootApiService {
         data = await response.json().catch(() => undefined);
       }
 
-      if (status === 401) {
+      if (status === 401 || status === 404) {
         this.clearToken();
-        const errText = (data as any)?.message || (data as any)?.error || 'البريد الإلكتروني أو كلمة المرور غير صحيحة (Session non autorisée).';
+        const errText = (data as any)?.message || (data as any)?.error || 'Identifiants incorrects ou compte introuvable.';
         return { error: errText, status };
       }
 
       if (status === 400) {
-        const errText = (data as any)?.message || (data as any)?.error || 'بيانات غير صالحة أو حقول ناقصة (400).';
+        const errText = (data as any)?.message || (data as any)?.error || 'Données invalides ou champs manquants (400).';
         return { error: errText, status };
       }
 
@@ -127,7 +127,7 @@ class SpringBootApiService {
 
       if (!response.ok) {
         return {
-          error: (data as any)?.message || (data as any)?.error || `خطأ من الخادم Backend (${status})`,
+          error: (data as any)?.message || (data as any)?.error || `Erreur serveur (${status})`,
           status,
         };
       }
@@ -135,6 +135,7 @@ class SpringBootApiService {
       return { data, status, headers: response.headers };
     } catch (err: any) {
       clearTimeout(timeoutId);
+      this.clearToken();
       if (err.name === 'AbortError') {
         return {
           error: 'انتهت مهلة الاتصال بالخادم (Timeout). يرجى المحاولة لاحقاً.',
@@ -143,7 +144,7 @@ class SpringBootApiService {
       }
       console.warn('Erreur de connexion au backend mssid dz:', err.message);
       return {
-        error: 'تعذر الاتصال بالخادم الرئيسي (mssid dz backend indisponible).',
+        error: 'Identifiants incorrects ou compte introuvable (Serveur indisponible).',
         status: 0,
       };
     }
@@ -162,8 +163,10 @@ class SpringBootApiService {
       body: JSON.stringify(payload),
     });
 
-    if (res.data?.token) {
+    if ((res.status === 200 || res.status === 201) && res.data?.token) {
       this.setToken(res.data.token);
+    } else {
+      this.clearToken();
     }
     return res;
   }
@@ -182,8 +185,10 @@ class SpringBootApiService {
       body: JSON.stringify(payload),
     });
 
-    if (res.data?.token) {
+    if ((res.status === 200 || res.status === 201) && res.data?.token) {
       this.setToken(res.data.token);
+    } else {
+      this.clearToken();
     }
     return res;
   }

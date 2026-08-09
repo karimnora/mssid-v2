@@ -32,7 +32,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
         if (result.error || !result.user || !result.user.token) {
           setStatusMessage({
             type: 'error',
-            text: result.error || 'فشلت عملية تسجيل الدخول. يرجى التحقق من البريد الإلكتروني وكلمة المرور.'
+            text: result.error || 'Identifiants incorrects ou compte introuvable (البريد الإلكتروني أو كلمة المرور غير صحيحة).'
           });
           setLoading(false);
           return;
