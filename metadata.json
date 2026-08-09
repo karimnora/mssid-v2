@@ -1,0 +1,6 @@
+{
+  "name": "Mssid DZ - التعليم الابتدائي الجزائري",
+  "description": "Plateforme éducative globale et ludique pour le primaire algérien : cours, exercices interactifs, Soroban, annales 5AP et tuteur IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

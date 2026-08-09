@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+:root, .theme-neutre, .theme-vibrant {
+  --app-bg: #FFFBF0;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+  --app-card-bg: #ffffff;
+  --app-card-border: #f1f5f9;
+  --app-card-subtle: #fef3c7;
+  --app-input-bg: #ffffff;
+  --app-input-border: #cbd5e1;
+  --app-header-bg: rgba(255, 255, 255, 0.98);
+  --app-footer-bg: #ffffff;
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  margin: 0;
+}
+
+.theme-dark, .theme-midnight {
+  --app-bg: #0f172a;
+  --app-text: #f8fafc;
+  --app-text-muted: #94a3b8;
+  --app-card-bg: #1e293b;
+  --app-card-border: #334155;
+  --app-card-subtle: rgba(51, 65, 85, 0.6);
+  --app-input-bg: #020617;
+  --app-input-border: #475569;
+  --app-header-bg: rgba(15, 23, 42, 0.95);
+  --app-footer-bg: #0b1329;
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+
+.theme-sepia {
+  --app-bg: #fbf9f5;
+  --app-text: #292524;
+  --app-text-muted: #78716c;
+  --app-card-bg: #f5f2eb;
+  --app-card-border: #e7e2d7;
+  --app-card-subtle: #ede8df;
+  --app-input-bg: #ffffff;
+  --app-input-border: #d6cebf;
+  --app-header-bg: rgba(251, 249, 245, 0.95);
+  --app-footer-bg: #f5f2eb;
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+
+.theme-light {
+  --app-bg: #FFFBF0;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+  --app-card-bg: #ffffff;
+  --app-card-border: #f3f4f6;
+  --app-card-subtle: #fef3c7;
+  --app-input-bg: #ffffff;
+  --app-input-border: #cbd5e1;
+  --app-header-bg: rgba(255, 255, 255, 0.95);
+  --app-footer-bg: #ffffff;
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+
+/* Vibrant Palette Custom Helper Utilities */
+.vibrant-card {
+  background-color: var(--app-card-bg);
+  border-radius: 1.5rem;
+  border-bottom-width: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vibrant-btn {
+  border-bottom-width: 4px;
+  font-weight: 800;
+  transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+.vibrant-btn:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.font-serif-arabic {
+  font-family: 'Amiri', serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--app-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--app-card-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+

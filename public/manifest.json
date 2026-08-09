@@ -1,0 +1,24 @@
+{
+  "short_name": "مَسيد DZ",
+  "name": "مَسيد DZ - منصة التعليم الابتدائي الجزائري",
+  "description": "تطبيق تعليمي تفاعلي وفق المنهاج الوزاري الجزائري مع معلم ذكي بالذكاء الاصطناعي وبدون إنترنت",
+  "icons": [
+    {
+      "src": "/pwa-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/pwa-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#064e3b",
+  "theme_color": "#047857",
+  "display": "standalone",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar"
+}

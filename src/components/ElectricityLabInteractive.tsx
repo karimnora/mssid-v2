@@ -1,0 +1,1072 @@
+import React, { useState, useEffect } from 'react';
+import {
+  Zap,
+  Power,
+  Lightbulb,
+  ShieldAlert,
+  Sparkles,
+  CheckCircle2,
+  XCircle,
+  RotateCcw,
+  Volume2,
+  VolumeX,
+  Play,
+  ArrowLeftRight,
+  Flame,
+  Award,
+  HelpCircle,
+  Languages,
+  Check,
+  AlertTriangle
+} from 'lucide-react';
+
+// Types for components in the circuit
+type VoltageLevel = 4.5 | 9.0;
+type DiodePolarity = 'forward' | 'reverse'; // forward = anode (+), reverse = cathode (-)
+type CircuitType = 'simple' | 'series' | 'parallel';
+type TestedMaterial = 'iron_nail' | 'copper' | 'salt_water' | 'plastic_ruler' | 'wood' | 'rubber';
+
+interface MaterialInfo {
+  id: TestedMaterial;
+  nameAr: string;
+  nameFr: string;
+  isConductor: boolean;
+  icon: string;
+  color: string;
+}
+
+const MATERIALS_LIST: MaterialInfo[] = [
+  { id: 'iron_nail', nameAr: 'مسمار حديدي', nameFr: 'Clou en fer', isConductor: true, icon: '🔩', color: 'bg-slate-200 text-slate-800 border-slate-400' },
+  { id: 'copper', nameAr: 'سلك نحاسي', nameFr: 'Fil de cuivre', isConductor: true, icon: '🪙', color: 'bg-amber-200 text-amber-900 border-amber-400' },
+  { id: 'salt_water', nameAr: 'ماء مالح', nameFr: 'Eau salée', isConductor: true, icon: '🧂💧', color: 'bg-cyan-100 text-cyan-900 border-cyan-400' },
+  { id: 'plastic_ruler', nameAr: 'مسطرة بلاستيكية', nameFr: 'Règle en plastique', isConductor: false, icon: '📏', color: 'bg-blue-100 text-blue-900 border-blue-300' },
+  { id: 'wood', nameAr: 'قطعة خشب جافة', nameFr: 'Morceau de bois', isConductor: false, icon: '🪵', color: 'bg-amber-100 text-amber-900 border-amber-300' },
+  { id: 'rubber', nameAr: 'قطعة مطاط (محاية)', nameFr: 'Gomme en caoutchouc', isConductor: false, icon: '🧼', color: 'bg-rose-100 text-rose-900 border-rose-300' },
+];
+
+export const ElectricityLabInteractive: React.FC = () => {
+  // Global Interactive Settings
+  const [activeTab, setActiveTab] = useState<'sandbox' | 'diode_exp' | 'conductors_exp' | 'series_parallel' | 'quiz'>('diode_exp');
+  const [showFrench, setShowFrench] = useState<boolean>(true);
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+
+  // Circuit Core State
+  const [batteryVoltage, setBatteryVoltage] = useState<VoltageLevel>(4.5);
+  const [batteryFlipped, setBatteryFlipped] = useState<boolean>(false); // Battery +/- orientation
+  const [switchClosed, setSwitchClosed] = useState<boolean>(true); // Closed = ON, Open = OFF
+  const [activeLoad, setActiveLoad] = useState<'bulb' | 'diode' | 'motor' | 'buzzer' | 'material'>('diode');
+  
+  // Diode specific state
+  const [diodeFlipped, setDiodeFlipped] = useState<boolean>(false); // Forward bias vs Reverse bias
+
+  // Conductors experiment state
+  const [selectedMaterial, setSelectedMaterial] = useState<TestedMaterial>('iron_nail');
+
+  // Series / Parallel state
+  const [circuitType, setCircuitType] = useState<CircuitType>('series');
+  const [bulb1Broken, setBulb1Broken] = useState<boolean>(false);
+  const [bulb2Broken, setBulb2Broken] = useState<boolean>(false);
+
+  // Challenge Quiz State
+  const [quizScore, setQuizScore] = useState<number>(0);
+  const [quizSubmitted, setQuizSubmitted] = useState<boolean>(false);
+  const [userAnswers, setUserAnswers] = useState<Record<number, number>>({});
+
+  // Helper sound effect using Web Audio API Synth
+  const playBeep = (freq: number = 800, duration: number = 0.15, type: OscillatorType = 'sine') => {
+    if (!soundEnabled) return;
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch (e) {
+      console.warn('Audio Context error:', e);
+    }
+  };
+
+  // Sound effect when switch toggled
+  const handleToggleSwitch = () => {
+    const newState = !switchClosed;
+    setSwitchClosed(newState);
+    playBeep(newState ? 1200 : 400, 0.1, 'triangle');
+  };
+
+  // Calculate Circuit Status Logic
+  const getCircuitLogicStatus = () => {
+    if (!switchClosed) {
+      return {
+        isClosed: false,
+        isCurrentFlowing: false,
+        reasonAr: 'الدارة مفتوحة لأن القاطعة غير موصولة (مفتوحة).',
+        reasonFr: 'Le circuit est ouvert car l\'interrupteur est ouvert.',
+        statusColor: 'text-amber-400 bg-amber-950/80 border-amber-700/60'
+      };
+    }
+
+    if (activeLoad === 'material') {
+      const mat = MATERIALS_LIST.find((m) => m.id === selectedMaterial);
+      if (mat?.isConductor) {
+        return {
+          isClosed: true,
+          isCurrentFlowing: true,
+          reasonAr: `المادة المختارة (${mat.nameAr}) جسم ناقل للكهرباء تسمح بمرور التيار لإضاءة المصباح.`,
+          reasonFr: `Le matériau (${mat.nameFr}) est un conducteur électrique.`,
+          statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
+        };
+      } else {
+        return {
+          isClosed: false,
+          isCurrentFlowing: false,
+          reasonAr: `المادة المختارة (${mat?.nameAr}) جسم عازل للكهرباء لا تسمح بمرور التيار.`,
+          reasonFr: `Le matériau (${mat?.nameFr}) est un isolant électrique.`,
+          statusColor: 'text-rose-400 bg-rose-950/80 border-rose-700/60'
+        };
+      }
+    }
+
+    if (activeLoad === 'diode') {
+      // Diode allows current ONLY when anode (+) connects to battery (+), cathode (-) to battery (-)
+      // If battery is not flipped and diode is not flipped -> Forward bias (Passes current)
+      // If battery is flipped and diode is flipped -> Forward bias (Passes current)
+      // Otherwise -> Reverse bias (Blocks current)
+      const isForwardBias = (!batteryFlipped && !diodeFlipped) || (batteryFlipped && diodeFlipped);
+
+      if (isForwardBias) {
+        return {
+          isClosed: true,
+          isCurrentFlowing: true,
+          reasonAr: 'الصمام الثنائي في انحياز أمامي (Direct) ➔ يمر التيار الكهربائي ويضيء الصمام!',
+          reasonFr: 'La diode est polarisée en sens direct ➔ Le courant passe !',
+          statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
+        };
+      } else {
+        return {
+          isClosed: true,
+          isCurrentFlowing: false,
+          reasonAr: 'الصمام الثنائي في انحياز عكسي (Inverse) ➔ يمنع الصمام مرور التيار بالكامل!',
+          reasonFr: 'La diode est polarisée en sens inverse ➔ Le courant ن\'est pas autorisé !',
+          statusColor: 'text-rose-400 bg-rose-950/80 border-rose-700/60'
+        };
+      }
+    }
+
+    if (activeLoad === 'bulb' || activeLoad === 'motor' || activeLoad === 'buzzer') {
+      return {
+        isClosed: true,
+        isCurrentFlowing: true,
+        reasonAr: 'الدارة مغلقة والمولد يغذي العنصر بالكهرباء بنجاح!',
+        reasonFr: 'Le circuit est fermé et le courant circule normalement.',
+        statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
+      };
+    }
+
+    return {
+      isClosed: true,
+      isCurrentFlowing: true,
+      reasonAr: 'الدارة مغلقة.',
+      reasonFr: 'Circuit fermé.',
+      statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
+    };
+  };
+
+  const currentStatus = getCircuitLogicStatus();
+
+  // Play continuous buzzer sound effect when current flows into buzzer
+  useEffect(() => {
+    if (activeLoad === 'buzzer' && currentStatus.isCurrentFlowing && soundEnabled) {
+      const interval = setInterval(() => {
+        playBeep(900, 0.08, 'sawtooth');
+      }, 150);
+      return () => clearInterval(interval);
+    }
+  }, [activeLoad, currentStatus.isCurrentFlowing, soundEnabled]);
+
+  // Quiz Questions for Primary School Electricity
+  const quizQuestions = [
+    {
+      id: 1,
+      qAr: 'ما هو العنصر الذي يسمح بمرور التيار الكهربائي في اتجاه واحد فقط في الدارة؟',
+      qFr: 'Quel composant laisse passer le courant dans un seul sens ?',
+      options: ['المصباح الكهربائي', 'الصمام الثنائي الضوئي (Diode LED)', 'القاطعة', 'البطارية'],
+      correctIdx: 1,
+      expAr: 'الصمام الثنائي الضوئي (Diode) يحتوي على مربطين (مصعد وكاثود) ويسمح بمرور التيار في الاتجاه الأمامي فقط.'
+    },
+    {
+      id: 2,
+      qAr: 'أي من المواد التالية تُعتبر جسماً ناقلاً للكهرباء وتضيء المصباح عند وضعها في الدارة؟',
+      qFr: 'Lequel est un conducteur électrique ?',
+      options: ['مسطرة بلاستيكية', 'قطعة خشب جافة', 'مسمار حديدي', 'قطعة مطاط'],
+      correctIdx: 2,
+      expAr: 'الحديد والنحاس والمعادن أعداء للعزل وناقلة ممتازة للكهرباء.'
+    },
+    {
+      id: 3,
+      qAr: 'عند ربط مصباحين على التسلسل (En série) وتلف أو فك أحد المصباحين، ماذا يحدث للمصباح الثاني؟',
+      qFr: 'Que se passe-t-il si une ampoule grille dans un montage en série ?',
+      options: ['يبقى المصباح الثاني مشتعلاً', 'ينطفئ المصباح الثاني وتفتح الدارة', 'تزداد شدة إضاءة المصباح الثاني', 'ينفجر المولد'],
+      correctIdx: 1,
+      expAr: 'في الربط على التسلسل تشكل الأجهزة حلقة واحدة؛ إذا انقطعت العروة ينطفئ باقي المصابيح.'
+    },
+    {
+      id: 4,
+      qAr: 'ماذا يسمى الاتجاه الاصطلاحي للتيار الكهربائي خارج المولد (البطارية)؟',
+      qFr: 'Quel est le sens conventionnel du courant électrique ?',
+      options: ['من القطب السالب (-) إلى القطب الموجب (+)', 'من القطب الموجب (+) إلى القطب السالب (-)', 'من القاطعة إلى المولد', 'ليس للتيار اتجاه محدد'],
+      correctIdx: 1,
+      expAr: 'التيار الكهربائي يسري اصطلاحاً دائماً من القطب الموجب (+) نحو القطب السالب (-) للبطارية.'
+    },
+    {
+      id: 5,
+      qAr: 'عند ربط المصباحين على التفرع (En parallèle)، ما فائدة هذا الربط في المنازل؟',
+      qFr: 'Quel est l\'avantage du montage en parallèle dans les maisons ?',
+      options: ['إذا انطفأ مصباح تظل بقية المصابيح مشتعلة وتعمل بشكل مستقل', 'تصبح الإضاءة خافتة جداً', 'تستهلك البطارية بسرعة مضاعفة بدون فائدة', 'تمنع استخدام القاطعة'],
+      correctIdx: 0,
+      expAr: 'الربط على التفرع يوفر لكل جهاز دارة مستقلة بالكامل عن باقي الأجهزة.'
+    }
+  ];
+
+  const handleQuizOptionSelect = (qIdx: number, optIdx: number) => {
+    setUserAnswers((prev) => ({ ...prev, [qIdx]: optIdx }));
+  };
+
+  const handleCalculateScore = () => {
+    let score = 0;
+    quizQuestions.forEach((q, idx) => {
+      if (userAnswers[idx] === q.correctIdx) {
+        score += 20;
+      }
+    });
+    setQuizScore(score);
+    setQuizSubmitted(true);
+  };
+
+  return (
+    <div className="bg-slate-950 text-slate-100 rounded-3xl p-4 sm:p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+      {/* Top Title Bar */}
+      <div className="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 rounded-2xl shadow-lg shadow-amber-500/20">
+            <Zap className="w-7 h-7 animate-pulse" />
+          </div>
+          <div>
+            <h2 className="text-lg sm:text-xl font-black text-amber-300 flex items-center gap-2">
+              <span>مختبر الكهرباء والصمام التفاعلي (Diode & Circuits Lab)</span>
+              <span className="text-xs bg-amber-500/20 text-amber-300 font-bold px-2.5 py-0.5 rounded-full border border-amber-500/40">
+                المرحلة الابتدائية (4AP & 5AP)
+              </span>
+            </h2>
+            <p className="text-xs text-slate-400 font-sans mt-0.5">
+              محاكاة واقعية آمنة للتجارب الكهربائية والصمام الثنائي وفق المنهاج الابتدائي الجزائري
+            </p>
+          </div>
+        </div>
+
+        {/* Global Controls */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={() => setSoundEnabled(!soundEnabled)}
+            className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+              soundEnabled
+                ? 'bg-emerald-950 text-emerald-300 border-emerald-700/60'
+                : 'bg-slate-900 text-slate-400 border-slate-800'
+            }`}
+            title="تفعيل/تعطيل المؤثرات الصوتية"
+          >
+            {soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4" />}
+            <span className="hidden sm:inline">{soundEnabled ? 'الصوت مفعّل' : 'الصوت صامت'}</span>
+          </button>
+
+          <button
+            onClick={() => setShowFrench(!showFrench)}
+            className={`px-3 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+              showFrench
+                ? 'bg-blue-950 text-blue-300 border-blue-700/60 shadow-xs'
+                : 'bg-slate-900 text-slate-400 border-slate-800'
+            }`}
+          >
+            <Languages className="w-4 h-4 text-cyan-400" />
+            <span>الفرنسية (Français): {showFrench ? 'مُظْهَرَة' : 'مُخْفَيَة'}</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Experiment Selector Navigation Tabs */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
+        <button
+          onClick={() => { setActiveTab('diode_exp'); setActiveLoad('diode'); }}
+          className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border ${
+            activeTab === 'diode_exp'
+              ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md font-black scale-102'
+              : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:bg-slate-800'
+          }`}
+        >
+          <Zap className="w-4 h-4" />
+          <span>1. الصمام الضوئي (Diode)</span>
+        </button>
+
+        <button
+          onClick={() => { setActiveTab('conductors_exp'); setActiveLoad('material'); }}
+          className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border ${
+            activeTab === 'conductors_exp'
+              ? 'bg-cyan-500 text-slate-950 border-cyan-400 shadow-md font-black scale-102'
+              : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:bg-slate-800'
+          }`}
+        >
+          <Sparkles className="w-4 h-4" />
+          <span>2. النواقل والعوازل</span>
+        </button>
+
+        <button
+          onClick={() => { setActiveTab('series_parallel'); }}
+          className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border ${
+            activeTab === 'series_parallel'
+              ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-md font-black scale-102'
+              : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:bg-slate-800'
+          }`}
+        >
+          <Lightbulb className="w-4 h-4" />
+          <span>3. التسلسل والتفرع</span>
+        </button>
+
+        <button
+          onClick={() => { setActiveTab('sandbox'); setActiveLoad('motor'); }}
+          className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border ${
+            activeTab === 'sandbox'
+              ? 'bg-purple-500 text-slate-950 border-purple-400 shadow-md font-black scale-102'
+              : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:bg-slate-800'
+          }`}
+        >
+          <Power className="w-4 h-4" />
+          <span>4. المحرك والجرس</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('quiz')}
+          className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border col-span-2 sm:col-span-1 ${
+            activeTab === 'quiz'
+              ? 'bg-rose-500 text-slate-950 border-rose-400 shadow-md font-black scale-102'
+              : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:bg-slate-800'
+          }`}
+        >
+          <Award className="w-4 h-4" />
+          <span>5. التحدي والاختبار</span>
+        </button>
+      </div>
+
+      {/* Main Workspace for Experiments 1, 2, and 4 */}
+      {(activeTab === 'diode_exp' || activeTab === 'conductors_exp' || activeTab === 'sandbox') && (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left Panel: Circuit Interactive Interactive Workbench (SVG + Canvas) */}
+          <div className="lg:col-span-8 bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-5 shadow-inner">
+            
+            {/* Live Circuit Banner Status */}
+            <div className={`p-3.5 rounded-2xl border flex items-center justify-between flex-wrap gap-2 text-xs font-bold transition-all ${currentStatus.statusColor}`}>
+              <div className="flex items-center gap-2">
+                {currentStatus.isCurrentFlowing ? (
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                ) : (
+                  <XCircle className="w-5 h-5 text-rose-400 shrink-0" />
+                )}
+                <span>{currentStatus.reasonAr}</span>
+              </div>
+              {showFrench && <span className="text-[11px] opacity-80 font-mono dir-ltr" dir="ltr">{currentStatus.reasonFr}</span>}
+            </div>
+
+            {/* VISUAL SVG CIRCUIT BENCHMARK CANOPY */}
+            <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 rounded-2xl border border-slate-800/80 p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+              
+              {/* Background Voltage Grid Lines */}
+              <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
+
+              {/* Interactive SVG Diagram */}
+              <svg className="w-full max-w-lg h-60 sm:h-72 z-10 overflow-visible" viewBox="0 0 500 300">
+                <defs>
+                  {/* Glowing effects for current */}
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                  <filter id="bulb-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="12" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+
+                {/* Main Wires Loop (Closed Rectangular Path) */}
+                <path
+                  d="M 120 220 L 50 220 L 50 80 L 250 80 M 250 80 L 450 80 L 450 220 L 380 220"
+                  fill="none"
+                  stroke={currentStatus.isCurrentFlowing ? '#eab308' : '#475569'}
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  className="transition-all duration-300"
+                />
+
+                {/* Animated Electric Current Flow Particles along the wires */}
+                {currentStatus.isCurrentFlowing && (
+                  <path
+                    d="M 120 220 L 50 220 L 50 80 L 450 80 L 450 220 L 380 220"
+                    fill="none"
+                    stroke="#fef08a"
+                    strokeWidth="4"
+                    strokeDasharray="8 12"
+                    className="animate-[dash_1s_linear_infinite]"
+                  />
+                )}
+
+                {/* --- 1. BATTERY / GENERATOR AT THE BOTTOM (MOLID) --- */}
+                <g transform="translate(120, 195)">
+                  <rect x="0" y="0" width="260" height="50" rx="10" fill="#1e293b" stroke="#334155" strokeWidth="2" />
+                  
+                  {/* Battery Body */}
+                  <rect x="20" y="8" width="220" height="34" rx="6" fill="#0284c7" stroke="#38bdf8" strokeWidth="1.5" />
+                  
+                  {/* Battery Label & Polarity */}
+                  <text x="130" y="29" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle" fontFamily="sans-serif">
+                    مولد بطارية {batteryVoltage}V {batteryFlipped ? '(مقلوبة)' : ''}
+                  </text>
+
+                  {/* Polarity Indicators (+ and -) */}
+                  {!batteryFlipped ? (
+                    <>
+                      {/* Left is +, Right is - */}
+                      <circle cx="35" cy="25" r="11" fill="#ef4444" />
+                      <text x="35" y="30" fill="#ffffff" fontSize="14" fontWeight="900" textAnchor="middle">+</text>
+                      <circle cx="225" cy="25" r="11" fill="#3b82f6" />
+                      <text x="225" y="29" fill="#ffffff" fontSize="14" fontWeight="900" textAnchor="middle">-</text>
+                    </>
+                  ) : (
+                    <>
+                      {/* Left is -, Right is + */}
+                      <circle cx="35" cy="25" r="11" fill="#3b82f6" />
+                      <text x="35" y="29" fill="#ffffff" fontSize="14" fontWeight="900" textAnchor="middle">-</text>
+                      <circle cx="225" cy="25" r="11" fill="#ef4444" />
+                      <text x="225" y="30" fill="#ffffff" fontSize="14" fontWeight="900" textAnchor="middle">+</text>
+                    </>
+                  )}
+                </g>
+
+                {/* --- 2. SWITCH (KATIA) AT LEFT WIRE --- */}
+                <g transform="translate(50, 150)" className="cursor-pointer" onClick={handleToggleSwitch}>
+                  <circle cx="0" cy="-20" r="6" fill="#fbbf24" />
+                  <circle cx="0" cy="20" r="6" fill="#fbbf24" />
+                  
+                  {/* Switch Blade */}
+                  {switchClosed ? (
+                    <line x1="0" y1="-20" x2="0" y2="20" stroke="#10b981" strokeWidth="5" strokeLinecap="round" />
+                  ) : (
+                    <line x1="0" y1="-20" x2="-25" y2="10" stroke="#ef4444" strokeWidth="5" strokeLinecap="round" />
+                  )}
+                  <text x="-35" y="5" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="end">
+                    قاطعة ({switchClosed ? 'مغلقة' : 'مفتوحة'})
+                  </text>
+                </g>
+
+                {/* --- 3. TOP COMPONENT SLOT (DIODE / BULB / MOTOR / BUZZER / MATERIAL) --- */}
+                <g transform="translate(250, 80)">
+                  
+                  {/* A) DIODE COMPONENT (الصمام الثنائي الضوئي) */}
+                  {activeLoad === 'diode' && (
+                    <g transform={`scale(${diodeFlipped ? -1 : 1}, 1)`}>
+                      {/* Diode Box Frame */}
+                      <rect x="-45" y="-35" width="90" height="70" rx="12" fill="#0f172a" stroke="#fbbf24" strokeWidth="2" />
+                      
+                      {/* Triangle Arrow (Anode -> Cathode) */}
+                      <polygon
+                        points="-20,-20 -20,20 15,0"
+                        fill={currentStatus.isCurrentFlowing ? '#f59e0b' : '#64748b'}
+                        stroke="#fef08a"
+                        strokeWidth="1.5"
+                      />
+                      {/* Vertical Bar (Cathode Barrier) */}
+                      <line x1="15" y1="-22" x2="15" y2="22" stroke="#fef08a" strokeWidth="4" />
+
+                      {/* LED Glow Rays if current flows */}
+                      {currentStatus.isCurrentFlowing && (
+                        <g filter="url(#glow)">
+                          <circle cx="0" cy="0" r="30" fill="#fbbf24" opacity="0.3" />
+                          <line x1="10" y1="-25" x2="25" y2="-40" stroke="#fef08a" strokeWidth="2.5" />
+                          <line x1="-5" y1="-28" x2="10" y2="-43" stroke="#fef08a" strokeWidth="2.5" />
+                        </g>
+                      )}
+
+                      {/* Anode / Cathode Labels */}
+                      <text x="-25" y="30" fill="#94a3b8" fontSize="9" fontWeight="bold">المصعد (+)</text>
+                      <text x="5" y="30" fill="#94a3b8" fontSize="9" fontWeight="bold">المهبط (-)</text>
+                    </g>
+                  )}
+
+                  {/* B) LIGHT BULB COMPONENT (المصباح الكهربائي) */}
+                  {activeLoad === 'bulb' && (
+                    <g>
+                      <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#64748b" strokeWidth="2" />
+                      
+                      {/* Filament */}
+                      <path d="M -10 10 L -5 -5 L 0 5 L 5 -5 L 10 10" fill="none" stroke={currentStatus.isCurrentFlowing ? '#fef08a' : '#64748b'} strokeWidth="2" />
+
+                      {/* Glow if ON */}
+                      {currentStatus.isCurrentFlowing && (
+                        <g>
+                          <circle cx="0" cy="0" r="30" fill="#f59e0b" opacity="0.8" filter="url(#bulb-glow)" />
+                          <circle cx="0" cy="0" r="28" fill="#fef08a" />
+                          <text x="0" y="6" fill="#000000" fontSize="16" fontWeight="900" textAnchor="middle">💡</text>
+                        </g>
+                      )}
+                      <text x="0" y="-40" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">مصباح كهربائي</text>
+                    </g>
+                  )}
+
+                  {/* C) ELECTRIC MOTOR COMPONENT (المحرك) */}
+                  {activeLoad === 'motor' && (
+                    <g>
+                      <circle cx="0" cy="0" r="32" fill="#0284c7" stroke="#38bdf8" strokeWidth="2" />
+                      <text x="0" y="6" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                        M
+                      </text>
+                      
+                      {/* Spinning Fan Blades if current flows */}
+                      {currentStatus.isCurrentFlowing && (
+                        <g className="animate-spin origin-center" style={{ transformOrigin: '0px 0px' }}>
+                          <line x1="-25" y1="0" x2="25" y2="0" stroke="#fef08a" strokeWidth="3" />
+                          <line x1="0" y1="-25" x2="0" y2="25" stroke="#fef08a" strokeWidth="3" />
+                        </g>
+                      )}
+                      <text x="0" y="-42" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">محرك كهربائي</text>
+                    </g>
+                  )}
+
+                  {/* D) BUZZER / BELL COMPONENT (الجرس) */}
+                  {activeLoad === 'buzzer' && (
+                    <g>
+                      <rect x="-30" y="-25" width="60" height="50" rx="10" fill="#7c3aed" stroke="#a78bfa" strokeWidth="2" />
+                      <text x="0" y="6" fill="#ffffff" fontSize="20" textAnchor="middle">🔔</text>
+                      
+                      {/* Sound waves animation if current flows */}
+                      {currentStatus.isCurrentFlowing && (
+                        <g className="animate-ping" style={{ transformOrigin: '0px 0px' }}>
+                          <circle cx="0" cy="0" r="35" fill="none" stroke="#a78bfa" strokeWidth="2" />
+                        </g>
+                      )}
+                      <text x="0" y="-35" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">جرس كهربائي</text>
+                    </g>
+                  )}
+
+                  {/* E) CONDUCTORS / INSULATORS MATERIAL SLOT (اختبار المواد) */}
+                  {activeLoad === 'material' && (
+                    <g>
+                      {(() => {
+                        const mat = MATERIALS_LIST.find((m) => m.id === selectedMaterial);
+                        return (
+                          <g>
+                            <rect x="-60" y="-25" width="120" height="50" rx="10" fill="#1e293b" stroke={mat?.isConductor ? '#10b981' : '#f43f5e'} strokeWidth="2.5" />
+                            <text x="0" y="2" fill="#ffffff" fontSize="18" textAnchor="middle">{mat?.icon}</text>
+                            <text x="0" y="20" fill="#f8fafc" fontSize="10" fontWeight="bold" textAnchor="middle">{mat?.nameAr}</text>
+                          </g>
+                        );
+                      })()}
+                    </g>
+                  )}
+
+                </g>
+              </svg>
+
+              {/* Action Buttons under workbench */}
+              <div className="flex items-center justify-center gap-3 mt-4 flex-wrap z-20">
+                <button
+                  onClick={handleToggleSwitch}
+                  className={`px-5 py-2.5 rounded-2xl font-black text-xs transition-all cursor-pointer flex items-center gap-2 shadow-lg ${
+                    switchClosed
+                      ? 'bg-rose-600 hover:bg-rose-700 text-white'
+                      : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                  }`}
+                >
+                  <Power className="w-4 h-4" />
+                  <span>{switchClosed ? 'فتح القاطعة (قطع الكهرباء)' : 'إغلاق القاطعة (تشغيل الكهرباء)'}</span>
+                </button>
+
+                <button
+                  onClick={() => { setBatteryFlipped(!batteryFlipped); playBeep(600, 0.1); }}
+                  className="px-4 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs border border-slate-700 transition-all cursor-pointer flex items-center gap-2"
+                >
+                  <ArrowLeftRight className="w-4 h-4 text-amber-400" />
+                  <span>عكس أقطاب البطارية (+ / -)</span>
+                </button>
+
+                {activeLoad === 'diode' && (
+                  <button
+                    onClick={() => { setDiodeFlipped(!diodeFlipped); playBeep(750, 0.1); }}
+                    className="px-4 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs border border-amber-400 transition-all cursor-pointer flex items-center gap-2 shadow-md"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                    <span>عكس اتجاه الصمام الثنائي 🔀</span>
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Educational Diode Polarity Guide Banner (Specific for Diode Experiment) */}
+            {activeTab === 'diode_exp' && (
+              <div className="bg-amber-950/60 border border-amber-800/80 rounded-2xl p-4 text-xs space-y-2 text-amber-200 font-sans leading-relaxed">
+                <div className="flex items-center gap-2 font-extrabold text-amber-300 text-sm">
+                  <Zap className="w-4 h-4" />
+                  <span>قاعدة الصمام الثنائي الضوئي الذهبية (Règle de la Diode):</span>
+                </div>
+                <p className="text-slate-200">
+                  الصمام الثنائي هو صمام يسمح بمرور التيار الكهربائي في <strong className="text-amber-300 underline">اتجاه واحد فقط</strong> (من المصعد Anode إلى المهبط Cathode).
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-bold">
+                  <div className="bg-emerald-950/80 p-2.5 rounded-xl border border-emerald-700/60 text-emerald-300">
+                    ✅ الانحياز الأمامي (Sens direct): المصعد (+) مع قطب البطارية الموجب (+) ➔ <span className="underline">يمر التيار ويضيء</span>.
+                  </div>
+                  <div className="bg-rose-950/80 p-2.5 rounded-xl border border-rose-700/60 text-rose-300">
+                    ❌ الانحياز العكسي (Sens inverse): المصعد (+) مع القطب السالب (-) ➔ <span className="underline">يحجب التيار كلياً</span>.
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Panel: Controls & Options Side Selector */}
+          <div className="lg:col-span-4 space-y-4">
+            
+            {/* Component Selector for Workbench */}
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-4">
+              <h3 className="font-extrabold text-sm text-slate-200 flex items-center gap-2 border-b border-slate-800 pb-2">
+                <Power className="w-4 h-4 text-amber-400" />
+                <span>اختر العنصر الكهربائي في الدارة:</span>
+              </h3>
+
+              <div className="grid grid-cols-1 gap-2">
+                <button
+                  onClick={() => { setActiveLoad('diode'); setActiveTab('diode_exp'); }}
+                  className={`p-3 rounded-2xl text-xs font-bold transition-all text-right flex items-center justify-between cursor-pointer border ${
+                    activeLoad === 'diode'
+                      ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">🔺</span>
+                    <span>الصمام الثنائي الضوئي (Diode LED)</span>
+                  </div>
+                  {showFrench && <span className="text-[10px] opacity-75 font-mono">Diode</span>}
+                </button>
+
+                <button
+                  onClick={() => { setActiveLoad('bulb'); }}
+                  className={`p-3 rounded-2xl text-xs font-bold transition-all text-right flex items-center justify-between cursor-pointer border ${
+                    activeLoad === 'bulb'
+                      ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">💡</span>
+                    <span>المصباح الكهربائي</span>
+                  </div>
+                  {showFrench && <span className="text-[10px] opacity-75 font-mono">Lampe</span>}
+                </button>
+
+                <button
+                  onClick={() => { setActiveLoad('motor'); setActiveTab('sandbox'); }}
+                  className={`p-3 rounded-2xl text-xs font-bold transition-all text-right flex items-center justify-between cursor-pointer border ${
+                    activeLoad === 'motor'
+                      ? 'bg-cyan-500 text-slate-950 border-cyan-400 font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">⚙️</span>
+                    <span>المحرك الكهربائي</span>
+                  </div>
+                  {showFrench && <span className="text-[10px] opacity-75 font-mono">Moteur</span>}
+                </button>
+
+                <button
+                  onClick={() => { setActiveLoad('buzzer'); setActiveTab('sandbox'); }}
+                  className={`p-3 rounded-2xl text-xs font-bold transition-all text-right flex items-center justify-between cursor-pointer border ${
+                    activeLoad === 'buzzer'
+                      ? 'bg-purple-500 text-slate-950 border-purple-400 font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">🔔</span>
+                    <span>الجرس / المنبه الكهربائي</span>
+                  </div>
+                  {showFrench && <span className="text-[10px] opacity-75 font-mono">Vibreur</span>}
+                </button>
+
+                <button
+                  onClick={() => { setActiveLoad('material'); setActiveTab('conductors_exp'); }}
+                  className={`p-3 rounded-2xl text-xs font-bold transition-all text-right flex items-center justify-between cursor-pointer border ${
+                    activeLoad === 'material'
+                      ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">🧪</span>
+                    <span>كاشف النواقل والعوازل</span>
+                  </div>
+                  {showFrench && <span className="text-[10px] opacity-75 font-mono">Testeur</span>}
+                </button>
+              </div>
+            </div>
+
+            {/* Material Tester Specific Controls if activeLoad === 'material' */}
+            {activeLoad === 'material' && (
+              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                <h3 className="font-extrabold text-xs text-cyan-300 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  <span>اختر الجسم المراد اختباره بين السلكين:</span>
+                </h3>
+
+                <div className="grid grid-cols-1 gap-2">
+                  {MATERIALS_LIST.map((mat) => (
+                    <button
+                      key={mat.id}
+                      onClick={() => setSelectedMaterial(mat.id)}
+                      className={`p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-between cursor-pointer ${
+                        selectedMaterial === mat.id
+                          ? 'bg-cyan-500 text-slate-950 border-cyan-300 font-black shadow-md'
+                          : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{mat.icon}</span>
+                        <span>{mat.nameAr}</span>
+                      </div>
+
+                      <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${
+                        mat.isConductor ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
+                      }`}>
+                        {mat.isConductor ? 'ناقل (Conducteur)' : 'عازل (Isolant)'}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Voltage Level Selection */}
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-4 space-y-2">
+              <span className="text-xs font-bold text-slate-300 block">دلالة المولد (قوة البطارية):</span>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={() => setBatteryVoltage(4.5)}
+                  className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                    batteryVoltage === 4.5
+                      ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
+                      : 'bg-slate-950 text-slate-400 border-slate-800'
+                  }`}
+                >
+                  بطارية مسطحة 4.5V
+                </button>
+
+                <button
+                  onClick={() => setBatteryVoltage(9.0)}
+                  className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                    batteryVoltage === 9.0
+                      ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
+                      : 'bg-slate-950 text-slate-400 border-slate-800'
+                  }`}
+                >
+                  بطارية قوية 9.0V
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* EXPERIMENT 3: SERIES VS PARALLEL CIRCUIT (الربط على التسلسل وعلى التفرع) */}
+      {activeTab === 'series_parallel' && (
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 flex-wrap gap-2">
+            <div>
+              <h3 className="font-extrabold text-base text-amber-300 flex items-center gap-2">
+                <Lightbulb className="w-5 h-5 text-amber-400" />
+                <span>مقارنة الربط على التسلسل والربط على التفرع (Montage en Série vs Parallèle)</span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                شاهد الفرق في إضاءة المصباحين وماذا يحدث عند فك أو تلف أحد المصباحين!
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setCircuitType('series')}
+                className={`px-4 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                  circuitType === 'series'
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
+                    : 'bg-slate-950 text-slate-400 border-slate-800'
+                }`}
+              >
+                1. الربط على التسلسل (En Série)
+              </button>
+
+              <button
+                onClick={() => setCircuitType('parallel')}
+                className={`px-4 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                  circuitType === 'parallel'
+                    ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
+                    : 'bg-slate-950 text-slate-400 border-slate-800'
+                }`}
+              >
+                2. الربط على التفرع (En Parallèle)
+              </button>
+            </div>
+          </div>
+
+          {/* Interactive Visual Canvas for Series/Parallel */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            
+            {/* Visual Canvas */}
+            <div className="bg-slate-950 rounded-2xl p-6 border border-slate-800 flex flex-col items-center justify-center min-h-[260px] relative">
+              <svg className="w-full h-56" viewBox="0 0 400 240">
+                {/* Wires */}
+                {circuitType === 'series' ? (
+                  /* Single Loop Series Circuit Wires */
+                  <path
+                    d="M 100 180 L 40 180 L 40 60 L 360 60 L 360 180 L 300 180"
+                    fill="none"
+                    stroke={(!bulb1Broken && !bulb2Broken && switchClosed) ? '#eab308' : '#475569'}
+                    strokeWidth="4"
+                  />
+                ) : (
+                  /* Double Loop Parallel Circuit Wires */
+                  <g>
+                    {/* Main Battery Loop */}
+                    <path d="M 100 190 L 40 190 L 40 50 L 360 50 L 360 190 L 300 190" fill="none" stroke="#eab308" strokeWidth="4" />
+                    {/* Parallel Branch 1 */}
+                    <line x1="120" y1="50" x2="120" y2="120" stroke="#eab308" strokeWidth="3" />
+                    <line x1="280" y1="50" x2="280" y2="120" stroke="#eab308" strokeWidth="3" />
+                    <line x1="120" y1="120" x2="280" y2="120" stroke="#eab308" strokeWidth="3" />
+                  </g>
+                )}
+
+                {/* Battery at Bottom */}
+                <rect x="100" y="165" width="200" height="35" rx="8" fill="#0284c7" stroke="#38bdf8" strokeWidth="1.5" />
+                <text x="200" y="187" fill="#ffffff" fontSize="12" fontWeight="bold" textAnchor="middle">مولد 4.5V</text>
+
+                {/* Bulb 1 Top Left */}
+                <g transform={circuitType === 'series' ? 'translate(140, 60)' : 'translate(200, 50)'}>
+                  <circle
+                    cx="0"
+                    cy="0"
+                    r="22"
+                    fill={
+                      (!bulb1Broken && (circuitType === 'parallel' || !bulb2Broken) && switchClosed)
+                        ? '#fef08a'
+                        : '#334155'
+                    }
+                    stroke="#64748b"
+                    strokeWidth="2"
+                  />
+                  <text x="0" y="5" fontSize="14" textAnchor="middle">
+                    {bulb1Broken ? '❌' : '💡'}
+                  </text>
+                  <text x="0" y="-30" fill="#f8fafc" fontSize="10" fontWeight="bold" textAnchor="middle">مصباح 1</text>
+                </g>
+
+                {/* Bulb 2 Top Right / Parallel */}
+                <g transform={circuitType === 'series' ? 'translate(260, 60)' : 'translate(200, 120)'}>
+                  <circle
+                    cx="0"
+                    cy="0"
+                    r="22"
+                    fill={
+                      (!bulb2Broken && (circuitType === 'parallel' || !bulb1Broken) && switchClosed)
+                        ? '#fef08a'
+                        : '#334155'
+                    }
+                    stroke="#64748b"
+                    strokeWidth="2"
+                  />
+                  <text x="0" y="5" fontSize="14" textAnchor="middle">
+                    {bulb2Broken ? '❌' : '💡'}
+                  </text>
+                  <text x="0" y="-30" fill="#f8fafc" fontSize="10" fontWeight="bold" textAnchor="middle">مصباح 2</text>
+                </g>
+              </svg>
+
+              {/* Status Banner */}
+              <div className="text-xs text-center font-bold text-amber-300 mt-2">
+                {circuitType === 'series' ? (
+                  <span>
+                    الربط على التسلسل: شدة الإضاءة خافتة، وإذا تلف أحد المصباحين ينطفئ الآخر فوراً!
+                  </span>
+                ) : (
+                  <span>
+                    الربط على التفرع: شدة الإضاءة قوية، وإذا تلف أحد المصباحين يظل المصباح الثاني مشتعلاً!
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Controls for Bulbs */}
+            <div className="space-y-4">
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                <span className="text-xs font-bold text-slate-300 block">اختبار تفكيك وتلف المصباحين:</span>
+                
+                <div className="flex items-center justify-between p-3 bg-slate-900 rounded-xl border border-slate-800">
+                  <span className="text-xs font-bold text-slate-200">المصباح الأول (💡):</span>
+                  <button
+                    onClick={() => setBulb1Broken(!bulb1Broken)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
+                      bulb1Broken
+                        ? 'bg-rose-500 text-slate-950 font-black'
+                        : 'bg-emerald-600 text-white'
+                    }`}
+                  >
+                    {bulb1Broken ? 'تالف / مفكوك ❌' : 'سليم ويعمل ✅'}
+                  </button>
+                </div>
+
+                <div className="flex items-center justify-between p-3 bg-slate-900 rounded-xl border border-slate-800">
+                  <span className="text-xs font-bold text-slate-200">المصباح الثاني (💡):</span>
+                  <button
+                    onClick={() => setBulb2Broken(!bulb2Broken)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
+                      bulb2Broken
+                        ? 'bg-rose-500 text-slate-950 font-black'
+                        : 'bg-emerald-600 text-white'
+                    }`}
+                  >
+                    {bulb2Broken ? 'تالف / مفكوك ❌' : 'سليم ويعمل ✅'}
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => { setBulb1Broken(false); setBulb2Broken(false); }}
+                  className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold rounded-xl border border-slate-700 cursor-pointer"
+                >
+                  إعادة تركيب المصباحين بحالة سليمة 🔄
+                </button>
+              </div>
+
+              {/* Explanatory Rule Box */}
+              <div className="bg-emerald-950/60 border border-emerald-800 p-4 rounded-2xl text-xs text-emerald-200 space-y-2 leading-relaxed">
+                <span className="font-black text-emerald-300 block">📌 النتيجة المنهجية للدرس:</span>
+                <p>
+                  • <strong>في الربط على التسلسل:</strong> توجد حلقة واحدة للتيار، تتوزع الطاقة بين المصباحين فتكون الإضاءة خافتة، وتلف أحد المصباحين يفتح الدارة بأكملها.
+                </p>
+                <p>
+                  • <strong>في الربط على التفرع:</strong> توجد عدة حلقات مستقلة، تظل الإضاءة قوية ويعمل كل مصباح بشكل مستقل (وهو الربط المستعمل في المنازل).
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* QUIZ MODE / CHALLENGE (التحدي والاختبار) */}
+      {activeTab === 'quiz' && (
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 flex-wrap gap-2">
+            <div>
+              <h3 className="font-extrabold text-base text-rose-300 flex items-center gap-2">
+                <Award className="w-5 h-5 text-rose-400" />
+                <span>تحدي الكهربائي الصغير (أسئلة الدارات والصمام الثنائي)</span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                أجب عن الأسئلة الخمسة واكسب نقاط التميز في التربية العلمية!
+              </p>
+            </div>
+
+            {quizSubmitted && (
+              <div className="bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-full text-xs shadow-md">
+                النتيجة: {quizScore} / 100 XP
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-5">
+            {quizQuestions.map((q, qIdx) => {
+              const selectedOpt = userAnswers[qIdx];
+              return (
+                <div key={q.id} className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                  <div className="flex items-start gap-2.5 text-xs sm:text-sm font-extrabold text-slate-100">
+                    <span className="w-6 h-6 rounded-lg bg-rose-600 text-white font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {qIdx + 1}
+                    </span>
+                    <span>{q.qAr}</span>
+                  </div>
+
+                  {showFrench && <p className="text-xs text-slate-400 dir-ltr font-mono" dir="ltr">{q.qFr}</p>}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                    {q.options.map((opt, optIdx) => {
+                      const isSelected = selectedOpt === optIdx;
+                      let btnStyle = 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800';
+
+                      if (quizSubmitted) {
+                        if (optIdx === q.correctIdx) {
+                          btnStyle = 'bg-emerald-950 border-emerald-500 text-emerald-300 font-bold';
+                        } else if (isSelected && optIdx !== q.correctIdx) {
+                          btnStyle = 'bg-rose-950 border-rose-500 text-rose-300';
+                        }
+                      } else if (isSelected) {
+                        btnStyle = 'bg-amber-500 text-slate-950 font-black border-amber-400';
+                      }
+
+                      return (
+                        <button
+                          key={optIdx}
+                          onClick={() => handleQuizOptionSelect(qIdx, optIdx)}
+                          className={`text-right p-3 rounded-xl border text-xs transition-all flex items-center justify-between cursor-pointer ${btnStyle}`}
+                        >
+                          <span>{opt}</span>
+                          {quizSubmitted && optIdx === q.correctIdx && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {quizSubmitted && (
+                    <div className="text-[11px] text-slate-300 bg-slate-900 p-3 rounded-xl border border-slate-800 leading-relaxed font-sans">
+                      💡 {q.expAr}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+            {!quizSubmitted ? (
+              <button
+                onClick={handleCalculateScore}
+                disabled={Object.keys(userAnswers).length === 0}
+                className="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-black text-xs px-6 py-3 rounded-xl shadow-md cursor-pointer transition-all flex items-center gap-2"
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>تصحيح الإجابات وحساب النتيجة النهائيّة</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => { setQuizSubmitted(false); setUserAnswers({}); setQuizScore(0); }}
+                className="bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs px-5 py-2.5 rounded-xl border border-slate-700 cursor-pointer"
+              >
+                إعادة المحاولة في التحدي 🔄
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};

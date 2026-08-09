@@ -1,0 +1,107 @@
+{
+  "users": [
+    {
+      "id": 101,
+      "email": "free@mssid.dz",
+      "nom": "أحمد التلميذ",
+      "passwordHash": "password123",
+      "role": "ROLE_FREE",
+      "score": 140,
+      "xp": 140,
+      "level": 2,
+      "grade": "5AP",
+      "streakDays": 4,
+      "quizzesCompleted": 3,
+      "completedLessonIds": [
+        "math-5ap-numbers"
+      ],
+      "createdAt": "2026-08-07T21:10:26.420Z"
+    },
+    {
+      "id": 102,
+      "email": "premium@mssid.dz",
+      "nom": "سارة المتفوقة",
+      "passwordHash": "password123",
+      "role": "ROLE_PREMIUM",
+      "score": 850,
+      "xp": 850,
+      "level": 9,
+      "grade": "5AP",
+      "streakDays": 12,
+      "quizzesCompleted": 15,
+      "completedLessonIds": [
+        "math-5ap-numbers",
+        "arabic-5ap-grammar"
+      ],
+      "createdAt": "2026-08-07T21:10:26.420Z"
+    },
+    {
+      "id": 103,
+      "email": "admin@mssid.dz",
+      "nom": "الأستاذ المدير",
+      "passwordHash": "admin123",
+      "role": "ROLE_ADMIN",
+      "score": 2500,
+      "xp": 2500,
+      "level": 26,
+      "grade": "5AP",
+      "streakDays": 30,
+      "quizzesCompleted": 50,
+      "completedLessonIds": [
+        "math-5ap-numbers",
+        "arabic-5ap-grammar",
+        "french-5ap-vocab"
+      ],
+      "createdAt": "2026-08-07T21:10:26.420Z"
+    },
+    {
+      "id": 1786137033142,
+      "email": "test_student@mssid.dz",
+      "nom": "تلميذ تجريبي",
+      "passwordHash": "password123",
+      "role": "ROLE_FREE",
+      "score": 0,
+      "xp": 0,
+      "level": 1,
+      "grade": "5AP",
+      "streakDays": 1,
+      "quizzesCompleted": 0,
+      "completedLessonIds": [],
+      "createdAt": "2026-08-07T21:10:33.142Z"
+    }
+  ],
+  "receipts": [
+    {
+      "id": 1786198116027,
+      "userEmail": "user@mssid.dz",
+      "paymentMethod": "EDAHABIA",
+      "amountDzd": 1500,
+      "transactionRef": "ED-INVALID-000",
+      "receiptImageUrl": "https://example.com/receipt.jpg",
+      "status": "PENDING",
+      "createdAt": "2026-08-08T14:08:36.027Z"
+    },
+    {
+      "id": 1786198116022,
+      "userEmail": "user@mssid.dz",
+      "paymentMethod": "BARIDIMOB",
+      "amountDzd": 1500,
+      "transactionRef": "BM-UPGRADE-999",
+      "receiptImageUrl": "https://example.com/receipt.jpg",
+      "status": "PENDING",
+      "createdAt": "2026-08-08T14:08:36.022Z"
+    },
+    {
+      "id": 1786198116018,
+      "userEmail": "user@mssid.dz",
+      "paymentMethod": "BARIDIMOB",
+      "amountDzd": 1500,
+      "transactionRef": "BM-TEST-123456",
+      "receiptImageUrl": "https://example.com/receipt.jpg",
+      "status": "PENDING",
+      "createdAt": "2026-08-08T14:08:36.018Z"
+    }
+  ],
+  "aiLogs": [],
+  "lastUpdated": "2026-08-08T14:08:51.282Z"
+}
