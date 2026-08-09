@@ -225,10 +225,17 @@ export class AuthService {
     return user;
   }
 
-  static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser; error?: string }> {
+  static async loginAsync(email: string, pass: string): Promise<{ user?: AuthUser; error?: string }> {
+    if (!email || !email.trim()) {
+      return { error: 'يرجى إدخال البريد الإلكتروني (Adresse e-mail requise).' };
+    }
+    if (!pass || !pass.trim()) {
+      return { error: 'يرجى إدخال كلمة المرور (Mot de passe requis).' };
+    }
+
     try {
       const response = await springBootApi.login({ email, password: pass });
-      if (response.data && response.data.token) {
+      if ((response.status === 200 || response.status === 201) && response.data && typeof response.data.token === 'string' && response.data.token.trim().length > 0) {
         const u = response.data.user || {};
         const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 140;
         const levelVal = u.level !== undefined ? u.level : Math.floor(scoreVal / 100) + 1;
@@ -249,13 +256,18 @@ export class AuthService {
         };
         this.setCurrentUser(authUser);
         return { user: authUser };
-      } else if (response.error) {
-        return { user: this.login(email, pass), error: response.error };
       }
-    } catch {
-      // Fallback
+
+      const errorMsg = response.error ||
+        (response.status === 401 ? 'البريد الإلكتروني أو كلمة المرور غير صحيحة (401).' :
+         response.status === 400 ? 'بيانات غير صالحة أو حقول ناقصة (400).' :
+         response.status === 0 ? 'تعذر الاتصال بالخادم Backend (0).' :
+         `خطأ من الخادم Backend (رمز ${response.status}).`);
+
+      return { error: errorMsg };
+    } catch (err: any) {
+      return { error: err?.message || 'تعذر الاتصال بالخادم. يرجى التحقق من الاتصال بالشبكة.' };
     }
-    return { user: this.login(email, pass) };
   }
 
   static register(nom: string, email: string, pass: string): AuthUser {
@@ -278,10 +290,20 @@ export class AuthService {
     return user;
   }
 
-  static async registerAsync(nom: string, email: string, pass: string): Promise<{ user: AuthUser; error?: string }> {
+  static async registerAsync(nom: string, email: string, pass: string): Promise<{ user?: AuthUser; error?: string }> {
+    if (!nom || !nom.trim()) {
+      return { error: 'يرجى إدخال الاسم الكامل (Nom complet requis).' };
+    }
+    if (!email || !email.trim()) {
+      return { error: 'يرجى إدخال البريد الإلكتروني (Adresse e-mail requise).' };
+    }
+    if (!pass || pass.trim().length < 4) {
+      return { error: 'كلمة المرور يجب أن لا تقل عن 4 أحرف (Mot de passe de 4 caractères min).' };
+    }
+
     try {
       const response = await springBootApi.register({ nom, email, password: pass });
-      if (response.data && response.data.token) {
+      if ((response.status === 200 || response.status === 201) && response.data && typeof response.data.token === 'string' && response.data.token.trim().length > 0) {
         const u = response.data.user || {};
         const authUser: AuthUser = {
           id: u.id || Math.floor(Math.random() * 9000) + 1000,
@@ -299,13 +321,17 @@ export class AuthService {
         };
         this.setCurrentUser(authUser);
         return { user: authUser };
-      } else if (response.error) {
-        return { user: this.register(nom, email, pass), error: response.error };
       }
-    } catch {
-      // Fallback
+
+      const errorMsg = response.error ||
+        (response.status === 400 ? 'هذا البريد الإلكتروني مستعمل بالفعل أو البيانات غير صالحة.' :
+         response.status === 0 ? 'تعذر الاتصال بالخادم Backend.' :
+         `خطأ من الخادم Backend (رمز ${response.status}).`);
+
+      return { error: errorMsg };
+    } catch (err: any) {
+      return { error: err?.message || 'تعذر الاتصال بالخادم. يرجى التحقق من الاتصال بالشبكة.' };
     }
-    return { user: this.register(nom, email, pass) };
   }
 
   static switchDemoRole(role: UserRole): AuthUser {

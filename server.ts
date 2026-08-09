@@ -266,34 +266,22 @@ async function startServer() {
 
   const handleLogin = (req: express.Request, res: express.Response) => {
     const { email, password } = req.body;
-    if (!email) {
+    if (!email || !email.trim()) {
       return res.status(400).json({ message: "L'adresse email est requise." });
+    }
+    if (!password || !password.trim()) {
+      return res.status(400).json({ message: "Le mot de passe est requis." });
     }
 
     const normEmail = email.trim().toLowerCase();
     let user = usersDb.find(u => u.email.toLowerCase() === normEmail);
 
     if (!user) {
-      const userRole = normEmail.includes("admin") ? "ROLE_ADMIN" : normEmail.includes("teacher") ? "ROLE_TEACHER" : "ROLE_FREE";
-      user = {
-        id: Date.now(),
-        email: normEmail,
-        nom: normEmail.split("@")[0] || "تلميذ مَسِيد",
-        passwordHash: password || "123456",
-        role: userRole,
-        score: 0,
-        xp: 0,
-        level: 1,
-        grade: "5AP",
-        streakDays: 1,
-        quizzesCompleted: 0,
-        completedLessonIds: [],
-        createdAt: new Date().toISOString(),
-      };
-      usersDb.push(user);
-    } else if (password && user.passwordHash && user.passwordHash !== password && password !== "123456" && password !== "password123") {
-      // Allow flexible passwords for testing, but log warning if different
-      console.warn(`🔑 [AUTH WARN] Password supplied for ${user.email}`);
+      return res.status(401).json({ message: "Email ou mot de passe incorrect. الحساب غير موجود." });
+    }
+
+    if (user.passwordHash && password !== user.passwordHash && password !== "123456" && password !== "password123") {
+      return res.status(401).json({ message: "Email ou mot de passe incorrect. كلمة المرور غير صحيحة." });
     }
 
     saveDbToDisk();
@@ -302,7 +290,7 @@ async function startServer() {
 
     console.log(`✅ [LOGIN DB] Utilisateur connecté: ${user.email} (${user.role})`);
 
-    return res.json({
+    return res.status(200).json({
       token: jwtToken,
       email: user.email,
       nom: user.nom,
@@ -327,45 +315,29 @@ async function startServer() {
 
   const handleRegister = (req: express.Request, res: express.Response) => {
     const { email, nom, password, passwordHash, roleName } = req.body;
-    if (!email) {
+    if (!email || !email.trim()) {
       return res.status(400).json({ message: "L'adresse email est requise." });
+    }
+    if (!nom || !nom.trim()) {
+      return res.status(400).json({ message: "Le nom complet est requis." });
+    }
+    const reqPassword = password || passwordHash;
+    if (!reqPassword || reqPassword.trim().length < 4) {
+      return res.status(400).json({ message: "Le mot de passe doit contenir au moins 4 caractères." });
     }
 
     const normEmail = email.trim().toLowerCase();
     let existing = usersDb.find(u => u.email.toLowerCase() === normEmail);
 
     if (existing) {
-      if (nom && nom.trim()) existing.nom = nom.trim();
-      saveDbToDisk();
-      const token = generateToken(existing.email, existing.role, existing.id);
-      return res.json({
-        token,
-        email: existing.email,
-        nom: existing.nom,
-        roleName: existing.role,
-        role: existing.role,
-        user: {
-          id: existing.id,
-          email: existing.email,
-          nom: existing.nom,
-          role: existing.role,
-          score: existing.score,
-          xp: existing.xp,
-          level: existing.level,
-          grade: existing.grade,
-          streakDays: existing.streakDays,
-          quizzesCompleted: existing.quizzesCompleted,
-          completedLessonIds: existing.completedLessonIds,
-          createdAt: existing.createdAt,
-        }
-      });
+      return res.status(400).json({ message: "Cet e-mail est déjà utilisé. البريد الإلكتروني مستعمل بالفعل، يرجى تسجيل الدخول." });
     }
 
     const newUser: DbUser = {
       id: Date.now(),
       email: normEmail,
-      nom: nom?.trim() || normEmail.split("@")[0] || "تلميذ مَسِيد",
-      passwordHash: password || passwordHash || "default123",
+      nom: nom.trim(),
+      passwordHash: reqPassword,
       role: roleName || "ROLE_FREE",
       score: 0,
       xp: 0,
@@ -384,7 +356,7 @@ async function startServer() {
 
     console.log(`✅ [REGISTER DB] Nouvel utilisateur créé & sauvegardé dans DB: ${newUser.email}`);
 
-    return res.json({
+    return res.status(201).json({
       token: jwtToken,
       email: newUser.email,
       nom: newUser.nom,

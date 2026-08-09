@@ -88,46 +88,62 @@ class SpringBootApiService {
     const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
     const url = `${SPRING_BOOT_BASE_URL}${normalizedEndpoint}`;
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12 seconds timeout
+
     try {
       const response = await fetch(url, {
         ...options,
+        signal: controller.signal,
         headers: this.getHeaders((options.headers as Record<string, string>) || {}),
       });
+      clearTimeout(timeoutId);
 
       const status = response.status;
-
-      if (status === 401) {
-        this.clearToken();
-        return { error: 'Session expirée, veuillez vous re-connecter.', status };
-      }
-
-      if (status === 429) {
-        const errorData = await response.json().catch(() => ({}));
-        return {
-          error: errorData.message || 'Quota quotidien de requêtes dépassé (Rate Limit Spring Boot).',
-          status,
-        };
-      }
-
       const contentType = response.headers.get('content-type');
       let data: T | undefined;
 
       if (contentType && contentType.includes('application/json')) {
-        data = await response.json();
+        data = await response.json().catch(() => undefined);
+      }
+
+      if (status === 401) {
+        this.clearToken();
+        const errText = (data as any)?.message || (data as any)?.error || 'البريد الإلكتروني أو كلمة المرور غير صحيحة (Session non autorisée).';
+        return { error: errText, status };
+      }
+
+      if (status === 400) {
+        const errText = (data as any)?.message || (data as any)?.error || 'بيانات غير صالحة أو حقول ناقصة (400).';
+        return { error: errText, status };
+      }
+
+      if (status === 429) {
+        return {
+          error: (data as any)?.message || 'Quota quotidien de requêtes dépassé (Rate Limit).',
+          status,
+        };
       }
 
       if (!response.ok) {
         return {
-          error: (data as any)?.message || (data as any)?.error || `Erreur serveur (${status})`,
+          error: (data as any)?.message || (data as any)?.error || `خطأ من الخادم Backend (${status})`,
           status,
         };
       }
 
       return { data, status, headers: response.headers };
     } catch (err: any) {
+      clearTimeout(timeoutId);
+      if (err.name === 'AbortError') {
+        return {
+          error: 'انتهت مهلة الاتصال بالخادم (Timeout). يرجى المحاولة لاحقاً.',
+          status: 408,
+        };
+      }
       console.warn('Erreur de connexion au backend mssid dz:', err.message);
       return {
-        error: 'Impossible de contacter le serveur mssid dz backend.',
+        error: 'تعذر الاتصال بالخادم الرئيسي (mssid dz backend indisponible).',
         status: 0,
       };
     }

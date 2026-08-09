@@ -28,25 +28,45 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
     try {
       if (isLogin) {
         const result = await AuthService.loginAsync(email, password);
+
+        if (result.error || !result.user || !result.user.token) {
+          setStatusMessage({
+            type: 'error',
+            text: result.error || 'فشلت عملية تسجيل الدخول. يرجى التحقق من البريد الإلكتروني وكلمة المرور.'
+          });
+          setLoading(false);
+          return;
+        }
+
         setStatusMessage({
           type: 'success',
           text: `تم تسجيل الدخول بنجاح! أهلاً بك يا ${result.user.nom}`
         });
         onAuthSuccess(result.user);
-        onClose();
+        setTimeout(() => onClose(), 600);
       } else {
         const result = await AuthService.registerAsync(nom, email, password);
+
+        if (result.error || !result.user || !result.user.token) {
+          setStatusMessage({
+            type: 'error',
+            text: result.error || 'فشلت عملية إنشاء الحساب. يرجى التحقق من البيانات المدخلة.'
+          });
+          setLoading(false);
+          return;
+        }
+
         setStatusMessage({
           type: 'success',
-          text: `تم إنشاء الحساب وحفظه في خادم mssid dz بنجاح! أهلاً بك يا ${result.user.nom}`
+          text: `تم إنشاء الحساب وحفظه في الخادم بنجاح! أهلاً بك يا ${result.user.nom}`
         });
         onAuthSuccess(result.user);
-        onClose();
+        setTimeout(() => onClose(), 600);
       }
     } catch (err: any) {
       setStatusMessage({
         type: 'error',
-        text: 'حدث خطأ أثناء التواصل مع خادم mssid dz. يرجى المحاولة لاحقاً.'
+        text: err?.message || 'حدث خطأ أثناء التواصل مع خادم mssid dz. يرجى المحاولة لاحقاً.'
       });
     } finally {
       setLoading(false);
@@ -75,7 +95,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all cursor-pointer"
+            disabled={loading}
+            className="p-1.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all cursor-pointer disabled:opacity-50"
           >
             <X className="w-4 h-4" />
           </button>
@@ -90,19 +111,22 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
           <div className="grid grid-cols-3 gap-2">
             <button
               onClick={() => handleQuickRoleSwitch('ROLE_FREE')}
-              className="px-2 py-1.5 bg-white border border-slate-300 rounded-xl text-[11px] font-extrabold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer shadow-2xs"
+              disabled={loading}
+              className="px-2 py-1.5 bg-white border border-slate-300 rounded-xl text-[11px] font-extrabold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer shadow-2xs disabled:opacity-50"
             >
               👤 ROLE_FREE
             </button>
             <button
               onClick={() => handleQuickRoleSwitch('ROLE_PREMIUM')}
-              className="px-2 py-1.5 bg-purple-700 text-white border border-purple-800 rounded-xl text-[11px] font-extrabold hover:bg-purple-800 transition-all cursor-pointer shadow-2xs"
+              disabled={loading}
+              className="px-2 py-1.5 bg-purple-700 text-white border border-purple-800 rounded-xl text-[11px] font-extrabold hover:bg-purple-800 transition-all cursor-pointer shadow-2xs disabled:opacity-50"
             >
               ⭐ ROLE_PREMIUM
             </button>
             <button
               onClick={() => handleQuickRoleSwitch('ROLE_ADMIN')}
-              className="px-2 py-1.5 bg-slate-900 text-amber-400 border border-slate-800 rounded-xl text-[11px] font-extrabold hover:bg-slate-800 transition-all cursor-pointer shadow-2xs"
+              disabled={loading}
+              className="px-2 py-1.5 bg-slate-900 text-amber-400 border border-slate-800 rounded-xl text-[11px] font-extrabold hover:bg-slate-800 transition-all cursor-pointer shadow-2xs disabled:opacity-50"
             >
               🛡️ ROLE_ADMIN
             </button>
@@ -113,8 +137,9 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
         <div className="flex border-b border-slate-200 bg-slate-50">
           <button
             type="button"
-            onClick={() => setIsLogin(true)}
-            className={`flex-1 py-3 text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-2 border-b-2 ${
+            disabled={loading}
+            onClick={() => { setIsLogin(true); setStatusMessage(null); }}
+            className={`flex-1 py-3 text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-2 border-b-2 disabled:opacity-50 ${
               isLogin
                 ? 'border-purple-700 text-purple-700 bg-white'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -125,8 +150,9 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
           </button>
           <button
             type="button"
-            onClick={() => setIsLogin(false)}
-            className={`flex-1 py-3 text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-2 border-b-2 ${
+            disabled={loading}
+            onClick={() => { setIsLogin(false); setStatusMessage(null); }}
+            className={`flex-1 py-3 text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-2 border-b-2 disabled:opacity-50 ${
               !isLogin
                 ? 'border-purple-700 text-purple-700 bg-white'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -144,10 +170,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
               <label className="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل:</label>
               <input
                 type="text"
+                disabled={loading}
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
                 placeholder="مثال: يونس الجزائري"
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none"
+                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none disabled:opacity-60 disabled:bg-slate-100"
               />
             </div>
           )}
@@ -157,10 +184,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
             <input
               type="email"
               required
+              disabled={loading}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@mssid.dz"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none dir-ltr"
+              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none dir-ltr disabled:opacity-60 disabled:bg-slate-100"
             />
           </div>
 
@@ -169,22 +197,28 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
             <input
               type="password"
               required
+              disabled={loading}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none"
+              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none disabled:opacity-60 disabled:bg-slate-100"
             />
           </div>
 
           {statusMessage && (
             <div
-              className={`p-3 rounded-xl text-xs font-bold ${
+              className={`p-3.5 rounded-xl text-xs font-bold flex items-start gap-2.5 shadow-xs transition-all ${
                 statusMessage.type === 'success'
-                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                  : 'bg-red-50 text-red-800 border border-red-200'
+                  ? 'bg-emerald-50 text-emerald-900 border border-emerald-300'
+                  : 'bg-red-50 text-red-900 border border-red-300'
               }`}
             >
-              {statusMessage.text}
+              {statusMessage.type === 'success' ? (
+                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              ) : (
+                <X className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+              )}
+              <span className="leading-relaxed">{statusMessage.text}</span>
             </div>
           )}
 
@@ -193,10 +227,14 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
             disabled={loading}
             className="w-full py-3 bg-purple-700 hover:bg-purple-800 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
           >
-            <KeyRound className="w-4 h-4 text-amber-300" />
+            {loading ? (
+              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            ) : (
+              <KeyRound className="w-4 h-4 text-amber-300" />
+            )}
             <span>
               {loading
-                ? 'جاري المعالجة والتواصل مع الخادم...'
+                ? 'جاري التحقق والمصادقة مع الخادم...'
                 : isLogin
                 ? 'تسجيل الدخول وإنشاء رمز JWT'
                 : 'تسجيل حساب جديد'}
@@ -206,8 +244,9 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
           <div className="text-center pt-2">
             <button
               type="button"
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-xs text-purple-700 font-bold hover:underline cursor-pointer"
+              disabled={loading}
+              onClick={() => { setIsLogin(!isLogin); setStatusMessage(null); }}
+              className="text-xs text-purple-700 font-bold hover:underline cursor-pointer disabled:opacity-50"
             >
               {isLogin ? 'ليس لديك حساب؟ قم بإنشاء حساب جديد' : 'لديك حساب بالفعل؟ تسجيل الدخول'}
             </button>
