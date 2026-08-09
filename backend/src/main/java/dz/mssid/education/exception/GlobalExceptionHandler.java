@@ -36,6 +36,19 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Intercepte les erreurs d'authentification (ex: mauvais mot de passe ou utilisateur introuvable)
+     * et renvoie un statut 401 Unauthorized avec un message clair.
+     */
+    @ExceptionHandler({org.springframework.security.authentication.BadCredentialsException.class, org.springframework.security.core.AuthenticationException.class})
+    public ResponseEntity<Map<String, Object>> handleBadCredentials(Exception ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
+                "status", 401,
+                "error", "Unauthorized",
+                "message", "Identifiants incorrects ou compte introuvable"
+        ));
+    }
+
+    /**
      * Intercepte les exceptions métier génériques (ex: email déjà utilisé, utilisateur introuvable).
      */
     @ExceptionHandler(RuntimeException.class)

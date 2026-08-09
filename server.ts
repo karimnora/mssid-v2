@@ -282,11 +282,11 @@ async function startServer() {
     let user = usersDb.find(u => u.email.toLowerCase() === normEmail);
 
     if (!user) {
-      return res.status(401).json({ message: "Identifiants incorrects ou compte introuvable." });
+      return res.status(401).json({ status: 401, error: "Unauthorized", message: "Identifiants incorrects ou compte introuvable" });
     }
 
     if (user.passwordHash && password !== user.passwordHash && password !== "123456" && password !== "password123") {
-      return res.status(401).json({ message: "Email ou mot de passe incorrect. كلمة المرور غير صحيحة." });
+      return res.status(401).json({ status: 401, error: "Unauthorized", message: "Identifiants incorrects ou compte introuvable" });
     }
 
     saveDbToDisk();

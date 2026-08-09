@@ -40,8 +40,10 @@ public class AuthController {
         try {
             AuthResponse response = authService.login(request);
             return ResponseEntity.ok(response);
-        } catch (RuntimeException e) {
+        } catch (org.springframework.security.authentication.BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Identifiants incorrects ou compte introuvable"));
         }
     }
 

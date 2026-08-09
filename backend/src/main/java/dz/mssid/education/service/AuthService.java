@@ -12,8 +12,10 @@ import dz.mssid.education.repository.UserRepository;
 import dz.mssid.education.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -75,29 +77,33 @@ public class AuthService {
     }
 
     public AuthResponse login(LoginRequest request) {
-        // 1. Authentification Spring Security
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
-
-        // 2. Récupération de l'utilisateur
+        // 1. Vérification si l'utilisateur existe
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable: " + request.getEmail()));
+                .orElseThrow(() -> new BadCredentialsException("Identifiants incorrects ou compte introuvable"));
 
-        // 3. Génération du JWT
-        String token = jwtTokenProvider.generateToken(authentication);
-        UserProfileDto profileDto = UserMapper.toUserProfileDto(user);
-        String roleStr = user.getRole() != null ? user.getRole().getName().name() : "ROLE_FREE";
+        // 2. Authentification Spring Security
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            );
 
-        // 4. Réponse
-        return AuthResponse.builder()
-                .token(token)
-                .accessToken(token)
-                .email(user.getEmail())
-                .nom(user.getNom())
-                .roleName(roleStr)
-                .role(roleStr)
-                .user(profileDto)
-                .build();
+            // 3. Génération du JWT
+            String token = jwtTokenProvider.generateToken(authentication);
+            UserProfileDto profileDto = UserMapper.toUserProfileDto(user);
+            String roleStr = user.getRole() != null ? user.getRole().getName().name() : "ROLE_FREE";
+
+            // 4. Réponse
+            return AuthResponse.builder()
+                    .token(token)
+                    .accessToken(token)
+                    .email(user.getEmail())
+                    .nom(user.getNom())
+                    .roleName(roleStr)
+                    .role(roleStr)
+                    .user(profileDto)
+                    .build();
+        } catch (AuthenticationException e) {
+            throw new BadCredentialsException("Identifiants incorrects ou compte introuvable");
+        }
     }
 }

@@ -27,46 +27,29 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
 
     try {
       if (isLogin) {
-        const result = await AuthService.loginAsync(email, password);
-
-        if (result.error || !result.user || !result.user.token) {
-          setStatusMessage({
-            type: 'error',
-            text: result.error || 'Identifiants incorrects ou compte introuvable (البريد الإلكتروني أو كلمة المرور غير صحيحة).'
-          });
-          setLoading(false);
-          return;
-        }
+        const user = await AuthService.loginAsync(email, password);
 
         setStatusMessage({
           type: 'success',
-          text: `تم تسجيل الدخول بنجاح! أهلاً بك يا ${result.user.nom}`
+          text: `تم تسجيل الدخول بنجاح! أهلاً بك يا ${user.nom}`
         });
-        onAuthSuccess(result.user);
+        onAuthSuccess(user);
         setTimeout(() => onClose(), 600);
       } else {
-        const result = await AuthService.registerAsync(nom, email, password);
-
-        if (result.error || !result.user || !result.user.token) {
-          setStatusMessage({
-            type: 'error',
-            text: result.error || 'فشلت عملية إنشاء الحساب. يرجى التحقق من البيانات المدخلة.'
-          });
-          setLoading(false);
-          return;
-        }
+        const user = await AuthService.registerAsync(nom, email, password);
 
         setStatusMessage({
           type: 'success',
-          text: `تم إنشاء الحساب وحفظه في الخادم بنجاح! أهلاً بك يا ${result.user.nom}`
+          text: `تم إنشاء الحساب وحفظه في الخادم بنجاح! أهلاً بك يا ${user.nom}`
         });
-        onAuthSuccess(result.user);
+        onAuthSuccess(user);
         setTimeout(() => onClose(), 600);
       }
     } catch (err: any) {
+      const errorMessage = err?.message || 'Identifiants incorrects ou compte introuvable';
       setStatusMessage({
         type: 'error',
-        text: err?.message || 'حدث خطأ أثناء التواصل مع خادم mssid dz. يرجى المحاولة لاحقاً.'
+        text: errorMessage
       });
     } finally {
       setLoading(false);

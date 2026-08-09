@@ -220,14 +220,14 @@ export class AuthService {
     return user;
   }
 
-  static async loginAsync(email: string, pass: string): Promise<{ user?: AuthUser; error?: string }> {
+  static async loginAsync(email: string, pass: string): Promise<AuthUser> {
     if (!email || !email.trim()) {
       this.setCurrentUser(null);
-      return { error: 'Adresse e-mail requise (البريد الإلكتروني مطلوب).' };
+      throw new Error('Adresse e-mail requise.');
     }
     if (!pass || !pass.trim()) {
       this.setCurrentUser(null);
-      return { error: 'Mot de passe requis (كلمة المرور مطلوبة).' };
+      throw new Error('Mot de passe requis.');
     }
 
     try {
@@ -259,25 +259,25 @@ export class AuthService {
           completedLessonIds: u.completedLessonIds || ['math-5ap-numbers'],
         };
         this.setCurrentUser(authUser);
-        return { user: authUser };
+        return authUser;
       }
 
-      // STRICT FAILURE: Always clear user state on backend error (400, 401, 404, 500, etc.)
+      // STRICT FAILURE: Always clear user state on backend error
       this.setCurrentUser(null);
 
       const errorMsg = response.error ||
         (response.status === 401 || response.status === 404
-          ? 'Identifiants incorrects ou compte introuvable.'
+          ? 'Identifiants incorrects ou compte introuvable'
           : response.status === 400
           ? 'Données invalides ou champs manquants (400).'
           : response.status === 0
           ? 'Impossible de contacter le serveur backend (0).'
           : `Erreur du serveur backend (code ${response.status}).`);
 
-      return { error: errorMsg };
+      throw new Error(errorMsg);
     } catch (err: any) {
       this.setCurrentUser(null);
-      return { error: err?.message || 'Identifiants incorrects ou compte introuvable.' };
+      throw new Error(err?.message || 'Identifiants incorrects ou compte introuvable');
     }
   }
 
@@ -301,18 +301,18 @@ export class AuthService {
     return user;
   }
 
-  static async registerAsync(nom: string, email: string, pass: string): Promise<{ user?: AuthUser; error?: string }> {
+  static async registerAsync(nom: string, email: string, pass: string): Promise<AuthUser> {
     if (!nom || !nom.trim()) {
       this.setCurrentUser(null);
-      return { error: 'Nom complet requis.' };
+      throw new Error('Nom complet requis.');
     }
     if (!email || !email.trim()) {
       this.setCurrentUser(null);
-      return { error: 'Adresse e-mail requise.' };
+      throw new Error('Adresse e-mail requise.');
     }
     if (!pass || pass.trim().length < 4) {
       this.setCurrentUser(null);
-      return { error: 'Le mot de passe doit contenir au moins 4 caractères.' };
+      throw new Error('Le mot de passe doit contenir au moins 4 caractères.');
     }
 
     try {
@@ -341,7 +341,7 @@ export class AuthService {
           completedLessonIds: u.completedLessonIds || [],
         };
         this.setCurrentUser(authUser);
-        return { user: authUser };
+        return authUser;
       }
 
       // STRICT FAILURE: Clear state
@@ -354,10 +354,10 @@ export class AuthService {
           ? 'Impossible de contacter le serveur backend.'
           : `Erreur du serveur backend (code ${response.status}).`);
 
-      return { error: errorMsg };
+      throw new Error(errorMsg);
     } catch (err: any) {
       this.setCurrentUser(null);
-      return { error: err?.message || 'Erreur lors de l\'inscription.' };
+      throw new Error(err?.message || 'Erreur lors de l\'inscription.');
     }
   }
 
