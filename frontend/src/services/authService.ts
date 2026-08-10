@@ -7,40 +7,6 @@ const STORAGE_KEYS = {
   RECEIPTS: 'mssid_payment_receipts',
 };
 
-// Initial default demo accounts
-const DEMO_USERS: Record<string, AuthUser> = {
-  'free@mssid.dz': {
-    id: 101,
-    nom: 'أحمد التلميذ',
-    email: 'free@mssid.dz',
-    role: 'ROLE_FREE',
-    token: 'jwt.token.free.user.simulated',
-  },
-  'premium@mssid.dz': {
-    id: 102,
-    nom: 'سارة المتفوقة',
-    email: 'premium@mssid.dz',
-    role: 'ROLE_PREMIUM',
-    token: 'jwt.token.premium.user.simulated',
-    subscription: {
-      id: 501,
-      userId: 102,
-      status: 'ACTIVE',
-      startDate: '2026-01-01',
-      endDate: '2026-12-31',
-      planName: 'الاشتراك السنوي الشامل 5AP',
-      amountDzd: 1500,
-    },
-  },
-  'admin@mssid.dz': {
-    id: 103,
-    nom: 'الأستاذ المدير',
-    email: 'admin@mssid.dz',
-    role: 'ROLE_ADMIN',
-    token: 'jwt.token.admin.user.simulated',
-  },
-};
-
 // Default sample payment receipts
 const INITIAL_RECEIPTS: PaymentReceipt[] = [
   {
@@ -122,38 +88,46 @@ export class AuthService {
     return user;
   }
 
-  static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser; error?: string }> {
-    try {
-      const response = await springBootApi.login({ email, password: pass });
-      if (response.data && response.data.token) {
-        const u = response.data.user || {};
-        const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 140;
-        const levelVal = u.level !== undefined ? u.level : Math.floor(scoreVal / 100) + 1;
+static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
+  try {
+    const response = await springBootApi.login({ email, password: pass });
 
-        const authUser: AuthUser = {
-          id: u.id || Math.floor(Math.random() * 9000) + 1000,
-          nom: response.data.nom || u.nom || email.split('@')[0],
-          email: response.data.email || u.email || email,
-          role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-          token: response.data.token,
-          score: scoreVal,
-          xp: scoreVal,
-          level: levelVal,
-          grade: u.grade || '5AP',
-          streakDays: u.streakDays || 4,
-          quizzesCompleted: u.quizzesCompleted || 3,
-          completedLessonIds: u.completedLessonIds || ['math-5ap-numbers'],
-        };
-        this.setCurrentUser(authUser);
-        return { user: authUser };
-      } else if (response.error) {
-        return { user: this.login(email, pass), error: response.error };
-      }
-    } catch {
-      // Fallback
+    // Si le backend renvoie une erreur (ex: 404/401) ou pas de token
+    if (response.error || !response.data?.token) {
+      return { 
+        user: null, 
+        error: response.error || 'Identifiants invalides.' 
+      };
     }
-    return { user: this.login(email, pass) };
+
+    const u = response.data.user || {};
+    const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 140;
+    const levelVal = u.level !== undefined ? u.level : Math.floor(scoreVal / 100) + 1;
+
+    const authUser: AuthUser = {
+      id: u.id || Math.floor(Math.random() * 9000) + 1000,
+      nom: response.data.nom || u.nom || email.split('@')[0],
+      email: response.data.email || u.email || email,
+      role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
+      token: response.data.token,
+      score: scoreVal,
+      xp: scoreVal,
+      level: levelVal,
+      grade: u.grade || '5AP',
+      streakDays: u.streakDays || 4,
+      quizzesCompleted: u.quizzesCompleted || 3,
+      completedLessonIds: u.completedLessonIds || ['math-5ap-numbers'],
+    };
+
+    this.setCurrentUser(authUser);
+    return { user: authUser };
+  } catch (err: any) {
+    return { 
+      user: null, 
+      error: 'Erreur réseau lors de la tentative de connexion.' 
+    };
   }
+}
 
   static register(nom: string, email: string, pass: string): AuthUser {
     const user: AuthUser = {
@@ -175,35 +149,39 @@ export class AuthService {
     return user;
   }
 
-  static async registerAsync(nom: string, email: string, pass: string): Promise<{ user: AuthUser; error?: string }> {
-    try {
-      const response = await springBootApi.register({ nom, email, password: pass });
-      if (response.data && response.data.token) {
-        const u = response.data.user || {};
-        const authUser: AuthUser = {
-          id: u.id || Math.floor(Math.random() * 9000) + 1000,
-          nom: response.data.nom || u.nom || nom || email.split('@')[0],
-          email: response.data.email || u.email || email,
-          role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-          token: response.data.token,
-          score: u.score ?? 0,
-          xp: u.xp ?? 0,
-          level: u.level ?? 1,
-          grade: u.grade || '5AP',
-          streakDays: u.streakDays || 1,
-          quizzesCompleted: u.quizzesCompleted || 0,
-          completedLessonIds: u.completedLessonIds || [],
-        };
-        this.setCurrentUser(authUser);
-        return { user: authUser };
-      } else if (response.error) {
-        return { user: this.register(nom, email, pass), error: response.error };
-      }
-    } catch {
-      // Fallback
+static async registerAsync(nom: string, email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
+  try {
+    const response = await springBootApi.register({ nom, email, password: pass });
+    
+    if (response.error || !response.data?.token) {
+      return { 
+        user: null, 
+        error: response.error || 'Erreur lors de la création du compte.' 
+      };
     }
-    return { user: this.register(nom, email, pass) };
+
+    const u = response.data.user || {};
+    const authUser: AuthUser = {
+      id: u.id || Math.floor(Math.random() * 9000) + 1000,
+      nom: response.data.nom || u.nom || nom || email.split('@')[0],
+      email: response.data.email || u.email || email,
+      role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
+      token: response.data.token,
+      score: u.score ?? 0,
+      xp: u.xp ?? 0,
+      level: u.level ?? 1,
+      grade: u.grade || '5AP',
+      streakDays: u.streakDays || 1,
+      quizzesCompleted: u.quizzesCompleted || 0,
+      completedLessonIds: u.completedLessonIds || [],
+    };
+    
+    this.setCurrentUser(authUser);
+    return { user: authUser };
+  } catch (err: any) {
+    return { user: null, error: 'Impossible de contacter le serveur backend.' };
   }
+}
 
   static switchDemoRole(role: UserRole): AuthUser {
     let email = 'free@mssid.dz';
@@ -268,30 +246,6 @@ export class AuthService {
 
     this.setCurrentUser(updatedUser);
 
-    // Sync score to Express backend asynchronously
-    springBootApi.request('/v1/users/score', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: updatedUser.email,
-        scoreDelta: points,
-        totalScore: updatedUser.score,
-        lessonId,
-        quizzesCompleted: updatedUser.quizzesCompleted,
-      }),
-    }).then((res) => {
-      if (res.data) {
-        const d = res.data as any;
-        const syncedUser: AuthUser = {
-          ...updatedUser,
-          score: d.score !== undefined ? d.score : updatedUser.score,
-          xp: d.xp !== undefined ? d.xp : updatedUser.xp,
-          level: d.level !== undefined ? d.level : updatedUser.level,
-        };
-        this.setCurrentUser(syncedUser);
-      }
-    }).catch(() => {});
-
-    return updatedUser;
   }
 
 static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser | null> {

@@ -79,62 +79,75 @@ class SpringBootApiService {
     return headers;
   }
 
-  // Requête générique HTTP
-  public async request<T>(
-    endpoint: string,
-    options: RequestInit = {}
-  ): Promise<{ data?: T; error?: string; status: number; headers?: Headers }> {
-    const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-    const baseUrl = SPRING_BOOT_BASE_URL.endsWith('/') 
-      ? SPRING_BOOT_BASE_URL.slice(0, -1) 
-      : SPRING_BOOT_BASE_URL;
+ // Requête générique HTTP
+public async request<T>(
+  endpoint: string,
+  options: RequestInit = {}
+): Promise<{ data?: T; error?: string; status: number; headers?: Headers }> {
+  const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const baseUrl = SPRING_BOOT_BASE_URL.endsWith('/') 
+    ? SPRING_BOOT_BASE_URL.slice(0, -1) 
+    : SPRING_BOOT_BASE_URL;
 
-    const url = `${baseUrl}${normalizedEndpoint}`;
+  const url = `${baseUrl}${normalizedEndpoint}`;
 
-    try {
-      const response = await fetch(url, {
-        ...options,
-        headers: this.getHeaders((options.headers as Record<string, string>) || {}),
-      });
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers: this.getHeaders((options.headers as Record<string, string>) || {}),
+    });
 
-      const status = response.status;
+    const status = response.status;
 
-      if (status === 401) {
-        this.clearToken();
-        return { error: 'Session expirée, veuillez vous re-connecter.', status };
-      }
-
-      if (status === 429) {
-        const errorData = await response.json().catch(() => ({}));
-        return {
-          error: errorData.message || 'Quota quotidien de requêtes dépassé (Rate Limit Spring Boot).',
-          status,
-        };
-      }
-
-      const contentType = response.headers.get('content-type');
-      let data: T | undefined;
-
-      if (contentType && contentType.includes('application/json')) {
-        data = await response.json();
-      }
-
-      if (!response.ok) {
-        return {
-          error: (data as any)?.message || (data as any)?.error || `Erreur serveur (${status})`,
-          status,
-        };
-      }
-
-      return { data, status, headers: response.headers };
-    } catch (err: any) {
-      console.warn('Erreur de connexion au backend mssid dz:', err.message);
-      return {
-        error: 'Impossible de contacter le serveur mssid dz backend.',
-        status: 0,
+    if (status === 401) {
+      this.clearToken();
+      // On extrait le message JSON du backend si présent, sinon fallback
+      const errorData = await response.json().catch(() => ({}));
+      return { 
+        error: errorData.message || errorData.error || 'Email ou mot de passe incorrect.', 
+        status 
       };
     }
+
+    if (status === 404) {
+      const errorData = await response.json().catch(() => ({}));
+      return { 
+        error: errorData.message || errorData.error || 'Utilisateur inexistant sur le serveur.', 
+        status 
+      };
+    }
+
+    if (status === 429) {
+      const errorData = await response.json().catch(() => ({}));
+      return {
+        error: errorData.message || 'Quota quotidien de requêtes dépassé (Rate Limit Spring Boot).',
+        status,
+      };
+    }
+
+    const contentType = response.headers.get('content-type');
+    let data: T | undefined;
+
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    }
+
+    if (!response.ok) {
+      return {
+        error: (data as any)?.message || (data as any)?.error || `Erreur serveur (${status})`,
+        status,
+      };
+    }
+
+    return { data, status, headers: response.headers };
+  } catch (err: any) {
+    console.warn('Erreur de connexion au backend mssid dz:', err.message);
+    return {
+      error: 'Impossible de contacter le serveur mssid dz backend.',
+      status: 0,
+    };
   }
+}
 
   // --- Endpoints d'Authentification ---
   public async login(credentials: { email: string; password?: string; passwordHash?: string }) {

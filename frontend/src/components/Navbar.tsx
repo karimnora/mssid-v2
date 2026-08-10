@@ -5,7 +5,6 @@ import {
   Sparkles,
   ShieldCheck,
   User,
-  Server,
   KeyRound,
   Smartphone,
   Sliders,
@@ -19,9 +18,7 @@ import {
   Check,
   FileText,
   BarChart2,
-  Lock,
   LogOut,
-  GraduationCap
 } from 'lucide-react';
 import { PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
@@ -102,7 +99,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
-  // Sync internal theme state with parent prop if provided and apply to root
   useEffect(() => {
     if (currentTheme) {
       const validTheme: HeaderTheme = (['neutre', 'light', 'dark', 'midnight', 'oled', 'sepia'].includes(currentTheme) ? currentTheme : 'neutre') as HeaderTheme;
@@ -111,7 +107,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   }, [currentTheme]);
 
-  // Apply theme classes to root document for global dark/light/oled consistency
   const handleThemeSelect = (selectedTheme: HeaderTheme) => {
     setTheme(selectedTheme);
     if (onThemeChange) {
@@ -121,7 +116,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     applyThemeToRoot(selectedTheme);
   };
 
-  // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
@@ -135,7 +129,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Theme styling helpers
   const isLightLike = theme === 'light' || theme === 'neutre' || theme === 'sepia';
 
   const getHeaderBgStyle = () => {
@@ -187,7 +180,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       case 'oled':
         return 'bg-emerald-950 text-emerald-300 font-black border border-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.3)]';
       case 'neutre':
-        return 'bg-indigo-600 text-white font-black shadow-md border-b-4 border-indigo-800 active:translate-y-0.5';
       case 'light':
         return 'bg-indigo-600 text-white font-black shadow-md border-b-4 border-indigo-800 active:translate-y-0.5';
       case 'sepia':
@@ -217,16 +209,22 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const roleLabel = authUser?.role || 'ROLE_FREE';
-  const isPremiumOrAdmin = roleLabel === 'ROLE_PREMIUM' || roleLabel === 'ROLE_ADMIN';
+  const isAdmin = roleLabel === 'ROLE_ADMIN';
+  const isPremiumOrAdmin = roleLabel === 'ROLE_PREMIUM' || isAdmin;
   const displayXp = authUser?.score !== undefined ? authUser.score : (authUser?.xp !== undefined ? authUser.xp : userProfile.xp);
   const displayLevel = authUser?.level !== undefined ? authUser.level : Math.floor(displayXp / 100) + 1;
+  
+  // Dynamic Badges count from backend or fallback to userProfile
+  const displayBadgesCount = (authUser as any)?.badges 
+    ? (authUser as any).badges.length 
+    : (userProfile?.badges ? userProfile.badges.length : 0);
 
   return (
     <>
       <header className={`sticky top-0 z-40 transition-colors duration-300 dir-rtl ${getHeaderBgStyle()}`} dir="rtl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
           
-          {/* 1. RIGHT SIDE: LOGO & BRAND WITH STATUS BADGE */}
+          {/* LOGO & BRAND */}
           <div className="flex items-center gap-3 shrink-0 cursor-pointer group" onClick={onHomeClick}>
             {theme === 'neutre' || theme === 'light' ? (
               <div className="w-11 h-11 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg border-b-4 border-indigo-800 transition-transform group-hover:scale-105">
@@ -252,7 +250,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* 2. CENTER: SLEEK SEGMENTED CONTROL / TABS FOR GRADES (Desktop) */}
+          {/* GRADES NAVIGATION */}
           <div className={`hidden lg:flex items-center p-1.5 rounded-2xl ${getSegmentedBgStyle()}`}>
             {GRADES.map((g) => {
               const isActive = currentGrade === g.id;
@@ -282,10 +280,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </div>
 
-          {/* 3. LEFT SIDE: CONSOLIDATED ACTIONS, XP BADGE & PROFILE DROPDOWN */}
+          {/* ACTIONS & USER PROFILE */}
           <div className="flex items-center gap-2 sm:gap-3">
 
-            {/* AI Tutor Primary Action Button */}
+            {/* AI Tutor Button */}
             {theme === 'neutre' ? (
               <button
                 onClick={onOpenAiTutor}
@@ -305,20 +303,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="hidden sm:inline">المعلّم الذكي</span>
               </button>
             )}
+           
 
-            {/* Technical Audit Button for Neutre theme */}
-            {theme === 'neutre' && (
-              <button
-                onClick={onOpenAuditModal}
-                className="flex items-center gap-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-2.5 py-2 rounded-xl border border-slate-200 transition-colors cursor-pointer"
-                title="تقرير التدقيق الفني الشامل"
-              >
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span className="hidden md:inline">التدقيق الفني</span>
-              </button>
-            )}
-
-            {/* Combined User Status / XP & Badges Pills */}
+            {/* XP & Badges Display */}
             {theme === 'neutre' || theme === 'light' ? (
               <div className="flex items-center gap-2">
                 <button
@@ -334,7 +321,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="hidden sm:flex items-center gap-2 bg-emerald-100 px-3.5 py-1.5 rounded-full border-2 border-emerald-200 transition-all hover:bg-emerald-200/80 cursor-pointer"
                 >
                   <span className="text-base">🏆</span>
-                  <span className="font-black text-emerald-700 text-xs">{userProfile.badges.length || 3} الأوسمة</span>
+                  <span className="font-black text-emerald-700 text-xs">
+                    {displayBadgesCount} {displayBadgesCount > 1 ? 'الأوسمة' : 'وسام'}
+                  </span>
                 </button>
               </div>
             ) : (
@@ -368,7 +357,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
 
-            {/* Discrete Theme Switcher Dropdown */}
+            {/* Theme Dropdown */}
             <div className="relative" ref={themeRef}>
               <button
                 onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
@@ -390,7 +379,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 )}
               </button>
 
-              {/* Theme Dropdown Menu */}
               {isThemeDropdownOpen && (
                 <div
                   className={`absolute left-0 mt-2 w-48 rounded-2xl border p-1.5 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-150 ${getDropdownBgStyle()}`}
@@ -399,7 +387,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     اختر ثيم الواجهة:
                   </div>
 
-                  {/* 1. Neutre (Fresh Emerald & Mint Theme) */}
                   <button
                     onClick={() => handleThemeSelect('neutre')}
                     className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-all cursor-pointer ${
@@ -417,7 +404,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {theme === 'neutre' && <Check className="w-3.5 h-3.5 text-white" />}
                   </button>
 
-                  {/* 2. Light Mode Option (White & Purple) */}
                   <button
                     onClick={() => handleThemeSelect('light')}
                     className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-all cursor-pointer ${
@@ -435,7 +421,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {theme === 'light' && <Check className="w-3.5 h-3.5 text-white" />}
                   </button>
 
-                  {/* 3. Midnight Dark Option */}
                   <button
                     onClick={() => handleThemeSelect('dark')}
                     className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-all cursor-pointer ${
@@ -456,23 +441,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Direct Connexion / Auth Button (Only visible when NOT logged in) */}
-            {!authUser && (
-              <button
-                onClick={onOpenAuthModal}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer active:scale-95 ${
-                  isLightLike
-                    ? 'bg-purple-50 hover:bg-purple-100 border-purple-200 text-purple-900'
-                    : 'bg-purple-950/60 hover:bg-purple-900/80 border-purple-800 text-purple-200'
-                }`}
-                title="تسجيل الدخول / Connexion"
-              >
-                <KeyRound className="w-3.5 h-3.5 text-purple-600" />
-                <span className="hidden lg:inline">Connexion</span>
-              </button>
-            )}
-
-            {/* Profile & Developer Tools Dropdown Menu */}
+            {/* UNIFIED PROFILE & AUTH DROPDOWN */}
             <div className="relative" ref={profileRef}>
               <button
                 onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
@@ -487,17 +456,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {authUser?.nom ? authUser.nom.charAt(0).toUpperCase() : '👤'}
                 </div>
                 <span className="hidden md:inline max-w-[100px] truncate">
-                  {authUser ? authUser.nom : 'حسابي'}
+                  {authUser ? authUser.nom : 'تسجيل الدخول'}
                 </span>
                 <ChevronDown className="w-3.5 h-3.5 opacity-70" />
               </button>
 
-              {/* Profile / Admin / Technical Tools Floating Dropdown */}
               {isProfileDropdownOpen && (
                 <div
                   className={`absolute left-0 mt-2 w-64 rounded-2xl border p-2 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-150 ${getDropdownBgStyle()}`}
                 >
-                  {/* User Profile Header inside Dropdown */}
                   <div className={`p-2.5 rounded-xl border mb-2 ${isLightLike ? 'bg-purple-50 border-purple-200/80 text-slate-900' : 'bg-emerald-950/40 border-emerald-800/40'}`}>
                     <div className="flex items-center justify-between gap-1 flex-wrap">
                       <span className={`font-extrabold text-xs truncate max-w-[120px] ${isLightLike ? 'text-purple-900' : 'text-white'}`}>
@@ -506,13 +473,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded shadow-xs ${
                         !authUser
                           ? 'bg-slate-200 text-slate-700 border border-slate-300'
-                          : roleLabel === 'ROLE_ADMIN'
+                          : isAdmin
                           ? 'bg-rose-500 text-white'
                           : roleLabel === 'ROLE_PREMIUM'
                           ? 'bg-amber-400 text-slate-950'
                           : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                       }`}>
-                        {!authUser ? 'GUEST' : roleLabel === 'ROLE_ADMIN' ? '👑 ADMIN' : roleLabel === 'ROLE_PREMIUM' ? '⭐ PREMIUM' : '🌱 FREE'}
+                        {!authUser ? 'GUEST' : isAdmin ? '👑 ADMIN' : roleLabel === 'ROLE_PREMIUM' ? '⭐ PREMIUM' : '🌱 FREE'}
                       </span>
                     </div>
                     {authUser?.email ? (
@@ -526,69 +493,85 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
                   </div>
 
-                  {/* Group 1: Account & Security */}
                   <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
                     الحساب والتوثيق
                   </div>
 
-                  <button
-                    onClick={() => {
-                      onOpenProfileModal();
-                      setIsProfileDropdownOpen(false);
-                    }}
-                    className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'}`}
-                  >
-                    <User className="w-4 h-4 text-emerald-500" />
-                    <span>الملف الشخصي والتقدم</span>
-                  </button>
-
-                  {/* Auth Actions based on Login State */}
                   {!authUser ? (
                     <button
                       onClick={() => {
                         onOpenAuthModal();
                         setIsProfileDropdownOpen(false);
                       }}
-                      className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
-                        isLightLike ? 'hover:bg-purple-50 text-purple-800 font-extrabold' : 'hover:bg-slate-800/70 text-purple-300'
-                      }`}
+                      className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer text-purple-700 hover:bg-purple-50"
                     >
                       <KeyRound className="w-4 h-4 text-purple-600" />
                       <span>تسجيل الدخول / إنشاء حساب</span>
                     </button>
                   ) : (
-                    <button
-                      onClick={() => {
-                        onLogout();
-                        setIsProfileDropdownOpen(false);
-                      }}
-                      className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer text-red-600 hover:bg-red-500/10"
-                    >
-                      <LogOut className="w-4 h-4 text-red-500" />
-                      <span>تسجيل الخروج (Déconnexion)</span>
-                    </button>
+                    <>
+                      <button
+                        onClick={() => {
+                          onOpenProfileModal();
+                          setIsProfileDropdownOpen(false);
+                        }}
+                        className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'}`}
+                      >
+                        <User className="w-4 h-4 text-emerald-500" />
+                        <span>الملف الشخصي والتقدم</span>
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          onLogout();
+                          setIsProfileDropdownOpen(false);
+                        }}
+                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer text-red-600 hover:bg-red-500/10"
+                      >
+                        <LogOut className="w-4 h-4 text-red-500" />
+                        <span>تسجيل الخروج (Déconnexion)</span>
+                      </button>
+                    </>
                   )}
 
-                  <button
-                    onClick={() => {
-                      onOpenAdminReceiptsModal();
-                      setIsProfileDropdownOpen(false);
-                    }}
-                    className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
-                      roleLabel === 'ROLE_ADMIN'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                        : isLightLike
-                        ? 'hover:bg-slate-100 text-slate-800'
-                        : 'hover:bg-slate-800/70 text-slate-100'
-                    }`}
-                  >
-                    <ShieldCheck className="w-4 h-4 text-amber-400" />
-                    <span>
-                      {roleLabel === 'ROLE_ADMIN'
-                        ? 'لوحة إدارة المستخدمين والوصولات (RBAC)'
-                        : 'تدقيق وصولات بريدي موب'}
-                    </span>
-                  </button>
+                  {/* ADMIN SECTION (RBAC & CMS) */}
+                  {isAdmin && (
+                    <>
+                      <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
+                        إدارة النظام (Admin)
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          onOpenAdminReceiptsModal();
+                          setIsProfileDropdownOpen(false);
+                        }}
+                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                      >
+                        <ShieldCheck className="w-4 h-4 text-amber-400" />
+                        <span>لوحة إدارة المستخدمين والوصولات (RBAC)</span>
+                      </button>
+
+                      {onOpenCms && (
+                        <button
+                          onClick={() => {
+                            onOpenCms();
+                            setIsProfileDropdownOpen(false);
+                          }}
+                          className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
+                            isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'
+                          }`}
+                        >
+                          <Sliders className="w-4 h-4 text-indigo-400" />
+                          <span>إدارة المحتوى (CMS Admin)</span>
+                        </button>
+                      )}
+                    </>
+                  )}
+
+                  <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
+                    أدوات وإعدادات
+                  </div>
 
                   <button
                     onClick={() => {
@@ -617,7 +600,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Mobile Hamburger Drawer Toggle (md:hidden) */}
+            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileDrawerOpen(!isMobileDrawerOpen)}
               className={`md:hidden p-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
@@ -634,13 +617,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </header>
 
-      {/* MOBILE DRAWER / SHEET OVERLAY (md:hidden) */}
+      {/* MOBILE DRAWER */}
       {isMobileDrawerOpen && (
         <div className="md:hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end transition-all dir-rtl" dir="rtl">
           <div className={`w-4/5 max-w-sm h-full p-5 flex flex-col justify-between shadow-2xl border-r border-slate-800 ${getDropdownBgStyle()}`}>
             
             <div className="space-y-5 overflow-y-auto">
-              {/* Drawer Header */}
               <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <div className="flex items-center gap-2">
                   <MssidLogo size="sm" />
@@ -654,7 +636,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               </div>
 
-              {/* Grade Selector (Mobile) */}
               <div>
                 <label className="text-xs font-bold text-slate-400 block mb-2">اختر المستوى الدراسي:</label>
                 <div className="grid grid-cols-2 gap-2">
@@ -677,7 +658,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </div>
 
-              {/* Theme Selector (Mobile) */}
               <div>
                 <label className="text-xs font-bold text-slate-400 block mb-2">ثيم الواجهة:</label>
                 <div className="flex items-center gap-2">
@@ -708,7 +688,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               </div>
 
-              {/* Quick Actions List (Mobile) */}
               <div className="space-y-2 pt-2 border-t border-slate-800">
                 <button
                   onClick={() => {
@@ -732,7 +711,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <User className="w-4 h-4 text-emerald-400" />
                     <span>الملف الشخصي</span>
                   </div>
-                  <span className="text-[10px] font-mono text-amber-400">{userProfile.xp} XP</span>
+                  <span className="text-[10px] font-mono text-amber-400">{displayXp} XP</span>
                 </button>
 
                 {onOpenMobileSimulator && (
@@ -745,6 +724,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <Smartphone className="w-4 h-4 text-emerald-400" />
                     <span>تطبيق المحمول (Android/iOS)</span>
+                  </button>
+                )}
+
+                {/* CMS Mobile riservé au rôle ADMIN */}
+                {isAdmin && onOpenCms && (
+                  <button
+                    onClick={() => {
+                      onOpenCms();
+                      setIsMobileDrawerOpen(false);
+                    }}
+                    className="w-full p-2.5 rounded-xl bg-indigo-900/40 text-indigo-200 border border-indigo-700/50 font-bold text-xs flex items-center gap-2 cursor-pointer"
+                  >
+                    <Sliders className="w-4 h-4 text-indigo-400" />
+                    <span>إدارة المحتوى (CMS Admin)</span>
                   </button>
                 )}
 
@@ -769,19 +762,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <LogOut className="w-4 h-4 text-red-400" />
                     <span>تسجيل الخروج (Déconnexion)</span>
-                  </button>
-                )}
-
-                {onOpenCms && (
-                  <button
-                    onClick={() => {
-                      onOpenCms();
-                      setIsMobileDrawerOpen(false);
-                    }}
-                    className="w-full p-2.5 rounded-xl bg-slate-800/80 text-slate-200 font-bold text-xs flex items-center gap-2"
-                  >
-                    <Sliders className="w-4 h-4 text-slate-400" />
-                    <span>إدارة المحتوى (CMS)</span>
                   </button>
                 )}
               </div>

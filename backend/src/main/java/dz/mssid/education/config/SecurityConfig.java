@@ -45,8 +45,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/exams/public/**", "/api/gemini/stats").permitAll()
                         .requestMatchers("/api/gemini/**", "/api/v1/ai/**").permitAll()
 
-                        // 3. Authentification requise pour le reste
-                        .requestMatchers("/api/auth/users/score", "/api/auth/users/add-score", "/api/v1/users/score").authenticated()
                         .anyRequest().authenticated()
                 )
                 // Gestion de l'erreur 401 en inline (Remplace JwtAuthenticationEntryPoint)

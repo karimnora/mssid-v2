@@ -46,32 +46,4 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Identifiants incorrects ou compte introuvable"));
         }
     }
-
-        @PostMapping("/users/add-score")
-        public ResponseEntity<?> addScore(Authentication authentication, @RequestBody Map<String, Integer> payload) {
-            if (authentication == null || !authentication.isAuthenticated()) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Utilisateur non authentifié"));
-            }
-
-            String username = authentication.getName();
-
-            User user = userRepository.findByEmail(username)
-                    .orElseThrow(() -> new RuntimeException("Utilisateur introuvable: " + username));
-
-            Integer pointsToAdd = payload.getOrDefault("points", 0);
-
-            int newScore = (user.getScore() != null ? user.getScore() : 0) + pointsToAdd;
-            user.setScore(newScore);
-            userRepository.save(user);
-
-            UserDto dto = new UserDto(
-                    user.getId(),
-                    user.getNom(),
-                    user.getEmail(),
-                    user.getRole().getName().name(),
-                    user.getScore(),
-                    user.getCreatedAt()
-            );
-            return ResponseEntity.ok(dto);
-        }
 }
