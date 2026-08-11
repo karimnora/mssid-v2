@@ -47,6 +47,7 @@ export interface AuthUser {
   completedLessonIds?: string[];
   badges?: string[];
   quizScores?: Record<string, number>;
+  tashkeelEnabled?: boolean;
   createdAt?: string;
 }
 

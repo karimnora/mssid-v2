@@ -36,7 +36,7 @@ export const INITIAL_CMS_USERS: CmsUser[] = [
   },
 ];
 
-export const INITIAL_CURRICULUM_PROGRAM: CmsCurriculumProgram = {
+export const INITIAL_CMS_CURRICULUM_PROGRAM: CmsCurriculumProgram = {
   id: 'prog_dz_2026',
   country: 'الجزائر',
   schoolSystem: 'المنهاج الوطني لوزارة التربية الوطنية الجزائرية',

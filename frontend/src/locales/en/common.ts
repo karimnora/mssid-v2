@@ -1,0 +1,18 @@
+export const common = {
+  languageLabel: 'English',
+  welcome: 'Welcome to Massid',
+  loading: 'Loading...',
+  cancel: 'Cancel',
+  save: 'Save',
+  close: 'Close',
+  profile: 'Profile',
+  settings: 'Settings',
+  tashkeelLabel: 'Tashkeel',
+  tashkeelDescription: 'Show Arabic diacritics when available.',
+  help: 'Help',
+  chooseLanguageLabel: 'Choose language:',
+  play: 'Play',
+  pause: 'Pause',
+  stop: 'Stop',
+  speed: 'Speed',
+};

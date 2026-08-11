@@ -4,9 +4,13 @@ import { AuthService } from '../services/authService';
 import { SubscriptionPaywall } from './SubscriptionPaywall';
 import { AuthUser } from '../types/auth';
 import { Award, Clock, FileText, CheckCircle2, HelpCircle, ChevronLeft, Calendar, Lock, Sparkles, ShieldCheck } from 'lucide-react';
-import { formatEducationalText } from '../utils/textFormatter';
+import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
-export const ExamsViewer: React.FC = () => {
+interface ExamsViewerProps {
+  tashkeelEnabled?: boolean;
+}
+
+export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true }) => {
   const [selectedExamId, setSelectedExamId] = useState<string>(OFFICIAL_EXAMS_DATA[0].id);
   const [showSolutions, setShowSolutions] = useState<Record<string, boolean>>({});
   const [timerSeconds, setTimerSeconds] = useState<number>(5400); // 90 mins
@@ -17,6 +21,10 @@ export const ExamsViewer: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => AuthService.getCurrentUser());
 
   const selectedExam = OFFICIAL_EXAMS_DATA.find((e) => e.id === selectedExamId) || OFFICIAL_EXAMS_DATA[0];
+  const renderArabicText = (text: string | undefined | null): string => {
+    if (!text) return '';
+    return tashkeelEnabled ? text : stripArabicTashkeel(text);
+  };
 
   const isUserPremiumOrAdmin = currentUser?.role === 'ROLE_PREMIUM' || currentUser?.role === 'ROLE_ADMIN';
 
@@ -151,7 +159,7 @@ export const ExamsViewer: React.FC = () => {
             <span className="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200">
               الجمهورية الجزائرية الديمقراطية الشعبية - وزارة التربية الوطنية
             </span>
-            <h2 className="text-lg font-extrabold text-slate-900 mt-2 font-sans">{selectedExam.titleAr}</h2>
+            <h2 className="text-lg font-extrabold text-slate-900 mt-2 font-sans">{renderArabicText(selectedExam.titleAr)}</h2>
           </div>
           <div className="text-left text-xs font-bold text-slate-500">
             <div>المادة: الرياضيات</div>
@@ -229,7 +237,7 @@ export const ExamsViewer: React.FC = () => {
             </div>
 
             <div className="text-xs text-slate-900 font-sans leading-relaxed whitespace-pre-line bg-white p-4 rounded-xl border border-amber-200">
-              {formatEducationalText(selectedExam.problemExercise.contentAr)}
+              {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr), { hideTashkeel: false })}
             </div>
 
             <div className="flex items-center justify-between pt-1">

@@ -1,0 +1,18 @@
+export const common = {
+  languageLabel: 'Français',
+  welcome: 'Bienvenue sur Massid',
+  loading: 'Chargement...',
+  cancel: 'Annuler',
+  save: 'Enregistrer',
+  close: 'Fermer',
+  profile: 'Profil',
+  settings: 'Paramètres',
+  tashkeelLabel: 'Tashkeel',
+  tashkeelDescription: 'Afficher la voyellation arabe lorsque disponible.',
+  help: 'Aide',
+  chooseLanguageLabel: 'Choisissez la langue:',
+  play: 'Lecture',
+  pause: 'Pause',
+  stop: 'Arrêter',
+  speed: 'Vitesse',
+};

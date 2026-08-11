@@ -15,6 +15,8 @@ export type SubjectId =
   | 'arabic_conjugator'
   | 'french_lab'
   | 'english_lab'
+  | 'educational_calculator'
+  | 'writing_response'
   | 'geometry'
   | 'converter'
   | 'multiplication';
@@ -275,6 +277,7 @@ export interface UserProfile {
   completedLessonIds: string[];
   badges: string[];
   quizScores: Record<string, number>;
+  tashkeelEnabled?: boolean;
 }
 
 export interface SorobanExercise {

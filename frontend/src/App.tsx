@@ -11,6 +11,8 @@ import { SorobanInteractive } from './components/SorobanInteractive';
 import { ElectricityLabInteractive } from './components/ElectricityLabInteractive';
 import { UnitConverter } from './components/UnitConverter';
 import { GeometryVisualizer } from './components/GeometryVisualizer';
+import { EducationalCalculator } from './components/EducationalCalculator';
+import { WritingResponseZone } from './components/WritingResponseZone';
 import { ArabicConjugator } from './components/ArabicConjugator';
 import { FrenchLanguageLab } from './components/FrenchLanguageLab';
 import { EnglishLanguageLab } from './components/EnglishLanguageLab';
@@ -126,6 +128,7 @@ export default function App() {
       completedLessonIds: ['math-5ap-numbers'],
       badges: ['b_welcome', 'b_math_star'],
       quizScores: { 'math-5ap-numbers': 30 },
+      tashkeelEnabled: false,
     };
   });
 
@@ -144,6 +147,7 @@ export default function App() {
           completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
           badges: fetched.badges || prev.badges,
           quizScores: fetched.quizScores || prev.quizScores,
+          tashkeelEnabled: fetched.tashkeelEnabled ?? prev.tashkeelEnabled,
         }));
       }
     });
@@ -162,6 +166,7 @@ export default function App() {
         completedLessonIds: authUser.completedLessonIds || prev.completedLessonIds,
         badges: authUser.badges || prev.badges,
         quizScores: authUser.quizScores || prev.quizScores,
+        tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
       }));
     }
   }, [authUser]);
@@ -212,6 +217,7 @@ export default function App() {
         completedLessonIds: [],
         badges: ['b_welcome'],
         quizScores: {},
+        tashkeelEnabled: userProfile.tashkeelEnabled ?? false,
       };
       setUserProfile(freshProfile);
       setIsProfileModalOpen(false);
@@ -246,6 +252,7 @@ export default function App() {
         level: level,
         streakDays: fetched.streakDays || prev.streakDays,
         completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
+        tashkeelEnabled: fetched.tashkeelEnabled ?? prev.tashkeelEnabled,
       }));
     }
   };
@@ -467,6 +474,10 @@ export default function App() {
             <FrenchLanguageLab grade={grade} />
           ) : selectedSubject === 'english_lab' ? (
             <EnglishLanguageLab grade={grade} />
+          ) : selectedSubject === 'educational_calculator' ? (
+            <EducationalCalculator />
+          ) : selectedSubject === 'writing_response' ? (
+            <WritingResponseZone />
           ) : selectedSubject === 'soroban' ? (
             <SorobanInteractive />
           ) : selectedSubject === 'electricity' ? (
@@ -478,7 +489,7 @@ export default function App() {
           ) : selectedSubject === 'multiplication' ? (
             <MultiplicationTableInteractive grade={grade} />
           ) : selectedSubject === 'exams' ? (
-            <ExamsViewer />
+            <ExamsViewer tashkeelEnabled={userProfile.tashkeelEnabled ?? false} />
           ) : selectedLesson ? (
             <LessonViewer
               lesson={selectedLesson}
@@ -489,6 +500,7 @@ export default function App() {
               grade={grade}
               subjectId={selectedSubject}
               trimester={selectedTrimester}
+              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
               onHomeClick={() => {
                 setSelectedLesson(null);
                 setMainCategory('courses');
@@ -502,6 +514,7 @@ export default function App() {
                 grade={grade}
                 subjectId={selectedSubject}
                 trimester={selectedTrimester}
+                tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
                 onHomeClick={() => {
                   setSelectedLesson(null);
                   setMainCategory('courses');
@@ -685,6 +698,10 @@ export default function App() {
         onClose={() => setIsProfileModalOpen(false)}
         userProfile={userProfile}
         authUser={authUser}
+        tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+        onToggleTashkeel={(next) => {
+          setUserProfile((prev) => ({ ...prev, tashkeelEnabled: next }));
+        }}
         onResetProgress={handleResetProgress}
         onUpdateName={handleUpdateProfileName}
         onRefreshFromDb={handleRefreshProfileFromDb}

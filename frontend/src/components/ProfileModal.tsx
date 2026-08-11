@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { UserProfile, Badge } from '../types';
 import { AuthUser } from '../types/auth';
 import { X, Award, Flame, Trophy, Star, CheckCircle2, ShieldCheck, RefreshCw, Edit2, Database } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { TashkeelToggle } from './TashkeelToggle';
 
 interface ProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
   userProfile: UserProfile;
   authUser?: AuthUser | null;
+  tashkeelEnabled: boolean;
+  onToggleTashkeel: (next: boolean) => void;
   onResetProgress: () => void;
   onUpdateName?: (newName: string) => void;
   onRefreshFromDb?: () => Promise<void>;
@@ -28,10 +32,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onClose,
   userProfile,
   authUser,
+  tashkeelEnabled,
+  onToggleTashkeel,
   onResetProgress,
   onUpdateName,
   onRefreshFromDb,
 }) => {
+  const t = useTranslation('common');
   const currentName = authUser?.nom || userProfile.name;
   const [editedName, setEditedName] = useState(currentName);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -159,44 +166,50 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </div>
           </div>
 
-          {/* Badges Gallery */}
-          <div className="space-y-3">
-            {(() => {
-              const effectiveBadges = authUser?.badges && authUser.badges.length > 0 ? authUser.badges : userProfile.badges;
-              return (
-                <>
-                  <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
-                    شارات الأوسمة والإنجازات الجزائرية ({effectiveBadges.length}/{ALL_BADGES.length}):
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {ALL_BADGES.map((b) => {
-                      const isUnlocked = effectiveBadges.includes(b.id) || b.id === 'b_welcome';
-                      return (
-                        <div
-                          key={b.id}
-                          className={`p-3 rounded-xl border flex items-start gap-3 transition-all ${
-                            isUnlocked
-                              ? 'bg-amber-50/80 border-amber-200 text-amber-950'
-                              : 'bg-slate-100/60 border-slate-200 text-slate-400 opacity-60'
-                          }`}
-                        >
-                          <div className="text-2xl p-1 bg-white rounded-lg border border-slate-200 shrink-0">
-                            {b.icon}
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-1.5">
-                              <h4 className="font-extrabold text-xs">{b.titleAr}</h4>
-                              {isUnlocked && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
+          <div className="grid gap-4">
+            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-4">
+              <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
+            </div>
+
+            {/* Badges Gallery */}
+            <div className="space-y-3">
+              {(() => {
+                const effectiveBadges = authUser?.badges && authUser.badges.length > 0 ? authUser.badges : userProfile.badges;
+                return (
+                  <>
+                    <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
+                      شارات الأوسمة والإنجازات الجزائرية ({effectiveBadges.length}/{ALL_BADGES.length}):
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {ALL_BADGES.map((b) => {
+                        const isUnlocked = effectiveBadges.includes(b.id) || b.id === 'b_welcome';
+                        return (
+                          <div
+                            key={b.id}
+                            className={`p-3 rounded-xl border flex items-start gap-3 transition-all ${
+                              isUnlocked
+                                ? 'bg-amber-50/80 border-amber-200 text-amber-950'
+                                : 'bg-slate-100/60 border-slate-200 text-slate-400 opacity-60'
+                            }`}
+                          >
+                            <div className="text-2xl p-1 bg-white rounded-lg border border-slate-200 shrink-0">
+                              {b.icon}
                             </div>
-                            <p className="text-[11px] text-slate-600 leading-snug mt-0.5">{b.descriptionAr}</p>
+                            <div>
+                              <div className="flex items-center gap-1.5">
+                                <h4 className="font-extrabold text-xs">{b.titleAr}</h4>
+                                {isUnlocked && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
+                              </div>
+                              <p className="text-[11px] text-slate-600 leading-snug mt-0.5">{b.descriptionAr}</p>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </>
-              );
-            })()}
+                        );
+                      })}
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
           </div>
         </div>
 
@@ -207,13 +220,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             className="text-rose-600 hover:text-rose-800 flex items-center gap-1 cursor-pointer"
           >
             <RefreshCw className="w-3.5 h-3.5" />
-            <span>إعادة ضبط التقدم</span>
+            <span>{t('resetProgress')}</span>
           </button>
           <button
             onClick={handleSave}
             className="px-5 py-2.5 bg-emerald-600 text-white font-extrabold rounded-xl hover:bg-emerald-700 transition-colors shadow-md active:scale-95 cursor-pointer"
           >
-            حفظ وإغلاق
+            {t('saveAndClose')}
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { PrimaryGrade, SubjectId, CourseLesson } from '../types';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { Home, ChevronLeft, GraduationCap, BookOpen, FileText, Layers } from 'lucide-react';
+import { stripArabicTashkeel } from '../utils/textFormatter';
 
 interface CourseBreadcrumbProps {
   grade: PrimaryGrade;
@@ -12,6 +13,7 @@ interface CourseBreadcrumbProps {
   onSubjectClick?: () => void;
   onTrimesterClick?: (trimester: number | 'all') => void;
   theme?: string;
+  tashkeelEnabled?: boolean;
 }
 
 const GRADE_LABELS: Record<PrimaryGrade, string> = {
@@ -30,9 +32,15 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
   onHomeClick,
   onSubjectClick,
   onTrimesterClick,
+  tashkeelEnabled = true,
 }) => {
   const subjectInfo = SUBJECTS_LIST.find((s) => s.id === subjectId);
   const subjectName = subjectInfo ? subjectInfo.nameAr : subjectId;
+
+  const renderArabicText = (text: string | undefined | null): string => {
+    if (!text) return '';
+    return tashkeelEnabled ? text : stripArabicTashkeel(text);
+  };
 
   return (
     <nav aria-label="Fil d'ariane / مسار التصفح" className="dir-rtl" dir="rtl">
@@ -117,7 +125,7 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
             <li className="flex items-center gap-1 max-w-[200px] sm:max-w-[320px] truncate">
               <span className="flex items-center gap-1 text-indigo-700 dark:text-indigo-300 font-extrabold bg-indigo-50 dark:bg-indigo-900/40 px-2.5 py-1 rounded-lg border border-indigo-200/80 dark:border-indigo-800/80 truncate">
                 <FileText className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
-                <span className="truncate">{currentLesson.titleAr}</span>
+                <span className="truncate">{renderArabicText(currentLesson.titleAr)}</span>
               </span>
             </li>
           </>

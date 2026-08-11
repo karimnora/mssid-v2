@@ -3,10 +3,17 @@
  * Automatically splits packed strings with numbered items (1), 2), 3) or 1-, 2-, 3-)
  * or process markers (العملية العمودية:, الجواب:, الحل:, etc.) onto separate lines.
  */
-export function formatEducationalText(text: string | undefined | null): string {
+export function stripArabicTashkeel(text: string): string {
+  return text.replace(/[\u064B-\u0652]/g, '');
+}
+
+export function formatEducationalText(text: string | undefined | null, options?: { hideTashkeel?: boolean }): string {
   if (!text) return '';
 
   let formatted = text.trim();
+  if (options?.hideTashkeel) {
+    formatted = stripArabicTashkeel(formatted);
+  }
 
   // Normalize CRLF to LF
   formatted = formatted.replace(/\r\n/g, '\n');

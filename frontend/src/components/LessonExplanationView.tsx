@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { CourseLesson } from '../types';
 import { BookOpen, Lightbulb, Sparkles, CheckCircle2, ArrowLeft, ArrowRight, Zap, Target, HelpCircle, Glasses, Calculator, Play, RefreshCw, Layers } from 'lucide-react';
 import { ScienceLabSimulation } from './ScienceLabSimulation';
-import { formatEducationalText } from '../utils/textFormatter';
+import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface LessonExplanationViewProps {
   lesson: CourseLesson;
+  tashkeelEnabled?: boolean;
   onProceedToSummary?: () => void;
 }
 
-export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ lesson, onProceedToSummary }) => {
+export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ lesson, tashkeelEnabled = true, onProceedToSummary }) => {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
   const [interactiveMode, setInteractiveMode] = useState<'real_world' | 'step_by_step' | 'interactive_demo'>('real_world');
   const [demoValue, setDemoValue] = useState<number>(10);
@@ -20,13 +21,18 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
   const [geoEraIndex, setGeoEraIndex] = useState<number>(0);
 
   // Generate subject-specific smart real-world scenarios and interactive demonstrations
+  const renderArabicText = (text: string | undefined | null): string => {
+    if (!text) return '';
+    return tashkeelEnabled ? text : stripArabicTashkeel(text);
+  };
+
   const getSubjectRealWorldContent = () => {
     switch (lesson.subject) {
       case 'math':
         return {
           whyLearn: 'نستخدم هذا الدرس يومياً عند الشراء والبيع في الدكان، حساب المسافات والأطوال في الرياضة والبناء، وقراءة الوقت والأوقات!',
           realLifeTitle: '🛒 وضعية واقعية: الشراء في السوبرماركت الحقيقي',
-          realLifeDescription: `تخيل أنك تشتري مستلزمات المدرسة بمبلغ ${demoValue * 100} DZD. كيف يساعدك درس "${lesson.titleAr}" على الحساب بدقة بدون أخطاء؟`,
+          realLifeDescription: `تخيل أنك تشتري مستلزمات المدرسة بمبلغ ${demoValue * 100} DZD. كيف يساعدك درس "${renderArabicText(lesson.titleAr)}" على الحساب بدقة بدون أخطاء؟`,
           steps: [
             {
               title: 'الخطوة 1: فهم المشكلة أو القيمة',
@@ -52,7 +58,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         return {
           whyLearn: 'اللغة العربية هي لغة التواصل والتعبير اليومي، وتساعدنا التراكيب وقواعد الصرف على كتابة رسائل وقصص سليمة وإلقاء أحاديث بثقة!',
           realLifeTitle: '💬 وضعية واقعية: الحوار اليومي والتعبير الفصيح',
-          realLifeDescription: `عندما تتحدث مع زملائك أو تكتب موضوع تعبير عن الجزائر أو المدرسة، يمنحك درس "${lesson.titleAr}" قوة في اختيار الكلمات وضبط أواخرها.`,
+          realLifeDescription: `عندما تتحدث مع زملائك أو تكتب موضوع تعبير عن الجزائر أو المدرسة، يمنحك درس "${renderArabicText(lesson.titleAr)}" قوة في اختيار الكلمات وضبط أواخرها.`,
           steps: [
             {
               title: 'الخطوة 1: اكتشاف نوع الكلمة أو القاعدة',
@@ -78,7 +84,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         return {
           whyLearn: 'العلوم هي مفتاح فهم العالم من حولنا! تشرح لنا كيف تعمل الكهرباء، وكيف تنمو الكائنات الحية، وكيف نضمن السلامة في منازلنا.',
           realLifeTitle: '🔬 وضعية واقعية: مختبر الأمان والاستكشاف العلمي',
-          realLifeDescription: `في حياتنا اليومية عند تشغيل الأجهزة أو دراسة الكائنات الحية، يبسط هذا الدرس (${lesson.titleAr}) الأسباب والنتائج العلمية.`,
+          realLifeDescription: `في حياتنا اليومية عند تشغيل الأجهزة أو دراسة الكائنات الحية، يبسط هذا الدرس (${renderArabicText(lesson.titleAr)}) الأسباب والنتائج العلمية.`,
           steps: [
             {
               title: 'الخطوة 1: الملاحظة وطرح السؤال العلمي',
@@ -104,7 +110,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         return {
           whyLearn: 'التاريخ والجغرافيا يعلموننا حب الوطن الجزائر، ومعرفة مراحل نضال أجدادنا وتضاريس مناخ بلادنا الرائعة!',
           realLifeTitle: '🗺️ وضعية واقعية: رحلة عبر خريطة الجزائر وتاريخها',
-          realLifeDescription: `كيف نفهم التوزع السكاني، المناخ، أو الأحداث التاريخية العظيمة لدرس "${lesson.titleAr}"؟`,
+          realLifeDescription: `كيف نفهم التوزع السكاني، المناخ، أو الأحداث التاريخية العظيمة لدرس "${renderArabicText(lesson.titleAr)}"؟`,
           steps: [
             {
               title: 'الخطوة 1: تحديد الزمان والمكان',
@@ -131,7 +137,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         return {
           whyLearn: 'تعلم اللغات الأجنبية يفتح لنا آفاقاً واسعة للتواصل مع العالم وقراءة الكتب والمشاركة في الحوارات العالمية!',
           realLifeTitle: '🌍 Real Life Scenario: Daily Communication & Dialogue',
-          realLifeDescription: `This lesson "${lesson.titleAr}" gives you practical phrases and vocabulary to introduce yourself, ask directions, or describe objects easily.`,
+          realLifeDescription: `This lesson "${renderArabicText(lesson.titleAr)}" gives you practical phrases and vocabulary to introduce yourself, ask directions, or describe objects easily.`,
           steps: [
             {
               title: 'Step 1: Understand Key Words (المفردات المفتاحية)',
@@ -157,7 +163,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         return {
           whyLearn: 'يقدم هذا الدرس مفاهيم تربوية وقيمية تثري زاد التلميذ المعرفي والأخلاقي في حياته اليومية.',
           realLifeTitle: '🌱 وضعية واقعية: التطبيق في الحياة اليومية',
-          realLifeDescription: `يتناول درس "${lesson.titleAr}" أفكاراً عملية يمكن تطبيقها في السلوك اليومي والتواصل الإيجابي.`,
+          realLifeDescription: `يتناول درس "${renderArabicText(lesson.titleAr)}" أفكاراً عملية يمكن تطبيقها في السلوك اليومي والتواصل الإيجابي.`,
           steps: [
             {
               title: 'الخطوة 1: استيعاب المعنى',
@@ -200,11 +206,11 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
           </div>
 
           <h2 className="text-lg sm:text-xl font-black text-white leading-snug">
-            {lesson.titleAr}
+            {renderArabicText(lesson.titleAr)}
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans bg-black/30 p-3.5 rounded-2xl border border-white/10">
-            {lesson.summaryAr}
+            {renderArabicText(lesson.summaryAr)}
           </p>
         </div>
       </div>
@@ -275,7 +281,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
           </div>
 
           <p className="text-xs sm:text-sm text-slate-700 font-sans leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
-            {content.realLifeDescription}
+            {renderArabicText(content.realLifeDescription)}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

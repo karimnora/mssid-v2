@@ -1,0 +1,18 @@
+export const common = {
+  languageLabel: 'العربية',
+  welcome: 'مرحبا بك في مسيد',
+  loading: 'جاري التحميل...',
+  cancel: 'إلغاء',
+  save: 'حفظ',
+  close: 'إغلاق',
+  profile: 'الملف الشخصي',
+  settings: 'الإعدادات',
+  tashkeelLabel: 'التشكيل',
+  tashkeelDescription: 'عرض النص العربي بالتشكيل عند توفره.',
+  help: 'مساعدة',
+  chooseLanguageLabel: 'اختر اللغة:',
+  play: 'تشغيل',
+  pause: 'إيقاف مؤقت',
+  stop: 'إيقاف',
+  speed: 'السرعة',
+};

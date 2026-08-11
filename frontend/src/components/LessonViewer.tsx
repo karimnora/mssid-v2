@@ -15,7 +15,7 @@ import { LessonExplanationView } from './LessonExplanationView';
 import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
 import { ScienceReactorInteractive } from './ScienceReactorInteractive';
 import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight } from 'lucide-react';
-import { formatEducationalText } from '../utils/textFormatter';
+import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface LessonViewerProps {
   lesson: CourseLesson;
@@ -27,6 +27,7 @@ interface LessonViewerProps {
   subjectId?: SubjectId;
   trimester?: number | 'all';
   onHomeClick?: () => void;
+  tashkeelEnabled?: boolean;
 }
 
 // Fisher-Yates array shuffle helper to ensure correct options are not always in the 1st position
@@ -49,6 +50,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   subjectId = lesson.subject,
   trimester,
   onHomeClick,
+  tashkeelEnabled = true,
 }) => {
   const currentIndex = allLessons.length > 0 ? allLessons.findIndex((l) => l.id === lesson.id) : -1;
   const previousLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
@@ -76,6 +78,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   };
 
   const effectiveTool = getEffectiveTool();
+
+  const renderArabicText = (text: string | undefined | null): string => {
+    if (!text) return '';
+    return tashkeelEnabled ? text : stripArabicTashkeel(text);
+  };
 
   // Function to initialize and shuffle question options
   const initializeShuffledQuiz = () => {
@@ -168,7 +175,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   ? 'bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-800 dark:bg-slate-700 dark:text-slate-100 shadow-2xs'
                   : 'bg-slate-100/50 text-slate-400 dark:bg-slate-800/50 dark:text-slate-600 cursor-not-allowed opacity-50'
               }`}
-              title={previousLesson ? `الدرس السابق: ${previousLesson.titleAr}` : 'لا يوجد درس سابق'}
+              title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
             >
               <ChevronRight className="w-4 h-4" />
               <span className="hidden sm:inline">الدرس السابق</span>
@@ -183,7 +190,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md'
                   : 'bg-slate-100/50 text-slate-400 dark:bg-slate-800/50 dark:text-slate-600 cursor-not-allowed opacity-50'
               }`}
-              title={nextLesson ? `الدرس التالي: ${nextLesson.titleAr}` : 'لا يوجد درس تالي'}
+              title={nextLesson ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}` : 'لا يوجد درس تالي'}
             >
               <span className="hidden sm:inline">الدرس التالي</span>
               <span className="sm:hidden">التالي</span>
@@ -200,9 +207,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <BookOpen className="w-4 h-4" />
             <span>الدرس الرسمي المقرر</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black mb-3">{lesson.titleAr}</h1>
+          <h1 className="text-xl sm:text-2xl font-black mb-3">{renderArabicText(lesson.titleAr)}</h1>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-3xl">
-            {lesson.summaryAr}
+            {renderArabicText(lesson.summaryAr)}
           </p>
         </div>
       </div>
@@ -264,6 +271,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       {activeTab === 'explanation' && (
         <LessonExplanationView
           lesson={lesson}
+          tashkeelEnabled={tashkeelEnabled}
           onProceedToSummary={() => setActiveTab('content')}
         />
       )}
@@ -342,7 +350,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                           </h4>
                         )}
                         <p className="text-xs sm:text-sm text-slate-800 font-sans leading-relaxed font-semibold whitespace-pre-line">
-                          {formatEducationalText(body)}
+                          {formatEducationalText(renderArabicText(body), { hideTashkeel: false })}
                         </p>
                       </div>
                     </div>
@@ -464,7 +472,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     {isVisible && (
                       <div className="text-xs sm:text-sm text-emerald-200 font-sans border-t border-emerald-900/60 pt-3 leading-relaxed bg-emerald-950/80 p-4 rounded-xl border border-emerald-800/80 animate-in fade-in duration-200 whitespace-pre-line">
                         <span className="font-extrabold text-amber-300 block mb-1">💡 الحل والتبسيط النموذجي:</span>
-                        {formatEducationalText(ex.solution)}
+                        {formatEducationalText(renderArabicText(ex.solution), { hideTashkeel: false })}
                       </div>
                     )}
                   </div>
@@ -710,7 +718,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                               >
                                 {optionLetters[optIdx] || optIdx + 1}
                               </span>
-                              <span>{opt.textAr}</span>
+                              <span>{renderArabicText(opt.textAr)}</span>
                             </div>
 
                             {quizSubmitted && opt.isCorrect && (
@@ -732,9 +740,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                           <span>التفسير والشرح العلمي للحل:</span>
                         </span>
                         <p className="text-slate-800 font-medium">
-                          {q.options.find((o) => o.isCorrect)?.explanationAr ||
-                            q.options.find((o) => o.id === selected)?.explanationAr ||
-                            'الإجابة الصحيحة تم اختيارها استناداً لقاعدة الدرس الذهبية.'}
+                          {renderArabicText(
+                            q.options.find((o) => o.isCorrect)?.explanationAr ||
+                              q.options.find((o) => o.id === selected)?.explanationAr ||
+                              'الإجابة الصحيحة تم اختيارها استناداً لقاعدة الدرس الذهبية.',
+                          )}
                         </p>
                       </div>
                     )}

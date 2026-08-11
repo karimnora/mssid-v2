@@ -23,6 +23,8 @@ import {
 import { PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { MssidLogo } from './MssidLogo';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 
 export type HeaderTheme = 'light' | 'neutre' | 'dark' | 'midnight' | 'oled' | 'sepia';
 
@@ -208,6 +210,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  const isAiEnabled = useFeatureFlag('aiAssistant');
   const roleLabel = authUser?.role || 'ROLE_FREE';
   const isAdmin = roleLabel === 'ROLE_ADMIN';
   const isPremiumOrAdmin = roleLabel === 'ROLE_PREMIUM' || isAdmin;
@@ -284,7 +287,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
 
             {/* AI Tutor Button */}
-            {theme === 'neutre' ? (
+            {isAiEnabled && (theme === 'neutre' ? (
               <button
                 onClick={onOpenAiTutor}
                 className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow-sm hover:shadow transition-all duration-200 active:scale-95 cursor-pointer"
@@ -302,10 +305,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Bot className="w-4 h-4 text-amber-200 animate-pulse" />
                 <span className="hidden sm:inline">المعلّم الذكي</span>
               </button>
-            )}
+            ))}
            
 
-            {/* XP & Badges Display */}
+<div className="hidden lg:block">
+            <LanguageSwitcher />
+          </div>
+
+          {/* XP & Badges Display */}
             {theme === 'neutre' || theme === 'light' ? (
               <div className="flex items-center gap-2">
                 <button

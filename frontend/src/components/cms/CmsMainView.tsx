@@ -9,12 +9,10 @@ import {
 } from '../../types/cms';
 import {
   INITIAL_CMS_USERS,
-  INITIAL_CURRICULUM_PROGRAM,
-  INITIAL_CMS_COURSES,
-  INITIAL_CMS_EXERCISES,
-  INITIAL_CMS_EXAMS,
+  INITIAL_CMS_CURRICULUM_PROGRAM,
   INITIAL_CMS_ANALYTICS,
 } from '../../data/cmsData';
+import { cmsApi } from '../../services/cmsApi';
 
 import { CmsHeaderNav, CmsTabId } from './CmsHeaderNav';
 import { AdminDashboard } from './AdminDashboard';
@@ -36,42 +34,86 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
   const [currentUser, setCurrentUser] = useState<CmsUser>(INITIAL_CMS_USERS[0]);
 
   // Persistent States
-  const [curriculum, setCurriculum] = useState<CmsCurriculumProgram>(() => {
-    const saved = localStorage.getItem('mssid_cms_curriculum');
-    return saved ? JSON.parse(saved) : INITIAL_CURRICULUM_PROGRAM;
-  });
-
-  const [courses, setCourses] = useState<CmsCourseItem[]>(() => {
-    const saved = localStorage.getItem('mssid_cms_courses');
-    return saved ? JSON.parse(saved) : INITIAL_CMS_COURSES;
-  });
-
-  const [exercises, setExercises] = useState<CmsExercise[]>(() => {
-    const saved = localStorage.getItem('mssid_cms_exercises');
-    return saved ? JSON.parse(saved) : INITIAL_CMS_EXERCISES;
-  });
-
-  const [exams, setExams] = useState<CmsExamSpec[]>(() => {
-    const saved = localStorage.getItem('mssid_cms_exams');
-    return saved ? JSON.parse(saved) : INITIAL_CMS_EXAMS;
-  });
-
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem('mssid_cms_curriculum', JSON.stringify(curriculum));
-  }, [curriculum]);
+  const [curriculum, setCurriculum] = useState<CmsCurriculumProgram>(INITIAL_CMS_CURRICULUM_PROGRAM);
+  const [courses, setCourses] = useState<CmsCourseItem[]>([]);
+  const [exercises, setExercises] = useState<CmsExercise[]>([]);
+  const [exams, setExams] = useState<CmsExamSpec[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    localStorage.setItem('mssid_cms_courses', JSON.stringify(courses));
-  }, [courses]);
+    async function loadCmsData() {
+      setIsLoading(true);
+      setError(null);
 
-  useEffect(() => {
-    localStorage.setItem('mssid_cms_exercises', JSON.stringify(exercises));
-  }, [exercises]);
+      try {
+        const [coursesRes, exercisesRes, examsRes, curriculumRes] = await Promise.all([
+          cmsApi.getCourses(),
+          cmsApi.getExercises(),
+          cmsApi.getExams(),
+          cmsApi.getCurriculum(),
+        ]);
 
-  useEffect(() => {
-    localStorage.setItem('mssid_cms_exams', JSON.stringify(exams));
-  }, [exams]);
+        if (coursesRes.error || exercisesRes.error || examsRes.error || curriculumRes.error) {
+          throw new Error(
+            coursesRes.error || exercisesRes.error || examsRes.error || curriculumRes.error || 'Erreur de chargement CMS'
+          );
+        }
+
+        setCourses(coursesRes.data || []);
+        setExercises(exercisesRes.data || []);
+        setExams(examsRes.data || []);
+        setCurriculum((curriculumRes.data || [])[0] || INITIAL_CMS_CURRICULUM_PROGRAM);
+      } catch (fetchError: any) {
+        console.error('Erreur de chargement CMS:', fetchError);
+        setError(fetchError?.message || 'Impossible de charger les données CMS');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadCmsData();
+  }, []);
+
+  const handleSaveCourses = async (updatedCourses: CmsCourseItem[]) => {
+    setCourses(updatedCourses);
+    const result = await cmsApi.bulkSaveCourses(updatedCourses);
+    if (result.error) {
+      setError(result.error);
+    } else if (result.data) {
+      setCourses(result.data);
+    }
+  };
+
+  const handleSaveExercises = async (updatedExercises: CmsExercise[]) => {
+    setExercises(updatedExercises);
+    const result = await cmsApi.bulkSaveExercises(updatedExercises);
+    if (result.error) {
+      setError(result.error);
+    } else if (result.data) {
+      setExercises(result.data);
+    }
+  };
+
+  const handleSaveExams = async (updatedExams: CmsExamSpec[]) => {
+    setExams(updatedExams);
+    const result = await cmsApi.bulkSaveExams(updatedExams);
+    if (result.error) {
+      setError(result.error);
+    } else if (result.data) {
+      setExams(result.data);
+    }
+  };
+
+  const handleSaveCurriculum = async (updatedCurriculum: CmsCurriculumProgram) => {
+    setCurriculum(updatedCurriculum);
+    const result = await cmsApi.bulkSaveCurriculum([updatedCurriculum]);
+    if (result.error) {
+      setError(result.error);
+    } else if (result.data && result.data.length > 0) {
+      setCurriculum(result.data[0]);
+    }
+  };
 
   // Derived Analytics stats
   const analyticsStats: CmsAnalyticsStats = {
@@ -81,7 +123,35 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
     totalExams: exams.length,
   };
 
-  const handleInsertGeneratedCourse = (titleAr: string, summaryAr: string, bodyHtml: string) => {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-100 text-slate-700">
+        <div className="text-center space-y-3 p-6 rounded-3xl bg-white shadow-lg">
+          <div className="animate-pulse text-3xl font-black">Chargement CMS...</div>
+          <p className="text-sm text-slate-500">Connexion au serveur et synchronisation des contenus pédagogiques.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-100 text-slate-700 p-6">
+        <div className="max-w-xl text-center space-y-4 p-6 rounded-3xl bg-white shadow-lg border border-rose-200">
+          <h2 className="text-xl font-black text-rose-700">Erreur CMS</h2>
+          <p className="text-sm text-slate-600">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-4 py-2 text-sm font-bold hover:bg-slate-800"
+          >
+            Réessayer
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const handleInsertGeneratedCourse = async (titleAr: string, summaryAr: string, bodyHtml: string) => {
     const newCourseItem: CmsCourseItem = {
       id: `gen_course_${Date.now()}`,
       chapterId: 'chap_math_5ap_01',
@@ -100,7 +170,8 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
       updatedAt: new Date().toISOString().slice(0, 10),
     };
 
-    setCourses([newCourseItem, ...courses]);
+    const updated = [newCourseItem, ...courses];
+    await handleSaveCourses(updated);
     setActiveTab('courses');
   };
 
@@ -131,21 +202,21 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
         {activeTab === 'curriculum' && (
           <CurriculumManager
             curriculum={curriculum}
-            onSaveCurriculum={setCurriculum}
+            onSaveCurriculum={handleSaveCurriculum}
           />
         )}
 
         {activeTab === 'courses' && (
           <CourseEditor
             courses={courses}
-            onSaveCourses={setCourses}
+            onSaveCourses={handleSaveCourses}
           />
         )}
 
         {activeTab === 'exercises' && (
           <ExerciseBuilder
             exercises={exercises}
-            onSaveExercises={setExercises}
+            onSaveExercises={handleSaveExercises}
           />
         )}
 
@@ -153,7 +224,7 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
           <ExamBuilder
             exams={exams}
             exercises={exercises}
-            onSaveExams={setExams}
+            onSaveExams={handleSaveExams}
           />
         )}
 
