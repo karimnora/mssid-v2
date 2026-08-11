@@ -17,6 +17,7 @@ import { ArabicConjugator } from './components/ArabicConjugator';
 import { FrenchLanguageLab } from './components/FrenchLanguageLab';
 import { EnglishLanguageLab } from './components/EnglishLanguageLab';
 import { MultiplicationTableInteractive } from './components/MultiplicationTableInteractive';
+import { InteractiveVideoPlayer, VideoQuestion } from './components/InteractiveVideoPlayer';
 import { AiTutorModal } from './components/AiTutorModal';
 import { AuditModal } from './components/AuditModal';
 import { ProfileModal } from './components/ProfileModal';
@@ -29,6 +30,11 @@ import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 import { Navbar, HeaderTheme } from './components/Navbar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
+import { SeoHead } from './components/SeoHead';
+import { PricingModal } from './components/PricingModal';
+import { AdBanner } from './components/AdBanner';
+import { isFeatureEnabled } from './featureFlags';
+import { springBootApi } from './services/springBootApi';
 import {
   BookOpen,
   Calculator,
@@ -72,22 +78,72 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Globe,
 };
 
+// Placeholder demo content for the interactive video lab (Phase 6.4).
+// A real lesson video (hosted via the CMS media library) should replace this once available.
+const DEMO_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+const DEMO_VIDEO_SUBTITLES_VTT = `WEBVTT
+
+00:00:00.000 --> 00:00:06.000
+مرحباً بكم في هذا الفيديو التجريبي 🎬
+
+00:00:06.000 --> 00:00:12.000
+سيتوقف الفيديو تلقائياً عند كل سؤال، ثم يمكنكم متابعة المشاهدة بعد الإجابة.
+`;
+const DEMO_VIDEO_SUBTITLES_URL = `data:text/vtt;charset=utf-8,${encodeURIComponent(DEMO_VIDEO_SUBTITLES_VTT)}`;
+const DEMO_VIDEO_QUESTIONS: VideoQuestion[] = [
+  {
+    id: 'demo-q1',
+    atSecond: 1.5,
+    questionAr: 'كم عدد أزرار التحكم الأساسية في مشغل الفيديو (تشغيل، سرعة، ترجمة، ملء الشاشة)؟',
+    options: ['اثنان', '3', '4', '6'],
+    correctIdx: 2,
+    explanationAr: 'المشغل يحتوي على 4 أزرار أساسية: تشغيل/إيقاف، الترجمة، السرعة، وملء الشاشة.',
+  },
+  {
+    id: 'demo-q2',
+    atSecond: 3.5,
+    questionAr: 'ماذا يحدث للفيديو عندما يظهر سؤال؟',
+    options: ['يستمر التشغيل', 'يتوقف تلقائياً حتى الإجابة', 'يعيد البدء من جديد', 'يُغلق المشغل'],
+    correctIdx: 1,
+    explanationAr: 'يتوقف الفيديو تلقائياً عند كل سؤال، ويمكن متابعته فقط بعد الإجابة والاطلاع على التصحيح.',
+  },
+];
+
 export default function App() {
   const [grade, setGrade] = useState<PrimaryGrade>('5AP');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId>('math');
   const [selectedTrimester, setSelectedTrimester] = useState<number | 'all'>('all');
   const [selectedLesson, setSelectedLesson] = useState<CourseLesson | null>(null);
   const [mainCategory, setMainCategory] = useState<'courses' | 'labs' | 'exams'>('courses');
+  const [mobileTab, setMobileTab] = useState<'home' | 'courses' | 'exercises' | 'games'>('home');
 
   const handleSelectSubject = (subject: SubjectId) => {
     setSelectedSubject(subject);
     setSelectedLesson(null);
     if (INTERACTIVE_LABS_LIST.some((s) => s.id === subject)) {
       setMainCategory('labs');
+      setMobileTab('games');
     } else if (OFFICIAL_EXAMS_LIST.some((s) => s.id === subject)) {
       setMainCategory('exams');
+      setMobileTab('exercises');
     } else {
       setMainCategory('courses');
+      setMobileTab('courses');
+    }
+  };
+
+  const handleMobileTab = (tab: 'home' | 'courses' | 'exercises' | 'games') => {
+    setMobileTab(tab);
+    setSelectedLesson(null);
+    if (tab === 'home' || tab === 'courses') {
+      setMainCategory('courses');
+      setSelectedSubject('math');
+    } else if (tab === 'exercises') {
+      setMainCategory('exams');
+      setSelectedSubject('exams');
+    } else if (tab === 'games') {
+      setMainCategory('labs');
+      setSelectedSubject('arabic_conjugator');
     }
   };
 
@@ -102,6 +158,7 @@ export default function App() {
   const [isAdminReceiptsModalOpen, setIsAdminReceiptsModalOpen] = useState(false);
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const [headerTheme, setHeaderTheme] = useState<HeaderTheme>('neutre');
 
   // Current Auth User
@@ -270,16 +327,16 @@ export default function App() {
   const isSepiaTheme = headerTheme === 'sepia';
 
   const pageBgClass = isNeutreTheme || isLightTheme
-    ? 'bg-[#FFFBF0] text-slate-800'
+    ? 'bg-gradient-to-br from-amber-50 via-slate-50 to-white text-slate-900'
     : isSepiaTheme
-    ? 'bg-[#FBF9F5] text-stone-900'
+    ? 'bg-gradient-to-br from-[#FBF9F5] via-[#F7F1E7] to-[#F7F4EE] text-stone-900'
     : 'bg-[#0F172A] text-slate-100';
 
   const cardBgClass = isNeutreTheme || isLightTheme
-    ? 'bg-white rounded-3xl border-b-4 border-slate-200 shadow-sm text-slate-800 hover:border-indigo-300 transition-all'
+    ? 'bg-white/95 rounded-[28px] border border-slate-200 shadow-[0_18px_50px_-35px_rgba(15,23,42,0.45)] text-slate-800 hover:shadow-[0_22px_64px_-40px_rgba(15,23,42,0.35)] transition-all'
     : isSepiaTheme
-    ? 'bg-[#F5F2EB] border-[#E7E2D7] text-stone-900 shadow-xs'
-    : 'bg-[#1E293B] border-slate-700/70 text-slate-100 shadow-xl';
+    ? 'bg-[#F5F2EB] rounded-[28px] border border-[#E7E2D7] text-stone-900 shadow-sm'
+    : 'bg-[#1E293B] rounded-[28px] border border-slate-700/70 text-slate-100 shadow-2xl';
 
   const tabsContainerBgClass = isNeutreTheme || isLightTheme
     ? 'bg-white rounded-2xl border-2 border-amber-100 shadow-sm'
@@ -303,7 +360,13 @@ export default function App() {
     <div className={`min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 ${pageBgClass}`} dir="rtl">
       
       {/* PWA Mobile Install Banner for Android & iOS */}
+      <SeoHead />
       <PwaInstallBanner />
+      <AdBanner
+        showAds={isFeatureEnabled('SHOW_ADS')}
+        userRole={authUser?.role}
+        onUpgradeClick={() => setIsPricingModalOpen(true)}
+      />
 
       {/* 1. REFACTORED SAAS DASHBOARD HEADER COMPONENT WITH MULTI-THEME & CONSOLIDATED DROPDOWN */}
       <Navbar
@@ -330,6 +393,7 @@ export default function App() {
         onOpenAiTutor={() => setIsAiModalOpen(true)}
         onOpenAuditModal={() => setIsAuditModalOpen(true)}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
+        onOpenPricingModal={() => setIsPricingModalOpen(true)}
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
         onOpenCms={() => setIsCmsActive(true)}
@@ -343,6 +407,20 @@ export default function App() {
         
         {/* Isolated Category Switcher & Sub-Subject Selector */}
         <div className="space-y-4">
+        <div className="rounded-[32px] border border-slate-200/70 bg-white/80 shadow-xl p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-slate-400">مرحباً بك في منصة مَسِيد</p>
+            <h1 className="text-lg sm:text-2xl font-extrabold tracking-tight text-slate-900">تعلم، جرّب، وارتقِ بالمرح!</h1>
+          </div>
+          <div className="flex flex-wrap gap-2 items-center">
+            <span className="inline-flex items-center gap-2 rounded-2xl bg-amber-50 px-3 py-2 text-[11px] font-bold text-amber-700 shadow-sm border border-amber-100">
+              <span>⭐</span> تجربة ممتعة للأطفال
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 text-white px-3 py-2 text-[11px] font-bold shadow-sm">
+              <span>🎯</span> واجهة آمنة وسهلة الاستخدام
+            </span>
+          </div>
+        </div>
           
           {/* Main Category Header Tabs */}
           <div className="flex items-center justify-between flex-wrap gap-3">
@@ -479,7 +557,7 @@ export default function App() {
           ) : selectedSubject === 'writing_response' ? (
             <WritingResponseZone />
           ) : selectedSubject === 'soroban' ? (
-            <SorobanInteractive />
+            <SorobanInteractive grade={grade} />
           ) : selectedSubject === 'electricity' ? (
             <ElectricityLabInteractive />
           ) : selectedSubject === 'geometry' ? (
@@ -488,6 +566,14 @@ export default function App() {
             <UnitConverter grade={grade} theme={headerTheme} />
           ) : selectedSubject === 'multiplication' ? (
             <MultiplicationTableInteractive grade={grade} />
+          ) : selectedSubject === 'interactive_video' ? (
+            <InteractiveVideoPlayer
+              titleAr="فيديو تجريبي: كيف يعمل الفيديو التفاعلي؟"
+              videoUrl={DEMO_VIDEO_URL}
+              subtitleUrl={DEMO_VIDEO_SUBTITLES_URL}
+              questions={DEMO_VIDEO_QUESTIONS}
+              onComplete={(score) => handleCompleteQuiz('interactive-video-demo', score)}
+            />
           ) : selectedSubject === 'exams' ? (
             <ExamsViewer tashkeelEnabled={userProfile.tashkeelEnabled ?? false} />
           ) : selectedLesson ? (
@@ -731,10 +817,28 @@ export default function App() {
         onClose={() => setIsPrivacyModalOpen(false)}
       />
 
+      {isFeatureEnabled('SHOW_PAYMENT') && (
+        <PricingModal
+          isOpen={isPricingModalOpen}
+          onClose={() => setIsPricingModalOpen(false)}
+          onRequestCheckout={(providerName, paymentMethod, amountDzd) => {
+            return springBootApi.createCheckout({
+              paymentMethod,
+              amountDzd,
+              providerName,
+              transactionRef: `CHG-${Date.now()}`,
+              returnUrl: window.location.href,
+            });
+          }}
+          currentUser={authUser}
+        />
+      )}
+
       {/* Dedicated Native Mobile Bottom Navigation Bar for Mobile Viewport Users */}
       <MobileBottomNav
         selectedSubject={selectedSubject}
-        setSelectedSubject={(subj) => handleSelectSubject(subj)}
+        activeTab={mobileTab}
+        onSelectTab={handleMobileTab}
         onClearSelectedLesson={() => setSelectedLesson(null)}
         onOpenAiTutor={() => setIsAiModalOpen(true)}
         onOpenProfile={() => setIsProfileModalOpen(true)}

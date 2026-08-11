@@ -1,7 +1,11 @@
 package dz.mssid.education.controller;
 
+import dz.mssid.education.dto.CheckoutRequest;
+import dz.mssid.education.dto.CheckoutResponse;
+import dz.mssid.education.dto.PaymentWebhookResponse;
 import dz.mssid.education.dto.ReceiptUploadRequest;
 import dz.mssid.education.dto.VerifyReceiptRequest;
+import dz.mssid.education.dto.WebhookEventRequest;
 import dz.mssid.education.entity.PaymentReceipt;
 import dz.mssid.education.service.PaymentService;
 import lombok.RequiredArgsConstructor;
@@ -57,5 +61,21 @@ public class PaymentController {
     ) {
         PaymentReceipt updated = paymentService.verifyReceipt(id, request);
         return ResponseEntity.ok(updated);
+    }
+
+    @PostMapping("/api/v1/payments/checkout")
+    public ResponseEntity<CheckoutResponse> createCheckout(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @RequestBody CheckoutRequest request
+    ) {
+        String email = userDetails != null ? userDetails.getUsername() : request.getUserEmail();
+        CheckoutResponse response = paymentService.createCheckout(email, request);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/api/v1/payments/webhook")
+    public ResponseEntity<PaymentWebhookResponse> handleWebhook(@RequestBody WebhookEventRequest request) {
+        PaymentWebhookResponse response = paymentService.processWebhook(request);
+        return ResponseEntity.ok(response);
     }
 }

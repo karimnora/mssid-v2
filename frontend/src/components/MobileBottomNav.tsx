@@ -1,31 +1,33 @@
 import React from 'react';
-import { Home, BookOpen, Bot, Grid, User, Calculator, Sparkles, Zap, Award } from 'lucide-react';
+import { Home, BookOpen, Bot, Grid, User, FileText, Zap } from 'lucide-react';
 import { SubjectId } from '../types';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface MobileBottomNavProps {
   selectedSubject: SubjectId;
-  setSelectedSubject: (subject: SubjectId) => void;
+  activeTab?: 'home' | 'courses' | 'exercises' | 'games';
+  onSelectTab: (tab: 'home' | 'courses' | 'exercises' | 'games') => void;
   onOpenAiTutor: () => void;
   onOpenProfile: () => void;
   onClearSelectedLesson: () => void;
   theme?: string;
-  onSelectCategory?: (cat: 'courses' | 'labs' | 'exams') => void;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   selectedSubject,
-  setSelectedSubject,
+  activeTab,
+  onSelectTab,
   onOpenAiTutor,
   onOpenProfile,
   onClearSelectedLesson,
   theme = 'dark',
-  onSelectCategory,
 }) => {
-  const handleSubjectChange = (subject: SubjectId, category: 'courses' | 'labs' | 'exams') => {
-    setSelectedSubject(subject);
-    if (onSelectCategory) {
-      onSelectCategory(category);
-    }
+  const t = useTranslation('navigation');
+  const { direction } = useLocaleContext();
+
+  const handleTab = (tab: 'home' | 'courses' | 'exercises' | 'games') => {
+    onSelectTab(tab);
     onClearSelectedLesson();
   };
 
@@ -76,59 +78,70 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
   return (
     <nav
-      className={`md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md border-t px-2 py-1.5 flex items-center justify-around dir-rtl transition-colors duration-300 ${navBgClass}`}
-      dir="rtl"
+      className={`md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md border-t px-2 py-1.5 flex items-center justify-around transition-colors duration-300 ${navBgClass}`}
+      dir={direction}
     >
-      {/* 1. Courses Tab */}
+      {/* 1. Home Tab */}
       <button
-        onClick={() => handleSubjectChange('math', 'courses')}
-        className={`flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl transition-all cursor-pointer ${
-          isCourseSubject ? activeTabClass : inactiveTabClass
+        onClick={() => handleTab('home')}
+        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
+          activeTab === 'home' ? activeTabClass : inactiveTabClass
+        }`}
+      >
+        <Home className="w-5 h-5" />
+        <span className="text-[10px]">{t('home')}</span>
+      </button>
+
+      {/* 2. Courses Tab */}
+      <button
+        onClick={() => handleTab('courses')}
+        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
+          activeTab === 'courses' ? activeTabClass : inactiveTabClass
         }`}
       >
         <BookOpen className="w-5 h-5" />
-        <span className="text-[10px]">الدروس</span>
+        <span className="text-[10px]">{t('courses')}</span>
       </button>
 
-      {/* 2. Standalone Interactive Labs & Conjugators Tab */}
+      {/* 3. Games Tab */}
       <button
-        onClick={() => handleSubjectChange('arabic_conjugator', 'labs')}
-        className={`flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl transition-all cursor-pointer ${
-          isLabSubject ? activeTabClass : inactiveTabClass
+        onClick={() => handleTab('games')}
+        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
+          activeTab === 'games' ? activeTabClass : inactiveTabClass
         }`}
       >
-        <Zap className="w-5 h-5 text-orange-400" />
-        <span className="text-[10px]">المختبرات</span>
+        <Grid className="w-5 h-5 text-orange-400" />
+        <span className="text-[10px]">{t('games')}</span>
       </button>
 
       {/* 3. AI Tutor Floating Center Button */}
       <button
         onClick={onOpenAiTutor}
-        className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-2xl shadow-lg active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
-        title="المعلم الذكي بالذكاء الاصطناعي"
+        className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-3xl shadow-2xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
+        title={t('aiTutor')}
       >
         <Bot className="w-6 h-6 animate-pulse" />
-        <span className="text-[9px] font-black tracking-tight mt-0.5">المعلم الذكي</span>
+        <span className="text-[9px] font-black tracking-tight mt-0.5">{t('aiTutorShort')}</span>
       </button>
 
-      {/* 4. Official Exams Tab */}
+      {/* 4. Exercises Tab */}
       <button
-        onClick={() => handleSubjectChange('exams', 'exams')}
-        className={`flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl transition-all cursor-pointer ${
-          selectedSubject === 'exams' ? activeTabClass : inactiveTabClass
+        onClick={() => handleTab('exercises')}
+        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
+          activeTab === 'exercises' ? activeTabClass : inactiveTabClass
         }`}
       >
-        <Award className="w-5 h-5 text-purple-400" />
-        <span className="text-[10px]">الامتحانات</span>
+        <FileText className="w-5 h-5 text-purple-400" />
+        <span className="text-[10px]">{t('exercises')}</span>
       </button>
 
       {/* 5. Profile / Account Tab */}
       <button
         onClick={onOpenProfile}
-        className={`flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl transition-all cursor-pointer ${inactiveTabClass}`}
+        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${inactiveTabClass}`}
       >
         <User className="w-5 h-5" />
-        <span className="text-[10px]">حسابي</span>
+        <span className="text-[10px]">{t('profile')}</span>
       </button>
     </nav>
   );

@@ -54,10 +54,13 @@ export const ElectricityLabInteractive: React.FC = () => {
   const [batteryVoltage, setBatteryVoltage] = useState<VoltageLevel>(4.5);
   const [batteryFlipped, setBatteryFlipped] = useState<boolean>(false); // Battery +/- orientation
   const [switchClosed, setSwitchClosed] = useState<boolean>(true); // Closed = ON, Open = OFF
-  const [activeLoad, setActiveLoad] = useState<'bulb' | 'diode' | 'motor' | 'buzzer' | 'material'>('diode');
-  
+  const [activeLoad, setActiveLoad] = useState<'bulb' | 'diode' | 'motor' | 'buzzer' | 'material' | 'resistor'>('diode');
+
   // Diode specific state
   const [diodeFlipped, setDiodeFlipped] = useState<boolean>(false); // Forward bias vs Reverse bias
+
+  // Resistor specific state
+  const [resistorValue, setResistorValue] = useState<10 | 100 | 1000>(100); // Ohms
 
   // Conductors experiment state
   const [selectedMaterial, setSelectedMaterial] = useState<TestedMaterial>('iron_nail');
@@ -154,7 +157,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           isClosed: true,
           isCurrentFlowing: false,
           reasonAr: 'الصمام الثنائي في انحياز عكسي (Inverse) ➔ يمنع الصمام مرور التيار بالكامل!',
-          reasonFr: 'La diode est polarisée en sens inverse ➔ Le courant ن\'est pas autorisé !',
+          reasonFr: 'La diode est polarisée en sens inverse ➔ Le courant n\'est pas autorisé !',
           statusColor: 'text-rose-400 bg-rose-950/80 border-rose-700/60'
         };
       }
@@ -170,6 +173,16 @@ export const ElectricityLabInteractive: React.FC = () => {
       };
     }
 
+    if (activeLoad === 'resistor') {
+      return {
+        isClosed: true,
+        isCurrentFlowing: true,
+        reasonAr: `الدارة مغلقة والمقاومة (${resistorValue} Ω) تحدّ من شدة التيار الكهربائي المار في الدارة.`,
+        reasonFr: `Le circuit est fermé, la résistance (${resistorValue} Ω) limite l'intensité du courant.`,
+        statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
+      };
+    }
+
     return {
       isClosed: true,
       isCurrentFlowing: true,
@@ -180,6 +193,25 @@ export const ElectricityLabInteractive: React.FC = () => {
   };
 
   const currentStatus = getCircuitLogicStatus();
+
+  // Simplified multimeter reading (نموذج مبسّط تربوي، وليس حساباً فيزيائياً دقيقاً)
+  const getMultimeterReading = (): { voltage: number; currentMa: number; resistanceLabel: string } => {
+    if (!currentStatus.isCurrentFlowing) {
+      return { voltage: switchClosed ? batteryVoltage : 0, currentMa: 0, resistanceLabel: '∞ (دارة مفتوحة)' };
+    }
+    let resistanceOhms = 10;
+    if (activeLoad === 'resistor') resistanceOhms = resistorValue;
+    else if (activeLoad === 'material') resistanceOhms = 2;
+    else if (activeLoad === 'diode') resistanceOhms = 5;
+    else if (activeLoad === 'motor') resistanceOhms = 15;
+    else if (activeLoad === 'buzzer') resistanceOhms = 50;
+    else if (activeLoad === 'bulb') resistanceOhms = 10;
+
+    const currentMa = (batteryVoltage / resistanceOhms) * 1000;
+    return { voltage: batteryVoltage, currentMa, resistanceLabel: `${resistanceOhms} Ω` };
+  };
+
+  const multimeterReading = getMultimeterReading();
 
   // Play continuous buzzer sound effect when current flows into buzzer
   useEffect(() => {
@@ -577,6 +609,29 @@ export const ElectricityLabInteractive: React.FC = () => {
                     </g>
                   )}
 
+                  {/* F) RESISTOR COMPONENT (المقاومة الكهربائية) */}
+                  {activeLoad === 'resistor' && (
+                    <g>
+                      <rect x="-45" y="-16" width="90" height="32" rx="6" fill="#78350f" stroke="#fbbf24" strokeWidth="2" />
+                      {/* Zigzag resistor symbol */}
+                      <polyline
+                        points="-35,0 -25,-12 -15,12 -5,-12 5,12 15,-12 25,12 35,0"
+                        fill="none"
+                        stroke={currentStatus.isCurrentFlowing ? '#fef08a' : '#94a3b8'}
+                        strokeWidth="2.5"
+                        strokeLinejoin="round"
+                      />
+                      {currentStatus.isCurrentFlowing && (
+                        <g filter="url(#glow)">
+                          <circle cx="0" cy="0" r="34" fill="#f59e0b" opacity="0.18" />
+                        </g>
+                      )}
+                      <text x="0" y="32" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">
+                        مقاومة {resistorValue} Ω
+                      </text>
+                    </g>
+                  )}
+
                 </g>
               </svg>
 
@@ -721,8 +776,48 @@ export const ElectricityLabInteractive: React.FC = () => {
                   </div>
                   {showFrench && <span className="text-[10px] opacity-75 font-mono">Testeur</span>}
                 </button>
+
+                <button
+                  onClick={() => { setActiveLoad('resistor'); setActiveTab('sandbox'); }}
+                  className={`p-3 rounded-2xl text-xs font-bold transition-all text-right flex items-center justify-between cursor-pointer border ${
+                    activeLoad === 'resistor'
+                      ? 'bg-orange-500 text-slate-950 border-orange-400 font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">🟤</span>
+                    <span>المقاومة الكهربائية</span>
+                  </div>
+                  {showFrench && <span className="text-[10px] opacity-75 font-mono">Résistance</span>}
+                </button>
               </div>
             </div>
+
+            {/* Resistor Value Selector if activeLoad === 'resistor' */}
+            {activeLoad === 'resistor' && (
+              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 space-y-3">
+                <h3 className="font-extrabold text-xs text-orange-300 flex items-center gap-2">
+                  <Zap className="w-4 h-4" />
+                  <span>اختر قيمة المقاومة (كلما زادت المقاومة، قلّ التيار):</span>
+                </h3>
+                <div className="grid grid-cols-3 gap-2">
+                  {([10, 100, 1000] as const).map((val) => (
+                    <button
+                      key={val}
+                      onClick={() => setResistorValue(val)}
+                      className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                        resistorValue === val
+                          ? 'bg-orange-500 text-slate-950 border-orange-400 font-black'
+                          : 'bg-slate-950 text-slate-300 border-slate-800 hover:bg-slate-800'
+                      }`}
+                    >
+                      {val} Ω
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Material Tester Specific Controls if activeLoad === 'material' */}
             {activeLoad === 'material' && (
@@ -785,6 +880,33 @@ export const ElectricityLabInteractive: React.FC = () => {
                   بطارية قوية 9.0V
                 </button>
               </div>
+            </div>
+
+            {/* Visual Multimeter Widget */}
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-4 space-y-3">
+              <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                <Zap className="w-4 h-4 text-emerald-400" />
+                <span>مقياس متعدد (Multimètre):</span>
+              </span>
+              <div className="bg-slate-950 rounded-2xl border border-emerald-800/60 p-3 grid grid-cols-3 gap-2 font-mono">
+                <div className="text-center">
+                  <div className="text-[9px] text-slate-400 font-sans font-bold">التوتر (V)</div>
+                  <div className="text-emerald-400 text-sm sm:text-base font-black" dir="ltr">{multimeterReading.voltage.toFixed(1)}</div>
+                </div>
+                <div className="text-center border-x border-slate-800">
+                  <div className="text-[9px] text-slate-400 font-sans font-bold">التيار (mA)</div>
+                  <div className={`text-sm sm:text-base font-black ${currentStatus.isCurrentFlowing ? 'text-amber-400' : 'text-slate-600'}`} dir="ltr">
+                    {multimeterReading.currentMa.toFixed(0)}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-[9px] text-slate-400 font-sans font-bold">المقاومة (Ω)</div>
+                  <div className="text-cyan-400 text-[11px] sm:text-xs font-black" dir="ltr">{multimeterReading.resistanceLabel}</div>
+                </div>
+              </div>
+              <p className="text-[10px] text-slate-500 leading-relaxed">
+                📌 قراءة مبسّطة توضيحية: كلما زادت المقاومة، قلّت شدة التيار المار في الدارة.
+              </p>
             </div>
 
           </div>

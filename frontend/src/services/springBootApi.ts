@@ -245,6 +245,19 @@ public async request<T>(
     });
   }
 
+  public async createCheckout(payload: { paymentMethod: string; amountDzd: number; providerName: string; returnUrl?: string; transactionRef?: string }) {
+    return this.request<{
+      checkoutId: string;
+      checkoutUrl: string;
+      transactionRef: string;
+      status: string;
+      message: string;
+    }>('/v1/payments/checkout', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
+
   public async getAllReceipts() {
     return this.request<any[]>('/v1/payments/admin/receipts', {
       method: 'GET',

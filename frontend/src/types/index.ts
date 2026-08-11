@@ -19,7 +19,8 @@ export type SubjectId =
   | 'writing_response'
   | 'geometry'
   | 'converter'
-  | 'multiplication';
+  | 'multiplication'
+  | 'interactive_video';
 
 export interface SubjectInfo {
   id: SubjectId;

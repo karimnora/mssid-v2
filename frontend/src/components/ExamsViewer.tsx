@@ -237,7 +237,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true
             </div>
 
             <div className="text-xs text-slate-900 font-sans leading-relaxed whitespace-pre-line bg-white p-4 rounded-xl border border-amber-200">
-              {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr), { hideTashkeel: false })}
+              {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr))}
             </div>
 
             <div className="flex items-center justify-between pt-1">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Circle, Square, Compass, Sparkles } from 'lucide-react';
+import { Shape3DViewer, Solid3DId, ShapeDimensions } from './Shape3DViewer';
 
 interface ShapeInfo {
   id: string;
@@ -75,8 +76,66 @@ const SHAPES: ShapeInfo[] = [
     areaFormulaAr: 'المساحة الجانبية = محيط القاعدة × الارتفاع = 2 × π × r × h',
     volumeFormulaAr: 'الحجم = مساحة القاعدة × الارتفاع = π × r² × h',
     svgIcon: 'cylinder'
+  },
+  {
+    id: 'pyramid',
+    nameAr: 'الهرم (Pyramide)',
+    category: '3d',
+    propertiesAr: ['مجسم له قاعدة مربعة وأربعة أوجه جانبية مثلثة', 'كل الأوجه الجانبية تلتقي في نقطة واحدة تسمى القمة', 'له 5 رؤوس و 8 حروف'],
+    areaFormulaAr: 'مساحة القاعدة = الضلع × الضلع',
+    volumeFormulaAr: 'الحجم = (مساحة القاعدة × الارتفاع) ÷ 3',
+    svgIcon: 'pyramid'
+  },
+  {
+    id: 'prism',
+    nameAr: 'الموشور القائم (Prisme droit)',
+    category: '3d',
+    propertiesAr: ['مجسم له قاعدتان مثلثتان متطابقتان ومتوازيتان', 'أوجهه الجانبية مستطيلات', 'له 6 رؤوس و 9 حروف'],
+    areaFormulaAr: 'مساحة القاعدة (مثلث) = (القاعدة × الارتفاع) ÷ 2',
+    volumeFormulaAr: 'الحجم = مساحة القاعدة × الارتفاع',
+    svgIcon: 'prism'
   }
 ];
+
+const DEFAULT_DIMENSIONS: Record<string, ShapeDimensions> = {
+  cube: { a: 5, b: 5, c: 5 },
+  cuboid: { a: 6, b: 4, c: 3 },
+  cylinder: { a: 3, b: 6, c: 0 },
+  pyramid: { a: 5, b: 6, c: 0 },
+  prism: { a: 5, b: 6, c: 0 },
+};
+
+const computeMeasurements = (shapeId: string, dims: ShapeDimensions): { areaLabel?: string; volumeLabel?: string } => {
+  switch (shapeId) {
+    case 'cube': {
+      const area = 6 * dims.a * dims.a;
+      const volume = dims.a ** 3;
+      return { areaLabel: `= 6 × ${dims.a} × ${dims.a} = ${area} سم²`, volumeLabel: `= ${dims.a} × ${dims.a} × ${dims.a} = ${volume} سم³` };
+    }
+    case 'cuboid': {
+      const area = 2 * (dims.a * dims.b + dims.a * dims.c + dims.b * dims.c);
+      const volume = dims.a * dims.b * dims.c;
+      return { areaLabel: `= ${area} سم²`, volumeLabel: `= ${dims.a} × ${dims.b} × ${dims.c} = ${volume} سم³` };
+    }
+    case 'cylinder': {
+      const area = 2 * Math.PI * dims.a * dims.b;
+      const volume = Math.PI * dims.a * dims.a * dims.b;
+      return { areaLabel: `= 2 × π × ${dims.a} × ${dims.b} ≈ ${area.toFixed(1)} سم²`, volumeLabel: `= π × ${dims.a}² × ${dims.b} ≈ ${volume.toFixed(1)} سم³` };
+    }
+    case 'pyramid': {
+      const baseArea = dims.a * dims.a;
+      const volume = (baseArea * dims.b) / 3;
+      return { areaLabel: `= ${dims.a} × ${dims.a} = ${baseArea} سم²`, volumeLabel: `≈ ${volume.toFixed(1)} سم³` };
+    }
+    case 'prism': {
+      const baseArea = (dims.a * (dims.a * 0.87)) / 2;
+      const volume = baseArea * dims.b;
+      return { areaLabel: `≈ ${baseArea.toFixed(1)} سم²`, volumeLabel: `≈ ${volume.toFixed(1)} سم³` };
+    }
+    default:
+      return {};
+  }
+};
 
 interface GeometryVisualizerProps {
   grade?: string;
@@ -85,8 +144,15 @@ interface GeometryVisualizerProps {
 
 export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = '4AP', theme = 'dark' }) => {
   const [selectedShapeId, setSelectedShapeIndex] = useState<string>('square');
+  const [dimensionsByShape, setDimensionsByShape] = useState<Record<string, ShapeDimensions>>(DEFAULT_DIMENSIONS);
 
   const selectedShape = SHAPES.find((s) => s.id === selectedShapeId) || SHAPES[0];
+  const currentDims = dimensionsByShape[selectedShapeId] || { a: 5, b: 5, c: 5 };
+  const measurements = selectedShape.category === '3d' ? computeMeasurements(selectedShapeId, currentDims) : {};
+
+  const updateDim = (key: keyof ShapeDimensions, value: number) => {
+    setDimensionsByShape((prev) => ({ ...prev, [selectedShapeId]: { ...(prev[selectedShapeId] || currentDims), [key]: value } }));
+  };
 
   const isNeutre = theme === 'neutre';
   const isLight = theme === 'light';
@@ -148,74 +214,85 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
 
       {/* Main Visualizer Content */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-        {/* Left Interactive SVG Render Canvas */}
-        <div className="md:col-span-5 bg-slate-950 rounded-2xl p-6 border border-slate-800 flex flex-col items-center justify-center min-h-[220px] relative overflow-hidden">
-          <div className="text-[10px] font-mono text-amber-400/70 absolute top-3 right-3 uppercase tracking-wider">
-            {selectedShape.category === '2d' ? '2D PLANE SHAPE' : '3D SOLID GEOMETRY'}
+        {/* Left Interactive Render Canvas */}
+        {selectedShape.category === '3d' ? (
+          <div className="md:col-span-5">
+            <Shape3DViewer
+              shapeId={selectedShape.id as Solid3DId}
+              dims={currentDims}
+              accentHex={selectedShape.id === 'pyramid' ? '#fb923c' : selectedShape.id === 'prism' ? '#f472b6' : '#a78bfa'}
+            />
           </div>
+        ) : (
+          <div className="md:col-span-5 bg-slate-950 rounded-2xl p-6 border border-slate-800 flex flex-col items-center justify-center min-h-[220px] relative overflow-hidden">
+            <div className="text-[10px] font-mono text-amber-400/70 absolute top-3 right-3 uppercase tracking-wider">
+              2D PLANE SHAPE
+            </div>
 
-          {/* SVG Shape Drawings */}
-          <div className="w-36 h-36 flex items-center justify-center">
-            {selectedShape.id === 'square' && (
-              <svg className="w-28 h-28 text-amber-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="3">
-                <rect x="10" y="10" width="80" height="80" rx="4" className="fill-amber-500/10" />
-                <path d="M10,10 L90,90 M90,10 L10,90" strokeDasharray="3,3" strokeWidth="1.5" className="text-slate-500" />
-              </svg>
-            )}
-            {selectedShape.id === 'rectangle' && (
-              <svg className="w-32 h-20 text-emerald-400 stroke-current" viewBox="0 0 120 70" fill="none" strokeWidth="3">
-                <rect x="5" y="5" width="110" height="60" rx="4" className="fill-emerald-500/10" />
-                <path d="M5,5 L115,65 M115,5 L5,65" strokeDasharray="3,3" strokeWidth="1.5" className="text-slate-500" />
-              </svg>
-            )}
-            {selectedShape.id === 'triangle' && (
-              <svg className="w-28 h-28 text-sky-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="3">
-                <polygon points="50,10 10,90 90,90" className="fill-sky-500/10" />
-                <line x1="50" y1="10" x2="50" y2="90" strokeDasharray="3,3" strokeWidth="1.5" className="text-amber-400" />
-              </svg>
-            )}
-            {selectedShape.id === 'circle' && (
-              <svg className="w-28 h-28 text-indigo-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="3">
-                <circle cx="50" cy="50" r="40" className="fill-indigo-500/10" />
-                <line x1="50" y1="50" x2="90" y2="50" strokeWidth="2" className="text-amber-400" />
-                <circle cx="50" cy="50" r="3" className="fill-amber-400 stroke-none" />
-              </svg>
-            )}
-            {selectedShape.id === 'cube' && (
-              <svg className="w-28 h-28 text-purple-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="2.5">
-                <rect x="15" y="30" width="55" height="55" className="fill-purple-500/10" />
-                <rect x="30" y="15" width="55" height="55" className="fill-purple-500/10" />
-                <line x1="15" y1="30" x2="30" y2="15" />
-                <line x1="70" y1="30" x2="85" y2="15" />
-                <line x1="15" y1="85" x2="30" y2="70" />
-                <line x1="70" y1="85" x2="85" y2="70" />
-              </svg>
-            )}
-            {selectedShape.id === 'cuboid' && (
-              <svg className="w-32 h-24 text-teal-400 stroke-current" viewBox="0 0 120 80" fill="none" strokeWidth="2">
-                <rect x="10" y="25" width="70" height="45" className="fill-teal-500/10" />
-                <rect x="30" y="10" width="70" height="45" className="fill-teal-500/10" />
-                <line x1="10" y1="25" x2="30" y2="10" />
-                <line x1="80" y1="25" x2="100" y2="10" />
-                <line x1="10" y1="70" x2="30" y2="55" />
-                <line x1="80" y1="70" x2="100" y2="55" />
-              </svg>
-            )}
-            {selectedShape.id === 'cylinder' && (
-              <svg className="w-24 h-32 text-orange-400 stroke-current" viewBox="0 0 80 100" fill="none" strokeWidth="2">
-                <ellipse cx="40" cy="20" rx="30" ry="10" className="fill-orange-500/10" />
-                <ellipse cx="40" cy="80" rx="30" ry="10" className="fill-orange-500/10" />
-                <line x1="10" y1="20" x2="10" y2="80" />
-                <line x1="70" y1="20" x2="70" y2="80" />
-              </svg>
-            )}
+            {/* SVG Shape Drawings */}
+            <div className="w-36 h-36 flex items-center justify-center">
+              {selectedShape.id === 'square' && (
+                <svg className="w-28 h-28 text-amber-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="3">
+                  <rect x="10" y="10" width="80" height="80" rx="4" className="fill-amber-500/10" />
+                  <path d="M10,10 L90,90 M90,10 L10,90" strokeDasharray="3,3" strokeWidth="1.5" className="text-slate-500" />
+                </svg>
+              )}
+              {selectedShape.id === 'rectangle' && (
+                <svg className="w-32 h-20 text-emerald-400 stroke-current" viewBox="0 0 120 70" fill="none" strokeWidth="3">
+                  <rect x="5" y="5" width="110" height="60" rx="4" className="fill-emerald-500/10" />
+                  <path d="M5,5 L115,65 M115,5 L5,65" strokeDasharray="3,3" strokeWidth="1.5" className="text-slate-500" />
+                </svg>
+              )}
+              {selectedShape.id === 'triangle' && (
+                <svg className="w-28 h-28 text-sky-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="3">
+                  <polygon points="50,10 10,90 90,90" className="fill-sky-500/10" />
+                  <line x1="50" y1="10" x2="50" y2="90" strokeDasharray="3,3" strokeWidth="1.5" className="text-amber-400" />
+                </svg>
+              )}
+              {selectedShape.id === 'circle' && (
+                <svg className="w-28 h-28 text-indigo-400 stroke-current" viewBox="0 0 100 100" fill="none" strokeWidth="3">
+                  <circle cx="50" cy="50" r="40" className="fill-indigo-500/10" />
+                  <line x1="50" y1="50" x2="90" y2="50" strokeWidth="2" className="text-amber-400" />
+                  <circle cx="50" cy="50" r="3" className="fill-amber-400 stroke-none" />
+                </svg>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Right Info & Formulas Pane */}
         <div className="md:col-span-7 space-y-3 flex flex-col justify-between">
           <div>
             <h4 className="font-extrabold text-base mb-2 font-sans">{selectedShape.nameAr}</h4>
+
+            {selectedShape.category === '3d' && (
+              <div className={`${subBoxStyle} p-3 rounded-xl border mb-3 space-y-2.5`}>
+                <span className="text-[10px] font-bold opacity-60 block uppercase">الأبعاد (بالسنتيمتر):</span>
+                {selectedShape.id === 'cube' && (
+                  <DimSlider label="الحرف (a)" value={currentDims.a} onChange={(v) => updateDim('a', v)} />
+                )}
+                {selectedShape.id === 'cuboid' && (
+                  <>
+                    <DimSlider label="الطول (L)" value={currentDims.a} onChange={(v) => updateDim('a', v)} />
+                    <DimSlider label="العرض (l)" value={currentDims.b} onChange={(v) => updateDim('b', v)} />
+                    <DimSlider label="الارتفاع (h)" value={currentDims.c} onChange={(v) => updateDim('c', v)} />
+                  </>
+                )}
+                {selectedShape.id === 'cylinder' && (
+                  <>
+                    <DimSlider label="نصف القطر (r)" value={currentDims.a} onChange={(v) => updateDim('a', v)} max={8} />
+                    <DimSlider label="الارتفاع (h)" value={currentDims.b} onChange={(v) => updateDim('b', v)} />
+                  </>
+                )}
+                {(selectedShape.id === 'pyramid' || selectedShape.id === 'prism') && (
+                  <>
+                    <DimSlider label="ضلع القاعدة" value={currentDims.a} onChange={(v) => updateDim('a', v)} />
+                    <DimSlider label="الارتفاع (h)" value={currentDims.b} onChange={(v) => updateDim('b', v)} />
+                  </>
+                )}
+              </div>
+            )}
+
             <div className={`${subBoxStyle} p-3 rounded-xl border mb-3`}>
               <span className="text-[10px] font-bold opacity-60 block uppercase mb-1">الخصائص المميزة:</span>
               <ul className="list-disc list-inside space-y-1 text-xs font-medium">
@@ -234,15 +311,19 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
               </div>
             )}
             {selectedShape.areaFormulaAr && (
-              <div className="bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl flex items-center justify-between text-xs font-bold text-amber-400">
-                <span>قانون المساحة:</span>
-                <span className="font-mono text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">{selectedShape.areaFormulaAr}</span>
+              <div className="bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1.5 text-xs font-bold text-amber-400">
+                <span>{selectedShape.id === 'pyramid' || selectedShape.id === 'prism' ? 'مساحة القاعدة:' : 'قانون المساحة:'}</span>
+                <span className="font-mono text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">
+                  {selectedShape.areaFormulaAr} {measurements.areaLabel && <span className="text-amber-200">{measurements.areaLabel}</span>}
+                </span>
               </div>
             )}
             {selectedShape.volumeFormulaAr && (
-              <div className="bg-purple-500/10 border border-purple-500/30 p-2.5 rounded-xl flex items-center justify-between text-xs font-bold text-purple-400">
+              <div className="bg-purple-500/10 border border-purple-500/30 p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1.5 text-xs font-bold text-purple-400">
                 <span>قانون الحجم:</span>
-                <span className="font-mono text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded">{selectedShape.volumeFormulaAr}</span>
+                <span className="font-mono text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded">
+                  {selectedShape.volumeFormulaAr} {measurements.volumeLabel && <span className="text-purple-200">{measurements.volumeLabel}</span>}
+                </span>
               </div>
             )}
           </div>
@@ -251,3 +332,19 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
     </div>
   );
 };
+
+const DimSlider: React.FC<{ label: string; value: number; onChange: (v: number) => void; max?: number }> = ({ label, value, onChange, max = 10 }) => (
+  <div className="flex items-center gap-2 text-xs">
+    <span className="font-bold w-24 shrink-0">{label}:</span>
+    <input
+      type="range"
+      min={2}
+      max={max}
+      step={1}
+      value={value}
+      onChange={(e) => onChange(Number(e.target.value))}
+      className="flex-1 accent-amber-500 cursor-pointer"
+    />
+    <span className="font-mono font-black w-12 text-end shrink-0">{value} سم</span>
+  </div>
+);

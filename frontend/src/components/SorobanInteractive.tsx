@@ -1,11 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { SOROBAN_RULES, SOROBAN_PRACTICE_EXERCISES } from '../data/sorobanData';
-import { Play, RotateCcw, CheckCircle2, XCircle, Sparkles, HelpCircle, Zap, ShieldCheck } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle2, XCircle, Sparkles, HelpCircle, Zap, ShieldCheck, Timer, Shuffle } from 'lucide-react';
+import { SorobanExercise } from '../types';
 
 interface SorobanInteractiveProps {
   grade?: string;
   onCompleteExercise?: (score: number) => void;
 }
+
+type Difficulty = 'easy' | 'medium' | 'hard';
+type OperationMode = 'add' | 'subtract' | 'mixed';
+
+const GRADE_TO_DIFFICULTY: Record<string, Difficulty> = {
+  '1AP': 'easy',
+  '2AP': 'easy',
+  '3AP': 'medium',
+  '4AP': 'medium',
+  '5AP': 'hard',
+};
+
+const DIFFICULTY_CONFIG: Record<Difficulty, { min: number; max: number; countMin: number; countMax: number; speedMs: number }> = {
+  easy: { min: 1, max: 9, countMin: 3, countMax: 4, speedMs: 1800 },
+  medium: { min: 1, max: 20, countMin: 3, countMax: 5, speedMs: 1400 },
+  hard: { min: 5, max: 50, countMin: 4, countMax: 6, speedMs: 1000 },
+};
+
+const generateSorobanExercise = (difficulty: Difficulty, operationMode: OperationMode): SorobanExercise => {
+  const cfg = DIFFICULTY_CONFIG[difficulty];
+  const count = cfg.countMin + Math.floor(Math.random() * (cfg.countMax - cfg.countMin + 1));
+  const numbers: number[] = [];
+  let sum = 0;
+
+  for (let i = 0; i < count; i += 1) {
+    const magnitude = cfg.min + Math.floor(Math.random() * (cfg.max - cfg.min + 1));
+    const wantsSubtract = i > 0 && (operationMode === 'subtract' || (operationMode === 'mixed' && Math.random() < 0.5));
+    let n = magnitude;
+    if (wantsSubtract) {
+      const amount = Math.min(magnitude, sum);
+      if (amount > 0) n = -amount;
+    }
+    numbers.push(n);
+    sum += n;
+  }
+
+  const operation: SorobanExercise['operation'] = operationMode === 'subtract' ? '-' : operationMode === 'mixed' ? 'mixed' : '+';
+  return { id: `gen-${numbers.join('_')}`, numbers, operation, speedMs: cfg.speedMs, expectedSum: sum };
+};
 
 export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = '4AP', onCompleteExercise }) => {
   // 5 Rods for 0-99,999 representation
@@ -26,6 +66,11 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
   const [anzanExerciseIndex, setAnzanExerciseIndex] = useState(0);
   const [userAnzanAnswer, setUserAnzanAnswer] = useState('');
   const [anzanResult, setAnzanResult] = useState<{ correct: boolean; msg: string } | null>(null);
+  const [generatedExercise, setGeneratedExercise] = useState<SorobanExercise | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>(GRADE_TO_DIFFICULTY[grade] || 'medium');
+  const [operationMode, setOperationMode] = useState<OperationMode>('add');
+  const [answerTimerStartedAt, setAnswerTimerStartedAt] = useState<number | null>(null);
+  const [elapsedAnswerSeconds, setElapsedAnswerSeconds] = useState<number | null>(null);
 
   // Selected Rule Guide
   const [selectedRuleIndex, setSelectedRuleIndex] = useState(0);
@@ -75,13 +120,31 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
     setRods(newRods);
   };
 
-  // Anzan Flash Runner
-  const currentAnzanEx = SOROBAN_PRACTICE_EXERCISES[anzanExerciseIndex];
+  // Anzan Flash Runner (uses a freshly generated exercise when available, otherwise the curated static list)
+  const currentAnzanEx = generatedExercise || SOROBAN_PRACTICE_EXERCISES[anzanExerciseIndex];
 
   const startAnzan = () => {
     setAnzanRunning(true);
     setCurrentFlashIndex(0);
     setUserAnzanAnswer('');
+    setAnzanResult(null);
+    setElapsedAnswerSeconds(null);
+    setAnswerTimerStartedAt(null);
+  };
+
+  const handleGenerateExercise = () => {
+    setGeneratedExercise(generateSorobanExercise(difficulty, operationMode));
+    setAnzanRunning(false);
+    setCurrentFlashIndex(-1);
+    setUserAnzanAnswer('');
+    setAnzanResult(null);
+    setElapsedAnswerSeconds(null);
+    setAnswerTimerStartedAt(null);
+  };
+
+  const handleSelectStaticExercise = (i: number) => {
+    setAnzanExerciseIndex(i);
+    setGeneratedExercise(null);
     setAnzanResult(null);
   };
 
@@ -94,14 +157,19 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
         return () => clearTimeout(timer);
       } else {
         setAnzanRunning(false);
+        setAnswerTimerStartedAt(Date.now());
       }
     }
   }, [anzanRunning, currentFlashIndex, currentAnzanEx]);
 
   const verifyAnzanAnswer = () => {
     const userVal = parseInt(userAnzanAnswer.trim(), 10);
+    const elapsed = answerTimerStartedAt ? (Date.now() - answerTimerStartedAt) / 1000 : null;
+    setElapsedAnswerSeconds(elapsed);
+
     if (userVal === currentAnzanEx.expectedSum) {
-      setAnzanResult({ correct: true, msg: 'إجابة صحيحة ممتعة! أحسنت يا بطل السوروبان 🎉' });
+      const timeMsg = elapsed !== null ? ` (في ${elapsed.toFixed(1)} ثانية ⏱️)` : '';
+      setAnzanResult({ correct: true, msg: `إجابة صحيحة ممتعة! أحسنت يا بطل السوروبان 🎉${timeMsg}` });
       if (onCompleteExercise) onCompleteExercise(20);
     } else {
       setAnzanResult({
@@ -271,16 +339,18 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 <span className="bg-indigo-500/30 text-indigo-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-indigo-400/20 inline-block">
                   تدريب Anzan - الحساب الذهني الخاطف
                 </span>
-                <h4 className="text-base sm:text-lg font-bold mt-1">تمرين {anzanExerciseIndex + 1} من {SOROBAN_PRACTICE_EXERCISES.length}</h4>
+                <h4 className="text-base sm:text-lg font-bold mt-1">
+                  {generatedExercise ? 'تمرين مولّد جديد 🎲' : `تمرين ${anzanExerciseIndex + 1} من ${SOROBAN_PRACTICE_EXERCISES.length}`}
+                </h4>
               </div>
               <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1">
-                <span className="text-[10px] text-slate-400 shrink-0 ml-1">التمارين:</span>
+                <span className="text-[10px] text-slate-400 shrink-0 ml-1">التمارين الجاهزة:</span>
                 {SOROBAN_PRACTICE_EXERCISES.map((_, i) => (
                   <button
                     key={i}
-                    onClick={() => { setAnzanExerciseIndex(i); setAnzanResult(null); }}
+                    onClick={() => handleSelectStaticExercise(i)}
                     className={`w-7 h-7 rounded-lg text-xs font-bold shrink-0 ${
-                      anzanExerciseIndex === i ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                      !generatedExercise && anzanExerciseIndex === i ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                     }`}
                   >
                     {i + 1}
@@ -289,10 +359,53 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               </div>
             </div>
 
+            {/* Difficulty & Operation Mode Selectors */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+              <div className="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-slate-800">
+                {(['easy', 'medium', 'hard'] as Difficulty[]).map((d) => (
+                  <button
+                    key={d}
+                    onClick={() => setDifficulty(d)}
+                    className={`flex-1 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer ${
+                      difficulty === d ? 'bg-indigo-500 text-white' : 'text-slate-400 hover:bg-slate-800'
+                    }`}
+                  >
+                    {d === 'easy' ? '⭐ سهل' : d === 'medium' ? '⭐⭐ متوسط' : '⭐⭐⭐ صعب'}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-slate-800">
+                {(['add', 'subtract', 'mixed'] as OperationMode[]).map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => setOperationMode(m)}
+                    className={`flex-1 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer ${
+                      operationMode === m ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:bg-slate-800'
+                    }`}
+                  >
+                    {m === 'add' ? 'جمع (+)' : m === 'subtract' ? 'طرح (−)' : 'مختلط (+/−)'}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={handleGenerateExercise}
+              className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 font-bold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer mb-1"
+            >
+              <Shuffle className="w-4 h-4" />
+              <span>توليد تمرين جديد حسب المستوى المختار</span>
+            </button>
+
             {/* Flash Screen Box */}
             <div className="h-32 sm:h-36 bg-slate-950 rounded-xl border border-indigo-500/30 flex items-center justify-center relative overflow-hidden my-4 p-3 text-center">
               {anzanRunning && currentFlashIndex >= 0 && currentFlashIndex < currentAnzanEx.numbers.length ? (
-                <div key={currentFlashIndex} className="text-4xl sm:text-5xl font-black text-amber-400 animate-pulse font-mono">
+                <div
+                  key={currentFlashIndex}
+                  className={`text-4xl sm:text-5xl font-black animate-pulse font-mono ${
+                    currentAnzanEx.numbers[currentFlashIndex] < 0 ? 'text-rose-400' : 'text-amber-400'
+                  }`}
+                >
                   {currentAnzanEx.numbers[currentFlashIndex] > 0 ? `+${currentAnzanEx.numbers[currentFlashIndex]}` : currentAnzanEx.numbers[currentFlashIndex]}
                 </div>
               ) : currentFlashIndex >= currentAnzanEx.numbers.length ? (
@@ -331,11 +444,19 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
             </div>
 
             {anzanResult && (
-              <div className={`mt-3 p-3 rounded-xl border text-xs font-bold flex items-center gap-2 ${
+              <div className={`mt-3 p-3 rounded-xl border text-xs font-bold flex items-center justify-between gap-2 flex-wrap ${
                 anzanResult.correct ? 'bg-emerald-500/20 text-emerald-200 border-emerald-500/40' : 'bg-rose-500/20 text-rose-200 border-rose-500/40'
               }`}>
-                {anzanResult.correct ? <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> : <XCircle className="w-4 h-4 text-rose-400 shrink-0" />}
-                <span>{anzanResult.msg}</span>
+                <div className="flex items-center gap-2">
+                  {anzanResult.correct ? <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> : <XCircle className="w-4 h-4 text-rose-400 shrink-0" />}
+                  <span>{anzanResult.msg}</span>
+                </div>
+                {elapsedAnswerSeconds !== null && !anzanResult.correct && (
+                  <span className="flex items-center gap-1 text-[10px] opacity-80 shrink-0">
+                    <Timer className="w-3.5 h-3.5" />
+                    {elapsedAnswerSeconds.toFixed(1)} ثانية
+                  </span>
+                )}
               </div>
             )}
           </div>

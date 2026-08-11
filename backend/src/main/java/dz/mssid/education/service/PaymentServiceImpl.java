@@ -1,25 +1,35 @@
 package dz.mssid.education.service;
 
+import dz.mssid.education.dto.CheckoutRequest;
+import dz.mssid.education.dto.CheckoutResponse;
+import dz.mssid.education.dto.PaymentWebhookResponse;
 import dz.mssid.education.dto.ReceiptUploadRequest;
 import dz.mssid.education.dto.VerifyReceiptRequest;
+import dz.mssid.education.dto.WebhookEventRequest;
 import dz.mssid.education.entity.PaymentReceipt;
+import dz.mssid.education.entity.PaymentTransaction;
 import dz.mssid.education.entity.Role;
+import dz.mssid.education.entity.Subscription;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.repository.PaymentReceiptRepository;
+import dz.mssid.education.repository.PaymentTransactionRepository;
 import dz.mssid.education.repository.RoleRepository;
 import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentReceiptRepository receiptRepository;
+    private final PaymentTransactionRepository paymentTransactionRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
@@ -56,6 +66,106 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentReceipt> getReceiptsByStatus(PaymentReceipt.ReceiptStatus status) {
         return receiptRepository.findByStatus(status);
+    }
+
+    @Override
+    @Transactional
+    public CheckoutResponse createCheckout(String userEmail, CheckoutRequest request) {
+        String email = (userEmail != null && !userEmail.isBlank()) ? userEmail : request.getUserEmail();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la création du checkout: " + email));
+
+        String transactionRef = request.getTransactionRef() != null && !request.getTransactionRef().isBlank()
+                ? request.getTransactionRef()
+                : "CPAY-" + UUID.randomUUID();
+        String checkoutId = "CHG-" + UUID.randomUUID();
+        String providerName = request.getProviderName() != null ? request.getProviderName() : "ChargilyPayV2";
+        String paymentMethod = request.getPaymentMethod() != null ? request.getPaymentMethod() : "BARIDIMOB";
+        Double amount = request.getAmountDzd() != null ? request.getAmountDzd() : 1500.0;
+
+        String checkoutUrl = String.format("https://pay.chargily.com/checkout/%s?amount=%.0f&method=%s&ref=%s", checkoutId, amount, paymentMethod, transactionRef);
+
+        PaymentTransaction transaction = PaymentTransaction.builder()
+                .user(user)
+                .checkoutId(checkoutId)
+                .transactionRef(transactionRef)
+                .providerName(providerName)
+                .paymentMethod(paymentMethod)
+                .amountDzd(amount)
+                .checkoutUrl(checkoutUrl)
+                .status(PaymentTransaction.TransactionStatus.PENDING)
+                .createdAt(LocalDateTime.now())
+                .build();
+
+        paymentTransactionRepository.save(transaction);
+
+        return CheckoutResponse.builder()
+                .checkoutId(checkoutId)
+                .checkoutUrl(checkoutUrl)
+                .transactionRef(transactionRef)
+                .status("PENDING")
+                .message("Checkout créé. Utilisez l'URL de paiement pour finaliser la transaction.")
+                .build();
+    }
+
+    @Override
+    @Transactional
+    public PaymentWebhookResponse processWebhook(WebhookEventRequest request) {
+        String checkoutId = request.getCheckoutId();
+        String transactionRef = request.getTransactionRef();
+        String status = request.getStatus() != null ? request.getStatus().toUpperCase() : "";
+
+        PaymentTransaction transaction = paymentTransactionRepository.findByCheckoutId(checkoutId)
+                .or(() -> transactionRef != null ? paymentTransactionRepository.findByTransactionRef(transactionRef) : java.util.Optional.empty())
+                .orElseThrow(() -> new RuntimeException("Transaction introuvable pour webhook: " + checkoutId));
+
+        if (status.contains("COMPLET") || status.contains("SUCCESS") || status.contains("PAID")) {
+            transaction.setStatus(PaymentTransaction.TransactionStatus.COMPLETED);
+        } else {
+            transaction.setStatus(PaymentTransaction.TransactionStatus.FAILED);
+        }
+        transaction.setUpdatedAt(LocalDateTime.now());
+        paymentTransactionRepository.save(transaction);
+
+        User user = userRepository.findByEmail(request.getUserEmail())
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable pour webhook: " + request.getUserEmail()));
+
+        if (transaction.getStatus() == PaymentTransaction.TransactionStatus.COMPLETED) {
+            Role premiumRole = roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)
+                    .orElseGet(() -> {
+                        Role r = new Role();
+                        r.setName(Role.RoleName.ROLE_PREMIUM);
+                        return roleRepository.save(r);
+                    });
+
+            user.setRole(premiumRole);
+
+            Subscription subscription = user.getSubscription();
+            if (subscription == null) {
+                subscription = new Subscription();
+                subscription.setUser(user);
+            }
+            subscription.setStatus(Subscription.SubscriptionStatus.ACTIVE);
+            subscription.setStartDate(LocalDate.now());
+            subscription.setEndDate(LocalDate.now().plusDays(30));
+            user.setSubscription(subscription);
+
+            userRepository.save(user);
+
+            return PaymentWebhookResponse.builder()
+                    .success(true)
+                    .message("Paiement confirmé et rôle premium activé.")
+                    .checkoutId(transaction.getCheckoutId())
+                    .transactionRef(transaction.getTransactionRef())
+                    .build();
+        }
+
+        return PaymentWebhookResponse.builder()
+                .success(false)
+                .message("Webhook reçu, mais le paiement n'a pas été validé.")
+                .checkoutId(transaction.getCheckoutId())
+                .transactionRef(transaction.getTransactionRef())
+                .build();
     }
 
     @Override

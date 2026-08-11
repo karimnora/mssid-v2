@@ -1,5 +1,7 @@
 import React from 'react';
-import { Sparkles, Lightbulb, ArrowRight } from 'lucide-react';
+import { Sparkles, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface AdBannerProps {
   showAds: boolean;
@@ -8,6 +10,10 @@ interface AdBannerProps {
 }
 
 export const AdBanner: React.FC<AdBannerProps> = ({ showAds, userRole, onUpgradeClick }) => {
+  const t = useTranslation('promo');
+  const { direction } = useLocaleContext();
+  const ForwardArrow = direction === 'rtl' ? ArrowLeft : ArrowRight;
+
   if (!showAds || userRole !== 'ROLE_FREE') {
     return null;
   }
@@ -20,10 +26,10 @@ export const AdBanner: React.FC<AdBannerProps> = ({ showAds, userRole, onUpgrade
             <Sparkles className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-purple-300 font-semibold">عرض خاص</p>
-            <h2 className="font-black text-base sm:text-lg">ترقية مميزة لـ mssid dz بلا إعلانات</h2>
+            <p className="text-xs uppercase tracking-[0.25em] text-purple-300 font-semibold">{t('badge')}</p>
+            <h2 className="font-black text-base sm:text-lg">{t('title')}</h2>
             <p className="text-[11px] text-purple-200 max-w-xl leading-relaxed mt-1">
-              احصل على تجربة تعليمية أسرع وأكثر أماناً بدون إعلانات، مع حلول رسمية، محتوى حصري، ودعم الدفع المحلي BaridiMob وEdahabia.
+              {t('description')}
             </p>
           </div>
         </div>
@@ -32,8 +38,9 @@ export const AdBanner: React.FC<AdBannerProps> = ({ showAds, userRole, onUpgrade
           className="inline-flex items-center gap-2 rounded-3xl bg-amber-300 text-slate-950 px-4 py-3 font-bold text-xs uppercase tracking-[0.15em] shadow-lg shadow-amber-500/20 hover:bg-amber-400 transition-all"
         >
           <Lightbulb className="w-4 h-4" />
-          ترقية الآن
-          <ArrowRight className="w-4 h-4" />
+
+          {t('cta')}
+          <ForwardArrow className="w-4 h-4" />
         </button>
       </div>
     </div>

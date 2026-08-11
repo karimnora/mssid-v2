@@ -1,5 +1,6 @@
 export const featureFlags = {
-  payment: false,
+  SHOW_PAYMENT: true,
+  SHOW_ADS: true,
   tamazight: false,
   aiAssistant: true,
   advancedLabs: true,

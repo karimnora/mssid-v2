@@ -38,6 +38,7 @@ interface NavbarProps {
   onOpenAdminReceiptsModal: () => void;
   onOpenAiTutor: () => void;
   onOpenAuditModal: () => void;
+  onOpenPricingModal: () => void;
   onOpenProfileModal: () => void;
   onOpenMobileSimulator?: () => void;
   onOpenPrivacyPolicy?: () => void;
@@ -314,7 +315,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* XP & Badges Display */}
             {theme === 'neutre' || theme === 'light' ? (
-              <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2">
                 <button
                   onClick={onOpenProfileModal}
                   className="flex items-center gap-2 bg-amber-100 px-3.5 py-1.5 rounded-full border-2 border-amber-200 transition-all hover:bg-amber-200/80 cursor-pointer"
@@ -325,7 +326,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
                 <button
                   onClick={onOpenProfileModal}
-                  className="hidden sm:flex items-center gap-2 bg-emerald-100 px-3.5 py-1.5 rounded-full border-2 border-emerald-200 transition-all hover:bg-emerald-200/80 cursor-pointer"
+                  className="flex items-center gap-2 bg-emerald-100 px-3.5 py-1.5 rounded-full border-2 border-emerald-200 transition-all hover:bg-emerald-200/80 cursor-pointer"
                 >
                   <span className="text-base">🏆</span>
                   <span className="font-black text-emerald-700 text-xs">
@@ -336,7 +337,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             ) : (
               <button
                 onClick={onOpenProfileModal}
-                className={`hidden sm:flex items-center gap-2 px-2.5 py-1.5 rounded-2xl border text-xs font-bold transition-all cursor-pointer hover:brightness-110 active:scale-95 ${
+                className={`hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-2xl border text-xs font-bold transition-all cursor-pointer hover:brightness-110 active:scale-95 ${
                   isLightLike
                     ? 'bg-slate-100 border-slate-200 text-slate-800'
                     : 'bg-slate-800/80 border-slate-700/80 text-slate-200'
@@ -365,7 +366,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
 
             {/* Theme Dropdown */}
-            <div className="relative" ref={themeRef}>
+            <div className="hidden md:block relative" ref={themeRef}>
               <button
                 onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
                 className={`p-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
@@ -449,7 +450,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* UNIFIED PROFILE & AUTH DROPDOWN */}
-            <div className="relative" ref={profileRef}>
+            <div className="hidden md:block relative" ref={profileRef}>
               <button
                 onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-extrabold transition-all cursor-pointer active:scale-95 ${

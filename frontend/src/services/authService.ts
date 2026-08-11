@@ -7,6 +7,64 @@ const STORAGE_KEYS = {
   RECEIPTS: 'mssid_payment_receipts',
 };
 
+// Pre-defined demo accounts used for local/offline testing when the backend is unavailable
+const DEMO_USERS: Record<string, AuthUser> = {
+  'free@mssid.dz': {
+    id: 101,
+    nom: 'أحمد التلميذ',
+    email: 'free@mssid.dz',
+    role: 'ROLE_FREE',
+    score: 140,
+    xp: 140,
+    level: 2,
+    grade: '5AP',
+    streakDays: 4,
+    quizzesCompleted: 3,
+    completedLessonIds: ['math-5ap-numbers'],
+    badges: [],
+    quizScores: {},
+  },
+  'premium@mssid.dz': {
+    id: 102,
+    nom: 'سارة المتفوقة',
+    email: 'premium@mssid.dz',
+    role: 'ROLE_PREMIUM',
+    score: 850,
+    xp: 850,
+    level: 9,
+    grade: '5AP',
+    streakDays: 12,
+    quizzesCompleted: 18,
+    completedLessonIds: [],
+    badges: ['b_math_star'],
+    quizScores: {},
+    subscription: {
+      id: 1,
+      userId: 102,
+      status: 'ACTIVE',
+      startDate: '2026-01-01',
+      endDate: '2027-01-01',
+      planName: 'اشتراك تفوق mssid dz السنوي',
+      amountDzd: 1500,
+    },
+  },
+  'admin@mssid.dz': {
+    id: 103,
+    nom: 'الأستاذ المدير',
+    email: 'admin@mssid.dz',
+    role: 'ROLE_ADMIN',
+    score: 2500,
+    xp: 2500,
+    level: 26,
+    grade: '5AP',
+    streakDays: 30,
+    quizzesCompleted: 50,
+    completedLessonIds: [],
+    badges: [],
+    quizScores: {},
+  },
+};
+
 // Default sample payment receipts
 const INITIAL_RECEIPTS: PaymentReceipt[] = [
   {
@@ -71,18 +129,18 @@ export class AuthService {
 
   static login(email: string, pass: string): AuthUser {
     const normalized = email.trim().toLowerCase();
-    let user = DEMO_USERS[normalized];
+    const demoUser = DEMO_USERS[normalized];
 
-    if (!user) {
-      // Create dynamic free user if not pre-made
-      user = {
-        id: Math.floor(Math.random() * 9000) + 1000,
-        nom: email.split('@')[0],
-        email: email,
-        role: 'ROLE_FREE',
-        token: `jwt.token.${Date.now()}`,
-      };
-    }
+    const user: AuthUser = demoUser
+      ? { ...demoUser, token: `jwt.token.${Date.now()}` }
+      : {
+          // Create dynamic free user if not pre-made
+          id: Math.floor(Math.random() * 9000) + 1000,
+          nom: email.split('@')[0],
+          email: email,
+          role: 'ROLE_FREE',
+          token: `jwt.token.${Date.now()}`,
+        };
 
     this.setCurrentUser(user);
     return user;
@@ -192,16 +250,19 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
     if (role === 'ROLE_PREMIUM') email = 'premium@mssid.dz';
     if (role === 'ROLE_ADMIN') email = 'admin@mssid.dz';
 
-    const user = DEMO_USERS[email] || {
-      id: 101,
-      nom: role === 'ROLE_ADMIN' ? 'الأستاذ المدير' : role === 'ROLE_PREMIUM' ? 'سارة المتفوقة' : 'أحمد التلميذ',
-      email: email,
-      role: role,
-      score: role === 'ROLE_ADMIN' ? 2500 : role === 'ROLE_PREMIUM' ? 850 : 140,
-      xp: role === 'ROLE_ADMIN' ? 2500 : role === 'ROLE_PREMIUM' ? 850 : 140,
-      level: role === 'ROLE_ADMIN' ? 26 : role === 'ROLE_PREMIUM' ? 9 : 2,
-      token: `mssid_jwt_token_${Date.now()}`,
-    };
+    const demoUser = DEMO_USERS[email];
+    const user: AuthUser = demoUser
+      ? { ...demoUser, token: `mssid_jwt_token_${Date.now()}` }
+      : {
+          id: 101,
+          nom: role === 'ROLE_ADMIN' ? 'الأستاذ المدير' : role === 'ROLE_PREMIUM' ? 'سارة المتفوقة' : 'أحمد التلميذ',
+          email: email,
+          role: role,
+          score: role === 'ROLE_ADMIN' ? 2500 : role === 'ROLE_PREMIUM' ? 850 : 140,
+          xp: role === 'ROLE_ADMIN' ? 2500 : role === 'ROLE_PREMIUM' ? 850 : 140,
+          level: role === 'ROLE_ADMIN' ? 26 : role === 'ROLE_PREMIUM' ? 9 : 2,
+          token: `mssid_jwt_token_${Date.now()}`,
+        };
     this.setCurrentUser(user);
 
     // Call backend API login so request is registered on backend

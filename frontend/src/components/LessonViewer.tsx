@@ -350,7 +350,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                           </h4>
                         )}
                         <p className="text-xs sm:text-sm text-slate-800 font-sans leading-relaxed font-semibold whitespace-pre-line">
-                          {formatEducationalText(renderArabicText(body), { hideTashkeel: false })}
+                          {formatEducationalText(renderArabicText(body))}
                         </p>
                       </div>
                     </div>
@@ -472,7 +472,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     {isVisible && (
                       <div className="text-xs sm:text-sm text-emerald-200 font-sans border-t border-emerald-900/60 pt-3 leading-relaxed bg-emerald-950/80 p-4 rounded-xl border border-emerald-800/80 animate-in fade-in duration-200 whitespace-pre-line">
                         <span className="font-extrabold text-amber-300 block mb-1">💡 الحل والتبسيط النموذجي:</span>
-                        {formatEducationalText(renderArabicText(ex.solution), { hideTashkeel: false })}
+                        {formatEducationalText(renderArabicText(ex.solution))}
                       </div>
                     )}
                   </div>
@@ -662,7 +662,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                         <span
                           className={`text-[11px] font-black px-3 py-1 rounded-full border shrink-0 flex items-center gap-1 ${
                             isUserCorrect
-                              ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                              ? 'bg-emerald-100 text-emerald-800 border-emerald-300 animate-in zoom-in-50 fade-in duration-300 motion-reduce:animate-none'
                               : 'bg-rose-100 text-rose-800 border-rose-300'
                           }`}
                         >

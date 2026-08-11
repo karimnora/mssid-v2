@@ -223,9 +223,10 @@ export const solveLinearEquation = (equation: string): { variable: string; value
 
 export const generateExplanation = (expression: string): string => {
   const normalized = normalize(expression);
-  const simpleAddMatch = normalized.match(/^\s*(\d+(?:\.\d+)?)\s*\+\s*(\d+(?:\.\d+)?)\s*$/);
-  if (simpleAddMatch) {
-    const [_, a, b] = simpleAddMatch;
+
+  const addMatch = normalized.match(/^\s*(\d+(?:\.\d+)?)\s*\+\s*(\d+(?:\.\d+)?)\s*$/);
+  if (addMatch) {
+    const [, a, b] = addMatch;
     const aNum = Number(a);
     const bNum = Number(b);
     const tensA = Math.floor(aNum / 10) * 10;
@@ -236,5 +237,42 @@ export const generateExplanation = (expression: string): string => {
       return `Décomposer: ${aNum} = ${tensA} + ${onesA}\nDécomposer: ${bNum} = ${tensB} + ${onesB}\nSomme des dizaines: ${tensA + tensB}\nSomme des unités: ${onesA + onesB}\nRésultat: ${aNum + bNum}`;
     }
   }
+
+  const subMatch = normalized.match(/^\s*(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*$/);
+  if (subMatch) {
+    const [, a, b] = subMatch;
+    const aNum = Number(a);
+    const bNum = Number(b);
+    if (Number.isInteger(aNum) && Number.isInteger(bNum) && aNum >= bNum) {
+      const tensA = Math.floor(aNum / 10) * 10;
+      const onesA = aNum - tensA;
+      const tensB = Math.floor(bNum / 10) * 10;
+      const onesB = bNum - tensB;
+      // Only decompose when it does not require borrowing (keeps the explanation correct for a young learner)
+      if ((tensA || tensB) && onesA >= onesB) {
+        return `Décomposer: ${aNum} = ${tensA} + ${onesA}\nDécomposer: ${bNum} = ${tensB} + ${onesB}\nDifférence des dizaines: ${tensA - tensB}\nDifférence des unités: ${onesA - onesB}\nRésultat: ${aNum - bNum}`;
+      }
+    }
+  }
+
+  const mulMatch = normalized.match(/^\s*(\d+(?:\.\d+)?)\s*\*\s*(\d+(?:\.\d+)?)\s*$/);
+  if (mulMatch) {
+    const [, a, b] = mulMatch;
+    const aNum = Number(a);
+    const bNum = Number(b);
+    if (Number.isInteger(aNum) && Number.isInteger(bNum)) {
+      if (aNum >= 10 && bNum < 10 && bNum > 0) {
+        const tensA = Math.floor(aNum / 10) * 10;
+        const onesA = aNum - tensA;
+        return `Décomposer: ${aNum} = ${tensA} + ${onesA}\nMultiplier chaque partie: ${tensA} × ${bNum} = ${tensA * bNum}, puis ${onesA} × ${bNum} = ${onesA * bNum}\nAdditionner: ${tensA * bNum} + ${onesA * bNum}\nRésultat: ${aNum * bNum}`;
+      }
+      if (bNum >= 10 && aNum < 10 && aNum > 0) {
+        const tensB = Math.floor(bNum / 10) * 10;
+        const onesB = bNum - tensB;
+        return `Décomposer: ${bNum} = ${tensB} + ${onesB}\nMultiplier chaque partie: ${aNum} × ${tensB} = ${aNum * tensB}, puis ${aNum} × ${onesB} = ${aNum * onesB}\nAdditionner: ${aNum * tensB} + ${aNum * onesB}\nRésultat: ${aNum * bNum}`;
+      }
+    }
+  }
+
   return `Calcul effectué: ${expression} = ${evaluateExpression(expression)}`;
 };

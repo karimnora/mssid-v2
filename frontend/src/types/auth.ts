@@ -49,6 +49,8 @@ export interface AuthUser {
   quizScores?: Record<string, number>;
   tashkeelEnabled?: boolean;
   createdAt?: string;
+  avatar?: string;
+  lastActiveDate?: string;
 }
 
 export interface AuthState {

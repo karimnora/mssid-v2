@@ -8,6 +8,8 @@ const SPEED_OPTIONS = [0.75, 1, 1.25] as const;
 export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
   const { locale, t } = useLocaleContext();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isSpeedMenuOpen, setIsSpeedMenuOpen] = useState(false);
   const [speed, setSpeed] = useState< (typeof SPEED_OPTIONS)[number] >(1);
 
   const lang = useMemo(() => {
@@ -17,15 +19,22 @@ export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
   }, [locale]);
 
   const handlePlay = async () => {
+    if (isPaused) {
+      handleResume();
+      return;
+    }
     setIsPlaying(true);
+    setIsPaused(false);
     await speakText(text, lang, speed);
     setIsPlaying(false);
+    setIsPaused(false);
   };
 
   const handlePause = () => {
     if ('speechSynthesis' in window && window.speechSynthesis.speaking) {
       window.speechSynthesis.pause();
       setIsPlaying(false);
+      setIsPaused(true);
     }
   };
 
@@ -33,12 +42,14 @@ export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
     if ('speechSynthesis' in window && window.speechSynthesis.paused) {
       window.speechSynthesis.resume();
       setIsPlaying(true);
+      setIsPaused(false);
     }
   };
 
   const handleStop = () => {
     stopSpeech();
     setIsPlaying(false);
+    setIsPaused(false);
   };
 
   return (
@@ -65,23 +76,29 @@ export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
       <div className="relative">
         <button
           type="button"
+          onClick={() => setIsSpeedMenuOpen((open) => !open)}
           className="inline-flex items-center gap-1 rounded-2xl bg-white px-3 py-2 border border-slate-300 text-slate-600 hover:bg-slate-50 transition"
         >
           {t('common', 'speed')}
           <ChevronDown className="w-3.5 h-3.5" />
         </button>
-        <div className="absolute right-0 mt-2 w-32 rounded-2xl border border-slate-200 bg-white shadow-lg p-2">
-          {SPEED_OPTIONS.map((option) => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => setSpeed(option)}
-              className={`w-full text-left px-2 py-1 rounded-xl text-xs ${speed === option ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'}`}
-            >
-              {option}x
-            </button>
-          ))}
-        </div>
+        {isSpeedMenuOpen && (
+          <div className="absolute right-0 mt-2 w-32 rounded-2xl border border-slate-200 bg-white shadow-lg p-2 z-10">
+            {SPEED_OPTIONS.map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => {
+                  setSpeed(option);
+                  setIsSpeedMenuOpen(false);
+                }}
+                className={`w-full text-left px-2 py-1 rounded-xl text-xs ${speed === option ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'}`}
+              >
+                {option}x
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

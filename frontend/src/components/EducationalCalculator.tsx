@@ -39,7 +39,7 @@ export const EducationalCalculator: React.FC = () => {
       setExplanation(explanationText);
       setErrorMessage('');
     } catch (error) {
-      const message = error instanceof MathParserError ? error.message : 'خطأ في التعبير.';
+      const message = error instanceof MathParserError ? error.message : t('common', 'responseError');
       setErrorMessage(message);
       setResult('');
       setExplanation('');
@@ -87,7 +87,7 @@ export const EducationalCalculator: React.FC = () => {
           >
             {t('common', 'calculate')}
           </button>
-          {canSpeak && <TextToSpeechButton text={errorMessage || `النتيجة: ${result}. ${explanation}`} />}
+          {canSpeak && <TextToSpeechButton text={errorMessage || `${t('common', 'solution')}: ${result}. ${explanation}`} />}
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">

@@ -1,6 +1,7 @@
 import { SubjectInfo } from '../types';
+import { isFeatureEnabled } from '../featureFlags';
 
-export const SUBJECTS_LIST: SubjectInfo[] = [
+const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   // 1. COURSES & OFFICIAL CURRICULUM
   {
     id: 'math',
@@ -155,6 +156,26 @@ export const SUBJECTS_LIST: SubjectInfo[] = [
     category: 'tool',
   },
   {
+    id: 'educational_calculator',
+    nameAr: 'الحاسبة التعليمية المفسرة',
+    nameFr: 'Calculatrice pédagogique',
+    icon: 'Calculator',
+    color: 'from-cyan-600 to-sky-700',
+    bgLight: 'bg-cyan-50 text-cyan-900 border-cyan-200',
+    description: 'آلة حاسبة آمنة تشرح الخطوات وتعرض النتائج مع شرح مبسط للأطفال.',
+    category: 'tool',
+  },
+  {
+    id: 'writing_response',
+    nameAr: 'منطقة الكتابة والردود الذكية',
+    nameFr: 'Zone d’écriture et de réponse',
+    icon: 'BookOpen',
+    color: 'from-amber-500 to-orange-600',
+    bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
+    description: 'مساحة للكتابة وشرح الحلول مع تصحيح فوري لمقالات قصيرة وبطاقة الحساب.',
+    category: 'tool',
+  },
+  {
     id: 'multiplication',
     nameAr: 'جدول الضرب والتحدي السريع',
     nameFr: 'Tables de Multiplication',
@@ -162,6 +183,16 @@ export const SUBJECTS_LIST: SubjectInfo[] = [
     color: 'from-rose-500 to-red-700',
     bgLight: 'bg-rose-50 text-rose-900 border-rose-200',
     description: 'تدريب تفاعلي لحفظ جدول الضرب من 1 إلى 10 مع ألعاب وسرعة البديهة.',
+    category: 'tool',
+  },
+  {
+    id: 'interactive_video',
+    nameAr: 'الفيديو التفاعلي بالأسئلة',
+    nameFr: 'Vidéo interactive avec questions',
+    icon: 'Sparkles',
+    color: 'from-indigo-600 to-violet-700',
+    bgLight: 'bg-indigo-50 text-indigo-900 border-indigo-200',
+    description: 'شاهد فيديو تعليمياً يتوقف تلقائياً ليطرح عليك أسئلة، مع تصحيح فوري ومتابعة المشاهدة.',
     category: 'tool',
   },
 
@@ -177,6 +208,10 @@ export const SUBJECTS_LIST: SubjectInfo[] = [
     category: 'exam',
   },
 ];
+
+export const SUBJECTS_LIST: SubjectInfo[] = RAW_SUBJECTS_LIST.filter(
+  (s) => s.id !== 'interactive_video' || isFeatureEnabled('interactiveVideo'),
+);
 
 export const COURSE_SUBJECTS_LIST = SUBJECTS_LIST.filter(s => s.category === 'course');
 export const INTERACTIVE_LABS_LIST = SUBJECTS_LIST.filter(s => s.category === 'tool');
