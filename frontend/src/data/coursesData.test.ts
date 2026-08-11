@@ -314,8 +314,8 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     const categories = new Set(science5apLessons.map((l) => l.categoryAr));
     expect(categories.has('الإنسان والصحة')).toBe(true);
     expect(categories.has('الأحياء والتكيف مع الوسط')).toBe(true);
+    expect(categories.has('الأحياء والتكاثر عند الكائنات الحية')).toBe(true);
     expect(categories.has('المادة والتكنولوجيا')).toBe(true);
-    expect(categories.has('المظاهر الفلكية والفيزيائية')).toBe(true);
   });
 
   it('every science lesson should have clear summaries, rules, and key formulas or guidelines', () => {
@@ -357,7 +357,7 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     });
   });
 
-  it('should contain full interactive gameplay_simulation logic for the 4 specified Science 5AP modules', () => {
+  it('should contain full interactive gameplay_simulation logic for the 3 specified Science 5AP modules', () => {
     const circuitLesson = science5apLessons.find((l) => l.id === 'science-5ap-electric-circuit');
     expect(circuitLesson?.gameplay_simulation?.type).toBe('circuit_builder');
     if (circuitLesson?.gameplay_simulation?.type === 'circuit_builder') {
@@ -372,13 +372,6 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     if (safetyLesson?.gameplay_simulation?.type === 'safety_roleplay') {
       expect(safetyLesson.gameplay_simulation.choices.length).toBe(3);
       expect(safetyLesson.gameplay_simulation.choices.some((c) => c.statusLabelAr.includes('ELECTROCUTION'))).toBe(true);
-    }
-
-    const leverLesson = science5apLessons.find((l) => l.id === 'science-5ap-lever-balance');
-    expect(leverLesson?.gameplay_simulation?.type).toBe('lever_balance');
-    if (leverLesson?.gameplay_simulation?.type === 'lever_balance') {
-      expect(leverLesson.gameplay_simulation.positions.length).toBe(3);
-      expect(leverLesson.gameplay_simulation.positions.some((p) => p.success)).toBe(true);
     }
 
     const mixtureLesson = science5apLessons.find((l) => l.id === 'science-5ap-matter-mixtures');

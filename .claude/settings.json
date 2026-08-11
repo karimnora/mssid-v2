@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/Karim/AppData/Local/Temp/claude/c--Users-Karim-Desktop-mssid-mssid-V1/e5da902e-ba60-4940-b7fa-4f31b855186b/scratchpad/verify_eval.mjs\" \"/c/Users/Karim/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/verify_eval.mjs\")",
+      "Bash(node verify_eval.mjs)",
+      "Bash(awk '/arabic-5ap-sentence-components/,0{print NR\": \"$0; if\\(NR>594 && /^  \\\\{$/ && NR>640\\) exit}' src/data/coursesData.ts)",
+      "Bash(awk '/id: .science-5ap-electric-circuit./,0{print NR\": \"$0}' src/data/coursesData.ts)",
+      "Bash(cp \"C:/Users/Karim/AppData/Local/Temp/claude/c--Users-Karim-Desktop-mssid-mssid-V1/e5da902e-ba60-4940-b7fa-4f31b855186b/scratchpad/verify_all3.mjs\" \"/c/Users/Karim/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/verify_all3.mjs\")",
+      "Bash(node verify_all3.mjs)",
+      "Bash(cp \"C:/Users/Karim/AppData/Local/Temp/claude/c--Users-Karim-Desktop-mssid-mssid-V1/e5da902e-ba60-4940-b7fa-4f31b855186b/scratchpad/verify_arabic.mjs\" \"/c/Users/Karim/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/verify_arabic.mjs\")",
+      "Bash(node verify_arabic.mjs)",
+      "Bash(rm -f /c/Users/Karim/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/*.mjs; ls /c/Users/Karim/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/ 2>/dev/null | head -20)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000 --max-time 5)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Karim\\AppData\\Local\\npm-cache\\_npx\\e41f203b7505f1fb"
+    ]
+  }
+}

@@ -5,6 +5,7 @@ import { SorobanInteractive } from './SorobanInteractive';
 import { UnitConverter } from './UnitConverter';
 import { GeometryVisualizer } from './GeometryVisualizer';
 import { ScienceLabSimulation } from './ScienceLabSimulation';
+import { ScientificInquiryFlow } from './ScientificInquiryFlow';
 import { ArabicConjugator } from './ArabicConjugator';
 import { MultiplicationTableInteractive } from './MultiplicationTableInteractive';
 import { FrenchLanguageLab } from './FrenchLanguageLab';
@@ -14,7 +15,8 @@ import { IslamicEducationInteractive } from './IslamicEducationInteractive';
 import { LessonExplanationView } from './LessonExplanationView';
 import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
 import { ScienceReactorInteractive } from './ScienceReactorInteractive';
-import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { PracticeExerciseCard } from './PracticeExerciseCard';
+import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface LessonViewerProps {
@@ -29,6 +31,17 @@ interface LessonViewerProps {
   onHomeClick?: () => void;
   tashkeelEnabled?: boolean;
 }
+
+// The 4-tier practice progression requested for lesson depth: level 1-4 on each ProgressiveExercise
+// maps directly to one of these tiers (level 5 reserved for an optional extra-challenge exercise,
+// grouped visually with tier 4). Purely a presentation grouping — no new data field needed.
+const PRACTICE_TIERS: { level: number; icon: string; titleAr: string }[] = [
+  { level: 1, icon: '🔍', titleAr: 'المستوى 1 — أكتشف' },
+  { level: 2, icon: '✏️', titleAr: 'المستوى 2 — أتدرب' },
+  { level: 3, icon: '🎯', titleAr: 'المستوى 3 — أتقن' },
+  { level: 4, icon: '🏆', titleAr: 'المستوى 4 — التحدي' },
+  { level: 5, icon: '🌟', titleAr: 'تحدٍّ إضافي' },
+];
 
 // Fisher-Yates array shuffle helper to ensure correct options are not always in the 1st position
 const shuffleOptions = <T,>(array: T[]): T[] => {
@@ -60,7 +73,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [shuffledQuiz, setShuffledQuiz] = useState<CourseLesson['quiz']>([]);
   const [visibleSolutions, setVisibleSolutions] = useState<Record<number, boolean>>({});
-  const [activeTab, setActiveTab] = useState<'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz'>('explanation');
+  const [activeTab, setActiveTab] = useState<'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz' | 'evaluation'>('explanation');
+  const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   // Practice exercises state ("Je m'entraîne" — progressiveExercises)
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
@@ -68,9 +82,28 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [practiceCorrect, setPracticeCorrect] = useState<Record<string, boolean>>({});
   const [awardedExerciseIds, setAwardedExerciseIds] = useState<Set<string>>(new Set());
 
+  // Matching exercises: tap a left item, then a right item, to connect them (leftIdx -> rightIdx)
+  const [matchingRightOrder, setMatchingRightOrder] = useState<Record<string, number[]>>({});
+  const [matchingConnections, setMatchingConnections] = useState<Record<string, Record<number, number>>>({});
+  const [matchingSelectedLeft, setMatchingSelectedLeft] = useState<Record<string, number | null>>({});
+
+  // Ordering exercises: tap items in the order believed correct; tapping again undoes that item
+  const [orderingShuffled, setOrderingShuffled] = useState<Record<string, number[]>>({});
+  const [orderingSelections, setOrderingSelections] = useState<Record<string, number[]>>({});
+
+  const canCheckExercise = (ex: NonNullable<CourseLesson['progressiveExercises']>[number]): boolean => {
+    const answer = practiceAnswers[ex.id];
+    if (ex.type === 'qcm' || ex.type === 'true_false') return answer !== undefined;
+    if (ex.type === 'fill_blank') return !!String(answer ?? '').trim();
+    if (ex.type === 'calculation') return answer !== undefined && answer !== '';
+    if (ex.type === 'matching') return Object.keys(matchingConnections[ex.id] || {}).length === (ex.matchingPairsAr?.length || 0);
+    if (ex.type === 'ordering') return (orderingSelections[ex.id] || []).length === (ex.orderedItemsAr?.length || 0);
+    return true; // reveal-based types
+  };
+
   const checkPracticeExercise = (ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
     const answer = practiceAnswers[ex.id];
-    let isCorrect = true; // default for reveal-based types (short_answer, matching, ordering — not yet auto-validated)
+    let isCorrect = true; // default for reveal-based types (short_answer — not auto-validated)
     if (ex.type === 'qcm' || ex.type === 'true_false') {
       const opt = ex.options?.find((o) => o.id === answer);
       isCorrect = !!opt?.isCorrect;
@@ -79,6 +112,14 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       isCorrect = String(answer ?? '').trim() === expected;
     } else if (ex.type === 'calculation') {
       isCorrect = Number(answer) === ex.calculationAnswer;
+    } else if (ex.type === 'matching' && ex.matchingPairsAr) {
+      const conns = matchingConnections[ex.id] || {};
+      isCorrect =
+        Object.keys(conns).length === ex.matchingPairsAr.length &&
+        ex.matchingPairsAr.every((_, leftIdx) => conns[leftIdx] === leftIdx);
+    } else if (ex.type === 'ordering' && ex.orderedItemsAr) {
+      const seq = orderingSelections[ex.id] || [];
+      isCorrect = seq.length === ex.orderedItemsAr.length && seq.every((originalIdx, position) => originalIdx === position);
     }
 
     setPracticeChecked((prev) => ({ ...prev, [ex.id]: true }));
@@ -88,6 +129,49 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       setAwardedExerciseIds((prev) => new Set(prev).add(ex.id));
     }
   };
+
+  const resetPracticeExercise = (ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
+    setPracticeChecked((prev) => ({ ...prev, [ex.id]: false }));
+    setPracticeAnswers((prev) => ({ ...prev, [ex.id]: '' }));
+    if (ex.type === 'matching') {
+      setMatchingConnections((prev) => ({ ...prev, [ex.id]: {} }));
+      setMatchingSelectedLeft((prev) => ({ ...prev, [ex.id]: null }));
+    }
+    if (ex.type === 'ordering') {
+      setOrderingSelections((prev) => ({ ...prev, [ex.id]: [] }));
+    }
+  };
+
+  // Per-exercise callback factories for <PracticeExerciseCard>, shared identically by the
+  // tiered practice section and the final evaluation section (exercise ids are unique across both).
+  const setAnswerFor = (exId: string) => (value: string | number) => setPracticeAnswers((prev) => ({ ...prev, [exId]: value }));
+  const setMatchingSelectedLeftFor = (exId: string) => (leftIdx: number | null) => setMatchingSelectedLeft((prev) => ({ ...prev, [exId]: leftIdx }));
+  const connectMatchingFor = (exId: string) => (leftIdx: number, rightIdx: number) => {
+    setMatchingConnections((prev) => ({ ...prev, [exId]: { ...(prev[exId] || {}), [leftIdx]: rightIdx } }));
+    setMatchingSelectedLeft((prev) => ({ ...prev, [exId]: null }));
+  };
+  const disconnectMatchingFor = (exId: string) => (leftIdx: number) => {
+    setMatchingConnections((prev) => {
+      const next = { ...(prev[exId] || {}) };
+      delete next[leftIdx];
+      return { ...prev, [exId]: next };
+    });
+  };
+  const toggleOrderingItemFor = (exId: string) => (originalIdx: number) => {
+    setOrderingSelections((prev) => {
+      const cur = prev[exId] || [];
+      if (cur.includes(originalIdx)) return { ...prev, [exId]: cur.filter((i) => i !== originalIdx) };
+      return { ...prev, [exId]: [...cur, originalIdx] };
+    });
+  };
+
+  // Final evaluation summary — reuses the exact same practiceChecked/practiceCorrect state as the
+  // tiered practice exercises (exercise ids are unique across the two lists).
+  const evaluationExercises = lesson.evaluationExercises || [];
+  const evaluationCheckedCount = evaluationExercises.filter((ex) => practiceChecked[ex.id]).length;
+  const evaluationCorrectCount = evaluationExercises.filter((ex) => practiceChecked[ex.id] && practiceCorrect[ex.id]).length;
+  const evaluationComplete = evaluationExercises.length > 0 && evaluationCheckedCount === evaluationExercises.length;
+  const evaluationScorePercent = evaluationExercises.length > 0 ? Math.round((evaluationCorrectCount / evaluationExercises.length) * 100) : 0;
 
   // Determine effective interactive tool for the lesson
   const getEffectiveTool = () => {
@@ -128,10 +212,28 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setVisibleSolutions({});
     setSelectedAnswers({});
     setQuizSubmitted(false);
+    setSelectedExampleTier(1);
     setPracticeAnswers({});
     setPracticeChecked({});
     setPracticeCorrect({});
     setAwardedExerciseIds(new Set());
+    setMatchingConnections({});
+    setMatchingSelectedLeft({});
+    setOrderingSelections({});
+
+    const newMatchingRightOrder: Record<string, number[]> = {};
+    const newOrderingShuffled: Record<string, number[]> = {};
+    [...(lesson.progressiveExercises || []), ...(lesson.evaluationExercises || [])].forEach((ex) => {
+      if (ex.type === 'matching' && ex.matchingPairsAr) {
+        newMatchingRightOrder[ex.id] = shuffleOptions(ex.matchingPairsAr.map((_, i) => i));
+      }
+      if (ex.type === 'ordering' && ex.orderedItemsAr) {
+        newOrderingShuffled[ex.id] = shuffleOptions(ex.orderedItemsAr.map((_, i) => i));
+      }
+    });
+    setMatchingRightOrder(newMatchingRightOrder);
+    setOrderingShuffled(newOrderingShuffled);
+
     initializeShuffledQuiz();
   }, [lesson.id]);
 
@@ -237,10 +339,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
             <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold">
               <BookOpen className="w-4 h-4" />
-              {lesson.contentSource === 'official_verified' ? (
-                <span>محتوى مطابق لبرنامج رسمي موثّق</span>
-              ) : (
-                <span className="text-amber-300">محتوى تربوي تكميلي (غير منسوخ حرفياً عن وثيقة وزارية)</span>
+              {lesson.contentSource === 'official_verified' && <span>✅ محتوى مطابق لبرنامج رسمي موثّق</span>}
+              {lesson.contentSource === 'corroborated' && <span className="text-sky-300">🔎 محتوى مُرجَّح (تمت مقارنته بمصدر ثانوي غير رسمي)</span>}
+              {lesson.contentSource === 'complementary' && <span className="text-amber-300">✨ محتوى تربوي تكميلي أصلي (مسيد DZ)</span>}
+              {(lesson.contentSource === 'needs_verification' || !lesson.contentSource) && (
+                <span className="text-slate-400">⚠️ محتوى بحاجة إلى تحقق (المصدر غير مؤكد بعد)</span>
               )}
             </div>
             {lesson.difficultyTier && (
@@ -260,6 +363,32 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
         </div>
       </div>
+
+      {/* Creative mission wrapper (presentation only — never a source of new official notions) */}
+      {lesson.missionTitleAr && (
+        <div className="bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded-3xl p-5 shadow-md">
+          <h2 className="font-black text-base sm:text-lg mb-1">{renderArabicText(lesson.missionTitleAr)}</h2>
+          {lesson.missionIntroAr && <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed">{renderArabicText(lesson.missionIntroAr)}</p>}
+        </div>
+      )}
+
+      {/* Learning objectives — "à la fin de cette leçon, je sais..." */}
+      {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
+        <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-xs">
+          <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-2 mb-2.5">
+            <Target className="w-4 h-4 text-indigo-600" />
+            <span>في نهاية هذا الدرس، سأكون قادراً على:</span>
+          </h3>
+          <ul className="space-y-1.5">
+            {lesson.objectivesAr.map((obj, i) => (
+              <li key={i} className="text-xs sm:text-sm text-slate-700 flex items-start gap-2">
+                <span className="text-indigo-500 shrink-0">◆</span>
+                <span>{renderArabicText(obj)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Section Sub-Tabs */}
       <div className="flex items-center bg-slate-200/80 p-1 rounded-2xl border border-slate-300 w-fit text-xs font-bold overflow-x-auto max-w-full">
@@ -312,6 +441,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <span>لعبة المحاكاة التفاعلية</span>
           </button>
         )}
+        {evaluationExercises.length > 0 && (
+          <button
+            onClick={() => setActiveTab('evaluation')}
+            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
+              activeTab === 'evaluation' ? 'bg-rose-600 text-white font-extrabold shadow-sm' : 'text-slate-700 hover:text-slate-900 font-bold'
+            }`}
+          >
+            <ClipboardCheck className="w-3.5 h-3.5" />
+            <span>التقييم النهائي ({evaluationExercises.length})</span>
+          </button>
+        )}
         {lesson.quiz.length > 0 && (
           <button
             onClick={() => setActiveTab('quiz')}
@@ -339,121 +479,44 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
       )}
 
-      {/* TAB PRACTICE: "أتدرب" — progressive exercises by difficulty tier, then the mini-game challenge */}
+      {/* TAB PRACTICE: "أتدرب" — exercises grouped by tier (أكتشف/أتدرب/أتقن/التحدي), then the mini-game challenge */}
       {activeTab === 'practice' && lesson.progressiveExercises && (
-        <div className="space-y-5 animate-in fade-in duration-200">
-          {lesson.progressiveExercises.map((ex) => {
-            const isChecked = !!practiceChecked[ex.id];
-            const isCorrect = !!practiceCorrect[ex.id];
-            const answer = practiceAnswers[ex.id];
-
+        <div className="space-y-6 animate-in fade-in duration-200">
+          {PRACTICE_TIERS.map((tier) => {
+            const tierExercises = lesson.progressiveExercises!.filter((ex) => ex.level === tier.level);
+            if (tierExercises.length === 0) return null;
             return (
-              <div key={ex.id} className="bg-white border border-slate-200 rounded-3xl p-5 space-y-3 shadow-xs">
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <span className="text-xs font-black text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
-                    {ex.levelLabelAr}
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>
+              <div key={tier.level} className="space-y-3">
+                <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+                  <span className="text-lg">{tier.icon}</span>
+                  <h3 className="font-black text-sm text-slate-800">{tier.titleAr}</h3>
+                  <span className="text-[10px] font-bold text-slate-400">({tierExercises.length})</span>
                 </div>
-
-                <p className="text-sm font-bold text-slate-900 whitespace-pre-line">{renderArabicText(ex.problemAr)}</p>
-
-                {/* QCM / True-False */}
-                {(ex.type === 'qcm' || ex.type === 'true_false') && ex.options && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {ex.options.map((opt) => {
-                      const isSelected = answer === opt.id;
-                      let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
-                      if (isChecked) {
-                        if (opt.isCorrect) style = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold';
-                        else if (isSelected) style = 'bg-rose-50 border-rose-400 text-rose-900';
-                        else style = 'bg-slate-50 border-slate-100 text-slate-400';
-                      } else if (isSelected) {
-                        style = 'bg-indigo-50 border-indigo-500 text-indigo-900 font-bold';
-                      }
-                      return (
-                        <button
-                          key={opt.id}
-                          disabled={isChecked}
-                          onClick={() => setPracticeAnswers((prev) => ({ ...prev, [ex.id]: opt.id }))}
-                          className={`text-right p-3 rounded-xl border text-xs transition-all cursor-pointer flex items-center justify-between ${style}`}
-                        >
-                          <span>{renderArabicText(opt.textAr)}</span>
-                          {isChecked && opt.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
-                          {isChecked && isSelected && !opt.isCorrect && <XCircle className="w-4 h-4 text-rose-500 shrink-0" />}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* Fill in the blank */}
-                {ex.type === 'fill_blank' && (
-                  <input
-                    type="text"
-                    disabled={isChecked}
-                    value={String(answer ?? '')}
-                    onChange={(e) => setPracticeAnswers((prev) => ({ ...prev, [ex.id]: e.target.value }))}
-                    placeholder="اكتب إجابتك هنا..."
-                    className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold disabled:bg-slate-50"
-                  />
-                )}
-
-                {/* Calculation */}
-                {ex.type === 'calculation' && (
-                  <input
-                    type="number"
-                    disabled={isChecked}
-                    value={answer ?? ''}
-                    onChange={(e) => setPracticeAnswers((prev) => ({ ...prev, [ex.id]: e.target.value === '' ? '' : Number(e.target.value) }))}
-                    placeholder="اكتب الناتج..."
-                    className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold disabled:bg-slate-50"
-                    dir="ltr"
-                  />
-                )}
-
-                {/* matching / ordering / short_answer / untyped: simple reveal-based practice */}
-                {(!ex.type || ex.type === 'short_answer' || ex.type === 'matching' || ex.type === 'ordering') && !isChecked && (
-                  <p className="text-[11px] text-slate-500">فكّر في الحل، ثم اضغط "تحقق" لمشاهدة التصحيح المفصّل.</p>
-                )}
-
-                {!isChecked && ex.hintsAr.length > 0 && (
-                  <p className="text-[11px] text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
-                    💡 تلميح: {renderArabicText(ex.hintsAr[0])}
-                  </p>
-                )}
-
-                {isChecked && (
-                  <div
-                    className={`text-xs p-3 rounded-xl border leading-relaxed whitespace-pre-line ${
-                      isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
-                    }`}
-                  >
-                    <span className="font-black block mb-1">
-                      {isCorrect ? '✅ أحسنت! إجابة صحيحة.' : `💡 ليست هذه الإجابة — إليك الشرح:`}
-                    </span>
-                    {renderArabicText(ex.detailedCorrectionAr)}
-                  </div>
-                )}
-
-                {!isChecked ? (
-                  <button
-                    onClick={() => checkPracticeExercise(ex)}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
-                  >
-                    تحقق من الإجابة
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      setPracticeChecked((prev) => ({ ...prev, [ex.id]: false }));
-                      setPracticeAnswers((prev) => ({ ...prev, [ex.id]: '' }));
-                    }}
-                    className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
-                  >
-                    حاول مرة أخرى
-                  </button>
-                )}
+                <div className="space-y-4">
+                  {tierExercises.map((ex) => (
+                    <PracticeExerciseCard
+                      key={ex.id}
+                      ex={ex}
+                      renderArabicText={renderArabicText}
+                      answer={practiceAnswers[ex.id]}
+                      setAnswer={setAnswerFor(ex.id)}
+                      isChecked={!!practiceChecked[ex.id]}
+                      isCorrect={!!practiceCorrect[ex.id]}
+                      canCheck={canCheckExercise(ex)}
+                      onCheck={() => checkPracticeExercise(ex)}
+                      onReset={() => resetPracticeExercise(ex)}
+                      matchingRightOrder={matchingRightOrder[ex.id] || []}
+                      matchingConnections={matchingConnections[ex.id] || {}}
+                      matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
+                      setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
+                      connectMatching={connectMatchingFor(ex.id)}
+                      disconnectMatching={disconnectMatchingFor(ex.id)}
+                      orderingShuffled={orderingShuffled[ex.id] || []}
+                      orderingSelection={orderingSelections[ex.id] || []}
+                      toggleOrderingItem={toggleOrderingItemFor(ex.id)}
+                    />
+                  ))}
+                </div>
               </div>
             );
           })}
@@ -493,6 +556,16 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       {/* TAB 1: CONTENT & RULES */}
       {activeTab === 'content' && (
         <div className="space-y-6 animate-in fade-in duration-200">
+          {/* Sciences: question → observation → hypothesis → experiment → result → explanation */}
+          {lesson.scientificInquiry && (
+            <ScientificInquiryFlow
+              inquiry={lesson.scientificInquiry}
+              renderArabicText={renderArabicText}
+              hasSimulation={!!lesson.gameplay_simulation}
+              onGoToSimulation={() => setActiveTab('gameplay')}
+            />
+          )}
+
           {/* Executive Lesson Summary Card */}
           {lesson.summaryAr && (
             <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-5 sm:p-6 border border-emerald-800/80 shadow-md space-y-3">
@@ -510,6 +583,101 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans font-medium bg-slate-950/50 p-4 rounded-2xl border border-slate-800/80 whitespace-pre-line">
                 {formatEducationalText(lesson.summaryAr)}
               </p>
+            </div>
+          )}
+
+          {/* Detailed course: intro, vocabulary, common mistakes, "à retenir" synthesis */}
+          {lesson.detailedCourse && (
+            <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+              <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
+                <GraduationCap className="w-5 h-5 text-indigo-600" />
+                <span>الكورس المفصّل</span>
+              </h3>
+              <p className="text-sm text-slate-800 leading-relaxed bg-indigo-50/70 border border-indigo-100 rounded-2xl p-4">
+                {renderArabicText(lesson.detailedCourse.introAr)}
+              </p>
+
+              {lesson.detailedCourse.vocabulary && lesson.detailedCourse.vocabulary.length > 0 && (
+                <div className="space-y-2">
+                  <span className="text-xs font-extrabold text-slate-600 block">📖 كلمات مهمة أتذكرها:</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {lesson.detailedCourse.vocabulary.map((v, i) => (
+                      <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs">
+                        <span className="font-black text-indigo-700 block">{renderArabicText(v.termAr)}</span>
+                        <span className="text-slate-600">{renderArabicText(v.definitionAr)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {lesson.detailedCourse.visualizationHintAr && (
+                <p className="text-xs text-sky-800 bg-sky-50 border border-sky-200 rounded-xl p-3 flex items-start gap-2">
+                  <span>🖼️</span>
+                  <span>{renderArabicText(lesson.detailedCourse.visualizationHintAr)}</span>
+                </p>
+              )}
+
+              {lesson.detailedCourse.commonMistakes && lesson.detailedCourse.commonMistakes.length > 0 && (
+                <div className="space-y-2">
+                  <span className="text-xs font-extrabold text-rose-700 block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
+                  {lesson.detailedCourse.commonMistakes.map((m, i) => (
+                    <div key={i} className="bg-rose-50 border border-rose-200 rounded-xl p-3 text-xs space-y-1">
+                      <p className="text-rose-800"><span className="font-bold">❌ </span>{renderArabicText(m.mistakeAr)}</p>
+                      <p className="text-emerald-800"><span className="font-bold">✅ </span>{renderArabicText(m.correctionAr)}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="bg-amber-50 border border-amber-300 rounded-2xl p-4 text-sm font-bold text-amber-900">
+                💡 أتذكر: {renderArabicText(lesson.detailedCourse.takeawayAr)}
+              </div>
+            </div>
+          )}
+
+          {/* 5-tier progressive worked examples */}
+          {lesson.progressiveWorkedExamples && lesson.progressiveWorkedExamples.length > 0 && (
+            <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+              <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
+                <Lightbulb className="w-5 h-5 text-amber-500" />
+                <span>أمثلة متدرّجة (من الأسهل إلى التحدي)</span>
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {lesson.progressiveWorkedExamples.map((ex) => (
+                  <button
+                    key={ex.tier}
+                    onClick={() => setSelectedExampleTier(ex.tier)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      selectedExampleTier === ex.tier ? 'bg-amber-500 text-slate-950 font-black shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {ex.labelAr}
+                  </button>
+                ))}
+              </div>
+              {(() => {
+                const activeExample = lesson.progressiveWorkedExamples!.find((ex) => ex.tier === selectedExampleTier) || lesson.progressiveWorkedExamples![0];
+                return (
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+                    <p className="text-xs sm:text-sm font-bold text-slate-900 whitespace-pre-line">
+                      {activeExample.isRealLife && <span className="text-emerald-600">🏠 </span>}
+                      {renderArabicText(activeExample.problem)}
+                    </p>
+                    {activeExample.stepsAr && activeExample.stepsAr.length > 0 && (
+                      <ol className="list-decimal list-inside text-xs text-slate-700 space-y-1 pr-1">
+                        {activeExample.stepsAr.map((step, i) => (
+                          <li key={i}>{renderArabicText(step)}</li>
+                        ))}
+                      </ol>
+                    )}
+                    <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900 whitespace-pre-line">
+                      <span className="font-bold">✅ الحل: </span>
+                      {renderArabicText(activeExample.solution)}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           )}
 
@@ -716,7 +884,78 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
           {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}
           {effectiveTool === 'history_geo_lab' && <HistoryGeoInteractive grade={lesson.grade} />}
-          {effectiveTool === 'islamic_lab' && <IslamicEducationInteractive grade={lesson.grade} />}
+          {effectiveTool === 'islamic_lab' && <IslamicEducationInteractive grade={lesson.grade} config={lesson.islamicInteractive} />}
+        </div>
+      )}
+
+      {/* TAB: FINAL EVALUATION — mixed exercise types, difficulty progression, then a self-check summary */}
+      {activeTab === 'evaluation' && evaluationExercises.length > 0 && (
+        <div className="space-y-5 animate-in fade-in duration-200">
+          <div className="bg-gradient-to-r from-rose-950 to-slate-900 text-white rounded-3xl p-5 border border-rose-800/50">
+            <h3 className="font-black text-sm flex items-center gap-2 mb-1">
+              <ClipboardCheck className="w-5 h-5 text-rose-300" />
+              <span>التقييم النهائي للدرس</span>
+            </h3>
+            <p className="text-xs text-rose-200">أجب عن كل الأسئلة للتحقق من إتقانك للدرس. لا بأس بالخطأ — المهم أن تتعلم من التصحيح!</p>
+            {evaluationCheckedCount > 0 && (
+              <div className="mt-3 flex items-center gap-3">
+                <div className="flex-1 bg-white/10 h-2.5 rounded-full overflow-hidden">
+                  <div className="bg-emerald-400 h-full rounded-full transition-all duration-500" style={{ width: `${(evaluationCheckedCount / evaluationExercises.length) * 100}%` }} />
+                </div>
+                <span className="text-[11px] font-bold text-rose-200 shrink-0">{evaluationCheckedCount}/{evaluationExercises.length}</span>
+              </div>
+            )}
+          </div>
+
+          {evaluationExercises.map((ex) => (
+            <PracticeExerciseCard
+              key={ex.id}
+              ex={ex}
+              renderArabicText={renderArabicText}
+              answer={practiceAnswers[ex.id]}
+              setAnswer={setAnswerFor(ex.id)}
+              isChecked={!!practiceChecked[ex.id]}
+              isCorrect={!!practiceCorrect[ex.id]}
+              canCheck={canCheckExercise(ex)}
+              onCheck={() => checkPracticeExercise(ex)}
+              onReset={() => resetPracticeExercise(ex)}
+              matchingRightOrder={matchingRightOrder[ex.id] || []}
+              matchingConnections={matchingConnections[ex.id] || {}}
+              matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
+              setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
+              connectMatching={connectMatchingFor(ex.id)}
+              disconnectMatching={disconnectMatchingFor(ex.id)}
+              orderingShuffled={orderingShuffled[ex.id] || []}
+              orderingSelection={orderingSelections[ex.id] || []}
+              toggleOrderingItem={toggleOrderingItemFor(ex.id)}
+            />
+          ))}
+
+          {/* Self-check summary + remediation, shown once every question has been answered */}
+          {evaluationComplete && (
+            <div className={`rounded-3xl p-5 border space-y-3 ${evaluationScorePercent >= 60 ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'}`}>
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <h4 className="font-black text-sm text-slate-900">📊 نتيجتك: {evaluationCorrectCount}/{evaluationExercises.length} ({evaluationScorePercent}%)</h4>
+                <span className="text-xs font-bold text-slate-500">+{evaluationExercises.filter((ex) => practiceCorrect[ex.id]).reduce((sum, ex) => sum + ex.xpReward, 0)} XP</span>
+              </div>
+              {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
+                <div className="space-y-1.5">
+                  <span className="text-xs font-extrabold text-slate-700 block">أهداف هذا الدرس:</span>
+                  {lesson.objectivesAr.map((obj, i) => (
+                    <p key={i} className="text-xs text-slate-700 flex items-center gap-1.5">
+                      <span>{evaluationScorePercent >= 60 ? '✅' : '🌱'}</span>
+                      <span>{renderArabicText(obj)}</span>
+                    </p>
+                  ))}
+                </div>
+              )}
+              {evaluationScorePercent < 60 && (
+                <p className="text-xs text-amber-800 bg-amber-100 border border-amber-300 rounded-xl p-2.5">
+                  💡 لا بأس، هذا جزء طبيعي من التعلّم! راجع "الكورس المفصّل" و"الأمثلة" في تبويب "الملخص والقواعد"، ثم أعد المحاولة — أنت تقترب من الإتقان خطوة بخطوة.
+                </p>
+              )}
+            </div>
+          )}
         </div>
       )}
 

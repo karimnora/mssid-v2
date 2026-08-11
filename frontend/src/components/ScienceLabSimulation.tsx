@@ -4,7 +4,6 @@ import {
   GameplaySimulation,
   CircuitGameplay,
   SafetyRoleplayGameplay,
-  LeverGameplay,
   MixtureGameplay,
   CircuitCombination
 } from '../types';
@@ -64,7 +63,6 @@ export const ScienceLabSimulation: React.FC<ScienceLabSimulationProps> = ({ game
         </div>
       )}
       {gameplay.type === 'safety_roleplay' && <SafetyRoleplayView gameplay={gameplay} showFrench={showFrench} />}
-      {gameplay.type === 'lever_balance' && <LeverBalanceView gameplay={gameplay} showFrench={showFrench} />}
       {gameplay.type === 'mixtures_lab' && <MixturesLabView gameplay={gameplay} showFrench={showFrench} />}
     </div>
   );
@@ -511,171 +509,6 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
   );
 };
 
-/* ==========================================
-   3. LE LEVIER SIMULATION VIEW
-   ========================================== */
-const LeverBalanceView: React.FC<{ gameplay: LeverGameplay; showFrench: boolean }> = ({ gameplay, showFrench }) => {
-  const [selectedPosId, setSelectedPosId] = useState<string>('near_load');
-  const [isPulling, setIsPulling] = useState<boolean>(false);
-
-  const currentPos = gameplay.positions.find((p) => p.positionId === selectedPosId) || gameplay.positions[0];
-
-  return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-indigo-500/20 text-indigo-400 rounded-2xl border border-indigo-500/30">
-            <Sparkles className="w-6 h-6 animate-pulse" />
-          </div>
-          <div>
-            <h2 className="text-lg font-black text-indigo-300">{gameplay.titleAr}</h2>
-            {showFrench && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
-          </div>
-        </div>
-        <span className="bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-          <Gauge className="w-3.5 h-3.5" /> محاكاة الفيزياء الحقيقية
-        </span>
-      </div>
-
-      <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-xs text-slate-200 leading-relaxed">
-        <strong>🏋️ التحدي الفيزيائي:</strong> {gameplay.challengeAr}
-        {showFrench && <div className="text-[11px] text-slate-400 mt-0.5">{gameplay.challengeFr}</div>}
-      </div>
-
-      {/* Position Selector */}
-      <div className="space-y-2">
-        <h3 className="text-xs font-extrabold text-slate-300">1. اختر موضع نقطة الارتكاز:</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {gameplay.positions.map((pos) => {
-            const isSelected = pos.positionId === selectedPosId;
-            return (
-              <button
-                key={pos.positionId}
-                onClick={() => {
-                  setSelectedPosId(pos.positionId);
-                  setIsPulling(false);
-                }}
-                className={`p-3.5 rounded-2xl border text-right transition-all cursor-pointer ${
-                  isSelected
-                    ? pos.success
-                      ? 'bg-emerald-500 text-slate-950 font-black border-emerald-300 shadow-lg scale-[1.02]'
-                      : 'bg-rose-500 text-slate-950 font-black border-rose-300 shadow-lg scale-[1.02]'
-                    : 'bg-slate-800/80 hover:bg-slate-800 border-slate-700 text-slate-200'
-                }`}
-              >
-                <div className="text-xs font-bold">{pos.positionLabelAr}</div>
-                {showFrench && <div className="text-[10px] mt-0.5 opacity-90">{pos.positionLabelFr}</div>}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Interactive Physics Canvas & Lever Diagram */}
-      <div className="bg-slate-950 rounded-3xl p-6 border border-slate-800 flex flex-col items-center justify-center min-h-[260px] relative overflow-hidden">
-        
-        {/* Dynamic Force Meter Gauge */}
-        <div className="w-full max-w-md bg-slate-900/90 border border-slate-800 p-3 rounded-2xl mb-6 flex items-center justify-between text-xs">
-          <span className="font-extrabold text-slate-300">مقياس الجهد البدني:</span>
-          <div className="flex-1 mx-3 h-3 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
-            <div
-              className={`h-full transition-all duration-500 ${
-                currentPos.positionId === 'near_load'
-                  ? 'w-[20%] bg-emerald-400'
-                  : currentPos.positionId === 'middle'
-                  ? 'w-[60%] bg-amber-400'
-                  : 'w-[100%] bg-rose-500 animate-pulse'
-              }`}
-            />
-          </div>
-          <span className="font-mono text-[11px] font-extrabold text-amber-300">
-            {currentPos.positionId === 'near_load' ? '10kg (سهل)' : currentPos.positionId === 'middle' ? '100kg (صعب)' : '250kg! (مستحيل)'}
-          </span>
-        </div>
-
-        {/* Lever Interactive Seesaw */}
-        <div className="w-full max-w-lg relative py-12">
-          <div
-            className={`h-4 w-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 rounded-full transition-transform duration-700 origin-center shadow-lg ${
-              isPulling
-                ? currentPos.success
-                  ? '-rotate-12'
-                  : 'rotate-12'
-                : 'rotate-0'
-            }`}
-          />
-
-          <div
-            className={`absolute top-0 left-2 p-3 rounded-2xl bg-slate-800 border-2 border-amber-400 text-amber-300 text-center font-black text-xs transition-transform duration-700 shadow-2xl ${
-              isPulling && currentPos.success ? '-translate-y-8 scale-105' : 'translate-y-1'
-            }`}
-          >
-            📦 صخرة ثقيلة (100kg)
-          </div>
-
-          <div
-            className={`absolute bottom-2 transition-all duration-700 ${
-              currentPos.positionId === 'near_load'
-                ? 'left-[25%]'
-                : currentPos.positionId === 'middle'
-                ? 'left-[50%] -translate-x-1/2'
-                : 'left-[75%]'
-            }`}
-          >
-            <div className="w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[36px] border-b-indigo-500 drop-shadow-[0_0_10px_rgba(99,102,241,0.5)]" />
-            <span className="text-[10px] font-extrabold text-indigo-300 block text-center mt-1 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-500/30">
-              نقطة الارتكاز {showFrench && "(Point d'appui)"}
-            </span>
-          </div>
-
-          <div
-            className={`absolute top-0 right-2 p-3 rounded-2xl bg-slate-800 border-2 border-indigo-400 text-indigo-200 text-center font-black text-xs transition-transform duration-700 shadow-2xl ${
-              isPulling ? (currentPos.success ? 'translate-y-8' : 'translate-y-0') : 'translate-y-1'
-            }`}
-          >
-            ✋ قوة اليد
-          </div>
-        </div>
-
-        {/* Action Lift Button */}
-        <button
-          onClick={() => setIsPulling(!isPulling)}
-          className={`px-6 py-3 rounded-2xl font-black text-xs transition-all cursor-pointer shadow-xl active:scale-95 ${
-            isPulling
-              ? 'bg-indigo-600 hover:bg-indigo-500 text-white ring-2 ring-indigo-300'
-              : 'bg-amber-500 hover:bg-amber-400 text-slate-950 ring-2 ring-amber-300 animate-bounce'
-          }`}
-        >
-          {isPulling ? '🔄 إعادة التجربة' : '🏋️ اضغط لرفع الحمولة الآن'}
-        </button>
-
-        {/* Physics Result Metric & Message */}
-        {isPulling && (
-          <div
-            className={`w-full mt-6 p-4 rounded-2xl border text-xs leading-relaxed space-y-1 transition-all ${
-              currentPos.success
-                ? 'bg-emerald-950/90 border-emerald-500 text-emerald-200 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
-                : 'bg-rose-950/90 border-rose-500 text-rose-200 shadow-[0_0_15px_rgba(244,63,94,0.2)]'
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-black">{currentPos.resultTitleAr}</span>
-              {showFrench && <span className="text-xs font-mono font-bold">{currentPos.resultTitleFr}</span>}
-            </div>
-            <div className="text-xs font-bold pt-1 text-amber-300">
-              الجهد البدني المبذول: {currentPos.effortNeededAr}
-              {showFrench && ` (${currentPos.effortNeededFr})`}
-            </div>
-            <p className="pt-2 border-t border-white/10 text-xs font-sans">
-              <strong>التفسير الفيزيائي:</strong> {currentPos.explanationAr}
-            </p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 /* ==========================================
    4. LA MATIÈRE ET LES MÉLANGES VIEW
@@ -824,3 +657,4 @@ const MixturesLabView: React.FC<{ gameplay: MixtureGameplay; showFrench: boolean
     </div>
   );
 };
+

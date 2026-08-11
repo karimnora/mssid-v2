@@ -53,7 +53,7 @@ export interface KeyFormula {
   noteAr?: string;
 }
 
-export type GameplayModuleType = 'circuit_builder' | 'safety_roleplay' | 'lever_balance' | 'mixtures_lab';
+export type GameplayModuleType = 'circuit_builder' | 'safety_roleplay' | 'mixtures_lab';
 
 export interface CircuitComponent {
   id: string;
@@ -108,29 +108,6 @@ export interface SafetyRoleplayGameplay {
   choices: SafetyChoice[];
 }
 
-export interface LeverChoice {
-  positionId: 'near_load' | 'middle' | 'far_from_load';
-  positionLabelAr: string;
-  positionLabelFr: string;
-  effortNeededAr: string;
-  effortNeededFr: string;
-  success: boolean;
-  resultTitleAr: string;
-  resultTitleFr: string;
-  explanationAr: string;
-  explanationFr: string;
-}
-
-export interface LeverGameplay {
-  type: 'lever_balance';
-  titleAr: string;
-  titleFr: string;
-  challengeAr: string;
-  challengeFr: string;
-  loadWeightKg: number;
-  positions: LeverChoice[];
-}
-
 export interface SeparationMethod {
   id: 'filtration' | 'evaporation' | 'magnet' | 'decantation';
   nameAr: string;
@@ -166,7 +143,6 @@ export interface MixtureGameplay {
 export type GameplaySimulation =
   | CircuitGameplay
   | SafetyRoleplayGameplay
-  | LeverGameplay
   | MixtureGameplay;
 
 export type PedagogicalLevel = 1 | 2 | 3 | 4 | 5;
@@ -175,13 +151,21 @@ export type PedagogicalLevel = 1 | 2 | 3 | 4 | 5;
 // (which predate this field) keep working, rendered as a free-text reveal-answer exercise by default.
 export type ExerciseType = 'qcm' | 'true_false' | 'fill_blank' | 'matching' | 'ordering' | 'calculation' | 'short_answer';
 
+// One step of scaffolded help, revealed one at a time (not dumped all at once) when a child
+// struggles: petit indice → rappel de la règle → exemple similaire → explication → réponse détaillée.
+export interface ProgressiveHint {
+  labelAr: string; // e.g. "تلميح صغير", "تذكير بالقاعدة", "مثال مشابه", "شرح", "الحل التفصيلي"
+  contentAr: string;
+}
+
 export interface ProgressiveExercise {
   id: string;
-  level: PedagogicalLevel;
+  level: PedagogicalLevel; // reused as the 4-tier grouping: 1=أكتشف 2=أتدرب 3=أتقن 4=أتحدى (5 reserved for optional extra challenge)
   levelLabelAr: string;
   type?: ExerciseType;
   problemAr: string;
-  hintsAr: string[];
+  hintsAr: string[]; // legacy single-shot hint list — kept for backward compatibility with existing lessons
+  progressiveHints?: ProgressiveHint[]; // richer sequential scaffolding; used instead of hintsAr when present
   // Type-specific answer data — only the field matching `type` is used; all optional for backward compatibility.
   options?: { id: string; textAr: string; isCorrect: boolean }[]; // qcm / true_false
   matchingPairsAr?: { leftAr: string; rightAr: string }[]; // matching
@@ -193,11 +177,148 @@ export interface ProgressiveExercise {
   xpReward: number;
 }
 
-// Content provenance (Phase 7) — every lesson should be explicit about whether its content
-// has been verified against an official Algerian MEN curriculum document, or is complementary
-// pedagogical material. Absent on legacy lessons authored before this field existed — treat
-// those as 'complementary' by default (see CONTENT_SOURCE_FALLBACK in components).
-export type ContentSource = 'official_verified' | 'complementary';
+// --- "Cours détaillé" depth expansion (consolidation round 2) ---
+export interface VocabularyTerm {
+  termAr: string;
+  definitionAr: string;
+}
+
+export interface CommonMistake {
+  mistakeAr: string;
+  correctionAr: string;
+}
+
+export interface DetailedCourse {
+  introAr: string; // très courte intro, langage simple
+  vocabulary?: VocabularyTerm[]; // mots importants à retenir
+  visualizationHintAr?: string; // idée d'illustration/visualisation pour l'enfant
+  commonMistakes?: CommonMistake[];
+  takeawayAr: string; // synthèse "À retenir"
+}
+
+// 5-tier worked example progression: découverte → application → réflexion → situation concrète → défi.
+// Distinct from the simpler pre-existing `examplesAr` (kept for backward compatibility).
+export interface ProgressiveWorkedExample {
+  tier: 1 | 2 | 3 | 4 | 5;
+  labelAr: string; // e.g. "مثال 1 — اكتشف"
+  problem: string;
+  stepsAr?: string[]; // optional step-by-step breakdown
+  solution: string;
+  isRealLife?: boolean; // marks the "situation concrète du quotidien" example (tier 4 by convention)
+}
+
+// Démarche scientifique expérimentale (sciences 5AP+): question → observation → hypothèse →
+// expérience → résultat → explication. Distinct from `detailedCourse` (which still carries the
+// vocabulary/"à retenir" synthesis) and from `gameplay_simulation` (which the `experimentAr` step
+// points to/reuses when a lesson already has one, instead of duplicating it).
+export interface ScientificHypothesisOption {
+  id: string;
+  textAr: string; // a plausible-sounding prediction — never graded right/wrong, just compared to the real result
+}
+
+export interface ScientificInquiry {
+  questionAr: string; // ❓ Je me pose une question
+  observationAr: string; // 👀 J'observe — ce qu'on te donne à voir avant d'émettre une hypothèse
+  hypothesisPromptAr: string; // 💭 consigne invitant à prédire (jamais la réponse elle-même)
+  hypothesisOptions: ScientificHypothesisOption[]; // 2-3 prédictions possibles, non notées
+  experimentAr: string; // 🧪 ce qu'on manipule/observe réellement (peut renvoyer vers le labo existant)
+  resultAr: string; // 🔬 le résultat réel observé
+  explanationAr: string; // 🧠 pourquoi ce résultat, en langage simple
+}
+
+// Islamic Education interactive tool (islamic_lab) — per-lesson configuration so the shared
+// component renders content specific to THAT lesson instead of a fixed grade-wide hardcoded set.
+// Lessons without this field fall back to the component's legacy grade-based rendering.
+export interface IslamicQuranVerseItem {
+  surahAr: string;
+  verseAr: string;
+  meaningAr: string;
+}
+export interface IslamicQuranExplorer {
+  type: 'quran_explorer';
+  titleAr: string;
+  introAr: string;
+  verses: IslamicQuranVerseItem[];
+}
+
+export interface IslamicRitualStep {
+  step: number;
+  titleAr: string;
+  descAr: string;
+  tagAr: string;
+  icon: string; // single emoji
+}
+export interface IslamicRitualSteps {
+  type: 'ritual_steps';
+  titleAr: string;
+  introAr: string;
+  steps: IslamicRitualStep[];
+}
+
+export interface IslamicConceptCard {
+  nameAr: string;
+  descAr: string;
+}
+export interface IslamicConceptCards {
+  type: 'concept_cards';
+  titleAr: string;
+  introAr: string;
+  concepts: IslamicConceptCard[];
+}
+
+export interface IslamicEthicsOption {
+  textAr: string;
+  isCorrect: boolean;
+  feedbackAr: string;
+}
+export interface IslamicEthicsScenarioItem {
+  id: string;
+  titleAr: string;
+  situationAr: string;
+  options: IslamicEthicsOption[];
+}
+export interface IslamicEthicsScenario {
+  type: 'ethics_scenario';
+  titleAr: string;
+  introAr: string;
+  scenarios: IslamicEthicsScenarioItem[];
+}
+
+export interface IslamicTimelineEvent {
+  dateAr: string;
+  titleAr: string;
+  descAr: string;
+  icon: string; // single emoji
+}
+export interface IslamicTimeline {
+  type: 'timeline';
+  titleAr: string;
+  introAr: string;
+  events: IslamicTimelineEvent[];
+}
+
+export type IslamicInteractiveConfig =
+  | IslamicQuranExplorer
+  | IslamicRitualSteps
+  | IslamicConceptCards
+  | IslamicEthicsScenario
+  | IslamicTimeline;
+
+// Content provenance (Phase 7 + consolidation) — every lesson should be explicit about how
+// confident we are in its curricular placement (grade/subject/trimester/unit), NOT necessarily
+// about whether its prose/exercises are copied verbatim from a ministry document (they never are —
+// see sourceType). Four honest states, deliberately not collapsed into a binary official/complementary:
+//   - 'official_verified': placement confirmed against an identifiable official MEN document.
+//   - 'corroborated': cross-checked against an independent secondary source (e.g. DzExams) that is
+//     NOT itself an official curriculum authority — never auto-promote this to 'official_verified'.
+//   - 'complementary': original MSSID DZ pedagogical authoring/enrichment, not claiming curricular sourcing.
+//   - 'needs_verification': no reliable signal exists yet (this is the honest default — do not guess).
+// Absent on legacy lessons authored before this field existed — treat those as 'needs_verification'
+// when rendering, not 'complementary' (we don't actually know their provenance either).
+export type ContentSource = 'official_verified' | 'corroborated' | 'complementary' | 'needs_verification';
+
+export type SourceType = 'ministry_official' | 'secondary_corroboration' | 'original_authoring';
+export type ConfidenceLevel = 'high' | 'medium' | 'low';
 
 export interface EducationalGameItem {
   questionOrPromptAr: string;
@@ -256,7 +377,20 @@ export interface CourseLesson {
   unitAr?: string; // formal "unité" grouping (broader than domainAr's chapter-level grouping)
   difficultyTier?: 1 | 2 | 3; // overall lesson difficulty: ⭐ / ⭐⭐ / ⭐⭐⭐
   contentSource?: ContentSource;
-  sourceNoteAr?: string; // e.g. how the content was verified/corroborated, or that it's original complementary material
+  sourceNoteAr?: string; // human-readable Arabic note explaining how the content was verified/corroborated/authored (= "verificationNote")
+  sourceType?: SourceType;
+  sourceReference?: string; // e.g. a document name or the corroborating platform/URL — not a claim of official authority by itself
+  confidenceLevel?: ConfidenceLevel;
+
+  // --- Pedagogical depth expansion (consolidation round 2) ---
+  objectivesAr?: string[]; // "À la fin de cette leçon, je sais : ..." — shown at the start AND revisited as a self-check after the evaluation
+  missionTitleAr?: string; // creative narrative wrapper, e.g. "🏰 مهمة كنز الأعداد" — presentation only, never implies a new official notion
+  missionIntroAr?: string; // short in-character framing text for the mission/scenario
+  detailedCourse?: DetailedCourse;
+  progressiveWorkedExamples?: ProgressiveWorkedExample[]; // the 5-tier example progression
+  evaluationExercises?: ProgressiveExercise[]; // richer final "évaluation" (mixed types, reuses the exercise engine) — shown alongside/instead of the plain `quiz`
+  scientificInquiry?: ScientificInquiry; // sciences only: the question→observation→hypothesis→experiment→result démarche
+  islamicInteractive?: IslamicInteractiveConfig; // islamic education only: per-lesson content for the islamic_lab tool
 }
 
 export interface ExamExercise {
