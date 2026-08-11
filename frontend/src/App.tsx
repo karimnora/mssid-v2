@@ -142,6 +142,8 @@ export default function App() {
           level: level,
           streakDays: fetched.streakDays || prev.streakDays,
           completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
+          badges: fetched.badges || prev.badges,
+          quizScores: fetched.quizScores || prev.quizScores,
         }));
       }
     });
@@ -158,6 +160,8 @@ export default function App() {
         level: level,
         streakDays: authUser.streakDays || prev.streakDays,
         completedLessonIds: authUser.completedLessonIds || prev.completedLessonIds,
+        badges: authUser.badges || prev.badges,
+        quizScores: authUser.quizScores || prev.quizScores,
       }));
     }
   }, [authUser]);

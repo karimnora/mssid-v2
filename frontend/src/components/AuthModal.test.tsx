@@ -57,21 +57,4 @@ describe('AuthModal Integration Tests', () => {
     });
   });
 
-  it('supports quick RBAC demo role switching for instant testing', () => {
-    const handleAuthSuccess = vi.fn();
-    const handleClose = vi.fn();
-
-    render(<AuthModal isOpen={true} onClose={handleClose} onAuthSuccess={handleAuthSuccess} />);
-
-    const adminBtn = screen.getByText(/ROLE_ADMIN/i);
-    fireEvent.click(adminBtn);
-
-    expect(handleAuthSuccess).toHaveBeenCalledWith(
-      expect.objectContaining({
-        email: 'admin@mssid.dz',
-        role: 'ROLE_ADMIN',
-      })
-    );
-    expect(handleClose).toHaveBeenCalled();
-  });
 });

@@ -161,36 +161,42 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
 
           {/* Badges Gallery */}
           <div className="space-y-3">
-            <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
-              شارات الأوسمة والإنجازات الجزائرية ({userProfile.badges.length}/{ALL_BADGES.length}):
-            </h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {ALL_BADGES.map((b) => {
-                const isUnlocked = userProfile.badges.includes(b.id) || b.id === 'b_welcome';
-                return (
-                  <div
-                    key={b.id}
-                    className={`p-3 rounded-xl border flex items-start gap-3 transition-all ${
-                      isUnlocked
-                        ? 'bg-amber-50/80 border-amber-200 text-amber-950'
-                        : 'bg-slate-100/60 border-slate-200 text-slate-400 opacity-60'
-                    }`}
-                  >
-                    <div className="text-2xl p-1 bg-white rounded-lg border border-slate-200 shrink-0">
-                      {b.icon}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <h4 className="font-extrabold text-xs">{b.titleAr}</h4>
-                        {isUnlocked && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
-                      </div>
-                      <p className="text-[11px] text-slate-600 leading-snug mt-0.5">{b.descriptionAr}</p>
-                    </div>
+            {(() => {
+              const effectiveBadges = authUser?.badges && authUser.badges.length > 0 ? authUser.badges : userProfile.badges;
+              return (
+                <>
+                  <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
+                    شارات الأوسمة والإنجازات الجزائرية ({effectiveBadges.length}/{ALL_BADGES.length}):
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {ALL_BADGES.map((b) => {
+                      const isUnlocked = effectiveBadges.includes(b.id) || b.id === 'b_welcome';
+                      return (
+                        <div
+                          key={b.id}
+                          className={`p-3 rounded-xl border flex items-start gap-3 transition-all ${
+                            isUnlocked
+                              ? 'bg-amber-50/80 border-amber-200 text-amber-950'
+                              : 'bg-slate-100/60 border-slate-200 text-slate-400 opacity-60'
+                          }`}
+                        >
+                          <div className="text-2xl p-1 bg-white rounded-lg border border-slate-200 shrink-0">
+                            {b.icon}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <h4 className="font-extrabold text-xs">{b.titleAr}</h4>
+                              {isUnlocked && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
+                            </div>
+                            <p className="text-[11px] text-slate-600 leading-snug mt-0.5">{b.descriptionAr}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
+                </>
+              );
+            })()}
           </div>
         </div>
 

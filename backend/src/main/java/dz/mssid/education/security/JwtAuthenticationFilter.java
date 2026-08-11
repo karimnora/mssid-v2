@@ -34,8 +34,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getServletPath();
         // Ne pas filtrer les requêtes de connexion, inscription et les appels OPTIONS
-        return path.startsWith("/api/auth/login")
-                || path.startsWith("/api/auth/register")
+        return path.startsWith("/api/v1/auth/login")
+                || path.startsWith("/api/v1/auth/register")
                 || path.startsWith("/api/v1/exams/public/")
                 || "OPTIONS".equalsIgnoreCase(request.getMethod());
     }

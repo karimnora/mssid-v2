@@ -46,6 +46,7 @@ export interface AuthUser {
   grade?: string;
   completedLessonIds?: string[];
   badges?: string[];
+  quizScores?: Record<string, number>;
   createdAt?: string;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { AuthUser, UserRole } from '../types/auth';
+import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
-import { X, LogIn, UserPlus, KeyRound, Sparkles } from 'lucide-react';
+import { X, LogIn, UserPlus, KeyRound } from 'lucide-react';
 import { MssidLogo } from './MssidLogo';
 
 interface Props {
@@ -71,12 +71,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
     }
   };
 
-  const handleQuickRoleSwitch = (role: UserRole) => {
-    const user = AuthService.switchDemoRole(role);
-    onAuthSuccess(user);
-    onClose();
-  };
-
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
       <div className="bg-white border border-slate-200 w-full max-w-md rounded-3xl shadow-2xl text-slate-800 flex flex-col overflow-hidden dir-rtl" dir="rtl">
@@ -97,34 +91,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) =
           >
             <X className="w-4 h-4" />
           </button>
-        </div>
-
-        {/* Quick Role Tester Bar */}
-        <div className="bg-emerald-50 p-3.5 border-b border-emerald-100 space-y-2">
-          <span className="text-[11px] font-extrabold text-emerald-900 block flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>تنسيق الحساب والاشتراك:</span>
-          </span>
-          <div className="grid grid-cols-3 gap-2">
-            <button
-              onClick={() => handleQuickRoleSwitch('ROLE_FREE')}
-              className="px-2 py-1.5 bg-white border border-slate-300 rounded-xl text-[11px] font-extrabold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer shadow-2xs"
-            >
-              👤 حساب مجاني
-            </button>
-            <button
-              onClick={() => handleQuickRoleSwitch('ROLE_PREMIUM')}
-              className="px-2 py-1.5 bg-amber-500 text-white border border-amber-600 rounded-xl text-[11px] font-extrabold hover:bg-amber-600 transition-all cursor-pointer shadow-2xs"
-            >
-              ⭐ اشتراك مميز
-            </button>
-            <button
-              onClick={() => handleQuickRoleSwitch('ROLE_ADMIN')}
-              className="px-2 py-1.5 bg-slate-900 text-emerald-400 border border-slate-800 rounded-xl text-[11px] font-extrabold hover:bg-slate-800 transition-all cursor-pointer shadow-2xs"
-            >
-              🛡️ مشرف
-            </button>
-          </div>
         </div>
 
         {/* Auth Mode Tabs */}

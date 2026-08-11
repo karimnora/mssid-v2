@@ -157,7 +157,7 @@ public async request<T>(
       passwordHash: credentials.passwordHash || credentials.password || '',
     };
 
-    const res = await this.request<SpringBootAuthResponse>('/auth/login', {
+    const res = await this.request<SpringBootAuthResponse>('/v1/auth/login', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
@@ -177,7 +177,7 @@ public async request<T>(
       roleName: userData.roleName || 'ROLE_FREE',
     };
 
-    const res = await this.request<SpringBootAuthResponse>('/auth/register', {
+    const res = await this.request<SpringBootAuthResponse>('/v1/auth/register', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
@@ -265,8 +265,15 @@ public async request<T>(
     });
   }
 
+  public async updateUserProgress(progressData: any) {
+    return this.request<any>('/v1/users/me/progress', {
+      method: 'PUT',
+      body: JSON.stringify(progressData),
+    });
+  }
+
   public async updateUserRole(userId: number, role: string) {
-    return this.request<any>(`/v1/admin/users/${userId}/role`, {
+    return this.request<any>(`/v1/users/admin/${userId}/role`, {
       method: 'PUT',
       body: JSON.stringify({ role }),
     });

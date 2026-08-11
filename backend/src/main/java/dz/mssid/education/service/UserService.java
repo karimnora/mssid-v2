@@ -10,7 +10,10 @@ import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,9 +77,53 @@ public class UserService {
         if (progressData.getLevel() != null) user.setLevel(progressData.getLevel());
         if (progressData.getStreakDays() != null) user.setStreakDays(progressData.getStreakDays());
         if (progressData.getLastActiveDate() != null) user.setLastActiveDate(progressData.getLastActiveDate());
-        if (progressData.getCompletedLessonIds() != null) user.setCompletedLessonIds(progressData.getCompletedLessonIds());
-        if (progressData.getBadges() != null) user.setBadges(progressData.getBadges());
-        if (progressData.getQuizScores() != null) user.setQuizScores(progressData.getQuizScores());
+
+        if (progressData.getCompletedLessonIds() != null) {
+            List<String> mergedLessons = new ArrayList<>(user.getCompletedLessonIds() != null ? user.getCompletedLessonIds() : List.of());
+            for (String lessonId : progressData.getCompletedLessonIds()) {
+                if (lessonId != null && !mergedLessons.contains(lessonId)) {
+                    mergedLessons.add(lessonId);
+                }
+            }
+            user.setCompletedLessonIds(mergedLessons);
+        }
+
+        if (progressData.getBadges() != null) {
+            List<String> mergedBadges = new ArrayList<>(user.getBadges() != null ? user.getBadges() : List.of());
+            for (String badge : progressData.getBadges()) {
+                if (badge != null && !mergedBadges.contains(badge)) {
+                    mergedBadges.add(badge);
+                }
+            }
+            user.setBadges(mergedBadges);
+        }
+
+        if (progressData.getQuizScores() != null) {
+            Map<String, Integer> mergedQuizScores = new HashMap<>(user.getQuizScores() != null ? user.getQuizScores() : Map.of());
+            progressData.getQuizScores().forEach((lessonId, score) -> {
+                if (lessonId != null && score != null) {
+                    mergedQuizScores.put(lessonId, Math.max(mergedQuizScores.getOrDefault(lessonId, 0), score));
+                }
+            });
+            user.setQuizScores(mergedQuizScores);
+        }
+
+        List<String> completedLessons = user.getCompletedLessonIds() != null ? user.getCompletedLessonIds() : List.of();
+        long mathLessons = completedLessons.stream()
+                .filter(lessonId -> lessonId != null && lessonId.toLowerCase().contains("math"))
+                .count();
+
+        if (mathLessons >= 3) {
+            List<String> existingBadges = new ArrayList<>(user.getBadges() != null ? user.getBadges() : List.of());
+            if (!existingBadges.contains("b_math_star")) {
+                existingBadges.add("b_math_star");
+            }
+            user.setBadges(existingBadges);
+        }
+
+        if (user.getXp() != null) {
+            user.setScore(user.getXp());
+        }
 
         User savedUser = userRepository.save(user);
         return UserMapper.toUserProfileDto(savedUser);

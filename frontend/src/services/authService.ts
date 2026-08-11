@@ -117,6 +117,8 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       streakDays: u.streakDays || 4,
       quizzesCompleted: u.quizzesCompleted || 3,
       completedLessonIds: u.completedLessonIds || ['math-5ap-numbers'],
+      badges: u.badges || [],
+      quizScores: u.quizScores || {},
     };
 
     this.setCurrentUser(authUser);
@@ -174,6 +176,8 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
       streakDays: u.streakDays || 1,
       quizzesCompleted: u.quizzesCompleted || 0,
       completedLessonIds: u.completedLessonIds || [],
+      badges: u.badges || [],
+      quizScores: u.quizScores || {},
     };
     
     this.setCurrentUser(authUser);
@@ -261,23 +265,21 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
   this.setCurrentUser(updatedUser);
 
   try {
-    await springBootApi.request('/v1/users/profile', {
-      method: 'PUT',
-      body: JSON.stringify({
-        email: updatedUser.email,
-        nom: updatedUser.nom,
-        name: updatedUser.nom,
-        grade: updatedUser.grade,
-        avatar: updatedUser.avatar || '🎓',
-        score: updatedUser.score || updatedUser.xp || 0,
-        xp: updatedUser.score || updatedUser.xp || 0,
-        level: updatedUser.level || 1,
-        streakDays: updatedUser.streakDays || 1,
-        quizzesCompleted: updatedUser.quizzesCompleted || 0,
-        completedLessonIds: updatedUser.completedLessonIds || [],
-        badges: updatedUser.badges || [],
-        quizScores: updatedUser.quizScores || {},
-      }),
+    await springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      grade: updatedUser.grade,
+      avatar: updatedUser.avatar || '🎓',
+      score: updatedUser.score || updatedUser.xp || 0,
+      xp: updatedUser.score || updatedUser.xp || 0,
+      level: updatedUser.level || 1,
+      streakDays: updatedUser.streakDays || 1,
+      quizzesCompleted: updatedUser.quizzesCompleted || 0,
+      lastActiveDate: updatedUser.lastActiveDate || new Date().toISOString().slice(0, 10),
+      completedLessonIds: updatedUser.completedLessonIds || [],
+      badges: updatedUser.badges || [],
+      quizScores: updatedUser.quizScores || {},
     });
   } catch (err) {
     console.error("Erreur de synchronisation profile:", err);
