@@ -60,7 +60,34 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [shuffledQuiz, setShuffledQuiz] = useState<CourseLesson['quiz']>([]);
   const [visibleSolutions, setVisibleSolutions] = useState<Record<number, boolean>>({});
-  const [activeTab, setActiveTab] = useState<'explanation' | 'content' | 'interactive' | 'gameplay' | 'quiz'>('explanation');
+  const [activeTab, setActiveTab] = useState<'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz'>('explanation');
+
+  // Practice exercises state ("Je m'entraîne" — progressiveExercises)
+  const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
+  const [practiceChecked, setPracticeChecked] = useState<Record<string, boolean>>({});
+  const [practiceCorrect, setPracticeCorrect] = useState<Record<string, boolean>>({});
+  const [awardedExerciseIds, setAwardedExerciseIds] = useState<Set<string>>(new Set());
+
+  const checkPracticeExercise = (ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
+    const answer = practiceAnswers[ex.id];
+    let isCorrect = true; // default for reveal-based types (short_answer, matching, ordering — not yet auto-validated)
+    if (ex.type === 'qcm' || ex.type === 'true_false') {
+      const opt = ex.options?.find((o) => o.id === answer);
+      isCorrect = !!opt?.isCorrect;
+    } else if (ex.type === 'fill_blank') {
+      const expected = (ex.fillBlankAnswerAr || '').trim();
+      isCorrect = String(answer ?? '').trim() === expected;
+    } else if (ex.type === 'calculation') {
+      isCorrect = Number(answer) === ex.calculationAnswer;
+    }
+
+    setPracticeChecked((prev) => ({ ...prev, [ex.id]: true }));
+    setPracticeCorrect((prev) => ({ ...prev, [ex.id]: isCorrect }));
+    if (isCorrect && !awardedExerciseIds.has(ex.id)) {
+      onCompleteQuiz(lesson.id, ex.xpReward);
+      setAwardedExerciseIds((prev) => new Set(prev).add(ex.id));
+    }
+  };
 
   // Determine effective interactive tool for the lesson
   const getEffectiveTool = () => {
@@ -101,6 +128,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setVisibleSolutions({});
     setSelectedAnswers({});
     setQuizSubmitted(false);
+    setPracticeAnswers({});
+    setPracticeChecked({});
+    setPracticeCorrect({});
+    setAwardedExerciseIds(new Set());
     initializeShuffledQuiz();
   }, [lesson.id]);
 
@@ -203,14 +234,30 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       {/* Lesson Hero Banner */}
       <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden">
         <div className="relative z-10">
-          <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold mb-2">
-            <BookOpen className="w-4 h-4" />
-            <span>الدرس الرسمي المقرر</span>
+          <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
+            <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold">
+              <BookOpen className="w-4 h-4" />
+              {lesson.contentSource === 'official_verified' ? (
+                <span>محتوى مطابق لبرنامج رسمي موثّق</span>
+              ) : (
+                <span className="text-amber-300">محتوى تربوي تكميلي (غير منسوخ حرفياً عن وثيقة وزارية)</span>
+              )}
+            </div>
+            {lesson.difficultyTier && (
+              <span className="text-xs font-bold bg-white/10 border border-white/20 rounded-full px-3 py-1">
+                {'⭐'.repeat(lesson.difficultyTier)} {lesson.difficultyTier === 1 ? 'سهل' : lesson.difficultyTier === 2 ? 'متوسط' : 'متقدم'}
+              </span>
+            )}
           </div>
           <h1 className="text-xl sm:text-2xl font-black mb-3">{renderArabicText(lesson.titleAr)}</h1>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-3xl">
             {renderArabicText(lesson.summaryAr)}
           </p>
+          {lesson.sourceNoteAr && (
+            <p className="text-slate-400 text-[10px] leading-relaxed max-w-3xl mt-2 border-t border-white/10 pt-2">
+              ℹ️ {renderArabicText(lesson.sourceNoteAr)}
+            </p>
+          )}
         </div>
       </div>
 
@@ -243,6 +290,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <Sparkles className="w-3.5 h-3.5" />
           <span>الأداة التفاعلية المخصصة</span>
         </button>
+        {lesson.progressiveExercises && lesson.progressiveExercises.length > 0 && (
+          <button
+            onClick={() => setActiveTab('practice')}
+            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
+              activeTab === 'practice' ? 'bg-amber-500 text-slate-950 font-black shadow-xs' : 'text-slate-700 hover:text-slate-900 font-bold'
+            }`}
+          >
+            <Award className="w-3.5 h-3.5" />
+            <span>أتدرب ({lesson.progressiveExercises.length})</span>
+          </button>
+        )}
         {lesson.gameplay_simulation && (
           <button
             onClick={() => setActiveTab('gameplay')}
@@ -279,6 +337,157 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       {/* TAB GAMEPLAY: INTERACTIVE SIMULATION */}
       {activeTab === 'gameplay' && lesson.gameplay_simulation && (
         <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
+      )}
+
+      {/* TAB PRACTICE: "أتدرب" — progressive exercises by difficulty tier, then the mini-game challenge */}
+      {activeTab === 'practice' && lesson.progressiveExercises && (
+        <div className="space-y-5 animate-in fade-in duration-200">
+          {lesson.progressiveExercises.map((ex) => {
+            const isChecked = !!practiceChecked[ex.id];
+            const isCorrect = !!practiceCorrect[ex.id];
+            const answer = practiceAnswers[ex.id];
+
+            return (
+              <div key={ex.id} className="bg-white border border-slate-200 rounded-3xl p-5 space-y-3 shadow-xs">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <span className="text-xs font-black text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+                    {ex.levelLabelAr}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>
+                </div>
+
+                <p className="text-sm font-bold text-slate-900 whitespace-pre-line">{renderArabicText(ex.problemAr)}</p>
+
+                {/* QCM / True-False */}
+                {(ex.type === 'qcm' || ex.type === 'true_false') && ex.options && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {ex.options.map((opt) => {
+                      const isSelected = answer === opt.id;
+                      let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
+                      if (isChecked) {
+                        if (opt.isCorrect) style = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold';
+                        else if (isSelected) style = 'bg-rose-50 border-rose-400 text-rose-900';
+                        else style = 'bg-slate-50 border-slate-100 text-slate-400';
+                      } else if (isSelected) {
+                        style = 'bg-indigo-50 border-indigo-500 text-indigo-900 font-bold';
+                      }
+                      return (
+                        <button
+                          key={opt.id}
+                          disabled={isChecked}
+                          onClick={() => setPracticeAnswers((prev) => ({ ...prev, [ex.id]: opt.id }))}
+                          className={`text-right p-3 rounded-xl border text-xs transition-all cursor-pointer flex items-center justify-between ${style}`}
+                        >
+                          <span>{renderArabicText(opt.textAr)}</span>
+                          {isChecked && opt.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
+                          {isChecked && isSelected && !opt.isCorrect && <XCircle className="w-4 h-4 text-rose-500 shrink-0" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Fill in the blank */}
+                {ex.type === 'fill_blank' && (
+                  <input
+                    type="text"
+                    disabled={isChecked}
+                    value={String(answer ?? '')}
+                    onChange={(e) => setPracticeAnswers((prev) => ({ ...prev, [ex.id]: e.target.value }))}
+                    placeholder="اكتب إجابتك هنا..."
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold disabled:bg-slate-50"
+                  />
+                )}
+
+                {/* Calculation */}
+                {ex.type === 'calculation' && (
+                  <input
+                    type="number"
+                    disabled={isChecked}
+                    value={answer ?? ''}
+                    onChange={(e) => setPracticeAnswers((prev) => ({ ...prev, [ex.id]: e.target.value === '' ? '' : Number(e.target.value) }))}
+                    placeholder="اكتب الناتج..."
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold disabled:bg-slate-50"
+                    dir="ltr"
+                  />
+                )}
+
+                {/* matching / ordering / short_answer / untyped: simple reveal-based practice */}
+                {(!ex.type || ex.type === 'short_answer' || ex.type === 'matching' || ex.type === 'ordering') && !isChecked && (
+                  <p className="text-[11px] text-slate-500">فكّر في الحل، ثم اضغط "تحقق" لمشاهدة التصحيح المفصّل.</p>
+                )}
+
+                {!isChecked && ex.hintsAr.length > 0 && (
+                  <p className="text-[11px] text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
+                    💡 تلميح: {renderArabicText(ex.hintsAr[0])}
+                  </p>
+                )}
+
+                {isChecked && (
+                  <div
+                    className={`text-xs p-3 rounded-xl border leading-relaxed whitespace-pre-line ${
+                      isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
+                    }`}
+                  >
+                    <span className="font-black block mb-1">
+                      {isCorrect ? '✅ أحسنت! إجابة صحيحة.' : `💡 ليست هذه الإجابة — إليك الشرح:`}
+                    </span>
+                    {renderArabicText(ex.detailedCorrectionAr)}
+                  </div>
+                )}
+
+                {!isChecked ? (
+                  <button
+                    onClick={() => checkPracticeExercise(ex)}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
+                  >
+                    تحقق من الإجابة
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setPracticeChecked((prev) => ({ ...prev, [ex.id]: false }));
+                      setPracticeAnswers((prev) => ({ ...prev, [ex.id]: '' }));
+                    }}
+                    className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
+                  >
+                    حاول مرة أخرى
+                  </button>
+                )}
+              </div>
+            );
+          })}
+
+          {/* Mini-game challenge ("Défi") */}
+          {lesson.educationalGame && (
+            <div className="bg-gradient-to-r from-purple-950 to-slate-900 text-white rounded-3xl p-5 space-y-3 border border-purple-800/50">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <h3 className="font-black text-sm flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>🏆 التحدي: {renderArabicText(lesson.educationalGame.titleAr)}</span>
+                </h3>
+                <span className="text-[10px] font-bold bg-white/10 px-2.5 py-1 rounded-full">+{lesson.educationalGame.xpReward} XP</span>
+              </div>
+              <p className="text-xs text-purple-200">{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
+              <div className="space-y-2">
+                {lesson.educationalGame.items.map((item, i) => (
+                  <div key={i} className="bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs">
+                    <p className="font-bold mb-1.5">{renderArabicText(item.questionOrPromptAr)}</p>
+                    {item.optionsAr && (
+                      <div className="flex gap-2 flex-wrap">
+                        {item.optionsAr.map((optAr) => (
+                          <span key={optAr} className="px-2.5 py-1 rounded-lg bg-white/10 text-purple-100">
+                            {renderArabicText(optAr)}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       )}
 
       {/* TAB 1: CONTENT & RULES */}

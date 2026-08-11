@@ -215,6 +215,45 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         </div>
       </div>
 
+      {/* REAL LESSON OBJECTIVE, DISCOVERY HOOK & GUIDED EXAMPLE (when authored for this specific lesson) */}
+      {(lesson.objectiveAr || lesson.discoveryAr || lesson.guidedExampleAr) && (
+        <div className="bg-indigo-50 border border-indigo-200/80 rounded-3xl p-5 shadow-xs space-y-4">
+          {lesson.objectiveAr && (
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
+                <Target className="w-4 h-4" />
+                <span>هدف الدرس</span>
+              </div>
+              <p className="text-xs sm:text-sm text-indigo-950 font-sans leading-relaxed">{renderArabicText(lesson.objectiveAr)}</p>
+            </div>
+          )}
+          {lesson.discoveryAr && (
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
+                <Sparkles className="w-4 h-4" />
+                <span>هل تعلم؟ (اكتشف الدرس)</span>
+              </div>
+              <p className="text-xs sm:text-sm text-indigo-950 font-sans leading-relaxed bg-white/70 p-3 rounded-xl border border-indigo-200/60">
+                {renderArabicText(lesson.discoveryAr)}
+              </p>
+            </div>
+          )}
+          {lesson.guidedExampleAr && (
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
+                <BookOpen className="w-4 h-4" />
+                <span>مثال موجّه خطوة بخطوة</span>
+              </div>
+              <div className="bg-white rounded-xl border border-indigo-200/60 p-3 space-y-2 text-xs sm:text-sm font-sans">
+                <p className="text-slate-800"><span className="font-bold text-indigo-700">❓ المسألة: </span>{renderArabicText(lesson.guidedExampleAr.problem)}</p>
+                <p className="text-slate-600"><span className="font-bold text-amber-700">💡 تلميح: </span>{renderArabicText(lesson.guidedExampleAr.hint)}</p>
+                <p className="text-emerald-800 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200 whitespace-pre-line"><span className="font-bold">✅ الحل: </span>{renderArabicText(lesson.guidedExampleAr.solution)}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* WHY LEARN THIS CONCEPT (لماذا نتعلم هذا الدرس؟) */}
       <div className="bg-amber-50 border border-amber-200/80 rounded-3xl p-5 shadow-xs space-y-3">
         <div className="flex items-center gap-2.5 text-amber-900 font-extrabold text-sm">

@@ -307,10 +307,31 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
       quizzesCompleted: currentQuizzes + 1,
       completedLessonIds: newCompleted,
       streakDays: Math.max(user.streakDays || 1, 1),
+      lastActiveDate: new Date().toISOString().slice(0, 10),
     };
 
     this.setCurrentUser(updatedUser);
 
+    // Persist the earned XP/progress to the backend (best-effort, fire-and-forget —
+    // addScore stays synchronous since callers don't await it).
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      grade: updatedUser.grade,
+      avatar: updatedUser.avatar || '🎓',
+      score: updatedUser.score,
+      xp: updatedUser.xp,
+      level: updatedUser.level,
+      streakDays: updatedUser.streakDays,
+      quizzesCompleted: updatedUser.quizzesCompleted,
+      lastActiveDate: updatedUser.lastActiveDate,
+      completedLessonIds: updatedUser.completedLessonIds,
+      badges: updatedUser.badges || [],
+      quizScores: updatedUser.quizScores || {},
+    }).catch((err) => console.error('Erreur de synchronisation XP:', err));
+
+    return updatedUser;
   }
 
 static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser | null> {

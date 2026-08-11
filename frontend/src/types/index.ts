@@ -171,16 +171,33 @@ export type GameplaySimulation =
 
 export type PedagogicalLevel = 1 | 2 | 3 | 4 | 5;
 
+// Exercise type variety (Phase 7) — 'type' is optional so existing authored exercises
+// (which predate this field) keep working, rendered as a free-text reveal-answer exercise by default.
+export type ExerciseType = 'qcm' | 'true_false' | 'fill_blank' | 'matching' | 'ordering' | 'calculation' | 'short_answer';
+
 export interface ProgressiveExercise {
   id: string;
   level: PedagogicalLevel;
   levelLabelAr: string;
+  type?: ExerciseType;
   problemAr: string;
   hintsAr: string[];
+  // Type-specific answer data — only the field matching `type` is used; all optional for backward compatibility.
+  options?: { id: string; textAr: string; isCorrect: boolean }[]; // qcm / true_false
+  matchingPairsAr?: { leftAr: string; rightAr: string }[]; // matching
+  orderedItemsAr?: string[]; // ordering — correct order, top to bottom
+  fillBlankAnswerAr?: string; // fill_blank — expected text answer (compared loosely, trimmed)
+  calculationAnswer?: number; // calculation — exact numeric expected answer
   solutionAr: string;
   detailedCorrectionAr: string;
   xpReward: number;
 }
+
+// Content provenance (Phase 7) — every lesson should be explicit about whether its content
+// has been verified against an official Algerian MEN curriculum document, or is complementary
+// pedagogical material. Absent on legacy lessons authored before this field existed — treat
+// those as 'complementary' by default (see CONTENT_SOURCE_FALLBACK in components).
+export type ContentSource = 'official_verified' | 'complementary';
 
 export interface EducationalGameItem {
   questionOrPromptAr: string;
@@ -236,6 +253,10 @@ export interface CourseLesson {
   progressiveExercises?: ProgressiveExercise[];
   educationalGame?: EducationalGame;
   trimesterEvaluation?: TrimesterEvaluation;
+  unitAr?: string; // formal "unité" grouping (broader than domainAr's chapter-level grouping)
+  difficultyTier?: 1 | 2 | 3; // overall lesson difficulty: ⭐ / ⭐⭐ / ⭐⭐⭐
+  contentSource?: ContentSource;
+  sourceNoteAr?: string; // e.g. how the content was verified/corroborated, or that it's original complementary material
 }
 
 export interface ExamExercise {

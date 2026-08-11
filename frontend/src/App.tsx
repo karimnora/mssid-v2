@@ -18,6 +18,7 @@ import { FrenchLanguageLab } from './components/FrenchLanguageLab';
 import { EnglishLanguageLab } from './components/EnglishLanguageLab';
 import { MultiplicationTableInteractive } from './components/MultiplicationTableInteractive';
 import { InteractiveVideoPlayer, VideoQuestion } from './components/InteractiveVideoPlayer';
+import { incrementDailyObjective } from './utils/dailyObjective';
 import { AiTutorModal } from './components/AiTutorModal';
 import { AuditModal } from './components/AuditModal';
 import { ProfileModal } from './components/ProfileModal';
@@ -241,6 +242,7 @@ export default function App() {
     if (updatedAuth) {
       setAuthUser(updatedAuth);
     }
+    incrementDailyObjective();
 
     setUserProfile((prev) => {
       const alreadyCompleted = prev.completedLessonIds.includes(lessonId);

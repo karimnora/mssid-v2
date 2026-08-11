@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { UserProfile, Badge } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Award, Flame, Trophy, Star, CheckCircle2, ShieldCheck, RefreshCw, Edit2, Database } from 'lucide-react';
+import { X, Award, Flame, Trophy, Star, CheckCircle2, ShieldCheck, RefreshCw, Edit2, Database, Target } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { TashkeelToggle } from './TashkeelToggle';
+import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dailyObjective';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -69,6 +70,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const nextLevelXp = currentLevel * 100;
   const xpInCurrentLevel = totalXp % 100;
   const currentLevelProgress = Math.min(100, Math.round((xpInCurrentLevel / 100) * 100));
+  const dailyObjective = getDailyObjectiveProgress();
+  const dailyObjectiveDone = dailyObjective.count >= DAILY_OBJECTIVE_TARGET;
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
@@ -164,6 +167,26 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               </div>
               <span>مكتمل {userProfile.completedLessonIds.length} دروس</span>
             </div>
+          </div>
+
+          {/* Daily Objective ("Objectif du jour") */}
+          <div className={`p-4 rounded-2xl border space-y-2 ${dailyObjectiveDone ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'}`}>
+            <div className="flex items-center justify-between text-xs font-extrabold text-slate-800">
+              <div className="flex items-center gap-1.5">
+                <Target className="w-4 h-4 text-amber-600" />
+                <span>🎯 هدف اليوم</span>
+              </div>
+              <span className="font-mono">{Math.min(dailyObjective.count, DAILY_OBJECTIVE_TARGET)} / {DAILY_OBJECTIVE_TARGET} تمارين</span>
+            </div>
+            <div className="w-full bg-white h-2.5 rounded-full overflow-hidden border border-slate-200">
+              <div
+                className={`h-full rounded-full transition-all duration-500 ${dailyObjectiveDone ? 'bg-emerald-500' : 'bg-amber-400'}`}
+                style={{ width: `${Math.min(100, (dailyObjective.count / DAILY_OBJECTIVE_TARGET) * 100)}%` }}
+              />
+            </div>
+            <p className="text-[11px] font-bold text-slate-600">
+              {dailyObjectiveDone ? '🎉 أنجزت هدف اليوم! عد غداً لهدف جديد.' : `أكمل ${DAILY_OBJECTIVE_TARGET - dailyObjective.count} تمارين أو اختبارات أخرى اليوم لإكمال الهدف.`}
+            </p>
           </div>
 
           <div className="grid gap-4">
