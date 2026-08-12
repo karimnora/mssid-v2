@@ -54,7 +54,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             <ul className="list-disc list-inside space-y-1 text-xs text-slate-300 mr-4">
               <li><strong className="text-slate-100">بيانات الحساب الشخصي (البريد والاسم والصف):</strong> تُستخدم فقط لتوثيق التسجيل ولتخصيص المحتوى التعليمي للمستوى الدراسي المقابل.</li>
               <li><strong className="text-slate-100">إذن الكاميرا والمعرض (Camera & Photo Gallery):</strong> يُطلب فقط عند قيام ولي الأمر أو المستخدم برفع صورة وصل الدفع (BaridiMob / CCP) لتفعيل الاشتراك. لا يتم الوصول لأي صور أخرى على الجهاز.</li>
-              <li><strong className="text-slate-100">رمز التوثيق المشفر (JWT Token):</strong> يتم تخزينه محلياً لتفادي إعادة تسجيل الدخول في كل مرة ولتوفير تجربة سريعة بدون إنترنت.</li>
+              <li><strong className="text-slate-100">رمز الجلسة المشفر:</strong> يتم تخزينه محلياً لتفادي إعادة تسجيل الدخول في كل مرة ولتوفير تجربة سريعة بدون إنترنت.</li>
             </ul>
           </div>
 
@@ -73,10 +73,10 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
           <div className="space-y-2">
             <h4 className="font-bold text-white text-base flex items-center gap-2">
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">3</span>
-              الأمان والتشفير (Spring Boot REST & SSL)
+              الأمان والتشفير
             </h4>
             <p className="text-xs text-slate-300">
-              جميع الاتصالات بين تطبيق المحمول والسيرفر الرئيسي تتطلب تشفير SSL (HTTPS) وضوابط أمان خادم Spring Boot مع تحديد معدلات الطلب (Rate Limiting) لحماية بيانات المستخدمين من أي اختراق.
+              جميع الاتصالات بين تطبيق المحمول والسيرفر الرئيسي تتطلب تشفير SSL (HTTPS) وضوابط أمان صارمة على الخادم مع تحديد معدلات الطلب لحماية بيانات المستخدمين من أي اختراق.
             </p>
           </div>
 

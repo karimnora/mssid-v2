@@ -241,7 +241,7 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
     this.setCurrentUser(authUser);
     return { user: authUser };
   } catch (err: any) {
-    return { user: null, error: 'Impossible de contacter le serveur backend.' };
+    return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
   }
 }
 

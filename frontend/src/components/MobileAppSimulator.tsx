@@ -134,7 +134,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
               <div className="flex items-center gap-2">
                 <h2 className="text-base font-extrabold text-white">تطبيق الهاتف المحمول Mssid DZ Mobile</h2>
                 <span className="bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">
-                  Android & iOS Native PWA
+                  Android & iOS
                 </span>
               </div>
               <p className="text-xs text-slate-400">محاكي هاتف ذكي تفاعلي 100% متوافق مع كافة الشاشات والأجهزة</p>
@@ -478,7 +478,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                       <div className="p-3 bg-gradient-to-r from-emerald-900 to-teal-900 text-white rounded-2xl shadow-sm">
                         <div className="flex items-center gap-2 mb-1">
                           <DownloadCloud className="w-5 h-5 text-emerald-300" />
-                          <h4 className="font-extrabold text-xs">تثبيت التطبيق دون إنترنت (APK / PWA)</h4>
+                          <h4 className="font-extrabold text-xs">تثبيت التطبيق دون إنترنت</h4>
                         </div>
                         <p className="text-[10px] opacity-90 leading-normal">
                           حمل دروس السنة {currentGrade} واستخدم التطبيق في أرجاء الجزائر حتى في حال انقطاع الشبكة!
@@ -524,7 +524,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                       <div className={`p-3 rounded-2xl border text-[10px] space-y-1.5 ${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
                         <p className="font-bold text-emerald-600">مميزات الحزمة المباشرة:</p>
                         <p>✓ مزامنة البيانات تلقائياً عند الاتصال بالشبكة</p>
-                        <p>✓ حماية كاملة مشفرة متوافقة مع Spring Boot JWT</p>
+                        <p>✓ حماية كاملة ومشفرة لبياناتك الشخصية</p>
                         <p>✓ تصفح مجاني لكافة الدروس الأساسية</p>
                       </div>
                     </div>
@@ -594,7 +594,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                 <span>خصائص التطبيق المحمول (Mssid DZ Native)</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                تم تطوير تطبيق مَسيد DZ بالكامل بتقنيات الـ PWA و Android WebView لتزويد تلاميذ وأولياء الأمور في كامل ولايات الجزائر بتجربة سلسة وسريعة جداً.
+                تم تطوير تطبيق مَسيد DZ ليعمل بسلاسة وسرعة كبيرة على جميع الهواتف، لتزويد تلاميذ وأولياء الأمور في كامل ولايات الجزائر بتجربة مريحة وسريعة جداً.
               </p>
 
               <div className="space-y-2 text-xs pt-1">
@@ -617,8 +617,8 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                 <div className="flex items-start gap-2 bg-slate-900 p-2.5 rounded-xl border border-slate-800">
                   <Sparkles className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-slate-200">ربط مع Spring Boot Backend:</span>
-                    <p className="text-slate-400 text-[11px]">اتصال آمن عبر JWT Token و Rate Limiting لمنع الضغط وزيادة السرعة.</p>
+                    <span className="font-bold text-slate-200">اتصال آمن بالخادم:</span>
+                    <p className="text-slate-400 text-[11px]">اتصال آمن ومشفر لحماية بياناتك مع تحسين مستمر للسرعة والاستقرار.</p>
                   </div>
                 </div>
               </div>

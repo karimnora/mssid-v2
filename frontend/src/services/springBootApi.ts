@@ -3,10 +3,29 @@
  * Connecteur universel prêt à l'emploi pour le backend Java Spring Boot (JWT & REST)
  */
 
-export const SPRING_BOOT_BASE_URL =
+const CONFIGURED_SPRING_BOOT_URL =
   (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SPRING_BOOT_URL) ||
   (typeof process !== 'undefined' && process.env?.VITE_SPRING_BOOT_URL) ||
-  'http://localhost:8080/api'; // Cible le port Spring Boot par défaut
+  '';
+
+export const SPRING_BOOT_BASE_URL = CONFIGURED_SPRING_BOOT_URL || 'http://localhost:8080/api'; // Cible le port Spring Boot par défaut
+
+// 'localhost' depuis un appareil mobile (émulateur ou téléphone réel) désigne l'appareil
+// lui-même, jamais le serveur : si aucune URL explicite n'a été fournie ET que la page n'est
+// pas elle-même servie depuis localhost, on avertit tôt plutôt que de laisser échouer
+// silencieusement chaque appel réseau (login, register, sync XP/badges...).
+if (
+  !CONFIGURED_SPRING_BOOT_URL &&
+  typeof window !== 'undefined' &&
+  window.location.hostname !== 'localhost' &&
+  window.location.hostname !== '127.0.0.1'
+) {
+  console.warn(
+    "[mssid dz] VITE_SPRING_BOOT_URL n'est pas définie : l'application utilise 'http://localhost:8080/api' par défaut, " +
+    "ce qui ne fonctionnera pas sur un appareil mobile, un émulateur ou un domaine de production. " +
+    "Définissez VITE_SPRING_BOOT_URL (voir frontend/.env.example) avant de builder l'application."
+  );
+}
 
 import { UserRole } from '../types/auth';
 
@@ -27,6 +46,7 @@ export interface SpringBootAuthResponse {
 
 class SpringBootApiService {
   private tokenKey = 'mssid_jwt_token';
+  private requestTimeoutMs = 15000;
 
   // Obtenir le token JWT stocké
   public getToken(): string | null {
@@ -91,10 +111,17 @@ public async request<T>(
 
   const url = `${baseUrl}${normalizedEndpoint}`;
 
+  // Sur un réseau mobile instable ou un serveur injoignable, fetch() peut rester en
+  // attente plusieurs minutes sans jamais rejeter : on borne chaque appel pour que
+  // l'utilisateur voie un message d'erreur au lieu d'un écran de chargement infini.
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), this.requestTimeoutMs);
+
   try {
     const response = await fetch(url, {
       ...options,
       headers: this.getHeaders((options.headers as Record<string, string>) || {}),
+      signal: controller.signal,
     });
 
     const status = response.status;
@@ -120,7 +147,7 @@ public async request<T>(
     if (status === 429) {
       const errorData = await response.json().catch(() => ({}));
       return {
-        error: errorData.message || 'Quota quotidien de requêtes dépassé (Rate Limit Spring Boot).',
+        error: errorData.message || 'Quota quotidien de requêtes dépassé. Veuillez réessayer demain.',
         status,
       };
     }
@@ -141,11 +168,20 @@ public async request<T>(
 
     return { data, status, headers: response.headers };
   } catch (err: any) {
-    console.warn('Erreur de connexion au backend mssid dz:', err.message);
+    if (err?.name === 'AbortError') {
+      console.warn(`[mssid dz] Délai d'attente dépassé (${this.requestTimeoutMs}ms) pour ${url}`);
+      return {
+        error: 'Le serveur met trop de temps à répondre. Vérifiez votre connexion et réessayez.',
+        status: 0,
+      };
+    }
+    console.warn('Erreur de connexion au serveur mssid dz:', err.message);
     return {
-      error: 'Impossible de contacter le serveur mssid dz backend.',
+      error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.',
       status: 0,
     };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
