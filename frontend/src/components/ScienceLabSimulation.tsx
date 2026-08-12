@@ -5,7 +5,9 @@ import {
   CircuitGameplay,
   SafetyRoleplayGameplay,
   MixtureGameplay,
-  CircuitCombination
+  CircuitCombination,
+  ProcessStagesGameplay,
+  MatchingLabGameplay
 } from '../types';
 import {
   Zap,
@@ -20,7 +22,9 @@ import {
   Magnet,
   Power,
   Gauge,
-  Languages
+  Languages,
+  Workflow,
+  Shuffle
 } from 'lucide-react';
 
 interface ScienceLabSimulationProps {
@@ -64,6 +68,8 @@ export const ScienceLabSimulation: React.FC<ScienceLabSimulationProps> = ({ game
       )}
       {gameplay.type === 'safety_roleplay' && <SafetyRoleplayView gameplay={gameplay} showFrench={showFrench} />}
       {gameplay.type === 'mixtures_lab' && <MixturesLabView gameplay={gameplay} showFrench={showFrench} />}
+      {gameplay.type === 'process_stages' && <ProcessStagesView gameplay={gameplay} showFrench={showFrench} />}
+      {gameplay.type === 'matching_lab' && <MatchingLabView gameplay={gameplay} showFrench={showFrench} />}
     </div>
   );
 };
@@ -654,6 +660,125 @@ const MixturesLabView: React.FC<{ gameplay: MixtureGameplay; showFrench: boolean
           </p>
         </div>
       )}
+    </div>
+  );
+};
+
+/* ==========================================
+   5. PROCESS STAGES VIEW (cycles/processes: respiration, circulation,
+      plant/animal reproduction, water cycle...)
+   ========================================== */
+const ProcessStagesView: React.FC<{ gameplay: ProcessStagesGameplay; showFrench: boolean }> = ({ gameplay, showFrench }) => {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const stage = gameplay.stages[activeIdx];
+
+  return (
+    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-teal-500/20 text-teal-400 rounded-2xl border border-teal-500/30">
+            <Workflow className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-lg font-black text-teal-300">{gameplay.titleAr}</h2>
+            {showFrench && gameplay.titleFr && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
+          </div>
+        </div>
+      </div>
+
+      <p className="text-xs text-slate-300 bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/60 leading-relaxed">
+        {gameplay.instructionsAr}
+        {showFrench && gameplay.instructionsFr && <span className="block text-slate-500 mt-1">{gameplay.instructionsFr}</span>}
+      </p>
+
+      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+        {gameplay.stages.map((s, idx) => (
+          <button
+            key={s.step}
+            onClick={() => setActiveIdx(idx)}
+            className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border flex items-center gap-2 ${
+              activeIdx === idx
+                ? 'bg-teal-500 text-slate-950 border-teal-300 shadow-md scale-[1.02]'
+                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+            }`}
+          >
+            <span>{s.icon}</span>
+            <span>{s.step}. {s.titleAr}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
+        <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
+          <span className="text-4xl p-3 bg-teal-950 rounded-2xl border border-teal-800">{stage.icon}</span>
+          <h3 className="text-lg font-black text-teal-300">{stage.titleAr}</h3>
+        </div>
+        <p className="text-sm font-bold text-slate-200 leading-relaxed bg-slate-900 p-4 rounded-2xl border border-slate-800">
+          {stage.descAr}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+/* ==========================================
+   6. MATCHING LAB VIEW (nutrition, adaptation, air properties...)
+   ========================================== */
+const MatchingLabView: React.FC<{ gameplay: MatchingLabGameplay; showFrench: boolean }> = ({ gameplay, showFrench }) => {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const pair = gameplay.pairs[activeIdx];
+
+  return (
+    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl border border-cyan-500/30">
+            <Shuffle className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 className="text-lg font-black text-cyan-300">{gameplay.titleAr}</h2>
+            {showFrench && gameplay.titleFr && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
+          </div>
+        </div>
+      </div>
+
+      <p className="text-xs text-slate-300 bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/60 leading-relaxed">
+        {gameplay.instructionsAr}
+        {showFrench && gameplay.instructionsFr && <span className="block text-slate-500 mt-1">{gameplay.instructionsFr}</span>}
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          {gameplay.pairs.map((p, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIdx(idx)}
+              className={`w-full p-4 rounded-2xl border text-right transition-all cursor-pointer ${
+                activeIdx === idx
+                  ? 'bg-cyan-500 text-slate-950 font-black border-cyan-300 shadow-xl scale-[1.01]'
+                  : 'bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 text-sm font-bold'
+              }`}
+            >
+              {p.leftAr}
+            </button>
+          ))}
+        </div>
+        <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 className="text-base font-black text-cyan-300">{pair.leftAr}</h3>
+            <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 rounded-full text-xs font-bold">
+              {pair.rightAr}
+            </span>
+          </div>
+          <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
+            <div className="text-xs font-black text-emerald-400 flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>التفسير:</span>
+            </div>
+            <p className="text-sm font-bold text-slate-200 leading-relaxed">{pair.explanationAr}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

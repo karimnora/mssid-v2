@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Award,
   Flame,
@@ -25,8 +26,9 @@ import { AuthUser } from '../types/auth';
 import { MssidLogo } from './MssidLogo';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
+import { Badge } from './ui';
 
-export type HeaderTheme = 'light' | 'neutre' | 'dark' | 'midnight' | 'oled' | 'sepia';
+export type HeaderTheme = 'light' | 'neutre' | 'dark';
 
 interface NavbarProps {
   currentGrade: PrimaryGrade;
@@ -56,6 +58,12 @@ const GRADES: { id: PrimaryGrade; labelAr: string; shortLabel: string; badge: st
   { id: '5AP', labelAr: 'السنة الخامسة', shortLabel: 'السنة 5', badge: '5AP' },
 ];
 
+const THEME_OPTIONS: { id: HeaderTheme; labelAr: string; icon: React.ReactNode }[] = [
+  { id: 'neutre', labelAr: 'Neutre (النمط الملوّن والمنعش)', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
+  { id: 'light', labelAr: 'Light (فاتح)', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
+  { id: 'dark', labelAr: 'Dark (داكن)', icon: <Moon className="w-3.5 h-3.5 text-[var(--brand-blue)]" /> },
+];
+
 export const Navbar: React.FC<NavbarProps> = ({
   currentGrade,
   onGradeChange,
@@ -71,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenPrivacyPolicy,
   onOpenCms,
   onHomeClick,
-  currentTheme = 'midnight',
+  currentTheme = 'neutre',
   onThemeChange,
 }) => {
   const [theme, setTheme] = useState<HeaderTheme>(currentTheme);
@@ -82,39 +90,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   const profileRef = useRef<HTMLDivElement>(null);
   const themeRef = useRef<HTMLDivElement>(null);
 
+  // Only toggles the root `.theme-*` class — every visual is driven by the CSS custom
+  // properties defined per theme in index.css, so there is nothing else to set here.
   const applyThemeToRoot = (selectedTheme: HeaderTheme) => {
     const root = document.documentElement;
-    root.classList.remove('theme-midnight', 'theme-dark', 'theme-oled', 'theme-light', 'theme-neutre', 'theme-sepia');
+    root.classList.remove('theme-neutre', 'theme-light', 'theme-dark');
     root.classList.add(`theme-${selectedTheme}`);
-
-    if (selectedTheme === 'neutre') {
-      document.body.style.backgroundColor = '#ecfdf5';
-      document.body.style.color = '#0f172a';
-    } else if (selectedTheme === 'light') {
-      document.body.style.backgroundColor = '#ffffff';
-      document.body.style.color = '#0f172a';
-    } else if (selectedTheme === 'sepia') {
-      document.body.style.backgroundColor = '#fbf9f5';
-      document.body.style.color = '#292524';
-    } else {
-      document.body.style.backgroundColor = '#0f172a';
-      document.body.style.color = '#f8fafc';
-    }
   };
 
   useEffect(() => {
-    if (currentTheme) {
-      const validTheme: HeaderTheme = (['neutre', 'light', 'dark', 'midnight', 'oled', 'sepia'].includes(currentTheme) ? currentTheme : 'neutre') as HeaderTheme;
-      setTheme(validTheme);
-      applyThemeToRoot(validTheme);
-    }
+    const validTheme: HeaderTheme = (['neutre', 'light', 'dark'].includes(currentTheme) ? currentTheme : 'neutre') as HeaderTheme;
+    setTheme(validTheme);
+    applyThemeToRoot(validTheme);
   }, [currentTheme]);
 
   const handleThemeSelect = (selectedTheme: HeaderTheme) => {
     setTheme(selectedTheme);
-    if (onThemeChange) {
-      onThemeChange(selectedTheme);
-    }
+    onThemeChange?.(selectedTheme);
     setIsThemeDropdownOpen(false);
     applyThemeToRoot(selectedTheme);
   };
@@ -132,656 +124,454 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const isLightLike = theme === 'light' || theme === 'neutre' || theme === 'sepia';
-
-  const getHeaderBgStyle = () => {
-    switch (theme) {
-      case 'oled':
-        return 'bg-black/95 border-b border-neutral-800 text-white shadow-2xl';
-      case 'neutre':
-        return 'bg-white/98 border-b-4 border-amber-100 text-slate-900 shadow-sm backdrop-blur-md';
-      case 'light':
-        return 'bg-white/98 border-b-4 border-indigo-100 text-slate-900 shadow-sm backdrop-blur-md';
-      case 'sepia':
-        return 'bg-[#FBF9F5]/95 border-b-4 border-[#D6CEBF] text-stone-900 shadow-sm backdrop-blur-md';
-      case 'midnight':
-      case 'dark':
-      default:
-        return 'bg-slate-900/95 border-b border-slate-800 text-slate-100 shadow-md backdrop-blur-md';
-    }
-  };
-
-  const getSegmentedBgStyle = () => {
-    switch (theme) {
-      case 'oled':
-        return 'bg-neutral-900/90 border border-neutral-800';
-      case 'neutre':
-        return 'bg-amber-50/80 border-2 border-amber-200/80 p-1 rounded-2xl';
-      case 'light':
-        return 'bg-indigo-50/80 border-2 border-indigo-200/80 p-1 rounded-2xl';
-      case 'sepia':
-        return 'bg-[#EDE8DF] border border-[#D6CEBF]';
-      case 'midnight':
-      case 'dark':
-      default:
-        return 'bg-slate-950/80 border border-slate-800/80';
-    }
-  };
-
-  const getActiveTabStyle = (isActive: boolean) => {
-    if (!isActive) {
-      return isLightLike
-        ? theme === 'neutre'
-          ? 'text-slate-600 hover:text-slate-900 hover:bg-amber-100/60 font-bold'
-          : theme === 'light'
-          ? 'text-indigo-950 hover:text-indigo-700 hover:bg-indigo-100/60 font-bold'
-          : 'text-slate-600 hover:text-slate-900 hover:bg-white/60 font-bold'
-        : 'text-slate-400 hover:text-white hover:bg-slate-800/60';
-    }
-
-    switch (theme) {
-      case 'oled':
-        return 'bg-emerald-950 text-emerald-300 font-black border border-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.3)]';
-      case 'neutre':
-      case 'light':
-        return 'bg-indigo-600 text-white font-black shadow-md border-b-4 border-indigo-800 active:translate-y-0.5';
-      case 'sepia':
-        return 'bg-amber-800 text-amber-50 font-black shadow-xs';
-      case 'midnight':
-      case 'dark':
-      default:
-        return 'bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 text-white font-extrabold shadow-[0_0_15px_rgba(16,185,129,0.25)] border border-emerald-400/30';
-    }
-  };
-
-  const getDropdownBgStyle = () => {
-    switch (theme) {
-      case 'oled':
-        return 'bg-neutral-950 border-neutral-800 text-white shadow-2xl';
-      case 'neutre':
-        return 'bg-emerald-50/98 border-2 border-emerald-200 text-slate-900 shadow-2xl';
-      case 'light':
-        return 'bg-white border-2 border-purple-100 text-slate-900 shadow-2xl';
-      case 'sepia':
-        return 'bg-[#F5F2EB] border-[#E7E2D7] text-stone-900 shadow-xl';
-      case 'midnight':
-      case 'dark':
-      default:
-        return 'bg-slate-900 border-slate-800 text-slate-100 shadow-2xl';
-    }
-  };
-
   const isAiEnabled = useFeatureFlag('aiAssistant');
   const roleLabel = authUser?.role || 'ROLE_FREE';
   const isAdmin = roleLabel === 'ROLE_ADMIN';
-  const isPremiumOrAdmin = roleLabel === 'ROLE_PREMIUM' || isAdmin;
   const displayXp = authUser?.score !== undefined ? authUser.score : (authUser?.xp !== undefined ? authUser.xp : userProfile.xp);
   const displayLevel = authUser?.level !== undefined ? authUser.level : Math.floor(displayXp / 100) + 1;
-  
-  // Dynamic Badges count from backend or fallback to userProfile
-  const displayBadgesCount = (authUser as any)?.badges 
-    ? (authUser as any).badges.length 
+  const displayBadgesCount = (authUser as any)?.badges
+    ? (authUser as any).badges.length
     : (userProfile?.badges ? userProfile.badges.length : 0);
 
   return (
     <>
-      <header className={`sticky top-0 z-40 transition-colors duration-300 dir-rtl ${getHeaderBgStyle()}`} dir="rtl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-          
-          {/* LOGO & BRAND */}
-          <div className="flex items-center gap-3 shrink-0 cursor-pointer group" onClick={onHomeClick}>
-            {theme === 'neutre' || theme === 'light' ? (
-              <div className="w-11 h-11 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg border-b-4 border-indigo-800 transition-transform group-hover:scale-105">
-                M
-              </div>
-            ) : (
-              <div className="transition-transform group-hover:scale-105">
-                <MssidLogo size="md" />
-              </div>
-            )}
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-black text-xl tracking-tight text-slate-900 font-sans">
-                  MSSID <span className="text-indigo-600 font-serif text-lg">DZ</span>
+      <header className="sticky top-0 z-40 transition-colors duration-300 dir-rtl bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir="rtl">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
+
+          {/* LOGO & BRAND — shrinks/truncates first, never forces the row wider */}
+          <div className="flex items-center gap-2 min-w-0 shrink cursor-pointer group" onClick={onHomeClick}>
+            <div className="shrink-0 transition-transform group-hover:scale-105">
+              <MssidLogo size="md" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 min-w-0">
+                <span className="font-black text-lg sm:text-xl tracking-tight text-[var(--app-text)] font-sans whitespace-nowrap">
+                  MSSID <span className="text-[var(--brand-blue)] font-serif text-base sm:text-lg">DZ</span>
                 </span>
-                <span className="bg-indigo-100 text-indigo-800 text-[10px] font-black px-2 py-0.5 rounded-full border border-indigo-200">
+                <span className="hidden xl:inline-block bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] text-[10px] font-black px-2 py-0.5 rounded-full border border-[var(--brand-blue)]/25 whitespace-nowrap">
                   مَسِيد الجزائر
                 </span>
               </div>
-              <p className="text-[11px] font-bold text-slate-400 hidden sm:block">
+              <p className="text-[11px] font-bold text-[var(--app-text-muted)] hidden sm:block truncate">
                 المنصة التعليمية للابتدائي الجزائري
               </p>
             </div>
           </div>
 
-          {/* GRADES NAVIGATION */}
-          <div className={`hidden lg:flex items-center p-1.5 rounded-2xl ${getSegmentedBgStyle()}`}>
+          {/* GRADES NAVIGATION — compact single-chip pills, no longer double-wide with a nested badge */}
+          <div className="hidden lg:flex items-center gap-1 p-1 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shrink-0">
             {GRADES.map((g) => {
               const isActive = currentGrade === g.id;
               return (
-                <button
+                <motion.button
                   key={g.id}
                   onClick={() => onGradeChange(g.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 cursor-pointer select-none ${getActiveTabStyle(
-                    isActive
-                  )}`}
+                  whileTap={{ scale: 0.94 }}
+                  className={`relative px-2.5 py-1.5 rounded-xl text-[11px] font-black transition-colors cursor-pointer select-none ${
+                    isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                  }`}
                   title={g.labelAr}
                 >
-                  <span>{g.labelAr}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-md ${
-                      isActive
-                        ? theme === 'neutre'
-                          ? 'bg-emerald-700 text-white'
-                          : 'bg-black/30 text-white font-bold'
-                        : 'bg-slate-200 text-slate-700'
-                    }`}
-                  >
-                    {g.badge}
-                  </span>
-                </button>
+                  {isActive && (
+                    <motion.span
+                      layoutId="navbar-active-grade"
+                      className="absolute inset-0 bg-[var(--brand-blue)] rounded-xl shadow-sm"
+                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                    />
+                  )}
+                  <span className="relative">{g.badge}</span>
+                </motion.button>
               );
             })}
           </div>
 
-          {/* ACTIONS & USER PROFILE */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* ACTIONS & USER PROFILE — progressively hides labels/items below xl/lg/md */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
 
             {/* AI Tutor Button */}
-            {isAiEnabled && (theme === 'neutre' ? (
-              <button
+            {isAiEnabled && (
+              <motion.button
+                whileHover={{ y: -1 }}
+                whileTap={{ y: 1 }}
                 onClick={onOpenAiTutor}
-                className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow-sm hover:shadow transition-all duration-200 active:scale-95 cursor-pointer"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-[var(--brand-emerald)] to-[var(--brand-blue)] text-white font-black text-xs px-2.5 sm:px-3 py-2 rounded-xl shadow-md transition-shadow cursor-pointer"
                 title="المعلم الذكي مسيد"
               >
-                <Sparkles className="w-4 h-4 animate-pulse text-amber-100" />
-                <span className="hidden sm:inline">المعلّم الذكي</span>
-              </button>
-            ) : (
-              <button
-                onClick={onOpenAiTutor}
-                className="flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-500 hover:brightness-110 text-white font-black text-xs px-3 py-2 rounded-xl shadow-md shadow-emerald-900/30 transition-all cursor-pointer active:scale-95"
-                title="المعلم الذكي بالذكاء الاصطناعي Gemini"
-              >
-                <Bot className="w-4 h-4 text-amber-200 animate-pulse" />
-                <span className="hidden sm:inline">المعلّم الذكي</span>
-              </button>
-            ))}
-           
-
-<div className="hidden lg:block">
-            <LanguageSwitcher />
-          </div>
-
-          {/* XP & Badges Display */}
-            {theme === 'neutre' || theme === 'light' ? (
-              <div className="hidden md:flex items-center gap-2">
-                <button
-                  onClick={onOpenProfileModal}
-                  className="flex items-center gap-2 bg-amber-100 px-3.5 py-1.5 rounded-full border-2 border-amber-200 transition-all hover:bg-amber-200/80 cursor-pointer"
-                  title={`المستوى ${displayLevel} - ${displayXp} نقاط خبرة`}
-                >
-                  <span className="text-base">⭐</span>
-                  <span className="font-black text-amber-700 text-xs">{displayXp} XP (Niv.{displayLevel})</span>
-                </button>
-                <button
-                  onClick={onOpenProfileModal}
-                  className="flex items-center gap-2 bg-emerald-100 px-3.5 py-1.5 rounded-full border-2 border-emerald-200 transition-all hover:bg-emerald-200/80 cursor-pointer"
-                >
-                  <span className="text-base">🏆</span>
-                  <span className="font-black text-emerald-700 text-xs">
-                    {displayBadgesCount} {displayBadgesCount > 1 ? 'الأوسمة' : 'وسام'}
-                  </span>
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={onOpenProfileModal}
-                className={`hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-2xl border text-xs font-bold transition-all cursor-pointer hover:brightness-110 active:scale-95 ${
-                  isLightLike
-                    ? 'bg-slate-100 border-slate-200 text-slate-800'
-                    : 'bg-slate-800/80 border-slate-700/80 text-slate-200'
-                }`}
-                title={`الملف الشخصي - المستوى ${displayLevel}`}
-              >
-                <div className="flex items-center gap-1 text-orange-500">
-                  <Flame className="w-4 h-4 fill-orange-500" />
-                  <span className="font-extrabold text-orange-400">{userProfile.streakDays}d</span>
-                </div>
-                <div className="h-3 w-px bg-slate-700/60" />
-                <div className="flex items-center gap-1 text-amber-400">
-                  <Award className="w-4 h-4" />
-                  <span className="font-extrabold text-amber-300">{displayXp} XP (Lvl {displayLevel})</span>
-                </div>
-                <span
-                  className={`text-[9px] font-mono font-black px-1.5 py-0.5 rounded-md ${
-                    isPremiumOrAdmin
-                      ? 'bg-amber-400 text-slate-950'
-                      : 'bg-slate-700 text-slate-300'
-                  }`}
-                >
-                  {roleLabel === 'ROLE_ADMIN' ? 'ADMIN' : roleLabel === 'ROLE_PREMIUM' ? 'PRO' : 'FREE'}
-                </span>
-              </button>
+                <Bot className="w-4 h-4 text-amber-200" />
+                <span className="hidden xl:inline">المعلّم الذكي</span>
+              </motion.button>
             )}
+
+            <div className="hidden xl:block">
+              <LanguageSwitcher />
+            </div>
+
+            {/* XP & Badges Display */}
+            <button
+              onClick={onOpenProfileModal}
+              className="hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-2xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)] hover:opacity-90"
+              title={`المستوى ${displayLevel} - ${displayXp} نقاط خبرة`}
+            >
+              <div className="flex items-center gap-1 text-orange-500">
+                <Flame className="w-4 h-4 fill-orange-500" />
+                <span dir="ltr" className="font-extrabold">{userProfile.streakDays}d</span>
+              </div>
+              <div className="h-3 w-px bg-[var(--app-card-border)]" />
+              <div className="flex items-center gap-1 text-[var(--brand-amber-dark)]">
+                <Award className="w-4 h-4" />
+                <span dir="ltr" className="font-extrabold">{displayXp} XP (Lvl {displayLevel})</span>
+              </div>
+              <span
+                dir="ltr"
+                className={`text-[9px] font-mono font-black px-1.5 py-0.5 rounded-md ${
+                  roleLabel !== 'ROLE_FREE' ? 'bg-[var(--brand-amber)] text-slate-950' : 'bg-[var(--app-card-border)] text-[var(--app-text-muted)]'
+                }`}
+              >
+                {roleLabel === 'ROLE_ADMIN' ? 'ADMIN' : roleLabel === 'ROLE_PREMIUM' ? 'PRO' : 'FREE'}
+              </span>
+            </button>
 
             {/* Theme Dropdown */}
             <div className="hidden md:block relative" ref={themeRef}>
-              <button
-                onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
-                className={`p-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
-                  isLightLike
-                    ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-800'
-                    : 'bg-slate-800/80 hover:bg-slate-700 border-slate-700 text-slate-200'
-                }`}
+              <motion.button
+                whileTap={{ scale: 0.92 }}
+                onClick={() => setIsThemeDropdownOpen((v) => !v)}
+                className="p-2 rounded-xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] hover:opacity-90 border-[var(--app-card-border)] text-[var(--app-text)]"
                 title="تغيير المظهر والثيم"
               >
                 {theme === 'light' ? (
                   <Sun className="w-4 h-4 text-amber-500" />
                 ) : theme === 'neutre' ? (
-                  <Palette className="w-4 h-4 text-purple-600" />
-                ) : theme === 'oled' ? (
-                  <Moon className="w-4 h-4 text-emerald-400" />
+                  <Palette className="w-4 h-4 text-purple-500" />
                 ) : (
-                  <Palette className="w-4 h-4 text-teal-400" />
+                  <Moon className="w-4 h-4 text-[var(--brand-blue)]" />
                 )}
-              </button>
+              </motion.button>
 
-              {isThemeDropdownOpen && (
-                <div
-                  className={`absolute left-0 mt-2 w-48 rounded-2xl border p-1.5 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-150 ${getDropdownBgStyle()}`}
-                >
-                  <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
-                    اختر ثيم الواجهة:
-                  </div>
-
-                  <button
-                    onClick={() => handleThemeSelect('neutre')}
-                    className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-all cursor-pointer ${
-                      theme === 'neutre'
-                        ? 'bg-emerald-600 text-white font-black shadow-sm'
-                        : isLightLike
-                        ? 'hover:bg-emerald-100/70 text-slate-800'
-                        : 'hover:bg-slate-800/60 text-slate-300'
-                    }`}
+              <AnimatePresence>
+                {isThemeDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: -6 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: -6 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                    className="absolute left-0 mt-2 w-52 rounded-2xl border p-1.5 shadow-2xl z-50 bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text)]"
                   >
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                      <span>1. Neutre (النمط الملوّن والمنعش)</span>
+                    <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
+                      اختر ثيم الواجهة:
                     </div>
-                    {theme === 'neutre' && <Check className="w-3.5 h-3.5 text-white" />}
-                  </button>
-
-                  <button
-                    onClick={() => handleThemeSelect('light')}
-                    className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-all cursor-pointer ${
-                      theme === 'light'
-                        ? 'bg-purple-700 text-white font-black shadow-sm'
-                        : isLightLike
-                        ? 'hover:bg-purple-50 text-slate-800'
-                        : 'hover:bg-slate-800/60 text-slate-300'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Sun className="w-3.5 h-3.5 text-amber-400" />
-                      <span>2. Light (الأبيض والأرجواني)</span>
-                    </div>
-                    {theme === 'light' && <Check className="w-3.5 h-3.5 text-white" />}
-                  </button>
-
-                  <button
-                    onClick={() => handleThemeSelect('dark')}
-                    className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-all cursor-pointer ${
-                      theme === 'dark' || theme === 'midnight'
-                        ? 'bg-slate-800 text-emerald-400 font-black shadow-sm border border-emerald-500/30'
-                        : isLightLike
-                        ? 'hover:bg-slate-100 text-slate-800'
-                        : 'hover:bg-slate-800/60 text-slate-300'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <Moon className="w-3.5 h-3.5 text-teal-400" />
-                      <span>3. Dark (الداكن - Midnight)</span>
-                    </div>
-                    {(theme === 'dark' || theme === 'midnight') && <Check className="w-3.5 h-3.5 text-emerald-400" />}
-                  </button>
-                </div>
-              )}
+                    {THEME_OPTIONS.map((opt) => (
+                      <button
+                        key={opt.id}
+                        onClick={() => handleThemeSelect(opt.id)}
+                        className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-colors cursor-pointer ${
+                          theme === opt.id
+                            ? 'bg-[var(--brand-blue)] text-white font-black shadow-sm'
+                            : 'hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          {opt.icon}
+                          <span>{opt.labelAr}</span>
+                        </div>
+                        {theme === opt.id && <Check className="w-3.5 h-3.5 text-white" />}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* UNIFIED PROFILE & AUTH DROPDOWN */}
             <div className="hidden md:block relative" ref={profileRef}>
-              <button
-                onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-extrabold transition-all cursor-pointer active:scale-95 ${
-                  isLightLike
-                    ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-800'
-                    : 'bg-slate-800 hover:bg-slate-700 border-slate-700 text-slate-100'
-                }`}
+              <motion.button
+                whileTap={{ scale: 0.96 }}
+                onClick={() => setIsProfileDropdownOpen((v) => !v)}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-extrabold transition-colors cursor-pointer bg-[var(--app-card-subtle)] hover:opacity-90 border-[var(--app-card-border)] text-[var(--app-text)]"
                 title="القائمة والخيارات العامة"
               >
-                <div className="w-6 h-6 rounded-lg bg-emerald-600 text-white font-black flex items-center justify-center text-[10px]">
+                <div className="w-6 h-6 rounded-lg bg-[var(--brand-emerald)] text-white font-black flex items-center justify-center text-[10px] shrink-0">
                   {authUser?.nom ? authUser.nom.charAt(0).toUpperCase() : '👤'}
                 </div>
-                <span className="hidden md:inline max-w-[100px] truncate">
+                <span className="hidden lg:inline max-w-[100px] truncate">
                   {authUser ? authUser.nom : 'تسجيل الدخول'}
                 </span>
                 <ChevronDown className="w-3.5 h-3.5 opacity-70" />
-              </button>
+              </motion.button>
 
-              {isProfileDropdownOpen && (
-                <div
-                  className={`absolute left-0 mt-2 w-64 rounded-2xl border p-2 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-150 ${getDropdownBgStyle()}`}
-                >
-                  <div className={`p-2.5 rounded-xl border mb-2 ${isLightLike ? 'bg-purple-50 border-purple-200/80 text-slate-900' : 'bg-emerald-950/40 border-emerald-800/40'}`}>
-                    <div className="flex items-center justify-between gap-1 flex-wrap">
-                      <span className={`font-extrabold text-xs truncate max-w-[120px] ${isLightLike ? 'text-purple-900' : 'text-white'}`}>
-                        {authUser ? authUser.nom : 'زائر mssid dz'}
-                      </span>
-                      <span className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded shadow-xs ${
-                        !authUser
-                          ? 'bg-slate-200 text-slate-700 border border-slate-300'
-                          : isAdmin
-                          ? 'bg-rose-500 text-white'
-                          : roleLabel === 'ROLE_PREMIUM'
-                          ? 'bg-amber-400 text-slate-950'
-                          : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                      }`}>
-                        {!authUser ? 'GUEST' : isAdmin ? '👑 ADMIN' : roleLabel === 'ROLE_PREMIUM' ? '⭐ PREMIUM' : '🌱 FREE'}
-                      </span>
-                    </div>
-                    {authUser?.email ? (
-                      <p className="text-[10px] text-slate-500 dir-ltr text-right truncate mt-0.5 font-mono">{authUser.email}</p>
-                    ) : (
-                      <p className="text-[10px] text-slate-500 text-right truncate mt-0.5">سجل دخولك لحفظ بياناتك في الخادم</p>
-                    )}
-                    <div className={`text-[10px] mt-1.5 flex items-center justify-between ${isLightLike ? 'text-slate-600' : 'text-slate-400'}`}>
-                      <span>🔥 {authUser?.streakDays ?? userProfile.streakDays} أيام متتالية</span>
-                      <span className="font-bold text-amber-500">🏆 {displayXp} XP / نقاط</span>
-                    </div>
-                  </div>
-
-                  <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
-                    الحساب والتوثيق
-                  </div>
-
-                  {!authUser ? (
-                    <button
-                      onClick={() => {
-                        onOpenAuthModal();
-                        setIsProfileDropdownOpen(false);
-                      }}
-                      className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer text-purple-700 hover:bg-purple-50"
-                    >
-                      <KeyRound className="w-4 h-4 text-purple-600" />
-                      <span>تسجيل الدخول / إنشاء حساب</span>
-                    </button>
-                  ) : (
-                    <>
-                      <button
-                        onClick={() => {
-                          onOpenProfileModal();
-                          setIsProfileDropdownOpen(false);
-                        }}
-                        className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'}`}
-                      >
-                        <User className="w-4 h-4 text-emerald-500" />
-                        <span>الملف الشخصي والتقدم</span>
-                      </button>
-
-                      <button
-                        onClick={() => {
-                          onLogout();
-                          setIsProfileDropdownOpen(false);
-                        }}
-                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer text-red-600 hover:bg-red-500/10"
-                      >
-                        <LogOut className="w-4 h-4 text-red-500" />
-                        <span>تسجيل الخروج (Déconnexion)</span>
-                      </button>
-                    </>
-                  )}
-
-                  {/* ADMIN SECTION (RBAC & CMS) */}
-                  {isAdmin && (
-                    <>
-                      <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
-                        إدارة النظام (Admin)
-                      </div>
-
-                      <button
-                        onClick={() => {
-                          onOpenAdminReceiptsModal();
-                          setIsProfileDropdownOpen(false);
-                        }}
-                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer bg-amber-500/20 text-amber-300 border border-amber-500/30"
-                      >
-                        <ShieldCheck className="w-4 h-4 text-amber-400" />
-                        <span>لوحة إدارة المستخدمين والوصولات (RBAC)</span>
-                      </button>
-
-                      {onOpenCms && (
-                        <button
-                          onClick={() => {
-                            onOpenCms();
-                            setIsProfileDropdownOpen(false);
-                          }}
-                          className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
-                            isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'
-                          }`}
-                        >
-                          <Sliders className="w-4 h-4 text-indigo-400" />
-                          <span>إدارة المحتوى (CMS Admin)</span>
-                        </button>
-                      )}
-                    </>
-                  )}
-
-                  <div className={`text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 ${isLightLike ? 'text-slate-500 border-slate-200' : 'text-slate-400 border-slate-800/60'}`}>
-                    أدوات وإعدادات
-                  </div>
-
-                  <button
-                    onClick={() => {
-                      onOpenAuditModal();
-                      setIsProfileDropdownOpen(false);
-                    }}
-                    className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'}`}
+              <AnimatePresence>
+                {isProfileDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: -6 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: -6 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                    className="absolute left-0 mt-2 w-64 rounded-2xl border p-2 shadow-2xl z-50 bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text)]"
                   >
-                    <BarChart2 className="w-4 h-4 text-teal-600" />
-                    <span>تقرير التدقيق البيداغوجي</span>
-                  </button>
+                    <div className="p-2.5 rounded-xl border mb-2 bg-[var(--brand-blue)]/10 border-[var(--brand-blue)]/25">
+                      <div className="flex items-center justify-between gap-1 flex-wrap">
+                        <span className="font-extrabold text-xs truncate max-w-[120px] text-[var(--app-text)]">
+                          {authUser ? authUser.nom : 'زائر mssid dz'}
+                        </span>
+                        <span className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded shadow-xs ${
+                          !authUser
+                            ? 'bg-[var(--app-card-border)] text-[var(--app-text-muted)]'
+                            : isAdmin
+                            ? 'bg-[var(--brand-coral)] text-white'
+                            : roleLabel === 'ROLE_PREMIUM'
+                            ? 'bg-[var(--brand-amber)] text-slate-950'
+                            : 'bg-[var(--brand-emerald)]/20 text-[var(--brand-emerald-dark)] border border-[var(--brand-emerald)]/30'
+                        }`}>
+                          {!authUser ? 'GUEST' : isAdmin ? '👑 ADMIN' : roleLabel === 'ROLE_PREMIUM' ? '⭐ PREMIUM' : '🌱 FREE'}
+                        </span>
+                      </div>
+                      {authUser?.email ? (
+                        <p dir="ltr" className="text-[10px] text-[var(--app-text-muted)] text-right truncate mt-0.5 font-mono">{authUser.email}</p>
+                      ) : (
+                        <p className="text-[10px] text-[var(--app-text-muted)] text-right truncate mt-0.5">سجل دخولك لحفظ بياناتك في الخادم</p>
+                      )}
+                      <div className="text-[10px] mt-1.5 flex items-center justify-between text-[var(--app-text-muted)]">
+                        <span>🔥 {authUser?.streakDays ?? userProfile.streakDays} أيام متتالية</span>
+                        <span dir="ltr" className="font-bold text-[var(--brand-amber-dark)]">🏆 {displayXp} XP</span>
+                      </div>
+                    </div>
 
-                  {onOpenPrivacyPolicy && (
+                    <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
+                      الحساب والتوثيق
+                    </div>
+
+                    {!authUser ? (
+                      <button
+                        onClick={() => { onOpenAuthModal(); setIsProfileDropdownOpen(false); }}
+                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-blue-dark)] hover:bg-[var(--brand-blue)]/10"
+                      >
+                        <KeyRound className="w-4 h-4 text-[var(--brand-blue)]" />
+                        <span>تسجيل الدخول / إنشاء حساب</span>
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => { onOpenProfileModal(); setIsProfileDropdownOpen(false); }}
+                          className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                        >
+                          <User className="w-4 h-4 text-[var(--brand-emerald)]" />
+                          <span>الملف الشخصي والتقدم</span>
+                        </button>
+
+                        <button
+                          onClick={() => { onLogout(); setIsProfileDropdownOpen(false); }}
+                          className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-coral-dark)] hover:bg-[var(--brand-coral)]/10"
+                        >
+                          <LogOut className="w-4 h-4 text-[var(--brand-coral)]" />
+                          <span>تسجيل الخروج (Déconnexion)</span>
+                        </button>
+                      </>
+                    )}
+
+                    {/* ADMIN SECTION (RBAC & CMS) */}
+                    {isAdmin && (
+                      <>
+                        <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
+                          إدارة النظام (Admin)
+                        </div>
+
+                        <button
+                          onClick={() => { onOpenAdminReceiptsModal(); setIsProfileDropdownOpen(false); }}
+                          className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border border-[var(--brand-amber)]/30"
+                        >
+                          <ShieldCheck className="w-4 h-4 text-[var(--brand-amber)]" />
+                          <span>لوحة إدارة المستخدمين والوصولات (RBAC)</span>
+                        </button>
+
+                        {onOpenCms && (
+                          <button
+                            onClick={() => { onOpenCms(); setIsProfileDropdownOpen(false); }}
+                            className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                          >
+                            <Sliders className="w-4 h-4 text-[var(--brand-blue)]" />
+                            <span>إدارة المحتوى (CMS Admin)</span>
+                          </button>
+                        )}
+                      </>
+                    )}
+
+                    <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
+                      أدوات وإعدادات
+                    </div>
+
                     <button
-                      onClick={() => {
-                        onOpenPrivacyPolicy();
-                        setIsProfileDropdownOpen(false);
-                      }}
-                      className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${isLightLike ? 'hover:bg-slate-100 text-slate-800' : 'hover:bg-slate-800/70 text-slate-100'}`}
+                      onClick={() => { onOpenAuditModal(); setIsProfileDropdownOpen(false); }}
+                      className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
                     >
-                      <FileText className="w-4 h-4 text-slate-500" />
-                      <span>سياسة الخصوصية Google Play</span>
+                      <BarChart2 className="w-4 h-4 text-[var(--brand-emerald)]" />
+                      <span>تقرير التدقيق البيداغوجي</span>
                     </button>
-                  )}
-                </div>
-              )}
+
+                    {onOpenPrivacyPolicy && (
+                      <button
+                        onClick={() => { onOpenPrivacyPolicy(); setIsProfileDropdownOpen(false); }}
+                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                      >
+                        <FileText className="w-4 h-4 text-[var(--app-text-muted)]" />
+                        <span>سياسة الخصوصية Google Play</span>
+                      </button>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setIsMobileDrawerOpen(!isMobileDrawerOpen)}
-              className={`md:hidden p-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
-                isLightLike
-                  ? 'bg-slate-100 border-slate-200 text-slate-800'
-                  : 'bg-slate-800 border-slate-700 text-slate-100'
-              }`}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsMobileDrawerOpen((v) => !v)}
+              className="md:hidden p-2 rounded-xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)]"
               title="القائمة"
             >
               {isMobileDrawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            </motion.button>
 
           </div>
         </div>
       </header>
 
       {/* MOBILE DRAWER */}
-      {isMobileDrawerOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end transition-all dir-rtl" dir="rtl">
-          <div className={`w-4/5 max-w-sm h-full p-5 flex flex-col justify-between shadow-2xl border-r border-slate-800 ${getDropdownBgStyle()}`}>
-            
-            <div className="space-y-5 overflow-y-auto">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div className="flex items-center gap-2">
-                  <MssidLogo size="sm" />
-                  <span className="font-black text-base">مَسِيد DZ</span>
-                </div>
-                <button
-                  onClick={() => setIsMobileDrawerOpen(false)}
-                  className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div>
-                <label className="text-xs font-bold text-slate-400 block mb-2">اختر المستوى الدراسي:</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {GRADES.map((g) => (
-                    <button
-                      key={g.id}
-                      onClick={() => {
-                        onGradeChange(g.id);
-                        setIsMobileDrawerOpen(false);
-                      }}
-                      className={`p-2 rounded-xl text-xs font-extrabold border transition-all text-center ${
-                        currentGrade === g.id
-                          ? 'bg-emerald-600 text-white border-emerald-500 shadow-md'
-                          : 'bg-slate-800/60 text-slate-300 border-slate-700/60'
-                      }`}
-                    >
-                      {g.labelAr}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="text-xs font-bold text-slate-400 block mb-2">ثيم الواجهة:</label>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => handleThemeSelect('neutre')}
-                    className={`flex-1 py-2 px-1 rounded-xl text-[11px] font-bold border ${
-                      theme === 'neutre' ? 'bg-purple-600 text-white border-purple-400' : 'bg-slate-800 text-slate-300 border-slate-700'
-                    }`}
-                  >
-                    Neutre
-                  </button>
-                  <button
-                    onClick={() => handleThemeSelect('light')}
-                    className={`flex-1 py-2 px-1 rounded-xl text-[11px] font-bold border ${
-                      theme === 'light' ? 'bg-amber-600 text-white border-amber-400' : 'bg-slate-800 text-slate-300 border-slate-700'
-                    }`}
-                  >
-                    Light
-                  </button>
-                  <button
-                    onClick={() => handleThemeSelect('dark')}
-                    className={`flex-1 py-2 px-1 rounded-xl text-[11px] font-bold border ${
-                      theme === 'dark' || theme === 'midnight' ? 'bg-emerald-600 text-white border-emerald-400' : 'bg-slate-800 text-slate-300 border-slate-700'
-                    }`}
-                  >
-                    Dark
-                  </button>
-                </div>
-              </div>
-
-              <div className="space-y-2 pt-2 border-t border-slate-800">
-                <button
-                  onClick={() => {
-                    onOpenAiTutor();
-                    setIsMobileDrawerOpen(false);
-                  }}
-                  className="w-full p-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs flex items-center gap-2"
-                >
-                  <Bot className="w-4 h-4 text-amber-200" />
-                  <span>المعلم الذكي بالذكاء الاصطناعي</span>
-                </button>
-
-                <button
-                  onClick={() => {
-                    onOpenProfileModal();
-                    setIsMobileDrawerOpen(false);
-                  }}
-                  className="w-full p-2.5 rounded-xl bg-slate-800/80 text-slate-200 font-bold text-xs flex items-center justify-between"
-                >
+      <AnimatePresence>
+        {isMobileDrawerOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="md:hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end dir-rtl"
+            dir="rtl"
+            onClick={(e) => { if (e.target === e.currentTarget) setIsMobileDrawerOpen(false); }}
+          >
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+              className="w-4/5 max-w-sm h-full p-5 flex flex-col justify-between shadow-2xl border-r border-[var(--app-card-border)] bg-[var(--app-card-bg)] text-[var(--app-text)]"
+            >
+              <div className="space-y-5 overflow-y-auto">
+                <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4">
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-emerald-400" />
-                    <span>الملف الشخصي</span>
+                    <MssidLogo size="sm" />
+                    <span className="font-black text-base">مَسِيد DZ</span>
                   </div>
-                  <span className="text-[10px] font-mono text-amber-400">{displayXp} XP</span>
-                </button>
+                  <button
+                    onClick={() => setIsMobileDrawerOpen(false)}
+                    className="min-h-10 min-w-10 flex items-center justify-center rounded-lg bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
 
-                {onOpenMobileSimulator && (
-                  <button
-                    onClick={() => {
-                      onOpenMobileSimulator();
-                      setIsMobileDrawerOpen(false);
-                    }}
-                    className="w-full p-2.5 rounded-xl bg-slate-800/80 text-emerald-300 font-bold text-xs flex items-center gap-2"
-                  >
-                    <Smartphone className="w-4 h-4 text-emerald-400" />
-                    <span>تطبيق المحمول (Android/iOS)</span>
-                  </button>
-                )}
+                <div>
+                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">اختر المستوى الدراسي:</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {GRADES.map((g) => (
+                      <button
+                        key={g.id}
+                        onClick={() => { onGradeChange(g.id); setIsMobileDrawerOpen(false); }}
+                        className={`min-h-12 p-2 rounded-xl text-xs font-extrabold border transition-colors text-center ${
+                          currentGrade === g.id
+                            ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)] shadow-md'
+                            : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
+                        }`}
+                      >
+                        {g.labelAr}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                {/* CMS Mobile riservé au rôle ADMIN */}
-                {isAdmin && onOpenCms && (
-                  <button
-                    onClick={() => {
-                      onOpenCms();
-                      setIsMobileDrawerOpen(false);
-                    }}
-                    className="w-full p-2.5 rounded-xl bg-indigo-900/40 text-indigo-200 border border-indigo-700/50 font-bold text-xs flex items-center gap-2 cursor-pointer"
-                  >
-                    <Sliders className="w-4 h-4 text-indigo-400" />
-                    <span>إدارة المحتوى (CMS Admin)</span>
-                  </button>
-                )}
+                <div>
+                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">ثيم الواجهة:</label>
+                  <div className="flex items-center gap-2">
+                    {THEME_OPTIONS.map((opt) => (
+                      <button
+                        key={opt.id}
+                        onClick={() => handleThemeSelect(opt.id)}
+                        className={`min-h-11 flex-1 py-2 px-1 rounded-xl text-[11px] font-bold border transition-colors ${
+                          theme === opt.id
+                            ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)]'
+                            : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
+                        }`}
+                      >
+                        {opt.id === 'neutre' ? 'Neutre' : opt.id === 'light' ? 'Light' : 'Dark'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                {!authUser ? (
+                <div className="space-y-2 pt-2 border-t border-[var(--app-card-border)]">
                   <button
-                    onClick={() => {
-                      onOpenAuthModal();
-                      setIsMobileDrawerOpen(false);
-                    }}
-                    className="w-full p-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs flex items-center gap-2 cursor-pointer"
+                    onClick={() => { onOpenAiTutor(); setIsMobileDrawerOpen(false); }}
+                    className="min-h-12 w-full p-2.5 rounded-xl bg-gradient-to-r from-[var(--brand-emerald)] to-[var(--brand-blue)] text-white font-bold text-xs flex items-center gap-2"
                   >
-                    <KeyRound className="w-4 h-4 text-amber-300" />
-                    <span>تسجيل الدخول / إنشاء حساب</span>
+                    <Bot className="w-4 h-4 text-amber-200" />
+                    <span>المعلم الذكي بالذكاء الاصطناعي</span>
                   </button>
-                ) : (
+
                   <button
-                    onClick={() => {
-                      onLogout();
-                      setIsMobileDrawerOpen(false);
-                    }}
-                    className="w-full p-2.5 rounded-xl bg-red-500/20 text-red-400 border border-red-500/30 font-bold text-xs flex items-center gap-2 cursor-pointer"
+                    onClick={() => { onOpenProfileModal(); setIsMobileDrawerOpen(false); }}
+                    className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-bold text-xs flex items-center justify-between"
                   >
-                    <LogOut className="w-4 h-4 text-red-400" />
-                    <span>تسجيل الخروج (Déconnexion)</span>
+                    <div className="flex items-center gap-2">
+                      <User className="w-4 h-4 text-[var(--brand-emerald)]" />
+                      <span>الملف الشخصي</span>
+                    </div>
+                    <Badge variant="xp"><span dir="ltr">{displayXp} XP</span></Badge>
                   </button>
-                )}
+
+                  {onOpenMobileSimulator && (
+                    <button
+                      onClick={() => { onOpenMobileSimulator(); setIsMobileDrawerOpen(false); }}
+                      className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--app-card-subtle)] text-[var(--brand-emerald-dark)] font-bold text-xs flex items-center gap-2"
+                    >
+                      <Smartphone className="w-4 h-4 text-[var(--brand-emerald)]" />
+                      <span>تطبيق المحمول (Android/iOS)</span>
+                    </button>
+                  )}
+
+                  {isAdmin && onOpenCms && (
+                    <button
+                      onClick={() => { onOpenCms(); setIsMobileDrawerOpen(false); }}
+                      className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] border border-[var(--brand-blue)]/25 font-bold text-xs flex items-center gap-2 cursor-pointer"
+                    >
+                      <Sliders className="w-4 h-4 text-[var(--brand-blue)]" />
+                      <span>إدارة المحتوى (CMS Admin)</span>
+                    </button>
+                  )}
+
+                  {!authUser ? (
+                    <button
+                      onClick={() => { onOpenAuthModal(); setIsMobileDrawerOpen(false); }}
+                      className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-blue)] text-white font-bold text-xs flex items-center gap-2 cursor-pointer"
+                    >
+                      <KeyRound className="w-4 h-4 text-amber-300" />
+                      <span>تسجيل الدخول / إنشاء حساب</span>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => { onLogout(); setIsMobileDrawerOpen(false); }}
+                      className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border border-[var(--brand-coral)]/30 font-bold text-xs flex items-center gap-2 cursor-pointer"
+                    >
+                      <LogOut className="w-4 h-4 text-[var(--brand-coral)]" />
+                      <span>تسجيل الخروج (Déconnexion)</span>
+                    </button>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="pt-4 border-t border-slate-800 text-[10px] text-slate-500 text-center">
-              مَسِيد DZ • الإصدار v2.6.0 (SaaS Dashboard)
-            </div>
-
-          </div>
-        </div>
-      )}
+              <div className="pt-4 border-t border-[var(--app-card-border)] text-[10px] text-[var(--app-text-muted)] text-center">
+                مَسِيد DZ • الإصدار v2.6.0 (SaaS Dashboard)
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

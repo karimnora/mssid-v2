@@ -398,7 +398,11 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
       'english_lab',
       'history_geo_lab',
       'islamic_lab',
-      'arabic_canvas'
+      'arabic_canvas',
+      'civics_lab',
+      'math_lab',
+      'french_dialogue_lab',
+      'english_dialogue_lab'
     ];
     COURSES_DATA.forEach((lesson) => {
       if (lesson.interactiveTool) {
@@ -418,8 +422,10 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     expect(historyGeoLessons.length).toBeGreaterThanOrEqual(7);
     expect(islamicLessons.length).toBeGreaterThanOrEqual(6);
 
-    expect(frenchLessons.every((l) => l.interactiveTool === 'french_lab')).toBe(true);
-    expect(englishLessons.every((l) => l.interactiveTool === 'english_lab')).toBe(true);
+    // French/English 4AP lessons use the shared grade-wide conjugator ('french_lab'/'english_lab'),
+    // while 5AP lessons carry a per-lesson dedicated tool ('french_dialogue_lab'/'english_dialogue_lab').
+    expect(frenchLessons.every((l) => l.interactiveTool === 'french_lab' || l.interactiveTool === 'french_dialogue_lab')).toBe(true);
+    expect(englishLessons.every((l) => l.interactiveTool === 'english_lab' || l.interactiveTool === 'english_dialogue_lab')).toBe(true);
     expect(historyGeoLessons.every((l) => l.interactiveTool === 'history_geo_lab')).toBe(true);
     expect(islamicLessons.every((l) => l.interactiveTool === 'islamic_lab')).toBe(true);
   });

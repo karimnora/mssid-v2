@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade, SubjectId, CourseLesson, UserProfile } from './types';
 import { AuthUser } from './types/auth';
 import { AuthService } from './services/authService';
@@ -25,7 +26,6 @@ import { ProfileModal } from './components/ProfileModal';
 import { AuthModal } from './components/AuthModal';
 import { AdminReceiptsManager } from './components/AdminReceiptsManager';
 import { CmsMainView } from './components/cms/CmsMainView';
-import { MssidLogo } from './components/MssidLogo';
 import { MobileAppSimulator } from './components/MobileAppSimulator';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 import { Navbar, HeaderTheme } from './components/Navbar';
@@ -36,6 +36,7 @@ import { PricingModal } from './components/PricingModal';
 import { AdBanner } from './components/AdBanner';
 import { isFeatureEnabled } from './featureFlags';
 import { springBootApi } from './services/springBootApi';
+import { Button, Card, Badge, XPProgressBar } from './components/ui';
 import {
   BookOpen,
   Calculator,
@@ -45,23 +46,9 @@ import {
   Compass,
   Heart,
   Languages,
-  Bot,
-  ShieldCheck,
-  Flame,
-  Star,
-  Trophy,
   Sparkles,
   Globe,
-  User,
   ChevronLeft,
-  Search,
-  Sparkle,
-  GraduationCap,
-  Sliders,
-  Server,
-  KeyRound,
-  Lock,
-  Smartphone,
   Zap
 } from 'lucide-react';
 
@@ -78,6 +65,8 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Sparkles,
   Globe,
 };
+
+const THEME_STORAGE_KEY = 'mssid_theme';
 
 // Placeholder demo content for the interactive video lab (Phase 6.4).
 // A real lesson video (hosted via the CMS media library) should replace this once available.
@@ -160,7 +149,17 @@ export default function App() {
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
-  const [headerTheme, setHeaderTheme] = useState<HeaderTheme>('neutre');
+  const [headerTheme, setHeaderTheme] = useState<HeaderTheme>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+      if (saved === 'neutre' || saved === 'light' || saved === 'dark') return saved;
+    }
+    return 'neutre';
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
+  }, [headerTheme]);
 
   // Current Auth User
   const [authUser, setAuthUser] = useState<AuthUser | null>(() => AuthService.getCurrentUser());
@@ -323,44 +322,17 @@ export default function App() {
       (selectedTrimester === 'all' || l.trimester === selectedTrimester)
   );
 
-  // Dynamic theme-based styling classes
-  const isNeutreTheme = headerTheme === 'neutre';
-  const isLightTheme = headerTheme === 'light';
-  const isSepiaTheme = headerTheme === 'sepia';
+  const xpIntoLevel = userProfile.xp % 100;
 
-  const pageBgClass = isNeutreTheme || isLightTheme
-    ? 'bg-gradient-to-br from-amber-50 via-slate-50 to-white text-slate-900'
-    : isSepiaTheme
-    ? 'bg-gradient-to-br from-[#FBF9F5] via-[#F7F1E7] to-[#F7F4EE] text-stone-900'
-    : 'bg-[#0F172A] text-slate-100';
-
-  const cardBgClass = isNeutreTheme || isLightTheme
-    ? 'bg-white/95 rounded-[28px] border border-slate-200 shadow-[0_18px_50px_-35px_rgba(15,23,42,0.45)] text-slate-800 hover:shadow-[0_22px_64px_-40px_rgba(15,23,42,0.35)] transition-all'
-    : isSepiaTheme
-    ? 'bg-[#F5F2EB] rounded-[28px] border border-[#E7E2D7] text-stone-900 shadow-sm'
-    : 'bg-[#1E293B] rounded-[28px] border border-slate-700/70 text-slate-100 shadow-2xl';
-
-  const tabsContainerBgClass = isNeutreTheme || isLightTheme
-    ? 'bg-white rounded-2xl border-2 border-amber-100 shadow-sm'
-    : isSepiaTheme
-    ? 'bg-[#FBF9F5] border-[#E7E2D7]'
-    : 'bg-[#0F172A]/90 border-slate-800';
-
-  const inactiveTabBgClass = isNeutreTheme || isLightTheme
-    ? 'bg-slate-50 text-slate-600 hover:bg-slate-100 border-2 border-transparent font-bold'
-    : isSepiaTheme
-    ? 'bg-[#EDE8DF] text-stone-700 hover:bg-[#E2DCCF] border-[#D6CEBF]'
-    : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border-slate-700/60';
-
-  const footerClass = isNeutreTheme || isLightTheme
-    ? 'bg-white border-t-4 border-indigo-50 text-slate-500'
-    : isSepiaTheme
-    ? 'bg-[#F5F2EB] border-t border-[#E7E2D7] text-stone-600'
-    : 'bg-[#0B1329] border-t border-slate-800 text-slate-400';
+  const MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
+    { id: 'courses', icon: <BookOpen className="w-4 h-4" />, labelAr: '📚 الدروس والمواد التعليمية', countLabelAr: `${COURSE_SUBJECTS_LIST.length} مواد` },
+    { id: 'labs', icon: <Zap className="w-4 h-4" />, labelAr: '⚡ المختبرات والأدوات التفاعلية', countLabelAr: `${INTERACTIVE_LABS_LIST.length} أدوات` },
+    { id: 'exams', icon: <Award className="w-4 h-4" />, labelAr: '📜 الامتحانات الرسمية (5AP)', countLabelAr: `${OFFICIAL_EXAMS_LIST.length} بنك` },
+  ];
 
   return (
-    <div className={`min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 ${pageBgClass}`} dir="rtl">
-      
+    <div className="min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir="rtl">
+
       {/* PWA Mobile Install Banner for Android & iOS */}
       <SeoHead />
       <PwaInstallBanner />
@@ -370,7 +342,7 @@ export default function App() {
         onUpgradeClick={() => setIsPricingModalOpen(true)}
       />
 
-      {/* 1. REFACTORED SAAS DASHBOARD HEADER COMPONENT WITH MULTI-THEME & CONSOLIDATED DROPDOWN */}
+      {/* 1. NAVBAR — theme-aware header (Kit UI v1) */}
       <Navbar
         currentGrade={grade}
         onGradeChange={(g) => {
@@ -406,113 +378,84 @@ export default function App() {
 
       {/* MAIN CONTENT AREA */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
-        
+
         {/* Isolated Category Switcher & Sub-Subject Selector */}
         <div className="space-y-4">
-        <div className="rounded-[32px] border border-slate-200/70 bg-white/80 shadow-xl p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.2em] text-slate-400">مرحباً بك في منصة مَسِيد</p>
-            <h1 className="text-lg sm:text-2xl font-extrabold tracking-tight text-slate-900">تعلم، جرّب، وارتقِ بالمرح!</h1>
-          </div>
-          <div className="flex flex-wrap gap-2 items-center">
-            <span className="inline-flex items-center gap-2 rounded-2xl bg-amber-50 px-3 py-2 text-[11px] font-bold text-amber-700 shadow-sm border border-amber-100">
-              <span>⭐</span> تجربة ممتعة للأطفال
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 text-white px-3 py-2 text-[11px] font-bold shadow-sm">
-              <span>🎯</span> واجهة آمنة وسهلة الاستخدام
-            </span>
-          </div>
-        </div>
-          
-          {/* Main Category Header Tabs */}
+          <Card padding="none" className="p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--app-text-muted)]">مرحباً بك في منصة مَسِيد</p>
+              <h1 className="text-lg sm:text-2xl font-extrabold tracking-tight text-[var(--app-text)]">تعلم، جرّب، وارتقِ بالمرح!</h1>
+            </div>
+            <div className="flex flex-wrap gap-3 items-center">
+              <div className="flex flex-wrap gap-2 items-center">
+                <Badge variant="xp">⭐ تجربة ممتعة للأطفال</Badge>
+                <Badge variant="info">🎯 واجهة آمنة وسهلة الاستخدام</Badge>
+              </div>
+              {/* Live XP progress toward next level — Kit UI v1 */}
+              <div className="w-full sm:w-56">
+                <XPProgressBar currentXp={xpIntoLevel} maxXp={100} level={userProfile.level} />
+              </div>
+            </div>
+          </Card>
+
+          {/* Main Category Header Tabs — shared sliding highlight (Framer Motion layoutId) */}
           <div className="flex items-center justify-between flex-wrap gap-3">
-            <div className={`p-1.5 rounded-2xl border flex items-center gap-2 flex-wrap ${tabsContainerBgClass}`}>
-              {/* Tab 1: Courses */}
-              <button
-                onClick={() => {
-                  setMainCategory('courses');
-                  if (!COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
-                    setSelectedSubject('math');
-                  }
-                  setSelectedLesson(null);
-                }}
-                className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 ${
-                  mainCategory === 'courses'
-                    ? isNeutreTheme || isLightTheme
-                      ? 'bg-indigo-600 text-white shadow-md border-b-4 border-indigo-800'
-                      : 'bg-purple-700 text-white shadow-md'
-                    : inactiveTabBgClass
-                }`}
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>📚 الدروس والمواد التعليمية</span>
-                <span className="bg-white/20 text-[10px] px-2 py-0.5 rounded-full font-mono">
-                  {COURSE_SUBJECTS_LIST.length} مواد
-                </span>
-              </button>
-
-              {/* Tab 2: Interactive Labs */}
-              <button
-                onClick={() => {
-                  setMainCategory('labs');
-                  if (!INTERACTIVE_LABS_LIST.some((s) => s.id === selectedSubject)) {
-                    setSelectedSubject('arabic_conjugator');
-                  }
-                  setSelectedLesson(null);
-                }}
-                className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 ${
-                  mainCategory === 'labs'
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold border-b-4 border-amber-700'
-                    : inactiveTabBgClass
-                }`}
-              >
-                <Zap className="w-4 h-4 text-amber-950" />
-                <span>⚡ المختبرات والأدوات التفاعلية</span>
-                <span className="bg-slate-950/20 text-[10px] px-2 py-0.5 rounded-full font-mono">
-                  {INTERACTIVE_LABS_LIST.length} أدوات
-                </span>
-              </button>
-
-              {/* Tab 3: Official Exams */}
-              <button
-                onClick={() => {
-                  setMainCategory('exams');
-                  setSelectedSubject('exams');
-                  setSelectedLesson(null);
-                }}
-                className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 ${
-                  mainCategory === 'exams'
-                    ? 'bg-purple-600 text-white shadow-md font-extrabold border-b-4 border-purple-900'
-                    : inactiveTabBgClass
-                }`}
-              >
-                <Award className="w-4 h-4 text-purple-200" />
-                <span>📜 الامتحانات الرسمية (5AP)</span>
-                <span className="bg-white/20 text-[10px] px-2 py-0.5 rounded-full font-mono">
-                  {OFFICIAL_EXAMS_LIST.length} بنك
-                </span>
-              </button>
+            <div className="p-1.5 rounded-2xl border flex items-center gap-2 flex-wrap bg-[var(--app-card-bg)] border-[var(--app-card-border)] shadow-sm">
+              {MAIN_CATEGORY_TABS.map((tab) => {
+                const isActive = mainCategory === tab.id;
+                return (
+                  <motion.button
+                    key={tab.id}
+                    onClick={() => {
+                      setMainCategory(tab.id);
+                      if (tab.id === 'courses' && !COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
+                        setSelectedSubject('math');
+                      } else if (tab.id === 'labs' && !INTERACTIVE_LABS_LIST.some((s) => s.id === selectedSubject)) {
+                        setSelectedSubject('arabic_conjugator');
+                      } else if (tab.id === 'exams') {
+                        setSelectedSubject('exams');
+                      }
+                      setSelectedLesson(null);
+                    }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`relative min-h-12 px-4 py-2.5 rounded-xl text-xs font-black transition-colors cursor-pointer flex items-center gap-2 ${
+                      isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="main-category-active"
+                        className={`absolute inset-0 rounded-xl shadow-md ${
+                          tab.id === 'courses' ? 'bg-[var(--brand-emerald)]' : tab.id === 'labs' ? 'bg-[var(--brand-amber)]' : 'bg-[var(--brand-blue)]'
+                        }`}
+                        transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative flex items-center gap-2">
+                      {tab.icon}
+                      <span>{tab.labelAr}</span>
+                      <span dir="ltr" className="bg-black/15 text-[10px] px-2 py-0.5 rounded-full font-mono">
+                        {tab.countLabelAr}
+                      </span>
+                    </span>
+                  </motion.button>
+                );
+              })}
             </div>
 
-            <div className="text-xs font-bold text-slate-500">
+            <div className="text-xs font-bold">
               {mainCategory === 'courses' ? (
-                <span className="inline-flex items-center gap-1.5 bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 px-3 py-1.5 rounded-xl border border-indigo-500/20">
-                  <span>🎓 الدروس والبرامج البيداغوجية الرسمية ({grade})</span>
-                </span>
+                <Badge variant="success">🎓 الدروس والبرامج البيداغوجية الرسمية ({grade})</Badge>
               ) : mainCategory === 'labs' ? (
-                <span className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-800 dark:text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/20">
-                  <span>🧪 الأدوات والمختبرات وتصريف الأفعال المستقلة</span>
-                </span>
+                <Badge variant="xp">🧪 الأدوات والمختبرات وتصريف الأفعال المستقلة</Badge>
               ) : (
-                <span className="inline-flex items-center gap-1.5 bg-purple-500/10 text-purple-800 dark:text-purple-300 px-3 py-1.5 rounded-xl border border-purple-500/20">
-                  <span>📜 بنك مواضيع امتحانات شهادة التعليم الابتدائي 5AP مع الحلول</span>
-                </span>
+                <Badge variant="info">📜 بنك مواضيع امتحانات شهادة التعليم الابتدائي 5AP مع الحلول</Badge>
               )}
             </div>
           </div>
 
           {/* Sub-Subject Selector Tabs Bar */}
-          <div className={`border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 ${tabsContainerBgClass}`}>
+          <div className="border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 bg-[var(--app-card-bg)] border-[var(--app-card-border)]">
             {(mainCategory === 'courses'
               ? COURSE_SUBJECTS_LIST
               : mainCategory === 'labs'
@@ -521,25 +464,24 @@ export default function App() {
             ).map((subj) => {
               const IconComp = ICON_MAP[subj.icon] || BookOpen;
               const isSelected = selectedSubject === subj.id;
+              const activeClass =
+                mainCategory === 'labs'
+                  ? 'bg-[var(--brand-amber)] text-slate-950'
+                  : mainCategory === 'exams'
+                  ? 'bg-[var(--brand-blue)] text-white'
+                  : 'bg-[var(--brand-emerald)] text-white';
               return (
-                <button
+                <motion.button
                   key={subj.id}
                   onClick={() => handleSelectSubject(subj.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all cursor-pointer whitespace-nowrap text-xs font-bold shrink-0 ${
-                    isSelected
-                      ? mainCategory === 'labs'
-                        ? 'bg-amber-500 text-slate-950 font-black shadow-md border-b-4 border-amber-700'
-                        : mainCategory === 'exams'
-                        ? 'bg-purple-600 text-white font-black shadow-md border-b-4 border-purple-900'
-                        : isNeutreTheme || isLightTheme
-                        ? 'bg-indigo-600 text-white font-black shadow-md border-b-4 border-indigo-800'
-                        : 'bg-purple-700 text-white shadow-md border-b-4 border-purple-900'
-                      : inactiveTabBgClass
+                  whileTap={{ scale: 0.96 }}
+                  className={`min-h-12 flex items-center gap-2 px-4 py-3 rounded-2xl transition-colors cursor-pointer whitespace-nowrap text-xs font-bold shrink-0 ${
+                    isSelected ? `${activeClass} font-black shadow-md` : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                   }`}
                 >
                   <IconComp className="w-4 h-4" />
                   <span>{subj.nameAr}</span>
-                </button>
+                </motion.button>
               );
             })}
           </div>
@@ -613,137 +555,112 @@ export default function App() {
 
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div>
-                  <h2 className="text-xl font-black font-sans">
+                  <h2 className="text-xl font-black font-sans text-[var(--app-text)]">
                     دروس ومحتوى مادة {SUBJECTS_LIST.find((s) => s.id === selectedSubject)?.nameAr} - {grade}
                   </h2>
-                  <p className="text-xs opacity-70 mt-0.5">
+                  <p className="text-xs text-[var(--app-text-muted)] mt-0.5">
                     برنامج وزارة التربية الوطنية الجزائرية (1AP - 5AP)
                   </p>
                 </div>
-                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${(isLightTheme || isNeutreTheme || isSepiaTheme) ? 'text-purple-700 bg-purple-50 border-purple-200' : 'text-purple-300 bg-purple-500/10 border-purple-500/30'}`}>
-                  عدد الدروس: {currentLessons.length}
-                </span>
+                <Badge variant="info">عدد الدروس: {currentLessons.length}</Badge>
               </div>
 
               {/* Trimester Filter Tabs */}
               <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-bold">
-                <span className="opacity-70 shrink-0">تصفية حسب الفصل:</span>
-                <button
-                  onClick={() => setSelectedTrimester('all')}
-                  className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer shrink-0 ${
-                    selectedTrimester === 'all'
-                      ? 'bg-purple-700 text-white border-purple-800 shadow-xs'
-                      : 'bg-purple-500/10 text-purple-800 border-purple-200 hover:bg-purple-500/20'
-                  }`}
-                >
-                  🌟 جميع الفصول
-                </button>
-                <button
-                  onClick={() => setSelectedTrimester(1)}
-                  className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer shrink-0 ${
-                    selectedTrimester === 1
-                      ? 'bg-purple-700 text-white border-purple-800 shadow-xs'
-                      : 'bg-purple-500/10 text-purple-800 border-purple-200 hover:bg-purple-500/20'
-                  }`}
-                >
-                  1️⃣ الفصل الأول
-                </button>
-                <button
-                  onClick={() => setSelectedTrimester(2)}
-                  className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer shrink-0 ${
-                    selectedTrimester === 2
-                      ? 'bg-purple-700 text-white border-purple-800 shadow-xs'
-                      : 'bg-purple-500/10 text-purple-800 border-purple-200 hover:bg-purple-500/20'
-                  }`}
-                >
-                  2️⃣ الفصل الثاني
-                </button>
-                <button
-                  onClick={() => setSelectedTrimester(3)}
-                  className={`px-3.5 py-1.5 rounded-full border transition-all cursor-pointer shrink-0 ${
-                    selectedTrimester === 3
-                      ? 'bg-purple-700 text-white border-purple-800 shadow-xs'
-                      : 'bg-purple-500/10 text-purple-800 border-purple-200 hover:bg-purple-500/20'
-                  }`}
-                >
-                  3️⃣ الفصل الثالث
-                </button>
+                <span className="text-[var(--app-text-muted)] shrink-0">تصفية حسب الفصل:</span>
+                {([
+                  { id: 'all' as const, labelAr: '🌟 جميع الفصول' },
+                  { id: 1 as const, labelAr: '1️⃣ الفصل الأول' },
+                  { id: 2 as const, labelAr: '2️⃣ الفصل الثاني' },
+                  { id: 3 as const, labelAr: '3️⃣ الفصل الثالث' },
+                ]).map((t) => (
+                  <motion.button
+                    key={String(t.id)}
+                    onClick={() => setSelectedTrimester(t.id)}
+                    whileTap={{ scale: 0.95 }}
+                    className={`min-h-10 px-3.5 py-1.5 rounded-full border transition-colors cursor-pointer shrink-0 ${
+                      selectedTrimester === t.id
+                        ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)] shadow-xs'
+                        : 'bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] border-[var(--brand-blue)]/25 hover:bg-[var(--brand-blue)]/15'
+                    }`}
+                  >
+                    {t.labelAr}
+                  </motion.button>
+                ))}
               </div>
 
               {currentLessons.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {currentLessons.map((lesson) => {
-                    const isCompleted = userProfile.completedLessonIds.includes(lesson.id);
-                    return (
-                      <div
-                        key={lesson.id}
-                        onClick={() => setSelectedLesson(lesson)}
-                        className={`rounded-3xl border p-5 transition-all cursor-pointer space-y-4 hover:-translate-y-0.5 ${cardBgClass}`}
-                      >
-                        <div className="flex items-center justify-between flex-wrap gap-2">
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${(isLightTheme || isNeutreTheme || isSepiaTheme) ? 'text-purple-800 bg-purple-50 border-purple-100' : 'text-purple-300 bg-purple-500/15 border-purple-500/30'}`}>
-                              {lesson.categoryAr}
-                            </span>
-                            {lesson.trimester && (
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 border border-amber-500/30">
-                                الفصل {lesson.trimester}
-                              </span>
-                            )}
-                          </div>
-                          {isCompleted && (
-                            <span className="text-[10px] font-bold bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
-                              ✓ مكتمل
-                            </span>
-                          )}
-                        </div>
+                  <AnimatePresence mode="popLayout">
+                    {currentLessons.map((lesson, i) => {
+                      const isCompleted = userProfile.completedLessonIds.includes(lesson.id);
+                      return (
+                        <motion.div
+                          key={lesson.id}
+                          layout
+                          initial={{ opacity: 0, y: 16 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.25, delay: Math.min(i, 8) * 0.03 }}
+                        >
+                          <Card interactive className="p-5 space-y-4 h-full" onClick={() => setSelectedLesson(lesson)}>
+                            <div className="flex items-center justify-between flex-wrap gap-2">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <Badge variant="info">{lesson.categoryAr}</Badge>
+                                {lesson.trimester && (
+                                  <Badge variant="xp">الفصل {lesson.trimester}</Badge>
+                                )}
+                              </div>
+                              {isCompleted && (
+                                <Badge variant="success">✓ مكتمل</Badge>
+                              )}
+                            </div>
 
-                        <div>
-                          <h3 className="text-base font-extrabold font-sans">{lesson.titleAr}</h3>
-                          <p className="text-xs opacity-75 mt-1 line-clamp-2 leading-relaxed">
-                            {lesson.summaryAr}
-                          </p>
-                        </div>
+                            <div>
+                              <h3 className="text-base font-extrabold font-sans text-[var(--app-text)]">{lesson.titleAr}</h3>
+                              <p className="text-xs text-[var(--app-text-muted)] mt-1 line-clamp-2 leading-relaxed">
+                                {lesson.summaryAr}
+                              </p>
+                            </div>
 
-                        <div className="flex items-center justify-between pt-2 border-t border-slate-700/20 text-xs font-bold text-purple-400">
-                          <span>بدء الدورة والتمارين التفاعلية</span>
-                          <ChevronLeft className="w-4 h-4" />
-                        </div>
-                      </div>
-                    );
-                  })}
+                            <div className="flex items-center justify-between pt-2 border-t border-[var(--app-card-border)] text-xs font-bold text-[var(--brand-blue-dark)]">
+                              <span>بدء الدورة والتمارين التفاعلية</span>
+                              <ChevronLeft className="w-4 h-4" />
+                            </div>
+                          </Card>
+                        </motion.div>
+                      );
+                    })}
+                  </AnimatePresence>
                 </div>
               ) : (
-                <div className={`border rounded-3xl p-12 text-center space-y-3 ${cardBgClass}`}>
-                  <BookOpen className="w-12 h-12 opacity-40 mx-auto" />
-                  <h3 className="text-base font-extrabold">لا توجد دروس حالياً لهذه المرحلة الحالية</h3>
-                  <p className="text-xs opacity-70 max-w-md mx-auto">
+                <Card padding="none" className="p-12 text-center space-y-3">
+                  <BookOpen className="w-12 h-12 opacity-40 mx-auto text-[var(--app-text-muted)]" />
+                  <h3 className="text-base font-extrabold text-[var(--app-text)]">لا توجد دروس حالياً لهذه المرحلة الحالية</h3>
+                  <p className="text-xs text-[var(--app-text-muted)] max-w-md mx-auto">
                     يمكنك تجربة دروس الرياضيات، الحساب الذهني بالسوروبان، أو خوض امتحانات شهادة التعليم الابتدائي (5AP) حالياً.
                   </p>
-                  <button
-                    onClick={() => handleSelectSubject('math')}
-                    className="px-4 py-2 bg-purple-700 text-white font-bold text-xs rounded-xl hover:bg-purple-800 cursor-pointer"
-                  >
+                  <Button variant="primary" size="sm" onClick={() => handleSelectSubject('math')}>
                     الانتقال لدروس الرياضيات
-                  </button>
-                </div>
+                  </Button>
+                </Card>
               )}
 
               {/* Tools Section Bottom Bar */}
-              <div className={`rounded-2xl p-6 border space-y-4 ${cardBgClass}`}>
+              <Card padding="none" className="p-6 space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div>
-                    <span className="text-[10px] font-mono text-amber-400 block uppercase tracking-wider">INTERACTIVE MATH SUITE</span>
-                    <h3 className="text-base font-extrabold font-sans">الأدوات التفاعلية للمرحلة الابتدائية</h3>
+                    <span dir="ltr" className="text-[10px] font-mono text-[var(--brand-amber-dark)] block uppercase tracking-wider">INTERACTIVE MATH SUITE</span>
+                    <h3 className="text-base font-extrabold font-sans text-[var(--app-text)]">الأدوات التفاعلية للمرحلة الابتدائية</h3>
                   </div>
-                  <span className="text-xs opacity-70">سريعة الاستجابة وبدون حماية أو تشفير خارجي</span>
+                  <span className="text-xs text-[var(--app-text-muted)]">سريعة الاستجابة وبدون حماية أو تشفير خارجي</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <UnitConverter theme={headerTheme} />
                   <GeometryVisualizer theme={headerTheme} />
                 </div>
-              </div>
+              </Card>
 
             </div>
           )}
@@ -752,17 +669,17 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer className={`py-6 mt-12 transition-colors duration-300 ${footerClass}`}>
+      <footer className="py-6 mt-12 transition-colors duration-300 bg-[var(--app-footer-bg)] border-t border-[var(--app-card-border)] text-[var(--app-text-muted)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans">
           <div className="flex items-center gap-2">
-            <span className="font-bold">مَسِيد Mssid DZ</span>
+            <span className="font-bold text-[var(--app-text)]">مَسِيد Mssid DZ</span>
             <span className="opacity-75">• المنهاج الرسمي لوزارة التربية الوطنية الجزائرية (Spring Boot Architecture)</span>
           </div>
           <div className="flex items-center gap-4">
-            <button onClick={() => setIsAuditModalOpen(true)} className="hover:text-emerald-400 cursor-pointer">
+            <button onClick={() => setIsAuditModalOpen(true)} className="hover:text-[var(--brand-emerald)] cursor-pointer">
               تقرير التدقيق الفني (Audit Report)
             </button>
-            <button onClick={() => setIsAiModalOpen(true)} className="hover:text-amber-400 cursor-pointer">
+            <button onClick={() => setIsAiModalOpen(true)} className="hover:text-[var(--brand-amber)] cursor-pointer">
               المعلم مسيد (Gemini AI)
             </button>
           </div>

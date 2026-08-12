@@ -53,7 +53,7 @@ export interface KeyFormula {
   noteAr?: string;
 }
 
-export type GameplayModuleType = 'circuit_builder' | 'safety_roleplay' | 'mixtures_lab';
+export type GameplayModuleType = 'circuit_builder' | 'safety_roleplay' | 'mixtures_lab' | 'process_stages' | 'matching_lab';
 
 export interface CircuitComponent {
   id: string;
@@ -140,10 +140,44 @@ export interface MixtureGameplay {
   mixtures: MixtureRecipe[];
 }
 
+// Extra science gameplay module types (consolidation round 3) — covers biology/earth-science lessons
+// that don't fit circuit/safety/mixture shapes. `Fr` fields are optional here (unlike the 3 types
+// above, where they're required) to avoid doubling authoring effort across 9 lessons.
+export interface ProcessStageItem {
+  step: number;
+  titleAr: string;
+  descAr: string;
+  icon: string; // single emoji
+}
+export interface ProcessStagesGameplay {
+  type: 'process_stages';
+  titleAr: string;
+  titleFr?: string;
+  instructionsAr: string;
+  instructionsFr?: string;
+  stages: ProcessStageItem[];
+}
+
+export interface ScienceMatchPair {
+  leftAr: string;
+  rightAr: string;
+  explanationAr: string;
+}
+export interface MatchingLabGameplay {
+  type: 'matching_lab';
+  titleAr: string;
+  titleFr?: string;
+  instructionsAr: string;
+  instructionsFr?: string;
+  pairs: ScienceMatchPair[];
+}
+
 export type GameplaySimulation =
   | CircuitGameplay
   | SafetyRoleplayGameplay
-  | MixtureGameplay;
+  | MixtureGameplay
+  | ProcessStagesGameplay
+  | MatchingLabGameplay;
 
 export type PedagogicalLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -385,6 +419,137 @@ export type HistoryGeoInteractiveConfig =
   | HistoryGeoClimateVegetationMatching
   | HistoryGeoEcoCitizenScenario;
 
+// Civics interactive tool (civics_lab) — per-lesson configuration, same pattern as History-Geo/Islamic:
+// the shared component renders exactly one typed module per lesson.
+export interface CivicsInstitutionCard {
+  nameAr: string;
+  iconEmoji: string;
+  roleAr: string;
+  detailsAr: string;
+}
+export interface CivicsInstitutionCards {
+  type: 'institution_cards';
+  titleAr: string;
+  introAr: string;
+  cards: CivicsInstitutionCard[];
+}
+
+export interface CivicsScenarioChoice {
+  textAr: string;
+  isCorrect: boolean;
+  feedbackAr: string;
+}
+export interface CivicsScenarioItem {
+  id: string;
+  titleAr: string;
+  situationAr: string;
+  choices: CivicsScenarioChoice[];
+}
+export interface CivicsScenario {
+  type: 'civic_scenario';
+  titleAr: string;
+  introAr: string;
+  scenarios: CivicsScenarioItem[];
+}
+
+export type CivicsInteractiveConfig = CivicsInstitutionCards | CivicsScenario;
+
+// Math interactive tool (math_lab) — per-lesson configuration, same pattern.
+export interface MathNumberCard {
+  labelAr: string;
+  valueDisplay: string;
+  explanationAr: string;
+}
+export interface MathNumberCards {
+  type: 'number_cards';
+  titleAr: string;
+  introAr: string;
+  cards: MathNumberCard[];
+}
+
+export interface MathShapeItem {
+  id: string;
+  nameAr: string;
+  propertiesAr: string[];
+  visualHint: string; // short emoji/glyph cue standing in for a drawing
+}
+export interface MathShapeExplorer {
+  type: 'shape_explorer';
+  titleAr: string;
+  introAr: string;
+  shapes: MathShapeItem[];
+}
+
+export interface MathWordProblemChoice {
+  textAr: string;
+  isCorrect: boolean;
+  feedbackAr: string;
+}
+export interface MathWordProblemItem {
+  id: string;
+  situationAr: string;
+  choices: MathWordProblemChoice[];
+}
+export interface MathWordProblemScenario {
+  type: 'word_problem_scenario';
+  titleAr: string;
+  introAr: string;
+  problems: MathWordProblemItem[];
+}
+
+export interface MathDataRow {
+  labelAr: string;
+  valueAr: string;
+}
+export interface MathDataMatching {
+  type: 'data_matching';
+  titleAr: string;
+  introAr: string;
+  rows: MathDataRow[];
+  insightAr: string;
+}
+
+export type MathInteractiveConfig =
+  | MathNumberCards
+  | MathShapeExplorer
+  | MathWordProblemScenario
+  | MathDataMatching;
+
+// Language interactive tool (french_dialogue_lab / english_dialogue_lab) — shared between French and
+// English 5AP (small lesson counts, very similar nature). Content-language convention unchanged despite
+// the `Ar` suffix: French-lesson fields are written in French, English-lesson fields in English with
+// Arabic glosses — same convention already used for the rest of those lessons' fields.
+export interface LanguageVocabTerm {
+  termAr: string;
+  meaningAr: string;
+  exampleAr: string;
+}
+export interface LanguageVocabExplorer {
+  type: 'vocabulary_explorer';
+  titleAr: string;
+  introAr: string;
+  terms: LanguageVocabTerm[];
+}
+
+export interface LanguageDialogueChoice {
+  textAr: string;
+  isCorrect: boolean;
+  feedbackAr: string;
+}
+export interface LanguageDialogueTurn {
+  promptAr: string;
+  lineAr: string;
+  choices: LanguageDialogueChoice[];
+}
+export interface LanguageDialogueScenario {
+  type: 'dialogue_scenario';
+  titleAr: string;
+  introAr: string;
+  turns: LanguageDialogueTurn[];
+}
+
+export type LanguageInteractiveConfig = LanguageVocabExplorer | LanguageDialogueScenario;
+
 // Content provenance (Phase 7 + consolidation) — every lesson should be explicit about how
 // confident we are in its curricular placement (grade/subject/trimester/unit), NOT necessarily
 // about whether its prose/exercises are copied verbatim from a ministry document (they never are —
@@ -443,7 +608,7 @@ export interface CourseLesson {
   rulesAr: string[];
   keyFormulas?: KeyFormula[];
   examplesAr?: { problem: string; solution: string }[];
-  interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas';
+  interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas' | 'civics_lab' | 'math_lab' | 'french_dialogue_lab' | 'english_dialogue_lab';
   gameplay_simulation?: GameplaySimulation;
   quiz: QuizQuestion[];
   trimester?: 1 | 2 | 3;
@@ -473,6 +638,9 @@ export interface CourseLesson {
   scientificInquiry?: ScientificInquiry; // sciences only: the question→observation→hypothesis→experiment→result démarche
   islamicInteractive?: IslamicInteractiveConfig; // islamic education only: per-lesson content for the islamic_lab tool
   historyGeoInteractive?: HistoryGeoInteractiveConfig; // history/geography only: per-lesson content for the history_geo_lab tool
+  civicsInteractive?: CivicsInteractiveConfig; // civics only: per-lesson content for the civics_lab tool
+  mathInteractive?: MathInteractiveConfig; // math only: per-lesson content for the math_lab tool
+  languageInteractive?: LanguageInteractiveConfig; // french/english only: per-lesson content for the french_dialogue_lab / english_dialogue_lab tool
 }
 
 export interface ExamExercise {

@@ -1,0 +1,203 @@
+import React, { useState } from 'react';
+import {
+  Hash,
+  Shapes,
+  Lightbulb,
+  BarChart3,
+  Sparkles
+} from 'lucide-react';
+import type { MathInteractiveConfig } from '../types';
+
+interface MathInteractiveProps {
+  config: MathInteractiveConfig;
+}
+
+/* ==========================================
+   PER-LESSON CONFIG-DRIVEN VIEWS
+   Rendered when the lesson supplies `mathInteractive` — shows only the
+   single module relevant to THAT lesson's content, not a fixed grade-wide set.
+   ========================================== */
+const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ config }) => {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const headerIcon =
+    config.type === 'number_cards' ? <Hash className="w-6 h-6 text-amber-400" /> :
+    config.type === 'shape_explorer' ? <Shapes className="w-6 h-6 text-amber-400" /> :
+    config.type === 'word_problem_scenario' ? <Lightbulb className="w-6 h-6 text-amber-400" /> :
+    <BarChart3 className="w-6 h-6 text-amber-400" />;
+
+  return (
+    <div className="bg-emerald-950 text-white rounded-3xl p-6 border border-emerald-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+      <div className="flex items-center gap-3 border-b border-emerald-800 pb-4">
+        <div className="p-3 bg-amber-500/20 text-amber-300 rounded-2xl border border-amber-500/30">
+          {headerIcon}
+        </div>
+        <div>
+          <h2 className="text-lg font-black text-amber-300">{config.titleAr}</h2>
+          {config.introAr && (
+            <p className="text-xs text-emerald-200 mt-1">{config.introAr}</p>
+          )}
+        </div>
+      </div>
+
+      {config.type === 'number_cards' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            {config.cards.map((c, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                className={`w-full p-4 rounded-2xl border text-right transition-all cursor-pointer ${
+                  activeIdx === idx
+                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl font-black scale-[1.01]'
+                    : 'bg-emerald-900/80 border-emerald-800 text-emerald-100 hover:bg-emerald-850 text-sm font-bold'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span>{c.labelAr}</span>
+                  <span dir="ltr" className={`text-xs font-mono px-2 py-0.5 rounded-full ${activeIdx === idx ? 'bg-slate-950/20' : 'bg-slate-950/60 text-amber-300'}`}>
+                    {c.valueDisplay}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+          <div className="bg-slate-950 p-6 rounded-3xl border border-emerald-800 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="text-base font-black text-amber-300">{config.cards[activeIdx].labelAr}</h3>
+              <span dir="ltr" className="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-xs font-mono font-bold">
+                {config.cards[activeIdx].valueDisplay}
+              </span>
+            </div>
+            <p className="text-sm font-bold text-slate-200 leading-relaxed bg-emerald-950 p-4 rounded-2xl border border-emerald-800">
+              {config.cards[activeIdx].explanationAr}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {config.type === 'shape_explorer' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            {config.shapes.map((s, idx) => (
+              <button
+                key={s.id}
+                onClick={() => setActiveIdx(idx)}
+                className={`w-full p-4 rounded-2xl border text-right transition-all cursor-pointer flex items-center gap-3 ${
+                  activeIdx === idx
+                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl font-black scale-[1.01]'
+                    : 'bg-emerald-900/80 border-emerald-800 text-emerald-100 hover:bg-emerald-850 text-sm font-bold'
+                }`}
+              >
+                <span className="text-2xl shrink-0">{s.visualHint}</span>
+                <span>{s.nameAr}</span>
+              </button>
+            ))}
+          </div>
+          <div className="bg-slate-950 p-6 rounded-3xl border border-emerald-800 space-y-4">
+            <div className="flex items-center gap-3 border-b border-slate-800 pb-3">
+              <span className="text-3xl">{config.shapes[activeIdx].visualHint}</span>
+              <h3 className="text-base font-black text-amber-300">{config.shapes[activeIdx].nameAr}</h3>
+            </div>
+            <div className="p-4 bg-emerald-950 rounded-2xl border border-emerald-800 space-y-2">
+              <div className="text-xs font-black text-cyan-400 flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>الخصائص:</span>
+              </div>
+              <ul className="text-sm font-bold text-slate-200 leading-relaxed list-disc pr-4 space-y-1">
+                {config.shapes[activeIdx].propertiesAr.map((p, pIdx) => (
+                  <li key={pIdx}>{p}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {config.type === 'word_problem_scenario' && (() => {
+        const problem = config.problems[activeIdx];
+        return (
+          <div className="space-y-6">
+            {config.problems.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+                {config.problems.map((p, idx) => (
+                  <button
+                    key={p.id}
+                    onClick={() => setActiveIdx(idx)}
+                    className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border ${
+                      activeIdx === idx
+                        ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md scale-[1.02]'
+                        : 'bg-emerald-900 text-emerald-200 border-emerald-800 hover:bg-emerald-850'
+                    }`}
+                  >
+                    وضعية {idx + 1}
+                  </button>
+                ))}
+              </div>
+            )}
+            <WordProblemView problem={problem} />
+          </div>
+        );
+      })()}
+
+      {config.type === 'data_matching' && (
+        <div className="space-y-4">
+          <div className="bg-slate-950 rounded-3xl border border-emerald-800 overflow-hidden">
+            <table className="w-full text-sm">
+              <tbody>
+                {config.rows.map((r, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-emerald-950/60' : 'bg-slate-950'}>
+                    <td className="p-3 font-black text-amber-300 border-b border-emerald-900/60">{r.labelAr}</td>
+                    <td dir="ltr" className="p-3 font-mono font-bold text-slate-200 border-b border-emerald-900/60 text-right">{r.valueAr}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 bg-emerald-900 border border-emerald-600 rounded-2xl text-xs text-emerald-100 font-bold leading-relaxed flex items-start gap-2">
+            <Sparkles className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
+            <span>{config.insightAr}</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const WordProblemView: React.FC<{ problem: { situationAr: string; choices: { textAr: string; isCorrect: boolean; feedbackAr: string }[] } }> = ({ problem }) => {
+  const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
+
+  return (
+    <div className="bg-slate-950 p-6 rounded-3xl border border-emerald-800 space-y-4">
+      <p className="text-sm font-bold text-slate-200 bg-emerald-950 p-4 rounded-2xl border border-emerald-800 leading-relaxed">
+        {problem.situationAr}
+      </p>
+      <div className="space-y-3">
+        {problem.choices.map((choice, cIdx) => (
+          <button
+            key={cIdx}
+            onClick={() => setSelectedChoice(cIdx)}
+            className={`w-full p-4 rounded-2xl border text-right text-xs font-bold transition-all cursor-pointer ${
+              selectedChoice === cIdx
+                ? choice.isCorrect
+                  ? 'bg-amber-500 text-slate-950 border-amber-300 ring-2 ring-amber-400'
+                  : 'bg-rose-950 border-rose-500 text-rose-200'
+                : 'bg-emerald-900/80 border-emerald-800 text-emerald-100 hover:bg-emerald-850'
+            }`}
+          >
+            {choice.textAr}
+          </button>
+        ))}
+      </div>
+      {selectedChoice !== null && (
+        <div className="p-4 bg-emerald-900 border border-emerald-600 rounded-2xl text-xs text-emerald-100 font-bold leading-relaxed animate-in fade-in duration-300">
+          {problem.choices[selectedChoice].feedbackAr}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const MathInteractive: React.FC<MathInteractiveProps> = ({ config }) => (
+  <ConfiguredMathTool config={config} />
+);

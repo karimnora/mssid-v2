@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&family=Cairo:wght@400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
+
+/* Design-system brand accents — stable across all themes (do not vary per .theme-*) */
+:root {
+  --brand-emerald: #008751;
+  --brand-emerald-dark: #006b40;
+  --brand-amber: #F59E0B;
+  --brand-amber-dark: #D97706;
+  --brand-blue: #3B82F6;
+  --brand-blue-dark: #2563EB;
+  --brand-coral: #E73B33;
+  --brand-coral-dark: #C42A23;
+}
 
 :root, .theme-neutre, .theme-vibrant {
   --app-bg: #FFFBF0;
@@ -12,7 +24,7 @@
   --app-input-border: #cbd5e1;
   --app-header-bg: rgba(255, 255, 255, 0.98);
   --app-footer-bg: #ffffff;
-  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
 }
 
 body {
@@ -32,7 +44,7 @@ body {
   --app-input-border: #475569;
   --app-header-bg: rgba(15, 23, 42, 0.95);
   --app-footer-bg: #0b1329;
-  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
 }
 
 .theme-sepia {
@@ -46,7 +58,7 @@ body {
   --app-input-border: #d6cebf;
   --app-header-bg: rgba(251, 249, 245, 0.95);
   --app-footer-bg: #f5f2eb;
-  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
 }
 
 .theme-light {
@@ -60,7 +72,7 @@ body {
   --app-input-border: #cbd5e1;
   --app-header-bg: rgba(255, 255, 255, 0.95);
   --app-footer-bg: #ffffff;
-  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
 }
 
 /* Vibrant Palette Custom Helper Utilities */
@@ -85,6 +97,12 @@ body {
 
 .font-serif-arabic {
   font-family: 'Amiri', serif;
+}
+
+/* Marker class paired with dir="rtl" across the app — kept as a real rule so
+   text-direction-sensitive utilities (icon mirroring, etc.) have a stable hook. */
+.dir-rtl {
+  direction: rtl;
 }
 
 /* Custom scrollbar */

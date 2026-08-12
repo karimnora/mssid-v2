@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { SorobanInteractive } from './SorobanInteractive';
@@ -12,10 +13,14 @@ import { FrenchLanguageLab } from './FrenchLanguageLab';
 import { EnglishLanguageLab } from './EnglishLanguageLab';
 import { HistoryGeoInteractive } from './HistoryGeoInteractive';
 import { IslamicEducationInteractive } from './IslamicEducationInteractive';
+import { CivicsInteractive } from './CivicsInteractive';
+import { MathInteractive } from './MathInteractive';
+import { LanguageLabInteractive } from './LanguageLabInteractive';
 import { LessonExplanationView } from './LessonExplanationView';
 import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
 import { ScienceReactorInteractive } from './ScienceReactorInteractive';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
+import { Button, Card, Badge, XPProgressBar } from './ui';
 import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
@@ -31,6 +36,8 @@ interface LessonViewerProps {
   onHomeClick?: () => void;
   tashkeelEnabled?: boolean;
 }
+
+type TabId = 'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz' | 'evaluation';
 
 // The 4-tier practice progression requested for lesson depth: level 1-4 on each ProgressiveExercise
 // maps directly to one of these tiers (level 5 reserved for an optional extra-challenge exercise,
@@ -53,6 +60,37 @@ const shuffleOptions = <T,>(array: T[]): T[] => {
   return arr;
 };
 
+// Shared spring/easing tokens for tab transitions and quiz feedback.
+const tabTransition = { duration: 0.22, ease: [0.4, 0, 0.2, 1] as const };
+const CONFETTI_EMOJIS = ['🎉', '⭐', '✨', '🏆'];
+
+/** Brief particle burst played once next to a freshly-correct quiz answer. */
+const ConfettiBurst: React.FC = () => (
+  <span className="pointer-events-none absolute inset-0 overflow-visible" aria-hidden="true">
+    {Array.from({ length: 8 }).map((_, i) => {
+      const angle = (i / 8) * Math.PI * 2;
+      const distance = 34 + (i % 3) * 10;
+      return (
+        <motion.span
+          key={i}
+          className="absolute top-1/2 left-1/2 text-xs"
+          initial={{ opacity: 1, x: 0, y: 0, scale: 0.5 }}
+          animate={{
+            opacity: 0,
+            x: Math.cos(angle) * distance,
+            y: Math.sin(angle) * distance - 6,
+            scale: 1,
+            rotate: (i % 2 === 0 ? 1 : -1) * 90,
+          }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          {CONFETTI_EMOJIS[i % CONFETTI_EMOJIS.length]}
+        </motion.span>
+      );
+    })}
+  </span>
+);
+
 export const LessonViewer: React.FC<LessonViewerProps> = ({
   lesson,
   allLessons = [],
@@ -70,10 +108,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const nextLesson = currentIndex >= 0 && currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
 
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
-  const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [shuffledQuiz, setShuffledQuiz] = useState<CourseLesson['quiz']>([]);
+  const [awardedQuizIds, setAwardedQuizIds] = useState<Set<string>>(new Set());
+  const [recentAnswerId, setRecentAnswerId] = useState<string | null>(null);
   const [visibleSolutions, setVisibleSolutions] = useState<Record<number, boolean>>({});
-  const [activeTab, setActiveTab] = useState<'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz' | 'evaluation'>('explanation');
+  const [activeTab, setActiveTab] = useState<TabId>('explanation');
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   // Practice exercises state ("Je m'entraîne" — progressiveExercises)
@@ -211,7 +250,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   useEffect(() => {
     setVisibleSolutions({});
     setSelectedAnswers({});
-    setQuizSubmitted(false);
+    setAwardedQuizIds(new Set());
+    setRecentAnswerId(null);
     setSelectedExampleTier(1);
     setPracticeAnswers({});
     setPracticeChecked({});
@@ -235,32 +275,36 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setOrderingShuffled(newOrderingShuffled);
 
     initializeShuffledQuiz();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);
 
+  // Auto-clear the transient "just answered" marker that triggers the confetti burst.
+  useEffect(() => {
+    if (!recentAnswerId) return;
+    const t = setTimeout(() => setRecentAnswerId(null), 900);
+    return () => clearTimeout(t);
+  }, [recentAnswerId]);
+
+  // Immediate per-question feedback: selecting an option locks that question in right away
+  // (no separate "submit" step), awards XP the moment a question is first answered correctly,
+  // and triggers the correct/incorrect spring animation for that question only.
   const handleSelectOption = (questionId: string, optionId: string) => {
-    if (quizSubmitted) return;
+    if (selectedAnswers[questionId] !== undefined) return; // already locked
     setSelectedAnswers((prev) => ({ ...prev, [questionId]: optionId }));
-  };
-
-  const handleCalculateQuizScore = () => {
-    setQuizSubmitted(true);
-    let correctCount = 0;
     const currentQuiz = shuffledQuiz.length > 0 ? shuffledQuiz : lesson.quiz;
-    currentQuiz.forEach((q) => {
-      const selected = selectedAnswers[q.id];
-      const correctOpt = q.options.find((opt) => opt.isCorrect);
-      if (selected && correctOpt && selected === correctOpt.id) {
-        correctCount++;
-      }
-    });
-
-    const earnedXp = correctCount * 15;
-    onCompleteQuiz(lesson.id, earnedXp);
+    const question = currentQuiz.find((q) => q.id === questionId);
+    const correctOpt = question?.options.find((o) => o.isCorrect);
+    const isCorrect = !!correctOpt && correctOpt.id === optionId;
+    setRecentAnswerId(questionId);
+    if (isCorrect && !awardedQuizIds.has(questionId)) {
+      onCompleteQuiz(lesson.id, 15);
+      setAwardedQuizIds((prev) => new Set(prev).add(questionId));
+    }
   };
 
   const handleResetQuiz = () => {
-    setQuizSubmitted(false);
     setSelectedAnswers({});
+    setRecentAnswerId(null);
     initializeShuffledQuiz(); // Re-shuffle options for new randomized positions
   };
 
@@ -280,60 +324,52 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       />
 
       {/* 2. Header Bar with Back Button, Lesson Counter and Next/Prev Controls */}
-      <div className="flex items-center justify-between flex-wrap gap-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-3.5 shadow-xs">
+      <Card padding="none" className="flex items-center justify-between flex-wrap gap-3 p-3.5">
         <div className="flex items-center gap-2">
-          <button
-            onClick={onBack}
-            className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 hover:text-emerald-700 font-bold text-xs bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-3 py-2 rounded-xl transition-colors cursor-pointer"
-          >
-            <ArrowRight className="w-4 h-4" />
-            <span>قائمة الدروس</span>
-          </button>
+          <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
+            قائمة الدروس
+          </Button>
 
           {allLessons.length > 0 && currentIndex >= 0 && (
-            <span className="text-xs font-black text-indigo-800 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1.5 rounded-xl border border-indigo-200/80 dark:border-indigo-800">
-              الدرس {currentIndex + 1} من {allLessons.length}
-            </span>
+            <Badge variant="info">
+              <span dir="ltr">{currentIndex + 1} / {allLessons.length}</span>
+              <span>الدرس</span>
+            </Badge>
           )}
         </div>
 
         {/* Top Quick Next/Prev Controls */}
         {allLessons.length > 1 && (
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
+            <Button
+              variant="outline"
+              size="sm"
+              icon={<ChevronRight className="w-4 h-4" />}
               disabled={!previousLesson}
-              className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                previousLesson
-                  ? 'bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-800 dark:bg-slate-700 dark:text-slate-100 shadow-2xs'
-                  : 'bg-slate-100/50 text-slate-400 dark:bg-slate-800/50 dark:text-slate-600 cursor-not-allowed opacity-50'
-              }`}
+              onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
               title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
             >
-              <ChevronRight className="w-4 h-4" />
               <span className="hidden sm:inline">الدرس السابق</span>
               <span className="sm:hidden">السابق</span>
-            </button>
+            </Button>
 
-            <button
-              onClick={() => nextLesson && onSelectLesson?.(nextLesson)}
+            <Button
+              variant="info"
+              size="sm"
+              icon={<ChevronLeft className="w-4 h-4" />}
+              iconPosition="end"
               disabled={!nextLesson}
-              className={`flex items-center gap-1 px-3.5 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                nextLesson
-                  ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md'
-                  : 'bg-slate-100/50 text-slate-400 dark:bg-slate-800/50 dark:text-slate-600 cursor-not-allowed opacity-50'
-              }`}
+              onClick={() => nextLesson && onSelectLesson?.(nextLesson)}
               title={nextLesson ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}` : 'لا يوجد درس تالي'}
             >
               <span className="hidden sm:inline">الدرس التالي</span>
               <span className="sm:hidden">التالي</span>
-              <ChevronLeft className="w-4 h-4" />
-            </button>
+            </Button>
           </div>
         )}
-      </div>
+      </Card>
 
-      {/* Lesson Hero Banner */}
+      {/* Lesson Hero Banner — bold, fixed-gradient showcase, intentionally vibrant regardless of theme */}
       <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
@@ -347,9 +383,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               )}
             </div>
             {lesson.difficultyTier && (
-              <span className="text-xs font-bold bg-white/10 border border-white/20 rounded-full px-3 py-1">
+              <Badge variant="xp">
                 {'⭐'.repeat(lesson.difficultyTier)} {lesson.difficultyTier === 1 ? 'سهل' : lesson.difficultyTier === 2 ? 'متوسط' : 'متقدم'}
-              </span>
+              </Badge>
             )}
           </div>
           <h1 className="text-xl sm:text-2xl font-black mb-3">{renderArabicText(lesson.titleAr)}</h1>
@@ -366,931 +402,928 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {/* Creative mission wrapper (presentation only — never a source of new official notions) */}
       {lesson.missionTitleAr && (
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded-3xl p-5 shadow-md">
+        <div className="bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-emerald)] text-white rounded-3xl p-5 shadow-md">
           <h2 className="font-black text-base sm:text-lg mb-1">{renderArabicText(lesson.missionTitleAr)}</h2>
-          {lesson.missionIntroAr && <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed">{renderArabicText(lesson.missionIntroAr)}</p>}
+          {lesson.missionIntroAr && <p className="text-xs sm:text-sm text-white/90 leading-relaxed">{renderArabicText(lesson.missionIntroAr)}</p>}
         </div>
       )}
 
       {/* Learning objectives — "à la fin de cette leçon, je sais..." */}
       {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
-        <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-xs">
-          <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-2 mb-2.5">
-            <Target className="w-4 h-4 text-indigo-600" />
+        <Card padding="none" className="p-5">
+          <h3 className="font-extrabold text-sm text-[var(--app-text)] flex items-center gap-2 mb-2.5">
+            <Target className="w-4 h-4 text-[var(--brand-blue)]" />
             <span>في نهاية هذا الدرس، سأكون قادراً على:</span>
           </h3>
           <ul className="space-y-1.5">
             {lesson.objectivesAr.map((obj, i) => (
-              <li key={i} className="text-xs sm:text-sm text-slate-700 flex items-start gap-2">
-                <span className="text-indigo-500 shrink-0">◆</span>
+              <li key={i} className="text-xs sm:text-sm text-[var(--app-text-muted)] flex items-start gap-2">
+                <span className="text-[var(--brand-blue)] shrink-0">◆</span>
                 <span>{renderArabicText(obj)}</span>
               </li>
             ))}
           </ul>
-        </div>
+        </Card>
       )}
 
       {/* Section Sub-Tabs */}
-      <div className="flex items-center bg-slate-200/80 p-1 rounded-2xl border border-slate-300 w-fit text-xs font-bold overflow-x-auto max-w-full">
-        <button
-          onClick={() => setActiveTab('explanation')}
-          className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-            activeTab === 'explanation' ? 'bg-indigo-700 text-white font-extrabold shadow-sm' : 'text-slate-800 hover:text-slate-900 font-bold'
-          }`}
-        >
-          <Glasses className="w-3.5 h-3.5" />
-          <span>شرح الدرس والتطبيقات</span>
-        </button>
-        <button
-          onClick={() => setActiveTab('content')}
-          className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-            activeTab === 'content' ? 'bg-white text-slate-900 font-extrabold shadow-xs' : 'text-slate-700 hover:text-slate-900 font-bold'
-          }`}
-        >
-          <BookOpen className="w-3.5 h-3.5 text-slate-500" />
-          <span>الملخص والقواعد</span>
-        </button>
-        <button
-          onClick={() => setActiveTab('interactive')}
-          className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-            activeTab === 'interactive' ? 'bg-amber-500 text-slate-950 font-black shadow-xs' : 'text-slate-700 hover:text-slate-900 font-bold'
-          }`}
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>الأداة التفاعلية المخصصة</span>
-        </button>
+      <div className="flex items-center bg-[var(--app-card-subtle)] p-1 rounded-2xl border border-[var(--app-card-border)] w-fit text-xs font-bold overflow-x-auto max-w-full">
+        <TabPill active={activeTab === 'explanation'} activeClass="bg-[var(--brand-blue)] text-white" icon={<Glasses className="w-3.5 h-3.5" />} onClick={() => setActiveTab('explanation')}>
+          شرح الدرس والتطبيقات
+        </TabPill>
+        <TabPill active={activeTab === 'content'} activeClass="bg-[var(--app-card-bg)] text-[var(--app-text)] shadow-xs" icon={<BookOpen className="w-3.5 h-3.5" />} onClick={() => setActiveTab('content')}>
+          الملخص والقواعد
+        </TabPill>
+        <TabPill active={activeTab === 'interactive'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Sparkles className="w-3.5 h-3.5" />} onClick={() => setActiveTab('interactive')}>
+          الأداة التفاعلية المخصصة
+        </TabPill>
         {lesson.progressiveExercises && lesson.progressiveExercises.length > 0 && (
-          <button
-            onClick={() => setActiveTab('practice')}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-              activeTab === 'practice' ? 'bg-amber-500 text-slate-950 font-black shadow-xs' : 'text-slate-700 hover:text-slate-900 font-bold'
-            }`}
-          >
-            <Award className="w-3.5 h-3.5" />
-            <span>أتدرب ({lesson.progressiveExercises.length})</span>
-          </button>
+          <TabPill active={activeTab === 'practice'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Award className="w-3.5 h-3.5" />} onClick={() => setActiveTab('practice')}>
+            أتدرب ({lesson.progressiveExercises.length})
+          </TabPill>
         )}
         {lesson.gameplay_simulation && (
-          <button
-            onClick={() => setActiveTab('gameplay')}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-              activeTab === 'gameplay' ? 'bg-indigo-600 text-white font-extrabold shadow-sm' : 'text-slate-700 hover:text-slate-900'
-            }`}
-          >
-            <Gamepad2 className="w-3.5 h-3.5" />
-            <span>لعبة المحاكاة التفاعلية</span>
-          </button>
+          <TabPill active={activeTab === 'gameplay'} activeClass="bg-[var(--brand-blue)] text-white" icon={<Gamepad2 className="w-3.5 h-3.5" />} onClick={() => setActiveTab('gameplay')}>
+            لعبة المحاكاة التفاعلية
+          </TabPill>
         )}
         {evaluationExercises.length > 0 && (
-          <button
-            onClick={() => setActiveTab('evaluation')}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-              activeTab === 'evaluation' ? 'bg-rose-600 text-white font-extrabold shadow-sm' : 'text-slate-700 hover:text-slate-900 font-bold'
-            }`}
-          >
-            <ClipboardCheck className="w-3.5 h-3.5" />
-            <span>التقييم النهائي ({evaluationExercises.length})</span>
-          </button>
+          <TabPill active={activeTab === 'evaluation'} activeClass="bg-[var(--brand-coral)] text-white" icon={<ClipboardCheck className="w-3.5 h-3.5" />} onClick={() => setActiveTab('evaluation')}>
+            التقييم النهائي ({evaluationExercises.length})
+          </TabPill>
         )}
         {lesson.quiz.length > 0 && (
-          <button
-            onClick={() => setActiveTab('quiz')}
-            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
-              activeTab === 'quiz' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            <Trophy className="w-3.5 h-3.5" />
-            <span>الاختبار التفاعلي ({lesson.quiz.length})</span>
-          </button>
+          <TabPill active={activeTab === 'quiz'} activeClass="bg-[var(--brand-emerald)] text-white" icon={<Trophy className="w-3.5 h-3.5" />} onClick={() => setActiveTab('quiz')}>
+            الاختبار التفاعلي ({lesson.quiz.length})
+          </TabPill>
         )}
       </div>
 
-      {/* TAB 0: LESSON EXPLANATION & VULGARISATION */}
-      {activeTab === 'explanation' && (
-        <LessonExplanationView
-          lesson={lesson}
-          tashkeelEnabled={tashkeelEnabled}
-          onProceedToSummary={() => setActiveTab('content')}
-        />
-      )}
-
-      {/* TAB GAMEPLAY: INTERACTIVE SIMULATION */}
-      {activeTab === 'gameplay' && lesson.gameplay_simulation && (
-        <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
-      )}
-
-      {/* TAB PRACTICE: "أتدرب" — exercises grouped by tier (أكتشف/أتدرب/أتقن/التحدي), then the mini-game challenge */}
-      {activeTab === 'practice' && lesson.progressiveExercises && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          {PRACTICE_TIERS.map((tier) => {
-            const tierExercises = lesson.progressiveExercises!.filter((ex) => ex.level === tier.level);
-            if (tierExercises.length === 0) return null;
-            return (
-              <div key={tier.level} className="space-y-3">
-                <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
-                  <span className="text-lg">{tier.icon}</span>
-                  <h3 className="font-black text-sm text-slate-800">{tier.titleAr}</h3>
-                  <span className="text-[10px] font-bold text-slate-400">({tierExercises.length})</span>
-                </div>
-                <div className="space-y-4">
-                  {tierExercises.map((ex) => (
-                    <PracticeExerciseCard
-                      key={ex.id}
-                      ex={ex}
-                      renderArabicText={renderArabicText}
-                      answer={practiceAnswers[ex.id]}
-                      setAnswer={setAnswerFor(ex.id)}
-                      isChecked={!!practiceChecked[ex.id]}
-                      isCorrect={!!practiceCorrect[ex.id]}
-                      canCheck={canCheckExercise(ex)}
-                      onCheck={() => checkPracticeExercise(ex)}
-                      onReset={() => resetPracticeExercise(ex)}
-                      matchingRightOrder={matchingRightOrder[ex.id] || []}
-                      matchingConnections={matchingConnections[ex.id] || {}}
-                      matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
-                      setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
-                      connectMatching={connectMatchingFor(ex.id)}
-                      disconnectMatching={disconnectMatchingFor(ex.id)}
-                      orderingShuffled={orderingShuffled[ex.id] || []}
-                      orderingSelection={orderingSelections[ex.id] || []}
-                      toggleOrderingItem={toggleOrderingItemFor(ex.id)}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-
-          {/* Mini-game challenge ("Défi") */}
-          {lesson.educationalGame && (
-            <div className="bg-gradient-to-r from-purple-950 to-slate-900 text-white rounded-3xl p-5 space-y-3 border border-purple-800/50">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <h3 className="font-black text-sm flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-amber-300" />
-                  <span>🏆 التحدي: {renderArabicText(lesson.educationalGame.titleAr)}</span>
-                </h3>
-                <span className="text-[10px] font-bold bg-white/10 px-2.5 py-1 rounded-full">+{lesson.educationalGame.xpReward} XP</span>
-              </div>
-              <p className="text-xs text-purple-200">{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
-              <div className="space-y-2">
-                {lesson.educationalGame.items.map((item, i) => (
-                  <div key={i} className="bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs">
-                    <p className="font-bold mb-1.5">{renderArabicText(item.questionOrPromptAr)}</p>
-                    {item.optionsAr && (
-                      <div className="flex gap-2 flex-wrap">
-                        {item.optionsAr.map((optAr) => (
-                          <span key={optAr} className="px-2.5 py-1 rounded-lg bg-white/10 text-purple-100">
-                            {renderArabicText(optAr)}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* TAB 1: CONTENT & RULES */}
-      {activeTab === 'content' && (
-        <div className="space-y-6 animate-in fade-in duration-200">
-          {/* Sciences: question → observation → hypothesis → experiment → result → explanation */}
-          {lesson.scientificInquiry && (
-            <ScientificInquiryFlow
-              inquiry={lesson.scientificInquiry}
-              renderArabicText={renderArabicText}
-              hasSimulation={!!lesson.gameplay_simulation}
-              onGoToSimulation={() => setActiveTab('gameplay')}
+      {/* Tab content — cross-fades/slides between sections on every switch */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={tabTransition}
+        >
+          {/* TAB 0: LESSON EXPLANATION & VULGARISATION */}
+          {activeTab === 'explanation' && (
+            <LessonExplanationView
+              lesson={lesson}
+              tashkeelEnabled={tashkeelEnabled}
+              onProceedToSummary={() => setActiveTab('content')}
             />
           )}
 
-          {/* Executive Lesson Summary Card */}
-          {lesson.summaryAr && (
-            <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-5 sm:p-6 border border-emerald-800/80 shadow-md space-y-3">
-              <div className="flex items-center justify-between border-b border-emerald-800/60 pb-3 flex-wrap gap-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-emerald-500/20 text-emerald-300 rounded-xl border border-emerald-500/30">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-extrabold text-base text-white">ملخص الدرس المفاهيمي الشامل</h3>
-                </div>
-                <span className="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">
-                  مادة {lesson.subject === 'math' ? 'الرياضيات' : lesson.subject === 'arabic' ? 'اللغة العربية' : lesson.subject === 'science' ? 'العلوم' : 'المنهج الدراسي'}
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans font-medium bg-slate-950/50 p-4 rounded-2xl border border-slate-800/80 whitespace-pre-line">
-                {formatEducationalText(lesson.summaryAr)}
-              </p>
-            </div>
+          {/* TAB GAMEPLAY: INTERACTIVE SIMULATION */}
+          {activeTab === 'gameplay' && lesson.gameplay_simulation && (
+            <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
           )}
 
-          {/* Detailed course: intro, vocabulary, common mistakes, "à retenir" synthesis */}
-          {lesson.detailedCourse && (
-            <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
-              <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 text-indigo-600" />
-                <span>الكورس المفصّل</span>
-              </h3>
-              <p className="text-sm text-slate-800 leading-relaxed bg-indigo-50/70 border border-indigo-100 rounded-2xl p-4">
-                {renderArabicText(lesson.detailedCourse.introAr)}
-              </p>
+          {/* TAB PRACTICE: "أتدرب" — exercises grouped by tier (أكتشف/أتدرب/أتقن/التحدي), then the mini-game challenge */}
+          {activeTab === 'practice' && lesson.progressiveExercises && (
+            <div className="space-y-6">
+              {PRACTICE_TIERS.map((tier) => {
+                const tierExercises = lesson.progressiveExercises!.filter((ex) => ex.level === tier.level);
+                if (tierExercises.length === 0) return null;
+                return (
+                  <div key={tier.level} className="space-y-3">
+                    <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-2">
+                      <span className="text-lg">{tier.icon}</span>
+                      <h3 className="font-black text-sm text-[var(--app-text)]">{tier.titleAr}</h3>
+                      <span className="text-[10px] font-bold text-[var(--app-text-muted)]">({tierExercises.length})</span>
+                    </div>
+                    <div className="space-y-4">
+                      {tierExercises.map((ex) => (
+                        <PracticeExerciseCard
+                          key={ex.id}
+                          ex={ex}
+                          renderArabicText={renderArabicText}
+                          answer={practiceAnswers[ex.id]}
+                          setAnswer={setAnswerFor(ex.id)}
+                          isChecked={!!practiceChecked[ex.id]}
+                          isCorrect={!!practiceCorrect[ex.id]}
+                          canCheck={canCheckExercise(ex)}
+                          onCheck={() => checkPracticeExercise(ex)}
+                          onReset={() => resetPracticeExercise(ex)}
+                          matchingRightOrder={matchingRightOrder[ex.id] || []}
+                          matchingConnections={matchingConnections[ex.id] || {}}
+                          matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
+                          setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
+                          connectMatching={connectMatchingFor(ex.id)}
+                          disconnectMatching={disconnectMatchingFor(ex.id)}
+                          orderingShuffled={orderingShuffled[ex.id] || []}
+                          orderingSelection={orderingSelections[ex.id] || []}
+                          toggleOrderingItem={toggleOrderingItemFor(ex.id)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
 
-              {lesson.detailedCourse.vocabulary && lesson.detailedCourse.vocabulary.length > 0 && (
-                <div className="space-y-2">
-                  <span className="text-xs font-extrabold text-slate-600 block">📖 كلمات مهمة أتذكرها:</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {lesson.detailedCourse.vocabulary.map((v, i) => (
-                      <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs">
-                        <span className="font-black text-indigo-700 block">{renderArabicText(v.termAr)}</span>
-                        <span className="text-slate-600">{renderArabicText(v.definitionAr)}</span>
+              {/* Mini-game challenge ("Défi") */}
+              {lesson.educationalGame && (
+                <div className="bg-gradient-to-r from-purple-950 to-slate-900 text-white rounded-3xl p-5 space-y-3 border border-purple-800/50">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <h3 className="font-black text-sm flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-amber-300" />
+                      <span>🏆 التحدي: {renderArabicText(lesson.educationalGame.titleAr)}</span>
+                    </h3>
+                    <Badge variant="xp"><span dir="ltr">+{lesson.educationalGame.xpReward} XP</span></Badge>
+                  </div>
+                  <p className="text-xs text-purple-200">{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
+                  <div className="space-y-2">
+                    {lesson.educationalGame.items.map((item, i) => (
+                      <div key={i} className="bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs">
+                        <p className="font-bold mb-1.5">{renderArabicText(item.questionOrPromptAr)}</p>
+                        {item.optionsAr && (
+                          <div className="flex gap-2 flex-wrap">
+                            {item.optionsAr.map((optAr) => (
+                              <span key={optAr} className="px-2.5 py-1 rounded-lg bg-white/10 text-purple-100">
+                                {renderArabicText(optAr)}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
                 </div>
               )}
-
-              {lesson.detailedCourse.visualizationHintAr && (
-                <p className="text-xs text-sky-800 bg-sky-50 border border-sky-200 rounded-xl p-3 flex items-start gap-2">
-                  <span>🖼️</span>
-                  <span>{renderArabicText(lesson.detailedCourse.visualizationHintAr)}</span>
-                </p>
-              )}
-
-              {lesson.detailedCourse.commonMistakes && lesson.detailedCourse.commonMistakes.length > 0 && (
-                <div className="space-y-2">
-                  <span className="text-xs font-extrabold text-rose-700 block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
-                  {lesson.detailedCourse.commonMistakes.map((m, i) => (
-                    <div key={i} className="bg-rose-50 border border-rose-200 rounded-xl p-3 text-xs space-y-1">
-                      <p className="text-rose-800"><span className="font-bold">❌ </span>{renderArabicText(m.mistakeAr)}</p>
-                      <p className="text-emerald-800"><span className="font-bold">✅ </span>{renderArabicText(m.correctionAr)}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className="bg-amber-50 border border-amber-300 rounded-2xl p-4 text-sm font-bold text-amber-900">
-                💡 أتذكر: {renderArabicText(lesson.detailedCourse.takeawayAr)}
-              </div>
             </div>
           )}
 
-          {/* 5-tier progressive worked examples */}
-          {lesson.progressiveWorkedExamples && lesson.progressiveWorkedExamples.length > 0 && (
-            <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
-              <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
-                <Lightbulb className="w-5 h-5 text-amber-500" />
-                <span>أمثلة متدرّجة (من الأسهل إلى التحدي)</span>
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {lesson.progressiveWorkedExamples.map((ex) => (
-                  <button
-                    key={ex.tier}
-                    onClick={() => setSelectedExampleTier(ex.tier)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                      selectedExampleTier === ex.tier ? 'bg-amber-500 text-slate-950 font-black shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                    }`}
-                  >
-                    {ex.labelAr}
-                  </button>
-                ))}
-              </div>
-              {(() => {
-                const activeExample = lesson.progressiveWorkedExamples!.find((ex) => ex.tier === selectedExampleTier) || lesson.progressiveWorkedExamples![0];
-                return (
-                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
-                    <p className="text-xs sm:text-sm font-bold text-slate-900 whitespace-pre-line">
-                      {activeExample.isRealLife && <span className="text-emerald-600">🏠 </span>}
-                      {renderArabicText(activeExample.problem)}
-                    </p>
-                    {activeExample.stepsAr && activeExample.stepsAr.length > 0 && (
-                      <ol className="list-decimal list-inside text-xs text-slate-700 space-y-1 pr-1">
-                        {activeExample.stepsAr.map((step, i) => (
-                          <li key={i}>{renderArabicText(step)}</li>
-                        ))}
-                      </ol>
-                    )}
-                    <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900 whitespace-pre-line">
-                      <span className="font-bold">✅ الحل: </span>
-                      {renderArabicText(activeExample.solution)}
-                    </div>
-                  </div>
-                );
-              })()}
-            </div>
-          )}
+          {/* TAB 1: CONTENT & RULES */}
+          {activeTab === 'content' && (
+            <div className="space-y-6">
+              {/* Sciences: question → observation → hypothesis → experiment → result → explanation */}
+              {lesson.scientificInquiry && (
+                <ScientificInquiryFlow
+                  inquiry={lesson.scientificInquiry}
+                  renderArabicText={renderArabicText}
+                  hasSimulation={!!lesson.gameplay_simulation}
+                  onGoToSimulation={() => setActiveTab('gameplay')}
+                />
+              )}
 
-          {/* Golden Rules with Detailed Explanations & Simple Examples */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-5">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-2">
-              <div>
-                <h3 className="font-extrabold text-base sm:text-lg text-slate-900 flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-emerald-600" />
-                  <span>القواعد الذهبية للدرس مدعومة بالأمثلة المبسطة</span>
-                </h3>
-                <p className="text-xs text-slate-500 font-sans mt-0.5">
-                  شرح ميسر لكل قاعدة مع أمثلة تطبيقية مباشرة لترسيخ الفهم
-                </p>
-              </div>
-              <span className="text-xs font-black bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-200">
-                {lesson.rulesAr.length} قواعد أساسية
-              </span>
-            </div>
-
-            <div className="space-y-4">
-              {lesson.rulesAr.map((rule, idx) => {
-                // Parse rule title and body
-                const colonIdx = rule.indexOf(':');
-                let title = '';
-                let body = rule;
-                if (colonIdx > 0 && colonIdx < 50) {
-                  title = rule.substring(0, colonIdx).trim();
-                  body = rule.substring(colonIdx + 1).trim();
-                }
-
-                // Check if rule contains inline example
-                const hasExplicitExample = rule.includes('مثال') || rule.includes('مثال:');
-                const matchingExample = lesson.examplesAr && lesson.examplesAr[idx];
-
-                return (
-                  <div key={idx} className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-4 sm:p-5 space-y-3 hover:border-emerald-300 transition-all">
-                    {/* Rule Header */}
-                    <div className="flex items-start gap-3">
-                      <span className="w-8 h-8 rounded-xl bg-emerald-600 text-white font-black text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
-                        {idx + 1}
-                      </span>
-                      <div className="space-y-1">
-                        {title && (
-                          <h4 className="font-black text-sm sm:text-base text-slate-900 flex items-center gap-2">
-                            <span>{title}</span>
-                          </h4>
-                        )}
-                        <p className="text-xs sm:text-sm text-slate-800 font-sans leading-relaxed font-semibold whitespace-pre-line">
-                          {formatEducationalText(renderArabicText(body))}
-                        </p>
+              {/* Executive Lesson Summary Card */}
+              {lesson.summaryAr && (
+                <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-5 sm:p-6 border border-emerald-800/80 shadow-md space-y-3">
+                  <div className="flex items-center justify-between border-b border-emerald-800/60 pb-3 flex-wrap gap-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2 bg-emerald-500/20 text-emerald-300 rounded-xl border border-emerald-500/30">
+                        <BookOpen className="w-5 h-5" />
                       </div>
+                      <h3 className="font-extrabold text-base text-white">ملخص الدرس المفاهيمي الشامل</h3>
                     </div>
-
-                    {/* Simple Practical Example Card */}
-                    <div className="bg-emerald-50/80 border border-emerald-200/90 rounded-xl p-3.5 text-xs text-emerald-950 font-sans space-y-1.5 mr-0 sm:mr-11">
-                      <div className="flex items-center gap-1.5 font-extrabold text-emerald-900 text-xs">
-                        <Lightbulb className="w-4 h-4 text-amber-500 shrink-0" />
-                        <span>📌 مثال تطبيقي مبسط ومباشر:</span>
-                      </div>
-                      
-                      <div className="bg-white p-3 rounded-lg border border-emerald-200 text-slate-800 font-medium leading-relaxed font-sans whitespace-pre-line">
-                        {matchingExample ? (
-                          <span>
-                            <strong className="text-emerald-800">التطبيق: </strong>
-                            {formatEducationalText(matchingExample.problem)}
-                            <br />
-                            <strong className="text-indigo-700">الحل والنتيجة: </strong>
-                            <span className="text-indigo-900 font-bold">{formatEducationalText(matchingExample.solution)}</span>
-                          </span>
-                        ) : hasExplicitExample ? (
-                          <span>
-                            تطبيق القاعدة مبيّن أعلاه في الجزء المحدد بكلمة (مثال)، حيث تلاحظ تحويل النظرية إلى نتيجة حاسمة بسيطة.
-                          </span>
-                        ) : lesson.subject === 'math' ? (
-                          <span>
-                            تطبيقيّاً: نطبق القاعدة مباشرة في المسائل عن طريق التعويض العددي ومراعاة الترتيب والخطوات التدرجية.
-                          </span>
-                        ) : lesson.subject === 'arabic' ? (
-                          <span>
-                            تطبيقيّاً: في الجملة الشفهية والكتابية، يُضبط الحرف الأخير حسب موقعه الإعرابي وفق هذه القاعدة بالضبط.
-                          </span>
-                        ) : (
-                          <span>
-                            تطبيقيّاً: هذه القاعدة تشرح الظاهرة العلمية أو المفهوم بشكل عملي يمكن ملاحظته واختباره بالعين المجردة.
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Key Formulas Grid if available */}
-          {lesson.keyFormulas && lesson.keyFormulas.length > 0 && (
-            <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-xs space-y-3">
-              <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-2">
-                <Lightbulb className="w-4 h-4 text-amber-500" />
-                <span>القوانين والعبارات المفتاحية للدرس:</span>
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {lesson.keyFormulas.map((kf, kIdx) => (
-                  <div key={kIdx} className="bg-amber-50/80 border border-amber-200/80 p-4 rounded-2xl space-y-1.5">
-                    <span className="text-xs font-extrabold text-amber-950 block">{kf.labelAr}</span>
-                    <span className="text-xs sm:text-sm font-mono font-black text-slate-900 block bg-white p-2.5 rounded-xl border border-amber-200 shadow-2xs whitespace-pre-line">
-                      {formatEducationalText(kf.formulaAr)}
+                    <span className="text-[11px] font-bold bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">
+                      مادة {lesson.subject === 'math' ? 'الرياضيات' : lesson.subject === 'arabic' ? 'اللغة العربية' : lesson.subject === 'science' ? 'العلوم' : 'المنهج الدراسي'}
                     </span>
                   </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Worked Examples if available */}
-          {lesson.examplesAr && lesson.examplesAr.length > 0 && (
-            <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div>
-                  <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                    <span>أمثلة وتمارين نموذجية محلولة بالتفصيل</span>
-                  </h3>
-                  <p className="text-xs text-slate-500">
-                    حاول حل المسألة بنفسك أولاً، ثم اكشف عن الحل النموذجي المفصل
+                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans font-medium bg-slate-950/50 p-4 rounded-2xl border border-slate-800/80 whitespace-pre-line">
+                    {formatEducationalText(lesson.summaryAr)}
                   </p>
                 </div>
-              </div>
+              )}
 
-              {lesson.examplesAr.map((ex, exIdx) => {
-                const isVisible = !!visibleSolutions[exIdx];
-                return (
-                  <div key={exIdx} className="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 border border-slate-800 space-y-3">
-                    <div className="text-xs sm:text-sm font-bold text-amber-300 font-sans leading-relaxed whitespace-pre-line bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-                      ❓ المشكلة / الوضعية {exIdx + 1}: {formatEducationalText(ex.problem)}
-                    </div>
+              {/* Detailed course: intro, vocabulary, common mistakes, "à retenir" synthesis */}
+              {lesson.detailedCourse && (
+                <Card padding="none" className="p-5 sm:p-6 space-y-4">
+                  <h3 className="font-extrabold text-base text-[var(--app-text)] flex items-center gap-2">
+                    <GraduationCap className="w-5 h-5 text-[var(--brand-blue)]" />
+                    <span>الكورس المفصّل</span>
+                  </h3>
+                  <p className="text-sm text-[var(--app-text)] leading-relaxed bg-[var(--brand-blue)]/10 border border-[var(--brand-blue)]/25 rounded-2xl p-4">
+                    {renderArabicText(lesson.detailedCourse.introAr)}
+                  </p>
 
-                    <div className="flex items-center justify-between border-t border-slate-800 pt-3">
-                      <button
-                        onClick={() =>
-                          setVisibleSolutions((prev) => ({
-                            ...prev,
-                            [exIdx]: !prev[exIdx],
-                          }))
-                        }
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 cursor-pointer shadow-xs active:scale-95"
-                      >
-                        {isVisible ? (
-                          <>
-                            <EyeOff className="w-4 h-4 text-emerald-400" />
-                            <span>إخفاء الحل النموذجي</span>
-                          </>
-                        ) : (
-                          <>
-                            <Eye className="w-4 h-4 text-emerald-400" />
-                            <span>إظهار الحل النموذجي المفصل 💡</span>
-                          </>
-                        )}
-                      </button>
-
-                      {!isVisible && (
-                        <span className="text-[11px] text-slate-400 italic">
-                          🔒 الحل مخفي للتفكير الشخصي
-                        </span>
-                      )}
-                    </div>
-
-                    {isVisible && (
-                      <div className="text-xs sm:text-sm text-emerald-200 font-sans border-t border-emerald-900/60 pt-3 leading-relaxed bg-emerald-950/80 p-4 rounded-xl border border-emerald-800/80 animate-in fade-in duration-200 whitespace-pre-line">
-                        <span className="font-extrabold text-amber-300 block mb-1">💡 الحل والتبسيط النموذجي:</span>
-                        {formatEducationalText(renderArabicText(ex.solution))}
+                  {lesson.detailedCourse.vocabulary && lesson.detailedCourse.vocabulary.length > 0 && (
+                    <div className="space-y-2">
+                      <span className="text-xs font-extrabold text-[var(--app-text-muted)] block">📖 كلمات مهمة أتذكرها:</span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {lesson.detailedCourse.vocabulary.map((v, i) => (
+                          <div key={i} className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-xl p-3 text-xs">
+                            <span className="font-black text-[var(--brand-blue-dark)] block">{renderArabicText(v.termAr)}</span>
+                            <span className="text-[var(--app-text-muted)]">{renderArabicText(v.definitionAr)}</span>
+                          </div>
+                        ))}
                       </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* TAB 2: INTERACTIVE TOOL */}
-      {activeTab === 'interactive' && (
-        <div className="space-y-4">
-          {effectiveTool === 'arabic_canvas' && <ArabicCanvasInteractive lesson={lesson} grade={lesson.grade} />}
-          {effectiveTool === 'science_reactor' && <ScienceReactorInteractive lesson={lesson} grade={lesson.grade} />}
-          {effectiveTool === 'soroban' && <SorobanInteractive grade={lesson.grade} />}
-          {effectiveTool === 'unit_converter' && <UnitConverter grade={lesson.grade} />}
-          {effectiveTool === 'geometry_visualizer' && <GeometryVisualizer grade={lesson.grade} />}
-          {effectiveTool === 'science_lab' && (
-            <ScienceLabSimulation gameplay={lesson.gameplay_simulation || {
-              id: lesson.id,
-              type: 'circuit',
-              titleAr: lesson.titleAr,
-              descriptionAr: lesson.summaryAr,
-              instructionsAr: ['تفاعل مع أجهزة المحاكاة والمختبر'],
-              targetOutput: 100,
-              badgeRewardAr: 'عالم العلوم 🔬'
-            }} grade={lesson.grade} />
-          )}
-          {effectiveTool === 'arabic_conjugator' && <ArabicConjugator grade={lesson.grade} />}
-          {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}
-          {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
-          {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}
-          {effectiveTool === 'history_geo_lab' && lesson.historyGeoInteractive && <HistoryGeoInteractive config={lesson.historyGeoInteractive} />}
-          {effectiveTool === 'islamic_lab' && lesson.islamicInteractive && <IslamicEducationInteractive config={lesson.islamicInteractive} />}
-        </div>
-      )}
-
-      {/* TAB: FINAL EVALUATION — mixed exercise types, difficulty progression, then a self-check summary */}
-      {activeTab === 'evaluation' && evaluationExercises.length > 0 && (
-        <div className="space-y-5 animate-in fade-in duration-200">
-          <div className="bg-gradient-to-r from-rose-950 to-slate-900 text-white rounded-3xl p-5 border border-rose-800/50">
-            <h3 className="font-black text-sm flex items-center gap-2 mb-1">
-              <ClipboardCheck className="w-5 h-5 text-rose-300" />
-              <span>التقييم النهائي للدرس</span>
-            </h3>
-            <p className="text-xs text-rose-200">أجب عن كل الأسئلة للتحقق من إتقانك للدرس. لا بأس بالخطأ — المهم أن تتعلم من التصحيح!</p>
-            {evaluationCheckedCount > 0 && (
-              <div className="mt-3 flex items-center gap-3">
-                <div className="flex-1 bg-white/10 h-2.5 rounded-full overflow-hidden">
-                  <div className="bg-emerald-400 h-full rounded-full transition-all duration-500" style={{ width: `${(evaluationCheckedCount / evaluationExercises.length) * 100}%` }} />
-                </div>
-                <span className="text-[11px] font-bold text-rose-200 shrink-0">{evaluationCheckedCount}/{evaluationExercises.length}</span>
-              </div>
-            )}
-          </div>
-
-          {evaluationExercises.map((ex) => (
-            <PracticeExerciseCard
-              key={ex.id}
-              ex={ex}
-              renderArabicText={renderArabicText}
-              answer={practiceAnswers[ex.id]}
-              setAnswer={setAnswerFor(ex.id)}
-              isChecked={!!practiceChecked[ex.id]}
-              isCorrect={!!practiceCorrect[ex.id]}
-              canCheck={canCheckExercise(ex)}
-              onCheck={() => checkPracticeExercise(ex)}
-              onReset={() => resetPracticeExercise(ex)}
-              matchingRightOrder={matchingRightOrder[ex.id] || []}
-              matchingConnections={matchingConnections[ex.id] || {}}
-              matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
-              setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
-              connectMatching={connectMatchingFor(ex.id)}
-              disconnectMatching={disconnectMatchingFor(ex.id)}
-              orderingShuffled={orderingShuffled[ex.id] || []}
-              orderingSelection={orderingSelections[ex.id] || []}
-              toggleOrderingItem={toggleOrderingItemFor(ex.id)}
-            />
-          ))}
-
-          {/* Self-check summary + remediation, shown once every question has been answered */}
-          {evaluationComplete && (
-            <div className={`rounded-3xl p-5 border space-y-3 ${evaluationScorePercent >= 60 ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'}`}>
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <h4 className="font-black text-sm text-slate-900">📊 نتيجتك: {evaluationCorrectCount}/{evaluationExercises.length} ({evaluationScorePercent}%)</h4>
-                <span className="text-xs font-bold text-slate-500">+{evaluationExercises.filter((ex) => practiceCorrect[ex.id]).reduce((sum, ex) => sum + ex.xpReward, 0)} XP</span>
-              </div>
-              {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
-                <div className="space-y-1.5">
-                  <span className="text-xs font-extrabold text-slate-700 block">أهداف هذا الدرس:</span>
-                  {lesson.objectivesAr.map((obj, i) => (
-                    <p key={i} className="text-xs text-slate-700 flex items-center gap-1.5">
-                      <span>{evaluationScorePercent >= 60 ? '✅' : '🌱'}</span>
-                      <span>{renderArabicText(obj)}</span>
-                    </p>
-                  ))}
-                </div>
-              )}
-              {evaluationScorePercent < 60 && (
-                <p className="text-xs text-amber-800 bg-amber-100 border border-amber-300 rounded-xl p-2.5">
-                  💡 لا بأس، هذا جزء طبيعي من التعلّم! راجع "الكورس المفصّل" و"الأمثلة" في تبويب "الملخص والقواعد"، ثم أعد المحاولة — أنت تقترب من الإتقان خطوة بخطوة.
-                </p>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* TAB 3: QUIZ */}
-      {activeTab === 'quiz' && lesson.quiz.length > 0 && (() => {
-        const activeQuiz = shuffledQuiz.length > 0 ? shuffledQuiz : lesson.quiz;
-        const totalQuestions = activeQuiz.length;
-        const answeredCount = Object.keys(selectedAnswers).length;
-        const optionLetters = ['أ', 'ب', 'ج', 'د', 'هـ'];
-
-        let correctCount = 0;
-        if (quizSubmitted) {
-          activeQuiz.forEach((q) => {
-            const selected = selectedAnswers[q.id];
-            const correctOpt = q.options.find((o) => o.isCorrect);
-            if (selected && correctOpt && selected === correctOpt.id) {
-              correctCount++;
-            }
-          });
-        }
-
-        const scorePercentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-
-        return (
-          <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-6">
-            {/* Quiz Top Bar */}
-            <div className="flex items-center justify-between border-b border-slate-200 pb-4 flex-wrap gap-3">
-              <div>
-                <h3 className="font-extrabold text-base sm:text-lg text-slate-900 flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-amber-500" />
-                  <span>الاختبار التفاعلي المتقدم</span>
-                </h3>
-                <p className="text-xs text-slate-500">
-                  خيار الإجابات مخلّط عشوائياً لضمان الفهم الحقيقي وليس الحفظ فقط
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={initializeShuffledQuiz}
-                  disabled={quizSubmitted}
-                  className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-50"
-                  title="إعادة خلط أماكن الإجابات عشوائياً"
-                >
-                  <Shuffle className="w-3.5 h-3.5 text-indigo-600" />
-                  <span>خلط الخيارات 🎲</span>
-                </button>
-
-                <span className="bg-amber-100 text-amber-900 text-xs font-extrabold px-3 py-1.5 rounded-xl border border-amber-200 shadow-xs">
-                  +{totalQuestions * 15} XP
-                </span>
-              </div>
-            </div>
-
-            {/* Answer Progress Tracker (Before Submit) */}
-            {!quizSubmitted && (
-              <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
-                <div className="flex justify-between items-center text-xs font-bold text-slate-700">
-                  <span>تقدم الإجابات:</span>
-                  <span className="text-indigo-700 font-mono">
-                    {answeredCount} من {totalQuestions} سؤال (مكتمل {Math.round((answeredCount / totalQuestions) * 100)}%)
-                  </span>
-                </div>
-                <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
-                  <div
-                    className="bg-indigo-600 h-full transition-all duration-300"
-                    style={{ width: `${(answeredCount / totalQuestions) * 100}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Score Summary Card (Post Submit) */}
-            {quizSubmitted && (
-              <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-5 border border-indigo-800/80 space-y-4 shadow-md animate-in fade-in duration-300">
-                <div className="flex items-center justify-between flex-wrap gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 bg-amber-500/20 text-amber-400 rounded-2xl border border-amber-500/30">
-                      <Award className="w-7 h-7" />
                     </div>
+                  )}
+
+                  {lesson.detailedCourse.visualizationHintAr && (
+                    <p className="text-xs text-[var(--brand-blue-dark)] bg-[var(--brand-blue)]/10 border border-[var(--brand-blue)]/25 rounded-xl p-3 flex items-start gap-2">
+                      <span>🖼️</span>
+                      <span>{renderArabicText(lesson.detailedCourse.visualizationHintAr)}</span>
+                    </p>
+                  )}
+
+                  {lesson.detailedCourse.commonMistakes && lesson.detailedCourse.commonMistakes.length > 0 && (
+                    <div className="space-y-2">
+                      <span className="text-xs font-extrabold text-[var(--brand-coral-dark)] block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
+                      {lesson.detailedCourse.commonMistakes.map((m, i) => (
+                        <div key={i} className="bg-[var(--brand-coral)]/10 border border-[var(--brand-coral)]/25 rounded-xl p-3 text-xs space-y-1">
+                          <p className="text-[var(--brand-coral-dark)]"><span className="font-bold">❌ </span>{renderArabicText(m.mistakeAr)}</p>
+                          <p className="text-[var(--brand-emerald-dark)]"><span className="font-bold">✅ </span>{renderArabicText(m.correctionAr)}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="bg-[var(--brand-amber)]/10 border border-[var(--brand-amber)]/35 rounded-2xl p-4 text-sm font-bold text-[var(--brand-amber-dark)]">
+                    💡 أتذكر: {renderArabicText(lesson.detailedCourse.takeawayAr)}
+                  </div>
+                </Card>
+              )}
+
+              {/* 5-tier progressive worked examples */}
+              {lesson.progressiveWorkedExamples && lesson.progressiveWorkedExamples.length > 0 && (
+                <Card padding="none" className="p-5 sm:p-6 space-y-4">
+                  <h3 className="font-extrabold text-base text-[var(--app-text)] flex items-center gap-2">
+                    <Lightbulb className="w-5 h-5 text-[var(--brand-amber)]" />
+                    <span>أمثلة متدرّجة (من الأسهل إلى التحدي)</span>
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {lesson.progressiveWorkedExamples.map((ex) => (
+                      <button
+                        key={ex.tier}
+                        onClick={() => setSelectedExampleTier(ex.tier)}
+                        className={`min-h-10 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                          selectedExampleTier === ex.tier
+                            ? 'bg-[var(--brand-amber)] text-slate-950 font-black shadow-xs'
+                            : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:opacity-80'
+                        }`}
+                      >
+                        {ex.labelAr}
+                      </button>
+                    ))}
+                  </div>
+                  <AnimatePresence mode="wait">
+                    {(() => {
+                      const activeExample = lesson.progressiveWorkedExamples!.find((ex) => ex.tier === selectedExampleTier) || lesson.progressiveWorkedExamples![0];
+                      return (
+                        <motion.div
+                          key={selectedExampleTier}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -10 }}
+                          transition={tabTransition}
+                          className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-2xl p-4 space-y-2"
+                        >
+                          <p className="text-xs sm:text-sm font-bold text-[var(--app-text)] whitespace-pre-line">
+                            {activeExample.isRealLife && <span className="text-[var(--brand-emerald)]">🏠 </span>}
+                            {renderArabicText(activeExample.problem)}
+                          </p>
+                          {activeExample.stepsAr && activeExample.stepsAr.length > 0 && (
+                            <ol className="list-decimal list-inside text-xs text-[var(--app-text-muted)] space-y-1 pr-1">
+                              {activeExample.stepsAr.map((step, i) => (
+                                <li key={i}>{renderArabicText(step)}</li>
+                              ))}
+                            </ol>
+                          )}
+                          <div className="bg-[var(--brand-emerald)]/10 border border-[var(--brand-emerald)]/30 rounded-xl p-3 text-xs text-[var(--brand-emerald-dark)] whitespace-pre-line">
+                            <span className="font-bold">✅ الحل: </span>
+                            {renderArabicText(activeExample.solution)}
+                          </div>
+                        </motion.div>
+                      );
+                    })()}
+                  </AnimatePresence>
+                </Card>
+              )}
+
+              {/* Golden Rules with Detailed Explanations & Simple Examples */}
+              <Card padding="none" className="p-5 sm:p-6 space-y-5">
+                <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-3 flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-extrabold text-base sm:text-lg text-[var(--app-text)] flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-[var(--brand-emerald)]" />
+                      <span>القواعد الذهبية للدرس مدعومة بالأمثلة المبسطة</span>
+                    </h3>
+                    <p className="text-xs text-[var(--app-text-muted)] font-sans mt-0.5">
+                      شرح ميسر لكل قاعدة مع أمثلة تطبيقية مباشرة لترسيخ الفهم
+                    </p>
+                  </div>
+                  <Badge variant="success">
+                    {lesson.rulesAr.length} قواعد أساسية
+                  </Badge>
+                </div>
+
+                <div className="space-y-4">
+                  {lesson.rulesAr.map((rule, idx) => {
+                    // Parse rule title and body
+                    const colonIdx = rule.indexOf(':');
+                    let title = '';
+                    let body = rule;
+                    if (colonIdx > 0 && colonIdx < 50) {
+                      title = rule.substring(0, colonIdx).trim();
+                      body = rule.substring(colonIdx + 1).trim();
+                    }
+
+                    // Check if rule contains inline example
+                    const hasExplicitExample = rule.includes('مثال') || rule.includes('مثال:');
+                    const matchingExample = lesson.examplesAr && lesson.examplesAr[idx];
+
+                    return (
+                      <div key={idx} className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-2xl p-4 sm:p-5 space-y-3 hover:border-[var(--brand-emerald)]/60 transition-all">
+                        {/* Rule Header */}
+                        <div className="flex items-start gap-3">
+                          <span className="w-8 h-8 rounded-xl bg-[var(--brand-emerald)] text-white font-black text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                            {idx + 1}
+                          </span>
+                          <div className="space-y-1">
+                            {title && (
+                              <h4 className="font-black text-sm sm:text-base text-[var(--app-text)] flex items-center gap-2">
+                                <span>{title}</span>
+                              </h4>
+                            )}
+                            <p className="text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed font-semibold whitespace-pre-line">
+                              {formatEducationalText(renderArabicText(body))}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Simple Practical Example Card */}
+                        <div className="bg-[var(--brand-emerald)]/10 border border-[var(--brand-emerald)]/25 rounded-xl p-3.5 text-xs text-[var(--app-text)] font-sans space-y-1.5 mr-0 sm:mr-11">
+                          <div className="flex items-center gap-1.5 font-extrabold text-[var(--brand-emerald-dark)] text-xs">
+                            <Lightbulb className="w-4 h-4 text-[var(--brand-amber)] shrink-0" />
+                            <span>📌 مثال تطبيقي مبسط ومباشر:</span>
+                          </div>
+
+                          <div className="bg-[var(--app-card-bg)] p-3 rounded-lg border border-[var(--brand-emerald)]/25 text-[var(--app-text)] font-medium leading-relaxed font-sans whitespace-pre-line">
+                            {matchingExample ? (
+                              <span>
+                                <strong className="text-[var(--brand-emerald-dark)]">التطبيق: </strong>
+                                {formatEducationalText(matchingExample.problem)}
+                                <br />
+                                <strong className="text-[var(--brand-blue-dark)]">الحل والنتيجة: </strong>
+                                <span className="text-[var(--brand-blue-dark)] font-bold">{formatEducationalText(matchingExample.solution)}</span>
+                              </span>
+                            ) : hasExplicitExample ? (
+                              <span>
+                                تطبيق القاعدة مبيّن أعلاه في الجزء المحدد بكلمة (مثال)، حيث تلاحظ تحويل النظرية إلى نتيجة حاسمة بسيطة.
+                              </span>
+                            ) : lesson.subject === 'math' ? (
+                              <span>
+                                تطبيقيّاً: نطبق القاعدة مباشرة في المسائل عن طريق التعويض العددي ومراعاة الترتيب والخطوات التدرجية.
+                              </span>
+                            ) : lesson.subject === 'arabic' ? (
+                              <span>
+                                تطبيقيّاً: في الجملة الشفهية والكتابية، يُضبط الحرف الأخير حسب موقعه الإعرابي وفق هذه القاعدة بالضبط.
+                              </span>
+                            ) : (
+                              <span>
+                                تطبيقيّاً: هذه القاعدة تشرح الظاهرة العلمية أو المفهوم بشكل عملي يمكن ملاحظته واختباره بالعين المجردة.
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+
+              {/* Key Formulas Grid if available */}
+              {lesson.keyFormulas && lesson.keyFormulas.length > 0 && (
+                <Card padding="none" className="p-5 space-y-3">
+                  <h3 className="font-extrabold text-sm text-[var(--app-text)] flex items-center gap-2">
+                    <Lightbulb className="w-4 h-4 text-[var(--brand-amber)]" />
+                    <span>القوانين والعبارات المفتاحية للدرس:</span>
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {lesson.keyFormulas.map((kf, kIdx) => (
+                      <div key={kIdx} className="bg-[var(--brand-amber)]/10 border border-[var(--brand-amber)]/25 p-4 rounded-2xl space-y-1.5">
+                        <span className="text-xs font-extrabold text-[var(--brand-amber-dark)] block">{kf.labelAr}</span>
+                        {/* dir="ltr": formulas are numeric/symbolic content, isolated to avoid bidi reordering */}
+                        <span dir="ltr" className="text-xs sm:text-sm font-mono font-black text-[var(--app-text)] block bg-[var(--app-card-bg)] p-2.5 rounded-xl border border-[var(--brand-amber)]/25 shadow-2xs whitespace-pre-line text-right">
+                          {formatEducationalText(kf.formulaAr)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              )}
+
+              {/* Worked Examples if available */}
+              {lesson.examplesAr && lesson.examplesAr.length > 0 && (
+                <Card padding="none" className="p-5 sm:p-6 space-y-4">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
                     <div>
-                      <h4 className="font-extrabold text-base text-white flex items-center gap-2">
-                        <span>نتيجة الاختبار:</span>
-                        <span className="text-amber-300 font-mono font-black text-xl">{scorePercentage}%</span>
-                      </h4>
-                      <p className="text-xs text-slate-300">
-                        {scorePercentage === 100
-                          ? '🏆 إجابات ممتازة ومثالية! لقد أتقنت درس اليوم بنجاح كامل.'
-                          : scorePercentage >= 70
-                          ? '🌟 أداء رائع ومتميز! استمر على هذا المستوى القوي.'
-                          : scorePercentage >= 50
-                          ? '👍 نتيجة جيدة! يمكنك مراجعة الإجابات أدناه للوصول إلى 100%.'
-                          : '💡 تحتاج إلى مراجعة بسيطة للدرس وإعادة الاختبار لترسيخ المفاهيم.'}
+                      <h3 className="font-extrabold text-base text-[var(--app-text)] flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-[var(--brand-emerald)]" />
+                        <span>أمثلة وتمارين نموذجية محلولة بالتفصيل</span>
+                      </h3>
+                      <p className="text-xs text-[var(--app-text-muted)]">
+                        حاول حل المسألة بنفسك أولاً، ثم اكشف عن الحل النموذجي المفصل
                       </p>
                     </div>
                   </div>
 
-                  <button
-                    onClick={handleResetQuiz}
-                    className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs transition-all cursor-pointer flex items-center gap-2 shadow-sm"
-                  >
-                    <RotateCcw className="w-4 h-4" />
-                    <span>إعادة الاختبار وخلط الخيارات 🔄</span>
-                  </button>
-                </div>
+                  {lesson.examplesAr.map((ex, exIdx) => {
+                    const isVisible = !!visibleSolutions[exIdx];
+                    return (
+                      <div key={exIdx} className="bg-slate-900 text-white rounded-2xl p-4 sm:p-5 border border-slate-800 space-y-3">
+                        <div className="text-xs sm:text-sm font-bold text-amber-300 font-sans leading-relaxed whitespace-pre-line bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                          ❓ المشكلة / الوضعية {exIdx + 1}: {formatEducationalText(ex.problem)}
+                        </div>
 
-                <div className="grid grid-cols-3 gap-3 pt-2 border-t border-indigo-900/80 text-center text-xs">
-                  <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
-                    <span className="text-slate-400 block text-[10px] font-bold">إجابات صحيحة</span>
-                    <span className="text-emerald-400 font-black text-sm">{correctCount}</span>
-                  </div>
-                  <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
-                    <span className="text-slate-400 block text-[10px] font-bold">إجابات خاطئة</span>
-                    <span className="text-rose-400 font-black text-sm">{totalQuestions - correctCount}</span>
-                  </div>
-                  <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
-                    <span className="text-slate-400 block text-[10px] font-bold">النقاط المكتسبة</span>
-                    <span className="text-amber-300 font-black text-sm">+{correctCount * 15} XP</span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Questions List */}
-            <div className="space-y-6">
-              {activeQuiz.map((q, qIdx) => {
-                const selected = selectedAnswers[q.id];
-                const correctOpt = q.options.find((o) => o.isCorrect);
-                const isUserCorrect = selected && correctOpt && selected === correctOpt.id;
-
-                return (
-                  <div
-                    key={q.id}
-                    className={`p-4 sm:p-5 rounded-2xl border transition-all space-y-4 ${
-                      quizSubmitted
-                        ? isUserCorrect
-                          ? 'border-emerald-200 bg-emerald-50/30'
-                          : 'border-rose-200 bg-rose-50/20'
-                        : 'border-slate-200 bg-slate-50/50'
-                    }`}
-                  >
-                    {/* Question Header */}
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-center gap-2.5 text-xs sm:text-sm font-black text-slate-900">
-                        <span className="w-7 h-7 rounded-xl bg-indigo-600 text-white text-xs font-bold flex items-center justify-center shrink-0">
-                          {qIdx + 1}
-                        </span>
-                        <span>{q.questionAr}</span>
-                      </div>
-
-                      {quizSubmitted && (
-                        <span
-                          className={`text-[11px] font-black px-3 py-1 rounded-full border shrink-0 flex items-center gap-1 ${
-                            isUserCorrect
-                              ? 'bg-emerald-100 text-emerald-800 border-emerald-300 animate-in zoom-in-50 fade-in duration-300 motion-reduce:animate-none'
-                              : 'bg-rose-100 text-rose-800 border-rose-300'
-                          }`}
-                        >
-                          {isUserCorrect ? (
-                            <>
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                              <span>إجابة صحيحة</span>
-                            </>
-                          ) : (
-                            <>
-                              <XCircle className="w-3.5 h-3.5 text-rose-600" />
-                              <span>إجابة خاطئة</span>
-                            </>
-                          )}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Options Grid */}
-                    <div className="grid grid-cols-1 gap-2.5">
-                      {q.options.map((opt, optIdx) => {
-                        const isOptSelected = selected === opt.id;
-                        let btnStyle = 'bg-white border-slate-200 hover:border-indigo-300 text-slate-800 hover:bg-slate-50';
-
-                        if (quizSubmitted) {
-                          if (opt.isCorrect) {
-                            btnStyle = 'bg-emerald-100 border-emerald-500 text-emerald-950 font-extrabold shadow-xs';
-                          } else if (isOptSelected && !opt.isCorrect) {
-                            btnStyle = 'bg-rose-100 border-rose-400 text-rose-950 font-bold';
-                          } else {
-                            btnStyle = 'bg-white border-slate-200 text-slate-400 opacity-60';
-                          }
-                        } else if (isOptSelected) {
-                          btnStyle = 'bg-indigo-50 border-indigo-600 text-indigo-950 font-black ring-2 ring-indigo-200 shadow-xs';
-                        }
-
-                        return (
-                          <button
-                            key={opt.id}
-                            onClick={() => handleSelectOption(q.id, opt.id)}
-                            className={`text-right p-3.5 rounded-xl border text-xs transition-all flex items-center justify-between cursor-pointer ${btnStyle}`}
+                        <div className="flex items-center justify-between border-t border-slate-800 pt-3">
+                          <motion.button
+                            whileHover={{ y: -1 }}
+                            whileTap={{ y: 1 }}
+                            onClick={() =>
+                              setVisibleSolutions((prev) => ({
+                                ...prev,
+                                [exIdx]: !prev[exIdx],
+                              }))
+                            }
+                            className="min-h-12 flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-colors bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 cursor-pointer shadow-xs"
                           >
-                            <div className="flex items-center gap-2.5">
-                              {/* Option Arabic Label (أ، ب، ج، د) */}
-                              <span
-                                className={`w-6 h-6 rounded-lg text-[11px] font-bold flex items-center justify-center shrink-0 border ${
-                                  quizSubmitted && opt.isCorrect
-                                    ? 'bg-emerald-600 text-white border-emerald-700'
-                                    : isOptSelected
-                                    ? 'bg-indigo-600 text-white border-indigo-700'
-                                    : 'bg-slate-100 text-slate-700 border-slate-200'
-                                }`}
-                              >
-                                {optionLetters[optIdx] || optIdx + 1}
-                              </span>
-                              <span>{renderArabicText(opt.textAr)}</span>
-                            </div>
+                            {isVisible ? <EyeOff className="w-4 h-4 text-emerald-400" /> : <Eye className="w-4 h-4 text-emerald-400" />}
+                            <span>{isVisible ? 'إخفاء الحل النموذجي' : 'إظهار الحل النموذجي المفصل 💡'}</span>
+                          </motion.button>
 
-                            {quizSubmitted && opt.isCorrect && (
-                              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                            )}
-                            {quizSubmitted && isOptSelected && !opt.isCorrect && (
-                              <XCircle className="w-4 h-4 text-rose-600 shrink-0" />
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Post-submit Explanation Box */}
-                    {quizSubmitted && (
-                      <div className="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1 font-sans leading-relaxed">
-                        <span className="font-extrabold text-indigo-900 block flex items-center gap-1.5">
-                          <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
-                          <span>التفسير والشرح العلمي للحل:</span>
-                        </span>
-                        <p className="text-slate-800 font-medium">
-                          {renderArabicText(
-                            q.options.find((o) => o.isCorrect)?.explanationAr ||
-                              q.options.find((o) => o.id === selected)?.explanationAr ||
-                              'الإجابة الصحيحة تم اختيارها استناداً لقاعدة الدرس الذهبية.',
+                          {!isVisible && (
+                            <span className="text-[11px] text-slate-400 italic">
+                              🔒 الحل مخفي للتفكير الشخصي
+                            </span>
                           )}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                        </div>
 
-            {/* Bottom Actions */}
-            <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-              {!quizSubmitted ? (
-                <button
-                  onClick={handleCalculateQuizScore}
-                  disabled={answeredCount === 0}
-                  className="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-extrabold px-6 py-3 rounded-xl shadow-sm transition-all cursor-pointer flex items-center gap-2"
-                >
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>تأكيد الإجابات وحساب النتيجة ({answeredCount}/{totalQuestions})</span>
-                </button>
-              ) : (
-                <div className="flex items-center gap-2 text-emerald-800 font-bold text-xs bg-emerald-50 p-3.5 rounded-xl border border-emerald-200 w-full justify-between flex-wrap">
-                  <span>تهانينا! تم احتساب النقاط وإضافتها إلى رصيدك الدراسي.</span>
-                  <button
-                    onClick={handleResetQuiz}
-                    className="bg-white border border-emerald-300 text-emerald-900 px-3.5 py-1.5 rounded-xl hover:bg-emerald-100 font-extrabold cursor-pointer transition-all"
-                  >
-                    إعادة الاختبار بخلط جديد 🎲
-                  </button>
-                </div>
+                        <AnimatePresence>
+                          {isVisible && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={tabTransition}
+                              className="text-xs sm:text-sm text-emerald-200 font-sans border-t border-emerald-900/60 pt-3 leading-relaxed bg-emerald-950/80 p-4 rounded-xl border border-emerald-800/80 whitespace-pre-line overflow-hidden"
+                            >
+                              <span className="font-extrabold text-amber-300 block mb-1">💡 الحل والتبسيط النموذجي:</span>
+                              {formatEducationalText(renderArabicText(ex.solution))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </Card>
               )}
             </div>
-          </div>
-        );
-      })()}
+          )}
+
+          {/* TAB 2: INTERACTIVE TOOL */}
+          {activeTab === 'interactive' && (
+            <div className="space-y-4">
+              {effectiveTool === 'arabic_canvas' && <ArabicCanvasInteractive lesson={lesson} grade={lesson.grade} />}
+              {effectiveTool === 'science_reactor' && <ScienceReactorInteractive lesson={lesson} grade={lesson.grade} />}
+              {effectiveTool === 'soroban' && <SorobanInteractive grade={lesson.grade} />}
+              {effectiveTool === 'unit_converter' && <UnitConverter grade={lesson.grade} />}
+              {effectiveTool === 'geometry_visualizer' && <GeometryVisualizer grade={lesson.grade} />}
+              {effectiveTool === 'science_lab' && (
+                <ScienceLabSimulation gameplay={lesson.gameplay_simulation || {
+                  id: lesson.id,
+                  type: 'circuit',
+                  titleAr: lesson.titleAr,
+                  descriptionAr: lesson.summaryAr,
+                  instructionsAr: ['تفاعل مع أجهزة المحاكاة والمختبر'],
+                  targetOutput: 100,
+                  badgeRewardAr: 'عالم العلوم 🔬'
+                }} grade={lesson.grade} />
+              )}
+              {effectiveTool === 'arabic_conjugator' && <ArabicConjugator grade={lesson.grade} />}
+              {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}
+              {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
+              {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}
+              {effectiveTool === 'history_geo_lab' && lesson.historyGeoInteractive && <HistoryGeoInteractive config={lesson.historyGeoInteractive} />}
+              {effectiveTool === 'islamic_lab' && lesson.islamicInteractive && <IslamicEducationInteractive config={lesson.islamicInteractive} />}
+              {effectiveTool === 'civics_lab' && lesson.civicsInteractive && <CivicsInteractive config={lesson.civicsInteractive} />}
+              {effectiveTool === 'math_lab' && lesson.mathInteractive && <MathInteractive config={lesson.mathInteractive} />}
+              {effectiveTool === 'french_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="french" />}
+              {effectiveTool === 'english_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="english" />}
+            </div>
+          )}
+
+          {/* TAB: FINAL EVALUATION — mixed exercise types, difficulty progression, then a self-check summary */}
+          {activeTab === 'evaluation' && evaluationExercises.length > 0 && (
+            <div className="space-y-5">
+              <div className="bg-gradient-to-r from-rose-950 to-slate-900 text-white rounded-3xl p-5 border border-rose-800/50">
+                <h3 className="font-black text-sm flex items-center gap-2 mb-1">
+                  <ClipboardCheck className="w-5 h-5 text-rose-300" />
+                  <span>التقييم النهائي للدرس</span>
+                </h3>
+                <p className="text-xs text-rose-200">أجب عن كل الأسئلة للتحقق من إتقانك للدرس. لا بأس بالخطأ — المهم أن تتعلم من التصحيح!</p>
+                {evaluationCheckedCount > 0 && (
+                  <div className="mt-3 flex items-center gap-3">
+                    <div className="flex-1 bg-white/10 h-2.5 rounded-full overflow-hidden">
+                      <motion.div
+                        className="bg-emerald-400 h-full rounded-full"
+                        initial={false}
+                        animate={{ width: `${(evaluationCheckedCount / evaluationExercises.length) * 100}%` }}
+                        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+                      />
+                    </div>
+                    <span dir="ltr" className="text-[11px] font-bold text-rose-200 shrink-0">{evaluationCheckedCount}/{evaluationExercises.length}</span>
+                  </div>
+                )}
+              </div>
+
+              {evaluationExercises.map((ex) => (
+                <PracticeExerciseCard
+                  key={ex.id}
+                  ex={ex}
+                  renderArabicText={renderArabicText}
+                  answer={practiceAnswers[ex.id]}
+                  setAnswer={setAnswerFor(ex.id)}
+                  isChecked={!!practiceChecked[ex.id]}
+                  isCorrect={!!practiceCorrect[ex.id]}
+                  canCheck={canCheckExercise(ex)}
+                  onCheck={() => checkPracticeExercise(ex)}
+                  onReset={() => resetPracticeExercise(ex)}
+                  matchingRightOrder={matchingRightOrder[ex.id] || []}
+                  matchingConnections={matchingConnections[ex.id] || {}}
+                  matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
+                  setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
+                  connectMatching={connectMatchingFor(ex.id)}
+                  disconnectMatching={disconnectMatchingFor(ex.id)}
+                  orderingShuffled={orderingShuffled[ex.id] || []}
+                  orderingSelection={orderingSelections[ex.id] || []}
+                  toggleOrderingItem={toggleOrderingItemFor(ex.id)}
+                />
+              ))}
+
+              {/* Self-check summary + remediation, shown once every question has been answered */}
+              <AnimatePresence>
+                {evaluationComplete && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+                    className={`rounded-3xl p-5 border space-y-3 ${
+                      evaluationScorePercent >= 60
+                        ? 'bg-[var(--brand-emerald)]/10 border-[var(--brand-emerald)]/30'
+                        : 'bg-[var(--brand-amber)]/10 border-[var(--brand-amber)]/30'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <h4 className="font-black text-sm text-[var(--app-text)]">📊 نتيجتك: <span dir="ltr">{evaluationCorrectCount}/{evaluationExercises.length} ({evaluationScorePercent}%)</span></h4>
+                      <Badge variant="xp"><span dir="ltr">+{evaluationExercises.filter((ex) => practiceCorrect[ex.id]).reduce((sum, ex) => sum + ex.xpReward, 0)} XP</span></Badge>
+                    </div>
+                    {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
+                      <div className="space-y-1.5">
+                        <span className="text-xs font-extrabold text-[var(--app-text)] block">أهداف هذا الدرس:</span>
+                        {lesson.objectivesAr.map((obj, i) => (
+                          <p key={i} className="text-xs text-[var(--app-text-muted)] flex items-center gap-1.5">
+                            <span>{evaluationScorePercent >= 60 ? '✅' : '🌱'}</span>
+                            <span>{renderArabicText(obj)}</span>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                    {evaluationScorePercent < 60 && (
+                      <p className="text-xs text-[var(--brand-amber-dark)] bg-[var(--brand-amber)]/15 border border-[var(--brand-amber)]/35 rounded-xl p-2.5">
+                        💡 لا بأس، هذا جزء طبيعي من التعلّم! راجع "الكورس المفصّل" و"الأمثلة" في تبويب "الملخص والقواعد"، ثم أعد المحاولة — أنت تقترب من الإتقان خطوة بخطوة.
+                      </p>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
+
+          {/* TAB 3: QUIZ — immediate per-question feedback with live XP tracking */}
+          {activeTab === 'quiz' && lesson.quiz.length > 0 && (() => {
+            const activeQuiz = shuffledQuiz.length > 0 ? shuffledQuiz : lesson.quiz;
+            const totalQuestions = activeQuiz.length;
+            const answeredCount = Object.keys(selectedAnswers).length;
+            const optionLetters = ['أ', 'ب', 'ج', 'د', 'هـ'];
+
+            let correctCount = 0;
+            activeQuiz.forEach((q) => {
+              const selected = selectedAnswers[q.id];
+              const correctOpt = q.options.find((o) => o.isCorrect);
+              if (selected && correctOpt && selected === correctOpt.id) {
+                correctCount++;
+              }
+            });
+
+            const quizComplete = totalQuestions > 0 && answeredCount === totalQuestions;
+            const scorePercentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+
+            return (
+              <Card padding="none" className="p-5 sm:p-6 space-y-6">
+                {/* Quiz Top Bar */}
+                <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4 flex-wrap gap-3">
+                  <div>
+                    <h3 className="font-extrabold text-base sm:text-lg text-[var(--app-text)] flex items-center gap-2">
+                      <Trophy className="w-5 h-5 text-[var(--brand-amber)]" />
+                      <span>الاختبار التفاعلي المتقدم</span>
+                    </h3>
+                    <p className="text-xs text-[var(--app-text-muted)]">
+                      كل سؤال يُصحَّح فور اختيار إجابته — خيار الإجابات مخلّط عشوائياً لضمان الفهم الحقيقي
+                    </p>
+                  </div>
+
+                  <Button variant="outline" size="sm" icon={<Shuffle className="w-3.5 h-3.5 text-[var(--brand-blue)]" />} disabled={quizComplete} onClick={initializeShuffledQuiz} title="إعادة خلط أماكن الإجابات عشوائياً">
+                    خلط الخيارات 🎲
+                  </Button>
+                </div>
+
+                {/* Live XP progress — updates in real time as questions are answered correctly */}
+                <XPProgressBar currentXp={correctCount * 15} maxXp={totalQuestions * 15} showLabel />
+
+                {/* Score Summary Card (once every question has been answered) */}
+                <AnimatePresence>
+                  {quizComplete && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                      className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-5 border border-indigo-800/80 space-y-4 shadow-md"
+                    >
+                      <div className="flex items-center justify-between flex-wrap gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-3 bg-amber-500/20 text-amber-400 rounded-2xl border border-amber-500/30">
+                            <Award className="w-7 h-7" />
+                          </div>
+                          <div>
+                            <h4 className="font-extrabold text-base text-white flex items-center gap-2">
+                              <span>نتيجة الاختبار:</span>
+                              <span dir="ltr" className="text-amber-300 font-mono font-black text-xl">{scorePercentage}%</span>
+                            </h4>
+                            <p className="text-xs text-slate-300">
+                              {scorePercentage === 100
+                                ? '🏆 إجابات ممتازة ومثالية! لقد أتقنت درس اليوم بنجاح كامل.'
+                                : scorePercentage >= 70
+                                ? '🌟 أداء رائع ومتميز! استمر على هذا المستوى القوي.'
+                                : scorePercentage >= 50
+                                ? '👍 نتيجة جيدة! يمكنك مراجعة الإجابات أدناه للوصول إلى 100%.'
+                                : '💡 تحتاج إلى مراجعة بسيطة للدرس وإعادة الاختبار لترسيخ المفاهيم.'}
+                            </p>
+                          </div>
+                        </div>
+
+                        <Button variant="accent" size="sm" icon={<RotateCcw className="w-4 h-4" />} onClick={handleResetQuiz}>
+                          إعادة الاختبار وخلط الخيارات 🔄
+                        </Button>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-3 pt-2 border-t border-indigo-900/80 text-center text-xs">
+                        <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
+                          <span className="text-slate-400 block text-[10px] font-bold">إجابات صحيحة</span>
+                          <span className="text-emerald-400 font-black text-sm">{correctCount}</span>
+                        </div>
+                        <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
+                          <span className="text-slate-400 block text-[10px] font-bold">إجابات خاطئة</span>
+                          <span className="text-rose-400 font-black text-sm">{totalQuestions - correctCount}</span>
+                        </div>
+                        <div className="bg-indigo-950/70 p-2.5 rounded-xl border border-indigo-800/60">
+                          <span className="text-slate-400 block text-[10px] font-bold">النقاط المكتسبة</span>
+                          <span dir="ltr" className="text-amber-300 font-black text-sm">+{correctCount * 15} XP</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Questions List */}
+                <div className="space-y-6">
+                  {activeQuiz.map((q, qIdx) => {
+                    const selected = selectedAnswers[q.id];
+                    const isAnswered = selected !== undefined;
+                    const correctOpt = q.options.find((o) => o.isCorrect);
+                    const isUserCorrect = !!selected && !!correctOpt && selected === correctOpt.id;
+
+                    return (
+                      <div
+                        key={q.id}
+                        className={`p-4 sm:p-5 rounded-2xl border transition-colors space-y-4 ${
+                          isAnswered
+                            ? isUserCorrect
+                              ? 'border-[var(--brand-emerald)]/40 bg-[var(--brand-emerald)]/5'
+                              : 'border-[var(--brand-coral)]/40 bg-[var(--brand-coral)]/5'
+                            : 'border-[var(--app-card-border)] bg-[var(--app-card-subtle)]'
+                        }`}
+                      >
+                        {/* Question Header */}
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-black text-[var(--app-text)]">
+                            <span className="w-7 h-7 rounded-xl bg-[var(--brand-blue)] text-white text-xs font-bold flex items-center justify-center shrink-0">
+                              {qIdx + 1}
+                            </span>
+                            <span>{q.questionAr}</span>
+                          </div>
+
+                          {isAnswered && (
+                            <span className="relative shrink-0">
+                              {isUserCorrect && recentAnswerId === q.id && <ConfettiBurst />}
+                              <motion.span
+                                key={`badge-${q.id}`}
+                                initial={isUserCorrect ? { scale: 0, rotate: -10, opacity: 0 } : { x: 0 }}
+                                animate={isUserCorrect ? { scale: 1, rotate: 0, opacity: 1 } : { x: [0, -8, 8, -6, 6, -3, 3, 0] }}
+                                transition={isUserCorrect ? { type: 'spring', stiffness: 500, damping: 15 } : { duration: 0.5 }}
+                                className={`text-[11px] font-black px-3 py-1 rounded-full border flex items-center gap-1 ${
+                                  isUserCorrect
+                                    ? 'bg-[var(--brand-emerald)]/15 text-[var(--brand-emerald-dark)] border-[var(--brand-emerald)]/40'
+                                    : 'bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border-[var(--brand-coral)]/40'
+                                }`}
+                              >
+                                {isUserCorrect ? (
+                                  <>
+                                    <CheckCircle2 className="w-3.5 h-3.5" />
+                                    <span>إجابة صحيحة</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <XCircle className="w-3.5 h-3.5" />
+                                    <span>إجابة خاطئة</span>
+                                  </>
+                                )}
+                              </motion.span>
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Options Grid */}
+                        <div className="grid grid-cols-1 gap-2.5">
+                          {q.options.map((opt, optIdx) => {
+                            const isOptSelected = selected === opt.id;
+                            let btnStyle = 'bg-[var(--app-card-bg)] border-[var(--app-card-border)] hover:border-[var(--brand-blue)]/50 text-[var(--app-text)]';
+
+                            if (isAnswered) {
+                              if (opt.isCorrect) {
+                                btnStyle = 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-extrabold shadow-xs';
+                              } else if (isOptSelected && !opt.isCorrect) {
+                                btnStyle = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)] font-bold';
+                              } else {
+                                btnStyle = 'bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text-muted)] opacity-60';
+                              }
+                            }
+
+                            return (
+                              <button
+                                key={opt.id}
+                                onClick={() => handleSelectOption(q.id, opt.id)}
+                                disabled={isAnswered}
+                                className={`min-h-12 text-right p-3.5 rounded-xl border text-xs transition-all flex items-center justify-between gap-2 ${
+                                  isAnswered ? 'cursor-default' : 'cursor-pointer active:scale-[0.99]'
+                                } ${btnStyle}`}
+                              >
+                                <div className="flex items-center gap-2.5">
+                                  {/* Option Arabic Label (أ، ب، ج، د) */}
+                                  <span
+                                    className={`w-6 h-6 rounded-lg text-[11px] font-bold flex items-center justify-center shrink-0 border ${
+                                      isAnswered && opt.isCorrect
+                                        ? 'bg-[var(--brand-emerald)] text-white border-[var(--brand-emerald-dark)]'
+                                        : isOptSelected
+                                        ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)]'
+                                        : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
+                                    }`}
+                                  >
+                                    {optionLetters[optIdx] || optIdx + 1}
+                                  </span>
+                                  <span>{renderArabicText(opt.textAr)}</span>
+                                </div>
+
+                                {isAnswered && opt.isCorrect && (
+                                  <CheckCircle2 className="w-4 h-4 text-[var(--brand-emerald)] shrink-0" />
+                                )}
+                                {isAnswered && isOptSelected && !opt.isCorrect && (
+                                  <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Post-answer Explanation Box */}
+                        <AnimatePresence>
+                          {isAnswered && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={tabTransition}
+                              className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-xs text-[var(--app-text)] space-y-1 font-sans leading-relaxed overflow-hidden"
+                            >
+                              <span className="font-extrabold text-[var(--brand-blue-dark)] block flex items-center gap-1.5">
+                                <Lightbulb className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
+                                <span>التفسير والشرح العلمي للحل:</span>
+                              </span>
+                              <p className="text-[var(--app-text)] font-medium">
+                                {renderArabicText(
+                                  q.options.find((o) => o.isCorrect)?.explanationAr ||
+                                    q.options.find((o) => o.id === selected)?.explanationAr ||
+                                    'الإجابة الصحيحة تم اختيارها استناداً لقاعدة الدرس الذهبية.',
+                                )}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Bottom status line */}
+                {!quizComplete ? (
+                  <div className="text-xs font-bold text-[var(--app-text-muted)] bg-[var(--app-card-subtle)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-center">
+                    <span dir="ltr">{answeredCount} / {totalQuestions}</span> أسئلة أُجيب عنها — تابع الإجابة لرؤية تقدمك مباشرة
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-[var(--brand-emerald-dark)] font-bold text-xs bg-[var(--brand-emerald)]/10 p-3.5 rounded-xl border border-[var(--brand-emerald)]/30 w-full justify-between flex-wrap">
+                    <span>تهانينا! تم احتساب النقاط وإضافتها إلى رصيدك الدراسي.</span>
+                    <Button variant="outline" size="sm" onClick={handleResetQuiz}>
+                      إعادة الاختبار بخلط جديد 🎲
+                    </Button>
+                  </div>
+                )}
+              </Card>
+            );
+          })()}
+        </motion.div>
+      </AnimatePresence>
+
       {/* Bottom Next/Previous Lesson Navigation Footer */}
       {allLessons.length > 1 && (
-        <div className="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700/80 shadow-md space-y-4 transition-all">
-          <div className="flex items-center justify-between text-xs font-extrabold text-slate-600 dark:text-slate-300 border-b border-slate-100 dark:border-slate-700/60 pb-3">
+        <Card padding="none" className="p-5 space-y-4">
+          <div className="flex items-center justify-between text-xs font-extrabold text-[var(--app-text-muted)] border-b border-[var(--app-card-border)] pb-3">
             <span className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              <span>متابعة التعلم - التنقل بين دروس المادة ({currentIndex >= 0 ? currentIndex + 1 : 1} من {allLessons.length})</span>
+              <BookOpen className="w-4 h-4 text-[var(--brand-blue)]" />
+              <span>متابعة التعلم - التنقل بين دروس المادة (<span dir="ltr">{currentIndex >= 0 ? currentIndex + 1 : 1} / {allLessons.length}</span>)</span>
             </span>
-            <span className="text-[11px] bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-3 py-1 rounded-full border border-indigo-200/60 dark:border-indigo-800">
-              {lesson.categoryAr}
-            </span>
+            <Badge variant="info">{lesson.categoryAr}</Badge>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Previous Lesson Button */}
             {previousLesson ? (
-              <button
-                onClick={() => onSelectLesson?.(previousLesson)}
-                className="flex items-center justify-between p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-indigo-500 bg-slate-50/50 dark:bg-slate-800/60 hover:bg-indigo-50/60 dark:hover:bg-indigo-950/40 transition-all text-right group cursor-pointer"
-              >
+              <Card interactive padding="none" className="p-4 flex items-center justify-between text-right" onClick={() => onSelectLesson?.(previousLesson)}>
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <div className="w-9 h-9 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors shadow-2xs">
+                  <div className="w-9 h-9 rounded-xl bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] flex items-center justify-center shrink-0 shadow-2xs">
                     <ChevronRight className="w-5 h-5" />
                   </div>
                   <div className="truncate">
-                    <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">الدرس السابق / Précédent</span>
-                    <span className="text-xs font-black text-slate-800 dark:text-slate-100 truncate block group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mt-0.5">
+                    <span className="text-[10px] font-bold text-[var(--app-text-muted)] block uppercase tracking-wider">الدرس السابق / Précédent</span>
+                    <span className="text-xs font-black text-[var(--app-text)] truncate block mt-0.5">
                       {previousLesson.titleAr}
                     </span>
                   </div>
                 </div>
-              </button>
+              </Card>
             ) : (
-              <div className="p-4 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700/60 text-slate-400 text-xs flex items-center gap-2 justify-center opacity-60">
+              <div className="min-h-12 p-4 rounded-2xl border border-dashed border-[var(--app-card-border)] text-[var(--app-text-muted)] text-xs flex items-center gap-2 justify-center opacity-60">
                 <span>بداية دروس هذا المحور الدراسي</span>
               </div>
             )}
 
             {/* Next Lesson Button */}
             {nextLesson ? (
-              <button
-                onClick={() => onSelectLesson?.(nextLesson)}
-                className="flex items-center justify-between p-4 rounded-2xl border border-indigo-200 dark:border-indigo-800/80 bg-indigo-50/40 dark:bg-indigo-950/30 hover:border-indigo-500 hover:bg-indigo-100/70 dark:hover:bg-indigo-900/50 transition-all text-right group cursor-pointer"
-              >
+              <Card interactive padding="none" className="p-4 flex items-center justify-between text-right border-[var(--brand-blue)]/30 bg-[var(--brand-blue)]/5" onClick={() => onSelectLesson?.(nextLesson)}>
                 <div className="flex items-center gap-3 justify-between w-full overflow-hidden">
                   <div className="truncate">
-                    <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 block uppercase tracking-wider">الدرس التالي / Suivant</span>
-                    <span className="text-xs font-black text-slate-800 dark:text-slate-100 truncate block group-hover:text-indigo-600 dark:group-hover:text-indigo-400 mt-0.5">
+                    <span className="text-[10px] font-bold text-[var(--brand-blue-dark)] block uppercase tracking-wider">الدرس التالي / Suivant</span>
+                    <span className="text-xs font-black text-[var(--app-text)] truncate block mt-0.5">
                       {nextLesson.titleAr}
                     </span>
                   </div>
-                  <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                  <div className="w-9 h-9 rounded-xl bg-[var(--brand-blue)] text-white flex items-center justify-center shrink-0 shadow-sm">
                     <ChevronLeft className="w-5 h-5" />
                   </div>
                 </div>
-              </button>
+              </Card>
             ) : (
-              <div className="p-4 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700/60 text-slate-400 text-xs flex items-center gap-2 justify-center opacity-60">
+              <div className="min-h-12 p-4 rounded-2xl border border-dashed border-[var(--app-card-border)] text-[var(--app-text-muted)] text-xs flex items-center gap-2 justify-center opacity-60">
                 <span>🎉 وصلت لنهاية دروس هذا المحور!</span>
               </div>
             )}
           </div>
-        </div>
+        </Card>
       )}
     </div>
   );
 };
+
+/** Compact pill button used in the section sub-tab bar — distinct from the CTA-style <Button>. */
+const TabPill: React.FC<{ active: boolean; activeClass: string; icon: React.ReactNode; onClick: () => void; children: React.ReactNode }> = ({
+  active,
+  activeClass,
+  icon,
+  onClick,
+  children,
+}) => (
+  <motion.button
+    onClick={onClick}
+    whileTap={{ scale: 0.95 }}
+    className={`min-h-12 px-4 py-2 rounded-xl transition-colors flex items-center gap-1.5 cursor-pointer shrink-0 text-xs font-bold ${
+      active ? `${activeClass} font-extrabold shadow-sm` : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+    }`}
+  >
+    {icon}
+    <span>{children}</span>
+  </motion.button>
+);
