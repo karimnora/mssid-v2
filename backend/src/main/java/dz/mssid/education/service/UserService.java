@@ -98,6 +98,37 @@ public class UserService {
             user.setBadges(mergedBadges);
         }
 
+        // First-unlock timestamps are append-only: an existing timestamp for a badge id is never overwritten.
+        if (progressData.getBadgeUnlockedAt() != null) {
+            Map<String, String> mergedUnlockedAt = new HashMap<>(user.getBadgeUnlockedAt() != null ? user.getBadgeUnlockedAt() : Map.of());
+            progressData.getBadgeUnlockedAt().forEach((badgeId, unlockedAt) -> {
+                if (badgeId != null && unlockedAt != null) {
+                    mergedUnlockedAt.putIfAbsent(badgeId, unlockedAt);
+                }
+            });
+            user.setBadgeUnlockedAt(mergedUnlockedAt);
+        }
+
+        if (progressData.getCompletedExamIds() != null) {
+            List<String> mergedExams = new ArrayList<>(user.getCompletedExamIds() != null ? user.getCompletedExamIds() : List.of());
+            for (String examId : progressData.getCompletedExamIds()) {
+                if (examId != null && !mergedExams.contains(examId)) {
+                    mergedExams.add(examId);
+                }
+            }
+            user.setCompletedExamIds(mergedExams);
+        }
+
+        if (progressData.getCompletedChallengeIds() != null) {
+            List<String> mergedChallenges = new ArrayList<>(user.getCompletedChallengeIds() != null ? user.getCompletedChallengeIds() : List.of());
+            for (String challengeId : progressData.getCompletedChallengeIds()) {
+                if (challengeId != null && !mergedChallenges.contains(challengeId)) {
+                    mergedChallenges.add(challengeId);
+                }
+            }
+            user.setCompletedChallengeIds(mergedChallenges);
+        }
+
         if (progressData.getQuizScores() != null) {
             Map<String, Integer> mergedQuizScores = new HashMap<>(user.getQuizScores() != null ? user.getQuizScores() : Map.of());
             progressData.getQuizScores().forEach((lessonId, score) -> {

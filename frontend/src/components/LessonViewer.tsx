@@ -20,8 +20,9 @@ import { LessonExplanationView } from './LessonExplanationView';
 import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
 import { ScienceReactorInteractive } from './ScienceReactorInteractive';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
+import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { Button, Card, Badge, XPProgressBar } from './ui';
-import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck } from 'lucide-react';
+import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck, Printer } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface LessonViewerProps {
@@ -30,6 +31,10 @@ interface LessonViewerProps {
   onSelectLesson?: (lesson: CourseLesson) => void;
   onBack: () => void;
   onCompleteQuiz: (lessonId: string, score: number) => void;
+  /** True once this lesson's quiz has been fully answered correctly at least once before — caps XP-per-question to prevent farming via repeated replays. */
+  quizAlreadyValidated?: boolean;
+  /** Fired once, the moment every question in the quiz has been answered correctly for the first time. */
+  onQuizFullyValidated?: (lessonId: string) => void;
   grade?: PrimaryGrade;
   subjectId?: SubjectId;
   trimester?: number | 'all';
@@ -97,6 +102,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onSelectLesson,
   onBack,
   onCompleteQuiz,
+  quizAlreadyValidated = false,
+  onQuizFullyValidated,
   grade = lesson.grade,
   subjectId = lesson.subject,
   trimester,
@@ -114,6 +121,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [visibleSolutions, setVisibleSolutions] = useState<Record<number, boolean>>({});
   const [activeTab, setActiveTab] = useState<TabId>('explanation');
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [showRevisionSheet, setShowRevisionSheet] = useState(false);
 
   // Practice exercises state ("Je m'entraîne" — progressiveExercises)
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
@@ -297,14 +305,24 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     const isCorrect = !!correctOpt && correctOpt.id === optionId;
     setRecentAnswerId(questionId);
     if (isCorrect && !awardedQuizIds.has(questionId)) {
-      onCompleteQuiz(lesson.id, 15);
-      setAwardedQuizIds((prev) => new Set(prev).add(questionId));
+      onCompleteQuiz(lesson.id, quizAlreadyValidated ? 5 : 15);
+      const newAwarded = new Set(awardedQuizIds).add(questionId);
+      setAwardedQuizIds(newAwarded);
+
+      // First time every question in the quiz has been answered correctly — lock in the reduced-XP rule for good.
+      if (!quizAlreadyValidated && newAwarded.size === currentQuiz.length) {
+        onQuizFullyValidated?.(lesson.id);
+      }
     }
   };
 
   const handleResetQuiz = () => {
     setSelectedAnswers({});
     setRecentAnswerId(null);
+    // Letting these be answered again is safe against XP farming: quizAlreadyValidated (persisted
+    // in the profile, survives this reset and even leaving/reopening the lesson) caps every
+    // question at 5 XP instead of 15 once the quiz has been fully passed once.
+    setAwardedQuizIds(new Set());
     initializeShuffledQuiz(); // Re-shuffle options for new randomized positions
   };
 
@@ -338,36 +356,53 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
         </div>
 
-        {/* Top Quick Next/Prev Controls */}
-        {allLessons.length > 1 && (
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              icon={<ChevronRight className="w-4 h-4" />}
-              disabled={!previousLesson}
-              onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
-              title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
-            >
-              <span className="hidden sm:inline">الدرس السابق</span>
-              <span className="sm:hidden">السابق</span>
-            </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            icon={<Printer className="w-4 h-4" />}
+            onClick={() => setShowRevisionSheet(true)}
+            title="فيشة مراجعة قابلة للطباعة"
+          >
+            <span className="hidden sm:inline">فيشة المراجعة</span>
+            <span className="sm:hidden">📄</span>
+          </Button>
 
-            <Button
-              variant="info"
-              size="sm"
-              icon={<ChevronLeft className="w-4 h-4" />}
-              iconPosition="end"
-              disabled={!nextLesson}
-              onClick={() => nextLesson && onSelectLesson?.(nextLesson)}
-              title={nextLesson ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}` : 'لا يوجد درس تالي'}
-            >
-              <span className="hidden sm:inline">الدرس التالي</span>
-              <span className="sm:hidden">التالي</span>
-            </Button>
-          </div>
-        )}
+          {/* Top Quick Next/Prev Controls */}
+          {allLessons.length > 1 && (
+            <>
+              <Button
+                variant="outline"
+                size="sm"
+                icon={<ChevronRight className="w-4 h-4" />}
+                disabled={!previousLesson}
+                onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
+                title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
+              >
+                <span className="hidden sm:inline">الدرس السابق</span>
+                <span className="sm:hidden">السابق</span>
+              </Button>
+
+              <Button
+                variant="info"
+                size="sm"
+                icon={<ChevronLeft className="w-4 h-4" />}
+                iconPosition="end"
+                disabled={!nextLesson}
+                onClick={() => nextLesson && onSelectLesson?.(nextLesson)}
+                title={nextLesson ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}` : 'لا يوجد درس تالي'}
+              >
+                <span className="hidden sm:inline">الدرس التالي</span>
+                <span className="sm:hidden">التالي</span>
+              </Button>
+            </>
+          )}
+        </div>
       </Card>
+
+      {showRevisionSheet && (
+        <RevisionSheetViewer lesson={lesson} onClose={() => setShowRevisionSheet(false)} tashkeelEnabled={tashkeelEnabled} />
+      )}
 
       {/* Lesson Hero Banner — bold, fixed-gradient showcase, intentionally vibrant regardless of theme */}
       <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden">

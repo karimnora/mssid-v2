@@ -20,7 +20,8 @@ export type SubjectId =
   | 'geometry'
   | 'converter'
   | 'multiplication'
-  | 'interactive_video';
+  | 'interactive_video'
+  | 'challenges';
 
 export interface SubjectInfo {
   id: SubjectId;
@@ -30,7 +31,9 @@ export interface SubjectInfo {
   color: string;
   bgLight: string;
   description: string;
-  category?: 'course' | 'tool' | 'exam';
+  category?: 'course' | 'tool' | 'exam' | 'challenge';
+  /** Earliest grade this makes sense for (tools only) — hides it while browsing an earlier grade. Omit for grade-agnostic tools. */
+  minGrade?: PrimaryGrade;
 }
 
 export interface QuizOption {
@@ -661,15 +664,51 @@ export interface OfficialExam {
   totalPoints: number;
   exercises: ExamExercise[];
   problemExercise: ExamExercise;
+  trimester?: 1 | 2 | 3;
+  contentSource?: ContentSource;
+  sourceNoteAr?: string;
 }
+
+// Challenges Arena — standalone timed mini-games/challenges bank (browsable independently of
+// lessons, mirroring the OFFICIAL_EXAMS_DATA pattern). Reuses the EducationalGameItem question shape.
+export interface ChallengeItem {
+  questionOrPromptAr: string;
+  correctAnswerAr: string;
+  optionsAr?: string[];
+  explanationAr?: string;
+}
+
+export interface Challenge {
+  id: string;
+  subject: SubjectId;
+  grade: PrimaryGrade;
+  titleAr: string;
+  descriptionAr: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  format: 'quiz_flash' | 'speed_calc' | 'memory' | 'word_scramble' | 'boss_mix';
+  timeLimitSeconds?: number;
+  xpReward: number;
+  items: ChallengeItem[];
+}
+
+// Data-driven unlock condition for a Badge — evaluated by utils/badgeEngine.ts against
+// the live UserProfile, so unlocking a badge never requires a hardcoded per-badge trigger.
+export type BadgeCriteria =
+  | { type: 'first_login' }
+  | { type: 'lessons_completed_subject'; subject: SubjectId; count: number }
+  | { type: 'lessons_completed_total'; count: number }
+  | { type: 'streak_days'; days: number }
+  | { type: 'xp_total'; xp: number }
+  | { type: 'exam_completed_count'; count: number }
+  | { type: 'challenge_completed_count'; count: number };
 
 export interface Badge {
   id: string;
   titleAr: string;
   descriptionAr: string;
   icon: string;
-  category: 'math' | 'soroban' | 'arabic' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic';
-  unlockedAt?: string;
+  category: 'math' | 'soroban' | 'arabic' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'general';
+  criteria: BadgeCriteria;
 }
 
 export interface UserProfile {
@@ -681,7 +720,12 @@ export interface UserProfile {
   streakDays: number;
   lastActiveDate: string;
   completedLessonIds: string[];
+  completedExamIds: string[];
+  completedChallengeIds: string[];
+  /** Lessons whose quiz has been fully answered correctly at least once — governs the reduced-XP-on-replay rule. */
+  quizFullyValidatedLessonIds: string[];
   badges: string[];
+  badgeUnlockedAt: Record<string, string>;
   quizScores: Record<string, number>;
   tashkeelEnabled?: boolean;
 }

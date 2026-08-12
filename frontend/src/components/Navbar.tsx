@@ -18,7 +18,6 @@ import {
   Palette,
   Check,
   FileText,
-  BarChart2,
   LogOut,
 } from 'lucide-react';
 import { PrimaryGrade, UserProfile } from '../types';
@@ -39,7 +38,6 @@ interface NavbarProps {
   onLogout: () => void;
   onOpenAdminReceiptsModal: () => void;
   onOpenAiTutor: () => void;
-  onOpenAuditModal: () => void;
   onOpenPricingModal: () => void;
   onOpenProfileModal: () => void;
   onOpenMobileSimulator?: () => void;
@@ -73,7 +71,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLogout,
   onOpenAdminReceiptsModal,
   onOpenAiTutor,
-  onOpenAuditModal,
   onOpenProfileModal,
   onOpenMobileSimulator,
   onOpenPrivacyPolicy,
@@ -129,9 +126,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isAdmin = roleLabel === 'ROLE_ADMIN';
   const displayXp = authUser?.score !== undefined ? authUser.score : (authUser?.xp !== undefined ? authUser.xp : userProfile.xp);
   const displayLevel = authUser?.level !== undefined ? authUser.level : Math.floor(displayXp / 100) + 1;
-  const displayBadgesCount = (authUser as any)?.badges
-    ? (authUser as any).badges.length
-    : (userProfile?.badges ? userProfile.badges.length : 0);
+  // userProfile.badges is the live, continuously re-evaluated set (see App.tsx) — always prefer it over
+  // authUser.badges, which is only a point-in-time snapshot from the last login/DB fetch.
+  const displayBadgesCount = userProfile?.badges ? userProfile.badges.length : 0;
 
   return (
     <>
@@ -398,14 +395,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
                       أدوات وإعدادات
                     </div>
-
-                    <button
-                      onClick={() => { onOpenAuditModal(); setIsProfileDropdownOpen(false); }}
-                      className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
-                    >
-                      <BarChart2 className="w-4 h-4 text-[var(--brand-emerald)]" />
-                      <span>تقرير التدقيق البيداغوجي</span>
-                    </button>
 
                     {onOpenPrivacyPolicy && (
                       <button

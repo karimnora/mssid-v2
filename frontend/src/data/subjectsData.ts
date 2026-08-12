@@ -1,5 +1,10 @@
-import { SubjectInfo } from '../types';
-import { isFeatureEnabled } from '../featureFlags';
+import { SubjectInfo, PrimaryGrade } from '../types';
+
+export const GRADE_ORDER: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
+
+/** A tool with no minGrade is grade-agnostic (always shown); otherwise only from its minGrade onward. */
+export const isToolAvailableForGrade = (tool: SubjectInfo, grade: PrimaryGrade): boolean =>
+  !tool.minGrade || GRADE_ORDER.indexOf(grade) >= GRADE_ORDER.indexOf(tool.minGrade);
 
 const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   // 1. COURSES & OFFICIAL CURRICULUM
@@ -94,6 +99,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-emerald-50 text-emerald-900 border-emerald-200',
     description: 'تصريف تفاعلي ممتع للأفعال العربية (الماضي، المضارع، والأمر) مع الصوت وقواعد الضمائر والتحديات.',
     category: 'tool',
+    minGrade: '3AP',
   },
   {
     id: 'french_lab',
@@ -104,6 +110,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
     description: 'تصريف تفاعلي ممتع للأفعال الفرنسية المقررة (Présent, Futur, Passé composé, Imparfait) مع النطق الصوتي والتمارين.',
     category: 'tool',
+    minGrade: '3AP',
   },
   {
     id: 'english_lab',
@@ -114,6 +121,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-indigo-50 text-indigo-900 border-indigo-200',
     description: 'تصريف تفاعلي ممتع للأفعال الإنجليزية (Present Simple, Continuous, Past, Future) مع الاستماع والتمارين التفاعلية.',
     category: 'tool',
+    minGrade: '3AP',
   },
   {
     id: 'soroban',
@@ -124,6 +132,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-blue-50 text-blue-900 border-blue-200',
     description: 'تطوير الذكاء والتركيز باستخدام المعداد الياباني التفاعلي، مكملات 5 و10، وتدريب Anzan السريع.',
     category: 'tool',
+    minGrade: '3AP',
   },
   {
     id: 'electricity',
@@ -134,6 +143,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
     description: 'أداة تفاعلية تجريبية مستقلا للمرحلة الابتدائية: الدارة الكهربائية، الصمام الثنائي الضوئي، النواقل والعوازل.',
     category: 'tool',
+    minGrade: '4AP',
   },
   {
     id: 'geometry',
@@ -144,6 +154,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-teal-50 text-teal-900 border-teal-200',
     description: 'استكشاف الأشكال الهندسية، قياس الزوايا، التعامد والتوازي، والمحيط والمساحة برسم تفاعلي.',
     category: 'tool',
+    minGrade: '3AP',
   },
   {
     id: 'converter',
@@ -154,6 +165,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-purple-50 text-purple-900 border-purple-200',
     description: 'جدول تحويل الأطوال، الكتل، السعات، والمساحات وفق البرنامج الجزائري الرسمي.',
     category: 'tool',
+    minGrade: '3AP',
   },
   {
     id: 'educational_calculator',
@@ -164,16 +176,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-cyan-50 text-cyan-900 border-cyan-200',
     description: 'آلة حاسبة آمنة تشرح الخطوات وتعرض النتائج مع شرح مبسط للأطفال.',
     category: 'tool',
-  },
-  {
-    id: 'writing_response',
-    nameAr: 'منطقة الكتابة والردود الذكية',
-    nameFr: 'Zone d’écriture et de réponse',
-    icon: 'BookOpen',
-    color: 'from-amber-500 to-orange-600',
-    bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
-    description: 'مساحة للكتابة وشرح الحلول مع تصحيح فوري لمقالات قصيرة وبطاقة الحساب.',
-    category: 'tool',
+    minGrade: '1AP',
   },
   {
     id: 'multiplication',
@@ -184,16 +187,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-rose-50 text-rose-900 border-rose-200',
     description: 'تدريب تفاعلي لحفظ جدول الضرب من 1 إلى 10 مع ألعاب وسرعة البديهة.',
     category: 'tool',
-  },
-  {
-    id: 'interactive_video',
-    nameAr: 'الفيديو التفاعلي بالأسئلة',
-    nameFr: 'Vidéo interactive avec questions',
-    icon: 'Sparkles',
-    color: 'from-indigo-600 to-violet-700',
-    bgLight: 'bg-indigo-50 text-indigo-900 border-indigo-200',
-    description: 'شاهد فيديو تعليمياً يتوقف تلقائياً ليطرح عليك أسئلة، مع تصحيح فوري ومتابعة المشاهدة.',
-    category: 'tool',
+    minGrade: '3AP',
   },
 
   // 3. OFFICIAL STANDALONE EXAMS
@@ -207,15 +201,26 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'امتحانات شهادة التعليم الابتدائي من دورات 2008 إلى 2018 مع الحلول النموذجية وسلم التنقيط والتفسير.',
     category: 'exam',
   },
+
+  // 4. CHALLENGES ARENA
+  {
+    id: 'challenges',
+    nameAr: 'نادي التحديات والمسابقات',
+    nameFr: 'Arène de Défis 5AP',
+    icon: 'Trophy',
+    color: 'from-rose-500 to-amber-600',
+    bgLight: 'bg-rose-50 text-rose-900 border-rose-200',
+    description: 'تحديات مؤقتة وألعاب سريعة في الرياضيات والعربية والفرنسية والإيقاظ العلمي لكسب نقاط الخبرة.',
+    category: 'challenge',
+  },
 ];
 
-export const SUBJECTS_LIST: SubjectInfo[] = RAW_SUBJECTS_LIST.filter(
-  (s) => s.id !== 'interactive_video' || isFeatureEnabled('interactiveVideo'),
-);
+export const SUBJECTS_LIST: SubjectInfo[] = RAW_SUBJECTS_LIST;
 
 export const COURSE_SUBJECTS_LIST = SUBJECTS_LIST.filter(s => s.category === 'course');
 export const INTERACTIVE_LABS_LIST = SUBJECTS_LIST.filter(s => s.category === 'tool');
 export const OFFICIAL_EXAMS_LIST = SUBJECTS_LIST.filter(s => s.category === 'exam');
-export const SPECIAL_TOOLS_AND_EXAMS_LIST = SUBJECTS_LIST.filter(s => s.category === 'tool' || s.category === 'exam');
+export const CHALLENGES_TAB_LIST = SUBJECTS_LIST.filter(s => s.category === 'challenge');
+export const SPECIAL_TOOLS_AND_EXAMS_LIST = SUBJECTS_LIST.filter(s => s.category === 'tool' || s.category === 'exam' || s.category === 'challenge');
 
 

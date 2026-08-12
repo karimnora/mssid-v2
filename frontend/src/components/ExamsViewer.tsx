@@ -1,16 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
+import { SUBJECTS_LIST } from '../data/subjectsData';
 import { AuthService } from '../services/authService';
 import { SubscriptionPaywall } from './SubscriptionPaywall';
 import { AuthUser } from '../types/auth';
-import { Award, Clock, FileText, CheckCircle2, HelpCircle, ChevronLeft, Calendar, Lock, Sparkles, ShieldCheck } from 'lucide-react';
+import { SubjectId } from '../types';
+import { Award, Clock, FileText, CheckCircle2, HelpCircle, ChevronLeft, Calendar, Lock, Sparkles, ShieldCheck, Trophy } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface ExamsViewerProps {
   tashkeelEnabled?: boolean;
+  /** Exam ids the student has already self-reported as done (drives the "✅ أنهيت الامتحان" button state). */
+  completedExamIds?: string[];
+  /** Called once when the student marks the currently-open exam as completed — grants a flat XP bonus (no auto-grading exists yet). */
+  onExamComplete?: (examId: string) => void;
 }
 
-export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true }) => {
+export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true, completedExamIds = [], onExamComplete }) => {
+  const examSubjects = useMemo(() => {
+    const ids = Array.from(new Set(OFFICIAL_EXAMS_DATA.map((e) => e.subject)));
+    return ids.map((id) => SUBJECTS_LIST.find((s) => s.id === id)).filter((s): s is NonNullable<typeof s> => !!s);
+  }, []);
+  const [selectedSubjectFilter, setSelectedSubjectFilter] = useState<SubjectId | 'all'>('all');
+  const filteredExams = useMemo(
+    () => (selectedSubjectFilter === 'all' ? OFFICIAL_EXAMS_DATA : OFFICIAL_EXAMS_DATA.filter((e) => e.subject === selectedSubjectFilter)),
+    [selectedSubjectFilter]
+  );
   const [selectedExamId, setSelectedExamId] = useState<string>(OFFICIAL_EXAMS_DATA[0].id);
   const [showSolutions, setShowSolutions] = useState<Record<string, boolean>>({});
   const [timerSeconds, setTimerSeconds] = useState<number>(5400); // 90 mins
@@ -21,6 +36,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => AuthService.getCurrentUser());
 
   const selectedExam = OFFICIAL_EXAMS_DATA.find((e) => e.id === selectedExamId) || OFFICIAL_EXAMS_DATA[0];
+  const selectedExamSubjectNameAr = SUBJECTS_LIST.find((s) => s.id === selectedExam.subject)?.nameAr || selectedExam.subject;
+  const exercisesPoints = selectedExam.exercises.reduce((sum, ex) => sum + ex.points, 0);
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
     return tashkeelEnabled ? text : stripArabicTashkeel(text);
@@ -128,13 +145,52 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true
         </div>
       )}
 
-      {/* Year Selector Pills */}
+      {/* Subject Filter Pills */}
+      <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto">
+        <span className="text-xs font-extrabold text-slate-500 px-2 shrink-0 flex items-center gap-1">
+          <FileText className="w-4 h-4 text-purple-600" />
+          <span>اختر المادة:</span>
+        </span>
+        <button
+          onClick={() => {
+            setSelectedSubjectFilter('all');
+            setShowSolutions({});
+          }}
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+            selectedSubjectFilter === 'all'
+              ? 'bg-indigo-700 text-white shadow-xs font-extrabold scale-105'
+              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+          }`}
+        >
+          الكل
+        </button>
+        {examSubjects.map((subj) => (
+          <button
+            key={subj.id}
+            onClick={() => {
+              setSelectedSubjectFilter(subj.id);
+              const firstMatch = OFFICIAL_EXAMS_DATA.find((e) => e.subject === subj.id);
+              if (firstMatch) setSelectedExamId(firstMatch.id);
+              setShowSolutions({});
+            }}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+              selectedSubjectFilter === subj.id
+                ? 'bg-indigo-700 text-white shadow-xs font-extrabold scale-105'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            {subj.nameAr}
+          </button>
+        ))}
+      </div>
+
+      {/* Session/Trimester Selector Pills */}
       <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto">
         <span className="text-xs font-extrabold text-slate-500 px-2 shrink-0 flex items-center gap-1">
           <Calendar className="w-4 h-4 text-purple-600" />
           <span>اختر الدورة:</span>
         </span>
-        {OFFICIAL_EXAMS_DATA.map((exam) => {
+        {filteredExams.map((exam) => {
           const isSelected = exam.id === selectedExamId;
           return (
             <button
@@ -160,17 +216,20 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true
               الجمهورية الجزائرية الديمقراطية الشعبية - وزارة التربية الوطنية
             </span>
             <h2 className="text-lg font-extrabold text-slate-900 mt-2 font-sans">{renderArabicText(selectedExam.titleAr)}</h2>
+            {selectedExam.sourceNoteAr && (
+              <p className="text-[11px] text-slate-500 mt-1.5 max-w-xl">{selectedExam.sourceNoteAr}</p>
+            )}
           </div>
           <div className="text-left text-xs font-bold text-slate-500">
-            <div>المادة: الرياضيات</div>
-            <div>المدة: ساعة ونصف (90 دقيقة)</div>
+            <div>المادة: {selectedExamSubjectNameAr}</div>
+            <div>المدة: <span dir="ltr">{selectedExam.durationMinutes}</span> دقيقة</div>
           </div>
         </div>
 
         {/* Exercises List */}
         <div className="space-y-6">
           <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
-            الجزء الأول: 04 تمارين مستقلة (06 نقاط)
+            الجزء الأول: {selectedExam.exercises.length} تمارين مستقلة ({exercisesPoints} نقاط)
           </h3>
 
           {selectedExam.exercises.map((ex, idx) => {
@@ -225,14 +284,14 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true
 
           {/* Problem Solving / الوضعية الإدماجية */}
           <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 mt-6">
-            الجزء الثاني: الوضعية الإدماجية (04 نقاط)
+            الجزء الثاني: الوضعية الإدماجية ({selectedExam.problemExercise.points} نقاط)
           </h3>
 
           <div className="p-5 rounded-2xl border border-amber-200 bg-amber-50/40 space-y-3">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <h4 className="font-extrabold text-sm text-amber-950">{selectedExam.problemExercise.titleAr}</h4>
               <span className="text-xs font-extrabold bg-amber-500 text-slate-950 px-3 py-0.5 rounded-full">
-                4 نقاط كاملة
+                {selectedExam.problemExercise.points} نقاط كاملة
               </span>
             </div>
 
@@ -268,6 +327,24 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ tashkeelEnabled = true
                 <span className="text-[10px] font-mono text-amber-400 block mb-1 uppercase font-bold">الحل النموذجي وسلم التنقيط للوضعية:</span>
                 {formatEducationalText(selectedExam.problemExercise.solutionAr)}
               </div>
+            )}
+          </div>
+
+          {/* Self-reported completion — no auto-grading exists yet, so this is a declarative "I finished this paper" action. */}
+          <div className="pt-2">
+            {completedExamIds.includes(selectedExam.id) ? (
+              <div className="flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-sm font-extrabold">
+                <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600" />
+                <span>أنجزت هذا الموضوع ✅</span>
+              </div>
+            ) : (
+              <button
+                onClick={() => onExamComplete?.(selectedExam.id)}
+                className="w-full flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-extrabold shadow-md transition-all cursor-pointer active:scale-[0.99]"
+              >
+                <Trophy className="w-4.5 h-4.5" />
+                <span>✅ أنهيت هذا الامتحان (<span dir="ltr">+50 XP</span>)</span>
+              </button>
             )}
           </div>
         </div>

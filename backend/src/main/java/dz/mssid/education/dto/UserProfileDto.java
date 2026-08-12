@@ -31,6 +31,9 @@ public class UserProfileDto {
     private String lastActiveDate;
     private List<String> completedLessonIds;
     private List<String> badges;
+    private Map<String, String> badgeUnlockedAt;
+    private List<String> completedExamIds;
+    private List<String> completedChallengeIds;
     private Map<String, Integer> quizScores;
     private String createdAt;
 }

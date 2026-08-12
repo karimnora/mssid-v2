@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { UserProfile, Badge } from '../types';
+import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Award, Flame, Trophy, Star, CheckCircle2, ShieldCheck, RefreshCw, Edit2, Database, Target } from 'lucide-react';
+import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { TashkeelToggle } from './TashkeelToggle';
 import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dailyObjective';
+import { BADGES_CATALOG } from '../data/badgesData';
+import { describeCriteria } from '../utils/badgeEngine';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -17,16 +19,6 @@ interface ProfileModalProps {
   onUpdateName?: (newName: string) => void;
   onRefreshFromDb?: () => Promise<void>;
 }
-
-const ALL_BADGES: Badge[] = [
-  { id: 'b_welcome', titleAr: 'مجتهد الجزائر', descriptionAr: 'انضمامك لمنصة مسيد DZ والبدء في التعلم', icon: '🇩🇿', category: 'streak' },
-  { id: 'b_math_star', titleAr: 'عبقري الرياضيات', descriptionAr: 'إكمال 3 دروس واختبارات في الرياضيات', icon: '📐', category: 'math' },
-  { id: 'b_soroban_master', titleAr: 'بطل السوروبان', descriptionAr: 'إتقان تمرين Anzan الخاطف وتفعيل مكملات 5', icon: '🧮', category: 'soroban' },
-  { id: 'b_arabic_hero', titleAr: 'فارس الضاد', descriptionAr: 'إكمال قواعد النحو والإملاء بامتياز', icon: '📖', category: 'arabic' },
-  { id: 'b_french_champion', titleAr: 'Champion de Français 5AP', descriptionAr: 'إتقان مشاريع وقواعد اللغة الفرنسية للسنة الخامسة', icon: '🇫🇷', category: 'french' },
-  { id: 'b_english_master', titleAr: 'English Master 5AP', descriptionAr: 'إتقان وحدات ومحادثات اللغة الإنجليزية والنطق الصوتي', icon: '🇬🇧', category: 'english' },
-  { id: 'b_exam_champion', titleAr: 'بطل شهادة 5AP', descriptionAr: 'حل موضوع امتحان شهادة ابتدائي رسمي بنجاح', icon: '🏆', category: 'exams' }
-];
 
 export const ProfileModal: React.FC<ProfileModalProps> = ({
   isOpen,
@@ -194,44 +186,44 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
             </div>
 
-            {/* Badges Gallery */}
+            {/* Badges Gallery — always driven by userProfile.badges, kept live by the badge-evaluation
+                effect in App.tsx, so this gallery reflects real progress rather than a fixed mock list. */}
             <div className="space-y-3">
-              {(() => {
-                const effectiveBadges = authUser?.badges && authUser.badges.length > 0 ? authUser.badges : userProfile.badges;
-                return (
-                  <>
-                    <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
-                      شارات الأوسمة والإنجازات الجزائرية ({effectiveBadges.length}/{ALL_BADGES.length}):
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      {ALL_BADGES.map((b) => {
-                        const isUnlocked = effectiveBadges.includes(b.id) || b.id === 'b_welcome';
-                        return (
-                          <div
-                            key={b.id}
-                            className={`p-3 rounded-xl border flex items-start gap-3 transition-all ${
-                              isUnlocked
-                                ? 'bg-amber-50/80 border-amber-200 text-amber-950'
-                                : 'bg-slate-100/60 border-slate-200 text-slate-400 opacity-60'
-                            }`}
-                          >
-                            <div className="text-2xl p-1 bg-white rounded-lg border border-slate-200 shrink-0">
-                              {b.icon}
-                            </div>
-                            <div>
-                              <div className="flex items-center gap-1.5">
-                                <h4 className="font-extrabold text-xs">{b.titleAr}</h4>
-                                {isUnlocked && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />}
-                              </div>
-                              <p className="text-[11px] text-slate-600 leading-snug mt-0.5">{b.descriptionAr}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
+              <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
+                شارات الأوسمة والإنجازات ({userProfile.badges.length}/{BADGES_CATALOG.length}):
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {BADGES_CATALOG.map((b) => {
+                  const isUnlocked = userProfile.badges.includes(b.id);
+                  return (
+                    <div
+                      key={b.id}
+                      className={`p-3 rounded-xl border flex items-start gap-3 transition-all ${
+                        isUnlocked
+                          ? 'bg-amber-50/80 border-amber-200 text-amber-950'
+                          : 'bg-slate-100/60 border-slate-200 text-slate-400 opacity-60'
+                      }`}
+                    >
+                      <div className="text-2xl p-1 bg-white rounded-lg border border-slate-200 shrink-0">
+                        {b.icon}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="font-extrabold text-xs">{b.titleAr}</h4>
+                          {isUnlocked ? (
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          ) : (
+                            <Lock className="w-3 h-3 text-slate-400 shrink-0" />
+                          )}
+                        </div>
+                        <p className="text-[11px] text-slate-600 leading-snug mt-0.5">
+                          {isUnlocked ? b.descriptionAr : describeCriteria(b.criteria)}
+                        </p>
+                      </div>
                     </div>
-                  </>
-                );
-              })()}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

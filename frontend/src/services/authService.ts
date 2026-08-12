@@ -334,6 +334,101 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
     return updatedUser;
   }
 
+  /** Same pattern as addScore, but for the exam bank (ExamsViewer has no auto-grading — completion is self-reported). */
+  static addExamXp(examId: string, points: number): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+
+    const currentScore = user.score !== undefined ? user.score : (user.xp || 0);
+    const newScore = currentScore + points;
+    const currentExams = user.completedExamIds || [];
+    const isFirstCompletion = !currentExams.includes(examId);
+    const newExams = isFirstCompletion ? [...currentExams, examId] : currentExams;
+
+    const updatedUser: AuthUser = {
+      ...user,
+      score: newScore,
+      xp: newScore,
+      level: Math.floor(newScore / 100) + 1,
+      completedExamIds: newExams,
+      lastActiveDate: new Date().toISOString().slice(0, 10),
+    };
+
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      score: updatedUser.score,
+      xp: updatedUser.xp,
+      level: updatedUser.level,
+      lastActiveDate: updatedUser.lastActiveDate,
+      completedExamIds: isFirstCompletion ? [examId] : undefined,
+    }).catch((err) => console.error('Erreur de synchronisation examen:', err));
+
+    return updatedUser;
+  }
+
+  /** Same pattern as addScore, but for the challenges arena. */
+  static addChallengeXp(challengeId: string, points: number): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+
+    const currentScore = user.score !== undefined ? user.score : (user.xp || 0);
+    const newScore = currentScore + points;
+    const currentChallenges = user.completedChallengeIds || [];
+    const isFirstCompletion = !currentChallenges.includes(challengeId);
+    const newChallenges = isFirstCompletion ? [...currentChallenges, challengeId] : currentChallenges;
+
+    const updatedUser: AuthUser = {
+      ...user,
+      score: newScore,
+      xp: newScore,
+      level: Math.floor(newScore / 100) + 1,
+      completedChallengeIds: newChallenges,
+      lastActiveDate: new Date().toISOString().slice(0, 10),
+    };
+
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      score: updatedUser.score,
+      xp: updatedUser.xp,
+      level: updatedUser.level,
+      lastActiveDate: updatedUser.lastActiveDate,
+      completedChallengeIds: isFirstCompletion ? [challengeId] : undefined,
+    }).catch((err) => console.error('Erreur de synchronisation défi:', err));
+
+    return updatedUser;
+  }
+
+  /**
+   * Pushes newly-unlocked badges to the backend (fire-and-forget) and keeps the local authUser copy
+   * in sync. The backend union-merges by badge id and never overwrites an existing unlock timestamp,
+   * so calling this repeatedly / out of order is always safe.
+   */
+  static syncBadges(badges: string[], badgeUnlockedAt: Record<string, string>): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+
+    const updatedUser: AuthUser = { ...user, badges, badgeUnlockedAt };
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      badges,
+      badgeUnlockedAt,
+    }).catch((err) => console.error('Erreur de synchronisation des badges:', err));
+
+    return updatedUser;
+  }
+
 static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser | null> {
   const user = this.getCurrentUser();
   if (!user) return null;
@@ -360,7 +455,10 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
       quizzesCompleted: updatedUser.quizzesCompleted || 0,
       lastActiveDate: updatedUser.lastActiveDate || new Date().toISOString().slice(0, 10),
       completedLessonIds: updatedUser.completedLessonIds || [],
+      completedExamIds: updatedUser.completedExamIds || [],
+      completedChallengeIds: updatedUser.completedChallengeIds || [],
       badges: updatedUser.badges || [],
+      badgeUnlockedAt: updatedUser.badgeUnlockedAt || {},
       quizScores: updatedUser.quizScores || {},
     });
   } catch (err) {
@@ -401,6 +499,10 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           streakDays: res.data.streakDays || currentUser.streakDays || 1,
           quizzesCompleted: res.data.quizzesCompleted || currentUser.quizzesCompleted || 0,
           completedLessonIds: res.data.completedLessonIds || currentUser.completedLessonIds || [],
+          badges: res.data.badges && res.data.badges.length > 0 ? res.data.badges : currentUser.badges || [],
+          badgeUnlockedAt: res.data.badgeUnlockedAt || currentUser.badgeUnlockedAt || {},
+          completedExamIds: res.data.completedExamIds || currentUser.completedExamIds || [],
+          completedChallengeIds: res.data.completedChallengeIds || currentUser.completedChallengeIds || [],
         };
         this.setCurrentUser(updatedUser);
         return updatedUser;

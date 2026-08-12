@@ -83,6 +83,21 @@ public class User implements UserDetails {
     private List<String> badges = new ArrayList<>();
 
     @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "badge_unlocked_at", columnDefinition = "jsonb")
+    @Builder.Default
+    private Map<String, String> badgeUnlockedAt = new HashMap<>();
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "completed_exam_ids", columnDefinition = "jsonb")
+    @Builder.Default
+    private List<String> completedExamIds = new ArrayList<>();
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "completed_challenge_ids", columnDefinition = "jsonb")
+    @Builder.Default
+    private List<String> completedChallengeIds = new ArrayList<>();
+
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "quiz_scores", columnDefinition = "jsonb")
     @Builder.Default
     private Map<String, Integer> quizScores = new HashMap<>();

@@ -28,6 +28,9 @@ public class UserMapper {
                 .lastActiveDate(user.getLastActiveDate())
                 .completedLessonIds(user.getCompletedLessonIds())
                 .badges(user.getBadges())
+                .badgeUnlockedAt(user.getBadgeUnlockedAt())
+                .completedExamIds(user.getCompletedExamIds())
+                .completedChallengeIds(user.getCompletedChallengeIds())
                 .quizScores(user.getQuizScores())
                 .createdAt(user.getCreatedAt() != null ? user.getCreatedAt().toString() : null)
                 .build();

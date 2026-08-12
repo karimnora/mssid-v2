@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { PrimaryGrade, SubjectId, CourseLesson, UserProfile } from './types';
+import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo } from './types';
 import { AuthUser } from './types/auth';
 import { AuthService } from './services/authService';
-import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST } from './data/subjectsData';
+import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, CHALLENGES_TAB_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST, isToolAvailableForGrade } from './data/subjectsData';
 import { COURSES_DATA } from './data/coursesData';
 import { CourseBreadcrumb } from './components/CourseBreadcrumb';
 import { LessonViewer } from './components/LessonViewer';
 import { ExamsViewer } from './components/ExamsViewer';
+import { ChallengesArena } from './components/ChallengesArena';
 import { SorobanInteractive } from './components/SorobanInteractive';
 import { ElectricityLabInteractive } from './components/ElectricityLabInteractive';
 import { UnitConverter } from './components/UnitConverter';
 import { GeometryVisualizer } from './components/GeometryVisualizer';
 import { EducationalCalculator } from './components/EducationalCalculator';
-import { WritingResponseZone } from './components/WritingResponseZone';
 import { ArabicConjugator } from './components/ArabicConjugator';
 import { FrenchLanguageLab } from './components/FrenchLanguageLab';
 import { EnglishLanguageLab } from './components/EnglishLanguageLab';
 import { MultiplicationTableInteractive } from './components/MultiplicationTableInteractive';
-import { InteractiveVideoPlayer, VideoQuestion } from './components/InteractiveVideoPlayer';
 import { incrementDailyObjective } from './utils/dailyObjective';
+import { applyBadgeEvaluation } from './utils/badgeEngine';
+import { BadgeUnlockToast } from './components/BadgeUnlockToast';
 import { AiTutorModal } from './components/AiTutorModal';
-import { AuditModal } from './components/AuditModal';
 import { ProfileModal } from './components/ProfileModal';
 import { AuthModal } from './components/AuthModal';
 import { AdminReceiptsManager } from './components/AdminReceiptsManager';
@@ -49,7 +49,8 @@ import {
   Sparkles,
   Globe,
   ChevronLeft,
-  Zap
+  Zap,
+  Trophy
 } from 'lucide-react';
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
@@ -64,47 +65,39 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Languages,
   Sparkles,
   Globe,
+  Trophy,
 };
 
 const THEME_STORAGE_KEY = 'mssid_theme';
 
-// Placeholder demo content for the interactive video lab (Phase 6.4).
-// A real lesson video (hosted via the CMS media library) should replace this once available.
-const DEMO_VIDEO_URL = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-const DEMO_VIDEO_SUBTITLES_VTT = `WEBVTT
+/** Back-fills fields added after a profile was first saved to localStorage, and updates the daily streak. */
+function normalizeUserProfile(raw: UserProfile): UserProfile {
+  const profile: UserProfile = {
+    ...raw,
+    completedExamIds: raw.completedExamIds || [],
+    completedChallengeIds: raw.completedChallengeIds || [],
+    quizFullyValidatedLessonIds: raw.quizFullyValidatedLessonIds || [],
+    badgeUnlockedAt: raw.badgeUnlockedAt || {},
+  };
 
-00:00:00.000 --> 00:00:06.000
-مرحباً بكم في هذا الفيديو التجريبي 🎬
+  const today = new Date().toISOString().slice(0, 10);
+  const lastActive = profile.lastActiveDate ? profile.lastActiveDate.slice(0, 10) : null;
+  if (lastActive === today) return profile;
 
-00:00:06.000 --> 00:00:12.000
-سيتوقف الفيديو تلقائياً عند كل سؤال، ثم يمكنكم متابعة المشاهدة بعد الإجابة.
-`;
-const DEMO_VIDEO_SUBTITLES_URL = `data:text/vtt;charset=utf-8,${encodeURIComponent(DEMO_VIDEO_SUBTITLES_VTT)}`;
-const DEMO_VIDEO_QUESTIONS: VideoQuestion[] = [
-  {
-    id: 'demo-q1',
-    atSecond: 1.5,
-    questionAr: 'كم عدد أزرار التحكم الأساسية في مشغل الفيديو (تشغيل، سرعة، ترجمة، ملء الشاشة)؟',
-    options: ['اثنان', '3', '4', '6'],
-    correctIdx: 2,
-    explanationAr: 'المشغل يحتوي على 4 أزرار أساسية: تشغيل/إيقاف، الترجمة، السرعة، وملء الشاشة.',
-  },
-  {
-    id: 'demo-q2',
-    atSecond: 3.5,
-    questionAr: 'ماذا يحدث للفيديو عندما يظهر سؤال؟',
-    options: ['يستمر التشغيل', 'يتوقف تلقائياً حتى الإجابة', 'يعيد البدء من جديد', 'يُغلق المشغل'],
-    correctIdx: 1,
-    explanationAr: 'يتوقف الفيديو تلقائياً عند كل سؤال، ويمكن متابعته فقط بعد الإجابة والاطلاع على التصحيح.',
-  },
-];
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  return {
+    ...profile,
+    streakDays: lastActive === yesterday ? profile.streakDays + 1 : 1,
+    lastActiveDate: today,
+  };
+}
 
 export default function App() {
   const [grade, setGrade] = useState<PrimaryGrade>('5AP');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId>('math');
   const [selectedTrimester, setSelectedTrimester] = useState<number | 'all'>('all');
   const [selectedLesson, setSelectedLesson] = useState<CourseLesson | null>(null);
-  const [mainCategory, setMainCategory] = useState<'courses' | 'labs' | 'exams'>('courses');
+  const [mainCategory, setMainCategory] = useState<'courses' | 'labs' | 'exams' | 'challenges'>('courses');
   const [mobileTab, setMobileTab] = useState<'home' | 'courses' | 'exercises' | 'games'>('home');
 
   const handleSelectSubject = (subject: SubjectId) => {
@@ -115,6 +108,9 @@ export default function App() {
       setMobileTab('games');
     } else if (OFFICIAL_EXAMS_LIST.some((s) => s.id === subject)) {
       setMainCategory('exams');
+      setMobileTab('exercises');
+    } else if (CHALLENGES_TAB_LIST.some((s) => s.id === subject)) {
+      setMainCategory('challenges');
       setMobileTab('exercises');
     } else {
       setMainCategory('courses');
@@ -142,7 +138,6 @@ export default function App() {
 
   // Modals state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
-  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isAdminReceiptsModalOpen, setIsAdminReceiptsModalOpen] = useState(false);
@@ -169,25 +164,51 @@ export default function App() {
     const saved = localStorage.getItem('mssid_user_profile');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        return normalizeUserProfile(JSON.parse(saved));
       } catch (e) {
         console.error('Failed to parse user profile:', e);
       }
     }
-    return {
+    return normalizeUserProfile({
       name: 'التلميذ المجتهد',
       grade: '5AP',
       avatar: '🇩🇿',
       xp: 140,
       level: 2,
-      streakDays: 4,
-      lastActiveDate: new Date().toISOString().slice(0, 10),
+      streakDays: 3,
+      lastActiveDate: new Date(Date.now() - 86400000).toISOString().slice(0, 10),
       completedLessonIds: ['math-5ap-numbers'],
+      completedExamIds: [],
+      completedChallengeIds: [],
+      quizFullyValidatedLessonIds: [],
       badges: ['b_welcome', 'b_math_star'],
+      badgeUnlockedAt: {},
       quizScores: { 'math-5ap-numbers': 30 },
       tashkeelEnabled: false,
-    };
+    });
   });
+
+  // Badges freshly earned since the last check — queued for a celebratory toast (see BadgeUnlockToast).
+  const [newlyUnlockedBadges, setNewlyUnlockedBadges] = useState<BadgeInfo[]>([]);
+
+  // Re-evaluates the whole badge catalog whenever a badge-relevant metric changes. Pure/idempotent —
+  // safe to run on every such change, and correctly unlocks retroactively if the catalog grows later.
+  useEffect(() => {
+    const { profile: updated, newlyUnlocked } = applyBadgeEvaluation(userProfile);
+    if (newlyUnlocked.length > 0) {
+      setUserProfile(updated);
+      setNewlyUnlockedBadges((prev) => [...prev, ...newlyUnlocked]);
+      const updatedAuth = AuthService.syncBadges(updated.badges, updated.badgeUnlockedAt);
+      if (updatedAuth) setAuthUser(updatedAuth);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    userProfile.xp,
+    userProfile.streakDays,
+    userProfile.completedLessonIds.length,
+    userProfile.completedExamIds.length,
+    userProfile.completedChallengeIds.length,
+  ]);
 
   useEffect(() => {
     AuthService.fetchProfileFromDbAsync().then((fetched) => {
@@ -202,7 +223,10 @@ export default function App() {
           level: level,
           streakDays: fetched.streakDays || prev.streakDays,
           completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
-          badges: fetched.badges || prev.badges,
+          completedExamIds: fetched.completedExamIds && fetched.completedExamIds.length > 0 ? fetched.completedExamIds : prev.completedExamIds,
+          completedChallengeIds: fetched.completedChallengeIds && fetched.completedChallengeIds.length > 0 ? fetched.completedChallengeIds : prev.completedChallengeIds,
+          badges: fetched.badges && fetched.badges.length > 0 ? fetched.badges : prev.badges,
+          badgeUnlockedAt: { ...fetched.badgeUnlockedAt, ...prev.badgeUnlockedAt },
           quizScores: fetched.quizScores || prev.quizScores,
           tashkeelEnabled: fetched.tashkeelEnabled ?? prev.tashkeelEnabled,
         }));
@@ -221,7 +245,10 @@ export default function App() {
         level: level,
         streakDays: authUser.streakDays || prev.streakDays,
         completedLessonIds: authUser.completedLessonIds || prev.completedLessonIds,
-        badges: authUser.badges || prev.badges,
+        completedExamIds: authUser.completedExamIds && authUser.completedExamIds.length > 0 ? authUser.completedExamIds : prev.completedExamIds,
+        completedChallengeIds: authUser.completedChallengeIds && authUser.completedChallengeIds.length > 0 ? authUser.completedChallengeIds : prev.completedChallengeIds,
+        badges: authUser.badges && authUser.badges.length > 0 ? authUser.badges : prev.badges,
+        badgeUnlockedAt: { ...authUser.badgeUnlockedAt, ...prev.badgeUnlockedAt },
         quizScores: authUser.quizScores || prev.quizScores,
         tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
       }));
@@ -235,6 +262,20 @@ export default function App() {
   if (isCmsActive) {
     return <CmsMainView onExitCms={() => setIsCmsActive(false)} />;
   }
+
+  /**
+   * Flips a lesson's quiz to "fully validated" the first time every question in it has been
+   * answered correctly at least once — from then on, LessonViewer caps XP per question at 5
+   * instead of 15 (any replay, whether via the in-place shuffle-retry button or by leaving and
+   * reopening the lesson), so XP can't be farmed by repeating an already-passed quiz.
+   */
+  const handleQuizFullyValidated = (lessonId: string) => {
+    setUserProfile((prev) =>
+      prev.quizFullyValidatedLessonIds.includes(lessonId)
+        ? prev
+        : { ...prev, quizFullyValidatedLessonIds: [...prev.quizFullyValidatedLessonIds, lessonId] }
+    );
+  };
 
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
     const updatedAuth = AuthService.addScore(earnedXp, lessonId);
@@ -262,6 +303,39 @@ export default function App() {
     });
   };
 
+  /** ExamsViewer has no auto-grading — completion is a self-report ("✅ أنهيت هذا الامتحان"), rewarded with a flat XP bonus. */
+  const handleCompleteExam = (examId: string) => {
+    const updatedAuth = AuthService.addExamXp(examId, 50);
+    if (updatedAuth) setAuthUser(updatedAuth);
+    incrementDailyObjective();
+
+    setUserProfile((prev) => {
+      if (prev.completedExamIds.includes(examId)) return prev;
+      return {
+        ...prev,
+        xp: prev.xp + 50,
+        level: Math.floor((prev.xp + 50) / 100) + 1,
+        completedExamIds: [...prev.completedExamIds, examId],
+      };
+    });
+  };
+
+  /** ChallengesArena computes its own XP total per run — this persists it into the global profile and syncs it to the backend. */
+  const handleCompleteChallenge = (challengeId: string, earnedXp: number) => {
+    const updatedAuth = AuthService.addChallengeXp(challengeId, earnedXp);
+    if (updatedAuth) setAuthUser(updatedAuth);
+    incrementDailyObjective();
+
+    setUserProfile((prev) => ({
+      ...prev,
+      xp: prev.xp + earnedXp,
+      level: Math.floor((prev.xp + earnedXp) / 100) + 1,
+      completedChallengeIds: prev.completedChallengeIds.includes(challengeId)
+        ? prev.completedChallengeIds
+        : [...prev.completedChallengeIds, challengeId],
+    }));
+  };
+
   const handleResetProgress = () => {
     if (window.confirm('هل أنت تأكد من إعادة ضبط التقدم والنقاط؟')) {
       const freshProfile: UserProfile = {
@@ -273,7 +347,11 @@ export default function App() {
         streakDays: 1,
         lastActiveDate: new Date().toISOString().slice(0, 10),
         completedLessonIds: [],
-        badges: ['b_welcome'],
+        completedExamIds: [],
+        completedChallengeIds: [],
+        quizFullyValidatedLessonIds: [],
+        badges: [],
+        badgeUnlockedAt: {},
         quizScores: {},
         tashkeelEnabled: userProfile.tashkeelEnabled ?? false,
       };
@@ -310,6 +388,10 @@ export default function App() {
         level: level,
         streakDays: fetched.streakDays || prev.streakDays,
         completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
+        completedExamIds: fetched.completedExamIds && fetched.completedExamIds.length > 0 ? fetched.completedExamIds : prev.completedExamIds,
+        completedChallengeIds: fetched.completedChallengeIds && fetched.completedChallengeIds.length > 0 ? fetched.completedChallengeIds : prev.completedChallengeIds,
+        badges: fetched.badges && fetched.badges.length > 0 ? fetched.badges : prev.badges,
+        badgeUnlockedAt: { ...fetched.badgeUnlockedAt, ...prev.badgeUnlockedAt },
         tashkeelEnabled: fetched.tashkeelEnabled ?? prev.tashkeelEnabled,
       }));
     }
@@ -324,10 +406,15 @@ export default function App() {
 
   const xpIntoLevel = userProfile.xp % 100;
 
-  const MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
+  // Tools become relevant from the grade they first appear in onward (e.g. a soroban/geometry tool
+  // introduced at 3AP stays visible for 3AP/4AP/5AP, but is hidden while browsing 1AP/2AP).
+  const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, grade));
+
+  const MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams' | 'challenges'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
     { id: 'courses', icon: <BookOpen className="w-4 h-4" />, labelAr: '📚 الدروس والمواد التعليمية', countLabelAr: `${COURSE_SUBJECTS_LIST.length} مواد` },
-    { id: 'labs', icon: <Zap className="w-4 h-4" />, labelAr: '⚡ المختبرات والأدوات التفاعلية', countLabelAr: `${INTERACTIVE_LABS_LIST.length} أدوات` },
+    { id: 'labs', icon: <Zap className="w-4 h-4" />, labelAr: '⚡ المختبرات والأدوات التفاعلية', countLabelAr: `${availableLabsForGrade.length} أدوات` },
     { id: 'exams', icon: <Award className="w-4 h-4" />, labelAr: '📜 الامتحانات الرسمية (5AP)', countLabelAr: `${OFFICIAL_EXAMS_LIST.length} بنك` },
+    { id: 'challenges', icon: <Trophy className="w-4 h-4" />, labelAr: '🏆 نادي التحديات والمسابقات', countLabelAr: `${CHALLENGES_TAB_LIST.length} تحدي` },
   ];
 
   return (
@@ -348,6 +435,13 @@ export default function App() {
         onGradeChange={(g) => {
           setGrade(g);
           setSelectedLesson(null);
+          // A tool tied to a higher minGrade than the newly selected grade would otherwise stay
+          // "open" even though its tab is now hidden — fall back to the first tool still available.
+          const currentTool = INTERACTIVE_LABS_LIST.find((s) => s.id === selectedSubject);
+          if (currentTool && !isToolAvailableForGrade(currentTool, g)) {
+            const fallback = INTERACTIVE_LABS_LIST.find((s) => isToolAvailableForGrade(s, g));
+            if (fallback) setSelectedSubject(fallback.id);
+          }
         }}
         userProfile={userProfile}
         authUser={authUser}
@@ -365,7 +459,6 @@ export default function App() {
         }}
         onOpenAdminReceiptsModal={() => setIsAdminReceiptsModalOpen(true)}
         onOpenAiTutor={() => setIsAiModalOpen(true)}
-        onOpenAuditModal={() => setIsAuditModalOpen(true)}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
         onOpenPricingModal={() => setIsPricingModalOpen(true)}
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
@@ -414,6 +507,8 @@ export default function App() {
                         setSelectedSubject('arabic_conjugator');
                       } else if (tab.id === 'exams') {
                         setSelectedSubject('exams');
+                      } else if (tab.id === 'challenges') {
+                        setSelectedSubject('challenges');
                       }
                       setSelectedLesson(null);
                     }}
@@ -426,7 +521,7 @@ export default function App() {
                       <motion.span
                         layoutId="main-category-active"
                         className={`absolute inset-0 rounded-xl shadow-md ${
-                          tab.id === 'courses' ? 'bg-[var(--brand-emerald)]' : tab.id === 'labs' ? 'bg-[var(--brand-amber)]' : 'bg-[var(--brand-blue)]'
+                          tab.id === 'courses' ? 'bg-[var(--brand-emerald)]' : tab.id === 'labs' ? 'bg-[var(--brand-amber)]' : tab.id === 'exams' ? 'bg-[var(--brand-blue)]' : 'bg-[var(--brand-coral)]'
                         }`}
                         transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                       />
@@ -448,8 +543,10 @@ export default function App() {
                 <Badge variant="success">🎓 الدروس والبرامج البيداغوجية الرسمية ({grade})</Badge>
               ) : mainCategory === 'labs' ? (
                 <Badge variant="xp">🧪 الأدوات والمختبرات وتصريف الأفعال المستقلة</Badge>
-              ) : (
+              ) : mainCategory === 'exams' ? (
                 <Badge variant="info">📜 بنك مواضيع امتحانات شهادة التعليم الابتدائي 5AP مع الحلول</Badge>
+              ) : (
+                <Badge variant="danger">🏆 تحديات مؤقتة وألعاب سريعة لكسب نقاط الخبرة</Badge>
               )}
             </div>
           </div>
@@ -459,8 +556,10 @@ export default function App() {
             {(mainCategory === 'courses'
               ? COURSE_SUBJECTS_LIST
               : mainCategory === 'labs'
-              ? INTERACTIVE_LABS_LIST
-              : OFFICIAL_EXAMS_LIST
+              ? availableLabsForGrade
+              : mainCategory === 'exams'
+              ? OFFICIAL_EXAMS_LIST
+              : CHALLENGES_TAB_LIST
             ).map((subj) => {
               const IconComp = ICON_MAP[subj.icon] || BookOpen;
               const isSelected = selectedSubject === subj.id;
@@ -469,6 +568,8 @@ export default function App() {
                   ? 'bg-[var(--brand-amber)] text-slate-950'
                   : mainCategory === 'exams'
                   ? 'bg-[var(--brand-blue)] text-white'
+                  : mainCategory === 'challenges'
+                  ? 'bg-[var(--brand-coral)] text-white'
                   : 'bg-[var(--brand-emerald)] text-white';
               return (
                 <motion.button
@@ -498,8 +599,6 @@ export default function App() {
             <EnglishLanguageLab grade={grade} />
           ) : selectedSubject === 'educational_calculator' ? (
             <EducationalCalculator />
-          ) : selectedSubject === 'writing_response' ? (
-            <WritingResponseZone />
           ) : selectedSubject === 'soroban' ? (
             <SorobanInteractive grade={grade} />
           ) : selectedSubject === 'electricity' ? (
@@ -510,16 +609,17 @@ export default function App() {
             <UnitConverter grade={grade} theme={headerTheme} />
           ) : selectedSubject === 'multiplication' ? (
             <MultiplicationTableInteractive grade={grade} />
-          ) : selectedSubject === 'interactive_video' ? (
-            <InteractiveVideoPlayer
-              titleAr="فيديو تجريبي: كيف يعمل الفيديو التفاعلي؟"
-              videoUrl={DEMO_VIDEO_URL}
-              subtitleUrl={DEMO_VIDEO_SUBTITLES_URL}
-              questions={DEMO_VIDEO_QUESTIONS}
-              onComplete={(score) => handleCompleteQuiz('interactive-video-demo', score)}
-            />
           ) : selectedSubject === 'exams' ? (
-            <ExamsViewer tashkeelEnabled={userProfile.tashkeelEnabled ?? false} />
+            <ExamsViewer
+              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+              completedExamIds={userProfile.completedExamIds}
+              onExamComplete={handleCompleteExam}
+            />
+          ) : selectedSubject === 'challenges' ? (
+            <ChallengesArena
+              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+              onChallengeComplete={handleCompleteChallenge}
+            />
           ) : selectedLesson ? (
             <LessonViewer
               lesson={selectedLesson}
@@ -527,6 +627,8 @@ export default function App() {
               onSelectLesson={(lesson) => setSelectedLesson(lesson)}
               onBack={() => setSelectedLesson(null)}
               onCompleteQuiz={handleCompleteQuiz}
+              quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(selectedLesson.id)}
+              onQuizFullyValidated={handleQuizFullyValidated}
               grade={grade}
               subjectId={selectedSubject}
               trimester={selectedTrimester}
@@ -676,9 +778,6 @@ export default function App() {
             <span className="opacity-75">• المنهاج الرسمي لوزارة التربية الوطنية الجزائرية (Spring Boot Architecture)</span>
           </div>
           <div className="flex items-center gap-4">
-            <button onClick={() => setIsAuditModalOpen(true)} className="hover:text-[var(--brand-emerald)] cursor-pointer">
-              تقرير التدقيق الفني (Audit Report)
-            </button>
             <button onClick={() => setIsAiModalOpen(true)} className="hover:text-[var(--brand-amber)] cursor-pointer">
               المعلم مسيد (Gemini AI)
             </button>
@@ -693,9 +792,9 @@ export default function App() {
         grade={grade}
       />
 
-      <AuditModal
-        isOpen={isAuditModalOpen}
-        onClose={() => setIsAuditModalOpen(false)}
+      <BadgeUnlockToast
+        queue={newlyUnlockedBadges}
+        onDismiss={() => setNewlyUnlockedBadges((prev) => prev.slice(1))}
       />
 
       <ProfileModal

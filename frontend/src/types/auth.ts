@@ -45,7 +45,10 @@ export interface AuthUser {
   streakDays?: number;
   grade?: string;
   completedLessonIds?: string[];
+  completedExamIds?: string[];
+  completedChallengeIds?: string[];
   badges?: string[];
+  badgeUnlockedAt?: Record<string, string>;
   quizScores?: Record<string, number>;
   tashkeelEnabled?: boolean;
   createdAt?: string;

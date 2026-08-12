@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -89,5 +90,32 @@ class UserServiceTest {
         assertNotNull(result);
         assertEquals("ROLE_TEACHER", result.getRole());
         verify(userRepository).save(testUser);
+    }
+
+    @Test
+    @DisplayName("updateUserProgress - Merges badges/exams/challenges without dropping existing ones")
+    void updateUserProgress_MergesNewFieldsAdditively() {
+        testUser.setBadges(new java.util.ArrayList<>(List.of("b_welcome")));
+        testUser.setBadgeUnlockedAt(new java.util.HashMap<>(Map.of("b_welcome", "2026-01-01T00:00:00Z")));
+        testUser.setCompletedExamIds(new java.util.ArrayList<>(List.of("exam-2018-trim1-math")));
+        testUser.setCompletedChallengeIds(new java.util.ArrayList<>());
+
+        when(userRepository.findByEmail("kareem@mssid.dz")).thenReturn(Optional.of(testUser));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        UserProfileDto incoming = UserProfileDto.builder()
+                .badges(List.of("b_welcome", "b_streak_flame"))
+                .badgeUnlockedAt(Map.of("b_welcome", "SHOULD_NOT_OVERWRITE", "b_streak_flame", "2026-02-01T00:00:00Z"))
+                .completedExamIds(List.of("exam-5ap-math-t1-2026"))
+                .completedChallengeIds(List.of("challenge-math-large-numbers"))
+                .build();
+
+        UserProfileDto result = userService.updateUserProgress("kareem@mssid.dz", incoming);
+
+        assertEquals(List.of("b_welcome", "b_streak_flame"), result.getBadges());
+        assertEquals("2026-01-01T00:00:00Z", result.getBadgeUnlockedAt().get("b_welcome"));
+        assertEquals("2026-02-01T00:00:00Z", result.getBadgeUnlockedAt().get("b_streak_flame"));
+        assertEquals(List.of("exam-2018-trim1-math", "exam-5ap-math-t1-2026"), result.getCompletedExamIds());
+        assertEquals(List.of("challenge-math-large-numbers"), result.getCompletedChallengeIds());
     }
 }
