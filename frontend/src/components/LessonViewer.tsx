@@ -883,8 +883,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}
           {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
           {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}
-          {effectiveTool === 'history_geo_lab' && <HistoryGeoInteractive grade={lesson.grade} />}
-          {effectiveTool === 'islamic_lab' && <IslamicEducationInteractive grade={lesson.grade} config={lesson.islamicInteractive} />}
+          {effectiveTool === 'history_geo_lab' && lesson.historyGeoInteractive && <HistoryGeoInteractive config={lesson.historyGeoInteractive} />}
+          {effectiveTool === 'islamic_lab' && lesson.islamicInteractive && <IslamicEducationInteractive config={lesson.islamicInteractive} />}
         </div>
       )}
 

@@ -304,6 +304,87 @@ export type IslamicInteractiveConfig =
   | IslamicEthicsScenario
   | IslamicTimeline;
 
+// History-Geography interactive tool (history_geo_lab) — per-lesson configuration, mirroring the
+// Islamic Education pattern: the shared component renders exactly one typed module per lesson
+// instead of a fixed grade-wide hardcoded set.
+export interface HistoryGeoTimelineEvent {
+  year: string; // kept as a string to allow suffixes/ranges, e.g. "1954 م" or "1830 - 1847 م"
+  labelAr: string;
+  detailsAr: string;
+  region?: string; // optional geographic anchor, e.g. "الأوراس", "منطقة القبائل"
+}
+export interface HistoryGeoTimelineMap {
+  type: 'timeline_map';
+  titleAr: string;
+  introAr: string;
+  events: HistoryGeoTimelineEvent[];
+  mapOverlay?: string; // short Arabic caption describing what the accompanying map highlights
+}
+
+export interface HistoryGeoRegion {
+  id: string;
+  nameAr: string;
+  areaRange: string; // e.g. "~4 إلى 5% من المساحة الإجمالية"
+  characteristics: string;
+  climate: string;
+}
+export interface HistoryGeoRegionExplorer {
+  type: 'region_explorer';
+  titleAr: string;
+  introAr: string;
+  regions: HistoryGeoRegion[];
+}
+
+export interface HistoryGeoSource {
+  id: string;
+  type: 'document' | 'monument' | 'testimony' | 'artifact' | 'map';
+  titleAr: string;
+  descriptionAr: string;
+  period: string;
+}
+export interface HistoryGeoArchaeologySources {
+  type: 'archaeology_sources';
+  titleAr: string;
+  introAr: string;
+  sources: HistoryGeoSource[];
+}
+
+export interface HistoryGeoClimateZone {
+  zoneAr: string;
+  rainfall: string;
+  floraAr: string;
+  faunaAr: string;
+}
+export interface HistoryGeoClimateVegetationMatching {
+  type: 'climate_vegetation_matching';
+  titleAr: string;
+  introAr: string;
+  zones: HistoryGeoClimateZone[];
+}
+
+export interface HistoryGeoHazardChoice {
+  textAr: string;
+  isCorrect: boolean;
+  feedbackAr: string;
+}
+export interface HistoryGeoHazardScenario {
+  hazardAr: string;
+  choices: HistoryGeoHazardChoice[];
+}
+export interface HistoryGeoEcoCitizenScenario {
+  type: 'eco_citizen_scenario';
+  titleAr: string;
+  introAr: string;
+  hazardScenarios: HistoryGeoHazardScenario[];
+}
+
+export type HistoryGeoInteractiveConfig =
+  | HistoryGeoTimelineMap
+  | HistoryGeoRegionExplorer
+  | HistoryGeoArchaeologySources
+  | HistoryGeoClimateVegetationMatching
+  | HistoryGeoEcoCitizenScenario;
+
 // Content provenance (Phase 7 + consolidation) — every lesson should be explicit about how
 // confident we are in its curricular placement (grade/subject/trimester/unit), NOT necessarily
 // about whether its prose/exercises are copied verbatim from a ministry document (they never are —
@@ -391,6 +472,7 @@ export interface CourseLesson {
   evaluationExercises?: ProgressiveExercise[]; // richer final "évaluation" (mixed types, reuses the exercise engine) — shown alongside/instead of the plain `quiz`
   scientificInquiry?: ScientificInquiry; // sciences only: the question→observation→hypothesis→experiment→result démarche
   islamicInteractive?: IslamicInteractiveConfig; // islamic education only: per-lesson content for the islamic_lab tool
+  historyGeoInteractive?: HistoryGeoInteractiveConfig; // history/geography only: per-lesson content for the history_geo_lab tool
 }
 
 export interface ExamExercise {

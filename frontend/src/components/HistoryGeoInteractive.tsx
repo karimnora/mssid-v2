@@ -1,468 +1,257 @@
 import React, { useState } from 'react';
 import {
-  Compass,
-  Map,
   Clock,
-  Shield,
-  Award,
-  Check,
-  RotateCcw,
-  Sparkles,
-  ChevronLeft,
-  ChevronRight,
-  Sun,
-  CloudRain,
-  Mountain,
-  Flag
+  Map,
+  Scroll,
+  Leaf,
+  ShieldAlert,
+  Sparkles
 } from 'lucide-react';
+import type { HistoryGeoInteractiveConfig } from '../types';
 
 interface HistoryGeoProps {
-  initialTab?: 'timeline' | 'map' | 'heroes' | 'climate';
-  grade?: string;
+  config: HistoryGeoInteractiveConfig;
 }
 
-export const HistoryGeoInteractive: React.FC<HistoryGeoProps> = ({ initialTab = 'timeline', grade = '4AP' }) => {
-  const [activeTab, setActiveTab] = useState<'timeline' | 'map' | 'heroes' | 'climate'>(initialTab);
+/* ==========================================
+   PER-LESSON CONFIG-DRIVEN VIEWS
+   Rendered when the lesson supplies `historyGeoInteractive` — shows only the
+   single module relevant to THAT lesson's content, not a fixed grade-wide set.
+   ========================================== */
+const ConfiguredHistoryGeoTool: React.FC<{ config: HistoryGeoInteractiveConfig }> = ({ config }) => {
+  const [activeIdx, setActiveIdx] = useState(0);
 
-  /* ==========================================
-     1. TIMELINE & PERIODS BUILDER
-     ========================================== */
-  const TIMELINE_PERIODS_4AP = [
-    {
-      id: 'p1_4ap',
-      title: 'التاريخ المعلمي الشخصي والاجتماعي',
-      dates: 'مراحل نمو الفرد والأسرة',
-      keyEvent: 'تاريخ الميلاد، أول يوم بالطفولة والمدرسة، التخرج، وزفاف الأقارب والتويزة المحلية.',
-      color: 'from-amber-600 to-amber-800'
-    },
-    {
-      id: 'p2_4ap',
-      title: 'التاريخ المعلمي الوطني والعالمي',
-      dates: 'أيام مجيدة في الوطن والعالم',
-      keyEvent: '1 نوفمبر (الثورة)، 5 جولية (الاستقلال)، 16 أفريل (يوم العلم)، و1 ماي (عيد العمال).',
-      color: 'from-emerald-600 to-emerald-800'
-    },
-    {
-      id: 'p3_4ap',
-      title: 'المصادر التاريخية المادية',
-      dates: 'الآثار الملموسة المتبقية من القدامى',
-      keyEvent: 'المباني الأثرية (تيمقاد وجميلة)، الرسوم الصخرية بالتاسيلي، المسكوكات والنقوش.',
-      color: 'from-sky-600 to-sky-800'
-    },
-    {
-      id: 'p4_4ap',
-      title: 'المصادر التاريخية اللامادية',
-      dates: 'التراث الشفهي الموروث عِبر الأجيال',
-      keyEvent: 'الحكايات والقصص الشعبية القديمة، الأشعار والفلكلور، والعادات والتقاليد الوطنية.',
-      color: 'from-purple-600 to-purple-800'
-    }
-  ];
-
-  const TIMELINE_PERIODS_5AP = [
-    {
-      id: 'p1_5ap',
-      title: 'المرحلة القديمة',
-      dates: 'من ظهور الكتابة (3200 ق.م) إلى سقوط روما (476 م)',
-      keyEvent: 'تأسيس المملكة النوميدية وتوحيدها على يد الملك ماسينيسا وعاصمتها سيرتا.',
-      color: 'from-amber-600 to-amber-800'
-    },
-    {
-      id: 'p2_5ap',
-      title: 'المرحلة الوسيطة',
-      dates: 'من سقوط روما (476 م) إلى فتح القسطنطينية (1453 م)',
-      keyEvent: 'الفتوحات الإسلامية وتأسيس الدول المستقلة (الرستمية، الحمادية، الزيانية).',
-      color: 'from-emerald-600 to-emerald-800'
-    },
-    {
-      id: 'p3_5ap',
-      title: 'المرحلة الحديثة',
-      dates: 'من فتح القسطنطينية (1453 م) إلى الاحتلال الفرنسي (1830 م)',
-      keyEvent: 'انضمام الجزائر للدولة العثمانية وبناء الأسطول البحري الجزائري القوي.',
-      color: 'from-sky-600 to-sky-800'
-    },
-    {
-      id: 'p4_5ap',
-      title: 'المرحلة المعاصرة',
-      dates: 'من 1830 م إلى يومنا هذا',
-      keyEvent: 'المقاومات الشعبية، اندلاع ثورة 1 نوفمبر 1954 واستقلال الجزائر 1962.',
-      color: 'from-purple-600 to-purple-800'
-    }
-  ];
-
-  const TIMELINE_PERIODS = grade === '4AP' ? TIMELINE_PERIODS_4AP : TIMELINE_PERIODS_5AP;
-
-  const [selectedPeriod, setSelectedPeriod] = useState<number>(0);
-
-  /* ==========================================
-     2. MAP & BOUNDARIES GAME (حدود الجزائر والموقع)
-     ========================================== */
-  const BOUNDARIES_QUESTIONS = [
-    { id: 'b1', position: 'شمالاً', correctName: 'البحر الأبيض المتوسط', options: ['البحر الأبيض المتوسط', 'المحيط الأطلسي', 'البحر الأحمر'], icon: '🌊' },
-    { id: 'b2', position: 'شرقاً', correctName: 'تونس وليبيا', options: ['تونس وليبيا', 'المغرب والصحراء الغربية', 'مالي والنيجر'], icon: '🗺️' },
-    { id: 'b3', position: 'غرباً', correctName: 'المغرب والصحراء الغربية وموريتانيا', options: ['المغرب والصحراء الغربية وموريتانيا', 'تونس وليبيا', 'مالي والنيجر'], icon: '🏜️' },
-    { id: 'b4', position: 'جنوباً', correctName: 'مالي والنيجر', options: ['مالي والنيجر', 'تونس وليبيا', 'مصر والسودان'], icon: '☀️' }
-  ];
-
-  const [userBoundaries, setUserBoundaries] = useState<{ [key: string]: string }>({});
-
-  const handleSelectBoundary = (pos: string, choice: string) => {
-    setUserBoundaries((prev) => ({ ...prev, [pos]: choice }));
-  };
-
-  /* ==========================================
-     3. ALGERIAN HISTORICAL HEROES (شخصيات وأبطال الجزائر)
-     ========================================== */
-  const HEROES_4AP = [
-    {
-      id: 'h1_4ap',
-      name: 'الملك ماسينيسا',
-      title: 'موحد المملكة النوميدية وعاصمتها سيرتا (قسنطينة)',
-      period: '205 - 148 ق.م (الجزائر القديمة)',
-      achievement: 'نجح في توحيد نوميديا الشرقية والغربية، طور الفلاحة وسك أول عملة نوميدية تحت شعار «إفريقيا للإفريقيين».',
-      avatar: '👑'
-    },
-    {
-      id: 'h2_4ap',
-      name: 'الملك يوغورطة',
-      title: 'بطل المقاومة النوميدية ضد الاستعمار الروماني',
-      period: '111 - 105 ق.م (التاريخ القديم)',
-      achievement: 'خاض حرباً شجاعة وذكية ضد الرومانيين وسجل خطة تينيبيديم الشجاعة لدحر الغزاة.',
-      avatar: '🛡️'
-    },
-    {
-      id: 'h3_4ap',
-      name: 'الملك صيفاقس',
-      title: 'ملك نوميديا الغربية وعاصمتها سيگا (عين تموشنت)',
-      period: 'القرن 3 ق.م',
-      achievement: 'أسس مملكة ماسيسايل وتولى تنظيم الجيش والتجارة البحرية بالصحراء والساحل.',
-      avatar: '🏛️'
-    },
-    {
-      id: 'h4_4ap',
-      name: 'الملكة تين هينان',
-      title: 'أم التوارق وسيدة الصحراء الجزائرية القديمة',
-      period: 'القرن 4 م (أهقار - تمنراست)',
-      achievement: 'أسست حكم أهقار وحمت الواحات والقوافل التجارية بصحراء الجزائر وتوجد آثار ضريحها بتمنراست.',
-      avatar: '👑'
-    }
-  ];
-
-  const HEROES_5AP = [
-    {
-      id: 'h1_5ap',
-      name: 'الأمير عبد القادر الجزائري',
-      title: 'مؤسس الدولة الجزائرية الحديثة وقائد المقاومة بالغرب',
-      period: '1832 - 1847 م',
-      achievement: 'بناء جيش منظم، صك العملة، وتأسيس عواصم متنقلة (الزمالة) ومعاهدات مثل دي ميشال والتاقنة.',
-      avatar: '🗡️'
-    },
-    {
-      id: 'h2_5ap',
-      name: 'أحمد باي',
-      title: 'بايلك الشرق وقائد مقاومة قسنطينة',
-      period: '1830 - 1848 م',
-      achievement: 'التصدي للحملة الفرنسية الأولى على قسنطينة 1836 والدفاع عن المدينة التاريخية.',
-      avatar: '🏰'
-    },
-    {
-      id: 'h3_5ap',
-      name: 'لالة فاطمة نسومر',
-      title: 'خنساء جرجرة وقائدة المقاومة بمنطقة القبائل',
-      period: '1854 - 1857 م',
-      achievement: 'الانتصار في معركة إشريضن وسباو وضياع خطط الجنرالات الفرنسيين.',
-      avatar: '👩‍🦱'
-    },
-    {
-      id: 'h4_5ap',
-      name: 'مصطفى بن بولعيد',
-      title: 'أب الثورة الجزائرية وقائد المنطقة الأولى (الأوراس)',
-      period: '1954 - 1956 م',
-      achievement: 'التخطيط لاندلاع ثورة 1 نوفمبر 1954 وتوفير السلاح والمال للثوار.',
-      avatar: '⭐'
-    }
-  ];
-
-  const HEROES = grade === '4AP' ? HEROES_4AP : HEROES_5AP;
-
-  const [activeHeroIdx, setActiveHeroIdx] = useState<number>(0);
-
-  /* ==========================================
-     4. CLIMATE & RELIEF EXPLORER (الأقاليم والمناخ)
-     ========================================== */
-  const CLIMATES = [
-    {
-      id: 'c1',
-      name: 'مناخ البحر الأبيض المتوسط',
-      region: 'الإقليم الشمالي (الساحل والشريط التلي)',
-      features: 'حار وجاف صيفاً، حار ورطب ممطر شتاءً. غطاء نباتي كثيف (أشجار الزيتون، الصنوبر، البلوط).',
-      color: 'bg-emerald-950 border-emerald-500 text-emerald-200',
-      icon: '🌧️'
-    },
-    {
-      id: 'c2',
-      name: 'المناخ القاري (السهبي)',
-      region: 'الهضاب العليا الداخلية',
-      features: 'حار وجاف صيفاً، بارد وقليل الأمطار شتاءً. حشائش الحلفاء والشيح.',
-      color: 'bg-amber-950 border-amber-500 text-amber-200',
-      icon: '🌾'
-    },
-    {
-      id: 'c3',
-      name: 'المناخ الصحراوي',
-      region: 'الإقليم الجنوبي (الصحراء الكبرى)',
-      features: 'شدديد الحرارة والجفاف صيفاً، شديد البرودة ليلاً شتاءً. أمطار نادرة ونباتات شوكية ونخيل الواحات.',
-      color: 'bg-orange-950 border-orange-500 text-orange-200',
-      icon: '☀️'
-    }
-  ];
-
-  const [activeClimateIdx, setActiveClimateIdx] = useState<number>(0);
+  const headerIcon =
+    config.type === 'timeline_map' ? <Clock className="w-6 h-6 text-amber-400" /> :
+    config.type === 'region_explorer' ? <Map className="w-6 h-6 text-amber-400" /> :
+    config.type === 'archaeology_sources' ? <Scroll className="w-6 h-6 text-amber-400" /> :
+    config.type === 'climate_vegetation_matching' ? <Leaf className="w-6 h-6 text-amber-400" /> :
+    <ShieldAlert className="w-6 h-6 text-amber-400" />;
 
   return (
     <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
-      {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4 flex-wrap gap-3">
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-amber-500/20 text-amber-400 rounded-2xl border border-amber-500/30">
-            <Compass className="w-6 h-6 animate-spin" style={{ animationDuration: '12s' }} />
-          </div>
-          <div>
-            <h2 className="text-lg font-black text-amber-300">مَخْبَرُ التَّارِيخِ وَالجُغْرَافِيَا التَّفَاعُلِيِّ (Histoire & Géographie {grade})</h2>
-            <p className="text-xs text-slate-400">برنامج الجيل الثاني • الخط الزمني، خرائط الجزائر، البطولات الوطنية والأقاليم المناخية</p>
-          </div>
+      <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+        <div className="p-3 bg-amber-500/20 text-amber-300 rounded-2xl border border-amber-500/30">
+          {headerIcon}
         </div>
-        <div className="flex items-center gap-2">
-          <span className="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-3 py-1 rounded-full text-xs font-extrabold flex items-center gap-1.5">
-            <Flag className="w-4 h-4 text-emerald-400" />
-            <span>الجمهورية الجزائرية الديمقراطية الشعبية 🇩🇿</span>
-          </span>
+        <div>
+          <h2 className="text-lg font-black text-amber-300">{config.titleAr}</h2>
+          {config.introAr && (
+            <p className="text-xs text-slate-400 mt-1">{config.introAr}</p>
+          )}
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
-        <button
-          onClick={() => setActiveTab('timeline')}
-          className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 border ${
-            activeTab === 'timeline'
-              ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-lg scale-[1.02]'
-              : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
-          }`}
-        >
-          <Clock className="w-4 h-4" />
-          <span>1. الخط الزمني للمراحل التاريخية</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('map')}
-          className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 border ${
-            activeTab === 'map'
-              ? 'bg-emerald-500 text-slate-950 border-emerald-300 shadow-lg scale-[1.02]'
-              : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
-          }`}
-        >
-          <Map className="w-4 h-4" />
-          <span>2. حدود وموقع الجزائر الجغرافي</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('heroes')}
-          className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 border ${
-            activeTab === 'heroes'
-              ? 'bg-purple-500 text-white border-purple-300 shadow-lg scale-[1.02]'
-              : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
-          }`}
-        >
-          <Shield className="w-4 h-4" />
-          <span>3. أبطال المقاومة والثورة الوطنية</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('climate')}
-          className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 border ${
-            activeTab === 'climate'
-              ? 'bg-sky-500 text-slate-950 border-sky-300 shadow-lg scale-[1.02]'
-              : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
-          }`}
-        >
-          <Sun className="w-4 h-4" />
-          <span>4. المناخ والتضاريس في الجزائر</span>
-        </button>
-      </div>
-
-      {/* TAB 1: TIMELINE */}
-      {activeTab === 'timeline' && (
+      {config.type === 'timeline_map' && (
         <div className="space-y-6">
-          <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-xs text-slate-200 leading-relaxed">
-            <strong>⏳ استكشف المراحل التاريخية الأربعة للجزائر والعالم:</strong> انقر على أي مرحلة لاستكشاف إطارها الزمني وأبرز المحطات والمعالم التاريخية.
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+            {config.events.map((ev, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border flex items-center gap-2 ${
+                  activeIdx === idx
+                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md scale-[1.02]'
+                    : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                }`}
+              >
+                <span className="font-mono">{ev.year}</span>
+              </button>
+            ))}
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-            {TIMELINE_PERIODS.map((period, idx) => {
-              const isSelected = selectedPeriod === idx;
-              return (
-                <button
-                  key={period.id}
-                  onClick={() => setSelectedPeriod(idx)}
-                  className={`p-4 rounded-2xl border text-right transition-all cursor-pointer flex flex-col justify-between h-32 bg-gradient-to-br ${period.color} ${
-                    isSelected ? 'ring-4 ring-amber-400 scale-[1.03] shadow-2xl' : 'opacity-80 hover:opacity-100'
-                  }`}
-                >
-                  <div className="text-xs font-mono font-bold text-amber-200">المرحلة 0{idx + 1}</div>
-                  <div className="text-base font-black text-white">{period.title}</div>
-                  <div className="text-[10px] text-slate-200 line-clamp-1">{period.dates}</div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Detailed Selected Period Box */}
-          <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4 animate-in fade-in duration-300">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h3 className="text-base font-black text-amber-300">
-                📌 {TIMELINE_PERIODS[selectedPeriod].title}
-              </h3>
+          <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3 flex-wrap gap-2">
+              <h3 className="text-base font-black text-amber-300">{config.events[activeIdx].labelAr}</h3>
               <span className="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-xs font-mono font-bold">
-                {TIMELINE_PERIODS[selectedPeriod].dates}
+                {config.events[activeIdx].year}
               </span>
             </div>
-
-            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
-              <div className="text-xs font-black text-emerald-400 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>الحدث والمعلم التاريخي البارز في هذه المرحلة:</span>
+            <p className="text-sm font-bold text-slate-200 leading-relaxed bg-slate-900 p-4 rounded-2xl border border-slate-800">
+              {config.events[activeIdx].detailsAr}
+            </p>
+            {config.events[activeIdx].region && (
+              <div className="flex items-center gap-2 text-xs text-emerald-300 font-bold">
+                <Map className="w-3.5 h-3.5" />
+                <span>المنطقة: {config.events[activeIdx].region}</span>
               </div>
-              <p className="text-sm font-bold text-slate-200 leading-relaxed">
-                {TIMELINE_PERIODS[selectedPeriod].keyEvent}
-              </p>
-            </div>
+            )}
           </div>
-        </div>
-      )}
-
-      {/* TAB 2: MAP & BOUNDARIES */}
-      {activeTab === 'map' && (
-        <div className="space-y-6">
-          <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-xs text-slate-200 leading-relaxed flex items-center justify-between">
-            <div>
-              <strong>🗺️ تحدي حدود الموقع الجغرافي للجزائر:</strong> حدد الجار أو البحر المناسب لكل جهة أصلية حول خريطة الوطن العزيز (المساحة: 2,381,741 كم²)!
-            </div>
-            <button
-              onClick={() => setUserBoundaries({})}
-              className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded-xl text-xs flex items-center gap-1 cursor-pointer border border-slate-600"
-            >
-              <RotateCcw className="w-3.5 h-3.5" /> إعادة المحاولة
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {BOUNDARIES_QUESTIONS.map((q) => {
-              const currentChoice = userBoundaries[q.id];
-              const isCorrect = currentChoice === q.correctName;
-
-              return (
-                <div key={q.id} className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-black text-emerald-300 flex items-center gap-2">
-                      <span>{q.icon}</span>
-                      <span>حدود الجزائر {q.position}:</span>
-                    </span>
-                    {currentChoice && (
-                      <span className={`text-xs font-bold px-2.5 py-1 rounded-lg ${isCorrect ? 'bg-emerald-950 text-emerald-300 border border-emerald-500' : 'bg-rose-950 text-rose-300 border border-rose-500'}`}>
-                        {isCorrect ? '✅ صحيحة' : '❌ خاطئة'}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-2">
-                    {q.options.map((opt, oIdx) => (
-                      <button
-                        key={oIdx}
-                        onClick={() => handleSelectBoundary(q.id, opt)}
-                        className={`p-3 rounded-xl border text-right text-xs font-bold transition-all cursor-pointer ${
-                          currentChoice === opt
-                            ? opt === q.correctName
-                              ? 'bg-emerald-950 border-emerald-400 text-emerald-200 ring-2 ring-emerald-500'
-                              : 'bg-rose-950 border-rose-400 text-rose-200'
-                            : 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {Object.keys(userBoundaries).length === BOUNDARIES_QUESTIONS.length && (
-            <div className="p-4 bg-emerald-950 border border-emerald-500 text-emerald-200 rounded-2xl text-center space-y-2">
-              <Award className="w-8 h-8 text-amber-400 mx-auto animate-bounce" />
-              <div className="text-base font-black">🇩🇿 ممتاز! أتقنت جميع الحدود الجغرافية للجزائر الحبيبة!</div>
+          {config.mapOverlay && (
+            <div className="p-3 bg-slate-800/70 rounded-2xl border border-slate-700 text-[11px] text-slate-400 flex items-start gap-2">
+              <Map className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <span>{config.mapOverlay}</span>
             </div>
           )}
         </div>
       )}
 
-      {/* TAB 3: HEROES */}
-      {activeTab === 'heroes' && (
-        <div className="space-y-6">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {HEROES.map((h, idx) => (
+      {config.type === 'region_explorer' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            {config.regions.map((r, idx) => (
               <button
-                key={h.id}
-                onClick={() => setActiveHeroIdx(idx)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border flex items-center gap-2 ${
-                  activeHeroIdx === idx
-                    ? 'bg-purple-600 text-white border-purple-300 shadow-md scale-[1.02]'
-                    : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                key={r.id}
+                onClick={() => setActiveIdx(idx)}
+                className={`w-full p-4 rounded-2xl border text-right transition-all cursor-pointer ${
+                  activeIdx === idx
+                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl font-black scale-[1.01]'
+                    : 'bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 text-sm font-bold'
                 }`}
               >
-                <span>{h.avatar}</span>
-                <span>{h.name}</span>
+                <div className="flex items-center justify-between">
+                  <span>{r.nameAr}</span>
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${activeIdx === idx ? 'bg-slate-950/20' : 'bg-slate-950/60 text-amber-300'}`}>
+                    {r.areaRange}
+                  </span>
+                </div>
               </button>
             ))}
           </div>
-
           <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
-            <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
-              <span className="text-4xl p-3 bg-slate-900 rounded-2xl border border-slate-800">{HEROES[activeHeroIdx].avatar}</span>
-              <div>
-                <h3 className="text-lg font-black text-purple-300">{HEROES[activeHeroIdx].name}</h3>
-                <p className="text-xs text-amber-300 font-bold">{HEROES[activeHeroIdx].title}</p>
-                <div className="text-[11px] text-slate-400 font-mono mt-1">الفترة والمرحلة: {HEROES[activeHeroIdx].period}</div>
-              </div>
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="text-base font-black text-amber-300">{config.regions[activeIdx].nameAr}</h3>
+              <span className="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-xs font-mono font-bold">
+                {config.regions[activeIdx].areaRange}
+              </span>
             </div>
-
-            <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-2">
-              <div className="text-xs font-black text-emerald-400">📜 إنجازاته البطولية ومقومات نضاله:</div>
-              <p className="text-sm font-bold text-slate-200 leading-relaxed">
-                {HEROES[activeHeroIdx].achievement}
-              </p>
+            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
+              <div className="text-xs font-black text-emerald-400 flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>الخصائص الجغرافية:</span>
+              </div>
+              <p className="text-sm font-bold text-slate-200 leading-relaxed">{config.regions[activeIdx].characteristics}</p>
+            </div>
+            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
+              <div className="text-xs font-black text-sky-400">🌡️ المناخ:</div>
+              <p className="text-sm font-bold text-slate-200 leading-relaxed">{config.regions[activeIdx].climate}</p>
             </div>
           </div>
         </div>
       )}
 
-      {/* TAB 4: CLIMATE */}
-      {activeTab === 'climate' && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {CLIMATES.map((c, idx) => (
-              <div key={c.id} className={`p-5 rounded-3xl border ${c.color} space-y-3`}>
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl">{c.icon}</span>
-                  <span className="text-xs font-mono font-bold bg-slate-900/60 px-2.5 py-1 rounded-full text-white">إقليم 0{idx + 1}</span>
+      {config.type === 'archaeology_sources' && (
+        <div className="space-y-4">
+          {config.sources.map((s) => (
+            <div key={s.id} className="bg-slate-950 p-5 rounded-3xl border border-slate-800 space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <h3 className="text-sm font-black text-amber-300 flex items-center gap-2">
+                  <Scroll className="w-4 h-4 text-amber-400" />
+                  <span>{s.titleAr}</span>
+                </h3>
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 bg-sky-500/20 text-sky-300 border border-sky-500/40 rounded-full text-[11px] font-bold">
+                    {sourceTypeLabelAr(s.type)}
+                  </span>
+                  <span className="px-2.5 py-0.5 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-[11px] font-mono font-bold">
+                    {s.period}
+                  </span>
                 </div>
-                <h3 className="text-base font-black">{c.name}</h3>
-                <div className="text-xs font-bold text-amber-300">{c.region}</div>
-                <p className="text-xs leading-relaxed text-slate-200">{c.features}</p>
               </div>
-            ))}
+              <p className="text-xs text-slate-200 leading-relaxed bg-slate-900 p-3 rounded-2xl border border-slate-800">
+                {s.descriptionAr}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {config.type === 'climate_vegetation_matching' && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {config.zones.map((z, idx) => (
+            <div key={idx} className="p-5 rounded-3xl border border-slate-700 bg-slate-800/80 space-y-3">
+              <h3 className="text-sm font-black text-amber-300">{z.zoneAr}</h3>
+              <div className="flex items-center gap-2 text-xs text-sky-300 font-bold">
+                <span>🌧️</span>
+                <span>{z.rainfall}</span>
+              </div>
+              <div className="p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-1.5">
+                <div className="text-[11px] font-black text-emerald-400">🌿 الغطاء النباتي:</div>
+                <p className="text-xs text-slate-200 leading-relaxed">{z.floraAr}</p>
+              </div>
+              <div className="p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-1.5">
+                <div className="text-[11px] font-black text-orange-400">🦎 الحياة الحيوانية:</div>
+                <p className="text-xs text-slate-200 leading-relaxed">{z.faunaAr}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {config.type === 'eco_citizen_scenario' && (() => {
+        const scenario = config.hazardScenarios[activeIdx];
+        return (
+          <div className="space-y-6">
+            {config.hazardScenarios.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+                {config.hazardScenarios.map((s, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveIdx(idx)}
+                    className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border ${
+                      activeIdx === idx
+                        ? 'bg-rose-600 text-white border-rose-300 shadow-md scale-[1.02]'
+                        : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                    }`}
+                  >
+                    خطر {idx + 1}
+                  </button>
+                ))}
+              </div>
+            )}
+            <HazardScenarioView scenario={scenario} />
           </div>
+        );
+      })()}
+    </div>
+  );
+};
+
+const sourceTypeLabelAr = (type: 'document' | 'monument' | 'testimony' | 'artifact' | 'map'): string => {
+  switch (type) {
+    case 'document': return 'وثيقة';
+    case 'monument': return 'أثر/معلم';
+    case 'testimony': return 'شهادة';
+    case 'artifact': return 'قطعة أثرية';
+    case 'map': return 'خريطة';
+    default: return 'مصدر';
+  }
+};
+
+const HazardScenarioView: React.FC<{ scenario: { hazardAr: string; choices: { textAr: string; isCorrect: boolean; feedbackAr: string }[] } }> = ({ scenario }) => {
+  const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
+
+  return (
+    <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
+      <h3 className="text-base font-black text-rose-300 flex items-center gap-2">
+        <ShieldAlert className="w-5 h-5" />
+        <span>{scenario.hazardAr}</span>
+      </h3>
+      <div className="space-y-3">
+        {scenario.choices.map((choice, cIdx) => (
+          <button
+            key={cIdx}
+            onClick={() => setSelectedChoice(cIdx)}
+            className={`w-full p-4 rounded-2xl border text-right text-xs font-bold transition-all cursor-pointer ${
+              selectedChoice === cIdx
+                ? choice.isCorrect
+                  ? 'bg-emerald-600 text-white border-emerald-300 ring-2 ring-emerald-400'
+                  : 'bg-rose-950 border-rose-500 text-rose-200'
+                : 'bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700'
+            }`}
+          >
+            {choice.textAr}
+          </button>
+        ))}
+      </div>
+      {selectedChoice !== null && (
+        <div className="p-4 bg-slate-800 border border-slate-600 rounded-2xl text-xs text-slate-100 font-bold leading-relaxed animate-in fade-in duration-300">
+          {scenario.choices[selectedChoice].feedbackAr}
         </div>
       )}
     </div>
   );
 };
+
+export const HistoryGeoInteractive: React.FC<HistoryGeoProps> = ({ config }) => (
+  <ConfiguredHistoryGeoTool config={config} />
+);
