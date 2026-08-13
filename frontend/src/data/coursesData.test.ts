@@ -544,4 +544,82 @@ describe('3AP Science & Technology Pedagogical Curriculum Tests', () => {
   });
 });
 
+describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)', () => {
+  const grade2apLessons = COURSES_DATA.filter((course) => course.grade === '2AP');
+  const bySubject = (subject: string) => grade2apLessons.filter((l) => l.subject === subject);
+
+  it('should contain lessons for all 5 official 2AP subjects (math, arabic, science, islamic, civics)', () => {
+    expect(bySubject('math').length).toBeGreaterThanOrEqual(8);
+    expect(bySubject('arabic').length).toBeGreaterThanOrEqual(5);
+    expect(bySubject('science').length).toBeGreaterThanOrEqual(4);
+    expect(bySubject('islamic').length).toBeGreaterThanOrEqual(4);
+    expect(bySubject('civics').length).toBeGreaterThanOrEqual(3);
+  });
+
+  it('every 2AP lesson should have a clear course sheet: title, summary, at least 3 rules, and objectives', () => {
+    grade2apLessons.forEach((lesson) => {
+      expect(lesson.titleAr).toBeTruthy();
+      expect(lesson.summaryAr).toBeTruthy();
+      expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(3);
+      expect(lesson.objectivesAr).toBeDefined();
+      expect(lesson.objectivesAr!.length).toBeGreaterThanOrEqual(2);
+    });
+  });
+
+  it('every 2AP lesson should have a detailedCourse with vocabulary, common mistakes, and a takeaway — required for RevisionSheetViewer', () => {
+    grade2apLessons.forEach((lesson) => {
+      expect(lesson.detailedCourse).toBeDefined();
+      expect(lesson.detailedCourse!.introAr).toBeTruthy();
+      expect(lesson.detailedCourse!.takeawayAr).toBeTruthy();
+      expect(lesson.detailedCourse!.vocabulary).toBeDefined();
+      expect(lesson.detailedCourse!.vocabulary!.length).toBeGreaterThanOrEqual(1);
+      expect(lesson.detailedCourse!.commonMistakes).toBeDefined();
+      expect(lesson.detailedCourse!.commonMistakes!.length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
+  it('every 2AP lesson should have tiered progressive exercises and an educational game', () => {
+    grade2apLessons.forEach((lesson) => {
+      expect(lesson.progressiveExercises).toBeDefined();
+      expect(lesson.progressiveExercises!.length).toBeGreaterThanOrEqual(2);
+      expect(lesson.educationalGame).toBeDefined();
+      expect(lesson.educationalGame!.items.length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
+  it('every 2AP lesson should have an interactive quiz with exactly one correct, explained option', () => {
+    grade2apLessons.forEach((lesson) => {
+      expect(lesson.quiz.length).toBeGreaterThanOrEqual(1);
+      lesson.quiz.forEach((q) => {
+        expect(q.questionAr).toBeTruthy();
+        expect(q.options.length).toBeGreaterThanOrEqual(2);
+        const correctOptions = q.options.filter((opt) => opt.isCorrect);
+        expect(correctOptions.length).toBe(1);
+        expect(correctOptions[0].explanationAr).toBeTruthy();
+      });
+    });
+  });
+
+  it('every 2AP lesson should declare an honest content provenance (never a guessed official_verified)', () => {
+    grade2apLessons.forEach((lesson) => {
+      expect(lesson.contentSource).toBeDefined();
+      expect(lesson.contentSource).not.toBe('official_verified');
+      expect(lesson.sourceNoteAr).toBeTruthy();
+    });
+  });
+
+  it('every 2AP islamic/civics lesson using islamic_lab/civics_lab should carry the matching per-lesson interactive config', () => {
+    bySubject('islamic').forEach((lesson) => {
+      if (lesson.interactiveTool === 'islamic_lab') {
+        expect(lesson.islamicInteractive).toBeDefined();
+      }
+    });
+    bySubject('civics').forEach((lesson) => {
+      if (lesson.interactiveTool === 'civics_lab') {
+        expect(lesson.civicsInteractive).toBeDefined();
+      }
+    });
+  });
+});
+
 
