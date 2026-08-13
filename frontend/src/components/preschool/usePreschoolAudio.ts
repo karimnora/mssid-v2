@@ -101,3 +101,9 @@ export function playGentleNudge() {
 export function playModuleCompleteFanfare() {
   playTone([523.25, 659.25, 783.99, 1046.5], 150);
 }
+
+/** Light, high-pitched "pop" — played per bubble in the bubble_pop mini-game. Distinct from the
+ * fuller success chime so repeated pops don't feel like repeated "you finished!" signals. */
+export function playBubblePop() {
+  playTone([880, 1108.73], 90, 'triangle');
+}

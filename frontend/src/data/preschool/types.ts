@@ -10,10 +10,21 @@ export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'ani
 export type PreschoolLanguage = 'ar' | 'fr' | 'en';
 
 export type PreschoolInteractionType =
-  | 'tap_choice' // Tap the correct image / numeral among a few big choices
-  | 'drag_drop'  // Drag objects into a drop zone (counting)
-  | 'trace';     // Trace a numeral/shape with a finger (wide tolerance, never blocks)
+  | 'tap_choice'     // Tap the correct image / numeral among a few big choices
+  | 'drag_drop'      // Drag objects into a drop zone (counting)
+  | 'trace'          // Trace a numeral/shape with a finger (wide tolerance, never blocks)
+  | 'find_path'      // Drag a character from a start point to an end point (simplified maze — reaching the goal matters, not staying on a line)
+  | 'connect_dots'   // Tap-to-match a pair (left item, then its right match) — no precise line-drawing required
+  | 'sorting'        // Drag items into the correct one of several category bins
+  | 'memory_cards'   // Flip-and-match pairs, 2x2 (default) up to 2x3 cards
+  | 'creative_extra'; // Open slot for one-off original mini-games that don't fit the shapes above (e.g. bubble_pop below) — add new interactionType values here as they're invented, keep each one's own small, self-contained component
 
+/**
+ * "Child-first" voice rule: `promptAudio` (and `successAudio`) must always read as the mascot
+ * talking DIRECTLY to the child — second person, playful, short ("Touch the red circle!", not "Ask
+ * your child to touch..."). `promptText` is the only field ever written for the accompanying adult;
+ * it is optional, secondary, and never required reading for the child to progress.
+ */
 export interface LocalizedContent {
   title: string;
   /**
@@ -41,6 +52,40 @@ export interface PreschoolDragItem {
   asset: string;
 }
 
+/** find_path: a token the child drags from a start icon to an end icon. Reaching the end zone is
+ * what matters — no precise line-following is required or checked (see PreschoolFindPath). */
+export interface PreschoolPathToken {
+  startAsset: string;
+  endAsset: string;
+  travelerAsset: string;
+}
+
+/** connect_dots: a pair to match by tapping — left item then its right match. */
+export interface PreschoolConnectPair {
+  id: string;
+  leftAsset: string;
+  rightAsset: string;
+}
+
+/** sorting: one category bin (e.g. "big animals"). */
+export interface PreschoolSortBin {
+  id: string;
+  labelAsset: string;
+}
+
+/** sorting: one draggable item that belongs in exactly one bin. */
+export interface PreschoolSortItem {
+  id: string;
+  asset: string;
+  correctBinId: string;
+}
+
+/** memory_cards: one pair — `asset` is rendered on two face-down cards, shuffled. */
+export interface PreschoolMemoryPair {
+  id: string;
+  asset: string;
+}
+
 export interface PreschoolVisualAssets {
   /** Big emoji/glyph representing the activity itself (the numeral, or a counted group). */
   mainSvgOrImage: string;
@@ -50,6 +95,18 @@ export interface PreschoolVisualAssets {
   dropZoneCount?: number;
   /** Reserved for a future real SVG reference path; the MVP renders `mainSvgOrImage` as a big traceable glyph instead. */
   tracePathSvg?: string;
+  /** find_path */
+  pathToken?: PreschoolPathToken;
+  /** connect_dots */
+  connectPairs?: PreschoolConnectPair[];
+  /** sorting */
+  sortBins?: PreschoolSortBin[];
+  sortItems?: PreschoolSortItem[];
+  /** memory_cards */
+  memoryPairs?: PreschoolMemoryPair[];
+  /** creative_extra / bubble_pop: how many bubbles to pop, and what's inside each one. */
+  bubbleCount?: number;
+  bubbleAsset?: string;
 }
 
 export interface PreschoolActivity {

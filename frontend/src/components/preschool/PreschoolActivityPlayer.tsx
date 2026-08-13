@@ -5,6 +5,11 @@ import { PreschoolMascot, MascotMood } from './PreschoolMascot';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
 import { PreschoolDragDrop } from './PreschoolDragDrop';
 import { PreschoolTrace } from './PreschoolTrace';
+import { PreschoolFindPath } from './PreschoolFindPath';
+import { PreschoolConnectDots } from './PreschoolConnectDots';
+import { PreschoolSorting } from './PreschoolSorting';
+import { PreschoolMemoryCards } from './PreschoolMemoryCards';
+import { PreschoolBubblePop } from './PreschoolBubblePop';
 import { usePreschoolSpeech } from './usePreschoolAudio';
 
 interface PreschoolActivityPlayerProps {
@@ -77,6 +82,21 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           )}
           {activity.interactionType === 'trace' && (
             <PreschoolTrace activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'find_path' && (
+            <PreschoolFindPath activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'connect_dots' && (
+            <PreschoolConnectDots activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'sorting' && (
+            <PreschoolSorting activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'memory_cards' && (
+            <PreschoolMemoryCards activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'creative_extra' && (
+            <PreschoolBubblePop activity={activity} onComplete={handleInteractionComplete} />
           )}
         </div>
       </div>
