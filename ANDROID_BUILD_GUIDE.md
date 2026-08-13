@@ -33,25 +33,32 @@ Avant de commencer sur votre machine locale (PC Windows, Mac ou Linux), assurez-
 
 Le projet utilise **Capacitor** (par Ionic Framework), qui emballe l'application web React/Vite dans un WebView natif ultra-performant avec accès aux APIs Android.
 
+> ⚠️ Toute la configuration Capacitor vit désormais dans `frontend/` — c'est le seul
+> répertoire activement développé. Toutes les commandes ci-dessous s'exécutent donc
+> **depuis `frontend/`**, pas depuis la racine du dépôt.
+
 ```text
 mssid-dz/
-├── capacitor.config.json     # Configuration Capacitor (App ID: dz.mssid.app)
-├── dist/                     # Fichiers Web compilés (HTML/JS/CSS)
-├── android/                  # Projet Android Studio généré
-│   ├── app/
-│   │   ├── src/main/AndroidManifest.xml
-│   │   └── res/              # Icônes de l'application et écran de démarrage (Splash)
-│   └── build.gradle
-└── package.json              # Scripts npm mobile
+└── frontend/
+    ├── capacitor.config.json # Configuration Capacitor (App ID: dz.mssid.app)
+    ├── dist/                  # Fichiers Web compilés (HTML/JS/CSS)
+    ├── android/               # Projet Android Studio généré
+    │   ├── app/
+    │   │   ├── src/main/AndroidManifest.xml
+    │   │   └── res/           # Icônes de l'application et écran de démarrage (Splash)
+    │   └── build.gradle
+    └── package.json           # Scripts npm mobile
 ```
 
 ---
 
 ## 🔄 3. Installation & Synchronisation
 
-Dans votre terminal à la racine du projet :
+Dans votre terminal, à l'intérieur du dossier `frontend/` :
 
 ```bash
+cd frontend
+
 # 1. Compiler les assets Web React
 npm run build
 
@@ -84,16 +91,17 @@ npm run cap:sync
 
 ## 🌐 5. Configuration de l'API Backend pour Mobile
 
-En mode web local, l'application pointe sur `http://localhost:3000`. Sur un téléphone Android physique ou un émulateur :
-* `localhost` sur un émulateur Android fait référence à l'émulateur lui-même.
-* Pour se connecter à votre serveur local depuis l'émulateur, utilisez l'adresse IP spéciale : `http://10.0.2.2:3000`
-* Pour une utilisation en production, pointez vers votre serveur en ligne (ex: Cloud Run) : `https://ais-dev-cn6r24pirofwe5zr5sgwa2-491498094363.europe-west2.run.app`
+L'application ne contacte jamais le backend en dur : elle lit `VITE_SPRING_BOOT_URL` au moment du build. **Sans cette variable, elle se rabat sur `http://localhost:8080/api`**, ce qui échoue systématiquement (connexion/inscription impossibles) sur tout appareil qui n'est pas la machine hébergeant le backend — `localhost` y désigne l'appareil lui-même, jamais le serveur. Voir `frontend/.env.example` pour le détail des valeurs.
 
-Modifiez la variable dans le fichier `.env` :
+* Émulateur Android : `http://10.0.2.2:8080/api` (`10.0.2.2` est l'alias spécial de l'émulateur vers l'hôte).
+* Téléphone physique sur le même Wi-Fi que le backend : `http://<IP_LOCALE_DU_PC>:8080/api`.
+* Production, pointez vers votre serveur en ligne (ex: Cloud Run) : `https://ais-dev-cn6r24pirofwe5zr5sgwa2-491498094363.europe-west2.run.app/api`
+
+Créez/modifiez `frontend/.env` (jamais commité, voir `.env.example`) :
 ```env
 VITE_SPRING_BOOT_URL=https://votre-backend-en-ligne.com/api
 ```
-Puis réexécutez `npm run cap:sync`.
+Puis réexécutez `npm run cap:sync` depuis `frontend/`.
 
 ---
 

@@ -10,6 +10,23 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 1: Family & Friends',
+    objectivesAr: [
+        'أُقدّم نفسي بالإنجليزية (الاسم، العمر، البلد).',
+        'أستعمل الضمائر الشخصية وصفات الملكية بشكل صحيح.',
+        'أُسمّي أفراد عائلتي بالإنجليزية.',
+    ],
+    detailedCourse: {
+        introAr: 'لتقديم نفسك وعائلتك بالإنجليزية، تحتاج إلى الضمائر الشخصية (I, He, She...) وصفات الملكية المرافقة لها (My, His, Her...) — كل ضمير له صفة ملكية خاصة به.',
+        vocabulary: [
+            { termAr: 'Personal pronouns', definitionAr: 'الضمائر الشخصية: I (أنا)، You (أنتَ/أنتِ)، He (هو)، She (هي).' },
+            { termAr: 'Possessive adjectives', definitionAr: 'صفات الملكية المرافقة: My (لي)، Your (لكَ)، His (له)، Her (لها).' },
+        ],
+        visualizationHintAr: 'ارسم شجرة عائلتك واكتب تحت كل شخص جملة تبدأ بـ "This is my..." متبوعة بجملة تصفه بـ "His/Her name is...".',
+        commonMistakes: [
+            { mistakeAr: 'الخلط بين His و Her.', correctionAr: '"His" تُستعمل للمذكر (له)، و"Her" للمؤنث (لها) — يجب معرفة جنس الشخص المتحدث عنه أولاً.' },
+        ],
+        takeawayAr: 'كل ضمير شخصي له صفة ملكية مرافقة: I → My, He → His, She → Her. نستعملها للتعريف بأنفسنا وبأفراد عائلتنا.',
+    },
     titleAr: 'Unit 1: Me, My Family & My Friends (التعريف بالنفس، العائلة والضمائر)',
     summaryAr: `يتعلم تلميذ السنة الرابعة ابتدائي (4AP) كيفية التقديم الذاتي باللغة الإنجليزية (الاسم، العمر، البلد)، والتعريف بأفراد العائلة والأصدقاء باستخدام الضمائر الشخصية (I, You, He, She) وصفات الملكية (My, Your, His, Her)، والتعرف على الأرقام حتى 20.`,
     rulesAr: [
@@ -57,6 +74,23 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 2: School & Classroom',
+    objectivesAr: [
+        'أُسمّي الأدوات المدرسية بالإنجليزية.',
+        'أفهم وأُطبّق الأوامر الصفية الشائعة.',
+        'أستعمل حروف الجر in / on / under لتحديد مكان شيء.',
+    ],
+    detailedCourse: {
+        introAr: 'داخل القسم، نستعمل كلمات كثيرة يومياً: أسماء الأدوات المدرسية، أوامر المعلم، وحروف جر صغيرة تساعدنا على تحديد أين يوجد كل شيء بالضبط.',
+        vocabulary: [
+            { termAr: 'Prepositions of place', definitionAr: 'حروف جر المكان: in (في/داخل)، on (على/فوق)، under (تحت).' },
+            { termAr: 'Classroom commands', definitionAr: 'الأوامر التي يستعملها المعلم في القسم: Stand up! Sit down! Listen!' },
+        ],
+        visualizationHintAr: 'انظر إلى طاولتك الآن وصف مكان 3 أشياء عليها باستعمال in / on / under، مثل: "The pencil is on the table."',
+        commonMistakes: [
+            { mistakeAr: 'الخلط بين in و on عند وصف مكان شيء.', correctionAr: '"in" تعني داخل شيء مغلق (in the bag)، بينما "on" تعني فوق سطح (on the table) — الفرق مهم جداً في المعنى.' },
+        ],
+        takeawayAr: 'حروف جر المكان الثلاثة: in (داخل)، on (فوق)، under (تحت) — تساعدنا على وصف مكان أي غرض مدرسي بدقة.',
+    },
     titleAr: 'Unit 2: My School & My Classroom (الأدوات المدرسية، الأوامر الصفية وحروف الجر)',
     summaryAr: `يتعرف التلميذ على تسميات الأدوات المدرسية (pen, pencil, book, ruler, rubber)، وأجزاء المدرسة، والأوامر الصفية التي يوجهها المعلم (Listen, Stand up, Sit down, Read, Write)، إضافة إلى حروف الجر الأساسية (in, on, under).`,
     rulesAr: [
@@ -104,6 +138,22 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 3: My Home & Rooms',
+    objectivesAr: [
+        'أُسمّي غرف المنزل والأثاث بالإنجليزية.',
+        'أستعمل There is / There are بشكل صحيح حسب العدد.',
+    ],
+    detailedCourse: {
+        introAr: '"There is" و "There are" تعنيان "يوجد" بالعربية، لكن الاختيار بينهما يعتمد على عدد الأشياء التي نتحدث عنها: واحد أم أكثر من واحد.',
+        vocabulary: [
+            { termAr: 'There is', definitionAr: 'تُستعمل مع الاسم المفرد: There is a bed (يوجد سرير واحد).' },
+            { termAr: 'There are', definitionAr: 'تُستعمل مع الاسم الجمع: There are two chairs (يوجد كرسيان).' },
+        ],
+        visualizationHintAr: 'انظر إلى غرفتك وعُدّ الأشياء الموجودة فيها: كل شيء واحد يبدأ بـ "There is"، وكل مجموعة أشياء تبدأ بـ "There are".',
+        commonMistakes: [
+            { mistakeAr: 'استعمال "There is" مع اسم جمع.', correctionAr: 'إذا كان العدد أكبر من واحد، يجب استعمال "There are" وليس "There is"، حتى لو نسينا ذلك أحياناً في الحديث السريع.' },
+        ],
+        takeawayAr: '"There is" + اسم مفرد، "There are" + اسم جمع — نختار حسب عدد الأشياء التي نصفها.',
+    },
     titleAr: 'Unit 3: My Home & My Room (أجزاء المنزل، الأثاث، وقاعدتي There is / There are)',
     summaryAr: `يتعلم التلميذ مفردات المنزل وأركانه (bedroom, kitchen, living room, bathroom, garden) والأثاث المنزلي، مع التمكن من التعبير عن الوجود باستخدام "There is" للمفرد و "There are" للجمع.`,
     rulesAr: [
@@ -151,6 +201,23 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 4: Food & Meals',
+    objectivesAr: [
+        'أُسمّي الأطعمة والمشروبات بالإنجليزية.',
+        'أُميّز بين الأكل الصحي وغير الصحي.',
+        'أُعبّر عن تفضيلاتي الغذائية بـ I like / I don\'t like.',
+    ],
+    detailedCourse: {
+        introAr: 'للتعبير عما نحب وما لا نحب من الطعام بالإنجليزية، نستعمل عبارتين بسيطتين جداً: "I like" و "I don\'t like"، متبوعتين باسم الطعام.',
+        vocabulary: [
+            { termAr: 'I like / I don\'t like', definitionAr: 'أنا أحب / أنا لا أحب — للتعبير عن التفضيل الغذائي.' },
+            { termAr: 'Healthy food', definitionAr: 'الطعام الصحي المفيد للجسم (فواكه، خضروات، حليب).' },
+        ],
+        visualizationHintAr: 'اكتب قائمتين: "I like..." و"I don\'t like..." واملأهما بأطعمة حقيقية تحبها أو لا تحبها.',
+        commonMistakes: [
+            { mistakeAr: 'نسيان "don\'t" عند التعبير عن عدم الإعجاب.', correctionAr: 'الجملة السلبية تحتاج دائماً إلى "don\'t": "I don\'t like soda"، وليس "I not like soda".' },
+        ],
+        takeawayAr: '"I like [food]" للتعبير عن الإعجاب، و"I don\'t like [food]" لعكسه؛ والطعام الصحي يشمل الفواكه والخضروات والحليب.',
+    },
     titleAr: 'Unit 4: Food, Drinks & Meals (الأطعمة، المشروبات، والتعبير عن التفضيل I like / I don\'t like)',
     summaryAr: `يتعرف التلميذ على أسماء الأطعمة والمشروبات والفواكه والخضروات، والتمييز بين الأكل الصحي والغير صحي (Healthy vs Unhealthy food)، والتعبير عن الذوق والتفضيل باستخدام "I like" و "I don't like" و "I want".`,
     rulesAr: [
@@ -198,6 +265,23 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 5: Pets & Animals',
+    objectivesAr: [
+        'أُسمّي الحيوانات الأليفة وأجزاء جسمها بالإنجليزية.',
+        'أستعمل has got لوصف خصائص الحيوان.',
+        'أستعمل can / cannot للتعبير عن قدرات الحيوان.',
+    ],
+    detailedCourse: {
+        introAr: 'لوصف حيوان بالإنجليزية، نستعمل "has got" لأجزاء جسمه (له...)، و"can/cannot" لما يستطيع أو لا يستطيع فعله.',
+        vocabulary: [
+            { termAr: 'has got', definitionAr: 'يملك/له — تُستعمل لوصف أجزاء جسم الحيوان: It has got a tail (له ذيل).' },
+            { termAr: 'can / cannot', definitionAr: 'يستطيع / لا يستطيع — تُستعمل للتعبير عن قدرات الحيوان: A bird can fly.' },
+        ],
+        visualizationHintAr: 'اختر حيواناً أليفاً تعرفه واكتب جملتين عنه: واحدة بـ "has got" (تصف جسمه) وواحدة بـ "can" (تصف ما يستطيع فعله).',
+        commonMistakes: [
+            { mistakeAr: 'استعمال "have got" بدل "has got" مع حيوان مفرد.', correctionAr: 'مع ضمير مفرد غائب (it) نستعمل "has got" وليس "have got": "The cat has got soft fur".' },
+        ],
+        takeawayAr: '"has got" لوصف أجزاء جسم الحيوان، و"can/cannot" لوصف قدراته: A bird can fly but cannot swim.',
+    },
     titleAr: 'Unit 5: Pets & Farm Animals (الحيوانات الأليفة، أجزاء جسم الحيوان، وقاعدتي Has got / Can)',
     summaryAr: `يتعلم التلميذ أسماء الحيوانات الأليفة وحيوانات المزرعة (cat, dog, bird, rabbit, cow, sheep, horse)، التعبير عن ملكيتها ووصف أجزاء أجسادها باستخدام "has got" والتعبير عن قدراتها الحركية بـ "can / cannot".`,
     rulesAr: [
@@ -245,6 +329,23 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 6: Games & Hobbies',
+    objectivesAr: [
+        'أُعبّر عن هواياتي المفضلة بالإنجليزية.',
+        'أعدّ من 1 إلى 50 وأكتب الأعداد بالحروف.',
+        'أطرح سؤالاً عن الكمية باستعمال How many...؟',
+    ],
+    detailedCourse: {
+        introAr: 'للحديث عن هواياتنا وعدد الأشياء التي نملكها، نحتاج إلى معرفة الأعداد حتى 50 وطريقة طرح سؤال عن الكمية بـ "How many...?".',
+        vocabulary: [
+            { termAr: 'How many...?', definitionAr: 'كم عدد...؟ — تُستعمل للسؤال عن كمية أشياء قابلة للعد.' },
+            { termAr: 'My favorite hobby is...', definitionAr: 'هوايتي المفضلة هي... — للتعبير عن نشاط نحبه.' },
+        ],
+        visualizationHintAr: 'عُدّ عدداً من الأغراض حولك (كتب، أقلام) واكتب السؤال والجواب: "How many books are there? There are [عدد] books."',
+        commonMistakes: [
+            { mistakeAr: 'كتابة الأعداد المركبة بدون شرطة (hyphen).', correctionAr: 'الأعداد بين 21 و99 (غير المضاعفات العشرية) تُكتب بشرطة: "twenty-five" وليس "twenty five".' },
+        ],
+        takeawayAr: '"How many...?" للسؤال عن الكمية، والأعداد المركبة (21-99) تُكتب بشرطة مثل "thirty-four".',
+    },
     titleAr: 'Unit 6: Games, Hobbies & Numbers 1-50 (الهوايات، الألعاب الشائعة والأرقام حتى 50)',
     summaryAr: `يتعلم التلميذ التعبير عن الهوايات والألعاب الرياضية والترفيهية (play football, ride a bike, draw, read, play video games)، واستخدام الأرقام حتى 50 لحساب الأشياء وطرح السؤال "How many...?".`,
     rulesAr: [

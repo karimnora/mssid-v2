@@ -12,6 +12,23 @@ export const FRENCH_4AP: CourseLesson[] = [
     categoryAr: 'Projet 1 : C\'est notre quartier ! - Séquence 1',
     titleAr: 'Projet 1 - Séquence 1 : « Salut ! Je m\'appelle Mouloud » - Se présenter, la famille, le verbe Être/Avoir & les articles',
     summaryAr: `Dans cette première séquence du Projet 1 (4AP), l'élève apprend à se présenter (nom, prénom, âge) et présenter les membres de sa famille. Il étudie les formules de salutation, les articles définis/indéfinis et la conjugaison des auxiliaires Être et Avoir au présent.`,
+    objectivesAr: [
+        'Je sais me présenter et présenter les membres de ma famille.',
+        'Je sais utiliser les articles définis et indéfinis correctement.',
+        'Je sais conjuguer Être et Avoir au présent.',
+    ],
+    detailedCourse: {
+        introAr: 'Pour se présenter, on utilise toujours les verbes Être et Avoir : "Je suis..." pour dire qui on est, et "J\'ai..." pour dire son âge ou ce qu\'on possède. Ce sont deux verbes essentiels à bien connaître.',
+        vocabulary: [
+            { termAr: 'Article défini', definitionAr: 'le, la, l\', les — désigne une personne ou chose précise déjà connue.' },
+            { termAr: 'Article indéfini', definitionAr: 'un, une, des — désigne une personne ou chose non précisée.' },
+        ],
+        visualizationHintAr: 'Dessine ton arbre familial avec les prénoms de chaque membre, puis écris une phrase pour chacun avec "Il/Elle est..." ou "Il/Elle a...".',
+        commonMistakes: [
+            { mistakeAr: 'Confondre "es" et "est" en conjuguant Être.', correctionAr: '"Tu es" (avec Tu) s\'écrit avec un "s", alors que "Il/Elle est" s\'écrit avec un "t" — ce sont deux formes différentes du même verbe.' },
+        ],
+        takeawayAr: 'Être : je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont. Avoir : j\'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont.',
+    },
     rulesAr: [
         'Vocabulaire - Les salutations et la famille : Bonjour, Salut, Au revoir, Merci, S\'il vous plaît. Les membres de la famille : le père, la mère, le frère, la sœur, le grand-père, la grand-mère.',
         'Grammaire - Les articles définis et indéfinis : Articles définis (le, la, l\', les) désignent une personne ou chose précise (ex: le frère). Articles indéfinis (un, une, des) désignent une personne ou chose non précise (ex: un voisin).',
@@ -58,11 +75,29 @@ export const FRENCH_4AP: CourseLesson[] = [
     subject: 'french',
     categoryAr: 'Projet 1 : C\'est notre quartier ! - Séquence 2',
     titleAr: 'Projet 1 - Séquence 2 : « Où habites-tu ? » - La maison, le quartier, les verbes du 1er groupe & le sujet (GNS/GV)',
-    summaryAr: `L'élève apprend à décrire sa maison, localiser son logement dans le quartier en utilisant les prépositions de lieu (près de, loin de, en face de, à côté de), identifier le Groupe Nominal Sujet (GNS) et le Groupe Verbal (GV), et conjuguer les verbes du 1er groupe au présent.`,
+    summaryAr: `L'élève apprend à décrire sa maison, localiser son logement dans le quartier en utilisant les prépositions de lieu (près de, loin de, en face de, à côté de), identifier le Groupe Nominal Sujet (GNS), le Groupe Verbal (GV), les compléments COD/COI, et conjuguer les verbes du 1er groupe au présent.`,
+    objectivesAr: [
+        'Je sais décrire ma maison et localiser mon quartier avec des indicateurs de lieu.',
+        'Je sais identifier le GNS et le GV dans une phrase simple.',
+        'Je sais reconnaître un COD et un COI dans une phrase.',
+    ],
+    detailedCourse: {
+        introAr: 'Une phrase simple se compose toujours d\'un sujet (GNS) et d\'un verbe (GV). Le GV peut aussi contenir un complément qui précise l\'action : un COD (sans préposition) ou un COI (avec préposition à/de).',
+        vocabulary: [
+            { termAr: 'COD (Complément d\'Objet Direct)', definitionAr: 'Complément relié directement au verbe, sans préposition. Répond à la question "quoi ?" ou "qui ?". Exemple : "Il regarde la maison" (COD = la maison).' },
+            { termAr: 'COI (Complément d\'Objet Indirect)', definitionAr: 'Complément relié au verbe par une préposition (à, de). Exemple : "Il parle à son voisin" (COI = à son voisin).' },
+        ],
+        visualizationHintAr: 'Dans une phrase, souligne le verbe, puis pose la question "quoi ?" juste après : si tu trouves une réponse sans mot de liaison, c\'est un COD ; si la réponse commence par "à" ou "de", c\'est un COI.',
+        commonMistakes: [
+            { mistakeAr: 'Confondre le COD avec le sujet de la phrase.', correctionAr: 'Le sujet fait l\'action (avant le verbe généralement), alors que le COD subit l\'action (après le verbe, sans préposition).' },
+        ],
+        takeawayAr: 'La phrase simple = GNS + GV. Le COD suit le verbe directement (sans préposition), le COI le suit avec une préposition (à, de).',
+    },
     rulesAr: [
         'Vocabulaire - La maison et le quartier : La maison (le salon, la chambre, la cuisine, le jardin, la salle de bain). Le quartier (la rue, l\'avenue, l\'école, la pharmacie, le stade, la boulangerie).',
         'Vocabulaire - Les indicateurs de lieu : près de, loin de, en face de, à côté de, dans. (Exemple : "J\'habite près de l\'école").',
         'Grammaire - La structure de la phrase simple : La phrase se compose d\'un Groupe Nominal Sujet (GNS) et d\'un Groupe Verbal (GV). Exemple : "Mouloud (GNS) habite dans un beau quartier (GV)".',
+        'Grammaire - Le COD et le COI : Le COD complète directement le verbe sans préposition (Il achète un cadeau). Le COI est relié au verbe par "à" ou "de" (Il parle à son ami).',
         'Conjugaison - Les verbes du 1er groupe (-er) au présent : habiter, trouver, visiter. Les terminaisons sont : -e, -es, -e, -ons, -ez, -ent.',
         'Orthographe - Le pluriel des noms simples : On ajoute généralement un "-s" au pluriel. Exemple : un voisin ➔ des voisins.'
     ],
@@ -95,6 +130,14 @@ export const FRENCH_4AP: CourseLesson[] = [
                 { id: 'b', textAr: 'dessine une belle maison', isCorrect: false },
                 { id: 'c', textAr: 'une belle maison', isCorrect: false }
             ]
+        },
+        {
+            id: 'q3',
+            questionAr: 'Dans la phrase "Il parle à son voisin", quel est le complément et son type ?',
+            options: [
+                { id: 'a', textAr: '"à son voisin" est un COI (relié au verbe par "à")', isCorrect: true, explanationAr: 'Exactement ! La préposition "à" indique un complément d\'objet indirect (COI).' },
+                { id: 'b', textAr: '"à son voisin" est un COD', isCorrect: false }
+            ]
         }
     ]
 },
@@ -106,6 +149,22 @@ export const FRENCH_4AP: CourseLesson[] = [
     categoryAr: 'Projet 2 : C\'est un grand événement ! - Séquence 1',
     titleAr: 'Projet 2 - Séquence 1 : « Bon anniversaire ! » - Les fêtes familiales, la phrase négative & la lettre g/c',
     summaryAr: `Dans ce projet consacré aux fêtes et célébrations, l'élève apprend à exprimer la préparation d'un anniversaire, rédiger une carte d'invitation, utiliser la forme négative (ne ... pas) et maîtriser la conjugaison du verbe Faire au présent.`,
+    objectivesAr: [
+        'Je sais rédiger une carte d\'invitation pour une fête.',
+        'Je sais transformer une phrase affirmative en phrase négative.',
+        'Je sais conjuguer le verbe Faire au présent.',
+    ],
+    detailedCourse: {
+        introAr: 'Pour dire qu\'une action ne se fait pas, on utilise la forme négative : on encadre le verbe avec "ne" et "pas". C\'est très utile pour parler de ce qu\'on ne fait pas pendant une fête, par exemple.',
+        vocabulary: [
+            { termAr: 'La forme négative', definitionAr: 'Structure qui exprime le contraire d\'une affirmation, formée avec "ne ... pas" autour du verbe.' },
+        ],
+        visualizationHintAr: 'Imagine deux mains qui encadrent le verbe : la main gauche tient "ne", la main droite tient "pas" — le verbe reste toujours entre les deux.',
+        commonMistakes: [
+            { mistakeAr: 'Oublier le "ne" et ne garder que "pas".', correctionAr: 'La négation complète a besoin des deux mots : "ne" avant le verbe et "pas" après (Je ne mange pas), même à l\'oral où le "ne" est parfois moins entendu.' },
+        ],
+        takeawayAr: 'La phrase négative = Sujet + ne (n\') + Verbe + pas + Complément. Le verbe Faire : je fais, tu fais, il/elle fait, nous faisons, vous faites, ils/elles font.',
+    },
     rulesAr: [
         'Vocabulaire - Champ lexical de la fête : le gâteau d\'anniversaire, les bougies, les cadeaux, les jus, la musique, inviter les amis, fêter, souffler.',
         'Grammaire - La phrase négative : Pour transformer une phrase affirmative en phrase négative, on encadre le verbe par "ne ... pas" (ou "n\'... pas" devant une voyelle). Exemple : "Je mange le gâteau" ➔ "Je ne mange pas le gâteau".',
@@ -151,6 +210,23 @@ export const FRENCH_4AP: CourseLesson[] = [
     categoryAr: 'Projet 2 : C\'est un grand événement ! - Séquence 2',
     titleAr: 'Projet 2 - Séquence 2 : « Bonne année ! / C\'est la fête ! » - Fêtes nationales, adjectifs possessifs/démonstratifs & verbe Aller',
     summaryAr: `L'élève découvre le vocabulaire des fêtes nationales et religieuses en Algérie (L'Aïd, Le Mouloud, Yennayer, le 1er Novembre). Il étudie les adjectifs possessifs (mon, ma, mes), démonstratifs (ce, cet, cette, ces) et le verbe Aller au présent.`,
+    objectivesAr: [
+        'Je connais les principales fêtes nationales et religieuses algériennes.',
+        'Je sais utiliser les adjectifs possessifs et démonstratifs.',
+        'Je sais conjuguer le verbe Aller au présent.',
+    ],
+    detailedCourse: {
+        introAr: 'Les adjectifs possessifs montrent à qui appartient une chose (mon, ta, ses...), et les adjectifs démonstratifs montrent qu\'on désigne une chose précise (ce, cette, ces...).',
+        vocabulary: [
+            { termAr: 'Adjectif possessif', definitionAr: 'Mot placé avant un nom pour indiquer à qui il appartient (mon, ta, ses).' },
+            { termAr: 'Adjectif démonstratif', definitionAr: 'Mot placé avant un nom pour désigner une chose précise qu\'on montre (ce, cette, ces).' },
+        ],
+        visualizationHintAr: 'Pointe du doigt un objet dans la classe en disant "cette table" ou "ce livre" — c\'est exactement le rôle de l\'adjectif démonstratif : montrer.',
+        commonMistakes: [
+            { mistakeAr: 'Utiliser "ce" devant un nom masculin qui commence par une voyelle.', correctionAr: 'Devant une voyelle ou un h muet, "ce" devient "cet" pour faciliter la prononciation (cet arbre, et non "ce arbre").' },
+        ],
+        takeawayAr: 'Possessifs : mon/ma/mes, ton/ta/tes, son/sa/ses. Démonstratifs : ce (masc.), cet (masc. + voyelle), cette (fém.), ces (pluriel). Aller : je vais, tu vas, il/elle va, nous allons, vous allez, ils/elles vont.',
+    },
     rulesAr: [
         'Vocabulaire - Les fêtes nationales et religieuses : L\'Aïd El Fitr, le Mouloud, Yennayer (le nouvel an amazigh), la fête de l\'indépendance (5 Juillet).',
         'Grammaire - Les adjectifs possessifs : mon/ma/mes (à moi), ton/ta/tes (à toi), son/sa/ses (à lui/elle). Exemple : "Je mets mon beau costume pour l\'Aïd".',
@@ -198,6 +274,22 @@ export const FRENCH_4AP: CourseLesson[] = [
     categoryAr: 'Projet 3 : À la mer / Dans la nature - Séquence 1',
     titleAr: 'Projet 3 - Séquence 1 : « Quel beau paysage ! » - Les animaux domestiques, verbes du 2ème groupe & adjectif épithète',
     summaryAr: `Dans le Projet 3 dédié à la nature et aux animaux, l'élève apprend à décrire un animal domestique (le chat, le chien, le lapin) et les parties de son corps, identifier l'adjectif qualificatif épithète et conjuguer les verbes du 2ème groupe (-ir) au présent.`,
+    objectivesAr: [
+        'Je sais décrire un animal domestique et ses parties du corps.',
+        'Je sais reconnaître un adjectif qualificatif épithète.',
+        'Je sais conjuguer un verbe du 2ème groupe au présent.',
+    ],
+    detailedCourse: {
+        introAr: 'L\'adjectif épithète est collé directement au nom qu\'il décrit, sans verbe entre les deux, ce qui le distingue de l\'adjectif attribut (relié par le verbe être).',
+        vocabulary: [
+            { termAr: 'Adjectif épithète', definitionAr: 'Adjectif placé directement à côté du nom qu\'il qualifie, sans verbe entre eux.' },
+        ],
+        visualizationHintAr: 'Compare "un petit chat" (épithète, collé au nom) et "Le chat est petit" (attribut, séparé par le verbe être) pour bien voir la différence.',
+        commonMistakes: [
+            { mistakeAr: 'Confondre "a" (verbe avoir) et "à" (préposition).', correctionAr: 'Remplace le mot par "avait" : si la phrase garde son sens, c\'est "a" sans accent ; sinon, c\'est "à" avec accent.' },
+        ],
+        takeawayAr: 'L\'adjectif épithète est collé au nom (un petit chat). Verbes du 2ème groupe au présent : -is, -is, -it, -issons, -issez, -issent.',
+    },
     rulesAr: [
         'Vocabulaire - Les animaux domestiques : le chat, le chien, le lapin, le mouton, la vache. Les parties du corps : les poils, la queue, les moustaches, les pattes, les oreilles, le bec.',
         'Grammaire - L\'adjectif qualificatif épithète : L\'adjectif est épithète lorsqu\'il est placé directement à côté du nom qu\'il qualifie. Exemple : "Un petit chat blanc".',
@@ -243,6 +335,22 @@ export const FRENCH_4AP: CourseLesson[] = [
     categoryAr: 'Projet 3 : À la mer / Dans la nature - Séquence 2',
     titleAr: 'Projet 3 - Séquence 2 : « Protégeons notre environnement ! » - La propreté, la phrase impérative & les consignes',
     summaryAr: `Sensibilisation à la protection de l'environnement et de l'école. L'élève apprend à utiliser la phrase impérative pour donner des consignes et conseils de propreté, et étudie les sons de la lettre s ([s] et [z]).`,
+    objectivesAr: [
+        'Je sais utiliser la phrase impérative pour donner une consigne.',
+        'Je sais conjuguer un verbe à l\'impératif présent.',
+        'Je distingue les deux sons de la lettre "s".',
+    ],
+    detailedCourse: {
+        introAr: 'La phrase impérative sert à donner un ordre, un conseil ou une consigne, sans dire le sujet. On l\'utilise beaucoup pour protéger notre environnement : "Ne jette pas !", "Nettoie !".',
+        vocabulary: [
+            { termAr: 'L\'impératif', definitionAr: 'Mode verbal utilisé sans sujet exprimé pour donner un ordre, un conseil ou une consigne.' },
+        ],
+        visualizationHintAr: 'Imagine une affiche de sensibilisation dans la cour de l\'école avec des phrases courtes et fortes comme "Respecte la nature !" — c\'est exactement le rôle de l\'impératif.',
+        commonMistakes: [
+            { mistakeAr: 'Ajouter un "s" au verbe du 1er groupe à la 2ème personne du singulier de l\'impératif.', correctionAr: 'Les verbes en -er perdent leur "s" final à l\'impératif avec "tu" : on écrit "Nettoie !" et non "Nettoies !".' },
+        ],
+        takeawayAr: 'La phrase impérative se conjugue sans sujet à 3 personnes (tu, nous, vous). La lettre "s" seule entre deux voyelles se prononce [z] ; "ss" se prononce [s].',
+    },
     rulesAr: [
         'Vocabulaire - La propreté et la nature : la poubelle, nettoyer, jeter les ordures, la cour de l\'école, les fleurs, les arbres, la mer, la plage, la propreté.',
         'Grammaire - La phrase impérative : Elle sert à donner un ordre, une consigne ou un conseil. Elle se termine souvent par un point d\'exclamation (!). Exemple : "Ne jette pas les ordures par terre !"',
