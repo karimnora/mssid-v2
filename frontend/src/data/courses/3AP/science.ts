@@ -44,6 +44,17 @@ export const SCIENCE_3AP: CourseLesson[] = [
       'القواعد الصحية للتنفس:\n1) تهوية حجرات البيت والقسم باستمرار.\n2) ممارسة الرياضة في الهواء النقي والخالي من التلوث.\n3) الابتعاد عن الأماكن المغلقة الملوثة بالدخان والمصانع والغبار والتجبر وتجنب التدخين.'
     ],
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'process_stages',
+      titleAr: 'رِحْلَةُ نَبْضِ القَلْبِ وَالتَّنَفُّسِ مَعَ الجَهْدِ',
+      instructionsAr: 'تابع كيف يتغير نبض قلبك وتنفسك من الراحة إلى الجري ثم العودة للراحة.',
+      stages: [
+        { step: 1, titleAr: 'الرَّاحَةُ 😌', descAr: 'نبض القلب والتنفس هادئان ومنتظمان، الجسم لا يبذل جهداً.', icon: '😌' },
+        { step: 2, titleAr: 'بِدَايَةُ الجَرْيِ 🏃', descAr: 'يبدأ القلب بالتسارع قليلاً مع أول خطوات الجري.', icon: '🏃' },
+        { step: 3, titleAr: 'أَثْنَاءَ الجَهْدِ 💨', descAr: 'يتسارع التنفس ونبض القلب كثيراً ليمدّا الجسم بالأوكسجين والطاقة.', icon: '💨' },
+        { step: 4, titleAr: 'العَوْدَةُ لِلرَّاحَةِ 🧘', descAr: 'بعد التوقف، يعود التنفس ونبض القلب تدريجياً إلى وضعهما الطبيعي.', icon: '🧘' },
+      ],
+    },
     examplesAr: [
       {
         problem: 'ماذا يحدث لحجم الصدر عند قيام الطفل بالشهيق العميق؟',
@@ -139,6 +150,19 @@ export const SCIENCE_3AP: CourseLesson[] = [
       'أخطار سوء التغذية:\n- السُّمْنَةُ (Obesity): تنتج عن الإفراط في تناول السكريات والدهون.\n- الهُزَالُ وَالنَّقْصُ: ينتج عن قلة الأكل وعدم تنوع الوجبات.\n- تَسَوُّسُ الأَسْنَانِ: ينتج عن كثرة الحلويات وعدم تنظيف الأسنان بالفرشاة والمعجون.'
     ],
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'مُطَابَقَةُ الأَغْذِيَةِ بِمَجْمُوعَاتِهَا السِّتِّ',
+      instructionsAr: 'اربط كل غذاء بمجموعته الغذائية الصحيحة.',
+      pairs: [
+        { leftAr: 'الخبز والأرز والمعكرونة 🌾', rightAr: 'الحبوب ومشتقاتها', explanationAr: 'تزود الجسم بالطاقة اللازمة للنشاط.' },
+        { leftAr: 'التفاح والجزر والبرتقال 🍎', rightAr: 'الخضر والفواكه', explanationAr: 'تقي الجسم من الأمراض بالفيتامينات.' },
+        { leftAr: 'الحليب والجبن واللبن 🥛', rightAr: 'الحليب ومشتقاته', explanationAr: 'يغذي العظام والأسنان بالكالسيوم.' },
+        { leftAr: 'السمك والدجاج والبيض 🍗', rightAr: 'اللحوم والأسماك والبيض', explanationAr: 'يبني العضلات ويساعد على النمو.' },
+        { leftAr: 'زيت الزيتون والزبدة 🫒', rightAr: 'الدهون والزيوت', explanationAr: 'طاقة مخزنة يجب استهلاكها باعتدال.' },
+        { leftAr: 'العسل والمربى 🍯', rightAr: 'السكريات', explanationAr: 'طاقة سريعة، لكن الإفراط فيها يسبب السمنة وتسوس الأسنان.' },
+      ],
+    },
     examplesAr: [
       {
         problem: 'صنف الأغذية التالية: (التفاح، الجبن، الخبز، السمك)',
@@ -234,6 +258,17 @@ export const SCIENCE_3AP: CourseLesson[] = [
       'مكونات البذرة وشروط الإنتاش (Germination):\n- تتكون البذرة من: اللِّحَافَةِ (غلاف حامي)، الفَلَقَتَيْنِ (مخزن الغذاء)، وَالرُّشَيْمِ (النبيتة الصغرى المتكونة من جذير وسويقة ورشيم ورقي).\n- شروط إنتاش البذرة: سلامة البذرة، وجود المَاءِ، وَالحَرَارَةُ الملاَئِمَةُ.'
     ],
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'process_stages',
+      titleAr: 'مَرَاحِلُ إِنْتَاشِ البَذْرَةِ وَنُمُوِّ النَّبْتَةِ',
+      instructionsAr: 'تابع مراحل إنتاش بذرة الفاصولياء خطوة بخطوة.',
+      stages: [
+        { step: 1, titleAr: 'البَذْرَةُ 🌰', descAr: 'بذرة سليمة نضعها في قطن مبلل أو تربة رطبة.', icon: '🌰' },
+        { step: 2, titleAr: 'الانْتِفَاخُ وَالانْشِقَاقُ 💧', descAr: 'تمتص البذرة الماء فتنتفخ وينشق غلافها (اللحافة).', icon: '💧' },
+        { step: 3, titleAr: 'خُرُوجُ الجُذَيْرِ 🌱', descAr: 'يخرج الجذير أولاً ويتجه نحو الأسفل في التربة.', icon: '🌱' },
+        { step: 4, titleAr: 'نَبْتَةٌ صَغِيرَةٌ 🌿', descAr: 'تتشكل السويقة والوريقتان الأوليتان وتتجهان نحو الضوء.', icon: '🌿' },
+      ],
+    },
     examplesAr: [
       {
         problem: 'ماذا يحدث لنبتة وضعناها داخل خزانة مظلمة مغلقة مع السقي بالماء يومياً؟',
@@ -328,6 +363,19 @@ export const SCIENCE_3AP: CourseLesson[] = [
       'التكيف والتلاؤم مع الوسط: يتناسب نظام أسنان الحيوان وشكل أطرافه تناسباً مباشراً مع طريقة حصوله على غذائه ونمط تنقله في بيئته الطبيعية.'
     ],
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'مُطَابَقَةُ الحَيَوَانِ بِنِظَامِهِ الغِذَائِيِّ وَنَمَطِ تَنَقُّلِهِ',
+      instructionsAr: 'اربط كل حيوان بالوصف الصحيح لنظامه الغذائي أو طريقة تنقله.',
+      pairs: [
+        { leftAr: 'الخروف والأرنب 🐑', rightAr: 'عُشْبِيٌّ بلا أنياب', explanationAr: 'يتغذيان على الأعشاب بقواطع وأضراس دون أنياب.' },
+        { leftAr: 'الأسد والذئب 🦁', rightAr: 'لاَحِمٌ بأنياب حادة', explanationAr: 'يتغذيان على اللحوم بأنياب طويلة لتمزيقها.' },
+        { leftAr: 'الضفدع والأرنب 🐸', rightAr: 'يتنقل بالقفز', explanationAr: 'أطرافه الخلفية طويلة ومطوية تساعده على القفز.' },
+        { leftAr: 'السمكة 🐟', rightAr: 'تتنقل بالسباحة', explanationAr: 'بفضل زعانفها وجسمها الانسيابي.' },
+        { leftAr: 'الثعبان 🐍', rightAr: 'يتنقل بالزحف', explanationAr: 'لا يملك أطرافاً فيزحف بتقلص عضلات جسمه.' },
+        { leftAr: 'الدجاجة 🐔', rightAr: 'حيوان بيوض', explanationAr: 'تضع بيضاً ينمو فيه الجنين خارج جسمها.' },
+      ],
+    },
     examplesAr: [
       {
         problem: 'لماذا يمتلك الأسد أنياباً طويلة وحادة بينما الخروف لا يمتلك أنياباً؟',
@@ -431,7 +479,6 @@ export const SCIENCE_3AP: CourseLesson[] = [
       'تحولات حالة المادة:\n- الاِنْصِهَارُ (Melting): تحول المادة من الحالة الصلبة إلى السائلة بفعل الارتفاع في درجة الحرارة (كالعرائس الشمعية أو الثلج أو الشوكولاتة).\n- التَّجَمُّدُ (Freezing): تحول المادة من الحالة السائلة إلى الصلبة بفعل الانخفاض في درجة الحرارة (التبريد).',
       'قياس الكتل باستعمال الميزان (الميزان ذو الكفتين - Roberval):\n- نقارن كتلة جسمين أو نقيس كتلة جسم بوضع الكتل المرقومة المعلومة في كفة والجسم في الكفة الأخرى.\n- عند التوازن الأفقي للكفتين واستقرار الإبرة في المنتصف، تكون كتلة الجسم مساوية لمجموع الكتل المرقومة.\n- وحدات الكتلة: الغَرَامُ (g) للأشياء الخفيفة، والكِيلُوغَرَامُ (kg) للأشياء الثقيلة (1 kg = 1000 g).'
     ],
-    interactiveTool: 'science_lab',
     examplesAr: [
       {
         problem: 'إذا وضعنا على الكفة الأولى لميزان متوازن كتلتي (200g + 100g)، فكم تكون كتلة الكيس الموجود في الكفة الثانية؟',
@@ -526,6 +573,61 @@ export const SCIENCE_3AP: CourseLesson[] = [
       'النواقل والعوازل الكهربائية:\n- النَّوَاقِلُ (Conductors): مواد تسمح بمرور الكهرباء وتجعل المصباح يضيء (كالمعادن: الحديد، النحاس، الألومنيوم، والماء المالح).\n- العَوَازِلُ (Insulators): مواد لا تسمح بمرور الكهرباء ولا يضيء المصباح عند استعمالها (كالخشب، البلاستيك، الزجاج، المطاط، الورق).'
     ],
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'circuit_builder',
+      titleAr: 'مُحَاكَاةُ تَرْكِيبِ دَارَةٍ كَهْرَبَائِيَّةٍ بَسِيطَةٍ',
+      titleFr: 'Montage d\'un circuit électrique simple',
+      instructionsAr: 'رَكِّبِ البَطَّارِيَةَ وَالأَسْلَاكَ وَالمِصْبَاحَ وَشَاهِدْ متى يُضِيءُ المِصْبَاحُ.',
+      instructionsFr: 'Assemblez la pile, les fils et l\'ampoule pour voir quand elle s\'allume.',
+      availableComponents: [
+        { id: 'battery', nameAr: 'بطارية', nameFr: 'Pile', type: 'battery' },
+        { id: 'wire', nameAr: 'أسلاك توصيل نحاسية', nameFr: 'Fils de cuivre', type: 'wire' },
+        { id: 'bulb', nameAr: 'مصباح', nameFr: 'Ampoule', type: 'bulb' },
+        { id: 'iron_nail', nameAr: 'مسمار من الحديد (ناقل)', nameFr: 'Clou en fer (Conducteur)', type: 'conductor' },
+        { id: 'plastic_ruler', nameAr: 'مسطرة بلاستيكية (عازل)', nameFr: 'Règle en plastique (Isolant)', type: 'insulator', isInsulator: true },
+      ],
+      combinations: [
+        {
+          id: 'closed_circuit',
+          titleAr: 'التركيب الأول: دارة مغلقة بأسلاك نحاسية',
+          titleFr: 'Montage 1 : Circuit fermé avec fils de cuivre',
+          components: ['battery', 'wire', 'bulb'],
+          switchState: 'closed',
+          success: true,
+          bulbLit: true,
+          messageAr: '🟢 يضيء المصباح! الدارة مغلقة بمواد ناقلة.',
+          messageFr: '🟢 L\'ampoule s\'allume ! Le circuit est fermé.',
+          explanationAr: 'يمر التيار الكهربائي من البطارية عبر الأسلاك النحاسية الناقلة إلى المصباح فيضيء.',
+          explanationFr: 'Le courant circule à travers les fils conducteurs jusqu\'à l\'ampoule.',
+        },
+        {
+          id: 'nail_circuit',
+          titleAr: 'التركيب الثاني: إدخال مسمار من الحديد',
+          titleFr: 'Montage 2 : Ajout d\'un clou en fer',
+          components: ['battery', 'wire', 'bulb', 'iron_nail'],
+          switchState: 'closed',
+          success: true,
+          bulbLit: true,
+          messageAr: '🟢 يضيء المصباح! الحديد مادة ناقلة للكهرباء.',
+          messageFr: '🟢 L\'ampoule s\'allume ! Le fer est un conducteur.',
+          explanationAr: 'الحديد معدن ناقل للكهرباء، فيسمح بمرور التيار مثل الأسلاك تماماً.',
+          explanationFr: 'Le fer, comme les métaux, conduit l\'électricité.',
+        },
+        {
+          id: 'insulator_circuit',
+          titleAr: 'التركيب الثالث: إدخال مسطرة بلاستيكية',
+          titleFr: 'Montage 3 : Ajout d\'une règle en plastique',
+          components: ['battery', 'wire', 'bulb', 'plastic_ruler'],
+          switchState: 'closed',
+          success: false,
+          bulbLit: false,
+          messageAr: '🔴 لا يضيء المصباح! البلاستيك مادة عازلة.',
+          messageFr: '🔴 L\'ampoule reste éteinte ! Le plastique est un isolant.',
+          explanationAr: 'البلاستيك مادة عازلة تمنع مرور التيار الكهربائي تماماً.',
+          explanationFr: 'Le plastique empêche le passage du courant électrique.',
+        },
+      ],
+    },
     examplesAr: [
       {
         problem: 'ماذا يحدث للمصباح في دارة كهربائية إذا وضعنا في طريق التيار مسماراً من الحديد؟',

@@ -47,6 +47,16 @@ export const SCIENCE_2AP: CourseLesson[] = [
       takeawayAr: 'أَنْمُو كل سنة (طولاً ووزناً)، وأحتاج فطوراً صباحياً متوازناً (حليب، خبز، فاكهة) ليمنحني الطاقة والنمو السليم.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'لعبة صندوق الفطور المتوازن',
+      instructionsAr: 'اربط كل غذاء بالفائدة التي يقدمها لجسمك!',
+      pairs: [
+        { leftAr: 'كوب حليب 🥛', rightAr: 'يقوي العظام والأسنان', explanationAr: 'الحليب غني بالكالسيوم.' },
+        { leftAr: 'خبز 🍞', rightAr: 'يمنحني الطاقة للنشاط', explanationAr: 'الحبوب مصدر طاقة أساسي.' },
+        { leftAr: 'فاكهة 🍎', rightAr: 'تقيني من الأمراض', explanationAr: 'الفواكه غنية بالفيتامينات.' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc2ap-growth',
@@ -135,6 +145,16 @@ export const SCIENCE_2AP: CourseLesson[] = [
       takeawayAr: 'أغسل يديّ بالماء والصابون قبل الأكل وبعد الحمام واللعب، وأنظف أسناني صباحاً ومساءً — هذا يحميني من الجراثيم والمرض.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'لعبة متى أغسل يديّ؟',
+      instructionsAr: 'اربط كل لحظة بالتصرف الصحي الصحيح!',
+      pairs: [
+        { leftAr: 'قبل الأكل 🍽️', rightAr: 'أغسل يديّ بالماء والصابون', explanationAr: 'لإزالة الجراثيم قبل تناول الطعام.' },
+        { leftAr: 'بعد الحمام 🚻', rightAr: 'أغسل يديّ بالماء والصابون', explanationAr: 'عادة صحية أساسية.' },
+        { leftAr: 'صباحاً ومساءً 🪥', rightAr: 'أنظف أسناني بالفرشاة', explanationAr: 'يحمي الأسنان من التسوس.' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc2ap-hygiene',
@@ -225,6 +245,17 @@ export const SCIENCE_2AP: CourseLesson[] = [
       takeawayAr: 'النبتة كائن حي: تنمو من بذرة، وتحتاج الماء وضوء الشمس لتبقى حية وخضراء. بدون ماء تذبل وتجف.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'process_stages',
+      titleAr: 'رحلة نمو النبتة',
+      instructionsAr: 'تابع مراحل نمو النبتة من البذرة إلى نبتة كاملة.',
+      stages: [
+        { step: 1, titleAr: 'البَذْرَةُ 🌰', descAr: 'حبة صغيرة نزرعها في التراب.', icon: '🌰' },
+        { step: 2, titleAr: 'السَّقْيُ 💧', descAr: 'تحتاج البذرة الماء لتبدأ الإنبات.', icon: '💧' },
+        { step: 3, titleAr: 'الإِنْبَاتُ 🌱', descAr: 'يخرج جذير صغير ثم ساق أخضر.', icon: '🌱' },
+        { step: 4, titleAr: 'النُّمُوُّ 🌳', descAr: 'تكبر النبتة بفضل الماء وضوء الشمس.', icon: '🌳' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc2ap-plants',
@@ -313,6 +344,17 @@ export const SCIENCE_2AP: CourseLesson[] = [
       takeawayAr: 'الحيوان الأليف يعيش قرب الإنسان ويعتني به (قطة، كلب، دجاجة). الحيوان البري يعيش بعيداً وحراً (أسد، ذئب، ثعلب). لكل حيوان صوت مميز.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'لعبة أليف أم بري؟',
+      instructionsAr: 'اربط كل حيوان بنوعه وصوته المميز!',
+      pairs: [
+        { leftAr: 'القِطَّةُ 🐈', rightAr: 'أَلِيفَةٌ، تَمُوءُ', explanationAr: 'تعيش قرب الإنسان في البيت.' },
+        { leftAr: 'الدَّجَاجَةُ 🐔', rightAr: 'أَلِيفَةٌ، تُقَقِّقُ', explanationAr: 'يربيها الإنسان في المزرعة.' },
+        { leftAr: 'الأَسَدُ 🦁', rightAr: 'بَرِّيٌّ، يَزْأَرُ', explanationAr: 'يعيش حراً بعيداً عن الإنسان.' },
+        { leftAr: 'الذِّئْبُ 🐺', rightAr: 'بَرِّيٌّ، يَعْوِي', explanationAr: 'يعيش في الغابة بعيداً عن الإنسان.' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc2ap-animals',
@@ -405,6 +447,16 @@ export const SCIENCE_2AP: CourseLesson[] = [
       takeawayAr: 'الجسم الصلب يحتفظ بشكله (القلم، الكتاب). الجسم السائل يأخذ شكل إنائه (الماء، الحليب). الصوت ينتج عن اهتزاز الأشياء.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'لعبة صلب أم سائل أم مصدر صوت؟',
+      instructionsAr: 'اربط كل شيء بحالته أو صفته الصحيحة!',
+      pairs: [
+        { leftAr: 'القَلَمُ ✏️', rightAr: 'جِسْمٌ صُلْبٌ', explanationAr: 'يحتفظ بشكله أينما وضعناه.' },
+        { leftAr: 'الحَلِيبُ 🥛', rightAr: 'جِسْمٌ سَائِلٌ', explanationAr: 'يأخذ شكل الإناء الذي يوضع فيه.' },
+        { leftAr: 'الطَّبْلُ 🥁', rightAr: 'يُصْدِرُ صَوْتًا بِالِاهْتِزَازِ', explanationAr: 'يهتز سطحه بعد الضرب عليه فيصدر صوتاً.' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc2ap-matter',

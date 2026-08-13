@@ -235,7 +235,6 @@ export const MATH_4AP: CourseLesson[] = [
             solution: '1) الكسور العشرية: 3.75 = 375/100 و 2.50 = 250/100.\n2) القماش المستعمل: 3.75 + 2.50 = 6.25m.\n3) القماش المتبقي: 10.00 - 6.25 = 3.75m.'
         }
     ],
-    interactiveTool: 'unit_converter',
     quiz: [
         {
             id: 'q1',
@@ -303,7 +302,6 @@ export const MATH_4AP: CourseLesson[] = [
             solution: '1) يملك المستطيل 4 زوايا قائمة تشكلت بالتعامد بين الطول والعرض.\n2) يملك المستطيل محوري تناظر اثنان (محوران منصفان للأضلاع المتقابلة).'
         }
     ],
-    interactiveTool: 'geometry_visualizer',
     quiz: [
         {
             id: 'q1',
@@ -472,7 +470,6 @@ export const MATH_4AP: CourseLesson[] = [
             solution: 'حساب المدة المستغرقة (وقت الوصول - وقت الانطلاق):\n13h 15min - 08h 30min:\n- تحويل ساعة واحدة إلى 60 دقيقة: 12h 75min - 08h 30min.\n- الساعات: 12 - 8 = 4h.\n- الدقائق: 75 - 30 = 45min.\nالجواب: استغرقت الرحلة 4 ساعات و 45 دقيقة (4h 45min).'
         }
     ],
-    interactiveTool: 'unit_converter',
     quiz: [
         {
             id: 'q1',

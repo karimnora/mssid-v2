@@ -44,33 +44,18 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'safety_roleplay',
-        sceneTitleAr: 'مُحَاكَاةُ رِحْلَةِ اللُّقْمَةِ وَالقَوَاعِدِ الصِّحِّيَّةِ لِلْهَضْمِ',
-        sceneTitleFr: 'Trajet des Aliments et Règles d\'Hygiène Digestive',
-        sceneDescriptionAr: 'تَلَقَّى عُمَرُ وَجْبَةً غَذَائِيَّةً دَسِمَةً. اخْتَرْ السُّلُوكَ الصَّحِيَّ السَّلِيمَ لِضَمَانِ هَضْمٍ مُرْتَاحٍ فِي الأُنْبُوبِ الهَضْمِيِّ.',
-        sceneDescriptionFr: 'Choisissez le comportement hygiénique pour garantir une bonne digestion.',
-        choices: [
-            {
-                id: 'c1',
-                textAr: 'مَضْغُ الطَّعَامِ جَيِّداً فِي الفَمِ وَتَنَاوُلُهُ بِهُدُوءٍ',
-                textFr: 'Bien mâcher les aliments et manger lentement',
-                isSafe: true,
-                statusLabelAr: 'سُلُوكٌ صِحِّيٌّ سَلِيمٌ 🟢',
-                statusLabelFr: 'Comportement Sano 🟢',
-                resultMessageAr: 'مُمْتَازٌ! المَضْغُ الجَيِّدُ فِي الفَمِ يُسَهِّلُ عَمَلَ المَعِدَةِ وَالمَعِي الدَّقِيقِ وَيَمْنَعُ عُسْرَ الهَضْمِ.',
-                resultMessageFr: 'Bravo ! La mastication facilite le travail de l\'estomac.'
-            },
-            {
-                id: 'c2',
-                textAr: 'بَلْعُ اللُّقَمِ الكَبِيرَةِ بِسُرْعَةٍ مَعَ شُرْبِ مَشْرُوبَاتٍ غَازِيَّةٍ',
-                textFr: 'Avaler de gros morceaux rapidement avec du soda',
-                isSafe: false,
-                statusLabelAr: 'عُسْرُ هَضْمٍ وَآلاَمٌ 🔴',
-                statusLabelFr: 'Indigestion 🔴',
-                resultMessageAr: 'خَطَأٌ! بَلْعُ اللُّقَمِ دُونَ مَضْغٍ يُسَبِّبُ آلاَمَ المَعِدَةِ وَالانْتِفَاخَ.',
-                resultMessageFr: 'Attention ! Ne pas mâcher provoque de graves crampes d\'estomac.'
-            }
-        ]
+        type: 'process_stages',
+        titleAr: 'رِحْلَةُ اللُّقْمَةِ فِي الأُنْبُوبِ الهَضْمِيِّ',
+        titleFr: 'Le Trajet de l\'Aliment dans le Tube Digestif',
+        instructionsAr: 'تَابِعْ مَسَارَ الطَّعَامِ خُطْوَةً بِخُطْوَةٍ دَاخِلَ جِسْمِكَ.',
+        instructionsFr: 'Suivez le trajet de l\'aliment étape par étape.',
+        stages: [
+            { step: 1, titleAr: 'الفَمُ 👄', descAr: 'مَضْغُ الطَّعَامِ وَتَبْلِيلُهُ بِاللُّعَابِ.', icon: '👄' },
+            { step: 2, titleAr: 'المَرِيءُ 🔽', descAr: 'أُنْبُوبٌ يَنْقُلُ اللُّقْمَةَ إِلَى المَعِدَةِ.', icon: '🔽' },
+            { step: 3, titleAr: 'المَعِدَةُ 🫃', descAr: 'طَحْنُ وَخَلْطُ الطَّعَامِ بِالعَصَارَةِ المَعِدِيَّةِ.', icon: '🫃' },
+            { step: 4, titleAr: 'المَعِي الدَّقِيقُ 🔄', descAr: 'اكْتِمَالُ الهَضْمِ وَامْتِصَاصُ المَغَذِّيَاتِ نَحْوَ الدَّمِ.', icon: '🔄' },
+            { step: 5, titleAr: 'المَعِي الغَلِيظُ ➡️', descAr: 'تَجْمِيعُ الفَضَلَاتِ وَطَرْحُهَا خَارِجَ الجِسْمِ.', icon: '➡️' },
+        ],
     },
     quiz: [
         {
@@ -133,33 +118,17 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'safety_roleplay',
-        sceneTitleAr: 'مُحَاكَاةُ الجَهْدِ العَضَلِيِّ وَالوَتِيرَةِ التَّنَفُّسِيَّةِ وَالقَلْبِيَّةِ',
-        sceneTitleFr: 'Effort Musculaire et Rythmes Cardiorespiratoires',
-        sceneDescriptionAr: 'يَسْتَعِدُّ سَامِي لِسِبَاقِ الجَرْيِ السَّرِيعِ فِي الرِّيَاضَةِ. اخْتَرْ المَجْهُودَ العَضَلِيَّ المُنَاسِبَ وَلَاحِظْ اسْتِجَابَةَ الجِسْمِ.',
-        sceneDescriptionFr: 'Observez l\'adaptation des rythmes cardiaque et respiratoire à l\'effort.',
-        choices: [
-            {
-                id: 'c1',
-                textAr: 'القِيَامُ بِالجَرْيِ السَّرِيعِ (مَجْهُودٌ عَضَلِيٌّ كَبِيرٌ)',
-                textFr: 'Course rapide (effort intense)',
-                isSafe: true,
-                statusLabelAr: 'تَسَارُعُ النَّبْضِ وَالتَّنَفُّسِ 🟢',
-                statusLabelFr: 'Rythmes Accélérés 🟢',
-                resultMessageAr: 'مُمْتَازٌ! تَرْتَفِعُ الوتِيرَةُ التنَفُّسِيَّةُ (40 حَرَكَةً) وَالقلبِيَّةُ (130 دَقَّةً) لِتَزْوِيدِ العَضَلَاتِ بِالأُوكْسِجِينِ.',
-                resultMessageFr: 'Bravo ! Les rythmes s\'accélèrent pour alimenter les muscles en oxygène.'
-            },
-            {
-                id: 'c2',
-                textAr: 'الجُلُوسُ وَالرَّاحَةُ التَّامَّةُ (دُونَ مَجْهُودٍ)',
-                textFr: 'Repos complet au calme',
-                isSafe: false,
-                statusLabelAr: 'وَتِيرَةٌ هَادِئَةٌ عادِيَّةٌ 🔵',
-                statusLabelFr: 'Rythme Normal 🔵',
-                resultMessageAr: 'فِي حَالَةِ الرَّاحَةِ تَكُونُ الوتِيرَةُ التنَفُّسِيَّةُ (16-20) وَالقلبِيَّةُ (70-80) فِي حَدِّهَا الأَدْنَى.',
-                resultMessageFr: 'Au repos, le corps consomme le minimum d\'énergie.'
-            }
-        ]
+        type: 'process_stages',
+        titleAr: 'اسْتِجَابَةُ الجِسْمِ لِلْمَجْهُودِ العَضَلِيِّ',
+        titleFr: 'La Réponse du Corps à l\'Effort Musculaire',
+        instructionsAr: 'تَابِعْ كَيْفَ تَتَغَيَّرُ الوَتِيرَةُ التَّنَفُّسِيَّةُ وَالقَلْبِيَّةُ مَعَ الجَهْدِ.',
+        instructionsFr: 'Suivez l\'évolution des rythmes respiratoire et cardiaque avec l\'effort.',
+        stages: [
+            { step: 1, titleAr: 'الرَّاحَةُ 😌', descAr: 'وَتِيرَةٌ هَادِئَةٌ: 16-20 حَرَكَةً تَنَفُّسِيَّةً، 70-80 دَقَّةَ قَلْبٍ.', icon: '😌' },
+            { step: 2, titleAr: 'بِدَايَةُ الجَرْيِ 🚶', descAr: 'يَبْدَأُ النَّبْضُ وَالتَّنَفُّسُ بِالتَّسَارُعِ تَدْرِيجِيّاً.', icon: '🚶' },
+            { step: 3, titleAr: 'الجَرْيُ السَّرِيعُ 🏃', descAr: 'ذُرْوَةُ التَّسَارُعِ: 40 حَرَكَةً تَنَفُّسِيَّةً، 130 دَقَّةَ قَلْبٍ لِتَزْوِيدِ العَضَلَاتِ بِالأُوكْسِجِينِ.', icon: '🏃' },
+            { step: 4, titleAr: 'العَوْدَةُ لِلرَّاحَةِ 🧘', descAr: 'تَعُودُ الوَتِيرَتَانِ تَدْرِيجِيّاً إِلَى مُعَدَّلِهِمَا الطَّبِيعِيِّ.', icon: '🧘' },
+        ],
     },
     quiz: [
         {
@@ -312,33 +281,16 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'safety_roleplay',
-        sceneTitleAr: 'مُحَاكَاةُ شُرُوطِ نَمُوِّ النَّبَاتِ الأَخْضَرِ وَالتَّكَيُّفِ مَعَ الجَفَافِ',
-        sceneTitleFr: 'Besoins de la Plante Verte et Adaptation à la Sécheresse',
-        sceneDescriptionAr: 'تُرِيدُ زِرَاعَةَ نَبْتَةٍ فِي الصَّحْرَاءِ. اخْتَرْ الشُّرُوطَ وَالتَّحَوُّرَاتِ المُنَاسِبَةَ لِضَمَانِ نَجَاحِ النموِّ.',
-        sceneDescriptionFr: 'Sélectionnez les bonnes conditions pour assurer la croissance de la plante.',
-        choices: [
-            {
-                id: 'c1',
-                textAr: 'تَوْفِيرُ المَاءِ وَالضَّوْءِ وَالأَمْلَاحِ مَعَ اختيار أَوْرَاقٍ شوكِيَّةٍ خَازِنَةٍ',
-                textFr: 'Fournir eau, lumière, minéraux et privilégier des feuilles épineuses',
-                isSafe: true,
-                statusLabelAr: 'نَمُوٌّ سَلِيمٌ وَمُقَاوَمَةٌ 🟢',
-                statusLabelFr: 'Croissance et Résistance 🟢',
-                resultMessageAr: 'مُمْتَازٌ! النَّبْتَةُ الصَّحْرَاوِيَّةُ تُقَاوِمُ الجَفَافَ بِأَوْرَاقِهَا الشَّوْكِيَّةِ وَسَاقِهَا اللَّحْمِيَّةِ.',
-                resultMessageFr: 'Bravo ! Les adaptations épineuses évitent l\'évaporation de l\'eau.'
-            },
-            {
-                id: 'c2',
-                textAr: 'حَجْبُ الضَّوْءِ وَالمَاءِ عَنِ النَّبْتَةِ فِي مَكَانٍ مُظْلِمٍ',
-                textFr: 'Priver la plante d\'eau et de lumière dans l\'obscurité',
-                isSafe: false,
-                statusLabelAr: 'ذُبُولٌ وَمَوْتُ النَّبْتَةِ 🔴',
-                statusLabelFr: 'Plante Flétrie 🔴',
-                resultMessageAr: 'خَطَأٌ! بِدُونِ مَاءٍ وَلا ضَوْءٍ يَذْبُلُ النَّبَاتُ الأَخْضَرُ وَيَمُوتُ.',
-                resultMessageFr: 'Erreur ! Sans eau ni lumière, la plante dépérit.'
-            }
-        ]
+        type: 'matching_lab',
+        titleAr: 'مُطَابَقَةُ تَحَوُّرَاتِ النَّبَاتَاتِ الصَّحْرَاوِيَّةِ مَعَ فَائِدَتِهَا',
+        titleFr: 'Adaptations des Plantes du Désert',
+        instructionsAr: 'اربط كل تحور عند النبات الصحراوي بالفائدة التي يقدمها في مقاومة الجفاف.',
+        instructionsFr: 'Associez chaque adaptation de la plante désertique à son utilité.',
+        pairs: [
+            { leftAr: 'أَوْرَاقٌ شَوْكِيَّةٌ دَقِيقَةٌ 🌵', rightAr: 'تُقَلِّلُ ضَيَاعَ المَاءِ بِالنَّتْحِ', explanationAr: 'كلما صغرت مساحة الورقة، قل الماء المتبخر منها.' },
+            { leftAr: 'سَاقٌ لَحْمِيَّةٌ عَصَارِيَّةٌ 🫙', rightAr: 'تُخَزِّنُ المَاءَ لِوَقْتِ الحَاجَةِ', explanationAr: 'يخزن الصبار الماء في ساقه السميكة.' },
+            { leftAr: 'جُذُورٌ عَمِيقَةٌ جِدّاً 🌱', rightAr: 'تَبْحَثُ عَنِ المِيَاهِ الجَوْفِيَّةِ', explanationAr: 'تمتد الجذور بعيداً تحت الأرض بحثاً عن الماء.' },
+        ],
     },
     quiz: [
         {
@@ -520,46 +472,17 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'mixtures_lab',
-        titleAr: 'مُحَاكَاةُ تَحَوُّلَاتِ حَالَاتِ المَادَّةِ وَفَصْلِ المَوَادِّ',
-        titleFr: 'Changements d\'États de la Matière et Séparation',
-        instructionsAr: 'اخْتَرْ المَادَّةَ وَطَرِيقَةَ الفَصْلِ أَوْ التَّحَوُّلِ الحرَارِيِّ المناسِبَةِ.',
-        instructionsFr: 'Sélectionnez le mélange et la méthode de séparation appropriée.',
-        mixtures: [
-            {
-                id: 'salt_water',
-                ingredient1Ar: 'ماء سائل',
-                ingredient1Fr: 'Eau liquide',
-                ingredient2Ar: 'ملح طعام مذاب',
-                ingredient2Fr: 'Sel dissous',
-                mixtureTypeAr: 'خليط متجانس (محلول مائي)',
-                mixtureTypeFr: 'Mélange homogène',
-                availableMethods: [
-                    {
-                        id: 'evaporation',
-                        nameAr: 'التبخير التام بالتسخين',
-                        nameFr: 'Évaporation par chauffage',
-                        isCorrect: true,
-                        resultTitleAr: 'نجاح التبخير الانفصالي 🟢',
-                        resultTitleFr: 'Évaporation Réussie 🟢',
-                        animationState: 'boiling',
-                        explanationAr: 'بالتسخين يتبخر الماء السائل ليتحول إلى بخار بينما يترسب الملح الصلب في القاع.',
-                        explanationFr: 'L\'eau s\'évapore sous l\'effet de la chaleur et le sel se dépose au fond.'
-                    },
-                    {
-                        id: 'filtration',
-                        nameAr: 'الترشيح بالورق',
-                        nameFr: 'Filtration',
-                        isCorrect: false,
-                        resultTitleAr: 'فشل الترشيح 🔴',
-                        resultTitleFr: 'Filtration Inefficace 🔴',
-                        animationState: 'filtering',
-                        explanationAr: 'الترشيح لا يفصل الملح المذاب في الماء المتجانس!',
-                        explanationFr: 'La filtration ne sépare pas le sel dissous dans l\'eau.'
-                    }
-                ]
-            }
-        ]
+        type: 'process_stages',
+        titleAr: 'رِحْلَةُ المَاءِ بَيْنَ حَالَاتِ المَادَّةِ الثَّلَاثِ',
+        titleFr: 'Le Voyage de l\'Eau entre les 3 États de la Matière',
+        instructionsAr: 'تَابِعْ كَيْفَ يَتَحَوَّلُ المَاءُ مِنَ الثَّلْجِ الصَّلْبِ إِلَى البُخَارِ الغَازِيِّ وَبِالعَكْسِ.',
+        instructionsFr: 'Suivez la transformation de l\'eau entre ses trois états.',
+        stages: [
+            { step: 1, titleAr: 'صَلْبٌ (ثَلْجٌ) 🧊', descAr: 'شَكْلٌ وَحَجْمٌ ثَابِتَانِ.', icon: '🧊' },
+            { step: 2, titleAr: 'الاِنْصِهَارُ 🔥', descAr: 'بِالتَّسْخِينِ، يَتَحَوَّلُ الثَّلْجُ الصَّلْبُ إِلَى مَاءٍ سَائِلٍ.', icon: '🔥' },
+            { step: 3, titleAr: 'سَائِلٌ (مَاءٌ) 💧', descAr: 'حَجْمٌ ثَابِتٌ يَأْخُذُ شَكْلَ الإِنَاءِ.', icon: '💧' },
+            { step: 4, titleAr: 'التَّبَخُّرُ وَالتَّكَاثُفُ ☁️', descAr: 'بِمَزِيدٍ مِنَ التَّسْخِينِ يَتَحَوَّلُ المَاءُ إِلَى بُخَارٍ غَازِيٍّ، وَبِالتَّبْرِيدِ يَعُودُ سَائِلاً.', icon: '☁️' },
+        ],
     },
     quiz: [
         {
@@ -623,33 +546,17 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'safety_roleplay',
-        sceneTitleAr: 'مُحَاكَاةُ دَوَرَانِ الأَرْضِ وَتَعَاقُبِ اللَّيْلِ وَالنَّهَارِ وَالفُصُولِ',
-        sceneTitleFr: 'Rotation de la Terre et Alternance Jour/Nuit',
-        sceneDescriptionAr: 'شَاهِدْ حركة الكرة الأرضية أمام الشمس واختر الظاهرة الفلكية الصحيحة.',
-        sceneDescriptionFr: 'Observez la rotation de la Terre devant le Soleil.',
-        choices: [
-            {
-                id: 'c1',
-                textAr: 'دَوَرَانُ الأَرْضِ حَوْلَ مِحْوَرِهَا (نَفْسِهَا) فِي 24 سَاعَةً',
-                textFr: 'Rotation de la Terre sur son axe en 24h',
-                isSafe: true,
-                statusLabelAr: 'تَعَاقُبُ اللَّيْلِ وَالنَّهَارِ 🟢',
-                statusLabelFr: 'Alternance Jour/Nuit 🟢',
-                resultMessageAr: 'مُمْتَازٌ! دوران الأرض حول محورها أمام الشمس ينتج عنه تعاقب الليل والنهار.',
-                resultMessageFr: 'Bravo ! La rotation de la Terre sur elle-même produit le jour et la nuit.'
-            },
-            {
-                id: 'c2',
-                textAr: 'دَوَرَانُ الأَرْضِ حَوْلَ الشَّمْسِ فِي 365 يَوْماً مَعَ مَيَلَانِ المِحْوَرِ',
-                textFr: 'Révolution autour du Soleil en 365 jours',
-                isSafe: true,
-                statusLabelAr: 'تَعَاقُبُ الفُصُولِ الأَرْبَعَةِ 🟢',
-                statusLabelFr: 'Les 4 Saisons 🟢',
-                resultMessageAr: 'مُمْتَازٌ! دوران الأرض حول الشمس مع ميلان المحور ينتج عنه الفصول الأربعة.',
-                resultMessageFr: 'Bravo ! La révolution autour du Soleil crée les 4 saisons.'
-            }
-        ]
+        type: 'process_stages',
+        titleAr: 'رِحْلَةُ يَوْمٍ كَامِلٍ: دَوَرَانُ الأَرْضِ أَمَامَ الشَّمْسِ',
+        titleFr: 'Une Journée Complète : la Terre Face au Soleil',
+        instructionsAr: 'تَابِعْ كَيْفَ يَنْتُجُ تَعَاقُبُ اللَّيْلِ وَالنَّهَارِ عَنْ دَوَرَانِ الأَرْضِ حَوْلَ نَفْسِهَا.',
+        instructionsFr: 'Suivez comment la rotation de la Terre produit le jour et la nuit.',
+        stages: [
+            { step: 1, titleAr: 'الصَّبَاحُ 🌅', descAr: 'شُرُوقُ الشَّمْسِ عِنْدَمَا يَبْدَأُ جُزْؤُنَا مِنَ الأَرْضِ بِمُوَاجَهَتِهَا.', icon: '🌅' },
+            { step: 2, titleAr: 'الظَّهِيرَةُ ☀️', descAr: 'الشَّمْسُ فِي أَعْلَى نُقْطَةٍ، وَالظِّلُّ أَقْصَرُ مَا يُمْكِنُ.', icon: '☀️' },
+            { step: 3, titleAr: 'الغُرُوبُ 🌇', descAr: 'يَبْتَعِدُ جُزْؤُنَا مِنَ الأَرْضِ تَدْرِيجِيّاً عَنْ مُوَاجَهَةِ الشَّمْسِ.', icon: '🌇' },
+            { step: 4, titleAr: 'اللَّيْلُ 🌙', descAr: 'يُصْبِحُ جُزْؤُنَا مُعَاكِساً لِلشَّمْسِ تَمَاماً، فَيَعُمُّ الظَّلَامُ.', icon: '🌙' },
+        ],
     },
     quiz: [
         {
@@ -716,33 +623,17 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'safety_roleplay',
-        sceneTitleAr: 'مُحَاكَاةُ شُرُوطِ إِنْبَاتِ البَذْرَةِ',
-        sceneTitleFr: "Conditions de Germination de la Graine",
-        sceneDescriptionAr: 'اخْتَرْ الظُّرُوفَ المُنَاسِبَةَ لِإِنْبَاتِ بَذْرَةٍ بِنَجَاحٍ.',
-        sceneDescriptionFr: "Choisissez les bonnes conditions pour faire germer une graine.",
-        choices: [
-            {
-                id: 'c1',
-                textAr: 'سَقْيُ البَذْرَةِ بِانْتِظَامٍ وَوَضْعُهَا فِي مَكَانٍ دَافِئٍ مُهَوًّى',
-                textFr: 'Arroser régulièrement et placer dans un endroit chaud et aéré',
-                isSafe: true,
-                statusLabelAr: 'إِنْبَاتٌ نَاجِحٌ 🟢',
-                statusLabelFr: 'Germination Réussie 🟢',
-                resultMessageAr: 'مُمْتَازٌ! تَوَفَّرَتِ الشُّرُوطُ الثَّلَاثَةُ: المَاءُ وَالحَرَارَةُ وَالهَوَاءُ، فَأَنْبَتَتِ البَذْرَةُ.',
-                resultMessageFr: 'Bravo ! Les 3 conditions sont réunies, la graine germe.'
-            },
-            {
-                id: 'c2',
-                textAr: 'تَرْكُ البَذْرَةِ جَافَّةً بِدُونِ مَاءٍ فِي عُلْبَةٍ مُغْلَقَةٍ',
-                textFr: 'Laisser la graine sèche sans eau dans une boîte fermée',
-                isSafe: false,
-                statusLabelAr: 'البَذْرَةُ تَبْقَى نَائِمَةً 🔴',
-                statusLabelFr: 'Graine Dormante 🔴',
-                resultMessageAr: 'خَطَأٌ! بِدُونِ مَاءٍ، لَا يُمْكِنُ لِلْبَذْرَةِ أَنْ تُنْبِتَ وَتَبْقَى نَائِمَةً.',
-                resultMessageFr: 'Erreur ! Sans eau, la graine ne peut pas germer.'
-            }
-        ]
+        type: 'process_stages',
+        titleAr: 'مَسَارُ التَّكَاثُرِ: مِنَ الزَّهْرَةِ إِلَى النَّبَاتِ الجَدِيدِ',
+        titleFr: 'De la Fleur à la Nouvelle Plante',
+        instructionsAr: 'تَابِعْ مَرَاحِلَ تَكَاثُرِ النَّبَاتِ بِالبُذُورِ.',
+        instructionsFr: 'Suivez les étapes de la reproduction de la plante par graines.',
+        stages: [
+            { step: 1, titleAr: 'الزَّهْرَةُ 🌸', descAr: 'بَعْدَ التَّلَقُّحِ، تَتَحَوَّلُ الزَّهْرَةُ إِلَى ثَمَرَةٍ.', icon: '🌸' },
+            { step: 2, titleAr: 'الثَّمَرَةُ وَالبَذْرَةُ 🍎', descAr: 'تَحْتَوِي الثَّمَرَةُ عَلَى بُذُورٍ صَغِيرَةٍ.', icon: '🍎' },
+            { step: 3, titleAr: 'الإِنْبَاتُ 🌱', descAr: 'بِتَوَفُّرِ المَاءِ وَالحَرَارَةِ وَالهَوَاءِ، تُنْبِتُ البَذْرَةُ.', icon: '🌱' },
+            { step: 4, titleAr: 'نَبَاتٌ جَدِيدٌ 🌳', descAr: 'يَنْمُو النَّبَاتُ الصَّغِيرُ لِيُصْبِحَ نَبَاتاً كَامِلاً.', icon: '🌳' },
+        ],
     },
     quiz: [
         {
@@ -806,33 +697,16 @@ export const SCIENCE_4AP: CourseLesson[] = [
     ],
     interactiveTool: 'science_lab',
     gameplay_simulation: {
-        type: 'safety_roleplay',
-        sceneTitleAr: 'مُحَاكَاةُ نُمُوِّ الحَيَوَانَاتِ: مُبَاشِرٌ أَمْ بِالتَّحَوُّلِ؟',
-        sceneTitleFr: "Croissance Animale : Directe ou par Métamorphose ?",
-        sceneDescriptionAr: 'اخْتَرْ نَوْعَ النُّمُوِّ الصَّحِيحَ لِلْحَيَوَانِ المَعْرُوضِ.',
-        sceneDescriptionFr: "Choisissez le bon type de croissance pour l'animal.",
-        choices: [
-            {
-                id: 'c1',
-                textAr: 'قِطَّةٌ صَغِيرَةٌ تُشْبِهُ أُمَّهَا وَتَكْبُرُ فِي الحَجْمِ فَقَطْ',
-                textFr: 'Un chaton qui ressemble à sa mère et grandit seulement en taille',
-                isSafe: true,
-                statusLabelAr: 'نُمُوٌّ مُبَاشِرٌ 🟢',
-                statusLabelFr: 'Croissance Directe 🟢',
-                resultMessageAr: 'صَحِيحٌ! القِطَّةُ تُولَدُ شَبِيهَةً بِوَالِدَيْهَا وَتَكْبُرُ فِي الحَجْمِ فَقَطْ دُونَ تَغَيُّرِ شَكْلِهَا.',
-                resultMessageFr: 'Correct ! Le chaton ressemble déjà à ses parents.'
-            },
-            {
-                id: 'c2',
-                textAr: 'يَرَقَةٌ تَتَحَوَّلُ إِلَى شَرْنَقَةٍ ثُمَّ فَرَاشَةٍ بِشَكْلٍ مُخْتَلِفٍ تَمَاماً',
-                textFr: 'Une chenille qui devient chrysalide puis papillon, complètement différente',
-                isSafe: true,
-                statusLabelAr: 'نُمُوٌّ بِالتَّحَوُّلِ 🟢',
-                statusLabelFr: 'Croissance par Métamorphose 🟢',
-                resultMessageAr: 'صَحِيحٌ! الفَرَاشَةُ تُغَيِّرُ شَكْلَهَا بِالكَامِلِ عِدَّةَ مَرَّاتٍ قَبْلَ أَنْ تُصْبِحَ بَالِغَةً.',
-                resultMessageFr: 'Correct ! Le papillon change complètement de forme.'
-            }
-        ]
+        type: 'matching_lab',
+        titleAr: 'مُطَابَقَةُ الحَيَوَانِ بِنَوْعِ نُمُوِّهِ',
+        titleFr: 'Association Animal / Type de Croissance',
+        instructionsAr: 'اربط كل حيوان بنوع نموه الصحيح: مباشر أم بالتحول؟',
+        instructionsFr: 'Associez chaque animal à son type de croissance.',
+        pairs: [
+            { leftAr: 'القِطَّةُ الصَّغِيرَةُ 🐱', rightAr: 'نُمُوٌّ مُبَاشِرٌ (تُشْبِهُ وَالِدَيْهَا)', explanationAr: 'تُولَدُ شَبِيهَةً بِأُمِّهَا وَتَكْبُرُ فِي الحَجْمِ فَقَطْ.' },
+            { leftAr: 'الفَرَاشَةُ 🦋', rightAr: 'نُمُوٌّ بِالتَّحَوُّلِ (بَيْضَةٌ ← يَرَقَةٌ ← شَرْنَقَةٌ ← فَرَاشَةٌ)', explanationAr: 'تُغَيِّرُ شَكْلَهَا بِالكَامِلِ عِدَّةَ مَرَّاتٍ.' },
+            { leftAr: 'الضِّفْدَعُ 🐸', rightAr: 'نُمُوٌّ بِالتَّحَوُّلِ (بَيْضَةٌ ← شَرْغُوفٌ ← ضِفْدَعٌ)', explanationAr: 'يَعِيشُ الشَّرْغُوفُ فِي المَاءِ قَبْلَ أَنْ يُصْبِحَ ضِفْدَعاً بَالِغاً.' },
+        ],
     },
     quiz: [
         {

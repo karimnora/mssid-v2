@@ -18,7 +18,6 @@ import { MathInteractive } from './MathInteractive';
 import { LanguageLabInteractive } from './LanguageLabInteractive';
 import { LessonExplanationView } from './LessonExplanationView';
 import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
-import { ScienceReactorInteractive } from './ScienceReactorInteractive';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { Button, Card, Badge, XPProgressBar } from './ui';
@@ -220,13 +219,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const evaluationComplete = evaluationExercises.length > 0 && evaluationCheckedCount === evaluationExercises.length;
   const evaluationScorePercent = evaluationExercises.length > 0 ? Math.round((evaluationCorrectCount / evaluationExercises.length) * 100) : 0;
 
-  // Determine effective interactive tool for the lesson
+  // Determine effective interactive tool for the lesson. Math and science were audited (2026) for
+  // interactiveTool relevance: a subject-wide default here produced mismatched tools (e.g. geometry
+  // shapes on a clock-reading lesson), so those two subjects get NO fallback — an unset
+  // interactiveTool means the lesson genuinely has no dedicated tool, not "guess one". Other
+  // subjects keep their pre-existing fallback pending their own audit pass.
   const getEffectiveTool = () => {
     if (lesson.interactiveTool) return lesson.interactiveTool;
     switch (lesson.subject) {
+      case 'math': return undefined;
+      case 'science': return undefined;
       case 'arabic': return 'arabic_canvas';
-      case 'science': return 'science_reactor';
-      case 'math': return 'geometry_visualizer';
       case 'french': return 'french_lab';
       case 'english': return 'english_lab';
       case 'history_geo': return 'history_geo_lab';
@@ -236,6 +239,19 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   };
 
   const effectiveTool = getEffectiveTool();
+
+  // A lab-style tool renders nothing without its per-lesson config (see the `&&` guards below), so
+  // the tab itself must stay hidden in that case too — otherwise clicking it shows an empty screen.
+  const toolRequiresConfig: Partial<Record<string, boolean>> = {
+    science_lab: !!lesson.gameplay_simulation,
+    math_lab: !!lesson.mathInteractive,
+    islamic_lab: !!lesson.islamicInteractive,
+    civics_lab: !!lesson.civicsInteractive,
+    history_geo_lab: !!lesson.historyGeoInteractive,
+    french_dialogue_lab: !!lesson.languageInteractive,
+    english_dialogue_lab: !!lesson.languageInteractive,
+  };
+  const hasRenderableInteractiveTool = !!effectiveTool && (toolRequiresConfig[effectiveTool] ?? true);
 
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
@@ -469,9 +485,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <TabPill active={activeTab === 'content'} activeClass="bg-[var(--app-card-bg)] text-[var(--app-text)] shadow-xs" icon={<BookOpen className="w-3.5 h-3.5" />} onClick={() => setActiveTab('content')}>
           الملخص والقواعد
         </TabPill>
-        <TabPill active={activeTab === 'interactive'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Sparkles className="w-3.5 h-3.5" />} onClick={() => setActiveTab('interactive')}>
-          الأداة التفاعلية المخصصة
-        </TabPill>
+        {hasRenderableInteractiveTool && (
+          <TabPill active={activeTab === 'interactive'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Sparkles className="w-3.5 h-3.5" />} onClick={() => setActiveTab('interactive')}>
+            الأداة التفاعلية المخصصة
+          </TabPill>
+        )}
         {lesson.progressiveExercises && lesson.progressiveExercises.length > 0 && (
           <TabPill active={activeTab === 'practice'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Award className="w-3.5 h-3.5" />} onClick={() => setActiveTab('practice')}>
             أتدرب ({lesson.progressiveExercises.length})
@@ -912,23 +930,14 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
 
           {/* TAB 2: INTERACTIVE TOOL */}
-          {activeTab === 'interactive' && (
+          {activeTab === 'interactive' && hasRenderableInteractiveTool && (
             <div className="space-y-4">
               {effectiveTool === 'arabic_canvas' && <ArabicCanvasInteractive lesson={lesson} grade={lesson.grade} />}
-              {effectiveTool === 'science_reactor' && <ScienceReactorInteractive lesson={lesson} grade={lesson.grade} />}
               {effectiveTool === 'soroban' && <SorobanInteractive grade={lesson.grade} />}
               {effectiveTool === 'unit_converter' && <UnitConverter grade={lesson.grade} />}
               {effectiveTool === 'geometry_visualizer' && <GeometryVisualizer grade={lesson.grade} />}
-              {effectiveTool === 'science_lab' && (
-                <ScienceLabSimulation gameplay={lesson.gameplay_simulation || {
-                  id: lesson.id,
-                  type: 'circuit',
-                  titleAr: lesson.titleAr,
-                  descriptionAr: lesson.summaryAr,
-                  instructionsAr: ['تفاعل مع أجهزة المحاكاة والمختبر'],
-                  targetOutput: 100,
-                  badgeRewardAr: 'عالم العلوم 🔬'
-                }} grade={lesson.grade} />
+              {effectiveTool === 'science_lab' && lesson.gameplay_simulation && (
+                <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
               )}
               {effectiveTool === 'arabic_conjugator' && <ArabicConjugator grade={lesson.grade} />}
               {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}

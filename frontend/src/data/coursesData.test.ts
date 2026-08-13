@@ -70,14 +70,25 @@ describe('4AP Mathematics Pedagogical Curriculum Tests', () => {
     expect(categories.has('تنظيم المعطيات والتناسبية')).toBe(true);
   });
 
-  it('every 4AP lesson should have summary, rules, key formulas and interactive tool', () => {
+  it('every 4AP lesson should have summary, rules and key formulas', () => {
     math4apLessons.forEach((lesson) => {
       expect(lesson.titleAr).toBeTruthy();
       expect(lesson.summaryAr).toBeTruthy();
       expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(3);
       expect(lesson.keyFormulas).toBeDefined();
       expect(lesson.keyFormulas!.length).toBeGreaterThanOrEqual(1);
-      expect(lesson.interactiveTool).toBeTruthy();
+    });
+  });
+
+  // 2026 interactiveTool audit: interactiveTool is intentionally omitted (not defaulted to a
+  // mismatched generic tool) on lessons where no existing tool genuinely fits the subject matter
+  // (fractions-decimals, geometry-lines-polygons, proportionally-time-data). See LessonViewer.tsx's
+  // hasRenderableInteractiveTool — an absent tool hides the tab rather than showing something wrong.
+  it('every 4AP math lesson with an interactiveTool should have one relevant to its content', () => {
+    math4apLessons.forEach((lesson) => {
+      if (lesson.interactiveTool) {
+        expect(['soroban', 'multiplication_table', 'unit_converter', 'geometry_visualizer']).toContain(lesson.interactiveTool);
+      }
     });
   });
 
@@ -412,6 +423,26 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     });
   });
 
+  // 2026 interactiveTool audit (math + science only — see LessonViewer.tsx's
+  // hasRenderableInteractiveTool): the old science_lab fallback silently showed a blank screen when
+  // gameplay_simulation was missing. Scoped to science_lab/math_lab, the two tools covered by this
+  // audit pass; other lab tools (islamic_lab, civics_lab, history_geo_lab, *_dialogue_lab) await
+  // their own audit before being asserted here.
+  it('every lesson using science_lab or math_lab should carry its matching per-lesson config', () => {
+    COURSES_DATA.forEach((lesson) => {
+      switch (lesson.interactiveTool) {
+        case 'science_lab':
+          expect(lesson.gameplay_simulation).toBeDefined();
+          break;
+        case 'math_lab':
+          expect(lesson.mathInteractive).toBeDefined();
+          break;
+        default:
+          break;
+      }
+    });
+  });
+
   it('should contain full lessons and lab tools for French, English, History & Geography, and Islamic Education 5AP', () => {
     const frenchLessons = COURSES_DATA.filter((l) => l.subject === 'french');
     const englishLessons = COURSES_DATA.filter((l) => l.subject === 'english');
@@ -520,14 +551,13 @@ describe('3AP Science & Technology Pedagogical Curriculum Tests', () => {
     expect(sequenceTitles.has('الوحدة 3 - السلسلة 2: قياس الوقت والمحرار والدارة الكهربائية البسيطة')).toBe(true);
   });
 
-  it('every 3AP science lesson should feature discovery situations, rules, science_lab tool, progressive exercises, and educational game', () => {
+  it('every 3AP science lesson should feature discovery situations, rules, progressive exercises, and educational game', () => {
     science3apLessons.forEach((lesson) => {
       expect(lesson.titleAr).toBeTruthy();
       expect(lesson.summaryAr).toBeTruthy();
       expect(lesson.objectiveAr).toBeTruthy();
       expect(lesson.discoveryAr).toBeTruthy();
       expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(3);
-      expect(lesson.interactiveTool).toBe('science_lab');
       expect(lesson.examplesAr).toBeDefined();
       expect(lesson.examplesAr!.length).toBeGreaterThanOrEqual(2);
       expect(lesson.progressiveExercises).toBeDefined();

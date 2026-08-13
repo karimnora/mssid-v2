@@ -45,6 +45,18 @@ export const SCIENCE_1AP: CourseLesson[] = [
       takeawayAr: 'حواسي الخمس: العين (أرى)، الأذن (أسمع)، الأنف (أشم)، اللسان (أتذوق)، الجلد (ألمس). أغسل يدي دائماً قبل الأكل.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'لعبة مطابقة الحواس الخمس',
+      instructionsAr: 'اربط كل عضو بحاسته الصحيحة!',
+      pairs: [
+        { leftAr: 'العَيْنَانِ 👀', rightAr: 'الرُّؤْيَةُ', explanationAr: 'بعيني أرى الألوان والأشكال.' },
+        { leftAr: 'الأُذُنَانِ 👂', rightAr: 'السَّمْعُ', explanationAr: 'بأذني أسمع الأصوات.' },
+        { leftAr: 'الأَنْفُ 👃', rightAr: 'الشَّمُّ', explanationAr: 'بأنفي أشم الروائح.' },
+        { leftAr: 'اللِّسَانُ 👅', rightAr: 'الذَّوْقُ', explanationAr: 'بلساني أتذوق الطعام.' },
+        { leftAr: 'الجِلْدُ ✋', rightAr: 'اللَّمْسُ', explanationAr: 'بجلدي أحس بالحار والبارد.' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc1ap-senses',
@@ -134,6 +146,16 @@ export const SCIENCE_1AP: CourseLesson[] = [
       takeawayAr: 'رأسي في الأعلى، يداي للعمل واللعب، رجلاي للمشي والجري. جسمي يحتاج حركة وراحة معاً.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'matching_lab',
+      titleAr: 'لعبة مطابقة أعضاء الجسم بوظيفتها',
+      instructionsAr: 'اربط كل عضو بما نستعمله من أجله!',
+      pairs: [
+        { leftAr: 'الرَّأْسُ 🙆', rightAr: 'فيه عيناي وأنفي وفمي', explanationAr: 'الرأس في الأعلى، وفيه معظم أعضاء الحواس.' },
+        { leftAr: 'اليَدَانِ ✋✋', rightAr: 'الكِتَابَةُ وَاللَّعِبُ وَالأَكْلُ', explanationAr: 'نستعمل أيدينا للأنشطة اليومية.' },
+        { leftAr: 'الرِّجْلَانِ 🦵🦵', rightAr: 'المَشْيُ وَالجَرْيُ', explanationAr: 'نستعمل رجلينا للتنقل واللعب.' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc1ap-bodyparts',
@@ -223,6 +245,17 @@ export const SCIENCE_1AP: CourseLesson[] = [
       takeawayAr: 'أربعة فصول: صيف حار، شتاء بارد، ربيع تتفتح فيه الزهور، خريف تتساقط فيه الأوراق. ألبس حسب الفصل.',
     },
     interactiveTool: 'science_lab',
+    gameplay_simulation: {
+      type: 'process_stages',
+      titleAr: 'رحلة فصول السنة الأربعة',
+      instructionsAr: 'تابع دورة الفصول الأربعة على مدار السنة.',
+      stages: [
+        { step: 1, titleAr: 'الرَّبِيعُ 🌸', descAr: 'تتفتح الأزهار ويعتدل الجو.', icon: '🌸' },
+        { step: 2, titleAr: 'الصَّيْفُ ☀️', descAr: 'الجو حار جداً، نلبس ملابس خفيفة ونسبح.', icon: '☀️' },
+        { step: 3, titleAr: 'الخَرِيفُ 🍂', descAr: 'تتساقط أوراق الأشجار ويبرد الجو تدريجياً.', icon: '🍂' },
+        { step: 4, titleAr: 'الشِّتَاءُ ❄️', descAr: 'الجو بارد جداً، نلبس معطفاً سميكاً.', icon: '❄️' },
+      ],
+    },
     progressiveExercises: [
       {
         id: 'ex1-sc1ap-seasons',
