@@ -221,24 +221,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
   // Determine effective interactive tool for the lesson. Math and science were audited (2026) for
   // interactiveTool relevance: a subject-wide default here produced mismatched tools (e.g. geometry
-  // shapes on a clock-reading lesson), so those two subjects get NO fallback — an unset
-  // interactiveTool means the lesson genuinely has no dedicated tool, not "guess one". Other
-  // subjects keep their pre-existing fallback pending their own audit pass.
-  const getEffectiveTool = () => {
-    if (lesson.interactiveTool) return lesson.interactiveTool;
-    switch (lesson.subject) {
-      case 'math': return undefined;
-      case 'science': return undefined;
-      case 'arabic': return 'arabic_canvas';
-      case 'french': return 'french_lab';
-      case 'english': return 'english_lab';
-      case 'history_geo': return 'history_geo_lab';
-      case 'islamic': return 'islamic_lab';
-      default: return 'arabic_canvas';
-    }
-  };
-
-  const effectiveTool = getEffectiveTool();
+  // shapes on a clock-reading lesson, or the arabic writing canvas on an art-themed civics lesson).
+  // Every subject has now been through this audit (2026) and every lesson explicitly sets
+  // interactiveTool when a relevant tool exists — an unset interactiveTool means the lesson
+  // genuinely has no dedicated tool, not "guess one from the subject".
+  const effectiveTool = lesson.interactiveTool;
 
   // A lab-style tool renders nothing without its per-lesson config (see the `&&` guards below), so
   // the tab itself must stay hidden in that case too — otherwise clicking it shows an empty screen.

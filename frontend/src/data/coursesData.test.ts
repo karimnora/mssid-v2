@@ -423,12 +423,11 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     });
   });
 
-  // 2026 interactiveTool audit (math + science only — see LessonViewer.tsx's
-  // hasRenderableInteractiveTool): the old science_lab fallback silently showed a blank screen when
-  // gameplay_simulation was missing. Scoped to science_lab/math_lab, the two tools covered by this
-  // audit pass; other lab tools (islamic_lab, civics_lab, history_geo_lab, *_dialogue_lab) await
-  // their own audit before being asserted here.
-  it('every lesson using science_lab or math_lab should carry its matching per-lesson config', () => {
+  // 2026 interactiveTool audit — completed across all 8 subjects (math/science first pass, then
+  // arabic/french/english/history_geo/islamic/civics): every lab-style tool must carry its matching
+  // per-lesson config, or LessonViewer.tsx's hasRenderableInteractiveTool hides the tab rather than
+  // showing a blank screen (the old science_lab/history_geo_lab fallback bugs this now prevents).
+  it('every lesson using a config-driven lab tool should carry its matching per-lesson config', () => {
     COURSES_DATA.forEach((lesson) => {
       switch (lesson.interactiveTool) {
         case 'science_lab':
@@ -436,6 +435,19 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
           break;
         case 'math_lab':
           expect(lesson.mathInteractive).toBeDefined();
+          break;
+        case 'islamic_lab':
+          expect(lesson.islamicInteractive).toBeDefined();
+          break;
+        case 'civics_lab':
+          expect(lesson.civicsInteractive).toBeDefined();
+          break;
+        case 'history_geo_lab':
+          expect(lesson.historyGeoInteractive).toBeDefined();
+          break;
+        case 'french_dialogue_lab':
+        case 'english_dialogue_lab':
+          expect(lesson.languageInteractive).toBeDefined();
           break;
         default:
           break;
@@ -458,7 +470,12 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     // while 5AP lessons carry a per-lesson dedicated tool ('french_dialogue_lab'/'english_dialogue_lab').
     expect(frenchLessons.every((l) => l.interactiveTool === 'french_lab' || l.interactiveTool === 'french_dialogue_lab')).toBe(true);
     expect(englishLessons.every((l) => l.interactiveTool === 'english_lab' || l.interactiveTool === 'english_dialogue_lab')).toBe(true);
-    expect(historyGeoLessons.every((l) => l.interactiveTool === 'history_geo_lab')).toBe(true);
+    // 2026 interactiveTool audit: history_geo_lab is no longer forced on every lesson — one 4AP
+    // lesson (map-and-legend) intentionally has none, since no existing tool type covers map/legend
+    // reading. Any lesson that DOES declare a tool must still use 'history_geo_lab'.
+    historyGeoLessons.forEach((l) => {
+      if (l.interactiveTool) expect(l.interactiveTool).toBe('history_geo_lab');
+    });
     expect(islamicLessons.every((l) => l.interactiveTool === 'islamic_lab')).toBe(true);
   });
 });
