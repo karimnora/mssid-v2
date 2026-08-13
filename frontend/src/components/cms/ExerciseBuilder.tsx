@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CmsExercise, ExerciseType, ExerciseDifficulty, WorkflowStatus, PrimaryGrade, SubjectId } from '../../types/cms';
+import { CmsExercise, ExerciseType, ExerciseDifficulty, PrimaryGrade, SubjectId } from '../../types/cms';
 import {
   CheckSquare,
   Plus,
@@ -48,7 +48,6 @@ export const ExerciseBuilder: React.FC<ExerciseBuilderProps> = ({
   const [fillBlanksTextAr, setFillBlanksTextAr] = useState(activeEx?.fillBlanksTextAr || '');
   const [correctSolutionAr, setCorrectSolutionAr] = useState(activeEx?.correctSolutionAr || '');
   const [stepByStepExplanationAr, setStepByStepExplanationAr] = useState(activeEx?.stepByStepExplanationAr || '');
-  const [workflowStatus, setWorkflowStatus] = useState<WorkflowStatus>(activeEx?.workflowStatus || 'published');
 
   // QCM Options State
   const [qcmOptions, setQcmOptions] = useState(activeEx?.options || [
@@ -69,7 +68,6 @@ export const ExerciseBuilder: React.FC<ExerciseBuilderProps> = ({
     setFillBlanksTextAr(ex.fillBlanksTextAr || '');
     setCorrectSolutionAr(ex.correctSolutionAr);
     setStepByStepExplanationAr(ex.stepByStepExplanationAr);
-    setWorkflowStatus(ex.workflowStatus);
     setQcmOptions(ex.options || []);
   };
 
@@ -90,7 +88,6 @@ export const ExerciseBuilder: React.FC<ExerciseBuilderProps> = ({
       options: type === 'qcm' || type === 'true_false' ? qcmOptions : undefined,
       correctSolutionAr,
       stepByStepExplanationAr,
-      workflowStatus,
       updatedAt: new Date().toISOString().slice(0, 10),
     };
 
@@ -117,7 +114,6 @@ export const ExerciseBuilder: React.FC<ExerciseBuilderProps> = ({
       ],
       correctSolutionAr: 'الحل النهائي...',
       stepByStepExplanationAr: 'الشرح والتوضيح خطوة بخطوة...',
-      workflowStatus: 'published',
       updatedAt: new Date().toISOString().slice(0, 10),
     };
 

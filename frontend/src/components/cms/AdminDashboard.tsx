@@ -1,5 +1,5 @@
 import React from 'react';
-import { CmsAnalyticsStats, CmsCourseItem, WorkflowStatus } from '../../types/cms';
+import { CmsAnalyticsStats, CmsCourseItem } from '../../types/cms';
 import {
   FileText,
   CheckSquare,
@@ -12,9 +12,9 @@ import {
   CheckCircle2,
   Clock,
   AlertCircle,
-  BarChart3,
   BookOpen,
-  ShieldCheck
+  ShieldCheck,
+  EyeOff
 } from 'lucide-react';
 import { CmsTabId } from './CmsHeaderNav';
 
@@ -23,14 +23,6 @@ interface AdminDashboardProps {
   courses: CmsCourseItem[];
   onNavigateTab: (tab: CmsTabId) => void;
 }
-
-const WORKFLOW_LABELS: Record<WorkflowStatus, { labelAr: string; color: string }> = {
-  published: { labelAr: 'منشور متاح للجميع', color: 'bg-emerald-500 text-white' },
-  validated: { labelAr: 'معتمد ومصدق', color: 'bg-blue-500 text-white' },
-  review: { labelAr: 'قيد المراجعة البيداغوجية', color: 'bg-amber-500 text-slate-950' },
-  draft: { labelAr: 'مسودة قيد الإنشاء', color: 'bg-slate-500 text-white' },
-  archived: { labelAr: 'مؤرشف', color: 'bg-slate-700 text-slate-300' },
-};
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   analytics,
@@ -157,34 +149,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
       </div>
 
-      {/* Workflow Status Distribution Section */}
-      <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-2xs space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-amber-500" />
-            <span>حالة تدفق المحتوى البيداغوجي (Content Workflow)</span>
-          </h3>
-          <span className="text-xs text-slate-500 font-mono">Brouillon ➔ Relecture ➔ Validé ➔ Publié</span>
-        </div>
-
-        {/* Progress Bars Breakdown */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {(['published', 'validated', 'review', 'draft', 'archived'] as WorkflowStatus[]).map((st) => {
-            const count = analytics.statusBreakdown[st] || 0;
-            const meta = WORKFLOW_LABELS[st];
-
-            return (
-              <div key={st} className="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${meta.color}`}>
-                  {meta.labelAr}
-                </span>
-                <div className="text-xl font-black text-slate-900 mt-1">{count} عناصر</div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Two Column Layout: Top Consulted Lessons & Recent Content Items */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
@@ -247,10 +211,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 </div>
 
                 <div className="text-right shrink-0">
-                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded ${WORKFLOW_LABELS[course.workflowStatus].color}`}>
-                    {WORKFLOW_LABELS[course.workflowStatus].labelAr}
-                  </span>
-                  <div className="text-[9px] text-slate-400 font-mono mt-1">v{course.version}</div>
+                  {course.isHidden ? (
+                    <span className="flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-600">
+                      <EyeOff className="w-2.5 h-2.5" />
+                      <span>مخفي</span>
+                    </span>
+                  ) : (
+                    <span className="text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">
+                      مرئي
+                    </span>
+                  )}
                 </div>
               </div>
             ))}

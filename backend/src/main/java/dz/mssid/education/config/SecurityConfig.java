@@ -1,6 +1,7 @@
 package dz.mssid.education.config;
 
 import dz.mssid.education.security.JwtAuthenticationFilter;
+import dz.mssid.education.security.RateLimitFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
+    private final RateLimitFilter rateLimitFilter;
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
@@ -41,12 +43,14 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                         // 2. Endpoints publics
-                        .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register").permitAll()
+                        .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/logout").permitAll()
                         .requestMatchers("/api/v1/exams/public/**", "/api/gemini/stats").permitAll()
                         .requestMatchers("/api/gemini/**", "/api/v1/ai/**").permitAll()
 
                         .anyRequest().authenticated()
                 )
+                // SEC-01: /logout above is intentionally permitAll — clearing an HttpOnly cookie must
+                // succeed even if it's already missing/expired, it's a no-op from the client's side.
                 // Gestion de l'erreur 401 en inline (Remplace JwtAuthenticationEntryPoint)
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, authException) -> {
@@ -56,6 +60,9 @@ public class SecurityConfig {
                         })
                 )
                 .authenticationProvider(authenticationProvider)
+                // SEC-03: rate limiting runs before JWT processing so it also protects the
+                // unauthenticated /login brute-force surface, not just already-authenticated calls.
+                .addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CmsExamSpec, CmsExercise, WorkflowStatus, PrimaryGrade, SubjectId } from '../../types/cms';
+import { CmsExamSpec, CmsExercise, PrimaryGrade, SubjectId } from '../../types/cms';
 import {
   Award,
   Plus,
@@ -36,7 +36,6 @@ export const ExamBuilder: React.FC<ExamBuilderProps> = ({
   const [passingScore, setPassingScore] = useState<number>(activeExam?.passingScore || 5);
   const [selectedExerciseIds, setSelectedExerciseIds] = useState<string[]>(activeExam?.exerciseIds || []);
   const [autoGradingEnabled, setAutoGradingEnabled] = useState<boolean>(activeExam?.autoGradingEnabled ?? true);
-  const [workflowStatus, setWorkflowStatus] = useState<WorkflowStatus>(activeExam?.workflowStatus || 'published');
 
   const handleSelectExam = (ex: CmsExamSpec) => {
     setSelectedExamId(ex.id);
@@ -50,7 +49,6 @@ export const ExamBuilder: React.FC<ExamBuilderProps> = ({
     setPassingScore(ex.passingScore);
     setSelectedExerciseIds(ex.exerciseIds || []);
     setAutoGradingEnabled(ex.autoGradingEnabled);
-    setWorkflowStatus(ex.workflowStatus);
   };
 
   const handleSaveCurrentExam = () => {
@@ -68,7 +66,6 @@ export const ExamBuilder: React.FC<ExamBuilderProps> = ({
       passingScore,
       exerciseIds: selectedExerciseIds,
       autoGradingEnabled,
-      workflowStatus,
     };
 
     const updatedList = exams.map((e) => (e.id === activeExam.id ? updatedExam : e));
@@ -89,7 +86,6 @@ export const ExamBuilder: React.FC<ExamBuilderProps> = ({
       passingScore: 5,
       exerciseIds: exercises.slice(0, 2).map((e) => e.id),
       autoGradingEnabled: true,
-      workflowStatus: 'published',
       authorName: 'المفتش التربوي',
       createdAt: new Date().toISOString().slice(0, 10),
     };

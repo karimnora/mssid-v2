@@ -21,6 +21,7 @@ import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { Button, Card, Badge, XPProgressBar } from './ui';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck, Printer } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
@@ -121,6 +122,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [activeTab, setActiveTab] = useState<TabId>('explanation');
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [showRevisionSheet, setShowRevisionSheet] = useState(false);
+  const enablePrintablePDFs = useFeatureFlag('enablePrintablePDFs');
 
   // Practice exercises state ("Je m'entraîne" — progressiveExercises)
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
@@ -360,16 +362,18 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            icon={<Printer className="w-4 h-4" />}
-            onClick={() => setShowRevisionSheet(true)}
-            title="فيشة مراجعة قابلة للطباعة"
-          >
-            <span className="hidden sm:inline">فيشة المراجعة</span>
-            <span className="sm:hidden">📄</span>
-          </Button>
+          {enablePrintablePDFs && (
+            <Button
+              variant="outline"
+              size="sm"
+              icon={<Printer className="w-4 h-4" />}
+              onClick={() => setShowRevisionSheet(true)}
+              title="فيشة مراجعة قابلة للطباعة"
+            >
+              <span className="hidden sm:inline">فيشة المراجعة</span>
+              <span className="sm:hidden">📄</span>
+            </Button>
+          )}
 
           {/* Top Quick Next/Prev Controls */}
           {allLessons.length > 1 && (

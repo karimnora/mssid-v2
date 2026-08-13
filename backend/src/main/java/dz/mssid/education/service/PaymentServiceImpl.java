@@ -36,9 +36,11 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @Transactional
     public PaymentReceipt submitReceipt(String userEmail, ReceiptUploadRequest request) {
-        String email = (userEmail != null && !userEmail.isBlank()) ? userEmail : request.getUserEmail();
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la soumission du reçu: " + email));
+        // SEC-04: userEmail comes only from the authenticated principal (PaymentController) — never
+        // fall back to a client-supplied request.userEmail, that was an IDOR (attribute a receipt to
+        // an arbitrary victim account).
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la soumission du reçu: " + userEmail));
 
         String imageUrl = request.getReceiptImageUrl() != null ? request.getReceiptImageUrl() : request.getReceiptImgUrl();
         if (imageUrl == null || imageUrl.isBlank()) {
@@ -71,9 +73,9 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @Transactional
     public CheckoutResponse createCheckout(String userEmail, CheckoutRequest request) {
-        String email = (userEmail != null && !userEmail.isBlank()) ? userEmail : request.getUserEmail();
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la création du checkout: " + email));
+        // SEC-04: same fix as submitReceipt — identity comes only from the authenticated principal.
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la création du checkout: " + userEmail));
 
         String transactionRef = request.getTransactionRef() != null && !request.getTransactionRef().isBlank()
                 ? request.getTransactionRef()
@@ -127,8 +129,10 @@ public class PaymentServiceImpl implements PaymentService {
         transaction.setUpdatedAt(LocalDateTime.now());
         paymentTransactionRepository.save(transaction);
 
-        User user = userRepository.findByEmail(request.getUserEmail())
-                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable pour webhook: " + request.getUserEmail()));
+        // SEC-04: the user to upgrade is whoever actually owns this transaction (set at checkout
+        // creation, from the authenticated caller) — never request.getUserEmail(), which is fully
+        // client-controlled and previously let any caller premium-upgrade an arbitrary account.
+        User user = transaction.getUser();
 
         if (transaction.getStatus() == PaymentTransaction.TransactionStatus.COMPLETED) {
             Role premiumRole = roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)

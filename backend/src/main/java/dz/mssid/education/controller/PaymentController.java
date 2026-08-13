@@ -33,8 +33,10 @@ public class PaymentController {
             @AuthenticationPrincipal UserDetails userDetails,
             @RequestBody ReceiptUploadRequest request
     ) {
-        String email = userDetails != null ? userDetails.getUsername() : request.getUserEmail();
-        PaymentReceipt receipt = paymentService.submitReceipt(email, request);
+        // SEC-04: identity comes only from the authenticated principal — never from a client-supplied
+        // email in the body (that was a latent IDOR: any caller could attribute a receipt to another
+        // account by setting request.userEmail, which then gets premium-upgraded on admin approval).
+        PaymentReceipt receipt = paymentService.submitReceipt(userDetails.getUsername(), request);
         return ResponseEntity.ok(receipt);
     }
 
@@ -68,12 +70,20 @@ public class PaymentController {
             @AuthenticationPrincipal UserDetails userDetails,
             @RequestBody CheckoutRequest request
     ) {
-        String email = userDetails != null ? userDetails.getUsername() : request.getUserEmail();
-        CheckoutResponse response = paymentService.createCheckout(email, request);
+        // SEC-04: same fix as submitReceipt — never trust request.userEmail for identity.
+        CheckoutResponse response = paymentService.createCheckout(userDetails.getUsername(), request);
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * SEC-04 (critical fix): this used to accept ANY authenticated user's JWT with no role check,
+     * trust a client-supplied `status` string ("PAID" sufficed) and a client-supplied `userEmail` —
+     * letting any logged-in student grant ROLE_PREMIUM to any account (including their own) for free.
+     * No real payment-gateway signature verification exists yet, so admin-only is the safest gate
+     * available today; PaymentServiceImpl.processWebhook also no longer trusts request.userEmail.
+     */
     @PostMapping("/api/v1/payments/webhook")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<PaymentWebhookResponse> handleWebhook(@RequestBody WebhookEventRequest request) {
         PaymentWebhookResponse response = paymentService.processWebhook(request);
         return ResponseEntity.ok(response);

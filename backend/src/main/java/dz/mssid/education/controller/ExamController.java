@@ -62,8 +62,12 @@ public class ExamController {
     /**
      * Endpoint : Obtenir la solution officielle d'un examen.
      * GET /api/v1/exams/{examId}/solutions
+     * SEC-04: this is the paywalled asset (the frontend already gates the "show solution" UI behind
+     * ROLE_PREMIUM/ROLE_ADMIN — see ExamsViewer.tsx's isUserPremiumOrAdmin) but nothing enforced that
+     * server-side, so any authenticated free account could fetch any exam's solution directly.
      */
     @GetMapping("/{examId}/solutions")
+    @PreAuthorize("hasRole('PREMIUM') or hasRole('ADMIN') or hasRole('TEACHER')")
     public ResponseEntity<ExamSolutionResponse> getOfficialExamSolution(@PathVariable Long examId) {
         ExamSolutionResponse solution = examService.getExamSolutionById(examId);
         return ResponseEntity.ok(solution);

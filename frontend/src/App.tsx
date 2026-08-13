@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo } from './types';
-import { AuthUser } from './types/auth';
 import { AuthService } from './services/authService';
+import { useAuth } from './context/AuthContext';
 import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, CHALLENGES_TAB_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST, isToolAvailableForGrade } from './data/subjectsData';
 import { COURSES_DATA } from './data/coursesData';
 import { CourseBreadcrumb } from './components/CourseBreadcrumb';
@@ -36,6 +36,7 @@ import { PricingModal } from './components/PricingModal';
 import { AdBanner } from './components/AdBanner';
 import { PreschoolApp } from './components/preschool/PreschoolApp';
 import { isFeatureEnabled } from './featureFlags';
+import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { springBootApi } from './services/springBootApi';
 import { Button, Card, Badge, XPProgressBar } from './components/ui';
 import {
@@ -101,6 +102,9 @@ export default function App() {
   const [mainCategory, setMainCategory] = useState<'courses' | 'labs' | 'exams' | 'challenges'>('courses');
   const [mobileTab, setMobileTab] = useState<'home' | 'courses' | 'exercises' | 'games'>('home');
 
+  const enablePreschoolModule = useFeatureFlag('enablePreschoolModule');
+  const enableExamSection = useFeatureFlag('enableExamSection');
+
   const handleSelectSubject = (subject: SubjectId) => {
     setSelectedSubject(subject);
     setSelectedLesson(null);
@@ -162,8 +166,9 @@ export default function App() {
     window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
   }, [headerTheme]);
 
-  // Current Auth User
-  const [authUser, setAuthUser] = useState<AuthUser | null>(() => AuthService.getCurrentUser());
+  // SEC-05: identity now comes from AuthContext (hydrated from the cookie-authenticated
+  // GET /api/v1/users/me on boot — see main.tsx's <AuthProvider>), never from localStorage.
+  const { authUser } = useAuth();
 
   // User Profile State in LocalStorage
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
@@ -204,8 +209,9 @@ export default function App() {
     if (newlyUnlocked.length > 0) {
       setUserProfile(updated);
       setNewlyUnlockedBadges((prev) => [...prev, ...newlyUnlocked]);
-      const updatedAuth = AuthService.syncBadges(updated.badges, updated.badgeUnlockedAt);
-      if (updatedAuth) setAuthUser(updatedAuth);
+      // AuthService.syncBadges updates the in-memory auth singleton directly — authUser (from
+      // useAuth()) reflects it automatically via the pub/sub subscription, no manual sync needed.
+      AuthService.syncBadges(updated.badges, updated.badgeUnlockedAt);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -216,30 +222,9 @@ export default function App() {
     userProfile.completedChallengeIds.length,
   ]);
 
-  useEffect(() => {
-    AuthService.fetchProfileFromDbAsync().then((fetched) => {
-      if (fetched) {
-        setAuthUser(fetched);
-        const xp = fetched.score !== undefined ? fetched.score : (fetched.xp !== undefined ? fetched.xp : 140);
-        const level = fetched.level !== undefined ? fetched.level : Math.floor(xp / 100) + 1;
-        setUserProfile((prev) => ({
-          ...prev,
-          name: fetched.nom || prev.name,
-          xp: xp,
-          level: level,
-          streakDays: fetched.streakDays || prev.streakDays,
-          completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
-          completedExamIds: fetched.completedExamIds && fetched.completedExamIds.length > 0 ? fetched.completedExamIds : prev.completedExamIds,
-          completedChallengeIds: fetched.completedChallengeIds && fetched.completedChallengeIds.length > 0 ? fetched.completedChallengeIds : prev.completedChallengeIds,
-          badges: fetched.badges && fetched.badges.length > 0 ? fetched.badges : prev.badges,
-          badgeUnlockedAt: { ...fetched.badgeUnlockedAt, ...prev.badgeUnlockedAt },
-          quizScores: fetched.quizScores || prev.quizScores,
-          tashkeelEnabled: fetched.tashkeelEnabled ?? prev.tashkeelEnabled,
-        }));
-      }
-    });
-  }, []);
-
+  // SEC-05: the old boot-time AuthService.fetchProfileFromDbAsync() effect that used to live here is
+  // gone — AuthContext's <AuthProvider> already fetches the fresh profile from /api/v1/users/me on
+  // boot and publishes it through authUser, which the effect below already reacts to.
   useEffect(() => {
     if (authUser) {
       const xp = authUser.score !== undefined ? authUser.score : (authUser.xp !== undefined ? authUser.xp : 140);
@@ -288,10 +273,7 @@ export default function App() {
   };
 
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
-    const updatedAuth = AuthService.addScore(earnedXp, lessonId);
-    if (updatedAuth) {
-      setAuthUser(updatedAuth);
-    }
+    AuthService.addScore(earnedXp, lessonId);
     incrementDailyObjective();
 
     setUserProfile((prev) => {
@@ -315,8 +297,7 @@ export default function App() {
 
   /** ExamsViewer has no auto-grading — completion is a self-report ("✅ أنهيت هذا الامتحان"), rewarded with a flat XP bonus. */
   const handleCompleteExam = (examId: string) => {
-    const updatedAuth = AuthService.addExamXp(examId, 50);
-    if (updatedAuth) setAuthUser(updatedAuth);
+    AuthService.addExamXp(examId, 50);
     incrementDailyObjective();
 
     setUserProfile((prev) => {
@@ -332,8 +313,7 @@ export default function App() {
 
   /** ChallengesArena computes its own XP total per run — this persists it into the global profile and syncs it to the backend. */
   const handleCompleteChallenge = (challengeId: string, earnedXp: number) => {
-    const updatedAuth = AuthService.addChallengeXp(challengeId, earnedXp);
-    if (updatedAuth) setAuthUser(updatedAuth);
+    AuthService.addChallengeXp(challengeId, earnedXp);
     incrementDailyObjective();
 
     setUserProfile((prev) => ({
@@ -378,33 +358,17 @@ export default function App() {
     });
 
     if (authUser) {
-      const updatedAuth = { ...authUser, nom: newName };
-      AuthService.setCurrentUser(updatedAuth);
-      setAuthUser(updatedAuth);
+      // AuthService.setCurrentUser publishes to the pub/sub singleton — authUser (via useAuth())
+      // reflects the new name immediately, no manual setAuthUser needed.
+      AuthService.setCurrentUser({ ...authUser, nom: newName });
       AuthService.updateProfileAsync(newName).catch(() => {});
     }
   };
 
   const handleRefreshProfileFromDb = async () => {
-    const fetched = await AuthService.fetchProfileFromDbAsync();
-    if (fetched) {
-      setAuthUser(fetched);
-      const xp = fetched.score !== undefined ? fetched.score : (fetched.xp !== undefined ? fetched.xp : 140);
-      const level = fetched.level !== undefined ? fetched.level : Math.floor(xp / 100) + 1;
-      setUserProfile((prev) => ({
-        ...prev,
-        name: fetched.nom || prev.name,
-        xp: xp,
-        level: level,
-        streakDays: fetched.streakDays || prev.streakDays,
-        completedLessonIds: fetched.completedLessonIds || prev.completedLessonIds,
-        completedExamIds: fetched.completedExamIds && fetched.completedExamIds.length > 0 ? fetched.completedExamIds : prev.completedExamIds,
-        completedChallengeIds: fetched.completedChallengeIds && fetched.completedChallengeIds.length > 0 ? fetched.completedChallengeIds : prev.completedChallengeIds,
-        badges: fetched.badges && fetched.badges.length > 0 ? fetched.badges : prev.badges,
-        badgeUnlockedAt: { ...fetched.badgeUnlockedAt, ...prev.badgeUnlockedAt },
-        tashkeelEnabled: fetched.tashkeelEnabled ?? prev.tashkeelEnabled,
-      }));
-    }
+    // fetchProfileFromDbAsync() already calls AuthService.setCurrentUser internally, which the
+    // [authUser] effect above reacts to and cascades into userProfile — nothing else to do here.
+    await AuthService.fetchProfileFromDbAsync();
   };
 
   // Filter lessons by grade, subject, and trimester
@@ -420,12 +384,13 @@ export default function App() {
   // introduced at 3AP stays visible for 3AP/4AP/5AP, but is hidden while browsing 1AP/2AP).
   const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, grade));
 
-  const MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams' | 'challenges'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
+  const ALL_MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams' | 'challenges'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
     { id: 'courses', icon: <BookOpen className="w-4 h-4" />, labelAr: '📚 الدروس والمواد التعليمية', countLabelAr: `${COURSE_SUBJECTS_LIST.length} مواد` },
     { id: 'labs', icon: <Zap className="w-4 h-4" />, labelAr: '⚡ المختبرات والأدوات التفاعلية', countLabelAr: `${availableLabsForGrade.length} أدوات` },
     { id: 'exams', icon: <Award className="w-4 h-4" />, labelAr: '📜 الامتحانات الرسمية (5AP)', countLabelAr: `${OFFICIAL_EXAMS_LIST.length} بنك` },
     { id: 'challenges', icon: <Trophy className="w-4 h-4" />, labelAr: '🏆 نادي التحديات والمسابقات', countLabelAr: `${CHALLENGES_TAB_LIST.length} تحدي` },
   ];
+  const MAIN_CATEGORY_TABS = ALL_MAIN_CATEGORY_TABS.filter((tab) => tab.id !== 'exams' || enableExamSection);
 
   return (
     <div className="min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir="rtl">
@@ -457,8 +422,9 @@ export default function App() {
         authUser={authUser}
         onOpenAuthModal={() => setIsAuthModalOpen(true)}
         onLogout={() => {
+          // AuthService.logout() already clears the in-memory singleton (authUser follows via
+          // useAuth()) and asks the server to drop the HttpOnly cookie — see authService.ts.
           AuthService.logout();
-          setAuthUser(null);
           setUserProfile((prev) => ({
             ...prev,
             name: 'تلميذ مَسِيد',
@@ -493,12 +459,14 @@ export default function App() {
               <div className="flex flex-wrap gap-2 items-center">
                 <Badge variant="xp">⭐ تجربة ممتعة للأطفال</Badge>
                 <Badge variant="info">🎯 واجهة آمنة وسهلة الاستخدام</Badge>
-                <button
-                  onClick={() => setIsPreschoolActive(true)}
-                  className="min-h-9 px-3 py-1.5 rounded-full text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-white shadow-sm cursor-pointer hover:brightness-105 transition-all"
-                >
-                  🦊 وضع التحضيري (3-5 سنوات)
-                </button>
+                {enablePreschoolModule && (
+                  <button
+                    onClick={() => setIsPreschoolActive(true)}
+                    className="min-h-9 px-3 py-1.5 rounded-full text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-white shadow-sm cursor-pointer hover:brightness-105 transition-all"
+                  >
+                    🦊 وضع التحضيري (3-5 سنوات)
+                  </button>
+                )}
               </div>
               {/* Live XP progress toward next level — Kit UI v1 */}
               <div className="w-full sm:w-56">
@@ -830,13 +798,17 @@ export default function App() {
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
-        onAuthSuccess={(user) => setAuthUser(user)}
+        // AuthService.loginAsync/registerAsync already call setCurrentUser internally — authUser
+        // (via useAuth()) updates on its own the moment login succeeds, nothing to do here.
+        onAuthSuccess={() => {}}
       />
 
       <AdminReceiptsManager
         isOpen={isAdminReceiptsModalOpen}
         onClose={() => setIsAdminReceiptsModalOpen(false)}
-        onReceiptUpdated={() => setAuthUser(AuthService.getCurrentUser())}
+        // Receipt approval upgrades the user via AuthService.setCurrentUser internally too — same
+        // automatic propagation as above.
+        onReceiptUpdated={() => {}}
       />
 
       <MobileAppSimulator
@@ -851,7 +823,7 @@ export default function App() {
         onClose={() => setIsPrivacyModalOpen(false)}
       />
 
-      {isFeatureEnabled('SHOW_PAYMENT') && (
+      {isFeatureEnabled('enablePayments') && (
         <PricingModal
           isOpen={isPricingModalOpen}
           onClose={() => setIsPricingModalOpen(false)}

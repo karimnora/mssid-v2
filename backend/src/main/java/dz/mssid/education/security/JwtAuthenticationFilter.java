@@ -2,6 +2,7 @@ package dz.mssid.education.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -36,6 +37,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         // Ne pas filtrer les requêtes de connexion, inscription et les appels OPTIONS
         return path.startsWith("/api/v1/auth/login")
                 || path.startsWith("/api/v1/auth/register")
+                || path.startsWith("/api/v1/auth/logout")
                 || path.startsWith("/api/v1/exams/public/")
                 || "OPTIONS".equalsIgnoreCase(request.getMethod());
     }
@@ -64,7 +66,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    /**
+     * SEC-01: the JWT now lives in an HttpOnly cookie set by AuthController, so the browser attaches
+     * it automatically — no JS-readable token is stored client-side anymore. The Authorization header
+     * is kept as a fallback so native/Capacitor clients that can't rely on cookie jars still work.
+     */
     private String getJwtFromRequest(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (AuthCookieConstants.COOKIE_NAME.equals(cookie.getName()) && StringUtils.hasText(cookie.getValue())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);

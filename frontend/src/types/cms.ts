@@ -23,8 +23,6 @@ export interface CmsUser {
   department: string;
 }
 
-export type WorkflowStatus = 'draft' | 'review' | 'validated' | 'published' | 'archived';
-
 export interface PedagogicalCompetency {
   id: string;
   code: string; // e.g. "COMP-MATH-5AP-01"
@@ -68,16 +66,6 @@ export interface CmsCurriculumProgram {
   updatedAt: string;
 }
 
-export interface CourseVersion {
-  versionNumber: number;
-  updatedAt: string;
-  authorName: string;
-  titleAr: string;
-  summaryAr: string;
-  bodyHtmlContent: string;
-  changeLogAr: string;
-}
-
 export interface CmsCourseItem {
   id: string;
   chapterId: string;
@@ -92,11 +80,8 @@ export interface CmsCourseItem {
   mediaUrls: string[]; // Images, Audio, Videos
   attachments: { name: string; url: string; size: string }[];
   interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table';
-  version: number;
-  versionsHistory: CourseVersion[];
-  workflowStatus: WorkflowStatus;
+  isHidden?: boolean;
   authorName: string;
-  reviewerName?: string;
   updatedAt: string;
 }
 
@@ -134,7 +119,6 @@ export interface CmsExercise {
   correctSolutionAr: string;
   stepByStepExplanationAr: string;
   competencyCode?: string;
-  workflowStatus: WorkflowStatus;
   updatedAt: string;
 }
 
@@ -150,7 +134,6 @@ export interface CmsExamSpec {
   passingScore: number;
   exerciseIds: string[];
   autoGradingEnabled: boolean;
-  workflowStatus: WorkflowStatus;
   authorName: string;
   createdAt: string;
 }
@@ -191,6 +174,9 @@ export interface CmsAnalyticsStats {
   activeStudentsCount: number;
   averagePassRatePercent: number;
   averageTimeSpentMinutes: number;
-  statusBreakdown: Record<WorkflowStatus, number>;
+  dailyActiveUsers: number;
+  totalSignups: number;
+  preschoolSessionsCount: number;
+  gradeDistribution: Record<PrimaryGrade, number>;
   topConsultedLessons: { titleAr: string; views: number; subject: SubjectId }[];
 }

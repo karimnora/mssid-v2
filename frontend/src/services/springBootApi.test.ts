@@ -7,29 +7,52 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
   beforeEach(() => {
     localStorage.clear();
     vi.clearAllMocks();
+    springBootApi.setIdentityHeaders(null, null);
   });
 
   afterEach(() => {
     global.fetch = originalFetch;
   });
 
-  describe('JWT Token & Header Storage Management', () => {
-    it('manages JWT token in localStorage correctly', () => {
-      expect(springBootApi.getToken()).toBeNull();
+  describe('SEC-01: HttpOnly cookie auth (no JS-readable token)', () => {
+    it('sends credentials: include so the HttpOnly auth cookie is attached automatically', async () => {
+      const mockFetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ message: 'Success' }),
+      });
+      global.fetch = mockFetch;
 
-      springBootApi.setToken('test.jwt.token.123');
-      expect(springBootApi.getToken()).toBe('test.jwt.token.123');
+      await springBootApi.request('/test-endpoint');
 
-      springBootApi.clearToken();
-      expect(springBootApi.getToken()).toBeNull();
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/test-endpoint'),
+        expect.objectContaining({ credentials: 'include' })
+      );
+    });
+
+    it('logout() calls the backend to clear the auth cookie instead of touching localStorage', async () => {
+      const mockFetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ message: 'Déconnexion réussie' }),
+      });
+      global.fetch = mockFetch;
+
+      await springBootApi.logout();
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/v1/auth/logout'),
+        expect.objectContaining({ method: 'POST' })
+      );
     });
   });
 
   describe('HTTP Request Handling - Happy Paths & Header Attachments', () => {
-    it('attaches Authorization bearer token and user role headers to requests', async () => {
-      springBootApi.setToken('mock_jwt_token_xyz');
-      localStorage.setItem('mssid_auth_user', JSON.stringify({ email: 'teacher@mssid.dz', role: 'ROLE_TEACHER' }));
-      localStorage.setItem('mssid_current_user', JSON.stringify({ email: 'teacher@mssid.dz', role: 'ROLE_TEACHER' }));
+    it('attaches user role headers pushed by AuthService (SEC-05: no localStorage read)', async () => {
+      springBootApi.setIdentityHeaders('ROLE_TEACHER', 'teacher@mssid.dz');
 
       const mockFetch = vi.fn().mockResolvedValue({
         status: 200,
@@ -47,7 +70,6 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
         expect.stringContaining('/test-endpoint'),
         expect.objectContaining({
           headers: expect.objectContaining({
-            'Authorization': 'Bearer mock_jwt_token_xyz',
             'x-user-role': 'ROLE_TEACHER',
             'x-user-id': 'teacher@mssid.dz',
           }),
@@ -55,13 +77,12 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       );
     });
 
-    it('performs login and stores returned JWT token on success', async () => {
+    it('performs login without exposing a JWT in the response body', async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         status: 200,
         ok: true,
         headers: new Headers({ 'content-type': 'application/json' }),
         json: async () => ({
-          token: 'returned_login_jwt_token_456',
           user: { email: 'admin@mssid.dz', role: 'ROLE_ADMIN' },
         }),
       });
@@ -70,8 +91,8 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       const result = await springBootApi.login({ email: 'admin@mssid.dz', passwordHash: 'hashed_pass' });
 
       expect(result.status).toBe(200);
-      expect(result.data?.token).toBe('returned_login_jwt_token_456');
-      expect(springBootApi.getToken()).toBe('returned_login_jwt_token_456');
+      expect(result.error).toBeUndefined();
+      expect(result.data?.token).toBeUndefined();
     });
 
     it('handles askGeminiExplain request payload correctly', async () => {
@@ -100,21 +121,25 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
   });
 
   describe('Error Handling & Boundary Edge Cases', () => {
-    it('handles 401 Unauthorized status by clearing token and returning expired message', async () => {
-      springBootApi.setToken('expired_token_123');
-
+    it('handles 401 Unauthorized status by asking the server to clear the auth cookie', async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         status: 401,
         ok: false,
         headers: new Headers(),
+        json: async () => ({}),
       });
       global.fetch = mockFetch;
 
       const result = await springBootApi.request('/protected-route');
 
       expect(result.status).toBe(401);
-      expect(result.error).toContain('Session expirée');
-      expect(springBootApi.getToken()).toBeNull();
+      expect(result.error).toContain('Email ou mot de passe incorrect');
+      // logout() is fire-and-forget from within the 401 handler — give its microtask a tick to run.
+      await Promise.resolve();
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/v1/auth/logout'),
+        expect.objectContaining({ method: 'POST' })
+      );
     });
 
     it('handles 429 Rate Limit Exceeded status from Spring Boot backend', async () => {

@@ -121,7 +121,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const isAiEnabled = useFeatureFlag('aiAssistant');
+  const isAiEnabled = useFeatureFlag('enableAITutor');
   const roleLabel = authUser?.role || 'ROLE_FREE';
   const isAdmin = roleLabel === 'ROLE_ADMIN';
   const displayXp = authUser?.score !== undefined ? authUser.score : (authUser?.xp !== undefined ? authUser.xp : userProfile.xp);

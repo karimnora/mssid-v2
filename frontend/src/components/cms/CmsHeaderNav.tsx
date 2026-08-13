@@ -16,7 +16,8 @@ import {
   LogOut,
   Sliders,
   ChevronRight,
-  BookOpen
+  BookOpen,
+  BarChart3
 } from 'lucide-react';
 
 export type CmsTabId =
@@ -29,7 +30,8 @@ export type CmsTabId =
   | 'ai_generator'
   | 'media_library'
   | 'audit'
-  | 'analytics';
+  | 'analytics'
+  | 'config';
 
 interface CmsHeaderNavProps {
   activeTab: CmsTabId;
@@ -58,6 +60,8 @@ export const CmsHeaderNav: React.FC<CmsHeaderNavProps> = ({
     { id: 'ai_generator', labelAr: 'المولّد الذكي', icon: Sparkles, badge: 'Gemini' },
     { id: 'media_library', labelAr: 'المكتبة الوسائطية', icon: ImageIcon },
     { id: 'audit', labelAr: 'التقرير الفني والتدقيق', icon: ShieldCheck, badge: 'Live' },
+    { id: 'analytics', labelAr: 'الإحصائيات', icon: BarChart3 },
+    { id: 'config', labelAr: 'الإعدادات والمزايا', icon: Sliders },
   ];
 
   return (

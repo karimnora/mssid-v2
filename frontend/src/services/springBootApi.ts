@@ -36,7 +36,9 @@ export interface ApiResponse<T> {
 }
 
 export interface SpringBootAuthResponse {
-  token: string;
+  // SEC-01: the backend no longer puts the JWT in the response body — it arrives as an HttpOnly
+  // cookie instead (see AuthController.java). Kept optional only for older/non-browser callers.
+  token?: string;
   email?: string;
   nom?: string;
   roleName?: string;
@@ -45,22 +47,25 @@ export interface SpringBootAuthResponse {
 }
 
 class SpringBootApiService {
-  private tokenKey = 'mssid_jwt_token';
   private requestTimeoutMs = 15000;
 
-  // Obtenir le token JWT stocké
-  public getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+  // SEC-05: identity for the x-user-role/x-user-id convenience headers (used by the AI quota system)
+  // is pushed here by AuthService.setCurrentUser whenever the in-memory auth singleton changes — no
+  // localStorage read. AuthService already imports springBootApi, so this stays a one-way dependency.
+  private identityRole: string | null = null;
+  private identityEmail: string | null = null;
+
+  public setIdentityHeaders(role: string | null | undefined, email: string | null | undefined): void {
+    this.identityRole = role || null;
+    this.identityEmail = email || null;
   }
 
-  // Enregistrer le token JWT
-  public setToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
-  }
-
-  // Supprimer le token (Déconnexion)
-  public clearToken(): void {
-    localStorage.removeItem(this.tokenKey);
+  // SEC-01: the backend now issues the JWT as an HttpOnly cookie (see AuthController.java) — it never
+  // reaches JS, so there is nothing left to read/store/attach here. Every request must send
+  // `credentials: 'include'` so the browser attaches that cookie automatically; logging out means
+  // asking the server to clear it, not deleting a localStorage entry.
+  public async logout(): Promise<void> {
+    await this.request('/v1/auth/logout', { method: 'POST' }).catch(() => {});
   }
 
   // Générer les en-têtes HTTP sécurisés
@@ -71,29 +76,11 @@ class SpringBootApiService {
       ...customHeaders,
     };
 
-    const token = this.getToken();
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
+    if (this.identityRole) {
+      headers['x-user-role'] = this.identityRole;
     }
-
-    let currentUser: any = {};
-    try {
-      const rawCurrent = localStorage.getItem('mssid_current_user');
-      const rawAuth = localStorage.getItem('mssid_auth_user');
-      if (rawCurrent && rawCurrent !== 'undefined') {
-        currentUser = JSON.parse(rawCurrent);
-      } else if (rawAuth && rawAuth !== 'undefined') {
-        currentUser = JSON.parse(rawAuth);
-      }
-    } catch {
-      currentUser = {};
-    }
-
-    if (currentUser?.role) {
-      headers['x-user-role'] = currentUser.role;
-    }
-    if (currentUser?.email) {
-      headers['x-user-id'] = currentUser.email;
+    if (this.identityEmail) {
+      headers['x-user-id'] = this.identityEmail;
     }
 
     return headers;
@@ -121,18 +108,21 @@ public async request<T>(
     const response = await fetch(url, {
       ...options,
       headers: this.getHeaders((options.headers as Record<string, string>) || {}),
+      credentials: 'include', // SEC-01: send the HttpOnly auth cookie on every request
       signal: controller.signal,
     });
 
     const status = response.status;
 
     if (status === 401) {
-      this.clearToken();
+      // Best-effort: ask the server to drop the (presumably expired/invalid) auth cookie.
+      // Fire-and-forget — a stuck logout call must never block surfacing this 401 to the caller.
+      this.logout().catch(() => {});
       // On extrait le message JSON du backend si présent, sinon fallback
       const errorData = await response.json().catch(() => ({}));
-      return { 
-        error: errorData.message || errorData.error || 'Email ou mot de passe incorrect.', 
-        status 
+      return {
+        error: errorData.message || errorData.error || 'Email ou mot de passe incorrect.',
+        status
       };
     }
 
@@ -186,6 +176,14 @@ public async request<T>(
 }
 
   // --- Endpoints d'Authentification ---
+
+  // SEC-05: cookie-authenticated identity fetch — AuthContext calls this once on app boot to
+  // hydrate the current user from the server instead of trusting a cached localStorage profile.
+  // A 401 here simply means "not logged in" (no cookie / expired session).
+  public async fetchCurrentUser() {
+    return this.request<any>('/v1/users/me', { method: 'GET' });
+  }
+
   public async login(credentials: { email: string; password?: string; passwordHash?: string }) {
     const payload = {
       email: credentials.email,
@@ -193,15 +191,12 @@ public async request<T>(
       passwordHash: credentials.passwordHash || credentials.password || '',
     };
 
-    const res = await this.request<SpringBootAuthResponse>('/v1/auth/login', {
+    // SEC-01: the JWT arrives as a Set-Cookie header the browser stores itself (HttpOnly) — the
+    // response body no longer carries a `token` field at all, nothing to persist here.
+    return this.request<SpringBootAuthResponse>('/v1/auth/login', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
-
-    if (res.data?.token) {
-      this.setToken(res.data.token);
-    }
-    return res;
   }
 
   public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string }) {
@@ -213,15 +208,10 @@ public async request<T>(
       roleName: userData.roleName || 'ROLE_FREE',
     };
 
-    const res = await this.request<SpringBootAuthResponse>('/v1/auth/register', {
+    return this.request<SpringBootAuthResponse>('/v1/auth/register', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
-
-    if (res.data?.token) {
-      this.setToken(res.data.token);
-    }
-    return res;
   }
 
   // --- Proxy IA Gemini ---

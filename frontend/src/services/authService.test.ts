@@ -5,6 +5,9 @@ import { AuthUser } from '../types/auth';
 describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
   beforeEach(() => {
     localStorage.clear();
+    // SEC-05: the authenticated profile is an in-memory singleton now (never localStorage), so
+    // localStorage.clear() alone no longer resets it between tests — do it explicitly.
+    AuthService.setCurrentUser(null);
   });
 
   describe('Happy Path - User Retrieval & Login', () => {

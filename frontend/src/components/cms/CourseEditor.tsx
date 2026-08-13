@@ -1,41 +1,36 @@
-import React, { useState } from 'react';
-import { CmsCourseItem, WorkflowStatus, PrimaryGrade, SubjectId } from '../../types/cms';
+import React, { useMemo, useState } from 'react';
+import { CmsCourseItem, PrimaryGrade, SubjectId } from '../../types/cms';
 import {
-  FileEdit,
   Save,
   Plus,
   Trash2,
-  Clock,
-  History,
-  CheckCircle2,
-  Sparkles,
-  Paperclip,
-  Image as ImageIcon,
-  Calculator,
-  Grid,
-  ChevronDown,
+  Search,
   Eye,
-  RotateCcw
+  EyeOff,
 } from 'lucide-react';
 import { SUBJECTS_LIST } from '../../data/subjectsData';
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
 
 interface CourseEditorProps {
   courses: CmsCourseItem[];
   onSaveCourses: (updated: CmsCourseItem[]) => void;
 }
 
-const WORKFLOW_LABELS: Record<WorkflowStatus, string> = {
-  draft: 'مسودة (Draft)',
-  review: 'قيد المراجعة (In Review)',
-  validated: 'معتمد (Validated)',
-  published: 'منشور للعامة (Published)',
-  archived: 'مؤرشف (Archived)',
-};
+const GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 
+// Deliberately minimal by design: courses are already fully authored and typed in
+// src/data/courses/ (the shipped curriculum). This CMS editor is a lightweight overlay for
+// quick text tweaks and visibility toggles on the demo/backend content model — no draft/review/
+// approval workflow, no version history. See spec: "Ne conserver qu'une vue en lecture/édition
+// rapide (recherche, filtres par matière/niveau, édition rapide du texte ou masquage/activation)."
 export const CourseEditor: React.FC<CourseEditorProps> = ({
   courses,
   onSaveCourses,
 }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterGrade, setFilterGrade] = useState<PrimaryGrade | 'all'>('all');
+  const [filterSubject, setFilterSubject] = useState<SubjectId | 'all'>('all');
+
   const [selectedCourseId, setSelectedCourseId] = useState<string>(courses[0]?.id || '');
   const activeCourse = courses.find((c) => c.id === selectedCourseId) || courses[0];
 
@@ -47,9 +42,18 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
   const [summaryAr, setSummaryAr] = useState(activeCourse?.summaryAr || '');
   const [bodyHtmlContent, setBodyHtmlContent] = useState(activeCourse?.bodyHtmlContent || '');
   const [rulesArText, setRulesArText] = useState((activeCourse?.rulesAr || []).join('\n'));
-  const [workflowStatus, setWorkflowStatus] = useState<WorkflowStatus>(activeCourse?.workflowStatus || 'draft');
+  const [isHidden, setIsHidden] = useState<boolean>(activeCourse?.isHidden ?? false);
   const [interactiveTool, setInteractiveTool] = useState<string>(activeCourse?.interactiveTool || 'none');
-  const [showHistoryModal, setShowHistoryModal] = useState(false);
+
+  const filteredCourses = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    return courses.filter((c) => {
+      const matchesQuery = !q || c.titleAr.toLowerCase().includes(q) || c.summaryAr.toLowerCase().includes(q);
+      const matchesGrade = filterGrade === 'all' || c.grade === filterGrade;
+      const matchesSubject = filterSubject === 'all' || c.subject === filterSubject;
+      return matchesQuery && matchesGrade && matchesSubject;
+    });
+  }, [courses, searchQuery, filterGrade, filterSubject]);
 
   // Sync state when selecting a different course
   const handleSelectCourse = (course: CmsCourseItem) => {
@@ -61,7 +65,7 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
     setSummaryAr(course.summaryAr);
     setBodyHtmlContent(course.bodyHtmlContent);
     setRulesArText((course.rulesAr || []).join('\n'));
-    setWorkflowStatus(course.workflowStatus);
+    setIsHidden(course.isHidden ?? false);
     setInteractiveTool(course.interactiveTool || 'none');
   };
 
@@ -69,18 +73,6 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
     if (!activeCourse) return;
 
     const rulesArray = rulesArText.split('\n').filter((r) => r.trim().length > 0);
-    const newVersionNumber = activeCourse.version + 1;
-
-    // Create version snapshot for audit log
-    const newVersionSnapshot = {
-      versionNumber: activeCourse.version,
-      updatedAt: new Date().toISOString().slice(0, 10),
-      authorName: activeCourse.authorName || 'المعلم المنسق',
-      titleAr: activeCourse.titleAr,
-      summaryAr: activeCourse.summaryAr,
-      bodyHtmlContent: activeCourse.bodyHtmlContent,
-      changeLogAr: `تحديث المحتوى وتمرير الحالة إلى (${WORKFLOW_LABELS[workflowStatus]})`,
-    };
 
     const updatedCourseItem: CmsCourseItem = {
       ...activeCourse,
@@ -89,18 +81,18 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
       grade,
       subject,
       summaryAr,
-      bodyHtmlContent,
+      // SEC-02: sanitized on the way in — bodyHtmlContent is explicitly HTML meant to be rendered,
+      // so it's cleaned here rather than trusting every future rendering site to remember to.
+      bodyHtmlContent: sanitizeHtml(bodyHtmlContent),
       rulesAr: rulesArray,
-      workflowStatus,
+      isHidden,
       interactiveTool: interactiveTool === 'none' ? undefined : (interactiveTool as any),
-      version: newVersionNumber,
-      versionsHistory: [newVersionSnapshot, ...(activeCourse.versionsHistory || [])],
       updatedAt: new Date().toISOString().slice(0, 10),
     };
 
     const updatedList = courses.map((c) => (c.id === activeCourse.id ? updatedCourseItem : c));
     onSaveCourses(updatedList);
-    alert('تم حفظ التعديلات وإنشاء نسخة تاريخية جديدة للدرس بنجاح!');
+    alert('تم حفظ التعديلات بنجاح!');
   };
 
   const handleCreateNewCourse = () => {
@@ -116,9 +108,7 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
       rulesAr: ['القاعدة الأولى...'],
       mediaUrls: [],
       attachments: [],
-      version: 1,
-      versionsHistory: [],
-      workflowStatus: 'draft',
+      isHidden: false,
       authorName: 'المعلم المنسق',
       updatedAt: new Date().toISOString().slice(0, 10),
     };
@@ -138,31 +128,30 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
     }
   };
 
-  const handleRollbackVersion = (ver: any) => {
-    if (window.confirm(`هل تريد الاسترجاع إلى النسخة v${ver.versionNumber}؟`)) {
-      setTitleAr(ver.titleAr);
-      setSummaryAr(ver.summaryAr);
-      setBodyHtmlContent(ver.bodyHtmlContent);
-      setShowHistoryModal(false);
+  const handleToggleVisibility = (course: CmsCourseItem) => {
+    const updatedList = courses.map((c) => (c.id === course.id ? { ...c, isHidden: !c.isHidden } : c));
+    onSaveCourses(updatedList);
+    if (course.id === activeCourse?.id) {
+      setIsHidden(!course.isHidden);
     }
   };
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
-      
+
       {/* Top Header */}
       <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-2xs flex items-center justify-between flex-wrap gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="bg-amber-100 text-amber-800 text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-200">
-              Éditeur de Cours CMS
+              إدارة الدروس
             </span>
             <h2 className="text-lg font-extrabold text-slate-900">
-              محرر الدروس التفاعلية البيداغوجية
+              محرر الدروس السريع
             </h2>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            دعم تحرير النص العربي المشكول، ربط الأدوات التفاعلية، وإدارة النسخ التاريخية (Versioning).
+            بحث، تصفية حسب المادة والمستوى، تعديل سريع للنص، وإظهار/إخفاء الدرس عن التلاميذ.
           </p>
         </div>
 
@@ -180,23 +169,57 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
             className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs px-4 py-2.5 rounded-xl transition-all shadow-xs cursor-pointer"
           >
             <Save className="w-4 h-4" />
-            <span>حفظ الدرس والاصدار</span>
+            <span>حفظ التعديلات</span>
           </button>
         </div>
       </div>
 
       {/* Main Two-Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        
-        {/* Left Sidebar: Lessons List Selector */}
+
+        {/* Left Sidebar: Search, Filters & Lessons List */}
         <div className="lg:col-span-1 bg-white border border-slate-200 rounded-3xl p-4 space-y-3 shadow-2xs h-fit">
-          <h3 className="font-extrabold text-xs text-slate-900 flex items-center justify-between border-b pb-2">
-            <span>فهرس الدروس ({courses.length})</span>
-            <span className="text-[10px] text-slate-400 font-mono">DRAFT / PUB</span>
+          <h3 className="font-extrabold text-xs text-slate-900 border-b pb-2">
+            فهرس الدروس ({filteredCourses.length} / {courses.length})
           </h3>
 
-          <div className="space-y-2 max-h-[600px] overflow-y-auto pr-1">
-            {courses.map((c) => {
+          <div className="relative">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute top-1/2 -translate-y-1/2 right-3" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="بحث بالعنوان أو الملخص..."
+              className="w-full bg-slate-50 border border-slate-300 text-xs pr-9 pl-3 py-2 rounded-xl focus:outline-none focus:border-amber-500"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <select
+              value={filterGrade}
+              onChange={(e) => setFilterGrade(e.target.value as PrimaryGrade | 'all')}
+              className="w-full bg-slate-50 border border-slate-300 font-bold text-[11px] p-2 rounded-xl focus:outline-none"
+            >
+              <option value="all">كل المستويات</option>
+              {GRADES.map((g) => (
+                <option key={g} value={g}>{g}</option>
+              ))}
+            </select>
+
+            <select
+              value={filterSubject}
+              onChange={(e) => setFilterSubject(e.target.value as SubjectId | 'all')}
+              className="w-full bg-slate-50 border border-slate-300 font-bold text-[11px] p-2 rounded-xl focus:outline-none"
+            >
+              <option value="all">كل المواد</option>
+              {SUBJECTS_LIST.map((s) => (
+                <option key={s.id} value={s.id}>{s.nameAr}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2 max-h-[520px] overflow-y-auto pr-1">
+            {filteredCourses.map((c) => {
               const isSelected = c.id === activeCourse?.id;
 
               return (
@@ -215,7 +238,18 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
                     }`}>
                       {c.grade}
                     </span>
-                    <span className="text-[9px] font-mono text-slate-400">v{c.version}</span>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleToggleVisibility(c); }}
+                      title={c.isHidden ? 'إظهار الدرس' : 'إخفاء الدرس'}
+                      className={`flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.2 rounded cursor-pointer ${
+                        c.isHidden
+                          ? 'bg-slate-700 text-slate-300'
+                          : isSelected ? 'bg-emerald-500 text-slate-950' : 'bg-emerald-100 text-emerald-700'
+                      }`}
+                    >
+                      {c.isHidden ? <EyeOff className="w-2.5 h-2.5" /> : <Eye className="w-2.5 h-2.5" />}
+                      <span>{c.isHidden ? 'مخفي' : 'مرئي'}</span>
+                    </button>
                   </div>
 
                   <h4 className="font-extrabold text-xs truncate">{c.titleAr}</h4>
@@ -225,18 +259,22 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
                 </div>
               );
             })}
+
+            {filteredCourses.length === 0 && (
+              <p className="text-xs text-slate-400 text-center py-6">لا توجد دروس مطابقة لبحثك.</p>
+            )}
           </div>
         </div>
 
-        {/* Right Area: Course Form & Rich Editor */}
+        {/* Right Area: Quick Edit Form */}
         <div className="lg:col-span-3 space-y-5">
-          
+
           {activeCourse ? (
             <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-2xs space-y-5">
-              
-              {/* Meta Row: Grade, Subject, Workflow Status, Versioning Button */}
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                
+
+              {/* Meta Row: Grade, Subject, Visibility Toggle */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+
                 <div>
                   <label className="block text-[11px] font-bold text-slate-500 mb-1">المستوى الدراسي:</label>
                   <select
@@ -244,7 +282,7 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
                     onChange={(e) => setGrade(e.target.value as PrimaryGrade)}
                     className="w-full bg-white border border-slate-300 font-bold text-xs p-2 rounded-xl focus:outline-none"
                   >
-                    {(['1AP', '2AP', '3AP', '4AP', '5AP'] as PrimaryGrade[]).map((g) => (
+                    {GRADES.map((g) => (
                       <option key={g} value={g}>{g}</option>
                     ))}
                   </select>
@@ -264,28 +302,15 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-500 mb-1">حالة اعتماد الدرس:</label>
-                  <select
-                    value={workflowStatus}
-                    onChange={(e) => setWorkflowStatus(e.target.value as WorkflowStatus)}
-                    className="w-full bg-white border border-slate-300 font-bold text-xs p-2 rounded-xl focus:outline-none text-emerald-800"
-                  >
-                    <option value="draft">مسودة (Draft)</option>
-                    <option value="review">قيد المراجعة البيداغوجية</option>
-                    <option value="validated">معتمد ومصادق عليه</option>
-                    <option value="published">منشور متاح للتلاميذ</option>
-                    <option value="archived">مؤرشف</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-slate-500 mb-1">سجل الإصدارات:</label>
+                  <label className="block text-[11px] font-bold text-slate-500 mb-1">ظهور الدرس للتلاميذ:</label>
                   <button
-                    onClick={() => setShowHistoryModal(true)}
-                    className="w-full flex items-center justify-center gap-1.5 bg-slate-900 text-amber-400 font-bold text-xs p-2 rounded-xl hover:bg-slate-800 cursor-pointer"
+                    onClick={() => setIsHidden(!isHidden)}
+                    className={`w-full flex items-center justify-center gap-1.5 font-bold text-xs p-2 rounded-xl cursor-pointer transition-colors ${
+                      isHidden ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                    }`}
                   >
-                    <History className="w-3.5 h-3.5" />
-                    <span>الإصدار v{activeCourse.version} ({activeCourse.versionsHistory?.length || 0} نسخ)</span>
+                    {isHidden ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                    <span>{isHidden ? 'مخفي (غير مرئي)' : 'مرئي (منشور)'}</span>
                   </button>
                 </div>
 
@@ -390,48 +415,6 @@ export const CourseEditor: React.FC<CourseEditorProps> = ({
         </div>
 
       </div>
-
-      {/* Version History Modal */}
-      {showHistoryModal && activeCourse && (
-        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-xl border border-slate-200">
-            <div className="flex items-center justify-between border-b pb-3">
-              <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-2">
-                <History className="w-4 h-4 text-amber-500" />
-                <span>سجل التغيرات والنسخ التاريخية (Version History)</span>
-              </h3>
-              <button onClick={() => setShowHistoryModal(false)} className="text-slate-400 hover:text-slate-600 font-black">
-                ✕
-              </button>
-            </div>
-
-            <div className="space-y-3 max-h-80 overflow-y-auto">
-              {(activeCourse.versionsHistory || []).length > 0 ? (
-                activeCourse.versionsHistory.map((ver, idx) => (
-                  <div key={idx} className="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-                    <div className="flex items-center justify-between text-xs font-bold text-slate-900">
-                      <span>النسخة v{ver.versionNumber} ({ver.updatedAt})</span>
-                      <button
-                        onClick={() => handleRollbackVersion(ver)}
-                        className="flex items-center gap-1 text-emerald-700 hover:underline font-extrabold text-[11px] cursor-pointer"
-                      >
-                        <RotateCcw className="w-3 h-3" />
-                        <span>استرجاع</span>
-                      </button>
-                    </div>
-                    <p className="text-[11px] text-slate-600 font-sans">{ver.changeLogAr}</p>
-                    <span className="text-[10px] text-slate-400 block font-mono">بواسطة: {ver.authorName}</span>
-                  </div>
-                ))
-              ) : (
-                <p className="text-xs text-slate-500 italic text-center py-4">
-                  هذا الدرس في نسخته الأولى المباشرة.
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
 
     </div>
   );

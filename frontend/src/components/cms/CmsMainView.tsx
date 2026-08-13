@@ -13,6 +13,7 @@ import {
   INITIAL_CMS_ANALYTICS,
 } from '../../data/cmsData';
 import { cmsApi } from '../../services/cmsApi';
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
 
 import { CmsHeaderNav, CmsTabId } from './CmsHeaderNav';
 import { AdminDashboard } from './AdminDashboard';
@@ -24,6 +25,8 @@ import { PdfImporter } from './PdfImporter';
 import { AiGeneratorModule } from './AiGeneratorModule';
 import { MediaLibrary } from './MediaLibrary';
 import { SystemAuditView } from './SystemAuditView';
+import { AnalyticsDashboard } from './AnalyticsDashboard';
+import { FeatureFlagsConfig } from './FeatureFlagsConfig';
 
 interface CmsMainViewProps {
   onExitCms: () => void;
@@ -159,13 +162,13 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
       subject: 'math',
       titleAr,
       summaryAr,
-      bodyHtmlContent: bodyHtml,
+      // SEC-02: Gemini-generated content is external/dynamic input — sanitize before it ever
+      // reaches the data model, same as manual CMS edits in CourseEditor.
+      bodyHtmlContent: sanitizeHtml(bodyHtml),
       rulesAr: ['قاعدة مولدة تلقائياً...'],
       mediaUrls: [],
       attachments: [],
-      version: 1,
-      versionsHistory: [],
-      workflowStatus: 'draft',
+      isHidden: false,
       authorName: currentUser.name,
       updatedAt: new Date().toISOString().slice(0, 10),
     };
@@ -279,6 +282,14 @@ export const CmsMainView: React.FC<CmsMainViewProps> = ({ onExitCms }) => {
             exams={exams}
             curriculum={curriculum}
           />
+        )}
+
+        {activeTab === 'analytics' && (
+          <AnalyticsDashboard analytics={analyticsStats} />
+        )}
+
+        {activeTab === 'config' && (
+          <FeatureFlagsConfig />
         )}
 
       </main>

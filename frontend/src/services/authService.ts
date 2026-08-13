@@ -2,10 +2,20 @@ import { AuthUser, PaymentReceipt, PaymentMethod, UserRole, Subscription } from 
 import { springBootApi } from './springBootApi';
 
 const STORAGE_KEYS = {
-  CURRENT_USER: 'mssid_auth_user',
-  TOKEN: 'mssid_jwt_token',
   RECEIPTS: 'mssid_payment_receipts',
 };
+
+// SEC-05: the authenticated profile (name, email, xp, badges...) now lives in memory only — never
+// localStorage. Session persistence across page reloads is the HttpOnly cookie's job (see SEC-01);
+// AuthContext re-hydrates this singleton from GET /api/v1/users/me on every app boot. Same
+// subscribe/notify shape as featureFlags.ts, so useSyncExternalStore can drive React re-renders.
+let currentUserState: AuthUser | null = null;
+type AuthListener = () => void;
+const authListeners = new Set<AuthListener>();
+
+function notifyAuthListeners() {
+  authListeners.forEach((listener) => listener());
+}
 
 // Pre-defined demo accounts used for local/offline testing when the backend is unavailable
 const DEMO_USERS: Record<string, AuthUser> = {
@@ -96,35 +106,25 @@ const INITIAL_RECEIPTS: PaymentReceipt[] = [
 
 export class AuthService {
   static getCurrentUser(): AuthUser | null {
-    const saved = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
-    if (!saved) {
-      return null;
-    }
-    try {
-      const user: AuthUser = JSON.parse(saved);
-      if (user && user.nom) {
-        const cleanedNom = user.nom.replace(/\s*\((FREE|PREMIUM|ADMIN)\)/gi, '').trim();
-        if (cleanedNom !== user.nom) {
-          user.nom = cleanedNom;
-          this.setCurrentUser(user);
-        }
-      }
-      return user;
-    } catch {
-      return null;
-    }
+    return currentUserState;
   }
 
   static setCurrentUser(user: AuthUser | null): void {
-    if (user) {
-      localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user));
-      if (user.token) {
-        localStorage.setItem(STORAGE_KEYS.TOKEN, user.token);
+    if (user && user.nom) {
+      const cleanedNom = user.nom.replace(/\s*\((FREE|PREMIUM|ADMIN)\)/gi, '').trim();
+      if (cleanedNom !== user.nom) {
+        user = { ...user, nom: cleanedNom };
       }
-    } else {
-      localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
-      localStorage.removeItem(STORAGE_KEYS.TOKEN);
     }
+    currentUserState = user;
+    springBootApi.setIdentityHeaders(user?.role, user?.email);
+    notifyAuthListeners();
+  }
+
+  /** AuthContext subscribes here (via useSyncExternalStore) to react to login/logout/profile updates. */
+  static subscribe(listener: AuthListener): () => void {
+    authListeners.add(listener);
+    return () => authListeners.delete(listener);
   }
 
   static login(email: string, pass: string): AuthUser {
@@ -150,11 +150,13 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
   try {
     const response = await springBootApi.login({ email, password: pass });
 
-    // Si le backend renvoie une erreur (ex: 404/401) ou pas de token
-    if (response.error || !response.data?.token) {
-      return { 
-        user: null, 
-        error: response.error || 'Identifiants invalides.' 
+    // SEC-01: the JWT now lives in an HttpOnly cookie set directly by the backend response headers —
+    // it never appears in response.data anymore, so success can no longer be detected by the
+    // presence of a `token` field. A 2xx with no `error` means the cookie was set.
+    if (response.error || !response.data) {
+      return {
+        user: null,
+        error: response.error || 'Identifiants invalides.'
       };
     }
 
@@ -167,7 +169,6 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       nom: response.data.nom || u.nom || email.split('@')[0],
       email: response.data.email || u.email || email,
       role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-      token: response.data.token,
       score: scoreVal,
       xp: scoreVal,
       level: levelVal,
@@ -212,11 +213,11 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
 static async registerAsync(nom: string, email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
   try {
     const response = await springBootApi.register({ nom, email, password: pass });
-    
-    if (response.error || !response.data?.token) {
-      return { 
-        user: null, 
-        error: response.error || 'Erreur lors de la création du compte.' 
+
+    if (response.error || !response.data) {
+      return {
+        user: null,
+        error: response.error || 'Erreur lors de la création du compte.'
       };
     }
 
@@ -226,7 +227,6 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
       nom: response.data.nom || u.nom || nom || email.split('@')[0],
       email: response.data.email || u.email || email,
       role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-      token: response.data.token,
       score: u.score ?? 0,
       xp: u.xp ?? 0,
       level: u.level ?? 1,
@@ -265,9 +265,10 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
         };
     this.setCurrentUser(user);
 
-    // Call backend API login so request is registered on backend
+    // Call backend API login so request is registered on backend. SEC-01: success is now judged by
+    // the absence of an error (the JWT itself arrives as an HttpOnly cookie, not in res.data).
     springBootApi.login({ email, password: 'password123' }).then((res) => {
-      if (res.data && res.data.token) {
+      if (res.data && !res.error) {
         const u = res.data.user || {};
         const scoreVal = u.score !== undefined ? u.score : user.score;
         const levelVal = Math.floor((scoreVal || 0) / 100) + 1;
@@ -279,7 +280,6 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
           score: scoreVal,
           xp: scoreVal,
           level: levelVal,
-          token: res.data.token,
         };
         this.setCurrentUser(backendUser);
       }
@@ -562,7 +562,9 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
   }
 
   static logout(): void {
-    springBootApi.clearToken();
+    // Fire-and-forget: clearing the HttpOnly cookie needs a round-trip to the server, but callers
+    // of logout() expect an immediate, synchronous local sign-out.
+    springBootApi.logout().catch(() => {});
     this.setCurrentUser(null);
   }
 
