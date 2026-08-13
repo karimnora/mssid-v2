@@ -34,6 +34,7 @@ import { PwaInstallBanner } from './components/PwaInstallBanner';
 import { SeoHead } from './components/SeoHead';
 import { PricingModal } from './components/PricingModal';
 import { AdBanner } from './components/AdBanner';
+import { PreschoolApp } from './components/preschool/PreschoolApp';
 import { isFeatureEnabled } from './featureFlags';
 import { springBootApi } from './services/springBootApi';
 import { Button, Card, Badge, XPProgressBar } from './components/ui';
@@ -135,6 +136,11 @@ export default function App() {
 
   // View state: Student App vs Back Office CMS
   const [isCmsActive, setIsCmsActive] = useState(false);
+
+  // "Mode Éveil" (préscolaire 3-5 ans) — fully isolated sub-app (own data model under
+  // data/preschool/, own localStorage keys), entered/exited the same way as the CMS below. Never
+  // touches PrimaryGrade/CourseLesson/userProfile.
+  const [isPreschoolActive, setIsPreschoolActive] = useState(false);
 
   // Modals state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
@@ -261,6 +267,10 @@ export default function App() {
 
   if (isCmsActive) {
     return <CmsMainView onExitCms={() => setIsCmsActive(false)} />;
+  }
+
+  if (isPreschoolActive) {
+    return <PreschoolApp onExit={() => setIsPreschoolActive(false)} />;
   }
 
   /**
@@ -483,6 +493,12 @@ export default function App() {
               <div className="flex flex-wrap gap-2 items-center">
                 <Badge variant="xp">⭐ تجربة ممتعة للأطفال</Badge>
                 <Badge variant="info">🎯 واجهة آمنة وسهلة الاستخدام</Badge>
+                <button
+                  onClick={() => setIsPreschoolActive(true)}
+                  className="min-h-9 px-3 py-1.5 rounded-full text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-white shadow-sm cursor-pointer hover:brightness-105 transition-all"
+                >
+                  🦊 وضع التحضيري (3-5 سنوات)
+                </button>
               </div>
               {/* Live XP progress toward next level — Kit UI v1 */}
               <div className="w-full sm:w-56">

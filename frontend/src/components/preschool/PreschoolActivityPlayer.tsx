@@ -1,0 +1,98 @@
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
+import { PreschoolMascot, MascotMood } from './PreschoolMascot';
+import { PreschoolTapChoice } from './PreschoolTapChoice';
+import { PreschoolDragDrop } from './PreschoolDragDrop';
+import { PreschoolTrace } from './PreschoolTrace';
+import { usePreschoolSpeech } from './usePreschoolAudio';
+
+interface PreschoolActivityPlayerProps {
+  activity: PreschoolActivity;
+  language: PreschoolLanguage;
+  onComplete: () => void;
+  onExit: () => void;
+}
+
+// Orchestrates one activity: speaks the prompt on entry, renders the right interaction widget for
+// activity.interactionType, and reacts (mascot + voice) on success before handing control back to
+// the path view. Session length stays short by construction — one activity, one clear finish line.
+export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = ({ activity, language, onComplete, onExit }) => {
+  const dir = language === 'ar' ? 'rtl' : 'ltr';
+  const [mood, setMood] = useState<MascotMood>('idle');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const { speak } = usePreschoolSpeech(language);
+  const content = activity.i18n[language];
+
+  useEffect(() => {
+    setMood('idle');
+    setShowSuccess(false);
+    const timer = setTimeout(() => speak(content.promptAudio), 350);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activity.id, language]);
+
+  const handleInteractionComplete = () => {
+    setMood('happy');
+    setShowSuccess(true);
+    if (content.successAudio) speak(content.successAudio);
+    setTimeout(onComplete, 1400);
+  };
+
+  const replayPrompt = () => speak(content.promptAudio);
+
+  return (
+    <div dir={dir} className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-sky-100 px-4 py-6 flex flex-col">
+      <div className="flex items-center justify-between max-w-lg w-full mx-auto mb-4">
+        <button
+          onClick={onExit}
+          className="min-h-11 min-w-11 flex items-center justify-center rounded-full bg-white shadow-md text-xl cursor-pointer"
+          aria-label="خروج / Retour / Back"
+        >
+          🚪
+        </button>
+        <button
+          onClick={replayPrompt}
+          className="min-h-11 min-w-11 flex items-center justify-center rounded-full bg-white shadow-md text-xl cursor-pointer"
+          aria-label="إعادة الاستماع / Réécouter / Replay"
+        >
+          🔊
+        </button>
+      </div>
+
+      <div className="flex flex-col items-center gap-4 max-w-lg w-full mx-auto flex-1 justify-center">
+        <PreschoolMascot mood={mood} />
+
+        <h2 className="text-xl sm:text-2xl font-black text-orange-900 text-center">{content.title}</h2>
+        {content.promptText && (
+          <p className="text-xs text-orange-700/70 text-center max-w-xs">{content.promptText}</p>
+        )}
+
+        <div className="mt-4 w-full flex items-center justify-center">
+          {activity.interactionType === 'tap_choice' && (
+            <PreschoolTapChoice activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'drag_drop' && (
+            <PreschoolDragDrop activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'trace' && (
+            <PreschoolTrace activity={activity} onComplete={handleInteractionComplete} />
+          )}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {showSuccess && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none"
+          >
+            <span className="text-9xl">🌟</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
