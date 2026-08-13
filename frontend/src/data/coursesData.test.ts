@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { COURSES_DATA } from './coursesData';
+import { OFFICIAL_EXAMS_DATA } from './examsData';
 
 describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
   const math5apLessons = COURSES_DATA.filter(
@@ -615,6 +616,91 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
       }
     });
     bySubject('civics').forEach((lesson) => {
+      if (lesson.interactiveTool === 'civics_lab') {
+        expect(lesson.civicsInteractive).toBeDefined();
+      }
+    });
+  });
+});
+
+describe('1AP Pedagogical Curriculum Tests (initiation year — no official exams, 100% playful)', () => {
+  const grade1apLessons = COURSES_DATA.filter((course) => course.grade === '1AP');
+  const bySubject1ap = (subject: string) => grade1apLessons.filter((l) => l.subject === subject);
+
+  it('should contain lessons for all 5 official 1AP subjects (math, arabic, science, islamic, civics)', () => {
+    expect(bySubject1ap('math').length).toBeGreaterThanOrEqual(5);
+    expect(bySubject1ap('arabic').length).toBeGreaterThanOrEqual(5);
+    expect(bySubject1ap('science').length).toBeGreaterThanOrEqual(3);
+    expect(bySubject1ap('islamic').length).toBeGreaterThanOrEqual(3);
+    expect(bySubject1ap('civics').length).toBeGreaterThanOrEqual(3);
+  });
+
+  it('1AP must never have official trimester exams (initiation year, no formal évaluation in Algeria)', () => {
+    const exams1ap = OFFICIAL_EXAMS_DATA.filter((exam) => exam.grade === '1AP');
+    expect(exams1ap.length).toBe(0);
+  });
+
+  it('every 1AP lesson should have a clear, very simple course sheet: title, summary, at least 3 rules, and objectives', () => {
+    grade1apLessons.forEach((lesson) => {
+      expect(lesson.titleAr).toBeTruthy();
+      expect(lesson.summaryAr).toBeTruthy();
+      expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(3);
+      expect(lesson.objectivesAr).toBeDefined();
+      expect(lesson.objectivesAr!.length).toBeGreaterThanOrEqual(2);
+    });
+  });
+
+  it('every 1AP lesson should have a detailedCourse with vocabulary, common mistakes, and a takeaway — required for RevisionSheetViewer', () => {
+    grade1apLessons.forEach((lesson) => {
+      expect(lesson.detailedCourse).toBeDefined();
+      expect(lesson.detailedCourse!.introAr).toBeTruthy();
+      expect(lesson.detailedCourse!.takeawayAr).toBeTruthy();
+      expect(lesson.detailedCourse!.vocabulary).toBeDefined();
+      expect(lesson.detailedCourse!.vocabulary!.length).toBeGreaterThanOrEqual(1);
+      expect(lesson.detailedCourse!.commonMistakes).toBeDefined();
+      expect(lesson.detailedCourse!.commonMistakes!.length).toBeGreaterThanOrEqual(1);
+    });
+  });
+
+  it('every 1AP lesson should have playful tiered exercises and an educational game (no formal évaluation)', () => {
+    grade1apLessons.forEach((lesson) => {
+      expect(lesson.progressiveExercises).toBeDefined();
+      expect(lesson.progressiveExercises!.length).toBeGreaterThanOrEqual(2);
+      expect(lesson.educationalGame).toBeDefined();
+      expect(lesson.educationalGame!.items.length).toBeGreaterThanOrEqual(1);
+      expect(lesson.trimesterEvaluation).toBeUndefined();
+      expect(lesson.evaluationExercises).toBeUndefined();
+    });
+  });
+
+  it('every 1AP lesson should have a light, visual quiz with exactly one correct, explained option', () => {
+    grade1apLessons.forEach((lesson) => {
+      expect(lesson.quiz.length).toBeGreaterThanOrEqual(1);
+      lesson.quiz.forEach((q) => {
+        expect(q.questionAr).toBeTruthy();
+        expect(q.options.length).toBeGreaterThanOrEqual(2);
+        const correctOptions = q.options.filter((opt) => opt.isCorrect);
+        expect(correctOptions.length).toBe(1);
+        expect(correctOptions[0].explanationAr).toBeTruthy();
+      });
+    });
+  });
+
+  it('every 1AP lesson should declare an honest content provenance (never a guessed official_verified)', () => {
+    grade1apLessons.forEach((lesson) => {
+      expect(lesson.contentSource).toBeDefined();
+      expect(lesson.contentSource).not.toBe('official_verified');
+      expect(lesson.sourceNoteAr).toBeTruthy();
+    });
+  });
+
+  it('every 1AP islamic/civics lesson using islamic_lab/civics_lab should carry the matching per-lesson interactive config', () => {
+    bySubject1ap('islamic').forEach((lesson) => {
+      if (lesson.interactiveTool === 'islamic_lab') {
+        expect(lesson.islamicInteractive).toBeDefined();
+      }
+    });
+    bySubject1ap('civics').forEach((lesson) => {
       if (lesson.interactiveTool === 'civics_lab') {
         expect(lesson.civicsInteractive).toBeDefined();
       }

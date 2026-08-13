@@ -1,5 +1,5 @@
 import { CourseLesson } from '../types';
-import { COURSES_1AP } from './courses1AP';
+import { COURSES_1AP } from './courses/1AP';
 import { COURSES_2AP } from './courses/2AP';
 import { COURSES_3AP } from './courses/3AP';
 import { COURSES_4AP } from './courses/4AP';

@@ -900,4 +900,70 @@ export const CHALLENGES_DATA: Challenge[] = [
       { questionOrPromptAr: 'الشكل الذي له 4 أضلاع متساوية:', correctAnswerAr: 'المربع', optionsAr: ['المربع', 'المثلث'] },
     ],
   },
+
+  // ==========================================
+  // 1AP CHALLENGES — سنة تمهيدية بدون امتحانات رسمية: مبنية بالكامل على مبدأ اللعب،
+  // بصرية جداً (رموز تعبيرية كبيرة)، بدون ضغط الوقت (بدون speed_calc/boss_mix)،
+  // مناسبة لأطفال 5-6 سنوات.
+  // ==========================================
+  {
+    id: 'challenge-1ap-math-numbers',
+    subject: 'math',
+    grade: '1AP',
+    titleAr: 'لعبة عدّ النجوم 🌟',
+    descriptionAr: 'العب واعدّ الأشياء من 0 إلى 10 بمرح!',
+    difficulty: 'easy',
+    format: 'quiz_flash',
+    xpReward: 10,
+    items: [
+      { questionOrPromptAr: '⭐⭐⭐', correctAnswerAr: '3', optionsAr: ['3', '5'] },
+      { questionOrPromptAr: '🍎🍎🍎🍎🍎', correctAnswerAr: '5', optionsAr: ['5', '2'] },
+      { questionOrPromptAr: '🐟🐟🐟🐟🐟🐟🐟', correctAnswerAr: '7', optionsAr: ['7', '4'] },
+    ],
+  },
+  {
+    id: 'challenge-1ap-math-shapes-colors',
+    subject: 'math',
+    grade: '1AP',
+    titleAr: 'لعبة الأشكال والألوان',
+    descriptionAr: 'اكتشف الأشكال والألوان من حولك بمتعة!',
+    difficulty: 'easy',
+    format: 'memory',
+    xpReward: 10,
+    items: [
+      { questionOrPromptAr: '🔴', correctAnswerAr: 'دائرة حمراء', optionsAr: ['دائرة حمراء', 'مربع أزرق'] },
+      { questionOrPromptAr: '🔺', correctAnswerAr: 'مثلث', optionsAr: ['مثلث', 'دائرة'] },
+      { questionOrPromptAr: '🍌', correctAnswerAr: 'أصفر', optionsAr: ['أصفر', 'أخضر'] },
+    ],
+  },
+  {
+    id: 'challenge-1ap-arabic-letters',
+    subject: 'arabic',
+    grade: '1AP',
+    titleAr: 'لعبة صيد الحروف الأولى',
+    descriptionAr: 'اكتشف صوت أول حرف في كل كلمة بمتعة!',
+    difficulty: 'easy',
+    format: 'quiz_flash',
+    xpReward: 10,
+    items: [
+      { questionOrPromptAr: 'أَسَدٌ 🦁', correctAnswerAr: 'أَ', optionsAr: ['أَ', 'بَ'] },
+      { questionOrPromptAr: 'مَوْزٌ 🍌', correctAnswerAr: 'مَ', optionsAr: ['مَ', 'تَ'] },
+      { questionOrPromptAr: 'قِطَّةٌ 🐱', correctAnswerAr: 'قَ', optionsAr: ['قَ', 'فَ'] },
+    ],
+  },
+  {
+    id: 'challenge-1ap-science-senses',
+    subject: 'science',
+    grade: '1AP',
+    titleAr: 'لعبة حواسي الخمس',
+    descriptionAr: 'اربط كل عضو بحاسته الصحيحة بمرح!',
+    difficulty: 'easy',
+    format: 'memory',
+    xpReward: 10,
+    items: [
+      { questionOrPromptAr: 'العَيْنُ 👀', correctAnswerAr: 'الرؤية', optionsAr: ['الرؤية', 'السمع'] },
+      { questionOrPromptAr: 'الأُذُنُ 👂', correctAnswerAr: 'السمع', optionsAr: ['السمع', 'الشم'] },
+      { questionOrPromptAr: 'الأَنْفُ 👃', correctAnswerAr: 'الشم', optionsAr: ['الشم', 'الذوق'] },
+    ],
+  },
 ];
