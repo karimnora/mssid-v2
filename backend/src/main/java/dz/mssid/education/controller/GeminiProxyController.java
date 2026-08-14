@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
 @RequiredArgsConstructor
 public class GeminiProxyController {
@@ -37,15 +35,5 @@ public class GeminiProxyController {
     public ResponseEntity<GeminiResponse> solveExamDetailed(@RequestBody GeminiPromptRequest request) {
         GeminiResponse response = geminiAiService.solveExam(request);
         return ResponseEntity.ok(response);
-    }
-
-    @GetMapping({"/api/v1/ai/stats", "/api/gemini/stats"})
-    public ResponseEntity<?> getAiStats() {
-        return ResponseEntity.ok(Map.of(
-                "rateLimiterActive", true,
-                "cacheEntries", 42,
-                "requestsServed", 128,
-                "status", "OPERATIONAL"
-        ));
     }
 }

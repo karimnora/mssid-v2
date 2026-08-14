@@ -37,6 +37,7 @@ export const SOROBAN_5AP: CourseLesson[] = [
                 { id: 'c', textAr: '+3 = +10 - 7', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 1,
 },
 ];

@@ -317,6 +317,41 @@ public async request<T>(
       body: JSON.stringify({ role }),
     });
   }
+
+  // --- Admin Console: Analytics, Feature Flags, Audit Log ---
+
+  public async getAdminStatsOverview() {
+    return this.request<any>('/v1/admin/stats/overview', {
+      method: 'GET',
+    });
+  }
+
+  // Public endpoint (no admin auth required) — every visitor's client hydrates flag overrides
+  // from here at boot, see AuthContext.tsx.
+  public async getFeatureFlagsPublic() {
+    return this.request<Record<string, boolean>>('/v1/feature-flags', {
+      method: 'GET',
+    });
+  }
+
+  public async updateFeatureFlag(flagKey: string, enabled: boolean) {
+    return this.request<any>(`/v1/admin/feature-flags/${flagKey}`, {
+      method: 'PUT',
+      body: JSON.stringify({ enabled }),
+    });
+  }
+
+  public async deleteFeatureFlagOverride(flagKey: string) {
+    return this.request<any>(`/v1/admin/feature-flags/${flagKey}`, {
+      method: 'DELETE',
+    });
+  }
+
+  public async getAdminAuditLog(limit: number = 50) {
+    return this.request<any[]>(`/v1/admin/audit-log?limit=${limit}`, {
+      method: 'GET',
+    });
+  }
 }
 
 export const springBootApi = new SpringBootApiService();

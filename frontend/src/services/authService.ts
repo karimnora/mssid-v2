@@ -537,6 +537,38 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
     return Object.values(DEMO_USERS);
   }
 
+  /**
+   * Real payment-receipts read (replaces the localStorage-mock getReceipts() for admin views).
+   * The backend entity may expose the submitting user as a nested `user` relation rather than flat
+   * `userEmail`/`userName` fields — map defensively so either shape works. Unlike getAllUsersAsync,
+   * this deliberately does NOT fall back to demo/mock data on failure: showing an empty list is more
+   * honest than showing stale fake receipts.
+   */
+  static async getAllReceiptsAsync(): Promise<PaymentReceipt[]> {
+    try {
+      const res = await springBootApi.getAllReceipts();
+      if (res.data && Array.isArray(res.data)) {
+        return res.data.map((r: any) => ({
+          id: r.id,
+          userId: r.userId ?? r.user?.id,
+          userEmail: r.userEmail ?? r.user?.email ?? '',
+          userName: r.userName ?? r.user?.nom ?? r.user?.name ?? '',
+          receiptImageUrl: r.receiptImageUrl ?? r.imageUrl ?? '',
+          paymentMethod: r.paymentMethod,
+          amountDzd: r.amountDzd,
+          transactionRef: r.transactionRef,
+          status: r.status,
+          submittedAt: r.submittedAt ?? r.createdAt ?? '',
+          verifiedAt: r.verifiedAt,
+          rejectionReason: r.rejectionReason,
+        }));
+      }
+    } catch (e) {
+      console.error('Erreur de chargement des reçus:', e);
+    }
+    return [];
+  }
+
   static async updateUserRoleAsync(userId: number, newRole: UserRole): Promise<boolean> {
     try {
       const res = await springBootApi.updateUserRole(userId, newRole);

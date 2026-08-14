@@ -10,6 +10,7 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'islamic',
     categoryAr: 'القرآن الكريم والحفظ',
+    trimester: 1,
     objectivesAr: [
         'أتلو سورتي الضحى والشرح تلاوة سليمة خاشعة.',
         'أفهم معنى عناية الله بنبيه ﷺ وبشرى الفرج بعد العسر.',
@@ -85,6 +86,7 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'islamic',
     categoryAr: 'القرآن الكريم والحفظ',
+    trimester: 1,
     objectivesAr: [
         'أعرف أن سورة العلق أول ما نزل من القرآن الكريم ومكانه.',
         'أُدرك أهمية القراءة والعلم في الإسلام.',
@@ -160,6 +162,7 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'islamic',
     categoryAr: 'العقيدة الإسلامية وأركان الإيمان',
+    trimester: 2,
     objectivesAr: [
         'أُعدّد أولي العزم من الرسل الخمسة.',
         'أفهم معنى الإيمان بالكتب السماوية.',
@@ -233,6 +236,7 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'islamic',
     categoryAr: 'العبادات والأحكام',
+    trimester: 2,
     objectivesAr: [
         'أعدد مبطلات الوضوء.',
         'أفهم حكم صلاة الجمعة وصلاة العيدين وكيفية أدائهما.',
@@ -307,6 +311,7 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'islamic',
     categoryAr: 'السيرة النبوية العطرة',
+    trimester: 3,
     objectivesAr: [
         'أُرتّب أهم محطات مولد النبي ﷺ ونشأته.',
         'أفهم معنى لقب «الصادق الأمين».',
@@ -381,6 +386,7 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'islamic',
     categoryAr: 'الأخلاق والآداب الإسلامية',
+    trimester: 3,
     objectivesAr: [
         'أُطبّق مظاهر بر الوالدين في حياتي اليومية.',
         'أُحسن إلى جيراني وأتعامل معهم بلطف.',

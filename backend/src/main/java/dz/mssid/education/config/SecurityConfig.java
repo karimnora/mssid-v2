@@ -44,8 +44,11 @@ public class SecurityConfig {
 
                         // 2. Endpoints publics
                         .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/logout").permitAll()
-                        .requestMatchers("/api/v1/exams/public/**", "/api/gemini/stats").permitAll()
+                        .requestMatchers("/api/v1/exams/public/**").permitAll()
                         .requestMatchers("/api/gemini/**", "/api/v1/ai/**").permitAll()
+                        // Admin Console: every visitor's client (not just admins) hydrates local
+                        // feature-flag overrides from this at boot — see FeatureFlagController.
+                        .requestMatchers(HttpMethod.GET, "/api/v1/feature-flags").permitAll()
 
                         .anyRequest().authenticated()
                 )

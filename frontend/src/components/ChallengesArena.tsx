@@ -2,12 +2,14 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CHALLENGES_DATA } from '../data/challengesData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
-import { Challenge, SubjectId } from '../types';
+import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { Trophy, Timer, ChevronLeft, CheckCircle2, XCircle, Sparkles, RotateCcw, Zap } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
 
 interface ChallengesArenaProps {
+  /** Scopes the entire arena (mode counts, subject list, challenge grid) to the current grade — omit to browse all grades. */
+  grade?: PrimaryGrade;
   tashkeelEnabled?: boolean;
   /** Persists the run's XP into the global profile and marks the challenge completed — called once per finished run. */
   onChallengeComplete?: (challengeId: string, earnedXp: number) => void;
@@ -27,6 +29,20 @@ const FORMAT_LABEL: Record<Challenge['format'], string> = {
   boss_mix: '👑 تحدي الزعيم',
 };
 
+type ChallengeMode = 'all' | 'quick' | 'chrono' | 'boss';
+
+const MODE_MATCH: Record<Exclude<ChallengeMode, 'all'>, (c: Challenge) => boolean> = {
+  quick: (c) => c.format === 'quiz_flash',
+  chrono: (c) => c.timeLimitSeconds != null,
+  boss: (c) => c.format === 'boss_mix',
+};
+
+const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: string; descAr: string; gradient: string }[] = [
+  { id: 'quick', icon: '🎯', titleAr: 'اختبار سريع', descAr: '10 أسئلة خاطفة بدون وقت محدد', gradient: 'from-sky-600 to-blue-800' },
+  { id: 'chrono', icon: '⏱️', titleAr: 'تحدي الزمن', descAr: 'دقيقتان لحل أكبر عدد من الأسئلة', gradient: 'from-amber-500 to-orange-700' },
+  { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', gradient: 'from-fuchsia-700 to-purple-900' },
+];
+
 export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ tashkeelEnabled = true, onChallengeComplete }) => {
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
@@ -40,8 +56,12 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ tashkeelEnable
 
   const [subjectFilter, setSubjectFilter] = useState<SubjectId | 'all'>('all');
   const [difficultyFilter, setDifficultyFilter] = useState<Challenge['difficulty'] | 'all'>('all');
+  const [modeFilter, setModeFilter] = useState<ChallengeMode>('all');
   const filteredChallenges = CHALLENGES_DATA.filter(
-    (c) => (subjectFilter === 'all' || c.subject === subjectFilter) && (difficultyFilter === 'all' || c.difficulty === difficultyFilter)
+    (c) =>
+      (subjectFilter === 'all' || c.subject === subjectFilter) &&
+      (difficultyFilter === 'all' || c.difficulty === difficultyFilter) &&
+      (modeFilter === 'all' || MODE_MATCH[modeFilter](c))
   );
 
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null);
@@ -128,6 +148,32 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ tashkeelEnable
           </div>
           <h1 className="text-xl sm:text-2xl font-black font-sans">تحديات مؤقتة وألعاب سريعة لكسب نقاط الخبرة</h1>
           <p className="text-xs text-slate-300 mt-1 max-w-2xl">اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.</p>
+        </div>
+
+        {/* 3 grandes cartes de mode — point d'entrée principal, au-dessus du filtre classique */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {MODE_CARDS.map((mode) => {
+            const isActive = modeFilter === mode.id;
+            const count = CHALLENGES_DATA.filter(MODE_MATCH[mode.id]).length;
+            return (
+              <motion.button
+                key={mode.id}
+                onClick={() => setModeFilter(isActive ? 'all' : mode.id)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={`relative rounded-3xl p-5 min-h-32 text-white shadow-lg cursor-pointer bg-gradient-to-br ${mode.gradient} flex flex-col items-center justify-center gap-1.5 text-center border-2 transition-all ${
+                  isActive ? 'border-white ring-2 ring-white/60' : 'border-transparent'
+                }`}
+              >
+                <span className="text-4xl leading-none">{mode.icon}</span>
+                <span className="font-black text-sm">{mode.titleAr}</span>
+                <span className="text-[11px] text-white/80 leading-snug">{mode.descAr}</span>
+                <Badge variant="neutral" className="!bg-white/15 !text-white !border-white/30 mt-1">
+                  <span dir="ltr">{count}</span> تحديات
+                </Badge>
+              </motion.button>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto">

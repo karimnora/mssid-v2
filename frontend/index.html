@@ -21,7 +21,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="مَسيد DZ" />
-    <link rel="manifest" href="/manifest.json" />
+    <!-- R2.3: manifest link is now injected automatically by vite-plugin-pwa (see vite.config.ts's
+         VitePWA({ manifest: {...} }) — no more static /manifest.json reference needed here. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/pwa-icon-source.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
     <title>مَسيد DZ - منصة التعليم الابتدائي الجزائري</title>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-500 selection:text-white">

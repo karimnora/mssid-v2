@@ -81,4 +81,18 @@ export const subscribeFeatureFlags = (listener: Listener): (() => void) => {
   return () => listeners.delete(listener);
 };
 
+/**
+ * Read-only hydration from the server's persisted flag overrides (GET /api/v1/feature-flags),
+ * called once per app boot from AuthContext for every visitor. Server values win over whatever is
+ * already in localStorage for any key present in both, so a toggle made by an admin on another
+ * device/browser reaches this one on next load — but this function itself never writes back to the
+ * server (that's setFeatureFlagOverride's job, wired to the PUT/DELETE admin endpoints separately).
+ */
+export const hydrateFromServerOverrides = (
+  serverOverrides: Partial<Record<FeatureFlagName, boolean>>
+): void => {
+  overrides = { ...overrides, ...serverOverrides };
+  persistAndRecompute();
+};
+
 export const DEFAULT_FEATURE_FLAGS = DEFAULT_FLAGS;

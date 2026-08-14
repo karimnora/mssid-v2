@@ -32,6 +32,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentTransactionRepository paymentTransactionRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final AdminAuditLogService adminAuditLogService;
 
     @Override
     @Transactional
@@ -174,7 +175,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     @Transactional
-    public PaymentReceipt verifyReceipt(Long receiptId, VerifyReceiptRequest request) {
+    public PaymentReceipt verifyReceipt(Long receiptId, VerifyReceiptRequest request, String actorEmail) {
         PaymentReceipt receipt = receiptRepository.findById(receiptId)
                 .orElseThrow(() -> new RuntimeException("Reçu introuvable avec ID: " + receiptId));
 
@@ -194,10 +195,14 @@ public class PaymentServiceImpl implements PaymentService {
                     });
             user.setRole(premiumRole);
             userRepository.save(user);
+
+            adminAuditLogService.record(actorEmail, "RECEIPT_APPROVED", "RECEIPT", receiptId.toString(), "user upgraded to ROLE_PREMIUM");
         } else {
             receipt.setStatus(PaymentReceipt.ReceiptStatus.REJECTED);
             receipt.setRejectionReason(request.getRejectionReason() != null ? request.getRejectionReason() : "Document non conforme");
             receipt.setVerifiedAt(LocalDateTime.now());
+
+            adminAuditLogService.record(actorEmail, "RECEIPT_REJECTED", "RECEIPT", receiptId.toString(), "rejected: " + receipt.getRejectionReason());
         }
 
         return receiptRepository.save(receipt);

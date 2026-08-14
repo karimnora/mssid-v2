@@ -59,9 +59,10 @@ public class PaymentController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<PaymentReceipt> verifyReceipt(
             @PathVariable Long id,
-            @RequestBody VerifyReceiptRequest request
+            @RequestBody VerifyReceiptRequest request,
+            @AuthenticationPrincipal UserDetails userDetails
     ) {
-        PaymentReceipt updated = paymentService.verifyReceipt(id, request);
+        PaymentReceipt updated = paymentService.verifyReceipt(id, request, userDetails.getUsername());
         return ResponseEntity.ok(updated);
     }
 

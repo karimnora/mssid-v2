@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { X, LogIn, UserPlus, KeyRound } from 'lucide-react';
@@ -8,15 +8,25 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   onAuthSuccess: (user: AuthUser) => void;
+  /** Which tab to land on when the modal opens — e.g. AuthWallModal's two CTAs open this in different modes. */
+  initialMode?: 'login' | 'register';
 }
 
-export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess }) => {
-  const [isLogin, setIsLogin] = useState<boolean>(true);
+export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login' }) => {
+  const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [nom, setNom] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+
+  // The modal never unmounts (App.tsx toggles `isOpen`, not conditional rendering), so re-sync the
+  // tab from initialMode every time it's (re)opened rather than only once at first mount.
+  useEffect(() => {
+    if (isOpen) {
+      setIsLogin(initialMode === 'login');
+    }
+  }, [isOpen, initialMode]);
 
   if (!isOpen) return null;
 

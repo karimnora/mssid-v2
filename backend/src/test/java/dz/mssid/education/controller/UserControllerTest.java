@@ -3,6 +3,7 @@ package dz.mssid.education.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dz.mssid.education.dto.UserProfileDto;
 import dz.mssid.education.service.UserService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -40,7 +44,26 @@ class UserControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(userController)
+                .setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver())
+                .build();
+    }
+
+    @AfterEach
+    void tearDown() {
+        SecurityContextHolder.clearContext();
+    }
+
+    /**
+     * Standalone MockMvc has no filter chain, so SecurityMockMvcRequestPostProcessors.user(...)
+     * (which relies on SecurityContextPersistenceFilter) never reaches SecurityContextHolder here —
+     * setting it directly is what @AuthenticationPrincipal's resolver actually reads.
+     */
+    private void authenticateAs(String email) {
+        org.springframework.security.core.userdetails.User principal =
+                new org.springframework.security.core.userdetails.User(email, "N/A", List.of());
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(principal, null, List.of()));
     }
 
     @Test
@@ -90,9 +113,10 @@ class UserControllerTest {
                 .role("ROLE_TEACHER")
                 .build();
 
-        when(userService.updateUserRole(eq(5L), eq("ROLE_TEACHER"))).thenReturn(updated);
+        when(userService.updateUserRole(eq(5L), eq("ROLE_TEACHER"), eq("admin@mssid.dz"))).thenReturn(updated);
+        authenticateAs("admin@mssid.dz");
 
-        mockMvc.perform(put("/api/v1/admin/users/5/role")
+        mockMvc.perform(put("/api/v1/users/admin/5/role")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(Map.of("role", "ROLE_TEACHER"))))
                 .andExpect(status().isOk())

@@ -1,5 +1,6 @@
 package dz.mssid.education.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -33,6 +34,9 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     private String email;
 
+    // SEC: never let this reach a JSON response — entities like PaymentReceipt embed the full User
+    // as a nested relation and get serialized directly (no DTO projection) on some admin endpoints.
+    @JsonIgnore
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
@@ -115,6 +119,7 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public String getPassword() {
         // PERMET À SPRING SECURITY DE LIRE VOTRE CHAMP password_hash
         return this.passwordHash;

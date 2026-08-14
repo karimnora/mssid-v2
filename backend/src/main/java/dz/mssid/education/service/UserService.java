@@ -22,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final AdminAuditLogService adminAuditLogService;
 
     public UserDto getUserByEmail(String email) {
         User user = userRepository.findByEmail(email)
@@ -173,7 +174,7 @@ public class UserService {
     /**
      * Modifie le rôle RBAC d'un utilisateur par son ID.
      */
-    public UserProfileDto updateUserRole(Long userId, String newRoleName) {
+    public UserProfileDto updateUserRole(Long userId, String newRoleName, String actorEmail) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé avec l'ID: " + userId));
 
@@ -184,6 +185,10 @@ public class UserService {
             throw new RuntimeException("Rôle invalide: " + newRoleName);
         }
 
+        String oldRoleName = user.getRole() != null && user.getRole().getName() != null
+                ? user.getRole().getName().name()
+                : "UNKNOWN";
+
         Role role = roleRepository.findByName(roleEnum)
                 .orElseGet(() -> {
                     Role r = new Role();
@@ -193,6 +198,9 @@ public class UserService {
 
         user.setRole(role);
         User saved = userRepository.save(user);
+
+        adminAuditLogService.record(actorEmail, "ROLE_CHANGE", "USER", userId.toString(), oldRoleName + " -> " + newRoleName);
+
         return UserMapper.toUserProfileDto(saved);
     }
 }

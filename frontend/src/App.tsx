@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { motion } from 'motion/react';
 import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo } from './types';
 import { AuthService } from './services/authService';
 import { useAuth } from './context/AuthContext';
 import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, CHALLENGES_TAB_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST, isToolAvailableForGrade } from './data/subjectsData';
 import { COURSES_DATA } from './data/coursesData';
-import { CourseBreadcrumb } from './components/CourseBreadcrumb';
+import { CourseSelectionView } from './components/CourseSelectionView';
 import { LessonViewer } from './components/LessonViewer';
 import { ExamsViewer } from './components/ExamsViewer';
 import { ChallengesArena } from './components/ChallengesArena';
-import { SorobanInteractive } from './components/SorobanInteractive';
-import { ElectricityLabInteractive } from './components/ElectricityLabInteractive';
-import { UnitConverter } from './components/UnitConverter';
-import { GeometryVisualizer } from './components/GeometryVisualizer';
-import { EducationalCalculator } from './components/EducationalCalculator';
-import { ArabicConjugator } from './components/ArabicConjugator';
-import { FrenchLanguageLab } from './components/FrenchLanguageLab';
-import { EnglishLanguageLab } from './components/EnglishLanguageLab';
-import { MultiplicationTableInteractive } from './components/MultiplicationTableInteractive';
+import { ToolsHubView } from './components/ToolsHubView';
 import { incrementDailyObjective } from './utils/dailyObjective';
 import { applyBadgeEvaluation } from './utils/badgeEngine';
 import { BadgeUnlockToast } from './components/BadgeUnlockToast';
 import { AiTutorModal } from './components/AiTutorModal';
 import { ProfileModal } from './components/ProfileModal';
 import { AuthModal } from './components/AuthModal';
-import { AdminReceiptsManager } from './components/AdminReceiptsManager';
-import { CmsMainView } from './components/cms/CmsMainView';
+import { AuthWallModal } from './components/AuthWallModal';
+import { HomeView, HomePoleId } from './components/HomeView';
 import { MobileAppSimulator } from './components/MobileAppSimulator';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 import { Navbar, HeaderTheme } from './components/Navbar';
@@ -34,11 +26,28 @@ import { PwaInstallBanner } from './components/PwaInstallBanner';
 import { SeoHead } from './components/SeoHead';
 import { PricingModal } from './components/PricingModal';
 import { AdBanner } from './components/AdBanner';
-import { PreschoolApp } from './components/preschool/PreschoolApp';
+import { LoadingFallback } from './components/LoadingFallback';
 import { isFeatureEnabled } from './featureFlags';
 import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { springBootApi } from './services/springBootApi';
-import { Button, Card, Badge, XPProgressBar } from './components/ui';
+
+// R2.1 — code splitting: heavy interactive tools, the CMS back-office and the Mode Éveil
+// sub-app are all opt-in surfaces most students never open in a given session, so they're loaded
+// on demand instead of inflating the initial bundle. All are named exports, hence the `.then()`
+// remap to the { default } shape React.lazy expects.
+const SorobanInteractive = lazy(() => import('./components/SorobanInteractive').then((m) => ({ default: m.SorobanInteractive })));
+const ElectricityLabInteractive = lazy(() => import('./components/ElectricityLabInteractive').then((m) => ({ default: m.ElectricityLabInteractive })));
+const UnitConverter = lazy(() => import('./components/UnitConverter').then((m) => ({ default: m.UnitConverter })));
+const GeometryVisualizer = lazy(() => import('./components/GeometryVisualizer').then((m) => ({ default: m.GeometryVisualizer })));
+const EducationalCalculator = lazy(() => import('./components/EducationalCalculator').then((m) => ({ default: m.EducationalCalculator })));
+const ArabicConjugator = lazy(() => import('./components/ArabicConjugator').then((m) => ({ default: m.ArabicConjugator })));
+const FrenchLanguageLab = lazy(() => import('./components/FrenchLanguageLab').then((m) => ({ default: m.FrenchLanguageLab })));
+const EnglishLanguageLab = lazy(() => import('./components/EnglishLanguageLab').then((m) => ({ default: m.EnglishLanguageLab })));
+const MultiplicationTableInteractive = lazy(() => import('./components/MultiplicationTableInteractive').then((m) => ({ default: m.MultiplicationTableInteractive })));
+const PreschoolApp = lazy(() => import('./components/preschool/PreschoolApp').then((m) => ({ default: m.PreschoolApp })));
+const AdminConsoleView = lazy(() => import('./components/admin/AdminConsoleView').then((m) => ({ default: m.AdminConsoleView })));
+import { useGuestLimits, MAX_GUEST_LESSONS } from './hooks/useGuestLimits';
+import { Card, Badge, XPProgressBar } from './components/ui';
 import {
   BookOpen,
   Calculator,
@@ -50,7 +59,6 @@ import {
   Languages,
   Sparkles,
   Globe,
-  ChevronLeft,
   Zap,
   Trophy
 } from 'lucide-react';
@@ -102,6 +110,19 @@ export default function App() {
   const [mainCategory, setMainCategory] = useState<'courses' | 'labs' | 'exams' | 'challenges'>('courses');
   const [mobileTab, setMobileTab] = useState<'home' | 'courses' | 'exercises' | 'games'>('home');
 
+  // Phase 2: landing dashboard shown before a pole is picked (see HomeView.tsx).
+  const [isHomeActive, setIsHomeActive] = useState(true);
+
+  // Mode Découverte: guest lesson-view counter (localStorage, no PII) + the "Bravo champion" wall
+  // shown once a non-authenticated visitor tries to open a 4th distinct lesson.
+  const guestLimits = useGuestLimits();
+  const [isAuthWallOpen, setIsAuthWallOpen] = useState(false);
+  const [authModalInitialMode, setAuthModalInitialMode] = useState<'login' | 'register'>('login');
+
+  // SEC-05: identity comes from AuthContext (hydrated from the cookie-authenticated
+  // GET /api/v1/users/me on boot — see main.tsx's <AuthProvider>), never from localStorage.
+  const { authUser } = useAuth();
+
   const enablePreschoolModule = useFeatureFlag('enablePreschoolModule');
   const enableExamSection = useFeatureFlag('enableExamSection');
 
@@ -126,7 +147,12 @@ export default function App() {
   const handleMobileTab = (tab: 'home' | 'courses' | 'exercises' | 'games') => {
     setMobileTab(tab);
     setSelectedLesson(null);
-    if (tab === 'home' || tab === 'courses') {
+    if (tab === 'home') {
+      setIsHomeActive(true);
+      return;
+    }
+    setIsHomeActive(false);
+    if (tab === 'courses') {
       setMainCategory('courses');
       setSelectedSubject('math');
     } else if (tab === 'exercises') {
@@ -138,8 +164,45 @@ export default function App() {
     }
   };
 
-  // View state: Student App vs Back Office CMS
-  const [isCmsActive, setIsCmsActive] = useState(false);
+  // A HomeView pole click mirrors the MAIN_CATEGORY_TABS click logic further below, just also
+  // dismissing the dashboard.
+  const handleSelectPole = (pole: HomePoleId) => {
+    setMainCategory(pole);
+    setIsHomeActive(false);
+    setSelectedLesson(null);
+    if (pole === 'courses' && !COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
+      setSelectedSubject('math');
+    } else if (pole === 'labs' && !INTERACTIVE_LABS_LIST.some((s) => s.id === selectedSubject)) {
+      setSelectedSubject('arabic_conjugator');
+    } else if (pole === 'exams') {
+      setSelectedSubject('exams');
+    } else if (pole === 'challenges') {
+      setSelectedSubject('challenges');
+    }
+  };
+
+  // Mode Découverte gate: every forward lesson selection (lesson-grid card, or "next lesson" inside
+  // LessonViewer) goes through here. Once authUser exists the limit never applies again — even a
+  // guest who used up all 3 slots gets full access again immediately after creating an account.
+  const handleSelectLesson = (lesson: CourseLesson) => {
+    if (!authUser && !guestLimits.canAccessLesson(lesson.id)) {
+      sessionStorage.setItem('redirect_after_auth', JSON.stringify({ type: 'lesson', lessonId: lesson.id }));
+      setIsAuthWallOpen(true);
+      return;
+    }
+    if (!authUser) {
+      guestLimits.recordLessonView(lesson.id);
+    }
+    // CourseSelectionView manages its own internal subject/trimester step state — keep App.tsx's
+    // selectedSubject in sync so LessonViewer's subjectId prop and currentLessons (its prev/next
+    // navigation list) always reflect whatever lesson is actually open.
+    setSelectedSubject(lesson.subject);
+    setSelectedLesson(lesson);
+    setIsHomeActive(false);
+  };
+
+  // View state: Student App vs Back Office Admin Console
+  const [isAdminConsoleActive, setIsAdminConsoleActive] = useState(false);
 
   // "Mode Éveil" (préscolaire 3-5 ans) — fully isolated sub-app (own data model under
   // data/preschool/, own localStorage keys), entered/exited the same way as the CMS below. Never
@@ -150,7 +213,6 @@ export default function App() {
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isAdminReceiptsModalOpen, setIsAdminReceiptsModalOpen] = useState(false);
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
@@ -165,10 +227,6 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
   }, [headerTheme]);
-
-  // SEC-05: identity now comes from AuthContext (hydrated from the cookie-authenticated
-  // GET /api/v1/users/me on boot — see main.tsx's <AuthProvider>), never from localStorage.
-  const { authUser } = useAuth();
 
   // User Profile State in LocalStorage
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
@@ -250,12 +308,20 @@ export default function App() {
     localStorage.setItem('mssid_user_profile', JSON.stringify(userProfile));
   }, [userProfile]);
 
-  if (isCmsActive) {
-    return <CmsMainView onExitCms={() => setIsCmsActive(false)} />;
+  if (isAdminConsoleActive) {
+    return (
+      <Suspense fallback={<LoadingFallback label="جاري تحميل لوحة تحكم الإدارة..." minHeight="100vh" />}>
+        <AdminConsoleView onExitAdminConsole={() => setIsAdminConsoleActive(false)} />
+      </Suspense>
+    );
   }
 
   if (isPreschoolActive) {
-    return <PreschoolApp onExit={() => setIsPreschoolActive(false)} />;
+    return (
+      <Suspense fallback={<LoadingFallback label="جاري تحميل وضع التحضيري..." minHeight="100vh" />}>
+        <PreschoolApp onExit={() => setIsPreschoolActive(false)} />
+      </Suspense>
+    );
   }
 
   /**
@@ -433,21 +499,33 @@ export default function App() {
             completedLessonIds: [],
           }));
         }}
-        onOpenAdminReceiptsModal={() => setIsAdminReceiptsModalOpen(true)}
         onOpenAiTutor={() => setIsAiModalOpen(true)}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
         onOpenPricingModal={() => setIsPricingModalOpen(true)}
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
-        onOpenCms={() => setIsCmsActive(true)}
-        onHomeClick={() => setSelectedLesson(null)}
+        onOpenAdminConsole={() => setIsAdminConsoleActive(true)}
+        onHomeClick={() => {
+          setSelectedLesson(null);
+          setIsHomeActive(true);
+        }}
         currentTheme={headerTheme}
         onThemeChange={(t) => setHeaderTheme(t)}
       />
 
       {/* MAIN CONTENT AREA */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
-
+        {isHomeActive ? (
+          <HomeView
+            authUser={authUser}
+            userName={userProfile.name}
+            guestViewedCount={guestLimits.viewedCount}
+            guestRemaining={guestLimits.remaining}
+            maxGuestLessons={MAX_GUEST_LESSONS}
+            onSelectPole={handleSelectPole}
+          />
+        ) : (
+        <>
         {/* Isolated Category Switcher & Sub-Subject Selector */}
         <div className="space-y-4">
           <Card padding="none" className="p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -535,46 +613,58 @@ export default function App() {
             </div>
           </div>
 
-          {/* Sub-Subject Selector Tabs Bar */}
-          <div className="border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 bg-[var(--app-card-bg)] border-[var(--app-card-border)]">
-            {(mainCategory === 'courses'
-              ? COURSE_SUBJECTS_LIST
-              : mainCategory === 'labs'
-              ? availableLabsForGrade
-              : mainCategory === 'exams'
-              ? OFFICIAL_EXAMS_LIST
-              : CHALLENGES_TAB_LIST
-            ).map((subj) => {
-              const IconComp = ICON_MAP[subj.icon] || BookOpen;
-              const isSelected = selectedSubject === subj.id;
-              const activeClass =
-                mainCategory === 'labs'
-                  ? 'bg-[var(--brand-amber)] text-slate-950'
-                  : mainCategory === 'exams'
-                  ? 'bg-[var(--brand-blue)] text-white'
-                  : mainCategory === 'challenges'
-                  ? 'bg-[var(--brand-coral)] text-white'
-                  : 'bg-[var(--brand-emerald)] text-white';
-              return (
-                <motion.button
-                  key={subj.id}
-                  onClick={() => handleSelectSubject(subj.id)}
-                  whileTap={{ scale: 0.96 }}
-                  className={`min-h-12 flex items-center gap-2 px-4 py-3 rounded-2xl transition-colors cursor-pointer whitespace-nowrap text-xs font-bold shrink-0 ${
-                    isSelected ? `${activeClass} font-black shadow-md` : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
-                  }`}
-                >
-                  <IconComp className="w-4 h-4" />
-                  <span>{subj.nameAr}</span>
-                </motion.button>
-              );
-            })}
-          </div>
+          {/* Sub-Subject Selector — courses uses CourseSelectionView's own guided Matière → Trimestre →
+              Liste flow below; labs uses the card-based ToolsHubView; exams/challenges keep the plain
+              bar (a single entry each — the real subject/trimester navigation lives inside those views). */}
+          {mainCategory === 'labs' ? (
+            <ToolsHubView
+              grade={grade}
+              tools={availableLabsForGrade}
+              selectedToolId={selectedSubject}
+              onSelectTool={handleSelectSubject}
+            />
+          ) : mainCategory !== 'courses' && (
+            <div className="border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 bg-[var(--app-card-bg)] border-[var(--app-card-border)]">
+              {(mainCategory === 'exams' ? OFFICIAL_EXAMS_LIST : CHALLENGES_TAB_LIST).map((subj) => {
+                const IconComp = ICON_MAP[subj.icon] || BookOpen;
+                const isSelected = selectedSubject === subj.id;
+                const activeClass = mainCategory === 'exams' ? 'bg-[var(--brand-blue)] text-white' : 'bg-[var(--brand-coral)] text-white';
+                return (
+                  <motion.button
+                    key={subj.id}
+                    onClick={() => handleSelectSubject(subj.id)}
+                    whileTap={{ scale: 0.96 }}
+                    className={`min-h-12 flex items-center gap-2 px-4 py-3 rounded-2xl transition-colors cursor-pointer whitespace-nowrap text-xs font-bold shrink-0 ${
+                      isSelected ? `${activeClass} font-black shadow-md` : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                    }`}
+                  >
+                    <IconComp className="w-4 h-4" />
+                    <span>{subj.nameAr}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
+          )}
 
         </div>
 
-        {/* Selected View Rendering */}
-        <div>
+        {/* Selected View Rendering. Courses get their own guided Matière → Trimestre → Liste flow
+            (CourseSelectionView) instead of the shared tool/exam/challenge ternary below — but once
+            a lesson is actually open, LessonViewer takes over regardless of mainCategory. */}
+        {mainCategory === 'courses' && !selectedLesson ? (
+          <CourseSelectionView
+            grade={grade}
+            courseSubjects={COURSE_SUBJECTS_LIST}
+            allCourseLessons={COURSES_DATA}
+            completedLessonIds={userProfile.completedLessonIds}
+            onSelectLesson={handleSelectLesson}
+            onGoHome={() => {
+              setSelectedLesson(null);
+              setIsHomeActive(true);
+            }}
+          />
+        ) : (
+        <Suspense fallback={<LoadingFallback label="جاري تحميل الأداة التفاعلية..." />}>
           {selectedSubject === 'arabic_conjugator' ? (
             <ArabicConjugator grade={grade} />
           ) : selectedSubject === 'french_lab' ? (
@@ -595,6 +685,7 @@ export default function App() {
             <MultiplicationTableInteractive grade={grade} />
           ) : selectedSubject === 'exams' ? (
             <ExamsViewer
+              grade={grade}
               tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
               completedExamIds={userProfile.completedExamIds}
               onExamComplete={handleCompleteExam}
@@ -608,7 +699,7 @@ export default function App() {
             <LessonViewer
               lesson={selectedLesson}
               allLessons={currentLessons}
-              onSelectLesson={(lesson) => setSelectedLesson(lesson)}
+              onSelectLesson={handleSelectLesson}
               onBack={() => setSelectedLesson(null)}
               onCompleteQuiz={handleCompleteQuiz}
               quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(selectedLesson.id)}
@@ -622,136 +713,11 @@ export default function App() {
                 setMainCategory('courses');
               }}
             />
-          ) : (
-            /* Lessons Cards Grid */
-            <div className="space-y-6">
-              {/* Course Breadcrumb */}
-              <CourseBreadcrumb
-                grade={grade}
-                subjectId={selectedSubject}
-                trimester={selectedTrimester}
-                tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-                onHomeClick={() => {
-                  setSelectedLesson(null);
-                  setMainCategory('courses');
-                }}
-                onSubjectClick={() => setSelectedLesson(null)}
-                onTrimesterClick={(t) => setSelectedTrimester(t)}
-              />
-
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div>
-                  <h2 className="text-xl font-black font-sans text-[var(--app-text)]">
-                    دروس ومحتوى مادة {SUBJECTS_LIST.find((s) => s.id === selectedSubject)?.nameAr} - {grade}
-                  </h2>
-                  <p className="text-xs text-[var(--app-text-muted)] mt-0.5">
-                    برنامج وزارة التربية الوطنية الجزائرية (1AP - 5AP)
-                  </p>
-                </div>
-                <Badge variant="info">عدد الدروس: {currentLessons.length}</Badge>
-              </div>
-
-              {/* Trimester Filter Tabs */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-bold">
-                <span className="text-[var(--app-text-muted)] shrink-0">تصفية حسب الفصل:</span>
-                {([
-                  { id: 'all' as const, labelAr: '🌟 جميع الفصول' },
-                  { id: 1 as const, labelAr: '1️⃣ الفصل الأول' },
-                  { id: 2 as const, labelAr: '2️⃣ الفصل الثاني' },
-                  { id: 3 as const, labelAr: '3️⃣ الفصل الثالث' },
-                ]).map((t) => (
-                  <motion.button
-                    key={String(t.id)}
-                    onClick={() => setSelectedTrimester(t.id)}
-                    whileTap={{ scale: 0.95 }}
-                    className={`min-h-10 px-3.5 py-1.5 rounded-full border transition-colors cursor-pointer shrink-0 ${
-                      selectedTrimester === t.id
-                        ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)] shadow-xs'
-                        : 'bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] border-[var(--brand-blue)]/25 hover:bg-[var(--brand-blue)]/15'
-                    }`}
-                  >
-                    {t.labelAr}
-                  </motion.button>
-                ))}
-              </div>
-
-              {currentLessons.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  <AnimatePresence mode="popLayout">
-                    {currentLessons.map((lesson, i) => {
-                      const isCompleted = userProfile.completedLessonIds.includes(lesson.id);
-                      return (
-                        <motion.div
-                          key={lesson.id}
-                          layout
-                          initial={{ opacity: 0, y: 16 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.25, delay: Math.min(i, 8) * 0.03 }}
-                        >
-                          <Card interactive className="p-5 space-y-4 h-full" onClick={() => setSelectedLesson(lesson)}>
-                            <div className="flex items-center justify-between flex-wrap gap-2">
-                              <div className="flex items-center gap-1.5 flex-wrap">
-                                <Badge variant="info">{lesson.categoryAr}</Badge>
-                                {lesson.trimester && (
-                                  <Badge variant="xp">الفصل {lesson.trimester}</Badge>
-                                )}
-                              </div>
-                              {isCompleted && (
-                                <Badge variant="success">✓ مكتمل</Badge>
-                              )}
-                            </div>
-
-                            <div>
-                              <h3 className="text-base font-extrabold font-sans text-[var(--app-text)]">{lesson.titleAr}</h3>
-                              <p className="text-xs text-[var(--app-text-muted)] mt-1 line-clamp-2 leading-relaxed">
-                                {lesson.summaryAr}
-                              </p>
-                            </div>
-
-                            <div className="flex items-center justify-between pt-2 border-t border-[var(--app-card-border)] text-xs font-bold text-[var(--brand-blue-dark)]">
-                              <span>بدء الدورة والتمارين التفاعلية</span>
-                              <ChevronLeft className="w-4 h-4" />
-                            </div>
-                          </Card>
-                        </motion.div>
-                      );
-                    })}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Card padding="none" className="p-12 text-center space-y-3">
-                  <BookOpen className="w-12 h-12 opacity-40 mx-auto text-[var(--app-text-muted)]" />
-                  <h3 className="text-base font-extrabold text-[var(--app-text)]">لا توجد دروس حالياً لهذه المرحلة الحالية</h3>
-                  <p className="text-xs text-[var(--app-text-muted)] max-w-md mx-auto">
-                    يمكنك تجربة دروس الرياضيات، الحساب الذهني بالسوروبان، أو خوض امتحانات شهادة التعليم الابتدائي (5AP) حالياً.
-                  </p>
-                  <Button variant="primary" size="sm" onClick={() => handleSelectSubject('math')}>
-                    الانتقال لدروس الرياضيات
-                  </Button>
-                </Card>
-              )}
-
-              {/* Tools Section Bottom Bar */}
-              <Card padding="none" className="p-6 space-y-4">
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <div>
-                    <span dir="ltr" className="text-[10px] font-mono text-[var(--brand-amber-dark)] block uppercase tracking-wider">INTERACTIVE MATH SUITE</span>
-                    <h3 className="text-base font-extrabold font-sans text-[var(--app-text)]">الأدوات التفاعلية للمرحلة الابتدائية</h3>
-                  </div>
-                  <span className="text-xs text-[var(--app-text-muted)]">سريعة الاستجابة وبدون حماية أو تشفير خارجي</span>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <UnitConverter theme={headerTheme} />
-                  <GeometryVisualizer theme={headerTheme} />
-                </div>
-              </Card>
-
-            </div>
-          )}
-
-        </div>
+          ) : null}
+        </Suspense>
+        )}
+        </>
+        )}
       </main>
 
       {/* FOOTER */}
@@ -798,17 +764,49 @@ export default function App() {
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
-        // AuthService.loginAsync/registerAsync already call setCurrentUser internally — authUser
-        // (via useAuth()) updates on its own the moment login succeeds, nothing to do here.
-        onAuthSuccess={() => {}}
+        initialMode={authModalInitialMode}
+        onAuthSuccess={() => {
+          // AuthService.loginAsync/registerAsync already call setCurrentUser internally — authUser
+          // (via useAuth()) updates on its own the moment login succeeds.
+          //
+          // Phase 2 — intelligent post-auth redirect: restore whatever the guest was trying to reach
+          // when AuthWallModal interrupted them (see handleSelectLesson).
+          const raw = sessionStorage.getItem('redirect_after_auth');
+          if (!raw) return;
+          sessionStorage.removeItem('redirect_after_auth');
+          try {
+            const target = JSON.parse(raw);
+            if (target?.type === 'lesson' && target.lessonId) {
+              const lesson = COURSES_DATA.find((l) => l.id === target.lessonId);
+              if (lesson) {
+                setGrade(lesson.grade);
+                setMainCategory('courses');
+                setSelectedSubject(lesson.subject);
+                setSelectedLesson(lesson);
+                setIsHomeActive(false);
+              }
+            }
+          } catch {
+            // Ignore malformed/stale redirect payloads — worst case the user just lands on the dashboard.
+          }
+        }}
       />
 
-      <AdminReceiptsManager
-        isOpen={isAdminReceiptsModalOpen}
-        onClose={() => setIsAdminReceiptsModalOpen(false)}
-        // Receipt approval upgrades the user via AuthService.setCurrentUser internally too — same
-        // automatic propagation as above.
-        onReceiptUpdated={() => {}}
+      <AuthWallModal
+        isOpen={isAuthWallOpen}
+        onClose={() => setIsAuthWallOpen(false)}
+        onCreateAccount={() => {
+          setAuthModalInitialMode('register');
+          setIsAuthWallOpen(false);
+          setIsAuthModalOpen(true);
+        }}
+        onLogin={() => {
+          setAuthModalInitialMode('login');
+          setIsAuthWallOpen(false);
+          setIsAuthModalOpen(true);
+        }}
+        viewedCount={guestLimits.viewedCount}
+        maxCount={MAX_GUEST_LESSONS}
       />
 
       <MobileAppSimulator

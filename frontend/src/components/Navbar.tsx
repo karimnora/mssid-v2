@@ -36,13 +36,12 @@ interface NavbarProps {
   authUser: AuthUser | null;
   onOpenAuthModal: () => void;
   onLogout: () => void;
-  onOpenAdminReceiptsModal: () => void;
   onOpenAiTutor: () => void;
   onOpenPricingModal: () => void;
   onOpenProfileModal: () => void;
   onOpenMobileSimulator?: () => void;
   onOpenPrivacyPolicy?: () => void;
-  onOpenCms?: () => void;
+  onOpenAdminConsole?: () => void;
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
   onThemeChange?: (theme: HeaderTheme) => void;
@@ -69,12 +68,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   authUser,
   onOpenAuthModal,
   onLogout,
-  onOpenAdminReceiptsModal,
   onOpenAiTutor,
   onOpenProfileModal,
   onOpenMobileSimulator,
   onOpenPrivacyPolicy,
-  onOpenCms,
+  onOpenAdminConsole,
   onHomeClick,
   currentTheme = 'neutre',
   onThemeChange,
@@ -372,21 +370,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                           إدارة النظام (Admin)
                         </div>
 
-                        <button
-                          onClick={() => { onOpenAdminReceiptsModal(); setIsProfileDropdownOpen(false); }}
-                          className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border border-[var(--brand-amber)]/30"
-                        >
-                          <ShieldCheck className="w-4 h-4 text-[var(--brand-amber)]" />
-                          <span>لوحة إدارة المستخدمين والوصولات (RBAC)</span>
-                        </button>
-
-                        {onOpenCms && (
+                        {onOpenAdminConsole && (
                           <button
-                            onClick={() => { onOpenCms(); setIsProfileDropdownOpen(false); }}
-                            className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                            onClick={() => { onOpenAdminConsole(); setIsProfileDropdownOpen(false); }}
+                            className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border border-[var(--brand-amber)]/30"
                           >
-                            <Sliders className="w-4 h-4 text-[var(--brand-blue)]" />
-                            <span>إدارة المحتوى (CMS Admin)</span>
+                            <ShieldCheck className="w-4 h-4 text-[var(--brand-amber)]" />
+                            <span>لوحة تحكم الإدارة (Admin Console)</span>
                           </button>
                         )}
                       </>
@@ -524,13 +514,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </button>
                   )}
 
-                  {isAdmin && onOpenCms && (
+                  {isAdmin && onOpenAdminConsole && (
                     <button
-                      onClick={() => { onOpenCms(); setIsMobileDrawerOpen(false); }}
+                      onClick={() => { onOpenAdminConsole(); setIsMobileDrawerOpen(false); }}
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] border border-[var(--brand-blue)]/25 font-bold text-xs flex items-center gap-2 cursor-pointer"
                     >
                       <Sliders className="w-4 h-4 text-[var(--brand-blue)]" />
-                      <span>إدارة المحتوى (CMS Admin)</span>
+                      <span>لوحة تحكم الإدارة (Admin Console)</span>
                     </button>
                   )}
 

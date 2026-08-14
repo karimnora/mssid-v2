@@ -69,7 +69,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: '(7 × 10,000) + (3 × 1,000) + 5', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 1
 },
 
 {
@@ -133,7 +134,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'b', textAr: 'نحذف الأصفار من العدد', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 1
 },
 
 {
@@ -189,7 +191,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: 'الحاصل 31 والباقي 0', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 2
 },
 
 {
@@ -254,7 +257,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: '5/8 أكبر من 1', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 3
 },
 
 {
@@ -312,7 +316,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: 'المدور', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 1
 },
 
 {
@@ -368,7 +373,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: '25,000 g', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 1
 },
 
 {
@@ -425,7 +431,8 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: '12 cm²', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 3
 },
 
 {
@@ -480,6 +487,7 @@ export const MATH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: '115 دقيقة', isCorrect: false }
             ]
         }
-    ]
+    ],
+    trimester: 3
 },
 ];

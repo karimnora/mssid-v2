@@ -1,27 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
-import { SorobanInteractive } from './SorobanInteractive';
-import { UnitConverter } from './UnitConverter';
-import { GeometryVisualizer } from './GeometryVisualizer';
-import { ScienceLabSimulation } from './ScienceLabSimulation';
-import { ScientificInquiryFlow } from './ScientificInquiryFlow';
-import { ArabicConjugator } from './ArabicConjugator';
-import { MultiplicationTableInteractive } from './MultiplicationTableInteractive';
-import { FrenchLanguageLab } from './FrenchLanguageLab';
-import { EnglishLanguageLab } from './EnglishLanguageLab';
-import { HistoryGeoInteractive } from './HistoryGeoInteractive';
-import { IslamicEducationInteractive } from './IslamicEducationInteractive';
-import { CivicsInteractive } from './CivicsInteractive';
-import { MathInteractive } from './MathInteractive';
-import { LanguageLabInteractive } from './LanguageLabInteractive';
 import { LessonExplanationView } from './LessonExplanationView';
-import { ArabicCanvasInteractive } from './ArabicCanvasInteractive';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
+import { LoadingFallback } from './LoadingFallback';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
+
+// R2.1 — code splitting: exactly one of these renders per lesson (gated by lesson.interactiveTool /
+// scientificInquiry), so none of them need to be in the initial bundle. This is also what makes the
+// App.tsx-level lazy() for the same components actually take effect at the chunk level — Rollup
+// merges a dynamically-imported module back into the static bundle wherever it's *also* statically
+// imported, and this file used to be exactly that other static import site.
+const ArabicCanvasInteractive = lazy(() => import('./ArabicCanvasInteractive').then((m) => ({ default: m.ArabicCanvasInteractive })));
+const SorobanInteractive = lazy(() => import('./SorobanInteractive').then((m) => ({ default: m.SorobanInteractive })));
+const UnitConverter = lazy(() => import('./UnitConverter').then((m) => ({ default: m.UnitConverter })));
+const GeometryVisualizer = lazy(() => import('./GeometryVisualizer').then((m) => ({ default: m.GeometryVisualizer })));
+const ScienceLabSimulation = lazy(() => import('./ScienceLabSimulation').then((m) => ({ default: m.ScienceLabSimulation })));
+const ScientificInquiryFlow = lazy(() => import('./ScientificInquiryFlow').then((m) => ({ default: m.ScientificInquiryFlow })));
+const ArabicConjugator = lazy(() => import('./ArabicConjugator').then((m) => ({ default: m.ArabicConjugator })));
+const MultiplicationTableInteractive = lazy(() => import('./MultiplicationTableInteractive').then((m) => ({ default: m.MultiplicationTableInteractive })));
+const FrenchLanguageLab = lazy(() => import('./FrenchLanguageLab').then((m) => ({ default: m.FrenchLanguageLab })));
+const EnglishLanguageLab = lazy(() => import('./EnglishLanguageLab').then((m) => ({ default: m.EnglishLanguageLab })));
+const HistoryGeoInteractive = lazy(() => import('./HistoryGeoInteractive').then((m) => ({ default: m.HistoryGeoInteractive })));
+const IslamicEducationInteractive = lazy(() => import('./IslamicEducationInteractive').then((m) => ({ default: m.IslamicEducationInteractive })));
+const CivicsInteractive = lazy(() => import('./CivicsInteractive').then((m) => ({ default: m.CivicsInteractive })));
+const MathInteractive = lazy(() => import('./MathInteractive').then((m) => ({ default: m.MathInteractive })));
+const LanguageLabInteractive = lazy(() => import('./LanguageLabInteractive').then((m) => ({ default: m.LanguageLabInteractive })));
 import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck, Printer } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
@@ -43,6 +50,16 @@ interface LessonViewerProps {
 }
 
 type TabId = 'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz' | 'evaluation';
+
+// The 4 core conceptual stages of a lesson, shown as a bottom step-by-step wizard bar (separate
+// from the finer-grained tab pills above) so a student always has an explicit "what's next" path —
+// especially useful for the younger grades who need a linear, predictable structure.
+const WIZARD_STEPS: { id: TabId; icon: string; labelAr: string }[] = [
+  { id: 'explanation', icon: '📖', labelAr: 'المقدمة والشرح' },
+  { id: 'content', icon: '📝', labelAr: 'الملخص والقواعد' },
+  { id: 'practice', icon: '💡', labelAr: 'أمثلة وتطبيقات' },
+  { id: 'quiz', icon: '🧪', labelAr: 'الاختبار التفاعلي' },
+];
 
 // The 4-tier practice progression requested for lesson depth: level 1-4 on each ProgressiveExercise
 // maps directly to one of these tiers (level 5 reserved for an optional extra-challenge exercise,
@@ -123,6 +140,31 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [showRevisionSheet, setShowRevisionSheet] = useState(false);
   const enablePrintablePDFs = useFeatureFlag('enablePrintablePDFs');
+
+  // Text-to-speech read-aloud — 1AP/2AP/3AP students are still learning to read, so a giant speaker
+  // button reads the lesson's title/summary/rules out loud via the browser's built-in Arabic voice.
+  const isYoungGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  const handleToggleSpeech = () => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+    window.speechSynthesis.cancel(); // clear any stray queued utterance first
+    // Tashkeel (diacritics) genuinely improves Arabic TTS pronunciation, so this reads the lesson's
+    // raw text regardless of the tashkeelEnabled display toggle — that prop only affects what's shown.
+    const textToRead = [lesson.titleAr, lesson.summaryAr, ...(lesson.rulesAr || [])].filter(Boolean).join('. ');
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = 'ar-SA';
+    utterance.rate = 0.9;
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    window.speechSynthesis.speak(utterance);
+    setIsSpeaking(true);
+  };
 
   // Practice exercises state ("Je m'entraîne" — progressiveExercises)
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
@@ -274,6 +316,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setMatchingSelectedLeft({});
     setOrderingSelections({});
 
+    // Never let a read-aloud from the previous lesson keep playing after navigating away.
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+
     const newMatchingRightOrder: Record<string, number[]> = {};
     const newOrderingShuffled: Record<string, number[]> = {};
     [...(lesson.progressiveExercises || []), ...(lesson.evaluationExercises || [])].forEach((ex) => {
@@ -288,6 +334,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setOrderingShuffled(newOrderingShuffled);
 
     initializeShuffledQuiz();
+
+    // Also stop any read-aloud in progress if the whole viewer unmounts (e.g. "back to lesson list").
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);
 
@@ -319,6 +370,23 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         onQuizFullyValidated?.(lesson.id);
       }
     }
+  };
+
+  // Bottom wizard bar: which of the 4 core steps actually has content (avoids sending a student to
+  // a blank screen), and where the currently active tab sits in that sequence.
+  const wizardStepHasContent: Record<TabId, boolean> = {
+    explanation: true,
+    content: true,
+    practice: !!(lesson.progressiveExercises && lesson.progressiveExercises.length > 0),
+    interactive: hasRenderableInteractiveTool,
+    gameplay: !!lesson.gameplay_simulation,
+    evaluation: evaluationExercises.length > 0,
+    quiz: lesson.quiz.length > 0,
+  };
+  const currentWizardIndex = Math.max(0, WIZARD_STEPS.findIndex((s) => s.id === activeTab));
+  const goToWizardStep = (index: number) => {
+    const clamped = Math.max(0, Math.min(WIZARD_STEPS.length - 1, index));
+    setActiveTab(WIZARD_STEPS[clamped].id);
   };
 
   const handleResetQuiz = () => {
@@ -409,6 +477,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {showRevisionSheet && (
         <RevisionSheetViewer lesson={lesson} onClose={() => setShowRevisionSheet(false)} tashkeelEnabled={tashkeelEnabled} />
+      )}
+
+      {/* Read-aloud button — 1AP/2AP/3AP students are still learning to read, so this gives them a
+          giant, unmissable way to hear the lesson instead of relying purely on text. */}
+      {isYoungGrade && (
+        <button
+          onClick={handleToggleSpeech}
+          className={`w-full min-h-16 rounded-3xl flex items-center justify-center gap-3 text-lg sm:text-xl font-black shadow-lg transition-all cursor-pointer active:scale-[0.98] ${
+            isSpeaking
+              ? 'bg-[var(--brand-coral)] text-white animate-pulse'
+              : 'bg-[var(--brand-amber)] text-slate-950 hover:brightness-105'
+          }`}
+        >
+          <span className="text-2xl">{isSpeaking ? '⏹️' : '🔊'}</span>
+          <span>{isSpeaking ? 'إيقاف الاستماع' : 'إستمع للدرس'}</span>
+        </button>
       )}
 
       {/* Lesson Hero Banner — bold, fixed-gradient showcase, intentionally vibrant regardless of theme */}
@@ -523,7 +607,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
           {/* TAB GAMEPLAY: INTERACTIVE SIMULATION */}
           {activeTab === 'gameplay' && lesson.gameplay_simulation && (
-            <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
+            <Suspense fallback={<LoadingFallback label="جاري تحميل المحاكاة..." />}>
+              <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
+            </Suspense>
           )}
 
           {/* TAB PRACTICE: "أتدرب" — exercises grouped by tier (أكتشف/أتدرب/أتقن/التحدي), then the mini-game challenge */}
@@ -605,12 +691,14 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <div className="space-y-6">
               {/* Sciences: question → observation → hypothesis → experiment → result → explanation */}
               {lesson.scientificInquiry && (
-                <ScientificInquiryFlow
-                  inquiry={lesson.scientificInquiry}
-                  renderArabicText={renderArabicText}
-                  hasSimulation={!!lesson.gameplay_simulation}
-                  onGoToSimulation={() => setActiveTab('gameplay')}
-                />
+                <Suspense fallback={<LoadingFallback label="جاري التحميل..." minHeight="160px" />}>
+                  <ScientificInquiryFlow
+                    inquiry={lesson.scientificInquiry}
+                    renderArabicText={renderArabicText}
+                    hasSimulation={!!lesson.gameplay_simulation}
+                    onGoToSimulation={() => setActiveTab('gameplay')}
+                  />
+                </Suspense>
               )}
 
               {/* Executive Lesson Summary Card */}
@@ -922,25 +1010,27 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
           {/* TAB 2: INTERACTIVE TOOL */}
           {activeTab === 'interactive' && hasRenderableInteractiveTool && (
-            <div className="space-y-4">
-              {effectiveTool === 'arabic_canvas' && <ArabicCanvasInteractive lesson={lesson} grade={lesson.grade} />}
-              {effectiveTool === 'soroban' && <SorobanInteractive grade={lesson.grade} />}
-              {effectiveTool === 'unit_converter' && <UnitConverter grade={lesson.grade} />}
-              {effectiveTool === 'geometry_visualizer' && <GeometryVisualizer grade={lesson.grade} />}
-              {effectiveTool === 'science_lab' && lesson.gameplay_simulation && (
-                <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
-              )}
-              {effectiveTool === 'arabic_conjugator' && <ArabicConjugator grade={lesson.grade} />}
-              {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}
-              {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
-              {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}
-              {effectiveTool === 'history_geo_lab' && lesson.historyGeoInteractive && <HistoryGeoInteractive config={lesson.historyGeoInteractive} />}
-              {effectiveTool === 'islamic_lab' && lesson.islamicInteractive && <IslamicEducationInteractive config={lesson.islamicInteractive} />}
-              {effectiveTool === 'civics_lab' && lesson.civicsInteractive && <CivicsInteractive config={lesson.civicsInteractive} />}
-              {effectiveTool === 'math_lab' && lesson.mathInteractive && <MathInteractive config={lesson.mathInteractive} />}
-              {effectiveTool === 'french_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="french" />}
-              {effectiveTool === 'english_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="english" />}
-            </div>
+            <Suspense fallback={<LoadingFallback label="جاري تحميل الأداة التفاعلية..." />}>
+              <div className="space-y-4">
+                {effectiveTool === 'arabic_canvas' && <ArabicCanvasInteractive lesson={lesson} grade={lesson.grade} />}
+                {effectiveTool === 'soroban' && <SorobanInteractive grade={lesson.grade} />}
+                {effectiveTool === 'unit_converter' && <UnitConverter grade={lesson.grade} />}
+                {effectiveTool === 'geometry_visualizer' && <GeometryVisualizer grade={lesson.grade} />}
+                {effectiveTool === 'science_lab' && lesson.gameplay_simulation && (
+                  <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
+                )}
+                {effectiveTool === 'arabic_conjugator' && <ArabicConjugator grade={lesson.grade} />}
+                {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}
+                {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
+                {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}
+                {effectiveTool === 'history_geo_lab' && lesson.historyGeoInteractive && <HistoryGeoInteractive config={lesson.historyGeoInteractive} />}
+                {effectiveTool === 'islamic_lab' && lesson.islamicInteractive && <IslamicEducationInteractive config={lesson.islamicInteractive} />}
+                {effectiveTool === 'civics_lab' && lesson.civicsInteractive && <CivicsInteractive config={lesson.civicsInteractive} />}
+                {effectiveTool === 'math_lab' && lesson.mathInteractive && <MathInteractive config={lesson.mathInteractive} />}
+                {effectiveTool === 'french_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="french" />}
+                {effectiveTool === 'english_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="english" />}
+              </div>
+            </Suspense>
           )}
 
           {/* TAB: FINAL EVALUATION — mixed exercise types, difficulty progression, then a self-check summary */}
@@ -1282,6 +1372,60 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           })()}
         </motion.div>
       </AnimatePresence>
+
+      {/* Step-by-step wizard bar — a simplified, always-visible linear path through the 4 core lesson
+          stages (Introduction → Résumé → Exemples → Quiz), complementary to the finer-grained tab
+          pills above. Steps with no real content for this lesson are shown but disabled rather than
+          hidden, so the 4-step structure always stays visible and predictable. */}
+      <Card padding="none" className="p-3 sm:p-4 space-y-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {WIZARD_STEPS.map((step) => {
+            const isActive = activeTab === step.id;
+            const hasContent = wizardStepHasContent[step.id];
+            return (
+              <button
+                key={step.id}
+                onClick={() => hasContent && setActiveTab(step.id)}
+                disabled={!hasContent}
+                className={`min-h-14 rounded-2xl px-2 py-2 flex flex-col items-center justify-center gap-1 text-center transition-all border ${
+                  isActive
+                    ? 'bg-[var(--brand-emerald)] text-white border-[var(--brand-emerald-dark)] shadow-md font-black'
+                    : hasContent
+                    ? 'bg-[var(--app-card-subtle)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-[var(--brand-emerald)]/60 cursor-pointer'
+                    : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)] opacity-40 cursor-not-allowed'
+                }`}
+              >
+                <span className="text-lg leading-none">{step.icon}</span>
+                <span className="text-[10px] sm:text-xs font-bold leading-tight">{step.labelAr}</span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="flex items-center justify-between gap-2 pt-2 border-t border-[var(--app-card-border)]">
+          <Button
+            variant="outline"
+            size="sm"
+            icon={<ChevronRight className="w-4 h-4" />}
+            disabled={currentWizardIndex <= 0}
+            onClick={() => goToWizardStep(currentWizardIndex - 1)}
+          >
+            السابق
+          </Button>
+          <Badge variant="neutral">
+            <span dir="ltr">{currentWizardIndex + 1} / {WIZARD_STEPS.length}</span>
+          </Badge>
+          <Button
+            variant="info"
+            size="sm"
+            icon={<ChevronLeft className="w-4 h-4" />}
+            iconPosition="end"
+            disabled={currentWizardIndex >= WIZARD_STEPS.length - 1}
+            onClick={() => goToWizardStep(currentWizardIndex + 1)}
+          >
+            التالي
+          </Button>
+        </div>
+      </Card>
 
       {/* Bottom Next/Previous Lesson Navigation Footer */}
       {allLessons.length > 1 && (

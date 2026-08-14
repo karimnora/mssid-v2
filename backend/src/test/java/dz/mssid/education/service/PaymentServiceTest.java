@@ -21,6 +21,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,6 +36,9 @@ class PaymentServiceTest {
 
     @Mock
     private RoleRepository roleRepository;
+
+    @Mock
+    private AdminAuditLogService adminAuditLogService;
 
     @InjectMocks
     private PaymentServiceImpl paymentService;
@@ -94,12 +99,13 @@ class PaymentServiceTest {
         when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
         when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
 
-        PaymentReceipt updated = paymentService.verifyReceipt(50L, verifyReq);
+        PaymentReceipt updated = paymentService.verifyReceipt(50L, verifyReq, "admin@mssid.dz");
 
         assertEquals(PaymentReceipt.ReceiptStatus.APPROVED, updated.getStatus());
         assertEquals(premiumRole, student.getRole());
         verify(userRepository).save(student);
         verify(receiptRepository).save(pendingReceipt);
+        verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("RECEIPT_APPROVED"), eq("RECEIPT"), eq("50"), anyString());
     }
 
     @Test
@@ -118,11 +124,12 @@ class PaymentServiceTest {
         when(receiptRepository.findById(50L)).thenReturn(Optional.of(pendingReceipt));
         when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
 
-        PaymentReceipt updated = paymentService.verifyReceipt(50L, verifyReq);
+        PaymentReceipt updated = paymentService.verifyReceipt(50L, verifyReq, "admin@mssid.dz");
 
         assertEquals(PaymentReceipt.ReceiptStatus.REJECTED, updated.getStatus());
         assertEquals("Image illisible", updated.getRejectionReason());
         verify(receiptRepository).save(pendingReceipt);
         verify(userRepository, never()).save(any());
+        verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("RECEIPT_REJECTED"), eq("RECEIPT"), eq("50"), anyString());
     }
 }

@@ -104,13 +104,14 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateUserRole(
             @PathVariable Long id,
-            @RequestBody Map<String, String> payload
+            @RequestBody Map<String, String> payload,
+            @AuthenticationPrincipal UserDetails principal
     ) {
         String newRole = payload.get("role");
         if (newRole == null || newRole.isBlank()) {
             return ResponseEntity.badRequest().body(Map.of("message", "Le paramètre 'role' est obligatoire"));
         }
-        UserProfileDto updatedUser = userService.updateUserRole(id, newRole);
+        UserProfileDto updatedUser = userService.updateUserRole(id, newRole, principal.getUsername());
         return ResponseEntity.ok(Map.of(
                 "success", true,
                 "message", "Rôle mis à jour avec succès",

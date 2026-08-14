@@ -252,7 +252,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
                   </label>
                   <div className="flex items-center gap-2">
-                    <img src={receiptImage} alt="Receipt preview" className="w-12 h-12 object-cover rounded-lg border border-slate-300" />
+                    <img src={receiptImage} alt="Receipt preview" loading="lazy" className="w-12 h-12 object-cover rounded-lg border border-slate-300" />
                     <span className="text-[11px] text-slate-500 font-bold">معاينة الوصل المرفق</span>
                   </div>
                 </div>

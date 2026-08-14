@@ -22,5 +22,5 @@ public interface PaymentService {
 
     List<PaymentReceipt> getReceiptsByStatus(PaymentReceipt.ReceiptStatus status);
 
-    PaymentReceipt verifyReceipt(Long receiptId, VerifyReceiptRequest request);
+    PaymentReceipt verifyReceipt(Long receiptId, VerifyReceiptRequest request, String actorEmail);
 }

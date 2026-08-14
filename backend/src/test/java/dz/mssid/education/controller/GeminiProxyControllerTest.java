@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -75,14 +74,5 @@ class GeminiProxyControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.answer").value("Dans un triangle rectangle..."));
-    }
-
-    @Test
-    @DisplayName("GET /api/gemini/stats - Returns AI proxy stats")
-    void getAiStats_Success() throws Exception {
-        mockMvc.perform(get("/api/gemini/stats"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("OPERATIONAL"))
-                .andExpect(jsonPath("$.rateLimiterActive").value(true));
     }
 }

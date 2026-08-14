@@ -6,6 +6,7 @@ import dz.mssid.education.dto.VerifyReceiptRequest;
 import dz.mssid.education.entity.PaymentReceipt;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.service.PaymentService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -41,7 +45,24 @@ class PaymentControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(paymentController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(paymentController)
+                .setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver())
+                .build();
+    }
+
+    @AfterEach
+    void tearDown() {
+        SecurityContextHolder.clearContext();
+    }
+
+    // Standalone MockMvc has no filter chain, so SecurityMockMvcRequestPostProcessors.user(...)
+    // never reaches SecurityContextHolder — set it directly, which is what @AuthenticationPrincipal
+    // actually reads.
+    private void authenticateAs(String email) {
+        org.springframework.security.core.userdetails.User principal =
+                new org.springframework.security.core.userdetails.User(email, "N/A", List.of());
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(principal, null, List.of()));
     }
 
     @Test
@@ -104,7 +125,8 @@ class PaymentControllerTest {
                 .verifiedAt(LocalDateTime.now())
                 .build();
 
-        when(paymentService.verifyReceipt(eq(10L), any(VerifyReceiptRequest.class))).thenReturn(approvedReceipt);
+        when(paymentService.verifyReceipt(eq(10L), any(VerifyReceiptRequest.class), eq("admin@mssid.dz"))).thenReturn(approvedReceipt);
+        authenticateAs("admin@mssid.dz");
 
         mockMvc.perform(put("/api/v1/payments/admin/receipts/10/verify")
                         .contentType(MediaType.APPLICATION_JSON)

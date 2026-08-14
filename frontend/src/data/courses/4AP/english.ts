@@ -10,6 +10,7 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 1: Family & Friends',
+    trimester: 1,
     objectivesAr: [
         'أُقدّم نفسي بالإنجليزية (الاسم، العمر، البلد).',
         'أستعمل الضمائر الشخصية وصفات الملكية بشكل صحيح.',
@@ -74,6 +75,7 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 2: School & Classroom',
+    trimester: 1,
     objectivesAr: [
         'أُسمّي الأدوات المدرسية بالإنجليزية.',
         'أفهم وأُطبّق الأوامر الصفية الشائعة.',
@@ -138,6 +140,7 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 3: My Home & Rooms',
+    trimester: 1,
     objectivesAr: [
         'أُسمّي غرف المنزل والأثاث بالإنجليزية.',
         'أستعمل There is / There are بشكل صحيح حسب العدد.',
@@ -201,6 +204,7 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 4: Food & Meals',
+    trimester: 2,
     objectivesAr: [
         'أُسمّي الأطعمة والمشروبات بالإنجليزية.',
         'أُميّز بين الأكل الصحي وغير الصحي.',
@@ -265,6 +269,7 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 5: Pets & Animals',
+    trimester: 2,
     objectivesAr: [
         'أُسمّي الحيوانات الأليفة وأجزاء جسمها بالإنجليزية.',
         'أستعمل has got لوصف خصائص الحيوان.',
@@ -329,6 +334,7 @@ export const ENGLISH_4AP: CourseLesson[] = [
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 6: Games & Hobbies',
+    trimester: 3,
     objectivesAr: [
         'أُعبّر عن هواياتي المفضلة بالإنجليزية.',
         'أعدّ من 1 إلى 50 وأكتب الأعداد بالحروف.',

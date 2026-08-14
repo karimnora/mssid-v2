@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { CourseLesson } from '../types';
 import { BookOpen, Lightbulb, Sparkles, CheckCircle2, ArrowLeft, ArrowRight, Zap, Target, HelpCircle, Glasses, Calculator, Play, RefreshCw, Layers } from 'lucide-react';
-import { ScienceLabSimulation } from './ScienceLabSimulation';
+import { LoadingFallback } from './LoadingFallback';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
+
+// R2.1 — same lazy split as LessonViewer.tsx (this was the other static import forcing
+// ScienceLabSimulation, and transitively ElectricityLabInteractive, back into the main chunk).
+const ScienceLabSimulation = lazy(() => import('./ScienceLabSimulation').then((m) => ({ default: m.ScienceLabSimulation })));
 
 interface LessonExplanationViewProps {
   lesson: CourseLesson;
@@ -428,7 +432,9 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         <div className="space-y-5">
           {/* If the lesson has a full custom gameplay_simulation, embed ScienceLabSimulation directly */}
           {lesson.gameplay_simulation ? (
-            <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
+            <Suspense fallback={<LoadingFallback label="جاري تحميل المحاكاة..." />}>
+              <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
+            </Suspense>
           ) : (
             <div className="bg-slate-900 text-white border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-6">
               {/* Header */}

@@ -20,6 +20,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.contains;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,6 +32,9 @@ class UserServiceTest {
 
     @Mock
     private RoleRepository roleRepository;
+
+    @Mock
+    private AdminAuditLogService adminAuditLogService;
 
     @InjectMocks
     private UserService userService;
@@ -85,11 +90,12 @@ class UserServiceTest {
         when(roleRepository.findByName(Role.RoleName.ROLE_TEACHER)).thenReturn(Optional.of(teacherRole));
         when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        UserProfileDto result = userService.updateUserRole(1L, "ROLE_TEACHER");
+        UserProfileDto result = userService.updateUserRole(1L, "ROLE_TEACHER", "admin@mssid.dz");
 
         assertNotNull(result);
         assertEquals("ROLE_TEACHER", result.getRole());
         verify(userRepository).save(testUser);
+        verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("ROLE_CHANGE"), eq("USER"), eq("1"), contains("ROLE_TEACHER"));
     }
 
     @Test

@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState, useSyncExternalS
 import { AuthUser, UserRole } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
+import { hydrateFromServerOverrides, FeatureFlagName } from '../featureFlags';
 
 export interface AuthContextValue {
   authUser: AuthUser | null;
@@ -59,6 +60,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  // Feature-flag hydration: runs once for EVERY visitor (not just admins) so an admin's toggle
+  // (persisted server-side via PUT /api/v1/admin/feature-flags/{key}) reaches every browser/device on
+  // its next load. Public endpoint, no auth required. Must never block app boot — on any failure the
+  // app just keeps running on local defaults/localStorage overrides, same as before this existed.
+  useEffect(() => {
+    springBootApi
+      .getFeatureFlagsPublic()
+      .then((res) => {
+        if (res.data && !res.error) {
+          hydrateFromServerOverrides(res.data as Partial<Record<FeatureFlagName, boolean>>);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   return (

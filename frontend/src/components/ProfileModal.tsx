@@ -4,6 +4,7 @@ import { AuthUser } from '../types/auth';
 import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { TashkeelToggle } from './TashkeelToggle';
+import { Card, XPProgressBar } from './ui';
 import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dailyObjective';
 import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
@@ -120,8 +121,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
 
         {/* Modal Scrollable Body */}
         <div className="p-5 overflow-y-auto flex-1 space-y-6">
-          {/* Edit Name Section */}
-          <div className="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-200/80 space-y-2">
+          {/* Identity Card */}
+          <Card padding="md" className="!bg-emerald-50/80 !border-emerald-200/80 space-y-2">
             <label className="text-xs font-extrabold text-emerald-900 flex items-center gap-1.5">
               <Edit2 className="w-3.5 h-3.5 text-emerald-600" />
               <span>اسم التلميذ / الحساب الشخصي:</span>
@@ -133,36 +134,33 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               placeholder="أدخل اسمك هنا..."
               className="w-full px-3.5 py-2 bg-white border border-emerald-300 rounded-xl text-sm font-extrabold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
-          </div>
+          </Card>
 
-          {/* XP & Level Progress Card */}
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-            <div className="flex items-center justify-between text-xs font-extrabold text-slate-800">
+          {/* XP Gauge Card */}
+          <Card padding="md" className="space-y-3">
+            <div className="flex items-center justify-between text-xs font-extrabold text-[var(--app-text)]">
               <div className="flex items-center gap-1.5">
                 <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                 <span>المستوى الحالي ({currentLevel}) ← التقدم نحو المستوى ({currentLevel + 1})</span>
               </div>
-              <span className="font-mono text-emerald-700 font-black">{totalXp} XP</span>
             </div>
 
-            <div className="w-full bg-slate-200 h-3 rounded-full overflow-hidden">
-              <div
-                className="bg-gradient-to-r from-emerald-500 to-amber-400 h-full rounded-full transition-all duration-500"
-                style={{ width: `${currentLevelProgress}%` }}
-              />
+            <XPProgressBar currentXp={xpInCurrentLevel} maxXp={100} showLabel={false} />
+            <div className="text-left">
+              <span className="font-mono text-emerald-700 font-black text-sm" dir="ltr">{totalXp} XP</span>
             </div>
 
-            <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 pt-1">
+            <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)] pt-1">
               <div className="flex items-center gap-1">
                 <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500" />
                 <span>سلسلة الحضور: {userProfile.streakDays} أيام متواصلة</span>
               </div>
               <span>مكتمل {userProfile.completedLessonIds.length} دروس</span>
             </div>
-          </div>
+          </Card>
 
           {/* Daily Objective ("Objectif du jour") */}
-          <div className={`p-4 rounded-2xl border space-y-2 ${dailyObjectiveDone ? 'bg-emerald-50 border-emerald-200' : 'bg-amber-50 border-amber-200'}`}>
+          <Card padding="md" className={`space-y-2 ${dailyObjectiveDone ? '!bg-emerald-50 !border-emerald-200' : '!bg-amber-50 !border-amber-200'}`}>
             <div className="flex items-center justify-between text-xs font-extrabold text-slate-800">
               <div className="flex items-center gap-1.5">
                 <Target className="w-4 h-4 text-amber-600" />
@@ -179,17 +177,17 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             <p className="text-[11px] font-bold text-slate-600">
               {dailyObjectiveDone ? '🎉 أنجزت هدف اليوم! عد غداً لهدف جديد.' : `أكمل ${DAILY_OBJECTIVE_TARGET - dailyObjective.count} تمارين أو اختبارات أخرى اليوم لإكمال الهدف.`}
             </p>
-          </div>
+          </Card>
 
           <div className="grid gap-4">
-            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-4">
+            <Card padding="md">
               <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
-            </div>
+            </Card>
 
-            {/* Badges Gallery — always driven by userProfile.badges, kept live by the badge-evaluation
+            {/* Badges Gallery Card — always driven by userProfile.badges, kept live by the badge-evaluation
                 effect in App.tsx, so this gallery reflects real progress rather than a fixed mock list. */}
-            <div className="space-y-3">
-              <h3 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
+            <Card padding="md" className="space-y-3">
+              <h3 className="text-xs font-extrabold uppercase text-[var(--app-text-muted)] tracking-wider">
                 شارات الأوسمة والإنجازات ({userProfile.badges.length}/{BADGES_CATALOG.length}):
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -224,7 +222,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                   );
                 })}
               </div>
-            </div>
+            </Card>
           </div>
         </div>
 
