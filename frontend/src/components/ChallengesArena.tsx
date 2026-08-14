@@ -43,26 +43,50 @@ const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: st
   { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', gradient: 'from-fuchsia-700 to-purple-900' },
 ];
 
-export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ tashkeelEnabled = true, onChallengeComplete }) => {
+export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ grade, tashkeelEnabled = true, onChallengeComplete }) => {
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
     return tashkeelEnabled ? text : stripArabicTashkeel(text);
   };
 
+  // Every count/list in this arena is derived from this grade-scoped base list — never a hardcoded
+  // total — so a 3AP student never sees mode/subject counts inflated by 5AP-only content.
+  const gradeChallenges = useMemo(
+    () => (grade ? CHALLENGES_DATA.filter((c) => c.grade === grade) : CHALLENGES_DATA),
+    [grade]
+  );
+
   const challengeSubjects = useMemo(() => {
-    const ids = Array.from(new Set(CHALLENGES_DATA.map((c) => c.subject)));
+    const ids = Array.from(new Set(gradeChallenges.map((c) => c.subject)));
     return ids.map((id) => SUBJECTS_LIST.find((s) => s.id === id)).filter((s): s is NonNullable<typeof s> => !!s);
-  }, []);
+  }, [gradeChallenges]);
 
   const [subjectFilter, setSubjectFilter] = useState<SubjectId | 'all'>('all');
   const [difficultyFilter, setDifficultyFilter] = useState<Challenge['difficulty'] | 'all'>('all');
   const [modeFilter, setModeFilter] = useState<ChallengeMode>('all');
-  const filteredChallenges = CHALLENGES_DATA.filter(
-    (c) =>
-      (subjectFilter === 'all' || c.subject === subjectFilter) &&
-      (difficultyFilter === 'all' || c.difficulty === difficultyFilter) &&
-      (modeFilter === 'all' || MODE_MATCH[modeFilter](c))
+  const filteredChallenges = useMemo(
+    () =>
+      gradeChallenges.filter(
+        (c) =>
+          (subjectFilter === 'all' || c.subject === subjectFilter) &&
+          (difficultyFilter === 'all' || c.difficulty === difficultyFilter) &&
+          (modeFilter === 'all' || MODE_MATCH[modeFilter](c))
+      ),
+    [gradeChallenges, subjectFilter, difficultyFilter, modeFilter]
   );
+
+  // Mode-card counts respect grade + whichever subject/difficulty pill is currently active, so they
+  // stay accurate as the student filters instead of always showing the same total.
+  const modeCounts = useMemo(() => {
+    const scoped = gradeChallenges.filter(
+      (c) => (subjectFilter === 'all' || c.subject === subjectFilter) && (difficultyFilter === 'all' || c.difficulty === difficultyFilter)
+    );
+    return {
+      quick: scoped.filter(MODE_MATCH.quick).length,
+      chrono: scoped.filter(MODE_MATCH.chrono).length,
+      boss: scoped.filter(MODE_MATCH.boss).length,
+    };
+  }, [gradeChallenges, subjectFilter, difficultyFilter]);
 
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(null);
   const [itemIndex, setItemIndex] = useState(0);
@@ -144,7 +168,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ tashkeelEnable
         <div className="bg-gradient-to-r from-rose-900 via-orange-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-rose-800/40">
           <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-400/30 text-rose-200 px-3 py-1 rounded-full text-xs font-bold mb-2">
             <Trophy className="w-3.5 h-3.5 text-amber-400" />
-            <span>نادي التحديات والمسابقات (5AP)</span>
+            <span>نادي التحديات والمسابقات{grade ? ` (${grade})` : ''}</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black font-sans">تحديات مؤقتة وألعاب سريعة لكسب نقاط الخبرة</h1>
           <p className="text-xs text-slate-300 mt-1 max-w-2xl">اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.</p>
@@ -154,7 +178,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ tashkeelEnable
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {MODE_CARDS.map((mode) => {
             const isActive = modeFilter === mode.id;
-            const count = CHALLENGES_DATA.filter(MODE_MATCH[mode.id]).length;
+            const count = modeCounts[mode.id];
             return (
               <motion.button
                 key={mode.id}

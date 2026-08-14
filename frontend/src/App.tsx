@@ -27,6 +27,8 @@ import { SeoHead } from './components/SeoHead';
 import { PricingModal } from './components/PricingModal';
 import { AdBanner } from './components/AdBanner';
 import { LoadingFallback } from './components/LoadingFallback';
+import { AppRatingPrompt } from './components/AppRatingPrompt';
+import { ContactModal } from './components/ContactModal';
 import { isFeatureEnabled } from './featureFlags';
 import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { springBootApi } from './services/springBootApi';
@@ -99,6 +101,32 @@ function normalizeUserProfile(raw: UserProfile): UserProfile {
     ...profile,
     streakDays: lastActive === yesterday ? profile.streakDays + 1 : 1,
     lastActiveDate: today,
+  };
+}
+
+/**
+ * A genuine "clean slate" profile — every progress field zeroed, not just a subset. Used on logout
+ * so the next guest/user never sees the previous account's XP/lessons/badges/streak/quiz history.
+ * Keeps the grade the app was already browsing (not the account's), since that's app-level context
+ * rather than personal progress.
+ */
+function createFreshGuestProfile(currentGrade: PrimaryGrade): UserProfile {
+  return {
+    name: 'تلميذ مَسِيد',
+    grade: currentGrade,
+    avatar: '🎓',
+    xp: 0,
+    level: 1,
+    streakDays: 0,
+    lastActiveDate: new Date().toISOString().slice(0, 10),
+    completedLessonIds: [],
+    completedExamIds: [],
+    completedChallengeIds: [],
+    quizFullyValidatedLessonIds: [],
+    badges: [],
+    badgeUnlockedAt: {},
+    quizScores: {},
+    tashkeelEnabled: false,
   };
 }
 
@@ -216,6 +244,10 @@ export default function App() {
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  // Bumped (never reset) after a genuine success moment — a fully-validated quiz or a newly unlocked
+  // badge — so AppRatingPrompt knows when it's a good time to ask, without owning that logic itself.
+  const [ratingPromptTrigger, setRatingPromptTrigger] = useState(0);
   const [headerTheme, setHeaderTheme] = useState<HeaderTheme>(() => {
     if (typeof window !== 'undefined') {
       const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -270,6 +302,7 @@ export default function App() {
       // AuthService.syncBadges updates the in-memory auth singleton directly — authUser (from
       // useAuth()) reflects it automatically via the pub/sub subscription, no manual sync needed.
       AuthService.syncBadges(updated.badges, updated.badgeUnlockedAt);
+      setRatingPromptTrigger((t) => t + 1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -336,6 +369,7 @@ export default function App() {
         ? prev
         : { ...prev, quizFullyValidatedLessonIds: [...prev.quizFullyValidatedLessonIds, lessonId] }
     );
+    setRatingPromptTrigger((t) => t + 1);
   };
 
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
@@ -431,6 +465,17 @@ export default function App() {
     }
   };
 
+  const handleUpdateProfileAvatar = (newAvatar: string) => {
+    setUserProfile((prev) => {
+      const updated = { ...prev, avatar: newAvatar };
+      localStorage.setItem('mssid_user_profile', JSON.stringify(updated));
+      return updated;
+    });
+    if (authUser) {
+      AuthService.setCurrentUser({ ...authUser, avatar: newAvatar });
+    }
+  };
+
   const handleRefreshProfileFromDb = async () => {
     // fetchProfileFromDbAsync() already calls AuthService.setCurrentUser internally, which the
     // [authUser] effect above reacts to and cascades into userProfile — nothing else to do here.
@@ -491,16 +536,14 @@ export default function App() {
           // AuthService.logout() already clears the in-memory singleton (authUser follows via
           // useAuth()) and asks the server to drop the HttpOnly cookie — see authService.ts.
           AuthService.logout();
-          setUserProfile((prev) => ({
-            ...prev,
-            name: 'تلميذ مَسِيد',
-            xp: 0,
-            level: 1,
-            completedLessonIds: [],
-          }));
+          // Full reset — the previous partial reset (name/xp/level/completedLessonIds only) left
+          // badges, streak, exam/challenge completions and quiz scores visibly stuck on screen.
+          localStorage.removeItem('mssid_user_profile');
+          setUserProfile(() => createFreshGuestProfile(grade));
         }}
         onOpenAiTutor={() => setIsAiModalOpen(true)}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
+        onOpenContactModal={() => setIsContactModalOpen(true)}
         onOpenPricingModal={() => setIsPricingModalOpen(true)}
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
@@ -692,6 +735,7 @@ export default function App() {
             />
           ) : selectedSubject === 'challenges' ? (
             <ChallengesArena
+              grade={grade}
               tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
               onChallengeComplete={handleCompleteChallenge}
             />
@@ -731,6 +775,9 @@ export default function App() {
             <button onClick={() => setIsAiModalOpen(true)} className="hover:text-[var(--brand-amber)] cursor-pointer">
               المعلم مسيد
             </button>
+            <button onClick={() => setIsContactModalOpen(true)} className="hover:text-[var(--brand-emerald)] cursor-pointer">
+              تواصل معنا
+            </button>
           </div>
         </div>
       </footer>
@@ -758,7 +805,19 @@ export default function App() {
         }}
         onResetProgress={handleResetProgress}
         onUpdateName={handleUpdateProfileName}
+        onUpdateAvatar={handleUpdateProfileAvatar}
         onRefreshFromDb={handleRefreshProfileFromDb}
+      />
+
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        authUser={authUser}
+      />
+
+      <AppRatingPrompt
+        trigger={ratingPromptTrigger}
+        onOpenContact={() => setIsContactModalOpen(true)}
       />
 
       <AuthModal

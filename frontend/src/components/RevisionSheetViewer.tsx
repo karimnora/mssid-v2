@@ -156,7 +156,7 @@ export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson
             </section>
           )}
 
-          <p className="mt-4 pt-2 border-t border-slate-200 text-[10px] text-slate-400 text-center break-inside-avoid">
+          <p className="mt-4 pt-2 border-t border-slate-200 text-[10px] text-slate-600 text-center break-inside-avoid">
             <span dir="ltr">MSSID DZ</span> — فيشة مراجعة تلقائية مُولَّدة من محتوى الدرس
           </p>
         </div>

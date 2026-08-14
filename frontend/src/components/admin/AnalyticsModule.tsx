@@ -62,7 +62,7 @@ const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data:
             const pct = total > 0 ? Math.round((value / total) * 100) : 0;
             return (
               <div key={key} className="space-y-1">
-                <div className="flex items-center justify-between text-[11px] text-slate-400">
+                <div className="flex items-center justify-between text-[11px] text-slate-300">
                   <span className="font-mono">{key}</span>
                   <span className="font-bold text-slate-200">{value} ({pct}%)</span>
                 </div>
@@ -114,7 +114,7 @@ export const AnalyticsModule: React.FC = () => {
             </span>
             <h2 className="text-lg font-extrabold text-white">إحصائيات المنصة الحقيقية</h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-300 mt-1">
             كل رقم هنا مصدره مباشرة قاعدة بيانات المستخدمين والمدفوعات — لا توجد أي بيانات وهمية أو تقديرية.
           </p>
         </div>

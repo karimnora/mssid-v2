@@ -58,7 +58,7 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
         </li>
 
         {/* Separator */}
-        <ChevronLeft className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+        <ChevronLeft className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300 shrink-0" />
 
         {/* 2. Grade / المستوى الدراسي */}
         <li className="flex items-center gap-1">
@@ -75,7 +75,7 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
         </li>
 
         {/* Separator */}
-        <ChevronLeft className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+        <ChevronLeft className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300 shrink-0" />
 
         {/* 3. Subject / المادة */}
         <li className="flex items-center gap-1">
@@ -98,7 +98,7 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
         {/* 4. Trimester / الفصل (Optional) */}
         {trimester !== 'all' && (
           <>
-            <ChevronLeft className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <ChevronLeft className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300 shrink-0" />
             <li className="flex items-center gap-1">
               <button
                 onClick={() => {
@@ -121,7 +121,7 @@ export const CourseBreadcrumb: React.FC<CourseBreadcrumbProps> = ({
         {/* 5. Current Lesson / الدرس الحالي */}
         {currentLesson && (
           <>
-            <ChevronLeft className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <ChevronLeft className="w-3.5 h-3.5 text-slate-500 dark:text-slate-300 shrink-0" />
             <li className="flex items-center gap-1 max-w-[200px] sm:max-w-[320px] truncate">
               <span className="flex items-center gap-1 text-indigo-700 dark:text-indigo-300 font-extrabold bg-indigo-50 dark:bg-indigo-900/40 px-2.5 py-1 rounded-lg border border-indigo-200/80 dark:border-indigo-800/80 truncate">
                 <FileText className="w-3.5 h-3.5 text-indigo-600 shrink-0" />

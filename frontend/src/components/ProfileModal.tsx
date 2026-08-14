@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target } from 'lucide-react';
+import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { TashkeelToggle } from './TashkeelToggle';
 import { Card, XPProgressBar } from './ui';
@@ -18,8 +18,15 @@ interface ProfileModalProps {
   onToggleTashkeel: (next: boolean) => void;
   onResetProgress: () => void;
   onUpdateName?: (newName: string) => void;
+  onUpdateAvatar?: (newAvatar: string) => void;
   onRefreshFromDb?: () => Promise<void>;
 }
+
+const AVATAR_OPTIONS = [
+  '🦁', '🐯', '🦊', '🐼', '🐨', '🦄', '🐸', '🐧',
+  '🦉', '🐢', '🦋', '🐝', '🚀', '⭐', '🎓', '🏆',
+  '🦸', '🦸‍♀️', '🧑‍🚀', '🥷',
+];
 
 export const ProfileModal: React.FC<ProfileModalProps> = ({
   isOpen,
@@ -30,16 +37,22 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onToggleTashkeel,
   onResetProgress,
   onUpdateName,
+  onUpdateAvatar,
   onRefreshFromDb,
 }) => {
   const t = useTranslation('common');
   const currentName = authUser?.nom || userProfile.name;
   const [editedName, setEditedName] = useState(currentName);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState(userProfile.avatar || '🎓');
 
   useEffect(() => {
     setEditedName(authUser?.nom || userProfile.name);
   }, [authUser?.nom, userProfile.name]);
+
+  useEffect(() => {
+    setSelectedAvatar(userProfile.avatar || '🎓');
+  }, [userProfile.avatar]);
 
   if (!isOpen) return null;
 
@@ -48,6 +61,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       onUpdateName(editedName.trim());
     }
     onClose();
+  };
+
+  const handleSelectAvatar = (emoji: string) => {
+    setSelectedAvatar(emoji);
+    onUpdateAvatar?.(emoji);
   };
 
   const handleRefreshClick = async () => {
@@ -75,7 +93,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-emerald-500 p-0.5 flex items-center justify-center text-xl font-bold">
               <span className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
-                {userProfile.avatar || '🎓'}
+                {selectedAvatar}
               </span>
             </div>
             <div>
@@ -134,6 +152,35 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               placeholder="أدخل اسمك هنا..."
               className="w-full px-3.5 py-2 bg-white border border-emerald-300 rounded-xl text-sm font-extrabold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
+          </Card>
+
+          {/* Avatar Picker Card */}
+          <Card padding="md" className="space-y-3">
+            <label className="text-xs font-extrabold text-[var(--app-text)] flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>اختر رمزك الشخصي المفضل:</span>
+            </label>
+            <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
+              {AVATAR_OPTIONS.map((emoji) => {
+                const isSelected = emoji === selectedAvatar;
+                return (
+                  <button
+                    key={emoji}
+                    type="button"
+                    onClick={() => handleSelectAvatar(emoji)}
+                    aria-pressed={isSelected}
+                    title={emoji}
+                    className={`aspect-square rounded-2xl border flex items-center justify-center text-2xl sm:text-3xl transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-emerald-50 border-emerald-500 ring-2 ring-emerald-400 scale-105'
+                        : 'bg-white border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/40 active:scale-95'
+                    }`}
+                  >
+                    {emoji}
+                  </button>
+                );
+              })}
+            </div>
           </Card>
 
           {/* XP Gauge Card */}

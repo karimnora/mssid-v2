@@ -287,7 +287,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                     <span>إجابة فورية مخزنة (Cache Hit #{cacheHitsCount}) • لم يستهلك رصيداً</span>
                   </span>
                 ) : (
-                  <span className="text-[10px] font-mono text-slate-400">المنهاج الجزائري</span>
+                  <span className="text-[10px] font-mono text-slate-300">المنهاج الجزائري</span>
                 )}
               </div>
 

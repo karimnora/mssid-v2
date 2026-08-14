@@ -29,7 +29,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
           </div>
           <div>
             <h2 className="text-lg font-black text-amber-300">جَدْوَلُ الضَّرْبِ التَّفَاعُلِيُّ</h2>
-            <p className="text-xs text-slate-400">تَدَرَّبْ عَلَى جَدْوَلِ الضَّرْبِ سَرِيعاً مَعَ التَّصْحِيحِ الفَوْرِيِّ</p>
+            <p className="text-xs text-slate-300">تَدَرَّبْ عَلَى جَدْوَلِ الضَّرْبِ سَرِيعاً مَعَ التَّصْحِيحِ الفَوْرِيِّ</p>
           </div>
         </div>
         <span className="bg-amber-400/10 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold">
@@ -68,7 +68,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
           </h3>
           <button
             onClick={handleReset}
-            className="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700"
+            className="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>إِعَادَةُ المَسْحِ</span>

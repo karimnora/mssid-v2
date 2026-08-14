@@ -37,7 +37,7 @@ const ConfiguredHistoryGeoTool: React.FC<{ config: HistoryGeoInteractiveConfig }
         <div>
           <h2 className="text-lg font-black text-amber-300">{config.titleAr}</h2>
           {config.introAr && (
-            <p className="text-xs text-slate-400 mt-1">{config.introAr}</p>
+            <p className="text-xs text-slate-300 mt-1">{config.introAr}</p>
           )}
         </div>
       </div>
@@ -77,7 +77,7 @@ const ConfiguredHistoryGeoTool: React.FC<{ config: HistoryGeoInteractiveConfig }
             )}
           </div>
           {config.mapOverlay && (
-            <div className="p-3 bg-slate-800/70 rounded-2xl border border-slate-700 text-[11px] text-slate-400 flex items-start gap-2">
+            <div className="p-3 bg-slate-800/70 rounded-2xl border border-slate-700 text-[11px] text-slate-300 flex items-start gap-2">
               <Map className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
               <span>{config.mapOverlay}</span>
             </div>

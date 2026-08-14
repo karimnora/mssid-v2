@@ -88,7 +88,7 @@ export const ScientificInquiryFlow: React.FC<ScientificInquiryFlowProps> = ({
       {revealed && (
         <div className="space-y-3 animate-in fade-in duration-300">
           {chosenHypothesis && (
-            <p className="text-[11px] text-slate-400 bg-white/5 rounded-xl p-2.5">
+            <p className="text-[11px] text-slate-300 bg-white/5 rounded-xl p-2.5">
               💭 فرضيتي كانت: <span className="text-fuchsia-300 font-bold">{renderArabicText(chosenHypothesis.textAr)}</span> — لنرَ ماذا يحدث فعلاً!
             </p>
           )}

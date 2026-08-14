@@ -148,7 +148,7 @@ const DialogueTurnView: React.FC<{
 
   return (
     <div className={`bg-slate-950 p-6 rounded-3xl border ${t.detailBorder} space-y-4`}>
-      <p className="text-xs text-slate-400 font-bold">{turn.promptAr}</p>
+      <p className="text-xs text-slate-300 font-bold">{turn.promptAr}</p>
       <p dir="ltr" className={`text-sm font-bold text-slate-200 ${t.detailBg} p-4 rounded-2xl border ${t.detailBorder} leading-relaxed text-right`}>
         {turn.lineAr}
       </p>

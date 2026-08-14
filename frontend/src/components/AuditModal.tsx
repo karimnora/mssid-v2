@@ -31,7 +31,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({ isOpen, onClose }) => {
                   github.com/karimnora/mssid-dz
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-sans">
+              <p className="text-xs text-slate-300 font-sans">
                 تحليل الأخطاء والهندسة المعمارية والأمان والأداء وخطة التوسع بدون تعديل كود
               </p>
             </div>
@@ -91,7 +91,7 @@ export const AuditModal: React.FC<AuditModalProps> = ({ isOpen, onClose }) => {
                         <h4 className="font-bold text-sm text-slate-900">{item.titleAr}</h4>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-slate-400">({item.titleFr})</span>
+                        <span className="text-[10px] font-mono text-slate-600">({item.titleFr})</span>
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${
                           item.status === 'fixed'
                             ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'

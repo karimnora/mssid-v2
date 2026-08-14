@@ -448,7 +448,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
                       <span>مختبر التبسيط المباشر والتجربة الحية:</span>
                       <span className="text-amber-300">{lesson.titleAr}</span>
                     </h3>
-                    <p className="text-[11px] text-slate-400">تفاعل مباشر واختبار القواعد والأرقام في الوقت الحقيقي</p>
+                    <p className="text-[11px] text-slate-300">تفاعل مباشر واختبار القواعد والأرقام في الوقت الحقيقي</p>
                   </div>
                 </div>
                 <span className="text-[11px] font-extrabold bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full border border-emerald-500/30">
@@ -479,7 +479,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
                         onChange={(e) => setDemoValue(Number(e.target.value))}
                         className="w-full accent-amber-400 h-2.5 bg-slate-800 rounded-lg cursor-pointer"
                       />
-                      <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                      <div className="flex justify-between text-[10px] text-slate-300 font-mono">
                         <span>1</span>
                         <span>25</span>
                         <span>50</span>
@@ -491,11 +491,11 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
                     {/* Step-by-step Math Breakdown */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
                       <div className="bg-slate-900 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                        <span className="text-[10px] text-slate-400 block font-bold">1. المعطى الأول (القيمة):</span>
+                        <span className="text-[10px] text-slate-300 block font-bold">1. المعطى الأول (القيمة):</span>
                         <p className="text-sm font-bold text-amber-300 font-mono">{demoValue}</p>
                       </div>
                       <div className="bg-slate-900 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                        <span className="text-[10px] text-slate-400 block font-bold">2. تطبيق قاعدة الدرس:</span>
+                        <span className="text-[10px] text-slate-300 block font-bold">2. تطبيق قاعدة الدرس:</span>
                         <p className="text-xs font-bold text-sky-300 font-mono">
                           {lesson.keyFormulas?.[0]?.formulaAr || `حساب متناسب × 10`}
                         </p>
@@ -585,7 +585,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
                             className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                               grammarTense === t.id
                                 ? 'bg-indigo-500 text-white font-black'
-                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                             }`}
                           >
                             {t.label}
@@ -596,7 +596,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
 
                     <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-400">الجملة والتطبيق بعد التصريف والضبط:</span>
+                        <span className="text-xs text-slate-300">الجملة والتطبيق بعد التصريف والضبط:</span>
                         <span className="text-[10px] font-bold bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">
                           مضبوط بالشكل
                         </span>

@@ -21,12 +21,12 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             </div>
             <div>
               <h2 className="text-lg font-extrabold text-white">سياسة الخصوصية • Privacy Policy</h2>
-              <p className="text-xs text-slate-400">تطبيق مَسيد DZ (Mssid DZ) - التعليم الابتدائي الجزائري</p>
+              <p className="text-xs text-slate-300">تطبيق مَسيد DZ (Mssid DZ) - التعليم الابتدائي الجزائري</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-xl transition-all"
+            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl transition-all"
           >
             <X className="w-5 h-5" />
           </button>
@@ -39,7 +39,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             <Lock className="w-5 h-5 text-emerald-400 shrink-0 mt-1" />
             <div>
               <h3 className="font-bold text-emerald-300 text-base mb-1">تعهد بحماية خصوصية الأطفال (COPPA & Google Play Families Policy)</h3>
-              <p className="text-xs text-slate-300">
+              <p className="text-sm text-slate-300">
                 يلتزم تطبيق مَسيد DZ لحماية خصوصية الأطفال والتلاميذ (1AP حتى 5AP) وأولياء الأمور وفق معايير جوجل وسياسة برنامج "Designed for Families". نحن لا نجمع أو نبيع أي بيانات شخصية حساسة للأطفال.
               </p>
             </div>
@@ -51,7 +51,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">1</span>
               البيانات المجمعة وأسباب جمعها
             </h4>
-            <ul className="list-disc list-inside space-y-1 text-xs text-slate-300 mr-4">
+            <ul className="list-disc list-inside space-y-1 text-sm text-slate-300 mr-4">
               <li><strong className="text-slate-100">بيانات الحساب الشخصي (البريد والاسم والصف):</strong> تُستخدم فقط لتوثيق التسجيل ولتخصيص المحتوى التعليمي للمستوى الدراسي المقابل.</li>
               <li><strong className="text-slate-100">إذن الكاميرا والمعرض (Camera & Photo Gallery):</strong> يُطلب فقط عند قيام ولي الأمر أو المستخدم برفع صورة وصل الدفع (BaridiMob / CCP) لتفعيل الاشتراك. لا يتم الوصول لأي صور أخرى على الجهاز.</li>
               <li><strong className="text-slate-100">رمز الجلسة المشفر:</strong> يتم تخزينه محلياً لتفادي إعادة تسجيل الدخول في كل مرة ولتوفير تجربة سريعة بدون إنترنت.</li>
@@ -64,7 +64,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">2</span>
               عدم وجود إعلانات موجهة أو تتبع
             </h4>
-            <p className="text-xs text-slate-300">
+            <p className="text-sm text-slate-300">
               تطبيق مَسيد DZ خالي تماماً من الإعلانات التجارية الموجهة للأطفال أو أدوات التتبع السلوكي الخارجية (AdMob / Facebook Pixel Tracker).
             </p>
           </div>
@@ -75,7 +75,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">3</span>
               الأمان والتشفير
             </h4>
-            <p className="text-xs text-slate-300">
+            <p className="text-sm text-slate-300">
               جميع الاتصالات بين تطبيق المحمول والسيرفر الرئيسي تتطلب تشفير SSL (HTTPS) وضوابط أمان صارمة على الخادم مع تحديد معدلات الطلب لحماية بيانات المستخدمين من أي اختراق.
             </p>
           </div>
@@ -86,12 +86,12 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">4</span>
               حذف البيانات والحساب
             </h4>
-            <p className="text-xs text-slate-300">
+            <p className="text-sm text-slate-300">
               يمكن لأي ولي أمر أو مستخدم طلب حذف حسابه وكافة بياناته نهائياً عن طريق التواصل عبر البريد الإلكتروني المخصص للدعم: <code className="bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-mono">support@mssid-dz.com</code>.
             </p>
           </div>
 
-          <div className="pt-4 border-t border-slate-800 text-xs text-slate-400 text-center">
+          <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center">
             آخر تحديث: أوت 2026 • متوافق مع سياسات Google Play Console لعام 2026
           </div>
 

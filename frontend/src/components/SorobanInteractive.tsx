@@ -233,7 +233,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               <span className="text-[11px] uppercase font-bold text-slate-500 block">القيمة الممثلة حالياً:</span>
               <div className="flex items-baseline gap-2">
                 <span className="text-xl sm:text-2xl font-black text-indigo-700 font-mono tracking-wider">{currentValue.toLocaleString('ar-DZ')}</span>
-                <span className="text-xs text-slate-400 font-mono">({currentValue})</span>
+                <span className="text-xs text-slate-600 font-mono">({currentValue})</span>
               </div>
             </div>
             <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto justify-end">
@@ -308,7 +308,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                             className={`w-8 sm:w-10 h-5 sm:h-6 rounded-md transition-all duration-200 z-10 cursor-pointer shadow-xs flex items-center justify-center text-[8px] sm:text-[9px] font-bold ${
                               isActivated
                                 ? '-translate-y-1.5 sm:-translate-y-2 bg-emerald-500 text-slate-950 border border-emerald-300'
-                                : 'translate-y-1.5 sm:translate-y-2 bg-slate-700 text-slate-400 border border-slate-600 hover:bg-slate-600'
+                                : 'translate-y-1.5 sm:translate-y-2 bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600'
                             }`}
                           >
                             1
@@ -320,7 +320,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                     {/* Rod Digit & Name */}
                     <div className="text-center mt-1.5 sm:mt-2">
                       <span className="text-xs sm:text-sm font-black text-amber-400 font-mono block">{digitValue}</span>
-                      <span className="text-[8px] sm:text-[10px] text-slate-400 block whitespace-nowrap">{rodPowerLabel}</span>
+                      <span className="text-[8px] sm:text-[10px] text-slate-300 block whitespace-nowrap">{rodPowerLabel}</span>
                     </div>
                   </div>
                 );
@@ -344,7 +344,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 </h4>
               </div>
               <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1">
-                <span className="text-[10px] text-slate-400 shrink-0 ml-1">التمارين الجاهزة:</span>
+                <span className="text-[10px] text-slate-300 shrink-0 ml-1">التمارين الجاهزة:</span>
                 {SOROBAN_PRACTICE_EXERCISES.map((_, i) => (
                   <button
                     key={i}
@@ -367,7 +367,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                     key={d}
                     onClick={() => setDifficulty(d)}
                     className={`flex-1 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer ${
-                      difficulty === d ? 'bg-indigo-500 text-white' : 'text-slate-400 hover:bg-slate-800'
+                      difficulty === d ? 'bg-indigo-500 text-white' : 'text-slate-300 hover:bg-slate-800'
                     }`}
                   >
                     {d === 'easy' ? '⭐ سهل' : d === 'medium' ? '⭐⭐ متوسط' : '⭐⭐⭐ صعب'}
@@ -380,7 +380,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                     key={m}
                     onClick={() => setOperationMode(m)}
                     className={`flex-1 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer ${
-                      operationMode === m ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:bg-slate-800'
+                      operationMode === m ? 'bg-emerald-500 text-slate-950' : 'text-slate-300 hover:bg-slate-800'
                     }`}
                   >
                     {m === 'add' ? 'جمع (+)' : m === 'subtract' ? 'طرح (−)' : 'مختلط (+/−)'}
@@ -411,7 +411,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               ) : currentFlashIndex >= currentAnzanEx.numbers.length ? (
                 <div className="text-emerald-400 font-bold text-xs sm:text-sm">انتهى العرض الخاطف! أدخل المجموع النهائي أدناه</div>
               ) : (
-                <div className="text-slate-400 text-xs leading-relaxed max-w-xs">اضغط على زر "ابدأ العرض الخاطف" لبدء ظهور الأعداد بسرعة</div>
+                <div className="text-slate-300 text-xs leading-relaxed max-w-xs">اضغط على زر "ابدأ العرض الخاطف" لبدء ظهور الأعداد بسرعة</div>
               )}
             </div>
 
@@ -503,7 +503,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               </p>
 
               <div className="bg-white p-3 rounded-xl border border-slate-200 mb-4">
-                <span className="text-[10px] font-bold text-slate-400 block mb-1 uppercase">خطوات تحريك الخرزات:</span>
+                <span className="text-[10px] font-bold text-slate-600 block mb-1 uppercase">خطوات تحريك الخرزات:</span>
                 <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-800 font-medium">
                   {SOROBAN_RULES[selectedRuleIndex].beadStepsAr.map((step, sIdx) => (
                     <li key={sIdx}>{step}</li>

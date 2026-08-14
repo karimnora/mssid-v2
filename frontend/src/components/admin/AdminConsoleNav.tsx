@@ -49,7 +49,7 @@ export const AdminConsoleNav: React.FC<AdminConsoleNavProps> = ({ activeTab, onS
           <div className="flex items-center gap-2 bg-slate-800/90 border border-slate-700/80 px-3 py-1.5 rounded-xl text-xs">
             <div className="text-right leading-tight">
               <div className="font-bold text-white">{authUser?.nom || '—'}</div>
-              <div className="text-[10px] text-slate-400 font-mono" dir="ltr">{authUser?.email || ''}</div>
+              <div className="text-[10px] text-slate-300 font-mono" dir="ltr">{authUser?.email || ''}</div>
             </div>
             <span className="text-[10px] font-mono font-black px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">
               ROLE_ADMIN

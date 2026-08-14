@@ -297,7 +297,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 المرحلة الابتدائية (4AP & 5AP)
               </span>
             </h2>
-            <p className="text-xs text-slate-400 font-sans mt-0.5">
+            <p className="text-xs text-slate-300 font-sans mt-0.5">
               محاكاة واقعية آمنة للتجارب الكهربائية والصمام الثنائي وفق المنهاج الابتدائي الجزائري
             </p>
           </div>
@@ -310,7 +310,7 @@ export const ElectricityLabInteractive: React.FC = () => {
             className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               soundEnabled
                 ? 'bg-emerald-950 text-emerald-300 border-emerald-700/60'
-                : 'bg-slate-900 text-slate-400 border-slate-800'
+                : 'bg-slate-900 text-slate-300 border-slate-800'
             }`}
             title="تفعيل/تعطيل المؤثرات الصوتية"
           >
@@ -323,7 +323,7 @@ export const ElectricityLabInteractive: React.FC = () => {
             className={`px-3 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
               showFrench
                 ? 'bg-blue-950 text-blue-300 border-blue-700/60 shadow-xs'
-                : 'bg-slate-900 text-slate-400 border-slate-800'
+                : 'bg-slate-900 text-slate-300 border-slate-800'
             }`}
           >
             <Languages className="w-4 h-4 text-cyan-400" />
@@ -863,7 +863,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                   className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                     batteryVoltage === 4.5
                       ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
-                      : 'bg-slate-950 text-slate-400 border-slate-800'
+                      : 'bg-slate-950 text-slate-300 border-slate-800'
                   }`}
                 >
                   بطارية مسطحة 4.5V
@@ -874,7 +874,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                   className={`p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                     batteryVoltage === 9.0
                       ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
-                      : 'bg-slate-950 text-slate-400 border-slate-800'
+                      : 'bg-slate-950 text-slate-300 border-slate-800'
                   }`}
                 >
                   بطارية قوية 9.0V
@@ -890,17 +890,17 @@ export const ElectricityLabInteractive: React.FC = () => {
               </span>
               <div className="bg-slate-950 rounded-2xl border border-emerald-800/60 p-3 grid grid-cols-3 gap-2 font-mono">
                 <div className="text-center">
-                  <div className="text-[9px] text-slate-400 font-sans font-bold">التوتر (V)</div>
+                  <div className="text-[9px] text-slate-300 font-sans font-bold">التوتر (V)</div>
                   <div className="text-emerald-400 text-sm sm:text-base font-black" dir="ltr">{multimeterReading.voltage.toFixed(1)}</div>
                 </div>
                 <div className="text-center border-x border-slate-800">
-                  <div className="text-[9px] text-slate-400 font-sans font-bold">التيار (mA)</div>
+                  <div className="text-[9px] text-slate-300 font-sans font-bold">التيار (mA)</div>
                   <div className={`text-sm sm:text-base font-black ${currentStatus.isCurrentFlowing ? 'text-amber-400' : 'text-slate-600'}`} dir="ltr">
                     {multimeterReading.currentMa.toFixed(0)}
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-[9px] text-slate-400 font-sans font-bold">المقاومة (Ω)</div>
+                  <div className="text-[9px] text-slate-300 font-sans font-bold">المقاومة (Ω)</div>
                   <div className="text-cyan-400 text-[11px] sm:text-xs font-black" dir="ltr">{multimeterReading.resistanceLabel}</div>
                 </div>
               </div>
@@ -922,7 +922,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 <Lightbulb className="w-5 h-5 text-amber-400" />
                 <span>مقارنة الربط على التسلسل والربط على التفرع (Montage en Série vs Parallèle)</span>
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 شاهد الفرق في إضاءة المصباحين وماذا يحدث عند فك أو تلف أحد المصباحين!
               </p>
             </div>
@@ -933,7 +933,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 className={`px-4 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                   circuitType === 'series'
                     ? 'bg-amber-500 text-slate-950 border-amber-400 font-black'
-                    : 'bg-slate-950 text-slate-400 border-slate-800'
+                    : 'bg-slate-950 text-slate-300 border-slate-800'
                 }`}
               >
                 1. الربط على التسلسل (En Série)
@@ -944,7 +944,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 className={`px-4 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                   circuitType === 'parallel'
                     ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black'
-                    : 'bg-slate-950 text-slate-400 border-slate-800'
+                    : 'bg-slate-950 text-slate-300 border-slate-800'
                 }`}
               >
                 2. الربط على التفرع (En Parallèle)
@@ -1104,7 +1104,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 <Award className="w-5 h-5 text-rose-400" />
                 <span>تحدي الكهربائي الصغير (أسئلة الدارات والصمام الثنائي)</span>
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 أجب عن الأسئلة الخمسة واكسب نقاط التميز في التربية العلمية!
               </p>
             </div>
@@ -1128,7 +1128,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                     <span>{q.qAr}</span>
                   </div>
 
-                  {showFrench && <p className="text-xs text-slate-400 dir-ltr font-mono" dir="ltr">{q.qFr}</p>}
+                  {showFrench && <p className="text-xs text-slate-300 dir-ltr font-mono" dir="ltr">{q.qFr}</p>}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                     {q.options.map((opt, optIdx) => {

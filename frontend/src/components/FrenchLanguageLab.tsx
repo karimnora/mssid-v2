@@ -381,7 +381,7 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
             <h2 className="text-lg font-black text-sky-300">
               أَدَاةُ تَصْرِيفِ الأَفْعَالِ الفَرَنْسِيَّةِ التَّفَاعُلِيَّةِ (Conjugueur de Verbes 3AP-5AP)
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-300">
               تصريف تفاعلي شامل وممتع للأفعال المقررة في المنهاج الجزائري الرسمي مع النطق الصوتي والقواعد
             </p>
           </div>
@@ -484,12 +484,12 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-sm font-black tracking-tight">{v.verb}</span>
                       <span className={`text-[10px] px-2 py-0.5 rounded-md font-mono ${
-                        isSelected ? 'bg-slate-950 text-sky-300' : 'bg-slate-800 text-slate-400'
+                        isSelected ? 'bg-slate-950 text-sky-300' : 'bg-slate-800 text-slate-300'
                       }`}>
                         {v.group}
                       </span>
                     </div>
-                    <span className={`text-[11px] mt-1 ${isSelected ? 'text-slate-900 font-bold' : 'text-slate-400'}`}>
+                    <span className={`text-[11px] mt-1 ${isSelected ? 'text-slate-900 font-bold' : 'text-slate-300'}`}>
                       {v.translationAr}
                     </span>
                   </button>
@@ -606,7 +606,7 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
 
                 <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-sans text-sm font-black text-sky-300 dir-ltr text-left">
                   {QUIZ_QUESTIONS[currentQuizIdx].sentenceFr}
-                  <span className="text-xs text-slate-400 block mt-1 font-mono">
+                  <span className="text-xs text-slate-300 block mt-1 font-mono">
                     [{QUIZ_QUESTIONS[currentQuizIdx].verbName}]
                   </span>
                 </div>

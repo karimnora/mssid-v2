@@ -105,7 +105,7 @@ export const TechnicalLogsModule: React.FC = () => {
           </div>
           <div>
             <h2 className="text-xl font-black tracking-tight text-white">السجلات التقنية (Technical Logs)</h2>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-300 mt-1">
               حالة اتصال الخادم، سعة التخزين المحلية، وسجل أحداث الإدارة الحقيقي — كل رقم هنا مصدره فعلي، لا توجد أي قيم ثابتة.
             </p>
           </div>
@@ -138,7 +138,7 @@ export const TechnicalLogsModule: React.FC = () => {
                 ? 'text-emerald-300 bg-emerald-950/60 border-emerald-800'
                 : serverStatus === 'error'
                 ? 'text-rose-300 bg-rose-950/60 border-rose-800'
-                : 'text-slate-400 bg-slate-950 border-slate-800'
+                : 'text-slate-300 bg-slate-950 border-slate-800'
             }`}
           >
             {serverStatus === 'online' ? (
@@ -204,7 +204,7 @@ export const TechnicalLogsModule: React.FC = () => {
               <tbody>
                 {auditLog.map((entry) => (
                   <tr key={entry.id} className="border-b border-slate-800/60 hover:bg-slate-950/60">
-                    <td className="py-2.5 px-2 font-mono text-slate-400 whitespace-nowrap">{entry.createdAt}</td>
+                    <td className="py-2.5 px-2 font-mono text-slate-300 whitespace-nowrap">{entry.createdAt}</td>
                     <td className="py-2.5 px-2 font-mono text-purple-300">{entry.actorEmail}</td>
                     <td className="py-2.5 px-2">
                       <span className="px-2 py-0.5 rounded-md font-bold text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30">

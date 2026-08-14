@@ -352,6 +352,14 @@ public async request<T>(
       method: 'GET',
     });
   }
+
+  // --- "Nous contacter / Suggestions" ---
+  public async submitContact(payload: { name: string; email: string; type: string; message: string }) {
+    return this.request<{ success: boolean }>('/v1/contact', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+  }
 }
 
 export const springBootApi = new SpringBootApiService();

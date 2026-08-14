@@ -82,7 +82,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
             if (isChecked) {
               if (opt.isCorrect) style = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold';
               else if (isSelected) style = 'bg-rose-50 border-rose-400 text-rose-900';
-              else style = 'bg-slate-50 border-slate-100 text-slate-400';
+              else style = 'bg-slate-50 border-slate-100 text-slate-600';
             } else if (isSelected) {
               style = 'bg-indigo-50 border-indigo-500 text-indigo-900 font-bold';
             }
@@ -139,7 +139,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
                 const isRight = isChecked && matchingConnections[leftIdx] === leftIdx;
                 const isWrong = isChecked && isConnected && matchingConnections[leftIdx] !== leftIdx;
                 let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
-                if (isChecked) style = isRight ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrong ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-400';
+                if (isChecked) style = isRight ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrong ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
                 else if (isSelected) style = 'bg-indigo-100 border-indigo-500 text-indigo-900 font-bold';
                 else if (isConnected) style = 'bg-emerald-50 border-emerald-300 text-emerald-800';
                 return (
@@ -192,7 +192,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
               const isRightPlace = isChecked && position === originalIdx;
               const isWrongPlace = isChecked && isSelected && position !== originalIdx;
               let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
-              if (isChecked) style = isRightPlace ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrongPlace ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-400';
+              if (isChecked) style = isRightPlace ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrongPlace ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
               else if (isSelected) style = 'bg-indigo-600 border-indigo-700 text-white font-bold';
               return (
                 <button

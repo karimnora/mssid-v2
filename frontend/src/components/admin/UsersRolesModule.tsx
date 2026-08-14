@@ -110,7 +110,7 @@ export const UsersRolesModule: React.FC = () => {
                 ROLE_ADMIN
               </span>
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-300">
               إدارة أمنية متكاملة للمستخدمين، الصلاحيات (RBAC)، والمصادقة على اشتراكات بريدي موب
             </p>
           </div>
@@ -124,7 +124,7 @@ export const UsersRolesModule: React.FC = () => {
           className={`px-5 py-3 text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 ${
             activeTab === 'RECEIPTS'
               ? 'border-amber-400 text-amber-300 bg-slate-900 rounded-t-xl'
-              : 'border-transparent text-slate-400 hover:text-white'
+              : 'border-transparent text-slate-300 hover:text-white'
           }`}
         >
           <ShieldCheck className="w-4 h-4 text-amber-400" />
@@ -135,7 +135,7 @@ export const UsersRolesModule: React.FC = () => {
           className={`px-5 py-3 text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 ${
             activeTab === 'USERS'
               ? 'border-purple-500 text-purple-300 bg-slate-900 rounded-t-xl'
-              : 'border-transparent text-slate-400 hover:text-white'
+              : 'border-transparent text-slate-300 hover:text-white'
           }`}
         >
           <Users className="w-4 h-4 text-purple-400" />
@@ -147,7 +147,7 @@ export const UsersRolesModule: React.FC = () => {
         <>
           {/* Filter Toolbar */}
           <div className="p-4 bg-slate-950/60 border-b border-slate-800 flex items-center gap-2 overflow-x-auto">
-            <span className="text-xs font-bold text-slate-400 shrink-0 flex items-center gap-1">
+            <span className="text-xs font-bold text-slate-300 shrink-0 flex items-center gap-1">
               <Filter className="w-4 h-4 text-purple-400" />
               <span>فلترة الوصولات:</span>
             </span>
@@ -221,7 +221,7 @@ export const UsersRolesModule: React.FC = () => {
                         </span>
                       </div>
 
-                      <div className="text-[11px] text-slate-400 flex justify-between items-center">
+                      <div className="text-[11px] text-slate-300 flex justify-between items-center">
                         <span>طريقة الدفع: {item.paymentMethod}</span>
                         <span className="font-mono font-bold text-amber-300">{item.amountDzd} DZD</span>
                       </div>
@@ -239,27 +239,27 @@ export const UsersRolesModule: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                     <h3 className="font-black text-sm text-amber-300">تفاصيل معالجة وصل الدفع رقم #{selectedReceipt.id}</h3>
-                    <span className="text-xs font-mono text-slate-400">{selectedReceipt.submittedAt}</span>
+                    <span className="text-xs font-mono text-slate-300">{selectedReceipt.submittedAt}</span>
                   </div>
 
                   <div className="space-y-2 text-xs">
                     <div>
-                      <span className="text-slate-400">المستخدم:</span>{' '}
+                      <span className="text-slate-300">المستخدم:</span>{' '}
                       <strong className="text-white">{selectedReceipt.userName}</strong> ({selectedReceipt.userEmail})
                     </div>
                     <div>
-                      <span className="text-slate-400">طريقة التحويل:</span>{' '}
+                      <span className="text-slate-300">طريقة التحويل:</span>{' '}
                       <strong className="text-purple-300">{selectedReceipt.paymentMethod}</strong>
                     </div>
                     <div>
-                      <span className="text-slate-400">الرقم المرجعي:</span>{' '}
+                      <span className="text-slate-300">الرقم المرجعي:</span>{' '}
                       <strong className="text-amber-300 font-mono">{selectedReceipt.transactionRef}</strong>
                     </div>
                   </div>
 
                   {/* Receipt Image Preview */}
                   <div className="border border-slate-800 rounded-2xl overflow-hidden bg-slate-900 p-2 space-y-2">
-                    <div className="text-[11px] text-slate-400 font-bold flex items-center gap-1">
+                    <div className="text-[11px] text-slate-300 font-bold flex items-center gap-1">
                       <Image className="w-3.5 h-3.5 text-purple-400" />
                       <span>صورة الوصل المرفقة:</span>
                     </div>
@@ -317,7 +317,7 @@ export const UsersRolesModule: React.FC = () => {
           {/* Search and Refresh Bar */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-900 p-3.5 rounded-2xl border border-slate-800">
             <div className="relative w-full sm:w-80">
-              <Search className="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-slate-300 absolute right-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={userSearchQuery}
@@ -357,7 +357,7 @@ export const UsersRolesModule: React.FC = () => {
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <span className="font-extrabold text-sm text-white">{u.nom}</span>
-                        <span className="text-[10px] font-mono text-slate-400">#{u.id}</span>
+                        <span className="text-[10px] font-mono text-slate-300">#{u.id}</span>
                       </div>
                       <div className="text-xs text-purple-300 font-mono">{u.email}</div>
                     </div>
@@ -370,14 +370,14 @@ export const UsersRolesModule: React.FC = () => {
                           ? 'bg-blue-500/20 text-blue-300 border-blue-500/40'
                           : u.role === 'ROLE_PREMIUM'
                           ? 'bg-purple-500/20 text-purple-300 border-purple-500/40'
-                          : 'bg-slate-800 text-slate-400 border-slate-700'
+                          : 'bg-slate-800 text-slate-300 border-slate-700'
                       }`}
                     >
                       {u.role}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                  <div className="flex items-center justify-between text-[11px] text-slate-300 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
                     <span>النقاط XP: <strong className="text-amber-300 font-mono">{u.score || u.xp || 0}</strong></span>
                     <span>المستوى: <strong className="text-purple-300 font-mono">{u.level || 1}</strong></span>
                     <span>السنة: <strong className="text-emerald-300 font-mono">{u.grade || '5AP'}</strong></span>
@@ -385,7 +385,7 @@ export const UsersRolesModule: React.FC = () => {
 
                   {/* Role Modifier Dropdown */}
                   <div className="flex items-center justify-between gap-2 pt-1">
-                    <span className="text-xs text-slate-400 font-bold shrink-0">تعديل الصلاحيات:</span>
+                    <span className="text-xs text-slate-300 font-bold shrink-0">تعديل الصلاحيات:</span>
                     <select
                       value={u.role}
                       onChange={(e) => handleRoleChange(u.id, e.target.value as UserRole)}

@@ -204,7 +204,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
           </div>
           <div>
             <h2 className="text-lg font-black text-emerald-300">أَدَاةُ تَصْرِيفِ الأَفْعَالِ العَرَبِيَّةِ التَّفَاعُلِيَّةِ</h2>
-            <p className="text-xs text-slate-400">جدول التصريف التفاعلي مع قواعد الفك والزيادة والتغيير</p>
+            <p className="text-xs text-slate-300">جدول التصريف التفاعلي مع قواعد الفك والزيادة والتغيير</p>
           </div>
         </div>
         <span className="bg-emerald-400/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold">

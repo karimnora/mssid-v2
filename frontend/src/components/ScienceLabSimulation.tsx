@@ -50,7 +50,7 @@ export const ScienceLabSimulation: React.FC<ScienceLabSimulationProps> = ({ game
           className={`px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center gap-2 border ${
             showFrench
               ? 'bg-blue-600/30 text-blue-200 border-blue-400/60 shadow-md ring-2 ring-blue-500/30'
-              : 'bg-slate-800 text-slate-400 border-slate-700 hover:text-slate-200 hover:bg-slate-700'
+              : 'bg-slate-800 text-slate-300 border-slate-700 hover:text-slate-200 hover:bg-slate-700'
           }`}
         >
           <span>🌐 المصطلحات بالفرنسية (Optionnel):</span>
@@ -102,7 +102,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
           </div>
           <div>
             <h2 className="text-lg font-black text-amber-300">{gameplay.titleAr}</h2>
-            {showFrench && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
+            {showFrench && <p className="text-xs text-slate-300">{gameplay.titleFr}</p>}
           </div>
         </div>
         <span className="bg-amber-400/10 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
@@ -143,7 +143,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
               >
                 <div className="text-xs font-bold">{combo.titleAr}</div>
                 {showFrench && (
-                  <div className={`text-[10px] mt-0.5 ${isSelected ? 'text-slate-900' : 'text-slate-400'}`}>
+                  <div className={`text-[10px] mt-0.5 ${isSelected ? 'text-slate-900' : 'text-slate-300'}`}>
                     {combo.titleFr}
                   </div>
                 )}
@@ -172,7 +172,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
               <span className="text-xs font-extrabold">🔌 قاطعة كهربائية</span>
               <Power className="w-4 h-4 text-amber-400" />
             </div>
-            {showFrench && <span className="text-[10px] text-slate-400 mt-1">Interrupteur</span>}
+            {showFrench && <span className="text-[10px] text-slate-300 mt-1">Interrupteur</span>}
           </button>
 
           <button
@@ -190,7 +190,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
               <span className="text-xs font-extrabold">📏 مسطرة بلاستيك</span>
               <span className="text-[10px] bg-rose-500/30 text-rose-300 px-1.5 py-0.5 rounded">عازل</span>
             </div>
-            {showFrench && <span className="text-[10px] text-slate-400 mt-1">Règle en Plastique</span>}
+            {showFrench && <span className="text-[10px] text-slate-300 mt-1">Règle en Plastique</span>}
           </button>
 
           <button
@@ -208,7 +208,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
               <span className="text-xs font-extrabold">🧷 مسمار حديدي</span>
               <span className="text-[10px] bg-emerald-500/30 text-emerald-300 px-1.5 py-0.5 rounded">ناقل</span>
             </div>
-            {showFrench && <span className="text-[10px] text-slate-400 mt-1">Clou en fer</span>}
+            {showFrench && <span className="text-[10px] text-slate-300 mt-1">Clou en fer</span>}
           </button>
 
           <button
@@ -226,7 +226,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
               <span className="text-xs font-extrabold">🪵 قطعة خشب</span>
               <span className="text-[10px] bg-rose-500/30 text-rose-300 px-1.5 py-0.5 rounded">عازل</span>
             </div>
-            {showFrench && <span className="text-[10px] text-slate-400 mt-1">Morceau de bois</span>}
+            {showFrench && <span className="text-[10px] text-slate-300 mt-1">Morceau de bois</span>}
           </button>
         </div>
       </div>
@@ -260,7 +260,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
             <div className="flex flex-col items-center bg-slate-900 border-2 border-amber-500 p-3 rounded-2xl shadow-xl z-10 hover:scale-105 transition-transform">
               <div className="text-2xl mb-1">🔋</div>
               <div className="text-amber-400 text-xs font-black">مولد (4.5V)</div>
-              {showFrench && <div className="text-[9px] text-slate-400">Pile / Générateur</div>}
+              {showFrench && <div className="text-[9px] text-slate-300">Pile / Générateur</div>}
               <div className="flex gap-2 text-[10px] font-mono mt-1 font-extrabold text-amber-300">
                 <span>(+)</span>
                 <span>(-)</span>
@@ -338,7 +338,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
               <span className="text-xs font-extrabold mt-1">
                 {isLightOn ? '💡 المصباح مشتعل !' : '⚪ المصباح مطفأ'}
               </span>
-              {showFrench && <span className="text-[9px] text-slate-400">Ampoule</span>}
+              {showFrench && <span className="text-[9px] text-slate-300">Ampoule</span>}
             </div>
 
           </div>
@@ -394,7 +394,7 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
           </div>
           <div>
             <h2 className="text-lg font-black text-rose-300">{gameplay.sceneTitleAr}</h2>
-            {showFrench && <p className="text-xs text-slate-400">{gameplay.sceneTitleFr}</p>}
+            {showFrench && <p className="text-xs text-slate-300">{gameplay.sceneTitleFr}</p>}
           </div>
         </div>
         <span className="bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-full text-xs font-bold">
@@ -412,7 +412,7 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
           {gameplay.sceneDescriptionAr}
         </p>
         {showFrench && (
-          <p className="text-[11px] text-slate-400 font-mono">
+          <p className="text-[11px] text-slate-300 font-mono">
             {gameplay.sceneDescriptionFr}
           </p>
         )}
@@ -435,7 +435,7 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
                 القاطع العام: {disjoncteurOff ? 'مقطوع 🛑 (OFF)' : 'موصول ⚡ (ON)'}
                 {showFrench && ' [Disjoncteur]'}
               </div>
-              <div className="text-[10px] text-slate-400 mt-0.5">انقر لقطع التيار عن كامل المنزل</div>
+              <div className="text-[10px] text-slate-300 mt-0.5">انقر لقطع التيار عن كامل المنزل</div>
             </div>
             <Power className={`w-6 h-6 ${disjoncteurOff ? 'text-emerald-400' : 'text-rose-400'}`} />
           </button>
@@ -453,7 +453,7 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
                 حالة اليدين: {handsAreDry ? 'جافتان تماماً 🤲' : 'مبلولتان بالماء 💧'}
                 {showFrench && (handsAreDry ? ' (Sèches)' : ' (Mouillées)')}
               </div>
-              <div className="text-[10px] text-slate-400 mt-0.5">انقر لتجفيف اليدين بالمنشفة</div>
+              <div className="text-[10px] text-slate-300 mt-0.5">انقر لتجفيف اليدين بالمنشفة</div>
             </div>
             <span className="text-xl">{handsAreDry ? '🤲' : '💧'}</span>
           </button>
@@ -480,7 +480,7 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
               >
                 <div className="space-y-1">
                   <div className="text-xs font-extrabold">{choice.textAr}</div>
-                  {showFrench && <div className="text-[11px] text-slate-400">{choice.textFr}</div>}
+                  {showFrench && <div className="text-[11px] text-slate-300">{choice.textFr}</div>}
                 </div>
                 {isSelected && (
                   <span className="shrink-0 p-1.5 rounded-full bg-white/10">
@@ -537,7 +537,7 @@ const MixturesLabView: React.FC<{ gameplay: MixtureGameplay; showFrench: boolean
           </div>
           <div>
             <h2 className="text-lg font-black text-cyan-300">{gameplay.titleAr}</h2>
-            {showFrench && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
+            {showFrench && <p className="text-xs text-slate-300">{gameplay.titleFr}</p>}
           </div>
         </div>
         <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
@@ -681,7 +681,7 @@ const ProcessStagesView: React.FC<{ gameplay: ProcessStagesGameplay; showFrench:
           </div>
           <div>
             <h2 className="text-lg font-black text-teal-300">{gameplay.titleAr}</h2>
-            {showFrench && gameplay.titleFr && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
+            {showFrench && gameplay.titleFr && <p className="text-xs text-slate-300">{gameplay.titleFr}</p>}
           </div>
         </div>
       </div>
@@ -737,7 +737,7 @@ const MatchingLabView: React.FC<{ gameplay: MatchingLabGameplay; showFrench: boo
           </div>
           <div>
             <h2 className="text-lg font-black text-cyan-300">{gameplay.titleAr}</h2>
-            {showFrench && gameplay.titleFr && <p className="text-xs text-slate-400">{gameplay.titleFr}</p>}
+            {showFrench && gameplay.titleFr && <p className="text-xs text-slate-300">{gameplay.titleFr}</p>}
           </div>
         </div>
       </div>

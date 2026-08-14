@@ -89,7 +89,7 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
               </span>
             )}
           </div>
-          <p className="text-[11px] text-slate-400">{meta.descriptionAr}</p>
+          <p className="text-[11px] text-slate-300">{meta.descriptionAr}</p>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
@@ -98,7 +98,7 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
               onClick={handleReset}
               disabled={isSyncing}
               title="إعادة الضبط الافتراضي"
-              className="w-7 h-7 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-100 hover:bg-slate-800 disabled:opacity-50 cursor-pointer"
+              className="w-7 h-7 flex items-center justify-center rounded-full text-slate-300 hover:text-slate-100 hover:bg-slate-800 disabled:opacity-50 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -144,7 +144,7 @@ export const FeatureFlagsModule: React.FC = () => {
           </span>
           <h2 className="text-lg font-extrabold text-white">الإعدادات والتحكم بالمزايا</h2>
         </div>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-slate-300 mt-1">
           فعّل أو عطّل أي قسم من المنصة فورياً دون الحاجة لإعادة نشر الكود. التعديلات تُطبَّق محلياً فوراً في هذا المتصفح، ثم تُزامَن مع الخادم لتصل إلى بقية المشرفين والأجهزة.
         </p>
       </div>

@@ -206,7 +206,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ grade, tashkeelEnabled
           </Button>
           <div className="bg-slate-900/90 border border-purple-500/40 p-3 rounded-2xl flex items-center gap-3 shrink-0 shadow-inner">
             <div>
-              <span className="text-[10px] uppercase font-bold text-slate-400 block">مؤقت الامتحان التجريبي:</span>
+              <span className="text-[10px] uppercase font-bold text-slate-300 block">مؤقت الامتحان التجريبي:</span>
               <span className="font-mono font-black text-amber-400 text-lg">{formatTimer(timerSeconds)}</span>
             </div>
             <button

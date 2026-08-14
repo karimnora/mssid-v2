@@ -50,6 +50,9 @@ public class SecurityConfig {
                         // feature-flag overrides from this at boot — see FeatureFlagController.
                         .requestMatchers(HttpMethod.GET, "/api/v1/feature-flags").permitAll()
 
+                        // "Nous contacter" — a guest/parent with no account must be able to send feedback.
+                        .requestMatchers(HttpMethod.POST, "/api/v1/contact").permitAll()
+
                         .anyRequest().authenticated()
                 )
                 // SEC-01: /logout above is intentionally permitAll — clearing an HttpOnly cookie must

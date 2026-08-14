@@ -68,7 +68,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     ? 'text-slate-600 hover:text-slate-900'
     : isSepia
     ? 'text-stone-600 hover:text-stone-900'
-    : 'text-slate-400 hover:text-white';
+    : 'text-slate-300 hover:text-white';
 
   const ringClass = isLight
     ? 'ring-slate-100'

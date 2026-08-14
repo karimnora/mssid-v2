@@ -137,7 +137,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   Android & iOS
                 </span>
               </div>
-              <p className="text-xs text-slate-400">محاكي هاتف ذكي تفاعلي 100% متوافق مع كافة الشاشات والأجهزة</p>
+              <p className="text-xs text-slate-300">محاكي هاتف ذكي تفاعلي 100% متوافق مع كافة الشاشات والأجهزة</p>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
               <button
                 onClick={() => setDeviceType('android')}
                 className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1.5 ${
-                  deviceType === 'android' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  deviceType === 'android' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-300 hover:text-white'
                 }`}
               >
                 <Smartphone className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
               <button
                 onClick={() => setDeviceType('iphone')}
                 className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1.5 ${
-                  deviceType === 'iphone' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  deviceType === 'iphone' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-300 hover:text-white'
                 }`}
               >
                 <Smartphone className="w-3.5 h-3.5" />
@@ -165,7 +165,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
               <button
                 onClick={() => setDeviceType('tablet')}
                 className={`px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1.5 ${
-                  deviceType === 'tablet' ? 'bg-amber-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  deviceType === 'tablet' ? 'bg-amber-600 text-white shadow-xs' : 'text-slate-300 hover:text-white'
                 }`}
               >
                 <Tablet className="w-3.5 h-3.5" />
@@ -197,7 +197,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="p-2 bg-slate-800 hover:bg-rose-900/60 text-slate-400 hover:text-rose-200 rounded-xl transition-all border border-slate-700"
+              className="p-2 bg-slate-800 hover:bg-rose-900/60 text-slate-300 hover:text-rose-200 rounded-xl transition-all border border-slate-700"
             >
               <X className="w-5 h-5" />
             </button>
@@ -291,7 +291,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
 
                       {/* Grade Quick Selector Carousel */}
                       <div>
-                        <p className={`text-[11px] font-bold mb-1.5 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                        <p className={`text-[11px] font-bold mb-1.5 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                           المستوى الدراسي (الابتدائي):
                         </p>
                         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
@@ -343,7 +343,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
 
                       {/* Quick Interactive Tool Grid */}
                       <div>
-                        <p className={`text-[11px] font-bold mb-1.5 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                        <p className={`text-[11px] font-bold mb-1.5 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                           الورشات والأنشطة المفتوحة:
                         </p>
                         <div className="grid grid-cols-2 gap-2">
@@ -458,7 +458,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                           className={`flex-1 text-xs px-3 py-2 rounded-xl border focus:outline-none focus:ring-1 focus:ring-emerald-500 ${
                             isDarkMode
                               ? 'bg-slate-900 border-slate-800 text-white placeholder:text-slate-500'
-                              : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-400'
+                              : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-500'
                           }`}
                         />
                         <button
@@ -539,7 +539,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <button
                     onClick={() => setActiveMobileTab('home')}
                     className={`flex flex-col items-center gap-0.5 p-1 transition-all ${
-                      activeMobileTab === 'home' ? 'text-emerald-600 font-extrabold' : 'text-slate-400'
+                      activeMobileTab === 'home' ? 'text-emerald-600 font-extrabold' : isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}
                   >
                     <Home className="w-4 h-4" />
@@ -549,7 +549,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <button
                     onClick={() => setActiveMobileTab('lessons')}
                     className={`flex flex-col items-center gap-0.5 p-1 transition-all ${
-                      activeMobileTab === 'lessons' ? 'text-emerald-600 font-extrabold' : 'text-slate-400'
+                      activeMobileTab === 'lessons' ? 'text-emerald-600 font-extrabold' : isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}
                   >
                     <BookOpen className="w-4 h-4" />
@@ -559,7 +559,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <button
                     onClick={() => setActiveMobileTab('ai')}
                     className={`flex flex-col items-center gap-0.5 p-1 transition-all ${
-                      activeMobileTab === 'ai' ? 'text-emerald-600 font-extrabold' : 'text-slate-400'
+                      activeMobileTab === 'ai' ? 'text-emerald-600 font-extrabold' : isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}
                   >
                     <Bot className="w-4 h-4" />
@@ -569,7 +569,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <button
                     onClick={() => setActiveMobileTab('offline')}
                     className={`flex flex-col items-center gap-0.5 p-1 transition-all ${
-                      activeMobileTab === 'offline' ? 'text-emerald-600 font-extrabold' : 'text-slate-400'
+                      activeMobileTab === 'offline' ? 'text-emerald-600 font-extrabold' : isDarkMode ? 'text-slate-300' : 'text-slate-600'
                     }`}
                   >
                     <DownloadCloud className="w-4 h-4" />
@@ -602,7 +602,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <GraduationCap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-slate-200">مناسب للأطفال والتلاميذ:</span>
-                    <p className="text-slate-400 text-[11px]">واجهة عربية بسيطة مع ألوان مريحة ومعدلات تكبير مثالية لشاشات الهواتف.</p>
+                    <p className="text-slate-300 text-[11px]">واجهة عربية بسيطة مع ألوان مريحة ومعدلات تكبير مثالية لشاشات الهواتف.</p>
                   </div>
                 </div>
 
@@ -610,7 +610,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <DownloadCloud className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-slate-200">وضع العمل بدون إنترنت (Offline First):</span>
-                    <p className="text-slate-400 text-[11px]">يخزن الدروس والمقتطفات الصوتية محلياً لاستمرار التصفح دون انقطاع.</p>
+                    <p className="text-slate-300 text-[11px]">يخزن الدروس والمقتطفات الصوتية محلياً لاستمرار التصفح دون انقطاع.</p>
                   </div>
                 </div>
 
@@ -618,7 +618,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
                   <Sparkles className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-slate-200">اتصال آمن بالخادم:</span>
-                    <p className="text-slate-400 text-[11px]">اتصال آمن ومشفر لحماية بياناتك مع تحسين مستمر للسرعة والاستقرار.</p>
+                    <p className="text-slate-300 text-[11px]">اتصال آمن ومشفر لحماية بياناتك مع تحسين مستمر للسرعة والاستقرار.</p>
                   </div>
                 </div>
               </div>
@@ -628,7 +628,7 @@ export const MobileAppSimulator: React.FC<MobileAppSimulatorProps> = ({
             <div className="flex items-center justify-between gap-3 bg-emerald-950/40 border border-emerald-800/50 p-4 rounded-2xl">
               <div>
                 <p className="font-bold text-xs text-emerald-300">جاهز للتجربة التفاعلية؟</p>
-                <p className="text-[11px] text-slate-400">يمكنك التفاعل مباشرة داخل شاشة الهاتف بالأعلى!</p>
+                <p className="text-[11px] text-slate-300">يمكنك التفاعل مباشرة داخل شاشة الهاتف بالأعلى!</p>
               </div>
               <button
                 onClick={onClose}

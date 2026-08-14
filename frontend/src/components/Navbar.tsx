@@ -19,6 +19,7 @@ import {
   Check,
   FileText,
   LogOut,
+  MessageSquare,
 } from 'lucide-react';
 import { PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
@@ -39,6 +40,7 @@ interface NavbarProps {
   onOpenAiTutor: () => void;
   onOpenPricingModal: () => void;
   onOpenProfileModal: () => void;
+  onOpenContactModal?: () => void;
   onOpenMobileSimulator?: () => void;
   onOpenPrivacyPolicy?: () => void;
   onOpenAdminConsole?: () => void;
@@ -70,6 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLogout,
   onOpenAiTutor,
   onOpenProfileModal,
+  onOpenContactModal,
   onOpenMobileSimulator,
   onOpenPrivacyPolicy,
   onOpenAdminConsole,
@@ -363,6 +366,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </>
                     )}
 
+                    {onOpenContactModal && (
+                      <button
+                        onClick={() => { onOpenContactModal(); setIsProfileDropdownOpen(false); }}
+                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                      >
+                        <MessageSquare className="w-4 h-4 text-[var(--brand-blue)]" />
+                        <span>تواصل معنا</span>
+                      </button>
+                    )}
+
                     {/* ADMIN SECTION (RBAC & CMS) */}
                     {isAdmin && (
                       <>
@@ -503,6 +516,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
                     <Badge variant="xp"><span dir="ltr">{displayXp} XP</span></Badge>
                   </button>
+
+                  {onOpenContactModal && (
+                    <button
+                      onClick={() => { onOpenContactModal(); setIsMobileDrawerOpen(false); }}
+                      className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-bold text-xs flex items-center gap-2"
+                    >
+                      <MessageSquare className="w-4 h-4 text-[var(--brand-blue)]" />
+                      <span>تواصل معنا</span>
+                    </button>
+                  )}
 
                   {onOpenMobileSimulator && (
                     <button

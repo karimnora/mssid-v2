@@ -281,7 +281,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
             <h2 className="text-lg font-black text-indigo-300">
               أَدَاةُ تَصْرِيفِ الأَفْعَالِ الإِنْجِلِيزِيَّةِ التَّفَاعُلِيَّةِ (English Verbs Conjugator 3AP-5AP)
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-300">
               تصريف تفاعلي ممتع وشامل لأهم الأفعال الإنجليزية المقررة في المنهج الابتدائي مع الاستماع والتحديات
             </p>
           </div>
@@ -384,12 +384,12 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-sm font-black tracking-tight">{v.verb}</span>
                       <span className={`text-[10px] px-2 py-0.5 rounded-md font-mono ${
-                        isSelected ? 'bg-slate-950 text-indigo-300' : 'bg-slate-800 text-slate-400'
+                        isSelected ? 'bg-slate-950 text-indigo-300' : 'bg-slate-800 text-slate-300'
                       }`}>
                         {v.category}
                       </span>
                     </div>
-                    <span className={`text-[11px] mt-1 ${isSelected ? 'text-indigo-200 font-bold' : 'text-slate-400'}`}>
+                    <span className={`text-[11px] mt-1 ${isSelected ? 'text-indigo-200 font-bold' : 'text-slate-300'}`}>
                       {v.translationAr}
                     </span>
                   </button>
@@ -506,7 +506,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
 
                 <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-sans text-sm font-black text-indigo-300 dir-ltr text-left">
                   {QUIZ_QUESTIONS[currentQuizIdx].sentenceEn}
-                  <span className="text-xs text-slate-400 block mt-1 font-mono">
+                  <span className="text-xs text-slate-300 block mt-1 font-mono">
                     [{QUIZ_QUESTIONS[currentQuizIdx].verbName}]
                   </span>
                 </div>

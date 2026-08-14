@@ -237,7 +237,7 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
       {/* Controls */}
       <div className="space-y-2">
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-mono text-slate-400 w-9 shrink-0" dir="ltr">{formatTime(currentTime)}</span>
+          <span className="text-[10px] font-mono text-slate-300 w-9 shrink-0" dir="ltr">{formatTime(currentTime)}</span>
           <input
             type="range"
             min={0}
@@ -248,7 +248,7 @@ export const InteractiveVideoPlayer: React.FC<InteractiveVideoPlayerProps> = ({
             className="flex-1 accent-indigo-500 cursor-pointer"
             style={{ background: `linear-gradient(to left, #6366f1 ${progressPercent}%, #334155 ${progressPercent}%)` }}
           />
-          <span className="text-[10px] font-mono text-slate-400 w-9 shrink-0" dir="ltr">{formatTime(duration)}</span>
+          <span className="text-[10px] font-mono text-slate-300 w-9 shrink-0" dir="ltr">{formatTime(duration)}</span>
         </div>
 
         <div className="flex items-center justify-between flex-wrap gap-2">

@@ -68,7 +68,7 @@ export const PwaInstallBanner: React.FC = () => {
         </button>
         <button
           onClick={() => setShowBanner(false)}
-          className="p-1.5 text-slate-400 hover:text-white rounded-lg transition-colors"
+          className="p-1.5 text-slate-300 hover:text-white rounded-lg transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

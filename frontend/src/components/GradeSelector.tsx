@@ -59,7 +59,7 @@ export const GradeSelectorBanner: React.FC<GradeSelectorProps> = ({ currentGrade
                     {g.titleAr}
                   </h3>
                 </div>
-                <p className={`text-[11px] leading-snug line-clamp-2 mt-1 ${isSelected ? 'text-slate-600' : 'text-slate-400'}`}>
+                <p className={`text-[11px] leading-snug line-clamp-2 mt-1 ${isSelected ? 'text-slate-600' : 'text-slate-300'}`}>
                   {g.desc}
                 </p>
               </button>
