@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -69,9 +68,6 @@ class UserControllerTest {
     @Test
     @DisplayName("GET /api/v1/users/me - Returns 200 OK with UserProfileDto")
     void getCurrentUserProfile_Success() throws Exception {
-        UserDetails userDetailsMock = mock(UserDetails.class);
-        when(userDetailsMock.getUsername()).thenReturn("eleve@mssid.dz");
-
         UserProfileDto profile = UserProfileDto.builder()
                 .id(1L)
                 .nom("Ahmed Eleve")
@@ -82,10 +78,12 @@ class UserControllerTest {
                 .build();
 
         when(userService.getUserProfileByEmail("eleve@mssid.dz")).thenReturn(profile);
+        authenticateAs("eleve@mssid.dz");
 
-        mockMvc.perform(get("/api/v1/users/me")
-                        .principal(() -> "eleve@mssid.dz"))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/users/me"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.email").value("eleve@mssid.dz"))
+                .andExpect(jsonPath("$.role").value("ROLE_FREE"));
     }
 
     @Test

@@ -77,6 +77,6 @@ class ExamControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.examId").value(1))
                 .andExpect(jsonPath("$.pdfSolutionUrl").value("https://mssid.dz/pdf/physique_4am_sol.pdf"))
-                .andExpect(jsonPath("$.correctionBaremeDetails").value("Solution détaillée étape par étape"));
+                .andExpect(jsonPath("$.baremeDetails").value("Solution détaillée étape par étape"));
     }
 }

@@ -5,9 +5,6 @@ import dz.mssid.education.dto.AuthResponse;
 import dz.mssid.education.dto.LoginRequest;
 import dz.mssid.education.dto.RegisterRequest;
 import dz.mssid.education.dto.UserProfileDto;
-import dz.mssid.education.entity.Role;
-import dz.mssid.education.entity.User;
-import dz.mssid.education.repository.UserRepository;
 import dz.mssid.education.service.AuthService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,13 +14,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -37,9 +29,6 @@ class AuthControllerTest {
 
     @Mock
     private AuthService authService;
-
-    @Mock
-    private UserRepository userRepository;
 
     @InjectMocks
     private AuthController authController;
@@ -132,32 +121,9 @@ class AuthControllerTest {
 //                .andExpect(jsonPath("$.user.score").value(120));
 //    }
 
-    @Test
-    @DisplayName("POST /api/auth/users/add-score - Updates user gamification score")
-    void addScore_Success() throws Exception {
-        Role freeRole = new Role(1L, Role.RoleName.ROLE_FREE);
-        User user = User.builder()
-                .id(10L)
-                .nom("Amina Bendjama")
-                .email("amina@mssid.dz")
-                .score(100)
-                .role(freeRole)
-                .createdAt(LocalDateTime.now())
-                .build();
-
-        Authentication authMock = mock(Authentication.class);
-        when(authMock.isAuthenticated()).thenReturn(true);
-        when(authMock.getName()).thenReturn("amina@mssid.dz");
-
-        when(userRepository.findByEmail("amina@mssid.dz")).thenReturn(Optional.of(user));
-
-        mockMvc.perform(post("/api/auth/users/add-score")
-                        .principal(authMock)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(Map.of("points", 25))))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.score").value(125));
-
-        verify(userRepository).save(any(User.class));
-    }
+    // No test currently exercises a live AuthController endpoint: register/login are commented out
+    // above (pending a rewrite against the current AuthResponse/cookie-based flow), and the gamification
+    // score update this class used to test against a since-removed AuthController.addScore endpoint —
+    // that responsibility now lives in UserController.updateProgress / UserService.updateUserProgress
+    // (PUT /api/v1/users/me/progress), already covered by UserServiceTest.
 }

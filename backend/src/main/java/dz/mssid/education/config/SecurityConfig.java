@@ -66,10 +66,18 @@ public class SecurityConfig {
                         })
                 )
                 .authenticationProvider(authenticationProvider)
-                // SEC-03: rate limiting runs before JWT processing so it also protects the
+                // Register jwtAuthFilter FIRST, anchored to a well-known Spring Security filter class
+                // (UsernamePasswordAuthenticationFilter) — this is what makes Spring's internal
+                // FilterOrderRegistration learn JwtAuthenticationFilter's position in the chain.
+                // rateLimitFilter can then validly reference JwtAuthenticationFilter.class as its own
+                // anchor below. Doing this in the opposite order throws "The Filter class
+                // JwtAuthenticationFilter does not have a registered order" — Spring can't insert
+                // something "before" a custom filter class it hasn't seen registered yet.
+                //
+                // SEC-03: rate limiting still runs before JWT processing so it also protects the
                 // unauthenticated /login brute-force surface, not just already-authenticated calls.
-                .addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class);
 
         return http.build();
     }

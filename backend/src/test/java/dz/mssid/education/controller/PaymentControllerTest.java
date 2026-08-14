@@ -88,6 +88,7 @@ class PaymentControllerTest {
                 .build();
 
         when(paymentService.submitReceipt(eq("student@mssid.dz"), any(ReceiptUploadRequest.class))).thenReturn(receipt);
+        authenticateAs("student@mssid.dz");
 
         mockMvc.perform(post("/api/v1/payments/receipt/upload")
                         .contentType(MediaType.APPLICATION_JSON)
