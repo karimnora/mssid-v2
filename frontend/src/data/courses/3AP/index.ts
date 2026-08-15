@@ -7,6 +7,7 @@ import { HISTORY_GEO_3AP } from './history_geo';
 import { SCIENCE_3AP } from './science';
 import { ISLAMIC_3AP } from './islamic';
 import { CIVICS_3AP } from './civics';
+import { TAMAZIGHT_3AP } from './tamazight';
 
 export const COURSES_3AP: CourseLesson[] = [
   ...MATH_3AP,
@@ -17,4 +18,6 @@ export const COURSES_3AP: CourseLesson[] = [
   ...SCIENCE_3AP,
   ...ISLAMIC_3AP,
   ...CIVICS_3AP,
+  ...TAMAZIGHT_3AP,
 ];
+

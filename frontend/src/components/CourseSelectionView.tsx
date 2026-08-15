@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade, SubjectId, SubjectInfo, CourseLesson } from '../types';
+import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { Card, Badge, Button } from './ui';
 import { Calculator, BookOpen, FlaskConical, Compass, Heart, Award, Languages, Globe, ChevronLeft, Star } from 'lucide-react';
@@ -70,6 +71,8 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   }, [grade]);
 
   // STEP 1 — Matière: giant colorful cards, fixed responsive grid, no horizontal scroll.
+  const visibleSubjects = courseSubjects.filter((s) => isToolAvailableForGrade(s, grade));
+
   if (!selectedSubject) {
     return (
       <div className="space-y-4" dir="rtl">
@@ -77,7 +80,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
           <h2 className="text-lg font-black text-[var(--app-text)]">اختر المادة التي تريد مراجعتها — {grade}</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {courseSubjects.map((subj) => {
+          {visibleSubjects.map((subj) => {
             const IconComp = SUBJECT_ICON_MAP[subj.icon] || BookOpen;
             return (
               <motion.button
