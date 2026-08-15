@@ -5,6 +5,7 @@ const LANGUAGE_OPTIONS = [
   { code: 'ar', label: 'العربية' },
   { code: 'fr', label: 'Français' },
   { code: 'en', label: 'English' },
+  { code: 'ber', label: 'Tamazight (ⵜⵉⴼⵉⵏⴰⵖ)' },
 ] as const;
 
 export const LanguageSwitcher: React.FC = () => {

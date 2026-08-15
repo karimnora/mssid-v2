@@ -21,6 +21,7 @@ const SUBJECT_ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 const SUBJECT_EMOJI: Record<string, string> = {
   math: '📐',
   arabic: '📖',
+  tamazight: 'ⵣ',
   science: '🧪',
   history_geo: '🌍',
   islamic: '🕌',
@@ -31,7 +32,7 @@ const SUBJECT_EMOJI: Record<string, string> = {
 
 // Subjects whose lesson text reads left-to-right — flips only the card's text content, never the
 // surrounding RTL layout (a fully mirrored grid would be unverifiable without a real browser here).
-const LTR_SUBJECTS: SubjectId[] = ['french', 'english'];
+const LTR_SUBJECTS: SubjectId[] = ['french', 'english', 'tamazight'];
 
 const TRIMESTER_LABELS: Record<1 | 2 | 3, string> = {
   1: 'الفصل الأول (Trimestre 1)',

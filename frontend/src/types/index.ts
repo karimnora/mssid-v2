@@ -1,8 +1,13 @@
+import { DidouAvatarConfig } from './ecosystem';
+
+export type Language = 'ar' | 'fr' | 'en' | 'ber';
+
 export type PrimaryGrade = '1AP' | '2AP' | '3AP' | '4AP' | '5AP';
 
 export type SubjectId =
   | 'math'
   | 'arabic'
+  | 'tamazight'
   | 'soroban'
   | 'exams'
   | 'science'
@@ -15,13 +20,20 @@ export type SubjectId =
   | 'arabic_conjugator'
   | 'french_lab'
   | 'english_lab'
+  | 'tamazight_lab'
+  | 'tamazight_curriculum'
   | 'educational_calculator'
   | 'writing_response'
   | 'geometry'
   | 'converter'
   | 'multiplication'
   | 'interactive_video'
-  | 'challenges';
+  | 'challenges'
+  | 'algerian_market'
+  | 'wilayas_map'
+  | 'history_museum'
+  | 'touch_writing'
+  | 'science_lab';
 
 export interface SubjectInfo {
   id: SubjectId;
@@ -611,7 +623,7 @@ export interface CourseLesson {
   rulesAr: string[];
   keyFormulas?: KeyFormula[];
   examplesAr?: { problem: string; solution: string }[];
-  interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas' | 'civics_lab' | 'math_lab' | 'french_dialogue_lab' | 'english_dialogue_lab';
+  interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'touch_writing' | 'tamazight_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas' | 'civics_lab' | 'math_lab' | 'french_dialogue_lab' | 'english_dialogue_lab';
   gameplay_simulation?: GameplaySimulation;
   quiz: QuizQuestion[];
   trimester?: 1 | 2 | 3;
@@ -716,6 +728,7 @@ export interface UserProfile {
   grade: PrimaryGrade;
   avatar: string;
   xp: number;
+  goldCoins?: number;
   level: number;
   streakDays: number;
   lastActiveDate: string;
@@ -728,6 +741,8 @@ export interface UserProfile {
   badgeUnlockedAt: Record<string, string>;
   quizScores: Record<string, number>;
   tashkeelEnabled?: boolean;
+  dailyScreenTimeLimitMinutes?: number;
+  avatarConfig?: DidouAvatarConfig;
 }
 
 export interface SorobanExercise {

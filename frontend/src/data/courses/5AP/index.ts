@@ -8,6 +8,7 @@ import { CIVICS_5AP } from './civics';
 import { FRENCH_5AP } from './french';
 import { ENGLISH_5AP } from './english';
 import { SOROBAN_5AP } from './soroban';
+import { TAMAZIGHT_5AP } from './tamazight';
 
 export const COURSES_5AP: CourseLesson[] = [
   ...MATH_5AP,
@@ -19,4 +20,5 @@ export const COURSES_5AP: CourseLesson[] = [
   ...FRENCH_5AP,
   ...ENGLISH_5AP,
   ...SOROBAN_5AP,
+  ...TAMAZIGHT_5AP,
 ];

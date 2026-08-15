@@ -46,6 +46,17 @@ const ArabicConjugator = lazy(() => import('./components/ArabicConjugator').then
 const FrenchLanguageLab = lazy(() => import('./components/FrenchLanguageLab').then((m) => ({ default: m.FrenchLanguageLab })));
 const EnglishLanguageLab = lazy(() => import('./components/EnglishLanguageLab').then((m) => ({ default: m.EnglishLanguageLab })));
 const MultiplicationTableInteractive = lazy(() => import('./components/MultiplicationTableInteractive').then((m) => ({ default: m.MultiplicationTableInteractive })));
+const AlgerianCurrencyMarket = lazy(() => import('./components/AlgerianCurrencyMarket').then((m) => ({ default: m.AlgerianCurrencyMarket })));
+const WilayasExplorer = lazy(() => import('./components/WilayasExplorer').then((m) => ({ default: m.WilayasExplorer })));
+const AlgerianHistoryMuseum = lazy(() => import('./components/AlgerianHistoryMuseum').then((m) => ({ default: m.AlgerianHistoryMuseum })));
+const ScienceExperimentLab = lazy(() => import('./components/ScienceExperimentLab').then((m) => ({ default: m.ScienceExperimentLab })));
+const TamazightLabInteractive = lazy(() => import('./components/TamazightLabInteractive').then((m) => ({ default: m.TamazightLabInteractive })));
+const TamazightCurriculumViewer = lazy(() => import('./components/TamazightCurriculumViewer').then((m) => ({ default: m.TamazightCurriculumViewer })));
+const TouchWritingStudio = lazy(() => import('./components/TouchWritingStudio').then((m) => ({ default: m.TouchWritingStudio })));
+const DidouDressingRoomModal = lazy(() => import('./components/DidouDressingRoomModal').then((m) => ({ default: m.DidouDressingRoomModal })));
+const HomeworkPinModal = lazy(() => import('./components/HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
+const PrintableWorksheetsGeneratorModal = lazy(() => import('./components/PrintableWorksheetsGeneratorModal').then((m) => ({ default: m.PrintableWorksheetsGeneratorModal })));
+const OfflinePacksManagerModal = lazy(() => import('./components/OfflinePacksManagerModal').then((m) => ({ default: m.OfflinePacksManagerModal })));
 const PreschoolApp = lazy(() => import('./components/preschool/PreschoolApp').then((m) => ({ default: m.PreschoolApp })));
 const AdminConsoleView = lazy(() => import('./components/admin/AdminConsoleView').then((m) => ({ default: m.AdminConsoleView })));
 import { useGuestLimits, MAX_GUEST_LESSONS } from './hooks/useGuestLimits';
@@ -62,7 +73,10 @@ import {
   Sparkles,
   Globe,
   Zap,
-  Trophy
+  Trophy,
+  Store,
+  MapPin,
+  Shield
 } from 'lucide-react';
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
@@ -78,6 +92,9 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Sparkles,
   Globe,
   Trophy,
+  Store,
+  MapPin,
+  Shield,
 };
 
 const THEME_STORAGE_KEY = 'mssid_theme';
@@ -245,6 +262,10 @@ export default function App() {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isDressingRoomOpen, setIsDressingRoomOpen] = useState(false);
+  const [isHomeworkPinOpen, setIsHomeworkPinOpen] = useState(false);
+  const [isPrintablesOpen, setIsPrintablesOpen] = useState(false);
+  const [isOfflinePacksOpen, setIsOfflinePacksOpen] = useState(false);
   // Bumped (never reset) after a genuine success moment — a fully-validated quiz or a newly unlocked
   // badge — so AppRatingPrompt knows when it's a good time to ask, without owning that logic itself.
   const [ratingPromptTrigger, setRatingPromptTrigger] = useState(0);
@@ -548,6 +569,11 @@ export default function App() {
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
         onOpenAdminConsole={() => setIsAdminConsoleActive(true)}
+        onOpenPreschool={() => setIsPreschoolActive(true)}
+        onOpenHomeworkPin={() => setIsHomeworkPinOpen(true)}
+        onOpenOfflinePacks={() => setIsOfflinePacksOpen(true)}
+        onOpenPrintables={() => setIsPrintablesOpen(true)}
+        onOpenDressingRoom={() => setIsDressingRoomOpen(true)}
         onHomeClick={() => {
           setSelectedLesson(null);
           setIsHomeActive(true);
@@ -565,7 +591,48 @@ export default function App() {
             guestViewedCount={guestLimits.viewedCount}
             guestRemaining={guestLimits.remaining}
             maxGuestLessons={MAX_GUEST_LESSONS}
+            goldCoins={userProfile.goldCoins || 150}
             onSelectPole={handleSelectPole}
+            onOpenPreschool={() => setIsPreschoolActive(true)}
+            onOpenMarket={() => {
+              setMainCategory('labs');
+              setSelectedSubject('algerian_market');
+              setIsHomeActive(false);
+            }}
+            onOpenWilayas={() => {
+              setMainCategory('labs');
+              setSelectedSubject('wilayas_map');
+              setIsHomeActive(false);
+            }}
+            onOpenHistoryMuseum={() => {
+              setMainCategory('labs');
+              setSelectedSubject('history_museum');
+              setIsHomeActive(false);
+            }}
+            onOpenScienceLab={() => {
+              setMainCategory('labs');
+              setSelectedSubject('science_lab');
+              setIsHomeActive(false);
+            }}
+            onOpenTamazightLab={() => {
+              setMainCategory('labs');
+              setSelectedSubject('tamazight_lab');
+              setIsHomeActive(false);
+            }}
+            onOpenTamazightCurriculum={() => {
+              setMainCategory('labs');
+              setSelectedSubject('tamazight_curriculum');
+              setIsHomeActive(false);
+            }}
+            onOpenTouchWriting={() => {
+              setMainCategory('labs');
+              setSelectedSubject('touch_writing');
+              setIsHomeActive(false);
+            }}
+            onOpenDressingRoom={() => setIsDressingRoomOpen(true)}
+            onOpenHomeworkPin={() => setIsHomeworkPinOpen(true)}
+            onOpenPrintables={() => setIsPrintablesOpen(true)}
+            onOpenOfflinePacks={() => setIsOfflinePacksOpen(true)}
           />
         ) : (
         <>
@@ -609,7 +676,7 @@ export default function App() {
                       if (tab.id === 'courses' && !COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
                         setSelectedSubject('math');
                       } else if (tab.id === 'labs' && !INTERACTIVE_LABS_LIST.some((s) => s.id === selectedSubject)) {
-                        setSelectedSubject('arabic_conjugator');
+                        setSelectedSubject('algerian_market');
                       } else if (tab.id === 'exams') {
                         setSelectedSubject('exams');
                       } else if (tab.id === 'challenges') {
@@ -708,7 +775,93 @@ export default function App() {
           />
         ) : (
         <Suspense fallback={<LoadingFallback label="جاري تحميل الأداة التفاعلية..." />}>
-          {selectedSubject === 'arabic_conjugator' ? (
+          {selectedSubject === 'algerian_market' ? (
+            <AlgerianCurrencyMarket
+              grade={grade}
+              goldCoins={userProfile.goldCoins || 150}
+              onBack={() => setIsHomeActive(true)}
+              onEarnCoins={(amount) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + amount,
+                  xp: prev.xp + Math.floor(amount / 2),
+                }));
+              }}
+            />
+          ) : selectedSubject === 'wilayas_map' ? (
+            <WilayasExplorer
+              grade={grade}
+              onBack={() => setIsHomeActive(true)}
+              onReward={(coins, xp) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + coins,
+                  xp: prev.xp + xp,
+                }));
+              }}
+            />
+          ) : selectedSubject === 'history_museum' ? (
+            <AlgerianHistoryMuseum
+              grade={grade}
+              onBack={() => setIsHomeActive(true)}
+              onReward={(coins, xp) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + coins,
+                  xp: prev.xp + xp,
+                }));
+              }}
+            />
+          ) : selectedSubject === 'science_lab' ? (
+            <ScienceExperimentLab
+              grade={grade}
+              onBack={() => setIsHomeActive(true)}
+              onReward={(coins, xp) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + coins,
+                  xp: prev.xp + xp,
+                }));
+              }}
+            />
+          ) : selectedSubject === 'tamazight_lab' ? (
+            <TamazightLabInteractive
+              grade={grade}
+              onBack={() => setIsHomeActive(true)}
+              onReward={(coins, xp) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + coins,
+                  xp: prev.xp + xp,
+                }));
+              }}
+            />
+          ) : selectedSubject === 'tamazight_curriculum' ? (
+            <TamazightCurriculumViewer
+              grade={grade}
+              onOpenLab={() => setSelectedSubject('tamazight_lab')}
+              onBack={() => setIsHomeActive(true)}
+              onReward={(coins, xp) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + coins,
+                  xp: prev.xp + xp,
+                }));
+              }}
+            />
+          ) : selectedSubject === 'touch_writing' ? (
+            <TouchWritingStudio
+              grade={grade}
+              onBack={() => setIsHomeActive(true)}
+              onReward={(coins, xp) => {
+                setUserProfile((prev) => ({
+                  ...prev,
+                  goldCoins: (prev.goldCoins || 150) + coins,
+                  xp: prev.xp + xp,
+                }));
+              }}
+            />
+          ) : selectedSubject === 'arabic_conjugator' ? (
             <ArabicConjugator grade={grade} />
           ) : selectedSubject === 'french_lab' ? (
             <FrenchLanguageLab grade={grade} />
@@ -879,6 +1032,46 @@ export default function App() {
         isOpen={isPrivacyModalOpen}
         onClose={() => setIsPrivacyModalOpen(false)}
       />
+
+      <Suspense fallback={null}>
+        {isDressingRoomOpen && (
+          <DidouDressingRoomModal
+            isOpen={isDressingRoomOpen}
+            onClose={() => setIsDressingRoomOpen(false)}
+            userProfile={userProfile}
+            onUpdateProfile={(updated) => setUserProfile(updated)}
+          />
+        )}
+
+        {isHomeworkPinOpen && (
+          <HomeworkPinModal
+            isOpen={isHomeworkPinOpen}
+            onClose={() => setIsHomeworkPinOpen(false)}
+            currentGrade={grade}
+            onStartHomework={(hw) => {
+              setIsHomeworkPinOpen(false);
+              setMainCategory('courses');
+              setSelectedSubject(hw.subject);
+              setIsHomeActive(false);
+            }}
+          />
+        )}
+
+        {isPrintablesOpen && (
+          <PrintableWorksheetsGeneratorModal
+            isOpen={isPrintablesOpen}
+            onClose={() => setIsPrintablesOpen(false)}
+            currentGrade={grade}
+          />
+        )}
+
+        {isOfflinePacksOpen && (
+          <OfflinePacksManagerModal
+            isOpen={isOfflinePacksOpen}
+            onClose={() => setIsOfflinePacksOpen(false)}
+          />
+        )}
+      </Suspense>
 
       {isFeatureEnabled('enablePayments') && (
         <PricingModal

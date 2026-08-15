@@ -17,8 +17,13 @@ export type SubjectId =
   | 'english_lab'
   | 'geometry'
   | 'converter'
+  | 'algerian_market'
+  | 'wilayas_map'
+  | 'tamazight_curriculum'
+  | 'science_lab'
+  | 'history_museum'
+  | 'touch_writing'
   | 'multiplication';
-
 export interface SubjectInfo {
   id: SubjectId;
   nameAr: string;

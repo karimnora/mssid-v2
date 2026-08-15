@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
-import { BookOpen, Trophy, Award, Zap, ShieldCheck, UserCircle2 } from 'lucide-react';
+import { BookOpen, Trophy, Award, Zap, ShieldCheck, UserCircle2, Store, MapPin, KeyRound, Printer, Download, Sparkles, Shield, FlaskConical } from 'lucide-react';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -11,50 +11,89 @@ interface HomeViewProps {
   guestViewedCount: number;
   guestRemaining: number;
   maxGuestLessons: number;
+  goldCoins?: number;
   onSelectPole: (pole: HomePoleId) => void;
+  onOpenPreschool?: () => void;
+  onOpenMarket?: () => void;
+  onOpenWilayas?: () => void;
+  onOpenHistoryMuseum?: () => void;
+  onOpenScienceLab?: () => void;
+  onOpenTamazightLab?: () => void;
+  onOpenTamazightCurriculum?: () => void;
+  onOpenTouchWriting?: () => void;
+  onOpenDressingRoom?: () => void;
+  onOpenHomeworkPin?: () => void;
+  onOpenPrintables?: () => void;
+  onOpenOfflinePacks?: () => void;
 }
 
 const POLES: { id: HomePoleId; icon: React.ReactNode; titleAr: string; descAr: string; gradient: string }[] = [
-  { id: 'courses', icon: <BookOpen className="w-7 h-7" />, titleAr: 'مراجعة الدروس', descAr: 'دروس منهجك الدراسي حسب المستوى', gradient: 'from-emerald-500 to-teal-500' },
-  { id: 'challenges', icon: <Trophy className="w-7 h-7" />, titleAr: 'ساحة التحديات', descAr: 'تحديات سريعة واكسب نقاط الخبرة', gradient: 'from-rose-500 to-orange-500' },
-  { id: 'exams', icon: <Award className="w-7 h-7" />, titleAr: 'الامتحانات الرسمية', descAr: 'مواضيع شهادة التعليم الابتدائي', gradient: 'from-blue-500 to-indigo-500' },
-  { id: 'labs', icon: <Zap className="w-7 h-7" />, titleAr: 'الأدوات التفاعلية', descAr: 'مختبرات ومحاكيات تعليمية ممتعة', gradient: 'from-amber-500 to-yellow-500' },
+  { id: 'courses', icon: <BookOpen className="w-7 h-7" />, titleAr: 'مراجعة الدروس', descAr: 'دروس منهجك الدراسي حسب المستوى', gradient: 'from-emerald-600 to-teal-700' },
+  { id: 'challenges', icon: <Trophy className="w-7 h-7" />, titleAr: 'ساحة التحديات', descAr: 'تحديات سريعة واكسب نقاط الخبرة والدنانير', gradient: 'from-rose-500 to-amber-600' },
+  { id: 'exams', icon: <Award className="w-7 h-7" />, titleAr: 'الامتحانات الرسمية', descAr: 'مواضيع شهادة التعليم الابتدائي 2008-2026', gradient: 'from-blue-600 to-indigo-700' },
+  { id: 'labs', icon: <Zap className="w-7 h-7" />, titleAr: 'المختبرات والأدوات', descAr: 'سوق الدنانير، الـ 58 ولاية، متحف التاريخ، والتجارب العلمية', gradient: 'from-amber-500 to-emerald-600' },
 ];
 
-// Landing dashboard shown before the student picks a pole (replaces the old plain hero-card +
-// tab-bar as the very first thing rendered). Purely presentational/orientation — no data fetching
-// of its own, everything comes from App.tsx (authUser via AuthContext, guest usage via
-// useGuestLimits).
 export const HomeView: React.FC<HomeViewProps> = ({
   authUser,
   userName,
   guestViewedCount,
   guestRemaining,
   maxGuestLessons,
+  goldCoins = 150,
   onSelectPole,
+  onOpenPreschool,
+  onOpenMarket,
+  onOpenWilayas,
+  onOpenHistoryMuseum,
+  onOpenScienceLab,
+  onOpenTamazightLab,
+  onOpenTamazightCurriculum,
+  onOpenTouchWriting,
+  onOpenDressingRoom,
+  onOpenHomeworkPin,
+  onOpenPrintables,
+  onOpenOfflinePacks,
 }) => {
   const isGuest = !authUser;
   const progressPercent = Math.min(100, (guestViewedCount / maxGuestLessons) * 100);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 dir-rtl" dir="rtl">
       {/* Welcome Header */}
-      <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] to-[var(--brand-blue)] text-white shadow-lg space-y-4">
+      <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-white/70">مرحباً بك في منصة مَسِيد</p>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-black">المنظومة التعليمية الجزائرية 🇩🇿</span>
+              <span className="bg-amber-400 text-amber-950 text-[10px] font-black px-2 py-0.5 rounded-full">v2.0 PWA</span>
+            </div>
             <h1 className="text-2xl sm:text-3xl font-black">
-              {isGuest ? 'أهلاً بك أيها الضيف 👋' : `أهلاً بك ${userName || 'يا بطل'} 👋`}
+              {isGuest ? 'أهلاً بك أيها البطل في مَسِيد الجزائري 👋' : `أهلاً بك يا ${userName || 'بطل'} في مَسِيد 👋`}
             </h1>
+            <p className="text-xs text-white/80 font-medium">المنصة الشاملة من التعليم التحضيري (براعم) حتى السنة الخامسة ابتدائي</p>
           </div>
-          <span
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-black ${
-              isGuest ? 'bg-amber-400/90 text-slate-900' : 'bg-white/20 text-white border border-white/30'
-            }`}
-          >
-            {isGuest ? <UserCircle2 className="w-4 h-4" /> : <ShieldCheck className="w-4 h-4" />}
-            <span>{isGuest ? '🔓 وضع الضيف' : '✅ متصل'}</span>
-          </span>
+
+          <div className="flex items-center gap-2">
+            {onOpenDressingRoom && (
+              <button
+                onClick={onOpenDressingRoom}
+                className="flex items-center gap-1.5 bg-amber-400 text-amber-950 px-3.5 py-2 rounded-2xl text-xs font-black shadow-md hover:bg-amber-300 transition-all cursor-pointer"
+              >
+                <span>🦊 خزانة ديدو</span>
+                <span className="bg-amber-950/20 px-1.5 py-0.5 rounded-md text-[11px]">🪙 {goldCoins}</span>
+              </button>
+            )}
+
+            <span
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-black ${
+                isGuest ? 'bg-white/20 text-white border border-white/30' : 'bg-emerald-500/80 text-white'
+              }`}
+            >
+              {isGuest ? <UserCircle2 className="w-4 h-4" /> : <ShieldCheck className="w-4 h-4" />}
+              <span>{isGuest ? 'وضع الضيف' : 'متصل'}</span>
+            </span>
+          </div>
         </div>
 
         {isGuest && (
@@ -75,7 +114,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         )}
       </div>
 
-      {/* 4 Orientation Poles */}
+      {/* 4 Primary Orientation Poles */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {POLES.map((pole) => (
           <motion.button

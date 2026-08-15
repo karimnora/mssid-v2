@@ -26,7 +26,7 @@ export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children
   const [locale, setLocaleState] = useState<LocaleCode>(() => {
     if (typeof window !== 'undefined') {
       const stored = window.localStorage.getItem('mssid_locale');
-      if (stored === 'ar' || stored === 'fr' || stored === 'en') {
+      if (stored === 'ar' || stored === 'fr' || stored === 'en' || stored === 'ber') {
         return stored as LocaleCode;
       }
     }
@@ -40,14 +40,15 @@ export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children
     }
   };
 
-  const localeConfig = locales[locale];
+  // 🛡️ Sécurisation contre undefined : fallback sur la langue par défaut (ar)
+  const localeConfig = locales[locale] || locales[defaultLocale] || locales['ar'];
 
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.dir = localeConfig.direction;
-      document.documentElement.lang = localeConfig.code;
+    if (typeof document !== 'undefined' && localeConfig) {
+      document.documentElement.dir = localeConfig.direction || 'rtl';
+      document.documentElement.lang = localeConfig.code || 'ar';
     }
-  }, [localeConfig.direction, localeConfig.code]);
+  }, [localeConfig]);
 
   const interpolate = (template: string, params?: Record<string, string | number>) => {
     if (!params) return template;
@@ -58,6 +59,7 @@ export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children
   };
 
   const translate = (namespace: keyof LocaleStrings, key: string, params?: Record<string, string | number>) => {
+    if (!localeConfig || !localeConfig.strings) return key;
     const namespaceStrings = localeConfig.strings[namespace] as Record<string, string> | undefined;
     const copy = namespaceStrings?.[key] || key;
     return interpolate(copy, params);
@@ -66,8 +68,8 @@ export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children
   const value = useMemo<LocaleContextValue>(
     () => ({
       locale,
-      direction: localeConfig.direction,
-      strings: localeConfig.strings,
+      direction: localeConfig?.direction || 'rtl',
+      strings: localeConfig?.strings || ({} as LocaleStrings),
       setLocale,
       t: translate,
       useT: translate,
