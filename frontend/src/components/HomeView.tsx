@@ -8,11 +8,12 @@ export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 interface HomeViewProps {
   authUser: AuthUser | null;
   userName: string;
-  guestViewedCount: number;
-  guestRemaining: number;
-  maxGuestLessons: number;
+  guestViewedCount?: number;
+  guestRemaining?: number;
+  maxGuestLessons?: number;
   goldCoins?: number;
   onSelectPole: (pole: HomePoleId) => void;
+  onOpenAuthModal?: () => void;
   onOpenPreschool?: () => void;
   onOpenMarket?: () => void;
   onOpenWilayas?: () => void;
@@ -37,11 +38,9 @@ const POLES: { id: HomePoleId; icon: React.ReactNode; titleAr: string; descAr: s
 export const HomeView: React.FC<HomeViewProps> = ({
   authUser,
   userName,
-  guestViewedCount,
-  guestRemaining,
-  maxGuestLessons,
   goldCoins = 150,
   onSelectPole,
+  onOpenAuthModal,
   onOpenPreschool,
   onOpenMarket,
   onOpenWilayas,
@@ -56,7 +55,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenOfflinePacks,
 }) => {
   const isGuest = !authUser;
-  const progressPercent = Math.min(100, (guestViewedCount / maxGuestLessons) * 100);
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
@@ -91,25 +89,30 @@ export const HomeView: React.FC<HomeViewProps> = ({
               }`}
             >
               {isGuest ? <UserCircle2 className="w-4 h-4" /> : <ShieldCheck className="w-4 h-4" />}
-              <span>{isGuest ? 'وضع الضيف' : 'متصل'}</span>
+              <span>{isGuest ? 'وضع التصفح الحر (ضيف)' : 'متصل'}</span>
             </span>
           </div>
         </div>
 
         {isGuest && (
-          <div className="bg-white/15 rounded-2xl p-4 space-y-2">
-            <div className="flex items-center justify-between text-xs font-bold">
-              <span>🎁 تجربتك المجانية: {guestViewedCount} / {maxGuestLessons} دروس مستهلكة</span>
-              <span>{guestRemaining} متبقية</span>
+          <div className="bg-white/15 backdrop-blur-xs rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs border border-white/20">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-amber-400/20 rounded-xl border border-amber-300/30 text-amber-300 shrink-0 text-lg">
+                💡
+              </div>
+              <div className="space-y-0.5">
+                <p className="font-bold text-white text-xs sm:text-sm">تصفح مجاني وغير محدود لجميع الدروس والمختبرات!</p>
+                <p className="text-white/85 text-[11px]">سجّل حسابك في أي وقت لحفظ تقدمك، نقاطك (XP) وأوسمتك بأمان عند العودة.</p>
+              </div>
             </div>
-            <div className="h-2.5 rounded-full bg-white/20 overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${progressPercent}%` }}
-                transition={{ duration: 0.5 }}
-                className="h-full rounded-full bg-gradient-to-r from-amber-300 to-orange-400"
-              />
-            </div>
+            {onOpenAuthModal && (
+              <button
+                onClick={onOpenAuthModal}
+                className="shrink-0 bg-white hover:bg-amber-50 text-emerald-900 px-4 py-2 rounded-xl font-black text-xs shadow-md active:scale-95 transition-all cursor-pointer"
+              >
+                تسجيل الدخول / إنشاء حساب مجاني 🚀
+              </button>
+            )}
           </div>
         )}
       </div>

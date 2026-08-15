@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useMemo, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
 import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo } from './types';
 import { AuthService } from './services/authService';
@@ -10,6 +10,7 @@ import { LessonViewer } from './components/LessonViewer';
 import { ExamsViewer } from './components/ExamsViewer';
 import { ChallengesArena } from './components/ChallengesArena';
 import { ToolsHubView } from './components/ToolsHubView';
+import { GlobalBackButton, BackNavigationState } from './components/GlobalBackButton';
 import { incrementDailyObjective } from './utils/dailyObjective';
 import { applyBadgeEvaluation } from './utils/badgeEngine';
 import { BadgeUnlockToast } from './components/BadgeUnlockToast';
@@ -226,15 +227,9 @@ export default function App() {
     }
   };
 
-  // Mode Découverte gate: every forward lesson selection (lesson-grid card, or "next lesson" inside
-  // LessonViewer) goes through here. Once authUser exists the limit never applies again — even a
-  // guest who used up all 3 slots gets full access again immediately after creating an account.
+  // Unlimited discovery access: Guests can browse and open all lessons without lock-outs.
+  // Viewing stats are recorded for friendly rewards and profile synchronization.
   const handleSelectLesson = (lesson: CourseLesson) => {
-    if (!authUser && !guestLimits.canAccessLesson(lesson.id)) {
-      sessionStorage.setItem('redirect_after_auth', JSON.stringify({ type: 'lesson', lessonId: lesson.id }));
-      setIsAuthWallOpen(true);
-      return;
-    }
     if (!authUser) {
       guestLimits.recordLessonView(lesson.id);
     }
@@ -524,8 +519,180 @@ export default function App() {
   ];
   const MAIN_CATEGORY_TABS = ALL_MAIN_CATEGORY_TABS.filter((tab) => tab.id !== 'exams' || enableExamSection);
 
+  // --------------------------------------------------------------------------
+  // Global Unified Kid-Friendly Back Navigation Logic & Browser History Integration
+  // --------------------------------------------------------------------------
+  const getSubjectNameAr = (subjId: SubjectId): string => {
+    const found = COURSE_SUBJECTS_LIST.find((s) => s.id === subjId) || INTERACTIVE_LABS_LIST.find((s) => s.id === subjId);
+    return found ? found.nameAr : 'المادة';
+  };
+
+  const navState: BackNavigationState = useMemo(() => {
+    // 1. Modals & Special Fullscreen Overlays
+    if (isAdminConsoleActive) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'تطبيق التلميذ 🎓',
+        destinationType: 'home',
+        onBack: () => setIsAdminConsoleActive(false),
+      };
+    }
+    if (isPreschoolActive) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'منصة الابتدائي 🎒',
+        destinationType: 'home',
+        onBack: () => setIsPreschoolActive(false),
+      };
+    }
+    if (isDressingRoomOpen) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'العودة للتطبيق ↩️',
+        destinationType: 'custom',
+        onBack: () => setIsDressingRoomOpen(false),
+      };
+    }
+    if (isHomeworkPinOpen) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'العودة للتطبيق ↩️',
+        destinationType: 'custom',
+        onBack: () => setIsHomeworkPinOpen(false),
+      };
+    }
+    if (isPrintablesOpen) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'العودة للتطبيق ↩️',
+        destinationType: 'custom',
+        onBack: () => setIsPrintablesOpen(false),
+      };
+    }
+    if (isOfflinePacksOpen) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'العودة للتطبيق ↩️',
+        destinationType: 'custom',
+        onBack: () => setIsOfflinePacksOpen(false),
+      };
+    }
+    if (isAiModalOpen) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'العودة للتطبيق ↩️',
+        destinationType: 'custom',
+        onBack: () => setIsAiModalOpen(false),
+      };
+    }
+    if (isProfileModalOpen) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'العودة للتطبيق ↩️',
+        destinationType: 'custom',
+        onBack: () => setIsProfileModalOpen(false),
+      };
+    }
+
+    // 2. Inside a Lesson
+    if (selectedLesson) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: `دروس ${getSubjectNameAr(selectedSubject)} 📚`,
+        destinationType: 'courses',
+        onBack: () => setSelectedLesson(null),
+        requireConfirmation: false,
+      };
+    }
+
+    // 3. Inside Labs / Tools View (active tool open)
+    if (!isHomeActive && mainCategory === 'labs' && selectedSubject !== 'algerian_market') {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'فهرس الأدوات والمختبرات ⚡',
+        destinationType: 'labs',
+        onBack: () => setSelectedSubject('algerian_market'),
+      };
+    }
+
+    // 4. Inside Courses selection, Exams, or Challenges
+    if (!isHomeActive) {
+      return {
+        canGoBack: true,
+        destinationLabelAr: 'الصفحة الرئيسية 🏠',
+        destinationType: 'home',
+        onBack: () => {
+          setIsHomeActive(true);
+          setSelectedLesson(null);
+        },
+      };
+    }
+
+    // 5. At Root Home Dashboard
+    return {
+      canGoBack: false,
+      destinationLabelAr: '',
+      destinationType: 'home',
+      onBack: () => {},
+    };
+  }, [
+    isAdminConsoleActive,
+    isPreschoolActive,
+    isDressingRoomOpen,
+    isHomeworkPinOpen,
+    isPrintablesOpen,
+    isOfflinePacksOpen,
+    isAiModalOpen,
+    isProfileModalOpen,
+    selectedLesson,
+    selectedSubject,
+    isHomeActive,
+    mainCategory,
+  ]);
+
+  // Sync state to browser history so back button on devices works naturally
+  useEffect(() => {
+    const currentState = {
+      isHomeActive,
+      mainCategory,
+      selectedSubject,
+      selectedLessonId: selectedLesson?.id || null,
+      isPreschoolActive,
+      isAdminConsoleActive,
+    };
+    window.history.pushState(currentState, '');
+
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state) {
+        const s = event.state;
+        setIsPreschoolActive(Boolean(s.isPreschoolActive));
+        setIsAdminConsoleActive(Boolean(s.isAdminConsoleActive));
+        setIsHomeActive(s.isHomeActive !== undefined ? s.isHomeActive : true);
+        if (s.mainCategory) setMainCategory(s.mainCategory);
+        if (s.selectedSubject) setSelectedSubject(s.selectedSubject);
+        if (s.selectedLessonId) {
+          const l = COURSES_DATA.find((item) => item.id === s.selectedLessonId);
+          setSelectedLesson(l || null);
+        } else {
+          setSelectedLesson(null);
+        }
+      } else {
+        setIsHomeActive(true);
+        setSelectedLesson(null);
+        setIsPreschoolActive(false);
+        setIsAdminConsoleActive(false);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isHomeActive, mainCategory, selectedSubject, selectedLesson?.id, isPreschoolActive, isAdminConsoleActive]);
+
   return (
     <div className="min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir="rtl">
+
+      {/* Global Kid-Friendly Back Navigation Button */}
+      <GlobalBackButton navState={navState} />
 
       {/* PWA Mobile Install Banner for Android & iOS */}
       <SeoHead />
@@ -588,11 +755,9 @@ export default function App() {
           <HomeView
             authUser={authUser}
             userName={userProfile.name}
-            guestViewedCount={guestLimits.viewedCount}
-            guestRemaining={guestLimits.remaining}
-            maxGuestLessons={MAX_GUEST_LESSONS}
             goldCoins={userProfile.goldCoins || 150}
             onSelectPole={handleSelectPole}
+            onOpenAuthModal={() => setIsAuthModalOpen(true)}
             onOpenPreschool={() => setIsPreschoolActive(true)}
             onOpenMarket={() => {
               setMainCategory('labs');
@@ -774,144 +939,188 @@ export default function App() {
             }}
           />
         ) : (
-        <Suspense fallback={<LoadingFallback label="جاري تحميل الأداة التفاعلية..." />}>
-          {selectedSubject === 'algerian_market' ? (
-            <AlgerianCurrencyMarket
-              grade={grade}
-              goldCoins={userProfile.goldCoins || 150}
-              onBack={() => setIsHomeActive(true)}
-              onEarnCoins={(amount) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + amount,
-                  xp: prev.xp + Math.floor(amount / 2),
-                }));
-              }}
-            />
-          ) : selectedSubject === 'wilayas_map' ? (
-            <WilayasExplorer
-              grade={grade}
-              onBack={() => setIsHomeActive(true)}
-              onReward={(coins, xp) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + coins,
-                  xp: prev.xp + xp,
-                }));
-              }}
-            />
-          ) : selectedSubject === 'history_museum' ? (
-            <AlgerianHistoryMuseum
-              grade={grade}
-              onBack={() => setIsHomeActive(true)}
-              onReward={(coins, xp) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + coins,
-                  xp: prev.xp + xp,
-                }));
-              }}
-            />
-          ) : selectedSubject === 'science_lab' ? (
-            <ScienceExperimentLab
-              grade={grade}
-              onBack={() => setIsHomeActive(true)}
-              onReward={(coins, xp) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + coins,
-                  xp: prev.xp + xp,
-                }));
-              }}
-            />
-          ) : selectedSubject === 'tamazight_lab' ? (
-            <TamazightLabInteractive
-              grade={grade}
-              onBack={() => setIsHomeActive(true)}
-              onReward={(coins, xp) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + coins,
-                  xp: prev.xp + xp,
-                }));
-              }}
-            />
-          ) : selectedSubject === 'tamazight_curriculum' ? (
-            <TamazightCurriculumViewer
-              grade={grade}
-              onOpenLab={() => setSelectedSubject('tamazight_lab')}
-              onBack={() => setIsHomeActive(true)}
-              onReward={(coins, xp) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + coins,
-                  xp: prev.xp + xp,
-                }));
-              }}
-            />
-          ) : selectedSubject === 'touch_writing' ? (
-            <TouchWritingStudio
-              grade={grade}
-              onBack={() => setIsHomeActive(true)}
-              onReward={(coins, xp) => {
-                setUserProfile((prev) => ({
-                  ...prev,
-                  goldCoins: (prev.goldCoins || 150) + coins,
-                  xp: prev.xp + xp,
-                }));
-              }}
-            />
-          ) : selectedSubject === 'arabic_conjugator' ? (
-            <ArabicConjugator grade={grade} />
-          ) : selectedSubject === 'french_lab' ? (
-            <FrenchLanguageLab grade={grade} />
-          ) : selectedSubject === 'english_lab' ? (
-            <EnglishLanguageLab grade={grade} />
-          ) : selectedSubject === 'educational_calculator' ? (
-            <EducationalCalculator />
-          ) : selectedSubject === 'soroban' ? (
-            <SorobanInteractive grade={grade} />
-          ) : selectedSubject === 'electricity' ? (
-            <ElectricityLabInteractive />
-          ) : selectedSubject === 'geometry' ? (
-            <GeometryVisualizer grade={grade} theme={headerTheme} />
-          ) : selectedSubject === 'converter' ? (
-            <UnitConverter grade={grade} theme={headerTheme} />
-          ) : selectedSubject === 'multiplication' ? (
-            <MultiplicationTableInteractive grade={grade} />
-          ) : selectedSubject === 'exams' ? (
-            <ExamsViewer
-              grade={grade}
-              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-              completedExamIds={userProfile.completedExamIds}
-              onExamComplete={handleCompleteExam}
-            />
-          ) : selectedSubject === 'challenges' ? (
-            <ChallengesArena
-              grade={grade}
-              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-              onChallengeComplete={handleCompleteChallenge}
-            />
-          ) : selectedLesson ? (
-            <LessonViewer
-              lesson={selectedLesson}
-              allLessons={currentLessons}
-              onSelectLesson={handleSelectLesson}
-              onBack={() => setSelectedLesson(null)}
-              onCompleteQuiz={handleCompleteQuiz}
-              quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(selectedLesson.id)}
-              onQuizFullyValidated={handleQuizFullyValidated}
-              grade={grade}
-              subjectId={selectedSubject}
-              trimester={selectedTrimester}
-              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-              onHomeClick={() => {
-                setSelectedLesson(null);
-                setMainCategory('courses');
-              }}
-            />
-          ) : null}
-        </Suspense>
+        <div id="active-interactive-tool-section" className="scroll-mt-24 transition-all duration-300 relative">
+          {/* Active Lab Header Notice with attention pulse & quick back button */}
+          {mainCategory === 'labs' && (
+            <motion.div
+              key={`tool-header-${selectedSubject}`}
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="mb-4 p-3.5 bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/5 border-2 border-amber-400/40 rounded-2xl flex items-center justify-between flex-wrap gap-2 shadow-xs ring-4 ring-amber-400/15"
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center text-sm shadow-xs animate-bounce">
+                  🎯
+                </span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-black text-[var(--app-text)]">
+                      {INTERACTIVE_LABS_LIST.find((t) => t.id === selectedSubject)?.nameAr || 'المختبر التفاعلي'}
+                    </span>
+                    <span className="bg-emerald-500/20 text-emerald-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                      جاهزة للتجربة والتعلم ✨
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-[var(--app-text-muted)]">
+                    تم فتح هذه الأداة بنجاح، استمتع بالتجربة التفاعلية!
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  const hub = document.getElementById('tools-hub-container');
+                  if (hub) {
+                    hub.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-[var(--app-card-bg)] text-[var(--app-text)] hover:bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shadow-xs transition-all cursor-pointer hover:scale-105"
+              >
+                <span>⬆️ اختيار أداة أخرى</span>
+              </button>
+            </motion.div>
+          )}
+
+          <Suspense fallback={<LoadingFallback label="جاري تحميل الأداة التفاعلية..." />}>
+            {selectedSubject === 'algerian_market' ? (
+              <AlgerianCurrencyMarket
+                grade={grade}
+                goldCoins={userProfile.goldCoins || 150}
+                onBack={() => setIsHomeActive(true)}
+                onEarnCoins={(amount) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + amount,
+                    xp: prev.xp + Math.floor(amount / 2),
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'wilayas_map' ? (
+              <WilayasExplorer
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'history_museum' ? (
+              <AlgerianHistoryMuseum
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'science_lab' ? (
+              <ScienceExperimentLab
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'tamazight_lab' ? (
+              <TamazightLabInteractive
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'tamazight_curriculum' ? (
+              <TamazightCurriculumViewer
+                grade={grade}
+                onOpenLab={() => setSelectedSubject('tamazight_lab')}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'touch_writing' ? (
+              <TouchWritingStudio
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'arabic_conjugator' ? (
+              <ArabicConjugator grade={grade} />
+            ) : selectedSubject === 'french_lab' ? (
+              <FrenchLanguageLab grade={grade} />
+            ) : selectedSubject === 'english_lab' ? (
+              <EnglishLanguageLab grade={grade} />
+            ) : selectedSubject === 'educational_calculator' ? (
+              <EducationalCalculator />
+            ) : selectedSubject === 'soroban' ? (
+              <SorobanInteractive grade={grade} />
+            ) : selectedSubject === 'electricity' ? (
+              <ElectricityLabInteractive />
+            ) : selectedSubject === 'geometry' ? (
+              <GeometryVisualizer grade={grade} theme={headerTheme} />
+            ) : selectedSubject === 'converter' ? (
+              <UnitConverter grade={grade} theme={headerTheme} />
+            ) : selectedSubject === 'multiplication' ? (
+              <MultiplicationTableInteractive grade={grade} />
+            ) : selectedSubject === 'exams' ? (
+              <ExamsViewer
+                grade={grade}
+                tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+                completedExamIds={userProfile.completedExamIds}
+                onExamComplete={handleCompleteExam}
+              />
+            ) : selectedSubject === 'challenges' ? (
+              <ChallengesArena
+                grade={grade}
+                tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+                onChallengeComplete={handleCompleteChallenge}
+              />
+            ) : selectedLesson ? (
+              <LessonViewer
+                lesson={selectedLesson}
+                allLessons={currentLessons}
+                onSelectLesson={handleSelectLesson}
+                onBack={() => setSelectedLesson(null)}
+                onCompleteQuiz={handleCompleteQuiz}
+                quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(selectedLesson.id)}
+                onQuizFullyValidated={handleQuizFullyValidated}
+                grade={grade}
+                subjectId={selectedSubject}
+                trimester={selectedTrimester}
+                tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+                onHomeClick={() => {
+                  setSelectedLesson(null);
+                  setMainCategory('courses');
+                }}
+              />
+            ) : null}
+          </Suspense>
+        </div>
         )}
         </>
         )}

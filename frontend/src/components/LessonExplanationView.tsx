@@ -12,9 +12,25 @@ interface LessonExplanationViewProps {
   lesson: CourseLesson;
   tashkeelEnabled?: boolean;
   onProceedToSummary?: () => void;
+  availableSteps?: {
+    id: string;
+    labelAr: string;
+    icon?: React.ReactNode;
+    activeClass?: string;
+    badgeColor?: string;
+  }[];
+  activeStepId?: string;
+  onSelectStep?: (stepId: string) => void;
 }
 
-export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ lesson, tashkeelEnabled = true, onProceedToSummary }) => {
+export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
+  lesson,
+  tashkeelEnabled = true,
+  onProceedToSummary,
+  availableSteps,
+  activeStepId,
+  onSelectStep,
+}) => {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
   const [interactiveMode, setInteractiveMode] = useState<'real_world' | 'step_by_step' | 'interactive_demo'>('real_world');
   const [demoValue, setDemoValue] = useState<number>(10);
@@ -704,19 +720,29 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({ le
         </div>
       )}
 
-      {/* PROCEED TO SUMMARY & RULES BUTTON */}
+      {/* PROCEED TO NEXT STEP ACTION CARD */}
       {onProceedToSummary && (
-        <div className="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between flex-wrap gap-3 shadow-xs">
-          <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>ممتاز! الآن بعد استيعاب الشرح والتبسيط المفاهيمي، أنت جاهز للقواعد الذهبية.</span>
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center justify-between flex-wrap gap-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-black text-sm shrink-0 border border-emerald-500/20">
+              <span dir="ltr">1 / {availableSteps?.length || 6}</span>
+            </div>
+            <div>
+              <div className="flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>أحسنت! أتممت قراءة وفهم هذا الشرح التمهيدي 🌟</span>
+              </div>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-bold block mt-0.5">
+                المرحلة 1 من {availableSteps?.length || 6} • خطوتك التالية: الملخص والقواعد
+              </span>
+            </div>
           </div>
 
           <button
             onClick={onProceedToSummary}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl transition-all cursor-pointer shadow-xs flex items-center gap-2 active:scale-95"
+            className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-2xl transition-all cursor-pointer shadow-md flex items-center gap-2.5"
           >
-            <span>الانتقال للملخص والقواعد</span>
+            <span>المرحلة الموالية: الملخص والقواعد</span>
             <ArrowLeft className="w-4 h-4" />
           </button>
         </div>

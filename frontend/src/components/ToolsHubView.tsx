@@ -84,8 +84,26 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
   // Filter groups
   const filteredGroups = CATEGORY_GROUPS.filter((g) => activeFilterCategory === 'all' || g.key === activeFilterCategory);
 
+  const handleSelectAndScroll = (toolId: SubjectId) => {
+    onSelectTool(toolId);
+    // Smooth auto-scroll down to the interactive tool container
+    setTimeout(() => {
+      const targetElement = document.getElementById('active-interactive-tool-section');
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 80);
+  };
+
+  const handleScrollToTool = () => {
+    const targetElement = document.getElementById('active-interactive-tool-section');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <div className="space-y-4 dir-rtl" dir="rtl">
+    <div id="tools-hub-container" className="space-y-4 dir-rtl scroll-mt-20" dir="rtl">
       {/* Sticky / Compact Tool Navigation Bar */}
       <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-3 sm:p-4 shadow-sm space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-2">
@@ -97,8 +115,20 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
               <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
                 المختبرات والأدوات التفاعلية ({availableTools.length})
               </h2>
-              <p className="text-[11px] text-[var(--app-text-muted)]">
-                {currentSelectedTool ? `الأداة المفتوحة حالياً: ${currentSelectedTool.nameAr}` : 'اختر أداة لبدء التجربة والتعلم التفاعلي'}
+              <p className="text-[11px] text-[var(--app-text-muted)] flex items-center gap-2 flex-wrap">
+                {currentSelectedTool ? (
+                  <>
+                    <span>الأداة المفتوحة حالياً: <strong className="text-[var(--app-text)] font-black">{currentSelectedTool.nameAr}</strong></span>
+                    <button
+                      onClick={handleScrollToTool}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 hover:text-amber-700 bg-amber-500/10 px-2.5 py-0.5 rounded-lg transition-colors cursor-pointer"
+                    >
+                      <span>انتقل إليها مباشرة 👇</span>
+                    </button>
+                  </>
+                ) : (
+                  'اختر أداة لبدء التجربة والتعلم التفاعلي'
+                )}
               </p>
             </div>
           </div>
@@ -122,10 +152,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
             return (
               <button
                 key={tool.id}
-                onClick={() => {
-                  onSelectTool(tool.id);
-                  // On mobile, keep it accessible
-                }}
+                onClick={() => handleSelectAndScroll(tool.id)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-2xl text-xs font-black transition-all shrink-0 cursor-pointer ${
                   isSelected
                     ? `bg-gradient-to-r ${tool.color} text-white shadow-md ring-2 ring-amber-400 scale-[1.03]`
@@ -196,9 +223,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
                       return (
                         <button
                           key={tool.id}
-                          onClick={() => {
-                            onSelectTool(tool.id);
-                          }}
+                          onClick={() => handleSelectAndScroll(tool.id)}
                           className={`rounded-2xl p-4 text-right text-white shadow-md cursor-pointer bg-gradient-to-br ${tool.color} flex flex-col justify-between gap-3 transition-all relative overflow-hidden group ${
                             isActive
                               ? 'ring-4 ring-amber-300 scale-[1.02] shadow-xl'

@@ -29,7 +29,7 @@ const IslamicEducationInteractive = lazy(() => import('./IslamicEducationInterac
 const CivicsInteractive = lazy(() => import('./CivicsInteractive').then((m) => ({ default: m.CivicsInteractive })));
 const MathInteractive = lazy(() => import('./MathInteractive').then((m) => ({ default: m.MathInteractive })));
 const LanguageLabInteractive = lazy(() => import('./LanguageLabInteractive').then((m) => ({ default: m.LanguageLabInteractive })));
-import { BookOpen, CheckCircle2, Trophy, ArrowRight, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck, Printer } from 'lucide-react';
+import { BookOpen, CheckCircle2, Trophy, ArrowRight, ArrowLeft, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck, Printer, Lock } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface LessonViewerProps {
@@ -50,16 +50,6 @@ interface LessonViewerProps {
 }
 
 type TabId = 'explanation' | 'content' | 'practice' | 'interactive' | 'gameplay' | 'quiz' | 'evaluation';
-
-// The 4 core conceptual stages of a lesson, shown as a bottom step-by-step wizard bar (separate
-// from the finer-grained tab pills above) so a student always has an explicit "what's next" path —
-// especially useful for the younger grades who need a linear, predictable structure.
-const WIZARD_STEPS: { id: TabId; icon: string; labelAr: string }[] = [
-  { id: 'explanation', icon: '📖', labelAr: 'المقدمة والشرح' },
-  { id: 'content', icon: '📝', labelAr: 'الملخص والقواعد' },
-  { id: 'practice', icon: '💡', labelAr: 'أمثلة وتطبيقات' },
-  { id: 'quiz', icon: '🧪', labelAr: 'الاختبار التفاعلي' },
-];
 
 // The 4-tier practice progression requested for lesson depth: level 1-4 on each ProgressiveExercise
 // maps directly to one of these tiers (level 5 reserved for an optional extra-challenge exercise,
@@ -308,6 +298,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setAwardedQuizIds(new Set());
     setRecentAnswerId(null);
     setSelectedExampleTier(1);
+    setActiveTab('explanation');
     setPracticeAnswers({});
     setPracticeChecked({});
     setPracticeCorrect({});
@@ -372,21 +363,100 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     }
   };
 
-  // Bottom wizard bar: which of the 4 core steps actually has content (avoids sending a student to
-  // a blank screen), and where the currently active tab sits in that sequence.
-  const wizardStepHasContent: Record<TabId, boolean> = {
-    explanation: true,
-    content: true,
-    practice: !!(lesson.progressiveExercises && lesson.progressiveExercises.length > 0),
-    interactive: hasRenderableInteractiveTool,
-    gameplay: !!lesson.gameplay_simulation,
-    evaluation: evaluationExercises.length > 0,
-    quiz: lesson.quiz.length > 0,
-  };
-  const currentWizardIndex = Math.max(0, WIZARD_STEPS.findIndex((s) => s.id === activeTab));
-  const goToWizardStep = (index: number) => {
-    const clamped = Math.max(0, Math.min(WIZARD_STEPS.length - 1, index));
-    setActiveTab(WIZARD_STEPS[clamped].id);
+  // Dynamically compute the exact steps available for this lesson (matching the header perfectly)
+  const availableSteps = React.useMemo(() => {
+    const steps: {
+      id: TabId;
+      labelAr: string;
+      icon: React.ReactNode;
+      activeClass: string;
+      badgeColor: string;
+    }[] = [
+      {
+        id: 'explanation',
+        labelAr: 'شرح الدرس والتطبيقات',
+        icon: <Glasses className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-blue-400',
+        badgeColor: 'from-blue-600 to-indigo-600',
+      },
+      {
+        id: 'content',
+        labelAr: 'الملخص والقواعد',
+        icon: <BookOpen className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-emerald)] text-white ring-2 ring-emerald-400',
+        badgeColor: 'from-emerald-600 to-teal-700',
+      },
+    ];
+
+    if (hasRenderableInteractiveTool) {
+      steps.push({
+        id: 'interactive',
+        labelAr: 'الأداة التفاعلية المخصصة',
+        icon: <Sparkles className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-amber)] text-slate-950 ring-2 ring-amber-400',
+        badgeColor: 'from-amber-500 to-orange-600',
+      });
+    }
+
+    if (lesson.progressiveExercises && lesson.progressiveExercises.length > 0) {
+      steps.push({
+        id: 'practice',
+        labelAr: `أتدرب (${lesson.progressiveExercises.length})`,
+        icon: <Award className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-amber)] text-slate-950 ring-2 ring-amber-400',
+        badgeColor: 'from-amber-500 to-yellow-600',
+      });
+    }
+
+    if (lesson.gameplay_simulation) {
+      steps.push({
+        id: 'gameplay',
+        labelAr: 'لعبة المحاكاة التفاعلية',
+        icon: <Gamepad2 className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-sky-400',
+        badgeColor: 'from-purple-600 to-indigo-600',
+      });
+    }
+
+    if (evaluationExercises.length > 0) {
+      steps.push({
+        id: 'evaluation',
+        labelAr: `التقييم النهائي (${evaluationExercises.length})`,
+        icon: <ClipboardCheck className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-coral)] text-white ring-2 ring-rose-400',
+        badgeColor: 'from-rose-500 to-pink-600',
+      });
+    }
+
+    if (lesson.quiz.length > 0) {
+      steps.push({
+        id: 'quiz',
+        labelAr: `الاختبار التفاعلي (${lesson.quiz.length})`,
+        icon: <Trophy className="w-4 h-4" />,
+        activeClass: 'bg-[var(--brand-emerald)] text-white ring-2 ring-emerald-400',
+        badgeColor: 'from-emerald-500 to-teal-600',
+      });
+    }
+
+    return steps;
+  }, [hasRenderableInteractiveTool, lesson.progressiveExercises, lesson.gameplay_simulation, evaluationExercises.length, lesson.quiz.length]);
+
+  const currentStepIndex = Math.max(0, availableSteps.findIndex((s) => s.id === activeTab));
+  const isLastStep = currentStepIndex >= availableSteps.length - 1;
+  const nextStep = !isLastStep ? availableSteps[currentStepIndex + 1] : null;
+  const prevStep = currentStepIndex > 0 ? availableSteps[currentStepIndex - 1] : null;
+  
+  const goToStep = (index: number) => {
+    const clamped = Math.max(0, Math.min(availableSteps.length - 1, index));
+    if (availableSteps[clamped]) {
+      setActiveTab(availableSteps[clamped].id);
+      setTimeout(() => {
+        const topEl = document.getElementById('lesson-active-step-container');
+        if (topEl) {
+          topEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    }
   };
 
   const handleResetQuiz = () => {
@@ -459,13 +529,19 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               </Button>
 
               <Button
-                variant="info"
+                variant={isLastStep ? 'info' : 'outline'}
                 size="sm"
-                icon={<ChevronLeft className="w-4 h-4" />}
+                icon={isLastStep ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
                 iconPosition="end"
-                disabled={!nextLesson}
-                onClick={() => nextLesson && onSelectLesson?.(nextLesson)}
-                title={nextLesson ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}` : 'لا يوجد درس تالي'}
+                disabled={!nextLesson || !isLastStep}
+                onClick={() => isLastStep && nextLesson && onSelectLesson?.(nextLesson)}
+                title={
+                  !isLastStep
+                    ? 'أكمل جميع مراحل هذا الدرس للتمكن من الانتقال للدرس التالي 🔒'
+                    : nextLesson
+                    ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}`
+                    : 'لا يوجد درس تالي'
+                }
               >
                 <span className="hidden sm:inline">الدرس التالي</span>
                 <span className="sm:hidden">التالي</span>
@@ -552,39 +628,59 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </Card>
       )}
 
-      {/* Section Sub-Tabs */}
-      <div className="flex items-center bg-[var(--app-card-subtle)] p-1 rounded-2xl border border-[var(--app-card-border)] w-fit text-xs font-bold overflow-x-auto max-w-full">
-        <TabPill active={activeTab === 'explanation'} activeClass="bg-[var(--brand-blue)] text-white" icon={<Glasses className="w-3.5 h-3.5" />} onClick={() => setActiveTab('explanation')}>
-          شرح الدرس والتطبيقات
-        </TabPill>
-        <TabPill active={activeTab === 'content'} activeClass="bg-[var(--app-card-bg)] text-[var(--app-text)] shadow-xs" icon={<BookOpen className="w-3.5 h-3.5" />} onClick={() => setActiveTab('content')}>
-          الملخص والقواعد
-        </TabPill>
-        {hasRenderableInteractiveTool && (
-          <TabPill active={activeTab === 'interactive'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Sparkles className="w-3.5 h-3.5" />} onClick={() => setActiveTab('interactive')}>
-            الأداة التفاعلية المخصصة
-          </TabPill>
-        )}
-        {lesson.progressiveExercises && lesson.progressiveExercises.length > 0 && (
-          <TabPill active={activeTab === 'practice'} activeClass="bg-[var(--brand-amber)] text-slate-950" icon={<Award className="w-3.5 h-3.5" />} onClick={() => setActiveTab('practice')}>
-            أتدرب ({lesson.progressiveExercises.length})
-          </TabPill>
-        )}
-        {lesson.gameplay_simulation && (
-          <TabPill active={activeTab === 'gameplay'} activeClass="bg-[var(--brand-blue)] text-white" icon={<Gamepad2 className="w-3.5 h-3.5" />} onClick={() => setActiveTab('gameplay')}>
-            لعبة المحاكاة التفاعلية
-          </TabPill>
-        )}
-        {evaluationExercises.length > 0 && (
-          <TabPill active={activeTab === 'evaluation'} activeClass="bg-[var(--brand-coral)] text-white" icon={<ClipboardCheck className="w-3.5 h-3.5" />} onClick={() => setActiveTab('evaluation')}>
-            التقييم النهائي ({evaluationExercises.length})
-          </TabPill>
-        )}
-        {lesson.quiz.length > 0 && (
-          <TabPill active={activeTab === 'quiz'} activeClass="bg-[var(--brand-emerald)] text-white" icon={<Trophy className="w-3.5 h-3.5" />} onClick={() => setActiveTab('quiz')}>
-            الاختبار التفاعلي ({lesson.quiz.length})
-          </TabPill>
-        )}
+      {/* 4. Unified Step Navigation Header with pastilles and progress */}
+      <div id="lesson-active-step-container" className="scroll-mt-20 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl p-3.5 sm:p-4 shadow-sm space-y-3">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-2.5">
+            <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-emerald-600 text-white flex items-center justify-center font-black text-sm shadow-xs">
+              {currentStepIndex + 1}
+            </span>
+            <div>
+              <span className="text-[10px] sm:text-xs font-bold text-[var(--app-text-muted)] block">
+                مراحل الدرس خطوة بخطوة 🎯
+              </span>
+              <h2 className="text-xs sm:text-sm font-black text-[var(--app-text)]">
+                {availableSteps[currentStepIndex]?.labelAr || 'مرحلة الدرس'}
+              </h2>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
+              الخطوة <span dir="ltr">{currentStepIndex + 1} / {availableSteps.length}</span>
+            </span>
+          </div>
+        </div>
+
+        {/* Interactive Step Pastilles */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1">
+          {availableSteps.map((step, idx) => {
+            const isActive = step.id === activeTab;
+            const isCompleted = idx < currentStepIndex;
+            return (
+              <button
+                key={step.id}
+                onClick={() => goToStep(idx)}
+                className={`flex items-center justify-between gap-2 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
+                  isActive
+                    ? `${step.activeClass} shadow-md scale-[1.02]`
+                    : isCompleted
+                    ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20'
+                    : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                }`}
+              >
+                <div className="flex items-center gap-1.5 truncate">
+                  <span className="shrink-0">{isCompleted ? '✅' : step.icon}</span>
+                  <span className="truncate">{step.labelAr}</span>
+                </div>
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                  isActive ? 'bg-white/25 text-white' : isCompleted ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300' : 'bg-black/5 dark:bg-white/10'
+                }`}>
+                  {idx + 1}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Tab content — cross-fades/slides between sections on every switch */}
@@ -601,6 +697,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <LessonExplanationView
               lesson={lesson}
               tashkeelEnabled={tashkeelEnabled}
+              availableSteps={availableSteps}
+              activeStepId={activeTab}
+              onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
               onProceedToSummary={() => setActiveTab('content')}
             />
           )}
@@ -1373,116 +1472,140 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </motion.div>
       </AnimatePresence>
 
-      {/* Step-by-step wizard bar — a simplified, always-visible linear path through the 4 core lesson
-          stages (Introduction → Résumé → Exemples → Quiz), complementary to the finer-grained tab
-          pills above. Steps with no real content for this lesson are shown but disabled rather than
-          hidden, so the 4-step structure always stays visible and predictable. */}
-      <Card padding="none" className="p-3 sm:p-4 space-y-3">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {WIZARD_STEPS.map((step) => {
-            const isActive = activeTab === step.id;
-            const hasContent = wizardStepHasContent[step.id];
-            return (
+      {/* Bottom Step-by-Step Lesson Progress & Navigation Footer */}
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-4 sm:p-5 shadow-sm space-y-4">
+        {/* Step Progress Info Bar */}
+        <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-black text-xs sm:text-sm shrink-0 border border-emerald-500/20">
+              <span dir="ltr">{currentStepIndex + 1} / {availableSteps.length}</span>
+            </div>
+            <div>
+              <span className="text-[var(--app-text)] font-extrabold text-xs sm:text-sm block">
+                المرحلة {currentStepIndex + 1} من {availableSteps.length}: {availableSteps[currentStepIndex]?.labelAr} 🎯
+              </span>
+              <span className="text-[var(--app-text-muted)] text-[11px] font-bold">
+                {!isLastStep
+                  ? `الخطوة التالية: ${nextStep?.labelAr} (بقي ${availableSteps.length - (currentStepIndex + 1)} مراحل)`
+                  : 'أحسنت يا بطل! أتممت جميع مراحل هذا الدرس 🏆'}
+              </span>
+            </div>
+          </div>
+
+          {/* Child-friendly Step Progress Dots */}
+          <div className="flex items-center gap-1.5">
+            {availableSteps.map((step, idx) => {
+              const isCurrent = idx === currentStepIndex;
+              const isDone = idx < currentStepIndex;
+              return (
+                <button
+                  key={step.id}
+                  onClick={() => goToStep(idx)}
+                  className={`w-7 h-7 rounded-xl flex items-center justify-center text-[10px] font-black transition-all cursor-pointer border ${
+                    isCurrent
+                      ? 'bg-emerald-600 text-white border-emerald-500 shadow-xs ring-2 ring-emerald-300/60 scale-105'
+                      : isDone
+                      ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+                      : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400'
+                  }`}
+                  title={`${step.labelAr} (${idx + 1}/${availableSteps.length})`}
+                >
+                  {isDone ? '✓' : idx + 1}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Dynamic Action Controls */}
+        {!isLastStep ? (
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            {/* Previous Step or Lesson */}
+            {currentStepIndex > 0 ? (
               <button
-                key={step.id}
-                onClick={() => hasContent && setActiveTab(step.id)}
-                disabled={!hasContent}
-                className={`min-h-14 rounded-2xl px-2 py-2 flex flex-col items-center justify-center gap-1 text-center transition-all border ${
-                  isActive
-                    ? 'bg-[var(--brand-emerald)] text-white border-[var(--brand-emerald-dark)] shadow-md font-black'
-                    : hasContent
-                    ? 'bg-[var(--app-card-subtle)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-[var(--brand-emerald)]/60 cursor-pointer'
-                    : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)] opacity-40 cursor-not-allowed'
-                }`}
+                onClick={() => goToStep(currentStepIndex - 1)}
+                className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
               >
-                <span className="text-lg leading-none">{step.icon}</span>
-                <span className="text-[10px] sm:text-xs font-bold leading-tight">{step.labelAr}</span>
+                <ChevronRight className="w-4 h-4 text-slate-500" />
+                <span>السابق: {prevStep?.labelAr}</span>
               </button>
-            );
-          })}
-        </div>
-        <div className="flex items-center justify-between gap-2 pt-2 border-t border-[var(--app-card-border)]">
-          <Button
-            variant="outline"
-            size="sm"
-            icon={<ChevronRight className="w-4 h-4" />}
-            disabled={currentWizardIndex <= 0}
-            onClick={() => goToWizardStep(currentWizardIndex - 1)}
-          >
-            السابق
-          </Button>
-          <Badge variant="neutral">
-            <span dir="ltr">{currentWizardIndex + 1} / {WIZARD_STEPS.length}</span>
-          </Badge>
-          <Button
-            variant="info"
-            size="sm"
-            icon={<ChevronLeft className="w-4 h-4" />}
-            iconPosition="end"
-            disabled={currentWizardIndex >= WIZARD_STEPS.length - 1}
-            onClick={() => goToWizardStep(currentWizardIndex + 1)}
-          >
-            التالي
-          </Button>
-        </div>
-      </Card>
-
-      {/* Bottom Next/Previous Lesson Navigation Footer */}
-      {allLessons.length > 1 && (
-        <Card padding="none" className="p-5 space-y-4">
-          <div className="flex items-center justify-between text-xs font-extrabold text-[var(--app-text-muted)] border-b border-[var(--app-card-border)] pb-3">
-            <span className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-[var(--brand-blue)]" />
-              <span>متابعة التعلم - التنقل بين دروس المادة (<span dir="ltr">{currentIndex >= 0 ? currentIndex + 1 : 1} / {allLessons.length}</span>)</span>
-            </span>
-            <Badge variant="info">{lesson.categoryAr}</Badge>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {/* Previous Lesson Button */}
-            {previousLesson ? (
-              <Card interactive padding="none" className="p-4 flex items-center justify-between text-right" onClick={() => onSelectLesson?.(previousLesson)}>
-                <div className="flex items-center gap-3 overflow-hidden">
-                  <div className="w-9 h-9 rounded-xl bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] flex items-center justify-center shrink-0 shadow-2xs">
-                    <ChevronRight className="w-5 h-5" />
-                  </div>
-                  <div className="truncate">
-                    <span className="text-[10px] font-bold text-[var(--app-text-muted)] block uppercase tracking-wider">الدرس السابق / Précédent</span>
-                    <span className="text-xs font-black text-[var(--app-text)] truncate block mt-0.5">
-                      {previousLesson.titleAr}
-                    </span>
-                  </div>
-                </div>
-              </Card>
+            ) : previousLesson ? (
+              <button
+                onClick={() => onSelectLesson?.(previousLesson)}
+                className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text-muted)] hover:text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
+              >
+                <ChevronRight className="w-4 h-4" />
+                <span>الدرس السابق</span>
+              </button>
             ) : (
-              <div className="min-h-12 p-4 rounded-2xl border border-dashed border-[var(--app-card-border)] text-[var(--app-text-muted)] text-xs flex items-center gap-2 justify-center opacity-60">
-                <span>بداية دروس هذا المحور الدراسي</span>
-              </div>
+              <div />
             )}
 
-            {/* Next Lesson Button */}
-            {nextLesson ? (
-              <Card interactive padding="none" className="p-4 flex items-center justify-between text-right border-[var(--brand-blue)]/30 bg-[var(--brand-blue)]/5" onClick={() => onSelectLesson?.(nextLesson)}>
-                <div className="flex items-center gap-3 justify-between w-full overflow-hidden">
-                  <div className="truncate">
-                    <span className="text-[10px] font-bold text-[var(--brand-blue-dark)] block uppercase tracking-wider">الدرس التالي / Suivant</span>
-                    <span className="text-xs font-black text-[var(--app-text)] truncate block mt-0.5">
-                      {nextLesson.titleAr}
-                    </span>
-                  </div>
-                  <div className="w-9 h-9 rounded-xl bg-[var(--brand-blue)] text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <ChevronLeft className="w-5 h-5" />
-                  </div>
-                </div>
-              </Card>
-            ) : (
-              <div className="min-h-12 p-4 rounded-2xl border border-dashed border-[var(--app-card-border)] text-[var(--app-text-muted)] text-xs flex items-center gap-2 justify-center opacity-60">
-                <span>🎉 وصلت لنهاية دروس هذا المحور!</span>
-              </div>
-            )}
+            {/* Main Next Step Button */}
+            <button
+              onClick={() => goToStep(currentStepIndex + 1)}
+              className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-2xl transition-all cursor-pointer shadow-md flex items-center gap-2.5 mr-auto"
+            >
+              <span>المرحلة الموالية: {nextStep?.labelAr}</span>
+              <ArrowLeft className="w-4 h-4" />
+            </button>
           </div>
-        </Card>
-      )}
+        ) : (
+          /* Step N: Last Step! Show visual congratulation and Next Lesson CTA */
+          <div className="space-y-4">
+            <div className="bg-emerald-500/10 rounded-2xl p-4 border border-emerald-500/20 text-center space-y-1.5">
+              <div className="text-2xl">🎉</div>
+              <h3 className="text-xs sm:text-sm font-black text-emerald-800 dark:text-emerald-300">
+                أحسنت يا بطل! أتممت جميع مراحل هذا الدرس بنجاح! 🏆
+              </h3>
+              <p className="text-[11px] text-[var(--app-text-muted)]">
+                أكملت كافة المراحل (<span dir="ltr">{availableSteps.length} / {availableSteps.length}</span>). يمكنك الآن الانتقال إلى الدرس التالي!
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => goToStep(0)}
+                  className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text-muted)] hover:text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 cursor-pointer transition-all active:scale-95"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>مراجعة من البداية</span>
+                </button>
+                {currentStepIndex > 0 && (
+                  <button
+                    onClick={() => goToStep(currentStepIndex - 1)}
+                    className="px-3 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text-muted)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center cursor-pointer transition-all active:scale-95"
+                    title="الرجوع للمرحلة السابقة"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              {nextLesson ? (
+                <button
+                  onClick={() => onSelectLesson?.(nextLesson)}
+                  className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-2xl transition-all cursor-pointer shadow-md flex items-center gap-2.5 mr-auto"
+                >
+                  <span>الدرس الموالي: {renderArabicText(nextLesson.titleAr)}</span>
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+              ) : (
+                <Button
+                  variant="success"
+                  size="md"
+                  icon={<Trophy className="w-4 h-4" />}
+                  onClick={onBack}
+                  className="font-black text-xs mr-auto"
+                >
+                  إتمام المحور والعودة لقائمة الدروس 🎓
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

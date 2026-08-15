@@ -24,24 +24,21 @@ function saveGuestUsage(usage: GuestUsage): void {
   window.localStorage.setItem(GUEST_USAGE_KEY, JSON.stringify(usage));
 }
 
-// Mode Découverte: tracks which lessons a non-authenticated visitor has opened, as a plain array of
-// lesson ids in localStorage — no name/email/PII, so this is unaffected by the SEC-05 localStorage
-// cleanup (that was specifically about the authenticated profile). This hook only tracks usage; the
-// caller (App.tsx) decides whether to enforce the limit (it never applies once authUser exists).
+// Mode Découverte: Tracks viewed lessons in guest mode for friendly stats/nudges,
+// but NEVER locks or blocks the child from accessing any lesson.
 export function useGuestLimits() {
   const [usage, setUsage] = useState<GuestUsage>(() => loadGuestUsage());
 
   const viewedCount = usage.viewedLessonIds.length;
-  const remaining = Math.max(0, MAX_GUEST_LESSONS - viewedCount);
-  const hasReachedLimit = viewedCount >= MAX_GUEST_LESSONS;
+  // Always allow unlimited access
+  const hasReachedLimit = false;
 
-  // A lesson already opened once stays free to revisit — only a *new* 4th lesson gets blocked.
   const canAccessLesson = useCallback(
-    (lessonId: string): boolean => {
-      if (usage.viewedLessonIds.includes(lessonId)) return true;
-      return usage.viewedLessonIds.length < MAX_GUEST_LESSONS;
+    (_lessonId?: string): boolean => {
+      // Unlimited access for all students, no blocking
+      return true;
     },
-    [usage]
+    []
   );
 
   const recordLessonView = useCallback((lessonId: string): void => {
@@ -53,5 +50,13 @@ export function useGuestLimits() {
     });
   }, []);
 
-  return { viewedCount, remaining, hasReachedLimit, canAccessLesson, recordLessonView };
+  return {
+    viewedCount,
+    remaining: Infinity,
+    hasReachedLimit,
+    canAccessLesson,
+    recordLessonView,
+    shouldShowFriendlyAuthTip: viewedCount >= 3,
+  };
 }
+
