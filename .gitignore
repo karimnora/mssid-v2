@@ -64,3 +64,6 @@ Thumbs.db
 .claude/settings.local.json
 
 .claude/
+
+# Local Claude project instructions, not shared via the repo
+CLAUDE.md

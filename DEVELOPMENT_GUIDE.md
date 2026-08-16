@@ -8,13 +8,15 @@ Ce guide est destiné aux développeurs souhaitant exécuter, déboguer et teste
 
 | Action | Commande | Répertoire | Description |
 | :--- | :--- | :--- | :--- |
-| **Lancer le Frontend + Express** | `npm run dev` | `/` | Démarre le serveur unifié dev sur port 3000 |
-| **Lancer le Frontend seul** | `npm run dev` | `/frontend` | Démarre l'app React sur Vite |
+| **Lancer le Frontend + Express (unifié)** | `npm run dev` | `/frontend` | Démarre le serveur unifié dev sur port 3000 |
 | **Lancer le Backend Spring** | `./mvnw spring-boot:run` | `/backend` | Démarre l'API Spring Boot sur port 8080 |
-| **Tester le Frontend** | `npm run test` | `/` ou `/frontend` | Exécute les tests Vitest |
-| **Linter TypeScript** | `npm run lint` | `/` | Vérifie la conformité du code TypeScript |
+| **Tester le Frontend** | `npm run test` | `/frontend` | Exécute les tests Vitest |
+| **Linter TypeScript** | `npm run lint` | `/frontend` | Vérifie la conformité du code TypeScript |
 | **Tester le Backend Java** | `./mvnw test` | `/backend` | Exécute les tests JUnit 5 |
-| **Compiler pour la Prod** | `npm run build` | `/` | Génère la version optimisée dans `dist/` |
+| **Compiler pour la Prod** | `npm run build` | `/frontend` | Génère la version optimisée dans `dist/` |
+
+> Le seul frontend actif est `frontend/`. Un scaffold initial (racine, jamais mis à jour depuis
+> le premier commit) a été déplacé vers `_archive/legacy-ai-studio-prototype/` — voir son README.
 
 ---
 
@@ -24,6 +26,8 @@ Ce guide est destiné aux développeurs souhaitant exécuter, déboguer et teste
 L'application intègre **Vitest** et **React Testing Library** pour valider le comportement des composants UI.
 
 ```bash
+cd frontend
+
 # 1. Installer les dépendances si ce n'est pas déjà fait
 npm install
 
@@ -31,13 +35,14 @@ npm install
 npm run test
 ```
 
-### Exemple de Test Unitaire (`src/__tests__/SorobanInteractive.test.tsx`)
-Si vous ajoutez de nouveaux composants, vous pouvez créer un fichier de test à côté de vos composants ou dans `src/__tests__/` :
+### Exemple de Test Unitaire (`frontend/src/components/SorobanInteractive.test.tsx`)
+Les tests sont colocalisés à côté du composant qu'ils couvrent (ex. `AiTutorModal.tsx` +
+`AiTutorModal.test.tsx` dans `frontend/src/components/`) :
 
 ```tsx
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import SorobanInteractive from '../components/SorobanInteractive';
+import SorobanInteractive from './SorobanInteractive';
 
 describe('SorobanInteractive Component', () => {
   it('renders correctly with title', () => {
@@ -99,7 +104,7 @@ curl -X POST http://localhost:8080/api/auth/login \
 
 ## 🤖 4. Tester l'API IA Gemini en Local
 
-Le serveur Express `server.ts` héberge la route `/api/gemini/explain` pour interroger l'IA Google Gemini avec limitation du taux de requêtes (rate-limiting par rôle) et mise en cache des réponses.
+Le serveur Express `frontend/server.ts` (lancé via `cd frontend && npm run dev`) héberge la route `/api/gemini/explain` pour interroger l'IA Google Gemini avec limitation du taux de requêtes (rate-limiting par rôle) et mise en cache des réponses.
 
 ### Test cURL du Proxy Gemini :
 ```bash

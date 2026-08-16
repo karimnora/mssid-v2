@@ -13,9 +13,8 @@
 2. [Prérequis Système](#-prérequis-système)
 3. [Configuration des Variables d'Environnement](#-configuration-des-variables-denvironnement)
 4. [Lancement en Mode Développement (Dev Mode)](#-lancement-en-mode-développement-dev-mode)
-   - [Méthode 1 : Unifiée (Frontend + Proxy Express)](#méthode-1--lancement-unifié-frontend--proxy-express-recommandé)
-   - [Méthode 2 : Frontend React Séparé](#méthode-2--lancement-du-frontend-react-seul)
-   - [Méthode 3 : Backend Spring Boot (Java)](#méthode-3--lancement-du-backend-spring-boot-java)
+   - [Méthode 1 : Frontend Unifié (React + Proxy Express)](#méthode-1--frontend-unifié-react--proxy-express-recommandé)
+   - [Méthode 2 : Backend Spring Boot (Java)](#méthode-2--lancement-du-backend-spring-boot-java)
 5. [Guide des Tests en Local (Frontend & Backend)](#-guide-des-tests-en-local)
    - [Tests Frontend (TypeScript & Vitest)](#1-tests-du-frontend)
    - [Tests Backend (JUnit 5 & Spring Boot)](#2-tests-du-backend-spring-boot)
@@ -28,21 +27,28 @@
 
 ```text
 mssid-dz/
-├── src/                      # Source principale du Frontend React
-│   ├── components/           # Composants UI (LessonViewer, Soroban, AiTutorModal, etc.)
-│   ├── data/                 # Données des cours (1AP, 2AP, 3AP, 4AP, 5AP)
-│   ├── types/                # Interfaces & Types TypeScript
-│   └── App.tsx               # Composant Racine React
-├── frontend/                 # Workspace miroir Frontend React
+├── frontend/                 # Frontend React actif (Vite, TypeScript, Tailwind, Capacitor)
+│   ├── src/
+│   │   ├── components/       # Composants UI (LessonViewer, Soroban, AiTutorModal, preschool/, etc.)
+│   │   ├── data/              # Données des cours (1AP à 5AP)
+│   │   ├── locales/           # Traductions ar / fr / en / ber
+│   │   └── App.tsx            # Composant Racine React
+│   ├── server.ts              # Serveur Express Node.js (Proxy API Gemini + Static File Server)
+│   ├── .env.example           # Modèle des variables d'environnement du frontend
+│   └── package.json           # Dépendances Frontend / Express & Scripts
 ├── backend/                  # Application Spring Boot Java 21 (Maven)
 │   ├── src/main/java/        # Contrôleurs REST, Services, Entités JPA, Security
 │   ├── src/test/java/        # Tests Unitaires et d'Intégration JUnit
 │   └── pom.xml               # Configuration Maven
-├── server.ts                 # Serveur Express Node.js (Proxy API Gemini + Static File Server)
-├── .env.example              # Modèle des variables d'environnement
-├── package.json              # Dépendances Frontend / Express & Scripts
+├── _archive/                 # Code historique conservé pour référence, non maintenu (voir son README)
 └── DOCUMENTATION.md          # Spécifications d'Architecture Complètes
 ```
+
+> ℹ️ Le projet ne comporte qu'un seul frontend actif : `frontend/`. Un scaffold initial généré par
+> Google AI Studio existait auparavant à la racine (`src/`, `server.ts`, etc.) ; il a été déplacé
+> vers `_archive/legacy-ai-studio-prototype/` car il n'était plus maintenu depuis le tout premier
+> commit du projet et exposait un faux backend non sécurisé (mots de passe en clair, JWT non
+> signé). Voir le README de ce dossier pour le détail.
 
 ---
 
@@ -57,9 +63,10 @@ mssid-dz/
 
 ## 🔐 Configuration des Variables d'Environnement
 
-Créez un fichier `.env` à la racine du projet en vous basant sur `.env.example` :
+Créez un fichier `.env` dans `frontend/` en vous basant sur `frontend/.env.example` :
 
 ```bash
+cd frontend
 cp .env.example .env
 ```
 
@@ -80,25 +87,9 @@ VITE_SPRING_BOOT_URL=http://localhost:8080/api
 
 ## 🚀 Lancement en Mode Développement (Dev Mode)
 
-### Méthode 1 : Lancement Unifié Frontend + Proxy Express (Recommandé)
+### Méthode 1 : Frontend Unifié (React + Proxy Express) (Recommandé)
 
 Cette méthode lance le serveur unifié Node.js/Express avec le middleware Vite HMR sur le port **3000**. Elle prend en charge la livraison de l'application React et expose l'API proxy `/api/gemini/explain` pour le tuteur IA.
-
-```bash
-# 1. Installation des dépendances
-npm install
-
-# 2. Lancement du serveur dev unifié
-npm run dev
-```
-
-📍 **URL d'accès :** `http://localhost:3000`
-
----
-
-### Méthode 2 : Lancement du Frontend React Seul
-
-Si vous souhaitez travailler exclusivement sur la partie interface utilisateur React :
 
 ```bash
 cd frontend
@@ -106,11 +97,11 @@ npm install
 npm run dev
 ```
 
-📍 **URL d'accès :** `http://localhost:3000` ou `http://localhost:5173`
+📍 **URL d'accès :** `http://localhost:3000`
 
 ---
 
-### Méthode 3 : Lancement du Backend Spring Boot (Java)
+### Méthode 2 : Lancement du Backend Spring Boot (Java)
 
 Pour exécuter le serveur API REST Spring Boot indépendant (Gestion des utilisateurs, authentification JWT, paiements BaridiMob) :
 
@@ -181,6 +172,7 @@ cd backend
 Compile les fichiers React optimisés dans `dist/` et génère le fichier `dist/server.cjs` pour Node.js :
 
 ```bash
+cd frontend
 npm run build
 ```
 
@@ -209,6 +201,8 @@ Le fichier JAR généré se trouve dans : `backend/target/education-0.0.1-SNAPSH
 L'application **Mssid DZ** est configurée avec **Capacitor** pour être compilée sous forme d'application native Android pour le Google Play Store.
 
 ```bash
+cd frontend
+
 # 1. Compiler la version web React
 npm run build
 

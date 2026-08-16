@@ -526,6 +526,8 @@ com.mssid.app
 
 ### 14.1 Lancement en Développement
 ```bash
+cd frontend
+
 # Installation des dépendances
 npm install
 
