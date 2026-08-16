@@ -8,7 +8,7 @@ interface AuditModalProps {
 }
 
 export const AuditModal: React.FC<AuditModalProps> = ({ isOpen, onClose }) => {
-  const [selectedAuditTab, setSelectedAuditTab] = useState<string>('bugs');
+  const [selectedAuditTab, setSelectedAuditTab] = useState<string>('synthesis_orientation');
 
   if (!isOpen) return null;
 

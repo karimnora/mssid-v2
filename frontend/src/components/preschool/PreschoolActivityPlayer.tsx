@@ -51,18 +51,33 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
       <div className="flex items-center justify-between max-w-lg w-full mx-auto mb-4">
         <button
           onClick={onExit}
-          className="min-h-11 min-w-11 flex items-center justify-center rounded-full bg-white shadow-md text-xl cursor-pointer"
+          className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
           aria-label="خروج / Retour / Back"
+          title="خروج"
         >
           🚪
         </button>
-        <button
-          onClick={replayPrompt}
-          className="min-h-11 min-w-11 flex items-center justify-center rounded-full bg-white shadow-md text-xl cursor-pointer"
-          aria-label="إعادة الاستماع / Réécouter / Replay"
-        >
-          🔊
-        </button>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={replayPrompt}
+            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
+            aria-label="إعادة الاستماع / Réécouter / Replay"
+            title="استمع للصوت"
+          >
+            🔊
+          </button>
+
+          {/* Direct Skip / Next button so the child or parent is never blocked */}
+          <button
+            onClick={handleInteractionComplete}
+            className="px-4 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-emerald-400"
+            title="التالي / Suivant / Next"
+          >
+            <span>{language === 'ar' ? 'التالي' : language === 'fr' ? 'Suivant' : 'Next'}</span>
+            <span className="text-lg">⏩</span>
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-col items-center gap-4 max-w-lg w-full mx-auto flex-1 justify-center">

@@ -5,11 +5,16 @@ import { PreschoolLanguagePicker } from './PreschoolLanguagePicker';
 import { PreschoolModulePicker } from './PreschoolModulePicker';
 import { PreschoolPathView } from './PreschoolPathView';
 import { PreschoolActivityPlayer } from './PreschoolActivityPlayer';
+import { PreschoolMagicBoard } from './PreschoolMagicBoard';
+import { PreschoolXylophone } from './PreschoolXylophone';
+import { PreschoolSoundBox } from './PreschoolSoundBox';
 import { playModuleCompleteFanfare } from './usePreschoolAudio';
 
 interface PreschoolAppProps {
   onExit: () => void;
 }
+
+export type PreschoolSpecialTool = 'board' | 'xylophone' | 'soundbox';
 
 const LANGUAGE_STORAGE_KEY = 'mssid_preschool_language';
 const PROGRESS_STORAGE_KEY = 'mssid_preschool_progress';
@@ -30,26 +35,58 @@ function loadStoredProgress(): string[] {
   }
 }
 
-// Top-level shell for Mode Éveil — entirely self-contained state (language + completed steps across
-// every module), stored under its own localStorage keys, never touching mssid_user_profile or the
-// primary XP/badge system.
-// Flow: language picker (once) → module hub (pick a game) → skill path → one activity at a time → back to path/hub.
+// Top-level shell for Mode Éveil (Preschool Hub)
 export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
   const [language, setLanguage] = useState<PreschoolLanguage | null>(() => loadStoredLanguage());
   const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadStoredProgress());
   const [activeModuleId, setActiveModuleId] = useState<string | null>(null);
   const [activeActivityId, setActiveActivityId] = useState<string | null>(null);
+  const [activeSpecialTool, setActiveSpecialTool] = useState<PreschoolSpecialTool | null>(null);
 
   useEffect(() => {
-    if (language) window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    if (language) {
+      window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    }
   }, [language]);
 
   useEffect(() => {
     window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(completedActivityIds));
   }, [completedActivityIds]);
 
+  // Initial startup language choice if not yet selected
   if (!language) {
     return <PreschoolLanguagePicker onSelect={setLanguage} />;
+  }
+
+  // Handle special creative tools
+  if (activeSpecialTool === 'board') {
+    return (
+      <PreschoolMagicBoard
+        language={language}
+        onSelectLanguage={setLanguage}
+        onExit={() => setActiveSpecialTool(null)}
+      />
+    );
+  }
+
+  if (activeSpecialTool === 'xylophone') {
+    return (
+      <PreschoolXylophone
+        language={language}
+        onSelectLanguage={setLanguage}
+        onExit={() => setActiveSpecialTool(null)}
+      />
+    );
+  }
+
+  if (activeSpecialTool === 'soundbox') {
+    return (
+      <PreschoolSoundBox
+        language={language}
+        onSelectLanguage={setLanguage}
+        onExit={() => setActiveSpecialTool(null)}
+      />
+    );
   }
 
   const activeModule = PRESCHOOL_MODULES.find((m) => m.id === activeModuleId) || null;
@@ -99,6 +136,9 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
       language={language}
       completedByModule={completedByModule}
       onSelectModule={setActiveModuleId}
+      onSelectSpecialTool={setActiveSpecialTool}
+      onSelectLanguage={setLanguage}
+      onResetLanguage={() => setLanguage(null)}
       onExit={onExit}
     />
   );

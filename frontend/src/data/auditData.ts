@@ -10,42 +10,76 @@ export interface AuditSection {
     descriptionAr: string;
     impact: 'critical' | 'high' | 'medium' | 'low';
     status: 'fixed' | 'planned' | 'recommended';
+    tier?: 'red_remove' | 'white_polish' | 'yellow_upgrade';
   }[];
 }
 
 export const AUDIT_DATA: AuditSection[] = [
   {
+    id: 'synthesis_orientation',
+    titleAr: '🎯 خلاصة التوجيه البيداغوجي والتقني (Synthèse d\'Orientation)',
+    titleFr: 'Synthèse d\'Orientation MEN',
+    badge: '3 محاور رئيسية',
+    badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+    items: [
+      {
+        titleAr: '🔴 العناصر الملغاة والمحذوفة (À Supprimer)',
+        titleFr: 'Conformité Stricte MEN',
+        descriptionAr: 'تمت إزالة وتطهير كل العناصر الخارجة عن المنهاج الرسمي الجزائري الصادر عن وزارة التربية الوطنية (MEN)، والتبعيات الوهمية أو المصطلحات غير المعتمدة، لضمان تركيز التلميذ 100% على الكفاءات المستهدفة بالامتحانات الرسمية.',
+        impact: 'critical',
+        status: 'fixed',
+        tier: 'red_remove'
+      },
+      {
+        titleAr: '⚪ رفع جودة العناصر المتوسطة (Médiocre → Haut Engagement)',
+        titleFr: 'Engagement Cognitif & Visuel',
+        descriptionAr: 'تحويل النصوص والواجهات الجامدة إلى تجارب تفاعلية غنية بالألوان البصرية المريحة، والخطوط العربية الرسمية المعتمدة (Readex Pro، Cairo، Amiri)، مع مؤشرات صوتية وتفاعل باللمس يعزز التركيز الذهني لدى تلاميذ الطور الابتدائي.',
+        impact: 'high',
+        status: 'fixed',
+        tier: 'white_polish'
+      },
+      {
+        titleAr: '🟡 ترقية الوحدات للتميز البيداغوجي (À Améliorer → Excellence)',
+        titleFr: 'Outils d\'Excellence Trimestrielle',
+        descriptionAr: 'تطوير أدوات التحضير للاختبارات الفصلية وتقييم المكتسبات (5AP)، محاكي السوروبان، مخابر العلوم وتجارب الدارة الكهربائية، ومولد الفروض والامتحانات القابلة للطباعة A4 مع سلالم التنقيط وقسائم التصحيح النموذجية.',
+        impact: 'high',
+        status: 'fixed',
+        tier: 'yellow_upgrade'
+      }
+    ]
+  },
+  {
     id: 'bugs',
-    titleAr: '1. الثغرات والأخطاء البرمجية (Bugs)',
-    titleFr: 'Bugs Identifiés',
+    titleAr: '1. الثغرات والأخطاء المعالجة (Bugs & Security)',
+    titleFr: 'Bugs & Sécurité Résolus',
     badge: '04 أخطاء رئيسية',
     badgeColor: 'bg-rose-100 text-rose-800 border-rose-300',
     items: [
       {
-        titleAr: 'تسريب مفتاح API على العميل (Client-Side Key Leakage)',
+        titleAr: 'عزل وتأمين مفتاح API على الخادم (Secure Server-Side Proxy)',
         titleFr: 'Exposition de la clé API côté client',
-        descriptionAr: 'كانت استدعاءات Gemini تتم مباشرة من المتصفح في النسخ السابقة، مما يتيح استخراج المفتاح واستغلاله. التعديل: إنشاء مسار سيرفر /api/gemini/explain آمن يغلف المفتاح.',
+        descriptionAr: 'عزل استدعاءات الذكاء الاصطناعي في مسار خادم آمن /api/gemini/explain لمنع تسريب المفاتيح وحماية بيانات التلاميذ.',
         impact: 'critical',
         status: 'fixed'
       },
       {
-        titleAr: 'تزامن حالة React مع التخزين المحلي (State Hydration Mismatch)',
+        titleAr: 'تزامن حالة التخزين المحلي الآمن (Hydration & LocalStorage Guard)',
         titleFr: 'Incompatibilité d\'hydratation SSR/LocalStorage',
-        descriptionAr: 'عدم تطابق القيم المخزنة في LocalStorage عند أول تحميل للتحكم في نقاط التلميذ والأسئلة المجابة. التعديل: إضافة حارس هيدرة ومزامن آمن في useEffect.',
+        descriptionAr: 'تثبيت تقدم التلميذ ونقاط الخبرة والدروس المنجزة بدون فقدان البيانات أو تعارض التزامن.',
         impact: 'high',
         status: 'fixed'
       },
       {
-        titleAr: 'عدم معالجة الأخطاء في حسابات كسور السوروبان والتحويلات',
+        titleAr: 'معالجة حسابات التحويلات والكسور والسوروبان بدقة تامة',
         titleFr: 'Gestion d\'erreurs sur la conversion d\'unités',
-        descriptionAr: 'في تمارين تحويل المساحات الفلاحية (m² إلى ha) وأصابع السوروبان، حدوث أخطاء تقريبية float. التعديل: دالة تحويل دقيقة وتثبيت الأرقام العشرية.',
+        descriptionAr: 'ضبط دوال تحويل المساحات والمقادير وعمليات العداد الرقمي بدون أخطاء تقريبية.',
         impact: 'medium',
         status: 'fixed'
       },
       {
-        titleAr: 'غياب المهل وإغلاق الاتصال في الاستدعاءات التفاعلية',
+        titleAr: 'إدارة مهل الاتصال ومرونة الواجهة (AbortController & Resilient UI)',
         titleFr: 'Absence de timeout sur les requêtes AI',
-        descriptionAr: 'عند تجمّد الاتصال بخدمات الذكاء الاصطناعي، يظل واجهة المستخدم في حالة تحميل نهائية. التعديل: استخدام AbortController وواجهة إلغاء مؤقتة.',
+        descriptionAr: 'منع تجمّد الواجهة مع توفير ردود احتياطية فورية عند ضعف شبكة الإنترنت.',
         impact: 'medium',
         status: 'fixed'
       }
@@ -53,90 +87,30 @@ export const AUDIT_DATA: AuditSection[] = [
   },
   {
     id: 'architecture',
-    titleAr: '2. مشاكل الهندسة المعمارية (Architecture)',
-    titleFr: 'Problèmes d\'Architecture',
-    badge: 'إعادة هيكلة كاملة',
-    badgeColor: 'bg-amber-100 text-amber-800 border-amber-300',
-    items: [
-      {
-        titleAr: 'تشفير المناهج داخل كود المكونات (Hardcoded Curriculum)',
-        titleFr: 'Contenu pédagogique codé en dur',
-        descriptionAr: 'المشكلة: إضافة درس أو دورة شهادة جديدة كان يتطلب تعديل ملفات React TSX مباشرة. الحل: اعتماد معمارية البيانات المنفصلة (Data-Driven JSON Engine).',
-        impact: 'critical',
-        status: 'fixed'
-      },
-      {
-        titleAr: 'التثبيت المباشر للأصوات والوسائط بالمسارات المطلقة',
-        titleFr: 'Lien برائحي للوسائط',
-        descriptionAr: 'تسبب مشاكل أثناء النشر في البيئات الصحافية كـ Cloud Run ومجالات الاستضافة المختلفة. الحل: استخدام محول الوسائط ودعم الصوت التخليقي المباشر.',
-        impact: 'high',
-        status: 'fixed'
-      },
-      {
-        titleAr: 'غياب معمارية النمط الاستراتيجي (Strategy Pattern) للدروس',
-        titleFr: 'Monوثية المكونات',
-        descriptionAr: 'دمج أدوات السوروبان ومحول الوحدات في مكون واحد كبير. الحل: تقسيم المكونات إلى وحدات مستقلة (SorobanInteractive, UnitConverter, GeometryVisualizer).',
-        impact: 'high',
-        status: 'fixed'
-      }
-    ]
-  },
-  {
-    id: 'scalable-schema',
-    titleAr: '3. معمارية المناهج بدون تعديل كود (No-Code Scalable Schema)',
-    titleFr: 'Architecture Extensible Sans Code',
-    badge: 'تصميم مرن وسهل Expansion',
-    badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-300',
-    items: [
-      {
-        titleAr: 'نظام المانيفست الموحد (Curriculum JSON Manifest)',
-        titleFr: 'Manifeste JSON de Programme',
-        descriptionAr: 'إمكانية إضافة أي درس جديد للسنة 1AP، 2AP، 3AP، 4AP، أو 5AP عن طريق إضافة كائن JSON في /data/coursesData.ts مع تحديد المادة، الملخص، القواعد، وأسئلة الاختبار التفاعلي.',
-        impact: 'critical',
-        status: 'fixed'
-      },
-      {
-        titleAr: 'محرك الأدوات التفاعلية بالحقن الديناميكي (Interactive Tool Injection)',
-        titleFr: 'Injection d\'Outils Interactifs',
-        descriptionAr: 'كل درس يستطيع استدعاء أداة تفاعلية (soroban, unit_converter, geometry_visualizer, multiplication_table) فقط بذكر اسمها في حقل interactiveTool داخل بيانات الدرس.',
-        impact: 'high',
-        status: 'fixed'
-      },
-      {
-        titleAr: 'مستودع الامتحانات الوطنية (Annales Registry)',
-        titleFr: 'Registre الأقاليم للأوراق الرسمية',
-        descriptionAr: 'إضافة امتحانات شهادة الابتدائي الجزائري (2008-2026) بحقن بيانات التمارين وسلالم التنقيط بدون إعادة بناء التطبيق.',
-        impact: 'high',
-        status: 'fixed'
-      }
-    ]
-  },
-  {
-    id: 'ux_perf_sec_gami',
-    titleAr: '4. التحسينات الشاملة (UX, Performance, Security & Gamification)',
-    titleFr: 'Améliorations UX, Perf, Sécurité & Gamification',
-    badge: 'تصميم عالي الكثافة',
+    titleAr: '2. البنية البرمجية والمناهج (Data-Driven Architecture)',
+    titleFr: 'Architecture Extensible',
+    badge: 'معمارية مرنة بدون كود',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
     items: [
       {
-        titleAr: 'تصميم عالي الكثافة (High Density Design Theme)',
-        titleFr: 'Thème Visuel Haute Densité',
-        descriptionAr: 'شريط علوي متين باللون Slate-800، حواف حادة وأنيقة، شارات مستويات واضحة، وتبويب سريع لكل المستويات والأنشطة.',
-        impact: 'high',
-        status: 'fixed'
-      },
-      {
-        titleAr: 'نظام التحفيز والتلعيب (Gamification Engine)',
-        titleFr: 'Moteur de Gamification',
-        descriptionAr: 'عداد أيام التفاعل المتواصل (Streak)، نقاط XP مع كل اختبار أو تمرين سوروبان ناجح، ومستوى التلميذ مع شارات إنجاز مثل "بطل السوروبان" و"مجتهد الجزائر".',
-        impact: 'high',
-        status: 'fixed'
-      },
-      {
-        titleAr: 'المعلم الذكي مسيد (AI Tutor - Gemini 3.6 Flash)',
-        titleFr: 'Tuteur IA المستقل',
-        descriptionAr: 'تكامل آمن خادم-عميل يتيح للتلميذ طلب شرح أي مفهوم أو صياغة مسألة رياضية محلولة بأسلوب المنهاج الجزائري.',
+        titleAr: 'معمارية المناهج المنفصلة (Data-Driven JSON Manifest)',
+        titleFr: 'Curriculum JSON Modulaire',
+        descriptionAr: 'فصل تام لبيانات الدروس والامتحانات والمخابر عن كود الواجهات لسهولة التوسع والتعديل وفق التدرجات الوزارية السنوية.',
         impact: 'critical',
+        status: 'fixed'
+      },
+      {
+        titleAr: 'الحقن الديناميكي للأدوات والمخابر التفاعلية (Tool Injection Engine)',
+        titleFr: 'Injection d\'Outils Pédagogiques',
+        descriptionAr: 'ربط مباشر بين كل درس ومخبره التفاعلي المخصص (سوروبان، دارة كهربائية، خط عربي، متحف تاريخ، محول مقادير).',
+        impact: 'high',
+        status: 'fixed'
+      },
+      {
+        titleAr: 'بنك الامتحانات الوطنية وتقييم المكتسبات (Official Exams Registry)',
+        titleFr: 'Banque d\'Examens & Acquis 5AP',
+        descriptionAr: 'مواضيع امتحانات ونماذج تقييم المكتسبات مع الحلول التفصيلية وإمكانية الطباعة الورقية A4.',
+        impact: 'high',
         status: 'fixed'
       }
     ]

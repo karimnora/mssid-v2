@@ -719,34 +719,6 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
           )}
         </div>
       )}
-
-      {/* PROCEED TO NEXT STEP ACTION CARD */}
-      {onProceedToSummary && (
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex items-center justify-between flex-wrap gap-4 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-black text-sm shrink-0 border border-emerald-500/20">
-              <span dir="ltr">1 / {availableSteps?.length || 6}</span>
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>أحسنت! أتممت قراءة وفهم هذا الشرح التمهيدي 🌟</span>
-              </div>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-bold block mt-0.5">
-                المرحلة 1 من {availableSteps?.length || 6} • خطوتك التالية: الملخص والقواعد
-              </span>
-            </div>
-          </div>
-
-          <button
-            onClick={onProceedToSummary}
-            className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-2xl transition-all cursor-pointer shadow-md flex items-center gap-2.5"
-          >
-            <span>المرحلة الموالية: الملخص والقواعد</span>
-            <ArrowLeft className="w-4 h-4" />
-          </button>
-        </div>
-      )}
     </div>
   );
 };

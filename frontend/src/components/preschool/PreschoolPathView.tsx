@@ -11,14 +11,12 @@ interface PreschoolPathViewProps {
   onExit: () => void;
 }
 
-// The Duolingo-style "skill path" — deliberately short (11 nodes for this module) and concrete: no
-// percentages, no "12/40" abstraction a 3-5 year old can't parse. Steps unlock strictly in order;
-// only the next unplayed step and completed steps are tappable, which keeps the choice simple
-// (never a confusing branching map at this age).
+// The Duolingo-style "skill path" for Mode Éveil.
+// ALL steps are fully unlocked by default so a young child (3-5 yo) or parent is NEVER blocked
+// from exploring any activity or moving forward at their own pace.
 export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({ module, language, completedActivityIds, onSelectStep, onExit }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
-  const nextUnlockedIndex = module.activities.findIndex((a) => !completedActivityIds.includes(a.id));
-  const allDone = nextUnlockedIndex === -1;
+  const allDone = module.activities.every((a) => completedActivityIds.includes(a.id));
 
   return (
     <div dir={dir} className="min-h-screen bg-gradient-to-b from-sky-100 via-amber-50 to-orange-100 px-4 py-8">
@@ -26,7 +24,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({ module, la
         <div className="flex items-center justify-between">
           <button
             onClick={onExit}
-            className="min-h-11 min-w-11 flex items-center justify-center rounded-full bg-white shadow-md text-xl cursor-pointer"
+            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
             aria-label="خروج / Quitter / Exit"
           >
             🚪
@@ -34,14 +32,18 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({ module, la
           <h1 className="text-lg sm:text-xl font-black text-orange-900 text-center flex-1">
             {module.icon} {module.titleI18n[language]}
           </h1>
-          <div className="w-11" />
+          <div className="w-12" />
         </div>
 
         <div className="flex flex-col items-center gap-3">
           <PreschoolMascot mood={allDone ? 'celebrate' : 'idle'} size="md" />
-          {allDone && (
+          {allDone ? (
             <p className="text-center font-black text-emerald-700 text-sm">
-              🎉 {language === 'ar' ? 'أنهيت كل الرحلة!' : language === 'fr' ? 'Parcours terminé !' : 'Path complete!'}
+              🎉 {language === 'ar' ? 'أحسنت يا بطل! أنهيت كل الرحلة!' : language === 'fr' ? 'Bravo ! Parcours terminé !' : 'Great job! Path complete!'}
+            </p>
+          ) : (
+            <p className="text-center font-bold text-orange-800 text-xs">
+              {language === 'ar' ? 'اختر أي لعبة تحب والعب مباشرة! ✨' : language === 'fr' ? 'Choisis n\'importe quel jeu et amuse-toi ! ✨' : 'Pick any game and have fun! ✨'}
             </p>
           )}
         </div>
@@ -49,31 +51,26 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({ module, la
         <div className="flex flex-col items-center gap-4 py-4">
           {module.activities.map((activity, index) => {
             const isCompleted = completedActivityIds.includes(activity.id);
-            const isNext = index === nextUnlockedIndex;
-            const isLocked = !isCompleted && !isNext;
             const offsetClass = index % 2 === 0 ? '-translate-x-6' : 'translate-x-6';
 
             return (
               <motion.button
                 key={activity.id}
-                disabled={isLocked}
                 onClick={() => onSelectStep(activity.id)}
-                whileTap={!isLocked ? { scale: 0.92 } : undefined}
-                whileHover={!isLocked ? { scale: 1.05 } : undefined}
-                className={`relative min-h-20 min-w-20 w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg border-4 transition-colors ${offsetClass} ${
+                whileTap={{ scale: 0.92 }}
+                whileHover={{ scale: 1.06 }}
+                className={`relative min-h-20 min-w-20 w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg border-4 transition-all cursor-pointer ${offsetClass} ${
                   isCompleted
-                    ? 'bg-emerald-400 border-emerald-600 cursor-pointer'
-                    : isNext
-                    ? 'bg-amber-400 border-amber-600 cursor-pointer animate-pulse'
-                    : 'bg-slate-200 border-slate-300 opacity-60 cursor-not-allowed'
+                    ? 'bg-emerald-400 border-emerald-600'
+                    : 'bg-amber-400 border-amber-500 hover:bg-amber-300'
                 }`}
                 aria-label={`${activity.i18n[language].title}`}
               >
                 <span className="text-2xl font-black text-white drop-shadow">
-                  {isCompleted ? '⭐' : isLocked ? '🔒' : String(activity.targetValue)}
+                  {isCompleted ? '⭐' : String(activity.targetValue)}
                 </span>
-                {isNext && (
-                  <span className="absolute -top-9 text-3xl">🦊</span>
+                {!isCompleted && (
+                  <span className="absolute -top-7 text-2xl animate-bounce">✨</span>
                 )}
               </motion.button>
             );

@@ -72,11 +72,23 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <p className="text-xs text-white/80 font-medium">المنصة الشاملة من التعليم التحضيري (براعم) حتى السنة الخامسة ابتدائي</p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            {onOpenPreschool && (
+              <button
+                onClick={onOpenPreschool}
+                className="flex items-center gap-2 bg-gradient-to-r from-amber-400 to-orange-400 text-orange-950 px-4 py-2.5 rounded-2xl text-xs font-black shadow-lg hover:brightness-105 active:scale-95 transition-all cursor-pointer border border-amber-300 animate-pulse"
+                title="قسم التحضيري والإيقاظ (3 إلى 5 سنوات)"
+              >
+                <span className="text-base">🦊</span>
+                <span>قسم التحضيري (3-5 سنوات)</span>
+                <span className="bg-orange-950/20 text-orange-950 px-2 py-0.5 rounded-full text-[10px]">جديد</span>
+              </button>
+            )}
+
             {onOpenDressingRoom && (
               <button
                 onClick={onOpenDressingRoom}
-                className="flex items-center gap-1.5 bg-amber-400 text-amber-950 px-3.5 py-2 rounded-2xl text-xs font-black shadow-md hover:bg-amber-300 transition-all cursor-pointer"
+                className="flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white px-3.5 py-2.5 rounded-2xl text-xs font-black shadow-md transition-all cursor-pointer border border-white/25"
               >
                 <span>🦊 خزانة ديدو</span>
                 <span className="bg-amber-950/20 px-1.5 py-0.5 rounded-md text-[11px]">🪙 {goldCoins}</span>
@@ -116,6 +128,55 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* Dedicated Preschool & Toddler Feature Card (Éveil 3-5 ans) */}
+      {onOpenPreschool && (
+        <motion.div
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
+          onClick={onOpenPreschool}
+          className="relative overflow-hidden rounded-3xl p-6 sm:p-7 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-xl cursor-pointer border-2 border-amber-300/40"
+        >
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-3xl sm:text-4xl shadow-inner shrink-0 border border-white/30">
+                🦊
+              </div>
+              <div className="space-y-1 text-right">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="bg-white/25 text-white text-[11px] font-black px-2.5 py-0.5 rounded-full">
+                    👶 براعم التحضيري (3 - 5 سنوات)
+                  </span>
+                  <span className="bg-amber-300 text-amber-950 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                    ألعاب تفاعلية & أصوات
+                  </span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black">
+                  ركن الإيقاظ والتعليم التحضيري 🎈
+                </h2>
+                <p className="text-xs sm:text-sm text-white/90 font-bold max-w-xl">
+                  سفينة الحروف، قطاف الأرقام، الألوان والفنون، أصدقاء الحيوانات، وألغاز المتاهات الممتعة والمبسطة للطفل!
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenPreschool();
+              }}
+              className="shrink-0 bg-white hover:bg-amber-50 text-orange-950 px-6 py-3.5 rounded-2xl font-black text-sm shadow-lg active:scale-95 transition-all flex items-center gap-2 cursor-pointer border border-amber-200"
+            >
+              <span>دخول ركن التحضيري</span>
+              <span className="text-lg">🚀</span>
+            </button>
+          </div>
+
+          {/* Decorative background bubbles */}
+          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none" />
+          <div className="absolute top-0 right-1/3 w-40 h-40 bg-amber-400/20 rounded-full blur-2xl pointer-events-none" />
+        </motion.div>
+      )}
 
       {/* 4 Primary Orientation Poles */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

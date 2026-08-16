@@ -362,22 +362,6 @@ export default function App() {
     localStorage.setItem('mssid_user_profile', JSON.stringify(userProfile));
   }, [userProfile]);
 
-  if (isAdminConsoleActive) {
-    return (
-      <Suspense fallback={<LoadingFallback label="جاري تحميل لوحة تحكم الإدارة..." minHeight="100vh" />}>
-        <AdminConsoleView onExitAdminConsole={() => setIsAdminConsoleActive(false)} />
-      </Suspense>
-    );
-  }
-
-  if (isPreschoolActive) {
-    return (
-      <Suspense fallback={<LoadingFallback label="جاري تحميل وضع التحضيري..." minHeight="100vh" />}>
-        <PreschoolApp onExit={() => setIsPreschoolActive(false)} />
-      </Suspense>
-    );
-  }
-
   /**
    * Flips a lesson's quiz to "fully validated" the first time every question in it has been
    * answered correctly at least once — from then on, LessonViewer caps XP per question at 5
@@ -693,6 +677,22 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, [isHomeActive, mainCategory, selectedSubject, selectedLesson?.id, isPreschoolActive, isAdminConsoleActive]);
 
+  if (isAdminConsoleActive) {
+    return (
+      <Suspense fallback={<LoadingFallback label="جاري تحميل لوحة تحكم الإدارة..." minHeight="100vh" />}>
+        <AdminConsoleView onExitAdminConsole={() => setIsAdminConsoleActive(false)} />
+      </Suspense>
+    );
+  }
+
+  if (isPreschoolActive) {
+    return (
+      <Suspense fallback={<LoadingFallback label="جاري تحميل وضع التحضيري..." minHeight="100vh" />}>
+        <PreschoolApp onExit={() => setIsPreschoolActive(false)} />
+      </Suspense>
+    );
+  }
+
   return (
     <div className="min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir="rtl">
 
@@ -836,6 +836,18 @@ export default function App() {
           {/* Main Category Header Tabs — shared sliding highlight (Framer Motion layoutId) */}
           <div className="flex items-center justify-between flex-wrap gap-3">
             <div className="p-1.5 rounded-2xl border flex items-center gap-2 flex-wrap bg-[var(--app-card-bg)] border-[var(--app-card-border)] shadow-sm">
+              <motion.button
+                onClick={() => {
+                  setSelectedLesson(null);
+                  setIsHomeActive(true);
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="relative min-h-12 px-4 py-2.5 rounded-xl text-xs font-black transition-colors cursor-pointer flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-sm hover:brightness-110"
+              >
+                <span>🏠</span>
+                <span>الرئيسية</span>
+              </motion.button>
+
               {MAIN_CATEGORY_TABS.map((tab) => {
                 const isActive = mainCategory === tab.id;
                 return (
