@@ -54,6 +54,11 @@ const ScienceExperimentLab = lazy(() => import('./components/ScienceExperimentLa
 const TamazightLabInteractive = lazy(() => import('./components/TamazightLabInteractive').then((m) => ({ default: m.TamazightLabInteractive })));
 const TamazightCurriculumViewer = lazy(() => import('./components/TamazightCurriculumViewer').then((m) => ({ default: m.TamazightCurriculumViewer })));
 const TouchWritingStudio = lazy(() => import('./components/TouchWritingStudio').then((m) => ({ default: m.TouchWritingStudio })));
+const PrimaryMathLabInteractive = lazy(() => import('./components/PrimaryMathLabInteractive').then((m) => ({ default: m.PrimaryMathLabInteractive })));
+const PrimaryDiscoveryLabInteractive = lazy(() => import('./components/PrimaryDiscoveryLabInteractive').then((m) => ({ default: m.PrimaryDiscoveryLabInteractive })));
+const FrenchProjectsLabInteractive = lazy(() => import('./components/FrenchProjectsLabInteractive').then((m) => ({ default: m.FrenchProjectsLabInteractive })));
+const EnglishAudioDialoguesLab = lazy(() => import('./components/EnglishAudioDialoguesLab').then((m) => ({ default: m.EnglishAudioDialoguesLab })));
+const AcquisEvaluationViewer = lazy(() => import('./components/AcquisEvaluationViewer').then((m) => ({ default: m.AcquisEvaluationViewer })));
 const DidouDressingRoomModal = lazy(() => import('./components/DidouDressingRoomModal').then((m) => ({ default: m.DidouDressingRoomModal })));
 const HomeworkPinModal = lazy(() => import('./components/HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
 const PrintableWorksheetsGeneratorModal = lazy(() => import('./components/PrintableWorksheetsGeneratorModal').then((m) => ({ default: m.PrintableWorksheetsGeneratorModal })));
@@ -1059,6 +1064,66 @@ export default function App() {
               />
             ) : selectedSubject === 'touch_writing' ? (
               <TouchWritingStudio
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'primary_math_ops' ? (
+              <PrimaryMathLabInteractive
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'primary_discovery' ? (
+              <PrimaryDiscoveryLabInteractive
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'french_projects' ? (
+              <FrenchProjectsLabInteractive
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'english_audio_dialogues' ? (
+              <EnglishAudioDialoguesLab
+                grade={grade}
+                onBack={() => setIsHomeActive(true)}
+                onReward={(coins, xp) => {
+                  setUserProfile((prev) => ({
+                    ...prev,
+                    goldCoins: (prev.goldCoins || 150) + coins,
+                    xp: prev.xp + xp,
+                  }));
+                }}
+              />
+            ) : selectedSubject === 'acquis_5ap' ? (
+              <AcquisEvaluationViewer
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
                 onReward={(coins, xp) => {

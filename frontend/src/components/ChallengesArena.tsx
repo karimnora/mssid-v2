@@ -174,93 +174,173 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ grade, tashkee
           <p className="text-xs text-slate-300 mt-1 max-w-2xl">اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.</p>
         </div>
 
-        {/* 3 grandes cartes de mode — point d'entrée principal, au-dessus du filtre classique */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {MODE_CARDS.map((mode) => {
-            const isActive = modeFilter === mode.id;
-            const count = modeCounts[mode.id];
-            return (
-              <motion.button
-                key={mode.id}
-                onClick={() => setModeFilter(isActive ? 'all' : mode.id)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`relative rounded-3xl p-5 min-h-32 text-white shadow-lg cursor-pointer bg-gradient-to-br ${mode.gradient} flex flex-col items-center justify-center gap-1.5 text-center border-2 transition-all ${
-                  isActive ? 'border-white ring-2 ring-white/60' : 'border-transparent'
+        {/* 3 grandes cartes de mode — point d'entrée principal avec clarification explicite et descente vers les défis */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-xs text-[var(--app-text-muted)] font-bold px-1">
+            <span>اختر نمط اللعب لتصفية التحديات والانتقال إليها مباشرة :</span>
+            {modeFilter !== 'all' && (
+              <button
+                onClick={() => setModeFilter('all')}
+                className="text-rose-600 hover:text-rose-700 underline font-black cursor-pointer"
+              >
+                إلغاء الفلترة وعرض الكل ✕
+              </button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {MODE_CARDS.map((mode) => {
+              const isActive = modeFilter === mode.id;
+              const count = modeCounts[mode.id];
+              return (
+                <motion.div
+                  key={mode.id}
+                  onClick={() => {
+                    setModeFilter(isActive ? 'all' : mode.id);
+                    setTimeout(() => {
+                      document.getElementById('challenges-list-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50);
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`relative rounded-3xl p-5 min-h-40 text-white shadow-lg cursor-pointer bg-gradient-to-br ${mode.gradient} flex flex-col justify-between gap-3 text-center border-2 transition-all ${
+                    isActive ? 'border-white ring-4 ring-amber-400/80 shadow-2xl scale-[1.02]' : 'border-transparent hover:border-white/40'
+                  }`}
+                >
+                  {/* Top Header */}
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-3xl leading-none">{mode.icon}</span>
+                    <Badge variant="neutral" className="!bg-white/20 !text-white !border-white/30 text-[10px] font-black">
+                      <span dir="ltr">{count}</span> تحديات
+                    </Badge>
+                  </div>
+
+                  {/* Title & Desc */}
+                  <div className="space-y-1">
+                    <span className="font-black text-base block">{mode.titleAr}</span>
+                    <span className="text-xs text-white/85 leading-snug block">{mode.descAr}</span>
+                  </div>
+
+                  {/* Explicit Action Button / Feedback */}
+                  <div className="pt-2 border-t border-white/20">
+                    {isActive ? (
+                      <span className="w-full py-1.5 px-3 rounded-xl bg-amber-400 text-amber-950 font-black text-xs inline-flex items-center justify-center gap-1 shadow-md">
+                        <span>النمط المفعّل حالياً (انزل للأسفل 👇)</span>
+                      </span>
+                    ) : (
+                      <span className="w-full py-1.5 px-3 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs inline-flex items-center justify-center gap-1 transition-colors">
+                        <span>تصفية بهذا النمط والانتقال إليه 👇</span>
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Section Liste des Défis */}
+        <div id="challenges-list-section" className="space-y-4 scroll-mt-20">
+          <div className="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-[var(--app-card-border)]">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+              <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
+                قائمة التحديات المتاحة ({filteredChallenges.length})
+                {modeFilter !== 'all' && (
+                  <span className="text-xs font-bold text-rose-600 mr-2">
+                    — نمط: {MODE_CARDS.find((m) => m.id === modeFilter)?.titleAr}
+                  </span>
+                )}
+              </h2>
+            </div>
+            {modeFilter !== 'all' && (
+              <button
+                onClick={() => setModeFilter('all')}
+                className="text-xs font-bold px-3 py-1 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer"
+              >
+                عرض جميع الأنماط
+              </button>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2 bg-[var(--app-card-bg)] p-2 rounded-2xl border border-[var(--app-card-border)] shadow-xs overflow-x-auto">
+            <span className="text-xs font-extrabold text-[var(--app-text-muted)] px-2 shrink-0">المادة:</span>
+            <button
+              onClick={() => setSubjectFilter('all')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                subjectFilter === 'all' ? 'bg-rose-600 text-white shadow-xs font-extrabold scale-105' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200'
+              }`}
+            >
+              الكل
+            </button>
+            {challengeSubjects.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => setSubjectFilter(s.id)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                  subjectFilter === s.id ? 'bg-rose-600 text-white shadow-xs font-extrabold scale-105' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200'
                 }`}
               >
-                <span className="text-4xl leading-none">{mode.icon}</span>
-                <span className="font-black text-sm">{mode.titleAr}</span>
-                <span className="text-[11px] text-white/80 leading-snug">{mode.descAr}</span>
-                <Badge variant="neutral" className="!bg-white/15 !text-white !border-white/30 mt-1">
-                  <span dir="ltr">{count}</span> تحديات
-                </Badge>
-              </motion.button>
-            );
-          })}
-        </div>
+                {s.nameAr}
+              </button>
+            ))}
+          </div>
 
-        <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto">
-          <span className="text-xs font-extrabold text-slate-500 px-2 shrink-0">المادة:</span>
-          <button
-            onClick={() => setSubjectFilter('all')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-              subjectFilter === 'all' ? 'bg-rose-600 text-white shadow-xs font-extrabold scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-            }`}
-          >
-            الكل
-          </button>
-          {challengeSubjects.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setSubjectFilter(s.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                subjectFilter === s.id ? 'bg-rose-600 text-white shadow-xs font-extrabold scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              {s.nameAr}
-            </button>
-          ))}
-        </div>
+          <div className="flex items-center gap-2 bg-[var(--app-card-bg)] p-2 rounded-2xl border border-[var(--app-card-border)] shadow-xs overflow-x-auto">
+            <span className="text-xs font-extrabold text-[var(--app-text-muted)] px-2 shrink-0">الصعوبة:</span>
+            {(['all', 'easy', 'medium', 'hard'] as const).map((d) => (
+              <button
+                key={d}
+                onClick={() => setDifficultyFilter(d)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                  difficultyFilter === d ? 'bg-amber-500 text-slate-950 shadow-xs font-extrabold scale-105' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200'
+                }`}
+              >
+                {d === 'all' ? 'الكل' : DIFFICULTY_LABEL[d]}
+              </button>
+            ))}
+          </div>
 
-        <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto">
-          <span className="text-xs font-extrabold text-slate-500 px-2 shrink-0">الصعوبة:</span>
-          {(['all', 'easy', 'medium', 'hard'] as const).map((d) => (
-            <button
-              key={d}
-              onClick={() => setDifficultyFilter(d)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                difficultyFilter === d ? 'bg-amber-500 text-slate-950 shadow-xs font-extrabold scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              {d === 'all' ? 'الكل' : DIFFICULTY_LABEL[d]}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredChallenges.map((challenge) => {
-            const subjectName = SUBJECTS_LIST.find((s) => s.id === challenge.subject)?.nameAr || challenge.subject;
-            return (
-              <Card key={challenge.id} interactive padding="md" onClick={() => startChallenge(challenge)} className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <Badge variant="info">{subjectName}</Badge>
-                  <Badge variant={challenge.difficulty === 'hard' ? 'danger' : challenge.difficulty === 'medium' ? 'xp' : 'success'}>
-                    {DIFFICULTY_LABEL[challenge.difficulty]}
-                  </Badge>
-                </div>
-                <h3 className="font-black text-sm">{renderArabicText(challenge.titleAr)}</h3>
-                <p className="text-xs text-[var(--app-text-muted)] leading-relaxed">{renderArabicText(challenge.descriptionAr)}</p>
-                <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)]">
-                  <span>{FORMAT_LABEL[challenge.format]}</span>
-                  <span dir="ltr">{challenge.items.length} أسئلة</span>
-                </div>
-                <Button variant="danger" size="sm" fullWidth icon={<Zap className="w-4 h-4" />}>
-                  ابدأ التحدي (<span dir="ltr">+{challenge.xpReward} XP</span>)
-                </Button>
-              </Card>
-            );
-          })}
+          {filteredChallenges.length === 0 ? (
+            <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-8 text-center space-y-2">
+              <p className="text-sm font-bold text-[var(--app-text)]">لا توجد تحديات مطابقة للفلتر المحدد حالياً.</p>
+              <button
+                onClick={() => {
+                  setModeFilter('all');
+                  setSubjectFilter('all');
+                  setDifficultyFilter('all');
+                }}
+                className="text-xs text-rose-600 font-black hover:underline cursor-pointer"
+              >
+                إعادة ضبط جميع الفلاتر وعرض كل التحديات
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredChallenges.map((challenge) => {
+                const subjectName = SUBJECTS_LIST.find((s) => s.id === challenge.subject)?.nameAr || challenge.subject;
+                return (
+                  <Card key={challenge.id} interactive padding="md" onClick={() => startChallenge(challenge)} className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Badge variant="info">{subjectName}</Badge>
+                      <Badge variant={challenge.difficulty === 'hard' ? 'danger' : challenge.difficulty === 'medium' ? 'xp' : 'success'}>
+                        {DIFFICULTY_LABEL[challenge.difficulty]}
+                      </Badge>
+                    </div>
+                    <h3 className="font-black text-sm">{renderArabicText(challenge.titleAr)}</h3>
+                    <p className="text-xs text-[var(--app-text-muted)] leading-relaxed">{renderArabicText(challenge.descriptionAr)}</p>
+                    <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)]">
+                      <span>{FORMAT_LABEL[challenge.format]}</span>
+                      <span dir="ltr">{challenge.items.length} أسئلة</span>
+                    </div>
+                    <Button variant="danger" size="sm" fullWidth icon={<Zap className="w-4 h-4" />}>
+                      ابدأ التحدي (<span dir="ltr">+{challenge.xpReward} XP</span>)
+                    </Button>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     );
