@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles } from 'lucide-react';
@@ -84,16 +85,39 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const dailyObjective = getDailyObjectiveProgress();
   const dailyObjectiveDone = dailyObjective.count >= DAILY_OBJECTIVE_TARGET;
 
+  // Conic-gradient ring around the avatar: fuses "who you are" (avatar) with "how far along you
+  // are" (% to next level) into a single glance, instead of making the XP bar further down the only
+  // place progress is visible.
+  const avatarRingStyle: React.CSSProperties = {
+    background: `conic-gradient(var(--brand-amber) ${currentLevelProgress * 3.6}deg, rgba(255,255,255,0.15) ${currentLevelProgress * 3.6}deg)`,
+  };
+
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
-      <div className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in duration-200">
-        
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.18 }}
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl"
+      dir="rtl"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 28 }}
+        className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden"
+      >
+
         {/* Header */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between shrink-0 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-emerald-500 p-0.5 flex items-center justify-center text-xl font-bold">
-              <span className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
-                {selectedAvatar}
+            <div className="relative w-14 h-14 rounded-full p-[3px] shrink-0" style={avatarRingStyle} title={`${currentLevelProgress}% نحو المستوى ${currentLevel + 1}`}>
+              <div className="w-full h-full rounded-full bg-gradient-to-tr from-amber-500 to-emerald-500 p-0.5 flex items-center justify-center text-xl font-bold">
+                <span className="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
+                  {selectedAvatar}
+                </span>
+              </div>
+              <span className="absolute -bottom-1 -left-1 bg-amber-400 text-slate-950 text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-slate-900">
+                {currentLevel}
               </span>
             </div>
             <div>
@@ -114,6 +138,12 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <p className="text-xs text-slate-400 font-sans mt-0.5">
                 {authUser?.email ? `${authUser.email} • المستوى ${currentLevel}` : `تلميذ في ${userProfile.grade} • المستوى ${currentLevel}`}
               </p>
+              <div className="w-32 sm:w-40 bg-white/10 h-1.5 rounded-full overflow-hidden mt-1.5">
+                <div
+                  className="h-full rounded-full bg-amber-400 transition-all duration-500"
+                  style={{ width: `${currentLevelProgress}%` }}
+                />
+              </div>
             </div>
           </div>
 
@@ -289,7 +319,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             {t('saveAndClose')}
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

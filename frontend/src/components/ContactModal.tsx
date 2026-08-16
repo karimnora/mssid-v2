@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { X, Send, MessageSquare, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { springBootApi } from '../services/springBootApi';
 import { AuthUser } from '../types/auth';
@@ -54,8 +55,19 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
-      <div className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in duration-200">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.18 }}
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl"
+      dir="rtl"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 28 }}
+        className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden"
+      >
         {/* Header */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between shrink-0 border-b border-slate-800">
           <div className="flex items-center gap-3">
@@ -78,12 +90,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
         {/* Body */}
         <div className="p-5 overflow-y-auto flex-1 space-y-4">
           {submitState === 'success' ? (
-            <div className="text-center py-8 space-y-3">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="text-center py-8 space-y-3"
+            >
               <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto" />
               <h3 className="text-base font-black text-slate-900">شكراً لك! تم إرسال رسالتك بنجاح.</h3>
               <p className="text-sm text-slate-700">سنقوم بمراجعتها في أقرب وقت ممكن.</p>
               <Button variant="primary" onClick={handleClose}>إغلاق</Button>
-            </div>
+            </motion.div>
           ) : (
             <>
               <div className="space-y-1.5">
@@ -93,6 +110,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="اسمك الكامل"
+                  autoComplete="name"
                   className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
@@ -105,13 +123,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="example@mail.com"
                   dir="ltr"
+                  autoComplete="email"
                   className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm font-bold text-slate-900 text-right focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label className="text-xs font-extrabold text-slate-700">نوع الرسالة</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {(Object.keys(CONTACT_TYPE_LABELS) as ContactType[]).map((t) => (
                     <button
                       key={t}
@@ -157,7 +176,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
             </Button>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, XCircle, HelpCircle } from 'lucide-react';
 import { ProgressiveExercise } from '../types';
+import { renderTextWithMath } from './MathExpression';
 
 interface PracticeExerciseCardProps {
   ex: ProgressiveExercise;
@@ -71,7 +72,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
         <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>
       </div>
 
-      <p className="text-sm font-bold text-slate-900 whitespace-pre-line">{renderArabicText(ex.problemAr)}</p>
+      <p className="text-sm font-bold text-slate-900 whitespace-pre-line">{renderTextWithMath(renderArabicText(ex.problemAr))}</p>
 
       {/* QCM / True-False */}
       {(ex.type === 'qcm' || ex.type === 'true_false') && ex.options && (
@@ -93,7 +94,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
                 onClick={() => setAnswer(opt.id)}
                 className={`text-right p-3 rounded-xl border text-xs transition-all cursor-pointer flex items-center justify-between ${style}`}
               >
-                <span>{renderArabicText(opt.textAr)}</span>
+                <span>{renderTextWithMath(renderArabicText(opt.textAr))}</span>
                 {isChecked && opt.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
                 {isChecked && isSelected && !opt.isCorrect && <XCircle className="w-4 h-4 text-rose-500 shrink-0" />}
               </button>

@@ -65,7 +65,7 @@ export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, onOpe
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           transition={{ type: 'spring', stiffness: 300, damping: 26 }}
-          className="fixed bottom-20 md:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-80 z-40 dir-rtl"
+          className="fixed bottom-28 md:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-80 z-30 dir-rtl"
           dir="rtl"
         >
           <Card padding="md" className="shadow-2xl border-2 border-[var(--brand-amber)]/40 space-y-3 relative">

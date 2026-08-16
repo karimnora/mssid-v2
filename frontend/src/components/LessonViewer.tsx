@@ -6,6 +6,7 @@ import { LessonExplanationView } from './LessonExplanationView';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { LoadingFallback } from './LoadingFallback';
+import { renderTextWithMath } from './MathExpression';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
 
@@ -29,7 +30,7 @@ const IslamicEducationInteractive = lazy(() => import('./IslamicEducationInterac
 const CivicsInteractive = lazy(() => import('./CivicsInteractive').then((m) => ({ default: m.CivicsInteractive })));
 const MathInteractive = lazy(() => import('./MathInteractive').then((m) => ({ default: m.MathInteractive })));
 const LanguageLabInteractive = lazy(() => import('./LanguageLabInteractive').then((m) => ({ default: m.LanguageLabInteractive })));
-import { BookOpen, CheckCircle2, Trophy, ArrowRight, ArrowLeft, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, Target, GraduationCap, ClipboardCheck, Printer, Lock } from 'lucide-react';
+import { BookOpen, CheckCircle2, Trophy, ArrowRight, ArrowLeft, Lightbulb, Gamepad2, Sparkles, Eye, EyeOff, Glasses, Shuffle, RotateCcw, XCircle, Award, ChevronLeft, ChevronRight, ChevronDown, Target, GraduationCap, ClipboardCheck, Printer, Lock, Info } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface LessonViewerProps {
@@ -129,6 +130,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [activeTab, setActiveTab] = useState<TabId>('explanation');
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [showRevisionSheet, setShowRevisionSheet] = useState(false);
+  const [showParentInfo, setShowParentInfo] = useState(false);
   const enablePrintablePDFs = useFeatureFlag('enablePrintablePDFs');
 
   // Text-to-speech read-aloud — 1AP/2AP/3AP students are still learning to read, so a giant speaker
@@ -277,6 +279,12 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
     return tashkeelEnabled ? text : stripArabicTashkeel(text);
+  };
+
+  // Same normalization as renderArabicText, but also isolates embedded math expressions
+  // (e.g. "(3 + 5) × 2") in a fixed-LTR span so bidi reordering doesn't mirror the parentheses.
+  const renderArabicMath = (text: string | undefined | null): React.ReactNode => {
+    return renderTextWithMath(renderArabicText(text));
   };
 
   // Function to initialize and shuffle question options
@@ -592,12 +600,35 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </div>
           <h1 className="text-xl sm:text-2xl font-black mb-3">{renderArabicText(lesson.titleAr)}</h1>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-3xl">
-            {renderArabicText(lesson.summaryAr)}
+            {renderArabicMath(lesson.summaryAr)}
           </p>
           {lesson.sourceNoteAr && (
-            <p className="text-slate-400 text-[10px] leading-relaxed max-w-3xl mt-2 border-t border-white/10 pt-2">
-              ℹ️ {renderArabicText(lesson.sourceNoteAr)}
-            </p>
+            <div className="mt-3 border-t border-white/10 pt-2">
+              <button
+                onClick={() => setShowParentInfo((v) => !v)}
+                aria-expanded={showParentInfo}
+                className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 text-[11px] font-bold transition-colors cursor-pointer"
+              >
+                <Info className="w-3.5 h-3.5" />
+                <span>معلومة لولي الأمر</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showParentInfo ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence initial={false}>
+                {showParentInfo && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="text-slate-400 text-[10px] leading-relaxed max-w-3xl pt-2">
+                      {renderArabicMath(lesson.sourceNoteAr)}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           )}
         </div>
       </div>
@@ -621,7 +652,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             {lesson.objectivesAr.map((obj, i) => (
               <li key={i} className="text-xs sm:text-sm text-[var(--app-text-muted)] flex items-start gap-2">
                 <span className="text-[var(--brand-blue)] shrink-0">◆</span>
-                <span>{renderArabicText(obj)}</span>
+                <span>{renderArabicMath(obj)}</span>
               </li>
             ))}
           </ul>
