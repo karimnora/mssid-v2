@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { X, Printer, FileText, Download, CheckSquare, Sparkles, BookOpen } from 'lucide-react';
+import { X, Printer, FileText, Download, CheckSquare, Sparkles, BookOpen, Layers } from 'lucide-react';
 import { PrimaryGrade, SubjectId } from '../types';
 
 interface PrintableWorksheetsGeneratorModalProps {
@@ -8,6 +8,8 @@ interface PrintableWorksheetsGeneratorModalProps {
   onClose: () => void;
   defaultGrade?: PrimaryGrade;
 }
+
+type SheetType = 'exam' | 'summary_card';
 
 export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGeneratorModalProps> = ({
   isOpen,
@@ -17,7 +19,7 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
   const [selectedGrade, setSelectedGrade] = useState<PrimaryGrade>(defaultGrade);
   const [selectedSubject, setSelectedSubject] = useState<SubjectId>('math');
   const [trimester, setTrimester] = useState<1 | 2 | 3>(1);
-  const [sheetTitle, setSheetTitle] = useState('فرض المراقبة المستمرة وتقويم الكفاءات');
+  const [sheetType, setSheetType] = useState<SheetType>('exam');
 
   if (!isOpen) return null;
 
@@ -26,22 +28,22 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm dir-rtl" dir="rtl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm dir-rtl" dir="rtl">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl max-w-4xl w-full p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[92vh] overflow-hidden"
+        className="bg-white rounded-3xl max-w-4xl w-full p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[94vh] overflow-hidden"
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center text-2xl">
+            <div className="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center text-xl shrink-0">
               📄
             </div>
             <div>
-              <h2 className="text-xl font-black text-slate-900">مولّد الفروض والبطاقات الرسمية للطباعة A4</h2>
-              <p className="text-xs text-slate-500 font-bold">بترويسة وزارة التربية الوطنية وسلم التنقيط مع الحل النموذجي</p>
+              <h2 className="text-base sm:text-lg font-black text-slate-900">مولّد الفروض وبطاقات التلخيص الرسمية (A4)</h2>
+              <p className="text-xs text-slate-500 font-bold">جاهزة للطباعة المنزلية أو المدرسية وفق معايير وزارة التربية الوطنية</p>
             </div>
           </div>
 
@@ -51,22 +53,22 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
               className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />
-              <span>طباعة الورقة A4 (Imprimer)</span>
+              <span>طباعة / حفظ PDF</span>
             </button>
 
             <button
               onClick={onClose}
-              className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
+              className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Options Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 py-3 border-b border-slate-100 text-xs">
+        {/* Filters Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-3 border-b border-slate-100 text-xs">
           <div>
-            <label className="font-black text-slate-700 block mb-1">المستوى:</label>
+            <label className="font-black text-slate-700 block mb-1">المستوى الدراسي:</label>
             <select
               value={selectedGrade}
               onChange={(e) => setSelectedGrade(e.target.value as PrimaryGrade)}
@@ -94,6 +96,7 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
               <option value="islamic">التربية الإسلامية (Islamique)</option>
               <option value="civics">التربية المدنية (Civique)</option>
               <option value="french">اللغة الفرنسية (Français)</option>
+              <option value="english">اللغة الإنجليزية (English)</option>
               <option value="tamazight">اللغة الأمازيغية (Tamaziɣt / ⵜⴰⵎⴰⵣⵉⵖⵜ)</option>
             </select>
           </div>
@@ -110,181 +113,202 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
               <option value={3}>الفصل الثالث (3ème Trimestre)</option>
             </select>
           </div>
+
+          <div>
+            <label className="font-black text-slate-700 block mb-1">نوع المستند:</label>
+            <select
+              value={sheetType}
+              onChange={(e) => setSheetType(e.target.value as SheetType)}
+              className="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-emerald-800"
+            >
+              <option value="exam">موضوع امتحان / فرض تقويمي</option>
+              <option value="summary_card">بطاقة مراجعة وخلاصة قواعد</option>
+            </select>
+          </div>
         </div>
 
         {/* Live A4 Preview Container */}
-        <div className="flex-1 overflow-y-auto p-4 bg-slate-100 rounded-2xl mt-3">
-          <div className="printable-sheet bg-white max-w-[210mm] mx-auto p-8 border border-slate-300 shadow-lg rounded-xl text-slate-900 font-sans space-y-6">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-slate-100 rounded-2xl mt-3">
+          <div className="printable-sheet bg-white max-w-[210mm] mx-auto p-6 sm:p-8 border border-slate-300 shadow-lg rounded-xl text-slate-900 font-sans space-y-5">
             {/* Republic & Ministry Official Header */}
-            <div className="text-center border-b-2 border-slate-800 pb-4 space-y-1">
-              <h3 className="text-sm font-black tracking-wide">الجمهورية الجزائرية الديمقراطية الشعبية</h3>
-              <h4 className="text-xs font-bold">وزارة التربية الوطنية — مديرية التعليم الابتدائي</h4>
-              <div className="flex items-center justify-between text-xs font-black pt-2 px-2">
+            <div className="text-center border-b-2 border-slate-800 pb-3 space-y-1">
+              <h3 className="text-xs sm:text-sm font-black tracking-wide">الجمهورية الجزائرية الديمقراطية الشعبية</h3>
+              <h4 className="text-[11px] sm:text-xs font-bold text-slate-700">وزارة التربية الوطنية — مديرية التعليم الابتدائي</h4>
+              <div className="flex items-center justify-between text-[11px] font-black pt-2 px-2 text-slate-800 flex-wrap gap-1">
                 <span>المدرسة الابتدائية: .......................................</span>
                 <span>المستوى: {selectedGrade}</span>
                 <span>السنة الدراسية: 2025 / 2026</span>
               </div>
             </div>
 
-            {/* Assessment Title & Student Box */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <div className="space-y-1 text-right flex-1">
-                <span className="text-xs font-bold text-slate-500">موضوع الاختبار والتقويم المستمر:</span>
-                <h3 className="text-base font-black text-slate-900">
-                  اختبار الفصل {trimester === 1 ? 'الأول' : trimester === 2 ? 'الثاني' : 'الثالث'} في مادة {
+            {/* Assessment / Summary Title & Student Box */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div className="space-y-0.5 text-right flex-1">
+                <span className="text-[10px] font-bold text-slate-500">
+                  {sheetType === 'exam' ? 'موضوع التقويم المستمر والاختبار الرسمي:' : 'بطاقة المراجعة المركزة للمكتسبات:'}
+                </span>
+                <h3 className="text-sm sm:text-base font-black text-slate-900">
+                  {sheetType === 'exam' ? 'اختبار' : 'خلاصة دروس'} الفصل {trimester === 1 ? 'الأول' : trimester === 2 ? 'الثاني' : 'الثالث'} في مادة {
                     selectedSubject === 'math' ? 'الرياضيات' :
                     selectedSubject === 'arabic' ? 'اللغة العربية' :
-                    selectedSubject === 'science' ? 'التربية العلمية' :
-                    selectedSubject === 'tamazight' ? 'اللغة الأمازيغية (Tutlayt Tamaziɣt / ⵜⵓⵜⵍⴰⵢⵜ ⵜⴰⵎⴰⵣⵉⵖⵜ)' :
+                    selectedSubject === 'science' ? 'التربية العلمية والتكنولوجية' :
+                    selectedSubject === 'history_geo' ? 'التاريخ والجغرافيا' :
+                    selectedSubject === 'islamic' ? 'التربية الإسلامية' :
+                    selectedSubject === 'civics' ? 'التربية المدنية' :
+                    selectedSubject === 'french' ? 'اللغة الفرنسية (Français)' :
+                    selectedSubject === 'english' ? 'اللغة الإنجليزية (English)' :
+                    selectedSubject === 'tamazight' ? 'اللغة الأمازيغية (Tamaziɣt / ⵜⴰⵎⴰⵣⵉⵖⵜ)' :
                     'المادة المقررة'
                   }
                 </h3>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="border border-slate-300 bg-white p-2 rounded-lg text-xs font-bold space-y-1 text-right min-w-36">
+              <div className="flex items-center gap-3">
+                <div className="border border-slate-300 bg-white p-2 rounded-lg text-[11px] font-bold space-y-1 text-right min-w-32">
                   <div>اسم ولقب التلميذ(ة): ...................</div>
-                  <div>القسم: ........... الفوج: .......</div>
+                  <div>القسم: {selectedGrade} الفوج: .......</div>
                 </div>
 
-                <div className="border-2 border-slate-800 bg-white px-4 py-2 rounded-lg text-center">
-                  <span className="text-[10px] font-black block">العلامة</span>
-                  <span className="text-lg font-black text-emerald-800">..... / 10</span>
-                </div>
+                {sheetType === 'exam' && (
+                  <div className="border-2 border-slate-800 bg-white px-3 py-1.5 rounded-lg text-center">
+                    <span className="text-[9px] font-black block text-slate-600">العلامة</span>
+                    <span className="text-base font-black text-emerald-800">..... / 10</span>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Sample Ministry Exercises */}
-            {selectedSubject === 'tamazight' ? (
-              <div className="space-y-5 text-sm">
-                {/* Exercise 1 */}
+            {/* Dynamic Subject Content */}
+            {selectedSubject === 'arabic' ? (
+              <div className="space-y-4 text-xs sm:text-sm">
+                <div className="bg-amber-50/70 p-3 rounded-xl border border-amber-200 text-xs leading-relaxed space-y-1">
+                  <span className="font-black text-amber-900 block">📖 السند والنص القرائي:</span>
+                  <p className="font-arabic text-slate-800">
+                    الجزائرُ وَطَنٌ عَزِيزٌ تَزْخَرُ أَرْضُهُ بِالخَيْرَاتِ وَالجَمَالِ. فِي الشَّمَالِ تَمْتَدُّ السُّهُولُ الخَضْرَاءُ وَالبَحْرُ الأَزْرَقُ، وَفِي الجَنُوبِ تَسْتَقِرُّ الرِّمَالُ الذَّهَبِيَّةُ وَوَاحَاتُ النَّخِيلِ الشَّامِخَةِ. عَلَى كُلِّ تِلْمِيذٍ أَنْ يَجْتَهِدَ فِي دِرَاسَتِهِ لِيَبْنِيَ مُسْتَقْبَلَ بِلادِهِ الحَبِيبَةِ.
+                  </p>
+                </div>
+
                 <div className="space-y-2">
                   <div className="flex items-center justify-between font-black border-b border-slate-200 pb-1">
-                    <span>التمرين الأول (02.5 نقطة) — Agemmay n Tifinagh:</span>
-                    <span className="text-xs text-slate-500">قراءة ومطابقة خط التيفيناغ</span>
+                    <span>الجزء الأول: البناء الفكري واللغوي (05 نقاط):</span>
                   </div>
-                  <p className="text-xs leading-relaxed">
-                    اربط بسهم كل رمز تيفيناغي بالاسم اللاتيني المقابل ومعناه باللغة العربية:
-                  </p>
-                  <div className="grid grid-cols-3 gap-3 py-2 text-center font-bold text-xs bg-slate-50 p-3 rounded-lg border border-slate-100">
-                    <div className="p-2 border border-slate-200 bg-white rounded space-y-1">
-                      <div className="text-lg font-black text-blue-700">ⵣ (Yaz)</div>
-                      <div className="text-slate-500">Amaziɣ (الإنسان الحر)</div>
-                    </div>
-                    <div className="p-2 border border-slate-200 bg-white rounded space-y-1">
-                      <div className="text-lg font-black text-blue-700">ⵔ (Yar)</div>
-                      <div className="text-slate-500">Argaz (الرجل)</div>
-                    </div>
-                    <div className="p-2 border border-slate-200 bg-white rounded space-y-1">
-                      <div className="text-lg font-black text-blue-700">ⵜ (Yat)</div>
-                      <div className="text-slate-500">Taddart (القرية)</div>
-                    </div>
+                  <div className="space-y-1.5 text-xs">
+                    <p>1. هَاتِ عُنْوَانًا مُنَاسِبًا لِلنَّصِّ: ..............................................................</p>
+                    <p>2. اسْتَخْرِجْ مِنْ النَّصِّ مُرَادِفَ كَلِمَةِ (يَعْمَلُ بِجِدٍّ): ....................... وضِدَّ (الشَّمَال): .......................</p>
+                    <p>3. أَعْرِبْ مَا تَحْتَهُ خَطٌّ فِي النَّصِّ (الجزائرُ - يَجْتَهِدَ): ..............................................................</p>
                   </div>
                 </div>
 
-                {/* Exercise 2 */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between font-black border-b border-slate-200 pb-1">
-                    <span>التمرين الثاني (02.5 نقطة) — Taseddast:</span>
-                    <span className="text-xs text-slate-500">قواعد التحويل من المذكر للمؤنث</span>
+                    <span>الجزء الثاني: الوضعية الإدماجية (05 نقاط):</span>
                   </div>
-                  <p className="text-xs leading-relaxed">
-                    أكمل تحويل الكلمات التالية بإضافة علامة التأنيث (T...T):
+                  <p className="text-xs leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+                    اكتب فقرة من 6 إلى 8 أسطر تتحدث فيها عن واجبك نحو وطنك الجزائر للمحافظة على بيئته ونظافة مدرستك، موظفاً جملة اسمية وحرف عطف.
                   </p>
-                  <div className="space-y-1 text-xs font-medium pr-4">
-                    <p>1. Axxam (منزل) ➔ ..................................................... (Taxxamt)</p>
-                    <p>2. Amcic (قط) ➔ ..................................................... (Tamcict)</p>
-                  </div>
-                </div>
-
-                {/* Problem Scenario */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between font-black border-b border-slate-200 pb-1">
-                    <span>الوضعية الإدماجية (05 نقاط) — Tinfusin d Tira:</span>
-                    <span className="text-xs text-slate-500">التعبير والإنتاج الكتابي التراثي</span>
-                  </div>
-                  <p className="text-xs leading-relaxed bg-amber-50/60 p-3 rounded-lg border border-amber-200 font-medium">
-                    اكتب فقرة من 3 أسطر باللغة الأمازيغية (أو بحروف التيفيناغ) تصف فيها عائلة الفنك الذهبي "ديدو" في احتفال رأس السنة الأمازيغية (Yennayer 2976).
-                  </p>
-                  <div className="space-y-2 text-xs font-bold pr-4">
-                    <div className="border-b border-dashed border-slate-300 h-6"></div>
-                    <div className="border-b border-dashed border-slate-300 h-6"></div>
-                    <div className="border-b border-dashed border-slate-300 h-6"></div>
+                  <div className="space-y-2 pt-1">
+                    <div className="border-b border-dashed border-slate-300 h-5"></div>
+                    <div className="border-b border-dashed border-slate-300 h-5"></div>
+                    <div className="border-b border-dashed border-slate-300 h-5"></div>
                   </div>
                 </div>
               </div>
+            ) : selectedSubject === 'french' ? (
+              <div className="space-y-4 text-xs sm:text-sm">
+                <div className="bg-blue-50/70 p-3 rounded-xl border border-blue-200 text-xs leading-relaxed space-y-1">
+                  <span className="font-black text-blue-900 block">📖 Texte de lecture: Le Fennec du Sahara</span>
+                  <p className="text-slate-800 font-sans">
+                    Le fennec est un petit animal qui vit dans le grand désert algérien. Il a de grandes oreilles pour écouter et chasser la nuit. Il se nourrit de plantes, de lézards et d'insectes. C'est un animal protégé.
+                  </p>
+                </div>
+
+                <div className="space-y-1.5 text-xs font-sans">
+                  <p><strong>1. Compréhension de l'écrit (3 pts):</strong></p>
+                  <p>• Où vit le fennec ? ➔ .....................................................................</p>
+                  <p>• De quoi se nourrit-il ? ➔ .....................................................................</p>
+                  <p><strong>2. Activités de langue (3 pts):</strong></p>
+                  <p>• Souligne le sujet et encadre le verbe : <em>Le fennec vit dans le désert.</em></p>
+                  <p>• Mets au pluriel : <em>Le grand animal</em> ➔ <em>Les .....................................................</em></p>
+                  <p><strong>3. Production écrite (4 pts):</strong> Complète la fiche de la Gazelle avec les mots : <em>(cornes, herbe, rapide, désert)</em>.</p>
+                </div>
+              </div>
+            ) : selectedSubject === 'science' ? (
+              <div className="space-y-4 text-xs sm:text-sm">
+                <div className="space-y-2">
+                  <span className="font-black text-slate-900 block border-b pb-1">التمرين الأول (03 نقاط) — دورة حياة النبات الأخضر:</span>
+                  <p className="text-xs">رتب مراحل إنتاش البذرة ونمو النبتة من 1 إلى 4 مع ذكر الشروط الضرورية للإنتاش (الماء، الحرارة، سلامة الرشيم):</p>
+                  <div className="grid grid-cols-4 gap-2 text-center text-xs pt-1">
+                    <div className="p-2 border rounded bg-slate-50">(...) ظهور السويقة</div>
+                    <div className="p-2 border rounded bg-slate-50">(...) انتفاخ البذرة</div>
+                    <div className="p-2 border rounded bg-slate-50">(...) نمو الجذير للأسفل</div>
+                    <div className="p-2 border rounded bg-slate-50">(...) تفتح الأوراق الخضراء</div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <span className="font-black text-slate-900 block border-b pb-1">التمرين الثاني (03 نقاط) — الدارة الكهربائية والأمن:</span>
+                  <p className="text-xs">صنّف المواد التالية في جدول (نواقل / عوازل للتيار الكهربائي): <em>(مسمار حديدي، مسطرة خشبية، ماء نقي، سلك نحاسي، ممحاة مطاطية، ماء مالح)</em>.</p>
+                </div>
+
+                <div className="space-y-2">
+                  <span className="font-black text-slate-900 block border-b pb-1">الوضعية الإدماجية (04 نقاط) — المحافظة على الصحة:</span>
+                  <p className="text-xs bg-teal-50 p-2.5 rounded-lg border border-teal-200">
+                    أصيب زميلك بالإرهاق وضيق في التنفس أثناء حصة التربية البدنية. قدم له 3 نصائح للحفاظ على سلامة الجهاز التنفسي والقلب.
+                  </p>
+                </div>
+              </div>
+            ) : selectedSubject === 'tamazight' ? (
+              <div className="space-y-4 text-xs sm:text-sm">
+                <div className="space-y-2">
+                  <span className="font-black border-b pb-1 block">التمرين الأول (02.5 نقطة) — Agemmay n Tifinagh:</span>
+                  <p className="text-xs">اربط بسهم كل رمز تيفيناغي بالاسم اللاتيني المقابل ومعناه باللغة العربية:</p>
+                  <div className="grid grid-cols-3 gap-2 text-center font-bold text-xs bg-slate-50 p-2 rounded-lg border">
+                    <div className="p-1.5 border bg-white rounded"><span className="text-lg font-black text-blue-700">ⵣ (Yaz)</span><br/><span className="text-slate-500">Amaziɣ (الإنسان الحر)</span></div>
+                    <div className="p-1.5 border bg-white rounded"><span className="text-lg font-black text-blue-700">ⵔ (Yar)</span><br/><span className="text-slate-500">Argaz (الرجل)</span></div>
+                    <div className="p-1.5 border bg-white rounded"><span className="text-lg font-black text-blue-700">ⵜ (Yat)</span><br/><span className="text-slate-500">Taddart (القرية)</span></div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <span className="font-black border-b pb-1 block">التمرين الثاني (02.5 نقطة) — Taseddast (المذكر والمؤنث):</span>
+                  <p className="text-xs">حوّل من المذكر إلى المؤنث بإضافة (T...T): 1. Axxam ➔ Taxxamt | 2. Amcic ➔ Tamcict.</p>
+                </div>
+              </div>
             ) : (
-              <div className="space-y-5 text-sm">
-                {/* Exercise 1 */}
+              /* Default Math View */
+              <div className="space-y-4 text-xs sm:text-sm">
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between font-black border-b border-slate-200 pb-1">
-                    <span>التمرين الأول (02.5 نقطة):</span>
-                    <span className="text-xs text-slate-500">الحساب والعمليات الأساسية</span>
-                  </div>
-                  <p className="text-xs leading-relaxed">
-                    أنجز العمليات الحسابية التالية عمودياً مع كتابة الاحتفاظ بدقة:
-                  </p>
-                  <div className="grid grid-cols-3 gap-4 py-2 text-center font-mono font-bold text-sm bg-slate-50 p-3 rounded-lg border border-slate-100">
-                    <div className="p-2 border border-slate-200 bg-white rounded">5 480 + 3 750 = .........</div>
-                    <div className="p-2 border border-slate-200 bg-white rounded">9 840 - 4 395 = .........</div>
-                    <div className="p-2 border border-slate-200 bg-white rounded">425 × 12 = .........</div>
+                  <span className="font-black border-b pb-1 block">التمرين الأول (02.5 نقطة) — الحساب والعمليات العمودية:</span>
+                  <div className="grid grid-cols-3 gap-3 py-1 text-center font-mono font-bold text-xs bg-slate-50 p-2.5 rounded-lg border">
+                    <div className="p-2 border bg-white rounded">5 480 + 3 750 = .......</div>
+                    <div className="p-2 border bg-white rounded">9 840 - 4 395 = .......</div>
+                    <div className="p-2 border bg-white rounded">425 × 12 = .......</div>
                   </div>
                 </div>
 
-                {/* Exercise 2 */}
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between font-black border-b border-slate-200 pb-1">
-                    <span>التمرين الثاني (02.5 نقطة):</span>
-                    <span className="text-xs text-slate-500">الهندسة والمقادير والقياس</span>
-                  </div>
-                  <p className="text-xs leading-relaxed">
-                    حقل مستطيل الشكل طوله 120 متراً وعرضه 45 متراً.
-                  </p>
-                  <div className="space-y-1 text-xs font-medium pr-4">
-                    <p>1. احسب محيط هذا الحقل بالمتر (m).</p>
-                    <p>2. أراد الفلاح تسييجه بسياج مع ترك مدخل عرضه 4 أمتار. احسب طول السياج اللازم.</p>
-                  </div>
+                  <span className="font-black border-b pb-1 block">التمرين الثاني (02.5 نقطة) — الهندسة والمقادير:</span>
+                  <p className="text-xs">حقل مستطيل الشكل طوله 120 متراً وعرضه 45 متراً. احسب محيط الحقل (m) ثم احسب طول السياج إذا ترك مدخلاً عرضه 4 أمتار.</p>
                 </div>
 
-                {/* Problem Scenario */}
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between font-black border-b border-slate-200 pb-1">
-                    <span>الوضعية الإدماجية المركبة (05 نقاط):</span>
-                    <span className="text-xs text-slate-500">حل المشكلات اليومية</span>
-                  </div>
-                  <p className="text-xs leading-relaxed bg-amber-50/60 p-3 rounded-lg border border-amber-200 font-medium">
-                    بمناسبة الدخول المدرسي، اشترى الأب لأبنائه 3 محافظ بسعر 1 500 دج للمحفظة الواحدة، ومجموعة كتب وأدوات بمبلغ 4 850 دج. دفع الأب للتاجر مبلغا قدره 10 000 دج.
+                  <span className="font-black border-b pb-1 block">الوضعية الإدماجية المركبة (05 نقاط) — سوق الدينار الجزائري:</span>
+                  <p className="text-xs bg-amber-50/70 p-2.5 rounded-lg border border-amber-200">
+                    بمناسبة الدخول المدرسي، اشترى الأب 3 محافظ بسعر 1 500 دج للمحفظة الواحدة، ومجموعة كتب بمبلغ 4 850 دج. دفع للتاجر ورقة من فئة 10 000 دج. احسب ثمن المحافظ، المبلغ الإجمالي، والمبلغ الذي يرجعه التاجر.
                   </p>
-                  <div className="space-y-2 text-xs font-bold pr-4">
-                    <p>أ) احسب ثمن شراء المحافظ الثلاثة.</p>
-                    <p>ب) احسب المبلغ الإجمالي للمشتريات.</p>
-                    <p>ج) احسب كم ديناراً سيرجع التاجر للأب.</p>
-                  </div>
                 </div>
               </div>
             )}
 
             {/* Detachable Answer Key (Correction Guide) */}
-            <div className="border-t-2 border-dashed border-slate-400 pt-4 mt-6 space-y-2 text-xs bg-slate-50 p-4 rounded-xl">
+            <div className="border-t-2 border-dashed border-slate-400 pt-3 mt-4 space-y-1.5 text-xs bg-slate-50 p-3 rounded-xl">
               <div className="flex items-center justify-between font-black text-slate-800">
-                <span>✂️ قسيمة التصحيح النموذجي وسلم التنقيط (تنزع من طرف الأستاذ أو الولي)</span>
-                <span className="bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded text-[10px]">مَسِيد DZ 🇩🇿</span>
+                <span>✂️ قسيمة التصحيح وسلّم التنقيط النموذجي (تنزع من طرف الأستاذ أو الولي)</span>
+                <span className="bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded text-[10px] font-bold">مَسِيد DZ 🇩🇿</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 text-[11px] text-slate-600 font-medium pt-1">
-                {selectedSubject === 'tamazight' ? (
-                  <>
-                    <div>• التم 1: الربط السليم لرموز التيفيناغ ⵣ و ⵔ و ⵜ (0.83ن لكل ربط).</div>
-                    <div>• التم 2: Taxxamt و Tamcict (1.25ن لكل تحويل صحيح).</div>
-                    <div>• الوضعية: سلامة لغة التعبير والخط والالتزام بالموضوع (5 نقاط كاملة).</div>
-                  </>
-                ) : (
-                  <>
-                    <div>• التم 1: ناتج الجمع 9230 (0.75ن) | الطرح 5445 (0.75ن) | الضرب 5100 (1ن).</div>
-                    <div>• التم 2: المحيط = (120+45)×2 = 330m (1.5ن) | السياج = 330 - 4 = 326m (1ن).</div>
-                    <div>• الوضعية: المحافظ = 4500 دج (1.5ن) | المجموع = 9350 دج (1.5ن) | الصرف = 650 دج (2ن).</div>
-                  </>
-                )}
-              </div>
+              <p className="text-[11px] text-slate-600 font-medium">
+                • التمارين (1 و 2): تطبيق القواعد الحسابية واللغوية الدقيقة وفق المنهاج (5 نقاط كاملة).<br/>
+                • الوضعية الإدماجية: الالتزام بالتعليمة، تسلسل الأفكار، وسلامة الخط والحساب بالدينار الجزائري (5 نقاط كاملة).
+              </p>
             </div>
           </div>
         </div>

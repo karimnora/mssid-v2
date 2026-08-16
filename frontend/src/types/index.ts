@@ -33,7 +33,12 @@ export type SubjectId =
   | 'wilayas_map'
   | 'history_museum'
   | 'touch_writing'
-  | 'science_lab';
+  | 'science_lab'
+  | 'primary_math_ops'
+  | 'primary_discovery'
+  | 'french_projects'
+  | 'english_audio_dialogues'
+  | 'acquis_5ap';
 
 export interface SubjectInfo {
   id: SubjectId;
@@ -719,7 +724,7 @@ export interface Badge {
   titleAr: string;
   descriptionAr: string;
   icon: string;
-  category: 'math' | 'soroban' | 'arabic' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'general';
+  category: 'math' | 'soroban' | 'arabic' | 'tamazight' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'general';
   criteria: BadgeCriteria;
 }
 
