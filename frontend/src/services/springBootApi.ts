@@ -46,8 +46,18 @@ export interface SpringBootAuthResponse {
   user?: any;
 }
 
+// Endpoints that must never trigger a silent refresh-and-retry: retrying auth itself would either
+// loop (refresh calling refresh) or make no sense (a failed login isn't fixed by refreshing).
+const AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH = ['/v1/auth/login', '/v1/auth/register', '/v1/auth/logout', '/v1/auth/refresh'];
+
 class SpringBootApiService {
   private requestTimeoutMs = 15000;
+
+  // SEC-06: dedupes concurrent refresh attempts — if several API calls 401 around the same moment
+  // (e.g. a screen firing 3 parallel fetches right as the access token expires), they all await the
+  // same in-flight refresh instead of each rotating the single-use refresh token and invalidating
+  // each other's attempt.
+  private refreshPromise: Promise<boolean> | null = null;
 
   // SEC-05: identity for the x-user-role/x-user-id convenience headers (used by the AI quota system)
   // is pushed here by AuthService.setCurrentUser whenever the in-memory auth singleton changes — no
@@ -66,6 +76,30 @@ class SpringBootApiService {
   // asking the server to clear it, not deleting a localStorage entry.
   public async logout(): Promise<void> {
     await this.request('/v1/auth/logout', { method: 'POST' }).catch(() => {});
+  }
+
+  // SEC-06: exchanges the HttpOnly refresh cookie for a fresh access-token cookie (see
+  // AuthController.refresh). Deliberately bypasses `request()` — going through it would re-enter this
+  // same 401-handling branch and could recurse. Dedupes concurrent callers onto one in-flight call
+  // since the refresh token is single-use: two parallel refreshes would have the second one rotate a
+  // token the first already consumed.
+  private async tryRefresh(): Promise<boolean> {
+    if (this.refreshPromise) return this.refreshPromise;
+
+    const baseUrl = SPRING_BOOT_BASE_URL.endsWith('/') ? SPRING_BOOT_BASE_URL.slice(0, -1) : SPRING_BOOT_BASE_URL;
+
+    this.refreshPromise = fetch(`${baseUrl}/v1/auth/refresh`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this.getHeaders(),
+    })
+      .then((res) => res.ok)
+      .catch(() => false)
+      .finally(() => {
+        this.refreshPromise = null;
+      });
+
+    return this.refreshPromise;
   }
 
   // Générer les en-têtes HTTP sécurisés
@@ -89,7 +123,8 @@ class SpringBootApiService {
  // Requête générique HTTP
 public async request<T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
+  _isRetryAfterRefresh = false
 ): Promise<{ data?: T; error?: string; status: number; headers?: Headers }> {
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const baseUrl = SPRING_BOOT_BASE_URL.endsWith('/') 
@@ -115,6 +150,15 @@ public async request<T>(
     const status = response.status;
 
     if (status === 401) {
+      // SEC-06: the access token cookie is only good for 24h — a 401 here usually just means it
+      // expired, not that the session is truly over. Try a silent refresh-and-retry once before
+      // giving up; only fall back to logging out if the refresh itself fails (revoked/expired
+      // refresh token, or no session at all).
+      const canAttemptRefresh = !_isRetryAfterRefresh && !AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH.includes(normalizedEndpoint);
+      if (canAttemptRefresh && (await this.tryRefresh())) {
+        return this.request<T>(endpoint, options, true);
+      }
+
       // Best-effort: ask the server to drop the (presumably expired/invalid) auth cookie.
       // Fire-and-forget — a stuck logout call must never block surfacing this 401 to the caller.
       this.logout().catch(() => {});

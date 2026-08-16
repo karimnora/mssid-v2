@@ -10,6 +10,7 @@ import dz.mssid.education.mapper.UserMapper;
 import dz.mssid.education.repository.RoleRepository;
 import dz.mssid.education.repository.UserRepository;
 import dz.mssid.education.security.JwtTokenProvider;
+import dz.mssid.education.security.RefreshTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,6 +30,7 @@ public class AuthService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
+    private final RefreshTokenService refreshTokenService;
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) {
@@ -62,12 +64,14 @@ public class AuthService {
         );
 
         String token = jwtTokenProvider.generateToken(authentication);
+        String refreshToken = refreshTokenService.createToken(user);
         UserProfileDto profileDto = UserMapper.toUserProfileDto(user);
         String roleStr = user.getRole() != null ? user.getRole().getName().name() : "ROLE_FREE";
 
         return AuthResponse.builder()
                 .token(token)
                 .accessToken(token)
+                .refreshToken(refreshToken)
                 .email(user.getEmail())
                 .nom(user.getNom())
                 .roleName(roleStr)
@@ -87,8 +91,9 @@ public class AuthService {
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
 
-            // 3. Génération du JWT
+            // 3. Génération du JWT + du refresh token
             String token = jwtTokenProvider.generateToken(authentication);
+            String refreshToken = refreshTokenService.createToken(user);
             UserProfileDto profileDto = UserMapper.toUserProfileDto(user);
             String roleStr = user.getRole() != null ? user.getRole().getName().name() : "ROLE_FREE";
 
@@ -96,6 +101,7 @@ public class AuthService {
             return AuthResponse.builder()
                     .token(token)
                     .accessToken(token)
+                    .refreshToken(refreshToken)
                     .email(user.getEmail())
                     .nom(user.getNom())
                     .roleName(roleStr)

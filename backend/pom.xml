@@ -44,6 +44,14 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Flyway: versioned schema migrations, replacing Hibernate ddl-auto=update.
+		     Spring Boot 3.2.5 manages Flyway 9.22.3, where PostgreSQL support ships inside flyway-core
+		     itself (the separate flyway-database-postgresql module only exists from Flyway 10 on). -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
 		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

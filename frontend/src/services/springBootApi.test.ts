@@ -142,6 +142,49 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       );
     });
 
+    it('SEC-06: silently refreshes and retries once when a 401 is just an expired access token', async () => {
+      const mockFetch = vi.fn().mockImplementation((url: string) => {
+        if (url.includes('/v1/auth/refresh')) {
+          return Promise.resolve({
+            status: 200,
+            ok: true,
+            headers: new Headers({ 'content-type': 'application/json' }),
+            json: async () => ({ user: { email: 'admin@mssid.dz' } }),
+          });
+        }
+        // First call to the protected route fails; a second call (the retry after refresh)
+        // succeeds — simulating a freshly-rotated access token cookie now being valid.
+        const alreadyRetried = mockFetch.mock.calls.filter((c: any[]) => c[0].includes('/protected-route')).length > 1;
+        if (alreadyRetried) {
+          return Promise.resolve({
+            status: 200,
+            ok: true,
+            headers: new Headers({ 'content-type': 'application/json' }),
+            json: async () => ({ message: 'Success after refresh' }),
+          });
+        }
+        return Promise.resolve({ status: 401, ok: false, headers: new Headers(), json: async () => ({}) });
+      });
+      global.fetch = mockFetch;
+
+      const result = await springBootApi.request<{ message: string }>('/protected-route');
+
+      expect(result.status).toBe(200);
+      expect(result.data?.message).toBe('Success after refresh');
+      expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining('/v1/auth/refresh'), expect.objectContaining({ method: 'POST' }));
+      // Original endpoint hit twice: once that 401'd, once retried after the silent refresh.
+      expect(mockFetch.mock.calls.filter((c: any[]) => c[0].includes('/protected-route')).length).toBe(2);
+    });
+
+    it('SEC-06: does not attempt a refresh when the 401 comes from the login call itself', async () => {
+      const mockFetch = vi.fn().mockResolvedValue({ status: 401, ok: false, headers: new Headers(), json: async () => ({}) });
+      global.fetch = mockFetch;
+
+      await springBootApi.request('/v1/auth/login', { method: 'POST' });
+
+      expect(mockFetch).not.toHaveBeenCalledWith(expect.stringContaining('/v1/auth/refresh'), expect.anything());
+    });
+
     it('handles 429 Rate Limit Exceeded status from Spring Boot backend', async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         status: 429,
