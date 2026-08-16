@@ -1,24 +1,37 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
-import { AuthService } from '../services/authService';
-import { SubscriptionPaywall } from './SubscriptionPaywall';
-import { AuthUser } from '../types/auth';
-import { PrimaryGrade, SubjectId } from '../types';
+import { PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
 import {
-  Award, Clock, FileText, CheckCircle2, ChevronLeft, Calendar, Lock, Sparkles, Trophy,
-  BookOpen, Archive, Star,
+  Award,
+  Clock,
+  FileText,
+  CheckCircle2,
+  ChevronLeft,
+  Sparkles,
+  Trophy,
+  BookOpen,
+  Star,
+  Eye,
+  EyeOff,
+  Layers,
+  GraduationCap,
+  RotateCcw,
+  Play,
+  Pause,
+  Printer,
+  Check,
 } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 
 interface ExamsViewerProps {
-  /** Scopes the subject grid + exam pool to the currently selected grade. Omit to browse all grades. */
+  /** Grade selected from the top global navigation bar (1AP to 5AP) */
   grade?: PrimaryGrade;
   tashkeelEnabled?: boolean;
-  /** Exam ids the student has already self-reported as done (drives the "✅ أنهيت الامتحان" button state). */
+  /** Exam ids the student has already self-reported as done */
   completedExamIds?: string[];
-  /** Called once when the student marks the currently-open exam as completed — grants a flat XP bonus (no auto-grading exists yet). */
+  /** Called once when the student marks the currently-open exam as completed */
   onExamComplete?: (examId: string) => void;
 }
 
@@ -33,17 +46,17 @@ const SUBJECT_EMOJI: Record<string, string> = {
   civics: '⚖️',
 };
 
-type TrimesterTab = 1 | 2 | 3 | 'archive';
-
-const TRIMESTER_TAB_LABEL: Record<TrimesterTab, string> = {
-  1: 'الفصل الأول',
-  2: 'الفصل الثاني',
-  3: 'الفصل الثالث',
-  archive: 'الأرشيف الرسمي',
+const GRADE_TITLES_AR: Record<PrimaryGrade, string> = {
+  '1AP': 'السنة الأولى ابتدائي (1AP)',
+  '2AP': 'السنة الثانية ابتدائي (2AP)',
+  '3AP': 'السنة الثالثة ابتدائي (3AP)',
+  '4AP': 'السنة الرابعة ابتدائي (4AP)',
+  '5AP': 'السنة الخامسة ابتدائي (5AP)',
 };
 
-// Same "current trimester" heuristic as CourseSelectionView (Algerian school year ≈ Sept-Dec /
-// Jan-Mar / Apr-Jun) — kept as a local copy since the two components aren't meant to share state.
+type ExamCategoryMode = 'end_of_cycle' | 'trimester_general';
+type TrimesterTab = 1 | 2 | 3 | 'all';
+
 function getDefaultTrimester(): 1 | 2 | 3 {
   const month = new Date().getMonth();
   if (month >= 0 && month <= 2) return 2;
@@ -51,67 +64,86 @@ function getDefaultTrimester(): 1 | 2 | 3 {
   return 1;
 }
 
-// Guided 3-step flow (Matière → Trimestre/Archive → Liste des sujets) matching CourseSelectionView's
-// pattern, then a focused paper-view for the picked exam — replacing the old flat pill-filtered list.
-export const ExamsViewer: React.FC<ExamsViewerProps> = ({ grade, tashkeelEnabled = true, completedExamIds = [], onExamComplete }) => {
-  const gradeExams = useMemo(
-    () => (grade ? OFFICIAL_EXAMS_DATA.filter((e) => e.grade === grade) : OFFICIAL_EXAMS_DATA),
-    [grade]
-  );
+export const ExamsViewer: React.FC<ExamsViewerProps> = ({
+  grade,
+  tashkeelEnabled = true,
+  completedExamIds = [],
+  onExamComplete,
+}) => {
+  const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
 
-  const availableSubjects = useMemo(() => {
-    const ids = Array.from(new Set(gradeExams.map((e) => e.subject)));
-    return ids.map((id) => SUBJECTS_LIST.find((s) => s.id === id)).filter((s): s is NonNullable<typeof s> => !!s);
-  }, [gradeExams]);
-
+  // For 5AP only: choice between Official Certificate Annales vs 5AP Trimester Compositions
+  const [examCategory, setExamCategory] = useState<ExamCategoryMode>('end_of_cycle');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
-  const [selectedTab, setSelectedTab] = useState<TrimesterTab>(() => getDefaultTrimester());
+  const [selectedTrimester, setSelectedTrimester] = useState<TrimesterTab>(() => getDefaultTrimester());
   const [selectedExamId, setSelectedExamId] = useState<string | null>(null);
 
-  // Changing grade restarts the whole flow — a subject/exam picked for 5AP may not exist for 2AP.
+  // Automatically reset internal filters when user switches grade in the top navbar
   useEffect(() => {
     setSelectedSubject(null);
     setSelectedExamId(null);
+    if (grade !== '5AP') {
+      setExamCategory('trimester_general');
+    } else {
+      setExamCategory('end_of_cycle');
+    }
   }, [grade]);
 
-  const subjectExams = useMemo(
-    () => (selectedSubject ? gradeExams.filter((e) => e.subject === selectedSubject) : []),
-    [gradeExams, selectedSubject]
-  );
-  const hasArchive = subjectExams.some((e) => e.trimester == null);
-
-  // Picking a subject lands on the current trimester if it has papers, else the first trimester
-  // that does, else the official archive — never an empty tab by default.
-  useEffect(() => {
-    if (!selectedSubject) return;
-    setSelectedExamId(null);
-    const def = getDefaultTrimester();
-    if (subjectExams.some((e) => e.trimester === def)) {
-      setSelectedTab(def);
-      return;
+  // Filter pool strictly driven by the top-bar grade
+  const filteredExams = useMemo(() => {
+    if (currentGrade === '5AP') {
+      if (examCategory === 'end_of_cycle') {
+        // Official End-of-Cycle certificate annales (شهادة التعليم الابتدائي)
+        return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === '5AP' && (e.trimester == null || e.sessionAr.includes('دورة')));
+      }
+      // 5AP Trimester Compositions
+      return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === '5AP' && e.trimester != null);
     }
-    const firstTagged = subjectExams.find((e) => e.trimester != null);
-    setSelectedTab(firstTagged ? (firstTagged.trimester as 1 | 2 | 3) : 'archive');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSubject]);
+    // For 1AP, 2AP, 3AP, 4AP: directly filter by the selected grade
+    return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade);
+  }, [currentGrade, examCategory]);
 
-  const tabExams = subjectExams.filter((e) => (selectedTab === 'archive' ? e.trimester == null : e.trimester === selectedTab));
-  const selectedExam = selectedExamId ? OFFICIAL_EXAMS_DATA.find((e) => e.id === selectedExamId) : null;
+  // Available subjects for the currently selected grade
+  const availableSubjects = useMemo(() => {
+    const ids = Array.from(new Set(filteredExams.map((e) => e.subject)));
+    return ids
+      .map((id) => SUBJECTS_LIST.find((s) => s.id === id))
+      .filter((s): s is NonNullable<typeof s> => !!s);
+  }, [filteredExams]);
 
+  // Exams filtered by selected subject
+  const subjectExams = useMemo(() => {
+    if (!selectedSubject) return filteredExams;
+    return filteredExams.filter((e) => e.subject === selectedSubject);
+  }, [filteredExams, selectedSubject]);
+
+  // Exams filtered by trimester (when applicable)
+  const displayedExams = useMemo(() => {
+    if (currentGrade === '5AP' && examCategory === 'end_of_cycle') {
+      return subjectExams;
+    }
+    if (selectedTrimester === 'all') {
+      return subjectExams;
+    }
+    return subjectExams.filter((e) => e.trimester === selectedTrimester);
+  }, [currentGrade, examCategory, selectedTrimester, subjectExams]);
+
+  const selectedExam = useMemo(() => {
+    return selectedExamId ? OFFICIAL_EXAMS_DATA.find((e) => e.id === selectedExamId) : null;
+  }, [selectedExamId]);
+
+  // Free Solutions state
   const [showSolutions, setShowSolutions] = useState<Record<string, boolean>>({});
-  const [timerSeconds, setTimerSeconds] = useState<number>(5400); // 90 mins
-  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+  const [allSolutionsVisible, setAllSolutionsVisible] = useState<boolean>(false);
 
-  // Paywall state
-  const [isPaywallOpen, setIsPaywallOpen] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => AuthService.getCurrentUser());
+  // Interactive timer
+  const [timerSeconds, setTimerSeconds] = useState<number>(5400);
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
     return tashkeelEnabled ? text : stripArabicTashkeel(text);
   };
-
-  const isUserPremiumOrAdmin = currentUser?.role === 'ROLE_PREMIUM' || currentUser?.role === 'ROLE_ADMIN';
 
   useEffect(() => {
     let interval: any = null;
@@ -126,16 +158,18 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ grade, tashkeelEnabled
   }, [isTimerRunning, timerSeconds]);
 
   const toggleSolution = (key: string) => {
-    if (!isUserPremiumOrAdmin) {
-      setIsPaywallOpen(true);
-      return;
-    }
     setShowSolutions((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handleUserUpgraded = (upgradedUser: AuthUser) => {
-    setCurrentUser(upgradedUser);
-    setIsPaywallOpen(false);
+  const toggleAllSolutions = () => {
+    if (!selectedExam) return;
+    const nextState = !allSolutionsVisible;
+    setAllSolutionsVisible(nextState);
+    const newShow: Record<string, boolean> = { problem: nextState };
+    selectedExam.exercises.forEach((_, idx) => {
+      newShow[`ex-${idx}`] = nextState;
+    });
+    setShowSolutions(newShow);
   };
 
   const formatTimer = (totalSecs: number) => {
@@ -145,307 +179,522 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({ grade, tashkeelEnabled
     return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const openExam = (examId: string) => {
-    setSelectedExamId(examId);
+  const openExam = (exam: OfficialExam) => {
+    setSelectedExamId(exam.id);
     setShowSolutions({});
-    setTimerSeconds(5400);
+    setAllSolutionsVisible(false);
+    setTimerSeconds(exam.durationMinutes ? exam.durationMinutes * 60 : 5400);
     setIsTimerRunning(false);
   };
 
-  // ================= STEP 1 — Matière =================
-  if (!selectedSubject) {
-    return (
-      <div className="space-y-6 dir-rtl" dir="rtl">
-        <div className="bg-gradient-to-r from-purple-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-purple-800/40">
-          <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 px-3 py-1 rounded-full text-xs font-bold mb-2">
-            <Award className="w-3.5 h-3.5 text-amber-400" />
-            <span>الأرشيف الرسمي لشهادة التعليم الابتدائي{grade ? ` — ${grade}` : ''}</span>
-          </div>
-          <h1 className="text-xl sm:text-2xl font-black font-sans">اختر المادة لمراجعة مواضيع الامتحانات والاختبارات</h1>
-          <p className="text-xs text-slate-300 mt-1 max-w-2xl">
-            مواضيع الديوان الوطني للامتحانات والمسابقات واختبارات الفصول الثلاثة، مع الحلول النموذجية والتنقيط.
-          </p>
-        </div>
+  const handlePrint = () => {
+    window.print();
+  };
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {availableSubjects.map((subj) => {
-            const count = gradeExams.filter((e) => e.subject === subj.id).length;
-            return (
-              <button
-                key={subj.id}
-                onClick={() => setSelectedSubject(subj.id)}
-                className={`rounded-3xl p-5 sm:p-6 min-h-36 text-white shadow-md cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-2 text-center transition-transform hover:scale-[1.03] active:scale-[0.97]`}
-              >
-                <span className="text-4xl sm:text-5xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
-                <span className="font-black text-xs sm:text-sm leading-tight">{subj.nameAr}</span>
-                <Badge variant="neutral" className="!bg-white/15 !text-white !border-white/30">
-                  <span dir="ltr">{count}</span> مواضيع
-                </Badge>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
-
-  const subjectInfo = SUBJECTS_LIST.find((s) => s.id === selectedSubject);
-
-  // ================= STEP 3 — Paper view (once an exam card is picked) =================
+  // ================= VIEW 3: Detailed Exam Sheet & Free Solutions =================
   if (selectedExam) {
     const exercisesPoints = selectedExam.exercises.reduce((sum, ex) => sum + ex.points, 0);
-    return (
-      <div className="space-y-6 dir-rtl" dir="rtl">
-        {isPaywallOpen && (
-          <SubscriptionPaywall user={currentUser} onClose={() => setIsPaywallOpen(false)} onSuccessUpgrade={handleUserUpgraded} />
-        )}
+    const isCompleted = completedExamIds.includes(selectedExam.id);
+    const subjectInfo = SUBJECTS_LIST.find((s) => s.id === selectedExam.subject);
 
-        <div className="flex items-center justify-between flex-wrap gap-3">
-          <Button variant="ghost" size="sm" onClick={() => setSelectedExamId(null)} icon={<ChevronLeft className="w-4 h-4" />}>
-            رجوع لقائمة المواضيع
+    return (
+      <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+        {/* Top Controls & Navigation Bar */}
+        <div className="flex items-center justify-between flex-wrap gap-3 p-3 bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-2xl shadow-xs">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setSelectedExamId(null)}
+            icon={<ChevronLeft className="w-4 h-4" />}
+          >
+            العودة لمواضيع {GRADE_TITLES_AR[currentGrade]}
           </Button>
-          <div className="bg-slate-900/90 border border-purple-500/40 p-3 rounded-2xl flex items-center gap-3 shrink-0 shadow-inner">
-            <div>
-              <span className="text-[10px] uppercase font-bold text-slate-300 block">مؤقت الامتحان التجريبي:</span>
-              <span className="font-mono font-black text-amber-400 text-lg">{formatTimer(timerSeconds)}</span>
-            </div>
+
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* Global Solutions Toggle */}
             <button
-              onClick={() => setIsTimerRunning(!isTimerRunning)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                isTimerRunning ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white hover:bg-emerald-700'
+              onClick={toggleAllSolutions}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                allSolutionsVisible
+                  ? 'bg-purple-100 text-purple-900 border border-purple-300'
+                  : 'bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100'
               }`}
             >
-              {isTimerRunning ? 'إيقاف' : 'بدء المؤقت (90د)'}
+              {allSolutionsVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+              <span>{allSolutionsVisible ? 'إخفاء كافة الحلول' : 'إظهار كافة الحلول مجاناً ✨'}</span>
             </button>
+
+            {/* Print Button */}
+            <button
+              onClick={handlePrint}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-[var(--app-card-border)] transition-colors cursor-pointer border border-[var(--app-card-border)]"
+              title="طباعة ورقة الامتحان"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>طباعة</span>
+            </button>
+
+            {/* Exam Simulation Timer */}
+            <div className="bg-slate-900 text-white px-3 py-1.5 rounded-xl flex items-center gap-2.5 shadow-xs">
+              <Clock className="w-4 h-4 text-amber-400" />
+              <span className="font-mono font-black text-amber-300 text-sm">{formatTimer(timerSeconds)}</span>
+              <button
+                onClick={() => setIsTimerRunning(!isTimerRunning)}
+                className={`p-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                  isTimerRunning ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white hover:bg-emerald-500'
+                }`}
+                title={isTimerRunning ? 'إيقاف مؤقت' : 'تشغيل المؤقت'}
+              >
+                {isTimerRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+              </button>
+              <button
+                onClick={() => {
+                  setIsTimerRunning(false);
+                  setTimerSeconds(selectedExam.durationMinutes ? selectedExam.durationMinutes * 60 : 5400);
+                }}
+                className="p-1 rounded-lg text-slate-400 hover:text-white transition-colors cursor-pointer"
+                title="إعادة ضبط المؤقت"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {!isUserPremiumOrAdmin && (
-          <div className="p-4 bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-indigo-500/10 border border-amber-300/40 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-800">
-            <div className="flex items-center gap-2">
-              <Lock className="w-5 h-5 text-amber-600 shrink-0" />
-              <div>
-                <span className="font-extrabold text-amber-950 block">حسابك الحالي في الوضع المجاني (ROLE_FREE)</span>
-                <span className="text-slate-600 text-[11px]">
-                  تصفح الامتحانات والأسئلة مجاني للجميع. رؤية الحلول النموذجية والسلالم المنقطة تتطلب تفعيل اشتراك mssid dz عبر بريدي موب / CCP.
+        {/* Free Educational Banner */}
+        <div className="p-3.5 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs text-emerald-950">
+          <div className="flex items-center gap-2">
+            <span className="w-7 h-7 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shadow-xs">
+              ✨
+            </span>
+            <div>
+              <span className="font-extrabold block text-emerald-900">
+                جميع الحلول النموذجية وسلالم التنقيط مجانية 100% ومتاحة بالكامل
+              </span>
+              <span className="text-emerald-700 text-[11px]">
+                تدرّب بمرونة، تحقق من خطوات الحل، واكسب نقاط الخبرة!
+              </span>
+            </div>
+          </div>
+          <Badge variant="success">نسخة مجانية ومفتوحة 🎓</Badge>
+        </div>
+
+        {/* Official Paper Layout */}
+        <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+          {/* Paper Header */}
+          <div className="border-b border-[var(--app-card-border)] pb-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-black text-purple-700 bg-purple-100 px-3 py-0.5 rounded-full border border-purple-200">
+                  الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية الوطنية
+                </span>
+                <span className="text-xs font-bold text-[var(--brand-blue)] bg-[var(--brand-blue)]/10 px-2.5 py-0.5 rounded-full">
+                  {selectedExam.year}
+                </span>
+                <span className="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                  {GRADE_TITLES_AR[selectedExam.grade]}
                 </span>
               </div>
-            </div>
-            <button
-              onClick={() => setIsPaywallOpen(true)}
-              className="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-extrabold rounded-xl shadow-xs transition-all cursor-pointer shrink-0 flex items-center gap-1.5"
-            >
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>تفعيل اشتراك mssid dz (بريدي موب)</span>
-            </button>
-          </div>
-        )}
-
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs space-y-6">
-          <div className="border-b border-slate-200 pb-4 flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <span className="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200">
-                الجمهورية الجزائرية الديمقراطية الشعبية - وزارة التربية الوطنية
-              </span>
-              <h2 className="text-lg font-extrabold text-slate-900 mt-2 font-sans">{renderArabicText(selectedExam.titleAr)}</h2>
+              <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] tracking-tight font-sans">
+                {renderArabicText(selectedExam.titleAr)}
+              </h1>
               {selectedExam.sourceNoteAr && (
-                <p className="text-[11px] text-slate-500 mt-1.5 max-w-xl">{selectedExam.sourceNoteAr}</p>
+                <p className="text-xs text-[var(--app-text-muted)] max-w-2xl">{selectedExam.sourceNoteAr}</p>
               )}
             </div>
-            <div className="text-left text-xs font-bold text-slate-500">
-              <div>المادة: {subjectInfo?.nameAr}</div>
-              <div>المدة: <span dir="ltr">{selectedExam.durationMinutes}</span> دقيقة</div>
+
+            <div className="bg-[var(--app-card-subtle)] p-3 rounded-2xl border border-[var(--app-card-border)] text-xs font-bold text-[var(--app-text-muted)] space-y-1 text-right shrink-0">
+              <div>المادة: <span className="text-[var(--app-text)] font-extrabold">{subjectInfo?.nameAr}</span></div>
+              <div>المدة المحددة: <span className="text-[var(--app-text)] font-extrabold" dir="ltr">{selectedExam.durationMinutes}</span> دقيقة</div>
+              <div>المجموع الكلي: <span className="text-[var(--brand-amber-dark)] font-extrabold" dir="ltr">{selectedExam.totalPoints}</span> نقاط</div>
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
-              الجزء الأول: {selectedExam.exercises.length} تمارين مستقلة ({exercisesPoints} نقاط)
-            </h3>
+          {/* Part 1: Independent Exercises */}
+          <div className="space-y-5">
+            <div className="flex items-center justify-between bg-[var(--app-card-subtle)] px-4 py-2.5 rounded-xl border border-[var(--app-card-border)]">
+              <h2 className="font-black text-xs sm:text-sm text-[var(--app-text)]">
+                الجزء الأول: {selectedExam.exercises.length} تمارين مستقلة ({exercisesPoints} نقاط)
+              </h2>
+              <span className="text-[11px] text-[var(--app-text-muted)] font-bold">سلالم التنقيط الرسمية</span>
+            </div>
 
             {selectedExam.exercises.map((ex, idx) => {
               const solKey = `ex-${idx}`;
               const isSolVisible = showSolutions[solKey];
 
               return (
-                <div key={idx} className="p-4 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-3">
+                <div
+                  key={idx}
+                  className="p-4 sm:p-5 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3 transition-colors"
+                >
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    <h4 className="font-extrabold text-sm text-purple-950">{ex.titleAr}</h4>
-                    <span className="text-xs font-bold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full border border-amber-200">
-                      {ex.points} نقاط
-                    </span>
+                    <h3 className="font-black text-sm text-[var(--brand-blue-dark)]">{ex.titleAr}</h3>
+                    <Badge variant="warning">{ex.points} نقاط</Badge>
                   </div>
 
-                  <div className="text-xs text-slate-800 font-sans leading-relaxed whitespace-pre-line bg-white p-3.5 rounded-xl border border-slate-200">
-                    {ex.contentAr}
+                  {/* Exercise Subject Text */}
+                  <div className="text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line bg-[var(--app-card-bg)] p-4 rounded-xl border border-[var(--app-card-border)] shadow-2xs">
+                    {formatEducationalText(renderArabicText(ex.contentAr))}
                   </div>
 
+                  {/* Free Solution Toggle Button */}
                   <div className="flex items-center justify-between pt-1">
                     <button
                       onClick={() => toggleSolution(solKey)}
-                      className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
-                        isUserPremiumOrAdmin
-                          ? 'text-purple-700 hover:text-purple-900 bg-purple-50 hover:bg-purple-100 border border-purple-200'
-                          : 'text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 font-extrabold'
+                      className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
+                        isSolVisible
+                          ? 'bg-purple-100 text-purple-900 border border-purple-300'
+                          : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
                       }`}
                     >
-                      {isUserPremiumOrAdmin ? (
+                      {isSolVisible ? (
                         <>
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                          <span>{isSolVisible ? 'إخفاء الحل النموذجي' : 'إظهار الحل النموذجي والتنقيط'}</span>
+                          <EyeOff className="w-3.5 h-3.5" />
+                          <span>إخفاء الحل النموذجي</span>
                         </>
                       ) : (
                         <>
-                          <Lock className="w-3.5 h-3.5 text-amber-700" />
-                          <span>فتح الحل النموذجي (محتوى مدفوع)</span>
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span>إظهار الحل النموذجي والتنقيط (مجاناً)</span>
                         </>
                       )}
                     </button>
                   </div>
 
-                  {isSolVisible && isUserPremiumOrAdmin && (
-                    <div className="p-3.5 rounded-xl bg-slate-900 text-white text-xs font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
-                      <span className="text-[10px] font-mono text-emerald-400 block mb-1 uppercase font-bold">الحل النموذجي المعتمد:</span>
+                  {/* Solution Box */}
+                  {isSolVisible && (
+                    <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
+                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
+                        <Check className="w-3.5 h-3.5" />
+                        <span>الحل النموذجي المعتمد وسلّم التنقيط:</span>
+                      </div>
                       {formatEducationalText(ex.solutionAr)}
                     </div>
                   )}
                 </div>
               );
             })}
+          </div>
 
-            <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wider bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 mt-6">
-              الجزء الثاني: الوضعية الإدماجية ({selectedExam.problemExercise.points} نقاط)
-            </h3>
+          {/* Part 2: Integrated Situation (الوضعية الإدماجية) */}
+          <div className="space-y-4 pt-2">
+            <div className="flex items-center justify-between bg-amber-500/15 px-4 py-2.5 rounded-xl border border-amber-400/30">
+              <h2 className="font-black text-xs sm:text-sm text-amber-950">
+                الجزء الثاني: الوضعية الإدماجية المركبة ({selectedExam.problemExercise.points} نقاط)
+              </h2>
+              <span className="text-[11px] text-amber-900 font-bold">الإنتاج والحل المركب</span>
+            </div>
 
-            <div className="p-5 rounded-2xl border border-amber-200 bg-amber-50/40 space-y-3">
+            <div className="p-5 rounded-2xl border border-amber-300/40 bg-amber-500/5 space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
-                <h4 className="font-extrabold text-sm text-amber-950">{selectedExam.problemExercise.titleAr}</h4>
-                <span className="text-xs font-extrabold bg-amber-500 text-slate-950 px-3 py-0.5 rounded-full">
+                <h3 className="font-black text-sm text-amber-950">{selectedExam.problemExercise.titleAr}</h3>
+                <span className="text-xs font-black bg-amber-500 text-slate-950 px-3 py-0.5 rounded-full">
                   {selectedExam.problemExercise.points} نقاط كاملة
                 </span>
               </div>
 
-              <div className="text-xs text-slate-900 font-sans leading-relaxed whitespace-pre-line bg-white p-4 rounded-xl border border-amber-200">
+              {/* Problem Statement */}
+              <div className="text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line bg-[var(--app-card-bg)] p-4 rounded-xl border border-amber-200/60 shadow-2xs">
                 {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr))}
               </div>
 
+              {/* Problem Solution Toggle Button */}
               <div className="flex items-center justify-between pt-1">
                 <button
                   onClick={() => toggleSolution('problem')}
-                  className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
-                    isUserPremiumOrAdmin
-                      ? 'text-amber-900 hover:text-amber-950 bg-amber-200 hover:bg-amber-300 border border-amber-300'
-                      : 'text-amber-950 bg-amber-200 hover:bg-amber-300 border border-amber-400 font-extrabold'
+                  className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
+                    showSolutions['problem']
+                      ? 'bg-amber-200 text-amber-950 border border-amber-400'
+                      : 'bg-amber-500 hover:bg-amber-600 text-slate-950 font-black shadow-xs'
                   }`}
                 >
-                  {isUserPremiumOrAdmin ? (
+                  {showSolutions['problem'] ? (
                     <>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>{showSolutions['problem'] ? 'إخفاء الحل المفصل' : 'إظهار الحل الإدماجي المفصل'}</span>
+                      <EyeOff className="w-3.5 h-3.5" />
+                      <span>إخفاء حل الوضعية الإدماجية</span>
                     </>
                   ) : (
                     <>
-                      <Lock className="w-3.5 h-3.5 text-amber-800" />
-                      <span>فتح حل الوضعية الإدماجية (محتوى مدفوع)</span>
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>إظهار الحل الإدماجي المفصل وسلم التنقيط (مجاناً)</span>
                     </>
                   )}
                 </button>
               </div>
 
-              {showSolutions['problem'] && isUserPremiumOrAdmin && (
-                <div className="p-4 rounded-xl bg-slate-900 text-white text-xs font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
-                  <span className="text-[10px] font-mono text-amber-400 block mb-1 uppercase font-bold">الحل النموذجي وسلم التنقيط للوضعية:</span>
+              {/* Problem Solution Content */}
+              {showSolutions['problem'] && (
+                <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
+                    <Check className="w-3.5 h-3.5" />
+                    <span>سلم التنقيط والحل النموذجي للوضعية الإدماجية:</span>
+                  </div>
                   {formatEducationalText(selectedExam.problemExercise.solutionAr)}
                 </div>
               )}
             </div>
+          </div>
 
-            <div className="pt-2">
-              {completedExamIds.includes(selectedExam.id) ? (
-                <div className="flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-sm font-extrabold">
-                  <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600" />
-                  <span>أنجزت هذا الموضوع ✅</span>
-                </div>
-              ) : (
-                <button
-                  onClick={() => onExamComplete?.(selectedExam.id)}
-                  className="w-full flex items-center justify-center gap-2 p-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-extrabold shadow-md transition-all cursor-pointer active:scale-[0.99]"
-                >
-                  <Trophy className="w-4.5 h-4.5" />
-                  <span>✅ أنهيت هذا الامتحان (<span dir="ltr">+50 XP</span>)</span>
-                </button>
-              )}
-            </div>
+          {/* Completion Button & Rewards */}
+          <div className="pt-4 border-t border-[var(--app-card-border)]">
+            {isCompleted ? (
+              <div className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 text-sm font-black">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                <span>أحسنت! لقد أتممت هذا الموضوع بنجاح وتم تسجيل تقدمك ✅</span>
+              </div>
+            ) : (
+              <button
+                onClick={() => onExamComplete?.(selectedExam.id)}
+                className="w-full flex items-center justify-center gap-2 p-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:brightness-105 text-white text-sm font-black shadow-md transition-all cursor-pointer active:scale-[0.99]"
+              >
+                <Trophy className="w-5 h-5 text-amber-300" />
+                <span>✅ أنهيت هذا الامتحان التجريبي (<span dir="ltr">+50 XP</span>)</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
     );
   }
 
-  // ================= STEP 2 — Trimestre/Archive tabs + exam card grid =================
-  const tabs: TrimesterTab[] = hasArchive ? [1, 2, 3, 'archive'] : [1, 2, 3];
-
+  // ================= VIEW 1 & 2: Grade-driven View + Exam Cards =================
   return (
-    <div className="space-y-5 dir-rtl" dir="rtl">
-      <div className="flex items-center gap-2 flex-wrap">
-        <Button variant="ghost" size="sm" onClick={() => setSelectedSubject(null)} icon={<ChevronLeft className="w-4 h-4" />}>
-          المواد
-        </Button>
-        <span className="text-2xl">{SUBJECT_EMOJI[selectedSubject] || '📘'}</span>
-        <h2 className="text-lg font-black text-[var(--app-text)]">{subjectInfo?.nameAr}</h2>
-        {grade && <Badge variant="info">{grade}</Badge>}
+    <div className="space-y-6 dir-rtl" dir="rtl">
+      {/* Hero Header with Active Grade Indicator */}
+      <div className="bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-7 shadow-xl border border-blue-800/40 relative overflow-hidden">
+        <div className="relative z-10 space-y-2 max-w-3xl">
+          <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <span>بنك الامتحانات والاختبارات — {GRADE_TITLES_AR[currentGrade]}</span>
+          </div>
+          <h1 className="text-xl sm:text-3xl font-black font-sans tracking-tight">
+            مواضيع واختبارات {GRADE_TITLES_AR[currentGrade]}
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            نماذج اختبارات تقييمية وفصلية معتمدة وفق منهاج الجيل الثاني مع الحلول النموذجية وسلالم التنقيط الكاملة مجاناً.
+          </p>
+        </div>
       </div>
 
-      <div className={`grid grid-cols-2 ${hasArchive ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-2.5`}>
-        {tabs.map((tab) => {
-          const isActive = selectedTab === tab;
-          const count = subjectExams.filter((e) => (tab === 'archive' ? e.trimester == null : e.trimester === tab)).length;
-          return (
-            <button
-              key={tab}
-              onClick={() => setSelectedTab(tab)}
-              className={`relative min-h-16 rounded-2xl font-black text-xs sm:text-sm px-2 flex flex-col items-center justify-center gap-0.5 transition-colors cursor-pointer ${
-                isActive ? 'bg-[var(--brand-blue)] text-white shadow-lg' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+      {/* For 5AP Only: Toggle between Official Certificate (Annales) vs Trimester Compositions */}
+      {currentGrade === '5AP' && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button
+            onClick={() => {
+              setExamCategory('end_of_cycle');
+              setSelectedSubject(null);
+            }}
+            className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer flex items-start gap-3.5 ${
+              examCategory === 'end_of_cycle'
+                ? 'bg-blue-600 text-white border-blue-500 shadow-md scale-[1.01]'
+                : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-blue-400/50'
+            }`}
+          >
+            <div
+              className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
+                examCategory === 'end_of_cycle' ? 'bg-white/20 text-white' : 'bg-blue-500/10 text-blue-600'
               }`}
             >
-              {tab === 'archive' ? <Archive className="w-3.5 h-3.5" /> : <Calendar className="w-3.5 h-3.5" />}
-              <span>{TRIMESTER_TAB_LABEL[tab]}</span>
-              <span className="text-[10px] opacity-80" dir="ltr">{count}</span>
-            </button>
-          );
-        })}
-      </div>
+              <GraduationCap className="w-6 h-6" />
+            </div>
+            <div className="space-y-0.5 min-w-0">
+              <div className="flex items-center gap-2">
+                <h2 className="font-black text-sm sm:text-base">امتحانات شهادة التعليم الابتدائي</h2>
+                <span
+                  className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                    examCategory === 'end_of_cycle' ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-800'
+                  }`}
+                >
+                  الدورات الرسمية
+                </span>
+              </div>
+              <p
+                className={`text-xs leading-snug ${
+                  examCategory === 'end_of_cycle' ? 'text-white/85' : 'text-[var(--app-text-muted)]'
+                }`}
+              >
+                أرشيف دورات شهادة التعليم الابتدائي مع الحلول النموذجية وسلم التنقيط.
+              </p>
+            </div>
+          </button>
 
-      {tabExams.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {tabExams.map((exam) => {
-            const isCompleted = completedExamIds.includes(exam.id);
+          <button
+            onClick={() => {
+              setExamCategory('trimester_general');
+              setSelectedSubject(null);
+            }}
+            className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer flex items-start gap-3.5 ${
+              examCategory === 'trimester_general'
+                ? 'bg-emerald-600 text-white border-emerald-500 shadow-md scale-[1.01]'
+                : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-emerald-400/50'
+            }`}
+          >
+            <div
+              className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
+                examCategory === 'trimester_general' ? 'bg-white/20 text-white' : 'bg-emerald-500/10 text-emerald-600'
+              }`}
+            >
+              <Layers className="w-6 h-6" />
+            </div>
+            <div className="space-y-0.5 min-w-0">
+              <div className="flex items-center gap-2">
+                <h2 className="font-black text-sm sm:text-base">الاختبارات الفصلية (السنة 5)</h2>
+                <span
+                  className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                    examCategory === 'trimester_general' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
+                  }`}
+                >
+                  الفصول 1، 2، 3
+                </span>
+              </div>
+              <p
+                className={`text-xs leading-snug ${
+                  examCategory === 'trimester_general' ? 'text-white/85' : 'text-[var(--app-text-muted)]'
+                }`}
+              >
+                اختبارات تقييمية نموذجية لكل فصل دراسي للسنة الخامسة ابتدائي.
+              </p>
+            </div>
+          </button>
+        </div>
+      )}
+
+      {/* Step 1: Subject Selection Grid for Current Grade */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
+            {selectedSubject ? 'تغيير المادة الدراسية:' : `مواد اختبارات ${GRADE_TITLES_AR[currentGrade]}:`}
+          </h2>
+          {selectedSubject && (
+            <button
+              onClick={() => setSelectedSubject(null)}
+              className="text-xs text-[var(--brand-blue)] font-extrabold hover:underline cursor-pointer"
+            >
+              عرض جميع المواد
+            </button>
+          )}
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {availableSubjects.map((subj) => {
+            const count = filteredExams.filter((e) => e.subject === subj.id).length;
+            const isChosen = selectedSubject === subj.id;
+
             return (
-              <Card key={exam.id} interactive padding="md" onClick={() => openExam(exam.id)} className="space-y-3">
-                <div className="flex items-center justify-between flex-wrap gap-1.5">
-                  <Badge variant="info" icon={<FileText className="w-3 h-3" />}>{exam.year}</Badge>
-                  {isCompleted && <Badge variant="success">✓ مكتمل</Badge>}
-                </div>
-                <h3 className="font-black text-sm leading-relaxed">{renderArabicText(exam.titleAr)}</h3>
-                <p className="text-xs text-[var(--app-text-muted)]">{exam.sessionAr}</p>
-                <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)] pt-2 border-t border-[var(--app-card-border)]">
-                  <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /><span dir="ltr">{exam.durationMinutes} د</span></span>
-                  <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5" /><span dir="ltr">{exam.totalPoints} ن</span></span>
-                </div>
-                <Button variant="info" size="sm" fullWidth icon={<BookOpen className="w-4 h-4" />}>
-                  عرض الموضوع
-                </Button>
-              </Card>
+              <button
+                key={subj.id}
+                onClick={() => setSelectedSubject(isChosen ? null : subj.id)}
+                className={`rounded-2xl p-4 min-h-24 text-white shadow-xs cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
+                  isChosen ? 'ring-4 ring-purple-400 scale-[1.03] shadow-md' : 'hover:scale-[1.02] active:scale-[0.98]'
+                }`}
+              >
+                <span className="text-2xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
+                <span className="font-black text-xs leading-tight">{subj.nameAr}</span>
+                <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
+                  {count} مواضيع
+                </span>
+              </button>
             );
           })}
         </div>
-      ) : (
-        <Card padding="none" className="p-10 text-center space-y-3">
-          <FileText className="w-10 h-10 opacity-40 mx-auto text-[var(--app-text-muted)]" />
-          <h3 className="text-sm font-extrabold text-[var(--app-text)]">لا توجد مواضيع بعد في هذا القسم</h3>
-          <p className="text-xs text-[var(--app-text-muted)]">جرّب فصلاً دراسياً آخر لهذه المادة.</p>
-        </Card>
-      )}
+      </div>
+
+      {/* Step 2: Trimester Filter & Exam Cards List */}
+      <div className="space-y-4 pt-1">
+        {/* Trimester filter tabs for seasonal compositions */}
+        {!(currentGrade === '5AP' && examCategory === 'end_of_cycle') && (
+          <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
+            <button
+              onClick={() => setSelectedTrimester('all')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-colors cursor-pointer ${
+                selectedTrimester === 'all'
+                  ? 'bg-[var(--brand-blue)] text-white shadow-xs'
+                  : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+              }`}
+            >
+              جميع الفصول
+            </button>
+            {[1, 2, 3].map((trim) => (
+              <button
+                key={trim}
+                onClick={() => setSelectedTrimester(trim as TrimesterTab)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-colors cursor-pointer ${
+                  selectedTrimester === trim
+                    ? 'bg-[var(--brand-blue)] text-white shadow-xs'
+                    : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                }`}
+              >
+                الفصل {trim === 1 ? 'الأول' : trim === 2 ? 'الثاني' : 'الثالث'}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Exam Cards Grid */}
+        {displayedExams.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayedExams.map((exam) => {
+              const isCompleted = completedExamIds.includes(exam.id);
+              const subj = SUBJECTS_LIST.find((s) => s.id === exam.subject);
+
+              return (
+                <Card
+                  key={exam.id}
+                  interactive
+                  padding="md"
+                  onClick={() => openExam(exam)}
+                  className="space-y-3 border-[var(--app-card-border)] bg-[var(--app-card-bg)] hover:border-[var(--brand-blue)] transition-all"
+                >
+                  <div className="flex items-center justify-between flex-wrap gap-1.5">
+                    <Badge variant="info" icon={<FileText className="w-3 h-3" />}>
+                      {exam.year}
+                    </Badge>
+                    <div className="flex items-center gap-1">
+                      <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
+                        حلول مجانية ✨
+                      </span>
+                      {isCompleted && <Badge variant="success">✓ أنجزته</Badge>}
+                    </div>
+                  </div>
+
+                  <h3 className="font-black text-sm leading-relaxed text-[var(--app-text)]">
+                    {renderArabicText(exam.titleAr)}
+                  </h3>
+
+                  <div className="flex items-center justify-between text-xs text-[var(--app-text-muted)]">
+                    <span>{subj?.nameAr}</span>
+                    <span>{exam.sessionAr}</span>
+                  </div>
+
+                  <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)] pt-2 border-t border-[var(--app-card-border)]">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span dir="ltr">{exam.durationMinutes} دقيقة</span>
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 text-amber-500" />
+                      <span dir="ltr">{exam.totalPoints} نقاط</span>
+                    </span>
+                  </div>
+
+                  <Button variant="info" size="sm" fullWidth icon={<BookOpen className="w-4 h-4" />}>
+                    فتح ورقة الامتحان
+                  </Button>
+                </Card>
+              );
+            })}
+          </div>
+        ) : (
+          <Card padding="none" className="p-10 text-center space-y-3 bg-[var(--app-card-bg)]">
+            <FileText className="w-10 h-10 opacity-30 mx-auto text-[var(--app-text-muted)]" />
+            <h3 className="text-sm font-extrabold text-[var(--app-text)]">لا توجد مواضيع في هذا القسم بعد</h3>
+            <p className="text-xs text-[var(--app-text-muted)]">
+              اختر مادة أخرى أو فصلاً مختلفاً لعرض المواضيع المتوفرة لـ {GRADE_TITLES_AR[currentGrade]}.
+            </p>
+          </Card>
+        )}
+      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ interface HomeViewProps {
 const POLES: { id: HomePoleId; icon: React.ReactNode; titleAr: string; descAr: string; gradient: string }[] = [
   { id: 'courses', icon: <BookOpen className="w-7 h-7" />, titleAr: 'مراجعة الدروس', descAr: 'دروس منهجك الدراسي حسب المستوى', gradient: 'from-emerald-600 to-teal-700' },
   { id: 'challenges', icon: <Trophy className="w-7 h-7" />, titleAr: 'ساحة التحديات', descAr: 'تحديات سريعة واكسب نقاط الخبرة والدنانير', gradient: 'from-rose-500 to-amber-600' },
-  { id: 'exams', icon: <Award className="w-7 h-7" />, titleAr: 'الامتحانات الرسمية', descAr: 'مواضيع شهادة التعليم الابتدائي 2008-2026', gradient: 'from-blue-600 to-indigo-700' },
+  { id: 'exams', icon: <Award className="w-7 h-7" />, titleAr: 'بنك الامتحانات والاختبارات', descAr: 'مواضيع الفصول ونهاية المرحلة مع الحلول النموذجية مجاناً', gradient: 'from-blue-600 to-indigo-700' },
   { id: 'labs', icon: <Zap className="w-7 h-7" />, titleAr: 'المختبرات والأدوات', descAr: 'سوق الدنانير، الـ 58 ولاية، متحف التاريخ، والتجارب العلمية', gradient: 'from-amber-500 to-emerald-600' },
 ];
 

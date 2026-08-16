@@ -514,7 +514,7 @@ export default function App() {
   const ALL_MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams' | 'challenges'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
     { id: 'courses', icon: <BookOpen className="w-4 h-4" />, labelAr: '📚 الدروس والمواد التعليمية', countLabelAr: `${COURSE_SUBJECTS_LIST.length} مواد` },
     { id: 'labs', icon: <Zap className="w-4 h-4" />, labelAr: '⚡ المختبرات والأدوات التفاعلية', countLabelAr: `${availableLabsForGrade.length} أدوات` },
-    { id: 'exams', icon: <Award className="w-4 h-4" />, labelAr: '📜 الامتحانات الرسمية (5AP)', countLabelAr: `${OFFICIAL_EXAMS_LIST.length} بنك` },
+    { id: 'exams', icon: <Award className="w-4 h-4" />, labelAr: '📜 بنك مواضيع الامتحانات', countLabelAr: `${OFFICIAL_EXAMS_LIST.length} بنك` },
     { id: 'challenges', icon: <Trophy className="w-4 h-4" />, labelAr: '🏆 نادي التحديات والمسابقات', countLabelAr: `${CHALLENGES_TAB_LIST.length} تحدي` },
   ];
   const MAIN_CATEGORY_TABS = ALL_MAIN_CATEGORY_TABS.filter((tab) => tab.id !== 'exams' || enableExamSection);
@@ -881,7 +881,7 @@ export default function App() {
               ) : mainCategory === 'labs' ? (
                 <Badge variant="xp">🧪 الأدوات والمختبرات وتصريف الأفعال المستقلة</Badge>
               ) : mainCategory === 'exams' ? (
-                <Badge variant="info">📜 بنك مواضيع امتحانات شهادة التعليم الابتدائي 5AP مع الحلول</Badge>
+                <Badge variant="info">📜 مواضيع الامتحانات والاختبارات مع الحلول النموذجية مجاناً</Badge>
               ) : (
                 <Badge variant="danger">🏆 تحديات مؤقتة وألعاب سريعة لكسب نقاط الخبرة</Badge>
               )}

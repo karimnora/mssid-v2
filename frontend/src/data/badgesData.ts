@@ -25,7 +25,7 @@ export const BADGES_CATALOG: Badge[] = [
 
   { id: 'b_all_rounder', titleAr: 'التلميذ الشامل', descriptionAr: 'إكمال 20 درساً في مواد مختلفة', icon: '🌟', category: 'general', criteria: { type: 'lessons_completed_total', count: 20 } },
 
-  { id: 'b_exam_champion', titleAr: 'بطل شهادة 5AP', descriptionAr: 'إنهاء موضوع امتحان رسمي واحد على الأقل', icon: '🏆', category: 'exams', criteria: { type: 'exam_completed_count', count: 1 } },
+  { id: 'b_exam_champion', titleAr: 'بطل الامتحانات', descriptionAr: 'إنهاء موضوع امتحان رسمي واحد على الأقل بنجاح', icon: '🏆', category: 'exams', criteria: { type: 'exam_completed_count', count: 1 } },
   { id: 'b_exam_legend', titleAr: 'أسطورة الامتحانات', descriptionAr: 'إنهاء 5 مواضيع امتحانات رسمية', icon: '🎓', category: 'exams', criteria: { type: 'exam_completed_count', count: 5 } },
 
   { id: 'b_challenge_master', titleAr: 'بطل التحديات', descriptionAr: 'إنهاء 3 تحديات في نادي التحديات والمسابقات', icon: '⚡', category: 'challenges', criteria: { type: 'challenge_completed_count', count: 3 } },
