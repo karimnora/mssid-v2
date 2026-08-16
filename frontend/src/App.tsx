@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo } from './types';
 import { AuthService } from './services/authService';
 import { useAuth } from './context/AuthContext';
+import { useLocaleContext } from './context/LocaleContext';
 import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, CHALLENGES_TAB_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST, isToolAvailableForGrade } from './data/subjectsData';
 import { COURSES_DATA } from './data/coursesData';
 import { CourseSelectionView } from './components/CourseSelectionView';
@@ -173,6 +174,7 @@ export default function App() {
   // SEC-05: identity comes from AuthContext (hydrated from the cookie-authenticated
   // GET /api/v1/users/me on boot — see main.tsx's <AuthProvider>), never from localStorage.
   const { authUser } = useAuth();
+  const { direction } = useLocaleContext();
 
   const enablePreschoolModule = useFeatureFlag('enablePreschoolModule');
   const enableExamSection = useFeatureFlag('enableExamSection');
@@ -694,7 +696,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen font-sans dir-rtl antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir="rtl">
+    <div className="min-h-screen font-sans antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
 
       {/* Global Kid-Friendly Back Navigation Button */}
       <GlobalBackButton navState={navState} />

@@ -211,28 +211,17 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
-      {/* Visual Header Box */}
-      <div className="bg-gradient-to-r from-indigo-900 via-slate-900 to-emerald-950 text-white rounded-3xl p-6 shadow-lg border border-indigo-500/30 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 space-y-3">
-          <div className="flex items-center justify-between flex-wrap gap-2">
-            <span className="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-slate-950" />
-              <span>شرح وتبسيط الدرس والتطبيقات الواقعية</span>
-            </span>
-            <span className="bg-white/10 text-slate-200 text-xs font-bold px-3 py-1 rounded-full border border-white/20">
-              المستوى المقرر: {lesson.grade}
-            </span>
-          </div>
-
-          <h2 className="text-lg sm:text-xl font-black text-white leading-snug">
-            {renderArabicText(lesson.titleAr)}
-          </h2>
-
-          <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans bg-black/30 p-3.5 rounded-2xl border border-white/10">
-            {renderArabicText(lesson.summaryAr)}
-          </p>
-        </div>
+      {/* Compact mode marker — no title/summary here: LessonViewer's Hero banner directly above this
+          tab already shows both, repeating them in a second big gradient box just added scroll
+          without new information (exactly the "fiche trop dense" complaint this pass addresses). */}
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <span className="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+          <Sparkles className="w-3.5 h-3.5 text-slate-950" />
+          <span>شرح وتبسيط الدرس والتطبيقات الواقعية</span>
+        </span>
+        <span className="bg-slate-900 text-slate-200 text-xs font-bold px-3 py-1 rounded-full border border-slate-800">
+          المستوى المقرر: {lesson.grade}
+        </span>
       </div>
 
       {/* REAL LESSON OBJECTIVE, DISCOVERY HOOK & GUIDED EXAMPLE (when authored for this specific lesson) */}

@@ -59,10 +59,10 @@ const GRADES: { id: PrimaryGrade; labelAr: string; shortLabel: string; badge: st
   { id: '5AP', labelAr: 'السنة الخامسة', shortLabel: 'السنة 5', badge: '5AP' },
 ];
 
-const THEME_OPTIONS: { id: HeaderTheme; labelAr: string; icon: React.ReactNode }[] = [
-  { id: 'neutre', labelAr: 'Neutre (النمط الملوّن والمنعش)', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
-  { id: 'light', labelAr: 'Light (فاتح)', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
-  { id: 'dark', labelAr: 'Dark (داكن)', icon: <Moon className="w-3.5 h-3.5 text-[var(--brand-blue)]" /> },
+const THEME_OPTIONS: { id: HeaderTheme; labelAr: string; shortLabelAr: string; icon: React.ReactNode }[] = [
+  { id: 'neutre', labelAr: 'النمط الملوّن والمنعش', shortLabelAr: 'ملوّن', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
+  { id: 'light', labelAr: 'فاتح', shortLabelAr: 'فاتح', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
+  { id: 'dark', labelAr: 'داكن', shortLabelAr: 'داكن', icon: <Moon className="w-3.5 h-3.5 text-[var(--brand-blue)]" /> },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -389,7 +389,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-coral-dark)] hover:bg-[var(--brand-coral)]/10"
                         >
                           <LogOut className="w-4 h-4 text-[var(--brand-coral)]" />
-                          <span>تسجيل الخروج (Déconnexion)</span>
+                          <span>تسجيل الخروج</span>
                         </button>
                       </>
                     )}
@@ -417,7 +417,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border border-[var(--brand-amber)]/30"
                           >
                             <ShieldCheck className="w-4 h-4 text-[var(--brand-amber)]" />
-                            <span>لوحة تحكم الإدارة (Admin Console)</span>
+                            <span>لوحة تحكم الإدارة</span>
                           </button>
                         )}
                       </>
@@ -529,7 +529,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
                         }`}
                       >
-                        {opt.id === 'neutre' ? 'Neutre' : opt.id === 'light' ? 'Light' : 'Dark'}
+                        {opt.shortLabelAr}
                       </button>
                     ))}
                   </div>
@@ -581,7 +581,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] border border-[var(--brand-blue)]/25 font-bold text-xs flex items-center gap-2 cursor-pointer"
                     >
                       <Sliders className="w-4 h-4 text-[var(--brand-blue)]" />
-                      <span>لوحة تحكم الإدارة (Admin Console)</span>
+                      <span>لوحة تحكم الإدارة</span>
                     </button>
                   )}
 
@@ -599,14 +599,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border border-[var(--brand-coral)]/30 font-bold text-xs flex items-center gap-2 cursor-pointer"
                     >
                       <LogOut className="w-4 h-4 text-[var(--brand-coral)]" />
-                      <span>تسجيل الخروج (Déconnexion)</span>
+                      <span>تسجيل الخروج</span>
                     </button>
                   )}
                 </div>
               </div>
 
               <div className="pt-4 border-t border-[var(--app-card-border)] text-[10px] text-[var(--app-text-muted)] text-center">
-                مَسِيد DZ • الإصدار v2.6.0 (SaaS Dashboard)
+                مَسِيد DZ • الإصدار v2.6.0
               </div>
             </motion.div>
           </motion.div>
