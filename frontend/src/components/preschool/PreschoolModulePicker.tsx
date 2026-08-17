@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolModule, PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
 import { PreschoolSpecialTool } from './PreschoolApp';
+import { PreschoolPrintablesModal } from './PreschoolPrintablesModal';
 
 interface PreschoolModulePickerProps {
   modules: PreschoolModule[];
@@ -26,8 +27,15 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
   onExit,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
+  const [showPrintables, setShowPrintables] = useState(false);
 
   const labels = {
+    printables:
+      language === 'ar'
+        ? 'أوراق للطباعة 🖨️'
+        : language === 'fr'
+        ? 'Fiches à imprimer 🖨️'
+        : 'Printable Worksheets 🖨️',
     title:
       language === 'ar'
         ? 'ركن الإيقاظ والبراعم 🎈'
@@ -155,6 +163,12 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowPrintables(true)}
+              className="bg-white border border-orange-300 text-orange-800 hover:bg-orange-50 font-black text-xs px-3.5 py-2 rounded-full shadow-xs transition-colors cursor-pointer"
+            >
+              {labels.printables}
+            </button>
             <span className="bg-orange-500 text-white font-black text-xs px-3.5 py-1.5 rounded-full shadow-xs">
               👶 3 - 5 {language === 'ar' ? 'سنوات' : language === 'fr' ? 'ans' : 'years'}
             </span>
@@ -250,6 +264,10 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           </div>
         </div>
       </div>
+
+      {showPrintables && (
+        <PreschoolPrintablesModal language={language} onExit={() => setShowPrintables(false)} />
+      )}
     </div>
   );
 };
