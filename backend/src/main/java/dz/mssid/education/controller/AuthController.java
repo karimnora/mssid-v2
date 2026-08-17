@@ -55,6 +55,14 @@ public class AuthController {
     @Value("${app.cookie.secure:false}")
     private boolean cookieSecure;
 
+    // "Strict" is correct when frontend and backend share a domain. Once they're on two different
+    // domains (e.g. a Vercel frontend calling a Render backend) the browser never attaches a Strict
+    // cookie to those cross-site fetch() calls at all — auth silently breaks with no CORS error to
+    // hint why. Override via app.cookie.same-site=None (requires cookieSecure=true, which browsers
+    // mandate for SameSite=None) in any cross-domain deployment.
+    @Value("${app.cookie.same-site:Strict}")
+    private String cookieSameSite;
+
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request, HttpServletResponse httpResponse) {
         try {
@@ -122,7 +130,7 @@ public class AuthController {
         ResponseCookie expiredCookie = ResponseCookie.from(AuthCookieConstants.COOKIE_NAME, "")
                 .httpOnly(true)
                 .secure(cookieSecure)
-                .sameSite("Strict")
+                .sameSite(cookieSameSite)
                 .path("/")
                 .maxAge(0)
                 .build();
@@ -131,7 +139,7 @@ public class AuthController {
         ResponseCookie expiredRefreshCookie = ResponseCookie.from(AuthCookieConstants.REFRESH_COOKIE_NAME, "")
                 .httpOnly(true)
                 .secure(cookieSecure)
-                .sameSite("Strict")
+                .sameSite(cookieSameSite)
                 .path(AuthCookieConstants.REFRESH_COOKIE_PATH)
                 .maxAge(0)
                 .build();
@@ -194,7 +202,7 @@ public class AuthController {
         ResponseCookie cookie = ResponseCookie.from(AuthCookieConstants.COOKIE_NAME, token)
                 .httpOnly(true)
                 .secure(cookieSecure)
-                .sameSite("Strict")
+                .sameSite(cookieSameSite)
                 .path("/")
                 .maxAge(Duration.ofMillis(jwtExpirationMs))
                 .build();
@@ -205,7 +213,7 @@ public class AuthController {
         ResponseCookie cookie = ResponseCookie.from(AuthCookieConstants.REFRESH_COOKIE_NAME, refreshToken)
                 .httpOnly(true)
                 .secure(cookieSecure)
-                .sameSite("Strict")
+                .sameSite(cookieSameSite)
                 .path(AuthCookieConstants.REFRESH_COOKIE_PATH)
                 .maxAge(Duration.ofMillis(refreshExpirationMs))
                 .build();

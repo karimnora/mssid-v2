@@ -1,0 +1,31 @@
+# Render Blueprint — connect this repo on Render ("New +" -> "Blueprint") and it reads this file
+# to provision the backend web service. Values marked `sync: false` are secrets Render will prompt
+# for manually instead of storing in this (committed) file.
+services:
+  - type: web
+    name: mssid-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      # Neon (or any managed Postgres) connection info — see backend/src/main/resources/application.properties.
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      # HTTPS on Render is automatic; both must be set for a cross-domain frontend (e.g. Vercel) to
+      # actually receive the auth cookie — see AuthController's cookieSecure/cookieSameSite fields.
+      - key: COOKIE_SECURE
+        value: true
+      - key: COOKIE_SAME_SITE
+        value: None
+      - key: RESEND_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false

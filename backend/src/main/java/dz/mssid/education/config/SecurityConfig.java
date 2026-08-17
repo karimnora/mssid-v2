@@ -43,6 +43,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                         // 2. Endpoints publics
+                        .requestMatchers(HttpMethod.GET, "/api/health").permitAll()
                         .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/logout", "/api/v1/auth/refresh").permitAll()
                         .requestMatchers("/api/v1/exams/public/**").permitAll()
                         .requestMatchers("/api/gemini/**", "/api/v1/ai/**").permitAll()
