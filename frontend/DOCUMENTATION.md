@@ -40,8 +40,7 @@
 | :--- | :--- | :--- | :--- |
 | **`ROLE_FREE`** | Accès gratuit aux leçons de base, outils interactifs et 3 requêtes IA/jour. | Connexion Simple / Invité | Consultation des cours, exercices Soroban, quiz et profil élève. |
 | **`ROLE_PREMIUM`** | Accès illimité aux sujets d'examens (Annales 2008-2026), corrigés détaillés et tuteur IA illimité. | Email + Mot de passe ou validation reçu BaridiMob | Téléchargement des annales, accès aux examens blancs chronométrés. |
-| **`ROLE_TEACHER`** | Accès au Back-Office CMS pour rédiger, éditer des cours et créer des exercices. | Compte Enseignant certifié | Édition du programme, soumission de leçons en statut `review`. |
-| **`ROLE_ADMIN`** | Contrôle total du système, validation des reçus de paiement BaridiMob et publication CMS. | JWT Admin Authentifié | Validation des paiements CCP/BaridiMob, publication CMS, audit système. |
+| **`ROLE_ADMIN`** | Contrôle total du système, validation des reçus de paiement BaridiMob. | JWT Admin Authentifié | Validation des paiements CCP/BaridiMob, gestion des rôles, audit système. |
 
 ### 1.3 Tableau des Modules Pédagogiques
 
@@ -260,7 +259,7 @@ Below is the Entity-Relationship (ER) diagram followed by the precise technical 
 | **`email`** | `VARCHAR(150)` | `UNIQUE, NOT NULL` | Email d'authentification de l'élève ou parent. |
 | **`password_hash`** | `VARCHAR(255)` | `NOT NULL` | Hash du mot de passe (BCrypt $2a$). |
 | **`nom`** | `VARCHAR(100)` | `NOT NULL` | Nom complet de l'élève en arabe/français. |
-| **`role`** | `VARCHAR(30)` | `NOT NULL, DEFAULT 'ROLE_FREE'` | Rôle Système : `ROLE_FREE`, `ROLE_PREMIUM`, `ROLE_TEACHER`, `ROLE_ADMIN`. |
+| **`role`** | `VARCHAR(30)` | `NOT NULL, DEFAULT 'ROLE_FREE'` | Rôle Système : `ROLE_FREE`, `ROLE_PREMIUM`, `ROLE_ADMIN`. |
 | **`grade`** | `VARCHAR(10)` | `NOT NULL, DEFAULT '5AP'` | Niveau d'étude actuel (`1AP`, `2AP`, `3AP`, `4AP`, `5AP`). |
 | **`created_at`** | `TIMESTAMP` | `DEFAULT CURRENT_TIMESTAMP` | Date de création du compte. |
 
@@ -320,7 +319,6 @@ Below is the exhaustive specification matrix of all HTTP endpoints exposed by th
 | `POST` | `/api/receipts/submit` | Connecté | `{ paymentMethod, amountDzd, transactionRef, receiptImageUrl }` | `PaymentReceipt` | Soumission d'une preuve de paiement par l'élève. |
 | `PUT` | `/api/receipts/{id}/verify`| `ROLE_ADMIN` | `{ approve: boolean, rejectionReason?: string }` | `PaymentReceipt` | Validation ou rejet manuel d'un reçu par l'admin. |
 | `POST` | `/api/gemini/explain` | Tout public | `{ topic, question, grade, promptType }` | `{ text, cached, usage }` | Proxy IA Gemini 3.6 Flash avec Rate-Limiting & Caching in-memory. |
-| `POST` | `/api/gemini/cms-generate`| `ROLE_TEACHER` | `{ type, topic, grade, subject }` | `{ text, cached, usage }` | Génération IA de contenus CMS avec Caching & Quota Enseignant. |
 | `GET` | `/api/gemini/stats` | Tout public | Aucun | `{ cacheSize, totalHitsSaved, hitRatio }` | Statistiques du cache de questions et d'économie de coûts API. |
 | `GET` | `/api/gemini/quota` | Tout public | Headers/QueryParams: `role, userId` | `{ role, limit, remaining, resetHours }` | Consultation du solde de quota quotidien restant pour un rôle. |
 | `GET` | `/api/courses` | Tout public | QueryParams: `?grade=5AP&subject=math` | `Array<CourseLesson>` | Liste filtrée des leçons du programme national. |
@@ -481,23 +479,6 @@ export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [
 
 ---
 
-## 12. Back-Office CMS & Machine à États Pédagogique
-
-### États du Contenu (Content Lifecycle Matrix)
-
-```
-[ Brouillon (draft) ] ──> [ En Relecture (review) ] ──> [ Validé (validated) ] ──> [ Publié (published) ]
-```
-
-| État | Visibilité | Rôle Autorisé | Action Possible |
-| :--- | :--- | :--- | :--- |
-| **`draft`** | Enseignant uniquement | `ROLE_TEACHER` | Rédaction et modifications libres. |
-| **`review`** | Relecteurs Pédagogiques | `ROLE_TEACHER`, `ROLE_ADMIN` | Révision et commentaires pédagogiques. |
-| **`validated`** | Comité de validation | `ROLE_ADMIN` | Approbation définitive du contenu. |
-| **`published`** | Tout public sur l'application | `ROLE_ADMIN` | Publication en direct pour les élèves. |
-
----
-
 ## 13. Spécifications du Backend Spring Boot (JPA & JWT)
 
 ### Structure des Packages Java Recommandée
@@ -569,7 +550,6 @@ Afin de maîtriser les coûts d'utilisation de l'API Google Gemini 3.6 Flash et 
 | :--- | :--- | :--- | :--- |
 | **`ROLE_FREE`** | **3 requêtes / jour** | 24 heures glissantes | Blocage avec message d'incitation à la migration vers `ROLE_PREMIUM`. |
 | **`ROLE_PREMIUM`** | **50 requêtes / jour** | 24 heures glissantes | Protection contre les abus, réinitialisation automatique. |
-| **`ROLE_TEACHER`** | **100 requêtes / jour** | 24 heures glissantes | Dédié à la création et à la génération de contenus pédagogiques CMS. |
 | **`ROLE_ADMIN`** | **1000 requêtes / jour** | 24 heures glissantes | Accès système prioritaire illimité pour maintenance. |
 
 ---
@@ -705,7 +685,6 @@ Cet endpoint accessible permet aux administrateurs de suivre les performances du
   "quotas": {
     "ROLE_FREE": 3,
     "ROLE_PREMIUM": 50,
-    "ROLE_TEACHER": 100,
     "ROLE_ADMIN": 1000
   }
 }

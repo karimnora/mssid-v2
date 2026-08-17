@@ -52,7 +52,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
 
   describe('HTTP Request Handling - Happy Paths & Header Attachments', () => {
     it('attaches user role headers pushed by AuthService (SEC-05: no localStorage read)', async () => {
-      springBootApi.setIdentityHeaders('ROLE_TEACHER', 'teacher@mssid.dz');
+      springBootApi.setIdentityHeaders('ROLE_ADMIN', 'admin@mssid.dz');
 
       const mockFetch = vi.fn().mockResolvedValue({
         status: 200,
@@ -70,8 +70,8 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
         expect.stringContaining('/test-endpoint'),
         expect.objectContaining({
           headers: expect.objectContaining({
-            'x-user-role': 'ROLE_TEACHER',
-            'x-user-id': 'teacher@mssid.dz',
+            'x-user-role': 'ROLE_ADMIN',
+            'x-user-id': 'admin@mssid.dz',
           }),
         })
       );

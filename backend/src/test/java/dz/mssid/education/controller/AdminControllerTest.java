@@ -69,7 +69,7 @@ class AdminControllerTest {
     void getAuditLog_Success() throws Exception {
         AdminAuditLogDto entry = AdminAuditLogDto.builder()
                 .id(1L).actorEmail("admin@mssid.dz").actionType("ROLE_CHANGE")
-                .targetType("USER").targetId("5").details("ROLE_FREE -> ROLE_TEACHER")
+                .targetType("USER").targetId("5").details("ROLE_FREE -> ROLE_PREMIUM")
                 .createdAt("2026-01-01T12:00:00")
                 .build();
 

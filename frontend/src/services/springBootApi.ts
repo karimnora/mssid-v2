@@ -342,13 +342,6 @@ public async request<T>(
     });
   }
 
-  public async generateCmsContent(payload: { type: string; topic: string; grade?: string; subject?: string; difficulty?: string }) {
-    return this.request<{ text?: string; responseText?: string; cached?: boolean; usage?: any }>('/gemini/cms-generate', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
-  }
-
   // --- Endpoints Examens Officiels ---
   public async getPublicExams() {
     return this.request<any[]>('/v1/exams/public/list', {

@@ -32,7 +32,7 @@ class AdminAuditLogServiceTest {
     @Test
     @DisplayName("record - Persists a new audit entry with the given fields")
     void record_SavesEntry() {
-        adminAuditLogService.record("admin@mssid.dz", "ROLE_CHANGE", "USER", "5", "ROLE_FREE -> ROLE_TEACHER");
+        adminAuditLogService.record("admin@mssid.dz", "ROLE_CHANGE", "USER", "5", "ROLE_FREE -> ROLE_PREMIUM");
 
         ArgumentCaptor<AdminAuditLog> captor = ArgumentCaptor.forClass(AdminAuditLog.class);
         verify(auditLogRepository).save(captor.capture());
@@ -42,7 +42,7 @@ class AdminAuditLogServiceTest {
         assertEquals("ROLE_CHANGE", saved.getActionType());
         assertEquals("USER", saved.getTargetType());
         assertEquals("5", saved.getTargetId());
-        assertEquals("ROLE_FREE -> ROLE_TEACHER", saved.getDetails());
+        assertEquals("ROLE_FREE -> ROLE_PREMIUM", saved.getDetails());
     }
 
     @Test

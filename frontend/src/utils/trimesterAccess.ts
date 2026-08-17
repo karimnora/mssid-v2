@@ -7,10 +7,10 @@ export interface TrimesterAccessContext {
   userRole: UserRole | null | undefined;
 }
 
-const PREMIUM_OR_STAFF_ROLES: UserRole[] = ['ROLE_PREMIUM', 'ROLE_ADMIN', 'ROLE_TEACHER'];
+const PREMIUM_OR_STAFF_ROLES: UserRole[] = ['ROLE_PREMIUM', 'ROLE_ADMIN'];
 
 /**
- * Trimester 1 is always free for everyone. T2/T3 require ROLE_PREMIUM/TEACHER/ADMIN, but only once
+ * Trimester 1 is always free for everyone. T2/T3 require ROLE_PREMIUM/ADMIN, but only once
  * BOTH enablePayments (the master kill-switch for the whole payment subsystem) and
  * enableTrimesterPaywall (the specific T2/T3 gate, off by default during the pre-launch content
  * review phase — see featureFlags.ts) are on. This is a client-side ("soft") gate: lesson content

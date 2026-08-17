@@ -1,9 +1,8 @@
-export type UserRole = 'ROLE_FREE' | 'ROLE_PREMIUM' | 'ROLE_TEACHER' | 'ROLE_ADMIN';
+export type UserRole = 'ROLE_FREE' | 'ROLE_PREMIUM' | 'ROLE_ADMIN';
 
 export const ROLE_DAILY_QUOTAS: Record<UserRole, number> = {
   ROLE_FREE: 3,
   ROLE_PREMIUM: 50,
-  ROLE_TEACHER: 100,
   ROLE_ADMIN: 1000,
 };
 

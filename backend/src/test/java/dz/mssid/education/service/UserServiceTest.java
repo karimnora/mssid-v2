@@ -41,12 +41,12 @@ class UserServiceTest {
 
     private User testUser;
     private Role freeRole;
-    private Role teacherRole;
+    private Role premiumRole;
 
     @BeforeEach
     void setUp() {
         freeRole = new Role(1L, Role.RoleName.ROLE_FREE);
-        teacherRole = new Role(2L, Role.RoleName.ROLE_TEACHER);
+        premiumRole = new Role(2L, Role.RoleName.ROLE_PREMIUM);
 
         testUser = User.builder()
                 .id(1L)
@@ -84,18 +84,18 @@ class UserServiceTest {
     }
 
     @Test
-    @DisplayName("updateUserRole - Updates role to ROLE_TEACHER successfully")
+    @DisplayName("updateUserRole - Updates role to ROLE_PREMIUM successfully")
     void updateUserRole_Success() {
         when(userRepository.findById(1L)).thenReturn(Optional.of(testUser));
-        when(roleRepository.findByName(Role.RoleName.ROLE_TEACHER)).thenReturn(Optional.of(teacherRole));
+        when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
         when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        UserProfileDto result = userService.updateUserRole(1L, "ROLE_TEACHER", "admin@mssid.dz");
+        UserProfileDto result = userService.updateUserRole(1L, "ROLE_PREMIUM", "admin@mssid.dz");
 
         assertNotNull(result);
-        assertEquals("ROLE_TEACHER", result.getRole());
+        assertEquals("ROLE_PREMIUM", result.getRole());
         verify(userRepository).save(testUser);
-        verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("ROLE_CHANGE"), eq("USER"), eq("1"), contains("ROLE_TEACHER"));
+        verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("ROLE_CHANGE"), eq("USER"), eq("1"), contains("ROLE_PREMIUM"));
     }
 
     @Test

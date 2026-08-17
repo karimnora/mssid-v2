@@ -67,18 +67,18 @@ public class ExamController {
      * server-side, so any authenticated free account could fetch any exam's solution directly.
      */
     @GetMapping("/{examId}/solutions")
-    @PreAuthorize("hasRole('PREMIUM') or hasRole('ADMIN') or hasRole('TEACHER')")
+    @PreAuthorize("hasRole('PREMIUM') or hasRole('ADMIN')")
     public ResponseEntity<ExamSolutionResponse> getOfficialExamSolution(@PathVariable Long examId) {
         ExamSolutionResponse solution = examService.getExamSolutionById(examId);
         return ResponseEntity.ok(solution);
     }
 
     /**
-     * Endpoint restreint : Ajouter un nouvel examen (Administrateur / Professeur).
+     * Endpoint restreint : Ajouter un nouvel examen (Administrateur).
      * POST /api/v1/exams/admin/create
      */
     @PostMapping("/admin/create")
-    @PreAuthorize("hasRole('ADMIN') or hasRole('TEACHER')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OfficialExamDto> createExam(@RequestBody OfficialExamDto examDto) {
         ExamPaper createdExam = examService.saveExam(examDto);
         OfficialExamDto responseDto = ExamPaperMapper.toOfficialExamDto(createdExam);

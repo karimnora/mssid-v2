@@ -21,7 +21,6 @@ public class Role {
     public enum RoleName {
         ROLE_FREE,
         ROLE_PREMIUM,
-        ROLE_TEACHER,
         ROLE_ADMIN
     }
 }

@@ -1,6 +1,6 @@
 import { DidouAvatarConfig } from './ecosystem';
 
-export type UserRole = 'ROLE_FREE' | 'ROLE_PREMIUM' | 'ROLE_TEACHER' | 'ROLE_ADMIN';
+export type UserRole = 'ROLE_FREE' | 'ROLE_PREMIUM' | 'ROLE_ADMIN';
 
 export type SubscriptionStatus = 'ACTIVE' | 'EXPIRED' | 'CANCELLED' | 'PENDING';
 

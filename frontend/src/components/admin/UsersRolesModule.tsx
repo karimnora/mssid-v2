@@ -390,8 +390,6 @@ export const UsersRolesModule: React.FC = () => {
                       className={`px-2.5 py-1 rounded-xl text-[10px] font-black font-mono border ${
                         u.role === 'ROLE_ADMIN'
                           ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
-                          : u.role === 'ROLE_TEACHER'
-                          ? 'bg-blue-500/20 text-blue-300 border-blue-500/40'
                           : u.role === 'ROLE_PREMIUM'
                           ? 'bg-purple-500/20 text-purple-300 border-purple-500/40'
                           : 'bg-slate-800 text-slate-300 border-slate-700'
@@ -417,7 +415,6 @@ export const UsersRolesModule: React.FC = () => {
                     >
                       <option value="ROLE_FREE">👤 ROLE_FREE (تلميذ مجاني)</option>
                       <option value="ROLE_PREMIUM">⭐ ROLE_PREMIUM (مشترك تميز)</option>
-                      <option value="ROLE_TEACHER">🎓 ROLE_TEACHER (أستاذ/مُعد دروس)</option>
                       <option value="ROLE_ADMIN">🛡️ ROLE_ADMIN (مشرف عام)</option>
                     </select>
                   </div>

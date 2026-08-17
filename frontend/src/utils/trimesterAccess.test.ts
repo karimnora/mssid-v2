@@ -31,9 +31,8 @@ describe('isLessonLocked (trimester paywall)', () => {
     expect(isLessonLocked({ trimester: 2 }, { ...baseCtx, enablePayments: false, userRole: undefined })).toBe(false);
   });
 
-  it('unlocks Trimester 2/3 for ROLE_PREMIUM, ROLE_TEACHER, and ROLE_ADMIN', () => {
+  it('unlocks Trimester 2/3 for ROLE_PREMIUM and ROLE_ADMIN', () => {
     expect(isLessonLocked({ trimester: 2 }, { ...baseCtx, userRole: 'ROLE_PREMIUM' })).toBe(false);
-    expect(isLessonLocked({ trimester: 3 }, { ...baseCtx, userRole: 'ROLE_TEACHER' })).toBe(false);
     expect(isLessonLocked({ trimester: 2 }, { ...baseCtx, userRole: 'ROLE_ADMIN' })).toBe(false);
   });
 });

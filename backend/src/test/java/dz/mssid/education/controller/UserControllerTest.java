@@ -108,17 +108,17 @@ class UserControllerTest {
                 .id(5L)
                 .nom("Mohamed Admin")
                 .email("mohamed@mssid.dz")
-                .role("ROLE_TEACHER")
+                .role("ROLE_PREMIUM")
                 .build();
 
-        when(userService.updateUserRole(eq(5L), eq("ROLE_TEACHER"), eq("admin@mssid.dz"))).thenReturn(updated);
+        when(userService.updateUserRole(eq(5L), eq("ROLE_PREMIUM"), eq("admin@mssid.dz"))).thenReturn(updated);
         authenticateAs("admin@mssid.dz");
 
         mockMvc.perform(put("/api/v1/users/admin/5/role")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(Map.of("role", "ROLE_TEACHER"))))
+                        .content(objectMapper.writeValueAsString(Map.of("role", "ROLE_PREMIUM"))))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
-                .andExpect(jsonPath("$.user.role").value("ROLE_TEACHER"));
+                .andExpect(jsonPath("$.user.role").value("ROLE_PREMIUM"));
     }
 }
