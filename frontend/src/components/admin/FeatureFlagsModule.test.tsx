@@ -1,0 +1,51 @@
+import React from 'react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { FeatureFlagsModule } from './FeatureFlagsModule';
+import { springBootApi } from '../../services/springBootApi';
+import { setFeatureFlagOverride, resetFeatureFlagOverride } from '../../featureFlags';
+
+// Regression test for the bug report: toggling enableTrimesterPaywall alone (or enablePayments
+// alone) has zero visible effect anywhere in the app, since isLessonLocked requires BOTH to be true
+// (see trimesterAccess.ts). Without this UI, an admin testing one flag at a time sees "nothing
+// happened" with no explanation. These tests cover the dormant-state indicator that now surfaces why.
+describe('FeatureFlagsModule — enableTrimesterPaywall dependency on enablePayments', () => {
+  beforeEach(() => {
+    vi.spyOn(springBootApi, 'updateFeatureFlag').mockResolvedValue({ data: {} } as any);
+    vi.spyOn(springBootApi, 'deleteFeatureFlagOverride').mockResolvedValue({ data: {} } as any);
+  });
+
+  afterEach(() => {
+    resetFeatureFlagOverride('enablePayments');
+    resetFeatureFlagOverride('enableTrimesterPaywall');
+    vi.restoreAllMocks();
+  });
+
+  it('flags the trimester paywall as having no effect when enablePayments is off', () => {
+    setFeatureFlagOverride('enablePayments', false);
+    setFeatureFlagOverride('enableTrimesterPaywall', true);
+
+    render(<FeatureFlagsModule />);
+
+    expect(screen.getByText('⏸️ بلا تأثير حالياً')).toBeInTheDocument();
+    expect(screen.getByText(/يتطلب تفعيل «المدفوعات والاشتراكات» أولاً/)).toBeInTheDocument();
+  });
+
+  it('clears the dormant indicator once enablePayments is also on', () => {
+    setFeatureFlagOverride('enablePayments', true);
+    setFeatureFlagOverride('enableTrimesterPaywall', true);
+
+    render(<FeatureFlagsModule />);
+
+    expect(screen.queryByText('⏸️ بلا تأثير حالياً')).not.toBeInTheDocument();
+  });
+
+  it('does not flag the trimester paywall as dormant while it is itself off', () => {
+    setFeatureFlagOverride('enablePayments', false);
+    setFeatureFlagOverride('enableTrimesterPaywall', false);
+
+    render(<FeatureFlagsModule />);
+
+    expect(screen.queryByText('⏸️ بلا تأثير حالياً')).not.toBeInTheDocument();
+  });
+});

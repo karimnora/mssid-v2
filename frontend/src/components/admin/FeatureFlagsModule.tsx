@@ -13,14 +13,20 @@ import { springBootApi } from '../../services/springBootApi';
 interface FlagMeta {
   labelAr: string;
   descriptionAr: string;
+  // Set when this flag's effect is conditional on another flag also being on (see isLessonLocked in
+  // trimesterAccess.ts, which requires BOTH enablePayments and enableTrimesterPaywall). Without
+  // surfacing this in the UI, toggling either flag alone silently does nothing — which is exactly the
+  // "the flag has no effect" bug report this dependsOn/blocked machinery exists to fix.
+  dependsOn?: FeatureFlagName;
+  dependsOnLabelAr?: string;
 }
 
 // Copied verbatim from the deleted components/cms/FeatureFlagsConfig.tsx — this catalog stays
 // frontend-owned (the backend only persists per-key overrides, see featureFlags.ts).
 const CORE_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
   { id: 'enablePreschoolModule', meta: { labelAr: '🦊 وضع التحضيري / الإيقاظ (3-5 سنوات)', descriptionAr: 'إظهار أو إخفاء زر الدخول إلى قسم الروضة على الصفحة الرئيسية.' } },
-  { id: 'enablePayments', meta: { labelAr: '💳 المدفوعات والاشتراكات', descriptionAr: 'تفعيل أو تعطيل نافذة الاشتراك المدفوع — عطّلها لإطلاق نسخة مجانية بالكامل.' } },
-  { id: 'enableTrimesterPaywall', meta: { labelAr: '🔒 قفل الفصلين الثاني والثالث', descriptionAr: 'عند التفعيل: دروس الفصل الثاني والثالث تتطلب اشتراكاً (ROLE_PREMIUM)، والفصل الأول يبقى مجانياً دائماً. عطّلها أثناء مراجعة المحتوى قبل الإطلاق.' } },
+  { id: 'enablePayments', meta: { labelAr: '💳 المدفوعات والاشتراكات', descriptionAr: 'المفتاح الرئيسي لنظام الدفع بالكامل. لا يظهر أي أثر بمفرده — يتحكم فقط في ما إذا كانت المزايا المرتبطة بالدفع (كقفل الفصلين أدناه) قادرة على العمل. عطّله لإطلاق نسخة مجانية بالكامل فوراً.' } },
+  { id: 'enableTrimesterPaywall', meta: { labelAr: '🔒 قفل الفصلين الثاني والثالث', descriptionAr: 'عند التفعيل: دروس الفصل الثاني والثالث تتطلب اشتراكاً (ROLE_PREMIUM)، والفصل الأول يبقى مجانياً دائماً. عطّلها أثناء مراجعة المحتوى قبل الإطلاق.', dependsOn: 'enablePayments', dependsOnLabelAr: 'المدفوعات والاشتراكات' } },
   { id: 'enablePrintablePDFs', meta: { labelAr: '🖨️ فيشات المراجعة القابلة للطباعة', descriptionAr: 'إظهار زر طباعة / تحميل فيشة المراجعة داخل الدروس.' } },
   { id: 'enableAITutor', meta: { labelAr: '🤖 المعلم الافتراضي أمين الفنك (Gemini)', descriptionAr: 'تفعيل أو تعطيل زر المساعد الذكي في شريط التنقل.' } },
   { id: 'enableExamSection', meta: { labelAr: '📜 قسم الامتحانات الرسمية (5AP)', descriptionAr: 'إظهار أو إخفاء تبويب الامتحانات الرسمية على واجهة التلميذ.' } },
@@ -40,11 +46,12 @@ const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
 // no redeploy needed), THEN a best-effort PUT/DELETE against the server so the change is shared
 // across admins/devices. On network failure the local toggle still stands (never silently reverted)
 // but an inline warning tells the admin it didn't reach the server.
-const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolean; overridden: boolean }> = ({
+const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolean; overridden: boolean; dormant: boolean }> = ({
   id,
   meta,
   enabled,
   overridden,
+  dormant,
 }) => {
   const [syncError, setSyncError] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -88,8 +95,18 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
                 معدّل يدوياً
               </span>
             )}
+            {dormant && (
+              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                ⏸️ بلا تأثير حالياً
+              </span>
+            )}
           </div>
           <p className="text-[11px] text-slate-300">{meta.descriptionAr}</p>
+          {dormant && (
+            <p className="text-[10px] font-bold text-rose-300">
+              يتطلب تفعيل «{meta.dependsOnLabelAr}» أولاً ليُطبَّق هذا التبديل فعلياً.
+            </p>
+          )}
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
@@ -153,7 +170,14 @@ export const FeatureFlagsModule: React.FC = () => {
         <h3 className="text-xs font-black text-slate-500 px-1">المزايا الأساسية</h3>
         <div className="space-y-2">
           {CORE_FLAGS.map(({ id, meta }) => (
-            <ToggleRow key={id} id={id} meta={meta} enabled={flags[id]} overridden={isFlagOverridden(id)} />
+            <ToggleRow
+              key={id}
+              id={id}
+              meta={meta}
+              enabled={flags[id]}
+              overridden={isFlagOverridden(id)}
+              dormant={!!meta.dependsOn && flags[id] && !flags[meta.dependsOn]}
+            />
           ))}
         </div>
       </div>
@@ -162,7 +186,7 @@ export const FeatureFlagsModule: React.FC = () => {
         <h3 className="text-xs font-black text-slate-500 px-1">مزايا إضافية</h3>
         <div className="space-y-2">
           {OTHER_FLAGS.map(({ id, meta }) => (
-            <ToggleRow key={id} id={id} meta={meta} enabled={flags[id]} overridden={isFlagOverridden(id)} />
+            <ToggleRow key={id} id={id} meta={meta} enabled={flags[id]} overridden={isFlagOverridden(id)} dormant={false} />
           ))}
         </div>
       </div>
