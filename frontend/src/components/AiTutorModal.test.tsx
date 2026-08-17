@@ -2,113 +2,80 @@ import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { AiTutorModal } from './AiTutorModal';
+import { springBootApi } from '../services/springBootApi';
 
 describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
-  const originalFetch = global.fetch;
-
   beforeEach(() => {
     localStorage.clear();
-    vi.clearAllMocks();
   });
 
   afterEach(() => {
-    global.fetch = originalFetch;
+    vi.restoreAllMocks();
   });
 
-  it('renders modal with grade and quota information when open', async () => {
-    global.fetch = vi.fn().mockResolvedValue({
-      json: async () => ({ remaining: 50, limit: 50 }),
-    });
-
+  it('renders modal with the topic input when open', () => {
     render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
 
     expect(screen.getByText(/المعلّم الذكي "مسيد"/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toBeInTheDocument();
   });
 
-  it('displays loading spinner state when AI response is being generated', async () => {
-    // Mock quota fetch and slow explain API response
-    global.fetch = vi.fn().mockImplementation((url) => {
-      if (url.includes('/api/gemini/quota')) {
-        return Promise.resolve({ json: async () => ({ remaining: 50, limit: 50 }) });
-      }
-      return new Promise((resolve) => setTimeout(resolve, 2000));
-    });
+  it('displays a loading state while waiting for the AI response', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockImplementation(
+      () => new Promise(() => {}) // never resolves — keeps the button in loading state
+    );
 
     render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
 
-    const submitBtn = screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i });
-    fireEvent.click(submitBtn);
-
-    // Should show loading state text and spinner
     expect(screen.getByText('المعلم مسيد يفكر ويشرح...')).toBeInTheDocument();
   });
 
-  it('renders AI generated answer and cache hit badge on success (Happy Path)', async () => {
-    global.fetch = vi.fn().mockImplementation((url) => {
-      if (url.includes('/api/gemini/quota')) {
-        return Promise.resolve({ json: async () => ({ remaining: 50, limit: 50 }) });
-      }
-      return Promise.resolve({
-        status: 200,
-        json: async () => ({
-          text: 'شرح مفصل للقسمة الإقليدية: القسمة هي عملية توزيع متساوٍ...',
-          cached: true,
-          cacheHitsCount: 3,
-          usage: { remaining: 50, limit: 50 },
-        }),
-      });
+  it('renders the AI generated answer on success (Happy Path)', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockResolvedValue({
+      status: 200,
+      data: {
+        responseText: 'شرح مفصل للقسمة الإقليدية: القسمة هي عملية توزيع متساوٍ...',
+        status: 'success',
+      },
     });
 
     render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
-
-    const submitBtn = screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i });
-    fireEvent.click(submitBtn);
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
 
     await waitFor(() => {
       expect(screen.getByText(/شرح مفصل للقسمة الإقليدية/i)).toBeInTheDocument();
-      expect(screen.getByText(/إجابة فورية مخزنة \(Cache Hit #3\)/i)).toBeInTheDocument();
     });
   });
 
-  it('handles rate limit 429 error and displays user alert (Error Handling)', async () => {
-    global.fetch = vi.fn().mockImplementation((url) => {
-      if (url.includes('/api/gemini/quota')) {
-        return Promise.resolve({ json: async () => ({ remaining: 0, limit: 3 }) });
-      }
-      return Promise.resolve({
-        status: 429,
-        json: async () => ({
-          error: 'RATE_LIMIT_EXCEEDED',
-          message: 'لقد تجاوزت الحد اليومي المسموح به لأسئلة الذكاء الاصطناعي.',
-          limit: 3,
-        }),
-      });
+  // Regression test for the bug found in the CMS/AI audit: the backend answers 200 OK even when
+  // Gemini itself failed, putting the raw exception text in the same field used for real answers
+  // and only status:'error' distinguishes the two. The old code ignored status entirely, so a raw
+  // backend exception was rendered inside the tutor's answer box as if a child had really been
+  // taught by it.
+  it('shows a generic error message instead of the raw backend text when the AI call fails (status: error)', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockResolvedValue({
+      status: 200,
+      data: {
+        responseText: "Erreur lors de l'appel de l'API Gemini: 401 Unauthorized",
+        status: 'error',
+      },
     });
 
     render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
-
-    const submitBtn = screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i });
-    fireEvent.click(submitBtn);
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('لقد تجاوزت الحد اليومي المسموح به لأسئلة الذكاء الاصطناعي.')).toBeInTheDocument();
-      expect(screen.getByText(/تنبيه نظام الحماية والحد اليومي/i)).toBeInTheDocument();
+      expect(screen.getByText('تعذر الوصول إلى المعلم الذكي حالياً. حاول مرة أخرى بعد قليل.')).toBeInTheDocument();
     });
+    expect(screen.queryByText(/Erreur lors de l'appel de l'API Gemini/)).not.toBeInTheDocument();
   });
 
-  it('handles network failure error gracefully (Error Handling)', async () => {
-    global.fetch = vi.fn().mockImplementation((url) => {
-      if (url.includes('/api/gemini/quota')) {
-        return Promise.resolve({ json: async () => ({ remaining: 5, limit: 5 }) });
-      }
-      return Promise.reject(new Error('Network error'));
-    });
+  it('handles a network failure gracefully', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockRejectedValue(new Error('Network error'));
 
     render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
-
-    const submitBtn = screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i });
-    fireEvent.click(submitBtn);
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
 
     await waitFor(() => {
       expect(screen.getByText('تعذر الاتصال بالخادم. يرجى التحقق من الشبكة وإعادة المحاولة.')).toBeInTheDocument();

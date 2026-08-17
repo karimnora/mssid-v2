@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Send, Bot, User, RefreshCw, MessageSquare, Zap, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Sparkles, Bot, RefreshCw, ShieldAlert } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
@@ -18,40 +18,8 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
   const [aiResponse, setAiResponse] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // Quota & Cache Meta state
   const currentUser = AuthService.getCurrentUser();
   const userRole = currentUser?.role || 'ROLE_FREE';
-  const userId = currentUser?.email || 'anonymous_user';
-
-  const [usageInfo, setUsageInfo] = useState<{ remaining: number; limit: number; resetHours?: number }>({
-    remaining: (userRole as string) === 'ROLE_PREMIUM' ? 50 : (userRole as string) === 'ROLE_TEACHER' ? 100 : (userRole as string) === 'ROLE_ADMIN' ? 1000 : 3,
-    limit: (userRole as string) === 'ROLE_PREMIUM' ? 50 : (userRole as string) === 'ROLE_TEACHER' ? 100 : (userRole as string) === 'ROLE_ADMIN' ? 1000 : 3,
-  });
-  const [isCachedHit, setIsCachedHit] = useState<boolean>(false);
-  const [cacheHitsCount, setCacheHitsCount] = useState<number>(0);
-
-  // Fetch initial quota on open
-  useEffect(() => {
-    if (isOpen) {
-      fetch(`/api/gemini/quota?role=${userRole}&userId=${encodeURIComponent(userId)}`, {
-        headers: {
-          'x-user-role': userRole,
-          'x-user-id': userId,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.limit !== undefined) {
-            setUsageInfo({
-              remaining: data.remaining,
-              limit: data.limit,
-              resetHours: data.resetHours,
-            });
-          }
-        })
-        .catch((err) => console.warn('Could not fetch quota status:', err));
-    }
-  }, [isOpen, userRole, userId]);
 
   if (!isOpen) return null;
 
@@ -60,10 +28,9 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
 
     setLoading(true);
     setErrorMsg(null);
-    setIsCachedHit(false);
+    setAiResponse(null);
 
     try {
-      // 1. Try Spring Boot API endpoint first
       const springRes = await springBootApi.askGeminiExplain({
         topic,
         question,
@@ -71,59 +38,22 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
         promptType,
       });
 
-      if (springRes.status === 200 && (springRes.data?.responseText || springRes.data?.text)) {
-        setAiResponse(springRes.data.responseText || springRes.data.text || '');
-        if (springRes.data.cached) {
-          setIsCachedHit(true);
-        }
+      // The backend always answers 200 OK and puts the failure reason in the SAME text field it
+      // uses for real answers (GeminiResponse.responseText) — status is the only reliable signal
+      // that this wasn't a genuine explanation. Never surface that raw text to the child as if it
+      // were the tutor talking.
+      if (springRes.error || springRes.data?.status === 'error') {
+        setErrorMsg('تعذر الوصول إلى المعلم الذكي حالياً. حاول مرة أخرى بعد قليل.');
         return;
       }
 
-      // 2. Fallback to Express backend proxy (/api/gemini/explain)
-      const res = await fetch('/api/gemini/explain', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-user-role': userRole,
-          'x-user-id': userId,
-        },
-        body: JSON.stringify({
-          topic,
-          question,
-          grade,
-          promptType,
-          role: userRole,
-          userId,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (res.status === 429 || data.error === 'RATE_LIMIT_EXCEEDED') {
-        setErrorMsg(data.message || 'لقد تجاوزت الحد اليومي المسموح به لأسئلة الذكاء الاصطناعي.');
-        if (data.limit !== undefined) {
-          setUsageInfo({
-            remaining: 0,
-            limit: data.limit,
-            resetHours: data.resetHours,
-          });
-        }
-      } else if (data.error) {
-        setErrorMsg(data.error);
-      } else {
-        setAiResponse(data.text);
-        if (data.cached) {
-          setIsCachedHit(true);
-          setCacheHitsCount(data.cacheHitsCount || 1);
-        }
-        if (data.usage) {
-          setUsageInfo({
-            remaining: data.usage.remaining,
-            limit: data.usage.limit,
-            resetHours: data.usage.resetHours,
-          });
-        }
+      const text = springRes.data?.responseText || springRes.data?.text;
+      if (!text) {
+        setErrorMsg('لم يصل أي رد من المعلم الذكي. حاول مرة أخرى.');
+        return;
       }
+
+      setAiResponse(text);
     } catch (err: any) {
       console.error(err);
       setErrorMsg('تعذر الاتصال بالخادم. يرجى التحقق من الشبكة وإعادة المحاولة.');
@@ -146,7 +76,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
               <div className="flex items-center gap-2 flex-wrap">
                 <h2 className="text-base sm:text-lg font-black font-sans">المعلّم الذكي "مسيد" 🇩🇿</h2>
                 <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">
-                  Gemini 3.6 AI
+                  Gemini AI
                 </span>
                 <span className="bg-slate-900/80 text-amber-300 text-[10px] font-mono px-2 py-0.5 rounded-full border border-amber-400/30">
                   {userRole}
@@ -159,14 +89,6 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Quota Indicator Badge */}
-            <div className="hidden sm:flex flex-col items-end text-left font-mono">
-              <span className="text-[10px] text-emerald-200 uppercase font-bold">الرصيد اليومي:</span>
-              <span className="text-xs font-black text-amber-300">
-                {usageInfo.remaining} / {usageInfo.limit}
-              </span>
-            </div>
-
             <button
               onClick={onClose}
               className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
@@ -176,8 +98,8 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
           </div>
         </div>
 
-        {/* Action Type Selector & Quota Banner */}
-        <div className="bg-slate-100 p-3 border-b border-slate-200 flex items-center justify-between gap-2 overflow-x-auto text-xs font-bold shrink-0">
+        {/* Action Type Selector */}
+        <div className="bg-slate-100 p-3 border-b border-slate-200 flex items-center gap-2 overflow-x-auto text-xs font-bold shrink-0">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setPromptType('explain')}
@@ -203,10 +125,6 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             >
               ولّد مسألة تدريبية جديدة
             </button>
-          </div>
-
-          <div className="text-[11px] font-mono text-slate-600 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shrink-0">
-            الحد: <span className="font-bold text-emerald-700">{usageInfo.remaining}/{usageInfo.limit}</span>
           </div>
         </div>
 
@@ -260,14 +178,9 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-2xl text-xs font-bold space-y-2">
               <div className="flex items-center gap-2 text-rose-900">
                 <ShieldAlert className="w-5 h-5 shrink-0 text-rose-600" />
-                <span className="text-sm font-extrabold">تنبيه نظام الحماية والحد اليومي:</span>
+                <span className="text-sm font-extrabold">تنبيه:</span>
               </div>
               <p className="leading-relaxed font-sans">{errorMsg}</p>
-              {userRole === 'ROLE_FREE' && (
-                <p className="text-[11px] text-rose-700 pt-1 border-t border-rose-200">
-                  💡 <strong>نصيحة:</strong> يمكنك الترقية إلى حساب <span className="underline">ROLE_PREMIUM</span> للحصول على 50 سؤالاً يومياً وعرض إجابات فورية بدون انتظار!
-                </p>
-              )}
             </div>
           )}
 
@@ -279,16 +192,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                   <Bot className="w-4 h-4 text-emerald-400" />
                   <span>شرح المعلم مسيد:</span>
                 </div>
-
-                {/* Cache Badge Indicator */}
-                {isCachedHit ? (
-                  <span className="bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-amber-400 fill-amber-400" />
-                    <span>إجابة فورية مخزنة (Cache Hit #{cacheHitsCount}) • لم يستهلك رصيداً</span>
-                  </span>
-                ) : (
-                  <span className="text-[10px] font-mono text-slate-300">المنهاج الجزائري</span>
-                )}
+                <span className="text-[10px] font-mono text-slate-300">المنهاج الجزائري</span>
               </div>
 
               <div className="text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-line pt-1">
