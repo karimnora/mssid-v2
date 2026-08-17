@@ -739,6 +739,15 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
     return newReceipt;
   }
 
+  /**
+   * Local-only mock, entirely disconnected from the real backend receipts table (fires a
+   * fire-and-forget sync as a courtesy, but never awaits/checks it). Used ONLY by
+   * SubscriptionPaywall.tsx's dev-build-gated "simulate admin approval" testing shortcut, which
+   * itself submits via the equally local-only submitReceipt() above — never the real admin flow.
+   * The real admin console (UsersRolesModule.tsx) must use verifyReceiptAsync below instead: an
+   * admin approving/rejecting a REAL user's payment needs to know for certain whether the backend
+   * actually recorded it, not just that a local copy was optimistically updated.
+   */
   static verifyReceipt(receiptId: number, approve: boolean, rejectionReason?: string): PaymentReceipt | null {
     const receipts = this.getReceipts();
     const idx = receipts.findIndex((r) => r.id === receiptId);
@@ -778,5 +787,20 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
     }
 
     return target;
+  }
+
+  /**
+   * The real, backend-authoritative approve/reject call for the admin console. Unlike verifyReceipt
+   * above, this never assumes success — it awaits the actual PUT and reports exactly what happened,
+   * so an admin can't be shown "approved" for a payment the server never actually recorded (the bug
+   * that motivated this method: a fire-and-forget call swallowing a network failure meant a real
+   * paying user could stay stuck on FREE with nobody noticing).
+   */
+  static async verifyReceiptAsync(receiptId: number, approve: boolean, rejectionReason?: string): Promise<{ success: boolean; message?: string }> {
+    const res = await springBootApi.verifyReceipt(receiptId, approve, rejectionReason);
+    if (res.error) {
+      return { success: false, message: res.error };
+    }
+    return { success: true };
   }
 }

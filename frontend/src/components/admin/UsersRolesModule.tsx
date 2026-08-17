@@ -14,6 +14,8 @@ export const UsersRolesModule: React.FC = () => {
   const [selectedReceipt, setSelectedReceipt] = useState<PaymentReceipt | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [rejectionReason, setRejectionReason] = useState<string>('صورة الوصل غير واضحة أو الرقم المرجعي غير متطابق');
+  const [receiptMessage, setReceiptMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [verifyingReceiptId, setVerifyingReceiptId] = useState<number | null>(null);
 
   // User RBAC Management State
   const [users, setUsers] = useState<AuthUser[]>([]);
@@ -56,21 +58,36 @@ export const UsersRolesModule: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
-  const handleApprove = async (id: number) => {
-    AuthService.verifyReceipt(id, true);
-    if (selectedReceipt && selectedReceipt.id === id) {
-      setSelectedReceipt(null);
+  // SEC/BUG FIX: previously called the local-only AuthService.verifyReceipt (fire-and-forget to the
+  // backend, optimistic localStorage write shown as instant "success") — a failed network call meant
+  // the admin saw "approved" while the server never actually recorded it, silently leaving a paying
+  // user stuck on FREE. Now awaits the real backend call and only reports success once confirmed.
+  const handleVerify = async (id: number, approve: boolean, reason?: string) => {
+    setReceiptMessage(null);
+    setVerifyingReceiptId(id);
+    const result = await AuthService.verifyReceiptAsync(id, approve, reason);
+    setVerifyingReceiptId(null);
+
+    if (!result.success) {
+      setReceiptMessage({
+        type: 'error',
+        text: result.message || 'تعذر تسجيل القرار على الخادم. لم تتم الموافقة/الرفض فعلياً — أعد المحاولة.',
+      });
+      return;
     }
+
+    // Keep the receipt selected (rather than clearing it) and reflect its new status inline — the
+    // admin sees the confirmed APPROVED/REJECTED state directly, instead of the success message and
+    // the detail panel disappearing in the same instant (they would have, if selectedReceipt were
+    // cleared here: the message banner below only renders while a receipt is selected).
+    setSelectedReceipt((prev) => (prev && prev.id === id ? { ...prev, status: approve ? 'APPROVED' : 'REJECTED' } : prev));
+    setReceiptMessage({ type: 'success', text: approve ? 'تمت الموافقة على الوصل وترقية الحساب بنجاح.' : 'تم رفض الوصل بنجاح.' });
+    setTimeout(() => setReceiptMessage(null), 3000);
     await loadReceipts();
   };
 
-  const handleReject = async (id: number) => {
-    AuthService.verifyReceipt(id, false, rejectionReason);
-    if (selectedReceipt && selectedReceipt.id === id) {
-      setSelectedReceipt(null);
-    }
-    await loadReceipts();
-  };
+  const handleApprove = (id: number) => handleVerify(id, true);
+  const handleReject = (id: number) => handleVerify(id, false, rejectionReason);
 
   const handleRoleChange = async (userId: number, newRole: UserRole) => {
     setRoleMessage(null);
@@ -272,14 +289,20 @@ export const UsersRolesModule: React.FC = () => {
                   </div>
 
                   {/* Actions */}
+                  {receiptMessage && (
+                    <div className={`p-3 rounded-xl text-xs font-bold ${receiptMessage.type === 'success' ? 'bg-emerald-900/40 text-emerald-300 border border-emerald-800' : 'bg-rose-900/40 text-rose-300 border border-rose-800'}`}>
+                      {receiptMessage.text}
+                    </div>
+                  )}
                   {selectedReceipt.status === 'PENDING_VERIFICATION' ? (
                     <div className="space-y-3 pt-2">
                       <button
                         onClick={() => handleApprove(selectedReceipt.id)}
-                        className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 shadow-md"
+                        disabled={verifyingReceiptId === selectedReceipt.id}
+                        className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-extrabold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 shadow-md"
                       >
                         <CheckCircle2 className="w-4 h-4" />
-                        <span>المصادقة وتفعيل اشتراك ROLE_PREMIUM لمساهمة الطالب</span>
+                        <span>{verifyingReceiptId === selectedReceipt.id ? 'جارٍ التسجيل على الخادم...' : 'المصادقة وتفعيل اشتراك ROLE_PREMIUM لمساهمة الطالب'}</span>
                       </button>
 
                       <div className="space-y-1.5">
@@ -292,7 +315,8 @@ export const UsersRolesModule: React.FC = () => {
                         />
                         <button
                           onClick={() => handleReject(selectedReceipt.id)}
-                          className="w-full py-2 bg-rose-900/60 hover:bg-rose-900 text-rose-200 font-bold text-xs rounded-xl border border-rose-800 transition-all cursor-pointer flex items-center justify-center gap-2"
+                          disabled={verifyingReceiptId === selectedReceipt.id}
+                          className="w-full py-2 bg-rose-900/60 hover:bg-rose-900 disabled:opacity-50 disabled:cursor-not-allowed text-rose-200 font-bold text-xs rounded-xl border border-rose-800 transition-all cursor-pointer flex items-center justify-center gap-2"
                         >
                           <XCircle className="w-4 h-4" />
                           <span>رفض الوصل</span>

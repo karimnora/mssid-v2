@@ -138,6 +138,61 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
     });
   });
 
+  describe('verifyReceiptAsync - the real, backend-authoritative admin approval path', () => {
+    const originalFetch = global.fetch;
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    it('reports success only once the backend confirms the approval', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ success: true }),
+      });
+
+      const result = await AuthService.verifyReceiptAsync(42, true);
+
+      expect(result).toEqual({ success: true });
+    });
+
+    // Regression test for the bug this method exists to fix: the old verifyReceipt() wrote
+    // "approved" to localStorage BEFORE the backend call even resolved, so a network failure was
+    // invisible to the admin. This must surface as an explicit failure instead.
+    it('reports failure (not a false success) when the backend call fails', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 500,
+        ok: false,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ message: 'Erreur serveur interne' }),
+      });
+
+      const result = await AuthService.verifyReceiptAsync(42, true);
+
+      expect(result.success).toBe(false);
+      expect(result.message).toBe('Erreur serveur interne');
+    });
+
+    it('reports failure when the network itself is unreachable', async () => {
+      // springBootApi.request() silently retries once after 5s on a raw network failure (see
+      // Phase 34's cold-start recovery) — use fake timers so this test doesn't actually wait 5s.
+      vi.useFakeTimers();
+      try {
+        global.fetch = vi.fn().mockRejectedValue(new Error('Failed to fetch'));
+
+        const resultPromise = AuthService.verifyReceiptAsync(42, false, 'test');
+        await vi.advanceTimersByTimeAsync(5000);
+        const result = await resultPromise;
+
+        expect(result.success).toBe(false);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+  });
+
   describe('"Didou Studio" gold-coin/outfit sync (kept deliberately separate from XP)', () => {
     const originalFetch = global.fetch;
 

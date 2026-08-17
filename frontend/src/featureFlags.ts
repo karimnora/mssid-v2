@@ -14,7 +14,10 @@ export type FeatureFlagName =
   | 'enableTrimesterPaywall';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
-  enablePayments: true,
+  // Off at launch: ship a fully free app first, flip on (via the admin Feature Flags tab) once
+  // ready to introduce payments — this is the master kill-switch, enableTrimesterPaywall below is
+  // the specific T2/T3 lock and stays subordinate to this one either way (see trimesterAccess.ts).
+  enablePayments: false,
   tamazight: false,
   enableAITutor: true,
   advancedLabs: true,
