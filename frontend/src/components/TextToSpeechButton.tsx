@@ -2,11 +2,13 @@ import React, { useMemo, useState } from 'react';
 import { Play, Pause, Square, Speaker, ChevronDown } from 'lucide-react';
 import { speakText, stopSpeech } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 
 const SPEED_OPTIONS = [0.75, 1, 1.25] as const;
 
 export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
   const { locale, t } = useLocaleContext();
+  const voiceReadingEnabled = useFeatureFlag('voiceReading');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isSpeedMenuOpen, setIsSpeedMenuOpen] = useState(false);
@@ -51,6 +53,8 @@ export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
     setIsPlaying(false);
     setIsPaused(false);
   };
+
+  if (!voiceReadingEnabled) return null;
 
   return (
     <div className="inline-flex items-center gap-2 rounded-3xl bg-slate-100/90 border border-slate-300 p-2 shadow-sm text-slate-700 text-xs">

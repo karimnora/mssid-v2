@@ -1,4 +1,5 @@
 import { DidouAvatarConfig } from './ecosystem';
+import { FeatureFlagName } from '../featureFlags';
 
 export type Language = 'ar' | 'fr' | 'en' | 'ber';
 
@@ -23,11 +24,9 @@ export type SubjectId =
   | 'tamazight_lab'
   | 'tamazight_curriculum'
   | 'educational_calculator'
-  | 'writing_response'
   | 'geometry'
   | 'converter'
   | 'multiplication'
-  | 'interactive_video'
   | 'challenges'
   | 'algerian_market'
   | 'wilayas_map'
@@ -51,6 +50,8 @@ export interface SubjectInfo {
   category?: 'course' | 'tool' | 'exam' | 'challenge';
   /** Earliest grade this makes sense for (tools only) — hides it while browsing an earlier grade. Omit for grade-agnostic tools. */
   minGrade?: PrimaryGrade;
+  /** Gates this entry's visibility on a feature flag (see App.tsx's isSubjectVisible). Omit if always visible. */
+  featureFlag?: FeatureFlagName;
 }
 
 export interface QuizOption {

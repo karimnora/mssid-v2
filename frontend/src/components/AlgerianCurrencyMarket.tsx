@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { speakText as speakTextShared } from '../utils/speech';
 import {
   ShoppingBag,
   Coins,
@@ -179,14 +180,10 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   const currentScenario = GAME_SCENARIOS[gameScenarioIndex % GAME_SCENARIOS.length];
   const currentMath = SPEED_MATH_CHALLENGES[mathIndex % SPEED_MATH_CHALLENGES.length];
 
+  // Delegates to the shared, feature-flag-gated implementation (see utils/speech.ts) so voiceReading
+  // actually controls this like every other narration in the app.
   const speakText = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ar-SA';
-      utterance.rate = 0.92;
-      window.speechSynthesis.speak(utterance);
-    }
+    speakTextShared(text, 'ar-SA', 0.92);
   };
 
   // Cart calculations

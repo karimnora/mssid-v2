@@ -1,10 +1,21 @@
 import { SubjectInfo, PrimaryGrade } from '../types';
+import { FeatureFlagName } from '../featureFlags';
 
 export const GRADE_ORDER: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 
 /** A tool with no minGrade is grade-agnostic (always shown); otherwise only from its minGrade onward. */
 export const isToolAvailableForGrade = (tool: SubjectInfo, grade: PrimaryGrade): boolean =>
   !tool.minGrade || GRADE_ORDER.indexOf(grade) >= GRADE_ORDER.indexOf(tool.minGrade);
+
+/**
+ * A subject with no `featureFlag` is always visible; otherwise it's shown only while that flag is
+ * on. Pure and testable by design (mirrors isLessonLocked/trimesterAccess.ts) — App.tsx supplies
+ * `flags` from its own useFeatureFlag() subscriptions so the caller re-renders reactively on toggle.
+ */
+export const isSubjectFeatureEnabled = (
+  subject: SubjectInfo,
+  flags: Partial<Record<FeatureFlagName, boolean>>
+): boolean => !subject.featureFlag || !!flags[subject.featureFlag];
 
 const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   // 1. COURSES & OFFICIAL CURRICULUM
@@ -38,6 +49,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'أبجدية التيفيناغ الرسمية، القواعد والتركيب، المفردات التراثية، والحكايات الوطنية وفق المنهاج الجزائري.',
     category: 'course',
     minGrade: '3AP',
+    featureFlag: 'tamazight',
   },
   {
     id: 'science',
@@ -144,6 +156,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'تعلم حروف التيفيناغ، المقابل الصوتي، المفردات التراثية، والألعاب التفاعلية للغة الأمازيغية.',
     category: 'tool',
     minGrade: '3AP',
+    featureFlag: 'tamazight',
   },
   {
     id: 'tamazight_curriculum',
@@ -155,6 +168,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'استعراض شامل لمشاريع وحدات كتاب الأمازيغية للسنة الرابعة والخامسة ابتدائي.',
     category: 'tool',
     minGrade: '4AP',
+    featureFlag: 'tamazight',
   },
   {
     id: 'touch_writing',
@@ -166,6 +180,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'لوحة لمسية تفاعلية لتدريب الأطفال على رسم وكتابة الحروف العربية واللاتينية والتيفيناغ بدقة ومرح.',
     category: 'tool',
     minGrade: '1AP',
+    featureFlag: 'writingLab',
   },
   {
     id: 'science_lab',
@@ -177,6 +192,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'تجارب تفاعلية فيزيائية وبيولوجية: نظام الفقارة، الضخ الشمسي بالواحات، وكثافة شط ملغيغ.',
     category: 'tool',
     minGrade: '3AP',
+    featureFlag: 'advancedLabs',
   },
 
   // 3. STANDALONE INTERACTIVE LABS & TOOLS
@@ -234,6 +250,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'أداة تفاعلية تجريبية مستقلا للمرحلة الابتدائية: الدارة الكهربائية، الصمام الثنائي الضوئي، النواقل والعوازل.',
     category: 'tool',
     minGrade: '4AP',
+    featureFlag: 'advancedLabs',
   },
   {
     id: 'geometry',
@@ -245,6 +262,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'استكشاف الأشكال الهندسية، قياس الزوايا، التعامد والتوازي، والمحيط والمساحة برسم تفاعلي.',
     category: 'tool',
     minGrade: '3AP',
+    featureFlag: 'advancedLabs',
   },
   {
     id: 'converter',
@@ -267,6 +285,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'آلة حاسبة آمنة تشرح الخطوات وتعرض النتائج مع شرح مبسط للأطفال.',
     category: 'tool',
     minGrade: '1AP',
+    featureFlag: 'educationalCalculator',
   },
   {
     id: 'multiplication',

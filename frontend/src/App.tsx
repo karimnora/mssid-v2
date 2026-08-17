@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
-import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo } from './types';
+import { PrimaryGrade, SubjectId, CourseLesson, UserProfile, Badge as BadgeInfo, SubjectInfo } from './types';
 import { AuthService } from './services/authService';
 import { useAuth } from './context/AuthContext';
 import { useLocaleContext } from './context/LocaleContext';
-import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, CHALLENGES_TAB_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST, isToolAvailableForGrade } from './data/subjectsData';
+import { SUBJECTS_LIST, COURSE_SUBJECTS_LIST, INTERACTIVE_LABS_LIST, OFFICIAL_EXAMS_LIST, CHALLENGES_TAB_LIST, SPECIAL_TOOLS_AND_EXAMS_LIST, isToolAvailableForGrade, isSubjectFeatureEnabled } from './data/subjectsData';
 import { COURSES_DATA } from './data/coursesData';
 import { CourseSelectionView } from './components/CourseSelectionView';
 import { LessonViewer } from './components/LessonViewer';
@@ -189,6 +189,23 @@ export default function App() {
 
   const enablePreschoolModule = useFeatureFlag('enablePreschoolModule');
   const enableExamSection = useFeatureFlag('enableExamSection');
+
+  // Subject/tool catalog entries tagged with a `featureFlag` (see subjectsData.ts) are hidden from
+  // every picker (course subjects, tools hub) when their flag is off — subscribing to each flag here
+  // is what makes App.tsx re-render and recompute visibleCourseSubjects/availableLabsForGrade below
+  // the instant an admin toggles one, with no reload needed.
+  const tamazightFlag = useFeatureFlag('tamazight');
+  const educationalCalculatorFlag = useFeatureFlag('educationalCalculator');
+  const writingLabFlag = useFeatureFlag('writingLab');
+  const advancedLabsFlag = useFeatureFlag('advancedLabs');
+  const isSubjectVisible = (s: SubjectInfo): boolean =>
+    isSubjectFeatureEnabled(s, {
+      tamazight: tamazightFlag,
+      educationalCalculator: educationalCalculatorFlag,
+      writingLab: writingLabFlag,
+      advancedLabs: advancedLabsFlag,
+    });
+  const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter(isSubjectVisible);
 
   // SEC-07 / Trimester paywall: Trimester 1 is always free, everywhere, regardless of this flag —
   // only T2/T3 are ever gated, and only once enableTrimesterPaywall is switched on (off by default
@@ -549,10 +566,10 @@ export default function App() {
 
   // Tools become relevant from the grade they first appear in onward (e.g. a soroban/geometry tool
   // introduced at 3AP stays visible for 3AP/4AP/5AP, but is hidden while browsing 1AP/2AP).
-  const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, grade));
+  const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, grade) && isSubjectVisible(tool));
 
   const ALL_MAIN_CATEGORY_TABS: { id: 'courses' | 'labs' | 'exams' | 'challenges'; icon: React.ReactNode; labelAr: string; countLabelAr: string }[] = [
-    { id: 'courses', icon: <BookOpen className="w-4 h-4" />, labelAr: '📚 الدروس والمواد التعليمية', countLabelAr: `${COURSE_SUBJECTS_LIST.length} مواد` },
+    { id: 'courses', icon: <BookOpen className="w-4 h-4" />, labelAr: '📚 الدروس والمواد التعليمية', countLabelAr: `${visibleCourseSubjects.length} مواد` },
     { id: 'labs', icon: <Zap className="w-4 h-4" />, labelAr: '⚡ المختبرات والأدوات التفاعلية', countLabelAr: `${availableLabsForGrade.length} أدوات` },
     { id: 'exams', icon: <Award className="w-4 h-4" />, labelAr: '📜 بنك مواضيع الامتحانات', countLabelAr: `${OFFICIAL_EXAMS_LIST.length} بنك` },
     { id: 'challenges', icon: <Trophy className="w-4 h-4" />, labelAr: '🏆 نادي التحديات والمسابقات', countLabelAr: `${CHALLENGES_TAB_LIST.length} تحدي` },
@@ -997,7 +1014,7 @@ export default function App() {
         {mainCategory === 'courses' && !selectedLesson ? (
           <CourseSelectionView
             grade={grade}
-            courseSubjects={COURSE_SUBJECTS_LIST}
+            courseSubjects={visibleCourseSubjects}
             allCourseLessons={COURSES_DATA}
             completedLessonIds={userProfile.completedLessonIds}
             onSelectLesson={handleSelectLesson}

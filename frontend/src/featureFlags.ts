@@ -6,8 +6,6 @@ export type FeatureFlagName =
   | 'voiceReading'
   | 'educationalCalculator'
   | 'writingLab'
-  | 'interactiveVideo'
-  | 'pwa'
   | 'enablePreschoolModule'
   | 'enablePrintablePDFs'
   | 'enableExamSection'
@@ -24,8 +22,6 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   voiceReading: true,
   educationalCalculator: true,
   writingLab: true,
-  interactiveVideo: true,
-  pwa: false,
   enablePreschoolModule: true,
   enablePrintablePDFs: true,
   enableExamSection: true,

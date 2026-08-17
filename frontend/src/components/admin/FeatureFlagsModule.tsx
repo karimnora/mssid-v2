@@ -23,23 +23,26 @@ interface FlagMeta {
 
 // Copied verbatim from the deleted components/cms/FeatureFlagsConfig.tsx — this catalog stays
 // frontend-owned (the backend only persists per-key overrides, see featureFlags.ts).
+// Every description below follows the same "ON: ... / OFF: ..." shape so an admin never has to
+// guess what a toggle actually does before clicking it — the flag report that led to Phase 44/45
+// found that half the catalog (advancedLabs, voiceReading, educationalCalculator, writingLab,
+// interactiveVideo, pwa) wasn't wired to anything at all, so this discipline also nets out as a
+// forcing function: writing an honest ON/OFF line makes an unwired flag obvious immediately.
 const CORE_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
-  { id: 'enablePreschoolModule', meta: { labelAr: '🦊 وضع التحضيري / الإيقاظ (3-5 سنوات)', descriptionAr: 'إظهار أو إخفاء زر الدخول إلى قسم الروضة على الصفحة الرئيسية.' } },
-  { id: 'enablePayments', meta: { labelAr: '💳 المدفوعات والاشتراكات', descriptionAr: 'المفتاح الرئيسي لنظام الدفع بالكامل. لا يظهر أي أثر بمفرده — يتحكم فقط في ما إذا كانت المزايا المرتبطة بالدفع (كقفل الفصلين أدناه) قادرة على العمل. عطّله لإطلاق نسخة مجانية بالكامل فوراً.' } },
-  { id: 'enableTrimesterPaywall', meta: { labelAr: '🔒 قفل الفصلين الثاني والثالث', descriptionAr: 'عند التفعيل: دروس الفصل الثاني والثالث تتطلب اشتراكاً (ROLE_PREMIUM)، والفصل الأول يبقى مجانياً دائماً. عطّلها أثناء مراجعة المحتوى قبل الإطلاق.', dependsOn: 'enablePayments', dependsOnLabelAr: 'المدفوعات والاشتراكات' } },
-  { id: 'enablePrintablePDFs', meta: { labelAr: '🖨️ فيشات المراجعة القابلة للطباعة', descriptionAr: 'إظهار زر طباعة / تحميل فيشة المراجعة داخل الدروس.' } },
-  { id: 'enableAITutor', meta: { labelAr: '🤖 المعلم الافتراضي أمين الفنك (Gemini)', descriptionAr: 'تفعيل أو تعطيل زر المساعد الذكي في شريط التنقل.' } },
-  { id: 'enableExamSection', meta: { labelAr: '📜 قسم الامتحانات الرسمية (5AP)', descriptionAr: 'إظهار أو إخفاء تبويب الامتحانات الرسمية على واجهة التلميذ.' } },
+  { id: 'enablePreschoolModule', meta: { labelAr: '🦊 وضع التحضيري / الإيقاظ (3-5 سنوات)', descriptionAr: 'ON: زر «الروضة» ظاهر على الصفحة الرئيسية. OFF: الزر مخفي تماماً، ولا وصول لقسم الروضة.' } },
+  { id: 'enablePayments', meta: { labelAr: '💳 المدفوعات والاشتراكات', descriptionAr: 'المفتاح الرئيسي لنظام الدفع بالكامل. ON: يسمح لقفل الفصلين (أدناه) بالعمل إن كان مفعّلاً هو أيضاً — لا أثر مرئي بمفرده. OFF: يوقف نظام الدفع فوراً مهما كانت حالة القفل، وتصبح كل الدروس مجانية.' } },
+  { id: 'enableTrimesterPaywall', meta: { labelAr: '🔒 قفل الفصلين الثاني والثالث', descriptionAr: 'ON (مع تفعيل «المدفوعات» أعلاه): دروس الفصلين الثاني والثالث تتطلب اشتراك ROLE_PREMIUM، الفصل الأول يبقى مجانياً دائماً. OFF: الفصول الثلاثة مجانية للجميع.', dependsOn: 'enablePayments', dependsOnLabelAr: 'المدفوعات والاشتراكات' } },
+  { id: 'enablePrintablePDFs', meta: { labelAr: '🖨️ فيشات المراجعة القابلة للطباعة', descriptionAr: 'ON: زر طباعة/تحميل فيشة المراجعة ظاهر داخل الدروس. OFF: الزر مخفي تماماً.' } },
+  { id: 'enableAITutor', meta: { labelAr: '🤖 المعلم الافتراضي أمين الفنك (Gemini)', descriptionAr: 'ON: زر المساعد الذكي ظاهر في شريط التنقل. OFF: الزر مخفي، ولا وصول للمعلم الافتراضي.' } },
+  { id: 'enableExamSection', meta: { labelAr: '📜 قسم الامتحانات الرسمية (5AP)', descriptionAr: 'ON: تبويب الامتحانات الرسمية ظاهر لدى التلميذ. OFF: التبويب مخفي تماماً.' } },
 ];
 
 const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
-  { id: 'advancedLabs', meta: { labelAr: 'المختبرات المتقدمة', descriptionAr: 'أدوات المحاكاة المتقدمة (الكهرباء، الهندسة...).' } },
-  { id: 'voiceReading', meta: { labelAr: 'القراءة الصوتية', descriptionAr: 'نطق الدروس والتعليمات صوتياً.' } },
-  { id: 'educationalCalculator', meta: { labelAr: 'الآلة الحاسبة التعليمية', descriptionAr: 'أداة الحساب التفاعلية المستقلة.' } },
-  { id: 'writingLab', meta: { labelAr: 'مخبر الكتابة', descriptionAr: 'لوحة التدرب على الكتابة اليدوية.' } },
-  { id: 'interactiveVideo', meta: { labelAr: 'الفيديو التفاعلي', descriptionAr: 'مقاطع فيديو تعليمية تفاعلية.' } },
-  { id: 'tamazight', meta: { labelAr: 'اللغة الأمازيغية (تجريبي)', descriptionAr: 'دعم أولي للغة الأمازيغية.' } },
-  { id: 'pwa', meta: { labelAr: 'تطبيق ويب تقدمي (PWA)', descriptionAr: 'السماح بتثبيت المنصة كتطبيق على الهاتف.' } },
+  { id: 'advancedLabs', meta: { labelAr: 'المختبرات المتقدمة', descriptionAr: 'ON: مختبرات الكهرباء، الهندسة، والمختبر العلمي الشامل ظاهرة في قائمة «الأدوات». OFF: الثلاثة مخفية من تلك القائمة (لا يشمل التجارب المدمجة داخل الدروس نفسها، تلك تبقى ظاهرة بغض النظر عن هذا الفلاغ).' } },
+  { id: 'voiceReading', meta: { labelAr: 'القراءة الصوتية', descriptionAr: 'ON: زر النطق الصوتي ظاهر (الحاسبة التعليمية، لوحة الكتابة...) والنطق يعمل في كل مختبر يستعمله (السوق، المتحف، المختبر العلمي، خريطة الولايات). OFF: كل نطق صوتي متوقف في التطبيق بالكامل، وزر النطق مخفي.' } },
+  { id: 'educationalCalculator', meta: { labelAr: 'الآلة الحاسبة التعليمية', descriptionAr: 'ON: أداة «الحاسبة التعليمية المفسرة» ظاهرة في قائمة الأدوات. OFF: مخفية تماماً.' } },
+  { id: 'writingLab', meta: { labelAr: 'مخبر الكتابة', descriptionAr: 'ON: «أستوديو الكتابة والخط وتتبع الحروف» ظاهر في قائمة الأدوات. OFF: مخفي تماماً.' } },
+  { id: 'tamazight', meta: { labelAr: 'اللغة الأمازيغية (تجريبي)', descriptionAr: 'ON: مادة الأمازيغية ودروسها، مختبرها التفاعلي، ومنهاجها الرسمي ظاهرة في الدروس والأدوات. OFF: الثلاثة مخفية تماماً من واجهة التلميذ.' } },
 ];
 
 // Toggle = instant local effect via setFeatureFlagOverride/resetFeatureFlagOverride (unchanged UX,
