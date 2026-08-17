@@ -173,11 +173,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="bg-white border border-slate-200 w-full max-w-md rounded-3xl shadow-2xl text-slate-800 flex flex-col overflow-hidden dir-rtl"
+        className="bg-white border border-slate-200 w-full max-w-md max-h-[90vh] rounded-3xl shadow-2xl text-slate-800 flex flex-col overflow-hidden dir-rtl"
         dir="rtl"
       >
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white p-5 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white p-5 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
             <MssidLogo size="sm" />
             <div>
@@ -199,7 +199,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* Auth Mode Tabs */}
         {authFlow === 'credentials' && (
-        <div className="flex border-b border-slate-200 bg-slate-50">
+        <div className="flex border-b border-slate-200 bg-slate-50 shrink-0">
           <button
             type="button"
             onClick={() => setIsLogin(true)}
@@ -229,7 +229,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* "Mot de passe oublié" — step 1: enter the email to receive a reset code */}
         {authFlow === 'forgot' && (
-          <form onSubmit={handleForgotSubmit} className="p-5 space-y-4">
+          <form onSubmit={handleForgotSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
             <p className="text-xs text-slate-600 leading-relaxed">
               أدخل بريدك الإلكتروني، وإذا كان مسجلاً لدينا فستصلك رسالة تحتوي على رمز لإعادة تعيين كلمة المرور.
             </p>
@@ -274,7 +274,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* "Mot de passe oublié" — step 2: enter the code + a new password */}
         {authFlow === 'reset' && (
-          <form onSubmit={handleResetSubmit} className="p-5 space-y-4">
+          <form onSubmit={handleResetSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
             <p className="text-xs text-slate-600 leading-relaxed">
               أدخل الرمز المكون من 6 أرقام الذي وصلك على <span className="font-bold dir-ltr inline-block">{email}</span>، وكلمة المرور الجديدة.
             </p>
@@ -351,7 +351,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* Form */}
         {authFlow === 'credentials' && (
-        <form onSubmit={handleSubmit} className="p-5 space-y-4">
+        <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
           {!isLogin && (
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل:</label>
