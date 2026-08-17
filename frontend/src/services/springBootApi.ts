@@ -156,7 +156,8 @@ class SpringBootApiService {
 public async request<T>(
   endpoint: string,
   options: RequestInit = {},
-  _isRetryAfterRefresh = false
+  _isRetryAfterRefresh = false,
+  _isRetryAfterColdStart = false
 ): Promise<{ data?: T; error?: string; status: number; headers?: Headers }> {
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const baseUrl = SPRING_BOOT_BASE_URL.endsWith('/') 
@@ -241,6 +242,17 @@ public async request<T>(
         status: 0,
       };
     }
+    // A free-tier host (Render) that's been idle 15+ min can refuse/drop the very first request
+    // while its container spins back up (~30-50s) — the exact failure a real visitor could hit, not
+    // just a genuinely unreachable server. One silent retry after a short wait recovers from that
+    // transparently in most cases; a truly offline/broken backend still ends up with the same error,
+    // just a few seconds later.
+    if (!_isRetryAfterColdStart) {
+      console.warn(`[mssid dz] Échec réseau sur ${url}, nouvelle tentative dans 5s (possible cold start)`, err.message);
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      return this.request<T>(endpoint, options, _isRetryAfterRefresh, true);
+    }
+
     console.warn('Erreur de connexion au serveur mssid dz:', err.message);
     return {
       error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.',

@@ -203,14 +203,50 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       expect(result.error).toBe('Quota quotidien dépassé (100/100)');
     });
 
-    it('catches network/connection errors gracefully when backend is unreachable', async () => {
-      const mockFetch = vi.fn().mockRejectedValue(new Error('Failed to fetch'));
-      global.fetch = mockFetch;
+    it('silently retries once after a network error, then succeeds (cold-start recovery)', async () => {
+      // Render's free tier can drop the very first request while an idle container spins back up —
+      // request() retries once after a short wait before surfacing anything to the caller.
+      vi.useFakeTimers();
+      try {
+        const mockFetch = vi
+          .fn()
+          .mockRejectedValueOnce(new Error('Failed to fetch'))
+          .mockResolvedValueOnce({
+            status: 200,
+            ok: true,
+            headers: new Headers({ 'content-type': 'application/json' }),
+            json: async () => ({ status: 'UP' }),
+          });
+        global.fetch = mockFetch;
 
-      const result = await springBootApi.request('/health');
+        const resultPromise = springBootApi.request('/health');
+        await vi.advanceTimersByTimeAsync(5000);
+        const result = await resultPromise;
 
-      expect(result.status).toBe(0);
-      expect(result.error).toContain('Impossible de contacter le serveur');
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+        expect(result.status).toBe(200);
+        expect(result.error).toBeUndefined();
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it('catches network/connection errors gracefully when the backend is still unreachable after the retry', async () => {
+      vi.useFakeTimers();
+      try {
+        const mockFetch = vi.fn().mockRejectedValue(new Error('Failed to fetch'));
+        global.fetch = mockFetch;
+
+        const resultPromise = springBootApi.request('/health');
+        await vi.advanceTimersByTimeAsync(5000);
+        const result = await resultPromise;
+
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+        expect(result.status).toBe(0);
+        expect(result.error).toContain('Impossible de contacter le serveur');
+      } finally {
+        vi.useRealTimers();
+      }
     });
   });
 });
