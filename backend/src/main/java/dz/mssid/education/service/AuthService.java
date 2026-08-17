@@ -53,6 +53,7 @@ public class AuthService {
                 .email(request.getEmail())
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .role(defaultRole)
+                .grade(request.getGrade())
                 .createdAt(LocalDateTime.now())
                 .build();
 

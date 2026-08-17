@@ -107,6 +107,7 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 };
 
 const THEME_STORAGE_KEY = 'mssid_theme';
+const VALID_GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 
 /** Back-fills fields added after a profile was first saved to localStorage, and updates the daily streak. */
 function normalizeUserProfile(raw: UserProfile): UserProfile {
@@ -177,6 +178,17 @@ export default function App() {
   // GET /api/v1/users/me on boot — see main.tsx's <AuthProvider>), never from localStorage.
   const { authUser } = useAuth();
   const { direction } = useLocaleContext();
+
+  // Account-level grade persistence: an authenticated user's saved grade (picked at registration,
+  // or changed later — see Navbar's onGradeChange below) becomes the default on every login/reload
+  // instead of silently resetting to '5AP'. Guests keep today's behavior (local-only, resets on
+  // reload) since there is no account to persist to.
+  useEffect(() => {
+    if (authUser?.grade && VALID_GRADES.includes(authUser.grade as PrimaryGrade)) {
+      setGrade(authUser.grade as PrimaryGrade);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authUser?.grade]);
 
   const enablePreschoolModule = useFeatureFlag('enablePreschoolModule');
   const enableExamSection = useFeatureFlag('enableExamSection');
@@ -739,6 +751,10 @@ export default function App() {
         onGradeChange={(g) => {
           setGrade(g);
           setSelectedLesson(null);
+          // Deliberate account preference (unlike the auto-follow in the post-auth-redirect and
+          // MobileAppSimulator paths) — persist it so it's still the default on next login/reload.
+          // No-op for guests (see AuthService.updateGrade).
+          if (authUser) AuthService.updateGrade(g);
           // A tool tied to a higher minGrade than the newly selected grade would otherwise stay
           // "open" even though its tab is now hidden — fall back to the first tool still available.
           const currentTool = INTERACTIVE_LABS_LIST.find((s) => s.id === selectedSubject);

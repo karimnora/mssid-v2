@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -118,6 +119,29 @@ class AuthServiceTest {
 
         verify(userRepository, times(1)).save(any(User.class));
         verify(refreshTokenService, times(1)).createToken(any(User.class));
+    }
+
+    @Test
+    @DisplayName("register - Grade picked at registration is saved on the new User")
+    void register_WithGrade_SavesGradeOnUser() {
+        RegisterRequest request = registerRequest("Yasmine Testeur", "yasmine@mssid.dz", "password123");
+        request.setGrade("3AP");
+
+        when(userRepository.existsByEmail("yasmine@mssid.dz")).thenReturn(false);
+        when(roleRepository.findByName(Role.RoleName.ROLE_FREE)).thenReturn(Optional.of(freeRole));
+        when(passwordEncoder.encode("password123")).thenReturn("encoded_password_123");
+        when(userRepository.save(any(User.class))).thenReturn(testUser);
+
+        Authentication authMock = mock(Authentication.class);
+        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class))).thenReturn(authMock);
+        when(jwtTokenProvider.generateToken(authMock)).thenReturn("jwt_mock_token_xyz");
+        when(refreshTokenService.createToken(any(User.class))).thenReturn("refresh_mock_token_xyz");
+
+        authService.register(request);
+
+        ArgumentCaptor<User> savedUserCaptor = ArgumentCaptor.forClass(User.class);
+        verify(userRepository).save(savedUserCaptor.capture());
+        assertEquals("3AP", savedUserCaptor.getValue().getGrade());
     }
 
     @Test

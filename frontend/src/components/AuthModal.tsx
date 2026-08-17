@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
+import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
-import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff } from 'lucide-react';
+import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap } from 'lucide-react';
 import { MssidLogo } from './MssidLogo';
 
 interface Props {
@@ -13,11 +14,22 @@ interface Props {
   initialMode?: 'login' | 'register';
 }
 
+// Same 5 levels/labels as GradeSelector.tsx and Navbar.tsx's GRADES, kept in sync manually since
+// each lives in its own component-scoped list rather than a shared constant.
+const GRADE_OPTIONS: { id: PrimaryGrade; labelAr: string }[] = [
+  { id: '1AP', labelAr: 'السنة الأولى ابتدائي (1AP)' },
+  { id: '2AP', labelAr: 'السنة الثانية ابتدائي (2AP)' },
+  { id: '3AP', labelAr: 'السنة الثالثة ابتدائي (3AP)' },
+  { id: '4AP', labelAr: 'السنة الرابعة ابتدائي (4AP)' },
+  { id: '5AP', labelAr: 'السنة الخامسة ابتدائي (5AP)' },
+];
+
 export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login' }) => {
   const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [nom, setNom] = useState<string>('');
+  const [grade, setGrade] = useState<PrimaryGrade | ''>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -28,6 +40,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     if (isOpen) {
       setIsLogin(initialMode === 'login');
       setShowPassword(false);
+      setGrade('');
     }
   }, [isOpen, initialMode]);
 
@@ -57,7 +70,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         onAuthSuccess(result.user);
         onClose();
       } else {
-        const result = await AuthService.registerAsync(nom, email, password);
+        const result = await AuthService.registerAsync(nom, email, password, grade || undefined);
         
         if (result.error || !result.user) {
           setStatusMessage({
@@ -158,6 +171,27 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 autoComplete="name"
                 className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               />
+            </div>
+          )}
+
+          {!isLogin && (
+            <div>
+              <label className="flex items-center gap-1.5 text-xs font-bold text-slate-700 mb-1">
+                <GraduationCap className="w-3.5 h-3.5 text-emerald-700" />
+                <span>المستوى الدراسي:</span>
+              </label>
+              <select
+                required
+                value={grade}
+                onChange={(e) => setGrade(e.target.value as PrimaryGrade)}
+                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+              >
+                <option value="" disabled>اختر مستواك الدراسي...</option>
+                {GRADE_OPTIONS.map((g) => (
+                  <option key={g.id} value={g.id}>{g.labelAr}</option>
+                ))}
+              </select>
+              <p className="text-[10px] text-slate-500 mt-1">سيكون هذا مستواك الافتراضي، ويمكنك تغييره لاحقاً من أعلى الصفحة.</p>
             </div>
           )}
 

@@ -210,9 +210,9 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
     return user;
   }
 
-static async registerAsync(nom: string, email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
+static async registerAsync(nom: string, email: string, pass: string, grade?: string): Promise<{ user: AuthUser | null; error?: string }> {
   try {
-    const response = await springBootApi.register({ nom, email, password: pass });
+    const response = await springBootApi.register({ nom, email, password: pass, grade });
 
     if (response.error || !response.data) {
       return {
@@ -230,7 +230,7 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
       score: u.score ?? 0,
       xp: u.xp ?? 0,
       level: u.level ?? 1,
-      grade: u.grade || '5AP',
+      grade: u.grade || grade || '5AP',
       streakDays: u.streakDays || 1,
       quizzesCompleted: u.quizzesCompleted || 0,
       completedLessonIds: u.completedLessonIds || [],
@@ -330,6 +330,28 @@ static async registerAsync(nom: string, email: string, pass: string): Promise<{ 
       badges: updatedUser.badges || [],
       quizScores: updatedUser.quizScores || {},
     }).catch((err) => console.error('Erreur de synchronisation XP:', err));
+
+    return updatedUser;
+  }
+
+  /**
+   * Persists the account's chosen grade level (picked at registration, or changed later via
+   * Navbar's grade switcher) so it becomes the default on every future login/reload instead of
+   * silently resetting — same fire-and-forget sync pattern as addScore. No-op for guests (no
+   * account to persist to; App.tsx's local `grade` state already reflects the change either way).
+   */
+  static updateGrade(newGrade: string): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+    if (user.grade === newGrade) return user;
+
+    const updatedUser: AuthUser = { ...user, grade: newGrade };
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      grade: newGrade,
+    }).catch((err) => console.error('Erreur de synchronisation du niveau:', err));
 
     return updatedUser;
   }
