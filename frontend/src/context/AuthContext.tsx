@@ -33,6 +33,8 @@ function mapProfileDtoToAuthUser(dto: any): AuthUser {
     quizScores: dto.quizScores,
     createdAt: dto.createdAt,
     emailVerified: dto.emailVerified ?? false,
+    goldCoins: dto.goldCoins ?? 150,
+    avatarConfig: dto.avatarConfig,
   };
 }
 

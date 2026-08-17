@@ -113,6 +113,18 @@ public class User implements UserDetails {
     @Builder.Default
     private Map<String, Integer> quizScores = new HashMap<>();
 
+    // "Didou Studio" cosmetic-shop currency — deliberately separate from xp/score/level (a spendable
+    // balance, not a progression metric). Synced from the frontend's AuthService.syncGoldCoinsAndAvatar.
+    @Column(name = "gold_coins")
+    @Builder.Default
+    private Integer goldCoins = 150;
+
+    // Opaque to the backend on purpose: {activeOutfit, unlockedOutfits, mood} as defined by the
+    // frontend's DidouAvatarConfig — stored/returned as-is, never inspected or validated server-side.
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "avatar_config", columnDefinition = "jsonb")
+    private Map<String, Object> avatarConfig;
+
     // =========================================================================
     // Méthodes requises par UserDetails (Spring Security)
     // =========================================================================

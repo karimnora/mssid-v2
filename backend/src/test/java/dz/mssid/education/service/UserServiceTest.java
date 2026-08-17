@@ -124,4 +124,41 @@ class UserServiceTest {
         assertEquals(List.of("exam-2018-trim1-math", "exam-5ap-math-t1-2026"), result.getCompletedExamIds());
         assertEquals(List.of("challenge-math-large-numbers"), result.getCompletedChallengeIds());
     }
+
+    @Test
+    @DisplayName("updateUserProgress - Overwrites goldCoins/avatarConfig (not merged, unlike badges/exams)")
+    void updateUserProgress_OverwritesGoldCoinsAndAvatarConfig() {
+        testUser.setGoldCoins(150);
+        when(userRepository.findByEmail("kareem@mssid.dz")).thenReturn(Optional.of(testUser));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        Map<String, Object> newAvatarConfig = Map.of(
+                "activeOutfit", "burnous_traditionnel",
+                "unlockedOutfits", List.of("default", "burnous_traditionnel"),
+                "mood", "celebrating"
+        );
+        UserProfileDto incoming = UserProfileDto.builder()
+                .goldCoins(95)
+                .avatarConfig(newAvatarConfig)
+                .build();
+
+        UserProfileDto result = userService.updateUserProgress("kareem@mssid.dz", incoming);
+
+        assertEquals(95, result.getGoldCoins());
+        assertEquals(newAvatarConfig, result.getAvatarConfig());
+    }
+
+    @Test
+    @DisplayName("updateUserProgress - Leaves goldCoins/avatarConfig untouched when absent from the payload")
+    void updateUserProgress_LeavesGoldCoinsUntouchedWhenAbsent() {
+        testUser.setGoldCoins(300);
+        when(userRepository.findByEmail("kareem@mssid.dz")).thenReturn(Optional.of(testUser));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        UserProfileDto incoming = UserProfileDto.builder().nom("Kareem Updated").build();
+
+        UserProfileDto result = userService.updateUserProgress("kareem@mssid.dz", incoming);
+
+        assertEquals(300, result.getGoldCoins());
+    }
 }

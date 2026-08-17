@@ -27,10 +27,10 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
 
   if (!isOpen) return null;
 
-  const currentCoins =
-    userProfile?.goldCoins ??
-    authUser?.goldCoins ??
-    (authUser?.score ? Math.floor(authUser.score / 2) : 250);
+  // Deliberately not derived from XP/score here — gold coins are a separate cosmetic-shop currency,
+  // not a second progression metric (see AuthUser.goldCoins' doc comment). 150 matches the default
+  // used everywhere else a fresh profile's balance is read (App.tsx, entity default on the backend).
+  const currentCoins = userProfile?.goldCoins ?? authUser?.goldCoins ?? 150;
   const unlockedOutfits: DidouOutfitId[] =
     userProfile?.avatarConfig?.unlockedOutfits ||
     authUser?.avatarConfig?.unlockedOutfits || ['default'];
@@ -58,14 +58,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
       });
     }
 
-    if (authUser) {
-      const updatedUser = {
-        ...authUser,
-        avatarConfig: newConfig,
-      };
-      AuthService.setCurrentUser(updatedUser);
-      AuthService.updateProfileAsync(authUser.nom, authUser.grade);
-    }
+    AuthService.syncGoldCoinsAndAvatar(currentCoins, newConfig);
     setFeedbackMsg(`تم ارتداء ${selectedOutfit.nameAr} بنجاح! 🦊✨`);
     setTimeout(() => setFeedbackMsg(null), 3000);
   };
@@ -93,15 +86,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
       });
     }
 
-    if (authUser) {
-      const updatedUser = {
-        ...authUser,
-        goldCoins: newCoins,
-        avatarConfig: newConfig,
-      };
-      AuthService.setCurrentUser(updatedUser);
-      AuthService.updateProfileAsync(authUser.nom, authUser.grade);
-    }
+    AuthService.syncGoldCoinsAndAvatar(newCoins, newConfig);
 
     setFeedbackMsg(`مبروك! لقد فتحت وارتديت ${outfit.nameAr}! 🎉`);
     setTimeout(() => setFeedbackMsg(null), 3000);

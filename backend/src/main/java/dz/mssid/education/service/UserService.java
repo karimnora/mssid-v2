@@ -78,6 +78,10 @@ public class UserService {
         if (progressData.getLevel() != null) user.setLevel(progressData.getLevel());
         if (progressData.getStreakDays() != null) user.setStreakDays(progressData.getStreakDays());
         if (progressData.getLastActiveDate() != null) user.setLastActiveDate(progressData.getLastActiveDate());
+        // Scalar overwrite (not merge) — the client always sends its current authoritative balance,
+        // same semantics as xp/level/streakDays above (unlike the list/map fields below, which merge).
+        if (progressData.getGoldCoins() != null) user.setGoldCoins(progressData.getGoldCoins());
+        if (progressData.getAvatarConfig() != null) user.setAvatarConfig(progressData.getAvatarConfig());
 
         if (progressData.getCompletedLessonIds() != null) {
             List<String> mergedLessons = new ArrayList<>(user.getCompletedLessonIds() != null ? user.getCompletedLessonIds() : List.of());

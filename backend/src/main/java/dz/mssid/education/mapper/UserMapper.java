@@ -34,6 +34,8 @@ public class UserMapper {
                 .quizScores(user.getQuizScores())
                 .createdAt(user.getCreatedAt() != null ? user.getCreatedAt().toString() : null)
                 .emailVerified(user.isEmailVerified())
+                .goldCoins(user.getGoldCoins() != null ? user.getGoldCoins() : 150)
+                .avatarConfig(user.getAvatarConfig())
                 .build();
     }
 }

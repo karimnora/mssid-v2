@@ -37,4 +37,6 @@ public class UserProfileDto {
     private Map<String, Integer> quizScores;
     private String createdAt;
     private Boolean emailVerified;
+    private Integer goldCoins;
+    private Map<String, Object> avatarConfig;
 }

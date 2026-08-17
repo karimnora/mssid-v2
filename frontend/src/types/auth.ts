@@ -1,3 +1,5 @@
+import { DidouAvatarConfig } from './ecosystem';
+
 export type UserRole = 'ROLE_FREE' | 'ROLE_PREMIUM' | 'ROLE_TEACHER' | 'ROLE_ADMIN';
 
 export type SubscriptionStatus = 'ACTIVE' | 'EXPIRED' | 'CANCELLED' | 'PENDING';
@@ -55,6 +57,10 @@ export interface AuthUser {
   avatar?: string;
   lastActiveDate?: string;
   emailVerified?: boolean;
+  // "Didou Studio" cosmetic economy — deliberately separate from score/xp (see DidouDressingRoomModal
+  // and AuthService.syncGoldCoinsAndAvatar). Not a second progression metric, just spendable currency.
+  goldCoins?: number;
+  avatarConfig?: DidouAvatarConfig;
 }
 
 export interface AuthState {

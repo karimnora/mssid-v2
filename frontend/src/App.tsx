@@ -388,6 +388,8 @@ export default function App() {
         badgeUnlockedAt: { ...authUser.badgeUnlockedAt, ...prev.badgeUnlockedAt },
         quizScores: authUser.quizScores || prev.quizScores,
         tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
+        goldCoins: authUser.goldCoins ?? prev.goldCoins,
+        avatarConfig: authUser.avatarConfig ?? prev.avatarConfig,
       }));
     }
   }, [authUser]);
@@ -463,6 +465,24 @@ export default function App() {
         ? prev.completedChallengeIds
         : [...prev.completedChallengeIds, challengeId],
     }));
+  };
+
+  /**
+   * Shared `onReward` handler for every "labo interactif" (marché algérien, musée, sciences,
+   * écriture, tamazight...) — they all award gold coins (spendable in Didou Studio) and XP
+   * independently, with no formula tying one to the other (deliberately: XP is the serious
+   * pedagogical progression metric, gold coins are a separate cosmetic-shop currency — see
+   * AuthUser.goldCoins' doc comment). Also pushes the new gold-coin balance to the backend so it
+   * survives a device change instead of living only in localStorage.
+   */
+  const handleLabReward = (coins: number, xp: number) => {
+    const newCoins = (userProfile.goldCoins || 150) + coins;
+    setUserProfile((prev) => ({
+      ...prev,
+      goldCoins: newCoins,
+      xp: prev.xp + xp,
+    }));
+    if (authUser) AuthService.syncGoldCoinsAndAvatar(newCoins, userProfile.avatarConfig);
   };
 
   const handleResetProgress = () => {
@@ -1041,146 +1061,77 @@ export default function App() {
                 grade={grade}
                 goldCoins={userProfile.goldCoins || 150}
                 onBack={() => setIsHomeActive(true)}
-                onEarnCoins={(amount) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + amount,
-                    xp: prev.xp + Math.floor(amount / 2),
-                  }));
-                }}
+                // Coins only here — this lab already awards its own XP directly via
+                // AuthService.addScore() at each correct answer (see AlgerianCurrencyMarket.tsx).
+                // A second, ad-hoc "+coins/2 XP" bonus used to double-count XP for the same action.
+                onEarnCoins={(amount) => handleLabReward(amount, 0)}
               />
             ) : selectedSubject === 'wilayas_map' ? (
               <WilayasExplorer
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'history_museum' ? (
               <AlgerianHistoryMuseum
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'science_lab' ? (
               <ScienceExperimentLab
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'tamazight_lab' ? (
               <TamazightLabInteractive
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'tamazight_curriculum' ? (
               <TamazightCurriculumViewer
                 grade={grade}
                 onOpenLab={() => setSelectedSubject('tamazight_lab')}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'touch_writing' ? (
               <TouchWritingStudio
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'primary_math_ops' ? (
               <PrimaryMathLabInteractive
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'primary_discovery' ? (
               <PrimaryDiscoveryLabInteractive
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'french_projects' ? (
               <FrenchProjectsLabInteractive
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'english_audio_dialogues' ? (
               <EnglishAudioDialoguesLab
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'acquis_5ap' ? (
               <AcquisEvaluationViewer
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
-                onReward={(coins, xp) => {
-                  setUserProfile((prev) => ({
-                    ...prev,
-                    goldCoins: (prev.goldCoins || 150) + coins,
-                    xp: prev.xp + xp,
-                  }));
-                }}
+                onReward={handleLabReward}
               />
             ) : selectedSubject === 'arabic_conjugator' ? (
               <ArabicConjugator grade={grade} />

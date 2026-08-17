@@ -1,4 +1,5 @@
 import { AuthUser, PaymentReceipt, PaymentMethod, UserRole, Subscription } from '../types/auth';
+import { DidouAvatarConfig } from '../types/ecosystem';
 import { springBootApi } from './springBootApi';
 
 const STORAGE_KEYS = {
@@ -179,6 +180,8 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       badges: u.badges || [],
       quizScores: u.quizScores || {},
       emailVerified: u.emailVerified ?? false,
+      goldCoins: u.goldCoins ?? 150,
+      avatarConfig: u.avatarConfig,
     };
 
     this.setCurrentUser(authUser);
@@ -238,8 +241,10 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
       badges: u.badges || [],
       quizScores: u.quizScores || {},
       emailVerified: u.emailVerified ?? false,
+      goldCoins: u.goldCoins ?? 150,
+      avatarConfig: u.avatarConfig,
     };
-    
+
     this.setCurrentUser(authUser);
     return { user: authUser };
   } catch (err: any) {
@@ -488,6 +493,27 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
     return updatedUser;
   }
 
+  // "Didou Studio" cosmetic economy — deliberately its own sync call rather than piggybacking on
+  // updateProfileAsync(nom, grade), so a gold-coin/outfit change never needs a name/grade in hand
+  // (App.tsx's lab-reward handlers call this directly, mirroring syncBadges above).
+  static syncGoldCoinsAndAvatar(goldCoins: number, avatarConfig?: DidouAvatarConfig): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+
+    const updatedUser: AuthUser = { ...user, goldCoins, avatarConfig };
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      goldCoins,
+      avatarConfig,
+    }).catch((err) => console.error('Erreur de synchronisation des pièces/tenue Didou:', err));
+
+    return updatedUser;
+  }
+
 static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser | null> {
   const user = this.getCurrentUser();
   if (!user) return null;
@@ -589,6 +615,8 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           quizzesCompleted: u.quizzesCompleted || 0,
           createdAt: u.createdAt,
           emailVerified: u.emailVerified ?? false,
+          goldCoins: u.goldCoins ?? 150,
+          avatarConfig: u.avatarConfig,
         }));
       }
     } catch {

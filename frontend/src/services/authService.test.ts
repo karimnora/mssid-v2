@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AuthService } from './authService';
 import { AuthUser } from '../types/auth';
 
@@ -135,6 +135,49 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
       const rejected = AuthService.verifyReceipt(receipt.id, false, 'الصورة غير واضحة ورقم العملية خاطئ');
       expect(rejected?.status).toBe('REJECTED');
       expect(rejected?.rejectionReason).toBe('الصورة غير واضحة ورقم العملية خاطئ');
+    });
+  });
+
+  describe('"Didou Studio" gold-coin/outfit sync (kept deliberately separate from XP)', () => {
+    const originalFetch = global.fetch;
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    it('updates the in-memory user and pushes goldCoins/avatarConfig to the backend', async () => {
+      const mockFetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({}),
+      });
+      global.fetch = mockFetch;
+
+      AuthService.login('free@mssid.dz', '123456');
+      const newConfig = { activeOutfit: 'burnous_traditionnel' as const, unlockedOutfits: ['default', 'burnous_traditionnel'] as const, mood: 'celebrating' as const };
+
+      const updated = AuthService.syncGoldCoinsAndAvatar(85, newConfig as any);
+
+      expect(updated?.goldCoins).toBe(85);
+      expect(updated?.avatarConfig).toEqual(newConfig);
+      expect(AuthService.getCurrentUser()?.goldCoins).toBe(85);
+
+      await Promise.resolve(); // let the fire-and-forget network call's microtask settle
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/v1/users/me/progress'),
+        expect.objectContaining({ body: expect.stringContaining('"goldCoins":85') })
+      );
+    });
+
+    it('returns null and makes no network call when nobody is logged in', () => {
+      const mockFetch = vi.fn();
+      global.fetch = mockFetch;
+
+      const result = AuthService.syncGoldCoinsAndAvatar(50);
+
+      expect(result).toBeNull();
+      expect(mockFetch).not.toHaveBeenCalled();
     });
   });
 });
