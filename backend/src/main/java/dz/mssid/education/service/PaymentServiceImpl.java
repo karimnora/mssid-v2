@@ -46,6 +46,8 @@ public class PaymentServiceImpl implements PaymentService {
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la soumission du reçu: " + userEmail));
 
         if (request.getAmountDzd() != null && Double.compare(request.getAmountDzd(), subscriptionPriceDzd) != 0) {
+            adminAuditLogService.record(userEmail, "RECEIPT_SUBMITTED", "RECEIPT", null,
+                    "montant refusé: " + request.getAmountDzd() + " DZD (attendu " + subscriptionPriceDzd + " DZD)", "FAILURE");
             throw new IllegalArgumentException(
                     "Le montant indiqué (" + request.getAmountDzd() + " DZD) ne correspond pas au tarif de l'abonnement ("
                             + subscriptionPriceDzd + " DZD).");
@@ -66,7 +68,13 @@ public class PaymentServiceImpl implements PaymentService {
                 .submittedAt(LocalDateTime.now())
                 .build();
 
-        return receiptRepository.save(receipt);
+        PaymentReceipt saved = receiptRepository.save(receipt);
+        // saved.getId() is populated in-place by Hibernate for IDENTITY-strategy entities after
+        // save(), but stays null against a mocked repository in tests — guard rather than assume.
+        String receiptId = saved.getId() != null ? saved.getId().toString() : null;
+        adminAuditLogService.record(userEmail, "RECEIPT_SUBMITTED", "RECEIPT", receiptId,
+                saved.getPaymentMethod() + " / " + saved.getTransactionRef(), "SUCCESS");
+        return saved;
     }
 
     @Override

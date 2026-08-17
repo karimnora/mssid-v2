@@ -91,6 +91,7 @@ class PaymentServiceTest {
         assertEquals("BM-12345", result.getTransactionRef());
         assertEquals(PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION, result.getStatus());
         verify(receiptRepository).save(any(PaymentReceipt.class));
+        verify(adminAuditLogService).record(eq("yassine@mssid.dz"), eq("RECEIPT_SUBMITTED"), eq("RECEIPT"), any(), anyString(), eq("SUCCESS"));
     }
 
     @Test
@@ -126,6 +127,7 @@ class PaymentServiceTest {
 
         assertThrows(IllegalArgumentException.class, () -> paymentService.submitReceipt("yassine@mssid.dz", request));
         verify(receiptRepository, never()).save(any());
+        verify(adminAuditLogService).record(eq("yassine@mssid.dz"), eq("RECEIPT_SUBMITTED"), eq("RECEIPT"), any(), anyString(), eq("FAILURE"));
     }
 
     @Test

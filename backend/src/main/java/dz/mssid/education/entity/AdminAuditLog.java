@@ -6,9 +6,11 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 /**
- * A minimal, targeted audit trail — only for the specific admin-triggered actions this Admin
- * Console already performs (role changes, receipt verification, feature-flag changes). Not a
- * general request/access-logging system.
+ * General system event log — started as an admin-actions-only audit trail (role changes, receipt
+ * verification, feature-flag changes) and was broadened to cover the events an admin actually needs
+ * to debug from the console: email delivery attempts, registration/login failures, receipt
+ * submissions, AI tutor call failures. Still not a general HTTP request/access log — every row is an
+ * explicit `record(...)` call at a meaningful business event, not middleware-level noise.
  */
 @Entity
 @Table(name = "admin_audit_logs")
@@ -36,6 +38,10 @@ public class AdminAuditLog {
 
     @Column(name = "details", columnDefinition = "TEXT")
     private String details;
+
+    @Column(name = "outcome", nullable = false)
+    @Builder.Default
+    private String outcome = "SUCCESS"; // SUCCESS or FAILURE
 
     @Column(name = "created_at")
     @Builder.Default

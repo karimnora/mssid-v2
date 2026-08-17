@@ -4,6 +4,8 @@ import dz.mssid.education.dto.GeminiPromptRequest;
 import dz.mssid.education.dto.GeminiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
@@ -25,6 +27,7 @@ public class GeminiAiService {
     private String geminiApiUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();
+    private final AdminAuditLogService adminAuditLogService;
 
     // Condensed digest of the official Algerian primary curriculum (الجيل الثاني — see the project's
     // CLAUDE.md for the full reference), one entry per grade. This is what keeps "المعلم مسيد" from
@@ -135,8 +138,15 @@ public class GeminiAiService {
             String generatedText = extractTextFromGeminiResponse(response);
             return new GeminiResponse(generatedText, "success");
         } catch (Exception e) {
+            adminAuditLogService.record(currentActorEmail(), "AI_TUTOR_CALL_FAILED", "AI", null,
+                    e.getMessage(), "FAILURE");
             return new GeminiResponse("Erreur lors de l'appel de l'API Gemini: " + e.getMessage(), "error");
         }
+    }
+
+    private String currentActorEmail() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return (auth != null && auth.isAuthenticated()) ? auth.getName() : "inconnu";
     }
 
     private String extractTextFromGeminiResponse(Map<?, ?> response) {

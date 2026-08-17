@@ -29,6 +29,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -54,6 +55,9 @@ class AuthServiceTest {
 
     @Mock
     private AuthenticationManager authenticationManager;
+
+    @Mock
+    private AdminAuditLogService adminAuditLogService;
 
     @InjectMocks
     private AuthService authService;
@@ -123,6 +127,7 @@ class AuthServiceTest {
         verify(userRepository, times(1)).save(any(User.class));
         verify(refreshTokenService, times(1)).createToken(any(User.class));
         verify(emailVerificationService, times(1)).sendVerificationCode(any(User.class));
+        verify(adminAuditLogService).record(eq("omar@mssid.dz"), eq("USER_REGISTERED"), eq("USER"), any(), any(), eq("SUCCESS"));
     }
 
     @Test
@@ -160,6 +165,7 @@ class AuthServiceTest {
 
         verify(userRepository, never()).save(any(User.class));
         verifyNoInteractions(refreshTokenService);
+        verify(adminAuditLogService).record(eq("omar@mssid.dz"), eq("REGISTRATION_FAILED"), eq("USER"), any(), any(), eq("FAILURE"));
     }
 
     @Test
@@ -191,6 +197,7 @@ class AuthServiceTest {
 
         assertThrows(BadCredentialsException.class, () -> authService.login(request));
         verifyNoInteractions(refreshTokenService);
+        verify(adminAuditLogService).record(eq("unknown@mssid.dz"), eq("LOGIN_FAILED"), eq("USER"), any(), any(), eq("FAILURE"));
     }
 
     @Test
@@ -204,5 +211,6 @@ class AuthServiceTest {
 
         assertThrows(BadCredentialsException.class, () -> authService.login(request));
         verifyNoInteractions(refreshTokenService);
+        verify(adminAuditLogService).record(eq("omar@mssid.dz"), eq("LOGIN_FAILED"), eq("USER"), any(), any(), eq("FAILURE"));
     }
 }

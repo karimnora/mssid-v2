@@ -7,6 +7,7 @@ import dz.mssid.education.repository.ContactMessageRepository;
 import dz.mssid.education.service.AdminAuditLogService;
 import dz.mssid.education.service.AdminStatsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -32,8 +34,14 @@ public class AdminController {
     }
 
     @GetMapping("/audit-log")
-    public ResponseEntity<List<AdminAuditLogDto>> getAuditLog(@RequestParam(defaultValue = "50") int limit) {
-        return ResponseEntity.ok(adminAuditLogService.getRecent(limit));
+    public ResponseEntity<List<AdminAuditLogDto>> getAuditLog(
+            @RequestParam(defaultValue = "50") int limit,
+            @RequestParam(required = false) String actionType,
+            @RequestParam(required = false) String outcome,
+            @RequestParam(required = false) String actorEmail,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateFrom,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTo) {
+        return ResponseEntity.ok(adminAuditLogService.getFiltered(actionType, outcome, actorEmail, dateFrom, dateTo, limit));
     }
 
     /**

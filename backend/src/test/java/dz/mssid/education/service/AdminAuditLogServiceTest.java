@@ -10,7 +10,10 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,7 +33,7 @@ class AdminAuditLogServiceTest {
     private AdminAuditLogService adminAuditLogService;
 
     @Test
-    @DisplayName("record - Persists a new audit entry with the given fields")
+    @DisplayName("record (5-arg) - Persists a new audit entry, defaulting outcome to SUCCESS")
     void record_SavesEntry() {
         adminAuditLogService.record("admin@mssid.dz", "ROLE_CHANGE", "USER", "5", "ROLE_FREE -> ROLE_PREMIUM");
 
@@ -43,24 +46,68 @@ class AdminAuditLogServiceTest {
         assertEquals("USER", saved.getTargetType());
         assertEquals("5", saved.getTargetId());
         assertEquals("ROLE_FREE -> ROLE_PREMIUM", saved.getDetails());
+        assertEquals("SUCCESS", saved.getOutcome());
     }
 
     @Test
-    @DisplayName("getRecent - Maps entities to DTOs, newest first, capped at 200")
+    @DisplayName("record (6-arg) - Persists the given outcome, e.g. FAILURE for a failed email send")
+    void record_WithOutcome_SavesGivenOutcome() {
+        adminAuditLogService.record("user@mssid.dz", "EMAIL_SEND", "EMAIL", "sujet", "échec Resend: timeout", "FAILURE");
+
+        ArgumentCaptor<AdminAuditLog> captor = ArgumentCaptor.forClass(AdminAuditLog.class);
+        verify(auditLogRepository).save(captor.capture());
+        assertEquals("FAILURE", captor.getValue().getOutcome());
+    }
+
+    @Test
+    @DisplayName("getRecent - Maps entities to DTOs (including outcome), newest first, capped at 200")
     void getRecent_MapsAndCapsLimit() {
         AdminAuditLog entry = AdminAuditLog.builder()
                 .id(1L).actorEmail("admin@mssid.dz").actionType("RECEIPT_APPROVED")
                 .targetType("RECEIPT").targetId("10").details("user upgraded to ROLE_PREMIUM")
+                .outcome("SUCCESS")
                 .createdAt(LocalDateTime.of(2026, 1, 1, 12, 0))
                 .build();
 
-        when(auditLogRepository.findAllByOrderByCreatedAtDesc(any(Pageable.class))).thenReturn(List.of(entry));
+        when(auditLogRepository.findAll(any(Specification.class), any(Pageable.class)))
+                .thenReturn(pageOf(entry));
 
         List<AdminAuditLogDto> result = adminAuditLogService.getRecent(500);
 
         assertEquals(1, result.size());
         assertEquals("admin@mssid.dz", result.get(0).getActorEmail());
         assertEquals("RECEIPT_APPROVED", result.get(0).getActionType());
+        assertEquals("SUCCESS", result.get(0).getOutcome());
         assertNotNull(result.get(0).getCreatedAt());
+    }
+
+    // The exact WHERE-clause composition (which predicates a given filter combination produces) is
+    // covered by a live smoke test against real Postgres, not here — Specification lambdas only run
+    // against a real CriteriaBuilder/Root, so a Mockito-level test of their content would be testing
+    // Mockito's stand-ins, not the actual generated SQL. This is what caught the real bug (Postgres
+    // couldn't infer a bind parameter's type from a bare "? IS NULL" check) that a mocked unit test
+    // never would have.
+    @Test
+    @DisplayName("getFiltered - Delegates to the repository with a capped page size and maps outcome through")
+    void getFiltered_MapsResultsThrough() {
+        AdminAuditLog entry = AdminAuditLog.builder()
+                .id(2L).actorEmail("user@mssid.dz").actionType("EMAIL_SEND")
+                .targetType("EMAIL").targetId("رمز التحقق").details("échec Resend: timeout")
+                .outcome("FAILURE")
+                .createdAt(LocalDateTime.of(2026, 8, 17, 10, 0))
+                .build();
+
+        when(auditLogRepository.findAll(any(Specification.class), any(Pageable.class)))
+                .thenReturn(pageOf(entry));
+
+        List<AdminAuditLogDto> result = adminAuditLogService.getFiltered("EMAIL_SEND", "FAILURE", "user@mssid.dz", null, null, 500);
+
+        assertEquals(1, result.size());
+        assertEquals("FAILURE", result.get(0).getOutcome());
+        assertEquals("EMAIL_SEND", result.get(0).getActionType());
+    }
+
+    private Page<AdminAuditLog> pageOf(AdminAuditLog... entries) {
+        return new PageImpl<>(List.of(entries));
     }
 }

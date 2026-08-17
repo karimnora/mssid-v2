@@ -3,11 +3,16 @@ package dz.mssid.education.service;
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.entity.AdminAuditLog;
 import dz.mssid.education.repository.AdminAuditLogRepository;
+import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,23 +22,63 @@ public class AdminAuditLogService {
 
     private final AdminAuditLogRepository auditLogRepository;
 
+    /** Back-compat for the 4 original admin-mutation call sites, which never fail before logging (the
+     * mutation itself already committed by the time these run), so SUCCESS is always correct here. */
     public void record(String actorEmail, String actionType, String targetType, String targetId, String details) {
+        record(actorEmail, actionType, targetType, targetId, details, "SUCCESS");
+    }
+
+    public void record(String actorEmail, String actionType, String targetType, String targetId, String details, String outcome) {
         AdminAuditLog entry = AdminAuditLog.builder()
                 .actorEmail(actorEmail)
                 .actionType(actionType)
                 .targetType(targetType)
                 .targetId(targetId)
                 .details(details)
+                .outcome(outcome != null ? outcome : "SUCCESS")
                 .build();
         auditLogRepository.save(entry);
     }
 
     public List<AdminAuditLogDto> getRecent(int limit) {
+        return getFiltered(null, null, null, null, null, limit);
+    }
+
+    // Built as a Specification (a predicate is only added to the query when its filter is actually
+    // present) rather than a single @Query with "(:param IS NULL OR ...)" branches — found live that
+    // Postgres's JDBC driver can't always infer the type of a bind parameter used in a bare
+    // "? IS NULL" check with no other type-establishing context (errored on both a null actorEmail
+    // pattern and a null date with two different error messages), which a Specification sidesteps
+    // entirely since the comparison simply isn't in the SQL when the filter is absent.
+    public List<AdminAuditLogDto> getFiltered(
+            String actionType, String outcome, String actorEmail, LocalDateTime dateFrom, LocalDateTime dateTo, int limit) {
         int cappedLimit = Math.min(Math.max(limit, 1), 200);
-        return auditLogRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(0, cappedLimit))
+
+        Specification<AdminAuditLog> spec = (root, query, cb) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            String actionTypeValue = blankToNull(actionType);
+            String outcomeValue = blankToNull(outcome);
+            String actorEmailValue = blankToNull(actorEmail);
+
+            if (actionTypeValue != null) predicates.add(cb.equal(root.get("actionType"), actionTypeValue));
+            if (outcomeValue != null) predicates.add(cb.equal(root.get("outcome"), outcomeValue));
+            if (actorEmailValue != null) {
+                predicates.add(cb.like(cb.lower(root.get("actorEmail")), "%" + actorEmailValue.toLowerCase() + "%"));
+            }
+            if (dateFrom != null) predicates.add(cb.greaterThanOrEqualTo(root.get("createdAt"), dateFrom));
+            if (dateTo != null) predicates.add(cb.lessThanOrEqualTo(root.get("createdAt"), dateTo));
+
+            return cb.and(predicates.toArray(new Predicate[0]));
+        };
+
+        return auditLogRepository.findAll(spec, PageRequest.of(0, cappedLimit, Sort.by(Sort.Direction.DESC, "createdAt")))
                 .stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());
+    }
+
+    private String blankToNull(String value) {
+        return (value == null || value.isBlank()) ? null : value.trim();
     }
 
     private AdminAuditLogDto toDto(AdminAuditLog entry) {
@@ -44,6 +89,7 @@ public class AdminAuditLogService {
                 .targetType(entry.getTargetType())
                 .targetId(entry.getTargetId())
                 .details(entry.getDetails())
+                .outcome(entry.getOutcome())
                 .createdAt(entry.getCreatedAt() != null ? entry.getCreatedAt().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) : null)
                 .build();
     }

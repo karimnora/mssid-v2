@@ -1,5 +1,6 @@
 package dz.mssid.education.service;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,7 @@ import java.util.Map;
  * account owner's own verified address, so it's fine for local testing but not for real users.
  */
 @Service
+@RequiredArgsConstructor
 public class ResendEmailService {
 
     private static final Logger log = LoggerFactory.getLogger(ResendEmailService.class);
@@ -39,10 +41,18 @@ public class ResendEmailService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    // The single choke point every outbound email goes through (verification codes, password
+    // resets) — logging here once covers every caller, instead of duplicating the same record(...)
+    // call at each call site. This is what makes "why didn't the confirmation email send" answerable
+    // from the admin console instead of only an ephemeral console log.error.
+    private final AdminAuditLogService adminAuditLogService;
+
     /** @return true if the email was handed off to Resend successfully, false otherwise (never throws). */
     public boolean sendHtmlEmail(String toEmail, String subject, String htmlBody) {
         if (apiKey == null || apiKey.isBlank()) {
             log.warn("[ResendEmailService] app.resend.api-key is not configured — skipping email to {}", toEmail);
+            adminAuditLogService.record(toEmail, "EMAIL_SEND", "EMAIL", subject,
+                    "app.resend.api-key n'est pas configurée — envoi ignoré", "FAILURE");
             return false;
         }
 
@@ -59,9 +69,12 @@ public class ResendEmailService {
 
         try {
             restTemplate.postForObject(apiUrl, new HttpEntity<>(requestBody, headers), Map.class);
+            adminAuditLogService.record(toEmail, "EMAIL_SEND", "EMAIL", subject, "envoyé via Resend", "SUCCESS");
             return true;
         } catch (Exception e) {
             log.error("[ResendEmailService] Failed to send email to {}: {}", toEmail, e.getMessage());
+            adminAuditLogService.record(toEmail, "EMAIL_SEND", "EMAIL", subject,
+                    "échec Resend: " + e.getMessage(), "FAILURE");
             return false;
         }
     }

@@ -33,10 +33,13 @@ public class AuthService {
     private final RefreshTokenService refreshTokenService;
     private final EmailVerificationService emailVerificationService;
     private final AuthenticationManager authenticationManager;
+    private final AdminAuditLogService adminAuditLogService;
 
     public AuthResponse register(RegisterRequest request) {
         // 1. Vérification de l'email
         if (userRepository.existsByEmail(request.getEmail())) {
+            adminAuditLogService.record(request.getEmail(), "REGISTRATION_FAILED", "USER", null,
+                    "email déjà utilisé", "FAILURE");
             throw new RuntimeException("Cet email est déjà utilisé.");
         }
 
@@ -59,9 +62,15 @@ public class AuthService {
                 .build();
 
         userRepository.save(user);
+        // user.getId() is populated in-place by Hibernate for IDENTITY-strategy entities after save(),
+        // but stays null against a mocked repository in tests — guard rather than assume either way.
+        String userId = user.getId() != null ? user.getId().toString() : null;
+        adminAuditLogService.record(user.getEmail(), "USER_REGISTERED", "USER", userId,
+                "grade=" + user.getGrade(), "SUCCESS");
 
         // Best-effort — a flaky email provider must never block account creation (soft verification,
-        // never blocks app usage; the user can always request a resend later).
+        // never blocks app usage; the user can always request a resend later). Any failure is already
+        // captured by ResendEmailService's own EMAIL_SEND audit entry, so nothing further to log here.
         emailVerificationService.sendVerificationCode(user);
 
         // 4. Authentification & Génération du Token JWT
@@ -89,7 +98,11 @@ public class AuthService {
     public AuthResponse login(LoginRequest request) {
         // 1. Vérification si l'utilisateur existe
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new BadCredentialsException("Identifiants incorrects ou compte introuvable"));
+                .orElseThrow(() -> {
+                    adminAuditLogService.record(request.getEmail(), "LOGIN_FAILED", "USER", null,
+                            "compte introuvable", "FAILURE");
+                    return new BadCredentialsException("Identifiants incorrects ou compte introuvable");
+                });
 
         // 2. Authentification Spring Security
         try {
@@ -115,6 +128,8 @@ public class AuthService {
                     .user(profileDto)
                     .build();
         } catch (AuthenticationException e) {
+            adminAuditLogService.record(request.getEmail(), "LOGIN_FAILED", "USER", null,
+                    "mot de passe incorrect", "FAILURE");
             throw new BadCredentialsException("Identifiants incorrects ou compte introuvable");
         }
     }

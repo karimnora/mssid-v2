@@ -16,5 +16,6 @@ public class AdminAuditLogDto {
     private String targetType;
     private String targetId;
     private String details;
+    private String outcome;
     private String createdAt;
 }

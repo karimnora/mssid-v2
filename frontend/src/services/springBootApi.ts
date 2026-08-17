@@ -426,8 +426,22 @@ public async request<T>(
     });
   }
 
-  public async getAdminAuditLog(limit: number = 50) {
-    return this.request<any[]>(`/v1/admin/audit-log?limit=${limit}`, {
+  public async getAdminAuditLog(filters: {
+    limit?: number;
+    actionType?: string;
+    outcome?: string;
+    actorEmail?: string;
+    dateFrom?: string; // ISO local date-time, e.g. "2026-08-17T00:00:00"
+    dateTo?: string;
+  } = {}) {
+    const params = new URLSearchParams();
+    params.set('limit', String(filters.limit ?? 50));
+    if (filters.actionType) params.set('actionType', filters.actionType);
+    if (filters.outcome) params.set('outcome', filters.outcome);
+    if (filters.actorEmail) params.set('actorEmail', filters.actorEmail);
+    if (filters.dateFrom) params.set('dateFrom', filters.dateFrom);
+    if (filters.dateTo) params.set('dateTo', filters.dateTo);
+    return this.request<any[]>(`/v1/admin/audit-log?${params.toString()}`, {
       method: 'GET',
     });
   }
