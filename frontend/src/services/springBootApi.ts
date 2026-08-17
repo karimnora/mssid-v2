@@ -169,8 +169,13 @@ public async request<T>(
   // Sur un réseau mobile instable ou un serveur injoignable, fetch() peut rester en
   // attente plusieurs minutes sans jamais rejeter : on borne chaque appel pour que
   // l'utilisateur voie un message d'erreur au lieu d'un écran de chargement infini.
+  // The one retry after a timeout gets a longer budget than the first attempt: by the time we've
+  // timed out once, we have real reason to suspect a Render cold start in progress (container boot
+  // can take up to ~30-50s) rather than a genuinely hung connection, and the first attempt's wait
+  // already gave the container that much of a head start.
+  const timeoutMs = _isRetryAfterColdStart ? Math.max(this.requestTimeoutMs, 40000) : this.requestTimeoutMs;
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), this.requestTimeoutMs);
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
     const response = await fetch(url, {
@@ -236,7 +241,11 @@ public async request<T>(
     return { data, status, headers: response.headers };
   } catch (err: any) {
     if (err?.name === 'AbortError') {
-      console.warn(`[mssid dz] Délai d'attente dépassé (${this.requestTimeoutMs}ms) pour ${url}`);
+      if (!_isRetryAfterColdStart) {
+        console.warn(`[mssid dz] Timeout (${timeoutMs}ms) sur ${url}, nouvelle tentative avec un délai plus long (cold start possible)`);
+        return this.request<T>(endpoint, options, _isRetryAfterRefresh, true);
+      }
+      console.warn(`[mssid dz] Délai d'attente dépassé (${timeoutMs}ms) pour ${url}`);
       return {
         error: 'Le serveur met trop de temps à répondre. Vérifiez votre connexion et réessayez.',
         status: 0,

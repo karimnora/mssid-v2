@@ -248,5 +248,73 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
         vi.useRealTimers();
       }
     });
+
+    // Regression test: the AbortError branch used to return immediately on the very first timeout,
+    // never reaching the retry logic above — so a Render cold start (container boot up to ~30-50s,
+    // longer than the 15s per-attempt timeout) always surfaced this error on the first request,
+    // even though the retry-after-network-failure path already handled the non-timeout case.
+    it('retries once with a longer timeout after the first attempt times out (cold-start recovery)', async () => {
+      vi.useFakeTimers();
+      try {
+        let callCount = 0;
+        const mockFetch = vi.fn().mockImplementation((_url: string, opts: RequestInit) => {
+          callCount++;
+          if (callCount === 1) {
+            // Hangs until the AbortController's timeout fires, like a real slow cold-starting server.
+            return new Promise((_resolve, reject) => {
+              opts.signal?.addEventListener('abort', () => {
+                const err = new Error('The operation was aborted.');
+                err.name = 'AbortError';
+                reject(err);
+              });
+            });
+          }
+          return Promise.resolve({
+            status: 200,
+            ok: true,
+            headers: new Headers({ 'content-type': 'application/json' }),
+            json: async () => ({ status: 'UP' }),
+          });
+        });
+        global.fetch = mockFetch;
+
+        const resultPromise = springBootApi.request('/health');
+        await vi.advanceTimersByTimeAsync(15000); // first attempt's timeout fires
+        const result = await resultPromise;
+
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+        expect(result.status).toBe(200);
+        expect(result.error).toBeUndefined();
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it('surfaces the timeout error only once the retry (with its longer budget) also times out', async () => {
+      vi.useFakeTimers();
+      try {
+        const mockFetch = vi.fn().mockImplementation((_url: string, opts: RequestInit) => {
+          return new Promise((_resolve, reject) => {
+            opts.signal?.addEventListener('abort', () => {
+              const err = new Error('The operation was aborted.');
+              err.name = 'AbortError';
+              reject(err);
+            });
+          });
+        });
+        global.fetch = mockFetch;
+
+        const resultPromise = springBootApi.request('/health');
+        await vi.advanceTimersByTimeAsync(15000); // first attempt times out
+        await vi.advanceTimersByTimeAsync(40000); // retry's longer budget also times out
+        const result = await resultPromise;
+
+        expect(mockFetch).toHaveBeenCalledTimes(2);
+        expect(result.status).toBe(0);
+        expect(result.error).toContain('trop de temps');
+      } finally {
+        vi.useRealTimers();
+      }
+    });
   });
 });
