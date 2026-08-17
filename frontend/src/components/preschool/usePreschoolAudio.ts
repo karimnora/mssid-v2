@@ -27,12 +27,29 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    let cancelled = false;
+    let attempts = 0;
+
     const loadVoices = () => {
-      voicesRef.current = window.speechSynthesis.getVoices();
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length) voicesRef.current = voices;
+      return voices.length > 0;
     };
-    loadVoices();
+
+    // Chrome commonly reports zero voices on the very first synchronous getVoices() call, and the
+    // Android WebView this app ships in (via Capacitor) doesn't reliably fire onvoiceschanged at
+    // all — so relying on that event alone silently leaves voicesRef empty forever on some devices.
+    // Poll for up to ~2s as a fallback so a slow-to-init voice list still gets picked up.
+    const poll = () => {
+      if (cancelled || loadVoices() || attempts >= 20) return;
+      attempts += 1;
+      setTimeout(poll, 100);
+    };
+    poll();
+
     window.speechSynthesis.onvoiceschanged = loadVoices;
     return () => {
+      cancelled = true;
       window.speechSynthesis.onvoiceschanged = null;
     };
   }, []);
@@ -40,12 +57,34 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
   const speak = useCallback((text: string) => {
     if (typeof window === 'undefined' || !window.speechSynthesis || !text) return;
     window.speechSynthesis.cancel(); // never queue — a new prompt always interrupts the previous one
+
+    // Defensive re-check right before speaking: some engines only populate getVoices() lazily on
+    // access rather than proactively, so the polling above can still miss a voice that exists.
+    if (voicesRef.current.length === 0) {
+      voicesRef.current = window.speechSynthesis.getVoices();
+    }
+
     const utterance = new SpeechSynthesisUtterance(text);
     const voice = pickVoice(voicesRef.current, language);
-    if (voice) utterance.voice = voice;
+    if (voice) {
+      utterance.voice = voice;
+    } else if (typeof import.meta !== 'undefined' && (import.meta as any).env?.DEV) {
+      // No installed voice matches this locale. Chrome/WebView can silently produce NO sound at all
+      // in this case (no error event fires) instead of degrading to a default voice — this is the
+      // most common real-world cause of "the Arabic audio doesn't work": the device's OS-level TTS
+      // engine (e.g. Android's Google Text-to-Speech) simply has no Arabic voice pack downloaded.
+      console.warn(
+        `[mssid preschool] No TTS voice found for locale "${language}". ` +
+        `Available on this device: ${voicesRef.current.map((v) => v.lang).join(', ') || '(none loaded)'}. ` +
+        `On Android, install the Arabic voice pack via Settings > System > Languages > Text-to-speech output.`
+      );
+    }
     utterance.lang = BCP47_BY_LANGUAGE[language][0];
     utterance.rate = 0.9; // slightly slower — easier for a 3-5 year old to follow
     utterance.pitch = 1.1; // slightly higher — friendlier "mascot" tone
+    utterance.onerror = (event) => {
+      console.warn('[mssid preschool] Speech synthesis failed:', event.error);
+    };
     window.speechSynthesis.speak(utterance);
   }, [language]);
 

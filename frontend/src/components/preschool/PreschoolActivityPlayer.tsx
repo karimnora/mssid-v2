@@ -26,12 +26,14 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [mood, setMood] = useState<MascotMood>('idle');
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showParentTip, setShowParentTip] = useState(false);
   const { speak } = usePreschoolSpeech(language);
   const content = activity.i18n[language];
 
   useEffect(() => {
     setMood('idle');
     setShowSuccess(false);
+    setShowParentTip(false);
     const timer = setTimeout(() => speak(content.promptAudio), 350);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,8 +86,25 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         <PreschoolMascot mood={mood} />
 
         <h2 className="text-xl sm:text-2xl font-black text-orange-900 text-center">{content.title}</h2>
+
+        {/* promptText is a caption for the accompanying adult, never required reading for the
+            child (see types.ts) — kept collapsed by default so the child's screen only ever shows
+            the mascot talking directly to them, not an instruction addressed to a parent. */}
         {content.promptText && (
-          <p className="text-xs text-orange-700/70 text-center max-w-xs">{content.promptText}</p>
+          <div className="flex flex-col items-center gap-1.5">
+            <button
+              onClick={() => setShowParentTip((v) => !v)}
+              className="text-[11px] font-bold text-orange-700/60 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
+            >
+              <span>ℹ️</span>
+              <span>{language === 'ar' ? 'نصيحة لولي الأمر' : language === 'fr' ? 'Astuce pour le parent' : 'Tip for the grown-up'}</span>
+            </button>
+            {showParentTip && (
+              <p className="text-xs text-orange-700/70 text-center max-w-xs bg-white/60 rounded-xl px-3 py-2 border border-orange-100">
+                {content.promptText}
+              </p>
+            )}
+          </div>
         )}
 
         <div className="mt-4 w-full flex items-center justify-center">
