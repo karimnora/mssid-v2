@@ -25,7 +25,6 @@ import {
 import { PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { MssidLogo } from './MssidLogo';
-import { LanguageSwitcher } from './LanguageSwitcher';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { Badge } from './ui';
 
@@ -225,10 +224,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="hidden xl:inline">المعلّم الذكي</span>
               </motion.button>
             )}
-
-            <div className="hidden xl:block">
-              <LanguageSwitcher />
-            </div>
 
             {/* XP & Badges Display */}
             <button

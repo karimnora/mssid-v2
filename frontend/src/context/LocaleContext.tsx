@@ -1,54 +1,24 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { LocaleCode, locales, LocaleStrings } from '../locales';
+import React, { createContext, useContext, useMemo } from 'react';
+import { locales, LocaleStrings } from '../locales';
 
 export interface LocaleContextValue {
-  locale: LocaleCode;
-  direction: 'rtl' | 'ltr';
+  locale: 'ar';
+  direction: 'rtl';
   strings: LocaleStrings;
-  setLocale: (locale: LocaleCode) => void;
   t: (namespace: keyof LocaleStrings, key: string, params?: Record<string, string | number>) => string;
   useT: (namespace: keyof LocaleStrings, key: string, params?: Record<string, string | number>) => string;
 }
 
-const defaultLocale: LocaleCode = 'ar';
-
-const detectBrowserLocale = (): LocaleCode => {
-  if (typeof navigator === 'undefined') return defaultLocale;
-  const browserLocale = navigator.language.slice(0, 2).toLowerCase();
-  if (browserLocale === 'fr') return 'fr';
-  if (browserLocale === 'en') return 'en';
-  return 'ar';
-};
-
+// The app is Arabic-only, permanently — the previous fr/en/ber switcher only ever translated ~50
+// generic UI labels (buttons, nav) while the actual pedagogical content (66 course data files) stayed
+// Arabic regardless of the selected language, and it silently auto-picked fr/en from the browser's
+// own language setting even before anyone touched the switcher. That mismatch was worse than no
+// switcher at all, so it's gone — see LanguageSwitcher.tsx's removal. `t()` stays as the lookup
+// mechanism for the ~9 call sites that already use it; there's just nothing left to switch to.
 const LocaleContext = createContext<LocaleContextValue | undefined>(undefined);
 
 export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  const [locale, setLocaleState] = useState<LocaleCode>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = window.localStorage.getItem('mssid_locale');
-      if (stored === 'ar' || stored === 'fr' || stored === 'en' || stored === 'ber') {
-        return stored as LocaleCode;
-      }
-    }
-    return detectBrowserLocale();
-  });
-
-  const setLocale = (nextLocale: LocaleCode) => {
-    setLocaleState(nextLocale);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('mssid_locale', nextLocale);
-    }
-  };
-
-  // 🛡️ Sécurisation contre undefined : fallback sur la langue par défaut (ar)
-  const localeConfig = locales[locale] || locales[defaultLocale] || locales['ar'];
-
-  useEffect(() => {
-    if (typeof document !== 'undefined' && localeConfig) {
-      document.documentElement.dir = localeConfig.direction || 'rtl';
-      document.documentElement.lang = localeConfig.code || 'ar';
-    }
-  }, [localeConfig]);
+  const localeConfig = locales.ar;
 
   const interpolate = (template: string, params?: Record<string, string | number>) => {
     if (!params) return template;
@@ -59,7 +29,6 @@ export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children
   };
 
   const translate = (namespace: keyof LocaleStrings, key: string, params?: Record<string, string | number>) => {
-    if (!localeConfig || !localeConfig.strings) return key;
     const namespaceStrings = localeConfig.strings[namespace] as Record<string, string> | undefined;
     const copy = namespaceStrings?.[key] || key;
     return interpolate(copy, params);
@@ -67,14 +36,13 @@ export const LocaleProvider: React.FC<React.PropsWithChildren<{}>> = ({ children
 
   const value = useMemo<LocaleContextValue>(
     () => ({
-      locale,
-      direction: localeConfig?.direction || 'rtl',
-      strings: localeConfig?.strings || ({} as LocaleStrings),
-      setLocale,
+      locale: 'ar',
+      direction: 'rtl',
+      strings: localeConfig.strings,
       t: translate,
       useT: translate,
     }),
-    [locale, localeConfig],
+    [],
   );
 
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
