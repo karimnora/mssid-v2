@@ -6,10 +6,6 @@ import { navigation as navigationAr } from './ar/navigation';
 import { navigation as navigationFr } from './fr/navigation';
 import { navigation as navigationEn } from './en/navigation';
 import { navigation as navigationBer } from './ber/navigation';
-import { pricing as pricingAr } from './ar/pricing';
-import { pricing as pricingFr } from './fr/pricing';
-import { pricing as pricingEn } from './en/pricing';
-import { pricing as pricingBer } from './ber/pricing';
 
 export type LocaleCode = 'ar' | 'fr' | 'en' | 'ber';
 
@@ -20,7 +16,6 @@ export const locales = {
     strings: {
       common: commonAr,
       navigation: navigationAr,
-      pricing: pricingAr,
     },
   },
   fr: {
@@ -29,7 +24,6 @@ export const locales = {
     strings: {
       common: commonFr,
       navigation: navigationFr,
-      pricing: pricingFr,
     },
   },
   en: {
@@ -38,7 +32,6 @@ export const locales = {
     strings: {
       common: commonEn,
       navigation: navigationEn,
-      pricing: pricingEn,
     },
   },
   // Neo-Tifinagh (as standardized for Tamazight education in Algeria/Morocco) is written LTR,
@@ -49,7 +42,6 @@ export const locales = {
     strings: {
       common: commonBer,
       navigation: navigationBer,
-      pricing: pricingBer,
     },
   },
 };

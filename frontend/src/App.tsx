@@ -26,12 +26,10 @@ import { Navbar, HeaderTheme } from './components/Navbar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
 import { SeoHead } from './components/SeoHead';
-import { PricingModal } from './components/PricingModal';
 import { SubscriptionPaywall } from './components/SubscriptionPaywall';
 import { LoadingFallback } from './components/LoadingFallback';
 import { AppRatingPrompt } from './components/AppRatingPrompt';
 import { ContactModal } from './components/ContactModal';
-import { isFeatureEnabled } from './featureFlags';
 import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { springBootApi } from './services/springBootApi';
 
@@ -294,7 +292,6 @@ export default function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
-  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isDressingRoomOpen, setIsDressingRoomOpen] = useState(false);
   const [isHomeworkPinOpen, setIsHomeworkPinOpen] = useState(false);
@@ -792,7 +789,6 @@ export default function App() {
         onOpenAiTutor={() => setIsAiModalOpen(true)}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
         onOpenContactModal={() => setIsContactModalOpen(true)}
-        onOpenPricingModal={() => setIsPricingModalOpen(true)}
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
         onOpenAdminConsole={() => setIsAdminConsoleActive(true)}
@@ -1345,23 +1341,6 @@ export default function App() {
           />
         )}
       </Suspense>
-
-      {isFeatureEnabled('enablePayments') && (
-        <PricingModal
-          isOpen={isPricingModalOpen}
-          onClose={() => setIsPricingModalOpen(false)}
-          onRequestCheckout={(providerName, paymentMethod, amountDzd) => {
-            return springBootApi.createCheckout({
-              paymentMethod,
-              amountDzd,
-              providerName,
-              transactionRef: `CHG-${Date.now()}`,
-              returnUrl: window.location.href,
-            });
-          }}
-          currentUser={authUser}
-        />
-      )}
 
       {lockedLesson && (
         <SubscriptionPaywall

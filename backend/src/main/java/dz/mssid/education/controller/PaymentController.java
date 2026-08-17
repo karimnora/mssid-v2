@@ -1,11 +1,7 @@
 package dz.mssid.education.controller;
 
-import dz.mssid.education.dto.CheckoutRequest;
-import dz.mssid.education.dto.CheckoutResponse;
-import dz.mssid.education.dto.PaymentWebhookResponse;
 import dz.mssid.education.dto.ReceiptUploadRequest;
 import dz.mssid.education.dto.VerifyReceiptRequest;
-import dz.mssid.education.dto.WebhookEventRequest;
 import dz.mssid.education.entity.PaymentReceipt;
 import dz.mssid.education.service.PaymentService;
 import lombok.RequiredArgsConstructor;
@@ -64,29 +60,5 @@ public class PaymentController {
     ) {
         PaymentReceipt updated = paymentService.verifyReceipt(id, request, userDetails.getUsername());
         return ResponseEntity.ok(updated);
-    }
-
-    @PostMapping("/api/v1/payments/checkout")
-    public ResponseEntity<CheckoutResponse> createCheckout(
-            @AuthenticationPrincipal UserDetails userDetails,
-            @RequestBody CheckoutRequest request
-    ) {
-        // SEC-04: same fix as submitReceipt — never trust request.userEmail for identity.
-        CheckoutResponse response = paymentService.createCheckout(userDetails.getUsername(), request);
-        return ResponseEntity.ok(response);
-    }
-
-    /**
-     * SEC-04 (critical fix): this used to accept ANY authenticated user's JWT with no role check,
-     * trust a client-supplied `status` string ("PAID" sufficed) and a client-supplied `userEmail` —
-     * letting any logged-in student grant ROLE_PREMIUM to any account (including their own) for free.
-     * No real payment-gateway signature verification exists yet, so admin-only is the safest gate
-     * available today; PaymentServiceImpl.processWebhook also no longer trusts request.userEmail.
-     */
-    @PostMapping("/api/v1/payments/webhook")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<PaymentWebhookResponse> handleWebhook(@RequestBody WebhookEventRequest request) {
-        PaymentWebhookResponse response = paymentService.processWebhook(request);
-        return ResponseEntity.ok(response);
     }
 }

@@ -740,6 +740,41 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
   }
 
   /**
+   * The real submission path — awaits the backend's actual response instead of writing an optimistic
+   * local copy and firing the real call without checking it (same class of bug as the old
+   * verifyReceipt, fixed in Phase 36 for admin approval; this is the equivalent fix for submission).
+   * The backend now validates amountDzd against the real subscription price server-side
+   * (PaymentServiceImpl.submitReceipt) — a mismatch surfaces here as a real error, not a silently
+   * swallowed one.
+   */
+  static async submitReceiptAsync(payload: {
+    paymentMethod: PaymentMethod;
+    amountDzd: number;
+    transactionRef: string;
+    receiptImageUrl: string;
+  }): Promise<{ success: boolean; receipt?: PaymentReceipt; message?: string }> {
+    const res = await springBootApi.submitReceipt(payload);
+    if (res.error || !res.data) {
+      return { success: false, message: res.error || 'تعذر إرسال الوصل. حاول مرة أخرى.' };
+    }
+
+    const currentUser = this.getCurrentUser();
+    const receipt: PaymentReceipt = {
+      id: res.data.id,
+      userId: currentUser?.id || 0,
+      userName: currentUser?.nom || '',
+      userEmail: currentUser?.email || '',
+      paymentMethod: payload.paymentMethod,
+      amountDzd: res.data.amountDzd,
+      transactionRef: res.data.transactionRef,
+      receiptImageUrl: payload.receiptImageUrl,
+      status: (res.data.status as PaymentReceipt['status']) || 'PENDING_VERIFICATION',
+      submittedAt: new Date().toISOString().replace('T', ' ').substring(0, 16),
+    };
+    return { success: true, receipt };
+  }
+
+  /**
    * Local-only mock, entirely disconnected from the real backend receipts table (fires a
    * fire-and-forget sync as a courtesy, but never awaits/checks it). Used ONLY by
    * SubscriptionPaywall.tsx's dev-build-gated "simulate admin approval" testing shortcut, which

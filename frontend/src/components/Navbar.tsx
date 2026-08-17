@@ -39,7 +39,6 @@ interface NavbarProps {
   onOpenAuthModal: () => void;
   onLogout: () => void;
   onOpenAiTutor: () => void;
-  onOpenPricingModal: () => void;
   onOpenProfileModal: () => void;
   onOpenPreschool?: () => void;
   onOpenContactModal?: () => void;
@@ -73,7 +72,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAuthModal,
   onLogout,
   onOpenAiTutor,
-  onOpenPricingModal,
   onOpenProfileModal,
   onOpenPreschool,
   onOpenContactModal,

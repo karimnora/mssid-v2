@@ -44,6 +44,16 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Several controllers return JPA entities directly as JSON (PaymentReceipt -> its lazy User
+		     relation, etc.) instead of DTOs. Spring Boot auto-registers this module once it's on the
+		     classpath, teaching Jackson to serialize an uninitialized/lazy Hibernate proxy as null (or
+		     force-initialize it, per hibernate6module.force-lazy-loading below) instead of choking on
+		     the proxy's internal ByteBuddyInterceptor field. -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate6</artifactId>
+		</dependency>
+
 		<!-- Flyway: versioned schema migrations, replacing Hibernate ddl-auto=update.
 		     Spring Boot 3.2.5 manages Flyway 9.22.3, where PostgreSQL support ships inside flyway-core
 		     itself (the separate flyway-database-postgresql module only exists from Flyway 10 on). -->

@@ -357,20 +357,7 @@ public async request<T>(
 
   // --- Gestion des Reçus de Paiement ---
   public async submitReceipt(payload: { paymentMethod: string; amountDzd: number; transactionRef: string; receiptImageUrl: string }) {
-    return this.request('/v1/payments/receipt/upload', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    });
-  }
-
-  public async createCheckout(payload: { paymentMethod: string; amountDzd: number; providerName: string; returnUrl?: string; transactionRef?: string }) {
-    return this.request<{
-      checkoutId: string;
-      checkoutUrl: string;
-      transactionRef: string;
-      status: string;
-      message: string;
-    }>('/v1/payments/checkout', {
+    return this.request<{ id: number; status: string; transactionRef: string; amountDzd: number }>('/v1/payments/receipt/upload', {
       method: 'POST',
       body: JSON.stringify(payload),
     });

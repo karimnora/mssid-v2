@@ -44,6 +44,14 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
+    // SEC/BUG: same rationale as passwordHash above — PaymentReceipt embeds the full User and gets
+    // serialized directly by PaymentController. This field only ever caused real trouble once
+    // PaymentServiceImpl.verifyReceipt started actually populating a matching subscriptions row: at
+    // that point Jackson tried to serialize the resulting Hibernate-proxied association mid-session
+    // and failed with "Type definition error: ... ByteBuddyInterceptor" (no jackson-datatype-hibernate
+    // module registered). UserProfileDto — the sanctioned way to expose user data — never included
+    // this field anyway.
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Subscription subscription;
 

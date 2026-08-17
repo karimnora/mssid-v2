@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AuthUser, PaymentReceipt, PaymentMethod } from '../types/auth';
 import { AuthService } from '../services/authService';
+import { SUBSCRIPTION_PRICE_DZD } from '../constants/pricing';
 import { Lock, ShieldCheck, Upload, CheckCircle2, AlertCircle, Clock, FileText, Smartphone, CreditCard, Sparkles, X, Eye } from 'lucide-react';
 
 interface Props {
@@ -38,7 +39,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
     }
   };
 
-  const handleSubmitReceipt = (e: React.FormEvent) => {
+  const handleSubmitReceipt = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!currentUser) {
       setCustomError('يرجى تسجيل الدخول أولاً لإرسال وصل الدفع');
@@ -48,19 +49,21 @@ export const SubscriptionPaywall: React.FC<Props> = ({
     setIsSubmitting(true);
     setCustomError(null);
 
-    setTimeout(() => {
-      const receipt = AuthService.submitReceipt(
-        currentUser.id,
-        currentUser.nom,
-        currentUser.email,
-        paymentMethod,
-        1500,
-        transactionRef,
-        receiptImage
-      );
-      setSubmittedReceipt(receipt);
-      setIsSubmitting(false);
-    }, 800);
+    const result = await AuthService.submitReceiptAsync({
+      paymentMethod,
+      amountDzd: SUBSCRIPTION_PRICE_DZD,
+      transactionRef,
+      receiptImageUrl: receiptImage,
+    });
+
+    setIsSubmitting(false);
+
+    if (!result.success || !result.receipt) {
+      setCustomError(result.message || 'تعذر إرسال الوصل. تحقق من اتصالك وحاول مرة أخرى.');
+      return;
+    }
+
+    setSubmittedReceipt(result.receipt);
   };
 
   const handleSimulateAdminApproval = () => {
@@ -121,7 +124,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                 <li className="font-extrabold">✓ فتح جميع الحلول والتصحيحات الرسمية</li>
                 <li className="font-extrabold">✓ إمكانية تحميل وطباعة أوراق الامتحان</li>
                 <li className="font-extrabold">✓ المساعد التربوي الذكي غير المحدود</li>
-                <li className="font-extrabold text-amber-700">💰 السعر: 1500 دج / للعام الدراسي الكامل</li>
+                <li className="font-extrabold text-amber-700">💰 السعر: {SUBSCRIPTION_PRICE_DZD} دج / للعام الدراسي الكامل</li>
               </ul>
             </div>
           </div>
@@ -215,7 +218,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
               {/* Account details info card */}
               <div className="p-4 bg-purple-900 text-white rounded-2xl text-xs space-y-1.5 shadow-inner">
                 <div className="flex justify-between items-center font-bold text-amber-300">
-                  <span>معلومات الحساب البريدي لتحويل المبلغ (1500 دج):</span>
+                  <span>معلومات الحساب البريدي لتحويل المبلغ ({SUBSCRIPTION_PRICE_DZD} دج):</span>
                   <span>mssid dz Education</span>
                 </div>
                 <div className="font-mono text-sm tracking-wider font-extrabold bg-slate-950/60 p-2.5 rounded-xl border border-purple-700/50 flex justify-between items-center dir-ltr">
@@ -245,7 +248,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                   <input
                     type="text"
                     disabled
-                    value="1500 DZD (حقوق الاشتراك السنوي)"
+                    value={`${SUBSCRIPTION_PRICE_DZD} DZD (حقوق الاشتراك السنوي)`}
                     className="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-purple-900 cursor-not-allowed"
                   />
                 </div>

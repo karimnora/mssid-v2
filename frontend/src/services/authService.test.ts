@@ -193,6 +193,60 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
     });
   });
 
+  describe('submitReceiptAsync - the real, backend-authoritative receipt submission path', () => {
+    const originalFetch = global.fetch;
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+      AuthService.setCurrentUser(null);
+    });
+
+    it('returns the saved receipt once the backend confirms it (Happy Path)', async () => {
+      AuthService.setCurrentUser({ id: 7, nom: 'يونس', email: 'younes@mssid.dz', role: 'ROLE_FREE' });
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ id: 99, status: 'PENDING_VERIFICATION', transactionRef: 'BM-1', amountDzd: 1500 }),
+      });
+
+      const result = await AuthService.submitReceiptAsync({
+        paymentMethod: 'BARIDIMOB',
+        amountDzd: 1500,
+        transactionRef: 'BM-1',
+        receiptImageUrl: 'data:image/png;base64,xyz',
+      });
+
+      expect(result.success).toBe(true);
+      expect(result.receipt?.id).toBe(99);
+      expect(result.receipt?.status).toBe('PENDING_VERIFICATION');
+    });
+
+    // Regression test for the exact bug this method fixes: the old submitReceipt() wrote a
+    // "PENDING_VERIFICATION" receipt to localStorage BEFORE the backend call resolved, so a
+    // server-side rejection (e.g. the new amount-validation check) was invisible to the student —
+    // they'd see a pending-review screen for a submission the server never actually recorded.
+    it('reports failure — not a false pending state — when the backend rejects the submission', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 400,
+        ok: false,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ message: 'Le montant indiqué (1 DZD) ne correspond pas au tarif de l\'abonnement (1500 DZD).' }),
+      });
+
+      const result = await AuthService.submitReceiptAsync({
+        paymentMethod: 'BARIDIMOB',
+        amountDzd: 1,
+        transactionRef: 'BM-2',
+        receiptImageUrl: 'data:image/png;base64,xyz',
+      });
+
+      expect(result.success).toBe(false);
+      expect(result.receipt).toBeUndefined();
+      expect(result.message).toContain('ne correspond pas au tarif');
+    });
+  });
+
   describe('"Didou Studio" gold-coin/outfit sync (kept deliberately separate from XP)', () => {
     const originalFetch = global.fetch;
 

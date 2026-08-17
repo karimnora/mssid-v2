@@ -1,38 +1,40 @@
 package dz.mssid.education.service;
 
-import dz.mssid.education.dto.CheckoutRequest;
-import dz.mssid.education.dto.CheckoutResponse;
-import dz.mssid.education.dto.PaymentWebhookResponse;
 import dz.mssid.education.dto.ReceiptUploadRequest;
 import dz.mssid.education.dto.VerifyReceiptRequest;
-import dz.mssid.education.dto.WebhookEventRequest;
 import dz.mssid.education.entity.PaymentReceipt;
-import dz.mssid.education.entity.PaymentTransaction;
 import dz.mssid.education.entity.Role;
 import dz.mssid.education.entity.Subscription;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.repository.PaymentReceiptRepository;
-import dz.mssid.education.repository.PaymentTransactionRepository;
 import dz.mssid.education.repository.RoleRepository;
+import dz.mssid.education.repository.SubscriptionRepository;
 import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentReceiptRepository receiptRepository;
-    private final PaymentTransactionRepository paymentTransactionRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final SubscriptionRepository subscriptionRepository;
     private final AdminAuditLogService adminAuditLogService;
+
+    // Single source of truth for the subscription price server-side — the frontend mirrors this same
+    // value (see frontend/src/constants/pricing.ts). A submitted amount that doesn't match this is
+    // rejected outright rather than silently accepted, closing the gap where a receipt could claim
+    // any amount with nothing to cross-check it against the real price before an admin approves it.
+    @Value("${app.payments.subscription-price-dzd:1500}")
+    private double subscriptionPriceDzd;
 
     @Override
     @Transactional
@@ -42,6 +44,12 @@ public class PaymentServiceImpl implements PaymentService {
         // an arbitrary victim account).
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la soumission du reçu: " + userEmail));
+
+        if (request.getAmountDzd() != null && Double.compare(request.getAmountDzd(), subscriptionPriceDzd) != 0) {
+            throw new IllegalArgumentException(
+                    "Le montant indiqué (" + request.getAmountDzd() + " DZD) ne correspond pas au tarif de l'abonnement ("
+                            + subscriptionPriceDzd + " DZD).");
+        }
 
         String imageUrl = request.getReceiptImageUrl() != null ? request.getReceiptImageUrl() : request.getReceiptImgUrl();
         if (imageUrl == null || imageUrl.isBlank()) {
@@ -53,7 +61,7 @@ public class PaymentServiceImpl implements PaymentService {
                 .receiptImageUrl(imageUrl)
                 .paymentMethod(request.getPaymentMethod() != null ? request.getPaymentMethod() : "BARIDIMOB")
                 .transactionRef(request.getTransactionRef() != null ? request.getTransactionRef() : "BM-" + System.currentTimeMillis())
-                .amountDzd(request.getAmountDzd() != null ? request.getAmountDzd() : 1500.0)
+                .amountDzd(subscriptionPriceDzd)
                 .status(PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION)
                 .submittedAt(LocalDateTime.now())
                 .build();
@@ -69,108 +77,6 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<PaymentReceipt> getReceiptsByStatus(PaymentReceipt.ReceiptStatus status) {
         return receiptRepository.findByStatus(status);
-    }
-
-    @Override
-    @Transactional
-    public CheckoutResponse createCheckout(String userEmail, CheckoutRequest request) {
-        // SEC-04: same fix as submitReceipt — identity comes only from the authenticated principal.
-        User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la création du checkout: " + userEmail));
-
-        String transactionRef = request.getTransactionRef() != null && !request.getTransactionRef().isBlank()
-                ? request.getTransactionRef()
-                : "CPAY-" + UUID.randomUUID();
-        String checkoutId = "CHG-" + UUID.randomUUID();
-        String providerName = request.getProviderName() != null ? request.getProviderName() : "ChargilyPayV2";
-        String paymentMethod = request.getPaymentMethod() != null ? request.getPaymentMethod() : "BARIDIMOB";
-        Double amount = request.getAmountDzd() != null ? request.getAmountDzd() : 1500.0;
-
-        String checkoutUrl = String.format("https://pay.chargily.com/checkout/%s?amount=%.0f&method=%s&ref=%s", checkoutId, amount, paymentMethod, transactionRef);
-
-        PaymentTransaction transaction = PaymentTransaction.builder()
-                .user(user)
-                .checkoutId(checkoutId)
-                .transactionRef(transactionRef)
-                .providerName(providerName)
-                .paymentMethod(paymentMethod)
-                .amountDzd(amount)
-                .checkoutUrl(checkoutUrl)
-                .status(PaymentTransaction.TransactionStatus.PENDING)
-                .createdAt(LocalDateTime.now())
-                .build();
-
-        paymentTransactionRepository.save(transaction);
-
-        return CheckoutResponse.builder()
-                .checkoutId(checkoutId)
-                .checkoutUrl(checkoutUrl)
-                .transactionRef(transactionRef)
-                .status("PENDING")
-                .message("Checkout créé. Utilisez l'URL de paiement pour finaliser la transaction.")
-                .build();
-    }
-
-    @Override
-    @Transactional
-    public PaymentWebhookResponse processWebhook(WebhookEventRequest request) {
-        String checkoutId = request.getCheckoutId();
-        String transactionRef = request.getTransactionRef();
-        String status = request.getStatus() != null ? request.getStatus().toUpperCase() : "";
-
-        PaymentTransaction transaction = paymentTransactionRepository.findByCheckoutId(checkoutId)
-                .or(() -> transactionRef != null ? paymentTransactionRepository.findByTransactionRef(transactionRef) : java.util.Optional.empty())
-                .orElseThrow(() -> new RuntimeException("Transaction introuvable pour webhook: " + checkoutId));
-
-        if (status.contains("COMPLET") || status.contains("SUCCESS") || status.contains("PAID")) {
-            transaction.setStatus(PaymentTransaction.TransactionStatus.COMPLETED);
-        } else {
-            transaction.setStatus(PaymentTransaction.TransactionStatus.FAILED);
-        }
-        transaction.setUpdatedAt(LocalDateTime.now());
-        paymentTransactionRepository.save(transaction);
-
-        // SEC-04: the user to upgrade is whoever actually owns this transaction (set at checkout
-        // creation, from the authenticated caller) — never request.getUserEmail(), which is fully
-        // client-controlled and previously let any caller premium-upgrade an arbitrary account.
-        User user = transaction.getUser();
-
-        if (transaction.getStatus() == PaymentTransaction.TransactionStatus.COMPLETED) {
-            Role premiumRole = roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)
-                    .orElseGet(() -> {
-                        Role r = new Role();
-                        r.setName(Role.RoleName.ROLE_PREMIUM);
-                        return roleRepository.save(r);
-                    });
-
-            user.setRole(premiumRole);
-
-            Subscription subscription = user.getSubscription();
-            if (subscription == null) {
-                subscription = new Subscription();
-                subscription.setUser(user);
-            }
-            subscription.setStatus(Subscription.SubscriptionStatus.ACTIVE);
-            subscription.setStartDate(LocalDate.now());
-            subscription.setEndDate(LocalDate.now().plusDays(30));
-            user.setSubscription(subscription);
-
-            userRepository.save(user);
-
-            return PaymentWebhookResponse.builder()
-                    .success(true)
-                    .message("Paiement confirmé et rôle premium activé.")
-                    .checkoutId(transaction.getCheckoutId())
-                    .transactionRef(transaction.getTransactionRef())
-                    .build();
-        }
-
-        return PaymentWebhookResponse.builder()
-                .success(false)
-                .message("Webhook reçu, mais le paiement n'a pas été validé.")
-                .checkoutId(transaction.getCheckoutId())
-                .transactionRef(transaction.getTransactionRef())
-                .build();
     }
 
     @Override
@@ -195,6 +101,16 @@ public class PaymentServiceImpl implements PaymentService {
                     });
             user.setRole(premiumRole);
             userRepository.save(user);
+
+            // The annual subscription record — this is what SubscriptionExpiryService's daily sweep
+            // checks to eventually downgrade the user back to ROLE_FREE. Reuses an existing row if the
+            // user already had one (e.g. renewing after a prior expiry) instead of accumulating duplicates.
+            Subscription subscription = subscriptionRepository.findByUser(user).orElseGet(Subscription::new);
+            subscription.setUser(user);
+            subscription.setStatus(Subscription.SubscriptionStatus.ACTIVE);
+            subscription.setStartDate(LocalDate.now());
+            subscription.setEndDate(LocalDate.now().plusYears(1));
+            subscriptionRepository.save(subscription);
 
             adminAuditLogService.record(actorEmail, "RECEIPT_APPROVED", "RECEIPT", receiptId.toString(), "user upgraded to ROLE_PREMIUM");
         } else {
