@@ -3,6 +3,8 @@ package dz.mssid.education.controller;
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.dto.AdminStatsOverviewDto;
 import dz.mssid.education.dto.PaymentsStatsDto;
+import dz.mssid.education.entity.ContactMessage;
+import dz.mssid.education.repository.ContactMessageRepository;
 import dz.mssid.education.service.AdminAuditLogService;
 import dz.mssid.education.service.AdminStatsService;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,6 +34,9 @@ class AdminControllerTest {
 
     @Mock
     private AdminAuditLogService adminAuditLogService;
+
+    @Mock
+    private ContactMessageRepository contactMessageRepository;
 
     @InjectMocks
     private AdminController adminController;
@@ -74,5 +79,26 @@ class AdminControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1))
                 .andExpect(jsonPath("$[0].actionType").value("ROLE_CHANGE"));
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/admin/contact-messages - Returns submitted messages, newest first")
+    void getContactMessages_Success() throws Exception {
+        ContactMessage message = ContactMessage.builder()
+                .id(1L)
+                .name("يونس الجزائري")
+                .email("younes@mssid.dz")
+                .type("bug")
+                .message("زر تسجيل الدخول لا يعمل على هاتفي.")
+                .submittedAt(java.time.LocalDateTime.of(2026, 8, 17, 10, 0))
+                .build();
+
+        when(contactMessageRepository.findAllByOrderBySubmittedAtDesc()).thenReturn(List.of(message));
+
+        mockMvc.perform(get("/api/v1/admin/contact-messages"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].name").value("يونس الجزائري"))
+                .andExpect(jsonPath("$[0].type").value("bug"));
     }
 }

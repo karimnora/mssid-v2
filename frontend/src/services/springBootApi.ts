@@ -443,6 +443,12 @@ public async request<T>(
     });
   }
 
+  public async getContactMessages() {
+    return this.request<any[]>('/v1/admin/contact-messages', {
+      method: 'GET',
+    });
+  }
+
   // --- "Nous contacter / Suggestions" ---
   public async submitContact(payload: { name: string; email: string; type: string; message: string }) {
     return this.request<{ success: boolean }>('/v1/contact', {

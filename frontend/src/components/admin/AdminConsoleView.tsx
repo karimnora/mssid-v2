@@ -4,13 +4,14 @@ import { AnalyticsModule } from './AnalyticsModule';
 import { FeatureFlagsModule } from './FeatureFlagsModule';
 import { UsersRolesModule } from './UsersRolesModule';
 import { TechnicalLogsModule } from './TechnicalLogsModule';
+import { ContactMessagesModule } from './ContactMessagesModule';
 
 interface AdminConsoleViewProps {
   onExitAdminConsole: () => void;
 }
 
 // Replaces the old content-creation CmsMainView: a lightweight supervision-only shell over exactly
-// 4 modules. Unlike CmsMainView, this shell does NOT fetch any curriculum/course/exercise/exam data
+// 5 modules. Unlike CmsMainView, this shell does NOT fetch any curriculum/course/exercise/exam data
 // itself — each module owns and fetches its own data independently.
 export const AdminConsoleView: React.FC<AdminConsoleViewProps> = ({ onExitAdminConsole }) => {
   const [activeTab, setActiveTab] = useState<AdminConsoleTabId>('analytics');
@@ -28,6 +29,7 @@ export const AdminConsoleView: React.FC<AdminConsoleViewProps> = ({ onExitAdminC
         {activeTab === 'feature_flags' && <FeatureFlagsModule />}
         {activeTab === 'users_roles' && <UsersRolesModule />}
         {activeTab === 'technical_logs' && <TechnicalLogsModule />}
+        {activeTab === 'contact_messages' && <ContactMessagesModule />}
       </main>
     </div>
   );
