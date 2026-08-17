@@ -12,6 +12,7 @@ import dz.mssid.education.security.JwtTokenProvider;
 import dz.mssid.education.security.RefreshTokenService;
 import dz.mssid.education.service.AuthService;
 import dz.mssid.education.service.EmailVerificationService;
+import dz.mssid.education.service.PasswordResetService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -41,6 +42,7 @@ public class AuthController {
     private final RefreshTokenService refreshTokenService;
     private final JwtTokenProvider jwtTokenProvider;
     private final EmailVerificationService emailVerificationService;
+    private final PasswordResetService passwordResetService;
 
     // SEC-01: the JWT secret/expiration property keys intentionally mirror JwtTokenProvider so the
     // cookie's maxAge always matches the token's real expiry.
@@ -193,6 +195,28 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Map.of("message", "تعذر إرسال رسالة التأكيد، حاول لاحقاً."));
         }
         return ResponseEntity.ok(Map.of("message", "تم إرسال رمز التأكيد إلى بريدك الإلكتروني."));
+    }
+
+    /**
+     * SEC-09: "mot de passe oublié". Body: {"email": "..."}. Always answers 200 with the same
+     * generic message whether or not the email is registered — a differing response here would let
+     * an attacker enumerate accounts by email, so success/failure/cooldown are all indistinguishable
+     * from the outside (see PasswordResetService's class doc).
+     */
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody Map<String, String> body) {
+        passwordResetService.requestReset(body.get("email"));
+        return ResponseEntity.ok(Map.of("message", "إذا كان هذا البريد الإلكتروني مسجلاً لدينا، فستصلك رسالة تحتوي على رمز إعادة تعيين كلمة المرور خلال لحظات."));
+    }
+
+    /** Body: {"email": "...", "code": "123456", "newPassword": "..."}. */
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> body) {
+        boolean success = passwordResetService.resetPassword(body.get("email"), body.get("code"), body.get("newPassword"));
+        if (!success) {
+            return ResponseEntity.badRequest().body(Map.of("message", "الرمز غير صحيح أو منتهي الصلاحية."));
+        }
+        return ResponseEntity.ok(Map.of("message", "تم تغيير كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول."));
     }
 
     // SEC-01: the JWT itself never reaches the JSON body / JS-readable storage — it travels only as

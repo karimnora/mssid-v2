@@ -107,3 +107,85 @@ describe('AuthModal Integration Tests', () => {
   });
 
 });
+
+describe('AuthModal password recovery flow', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('shows a "forgot password?" link only in login mode', () => {
+    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    expect(screen.getByText('نسيت كلمة المرور؟')).toBeInTheDocument();
+
+    fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
+    expect(screen.queryByText('نسيت كلمة المرور؟')).not.toBeInTheDocument();
+  });
+
+  it('requests a reset code and advances to the code-entry step', async () => {
+    const requestSpy = vi
+      .spyOn(AuthService, 'requestPasswordReset')
+      .mockResolvedValue({ success: true, message: 'إذا كان هذا البريد مسجلاً لدينا، فستصلك رسالة تحتوي على رمز.' });
+
+    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
+
+    fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
+    fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));
+
+    await waitFor(() => {
+      expect(requestSpy).toHaveBeenCalledWith('younes@mssid.dz');
+      expect(screen.getByPlaceholderText('123456')).toBeInTheDocument();
+    });
+  });
+
+  it('submits the code + new password and returns to the login form on success', async () => {
+    vi.spyOn(AuthService, 'requestPasswordReset').mockResolvedValue({ success: true, message: 'ok' });
+    const resetSpy = vi
+      .spyOn(AuthService, 'resetPasswordWithCode')
+      .mockResolvedValue({ success: true, message: 'تم تغيير كلمة المرور بنجاح.' });
+
+    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
+    fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
+    fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));
+
+    await screen.findByPlaceholderText('123456');
+    fireEvent.change(screen.getByPlaceholderText('123456'), { target: { value: '654321' } });
+    fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'NewPass123!' } });
+    fireEvent.click(screen.getByRole('button', { name: 'تغيير كلمة المرور' }));
+
+    await waitFor(() => {
+      expect(resetSpy).toHaveBeenCalledWith('younes@mssid.dz', '654321', 'NewPass123!');
+      // Back on the login form
+      expect(screen.getByPlaceholderText('example@mssid.dz')).toBeInTheDocument();
+      expect(screen.queryByPlaceholderText('123456')).not.toBeInTheDocument();
+    });
+  });
+
+  it('shows an error and stays on the code-entry step when the code is wrong', async () => {
+    vi.spyOn(AuthService, 'requestPasswordReset').mockResolvedValue({ success: true, message: 'ok' });
+    vi.spyOn(AuthService, 'resetPasswordWithCode').mockResolvedValue({
+      success: false,
+      message: 'الرمز غير صحيح أو منتهي الصلاحية.',
+    });
+
+    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
+    fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
+    fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));
+
+    await screen.findByPlaceholderText('123456');
+    fireEvent.change(screen.getByPlaceholderText('123456'), { target: { value: '000000' } });
+    fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'NewPass123!' } });
+    fireEvent.click(screen.getByRole('button', { name: 'تغيير كلمة المرور' }));
+
+    await waitFor(() => {
+      expect(screen.getByText('الرمز غير صحيح أو منتهي الصلاحية.')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('123456')).toBeInTheDocument();
+    });
+  });
+});

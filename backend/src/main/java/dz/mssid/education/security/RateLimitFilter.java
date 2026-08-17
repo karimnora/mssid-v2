@@ -19,8 +19,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  * behind multiple instances, these counters must move to a shared store (Redis) since each instance
  * would otherwise track its own independent window, defeating the limit.
  * <p>
- * Two tiers:
+ * Four tiers:
  * - {@code POST /api/v1/auth/login}: 5 attempts / 15 minutes — brute-force guard.
+ * - {@code POST /api/v1/auth/forgot-password}: 3 requests / 15 minutes per IP — this endpoint
+ *   triggers an outbound email per call, so without this an attacker could bombard the Resend
+ *   quota/reputation just by hammering the endpoint (it's unauthenticated by necessity). Combined
+ *   with PasswordResetService's own 60s per-account cooldown, which caps abuse of a single target
+ *   email regardless of which IP it comes from.
+ * - {@code POST /api/v1/auth/reset-password}: 10 attempts / 15 minutes per IP — the reset code is
+ *   only 6 digits (1e6 possibilities); this doesn't make brute-forcing it feasible on its own, but
+ *   it removes the "just script it" trivial case on top of the code's own 15-minute expiry.
  * - Everything else under {@code /api/**}: 60 requests / minute — general abuse/scraping guard
  *   (this also covers the currently-unauthenticated {@code /api/gemini/**} and {@code /api/v1/ai/**}
  *   endpoints, which had no abuse protection at all).
@@ -36,6 +44,8 @@ public class RateLimitFilter extends OncePerRequestFilter {
     }
 
     private static final Window LOGIN_WINDOW = new Window(5, 15 * 60 * 1000L);
+    private static final Window FORGOT_PASSWORD_WINDOW = new Window(3, 15 * 60 * 1000L);
+    private static final Window RESET_PASSWORD_WINDOW = new Window(10, 15 * 60 * 1000L);
     private static final Window DEFAULT_WINDOW = new Window(60, 60 * 1000L);
 
     private static final class Counter {
@@ -44,6 +54,8 @@ public class RateLimitFilter extends OncePerRequestFilter {
     }
 
     private final ConcurrentHashMap<String, Counter> loginCounters = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Counter> forgotPasswordCounters = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Counter> resetPasswordCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> apiCounters = new ConcurrentHashMap<>();
 
     @Override
@@ -56,18 +68,37 @@ public class RateLimitFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String path = request.getServletPath();
-        boolean isLoginAttempt = "POST".equalsIgnoreCase(request.getMethod()) && path.startsWith("/api/v1/auth/login");
+        boolean isPost = "POST".equalsIgnoreCase(request.getMethod());
+        boolean isLoginAttempt = isPost && path.startsWith("/api/v1/auth/login");
+        boolean isForgotPassword = isPost && path.startsWith("/api/v1/auth/forgot-password");
+        boolean isResetPassword = isPost && path.startsWith("/api/v1/auth/reset-password");
 
-        Window window = isLoginAttempt ? LOGIN_WINDOW : DEFAULT_WINDOW;
-        ConcurrentHashMap<String, Counter> bucket = isLoginAttempt ? loginCounters : apiCounters;
+        Window window;
+        ConcurrentHashMap<String, Counter> bucket;
+        String message;
+        if (isLoginAttempt) {
+            window = LOGIN_WINDOW;
+            bucket = loginCounters;
+            message = "Trop de tentatives de connexion. Veuillez réessayer dans 15 minutes.";
+        } else if (isForgotPassword) {
+            window = FORGOT_PASSWORD_WINDOW;
+            bucket = forgotPasswordCounters;
+            message = "Trop de demandes de réinitialisation. Veuillez réessayer dans 15 minutes.";
+        } else if (isResetPassword) {
+            window = RESET_PASSWORD_WINDOW;
+            bucket = resetPasswordCounters;
+            message = "Trop de tentatives. Veuillez réessayer dans 15 minutes.";
+        } else {
+            window = DEFAULT_WINDOW;
+            bucket = apiCounters;
+            message = "Trop de requêtes envoyées. Veuillez ralentir et réessayer dans un instant.";
+        }
+
         String key = clientIp(request);
 
         if (isRateLimited(bucket, key, window)) {
             response.setStatus(429);
             response.setContentType("application/json;charset=UTF-8");
-            String message = isLoginAttempt
-                    ? "Trop de tentatives de connexion. Veuillez réessayer dans 15 minutes."
-                    : "Trop de requêtes envoyées. Veuillez ralentir et réessayer dans un instant.";
             response.getWriter().write("{\"message\": \"" + message + "\"}");
             return;
         }

@@ -93,6 +93,23 @@ class SpringBootApiService {
     });
   }
 
+  // SEC-09: "mot de passe oublié" — unauthenticated by necessity (no cookie exists yet). The backend
+  // always answers 200 with the same generic message whether or not the email is registered, to
+  // avoid leaking account existence — the frontend must not try to distinguish those cases either.
+  public async forgotPassword(email: string) {
+    return this.request<{ message: string }>('/v1/auth/forgot-password', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+  }
+
+  public async resetPassword(email: string, code: string, newPassword: string) {
+    return this.request<{ message: string }>('/v1/auth/reset-password', {
+      method: 'POST',
+      body: JSON.stringify({ email, code, newPassword }),
+    });
+  }
+
   // SEC-06: exchanges the HttpOnly refresh cookie for a fresh access-token cookie (see
   // AuthController.refresh). Deliberately bypasses `request()` — going through it would re-enter this
   // same 401-handling branch and could recurse. Dedupes concurrent callers onto one in-flight call

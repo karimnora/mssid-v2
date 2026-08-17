@@ -60,6 +60,9 @@ class AuthControllerTest {
     @Mock
     private EmailVerificationService emailVerificationService;
 
+    @Mock
+    private dz.mssid.education.service.PasswordResetService passwordResetService;
+
     @InjectMocks
     private AuthController authController;
 
@@ -364,5 +367,50 @@ class AuthControllerTest {
                 .andExpect(status().isOk());
 
         verifyNoInteractions(emailVerificationService);
+    }
+
+    @Test
+    @DisplayName("POST /forgot-password - Always returns the same generic 200, whether or not the email exists")
+    void forgotPassword_AlwaysGenericSuccess() throws Exception {
+        mockMvc.perform(post("/api/v1/auth/forgot-password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"amina@mssid.dz\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").exists());
+
+        verify(passwordResetService).requestReset("amina@mssid.dz");
+    }
+
+    @Test
+    @DisplayName("POST /forgot-password - Unknown email still returns 200 (no enumeration signal)")
+    void forgotPassword_UnknownEmail_StillGenericSuccess() throws Exception {
+        mockMvc.perform(post("/api/v1/auth/forgot-password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"ghost@mssid.dz\"}"))
+                .andExpect(status().isOk());
+
+        verify(passwordResetService).requestReset("ghost@mssid.dz");
+    }
+
+    @Test
+    @DisplayName("POST /reset-password - Valid code changes the password")
+    void resetPassword_ValidCode_Success() throws Exception {
+        when(passwordResetService.resetPassword("amina@mssid.dz", "654321", "NewPass123!")).thenReturn(true);
+
+        mockMvc.perform(post("/api/v1/auth/reset-password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"amina@mssid.dz\",\"code\":\"654321\",\"newPassword\":\"NewPass123!\"}"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("POST /reset-password - Invalid code returns 400")
+    void resetPassword_InvalidCode_BadRequest() throws Exception {
+        when(passwordResetService.resetPassword("amina@mssid.dz", "000000", "NewPass123!")).thenReturn(false);
+
+        mockMvc.perform(post("/api/v1/auth/reset-password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"amina@mssid.dz\",\"code\":\"000000\",\"newPassword\":\"NewPass123!\"}"))
+                .andExpect(status().isBadRequest());
     }
 }

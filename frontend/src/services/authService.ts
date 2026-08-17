@@ -379,6 +379,20 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
     return { success: true, message: res.data?.message };
   }
 
+  // SEC-09: always resolves with a message to display, regardless of whether the email is
+  // registered — the backend deliberately answers identically either way (see forgotPassword there).
+  static async requestPasswordReset(email: string): Promise<{ success: boolean; message?: string }> {
+    const res = await springBootApi.forgotPassword(email);
+    if (res.error) return { success: false, message: res.error };
+    return { success: true, message: res.data?.message };
+  }
+
+  static async resetPasswordWithCode(email: string, code: string, newPassword: string): Promise<{ success: boolean; message?: string }> {
+    const res = await springBootApi.resetPassword(email, code, newPassword);
+    if (res.error) return { success: false, message: res.error };
+    return { success: true, message: res.data?.message };
+  }
+
   /** Same pattern as addScore, but for the exam bank (ExamsViewer has no auto-grading — completion is self-reported). */
   static addExamXp(examId: string, points: number): AuthUser | null {
     const user = this.getCurrentUser();
