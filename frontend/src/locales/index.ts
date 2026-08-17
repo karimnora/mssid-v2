@@ -6,10 +6,6 @@ import { navigation as navigationAr } from './ar/navigation';
 import { navigation as navigationFr } from './fr/navigation';
 import { navigation as navigationEn } from './en/navigation';
 import { navigation as navigationBer } from './ber/navigation';
-import { promo as promoAr } from './ar/promo';
-import { promo as promoFr } from './fr/promo';
-import { promo as promoEn } from './en/promo';
-import { promo as promoBer } from './ber/promo';
 import { pricing as pricingAr } from './ar/pricing';
 import { pricing as pricingFr } from './fr/pricing';
 import { pricing as pricingEn } from './en/pricing';
@@ -24,7 +20,6 @@ export const locales = {
     strings: {
       common: commonAr,
       navigation: navigationAr,
-      promo: promoAr,
       pricing: pricingAr,
     },
   },
@@ -34,7 +29,6 @@ export const locales = {
     strings: {
       common: commonFr,
       navigation: navigationFr,
-      promo: promoFr,
       pricing: pricingFr,
     },
   },
@@ -44,7 +38,6 @@ export const locales = {
     strings: {
       common: commonEn,
       navigation: navigationEn,
-      promo: promoEn,
       pricing: pricingEn,
     },
   },
@@ -56,7 +49,6 @@ export const locales = {
     strings: {
       common: commonBer,
       navigation: navigationBer,
-      promo: promoBer,
       pricing: pricingBer,
     },
   },

@@ -28,7 +28,6 @@ import { PwaInstallBanner } from './components/PwaInstallBanner';
 import { SeoHead } from './components/SeoHead';
 import { PricingModal } from './components/PricingModal';
 import { SubscriptionPaywall } from './components/SubscriptionPaywall';
-import { AdBanner } from './components/AdBanner';
 import { LoadingFallback } from './components/LoadingFallback';
 import { AppRatingPrompt } from './components/AppRatingPrompt';
 import { ContactModal } from './components/ContactModal';
@@ -739,11 +738,6 @@ export default function App() {
       {/* PWA Mobile Install Banner for Android & iOS */}
       <SeoHead />
       <PwaInstallBanner />
-      <AdBanner
-        showAds={isFeatureEnabled('SHOW_ADS')}
-        userRole={authUser?.role}
-        onUpgradeClick={() => setIsPricingModalOpen(true)}
-      />
 
       {/* 1. NAVBAR — theme-aware header (Kit UI v1) */}
       <Navbar

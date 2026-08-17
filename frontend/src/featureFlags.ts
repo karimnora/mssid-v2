@@ -1,5 +1,4 @@
 export type FeatureFlagName =
-  | 'SHOW_ADS'
   | 'enablePayments'
   | 'tamazight'
   | 'enableAITutor'
@@ -15,7 +14,6 @@ export type FeatureFlagName =
   | 'enableTrimesterPaywall';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
-  SHOW_ADS: true,
   enablePayments: true,
   tamazight: false,
   enableAITutor: true,

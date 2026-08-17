@@ -27,7 +27,6 @@ const CORE_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
 ];
 
 const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
-  { id: 'SHOW_ADS', meta: { labelAr: 'الإعلانات (Ads)', descriptionAr: 'عرض بانرات إعلانية للمستخدمين غير المشتركين.' } },
   { id: 'advancedLabs', meta: { labelAr: 'المختبرات المتقدمة', descriptionAr: 'أدوات المحاكاة المتقدمة (الكهرباء، الهندسة...).' } },
   { id: 'voiceReading', meta: { labelAr: 'القراءة الصوتية', descriptionAr: 'نطق الدروس والتعليمات صوتياً.' } },
   { id: 'educationalCalculator', meta: { labelAr: 'الآلة الحاسبة التعليمية', descriptionAr: 'أداة الحساب التفاعلية المستقلة.' } },
