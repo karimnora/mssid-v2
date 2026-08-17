@@ -78,6 +78,21 @@ class SpringBootApiService {
     await this.request('/v1/auth/logout', { method: 'POST' }).catch(() => {});
   }
 
+  // SEC-08: soft email verification — never blocks app usage, just a discreet reminder + the code
+  // entry it drives. Both require the auth cookie (request() already sends credentials: 'include').
+  public async verifyEmail(code: string) {
+    return this.request<{ emailVerified: boolean; message: string }>('/v1/auth/verify-email', {
+      method: 'POST',
+      body: JSON.stringify({ code }),
+    });
+  }
+
+  public async resendVerificationEmail() {
+    return this.request<{ message: string; cooldownSeconds?: number }>('/v1/auth/resend-verification', {
+      method: 'POST',
+    });
+  }
+
   // SEC-06: exchanges the HttpOnly refresh cookie for a fresh access-token cookie (see
   // AuthController.refresh). Deliberately bypasses `request()` — going through it would re-enter this
   // same 401-handling branch and could recurse. Dedupes concurrent callers onto one in-flight call

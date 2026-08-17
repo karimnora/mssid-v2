@@ -33,6 +33,7 @@ public class UserMapper {
                 .completedChallengeIds(user.getCompletedChallengeIds())
                 .quizScores(user.getQuizScores())
                 .createdAt(user.getCreatedAt() != null ? user.getCreatedAt().toString() : null)
+                .emailVerified(user.isEmailVerified())
                 .build();
     }
 }

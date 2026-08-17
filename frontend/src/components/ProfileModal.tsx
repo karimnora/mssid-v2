@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles } from 'lucide-react';
+import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles, Mail } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { TashkeelToggle } from './TashkeelToggle';
 import { Card, XPProgressBar } from './ui';
 import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dailyObjective';
 import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
+import { AuthService } from '../services/authService';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -46,6 +47,35 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [editedName, setEditedName] = useState(currentName);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(userProfile.avatar || '🎓');
+
+  // SEC-08: soft email verification widget state — the card itself only renders while
+  // authUser.emailVerified is false, and disappears reactively the moment verifyEmailCode succeeds
+  // (AuthService.setCurrentUser updates the shared singleton authUser is read from).
+  const [verificationCode, setVerificationCode] = useState('');
+  const [verifyState, setVerifyState] = useState<'idle' | 'loading' | 'error' | 'success'>('idle');
+  const [verifyMessage, setVerifyMessage] = useState<string | null>(null);
+  const [resendCooldown, setResendCooldown] = useState(0);
+
+  useEffect(() => {
+    if (resendCooldown <= 0) return;
+    const timer = setInterval(() => setResendCooldown((s) => Math.max(0, s - 1)), 1000);
+    return () => clearInterval(timer);
+  }, [resendCooldown]);
+
+  const handleVerifyCode = async () => {
+    if (verificationCode.trim().length !== 6) return;
+    setVerifyState('loading');
+    const result = await AuthService.verifyEmailCode(verificationCode.trim());
+    setVerifyState(result.success ? 'success' : 'error');
+    setVerifyMessage(result.message || null);
+    if (result.success) setVerificationCode('');
+  };
+
+  const handleResendCode = async () => {
+    setResendCooldown(60);
+    const result = await AuthService.resendVerificationCode();
+    setVerifyMessage(result.message || null);
+  };
 
   useEffect(() => {
     setEditedName(authUser?.nom || userProfile.name);
@@ -183,6 +213,50 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               className="w-full px-3.5 py-2 bg-white border border-emerald-300 rounded-xl text-sm font-extrabold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
           </Card>
+
+          {/* Email Verification Reminder Card — discreet, non-blocking (SEC-08) */}
+          {authUser && !authUser.emailVerified && (
+            <Card padding="md" className="!bg-amber-50 !border-amber-200 space-y-2.5">
+              <div className="flex items-center gap-1.5 text-xs font-extrabold text-amber-900">
+                <Mail className="w-3.5 h-3.5 text-amber-600" />
+                <span>قم بتأكيد بريدك الإلكتروني</span>
+              </div>
+              <p className="text-[11px] text-amber-800 leading-relaxed">
+                أرسلنا رمزاً مكوناً من 6 أرقام إلى {authUser.email}. أدخله هنا لتأكيد حسابك.
+              </p>
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value.replace(/\D/g, ''))}
+                  placeholder="123456"
+                  dir="ltr"
+                  className="flex-1 px-3 py-2 bg-white border border-amber-300 rounded-xl text-sm font-mono font-extrabold text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+                <button
+                  onClick={handleVerifyCode}
+                  disabled={verificationCode.length !== 6 || verifyState === 'loading'}
+                  className="px-4 py-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-extrabold text-xs rounded-xl transition-all cursor-pointer shrink-0"
+                >
+                  {verifyState === 'loading' ? '...' : 'تأكيد'}
+                </button>
+              </div>
+              {verifyMessage && (
+                <p className={`text-[11px] font-bold ${verifyState === 'success' ? 'text-emerald-700' : 'text-rose-700'}`}>
+                  {verifyMessage}
+                </p>
+              )}
+              <button
+                onClick={handleResendCode}
+                disabled={resendCooldown > 0}
+                className="text-[11px] font-bold text-amber-700 hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
+              >
+                {resendCooldown > 0 ? `إعادة الإرسال بعد ${resendCooldown} ثانية` : 'لم يصلك الرمز؟ إعادة الإرسال'}
+              </button>
+            </Card>
+          )}
 
           {/* Avatar Picker Card */}
           <Card padding="md" className="space-y-3">

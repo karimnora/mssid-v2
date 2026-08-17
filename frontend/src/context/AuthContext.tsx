@@ -32,6 +32,7 @@ function mapProfileDtoToAuthUser(dto: any): AuthUser {
     badgeUnlockedAt: dto.badgeUnlockedAt,
     quizScores: dto.quizScores,
     createdAt: dto.createdAt,
+    emailVerified: dto.emailVerified ?? false,
   };
 }
 

@@ -36,4 +36,5 @@ public class UserProfileDto {
     private List<String> completedChallengeIds;
     private Map<String, Integer> quizScores;
     private String createdAt;
+    private Boolean emailVerified;
 }

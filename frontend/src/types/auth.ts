@@ -54,6 +54,7 @@ export interface AuthUser {
   createdAt?: string;
   avatar?: string;
   lastActiveDate?: string;
+  emailVerified?: boolean;
 }
 
 export interface AuthState {

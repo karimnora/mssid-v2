@@ -13,7 +13,9 @@ import dz.mssid.education.security.JwtTokenProvider;
 import dz.mssid.education.security.RefreshTokenService;
 import dz.mssid.education.exception.GlobalExceptionHandler;
 import dz.mssid.education.service.AuthService;
+import dz.mssid.education.service.EmailVerificationService;
 import jakarta.servlet.http.Cookie;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,9 +25,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.time.Duration;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -49,6 +57,9 @@ class AuthControllerTest {
     @Mock
     private JwtTokenProvider jwtTokenProvider;
 
+    @Mock
+    private EmailVerificationService emailVerificationService;
+
     @InjectMocks
     private AuthController authController;
 
@@ -66,8 +77,11 @@ class AuthControllerTest {
         // up the controller under test, not @RestControllerAdvice beans, so without this the
         // BadCredentialsException thrown by refresh_InvalidToken_Unauthorized would propagate as an
         // uncaught servlet error instead of the real 401 response the app returns in production.
+        // AuthenticationPrincipalArgumentResolver is likewise not auto-registered outside the real
+        // filter chain — needed for verify-email/resend-verification's @AuthenticationPrincipal param.
         mockMvc = MockMvcBuilders.standaloneSetup(authController)
                 .setControllerAdvice(new GlobalExceptionHandler())
+                .setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver())
                 .build();
 
         testUser = User.builder()
@@ -77,6 +91,23 @@ class AuthControllerTest {
                 .passwordHash("encoded")
                 .role(new Role(1L, Role.RoleName.ROLE_FREE))
                 .build();
+    }
+
+    @AfterEach
+    void tearDown() {
+        SecurityContextHolder.clearContext();
+    }
+
+    /**
+     * Standalone MockMvc has no filter chain, so SecurityMockMvcRequestPostProcessors.user(...)
+     * never reaches SecurityContextHolder here — setting it directly is what
+     * @AuthenticationPrincipal's resolver actually reads (same pattern as UserControllerTest).
+     */
+    private void authenticateAs(String email) {
+        org.springframework.security.core.userdetails.User principal =
+                new org.springframework.security.core.userdetails.User(email, "N/A", List.of());
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(principal, null, List.of()));
     }
 
     // RegisterRequest/LoginRequest only expose @Data's implicit no-args constructor + setters.
@@ -256,5 +287,82 @@ class AuthControllerTest {
                 .andExpect(status().isOk());
 
         verify(refreshTokenService, never()).revoke(any());
+    }
+
+    @Test
+    @DisplayName("POST /verify-email - Correct code marks the account verified")
+    void verifyEmail_CorrectCode_Success() throws Exception {
+        when(userRepository.findByEmail("amina@mssid.dz")).thenReturn(java.util.Optional.of(testUser));
+        when(emailVerificationService.verifyCode(testUser, "123456")).thenReturn(true);
+        authenticateAs("amina@mssid.dz");
+
+        mockMvc.perform(post("/api/v1/auth/verify-email")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"code\":\"123456\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.emailVerified").value(true));
+    }
+
+    @Test
+    @DisplayName("POST /verify-email - Wrong code returns 400")
+    void verifyEmail_WrongCode_BadRequest() throws Exception {
+        when(userRepository.findByEmail("amina@mssid.dz")).thenReturn(java.util.Optional.of(testUser));
+        when(emailVerificationService.verifyCode(testUser, "000000")).thenReturn(false);
+        authenticateAs("amina@mssid.dz");
+
+        mockMvc.perform(post("/api/v1/auth/verify-email")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"code\":\"000000\"}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("POST /verify-email - Returns 401 without an authenticated principal")
+    void verifyEmail_NoAuth_Unauthorized() throws Exception {
+        mockMvc.perform(post("/api/v1/auth/verify-email")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"code\":\"123456\"}"))
+                .andExpect(status().isUnauthorized());
+
+        verifyNoInteractions(emailVerificationService);
+    }
+
+    @Test
+    @DisplayName("POST /resend-verification - Sends a new code when allowed")
+    void resendVerification_Allowed_Success() throws Exception {
+        when(userRepository.findByEmail("amina@mssid.dz")).thenReturn(java.util.Optional.of(testUser));
+        when(emailVerificationService.cooldownRemaining(testUser)).thenReturn(Duration.ZERO);
+        when(emailVerificationService.sendVerificationCode(testUser)).thenReturn(true);
+        authenticateAs("amina@mssid.dz");
+
+        mockMvc.perform(post("/api/v1/auth/resend-verification"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("POST /resend-verification - Returns 429 while within the cooldown window")
+    void resendVerification_WithinCooldown_TooManyRequests() throws Exception {
+        when(userRepository.findByEmail("amina@mssid.dz")).thenReturn(java.util.Optional.of(testUser));
+        when(emailVerificationService.cooldownRemaining(testUser)).thenReturn(Duration.ofSeconds(45));
+        authenticateAs("amina@mssid.dz");
+
+        mockMvc.perform(post("/api/v1/auth/resend-verification"))
+                .andExpect(status().isTooManyRequests())
+                .andExpect(jsonPath("$.cooldownSeconds").value(45));
+
+        verify(emailVerificationService, never()).sendVerificationCode(any());
+    }
+
+    @Test
+    @DisplayName("POST /resend-verification - Already-verified account is a no-op 200")
+    void resendVerification_AlreadyVerified_NoOp() throws Exception {
+        testUser.setEmailVerified(true);
+        when(userRepository.findByEmail("amina@mssid.dz")).thenReturn(java.util.Optional.of(testUser));
+        authenticateAs("amina@mssid.dz");
+
+        mockMvc.perform(post("/api/v1/auth/resend-verification"))
+                .andExpect(status().isOk());
+
+        verifyNoInteractions(emailVerificationService);
     }
 }

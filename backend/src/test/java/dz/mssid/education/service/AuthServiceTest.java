@@ -50,6 +50,9 @@ class AuthServiceTest {
     private RefreshTokenService refreshTokenService;
 
     @Mock
+    private EmailVerificationService emailVerificationService;
+
+    @Mock
     private AuthenticationManager authenticationManager;
 
     @InjectMocks
@@ -119,6 +122,7 @@ class AuthServiceTest {
 
         verify(userRepository, times(1)).save(any(User.class));
         verify(refreshTokenService, times(1)).createToken(any(User.class));
+        verify(emailVerificationService, times(1)).sendVerificationCode(any(User.class));
     }
 
     @Test

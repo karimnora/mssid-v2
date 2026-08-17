@@ -11,6 +11,7 @@ import dz.mssid.education.security.AuthCookieConstants;
 import dz.mssid.education.security.JwtTokenProvider;
 import dz.mssid.education.security.RefreshTokenService;
 import dz.mssid.education.service.AuthService;
+import dz.mssid.education.service.EmailVerificationService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,6 +24,8 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
@@ -37,6 +40,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final RefreshTokenService refreshTokenService;
     private final JwtTokenProvider jwtTokenProvider;
+    private final EmailVerificationService emailVerificationService;
 
     // SEC-01: the JWT secret/expiration property keys intentionally mirror JwtTokenProvider so the
     // cookie's maxAge always matches the token's real expiry.
@@ -134,6 +138,53 @@ public class AuthController {
         httpResponse.addHeader(HttpHeaders.SET_COOKIE, expiredRefreshCookie.toString());
 
         return ResponseEntity.ok(Map.of("message", "Déconnexion réussie"));
+    }
+
+    /**
+     * Soft email verification (never blocks app usage — see User.emailVerified). Body: {"code": "123456"}.
+     */
+    @PostMapping("/verify-email")
+    public ResponseEntity<?> verifyEmail(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @RequestBody Map<String, String> body
+    ) {
+        if (userDetails == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "يرجى تسجيل الدخول أولاً."));
+        }
+        User user = userRepository.findByEmail(userDetails.getUsername())
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+        boolean verified = emailVerificationService.verifyCode(user, body.get("code"));
+        if (!verified) {
+            return ResponseEntity.badRequest().body(Map.of("message", "الرمز غير صحيح أو منتهي الصلاحية."));
+        }
+        return ResponseEntity.ok(Map.of("emailVerified", true, "message", "تم تأكيد بريدك الإلكتروني بنجاح!"));
+    }
+
+    /** Sends (or re-sends, subject to a cooldown) a fresh 6-digit verification code by email. */
+    @PostMapping("/resend-verification")
+    public ResponseEntity<?> resendVerification(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "يرجى تسجيل الدخول أولاً."));
+        }
+        User user = userRepository.findByEmail(userDetails.getUsername())
+                .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+        if (user.isEmailVerified()) {
+            return ResponseEntity.ok(Map.of("message", "بريدك الإلكتروني مؤكد بالفعل."));
+        }
+
+        Duration cooldown = emailVerificationService.cooldownRemaining(user);
+        if (!cooldown.isZero()) {
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                    .body(Map.of("message", "يرجى الانتظار قليلاً قبل إعادة الإرسال.", "cooldownSeconds", cooldown.toSeconds()));
+        }
+
+        boolean sent = emailVerificationService.sendVerificationCode(user);
+        if (!sent) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Map.of("message", "تعذر إرسال رسالة التأكيد، حاول لاحقاً."));
+        }
+        return ResponseEntity.ok(Map.of("message", "تم إرسال رمز التأكيد إلى بريدك الإلكتروني."));
     }
 
     // SEC-01: the JWT itself never reaches the JSON body / JS-readable storage — it travels only as

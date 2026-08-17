@@ -178,12 +178,13 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       completedLessonIds: u.completedLessonIds || ['math-5ap-numbers'],
       badges: u.badges || [],
       quizScores: u.quizScores || {},
+      emailVerified: u.emailVerified ?? false,
     };
 
     this.setCurrentUser(authUser);
     return { user: authUser };
   } catch (err: any) {
-    return { 
+    return {
       user: null, 
       error: 'Erreur réseau lors de la tentative de connexion.' 
     };
@@ -236,6 +237,7 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
       completedLessonIds: u.completedLessonIds || [],
       badges: u.badges || [],
       quizScores: u.quizScores || {},
+      emailVerified: u.emailVerified ?? false,
     };
     
     this.setCurrentUser(authUser);
@@ -354,6 +356,27 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
     }).catch((err) => console.error('Erreur de synchronisation du niveau:', err));
 
     return updatedUser;
+  }
+
+  /**
+   * SEC-08: soft email verification. Unlike addScore/updateGrade this is properly awaited (not
+   * fire-and-forget) since the UI needs to show success/failure right away for the code the user
+   * just typed in.
+   */
+  static async verifyEmailCode(code: string): Promise<{ success: boolean; message?: string }> {
+    const res = await springBootApi.verifyEmail(code);
+    if (res.error || !res.data?.emailVerified) {
+      return { success: false, message: res.error || 'الرمز غير صحيح أو منتهي الصلاحية.' };
+    }
+    const user = this.getCurrentUser();
+    if (user) this.setCurrentUser({ ...user, emailVerified: true });
+    return { success: true, message: res.data.message };
+  }
+
+  static async resendVerificationCode(): Promise<{ success: boolean; message?: string }> {
+    const res = await springBootApi.resendVerificationEmail();
+    if (res.error) return { success: false, message: res.error };
+    return { success: true, message: res.data?.message };
   }
 
   /** Same pattern as addScore, but for the exam bank (ExamsViewer has no auto-grading — completion is self-reported). */
@@ -551,6 +574,7 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           streakDays: u.streakDays || 1,
           quizzesCompleted: u.quizzesCompleted || 0,
           createdAt: u.createdAt,
+          emailVerified: u.emailVerified ?? false,
         }));
       }
     } catch {

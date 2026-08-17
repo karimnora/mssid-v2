@@ -54,6 +54,13 @@ public class User implements UserDetails {
     @Column(name = "grade")
     private String grade;
 
+    // Soft verification only — per product decision, an unverified account is never blocked from
+    // using the app (isEnabled() below stays true regardless). This just drives a discreet reminder
+    // in the UI and, later, gates anything that genuinely needs a confirmed email (password reset).
+    @Column(name = "email_verified", nullable = false)
+    @Builder.Default
+    private boolean emailVerified = false;
+
     @Column(name = "avatar")
     private String avatar;
 

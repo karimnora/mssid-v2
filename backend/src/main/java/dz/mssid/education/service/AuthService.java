@@ -31,6 +31,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
     private final RefreshTokenService refreshTokenService;
+    private final EmailVerificationService emailVerificationService;
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) {
@@ -58,6 +59,10 @@ public class AuthService {
                 .build();
 
         userRepository.save(user);
+
+        // Best-effort — a flaky email provider must never block account creation (soft verification,
+        // never blocks app usage; the user can always request a resend later).
+        emailVerificationService.sendVerificationCode(user);
 
         // 4. Authentification & Génération du Token JWT
         Authentication authentication = authenticationManager.authenticate(
