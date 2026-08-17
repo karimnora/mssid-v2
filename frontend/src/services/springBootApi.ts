@@ -279,7 +279,7 @@ public async request<T>(
     const formattedPrompt = payload.prompt || `${payload.topic || ''} ${payload.question || ''}`.trim();
     const formattedContext = payload.subjectContext || payload.grade || '5AP';
 
-    return this.request<{ responseText?: string; text?: string; cached?: boolean; usage?: any; status?: string }>('/v1/ai/explain', {
+    return this.request<{ responseText?: string; text?: string; status?: string }>('/v1/ai/explain', {
       method: 'POST',
       body: JSON.stringify({
         prompt: formattedPrompt,
@@ -288,6 +288,7 @@ public async request<T>(
         topic: payload.topic,
         question: payload.question,
         grade: payload.grade,
+        promptType: payload.promptType,
       }),
     });
   }

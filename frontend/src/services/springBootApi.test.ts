@@ -101,9 +101,8 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
         ok: true,
         headers: new Headers({ 'content-type': 'application/json' }),
         json: async () => ({
-          text: 'شرح مفصل للكسور العشرية',
-          cached: true,
-          usage: { remaining: 49, limit: 50 },
+          responseText: 'شرح مفصل للكسور العشرية',
+          status: 'success',
         }),
       });
       global.fetch = mockFetch;
@@ -111,12 +110,16 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       const result = await springBootApi.askGeminiExplain({
         topic: 'الكسور العشرية',
         grade: '5AP',
-        promptType: 'explain',
+        promptType: 'solve',
       });
 
       expect(result.status).toBe(200);
-      expect(result.data?.text).toBe('شرح مفصل للكسور العشرية');
-      expect(result.data?.cached).toBe(true);
+      expect(result.data?.responseText).toBe('شرح مفصل للكسور العشرية');
+
+      // promptType must reach the backend — it's what distinguishes "اشرح لي درساً" from "حل مسألة"
+      // from "ولّد مسألة تدريبية جديدة" server-side (see GeminiProxyController's routing).
+      const sentBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+      expect(sentBody.promptType).toBe('solve');
     });
   });
 

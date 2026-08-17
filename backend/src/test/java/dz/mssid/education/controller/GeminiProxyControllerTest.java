@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -40,15 +39,14 @@ class GeminiProxyControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/v1/ai/explain - Returns AI generated explanation")
-    void askGeminiAssistant_Success() throws Exception {
+    @DisplayName("POST /api/v1/ai/explain with promptType=explain (or absent) - routes to generateExplanation")
+    void askGeminiAssistant_ExplainMode() throws Exception {
         GeminiPromptRequest request = new GeminiPromptRequest();
-        request.setPrompt("Explique la poussée d'Archimède");
-        request.setSubjectContext("Physique 4AM");
+        request.setTopic("La poussée d'Archimède");
+        request.setGrade("5AP");
 
         GeminiResponse response = new GeminiResponse("La poussée d'Archimède est la force particulière...", "success");
-
-        when(geminiAiService.generateExplanation(eq("Explique la poussée d'Archimède"), eq("Physique 4AM"))).thenReturn(response);
+        when(geminiAiService.generateExplanation(any(GeminiPromptRequest.class))).thenReturn(response);
 
         mockMvc.perform(post("/api/v1/ai/explain")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -59,15 +57,51 @@ class GeminiProxyControllerTest {
     }
 
     @Test
-    @DisplayName("POST /api/gemini/prompt - Also accepts prompt and returns explanation")
+    @DisplayName("POST /api/v1/ai/explain with promptType=solve - routes to generateGuidedSolution")
+    void askGeminiAssistant_SolveMode() throws Exception {
+        GeminiPromptRequest request = new GeminiPromptRequest();
+        request.setTopic("الكسور");
+        request.setQuestion("احسب 1/2 + 1/4");
+        request.setGrade("4AP");
+        request.setPromptType("solve");
+
+        GeminiResponse response = new GeminiResponse("الجواب: 3/4", "success");
+        when(geminiAiService.generateGuidedSolution(any(GeminiPromptRequest.class))).thenReturn(response);
+
+        mockMvc.perform(post("/api/v1/ai/explain")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.answer").value("الجواب: 3/4"));
+    }
+
+    @Test
+    @DisplayName("POST /api/v1/ai/explain with promptType=generate - routes to generatePracticeExercise")
+    void askGeminiAssistant_GenerateMode() throws Exception {
+        GeminiPromptRequest request = new GeminiPromptRequest();
+        request.setTopic("جدول الضرب");
+        request.setGrade("3AP");
+        request.setPromptType("generate");
+
+        GeminiResponse response = new GeminiResponse("تمرين: احسب 6 × 7\nالحل: 42", "success");
+        when(geminiAiService.generatePracticeExercise(any(GeminiPromptRequest.class))).thenReturn(response);
+
+        mockMvc.perform(post("/api/v1/ai/explain")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.answer").value("تمرين: احسب 6 × 7\nالحل: 42"));
+    }
+
+    @Test
+    @DisplayName("POST /api/gemini/prompt - Also accepts a raw prompt and returns an explanation")
     void askGeminiPrompt_Success() throws Exception {
         GeminiPromptRequest request = new GeminiPromptRequest();
         request.setPrompt("Qu'est-ce que le théorème de Pythagore ?");
         request.setGrade("5AP");
 
         GeminiResponse response = new GeminiResponse("Dans un triangle rectangle...", "success");
-
-        when(geminiAiService.generateExplanation(eq("Qu'est-ce que le théorème de Pythagore ?"), eq("5AP"))).thenReturn(response);
+        when(geminiAiService.generateExplanation(any(GeminiPromptRequest.class))).thenReturn(response);
 
         mockMvc.perform(post("/api/gemini/prompt")
                         .contentType(MediaType.APPLICATION_JSON)

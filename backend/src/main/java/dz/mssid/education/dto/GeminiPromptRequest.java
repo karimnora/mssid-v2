@@ -19,6 +19,8 @@ public class GeminiPromptRequest {
     private String topic;
     private String question;
     private String grade;
+    // "explain" | "solve" | "generate" — voir AiTutorModal.tsx. Défaut "explain" si absent/inconnu.
+    private String promptType;
 
     // ============================================================
     // HELPERS À AJOUTER
@@ -38,5 +40,9 @@ public class GeminiPromptRequest {
             return subjectContext;
         }
         return grade != null ? grade : "5AP";
+    }
+
+    public String getFormattedGrade() {
+        return (grade != null && !grade.isBlank()) ? grade : "5AP";
     }
 }
