@@ -38,6 +38,10 @@ export default defineConfig(() => {
           // course content is bundled into JS, not fetched as separate JSON at runtime, so this
           // alone is what makes "review a lesson offline" work).
           globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}'],
+          // Without this, every previous deploy's precache stays in storage forever once a new SW
+          // activates — pure waste, and one more place a stale asset could theoretically still be
+          // served from if a runtime-caching rule ever matched it by accident.
+          cleanupOutdatedCaches: true,
           // Workbox's 2 MiB default is smaller than the main chunk (course data for all 5 grades
           // is still bundled eagerly — see the code-splitting notes in App.tsx). Raised with
           // headroom; the real fix is splitting course data out of the main chunk, tracked
