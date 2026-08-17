@@ -11,7 +11,8 @@ export type FeatureFlagName =
   | 'pwa'
   | 'enablePreschoolModule'
   | 'enablePrintablePDFs'
-  | 'enableExamSection';
+  | 'enableExamSection'
+  | 'enableTrimesterPaywall';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   SHOW_ADS: true,
@@ -27,6 +28,9 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   enablePreschoolModule: true,
   enablePrintablePDFs: true,
   enableExamSection: true,
+  // Off by default: T2/T3 stay fully open during the content-review/testing phase before launch.
+  // Flip to true (via the admin CMS Config tab) once the paid subscription is ready to enforce.
+  enableTrimesterPaywall: false,
 };
 
 const OVERRIDES_STORAGE_KEY = 'mssid_feature_flag_overrides';

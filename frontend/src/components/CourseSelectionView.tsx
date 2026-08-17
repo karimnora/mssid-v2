@@ -4,7 +4,7 @@ import { PrimaryGrade, SubjectId, SubjectInfo, CourseLesson } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { Card, Badge, Button } from './ui';
-import { Calculator, BookOpen, FlaskConical, Compass, Heart, Award, Languages, Globe, ChevronLeft, Star } from 'lucide-react';
+import { Calculator, BookOpen, FlaskConical, Compass, Heart, Award, Languages, Globe, ChevronLeft, Star, Lock } from 'lucide-react';
 
 interface CourseSelectionViewProps {
   grade: PrimaryGrade;
@@ -12,6 +12,10 @@ interface CourseSelectionViewProps {
   allCourseLessons: CourseLesson[];
   completedLessonIds: string[];
   onSelectLesson: (lesson: CourseLesson) => void;
+  /** Optional — when provided, locked lessons still call onSelectLesson on click (App.tsx routes
+   * that to the paywall) but get a visual lock badge here so the child never wonders why nothing
+   * seems to happen. Absent entirely means "nothing is ever locked" (no behavior change). */
+  isLessonLocked?: (lesson: CourseLesson) => boolean;
   onGoHome: () => void;
 }
 
@@ -60,6 +64,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   allCourseLessons,
   completedLessonIds,
   onSelectLesson,
+  isLessonLocked,
   onGoHome,
 }) => {
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
@@ -107,6 +112,14 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
     (l) => l.subject === selectedSubject && l.grade === grade && l.trimester === selectedTrimester
   );
 
+  // Sample one lesson per trimester tab just to answer "is this whole term locked?" — isLessonLocked
+  // only ever looks at lesson.trimester, so any lesson from that term gives the right answer.
+  const isTrimesterLocked = (t: 1 | 2 | 3): boolean => {
+    if (!isLessonLocked) return false;
+    const sample = allCourseLessons.find((l) => l.subject === selectedSubject && l.grade === grade && l.trimester === t);
+    return sample ? isLessonLocked(sample) : false;
+  };
+
   // STEP 2 (trimester tabs) + STEP 3 (that trimester's lessons only) — one screen, never all three
   // trimesters shown together, matching "ne jamais afficher les 3 trimestres en même temps".
   return (
@@ -147,7 +160,10 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                   transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                 />
               )}
-              <span className="relative">{TRIMESTER_LABELS[t]}</span>
+              <span className="relative flex items-center justify-center gap-1.5">
+                {isTrimesterLocked(t) && <Lock className="w-3 h-3 shrink-0" />}
+                {TRIMESTER_LABELS[t]}
+              </span>
             </motion.button>
           );
         })}
@@ -166,16 +182,24 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {termLessons.map((lesson) => {
                 const isCompleted = completedLessonIds.includes(lesson.id);
+                const locked = isLessonLocked?.(lesson) ?? false;
                 return (
                   <Card
                     key={lesson.id}
                     interactive
-                    className="p-5 space-y-3 h-full"
+                    className={`p-5 space-y-3 h-full ${locked ? 'relative overflow-hidden' : ''}`}
                     onClick={() => onSelectLesson(lesson)}
                   >
                     <div className="flex items-center justify-between flex-wrap gap-1.5">
                       <Badge variant="info">{lesson.categoryAr}</Badge>
-                      {isCompleted && <Badge variant="success">✓ مكتمل</Badge>}
+                      {locked ? (
+                        <span className="flex items-center gap-1 text-[10px] font-black text-amber-800 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full">
+                          <Lock className="w-3 h-3" />
+                          <span>مميّز (Premium)</span>
+                        </span>
+                      ) : (
+                        isCompleted && <Badge variant="success">✓ مكتمل</Badge>
+                      )}
                     </div>
 
                     <div dir={isLtrSubject ? 'ltr' : 'rtl'} className="text-right">

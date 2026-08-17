@@ -27,6 +27,7 @@ import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
 import { SeoHead } from './components/SeoHead';
 import { PricingModal } from './components/PricingModal';
+import { SubscriptionPaywall } from './components/SubscriptionPaywall';
 import { AdBanner } from './components/AdBanner';
 import { LoadingFallback } from './components/LoadingFallback';
 import { AppRatingPrompt } from './components/AppRatingPrompt';
@@ -67,6 +68,7 @@ const OfflinePacksManagerModal = lazy(() => import('./components/OfflinePacksMan
 const PreschoolApp = lazy(() => import('./components/preschool/PreschoolApp').then((m) => ({ default: m.PreschoolApp })));
 const AdminConsoleView = lazy(() => import('./components/admin/AdminConsoleView').then((m) => ({ default: m.AdminConsoleView })));
 import { useGuestLimits, MAX_GUEST_LESSONS } from './hooks/useGuestLimits';
+import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
 import { Card, Badge, XPProgressBar } from './components/ui';
 import {
   BookOpen,
@@ -179,6 +181,19 @@ export default function App() {
   const enablePreschoolModule = useFeatureFlag('enablePreschoolModule');
   const enableExamSection = useFeatureFlag('enableExamSection');
 
+  // SEC-07 / Trimester paywall: Trimester 1 is always free, everywhere, regardless of this flag —
+  // only T2/T3 are ever gated, and only once enableTrimesterPaywall is switched on (off by default
+  // during the pre-launch content review phase, see featureFlags.ts).
+  const enableTrimesterPaywall = useFeatureFlag('enableTrimesterPaywall');
+  const enablePaymentsFlag = useFeatureFlag('enablePayments');
+  const isLessonLocked = (lesson: CourseLesson): boolean =>
+    isLessonLockedCheck(lesson, {
+      enablePayments: enablePaymentsFlag,
+      enableTrimesterPaywall,
+      userRole: authUser?.role,
+    });
+  const [lockedLesson, setLockedLesson] = useState<CourseLesson | null>(null);
+
   const handleSelectSubject = (subject: SubjectId) => {
     setSelectedSubject(subject);
     setSelectedLesson(null);
@@ -234,9 +249,15 @@ export default function App() {
     }
   };
 
-  // Unlimited discovery access: Guests can browse and open all lessons without lock-outs.
-  // Viewing stats are recorded for friendly rewards and profile synchronization.
+  // Unlimited discovery access for Trimester 1: guests and free accounts can browse and open every
+  // T1 lesson without lock-outs. T2/T3 go through isLessonLocked first (see enableTrimesterPaywall)
+  // — this single choke point also covers LessonViewer's prev/next navigation, which is wired to
+  // this same handler via its onSelectLesson prop.
   const handleSelectLesson = (lesson: CourseLesson) => {
+    if (isLessonLocked(lesson)) {
+      setLockedLesson(lesson);
+      return;
+    }
     if (!authUser) {
       guestLimits.recordLessonView(lesson.id);
     }
@@ -663,7 +684,9 @@ export default function App() {
         if (s.selectedSubject) setSelectedSubject(s.selectedSubject);
         if (s.selectedLessonId) {
           const l = COURSES_DATA.find((item) => item.id === s.selectedLessonId);
-          setSelectedLesson(l || null);
+          // A back/forward navigation must not restore straight into a locked T2/T3 lesson — route
+          // through the same gate as a fresh selection (isLessonLocked is declared above, in scope).
+          setSelectedLesson(l && !isLessonLocked(l) ? l : null);
         } else {
           setSelectedLesson(null);
         }
@@ -952,6 +975,7 @@ export default function App() {
             allCourseLessons={COURSES_DATA}
             completedLessonIds={userProfile.completedLessonIds}
             onSelectLesson={handleSelectLesson}
+            isLessonLocked={isLessonLocked}
             onGoHome={() => {
               setSelectedLesson(null);
               setIsHomeActive(true);
@@ -1375,6 +1399,22 @@ export default function App() {
             });
           }}
           currentUser={authUser}
+        />
+      )}
+
+      {lockedLesson && (
+        <SubscriptionPaywall
+          user={authUser}
+          title={`افتح دروس الفصل ${lockedLesson.trimester === 3 ? 'الثالث' : 'الثاني'} — ${lockedLesson.titleAr}`}
+          onClose={() => setLockedLesson(null)}
+          onSuccessUpgrade={() => {
+            const lesson = lockedLesson;
+            setLockedLesson(null);
+            // AuthService already updated the shared auth singleton (see SubscriptionPaywall /
+            // AuthService.verifyReceipt) — useAuth() reflects ROLE_PREMIUM immediately, so re-running
+            // handleSelectLesson right away opens the lesson the user was originally trying to reach.
+            handleSelectLesson(lesson);
+          }}
         />
       )}
 

@@ -10,6 +10,8 @@ interface Props {
   title?: string;
 }
 
+const isDevBuild = typeof import.meta !== 'undefined' && Boolean((import.meta as any).env?.DEV);
+
 export const SubscriptionPaywall: React.FC<Props> = ({
   user,
   onClose,
@@ -144,16 +146,23 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                 <p>
                   يتم التحقق عادة من التحويلات البريدية عبر <strong>بريدي موب / CCP</strong> خلال مدة قصيرة. سيتم تفعيل حسابك تلقائياً بعد المصادقة.
                 </p>
-                <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-                  <span className="font-bold text-slate-500">اختبار سريع للمطور / المعاين:</span>
-                  <button
-                    onClick={handleSimulateAdminApproval}
-                    className="px-3 py-1.5 bg-emerald-600 text-white font-extrabold text-xs rounded-xl hover:bg-emerald-700 transition-all cursor-pointer flex items-center gap-1"
-                  >
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>تأكيد الوصل فوراً وتفعيل ROLE_PREMIUM</span>
-                  </button>
-                </div>
+                {/* SEC-07: dev-only. The real approval path is PUT /api/v1/payments/admin/receipts/{id}/verify,
+                    which requires ROLE_ADMIN server-side (@PreAuthorize). This button exists purely so a
+                    developer can exercise the "approved" UI state locally without a second admin account —
+                    it must never render in a production build, or any free user could self-grant
+                    ROLE_PREMIUM with one click regardless of what the backend actually approved. */}
+                {isDevBuild && (
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-3">
+                    <span className="font-bold text-slate-500">اختبار سريع للمطور (DEV ONLY):</span>
+                    <button
+                      onClick={handleSimulateAdminApproval}
+                      className="px-3 py-1.5 bg-emerald-600 text-white font-extrabold text-xs rounded-xl hover:bg-emerald-700 transition-all cursor-pointer flex items-center gap-1"
+                    >
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>تأكيد الوصل فوراً وتفعيل ROLE_PREMIUM</span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ) : (

@@ -20,6 +20,7 @@ interface FlagMeta {
 const CORE_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
   { id: 'enablePreschoolModule', meta: { labelAr: '🦊 وضع التحضيري / الإيقاظ (3-5 سنوات)', descriptionAr: 'إظهار أو إخفاء زر الدخول إلى قسم الروضة على الصفحة الرئيسية.' } },
   { id: 'enablePayments', meta: { labelAr: '💳 المدفوعات والاشتراكات', descriptionAr: 'تفعيل أو تعطيل نافذة الاشتراك المدفوع — عطّلها لإطلاق نسخة مجانية بالكامل.' } },
+  { id: 'enableTrimesterPaywall', meta: { labelAr: '🔒 قفل الفصلين الثاني والثالث', descriptionAr: 'عند التفعيل: دروس الفصل الثاني والثالث تتطلب اشتراكاً (ROLE_PREMIUM)، والفصل الأول يبقى مجانياً دائماً. عطّلها أثناء مراجعة المحتوى قبل الإطلاق.' } },
   { id: 'enablePrintablePDFs', meta: { labelAr: '🖨️ فيشات المراجعة القابلة للطباعة', descriptionAr: 'إظهار زر طباعة / تحميل فيشة المراجعة داخل الدروس.' } },
   { id: 'enableAITutor', meta: { labelAr: '🤖 المعلم الافتراضي أمين الفنك (Gemini)', descriptionAr: 'تفعيل أو تعطيل زر المساعد الذكي في شريط التنقل.' } },
   { id: 'enableExamSection', meta: { labelAr: '📜 قسم الامتحانات الرسمية (5AP)', descriptionAr: 'إظهار أو إخفاء تبويب الامتحانات الرسمية على واجهة التلميذ.' } },
