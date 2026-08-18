@@ -406,6 +406,8 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
       'multiplication_table',
       'arabic_conjugator',
       'science_lab',
+      'touch_writing',
+      'tamazight_lab',
       'french_lab',
       'english_lab',
       'history_geo_lab',
