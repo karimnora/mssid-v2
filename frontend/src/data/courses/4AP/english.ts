@@ -71,6 +71,72 @@ export const ENGLISH_4AP: CourseLesson[] = [
 },
 
 {
+    id: 'english-4ap-unit1-jobs-occupations',
+    grade: '4AP',
+    subject: 'english',
+    categoryAr: 'Unit 1: Family & Friends',
+    trimester: 1,
+    objectivesAr: [
+        'أُسمّي مهناً شائعة بالإنجليزية.',
+        'أسأل عن مهنة شخص بـ "What does he/she do?"',
+        'أُجيب بتركيب "He/She is a/an [job]."',
+    ],
+    detailedCourse: {
+        introAr: 'بعد أن تعلمنا التعريف بأفراد عائلتنا، نتعلم اليوم كيف نتحدث عن مهنة كل واحد منهم بالإنجليزية.',
+        vocabulary: [
+            { termAr: 'Occupation / Job', definitionAr: 'المهنة، العمل الذي يمارسه شخص لكسب رزقه.' },
+            { termAr: 'a / an + job', definitionAr: 'نستعمل "a" قبل مهنة تبدأ بصوت ساكن، و"an" قبل مهنة تبدأ بصوت متحرك.' },
+        ],
+        visualizationHintAr: 'ارسم مع طفلك جدولاً بأفراد العائلة ومهنة كل واحد منهم، واكتبا معاً جملة "He/She is a/an..." لكل شخص.',
+        commonMistakes: [
+            { mistakeAr: 'نسيان "a" أو "an" قبل اسم المهنة.', correctionAr: 'في الإنجليزية، نضع دائماً "a" أو "an" قبل اسم المهنة: "She is a teacher"، وليس "She is teacher".' },
+        ],
+        takeawayAr: 'نسأل عن المهنة بـ "What does he/she do?" ونجيب بـ "He/She is a/an [job]." نستعمل "an" قبل الأصوات المتحركة مثل "an engineer".',
+    },
+    titleAr: 'Unit 1 (bis): What Does Your Father Do? - Jobs & Occupations',
+    summaryAr: `يتعلم التلميذ أسماء المهن الشائعة (Teacher, Doctor, Policeman, Pilot, Engineer) ويستعمل تركيب "He/She is a/an..." للتعبير عن مهنة فرد من عائلته والسؤال عنها.`,
+    rulesAr: [
+        'Common Jobs: teacher (معلم), doctor (طبيب), policeman/policewoman (شرطي), pilot (طيار), farmer (فلاح), engineer (مهندس), nurse (ممرضة), baker (خباز).',
+        'Asking about a job: "What does your father do?" ➔ "He is a doctor."',
+        'Using a/an: نستعمل "a" قبل صوت ساكن (a teacher, a doctor)، و"an" قبل صوت متحرك (an engineer, an artist).',
+        'Describing what a job does: "A teacher teaches students." "A doctor helps sick people." "A pilot flies planes."'
+    ],
+    keyFormulas: [
+        { labelAr: 'السؤال عن المهنة', formulaAr: 'What does he/she do? ➔ He/She is a/an [job].' },
+        { labelAr: 'قاعدة a/an', formulaAr: 'a + صوت ساكن (a nurse) | an + صوت متحرك (an engineer)' }
+    ],
+    examplesAr: [
+        {
+            problem: 'How do you say "أمي طبيبة" in English?',
+            solution: '"My mother is a doctor."'
+        },
+        {
+            problem: 'Which article (a/an) goes before "engineer"?',
+            solution: '"an engineer" (لأن engineer يبدأ بصوت متحرك /e/).'
+        }
+    ],
+    interactiveTool: 'english_lab',
+    quiz: [
+        {
+            id: 'q1',
+            questionAr: 'What does a teacher do?',
+            options: [
+                { id: 'a', textAr: 'A teacher teaches students.', isCorrect: true, explanationAr: 'Correct! Teachers work to teach students at school.' },
+                { id: 'b', textAr: 'A teacher flies planes.', isCorrect: false }
+            ]
+        },
+        {
+            id: 'q2',
+            questionAr: 'Choose the correct article: "My uncle is ...... pilot."',
+            options: [
+                { id: 'a', textAr: 'a', isCorrect: true, explanationAr: 'Correct! "pilot" starts with a consonant sound, so we use "a".' },
+                { id: 'b', textAr: 'an', isCorrect: false }
+            ]
+        }
+    ]
+},
+
+{
     id: 'english-4ap-unit2-school-classroom',
     grade: '4AP',
     subject: 'english',
@@ -130,6 +196,72 @@ export const ENGLISH_4AP: CourseLesson[] = [
                 { id: 'a', textAr: 'on', isCorrect: true, explanationAr: 'Correct! "on" means فوق / على الأسقف والمكاتب.' },
                 { id: 'b', textAr: 'in', isCorrect: false },
                 { id: 'c', textAr: 'under', isCorrect: false }
+            ]
+        }
+    ]
+},
+
+{
+    id: 'english-4ap-unit2-telling-time',
+    grade: '4AP',
+    subject: 'english',
+    categoryAr: 'Unit 2: School & Classroom',
+    trimester: 1,
+    objectivesAr: [
+        'أسأل عن الوقت بـ "What time is it?" وأجيب بصيغة o\'clock.',
+        'أقرأ الوقت بصيغة "half past" (والنصف).',
+        'أقرأ الوقت بصيغتي "quarter past" و"quarter to" (والربع، وإلا ربع).',
+    ],
+    detailedCourse: {
+        introAr: 'بعد أن تعلمنا قول الساعة الكاملة (o\'clock)، نتعلم اليوم قراءة أوقات أكثر دقة: النصف بعد الساعة، والربع بعد أو قبل الساعة.',
+        vocabulary: [
+            { termAr: 'Half past', definitionAr: 'تعني "والنصف"، أي 30 دقيقة بعد الساعة (half past 7 = 7:30).' },
+            { termAr: 'Quarter past / Quarter to', definitionAr: '"quarter past" تعني والربع (15 دقيقة بعد)، و"quarter to" تعني إلا ربع (15 دقيقة قبل الساعة التالية).' },
+        ],
+        visualizationHintAr: 'ارسم ساعة كبيرة بعقارب، وحرّك العقرب الكبير إلى 6 (half past)، ثم إلى 3 (quarter past)، ثم إلى 9 (quarter to) لتوضيح كل حالة.',
+        commonMistakes: [
+            { mistakeAr: 'الخلط بين "quarter past" و"quarter to".', correctionAr: '"quarter past" تعني 15 دقيقة بعد الساعة الحالية، بينما "quarter to" تعني 15 دقيقة قبل الساعة التالية.' },
+        ],
+        takeawayAr: '"half past [hour]" = والنصف. "quarter past [hour]" = والربع. "quarter to [next hour]" = إلا ربع.',
+    },
+    titleAr: 'Unit 2 (bis): What Time Is It? - Telling Time (Half Past, Quarter Past/To)',
+    summaryAr: `يتعلم التلميذ قراءة الوقت بالإنجليزية بدقة أكبر بعد الساعات الكاملة: الساعة والنصف (half past)، والربع بعد وقبل الساعة (quarter past / quarter to).`,
+    rulesAr: [
+        'Asking the time: "What time is it?" ➔ "It\'s [time]."',
+        'Half past: يعني 30 دقيقة بعد الساعة. مثال: 7:30 = "half past seven."',
+        'Quarter past: يعني 15 دقيقة بعد الساعة. مثال: 7:15 = "quarter past seven."',
+        'Quarter to: يعني 15 دقيقة قبل الساعة التالية. مثال: 7:45 = "quarter to eight" (وليس quarter to seven).'
+    ],
+    keyFormulas: [
+        { labelAr: 'Half past', formulaAr: 'half past + [الساعة الحالية] = XX:30' },
+        { labelAr: 'Quarter to', formulaAr: 'quarter to + [الساعة التالية] = XX:45' }
+    ],
+    examplesAr: [
+        {
+            problem: 'How do you say 8:30 in English?',
+            solution: '"half past eight" (النصف بعد الساعة الثامنة).'
+        },
+        {
+            problem: 'How do you say 8:45 in English?',
+            solution: '"quarter to nine" (إلا ربع على التاسعة، وليس "quarter to eight").'
+        }
+    ],
+    interactiveTool: 'english_lab',
+    quiz: [
+        {
+            id: 'q1',
+            questionAr: 'What time is "quarter past four"?',
+            options: [
+                { id: 'a', textAr: '4:15', isCorrect: true, explanationAr: 'Correct! "quarter past four" means 15 minutes after 4 o\'clock.' },
+                { id: 'b', textAr: '4:45', isCorrect: false }
+            ]
+        },
+        {
+            id: 'q2',
+            questionAr: 'How do you say 9:30 in English?',
+            options: [
+                { id: 'a', textAr: 'half past nine', isCorrect: true, explanationAr: 'Correct! "half past nine" means 30 minutes after 9 o\'clock.' },
+                { id: 'b', textAr: 'quarter past nine', isCorrect: false }
             ]
         }
     ]
@@ -389,6 +521,72 @@ export const ENGLISH_4AP: CourseLesson[] = [
                 { id: 'a', textAr: 'How many', isCorrect: true, explanationAr: 'Correct! "How many" is used to ask about countable quantities (كم عدد).' },
                 { id: 'b', textAr: 'How old', isCorrect: false },
                 { id: 'c', textAr: 'Where is', isCorrect: false }
+            ]
+        }
+    ]
+},
+
+{
+    id: 'english-4ap-unit6-present-continuous',
+    grade: '4AP',
+    subject: 'english',
+    categoryAr: 'Unit 6: Games & Hobbies',
+    trimester: 3,
+    objectivesAr: [
+        'أُميّز بين المضارع البسيط (I play) والمضارع المستمر (I am playing).',
+        'أستعمل صيغة am/is/are + verb-ing لوصف فعل يحدث الآن.',
+        'أستعمل كلمات دلالية مثل "now" و"every day" للتمييز بين الزمنين.',
+    ],
+    detailedCourse: {
+        introAr: 'نستعمل المضارع البسيط للحديث عن عادة نقوم بها دائماً (I play football every day)، والمضارع المستمر للحديث عن فعل يحدث الآن بالضبط (I am playing football now).',
+        vocabulary: [
+            { termAr: 'Present Simple', definitionAr: 'زمن يُستعمل للعادات والحقائق الثابتة، الفعل يبقى في صورته الأساسية (أو +s مع he/she/it).' },
+            { termAr: 'Present Continuous', definitionAr: 'زمن يُستعمل لفعل يحدث الآن، يتكون من am/is/are + الفعل + ing.' },
+        ],
+        visualizationHintAr: 'ارسم ساعة كبيرة بجانب كلمة "NOW" لتمثل المضارع المستمر، وشمساً تشرق كل يوم بجانب كلمة "EVERY DAY" لتمثل المضارع البسيط.',
+        commonMistakes: [
+            { mistakeAr: 'نسيان إضافة "-ing" للفعل في المضارع المستمر.', correctionAr: 'يجب دائماً إضافة "-ing" للفعل بعد am/is/are: "I am playing"، وليس "I am play".' },
+        ],
+        takeawayAr: 'Present Simple = عادة متكررة (I play every day). Present Continuous = فعل يحدث الآن (I am playing now) = am/is/are + verb-ing.',
+    },
+    titleAr: 'Unit 6 (bis): What Are You Doing? - Present Simple vs Present Continuous',
+    summaryAr: `يتعلم التلميذ الفرق بين المضارع البسيط (للعادات المتكررة) والمضارع المستمر (للأفعال التي تحدث الآن بالضبط)، ويستعمل صيغة am/is/are + verb-ing بشكل صحيح.`,
+    rulesAr: [
+        'Present Simple (المضارع البسيط): يُستعمل للعادات والحقائق الثابتة. الفعل يبقى بصورته الأساسية مع I/You/We/They، ونضيف "-s" مع He/She/It. مثال: "I play football every day."',
+        'Present Continuous (المضارع المستمر): يُستعمل لفعل يحدث الآن بالضبط. التركيب: am/is/are + الفعل + ing. مثال: "I am playing football now."',
+        'اختيار الفعل المساعد: I ➔ am, He/She/It ➔ is, You/We/They ➔ are.',
+        'كلمات دلالية: Present Simple (every day, always, usually) | Present Continuous (now, at the moment, look!).'
+    ],
+    keyFormulas: [
+        { labelAr: 'تركيب المضارع المستمر', formulaAr: 'am/is/are + verb + ing' },
+        { labelAr: 'الفعل المساعد المناسب', formulaAr: 'I→am | He/She/It→is | You/We/They→are' }
+    ],
+    examplesAr: [
+        {
+            problem: 'Complete: "Look! The children ...... (play) football in the garden now."',
+            solution: '"Look! The children are playing football in the garden now." (are + playing, لأن الفعل يحدث الآن).'
+        },
+        {
+            problem: 'Complete: "I ...... (read) a book every night before sleeping." (Present Simple)',
+            solution: '"I read a book every night before sleeping." (نستعمل صيغة الفعل الأساسية مع I في المضارع البسيط).'
+        }
+    ],
+    interactiveTool: 'english_lab',
+    quiz: [
+        {
+            id: 'q1',
+            questionAr: 'Choose the correct sentence for an action happening right now:',
+            options: [
+                { id: 'a', textAr: 'She is drawing a picture now.', isCorrect: true, explanationAr: 'Correct! "is drawing" (Present Continuous) describes an action happening right now.' },
+                { id: 'b', textAr: 'She draws a picture now.', isCorrect: false }
+            ]
+        },
+        {
+            id: 'q2',
+            questionAr: 'Which word signals the Present Simple tense?',
+            options: [
+                { id: 'a', textAr: 'every day', isCorrect: true, explanationAr: 'Correct! "every day" signals a habit, so we use the Present Simple.' },
+                { id: 'b', textAr: 'now', isCorrect: false }
             ]
         }
     ]
