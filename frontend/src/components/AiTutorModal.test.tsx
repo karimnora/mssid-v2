@@ -81,4 +81,48 @@ describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
       expect(screen.getByText('تعذر الاتصال بالخادم. يرجى التحقق من الشبكة وإعادة المحاولة.')).toBeInTheDocument();
     });
   });
+
+  it('shows grade-specific suggested topic chips, and clicking one fills the topic field', () => {
+    render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="3AP" />);
+
+    const chip = screen.getByRole('button', { name: /جدول الضرب/ });
+    fireEvent.click(chip);
+
+    expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toHaveValue('جدول الضرب');
+  });
+
+  // "generate" mode now asks the backend for structured output (see GeminiAiService.
+  // generatePracticeExercise) instead of one free-text blob with a "الحل:" heading the frontend used
+  // to just trust was there — this locks in that the exercise, solution, and check question all
+  // render from their own dedicated fields.
+  it('renders exercise, solution, and an interactive check question for "generate" mode structured output', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockResolvedValue({
+      status: 200,
+      data: {
+        status: 'success',
+        exerciseText: 'احسب ناتج 24 × 3.',
+        solutionText: 'الجواب هو 72، لأن 24 × 3 = 72.',
+        quickCheck: {
+          questionAr: 'كم ناتج 24 × 3؟',
+          options: [
+            { labelAr: '62', isCorrect: false },
+            { labelAr: '72', isCorrect: true },
+          ],
+        },
+      },
+    });
+
+    render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="3AP" />);
+    fireEvent.click(screen.getByRole('button', { name: /ولّد مسألة تدريبية جديدة/i }));
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText('احسب ناتج 24 × 3.')).toBeInTheDocument();
+    });
+    expect(screen.getByText(/الجواب هو 72/)).toBeInTheDocument();
+    expect(screen.getByText(/كم ناتج 24 × 3؟/)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('72'));
+    expect(screen.getByText(/أحسنت! إجابة صحيحة/)).toBeInTheDocument();
+  });
 });

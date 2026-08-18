@@ -18,6 +18,15 @@ public class GeminiResponse {
     private Long timestamp;
     private Boolean cacheHit;
 
+    // Populated only by generatePracticeExercise's structured-output path (see GeminiAiService) —
+    // null for every other mode (explain/solve/examSolution), which keep using responseText as
+    // before. exerciseText/solutionText replace the old convention of asking the model to put a
+    // literal "الحل:" heading in free text and hoping the frontend's display matched; quickCheck adds
+    // one real interactive multiple-choice question instead of only static prose.
+    private String exerciseText;
+    private String solutionText;
+    private QuickCheckDto quickCheck;
+
     public GeminiResponse(String text, String status) {
         this.answer = text;
         this.generatedText = text;

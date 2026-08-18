@@ -22,6 +22,9 @@ class GeminiAiServiceTest {
     @Mock
     private AdminAuditLogService adminAuditLogService;
 
+    @Mock
+    private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+
     @InjectMocks
     private GeminiAiService geminiAiService;
 
@@ -95,6 +98,22 @@ class GeminiAiServiceTest {
         assertNotNull(response);
         assertNotNull(response.getResponseText());
         assertNotNull(response.getStatus());
+    }
+
+    // generatePracticeExercise now requests Gemini's structured JSON output (responseSchema) via a
+    // dedicated call path (callGeminiApiStructured) instead of the free-text callGeminiApi used by
+    // every other mode — this locks in that its own failure path degrades the same way (a valid
+    // GeminiResponse with status="error", never a thrown exception) and is independently audit-logged.
+    @Test
+    @DisplayName("generatePracticeExercise - degrades gracefully and logs AI_TUTOR_CALL_FAILED when the structured call fails")
+    void generatePracticeExercise_Failure_DegradesGracefullyAndLogs() {
+        GeminiPromptRequest request = GeminiPromptRequest.builder().topic("جدول الضرب").grade("3AP").build();
+
+        GeminiResponse response = geminiAiService.generatePracticeExercise(request);
+
+        assertEquals("error", response.getStatus());
+        assertNull(response.getQuickCheck());
+        verify(adminAuditLogService).record(any(), eq("AI_TUTOR_CALL_FAILED"), eq("AI"), any(), any(), eq("FAILURE"));
     }
 
     @Test

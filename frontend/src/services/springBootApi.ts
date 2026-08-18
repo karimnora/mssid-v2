@@ -317,7 +317,14 @@ public async request<T>(
     const formattedPrompt = payload.prompt || `${payload.topic || ''} ${payload.question || ''}`.trim();
     const formattedContext = payload.subjectContext || payload.grade || '5AP';
 
-    return this.request<{ responseText?: string; text?: string; status?: string }>('/v1/ai/explain', {
+    return this.request<{
+      responseText?: string;
+      text?: string;
+      status?: string;
+      exerciseText?: string;
+      solutionText?: string;
+      quickCheck?: { questionAr: string; options: { labelAr: string; isCorrect: boolean }[] };
+    }>('/v1/ai/explain', {
       method: 'POST',
       body: JSON.stringify({
         prompt: formattedPrompt,

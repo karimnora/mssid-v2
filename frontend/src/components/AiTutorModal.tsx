@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Bot, RefreshCw, ShieldAlert } from 'lucide-react';
+import { X, Sparkles, Bot, RefreshCw, ShieldAlert, Lightbulb } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
+import { AI_TUTOR_SUGGESTED_TOPICS } from '../data/aiTutorSuggestedTopics';
+import { QuickCheckQuiz, QuickCheckOption } from './QuickCheckQuiz';
 
 interface AiTutorModalProps {
   isOpen: boolean;
@@ -10,12 +12,19 @@ interface AiTutorModalProps {
   grade: PrimaryGrade;
 }
 
+interface AiResult {
+  text?: string;
+  exerciseText?: string;
+  solutionText?: string;
+  quickCheck?: { questionAr: string; options: QuickCheckOption[] };
+}
+
 export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, grade }) => {
   const [topic, setTopic] = useState('القسمة الأقليدية والكسور');
   const [question, setQuestion] = useState('');
   const [promptType, setPromptType] = useState<'explain' | 'solve' | 'generate'>('explain');
   const [loading, setLoading] = useState(false);
-  const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [aiResult, setAiResult] = useState<AiResult | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const currentUser = AuthService.getCurrentUser();
@@ -28,7 +37,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
 
     setLoading(true);
     setErrorMsg(null);
-    setAiResponse(null);
+    setAiResult(null);
 
     try {
       const springRes = await springBootApi.askGeminiExplain({
@@ -47,13 +56,22 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
         return;
       }
 
-      const text = springRes.data?.responseText || springRes.data?.text;
-      if (!text) {
+      // "generate" mode asks the backend for structured output (exerciseText/solutionText/quickCheck
+      // — see GeminiAiService.generatePracticeExercise) instead of one free-text blob; every other
+      // mode still returns a plain responseText/text string.
+      const { exerciseText, solutionText, quickCheck, responseText, text } = springRes.data || {};
+      if (exerciseText) {
+        setAiResult({ exerciseText, solutionText, quickCheck });
+        return;
+      }
+
+      const plainText = responseText || text;
+      if (!plainText) {
         setErrorMsg('لم يصل أي رد من المعلم الذكي. حاول مرة أخرى.');
         return;
       }
 
-      setAiResponse(text);
+      setAiResult({ text: plainText });
     } catch (err: any) {
       console.error(err);
       setErrorMsg('تعذر الاتصال بالخادم. يرجى التحقق من الشبكة وإعادة المحاولة.');
@@ -61,6 +79,8 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
       setLoading(false);
     }
   };
+
+  const suggestedTopics = AI_TUTOR_SUGGESTED_TOPICS[grade] || [];
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
@@ -140,6 +160,21 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                 placeholder="مثال: الكسور العشرية، القواعد، السوروبان..."
                 className="w-full bg-white border border-slate-300 text-xs font-bold rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
+              {suggestedTopics.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  {suggestedTopics.map((s) => (
+                    <button
+                      key={s.labelAr}
+                      type="button"
+                      onClick={() => setTopic(s.labelAr)}
+                      className="flex items-center gap-1 bg-white hover:bg-emerald-50 border border-slate-300 hover:border-emerald-400 text-slate-700 hover:text-emerald-800 text-[11px] font-bold px-2.5 py-1 rounded-full transition-colors cursor-pointer"
+                    >
+                      <span>{s.subjectEmoji}</span>
+                      <span>{s.labelAr}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {promptType === 'solve' && (
@@ -184,8 +219,8 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             </div>
           )}
 
-          {/* AI Output Result Box */}
-          {aiResponse && (
+          {/* AI Output Result Box — plain-text modes (explain/solve) */}
+          {aiResult?.text && (
             <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 space-y-3 shadow-inner">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2 text-xs font-bold text-amber-400">
                 <div className="flex items-center gap-1.5">
@@ -196,8 +231,42 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
               </div>
 
               <div className="text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-line pt-1">
-                {aiResponse}
+                {aiResult.text}
               </div>
+            </div>
+          )}
+
+          {/* "generate" mode — structured output: exercise, solution, and an interactive check question */}
+          {aiResult?.exerciseText && (
+            <div className="space-y-3">
+              <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 space-y-2 shadow-inner">
+                <div className="flex items-center gap-1.5 border-b border-slate-800 pb-2 text-xs font-bold text-amber-400">
+                  <Sparkles className="w-4 h-4 text-emerald-400" />
+                  <span>التمرين:</span>
+                </div>
+                <p className="text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-line pt-1">
+                  {aiResult.exerciseText}
+                </p>
+              </div>
+
+              {aiResult.solutionText && (
+                <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800">
+                    <Lightbulb className="w-4 h-4 shrink-0" />
+                    <span>الحل (للتحقق مع الوالدين):</span>
+                  </div>
+                  <p className="text-xs text-emerald-900 leading-relaxed font-sans whitespace-pre-line">
+                    {aiResult.solutionText}
+                  </p>
+                </div>
+              )}
+
+              {aiResult.quickCheck && (
+                <QuickCheckQuiz
+                  questionAr={aiResult.quickCheck.questionAr}
+                  options={aiResult.quickCheck.options}
+                />
+              )}
             </div>
           )}
         </div>

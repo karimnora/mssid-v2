@@ -1,7 +1,10 @@
 package dz.mssid.education.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dz.mssid.education.dto.GeminiPromptRequest;
 import dz.mssid.education.dto.GeminiResponse;
+import dz.mssid.education.dto.QuickCheckDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -28,6 +31,7 @@ public class GeminiAiService {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final AdminAuditLogService adminAuditLogService;
+    private final ObjectMapper objectMapper;
 
     // Condensed digest of the official Algerian primary curriculum (الجيل الثاني — see the project's
     // CLAUDE.md for the full reference), one entry per grade. This is what keeps "المعلم مسيد" from
@@ -95,17 +99,19 @@ public class GeminiAiService {
 
     /**
      * Mode "ولّد مسألة تدريبية جديدة": un exercice inédit dans le style du programme officiel, avec
-     * son corrigé séparé sous un titre dédié pour qu'un parent puisse vérifier sans le générer lui-même.
+     * son corrigé séparé pour qu'un parent puisse vérifier sans le générer lui-même, plus une question
+     * de vérification rapide à choix multiple. Utilise la sortie structurée de Gemini (responseSchema)
+     * plutôt que de demander au modèle d'écrire un en-tête "الحل:" en texte libre et d'espérer que le
+     * frontend le retrouve correctement.
      */
     public GeminiResponse generatePracticeExercise(GeminiPromptRequest request) {
         String grade = request.getFormattedGrade();
         String topic = request.getFormattedPrompt();
         String fullPrompt = buildPersona(grade)
-                + "ولّد تمريناً تدريبياً واحداً جديداً يناسب هذا المستوى حول الموضوع التالي، "
-                + "بنفس أسلوب المنهاج الرسمي الجزائري. اكتب نص التمرين فقط أولاً، "
-                + "ثم ضع الحل الكامل تحت عنوان منفصل \"الحل:\" حتى يتحقق منه الوالدان.\n\n"
+                + "ولّد تمريناً تدريبياً واحداً جديداً يناسب هذا المستوى حول الموضوع التالي، بنفس أسلوب المنهاج الرسمي الجزائري.\n"
+                + "أعطِ: (1) نص التمرين، (2) الحل الكامل مشروحاً، (3) سؤال تحقق سريع بأربعة اختيارات، واحد منها صحيح فقط.\n\n"
                 + "الموضوع: " + topic;
-        return callGeminiApi(fullPrompt);
+        return callGeminiApiStructured(fullPrompt);
     }
 
     /** Corrigé détaillé (avec barème) d'un examen existant — flux distinct du tutorat par sujet libre. */
@@ -137,6 +143,74 @@ public class GeminiAiService {
             Map<?, ?> response = restTemplate.postForObject(url, entity, Map.class);
             String generatedText = extractTextFromGeminiResponse(response);
             return new GeminiResponse(generatedText, "success");
+        } catch (Exception e) {
+            adminAuditLogService.record(currentActorEmail(), "AI_TUTOR_CALL_FAILED", "AI", null,
+                    e.getMessage(), "FAILURE");
+            return new GeminiResponse("Erreur lors de l'appel de l'API Gemini: " + e.getMessage(), "error");
+        }
+    }
+
+    // Constrains Gemini's response to this exact JSON shape via generationConfig.responseSchema
+    // (the REST equivalent of the Type.OBJECT schema the official @google/genai SDK exposes) —
+    // guarantees exerciseText/solutionText/quickCheck are always present and well-formed instead of
+    // depending on the model reliably formatting a "الحل:" heading in free text.
+    private static final Map<String, Object> PRACTICE_EXERCISE_SCHEMA = Map.of(
+            "type", "OBJECT",
+            "properties", Map.of(
+                    "exerciseText", Map.of("type", "STRING", "description", "نص التمرين فقط، بدون الحل"),
+                    "solutionText", Map.of("type", "STRING", "description", "الحل الكامل مشروحاً خطوة بخطوة"),
+                    "quickCheck", Map.of(
+                            "type", "OBJECT",
+                            "properties", Map.of(
+                                    "questionAr", Map.of("type", "STRING"),
+                                    "options", Map.of(
+                                            "type", "ARRAY",
+                                            "items", Map.of(
+                                                    "type", "OBJECT",
+                                                    "properties", Map.of(
+                                                            "labelAr", Map.of("type", "STRING"),
+                                                            "isCorrect", Map.of("type", "BOOLEAN")
+                                                    ),
+                                                    "required", List.of("labelAr", "isCorrect")
+                                            )
+                                    )
+                            ),
+                            "required", List.of("questionAr", "options")
+                    )
+            ),
+            "required", List.of("exerciseText", "solutionText", "quickCheck")
+    );
+
+    private GeminiResponse callGeminiApiStructured(String textPrompt) {
+        String url = geminiApiUrl + "?key=" + apiKey;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> requestBody = Map.of(
+                "contents", List.of(Map.of("parts", List.of(Map.of("text", textPrompt)))),
+                "generationConfig", Map.of(
+                        "responseMimeType", "application/json",
+                        "responseSchema", PRACTICE_EXERCISE_SCHEMA
+                )
+        );
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            Map<?, ?> response = restTemplate.postForObject(url, entity, Map.class);
+            String jsonText = extractTextFromGeminiResponse(response);
+            JsonNode parsed = objectMapper.readTree(jsonText);
+
+            String exerciseText = parsed.path("exerciseText").asText("");
+            String solutionText = parsed.path("solutionText").asText("");
+            QuickCheckDto quickCheck = objectMapper.treeToValue(parsed.path("quickCheck"), QuickCheckDto.class);
+
+            GeminiResponse result = new GeminiResponse(exerciseText, "success");
+            result.setExerciseText(exerciseText);
+            result.setSolutionText(solutionText);
+            result.setQuickCheck(quickCheck);
+            return result;
         } catch (Exception e) {
             adminAuditLogService.record(currentActorEmail(), "AI_TUTOR_CALL_FAILED", "AI", null,
                     e.getMessage(), "FAILURE");

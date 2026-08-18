@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import confetti from 'canvas-confetti';
 import { Badge } from '../types';
 import { X } from 'lucide-react';
 
@@ -20,6 +21,21 @@ export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDis
     const timer = setTimeout(onDismiss, AUTO_DISMISS_MS);
     return () => clearTimeout(timer);
   }, [current, onDismiss]);
+
+  // Fires once per badge (not per correct answer elsewhere in the app) — a badge unlock is the one
+  // milestone-sized celebration in the whole app that currently had zero visual payoff beyond the
+  // toast itself. prefers-reduced-motion is respected since canvas-confetti already checks it.
+  useEffect(() => {
+    if (!current || typeof window === 'undefined') return;
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    confetti({
+      particleCount: 90,
+      spread: 75,
+      startVelocity: 35,
+      origin: { y: 0.15 },
+      colors: ['#fbbf24', '#10b981', '#34d399', '#f59e0b'],
+    });
+  }, [current]);
 
   return (
     <div className="fixed top-4 inset-x-0 z-[100] flex justify-center px-3 pointer-events-none" dir="rtl">
