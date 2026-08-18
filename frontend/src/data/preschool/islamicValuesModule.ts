@@ -3,14 +3,16 @@ import { PreschoolModule } from './types';
 // "قِيَمِي وَإِيمَانِي الصَّغِيرُ" — Islamic awakening & social values for ages 3-5.
 // Confirmed a genuine, total gap: zero Islamic content existed anywhere in the preschool module
 // (grade 1AP-5AP islamic.ts is a completely separate, unrelated catalog). Built on existing
-// interactionTypes only: tap_choice for daily formulas of politeness and short-surah listening
-// moments (promptAudio is read aloud via TTS — see LocalizedContent doc comment), sorting for
-// good manners / cooperation.
+// interactionTypes only: tap_choice for daily formulas of politeness, sorting for good manners /
+// cooperation. Deliberately does NOT include Quran verse recitation: the Web Speech API TTS this
+// app relies on (no pre-recorded voice assets in the MVP — see LocalizedContent doc comment)
+// mispronounces Arabic badly enough that reciting Quranic text through it was judged unacceptable,
+// and was removed for that reason (product decision).
 export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
   id: 'preschool-islamic-values',
   domain: 'values',
   icon: '🕌',
-  totalSteps: 7,
+  totalSteps: 4,
   titleI18n: {
     ar: 'قِيَمِي وَإِيمَانِي الصَّغِيرُ',
     fr: 'Mes Valeurs & Ma Petite Foi',
@@ -120,112 +122,10 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
       },
     },
     {
-      id: 'values-surah-fatiha',
-      domain: 'values',
-      targetValue: 'al-fatiha',
-      stepNumber: 4,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'اِسْتَمِعْ لِسُورَةِ الفَاتِحَةِ',
-          promptAudio: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِين. اِلْمِسِ المُصْحَفَ لِتَسْتَمِعَ بِهُدُوء!',
-          promptText: 'رتّل الآيات ببطء واطلب من طفلك الإنصات بهدوء.',
-          successAudio: 'مَا شَاءَ اللَّه! اِسْتَمَعْتَ بِهُدُوءٍ وَأَدَب!',
-        },
-        fr: {
-          title: 'Écoute Sourate Al-Fatiha',
-          promptAudio: 'Bismillah ar-Rahman ar-Rahim. Al-hamdu lillahi Rabbil \'alamin. Touche le Coran pour écouter calmement !',
-          promptText: 'Récitez lentement les versets et invitez l\'enfant à écouter en silence.',
-          successAudio: 'Mashallah ! Tu as écouté calmement et poliment !',
-        },
-        en: {
-          title: 'Listen to Surah Al-Fatiha',
-          promptAudio: 'Bismillah ar-Rahman ar-Rahim. Al-hamdu lillahi Rabbil \'alamin. Tap the Quran to listen calmly!',
-          promptText: 'Recite the verses slowly and ask your child to listen quietly.',
-          successAudio: 'Mashallah! You listened calmly and politely!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🕌',
-        choices: [
-          { id: 'quran', asset: '📖', isCorrect: true },
-          { id: 'toy', asset: '🧸', isCorrect: false },
-        ],
-      },
-    },
-    {
-      id: 'values-surah-ikhlas',
-      domain: 'values',
-      targetValue: 'al-ikhlas',
-      stepNumber: 5,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'اِسْتَمِعْ لِسُورَةِ الإِخْلَاصِ',
-          promptAudio: 'قُلْ هُوَ اللَّهُ أَحَد. اللَّهُ الصَّمَد. اِلْمِسِ المُصْحَفَ لِتَسْتَمِعَ بِهُدُوء!',
-          promptText: 'رتّل الآيات ببطء واطلب من طفلك الإنصات بهدوء.',
-          successAudio: 'مَا شَاءَ اللَّه! قَلْبُكَ يُحِبُّ سَمَاعَ القُرْآن!',
-        },
-        fr: {
-          title: 'Écoute Sourate Al-Ikhlas',
-          promptAudio: 'Qul Huwa Allahu Ahad. Allahu-s-Samad. Touche le Coran pour écouter calmement !',
-          promptText: 'Récitez lentement les versets et invitez l\'enfant à écouter en silence.',
-          successAudio: 'Mashallah ! Ton cœur aime écouter le Coran !',
-        },
-        en: {
-          title: 'Listen to Surah Al-Ikhlas',
-          promptAudio: 'Qul Huwa Allahu Ahad. Allahu-s-Samad. Tap the Quran to listen calmly!',
-          promptText: 'Recite the verses slowly and ask your child to listen quietly.',
-          successAudio: 'Mashallah! Your heart loves listening to the Quran!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🕌',
-        choices: [
-          { id: 'quran', asset: '📖', isCorrect: true },
-          { id: 'ball', asset: '⚽', isCorrect: false },
-        ],
-      },
-    },
-    {
-      id: 'values-surah-kawthar',
-      domain: 'values',
-      targetValue: 'al-kawthar',
-      stepNumber: 6,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'اِسْتَمِعْ لِسُورَةِ الكَوْثَرِ',
-          promptAudio: 'إِنَّا أَعْطَيْنَاكَ الْكَوْثَر. فَصَلِّ لِرَبِّكَ وَانْحَر. اِلْمِسِ المُصْحَفَ لِتَسْتَمِعَ بِهُدُوء!',
-          promptText: 'رتّل الآيات ببطء واطلب من طفلك الإنصات بهدوء.',
-          successAudio: 'بَارَكَ اللَّهُ فِيك! اِسْتَمَعْتَ بِإِنْصَاتٍ جَمِيل!',
-        },
-        fr: {
-          title: 'Écoute Sourate Al-Kawthar',
-          promptAudio: 'Inna a\'taynaka-l-Kawthar. Fasalli li-Rabbika wanhar. Touche le Coran pour écouter calmement !',
-          promptText: 'Récitez lentement les versets et invitez l\'enfant à écouter en silence.',
-          successAudio: 'Baraka Allahou fik ! Tu as écouté avec une belle attention !',
-        },
-        en: {
-          title: 'Listen to Surah Al-Kawthar',
-          promptAudio: 'Inna a\'taynaka-l-Kawthar. Fasalli li-Rabbika wanhar. Tap the Quran to listen calmly!',
-          promptText: 'Recite the verses slowly and ask your child to listen quietly.',
-          successAudio: 'Barakallahu feek! You listened with lovely attention!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🕌',
-        choices: [
-          { id: 'quran', asset: '📖', isCorrect: true },
-          { id: 'phone', asset: '📱', isCorrect: false },
-        ],
-      },
-    },
-    {
       id: 'values-good-manners',
       domain: 'values',
       targetValue: 'manners',
-      stepNumber: 7,
+      stepNumber: 4,
       interactionType: 'sorting',
       i18n: {
         ar: {
