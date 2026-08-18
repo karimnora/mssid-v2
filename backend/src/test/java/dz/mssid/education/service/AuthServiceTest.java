@@ -54,6 +54,9 @@ class AuthServiceTest {
     private EmailVerificationService emailVerificationService;
 
     @Mock
+    private ParentNotificationService parentNotificationService;
+
+    @Mock
     private AuthenticationManager authenticationManager;
 
     @Mock
@@ -127,6 +130,7 @@ class AuthServiceTest {
         verify(userRepository, times(1)).save(any(User.class));
         verify(refreshTokenService, times(1)).createToken(any(User.class));
         verify(emailVerificationService, times(1)).sendVerificationCode(any(User.class));
+        verify(parentNotificationService, times(1)).sendAccountCreatedNotice(any(User.class));
         verify(adminAuditLogService).record(eq("omar@mssid.dz"), eq("USER_REGISTERED"), eq("USER"), any(), any(), eq("SUCCESS"));
     }
 

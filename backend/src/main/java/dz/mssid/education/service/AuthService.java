@@ -32,6 +32,7 @@ public class AuthService {
     private final JwtTokenProvider jwtTokenProvider;
     private final RefreshTokenService refreshTokenService;
     private final EmailVerificationService emailVerificationService;
+    private final ParentNotificationService parentNotificationService;
     private final AuthenticationManager authenticationManager;
     private final AdminAuditLogService adminAuditLogService;
 
@@ -73,6 +74,9 @@ public class AuthService {
         // never blocks app usage; the user can always request a resend later). Any failure is already
         // captured by ResendEmailService's own EMAIL_SEND audit entry, so nothing further to log here.
         emailVerificationService.sendVerificationCode(user);
+
+        // Best-effort, same reasoning as above — only fires when parentEmail was actually supplied.
+        parentNotificationService.sendAccountCreatedNotice(user);
 
         // 4. Authentification & Génération du Token JWT
         Authentication authentication = authenticationManager.authenticate(
