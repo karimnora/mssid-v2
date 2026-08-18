@@ -70,6 +70,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-orange-50 text-orange-900 border-orange-200',
     description: 'تاريخ الجزائر، المراحل التاريخية، الجغرافيا الوطنية، المناخ والتضاريس للسنة الرابعة والخامسة.',
     category: 'course',
+    minGrade: '3AP',
   },
   {
     id: 'islamic',
@@ -100,6 +101,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
     description: 'Programme officiel 5AP : Projets 1, 2 et 3 (Grammaire, Conjugaison, Orthographe, Production écrite, Dialogues et Jeux).',
     category: 'course',
+    minGrade: '3AP',
   },
   {
     id: 'english',
@@ -110,6 +112,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-indigo-50 text-indigo-900 border-indigo-200',
     description: 'Official 5AP English Curriculum: Units 1-4 (Vocabulary, Grammar, Phonics & Pronunciation, Dialogues & Interactive Games).',
     category: 'course',
+    minGrade: '3AP',
   },
 
   // 2. NATIONAL HERITAGE & ALGERIAN CULTURE TOOLS

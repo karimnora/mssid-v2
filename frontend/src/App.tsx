@@ -205,7 +205,7 @@ export default function App() {
       writingLab: writingLabFlag,
       advancedLabs: advancedLabsFlag,
     });
-  const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter(isSubjectVisible);
+  const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter((s) => isToolAvailableForGrade(s, grade) && isSubjectVisible(s));
 
   // SEC-07 / Trimester paywall: Trimester 1 is always free, everywhere, regardless of this flag —
   // only T2/T3 are ever gated, and only once enableTrimesterPaywall is switched on (off by default
