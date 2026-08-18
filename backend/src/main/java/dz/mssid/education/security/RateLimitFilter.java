@@ -29,9 +29,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  * - {@code POST /api/v1/auth/reset-password}: 10 attempts / 15 minutes per IP — the reset code is
  *   only 6 digits (1e6 possibilities); this doesn't make brute-forcing it feasible on its own, but
  *   it removes the "just script it" trivial case on top of the code's own 15-minute expiry.
- * - Everything else under {@code /api/**}: 60 requests / minute — general abuse/scraping guard
- *   (this also covers the currently-unauthenticated {@code /api/gemini/**} and {@code /api/v1/ai/**}
- *   endpoints, which had no abuse protection at all).
+ * - {@code POST /api/gemini/**} and {@code POST /api/v1/ai/**}: 15 requests / minute per IP — these
+ *   endpoints are unauthenticated by design (see GeminiProxyController) and each call costs real money
+ *   against the Gemini quota, so they get a tighter window than the general default below rather than
+ *   relying on it.
+ * - Everything else under {@code /api/**}: 60 requests / minute — general abuse/scraping guard.
  * <p>
  * Known limitation: the per-IP counters are never evicted, so memory grows slowly with the number of
  * distinct IPs seen over the process lifetime. Acceptable for a first hardening pass; a production
@@ -46,6 +48,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private static final Window LOGIN_WINDOW = new Window(5, 15 * 60 * 1000L);
     private static final Window FORGOT_PASSWORD_WINDOW = new Window(3, 15 * 60 * 1000L);
     private static final Window RESET_PASSWORD_WINDOW = new Window(10, 15 * 60 * 1000L);
+    private static final Window AI_WINDOW = new Window(15, 60 * 1000L);
     private static final Window DEFAULT_WINDOW = new Window(60, 60 * 1000L);
 
     private static final class Counter {
@@ -56,6 +59,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private final ConcurrentHashMap<String, Counter> loginCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> forgotPasswordCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> resetPasswordCounters = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Counter> aiCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> apiCounters = new ConcurrentHashMap<>();
 
     @Override
@@ -72,6 +76,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
         boolean isLoginAttempt = isPost && path.startsWith("/api/v1/auth/login");
         boolean isForgotPassword = isPost && path.startsWith("/api/v1/auth/forgot-password");
         boolean isResetPassword = isPost && path.startsWith("/api/v1/auth/reset-password");
+        boolean isAiEndpoint = isPost && (path.startsWith("/api/gemini/") || path.startsWith("/api/v1/ai/"));
 
         Window window;
         ConcurrentHashMap<String, Counter> bucket;
@@ -88,6 +93,10 @@ public class RateLimitFilter extends OncePerRequestFilter {
             window = RESET_PASSWORD_WINDOW;
             bucket = resetPasswordCounters;
             message = "Trop de tentatives. Veuillez réessayer dans 15 minutes.";
+        } else if (isAiEndpoint) {
+            window = AI_WINDOW;
+            bucket = aiCounters;
+            message = "Trop de demandes envoyées à l'assistant IA. Veuillez ralentir et réessayer dans un instant.";
         } else {
             window = DEFAULT_WINDOW;
             bucket = apiCounters;
