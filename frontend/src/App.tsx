@@ -19,6 +19,7 @@ import { AiTutorModal } from './components/AiTutorModal';
 import { ProfileModal } from './components/ProfileModal';
 import { AuthModal } from './components/AuthModal';
 import { AuthWallModal } from './components/AuthWallModal';
+import { EmailVerificationPopup } from './components/EmailVerificationPopup';
 import { HomeView, HomePoleId } from './components/HomeView';
 import { MobileAppSimulator } from './components/MobileAppSimulator';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
@@ -306,6 +307,7 @@ export default function App() {
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isEmailVerifyPopupOpen, setIsEmailVerifyPopupOpen] = useState(false);
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -1258,8 +1260,14 @@ export default function App() {
         initialMode={authModalInitialMode}
         onAuthSuccess={() => {
           // AuthService.loginAsync/registerAsync already call setCurrentUser internally — authUser
-          // (via useAuth()) updates on its own the moment login succeeds.
-          //
+          // (via useAuth()) updates on its own the moment login succeeds. Read AuthService directly
+          // here rather than the authUser closed over by this callback: React hasn't re-rendered yet
+          // at this exact point, so that closure variable can still be one render behind.
+          const freshUser = AuthService.getCurrentUser();
+          if (freshUser && !freshUser.emailVerified) {
+            setIsEmailVerifyPopupOpen(true);
+          }
+
           // Phase 2 — intelligent post-auth redirect: restore whatever the guest was trying to reach
           // when AuthWallModal interrupted them (see handleSelectLesson).
           const raw = sessionStorage.getItem('redirect_after_auth');
@@ -1282,6 +1290,14 @@ export default function App() {
           }
         }}
       />
+
+      {authUser && (
+        <EmailVerificationPopup
+          isOpen={isEmailVerifyPopupOpen}
+          onClose={() => setIsEmailVerifyPopupOpen(false)}
+          email={authUser.email}
+        />
+      )}
 
       <AuthWallModal
         isOpen={isAuthWallOpen}
