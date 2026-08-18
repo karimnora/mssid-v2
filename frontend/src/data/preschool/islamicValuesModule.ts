@@ -1,13 +1,14 @@
 import { PreschoolModule } from './types';
 
-// "قِيَمِي وَإِيمَانِي الصَّغِيرُ" — Islamic awakening & social values for ages 3-5.
-// Confirmed a genuine, total gap: zero Islamic content existed anywhere in the preschool module
-// (grade 1AP-5AP islamic.ts is a completely separate, unrelated catalog). Built on existing
-// interactionTypes only: tap_choice for daily formulas of politeness, sorting for good manners /
-// cooperation. Deliberately does NOT include Quran verse recitation: the Web Speech API TTS this
-// app relies on (no pre-recorded voice assets in the MVP — see LocalizedContent doc comment)
-// mispronounces Arabic badly enough that reciting Quranic text through it was judged unacceptable,
-// and was removed for that reason (product decision).
+/**
+ * "قِيَمِي وَإِيمَانِي الصَّغِيرُ" — Éveil islamique & valeurs sociales (3-5 ans).
+ *
+ * NOTE DE CONCEPTION :
+ * - Aucune récitation de versets coraniques n'est incluse par choix produit
+ *   (évite les déformations liées à la synthèse vocale Web Speech API sans voix préenregistrées).
+ * - Utilisation exclusive des interactions `tap_choice` et `sorting`.
+ * - Diacritisme arabe (تَشْكِيل) ajusté spécifiquement pour une prononciation TTS fluide.
+ */
 export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
   id: 'preschool-islamic-values',
   domain: 'values',
@@ -29,26 +30,26 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
         ar: {
           title: 'بِسْمِ اللَّهِ قَبْلَ الأَكْلِ',
           promptAudio: 'قَبْلَ أَنْ نَأْكُلَ نَقُولُ: بِسْمِ اللَّهِ! مَتَى نَقُولُهَا؟ اِلْمِسِ الطَّعَامَ!',
-          promptText: 'علّم طفلك قول البسملة قبل الأكل والشرب.',
-          successAudio: 'أَحْسَنْت! بِسْمِ اللَّهِ قَبْلَ كُلِّ أَكْلَة!',
+          promptText: 'علّم طفلك قول "بِسْمِ اللَّهِ" قبل البدء في الأكل أو الشرب.',
+          successAudio: 'أَحْسَنْتَ يَا بَطَل! بِسْمِ اللَّهِ قَبْلَ كُلِّ طَعَام!',
         },
         fr: {
-          title: 'Bismillah avant de Manger',
-          promptAudio: 'Avant de manger, on dit : Bismillah ! Quand le dit-on ? Touche la nourriture !',
-          promptText: 'Apprenez à votre enfant à dire la basmala avant de manger et boire.',
+          title: 'Bismillah (Au nom de Dieu)',
+          promptAudio: 'Avant de manger, on dit : Bismillah ! Touche la nourriture !',
+          promptText: 'Apprenez à votre enfant à dire "Bismillah" avant de manger et boire.',
           successAudio: 'Bravo ! Bismillah avant chaque repas !',
         },
         en: {
-          title: 'Bismillah Before Eating',
-          promptAudio: 'Before we eat, we say: Bismillah! When do we say it? Tap the food!',
+          title: 'Bismillah (In the name of Allah)',
+          promptAudio: 'Before we eat, we say: Bismillah! Tap the food!',
           promptText: 'Teach your child to say Bismillah before eating and drinking.',
           successAudio: 'Well done! Bismillah before every meal!',
         },
       },
       visualAssets: {
-        mainSvgOrImage: '🤲',
+        mainSvgOrImage: '🍱',
         choices: [
-          { id: 'food', asset: '🍽️', isCorrect: true },
+          { id: 'food', asset: '🍎', isCorrect: true },
           { id: 'car', asset: '🚗', isCorrect: false },
         ],
       },
@@ -62,27 +63,27 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'الحَمْدُ لِلَّهِ بَعْدَ الأَكْلِ',
-          promptAudio: 'بَعْدَ الاِنْتِهَاءِ مِنَ الأَكْلِ نَقُولُ: الحَمْدُ لِلَّه! اِلْمِسِ الوَجْهَ السَّعِيد!',
-          promptText: 'علّم طفلك قول الحمد لله بعد الانتهاء من الأكل.',
-          successAudio: 'مُمْتَاز! الحَمْدُ لِلَّهِ عَلَى كُلِّ نِعْمَة!',
+          promptAudio: 'عِنْدَمَا نَنْتَهِي مِنَ الأَكْلِ نَقُولُ: الحَمْدُ لِلَّهِ! اِلْمِسِ الوَجْهَ السَّعِيد!',
+          promptText: 'شجّع طفلك على شكر الله وقول "الحَمْدُ لِلَّهِ" بعد الشبع.',
+          successAudio: 'مُمْتَاز! الحَمْدُ لِلَّهِ المُنْعِمِ الكَرِيم!',
         },
         fr: {
-          title: 'Alhamdulillah après Manger',
-          promptAudio: 'Après avoir mangé, on dit : Alhamdulillah ! Touche le visage content !',
-          promptText: 'Apprenez à votre enfant à dire Alhamdulillah après le repas.',
-          successAudio: 'Super ! Alhamdulillah pour chaque bienfait !',
+          title: 'Alhamdulillah (Louange à Dieu)',
+          promptAudio: 'Quand on a fini de manger, on dit : Alhamdulillah ! Touche le visage joyeux !',
+          promptText: 'Apprenez à votre enfant à remercier Allah en disant "Alhamdulillah".',
+          successAudio: 'Super ! Alhamdulillah pour tous ces bienfaits !',
         },
         en: {
-          title: 'Alhamdulillah After Eating',
-          promptAudio: 'After finishing our food, we say: Alhamdulillah! Tap the happy face!',
-          promptText: 'Teach your child to say Alhamdulillah after eating.',
-          successAudio: 'Excellent! Alhamdulillah for every blessing!',
+          title: 'Alhamdulillah (Praise be to Allah)',
+          promptAudio: 'When we finish eating, we say: Alhamdulillah! Tap the happy face!',
+          promptText: 'Encourage your child to thank Allah by saying "Alhamdulillah".',
+          successAudio: 'Excellent! Alhamdulillah for all blessings!',
         },
       },
       visualAssets: {
-        mainSvgOrImage: '🙌',
+        mainSvgOrImage: '🤲',
         choices: [
-          { id: 'happy', asset: '😊', isCorrect: true },
+          { id: 'happy', asset: '😋', isCorrect: true },
           { id: 'sad', asset: '😢', isCorrect: false },
         ],
       },
@@ -96,25 +97,25 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'السَّلَامُ عَلَيْكُمْ',
-          promptAudio: 'عِنْدَمَا نَلْتَقِي بِصَدِيقٍ نَقُولُ: السَّلَامُ عَلَيْكُم! اِلْمِسِ اليَدَ الَّتِي تُصَافِح!',
-          promptText: 'علّم طفلك إلقاء السلام ومصافحة الأصدقاء.',
-          successAudio: 'رَائِع! السَّلَامُ عَلَيْكُمْ تُدْخِلُ السَّعَادَةَ لِلْقُلُوب!',
+          promptAudio: 'عِنْدَمَا نَلْتَقِي بِالأَصْدِقَاءِ نَقُولُ: السَّلَامُ عَلَيْكُمْ! اِلْمِسِ اليَدَيْنِ المَُصَافِحَتَيْن!',
+          promptText: 'علّم طفلك إفشاء السلام ومصافحة الآخرين بأدب.',
+          successAudio: 'رَائِع! السَّلَامُ يَنْشُرُ المَحَبَّةَ بَيْنَنَا!',
         },
         fr: {
-          title: 'As-salamu \'alaykum',
-          promptAudio: 'Quand on rencontre un ami, on dit : As-salamu \'alaykum ! Touche la main qui salue !',
-          promptText: 'Apprenez à votre enfant à saluer et serrer la main de ses amis.',
-          successAudio: 'Bravo ! Le salam apporte la joie dans les cœurs !',
+          title: 'As-salamu \'alaykum (La paix soit sur vous)',
+          promptAudio: 'Quand on croise un ami, on dit : As-salamu \'alaykum ! Touche les mains qui saluent !',
+          promptText: 'Apprenez à votre enfant à saluer les autres avec le sourire.',
+          successAudio: 'Bravo ! Le Salam répand l\'amour autour de nous !',
         },
         en: {
-          title: 'As-salamu \'alaykum',
-          promptAudio: 'When we meet a friend, we say: As-salamu \'alaykum! Tap the hand that greets!',
-          promptText: 'Teach your child to greet and shake hands with friends.',
-          successAudio: 'Wonderful! The salam brings joy to hearts!',
+          title: 'As-salamu \'alaykum (Peace be upon you)',
+          promptAudio: 'When we meet a friend, we say: As-salamu \'alaykum! Tap the shaking hands!',
+          promptText: 'Teach your child to greet others politely.',
+          successAudio: 'Wonderful! Saying Salam spreads love and joy!',
         },
       },
       visualAssets: {
-        mainSvgOrImage: '👋',
+        mainSvgOrImage: '🙋‍♂️',
         choices: [
           { id: 'handshake', asset: '🤝', isCorrect: true },
           { id: 'turnaway', asset: '🙈', isCorrect: false },
@@ -130,34 +131,34 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'أَخْلَاقِي الجَمِيلَةُ',
-          promptAudio: 'ضَعِ التَّصَرُّفَاتِ اللَّطِيفَةَ مَعَ الوَجْهِ السَّعِيد، وَالتَّصَرُّفَاتِ الَّتِي تَحْتَاجُ تَحْسِيناً مَعَ الوَجْهِ الآخَر!',
-          promptText: 'ساعد طفلك على تمييز السلوكات الحسنة كالمساعدة والتعاون.',
-          successAudio: 'يَا لَكَ مِنْ طِفْلٍ مُهَذَّب! أَخْلَاقُكَ جَمِيلَة!',
+          promptAudio: 'ضَعِ التَّصَرُّفَ الطَّيِّبَ مَعَ الوَجْهِ الضَّاحِك، وَالتَّصَرُّفَ الخَاطِئَ مَعَ الوَجْهِ الحَزِين!',
+          promptText: 'ساعد طفلك على التمييز بين السلوك الإيجابي (كالمشاركة) والسلوك السلبي.',
+          successAudio: 'يَا لَكَ مِنْ طِفْلٍ مُهَذَّبٍ وَرَائِع! أَخْلَاقُكَ جَمِيلَة!',
         },
         fr: {
-          title: 'Mes Belles Manières',
-          promptAudio: 'Mets les gestes gentils avec le visage content, et ceux à améliorer avec l\'autre visage !',
-          promptText: 'Aidez l\'enfant à reconnaître les bons comportements comme l\'entraide.',
+          title: 'Mes Bonnes Manières',
+          promptAudio: 'Mets les bons gestes avec le visage joyeux, et les mauvais gestes avec le visage triste !',
+          promptText: 'Aidez l\'enfant à reconnaître les bons comportements au quotidien.',
           successAudio: 'Quel enfant bien élevé ! Tes manières sont magnifiques !',
         },
         en: {
-          title: 'My Nice Manners',
-          promptAudio: 'Put the kind actions with the happy face, and the ones to improve with the other face!',
-          promptText: 'Help your child recognize good behavior like helping and cooperation.',
-          successAudio: 'What a well-mannered child! Your manners are lovely!',
+          title: 'My Good Manners',
+          promptAudio: 'Put the good actions with the happy face, and the bad ones with the sad face!',
+          promptText: 'Help your child distinguish between positive and negative behaviors.',
+          successAudio: 'What a well-mannered child! Your behavior is great!',
         },
       },
       visualAssets: {
-        mainSvgOrImage: '🕌',
+        mainSvgOrImage: '⭐',
         sortBins: [
-          { id: 'kind', labelAsset: '😊' },
-          { id: 'needs-practice', labelAsset: '😕' },
+          { id: 'kind', labelAsset: '😄' },
+          { id: 'needs-practice', labelAsset: '🙁' },
         ],
         sortItems: [
-          { id: 'share', asset: '🤝', correctBinId: 'kind' },
+          { id: 'share', asset: '🎁', correctBinId: 'kind' },
           { id: 'help', asset: '🫂', correctBinId: 'kind' },
-          { id: 'grab', asset: '🙅', correctBinId: 'needs-practice' },
-          { id: 'ignore', asset: '🙈', correctBinId: 'needs-practice' },
+          { id: 'grab', asset: '💥', correctBinId: 'needs-practice' },
+          { id: 'ignore', asset: '😤', correctBinId: 'needs-practice' },
         ],
       },
     },
