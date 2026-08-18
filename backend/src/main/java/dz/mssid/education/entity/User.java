@@ -62,6 +62,12 @@ public class User implements UserDetails {
     @Column(name = "grade")
     private String grade;
 
+    // Minimal parental supervision (product decision, pre-launch audit): optional, no verification
+    // flow — just lets an admin reach a parent later (payment issue, moderation) without gating
+    // account creation on it.
+    @Column(name = "parent_email")
+    private String parentEmail;
+
     // Soft verification only — per product decision, an unverified account is never blocked from
     // using the app (isEnabled() below stays true regardless). This just drives a discreet reminder
     // in the UI and, later, gates anything that genuinely needs a confirmed email (password reset).

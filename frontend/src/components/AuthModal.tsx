@@ -15,6 +15,8 @@ interface Props {
   /** Opens PrivacyPolicyModal (rendered at App.tsx level) — surfaced on the register form so a new
    * account is never created without the policy having been reachable first. */
   onOpenPrivacyPolicy?: () => void;
+  /** Opens TermsOfServiceModal (rendered at App.tsx level) — same rationale as onOpenPrivacyPolicy. */
+  onOpenTermsOfService?: () => void;
 }
 
 // Same 5 levels/labels as GradeSelector.tsx and Navbar.tsx's GRADES, kept in sync manually since
@@ -27,12 +29,15 @@ const GRADE_OPTIONS: { id: PrimaryGrade; labelAr: string }[] = [
   { id: '5AP', labelAr: 'السنة الخامسة ابتدائي (5AP)' },
 ];
 
-export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy }) => {
+export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService }) => {
   const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [nom, setNom] = useState<string>('');
   const [grade, setGrade] = useState<PrimaryGrade | ''>('');
+  // Minimal parental supervision (product decision, pre-launch audit): optional, no verification —
+  // never blocks registration, just lets an admin reach a parent later if genuinely needed.
+  const [parentEmail, setParentEmail] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -51,6 +56,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
       setIsLogin(initialMode === 'login');
       setShowPassword(false);
       setGrade('');
+      setParentEmail('');
       setAuthFlow('credentials');
       setResetCode('');
       setNewPassword('');
@@ -138,7 +144,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         onAuthSuccess(result.user);
         onClose();
       } else {
-        const result = await AuthService.registerAsync(nom, email, password, grade || undefined);
+        const result = await AuthService.registerAsync(nom, email, password, grade || undefined, parentEmail.trim() || undefined);
         
         if (result.error || !result.user) {
           setStatusMessage({
@@ -390,6 +396,25 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </div>
           )}
 
+          {!isLogin && (
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                بريد ولي الأمر (اختياري):
+              </label>
+              <input
+                type="email"
+                value={parentEmail}
+                onChange={(e) => setParentEmail(e.target.value)}
+                placeholder="parent@example.com"
+                autoComplete="off"
+                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none dir-ltr"
+              />
+              <p className="text-[10px] text-slate-500 mt-1">
+                يساعدنا على التواصل مع ولي الأمر عند الحاجة (مثلاً بخصوص الاشتراك). لن يُطلب أي تفعيل لهذا البريد.
+              </p>
+            </div>
+          )}
+
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني:</label>
             <input
@@ -447,16 +472,28 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </div>
           )}
 
-          {!isLogin && onOpenPrivacyPolicy && (
+          {!isLogin && (onOpenPrivacyPolicy || onOpenTermsOfService) && (
             <p className="text-[11px] text-slate-500 text-center leading-relaxed">
               بإنشاء الحساب، أنت توافق على{' '}
-              <button
-                type="button"
-                onClick={onOpenPrivacyPolicy}
-                className="text-emerald-700 font-bold hover:underline cursor-pointer"
-              >
-                سياسة الخصوصية
-              </button>
+              {onOpenTermsOfService && (
+                <button
+                  type="button"
+                  onClick={onOpenTermsOfService}
+                  className="text-emerald-700 font-bold hover:underline cursor-pointer"
+                >
+                  الشروط والأحكام
+                </button>
+              )}
+              {onOpenTermsOfService && onOpenPrivacyPolicy && <span> و</span>}
+              {onOpenPrivacyPolicy && (
+                <button
+                  type="button"
+                  onClick={onOpenPrivacyPolicy}
+                  className="text-emerald-700 font-bold hover:underline cursor-pointer"
+                >
+                  سياسة الخصوصية
+                </button>
+              )}
             </p>
           )}
 

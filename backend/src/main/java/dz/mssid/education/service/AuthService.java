@@ -58,6 +58,7 @@ public class AuthService {
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .role(defaultRole)
                 .grade(request.getGrade())
+                .parentEmail(request.getParentEmail())
                 .createdAt(LocalDateTime.now())
                 .build();
 

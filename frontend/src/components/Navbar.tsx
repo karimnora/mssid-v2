@@ -43,6 +43,7 @@ interface NavbarProps {
   onOpenContactModal?: () => void;
   onOpenMobileSimulator?: () => void;
   onOpenPrivacyPolicy?: () => void;
+  onOpenTermsOfService?: () => void;
   onOpenAdminConsole?: () => void;
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
@@ -76,6 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenContactModal,
   onOpenMobileSimulator,
   onOpenPrivacyPolicy,
+  onOpenTermsOfService,
   onOpenAdminConsole,
   onHomeClick,
   currentTheme = 'neutre',
@@ -427,6 +429,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                       >
                         <FileText className="w-4 h-4 text-[var(--app-text-muted)]" />
                         <span>سياسة الخصوصية Google Play</span>
+                      </button>
+                    )}
+                    {onOpenTermsOfService && (
+                      <button
+                        onClick={() => { onOpenTermsOfService(); setIsProfileDropdownOpen(false); }}
+                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                      >
+                        <FileText className="w-4 h-4 text-[var(--app-text-muted)]" />
+                        <span>الشروط والأحكام</span>
                       </button>
                     )}
                   </motion.div>

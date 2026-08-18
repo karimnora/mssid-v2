@@ -20,4 +20,9 @@ public class RegisterRequest {
     // going forward — see UserMapper/GradeSelector on the frontend. Free-text on purpose, same as
     // User.grade/CmsCourse.grade elsewhere, so adding non-primaire levels later needs no migration.
     private String grade;
+
+    // Optional minimal parental supervision (product decision, pre-launch audit) — no verification,
+    // never blocks registration. @Email only validates the format when a value is actually supplied.
+    @Email(message = "Le format de l'e-mail du parent est invalide")
+    private String parentEmail;
 }

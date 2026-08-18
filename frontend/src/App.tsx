@@ -23,6 +23,7 @@ import { EmailVerificationPopup } from './components/EmailVerificationPopup';
 import { HomeView, HomePoleId } from './components/HomeView';
 import { MobileAppSimulator } from './components/MobileAppSimulator';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
+import { TermsOfServiceModal } from './components/TermsOfServiceModal';
 import { Navbar, HeaderTheme } from './components/Navbar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
@@ -318,6 +319,7 @@ export default function App() {
   const [isEmailVerifyPopupOpen, setIsEmailVerifyPopupOpen] = useState(false);
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isDressingRoomOpen, setIsDressingRoomOpen] = useState(false);
   const [isHomeworkPinOpen, setIsHomeworkPinOpen] = useState(false);
@@ -817,6 +819,7 @@ export default function App() {
         onOpenContactModal={() => setIsContactModalOpen(true)}
         onOpenMobileSimulator={() => setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
+        onOpenTermsOfService={() => setIsTermsModalOpen(true)}
         onOpenAdminConsole={() => setIsAdminConsoleActive(true)}
         onOpenPreschool={() => setIsPreschoolActive(true)}
         onHomeClick={() => {
@@ -1279,6 +1282,7 @@ export default function App() {
         onClose={() => setIsAuthModalOpen(false)}
         initialMode={authModalInitialMode}
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
+        onOpenTermsOfService={() => setIsTermsModalOpen(true)}
         onAuthSuccess={() => {
           // AuthService.loginAsync/registerAsync already call setCurrentUser internally — authUser
           // (via useAuth()) updates on its own the moment login succeeds. Read AuthService directly
@@ -1347,6 +1351,11 @@ export default function App() {
       <PrivacyPolicyModal
         isOpen={isPrivacyModalOpen}
         onClose={() => setIsPrivacyModalOpen(false)}
+      />
+
+      <TermsOfServiceModal
+        isOpen={isTermsModalOpen}
+        onClose={() => setIsTermsModalOpen(false)}
       />
 
       <Suspense fallback={null}>

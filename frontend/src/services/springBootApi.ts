@@ -301,7 +301,7 @@ public async request<T>(
     });
   }
 
-  public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string }) {
+  public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string; parentEmail?: string }) {
     const payload = {
       nom: userData.nom,
       email: userData.email,
@@ -309,6 +309,7 @@ public async request<T>(
       passwordHash: userData.passwordHash || userData.password || '',
       roleName: userData.roleName || 'ROLE_FREE',
       grade: userData.grade,
+      parentEmail: userData.parentEmail || undefined,
     };
 
     return this.request<SpringBootAuthResponse>('/v1/auth/register', {

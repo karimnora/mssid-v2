@@ -214,9 +214,9 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
     return user;
   }
 
-static async registerAsync(nom: string, email: string, pass: string, grade?: string): Promise<{ user: AuthUser | null; error?: string }> {
+static async registerAsync(nom: string, email: string, pass: string, grade?: string, parentEmail?: string): Promise<{ user: AuthUser | null; error?: string }> {
   try {
-    const response = await springBootApi.register({ nom, email, password: pass, grade });
+    const response = await springBootApi.register({ nom, email, password: pass, grade, parentEmail });
 
     if (response.error || !response.data) {
       return {
