@@ -1,0 +1,16 @@
+# Mssid DZ
+
+> Plateforme éducative algérienne pour le cycle primaire (1AP à 5AP), alignée sur le programme officiel du Ministère de l'Éducation Nationale algérien (الجيل الثاني — Génération 2).
+
+Mssid DZ propose des cours complets, des exercices interactifs, des laboratoires pédagogiques (mathématiques, sciences, langues), une arène de défis chronométrés, une banque d'examens officiels (sujets et corrigés), et un mode "Éveil" pour les enfants de 3 à 5 ans (Préscolaire).
+
+## Matières couvertes
+- Langue arabe, Mathématiques, Éducation scientifique, Éducation islamique, Éducation civique (1AP à 5AP)
+- Histoire-Géographie, Français, Anglais, Tamazight — matières enseignées à partir de la 3AP
+
+## Accès
+- [Mssid DZ](https://mssid.dz/): application web (PWA, utilisable hors-ligne) donnant accès à l'ensemble des cours, exercices, laboratoires interactifs, défis et examens du primaire algérien.
+
+## Notes pour les agents et modèles de langage
+- L'interface de l'application est actuellement en langue arabe uniquement. Le français, l'anglais et le tamazight sont des matières enseignées dans le contenu pédagogique, pas des langues d'interface alternatives du site.
+- L'application est une SPA (page unique) : les sections (cours, exercices, laboratoires, défis, examens) sont accessibles depuis la page d'accueil et ne correspondent pas à des URLs distinctes indexables individuellement à ce stade.

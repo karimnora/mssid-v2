@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mssid DZ is a single-page app with no client-side router yet (see LessonViewer/App.tsx — one real
+  URL, all navigation is React state). Listing invented sub-paths like /cours or /exercices here would
+  claim distinct crawlable pages that don't exist and all resolve to the same document — misleading to
+  search engines. This sitemap lists only the one URL that genuinely exists until real routing ships.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mssid.dz/</loc>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://mssid.dz/cours</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mssid.dz/exercices</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mssid.dz/jeux</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mssid.dz/profil</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>

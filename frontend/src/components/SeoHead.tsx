@@ -23,6 +23,43 @@ const metadata = {
   },
 };
 
+// Organization + WebSite describe the site itself, not a specific page, so they're stable regardless
+// of app state. Course describes the whole 1AP-5AP catalog as one entity rather than one Course per
+// subject: the app has a single real URL (no client-side router), so fragmenting into many Course
+// objects that all repeat that same `url` would look repetitive/spammy to crawlers for no benefit —
+// this can split into distinct per-subject entries once real per-course pages exist to point to.
+const ORGANIZATION_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Mssid DZ',
+  url: 'https://mssid.dz/',
+  logo: 'https://mssid.dz/pwa-512x512.png',
+  description: metadata.ar.description,
+  areaServed: 'DZ',
+};
+
+const WEBSITE_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Mssid DZ',
+  url: 'https://mssid.dz/',
+  inLanguage: 'ar',
+};
+
+const COURSE_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'برنامج التعليم الابتدائي الجزائري - مَسِيد DZ',
+  description: metadata.ar.description,
+  provider: { '@type': 'Organization', name: 'Mssid DZ', sameAs: 'https://mssid.dz/' },
+  url: 'https://mssid.dz/',
+  hasCourseInstance: ['1AP', '2AP', '3AP', '4AP', '5AP'].map((grade) => ({
+    '@type': 'CourseInstance',
+    name: grade,
+    courseMode: 'online',
+  })),
+};
+
 export const SeoHead: React.FC = () => {
   const { locale, direction } = useLocaleContext();
   const localeMeta = metadata[locale] || metadata.ar;
@@ -41,6 +78,9 @@ export const SeoHead: React.FC = () => {
       <meta name="twitter:title" content={localeMeta.title} />
       <meta name="twitter:description" content={localeMeta.description} />
       <link rel="canonical" href="https://mssid.dz/" />
+      <script type="application/ld+json">{JSON.stringify(ORGANIZATION_JSON_LD)}</script>
+      <script type="application/ld+json">{JSON.stringify(WEBSITE_JSON_LD)}</script>
+      <script type="application/ld+json">{JSON.stringify(COURSE_JSON_LD)}</script>
     </Helmet>
   );
 };
