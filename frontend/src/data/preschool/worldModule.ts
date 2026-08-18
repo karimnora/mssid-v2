@@ -8,7 +8,7 @@ export const WORLD_MODULE: PreschoolModule = {
   id: 'preschool-world',
   domain: 'animals',
   icon: '🌍',
-  totalSteps: 3,
+  totalSteps: 5,
   titleI18n: {
     ar: 'عَالَمِي الصَّغِيرُ وَقِيَمِي',
     fr: 'Mon Petit Monde & Valeurs',
@@ -122,6 +122,80 @@ export const WORLD_MODULE: PreschoolModule = {
           { id: 'bird-nest', leftAsset: '🐦', rightAsset: '🪺' },
           { id: 'bee-hive', leftAsset: '🐝', rightAsset: '🍯' },
           { id: 'fish-sea', leftAsset: '🐟', rightAsset: '🌊' },
+        ],
+      },
+    },
+    {
+      id: 'world-handwashing-steps',
+      domain: 'animals',
+      targetValue: 'handwashing',
+      stepNumber: 4,
+      interactionType: 'sorting',
+      i18n: {
+        ar: {
+          title: 'أَغْسِلُ يَدَيَّ جَيِّداً',
+          promptAudio: 'نَبْدَأُ بِفَتْحِ المَاءِ وَوَضْعِ الصَّابُون، وَنُنْهِي بِالتَّجْفِيفِ! ضَعْ كُلَّ خُطْوَةٍ فِي مَكَانِهَا!',
+          promptText: 'ساعد طفلك على ترتيب خطوات غسل اليدين: ماء، صابون، ثم تجفيف.',
+          successAudio: 'يَدَاكَ نَظِيفَتَانِ الآن! أَحْسَنْتَ التَّرْتِيب!',
+        },
+        fr: {
+          title: 'Je Me Lave Bien les Mains',
+          promptAudio: 'On commence par ouvrir l\'eau et mettre le savon, et on finit en s\'essuyant ! Mets chaque étape à sa place !',
+          promptText: 'Aidez l\'enfant à ordonner les étapes du lavage des mains : eau, savon, puis essuyage.',
+          successAudio: 'Tes mains sont propres maintenant ! Bel ordre !',
+        },
+        en: {
+          title: 'I Wash My Hands Well',
+          promptAudio: 'We start by turning on the water and using soap, and we finish by drying! Put each step in its place!',
+          promptText: 'Help your child order the handwashing steps: water, soap, then drying.',
+          successAudio: 'Your hands are clean now! Great ordering!',
+        },
+      },
+      visualAssets: {
+        mainSvgOrImage: '🧼',
+        sortBins: [
+          { id: 'start', labelAsset: '🚰' },
+          { id: 'finish', labelAsset: '🧻' },
+        ],
+        sortItems: [
+          { id: 'wet-hands', asset: '💧', correctBinId: 'start' },
+          { id: 'soap-scrub', asset: '🧼', correctBinId: 'start' },
+          { id: 'dry-towel', asset: '🧻', correctBinId: 'finish' },
+          { id: 'clean-hands', asset: '✨', correctBinId: 'finish' },
+        ],
+      },
+    },
+    {
+      id: 'world-tooth-brushing',
+      domain: 'animals',
+      targetValue: 'toothbrushing',
+      stepNumber: 5,
+      interactionType: 'tap_choice',
+      i18n: {
+        ar: {
+          title: 'أُنَظِّفُ أَسْنَانِي',
+          promptAudio: 'بَعْدَ الأَكْلِ، نُنَظِّفُ أَسْنَانَنَا بِالفُرْشَاةِ وَالمَعْجُون! اِلْمِسِ الفُرْشَاةَ!',
+          promptText: 'ساعد طفلك على تذكر تنظيف الأسنان بعد الوجبات.',
+          successAudio: 'أَسْنَانٌ نَظِيفَةٌ وَلَامِعَة! أَنْتَ بَطَلُ النَّظَافَة!',
+        },
+        fr: {
+          title: 'Je Nettoie Mes Dents',
+          promptAudio: 'Après manger, on nettoie ses dents avec la brosse et le dentifrice ! Touche la brosse à dents !',
+          promptText: 'Aidez l\'enfant à se souvenir de se brosser les dents après les repas.',
+          successAudio: 'Des dents propres et brillantes ! Tu es le champion de la propreté !',
+        },
+        en: {
+          title: 'I Clean My Teeth',
+          promptAudio: 'After eating, we clean our teeth with a brush and toothpaste! Tap the toothbrush!',
+          promptText: 'Help your child remember to brush teeth after meals.',
+          successAudio: 'Clean, shiny teeth! You are the hygiene champion!',
+        },
+      },
+      visualAssets: {
+        mainSvgOrImage: '🦷',
+        choices: [
+          { id: 'toothbrush', asset: '🪥', isCorrect: true },
+          { id: 'candy', asset: '🍬', isCorrect: false },
         ],
       },
     },
