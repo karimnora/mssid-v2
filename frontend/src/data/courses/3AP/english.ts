@@ -481,6 +481,192 @@ export const ENGLISH_3AP: CourseLesson[] = [
 },
 
 {
+    id: 'english-3ap-u4-time-routines',
+    grade: '3AP',
+    subject: 'english',
+    trimester: 3,
+    domainAr: 'English Language - Time & Daily Routines',
+    sequenceAr: 'Unit 4 - Sequence 2: What Time Is It? My Daily Routine',
+    categoryAr: 'اللغة الإنجليزية - الوقت والروتين اليومي',
+    titleAr: 'UNIT 4 (S2) : WHAT TIME IS IT? MY DAILY ROUTINE',
+    summaryAr: 'Pupils learn to ask and tell the time using "What time is it? - It\'s ... o\'clock", and to describe their daily routine with simple present verbs (wake up, get up, eat breakfast, go to school, go to bed).',
+    objectiveAr: 'Ask and answer about time using o\'clock, and describe a simple daily routine in English.',
+    objectivesAr: [
+        'أَسْأَلُ عَنِ الوَقْتِ وَأُجِيبُ بِـ "It\'s ... o\'clock".',
+        'أَصِفُ رُوتِينِي اليَوْمِيَّ بِأَفْعَالٍ بَسِيطَةٍ فِي الحَاضِرِ.',
+    ],
+    detailedCourse: {
+        introAr: 'لمعرفة الوقت بالإنجليزية نسأل "What time is it?" ونجيب بـ "It\'s ... o\'clock". ولوصف يومنا نستعمل أفعالاً بسيطة مثل wake up وgo to school.',
+        vocabulary: [
+            { termAr: 'What time is it?', definitionAr: 'سؤال عن الوقت الحالي، الإجابة عليه تكون بصيغة "It\'s ... o\'clock".' },
+            { termAr: 'Daily routine', definitionAr: 'الأنشطة التي نقوم بها كل يوم بنفس الترتيب تقريباً، مثل الاستيقاظ والذهاب للمدرسة.' },
+        ],
+        visualizationHintAr: 'ارسم ساعة بعقارب متحركة مع طفلك واطلب منه قول الوقت بالإنجليزية "It\'s ... o\'clock" لأوقات مختلفة من يومه.',
+        commonMistakes: [
+            { mistakeAr: 'نسيان "o\'clock" عند الإجابة عن السؤال عن الوقت.', correctionAr: 'الإجابة الكاملة يجب أن تحتوي "o\'clock" بعد الرقم: "It\'s seven o\'clock"، وليس "It\'s seven" فقط.' },
+        ],
+        takeawayAr: 'What time is it? - It\'s [number] o\'clock. Daily routine: wake up, get up, eat breakfast, go to school, go to bed.',
+    },
+    keyFormulas: [
+        { labelAr: 'Telling the time', formulaAr: 'It\'s + [number] + o\'clock' },
+    ],
+    discoveryAr: 'Yassine\'s morning:\n- "What time is it?" - "It\'s seven o\'clock! I wake up at seven o\'clock."\n- "I eat breakfast at half past seven."\n- "I go to school at eight o\'clock."\n- "I go to bed at nine o\'clock at night."',
+    rulesAr: [
+      'Asking the Time: "What time is it?" (كم الساعة؟) ➔ "It\'s [number] o\'clock" (الساعة كذا تماماً).',
+      'Daily Routine Verbs: wake up (أستيقظ), get up (أنهض), eat breakfast (أتناول الفطور), go to school (أذهب إلى المدرسة), do homework (أُنجز واجباتي), go to bed (أخلد إلى النوم).',
+      'Structure with Time: "I [verb] at [time] o\'clock." Example: "I wake up at seven o\'clock." "I go to bed at nine o\'clock."',
+      'Order of the Day: morning (الصباح) ➔ afternoon (بعد الظهر) ➔ evening (المساء) ➔ night (الليل).'
+    ],
+    interactiveTool: 'english_lab',
+    examplesAr: [
+      {
+        problem: 'How do you ask "كم الساعة؟" in English?',
+        solution: '"What time is it?"'
+      },
+      {
+        problem: 'How do you say "أذهب إلى المدرسة الساعة الثامنة" in English?',
+        solution: '"I go to school at eight o\'clock."'
+      }
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-en3ap-time-1',
+        level: 1,
+        levelLabelAr: '🟢 Level 1 — Easy',
+        problemAr: 'How do you say "أستيقظ" in English?',
+        hintsAr: ['Two words: wake ...'],
+        solutionAr: 'Wake up',
+        detailedCorrectionAr: 'Well done! 🌅 "Wake up" means أستيقظ.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-en3ap-time-2',
+        level: 2,
+        levelLabelAr: '🟡 Level 2 — Medium',
+        problemAr: 'Complete: "It\'s eight ....." (الساعة الثامنة تماماً)',
+        hintsAr: ['A word that always follows the hour number'],
+        solutionAr: "o'clock",
+        detailedCorrectionAr: 'Awesome! 🎯 "It\'s eight o\'clock" means الساعة الثامنة تماماً.',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-en3ap-u4s2',
+      type: 'association',
+      titleAr: '🎮 My Day Time Challenge',
+      instructionsAr: 'Match the daily activity to its correct time expression!',
+      items: [
+        { questionOrPromptAr: 'I ..... at seven o\'clock in the morning.', correctAnswerAr: 'wake up', optionsAr: ['wake up', 'go to bed', 'eat dinner'], explanationAr: 'We wake up in the morning.' },
+        { questionOrPromptAr: 'I ..... at nine o\'clock at night.', correctAnswerAr: 'go to bed', optionsAr: ['go to bed', 'wake up', 'go to school'], explanationAr: 'We go to bed at night.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-u4s2',
+        questionAr: 'What is the correct answer to "What time is it?" when the clock shows 7:00?',
+        options: [
+          { id: 'a', textAr: 'It\'s seven o\'clock.', isCorrect: true, explanationAr: 'Correct! "It\'s seven o\'clock" is the right way to tell the time.' },
+          { id: 'b', textAr: 'It\'s seven.', isCorrect: false }
+        ]
+      }
+    ]
+},
+
+{
+    id: 'english-3ap-u4-food-drinks',
+    grade: '3AP',
+    subject: 'english',
+    trimester: 3,
+    domainAr: 'English Language - Food & Drinks Vocabulary',
+    sequenceAr: 'Unit 4 - Sequence 3: Food & Drinks',
+    categoryAr: 'اللغة الإنجليزية - الطعام والشراب',
+    titleAr: 'UNIT 4 (S3) : FOOD & DRINKS ("I LIKE APPLES", "I DON\'T LIKE MILK")',
+    summaryAr: 'Pupils learn vocabulary for common food (apple, banana, bread, rice, chicken, egg, cheese) and drinks (water, milk, juice, tea), and practice expressing likes and dislikes about food with "I like" and "I don\'t like".',
+    objectiveAr: 'Name common food and drinks, and express food preferences using "I like" / "I don\'t like".',
+    objectivesAr: [
+        'أُسَمِّي أَطْعِمَةً وَمَشْرُوبَاتٍ شَائِعَةً بِالإِنْجِلِيزِيَّةِ.',
+        'أُعَبِّرُ عَنْ تَفْضِيلِي الغِذَائِيِّ بِـ "I like" وَ"I don\'t like".',
+    ],
+    detailedCourse: {
+        introAr: 'نتعلم اليوم أسماء بعض الأطعمة والمشروبات المألوفة، ونتدرب على التعبير عمّا نحبه وما لا نحبه من الطعام بالإنجليزية.',
+        vocabulary: [
+            { termAr: 'Food (الطعام)', definitionAr: 'كل ما نأكله، مثل apple, bread, rice, chicken, egg.' },
+            { termAr: 'Drinks (المشروبات)', definitionAr: 'كل ما نشربه، مثل water, milk, juice, tea.' },
+        ],
+        visualizationHintAr: 'اصنع مع طفلك قائمة بأطعمة يحبها وأخرى لا يحبها، واطلب منه قول كل واحدة بجملة "I like..." أو "I don\'t like...".',
+        commonMistakes: [
+            { mistakeAr: 'استعمال "I have" بدل "I like" للتعبير عن التفضيل الغذائي.', correctionAr: '"I have" تعني الامتلاك، بينما "I like" تعني الإعجاب بطعم شيء — لا تبديل بينهما عند الحديث عن الأذواق.' },
+        ],
+        takeawayAr: 'Food: apple, banana, bread, rice, chicken, egg, cheese. Drinks: water, milk, juice, tea. I like.../I don\'t like... للتعبير عن التفضيل الغذائي.',
+    },
+    keyFormulas: [
+        { labelAr: 'Expressing food preference', formulaAr: 'I like + [food/drink] | I don\'t like + [food/drink]' },
+    ],
+    discoveryAr: 'At the table:\n- "What do you like to eat, Amina?" - "I like apples and bread! I don\'t like fish."\n- "What do you like to drink?" - "I like milk and juice. I don\'t like tea."',
+    rulesAr: [
+      'Food Vocabulary: apple (تفاحة), banana (موزة), bread (خبز), rice (أرز), chicken (دجاج), egg (بيضة), cheese (جبن).',
+      'Drinks Vocabulary: water (ماء), milk (حليب), juice (عصير), tea (شاي).',
+      'Expressing Preferences: "I like [food/drink]" (أحب...) | "I don\'t like [food/drink]" (لا أحب...).',
+      'Asking About Preferences: "Do you like apples?" (هل تحب التفاح؟) ➔ "Yes, I do." (نعم) أو "No, I don\'t." (لا).'
+    ],
+    interactiveTool: 'english_lab',
+    examplesAr: [
+      {
+        problem: 'How do you say "أنا أحب التفاح" in English?',
+        solution: '"I like apples."'
+      },
+      {
+        problem: 'How do you say "أنا لا أحب الحليب" in English?',
+        solution: '"I don\'t like milk."'
+      }
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-en3ap-food-1',
+        level: 1,
+        levelLabelAr: '🟢 Level 1 — Easy',
+        problemAr: 'What is the English word for "خبز" ?',
+        hintsAr: ['Starts with letter B'],
+        solutionAr: 'Bread',
+        detailedCorrectionAr: 'Well done! 🍞 "Bread" means خبز in English.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-en3ap-food-2',
+        level: 2,
+        levelLabelAr: '🟡 Level 2 — Medium',
+        problemAr: 'Complete: "Do you like fish? - No, I ....." (لا، لا أحب)',
+        hintsAr: ['Negative short answer'],
+        solutionAr: "don't",
+        detailedCorrectionAr: 'Great job! 👏 "No, I don\'t" is the correct negative short answer.',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-en3ap-u4s3',
+      type: 'association',
+      titleAr: '🎮 Food & Drinks Matching Game',
+      instructionsAr: 'Match the English food or drink word to its Arabic translation!',
+      items: [
+        { questionOrPromptAr: 'Chicken', correctAnswerAr: 'دجاج', optionsAr: ['دجاج', 'جبن', 'أرز'], explanationAr: 'Chicken means دجاج.' },
+        { questionOrPromptAr: 'Juice', correctAnswerAr: 'عصير', optionsAr: ['عصير', 'ماء', 'حليب'], explanationAr: 'Juice means عصير.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-u4s3',
+        questionAr: 'How do you say "أنا لا أحب الحليب" in English?',
+        options: [
+          { id: 'a', textAr: "I don't like milk.", isCorrect: true, explanationAr: 'Correct! "I don\'t like milk" is the right negative sentence.' },
+          { id: 'b', textAr: 'I like milk.', isCorrect: false }
+        ]
+      }
+    ]
+},
+
+{
     id: 'english-3ap-u5-body-parts-review',
     grade: '3AP',
     subject: 'english',
