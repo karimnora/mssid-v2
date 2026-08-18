@@ -542,6 +542,12 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                 }
               }
 
+              // What each option shows depends on questionType — showing the wilaya's own name when
+              // the question asks "which wilaya has number X" (questionType 0) would let a child find
+              // the answer by matching text instead of actually knowing the number, and showing both
+              // nameAr and capitalAr together was pure noise for the many wilayas whose capital shares
+              // the wilaya's name (e.g. بجاية/بجاية) — each option now surfaces only the one piece of
+              // information the question is actually testing.
               return (
                 <button
                   key={opt.code}
@@ -549,9 +555,18 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   onClick={() => handleQuizAnswer(opt)}
                   className={`p-4 rounded-2xl border-2 font-black transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${btnClass}`}
                 >
-                  <span className="text-2xl font-black">الولاية ({opt.codeStr})</span>
-                  <span className="text-sm font-bold opacity-90">{opt.nameAr}</span>
-                  <span className="text-[10px] opacity-75">{opt.capitalAr}</span>
+                  {questionType === 0 && (
+                    <span className="text-2xl font-black">الولاية ({opt.codeStr})</span>
+                  )}
+                  {questionType === 1 && (
+                    <>
+                      <span className="text-lg font-black">{opt.nameAr}</span>
+                      <span className="text-[10px] opacity-75">الولاية ({opt.codeStr})</span>
+                    </>
+                  )}
+                  {questionType === 2 && (
+                    <span className="text-xl font-black">{opt.capitalAr}</span>
+                  )}
                 </button>
               );
             })}
