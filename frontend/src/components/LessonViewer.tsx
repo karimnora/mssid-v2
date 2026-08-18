@@ -125,6 +125,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [shuffledQuiz, setShuffledQuiz] = useState<CourseLesson['quiz']>([]);
   const [awardedQuizIds, setAwardedQuizIds] = useState<Set<string>>(new Set());
+  const [gameAnswers, setGameAnswers] = useState<Record<number, string>>({});
+  const [gameXpAwarded, setGameXpAwarded] = useState(false);
   const [recentAnswerId, setRecentAnswerId] = useState<string | null>(null);
   const [visibleSolutions, setVisibleSolutions] = useState<Record<number, boolean>>({});
   const [activeTab, setActiveTab] = useState<TabId>('explanation');
@@ -314,6 +316,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setMatchingConnections({});
     setMatchingSelectedLeft({});
     setOrderingSelections({});
+    setGameAnswers({});
+    setGameXpAwarded(false);
 
     // Never let a read-aloud from the previous lesson keep playing after navigating away.
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
@@ -369,6 +373,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         onQuizFullyValidated?.(lesson.id);
       }
     }
+  };
+
+  const handleSelectGameOption = (itemIndex: number, optionAr: string) => {
+    if (gameAnswers[itemIndex] !== undefined) return; // already locked
+    setGameAnswers((prev) => {
+      const next = { ...prev, [itemIndex]: optionAr };
+      const game = lesson.educationalGame;
+      if (game && !gameXpAwarded && Object.keys(next).length === game.items.length) {
+        const allCorrect = game.items.every((item, i) => next[i] === item.correctAnswerAr);
+        if (allCorrect) {
+          setGameXpAwarded(true);
+          onCompleteQuiz(lesson.id, game.xpReward);
+        }
+      }
+      return next;
+    });
   };
 
   // Dynamically compute the exact steps available for this lesson (matching the header perfectly)
@@ -796,21 +816,58 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   </div>
                   <p className="text-xs text-purple-200">{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
                   <div className="space-y-2">
-                    {lesson.educationalGame.items.map((item, i) => (
-                      <div key={i} className="bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs">
-                        <p className="font-bold mb-1.5">{renderArabicText(item.questionOrPromptAr)}</p>
-                        {item.optionsAr && (
-                          <div className="flex gap-2 flex-wrap">
-                            {item.optionsAr.map((optAr) => (
-                              <span key={optAr} className="px-2.5 py-1 rounded-lg bg-white/10 text-purple-100">
-                                {renderArabicText(optAr)}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                    {lesson.educationalGame.items.map((item, i) => {
+                      const selected = gameAnswers[i];
+                      const isAnswered = selected !== undefined;
+                      const isCorrect = selected === item.correctAnswerAr;
+                      return (
+                        <div key={i} className="bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs space-y-2">
+                          <p className="font-bold mb-1.5">{renderArabicText(item.questionOrPromptAr)}</p>
+                          {item.optionsAr && (
+                            <div className="flex gap-2 flex-wrap">
+                              {item.optionsAr.map((optAr) => {
+                                const isThisCorrect = optAr === item.correctAnswerAr;
+                                const isThisSelected = selected === optAr;
+                                let style = 'bg-white/10 text-purple-100 hover:bg-white/20 cursor-pointer';
+                                if (isAnswered) {
+                                  style = isThisCorrect
+                                    ? 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold'
+                                    : isThisSelected
+                                    ? 'bg-rose-500/25 text-rose-200 border border-rose-400/50'
+                                    : 'bg-white/5 text-purple-300/60';
+                                }
+                                return (
+                                  <button
+                                    key={optAr}
+                                    type="button"
+                                    disabled={isAnswered}
+                                    onClick={() => handleSelectGameOption(i, optAr)}
+                                    className={`px-2.5 py-1 rounded-lg transition-colors ${style}`}
+                                  >
+                                    {renderArabicText(optAr)}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
+                          {isAnswered && item.explanationAr && (
+                            <p className={`text-[11px] ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}`}>
+                              {isCorrect ? '✅ ' : '💡 '}{renderArabicText(item.explanationAr)}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
+                  {Object.keys(gameAnswers).length === lesson.educationalGame.items.length && (
+                    <button
+                      type="button"
+                      onClick={() => setGameAnswers({})}
+                      className="text-[11px] font-bold text-purple-200 hover:text-white underline cursor-pointer"
+                    >
+                      إعادة المحاولة 🔄
+                    </button>
+                  )}
                 </div>
               )}
             </div>

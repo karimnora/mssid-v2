@@ -53,7 +53,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: 'فوق = للأعلى، تحت = للأسفل، أمام = في الوجه، وراء = في الظهر.',
     },
-    interactiveTool: 'geometry_visualizer',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-spatial',
