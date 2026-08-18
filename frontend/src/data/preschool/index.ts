@@ -8,6 +8,8 @@ import { WORLD_MODULE } from './worldModule';
 import { PRE_WRITING_MODULE } from './preWritingModule';
 import { LOGIC_SPATIAL_MODULE } from './logicSpatialModule';
 import { ISLAMIC_VALUES_MODULE } from './islamicValuesModule';
+import { CREATIVE_GAMES_MODULE } from './creativeGamesModule';
+import { ARCADE_GAMES_MODULE } from './arcadeGamesModule';
 
 export * from './types';
 
@@ -22,4 +24,6 @@ export const PRESCHOOL_MODULES: PreschoolModule[] = [
   PRE_WRITING_MODULE,
   LOGIC_SPATIAL_MODULE,
   ISLAMIC_VALUES_MODULE,
+  CREATIVE_GAMES_MODULE,
+  ARCADE_GAMES_MODULE,
 ];

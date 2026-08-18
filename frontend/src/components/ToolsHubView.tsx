@@ -52,7 +52,7 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Trophy,
 };
 
-// Perfectly organized into 4 distinct pedagogical families covering all 21 tools
+// Organized into 4 distinct pedagogical families covering every registered tool
 const CATEGORY_GROUPS: {
   key: string;
   labelAr: string;
@@ -65,28 +65,28 @@ const CATEGORY_GROUPS: {
     labelAr: '🇩🇿 الهوية، التراث والتقييم الرسمي',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300',
     icon: Shield,
-    toolIds: ['wilayas_map', 'history_museum', 'algerian_market'],
+    toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map'],
   },
   {
     key: 'math_logic',
     labelAr: '📐 الرياضيات، الحساب الذهني والمقادير',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     icon: Calculator,
-    toolIds: ['primary_math_ops', 'soroban', 'multiplication', 'educational_calculator', 'converter', 'geometry'],
+    toolIds: ['primary_math_ops', 'soroban', 'multiplication', 'educational_calculator', 'converter', 'geometry', 'fractions_lab', 'area_grid', 'clock_trainer'],
   },
   {
     key: 'science_discovery',
     labelAr: '🧪 العلوم، التجارب والإيقاظ العلمي',
     badgeColor: 'bg-teal-100 text-teal-900 border-teal-300',
     icon: FlaskConical,
-    toolIds: ['science_lab', 'electricity', 'primary_discovery'],
+    toolIds: ['science_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'],
   },
   {
     key: 'languages_expression',
     labelAr: '🗣️ اللغات، المشاريع، الخط والتصريف',
     badgeColor: 'bg-purple-100 text-purple-900 border-purple-300',
     icon: Languages,
-    toolIds: ['french_projects', 'english_audio_dialogues', 'touch_writing', 'arabic_conjugator', 'french_lab', 'english_lab', 'tamazight_lab', 'tamazight_curriculum'],
+    toolIds: ['french_projects', 'english_audio_dialogues', 'touch_writing', 'arabic_conjugator', 'french_lab', 'english_lab', 'tamazight_lab', 'tamazight_curriculum', 'syllable_studio', 'speed_reading'],
   },
 ];
 

@@ -10,6 +10,9 @@ import { PreschoolConnectDots } from './PreschoolConnectDots';
 import { PreschoolSorting } from './PreschoolSorting';
 import { PreschoolMemoryCards } from './PreschoolMemoryCards';
 import { PreschoolBubblePop } from './PreschoolBubblePop';
+import { PreschoolColoring } from './PreschoolColoring';
+import { PreschoolMaze } from './PreschoolMaze';
+import { PreschoolJigsaw } from './PreschoolJigsaw';
 import { usePreschoolSpeech } from './usePreschoolAudio';
 
 interface PreschoolActivityPlayerProps {
@@ -131,6 +134,15 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           )}
           {activity.interactionType === 'creative_extra' && (
             <PreschoolBubblePop activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'coloring' && (
+            <PreschoolColoring activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'maze' && (
+            <PreschoolMaze activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'jigsaw' && (
+            <PreschoolJigsaw activity={activity} onComplete={handleInteractionComplete} />
           )}
         </div>
       </div>

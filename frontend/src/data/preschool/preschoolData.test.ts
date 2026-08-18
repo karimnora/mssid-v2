@@ -93,6 +93,26 @@ describe('Preschool (Mode Éveil) data integrity', () => {
                 expect(assets.mainSvgOrImage?.trim(), activity.id).toBeTruthy();
                 break;
               }
+              case 'coloring': {
+                expect(assets.coloringRegions?.length, activity.id).toBeGreaterThanOrEqual(2);
+                break;
+              }
+              case 'maze': {
+                // Start + at least one waypoint + goal, so there's an actual route to trace.
+                expect(assets.mazeWaypoints?.length, activity.id).toBeGreaterThanOrEqual(3);
+                break;
+              }
+              case 'jigsaw': {
+                const slots = assets.jigsawSlots || [];
+                const pieces = assets.jigsawPieces || [];
+                expect(slots.length, activity.id).toBeGreaterThanOrEqual(2);
+                expect(pieces.length, `${activity.id}: every slot needs exactly one matching piece`).toBe(slots.length);
+                const slotIds = new Set(slots.map((s) => s.id));
+                pieces.forEach((piece) => {
+                  expect(slotIds.has(piece.correctSlotId), `${activity.id}: piece ${piece.id} references unknown slot ${piece.correctSlotId}`).toBe(true);
+                });
+                break;
+              }
             }
           });
         });

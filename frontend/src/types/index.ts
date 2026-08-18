@@ -36,7 +36,15 @@ export type SubjectId =
   | 'primary_math_ops'
   | 'primary_discovery'
   | 'french_projects'
-  | 'english_audio_dialogues';
+  | 'english_audio_dialogues'
+  | 'human_anatomy'
+  | 'earth_cycles'
+  | 'fractions_lab'
+  | 'area_grid'
+  | 'clock_trainer'
+  | 'syllable_studio'
+  | 'speed_reading'
+  | 'topography_map';
 
 export interface SubjectInfo {
   id: SubjectId;

@@ -40,7 +40,7 @@ describe('isSubjectFeatureEnabled (flag-gated subject/tool visibility)', () => {
   it('tags every subject/tool entry meant to be flag-gated in the real catalog', () => {
     const flagged = SUBJECTS_LIST.filter((s) => !!s.featureFlag).map((s) => s.id).sort();
     expect(flagged).toEqual(
-      ['educational_calculator', 'electricity', 'geometry', 'science_lab', 'tamazight', 'tamazight_curriculum', 'tamazight_lab', 'touch_writing'].sort()
+      ['earth_cycles', 'educational_calculator', 'electricity', 'geometry', 'human_anatomy', 'science_lab', 'tamazight', 'tamazight_curriculum', 'tamazight_lab', 'touch_writing'].sort()
     );
   });
 });

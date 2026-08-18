@@ -58,6 +58,14 @@ const PrimaryMathLabInteractive = lazy(() => import('./components/PrimaryMathLab
 const PrimaryDiscoveryLabInteractive = lazy(() => import('./components/PrimaryDiscoveryLabInteractive').then((m) => ({ default: m.PrimaryDiscoveryLabInteractive })));
 const FrenchProjectsLabInteractive = lazy(() => import('./components/FrenchProjectsLabInteractive').then((m) => ({ default: m.FrenchProjectsLabInteractive })));
 const EnglishAudioDialoguesLab = lazy(() => import('./components/EnglishAudioDialoguesLab').then((m) => ({ default: m.EnglishAudioDialoguesLab })));
+const HumanAnatomyLab = lazy(() => import('./components/HumanAnatomyLab').then((m) => ({ default: m.HumanAnatomyLab })));
+const EarthCyclesLab = lazy(() => import('./components/EarthCyclesLab').then((m) => ({ default: m.EarthCyclesLab })));
+const FractionsDecimalsLab = lazy(() => import('./components/FractionsDecimalsLab').then((m) => ({ default: m.FractionsDecimalsLab })));
+const AreaPerimeterGridLab = lazy(() => import('./components/AreaPerimeterGridLab').then((m) => ({ default: m.AreaPerimeterGridLab })));
+const ClockTrainerLab = lazy(() => import('./components/ClockTrainerLab').then((m) => ({ default: m.ClockTrainerLab })));
+const SyllableStudioLab = lazy(() => import('./components/SyllableStudioLab').then((m) => ({ default: m.SyllableStudioLab })));
+const SpeedReadingLab = lazy(() => import('./components/SpeedReadingLab').then((m) => ({ default: m.SpeedReadingLab })));
+const TopographyMapLab = lazy(() => import('./components/TopographyMapLab').then((m) => ({ default: m.TopographyMapLab })));
 const DidouDressingRoomModal = lazy(() => import('./components/DidouDressingRoomModal').then((m) => ({ default: m.DidouDressingRoomModal })));
 const HomeworkPinModal = lazy(() => import('./components/HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
 const PrintableWorksheetsGeneratorModal = lazy(() => import('./components/PrintableWorksheetsGeneratorModal').then((m) => ({ default: m.PrintableWorksheetsGeneratorModal })));
@@ -1159,6 +1167,22 @@ export default function App() {
               <UnitConverter grade={grade} theme={headerTheme} />
             ) : selectedSubject === 'multiplication' ? (
               <MultiplicationTableInteractive grade={grade} />
+            ) : selectedSubject === 'human_anatomy' ? (
+              <HumanAnatomyLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'earth_cycles' ? (
+              <EarthCyclesLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'fractions_lab' ? (
+              <FractionsDecimalsLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'area_grid' ? (
+              <AreaPerimeterGridLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'clock_trainer' ? (
+              <ClockTrainerLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'syllable_studio' ? (
+              <SyllableStudioLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'speed_reading' ? (
+              <SpeedReadingLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
+            ) : selectedSubject === 'topography_map' ? (
+              <TopographyMapLab grade={grade} onBack={() => setIsHomeActive(true)} onReward={handleLabReward} />
             ) : selectedSubject === 'exams' ? (
               <ExamsViewer
                 grade={grade}

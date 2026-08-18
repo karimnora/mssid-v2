@@ -5,7 +5,7 @@
 // into the primary-school lesson shape would either corrupt that shape or require awkward optional
 // fields nobody else needs. Nothing here is imported by, or imports from, the 1AP-5AP course data.
 
-export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'animals' | 'writing' | 'values';
+export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'animals' | 'writing' | 'values' | 'creative';
 
 export type PreschoolLanguage = 'ar' | 'fr' | 'en';
 
@@ -17,7 +17,10 @@ export type PreschoolInteractionType =
   | 'connect_dots'   // Tap-to-match a pair (left item, then its right match) — no precise line-drawing required
   | 'sorting'        // Drag items into the correct one of several category bins
   | 'memory_cards'   // Flip-and-match pairs, 2x2 (default) up to 2x3 cards
-  | 'creative_extra'; // Open slot for one-off original mini-games that don't fit the shapes above (e.g. bubble_pop below) — add new interactionType values here as they're invented, keep each one's own small, self-contained component
+  | 'creative_extra' // Open slot for one-off original mini-games that don't fit the shapes above (e.g. bubble_pop below) — add new interactionType values here as they're invented, keep each one's own small, self-contained component
+  | 'coloring'       // Tap-to-fill a picture made of simple declared shapes — no "wrong" color, done when every region has one
+  | 'maze'           // Drag a traveler along a dashed waypoint path from start to goal (stricter than find_path: must pass near every waypoint, not just reach the end)
+  | 'jigsaw';        // Drag each piece onto its matching ghost silhouette to reassemble a simple picture
 
 /**
  * "Child-first" voice rule: `promptAudio` (and `successAudio`) must always read as the mascot
@@ -86,6 +89,39 @@ export interface PreschoolMemoryPair {
   asset: string;
 }
 
+/** coloring: a region declared as a simple shape — never hand-authored SVG path data, so new
+ * pictures stay cheap to write. Coordinates share PreschoolTrace's 260x260 canvas box: circle/ellipse
+ * `x`/`y` are the shape's center, rect `x`/`y` is its top-left corner. */
+export interface PreschoolColoringRegion {
+  id: string;
+  shape: 'circle' | 'ellipse' | 'rect';
+  x: number;
+  y: number;
+  size: number;   // circle: radius; ellipse: horizontal radius (rx); rect: width
+  size2?: number; // ellipse: vertical radius (ry); rect: height — defaults to `size` when omitted
+}
+
+/** maze: a waypoint on the guide path, same 0-260 coordinate box as PreschoolTrace's canvas. The
+ * first entry is the start position, the last is the goal. */
+export interface PreschoolMazeWaypoint {
+  x: number;
+  y: number;
+}
+
+/** jigsaw: one landing slot on the puzzle board, positioned by its center point in px. */
+export interface PreschoolJigsawSlot {
+  id: string;
+  x: number;
+  y: number;
+}
+
+/** jigsaw: one draggable piece, matched to exactly one slot by id. */
+export interface PreschoolJigsawPiece {
+  id: string;
+  asset: string;
+  correctSlotId: string;
+}
+
 export interface PreschoolVisualAssets {
   /** Big emoji/glyph representing the activity itself (the numeral, or a counted group). */
   mainSvgOrImage: string;
@@ -107,6 +143,14 @@ export interface PreschoolVisualAssets {
   /** creative_extra / bubble_pop: how many bubbles to pop, and what's inside each one. */
   bubbleCount?: number;
   bubbleAsset?: string;
+  /** coloring */
+  coloringRegions?: PreschoolColoringRegion[];
+  /** maze */
+  mazeWaypoints?: PreschoolMazeWaypoint[];
+  mazeTravelerAsset?: string;
+  /** jigsaw */
+  jigsawSlots?: PreschoolJigsawSlot[];
+  jigsawPieces?: PreschoolJigsawPiece[];
 }
 
 export interface PreschoolActivity {
