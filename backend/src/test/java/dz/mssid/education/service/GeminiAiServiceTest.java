@@ -31,7 +31,7 @@ class GeminiAiServiceTest {
     @BeforeEach
     void setUp() {
         ReflectionTestUtils.setField(geminiAiService, "apiKey", "mock_gemini_api_key");
-        ReflectionTestUtils.setField(geminiAiService, "geminiApiUrl", "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent");
+        ReflectionTestUtils.setField(geminiAiService, "geminiApiUrl", "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent");
     }
 
     // Gemini rejects the fake key above, so every call here exercises the caught-exception /

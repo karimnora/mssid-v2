@@ -32,7 +32,7 @@ public class GeminiResponse {
         this.generatedText = text;
         this.responseText = text;
         this.status = status;
-        this.modelUsed = "gemini-2.5-flash";
+        this.modelUsed = "gemini-3.6-flash";
         this.timestamp = System.currentTimeMillis();
         this.cacheHit = false;
     }
