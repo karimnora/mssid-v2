@@ -11,6 +11,8 @@ interface PreschoolMagicBoardProps {
 
 type BoardMode = 'free' | 'slate' | 'trace' | 'coloring';
 
+type TraceCategory = 'ar_letters' | 'latin_letters' | 'numbers' | 'shapes';
+
 interface TraceTemplate {
   id: string;
   label: string;
@@ -18,6 +20,7 @@ interface TraceTemplate {
   hintAr: string;
   hintFr: string;
   hintEn: string;
+  category: TraceCategory;
 }
 
 interface ColoringTemplate {
@@ -29,22 +32,95 @@ interface ColoringTemplate {
   svgPaths: string[];
 }
 
+// Numbers use Western digits (0-9) throughout — matching how they're actually written in the
+// Algerian curriculum even inside Arabic text, never the Eastern Arabic-Indic numerals (٠١٢٣...)
+// that were shown here before and don't match what children are taught to write at school.
 const TRACE_TEMPLATES: TraceTemplate[] = [
-  { id: 'ar_alif', label: 'أ', char: 'أ', hintAr: 'ألف - أرنب', hintFr: 'Alif - Arnab (Lapin)', hintEn: 'Alif - Rabbit' },
-  { id: 'ar_baa', label: 'ب', char: 'ب', hintAr: 'باء - بطة', hintFr: 'Baa - Batta (Canard)', hintEn: 'Baa - Duck' },
-  { id: 'ar_taa', label: 'ت', char: 'ت', hintAr: 'تاء - تفاح', hintFr: 'Taa - Touffah (Pomme)', hintEn: 'Taa - Apple' },
-  { id: 'ar_jeem', label: 'ج', char: 'ج', hintAr: 'جيم - جمل', hintFr: 'Jeem - Jamal (Chameau)', hintEn: 'Jeem - Camel' },
-  { id: 'ar_dal', label: 'د', char: 'د', hintAr: 'دال - دبدوب', hintFr: 'Dal - Dabdoob (Ourson)', hintEn: 'Dal - Teddy' },
-  { id: 'num_1', label: '١', char: '١', hintAr: 'واحد (١)', hintFr: 'Un en Arabe (1)', hintEn: 'One in Arabic (1)' },
-  { id: 'num_2', label: '٢', char: '٢', hintAr: 'اثنان (٢)', hintFr: 'Deux en Arabe (2)', hintEn: 'Two in Arabic (2)' },
-  { id: 'num_3', label: '٣', char: '٣', hintAr: 'ثلاثة (٣)', hintFr: 'Trois en Arabe (3)', hintEn: 'Three in Arabic (3)' },
-  { id: 'fr_a', label: 'A', char: 'A', hintAr: 'حرف A - Avion', hintFr: 'A comme Avion', hintEn: 'A is for Airplane' },
-  { id: 'fr_b', label: 'B', char: 'B', hintAr: 'حرف B - Bateau', hintFr: 'B comme Bateau', hintEn: 'B is for Boat' },
-  { id: 'fr_c', label: 'C', char: 'C', hintAr: 'حرف C - Chat', hintFr: 'C comme Chat', hintEn: 'C is for Cat' },
-  { id: 'fr_1', label: '1', char: '1', hintAr: 'الرقم 1', hintFr: 'Chiffre 1', hintEn: 'Number 1' },
-  { id: 'fr_2', label: '2', char: '2', hintAr: 'الرقم 2', hintFr: 'Chiffre 2', hintEn: 'Number 2' },
-  { id: 'fr_3', label: '3', char: '3', hintAr: 'الرقم 3', hintFr: 'Chiffre 3', hintEn: 'Number 3' },
+  // ---- Arabic alphabet (28 letters) ----
+  { id: 'ar_alif', label: 'أ', char: 'أ', hintAr: 'ألف - أرنب', hintFr: 'Alif - Arnab (Lapin)', hintEn: 'Alif - Rabbit', category: 'ar_letters' },
+  { id: 'ar_baa', label: 'ب', char: 'ب', hintAr: 'باء - بطة', hintFr: 'Baa - Batta (Canard)', hintEn: 'Baa - Duck', category: 'ar_letters' },
+  { id: 'ar_taa', label: 'ت', char: 'ت', hintAr: 'تاء - تفاح', hintFr: 'Taa - Touffah (Pomme)', hintEn: 'Taa - Apple', category: 'ar_letters' },
+  { id: 'ar_thaa', label: 'ث', char: 'ث', hintAr: 'ثاء - ثعلب', hintFr: 'Thaa - Taalab (Renard)', hintEn: 'Thaa - Fox', category: 'ar_letters' },
+  { id: 'ar_jeem', label: 'ج', char: 'ج', hintAr: 'جيم - جمل', hintFr: 'Jeem - Jamal (Chameau)', hintEn: 'Jeem - Camel', category: 'ar_letters' },
+  { id: 'ar_haa', label: 'ح', char: 'ح', hintAr: 'حاء - حصان', hintFr: 'Haa - Hissane (Cheval)', hintEn: 'Haa - Horse', category: 'ar_letters' },
+  { id: 'ar_khaa', label: 'خ', char: 'خ', hintAr: 'خاء - خروف', hintFr: 'Khaa - Kharouf (Mouton)', hintEn: 'Khaa - Sheep', category: 'ar_letters' },
+  { id: 'ar_dal', label: 'د', char: 'د', hintAr: 'دال - دبدوب', hintFr: 'Dal - Dabdoob (Ourson)', hintEn: 'Dal - Teddy', category: 'ar_letters' },
+  { id: 'ar_dhal', label: 'ذ', char: 'ذ', hintAr: 'ذال - ذرة', hintFr: 'Dhal - Dhora (Maïs)', hintEn: 'Dhal - Corn', category: 'ar_letters' },
+  { id: 'ar_raa', label: 'ر', char: 'ر', hintAr: 'راء - رمان', hintFr: 'Raa - Romane (Grenade)', hintEn: 'Raa - Pomegranate', category: 'ar_letters' },
+  { id: 'ar_zay', label: 'ز', char: 'ز', hintAr: 'زاي - زرافة', hintFr: 'Zay - Zarafa (Girafe)', hintEn: 'Zay - Giraffe', category: 'ar_letters' },
+  { id: 'ar_seen', label: 'س', char: 'س', hintAr: 'سين - سمكة', hintFr: 'Seen - Samaka (Poisson)', hintEn: 'Seen - Fish', category: 'ar_letters' },
+  { id: 'ar_sheen', label: 'ش', char: 'ش', hintAr: 'شين - شمس', hintFr: 'Sheen - Chams (Soleil)', hintEn: 'Sheen - Sun', category: 'ar_letters' },
+  { id: 'ar_saad', label: 'ص', char: 'ص', hintAr: 'صاد - صقر', hintFr: 'Saad - Sakr (Faucon)', hintEn: 'Saad - Falcon', category: 'ar_letters' },
+  { id: 'ar_dhaad', label: 'ض', char: 'ض', hintAr: 'ضاد - ضفدع', hintFr: 'Dhaad - Difda (Grenouille)', hintEn: 'Dhaad - Frog', category: 'ar_letters' },
+  { id: 'ar_taa2', label: 'ط', char: 'ط', hintAr: 'طاء - طائرة', hintFr: 'Taa2 - Taira (Avion)', hintEn: 'Taa2 - Airplane', category: 'ar_letters' },
+  { id: 'ar_dhaa2', label: 'ظ', char: 'ظ', hintAr: 'ظاء - ظرف', hintFr: 'Dhaa2 - Dharf (Enveloppe)', hintEn: 'Dhaa2 - Envelope', category: 'ar_letters' },
+  { id: 'ar_ayn', label: 'ع', char: 'ع', hintAr: 'عين - عسل', hintFr: 'Ayn - Assal (Miel)', hintEn: 'Ayn - Honey', category: 'ar_letters' },
+  { id: 'ar_ghayn', label: 'غ', char: 'غ', hintAr: 'غين - غزال', hintFr: 'Ghayn - Ghazel (Gazelle)', hintEn: 'Ghayn - Gazelle', category: 'ar_letters' },
+  { id: 'ar_faa', label: 'ف', char: 'ف', hintAr: 'فاء - فراشة', hintFr: 'Faa - Farasha (Papillon)', hintEn: 'Faa - Butterfly', category: 'ar_letters' },
+  { id: 'ar_qaf', label: 'ق', char: 'ق', hintAr: 'قاف - قمر', hintFr: 'Qaf - Qamar (Lune)', hintEn: 'Qaf - Moon', category: 'ar_letters' },
+  { id: 'ar_kaf', label: 'ك', char: 'ك', hintAr: 'كاف - كتاب', hintFr: 'Kaf - Kitab (Livre)', hintEn: 'Kaf - Book', category: 'ar_letters' },
+  { id: 'ar_lam', label: 'ل', char: 'ل', hintAr: 'لام - ليمون', hintFr: 'Lam - Laymoun (Citron)', hintEn: 'Lam - Lemon', category: 'ar_letters' },
+  { id: 'ar_meem', label: 'م', char: 'م', hintAr: 'ميم - موز', hintFr: 'Meem - Mawz (Banane)', hintEn: 'Meem - Banana', category: 'ar_letters' },
+  { id: 'ar_noon', label: 'ن', char: 'ن', hintAr: 'نون - نجمة', hintFr: 'Noon - Najma (Étoile)', hintEn: 'Noon - Star', category: 'ar_letters' },
+  { id: 'ar_haa_round', label: 'هـ', char: 'هـ', hintAr: 'هاء - هلال', hintFr: 'Haa2 - Hilal (Croissant)', hintEn: 'Haa2 - Crescent', category: 'ar_letters' },
+  { id: 'ar_waw', label: 'و', char: 'و', hintAr: 'واو - وردة', hintFr: 'Waw - Warda (Rose)', hintEn: 'Waw - Rose', category: 'ar_letters' },
+  { id: 'ar_yaa', label: 'ي', char: 'ي', hintAr: 'ياء - يد', hintFr: 'Yaa - Yad (Main)', hintEn: 'Yaa - Hand', category: 'ar_letters' },
+
+  // ---- Latin alphabet (26 letters, shared by FR/EN hint text) ----
+  { id: 'fr_a', label: 'A', char: 'A', hintAr: 'حرف A - Avion', hintFr: 'A comme Avion', hintEn: 'A is for Airplane', category: 'latin_letters' },
+  { id: 'fr_b', label: 'B', char: 'B', hintAr: 'حرف B - Bateau', hintFr: 'B comme Bateau', hintEn: 'B is for Boat', category: 'latin_letters' },
+  { id: 'fr_c', label: 'C', char: 'C', hintAr: 'حرف C - Chat', hintFr: 'C comme Chat', hintEn: 'C is for Cat', category: 'latin_letters' },
+  { id: 'fr_d', label: 'D', char: 'D', hintAr: 'حرف D - Dauphin', hintFr: 'D comme Dauphin', hintEn: 'D is for Dolphin', category: 'latin_letters' },
+  { id: 'fr_e', label: 'E', char: 'E', hintAr: 'حرف E - Éléphant', hintFr: 'E comme Éléphant', hintEn: 'E is for Elephant', category: 'latin_letters' },
+  { id: 'fr_f', label: 'F', char: 'F', hintAr: 'حرف F - Fraise', hintFr: 'F comme Fraise', hintEn: 'F is for Fish', category: 'latin_letters' },
+  { id: 'fr_g', label: 'G', char: 'G', hintAr: 'حرف G - Girafe', hintFr: 'G comme Girafe', hintEn: 'G is for Giraffe', category: 'latin_letters' },
+  { id: 'fr_h', label: 'H', char: 'H', hintAr: 'حرف H - Hibou', hintFr: 'H comme Hibou', hintEn: 'H is for Hippo', category: 'latin_letters' },
+  { id: 'fr_i', label: 'I', char: 'I', hintAr: 'حرف I - Île', hintFr: 'I comme Île', hintEn: 'I is for Ice cream', category: 'latin_letters' },
+  { id: 'fr_j', label: 'J', char: 'J', hintAr: 'حرف J - Jardin', hintFr: 'J comme Jardin', hintEn: 'J is for Juice', category: 'latin_letters' },
+  { id: 'fr_k', label: 'K', char: 'K', hintAr: 'حرف K - Koala', hintFr: 'K comme Koala', hintEn: 'K is for Koala', category: 'latin_letters' },
+  { id: 'fr_l', label: 'L', char: 'L', hintAr: 'حرف L - Lion', hintFr: 'L comme Lion', hintEn: 'L is for Lion', category: 'latin_letters' },
+  { id: 'fr_m', label: 'M', char: 'M', hintAr: 'حرف M - Maison', hintFr: 'M comme Maison', hintEn: 'M is for Moon', category: 'latin_letters' },
+  { id: 'fr_n', label: 'N', char: 'N', hintAr: 'حرف N - Nuage', hintFr: 'N comme Nuage', hintEn: 'N is for Nest', category: 'latin_letters' },
+  { id: 'fr_o', label: 'O', char: 'O', hintAr: 'حرف O - Oiseau', hintFr: 'O comme Oiseau', hintEn: 'O is for Orange', category: 'latin_letters' },
+  { id: 'fr_p', label: 'P', char: 'P', hintAr: 'حرف P - Poisson', hintFr: 'P comme Poisson', hintEn: 'P is for Pizza', category: 'latin_letters' },
+  { id: 'fr_q', label: 'Q', char: 'Q', hintAr: 'حرف Q - Quatre', hintFr: 'Q comme Quatre', hintEn: 'Q is for Queen', category: 'latin_letters' },
+  { id: 'fr_r', label: 'R', char: 'R', hintAr: 'حرف R - Robot', hintFr: 'R comme Robot', hintEn: 'R is for Robot', category: 'latin_letters' },
+  { id: 'fr_s', label: 'S', char: 'S', hintAr: 'حرف S - Soleil', hintFr: 'S comme Soleil', hintEn: 'S is for Sun', category: 'latin_letters' },
+  { id: 'fr_t', label: 'T', char: 'T', hintAr: 'حرف T - Tortue', hintFr: 'T comme Tortue', hintEn: 'T is for Tiger', category: 'latin_letters' },
+  { id: 'fr_u', label: 'U', char: 'U', hintAr: 'حرف U - Univers', hintFr: 'U comme Univers', hintEn: 'U is for Umbrella', category: 'latin_letters' },
+  { id: 'fr_v', label: 'V', char: 'V', hintAr: 'حرف V - Voiture', hintFr: 'V comme Voiture', hintEn: 'V is for Volcano', category: 'latin_letters' },
+  { id: 'fr_w', label: 'W', char: 'W', hintAr: 'حرف W - Wagon', hintFr: 'W comme Wagon', hintEn: 'W is for Watermelon', category: 'latin_letters' },
+  { id: 'fr_x', label: 'X', char: 'X', hintAr: 'حرف X - Xylophone', hintFr: 'X comme Xylophone', hintEn: 'X is for Xylophone', category: 'latin_letters' },
+  { id: 'fr_y', label: 'Y', char: 'Y', hintAr: 'حرف Y - Yaourt', hintFr: 'Y comme Yaourt', hintEn: 'Y is for Yoyo', category: 'latin_letters' },
+  { id: 'fr_z', label: 'Z', char: 'Z', hintAr: 'حرف Z - Zèbre', hintFr: 'Z comme Zèbre', hintEn: 'Z is for Zebra', category: 'latin_letters' },
+
+  // ---- Numbers 0-9 (Western digits) ----
+  { id: 'num_0', label: '0', char: '0', hintAr: 'الرقم صفر (0)', hintFr: 'Chiffre zéro (0)', hintEn: 'Number zero (0)', category: 'numbers' },
+  { id: 'num_1', label: '1', char: '1', hintAr: 'الرقم واحد (1)', hintFr: 'Chiffre un (1)', hintEn: 'Number one (1)', category: 'numbers' },
+  { id: 'num_2', label: '2', char: '2', hintAr: 'الرقم اثنان (2)', hintFr: 'Chiffre deux (2)', hintEn: 'Number two (2)', category: 'numbers' },
+  { id: 'num_3', label: '3', char: '3', hintAr: 'الرقم ثلاثة (3)', hintFr: 'Chiffre trois (3)', hintEn: 'Number three (3)', category: 'numbers' },
+  { id: 'num_4', label: '4', char: '4', hintAr: 'الرقم أربعة (4)', hintFr: 'Chiffre quatre (4)', hintEn: 'Number four (4)', category: 'numbers' },
+  { id: 'num_5', label: '5', char: '5', hintAr: 'الرقم خمسة (5)', hintFr: 'Chiffre cinq (5)', hintEn: 'Number five (5)', category: 'numbers' },
+  { id: 'num_6', label: '6', char: '6', hintAr: 'الرقم ستة (6)', hintFr: 'Chiffre six (6)', hintEn: 'Number six (6)', category: 'numbers' },
+  { id: 'num_7', label: '7', char: '7', hintAr: 'الرقم سبعة (7)', hintFr: 'Chiffre sept (7)', hintEn: 'Number seven (7)', category: 'numbers' },
+  { id: 'num_8', label: '8', char: '8', hintAr: 'الرقم ثمانية (8)', hintFr: 'Chiffre huit (8)', hintEn: 'Number eight (8)', category: 'numbers' },
+  { id: 'num_9', label: '9', char: '9', hintAr: 'الرقم تسعة (9)', hintFr: 'Chiffre neuf (9)', hintEn: 'Number nine (9)', category: 'numbers' },
+
+  // ---- Basic shapes ----
+  { id: 'shape_circle', label: '○', char: '○', hintAr: 'دائرة', hintFr: 'Cercle', hintEn: 'Circle', category: 'shapes' },
+  { id: 'shape_square', label: '□', char: '□', hintAr: 'مربع', hintFr: 'Carré', hintEn: 'Square', category: 'shapes' },
+  { id: 'shape_triangle', label: '△', char: '△', hintAr: 'مثلث', hintFr: 'Triangle', hintEn: 'Triangle', category: 'shapes' },
+  { id: 'shape_rectangle', label: '▭', char: '▭', hintAr: 'مستطيل', hintFr: 'Rectangle', hintEn: 'Rectangle', category: 'shapes' },
+  { id: 'shape_star', label: '☆', char: '☆', hintAr: 'نجمة', hintFr: 'Étoile', hintEn: 'Star', category: 'shapes' },
+  { id: 'shape_heart', label: '♡', char: '♡', hintAr: 'قلب', hintFr: 'Cœur', hintEn: 'Heart', category: 'shapes' },
 ];
+
+const TRACE_CATEGORY_LABELS: Record<TraceCategory, { ar: string; fr: string; en: string }> = {
+  ar_letters: { ar: '🔤 حروف عربية', fr: '🔤 Lettres arabes', en: '🔤 Arabic letters' },
+  latin_letters: { ar: '🔠 حروف لاتينية', fr: '🔠 Lettres latines', en: '🔠 Latin letters' },
+  numbers: { ar: '🔢 أرقام', fr: '🔢 Chiffres', en: '🔢 Numbers' },
+  shapes: { ar: '⬛ أشكال', fr: '⬛ Formes', en: '⬛ Shapes' },
+};
 
 const COLORING_TEMPLATES: ColoringTemplate[] = [
   {
@@ -149,8 +225,10 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [activeStamp, setActiveStamp] = useState<string | null>(null);
 
+  const [activeTraceCategory, setActiveTraceCategory] = useState<TraceCategory>('ar_letters');
   const [activeTrace, setActiveTrace] = useState<TraceTemplate>(TRACE_TEMPLATES[0]);
   const [activeColoring, setActiveColoring] = useState<ColoringTemplate>(COLORING_TEMPLATES[0]);
+  const traceTemplatesInCategory = TRACE_TEMPLATES.filter((t) => t.category === activeTraceCategory);
   const [rainbowHue, setRainbowHue] = useState<number>(0);
 
   const { speak } = usePreschoolSpeech(language);
@@ -432,26 +510,55 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
 
       {/* Sub-bar for Trace Mode */}
       {mode === 'trace' && (
-        <div className="max-w-4xl w-full mx-auto mb-2 bg-white/90 rounded-2xl p-2 shadow-xs border border-orange-100 flex items-center gap-2 overflow-x-auto scrollbar-thin">
-          <span className="text-xs font-black text-orange-950 shrink-0">{labels.pickTrace}</span>
-          {TRACE_TEMPLATES.map((t) => (
-            <button
-              key={t.id}
-              onClick={() => {
-                setActiveTrace(t);
-                clearCanvas(false);
-                const hint = language === 'ar' ? t.hintAr : language === 'fr' ? t.hintFr : t.hintEn;
-                speak(hint);
-              }}
-              className={`w-9 h-9 rounded-xl font-black text-base shrink-0 flex items-center justify-center cursor-pointer transition-all ${
-                activeTrace.id === t.id
-                  ? 'bg-orange-500 text-white shadow-md scale-110'
-                  : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
+        <div className="max-w-4xl w-full mx-auto mb-2 space-y-2">
+          {/* Category selector — split into 4 groups instead of one long scroller now that each
+              letter/number/shape set is shown in full (28 Arabic letters + 26 Latin + 10 digits + 6
+              shapes would otherwise be ~70 tiny buttons in a single row). */}
+          <div className="bg-white/90 rounded-2xl p-2 shadow-xs border border-orange-100 flex items-center gap-1.5 overflow-x-auto scrollbar-thin">
+            {(Object.keys(TRACE_CATEGORY_LABELS) as TraceCategory[]).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => {
+                  setActiveTraceCategory(cat);
+                  const first = TRACE_TEMPLATES.find((t) => t.category === cat);
+                  if (first) {
+                    setActiveTrace(first);
+                    clearCanvas(false);
+                  }
+                  playBubblePop();
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-black shrink-0 cursor-pointer transition-all ${
+                  activeTraceCategory === cat
+                    ? 'bg-orange-500 text-white shadow-md'
+                    : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
+                }`}
+              >
+                {TRACE_CATEGORY_LABELS[cat][language]}
+              </button>
+            ))}
+          </div>
+
+          <div className="bg-white/90 rounded-2xl p-2 shadow-xs border border-orange-100 flex items-center gap-2 overflow-x-auto scrollbar-thin">
+            <span className="text-xs font-black text-orange-950 shrink-0">{labels.pickTrace}</span>
+            {traceTemplatesInCategory.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => {
+                  setActiveTrace(t);
+                  clearCanvas(false);
+                  const hint = language === 'ar' ? t.hintAr : language === 'fr' ? t.hintFr : t.hintEn;
+                  speak(hint);
+                }}
+                className={`w-9 h-9 rounded-xl font-black text-base shrink-0 flex items-center justify-center cursor-pointer transition-all ${
+                  activeTrace.id === t.id
+                    ? 'bg-orange-500 text-white shadow-md scale-110'
+                    : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
