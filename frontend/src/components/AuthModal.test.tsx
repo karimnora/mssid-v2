@@ -17,13 +17,13 @@ describe('AuthModal Integration Tests', () => {
 
   it('does not render when isOpen is false', () => {
     render(<AuthModal isOpen={false} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
-    expect(screen.queryByText('تسجيل الدخول إلى تطبيق mssid dz')).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'تسجيل الدخول' })).not.toBeInTheDocument();
   });
 
   it('renders login form by default when isOpen is true', () => {
     render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
 
-    expect(screen.getByText('تسجيل الدخول إلى تطبيق mssid dz')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'تسجيل الدخول' })).toBeInTheDocument();
     expect(screen.getByPlaceholderText('example@mssid.dz')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('••••••••')).toBeInTheDocument();
   });
@@ -84,6 +84,19 @@ describe('AuthModal Integration Tests', () => {
   it('triggers onAuthSuccess and onClose upon submitting login credentials (Happy Path)', async () => {
     const handleAuthSuccess = vi.fn();
     const handleClose = vi.fn();
+
+    const mockFetch = vi.fn().mockResolvedValue({
+      status: 200,
+      ok: true,
+      headers: new Headers({ 'content-type': 'application/json' }),
+      json: async () => ({
+        nom: 'سارة المتفوقة',
+        email: 'premium@mssid.dz',
+        roleName: 'ROLE_PREMIUM',
+        user: { email: 'premium@mssid.dz', role: 'ROLE_PREMIUM' },
+      }),
+    });
+    global.fetch = mockFetch;
 
     render(<AuthModal isOpen={true} onClose={handleClose} onAuthSuccess={handleAuthSuccess} />);
 

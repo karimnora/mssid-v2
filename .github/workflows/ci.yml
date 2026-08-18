@@ -1,0 +1,61 @@
+name: CI
+
+# Fast, visible feedback on every push/PR — separate from the actual deploy gates, which live in
+# vercel.json's buildCommand (frontend) and backend/Dockerfile (backend, via Render). Those two are
+# what actually block a broken commit from reaching production; this workflow exists so a red X shows
+# up on GitHub before either platform even starts building, and so the backend suite runs in full
+# (including EducationApplicationTests, which the Render Docker build skips because that build stage
+# has no reachable Postgres — this workflow gives it a real one via the service container below).
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: mssid_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      # No DATABASE_URL/USERNAME/PASSWORD env needed — application.properties' defaults
+      # (jdbc:postgresql://localhost:5432/mssid_db, postgres/postgres) already match the service
+      # container above, so Flyway runs the real migrations against a real, empty Postgres.
+      - run: mvn -B test

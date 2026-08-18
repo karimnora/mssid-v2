@@ -1,6 +1,6 @@
 {
   "installCommand": "cd frontend && npm install",
-  "buildCommand": "cd frontend && npx vite build",
+  "buildCommand": "cd frontend && npm run lint && npm run test && npx vite build",
   "outputDirectory": "frontend/dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
