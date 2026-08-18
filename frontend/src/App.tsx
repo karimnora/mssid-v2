@@ -819,10 +819,6 @@ export default function App() {
         onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
         onOpenAdminConsole={() => setIsAdminConsoleActive(true)}
         onOpenPreschool={() => setIsPreschoolActive(true)}
-        onOpenHomeworkPin={() => setIsHomeworkPinOpen(true)}
-        onOpenOfflinePacks={() => setIsOfflinePacksOpen(true)}
-        onOpenPrintables={() => setIsPrintablesOpen(true)}
-        onOpenDressingRoom={() => setIsDressingRoomOpen(true)}
         onHomeClick={() => {
           setSelectedLesson(null);
           setIsHomeActive(true);
@@ -1282,6 +1278,7 @@ export default function App() {
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
         initialMode={authModalInitialMode}
+        onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
         onAuthSuccess={() => {
           // AuthService.loginAsync/registerAsync already call setCurrentUser internally — authUser
           // (via useAuth()) updates on its own the moment login succeeds. Read AuthService directly
@@ -1380,7 +1377,7 @@ export default function App() {
           <PrintableWorksheetsGeneratorModal
             isOpen={isPrintablesOpen}
             onClose={() => setIsPrintablesOpen(false)}
-            currentGrade={grade}
+            defaultGrade={grade}
           />
         )}
 

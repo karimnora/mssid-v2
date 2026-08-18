@@ -688,6 +688,21 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
     this.setCurrentUser(null);
   }
 
+  /**
+   * Permanent account deletion. Unlike logout(), this genuinely must succeed server-side before the
+   * local session is torn down — silently discarding a failed delete would leave the account intact
+   * on the server while the UI acts as if it were gone.
+   */
+  static async deleteAccountAsync(): Promise<{ success: boolean; error?: string }> {
+    try {
+      await springBootApi.deleteAccount();
+      this.setCurrentUser(null);
+      return { success: true };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'تعذر حذف الحساب' };
+    }
+  }
+
   // Payment Receipts API Simulation
   static getReceipts(): PaymentReceipt[] {
     const saved = localStorage.getItem(STORAGE_KEYS.RECEIPTS);

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { isFeatureEnabled } from '../featureFlags';
 import {
   PenTool,
   RotateCcw,
@@ -756,6 +757,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
   };
 
   const speakItem = (item: LetterData) => {
+    if (!isFeatureEnabled('voiceReading')) return;
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     try {
       window.speechSynthesis.cancel();

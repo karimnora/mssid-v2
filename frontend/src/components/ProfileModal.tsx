@@ -77,6 +77,32 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
     setVerifyMessage(result.message || null);
   };
 
+  // Two-step confirm (tap once to reveal, tap again to actually delete) rather than a browser
+  // confirm() dialog — this app is used by children, and a native confirm() is too easy to dismiss
+  // reflexively without reading. A full page reload afterward is deliberate: it's the simplest way to
+  // reset every piece of in-memory app state (userProfile, selectedLesson, etc.) back to a clean
+  // logged-out guest session without duplicating App.tsx's logout reset logic here.
+  const [confirmDeleteAccount, setConfirmDeleteAccount] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
+
+  const handleDeleteAccount = async () => {
+    if (!confirmDeleteAccount) {
+      setConfirmDeleteAccount(true);
+      return;
+    }
+    setDeletingAccount(true);
+    setDeleteAccountError(null);
+    const result = await AuthService.deleteAccountAsync();
+    if (result.success) {
+      localStorage.removeItem('mssid_user_profile');
+      window.location.reload();
+      return;
+    }
+    setDeletingAccount(false);
+    setDeleteAccountError(result.error || 'تعذر حذف الحساب، حاول مجدداً');
+  };
+
   useEffect(() => {
     setEditedName(authUser?.nom || userProfile.name);
   }, [authUser?.nom, userProfile.name]);
@@ -378,20 +404,49 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="bg-slate-50 border-t border-slate-200 p-4 shrink-0 flex items-center justify-between text-xs font-bold">
-          <button
-            onClick={onResetProgress}
-            className="text-rose-600 hover:text-rose-800 flex items-center gap-1 cursor-pointer"
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-            <span>{t('resetProgress')}</span>
-          </button>
-          <button
-            onClick={handleSave}
-            className="px-5 py-2.5 bg-emerald-600 text-white font-extrabold rounded-xl hover:bg-emerald-700 transition-colors shadow-md active:scale-95 cursor-pointer"
-          >
-            {t('saveAndClose')}
-          </button>
+        <div className="bg-slate-50 border-t border-slate-200 p-4 shrink-0 space-y-2.5">
+          <div className="flex items-center justify-between text-xs font-bold">
+            <button
+              onClick={onResetProgress}
+              className="text-rose-600 hover:text-rose-800 flex items-center gap-1 cursor-pointer"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>{t('resetProgress')}</span>
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-5 py-2.5 bg-emerald-600 text-white font-extrabold rounded-xl hover:bg-emerald-700 transition-colors shadow-md active:scale-95 cursor-pointer"
+            >
+              {t('saveAndClose')}
+            </button>
+          </div>
+
+          {authUser && (
+            <div className="flex items-center justify-between border-t border-slate-200 pt-2.5">
+              <button
+                onClick={handleDeleteAccount}
+                disabled={deletingAccount}
+                className="text-[11px] font-bold text-slate-400 hover:text-rose-700 disabled:opacity-50 cursor-pointer"
+              >
+                {deletingAccount
+                  ? 'جارٍ الحذف...'
+                  : confirmDeleteAccount
+                  ? 'اضغط مجدداً لتأكيد حذف الحساب نهائياً'
+                  : 'حذف الحساب نهائياً'}
+              </button>
+              {confirmDeleteAccount && !deletingAccount && (
+                <button
+                  onClick={() => setConfirmDeleteAccount(false)}
+                  className="text-[11px] font-bold text-slate-500 hover:text-slate-700 cursor-pointer"
+                >
+                  إلغاء
+                </button>
+              )}
+            </div>
+          )}
+          {deleteAccountError && (
+            <p className="text-[11px] font-bold text-rose-600 text-center">{deleteAccountError}</p>
+          )}
         </div>
       </motion.div>
     </motion.div>

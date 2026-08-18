@@ -330,7 +330,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 >
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <h3 className="font-black text-sm text-[var(--brand-blue-dark)]">{ex.titleAr}</h3>
-                    <Badge variant="warning">{ex.points} نقاط</Badge>
+                    <Badge variant="xp">{ex.points} نقاط</Badge>
                   </div>
 
                   {/* Exercise Subject Text */}

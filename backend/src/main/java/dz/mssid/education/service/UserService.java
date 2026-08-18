@@ -5,10 +5,16 @@ import dz.mssid.education.dto.UserProfileDto;
 import dz.mssid.education.entity.Role;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.mapper.UserMapper;
+import dz.mssid.education.repository.EmailVerificationCodeRepository;
+import dz.mssid.education.repository.PasswordResetCodeRepository;
+import dz.mssid.education.repository.PaymentReceiptRepository;
+import dz.mssid.education.repository.RefreshTokenRepository;
 import dz.mssid.education.repository.RoleRepository;
+import dz.mssid.education.repository.SubscriptionRepository;
 import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +29,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final AdminAuditLogService adminAuditLogService;
+    private final RefreshTokenRepository refreshTokenRepository;
+    private final EmailVerificationCodeRepository emailVerificationCodeRepository;
+    private final PasswordResetCodeRepository passwordResetCodeRepository;
+    private final PaymentReceiptRepository paymentReceiptRepository;
+    private final SubscriptionRepository subscriptionRepository;
 
     public UserDto getUserByEmail(String email) {
         User user = userRepository.findByEmail(email)
@@ -163,6 +174,28 @@ public class UserService {
 
         User savedUser = userRepository.save(user);
         return UserMapper.toUserProfileDto(savedUser);
+    }
+
+    /**
+     * Suppression définitive du compte et de toutes les données qui lui sont liées — honore la
+     * promesse de la politique de confidentialité ("suppression sur demande par email"), qui n'avait
+     * jusqu'ici aucun endpoint réel derrière elle. Aucune des tables dépendantes (refresh_tokens,
+     * email_verification_codes, password_reset_codes, payment_receipts, subscriptions) n'a de
+     * ON DELETE CASCADE au niveau base — chacune doit être vidée explicitement avant de supprimer
+     * la ligne users, sous peine de violation de contrainte de clé étrangère.
+     */
+    @Transactional
+    public void deleteAccount(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé: " + email));
+
+        refreshTokenRepository.deleteByUser(user);
+        emailVerificationCodeRepository.deleteByUser(user);
+        passwordResetCodeRepository.deleteByUser(user);
+        paymentReceiptRepository.deleteByUserId(user.getId());
+        subscriptionRepository.deleteByUser(user);
+
+        userRepository.delete(user);
     }
 
     /**

@@ -86,6 +86,19 @@ public class UserController {
     }
 
     /**
+     * Suppression définitive du compte connecté et de toutes ses données liées.
+     * DELETE /api/v1/users/me
+     */
+    @DeleteMapping("/me")
+    public ResponseEntity<?> deleteCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        userService.deleteAccount(userDetails.getUsername());
+        return ResponseEntity.noContent().build();
+    }
+
+    /**
      * Récupération de tous les utilisateurs (Réservé à l'ADMIN RBAC).
      * GET /api/v1/users/all
      */

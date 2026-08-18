@@ -5,18 +5,21 @@ import App from './App.tsx';
 import { LocaleProvider } from './context/LocaleContext.tsx';
 import { AuthProvider } from './context/AuthContext.tsx';
 import { DesignSystemShowcase } from './components/ui/DesignSystemShowcase.tsx';
+import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import './index.css';
 
 const isShowcase = new URLSearchParams(window.location.search).has('ds-preview');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HelmetProvider>
-      <LocaleProvider>
-        <AuthProvider>
-          {isShowcase ? <DesignSystemShowcase /> : <App />}
-        </AuthProvider>
-      </LocaleProvider>
-    </HelmetProvider>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <LocaleProvider>
+          <AuthProvider>
+            {isShowcase ? <DesignSystemShowcase /> : <App />}
+          </AuthProvider>
+        </LocaleProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
   </StrictMode>,
 );

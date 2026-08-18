@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
+import { isFeatureEnabled } from '../featureFlags';
 import {
   Calculator,
   Sparkles,
@@ -56,6 +57,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
   // Sound synthesis
   const speakNumber = (num: number) => {
+    if (!isFeatureEnabled('voiceReading')) return;
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(`${num}`);

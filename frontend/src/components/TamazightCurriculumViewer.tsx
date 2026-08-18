@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { isFeatureEnabled } from '../featureFlags';
 import {
   BookOpen,
   Printer,
@@ -67,6 +68,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
 
   // Sound pronunciation helper
   const speakTamazight = (text: string) => {
+    if (!isFeatureEnabled('voiceReading')) return;
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     try {
       window.speechSynthesis.cancel();

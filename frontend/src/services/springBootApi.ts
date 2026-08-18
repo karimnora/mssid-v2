@@ -78,6 +78,11 @@ class SpringBootApiService {
     await this.request('/v1/auth/logout', { method: 'POST' }).catch(() => {});
   }
 
+  /** Permanent account deletion — see UserService.deleteAccount for what gets cleaned up server-side. */
+  public async deleteAccount(): Promise<void> {
+    await this.request('/v1/users/me', { method: 'DELETE' });
+  }
+
   // SEC-08: soft email verification — never blocks app usage, just a discreet reminder + the code
   // entry it drives. Both require the auth cookie (request() already sends credentials: 'include').
   public async verifyEmail(code: string) {

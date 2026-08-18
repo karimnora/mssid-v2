@@ -12,6 +12,9 @@ interface Props {
   onAuthSuccess: (user: AuthUser) => void;
   /** Which tab to land on when the modal opens — e.g. AuthWallModal's two CTAs open this in different modes. */
   initialMode?: 'login' | 'register';
+  /** Opens PrivacyPolicyModal (rendered at App.tsx level) — surfaced on the register form so a new
+   * account is never created without the policy having been reachable first. */
+  onOpenPrivacyPolicy?: () => void;
 }
 
 // Same 5 levels/labels as GradeSelector.tsx and Navbar.tsx's GRADES, kept in sync manually since
@@ -24,7 +27,7 @@ const GRADE_OPTIONS: { id: PrimaryGrade; labelAr: string }[] = [
   { id: '5AP', labelAr: 'السنة الخامسة ابتدائي (5AP)' },
 ];
 
-export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login' }) => {
+export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy }) => {
   const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -442,6 +445,19 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             >
               {statusMessage.text}
             </div>
+          )}
+
+          {!isLogin && onOpenPrivacyPolicy && (
+            <p className="text-[11px] text-slate-500 text-center leading-relaxed">
+              بإنشاء الحساب، أنت توافق على{' '}
+              <button
+                type="button"
+                onClick={onOpenPrivacyPolicy}
+                className="text-emerald-700 font-bold hover:underline cursor-pointer"
+              >
+                سياسة الخصوصية
+              </button>
+            </p>
           )}
 
           <button

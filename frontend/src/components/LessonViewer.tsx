@@ -9,6 +9,7 @@ import { LoadingFallback } from './LoadingFallback';
 import { renderTextWithMath } from './MathExpression';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
+import { isFeatureEnabled } from '../featureFlags';
 
 // R2.1 — code splitting: exactly one of these renders per lesson (gated by lesson.interactiveTool /
 // scientificInquiry), so none of them need to be in the initial bundle. This is also what makes the
@@ -141,6 +142,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const handleToggleSpeech = () => {
+    if (!isFeatureEnabled('voiceReading')) return;
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     if (isSpeaking) {
       window.speechSynthesis.cancel();
@@ -1681,7 +1683,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 </button>
               ) : (
                 <Button
-                  variant="success"
+                  variant="primary"
                   size="md"
                   icon={<Trophy className="w-4 h-4" />}
                   onClick={onBack}

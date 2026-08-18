@@ -15,4 +15,6 @@ public interface EmailVerificationCodeRepository extends JpaRepository<EmailVeri
     Optional<EmailVerificationCode> findByCodeHashAndUser(String codeHash, User user);
 
     List<EmailVerificationCode> findByUserAndConsumedFalseAndExpiresAtAfterOrderByCreatedAtDesc(User user, LocalDateTime now);
+
+    void deleteByUser(User user);
 }

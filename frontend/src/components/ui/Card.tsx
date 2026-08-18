@@ -3,7 +3,9 @@ import { motion } from 'motion/react';
 
 export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+// Same framer-motion event-handler conflict as ButtonProps (see Button.tsx) — motion.div below
+// redefines onAnimationStart/onDrag* with its own signatures.
+export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onAnimationStart' | 'onAnimationEnd' | 'onDrag' | 'onDragStart' | 'onDragEnd'> {
   /** Adds hover-lift + tap-press feedback — use when the whole card is a click target. */
   interactive?: boolean;
   padding?: CardPadding;

@@ -144,9 +144,13 @@ public class GeminiAiService {
             String generatedText = extractTextFromGeminiResponse(response);
             return new GeminiResponse(generatedText, "success");
         } catch (Exception e) {
+            // SEC: never echo e.getMessage() back to the client — on this public, unauthenticated
+            // endpoint, a Gemini-side network failure (common on Render's free tier) can make
+            // RestTemplate's exception message include the full request URL, API key included. The
+            // detailed message stays server-side, in the RBAC-gated admin audit log only.
             adminAuditLogService.record(currentActorEmail(), "AI_TUTOR_CALL_FAILED", "AI", null,
                     e.getMessage(), "FAILURE");
-            return new GeminiResponse("Erreur lors de l'appel de l'API Gemini: " + e.getMessage(), "error");
+            return new GeminiResponse("تعذر الاتصال بمساعد الذكاء الاصطناعي، حاول مجدداً بعد قليل.", "error");
         }
     }
 
@@ -212,9 +216,13 @@ public class GeminiAiService {
             result.setQuickCheck(quickCheck);
             return result;
         } catch (Exception e) {
+            // SEC: never echo e.getMessage() back to the client — on this public, unauthenticated
+            // endpoint, a Gemini-side network failure (common on Render's free tier) can make
+            // RestTemplate's exception message include the full request URL, API key included. The
+            // detailed message stays server-side, in the RBAC-gated admin audit log only.
             adminAuditLogService.record(currentActorEmail(), "AI_TUTOR_CALL_FAILED", "AI", null,
                     e.getMessage(), "FAILURE");
-            return new GeminiResponse("Erreur lors de l'appel de l'API Gemini: " + e.getMessage(), "error");
+            return new GeminiResponse("تعذر الاتصال بمساعد الذكاء الاصطناعي، حاول مجدداً بعد قليل.", "error");
         }
     }
 

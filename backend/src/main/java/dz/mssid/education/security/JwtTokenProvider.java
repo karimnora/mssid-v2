@@ -3,6 +3,7 @@ package dz.mssid.education.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
+import java.util.Set;
 
 @Component
 public class JwtTokenProvider {
@@ -19,6 +21,28 @@ public class JwtTokenProvider {
 
     @Value("${app.jwt.expiration-ms:86400000}") // Expire après 24 heures (en millisecondes)
     private long jwtExpirationMs;
+
+    // SEC: both of these strings are committed to git (this file's own fallback default, plus
+    // application.properties' separate JWT_SECRET fallback) — public knowledge. Before this guard,
+    // any environment that forgot to set JWT_SECRET (a fresh staging box, a local docker-compose run)
+    // would silently sign tokens with a key anyone can read on GitHub, letting an attacker forge a
+    // valid auth token for any user. Render's production deployment already sets a real JWT_SECRET,
+    // so this fails fast only in the misconfigured case it exists to catch.
+    private static final Set<String> KNOWN_PUBLIC_DEFAULTS = Set.of(
+            "MssidDzSuperSecretKeyForJWTAuthentication20261234567890",
+            "MssidDzSecretKeyForJWTAuth2026AlgerianEducationPortal"
+    );
+
+    @PostConstruct
+    void validateSecretIsNotThePublicDefault() {
+        if (KNOWN_PUBLIC_DEFAULTS.contains(jwtSecret)) {
+            throw new IllegalStateException(
+                    "app.jwt.secret is set to a default value that is publicly visible in this repository's " +
+                    "source code. Set a real, random JWT_SECRET environment variable before starting this " +
+                    "application — otherwise anyone can forge a valid authentication token."
+            );
+        }
+    }
 
     private SecretKey getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);

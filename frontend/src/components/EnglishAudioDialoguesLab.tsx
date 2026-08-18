@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
+import { isFeatureEnabled } from '../featureFlags';
 import {
   Globe,
   Sparkles,
@@ -133,6 +134,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
   const currentDialogue = OFFICIAL_ENGLISH_DIALOGUES.find((d) => d.id === selectedDialogueId) || OFFICIAL_ENGLISH_DIALOGUES[0];
 
   const speakLine = (text: string, index?: number) => {
+    if (!isFeatureEnabled('voiceReading')) return;
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       if (typeof index === 'number') setActivePlayingIndex(index);

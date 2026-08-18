@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
+import { isFeatureEnabled } from '../featureFlags';
 import {
   Languages,
   Sparkles,
@@ -142,6 +143,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
   const currentSequence = currentProject.sequences.find((s) => s.number === selectedSeqNum) || currentProject.sequences[0];
 
   const speakFrench = (text: string) => {
+    if (!isFeatureEnabled('voiceReading')) return;
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);

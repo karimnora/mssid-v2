@@ -5,7 +5,10 @@ import { useLocaleContext } from '../../context/LocaleContext';
 export type ButtonVariant = 'primary' | 'accent' | 'info' | 'danger' | 'ghost' | 'outline';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
-export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+// framer-motion's <motion.button> redefines onAnimationStart/onDrag* with its own animation-related
+// signatures, which conflict with the plain DOM event handler types on ButtonHTMLAttributes — omit
+// them here so spreading ...buttonProps onto motion.button below doesn't collide with motion's props.
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'onAnimationStart' | 'onAnimationEnd' | 'onDrag' | 'onDragStart' | 'onDragEnd'> {
   /** Visual style. 'primary' = emerald (main CTA), 'accent' = amber (XP/rewards), 'info' = blue, 'danger' = coral. */
   variant?: ButtonVariant;
   /** Controls height (min 40/48/56px — 'md' and 'lg' meet the 48px touch-target minimum). */

@@ -142,7 +142,10 @@ const ConfiguredLanguageTool: React.FC<{ config: LanguageInteractiveConfig; subj
 
 const DialogueTurnView: React.FC<{
   turn: { promptAr: string; lineAr: string; choices: { textAr: string; isCorrect: boolean; feedbackAr: string }[] };
-  theme: typeof THEME['french'];
+  // A union of both THEME variants, not just 'french' — the caller can pass either one, and each
+  // variant's string properties are distinct literal types (e.g. 'bg-sky-950' vs 'bg-indigo-950'),
+  // so narrowing to a single variant here rejected the other at the call site.
+  theme: typeof THEME[keyof typeof THEME];
 }> = ({ turn, theme: t }) => {
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 

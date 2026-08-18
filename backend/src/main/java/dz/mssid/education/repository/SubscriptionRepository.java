@@ -15,4 +15,6 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Long
     Optional<Subscription> findByUser(User user);
 
     List<Subscription> findByStatusAndEndDateBefore(Subscription.SubscriptionStatus status, LocalDate date);
+
+    void deleteByUser(User user);
 }

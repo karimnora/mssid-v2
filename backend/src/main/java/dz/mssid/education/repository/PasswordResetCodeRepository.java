@@ -15,4 +15,6 @@ public interface PasswordResetCodeRepository extends JpaRepository<PasswordReset
     Optional<PasswordResetCode> findByCodeHashAndUser(String codeHash, User user);
 
     List<PasswordResetCode> findByUserAndConsumedFalseAndExpiresAtAfterOrderByCreatedAtDesc(User user, LocalDateTime now);
+
+    void deleteByUser(User user);
 }
