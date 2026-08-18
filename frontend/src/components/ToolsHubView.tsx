@@ -65,7 +65,7 @@ const CATEGORY_GROUPS: {
     labelAr: '🇩🇿 الهوية، التراث والتقييم الرسمي',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300',
     icon: Shield,
-    toolIds: ['acquis_5ap', 'wilayas_map', 'history_museum', 'algerian_market'],
+    toolIds: ['wilayas_map', 'history_museum', 'algerian_market'],
   },
   {
     key: 'math_logic',

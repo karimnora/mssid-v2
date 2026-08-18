@@ -345,18 +345,6 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     category: 'tool',
     minGrade: '3AP',
   },
-  {
-    id: 'acquis_5ap',
-    nameAr: 'نظام تقييم المكتسبات الرسمي (5AP)',
-    nameFr: 'Évaluation des Acquis 5AP',
-    icon: 'Award',
-    color: 'from-emerald-700 to-teal-900',
-    bgLight: 'bg-emerald-50 text-emerald-900 border-emerald-200',
-    description: 'التقييم الوزاري الشامل للكفاءات الختامية للسنة الخامسة وفق شبكة التقدير (أ، ب، ج، د) مع مخططات المعالجة البيداغوجية.',
-    category: 'tool',
-    minGrade: '5AP',
-  },
-
   // 3. OFFICIAL STANDALONE EXAMS
   {
     id: 'exams',

@@ -13,7 +13,6 @@ export const BADGES_CATALOG: Badge[] = [
   { id: 'b_algerian_heritage', titleAr: 'حامي التراث الوطني', descriptionAr: 'استكشاف خريطة ولايات الجزائر الـ 58 ومتحف التاريخ', icon: '🏛️', category: 'history_geo', criteria: { type: 'lessons_completed_subject', subject: 'history_geo', count: 2 } },
   { id: 'b_gold_dinar', titleAr: 'تاجر الدينار الصغير', descriptionAr: 'إتقان الحساب والتعامل بالدينار الجزائري في السوق التعليمي', icon: '🪙', category: 'math', criteria: { type: 'lessons_completed_subject', subject: 'algerian_market', count: 1 } },
   { id: 'b_green_defender', titleAr: 'حامي البيئة والطاقة', descriptionAr: 'دراسة مشاريع الطاقة الشمسية وحماية الطبيعة الجزائرية', icon: '🌱', category: 'science', criteria: { type: 'lessons_completed_subject', subject: 'science', count: 5 } },
-  { id: 'b_acquis_5ap', titleAr: 'فارس تقييم المكتسبات', descriptionAr: 'التدرب على التقييم الوزاري الرسمي للسنة الخامسة ابتدائي', icon: '🎖️', category: 'exams', criteria: { type: 'lessons_completed_subject', subject: 'acquis_5ap', count: 1 } },
 
   // Subjects & Skills Badges
   { id: 'b_math_star', titleAr: 'عبقري الرياضيات', descriptionAr: 'إكمال 3 دروس في الرياضيات', icon: '📐', category: 'math', criteria: { type: 'lessons_completed_subject', subject: 'math', count: 3 } },

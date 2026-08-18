@@ -57,7 +57,6 @@ const PrimaryMathLabInteractive = lazy(() => import('./components/PrimaryMathLab
 const PrimaryDiscoveryLabInteractive = lazy(() => import('./components/PrimaryDiscoveryLabInteractive').then((m) => ({ default: m.PrimaryDiscoveryLabInteractive })));
 const FrenchProjectsLabInteractive = lazy(() => import('./components/FrenchProjectsLabInteractive').then((m) => ({ default: m.FrenchProjectsLabInteractive })));
 const EnglishAudioDialoguesLab = lazy(() => import('./components/EnglishAudioDialoguesLab').then((m) => ({ default: m.EnglishAudioDialoguesLab })));
-const AcquisEvaluationViewer = lazy(() => import('./components/AcquisEvaluationViewer').then((m) => ({ default: m.AcquisEvaluationViewer })));
 const DidouDressingRoomModal = lazy(() => import('./components/DidouDressingRoomModal').then((m) => ({ default: m.DidouDressingRoomModal })));
 const HomeworkPinModal = lazy(() => import('./components/HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
 const PrintableWorksheetsGeneratorModal = lazy(() => import('./components/PrintableWorksheetsGeneratorModal').then((m) => ({ default: m.PrintableWorksheetsGeneratorModal })));
@@ -1136,12 +1135,6 @@ export default function App() {
               />
             ) : selectedSubject === 'english_audio_dialogues' ? (
               <EnglishAudioDialoguesLab
-                grade={grade}
-                onBack={() => setIsHomeActive(true)}
-                onReward={handleLabReward}
-              />
-            ) : selectedSubject === 'acquis_5ap' ? (
-              <AcquisEvaluationViewer
                 grade={grade}
                 onBack={() => setIsHomeActive(true)}
                 onReward={handleLabReward}
