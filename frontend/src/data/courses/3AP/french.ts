@@ -374,6 +374,100 @@ export const FRENCH_3AP: CourseLesson[] = [
 },
 
 {
+    id: 'french-3ap-p2-seq1b-jobs-seasons',
+    grade: '3AP',
+    subject: 'french',
+    trimester: 2,
+    domainAr: 'Langue Française - Projet 2: En famille !',
+    sequenceAr: 'Séquence 1 bis: Les métiers de ma famille et les saisons',
+    categoryAr: 'اللغة الفرنسية - المهن والفصول',
+    titleAr: 'LES MÉTIERS DE MA FAMILLE ET LES SAISONS DE L\'ANNÉE',
+    summaryAr: 'Découverte du vocabulaire des métiers pour décrire la profession des membres de la famille (Il est médecin, Elle est enseignante), et des quatre saisons de l\'année avec leurs caractéristiques.',
+    objectiveAr: 'Nommer quelques métiers courants et les quatre saisons, et utiliser le verbe être pour décrire une profession.',
+    objectivesAr: [
+        'Je nomme le métier d\'un membre de ma famille avec "Il est / Elle est [métier]".',
+        'Je nomme les quatre saisons de l\'année dans l\'ordre.',
+        'Je décris le temps qu\'il fait à chaque saison.',
+    ],
+    detailedCourse: {
+        introAr: 'Chaque personne dans ta famille a peut-être un métier, et chaque année passe par quatre saisons différentes. Apprenons à en parler en français !',
+        vocabulary: [
+            { termAr: 'Le métier', definitionAr: 'Le travail qu\'une personne exerce pour vivre, comme médecin ou enseignant.' },
+            { termAr: 'La saison', definitionAr: 'Une des quatre périodes de l\'année : printemps, été, automne, hiver.' },
+        ],
+        visualizationHintAr: 'Demande à ton enfant le métier de chaque membre de la famille et fais-le répondre avec "Il est..." ou "Elle est...".',
+        commonMistakes: [
+            { mistakeAr: 'Oublier d\'accorder le métier au féminin pour une femme.', correctionAr: 'Certains métiers changent au féminin (un boulanger/une boulangère), d\'autres restent identiques (un médecin/une médecin) — il faut les apprendre au cas par cas.' },
+        ],
+        takeawayAr: 'Il est / Elle est + [métier] pour décrire une profession. Les 4 saisons dans l\'ordre : le printemps, l\'été, l\'automne, l\'hiver.',
+    },
+    keyFormulas: [
+        { labelAr: 'Décrire un métier', formulaAr: 'Il est / Elle est + [métier] (sans article)' },
+    ],
+    discoveryAr: 'Chez Sarah :\n- "Mon père est médecin, il soigne les gens."\n- "Ma mère est enseignante, elle travaille à l\'école."\n- "En été il fait chaud, mais en hiver il fait froid !"',
+    rulesAr: [
+      'Les Métiers courants : médecin (طبيب), enseignant(e) (معلّم/ة), ingénieur (مهندس), boulanger/boulangère (خبّاز), agriculteur (فلاح), policier (شرطي).',
+      'Décrire un métier : "Il est [métier]" ou "Elle est [métier]" — sans article devant le nom du métier (ex: Il est médecin, pas "Il est un médecin").',
+      'Les Quatre Saisons : le printemps (الربيع), l\'été (الصيف), l\'automne (الخريف), l\'hiver (الشتاء).',
+      'Décrire le temps par saison : "En été, il fait chaud." "En hiver, il fait froid." "Au printemps, il fait doux." "En automne, il pleut souvent."'
+    ],
+    interactiveTool: 'french_lab',
+    examplesAr: [
+      {
+        problem: 'Complète : "Ma mère travaille à l\'hôpital, elle est ....."',
+        solution: 'Elle est médecin (ou infirmière).'
+      },
+      {
+        problem: 'Quelle saison vient juste après l\'été ?',
+        solution: 'L\'automne (printemps ➔ été ➔ automne ➔ hiver).'
+      }
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-fr3ap-p2s1b-1',
+        level: 1,
+        levelLabelAr: '🟢 Niveau 1 — Facile',
+        problemAr: 'Comment dit-on "معلّمة" en français, au féminin ?',
+        hintsAr: ['Le métier de celle qui enseigne à l\'école'],
+        solutionAr: 'Enseignante',
+        detailedCorrectionAr: 'Bravo ! 👏 Enseignante est le féminin de enseignant.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-fr3ap-p2s1b-2',
+        level: 2,
+        levelLabelAr: '🟡 Niveau 2 — Moyen',
+        problemAr: 'Range les quatre saisons dans l\'ordre, en commençant par le printemps.',
+        hintsAr: ['printemps ➔ ... ➔ ... ➔ hiver'],
+        solutionAr: 'Le printemps, l\'été, l\'automne, l\'hiver',
+        detailedCorrectionAr: 'Excellent ! ✨ C\'est l\'ordre exact des quatre saisons.',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-fr3ap-p2s1b',
+      type: 'association',
+      titleAr: '🎮 Jeu des Métiers et des Saisons',
+      instructionsAr: 'Associe chaque description au bon métier ou à la bonne saison !',
+      items: [
+        { questionOrPromptAr: 'Il soigne les malades à l\'hôpital', correctAnswerAr: 'Il est médecin', optionsAr: ['Il est médecin', 'Il est boulanger', 'Il est policier'], explanationAr: 'Le médecin soigne les malades.' },
+        { questionOrPromptAr: 'Il fait très chaud, on va à la plage', correctAnswerAr: 'L\'été', optionsAr: ['L\'été', 'L\'hiver', 'L\'automne'], explanationAr: 'L\'été est la saison la plus chaude.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-p2s1b',
+        questionAr: 'Quelle saison vient juste avant le printemps ?',
+        options: [
+          { id: 'a', textAr: 'L\'hiver', isCorrect: true, explanationAr: 'Exactement ! L\'ordre est : hiver ➔ printemps ➔ été ➔ automne ➔ hiver.' },
+          { id: 'b', textAr: 'L\'été', isCorrect: false }
+        ]
+      }
+    ]
+},
+
+{
     id: 'french-3ap-p2-seq2-numbers-age',
     grade: '3AP',
     subject: 'french',
