@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star, X, MessageCircle } from 'lucide-react';
 import { Card, Button } from './ui';
+import { ParentGateModal } from './ParentGateModal';
 
 const STORAGE_KEY = 'mssid_rating_prompt_status'; // undefined | 'rated' | 'dismissed'
 
@@ -32,6 +33,7 @@ export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, onOpe
   const [isVisible, setIsVisible] = useState(false);
   const [selectedStars, setSelectedStars] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [showParentGate, setShowParentGate] = useState(false);
 
   useEffect(() => {
     if (trigger <= 0) return;
@@ -51,13 +53,21 @@ export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, onOpe
     setSelectedStars(stars);
     setHasSubmitted(true);
     window.localStorage.setItem(STORAGE_KEY, 'rated');
-    if (stars >= 4) {
-      const storeUrl = pickStoreUrl();
-      if (storeUrl) window.open(storeUrl, '_blank', 'noopener,noreferrer');
+    // A 4-5 star tap leaves the app for an external store page — this prompt is shown to the
+    // student directly (after a quiz success/badge unlock), so gate the actual navigation.
+    if (stars >= 4 && pickStoreUrl()) {
+      setShowParentGate(true);
     }
   };
 
+  const openStoreAfterParentGate = () => {
+    setShowParentGate(false);
+    const storeUrl = pickStoreUrl();
+    if (storeUrl) window.open(storeUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
+    <>
     <AnimatePresence>
       {isVisible && (
         <motion.div
@@ -127,5 +137,11 @@ export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, onOpe
         </motion.div>
       )}
     </AnimatePresence>
+    <ParentGateModal
+      isOpen={showParentGate}
+      onClose={() => setShowParentGate(false)}
+      onVerified={openStoreAfterParentGate}
+    />
+    </>
   );
 };

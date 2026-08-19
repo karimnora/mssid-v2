@@ -12,6 +12,15 @@ const testUser: AuthUser = {
   role: 'ROLE_FREE',
 };
 
+// Submitting the receipt form now opens a Parent Gate (see ParentGateModal.tsx) before the actual
+// AuthService call — solve it the same way a real parent would, reading the two numbers shown.
+const solveParentGate = () => {
+  const prompt = screen.getByText(/^\d+ \+ \d+ = \?$/);
+  const [a, b] = prompt.textContent!.match(/\d+/g)!.map(Number);
+  fireEvent.change(screen.getByPlaceholderText('اكتب الناتج هنا'), { target: { value: String(a + b) } });
+  fireEvent.click(screen.getByRole('button', { name: 'متابعة' }));
+};
+
 describe('SubscriptionPaywall — receipt submission (regression: no false "pending" on backend rejection)', () => {
   afterEach(() => {
     vi.restoreAllMocks();
@@ -38,6 +47,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
+    solveParentGate();
 
     await waitFor(() => {
       expect(submitSpy).toHaveBeenCalledWith(
@@ -60,6 +70,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
+    solveParentGate();
 
     await waitFor(() => {
       expect(screen.getByText("Le montant indiqué (1 DZD) ne correspond pas au tarif de l'abonnement (1500 DZD).")).toBeInTheDocument();

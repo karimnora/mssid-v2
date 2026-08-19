@@ -10,6 +10,7 @@ import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dail
 import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
 import { AuthService } from '../services/authService';
+import { ParentGateModal } from './ParentGateModal';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -85,12 +86,20 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [confirmDeleteAccount, setConfirmDeleteAccount] = useState(false);
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
+  const [showDeleteParentGate, setShowDeleteParentGate] = useState(false);
 
-  const handleDeleteAccount = async () => {
+  // Parent Gate sits after the two-step confirm above, right before the actual DELETE call — the
+  // last point before the action is irreversible.
+  const handleDeleteAccount = () => {
     if (!confirmDeleteAccount) {
       setConfirmDeleteAccount(true);
       return;
     }
+    setShowDeleteParentGate(true);
+  };
+
+  const performAccountDeletion = async () => {
+    setShowDeleteParentGate(false);
     setDeletingAccount(true);
     setDeleteAccountError(null);
     const result = await AuthService.deleteAccountAsync();
@@ -149,6 +158,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   };
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -450,5 +460,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         </div>
       </motion.div>
     </motion.div>
+    <ParentGateModal
+      isOpen={showDeleteParentGate}
+      onClose={() => setShowDeleteParentGate(false)}
+      onVerified={performAccountDeletion}
+    />
+    </>
   );
 };

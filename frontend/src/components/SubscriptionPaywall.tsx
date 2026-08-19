@@ -3,6 +3,7 @@ import { AuthUser, PaymentReceipt, PaymentMethod } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { SUBSCRIPTION_PRICE_DZD } from '../constants/pricing';
 import { Lock, ShieldCheck, Upload, CheckCircle2, AlertCircle, Clock, FileText, Smartphone, CreditCard, Sparkles, X, Eye } from 'lucide-react';
+import { ParentGateModal } from './ParentGateModal';
 
 interface Props {
   user: AuthUser | null;
@@ -25,6 +26,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submittedReceipt, setSubmittedReceipt] = useState<PaymentReceipt | null>(null);
   const [customError, setCustomError] = useState<string | null>(null);
+  const [showParentGate, setShowParentGate] = useState(false);
 
   const currentUser = user || AuthService.getCurrentUser();
 
@@ -39,8 +41,16 @@ export const SubscriptionPaywall: React.FC<Props> = ({
     }
   };
 
-  const handleSubmitReceipt = async (e: React.FormEvent) => {
+  // Parent Gate: a real financial action (submitting a payment receipt) — gated here rather than
+  // earlier in the flow (e.g. before browsing the pricing screen itself), matching Apple/Google
+  // guidance that the gate belongs right before the sensitive action, not before informational content.
+  const handleSubmitReceipt = (e: React.FormEvent) => {
     e.preventDefault();
+    setShowParentGate(true);
+  };
+
+  const submitReceiptAfterParentGate = async () => {
+    setShowParentGate(false);
     if (!currentUser) {
       setCustomError('يرجى تسجيل الدخول أولاً لإرسال وصل الدفع');
       return;
@@ -79,6 +89,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   };
 
   return (
+    <>
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
       <div className="bg-white border border-purple-200 w-full max-w-3xl rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[92vh] overflow-y-auto dir-rtl" dir="rtl">
         {/* Header Header */}
@@ -293,5 +304,11 @@ export const SubscriptionPaywall: React.FC<Props> = ({
         </div>
       </div>
     </div>
+    <ParentGateModal
+      isOpen={showParentGate}
+      onClose={() => setShowParentGate(false)}
+      onVerified={submitReceiptAfterParentGate}
+    />
+    </>
   );
 };
