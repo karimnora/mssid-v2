@@ -1,10 +1,11 @@
 import { PreschoolModule } from './types';
 
 // "سَفِينَةُ الحُرُوفِ" — Letters and Vocabulary (Arabophone & Multi-language éveil).
-// Teaches all 28 letters of the Arabic alphabet individually via tap_choice (recognition) and trace
-// (finger-writing), each anchored to a concrete, familiar word/animal so a non-reading child has a
-// picture hook rather than an abstract glyph. Steps 1-14 cover أ ب ت ث ج د س م; steps 15-31 complete
-// the alphabet (ر ز ش ص ض ط ظ ع غ ف ق ك ل ن هـ و ي). Closes with a fruit-basket sort, a rhyme /
+// Teaches 24 of the 28 letters of the Arabic alphabet individually via tap_choice (recognition) and
+// trace (finger-writing), each anchored to a concrete, familiar word/animal so a non-reading child
+// has a picture hook rather than an abstract glyph. ح خ ذ ه are never a target letter — they only
+// ever appear as distractors. Steps 1-14 cover أ ب ت ث ج د س م; steps 15-31 complete the taught set
+// (ر ز ش ص ض ط ظ ع غ ف ق ك ل ن و ي). Closes with a fruit-basket sort, a rhyme /
 // first-sound discrimination sort (ف vs ك), an expanded letter-to-picture matching game for the
 // second half of the alphabet, and a letter memory game — same depth pattern as the numbers module.
 export const LETTERS_MODULE: PreschoolModule = {
@@ -607,8 +608,8 @@ export const LETTERS_MODULE: PreschoolModule = {
       interactionType: 'tap_choice',
       i18n: {
         ar: { title: 'صَيْدُ حَرْفِ الظَّاءِ (ظ)', promptAudio: 'اِلْمِسْ حَرْفَ الظَّاءِ! ظَـ.. ظَبْي!', promptText: 'ساعد طفلك على لمس حرف الظاء (ظ).', successAudio: 'رَائِع! ظَـ.. ظَبْيٌ رَشِيق!' },
-        fr: { title: 'La Pêche à la Lettre Ẓ', promptAudio: 'Touche la lettre Ẓ ! Ẓ comme gazelle (Dhabi) !', promptText: 'Aidez votre enfant à toucher la lettre Ẓ.', successAudio: 'Bravo ! Tu as trouvé la lettre Ẓ !' },
-        en: { title: 'Catch the Letter Ẓ', promptAudio: 'Touch the letter Ẓ! Ẓ for gazelle (Dhabi)!', promptText: 'Help your child tap the letter Ẓ.', successAudio: 'Well done! That is the letter Ẓ!' },
+        fr: { title: 'La Pêche à la Lettre Dh', promptAudio: 'Touche la lettre Dh ! Dh comme gazelle (Dhabi) !', promptText: 'Aidez votre enfant à toucher la lettre Dh.', successAudio: 'Bravo ! Tu as trouvé la lettre Dh !' },
+        en: { title: 'Catch the Letter Dh', promptAudio: 'Touch the letter Dh! Dh for gazelle (Dhabi)!', promptText: 'Help your child tap the letter Dh.', successAudio: 'Well done! That is the letter Dh!' },
       },
       visualAssets: { mainSvgOrImage: '🦌', choices: [{ id: 'za', asset: 'ظ', isCorrect: true }, { id: 'ta', asset: 'ط', isCorrect: false }, { id: 'thal', asset: 'ذ', isCorrect: false }] },
     },
@@ -620,8 +621,8 @@ export const LETTERS_MODULE: PreschoolModule = {
       interactionType: 'tap_choice',
       i18n: {
         ar: { title: 'صَيْدُ حَرْفِ العَيْنِ (ع)', promptAudio: 'اِلْمِسْ حَرْفَ العَيْنِ! عَـ.. عُصْفُور!', promptText: 'ساعد طفلك على لمس حرف العين (ع).', successAudio: 'مُمْتَاز! عَـ.. عُصْفُورٌ مُغَرِّد!' },
-        fr: { title: 'La Pêche à la Lettre \'A', promptAudio: 'Touche la lettre \'A ! \'A comme moineau (Asfour) !', promptText: 'Aidez votre enfant à toucher la lettre \'A.', successAudio: 'Bravo ! Tu as trouvé la lettre \'A !' },
-        en: { title: 'Catch the Letter \'A', promptAudio: 'Touch the letter \'A! \'A for sparrow (Asfour)!', promptText: 'Help your child tap the letter \'A.', successAudio: 'Well done! That is the letter \'A!' },
+        fr: { title: 'La Pêche à la Lettre Ayn', promptAudio: 'Touche la lettre Ayn ! Ayn comme moineau (Asfour) !', promptText: 'Aidez votre enfant à toucher la lettre Ayn.', successAudio: 'Bravo ! Tu as trouvé la lettre Ayn !' },
+        en: { title: 'Catch the Letter Ayn', promptAudio: 'Touch the letter Ayn! Ayn for sparrow (Asfour)!', promptText: 'Help your child tap the letter Ayn.', successAudio: 'Well done! That is the letter Ayn!' },
       },
       visualAssets: { mainSvgOrImage: '🐦', choices: [{ id: 'ayn', asset: 'ع', isCorrect: true }, { id: 'ghayn', asset: 'غ', isCorrect: false }, { id: 'h', asset: 'ح', isCorrect: false }] },
     },

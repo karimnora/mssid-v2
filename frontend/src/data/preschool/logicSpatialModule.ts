@@ -192,8 +192,8 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
       visualAssets: {
         mainSvgOrImage: '🔴🔵🔴🔵❓',
         choices: [
-          { id: 'blue', asset: '🔵', isCorrect: true },
-          { id: 'green', asset: '🟢', isCorrect: false },
+          { id: 'red', asset: '🔴', isCorrect: true },
+          { id: 'blue', asset: '🔵', isCorrect: false },
           { id: 'yellow', asset: '🟡', isCorrect: false },
         ],
       },
@@ -227,8 +227,8 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
       visualAssets: {
         mainSvgOrImage: '🔺⭐🔺⭐❓',
         choices: [
-          { id: 'star', asset: '⭐', isCorrect: true },
-          { id: 'square', asset: '🟦', isCorrect: false },
+          { id: 'triangle', asset: '🔺', isCorrect: true },
+          { id: 'star', asset: '⭐', isCorrect: false },
           { id: 'heart', asset: '💖', isCorrect: false },
         ],
       },

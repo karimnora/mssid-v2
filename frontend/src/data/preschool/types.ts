@@ -5,7 +5,7 @@
 // into the primary-school lesson shape would either corrupt that shape or require awkward optional
 // fields nobody else needs. Nothing here is imported by, or imports from, the 1AP-5AP course data.
 
-export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'animals' | 'writing' | 'values' | 'creative';
+export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'animals' | 'writing' | 'values' | 'creative' | 'world';
 
 export type PreschoolLanguage = 'ar' | 'fr' | 'en';
 

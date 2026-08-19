@@ -52,7 +52,7 @@ export const WORLD_MODULE: PreschoolModule = {
     },
     {
       id: 'world-morning-routine',
-      domain: 'animals',
+      domain: 'world',
       targetValue: 'hygiene',
       stepNumber: 2,
       interactionType: 'sorting',
@@ -127,7 +127,7 @@ export const WORLD_MODULE: PreschoolModule = {
     },
     {
       id: 'world-handwashing-steps',
-      domain: 'animals',
+      domain: 'world',
       targetValue: 'handwashing',
       stepNumber: 4,
       interactionType: 'sorting',
@@ -167,7 +167,7 @@ export const WORLD_MODULE: PreschoolModule = {
     },
     {
       id: 'world-tooth-brushing',
-      domain: 'animals',
+      domain: 'world',
       targetValue: 'toothbrushing',
       stepNumber: 5,
       interactionType: 'tap_choice',
