@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useCallback, useRef, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
@@ -10,6 +10,7 @@ import { renderTextWithMath } from './MathExpression';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { isFeatureEnabled } from '../featureFlags';
+import { playSuccessChime, playGentleNudge } from './preschool/usePreschoolAudio';
 
 // R2.1 — code splitting: exactly one of these renders per lesson (gated by lesson.interactiveTool /
 // scientificInquiry), so none of them need to be in the initial bundle. This is also what makes the
@@ -162,6 +163,34 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setIsSpeaking(true);
   };
 
+  // Per-block read-aloud for "الكورس المفصّل" (vocabulary/common mistakes/takeaway) — the main
+  // handleToggleSpeech button above only ever reads titleAr/summaryAr/rulesAr, leaving this section
+  // (often the longest) unreachable for a child who can't read it. Deliberately no play/pause state
+  // of its own — a fresh tap always interrupts whatever's playing, same as the main button's cancel().
+  const speakBlock = (text: string) => {
+    if (!isFeatureEnabled('voiceReading')) return;
+    if (typeof window === 'undefined' || !('speechSynthesis' in window) || !text) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ar-SA';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Small 🔊 button next to one content block, same isYoungGrade gate as the main read-aloud button
+  // above (1AP-3AP only — older students read fine and don't need it cluttering every block).
+  const renderSpeakButton = (text: string | undefined, label: string) =>
+    isYoungGrade && text ? (
+      <button
+        type="button"
+        onClick={() => speakBlock(text)}
+        title={`استمع: ${label}`}
+        className="shrink-0 w-7 h-7 rounded-full bg-[var(--brand-blue)]/15 hover:bg-[var(--brand-blue)]/25 text-[var(--brand-blue-dark)] flex items-center justify-center cursor-pointer text-sm"
+      >
+        🔊
+      </button>
+    ) : null;
+
   // Practice exercises state ("Je m'entraîne" — progressiveExercises)
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
   const [practiceChecked, setPracticeChecked] = useState<Record<string, boolean>>({});
@@ -187,7 +216,16 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     return true; // reveal-based types
   };
 
-  const checkPracticeExercise = (ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
+  // Latest-values ref for checkPracticeExercise/resetPracticeExercise below — set directly during
+  // render (not in a useEffect, so there's no post-commit lag) so those two callbacks can stay
+  // referentially stable (useCallback with an empty dep array) without going stale. Stability here is
+  // what lets <PracticeExerciseCard>'s React.memo actually skip re-renders — a new onCheck/onReset
+  // reference on every keystroke elsewhere would defeat it regardless of any other prop being stable.
+  const practiceStateRef = useRef({ practiceAnswers, matchingConnections, orderingSelections, awardedExerciseIds });
+  practiceStateRef.current = { practiceAnswers, matchingConnections, orderingSelections, awardedExerciseIds };
+
+  const checkPracticeExercise = useCallback((ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
+    const { practiceAnswers, matchingConnections, orderingSelections, awardedExerciseIds } = practiceStateRef.current;
     const answer = practiceAnswers[ex.id];
     let isCorrect = true; // default for reveal-based types (short_answer — not auto-validated)
     if (ex.type === 'qcm' || ex.type === 'true_false') {
@@ -214,9 +252,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       onCompleteQuiz(lesson.id, ex.xpReward);
       setAwardedExerciseIds((prev) => new Set(prev).add(ex.id));
     }
-  };
+  }, [lesson.id, onCompleteQuiz]);
 
-  const resetPracticeExercise = (ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
+  const resetPracticeExercise = useCallback((ex: NonNullable<CourseLesson['progressiveExercises']>[number]) => {
     setPracticeChecked((prev) => ({ ...prev, [ex.id]: false }));
     setPracticeAnswers((prev) => ({ ...prev, [ex.id]: '' }));
     if (ex.type === 'matching') {
@@ -226,30 +264,36 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     if (ex.type === 'ordering') {
       setOrderingSelections((prev) => ({ ...prev, [ex.id]: [] }));
     }
-  };
+  }, []);
 
-  // Per-exercise callback factories for <PracticeExerciseCard>, shared identically by the
-  // tiered practice section and the final evaluation section (exercise ids are unique across both).
-  const setAnswerFor = (exId: string) => (value: string | number) => setPracticeAnswers((prev) => ({ ...prev, [exId]: value }));
-  const setMatchingSelectedLeftFor = (exId: string) => (leftIdx: number | null) => setMatchingSelectedLeft((prev) => ({ ...prev, [exId]: leftIdx }));
-  const connectMatchingFor = (exId: string) => (leftIdx: number, rightIdx: number) => {
+  // Generic, exId-taking setters for <PracticeExerciseCard> — stable across renders (empty dep array,
+  // pure functional state updates) so passing them as props never defeats PracticeExerciseCard's
+  // React.memo. Shared identically by the tiered practice section and the final evaluation section
+  // (exercise ids are unique across both).
+  const handlePracticeAnswerChange = useCallback((exId: string, value: string | number) => {
+    setPracticeAnswers((prev) => ({ ...prev, [exId]: value }));
+  }, []);
+  const handleMatchingSelectLeft = useCallback((exId: string, leftIdx: number | null) => {
+    setMatchingSelectedLeft((prev) => ({ ...prev, [exId]: leftIdx }));
+  }, []);
+  const handleConnectMatching = useCallback((exId: string, leftIdx: number, rightIdx: number) => {
     setMatchingConnections((prev) => ({ ...prev, [exId]: { ...(prev[exId] || {}), [leftIdx]: rightIdx } }));
     setMatchingSelectedLeft((prev) => ({ ...prev, [exId]: null }));
-  };
-  const disconnectMatchingFor = (exId: string) => (leftIdx: number) => {
+  }, []);
+  const handleDisconnectMatching = useCallback((exId: string, leftIdx: number) => {
     setMatchingConnections((prev) => {
       const next = { ...(prev[exId] || {}) };
       delete next[leftIdx];
       return { ...prev, [exId]: next };
     });
-  };
-  const toggleOrderingItemFor = (exId: string) => (originalIdx: number) => {
+  }, []);
+  const handleToggleOrderingItem = useCallback((exId: string, originalIdx: number) => {
     setOrderingSelections((prev) => {
       const cur = prev[exId] || [];
       if (cur.includes(originalIdx)) return { ...prev, [exId]: cur.filter((i) => i !== originalIdx) };
       return { ...prev, [exId]: [...cur, originalIdx] };
     });
-  };
+  }, []);
 
   // Final evaluation summary — reuses the exact same practiceChecked/practiceCorrect state as the
   // tiered practice exercises (exercise ids are unique across the two lists).
@@ -365,6 +409,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     const correctOpt = question?.options.find((o) => o.isCorrect);
     const isCorrect = !!correctOpt && correctOpt.id === optionId;
     setRecentAnswerId(questionId);
+    // Multisensory feedback — visual badge/confetti alone leaves the pre-readers this quiz is aimed
+    // at (same audience as the TTS button above) without confirmation during the page's most frequent
+    // interaction.
+    if (isCorrect) playSuccessChime(); else playGentleNudge();
     if (isCorrect && !awardedQuizIds.has(questionId)) {
       onCompleteQuiz(lesson.id, quizAlreadyValidated ? 5 : 15);
       const newAwarded = new Set(awardedQuizIds).add(questionId);
@@ -548,7 +596,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <>
               <Button
                 variant="outline"
-                size="sm"
+                size="md"
                 icon={<ChevronRight className="w-4 h-4" />}
                 disabled={!previousLesson}
                 onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
@@ -560,7 +608,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
               <Button
                 variant={isLastStep ? 'info' : 'outline'}
-                size="sm"
+                size="md"
                 icon={isLastStep ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
                 iconPosition="end"
                 disabled={!nextLesson || !isLastStep}
@@ -713,7 +761,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               <button
                 key={step.id}
                 onClick={() => goToStep(idx)}
-                className={`flex items-center justify-between gap-2 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
+                className={`flex items-center justify-between gap-2 min-h-12 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
                   isActive
                     ? `${step.activeClass} shadow-md scale-[1.02]`
                     : isCompleted
@@ -753,7 +801,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               availableSteps={availableSteps}
               activeStepId={activeTab}
               onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
-              onProceedToSummary={() => setActiveTab('content')}
             />
           )}
 
@@ -784,21 +831,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                           ex={ex}
                           renderArabicText={renderArabicText}
                           answer={practiceAnswers[ex.id]}
-                          setAnswer={setAnswerFor(ex.id)}
+                          onAnswerChange={handlePracticeAnswerChange}
                           isChecked={!!practiceChecked[ex.id]}
                           isCorrect={!!practiceCorrect[ex.id]}
                           canCheck={canCheckExercise(ex)}
-                          onCheck={() => checkPracticeExercise(ex)}
-                          onReset={() => resetPracticeExercise(ex)}
+                          onCheck={checkPracticeExercise}
+                          onReset={resetPracticeExercise}
                           matchingRightOrder={matchingRightOrder[ex.id] || []}
                           matchingConnections={matchingConnections[ex.id] || {}}
                           matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
-                          setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
-                          connectMatching={connectMatchingFor(ex.id)}
-                          disconnectMatching={disconnectMatchingFor(ex.id)}
+                          onMatchingSelectLeft={handleMatchingSelectLeft}
+                          onConnectMatching={handleConnectMatching}
+                          onDisconnectMatching={handleDisconnectMatching}
                           orderingShuffled={orderingShuffled[ex.id] || []}
                           orderingSelection={orderingSelections[ex.id] || []}
-                          toggleOrderingItem={toggleOrderingItemFor(ex.id)}
+                          onToggleOrderingItem={handleToggleOrderingItem}
                         />
                       ))}
                     </div>
@@ -917,13 +964,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     <GraduationCap className="w-5 h-5 text-[var(--brand-blue)]" />
                     <span>الكورس المفصّل</span>
                   </h3>
-                  <p className="text-sm text-[var(--app-text)] leading-relaxed bg-[var(--brand-blue)]/10 border border-[var(--brand-blue)]/25 rounded-2xl p-4">
-                    {renderArabicText(lesson.detailedCourse.introAr)}
-                  </p>
+                  <div className="flex items-start gap-2 bg-[var(--brand-blue)]/10 border border-[var(--brand-blue)]/25 rounded-2xl p-4">
+                    <p className="flex-1 text-sm text-[var(--app-text)] leading-relaxed">
+                      {renderArabicText(lesson.detailedCourse.introAr)}
+                    </p>
+                    {renderSpeakButton(lesson.detailedCourse.introAr, 'المقدمة')}
+                  </div>
 
                   {lesson.detailedCourse.vocabulary && lesson.detailedCourse.vocabulary.length > 0 && (
                     <div className="space-y-2">
-                      <span className="text-xs font-extrabold text-[var(--app-text-muted)] block">📖 كلمات مهمة أتذكرها:</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-extrabold text-[var(--app-text-muted)] block">📖 كلمات مهمة أتذكرها:</span>
+                        {renderSpeakButton(
+                          lesson.detailedCourse.vocabulary.map((v) => `${v.termAr}. ${v.definitionAr}`).join('. '),
+                          'الكلمات المهمة'
+                        )}
+                      </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {lesson.detailedCourse.vocabulary.map((v, i) => (
                           <div key={i} className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-xl p-3 text-xs">
@@ -944,7 +1000,15 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
                   {lesson.detailedCourse.commonMistakes && lesson.detailedCourse.commonMistakes.length > 0 && (
                     <div className="space-y-2">
-                      <span className="text-xs font-extrabold text-[var(--brand-coral-dark)] block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-extrabold text-[var(--brand-coral-dark)] block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
+                        {renderSpeakButton(
+                          lesson.detailedCourse.commonMistakes
+                            .map((m) => `خطأ شائع: ${m.mistakeAr}. الصواب: ${m.correctionAr}`)
+                            .join('. '),
+                          'الأخطاء الشائعة'
+                        )}
+                      </div>
                       {lesson.detailedCourse.commonMistakes.map((m, i) => (
                         <div key={i} className="bg-[var(--brand-coral)]/10 border border-[var(--brand-coral)]/25 rounded-xl p-3 text-xs space-y-1">
                           <p className="text-[var(--brand-coral-dark)]"><span className="font-bold">❌ </span>{renderArabicText(m.mistakeAr)}</p>
@@ -954,8 +1018,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     </div>
                   )}
 
-                  <div className="bg-[var(--brand-amber)]/10 border border-[var(--brand-amber)]/35 rounded-2xl p-4 text-sm font-bold text-[var(--brand-amber-dark)]">
-                    💡 أتذكر: {renderArabicText(lesson.detailedCourse.takeawayAr)}
+                  <div className="flex items-start gap-2 bg-[var(--brand-amber)]/10 border border-[var(--brand-amber)]/35 rounded-2xl p-4 text-sm font-bold text-[var(--brand-amber-dark)]">
+                    <span className="flex-1">💡 أتذكر: {renderArabicText(lesson.detailedCourse.takeawayAr)}</span>
+                    {renderSpeakButton(lesson.detailedCourse.takeawayAr, 'ملخص أتذكر')}
                   </div>
                 </Card>
               )}
@@ -1252,21 +1317,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   ex={ex}
                   renderArabicText={renderArabicText}
                   answer={practiceAnswers[ex.id]}
-                  setAnswer={setAnswerFor(ex.id)}
+                  onAnswerChange={handlePracticeAnswerChange}
                   isChecked={!!practiceChecked[ex.id]}
                   isCorrect={!!practiceCorrect[ex.id]}
                   canCheck={canCheckExercise(ex)}
-                  onCheck={() => checkPracticeExercise(ex)}
-                  onReset={() => resetPracticeExercise(ex)}
+                  onCheck={checkPracticeExercise}
+                  onReset={resetPracticeExercise}
                   matchingRightOrder={matchingRightOrder[ex.id] || []}
                   matchingConnections={matchingConnections[ex.id] || {}}
                   matchingSelectedLeft={matchingSelectedLeft[ex.id] ?? null}
-                  setMatchingSelectedLeft={setMatchingSelectedLeftFor(ex.id)}
-                  connectMatching={connectMatchingFor(ex.id)}
-                  disconnectMatching={disconnectMatchingFor(ex.id)}
+                  onMatchingSelectLeft={handleMatchingSelectLeft}
+                  onConnectMatching={handleConnectMatching}
+                  onDisconnectMatching={handleDisconnectMatching}
                   orderingShuffled={orderingShuffled[ex.id] || []}
                   orderingSelection={orderingSelections[ex.id] || []}
-                  toggleOrderingItem={toggleOrderingItemFor(ex.id)}
+                  onToggleOrderingItem={handleToggleOrderingItem}
                 />
               ))}
 

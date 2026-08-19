@@ -7,32 +7,36 @@ interface PracticeExerciseCardProps {
   ex: ProgressiveExercise;
   renderArabicText: (text: string | undefined | null) => string;
   answer: string | number | undefined;
-  setAnswer: (value: string | number) => void;
+  onAnswerChange: (exId: string, value: string | number) => void;
   isChecked: boolean;
   isCorrect: boolean;
   canCheck: boolean;
-  onCheck: () => void;
-  onReset: () => void;
+  onCheck: (ex: ProgressiveExercise) => void;
+  onReset: (ex: ProgressiveExercise) => void;
   matchingRightOrder: number[];
   matchingConnections: Record<number, number>;
   matchingSelectedLeft: number | null;
-  setMatchingSelectedLeft: (leftIdx: number | null) => void;
-  connectMatching: (leftIdx: number, rightIdx: number) => void;
-  disconnectMatching: (leftIdx: number) => void;
+  onMatchingSelectLeft: (exId: string, leftIdx: number | null) => void;
+  onConnectMatching: (exId: string, leftIdx: number, rightIdx: number) => void;
+  onDisconnectMatching: (exId: string, leftIdx: number) => void;
   orderingShuffled: number[];
   orderingSelection: number[];
-  toggleOrderingItem: (originalIdx: number) => void;
+  onToggleOrderingItem: (exId: string, originalIdx: number) => void;
 }
 
 // A single practice/evaluation exercise, self-contained: renders the right interaction widget for
 // its `type`, tracks progressive hint reveals locally, and reports check/reset via callbacks so the
 // parent (LessonViewer) keeps a single source of truth for scoring/XP. Reused identically by both
 // the "أتدرب" (tiered practice) and "التقييم النهائي" (final evaluation) sections.
-export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
+//
+// React.memo + exId-taking callback props (rather than the old per-exercise curried closures) are
+// what make this memoization actually pay off — see LessonViewer.tsx's stable useCallback handlers.
+// Without both halves, a keystroke in one exercise's fill_blank input still re-renders every card.
+export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.memo(({
   ex,
   renderArabicText,
   answer,
-  setAnswer,
+  onAnswerChange,
   isChecked,
   isCorrect,
   canCheck,
@@ -41,13 +45,18 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
   matchingRightOrder,
   matchingConnections,
   matchingSelectedLeft,
-  setMatchingSelectedLeft,
-  connectMatching,
-  disconnectMatching,
+  onMatchingSelectLeft,
+  onConnectMatching,
+  onDisconnectMatching,
   orderingShuffled,
   orderingSelection,
-  toggleOrderingItem,
+  onToggleOrderingItem,
 }) => {
+  const setAnswer = (value: string | number) => onAnswerChange(ex.id, value);
+  const setMatchingSelectedLeft = (leftIdx: number | null) => onMatchingSelectLeft(ex.id, leftIdx);
+  const connectMatching = (leftIdx: number, rightIdx: number) => onConnectMatching(ex.id, leftIdx, rightIdx);
+  const disconnectMatching = (leftIdx: number) => onDisconnectMatching(ex.id, leftIdx);
+  const toggleOrderingItem = (originalIdx: number) => onToggleOrderingItem(ex.id, originalIdx);
   const [hintsRevealed, setHintsRevealed] = useState(0);
   const hasProgressiveHints = !!ex.progressiveHints && ex.progressiveHints.length > 0;
   const maxHints = hasProgressiveHints ? ex.progressiveHints!.length : ex.hintsAr.length > 0 ? 1 : 0;
@@ -255,7 +264,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
 
       {!isChecked ? (
         <button
-          onClick={onCheck}
+          onClick={() => onCheck(ex)}
           disabled={!canCheck}
           className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
         >
@@ -265,7 +274,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
         <button
           onClick={() => {
             setHintsRevealed(0);
-            onReset();
+            onReset(ex);
           }}
           className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
         >
@@ -274,4 +283,4 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = ({
       )}
     </div>
   );
-};
+});

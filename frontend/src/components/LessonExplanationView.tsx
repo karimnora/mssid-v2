@@ -11,7 +11,6 @@ const ScienceLabSimulation = lazy(() => import('./ScienceLabSimulation').then((m
 interface LessonExplanationViewProps {
   lesson: CourseLesson;
   tashkeelEnabled?: boolean;
-  onProceedToSummary?: () => void;
   availableSteps?: {
     id: string;
     labelAr: string;
@@ -26,7 +25,6 @@ interface LessonExplanationViewProps {
 export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
   lesson,
   tashkeelEnabled = true,
-  onProceedToSummary,
   availableSteps,
   activeStepId,
   onSelectStep,
