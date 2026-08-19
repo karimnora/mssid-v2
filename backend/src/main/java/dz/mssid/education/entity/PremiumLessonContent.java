@@ -32,8 +32,11 @@ public class PremiumLessonContent {
     @Column(nullable = false)
     private Integer trimester;
 
-    @Lob
-    @Column(name = "content_json", nullable = false)
+    // No @Lob here — same convention as every other large-text column in this codebase (see
+    // AdminAuditLog.details, ContactMessage.message, ExamPaper.correctionBaremeDetails): @Lob makes
+    // Hibernate expect a CLOB/oid mapping under ddl-auto=validate, which mismatches the plain TEXT
+    // column the migration actually creates and fails ApplicationContext startup.
+    @Column(name = "content_json", nullable = false, columnDefinition = "TEXT")
     private String contentJson;
 
     @Column(name = "updated_at", nullable = false)
