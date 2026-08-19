@@ -368,6 +368,15 @@ public async request<T>(
     });
   }
 
+  // T2/T3 server-side content gate (pilot) — PREMIUM/ADMIN only, see PremiumContentController.
+  // 403 (wrong role) and 404 (not yet migrated) both surface as `error` here, same as any other
+  // non-2xx response — LessonViewer distinguishes them by status for the exact message shown.
+  public async getPremiumLessonContent(lessonId: string) {
+    return this.request<any>(`/v1/courses/premium-lessons/${lessonId}`, {
+      method: 'GET',
+    });
+  }
+
   // --- Gestion des Reçus de Paiement ---
   public async submitReceipt(payload: { paymentMethod: string; amountDzd: number; transactionRef: string; receiptImageUrl: string }) {
     return this.request<{ id: number; status: string; transactionRef: string; amountDzd: number }>('/v1/payments/receipt/upload', {

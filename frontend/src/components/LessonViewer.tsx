@@ -11,6 +11,7 @@ import { Button, Card, Badge, XPProgressBar } from './ui';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { isFeatureEnabled } from '../featureFlags';
 import { playSuccessChime, playGentleNudge } from './preschool/usePreschoolAudio';
+import { springBootApi } from '../services/springBootApi';
 
 // R2.1 — code splitting: exactly one of these renders per lesson (gated by lesson.interactiveTool /
 // scientificInquiry), so none of them need to be in the initial bundle. This is also what makes the
@@ -107,19 +108,52 @@ const ConfettiBurst: React.FC = () => (
 );
 
 export const LessonViewer: React.FC<LessonViewerProps> = ({
-  lesson,
+  lesson: lessonProp,
   allLessons = [],
   onSelectLesson,
   onBack,
   onCompleteQuiz,
   quizAlreadyValidated = false,
   onQuizFullyValidated,
-  grade = lesson.grade,
-  subjectId = lesson.subject,
+  grade = lessonProp.grade,
+  subjectId = lessonProp.subject,
   trimester,
   onHomeClick,
   tashkeelEnabled = true,
 }) => {
+  // T2/T3 server-side content gate (pilot — see trimesterAccess.ts's doc comment, and
+  // PremiumContentController on the backend). A "shell" lesson (premiumContentPending) ships with
+  // empty quiz/rulesAr and no detailedCourse/progressiveExercises/etc. — the real content is fetched
+  // here and merged on top, only ever reaching a PREMIUM/ADMIN account (the endpoint 403s otherwise).
+  const [premiumContent, setPremiumContent] = useState<Partial<CourseLesson> | null>(null);
+  const [premiumFetchState, setPremiumFetchState] = useState<'idle' | 'loading' | 'forbidden' | 'error' | 'done'>('idle');
+
+  useEffect(() => {
+    setPremiumContent(null);
+    if (!lessonProp.premiumContentPending) {
+      setPremiumFetchState('idle');
+      return;
+    }
+    setPremiumFetchState('loading');
+    let cancelled = false;
+    springBootApi.getPremiumLessonContent(lessonProp.id).then((res) => {
+      if (cancelled) return;
+      if (res.status === 200 && res.data) {
+        setPremiumContent(res.data);
+        setPremiumFetchState('done');
+      } else if (res.status === 403) {
+        setPremiumFetchState('forbidden');
+      } else {
+        setPremiumFetchState('error');
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [lessonProp.id, lessonProp.premiumContentPending]);
+
+  const lesson: CourseLesson = premiumContent ? { ...lessonProp, ...premiumContent } : lessonProp;
+
   const currentIndex = allLessons.length > 0 ? allLessons.findIndex((l) => l.id === lesson.id) : -1;
   const previousLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;
   const nextLesson = currentIndex >= 0 && currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null;
@@ -546,6 +580,39 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setAwardedQuizIds(new Set());
     initializeShuffledQuiz(); // Re-shuffle options for new randomized positions
   };
+
+  // Intercepts the render for a shell lesson still resolving (or denied) its server-side content —
+  // every hook above has already run unconditionally, so this early return is safe.
+  if (lessonProp.premiumContentPending && premiumFetchState !== 'done') {
+    return (
+      <div className="space-y-6 dir-rtl" dir="rtl">
+        <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
+          قائمة الدروس
+        </Button>
+        {premiumFetchState === 'loading' && <LoadingFallback label="جاري تحميل محتوى الدرس..." />}
+        {premiumFetchState === 'forbidden' && (
+          <Card padding="lg" className="text-center space-y-4">
+            <Lock className="w-10 h-10 mx-auto text-[var(--brand-amber)]" />
+            <h2 className="text-base font-black text-[var(--app-text)]">{renderArabicText(lesson.titleAr)}</h2>
+            <p className="text-sm text-[var(--app-text-muted)] max-w-md mx-auto">
+              هذا الدرس ضمن محتوى الفصلين الثاني والثالث، وهو متاح فقط للمشتركين في mssid dz Premium.
+            </p>
+            <Button variant="ghost" size="sm" onClick={onBack}>
+              العودة لقائمة الدروس
+            </Button>
+          </Card>
+        )}
+        {premiumFetchState === 'error' && (
+          <Card padding="lg" className="text-center space-y-4">
+            <p className="text-sm text-[var(--app-text-muted)]">تعذر تحميل محتوى الدرس. تحقق من اتصالك وحاول مجدداً.</p>
+            <Button variant="outline" size="sm" onClick={onBack}>
+              العودة لقائمة الدروس
+            </Button>
+          </Card>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">

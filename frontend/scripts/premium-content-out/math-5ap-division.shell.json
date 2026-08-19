@@ -1,0 +1,23 @@
+{
+  "id": "math-5ap-division",
+  "grade": "5AP",
+  "subject": "math",
+  "categoryAr": "الأعداد والحساب",
+  "unitAr": "الأعداد والحساب",
+  "trimester": 2,
+  "difficultyTier": 2,
+  "contentSource": "corroborated",
+  "sourceType": "secondary_corroboration",
+  "sourceReference": "DzExams (dzexams.com/fr/5ap/mathematiques) — recoupement du domaine \"الأعداد والحساب\". Répartition trimestrielle exacte non détaillée en accès public ; trimestre non renseigné.",
+  "confidenceLevel": "medium",
+  "titleAr": "القسمة الإقليدية والقسمة العشرية والتوزيع المتساوي",
+  "summaryAr": "تسمح القسمة الإقليدية بتوزيع كمية على حصص متساوية لمعرفة الحاصل والباقي، بينما تحسب القسمة العشرية القيمة الدقيقة أو التقريبية للحاصل بوضع الفاصلة.",
+  "objectivesAr": [
+    "أُجري قسمة إقليدية وأتحقق من صحتها باستعمال المساواة الإقليدية.",
+    "أُميّز بين القسمة التامة (باقيها صفر) والقسمة ذات الباقي.",
+    "أُجري قسمة عشرية بسيطة بوضع الفاصلة في الحاصل.",
+    "أقسم عدداً مباشرة على 10 أو 100 أو 1000."
+  ],
+  "quiz": [],
+  "rulesAr": []
+}

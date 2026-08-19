@@ -669,6 +669,13 @@ export interface CourseLesson {
   civicsInteractive?: CivicsInteractiveConfig; // civics only: per-lesson content for the civics_lab tool
   mathInteractive?: MathInteractiveConfig; // math only: per-lesson content for the math_lab tool
   languageInteractive?: LanguageInteractiveConfig; // french/english only: per-lesson content for the french_dialogue_lab / english_dialogue_lab tool
+
+  // T2/T3 server-side content gate (pilot — see trimesterAccess.ts's doc comment on the client-side-
+  // only gap this closes). true means this object is a "shell": only catalog metadata is bundled in
+  // the frontend JS, and rulesAr/quiz are deliberately empty placeholders — LessonViewer fetches the
+  // real content from GET /api/v1/courses/premium-lessons/{id} (PREMIUM/ADMIN only) and merges it in
+  // at runtime. Absent/false means the lesson is fully bundled as before (T1, or not yet migrated).
+  premiumContentPending?: boolean;
 }
 
 export interface ExamExercise {

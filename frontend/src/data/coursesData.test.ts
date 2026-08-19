@@ -17,8 +17,14 @@ describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
     expect(categories.has('التناسبية وتنظيم المعطيات')).toBe(true);
   });
 
+  // premiumContentPending lessons (T2/T3 server-side content gate pilot — see trimesterAccess.ts)
+  // deliberately ship an empty quiz/rulesAr in the bundle; their real content lives in the backend's
+  // premium_lesson_content table and is fetched at runtime for PREMIUM/ADMIN users only, so the deep
+  // content-completeness checks below don't apply to them.
+  const fullyBundledMath5apLessons = math5apLessons.filter((l) => !l.premiumContentPending);
+
   it('every lesson should have a clear course sheet with summary and rules', () => {
-    math5apLessons.forEach((lesson) => {
+    fullyBundledMath5apLessons.forEach((lesson) => {
       expect(lesson.titleAr).toBeTruthy();
       expect(lesson.summaryAr).toBeTruthy();
       expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(2);
@@ -26,7 +32,7 @@ describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
   });
 
   it('every lesson should have solved situation-problems (examplesAr)', () => {
-    math5apLessons.forEach((lesson) => {
+    fullyBundledMath5apLessons.forEach((lesson) => {
       expect(lesson.examplesAr).toBeDefined();
       expect(lesson.examplesAr!.length).toBeGreaterThanOrEqual(1);
 
@@ -38,7 +44,7 @@ describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
   });
 
   it('every lesson should have an interactive quiz with correct options and explanations', () => {
-    math5apLessons.forEach((lesson) => {
+    fullyBundledMath5apLessons.forEach((lesson) => {
       expect(lesson.quiz.length).toBeGreaterThanOrEqual(1);
 
       lesson.quiz.forEach((q) => {
@@ -51,6 +57,25 @@ describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
         const correctOpt = correctOptions[0];
         expect(correctOpt.explanationAr).toBeTruthy();
       });
+    });
+  });
+
+  it('premiumContentPending lessons keep enough free metadata to render a catalog card, and no leftover paid content', () => {
+    const pendingLessons = math5apLessons.filter((l) => l.premiumContentPending);
+    expect(pendingLessons.length).toBeGreaterThanOrEqual(1);
+
+    pendingLessons.forEach((lesson) => {
+      expect(lesson.titleAr).toBeTruthy();
+      expect(lesson.summaryAr).toBeTruthy();
+      expect(lesson.categoryAr).toBeTruthy();
+      expect(lesson.trimester).not.toBe(1); // T1 is always free — never shelled
+
+      expect(lesson.quiz).toEqual([]);
+      expect(lesson.rulesAr).toEqual([]);
+      expect(lesson.detailedCourse).toBeUndefined();
+      expect(lesson.progressiveExercises).toBeUndefined();
+      expect(lesson.evaluationExercises).toBeUndefined();
+      expect(lesson.progressiveWorkedExamples).toBeUndefined();
     });
   });
 });
