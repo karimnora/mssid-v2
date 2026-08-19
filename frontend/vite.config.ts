@@ -64,6 +64,20 @@ export default defineConfig(() => {
               },
             },
             {
+              // SEC: role-gated paywalled content must never enter the Cache Storage — Workbox
+              // caches are keyed purely by URL with no notion of cookies/session, so a StaleWhile-
+              // Revalidate/CacheFirst entry here would let ANY subsequent visitor to the exact same
+              // URL receive the cached PREMIUM/ADMIN response instantly, before the SW's background
+              // revalidation even reaches the backend's @PreAuthorize check — silently defeating the
+              // server-side gate for every visitor after the first. Must be listed before the general
+              // '/api/v1/' rule below (Workbox matches runtimeCaching rules in array order, first
+              // match wins).
+              urlPattern: ({ url }: { url: URL }) =>
+                url.pathname.startsWith('/api/v1/courses/premium-lessons/') ||
+                /\/api\/v1\/exams\/\d+\/solutions$/.test(url.pathname),
+              handler: 'NetworkOnly',
+            },
+            {
               // R2.3 — StaleWhileRevalidate for the rest of the Spring Boot REST API (public exam
               // lists, CMS content, etc.): serve instantly from cache while revalidating in the
               // background, so browsing stays fast and works offline once visited once.
