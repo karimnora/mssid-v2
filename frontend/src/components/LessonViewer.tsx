@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
-import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { LessonExplanationView } from './LessonExplanationView';
 import { PracticeExerciseCard } from './PracticeExerciseCard';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { LoadingFallback } from './LoadingFallback';
 import { renderTextWithMath } from './MathExpression';
 import { Button, Card, Badge, XPProgressBar } from './ui';
+import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { isFeatureEnabled } from '../featureFlags';
 import { playSuccessChime, playGentleNudge } from './preschool/usePreschoolAudio';
@@ -616,7 +616,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
-      {/* 1. Fil d'Ariane (Breadcrumb) Bar */}
+      {/* Fil d'ariane */}
       <CourseBreadcrumb
         grade={grade}
         subjectId={subjectId}
@@ -629,13 +629,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         onSubjectClick={onBack}
       />
 
-      {/* 2. Header Bar with Back Button, Lesson Counter and Next/Prev Controls */}
+      {/* Header Bar with Back Button, Lesson Counter and Next/Prev Controls */}
       <Card padding="none" className="flex items-center justify-between flex-wrap gap-3 p-3.5">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
-            قائمة الدروس
-          </Button>
-
           {allLessons.length > 0 && currentIndex >= 0 && (
             <Badge variant="info">
               <span dir="ltr">{currentIndex + 1} / {allLessons.length}</span>
@@ -819,46 +815,51 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </div>
         </div>
 
-        {/* Interactive Step Pastilles */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1">
+        {/* Interactive Step Cards (Stepper) — each card is a navigation button for its own step */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-1">
           {availableSteps.map((step, idx) => {
             const isActive = step.id === activeTab;
             const isCompleted = idx < currentStepIndex;
             return (
-              <button
+              <motion.button
                 key={step.id}
+                type="button"
                 onClick={() => goToStep(idx)}
-                className={`flex items-center justify-between gap-2 min-h-12 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.95 }}
+                animate={{ scale: isActive ? 1.03 : 1 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+                className={`flex flex-col items-center justify-center gap-1.5 rounded-2xl p-3 sm:p-4 text-center transition-colors cursor-pointer border-4 ${
                   isActive
-                    ? `${step.activeClass} shadow-md scale-[1.02]`
+                    ? 'bg-blue-500 border-blue-700 text-white shadow-lg'
                     : isCompleted
-                    ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20'
-                    : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                    ? 'bg-amber-100 border-amber-300 text-amber-800 hover:bg-amber-200'
+                    : 'bg-slate-100 border-slate-200 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400'
                 }`}
               >
-                <div className="flex items-center gap-1.5 truncate">
-                  <span className="shrink-0">{isCompleted ? '✅' : step.icon}</span>
-                  <span className="truncate">{step.labelAr}</span>
-                </div>
-                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-                  isActive ? 'bg-white/25 text-white' : isCompleted ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300' : 'bg-black/5 dark:bg-white/10'
-                }`}>
-                  {idx + 1}
+                <span
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-black shrink-0 ${
+                    isActive ? 'bg-white/25 text-white' : isCompleted ? 'bg-amber-300 text-amber-900' : 'bg-slate-200 text-slate-500 dark:bg-slate-700'
+                  }`}
+                >
+                  {isCompleted ? '✓' : step.icon}
                 </span>
-              </button>
+                <span className="text-[11px] sm:text-xs font-black leading-tight line-clamp-2">{step.labelAr}</span>
+              </motion.button>
             );
           })}
         </div>
       </div>
 
-      {/* Tab content — cross-fades/slides between sections on every switch */}
+      {/* Tab content — a large, freshly-animated card holding only the active step's content */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: 14, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -10, scale: 0.98 }}
           transition={tabTransition}
+          className="bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl shadow-md p-4 sm:p-6"
         >
           {/* TAB 0: LESSON EXPLANATION & VULGARISATION */}
           {activeTab === 'explanation' && (
@@ -1720,20 +1721,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               const isCurrent = idx === currentStepIndex;
               const isDone = idx < currentStepIndex;
               return (
-                <button
+                <motion.button
                   key={step.id}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => goToStep(idx)}
-                  className={`w-7 h-7 rounded-xl flex items-center justify-center text-[10px] font-black transition-all cursor-pointer border ${
+                  className={`w-7 h-7 rounded-xl flex items-center justify-center text-[10px] font-black transition-colors cursor-pointer border-2 ${
                     isCurrent
-                      ? 'bg-emerald-600 text-white border-emerald-500 shadow-xs ring-2 ring-emerald-300/60 scale-105'
+                      ? 'bg-blue-500 text-white border-blue-700 shadow-xs scale-105'
                       : isDone
-                      ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+                      ? 'bg-amber-100 border-amber-300 text-amber-800'
                       : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400'
                   }`}
                   title={`${step.labelAr} (${idx + 1}/${availableSteps.length})`}
                 >
                   {isDone ? '✓' : idx + 1}
-                </button>
+                </motion.button>
               );
             })}
           </div>
@@ -1744,33 +1746,37 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <div className="flex items-center justify-between flex-wrap gap-3">
             {/* Previous Step or Lesson */}
             {currentStepIndex > 0 ? (
-              <button
+              <motion.button
+                whileTap={{ scale: 0.95 }}
                 onClick={() => goToStep(currentStepIndex - 1)}
-                className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
+                className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-2 cursor-pointer transition-colors"
               >
                 <ChevronRight className="w-4 h-4 text-slate-500" />
                 <span>السابق: {prevStep?.labelAr}</span>
-              </button>
+              </motion.button>
             ) : previousLesson ? (
-              <button
+              <motion.button
+                whileTap={{ scale: 0.95 }}
                 onClick={() => onSelectLesson?.(previousLesson)}
-                className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text-muted)] hover:text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-2 cursor-pointer transition-all active:scale-95"
+                className="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[var(--app-text-muted)] hover:text-[var(--app-text)] text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-2 cursor-pointer transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
                 <span>الدرس السابق</span>
-              </button>
+              </motion.button>
             ) : (
               <div />
             )}
 
-            {/* Main Next Step Button */}
-            <button
+            {/* Main Next Step Button — simply advances the active step by one */}
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => goToStep(currentStepIndex + 1)}
-              className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-2xl transition-all cursor-pointer shadow-md flex items-center gap-2.5 mr-auto"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-2xl transition-colors cursor-pointer shadow-md flex items-center gap-2.5 mr-auto"
             >
               <span>المرحلة الموالية: {nextStep?.labelAr}</span>
               <ArrowLeft className="w-4 h-4" />
-            </button>
+            </motion.button>
           </div>
         ) : (
           /* Step N: Last Step! Show visual congratulation and Next Lesson CTA */

@@ -22,7 +22,7 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
-  Sparkle,
+  ExternalLink,
 } from 'lucide-react';
 
 interface ToolsHubViewProps {
@@ -116,21 +116,12 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
     );
   }, [availableTools, searchQuery]);
 
-  const handleSelectAndScroll = (toolId: SubjectId) => {
+  // Handle opening tool in a new tab/window
+  const handleOpenToolInNewTab = (toolId: SubjectId) => {
     onSelectTool(toolId);
-    setTimeout(() => {
-      const targetElement = document.getElementById('active-interactive-tool-section');
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 60);
-  };
-
-  const handleScrollToTool = () => {
-    const targetElement = document.getElementById('active-interactive-tool-section');
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Dynamic URL generation depending on your routing setup
+    const toolUrl = `/tools/${toolId}?grade=${grade}`;
+    window.open(toolUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -155,25 +146,17 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
               <p className="text-xs text-[var(--app-text-muted)] mt-0.5">
                 {currentSelectedTool ? (
                   <span className="inline-flex items-center gap-1.5 flex-wrap">
-                    <span>الأداة المفتوحة حالياً:</span>
+                    <span>آخر أداة تم اختيارها:</span>
                     <strong className="text-[var(--app-text)] font-black">{currentSelectedTool.nameAr}</strong>
                   </span>
                 ) : (
-                  'استكشف الأدوات التفاعلية والمختبرات الميدانية لتعزيز الفهم والتحصيل'
+                  'انقر على أي أداة لفتحها مباشرة في نافذة جديدة'
                 )}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2 self-end sm:self-auto flex-wrap">
-            {currentSelectedTool && (
-              <button
-                onClick={handleScrollToTool}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white transition-all cursor-pointer shadow-xs active:scale-95"
-              >
-                <span>انتقل للأداة المفتوحة 👇</span>
-              </button>
-            )}
             <button
               onClick={() => setIsGridExpanded(!isGridExpanded)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200/60 transition-colors cursor-pointer border border-[var(--app-card-border)]"
@@ -184,9 +167,9 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
           </div>
         </div>
 
-        {/* Search Input & Category Filter Tabs (Wrap layout, NO horizontal scrolling) */}
+        {/* Search Input & Category Filter Tabs */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-          {/* Category Filter Pills — Flex Wrap (No scroll) */}
+          {/* Category Filter Pills */}
           <div className="flex items-center gap-1.5 flex-wrap">
             <button
               onClick={() => {
@@ -245,10 +228,10 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
         </div>
       </div>
 
-      {/* Structured Categorized Hub (No horizontal scroll) */}
+      {/* Structured Categorized Hub */}
       {isGridExpanded && (
         <div className="space-y-6">
-          {/* If search query is active */}
+          {/* Search Active */}
           {filteredToolsBySearch !== null ? (
             <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-5 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
@@ -275,14 +258,14 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
                       key={tool.id}
                       tool={tool}
                       isActive={selectedToolId === tool.id}
-                      onSelect={() => handleSelectAndScroll(tool.id)}
+                      onSelect={() => handleOpenToolInNewTab(tool.id)}
                     />
                   ))}
                 </div>
               )}
             </div>
           ) : (
-            /* Normal Organized View by Category */
+            /* Normal View by Category */
             CATEGORY_GROUPS.filter(
               (g) => activeFilterCategory === 'all' || g.key === activeFilterCategory
             ).map((group) => {
@@ -298,7 +281,6 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
                   key={group.key}
                   className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-5 shadow-sm space-y-4"
                 >
-                  {/* Category Header */}
                   <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--app-card-border)] pb-3">
                     <div className="flex items-center gap-2.5">
                       <div className="p-2 rounded-xl bg-amber-500/10 text-amber-700">
@@ -315,14 +297,13 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({ grade, tools, select
                     </span>
                   </div>
 
-                  {/* Clean 3-Column Responsive Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {groupTools.map((tool) => (
                       <ToolCard
                         key={tool.id}
                         tool={tool}
                         isActive={selectedToolId === tool.id}
-                        onSelect={() => handleSelectAndScroll(tool.id)}
+                        onSelect={() => handleOpenToolInNewTab(tool.id)}
                       />
                     ))}
                   </div>
@@ -348,11 +329,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isActive, onSelect }) => {
   return (
     <button
       onClick={onSelect}
-      className={`rounded-2xl p-4 text-right text-white shadow-md cursor-pointer bg-gradient-to-br ${tool.color} flex flex-col justify-between gap-3 transition-all relative overflow-hidden group ${
-        isActive
-          ? 'ring-4 ring-amber-300 ring-offset-2 scale-[1.02] shadow-xl'
-          : 'hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]'
-      }`}
+      className={`rounded-2xl p-4 text-right text-white shadow-md cursor-pointer bg-gradient-to-br ${tool.color} flex flex-col justify-between gap-3 transition-all relative overflow-hidden group hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]`}
     >
       <div className="flex items-start justify-between w-full">
         <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0 backdrop-blur-xs">
@@ -364,12 +341,10 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isActive, onSelect }) => {
               {tool.minGrade}
             </span>
           )}
-          {isActive && (
-            <span className="bg-amber-400 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1">
-              <CheckCircle2 className="w-3 h-3" />
-              <span>مفتوح</span>
-            </span>
-          )}
+          <span className="bg-white/20 text-white text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1">
+            <ExternalLink className="w-3 h-3" />
+            <span>صفحة جديدة</span>
+          </span>
         </div>
       </div>
 
@@ -384,11 +359,9 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isActive, onSelect }) => {
       </div>
 
       <div className="pt-2 border-t border-white/15 flex items-center justify-between text-[11px] font-black text-white/90">
-        <span>{isActive ? 'الأداة المعروضة بالأسفل ✨' : 'انقر لفتح واستكشاف الأداة'}</span>
-        <span className="text-sm">←</span>
+        <span>انقر لفتح الأداة في نافذة جديدة</span>
+        <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-[-2px]" />
       </div>
     </button>
   );
 };
-
-

@@ -91,7 +91,7 @@ import {
   Trophy,
   Store,
   MapPin,
-  Shield
+  Shield,
 } from 'lucide-react';
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
@@ -777,9 +777,6 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans antialiased selection:bg-purple-500 selection:text-white pb-20 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
 
-      {/* Global Kid-Friendly Back Navigation Button */}
-      <GlobalBackButton navState={navState} />
-
       {/* PWA Mobile Install Banner for Android & iOS */}
       <SeoHead />
       <PwaInstallBanner />
@@ -882,108 +879,8 @@ export default function App() {
           />
         ) : (
         <>
-        {/* Isolated Category Switcher & Sub-Subject Selector */}
+        {/* Sub-Subject Selector */}
         <div className="space-y-4">
-          <Card padding="none" className="p-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--app-text-muted)]">مرحباً بك في منصة مَسِيد</p>
-              <h1 className="text-lg sm:text-2xl font-extrabold tracking-tight text-[var(--app-text)]">تعلم، جرّب، وارتقِ بالمرح!</h1>
-            </div>
-            <div className="flex flex-wrap gap-3 items-center">
-              <div className="flex flex-wrap gap-2 items-center">
-                <Badge variant="xp">⭐ تجربة ممتعة للأطفال</Badge>
-                <Badge variant="info">🎯 واجهة آمنة وسهلة الاستخدام</Badge>
-                {enablePreschoolModule && (
-                  <button
-                    onClick={() => setIsPreschoolActive(true)}
-                    className="min-h-9 px-3 py-1.5 rounded-full text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-white shadow-sm cursor-pointer hover:brightness-105 transition-all"
-                  >
-                    🦊 وضع التحضيري (3-5 سنوات)
-                  </button>
-                )}
-              </div>
-              {/* Live XP progress toward next level — Kit UI v1 */}
-              <div className="w-full sm:w-56">
-                <XPProgressBar currentXp={xpIntoLevel} maxXp={100} level={userProfile.level} />
-              </div>
-            </div>
-          </Card>
-
-          {/* Main Category Header Tabs — shared sliding highlight (Framer Motion layoutId) */}
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <div className="p-1.5 rounded-2xl border flex items-center gap-2 flex-wrap bg-[var(--app-card-bg)] border-[var(--app-card-border)] shadow-sm">
-              <motion.button
-                onClick={() => {
-                  setSelectedLesson(null);
-                  setIsHomeActive(true);
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="relative min-h-12 px-4 py-2.5 rounded-xl text-xs font-black transition-colors cursor-pointer flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-sm hover:brightness-110"
-              >
-                <span>🏠</span>
-                <span>الرئيسية</span>
-              </motion.button>
-
-              {MAIN_CATEGORY_TABS.map((tab) => {
-                const isActive = mainCategory === tab.id;
-                return (
-                  <motion.button
-                    key={tab.id}
-                    onClick={() => {
-                      setMainCategory(tab.id);
-                      if (tab.id === 'courses' && !COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
-                        setSelectedSubject('math');
-                      } else if (tab.id === 'labs' && !INTERACTIVE_LABS_LIST.some((s) => s.id === selectedSubject)) {
-                        setSelectedSubject('algerian_market');
-                      } else if (tab.id === 'exams') {
-                        setSelectedSubject('exams');
-                      } else if (tab.id === 'challenges') {
-                        setSelectedSubject('challenges');
-                      }
-                      setSelectedLesson(null);
-                    }}
-                    whileTap={{ scale: 0.97 }}
-                    className={`relative min-h-12 px-4 py-2.5 rounded-xl text-xs font-black transition-colors cursor-pointer flex items-center gap-2 ${
-                      isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.span
-                        layoutId="main-category-active"
-                        className={`absolute inset-0 rounded-xl shadow-md ${
-                          tab.id === 'courses' ? 'bg-[var(--brand-emerald)]' : tab.id === 'labs' ? 'bg-[var(--brand-amber)]' : tab.id === 'exams' ? 'bg-[var(--brand-blue)]' : 'bg-[var(--brand-coral)]'
-                        }`}
-                        transition={{ type: 'spring', stiffness: 450, damping: 32 }}
-                      />
-                    )}
-                    <span className="relative flex items-center gap-2">
-                      {tab.icon}
-                      <span>{tab.labelAr}</span>
-                      <span dir="ltr" className="bg-black/15 text-[10px] px-2 py-0.5 rounded-full font-mono">
-                        {tab.countLabelAr}
-                      </span>
-                    </span>
-                  </motion.button>
-                );
-              })}
-            </div>
-
-            <div className="text-xs font-bold">
-              {mainCategory === 'courses' ? (
-                <Badge variant="success">🎓 الدروس والبرامج البيداغوجية الرسمية ({grade})</Badge>
-              ) : mainCategory === 'labs' ? (
-                <Badge variant="xp">🧪 الأدوات والمختبرات وتصريف الأفعال المستقلة</Badge>
-              ) : mainCategory === 'exams' ? (
-                <Badge variant="info">📜 مواضيع الامتحانات والاختبارات مع الحلول النموذجية مجاناً</Badge>
-              ) : (
-                <Badge variant="danger">🏆 تحديات مؤقتة وألعاب سريعة لكسب نقاط الخبرة</Badge>
-              )}
-            </div>
-          </div>
-
-          {/* Sub-Subject Selector — courses uses CourseSelectionView's own guided Matière → Trimestre →
-              Liste flow below; labs uses the card-based ToolsHubView; exams/challenges keep the plain
-              bar (a single entry each — the real subject/trimester navigation lives inside those views). */}
           {mainCategory === 'labs' ? (
             <ToolsHubView
               grade={grade}
