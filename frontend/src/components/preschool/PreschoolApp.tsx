@@ -8,13 +8,15 @@ import { PreschoolActivityPlayer } from './PreschoolActivityPlayer';
 import { PreschoolMagicBoard } from './PreschoolMagicBoard';
 import { PreschoolXylophone } from './PreschoolXylophone';
 import { PreschoolSoundBox } from './PreschoolSoundBox';
+import { GamesHub }   from './GamesHub'; // Hub centralisant tous les mini-jeux
 import { playModuleCompleteFanfare } from './usePreschoolAudio';
 
 interface PreschoolAppProps {
   onExit: () => void;
 }
 
-export type PreschoolSpecialTool = 'board' | 'xylophone' | 'soundbox';
+// Ajout du module 'games' ici
+export type PreschoolSpecialTool = 'board' | 'xylophone' | 'soundbox' | 'games';
 
 const LANGUAGE_STORAGE_KEY = 'mssid_preschool_language';
 const PROGRESS_STORAGE_KEY = 'mssid_preschool_progress';
@@ -58,7 +60,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
     return <PreschoolLanguagePicker onSelect={setLanguage} />;
   }
 
-  // Handle special creative tools
+  // Handle special creative tools & games
   if (activeSpecialTool === 'board') {
     return (
       <PreschoolMagicBoard
@@ -84,6 +86,16 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
       <PreschoolSoundBox
         language={language}
         onSelectLanguage={setLanguage}
+        onExit={() => setActiveSpecialTool(null)}
+      />
+    );
+  }
+
+  // Hub Jeux — regroupe tous les mini-jeux
+  if (activeSpecialTool === 'games') {
+    return (
+      <GamesHub
+        language={language}
         onExit={() => setActiveSpecialTool(null)}
       />
     );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { PreschoolModule, PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
 import { PreschoolSpecialTool } from './PreschoolApp';
@@ -92,10 +92,22 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
         : 'Heritage Sound Box & Quiz',
     soundBoxDesc:
       language === 'ar'
-        ? 'الفنك، الجمل، الدربوكة، المركبات مع مسابقة خمن الصوت'
+        ? 'الفنك، الجمل، والمركبات مع مسابقة خمن الصوت'
         : language === 'fr'
-        ? 'Fennec, dromadaire, instruments et mini-quiz sonore'
-        : 'Fennec, camel, instruments and guess the sound quiz',
+        ? 'Fennec, dromadaire et mini-quiz sonore'
+        : 'Fennec, camel and guess the sound quiz',
+    games:
+      language === 'ar'
+        ? 'قسم الألعاب والمتاهات'
+        : language === 'fr'
+        ? 'Espace Jeux & Labyrinthes'
+        : 'Games & Mazes Hub',
+    gamesDesc:
+      language === 'ar'
+        ? 'ألعاب السيارة، المتاهات، والألغاز التفاعلية الشيقة'
+        : language === 'fr'
+        ? 'Jeux de voiture, labyrinthes et puzzles interactifs'
+        : 'Car maze games, puzzles and fun challenges',
     completed: language === 'ar' ? 'مكتمل 🎉' : language === 'fr' ? 'Terminé 🎉' : 'Done 🎉',
     changeLanguage: language === 'ar' ? 'تغيير اللغة' : language === 'fr' ? 'Changer langue' : 'Language',
   };
@@ -106,7 +118,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
       title: labels.magicBoard,
       desc: labels.magicBoardDesc,
       icon: '🎨',
-      bgGradient: 'from-amber-400 via-orange-400 to-rose-400',
+      bgGradient: 'from-amber-500 via-orange-500 to-rose-500',
       border: 'border-orange-300',
       badge: language === 'ar' ? 'إبداع & رسم' : language === 'fr' ? 'Dessin & Tracé' : 'Art & Tracing',
     },
@@ -117,7 +129,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
       icon: '🎹',
       bgGradient: 'from-purple-500 via-indigo-500 to-pink-500',
       border: 'border-purple-300',
-      badge: language === 'ar' ? 'موسيقى & تراث' : language === 'fr' ? 'Musique & Rythmes' : 'Music & Rhythm',
+      badge: language === 'ar' ? 'موسيقى' : language === 'fr' ? 'Musique' : 'Music',
     },
     {
       id: 'soundbox' as PreschoolSpecialTool,
@@ -126,7 +138,16 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
       icon: '🔊',
       bgGradient: 'from-teal-500 via-emerald-500 to-cyan-600',
       border: 'border-teal-300',
-      badge: language === 'ar' ? 'أصوات & حزازير' : language === 'fr' ? 'Quiz & Sons' : 'Quiz & Sounds',
+      badge: language === 'ar' ? 'أصوات' : language === 'fr' ? 'Quiz & Sons' : 'Sounds',
+    },
+    {
+      id: 'games' as PreschoolSpecialTool,
+      title: labels.games,
+      desc: labels.gamesDesc,
+      icon: '🎮',
+      bgGradient: 'from-blue-600 via-indigo-600 to-violet-600',
+      border: 'border-blue-300',
+      badge: language === 'ar' ? 'ألعاب & مرح' : language === 'fr' ? 'Jeux & Labyrinthe' : 'Fun & Mazes',
     },
   ];
 
@@ -182,13 +203,13 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           <p className="text-xs sm:text-sm font-bold text-orange-800/80">{labels.subtitle}</p>
         </div>
 
-        {/* 1. Creative Tools Section (Tableau Magique, Xylophone, Boîte à Sons) */}
+        {/* 1. Creative Tools & Games Section */}
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <h2 className="text-base sm:text-lg font-black text-orange-950">{labels.creativeTools}</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {SPECIAL_TOOLS.map((tool) => (
               <motion.button
                 key={tool.id}
@@ -215,7 +236,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           </div>
         </div>
 
-        {/* 2. Pedagogical Worlds (Duolingo-style short paths) */}
+        {/* 2. Pedagogical Worlds */}
         <div className="space-y-3 pt-2">
           <div className="flex items-center gap-2">
             <h2 className="text-base sm:text-lg font-black text-orange-950">{labels.learningWorlds}</h2>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Zap,
   Power,
@@ -17,8 +18,10 @@ import {
   HelpCircle,
   Languages,
   Check,
-  AlertTriangle
+  AlertTriangle,
+  Cpu
 } from 'lucide-react';
+import { CircuitBuilder } from './CircuitBuilder';
 
 // Types for components in the circuit
 type VoltageLevel = 4.5 | 9.0;
@@ -46,7 +49,7 @@ const MATERIALS_LIST: MaterialInfo[] = [
 
 export const ElectricityLabInteractive: React.FC = () => {
   // Global Interactive Settings
-  const [activeTab, setActiveTab] = useState<'sandbox' | 'diode_exp' | 'conductors_exp' | 'series_parallel' | 'quiz'>('diode_exp');
+  const [activeTab, setActiveTab] = useState<'circuit_builder' | 'sandbox' | 'diode_exp' | 'conductors_exp' | 'series_parallel' | 'quiz'>('diode_exp');
   const [showFrench, setShowFrench] = useState<boolean>(true);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
 
@@ -333,7 +336,19 @@ export const ElectricityLabInteractive: React.FC = () => {
       </div>
 
       {/* Experiment Selector Navigation Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
+      <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
+        <button
+          onClick={() => { setActiveTab('circuit_builder'); }}
+          className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border col-span-2 sm:col-span-1 ${
+            activeTab === 'circuit_builder'
+              ? 'bg-indigo-500 text-slate-950 border-indigo-400 shadow-md font-black scale-102'
+              : 'bg-slate-950/80 text-slate-300 border-slate-800 hover:bg-slate-800'
+          }`}
+        >
+          <Cpu className="w-4 h-4" />
+          <span>بناء دارة 🔧</span>
+        </button>
+
         <button
           onClick={() => { setActiveTab('diode_exp'); setActiveLoad('diode'); }}
           className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border ${
@@ -343,7 +358,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Zap className="w-4 h-4" />
-          <span>1. الصمام الضوئي (Diode)</span>
+          <span>1. الصمام (Diode)</span>
         </button>
 
         <button
@@ -394,6 +409,34 @@ export const ElectricityLabInteractive: React.FC = () => {
           <span>5. التحدي والاختبار</span>
         </button>
       </div>
+
+      {/* ── CIRCUIT BUILDER TAB ─────────────────────────────── */}
+      {activeTab === 'circuit_builder' && (
+        <motion.div
+          key="circuit_builder"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+          className="bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-5 space-y-4"
+        >
+          <div className="flex items-center gap-3 border-b border-slate-800 pb-3 flex-wrap">
+            <div className="p-2.5 bg-gradient-to-br from-indigo-500 to-violet-600 text-white rounded-xl shadow-lg shadow-indigo-500/20">
+              <Cpu className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-extrabold text-sm text-indigo-300">
+                بناء دارة كهربائية حرة (Constructeur de circuit interactif)
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                أضف العناصر واربطها بالأسلاك — ستُضاء الدارة فور اكتمالها!
+              </p>
+            </div>
+          </div>
+
+          <CircuitBuilder />
+        </motion.div>
+      )}
 
       {/* Main Workspace for Experiments 1, 2, and 4 */}
       {(activeTab === 'diode_exp' || activeTab === 'conductors_exp' || activeTab === 'sandbox') && (

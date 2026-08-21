@@ -1,0 +1,21 @@
+# Règles de design pour l'application EdTech (projet mssid-V1)
+
+## Identité Visuelle
+- Design : Moderne, ludique, adapté aux enfants.
+- Couleurs : Palette pastel, fond off-white (#F8F9FA), texte bleu nuit (#1E293B).
+- Formes : Coins très arrondis (rounded-3xl, rounded-2xl), ombres douces.
+
+## UX / Ergonomie Mobile
+- Priorité : Éviter la surcharge visuelle.
+- Navigation : Un seul bouton d'action principal par écran.
+- Espace : Toujours ajouter beaucoup d'espace (padding/margin) pour ne pas encombrer l'écran.
+- Défilement : Réduire au maximum le scroll vertical.
+
+## Animations
+- Utiliser `framer-motion` pour toutes les interactions.
+- Effets : `whileHover={{ scale: 1.05 }}`, `whileTap={{ scale: 0.95 }}`.
+- Transitions : Toujours utiliser des `spring` physics pour un aspect "rebondissant".
+
+## Code
+- Toujours privilégier la lisibilité et la simplicité.
+- Si le design est trop dense, suggérer de diviser le composant en plusieurs étapes (funsnel).
