@@ -5,7 +5,7 @@
  * complétions en observant completedActivityIds.
  */
 import { useState, useEffect, useMemo } from 'react';
-import { PreschoolModule, PreschoolActivity, PreschoolLanguage } from '../data/preschool/types';
+import { PreschoolModule, PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 
 const STORAGE_KEY = 'mssid_daily_challenge';
 
@@ -52,10 +52,24 @@ const CHALLENGE_MODULE_IDS = [
   'preschool-body',
   'preschool-seasons',
   'preschool-food',
+  'preschool-world',
   'preschool-family',
   'preschool-algeria',
+  'preschool-islamic-values',
+  'preschool-emotions',
+  'preschool-pre-writing',
+  'preschool-logic-spatial',
   'preschool-sequences',
 ];
+
+function pickActivity(mod: PreschoolModule, seed: number): PreschoolActivity {
+  // Prefer recognition / sorting / matching over empty "drag to house" fillers.
+  const preferred = mod.activities.filter((a) =>
+    ['tap_choice', 'sorting', 'connect_dots', 'sequence', 'trace'].includes(a.interactionType),
+  );
+  const pool = preferred.length > 0 ? preferred : mod.activities;
+  return pool[seed % pool.length];
+}
 
 function pickDailyChallenges(dateStr: string, allModules: PreschoolModule[]): ChallengeItem[] {
   const pool = allModules.filter(m => CHALLENGE_MODULE_IDS.includes(m.id) && m.activities.length > 0);
@@ -71,7 +85,7 @@ function pickDailyChallenges(dateStr: string, allModules: PreschoolModule[]): Ch
     if (usedModules.has(mod.id)) continue;
     usedModules.add(mod.id);
     seed = lcgNext(seed);
-    const act = mod.activities[seed % mod.activities.length];
+    const act = pickActivity(mod, seed);
     result.push({ moduleId: mod.id, activityId: act.id, module: mod, activity: act });
   }
   return result;

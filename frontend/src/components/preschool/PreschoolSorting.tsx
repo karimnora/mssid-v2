@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { PreschoolActivity } from '../../data/preschool/types';
+import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
+import { rhymeSortAssets } from './preschoolGlyphs';
 
 interface PreschoolSortingProps {
   activity: PreschoolActivity;
+  language: PreschoolLanguage;
   onComplete: () => void;
 }
 
@@ -20,9 +22,10 @@ interface ItemState {
 // Pointer Events technique as PreschoolDragDrop, generalized to N bins. A wrong-bin drop never
 // "locks in" — the item snaps back to the tray for another try, exactly like a wrong tap elsewhere
 // in Mode Éveil: mistakes cost nothing but a soft sound.
-export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, onComplete }) => {
-  const bins = activity.visualAssets.sortBins || [];
-  const sortItems = activity.visualAssets.sortItems || [];
+export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, language, onComplete }) => {
+  const rhyme = activity.id === 'letters-rhyme-sort' ? rhymeSortAssets(language) : null;
+  const bins = rhyme?.bins ?? activity.visualAssets.sortBins ?? [];
+  const sortItems = rhyme?.items ?? activity.visualAssets.sortItems ?? [];
   const binRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [items, setItems] = useState<ItemState[]>(
     sortItems.map((it) => ({ id: it.id, asset: it.asset, correctBinId: it.correctBinId, sortedBinId: null, offset: { x: 0, y: 0 } }))
@@ -86,7 +89,7 @@ export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, on
 
   return (
     <div className="flex flex-col items-center gap-8 w-full">
-      <div className="flex items-center justify-center gap-6">
+      <div className="flex flex-wrap items-center justify-center gap-4">
         {bins.map((bin) => (
           <div
             key={bin.id}

@@ -50,6 +50,14 @@ interface NavbarProps {
   onThemeChange?: (theme: HeaderTheme) => void;
 }
 
+const GRADES: { id: PrimaryGrade; labelAr: string; shortLabel: string; badge: string }[] = [
+  { id: '1AP', labelAr: 'السنة الأولى', shortLabel: 'السنة 1', badge: '1AP' },
+  { id: '2AP', labelAr: 'السنة الثانية', shortLabel: 'السنة 2', badge: '2AP' },
+  { id: '3AP', labelAr: 'السنة الثالثة', shortLabel: 'السنة 3', badge: '3AP' },
+  { id: '4AP', labelAr: 'السنة الرابعة', shortLabel: 'السنة 4', badge: '4AP' },
+  { id: '5AP', labelAr: 'السنة الخامسة', shortLabel: 'السنة 5', badge: '5AP' },
+];
+
 const THEME_OPTIONS: { id: HeaderTheme; labelAr: string; shortLabelAr: string; icon: React.ReactNode }[] = [
   { id: 'neutre', labelAr: 'النمط الملوّن والمنعش', shortLabelAr: 'ملوّن', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
   { id: 'light', labelAr: 'فاتح', shortLabelAr: 'فاتح', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
@@ -57,6 +65,8 @@ const THEME_OPTIONS: { id: HeaderTheme; labelAr: string; shortLabelAr: string; i
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
+  currentGrade,
+  onGradeChange,
   userProfile,
   authUser,
   onOpenAuthModal,
@@ -173,6 +183,30 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span>التحضيري</span>
                 </motion.button>
               )}
+
+              {GRADES.map((g) => {
+                const isActive = currentGrade === g.id;
+                return (
+                  <motion.button
+                    key={g.id}
+                    onClick={() => onGradeChange(g.id)}
+                    whileTap={{ scale: 0.94 }}
+                    className={`relative px-2.5 py-1.5 rounded-xl text-[11px] font-black transition-colors cursor-pointer select-none ${
+                      isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+                    }`}
+                    title={g.labelAr}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="navbar-active-grade"
+                        className="absolute inset-0 bg-[var(--brand-blue)] rounded-xl shadow-sm"
+                        transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                      />
+                    )}
+                    <span className="relative">{g.badge}</span>
+                  </motion.button>
+                );
+              })}
             </div>
           </div>
 
@@ -458,19 +492,32 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
 
                 <div>
+                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">اختر المستوى الدراسي:</label>
                   {onOpenPreschool && (
-                    <>
-                      <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">اختر المستوى الدراسي:</label>
-                      <button
-                        onClick={() => { onOpenPreschool(); setIsMobileDrawerOpen(false); }}
-                        className="min-h-12 w-full p-2.5 mb-2 rounded-xl text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-orange-950 shadow-sm border border-amber-300 flex items-center justify-center gap-2"
-                      >
-                        <span className="text-base">🦊</span>
-                        <span>قسم التحضيري (3 - 5 سنوات)</span>
-                        <span className="bg-orange-950/20 px-2 py-0.5 rounded-full text-[10px]">جديد</span>
-                      </button>
-                    </>
+                    <button
+                      onClick={() => { onOpenPreschool(); setIsMobileDrawerOpen(false); }}
+                      className="min-h-12 w-full p-2.5 mb-2 rounded-xl text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-orange-950 shadow-sm border border-amber-300 flex items-center justify-center gap-2"
+                    >
+                      <span className="text-base">🦊</span>
+                      <span>قسم التحضيري (3 - 5 سنوات)</span>
+                      <span className="bg-orange-950/20 px-2 py-0.5 rounded-full text-[10px]">جديد</span>
+                    </button>
                   )}
+                  <div className="grid grid-cols-2 gap-2">
+                    {GRADES.map((g) => (
+                      <button
+                        key={g.id}
+                        onClick={() => { onGradeChange(g.id); setIsMobileDrawerOpen(false); }}
+                        className={`min-h-12 p-2 rounded-xl text-xs font-extrabold border transition-colors text-center ${
+                          currentGrade === g.id
+                            ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)] shadow-md'
+                            : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
+                        }`}
+                      >
+                        {g.labelAr}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div>

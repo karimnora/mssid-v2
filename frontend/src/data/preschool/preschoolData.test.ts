@@ -113,6 +113,25 @@ describe('Preschool (Mode Éveil) data integrity', () => {
                 });
                 break;
               }
+              case 'sequence': {
+                const shown = assets.sequencePattern || [];
+                expect(shown.length, activity.id).toBeGreaterThanOrEqual(3);
+                expect(assets.choices?.length, activity.id).toBeGreaterThanOrEqual(2);
+                const correct = (assets.choices || []).filter((c) => c.isCorrect);
+                expect(correct.length, `${activity.id} must have exactly one next-item`).toBe(1);
+                let period: number | null = null;
+                for (let p = 1; p < shown.length; p++) {
+                  if (shown.every((item, i) => item === shown[i % p])) {
+                    period = p;
+                    break;
+                  }
+                }
+                if (period) {
+                  const expected = shown[shown.length % period];
+                  expect(correct[0].asset, `${activity.id}: next item after a repeating pattern`).toBe(expected);
+                }
+                break;
+              }
             }
           });
         });

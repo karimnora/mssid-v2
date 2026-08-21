@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 import { ChallengeItem } from './useDailyChallenge';
+import { activityPathIcon } from './preschoolGlyphs';
 
 interface DailyChallengeBannerProps {
   items: ChallengeItem[];
@@ -84,20 +85,21 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
         <div className="flex gap-2 justify-center">
           {items.map(item => {
             const isDone = completedIds.includes(item.activityId);
+            const title = item.activity.i18n[language]?.title ?? item.module.titleI18n[language];
             return (
               <motion.button
                 key={item.activityId}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => !isDone && onNavigateToActivity(item.moduleId, item.activityId)}
                 disabled={isDone}
-                className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-2xl transition-all cursor-pointer
+                className={`flex-1 flex flex-col items-center gap-1 py-2 px-1 rounded-2xl transition-all cursor-pointer
                   ${isDone
                     ? 'bg-white/30 opacity-80'
                     : 'bg-white/20 hover:bg-white/30 active:bg-white/40'}`}
               >
-                <span className="text-2xl">{isDone ? '✅' : item.module.icon}</span>
-                <span className="text-[10px] font-bold text-white/90 text-center leading-tight max-w-[56px] truncate">
-                  {item.module.titleI18n[language]}
+                <span className="text-2xl">{isDone ? '✅' : activityPathIcon(item.activity, language)}</span>
+                <span className="text-[10px] font-bold text-white/90 text-center leading-tight line-clamp-2">
+                  {title}
                 </span>
               </motion.button>
             );

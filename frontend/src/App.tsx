@@ -850,12 +850,6 @@ export default function App() {
             authUser={authUser}
             userName={userProfile.name}
             goldCoins={userProfile.goldCoins || 150}
-            grade={grade}
-            onGradeChange={(g) => setGrade(g)}
-            xp={userProfile.xp}
-            streak={userProfile.streakDays}
-            badgesUnlocked={userProfile.badges.length}
-            completedLessonIds={userProfile.completedLessonIds}
             onSelectPole={handleSelectPole}
             onOpenAuthModal={() => setIsAuthModalOpen(true)}
             onOpenPreschool={() => setIsPreschoolActive(true)}
@@ -898,7 +892,6 @@ export default function App() {
             onOpenHomeworkPin={() => setIsHomeworkPinOpen(true)}
             onOpenPrintables={() => setIsPrintablesOpen(true)}
             onOpenOfflinePacks={() => setIsOfflinePacksOpen(true)}
-            theme={headerTheme}
           />
         ) : (
         <>

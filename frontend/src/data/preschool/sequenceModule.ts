@@ -1,10 +1,9 @@
 import { PreschoolModule } from './types';
 
 /**
- * "أَلْغَازُ التَّسَلْسُل وَالمَنْطِق" — Puzzles Logiques Séquentiels (0AP)
- * 8 activités "Qu'est-ce qui vient ensuite ?" sur des patterns AB/ABB/ABC simples.
- * Interaction type : 'sequence' — affiche le pattern visuellement + 3 choix de réponse.
- * Ciblé 4-5 ans (logique spatiale / pré-mathématique).
+ * "أَلْغَازُ التَّسَلْسُل" — Puzzles Séquences (0AP).
+ * `sequencePattern` = what is SHOWN (incomplete). The missing next item is the
+ * one correct choice. AB/ABB never end on a full period (that made "next" look wrong).
  */
 export const SEQUENCE_MODULE: PreschoolModule = {
   id: 'preschool-sequences',
@@ -17,7 +16,6 @@ export const SEQUENCE_MODULE: PreschoolModule = {
     en: 'Sequence Puzzles',
   },
   activities: [
-    // ── 1. Couleurs AB ────────────────────────────────────────────────────────
     {
       id: 'seq-colors-ab',
       domain: 'creative',
@@ -26,32 +24,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'مَا التَّالِي فِي النَّمَط؟',
-          promptAudio: 'أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق... مَاذَا يَأْتِي بَعْدَ ذَلِك؟ اِلْمَسِ الإِجَابَة!',
-          successAudio: 'صَحِيح! أَحْمَر يَأْتِي بَعْدَ الأَزْرَق! أَنْتَ ذَكِيٌّ جِدَّاً!',
+          title: 'أَحْمَر ثُمَّ أَزْرَق',
+          promptAudio: 'أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر... مَاذَا بَعْد؟',
+          promptText: 'نمط AB. المعروض ينتهي بالأحمر → الجواب الأزرق.',
+          successAudio: 'الأَزْرَقُ بَعْدَ الأَحْمَر! أَحْسَنْت!',
         },
         fr: {
-          title: 'Qu\'est-ce qui vient ensuite ?',
-          promptAudio: 'Rouge, bleu, rouge, bleu... Qu\'est-ce qui vient ensuite ? Touche la bonne réponse !',
-          successAudio: 'Exact ! Rouge vient après bleu ! Tu es très malin !',
+          title: 'Rouge puis Bleu',
+          promptAudio: 'Rouge, bleu, rouge, bleu, rouge... ensuite ?',
+          promptText: 'Motif AB. La rangée finit sur rouge → réponse bleu.',
+          successAudio: 'Le bleu vient après le rouge ! Bravo !',
         },
         en: {
-          title: 'What comes next?',
-          promptAudio: 'Red, blue, red, blue... What comes next? Tap the right answer!',
-          successAudio: 'Correct! Red comes after blue! You are very smart!',
+          title: 'Red then Blue',
+          promptAudio: 'Red, blue, red, blue, red... what is next?',
+          promptText: 'AB pattern. The row ends on red → answer is blue.',
+          successAudio: 'Blue comes after red! Well done!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🔁',
-        sequencePattern: ['🔴', '🔵', '🔴', '🔵'],
+        sequencePattern: ['🔴', '🔵', '🔴', '🔵', '🔴'],
         choices: [
-          { id: 'red',   asset: '🔴', isCorrect: true  },
-          { id: 'blue',  asset: '🔵', isCorrect: false },
+          { id: 'blue',  asset: '🔵', isCorrect: true },
+          { id: 'red',   asset: '🔴', isCorrect: false },
           { id: 'green', asset: '🟢', isCorrect: false },
         ],
       },
     },
-    // ── 2. Animaux AB ─────────────────────────────────────────────────────────
     {
       id: 'seq-animals-ab',
       domain: 'creative',
@@ -60,32 +60,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'مَا الحَيَوَانُ التَّالِي؟',
-          promptAudio: 'قِطَّة، كَلْب، قِطَّة، كَلْب... مَا الَّذِي يَأْتِي بَعْدَ ذَلِك؟',
-          successAudio: 'أَحْسَنْتَ! القِطَّةُ تَأْتِي بَعْدَ الكَلْب!',
+          title: 'قِطَّة ثُمَّ كَلْب',
+          promptAudio: 'قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة... مَاذَا بَعْد؟',
+          promptText: 'ينتهي بالقطة → الجواب الكلب.',
+          successAudio: 'الكَلْبُ بَعْدَ القِطَّة! أَحْسَنْت!',
         },
         fr: {
-          title: 'Quel animal vient ensuite ?',
-          promptAudio: 'Chat, chien, chat, chien... Lequel vient ensuite ?',
-          successAudio: 'Bravo ! Le chat vient après le chien !',
+          title: 'Chat puis Chien',
+          promptAudio: 'Chat, chien, chat, chien, chat... ensuite ?',
+          promptText: 'La rangée finit sur le chat → réponse chien.',
+          successAudio: 'Le chien vient après le chat ! Bravo !',
         },
         en: {
-          title: 'Which animal comes next?',
-          promptAudio: 'Cat, dog, cat, dog... Which one comes next?',
-          successAudio: 'Well done! The cat comes after the dog!',
+          title: 'Cat then Dog',
+          promptAudio: 'Cat, dog, cat, dog, cat... what is next?',
+          promptText: 'The row ends on the cat → answer is dog.',
+          successAudio: 'The dog comes after the cat! Well done!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🐾',
-        sequencePattern: ['🐱', '🐶', '🐱', '🐶'],
+        sequencePattern: ['🐱', '🐶', '🐱', '🐶', '🐱'],
         choices: [
-          { id: 'cat',  asset: '🐱', isCorrect: true  },
-          { id: 'dog',  asset: '🐶', isCorrect: false },
+          { id: 'dog',  asset: '🐶', isCorrect: true },
+          { id: 'cat',  asset: '🐱', isCorrect: false },
           { id: 'fish', asset: '🐟', isCorrect: false },
         ],
       },
     },
-    // ── 3. Jour / Nuit AB ─────────────────────────────────────────────────────
     {
       id: 'seq-day-night',
       domain: 'creative',
@@ -94,32 +96,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'نَهَارٌ أَمْ لَيْلٌ؟',
-          promptAudio: 'شَمْسٌ، قَمَرٌ، شَمْسٌ، قَمَرٌ... مَاذَا يَأْتِي بَعْدَ ذَلِك؟',
-          successAudio: 'مُمْتَاز! الشَّمْسُ تَأْتِي بَعْدَ القَمَر! صَحِيح تَمَاماً!',
+          title: 'شَمْس ثُمَّ قَمَر',
+          promptAudio: 'شَمْس، قَمَر، شَمْس، قَمَر، شَمْس... مَاذَا بَعْد؟',
+          promptText: 'ينتهي بالشمس → الجواب القمر.',
+          successAudio: 'القَمَرُ بَعْدَ الشَّمْس! مُمْتَاز!',
         },
         fr: {
-          title: 'Jour ou nuit ?',
-          promptAudio: 'Soleil, lune, soleil, lune... Qu\'est-ce qui vient ensuite ?',
-          successAudio: 'Excellent ! Le soleil vient après la lune ! Parfaitement juste !',
+          title: 'Soleil puis Lune',
+          promptAudio: 'Soleil, lune, soleil, lune, soleil... ensuite ?',
+          promptText: 'La rangée finit sur le soleil → réponse lune.',
+          successAudio: 'La lune vient après le soleil ! Super !',
         },
         en: {
-          title: 'Day or night?',
-          promptAudio: 'Sun, moon, sun, moon... What comes next?',
-          successAudio: 'Excellent! The sun comes after the moon! Perfectly right!',
+          title: 'Sun then Moon',
+          promptAudio: 'Sun, moon, sun, moon, sun... what is next?',
+          promptText: 'The row ends on the sun → answer is moon.',
+          successAudio: 'The moon comes after the sun! Great!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🌗',
-        sequencePattern: ['☀️', '🌙', '☀️', '🌙'],
+        sequencePattern: ['☀️', '🌙', '☀️', '🌙', '☀️'],
         choices: [
-          { id: 'sun',   asset: '☀️', isCorrect: true  },
-          { id: 'moon',  asset: '🌙', isCorrect: false },
-          { id: 'cloud', asset: '⭐', isCorrect: false },
+          { id: 'moon',  asset: '🌙', isCorrect: true },
+          { id: 'sun',   asset: '☀️', isCorrect: false },
+          { id: 'star',  asset: '⭐', isCorrect: false },
         ],
       },
     },
-    // ── 4. Fruits AB ──────────────────────────────────────────────────────────
     {
       id: 'seq-fruits-ab',
       domain: 'creative',
@@ -128,32 +132,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'مَا الفَاكِهَةُ التَّالِيَة؟',
-          promptAudio: 'تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة... مَاذَا يَأْتِي بَعْدَ ذَلِك؟',
-          successAudio: 'رَائِعٌ! التُّفَّاحَةُ تَأْتِي بَعْدَ المَوْزَة!',
+          title: 'تُفَّاحَة ثُمَّ مَوْزَة',
+          promptAudio: 'تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة... مَاذَا بَعْد؟',
+          promptText: 'ينتهي بالتفاحة → الجواب الموزة.',
+          successAudio: 'المَوْزَةُ بَعْدَ التُّفَّاحَة!',
         },
         fr: {
-          title: 'Quel fruit vient ensuite ?',
-          promptAudio: 'Pomme, banane, pomme, banane... Quel fruit vient ensuite ?',
-          successAudio: 'Super ! La pomme vient après la banane !',
+          title: 'Pomme puis Banane',
+          promptAudio: 'Pomme, banane, pomme, banane, pomme... ensuite ?',
+          promptText: 'La rangée finit sur la pomme → réponse banane.',
+          successAudio: 'La banane vient après la pomme !',
         },
         en: {
-          title: 'Which fruit comes next?',
-          promptAudio: 'Apple, banana, apple, banana... Which fruit comes next?',
-          successAudio: 'Great! The apple comes after the banana!',
+          title: 'Apple then Banana',
+          promptAudio: 'Apple, banana, apple, banana, apple... what is next?',
+          promptText: 'The row ends on the apple → answer is banana.',
+          successAudio: 'Banana comes after the apple!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🍎',
-        sequencePattern: ['🍎', '🍌', '🍎', '🍌'],
+        sequencePattern: ['🍎', '🍌', '🍎', '🍌', '🍎'],
         choices: [
-          { id: 'apple',   asset: '🍎', isCorrect: true  },
-          { id: 'banana',  asset: '🍌', isCorrect: false },
-          { id: 'grape',   asset: '🍇', isCorrect: false },
+          { id: 'banana', asset: '🍌', isCorrect: true },
+          { id: 'apple',  asset: '🍎', isCorrect: false },
+          { id: 'grape',  asset: '🍇', isCorrect: false },
         ],
       },
     },
-    // ── 5. Grande / Petite (AB) ───────────────────────────────────────────────
     {
       id: 'seq-big-small',
       domain: 'creative',
@@ -162,32 +168,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'كَبِيرٌ أَمْ صَغِير؟',
-          promptAudio: 'فِيلٌ، فَأْرٌ، فِيلٌ، فَأْرٌ... مَا الَّذِي يَأْتِي بَعْدَ ذَلِك؟',
-          successAudio: 'ذَكِيٌّ! الفِيلُ الكَبِيرُ يَأْتِي بَعْدَ الفَأْرِ الصَّغِير!',
+          title: 'فِيل ثُمَّ فَأْر',
+          promptAudio: 'فِيل، فَأْر، فِيل، فَأْر، فِيل... مَاذَا بَعْد؟',
+          promptText: 'ينتهي بالفيل → الجواب الفأر.',
+          successAudio: 'الفَأْرُ الصَّغِيرُ بَعْدَ الفِيل!',
         },
         fr: {
-          title: 'Grand ou petit ?',
-          promptAudio: 'Éléphant, souris, éléphant, souris... Qu\'est-ce qui vient ensuite ?',
-          successAudio: 'Intelligent ! Le grand éléphant vient après la petite souris !',
+          title: 'Éléphant puis Souris',
+          promptAudio: 'Éléphant, souris, éléphant, souris, éléphant... ensuite ?',
+          promptText: 'La rangée finit sur l\'éléphant → réponse souris.',
+          successAudio: 'La petite souris vient après l\'éléphant !',
         },
         en: {
-          title: 'Big or small?',
-          promptAudio: 'Elephant, mouse, elephant, mouse... What comes next?',
-          successAudio: 'Smart! The big elephant comes after the small mouse!',
+          title: 'Elephant then Mouse',
+          promptAudio: 'Elephant, mouse, elephant, mouse, elephant... what is next?',
+          promptText: 'The row ends on the elephant → answer is mouse.',
+          successAudio: 'The small mouse comes after the elephant!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🐘',
-        sequencePattern: ['🐘', '🐭', '🐘', '🐭'],
+        sequencePattern: ['🐘', '🐭', '🐘', '🐭', '🐘'],
         choices: [
-          { id: 'elephant', asset: '🐘', isCorrect: true  },
-          { id: 'mouse',    asset: '🐭', isCorrect: false },
+          { id: 'mouse',    asset: '🐭', isCorrect: true },
+          { id: 'elephant', asset: '🐘', isCorrect: false },
           { id: 'cat',      asset: '🐱', isCorrect: false },
         ],
       },
     },
-    // ── 6. Transport ABB ──────────────────────────────────────────────────────
     {
       id: 'seq-transport-abb',
       domain: 'creative',
@@ -196,32 +204,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'مَا المَرْكَبَةُ التَّالِيَة؟',
-          promptAudio: 'سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة، حَافِلَة... مَاذَا يَأْتِي بَعْدَ ذَلِك؟',
-          successAudio: 'مُمْتَاز! السَّيَّارَةُ تَأْتِي بَعْدَ الحَافِلَتَيْن!',
+          title: 'سَيَّارَة ثُمَّ حَافِلَتَان',
+          promptAudio: 'سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة... مَاذَا بَعْد؟',
+          promptText: 'نمط ABB. بعد سيارة+حافلة يبقى حافلة.',
+          successAudio: 'حَافِلَةٌ ثَانِيَة! أَحْسَنْت!',
         },
         fr: {
-          title: 'Quel véhicule vient ensuite ?',
-          promptAudio: 'Voiture, bus, bus, voiture, bus, bus... Qu\'est-ce qui vient ensuite ?',
-          successAudio: 'Excellent ! La voiture vient après deux bus !',
+          title: 'Voiture puis deux Bus',
+          promptAudio: 'Voiture, bus, bus, voiture, bus... ensuite ?',
+          promptText: 'Motif ABB. Après voiture+bus, il manque le 2e bus.',
+          successAudio: 'Un deuxième bus ! Bravo !',
         },
         en: {
-          title: 'Which vehicle comes next?',
-          promptAudio: 'Car, bus, bus, car, bus, bus... What comes next?',
-          successAudio: 'Excellent! The car comes after two buses!',
+          title: 'Car then Two Buses',
+          promptAudio: 'Car, bus, bus, car, bus... what is next?',
+          promptText: 'ABB pattern. After car+bus, the 2nd bus is missing.',
+          successAudio: 'A second bus! Well done!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🚦',
-        sequencePattern: ['🚗', '🚌', '🚌', '🚗', '🚌', '🚌'],
+        sequencePattern: ['🚗', '🚌', '🚌', '🚗', '🚌'],
         choices: [
-          { id: 'car',   asset: '🚗', isCorrect: true  },
-          { id: 'bus',   asset: '🚌', isCorrect: false },
-          { id: 'bike',  asset: '🚲', isCorrect: false },
+          { id: 'bus',  asset: '🚌', isCorrect: true },
+          { id: 'car',  asset: '🚗', isCorrect: false },
+          { id: 'bike', asset: '🚲', isCorrect: false },
         ],
       },
     },
-    // ── 7. Météo ABC ──────────────────────────────────────────────────────────
     {
       id: 'seq-weather-abc',
       domain: 'creative',
@@ -230,32 +240,34 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'مَا طَقْسُ اليَوْمِ التَّالِي؟',
-          promptAudio: 'شَمْسٌ، غَيْمٌ، مَطَرٌ، شَمْسٌ، غَيْمٌ... مَاذَا يَأْتِي بَعْدَ ذَلِك؟',
-          successAudio: 'رَائِعٌ! المَطَرُ يَأْتِي بَعْدَ الغَيْم! عَبْقَرِيٌّ!',
+          title: 'شَمْس، غَيْم، مَطَر',
+          promptAudio: 'شَمْس، غَيْم، مَطَر، شَمْس، غَيْم... مَاذَا بَعْد؟',
+          promptText: 'نمط ABC. بعد شمس+غيم يأتي المطر.',
+          successAudio: 'المَطَرُ بَعْدَ الغَيْم! عَبْقَرِي!',
         },
         fr: {
-          title: 'Quel temps vient ensuite ?',
-          promptAudio: 'Soleil, nuage, pluie, soleil, nuage... Qu\'est-ce qui vient ensuite ?',
-          successAudio: 'Magnifique ! La pluie vient après le nuage ! Génie !',
+          title: 'Soleil, Nuage, Pluie',
+          promptAudio: 'Soleil, nuage, pluie, soleil, nuage... ensuite ?',
+          promptText: 'Motif ABC. Après soleil+nuage vient la pluie.',
+          successAudio: 'La pluie vient après le nuage ! Génie !',
         },
         en: {
-          title: 'What weather comes next?',
-          promptAudio: 'Sun, cloud, rain, sun, cloud... What comes next?',
-          successAudio: 'Magnificent! Rain comes after the cloud! Genius!',
+          title: 'Sun, Cloud, Rain',
+          promptAudio: 'Sun, cloud, rain, sun, cloud... what is next?',
+          promptText: 'ABC pattern. After sun+cloud comes rain.',
+          successAudio: 'Rain comes after the cloud! Genius!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '⛅',
         sequencePattern: ['☀️', '☁️', '🌧️', '☀️', '☁️'],
         choices: [
-          { id: 'rain',  asset: '🌧️', isCorrect: true  },
-          { id: 'sun',   asset: '☀️', isCorrect: false },
-          { id: 'snow',  asset: '❄️', isCorrect: false },
+          { id: 'rain', asset: '🌧️', isCorrect: true },
+          { id: 'sun',  asset: '☀️', isCorrect: false },
+          { id: 'snow', asset: '❄️', isCorrect: false },
         ],
       },
     },
-    // ── 8. Chiffres +1 ────────────────────────────────────────────────────────
     {
       id: 'seq-numbers-inc',
       domain: 'creative',
@@ -264,28 +276,31 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       interactionType: 'sequence',
       i18n: {
         ar: {
-          title: 'مَا العَدَدُ التَّالِي؟',
-          promptAudio: 'وَاحِد، اثْنَان، ثَلَاثَة... مَاذَا يَأْتِي بَعْدَ ذَلِك؟ اِحْسُبْ مَعِي!',
-          successAudio: 'أَرْبَعَة! صَحِيحٌ تَمَاماً! أَنْتَ بَطَلٌ فِي الأَعْدَاد!',
+          title: 'نَعُدُّ مَعاً',
+          promptAudio: 'وَاحِد، اثْنَان، ثَلَاثَة... مَا العَدَدُ التَّالِي؟',
+          promptText: 'عدّ +1 : بعد 3 يأتي 4.',
+          successAudio: 'أَرْبَعَة! بَطَلُ الأَعْدَاد!',
         },
         fr: {
-          title: 'Quel chiffre vient ensuite ?',
-          promptAudio: 'Un, deux, trois... Quel chiffre vient ensuite ? Compte avec moi !',
-          successAudio: 'Quatre ! Parfaitement juste ! Tu es un champion des chiffres !',
+          title: 'On Compte Ensemble',
+          promptAudio: 'Un, deux, trois... quel chiffre ensuite ?',
+          promptText: 'Compter +1 : après 3 vient 4.',
+          successAudio: 'Quatre ! Champion des chiffres !',
         },
         en: {
-          title: 'Which number comes next?',
-          promptAudio: 'One, two, three... Which number comes next? Count with me!',
-          successAudio: 'Four! Perfectly correct! You are a numbers champion!',
+          title: 'We Count Together',
+          promptAudio: 'One, two, three... which number is next?',
+          promptText: 'Count +1: after 3 comes 4.',
+          successAudio: 'Four! Numbers champion!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🔢',
         sequencePattern: ['1️⃣', '2️⃣', '3️⃣'],
         choices: [
-          { id: 'four',  asset: '4️⃣', isCorrect: true  },
-          { id: 'two',   asset: '2️⃣', isCorrect: false },
-          { id: 'five',  asset: '5️⃣', isCorrect: false },
+          { id: 'four', asset: '4️⃣', isCorrect: true },
+          { id: 'two',  asset: '2️⃣', isCorrect: false },
+          { id: 'five', asset: '5️⃣', isCorrect: false },
         ],
       },
     },

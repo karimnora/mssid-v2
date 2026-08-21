@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { PreschoolActivity } from '../../data/preschool/types';
+import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime } from './usePreschoolAudio';
+import { localizeGlyph } from './preschoolGlyphs';
 
 interface PreschoolTraceProps {
   activity: PreschoolActivity;
+  language: PreschoolLanguage;
   onComplete: () => void;
 }
 
@@ -16,7 +18,7 @@ const MIN_STROKE_LENGTH = 120;
 // Finger-tracing over a big translucent numeral guide. Free-draw SVG polyline captured via Pointer
 // Events (works for touch, mouse and pen identically). "تحقق" is always enabled — a child can tap it
 // any time, and gets an encouraging nudge to draw a bit more rather than a hard failure.
-export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, onComplete }) => {
+export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, language, onComplete }) => {
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
   const [nudge, setNudge] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -84,7 +86,7 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, onComp
           fill="#fde68a"
           dominantBaseline="middle"
         >
-          {activity.visualAssets.mainSvgOrImage}
+          {localizeGlyph(activity.visualAssets.mainSvgOrImage, language)}
         </text>
         {points.length > 1 && (
           <polyline

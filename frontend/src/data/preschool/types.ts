@@ -64,6 +64,15 @@ export interface PreschoolPathToken {
   travelerAsset: string;
 }
 
+/** Optional stepping-stones on find_path (e.g. colored pads on the fennec desert trail).
+ *  `x`/`y` are percents of the board (0–100). First stop is the start, last is the goal. */
+export interface PreschoolPathStop {
+  x: number;
+  y: number;
+  asset: string;
+  color: string;
+}
+
 /** connect_dots: a pair to match by tapping — left item then its right match. */
 export interface PreschoolConnectPair {
   id: string;
@@ -134,6 +143,9 @@ export interface PreschoolVisualAssets {
   tracePathSvg?: string;
   /** find_path */
   pathToken?: PreschoolPathToken;
+  pathStops?: PreschoolPathStop[];
+  /** Scenic board for find_path: desert, bath, seasons, market, home, or day. */
+  pathTheme?: 'desert' | 'bath' | 'seasons' | 'market' | 'home' | 'day' | 'algeria' | 'mosque' | 'feelings' | 'writing' | 'logic' | 'default';
   /** connect_dots */
   connectPairs?: PreschoolConnectPair[];
   /** sorting */
@@ -149,10 +161,12 @@ export interface PreschoolVisualAssets {
   /** maze */
   mazeWaypoints?: PreschoolMazeWaypoint[];
   mazeTravelerAsset?: string;
+  /** Emoji shown at the maze finish (carrot, nest, house…) — defaults to a flag. */
+  mazeGoalAsset?: string;
   /** jigsaw */
   jigsawSlots?: PreschoolJigsawSlot[];
   jigsawPieces?: PreschoolJigsawPiece[];
-  /** sequence — ordered list of emoji/glyphs forming the repeating pattern (answer is `choices[0].isCorrect`) */
+  /** sequence — shown prefix (incomplete). The missing next item is the one `choices` marked isCorrect. */
   sequencePattern?: string[];
 }
 

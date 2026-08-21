@@ -19,6 +19,7 @@ import { usePreschoolSpeech } from './usePreschoolAudio';
 interface PreschoolActivityPlayerProps {
   activity: PreschoolActivity;
   language: PreschoolLanguage;
+  hasNext: boolean;
   onComplete: () => void;
   onExit: () => void;
 }
@@ -26,7 +27,9 @@ interface PreschoolActivityPlayerProps {
 // Orchestrates one activity: speaks the prompt on entry, renders the right interaction widget for
 // activity.interactionType, and reacts (mascot + voice) on success before handing control back to
 // the path view. Session length stays short by construction — one activity, one clear finish line.
-export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = ({ activity, language, onComplete, onExit }) => {
+export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = ({
+  activity, language, hasNext, onComplete, onExit,
+}) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [mood, setMood] = useState<MascotMood>('idle');
   const [showSuccess, setShowSuccess] = useState(false);
@@ -76,12 +79,16 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
 
           {/* Direct Skip / Next button so the child or parent is never blocked */}
           <button
-            onClick={handleInteractionComplete}
+            onClick={onComplete}
             className="px-4 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-emerald-400"
             title="التالي / Suivant / Next"
           >
-            <span>{language === 'ar' ? 'التالي' : language === 'fr' ? 'Suivant' : 'Next'}</span>
-            <span className="text-lg">⏩</span>
+            <span>
+              {hasNext
+                ? (language === 'ar' ? 'التالي' : language === 'fr' ? 'Suivant' : 'Next')
+                : (language === 'ar' ? 'إنهاء' : language === 'fr' ? 'Terminer' : 'Finish')}
+            </span>
+            <span className="text-lg">{hasNext ? '⏩' : '🏠'}</span>
           </button>
         </div>
       </div>
@@ -111,24 +118,24 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           </div>
         )}
 
-        <div className="mt-4 w-full flex items-center justify-center">
+        <div key={activity.id} className="mt-4 w-full flex items-center justify-center">
           {activity.interactionType === 'tap_choice' && (
-            <PreschoolTapChoice activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolTapChoice activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'drag_drop' && (
             <PreschoolDragDrop activity={activity} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'trace' && (
-            <PreschoolTrace activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolTrace activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'find_path' && (
-            <PreschoolFindPath activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolFindPath activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'connect_dots' && (
-            <PreschoolConnectDots activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolConnectDots activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'sorting' && (
-            <PreschoolSorting activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolSorting activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'memory_cards' && (
             <PreschoolMemoryCards activity={activity} onComplete={handleInteractionComplete} />
@@ -146,7 +153,11 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
             <PreschoolJigsaw activity={activity} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'sequence' && (
-            <PreschoolSequence activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolSequence
+              activity={activity}
+              language={language}
+              onComplete={handleInteractionComplete}
+            />
           )}
         </div>
       </div>

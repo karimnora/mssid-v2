@@ -1,10 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { PreschoolActivity } from '../../data/preschool/types';
+import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
+import { localizeGlyph, localizePicture } from './preschoolGlyphs';
 
 interface PreschoolConnectDotsProps {
   activity: PreschoolActivity;
+  language: PreschoolLanguage;
   onComplete: () => void;
 }
 
@@ -20,7 +22,7 @@ function shuffle<T>(arr: T[]): T[] {
 // Match pairs by tapping — left item, then its right match — instead of drawing a precise line
 // between two arbitrary points (unreliable with a toddler's finger, and visually noisy). A matched
 // pair turns green with a checkmark; a wrong tap gets a gentle nudge and both deselect for retry.
-export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ activity, onComplete }) => {
+export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ activity, language, onComplete }) => {
   const pairs = activity.visualAssets.connectPairs || [];
   const shuffledRight = useMemo(() => shuffle(pairs), [pairs]);
   const [selectedLeftId, setSelectedLeftId] = useState<string | null>(null);
@@ -72,7 +74,7 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
                   : 'bg-white border-amber-200'
               }`}
             >
-              {isMatched ? '✅' : pair.leftAsset}
+              {isMatched ? '✅' : localizePicture(pair.leftAsset, language)}
             </motion.button>
           );
         })}
@@ -93,7 +95,7 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
                 isMatched ? 'bg-emerald-400 border-emerald-600' : 'bg-white border-sky-200'
               }`}
             >
-              {isMatched ? '✅' : pair.rightAsset}
+              {isMatched ? '✅' : localizeGlyph(pair.rightAsset, language)}
             </motion.button>
           );
         })}

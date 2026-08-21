@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PreschoolModule, PreschoolLanguage } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
+import { activityPathIcon } from './preschoolGlyphs';
 
 interface PreschoolPathViewProps {
   module: PreschoolModule;
@@ -87,6 +88,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
             const isCompleted = completedActivityIds.includes(activity.id);
             const offsetClass = index % 2 === 0 ? '-translate-x-8 sm:-translate-x-12' : 'translate-x-8 sm:translate-x-12';
             const actTitle = activity.i18n[language]?.title ?? '';
+            const nodeIcon = activityPathIcon(activity, language);
 
             return (
               <motion.div
@@ -119,13 +121,13 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
                     {activity.stepNumber}
                   </span>
 
-                  <span className="text-2xl font-black text-white drop-shadow select-none">
-                    {isCompleted ? '⭐' : String(activity.targetValue)}
+                  <span className={`font-black text-white drop-shadow select-none ${nodeIcon.length > 1 ? 'text-lg' : 'text-2xl'}`}>
+                    {isCompleted ? '⭐' : nodeIcon}
                   </span>
                 </motion.button>
 
                 {/* Activity title below circle */}
-                <p className={`text-[11px] font-black text-center max-w-[88px] leading-tight
+                <p className={`text-[11px] font-black text-center max-w-[120px] leading-tight
                                ${isCompleted ? 'text-emerald-700' : 'text-orange-800'}`}>
                   {actTitle}
                 </p>

@@ -1,21 +1,21 @@
 import { PreschoolModule } from './types';
 
-// "أَلْعَابُ الحَرَكَةِ وَالتَّرْكِيزِ" — a bigger batch across the 4 movement/focus game families
-// (click-the-target, drag-and-drop counting, mazes, sort-and-move), all built on interactionTypes
-// that already exist (tap_choice, drag_drop, maze, sorting) — original themes/content/graphics
-// (emoji + Tailwind, matching the rest of Mode Éveil), not copied from any outside source.
+/**
+ * "أَلْعَابُ الحَرَكَةِ وَالتَّرْكِيزِ" — Movement & focus (8 short games).
+ * No fruit/veg or clothes sorts (already in Aliments / Saisons).
+ * Mazes show the real goal (carrot, island, nest).
+ */
 export const ARCADE_GAMES_MODULE: PreschoolModule = {
   id: 'preschool-arcade-games',
   domain: 'creative',
   icon: '🎮',
-  totalSteps: 16,
+  totalSteps: 8,
   titleI18n: {
     ar: 'أَلْعَابُ الحَرَكَةِ وَالتَّرْكِيزِ',
     fr: 'Jeux de Mouvement et Concentration',
     en: 'Movement & Focus Games',
   },
   activities: [
-    // --- Mazes (labyrinthes) ---
     {
       id: 'arcade-maze-rabbit',
       domain: 'creative',
@@ -24,24 +24,28 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
       interactionType: 'maze',
       i18n: {
         ar: {
-          title: 'سَاعِدِ الأَرْنَبَ لِيَصِلَ إِلَى الجَزَرَةِ',
-          promptAudio: 'اِسْحَبِ الأَرْنَبَ عَلَى الطَّرِيقِ حَتَّى يَصِلَ إِلَى الجَزَرَةِ!',
-          successAudio: 'وَصَلَ الأَرْنَبُ إِلَى الجَزَرَةِ! أَحْسَنْتَ!',
+          title: 'الأَرْنَبُ إِلَى الجَزَرَة',
+          promptAudio: 'اِسْحَبِ الأَرْنَبَ حَتَّى الجَزَرَة!',
+          promptText: 'الهدف جزرة، ليس علماً.',
+          successAudio: 'وَجَدَ الأَرْنَبُ جَزَرَتَهُ!',
         },
         fr: {
-          title: 'Aide le Lapin à Trouver la Carotte',
-          promptAudio: 'Fais glisser le lapin sur le chemin jusqu\'à la carotte !',
-          successAudio: 'Le lapin a trouvé sa carotte ! Bravo !',
+          title: 'Le Lapin vers la Carotte',
+          promptAudio: 'Glisse le lapin jusqu\'à la carotte !',
+          promptText: 'L\'arrivée est une carotte.',
+          successAudio: 'Le lapin a trouvé sa carotte !',
         },
         en: {
-          title: 'Help the Rabbit Find the Carrot',
-          promptAudio: 'Drag the rabbit along the path until it reaches the carrot!',
-          successAudio: 'The rabbit found its carrot! Well done!',
+          title: 'Rabbit to the Carrot',
+          promptAudio: 'Drag the rabbit all the way to the carrot!',
+          promptText: 'The goal is a carrot.',
+          successAudio: 'The rabbit found its carrot!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🐰',
         mazeTravelerAsset: '🐰',
+        mazeGoalAsset: '🥕',
         mazeWaypoints: [
           { x: 20, y: 20 },
           { x: 70, y: 70 },
@@ -60,24 +64,28 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
       interactionType: 'maze',
       i18n: {
         ar: {
-          title: 'قُدِ القَارِبَ إِلَى الجَزِيرَةِ',
-          promptAudio: 'اِسْحَبِ القَارِبَ فَوْقَ المَوْجِ حَتَّى يَصِلَ إِلَى الجَزِيرَةِ!',
-          successAudio: 'وَصَلَ القَارِبُ إِلَى الجَزِيرَةِ بِأَمَانٍ! أَحْسَنْتَ!',
+          title: 'القَارِبُ إِلَى الجَزِيرَة',
+          promptAudio: 'اِسْحَبِ القَارِبَ فَوْقَ المَوْجِ حَتَّى الجَزِيرَة!',
+          promptText: 'الهدف جزيرة.',
+          successAudio: 'وَصَلَ القَارِبُ إِلَى الجَزِيرَة!',
         },
         fr: {
-          title: 'Conduis le Bateau vers l\'Île',
-          promptAudio: 'Fais glisser le bateau sur les vagues jusqu\'à l\'île !',
-          successAudio: 'Le bateau est arrivé à l\'île en toute sécurité ! Bravo !',
+          title: 'Le Bateau vers l\'Île',
+          promptAudio: 'Glisse le bateau sur les vagues jusqu\'à l\'île !',
+          promptText: 'L\'arrivée est une île.',
+          successAudio: 'Le bateau est arrivé à l\'île !',
         },
         en: {
-          title: 'Sail the Boat to the Island',
-          promptAudio: 'Drag the boat over the waves until it reaches the island!',
-          successAudio: 'The boat arrived safely at the island! Well done!',
+          title: 'Boat to the Island',
+          promptAudio: 'Drag the boat over the waves to the island!',
+          promptText: 'The goal is an island.',
+          successAudio: 'The boat reached the island!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '⛵',
         mazeTravelerAsset: '⛵',
+        mazeGoalAsset: '🏝️',
         mazeWaypoints: [
           { x: 15, y: 130 },
           { x: 70, y: 90 },
@@ -96,24 +104,28 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
       interactionType: 'maze',
       i18n: {
         ar: {
-          title: 'سَاعِدِ العُصْفُورَ لِيَصِلَ إِلَى عُشِّهِ',
-          promptAudio: 'اِسْحَبِ العُصْفُورَ فِي السَّمَاءِ حَتَّى يَصِلَ إِلَى عُشِّهِ!',
-          successAudio: 'وَصَلَ العُصْفُورُ إِلَى عُشِّهِ! أَحْسَنْتَ!',
+          title: 'العُصْفُورُ إِلَى العُش',
+          promptAudio: 'اِسْحَبِ العُصْفُورَ فِي السَّمَاءِ حَتَّى العُش!',
+          promptText: 'الهدف عش.',
+          successAudio: 'العُصْفُورُ فِي عُشِّهِ!',
         },
         fr: {
-          title: 'Aide l\'Oiseau à Rejoindre son Nid',
-          promptAudio: 'Fais glisser l\'oiseau dans le ciel jusqu\'à son nid !',
-          successAudio: 'L\'oiseau est arrivé à son nid ! Bravo !',
+          title: 'L\'Oiseau vers le Nid',
+          promptAudio: 'Glisse l\'oiseau dans le ciel jusqu\'au nid !',
+          promptText: 'L\'arrivée est un nid.',
+          successAudio: 'L\'oiseau est dans son nid !',
         },
         en: {
-          title: 'Help the Bird Reach its Nest',
-          promptAudio: 'Drag the bird through the sky until it reaches its nest!',
-          successAudio: 'The bird reached its nest! Well done!',
+          title: 'Bird to the Nest',
+          promptAudio: 'Drag the bird through the sky to the nest!',
+          promptText: 'The goal is a nest.',
+          successAudio: 'The bird is in its nest!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🐦',
         mazeTravelerAsset: '🐦',
+        mazeGoalAsset: '🪺',
         mazeWaypoints: [
           { x: 230, y: 20 },
           { x: 170, y: 60 },
@@ -125,63 +137,29 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
       },
     },
     {
-      id: 'arcade-maze-turtle',
-      domain: 'creative',
-      targetValue: 'turtle',
-      stepNumber: 4,
-      interactionType: 'maze',
-      i18n: {
-        ar: {
-          title: 'سَاعِدِ السُّلَحْفَاةَ لِتَصِلَ إِلَى البِرْكَةِ',
-          promptAudio: 'اِسْحَبِ السُّلَحْفَاةَ بِبُطْءٍ حَتَّى تَصِلَ إِلَى البِرْكَةِ!',
-          successAudio: 'وَصَلَتِ السُّلَحْفَاةُ إِلَى بِرْكَتِهَا! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Aide la Tortue à Rejoindre son Étang',
-          promptAudio: 'Fais glisser doucement la tortue jusqu\'à son étang !',
-          successAudio: 'La tortue est arrivée à son étang ! Bravo !',
-        },
-        en: {
-          title: 'Help the Turtle Reach its Pond',
-          promptAudio: 'Slowly drag the turtle until it reaches its pond!',
-          successAudio: 'The turtle reached its pond! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🐢',
-        mazeTravelerAsset: '🐢',
-        mazeWaypoints: [
-          { x: 20, y: 230 },
-          { x: 80, y: 200 },
-          { x: 60, y: 130 },
-          { x: 140, y: 110 },
-          { x: 120, y: 50 },
-          { x: 230, y: 30 },
-        ],
-      },
-    },
-    // --- Drag & drop counting (glisser-déposer) ---
-    {
       id: 'arcade-drag-apples',
       domain: 'creative',
       targetValue: 'apples',
-      stepNumber: 5,
+      stepNumber: 4,
       interactionType: 'drag_drop',
       i18n: {
         ar: {
-          title: 'اِجْمَعِ التُّفَّاحَ فِي السَّلَّةِ',
-          promptAudio: 'اِسْحَبْ كُلَّ تُفَّاحَةٍ إِلَى السَّلَّةِ!',
-          successAudio: 'جَمَعْتَ كُلَّ التُّفَّاحِ! أَحْسَنْتَ!',
+          title: 'التُّفَّاحُ فِي السَّلَّة',
+          promptAudio: 'اِسْحَبْ كُلَّ تُفَّاحَةٍ إِلَى السَّلَّة!',
+          promptText: 'أربع تفاحات — ليس أكثر.',
+          successAudio: 'السَّلَّةُ مَلآنَة!',
         },
         fr: {
-          title: 'Ramasse les Pommes dans le Panier',
-          promptAudio: 'Fais glisser chaque pomme jusqu\'au panier !',
-          successAudio: 'Tu as ramassé toutes les pommes ! Bravo !',
+          title: 'Les Pommes dans le Panier',
+          promptAudio: 'Glisse chaque pomme dans le panier !',
+          promptText: 'Quatre pommes seulement.',
+          successAudio: 'Le panier est plein !',
         },
         en: {
-          title: 'Collect the Apples in the Basket',
-          promptAudio: 'Drag each apple to the basket!',
-          successAudio: 'You collected all the apples! Well done!',
+          title: 'Apples in the Basket',
+          promptAudio: 'Drag each apple into the basket!',
+          promptText: 'Four apples only.',
+          successAudio: 'The basket is full!',
         },
       },
       visualAssets: {
@@ -199,23 +177,26 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
       id: 'arcade-drag-stars',
       domain: 'creative',
       targetValue: 'stars',
-      stepNumber: 6,
+      stepNumber: 5,
       interactionType: 'drag_drop',
       i18n: {
         ar: {
-          title: 'اِجْمَعِ النُّجُومَ فِي الجَرَّةِ',
-          promptAudio: 'اِسْحَبْ كُلَّ نَجْمَةٍ إِلَى الجَرَّةِ!',
-          successAudio: 'جَمَعْتَ كُلَّ النُّجُومِ! أَحْسَنْتَ!',
+          title: 'النُّجُومُ فِي الجَرَّة',
+          promptAudio: 'اِسْحَبْ كُلَّ نَجْمَةٍ إِلَى الجَرَّة!',
+          promptText: 'ثلاث نجوم — أسهل من خمس على شاشة صغيرة.',
+          successAudio: 'الجَرَّةُ تُضِيء!',
         },
         fr: {
-          title: 'Ramasse les Étoiles dans le Bocal',
-          promptAudio: 'Fais glisser chaque étoile jusqu\'au bocal !',
-          successAudio: 'Tu as ramassé toutes les étoiles ! Bravo !',
+          title: 'Les Étoiles dans le Bocal',
+          promptAudio: 'Glisse chaque étoile dans le bocal !',
+          promptText: 'Trois étoiles — plus lisible que cinq.',
+          successAudio: 'Le bocal brille !',
         },
         en: {
-          title: 'Collect the Stars in the Jar',
-          promptAudio: 'Drag each star to the jar!',
-          successAudio: 'You collected all the stars! Well done!',
+          title: 'Stars in the Jar',
+          promptAudio: 'Drag each star into the jar!',
+          promptText: 'Three stars — easier than five on a small screen.',
+          successAudio: 'The jar shines!',
         },
       },
       visualAssets: {
@@ -224,101 +205,34 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
           { id: 'star1', asset: '⭐' },
           { id: 'star2', asset: '⭐' },
           { id: 'star3', asset: '⭐' },
-          { id: 'star4', asset: '⭐' },
-          { id: 'star5', asset: '⭐' },
-        ],
-        dropZoneCount: 5,
-      },
-    },
-    {
-      id: 'arcade-drag-fish',
-      domain: 'creative',
-      targetValue: 'fish',
-      stepNumber: 7,
-      interactionType: 'drag_drop',
-      i18n: {
-        ar: {
-          title: 'اِجْمَعِ الأَسْمَاكَ فِي الوِعَاءِ',
-          promptAudio: 'اِسْحَبْ كُلَّ سَمَكَةٍ إِلَى الوِعَاءِ!',
-          successAudio: 'جَمَعْتَ كُلَّ الأَسْمَاكِ! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Ramasse les Poissons dans le Bocal',
-          promptAudio: 'Fais glisser chaque poisson jusqu\'au bocal !',
-          successAudio: 'Tu as ramassé tous les poissons ! Bravo !',
-        },
-        en: {
-          title: 'Collect the Fish in the Bowl',
-          promptAudio: 'Drag each fish to the bowl!',
-          successAudio: 'You collected all the fish! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🥣',
-        dragItems: [
-          { id: 'fish1', asset: '🐟' },
-          { id: 'fish2', asset: '🐟' },
-          { id: 'fish3', asset: '🐟' },
         ],
         dropZoneCount: 3,
       },
     },
     {
-      id: 'arcade-drag-leaves',
-      domain: 'creative',
-      targetValue: 'leaves',
-      stepNumber: 8,
-      interactionType: 'drag_drop',
-      i18n: {
-        ar: {
-          title: 'اِجْمَعِ الأَوْرَاقَ فِي الكَوْمَةِ',
-          promptAudio: 'اِسْحَبْ كُلَّ وَرَقَةٍ إِلَى الكَوْمَةِ!',
-          successAudio: 'جَمَعْتَ كُلَّ الأَوْرَاقِ! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Ramasse les Feuilles en Tas',
-          promptAudio: 'Fais glisser chaque feuille jusqu\'au tas !',
-          successAudio: 'Tu as ramassé toutes les feuilles ! Bravo !',
-        },
-        en: {
-          title: 'Rake the Leaves into a Pile',
-          promptAudio: 'Drag each leaf to the pile!',
-          successAudio: 'You raked all the leaves! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🍂',
-        dragItems: [
-          { id: 'leaf1', asset: '🍁' },
-          { id: 'leaf2', asset: '🍁' },
-          { id: 'leaf3', asset: '🍁' },
-          { id: 'leaf4', asset: '🍁' },
-        ],
-        dropZoneCount: 4,
-      },
-    },
-    // --- Sort & move (déplacer) ---
-    {
       id: 'arcade-sort-sky-land',
       domain: 'creative',
       targetValue: 'sky_land',
-      stepNumber: 9,
+      stepNumber: 6,
       interactionType: 'sorting',
       i18n: {
         ar: {
-          title: 'مَنْ يَطِيرُ وَمَنْ يَمْشِي؟',
-          promptAudio: 'ضَعِ الحَيَوَانَاتِ الَّتِي تَطِيرُ فِي السَّمَاءِ، وَالَّتِي تَمْشِي عَلَى الأَرْضِ!',
-          successAudio: 'مَيَّزْتَ مَنْ يَطِيرُ وَمَنْ يَمْشِي! أَحْسَنْتَ!',
+          title: 'يَطِيرُ أَمْ يَمْشِي؟',
+          promptAudio: 'ضَعِ العُصْفُورَ وَالفَرَاشَةَ مَعَ الغَيْمَة، وَالكَلْبَ وَالخَرُوفَ مَعَ الشَّجَرَة!',
+          promptText: 'يطير: عصفور، فراشة، نحلة. يمشي: كلب، خروف، قط.',
+          successAudio: 'تَعْرِفُ مَنْ يَطِيرُ وَمَنْ يَمْشِي!',
         },
         fr: {
-          title: 'Qui Vole et Qui Marche ?',
-          promptAudio: 'Mets les animaux qui volent dans le ciel, et ceux qui marchent sur la terre !',
-          successAudio: 'Tu as bien trié qui vole et qui marche ! Bravo !',
+          title: 'Il Vole ou Il Marche ?',
+          promptAudio: 'Mets l\'oiseau et le papillon avec le nuage, le chien et le mouton avec l\'arbre !',
+          promptText: 'Vole : oiseau, papillon, abeille. Marche : chien, mouton, chat.',
+          successAudio: 'Tu sais qui vole et qui marche !',
         },
         en: {
-          title: 'Who Flies and Who Walks?',
-          promptAudio: 'Put the animals that fly in the sky, and the ones that walk on the ground!',
-          successAudio: 'You sorted flyers from walkers! Well done!',
+          title: 'Does It Fly or Walk?',
+          promptAudio: 'Put the bird and the butterfly with the cloud, the dog and the sheep with the tree!',
+          promptText: 'Fly: bird, butterfly, bee. Walk: dog, sheep, cat.',
+          successAudio: 'You know who flies and who walks!',
         },
       },
       visualAssets: {
@@ -329,83 +243,11 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
         ],
         sortItems: [
           { id: 'bird1', asset: '🐦', correctBinId: 'sky_bin' },
+          { id: 'butterfly1', asset: '🦋', correctBinId: 'sky_bin' },
           { id: 'bee1', asset: '🐝', correctBinId: 'sky_bin' },
           { id: 'dog1', asset: '🐶', correctBinId: 'land_bin' },
+          { id: 'sheep1', asset: '🐑', correctBinId: 'land_bin' },
           { id: 'cat1', asset: '🐱', correctBinId: 'land_bin' },
-        ],
-      },
-    },
-    {
-      id: 'arcade-sort-fruit-veg',
-      domain: 'creative',
-      targetValue: 'fruit_veg',
-      stepNumber: 10,
-      interactionType: 'sorting',
-      i18n: {
-        ar: {
-          title: 'فَاكِهَةٌ أَمْ خُضَارٌ؟',
-          promptAudio: 'ضَعِ الفَاكِهَةَ مَعَ التُّفَّاحَةِ، وَالخُضَارَ مَعَ الجَزَرَةِ!',
-          successAudio: 'مَيَّزْتَ الفَاكِهَةَ مِنَ الخُضَارِ! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Fruit ou Légume ?',
-          promptAudio: 'Mets les fruits avec la pomme, et les légumes avec la carotte !',
-          successAudio: 'Tu as bien trié les fruits et les légumes ! Bravo !',
-        },
-        en: {
-          title: 'Fruit or Vegetable?',
-          promptAudio: 'Put the fruits with the apple, and the vegetables with the carrot!',
-          successAudio: 'You sorted fruits from vegetables! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🥗',
-        sortBins: [
-          { id: 'fruit_bin', labelAsset: '🍎' },
-          { id: 'veg_bin', labelAsset: '🥕' },
-        ],
-        sortItems: [
-          { id: 'banana1', asset: '🍌', correctBinId: 'fruit_bin' },
-          { id: 'grapes1', asset: '🍇', correctBinId: 'fruit_bin' },
-          { id: 'tomato1', asset: '🍅', correctBinId: 'veg_bin' },
-          { id: 'broccoli1', asset: '🥦', correctBinId: 'veg_bin' },
-        ],
-      },
-    },
-    {
-      id: 'arcade-sort-seasons-clothes',
-      domain: 'creative',
-      targetValue: 'seasons_clothes',
-      stepNumber: 11,
-      interactionType: 'sorting',
-      i18n: {
-        ar: {
-          title: 'مَلَابِسُ الصَّيْفِ وَمَلَابِسُ الشِّتَاءِ',
-          promptAudio: 'ضَعْ مَلَابِسَ الصَّيْفِ مَعَ الشَّمْسِ، وَمَلَابِسَ الشِّتَاءِ مَعَ الثَّلْجِ!',
-          successAudio: 'مَيَّزْتَ مَلَابِسَ الصَّيْفِ مِنَ الشِّتَاءِ! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Vêtements d\'Été et d\'Hiver',
-          promptAudio: 'Mets les vêtements d\'été avec le soleil, et ceux d\'hiver avec la neige !',
-          successAudio: 'Tu as bien trié les vêtements d\'été et d\'hiver ! Bravo !',
-        },
-        en: {
-          title: 'Summer and Winter Clothes',
-          promptAudio: 'Put the summer clothes with the sun, and the winter ones with the snow!',
-          successAudio: 'You sorted summer from winter clothes! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🧥',
-        sortBins: [
-          { id: 'summer_bin', labelAsset: '☀️' },
-          { id: 'winter_bin', labelAsset: '❄️' },
-        ],
-        sortItems: [
-          { id: 'sunglasses1', asset: '🕶️', correctBinId: 'summer_bin' },
-          { id: 'shorts1', asset: '🩳', correctBinId: 'summer_bin' },
-          { id: 'scarf1', asset: '🧣', correctBinId: 'winter_bin' },
-          { id: 'gloves1', asset: '🧤', correctBinId: 'winter_bin' },
         ],
       },
     },
@@ -413,23 +255,26 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
       id: 'arcade-sort-vehicles',
       domain: 'creative',
       targetValue: 'vehicles',
-      stepNumber: 12,
+      stepNumber: 7,
       interactionType: 'sorting',
       i18n: {
         ar: {
-          title: 'مَرْكَبَاتُ السَّمَاءِ وَمَرْكَبَاتُ الطَّرِيقِ',
-          promptAudio: 'ضَعِ المَرْكَبَاتِ الَّتِي تَطِيرُ فِي السَّمَاءِ، وَالَّتِي تَسِيرُ عَلَى الطَّرِيقِ!',
-          successAudio: 'مَيَّزْتَ مَرْكَبَاتِ السَّمَاءِ مِنَ الطَّرِيقِ! أَحْسَنْتَ!',
+          title: 'سِمَاءٌ أَمْ طَرِيق؟',
+          promptAudio: 'ضَعِ الطَّائِرَةَ مَعَ الغَيْمَة، وَالسَّيَّارَةَ مَعَ الطَّرِيق!',
+          promptText: 'سماء: طائرة، مروحية. طريق: سيارة، حافلة، دراجة.',
+          successAudio: 'تَعْرِفُ مَرْكَبَاتِ السَّمَاءِ وَالطَّرِيق!',
         },
         fr: {
-          title: 'Véhicules du Ciel et de la Route',
-          promptAudio: 'Mets les véhicules qui volent dans le ciel, et ceux qui roulent sur la route !',
-          successAudio: 'Tu as bien trié les véhicules du ciel et de la route ! Bravo !',
+          title: 'Ciel ou Route ?',
+          promptAudio: 'Mets l\'avion avec le nuage, et la voiture avec la route !',
+          promptText: 'Ciel : avion, hélico. Route : voiture, bus, vélo.',
+          successAudio: 'Tu connais les véhicules du ciel et de la route !',
         },
         en: {
-          title: 'Sky Vehicles and Road Vehicles',
-          promptAudio: 'Put the vehicles that fly in the sky, and the ones that drive on the road!',
-          successAudio: 'You sorted sky vehicles from road vehicles! Well done!',
+          title: 'Sky or Road?',
+          promptAudio: 'Put the plane with the cloud, and the car with the road!',
+          promptText: 'Sky: plane, helicopter. Road: car, bus, bike.',
+          successAudio: 'You know sky vehicles and road vehicles!',
         },
       },
       visualAssets: {
@@ -443,135 +288,42 @@ export const ARCADE_GAMES_MODULE: PreschoolModule = {
           { id: 'helicopter1', asset: '🚁', correctBinId: 'sky_vehicle_bin' },
           { id: 'car1', asset: '🚗', correctBinId: 'road_vehicle_bin' },
           { id: 'bus1', asset: '🚌', correctBinId: 'road_vehicle_bin' },
-        ],
-      },
-    },
-    // --- Click the target (cliquer) — distracteurs variés et pédagogiques ---
-    {
-      id: 'arcade-click-balloon',
-      domain: 'creative',
-      targetValue: 'balloon',
-      stepNumber: 13,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'أَيْنَ البَالُونُ الطَّائِر؟',
-          promptAudio: 'اِلْمَسِ البَالُونَ الَّذِي يَطِيرُ فِي الهَوَاءِ!',
-          successAudio: 'وَجَدْتَ البَالُونَ! هُوَ يَطِيرُ بِالهَوَاءِ! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Où est le Ballon qui Vole ?',
-          promptAudio: 'Touche le ballon qui vole dans l\'air !',
-          successAudio: 'Tu as trouvé le ballon ! Il vole grâce à l\'air ! Bravo !',
-        },
-        en: {
-          title: 'Where is the Flying Balloon?',
-          promptAudio: 'Tap the balloon that flies in the air!',
-          successAudio: 'You found the balloon! It flies with air! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '🎈',
-        choices: [
-          { id: 'balloon',  asset: '🎈', isCorrect: true  },
-          { id: 'kite',     asset: '🪁', isCorrect: false },
-          { id: 'ball',     asset: '🏀', isCorrect: false },
-        ],
-      },
-    },
-    {
-      id: 'arcade-click-star',
-      domain: 'creative',
-      targetValue: 'star',
-      stepNumber: 14,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'أَيْنَ النَّجْمَةُ فِي السَّمَاء؟',
-          promptAudio: 'اِلْمَسِ النَّجْمَةَ الَّتِي تُضِيءُ السَّمَاءَ لَيْلاً!',
-          successAudio: 'وَجَدْتَ النَّجْمَةَ! تُضِيءُ السَّمَاءَ بِاللَّيْل! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Où est l\'Étoile dans le Ciel ?',
-          promptAudio: 'Touche l\'étoile qui illumine le ciel la nuit !',
-          successAudio: 'Tu as trouvé l\'étoile ! Elle illumine le ciel la nuit ! Bravo !',
-        },
-        en: {
-          title: 'Where is the Star in the Sky?',
-          promptAudio: 'Tap the star that lights up the night sky!',
-          successAudio: 'You found the star! It lights up the night sky! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '⭐',
-        choices: [
-          { id: 'star',  asset: '⭐', isCorrect: true  },
-          { id: 'moon',  asset: '🌙', isCorrect: false },
-          { id: 'cloud', asset: '☁️', isCorrect: false },
+          { id: 'bike1', asset: '🚲', correctBinId: 'road_vehicle_bin' },
         ],
       },
     },
     {
       id: 'arcade-click-boat',
       domain: 'creative',
-      targetValue: 'boat',
-      stepNumber: 15,
+      targetValue: 'boat-tap',
+      stepNumber: 8,
       interactionType: 'tap_choice',
       i18n: {
         ar: {
-          title: 'أَيُّ مَرْكَبَةٍ تَسِيرُ عَلَى المَاء؟',
-          promptAudio: 'اِلْمَسِ المَرْكَبَةَ الَّتِي تَسِيرُ عَلَى البَحْر!',
-          successAudio: 'صَحِيح! القَارِبُ يَسِيرُ عَلَى المَاء! أَحْسَنْتَ!',
+          title: 'مَنْ يَسِيرُ عَلَى المَاء؟',
+          promptAudio: 'اِلْمَسِ القَارِب! القَارِبُ يَسِيرُ عَلَى البَحْر!',
+          promptText: 'قارب ≠ سيارة ≠ صاروخ.',
+          successAudio: 'القَارِبُ عَلَى المَاء! أَحْسَنْت!',
         },
         fr: {
-          title: 'Quel Véhicule navigue sur l\'Eau ?',
-          promptAudio: 'Touche le véhicule qui navigue sur la mer !',
-          successAudio: 'Exact ! Le bateau navigue sur l\'eau ! Bravo !',
+          title: 'Qui Navigue sur l\'Eau ?',
+          promptAudio: 'Touche le bateau ! Le bateau avance sur la mer !',
+          promptText: 'Bateau ≠ voiture ≠ fusée.',
+          successAudio: 'Le bateau sur l\'eau ! Bravo !',
         },
         en: {
-          title: 'Which Vehicle Sails on Water?',
-          promptAudio: 'Tap the vehicle that sails on the sea!',
-          successAudio: 'Correct! The boat sails on water! Well done!',
+          title: 'Who Sails on Water?',
+          promptAudio: 'Touch the boat! The boat sails on the sea!',
+          promptText: 'Boat ≠ car ≠ rocket.',
+          successAudio: 'The boat on the water! Well done!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '⛵',
         choices: [
-          { id: 'boat',   asset: '⛵', isCorrect: true  },
+          { id: 'boat', asset: '⛵', isCorrect: true },
+          { id: 'car', asset: '🚗', isCorrect: false },
           { id: 'rocket', asset: '🚀', isCorrect: false },
-          { id: 'car',    asset: '🚗', isCorrect: false },
-        ],
-      },
-    },
-    {
-      id: 'arcade-click-sun',
-      domain: 'creative',
-      targetValue: 'sun',
-      stepNumber: 16,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'مَا الَّذِي يُدَفِّئُنَا نَهَاراً؟',
-          promptAudio: 'اِلْمَسِ الشَّيْءَ الَّذِي يُضِيءُ وَيُدَفِّئُ الأَرْضَ نَهَاراً!',
-          successAudio: 'الشَّمْسُ! تُضِيءُ نَهَارَنَا وَتُدَفِّئُ الأَرْض! أَحْسَنْتَ!',
-        },
-        fr: {
-          title: 'Qu\'est-ce qui nous Réchauffe le Jour ?',
-          promptAudio: 'Touche ce qui illumine et réchauffe la Terre pendant la journée !',
-          successAudio: 'Le soleil ! Il éclaire notre journée et réchauffe la Terre ! Bravo !',
-        },
-        en: {
-          title: 'What Warms Us During the Day?',
-          promptAudio: 'Tap what lights up and warms the Earth during the day!',
-          successAudio: 'The sun! It lights our day and warms the Earth! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '☀️',
-        choices: [
-          { id: 'sun',       asset: '☀️', isCorrect: true  },
-          { id: 'rain',      asset: '🌧️', isCorrect: false },
-          { id: 'snowflake', asset: '❄️', isCorrect: false },
         ],
       },
     },

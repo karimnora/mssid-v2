@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { PreschoolActivity } from '../../data/preschool/types';
+import { PreschoolActivity, PreschoolChoice, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
+import { localizeGlyph, activityPicture } from './preschoolGlyphs';
+import { PreschoolShapeMark, isGeometricShape } from './PreschoolShapeMark';
 
 interface PreschoolTapChoiceProps {
   activity: PreschoolActivity;
+  language: PreschoolLanguage;
   onComplete: () => void;
 }
 
-// Tap the correct choice among a few big buttons. Unlimited attempts — a wrong tap gets a soft
-// shake + gentle sound and stays tappable again immediately, it never blocks or counts against the
-// child (no "hearts" system at this age, see UX audit).
-export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity, onComplete }) => {
+function shuffleChoices(list: PreschoolChoice[]): PreschoolChoice[] {
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+const spring = { type: 'spring' as const, stiffness: 420, damping: 22 };
+
+export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity, language, onComplete }) => {
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
-  const choices = activity.visualAssets.choices || [];
+  const [choices, setChoices] = useState<PreschoolChoice[]>([]);
+
+  useEffect(() => {
+    setSolved(false);
+    setWrongId(null);
+    setChoices(shuffleChoices(activity.visualAssets.choices || []));
+  }, [activity.id]);
 
   const handleTap = (choiceId: string, isCorrect: boolean) => {
     if (solved) return;
@@ -29,30 +46,56 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
     }
   };
 
-  return (
-    <div className="flex flex-col items-center gap-8">
-      <div className="text-8xl sm:text-9xl select-none" aria-hidden="true">
-        {activity.visualAssets.mainSvgOrImage}
-      </div>
+  const prompt = activityPicture(activity, language);
 
-      <div className="flex flex-wrap items-center justify-center gap-5">
-        {choices.map((choice) => (
-          <motion.button
-            key={choice.id}
-            onClick={() => handleTap(choice.id, choice.isCorrect)}
-            animate={wrongId === choice.id ? { x: [0, -10, 10, -10, 0] } : solved && choice.isCorrect ? { scale: [1, 1.25, 1] } : {}}
-            transition={{ duration: 0.4 }}
-            whileTap={{ scale: 0.92 }}
-            disabled={solved}
-            className={`min-h-24 min-w-24 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl text-4xl sm:text-5xl font-black flex items-center justify-center shadow-lg border-4 cursor-pointer transition-colors ${
-              solved && choice.isCorrect
-                ? 'bg-emerald-400 border-emerald-600 text-white'
-                : 'bg-white border-amber-200 hover:border-amber-400 text-orange-900'
-            }`}
-          >
-            {choice.asset}
-          </motion.button>
-        ))}
+  return (
+    <div className="flex flex-col items-center gap-10 px-2">
+      <motion.div
+        key={activity.id}
+        initial={{ scale: 0.7, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={spring}
+        className="w-36 h-36 sm:w-40 sm:h-40 rounded-[2rem] bg-white shadow-md border-4 border-amber-100
+                   flex items-center justify-center"
+      >
+        <span className="text-7xl sm:text-8xl select-none" aria-hidden="true">{prompt}</span>
+      </motion.div>
+
+      <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+        {choices.map((choice) => {
+          const glyph = localizeGlyph(choice.asset, language);
+          const showShape = isGeometricShape(choice.asset);
+          const isWin = solved && choice.isCorrect;
+          const isWrong = wrongId === choice.id;
+
+          return (
+            <motion.button
+              key={choice.id}
+              onClick={() => handleTap(choice.id, choice.isCorrect)}
+              animate={isWrong ? { x: [0, -10, 10, -10, 0] } : isWin ? { scale: [1, 1.18, 1] } : { scale: 1 }}
+              transition={isWrong ? { duration: 0.4 } : spring}
+              whileHover={solved ? undefined : { scale: 1.05 }}
+              whileTap={solved ? undefined : { scale: 0.95 }}
+              disabled={solved}
+              aria-label={glyph}
+              className={`min-h-24 min-w-24 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl flex items-center justify-center
+                          shadow-lg border-4 cursor-pointer select-none
+                          ${isWin
+                            ? 'bg-emerald-400 border-emerald-600'
+                            : isWrong
+                              ? 'bg-rose-100 border-rose-400'
+                              : 'bg-white border-amber-200 hover:border-amber-400'}`}
+            >
+              {showShape
+                ? <PreschoolShapeMark asset={choice.asset} size={64} />
+                : (
+                  <span className={`font-black text-orange-900 ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}>
+                    {glyph}
+                  </span>
+                )}
+            </motion.button>
+          );
+        })}
       </div>
     </div>
   );
