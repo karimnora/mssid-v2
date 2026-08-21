@@ -13,6 +13,7 @@ import { PreschoolBubblePop } from './PreschoolBubblePop';
 import { PreschoolColoring } from './PreschoolColoring';
 import { PreschoolMaze } from './PreschoolMaze';
 import { PreschoolJigsaw } from './PreschoolJigsaw';
+import { PreschoolSequence } from './PreschoolSequence';
 import { usePreschoolSpeech } from './usePreschoolAudio';
 
 interface PreschoolActivityPlayerProps {
@@ -143,6 +144,9 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           )}
           {activity.interactionType === 'jigsaw' && (
             <PreschoolJigsaw activity={activity} onComplete={handleInteractionComplete} />
+          )}
+          {activity.interactionType === 'sequence' && (
+            <PreschoolSequence activity={activity} onComplete={handleInteractionComplete} />
           )}
         </div>
       </div>

@@ -44,4 +44,7 @@ export const BADGES_CATALOG: Badge[] = [
   { id: 'b_streak_legend', titleAr: 'أسطورة المواظبة والنجاح', descriptionAr: 'التعلم لمدة 7 أيام متتالية بكل عزيمة', icon: '📅', category: 'streak', criteria: { type: 'streak_days', days: 7 } },
 
   { id: 'b_xp_1000', titleAr: 'صائد النقاط الماسية', descriptionAr: 'الوصول إلى 1000 نقطة خبرة XP في منصة مسيد', icon: '💎', category: 'general', criteria: { type: 'xp_total', xp: 1000 } },
+
+  { id: 'b_game_first', titleAr: 'لاعب مبتدئ', descriptionAr: 'إتمام أول لعبة ترويحية في نادي التحديات', icon: '🎮', category: 'games', criteria: { type: 'game_completed_count', count: 1 } },
+  { id: 'b_arcade_master', titleAr: 'سيد الألعاب', descriptionAr: 'إتمام 3 ألعاب ترويحية مختلفة في نادي التحديات', icon: '🕹️', category: 'games', criteria: { type: 'game_completed_count', count: 3 } },
 ];

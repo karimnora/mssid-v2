@@ -20,6 +20,7 @@ const baseUserProfile: UserProfile = {
   completedLessonIds: [],
   completedExamIds: [],
   completedChallengeIds: [],
+  completedGameIds: [],
   quizFullyValidatedLessonIds: [],
   badges: [],
   badgeUnlockedAt: {},

@@ -4,6 +4,14 @@ import { PreschoolModule, PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '.
 import { PreschoolMascot } from './PreschoolMascot';
 import { PreschoolSpecialTool } from './PreschoolApp';
 import { PreschoolPrintablesModal } from './PreschoolPrintablesModal';
+import { DailyChallengeBanner } from './DailyChallengeBanner';
+import { ChallengeItem } from './useDailyChallenge';
+
+interface DailyChallengeData {
+  items: ChallengeItem[];
+  completedIds: string[];
+  streak: number;
+}
 
 interface PreschoolModulePickerProps {
   modules: PreschoolModule[];
@@ -14,6 +22,8 @@ interface PreschoolModulePickerProps {
   onSelectLanguage?: (lang: PreschoolLanguage) => void;
   onResetLanguage?: () => void;
   onExit: () => void;
+  dailyChallenge?: DailyChallengeData;
+  onNavigateToActivity?: (moduleId: string, activityId: string) => void;
 }
 
 export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
@@ -25,6 +35,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
   onSelectLanguage,
   onResetLanguage,
   onExit,
+  dailyChallenge,
+  onNavigateToActivity,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [showPrintables, setShowPrintables] = useState(false);
@@ -236,7 +248,18 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
           </div>
         </div>
 
-        {/* 2. Pedagogical Worlds */}
+        {/* 2. Daily Challenge Banner */}
+        {dailyChallenge && onNavigateToActivity && dailyChallenge.items.length > 0 && (
+          <DailyChallengeBanner
+            items={dailyChallenge.items}
+            completedIds={dailyChallenge.completedIds}
+            streak={dailyChallenge.streak}
+            language={language}
+            onNavigateToActivity={onNavigateToActivity}
+          />
+        )}
+
+        {/* 3. Pedagogical Worlds */}
         <div className="space-y-3 pt-2">
           <div className="flex items-center gap-2">
             <h2 className="text-base sm:text-lg font-black text-orange-950">{labels.learningWorlds}</h2>
@@ -264,6 +287,15 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                     <p className="text-base font-black text-orange-950 truncate">
                       {mod.titleI18n[language]}
                     </p>
+                    {/* Animated progress bar */}
+                    <div className="mt-1.5 h-2 bg-amber-100 rounded-full overflow-hidden">
+                      <motion.div
+                        className={`h-full rounded-full ${isAllDone ? 'bg-emerald-400' : 'bg-amber-400'}`}
+                        initial={{ width: 0 }}
+                        animate={{ width: total > 0 ? `${(done / total) * 100}%` : '0%' }}
+                        transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.05 }}
+                      />
+                    </div>
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-xs font-bold text-orange-700/80">
                         {done} / {total} ⭐

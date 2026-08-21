@@ -22,6 +22,8 @@ function isCriteriaMet(criteria: BadgeCriteria, profile: UserProfile): boolean {
       return (profile.completedExamIds || []).length >= criteria.count;
     case 'challenge_completed_count':
       return (profile.completedChallengeIds || []).length >= criteria.count;
+    case 'game_completed_count':
+      return (profile.completedGameIds || []).length >= criteria.count;
     default:
       return false;
   }

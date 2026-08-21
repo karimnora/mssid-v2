@@ -6,6 +6,7 @@ import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { Trophy, Timer, ChevronLeft, CheckCircle2, XCircle, Sparkles, RotateCcw, Zap } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
+import { ArcadeGamesSection } from './games/ArcadeGamesSection';
 
 interface ChallengesArenaProps {
   /** Scopes the entire arena (mode counts, subject list, challenge grid) to the current grade — omit to browse all grades. */
@@ -13,6 +14,14 @@ interface ChallengesArenaProps {
   tashkeelEnabled?: boolean;
   /** Persists the run's XP into the global profile and marks the challenge completed — called once per finished run. */
   onChallengeComplete?: (challengeId: string, earnedXp: number) => void;
+  /** Current user XP — used to determine which arcade games are unlocked. */
+  userXp?: number;
+  /** Current user badge IDs — used as alternative unlock criteria. */
+  userBadges?: string[];
+  /** IDs of arcade games already completed (prevents double XP on replay). */
+  completedGameIds?: string[];
+  /** Called when a player finishes an arcade game session. */
+  onGameComplete?: (gameId: string, earnedXp: number) => void;
 }
 
 const DIFFICULTY_LABEL: Record<Challenge['difficulty'], string> = {
@@ -43,11 +52,21 @@ const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: st
   { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', gradient: 'from-fuchsia-700 to-purple-900' },
 ];
 
-export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ grade, tashkeelEnabled = true, onChallengeComplete }) => {
+export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
+  grade,
+  tashkeelEnabled = true,
+  onChallengeComplete,
+  userXp = 0,
+  userBadges = [],
+  completedGameIds = [],
+  onGameComplete,
+}) => {
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
     return tashkeelEnabled ? text : stripArabicTashkeel(text);
   };
+
+  const [activeSection, setActiveSection] = useState<'challenges' | 'games'>('challenges');
 
   // Every count/list in this arena is derived from this grade-scoped base list — never a hardcoded
   // total — so a 3AP student never sees mode/subject counts inflated by 5AP-only content.
@@ -163,8 +182,51 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({ grade, tashkee
 
   // ================= LIST VIEW =================
   if (!activeChallenge) {
+    // Games section — render ArcadeGamesSection directly
+    if (activeSection === 'games') {
+      return (
+        <div className="space-y-4 dir-rtl" dir="rtl">
+          {/* Tab switcher */}
+          <div className="flex gap-2 bg-slate-100 rounded-2xl p-1.5 w-fit mx-auto">
+            <button
+              onClick={() => setActiveSection('challenges')}
+              className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-700"
+            >
+              ⚡ التحديات
+            </button>
+            <button
+              className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 bg-white text-slate-800 shadow"
+            >
+              🎮 ألعاب الترويح
+            </button>
+          </div>
+          <ArcadeGamesSection
+            grade={grade ?? '5AP'}
+            userXp={userXp}
+            userBadges={userBadges}
+            completedGameIds={completedGameIds}
+            onGameComplete={(gameId, xp) => onGameComplete?.(gameId, xp)}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="space-y-6 dir-rtl" dir="rtl">
+        {/* Tab switcher */}
+        <div className="flex gap-2 bg-slate-100 rounded-2xl p-1.5 w-fit mx-auto">
+          <button
+            className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 bg-white text-slate-800 shadow"
+          >
+            ⚡ التحديات
+          </button>
+          <button
+            onClick={() => setActiveSection('games')}
+            className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-700"
+          >
+            🎮 ألعاب الترويح
+          </button>
+        </div>
         <div className="bg-gradient-to-r from-rose-900 via-orange-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-rose-800/40">
           <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-400/30 text-rose-200 px-3 py-1 rounded-full text-xs font-bold mb-2">
             <Trophy className="w-3.5 h-3.5 text-amber-400" />

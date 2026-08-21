@@ -121,6 +121,7 @@ function normalizeUserProfile(raw: UserProfile): UserProfile {
     ...raw,
     completedExamIds: raw.completedExamIds || [],
     completedChallengeIds: raw.completedChallengeIds || [],
+    completedGameIds: raw.completedGameIds || [],
     quizFullyValidatedLessonIds: raw.quizFullyValidatedLessonIds || [],
     badgeUnlockedAt: raw.badgeUnlockedAt || {},
   };
@@ -155,6 +156,7 @@ function createFreshGuestProfile(currentGrade: PrimaryGrade): UserProfile {
     completedLessonIds: [],
     completedExamIds: [],
     completedChallengeIds: [],
+    completedGameIds: [],
     quizFullyValidatedLessonIds: [],
     badges: [],
     badgeUnlockedAt: {},
@@ -361,6 +363,7 @@ export default function App() {
       completedLessonIds: ['math-5ap-numbers'],
       completedExamIds: [],
       completedChallengeIds: [],
+      completedGameIds: [],
       quizFullyValidatedLessonIds: [],
       badges: ['b_welcome', 'b_math_star'],
       badgeUnlockedAt: {},
@@ -492,6 +495,18 @@ export default function App() {
     }));
   };
 
+  /** Arcade game session complete — awards XP and tracks the game as completed for badge evaluation. */
+  const handleCompleteGame = (gameId: string, earnedXp: number) => {
+    setUserProfile((prev) => ({
+      ...prev,
+      xp: prev.xp + earnedXp,
+      level: Math.floor((prev.xp + earnedXp) / 100) + 1,
+      completedGameIds: (prev.completedGameIds ?? []).includes(gameId)
+        ? (prev.completedGameIds ?? [])
+        : [...(prev.completedGameIds ?? []), gameId],
+    }));
+  };
+
   /**
    * Shared `onReward` handler for every "labo interactif" (marché algérien, musée, sciences,
    * écriture, tamazight...) — they all award gold coins (spendable in Didou Studio) and XP
@@ -523,6 +538,7 @@ export default function App() {
         completedLessonIds: [],
         completedExamIds: [],
         completedChallengeIds: [],
+        completedGameIds: [],
         quizFullyValidatedLessonIds: [],
         badges: [],
         badgeUnlockedAt: {},
@@ -1091,6 +1107,10 @@ export default function App() {
                 grade={grade}
                 tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
                 onChallengeComplete={handleCompleteChallenge}
+                userXp={userProfile.xp}
+                userBadges={userProfile.badges}
+                completedGameIds={userProfile.completedGameIds ?? []}
+                onGameComplete={handleCompleteGame}
               />
             ) : selectedLesson ? (
               <LessonViewer

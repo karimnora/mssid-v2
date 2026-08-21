@@ -732,14 +732,15 @@ export type BadgeCriteria =
   | { type: 'streak_days'; days: number }
   | { type: 'xp_total'; xp: number }
   | { type: 'exam_completed_count'; count: number }
-  | { type: 'challenge_completed_count'; count: number };
+  | { type: 'challenge_completed_count'; count: number }
+  | { type: 'game_completed_count'; count: number };
 
 export interface Badge {
   id: string;
   titleAr: string;
   descriptionAr: string;
   icon: string;
-  category: 'math' | 'soroban' | 'arabic' | 'tamazight' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'general';
+  category: 'math' | 'soroban' | 'arabic' | 'tamazight' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'games' | 'general';
   criteria: BadgeCriteria;
 }
 
@@ -755,6 +756,7 @@ export interface UserProfile {
   completedLessonIds: string[];
   completedExamIds: string[];
   completedChallengeIds: string[];
+  completedGameIds: string[];
   /** Lessons whose quiz has been fully answered correctly at least once — governs the reduced-XP-on-replay rule. */
   quizFullyValidatedLessonIds: string[];
   badges: string[];

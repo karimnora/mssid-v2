@@ -1,7 +1,7 @@
 /**
  * GamesHub.tsx
  * Écran de sélection des mini-jeux pour la section "Espace Jeux & Labyrinthes"
- * 5 jeux Phaser.js + React pour enfants de 3-5 ans.
+ * 8 jeux Phaser.js + React pour enfants de 2-5 ans.
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -10,8 +10,14 @@ import { BalloonPopGame }   from './BalloonPopGame';
 import { FruitCatcherGame } from './FruitCatcherGame';
 import { ShapeSorterGame }  from './ShapeSorterGame';
 import { CarWashGame }      from './CarWashGame';
+import { MagicTapGame }     from './MagicTapGame';
+import { PuzzleGame }       from './PuzzleGame';
+import { SensoryTapGame }   from './SensoryTapGame';
+import { useLevelProgress } from './useLevelProgress';
 
-export type GameId = 'car_maze' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter' | 'car_wash';
+export type GameId =
+  | 'car_maze' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
+  | 'car_wash' | 'magic_tap' | 'puzzle' | 'sensory_tap';
 
 interface GameCard {
   id: GameId;
@@ -21,7 +27,22 @@ interface GameCard {
   gradient: string;
   border: string;
   badge: string;
+  /** If set, totalStars from useLevelProgress are shown on the card */
+  progressId?: string;
+  maxLevels?: number;
 }
+
+/** Tiny component so the hook-per-game call is valid (top-level hook inside a component). */
+const StarBadge: React.FC<{ progressId: string; maxLevels: number }> = ({ progressId, maxLevels }) => {
+  const { totalStars } = useLevelProgress(progressId, maxLevels);
+  if (totalStars === 0) return null;
+  return (
+    <div className="flex items-center gap-0.5 bg-black/20 backdrop-blur-xs rounded-full px-2.5 py-1">
+      <span className="text-sm">⭐</span>
+      <span className="text-[11px] font-black text-white">{totalStars}</span>
+    </div>
+  );
+};
 
 const GAMES: GameCard[] = [
   {
@@ -30,6 +51,7 @@ const GAMES: GameCard[] = [
     titleAr: 'سيارة في المدينة',       titleFr: 'Voiture en Ville',           titleEn: 'City Car Drive',
     descAr:  'قُد سيارتك حتى النجمة!', descFr:  'Conduis jusqu\'à l\'étoile !', descEn:  'Drive to the shining star!',
     gradient: 'from-blue-500 to-indigo-600', border: 'border-blue-300',   badge: '🕹️ Labyrinthe',
+    progressId: 'car_maze', maxLevels: 3,
   },
   {
     id: 'balloon_pop',
@@ -37,6 +59,7 @@ const GAMES: GameCard[] = [
     titleAr: 'فرقع البالونات',                   titleFr: 'Éclate les Ballons',                         titleEn: 'Pop the Balloons',
     descAr:  'اضغط على البالونات قبل أن تطير!', descFr:  'Crève les ballons avant qu\'ils s\'envolent!', descEn:  'Tap balloons before they fly away!',
     gradient: 'from-rose-400 to-pink-600', border: 'border-rose-300', badge: '🎯 Réflexes',
+    progressId: 'balloon_pop', maxLevels: 4,
   },
   {
     id: 'fruit_catcher',
@@ -44,6 +67,7 @@ const GAMES: GameCard[] = [
     titleAr: 'السلة الجائعة',                   titleFr: 'Le Panier Gourmand',                    titleEn: 'Hungry Basket',
     descAr:  'حرّك السلة والتقط الفواكه!',     descFr:  'Déplace le panier, attrape les fruits !', descEn:  'Move the basket to catch the fruits!',
     gradient: 'from-emerald-400 to-green-600', border: 'border-emerald-300', badge: '⭐ Réactivité',
+    progressId: 'fruit_catcher', maxLevels: 4,
   },
   {
     id: 'shape_sorter',
@@ -51,6 +75,7 @@ const GAMES: GameCard[] = [
     titleAr: 'فرّز الأشكال والألوان',        titleFr: 'Trieur de Formes',                   titleEn: 'Shape Sorter',
     descAr:  'ضع كل شكل في صندوقه!',        descFr:  'Glisse chaque forme dans sa boîte !', descEn:  'Drag shapes into matching boxes!',
     gradient: 'from-violet-400 to-purple-600', border: 'border-violet-300', badge: '🎨 Logique',
+    progressId: 'shape_sorter', maxLevels: 4,
   },
   {
     id: 'car_wash',
@@ -58,6 +83,28 @@ const GAMES: GameCard[] = [
     titleAr: 'اغسل السيارة الوسخة!',             titleFr: 'Lave la Voiture !',                      titleEn: 'Car Wash Fun!',
     descAr:  'امسح الطين وأضفِ البريق للسيارة', descFr:  'Frotte la voiture et fais-la briller !', descEn:  'Scrub the mud and make it shine!',
     gradient: 'from-cyan-400 to-sky-600', border: 'border-cyan-300', badge: '💧 Amusant',
+    progressId: 'car_wash', maxLevels: 4,
+  },
+  {
+    id: 'sensory_tap',
+    icon: '🌈',
+    titleAr: 'العَالَمُ السِّحْرِيّ',                 titleFr: 'Le Monde Magique',                    titleEn: 'Magic World',
+    descAr:  'اِلْمَسْ أَيَّ مَكَانٍ وَشَاهِدِ العَجَائِب!', descFr:  'Touche partout et vois les merveilles !', descEn:  'Tap anywhere and see the wonders!',
+    gradient: 'from-pink-400 to-purple-500', border: 'border-pink-300', badge: '👶 Mode Bébé',
+  },
+  {
+    id: 'magic_tap',
+    icon: '🪄',
+    titleAr: 'دِيدُو السَّاحِر',                   titleFr: 'Dido le Magicien',                       titleEn: 'Dido the Magician',
+    descAr:  'اِلمَسِ الشَّاشَةَ لِتَرَى السِّحْر!', descFr:  'Touche l\'écran et vois la magie !',       descEn:  'Tap the screen and see the magic!',
+    gradient: 'from-violet-500 to-indigo-600', border: 'border-violet-300', badge: '✨ Magie',
+  },
+  {
+    id: 'puzzle',
+    icon: '🧩',
+    titleAr: 'أَلْغَازُ دِيدُو',                  titleFr: 'Le Puzzle de Dido',                      titleEn: 'Dido\'s Puzzle',
+    descAr:  'رَكِّبِ الأَلْغَازَ وَأَكْمِلِ الصُّورَة!', descFr:  'Assemble les pièces et complète l\'image !', descEn:  'Assemble pieces to complete the picture!',
+    gradient: 'from-amber-400 to-orange-500', border: 'border-amber-300', badge: '🧠 Puzzle',
   },
 ];
 
@@ -85,6 +132,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
       case 'fruit_catcher': return <FruitCatcherGame language={language} onExit={exit} />;
       case 'shape_sorter':  return <ShapeSorterGame  language={language} onExit={exit} />;
       case 'car_wash':      return <CarWashGame      language={language} onExit={exit} />;
+      case 'magic_tap':     return <MagicTapGame     language={language} onExit={exit} />;
+      case 'puzzle':        return <PuzzleGame       language={language} onExit={exit} />;
+      case 'sensory_tap':   return <SensoryTapGame   language={language} onExit={exit} />;
       default:              return null;
     }
   };
@@ -141,9 +191,14 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                       <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
                       <div className="flex items-start justify-between relative z-10">
                         <span className="text-5xl drop-shadow">{g.icon}</span>
-                        <span className="bg-black/20 backdrop-blur-xs text-[11px] font-black px-2.5 py-1 rounded-full whitespace-nowrap">
-                          {g.badge}
-                        </span>
+                        <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                          <span className="bg-black/20 backdrop-blur-xs text-[11px] font-black px-2.5 py-1 rounded-full whitespace-nowrap">
+                            {g.badge}
+                          </span>
+                          {g.progressId && g.maxLevels && (
+                            <StarBadge progressId={g.progressId} maxLevels={g.maxLevels} />
+                          )}
+                        </div>
                       </div>
                       <div className="relative z-10">
                         <p className="text-base font-black drop-shadow-xs">{name}</p>
@@ -161,9 +216,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
 
               {/* Footer hint */}
               <p className="text-center text-xs text-indigo-500 font-bold pb-2">
-                {t('5 ألعاب ممتعة وتعليمية لعمر 3-5 سنوات 🎈',
-                   '5 jeux éducatifs et amusants pour 3-5 ans 🎈',
-                   '5 fun educational games for ages 3-5 🎈')}
+                {t('8 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
+                   '8 jeux éducatifs et amusants pour 2-5 ans 🎈',
+                   '8 fun educational games for ages 2-5 🎈')}
               </p>
             </div>
           </motion.div>

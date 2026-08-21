@@ -20,7 +20,8 @@ export type PreschoolInteractionType =
   | 'creative_extra' // Open slot for one-off original mini-games that don't fit the shapes above (e.g. bubble_pop below) — add new interactionType values here as they're invented, keep each one's own small, self-contained component
   | 'coloring'       // Tap-to-fill a picture made of simple declared shapes — no "wrong" color, done when every region has one
   | 'maze'           // Drag a traveler along a dashed waypoint path from start to goal (stricter than find_path: must pass near every waypoint, not just reach the end)
-  | 'jigsaw';        // Drag each piece onto its matching ghost silhouette to reassemble a simple picture
+  | 'jigsaw'        // Drag each piece onto its matching ghost silhouette to reassemble a simple picture
+  | 'sequence';     // Show a repeating pattern and ask "what comes next?" — pattern items shown as a visual row, choices below
 
 /**
  * "Child-first" voice rule: `promptAudio` (and `successAudio`) must always read as the mascot
@@ -151,6 +152,8 @@ export interface PreschoolVisualAssets {
   /** jigsaw */
   jigsawSlots?: PreschoolJigsawSlot[];
   jigsawPieces?: PreschoolJigsawPiece[];
+  /** sequence — ordered list of emoji/glyphs forming the repeating pattern (answer is `choices[0].isCorrect`) */
+  sequencePattern?: string[];
 }
 
 export interface PreschoolActivity {
