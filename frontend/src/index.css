@@ -14,16 +14,16 @@
 }
 
 :root, .theme-neutre, .theme-vibrant {
-  --app-bg: #FFFBF0;
+  --app-bg: #ECFDF5;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #0f766e;
   --app-card-bg: #ffffff;
-  --app-card-border: #f1f5f9;
-  --app-card-subtle: #fef3c7;
+  --app-card-border: #5eead4;
+  --app-card-subtle: #fef9c3;
   --app-input-bg: #ffffff;
-  --app-input-border: #cbd5e1;
-  --app-header-bg: rgba(255, 255, 255, 0.98);
-  --app-footer-bg: #ffffff;
+  --app-input-border: #2dd4bf;
+  --app-header-bg: rgba(255, 255, 255, 0.92);
+  --app-footer-bg: #ccfbf1;
   font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
 }
 
@@ -31,6 +31,22 @@ body {
   background-color: var(--app-bg);
   color: var(--app-text);
   margin: 0;
+}
+
+/* النمط الملوّن والمنعش — blobs de couleur sur tout l'écran */
+.theme-neutre body,
+html:not(.theme-light):not(.theme-dark) body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(56, 189, 248, 0.32), transparent),
+    radial-gradient(ellipse 70% 45% at 0% 0%, rgba(250, 204, 21, 0.30), transparent),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(52, 211, 153, 0.24), transparent);
+  background-color: #ECFDF5;
+  background-attachment: fixed;
+}
+
+.theme-light body,
+.theme-dark body {
+  background-image: none;
 }
 
 .theme-dark, .theme-midnight {

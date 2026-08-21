@@ -5,6 +5,8 @@ export type Language = 'ar' | 'fr' | 'en' | 'ber';
 
 export type PrimaryGrade = '1AP' | '2AP' | '3AP' | '4AP' | '5AP';
 
+export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
+
 export type SubjectId =
   | 'math'
   | 'arabic'
