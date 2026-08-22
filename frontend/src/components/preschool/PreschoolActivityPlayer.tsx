@@ -122,8 +122,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
                     {language === 'ar'
                       ? 'لا يوجد صوت عربي على هذا الجهاز. ثبّت حزمة تحويل النص إلى كلام (العربية) من إعدادات الهاتف.'
                       : language === 'fr'
-                        ? 'Pas de voix arabe sur cet appareil. Installe le pack TTS arabe dans les réglages, ou ajoute un fichier vocal.'
-                        : 'No Arabic voice on this device. Install the Arabic TTS pack in system settings, or add a recorded file.'}
+                        ? 'Pas de voix arabe sur cet appareil. Installe la voix arabe dans les réglages du téléphone.'
+                        : 'No Arabic voice on this device. Install the Arabic voice pack in your phone settings.'}
                   </p>
                 )}
               </div>

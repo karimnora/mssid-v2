@@ -48,9 +48,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '🌧️', weather: '🌧️', bg: 'from-slate-200 via-sky-100 to-blue-100',
-    missionAr: 'تُمْطِر! الْمِعْطَف وَالْحِذَاء وَالْمِظَلَّة',
-    missionFr: 'Il pleut ! Manteau, bottes et parapluie',
-    missionEn: 'It’s raining! Coat, boots and umbrella',
+    missionAr: 'تُمْطِر! أَلْبِسْ دِيدُو الْمِعْطَفَ وَالْحِذَاءَ وَالْمِظَلَّة',
+    missionFr: 'Il pleut ! Mets le manteau, les bottes et le parapluie !',
+    missionEn: 'It’s raining! Put on the coat, the boots and the umbrella!',
     garments: [
       { id: 'coat', emoji: '🧥', slot: 'body', correct: true },
       { id: 'boots', emoji: '👢', slot: 'feet', correct: true },
@@ -61,9 +61,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '❄️', weather: '❄️', bg: 'from-sky-100 via-slate-50 to-indigo-100',
-    missionAr: 'الثَّلْجُ فِي الْجِبَال! مِعْطَف وَوِشَاح وَقُبَّعَة',
-    missionFr: 'Neige en Kabylie ! Manteau, écharpe et bonnet',
-    missionEn: 'Snow in the mountains! Coat, scarf and hat',
+    missionAr: 'الثَّلْجُ فِي الْجِبَال! أَلْبِسْ دِيدُو الْمِعْطَفَ وَالْوِشَاحَ وَالْقُبَّعَة',
+    missionFr: 'Il neige ! Mets le manteau, l’écharpe et le bonnet !',
+    missionEn: 'It is snowing! Put on the coat, the scarf and the hat!',
     garments: [
       { id: 'coat', emoji: '🧥', slot: 'body', correct: true },
       { id: 'scarf', emoji: '🧣', slot: 'neck', correct: true },
@@ -74,9 +74,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '🏖️', weather: '🏖️', bg: 'from-cyan-100 via-amber-50 to-sky-100',
-    missionAr: 'الشَّاطِئ! شُورْت وَقُبَّعَة وَنَظَّارَات',
-    missionFr: 'La plage ! Short, chapeau et lunettes',
-    missionEn: 'The beach! Shorts, hat and sunglasses',
+    missionAr: 'الشَّاطِئ! أَلْبِسْ دِيدُو الشُّورْت وَالْقُبَّعَةَ وَالنَّظَّارَات',
+    missionFr: 'La plage ! Mets le short, le chapeau et les lunettes !',
+    missionEn: 'The beach! Put on the shorts, the hat and the sunglasses!',
     garments: [
       { id: 'shorts', emoji: '🩳', slot: 'body', correct: true },
       { id: 'hat', emoji: '🧢', slot: 'head', correct: true },
@@ -87,9 +87,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '🏜️', weather: '🏜️', bg: 'from-orange-100 via-amber-50 to-yellow-100',
-    missionAr: 'الصَّحْرَاء حَارَّة! قَمِيص خَفِيف وَقُبَّعَة وَمَاء',
-    missionFr: 'Le Sahara est chaud ! T-shirt, chapeau et eau',
-    missionEn: 'The Sahara is hot! T-shirt, hat and water',
+    missionAr: 'الصَّحْرَاء حَارَّة! أَلْبِسْ دِيدُو قَمِيصاً خَفِيفاً وَقُبَّعَة، وَأَعْطِهِ مَاء',
+    missionFr: 'Le Sahara est chaud ! Mets le t-shirt, le chapeau, et donne-lui de l’eau !',
+    missionEn: 'The Sahara is hot! Put on the t-shirt and hat, and give him water!',
     garments: [
       { id: 'tee', emoji: '👕', slot: 'body', correct: true },
       { id: 'hat', emoji: '🧢', slot: 'head', correct: true },
@@ -100,9 +100,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '🌙', weather: '🌙', bg: 'from-indigo-200 via-violet-100 to-slate-100',
-    missionAr: 'وَقْتُ النَّوْم! قَمِيص النَّوْم',
-    missionFr: 'L’heure du dodo ! Mets le pyjama',
-    missionEn: 'Bedtime! Put on the pajamas',
+    missionAr: 'وَقْتُ النَّوْم! أَلْبِسْ دِيدُو قَمِيصَ النَّوْمِ وَالْجَوْرَب',
+    missionFr: 'L’heure du dodo ! Mets le pyjama et les chaussettes !',
+    missionEn: 'Bedtime! Put on the pajamas and the socks!',
     garments: [
       { id: 'pjs', emoji: '👕', slot: 'body', correct: true },
       { id: 'slippers', emoji: '🧦', slot: 'feet', correct: true },
@@ -112,9 +112,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '💨', weather: '💨', bg: 'from-slate-100 via-sky-50 to-emerald-50',
-    missionAr: 'الرِّيحُ بَارِدَة! مِعْطَف وَوِشَاح',
-    missionFr: 'Le vent est froid ! Manteau et écharpe',
-    missionEn: 'The wind is cold! Coat and scarf',
+    missionAr: 'الرِّيحُ بَارِدَة! أَلْبِسْ دِيدُو الْمِعْطَفَ وَالْوِشَاح',
+    missionFr: 'Le vent est froid ! Mets le manteau et l’écharpe !',
+    missionEn: 'The wind is cold! Put on the coat and the scarf!',
     garments: [
       { id: 'coat', emoji: '🧥', slot: 'body', correct: true },
       { id: 'scarf', emoji: '🧣', slot: 'neck', correct: true },
@@ -124,9 +124,9 @@ const LEVELS: LevelCfg[] = [
   },
   {
     emoji: '🎒', weather: '🏫', bg: 'from-lime-100 via-amber-50 to-sky-100',
-    missionAr: 'إِلَى الْمَدْرَسَة! قَمِيص وَحِذَاء وَمِحْفَظَة',
-    missionFr: 'À l’école ! T-shirt, chaussures et cartable',
-    missionEn: 'To school! T-shirt, shoes and backpack',
+    missionAr: 'إِلَى الْمَدْرَسَة! أَلْبِسْ دِيدُو الْقَمِيصَ وَالْحِذَاء، وَأَعْطِهِ الْمِحْفَظَة',
+    missionFr: 'À l’école ! Mets le t-shirt, les chaussures, et donne-lui le cartable !',
+    missionEn: 'Off to school! Put on the t-shirt and shoes, and give him the backpack!',
     garments: [
       { id: 'tee', emoji: '👕', slot: 'body', correct: true },
       { id: 'shoes', emoji: '👟', slot: 'feet', correct: true },

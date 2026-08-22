@@ -62,9 +62,9 @@ const LEVELS: LevelCfg[] = [
   {
     emoji: '🌴', bg: 'from-lime-200 via-amber-100 to-emerald-200',
     decoys: ['🌴', '💧', '🫒', '🍋', '🐪'], decoyCount: 7, didoSize: 52, findsNeeded: 1,
-    missionAr: 'دِيدُو فِي الْوَاحَة! اِجِدْهُ',
-    missionFr: 'Dido est dans l’oasis ! Trouve-le',
-    missionEn: 'Dido is in the oasis! Find him',
+    missionAr: 'دِيدُو فِي الْوَاحَة! اِجِدْهُ!',
+    missionFr: 'Dido est dans l’oasis ! Trouve-le !',
+    missionEn: 'Dido is in the oasis! Find him!',
   },
   {
     emoji: '🏖️', bg: 'from-sky-200 via-cyan-100 to-amber-100',
@@ -76,9 +76,9 @@ const LEVELS: LevelCfg[] = [
   {
     emoji: '🛒', bg: 'from-orange-200 via-amber-100 to-rose-100',
     decoys: ['🍊', '🍋', '🫒', '🥖', '🫖', '🧅'], decoyCount: 11, didoSize: 46, findsNeeded: 1,
-    missionAr: 'دِيدُو فِي السُّوق! اِبْحَثْ',
-    missionFr: 'Dido est au souk ! Cherche bien',
-    missionEn: 'Dido is at the souk! Look carefully',
+    missionAr: 'دِيدُو فِي السُّوق! اِبْحَثْ!',
+    missionFr: 'Dido est au souk ! Cherche bien !',
+    missionEn: 'Dido is at the souk! Look carefully!',
   },
   {
     emoji: '🕌', bg: 'from-slate-200 via-stone-100 to-sky-100',
@@ -90,9 +90,9 @@ const LEVELS: LevelCfg[] = [
   {
     emoji: '🏔️', bg: 'from-emerald-200 via-lime-100 to-sky-200',
     decoys: ['🏔️', '🌲', '🐐', '🪨', '🌸', '🦅'], decoyCount: 13, didoSize: 38, findsNeeded: 2,
-    missionAr: 'فِي الْجِبَال! دِيدُو صَغِير',
-    missionFr: 'Dans les montagnes ! Dido est petit',
-    missionEn: 'In the mountains! Dido is small',
+    missionAr: 'فِي الْجِبَال! اِجِدْ دِيدُو الصَّغِير!',
+    missionFr: 'Dans les montagnes ! Trouve le petit Dido !',
+    missionEn: 'In the mountains! Find little Dido!',
   },
   {
     emoji: '🌙', bg: 'from-indigo-400 via-violet-300 to-slate-400',

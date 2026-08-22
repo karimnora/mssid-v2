@@ -103,7 +103,7 @@ export const SHAPES_MODULE: PreschoolModule = {
       i18n: {
         ar: { title: 'شَكْلُ القَلْبِ', promptAudio: 'المِسِ القَلْبَ! مِثْلُ حُبِّ مَامَا وَبَابَا!', successAudio: 'أَحْسَنْت! هَذَا قَلْب!' },
         fr: { title: 'Le Cœur', promptAudio: 'Touche le cœur ! Comme l\'amour de maman et papa !', successAudio: 'Bravo ! Voici un cœur !' },
-        en: { title: 'The Heart', promptAudio: 'Touch the heart! Like mama and baba\'s love!', successAudio: 'Well done! That is a heart!' },
+        en: { title: 'The Heart', promptAudio: 'Touch the heart! Like mum and dad\'s love!', successAudio: 'Well done! That is a heart!' },
       },
       visualAssets: {
         mainSvgOrImage: '💌',

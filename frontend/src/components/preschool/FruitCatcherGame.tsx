@@ -36,16 +36,16 @@ const LEVELS: LevelCfg[] = [
     missionAr: 'اِلْتَقِطِ التُّفَّاحَ وَالْبُرْتُقَال!', missionFr: 'Attrape les pommes et les oranges !', missionEn: 'Catch the apples and oranges!' },
   { halfW: 58, speedMin: 100, speedMax: 170, spawnDelay: 1150, winCount: 8,  hasPebbles: false,
     kinds: ['orange', 'lemon'], emoji: '🍊',
-    missionAr: 'بُرْتُقَالُ وَلَيْمُونُ الْجَزَائِر!', missionFr: 'Oranges et citrons d’Algérie !', missionEn: 'Algerian oranges and lemons!' },
+    missionAr: 'اِلْتَقِطِ الْبُرْتُقَالَ وَاللَّيْمُون!', missionFr: 'Attrape les oranges et les citrons !', missionEn: 'Catch the oranges and lemons!' },
   { halfW: 54, speedMin: 120, speedMax: 190, spawnDelay: 1000, winCount: 10, hasPebbles: false,
     kinds: ['strawberry', 'grape', 'apple'], emoji: '🍓',
-    missionAr: 'فَرَاوِلَة وَعِنَب فِي السَّلَة', missionFr: 'Fraises et raisins dans le panier', missionEn: 'Strawberries and grapes in the basket' },
+    missionAr: 'اِلْتَقِطِ الْفَرَاوِلَةَ وَالْعِنَب!', missionFr: 'Attrape les fraises et les raisins !', missionEn: 'Catch the strawberries and grapes!' },
   { halfW: 56, speedMin: 110, speedMax: 185, spawnDelay: 1050, winCount: 10, hasPebbles: false,
     kinds: ['melon', 'orange'], emoji: '🍉',
     missionAr: 'الْبَطِّيخُ الْكَبِير! اِلْتَقِطْهُ', missionFr: 'La grosse pastèque ! Attrape-la', missionEn: 'The big watermelon! Catch it' },
   { halfW: 50, speedMin: 140, speedMax: 210, spawnDelay: 900,  winCount: 12, hasPebbles: false,
     kinds: ['date', 'fig', 'orange'], emoji: '🌴',
-    missionAr: 'تَمْر وَتِين مِنَ الْوَاحَة', missionFr: 'Dattes et figues de l’oasis', missionEn: 'Dates and figs from the oasis' },
+    missionAr: 'اِلْتَقِطِ التَّمْرَ وَالتِّين!', missionFr: 'Attrape les dattes et les figues !', missionEn: 'Catch the dates and figs!' },
   { halfW: 46, speedMin: 155, speedMax: 230, spawnDelay: 820,  winCount: 12, hasPebbles: false,
     kinds: ['apple', 'grape', 'lemon', 'strawberry'], emoji: '🍇',
     missionAr: 'السَّلَةُ أَضْيَق! اِنْتَبِه', missionFr: 'Le panier est plus petit ! Attention', missionEn: 'The basket is smaller! Be careful' },
@@ -342,7 +342,7 @@ export const FruitCatcherGame: React.FC<FruitCatcherGameProps> = ({ onExit, lang
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('السَّلَةُ الْجَائِعَة', 'Le Panier Gourmand', 'Hungry Basket')}
+        gameTitle={t('السَّلَةُ الْجَائِعَة', 'Le panier gourmand', 'The hungry basket')}
         gameIcon="🍎"
         language={language}
         onExit={onExit ?? (() => {})}

@@ -61,12 +61,12 @@ export interface PrintableWorksheet {
 }
 
 export const PRINTABLE_CATEGORY_LABELS: Record<PrintableCategory, Record<PreschoolLanguage, string>> = {
-  graphisme: { ar: 'تمارين الخط والحركة', fr: 'Graphisme & Pré-écriture', en: 'Pre-Writing Lines' },
-  lettres: { ar: 'تتبع الحروف', fr: 'Traçage des Lettres', en: 'Letter Tracing' },
-  chiffres: { ar: 'تتبع الأرقام', fr: 'Traçage des Chiffres', en: 'Number Tracing' },
-  logique: { ar: 'العد والمنطق', fr: 'Dénombrement & Logique', en: 'Counting & Logic' },
-  motricite: { ar: 'المهارات اليدوية', fr: 'Motricité Fine', en: 'Fine Motor Skills' },
-  coloriage: { ar: 'تلوين حر', fr: 'Coloriage', en: 'Coloring' },
+  graphisme: { ar: 'تَمَارِين الخَطّ وَالحَرَكَة', fr: 'Graphisme et pré-écriture', en: 'Pre-writing lines' },
+  lettres: { ar: 'تَتَبُّع الحُرُوف', fr: 'Traçage des lettres', en: 'Letter tracing' },
+  chiffres: { ar: 'تَتَبُّع الأَرْقَام', fr: 'Traçage des chiffres', en: 'Number tracing' },
+  logique: { ar: 'العَدّ وَالمَنْطِق', fr: 'Dénombrement et logique', en: 'Counting and logic' },
+  motricite: { ar: 'المَهَارَات اليَدَوِيَّة', fr: 'Motricité fine', en: 'Little hands' },
+  coloriage: { ar: 'تَلْوِين حُرّ', fr: 'Coloriage', en: 'Coloring' },
 };
 
 export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
@@ -172,7 +172,7 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     category: 'lettres',
     kind: 'letter_trace',
     headerIcon: '🔤',
-    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ الجِيمِ (ج)', fr: 'Traçage de la lettre ج (Jim)', en: 'Tracing the letter ج (Jim)' },
+    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ الجِيمِ (ج)', fr: 'Traçage de la lettre ج (Jeem)', en: 'Tracing the letter ج (Jeem)' },
     instructionI18n: {
       ar: 'مرّر إصبعك ثم قلمك على الحرف المرسوم بخط خفيف.',
       fr: 'Passe ton doigt puis ton crayon sur la lettre en pointillés.',
@@ -419,7 +419,7 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     category: 'lettres',
     kind: 'letter_trace',
     headerIcon: '🔤',
-    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ التَّاءِ (ت)', fr: 'Traçage de la lettre ت (Ta)', en: 'Tracing the letter ت (Ta)' },
+    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ التَّاءِ (ت)', fr: 'Traçage de la lettre ت (Taa)', en: 'Tracing the letter ت (Taa)' },
     instructionI18n: {
       ar: 'مَرِّر إِصْبَعَكَ ثُمَّ قَلَمَكَ عَلَى الحَرْف.',
       fr: 'Passe ton doigt puis ton crayon sur la lettre en pointillés.',
@@ -445,7 +445,7 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     category: 'lettres',
     kind: 'letter_trace',
     headerIcon: '🔤',
-    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ السِّينِ (س)', fr: 'Traçage de la lettre س (Sin)', en: 'Tracing the letter س (Sin)' },
+    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ السِّينِ (س)', fr: 'Traçage de la lettre س (Seen)', en: 'Tracing the letter س (Seen)' },
     instructionI18n: {
       ar: 'مَرِّر إِصْبَعَكَ ثُمَّ قَلَمَكَ عَلَى الحَرْف.',
       fr: 'Passe ton doigt puis ton crayon sur la lettre en pointillés.',
@@ -471,7 +471,7 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     category: 'lettres',
     kind: 'letter_trace',
     headerIcon: '🔤',
-    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ اليَاءِ (ي)', fr: 'Traçage de la lettre ي (Ya)', en: 'Tracing the letter ي (Ya)' },
+    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ اليَاءِ (ي)', fr: 'Traçage de la lettre ي (Yaa)', en: 'Tracing the letter ي (Yaa)' },
     instructionI18n: {
       ar: 'مَرِّر إِصْبَعَكَ ثُمَّ قَلَمَكَ عَلَى الحَرْف.',
       fr: 'Passe ton doigt puis ton crayon sur la lettre en pointillés.',
@@ -484,7 +484,7 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     category: 'lettres',
     kind: 'letter_trace',
     headerIcon: '🔤',
-    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ النُّونِ (ن)', fr: 'Traçage de la lettre ن (Nun)', en: 'Tracing the letter ن (Nun)' },
+    titleI18n: { ar: 'تَتَبُّعُ حَرْفِ النُّونِ (ن)', fr: 'Traçage de la lettre ن (Noon)', en: 'Tracing the letter ن (Noon)' },
     instructionI18n: {
       ar: 'مَرِّر إِصْبَعَكَ ثُمَّ قَلَمَكَ عَلَى الحَرْف.',
       fr: 'Passe ton doigt puis ton crayon sur la lettre en pointillés.',

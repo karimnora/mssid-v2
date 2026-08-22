@@ -901,7 +901,7 @@ export const CarMazeGame: React.FC<CarMazeGameProps> = ({ onExit, language = 'fr
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('فِي المَدِينَة', 'En Ville', 'Around Town')}
+        gameTitle={t('فِي المَدِينَة', 'En ville', 'In town')}
         gameIcon="🚦"
         language={language}
         onExit={onExit ?? (() => {})}

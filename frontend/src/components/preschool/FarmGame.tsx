@@ -1004,7 +1004,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('فِي المَزْرَعَة', 'À la Ferme', 'On the Farm')}
+        gameTitle={t('فِي المَزْرَعَة', 'À la ferme', 'On the farm')}
         gameIcon="🐄"
         language={language}
         onExit={onExit ?? (() => {})}

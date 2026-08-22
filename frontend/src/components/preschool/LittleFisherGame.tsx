@@ -38,21 +38,21 @@ const LEVELS: LevelCfg[] = [
     missionFr: 'Deux poissons ! Attrape-les',
     missionEn: 'Two kinds of fish! Catch them' },
   { spawnDelay: 1050, minSpeed: 60, maxSpeed: 105, winCount: 10, fish: ['🐠', '🐟', '🐡'], seaweedChance: 0, fontSize: 40, emoji: '🐡',
-    missionAr: 'وَالسَّمَكَةُ الْمُنْتَفِخَة!',
-    missionFr: 'Et le poisson-globe !',
-    missionEn: 'And the pufferfish!' },
+    missionAr: 'اِلْتَقِطِ السَّمَكَةَ الْمُنْتَفِخَة أَيْضاً!',
+    missionFr: 'Attrape aussi le poisson-globe !',
+    missionEn: 'Catch the pufferfish too!' },
   { spawnDelay: 950, minSpeed: 70, maxSpeed: 120, winCount: 10, fish: ['🐠', '🐟', '🐚'], seaweedChance: 0, fontSize: 38, emoji: '🐚',
-    missionAr: 'السَّمَكُ وَالصَّدَف!',
-    missionFr: 'Poissons et coquillages !',
-    missionEn: 'Fish and shells!' },
+    missionAr: 'اِلْتَقِطِ السَّمَكَ وَالصَّدَف!',
+    missionFr: 'Attrape les poissons et les coquillages !',
+    missionEn: 'Catch the fish and the shells!' },
   { spawnDelay: 900, minSpeed: 80, maxSpeed: 130, winCount: 12, fish: ['🐠', '🐟', '🐡'], seaweedChance: 0.22, fontSize: 36, emoji: '🌿',
     missionAr: 'السَّمَكُ نَعَمْ، الطُّحْلُبُ لَا!',
     missionFr: 'Le poisson oui, l’algue non !',
     missionEn: 'Fish yes, seaweed no!' },
   { spawnDelay: 800, minSpeed: 90, maxSpeed: 150, winCount: 12, fish: ['🐠', '🐟', '🐡', '🦀'], seaweedChance: 0.25, fontSize: 34, emoji: '🦀',
-    missionAr: 'وَالسَّرَطَان! اِسْرَع',
-    missionFr: 'Et le crabe ! Plus vite',
-    missionEn: 'And the crab! Faster' },
+    missionAr: 'اِلْتَقِطِ السَّرَطَان أَيْضاً! أَسْرِعْ!',
+    missionFr: 'Attrape aussi le crabe ! Plus vite !',
+    missionEn: 'Catch the crab too! Faster!' },
   { spawnDelay: 720, minSpeed: 100, maxSpeed: 170, winCount: 14, fish: ['🐠', '🐟', '🐡', '🐚'], seaweedChance: 0.3, fontSize: 32, emoji: '🪸',
     missionAr: 'كَثِيرٌ مِنَ الطُّحْلُب! اِنْتَبِه',
     missionFr: 'Beaucoup d’algues ! Attention',
@@ -286,7 +286,7 @@ export const LittleFisherGame: React.FC<LittleFisherGameProps> = ({ onExit, lang
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('الصَّيَّادُ الصَّغِير', 'Le Petit Pêcheur', 'The Little Fisher')}
+        gameTitle={t('الصَّيَّادُ الصَّغِير', 'Le petit pêcheur', 'The little fisherman')}
         gameIcon="🎣"
         language={language}
         onExit={onExit ?? (() => {})}

@@ -12,8 +12,8 @@ export const ART_DRAWING_MODULE: PreschoolModule = {
   totalSteps: 8,
   titleI18n: {
     ar: 'فُنُونِي وَرُسُومَاتِي',
-    fr: 'Mon Art & Mes Dessins',
-    en: 'My Art & Drawings',
+    fr: 'Mes dessins',
+    en: 'My drawings',
   },
   activities: [
     {
@@ -37,7 +37,7 @@ export const ART_DRAWING_MODULE: PreschoolModule = {
         },
         en: {
           title: 'My Coloring Crayon',
-          promptAudio: 'Drag the crayon: face, sun, flower, house, fennec, then couscous!',
+          promptAudio: 'Drag the pencil: face, sun, flower, house, fennec, then couscous!',
           promptText: 'Each stop is a picture to color next.',
           successAudio: 'The drawing book is ready! Well done!',
         },

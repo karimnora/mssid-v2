@@ -152,7 +152,7 @@ export const PuzzleGame: React.FC<PuzzleGameProps> = ({ onExit, language = 'fr' 
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('أَلْغَازُ دِيدُو', 'Le Puzzle de Dido', 'Dido\'s Puzzle')}
+        gameTitle={t('بَازِلُ دِيدُو', 'Le puzzle de Dido', 'Dido\'s puzzle')}
         gameIcon="🧩"
         language={language}
         onExit={onExit ?? (() => {})}

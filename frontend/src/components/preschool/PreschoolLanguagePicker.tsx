@@ -20,7 +20,7 @@ export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = (
 
       <div className="text-center space-y-1">
         <h1 className="text-2xl sm:text-3xl font-black text-orange-900">اختر اللغة · Choisis ta langue · Choose your language</h1>
-        <p className="text-sm text-orange-700/80">للولي: اختر لغة التعلّم لطفلك — Pour le parent : choisissez la langue d'apprentissage</p>
+        <p className="text-sm text-orange-700/80">للولي: اختر لغة التعلّم لطفلك — Pour le parent : choisissez la langue d&apos;apprentissage — For the parent: choose your child&apos;s learning language</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 w-full max-w-2xl">

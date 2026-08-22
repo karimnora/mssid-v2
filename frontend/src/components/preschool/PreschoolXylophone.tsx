@@ -156,6 +156,8 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
   const [particles, setParticles] = useState<{ id: number; keyId: string; symbol: string }[]>([]);
 
   const { speak } = usePreschoolSpeech(language);
+  const noteLabel = (n: { noteAr: string; noteFr: string; noteEn: string }) =>
+    language === 'ar' ? n.noteAr : language === 'fr' ? n.noteFr : n.noteEn;
 
   const targetSongKeyId = activeSong ? activeSong.sequence[songStepIndex] : null;
 
@@ -208,36 +210,36 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
   const labels = {
     title:
       language === 'ar'
-        ? 'عازف الألحان والبيانو الجزائري 🎹'
+        ? 'الْبِيَانُو وَالْمُوسِيقَى 🎹'
         : language === 'fr'
-        ? 'Piano, Xylophone & Mélodies Algériennes 🎹'
-        : 'Algerian Musical Lab & Piano 🎹',
-    instruments: language === 'ar' ? 'اختر الآلة:' : language === 'fr' ? 'Choisis l\'instrument :' : 'Choose Instrument:',
-    xylophone: language === 'ar' ? 'زيلوفون' : language === 'fr' ? 'Xylophone' : 'Xylophone',
-    piano: language === 'ar' ? 'بيانو' : language === 'fr' ? 'Piano' : 'Piano',
-    marimba: language === 'ar' ? 'ماريمبا' : language === 'fr' ? 'Marimba' : 'Marimba',
-    flute: language === 'ar' ? 'الناي / قصبة' : language === 'fr' ? 'Gasba / Flûte' : 'Gasba / Flute',
-    mandole: language === 'ar' ? 'مندول / عود' : language === 'fr' ? 'Mandole / Oud' : 'Mandole / Oud',
-    darbuka: language === 'ar' ? 'دربوكة وبندير' : language === 'fr' ? 'Darbouka & Bendir' : 'Darbuka & Bendir',
+        ? 'Piano et mélodies 🎹'
+        : 'Piano and songs 🎹',
+    instruments: language === 'ar' ? 'اِخْتَرِ الآلَة:' : language === 'fr' ? 'Choisis l\'instrument :' : 'Choose an instrument:',
+    xylophone: language === 'ar' ? 'زِيلُوفُون' : language === 'fr' ? 'Xylophone' : 'Xylophone',
+    piano: language === 'ar' ? 'بِيَانُو' : language === 'fr' ? 'Piano' : 'Piano',
+    marimba: language === 'ar' ? 'مَارِيمْبَا' : language === 'fr' ? 'Marimba' : 'Marimba',
+    flute: language === 'ar' ? 'النَّاي / القَصَبَة' : language === 'fr' ? 'Gasba / Flûte' : 'Gasba / Flute',
+    mandole: language === 'ar' ? 'مَنْدُول / عُود' : language === 'fr' ? 'Mandole / Oud' : 'Mandole / Oud',
+    darbuka: language === 'ar' ? 'دَرْبُوكَة وَبَنْدِير' : language === 'fr' ? 'Darbouka et bendir' : 'Darbuka and bendir',
     songsTitle:
       language === 'ar'
-        ? '🇩🇿 أناشيد وأهازيج الأطفال والوطن:'
+        ? '🇩🇿 أَنَاشِيد وَأَهَازِيج الأَطْفَال:'
         : language === 'fr'
-        ? '🇩🇿 Chansons & Comptines Algériennes :'
-        : '🇩🇿 Algerian & Nursery Songs:',
-    freePlay: language === 'ar' ? 'عزف حر' : language === 'fr' ? 'Jeu Libre' : 'Free Play',
+        ? '🇩🇿 Chansons et comptines algériennes :'
+        : '🇩🇿 Algerian nursery songs:',
+    freePlay: language === 'ar' ? 'عَزْف حُرّ' : language === 'fr' ? 'Jeu libre' : 'Free play',
     songGuideHint:
       language === 'ar'
-        ? '👉 اضغط على المفتاح المضيء 🌟 لمواصلة عزف النشيد!'
+        ? '👉 اِضْغَطْ عَلَى المِفْتَاحِ المُضِيء 🌟 لِتُكَمِّلَ النَّشِيد!'
         : language === 'fr'
         ? '👉 Touche la touche scintillante 🌟 pour continuer la chanson !'
-        : '👉 Tap the glowing key 🌟 to continue playing the song!',
+        : '👉 Tap the glowing key 🌟 to continue the song!',
     tapHint:
       language === 'ar'
-        ? 'المس أو انقر على المفاتيح الملونة لعزف أحلى النغمات الموسيقية! 🎶'
+        ? 'اِلْمَسِ المَفَاتِيحَ المُلَوَّنَة لِعَزْفِ أَحْلَى النَّغَمَات! 🎶'
         : language === 'fr'
         ? 'Touche les notes colorées pour créer de jolies mélodies ! 🎶'
-        : 'Tap the colorful keys to play sweet melodies! 🎶',
+            : 'Tap the colourful keys to play sweet melodies! 🎶',
   };
 
   const INSTRUMENTS = [
@@ -338,10 +340,10 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                   setSongStepIndex(0);
                   speak(
                     language === 'ar'
-                      ? `هيا نعزف نشيد ${song.titleAr}`
+                      ? `هَيَّا نَعْزِف ${song.titleAr.replace(/[^\p{L}\p{N}\s'’.\-()]/gu, ' ').replace(/\s+/g, ' ').trim()}`
                       : language === 'fr'
-                      ? `Jouons ${song.titleFr}`
-                      : `Let's play ${song.titleEn}`
+                      ? `Jouons ${song.titleFr.replace(/[^\p{L}\p{N}\s'’.\-()]/gu, ' ').replace(/\s+/g, ' ').trim()}`
+                      : `Let's play ${song.titleEn.replace(/[^\p{L}\p{N}\s'’.\-()]/gu, ' ').replace(/\s+/g, ' ').trim()}`
                   );
                 }}
                 className={`px-3 py-2 rounded-2xl text-xs font-black shrink-0 flex items-center gap-2 transition-all cursor-pointer shadow-xs ${
@@ -376,7 +378,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
           <div className="w-full bg-slate-900 p-4 sm:p-6 rounded-[2.5rem] shadow-2xl border-4 border-amber-400/80 relative">
             <div className="text-center mb-3">
               <span className="text-amber-400 font-black tracking-widest text-xs uppercase px-4 py-1 rounded-full bg-amber-950/60 border border-amber-400/40">
-                ⭐ GRAND PIANO ROYAL ⭐
+                ⭐ {language === 'ar' ? 'بِيَانُو' : language === 'fr' ? 'Grand piano' : 'Grand piano'} ⭐
               </span>
             </div>
 
@@ -419,8 +421,10 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                       {isTarget && <span className="text-xl animate-spin mb-2">⭐</span>}
 
                       <div className="text-center font-black text-neutral-800">
-                        <span className="text-base sm:text-xl block">{language === 'ar' ? key.noteAr : key.noteFr}</span>
-                        <span className="text-[10px] text-neutral-500 font-bold">{key.noteEn}</span>
+                        <span className="text-base sm:text-xl block">{noteLabel(key)}</span>
+                        {language !== 'en' && (
+                          <span className="text-[10px] text-neutral-500 font-bold">{key.noteEn}</span>
+                        )}
                       </div>
                     </motion.button>
                   );
@@ -449,7 +453,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     }`}
                   >
                     <span className="text-[10px] sm:text-xs font-black text-amber-300">
-                      {language === 'ar' ? bk.noteAr : bk.noteFr}
+                      {noteLabel(bk)}
                     </span>
                   </motion.button>
                 );
@@ -503,9 +507,11 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
 
                   <div className={`flex flex-col items-center gap-0.5 ${key.textColor} font-black`}>
                     <span className="text-lg sm:text-2xl drop-shadow-sm">
-                      {language === 'ar' ? key.noteAr : key.noteFr}
+                      {noteLabel(key)}
                     </span>
-                    <span className="text-[10px] sm:text-xs opacity-90">{key.noteEn}</span>
+                    {language !== 'en' && (
+                      <span className="text-[10px] sm:text-xs opacity-90">{key.noteEn}</span>
+                    )}
                   </div>
 
                   <div className="w-4 h-4 rounded-full bg-white/40 shadow-inner border border-white/60" />
@@ -541,7 +547,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     {isTarget && <div className="text-xl animate-spin">⭐</div>}
                     <div className="text-center font-black">
                       <span className="text-base sm:text-xl block">
-                        {language === 'ar' ? key.noteAr : key.noteFr}
+                        {noteLabel(key)}
                       </span>
                       <span className="text-[10px] text-amber-300">{key.noteEn}</span>
                     </div>
@@ -558,10 +564,10 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
           <div className="w-full max-w-2xl bg-gradient-to-r from-amber-200 via-amber-300 to-amber-400 p-6 sm:p-8 rounded-[3rem] shadow-2xl border-4 border-amber-600 flex flex-col items-center gap-6">
             <div className="text-center">
               <h2 className="text-base sm:text-lg font-black text-amber-950">
-                {language === 'ar' ? '🪈 القصبة والناي الجزائري الأصيل' : '🪈 Gasba & Ney Traditionnel'}
+                {language === 'ar' ? '🪈 القَصَبَة وَالنَّاي' : language === 'fr' ? '🪈 Gasba et nay' : '🪈 Gasba and nay'}
               </h2>
               <p className="text-xs text-amber-900/80">
-                {language === 'ar' ? 'انقر على فتحات القصبة لعزف الأنغام' : 'Touche les trous de la flûte pour jouer'}
+                {language === 'ar' ? 'اِنْقُرْ عَلَى فَتَحَاتِ القَصَبَة لِعَزْفِ الأَنْغَام' : language === 'fr' ? 'Touche les trous de la flûte pour jouer' : 'Tap the holes of the flute to play'}
               </p>
             </div>
 
@@ -586,7 +592,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                         : 'bg-amber-950 text-amber-200 border-2 border-amber-700 hover:bg-amber-900'
                     }`}
                   >
-                    <span className="text-xs sm:text-sm">{language === 'ar' ? key.noteAr : key.noteFr}</span>
+                    <span className="text-xs sm:text-sm">{noteLabel(key)}</span>
                   </motion.button>
                 );
               })}
@@ -600,10 +606,10 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
           <div className="w-full max-w-2xl bg-gradient-to-b from-amber-800 to-amber-950 p-6 rounded-[2.5rem] shadow-2xl border-4 border-amber-600 text-white flex flex-col items-center gap-4">
             <div className="text-center">
               <h2 className="text-base sm:text-lg font-black text-amber-200">
-                {language === 'ar' ? '🪕 المندول والعود الشعبي الجزائري' : '🪕 Mandole & Oud Algérien'}
+                {language === 'ar' ? '🪕 المَنْدُول وَالعُود' : language === 'fr' ? '🪕 Mandole et oud' : '🪕 Mandole and oud'}
               </h2>
               <p className="text-xs text-amber-300/80">
-                {language === 'ar' ? 'اعزف على أوتار المندول الأصيلة' : 'Pince les cordes pour faire résonner la mélodie'}
+                {language === 'ar' ? 'اِعْزِفْ عَلَى أَوْتَارِ المَنْدُول' : language === 'fr' ? 'Pince les cordes pour faire résonner la mélodie' : 'Pluck the strings to play the melody'}
               </p>
             </div>
 
@@ -638,7 +644,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     {isTarget && <span className="text-base animate-spin">⭐</span>}
 
                     <span className="text-xs font-black text-amber-200">
-                      {language === 'ar' ? key.noteAr : key.noteFr}
+                      {noteLabel(key)}
                     </span>
                   </motion.button>
                 );
@@ -673,7 +679,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     </p>
                   </div>
                   <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-black">
-                    🔊 {language === 'ar' ? 'إيقاع' : 'Rythme'}
+                    🔊 {language === 'ar' ? 'إِيقَاع' : language === 'fr' ? 'Rythme' : 'Beat'}
                   </span>
                 </motion.button>
               );

@@ -1,7 +1,7 @@
 /**
  * GamesHub.tsx
- * Écran de sélection des mini-jeux pour la section "Espace Jeux & Labyrinthes"
- * 10 jeux pour enfants de 2-5 ans.
+ * Écran de sélection des mini-jeux du préscolaire.
+ * 10 jeux pour enfants de 3-5 ans.
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -44,8 +44,8 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
   const t = (ar: string, fr: string, en: string) =>
     language === 'ar' ? ar : language === 'fr' ? fr : en;
 
-  const title   = t('ركن الألعاب والمرح 🎮', 'Espace Jeux & Fun 🎮', 'Games & Fun Hub 🎮');
-  const subtitle = t('اختر لعبتك المفضلة واستمتع!', 'Choisis ton jeu préféré et amuse-toi !', 'Pick your favorite game and have fun!');
+  const title   = t('رُكْنُ الْأَلْعَاب 🎮', 'Espace Jeux 🎮', 'Games Hub 🎮');
+  const subtitle = t('اِخْتَرْ لُعْبَتَكَ وَاسْتَمْتِعْ!', 'Choisis ton jeu préféré et amuse-toi !', 'Pick your favourite game and have fun!');
   const back    = t('خروج', 'Retour', 'Back');
 
   // Render active game
@@ -100,8 +100,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
               {/* Games grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {GAMES.map((g, i) => {
-                  const name = language === 'ar' ? g.titleAr : language === 'fr' ? g.titleFr : g.titleEn;
-                  const desc = language === 'ar' ? g.descAr  : language === 'fr' ? g.descFr  : g.descEn;
+              const name = language === 'ar' ? g.titleAr : language === 'fr' ? g.titleFr : g.titleEn;
+              const desc = language === 'ar' ? g.descAr  : language === 'fr' ? g.descFr  : g.descEn;
+              const badge = language === 'ar' ? g.badgeAr : language === 'fr' ? g.badgeFr : g.badgeEn;
                   return (
                     <motion.button
                       key={g.id}
@@ -120,7 +121,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                         <span className="text-5xl drop-shadow">{g.icon}</span>
                         <div className="flex items-center gap-1.5 flex-wrap justify-end">
                           <span className="bg-black/20 backdrop-blur-xs text-[11px] font-black px-2.5 py-1 rounded-full whitespace-nowrap">
-                            {g.badge}
+                            {badge}
                           </span>
                           {g.progressId && g.maxLevels && (
                             <StarBadge progressId={g.progressId} maxLevels={g.maxLevels} />
@@ -143,9 +144,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
 
               {/* Footer hint */}
               <p className="text-center text-xs text-indigo-500 font-bold pb-2">
-                {t('10 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
-                   '10 jeux éducatifs et amusants pour 2-5 ans 🎈',
-                   '10 fun educational games for ages 2-5 🎈')}
+                {t('10 أَلْعَاب مُمْتِعَة لِعُمْر 3-5 سَنَوَات 🎈',
+                   '10 jeux amusants et éducatifs pour 3-5 ans 🎈',
+                   '10 fun educational games for ages 3-5 🎈')}
               </p>
             </div>
           </motion.div>

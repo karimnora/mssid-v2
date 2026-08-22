@@ -1,7 +1,7 @@
 import { PreschoolModule } from './types';
 
 /**
- * "أَلْغَازُ التَّسَلْسُل" — Puzzles Séquences (0AP).
+ * "مَاذَا يَأْتِي بَعْدُ؟" — Suites visuelles (préscolaire 3-5 ans).
  * `sequencePattern` = what is SHOWN (incomplete). The missing next item is the
  * one correct choice. AB/ABB never end on a full period (that made "next" look wrong).
  */
@@ -11,9 +11,9 @@ export const SEQUENCE_MODULE: PreschoolModule = {
   icon: '🔁',
   totalSteps: 8,
   titleI18n: {
-    ar: 'أَلْغَازُ التَّسَلْسُل',
-    fr: 'Puzzles Séquences',
-    en: 'Sequence Puzzles',
+    ar: 'مَاذَا يَأْتِي بَعْدُ؟',
+    fr: 'Qu’est-ce qui vient après ?',
+    en: 'What comes next?',
   },
   activities: [
     {

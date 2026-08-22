@@ -315,7 +315,7 @@ export const CarWashGame: React.FC<CarWashGameProps> = ({ onExit, language = 'fr
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('اغسل السيارة', 'Lave la Voiture', 'Car Wash Fun')}
+        gameTitle={t('اِغْسِلِ السَّيَّارَة', 'Lave la voiture', 'Wash the car')}
         gameIcon="🧼"
         language={language}
         onExit={onExit ?? (() => {})}

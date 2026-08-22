@@ -37,7 +37,7 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
   {
     id: 'pb_20_activities',
     icon: '💪',
-    titleI18n: { ar: 'مُجْتَهِدٌ وَمُتَفَوِّق', fr: 'Super Persévérant', en: 'Super Persistent' },
+    titleI18n: { ar: 'مُجْتَهِدٌ وَمُتَفَوِّق', fr: 'Super Persévérant', en: 'Super Perseverant' },
     descI18n:  { ar: 'عِشْرُونَ نَشَاطاً أَتْمَمْتَهَا!', fr: '20 activités terminées !', en: '20 activities completed!' },
     criteria: { type: 'activities_count', count: 20 },
   },
@@ -60,14 +60,14 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
   {
     id: 'pb_numbers_done',
     icon: '🔢',
-    titleI18n: { ar: 'مَاهِرُ الأَرْقَام', fr: 'Pro des Chiffres', en: 'Number Pro' },
+    titleI18n: { ar: 'مَاهِرُ الأَرْقَام', fr: 'Champion des chiffres', en: 'Number champion' },
     descI18n:  { ar: 'تَعَلَّمْتَ الأَعْدَادَ مِنْ صِفْرٍ إِلَى عَشَرَة!', fr: 'Tu connais les chiffres de 0 à 10 !', en: 'You know the numbers from 0 to 10!' },
     criteria: { type: 'module_complete', moduleId: 'preschool-numbers-0-10' },
   },
   {
     id: 'pb_shapes_done',
     icon: '🔷',
-    titleI18n: { ar: 'خَبِيرُ الأَشْكَال', fr: 'Expert des Formes', en: 'Shapes Expert' },
+    titleI18n: { ar: 'خَبِيرُ الأَشْكَال', fr: 'Expert des Formes', en: 'Shape Expert' },
     descI18n:  { ar: 'تَعْرِفُ كُلَّ الأَشْكَالِ الهَنْدَسِيَّة!', fr: 'Tu reconnais toutes les formes !', en: 'You know all the shapes!' },
     criteria: { type: 'module_complete', moduleId: 'preschool-shapes' },
   },
@@ -88,7 +88,7 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
   {
     id: 'pb_algeria_done',
     icon: '🇩🇿',
-    titleI18n: { ar: 'فَخْرُ الجَزَائِر', fr: 'Fier Algérien', en: 'Proud Algerian' },
+    titleI18n: { ar: 'فَخْرُ الجَزَائِر', fr: 'Fier de l\'Algérie', en: 'Proud of Algeria' },
     descI18n:  { ar: 'تَعَلَّمْتَ تُرَاثَ وَجَمَالَ الجَزَائِر!', fr: 'Tu connais le beau patrimoine algérien !', en: 'You learned about Algeria\'s heritage!' },
     criteria: { type: 'module_complete', moduleId: 'preschool-algeria' },
   },

@@ -13,8 +13,8 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
   totalSteps: 7,
   titleI18n: {
     ar: 'قِيَمِي وَإِيمَانِي الصَّغِيرُ',
-    fr: 'Mes Valeurs & Ma Petite Foi',
-    en: 'My Values & My Little Faith',
+    fr: 'Mes valeurs et ma foi',
+    en: 'My values and faith',
   },
   activities: [
     {
@@ -32,13 +32,13 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Le Chemin vers la Mosquée',
-          promptAudio: 'Glisse le fennec : maison, pomme, salut, cadeau, puis la mosquée !',
+          promptAudio: 'Glisse le fennec : maison, pomme, salam, cadeau, puis la mosquée !',
           promptText: 'De la maison à la mosquée, avec le salut et le partage.',
           successAudio: 'Nous voilà à la mosquée ! Bravo !',
         },
         en: {
           title: 'The Path to the Mosque',
-          promptAudio: 'Drag the fennec: house, apple, greeting, gift, then the mosque!',
+          promptAudio: 'Drag the fennec: house, apple, salam, gift, then the mosque!',
           promptText: 'From home to the mosque, with greeting and sharing.',
           successAudio: 'We reached the mosque! Well done!',
         },
@@ -253,13 +253,13 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Mémo de Ma Petite Foi',
-          promptAudio: 'Retourne les cartes ! Dis : mosquée, salut, pomme !',
+          promptAudio: 'Retourne les cartes ! Dis : mosquée, salam, pomme !',
           promptText: 'Trois paires : mosquée, salut, nourriture (Bismillah).',
           successAudio: 'Bravo ! Tes valeurs sont belles !',
         },
         en: {
           title: 'My Little Faith Memory',
-          promptAudio: 'Flip the cards! Say: mosque, greeting, apple!',
+          promptAudio: 'Flip the cards! Say: mosque, salam, apple!',
           promptText: 'Three pairs: mosque, greeting, food (Bismillah).',
           successAudio: 'Bravo! Your values are beautiful!',
         },

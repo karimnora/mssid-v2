@@ -36,17 +36,17 @@ const LEVELS: LevelCfg[] = [
   { spawnDelay: 1300, minSpeed: 70,  maxSpeed: 115, minR: 24, maxR: 30, winCount: 10, lifetime: null, drift: 8,  skyTop: 0xfce7f3, skyBot: 0xf9a8d4, night: false, emoji: '🌸',
     missionAr: 'فَرْقِعْ بَالُونَاتِ الْحَدِيقَة!', missionFr: 'Éclate les ballons du jardin !', missionEn: 'Pop the garden balloons!' },
   { spawnDelay: 1100, minSpeed: 85,  maxSpeed: 135, minR: 22, maxR: 28, winCount: 12, lifetime: null, drift: 18, skyTop: 0xe0f2fe, skyBot: 0x7dd3fc, night: false, emoji: '☁️',
-    missionAr: 'الْبَالُونَاتُ تَطِيرُ فِي السَّمَاء!', missionFr: 'Les ballons montent dans le ciel !', missionEn: 'Balloons fly up in the sky!' },
+    missionAr: 'فَرْقِعِ الْبَالُونَاتِ فِي السَّمَاء!', missionFr: 'Éclate les ballons dans le ciel !', missionEn: 'Pop the balloons in the sky!' },
   { spawnDelay: 950,  minSpeed: 95,  maxSpeed: 150, minR: 20, maxR: 27, winCount: 12, lifetime: null, drift: 22, skyTop: 0xfef9c3, skyBot: 0xfde047, night: false, emoji: '🌈',
-    missionAr: 'كُلُّ الْأَلْوَانِ! فَرْقِعْهَا', missionFr: 'Toutes les couleurs ! Éclate-les', missionEn: 'All the colours! Pop them' },
+    missionAr: 'كُلُّ الْأَلْوَانِ! فَرْقِعْهَا!', missionFr: 'Toutes les couleurs ! Éclate-les !', missionEn: 'All the colours! Pop them!' },
   { spawnDelay: 850,  minSpeed: 105, maxSpeed: 165, minR: 18, maxR: 25, winCount: 14, lifetime: 5000, drift: 28, skyTop: 0xccfbf1, skyBot: 0x5eead4, night: false, emoji: '🐦',
-    missionAr: 'سَرِيع! قَبْلَ أَنْ يَطِيرُوا', missionFr: 'Vite ! Avant qu’ils s’envolent', missionEn: 'Quick! Before they fly away' },
+    missionAr: 'سَرِيع! قَبْلَ أَنْ يَطِيرُوا!', missionFr: 'Vite ! Avant qu’ils s’envolent !', missionEn: 'Quick! Before they fly away!' },
   { spawnDelay: 800,  minSpeed: 110, maxSpeed: 175, minR: 18, maxR: 24, winCount: 14, lifetime: 4500, drift: 20, skyTop: 0x1e3a8a, skyBot: 0x312e81, night: true,  emoji: '🌙',
-    missionAr: 'بَالُونَاتُ اللَّيْلِ اللَّامِعَة', missionFr: 'Les ballons brillants de la nuit', missionEn: 'The glowing night balloons' },
+    missionAr: 'فَرْقِعْ بَالُونَاتِ اللَّيْلِ!', missionFr: 'Éclate les ballons de la nuit !', missionEn: 'Pop the night balloons!' },
   { spawnDelay: 720,  minSpeed: 120, maxSpeed: 190, minR: 16, maxR: 24, winCount: 16, lifetime: 4000, drift: 55, skyTop: 0xe0f2fe, skyBot: 0x0284c7, night: false, emoji: '💨',
-    missionAr: 'الرِّيحُ قَوِيَّة! اُنْقُرْ سَرِيعاً', missionFr: 'Le vent souffle ! Tape vite', missionEn: 'The wind blows! Tap fast' },
+    missionAr: 'الرِّيحُ قَوِيَّة! اُنْقُرْ سَرِيعاً!', missionFr: 'Le vent souffle ! Tape vite !', missionEn: 'The wind blows! Tap fast!' },
   { spawnDelay: 620,  minSpeed: 130, maxSpeed: 210, minR: 15, maxR: 22, winCount: 16, lifetime: 3500, drift: 40, skyTop: 0xfce7f3, skyBot: 0xfb7185, night: false, emoji: '🎉',
-    missionAr: 'الْحَفْلَةُ الْكُبْرَى! فَرْقِعِ الْكُلّ', missionFr: 'La grande fête ! Éclate-les tous', missionEn: 'The big party! Pop them all' },
+    missionAr: 'الْحَفْلَةُ الْكُبْرَى! فَرْقِعِ الْكُلّ!', missionFr: 'La grande fête ! Éclate-les tous !', missionEn: 'The big party! Pop them all!' },
 ];
 
 const LEVEL_DEFS: Omit<LevelDef, 'unlocked' | 'earnedStars'>[] = [
@@ -317,7 +317,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({ onExit, language
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('فَرْقِعِ الْبَالُونَات', 'Éclate les Ballons', 'Pop the Balloons')}
+        gameTitle={t('فَرْقِعِ الْبَالُونَات', 'Éclate les ballons', 'Pop the balloons')}
         gameIcon="🎈"
         language={language}
         onExit={onExit ?? (() => {})}

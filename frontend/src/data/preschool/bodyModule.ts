@@ -170,19 +170,19 @@ export const BODY_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'الحَوَاسُّ الخَمْسُ',
-          promptAudio: 'اِرْبُطْ كُلَّ حَاسَّةٍ بِمَا تُدْرِكُهُ! الأَنْفُ يَشُمُّ والأُذُنُ تَسْمَعُ وَالعَيْنُ تَرَى!',
+          promptAudio: 'اِرْبِطْ: الأَنْفُ يَشُمُّ، وَالأُذُنُ تَسْمَعُ، وَالعَيْنُ تَرَى!',
           promptText: 'ساعد طفلك على ربط كل حاسة بوظيفتها.',
           successAudio: 'رَائِعٌ جِدَّاً! حَوَاسُّكَ الخَمْسُ هِيَ هِبَةٌ مِنَ اللَّه!',
         },
         fr: {
           title: 'Les Cinq Sens',
-          promptAudio: 'Relie chaque sens à ce qu\'il perçoit ! Le nez sent, l\'oreille entend, l\'œil voit !',
+          promptAudio: 'Relie : le nez sent, l\'oreille entend, l\'œil voit !',
           promptText: 'Aidez l\'enfant à relier chaque sens à sa fonction.',
           successAudio: 'Magnifique ! Tes cinq sens sont un cadeau extraordinaire !',
         },
         en: {
           title: 'The Five Senses',
-          promptAudio: 'Match each sense to what it perceives! The nose smells, the ear hears, the eye sees!',
+          promptAudio: 'Match them: the nose smells, the ear hears, the eye sees!',
           promptText: 'Help the child match each sense to its function.',
           successAudio: 'Amazing! Your five senses are a wonderful gift!',
         },

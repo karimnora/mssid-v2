@@ -25,7 +25,7 @@ interface World {
 const WORLDS: World[] = [
   {
     id: 'mix', emoji: '🌈',
-    labelAr: 'كل شيء', labelFr: 'Tout', labelEn: 'Mix',
+    labelAr: 'كُلُّ شَيْء', labelFr: 'Tout', labelEn: 'Everything',
     bg: 'from-yellow-100 via-orange-50 to-pink-100',
     emojis: ['🐱', '🐶', '🐸', '🦊', '🐔', '🦋', '🐝', '🌟', '🎈', '🌸', '🌙', '☀️', '🍓', '🎵'],
   },

@@ -38,34 +38,34 @@ interface ColoringTemplate {
 // that were shown here before and don't match what children are taught to write at school.
 const TRACE_TEMPLATES: TraceTemplate[] = [
   // ---- Arabic alphabet (28 letters) ----
-  { id: 'ar_alif', label: 'أ', char: 'أ', hintAr: 'ألف - أرنب', hintFr: 'Alif - Arnab (Lapin)', hintEn: 'Alif - Rabbit', category: 'ar_letters' },
-  { id: 'ar_baa', label: 'ب', char: 'ب', hintAr: 'باء - بطة', hintFr: 'Baa - Batta (Canard)', hintEn: 'Baa - Duck', category: 'ar_letters' },
-  { id: 'ar_taa', label: 'ت', char: 'ت', hintAr: 'تاء - تفاح', hintFr: 'Taa - Touffah (Pomme)', hintEn: 'Taa - Apple', category: 'ar_letters' },
-  { id: 'ar_thaa', label: 'ث', char: 'ث', hintAr: 'ثاء - ثعلب', hintFr: 'Thaa - Taalab (Renard)', hintEn: 'Thaa - Fox', category: 'ar_letters' },
-  { id: 'ar_jeem', label: 'ج', char: 'ج', hintAr: 'جيم - جمل', hintFr: 'Jeem - Jamal (Chameau)', hintEn: 'Jeem - Camel', category: 'ar_letters' },
-  { id: 'ar_haa', label: 'ح', char: 'ح', hintAr: 'حاء - حصان', hintFr: 'Haa - Hissane (Cheval)', hintEn: 'Haa - Horse', category: 'ar_letters' },
-  { id: 'ar_khaa', label: 'خ', char: 'خ', hintAr: 'خاء - خروف', hintFr: 'Khaa - Kharouf (Mouton)', hintEn: 'Khaa - Sheep', category: 'ar_letters' },
-  { id: 'ar_dal', label: 'د', char: 'د', hintAr: 'دال - دبدوب', hintFr: 'Dal - Dabdoob (Ourson)', hintEn: 'Dal - Teddy', category: 'ar_letters' },
-  { id: 'ar_dhal', label: 'ذ', char: 'ذ', hintAr: 'ذال - ذرة', hintFr: 'Dhal - Dhora (Maïs)', hintEn: 'Dhal - Corn', category: 'ar_letters' },
-  { id: 'ar_raa', label: 'ر', char: 'ر', hintAr: 'راء - رمان', hintFr: 'Raa - Romane (Grenade)', hintEn: 'Raa - Pomegranate', category: 'ar_letters' },
-  { id: 'ar_zay', label: 'ز', char: 'ز', hintAr: 'زاي - زرافة', hintFr: 'Zay - Zarafa (Girafe)', hintEn: 'Zay - Giraffe', category: 'ar_letters' },
-  { id: 'ar_seen', label: 'س', char: 'س', hintAr: 'سين - سمكة', hintFr: 'Seen - Samaka (Poisson)', hintEn: 'Seen - Fish', category: 'ar_letters' },
-  { id: 'ar_sheen', label: 'ش', char: 'ش', hintAr: 'شين - شمس', hintFr: 'Sheen - Chams (Soleil)', hintEn: 'Sheen - Sun', category: 'ar_letters' },
-  { id: 'ar_saad', label: 'ص', char: 'ص', hintAr: 'صاد - صقر', hintFr: 'Saad - Sakr (Faucon)', hintEn: 'Saad - Falcon', category: 'ar_letters' },
-  { id: 'ar_dhaad', label: 'ض', char: 'ض', hintAr: 'ضاد - ضفدع', hintFr: 'Dhaad - Difda (Grenouille)', hintEn: 'Dhaad - Frog', category: 'ar_letters' },
-  { id: 'ar_taa2', label: 'ط', char: 'ط', hintAr: 'طاء - طائرة', hintFr: 'Taa2 - Taira (Avion)', hintEn: 'Taa2 - Airplane', category: 'ar_letters' },
-  { id: 'ar_dhaa2', label: 'ظ', char: 'ظ', hintAr: 'ظاء - ظرف', hintFr: 'Dhaa2 - Dharf (Enveloppe)', hintEn: 'Dhaa2 - Envelope', category: 'ar_letters' },
-  { id: 'ar_ayn', label: 'ع', char: 'ع', hintAr: 'عين - عسل', hintFr: 'Ayn - Assal (Miel)', hintEn: 'Ayn - Honey', category: 'ar_letters' },
-  { id: 'ar_ghayn', label: 'غ', char: 'غ', hintAr: 'غين - غزال', hintFr: 'Ghayn - Ghazel (Gazelle)', hintEn: 'Ghayn - Gazelle', category: 'ar_letters' },
-  { id: 'ar_faa', label: 'ف', char: 'ف', hintAr: 'فاء - فراشة', hintFr: 'Faa - Farasha (Papillon)', hintEn: 'Faa - Butterfly', category: 'ar_letters' },
-  { id: 'ar_qaf', label: 'ق', char: 'ق', hintAr: 'قاف - قمر', hintFr: 'Qaf - Qamar (Lune)', hintEn: 'Qaf - Moon', category: 'ar_letters' },
-  { id: 'ar_kaf', label: 'ك', char: 'ك', hintAr: 'كاف - كتاب', hintFr: 'Kaf - Kitab (Livre)', hintEn: 'Kaf - Book', category: 'ar_letters' },
-  { id: 'ar_lam', label: 'ل', char: 'ل', hintAr: 'لام - ليمون', hintFr: 'Lam - Laymoun (Citron)', hintEn: 'Lam - Lemon', category: 'ar_letters' },
-  { id: 'ar_meem', label: 'م', char: 'م', hintAr: 'ميم - موز', hintFr: 'Meem - Mawz (Banane)', hintEn: 'Meem - Banana', category: 'ar_letters' },
-  { id: 'ar_noon', label: 'ن', char: 'ن', hintAr: 'نون - نجمة', hintFr: 'Noon - Najma (Étoile)', hintEn: 'Noon - Star', category: 'ar_letters' },
-  { id: 'ar_haa_round', label: 'هـ', char: 'هـ', hintAr: 'هاء - هلال', hintFr: 'Haa2 - Hilal (Croissant)', hintEn: 'Haa2 - Crescent', category: 'ar_letters' },
-  { id: 'ar_waw', label: 'و', char: 'و', hintAr: 'واو - وردة', hintFr: 'Waw - Warda (Rose)', hintEn: 'Waw - Rose', category: 'ar_letters' },
-  { id: 'ar_yaa', label: 'ي', char: 'ي', hintAr: 'ياء - يد', hintFr: 'Yaa - Yad (Main)', hintEn: 'Yaa - Hand', category: 'ar_letters' },
+  { id: 'ar_alif', label: 'أ', char: 'أ', hintAr: 'أَلِف، مِثْل أَرْنَب', hintFr: 'Alif, comme lapin', hintEn: 'Alif, for rabbit', category: 'ar_letters' },
+  { id: 'ar_baa', label: 'ب', char: 'ب', hintAr: 'بَاء، مِثْل بَطَّة', hintFr: 'Ba, comme canard', hintEn: 'Ba, for duck', category: 'ar_letters' },
+  { id: 'ar_taa', label: 'ت', char: 'ت', hintAr: 'تَاء، مِثْل تُفَّاح', hintFr: 'Ta, comme pomme', hintEn: 'Ta, for apple', category: 'ar_letters' },
+  { id: 'ar_thaa', label: 'ث', char: 'ث', hintAr: 'ثَاء، مِثْل ثَعْلَب', hintFr: 'Tha, comme renard', hintEn: 'Tha, for fox', category: 'ar_letters' },
+  { id: 'ar_jeem', label: 'ج', char: 'ج', hintAr: 'جِيم، مِثْل جَمَل', hintFr: 'Jeem, comme dromadaire', hintEn: 'Jeem, for camel', category: 'ar_letters' },
+  { id: 'ar_haa', label: 'ح', char: 'ح', hintAr: 'حَاء، مِثْل حِصَان', hintFr: 'Haa, comme cheval', hintEn: 'Haa, for horse', category: 'ar_letters' },
+  { id: 'ar_khaa', label: 'خ', char: 'خ', hintAr: 'خَاء، مِثْل خَرُوف', hintFr: 'Khaa, comme mouton', hintEn: 'Khaa, for sheep', category: 'ar_letters' },
+  { id: 'ar_dal', label: 'د', char: 'د', hintAr: 'دَال، مِثْل دُبّ', hintFr: 'Dal, comme ours', hintEn: 'Dal, for bear', category: 'ar_letters' },
+  { id: 'ar_dhal', label: 'ذ', char: 'ذ', hintAr: 'ذَال، مِثْل ذُرَة', hintFr: 'Dhal, comme maïs', hintEn: 'Dhal, for corn', category: 'ar_letters' },
+  { id: 'ar_raa', label: 'ر', char: 'ر', hintAr: 'رَاء، مِثْل رُمَّان', hintFr: 'Ra, comme grenade', hintEn: 'Ra, for pomegranate', category: 'ar_letters' },
+  { id: 'ar_zay', label: 'ز', char: 'ز', hintAr: 'زَاي، مِثْل زَرَافَة', hintFr: 'Zay, comme girafe', hintEn: 'Zay, for giraffe', category: 'ar_letters' },
+  { id: 'ar_seen', label: 'س', char: 'س', hintAr: 'سِين، مِثْل سَمَكَة', hintFr: 'Seen, comme poisson', hintEn: 'Seen, for fish', category: 'ar_letters' },
+  { id: 'ar_sheen', label: 'ش', char: 'ش', hintAr: 'شِين، مِثْل شَمْس', hintFr: 'Sheen, comme soleil', hintEn: 'Sheen, for sun', category: 'ar_letters' },
+  { id: 'ar_saad', label: 'ص', char: 'ص', hintAr: 'صَاد، مِثْل صَقْر', hintFr: 'Saad, comme faucon', hintEn: 'Saad, for falcon', category: 'ar_letters' },
+  { id: 'ar_dhaad', label: 'ض', char: 'ض', hintAr: 'ضَاد، مِثْل ضِفْدَع', hintFr: 'Daad, comme grenouille', hintEn: 'Daad, for frog', category: 'ar_letters' },
+  { id: 'ar_taa2', label: 'ط', char: 'ط', hintAr: 'طَاء، مِثْل طَائِرَة', hintFr: 'Taa, comme avion', hintEn: 'Taa, for airplane', category: 'ar_letters' },
+  { id: 'ar_dhaa2', label: 'ظ', char: 'ظ', hintAr: 'ظَاء، مِثْل ظَرْف', hintFr: 'Dhaa, comme enveloppe', hintEn: 'Dhaa, for envelope', category: 'ar_letters' },
+  { id: 'ar_ayn', label: 'ع', char: 'ع', hintAr: 'عَيْن، مِثْل عَسَل', hintFr: 'Ayn, comme miel', hintEn: 'Ayn, for honey', category: 'ar_letters' },
+  { id: 'ar_ghayn', label: 'غ', char: 'غ', hintAr: 'غَيْن، مِثْل غَزَال', hintFr: 'Ghayn, comme gazelle', hintEn: 'Ghayn, for gazelle', category: 'ar_letters' },
+  { id: 'ar_faa', label: 'ف', char: 'ف', hintAr: 'فَاء، مِثْل فَرَاشَة', hintFr: 'Faa, comme papillon', hintEn: 'Faa, for butterfly', category: 'ar_letters' },
+  { id: 'ar_qaf', label: 'ق', char: 'ق', hintAr: 'قَاف، مِثْل قَمَر', hintFr: 'Qaf, comme lune', hintEn: 'Qaf, for moon', category: 'ar_letters' },
+  { id: 'ar_kaf', label: 'ك', char: 'ك', hintAr: 'كَاف، مِثْل كِتَاب', hintFr: 'Kaf, comme livre', hintEn: 'Kaf, for book', category: 'ar_letters' },
+  { id: 'ar_lam', label: 'ل', char: 'ل', hintAr: 'لَام، مِثْل لَيْمُون', hintFr: 'Lam, comme citron', hintEn: 'Lam, for lemon', category: 'ar_letters' },
+  { id: 'ar_meem', label: 'م', char: 'م', hintAr: 'مِيم، مِثْل مَوْز', hintFr: 'Mim, comme banane', hintEn: 'Mim, for banana', category: 'ar_letters' },
+  { id: 'ar_noon', label: 'ن', char: 'ن', hintAr: 'نُون، مِثْل نَجْمَة', hintFr: 'Noon, comme étoile', hintEn: 'Noon, for star', category: 'ar_letters' },
+  { id: 'ar_haa_round', label: 'هـ', char: 'هـ', hintAr: 'هَاء، مِثْل هِلَال', hintFr: 'Haa, comme croissant', hintEn: 'Haa, for moon', category: 'ar_letters' },
+  { id: 'ar_waw', label: 'و', char: 'و', hintAr: 'وَاو، مِثْل وَرْدَة', hintFr: 'Waw, comme rose', hintEn: 'Waw, for rose', category: 'ar_letters' },
+  { id: 'ar_yaa', label: 'ي', char: 'ي', hintAr: 'يَاء، مِثْل يَد', hintFr: 'Yaa, comme main', hintEn: 'Yaa, for hand', category: 'ar_letters' },
 
   // ---- Latin alphabet (26 letters, shared by FR/EN hint text) ----
   { id: 'fr_a', label: 'A', char: 'A', hintAr: 'حرف A - Avion', hintFr: 'A comme Avion', hintEn: 'A is for Airplane', category: 'latin_letters' },
@@ -73,7 +73,7 @@ const TRACE_TEMPLATES: TraceTemplate[] = [
   { id: 'fr_c', label: 'C', char: 'C', hintAr: 'حرف C - Chat', hintFr: 'C comme Chat', hintEn: 'C is for Cat', category: 'latin_letters' },
   { id: 'fr_d', label: 'D', char: 'D', hintAr: 'حرف D - Dauphin', hintFr: 'D comme Dauphin', hintEn: 'D is for Dolphin', category: 'latin_letters' },
   { id: 'fr_e', label: 'E', char: 'E', hintAr: 'حرف E - Éléphant', hintFr: 'E comme Éléphant', hintEn: 'E is for Elephant', category: 'latin_letters' },
-  { id: 'fr_f', label: 'F', char: 'F', hintAr: 'حرف F - Fraise', hintFr: 'F comme Fraise', hintEn: 'F is for Fish', category: 'latin_letters' },
+  { id: 'fr_f', label: 'F', char: 'F', hintAr: 'حَرْف F، مِثْل فَرَاوِلَة', hintFr: 'F comme Fraise', hintEn: 'F is for Fish', category: 'latin_letters' },
   { id: 'fr_g', label: 'G', char: 'G', hintAr: 'حرف G - Girafe', hintFr: 'G comme Girafe', hintEn: 'G is for Giraffe', category: 'latin_letters' },
   { id: 'fr_h', label: 'H', char: 'H', hintAr: 'حرف H - Hibou', hintFr: 'H comme Hibou', hintEn: 'H is for Hippo', category: 'latin_letters' },
   { id: 'fr_i', label: 'I', char: 'I', hintAr: 'حرف I - Île', hintFr: 'I comme Île', hintEn: 'I is for Ice cream', category: 'latin_letters' },
@@ -142,8 +142,8 @@ const COLORING_TEMPLATES: ColoringTemplate[] = [
   {
     id: 'flag_dz',
     nameAr: 'العلم الجزائري والهلال 🇩🇿',
-    nameFr: 'Drapeau & Croissant Algérien 🇩🇿',
-    nameEn: 'Algerian Crescent & Star 🇩🇿',
+    nameFr: 'Drapeau algérien 🇩🇿',
+    nameEn: 'Algerian flag 🇩🇿',
     icon: '🇩🇿',
     svgPaths: [
       'M 70 80 L 330 80 L 330 280 L 70 280 Z',
@@ -297,10 +297,10 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
       playBubblePop();
       speak(
         language === 'ar'
-          ? 'تم مسح اللوحة! هيا نرسم شيئاً جميلاً مجدداً!'
+          ? 'لَوْحَةٌ نَظِيفَة! هَيَّا نَرْسُم شَيْئاً جَمِيلاً!'
           : language === 'fr'
           ? 'Tableau effacé ! Dessinons quelque chose de beau !'
-          : 'Board cleared! Let\'s draw something awesome!'
+          : 'Board cleared! Let\'s draw something pretty!'
       );
     }
   };
@@ -410,34 +410,34 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     link.click();
     speak(
       language === 'ar'
-        ? 'تم حفظ رسمتك الرائعة بنجاح!'
+        ? 'رَسْمَتُكَ صَارَت مَحْفُوظَة!'
         : language === 'fr'
-        ? 'Ton magnifique dessin a été téléchargé !'
-        : 'Your great drawing has been saved!'
+        ? 'Ton joli dessin a été enregistré !'
+        : 'Your nice drawing has been saved!'
     );
   };
 
   const labels = {
     title:
       language === 'ar'
-        ? 'لوحة الرسم والكتابة السحرية 🎨'
+        ? 'اللَّوْحَةُ السِّحْرِيَّة 🎨'
         : language === 'fr'
-        ? 'Tableau Magique & Ardoise d\'Écriture 🎨'
-        : 'Magic Board & Writing Slate 🎨',
-    freeMode: language === 'ar' ? '🎨 رسم حر' : language === 'fr' ? '🎨 Dessin Libre' : '🎨 Free Draw',
-    slateMode: language === 'ar' ? '⬛ لوحة مدرسية' : language === 'fr' ? '⬛ Ardoise' : '⬛ Slate',
-    traceMode: language === 'ar' ? '✏️ تتبع الحروف' : language === 'fr' ? '✏️ Tracé & Lettres' : '✏️ Trace Letters',
-    colorMode: language === 'ar' ? '🖍️ تلوين التراث' : language === 'fr' ? '🖍️ Coloriage' : '🖍️ Coloring',
-    magicMode: language === 'ar' ? '🌈 العالم السحري' : language === 'fr' ? '🌈 Monde Magique' : '🌈 Magic World',
-    colors: language === 'ar' ? '🎨 ألوان الفرشاة:' : language === 'fr' ? '🎨 Couleurs :' : '🎨 Colors:',
-    brushSize: language === 'ar' ? '🖌️ حجم الفرشاة:' : language === 'fr' ? '🖌️ Taille pinceau :' : '🖌️ Brush size:',
-    stamps: language === 'ar' ? '⭐ ملصقات مرحة:' : language === 'fr' ? '⭐ Autocollants :' : '⭐ Fun Stamps:',
-    cancelStamp: language === 'ar' ? 'إلغاء الملصق' : language === 'fr' ? 'Annuler' : 'Cancel stamp',
-    rainbow: language === 'ar' ? 'فرشاة قوس قزح 🌈' : language === 'fr' ? 'Pinceau Arc-en-ciel 🌈' : 'Rainbow Brush 🌈',
-    clear: language === 'ar' ? 'مسح اللوحة 🧽' : language === 'fr' ? 'Effacer 🧽' : 'Clear 🧽',
-    save: language === 'ar' ? 'حفظ الرسمة 📥' : language === 'fr' ? 'Télécharger 📥' : 'Save Image 📥',
-    pickTrace: language === 'ar' ? 'اختر حرفاً أو رقماً للتتبع:' : language === 'fr' ? 'Choisis une lettre / chiffre :' : 'Choose letter/number:',
-    pickColoring: language === 'ar' ? 'اختر رسمة جزائرية للتلوين:' : language === 'fr' ? 'Choisis un coloriage algérien :' : 'Choose Algerian template:',
+        ? 'Tableau Magique 🎨'
+        : 'Magic Board 🎨',
+    freeMode: language === 'ar' ? '🎨 رَسْم حُرّ' : language === 'fr' ? '🎨 Dessin libre' : '🎨 Free drawing',
+    slateMode: language === 'ar' ? '⬛ لَوْحَة مَدْرَسِيَّة' : language === 'fr' ? '⬛ Ardoise' : '⬛ Slate',
+    traceMode: language === 'ar' ? '✏️ تتبع الحروف' : language === 'fr' ? '✏️ Traçage' : '✏️ Tracing',
+    colorMode: language === 'ar' ? '🖍️ تَلْوِين التُّرَاث' : language === 'fr' ? '🖍️ Coloriage algérien' : '🖍️ Algerian coloring',
+    magicMode: language === 'ar' ? '🌈 العَالَمُ السِّحْرِيّ' : language === 'fr' ? '🌈 Monde Magique' : '🌈 Magic World',
+    colors: language === 'ar' ? '🎨 أَلْوَان الفُرْشَاة:' : language === 'fr' ? '🎨 Couleurs :' : '🎨 Colors:',
+    brushSize: language === 'ar' ? '🖌️ حَجْم الفُرْشَاة:' : language === 'fr' ? '🖌️ Taille du pinceau :' : '🖌️ Brush size:',
+    stamps: language === 'ar' ? '⭐ مُلْصَقَات مَرِحَة:' : language === 'fr' ? '⭐ Autocollants :' : '⭐ Fun stamps:',
+    cancelStamp: language === 'ar' ? 'إِلْغَاء المُلْصَق' : language === 'fr' ? 'Annuler' : 'Cancel stamp',
+    rainbow: language === 'ar' ? 'فُرْشَاة قَوْس قُزَح 🌈' : language === 'fr' ? 'Pinceau arc-en-ciel 🌈' : 'Rainbow brush 🌈',
+    clear: language === 'ar' ? 'اِمْسَحِ اللَّوْحَة 🧽' : language === 'fr' ? 'Effacer 🧽' : 'Clear 🧽',
+    save: language === 'ar' ? 'حِفْظ الرَّسْمَة 📥' : language === 'fr' ? 'Télécharger 📥' : 'Save image 📥',
+    pickTrace: language === 'ar' ? 'اِخْتَرْ حَرْفاً أَوْ رَقْماً لِلتَّتَبُّع:' : language === 'fr' ? 'Choisis une lettre, un chiffre ou une forme :' : 'Choose a letter, number or shape:',
+    pickColoring: language === 'ar' ? 'اِخْتَرْ رَسْمَةً جَزَائِرِيَّةً لِلتَّلْوِين:' : language === 'fr' ? 'Choisis un coloriage algérien :' : 'Choose an Algerian picture:',
   };
 
   return (

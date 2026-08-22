@@ -23,13 +23,13 @@ const LABELS: Record<PreschoolLanguage, { title: string; subtitle: string; print
     instructions: 'التعليمة:',
   },
   fr: {
-    title: 'Fiches à Imprimer 🖨️',
+    title: 'Fiches à imprimer 🖨️',
     subtitle: 'Imprime la fiche et entraîne-toi à la maison avec un vrai crayon !',
     print: 'Imprimer / Enregistrer en PDF',
     instructions: 'Consigne :',
   },
   en: {
-    title: 'Printable Worksheets 🖨️',
+    title: 'Printable sheets 🖨️',
     subtitle: 'Print the sheet and practice at home with a real pencil!',
     print: 'Print / Save as PDF',
     instructions: 'Instructions:',

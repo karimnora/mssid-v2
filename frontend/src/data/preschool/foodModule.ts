@@ -12,8 +12,8 @@ export const FOOD_MODULE: PreschoolModule = {
   totalSteps: 7,
   titleI18n: {
     ar: 'الأَطْعِمَةُ الصَّحِيَّة',
-    fr: 'Les Aliments Sains',
-    en: 'Healthy Foods',
+    fr: 'Les aliments sains',
+    en: 'Healthy food',
   },
   activities: [
     {

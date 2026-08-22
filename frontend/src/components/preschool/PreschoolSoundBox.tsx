@@ -281,11 +281,11 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
       language === 'ar'
         ? 'صُنْدُوقُ الأَصْوَات 🔊'
         : language === 'fr'
-        ? 'Boîte à Sons 🔊'
+        ? 'Boîte à sons 🔊'
         : 'Sound Box 🔊',
-    all: language === 'ar' ? 'الكل' : language === 'fr' ? 'Tous' : 'All',
-    animals: language === 'ar' ? 'حيوانات' : language === 'fr' ? 'Animaux' : 'Animals',
-    vehicles: language === 'ar' ? 'وسائل' : language === 'fr' ? 'Véhicules' : 'Vehicles',
+    all: language === 'ar' ? 'الْكُلّ' : language === 'fr' ? 'Tous' : 'All',
+    animals: language === 'ar' ? 'حَيَوَانَات' : language === 'fr' ? 'Animaux' : 'Animals',
+    vehicles: language === 'ar' ? 'وِسَائِل النَّقْل' : language === 'fr' ? 'Véhicules' : 'Vehicles',
     nature: language === 'ar' ? 'طبيعة' : language === 'fr' ? 'Nature' : 'Nature',
     home: language === 'ar' ? 'البيت' : language === 'fr' ? 'Maison' : 'Home',
     body: language === 'ar' ? 'الجِسْم' : language === 'fr' ? 'Corps' : 'Body',

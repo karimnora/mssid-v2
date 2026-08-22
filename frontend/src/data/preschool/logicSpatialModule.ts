@@ -12,9 +12,9 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
   icon: '🧠',
   totalSteps: 8,
   titleI18n: {
-    ar: 'عَقْلِي الصَّغِيرُ يُفَكِّرُ',
-    fr: 'Mon Petit Esprit Réfléchit',
-    en: 'My Little Mind Thinks',
+    ar: 'أُفَكِّرُ وَأُرَتِّبُ',
+    fr: 'Logique et espace',
+    en: 'Logic and space',
   },
   activities: [
     {

@@ -28,8 +28,8 @@ describe('PreschoolModulePicker — 3-door hub', () => {
     expect(screen.getByText('Ateliers')).toBeInTheDocument();
     expect(screen.getByText('Apprendre')).toBeInTheDocument();
     expect(screen.getByText('Jouer')).toBeInTheDocument();
-    expect(screen.queryByText('Le Bateau des Lettres & Mots')).not.toBeInTheDocument();
-    expect(screen.queryByText('Tableau Magique & Dessin')).not.toBeInTheDocument();
+    expect(screen.queryByText('Le Bateau des Lettres')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tableau Magique')).not.toBeInTheDocument();
   });
 
   it('Jouer opens the games hub directly', () => {
@@ -43,14 +43,14 @@ describe('PreschoolModulePicker — 3-door hub', () => {
     const onSelectModule = vi.fn();
     renderHub(vi.fn(), onSelectModule);
     fireEvent.click(screen.getByText('Apprendre'));
-    expect(screen.getByText('Lettres & Nombres')).toBeInTheDocument();
-    expect(screen.queryByText('Le Bateau des Lettres & Mots')).not.toBeInTheDocument();
+    expect(screen.getByText('Lettres, chiffres et formes')).toBeInTheDocument();
+    expect(screen.queryByText('Le Bateau des Lettres')).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('Lettres & Nombres'));
-    expect(screen.getByText('Le Bateau des Lettres & Mots')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('Lettres, chiffres et formes'));
+    expect(screen.getByText('Le Bateau des Lettres')).toBeInTheDocument();
     expect(screen.getByText('Mes Premiers Nombres')).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('Le Bateau des Lettres & Mots'));
+    fireEvent.click(screen.getByText('Le Bateau des Lettres'));
     expect(onSelectModule).toHaveBeenCalledWith('preschool-letters');
   });
 });

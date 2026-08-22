@@ -10,9 +10,9 @@ export const COLORS_MODULE: PreschoolModule = {
   icon: '🎨',
   totalSteps: 10,
   titleI18n: {
-    ar: 'أَلْوَانِي وَفُنُونِي البَدِيعَةُ',
-    fr: 'Mes Couleurs & Beaux Arts',
-    en: 'My Colors & Arts',
+    ar: 'أَلْوَانِي',
+    fr: 'Mes couleurs',
+    en: 'My colors',
   },
   activities: [
     {

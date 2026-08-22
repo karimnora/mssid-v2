@@ -1,5 +1,5 @@
 /**
- * ShapeSorterGame.tsx — « Trieur de Formes »
+ * ShapeSorterGame.tsx — « Range les formes »
  * 8 niveaux : couleurs, formes (cœur, losange), tailles, défi chronométré.
  * Glisser-déposer souris + tactile (framer-motion).
  */
@@ -106,7 +106,7 @@ const ALL_LEVELS: LevelCfg[] = [
   },
   {
     sortBy: 'color', bins: ['red', 'blue', 'yellow', 'green'], hasTimer: false, timerSecs: 0, emoji: '🎨',
-    missionAr: 'أَرْبَعُ أَلْوَان! ضَعْ كُلَّ لَوْنٍ فِي صُنْدُوقِهِ.',
+    missionAr: 'أَرْبَعَةُ أَلْوَان! ضَعْ كُلَّ لَوْنٍ فِي صُنْدُوقِهِ.',
     missionFr: 'Quatre couleurs ! Glisse chaque pièce dans sa boîte.',
     missionEn: 'Four colors! Drag each piece into its box.',
     pieces: [
@@ -310,7 +310,7 @@ export const ShapeSorterGame: React.FC<ShapeSorterGameProps> = ({ onExit, langua
   if (phase === 'select') {
     return (
       <LevelSelectScreen
-        gameTitle={t('فرّز الأشكال', 'Trieur de Formes', 'Shape Sorter')}
+        gameTitle={t('رَتِّبِ الْأَشْكَال', 'Range les formes', 'Sort the shapes')}
         gameIcon="🧩"
         language={language}
         onExit={onExit ?? (() => {})}
@@ -440,7 +440,7 @@ const GameBoard: React.FC<{
         </motion.button>
         <div className="flex flex-col items-center">
           <span className="text-sm font-black text-slate-800">
-            {cfg.emoji} {t('فرّز الأشكال', 'Trieur de Formes', 'Shape Sorter')}
+            {cfg.emoji} {t('رَتِّبِ الْأَشْكَال', 'Range les formes', 'Sort the shapes')}
           </span>
           <span className="text-xs text-slate-500 font-bold">
             {doneCount} / {pieces.length} {t('تم', 'triés', 'sorted')}

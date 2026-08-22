@@ -63,7 +63,7 @@ export const ANIMALS_MODULE: PreschoolModule = {
       i18n: {
         ar: { title: 'الدَّجَاجَةُ المُنَقْنِقَةُ', promptAudio: 'المِسِ الدَّجَاجَةَ! هِيَ تُعْطِينَا البَيْضَ!', successAudio: 'مُمْتَاز! هَذِهِ دَجَاجَة!' },
         fr: { title: 'La Poule Caquetante', promptAudio: 'Touche la poule ! Elle nous donne des œufs !', successAudio: 'Bravo ! Voici une poule !' },
-        en: { title: 'The Clucking Chicken', promptAudio: 'Touch the chicken! She gives us eggs!', successAudio: 'Well done! That is a chicken!' },
+        en: { title: 'The Clucking Hen', promptAudio: 'Touch the hen! She gives us eggs!', successAudio: 'Well done! That is a hen!' },
       },
       visualAssets: {
         mainSvgOrImage: '🥚',
