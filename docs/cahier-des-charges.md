@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Produit** | Mssid DZ — application éducative du primaire algérien |
-| **Version** | 1.2 |
+| **Version** | 1.4 |
 | **Date** | 22 août 2026 |
 | **Statut** | Décision produit ratifiée (lancement gratuit, souk plus tard) |
 | **Auteur** | Karim — ingénierie produit / technique |
@@ -85,10 +85,10 @@ Pas de Premium promis sur la fiche store au lancement. Pas de leçon vide. Pas d
 | **C-02** | Invité | Accès catalogue + leçon + quiz sans authentification. |
 | **C-03** | Compte | Inscription email / mot de passe. Sauvegarde XP, badges, progression. |
 | **C-04** | Préscolaire | Toujours visible (plus de flag `enablePreschoolModule`). Hub, activités, défi du jour en heure locale. |
-| **C-05** | Labs | Outils pédagogiques activés : labs avancés, lecture vocale, calculatrice, writing lab. **1AP/2AP** : hub de **4 tuiles** (bande numérique, éveil, سوق, écriture) — pas les 4 catégories desktop, pas d’ouverture auto d’un labo, pas le conjugueur arabe. **3AP–5AP** : hub catégories. Lien profond / 3AP+ : jamais le conjugueur avant 3AP (`primary_math_ops`). |
-| **C-06** | Examens | Toujours visible (plus de flag `enableExamSection`). Banque du **bundle** (devoirs, compositions, BEP), pas un paywall. **1AP** : état vide + calculateur de moyenne, pas de faux sujets officiels. **2AP** : funnel type → matière → **un sujet à la fois**. Timer, impression et « tout afficher les solutions » **seulement en 4AP–5AP**. |
+| **C-05** | Labs | Outils pédagogiques activés : labs avancés, lecture vocale, calculatrice, writing lab. **Tous les niveaux** : hub catégories (identité, maths, sciences, langues). 1AP/2AP ouvrent un labo sûr (`primary_math_ops`). Conjugueur arabe : **3AP+** seulement. |
+| **C-06** | Examens | Toujours visible (plus de flag `enableExamSection`). Banque du **bundle** (devoirs, compositions, BEP), pas un paywall. **1AP** : pas de sujets officiels — écran d’orientation vers les cours, **sans** calculateur de moyenne. **2AP–5AP** : grille type → matière → cartes. Timer, impression et « tout afficher les solutions » **seulement en 4AP–5AP**. |
 | **C-07** | Fiches imprimables | Bouton impression/PDF activé (`enablePrintablePDFs: true`) au lancement. Un pack « plus » pourra s’ajouter plus tard sans retirer celui-ci. |
-| **C-08** | Défis | Arène / défi du jour utilisable sans paiement. |
+| **C-08** | Défis | Arène / défi du jour utilisable sans paiement. **1AP/2AP** : défis du bundle jouables. Jeux arcade hors du club. |
 | **C-09** | Tuteur IA | Compte requis. Quota **3 questions / jour** (`ROLE_FREE`). Pas d’IA pour un invité. |
 | **C-10** | Chrome bilingue | ar par défaut, fr au switch manuel. |
 
@@ -136,14 +136,15 @@ Les flags `enableExamSection` et `enablePreschoolModule` **n’existent plus** :
 | **F-04** | Progression | Compte connecté : XP et badges persistent après rechargement (API Spring). Invité : usage local acceptable, perdu au reset navigateur. |
 | **F-05** | Parent gate | Actions sensibles (ex. suppression de compte) passent par `ParentGateModal`. |
 | **F-06** | Paywall UI | Le composant paywall peut rester dans le code. Il ne s’affiche **pas** tant que les deux flags paiement sont off. |
-| **F-07** | Accueil 1AP / 2AP | Un seul bouton principal (« Réviser les cours »). Préscolaire = lien texte. 3AP–5AP : quatre pôles. |
-| **F-08** | Nav mobile 1AP / 2AP | Quatre onglets : accueil, cours, labs, profil. Tuteur IA et examens hors barre. |
+| **F-07** | Accueil 1AP–5AP | Quatre pôles pour **tous** les niveaux : cours, défis, examens, labs. Plus de mini-accueil 1AP/2AP. Préscolaire = carte feature (pas un lien texte). |
+| **F-08** | Nav mobile 1AP–5AP | Accueil, cours, labs, examens, tuteur IA, profil. Plus de barre compacte 1AP/2AP qui cache les examens. |
 | **F-09** | Leçon, un CTA | Un bouton d’action « Suivant ». En 1AP/2AP : pas de fiche imprimable ni précédent/suivant en en-tête ; parcours séquentiel. |
 | **F-10** | Leçon terminée | Une leçon n’entre dans `completedLessonIds` **que** si le quiz interactif est réussi à 100 % (ou s’il n’y a pas de quiz, au tap sur le CTA de fin). Une bonne réponse isolée donne de l’XP, pas le cours. |
-| **F-11** | Hub labs 1AP / 2AP | Quatre tuiles max : bande numérique, éveil scientifique/civique, سوق الجزائري, atelier d’écriture. Un tap ouvre l’outil. Retour = les 4 tuiles. |
-| **F-12** | Navbar enfant 1AP / 2AP | Chrome enfant : accueil + choix de niveau. Thème, langue, préscolaire, tuteur IA, compte / admin : **tiroir ولي الأمر**. 3AP–5AP : barre complète. |
-| **F-13** | Examens 2AP | Après le type (devoir / composition) et la matière, un seul CTA « ابدأ الموضوع » (prochain sujet non fait). Pas de grille de toutes les copies. Pas de timer / imprimer / tout-afficher avant 4AP. |
+| **F-11** | Hub labs | Hub catégories pour 1AP–5AP (pas 4 tuiles compactes). 1AP/2AP : entrée `primary_math_ops`. Conjugueur : 3AP+. |
+| **F-12** | Navbar | Barre complète pour 1AP–5AP (accueil, niveaux, préscolaire, tuteur IA, XP). Tiroir mobile : thème / langue / compte. Plus de chrome enfant qui retire labs/examens. |
+| **F-13** | Examens | **1AP** : pas de banque vide ni de calculateur de moyenne — un CTA vers les cours. **2AP–5AP** : type → matière → cartes de sujets. Timer / imprimer / tout-afficher : **4AP–5AP seulement**. Compteur « sujets terminés » sur le hero. |
 | **F-14** | Liste des cours | Funnel matière → trimestre → cartes de leçons (titre, résumé, badges). **Ne pas** compresser 1AP/2AP en une colonne « titre + coche + CTA leçon suivante » : ce changement a été retiré. |
+| **F-15** | Défis | 1AP/2AP atteignent leurs défis via le pôle « ساحة التحديات ». Jeux arcade (runner, 3D, tour…) **retirés** du club. XP défi / jeu : **premier succès seulement**. |
 
 ### 6.2 Auth et rôles (lancement)
 
@@ -308,5 +309,7 @@ On **n’ouvre pas** le souk si : note Play sous ~4,2, IA en panne chronique, ou
 |---|---|---|
 | 1.1 | 22 août 2026 | Cartable gratuit, flags examens/prépa retirés, F-07 à F-10 (accueil, nav, leçon). |
 | 1.2 | 22 août 2026 | UX 6–11 ans : F-11 labs 4 tuiles, F-12 tiroir parent, F-13 examens 2AP, F-14 liste des cours inchangée. C-05 / C-06 alignés. PED-06 (nouveaux fichiers de leçons, pas de réécriture). |
+| 1.3 | 22 août 2026 | Reversal mini-accueil : F-07/F-08/F-11/F-13 — 1AP/2AP retrouvent accueil 4 pôles, hub labs catégories, banque d’examens. F-15 : défis 1AP/2AP raccordés, arcade hors club, XP premier succès. |
+| 1.4 | 22 août 2026 | Examens : calculateur de moyenne retiré. 1AP = orientation vers les cours. Compteur de sujets terminés. |
 
-*Fin du cahier des charges v1.2. Toute modification des §5.2, §5.3 ou §11 (souk, flags T2, hors périmètre) exige une décision explicite de Karim.*
+*Fin du cahier des charges v1.4. Toute modification des §5.2, §5.3 ou §11 (souk, flags T2, hors périmètre) exige une décision explicite de Karim.*

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+  applyChallengeXp,
+  applyGameXp,
   applyLessonXp,
   createFreshGuestProfile,
   markLessonQuizComplete,
@@ -46,5 +48,21 @@ describe('lesson completion', () => {
     const done = markLessonQuizComplete(withXp, 'math-1ap-nombres');
     expect(done.completedLessonIds).toEqual(['math-1ap-nombres']);
     expect(done.quizFullyValidatedLessonIds).toEqual(['math-1ap-nombres']);
+  });
+});
+
+describe('challenge and game XP', () => {
+  it('awards challenge XP only on the first success', () => {
+    const first = applyChallengeXp(createFreshGuestProfile('1AP'), 'challenge-1ap-math-numbers', 10);
+    expect(first.xp).toBe(10);
+    expect(first.completedChallengeIds).toEqual(['challenge-1ap-math-numbers']);
+    const replay = applyChallengeXp(first, 'challenge-1ap-math-numbers', 10);
+    expect(replay.xp).toBe(10);
+  });
+
+  it('does not add arcade XP on replay', () => {
+    const first = applyGameXp(createFreshGuestProfile('3AP'), 'dido_runner', 20);
+    expect(first.xp).toBe(20);
+    expect(applyGameXp(first, 'dido_runner', 20).xp).toBe(20);
   });
 });

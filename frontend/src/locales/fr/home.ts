@@ -29,5 +29,4 @@ export const home: typeof homeAr = {
   poleExamsDesc: 'Sujets de trimestre et de fin de cycle avec corrigés types, gratuitement',
   poleLabsTitle: 'Laboratoires et outils',
   poleLabsDesc: "Le marché des dinars, les 58 wilayas, le musée de l'histoire, et les expériences scientifiques",
-  youngTagline: 'On ouvre tes leçons !',
 };

@@ -23,13 +23,11 @@ const renderNav = (grade: '1AP' | '5AP') =>
     </LocaleProvider>
   );
 
-describe('Navbar child chrome', () => {
-  it('keeps home and grade chips on 1AP and hides preschool from the child bar', () => {
+describe('Navbar', () => {
+  it('uses the full chrome on 1AP', () => {
     renderNav('1AP');
-    expect(document.querySelector('[data-nav-child="true"]')).toBeTruthy();
-    expect(document.querySelector('[data-parent-drawer-trigger]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-child="false"]')).toBeTruthy();
     expect(screen.getByText('الرئيسية')).toBeInTheDocument();
-    expect(screen.queryByText('التحضيري')).not.toBeInTheDocument();
   });
 
   it('keeps the adult chrome from 5AP', () => {

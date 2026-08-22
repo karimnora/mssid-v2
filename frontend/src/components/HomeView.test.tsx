@@ -17,14 +17,22 @@ const renderHome = (grade: '1AP' | '2AP' | '5AP') =>
     </LocaleProvider>
   );
 
-describe('HomeView young grades', () => {
-  it('shows a single courses CTA on 1AP and hides the four poles', () => {
+describe('HomeView', () => {
+  it('shows the four poles on 1AP like 3AP–5AP', () => {
     renderHome('1AP');
-    expect(document.querySelector('[data-home-layout="young"]')).toBeTruthy();
-    expect(screen.getByRole('button', { name: /مراجعة الدروس/ })).toBeInTheDocument();
-    expect(screen.queryByText(/ساحة التحديات/)).not.toBeInTheDocument();
-    expect(screen.queryByText(/بنك الامتحانات/)).not.toBeInTheDocument();
-    expect(screen.queryByText('v2.0 PWA')).not.toBeInTheDocument();
+    expect(document.querySelector('[data-home-layout="full"]')).toBeTruthy();
+    expect(document.querySelector('[data-home-layout="young"]')).toBeNull();
+    expect(screen.getByText(/مراجعة الدروس/)).toBeInTheDocument();
+    expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
+    expect(screen.getByText(/بنك الامتحانات/)).toBeInTheDocument();
+    expect(screen.getByText(/المختبرات والأدوات/)).toBeInTheDocument();
+  });
+
+  it('shows the four poles on 2AP', () => {
+    renderHome('2AP');
+    expect(document.querySelector('[data-home-layout="full"]')).toBeTruthy();
+    expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
+    expect(screen.getByText(/المختبرات والأدوات/)).toBeInTheDocument();
   });
 
   it('keeps the four poles on 5AP', () => {

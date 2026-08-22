@@ -29,9 +29,8 @@ export function defaultLabForGrade(grade: PrimaryGrade): SubjectId {
   return 'arabic_conjugator';
 }
 
-/** 1AP/2AP land on the 4-tile picker (`math` is not a lab id). 3AP+ auto-opens a lab. */
+/** Same labs entry as 3AP–5AP: open a grade-safe lab (conjugueur stays 3AP+). */
 export function labsEntrySubjectForGrade(grade: PrimaryGrade): SubjectId {
-  if (grade === '1AP' || grade === '2AP') return 'math';
   return defaultLabForGrade(grade);
 }
 

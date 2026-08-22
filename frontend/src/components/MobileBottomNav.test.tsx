@@ -20,15 +20,15 @@ const renderNav = (grade: '1AP' | '5AP') =>
   );
 
 describe('MobileBottomNav', () => {
-  it('keeps four tabs on 1AP: home, courses, labs, profile', () => {
+  it('shows exams and AI tutor on 1AP like 5AP', () => {
     renderNav('1AP');
-    expect(document.querySelector('[data-nav-compact="true"]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-compact="false"]')).toBeTruthy();
     expect(screen.getByText('الرئيسية')).toBeInTheDocument();
     expect(screen.getByText('الدروس')).toBeInTheDocument();
     expect(screen.getByText('الألعاب')).toBeInTheDocument();
+    expect(screen.getByText('التمارين')).toBeInTheDocument();
+    expect(screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي')).toBeInTheDocument();
     expect(screen.getByText('الملف')).toBeInTheDocument();
-    expect(screen.queryByTitle('المعلم الذكي بالذكاء الاصطناعي')).not.toBeInTheDocument();
-    expect(screen.queryByText('التمارين')).not.toBeInTheDocument();
   });
 
   it('shows the AI tutor and exams tab from 5AP', () => {

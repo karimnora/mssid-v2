@@ -4,22 +4,20 @@ import { render, screen } from '@testing-library/react';
 import { ToolsHubView } from './ToolsHubView';
 import { INTERACTIVE_LABS_LIST } from '../data/subjectsData';
 
-describe('ToolsHubView young grades', () => {
-  it('shows four lab tiles on 1AP and skips the four desktop categories', () => {
+describe('ToolsHubView', () => {
+  it('shows the category hub on 1AP, not four compact tiles', () => {
     render(
       <ToolsHubView
         grade="1AP"
         tools={INTERACTIVE_LABS_LIST}
-        selectedToolId="math"
+        selectedToolId="primary_math_ops"
         onSelectTool={vi.fn()}
       />
     );
-    expect(document.querySelector('[data-labs-layout="young"]')).toBeTruthy();
-    expect(document.querySelector('[data-young-lab="primary_math_ops"]')).toBeTruthy();
-    expect(document.querySelector('[data-young-lab="primary_discovery"]')).toBeTruthy();
-    expect(document.querySelector('[data-young-lab="algerian_market"]')).toBeTruthy();
-    expect(document.querySelector('[data-young-lab="touch_writing"]')).toBeTruthy();
-    expect(screen.queryByText('الهوية والتراث')).not.toBeInTheDocument();
+    expect(document.querySelector('[data-labs-layout="full"]')).toBeTruthy();
+    expect(document.querySelector('[data-labs-layout="young"]')).toBeNull();
+    expect(document.querySelector('[data-young-lab="primary_math_ops"]')).toBeNull();
+    expect(screen.getByText('الهوية والتراث')).toBeInTheDocument();
   });
 
   it('keeps the category hub from 5AP', () => {
@@ -31,6 +29,7 @@ describe('ToolsHubView young grades', () => {
         onSelectTool={vi.fn()}
       />
     );
+    expect(document.querySelector('[data-labs-layout="full"]')).toBeTruthy();
     expect(document.querySelector('[data-labs-layout="young"]')).toBeNull();
   });
 });

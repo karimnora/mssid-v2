@@ -471,11 +471,13 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
     const user = this.getCurrentUser();
     if (!user) return null;
 
-    const currentScore = user.score !== undefined ? user.score : (user.xp || 0);
-    const newScore = currentScore + points;
     const currentChallenges = user.completedChallengeIds || [];
     const isFirstCompletion = !currentChallenges.includes(challengeId);
-    const newChallenges = isFirstCompletion ? [...currentChallenges, challengeId] : currentChallenges;
+    if (!isFirstCompletion) return user;
+
+    const currentScore = user.score !== undefined ? user.score : (user.xp || 0);
+    const newScore = currentScore + points;
+    const newChallenges = [...currentChallenges, challengeId];
 
     const updatedUser: AuthUser = {
       ...user,

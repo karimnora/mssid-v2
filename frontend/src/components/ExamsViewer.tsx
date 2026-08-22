@@ -5,7 +5,6 @@ import { SUBJECTS_LIST } from '../data/subjectsData';
 import { COURSES_DATA } from '../data/coursesData';
 import { CourseLesson, ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
-import { PrimaryAverageCalculator } from './PrimaryAverageCalculator';
 import { getExamKind } from '../utils/examKind';
 import { useTranslation } from '../hooks/useTranslation';
 import {
@@ -19,7 +18,6 @@ import {
   Star,
   Eye,
   EyeOff,
-  GraduationCap,
   RotateCcw,
   Play,
   Pause,
@@ -96,7 +94,6 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
-  const examFunnel = currentGrade === '2AP';
   const showExamTools = currentGrade === '4AP' || currentGrade === '5AP';
 
   const [kindFilter, setKindFilter] = useState<KindFilter>(grade === '5AP' || !grade ? 'bep' : 'composition');
@@ -108,12 +105,25 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   useEffect(() => {
     setSelectedSubject(null);
     setSelectedExamId(null);
-    setKindFilter(grade === '5AP' ? 'bep' : 'composition');
+    const preferred: ExamKind = grade === '5AP' ? 'bep' : 'composition';
+    const hasPreferred = OFFICIAL_EXAMS_DATA.some((e) => e.grade === grade && getExamKind(e) === preferred);
+    if (hasPreferred) {
+      setKindFilter(preferred);
+      return;
+    }
+    const first = OFFICIAL_EXAMS_DATA.find((e) => e.grade === grade);
+    if (first) setKindFilter(getExamKind(first));
   }, [grade]);
 
+  const gradeExams = useMemo(
+    () => OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade),
+    [currentGrade]
+  );
+  const completedCount = gradeExams.filter((e) => completedExamIds.includes(e.id)).length;
+
   const filteredExams = useMemo(() => {
-    return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade && getExamKind(e) === kindFilter);
-  }, [currentGrade, kindFilter]);
+    return gradeExams.filter((e) => getExamKind(e) === kindFilter);
+  }, [gradeExams, kindFilter]);
 
   // Available subjects for the currently selected grade
   const availableSubjects = useMemo(() => {
@@ -534,31 +544,47 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             {t('heroTitle', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            {currentGrade === '1AP' ? t('grade1apEmptyDesc') : t('heroSubtitle')}
+            {t('heroSubtitle')}
           </p>
+          {gradeExams.length > 0 && (
+            <p className="text-xs font-black text-emerald-200 pt-1">
+              {t('doneOfTotal', { done: completedCount, total: gradeExams.length })}
+            </p>
+          )}
         </div>
       </div>
 
-      {currentGrade === '1AP' ? (
-        <div className="space-y-4">
-          <Card padding="none" className="p-8 text-center space-y-4 bg-[var(--app-card-bg)]">
-            <GraduationCap className="w-10 h-10 mx-auto text-[var(--brand-blue)]" />
-            <h2 className="text-base font-black text-[var(--app-text)]">{t('grade1apEmptyTitle')}</h2>
-            <p className="text-xs text-[var(--app-text-muted)] leading-relaxed max-w-xl mx-auto">
-              {t('grade1apEmptyDesc')}
-            </p>
-            {onOpenCourses && (
-              <Button variant="info" onClick={onOpenCourses}>
-                {t('grade1apOpenCourses')}
-              </Button>
-            )}
-          </Card>
-          <PrimaryAverageCalculator grade={currentGrade} />
+      {gradeExams.length === 0 ? (
+        <div
+          className="rounded-3xl p-8 sm:p-10 bg-[var(--app-card-bg)] border border-[var(--app-card-border)] text-center space-y-4"
+          data-exam-layout="empty"
+        >
+          <FileText className="w-12 h-12 mx-auto text-[var(--app-text-muted)] opacity-40" />
+          <h2 className="text-lg font-black text-[var(--app-text)]">{t('grade1apEmptyTitle')}</h2>
+          <p className="text-sm text-[var(--app-text-muted)] font-bold max-w-md mx-auto leading-relaxed">
+            {t('grade1apEmptyDesc')}
+          </p>
+          {onOpenCourses && (
+            <motion.button
+              type="button"
+              data-primary-cta="open-courses"
+              onClick={onOpenCourses}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+              className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer"
+            >
+              <BookOpen className="w-5 h-5" />
+              {t('grade1apOpenCourses')}
+            </motion.button>
+          )}
         </div>
       ) : (
         <>
       {(() => {
-        const kinds: ExamKind[] = currentGrade === '5AP' ? ['bep', 'composition', 'devoir'] : ['composition', 'devoir'];
+        const kinds: ExamKind[] = (currentGrade === '5AP' ? ['bep', 'composition', 'devoir'] : ['composition', 'devoir']).filter(
+          (kind) => gradeExams.some((e) => getExamKind(e) === kind)
+        );
         const meta: Record<ExamKind, { title: string; desc: string; active: string; idle: string }> = {
           bep: { title: t('kindBepTitle'), desc: t('kindBepDesc'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
           composition: { title: t('kindCompositionsTitle'), desc: t('kindCompositionsDesc'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },
@@ -638,9 +664,9 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       </div>
 
       {/* Step 2: Trimester Filter & Exam Cards List */}
-      <div className="space-y-4 pt-1" data-exam-layout={examFunnel ? 'funnel' : 'grid'}>
+      <div className="space-y-4 pt-1" data-exam-layout="grid">
         {/* Trimester filter tabs for seasonal compositions */}
-        {kindFilter !== 'bep' && !examFunnel && (
+        {kindFilter !== 'bep' && (
           <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
             <button
               onClick={() => setSelectedTrimester('all')}
@@ -669,37 +695,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         )}
 
         {/* Exam Cards Grid */}
-        {examFunnel ? (
-          selectedSubject && displayedExams.length > 0 ? (
-            (() => {
-              const nextExam =
-                displayedExams.find((exam) => !completedExamIds.includes(exam.id)) ?? displayedExams[0];
-              return (
-                <motion.button
-                  type="button"
-                  data-next-exam-cta={nextExam.id}
-                  onClick={() => openExam(nextExam)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-                  className="w-full rounded-3xl p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br from-emerald-600 to-teal-700 space-y-2"
-                >
-                  <p className="text-xs font-bold text-white/80">{t('startNextExamCta')}</p>
-                  <h3 className="text-base font-black leading-relaxed">{renderArabicText(nextExam.titleAr)}</h3>
-                </motion.button>
-              );
-            })()
-          ) : selectedSubject ? (
-            <Card padding="none" className="p-10 text-center space-y-3 bg-[var(--app-card-bg)]">
-              <FileText className="w-10 h-10 opacity-30 mx-auto text-[var(--app-text-muted)]" />
-              <h3 className="text-sm font-extrabold text-[var(--app-text)]">{t('noExamsTitle')}</h3>
-            </Card>
-          ) : (
-            <p className="text-xs font-bold text-[var(--app-text-muted)] text-center py-4">
-              {t('subjectsOfGrade', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
-            </p>
-          )
-        ) : displayedExams.length > 0 ? (
+        {displayedExams.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {displayedExams.map((exam) => {
               const isCompleted = completedExamIds.includes(exam.id);
@@ -769,7 +765,6 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           </Card>
         )}
       </div>
-          <PrimaryAverageCalculator grade={currentGrade} />
         </>
       )}
     </div>

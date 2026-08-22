@@ -120,16 +120,6 @@ const DESKTOP_GROUPS: {
   },
 ];
 
-const YOUNG_LAB_IDS: SubjectId[] = ['primary_math_ops', 'primary_discovery', 'algerian_market', 'touch_writing'];
-
-const YOUNG_LAB_EMOJI: Partial<Record<SubjectId, string>> = {
-  primary_math_ops: '🔢',
-  primary_discovery: '🌱',
-  algerian_market: '🪙',
-  touch_writing: '✍️',
-};
-
-const springTap = { type: 'spring' as const, stiffness: 400, damping: 22 };
 interface ToolsHubViewProps {
   grade: PrimaryGrade;
   tools: SubjectInfo[];
@@ -164,11 +154,6 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   const availableTools = useMemo(
     () => tools.filter(t => isToolAvailableForGrade(t, grade)),
     [tools, grade],
-  );
-  const young = grade === '1AP' || grade === '2AP';
-  const youngTools = useMemo(
-    () => YOUNG_LAB_IDS.map((id) => availableTools.find((tool) => tool.id === id)).filter((tool): tool is SubjectInfo => !!tool),
-    [availableTools],
   );
   const currentSelectedTool = useMemo(
     () => tools.find(t => t.id === selectedToolId),
@@ -235,50 +220,8 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
     scrollToTool();
   };
 
-  if (young) {
-    const selectedYoung = youngTools.find((tool) => tool.id === selectedToolId);
-    return (
-      <div id="tools-hub-container" dir="rtl" data-labs-layout="young" className="space-y-6">
-        {selectedYoung ? (
-          <motion.button
-            type="button"
-            onClick={() => onClearTool?.()}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={springTap}
-            className="inline-flex items-center gap-2 rounded-3xl px-5 py-3 bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] text-[var(--app-text)] font-black text-sm cursor-pointer"
-          >
-            <ChevronRight className="w-4 h-4" />
-            <span>كل الألعاب</span>
-          </motion.button>
-        ) : (
-          <>
-            <h2 className="text-lg font-black text-[var(--app-text)]">الألعاب والمختبرات</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {youngTools.map((tool) => (
-                <motion.button
-                  key={tool.id}
-                  type="button"
-                  data-young-lab={tool.id}
-                  onClick={() => handleMobileSelect(tool.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={springTap}
-                  className={`rounded-3xl p-6 min-h-32 text-white shadow-md cursor-pointer bg-gradient-to-br ${tool.color} flex flex-col items-center justify-center gap-3 text-center`}
-                >
-                  <span className="text-4xl leading-none">{YOUNG_LAB_EMOJI[tool.id] || '🎮'}</span>
-                  <span className="font-black text-sm leading-tight">{tool.nameAr}</span>
-                </motion.button>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    );
-  }
-
   return (
-    <div id="tools-hub-container" dir="rtl">
+    <div id="tools-hub-container" dir="rtl" data-labs-layout="full">
 
       {/* ════════════════════════════════════════════════════════════════
           MOBILE  (block md:hidden)

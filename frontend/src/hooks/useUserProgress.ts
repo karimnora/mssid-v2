@@ -73,6 +73,31 @@ export function applyLessonXp(prev: UserProfile, lessonId: string, earnedXp: num
   };
 }
 
+/** First success only — replaying a challenge never farms XP. */
+export function applyChallengeXp(prev: UserProfile, challengeId: string, earnedXp: number): UserProfile {
+  if (prev.completedChallengeIds.includes(challengeId)) return prev;
+  const xp = prev.xp + Math.max(0, earnedXp);
+  return {
+    ...prev,
+    xp,
+    level: Math.floor(xp / 100) + 1,
+    completedChallengeIds: [...prev.completedChallengeIds, challengeId],
+  };
+}
+
+/** First success only — arcade replay is not a lesson and does not add XP. */
+export function applyGameXp(prev: UserProfile, gameId: string, earnedXp: number): UserProfile {
+  const ids = prev.completedGameIds ?? [];
+  if (ids.includes(gameId)) return prev;
+  const xp = prev.xp + Math.max(0, earnedXp);
+  return {
+    ...prev,
+    xp,
+    level: Math.floor(xp / 100) + 1,
+    completedGameIds: [...ids, gameId],
+  };
+}
+
 /** A lesson is complete only after the interactive quiz is fully correct (or a no-quiz lesson is finished). */
 export function markLessonQuizComplete(prev: UserProfile, lessonId: string): UserProfile {
   return {
@@ -178,28 +203,15 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   };
 
   const handleCompleteChallenge = (challengeId: string, earnedXp: number) => {
-    AuthService.addChallengeXp(challengeId, earnedXp);
-    incrementDailyObjective();
-
-    setUserProfile((prev) => ({
-      ...prev,
-      xp: prev.xp + earnedXp,
-      level: Math.floor((prev.xp + earnedXp) / 100) + 1,
-      completedChallengeIds: prev.completedChallengeIds.includes(challengeId)
-        ? prev.completedChallengeIds
-        : [...prev.completedChallengeIds, challengeId],
-    }));
+    if (!userProfile.completedChallengeIds.includes(challengeId)) {
+      AuthService.addChallengeXp(challengeId, earnedXp);
+      incrementDailyObjective();
+    }
+    setUserProfile((prev) => applyChallengeXp(prev, challengeId, earnedXp));
   };
 
   const handleCompleteGame = (gameId: string, earnedXp: number) => {
-    setUserProfile((prev) => ({
-      ...prev,
-      xp: prev.xp + earnedXp,
-      level: Math.floor((prev.xp + earnedXp) / 100) + 1,
-      completedGameIds: (prev.completedGameIds ?? []).includes(gameId)
-        ? (prev.completedGameIds ?? [])
-        : [...(prev.completedGameIds ?? []), gameId],
-    }));
+    setUserProfile((prev) => applyGameXp(prev, gameId, earnedXp));
   };
 
   const handleLabReward = (coins: number, xp: number) => {

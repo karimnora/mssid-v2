@@ -57,7 +57,6 @@ interface ActiveWorkspaceProps {
   onQuizFullyValidated: (lessonId: string) => void;
   onExamComplete: (examId: string) => void;
   onChallengeComplete: (challengeId: string, earnedXp: number) => void;
-  onGameComplete: (gameId: string, earnedXp: number) => void;
   onVisitLab: (labId: string) => void;
   onLabReward: (coins: number, xp: number) => void;
   onEarnCoins: (amount: number) => void;
@@ -81,7 +80,6 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onQuizFullyValidated,
   onExamComplete,
   onChallengeComplete,
-  onGameComplete,
   onVisitLab,
   onLabReward,
   onEarnCoins,
@@ -218,10 +216,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           grade={grade}
           tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
           onChallengeComplete={onChallengeComplete}
-          userXp={userProfile.xp}
-          userBadges={userProfile.badges}
-          completedGameIds={userProfile.completedGameIds ?? []}
-          onGameComplete={onGameComplete}
+          completedChallengeIds={userProfile.completedChallengeIds ?? []}
         />
       ) : selectedLesson ? (
         <LessonViewer

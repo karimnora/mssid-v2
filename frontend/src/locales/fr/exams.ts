@@ -93,16 +93,9 @@ export const exams: typeof examsAr = {
 
   grade1apEmptyTitle: '1AP : évaluation continue, pas d’examens officiels',
   grade1apEmptyDesc:
-    'En 1AP on s’entraîne dans les leçons et les jeux, pas avec des PDF. Calcule la moyenne ci-dessous ou ouvre les cours.',
+    'En 1AP on s’entraîne dans les leçons et les quiz — il n’y a pas de sujets d’examen officiels à ce niveau.',
   grade1apOpenCourses: 'Ouvrir les cours de 1AP',
-
-  averageTitle: 'Calculateur de moyenne trimestrielle',
-  averageSubtitle: 'Saisis l’évaluation continue et la composition sur 10 — la logique des sites de révision, dans l’app, sans fichiers.',
-  averageEvalLabel: 'Éval. continue / 10',
-  averageCompositionLabel: 'Composition / 10',
-  averageResult: 'Moyenne générale',
-  averageFormulaNote: 'Moyenne matière = (éval. + composition) ÷ 2 si les deux notes existent, sinon la seule note. Coefficient = 1 par matière au programme.',
-  averageIncludeTamazight: 'Suit le Tamazight (optionnel à partir de 3AP)',
   relatedLessonsTitle: 'Révise ces leçons avant le sujet :',
   reviseLessonCta: 'Réviser cette leçon',
+  doneOfTotal: '{done} / {total} sujets terminés',
 };

@@ -28,7 +28,6 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
-  const compact = grade === '1AP' || grade === '2AP';
 
   const handleTab = (tab: 'home' | 'courses' | 'exercises' | 'games') => {
     onSelectTab(tab);
@@ -90,26 +89,22 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       className={`md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md border-t px-2 py-1.5 flex items-center justify-around transition-colors duration-300 ${navBgClass}`}
       dir={direction}
       data-lab-open={activeLabId}
-      data-nav-compact={compact ? 'true' : 'false'}
+      data-nav-compact="false"
     >
       {tabButton('home', <Home className="w-5 h-5" />, t('home'))}
       {tabButton('courses', <BookOpen className="w-5 h-5" />, t('courses'))}
       {tabButton('games', <Grid className="w-5 h-5 text-orange-400" />, t('games'))}
 
-      {!compact && (
-        <>
-          <button
-            type="button"
-            onClick={onOpenAiTutor}
-            className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-3xl shadow-2xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
-            title={t('aiTutor')}
-          >
-            <Bot className="w-6 h-6 animate-pulse" />
-            <span className="text-[9px] font-black tracking-tight mt-0.5">{t('aiTutorShort')}</span>
-          </button>
-          {tabButton('exercises', <FileText className="w-5 h-5 text-purple-400" />, t('exercises'))}
-        </>
-      )}
+      <button
+        type="button"
+        onClick={onOpenAiTutor}
+        className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-3xl shadow-2xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
+        title={t('aiTutor')}
+      >
+        <Bot className="w-6 h-6 animate-pulse" />
+        <span className="text-[9px] font-black tracking-tight mt-0.5">{t('aiTutorShort')}</span>
+      </button>
+      {tabButton('exercises', <FileText className="w-5 h-5 text-purple-400" />, t('exercises'))}
 
       <button
         type="button"

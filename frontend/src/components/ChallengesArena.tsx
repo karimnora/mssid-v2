@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CHALLENGES_DATA } from '../data/challengesData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
@@ -6,11 +6,6 @@ import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { Trophy, Timer, ChevronLeft, CheckCircle2, XCircle, Sparkles, RotateCcw, Zap } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
-import { LoadingFallback } from './LoadingFallback';
-
-const ArcadeGamesSection = lazy(() =>
-  import('./games/ArcadeGamesSection').then((m) => ({ default: m.ArcadeGamesSection })),
-);
 
 interface ChallengesArenaProps {
   /** Scopes the entire arena (mode counts, subject list, challenge grid) to the current grade — omit to browse all grades. */
@@ -18,14 +13,8 @@ interface ChallengesArenaProps {
   tashkeelEnabled?: boolean;
   /** Persists the run's XP into the global profile and marks the challenge completed — called once per finished run. */
   onChallengeComplete?: (challengeId: string, earnedXp: number) => void;
-  /** Current user XP — used to determine which arcade games are unlocked. */
-  userXp?: number;
-  /** Current user badge IDs — used as alternative unlock criteria. */
-  userBadges?: string[];
-  /** IDs of arcade games already completed (prevents double XP on replay). */
-  completedGameIds?: string[];
-  /** Called when a player finishes an arcade game session. */
-  onGameComplete?: (gameId: string, earnedXp: number) => void;
+  /** IDs already completed — replay awards 0 XP. */
+  completedChallengeIds?: string[];
 }
 
 const DIFFICULTY_LABEL: Record<Challenge['difficulty'], string> = {
@@ -60,17 +49,14 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   grade,
   tashkeelEnabled = true,
   onChallengeComplete,
-  userXp = 0,
-  userBadges = [],
-  completedGameIds = [],
-  onGameComplete,
+  completedChallengeIds = [],
 }) => {
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
     return tashkeelEnabled ? text : stripArabicTashkeel(text);
   };
 
-  const [activeSection, setActiveSection] = useState<'challenges' | 'games'>('challenges');
+  const isYoung = grade === '1AP' || grade === '2AP';
 
   // Every count/list in this arena is derived from this grade-scoped base list — never a hardcoded
   // total — so a 3AP student never sees mode/subject counts inflated by 5AP-only content.
@@ -118,12 +104,19 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   const [correctCount, setCorrectCount] = useState(0);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [isFinished, setIsFinished] = useState(false);
+  const [runXp, setRunXp] = useState(0);
+  const finishedRef = useRef(false);
 
   /** Marks the run finished and reports its earned XP up to the parent exactly once — call instead of setIsFinished directly. */
   const finishChallenge = () => {
-    if (!activeChallenge) return;
+    if (!activeChallenge || finishedRef.current) return;
+    finishedRef.current = true;
     setIsFinished(true);
-    const earnedXp = Math.round((activeChallenge.xpReward * correctCount) / activeChallenge.items.length);
+    const alreadyDone = completedChallengeIds.includes(activeChallenge.id);
+    const earnedXp = alreadyDone
+      ? 0
+      : Math.round((activeChallenge.xpReward * correctCount) / activeChallenge.items.length);
+    setRunXp(earnedXp);
     onChallengeComplete?.(activeChallenge.id, earnedXp);
   };
 
@@ -145,7 +138,9 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
     setIsAnswerRevealed(false);
     setCorrectCount(0);
     setIsFinished(false);
-    setTimeLeft(challenge.timeLimitSeconds ?? null);
+    setRunXp(0);
+    finishedRef.current = false;
+    setTimeLeft(grade === '1AP' ? null : (challenge.timeLimitSeconds ?? null));
   };
 
   const exitChallenge = () => {
@@ -186,63 +181,28 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
 
   // ================= LIST VIEW =================
   if (!activeChallenge) {
-    // Games section — render ArcadeGamesSection directly
-    if (activeSection === 'games') {
-      return (
-        <div className="space-y-4 dir-rtl" dir="rtl">
-          {/* Tab switcher */}
-          <div className="flex gap-2 bg-slate-100 rounded-2xl p-1.5 w-fit mx-auto">
-            <button
-              onClick={() => setActiveSection('challenges')}
-              className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-700"
-            >
-              ⚡ التحديات
-            </button>
-            <button
-              className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 bg-white text-slate-800 shadow"
-            >
-              🎮 ألعاب الترويح
-            </button>
-          </div>
-          <Suspense fallback={<LoadingFallback />}>
-            <ArcadeGamesSection
-              grade={grade ?? '5AP'}
-              userXp={userXp}
-              userBadges={userBadges}
-              completedGameIds={completedGameIds}
-              onGameComplete={(gameId, xp) => onGameComplete?.(gameId, xp)}
-            />
-          </Suspense>
-        </div>
-      );
-    }
-
     return (
-      <div className="space-y-6 dir-rtl" dir="rtl">
-        {/* Tab switcher */}
-        <div className="flex gap-2 bg-slate-100 rounded-2xl p-1.5 w-fit mx-auto">
-          <button
-            className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 bg-white text-slate-800 shadow"
-          >
-            ⚡ التحديات
-          </button>
-          <button
-            onClick={() => setActiveSection('games')}
-            className="rounded-xl px-5 py-2 text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-700"
-          >
-            🎮 ألعاب الترويح
-          </button>
-        </div>
-        <div className="bg-gradient-to-r from-rose-900 via-orange-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-rose-800/40">
+      <div
+        className="space-y-6 dir-rtl"
+        dir="rtl"
+        data-challenges-layout={isYoung ? 'young' : 'full'}
+      >
+        <div className="bg-gradient-to-r from-rose-900 via-orange-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-800/40">
           <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-400/30 text-rose-200 px-3 py-1 rounded-full text-xs font-bold mb-2">
             <Trophy className="w-3.5 h-3.5 text-amber-400" />
             <span>نادي التحديات والمسابقات{grade ? ` (${grade})` : ''}</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black font-sans">تحديات مؤقتة وألعاب سريعة لكسب نقاط الخبرة</h1>
-          <p className="text-xs text-slate-300 mt-1 max-w-2xl">اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.</p>
+          <h1 className="text-xl sm:text-2xl font-black font-sans">
+            {isYoung ? 'تحديات قصيرة لمستواك' : 'تحديات مؤقتة لكسب نقاط الخبرة'}
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            {isYoung
+              ? 'سؤال أو اثنان، ثم أحسنت — مثل اللعب بعد الدرس.'
+              : 'اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.'}
+          </p>
         </div>
 
-        {/* 3 grandes cartes de mode — point d'entrée principal avec clarification explicite et descente vers les défis */}
+        {!isYoung && (
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs text-[var(--app-text-muted)] font-bold px-1">
             <span>اختر نمط اللعب لتصفية التحديات والانتقال إليها مباشرة :</span>
@@ -306,6 +266,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             })}
           </div>
         </div>
+        )}
 
         {/* Section Liste des Défis */}
         <div id="challenges-list-section" className="space-y-4 scroll-mt-20">
@@ -354,6 +315,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             ))}
           </div>
 
+          {!isYoung && (
           <div className="flex items-center gap-2 bg-[var(--app-card-bg)] p-2 rounded-2xl border border-[var(--app-card-border)] shadow-xs overflow-x-auto">
             <span className="text-xs font-extrabold text-[var(--app-text-muted)] px-2 shrink-0">الصعوبة:</span>
             {(['all', 'easy', 'medium', 'hard'] as const).map((d) => (
@@ -368,6 +330,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               </button>
             ))}
           </div>
+          )}
 
           {filteredChallenges.length === 0 ? (
             <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-8 text-center space-y-2">
@@ -384,27 +347,40 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className={`grid grid-cols-1 ${isYoung ? '' : 'sm:grid-cols-2 lg:grid-cols-3'} gap-4`}>
               {filteredChallenges.map((challenge) => {
                 const subjectName = SUBJECTS_LIST.find((s) => s.id === challenge.subject)?.nameAr || challenge.subject;
+                const done = completedChallengeIds.includes(challenge.id);
                 return (
-                  <Card key={challenge.id} interactive padding="md" onClick={() => startChallenge(challenge)} className="space-y-3">
+                  <motion.div
+                    key={challenge.id}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+                  >
+                  <Card interactive padding={isYoung ? 'lg' : 'md'} onClick={() => startChallenge(challenge)} className="space-y-3">
                     <div className="flex items-center justify-between">
                       <Badge variant="info">{subjectName}</Badge>
-                      <Badge variant={challenge.difficulty === 'hard' ? 'danger' : challenge.difficulty === 'medium' ? 'xp' : 'success'}>
-                        {DIFFICULTY_LABEL[challenge.difficulty]}
-                      </Badge>
+                      {!isYoung && (
+                        <Badge variant={challenge.difficulty === 'hard' ? 'danger' : challenge.difficulty === 'medium' ? 'xp' : 'success'}>
+                          {DIFFICULTY_LABEL[challenge.difficulty]}
+                        </Badge>
+                      )}
                     </div>
-                    <h3 className="font-black text-sm">{renderArabicText(challenge.titleAr)}</h3>
+                    <h3 className={`font-black ${isYoung ? 'text-base' : 'text-sm'}`}>{renderArabicText(challenge.titleAr)}</h3>
                     <p className="text-xs text-[var(--app-text-muted)] leading-relaxed">{renderArabicText(challenge.descriptionAr)}</p>
                     <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)]">
-                      <span>{FORMAT_LABEL[challenge.format]}</span>
-                      <span dir="ltr">{challenge.items.length} أسئلة</span>
+                      {!isYoung && <span>{FORMAT_LABEL[challenge.format]}</span>}
+                      <span>{challenge.items.length} أسئلة</span>
                     </div>
-                    <Button variant="danger" size="sm" fullWidth icon={<Zap className="w-4 h-4" />}>
-                      ابدأ التحدي (<span dir="ltr">+{challenge.xpReward} XP</span>)
+                    <Button variant="danger" size={isYoung ? 'md' : 'sm'} fullWidth icon={<Zap className="w-4 h-4" />}>
+                      {done ? 'إعادة' : 'ابدأ التحدي'}
+                      {!done && !isYoung && (
+                        <span> (<span dir="ltr">+{challenge.xpReward} XP</span>)</span>
+                      )}
                     </Button>
                   </Card>
+                  </motion.div>
                 );
               })}
             </div>
@@ -431,7 +407,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             {correctCount} / {total} ({percent}%)
           </p>
           <Badge variant="xp" pop>
-            <span dir="ltr">+{Math.round((activeChallenge.xpReward * correctCount) / total)} XP</span>
+            <span dir="ltr">+{runXp} XP</span>
           </Badge>
           <div className="flex items-center justify-center gap-3 pt-2">
             <Button variant="outline" onClick={exitChallenge} icon={<ChevronLeft className="w-4 h-4" />}>
@@ -485,7 +461,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                       : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)]'
                   }`}
                 >
-                  <span dir="ltr">{opt}</span>
+                  <span>{opt}</span>
                   {isAnswerRevealed && isCorrectOpt && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
                   {isAnswerRevealed && isThisSelected && !isCorrectOpt && <XCircle className="w-4 h-4 text-rose-600 shrink-0" />}
                 </button>
