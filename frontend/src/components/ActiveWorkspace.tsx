@@ -210,6 +210,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
           completedExamIds={userProfile.completedExamIds}
           onExamComplete={onExamComplete}
+          onOpenCourses={onBackToCourses}
         />
       ) : selectedSubject === 'challenges' ? (
         <ChallengesArena

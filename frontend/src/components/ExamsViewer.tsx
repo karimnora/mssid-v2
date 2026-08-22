@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
-import { PrimaryGrade, SubjectId, OfficialExam } from '../types';
+import { ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
+import { PrimaryAverageCalculator } from './PrimaryAverageCalculator';
+import { getExamKind } from '../utils/examKind';
+import { useTranslation } from '../hooks/useTranslation';
 import {
-  Award,
   Clock,
   FileText,
   CheckCircle2,
@@ -15,7 +17,6 @@ import {
   Star,
   Eye,
   EyeOff,
-  Layers,
   GraduationCap,
   RotateCcw,
   Play,
@@ -33,6 +34,8 @@ interface ExamsViewerProps {
   completedExamIds?: string[];
   /** Called once when the student marks the currently-open exam as completed */
   onExamComplete?: (examId: string) => void;
+  /** 1AP empty-state: jump back to the courses pole */
+  onOpenCourses?: () => void;
 }
 
 const SUBJECT_EMOJI: Record<string, string> = {
@@ -46,15 +49,15 @@ const SUBJECT_EMOJI: Record<string, string> = {
   civics: '⚖️',
 };
 
-const GRADE_TITLES_AR: Record<PrimaryGrade, string> = {
-  '1AP': 'السنة الأولى ابتدائي (1AP)',
-  '2AP': 'السنة الثانية ابتدائي (2AP)',
-  '3AP': 'السنة الثالثة ابتدائي (3AP)',
-  '4AP': 'السنة الرابعة ابتدائي (4AP)',
-  '5AP': 'السنة الخامسة ابتدائي (5AP)',
+const GRADE_TITLE_KEY: Record<PrimaryGrade, 'gradeTitle1AP' | 'gradeTitle2AP' | 'gradeTitle3AP' | 'gradeTitle4AP' | 'gradeTitle5AP'> = {
+  '1AP': 'gradeTitle1AP',
+  '2AP': 'gradeTitle2AP',
+  '3AP': 'gradeTitle3AP',
+  '4AP': 'gradeTitle4AP',
+  '5AP': 'gradeTitle5AP',
 };
 
-type ExamCategoryMode = 'end_of_cycle' | 'trimester_general';
+type KindFilter = ExamKind;
 type TrimesterTab = 1 | 2 | 3 | 'all';
 
 function getDefaultTrimester(): 1 | 2 | 3 {
@@ -69,11 +72,12 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   tashkeelEnabled = true,
   completedExamIds = [],
   onExamComplete,
+  onOpenCourses,
 }) => {
+  const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
 
-  // For 5AP only: choice between Official Certificate Annales vs 5AP Trimester Compositions
-  const [examCategory, setExamCategory] = useState<ExamCategoryMode>('end_of_cycle');
+  const [kindFilter, setKindFilter] = useState<KindFilter>(grade === '5AP' || !grade ? 'bep' : 'composition');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
   const [selectedTrimester, setSelectedTrimester] = useState<TrimesterTab>(() => getDefaultTrimester());
   const [selectedExamId, setSelectedExamId] = useState<string | null>(null);
@@ -82,26 +86,12 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   useEffect(() => {
     setSelectedSubject(null);
     setSelectedExamId(null);
-    if (grade !== '5AP') {
-      setExamCategory('trimester_general');
-    } else {
-      setExamCategory('end_of_cycle');
-    }
+    setKindFilter(grade === '5AP' ? 'bep' : 'composition');
   }, [grade]);
 
-  // Filter pool strictly driven by the top-bar grade
   const filteredExams = useMemo(() => {
-    if (currentGrade === '5AP') {
-      if (examCategory === 'end_of_cycle') {
-        // Official End-of-Cycle certificate annales (شهادة التعليم الابتدائي)
-        return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === '5AP' && (e.trimester == null || e.sessionAr.includes('دورة')));
-      }
-      // 5AP Trimester Compositions
-      return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === '5AP' && e.trimester != null);
-    }
-    // For 1AP, 2AP, 3AP, 4AP: directly filter by the selected grade
-    return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade);
-  }, [currentGrade, examCategory]);
+    return OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade && getExamKind(e) === kindFilter);
+  }, [currentGrade, kindFilter]);
 
   // Available subjects for the currently selected grade
   const availableSubjects = useMemo(() => {
@@ -119,14 +109,14 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
   // Exams filtered by trimester (when applicable)
   const displayedExams = useMemo(() => {
-    if (currentGrade === '5AP' && examCategory === 'end_of_cycle') {
+    if (kindFilter === 'bep') {
       return subjectExams;
     }
     if (selectedTrimester === 'all') {
       return subjectExams;
     }
     return subjectExams.filter((e) => e.trimester === selectedTrimester);
-  }, [currentGrade, examCategory, selectedTrimester, subjectExams]);
+  }, [kindFilter, selectedTrimester, subjectExams]);
 
   const selectedExam = useMemo(() => {
     return selectedExamId ? OFFICIAL_EXAMS_DATA.find((e) => e.id === selectedExamId) : null;
@@ -207,7 +197,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             onClick={() => setSelectedExamId(null)}
             icon={<ChevronLeft className="w-4 h-4" />}
           >
-            العودة لمواضيع {GRADE_TITLES_AR[currentGrade]}
+            {t('backToExamsOf', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
           </Button>
 
           <div className="flex items-center gap-2 flex-wrap">
@@ -292,7 +282,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   {selectedExam.year}
                 </span>
                 <span className="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
-                  {GRADE_TITLES_AR[selectedExam.grade]}
+                  {t(GRADE_TITLE_KEY[selectedExam.grade])}
                 </span>
               </div>
               <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] tracking-tight font-sans">
@@ -466,105 +456,74 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         <div className="relative z-10 space-y-2 max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>بنك الامتحانات والاختبارات — {GRADE_TITLES_AR[currentGrade]}</span>
+            <span>{t('heroEyebrow', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-black font-sans tracking-tight">
-            مواضيع واختبارات {GRADE_TITLES_AR[currentGrade]}
+            {t('heroTitle', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            نماذج اختبارات تقييمية وفصلية معتمدة وفق منهاج الجيل الثاني مع الحلول النموذجية وسلالم التنقيط الكاملة مجاناً.
+            {currentGrade === '1AP' ? t('grade1apEmptyDesc') : t('heroSubtitle')}
           </p>
         </div>
       </div>
 
-      {/* For 5AP Only: Toggle between Official Certificate (Annales) vs Trimester Compositions */}
-      {currentGrade === '5AP' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button
-            onClick={() => {
-              setExamCategory('end_of_cycle');
-              setSelectedSubject(null);
-            }}
-            className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer flex items-start gap-3.5 ${
-              examCategory === 'end_of_cycle'
-                ? 'bg-blue-600 text-white border-blue-500 shadow-md scale-[1.01]'
-                : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-blue-400/50'
-            }`}
-          >
-            <div
-              className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
-                examCategory === 'end_of_cycle' ? 'bg-white/20 text-white' : 'bg-blue-500/10 text-blue-600'
-              }`}
-            >
-              <GraduationCap className="w-6 h-6" />
-            </div>
-            <div className="space-y-0.5 min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="font-black text-sm sm:text-base">امتحانات شهادة التعليم الابتدائي</h2>
-                <span
-                  className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
-                    examCategory === 'end_of_cycle' ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-800'
-                  }`}
-                >
-                  الدورات الرسمية
-                </span>
-              </div>
-              <p
-                className={`text-xs leading-snug ${
-                  examCategory === 'end_of_cycle' ? 'text-white/85' : 'text-[var(--app-text-muted)]'
-                }`}
-              >
-                أرشيف دورات شهادة التعليم الابتدائي مع الحلول النموذجية وسلم التنقيط.
-              </p>
-            </div>
-          </button>
-
-          <button
-            onClick={() => {
-              setExamCategory('trimester_general');
-              setSelectedSubject(null);
-            }}
-            className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer flex items-start gap-3.5 ${
-              examCategory === 'trimester_general'
-                ? 'bg-emerald-600 text-white border-emerald-500 shadow-md scale-[1.01]'
-                : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-emerald-400/50'
-            }`}
-          >
-            <div
-              className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
-                examCategory === 'trimester_general' ? 'bg-white/20 text-white' : 'bg-emerald-500/10 text-emerald-600'
-              }`}
-            >
-              <Layers className="w-6 h-6" />
-            </div>
-            <div className="space-y-0.5 min-w-0">
-              <div className="flex items-center gap-2">
-                <h2 className="font-black text-sm sm:text-base">الاختبارات الفصلية (السنة 5)</h2>
-                <span
-                  className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
-                    examCategory === 'trimester_general' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
-                  }`}
-                >
-                  الفصول 1، 2، 3
-                </span>
-              </div>
-              <p
-                className={`text-xs leading-snug ${
-                  examCategory === 'trimester_general' ? 'text-white/85' : 'text-[var(--app-text-muted)]'
-                }`}
-              >
-                اختبارات تقييمية نموذجية لكل فصل دراسي للسنة الخامسة ابتدائي.
-              </p>
-            </div>
-          </button>
+      {currentGrade === '1AP' ? (
+        <div className="space-y-4">
+          <Card padding="none" className="p-8 text-center space-y-4 bg-[var(--app-card-bg)]">
+            <GraduationCap className="w-10 h-10 mx-auto text-[var(--brand-blue)]" />
+            <h2 className="text-base font-black text-[var(--app-text)]">{t('grade1apEmptyTitle')}</h2>
+            <p className="text-xs text-[var(--app-text-muted)] leading-relaxed max-w-xl mx-auto">
+              {t('grade1apEmptyDesc')}
+            </p>
+            {onOpenCourses && (
+              <Button variant="info" onClick={onOpenCourses}>
+                {t('grade1apOpenCourses')}
+              </Button>
+            )}
+          </Card>
+          <PrimaryAverageCalculator grade={currentGrade} />
         </div>
-      )}
+      ) : (
+        <>
+      {(() => {
+        const kinds: ExamKind[] = currentGrade === '5AP' ? ['bep', 'composition', 'devoir'] : ['composition', 'devoir'];
+        const meta: Record<ExamKind, { title: string; desc: string; active: string; idle: string }> = {
+          bep: { title: t('kindBepTitle'), desc: t('kindBepDesc'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
+          composition: { title: t('kindCompositionsTitle'), desc: t('kindCompositionsDesc'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },
+          devoir: { title: t('kindDevoirsTitle'), desc: t('kindDevoirsDesc'), active: 'bg-amber-500 text-white border-amber-400', idle: 'hover:border-amber-400/50' },
+        };
+        return (
+          <div className={`grid grid-cols-1 gap-3 ${kinds.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+            {kinds.map((kind) => {
+              const selected = kindFilter === kind;
+              const styles = meta[kind];
+              return (
+                <button
+                  key={kind}
+                  onClick={() => {
+                    setKindFilter(kind);
+                    setSelectedSubject(null);
+                  }}
+                  className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer space-y-1 ${
+                    selected ? `${styles.active} shadow-md scale-[1.01]` : `bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] ${styles.idle}`
+                  }`}
+                >
+                  <h2 className="font-black text-sm sm:text-base">{styles.title}</h2>
+                  <p className={`text-xs leading-snug ${selected ? 'text-white/85' : 'text-[var(--app-text-muted)]'}`}>
+                    {styles.desc}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        );
+      })()}
 
       {/* Step 1: Subject Selection Grid for Current Grade */}
       <div className="space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
-            {selectedSubject ? 'تغيير المادة الدراسية:' : `مواد اختبارات ${GRADE_TITLES_AR[currentGrade]}:`}
+            {selectedSubject ? t('changeSubjectLabel') : t('subjectsOfGrade', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
           </h2>
           {selectedSubject && (
             <button
@@ -603,7 +562,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       {/* Step 2: Trimester Filter & Exam Cards List */}
       <div className="space-y-4 pt-1">
         {/* Trimester filter tabs for seasonal compositions */}
-        {!(currentGrade === '5AP' && examCategory === 'end_of_cycle') && (
+        {kindFilter !== 'bep' && (
           <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
             <button
               onClick={() => setSelectedTrimester('all')}
@@ -651,6 +610,13 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                       {exam.year}
                     </Badge>
                     <div className="flex items-center gap-1">
+                      <span className="text-[10px] font-black bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-200">
+                        {getExamKind(exam) === 'devoir'
+                          ? t('devoirBadge')
+                          : getExamKind(exam) === 'bep'
+                            ? t('bepBadge')
+                            : t('compositionBadge')}
+                      </span>
                       <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
                         حلول مجانية ✨
                       </span>
@@ -688,13 +654,16 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         ) : (
           <Card padding="none" className="p-10 text-center space-y-3 bg-[var(--app-card-bg)]">
             <FileText className="w-10 h-10 opacity-30 mx-auto text-[var(--app-text-muted)]" />
-            <h3 className="text-sm font-extrabold text-[var(--app-text)]">لا توجد مواضيع في هذا القسم بعد</h3>
+            <h3 className="text-sm font-extrabold text-[var(--app-text)]">{t('noExamsTitle')}</h3>
             <p className="text-xs text-[var(--app-text-muted)]">
-              اختر مادة أخرى أو فصلاً مختلفاً لعرض المواضيع المتوفرة لـ {GRADE_TITLES_AR[currentGrade]}.
+              {t('noExamsDesc', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
             </p>
           </Card>
         )}
       </div>
+          <PrimaryAverageCalculator grade={currentGrade} />
+        </>
+      )}
     </div>
   );
 };

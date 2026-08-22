@@ -685,6 +685,9 @@ export interface ExamExercise {
   solutionAr: string;
 }
 
+/** How the paper is used in class — mirrors DzExams folders, without copying their files. */
+export type ExamKind = 'devoir' | 'composition' | 'bep';
+
 export interface OfficialExam {
   id: string;
   year: number;
@@ -697,8 +700,12 @@ export interface OfficialExam {
   exercises: ExamExercise[];
   problemExercise: ExamExercise;
   trimester?: 1 | 2 | 3;
+  /** Defaults via getExamKind() when omitted. */
+  kind?: ExamKind;
   contentSource?: ContentSource;
   sourceNoteAr?: string;
+  /** Lesson ids in our catalog to revise before this paper. */
+  relatedLessonIds?: string[];
 }
 
 // Challenges Arena — standalone timed mini-games/challenges bank (browsable independently of
