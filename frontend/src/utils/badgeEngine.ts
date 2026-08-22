@@ -24,6 +24,8 @@ function isCriteriaMet(criteria: BadgeCriteria, profile: UserProfile): boolean {
       return (profile.completedChallengeIds || []).length >= criteria.count;
     case 'game_completed_count':
       return (profile.completedGameIds || []).length >= criteria.count;
+    case 'lab_visited':
+      return (profile.completedLabIds || []).includes(criteria.labId);
     default:
       return false;
   }
@@ -81,6 +83,10 @@ export function describeCriteria(criteria: BadgeCriteria): string {
       return criteria.count === 1 ? 'أنهِ موضوع امتحان رسمي واحد' : `أنهِ ${criteria.count} مواضيع امتحانات رسمية`;
     case 'challenge_completed_count':
       return `أنهِ ${criteria.count} تحديات في نادي التحديات`;
+    case 'game_completed_count':
+      return criteria.count === 1 ? 'أتمم لعبة ترويحية واحدة' : `أتمم ${criteria.count} ألعاب ترويحية`;
+    case 'lab_visited':
+      return 'افتح المختبر التفاعلي المطلوب مرة واحدة';
     default:
       return '';
   }

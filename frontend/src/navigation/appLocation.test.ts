@@ -6,6 +6,7 @@ import {
   viewFromNavState,
   mobileTabForView,
   isSafeLessonId,
+  isLabSubjectId,
 } from './appLocation';
 
 describe('parseAppLocation', () => {
@@ -111,3 +112,14 @@ describe('mobileTabForView / isSafeLessonId', () => {
     expect(isSafeLessonId('../x')).toBe(false);
   });
 });
+
+describe('isLabSubjectId', () => {
+  it('includes the Algerian market and other tools missing from the old nav hardcode', () => {
+    expect(isLabSubjectId('algerian_market')).toBe(true);
+    expect(isLabSubjectId('wilayas_map')).toBe(true);
+    expect(isLabSubjectId('primary_math_ops')).toBe(true);
+    expect(isLabSubjectId('math')).toBe(false);
+    expect(isLabSubjectId('exams')).toBe(false);
+  });
+});
+

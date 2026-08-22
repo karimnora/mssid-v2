@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { speakText } from './speech';
+import { speakText, speechLangForSubject } from './speech';
 import { setFeatureFlagOverride, resetFeatureFlagOverride } from '../featureFlags';
 
 // jsdom doesn't implement SpeechSynthesisUtterance — only the speechSynthesis object itself is
@@ -41,4 +41,27 @@ describe('speakText — gated by the voiceReading feature flag', () => {
     await speakText('مرحبا');
     expect(speakSpy).toHaveBeenCalled();
   });
+
+  it('passes the requested language through to the utterance', async () => {
+    setFeatureFlagOverride('voiceReading', true);
+    const speakSpy = vi.mocked(window.speechSynthesis.speak).mockImplementation((utterance: any) => {
+      utterance.onend?.();
+    });
+    await speakText('Bonjour', 'fr-FR');
+    expect(speakSpy.mock.calls[0][0].lang).toBe('fr-FR');
+    await speakText('Hello', 'en-US');
+    expect(speakSpy.mock.calls[1][0].lang).toBe('en-US');
+    await speakText('مرحبا', 'ar-SA');
+    expect(speakSpy.mock.calls[2][0].lang).toBe('ar-SA');
+  });
 });
+
+describe('speechLangForSubject', () => {
+  it('uses the lesson language instead of a hardcoded ar-SA', () => {
+    expect(speechLangForSubject('french')).toBe('fr-FR');
+    expect(speechLangForSubject('english')).toBe('en-US');
+    expect(speechLangForSubject('arabic')).toBe('ar-SA');
+    expect(speechLangForSubject('math')).toBe('ar-SA');
+  });
+});
+

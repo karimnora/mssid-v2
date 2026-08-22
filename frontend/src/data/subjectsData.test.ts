@@ -78,3 +78,15 @@ describe('course subjects that only exist from 3AP onward are hidden for 1AP/2AP
     });
   });
 });
+
+describe('french and english course labels match minGrade 3AP', () => {
+  it('does not suffix 5AP on the French or English names', () => {
+    const french = COURSE_SUBJECTS_LIST.find((s) => s.id === 'french');
+    const english = COURSE_SUBJECTS_LIST.find((s) => s.id === 'english');
+    expect(french?.nameFr).toBe('Français');
+    expect(english?.nameFr).toBe('English');
+    expect(french?.nameFr).not.toMatch(/5AP/);
+    expect(english?.nameFr).not.toMatch(/5AP/);
+  });
+});
+

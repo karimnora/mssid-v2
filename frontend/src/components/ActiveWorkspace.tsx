@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId, UserProfile } from '../types';
 import { INTERACTIVE_LABS_LIST } from '../data/subjectsData';
@@ -6,7 +6,7 @@ import { LessonViewer } from './LessonViewer';
 import { ExamsViewer } from './ExamsViewer';
 import { LoadingFallback } from './LoadingFallback';
 import { HeaderTheme } from './Navbar';
-import { MainCategory } from '../navigation/appLocation';
+import { isLabSubjectId, MainCategory } from '../navigation/appLocation';
 import { useTranslation } from '../hooks/useTranslation';
 
 const SorobanInteractive = lazy(() => import('./SorobanInteractive').then((m) => ({ default: m.SorobanInteractive })));
@@ -58,6 +58,7 @@ interface ActiveWorkspaceProps {
   onExamComplete: (examId: string) => void;
   onChallengeComplete: (challengeId: string, earnedXp: number) => void;
   onGameComplete: (gameId: string, earnedXp: number) => void;
+  onVisitLab: (labId: string) => void;
   onLabReward: (coins: number, xp: number) => void;
   onEarnCoins: (amount: number) => void;
 }
@@ -81,10 +82,18 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onExamComplete,
   onChallengeComplete,
   onGameComplete,
+  onVisitLab,
   onLabReward,
   onEarnCoins,
 }) => {
   const t = useTranslation('navigation');
+
+  useEffect(() => {
+    if (isLabSubjectId(selectedSubject)) {
+      onVisitLab(selectedSubject);
+    }
+  }, [selectedSubject, onVisitLab]);
+
   return (
   <div id="active-interactive-tool-section" className="scroll-mt-24 transition-all duration-300 relative">
     {mainCategory === 'labs' && (

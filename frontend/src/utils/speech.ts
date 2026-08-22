@@ -7,6 +7,12 @@ import { isFeatureEnabled } from '../featureFlags';
 
 let synth: SpeechSynthesis | null = typeof window !== 'undefined' ? window.speechSynthesis : null;
 
+export function speechLangForSubject(subject: string): 'fr-FR' | 'en-US' | 'ar-SA' {
+  if (subject === 'french') return 'fr-FR';
+  if (subject === 'english') return 'en-US';
+  return 'ar-SA';
+}
+
 export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9): Promise<void> => {
   return new Promise((resolve) => {
     if (!isFeatureEnabled('voiceReading')) {

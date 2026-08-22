@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Badge as BadgeInfo, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
@@ -14,6 +14,7 @@ export function normalizeUserProfile(raw: UserProfile): UserProfile {
     completedExamIds: raw.completedExamIds || [],
     completedChallengeIds: raw.completedChallengeIds || [],
     completedGameIds: raw.completedGameIds || [],
+    completedLabIds: raw.completedLabIds || [],
     quizFullyValidatedLessonIds: raw.quizFullyValidatedLessonIds || [],
     badgeUnlockedAt: raw.badgeUnlockedAt || {},
   };
@@ -49,6 +50,7 @@ export function createFreshGuestProfile(currentGrade: PrimaryGrade): UserProfile
     completedExamIds: [],
     completedChallengeIds: [],
     completedGameIds: [],
+    completedLabIds: [],
     quizFullyValidatedLessonIds: [],
     badges: [],
     badgeUnlockedAt: {},
@@ -69,24 +71,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
         console.error('Failed to parse user profile:', e);
       }
     }
-    return normalizeUserProfile({
-      name: 'التلميذ المجتهد',
-      grade: '5AP',
-      avatar: '🇩🇿',
-      xp: 140,
-      level: 2,
-      streakDays: 3,
-      lastActiveDate: new Date(Date.now() - 86400000).toISOString().slice(0, 10),
-      completedLessonIds: ['math-5ap-numbers'],
-      completedExamIds: [],
-      completedChallengeIds: [],
-      completedGameIds: [],
-      quizFullyValidatedLessonIds: [],
-      badges: ['b_welcome', 'b_math_star'],
-      badgeUnlockedAt: {},
-      quizScores: { 'math-5ap-numbers': 30 },
-      tashkeelEnabled: false,
-    });
+    return createFreshGuestProfile('1AP');
   });
 
   const [newlyUnlockedBadges, setNewlyUnlockedBadges] = useState<BadgeInfo[]>([]);
@@ -107,6 +92,8 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     userProfile.completedLessonIds.length,
     userProfile.completedExamIds.length,
     userProfile.completedChallengeIds.length,
+    userProfile.completedGameIds.length,
+    userProfile.completedLabIds.length,
   ]);
 
   useEffect(() => {
@@ -218,27 +205,21 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     if (authUser) AuthService.syncGoldCoinsAndAvatar(newCoins, userProfile.avatarConfig);
   };
 
+  const handleVisitLab = useCallback((labId: string) => {
+    setUserProfile((prev) => {
+      const ids = prev.completedLabIds ?? [];
+      if (ids.includes(labId)) return prev;
+      return { ...prev, completedLabIds: [...ids, labId] };
+    });
+  }, []);
+
   const handleResetProgress = () => {
     if (window.confirm(locales[getStoredLocale()].strings.navigation.confirmResetProgress)) {
-      const freshProfile: UserProfile = {
-        name: userProfile.name || 'التلميذ المجتهد',
-        grade: '5AP',
-        avatar: '🇩🇿',
-        xp: 0,
-        level: 1,
-        streakDays: 1,
-        lastActiveDate: new Date().toISOString().slice(0, 10),
-        completedLessonIds: [],
-        completedExamIds: [],
-        completedChallengeIds: [],
-        completedGameIds: [],
-        quizFullyValidatedLessonIds: [],
-        badges: [],
-        badgeUnlockedAt: {},
-        quizScores: {},
+      setUserProfile({
+        ...createFreshGuestProfile(userProfile.grade),
+        name: userProfile.name,
         tashkeelEnabled: userProfile.tashkeelEnabled ?? false,
-      };
-      setUserProfile(freshProfile);
+      });
       return true;
     }
     return false;
@@ -288,6 +269,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     handleCompleteExam,
     handleCompleteChallenge,
     handleCompleteGame,
+    handleVisitLab,
     handleLabReward,
     handleResetProgress,
     handleUpdateProfileName,

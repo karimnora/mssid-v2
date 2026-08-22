@@ -733,7 +733,8 @@ export type BadgeCriteria =
   | { type: 'xp_total'; xp: number }
   | { type: 'exam_completed_count'; count: number }
   | { type: 'challenge_completed_count'; count: number }
-  | { type: 'game_completed_count'; count: number };
+  | { type: 'game_completed_count'; count: number }
+  | { type: 'lab_visited'; labId: SubjectId };
 
 export interface Badge {
   id: string;
@@ -757,6 +758,8 @@ export interface UserProfile {
   completedExamIds: string[];
   completedChallengeIds: string[];
   completedGameIds: string[];
+  /** Labs the child has actually opened (e.g. Algerian currency market). */
+  completedLabIds: string[];
   /** Lessons whose quiz has been fully answered correctly at least once — governs the reduced-XP-on-replay rule. */
   quizFullyValidatedLessonIds: string[];
   badges: string[];

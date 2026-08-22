@@ -268,6 +268,7 @@ export default function App() {
                 onExamComplete={progress.handleCompleteExam}
                 onChallengeComplete={progress.handleCompleteChallenge}
                 onGameComplete={progress.handleCompleteGame}
+                onVisitLab={progress.handleVisitLab}
                 onLabReward={progress.handleLabReward}
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
               />

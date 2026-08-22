@@ -1,8 +1,9 @@
 import React from 'react';
-import { Home, BookOpen, Bot, Grid, User, FileText, Zap } from 'lucide-react';
+import { Home, BookOpen, Bot, Grid, User, FileText } from 'lucide-react';
 import { SubjectId } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
+import { isLabSubjectId } from '../navigation/appLocation';
 
 interface MobileBottomNavProps {
   selectedSubject: SubjectId;
@@ -34,19 +35,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   const isNeutre = theme === 'neutre';
   const isLight = theme === 'light';
   const isSepia = theme === 'sepia';
-
-  const isLabSubject = [
-    'arabic_conjugator',
-    'french_lab',
-    'english_lab',
-    'soroban',
-    'electricity',
-    'geometry',
-    'converter',
-    'multiplication',
-  ].includes(selectedSubject);
-
-  const isCourseSubject = !isLabSubject && selectedSubject !== 'exams';
+  const activeLabId = isLabSubjectId(selectedSubject) ? selectedSubject : undefined;
 
   const navBgClass = isNeutre
     ? 'bg-white/95 text-slate-900 border-slate-200 shadow-xl'
@@ -80,6 +69,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     <nav
       className={`md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md border-t px-2 py-1.5 flex items-center justify-around transition-colors duration-300 ${navBgClass}`}
       dir={direction}
+      data-lab-open={activeLabId}
     >
       {/* 1. Home Tab */}
       <button

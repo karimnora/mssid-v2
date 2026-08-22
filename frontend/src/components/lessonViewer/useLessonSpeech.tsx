@@ -1,38 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
 import { isFeatureEnabled } from '../../featureFlags';
+import { speakText, speechLangForSubject, stopSpeech as stopSynth } from '../../utils/speech';
 
 export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const isYoungGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const lang = speechLangForSubject(lesson.subject);
 
   const handleToggleSpeech = () => {
     if (!isFeatureEnabled('voiceReading')) return;
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     if (isSpeaking) {
-      window.speechSynthesis.cancel();
+      stopSynth();
       setIsSpeaking(false);
       return;
     }
-    window.speechSynthesis.cancel();
     const textToRead = [lesson.titleAr, lesson.summaryAr, ...(lesson.rulesAr || [])].filter(Boolean).join('. ');
-    const utterance = new SpeechSynthesisUtterance(textToRead);
-    utterance.lang = 'ar-SA';
-    utterance.rate = 0.9;
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-    window.speechSynthesis.speak(utterance);
     setIsSpeaking(true);
+    void speakText(textToRead, lang).then(() => setIsSpeaking(false));
   };
 
   const speakBlock = (text: string) => {
     if (!isFeatureEnabled('voiceReading')) return;
-    if (typeof window === 'undefined' || !('speechSynthesis' in window) || !text) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ar-SA';
-    utterance.rate = 0.9;
-    window.speechSynthesis.speak(utterance);
+    if (!text) return;
+    void speakText(text, lang);
   };
 
   const renderSpeakButton = (text: string | undefined, label: string) =>
@@ -48,14 +40,14 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     ) : null;
 
   const stopSpeech = () => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+    stopSynth();
     setIsSpeaking(false);
   };
 
   useEffect(() => {
     stopSpeech();
     return () => {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+      stopSynth();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);

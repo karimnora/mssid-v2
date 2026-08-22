@@ -11,7 +11,7 @@ export const BADGES_CATALOG: Badge[] = [
   { id: 'b_tifinagh_friend', titleAr: 'صديق تيفيناغ', descriptionAr: 'استكشاف دروس وحروف اللغة الأمازيغية التفاعلية', icon: 'ⵣ', category: 'tamazight', criteria: { type: 'lessons_completed_subject', subject: 'tamazight', count: 1 } },
   { id: 'b_arabic_calligraphy', titleAr: 'عاشق الخط والبيان', descriptionAr: 'استكشاف جماليات الحروف والخط العربي وقواعد لغة الضاد', icon: '🖋️', category: 'arabic', criteria: { type: 'lessons_completed_subject', subject: 'arabic', count: 1 } },
   { id: 'b_algerian_heritage', titleAr: 'حامي التراث الوطني', descriptionAr: 'استكشاف خريطة ولايات الجزائر الـ 58 ومتحف التاريخ', icon: '🏛️', category: 'history_geo', criteria: { type: 'lessons_completed_subject', subject: 'history_geo', count: 2 } },
-  { id: 'b_gold_dinar', titleAr: 'تاجر الدينار الصغير', descriptionAr: 'إتقان الحساب والتعامل بالدينار الجزائري في السوق التعليمي', icon: '🪙', category: 'math', criteria: { type: 'lessons_completed_subject', subject: 'algerian_market', count: 1 } },
+  { id: 'b_gold_dinar', titleAr: 'تاجر الدينار الصغير', descriptionAr: 'إتقان الحساب والتعامل بالدينار الجزائري في السوق التعليمي', icon: '🪙', category: 'math', criteria: { type: 'lab_visited', labId: 'algerian_market' } },
   { id: 'b_green_defender', titleAr: 'حامي البيئة والطاقة', descriptionAr: 'دراسة مشاريع الطاقة الشمسية وحماية الطبيعة الجزائرية', icon: '🌱', category: 'science', criteria: { type: 'lessons_completed_subject', subject: 'science', count: 5 } },
 
   // Subjects & Skills Badges
