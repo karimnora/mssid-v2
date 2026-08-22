@@ -8,7 +8,6 @@ name: CI
 # has no reachable Postgres — this workflow gives it a real one via the service container below).
 on:
   push:
-    branches: [main]
   pull_request:
     branches: [main]
 

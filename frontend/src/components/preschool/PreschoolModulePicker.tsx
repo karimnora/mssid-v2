@@ -80,10 +80,10 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
         : 'Magic Board & Drawing',
     magicBoardDesc:
       language === 'ar'
-        ? 'رسم حر، سبورة المدرسة، تتبع الحروف وتلوين التراث الجزائري'
+        ? 'رسم حر، سبورة، تتبع الحروف، تلوين والعالم السحري'
         : language === 'fr'
-        ? 'Dessin libre, ardoise, traçage et coloriage algérien'
-        : 'Free drawing, slate, tracing and Algerian coloring',
+        ? 'Dessin libre, ardoise, traçage, coloriage et Monde Magique'
+        : 'Free drawing, slate, tracing, coloring and Magic World',
     xylophone:
       language === 'ar'
         ? 'عازف الألحان والبيانو الجزائري'

@@ -6,6 +6,7 @@ import { PreschoolMagicBoard } from './PreschoolMagicBoard';
 vi.mock('./usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
   playBubblePop: vi.fn(),
+  resumeTownAudio: vi.fn(),
   usePreschoolSpeech: () => ({ speak: vi.fn() }),
 }));
 
@@ -70,5 +71,14 @@ describe('PreschoolMagicBoard — trace mode categories', () => {
     fireEvent.click(screen.getByText('⬛ أشكال'));
     // 'أ' (an Arabic letter) must not still be selectable inside the shapes row.
     expect(screen.queryByText('أ')).not.toBeInTheDocument();
+  });
+});
+
+describe('PreschoolMagicBoard — Monde Magique tab', () => {
+  it('embeds the sensory tap world when the magic tab is selected', () => {
+    render(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
+    fireEvent.click(screen.getByText('🌈 Monde Magique'));
+    expect(screen.getByText('Appuie n’importe où ! 👆')).toBeInTheDocument();
+    expect(screen.queryByText('Télécharger 📥')).not.toBeInTheDocument();
   });
 });

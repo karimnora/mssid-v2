@@ -12,14 +12,14 @@ import { FruitCatcherGame } from './FruitCatcherGame';
 import { ShapeSorterGame }  from './ShapeSorterGame';
 import { CarWashGame }      from './CarWashGame';
 import { PuzzleGame }       from './PuzzleGame';
-import { SensoryTapGame }   from './SensoryTapGame';
 import { HideDidoGame }     from './HideDidoGame';
 import { LittleFisherGame } from './LittleFisherGame';
+import { DressDidoGame }    from './DressDidoGame';
 import { useLevelProgress } from './useLevelProgress';
 
 export type GameId =
   | 'car_maze' | 'farm' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
-  | 'car_wash' | 'puzzle' | 'sensory_tap' | 'hide_dido' | 'little_fisher';
+  | 'car_wash' | 'puzzle' | 'hide_dido' | 'little_fisher' | 'dress_dido';
 
 interface GameCard {
   id: GameId;
@@ -96,19 +96,20 @@ const GAMES: GameCard[] = [
     progressId: 'car_wash', maxLevels: 4,
   },
   {
-    id: 'sensory_tap',
-    icon: '🌈',
-    titleAr: 'العَالَمُ السِّحْرِيّ',                 titleFr: 'Le Monde Magique',                    titleEn: 'Magic World',
-    descAr:  'ليل، حديقة، بحر، مزرعة — بدون خطأ!', descFr:  'Nuit, jardin, mer, ferme — sans erreur !', descEn:  'Night, garden, sea, farm — no fail!',
-    gradient: 'from-pink-400 to-purple-500', border: 'border-pink-300', badge: '👶 Mode Bébé',
-  },
-  {
     id: 'hide_dido',
     icon: '🦊',
     titleAr: 'أين ديدو؟',                    titleFr: 'Où est Dido ?',                      titleEn: 'Where is Dido?',
     descAr:  'صحراء، سوق، قصبة، شاطئ — 8 مشاهد!', descFr:  'Sahara, souk, casbah, plage — 8 scènes !', descEn:  'Sahara, souk, casbah, beach — 8 scenes!',
     gradient: 'from-amber-400 to-orange-600', border: 'border-amber-300', badge: '👀 Cherche',
     progressId: 'hide_dido', maxLevels: 8,
+  },
+  {
+    id: 'dress_dido',
+    icon: '👕',
+    titleAr: 'أَلْبِسْ دِيدُو',                 titleFr: 'Habille Dido',                      titleEn: 'Dress Dido',
+    descAr:  'حسب الطقس — شمس، مطر، ثلج، صحراء!', descFr:  'Selon le temps — soleil, pluie, neige, Sahara !', descEn:  'According to the weather — sun, rain, snow, Sahara!',
+    gradient: 'from-rose-400 to-orange-500', border: 'border-rose-300', badge: '🧥 Météo',
+    progressId: 'dress_dido', maxLevels: 8,
   },
   {
     id: 'little_fisher',
@@ -153,9 +154,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
       case 'shape_sorter':  return <ShapeSorterGame  language={language} onExit={exit} />;
       case 'car_wash':      return <CarWashGame      language={language} onExit={exit} />;
       case 'hide_dido':     return <HideDidoGame     language={language} onExit={exit} />;
+      case 'dress_dido':    return <DressDidoGame    language={language} onExit={exit} />;
       case 'little_fisher': return <LittleFisherGame language={language} onExit={exit} />;
       case 'puzzle':        return <PuzzleGame       language={language} onExit={exit} />;
-      case 'sensory_tap':   return <SensoryTapGame   language={language} onExit={exit} />;
       default:              return null;
     }
   };

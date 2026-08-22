@@ -10,6 +10,8 @@ import { playBubblePop, resumeTownAudio } from './usePreschoolAudio';
 export interface SensoryTapGameProps {
   onExit?: () => void;
   language?: 'ar' | 'fr' | 'en';
+  /** Inside the Magic Board: no exit button, fills the parent. */
+  embedded?: boolean;
 }
 
 interface World {
@@ -67,7 +69,7 @@ interface Sparkle {
   size: number;
 }
 
-export const SensoryTapGame: React.FC<SensoryTapGameProps> = ({ onExit, language = 'fr' }) => {
+export const SensoryTapGame: React.FC<SensoryTapGameProps> = ({ onExit, language = 'fr', embedded = false }) => {
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
   const [tapCount, setTapCount] = useState(0);
   const [worldId, setWorldId] = useState(WORLDS[0].id);
@@ -99,21 +101,24 @@ export const SensoryTapGame: React.FC<SensoryTapGameProps> = ({ onExit, language
 
   return (
     <div
-      className={`min-h-screen bg-gradient-to-br ${world.bg} flex flex-col relative overflow-hidden
+      className={`${embedded ? 'h-full min-h-[360px] rounded-3xl' : 'min-h-screen'} bg-gradient-to-br ${world.bg} flex flex-col relative overflow-hidden
                   transition-colors duration-700 select-none`}
       onPointerDown={handleTap}
       style={{ touchAction: 'none' }}
     >
-      <div className="flex items-center justify-between px-4 py-4 pointer-events-none gap-2">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="pointer-events-auto min-w-12 min-h-12 flex items-center justify-center rounded-2xl
-                     bg-white shadow-md border-2 border-pink-200 text-lg font-black cursor-pointer"
-          onClick={onExit}
-        >
-          🚪
-        </motion.button>
+      <div className="flex items-center justify-between px-4 py-3 pointer-events-none gap-2">
+        {!embedded && onExit && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="pointer-events-auto min-w-12 min-h-12 flex items-center justify-center rounded-2xl
+                       bg-white shadow-md border-2 border-pink-200 text-lg font-black cursor-pointer"
+            onClick={onExit}
+          >
+            🚪
+          </motion.button>
+        )}
+        {embedded && <div className="w-2" />}
 
         <div className="flex items-center gap-2 bg-white/80 rounded-2xl px-4 py-2 shadow-md border border-white">
           <span className="text-2xl">⭐</span>

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { playSuccessChime, playBubblePop, usePreschoolSpeech } from './usePreschoolAudio';
+import { SensoryTapGame } from './SensoryTapGame';
 
 interface PreschoolMagicBoardProps {
   language: PreschoolLanguage;
@@ -9,7 +10,7 @@ interface PreschoolMagicBoardProps {
   onExit: () => void;
 }
 
-type BoardMode = 'free' | 'slate' | 'trace' | 'coloring';
+type BoardMode = 'free' | 'slate' | 'trace' | 'coloring' | 'magic';
 
 type TraceCategory = 'ar_letters' | 'latin_letters' | 'numbers' | 'shapes';
 
@@ -311,6 +312,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   }, [resizeCanvas]);
 
   useEffect(() => {
+    if (mode === 'magic') return;
     clearCanvas(false);
   }, [mode]);
 
@@ -426,6 +428,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     slateMode: language === 'ar' ? '⬛ لوحة مدرسية' : language === 'fr' ? '⬛ Ardoise' : '⬛ Slate',
     traceMode: language === 'ar' ? '✏️ تتبع الحروف' : language === 'fr' ? '✏️ Tracé & Lettres' : '✏️ Trace Letters',
     colorMode: language === 'ar' ? '🖍️ تلوين التراث' : language === 'fr' ? '🖍️ Coloriage' : '🖍️ Coloring',
+    magicMode: language === 'ar' ? '🌈 العالم السحري' : language === 'fr' ? '🌈 Monde Magique' : '🌈 Magic World',
     colors: language === 'ar' ? '🎨 ألوان الفرشاة:' : language === 'fr' ? '🎨 Couleurs :' : '🎨 Colors:',
     brushSize: language === 'ar' ? '🖌️ حجم الفرشاة:' : language === 'fr' ? '🖌️ Taille pinceau :' : '🖌️ Brush size:',
     stamps: language === 'ar' ? '⭐ ملصقات مرحة:' : language === 'fr' ? '⭐ Autocollants :' : '⭐ Fun Stamps:',
@@ -475,12 +478,14 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
           ))}
         </div>
 
-        <button
-          onClick={downloadDrawing}
-          className="min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
-        >
-          <span>{labels.save}</span>
-        </button>
+        {mode !== 'magic' && (
+          <button
+            onClick={downloadDrawing}
+            className="min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
+          >
+            <span>{labels.save}</span>
+          </button>
+        )}
       </div>
 
       {/* Mode Switcher Tabs */}
@@ -490,6 +495,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
           { id: 'slate', label: labels.slateMode },
           { id: 'trace', label: labels.traceMode },
           { id: 'coloring', label: labels.colorMode },
+          { id: 'magic', label: labels.magicMode },
         ].map((m) => (
           <button
             key={m.id}
@@ -590,6 +596,12 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
 
       {/* Main Board Workspace */}
       <div className="max-w-6xl w-full mx-auto flex-1 grid grid-cols-1 md:grid-cols-4 gap-3 items-stretch min-h-[380px]">
+        {mode === 'magic' ? (
+          <div className="md:col-span-4 rounded-3xl overflow-hidden shadow-2xl border-4 border-pink-300 min-h-[380px]">
+            <SensoryTapGame language={language} embedded />
+          </div>
+        ) : (
+        <>
         {/* Canvas Drawing Stage */}
         <div
           ref={containerRef}
@@ -761,6 +773,8 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
             </div>
           </div>
         </div>
+        </>
+        )}
       </div>
     </div>
   );
