@@ -3,6 +3,7 @@ package dz.mssid.education.service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +51,7 @@ class ProgressGuardTest {
     void mergeKnownBadges_dropsUnknown() {
         List<String> merged = ProgressGuard.mergeKnownBadges(
                 List.of("b_welcome"),
-                List.of("b_welcome", "b_hacker", "b_math_star", null)
+                Arrays.asList("b_welcome", "b_hacker", "b_math_star", null)
         );
         assertEquals(List.of("b_welcome", "b_math_star"), merged);
     }
