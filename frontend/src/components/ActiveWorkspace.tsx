@@ -4,7 +4,6 @@ import { CourseLesson, PrimaryGrade, SubjectId, UserProfile } from '../types';
 import { INTERACTIVE_LABS_LIST } from '../data/subjectsData';
 import { LessonViewer } from './LessonViewer';
 import { ExamsViewer } from './ExamsViewer';
-import { ChallengesArena } from './ChallengesArena';
 import { LoadingFallback } from './LoadingFallback';
 import { HeaderTheme } from './Navbar';
 import { MainCategory } from '../navigation/appLocation';
@@ -38,6 +37,7 @@ const ClockTrainerLab = lazy(() => import('./ClockTrainerLab').then((m) => ({ de
 const SyllableStudioLab = lazy(() => import('./SyllableStudioLab').then((m) => ({ default: m.SyllableStudioLab })));
 const SpeedReadingLab = lazy(() => import('./SpeedReadingLab').then((m) => ({ default: m.SpeedReadingLab })));
 const TopographyMapLab = lazy(() => import('./TopographyMapLab').then((m) => ({ default: m.TopographyMapLab })));
+const ChallengesArena = lazy(() => import('./ChallengesArena').then((m) => ({ default: m.ChallengesArena })));
 
 interface ActiveWorkspaceProps {
   grade: PrimaryGrade;

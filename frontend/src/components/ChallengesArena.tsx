@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CHALLENGES_DATA } from '../data/challengesData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
@@ -6,7 +6,11 @@ import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { Trophy, Timer, ChevronLeft, CheckCircle2, XCircle, Sparkles, RotateCcw, Zap } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
-import { ArcadeGamesSection } from './games/ArcadeGamesSection';
+import { LoadingFallback } from './LoadingFallback';
+
+const ArcadeGamesSection = lazy(() =>
+  import('./games/ArcadeGamesSection').then((m) => ({ default: m.ArcadeGamesSection })),
+);
 
 interface ChallengesArenaProps {
   /** Scopes the entire arena (mode counts, subject list, challenge grid) to the current grade — omit to browse all grades. */
@@ -200,13 +204,15 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               🎮 ألعاب الترويح
             </button>
           </div>
-          <ArcadeGamesSection
-            grade={grade ?? '5AP'}
-            userXp={userXp}
-            userBadges={userBadges}
-            completedGameIds={completedGameIds}
-            onGameComplete={(gameId, xp) => onGameComplete?.(gameId, xp)}
-          />
+          <Suspense fallback={<LoadingFallback />}>
+            <ArcadeGamesSection
+              grade={grade ?? '5AP'}
+              userXp={userXp}
+              userBadges={userBadges}
+              completedGameIds={completedGameIds}
+              onGameComplete={(gameId, xp) => onGameComplete?.(gameId, xp)}
+            />
+          </Suspense>
         </div>
       );
     }

@@ -43,10 +43,10 @@ export default defineConfig(() => {
           // served from if a runtime-caching rule ever matched it by accident.
           cleanupOutdatedCaches: true,
           // Workbox's 2 MiB default is smaller than the main chunk (course data for all 5 grades
-          // is still bundled eagerly — see the code-splitting notes in App.tsx). Raised with
-          // headroom; the real fix is splitting course data out of the main chunk, tracked
-          // separately since it touches badgeEngine.ts's synchronous dependency on it.
-          maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
+          // is still bundled eagerly — see the code-splitting notes in App.tsx). Phaser is split
+          // into its own chunk (build.rollupOptions below); 8 MiB covers the remaining course
+          // payload after Phaser 4 landed in the arcade games.
+          maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
           navigateFallback: '/index.html',
           runtimeCaching: [
             {
@@ -107,6 +107,17 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
+      },
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          // Phaser 4 is ~2 MiB minified. Without this it rides into index-*.js via
+          // ChallengesArena → ArcadeGamesSection, and Workbox refuses to precache a 7+ MiB file.
+          manualChunks: {
+            phaser: ['phaser'],
+          },
+        },
       },
     },
     server: {
