@@ -23,7 +23,21 @@ import {
 
 export type { MainCategory, MobileTab };
 
-const DEFAULT_LAB: SubjectId = 'arabic_conjugator';
+/** First lab shown when opening the pole — must exist at that grade (conjugueur = 3AP+). */
+export function defaultLabForGrade(grade: PrimaryGrade): SubjectId {
+  if (grade === '1AP' || grade === '2AP') return 'primary_math_ops';
+  return 'arabic_conjugator';
+}
+
+function labAvailableForGrade(toolId: SubjectId, grade: PrimaryGrade): boolean {
+  const tool = INTERACTIVE_LABS_LIST.find((item) => item.id === toolId);
+  return Boolean(tool && isToolAvailableForGrade(tool, grade));
+}
+
+function labOrFallback(toolId: SubjectId | undefined, grade: PrimaryGrade): SubjectId {
+  if (toolId && labAvailableForGrade(toolId, grade)) return toolId;
+  return defaultLabForGrade(grade);
+}
 
 type HistoryNavState = {
   isHomeActive: boolean;
@@ -58,7 +72,7 @@ export function useAppNavigation(options: {
 
   const [grade, setGrade] = useState<PrimaryGrade>(boot.grade);
   const [selectedSubject, setSelectedSubject] = useState<SubjectId>(() => {
-    if (boot.view.name === 'labs') return boot.view.toolId ?? DEFAULT_LAB;
+    if (boot.view.name === 'labs') return labOrFallback(boot.view.toolId, boot.grade);
     if (boot.view.name === 'exams') return 'exams';
     if (boot.view.name === 'challenges') return 'challenges';
     if (boot.view.name === 'lesson') {
@@ -217,7 +231,7 @@ export function useAppNavigation(options: {
       setSelectedSubject('exams');
     } else if (tab === 'games') {
       setMainCategory('labs');
-      setSelectedSubject(DEFAULT_LAB);
+      setSelectedSubject(defaultLabForGrade(grade));
     }
   };
 
@@ -227,8 +241,8 @@ export function useAppNavigation(options: {
     setSelectedLesson(null);
     if (pole === 'courses' && !COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
       setSelectedSubject('math');
-    } else if (pole === 'labs' && !INTERACTIVE_LABS_LIST.some((s) => s.id === selectedSubject)) {
-      setSelectedSubject(DEFAULT_LAB);
+    } else if (pole === 'labs') {
+      setSelectedSubject(labOrFallback(selectedSubject, grade));
     } else if (pole === 'exams') {
       setSelectedSubject('exams');
     } else if (pole === 'challenges') {
@@ -267,8 +281,7 @@ export function useAppNavigation(options: {
     setSelectedLesson(null);
     const currentTool = INTERACTIVE_LABS_LIST.find((s) => s.id === selectedSubject);
     if (currentTool && !isToolAvailableForGrade(currentTool, next)) {
-      const fallback = INTERACTIVE_LABS_LIST.find((s) => isToolAvailableForGrade(s, next));
-      if (fallback) setSelectedSubject(fallback.id);
+      setSelectedSubject(defaultLabForGrade(next));
     }
   };
 

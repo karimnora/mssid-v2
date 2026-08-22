@@ -48,4 +48,10 @@ describe('FeatureFlagsModule — enableTrimesterPaywall dependency on enablePaym
 
     expect(screen.queryByText('⏸️ بلا تأثير حالياً')).not.toBeInTheDocument();
   });
+
+  it('does not offer unused preschool or exam kill switches', () => {
+    render(<FeatureFlagsModule />);
+    expect(screen.queryByText(/وضع التحضيري/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/قسم الامتحانات الرسمية/)).not.toBeInTheDocument();
+  });
 });

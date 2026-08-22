@@ -6,9 +6,7 @@ export type FeatureFlagName =
   | 'voiceReading'
   | 'educationalCalculator'
   | 'writingLab'
-  | 'enablePreschoolModule'
   | 'enablePrintablePDFs'
-  | 'enableExamSection'
   | 'enableTrimesterPaywall';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
@@ -22,9 +20,7 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   voiceReading: true,
   educationalCalculator: true,
   writingLab: true,
-  enablePreschoolModule: true,
   enablePrintablePDFs: true,
-  enableExamSection: true,
   // Off by default: T2/T3 stay fully open during the content-review/testing phase before launch.
   // Flip to true (via the admin CMS Config tab) once the paid subscription is ready to enforce.
   enableTrimesterPaywall: false,

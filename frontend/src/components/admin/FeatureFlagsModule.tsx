@@ -29,12 +29,10 @@ interface FlagMeta {
 // interactiveVideo, pwa) wasn't wired to anything at all, so this discipline also nets out as a
 // forcing function: writing an honest ON/OFF line makes an unwired flag obvious immediately.
 const CORE_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
-  { id: 'enablePreschoolModule', meta: { labelAr: '🦊 وضع التحضيري / الإيقاظ (3-5 سنوات)', descriptionAr: 'ON: زر «الروضة» ظاهر على الصفحة الرئيسية. OFF: الزر مخفي تماماً، ولا وصول لقسم الروضة.' } },
   { id: 'enablePayments', meta: { labelAr: '💳 المدفوعات والاشتراكات', descriptionAr: 'المفتاح الرئيسي لنظام الدفع بالكامل. ON: يسمح لقفل الفصلين (أدناه) بالعمل إن كان مفعّلاً هو أيضاً — لا أثر مرئي بمفرده. OFF: يوقف نظام الدفع فوراً مهما كانت حالة القفل، وتصبح كل الدروس مجانية.' } },
   { id: 'enableTrimesterPaywall', meta: { labelAr: '🔒 قفل الفصلين الثاني والثالث', descriptionAr: 'ON (مع تفعيل «المدفوعات» أعلاه): دروس الفصلين الثاني والثالث تتطلب اشتراك ROLE_PREMIUM، الفصل الأول يبقى مجانياً دائماً. OFF: الفصول الثلاثة مجانية للجميع.', dependsOn: 'enablePayments', dependsOnLabelAr: 'المدفوعات والاشتراكات' } },
   { id: 'enablePrintablePDFs', meta: { labelAr: '🖨️ فيشات المراجعة القابلة للطباعة', descriptionAr: 'ON: زر طباعة/تحميل فيشة المراجعة ظاهر داخل الدروس. OFF: الزر مخفي تماماً.' } },
   { id: 'enableAITutor', meta: { labelAr: '🤖 المعلم الافتراضي أمين الفنك (Gemini)', descriptionAr: 'ON: زر المساعد الذكي ظاهر في شريط التنقل. OFF: الزر مخفي، ولا وصول للمعلم الافتراضي.' } },
-  { id: 'enableExamSection', meta: { labelAr: '📜 قسم الامتحانات الرسمية (5AP)', descriptionAr: 'ON: تبويب الامتحانات الرسمية ظاهر لدى التلميذ. OFF: التبويب مخفي تماماً.' } },
 ];
 
 const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
