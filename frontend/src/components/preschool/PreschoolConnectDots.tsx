@@ -95,7 +95,9 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
       setMatchedIds(next);
       setSelected(null);
       playSuccessChime();
-      if (next.length === pairs.length) setTimeout(onComplete, 900);
+      // Short pause for the last match's own green flash — PreschoolActivityPlayer's celebration
+      // overlay adds its own (longer) pause before advancing, so this no longer needs to.
+      if (next.length === pairs.length) setTimeout(onComplete, 350);
     } else {
       setWrongPulseId(idB);
       playGentleNudge();
@@ -165,6 +167,12 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
             )}
       </p>
 
+      {/* dir="ltr" is intentional and independent of `language`: without it, dir="rtl" would flip
+          which physical side the `pairs` vs `shuffledRight` columns render on (flex row-start moves
+          to the right), even though nothing in the matching logic depends on reading direction —
+          matches are found by literal node position, not by "left means source". Keeping the board
+          itself ltr keeps the two columns in a stable physical spot across all 3 languages; only the
+          instruction text above should follow `language`, which is why it goes through `t()`. */}
       <div ref={boardRef} dir="ltr" className="relative flex items-start justify-center gap-10 sm:gap-14 w-full max-w-md px-2">
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"

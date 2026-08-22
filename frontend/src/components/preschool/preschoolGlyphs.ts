@@ -50,7 +50,7 @@ const SLUG_ICONS: Record<string, string> = {
   seasons_clothes: '🧥',
   balloon: '🎈',
   sun: '☀️',
-  family: '👨‍👩‍👧',
+  family: '👪',
   mom: '👩',
   dad: '👨',
   grandparents: '👴',

@@ -62,7 +62,11 @@ export const PreschoolMemoryCards: React.FC<PreschoolMemoryCardsProps> = ({ acti
           setMatchedPairIds(nextMatched);
           setFlippedIds([]);
           setBusy(false);
-          if (nextMatched.length === pairs.length) setTimeout(onComplete, 700);
+          // Short pause for the last pair's own green flash — PreschoolActivityPlayer's celebration
+          // overlay adds its own (longer) pause before advancing, so this no longer needs to. (The
+          // 500ms delay this callback is already inside is separate: it's what lets both flipped
+          // cards be seen before they're marked matched, and stays as-is.)
+          if (nextMatched.length === pairs.length) setTimeout(onComplete, 350);
         }, 500);
       } else {
         playGentleNudge();

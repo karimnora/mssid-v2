@@ -77,7 +77,10 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
       completedRef.current = true;
       setSolved(true);
       playSuccessChime();
-      setTimeout(onComplete, 1100);
+      // Long enough for the traveler's own arrival bounce (spring, ~280/20) to read, short compared
+      // to the old 1100ms — PreschoolActivityPlayer's celebration overlay adds its own pause on top,
+      // so this no longer needs to cover that too.
+      setTimeout(onComplete, 500);
     }
   };
 
@@ -158,7 +161,7 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
     },
     home: {
       hint: t('اِسْحَبِ الفَنَكَ مِنْ غُرْفَةٍ إِلَى غُرْفَة!', 'Glisse le fennec de pièce en pièce !', 'Drag the fennec from room to room!'),
-      win: t('هَا هِيَ العَائِلَة! 👨‍👩‍👧', 'Voici la famille ! 👨‍👩‍👧', 'Here is the family! 👨‍👩‍👧'),
+      win: t('هَا هِيَ العَائِلَة! 👪', 'Voici la famille ! 👪', 'Here is the family! 👪'),
       bg: 'linear-gradient(180deg, #fecaca 0%, #fed7aa 45%, #fde68a 100%)',
       trail: '#e11d48',
       trailFill: '#fff1f2',
@@ -224,6 +227,11 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
   const ui = THEME_UI[theme];
 
   return (
+    // dir="ltr" is intentional and independent of `language`: pathStops are laid out with fixed
+    // x/y percents (see types.ts PreschoolPathStop), so mirroring the board for Arabic would move
+    // the traveler's start/goal to the wrong physical side without moving the coordinates that
+    // define them. Do not switch this to the ambient `dir` — only the surrounding text should
+    // follow language direction, which is why `ui.hint`/`ui.win` render in a `text-center` <p> below.
     <div className="flex flex-col items-center gap-4 w-full max-w-sm px-1" dir="ltr">
       <motion.div
         ref={boardRef}

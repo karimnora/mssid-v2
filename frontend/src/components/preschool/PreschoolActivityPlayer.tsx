@@ -35,12 +35,17 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   activity, language, hasNext, onComplete, onSkip, onExit,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
+  const t = (ar: string, fr: string, en: string) =>
+    language === 'ar' ? ar : language === 'fr' ? fr : en;
   const [mood, setMood] = useState<MascotMood>('idle');
   const [showSuccess, setShowSuccess] = useState(false);
   const [showParentTip, setShowParentTip] = useState(false);
   const { speak, hasVoice } = usePreschoolSpeech(language);
   const content = activity.i18n[language];
-  const missingArabicVoice = language === 'ar' && !hasVoice && !content.promptAudioSrc;
+  // Previously gated on `language === 'ar'`, so a missing French/English TTS voice failed silently
+  // — the child would get no audio at all and the parent had no idea why. Arabic voices are the
+  // rarest on-device (hence the original focus), but the same device-settings fix applies to all 3.
+  const missingVoice = !hasVoice && !content.promptAudioSrc;
 
   useEffect(() => {
     setMood('idle');
@@ -66,8 +71,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         <button
           onClick={onExit}
           className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-          aria-label="خروج / Retour / Back"
-          title="خروج"
+          aria-label={t('خروج', 'Retour', 'Back')}
+          title={t('خروج', 'Retour', 'Back')}
         >
           🚪
         </button>
@@ -76,8 +81,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           <button
             onClick={replayPrompt}
             className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-            aria-label="إعادة الاستماع / Réécouter / Replay"
-            title="استمع للصوت"
+            aria-label={t('إعادة الاستماع', 'Réécouter', 'Replay')}
+            title={t('استمع للصوت', 'Écouter à nouveau', 'Listen again')}
           >
             🔊
           </button>
@@ -86,13 +91,9 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           <button
             onClick={onSkip}
             className="px-4 py-2.5 rounded-2xl bg-white hover:bg-orange-50 active:scale-95 text-orange-800 shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-orange-200"
-            title="تخطي / Passer / Skip"
+            title={hasNext ? t('تخطي', 'Passer', 'Skip') : t('خروج', 'Quitter', 'Leave')}
           >
-            <span>
-              {hasNext
-                ? (language === 'ar' ? 'تخطي' : language === 'fr' ? 'Passer' : 'Skip')
-                : (language === 'ar' ? 'خروج' : language === 'fr' ? 'Quitter' : 'Leave')}
-            </span>
+            <span>{hasNext ? t('تخطي', 'Passer', 'Skip') : t('خروج', 'Quitter', 'Leave')}</span>
             <span className="text-lg">{hasNext ? '⏩' : '🏠'}</span>
           </button>
         </div>
@@ -106,25 +107,25 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         {/* promptText is a caption for the accompanying adult, never required reading for the
             child (see types.ts) — kept collapsed by default so the child's screen only ever shows
             the mascot talking directly to them, not an instruction addressed to a parent. */}
-        {(content.promptText || missingArabicVoice) && (
+        {(content.promptText || missingVoice) && (
           <div className="flex flex-col items-center gap-1.5">
             <button
               onClick={() => setShowParentTip((v) => !v)}
               className="text-[11px] font-bold text-orange-700/60 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
             >
               <span>ℹ️</span>
-              <span>{language === 'ar' ? 'نصيحة لولي الأمر' : language === 'fr' ? 'Astuce pour le parent' : 'Tip for the grown-up'}</span>
+              <span>{t('نصيحة لولي الأمر', 'Astuce pour le parent', 'Tip for the grown-up')}</span>
             </button>
             {showParentTip && (
               <div className="text-xs text-orange-700/70 text-center max-w-xs bg-white/60 rounded-xl px-3 py-2 border border-orange-100 space-y-1.5">
                 {content.promptText && <p>{content.promptText}</p>}
-                {missingArabicVoice && (
+                {missingVoice && (
                   <p>
-                    {language === 'ar'
-                      ? 'لا يوجد صوت عربي على هذا الجهاز. ثبّت حزمة تحويل النص إلى كلام (العربية) من إعدادات الهاتف.'
-                      : language === 'fr'
-                        ? 'Pas de voix arabe sur cet appareil. Installe la voix arabe dans les réglages du téléphone.'
-                        : 'No Arabic voice on this device. Install the Arabic voice pack in your phone settings.'}
+                    {t(
+                      'لا يوجد صوت عربي على هذا الجهاز. ثبّت حزمة تحويل النص إلى كلام (العربية) من إعدادات الهاتف.',
+                      'Pas de voix française sur cet appareil. Installe la voix française dans les réglages du téléphone.',
+                      'No English voice on this device. Install the English voice pack in your phone settings.',
+                    )}
                   </p>
                 )}
               </div>

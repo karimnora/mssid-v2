@@ -35,7 +35,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
             onClick={onExit}
             className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl
                        hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-            aria-label="خروج / Quitter / Exit"
+            aria-label={t('خروج', 'Quitter', 'Exit')}
           >
             🚪
           </button>

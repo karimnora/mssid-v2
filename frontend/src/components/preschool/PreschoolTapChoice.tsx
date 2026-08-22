@@ -38,7 +38,10 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
     if (isCorrect) {
       setSolved(true);
       playSuccessChime();
-      setTimeout(onComplete, 900);
+      // Short enough just to let the correct choice's own green highlight register before
+      // PreschoolActivityPlayer's celebration overlay covers the screen — the celebration overlay
+      // already provides its own (longer) pause before advancing, so this no longer needs to.
+      setTimeout(onComplete, 350);
     } else {
       playGentleNudge();
       setWrongId(choiceId);

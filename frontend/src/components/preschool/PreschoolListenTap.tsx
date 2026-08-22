@@ -34,7 +34,10 @@ export const PreschoolListenTap: React.FC<PreschoolListenTapProps> = ({
       if (cards.length > 0 && cards.every((card) => next.has(card.id)) && !completedRef.current) {
         completedRef.current = true;
         playSuccessChime();
-        setTimeout(onComplete, 900);
+        // Kept a bit longer than the other interaction types' post-success pause: unlike them, the
+        // last tap here also triggers a spoken name via `speak()`, and this is the only window
+        // before PreschoolActivityPlayer's own speak() call cuts it off.
+        setTimeout(onComplete, 500);
       }
       return next;
     });
