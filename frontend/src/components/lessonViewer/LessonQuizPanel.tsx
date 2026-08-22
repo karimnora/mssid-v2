@@ -191,13 +191,13 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2.5 type-quiz text-[var(--app-text)] min-w-0">
-                  {playful && onSpeak && (
+                  {onSpeak && (
                     <TapSpeakButton
                       snippetKey={`quiz-${q.id}`}
                       text={q.questionAr}
                       speakingKey={speakingKey}
                       onSpeak={onSpeak}
-                      size="lg"
+                      size={playful ? 'lg' : 'md'}
                     />
                   )}
                   {!playful && (
@@ -308,7 +308,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                   >
                     <span className="font-extrabold text-[var(--brand-blue-dark)] block flex items-center gap-1.5">
                       <Lightbulb className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
-                      {playful && onSpeak && (
+                      {onSpeak && (
                         <TapSpeakButton
                           snippetKey={`quiz-${q.id}-why`}
                           text={

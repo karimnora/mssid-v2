@@ -49,13 +49,13 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                 renderArabicText={renderArabicText}
                 playful={playful}
                 leadAudio={
-                  playful && onSpeak ? (
+                  onSpeak ? (
                     <TapSpeakButton
                       snippetKey={`practice-${ex.id}`}
                       text={ex.problemAr}
                       speakingKey={speakingKey}
                       onSpeak={onSpeak}
-                      size="lg"
+                      size={playful ? 'lg' : 'md'}
                     />
                   ) : undefined
                 }
@@ -90,7 +90,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                 : 'bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs space-y-2'
               }>
                 <p className="font-bold mb-1.5 flex items-center gap-2 min-w-0">
-                  {playful && onSpeak && (
+                  {onSpeak && (
                     <TapSpeakButton
                       snippetKey={`game-${i}`}
                       text={item.questionOrPromptAr}

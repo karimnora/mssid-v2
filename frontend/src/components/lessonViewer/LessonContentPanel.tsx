@@ -6,13 +6,15 @@ import { LoadingFallback } from '../LoadingFallback';
 import { formatEducationalText } from '../../utils/textFormatter';
 import { BookOpen, GraduationCap, Lightbulb, Sparkles, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import { tabTransition } from './shared';
+import { TapSpeakButton } from './TapSpeakButton';
 
 const ScientificInquiryFlow = lazy(() => import('../ScientificInquiryFlow').then((m) => ({ default: m.ScientificInquiryFlow })));
 
 interface LessonContentPanelProps {
   lesson: CourseLesson;
   renderArabicText: (text: string | undefined | null) => string;
-  renderSpeakButton: (text: string | undefined, label: string) => React.ReactNode;
+  speakingKey?: string | null;
+  onSpeak?: (key: string, text: string) => void;
   selectedExampleTier: 1 | 2 | 3 | 4 | 5;
   onSelectExampleTier: (tier: 1 | 2 | 3 | 4 | 5) => void;
   visibleSolutions: Record<number, boolean>;
@@ -23,13 +25,25 @@ interface LessonContentPanelProps {
 export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
   lesson,
   renderArabicText,
-  renderSpeakButton,
+  speakingKey = null,
+  onSpeak,
   selectedExampleTier,
   onSelectExampleTier,
   visibleSolutions,
   onToggleSolution,
   onGoToSimulation,
-}) => (
+}) => {
+  const speak = (key: string, text: string | undefined) =>
+    onSpeak && text ? (
+      <TapSpeakButton
+        snippetKey={key}
+        text={renderArabicText(text)}
+        speakingKey={speakingKey}
+        onSpeak={onSpeak}
+      />
+    ) : null;
+
+  return (
   <div className="space-y-6">
     {lesson.scientificInquiry && (
       <Suspense fallback={<LoadingFallback label="جاري التحميل..." minHeight="160px" />}>
@@ -46,6 +60,7 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
       <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-5 sm:p-6 border border-emerald-800/80 shadow-md space-y-3">
         <div className="flex items-center justify-between border-b border-emerald-800/60 pb-3 flex-wrap gap-2">
           <div className="flex items-center gap-2.5">
+            {speak('summary', lesson.summaryAr)}
             <div className="p-2 bg-emerald-500/20 text-emerald-300 rounded-xl border border-emerald-500/30">
               <BookOpen className="w-5 h-5" />
             </div>
@@ -68,26 +83,23 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
           <span>الكورس المفصّل</span>
         </h3>
         <div className="flex items-start gap-2 bg-[var(--brand-blue)]/10 border border-[var(--brand-blue)]/25 rounded-2xl p-4">
+          {speak('intro', lesson.detailedCourse.introAr)}
           <p className="flex-1 text-sm text-[var(--app-text)] leading-relaxed">
             {renderArabicText(lesson.detailedCourse.introAr)}
           </p>
-          {renderSpeakButton(lesson.detailedCourse.introAr, 'المقدمة')}
         </div>
 
         {lesson.detailedCourse.vocabulary && lesson.detailedCourse.vocabulary.length > 0 && (
           <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-extrabold text-[var(--app-text-muted)] block">📖 كلمات مهمة أتذكرها:</span>
-              {renderSpeakButton(
-                lesson.detailedCourse.vocabulary.map((v) => `${v.termAr}. ${v.definitionAr}`).join('. '),
-                'الكلمات المهمة'
-              )}
-            </div>
+            <span className="text-xs font-extrabold text-[var(--app-text-muted)] block">📖 كلمات مهمة أتذكرها:</span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {lesson.detailedCourse.vocabulary.map((v, i) => (
-                <div key={i} className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-xl p-3 text-xs">
-                  <span className="font-black text-[var(--brand-blue-dark)] block">{renderArabicText(v.termAr)}</span>
-                  <span className="text-[var(--app-text-muted)]">{renderArabicText(v.definitionAr)}</span>
+                <div key={i} className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-xl p-3 text-xs flex items-start gap-2">
+                  {speak(`vocab-${i}`, v.termAr)}
+                  <div className="min-w-0">
+                    <span className="font-black text-[var(--brand-blue-dark)] block">{renderArabicText(v.termAr)}</span>
+                    <span className="text-[var(--app-text-muted)]">{renderArabicText(v.definitionAr)}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -103,27 +115,22 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
 
         {lesson.detailedCourse.commonMistakes && lesson.detailedCourse.commonMistakes.length > 0 && (
           <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-extrabold text-[var(--brand-coral-dark)] block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
-              {renderSpeakButton(
-                lesson.detailedCourse.commonMistakes
-                  .map((m) => `خطأ شائع: ${m.mistakeAr}. الصواب: ${m.correctionAr}`)
-                  .join('. '),
-                'الأخطاء الشائعة'
-              )}
-            </div>
+            <span className="text-xs font-extrabold text-[var(--brand-coral-dark)] block">⚠️ أخطاء شائعة يجب الانتباه إليها:</span>
             {lesson.detailedCourse.commonMistakes.map((m, i) => (
-              <div key={i} className="bg-[var(--brand-coral)]/10 border border-[var(--brand-coral)]/25 rounded-xl p-3 text-xs space-y-1">
-                <p className="text-[var(--brand-coral-dark)]"><span className="font-bold">❌ </span>{renderArabicText(m.mistakeAr)}</p>
-                <p className="text-[var(--brand-emerald-dark)]"><span className="font-bold">✅ </span>{renderArabicText(m.correctionAr)}</p>
+              <div key={i} className="bg-[var(--brand-coral)]/10 border border-[var(--brand-coral)]/25 rounded-xl p-3 text-xs space-y-1 flex items-start gap-2">
+                {speak(`mistake-${i}`, m.correctionAr)}
+                <div className="min-w-0 space-y-1">
+                  <p className="text-[var(--brand-coral-dark)]"><span className="font-bold">❌ </span>{renderArabicText(m.mistakeAr)}</p>
+                  <p className="text-[var(--brand-emerald-dark)]"><span className="font-bold">✅ </span>{renderArabicText(m.correctionAr)}</p>
+                </div>
               </div>
             ))}
           </div>
         )}
 
         <div className="flex items-start gap-2 bg-[var(--brand-amber)]/10 border border-[var(--brand-amber)]/35 rounded-2xl p-4 text-sm font-bold text-[var(--brand-amber-dark)]">
+          {speak('takeaway', lesson.detailedCourse.takeawayAr)}
           <span className="flex-1">💡 أتذكر: {renderArabicText(lesson.detailedCourse.takeawayAr)}</span>
-          {renderSpeakButton(lesson.detailedCourse.takeawayAr, 'ملخص أتذكر')}
         </div>
       </Card>
     )}
@@ -214,6 +221,7 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
           return (
             <div key={idx} className="bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] rounded-2xl p-4 sm:p-5 space-y-3 hover:border-[var(--brand-emerald)]/60 transition-all">
               <div className="flex items-start gap-3">
+                {speak(`rule-${idx}`, rule)}
                 <span className="w-8 h-8 rounded-xl bg-[var(--brand-emerald)] text-white font-black text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                   {idx + 1}
                 </span>
@@ -347,4 +355,5 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
       </Card>
     )}
   </div>
-);
+  );
+};

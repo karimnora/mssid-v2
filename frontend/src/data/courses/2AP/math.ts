@@ -1,11 +1,11 @@
 import { CourseLesson } from '../../../types';
 
 // 2AP content is original MSSID DZ pedagogical authoring, written to follow the general structure
-// of the official Algerian 2AP curriculum as summarized by the school program (numbers 0-99,
-// addition/subtraction, spatial positioning, basic shapes, length/mass comparison, clock reading).
+// of the official Algerian 2AP curriculum as summarized by the school program (numbers 0-999,
+// addition/subtraction with carry initiation, spatial positioning, basic shapes, m/cm, g/kg, clock reading).
 // Not a verbatim reproduction of a verified ministry document — see contentSource/sourceNoteAr below.
 const SOURCE_NOTE_2AP_MATH =
-  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ، مبني على الهيكل العام لمنهاج الرياضيات للسنة الثانية ابتدائي (الأعداد 0-99، الجمع والطرح، التموقع، الأشكال، القياس) — وليس نسخة حرفية عن وثيقة رسمية.';
+  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ، مبني على الهيكل العام لمنهاج الرياضيات للسنة الثانية ابتدائي (الأعداد 0-999، الجمع والطرح، التموقع، الأشكال، القياس) — وليس نسخة حرفية عن وثيقة رسمية.';
 
 export const MATH_2AP: CourseLesson[] = [
   // ==========================================
@@ -1070,6 +1070,7 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'الساعة الكاملة: العقرب الكبير على 12، والعقرب الصغير يشير إلى رقم الساعة. نقول مثلاً "الساعة الثامنة تماماً".',
     },
+    interactiveTool: 'clock_trainer',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-clock',
@@ -1158,6 +1159,7 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'الساعة والنصف = 30 دقيقة = العقرب الكبير على الرقم 6، والعقرب الصغير بين رقمين متتاليين.',
     },
+    interactiveTool: 'clock_trainer',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-halfhour',

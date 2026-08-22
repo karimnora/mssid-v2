@@ -821,15 +821,15 @@ export const CHALLENGES_DATA: Challenge[] = [
     subject: 'math',
     grade: '2AP',
     titleAr: 'سباق قراءة الأعداد 2AP',
-    descriptionAr: 'اختبر سرعتك في قراءة ومقارنة الأعداد إلى 99.',
+    descriptionAr: 'اختبر سرعتك في قراءة ومقارنة الأعداد إلى 999 وإحاطتها.',
     difficulty: 'easy',
     format: 'quiz_flash',
     xpReward: 15,
     items: [
       { questionOrPromptAr: 'العدد 27 يتكون من:', correctAnswerAr: '2 عشرات و 7 وحدات', optionsAr: ['2 عشرات و 7 وحدات', '7 عشرات و 2 وحدات'] },
-      { questionOrPromptAr: 'أي عدد أكبر؟', correctAnswerAr: '65', optionsAr: ['65', '56'] },
-      { questionOrPromptAr: 'اكتب بالحروف العدد 15:', correctAnswerAr: 'خَمْسَةَ عَشَرَ', optionsAr: ['خَمْسَةَ عَشَرَ', 'خَمْسُونَ'] },
-      { questionOrPromptAr: 'العدد الذي يأتي بعد 39 مباشرة هو:', correctAnswerAr: '40', optionsAr: ['40', '30'] },
+      { questionOrPromptAr: 'أي عدد أكبر؟', correctAnswerAr: '215', optionsAr: ['215', '152'] },
+      { questionOrPromptAr: 'إحاطة 47:', correctAnswerAr: '40 < 47 < 50', optionsAr: ['40 < 47 < 50', '47 < 40 < 50'] },
+      { questionOrPromptAr: 'العدد الذي يأتي بعد 99 مباشرة هو:', correctAnswerAr: '100', optionsAr: ['100', '90'] },
     ],
   },
   {
@@ -844,10 +844,10 @@ export const CHALLENGES_DATA: Challenge[] = [
     xpReward: 20,
     items: [
       { questionOrPromptAr: '23 + 14 = ؟', correctAnswerAr: '37', optionsAr: ['37', '27', '47'] },
-      { questionOrPromptAr: '48 - 15 = ؟', correctAnswerAr: '33', optionsAr: ['33', '43', '23'] },
+      { questionOrPromptAr: '42 − 18 = ؟', correctAnswerAr: '24', optionsAr: ['24', '36', '34'] },
       { questionOrPromptAr: '27 + 15 = ؟', correctAnswerAr: '42', optionsAr: ['42', '32', '52'] },
       { questionOrPromptAr: 'ضعف العدد 8 = ؟', correctAnswerAr: '16', optionsAr: ['16', '18', '10'] },
-      { questionOrPromptAr: '56 - 23 = ؟', correctAnswerAr: '33', optionsAr: ['33', '43', '23'] },
+      { questionOrPromptAr: '63 − 29 = ؟', correctAnswerAr: '34', optionsAr: ['34', '44', '32'] },
     ],
   },
   {
@@ -861,7 +861,7 @@ export const CHALLENGES_DATA: Challenge[] = [
     xpReward: 15,
     items: [
       { questionOrPromptAr: 'الحركة التي تُكتب تحت الحرف:', correctAnswerAr: 'الكسرة', optionsAr: ['الكسرة', 'الفتحة', 'الضمة'] },
-      { questionOrPromptAr: 'كلمة "نُورٌ" فيها مد بحرف:', correctAnswerAr: 'الواو', optionsAr: ['الواو', 'الألف', 'الياء'] },
+      { questionOrPromptAr: 'كلمة "لَعِبَ" هي:', correctAnswerAr: 'فعل', optionsAr: ['فعل', 'اسم', 'حرف'] },
       { questionOrPromptAr: 'أشير إلى معلمي (مذكر) فأقول:', correctAnswerAr: 'هَذَا', optionsAr: ['هَذَا', 'هَذِهِ'] },
       { questionOrPromptAr: 'كلمة "بَيْتٌ" تنتهي بـ:', correctAnswerAr: 'تاء مفتوحة', optionsAr: ['تاء مفتوحة', 'تاء مربوطة'] },
     ],

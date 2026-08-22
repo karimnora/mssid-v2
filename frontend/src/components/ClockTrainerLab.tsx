@@ -10,13 +10,28 @@ interface ClockTrainerLabProps {
 
 type ClockTab = 'explore' | 'quiz';
 
-const QUIZ_TIMES = [
+const QUIZ_TIMES_HOUR_HALF = [
   { hour: 3, minute: 0, labelAr: 'الثَّالِثَةُ تَمَاماً' },
   { hour: 6, minute: 30, labelAr: 'السَّادِسَةُ وَالنِّصْفُ' },
+  { hour: 8, minute: 0, labelAr: 'الثَّامِنَةُ تَمَاماً' },
+  { hour: 1, minute: 30, labelAr: 'الوَاحِدَةُ وَالنِّصْفُ' },
+  { hour: 9, minute: 0, labelAr: 'التَّاسِعَةُ تَمَاماً' },
+];
+
+const QUIZ_TIMES_WITH_QUARTERS = [
+  ...QUIZ_TIMES_HOUR_HALF,
   { hour: 9, minute: 15, labelAr: 'التَّاسِعَةُ وَرُبُعٌ' },
   { hour: 12, minute: 45, labelAr: 'الوَاحِدَةُ إِلَّا رُبُعاً' },
-  { hour: 8, minute: 0, labelAr: 'الثَّامِنَةُ تَمَاماً' },
 ];
+
+/** 2AP: hour and half-hour only. Quarters stay for 3AP+. */
+export function clockTrainerForGrade(grade?: PrimaryGrade) {
+  const hourAndHalfOnly = grade === '2AP';
+  return {
+    minuteStep: hourAndHalfOnly ? 30 : 5,
+    quizTimes: hourAndHalfOnly ? QUIZ_TIMES_HOUR_HALF : QUIZ_TIMES_WITH_QUARTERS,
+  };
+}
 
 const AnalogClock: React.FC<{ hour: number; minute: number }> = ({ hour, minute }) => {
   const hourDeg = ((hour % 12) + minute / 60) * 30;
@@ -43,19 +58,20 @@ const AnalogClock: React.FC<{ hour: number; minute: number }> = ({ hour, minute 
   );
 };
 
-export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ onReward }) => {
+export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onReward }) => {
+  const { minuteStep, quizTimes } = clockTrainerForGrade(grade);
   const [activeTab, setActiveTab] = useState<ClockTab>('explore');
   const [hour, setHour] = useState<number>(9);
   const [minute, setMinute] = useState<number>(0);
   const [qIdx, setQIdx] = useState<number>(0);
   const [answered, setAnswered] = useState<boolean | null>(null);
 
-  const currentQ = QUIZ_TIMES[qIdx];
+  const currentQ = quizTimes[qIdx % quizTimes.length];
   const options = useMemo(() => {
-    const wrongPool = QUIZ_TIMES.filter((_, i) => i !== qIdx);
+    const wrongPool = quizTimes.filter((_, i) => i !== qIdx % quizTimes.length);
     const shuffled = [...wrongPool].sort(() => Math.random() - 0.5).slice(0, 2);
     return [...shuffled, currentQ].sort(() => Math.random() - 0.5);
-  }, [qIdx, currentQ]);
+  }, [qIdx, currentQ, quizTimes]);
 
   const handleQuizAnswer = (labelAr: string) => {
     const ok = labelAr === currentQ.labelAr;
@@ -64,7 +80,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ onReward }) =>
   };
 
   const nextQuiz = () => {
-    setQIdx((prev) => (prev + 1) % QUIZ_TIMES.length);
+    setQIdx((prev) => (prev + 1) % quizTimes.length);
     setAnswered(null);
   };
 
@@ -125,8 +141,8 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ onReward }) =>
               <input
                 type="range"
                 min={0}
-                max={55}
-                step={5}
+                max={minuteStep === 30 ? 30 : 55}
+                step={minuteStep}
                 value={minute}
                 onChange={(e) => setMinute(Number(e.target.value))}
                 className="w-full cursor-pointer accent-fuchsia-600"

@@ -17,8 +17,8 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'ما عمل الشدة في كلمة "مَدَّ"؟', solutionAr: 'الشدة = حرف ساكن + حرف متحرك من الجنس نفسه، فننطق الدال مرتين: مَدْدَ ← مَدَّ.' },
-      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'أكمل التنوين: قَلَم...... (تنوين فتح).', solutionAr: 'قَلَماً (تنوين الفتح بألف غالباً).' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'لام "الشَّمْس" شمسية أم قمرية؟ هل ننطق اللام؟', solutionAr: 'لام شمسية: تُكتب ولا تُنطق، والشدة على الشين.' },
+      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'كلمة «لَعِبَ»: اسم أم فعل أم حرف؟', solutionAr: 'فعل (تدل على عمل).' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'أكمل: «... بِنْتٌ» (اسم إشارة للمؤنث القريب).', solutionAr: 'هَذِهِ بِنْتٌ.' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'اقرأ: "أَكَلَتِ الْبِنْتُ التُّفَّاحَةَ."\n1) من الذي أكل؟\n2) ما نوع لام "التفاحة"؟', solutionAr: '1) البنت. 2) لام شمسية (التاء بعد أل).' },
   },
@@ -98,7 +98,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'ما أول أركان الإسلام؟', solutionAr: 'الشهادتان.' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'نبدأ الوضوء بـ:\nأ) غسل الرجلين  ب) النية وغسل اليدين', solutionAr: 'ب) النية ثم غسل الكفين.' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'سورة الإخلاص تتحدث عن:', solutionAr: 'توحيد الله وأنه أحد صمد.' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'سورة الفيل تذكّرنا بأن الله حمى:', solutionAr: 'الكعبة / بيته الحرام.' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'اذكر خطوتين من خطوات الوضوء بالترتيب.', solutionAr: 'مثال: غسل الكفين، المضمضة، الاستنشاق، غسل الوجه، اليدين إلى المرفقين، مسح الرأس، غسل الرجلين.' },
   },

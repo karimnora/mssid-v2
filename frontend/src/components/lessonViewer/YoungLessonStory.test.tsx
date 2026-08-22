@@ -5,6 +5,7 @@ import { CourseLesson } from '../../types';
 import { YoungLessonStory } from './YoungLessonStory';
 import { LessonQuizPanel } from './LessonQuizPanel';
 import { LessonExplanationView } from '../LessonExplanationView';
+import { LocaleProvider } from '../../context/LocaleContext';
 import {
   buildPlayful1APSteps,
   isPlayful1AP,
@@ -183,5 +184,46 @@ describe('2AP explainer keeps compact sheet but drops generic supermarket', () =
     expect(screen.queryByText(/DZD/)).not.toBeInTheDocument();
     expect(screen.queryByText(/سوبرماركت/)).not.toBeInTheDocument();
     expect(screen.queryByText(/الامتحانات/)).not.toBeInTheDocument();
+  });
+
+  it('puts a speaker on each essential part and never concatenates the whole lesson', () => {
+    const onSpeak = vi.fn();
+    render(
+      <LessonExplanationView lesson={math2ap} speakingKey={null} onSpeak={onSpeak} />,
+    );
+    expect(screen.queryByText('إستمع للدرس')).not.toBeInTheDocument();
+    expect(document.querySelector('[data-tap-speak="discovery"]')).toBeTruthy();
+    expect(document.querySelector('[data-tap-speak="rule-0"]')).toBeTruthy();
+
+    fireEvent.click(document.querySelector('[data-tap-speak="rule-0"]')!);
+    expect(onSpeak).toHaveBeenCalledTimes(1);
+    expect(onSpeak.mock.calls[0][0]).toBe('rule-0');
+    expect(onSpeak.mock.calls[0][1]).toMatch(/فَوْقَ/);
+    expect(onSpeak.mock.calls[0][1]).not.toMatch(/تَحْتَ/);
+    expect(onSpeak.mock.calls[0][1]).not.toMatch(/عند سارة/);
+  });
+
+  it('lets 2AP hear a quiz question without the 1AP play chrome', () => {
+    const onSpeak = vi.fn();
+    render(
+      <LocaleProvider>
+        <LessonQuizPanel
+          lesson={math2ap}
+          shuffledQuiz={math2ap.quiz}
+          selectedAnswers={{}}
+          recentAnswerId={null}
+          renderArabicText={(t) => t || ''}
+          onSelectOption={() => {}}
+          onShuffle={() => {}}
+          onReset={() => {}}
+          onSpeak={onSpeak}
+          speakingKey={null}
+        />
+      </LocaleProvider>,
+    );
+    expect(screen.queryByText('هَيَّا نَلْعَبُ!')).not.toBeInTheDocument();
+    fireEvent.click(document.querySelector('[data-tap-speak="quiz-q1"]')!);
+    expect(onSpeak).toHaveBeenCalledTimes(1);
+    expect(onSpeak.mock.calls[0][1]).toMatch(/العصفور/);
   });
 });

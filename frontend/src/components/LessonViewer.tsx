@@ -353,29 +353,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <RevisionSheetViewer lesson={lesson} onClose={() => setShowRevisionSheet(false)} tashkeelEnabled={tashkeelEnabled} />
       )}
 
-      {speech.isYoungGrade && !isPlayful1AP && (
-        <button
-          type="button"
-          onClick={speech.handleToggleSpeech}
-          className={
-            isCompactGrade
-              ? `w-full min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-bold border cursor-pointer ${
-                  speech.isSpeaking
-                    ? 'bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border-[var(--brand-coral)]/40'
-                    : 'bg-white text-[var(--app-text)] border-[var(--app-card-border)]'
-                }`
-              : `w-full min-h-16 rounded-3xl flex items-center justify-center gap-3 text-lg sm:text-xl font-black shadow-lg transition-all cursor-pointer active:scale-[0.98] ${
-                  speech.isSpeaking
-                    ? 'bg-[var(--brand-coral)] text-white animate-pulse'
-                    : 'bg-[var(--brand-amber)] text-slate-950 hover:brightness-105'
-                }`
-          }
-        >
-          <span className={!isCompactGrade ? 'text-2xl' : 'text-lg'}>{speech.isSpeaking ? '⏹️' : '🔊'}</span>
-          <span>{speech.isSpeaking ? 'إيقاف الاستماع' : 'إستمع للدرس'}</span>
-        </button>
-      )}
-
       {isPlayful1AP ? (
         <div className="rounded-3xl bg-emerald-50 border border-emerald-100 p-4 sm:p-8 space-y-3" data-lesson-hero="1ap">
           {titleSnippet && (
@@ -446,7 +423,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               </Badge>
             )}
           </div>
-          <h1 className="text-xl sm:text-2xl font-black mb-3">{renderArabicText(lesson.titleAr)}</h1>
+          <div className="flex items-start gap-3 mb-3">
+            {speech.isYoungGrade && (
+              <TapSpeakButton
+                snippetKey="title"
+                text={renderArabicText(lesson.titleAr)}
+                speakingKey={speech.speakingKey}
+                onSpeak={speech.speakSnippet}
+              />
+            )}
+            <h1 className="text-xl sm:text-2xl font-black min-w-0">{renderArabicText(lesson.titleAr)}</h1>
+          </div>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-3xl">
             {renderArabicMath(lesson.summaryAr)}
           </p>
@@ -593,6 +580,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 availableSteps={availableSteps}
                 activeStepId={activeTab}
                 onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
+                speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
+                onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
               />
             )
           )}
@@ -612,8 +601,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onSelectGameOption={quiz.handleSelectGameOption}
               onResetGame={() => quiz.setGameAnswers({})}
               playful={isPlayful1AP}
-              speakingKey={isPlayful1AP ? speech.speakingKey : null}
-              onSpeak={isPlayful1AP ? speech.speakSnippet : undefined}
+              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
+              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
             />
           )}
 
@@ -621,7 +610,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <LessonContentPanel
               lesson={lesson}
               renderArabicText={renderArabicText}
-              renderSpeakButton={speech.renderSpeakButton}
+              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
+              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
               selectedExampleTier={selectedExampleTier}
               onSelectExampleTier={setSelectedExampleTier}
               visibleSolutions={quiz.visibleSolutions}
@@ -655,8 +645,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onShuffle={quiz.initializeShuffledQuiz}
               onReset={quiz.handleResetQuiz}
               playful={isPlayful1AP}
-              speakingKey={isPlayful1AP ? speech.speakingKey : null}
-              onSpeak={isPlayful1AP ? speech.speakSnippet : undefined}
+              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
+              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
               nextLessonTitle={isPlayful1AP && nextLesson ? renderArabicText(nextLesson.titleAr) : undefined}
               onContinueNext={isPlayful1AP && canCompleteLesson ? finishAndContinue : undefined}
             />

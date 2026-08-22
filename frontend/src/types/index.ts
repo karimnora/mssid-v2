@@ -636,7 +636,7 @@ export interface CourseLesson {
   rulesAr: string[];
   keyFormulas?: KeyFormula[];
   examplesAr?: { problem: string; solution: string }[];
-  interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'touch_writing' | 'tamazight_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas' | 'civics_lab' | 'math_lab' | 'french_dialogue_lab' | 'english_dialogue_lab';
+  interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'touch_writing' | 'tamazight_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas' | 'civics_lab' | 'math_lab' | 'french_dialogue_lab' | 'english_dialogue_lab' | 'clock_trainer';
   gameplay_simulation?: GameplaySimulation;
   quiz: QuizQuestion[];
   trimester?: 1 | 2 | 3;

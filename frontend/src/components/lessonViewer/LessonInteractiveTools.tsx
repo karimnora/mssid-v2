@@ -16,6 +16,7 @@ const IslamicEducationInteractive = lazy(() => import('../IslamicEducationIntera
 const CivicsInteractive = lazy(() => import('../CivicsInteractive').then((m) => ({ default: m.CivicsInteractive })));
 const MathInteractive = lazy(() => import('../MathInteractive').then((m) => ({ default: m.MathInteractive })));
 const LanguageLabInteractive = lazy(() => import('../LanguageLabInteractive').then((m) => ({ default: m.LanguageLabInteractive })));
+const ClockTrainerLab = lazy(() => import('../ClockTrainerLab').then((m) => ({ default: m.ClockTrainerLab })));
 
 export function hasRenderableInteractiveTool(lesson: CourseLesson): boolean {
   const effectiveTool = lesson.interactiveTool;
@@ -53,6 +54,7 @@ export const LessonInteractiveTools: React.FC<{ lesson: CourseLesson }> = ({ les
         {effectiveTool === 'math_lab' && lesson.mathInteractive && <MathInteractive config={lesson.mathInteractive} />}
         {effectiveTool === 'french_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="french" />}
         {effectiveTool === 'english_dialogue_lab' && lesson.languageInteractive && <LanguageLabInteractive config={lesson.languageInteractive} subject="english" />}
+        {effectiveTool === 'clock_trainer' && <ClockTrainerLab grade={lesson.grade} />}
       </div>
     </Suspense>
   );

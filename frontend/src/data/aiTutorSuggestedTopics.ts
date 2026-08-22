@@ -18,9 +18,9 @@ export const AI_TUTOR_SUGGESTED_TOPICS: Record<PrimaryGrade, SuggestedTopic[]> =
   ],
   '2AP': [
     { labelAr: 'الشدة والتنوين', subjectEmoji: '📖' },
-    { labelAr: 'الجمع بالاحتفاظ', subjectEmoji: '🔢' },
-    { labelAr: 'حالات المادة الثلاث', subjectEmoji: '🧪' },
-    { labelAr: 'حقوق الطفل', subjectEmoji: '🇩🇿' },
+    { labelAr: 'الجمع والطرح بالاحتفاظ', subjectEmoji: '🔢' },
+    { labelAr: 'حالات المادة والهواء', subjectEmoji: '🧪' },
+    { labelAr: 'سورة الفيل والوضوء', subjectEmoji: '🕌' },
   ],
   '3AP': [
     { labelAr: 'الجملة الفعلية', subjectEmoji: '📖' },

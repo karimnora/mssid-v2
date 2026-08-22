@@ -3,6 +3,7 @@ import { CourseLesson } from '../types';
 import { BookOpen, Lightbulb, Sparkles, CheckCircle2, ArrowLeft, ArrowRight, Zap, Target, HelpCircle, Glasses, Calculator, Play, RefreshCw, Layers } from 'lucide-react';
 import { LoadingFallback } from './LoadingFallback';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
+import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 
 // R2.1 — same lazy split as LessonViewer.tsx (this was the other static import forcing
 // ScienceLabSimulation, and transitively ElectricityLabInteractive, back into the main chunk).
@@ -20,6 +21,8 @@ interface LessonExplanationViewProps {
   }[];
   activeStepId?: string;
   onSelectStep?: (stepId: string) => void;
+  speakingKey?: string | null;
+  onSpeak?: (key: string, text: string) => void;
 }
 
 export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
@@ -28,6 +31,8 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
   availableSteps,
   activeStepId,
   onSelectStep,
+  speakingKey = null,
+  onSpeak,
 }) => {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
   const [interactiveMode, setInteractiveMode] = useState<'real_world' | 'step_by_step' | 'interactive_demo'>('real_world');
@@ -224,6 +229,16 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
   };
 
   const content = getSubjectRealWorldContent();
+  const usesAuthoredRules = lesson.grade === '1AP' || lesson.grade === '2AP';
+  const speak = (key: string, text: string | undefined) =>
+    onSpeak && text ? (
+      <TapSpeakButton
+        snippetKey={key}
+        text={renderArabicText(text)}
+        speakingKey={speakingKey}
+        onSpeak={onSpeak}
+      />
+    ) : null;
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
@@ -246,6 +261,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
           {lesson.objectiveAr && (
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
+                {speak('objective', lesson.objectiveAr)}
                 <Target className="w-4 h-4" />
                 <span>هدف الدرس</span>
               </div>
@@ -255,6 +271,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
           {lesson.discoveryAr && (
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
+                {speak('discovery', lesson.discoveryAr)}
                 <Sparkles className="w-4 h-4" />
                 <span>هل تعلم؟ (اكتشف الدرس)</span>
               </div>
@@ -266,6 +283,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
           {lesson.guidedExampleAr && (
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
+                {speak('guided-problem', lesson.guidedExampleAr.problem)}
                 <BookOpen className="w-4 h-4" />
                 <span>مثال موجّه خطوة بخطوة</span>
               </div>
@@ -361,9 +379,12 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
               >
                 <div className="flex items-center justify-between">
                   <span className="text-lg">{st.icon}</span>
-                  <span className="text-[10px] font-extrabold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-                    مرحلة {idx + 1}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    {usesAuthoredRules && speak(`rule-${idx}`, st.detail)}
+                    <span className="text-[10px] font-extrabold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+                      مرحلة {idx + 1}
+                    </span>
+                  </div>
                 </div>
                 <h4 className="font-extrabold text-xs text-slate-900">{st.title}</h4>
                 <p className="text-[11px] text-slate-600 font-sans leading-relaxed">{st.detail}</p>
@@ -409,6 +430,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
           {/* Active Step Card */}
           <div className="bg-emerald-50/60 border border-emerald-200/90 rounded-2xl p-5 space-y-3 animate-in fade-in duration-200">
             <div className="flex items-center gap-3">
+              {usesAuthoredRules && speak(`rule-step-${activeStepIndex}`, content.steps[activeStepIndex].detail)}
               <span className="w-10 h-10 rounded-xl bg-emerald-600 text-white font-black text-lg flex items-center justify-center shrink-0">
                 {activeStepIndex + 1}
               </span>

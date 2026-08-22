@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { COURSES_DATA } from './coursesData';
 import { OFFICIAL_EXAMS_DATA } from './examsData';
 import { PLAYFUL_PACKS } from './courses/1AP/playfulPacks';
+import { SURAH_2AP_COUNTS } from './courses/2AP/shortSurahs';
 
 describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
   const math5apLessons = COURSES_DATA.filter(
@@ -427,6 +428,7 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
       'arabic_canvas',
       'civics_lab',
       'math_lab',
+      'clock_trainer',
       'french_dialogue_lab',
       'english_dialogue_lab'
     ];
@@ -680,6 +682,84 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
       if (lesson.interactiveTool === 'civics_lab') {
         expect(lesson.civicsInteractive).toBeDefined();
       }
+    });
+  });
+
+  it('does not ship French (or English / history-geo) lessons — first foreign language is 3AP', () => {
+    expect(bySubject('french')).toHaveLength(0);
+    expect(bySubject('english')).toHaveLength(0);
+    expect(bySubject('history_geo')).toHaveLength(0);
+  });
+
+  it('fills the 2AP gaps: subtraction with carry, framing, right angle, m/cm, g/kg, reading, grammar, 2AP surahs', () => {
+    const ids = grade2apLessons.map((l) => l.id);
+    [
+      'math-2ap-t2-subtraction-with-carry',
+      'math-2ap-t2-number-framing',
+      'math-2ap-t3-right-angle',
+      'math-2ap-t3-meter-cm',
+      'math-2ap-t3-gram-kg',
+      'arabic-2ap-t1-reading-school',
+      'arabic-2ap-t3-copy-dictation',
+      'arabic-2ap-t3-ism-fil-harf',
+      'arabic-2ap-t3-gender-number',
+      'science-2ap-t2-animal-movement',
+      'science-2ap-t3-air',
+      'science-2ap-t3-simple-tools',
+      'science-2ap-t3-basic-electric',
+      'civics-2ap-t1-personal-documents',
+      'islamic-2ap-t3-surah-takathur',
+    ].forEach((id) => {
+      expect(ids, id).toContain(id);
+    });
+    expect(ids.some((id) => id.startsWith('french-2ap'))).toBe(false);
+  });
+
+  it('does not put multiplication tables in 2AP (3AP notion)', () => {
+    bySubject('math').forEach((lesson) => {
+      expect(lesson.interactiveTool).not.toBe('multiplication_table');
+      expect(lesson.titleAr).not.toMatch(/جَدْوَلُ الضَّرْبِ|جدول الضرب/);
+    });
+  });
+
+  it('clock lessons use the clock trainer lab', () => {
+    expect(grade2apLessons.find((l) => l.id === 'math-2ap-t3-clock-reading')?.interactiveTool).toBe('clock_trainer');
+    expect(grade2apLessons.find((l) => l.id === 'math-2ap-t3-clock-half-hour')?.interactiveTool).toBe('clock_trainer');
+  });
+
+  it('T1 surah quiz starts recitation with istiadhah then the basmala', () => {
+    const t1 = grade2apLessons.find((l) => l.id === 'islamic-2ap-t1-short-surahs-1');
+    const q = t1?.quiz.find((item) => item.id === 'q1-isl2ap-surahs1');
+    const correct = q?.options.find((o) => o.isCorrect)?.textAr ?? '';
+    expect(correct).toMatch(/أَعُوذُ/);
+    expect(correct).toMatch(/البَسْمَلَة/);
+    expect(q?.options.find((o) => o.isCorrect)?.explanationAr).not.toMatch(/نبدأ كل سورة بالبسملة/);
+  });
+
+  it('2AP catalogue has unique ids and matches the published pack count', () => {
+    const ids = grade2apLessons.map((l) => l.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids.length).toBe(63);
+  });
+
+  it('2AP quran lessons cover Fil, Qariah, Quraish, Humazah, Maun, Asr, Takathur — not a 1AP remake', () => {
+    const t1 = grade2apLessons.find((l) => l.id === 'islamic-2ap-t1-short-surahs-1');
+    expect(t1?.titleAr).toMatch(/الفِيل/);
+    expect(t1?.titleAr).not.toMatch(/الفَاتِحَة/);
+    const expected: Record<string, string[]> = {
+      'islamic-2ap-t1-short-surahs-1': ['سُورَةُ الفِيلِ', 'سُورَةُ القَارِعَةِ'],
+      'islamic-2ap-t2-short-surahs-2': ['سُورَةُ قُرَيْشٍ', 'سُورَةُ الهُمَزَةِ'],
+      'islamic-2ap-t3-surah-maun-asr': ['سُورَةُ المَاعُونِ', 'سُورَةُ العَصْرِ'],
+      'islamic-2ap-t3-surah-takathur': ['سُورَةُ التَّكَاثُرِ'],
+    };
+    Object.entries(expected).forEach(([id, names]) => {
+      const lesson = grade2apLessons.find((l) => l.id === id);
+      expect(lesson?.islamicInteractive?.type).toBe('quran_explorer');
+      if (lesson?.islamicInteractive?.type !== 'quran_explorer') return;
+      names.forEach((name) => {
+        const ayahs = lesson.islamicInteractive.verses.filter((v) => v.surahAr === name);
+        expect(ayahs.length, `${id} ${name}`).toBe(SURAH_2AP_COUNTS[name]);
+      });
     });
   });
 });

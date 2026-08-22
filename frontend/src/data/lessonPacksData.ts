@@ -72,7 +72,7 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة السنة 2 ابتدائي (القراءة والحساب الأساسي)',
     titleFr: 'Pack Complet 2AP',
     descriptionAr: 'بناء المفردات والجمل، الجمع والطرح، والتربية العلمية والإسلامية والمدنية.',
-    lessonsCount: 30,
+    lessonsCount: 63,
     updatedAt: '2026-07-20',
     isDownloaded: false,
   },
