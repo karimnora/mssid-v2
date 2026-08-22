@@ -683,6 +683,8 @@ export interface ExamExercise {
   points: number;
   contentAr: string;
   solutionAr: string;
+  /** Lesson to open after the corrigé — one notion, not the whole paper. */
+  relatedLessonId?: string;
 }
 
 /** How the paper is used in class — mirrors DzExams folders, without copying their files. */

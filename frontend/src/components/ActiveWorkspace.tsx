@@ -211,6 +211,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           completedExamIds={userProfile.completedExamIds}
           onExamComplete={onExamComplete}
           onOpenCourses={onBackToCourses}
+          onOpenLesson={onSelectLesson}
         />
       ) : selectedSubject === 'challenges' ? (
         <ChallengesArena

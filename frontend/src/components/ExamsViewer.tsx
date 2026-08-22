@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
-import { ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
+import { COURSES_DATA } from '../data/coursesData';
+import { CourseLesson, ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
 import { PrimaryAverageCalculator } from './PrimaryAverageCalculator';
 import { getExamKind } from '../utils/examKind';
@@ -36,6 +37,8 @@ interface ExamsViewerProps {
   onExamComplete?: (examId: string) => void;
   /** 1AP empty-state: jump back to the courses pole */
   onOpenCourses?: () => void;
+  /** Open a catalog lesson from a corrigé (« réviser cette leçon ») */
+  onOpenLesson?: (lesson: CourseLesson) => void;
 }
 
 const SUBJECT_EMOJI: Record<string, string> = {
@@ -60,12 +63,27 @@ const GRADE_TITLE_KEY: Record<PrimaryGrade, 'gradeTitle1AP' | 'gradeTitle2AP' | 
 type KindFilter = ExamKind;
 type TrimesterTab = 1 | 2 | 3 | 'all';
 
-function getDefaultTrimester(): 1 | 2 | 3 {
-  const month = new Date().getMonth();
-  if (month >= 0 && month <= 2) return 2;
-  if (month >= 3 && month <= 5) return 3;
-  return 1;
-}
+const ReviseLessonButton: React.FC<{
+  lessonId?: string;
+  label: string;
+  onOpenLesson?: (lesson: CourseLesson) => void;
+}> = ({ lessonId, label, onOpenLesson }) => {
+  if (!lessonId || !onOpenLesson) return null;
+  const lesson = COURSES_DATA.find((item) => item.id === lessonId);
+  if (!lesson) return null;
+  return (
+    <button
+      type="button"
+      onClick={() => onOpenLesson(lesson)}
+      className="inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl bg-sky-100 text-sky-950 border border-sky-300 hover:bg-sky-200 transition-all cursor-pointer"
+    >
+      <BookOpen className="w-3.5 h-3.5" />
+      <span>
+        {label} · {lesson.titleAr}
+      </span>
+    </button>
+  );
+};
 
 export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   grade,
@@ -73,13 +91,14 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   completedExamIds = [],
   onExamComplete,
   onOpenCourses,
+  onOpenLesson,
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
 
   const [kindFilter, setKindFilter] = useState<KindFilter>(grade === '5AP' || !grade ? 'bep' : 'composition');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
-  const [selectedTrimester, setSelectedTrimester] = useState<TrimesterTab>(() => getDefaultTrimester());
+  const [selectedTrimester, setSelectedTrimester] = useState<TrimesterTab>('all');
   const [selectedExamId, setSelectedExamId] = useState<string | null>(null);
 
   // Automatically reset internal filters when user switches grade in the top navbar
@@ -284,6 +303,13 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 <span className="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
                   {t(GRADE_TITLE_KEY[selectedExam.grade])}
                 </span>
+                <span className="text-xs font-extrabold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">
+                  {getExamKind(selectedExam) === 'devoir'
+                    ? t('devoirBadge')
+                    : getExamKind(selectedExam) === 'bep'
+                      ? t('bepBadge')
+                      : t('compositionBadge')}
+                </span>
               </div>
               <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] tracking-tight font-sans">
                 {renderArabicText(selectedExam.titleAr)}
@@ -291,6 +317,29 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               {selectedExam.sourceNoteAr && (
                 <p className="text-xs text-[var(--app-text-muted)] max-w-2xl">{selectedExam.sourceNoteAr}</p>
               )}
+              {(() => {
+                const linkedLessonIds = [
+                  ...new Set(
+                    [
+                      ...(selectedExam.relatedLessonIds || []),
+                      ...selectedExam.exercises.map((ex) => ex.relatedLessonId),
+                      selectedExam.problemExercise.relatedLessonId,
+                    ].filter((id): id is string => Boolean(id))
+                  ),
+                ];
+                if (linkedLessonIds.length === 0) return null;
+                return (
+                  <div className="pt-1 space-y-1">
+                    <p className="text-[11px] font-black text-[var(--app-text)]">{t('relatedLessonsTitle')}</p>
+                    <ul className="text-[11px] text-[var(--app-text-muted)] font-bold space-y-0.5">
+                      {linkedLessonIds.map((id) => {
+                        const lesson = COURSES_DATA.find((item) => item.id === id);
+                        return <li key={id}>{lesson ? lesson.titleAr : id}</li>;
+                      })}
+                    </ul>
+                  </div>
+                );
+              })()}
             </div>
 
             <div className="bg-[var(--app-card-subtle)] p-3 rounded-2xl border border-[var(--app-card-border)] text-xs font-bold text-[var(--app-text-muted)] space-y-1 text-right shrink-0">
@@ -354,12 +403,19 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
                   {/* Solution Box */}
                   {isSolVisible && (
-                    <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
-                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
-                        <Check className="w-3.5 h-3.5" />
-                        <span>الحل النموذجي المعتمد وسلّم التنقيط:</span>
+                    <div className="space-y-2">
+                      <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
+                        <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
+                          <Check className="w-3.5 h-3.5" />
+                          <span>الحل النموذجي المعتمد وسلّم التنقيط:</span>
+                        </div>
+                        {formatEducationalText(ex.solutionAr)}
                       </div>
-                      {formatEducationalText(ex.solutionAr)}
+                      <ReviseLessonButton
+                        lessonId={ex.relatedLessonId}
+                        label={t('reviseLessonCta')}
+                        onOpenLesson={onOpenLesson}
+                      />
                     </div>
                   )}
                 </div>
@@ -415,12 +471,19 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
               {/* Problem Solution Content */}
               {showSolutions['problem'] && (
-                <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
-                    <Check className="w-3.5 h-3.5" />
-                    <span>سلم التنقيط والحل النموذجي للوضعية الإدماجية:</span>
+                <div className="space-y-2">
+                  <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
+                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
+                      <Check className="w-3.5 h-3.5" />
+                      <span>سلم التنقيط والحل النموذجي للوضعية الإدماجية:</span>
+                    </div>
+                    {formatEducationalText(selectedExam.problemExercise.solutionAr)}
                   </div>
-                  {formatEducationalText(selectedExam.problemExercise.solutionAr)}
+                  <ReviseLessonButton
+                    lessonId={selectedExam.problemExercise.relatedLessonId}
+                    label={t('reviseLessonCta')}
+                    onOpenLesson={onOpenLesson}
+                  />
                 </div>
               )}
             </div>
@@ -509,6 +572,11 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   }`}
                 >
                   <h2 className="font-black text-sm sm:text-base">{styles.title}</h2>
+                  <p className={`text-[10px] font-black ${selected ? 'text-white/90' : 'text-[var(--app-text-muted)]'}`}>
+                    {t('examsCountLabel', {
+                      count: OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade && getExamKind(e) === kind).length,
+                    })}
+                  </p>
                   <p className={`text-xs leading-snug ${selected ? 'text-white/85' : 'text-[var(--app-text-muted)]'}`}>
                     {styles.desc}
                   </p>

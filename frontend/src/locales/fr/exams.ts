@@ -102,4 +102,6 @@ export const exams: typeof examsAr = {
   averageResult: 'Moyenne générale',
   averageFormulaNote: 'Moyenne matière = (éval. + composition) ÷ 2 si les deux notes existent, sinon la seule note. Coefficient = 1 par matière au programme.',
   averageIncludeTamazight: 'Suit le Tamazight (optionnel à partir de 3AP)',
+  relatedLessonsTitle: 'Révise ces leçons avant le sujet :',
+  reviseLessonCta: 'Réviser cette leçon',
 };

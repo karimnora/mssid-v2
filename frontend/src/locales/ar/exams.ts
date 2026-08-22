@@ -98,4 +98,6 @@ export const exams = {
   averageResult: 'المعدل العام',
   averageFormulaNote: 'معدل المادة = (التقييم + الاختبار) ÷ 2 إن وُجد الاثنان، وإلا النقطة الوحيدة. المعاملات = 1 حسب المواد المقررة.',
   averageIncludeTamazight: 'يَدرس الأمازيغية (اختيارية من 3AP)',
+  relatedLessonsTitle: 'راجع هذه الدروس قبل الموضوع:',
+  reviseLessonCta: 'راجع هذا الدرس',
 };
