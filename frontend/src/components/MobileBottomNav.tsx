@@ -1,11 +1,12 @@
 import React from 'react';
 import { Home, BookOpen, Bot, Grid, User, FileText } from 'lucide-react';
-import { SubjectId } from '../types';
+import { PrimaryGrade, SubjectId } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { isLabSubjectId } from '../navigation/appLocation';
 
 interface MobileBottomNavProps {
+  grade?: PrimaryGrade;
   selectedSubject: SubjectId;
   activeTab?: 'home' | 'courses' | 'exercises' | 'games';
   onSelectTab: (tab: 'home' | 'courses' | 'exercises' | 'games') => void;
@@ -16,6 +17,7 @@ interface MobileBottomNavProps {
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
+  grade,
   selectedSubject,
   activeTab,
   onSelectTab,
@@ -26,6 +28,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
+  const compact = grade === '1AP' || grade === '2AP';
 
   const handleTab = (tab: 'home' | 'courses' | 'exercises' | 'games') => {
     onSelectTab(tab);
@@ -65,68 +68,51 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     ? 'ring-[#FBF9F5]'
     : 'ring-slate-900';
 
+  const tabButton = (
+    tab: 'home' | 'courses' | 'exercises' | 'games',
+    icon: React.ReactNode,
+    label: string
+  ) => (
+    <button
+      type="button"
+      onClick={() => handleTab(tab)}
+      className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
+        activeTab === tab ? activeTabClass : inactiveTabClass
+      }`}
+    >
+      {icon}
+      <span className="text-[10px]">{label}</span>
+    </button>
+  );
+
   return (
     <nav
       className={`md:hidden fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md border-t px-2 py-1.5 flex items-center justify-around transition-colors duration-300 ${navBgClass}`}
       dir={direction}
       data-lab-open={activeLabId}
+      data-nav-compact={compact ? 'true' : 'false'}
     >
-      {/* 1. Home Tab */}
-      <button
-        onClick={() => handleTab('home')}
-        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
-          activeTab === 'home' ? activeTabClass : inactiveTabClass
-        }`}
-      >
-        <Home className="w-5 h-5" />
-        <span className="text-[10px]">{t('home')}</span>
-      </button>
+      {tabButton('home', <Home className="w-5 h-5" />, t('home'))}
+      {tabButton('courses', <BookOpen className="w-5 h-5" />, t('courses'))}
+      {tabButton('games', <Grid className="w-5 h-5 text-orange-400" />, t('games'))}
 
-      {/* 2. Courses Tab */}
-      <button
-        onClick={() => handleTab('courses')}
-        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
-          activeTab === 'courses' ? activeTabClass : inactiveTabClass
-        }`}
-      >
-        <BookOpen className="w-5 h-5" />
-        <span className="text-[10px]">{t('courses')}</span>
-      </button>
+      {!compact && (
+        <>
+          <button
+            type="button"
+            onClick={onOpenAiTutor}
+            className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-3xl shadow-2xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
+            title={t('aiTutor')}
+          >
+            <Bot className="w-6 h-6 animate-pulse" />
+            <span className="text-[9px] font-black tracking-tight mt-0.5">{t('aiTutorShort')}</span>
+          </button>
+          {tabButton('exercises', <FileText className="w-5 h-5 text-purple-400" />, t('exercises'))}
+        </>
+      )}
 
-      {/* 3. Games Tab */}
       <button
-        onClick={() => handleTab('games')}
-        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
-          activeTab === 'games' ? activeTabClass : inactiveTabClass
-        }`}
-      >
-        <Grid className="w-5 h-5 text-orange-400" />
-        <span className="text-[10px]">{t('games')}</span>
-      </button>
-
-      {/* 3. AI Tutor Floating Center Button */}
-      <button
-        onClick={onOpenAiTutor}
-        className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-3xl shadow-2xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
-        title={t('aiTutor')}
-      >
-        <Bot className="w-6 h-6 animate-pulse" />
-        <span className="text-[9px] font-black tracking-tight mt-0.5">{t('aiTutorShort')}</span>
-      </button>
-
-      {/* 4. Exercises Tab */}
-      <button
-        onClick={() => handleTab('exercises')}
-        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
-          activeTab === 'exercises' ? activeTabClass : inactiveTabClass
-        }`}
-      >
-        <FileText className="w-5 h-5 text-purple-400" />
-        <span className="text-[10px]">{t('exercises')}</span>
-      </button>
-
-      {/* 5. Profile / Account Tab */}
-      <button
+        type="button"
         onClick={onOpenProfile}
         className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${inactiveTabClass}`}
       >
@@ -136,4 +122,3 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     </nav>
   );
 };
-

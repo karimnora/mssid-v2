@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
+import { PrimaryGrade } from '../types';
 import { BookOpen, Trophy, Award, Zap, ShieldCheck, UserCircle2 } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
@@ -8,6 +9,7 @@ import { useLocaleContext } from '../context/LocaleContext';
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
 interface HomeViewProps {
+  grade: PrimaryGrade;
   authUser: AuthUser | null;
   userName: string;
   guestViewedCount?: number;
@@ -37,38 +39,68 @@ const POLES: { id: HomePoleId; icon: React.ReactNode; titleKey: 'poleCoursesTitl
   { id: 'labs', icon: <Zap className="w-7 h-7" />, titleKey: 'poleLabsTitle', descKey: 'poleLabsDesc', gradient: 'from-amber-500 to-emerald-600' },
 ];
 
+const isYoungGrade = (grade: PrimaryGrade) => grade === '1AP' || grade === '2AP';
+
 export const HomeView: React.FC<HomeViewProps> = ({
+  grade,
   authUser,
   userName,
   goldCoins = 150,
   onSelectPole,
   onOpenAuthModal,
   onOpenPreschool,
-  onOpenMarket,
-  onOpenWilayas,
-  onOpenHistoryMuseum,
-  onOpenScienceLab,
-  onOpenTamazightLab,
-  onOpenTamazightCurriculum,
-  onOpenTouchWriting,
   onOpenDressingRoom,
-  onOpenHomeworkPin,
-  onOpenPrintables,
-  onOpenOfflinePacks,
 }) => {
   const isGuest = !authUser;
   const t = useTranslation('home');
   const { direction } = useLocaleContext();
+  const young = isYoungGrade(grade);
+
+  if (young) {
+    return (
+      <div className="space-y-8" dir={direction} data-home-layout="young">
+        <div className="rounded-3xl p-8 sm:p-10 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-3">
+          <h1 className="text-2xl sm:text-3xl font-black">
+            {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
+          </h1>
+          <p className="text-sm text-white/90 font-bold">{t('youngTagline')}</p>
+        </div>
+
+        <motion.button
+          type="button"
+          onClick={() => onSelectPole('courses')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+          className="w-full rounded-3xl p-8 sm:p-10 text-start text-white shadow-md cursor-pointer bg-gradient-to-br from-emerald-600 to-teal-700"
+        >
+          <div className="w-16 h-16 rounded-3xl bg-white/20 flex items-center justify-center mb-4">
+            <BookOpen className="w-8 h-8" />
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black">{t('poleCoursesTitle')}</h2>
+          <p className="text-sm text-white/85 mt-2 font-bold">{t('poleCoursesDesc')}</p>
+        </motion.button>
+
+        {onOpenPreschool && (
+          <button
+            type="button"
+            onClick={onOpenPreschool}
+            className="w-full text-center text-xs font-bold text-[var(--app-text-muted)] py-3 cursor-pointer"
+          >
+            {t('preschoolFeatureCta')}
+          </button>
+        )}
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-6" dir={direction}>
-      {/* Welcome Header */}
+    <div className="space-y-6" dir={direction} data-home-layout="full">
       <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-black">{t('systemBadge')}</span>
-              <span className="bg-amber-400 text-amber-950 text-[10px] font-black px-2 py-0.5 rounded-full">v2.0 PWA</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black">
               {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
@@ -121,14 +153,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
         )}
       </div>
 
-      {/* 4 Primary Orientation Poles — school first, one preschool entry below */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {POLES.map((pole) => (
           <motion.button
             key={pole.id}
             onClick={() => onSelectPole(pole.id)}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
             className={`relative overflow-hidden rounded-3xl p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br ${pole.gradient}`}
           >
             <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-3">
@@ -142,8 +174,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {onOpenPreschool && (
         <motion.div
-          whileHover={{ scale: 1.01 }}
-          whileTap={{ scale: 0.99 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 22 }}
           onClick={onOpenPreschool}
           className="relative overflow-hidden rounded-3xl p-6 sm:p-7 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-xl cursor-pointer border-2 border-amber-300/40"
         >

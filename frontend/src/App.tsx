@@ -183,6 +183,7 @@ export default function App() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
         {nav.isHomeActive ? (
           <HomeView
+            grade={nav.grade}
             authUser={authUser}
             userName={progress.userProfile.name}
             goldCoins={progress.userProfile.goldCoins || 150}
@@ -323,6 +324,7 @@ export default function App() {
       />
 
       <MobileBottomNav
+        grade={nav.grade}
         selectedSubject={nav.selectedSubject}
         activeTab={nav.mobileTab}
         onSelectTab={nav.handleMobileTab}
