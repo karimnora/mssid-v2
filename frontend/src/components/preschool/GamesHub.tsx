@@ -1,7 +1,7 @@
 /**
  * GamesHub.tsx
  * Écran de sélection des mini-jeux pour la section "Espace Jeux & Labyrinthes"
- * 8 jeux pour enfants de 2-5 ans.
+ * 10 jeux pour enfants de 2-5 ans.
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -13,11 +13,13 @@ import { ShapeSorterGame }  from './ShapeSorterGame';
 import { CarWashGame }      from './CarWashGame';
 import { PuzzleGame }       from './PuzzleGame';
 import { SensoryTapGame }   from './SensoryTapGame';
+import { HideDidoGame }     from './HideDidoGame';
+import { LittleFisherGame } from './LittleFisherGame';
 import { useLevelProgress } from './useLevelProgress';
 
 export type GameId =
   | 'car_maze' | 'farm' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
-  | 'car_wash' | 'puzzle' | 'sensory_tap';
+  | 'car_wash' | 'puzzle' | 'sensory_tap' | 'hide_dido' | 'little_fisher';
 
 interface GameCard {
   id: GameId;
@@ -101,6 +103,22 @@ const GAMES: GameCard[] = [
     gradient: 'from-pink-400 to-purple-500', border: 'border-pink-300', badge: '👶 Mode Bébé',
   },
   {
+    id: 'hide_dido',
+    icon: '🦊',
+    titleAr: 'أين ديدو؟',                    titleFr: 'Où est Dido ?',                      titleEn: 'Where is Dido?',
+    descAr:  'صحراء، سوق، قصبة، شاطئ — 8 مشاهد!', descFr:  'Sahara, souk, casbah, plage — 8 scènes !', descEn:  'Sahara, souk, casbah, beach — 8 scenes!',
+    gradient: 'from-amber-400 to-orange-600', border: 'border-amber-300', badge: '👀 Cherche',
+    progressId: 'hide_dido', maxLevels: 8,
+  },
+  {
+    id: 'little_fisher',
+    icon: '🎣',
+    titleAr: 'الصياد الصغير',                 titleFr: 'Le Petit Pêcheur',                   titleEn: 'The Little Fisher',
+    descAr:  'المس السمك — ليس الطحلب! 8 مستويات', descFr:  'Touche les poissons, pas les algues — 8 niveaux', descEn:  'Tap the fish, not the seaweed — 8 levels',
+    gradient: 'from-sky-400 to-cyan-600', border: 'border-sky-300', badge: '🌊 Mer',
+    progressId: 'little_fisher', maxLevels: 8,
+  },
+  {
     id: 'puzzle',
     icon: '🧩',
     titleAr: 'أَلْغَازُ دِيدُو',                  titleFr: 'Le Puzzle de Dido',                      titleEn: 'Dido\'s Puzzle',
@@ -134,6 +152,8 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
       case 'fruit_catcher': return <FruitCatcherGame language={language} onExit={exit} />;
       case 'shape_sorter':  return <ShapeSorterGame  language={language} onExit={exit} />;
       case 'car_wash':      return <CarWashGame      language={language} onExit={exit} />;
+      case 'hide_dido':     return <HideDidoGame     language={language} onExit={exit} />;
+      case 'little_fisher': return <LittleFisherGame language={language} onExit={exit} />;
       case 'puzzle':        return <PuzzleGame       language={language} onExit={exit} />;
       case 'sensory_tap':   return <SensoryTapGame   language={language} onExit={exit} />;
       default:              return null;
@@ -217,9 +237,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
 
               {/* Footer hint */}
               <p className="text-center text-xs text-indigo-500 font-bold pb-2">
-                {t('8 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
-                   '8 jeux éducatifs et amusants pour 2-5 ans 🎈',
-                   '8 fun educational games for ages 2-5 🎈')}
+                {t('10 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
+                   '10 jeux éducatifs et amusants pour 2-5 ans 🎈',
+                   '10 fun educational games for ages 2-5 🎈')}
               </p>
             </div>
           </motion.div>

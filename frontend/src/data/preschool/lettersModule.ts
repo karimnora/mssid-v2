@@ -468,20 +468,20 @@ export const LETTERS_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'وَصِّلِ الحَرْفَ بِالصُّورَةِ',
-          promptAudio: 'اِلْمِسِ الحَرْفَ ثُمَّ الْمِسِ الصُّورَةَ المُنَاسِبَةَ لَه!',
-          promptText: 'ساعد طفلك على ربط الحرف بصورته المناسبة.',
+          promptAudio: 'اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!',
+          promptText: 'يمكن الربط بالنقر (حرف ثم صورة) أو بسحب خط من الحرف إلى الصورة.',
           successAudio: 'عَبْقَرِيٌّ صَغِير! رَبَطْتَ كُلَّ الحُرُوف!',
         },
         fr: {
           title: 'Associe la Lettre et l\'Image',
-          promptAudio: 'Touche la lettre puis touche la bonne image !',
-          promptText: 'Aidez l\'enfant à associer chaque lettre à son image.',
+          promptAudio: 'Touche la lettre puis l’image, ou glisse un trait pour les relier !',
+          promptText: 'On peut associer en tapant (lettre puis image) ou en traçant un lien.',
           successAudio: 'Bravo ! Tu as associé toutes les lettres !',
         },
         en: {
           title: 'Match Letter and Picture',
-          promptAudio: 'Tap the letter, then tap the matching picture!',
-          promptText: 'Help your child match each letter to its picture.',
+          promptAudio: 'Tap the letter then the picture, or drag a line to connect them!',
+          promptText: 'Match by tapping (letter then picture) or by drawing a link.',
           successAudio: 'Fantastic! All letters are matched!',
         },
       },
@@ -831,20 +831,20 @@ export const LETTERS_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'وَصِّلِ الحَرْفَ بِالصُّورَةِ (٢)',
-          promptAudio: 'اِلْمِسِ الحَرْفَ ثُمَّ الْمِسِ الصُّورَةَ المُنَاسِبَةَ لَه!',
-          promptText: 'ساعد طفلك على ربط الحرف بصورته المناسبة (تكملة الأبجدية).',
+          promptAudio: 'اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!',
+          promptText: 'يمكن الربط بالنقر (حرف ثم صورة) أو بسحب خط من الحرف إلى الصورة (تكملة الأبجدية).',
           successAudio: 'عَبْقَرِيٌّ صَغِير! رَبَطْتَ كُلَّ حُرُوفِ الأَبْجَدِيَّة!',
         },
         fr: {
           title: 'Associe la Lettre et l\'Image (2)',
-          promptAudio: 'Touche la lettre puis touche la bonne image !',
-          promptText: 'Aidez l\'enfant à associer chaque lettre à son image (suite de l\'alphabet).',
+          promptAudio: 'Touche la lettre puis l’image, ou glisse un trait pour les relier !',
+          promptText: 'On peut associer en tapant ou en traçant un lien (suite de l’alphabet).',
           successAudio: 'Bravo ! Tu as associé tout l\'alphabet !',
         },
         en: {
           title: 'Match Letter and Picture (2)',
-          promptAudio: 'Tap the letter, then tap the matching picture!',
-          promptText: 'Help your child match each letter to its picture (rest of the alphabet).',
+          promptAudio: 'Tap the letter then the picture, or drag a line to connect them!',
+          promptText: 'Match by tapping or by drawing a link (rest of the alphabet).',
           successAudio: 'Fantastic! You matched the whole alphabet!',
         },
       },

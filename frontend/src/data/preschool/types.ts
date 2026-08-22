@@ -14,7 +14,7 @@ export type PreschoolInteractionType =
   | 'drag_drop'      // Drag objects into a drop zone (counting)
   | 'trace'          // Trace a numeral/shape with a finger (wide tolerance, never blocks)
   | 'find_path'      // Drag a character from a start point to an end point (simplified maze — reaching the goal matters, not staying on a line)
-  | 'connect_dots'   // Tap-to-match a pair (left item, then its right match) — no precise line-drawing required
+  | 'connect_dots'   // Match pairs by tap (A then B) OR by dragging a line between them
   | 'sorting'        // Drag items into the correct one of several category bins
   | 'memory_cards'   // Flip-and-match pairs, 2x2 (default) up to 2x3 cards
   | 'creative_extra' // Open slot for one-off original mini-games that don't fit the shapes above (e.g. bubble_pop below) — add new interactionType values here as they're invented, keep each one's own small, self-contained component
