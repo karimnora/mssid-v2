@@ -26,6 +26,9 @@ import { PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { MssidLogo } from './MssidLogo';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { Badge } from './ui';
 
 export type HeaderTheme = 'light' | 'neutre' | 'dark';
@@ -50,18 +53,18 @@ interface NavbarProps {
   onThemeChange?: (theme: HeaderTheme) => void;
 }
 
-const GRADES: { id: PrimaryGrade; labelAr: string; shortLabel: string; badge: string }[] = [
-  { id: '1AP', labelAr: 'السنة الأولى', shortLabel: 'السنة 1', badge: '1AP' },
-  { id: '2AP', labelAr: 'السنة الثانية', shortLabel: 'السنة 2', badge: '2AP' },
-  { id: '3AP', labelAr: 'السنة الثالثة', shortLabel: 'السنة 3', badge: '3AP' },
-  { id: '4AP', labelAr: 'السنة الرابعة', shortLabel: 'السنة 4', badge: '4AP' },
-  { id: '5AP', labelAr: 'السنة الخامسة', shortLabel: 'السنة 5', badge: '5AP' },
+const GRADES: { id: PrimaryGrade; labelKey: 'grade1APFull' | 'grade2APFull' | 'grade3APFull' | 'grade4APFull' | 'grade5APFull'; badge: string }[] = [
+  { id: '1AP', labelKey: 'grade1APFull', badge: '1AP' },
+  { id: '2AP', labelKey: 'grade2APFull', badge: '2AP' },
+  { id: '3AP', labelKey: 'grade3APFull', badge: '3AP' },
+  { id: '4AP', labelKey: 'grade4APFull', badge: '4AP' },
+  { id: '5AP', labelKey: 'grade5APFull', badge: '5AP' },
 ];
 
-const THEME_OPTIONS: { id: HeaderTheme; labelAr: string; shortLabelAr: string; icon: React.ReactNode }[] = [
-  { id: 'neutre', labelAr: 'النمط الملوّن والمنعش', shortLabelAr: 'ملوّن', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
-  { id: 'light', labelAr: 'فاتح', shortLabelAr: 'فاتح', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
-  { id: 'dark', labelAr: 'داكن', shortLabelAr: 'داكن', icon: <Moon className="w-3.5 h-3.5 text-[var(--brand-blue)]" /> },
+const THEME_OPTIONS: { id: HeaderTheme; icon: React.ReactNode }[] = [
+  { id: 'neutre', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
+  { id: 'light', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
+  { id: 'dark', icon: <Moon className="w-3.5 h-3.5 text-[var(--brand-blue)]" /> },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -83,6 +86,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentTheme = 'neutre',
   onThemeChange,
 }) => {
+  const t = useTranslation('navigation');
+  const { direction } = useLocaleContext();
   const [theme, setTheme] = useState<HeaderTheme>(currentTheme);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
@@ -136,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 transition-colors duration-300 dir-rtl bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir="rtl">
+      <header className="sticky top-0 z-40 transition-colors duration-300 bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir={direction}>
         <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
 
           {/* LOGO & BRAND — shrinks/truncates first, never forces the row wider */}
@@ -150,11 +155,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   MSSID <span className="text-[var(--brand-blue)] font-serif text-base sm:text-lg">DZ</span>
                 </span>
                 <span className="hidden xl:inline-block bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] text-[10px] font-black px-2 py-0.5 rounded-full border border-[var(--brand-blue)]/25 whitespace-nowrap">
-                  مَسِيد الجزائر
+                  {t('brandBadge')}
                 </span>
               </div>
               <p className="text-[11px] font-bold text-[var(--app-text-muted)] hidden sm:block truncate">
-                المنصة التعليمية للابتدائي الجزائري
+                {t('brandTagline')}
               </p>
             </div>
           </div>
@@ -165,10 +170,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               whileTap={{ scale: 0.94 }}
               onClick={onHomeClick}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl border text-xs font-black transition-all cursor-pointer bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-sm hover:brightness-110"
-              title="العودة للصفحة الرئيسية"
+              title={t('backToHomeTitle')}
             >
               <Home className="w-3.5 h-3.5" />
-              <span>الرئيسية</span>
+              <span>{t('home')}</span>
             </motion.button>
 
             <div className="flex items-center gap-1 p-1 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shrink-0">
@@ -177,10 +182,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={onOpenPreschool}
                   whileTap={{ scale: 0.94 }}
                   className="px-2.5 py-1.5 rounded-xl text-[11px] font-black transition-colors cursor-pointer bg-gradient-to-r from-amber-400 to-orange-400 text-orange-950 shadow-xs hover:brightness-105 flex items-center gap-1"
-                  title="قسم التحضيري والإيقاظ (3 إلى 5 سنوات)"
+                  title={t('preschoolNavTitle')}
                 >
                   <span>🦊</span>
-                  <span>التحضيري</span>
+                  <span>{t('preschoolNavLabel')}</span>
                 </motion.button>
               )}
 
@@ -194,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className={`relative px-2.5 py-1.5 rounded-xl text-[11px] font-black transition-colors cursor-pointer select-none ${
                       isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                     }`}
-                    title={g.labelAr}
+                    title={t(g.labelKey)}
                   >
                     {isActive && (
                       <motion.span
@@ -220,10 +225,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 whileTap={{ y: 1 }}
                 onClick={onOpenAiTutor}
                 className="flex items-center gap-1.5 bg-gradient-to-r from-[var(--brand-emerald)] to-[var(--brand-blue)] text-white font-black text-xs px-2.5 sm:px-3 py-2 rounded-xl shadow-md transition-shadow cursor-pointer"
-                title="المعلم الذكي مسيد"
+                title={t('aiTutorTitle')}
               >
                 <Bot className="w-4 h-4 text-amber-200" />
-                <span className="hidden xl:inline">المعلّم الذكي</span>
+                <span className="hidden xl:inline">{t('aiTutorNavLabel')}</span>
               </motion.button>
             )}
 
@@ -231,7 +236,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenProfileModal}
               className="hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-2xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)] hover:opacity-90"
-              title={`المستوى ${displayLevel} - ${displayXp} نقاط خبرة`}
+              title={t('xpLevelStatus', { level: displayLevel, xp: displayXp })}
             >
               <div className="flex items-center gap-1 text-orange-500">
                 <Flame className="w-4 h-4 fill-orange-500" />
@@ -252,13 +257,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </button>
 
+            <LanguageSwitcher compact className="hidden md:flex" />
+
             {/* Theme Dropdown */}
             <div className="hidden md:block relative" ref={themeRef}>
               <motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setIsThemeDropdownOpen((v) => !v)}
                 className="p-2 rounded-xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] hover:opacity-90 border-[var(--app-card-border)] text-[var(--app-text)]"
-                title="تغيير المظهر والثيم"
+                title={t('themeMenuTitle')}
               >
                 {theme === 'light' ? (
                   <Sun className="w-4 h-4 text-amber-500" />
@@ -279,13 +286,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className="absolute left-0 mt-2 w-52 rounded-2xl border p-1.5 shadow-2xl z-50 bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text)]"
                   >
                     <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
-                      اختر ثيم الواجهة:
+                      {t('chooseThemeLabel')}
                     </div>
                     {THEME_OPTIONS.map((opt) => (
                       <button
                         key={opt.id}
                         onClick={() => handleThemeSelect(opt.id)}
-                        className={`w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-colors cursor-pointer ${
+                        className={`w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-colors cursor-pointer ${
                           theme === opt.id
                             ? 'bg-[var(--brand-blue)] text-white font-black shadow-sm'
                             : 'hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]'
@@ -293,7 +300,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       >
                         <div className="flex items-center gap-2">
                           {opt.icon}
-                          <span>{opt.labelAr}</span>
+                          <span>{t(opt.id === 'neutre' ? 'themeNeutreFull' : opt.id === 'light' ? 'themeLightFull' : 'themeDarkFull')}</span>
                         </div>
                         {theme === opt.id && <Check className="w-3.5 h-3.5 text-white" />}
                       </button>
@@ -309,13 +316,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 whileTap={{ scale: 0.96 }}
                 onClick={() => setIsProfileDropdownOpen((v) => !v)}
                 className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-extrabold transition-colors cursor-pointer bg-[var(--app-card-subtle)] hover:opacity-90 border-[var(--app-card-border)] text-[var(--app-text)]"
-                title="القائمة والخيارات العامة"
+                title={t('profileMenuTitle')}
               >
                 <div className="w-6 h-6 rounded-lg bg-[var(--brand-emerald)] text-white font-black flex items-center justify-center text-[10px] shrink-0">
                   {authUser?.nom ? authUser.nom.charAt(0).toUpperCase() : '👤'}
                 </div>
                 <span className="hidden lg:inline max-w-[100px] truncate">
-                  {authUser ? authUser.nom : 'تسجيل الدخول'}
+                  {authUser ? authUser.nom : t('loginShort')}
                 </span>
                 <ChevronDown className="w-3.5 h-3.5 opacity-70" />
               </motion.button>
@@ -332,7 +339,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <div className="p-2.5 rounded-xl border mb-2 bg-[var(--brand-blue)]/10 border-[var(--brand-blue)]/25">
                       <div className="flex items-center justify-between gap-1 flex-wrap">
                         <span className="font-extrabold text-xs truncate max-w-[120px] text-[var(--app-text)]">
-                          {authUser ? authUser.nom : 'زائر mssid dz'}
+                          {authUser ? authUser.nom : t('guestFallbackName')}
                         </span>
                         <span className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded shadow-xs ${
                           !authUser
@@ -349,42 +356,42 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {authUser?.email ? (
                         <p dir="ltr" className="text-[10px] text-[var(--app-text-muted)] text-right truncate mt-0.5 font-mono">{authUser.email}</p>
                       ) : (
-                        <p className="text-[10px] text-[var(--app-text-muted)] text-right truncate mt-0.5">سجل دخولك لحفظ بياناتك في الخادم</p>
+                        <p className="text-[10px] text-[var(--app-text-muted)] text-start truncate mt-0.5">{t('guestSaveDataHint')}</p>
                       )}
                       <div className="text-[10px] mt-1.5 flex items-center justify-between text-[var(--app-text-muted)]">
-                        <span>🔥 {authUser?.streakDays ?? userProfile.streakDays} أيام متتالية</span>
+                        <span>{t('streakDaysStatus', { days: authUser?.streakDays ?? userProfile.streakDays })}</span>
                         <span dir="ltr" className="font-bold text-[var(--brand-amber-dark)]">🏆 {displayXp} XP</span>
                       </div>
                     </div>
 
                     <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
-                      الحساب والتوثيق
+                      {t('accountSectionTitle')}
                     </div>
 
                     {!authUser ? (
                       <button
                         onClick={() => { onOpenAuthModal(); setIsProfileDropdownOpen(false); }}
-                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-blue-dark)] hover:bg-[var(--brand-blue)]/10"
+                        className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-blue-dark)] hover:bg-[var(--brand-blue)]/10"
                       >
                         <KeyRound className="w-4 h-4 text-[var(--brand-blue)]" />
-                        <span>تسجيل الدخول / إنشاء حساب</span>
+                        <span>{t('loginRegisterCta')}</span>
                       </button>
                     ) : (
                       <>
                         <button
                           onClick={() => { onOpenProfileModal(); setIsProfileDropdownOpen(false); }}
-                          className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                          className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
                         >
                           <User className="w-4 h-4 text-[var(--brand-emerald)]" />
-                          <span>الملف الشخصي والتقدم</span>
+                          <span>{t('profileAndProgress')}</span>
                         </button>
 
                         <button
                           onClick={() => { onLogout(); setIsProfileDropdownOpen(false); }}
-                          className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-coral-dark)] hover:bg-[var(--brand-coral)]/10"
+                          className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer text-[var(--brand-coral-dark)] hover:bg-[var(--brand-coral)]/10"
                         >
                           <LogOut className="w-4 h-4 text-[var(--brand-coral)]" />
-                          <span>تسجيل الخروج</span>
+                          <span>{t('logout')}</span>
                         </button>
                       </>
                     )}
@@ -392,10 +399,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {onOpenContactModal && (
                       <button
                         onClick={() => { onOpenContactModal(); setIsProfileDropdownOpen(false); }}
-                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                        className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
                       >
                         <MessageSquare className="w-4 h-4 text-[var(--brand-blue)]" />
-                        <span>تواصل معنا</span>
+                        <span>{t('contactUs')}</span>
                       </button>
                     )}
 
@@ -403,41 +410,41 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {isAdmin && (
                       <>
                         <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
-                          إدارة النظام (Admin)
+                          {t('adminSectionTitle')}
                         </div>
 
                         {onOpenAdminConsole && (
                           <button
                             onClick={() => { onOpenAdminConsole(); setIsProfileDropdownOpen(false); }}
-                            className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border border-[var(--brand-amber)]/30"
+                            className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border border-[var(--brand-amber)]/30"
                           >
                             <ShieldCheck className="w-4 h-4 text-[var(--brand-amber)]" />
-                            <span>لوحة تحكم الإدارة</span>
+                            <span>{t('adminConsole')}</span>
                           </button>
                         )}
                       </>
                     )}
 
                     <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 mt-2 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
-                      أدوات وإعدادات
+                      {t('toolsSectionTitle')}
                     </div>
 
                     {onOpenPrivacyPolicy && (
                       <button
                         onClick={() => { onOpenPrivacyPolicy(); setIsProfileDropdownOpen(false); }}
-                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                        className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
                       >
                         <FileText className="w-4 h-4 text-[var(--app-text-muted)]" />
-                        <span>سياسة الخصوصية Google Play</span>
+                        <span>{t('privacyPolicyMenuItem')}</span>
                       </button>
                     )}
                     {onOpenTermsOfService && (
                       <button
                         onClick={() => { onOpenTermsOfService(); setIsProfileDropdownOpen(false); }}
-                        className="w-full text-right px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
+                        className="w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]"
                       >
                         <FileText className="w-4 h-4 text-[var(--app-text-muted)]" />
-                        <span>الشروط والأحكام</span>
+                        <span>{t('termsMenuItem')}</span>
                       </button>
                     )}
                   </motion.div>
@@ -450,7 +457,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileDrawerOpen((v) => !v)}
               className="md:hidden p-2 rounded-xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)]"
-              title="القائمة"
+              title={t('mobileMenuTitle')}
             >
               {isMobileDrawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </motion.button>
@@ -466,14 +473,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end dir-rtl"
-            dir="rtl"
+            className="md:hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end"
+            dir={direction}
             onClick={(e) => { if (e.target === e.currentTarget) setIsMobileDrawerOpen(false); }}
           >
             <motion.div
-              initial={{ x: '100%' }}
+              initial={{ x: direction === 'rtl' ? '100%' : '-100%' }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              exit={{ x: direction === 'rtl' ? '100%' : '-100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 34 }}
               className="w-4/5 max-w-sm h-full p-5 flex flex-col justify-between shadow-2xl border-r border-[var(--app-card-border)] bg-[var(--app-card-bg)] text-[var(--app-text)]"
             >
@@ -492,15 +499,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">اختر المستوى الدراسي:</label>
+                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">{t('gradeSectionLabel')}</label>
                   {onOpenPreschool && (
                     <button
                       onClick={() => { onOpenPreschool(); setIsMobileDrawerOpen(false); }}
                       className="min-h-12 w-full p-2.5 mb-2 rounded-xl text-xs font-black bg-gradient-to-r from-amber-400 to-orange-400 text-orange-950 shadow-sm border border-amber-300 flex items-center justify-center gap-2"
                     >
                       <span className="text-base">🦊</span>
-                      <span>قسم التحضيري (3 - 5 سنوات)</span>
-                      <span className="bg-orange-950/20 px-2 py-0.5 rounded-full text-[10px]">جديد</span>
+                      <span>{t('preschoolMobileLabel')}</span>
+                      <span className="bg-orange-950/20 px-2 py-0.5 rounded-full text-[10px]">{t('newBadge')}</span>
                     </button>
                   )}
                   <div className="grid grid-cols-2 gap-2">
@@ -514,14 +521,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
                         }`}
                       >
-                        {g.labelAr}
+                        {t(g.labelKey)}
                       </button>
                     ))}
                   </div>
                 </div>
 
+                <LanguageSwitcher />
+
                 <div>
-                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">ثيم الواجهة:</label>
+                  <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">{t('themeSectionLabel')}</label>
                   <div className="flex items-center gap-2">
                     {THEME_OPTIONS.map((opt) => (
                       <button
@@ -533,7 +542,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
                         }`}
                       >
-                        {opt.shortLabelAr}
+                        {t(opt.id === 'neutre' ? 'themeNeutreShort' : opt.id === 'light' ? 'themeLightShort' : 'themeDarkShort')}
                       </button>
                     ))}
                   </div>
@@ -545,7 +554,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className="min-h-12 w-full p-2.5 rounded-xl bg-gradient-to-r from-[var(--brand-emerald)] to-[var(--brand-blue)] text-white font-bold text-xs flex items-center gap-2"
                   >
                     <Bot className="w-4 h-4 text-amber-200" />
-                    <span>المعلم الذكي بالذكاء الاصطناعي</span>
+                    <span>{t('aiTutor')}</span>
                   </button>
 
                   <button
@@ -554,7 +563,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <User className="w-4 h-4 text-[var(--brand-emerald)]" />
-                      <span>الملف الشخصي</span>
+                      <span>{t('profile')}</span>
                     </div>
                     <Badge variant="xp"><span dir="ltr">{displayXp} XP</span></Badge>
                   </button>
@@ -565,7 +574,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-bold text-xs flex items-center gap-2"
                     >
                       <MessageSquare className="w-4 h-4 text-[var(--brand-blue)]" />
-                      <span>تواصل معنا</span>
+                      <span>{t('contactUs')}</span>
                     </button>
                   )}
 
@@ -575,7 +584,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--app-card-subtle)] text-[var(--brand-emerald-dark)] font-bold text-xs flex items-center gap-2"
                     >
                       <Smartphone className="w-4 h-4 text-[var(--brand-emerald)]" />
-                      <span>تطبيق المحمول (Android/iOS)</span>
+                      <span>{t('mobileAppLabel')}</span>
                     </button>
                   )}
 
@@ -585,7 +594,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-blue)]/10 text-[var(--brand-blue-dark)] border border-[var(--brand-blue)]/25 font-bold text-xs flex items-center gap-2 cursor-pointer"
                     >
                       <Sliders className="w-4 h-4 text-[var(--brand-blue)]" />
-                      <span>لوحة تحكم الإدارة</span>
+                      <span>{t('adminConsole')}</span>
                     </button>
                   )}
 
@@ -595,7 +604,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-blue)] text-white font-bold text-xs flex items-center gap-2 cursor-pointer"
                     >
                       <KeyRound className="w-4 h-4 text-amber-300" />
-                      <span>تسجيل الدخول / إنشاء حساب</span>
+                      <span>{t('loginRegisterCta')}</span>
                     </button>
                   ) : (
                     <button
@@ -603,14 +612,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="min-h-12 w-full p-2.5 rounded-xl bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border border-[var(--brand-coral)]/30 font-bold text-xs flex items-center gap-2 cursor-pointer"
                     >
                       <LogOut className="w-4 h-4 text-[var(--brand-coral)]" />
-                      <span>تسجيل الخروج</span>
+                      <span>{t('logout')}</span>
                     </button>
                   )}
                 </div>
               </div>
 
               <div className="pt-4 border-t border-[var(--app-card-border)] text-[10px] text-[var(--app-text-muted)] text-center">
-                مَسِيد DZ • الإصدار v2.6.0
+                {t('footerBrandVersion', { version: 'v2.6.0' })}
               </div>
             </motion.div>
           </motion.div>

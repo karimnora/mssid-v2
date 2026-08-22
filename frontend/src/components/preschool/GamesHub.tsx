@@ -1,11 +1,12 @@
 /**
  * GamesHub.tsx
  * Écran de sélection des mini-jeux pour la section "Espace Jeux & Labyrinthes"
- * 8 jeux Phaser.js + React pour enfants de 2-5 ans.
+ * 9 jeux Phaser.js + React pour enfants de 2-5 ans.
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CarMazeGame }      from './CarMazeGame';
+import { FarmGame }         from './FarmGame';
 import { BalloonPopGame }   from './BalloonPopGame';
 import { FruitCatcherGame } from './FruitCatcherGame';
 import { ShapeSorterGame }  from './ShapeSorterGame';
@@ -16,7 +17,7 @@ import { SensoryTapGame }   from './SensoryTapGame';
 import { useLevelProgress } from './useLevelProgress';
 
 export type GameId =
-  | 'car_maze' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
+  | 'car_maze' | 'farm' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
   | 'car_wash' | 'magic_tap' | 'puzzle' | 'sensory_tap';
 
 interface GameCard {
@@ -47,11 +48,19 @@ const StarBadge: React.FC<{ progressId: string; maxLevels: number }> = ({ progre
 const GAMES: GameCard[] = [
   {
     id: 'car_maze',
-    icon: '🚗',
-    titleAr: 'سيارة في المدينة',       titleFr: 'Voiture en Ville',           titleEn: 'City Car Drive',
-    descAr:  'قُد سيارتك حتى النجمة!', descFr:  'Conduis jusqu\'à l\'étoile !', descEn:  'Drive to the shining star!',
+    icon: '🚦',
+    titleAr: 'في المدينة',       titleFr: 'En Ville',           titleEn: 'Around Town',
+    descAr:  'دراجة، تاكسي، دراجة نارية وقطار — 10 مسارات!', descFr:  'Vélo, taxi, moto et train — 10 parcours !', descEn:  'Bike, taxi, moto and train — 10 routes!',
     gradient: 'from-blue-500 to-indigo-600', border: 'border-blue-300',   badge: '🕹️ Labyrinthe',
-    progressId: 'car_maze', maxLevels: 3,
+    progressId: 'car_maze', maxLevels: 10,
+  },
+  {
+    id: 'farm',
+    icon: '🐄',
+    titleAr: 'في المزرعة',       titleFr: 'À la Ferme',           titleEn: 'On the Farm',
+    descAr:  'درب مسيَّج أو مفتوح — اعثر على الطريق! 8 مسارات', descFr:  'Chemins fermés ou ouverts — trouve la bonne voie ! 8 parcours', descEn:  'Closed or open paths — find the way! 8 routes',
+    gradient: 'from-lime-400 to-green-600', border: 'border-lime-300', badge: '🌾 Ferme',
+    progressId: 'farm', maxLevels: 8,
   },
   {
     id: 'balloon_pop',
@@ -128,6 +137,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
     const exit = () => setActiveGame(null);
     switch (activeGame) {
       case 'car_maze':      return <CarMazeGame      language={language} onExit={exit} />;
+      case 'farm':          return <FarmGame         language={language} onExit={exit} />;
       case 'balloon_pop':   return <BalloonPopGame   language={language} onExit={exit} />;
       case 'fruit_catcher': return <FruitCatcherGame language={language} onExit={exit} />;
       case 'shape_sorter':  return <ShapeSorterGame  language={language} onExit={exit} />;
@@ -216,9 +226,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
 
               {/* Footer hint */}
               <p className="text-center text-xs text-indigo-500 font-bold pb-2">
-                {t('8 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
-                   '8 jeux éducatifs et amusants pour 2-5 ans 🎈',
-                   '8 fun educational games for ages 2-5 🎈')}
+                {t('9 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
+                   '9 jeux éducatifs et amusants pour 2-5 ans 🎈',
+                   '9 fun educational games for ages 2-5 🎈')}
               </p>
             </div>
           </motion.div>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
-import { playExplorationSound, playSuccessChime, playGentleNudge, usePreschoolSpeech } from './usePreschoolAudio';
+import { playSoundBoxClip, stopSoundBoxClip, playSuccessChime, playGentleNudge, resumeTownAudio, usePreschoolSpeech } from './usePreschoolAudio';
 
 interface PreschoolSoundBoxProps {
   language: PreschoolLanguage;
@@ -9,7 +9,7 @@ interface PreschoolSoundBoxProps {
   onExit: () => void;
 }
 
-type SoundCategory = 'animals' | 'heritage' | 'vehicles' | 'nature';
+type SoundCategory = 'animals' | 'vehicles' | 'nature' | 'home' | 'body';
 
 interface SoundItem {
   id: string;
@@ -17,243 +17,163 @@ interface SoundItem {
   nameAr: string;
   nameFr: string;
   nameEn: string;
-  descAr: string;
-  descFr: string;
-  descEn: string;
+  sayAr: string;
+  sayFr: string;
+  sayEn: string;
   icon: string;
   soundKey: string;
   color: string;
 }
 
+/** Only items with a real recording in /public/sounds/box — never a fake synth. */
 const SOUND_ITEMS: SoundItem[] = [
-  // Animals (including Algerian Sahara fauna)
   {
-    id: 'fennec',
-    category: 'animals',
-    nameAr: 'الفنك الجزائري',
-    nameFr: 'Le Fennec du Sahara',
-    nameEn: 'Sahara Fennec Fox',
-    descAr: 'ثعلب الصحراء اللطيف ذو الأذنين الكبيرتين',
-    descFr: 'Le petit renard du désert aux grandes oreilles',
-    descEn: 'The friendly desert fox with big ears',
-    icon: '🦊',
-    soundKey: 'fennec',
-    color: 'from-amber-400 to-orange-500',
+    id: 'dog', category: 'animals', icon: '🐶', soundKey: 'dog', color: 'from-blue-400 to-indigo-500',
+    nameAr: 'الكَلْب', nameFr: 'Le chien', nameEn: 'The dog',
+    sayAr: 'وَفْ وَفْ!', sayFr: 'Waf waf !', sayEn: 'Woof woof!',
   },
   {
-    id: 'camel',
-    category: 'animals',
-    nameAr: 'الجمل الصحراوي',
-    nameFr: 'Le Dromadaire',
-    nameEn: 'The Desert Camel',
-    descAr: 'سفينة الصحراء الصبورة',
-    descFr: 'Le vaisseau du désert',
-    descEn: 'The ship of the desert',
-    icon: '🐪',
-    soundKey: 'camel',
-    color: 'from-yellow-500 to-amber-600',
+    id: 'cat', category: 'animals', icon: '🐱', soundKey: 'cat', color: 'from-violet-400 to-purple-500',
+    nameAr: 'القِطَّة', nameFr: 'Le chat', nameEn: 'The cat',
+    sayAr: 'مِيَاوْ!', sayFr: 'Miaou !', sayEn: 'Meow!',
   },
   {
-    id: 'sheep',
-    category: 'animals',
-    nameAr: 'الخروف الصغير',
-    nameFr: 'Le Petit Mouton',
-    nameEn: 'The Little Sheep',
-    descAr: 'صوت المأمأة اللطيف',
-    descFr: 'Doux bêlement dans la prairie',
-    descEn: 'Gentle baa in the meadow',
-    icon: '🐑',
-    soundKey: 'sheep',
-    color: 'from-emerald-400 to-green-600',
+    id: 'sheep', category: 'animals', icon: '🐑', soundKey: 'sheep', color: 'from-stone-300 to-stone-500',
+    nameAr: 'الخَرُوف', nameFr: 'Le mouton', nameEn: 'The sheep',
+    sayAr: 'مَاءْ!', sayFr: 'Baaa !', sayEn: 'Baaa!',
   },
   {
-    id: 'cat',
-    category: 'animals',
-    nameAr: 'القطة الجميلة',
-    nameFr: 'Le Joli Chat',
-    nameEn: 'The Cute Cat',
-    descAr: 'مواء ناعم ولطيف',
-    descFr: 'Doux miaulement câlin',
-    descEn: 'Soft friendly meow',
-    icon: '🐱',
-    soundKey: 'cat',
-    color: 'from-rose-400 to-pink-500',
+    id: 'cow', category: 'animals', icon: '🐄', soundKey: 'cow', color: 'from-rose-300 to-pink-500',
+    nameAr: 'البَقَرَة', nameFr: 'La vache', nameEn: 'The cow',
+    sayAr: 'مُوو!', sayFr: 'Meuh !', sayEn: 'Mooo!',
   },
   {
-    id: 'dog',
-    category: 'animals',
-    nameAr: 'الكلب الوفي',
-    nameFr: 'Le Chien Fidèle',
-    nameEn: 'The Faithful Dog',
-    descAr: 'نباح الحراسة والمرح',
-    descFr: 'Aboiement joyeux et protecteur',
-    descEn: 'Playful barking sound',
-    icon: '🐶',
-    soundKey: 'dog',
-    color: 'from-blue-400 to-indigo-500',
+    id: 'hen', category: 'animals', icon: '🐔', soundKey: 'hen', color: 'from-orange-300 to-red-400',
+    nameAr: 'الدَّجَاجَة', nameFr: 'La poule', nameEn: 'The hen',
+    sayAr: 'قُقْ قُقْ!', sayFr: 'Cot cot !', sayEn: 'Cluck cluck!',
   },
   {
-    id: 'bird',
-    category: 'animals',
-    nameAr: 'العصفور المغرد',
-    nameFr: 'L\'Oiseau Chanteur',
-    nameEn: 'The Singing Bird',
-    descAr: 'زقزقة الصباح البهيجة',
-    descFr: 'Gazouillis matinal joyeux',
-    descEn: 'Joyful morning chirping',
-    icon: '🐦',
-    soundKey: 'bird',
-    color: 'from-sky-400 to-cyan-500',
+    id: 'rooster', category: 'animals', icon: '🐓', soundKey: 'rooster', color: 'from-red-400 to-orange-500',
+    nameAr: 'الدِّيك', nameFr: 'Le coq', nameEn: 'The rooster',
+    sayAr: 'كُوكُوكُو!', sayFr: 'Cocorico !', sayEn: 'Cock-a-doodle-doo!',
   },
   {
-    id: 'lion',
-    category: 'animals',
-    nameAr: 'الأسد الأطلسي',
-    nameFr: 'Le Lion de l\'Atlas',
-    nameEn: 'The Atlas Lion',
-    descAr: 'زئير ملك الغابة القوي',
-    descFr: 'Puissant rugissement royal',
-    descEn: 'Mighty royal roar',
-    icon: '🦁',
-    soundKey: 'lion',
-    color: 'from-orange-500 to-red-600',
-  },
-
-  // Algerian Heritage & Instruments
-  {
-    id: 'darbuka',
-    category: 'heritage',
-    nameAr: 'الدربوكة الجزائرية',
-    nameFr: 'La Darbouka Algérienne',
-    nameEn: 'Algerian Darbuka Drum',
-    descAr: 'إيقاع الدوم والتك الأصيل للأعراس',
-    descFr: 'Rythme festif Doum & Tak',
-    descEn: 'Festive rhythmic drum beat',
-    icon: '🥁',
-    soundKey: 'darbuka_dum',
-    color: 'from-amber-600 to-yellow-600',
+    id: 'horse', category: 'animals', icon: '🐴', soundKey: 'horse', color: 'from-amber-600 to-yellow-800',
+    nameAr: 'الحِصَان', nameFr: 'Le cheval', nameEn: 'The horse',
+    sayAr: 'هِهِهِ!', sayFr: 'Hiiii !', sayEn: 'Neigh!',
   },
   {
-    id: 'bendir',
-    category: 'heritage',
-    nameAr: 'البندير التراثي',
-    nameFr: 'Le Bendir Traditionnel',
-    nameEn: 'Traditional Bendir',
-    descAr: 'دف شعبي أصيل من التراث الجزائري',
-    descFr: 'Tambour sur cadre traditionnel',
-    descEn: 'Traditional Algerian frame drum',
-    icon: '🪘',
-    soundKey: 'bendir',
-    color: 'from-emerald-500 to-teal-700',
+    id: 'bird', category: 'animals', icon: '🐦', soundKey: 'bird', color: 'from-sky-300 to-cyan-500',
+    nameAr: 'العُصْفُور', nameFr: 'L’oiseau', nameEn: 'The bird',
+    sayAr: 'صِيصِي!', sayFr: 'Cui cui !', sayEn: 'Tweet tweet!',
   },
   {
-    id: 'karkabou',
-    category: 'heritage',
-    nameAr: 'القرقابو القناوي',
-    nameFr: 'Les Qarqabou Gnawa',
-    nameEn: 'Gnawa Qarkabu',
-    descAr: 'صنوج معدنية رنانة ومبهجة',
-    descFr: 'Castagnettes métalliques envoûtantes',
-    descEn: 'Rhythmic metallic percussion',
-    icon: '🔔',
-    soundKey: 'karkabou',
-    color: 'from-yellow-400 to-amber-600',
+    id: 'lion', category: 'animals', icon: '🦁', soundKey: 'lion', color: 'from-orange-500 to-amber-700',
+    nameAr: 'الأَسَد', nameFr: 'Le lion', nameEn: 'The lion',
+    sayAr: 'زَئِير!', sayFr: 'Grrr !', sayEn: 'Roar!',
   },
   {
-    id: 'gasba',
-    category: 'heritage',
-    nameAr: 'القصبة والناي',
-    nameFr: 'La Gasba & le Ney',
-    nameEn: 'Gasba Flute',
-    descAr: 'أنغام القصبة البدوية الأصيلة',
-    descFr: 'Mélodie de flûte pastorale',
-    descEn: 'Traditional reed melody',
-    icon: '🪈',
-    soundKey: 'gasba',
-    color: 'from-lime-500 to-emerald-600',
-  },
-
-  // Vehicles
-  {
-    id: 'car',
-    category: 'vehicles',
-    nameAr: 'السيارة ومنبه الصوت',
-    nameFr: 'La Voiture & Klaxon',
-    nameEn: 'The Car & Horn',
-    descAr: 'صوت المحرك والمنبه بي-بيب',
-    descFr: 'Vroum et klaxon pouët-pouët',
-    descEn: 'Engine vroom and horn beep',
-    icon: '🚗',
-    soundKey: 'car',
-    color: 'from-rose-500 to-red-600',
+    id: 'car', category: 'vehicles', icon: '🚗', soundKey: 'car', color: 'from-rose-500 to-red-600',
+    nameAr: 'السَّيَّارَة', nameFr: 'La voiture', nameEn: 'The car',
+    sayAr: 'بيب بيب!', sayFr: 'Pouet pouet !', sayEn: 'Beep beep!',
   },
   {
-    id: 'train',
-    category: 'vehicles',
-    nameAr: 'قطار الجزائر السريع',
-    nameFr: 'Le Train Express',
-    nameEn: 'The Express Train',
-    descAr: 'صوت صفارة القطار تووت تووت',
-    descFr: 'Tchou-tchou du train sur les rails',
-    descEn: 'Choo-choo train horn',
-    icon: '🚂',
-    soundKey: 'train',
-    color: 'from-purple-500 to-violet-700',
+    id: 'train', category: 'vehicles', icon: '🚂', soundKey: 'train', color: 'from-slate-500 to-zinc-700',
+    nameAr: 'القِطَار', nameFr: 'Le train', nameEn: 'The train',
+    sayAr: 'تُوت تُوت!', sayFr: 'Tchou tchou !', sayEn: 'Choo choo!',
   },
   {
-    id: 'plane',
-    category: 'vehicles',
-    nameAr: 'الطائرة المحلقة',
-    nameFr: 'L\'Avion dans le Ciel',
-    nameEn: 'The Flying Airplane',
-    descAr: 'تحليق الطائرة في أعالي السحاب',
-    descFr: 'L\'avion qui fend les nuages',
-    descEn: 'Jet soaring through clouds',
-    icon: '✈️',
-    soundKey: 'plane',
-    color: 'from-cyan-500 to-blue-600',
-  },
-
-  // Nature
-  {
-    id: 'sea',
-    category: 'nature',
-    nameAr: 'أمواج بحر الجزائر',
-    nameFr: 'Les Vagues de la Méditerranée',
-    nameEn: 'The Mediterranean Waves',
-    descAr: 'خرير أمواج البحر الهادئة',
-    descFr: 'Le doux ressac des vagues',
-    descEn: 'Gentle sea waves on the shore',
-    icon: '🌊',
-    soundKey: 'sea',
-    color: 'from-teal-400 to-cyan-600',
+    id: 'ambulance', category: 'vehicles', icon: '🚑', soundKey: 'ambulance', color: 'from-red-400 to-rose-600',
+    nameAr: 'سِيَّارَة الإِسْعَاف', nameFr: 'L’ambulance', nameEn: 'The ambulance',
+    sayAr: 'نِيو نِيو!', sayFr: 'Pin pon !', sayEn: 'Nee naw!',
   },
   {
-    id: 'rain',
-    category: 'nature',
-    nameAr: 'زخات المطر والخير',
-    nameFr: 'Les Gouttes de Pluie',
-    nameEn: 'Gentle Raindrops',
-    descAr: 'صوت قطرات المطر العذبة',
-    descFr: 'La douce pluie bienfaisante',
-    descEn: 'Fresh soothing rain showers',
-    icon: '🌧️',
-    soundKey: 'rain',
-    color: 'from-blue-400 to-indigo-600',
+    id: 'helicopter', category: 'vehicles', icon: '🚁', soundKey: 'helicopter', color: 'from-teal-500 to-slate-600',
+    nameAr: 'المِرْوَحِيَّة', nameFr: 'L’hélicoptère', nameEn: 'The helicopter',
+    sayAr: 'تَكْ تَكْ تَكْ', sayFr: 'Tac tac tac', sayEn: 'Chop chop!',
+  },
+  {
+    id: 'sea', category: 'nature', icon: '🌊', soundKey: 'sea', color: 'from-teal-400 to-cyan-600',
+    nameAr: 'البَحْر', nameFr: 'La mer', nameEn: 'The sea',
+    sayAr: 'شْشْش...', sayFr: 'Chhh…', sayEn: 'Shhh…',
+  },
+  {
+    id: 'rain', category: 'nature', icon: '🌧️', soundKey: 'rain', color: 'from-blue-400 to-indigo-500',
+    nameAr: 'المَطَر', nameFr: 'La pluie', nameEn: 'The rain',
+    sayAr: 'طَقْ طَقْ', sayFr: 'Ploc ploc', sayEn: 'Pitter-patter',
+  },
+  {
+    id: 'thunder', category: 'nature', icon: '⛈️', soundKey: 'thunder', color: 'from-indigo-600 to-slate-800',
+    nameAr: 'الرَّعْد', nameFr: 'Le tonnerre', nameEn: 'The thunder',
+    sayAr: 'بُوم!', sayFr: 'Boum !', sayEn: 'Boom!',
+  },
+  {
+    id: 'fire', category: 'nature', icon: '🔥', soundKey: 'fire', color: 'from-orange-500 to-red-600',
+    nameAr: 'النَّار', nameFr: 'Le feu', nameEn: 'The fire',
+    sayAr: 'كْرِكْ كْرِكْ', sayFr: 'Crac crac', sayEn: 'Crackling',
+  },
+  {
+    id: 'bee', category: 'nature', icon: '🐝', soundKey: 'bee', color: 'from-yellow-400 to-amber-500',
+    nameAr: 'النَّحْلَة', nameFr: 'L’abeille', nameEn: 'The bee',
+    sayAr: 'زِزْز!', sayFr: 'Bzzz !', sayEn: 'Bzzz!',
+  },
+  {
+    id: 'clock', category: 'home', icon: '⏰', soundKey: 'clock', color: 'from-yellow-400 to-orange-400',
+    nameAr: 'السَّاعَة', nameFr: 'L’horloge', nameEn: 'The clock',
+    sayAr: 'تِكْ تَاكْ', sayFr: 'Tic tac', sayEn: 'Tick tock',
+  },
+  {
+    id: 'phone', category: 'home', icon: '📞', soundKey: 'phone', color: 'from-green-400 to-emerald-600',
+    nameAr: 'الهَاتِف', nameFr: 'Le téléphone', nameEn: 'The phone',
+    sayAr: 'رِينْغ رِينْغ', sayFr: 'Dring dring', sayEn: 'Ring ring',
+  },
+  {
+    id: 'kettle', category: 'home', icon: '🫖', soundKey: 'kettle', color: 'from-rose-300 to-orange-400',
+    nameAr: 'البَرَّاد', nameFr: 'La bouilloire', nameEn: 'The kettle',
+    sayAr: 'فِييي', sayFr: 'Fiiiii', sayEn: 'Whistle',
+  },
+  {
+    id: 'scissors', category: 'home', icon: '✂️', soundKey: 'scissors', color: 'from-slate-400 to-zinc-600',
+    nameAr: 'المِقَصّ', nameFr: 'Les ciseaux', nameEn: 'The scissors',
+    sayAr: 'قَصْ قَصْ', sayFr: 'Cric crac', sayEn: 'Snip snip',
+  },
+  {
+    id: 'laugh', category: 'body', icon: '😄', soundKey: 'laugh', color: 'from-pink-400 to-rose-500',
+    nameAr: 'الضَّحِك', nameFr: 'Le rire', nameEn: 'A laugh',
+    sayAr: 'هَا هَا هَا', sayFr: 'Ha ha ha !', sayEn: 'Ha ha ha!',
+  },
+  {
+    id: 'sneeze', category: 'body', icon: '🤧', soundKey: 'sneeze', color: 'from-sky-300 to-indigo-400',
+    nameAr: 'العَطْس', nameFr: 'L’éternuement', nameEn: 'A sneeze',
+    sayAr: 'عَطْشُو!', sayFr: 'Atchoum !', sayEn: 'Achoo!',
+  },
+  {
+    id: 'clap', category: 'body', icon: '👏', soundKey: 'clap', color: 'from-amber-300 to-yellow-500',
+    nameAr: 'التَّصْفِيق', nameFr: 'Les applaudissements', nameEn: 'Clapping',
+    sayAr: 'صَفْق صَفْق', sayFr: 'Clap clap !', sayEn: 'Clap clap!',
   },
 ];
+
+function itemName(item: SoundItem, language: PreschoolLanguage) {
+  return language === 'ar' ? item.nameAr : language === 'fr' ? item.nameFr : item.nameEn;
+}
+
+function itemSay(item: SoundItem, language: PreschoolLanguage) {
+  return language === 'ar' ? item.sayAr : language === 'fr' ? item.sayFr : item.sayEn;
+}
 
 export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
   language,
   onSelectLanguage,
   onExit,
 }) => {
-  const [activeCategory, setActiveCategory] = useState<SoundCategory | 'all'>('all');
-  const [isQuizMode, setIsQuizMode] = useState<boolean>(false);
+  const [activeCategory, setActiveCategory] = useState<SoundCategory | 'all'>('animals');
+  const [isQuizMode, setIsQuizMode] = useState(false);
   const [quizTarget, setQuizTarget] = useState<SoundItem | null>(null);
   const [quizOptions, setQuizOptions] = useState<SoundItem[]>([]);
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
-  const [score, setScore] = useState<number>(0);
+  const [score, setScore] = useState(0);
+  const playTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const { speak } = usePreschoolSpeech(language);
 
@@ -262,9 +182,32 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
       ? SOUND_ITEMS
       : SOUND_ITEMS.filter((i) => i.category === activeCategory);
 
+  const clearPlayTimer = () => {
+    if (playTimer.current) {
+      clearTimeout(playTimer.current);
+      playTimer.current = null;
+    }
+  };
+
+  /** Explore: say the name, then play the real recording (never at the same time). */
+  const playNameThenSound = (item: SoundItem) => {
+    resumeTownAudio();
+    clearPlayTimer();
+    speak(itemName(item, language));
+    playTimer.current = setTimeout(() => {
+      playSoundBoxClip(item.soundKey);
+    }, 1050);
+  };
+
   const startNewQuizRound = () => {
-    const randomTarget = SOUND_ITEMS[Math.floor(Math.random() * SOUND_ITEMS.length)];
-    const others = SOUND_ITEMS.filter((i) => i.id !== randomTarget.id)
+    const pool =
+      activeCategory === 'all'
+        ? SOUND_ITEMS
+        : SOUND_ITEMS.filter((i) => i.category === activeCategory);
+    const source = pool.length >= 3 ? pool : SOUND_ITEMS;
+    const randomTarget = source[Math.floor(Math.random() * source.length)];
+    const others = source
+      .filter((i) => i.id !== randomTarget.id)
       .sort(() => 0.5 - Math.random())
       .slice(0, 2);
     const options = [randomTarget, ...others].sort(() => 0.5 - Math.random());
@@ -272,24 +215,33 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
     setQuizTarget(randomTarget);
     setQuizOptions(options);
 
-    // Play target sound & vocal prompt
-    setTimeout(() => {
-      playExplorationSound(randomTarget.soundKey);
+    clearPlayTimer();
+    playTimer.current = setTimeout(() => {
+      playSoundBoxClip(randomTarget.soundKey);
       speak(
         language === 'ar'
-          ? 'استمع جيداً... من يصدر هذا الصوت يا شاطر؟'
+          ? 'اِسْتَمِعْ... مَنْ هٰذَا؟'
           : language === 'fr'
-          ? 'Écoute bien... qui fait ce son ?'
-          : 'Listen closely... who makes this sound?'
+          ? 'Écoute… qui c’est ?'
+          : 'Listen… who is it?',
       );
-    }, 250);
+    }, 280);
   };
 
   useEffect(() => {
-    if (isQuizMode) {
-      startNewQuizRound();
-    }
+    if (isQuizMode) startNewQuizRound();
+    return () => {
+      clearPlayTimer();
+      stopSoundBoxClip();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isQuizMode]);
+
+  useEffect(() => () => {
+    clearPlayTimer();
+    stopSoundBoxClip();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleCardClick = (item: SoundItem) => {
     setActiveCardId(item.id);
@@ -299,72 +251,71 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
       if (item.id === quizTarget?.id) {
         playSuccessChime();
         setScore((prev) => prev + 1);
-        const name = language === 'ar' ? item.nameAr : language === 'fr' ? item.nameFr : item.nameEn;
         speak(
           language === 'ar'
-            ? `أحسنت ممتاز! هذا صوت ${name}`
+            ? `أَحْسَنْت! ${itemName(item, language)}`
             : language === 'fr'
-            ? `Bravo excellent ! C'est ${name}`
-            : `Great job! That's ${name}`
+            ? `Bravo ! ${itemName(item, language)}`
+            : `Well done! ${itemName(item, language)}`,
         );
-        setTimeout(() => startNewQuizRound(), 1300);
+        playTimer.current = setTimeout(() => playSoundBoxClip(item.soundKey), 700);
+        setTimeout(() => startNewQuizRound(), 1800);
       } else {
         playGentleNudge();
         speak(
           language === 'ar'
-            ? 'حاول مرة أخرى يا بطل، استمع ثانية!'
+            ? 'حاوِلْ مَرَّةً أُخْرَى!'
             : language === 'fr'
-            ? 'Essaie encore champion, réécoute le son !'
-            : 'Try again, listen one more time!'
+            ? 'Essaie encore !'
+            : 'Try again!',
         );
       }
-    } else {
-      playExplorationSound(item.soundKey);
-      const name = language === 'ar' ? item.nameAr : language === 'fr' ? item.nameFr : item.nameEn;
-      speak(name);
+      return;
     }
+
+    playNameThenSound(item);
   };
 
   const labels = {
     title:
       language === 'ar'
-        ? 'صندوق الأصوات والتراث الجزائري 🔊'
+        ? 'صُنْدُوقُ الأَصْوَات 🔊'
         : language === 'fr'
-        ? 'Boîte à Sons & Découverte Sensorielle 🔊'
-        : 'Preschool Sound Box & Heritage 🔊',
+        ? 'Boîte à Sons 🔊'
+        : 'Sound Box 🔊',
     all: language === 'ar' ? 'الكل' : language === 'fr' ? 'Tous' : 'All',
-    animals: language === 'ar' ? 'الحيوانات 🦁' : language === 'fr' ? 'Animaux 🦁' : 'Animals 🦁',
-    heritage: language === 'ar' ? 'آلات التراث 🥁' : language === 'fr' ? 'Instruments 🥁' : 'Instruments 🥁',
-    vehicles: language === 'ar' ? 'المركبات 🚗' : language === 'fr' ? 'Véhicules 🚗' : 'Vehicles 🚗',
-    nature: language === 'ar' ? 'الطبيعة 🌊' : language === 'fr' ? 'Nature 🌊' : 'Nature 🌊',
-    quizMode: language === 'ar' ? '🎯 لعبة خمن الصوت' : language === 'fr' ? '🎯 Mini-Quiz Sonore' : '🎯 Guess Sound Quiz',
-    exploreMode: language === 'ar' ? '👂 استكشاف الأصوات' : language === 'fr' ? '👂 Explorer' : '👂 Explore',
-    replaySound: language === 'ar' ? 'إعادة سماع الصوت 🔊' : language === 'fr' ? 'Réécouter le son 🔊' : 'Replay Sound 🔊',
+    animals: language === 'ar' ? 'حيوانات' : language === 'fr' ? 'Animaux' : 'Animals',
+    vehicles: language === 'ar' ? 'وسائل' : language === 'fr' ? 'Véhicules' : 'Vehicles',
+    nature: language === 'ar' ? 'طبيعة' : language === 'fr' ? 'Nature' : 'Nature',
+    home: language === 'ar' ? 'البيت' : language === 'fr' ? 'Maison' : 'Home',
+    body: language === 'ar' ? 'الجِسْم' : language === 'fr' ? 'Corps' : 'Body',
+    quizMode: language === 'ar' ? '🎯 مَنْ هٰذَا؟' : language === 'fr' ? '🎯 Qui c’est ?' : '🎯 Who is it?',
+    exploreMode: language === 'ar' ? '👂 اِسْتَكْشِفْ' : language === 'fr' ? '👂 Explorer' : '👂 Explore',
+    replaySound: language === 'ar' ? 'أَعِدِ الصَّوْت 🔊' : language === 'fr' ? 'Réécouter 🔊' : 'Play again 🔊',
     quizPrompt:
       language === 'ar'
-        ? 'استمع للصوت واضغط على البطاقة الصحيحة!'
+        ? 'اِسْتَمِعْ ثُمَّ الْمَسِ الصُّورَةَ!'
         : language === 'fr'
-        ? 'Écoute le son et choisis la bonne carte !'
-        : 'Listen to the sound and pick the matching card!',
+        ? 'Écoute, puis touche l’image !'
+        : 'Listen, then tap the picture!',
     footerHint:
       language === 'ar'
-        ? 'المس أي بطاقة لاكتشاف صوتها والتعلم مع صديقنا الفنك! 🦊'
+        ? 'أَصْوَاتٌ حَقِيقِيَّة: الِاسْمُ ثُمَّ الصَّوْت'
         : language === 'fr'
-        ? 'Touche une carte pour écouter son son et apprendre avec Dido le Fennec ! 🦊'
-        : 'Tap any card to discover its sound with Dido the Fennec! 🦊',
+        ? 'Vrais enregistrements : le nom, puis le son'
+        : 'Real recordings: first the name, then the sound',
   };
 
   return (
     <div
       dir={language === 'ar' ? 'rtl' : 'ltr'}
-      className="min-h-screen bg-gradient-to-b from-amber-100 via-orange-50 to-teal-100 p-3 sm:p-6 flex flex-col justify-between"
+      className="min-h-screen bg-gradient-to-b from-amber-100 via-orange-50 to-teal-100 p-3 sm:p-6 flex flex-col"
     >
-      {/* Top Header */}
       <div className="max-w-5xl w-full mx-auto flex items-center justify-between gap-2 sm:gap-4 mb-3">
         <button
           onClick={onExit}
           className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-          aria-label="خروج"
+          aria-label={language === 'ar' ? 'خروج' : language === 'fr' ? 'Retour' : 'Back'}
         >
           🚪
         </button>
@@ -373,14 +324,11 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
           {labels.title}
         </h1>
 
-        {/* Trilingual Language Quick Switcher */}
         <div className="flex items-center gap-1 bg-white/90 p-1 rounded-2xl shadow-sm border border-amber-200">
           {(['ar', 'fr', 'en'] as PreschoolLanguage[]).map((l) => (
             <button
               key={l}
-              onClick={() => {
-                if (onSelectLanguage) onSelectLanguage(l);
-              }}
+              onClick={() => onSelectLanguage?.(l)}
               className={`px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 language === l
                   ? 'bg-amber-500 text-white shadow-xs'
@@ -404,9 +352,8 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
         </button>
       </div>
 
-      {/* Quiz Banner if in Quiz mode */}
       {isQuizMode && quizTarget && (
-        <div className="max-w-xl w-full mx-auto mb-4 bg-white/95 backdrop-blur-xs rounded-3xl p-5 shadow-lg border-2 border-amber-300 text-center space-y-3">
+        <div className="max-w-xl w-full mx-auto mb-4 bg-white/95 rounded-3xl p-5 shadow-lg border-2 border-amber-300 text-center space-y-3">
           <div className="flex items-center justify-center gap-2">
             <span className="text-2xl">👂</span>
             <h2 className="text-base sm:text-lg font-black text-amber-950">
@@ -418,23 +365,23 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
           </div>
 
           <button
-            onClick={() => playExplorationSound(quizTarget.soundKey)}
-            className="px-6 py-3 rounded-2xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-sm shadow-md active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer border border-amber-500 animate-pulse"
+            onClick={() => playSoundBoxClip(quizTarget.soundKey)}
+            className="px-6 py-3 rounded-2xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-sm shadow-md active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer border border-amber-500"
           >
             <span>{labels.replaySound}</span>
           </button>
         </div>
       )}
 
-      {/* Categories Filter (Only in Explore mode) */}
       {!isQuizMode && (
         <div className="max-w-3xl w-full mx-auto flex items-center justify-center gap-1.5 sm:gap-2 mb-3 flex-wrap">
           {[
-            { id: 'all', label: labels.all, icon: '🌟' },
-            { id: 'animals', label: labels.animals, icon: '🦁' },
-            { id: 'heritage', label: labels.heritage, icon: '🥁' },
+            { id: 'animals', label: labels.animals, icon: '🐄' },
             { id: 'vehicles', label: labels.vehicles, icon: '🚗' },
             { id: 'nature', label: labels.nature, icon: '🌊' },
+            { id: 'home', label: labels.home, icon: '🏠' },
+            { id: 'body', label: labels.body, icon: '😄' },
+            { id: 'all', label: labels.all, icon: '🌟' },
           ].map((cat) => (
             <button
               key={cat.id}
@@ -452,13 +399,12 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
         </div>
       )}
 
-      {/* Sound Cards Grid */}
       <div className="max-w-5xl w-full mx-auto flex-1 flex items-center justify-center py-2">
         <div
           className={`grid gap-3 sm:gap-4 w-full ${
             isQuizMode
               ? 'grid-cols-1 sm:grid-cols-3 max-w-2xl'
-              : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4'
+              : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'
           }`}
         >
           {(isQuizMode ? quizOptions : filteredItems).map((item) => {
@@ -467,25 +413,25 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
               <motion.button
                 key={item.id}
                 onClick={() => handleCardClick(item)}
-                whileHover={{ scale: 1.04 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`min-h-36 sm:min-h-44 rounded-3xl bg-gradient-to-b ${item.color} shadow-lg border-4 border-white/80 p-3 sm:p-4 flex flex-col items-center justify-between text-white transition-all select-none cursor-pointer ${
+                className={`min-h-32 sm:min-h-40 rounded-3xl bg-gradient-to-b ${item.color} shadow-lg border-4 border-white/80 p-3 sm:p-4 flex flex-col items-center justify-between text-white transition-all select-none cursor-pointer ${
                   isTargetEffect ? 'ring-4 ring-yellow-400 scale-105 brightness-110' : ''
                 }`}
               >
                 <span className="text-4xl sm:text-5xl drop-shadow-md">{item.icon}</span>
                 <div className="text-center space-y-0.5">
                   <span className="text-sm sm:text-base font-black block drop-shadow-sm leading-tight">
-                    {language === 'ar' ? item.nameAr : language === 'fr' ? item.nameFr : item.nameEn}
+                    {itemName(item, language)}
                   </span>
                   {!isQuizMode && (
-                    <span className="text-[10px] opacity-80 block line-clamp-1">
-                      {language === 'ar' ? item.descAr : language === 'fr' ? item.descFr : item.descEn}
+                    <span className="text-xs sm:text-sm font-black opacity-95 block">
+                      {itemSay(item, language)}
                     </span>
                   )}
                 </div>
                 <span className="text-[10px] opacity-90 bg-white/20 px-2.5 py-0.5 rounded-full font-bold">
-                  🔊 {language === 'ar' ? 'استمع' : language === 'fr' ? 'Écouter' : 'Listen'}
+                  🔊
                 </span>
               </motion.button>
             );
@@ -493,7 +439,6 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
         </div>
       </div>
 
-      {/* Footer hint */}
       <p className="text-center text-xs font-bold text-amber-900/80 mt-2">
         {labels.footerHint}
       </p>

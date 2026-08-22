@@ -2,7 +2,7 @@ import { PreschoolModule } from './types';
 
 // "أَلْوَانِي وَفُنُونِي" — Colors, Drawing & Graphism (Psychomotricity).
 // Teaches 6 individual colors (أحمر، برتقالي، أصفر، أخضر، أزرق، بنفسجي) via tap_choice, each
-// anchored to a familiar object, plus the original fennec path-trace, a 3-color sort, magic-bubble
+// anchored to a familiar object, plus a Sahara color-trail for the fennec, a 3-color sort, magic-bubble
 // painting, and a 3-pair color memory game — same depth pattern as the numbers/letters modules.
 export const COLORS_MODULE: PreschoolModule = {
   id: 'preschool-colors',
@@ -24,30 +24,39 @@ export const COLORS_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'طَرِيقُ الفَنَكِ إِلَى بَيْتِهِ',
-          promptAudio: 'اِسْحَبِ الفَنَكَ الصَّغِيرَ عَبْرَ الكُثْبَانِ الرَّمْلِيَّةِ إِلَى بَيْتِهِ الدَّافِئ!',
-          promptText: 'اسحبي الفنك بإصبعك نحو بيته.',
+          promptAudio: 'اِسْحَبِ الفَنَكَ عَلَى الأَلْوَانِ! أَحْمَر، بُرْتُقَالِي، أَصْفَر، أَخْضَر، ثُمَّ البَيْت!',
+          promptText: 'اسحب الفنك من وسادة لونية إلى أخرى حتى يصل إلى بيته.',
           successAudio: 'وَصَلَ الفَنَكُ إِلَى بَيْتِهِ بِأَمَان! أَحْسَنْت!',
         },
         fr: {
           title: 'Le Chemin du Fennec',
-          promptAudio: 'Fais glisser le petit fennec sur les dunes jusqu\'à sa maison !',
-          promptText: 'Aidez l\'enfant à glisser le fennec vers sa maison.',
+          promptAudio: 'Glisse le petit fennec de couleur en couleur : rouge, orange, jaune, vert, jusqu\'à sa maison !',
+          promptText: 'Aidez l\'enfant à suivre les coussins de couleur jusqu\'à la maison.',
           successAudio: 'Le petit fennec est rentré bien au chaud ! Bravo !',
         },
         en: {
           title: 'The Fennec\'s Path',
-          promptAudio: 'Drag the little fennec across the dunes to his cozy home!',
-          promptText: 'Help the child drag the fennec home.',
+          promptAudio: 'Drag the little fennec from color to color: red, orange, yellow, green, all the way home!',
+          promptText: 'Help the child follow the colored pads to the house.',
           successAudio: 'The fennec made it home! Well done!',
         },
       },
       visualAssets: {
         mainSvgOrImage: '🦊',
         pathToken: {
-          startAsset: '🦊',
+          startAsset: '🌵',
           endAsset: '🏡',
           travelerAsset: '🦊',
         },
+        pathTheme: 'desert',
+        pathStops: [
+          { x: 14, y: 28, asset: '🌵', color: '#fde68a' },
+          { x: 42, y: 20, asset: '🍓', color: '#fecaca' },
+          { x: 72, y: 32, asset: '🍊', color: '#fed7aa' },
+          { x: 84, y: 58, asset: '🍋', color: '#fef08a' },
+          { x: 58, y: 74, asset: '🌴', color: '#bbf7d0' },
+          { x: 22, y: 78, asset: '🏡', color: '#bfdbfe' },
+        ],
       },
     },
     {

@@ -59,16 +59,8 @@ class SpringBootApiService {
   // each other's attempt.
   private refreshPromise: Promise<boolean> | null = null;
 
-  // SEC-05: identity for the x-user-role/x-user-id convenience headers (used by the AI quota system)
-  // is pushed here by AuthService.setCurrentUser whenever the in-memory auth singleton changes — no
-  // localStorage read. AuthService already imports springBootApi, so this stays a one-way dependency.
-  private identityRole: string | null = null;
-  private identityEmail: string | null = null;
-
-  public setIdentityHeaders(role: string | null | undefined, email: string | null | undefined): void {
-    this.identityRole = role || null;
-    this.identityEmail = email || null;
-  }
+  // SEC-10: identity for AI quota is the HttpOnly JWT cookie (server loads User + role).
+  // Do not send x-user-role / x-user-id — those headers are client-spoofable and ignored by Spring.
 
   // SEC-01: the backend now issues the JWT as an HttpOnly cookie (see AuthController.java) — it never
   // reaches JS, so there is nothing left to read/store/attach here. Every request must send
@@ -146,13 +138,6 @@ class SpringBootApiService {
       'Accept': 'application/json',
       ...customHeaders,
     };
-
-    if (this.identityRole) {
-      headers['x-user-role'] = this.identityRole;
-    }
-    if (this.identityEmail) {
-      headers['x-user-id'] = this.identityEmail;
-    }
 
     return headers;
   }
@@ -340,17 +325,6 @@ public async request<T>(
         question: payload.question,
         grade: payload.grade,
         promptType: payload.promptType,
-      }),
-    });
-  }
-
-  public async solveExamDetailed(payload: { prompt: string; examId: number; subjectContext?: string }) {
-    return this.request<{ responseText?: string; text?: string; status?: string }>('/v1/ai/solve-exam', {
-      method: 'POST',
-      body: JSON.stringify({
-        prompt: payload.prompt,
-        examId: payload.examId,
-        subjectContext: payload.subjectContext || 'Examen officiel 5AP',
       }),
     });
   }

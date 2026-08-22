@@ -21,15 +21,6 @@ public class ExamService {
     private final ExamPaperRepository examPaperRepository;
 
     /**
-     * Récupère la liste de tous les sujets sous forme d'entités ExamPaper.
-     * Utilisé par ExamController pour le mapping vers OfficialExamDto.
-     */
-    @Transactional(readOnly = true)
-    public List<ExamPaper> findAllExams() {
-        return examPaperRepository.findAll();
-    }
-
-    /**
      * Recherche un sujet d'examen par son identifiant.
      */
     @Transactional(readOnly = true)

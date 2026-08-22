@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Mail, X } from 'lucide-react';
 import { AuthService } from '../services/authService';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface EmailVerificationPopupProps {
   isOpen: boolean;
@@ -14,6 +16,9 @@ interface EmailVerificationPopupProps {
 // "لاحقاً") just dismisses it for this session, same as ProfileModal's SEC-08 reminder card still
 // does for anyone who wants to verify later from their profile instead.
 export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ isOpen, onClose, email }) => {
+  const t = useTranslation('auth');
+  const tCommon = useTranslation('common');
+  const { direction } = useLocaleContext();
   const [verificationCode, setVerificationCode] = useState('');
   const [verifyState, setVerifyState] = useState<'idle' | 'loading' | 'error' | 'success'>('idle');
   const [verifyMessage, setVerifyMessage] = useState<string | null>(null);
@@ -52,8 +57,8 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 dir-rtl"
-      dir="rtl"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4"
+      dir={direction}
       onClick={onClose}
     >
       <motion.div
@@ -67,16 +72,16 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
           <button
             onClick={onClose}
             className="absolute top-3 left-3 p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-all cursor-pointer"
-            aria-label="إغلاق"
+            aria-label={tCommon('close')}
           >
             <X className="w-4 h-4" />
           </button>
           <div className="w-16 h-16 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-2">
             <Mail className="w-8 h-8" />
           </div>
-          <h2 className="text-lg font-black">قم بتأكيد بريدك الإلكتروني ✉️</h2>
+          <h2 className="text-lg font-black">{t('verifyTitle')}</h2>
           <p className="text-xs text-white/90 mt-1.5 leading-relaxed">
-            أرسلنا رمزاً مكوناً من 6 أرقام إلى<br />
+            {t('verifyIntro')}<br />
             <span dir="ltr" className="font-mono font-bold">{email}</span>
           </p>
         </div>
@@ -99,7 +104,7 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
               disabled={verificationCode.length !== 6 || verifyState === 'loading'}
               className="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-extrabold text-xs rounded-xl transition-all cursor-pointer shrink-0"
             >
-              {verifyState === 'loading' ? '...' : 'تأكيد'}
+              {verifyState === 'loading' ? '...' : t('verifyConfirm')}
             </button>
           </div>
 
@@ -115,13 +120,13 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
               disabled={resendCooldown > 0}
               className="text-[11px] font-bold text-amber-700 hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
             >
-              {resendCooldown > 0 ? `إعادة الإرسال بعد ${resendCooldown} ثانية` : 'لم يصلك الرمز؟ إعادة الإرسال'}
+              {resendCooldown > 0 ? t('resendAfterSeconds', { seconds: resendCooldown }) : t('resendPrompt')}
             </button>
             <button
               onClick={onClose}
               className="text-[11px] font-bold text-slate-500 hover:text-slate-700 hover:underline cursor-pointer"
             >
-              ليس الآن
+              {t('verifyNotNow')}
             </button>
           </div>
         </div>

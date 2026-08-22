@@ -16,10 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -78,81 +75,49 @@ public class UserService {
 
     /**
      * Met à jour la progression globale de l'élève (XP, niveau, leçons terminées, quiz).
+     * SEC-11: snapshot client accepté, mais XP/gold/badges/level sont clampés côté serveur.
      */
     public UserProfileDto updateUserProgress(String email, UserProfileDto progressData) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé avec l'email : " + email));
 
-        if (progressData.getGrade() != null) user.setGrade(progressData.getGrade());
+        user.setGrade(ProgressGuard.sanitizeGrade(user.getGrade(), progressData.getGrade()));
         if (progressData.getAvatar() != null) user.setAvatar(progressData.getAvatar());
-        if (progressData.getXp() != null) user.setXp(progressData.getXp());
-        if (progressData.getLevel() != null) user.setLevel(progressData.getLevel());
-        if (progressData.getStreakDays() != null) user.setStreakDays(progressData.getStreakDays());
-        if (progressData.getLastActiveDate() != null) user.setLastActiveDate(progressData.getLastActiveDate());
-        // Scalar overwrite (not merge) — the client always sends its current authoritative balance,
-        // same semantics as xp/level/streakDays above (unlike the list/map fields below, which merge).
-        if (progressData.getGoldCoins() != null) user.setGoldCoins(progressData.getGoldCoins());
+
+        Integer requestedXp = progressData.getXp() != null ? progressData.getXp() : progressData.getScore();
+        if (requestedXp != null) {
+            int nextXp = ProgressGuard.clampXp(user.getXp(), requestedXp);
+            user.setXp(nextXp);
+            user.setScore(nextXp);
+            user.setLevel(ProgressGuard.levelFromXp(nextXp));
+        }
+
+        if (progressData.getStreakDays() != null) {
+            user.setStreakDays(ProgressGuard.clampStreak(user.getStreakDays(), progressData.getStreakDays()));
+        }
+        user.setLastActiveDate(ProgressGuard.sanitizeLastActiveDate(user.getLastActiveDate(), progressData.getLastActiveDate()));
+        if (progressData.getGoldCoins() != null) {
+            user.setGoldCoins(ProgressGuard.clampGold(user.getGoldCoins(), progressData.getGoldCoins()));
+        }
         if (progressData.getAvatarConfig() != null) user.setAvatarConfig(progressData.getAvatarConfig());
 
         if (progressData.getCompletedLessonIds() != null) {
-            List<String> mergedLessons = new ArrayList<>(user.getCompletedLessonIds() != null ? user.getCompletedLessonIds() : List.of());
-            for (String lessonId : progressData.getCompletedLessonIds()) {
-                if (lessonId != null && !mergedLessons.contains(lessonId)) {
-                    mergedLessons.add(lessonId);
-                }
-            }
-            user.setCompletedLessonIds(mergedLessons);
+            user.setCompletedLessonIds(ProgressGuard.mergeIds(user.getCompletedLessonIds(), progressData.getCompletedLessonIds()));
         }
-
         if (progressData.getBadges() != null) {
-            List<String> mergedBadges = new ArrayList<>(user.getBadges() != null ? user.getBadges() : List.of());
-            for (String badge : progressData.getBadges()) {
-                if (badge != null && !mergedBadges.contains(badge)) {
-                    mergedBadges.add(badge);
-                }
-            }
-            user.setBadges(mergedBadges);
+            user.setBadges(ProgressGuard.mergeKnownBadges(user.getBadges(), progressData.getBadges()));
         }
-
-        // First-unlock timestamps are append-only: an existing timestamp for a badge id is never overwritten.
         if (progressData.getBadgeUnlockedAt() != null) {
-            Map<String, String> mergedUnlockedAt = new HashMap<>(user.getBadgeUnlockedAt() != null ? user.getBadgeUnlockedAt() : Map.of());
-            progressData.getBadgeUnlockedAt().forEach((badgeId, unlockedAt) -> {
-                if (badgeId != null && unlockedAt != null) {
-                    mergedUnlockedAt.putIfAbsent(badgeId, unlockedAt);
-                }
-            });
-            user.setBadgeUnlockedAt(mergedUnlockedAt);
+            user.setBadgeUnlockedAt(ProgressGuard.mergeBadgeUnlockTimes(user.getBadgeUnlockedAt(), progressData.getBadgeUnlockedAt()));
         }
-
         if (progressData.getCompletedExamIds() != null) {
-            List<String> mergedExams = new ArrayList<>(user.getCompletedExamIds() != null ? user.getCompletedExamIds() : List.of());
-            for (String examId : progressData.getCompletedExamIds()) {
-                if (examId != null && !mergedExams.contains(examId)) {
-                    mergedExams.add(examId);
-                }
-            }
-            user.setCompletedExamIds(mergedExams);
+            user.setCompletedExamIds(ProgressGuard.mergeIds(user.getCompletedExamIds(), progressData.getCompletedExamIds()));
         }
-
         if (progressData.getCompletedChallengeIds() != null) {
-            List<String> mergedChallenges = new ArrayList<>(user.getCompletedChallengeIds() != null ? user.getCompletedChallengeIds() : List.of());
-            for (String challengeId : progressData.getCompletedChallengeIds()) {
-                if (challengeId != null && !mergedChallenges.contains(challengeId)) {
-                    mergedChallenges.add(challengeId);
-                }
-            }
-            user.setCompletedChallengeIds(mergedChallenges);
+            user.setCompletedChallengeIds(ProgressGuard.mergeIds(user.getCompletedChallengeIds(), progressData.getCompletedChallengeIds()));
         }
-
         if (progressData.getQuizScores() != null) {
-            Map<String, Integer> mergedQuizScores = new HashMap<>(user.getQuizScores() != null ? user.getQuizScores() : Map.of());
-            progressData.getQuizScores().forEach((lessonId, score) -> {
-                if (lessonId != null && score != null) {
-                    mergedQuizScores.put(lessonId, Math.max(mergedQuizScores.getOrDefault(lessonId, 0), score));
-                }
-            });
-            user.setQuizScores(mergedQuizScores);
+            user.setQuizScores(ProgressGuard.mergeQuizScores(user.getQuizScores(), progressData.getQuizScores()));
         }
 
         List<String> completedLessons = user.getCompletedLessonIds() != null ? user.getCompletedLessonIds() : List.of();
@@ -161,15 +126,7 @@ public class UserService {
                 .count();
 
         if (mathLessons >= 3) {
-            List<String> existingBadges = new ArrayList<>(user.getBadges() != null ? user.getBadges() : List.of());
-            if (!existingBadges.contains("b_math_star")) {
-                existingBadges.add("b_math_star");
-            }
-            user.setBadges(existingBadges);
-        }
-
-        if (user.getXp() != null) {
-            user.setScore(user.getXp());
+            user.setBadges(ProgressGuard.mergeKnownBadges(user.getBadges(), List.of("b_math_star")));
         }
 
         User savedUser = userRepository.save(user);

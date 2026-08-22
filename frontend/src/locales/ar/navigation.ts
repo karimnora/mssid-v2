@@ -6,4 +6,112 @@ export const navigation = {
   profile: 'الملف',
   aiTutor: 'المعلم الذكي بالذكاء الاصطناعي',
   aiTutorShort: 'المعلم',
+  aiTutorNavLabel: 'المعلّم الذكي',
+  aiTutorTitle: 'المعلم الذكي مسيد',
+
+  brandBadge: 'مَسِيد الجزائر',
+  brandTagline: 'المنصة التعليمية للابتدائي الجزائري',
+  backToHomeTitle: 'العودة للصفحة الرئيسية',
+
+  preschoolNavLabel: 'التحضيري',
+  preschoolNavTitle: 'قسم التحضيري والإيقاظ (3 إلى 5 سنوات)',
+  preschoolMobileLabel: 'قسم التحضيري (3 - 5 سنوات)',
+  newBadge: 'جديد',
+
+  grade1APFull: 'السنة الأولى',
+  grade2APFull: 'السنة الثانية',
+  grade3APFull: 'السنة الثالثة',
+  grade4APFull: 'السنة الرابعة',
+  grade5APFull: 'السنة الخامسة',
+
+  themeNeutreFull: 'النمط الملوّن والمنعش',
+  themeNeutreShort: 'ملوّن',
+  themeLightFull: 'فاتح',
+  themeLightShort: 'فاتح',
+  themeDarkFull: 'داكن',
+  themeDarkShort: 'داكن',
+
+  xpLevelStatus: 'المستوى {level} - {xp} نقاط خبرة',
+  themeMenuTitle: 'تغيير المظهر والثيم',
+  chooseThemeLabel: 'اختر ثيم الواجهة:',
+  themeSectionLabel: 'ثيم الواجهة:',
+
+  profileMenuTitle: 'القائمة والخيارات العامة',
+  loginShort: 'تسجيل الدخول',
+  guestFallbackName: 'زائر mssid dz',
+  guestSaveDataHint: 'سجل دخولك لحفظ بياناتك في الخادم',
+  streakDaysStatus: '🔥 {days} أيام متتالية',
+
+  accountSectionTitle: 'الحساب والتوثيق',
+  loginRegisterCta: 'تسجيل الدخول / إنشاء حساب',
+  profileAndProgress: 'الملف الشخصي والتقدم',
+  logout: 'تسجيل الخروج',
+  contactUs: 'تواصل معنا',
+
+  adminSectionTitle: 'إدارة النظام (Admin)',
+  adminConsole: 'لوحة تحكم الإدارة',
+
+  toolsSectionTitle: 'أدوات وإعدادات',
+  privacyPolicyMenuItem: 'سياسة الخصوصية Google Play',
+  termsMenuItem: 'الشروط والأحكام',
+
+  mobileMenuTitle: 'القائمة',
+  gradeSectionLabel: 'اختر المستوى الدراسي:',
+  mobileAppLabel: 'التطبيق المحمول (Android/iOS)',
+  footerBrandVersion: 'مَسِيد DZ • الإصدار {version}',
+
+  confirmResetProgress: 'هل أنت تأكد من إعادة ضبط التقدم والنقاط؟',
+
+  tabCoursesLabel: '📚 الدروس والمواد التعليمية',
+  tabCoursesCount: '{count} مواد',
+  tabLabsLabel: '⚡ المختبرات والأدوات التفاعلية',
+  tabLabsCount: '{count} أدوات',
+  tabExamsLabel: '📜 بنك مواضيع الامتحانات',
+  tabExamsCount: '{count} بنك',
+  tabChallengesLabel: '🏆 نادي التحديات والمسابقات',
+  tabChallengesCount: '{count} تحدي',
+  fallbackSubjectName: 'مادة',
+
+  backToStudentApp: 'تطبيق التلميذ 🎓',
+  backToPrimaryPlatform: 'منصة الابتدائي 🎒',
+  backToAppGeneric: 'العودة للتطبيق ↩️',
+  backToLessonsOf: 'دروس {subject} 📚',
+  backToToolsIndex: 'فهرس الأدوات والمختبرات ⚡',
+  backToHomeFull: 'الصفحة الرئيسية 🏠',
+
+  loadingAdminConsole: 'جاري تحميل لوحة تحكم الإدارة...',
+  loadingPreschool: 'جاري تحميل وضع التحضيري...',
+  loadingInteractiveTool: 'جاري تحميل الأداة التفاعلية...',
+
+  heroEyebrow: 'مرحباً بك في منصة مسيد',
+  heroTitle: 'تعلّم، جرّب، وتقدّم وأنت تستمتع!',
+  heroBadgeFun: '⭐ تجربة ممتعة للأطفال',
+  heroBadgeSafe: '🎯 واجهة آمنة وسهلة الاستخدام',
+  heroPreschoolCta: '🦊 وضع التحضيري (3-5 سنوات)',
+
+  infoBadgeCourses: '🎓 دروس ومناهج تربوية رسمية ({grade})',
+  infoBadgeLabs: '🧪 أدوات ومختبرات وتصريف الأفعال باستقلالية',
+  infoBadgeExams: '📜 مواضيع امتحانات مع الحلول النموذجية مجاناً',
+  infoBadgeChallenges: '🏆 تحديات موقوتة وألعاب سريعة لكسب نقاط الخبرة',
+
+  fallbackLabName: 'المختبر التفاعلي',
+  labReadyHint: 'جاهزة للتجربة والتعلم ✨',
+  labOpenedToast: 'تم فتح هذه الأداة بنجاح، استمتع بالتجربة التفاعلية!',
+  chooseAnotherTool: '⬆️ اختيار أداة أخرى',
+
+  footerBrandName: 'مَسِيد Mssid DZ',
+  footerCurriculumLine: '• المنهاج الرسمي لوزارة التربية الوطنية الجزائرية',
+  footerAiTutorLink: 'المعلم مسيد',
+
+  openLockedLessonTitle: 'افتح دروس الفصل {trimesterLabel} — {title}',
+  trimesterSecond: 'الثاني',
+  trimesterThird: 'الثالث',
+
+  backButtonTitle: 'رجوع: {destination}',
+  backButtonFloatingLabel: 'رجوع ↩️',
+  confirmLeaveModalTitle: 'هل تريد حقاً الرجوع يا بطل؟',
+  confirmLeaveDefaultMessage:
+    'أنت في وسط هذا النشاط! إذا رجعت الآن قد تخسر نقاطاً أو إجابات غير محفوظة.',
+  confirmLeaveStayButton: 'لا، أكمل التحدي! 🚀',
+  confirmLeaveConfirmButton: 'نعم، أريد الرجوع 👋',
 };

@@ -1,0 +1,119 @@
+import type { navigation as navigationAr } from '../ar/navigation';
+
+export const navigation: typeof navigationAr = {
+  home: 'Accueil',
+  courses: 'Cours',
+  games: 'Jeux',
+  exercises: 'Exercices',
+  profile: 'Profil',
+  aiTutor: 'Tuteur intelligent (IA)',
+  aiTutorShort: 'Tuteur',
+  aiTutorNavLabel: 'Tuteur IA',
+  aiTutorTitle: 'Tuteur intelligent Mssid',
+
+  brandBadge: 'Mssid Algérie',
+  brandTagline: 'La plateforme éducative du primaire algérien',
+  backToHomeTitle: "Retour à l'accueil",
+
+  preschoolNavLabel: 'Préscolaire',
+  preschoolNavTitle: "Section préscolaire et éveil (3 à 5 ans)",
+  preschoolMobileLabel: 'Section préscolaire (3 - 5 ans)',
+  newBadge: 'Nouveau',
+
+  grade1APFull: '1ère année',
+  grade2APFull: '2ème année',
+  grade3APFull: '3ème année',
+  grade4APFull: '4ème année',
+  grade5APFull: '5ème année',
+
+  themeNeutreFull: 'Coloré et vif',
+  themeNeutreShort: 'Coloré',
+  themeLightFull: 'Clair',
+  themeLightShort: 'Clair',
+  themeDarkFull: 'Sombre',
+  themeDarkShort: 'Sombre',
+
+  xpLevelStatus: 'Niveau {level} - {xp} points d’expérience',
+  themeMenuTitle: "Changer l'apparence et le thème",
+  chooseThemeLabel: "Choisir le thème de l'interface :",
+  themeSectionLabel: "Thème de l'interface :",
+
+  profileMenuTitle: 'Menu et options générales',
+  loginShort: 'Connexion',
+  guestFallbackName: 'Visiteur mssid dz',
+  guestSaveDataHint: 'Connecte-toi pour sauvegarder tes données sur le serveur',
+  streakDaysStatus: '🔥 {days} jours consécutifs',
+
+  accountSectionTitle: 'Compte et authentification',
+  loginRegisterCta: 'Connexion / Créer un compte',
+  profileAndProgress: 'Profil et progression',
+  logout: 'Déconnexion',
+  contactUs: 'Nous contacter',
+
+  adminSectionTitle: 'Administration système',
+  adminConsole: "Tableau de bord d'administration",
+
+  toolsSectionTitle: 'Outils et paramètres',
+  privacyPolicyMenuItem: 'Politique de confidentialité Google Play',
+  termsMenuItem: "Conditions d'utilisation",
+
+  mobileMenuTitle: 'Menu',
+  gradeSectionLabel: 'Choisir le niveau scolaire :',
+  mobileAppLabel: 'Application mobile (Android/iOS)',
+  footerBrandVersion: 'Mssid DZ • Version {version}',
+
+  confirmResetProgress: 'Es-tu sûr de vouloir réinitialiser ta progression et tes points ?',
+
+  tabCoursesLabel: '📚 Cours et matières pédagogiques',
+  tabCoursesCount: '{count} matières',
+  tabLabsLabel: '⚡ Laboratoires et outils interactifs',
+  tabLabsCount: '{count} outils',
+  tabExamsLabel: "📜 Banque d'examens",
+  tabExamsCount: '{count} sujets',
+  tabChallengesLabel: '🏆 Club des défis et concours',
+  tabChallengesCount: '{count} défis',
+  fallbackSubjectName: 'Matière',
+
+  backToStudentApp: "Application élève 🎓",
+  backToPrimaryPlatform: 'Plateforme du primaire 🎒',
+  backToAppGeneric: "Retour à l'application ↩️",
+  backToLessonsOf: 'Cours de {subject} 📚',
+  backToToolsIndex: 'Index des outils et laboratoires ⚡',
+  backToHomeFull: "Page d'accueil 🏠",
+
+  loadingAdminConsole: "Chargement du tableau de bord d'administration...",
+  loadingPreschool: 'Chargement du mode préscolaire...',
+  loadingInteractiveTool: "Chargement de l'outil interactif...",
+
+  heroEyebrow: 'Bienvenue sur la plateforme Mssid',
+  heroTitle: 'Apprends, expérimente et progresse en t’amusant !',
+  heroBadgeFun: '⭐ Une expérience amusante pour les enfants',
+  heroBadgeSafe: '🎯 Interface sûre et facile à utiliser',
+  heroPreschoolCta: '🦊 Mode préscolaire (3-5 ans)',
+
+  infoBadgeCourses: '🎓 Cours et programmes pédagogiques officiels ({grade})',
+  infoBadgeLabs: '🧪 Outils, laboratoires et conjugaison des verbes en autonomie',
+  infoBadgeExams: "📜 Sujets d'examens avec corrigés types, gratuitement",
+  infoBadgeChallenges: "🏆 Défis chronométrés et jeux rapides pour gagner des points d'expérience",
+
+  fallbackLabName: 'Laboratoire interactif',
+  labReadyHint: 'Prêt à essayer et apprendre ✨',
+  labOpenedToast: 'Cet outil a été ouvert avec succès, profite de l’expérience interactive !',
+  chooseAnotherTool: '⬆️ Choisir un autre outil',
+
+  footerBrandName: 'Mssid DZ',
+  footerCurriculumLine: '• Programme officiel du ministère de l’Éducation nationale algérien',
+  footerAiTutorLink: 'Tuteur Mssid',
+
+  openLockedLessonTitle: 'Ouvrir les cours du trimestre {trimesterLabel} — {title}',
+  trimesterSecond: '2',
+  trimesterThird: '3',
+
+  backButtonTitle: 'Retour : {destination}',
+  backButtonFloatingLabel: 'Retour ↩️',
+  confirmLeaveModalTitle: 'Tu veux vraiment revenir en arrière, champion ?',
+  confirmLeaveDefaultMessage:
+    'Tu es en plein milieu de cette activité ! Si tu reviens maintenant, tu risques de perdre des points ou des réponses non enregistrées.',
+  confirmLeaveStayButton: 'Non, je continue le défi ! 🚀',
+  confirmLeaveConfirmButton: 'Oui, je veux revenir 👋',
+};

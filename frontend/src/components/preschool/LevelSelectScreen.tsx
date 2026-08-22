@@ -71,7 +71,7 @@ export const LevelSelectScreen: React.FC<LevelSelectScreenProps> = ({
       <p className="text-indigo-200 font-bold text-sm">{chooseLabel}</p>
 
       {/* Level cards grid */}
-      <div className="w-full max-w-2xl grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className={`w-full max-w-2xl grid grid-cols-2 gap-4 ${levels.length > 4 ? 'sm:grid-cols-3' : 'sm:grid-cols-4'}`}>
         {levels.map((lvl, i) => {
           const name = language === 'ar' ? lvl.titleAr : language === 'fr' ? lvl.titleFr : lvl.titleEn;
           const desc = language === 'ar' ? lvl.descAr  : language === 'fr' ? lvl.descFr  : lvl.descEn;

@@ -7,7 +7,6 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
   beforeEach(() => {
     localStorage.clear();
     vi.clearAllMocks();
-    springBootApi.setIdentityHeaders(null, null);
   });
 
   afterEach(() => {
@@ -51,9 +50,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
   });
 
   describe('HTTP Request Handling - Happy Paths & Header Attachments', () => {
-    it('attaches user role headers pushed by AuthService (SEC-05: no localStorage read)', async () => {
-      springBootApi.setIdentityHeaders('ROLE_ADMIN', 'admin@mssid.dz');
-
+    it('SEC-10: never sends spoofable x-user-role / x-user-id headers', async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         status: 200,
         ok: true,
@@ -66,15 +63,9 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
 
       expect(response.status).toBe(200);
       expect(response.data?.message).toBe('Success');
-      expect(mockFetch).toHaveBeenCalledWith(
-        expect.stringContaining('/test-endpoint'),
-        expect.objectContaining({
-          headers: expect.objectContaining({
-            'x-user-role': 'ROLE_ADMIN',
-            'x-user-id': 'admin@mssid.dz',
-          }),
-        })
-      );
+      const sentHeaders = mockFetch.mock.calls[0][1].headers as Record<string, string>;
+      expect(sentHeaders['x-user-role']).toBeUndefined();
+      expect(sentHeaders['x-user-id']).toBeUndefined();
     });
 
     it('performs login without exposing a JWT in the response body', async () => {

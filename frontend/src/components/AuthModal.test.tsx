@@ -3,6 +3,9 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { AuthModal } from './AuthModal';
 import { AuthService } from '../services/authService';
+import { LocaleProvider } from '../context/LocaleContext';
+
+const renderAuth = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
 describe('AuthModal Integration Tests', () => {
   const originalFetch = global.fetch;
@@ -16,12 +19,12 @@ describe('AuthModal Integration Tests', () => {
   });
 
   it('does not render when isOpen is false', () => {
-    render(<AuthModal isOpen={false} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={false} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     expect(screen.queryByRole('heading', { name: 'تسجيل الدخول' })).not.toBeInTheDocument();
   });
 
   it('renders login form by default when isOpen is true', () => {
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
 
     expect(screen.getByRole('heading', { name: 'تسجيل الدخول' })).toBeInTheDocument();
     expect(screen.getByPlaceholderText('example@mssid.dz')).toBeInTheDocument();
@@ -29,7 +32,7 @@ describe('AuthModal Integration Tests', () => {
   });
 
   it('switches between Login mode and Register mode when tabs are clicked', () => {
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
 
     const registerTab = screen.getAllByRole('button', { name: /إنشاء حساب/i })[0];
     fireEvent.click(registerTab);
@@ -39,7 +42,7 @@ describe('AuthModal Integration Tests', () => {
   });
 
   it('shows a required grade selector only in registration mode, defaulting to no selection', () => {
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
 
     // Login mode: no grade selector
     expect(screen.queryByText('المستوى الدراسي:')).not.toBeInTheDocument();
@@ -61,7 +64,7 @@ describe('AuthModal Integration Tests', () => {
     });
     global.fetch = mockFetch;
 
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
 
     fireEvent.change(screen.getByPlaceholderText('مثال: يونس الجزائري'), { target: { value: 'يونس' } });
@@ -98,7 +101,7 @@ describe('AuthModal Integration Tests', () => {
     });
     global.fetch = mockFetch;
 
-    render(<AuthModal isOpen={true} onClose={handleClose} onAuthSuccess={handleAuthSuccess} />);
+    renderAuth(<AuthModal isOpen={true} onClose={handleClose} onAuthSuccess={handleAuthSuccess} />);
 
     const emailInput = screen.getByPlaceholderText('example@mssid.dz');
     const passwordInput = screen.getByPlaceholderText('••••••••');
@@ -131,7 +134,7 @@ describe('AuthModal password recovery flow', () => {
   });
 
   it('shows a "forgot password?" link only in login mode', () => {
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     expect(screen.getByText('نسيت كلمة المرور؟')).toBeInTheDocument();
 
     fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
@@ -143,7 +146,7 @@ describe('AuthModal password recovery flow', () => {
       .spyOn(AuthService, 'requestPasswordReset')
       .mockResolvedValue({ success: true, message: 'إذا كان هذا البريد مسجلاً لدينا، فستصلك رسالة تحتوي على رمز.' });
 
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
 
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
@@ -161,7 +164,7 @@ describe('AuthModal password recovery flow', () => {
       .spyOn(AuthService, 'resetPasswordWithCode')
       .mockResolvedValue({ success: true, message: 'تم تغيير كلمة المرور بنجاح.' });
 
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
     fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));
@@ -186,7 +189,7 @@ describe('AuthModal password recovery flow', () => {
       message: 'الرمز غير صحيح أو منتهي الصلاحية.',
     });
 
-    render(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
     fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));

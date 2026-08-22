@@ -41,6 +41,21 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * SEC-10: daily Gemini quota exhausted for the authenticated account (role from JWT, not headers).
+     */
+    @ExceptionHandler(AiQuotaExceededException.class)
+    public ResponseEntity<Map<String, Object>> handleAiQuotaExceeded(AiQuotaExceededException ex) {
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(Map.of(
+                "status", 429,
+                "error", "Too Many Requests",
+                "message", ex.getMessage(),
+                "limit", ex.getLimit(),
+                "remaining", ex.getRemaining(),
+                "resetHours", ex.getResetHours()
+        ));
+    }
+
+    /**
      * Intercepte les erreurs d'authentification (ex: mauvais mot de passe ou utilisateur introuvable)
      * et renvoie un statut 401 Unauthorized avec un message clair.
      */

@@ -29,10 +29,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * - {@code POST /api/v1/auth/reset-password}: 10 attempts / 15 minutes per IP — the reset code is
  *   only 6 digits (1e6 possibilities); this doesn't make brute-forcing it feasible on its own, but
  *   it removes the "just script it" trivial case on top of the code's own 15-minute expiry.
- * - {@code POST /api/gemini/**} and {@code POST /api/v1/ai/**}: 15 requests / minute per IP — these
- *   endpoints are unauthenticated by design (see GeminiProxyController) and each call costs real money
- *   against the Gemini quota, so they get a tighter window than the general default below rather than
- *   relying on it.
+        * - {@code POST /api/gemini/**} and {@code POST /api/v1/ai/**}: 15 requests / minute per IP —
+        *   burst guard in front of the per-account daily quota ({@code AiQuotaService}, SEC-10).
+        *   Endpoints themselves now require a JWT; this IP window still stops a single address from
+        *   hammering Gemini even with a valid cookie.
  * - Everything else under {@code /api/**}: 60 requests / minute — general abuse/scraping guard.
  * <p>
  * Known limitation: the per-IP counters are never evicted, so memory grows slowly with the number of

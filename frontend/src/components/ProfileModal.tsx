@@ -4,6 +4,7 @@ import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles, Mail } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
 import { Card, XPProgressBar } from './ui';
 import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dailyObjective';
@@ -44,6 +45,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onRefreshFromDb,
 }) => {
   const t = useTranslation('common');
+  const { direction } = useLocaleContext();
   const currentName = authUser?.nom || userProfile.name;
   const [editedName, setEditedName] = useState(currentName);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -109,7 +111,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       return;
     }
     setDeletingAccount(false);
-    setDeleteAccountError(result.error || 'تعذر حذف الحساب، حاول مجدداً');
+    setDeleteAccountError(result.error || t('deleteAccountErrorFallback'));
   };
 
   useEffect(() => {
@@ -163,8 +165,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl"
-      dir="rtl"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+      dir={direction}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
@@ -176,7 +178,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         {/* Header */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between shrink-0 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="relative w-14 h-14 rounded-full p-[3px] shrink-0" style={avatarRingStyle} title={`${currentLevelProgress}% نحو المستوى ${currentLevel + 1}`}>
+            <div className="relative w-14 h-14 rounded-full p-[3px] shrink-0" style={avatarRingStyle} title={t('levelProgressTitle', { percent: currentLevelProgress, level: currentLevel + 1 })}>
               <div className="w-full h-full rounded-full bg-gradient-to-tr from-amber-500 to-emerald-500 p-0.5 flex items-center justify-center text-xl font-bold">
                 <span className="w-full h-full bg-slate-900 rounded-full flex items-center justify-center">
                   {selectedAvatar}
@@ -202,7 +204,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 )}
               </div>
               <p className="text-xs text-slate-400 font-sans mt-0.5">
-                {authUser?.email ? `${authUser.email} • المستوى ${currentLevel}` : `تلميذ في ${userProfile.grade} • المستوى ${currentLevel}`}
+                {authUser?.email
+                  ? t('emailLevelLabel', { email: authUser.email, level: currentLevel })
+                  : t('studentInGradeLabel', { grade: userProfile.grade, level: currentLevel })}
               </p>
               <div className="w-32 sm:w-40 bg-white/10 h-1.5 rounded-full overflow-hidden mt-1.5">
                 <div
@@ -218,7 +222,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <button
                 onClick={handleRefreshClick}
                 disabled={isRefreshing}
-                title="تحديث البيانات من قاعدة البيانات"
+                title={t('refreshFromDbTitle')}
                 className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-emerald-400 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50"
               >
                 <Database className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -239,13 +243,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           <Card padding="md" className="!bg-emerald-50/80 !border-emerald-200/80 space-y-2">
             <label className="text-xs font-extrabold text-emerald-900 flex items-center gap-1.5">
               <Edit2 className="w-3.5 h-3.5 text-emerald-600" />
-              <span>اسم التلميذ / الحساب الشخصي:</span>
+              <span>{t('studentNameLabel')}</span>
             </label>
             <input
               type="text"
               value={editedName}
               onChange={(e) => setEditedName(e.target.value)}
-              placeholder="أدخل اسمك هنا..."
+              placeholder={t('namePlaceholder')}
               className="w-full px-3.5 py-2 bg-white border border-emerald-300 rounded-xl text-sm font-extrabold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
           </Card>
@@ -255,10 +259,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             <Card padding="md" className="!bg-amber-50 !border-amber-200 space-y-2.5">
               <div className="flex items-center gap-1.5 text-xs font-extrabold text-amber-900">
                 <Mail className="w-3.5 h-3.5 text-amber-600" />
-                <span>قم بتأكيد بريدك الإلكتروني</span>
+                <span>{t('confirmEmailHeading')}</span>
               </div>
               <p className="text-[11px] text-amber-800 leading-relaxed">
-                أرسلنا رمزاً مكوناً من 6 أرقام إلى {authUser.email}. أدخله هنا لتأكيد حسابك.
+                {t('emailCodeSentText', { email: authUser.email })}
               </p>
               <div className="flex items-center gap-2">
                 <input
@@ -276,7 +280,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                   disabled={verificationCode.length !== 6 || verifyState === 'loading'}
                   className="px-4 py-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-extrabold text-xs rounded-xl transition-all cursor-pointer shrink-0"
                 >
-                  {verifyState === 'loading' ? '...' : 'تأكيد'}
+                  {verifyState === 'loading' ? '...' : t('confirmButton')}
                 </button>
               </div>
               {verifyMessage && (
@@ -289,7 +293,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 disabled={resendCooldown > 0}
                 className="text-[11px] font-bold text-amber-700 hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
               >
-                {resendCooldown > 0 ? `إعادة الإرسال بعد ${resendCooldown} ثانية` : 'لم يصلك الرمز؟ إعادة الإرسال'}
+                {resendCooldown > 0 ? t('resendAfterSeconds', { seconds: resendCooldown }) : t('resendCode')}
               </button>
             </Card>
           )}
@@ -298,7 +302,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           <Card padding="md" className="space-y-3">
             <label className="text-xs font-extrabold text-[var(--app-text)] flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              <span>اختر رمزك الشخصي المفضل:</span>
+              <span>{t('avatarPickerLabel')}</span>
             </label>
             <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
               {AVATAR_OPTIONS.map((emoji) => {
@@ -328,7 +332,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             <div className="flex items-center justify-between text-xs font-extrabold text-[var(--app-text)]">
               <div className="flex items-center gap-1.5">
                 <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                <span>المستوى الحالي ({currentLevel}) ← التقدم نحو المستوى ({currentLevel + 1})</span>
+                <span>{t('currentLevelLabel', { level: currentLevel, nextLevel: currentLevel + 1 })}</span>
               </div>
             </div>
 
@@ -340,9 +344,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             <div className="flex items-center justify-between text-[11px] font-bold text-[var(--app-text-muted)] pt-1">
               <div className="flex items-center gap-1">
                 <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500" />
-                <span>سلسلة الحضور: {userProfile.streakDays} أيام متواصلة</span>
+                <span>{t('streakLabel', { days: userProfile.streakDays })}</span>
               </div>
-              <span>مكتمل {userProfile.completedLessonIds.length} دروس</span>
+              <span>{t('completedLessonsLabel', { count: userProfile.completedLessonIds.length })}</span>
             </div>
           </Card>
 
@@ -351,9 +355,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             <div className="flex items-center justify-between text-xs font-extrabold text-slate-800">
               <div className="flex items-center gap-1.5">
                 <Target className="w-4 h-4 text-amber-600" />
-                <span>🎯 هدف اليوم</span>
+                <span>{t('dailyObjectiveLabel')}</span>
               </div>
-              <span className="font-mono">{Math.min(dailyObjective.count, DAILY_OBJECTIVE_TARGET)} / {DAILY_OBJECTIVE_TARGET} تمارين</span>
+              <span className="font-mono">{t('dailyObjectiveCount', { count: Math.min(dailyObjective.count, DAILY_OBJECTIVE_TARGET), target: DAILY_OBJECTIVE_TARGET })}</span>
             </div>
             <div className="w-full bg-white h-2.5 rounded-full overflow-hidden border border-slate-200">
               <div
@@ -362,7 +366,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               />
             </div>
             <p className="text-[11px] font-bold text-slate-600">
-              {dailyObjectiveDone ? '🎉 أنجزت هدف اليوم! عد غداً لهدف جديد.' : `أكمل ${DAILY_OBJECTIVE_TARGET - dailyObjective.count} تمارين أو اختبارات أخرى اليوم لإكمال الهدف.`}
+              {dailyObjectiveDone
+                ? t('dailyObjectiveDoneMsg')
+                : t('dailyObjectiveRemainingMsg', { remaining: DAILY_OBJECTIVE_TARGET - dailyObjective.count })}
             </p>
           </Card>
 
@@ -375,7 +381,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 effect in App.tsx, so this gallery reflects real progress rather than a fixed mock list. */}
             <Card padding="md" className="space-y-3">
               <h3 className="text-xs font-extrabold uppercase text-[var(--app-text-muted)] tracking-wider">
-                شارات الأوسمة والإنجازات ({userProfile.badges.length}/{BADGES_CATALOG.length}):
+                {t('badgesGalleryLabel', { unlocked: userProfile.badges.length, total: BADGES_CATALOG.length })}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {BADGES_CATALOG.map((b) => {
@@ -439,17 +445,17 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 className="text-[11px] font-bold text-slate-400 hover:text-rose-700 disabled:opacity-50 cursor-pointer"
               >
                 {deletingAccount
-                  ? 'جارٍ الحذف...'
+                  ? t('deletingAccountLabel')
                   : confirmDeleteAccount
-                  ? 'اضغط مجدداً لتأكيد حذف الحساب نهائياً'
-                  : 'حذف الحساب نهائياً'}
+                  ? t('confirmDeleteAccountLabel')
+                  : t('deleteAccountLabel')}
               </button>
               {confirmDeleteAccount && !deletingAccount && (
                 <button
                   onClick={() => setConfirmDeleteAccount(false)}
                   className="text-[11px] font-bold text-slate-500 hover:text-slate-700 cursor-pointer"
                 >
-                  إلغاء
+                  {t('cancel')}
                 </button>
               )}
             </div>

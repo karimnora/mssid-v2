@@ -1,0 +1,32 @@
+import type { home as homeAr } from '../ar/home';
+
+// HomeView.tsx — typed against the Arabic namespace so a missing/extra key is a compile error.
+export const home: typeof homeAr = {
+  systemBadge: 'Le système éducatif algérien 🇩🇿',
+  welcomeGuest: 'Bienvenue, champion, sur Mssid Algérie 👋',
+  welcomeUser: 'Bienvenue {name} sur Mssid 👋',
+  guestFallbackName: 'champion',
+  platformTagline: 'La plateforme complète du préscolaire (Braem) jusqu’à la 5ème année primaire',
+  preschoolCtaTitle: 'Section préscolaire et éveil (3 à 5 ans)',
+  preschoolCtaLabel: 'Section préscolaire (3-5 ans)',
+  newBadge: 'Nouveau',
+  dressingRoomLabel: '🦊 Le dressing de Didou',
+  connectedLabel: 'Connecté',
+  guestModeLabel: 'Mode navigation libre (invité)',
+  guestBannerTitle: 'Accès gratuit et illimité à tous les cours et laboratoires !',
+  guestBannerSubtitle: 'Crée ton compte à tout moment pour sauvegarder en toute sécurité ta progression, tes points (XP) et tes badges.',
+  guestSignupCta: 'Connexion / Créer un compte gratuit 🚀',
+  preschoolFeatureBadge: '👶 Braem préscolaire (3 - 5 ans)',
+  preschoolFeatureTag: 'Jeux interactifs & sons',
+  preschoolFeatureTitle: "Le coin d'éveil et d'apprentissage préscolaire 🎈",
+  preschoolFeatureDesc: "Le bateau des lettres, la cueillette des nombres, couleurs et arts, les amis animaux, et des labyrinthes amusants et simples pour l'enfant !",
+  preschoolFeatureCta: 'Entrer dans le coin préscolaire',
+  poleCoursesTitle: 'Réviser les cours',
+  poleCoursesDesc: 'Les cours de ton programme scolaire selon ton niveau',
+  poleChallengesTitle: 'Arène des défis',
+  poleChallengesDesc: "Défis rapides pour gagner des points d'expérience et des dinars",
+  poleExamsTitle: "Banque d'examens et d'évaluations",
+  poleExamsDesc: 'Sujets de trimestre et de fin de cycle avec corrigés types, gratuitement',
+  poleLabsTitle: 'Laboratoires et outils',
+  poleLabsDesc: "Le marché des dinars, les 58 wilayas, le musée de l'histoire, et les expériences scientifiques",
+};

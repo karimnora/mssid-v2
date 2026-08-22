@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export interface XPProgressBarProps {
   /** XP earned within the current level. */
@@ -18,6 +19,7 @@ export const XPProgressBar: React.FC<XPProgressBarProps> = ({
   showLabel = true,
   className = '',
 }) => {
+  const t = useTranslation('common');
   const pct = Math.max(0, Math.min(100, (currentXp / maxXp) * 100));
 
   return (
@@ -25,7 +27,7 @@ export const XPProgressBar: React.FC<XPProgressBarProps> = ({
       {showLabel && (
         <div className="flex items-center justify-between text-xs font-bold text-[var(--app-text-muted)]">
           {level !== undefined && (
-            <span className="text-[var(--brand-amber-dark)] font-black">المستوى {level}</span>
+            <span className="text-[var(--brand-amber-dark)] font-black">{t('levelBadge', { level })}</span>
           )}
           {/* Isolated LTR span: prevents the bidi algorithm from reordering the digits/slash when this renders inside an RTL container. */}
           <span dir="ltr">{currentXp} / {maxXp} XP</span>

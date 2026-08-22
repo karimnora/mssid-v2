@@ -5,12 +5,14 @@ import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap } from 'lucide-react';
 import { MssidLogo } from './MssidLogo';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   onAuthSuccess: (user: AuthUser) => void;
-  /** Which tab to land on when the modal opens — e.g. AuthWallModal's two CTAs open this in different modes. */
+  /** Which tab to land on when the modal opens (login vs register). */
   initialMode?: 'login' | 'register';
   /** Opens PrivacyPolicyModal (rendered at App.tsx level) — surfaced on the register form so a new
    * account is never created without the policy having been reachable first. */
@@ -21,15 +23,17 @@ interface Props {
 
 // Same 5 levels/labels as GradeSelector.tsx and Navbar.tsx's GRADES, kept in sync manually since
 // each lives in its own component-scoped list rather than a shared constant.
-const GRADE_OPTIONS: { id: PrimaryGrade; labelAr: string }[] = [
-  { id: '1AP', labelAr: 'السنة الأولى ابتدائي (1AP)' },
-  { id: '2AP', labelAr: 'السنة الثانية ابتدائي (2AP)' },
-  { id: '3AP', labelAr: 'السنة الثالثة ابتدائي (3AP)' },
-  { id: '4AP', labelAr: 'السنة الرابعة ابتدائي (4AP)' },
-  { id: '5AP', labelAr: 'السنة الخامسة ابتدائي (5AP)' },
-];
+const GRADE_OPTION_KEYS: Record<PrimaryGrade, 'grade1APOption' | 'grade2APOption' | 'grade3APOption' | 'grade4APOption' | 'grade5APOption'> = {
+  '1AP': 'grade1APOption',
+  '2AP': 'grade2APOption',
+  '3AP': 'grade3APOption',
+  '4AP': 'grade4APOption',
+  '5AP': 'grade5APOption',
+};
 
 export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService }) => {
+  const t = useTranslation('auth');
+  const { direction } = useLocaleContext();
   const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -81,13 +85,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     setLoading(false);
 
     if (!result.success) {
-      setStatusMessage({ type: 'error', text: result.message || 'تعذر الاتصال بالخادم. يرجى المحاولة لاحقاً.' });
+      setStatusMessage({ type: 'error', text: result.message || t('errorServerUnreachable') });
       return;
     }
 
     setAuthFlow('reset');
     setResendCooldown(60);
-    setStatusMessage({ type: 'success', text: result.message || 'إذا كان هذا البريد مسجلاً لدينا، فستصلك رسالة تحتوي على رمز إعادة التعيين.' });
+    setStatusMessage({ type: 'success', text: result.message || t('forgotSuccessDefault') });
   };
 
   const handleResendResetCode = async () => {
@@ -95,7 +99,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     const result = await AuthService.requestPasswordReset(email);
     setStatusMessage({
       type: result.success ? 'success' : 'error',
-      text: result.message || (result.success ? 'تم إرسال رمز جديد.' : 'تعذر إرسال الرمز، حاول لاحقاً.'),
+      text: result.message || (result.success ? t('resendSuccessDefault') : t('resendErrorDefault')),
     });
   };
 
@@ -108,7 +112,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     setLoading(false);
 
     if (!result.success) {
-      setStatusMessage({ type: 'error', text: result.message || 'الرمز غير صحيح أو منتهي الصلاحية.' });
+      setStatusMessage({ type: 'error', text: result.message || t('resetCodeInvalid') });
       return;
     }
 
@@ -117,7 +121,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     setPassword('');
     setResetCode('');
     setNewPassword('');
-    setStatusMessage({ type: 'success', text: 'تم تغيير كلمة المرور بنجاح! يمكنك الآن تسجيل الدخول.' });
+    setStatusMessage({ type: 'success', text: t('resetPasswordSuccess') });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -132,14 +136,14 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         if (result.error || !result.user) {
           setStatusMessage({
             type: 'error',
-            text: result.error || 'البريد الإلكتروني أو كلمة المرور غير صحيحة.'
+            text: result.error || t('loginInvalidCredentials')
           });
           return;
         }
 
         setStatusMessage({
           type: 'success',
-          text: `أهلاً بك مجدداً ${result.user.nom}!`
+          text: t('loginSuccessWelcomeBack', { name: result.user.nom })
         });
         onAuthSuccess(result.user);
         onClose();
@@ -149,14 +153,14 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         if (result.error || !result.user) {
           setStatusMessage({
             type: 'error',
-            text: result.error || 'تعذر إنشاء الحساب، يرجى المحاولة لاحقاً.'
+            text: result.error || t('registerErrorDefault')
           });
           return;
         }
 
         setStatusMessage({
           type: 'success',
-          text: `تم إنشاء حسابك بنجاح! أهلاً بك ${result.user.nom}`
+          text: t('registerSuccessWelcome', { name: result.user.nom })
         });
         onAuthSuccess(result.user);
         onClose();
@@ -164,7 +168,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     } catch (err: any) {
       setStatusMessage({
         type: 'error',
-        text: 'حدث خطأ في الاتصال. يرجى التأكد من شبكة الإنترنت والمحاولة لاحقاً.'
+        text: t('genericConnectionError')
       });
     } finally {
       setLoading(false);
@@ -182,8 +186,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="bg-white border border-slate-200 w-full max-w-md max-h-[90vh] rounded-3xl shadow-2xl text-slate-800 flex flex-col overflow-hidden dir-rtl"
-        dir="rtl"
+        className="bg-white border border-slate-200 w-full max-w-md max-h-[90vh] rounded-3xl shadow-2xl text-slate-800 flex flex-col overflow-hidden"
+        dir={direction}
       >
         {/* Modal Header */}
         <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white p-5 flex items-center justify-between shrink-0">
@@ -192,10 +196,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <div>
               <h2 className="text-base font-extrabold font-sans">
                 {authFlow === 'forgot' || authFlow === 'reset'
-                  ? 'استعادة كلمة المرور'
-                  : isLogin ? 'تسجيل الدخول' : 'إنشاء حساب جديد'}
+                  ? t('titleRecovery')
+                  : isLogin ? t('login') : t('titleRegister')}
               </h2>
-              <p className="text-[11px] text-emerald-200">منصة مسيد التعليمية</p>
+              <p className="text-[11px] text-emerald-200">{t('platformSubtitle')}</p>
             </div>
           </div>
           <button
@@ -219,7 +223,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             }`}
           >
             <LogIn className="w-4 h-4" />
-            <span>تسجيل الدخول</span>
+            <span>{t('login')}</span>
           </button>
           <button
             type="button"
@@ -231,7 +235,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             }`}
           >
             <UserPlus className="w-4 h-4" />
-            <span>حساب جديد</span>
+            <span>{t('registerTab')}</span>
           </button>
         </div>
         )}
@@ -240,10 +244,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         {authFlow === 'forgot' && (
           <form onSubmit={handleForgotSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
             <p className="text-xs text-slate-600 leading-relaxed">
-              أدخل بريدك الإلكتروني، وإذا كان مسجلاً لدينا فستصلك رسالة تحتوي على رمز لإعادة تعيين كلمة المرور.
+              {t('forgotIntro')}
             </p>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني:</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">{t('emailLabel')}</label>
               <input
                 type="email"
                 required
@@ -266,7 +270,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               disabled={loading}
               className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-900/20 transition-all cursor-pointer mt-2 active:scale-[0.98]"
             >
-              {loading ? 'جاري الإرسال...' : 'إرسال رمز إعادة التعيين'}
+              {loading ? t('forgotSubmitLoading') : t('forgotSubmit')}
             </button>
 
             <div className="text-center pt-2">
@@ -275,7 +279,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onClick={() => { setAuthFlow('credentials'); setStatusMessage(null); }}
                 className="text-xs text-emerald-700 font-bold hover:underline cursor-pointer"
               >
-                العودة لتسجيل الدخول
+                {t('backToLogin')}
               </button>
             </div>
           </form>
@@ -285,10 +289,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         {authFlow === 'reset' && (
           <form onSubmit={handleResetSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
             <p className="text-xs text-slate-600 leading-relaxed">
-              أدخل الرمز المكون من 6 أرقام الذي وصلك على <span className="font-bold dir-ltr inline-block">{email}</span>، وكلمة المرور الجديدة.
+              {t('resetIntroPrefix')} <span className="font-bold dir-ltr inline-block">{email}</span>{t('resetIntroSuffix')}
             </p>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">رمز التحقق:</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">{t('verificationCodeLabel')}</label>
               <input
                 type="text"
                 inputMode="numeric"
@@ -302,7 +306,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">كلمة المرور الجديدة:</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">{t('newPasswordLabel')}</label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -316,7 +320,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
-                  aria-label={showPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
+                  aria-label={showPassword ? t('hidePassword') : t('showPassword')}
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -335,7 +339,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               disabled={loading || resetCode.length !== 6}
               className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-900/20 transition-all cursor-pointer mt-2 active:scale-[0.98]"
             >
-              {loading ? 'جاري التغيير...' : 'تغيير كلمة المرور'}
+              {loading ? t('resetSubmitLoading') : t('resetSubmit')}
             </button>
 
             <div className="flex items-center justify-between pt-2">
@@ -344,7 +348,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onClick={() => { setAuthFlow('credentials'); setStatusMessage(null); }}
                 className="text-xs text-emerald-700 font-bold hover:underline cursor-pointer"
               >
-                العودة لتسجيل الدخول
+                {t('backToLogin')}
               </button>
               <button
                 type="button"
@@ -352,7 +356,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 disabled={resendCooldown > 0}
                 className="text-xs text-emerald-700 font-bold hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
               >
-                {resendCooldown > 0 ? `إعادة الإرسال بعد ${resendCooldown} ثانية` : 'لم يصلك الرمز؟ إعادة الإرسال'}
+                {resendCooldown > 0 ? t('resendAfterSeconds', { seconds: resendCooldown }) : t('resendPrompt')}
               </button>
             </div>
           </form>
@@ -363,12 +367,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
           {!isLogin && (
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل:</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">{t('fullNameLabel')}</label>
               <input
                 type="text"
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
-                placeholder="مثال: يونس الجزائري"
+                placeholder={t('fullNamePlaceholder')}
                 autoComplete="name"
                 className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               />
@@ -379,7 +383,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <div>
               <label className="flex items-center gap-1.5 text-xs font-bold text-slate-700 mb-1">
                 <GraduationCap className="w-3.5 h-3.5 text-emerald-700" />
-                <span>المستوى الدراسي:</span>
+                <span>{t('gradeLabel')}</span>
               </label>
               <select
                 required
@@ -387,19 +391,19 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onChange={(e) => setGrade(e.target.value as PrimaryGrade)}
                 className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
               >
-                <option value="" disabled>اختر مستواك الدراسي...</option>
-                {GRADE_OPTIONS.map((g) => (
-                  <option key={g.id} value={g.id}>{g.labelAr}</option>
+                <option value="" disabled>{t('gradeChoosePlaceholder')}</option>
+                {(Object.keys(GRADE_OPTION_KEYS) as PrimaryGrade[]).map((id) => (
+                  <option key={id} value={id}>{t(GRADE_OPTION_KEYS[id])}</option>
                 ))}
               </select>
-              <p className="text-[10px] text-slate-500 mt-1">سيكون هذا مستواك الافتراضي، ويمكنك تغييره لاحقاً من أعلى الصفحة.</p>
+              <p className="text-[10px] text-slate-500 mt-1">{t('gradeHint')}</p>
             </div>
           )}
 
           {!isLogin && (
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">
-                بريد ولي الأمر (اختياري):
+                {t('parentEmailLabel')}
               </label>
               <input
                 type="email"
@@ -410,13 +414,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none dir-ltr"
               />
               <p className="text-[10px] text-slate-500 mt-1">
-                يساعدنا على التواصل مع ولي الأمر عند الحاجة (مثلاً بخصوص الاشتراك). لن يُطلب أي تفعيل لهذا البريد.
+                {t('parentEmailHint')}
               </p>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني:</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">{t('emailLabel')}</label>
             <input
               type="email"
               required
@@ -429,7 +433,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">كلمة المرور:</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">{t('passwordLabel')}</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -443,7 +447,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
-                aria-label={showPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
+                aria-label={showPassword ? t('hidePassword') : t('showPassword')}
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -455,7 +459,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onClick={() => { setAuthFlow('forgot'); setStatusMessage(null); }}
                 className="text-[11px] text-emerald-700 font-bold hover:underline cursor-pointer mt-1.5"
               >
-                نسيت كلمة المرور؟
+                {t('forgotPasswordLink')}
               </button>
             )}
           </div>
@@ -474,24 +478,24 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
           {!isLogin && (onOpenPrivacyPolicy || onOpenTermsOfService) && (
             <p className="text-[11px] text-slate-500 text-center leading-relaxed">
-              بإنشاء الحساب، أنت توافق على{' '}
+              {t('termsAgreementPrefix')}{' '}
               {onOpenTermsOfService && (
                 <button
                   type="button"
                   onClick={onOpenTermsOfService}
                   className="text-emerald-700 font-bold hover:underline cursor-pointer"
                 >
-                  الشروط والأحكام
+                  {t('termsLink')}
                 </button>
               )}
-              {onOpenTermsOfService && onOpenPrivacyPolicy && <span> و</span>}
+              {onOpenTermsOfService && onOpenPrivacyPolicy && <span> {t('termsAnd')} </span>}
               {onOpenPrivacyPolicy && (
                 <button
                   type="button"
                   onClick={onOpenPrivacyPolicy}
                   className="text-emerald-700 font-bold hover:underline cursor-pointer"
                 >
-                  سياسة الخصوصية
+                  {t('privacyLink')}
                 </button>
               )}
             </p>
@@ -505,10 +509,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <KeyRound className="w-4 h-4 text-amber-300" />
             <span>
               {loading
-                ? 'جاري التحميل...'
+                ? t('submitLoading')
                 : isLogin
-                ? 'تسجيل الدخول'
-                : 'إنشاء الحساب'}
+                ? t('login')
+                : t('registerSubmit')}
             </span>
           </button>
 
@@ -518,7 +522,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               onClick={() => setIsLogin(!isLogin)}
               className="text-xs text-emerald-700 font-bold hover:underline cursor-pointer"
             >
-              {isLogin ? 'ليس لديك حساب؟ قم بإنشاء حساب جديد' : 'لديك حساب بالفعل؟ تسجيل الدخول'}
+              {isLogin ? t('toggleToRegister') : t('toggleToLogin')}
             </button>
           </div>
         </form>

@@ -3,6 +3,9 @@ package dz.mssid.education.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dz.mssid.education.dto.GeminiPromptRequest;
 import dz.mssid.education.dto.GeminiResponse;
+import dz.mssid.education.exception.AiQuotaExceededException;
+import dz.mssid.education.exception.GlobalExceptionHandler;
+import dz.mssid.education.service.AiQuotaService;
 import dz.mssid.education.service.GeminiAiService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,6 +19,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -28,6 +35,9 @@ class GeminiProxyControllerTest {
     @Mock
     private GeminiAiService geminiAiService;
 
+    @Mock
+    private AiQuotaService aiQuotaService;
+
     @InjectMocks
     private GeminiProxyController geminiProxyController;
 
@@ -35,7 +45,11 @@ class GeminiProxyControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(geminiProxyController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(geminiProxyController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
+        lenient().when(aiQuotaService.consumeAuthenticatedUser())
+                .thenReturn(new AiQuotaService.QuotaSnapshot(true, 3, 2, 24));
     }
 
     @Test
@@ -108,5 +122,25 @@ class GeminiProxyControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.answer").value("Dans un triangle rectangle..."));
+    }
+
+    @Test
+    @DisplayName("POST /api/v1/ai/explain - exhausted account quota returns 429 without calling Gemini")
+    void askGeminiAssistant_QuotaExceeded_Returns429() throws Exception {
+        doThrow(new AiQuotaExceededException(3, 0, 12)).when(aiQuotaService).consumeAuthenticatedUser();
+
+        GeminiPromptRequest request = new GeminiPromptRequest();
+        request.setTopic("الكسور");
+        request.setGrade("5AP");
+
+        mockMvc.perform(post("/api/v1/ai/explain")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isTooManyRequests())
+                .andExpect(jsonPath("$.status").value(429))
+                .andExpect(jsonPath("$.limit").value(3))
+                .andExpect(jsonPath("$.remaining").value(0));
+
+        verify(geminiAiService, never()).generateExplanation(any());
     }
 }

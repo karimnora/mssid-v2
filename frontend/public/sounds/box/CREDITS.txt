@@ -1,0 +1,18 @@
+Sound Box recordings (real audio only — no synthesized imitations)
+
+Wikimedia Commons
+  dog.mp3      File:Barking of a dog.ogg
+  sheep.mp3    File:Sheep bleating.ogg
+  cat.mp3      File:Meow domestic cat.ogg
+  cow.mp3      File:Single Cow Moo.ogg
+  rooster.ogg  File:Rooster crowing.ogg
+  rain.mp3     File:Rain.ogg
+  thunder.ogg  File:Thunder.ogg
+  See each file page on commons.wikimedia.org for the exact license (CC / public domain).
+
+Mixkit Free Sound Effects License (https://mixkit.co/license/#sfxFree)
+  horse, bird, lion, car, train, ambulance, helicopter, sea, fire, bee,
+  clock, phone, kettle, scissors, laugh, sneeze, clap
+
+CC0 (DJWoodZ / Animal-Sounds, derived from Freesound)
+  hen.mp3   chicken-cluck — Rudmer_Rotteveel, Freesound 316920

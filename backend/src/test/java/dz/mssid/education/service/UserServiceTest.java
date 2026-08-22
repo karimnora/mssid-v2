@@ -161,4 +161,56 @@ class UserServiceTest {
 
         assertEquals(300, result.getGoldCoins());
     }
+
+    @Test
+    @DisplayName("SEC-11: a huge XP dump is capped per sync and level is derived from XP, not the payload")
+    void updateUserProgress_CapsXpAndDerivesLevel() {
+        testUser.setXp(100);
+        testUser.setLevel(2);
+        testUser.setScore(100);
+        when(userRepository.findByEmail("kareem@mssid.dz")).thenReturn(Optional.of(testUser));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        UserProfileDto incoming = UserProfileDto.builder()
+                .xp(999_999)
+                .level(999)
+                .build();
+
+        UserProfileDto result = userService.updateUserProgress("kareem@mssid.dz", incoming);
+
+        assertEquals(100 + ProgressGuard.MAX_XP_GAIN_PER_SYNC, result.getXp());
+        assertEquals(result.getXp(), result.getScore());
+        assertEquals(ProgressGuard.levelFromXp(result.getXp()), result.getLevel());
+        assertNotEquals(999, result.getLevel());
+    }
+
+    @Test
+    @DisplayName("SEC-11: unknown badges are dropped; catalog badges still merge")
+    void updateUserProgress_DropsUnknownBadges() {
+        testUser.setBadges(new java.util.ArrayList<>(List.of("b_welcome")));
+        when(userRepository.findByEmail("kareem@mssid.dz")).thenReturn(Optional.of(testUser));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        UserProfileDto incoming = UserProfileDto.builder()
+                .badges(List.of("b_hacker", "b_math_star"))
+                .build();
+
+        UserProfileDto result = userService.updateUserProgress("kareem@mssid.dz", incoming);
+
+        assertEquals(List.of("b_welcome", "b_math_star"), result.getBadges());
+    }
+
+    @Test
+    @DisplayName("SEC-11: gold cannot jump by more than MAX_GOLD_GAIN_PER_SYNC")
+    void updateUserProgress_CapsGoldGain() {
+        testUser.setGoldCoins(150);
+        when(userRepository.findByEmail("kareem@mssid.dz")).thenReturn(Optional.of(testUser));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        UserProfileDto incoming = UserProfileDto.builder().goldCoins(50_000).build();
+
+        UserProfileDto result = userService.updateUserProgress("kareem@mssid.dz", incoming);
+
+        assertEquals(150 + ProgressGuard.MAX_GOLD_GAIN_PER_SYNC, result.getGoldCoins());
+    }
 }

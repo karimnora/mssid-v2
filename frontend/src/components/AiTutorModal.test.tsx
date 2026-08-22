@@ -125,4 +125,32 @@ describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
     fireEvent.click(screen.getByText('72'));
     expect(screen.getByText(/أحسنت! إجابة صحيحة/)).toBeInTheDocument();
   });
+
+  it('surfaces the daily quota message when the backend answers 429', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockResolvedValue({
+      status: 429,
+      error: 'لقد استنفدت حصتك اليومية من أسئلة المعلم الذكي (3/3). حاول مرة أخرى بعد حوالي 12 ساعة.',
+    });
+
+    render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/استنفدت حصتك اليومية/)).toBeInTheDocument();
+    });
+  });
+
+  it('asks the child to sign in when the backend answers 401', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockResolvedValue({
+      status: 401,
+      error: 'Non autorisé',
+    });
+
+    render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
+    fireEvent.click(screen.getByRole('button', { name: /اطلب الإجابة من المعلم الذكي/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText('يجب تسجيل الدخول لاستخدام المعلم الذكي.')).toBeInTheDocument();
+    });
+  });
 });

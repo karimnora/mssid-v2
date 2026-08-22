@@ -52,7 +52,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/logout", "/api/v1/auth/refresh").permitAll()
                         .requestMatchers("/api/v1/auth/forgot-password", "/api/v1/auth/reset-password").permitAll()
                         .requestMatchers("/api/v1/exams/public/**").permitAll()
-                        .requestMatchers("/api/gemini/**", "/api/v1/ai/**").permitAll()
+                        // SEC-10: /api/v1/ai/** and /api/gemini/** require a JWT cookie (anyRequest
+                        // authenticated below). Quota is then keyed by the loaded User role — never
+                        // by client-supplied x-user-role / x-user-id headers.
                         // Admin Console: every visitor's client (not just admins) hydrates local
                         // feature-flag overrides from this at boot — see FeatureFlagController.
                         .requestMatchers(HttpMethod.GET, "/api/v1/feature-flags").permitAll()

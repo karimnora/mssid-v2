@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PreschoolActivity } from '../../data/preschool/types';
 import { playSuccessChime } from './usePreschoolAudio';
 
@@ -20,6 +20,12 @@ export const PreschoolColoring: React.FC<PreschoolColoringProps> = ({ activity, 
   const [fills, setFills] = useState<Record<string, string>>({});
   const [selectedColor, setSelectedColor] = useState<string>(PALETTE[0]);
   const completedRef = useRef(false);
+
+  useEffect(() => {
+    setFills({});
+    setSelectedColor(PALETTE[0]);
+    completedRef.current = false;
+  }, [activity.id]);
 
   const handleFill = (regionId: string) => {
     setFills((prev) => {
@@ -56,7 +62,7 @@ export const PreschoolColoring: React.FC<PreschoolColoringProps> = ({ activity, 
                 strokeWidth={2}
                 strokeDasharray={isFilled ? undefined : '4 4'}
                 className="cursor-pointer"
-                onClick={() => handleFill(region.id)}
+                onPointerDown={() => handleFill(region.id)}
               />
             );
           }
@@ -73,7 +79,7 @@ export const PreschoolColoring: React.FC<PreschoolColoringProps> = ({ activity, 
                 strokeWidth={2}
                 strokeDasharray={isFilled ? undefined : '4 4'}
                 className="cursor-pointer"
-                onClick={() => handleFill(region.id)}
+                onPointerDown={() => handleFill(region.id)}
               />
             );
           }
@@ -90,7 +96,7 @@ export const PreschoolColoring: React.FC<PreschoolColoringProps> = ({ activity, 
               strokeWidth={2}
               strokeDasharray={isFilled ? undefined : '4 4'}
               className="cursor-pointer"
-              onClick={() => handleFill(region.id)}
+              onPointerDown={() => handleFill(region.id)}
             />
           );
         })}
@@ -102,7 +108,7 @@ export const PreschoolColoring: React.FC<PreschoolColoringProps> = ({ activity, 
             key={color}
             onClick={() => setSelectedColor(color)}
             style={{ backgroundColor: color }}
-            className={`w-10 h-10 rounded-full shadow-md cursor-pointer transition-transform ${
+            className={`min-h-12 min-w-12 w-12 h-12 rounded-full shadow-md cursor-pointer transition-transform ${
               selectedColor === color ? 'scale-125 ring-4 ring-offset-2 ring-amber-400' : 'hover:scale-110'
             }`}
             aria-label={color}

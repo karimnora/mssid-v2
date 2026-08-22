@@ -39,4 +39,18 @@ class GlobalExceptionHandlerTest {
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("Cet email est déjà utilisé.", response.getBody().get("message"));
     }
+
+    @Test
+    @DisplayName("handleAiQuotaExceeded - returns 429 with limit/remaining, not a generic 400")
+    void handleAiQuotaExceeded_returns429() {
+        AiQuotaExceededException ex = new AiQuotaExceededException(3, 0, 8);
+
+        ResponseEntity<Map<String, Object>> response = handler.handleAiQuotaExceeded(ex);
+
+        assertEquals(HttpStatus.TOO_MANY_REQUESTS, response.getStatusCode());
+        assertEquals(429, response.getBody().get("status"));
+        assertEquals(3, response.getBody().get("limit"));
+        assertEquals(0, response.getBody().get("remaining"));
+        assertEquals(8, response.getBody().get("resetHours"));
+    }
 }

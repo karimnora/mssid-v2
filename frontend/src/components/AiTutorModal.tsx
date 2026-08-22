@@ -51,6 +51,14 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
       // uses for real answers (GeminiResponse.responseText) — status is the only reliable signal
       // that this wasn't a genuine explanation. Never surface that raw text to the child as if it
       // were the tutor talking.
+      if (springRes.status === 401) {
+        setErrorMsg('يجب تسجيل الدخول لاستخدام المعلم الذكي.');
+        return;
+      }
+      if (springRes.status === 429) {
+        setErrorMsg(springRes.error || 'لقد استنفدت حصتك اليومية من أسئلة المعلم الذكي. حاول غداً.');
+        return;
+      }
       if (springRes.error || springRes.data?.status === 'error') {
         setErrorMsg('تعذر الوصول إلى المعلم الذكي حالياً. حاول مرة أخرى بعد قليل.');
         return;

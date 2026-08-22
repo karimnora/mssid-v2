@@ -4,6 +4,8 @@ import { X, Send, MessageSquare, CheckCircle2, AlertTriangle } from 'lucide-reac
 import { springBootApi } from '../services/springBootApi';
 import { AuthUser } from '../types/auth';
 import { Button } from './ui';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -13,15 +15,17 @@ interface ContactModalProps {
 
 type ContactType = 'suggestion' | 'bug' | 'concern';
 
-const CONTACT_TYPE_LABELS: Record<ContactType, string> = {
-  suggestion: '💡 اقتراح',
-  bug: '🐞 الإبلاغ عن مشكلة',
-  concern: '⚠️ استفسار أو قلق',
+const CONTACT_TYPE_KEYS: Record<ContactType, 'typeSuggestion' | 'typeBug' | 'typeConcern'> = {
+  suggestion: 'typeSuggestion',
+  bug: 'typeBug',
+  concern: 'typeConcern',
 };
 
 // Simple "contact us / suggestions" form — posts to POST /api/v1/contact (persisted server-side, see
 // ContactController.java). Reachable from the app footer and the profile dropdown menu (Navbar.tsx).
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, authUser }) => {
+  const t = useTranslation('contact');
+  const { direction } = useLocaleContext();
   const [name, setName] = useState(authUser?.nom || '');
   const [email, setEmail] = useState(authUser?.email || '');
   const [type, setType] = useState<ContactType>('suggestion');
@@ -59,8 +63,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl"
-      dir="rtl"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+      dir={direction}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
@@ -75,8 +79,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
               <MessageSquare className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-extrabold font-sans">تواصل معنا</h2>
-              <p className="text-xs text-slate-400 font-sans mt-0.5">اقتراحاتك وملاحظاتك تساعدنا على تحسين مَسِيد DZ</p>
+              <h2 className="text-base sm:text-lg font-extrabold font-sans">{t('modalTitle')}</h2>
+              <p className="text-xs text-slate-400 font-sans mt-0.5">{t('modalSubtitle')}</p>
             </div>
           </div>
           <button
@@ -97,26 +101,26 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
               className="text-center py-8 space-y-3"
             >
               <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto" />
-              <h3 className="text-base font-black text-slate-900">شكراً لك! تم إرسال رسالتك بنجاح.</h3>
-              <p className="text-sm text-slate-700">سنقوم بمراجعتها في أقرب وقت ممكن.</p>
-              <Button variant="primary" onClick={handleClose}>إغلاق</Button>
+              <h3 className="text-base font-black text-slate-900">{t('successTitle')}</h3>
+              <p className="text-sm text-slate-700">{t('successDesc')}</p>
+              <Button variant="primary" onClick={handleClose}>{t('closeButton')}</Button>
             </motion.div>
           ) : (
             <>
               <div className="space-y-1.5">
-                <label className="text-xs font-extrabold text-slate-700">الاسم</label>
+                <label className="text-xs font-extrabold text-slate-700">{t('nameLabel')}</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="اسمك الكامل"
+                  placeholder={t('namePlaceholder')}
                   autoComplete="name"
                   className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-extrabold text-slate-700">البريد الإلكتروني (أو بريد ولي الأمر)</label>
+                <label className="text-xs font-extrabold text-slate-700">{t('emailLabel')}</label>
                 <input
                   type="email"
                   value={email}
@@ -129,30 +133,30 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-extrabold text-slate-700">نوع الرسالة</label>
+                <label className="text-xs font-extrabold text-slate-700">{t('messageTypeLabel')}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  {(Object.keys(CONTACT_TYPE_LABELS) as ContactType[]).map((t) => (
+                  {(Object.keys(CONTACT_TYPE_KEYS) as ContactType[]).map((kind) => (
                     <button
-                      key={t}
-                      onClick={() => setType(t)}
+                      key={kind}
+                      onClick={() => setType(kind)}
                       className={`min-h-11 px-2 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
-                        type === t
+                        type === kind
                           ? 'bg-emerald-600 text-white border-emerald-700 shadow-xs'
                           : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                       }`}
                     >
-                      {CONTACT_TYPE_LABELS[t]}
+                      {t(CONTACT_TYPE_KEYS[kind])}
                     </button>
                   ))}
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-extrabold text-slate-700">رسالتك</label>
+                <label className="text-xs font-extrabold text-slate-700">{t('messageLabel')}</label>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="اكتب اقتراحك أو استفسارك هنا..."
+                  placeholder={t('messagePlaceholder')}
                   rows={4}
                   className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
                 />
@@ -161,7 +165,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
               {submitState === 'error' && (
                 <div className="flex items-center gap-2 p-3 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs font-bold">
                   <AlertTriangle className="w-4 h-4 shrink-0" />
-                  <span>تعذّر إرسال الرسالة. تحقق من اتصالك بالإنترنت وحاول مجدداً.</span>
+                  <span>{t('errorMessage')}</span>
                 </div>
               )}
             </>
@@ -172,7 +176,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
         {submitState !== 'success' && (
           <div className="bg-slate-50 border-t border-slate-200 p-4 shrink-0">
             <Button variant="primary" fullWidth icon={<Send className="w-4 h-4" />} disabled={!canSubmit} loading={isSubmitting} onClick={handleSubmit}>
-              إرسال الرسالة
+              {t('sendButton')}
             </Button>
           </div>
         )}

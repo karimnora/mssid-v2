@@ -98,16 +98,16 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
         : 'Piano, Darbuka, Gasba and cheerful Algerian nursery songs',
     soundBox:
       language === 'ar'
-        ? 'صندوق الأصوات والتراث'
+        ? 'صندوق الأصوات'
         : language === 'fr'
-        ? 'Boîte à Sons & Éveil Sensoriel'
-        : 'Heritage Sound Box & Quiz',
+        ? 'Boîte à Sons'
+        : 'Sound Box',
     soundBoxDesc:
       language === 'ar'
-        ? 'الفنك، الجمل، والمركبات مع مسابقة خمن الصوت'
+        ? 'أصوات حقيقية: حيوانات، سيارة، مطر والبيت'
         : language === 'fr'
-        ? 'Fennec, dromadaire et mini-quiz sonore'
-        : 'Fennec, camel and guess the sound quiz',
+        ? 'Vrais enregistrements : animaux, voiture, pluie, maison'
+        : 'Real recordings: animals, cars, rain and home',
     games:
       language === 'ar'
         ? 'قسم الألعاب والمتاهات'

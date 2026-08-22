@@ -9,7 +9,6 @@ import { PRE_WRITING_MODULE } from './preWritingModule';
 import { LOGIC_SPATIAL_MODULE } from './logicSpatialModule';
 import { ISLAMIC_VALUES_MODULE } from './islamicValuesModule';
 import { CREATIVE_GAMES_MODULE } from './creativeGamesModule';
-import { ARCADE_GAMES_MODULE } from './arcadeGamesModule';
 // ── New 0AP curriculum modules (aligned with dzexams.com/fr/0ap) ──────────────
 import { BODY_MODULE } from './bodyModule';
 import { SEASONS_MODULE } from './seasonsModule';
@@ -48,5 +47,4 @@ export const PRESCHOOL_MODULES: PreschoolModule[] = [
   SEQUENCE_MODULE,
   ART_DRAWING_MODULE,
   CREATIVE_GAMES_MODULE,
-  ARCADE_GAMES_MODULE,
 ];

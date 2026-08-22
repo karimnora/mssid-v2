@@ -19,6 +19,7 @@ const WAYPOINT_TOLERANCE = 30;
 export const PreschoolMaze: React.FC<PreschoolMazeProps> = ({ activity, onComplete }) => {
   const waypoints = activity.visualAssets.mazeWaypoints || [];
   const travelerAsset = activity.visualAssets.mazeTravelerAsset || '🐭';
+  const goalAsset = activity.visualAssets.mazeGoalAsset || '🏁';
   const svgRef = useRef<SVGSVGElement>(null);
   const dragging = useRef(false);
   const completedRef = useRef(false);
@@ -104,7 +105,7 @@ export const PreschoolMaze: React.FC<PreschoolMazeProps> = ({ activity, onComple
 
         {waypoints[waypoints.length - 1] && (
           <text x={waypoints[waypoints.length - 1].x} y={waypoints[waypoints.length - 1].y - 22} textAnchor="middle" fontSize={34}>
-            🏁
+            {goalAsset}
           </text>
         )}
 

@@ -2,7 +2,7 @@ import { PreschoolModule } from './types';
 
 // "أَشْكَالِي الصَّغِيرَةُ" — My Little Shapes. Teaches 6 individual shapes (circle, square,
 // triangle, star, heart, diamond) via tap_choice, each anchored to a familiar object, plus a
-// trace, the original triangle path-help, an expanded shape-matching game, and a 3-pair memory game.
+// circle trace, a triangle-vs-circle sort (real-world objects), a shape-matching game, and memory.
 export const SHAPES_MODULE: PreschoolModule = {
   id: 'preschool-shapes',
   domain: 'shapes',
@@ -121,12 +121,12 @@ export const SHAPES_MODULE: PreschoolModule = {
       stepNumber: 6,
       interactionType: 'tap_choice',
       i18n: {
-        ar: { title: 'الشَّكْلُ المُعَيَّنُ', promptAudio: 'المِسِ المُعَيَّنَ! مِثْلُ الجَوْهَرَةِ اللَّامِعَة!', successAudio: 'مُمْتَاز! هَذَا مُعَيَّن!' },
-        fr: { title: 'Le Losange', promptAudio: 'Touche le losange ! Comme le joli bijou brillant !', successAudio: 'Bravo ! Voici un losange !' },
-        en: { title: 'The Diamond', promptAudio: 'Touch the diamond! Like the sparkly jewel!', successAudio: 'Well done! That is a diamond!' },
+        ar: { title: 'الشَّكْلُ المُعَيَّنُ', promptAudio: 'المِسِ المُعَيَّنَ! مِثْلُ الطَّائِرَةِ الوَرَقِيَّة!', successAudio: 'مُمْتَاز! هَذَا مُعَيَّن!' },
+        fr: { title: 'Le Losange', promptAudio: 'Touche le losange ! Comme le cerf-volant !', successAudio: 'Bravo ! Voici un losange !' },
+        en: { title: 'The Diamond', promptAudio: 'Touch the diamond! Like the kite!', successAudio: 'Well done! That is a diamond!' },
       },
       visualAssets: {
-        mainSvgOrImage: '💍',
+        mainSvgOrImage: '🪁',
         choices: [
           { id: 'diamond', asset: '🔷', isCorrect: true },
           { id: 'circle', asset: '⚪', isCorrect: false },
@@ -150,19 +150,44 @@ export const SHAPES_MODULE: PreschoolModule = {
       },
     },
     {
-      id: 'shape-find-path-triangle',
+      id: 'shape-sort-triangles',
       domain: 'shapes',
-      targetValue: '🔺',
+      targetValue: 'triangle',
       stepNumber: 8,
-      interactionType: 'find_path',
+      interactionType: 'sorting',
       i18n: {
-        ar: { title: 'ساعِدِ المُثَلَّثَ', promptAudio: 'اسحبني إلى بيتي! ساعدني أصل!', successAudio: 'وصلت! أنت رائع!' },
-        fr: { title: 'Aide le triangle', promptAudio: 'Fais-moi glisser jusqu\'à ma maison ! Aide-moi à arriver !', successAudio: 'J\'y suis arrivé ! Tu es génial !' },
-        en: { title: 'Help the triangle', promptAudio: 'Drag me all the way to my house! Help me get there!', successAudio: 'I made it! You are amazing!' },
+        ar: {
+          title: 'بَيْتُ المُثَلَّثَاتِ',
+          promptAudio: 'ضَعِ البِيتْزَا وَالخَيْمَةَ وَالمِسْطَرَةَ فِي بَيْتِ المُثَلَّث! وَالكَعْكَةَ وَالكُرَةَ فِي بَيْتِ الدَّائِرَة!',
+          promptText: 'ساعد طفلك على فرز الأشياء المثلثة (بيتزا، خيمة، مسطرة) عن الأشياء المستديرة.',
+          successAudio: 'بَطَل! كُلُّ المُثَلَّثَاتِ فِي بَيْتِهَا!',
+        },
+        fr: {
+          title: 'La maison des triangles',
+          promptAudio: 'Mets la pizza, la tente et l\'équerre dans la maison du triangle ! Et le biscuit et le ballon dans la maison du cercle !',
+          promptText: 'Aidez l\'enfant à trier les objets triangulaires (pizza, tente, équerre) et les objets ronds.',
+          successAudio: 'Bravo ! Tous les triangles sont rentrés à la maison !',
+        },
+        en: {
+          title: 'Triangle house',
+          promptAudio: 'Put the pizza, the tent and the triangle ruler in the triangle house! And the cookie and the ball in the circle house!',
+          promptText: 'Help your child sort triangular things (pizza, tent, ruler) from round things.',
+          successAudio: 'You did it! Every triangle is home!',
+        },
       },
       visualAssets: {
         mainSvgOrImage: '🔺',
-        pathToken: { startAsset: '🔺', endAsset: '🏠', travelerAsset: '🔺' },
+        sortBins: [
+          { id: 'triangles', labelAsset: '🔺' },
+          { id: 'circles', labelAsset: '⚪' },
+        ],
+        sortItems: [
+          { id: 'pizza', asset: '🍕', correctBinId: 'triangles' },
+          { id: 'tent', asset: '⛺', correctBinId: 'triangles' },
+          { id: 'set-square', asset: '📐', correctBinId: 'triangles' },
+          { id: 'cookie', asset: '🍪', correctBinId: 'circles' },
+          { id: 'ball', asset: '⚽', correctBinId: 'circles' },
+        ],
       },
     },
     {

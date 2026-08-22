@@ -118,7 +118,6 @@ export class AuthService {
       }
     }
     currentUserState = user;
-    springBootApi.setIdentityHeaders(user?.role, user?.email);
     notifyAuthListeners();
   }
 
