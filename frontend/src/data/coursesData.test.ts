@@ -753,11 +753,11 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
       'islamic-2ap-t3-surah-takathur': ['سُورَةُ التَّكَاثُرِ'],
     };
     Object.entries(expected).forEach(([id, names]) => {
-      const lesson = grade2apLessons.find((l) => l.id === id);
-      expect(lesson?.islamicInteractive?.type).toBe('quran_explorer');
-      if (lesson?.islamicInteractive?.type !== 'quran_explorer') return;
+      const explorer = grade2apLessons.find((l) => l.id === id)?.islamicInteractive;
+      expect(explorer?.type).toBe('quran_explorer');
+      if (explorer?.type !== 'quran_explorer') return;
       names.forEach((name) => {
-        const ayahs = lesson.islamicInteractive.verses.filter((v) => v.surahAr === name);
+        const ayahs = explorer.verses.filter((v) => v.surahAr === name);
         expect(ayahs.length, `${id} ${name}`).toBe(SURAH_2AP_COUNTS[name]);
       });
     });
@@ -925,13 +925,12 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     bySubject1ap('islamic').forEach((lesson) => {
       const names = expected[lesson.id];
       if (!names) return;
-      expect(lesson.islamicInteractive?.type).toBe('quran_explorer');
-      if (lesson.islamicInteractive?.type !== 'quran_explorer') return;
-      expect(lesson.islamicInteractive.introAr).not.toMatch(/استمع|لتسمع/);
+      const explorer = lesson.islamicInteractive;
+      expect(explorer?.type).toBe('quran_explorer');
+      if (explorer?.type !== 'quran_explorer') return;
+      expect(explorer.introAr).not.toMatch(/استمع|لتسمع/);
       names.forEach((name) => {
-        const ayahs = lesson.islamicInteractive!.type === 'quran_explorer'
-          ? lesson.islamicInteractive.verses.filter((v) => v.surahAr === name)
-          : [];
+        const ayahs = explorer.verses.filter((v) => v.surahAr === name);
         expect(ayahs.length, `${lesson.id} ${name}`).toBe(counts[name]);
       });
     });
