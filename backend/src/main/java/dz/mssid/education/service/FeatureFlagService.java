@@ -27,6 +27,25 @@ public class FeatureFlagService {
                 .collect(Collectors.toMap(FeatureFlag::getFlagKey, FeatureFlag::isEnabled));
     }
 
+    /**
+     * Reads a persisted override, or {@code defaultValue} when no row exists (same fallback as the
+     * frontend catalog in featureFlags.ts). Code defaults for the payment pair are both {@code false}.
+     */
+    public boolean isEnabled(String flagKey, boolean defaultValue) {
+        return featureFlagRepository.findByFlagKey(flagKey)
+                .map(FeatureFlag::isEnabled)
+                .orElse(defaultValue);
+    }
+
+    /**
+     * T2/T3 server gate — mirrors {@code isLessonLocked} on the client: both enablePayments
+     * (master kill-switch) and enableTrimesterPaywall must be on. Flip them in the admin CMS
+     * once payments can legally be collected; no redeploy.
+     */
+    public boolean isTrimesterPaywallActive() {
+        return isEnabled("enablePayments", false) && isEnabled("enableTrimesterPaywall", false);
+    }
+
     @Transactional
     public void upsertFlag(String flagKey, boolean enabled, String actorEmail) {
         FeatureFlag flag = featureFlagRepository.findByFlagKey(flagKey)

@@ -62,6 +62,34 @@ class FeatureFlagServiceTest {
     }
 
     @Test
+    @DisplayName("isEnabled - falls back to the code default when no override row exists")
+    void isEnabled_usesDefaultWhenMissing() {
+        when(featureFlagRepository.findByFlagKey("enablePayments")).thenReturn(Optional.empty());
+        assertFalse(featureFlagService.isEnabled("enablePayments", false));
+    }
+
+    @Test
+    @DisplayName("isTrimesterPaywallActive - requires both payment flags to be overridden ON")
+    void isTrimesterPaywallActive_requiresBothFlags() {
+        when(featureFlagRepository.findByFlagKey("enablePayments"))
+                .thenReturn(Optional.of(FeatureFlag.builder().flagKey("enablePayments").enabled(true).build()));
+        when(featureFlagRepository.findByFlagKey("enableTrimesterPaywall"))
+                .thenReturn(Optional.of(FeatureFlag.builder().flagKey("enableTrimesterPaywall").enabled(true).build()));
+
+        assertTrue(featureFlagService.isTrimesterPaywallActive());
+    }
+
+    @Test
+    @DisplayName("isTrimesterPaywallActive - stays off when only enablePayments is on")
+    void isTrimesterPaywallActive_falseWhenPaywallFlagMissing() {
+        when(featureFlagRepository.findByFlagKey("enablePayments"))
+                .thenReturn(Optional.of(FeatureFlag.builder().flagKey("enablePayments").enabled(true).build()));
+        when(featureFlagRepository.findByFlagKey("enableTrimesterPaywall")).thenReturn(Optional.empty());
+
+        assertFalse(featureFlagService.isTrimesterPaywallActive());
+    }
+
+    @Test
     @DisplayName("deleteOverride - Deletes the row and records an audit entry")
     void deleteOverride_DeletesAndRecords() {
         featureFlagService.deleteOverride("enablePayments", "admin@mssid.dz");

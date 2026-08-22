@@ -4,6 +4,8 @@ import { AuthService } from '../services/authService';
 import { SUBSCRIPTION_PRICE_DZD } from '../constants/pricing';
 import { Lock, ShieldCheck, Upload, CheckCircle2, AlertCircle, Clock, FileText, Smartphone, CreditCard, Sparkles, X, Eye } from 'lucide-react';
 import { ParentGateModal } from './ParentGateModal';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface Props {
   user: AuthUser | null;
@@ -18,8 +20,11 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   user,
   onClose,
   onSuccessUpgrade,
-  title = 'فتح تصحيح الامتحان الرسمي والشرح التفصيلي'
+  title
 }) => {
+  const t = useTranslation('subscription');
+  const { direction } = useLocaleContext();
+  const modalTitle = title ?? t('defaultTitle');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('BARIDIMOB');
   const [transactionRef, setTransactionRef] = useState<string>('');
   const [receiptImage, setReceiptImage] = useState<string>('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80');
@@ -52,7 +57,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   const submitReceiptAfterParentGate = async () => {
     setShowParentGate(false);
     if (!currentUser) {
-      setCustomError('يرجى تسجيل الدخول أولاً لإرسال وصل الدفع');
+      setCustomError(t('loginRequiredError'));
       return;
     }
 
@@ -69,7 +74,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
     setIsSubmitting(false);
 
     if (!result.success || !result.receipt) {
-      setCustomError(result.message || 'تعذر إرسال الوصل. تحقق من اتصالك وحاول مرة أخرى.');
+      setCustomError(result.message || t('genericSubmitError'));
       return;
     }
 
@@ -91,7 +96,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   return (
     <>
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="bg-white border border-purple-200 w-full max-w-3xl rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[92vh] overflow-y-auto dir-rtl" dir="rtl">
+      <div className="bg-white border border-purple-200 w-full max-w-3xl rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[92vh] overflow-y-auto" dir={direction}>
         {/* Header Header */}
         <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-950 text-white p-6 rounded-t-3xl relative overflow-hidden">
           <button
@@ -103,12 +108,12 @@ export const SubscriptionPaywall: React.FC<Props> = ({
 
           <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-xs font-bold mb-2">
             <Lock className="w-3.5 h-3.5" />
-            <span>محتوى حصري للمشتركين (mssid dz Premium)</span>
+            <span>{t('exclusiveBadge')}</span>
           </div>
 
-          <h2 className="text-xl sm:text-2xl font-black font-sans text-white">{title}</h2>
+          <h2 className="text-xl sm:text-2xl font-black font-sans text-white">{modalTitle}</h2>
           <p className="text-xs text-purple-200 mt-1 max-w-xl">
-            احصل على التصحيح النموذجي المنقط خطوة بخطوة لجميع امتحانات شهادة التعليم الابتدائي بالجزائر، بالإضافة لخاصية إرشادات المساعد الذكي.
+            {t('headerSubtitle')}
           </p>
         </div>
 
@@ -117,25 +122,25 @@ export const SubscriptionPaywall: React.FC<Props> = ({
           {/* Comparison Cards: Free vs Premium */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <span className="text-xs font-extrabold text-slate-500 block">الاشتراك المجاني (ROLE_FREE)</span>
+              <span className="text-xs font-extrabold text-slate-500 block">{t('freePlanTitle')}</span>
               <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
-                <li className="text-emerald-700 font-bold">✓ تصفح الدروس والملخصات المجانية</li>
-                <li className="text-emerald-700 font-bold">✓ إجراء التمارين والتمارين التفاعلية</li>
-                <li className="text-rose-600 font-bold">✗ حجب التصحيحات الرسمية والحلول النموذجية</li>
-                <li className="text-rose-600 font-bold">✗ حجب ملفات PDF القابلة للطباعة</li>
+                <li className="text-emerald-700 font-bold">{t('freePlanFeature1')}</li>
+                <li className="text-emerald-700 font-bold">{t('freePlanFeature2')}</li>
+                <li className="text-rose-600 font-bold">{t('freePlanFeature3')}</li>
+                <li className="text-rose-600 font-bold">{t('freePlanFeature4')}</li>
               </ul>
             </div>
 
             <div className="p-4 rounded-2xl bg-purple-50 border border-purple-200 space-y-2 relative overflow-hidden">
               <span className="text-xs font-extrabold text-purple-800 block flex items-center gap-1">
                 <Sparkles className="w-4 h-4 text-amber-500" />
-                <span>اشتراك mssid dz السنوي (ROLE_PREMIUM)</span>
+                <span>{t('premiumPlanTitle')}</span>
               </span>
               <ul className="text-xs text-purple-900 space-y-1.5 list-disc list-inside">
-                <li className="font-extrabold">✓ فتح جميع الحلول والتصحيحات الرسمية</li>
-                <li className="font-extrabold">✓ إمكانية تحميل وطباعة أوراق الامتحان</li>
-                <li className="font-extrabold">✓ المساعد التربوي الذكي غير المحدود</li>
-                <li className="font-extrabold text-amber-700">💰 السعر: {SUBSCRIPTION_PRICE_DZD} دج / للعام الدراسي الكامل</li>
+                <li className="font-extrabold">{t('premiumPlanFeature1')}</li>
+                <li className="font-extrabold">{t('premiumPlanFeature2')}</li>
+                <li className="font-extrabold">{t('premiumPlanFeature3')}</li>
+                <li className="font-extrabold text-amber-700">{t('premiumPlanPrice', { price: SUBSCRIPTION_PRICE_DZD })}</li>
               </ul>
             </div>
           </div>
@@ -146,11 +151,11 @@ export const SubscriptionPaywall: React.FC<Props> = ({
               <div className="flex items-center gap-3 text-amber-800">
                 <Clock className="w-6 h-6 text-amber-600 shrink-0" />
                 <div>
-                  <h4 className="font-extrabold text-sm">تم إرسال وصل الدفع بنجاح وهو قيد التحقق الإداري</h4>
+                  <h4 className="font-extrabold text-sm">{t('receiptSubmittedTitle')}</h4>
                   <p className="text-xs text-amber-700">
-                    رقم الوصل: <span className="font-mono font-bold">{submittedReceipt.transactionRef}</span> | الحالة:
-                    <span className="font-extrabold text-amber-800 bg-amber-200 px-2 py-0.5 rounded-md mr-1">
-                      PENDING_VERIFICATION (معلق)
+                    {t('receiptNumberLabel')} <span className="font-mono font-bold">{submittedReceipt.transactionRef}</span> | {t('statusLabel')}
+                    <span className="font-extrabold text-amber-800 bg-amber-200 px-2 py-0.5 rounded-md mx-1">
+                      {t('pendingStatus')}
                     </span>
                   </p>
                 </div>
@@ -158,7 +163,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
 
               <div className="p-4 bg-white rounded-2xl border border-amber-200 text-xs text-slate-700 space-y-2">
                 <p>
-                  يتم التحقق عادة من التحويلات البريدية عبر <strong>بريدي موب / CCP</strong> خلال مدة قصيرة. سيتم تفعيل حسابك تلقائياً بعد المصادقة.
+                  {t('verificationNotePrefix')} <strong>{t('verificationNoteBold')}</strong> {t('verificationNoteSuffix')}
                 </p>
                 {/* SEC-07: dev-only. The real approval path is PUT /api/v1/payments/admin/receipts/{id}/verify,
                     which requires ROLE_ADMIN server-side (@PreAuthorize). This button exists purely so a
@@ -167,13 +172,13 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                     ROLE_PREMIUM with one click regardless of what the backend actually approved. */}
                 {isDevBuild && (
                   <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-                    <span className="font-bold text-slate-500">اختبار سريع للمطور (DEV ONLY):</span>
+                    <span className="font-bold text-slate-500">{t('devTestLabel')}</span>
                     <button
                       onClick={handleSimulateAdminApproval}
                       className="px-3 py-1.5 bg-emerald-600 text-white font-extrabold text-xs rounded-xl hover:bg-emerald-700 transition-all cursor-pointer flex items-center gap-1"
                     >
                       <CheckCircle2 className="w-4 h-4" />
-                      <span>تأكيد الوصل فوراً وتفعيل ROLE_PREMIUM</span>
+                      <span>{t('devApproveButton')}</span>
                     </button>
                   </div>
                 )}
@@ -184,7 +189,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
             <form onSubmit={handleSubmitReceipt} className="space-y-5 bg-slate-50/80 p-5 rounded-3xl border border-slate-200">
               <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
                 <Smartphone className="w-4 h-4 text-purple-700" />
-                <span>إرسال وصل الدفع عبر بريدي موب (BaridiMob) أو البطاقة الذهبية أو CCP</span>
+                <span>{t('formTitle')}</span>
               </h3>
 
               {/* Payment Method Selector */}
@@ -198,7 +203,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
-                  📱 بريدي موب BaridiMob
+                  {t('paymentMethodBaridimob')}
                 </button>
 
                 <button
@@ -210,7 +215,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
-                  💳 البطاقة الذهبية Edahabia
+                  {t('paymentMethodEdahabia')}
                 </button>
 
                 <button
@@ -222,44 +227,44 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
-                  🏛️ الحساب البريدي الجاري CCP
+                  {t('paymentMethodCcp')}
                 </button>
               </div>
 
               {/* Account details info card */}
               <div className="p-4 bg-purple-900 text-white rounded-2xl text-xs space-y-1.5 shadow-inner">
                 <div className="flex justify-between items-center font-bold text-amber-300">
-                  <span>معلومات الحساب البريدي لتحويل المبلغ ({SUBSCRIPTION_PRICE_DZD} دج):</span>
+                  <span>{t('accountInfoLabel', { price: SUBSCRIPTION_PRICE_DZD })}</span>
                   <span>mssid dz Education</span>
                 </div>
                 <div className="font-mono text-sm tracking-wider font-extrabold bg-slate-950/60 p-2.5 rounded-xl border border-purple-700/50 flex justify-between items-center dir-ltr">
                   <span>RIP: 00799999000123456789</span>
-                  <span className="text-xs font-sans text-purple-200">بريدي موب</span>
+                  <span className="text-xs font-sans text-purple-200">{t('baridimobTag')}</span>
                 </div>
                 <div className="text-[11px] text-purple-200">
-                  أو الحساب البريدي الجاري CCP: <strong className="text-white font-mono">1234567 Cle 89</strong> (اسم الحساب: مادة التعليم الابتدائي mssid dz)
+                  {t('ccpNotePrefix')} <strong className="text-white font-mono">1234567 Cle 89</strong> ({t('accountNameLabel')} مادة التعليم الابتدائي mssid dz)
                 </div>
               </div>
 
               {/* Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">رقم المرجعية أو المعاملة (الوصل):</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">{t('transactionRefLabel')}</label>
                   <input
                     type="text"
                     value={transactionRef}
                     onChange={(e) => setTransactionRef(e.target.value)}
-                    placeholder="مثال: BM-2026-987456123"
+                    placeholder={t('transactionRefPlaceholder')}
                     className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">المبلغ المحول:</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">{t('amountLabel')}</label>
                   <input
                     type="text"
                     disabled
-                    value={`${SUBSCRIPTION_PRICE_DZD} DZD (حقوق الاشتراك السنوي)`}
+                    value={t('amountValue', { price: SUBSCRIPTION_PRICE_DZD })}
                     className="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-purple-900 cursor-not-allowed"
                   />
                 </div>
@@ -267,16 +272,16 @@ export const SubscriptionPaywall: React.FC<Props> = ({
 
               {/* Upload Receipt Image */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">صورة وصل الدفع (Reçu de Paiement):</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">{t('receiptImageLabel')}</label>
                 <div className="flex items-center gap-4">
                   <label className="px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold text-purple-700 hover:bg-purple-50 cursor-pointer flex items-center gap-2 border-dashed border-2">
                     <Upload className="w-4 h-4" />
-                    <span>تحميل صورة الوصل من الجهاز</span>
+                    <span>{t('uploadReceiptButton')}</span>
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
                   </label>
                   <div className="flex items-center gap-2">
                     <img src={receiptImage} alt="Receipt preview" loading="lazy" className="w-12 h-12 object-cover rounded-lg border border-slate-300" />
-                    <span className="text-[11px] text-slate-500 font-bold">معاينة الوصل المرفق</span>
+                    <span className="text-[11px] text-slate-500 font-bold">{t('receiptPreviewLabel')}</span>
                   </div>
                 </div>
               </div>
@@ -296,7 +301,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                   className="w-full py-3.5 bg-gradient-to-r from-purple-700 to-indigo-800 text-white font-extrabold rounded-2xl hover:from-purple-800 hover:to-indigo-900 shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm"
                 >
                   <ShieldCheck className="w-5 h-5 text-amber-400" />
-                  <span>{isSubmitting ? 'جاري إرسال الوصل...' : 'إرسال وصل الدفع وبدء التفعيل (ROLE_PREMIUM)'}</span>
+                  <span>{isSubmitting ? t('submittingButton') : t('submitButton')}</span>
                 </button>
               </div>
             </form>

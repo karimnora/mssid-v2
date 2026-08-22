@@ -26,6 +26,8 @@ import {
   ChevronRight,
   ChevronDown,
 } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 import { TabId, LessonStep, tabTransition } from './lessonViewer/shared';
 import { usePremiumLessonContent } from './lessonViewer/usePremiumLessonContent';
 import { useLessonSpeech } from './lessonViewer/useLessonSpeech';
@@ -69,6 +71,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onHomeClick,
   tashkeelEnabled = true,
 }) => {
+  const t = useTranslation('courses');
+  const { direction } = useLocaleContext();
   const { lesson, premiumFetchState } = usePremiumLessonContent(lessonProp);
   const speech = useLessonSpeech(lesson, grade);
   const practice = useLessonPractice(lesson, onCompleteQuiz);
@@ -192,28 +196,28 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
   if (lessonProp.premiumContentPending && premiumFetchState !== 'done') {
     return (
-      <div className="space-y-6 dir-rtl" dir="rtl">
+      <div className="space-y-6" dir={direction}>
         <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
-          قائمة الدروس
+          {t('lessonsListButton')}
         </Button>
-        {premiumFetchState === 'loading' && <LoadingFallback label="جاري تحميل محتوى الدرس..." />}
+        {premiumFetchState === 'loading' && <LoadingFallback label={t('loadingLessonContent')} />}
         {premiumFetchState === 'forbidden' && (
           <Card padding="lg" className="text-center space-y-4">
             <Lock className="w-10 h-10 mx-auto text-[var(--brand-amber)]" />
             <h2 className="text-base font-black text-[var(--app-text)]">{renderArabicText(lesson.titleAr)}</h2>
             <p className="text-sm text-[var(--app-text-muted)] max-w-md mx-auto">
-              هذا الدرس ضمن محتوى الفصلين الثاني والثالث، وهو متاح فقط للمشتركين في mssid dz Premium.
+              {t('premiumForbiddenText')}
             </p>
             <Button variant="ghost" size="sm" onClick={onBack}>
-              العودة لقائمة الدروس
+              {t('backToLessonsListButton')}
             </Button>
           </Card>
         )}
         {premiumFetchState === 'error' && (
           <Card padding="lg" className="text-center space-y-4">
-            <p className="text-sm text-[var(--app-text-muted)]">تعذر تحميل محتوى الدرس. تحقق من اتصالك وحاول مجدداً.</p>
+            <p className="text-sm text-[var(--app-text-muted)]">{t('loadFailedText')}</p>
             <Button variant="outline" size="sm" onClick={onBack}>
-              العودة لقائمة الدروس
+              {t('backToLessonsListButton')}
             </Button>
           </Card>
         )}

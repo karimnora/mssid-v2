@@ -4,6 +4,9 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { SubscriptionPaywall } from './SubscriptionPaywall';
 import { AuthService } from '../services/authService';
 import { AuthUser } from '../types/auth';
+import { LocaleProvider } from '../context/LocaleContext';
+
+const renderPaywall = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
 const testUser: AuthUser = {
   id: 7,
@@ -43,7 +46,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
       },
     });
 
-    render(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
@@ -66,7 +69,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
       message: "Le montant indiqué (1 DZD) ne correspond pas au tarif de l'abonnement (1500 DZD).",
     });
 
-    render(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
@@ -79,7 +82,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
   });
 
   it('displays the subscription price from the shared constant, not a separate hardcoded value', () => {
-    render(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
     expect(screen.getByText(/السعر: 1500 دج/)).toBeInTheDocument();
   });
 });
