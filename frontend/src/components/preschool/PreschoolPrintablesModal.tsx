@@ -36,14 +36,13 @@ const LABELS: Record<PreschoolLanguage, { title: string; subtitle: string; print
   },
 };
 
-// House/star-crescent/sun are simple original line-art drawings (hand-authored SVG paths, not
-// sourced from any external worksheet site) — plain black outlines a child can color freely.
+// Original line-art for coloring pages (hand-authored SVG, not copied from any worksheet site).
 const ColoringArt: React.FC<{ shapeId?: PrintableWorksheet['coloringShapeId'] }> = ({ shapeId }) => {
   const common = { fill: 'none', stroke: '#0f172a', strokeWidth: 3, strokeLinejoin: 'round' as const, strokeLinecap: 'round' as const };
   switch (shapeId) {
     case 'house':
       return (
-        <svg viewBox="0 0 200 200" className="w-full max-w-xs mx-auto" {...common}>
+        <svg viewBox="0 0 200 200" className="w-full max-w-md mx-auto" {...common}>
           <polygon points="30,100 100,35 170,100" />
           <rect x="40" y="100" width="120" height="80" />
           <rect x="85" y="140" width="30" height="40" />
@@ -53,14 +52,14 @@ const ColoringArt: React.FC<{ shapeId?: PrintableWorksheet['coloringShapeId'] }>
       );
     case 'star_crescent':
       return (
-        <svg viewBox="0 0 300 200" className="w-full max-w-sm mx-auto" {...common}>
+        <svg viewBox="0 0 300 200" className="w-full max-w-md mx-auto" {...common}>
           <path d="M 110 30 A 55 55 0 1 0 110 170 A 42 42 0 1 1 110 30 Z" />
           <path d="M 220 40 L 235 85 L 282 85 L 244 112 L 258 158 L 220 130 L 182 158 L 196 112 L 158 85 L 205 85 Z" />
         </svg>
       );
     case 'sun':
       return (
-        <svg viewBox="0 0 200 200" className="w-full max-w-xs mx-auto" {...common}>
+        <svg viewBox="0 0 200 200" className="w-full max-w-md mx-auto" {...common}>
           <circle cx="100" cy="100" r="45" />
           <line x1="100" y1="30" x2="100" y2="10" />
           <line x1="100" y1="170" x2="100" y2="190" />
@@ -72,8 +71,96 @@ const ColoringArt: React.FC<{ shapeId?: PrintableWorksheet['coloringShapeId'] }>
           <line x1="150" y1="50" x2="165" y2="35" />
         </svg>
       );
-    default:
+    case 'flower':
+      return (
+        <svg viewBox="0 0 200 220" className="w-full max-w-md mx-auto" {...common}>
+          <ellipse cx="100" cy="42" rx="20" ry="30" />
+          <ellipse cx="148" cy="70" rx="30" ry="20" />
+          <ellipse cx="148" cy="118" rx="30" ry="20" />
+          <ellipse cx="100" cy="146" rx="20" ry="30" />
+          <ellipse cx="52" cy="118" rx="30" ry="20" />
+          <ellipse cx="52" cy="70" rx="30" ry="20" />
+          <circle cx="100" cy="94" r="24" />
+          <line x1="100" y1="118" x2="100" y2="208" />
+          <ellipse cx="78" cy="168" rx="22" ry="12" />
+          <ellipse cx="124" cy="180" rx="22" ry="12" />
+        </svg>
+      );
+    case 'fish':
+      return (
+        <svg viewBox="0 0 240 180" className="w-full max-w-md mx-auto" {...common}>
+          <ellipse cx="110" cy="95" rx="62" ry="36" />
+          <polygon points="172,95 220,58 220,132" />
+          <polygon points="110,59 128,38 92,38" />
+          <polygon points="110,131 128,152 92,152" />
+          <circle cx="72" cy="88" r="8" />
+          <circle cx="72" cy="88" r="3" />
+          <path d="M 108 72 Q 128 95 108 118" />
+          <circle cx="38" cy="42" r="10" />
+          <circle cx="22" cy="58" r="6" />
+          <circle cx="48" cy="28" r="5" />
+        </svg>
+      );
+    case 'boat':
+      return (
+        <svg viewBox="0 0 220 200" className="w-full max-w-md mx-auto" {...common}>
+          <path d="M 40 118 L 180 118 L 162 158 L 58 158 Z" />
+          <line x1="110" y1="118" x2="110" y2="38" />
+          <polygon points="110,38 110,112 178,82" />
+          <polygon points="110,52 110,96 58,78" />
+          <path d="M 18 172 Q 55 158 92 172 T 166 172 T 210 172" />
+          <circle cx="42" cy="48" r="14" />
+        </svg>
+      );
+    case 'camel':
+      return (
+        <svg viewBox="0 0 240 200" className="w-full max-w-md mx-auto" {...common}>
+          <path d="M 78 108 Q 118 42 158 108" />
+          <ellipse cx="118" cy="118" rx="58" ry="28" />
+          <path d="M 64 108 Q 36 78 42 52" />
+          <ellipse cx="36" cy="48" rx="16" ry="11" />
+          <line x1="28" y1="44" x2="18" y2="32" />
+          <line x1="88" y1="142" x2="82" y2="182" />
+          <line x1="108" y1="144" x2="104" y2="182" />
+          <line x1="132" y1="144" x2="138" y2="182" />
+          <line x1="152" y1="142" x2="160" y2="182" />
+          <path d="M 176 118 Q 198 108 208 128" />
+        </svg>
+      );
+    case 'mosque':
+      return (
+        <svg viewBox="0 0 220 220" className="w-full max-w-md mx-auto" {...common}>
+          <rect x="38" y="108" width="118" height="88" />
+          <path d="M 38 108 Q 97 38 156 108" />
+          <rect x="168" y="48" width="22" height="148" />
+          <polygon points="168,48 179,22 190,48" />
+          <path d="M 82 196 Q 97 152 112 196" />
+          <rect x="52" y="128" width="20" height="24" />
+          <rect x="122" y="128" width="20" height="24" />
+          <path d="M 174 18 A 8 8 0 1 0 186 18" />
+        </svg>
+      );
+    case 'olive':
+      return (
+        <svg viewBox="0 0 200 220" className="w-full max-w-md mx-auto" {...common}>
+          <rect x="88" y="138" width="24" height="62" />
+          <circle cx="100" cy="88" r="52" />
+          <circle cx="62" cy="108" r="34" />
+          <circle cx="138" cy="108" r="34" />
+          <ellipse cx="72" cy="92" rx="7" ry="10" />
+          <ellipse cx="108" cy="70" rx="7" ry="10" />
+          <ellipse cx="128" cy="102" rx="7" ry="10" />
+          <ellipse cx="88" cy="118" rx="7" ry="10" />
+          <line x1="20" y1="200" x2="180" y2="200" />
+        </svg>
+      );
+    default: {
+      if (shapeId) {
+        const _exhaustive: never = shapeId;
+        return _exhaustive;
+      }
       return null;
+    }
   }
 };
 

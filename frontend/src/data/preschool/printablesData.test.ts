@@ -6,9 +6,14 @@ const LANGUAGES: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
 describe('Preschool printable worksheets data integrity', () => {
   it('has at least one worksheet and every id is unique', () => {
-    expect(PRINTABLE_WORKSHEETS.length).toBeGreaterThan(0);
+    expect(PRINTABLE_WORKSHEETS.length).toBeGreaterThanOrEqual(35);
     const ids = PRINTABLE_WORKSHEETS.map((w) => w.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it('covers every printable category', () => {
+    const used = new Set(PRINTABLE_WORKSHEETS.map((w) => w.category));
+    expect([...used].sort()).toEqual(Object.keys(PRINTABLE_CATEGORY_LABELS).sort());
   });
 
   it('every category used by a worksheet has a label in all 3 languages', () => {

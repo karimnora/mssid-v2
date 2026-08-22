@@ -1,7 +1,7 @@
 /**
  * GamesHub.tsx
  * Écran de sélection des mini-jeux pour la section "Espace Jeux & Labyrinthes"
- * 9 jeux Phaser.js + React pour enfants de 2-5 ans.
+ * 8 jeux pour enfants de 2-5 ans.
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -11,14 +11,13 @@ import { BalloonPopGame }   from './BalloonPopGame';
 import { FruitCatcherGame } from './FruitCatcherGame';
 import { ShapeSorterGame }  from './ShapeSorterGame';
 import { CarWashGame }      from './CarWashGame';
-import { MagicTapGame }     from './MagicTapGame';
 import { PuzzleGame }       from './PuzzleGame';
 import { SensoryTapGame }   from './SensoryTapGame';
 import { useLevelProgress } from './useLevelProgress';
 
 export type GameId =
   | 'car_maze' | 'farm' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
-  | 'car_wash' | 'magic_tap' | 'puzzle' | 'sensory_tap';
+  | 'car_wash' | 'puzzle' | 'sensory_tap';
 
 interface GameCard {
   id: GameId;
@@ -82,9 +81,9 @@ const GAMES: GameCard[] = [
     id: 'shape_sorter',
     icon: '🧩',
     titleAr: 'فرّز الأشكال والألوان',        titleFr: 'Trieur de Formes',                   titleEn: 'Shape Sorter',
-    descAr:  'ضع كل شكل في صندوقه!',        descFr:  'Glisse chaque forme dans sa boîte !', descEn:  'Drag shapes into matching boxes!',
+    descAr:  'ألوان، قلوب، أحجام — 8 مستويات!', descFr:  'Couleurs, cœurs, tailles — 8 niveaux !', descEn:  'Colors, hearts, sizes — 8 levels!',
     gradient: 'from-violet-400 to-purple-600', border: 'border-violet-300', badge: '🎨 Logique',
-    progressId: 'shape_sorter', maxLevels: 4,
+    progressId: 'shape_sorter', maxLevels: 8,
   },
   {
     id: 'car_wash',
@@ -98,21 +97,14 @@ const GAMES: GameCard[] = [
     id: 'sensory_tap',
     icon: '🌈',
     titleAr: 'العَالَمُ السِّحْرِيّ',                 titleFr: 'Le Monde Magique',                    titleEn: 'Magic World',
-    descAr:  'اِلْمَسْ أَيَّ مَكَانٍ وَشَاهِدِ العَجَائِب!', descFr:  'Touche partout et vois les merveilles !', descEn:  'Tap anywhere and see the wonders!',
+    descAr:  'ليل، حديقة، بحر، مزرعة — بدون خطأ!', descFr:  'Nuit, jardin, mer, ferme — sans erreur !', descEn:  'Night, garden, sea, farm — no fail!',
     gradient: 'from-pink-400 to-purple-500', border: 'border-pink-300', badge: '👶 Mode Bébé',
-  },
-  {
-    id: 'magic_tap',
-    icon: '🪄',
-    titleAr: 'دِيدُو السَّاحِر',                   titleFr: 'Dido le Magicien',                       titleEn: 'Dido the Magician',
-    descAr:  'اِلمَسِ الشَّاشَةَ لِتَرَى السِّحْر!', descFr:  'Touche l\'écran et vois la magie !',       descEn:  'Tap the screen and see the magic!',
-    gradient: 'from-violet-500 to-indigo-600', border: 'border-violet-300', badge: '✨ Magie',
   },
   {
     id: 'puzzle',
     icon: '🧩',
     titleAr: 'أَلْغَازُ دِيدُو',                  titleFr: 'Le Puzzle de Dido',                      titleEn: 'Dido\'s Puzzle',
-    descAr:  'رَكِّبِ الأَلْغَازَ وَأَكْمِلِ الصُّورَة!', descFr:  'Assemble les pièces et complète l\'image !', descEn:  'Assemble pieces to complete the picture!',
+    descAr:  'ضع كل صورة على ظلّها — 4 ألواح!', descFr:  'Pose chaque image sur son ombre — 4 tableaux !', descEn:  'Put each picture on its shadow — 4 boards!',
     gradient: 'from-amber-400 to-orange-500', border: 'border-amber-300', badge: '🧠 Puzzle',
   },
 ];
@@ -142,7 +134,6 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
       case 'fruit_catcher': return <FruitCatcherGame language={language} onExit={exit} />;
       case 'shape_sorter':  return <ShapeSorterGame  language={language} onExit={exit} />;
       case 'car_wash':      return <CarWashGame      language={language} onExit={exit} />;
-      case 'magic_tap':     return <MagicTapGame     language={language} onExit={exit} />;
       case 'puzzle':        return <PuzzleGame       language={language} onExit={exit} />;
       case 'sensory_tap':   return <SensoryTapGame   language={language} onExit={exit} />;
       default:              return null;
@@ -226,9 +217,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
 
               {/* Footer hint */}
               <p className="text-center text-xs text-indigo-500 font-bold pb-2">
-                {t('9 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
-                   '9 jeux éducatifs et amusants pour 2-5 ans 🎈',
-                   '9 fun educational games for ages 2-5 🎈')}
+                {t('8 ألعاب ممتعة وتعليمية لعمر 2-5 سنوات 🎈',
+                   '8 jeux éducatifs et amusants pour 2-5 ans 🎈',
+                   '8 fun educational games for ages 2-5 🎈')}
               </p>
             </div>
           </motion.div>
