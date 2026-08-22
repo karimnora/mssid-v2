@@ -271,7 +271,6 @@ export const BODY_MODULE: PreschoolModule = {
           { id: 'mem-eyes',  asset: '👁️' },
           { id: 'mem-hands', asset: '🖐️' },
           { id: 'mem-feet',  asset: '🦶' },
-          { id: 'mem-ears',  asset: '👂' },
         ],
       },
     },
