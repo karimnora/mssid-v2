@@ -115,6 +115,11 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
             activeModule.activities.findIndex((a) => a.id === activeActivity.id)
             < activeModule.activities.length - 1
           }
+          onSkip={() => {
+            const idx = activeModule.activities.findIndex((a) => a.id === activeActivity.id);
+            const nextActivity = activeModule.activities[idx + 1] ?? null;
+            setActiveActivityId(nextActivity ? nextActivity.id : null);
+          }}
           onComplete={() => {
             const idx = activeModule.activities.findIndex((a) => a.id === activeActivity.id);
             const nextActivity = activeModule.activities[idx + 1] ?? null;

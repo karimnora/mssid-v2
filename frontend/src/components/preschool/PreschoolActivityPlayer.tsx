@@ -20,7 +20,10 @@ interface PreschoolActivityPlayerProps {
   activity: PreschoolActivity;
   language: PreschoolLanguage;
   hasNext: boolean;
+  /** Real success: marks the activity done (badges, daily challenge, path stars). */
   onComplete: () => void;
+  /** Advance without marking done — parent/child is never blocked, progress stays honest. */
+  onSkip: () => void;
   onExit: () => void;
 }
 
@@ -28,20 +31,21 @@ interface PreschoolActivityPlayerProps {
 // activity.interactionType, and reacts (mascot + voice) on success before handing control back to
 // the path view. Session length stays short by construction — one activity, one clear finish line.
 export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = ({
-  activity, language, hasNext, onComplete, onExit,
+  activity, language, hasNext, onComplete, onSkip, onExit,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [mood, setMood] = useState<MascotMood>('idle');
   const [showSuccess, setShowSuccess] = useState(false);
   const [showParentTip, setShowParentTip] = useState(false);
-  const { speak } = usePreschoolSpeech(language);
+  const { speak, hasVoice } = usePreschoolSpeech(language);
   const content = activity.i18n[language];
+  const missingArabicVoice = language === 'ar' && !hasVoice && !content.promptAudioSrc;
 
   useEffect(() => {
     setMood('idle');
     setShowSuccess(false);
     setShowParentTip(false);
-    const timer = setTimeout(() => speak(content.promptAudio), 350);
+    const timer = setTimeout(() => speak(content.promptAudio, content.promptAudioSrc), 350);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activity.id, language]);
@@ -49,11 +53,11 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const handleInteractionComplete = () => {
     setMood('happy');
     setShowSuccess(true);
-    if (content.successAudio) speak(content.successAudio);
+    if (content.successAudio) speak(content.successAudio, content.successAudioSrc);
     setTimeout(onComplete, 1400);
   };
 
-  const replayPrompt = () => speak(content.promptAudio);
+  const replayPrompt = () => speak(content.promptAudio, content.promptAudioSrc);
 
   return (
     <div dir={dir} className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-sky-100 px-4 py-6 flex flex-col">
@@ -77,16 +81,16 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
             🔊
           </button>
 
-          {/* Direct Skip / Next button so the child or parent is never blocked */}
+          {/* Skip never blocks — but it must not count as a success (badges / défi / path stars). */}
           <button
-            onClick={onComplete}
-            className="px-4 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-emerald-400"
-            title="التالي / Suivant / Next"
+            onClick={onSkip}
+            className="px-4 py-2.5 rounded-2xl bg-white hover:bg-orange-50 active:scale-95 text-orange-800 shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-orange-200"
+            title="تخطي / Passer / Skip"
           >
             <span>
               {hasNext
-                ? (language === 'ar' ? 'التالي' : language === 'fr' ? 'Suivant' : 'Next')
-                : (language === 'ar' ? 'إنهاء' : language === 'fr' ? 'Terminer' : 'Finish')}
+                ? (language === 'ar' ? 'تخطي' : language === 'fr' ? 'Passer' : 'Skip')
+                : (language === 'ar' ? 'خروج' : language === 'fr' ? 'Quitter' : 'Leave')}
             </span>
             <span className="text-lg">{hasNext ? '⏩' : '🏠'}</span>
           </button>
@@ -101,7 +105,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         {/* promptText is a caption for the accompanying adult, never required reading for the
             child (see types.ts) — kept collapsed by default so the child's screen only ever shows
             the mascot talking directly to them, not an instruction addressed to a parent. */}
-        {content.promptText && (
+        {(content.promptText || missingArabicVoice) && (
           <div className="flex flex-col items-center gap-1.5">
             <button
               onClick={() => setShowParentTip((v) => !v)}
@@ -111,9 +115,18 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
               <span>{language === 'ar' ? 'نصيحة لولي الأمر' : language === 'fr' ? 'Astuce pour le parent' : 'Tip for the grown-up'}</span>
             </button>
             {showParentTip && (
-              <p className="text-xs text-orange-700/70 text-center max-w-xs bg-white/60 rounded-xl px-3 py-2 border border-orange-100">
-                {content.promptText}
-              </p>
+              <div className="text-xs text-orange-700/70 text-center max-w-xs bg-white/60 rounded-xl px-3 py-2 border border-orange-100 space-y-1.5">
+                {content.promptText && <p>{content.promptText}</p>}
+                {missingArabicVoice && (
+                  <p>
+                    {language === 'ar'
+                      ? 'لا يوجد صوت عربي على هذا الجهاز. ثبّت حزمة تحويل النص إلى كلام (العربية) من إعدادات الهاتف.'
+                      : language === 'fr'
+                        ? 'Pas de voix arabe sur cet appareil. Installe le pack TTS arabe dans les réglages, ou ajoute un fichier vocal.'
+                        : 'No Arabic voice on this device. Install the Arabic TTS pack in system settings, or add a recorded file.'}
+                  </p>
+                )}
+              </div>
             )}
           </div>
         )}

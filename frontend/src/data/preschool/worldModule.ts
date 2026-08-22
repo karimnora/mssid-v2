@@ -6,7 +6,7 @@ import { PreschoolModule } from './types';
  */
 export const WORLD_MODULE: PreschoolModule = {
   id: 'preschool-world',
-  domain: 'animals',
+  domain: 'world',
   icon: '🌍',
   totalSteps: 7,
   titleI18n: {

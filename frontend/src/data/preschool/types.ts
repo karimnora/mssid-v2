@@ -32,16 +32,18 @@ export type PreschoolInteractionType =
 export interface LocalizedContent {
   title: string;
   /**
-   * MVP note: holds the literal phrase spoken aloud, fed to the Web Speech API TTS voice for the
-   * activity's language (see usePreschoolSpeech). No recorded voice-over assets exist yet — once a
-   * professional voice-over is produced per language, swap this for an asset URL and update
-   * usePreschoolSpeech to play it instead of synthesizing; the field name/shape doesn't need to change.
+   * Phrase spoken to the child. Played as a recorded file when `promptAudioSrc` is set,
+   * otherwise synthesized via the Web Speech API (quality varies by device, especially Arabic).
    */
   promptAudio: string;
+  /** Optional recorded prompt, e.g. `/sounds/preschool/ar/num-0-prompt.mp3`. TTS is the fallback. */
+  promptAudioSrc?: string;
   /** Optional caption shown to the accompanying parent/adult — never required reading for the child. */
   promptText?: string;
   /** Short celebratory phrase spoken on success (same MVP convention as promptAudio). */
   successAudio?: string;
+  /** Optional recorded success line. TTS is the fallback. */
+  successAudioSrc?: string;
 }
 
 export interface PreschoolChoice {

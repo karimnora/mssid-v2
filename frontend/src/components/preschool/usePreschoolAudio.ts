@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 
 // Web Speech API TTS wrapper — MVP voice for "Amine le Fennec" and activity prompts. Browser Arabic
@@ -22,8 +22,39 @@ function pickVoice(voices: SpeechSynthesisVoice[], language: PreschoolLanguage):
   return voices.find((v) => v.lang.toLowerCase().startsWith(prefix));
 }
 
+let recordedClip: HTMLAudioElement | null = null;
+
+function stopRecordedClip() {
+  if (!recordedClip) return;
+  recordedClip.pause();
+  recordedClip.removeAttribute('src');
+  recordedClip = null;
+}
+
+function playRecordedClip(src: string, onFail: () => void) {
+  stopRecordedClip();
+  if (typeof Audio === 'undefined') {
+    onFail();
+    return;
+  }
+  const audio = new Audio(src);
+  recordedClip = audio;
+  audio.onended = () => {
+    if (recordedClip === audio) recordedClip = null;
+  };
+  audio.onerror = () => {
+    if (recordedClip === audio) recordedClip = null;
+    onFail();
+  };
+  audio.play().catch(() => {
+    if (recordedClip === audio) recordedClip = null;
+    onFail();
+  });
+}
+
 export function usePreschoolSpeech(language: PreschoolLanguage) {
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+  const [hasVoice, setHasVoice] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
@@ -33,6 +64,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
     const loadVoices = () => {
       const voices = window.speechSynthesis.getVoices();
       if (voices.length) voicesRef.current = voices;
+      if (!cancelled) setHasVoice(Boolean(pickVoice(voicesRef.current, language)));
       return voices.length > 0;
     };
 
@@ -52,14 +84,12 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
       cancelled = true;
       window.speechSynthesis.onvoiceschanged = null;
     };
-  }, []);
+  }, [language]);
 
-  const speak = useCallback((text: string) => {
+  const speakTts = useCallback((text: string) => {
     if (typeof window === 'undefined' || !window.speechSynthesis || !text) return;
-    window.speechSynthesis.cancel(); // never queue — a new prompt always interrupts the previous one
+    window.speechSynthesis.cancel();
 
-    // Defensive re-check right before speaking: some engines only populate getVoices() lazily on
-    // access rather than proactively, so the polling above can still miss a voice that exists.
     if (voicesRef.current.length === 0) {
       voicesRef.current = window.speechSynthesis.getVoices();
     }
@@ -69,10 +99,6 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
     if (voice) {
       utterance.voice = voice;
     } else if (typeof import.meta !== 'undefined' && (import.meta as any).env?.DEV) {
-      // No installed voice matches this locale. Chrome/WebView can silently produce NO sound at all
-      // in this case (no error event fires) instead of degrading to a default voice — this is the
-      // most common real-world cause of "the Arabic audio doesn't work": the device's OS-level TTS
-      // engine (e.g. Android's Google Text-to-Speech) simply has no Arabic voice pack downloaded.
       console.warn(
         `[mssid preschool] No TTS voice found for locale "${language}". ` +
         `Available on this device: ${voicesRef.current.map((v) => v.lang).join(', ') || '(none loaded)'}. ` +
@@ -80,19 +106,32 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
       );
     }
     utterance.lang = BCP47_BY_LANGUAGE[language][0];
-    utterance.rate = 0.9; // slightly slower — easier for a 3-5 year old to follow
-    utterance.pitch = 1.1; // slightly higher — friendlier "mascot" tone
+    utterance.rate = 0.9;
+    utterance.pitch = 1.1;
     utterance.onerror = (event) => {
       console.warn('[mssid preschool] Speech synthesis failed:', event.error);
     };
     window.speechSynthesis.speak(utterance);
   }, [language]);
 
+  const speak = useCallback((text: string, recordedSrc?: string) => {
+    stopRecordedClip();
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
+    if (recordedSrc) {
+      playRecordedClip(recordedSrc, () => speakTts(text));
+      return;
+    }
+    speakTts(text);
+  }, [speakTts]);
+
   const stop = useCallback(() => {
+    stopRecordedClip();
     if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
   }, []);
 
-  return { speak, stop };
+  return { speak, stop, hasVoice };
 }
 
 // Short, synthesized feedback tones via the Web Audio API — no audio asset files needed, works

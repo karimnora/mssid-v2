@@ -62,7 +62,7 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
     icon: '🔢',
     titleI18n: { ar: 'مَاهِرُ الأَرْقَام', fr: 'Pro des Chiffres', en: 'Number Pro' },
     descI18n:  { ar: 'تَعَلَّمْتَ الأَعْدَادَ مِنْ صِفْرٍ إِلَى عَشَرَة!', fr: 'Tu connais les chiffres de 0 à 10 !', en: 'You know the numbers from 0 to 10!' },
-    criteria: { type: 'module_complete', moduleId: 'preschool-numbers' },
+    criteria: { type: 'module_complete', moduleId: 'preschool-numbers-0-10' },
   },
   {
     id: 'pb_shapes_done',

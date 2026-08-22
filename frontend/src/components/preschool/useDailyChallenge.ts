@@ -24,13 +24,24 @@ interface StoredChallenge {
 }
 
 function today(): string {
-  return new Date().toISOString().slice(0, 10);
+  return localDateKey();
 }
 
 function yesterday(): string {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  return d.toISOString().slice(0, 10);
+  return localYesterdayKey();
+}
+
+/** Calendar day in the device timezone (Algeria UTC+1), never UTC-from-ISO. */
+export function localDateKey(date: Date = new Date()): string {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+export function localYesterdayKey(date: Date = new Date()): string {
+  const previous = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
+  return localDateKey(previous);
 }
 
 // LCG pseudo-random with seed
@@ -43,9 +54,10 @@ function hashDate(date: string): number {
 }
 
 // Modules considérés pour les défis quotidiens (pas les jeux arcade)
-const CHALLENGE_MODULE_IDS = [
+/** Exported so integrity tests can assert every id exists in PRESCHOOL_MODULES. */
+export const CHALLENGE_MODULE_IDS = [
   'preschool-letters',
-  'preschool-numbers',
+  'preschool-numbers-0-10',
   'preschool-shapes',
   'preschool-colors',
   'preschool-animals',

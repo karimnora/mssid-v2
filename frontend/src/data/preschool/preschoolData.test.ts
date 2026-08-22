@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { PRESCHOOL_MODULES } from './index';
 import { PreschoolLanguage } from './types';
+import { PRESCHOOL_BADGES } from './preschoolBadgesData';
+import { CHALLENGE_MODULE_IDS } from '../../components/preschool/useDailyChallenge';
 
 const LANGUAGES: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
@@ -14,6 +16,28 @@ describe('Preschool (Mode Éveil) data integrity', () => {
   it('every activity id is globally unique across all modules', () => {
     const allActivityIds = PRESCHOOL_MODULES.flatMap((m) => m.activities.map((a) => a.id));
     expect(new Set(allActivityIds).size).toBe(allActivityIds.length);
+  });
+
+  it('every module_complete badge points at a real PRESCHOOL_MODULES id', () => {
+    const ids = new Set(PRESCHOOL_MODULES.map((m) => m.id));
+    for (const badge of PRESCHOOL_BADGES) {
+      if (badge.criteria.type !== 'module_complete') continue;
+      expect(ids.has(badge.criteria.moduleId), `${badge.id} → ${badge.criteria.moduleId}`).toBe(true);
+    }
+  });
+
+  it('Mon Petit Monde is tagged domain world, not animals', () => {
+    const world = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-world');
+    expect(world?.domain).toBe('world');
+  });
+
+  it('every daily-challenge module id exists, including numbers 0-10', () => {
+    const ids = new Set(PRESCHOOL_MODULES.map((m) => m.id));
+    for (const id of CHALLENGE_MODULE_IDS) {
+      expect(ids.has(id), id).toBe(true);
+    }
+    expect(CHALLENGE_MODULE_IDS).toContain('preschool-numbers-0-10');
+    expect(CHALLENGE_MODULE_IDS).not.toContain('preschool-numbers');
   });
 
   PRESCHOOL_MODULES.forEach((mod) => {
