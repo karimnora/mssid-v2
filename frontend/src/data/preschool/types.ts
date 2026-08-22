@@ -21,7 +21,8 @@ export type PreschoolInteractionType =
   | 'coloring'       // Tap-to-fill a picture made of simple declared shapes — no "wrong" color, done when every region has one
   | 'maze'           // Drag a traveler along a dashed waypoint path from start to goal (stricter than find_path: must pass near every waypoint, not just reach the end)
   | 'jigsaw'        // Drag each piece onto its matching ghost silhouette to reassemble a simple picture
-  | 'sequence';     // Show a repeating pattern and ask "what comes next?" — pattern items shown as a visual row, choices below
+  | 'sequence'      // Show a repeating pattern and ask "what comes next?" — pattern items shown as a visual row, choices below
+  | 'listen_tap';   // Tap each name card to hear it — no wrong answer, done when every card has been heard
 
 /**
  * "Child-first" voice rule: `promptAudio` (and `successAudio`) must always read as the mascot
@@ -51,6 +52,8 @@ export interface PreschoolChoice {
   /** Emoji or short glyph — no image asset pipeline in the MVP. */
   asset: string;
   isCorrect: boolean;
+  /** Optional caption under the glyph (day name, month name, …). */
+  label?: { ar: string; fr: string; en: string };
 }
 
 export interface PreschoolDragItem {
@@ -80,12 +83,18 @@ export interface PreschoolConnectPair {
   id: string;
   leftAsset: string;
   rightAsset: string;
+  /** Optional caption under the left glyph (season name, animal name, …). */
+  leftLabel?: { ar: string; fr: string; en: string };
+  /** Optional caption under the right glyph. */
+  rightLabel?: { ar: string; fr: string; en: string };
 }
 
 /** sorting: one category bin (e.g. "big animals"). */
 export interface PreschoolSortBin {
   id: string;
   labelAsset: string;
+  /** Optional caption under the bin glyph (École, Week-end, …). */
+  label?: { ar: string; fr: string; en: string };
 }
 
 /** sorting: one draggable item that belongs in exactly one bin. */
@@ -93,6 +102,15 @@ export interface PreschoolSortItem {
   id: string;
   asset: string;
   correctBinId: string;
+  /** Optional caption on the chip (day name, month name, …). */
+  label?: { ar: string; fr: string; en: string };
+}
+
+/** listen_tap: one name card the child taps to hear the spoken word. */
+export interface PreschoolListenCard {
+  id: string;
+  asset: string;
+  label: { ar: string; fr: string; en: string };
 }
 
 /** memory_cards: one pair — `asset` is rendered on two face-down cards, shuffled. */
@@ -146,10 +164,15 @@ export interface PreschoolVisualAssets {
   /** find_path */
   pathToken?: PreschoolPathToken;
   pathStops?: PreschoolPathStop[];
-  /** Scenic board for find_path: desert, bath, seasons, market, home, or day. */
-  pathTheme?: 'desert' | 'bath' | 'seasons' | 'market' | 'home' | 'day' | 'algeria' | 'mosque' | 'feelings' | 'writing' | 'logic' | 'default';
+  /** Scenic board for find_path: desert, bath, seasons, week, market, home, or day. */
+  pathTheme?: 'desert' | 'bath' | 'seasons' | 'week' | 'market' | 'home' | 'day' | 'algeria' | 'mosque' | 'feelings' | 'writing' | 'logic' | 'default';
   /** connect_dots */
   connectPairs?: PreschoolConnectPair[];
+  /** Optional headings above the two connect columns (e.g. « saison » / « image »). */
+  connectColumnTitles?: {
+    left: { ar: string; fr: string; en: string };
+    right: { ar: string; fr: string; en: string };
+  };
   /** sorting */
   sortBins?: PreschoolSortBin[];
   sortItems?: PreschoolSortItem[];
@@ -170,6 +193,8 @@ export interface PreschoolVisualAssets {
   jigsawPieces?: PreschoolJigsawPiece[];
   /** sequence — shown prefix (incomplete). The missing next item is the one `choices` marked isCorrect. */
   sequencePattern?: string[];
+  /** listen_tap — name cards in display order (Sunday first for the Algerian week). */
+  listenCards?: PreschoolListenCard[];
 }
 
 export interface PreschoolActivity {

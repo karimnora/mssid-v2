@@ -38,7 +38,7 @@ const LEARN_GROUPS: { id: LearnGroupId; moduleIds: string[] }[] = [
   },
   {
     id: 'science',
-    moduleIds: ['preschool-animals', 'preschool-body', 'preschool-seasons', 'preschool-food', 'preschool-world'],
+    moduleIds: ['preschool-animals', 'preschool-body', 'preschool-seasons', 'preschool-calendar', 'preschool-food', 'preschool-world'],
   },
   {
     id: 'civics',
@@ -88,7 +88,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
     learn: t('أَتَعَلَّم', 'Apprendre', 'Learn'),
     learnDesc: t('حُرُوف، أَرْقَام وَالْعَالَم', 'Lettres, nombres et le monde', 'Letters, numbers and the world'),
     play: t('أَلْعَب', 'Jouer', 'Play'),
-    playDesc: t('10 أَلْعَاب مَعَ دِيدُو', '10 jeux avec Dido', '10 games with Dido'),
+    playDesc: t('8 أَلْعَاب مَعَ دِيدُو', '8 jeux avec Dido', '8 games with Dido'),
     magicBoard: t('اللَّوْحَةُ السِّحْرِيَّة', 'Tableau Magique', 'Magic Board'),
     magicBoardDesc: t(
       'رَسْم، سَبُّورَة، تَتَبُّع، تَلْوِين وَالْعَالَمُ السِّحْرِيّ',

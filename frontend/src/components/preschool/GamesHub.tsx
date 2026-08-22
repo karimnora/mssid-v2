@@ -1,7 +1,7 @@
 /**
  * GamesHub.tsx
  * Écran de sélection des mini-jeux du préscolaire.
- * 10 jeux pour enfants de 3-5 ans.
+ * 8 jeux pour enfants de 3-5 ans.
  */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -10,9 +10,7 @@ import { FarmGame }         from './FarmGame';
 import { BalloonPopGame }   from './BalloonPopGame';
 import { FruitCatcherGame } from './FruitCatcherGame';
 import { ShapeSorterGame }  from './ShapeSorterGame';
-import { CarWashGame }      from './CarWashGame';
 import { PuzzleGame }       from './PuzzleGame';
-import { HideDidoGame }     from './HideDidoGame';
 import { LittleFisherGame } from './LittleFisherGame';
 import { DressDidoGame }    from './DressDidoGame';
 import { useLevelProgress } from './useLevelProgress';
@@ -57,8 +55,6 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
       case 'balloon_pop':   return <BalloonPopGame   language={language} onExit={exit} />;
       case 'fruit_catcher': return <FruitCatcherGame language={language} onExit={exit} />;
       case 'shape_sorter':  return <ShapeSorterGame  language={language} onExit={exit} />;
-      case 'car_wash':      return <CarWashGame      language={language} onExit={exit} />;
-      case 'hide_dido':     return <HideDidoGame     language={language} onExit={exit} />;
       case 'dress_dido':    return <DressDidoGame    language={language} onExit={exit} />;
       case 'little_fisher': return <LittleFisherGame language={language} onExit={exit} />;
       case 'puzzle':        return <PuzzleGame       language={language} onExit={exit} />;
@@ -144,9 +140,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
 
               {/* Footer hint */}
               <p className="text-center text-xs text-indigo-500 font-bold pb-2">
-                {t('10 أَلْعَاب مُمْتِعَة لِعُمْر 3-5 سَنَوَات 🎈',
-                   '10 jeux amusants et éducatifs pour 3-5 ans 🎈',
-                   '10 fun educational games for ages 3-5 🎈')}
+                {t('8 أَلْعَاب مُمْتِعَة لِعُمْر 3-5 سَنَوَات 🎈',
+                   '8 jeux amusants et éducatifs pour 3-5 ans 🎈',
+                   '8 fun educational games for ages 3-5 🎈')}
               </p>
             </div>
           </motion.div>

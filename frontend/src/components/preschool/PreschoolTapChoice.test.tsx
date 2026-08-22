@@ -52,4 +52,5 @@ describe('PreschoolTapChoice', () => {
     render(<PreschoolTapChoice activity={blue} language="ar" onComplete={vi.fn()} />);
     expect(document.querySelector('svg[data-color-dot="blue"]')).toBeTruthy();
   });
+
 });

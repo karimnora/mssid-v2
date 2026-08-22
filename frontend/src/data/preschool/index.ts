@@ -12,6 +12,7 @@ import { CREATIVE_GAMES_MODULE } from './creativeGamesModule';
 // ── New 0AP curriculum modules (aligned with dzexams.com/fr/0ap) ──────────────
 import { BODY_MODULE } from './bodyModule';
 import { SEASONS_MODULE } from './seasonsModule';
+import { CALENDAR_MODULE } from './calendarModule';
 import { FAMILY_MODULE } from './familyModule';
 import { ALGERIA_MODULE } from './algeriaModule';
 import { FOOD_MODULE } from './foodModule';
@@ -34,6 +35,7 @@ export const PRESCHOOL_MODULES: PreschoolModule[] = [
   ANIMALS_MODULE,
   BODY_MODULE,
   SEASONS_MODULE,
+  CALENDAR_MODULE,
   FOOD_MODULE,
   WORLD_MODULE,
   // ── Éducation Civique & Valeurs ────────────────────────────────────────────

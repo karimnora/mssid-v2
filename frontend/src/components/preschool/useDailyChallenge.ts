@@ -63,6 +63,7 @@ export const CHALLENGE_MODULE_IDS = [
   'preschool-animals',
   'preschool-body',
   'preschool-seasons',
+  'preschool-calendar',
   'preschool-food',
   'preschool-world',
   'preschool-family',
@@ -77,7 +78,7 @@ export const CHALLENGE_MODULE_IDS = [
 function pickActivity(mod: PreschoolModule, seed: number): PreschoolActivity {
   // Prefer recognition / sorting / matching over empty "drag to house" fillers.
   const preferred = mod.activities.filter((a) =>
-    ['tap_choice', 'sorting', 'connect_dots', 'sequence', 'trace'].includes(a.interactionType),
+    ['tap_choice', 'sorting', 'connect_dots', 'sequence', 'trace', 'listen_tap'].includes(a.interactionType),
   );
   const pool = preferred.length > 0 ? preferred : mod.activities;
   return pool[seed % pool.length];

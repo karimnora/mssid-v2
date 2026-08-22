@@ -79,6 +79,13 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
     criteria: { type: 'module_complete', moduleId: 'preschool-colors' },
   },
   {
+    id: 'pb_calendar_done',
+    icon: '📅',
+    titleI18n: { ar: 'عَارِفُ الأَيَّامِ وَالشُّهُور', fr: 'Maître du calendrier', en: 'Calendar Master' },
+    descI18n:  { ar: 'تَعَلَّمْتَ أَيَّامَ الأُسْبُوعِ وَالشُّهُور!', fr: 'Tu connais les jours et les mois !', en: 'You know the days and the months!' },
+    criteria: { type: 'module_complete', moduleId: 'preschool-calendar' },
+  },
+  {
     id: 'pb_animals_done',
     icon: '🦁',
     titleI18n: { ar: 'صَدِيقُ الحَيَوَانَات', fr: 'Ami des Animaux', en: 'Animal Friend' },

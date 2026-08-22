@@ -157,6 +157,12 @@ describe('Preschool (Mode Éveil) data integrity', () => {
                 }
                 break;
               }
+              case 'listen_tap': {
+                expect(assets.listenCards?.length, activity.id).toBeGreaterThanOrEqual(2);
+                const ids = (assets.listenCards || []).map((c) => c.id);
+                expect(new Set(ids).size, `${activity.id} listen card ids`).toBe(ids.length);
+                break;
+              }
             }
           });
         });
@@ -193,5 +199,62 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(activityPicture(alif!, 'en')).toBe('🐰');
     expect(localizeGlyph('أ', 'fr')).toBe('أ');
     expect(localizeGlyph('أ', 'en')).toBe('أ');
+  });
+
+  it('seasons-connect names each season and matches winter to the scarf already taught', () => {
+    const seasons = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-seasons');
+    const connect = seasons?.activities.find((a) => a.id === 'seasons-connect');
+    const pairs = connect?.visualAssets.connectPairs || [];
+    expect(pairs.map((p) => p.leftLabel?.fr)).toEqual(['Printemps', 'Été', 'Automne', 'Hiver']);
+    const winter = pairs.find((p) => p.leftLabel?.fr === 'Hiver');
+    expect(winter?.rightAsset).toBe('🧣');
+    expect(connect?.visualAssets.connectColumnTitles).toEqual({
+      left: { ar: 'الفَصْل', fr: 'Saison', en: 'Season' },
+      right: { ar: 'الصُّورَة', fr: 'Image', en: 'Picture' },
+    });
+  });
+
+  it('calendar module shows names with audio, week starts Sunday, weekend Fri–Sat', () => {
+    const cal = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-calendar');
+    expect(cal).toBeTruthy();
+    expect(cal!.totalSteps).toBe(4);
+    const activityIds = cal!.activities.map((a) => a.id);
+    expect(new Set(activityIds).size).toBe(activityIds.length);
+
+    const blob = JSON.stringify(cal);
+    expect(blob).toMatch(/جَانْفِي|جانفي/);
+    expect(blob).toMatch(/جُوِيلِيَة|جويلية/);
+    expect(blob).toMatch(/سِبْتَمْبِر|سبتمبر/);
+    expect(blob).toMatch(/أُوت|أوت/);
+    expect(blob).not.toContain('يناير');
+    expect(blob).not.toContain('فبراير');
+    expect(blob).not.toMatch(/رمضان/);
+
+    const days = cal!.activities.find((a) => a.id === 'calendar-days');
+    expect(days?.interactionType).toBe('listen_tap');
+    expect(days?.visualAssets.listenCards?.map((c) => c.id)).toEqual([
+      'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+    ]);
+    expect(days?.visualAssets.listenCards?.[0].label.fr).toBe('Dimanche');
+
+    const months = [
+      ...(cal!.activities.find((a) => a.id === 'calendar-months-1')?.visualAssets.listenCards || []),
+      ...(cal!.activities.find((a) => a.id === 'calendar-months-2')?.visualAssets.listenCards || []),
+    ];
+    expect(months.map((c) => c.label.fr)).toEqual([
+      'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre',
+    ]);
+
+    const sort = cal!.activities.find((a) => a.id === 'calendar-school-weekend');
+    const school = (sort?.visualAssets.sortItems || [])
+      .filter((i) => i.correctBinId === 'school-bin')
+      .map((i) => i.label?.fr);
+    const weekend = (sort?.visualAssets.sortItems || [])
+      .filter((i) => i.correctBinId === 'weekend-bin')
+      .map((i) => i.label?.fr);
+    expect(school).toEqual(['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi']);
+    expect(weekend).toEqual(['Vendredi', 'Samedi']);
+    expect(sort?.visualAssets.sortItems?.[0].label?.fr).toBe('Dimanche');
   });
 });

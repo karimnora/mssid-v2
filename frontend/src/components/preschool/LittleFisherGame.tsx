@@ -195,7 +195,8 @@ export const LittleFisherGame: React.FC<LittleFisherGameProps> = ({ onExit, lang
           .setDepth(5)
           .setInteractive({ useHandCursor: true });
         (t as Phaser.GameObjects.Text & { isWeed?: boolean }).isWeed = isWeed;
-        if (!fromLeft) t.setFlipX(true);
+        // 🐠🐟 face left in emoji fonts — flip only when swimming to the right.
+        if (fromLeft) t.setFlipX(true);
 
         this.tweens.add({
           targets: t,

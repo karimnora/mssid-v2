@@ -147,17 +147,25 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
 
   const dragOrigin = selected && dragPos ? centerOf(selected.side, selected.id) : null;
 
+  const titles = activity.visualAssets.connectColumnTitles;
+
   return (
-    <div className="flex flex-col items-center gap-3 w-full">
-      <p className="text-xs sm:text-sm font-bold text-slate-500 text-center px-2">
-        {t(
-          'اِلْمِسْ أَوِ اسْحَبْ خَطًّا لِلرَّبْط',
-          'Touche, ou glisse un trait pour relier',
-          'Tap, or drag a line to connect',
-        )}
+    <div className="flex flex-col items-center gap-4 w-full">
+      <p className="text-sm font-bold text-slate-600 text-center px-3 leading-relaxed">
+        {titles
+          ? t(
+              `اِلْمَسْ «${titles.left.ar}» أَوَّلًا، ثُمَّ «${titles.right.ar}»`,
+              `Touche d’abord « ${titles.left.fr} », puis « ${titles.right.fr} »`,
+              `First tap “${titles.left.en}”, then “${titles.right.en}”`,
+            )
+          : t(
+              'اِلْمِسْ أَوِ اسْحَبْ خَطًّا لِلرَّبْط',
+              'Touche, ou glisse un trait pour relier',
+              'Tap, or drag a line to connect',
+            )}
       </p>
 
-      <div ref={boardRef} className="relative flex items-start justify-center gap-12 sm:gap-16 w-full max-w-sm px-2">
+      <div ref={boardRef} dir="ltr" className="relative flex items-start justify-center gap-10 sm:gap-14 w-full max-w-md px-2">
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible"
           aria-hidden
@@ -187,13 +195,17 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
           )}
         </svg>
 
-        <div className="relative z-10 flex flex-col gap-3">
+        <div className="relative z-10 flex flex-col gap-3 items-center">
+          {titles && (
+            <p className="text-[11px] font-black text-amber-700 uppercase tracking-wide">{titles.left[language]}</p>
+          )}
           {pairs.map((pair) => (
             <PairNode
               key={`L-${pair.id}`}
               nodeKey={`left-${pair.id}`}
               nodeRefs={nodeRefs}
               glyph={localizePicture(pair.leftAsset, language)}
+              caption={pair.leftLabel?.[language]}
               matched={matchedIds.includes(pair.id)}
               selected={selected?.side === 'left' && selected.id === pair.id}
               wrong={false}
@@ -205,13 +217,17 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
           ))}
         </div>
 
-        <div className="relative z-10 flex flex-col gap-3">
+        <div className="relative z-10 flex flex-col gap-3 items-center">
+          {titles && (
+            <p className="text-[11px] font-black text-sky-700 uppercase tracking-wide">{titles.right[language]}</p>
+          )}
           {shuffledRight.map((pair) => (
             <PairNode
               key={`R-${pair.id}`}
               nodeKey={`right-${pair.id}`}
               nodeRefs={nodeRefs}
               glyph={localizeGlyph(pair.rightAsset, language)}
+              caption={pair.rightLabel?.[language]}
               matched={matchedIds.includes(pair.id)}
               selected={selected?.side === 'right' && selected.id === pair.id}
               wrong={wrongPulseId === pair.id}
@@ -231,6 +247,7 @@ const PairNode: React.FC<{
   nodeKey: string;
   nodeRefs: React.MutableRefObject<Record<string, HTMLButtonElement | null>>;
   glyph: string;
+  caption?: string;
   matched: boolean;
   selected: boolean;
   wrong: boolean;
@@ -239,7 +256,7 @@ const PairNode: React.FC<{
   onPointerMove: (e: React.PointerEvent<HTMLButtonElement>) => void;
   onPointerUp: (e: React.PointerEvent<HTMLButtonElement>) => void;
 }> = ({
-  nodeKey, nodeRefs, glyph, matched, selected, wrong, accent,
+  nodeKey, nodeRefs, glyph, caption, matched, selected, wrong, accent,
   onPointerDown, onPointerMove, onPointerUp,
 }) => {
   const idleBorder = accent === 'amber' ? 'border-amber-200' : 'border-sky-200';
@@ -251,10 +268,12 @@ const PairNode: React.FC<{
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
-      whileTap={!matched ? { scale: 0.92 } : undefined}
+      whileHover={!matched ? { scale: 1.05 } : undefined}
+      whileTap={!matched ? { scale: 0.95 } : undefined}
+      transition={{ type: 'spring', stiffness: 400, damping: 22 }}
       animate={wrong ? { x: [0, -8, 8, -8, 0] } : { x: 0 }}
       disabled={matched}
-      className={`relative min-h-20 min-w-20 w-20 h-20 rounded-2xl text-4xl flex items-center justify-center
+      className={`relative min-h-[5.5rem] min-w-[5.5rem] w-[5.5rem] rounded-3xl flex flex-col items-center justify-center gap-0.5 px-1 py-2
                   shadow-md border-4 cursor-pointer select-none touch-none
                   ${matched
                     ? 'bg-emerald-100 border-emerald-500'
@@ -262,7 +281,10 @@ const PairNode: React.FC<{
                       ? 'bg-amber-200 border-amber-500'
                       : `bg-white ${idleBorder}`}`}
     >
-      <span className="font-black text-slate-800">{glyph}</span>
+      <span className="text-4xl leading-none">{glyph}</span>
+      {caption && (
+        <span className="text-[10px] font-black text-slate-700 leading-tight text-center">{caption}</span>
+      )}
       {matched && <span className="absolute -top-1 -end-1 text-base">✅</span>}
     </motion.button>
   );

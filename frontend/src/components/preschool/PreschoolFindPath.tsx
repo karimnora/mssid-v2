@@ -140,6 +140,14 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
       trailFill: '#ecfccb',
       border: 'border-emerald-200',
     },
+    week: {
+      hint: t('اِسْحَبْ عَبْرَ أَيَّامِ الأُسْبُوع!', 'Glisse à travers les jours de la semaine !', 'Drag through the days of the week!'),
+      win: t('أُسْبُوعٌ كَامِل! 📅', 'Une semaine complète ! 📅', 'A whole week! 📅'),
+      bg: 'linear-gradient(180deg, #fef9c3 0%, #e0f2fe 48%, #fce7f3 100%)',
+      trail: '#0284c7',
+      trailFill: '#f0f9ff',
+      border: 'border-sky-200',
+    },
     market: {
       hint: t('اِسْحَبِ الفَنَكَ مِنْ دُكَّانٍ إِلَى دُكَّان!', 'Glisse le fennec d\'étal en étal !', 'Drag the fennec from stall to stall!'),
       win: t('وَصَلْنَا إِلَى السُّوق! 🏪', 'Arrivé au marché ! 🏪', 'We made it to the market! 🏪'),
@@ -243,6 +251,9 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
         {theme === 'seasons' && (
           <div className="absolute top-3 right-5 text-3xl drop-shadow select-none pointer-events-none" aria-hidden>🌤️</div>
         )}
+        {theme === 'week' && (
+          <div className="absolute top-3 right-5 text-3xl drop-shadow select-none pointer-events-none" aria-hidden>📅</div>
+        )}
         {theme === 'market' && (
           <>
             <div className="absolute top-2 right-4 text-3xl select-none pointer-events-none" aria-hidden>🏮</div>
@@ -294,6 +305,9 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
           )}
           {theme === 'seasons' && (
             <path d="M0 78 Q 25 68 50 76 T 100 80 L 100 100 L 0 100 Z" fill="#86efac" opacity="0.45" />
+          )}
+          {theme === 'week' && (
+            <path d="M0 80 Q 28 72 55 80 T 100 82 L 100 100 L 0 100 Z" fill="#93c5fd" opacity="0.28" />
           )}
           {theme === 'market' && (
             <path d="M0 80 Q 28 70 52 78 T 100 82 L 100 100 L 0 100 Z" fill="#c2410c" opacity="0.18" />

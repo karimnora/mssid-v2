@@ -582,9 +582,10 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       ) : (
         <>
       {(() => {
-        const kinds: ExamKind[] = (currentGrade === '5AP' ? ['bep', 'composition', 'devoir'] : ['composition', 'devoir']).filter(
-          (kind) => gradeExams.some((e) => getExamKind(e) === kind)
-        );
+        const kindOrder: ExamKind[] = currentGrade === '5AP'
+          ? ['bep', 'composition', 'devoir']
+          : ['composition', 'devoir'];
+        const kinds = kindOrder.filter((kind) => gradeExams.some((e) => getExamKind(e) === kind));
         const meta: Record<ExamKind, { title: string; desc: string; active: string; idle: string }> = {
           bep: { title: t('kindBepTitle'), desc: t('kindBepDesc'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
           composition: { title: t('kindCompositionsTitle'), desc: t('kindCompositionsDesc'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },

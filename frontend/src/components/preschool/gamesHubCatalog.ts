@@ -1,6 +1,6 @@
 export type GameId =
   | 'car_maze' | 'farm' | 'balloon_pop' | 'fruit_catcher' | 'shape_sorter'
-  | 'car_wash' | 'puzzle' | 'hide_dido' | 'little_fisher' | 'dress_dido';
+  | 'puzzle' | 'little_fisher' | 'dress_dido';
 
 export interface GameCard {
   id: GameId;
@@ -71,28 +71,6 @@ export const GAMES: GameCard[] = [
     gradient: 'from-violet-400 to-purple-600', border: 'border-violet-300',
     badgeAr: '🎨 مَنْطِق', badgeFr: '🎨 Logique', badgeEn: '🎨 Logic',
     progressId: 'shape_sorter', maxLevels: 8,
-  },
-  {
-    id: 'car_wash',
-    icon: '🧼',
-    titleAr: 'اِغْسِلِ السَّيَّارَة!', titleFr: 'Lave la voiture !', titleEn: 'Wash the car!',
-    descAr: 'اِمْسَحِ الطِّينَ وَاجْعَلِ السَّيَّارَةَ تَلْمَع',
-    descFr: 'Frotte la voiture et fais-la briller !',
-    descEn: 'Scrub the mud and make it shine!',
-    gradient: 'from-cyan-400 to-sky-600', border: 'border-cyan-300',
-    badgeAr: '💧 مَرَح', badgeFr: '💧 Amusant', badgeEn: '💧 Fun',
-    progressId: 'car_wash', maxLevels: 4,
-  },
-  {
-    id: 'hide_dido',
-    icon: '🦊',
-    titleAr: 'أَيْنَ دِيدُو؟', titleFr: 'Où est Dido ?', titleEn: 'Where is Dido?',
-    descAr: 'صَحْرَاء، سُوق، قَصَبَة، شَاطِئ — 8 مَشَاهِد!',
-    descFr: 'Sahara, souk, casbah, plage — 8 scènes !',
-    descEn: 'Sahara, souk, casbah, beach — 8 scenes!',
-    gradient: 'from-amber-400 to-orange-600', border: 'border-amber-300',
-    badgeAr: '👀 اِبْحَثْ', badgeFr: '👀 Cherche', badgeEn: '👀 Seek',
-    progressId: 'hide_dido', maxLevels: 8,
   },
   {
     id: 'dress_dido',

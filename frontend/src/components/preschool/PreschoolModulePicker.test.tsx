@@ -23,7 +23,7 @@ const renderHub = (onSelectSpecialTool = vi.fn(), onSelectModule = vi.fn()) =>
   );
 
 describe('PreschoolModulePicker — 3-door hub', () => {
-  it('home shows three doors and hides the 18 learning paths', () => {
+  it('home shows three doors and hides the learning paths', () => {
     renderHub();
     expect(screen.getByText('Ateliers')).toBeInTheDocument();
     expect(screen.getByText('Apprendre')).toBeInTheDocument();
@@ -52,5 +52,17 @@ describe('PreschoolModulePicker — 3-door hub', () => {
 
     fireEvent.click(screen.getByText('Le Bateau des Lettres'));
     expect(onSelectModule).toHaveBeenCalledWith('preschool-letters');
+  });
+
+  it('science world lists seasons then days-and-months', () => {
+    const onSelectModule = vi.fn();
+    renderHub(vi.fn(), onSelectModule);
+    fireEvent.click(screen.getByText('Apprendre'));
+    fireEvent.click(screen.getByText('Sciences et monde'));
+    expect(screen.getByText('Les Quatre Saisons')).toBeInTheDocument();
+    expect(screen.getByText('Jours et mois')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Jours et mois'));
+    expect(onSelectModule).toHaveBeenCalledWith('preschool-calendar');
   });
 });

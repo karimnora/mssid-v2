@@ -14,6 +14,7 @@ import { PreschoolColoring } from './PreschoolColoring';
 import { PreschoolMaze } from './PreschoolMaze';
 import { PreschoolJigsaw } from './PreschoolJigsaw';
 import { PreschoolSequence } from './PreschoolSequence';
+import { PreschoolListenTap } from './PreschoolListenTap';
 import { usePreschoolSpeech } from './usePreschoolAudio';
 
 interface PreschoolActivityPlayerProps {
@@ -167,6 +168,13 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           )}
           {activity.interactionType === 'sequence' && (
             <PreschoolSequence
+              activity={activity}
+              language={language}
+              onComplete={handleInteractionComplete}
+            />
+          )}
+          {activity.interactionType === 'listen_tap' && (
+            <PreschoolListenTap
               activity={activity}
               language={language}
               onComplete={handleInteractionComplete}

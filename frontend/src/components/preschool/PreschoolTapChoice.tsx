@@ -64,6 +64,7 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
       <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
         {choices.map((choice) => {
           const glyph = localizeGlyph(choice.asset, language);
+          const caption = choice.label?.[language];
           const showColor = isColorDot(choice.asset);
           const showShape = !showColor && isGeometricShape(choice.asset);
           const isWin = solved && choice.isCorrect;
@@ -78,8 +79,11 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
               whileHover={solved ? undefined : { scale: 1.05 }}
               whileTap={solved ? undefined : { scale: 0.95 }}
               disabled={solved}
-              aria-label={glyph}
-              className={`min-h-24 min-w-24 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl flex items-center justify-center
+              aria-label={caption ?? glyph}
+              className={`${caption
+                ? 'min-h-28 min-w-24 w-24 sm:min-h-32 sm:w-28 py-2 flex-col gap-0.5'
+                : 'min-h-24 min-w-24 w-24 h-24 sm:w-28 sm:h-28'}
+                          rounded-3xl flex items-center justify-center
                           shadow-lg border-4 cursor-pointer select-none
                           ${isWin
                             ? 'bg-emerald-400 border-emerald-600'
@@ -92,10 +96,15 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
                 : showShape
                   ? <PreschoolShapeMark asset={choice.asset} size={64} />
                   : (
-                    <span className={`font-black text-orange-900 ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}>
+                    <span className={`font-black text-orange-900 leading-none ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}>
                       {glyph}
                     </span>
                   )}
+              {caption && (
+                <span className="text-[10px] sm:text-[11px] font-black text-[#1E293B] leading-tight text-center px-1">
+                  {caption}
+                </span>
+              )}
             </motion.button>
           );
         })}
