@@ -9,10 +9,14 @@ export const BoundPracticeCard: React.FC<{
   ex: NonNullable<CourseLesson['progressiveExercises']>[number];
   practice: PracticeBindings;
   renderArabicText: (text: string | undefined | null) => string;
-}> = ({ ex, practice, renderArabicText }) => (
+  playful?: boolean;
+  leadAudio?: React.ReactNode;
+}> = ({ ex, practice, renderArabicText, playful = false, leadAudio }) => (
   <PracticeExerciseCard
     ex={ex}
     renderArabicText={renderArabicText}
+    playful={playful}
+    leadAudio={leadAudio}
     answer={practice.practiceAnswers[ex.id]}
     onAnswerChange={practice.handlePracticeAnswerChange}
     isChecked={!!practice.practiceChecked[ex.id]}

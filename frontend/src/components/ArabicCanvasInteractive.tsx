@@ -20,6 +20,93 @@ interface ArabicCanvasInteractiveProps {
   grade?: string;
 }
 
+type HarakaId = 'fatha' | 'damma' | 'kasra' | 'sukun';
+
+const HARAKA_CHOICES: { id: HarakaId; mark: string; nameAr: string }[] = [
+  { id: 'fatha', mark: 'َ', nameAr: 'فَتْحَةٌ' },
+  { id: 'damma', mark: 'ُ', nameAr: 'ضَمَّةٌ' },
+  { id: 'kasra', mark: 'ِ', nameAr: 'كَسْرَةٌ' },
+  { id: 'sukun', mark: 'ْ', nameAr: 'سُكُونٌ' },
+];
+
+const TASHKIL_ITEMS: { letter: string; haraka: HarakaId; shown: string; promptAr: string }[] = [
+  { letter: 'ب', haraka: 'fatha', shown: 'بَ', promptAr: 'ضَعِ الفَتْحَةَ فَوْقَ البَاءِ' },
+  { letter: 'ب', haraka: 'damma', shown: 'بُ', promptAr: 'ضَعِ الضَّمَّةَ فَوْقَ البَاءِ' },
+  { letter: 'ب', haraka: 'kasra', shown: 'بِ', promptAr: 'ضَعِ الكَسْرَةَ تَحْتَ البَاءِ' },
+  { letter: 'ب', haraka: 'sukun', shown: 'بْ', promptAr: 'ضَعِ السُّكُونَ فَوْقَ البَاءِ' },
+  { letter: 'ت', haraka: 'fatha', shown: 'تَ', promptAr: 'ضَعِ الفَتْحَةَ فَوْقَ التَّاءِ' },
+  { letter: 'د', haraka: 'damma', shown: 'دُ', promptAr: 'ضَعِ الضَّمَّةَ فَوْقَ الدَّالِ' },
+  { letter: 'م', haraka: 'kasra', shown: 'مِ', promptAr: 'ضَعِ الكَسْرَةَ تَحْتَ المِيمِ' },
+  { letter: 'ل', haraka: 'sukun', shown: 'لْ', promptAr: 'ضَعِ السُّكُونَ فَوْقَ اللَّامِ كَمَا فِي قَلْبٌ' },
+];
+
+const TashkilPractice: React.FC = () => {
+  const [index, setIndex] = useState(0);
+  const [picked, setPicked] = useState<HarakaId | null>(null);
+  const item = TASHKIL_ITEMS[index];
+  const correct = picked === item.haraka;
+
+  const pick = (id: HarakaId) => {
+    if (picked) return;
+    setPicked(id);
+  };
+
+  const next = () => {
+    setPicked(null);
+    setIndex((i) => (i + 1) % TASHKIL_ITEMS.length);
+  };
+
+  return (
+    <div className="space-y-5 min-w-0" data-arabic-tool="tashkil">
+      <p className="text-center text-sm font-black text-[#1E293B]">{item.promptAr}</p>
+      <div className="flex items-center justify-center">
+        <span className="text-7xl sm:text-8xl font-black text-[#1E293B] leading-none">
+          {picked && correct ? item.shown : item.letter}
+        </span>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        {HARAKA_CHOICES.map((h) => {
+          const selected = picked === h.id;
+          const isRight = selected && h.id === item.haraka;
+          const isWrong = selected && h.id !== item.haraka;
+          return (
+            <button
+              key={h.id}
+              type="button"
+              onClick={() => pick(h.id)}
+              disabled={!!picked}
+              className={`min-h-14 rounded-3xl border text-base font-black cursor-pointer ${
+                isRight
+                  ? 'bg-emerald-100 border-emerald-300 text-emerald-800'
+                  : isWrong
+                    ? 'bg-rose-100 border-rose-200 text-rose-800'
+                    : 'bg-sky-50 border-sky-100 text-[#1E293B] hover:bg-sky-100'
+              }`}
+            >
+              <span className="text-2xl ml-2">{h.mark}</span>
+              {h.nameAr}
+            </button>
+          );
+        })}
+      </div>
+      {picked && (
+        <div className="space-y-2">
+          <p className={`text-center text-sm font-bold ${correct ? 'text-emerald-700' : 'text-rose-700'}`}>
+            {correct ? `أَحْسَنْتَ! ${item.shown}` : `جَرِّبْ مَرَّةً أُخْرَى. الصَّوَابُ: ${item.shown}`}
+          </p>
+          <button
+            type="button"
+            onClick={next}
+            className="w-full min-h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-3xl cursor-pointer"
+          >
+            التَّالِي
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
 interface GrammarWord {
   id: string;
   word: string;
@@ -31,6 +118,8 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
   lesson,
   grade = '4AP'
 }) => {
+  const is1AP = (lesson?.grade || grade) === '1AP';
+  const isHarakatLesson = !!lesson?.id?.includes('harakat');
   // Canvas State for Free Drawing / Writing
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -38,18 +127,14 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
   const [penSize, setPenSize] = useState<number>(4);
   const [isEraser, setIsEraser] = useState<boolean>(false);
 
-  // Active Tool View: 'drawing' | 'grammar_analysis' | 'diacritics'
-  const [activeSubTab, setActiveSubTab] = useState<'drawing' | 'grammar_analysis' | 'diacritics'>('grammar_analysis');
+  const [activeSubTab, setActiveSubTab] = useState<'drawing' | 'grammar_analysis' | 'diacritics'>(
+    is1AP ? (isHarakatLesson ? 'diacritics' : 'drawing') : 'grammar_analysis',
+  );
 
   // Grammar Analysis State
   const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
   const [userGrammarTags, setUserGrammarTags] = useState<Record<string, string>>({});
   const [isGrammarChecked, setIsGrammarChecked] = useState<boolean>(false);
-
-  // Diacritics Tracing State
-  const [diacriticsIndex, setDiacriticsIndex] = useState<number>(0);
-  const [userDiacriticsText, setUserDiacriticsText] = useState<string>('');
-  const [isDiacriticsChecked, setIsDiacriticsChecked] = useState<boolean>(false);
 
   // Custom sentences generated for the active lesson / grade
   const getLessonGrammarData = (): { sentence: string; words: GrammarWord[] } => {
@@ -217,7 +302,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
           </div>
           <div>
             <h3 className="font-extrabold text-base sm:text-lg flex items-center gap-2">
-              <span>لوحة الكتابة والتحليل التفاعلية للغة العربية</span>
+              <span>{is1AP ? 'لَوْحَةُ التَّشْكِيلِ وَالكِتَابَةِ' : 'لوحة الكتابة والتحليل التفاعلية للغة العربية'}</span>
               <span className="text-xs bg-amber-300 text-slate-950 font-black px-2.5 py-0.5 rounded-md">
                 {lesson?.grade || grade}
               </span>
@@ -236,6 +321,21 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
 
       {/* Mode Sub-Tabs */}
       <div className="flex items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 text-xs font-bold overflow-x-auto">
+        {is1AP && (
+        <button
+          onClick={() => setActiveSubTab('diacritics')}
+          className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+            activeSubTab === 'diacritics'
+              ? 'bg-amber-500 text-slate-950 font-extrabold shadow-sm'
+              : 'text-slate-700 hover:text-slate-900'
+          }`}
+        >
+          <Sparkles className="w-4 h-4" />
+          <span>التَّشْكِيلُ: َ ُ ِ ْ</span>
+        </button>
+        )}
+
+        {!is1AP && (
         <button
           onClick={() => setActiveSubTab('grammar_analysis')}
           className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
@@ -247,6 +347,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
           <Tag className="w-4 h-4" />
           <span>محلل الإعراب والتراكيب ({grammarData.words.length} كلمات)</span>
         </button>
+        )}
 
         <button
           onClick={() => setActiveSubTab('drawing')}
@@ -257,12 +358,14 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
           }`}
         >
           <PenTool className="w-4 h-4" />
-          <span>اللوحة التفاعلية للرسم والإملاء</span>
+          <span>{is1AP ? 'أَكْتُبُ الحَرْفَ' : 'اللوحة التفاعلية للرسم والإملاء'}</span>
         </button>
       </div>
 
+      {is1AP && activeSubTab === 'diacritics' && <TashkilPractice />}
+
       {/* VIEW 1: GRAMMAR ANALYSIS (محلل الإعراب والتراكيب) */}
-      {activeSubTab === 'grammar_analysis' && (
+      {activeSubTab === 'grammar_analysis' && !is1AP && (
         <div className="space-y-6">
           <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
             <span className="text-xs font-bold text-slate-500 block">الجملة المقررة للتحليل:</span>

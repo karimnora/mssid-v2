@@ -48,9 +48,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     : 'bg-slate-900/95 text-white border-slate-800 shadow-2xl';
 
   const activeTabClass = isNeutre
-    ? 'text-purple-700 font-black bg-purple-50 border border-purple-200'
+    ? 'text-[var(--brand-emerald-dark)] font-extrabold bg-[var(--brand-emerald)]/10 border border-[var(--brand-emerald)]/25'
     : isLight
-    ? 'text-amber-700 font-black bg-amber-50 border border-amber-200'
+    ? 'text-[var(--brand-amber-dark)] font-extrabold bg-[var(--brand-amber)]/15 border border-[var(--brand-amber)]/30'
     : isSepia
     ? 'text-amber-800 font-black bg-amber-100/70 border border-amber-300/60'
     : 'text-emerald-400 font-extrabold bg-emerald-950/60';
@@ -75,12 +75,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     <button
       type="button"
       onClick={() => handleTab(tab)}
-      className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${
+      className={`flex flex-col items-center justify-center gap-0.5 px-3 min-h-12 rounded-2xl transition-all cursor-pointer ${
         activeTab === tab ? activeTabClass : inactiveTabClass
       }`}
     >
       {icon}
-      <span className="text-[10px]">{label}</span>
+      <span className="text-xs font-bold">{label}</span>
     </button>
   );
 
@@ -93,26 +93,26 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     >
       {tabButton('home', <Home className="w-5 h-5" />, t('home'))}
       {tabButton('courses', <BookOpen className="w-5 h-5" />, t('courses'))}
-      {tabButton('games', <Grid className="w-5 h-5 text-orange-400" />, t('games'))}
+      {tabButton('games', <Grid className="w-5 h-5 text-[var(--brand-amber-dark)]" />, t('games'))}
 
       <button
         type="button"
         onClick={onOpenAiTutor}
-        className={`flex flex-col items-center justify-center -mt-5 bg-gradient-to-tr from-purple-700 via-indigo-600 to-amber-500 text-white p-3 rounded-3xl shadow-2xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
+        className={`flex flex-col items-center justify-center -mt-5 bg-[var(--brand-emerald)] text-white min-h-12 min-w-12 p-3 rounded-3xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
         title={t('aiTutor')}
       >
-        <Bot className="w-6 h-6 animate-pulse" />
-        <span className="text-[9px] font-black tracking-tight mt-0.5">{t('aiTutorShort')}</span>
+        <Bot className="w-6 h-6" />
+        <span className="text-xs font-extrabold tracking-tight mt-0.5">{t('aiTutorShort')}</span>
       </button>
-      {tabButton('exercises', <FileText className="w-5 h-5 text-purple-400" />, t('exercises'))}
+      {tabButton('exercises', <FileText className="w-5 h-5 text-[var(--brand-blue)]" />, t('exercises'))}
 
       <button
         type="button"
         onClick={onOpenProfile}
-        className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-2xl transition-all cursor-pointer ${inactiveTabClass}`}
+        className={`flex flex-col items-center justify-center gap-0.5 px-3 min-h-12 rounded-2xl transition-all cursor-pointer ${inactiveTabClass}`}
       >
         <User className="w-5 h-5" />
-        <span className="text-[10px]">{t('profile')}</span>
+        <span className="text-xs font-bold">{t('profile')}</span>
       </button>
     </nav>
   );

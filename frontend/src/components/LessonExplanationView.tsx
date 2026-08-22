@@ -45,6 +45,24 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
   };
 
   const getSubjectRealWorldContent = () => {
+    if (lesson.grade === '1AP' || lesson.grade === '2AP') {
+      const ruleSteps = lesson.rulesAr.slice(0, 3).map((rule, idx) => ({
+        title: `أَتَذَكَّرُ ${idx + 1}`,
+        detail: rule,
+        icon: ['💡', '👀', '✅'][idx] || '⭐',
+      }));
+      return {
+        whyLearn: lesson.discoveryAr || lesson.summaryAr || '',
+        realLifeTitle: 'فِي حَيَاتِنَا',
+        realLifeDescription: lesson.objectiveAr || lesson.summaryAr || '',
+        steps: ruleSteps.length > 0
+          ? ruleSteps
+          : [{ title: 'أَنْظُرُ', detail: lesson.summaryAr || '', icon: '💡' }],
+        demoControlLabel: 'جَرِّبْ',
+        demoType: 'number_slider' as const,
+      };
+    }
+
     switch (lesson.subject) {
       case 'math':
         return {
@@ -353,6 +371,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
             ))}
           </div>
 
+          {lesson.grade !== '1AP' && lesson.grade !== '2AP' && (
           <div className="bg-emerald-950 text-emerald-100 p-4 rounded-2xl border border-emerald-800 space-y-2">
             <div className="flex items-center gap-2 text-amber-400 text-xs font-black">
               <Lightbulb className="w-4 h-4 text-amber-400" />
@@ -362,6 +381,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
               عندما نفهم الأسباب والتطبيقات بدلاً من الحفظ المجرد، يصبح التلميذ قادراً على حل المشكلات والوضعيات الإدماجية بكل سهولة وثقة في الامتحانات وفي الحياة اليومية!
             </p>
           </div>
+          )}
         </div>
       )}
 

@@ -103,5 +103,8 @@ export function useLessonQuiz(options: {
     initializeShuffledQuiz,
     quizFullyPassed:
       lesson.quiz.length > 0 && awardedQuizIds.size === lesson.quiz.length,
+    quizAnswered:
+      lesson.quiz.length > 0 &&
+      Object.keys(selectedAnswers).length === lesson.quiz.length,
   };
 }

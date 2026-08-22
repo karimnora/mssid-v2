@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { CourseLesson } from '../../types';
 import { shuffleOptions } from './shared';
+import { playGentleNudge, playSuccessChime } from '../preschool/usePreschoolAudio';
 
 type Exercise = NonNullable<CourseLesson['progressiveExercises']>[number];
 
@@ -78,6 +79,8 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
 
     setPracticeChecked((prev) => ({ ...prev, [ex.id]: true }));
     setPracticeCorrect((prev) => ({ ...prev, [ex.id]: isCorrect }));
+    if (isCorrect) playSuccessChime();
+    else playGentleNudge();
     if (isCorrect && !awarded.has(ex.id)) {
       onCompleteQuiz(lesson.id, ex.xpReward);
       setAwardedExerciseIds((prev) => new Set(prev).add(ex.id));

@@ -6,6 +6,7 @@ import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { Trophy, Timer, ChevronLeft, CheckCircle2, XCircle, Sparkles, RotateCcw, Zap } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
+import { playGentleNudge, playSuccessChime } from './preschool/usePreschoolAudio';
 
 interface ChallengesArenaProps {
   /** Scopes the entire arena (mode counts, subject list, challenge grid) to the current grade — omit to browse all grades. */
@@ -154,7 +155,13 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
     if (isAnswerRevealed || !currentItem) return;
     setSelectedOption(opt);
     setIsAnswerRevealed(true);
-    if (opt === currentItem.correctAnswerAr) setCorrectCount((c) => c + 1);
+    const isCorrect = opt === currentItem.correctAnswerAr;
+    if (isCorrect) {
+      playSuccessChime();
+      setCorrectCount((c) => c + 1);
+    } else {
+      playGentleNudge();
+    }
   };
 
   const handleReveal = () => {

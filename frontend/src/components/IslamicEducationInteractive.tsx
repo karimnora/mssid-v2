@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   BookOpen,
   Heart,
@@ -7,7 +7,7 @@ import {
   Star,
   Clock
 } from 'lucide-react';
-import type { IslamicInteractiveConfig } from '../types';
+import type { IslamicInteractiveConfig, IslamicQuranExplorer, IslamicQuranVerseItem } from '../types';
 
 interface IslamicInteractiveProps {
   config: IslamicInteractiveConfig;
@@ -18,6 +18,98 @@ interface IslamicInteractiveProps {
    Rendered when the lesson supplies `islamicInteractive` — shows only the
    single tool relevant to THAT lesson's content, not a fixed 4-tab set.
    ========================================== */
+const BASMALA = 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
+
+function groupVersesBySurah(verses: IslamicQuranVerseItem[]) {
+  const order: string[] = [];
+  const map = new Map<string, IslamicQuranVerseItem[]>();
+  verses.forEach((v) => {
+    if (!map.has(v.surahAr)) {
+      order.push(v.surahAr);
+      map.set(v.surahAr, []);
+    }
+    map.get(v.surahAr)!.push(v);
+  });
+  return order.map((nameAr) => ({ nameAr, verses: map.get(nameAr)! }));
+}
+
+/** Full surah on screen. Tap an ayah for a short meaning — no recitation audio. */
+const QuranExplorerView: React.FC<{ config: IslamicQuranExplorer }> = ({ config }) => {
+  const surahs = useMemo(() => groupVersesBySurah(config.verses), [config.verses]);
+  const [surahIdx, setSurahIdx] = useState(0);
+  const [ayahIdx, setAyahIdx] = useState(0);
+  const current = surahs[Math.min(surahIdx, surahs.length - 1)];
+  const ayahs = current?.verses ?? [];
+  const selected = ayahs[Math.min(ayahIdx, Math.max(0, ayahs.length - 1))];
+  const firstIsBasmala = ayahs[0]?.verseAr.includes('بِسْمِ');
+
+  const pickSurah = (idx: number) => {
+    setSurahIdx(idx);
+    setAyahIdx(0);
+  };
+
+  if (!current || !selected) return null;
+
+  return (
+    <div className="space-y-4 min-w-0 overflow-x-hidden" data-islamic-tool="quran-explorer">
+      {surahs.length > 1 && (
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {surahs.map((s, idx) => (
+            <button
+              key={s.nameAr}
+              type="button"
+              onClick={() => pickSurah(idx)}
+              className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border min-h-12 ${
+                surahIdx === idx
+                  ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md'
+                  : 'bg-emerald-900 text-emerald-200 border-emerald-800'
+              }`}
+            >
+              {s.nameAr}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="bg-slate-950 p-4 sm:p-6 rounded-3xl border border-emerald-800 space-y-3">
+        <div className="text-center space-y-1">
+          <p className="text-xs font-black text-amber-400">{current.nameAr}</p>
+          {!firstIsBasmala && (
+            <p className="font-serif text-sm text-amber-100/80">{BASMALA}</p>
+          )}
+        </div>
+        <div className="space-y-2" data-full-surah={current.nameAr}>
+          {ayahs.map((v, idx) => (
+            <button
+              key={`${v.surahAr}-${idx}`}
+              type="button"
+              onClick={() => setAyahIdx(idx)}
+              className={`w-full min-w-0 p-3 sm:p-4 rounded-2xl border text-right transition-all cursor-pointer font-serif leading-loose ${
+                ayahIdx === idx
+                  ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl font-bold text-base sm:text-lg'
+                  : 'bg-emerald-900/80 border-emerald-800 text-amber-100 hover:bg-emerald-900 text-sm sm:text-base'
+              }`}
+            >
+              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/10 text-[11px] font-sans font-black ml-2 align-middle shrink-0">
+                {idx + 1}
+              </span>
+              <span className="break-words">{v.verseAr}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="p-4 bg-emerald-950 rounded-2xl border border-emerald-800 space-y-2">
+        <div className="text-xs font-black text-emerald-400 flex items-center gap-1.5">
+          <Sparkles className="w-4 h-4 text-amber-400" />
+          <span>المعنى البسيط:</span>
+        </div>
+        <p className="text-sm font-bold text-slate-200 leading-relaxed break-words">{selected.meaningAr}</p>
+      </div>
+    </div>
+  );
+};
+
 const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({ config }) => {
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -29,7 +121,7 @@ const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({
     <Clock className="w-6 h-6 text-amber-400" />;
 
   return (
-    <div className="bg-emerald-950 text-white rounded-3xl p-6 border border-emerald-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="bg-emerald-950 text-white rounded-3xl p-4 sm:p-6 border border-emerald-800 shadow-2xl space-y-6 dir-rtl min-w-0 overflow-x-hidden" dir="rtl">
       <div className="flex items-center gap-3 border-b border-emerald-800 pb-4">
         <div className="p-3 bg-amber-500/20 text-amber-300 rounded-2xl border border-amber-500/30">
           {headerIcon}
@@ -42,36 +134,7 @@ const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({
         </div>
       </div>
 
-      {config.type === 'quran_explorer' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            {config.verses.map((v, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveIdx(idx)}
-                className={`w-full p-4 rounded-2xl border text-right transition-all cursor-pointer font-serif ${
-                  activeIdx === idx
-                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl font-bold text-base scale-[1.01]'
-                    : 'bg-emerald-900/80 border-emerald-800 text-amber-200 hover:bg-emerald-850 text-sm'
-                }`}
-              >
-                <div className="text-[10px] text-emerald-300 font-sans font-bold mb-1">[{v.surahAr}]</div>
-                <div>{v.verseAr}</div>
-              </button>
-            ))}
-          </div>
-          <div className="bg-slate-950 p-6 rounded-3xl border border-emerald-800 space-y-4">
-            <div className="text-xs font-mono font-bold text-amber-400">{config.verses[activeIdx].surahAr}</div>
-            <div className="p-4 bg-emerald-950 rounded-2xl border border-emerald-800 space-y-2">
-              <div className="text-xs font-black text-emerald-400 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>المعنى الإجمالي والتدبر التربوي:</span>
-              </div>
-              <p className="text-sm font-bold text-slate-200 leading-relaxed">{config.verses[activeIdx].meaningAr}</p>
-            </div>
-          </div>
-        </div>
-      )}
+      {config.type === 'quran_explorer' && <QuranExplorerView config={config} />}
 
       {config.type === 'ritual_steps' && (
         <div className="space-y-6">

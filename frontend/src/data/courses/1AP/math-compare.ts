@@ -1,7 +1,7 @@
 import { CourseLesson } from '../../../types';
 
 const SOURCE_NOTE =
-  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة أولى ابتدائي: مقارنة الكميات حتى 20 (أكثر من، أقل من، بقدر) بمواقف يومية جزائرية.';
+  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة أولى ابتدائي: مقارنة الكميات من 10 إلى 49 (أكثر من، أقل من، بقدر) دون رموز < >.';
 
 export const MATH_1AP_COMPARE: CourseLesson[] = [
   {
@@ -13,7 +13,7 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
     sequenceAr: 'المقطع: أُقَارِنُ الكَمِّيَّاتِ (أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ)',
     categoryAr: 'الرياضيات - مقارنة الكميات',
     titleAr: 'أُقَارِنُ: أَكْثَرَ مِنْ، أَقَلَّ مِنْ، بِقَدْرِ ⚖️',
-    summaryAr: 'يتعلم الطفل مقارنة مجموعتين من الأشياء حتى 20 باستعمال: أكثر من، أقل من، بقدر، دون الحاجة إلى رموز > < =.',
+    summaryAr: 'يتعلم الطفل مقارنة مجموعتين من 10 إلى 49 باستعمال: أكثر من، أقل من، بقدر، دون رموز > < =.',
     objectiveAr: 'أن يقارن كميتين صغيرتين ويختار العبارة الصحيحة.',
     objectivesAr: [
       'أَقُولُ «أَكْثَرَ مِنْ» عندما تكون المجموعة أكبر.',
@@ -25,11 +25,11 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
       'أَكْثَرَ مِنْ: العدد الأكبر. مثال: 8 أقلام أكثر من 5 أقلام.',
       'أَقَلَّ مِنْ: العدد الأصغر. مثال: 4 كراسات أقل من 7 كراسات.',
       'بِقَدْرِ: نفس العدد في المجموعتين. مثال: 6 كؤوس بقدر 6 صحون.',
-      'نقارن بعدّ كل مجموعة حتى 20، واحدة تلو الأخرى.',
+      'نقارن بعدّ أو بقراءة الرقم: من 10 إلى 49. الرموز < > تأتي في الفصل الثالث.',
     ],
     examplesAr: [
-      { problem: '7 أطفال في الصف و4 أطفال في الساحة. ماذا نقول؟', solution: '7 أكثر من 4. الأطفال في الصف أكثر.' },
-      { problem: '5 دنانير و5 دنانير. ماذا نقول؟', solution: '5 بقدر 5. الكميتان متساويتان.' },
+      { problem: '32 كراسة في الصندوق و 28 في الرف. ماذا نقول؟', solution: '32 أكثر من 28.' },
+      { problem: '40 طفلاً و 40 مقعداً. ماذا نقول؟', solution: '40 بقدر 40. الكميتان متساويتان.' },
     ],
     detailedCourse: {
       introAr: 'عندما نشتري تمراً أو نوزّع أقلاماً، نحتاج أن نعرف: من معه أكثر؟ من معه أقل؟ أم الاثنان بقدر؟',
@@ -51,7 +51,6 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
       ],
       takeawayAr: 'نعدّ ثم نقول: أكثر من / أقل من / بقدر.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-compare',
@@ -67,10 +66,10 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
         id: 'ex2-math1ap-compare',
         level: 2,
         levelLabelAr: '🟡 المستوى 2 — أتدرب',
-        problemAr: 'اشترت مريم 12 تمرة واشترى سامي 15 تمرة. تمر مريم … تمر سامي.',
-        hintsAr: ['12 و 15: أيهما أصغر؟'],
+        problemAr: 'اشترت مريم 34 تمرة واشترى سامي 41 تمرة. تمر مريم … تمر سامي.',
+        hintsAr: ['34 و 41: أيهما أصغر؟'],
         solutionAr: 'أَقَلَّ مِنْ',
-        detailedCorrectionAr: '12 أقل من 15.',
+        detailedCorrectionAr: '34 أقل من 41.',
         xpReward: 15,
       },
       {
@@ -90,9 +89,9 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
       titleAr: 'لعبة الميزان ⚖️',
       instructionsAr: 'اختر العبارة الصحيحة لكل زوج!',
       items: [
-        { questionOrPromptAr: '10 و 7', correctAnswerAr: 'أَكْثَرَ مِنْ', optionsAr: ['أَكْثَرَ مِنْ', 'أَقَلَّ مِنْ', 'بِقَدْرِ'], explanationAr: '10 أكبر.' },
-        { questionOrPromptAr: '3 و 11', correctAnswerAr: 'أَقَلَّ مِنْ', optionsAr: ['أَكْثَرَ مِنْ', 'أَقَلَّ مِنْ', 'بِقَدْرِ'], explanationAr: '3 أصغر.' },
-        { questionOrPromptAr: '14 و 14', correctAnswerAr: 'بِقَدْرِ', optionsAr: ['أَكْثَرَ مِنْ', 'أَقَلَّ مِنْ', 'بِقَدْرِ'], explanationAr: 'العددان متساويان.' },
+        { questionOrPromptAr: '25 و 19', correctAnswerAr: 'أَكْثَرَ مِنْ', optionsAr: ['أَكْثَرَ مِنْ', 'أَقَلَّ مِنْ', 'بِقَدْرِ'], explanationAr: '25 أكبر.' },
+        { questionOrPromptAr: '31 و 48', correctAnswerAr: 'أَقَلَّ مِنْ', optionsAr: ['أَكْثَرَ مِنْ', 'أَقَلَّ مِنْ', 'بِقَدْرِ'], explanationAr: '31 أصغر.' },
+        { questionOrPromptAr: '40 و 40', correctAnswerAr: 'بِقَدْرِ', optionsAr: ['أَكْثَرَ مِنْ', 'أَقَلَّ مِنْ', 'بِقَدْرِ'], explanationAr: 'العددان متساويان.' },
       ],
       xpReward: 20,
     },
@@ -117,9 +116,9 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
       },
       {
         id: 'q3-math1ap-compare',
-        questionAr: 'في القسم 16 تلميذاً وفي الساحة 20. 16 … 20',
+        questionAr: 'في القسم 36 تلميذاً وفي الساحة 49. 36 … 49',
         options: [
-          { id: 'a', textAr: 'أَقَلَّ مِنْ', isCorrect: true, explanationAr: '16 أصغر من 20.' },
+          { id: 'a', textAr: 'أَقَلَّ مِنْ', isCorrect: true, explanationAr: '36 أصغر من 49.' },
           { id: 'b', textAr: 'أَكْثَرَ مِنْ', isCorrect: false },
           { id: 'c', textAr: 'بِقَدْرِ', isCorrect: false },
         ],

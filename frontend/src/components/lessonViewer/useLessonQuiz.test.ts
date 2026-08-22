@@ -60,5 +60,18 @@ describe('useLessonQuiz', () => {
     });
     expect(onQuizFullyValidated).toHaveBeenCalledWith('math-1ap-nombres');
     expect(result.current.quizFullyPassed).toBe(true);
+    expect(result.current.quizAnswered).toBe(true);
+  });
+
+  it('marks the quiz answered even when a 1AP child picks a wrong option', () => {
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: false, onCompleteQuiz: vi.fn() })
+    );
+    act(() => {
+      result.current.handleSelectOption('q1', 'b');
+      result.current.handleSelectOption('q2', 'd');
+    });
+    expect(result.current.quizAnswered).toBe(true);
+    expect(result.current.quizFullyPassed).toBe(false);
   });
 });

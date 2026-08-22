@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { COURSES_DATA } from './coursesData';
 import { OFFICIAL_EXAMS_DATA } from './examsData';
+import { PLAYFUL_PACKS } from './courses/1AP/playfulPacks';
 
 describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
   const math5apLessons = COURSES_DATA.filter(
@@ -725,9 +726,10 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
   it('every 1AP lesson should have playful tiered exercises and an educational game (no formal évaluation)', () => {
     grade1apLessons.forEach((lesson) => {
       expect(lesson.progressiveExercises).toBeDefined();
-      expect(lesson.progressiveExercises!.length).toBeGreaterThanOrEqual(2);
+      expect(lesson.progressiveExercises!.length, lesson.id).toBeGreaterThanOrEqual(3);
+      expect(lesson.progressiveExercises!.some((ex) => ex.type === 'qcm' || ex.type === 'matching')).toBe(true);
       expect(lesson.educationalGame).toBeDefined();
-      expect(lesson.educationalGame!.items.length).toBeGreaterThanOrEqual(1);
+      expect(lesson.educationalGame!.items.length, lesson.id).toBeGreaterThanOrEqual(4);
       expect(lesson.trimesterEvaluation).toBeUndefined();
       expect(lesson.evaluationExercises).toBeUndefined();
     });
@@ -735,7 +737,7 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
 
   it('every 1AP lesson should have a light, visual quiz with exactly one correct, explained option', () => {
     grade1apLessons.forEach((lesson) => {
-      expect(lesson.quiz.length).toBeGreaterThanOrEqual(1);
+      expect(lesson.quiz.length, lesson.id).toBeGreaterThanOrEqual(4);
       lesson.quiz.forEach((q) => {
         expect(q.questionAr).toBeTruthy();
         expect(q.options.length).toBeGreaterThanOrEqual(2);
@@ -744,6 +746,11 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
         expect(correctOptions[0].explanationAr).toBeTruthy();
       });
     });
+  });
+
+  it('every 1AP lesson has an extra tap-game pack (tests + matching)', () => {
+    const ids = grade1apLessons.map((l) => l.id).sort();
+    expect(Object.keys(PLAYFUL_PACKS).sort()).toEqual(ids);
   });
 
   it('every 1AP lesson should declare an honest content provenance (never a guessed official_verified)', () => {
@@ -764,6 +771,141 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
       if (lesson.interactiveTool === 'civics_lab') {
         expect(lesson.civicsInteractive).toBeDefined();
       }
+    });
+  });
+
+  it('1AP arabic completes the alphabet (ج ح خ، ز، ص ض ط ظ، hamza) plus oral and tanween', () => {
+    const arabic = bySubject1ap('arabic');
+    const blob = arabic.map((l) => `${l.titleAr} ${l.summaryAr}`).join(' ');
+    ['جَ', 'حَ', 'خَ', 'زَ', 'صَ', 'ضَ', 'طَ', 'ظَ', 'هَمْزَة'].forEach((token) => {
+      expect(blob, token).toMatch(new RegExp(token));
+    });
+    expect(arabic.some((l) => l.id === 'arabic-1ap-t1-oral-daily')).toBe(true);
+    expect(arabic.some((l) => l.id === 'arabic-1ap-t3-tanween')).toBe(true);
+    expect(arabic.some((l) => l.id === 'arabic-1ap-t2-letter-positions')).toBe(true);
+  });
+
+  it('1AP harakat lesson is fully vocalized and teaches tashkil of the four short vowels', () => {
+    const lesson = bySubject1ap('arabic').find((l) => l.id === 'arabic-1ap-t1-harakat')!;
+    const tashkeel = /[\u064B-\u0652]/;
+    const blob = [
+      lesson.summaryAr,
+      lesson.discoveryAr,
+      ...lesson.rulesAr,
+      lesson.detailedCourse!.introAr,
+      lesson.detailedCourse!.takeawayAr,
+      ...lesson.detailedCourse!.vocabulary!.map((v) => `${v.termAr} ${v.definitionAr}`),
+    ].join(' ');
+    expect(blob).toMatch(tashkeel);
+    ['الفَتْحَةُ', 'الضَّمَّةُ', 'الكَسْرَةُ', 'السُّكُونُ', 'التَّشْكِيلُ'].forEach((token) => {
+      expect(blob, token).toContain(token);
+    });
+    lesson.rulesAr.forEach((rule) => {
+      expect(rule).toMatch(tashkeel);
+    });
+    expect(lesson.discoveryAr).toMatch(/بَ/);
+    expect(lesson.discoveryAr).toMatch(/بُ/);
+    expect(lesson.discoveryAr).toMatch(/بِ/);
+    expect(lesson.discoveryAr).toMatch(/بْ/);
+    expect(blob).toMatch(/قَلْبٌ/);
+    expect(blob).not.toMatch(/كِتَابْ/);
+  });
+
+  it('1AP islamic keeps short surahs, shahada as dhikr, and adab — not the five pillars as the core', () => {
+    const islamic = bySubject1ap('islamic');
+    const ids = islamic.map((l) => l.id);
+    expect(ids).toContain('islamic-1ap-t1-fatiha-basmala');
+    expect(ids).toContain('islamic-1ap-t2-short-surahs-ikhlas-nas');
+    expect(ids).toContain('islamic-1ap-t1-surah-falaq-kawthar');
+    expect(ids).toContain('islamic-1ap-t3-surah-masad-nasr');
+    const shahada = islamic.find((l) => l.id === 'islamic-1ap-t2-shahada-pillars')!;
+    expect(shahada.titleAr).toMatch(/الشَّهَادَتَيْنِ/);
+    expect(shahada.titleAr).not.toMatch(/أَرْكَانِ الإِسْلَامِ/);
+    const manners = islamic.find((l) => l.id === 'islamic-1ap-t3-thanks-manners')!;
+    expect(manners.rulesAr.join(' ')).toContain('الصِّدْقُ');
+    expect(manners.rulesAr.join(' ')).toContain('الطَّهَارَةُ');
+  });
+
+  it('1AP quran explorer lessons show every ayah of the assigned surahs, without audio copy', () => {
+    const expected: Record<string, string[]> = {
+      'islamic-1ap-t1-fatiha-basmala': ['سُورَةُ الفَاتِحَةِ'],
+      'islamic-1ap-t1-surah-falaq-kawthar': ['سُورَةُ الفَلَقِ', 'سُورَةُ الكَوْثَرِ'],
+      'islamic-1ap-t2-short-surahs-ikhlas-nas': ['سُورَةُ الإِخْلَاصِ', 'سُورَةُ النَّاسِ'],
+      'islamic-1ap-t3-surah-masad-nasr': ['سُورَةُ المَسَدِ', 'سُورَةُ النَّصْرِ'],
+    };
+    const counts: Record<string, number> = {
+      'سُورَةُ الفَاتِحَةِ': 7,
+      'سُورَةُ الإِخْلَاصِ': 4,
+      'سُورَةُ النَّاسِ': 6,
+      'سُورَةُ الفَلَقِ': 5,
+      'سُورَةُ الكَوْثَرِ': 3,
+      'سُورَةُ النَّصْرِ': 3,
+      'سُورَةُ المَسَدِ': 5,
+    };
+    bySubject1ap('islamic').forEach((lesson) => {
+      const names = expected[lesson.id];
+      if (!names) return;
+      expect(lesson.islamicInteractive?.type).toBe('quran_explorer');
+      if (lesson.islamicInteractive?.type !== 'quran_explorer') return;
+      expect(lesson.islamicInteractive.introAr).not.toMatch(/استمع|لتسمع/);
+      names.forEach((name) => {
+        const ayahs = lesson.islamicInteractive!.type === 'quran_explorer'
+          ? lesson.islamicInteractive.verses.filter((v) => v.surahAr === name)
+          : [];
+        expect(ayahs.length, `${lesson.id} ${name}`).toBe(counts[name]);
+      });
+    });
+  });
+
+  it('1AP does not put a soroban or unit converter on compare / word-problem sheets', () => {
+    const math = bySubject1ap('math');
+    expect(math.every((l) => l.interactiveTool !== 'unit_converter')).toBe(true);
+    const noAbacus = [
+      'math-1ap-t2-compare-quantities',
+      'math-1ap-t3-compare-symbols',
+      'math-1ap-t3-addition-and-time-money',
+      'math-1ap-t1-grandeurs',
+    ];
+    noAbacus.forEach((id) => {
+      const lesson = math.find((l) => l.id === id);
+      expect(lesson, id).toBeDefined();
+      expect(lesson!.interactiveTool).not.toBe('soroban');
+    });
+  });
+
+  it('1AP maths follows the year grid: 0–9 then 10–49 then 50–99, no clock or money titles', () => {
+    const math = bySubject1ap('math');
+    const ids = math.map((l) => l.id);
+
+    expect(ids).toContain('math-1ap-t1-grandeurs');
+    expect(ids).toContain('math-1ap-t3-compare-symbols');
+    expect(ids).toContain('math-1ap-t3-ruler-align');
+
+    const sixToNine = math.find((l) => l.id === 'math-1ap-t2-numbers-6-10')!;
+    expect(sixToNine.trimester).toBe(1);
+    expect(sixToNine.titleAr).toMatch(/6/);
+    expect(sixToNine.titleAr).not.toMatch(/10/);
+
+    const tenToTwenty = math.find((l) => l.id === 'math-1ap-t2-numbers-11-20')!;
+    expect(tenToTwenty.trimester).toBe(2);
+
+    const twentyOneToFortyNine = math.find((l) => l.id === 'math-1ap-t3-complete-tens-up-to-90')!;
+    expect(twentyOneToFortyNine.trimester).toBe(2);
+    expect(twentyOneToFortyNine.titleAr).toMatch(/21/);
+    expect(twentyOneToFortyNine.titleAr).toMatch(/49/);
+
+    const fiftyToNinetyNine = math.find((l) => l.id === 'math-1ap-t3-place-value-and-n99')!;
+    expect(fiftyToNinetyNine.trimester).toBe(3);
+    expect(fiftyToNinetyNine.titleAr).toMatch(/50/);
+    expect(fiftyToNinetyNine.titleAr).toMatch(/99/);
+    expect(fiftyToNinetyNine.objectivesAr!.join(' ')).not.toMatch(/[<>]/);
+
+    const problems = math.find((l) => l.id === 'math-1ap-t3-addition-and-time-money')!;
+    expect(problems.titleAr).not.toMatch(/ساعة|نقود/);
+    expect(problems.summaryAr).toMatch(/مسألة|مسائل/);
+
+    math.forEach((lesson) => {
+      expect(lesson.titleAr).not.toMatch(/ساعة|نقود/);
     });
   });
 });

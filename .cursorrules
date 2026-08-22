@@ -1,21 +1,30 @@
 # Règles de design pour l'application EdTech (projet mssid-V1)
 
 ## Identité Visuelle
-- Design : Moderne, ludique, adapté aux enfants.
-- Couleurs : Palette pastel, fond off-white (#F8F9FA), texte bleu nuit (#1E293B).
-- Formes : Coins très arrondis (rounded-3xl, rounded-2xl), ombres douces.
+- Design : Moderne, ludique, adapté aux enfants (6-11 ans).
+- Couleurs (une teinte = un rôle) :
+  - Fond crème `#FFFBF0`, cartes `#FFFFFF`, bord `#E7E2D7`, hints `#FFF8E7`.
+  - Texte `#0f172a`.
+  - Primaire / succès / CTA : émeraude `#008751` (proche du drapeau).
+  - Récompense / pièces / XP : ambre `#F59E0B`.
+  - Info / exams : bleu `#2563EB`.
+  - Erreur / destructif : corail `#C42A23`.
+  - Pas de rose / indigo hors token.
+- Typo : Cairo + Readex Pro self-host. Corps ~18px (`--type-body`). `font-black` = titres d'écran seulement.
+- Formes : coins très arrondis (rounded-3xl, rounded-2xl).
 
 ## UX / Ergonomie Mobile
-- Priorité : Éviter la surcharge visuelle.
-- Navigation : Un seul bouton d'action principal par écran.
-- Espace : Toujours ajouter beaucoup d'espace (padding/margin) pour ne pas encombrer l'écran.
-- Défilement : Réduire au maximum le scroll vertical.
+- Priorité : Éviter la surcharge visuelle (accueil : cartes crème + bande colorée, pas 4 murs dégradés).
+- Navigation : Un seul bouton d'action principal émeraude par écran.
+- Cibles tactiles : minimum 48px (`--hit`).
+- Zoom : ne jamais bloquer le pinch-zoom (`user-scalable`).
+- Espace : beaucoup de padding/margin. Réduire le scroll vertical.
 
 ## Animations
-- Utiliser `framer-motion` pour toutes les interactions.
-- Effets : `whileHover={{ scale: 1.05 }}`, `whileTap={{ scale: 0.95 }}`.
-- Transitions : Toujours utiliser des `spring` physics pour un aspect "rebondissant".
+- Utiliser `framer-motion` pour les interactions.
+- `whileTap={{ scale: 0.95 }}` sur les hits 48px. Éviter `whileHover` scale sur les grandes nappes (mobile).
+- Transitions : `spring` physics.
 
 ## Code
 - Toujours privilégier la lisibilité et la simplicité.
-- Si le design est trop dense, suggérer de diviser le composant en plusieurs étapes (funsnel).
+- Si le design est trop dense, diviser en étapes (funnel).

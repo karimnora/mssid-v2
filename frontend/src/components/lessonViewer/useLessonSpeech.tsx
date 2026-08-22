@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
 import { isFeatureEnabled } from '../../featureFlags';
 import { speakText, speechLangForSubject, stopSpeech as stopSynth } from '../../utils/speech';
 
 export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const isYoungGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const isPlayful1AP = grade === '1AP';
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null);
+  const speakingKeyRef = useRef<string | null>(null);
   const lang = speechLangForSubject(lesson.subject);
+  const snippetRate = isPlayful1AP ? 0.78 : 0.9;
 
   const handleToggleSpeech = () => {
     if (!isFeatureEnabled('voiceReading')) return;
@@ -27,13 +31,32 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     void speakText(text, lang);
   };
 
+  const speakSnippet = (key: string, text: string) => {
+    if (!isFeatureEnabled('voiceReading') || !text) return;
+    if (speakingKeyRef.current === key) {
+      stopSynth();
+      speakingKeyRef.current = null;
+      setSpeakingKey(null);
+      return;
+    }
+    speakingKeyRef.current = key;
+    setSpeakingKey(key);
+    setIsSpeaking(false);
+    void speakText(text, lang, snippetRate).then(() => {
+      if (speakingKeyRef.current === key) {
+        speakingKeyRef.current = null;
+        setSpeakingKey(null);
+      }
+    });
+  };
+
   const renderSpeakButton = (text: string | undefined, label: string) =>
     isYoungGrade && text ? (
       <button
         type="button"
         onClick={() => speakBlock(text)}
         title={`استمع: ${label}`}
-        className="shrink-0 w-7 h-7 rounded-full bg-[var(--brand-blue)]/15 hover:bg-[var(--brand-blue)]/25 text-[var(--brand-blue-dark)] flex items-center justify-center cursor-pointer text-sm"
+        className="shrink-0 hit-target rounded-full bg-[var(--brand-blue)]/15 hover:bg-[var(--brand-blue)]/25 text-[var(--brand-blue-dark)] flex items-center justify-center cursor-pointer text-base"
       >
         🔊
       </button>
@@ -42,6 +65,8 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const stopSpeech = () => {
     stopSynth();
     setIsSpeaking(false);
+    speakingKeyRef.current = null;
+    setSpeakingKey(null);
   };
 
   useEffect(() => {
@@ -52,5 +77,14 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);
 
-  return { isYoungGrade, isSpeaking, handleToggleSpeech, renderSpeakButton, stopSpeech };
+  return {
+    isYoungGrade,
+    isPlayful1AP,
+    isSpeaking,
+    speakingKey,
+    handleToggleSpeech,
+    speakSnippet,
+    renderSpeakButton,
+    stopSpeech,
+  };
 }

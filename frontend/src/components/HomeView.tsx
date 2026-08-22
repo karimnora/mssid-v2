@@ -2,9 +2,15 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade } from '../types';
-import { BookOpen, Trophy, Award, Zap, ShieldCheck, UserCircle2 } from 'lucide-react';
+import { ShieldCheck, UserCircle2 } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
+import {
+  ChallengesPoleIcon,
+  CoursesPoleIcon,
+  ExamsPoleIcon,
+  LabsPoleIcon,
+} from './HomePoleIcons';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -32,12 +38,44 @@ interface HomeViewProps {
   onOpenOfflinePacks?: () => void;
 }
 
-const POLES: { id: HomePoleId; icon: React.ReactNode; titleKey: 'poleCoursesTitle' | 'poleChallengesTitle' | 'poleExamsTitle' | 'poleLabsTitle'; descKey: 'poleCoursesDesc' | 'poleChallengesDesc' | 'poleExamsDesc' | 'poleLabsDesc'; gradient: string }[] = [
-  { id: 'courses', icon: <BookOpen className="w-7 h-7" />, titleKey: 'poleCoursesTitle', descKey: 'poleCoursesDesc', gradient: 'from-emerald-600 to-teal-700' },
-  { id: 'challenges', icon: <Trophy className="w-7 h-7" />, titleKey: 'poleChallengesTitle', descKey: 'poleChallengesDesc', gradient: 'from-rose-500 to-amber-600' },
-  { id: 'exams', icon: <Award className="w-7 h-7" />, titleKey: 'poleExamsTitle', descKey: 'poleExamsDesc', gradient: 'from-blue-600 to-indigo-700' },
-  { id: 'labs', icon: <Zap className="w-7 h-7" />, titleKey: 'poleLabsTitle', descKey: 'poleLabsDesc', gradient: 'from-amber-500 to-emerald-600' },
+const POLES: {
+  id: HomePoleId;
+  icon: React.ReactNode;
+  titleKey: 'poleCoursesTitle' | 'poleChallengesTitle' | 'poleExamsTitle' | 'poleLabsTitle';
+  descKey: 'poleCoursesDesc' | 'poleChallengesDesc' | 'poleExamsDesc' | 'poleLabsDesc';
+  gradient: string;
+}[] = [
+  {
+    id: 'courses',
+    icon: <CoursesPoleIcon />,
+    titleKey: 'poleCoursesTitle',
+    descKey: 'poleCoursesDesc',
+    gradient: 'from-emerald-600 to-teal-700',
+  },
+  {
+    id: 'challenges',
+    icon: <ChallengesPoleIcon />,
+    titleKey: 'poleChallengesTitle',
+    descKey: 'poleChallengesDesc',
+    gradient: 'from-rose-500 to-amber-600',
+  },
+  {
+    id: 'exams',
+    icon: <ExamsPoleIcon />,
+    titleKey: 'poleExamsTitle',
+    descKey: 'poleExamsDesc',
+    gradient: 'from-blue-600 to-indigo-700',
+  },
+  {
+    id: 'labs',
+    icon: <LabsPoleIcon />,
+    titleKey: 'poleLabsTitle',
+    descKey: 'poleLabsDesc',
+    gradient: 'from-amber-500 to-emerald-600',
+  },
 ];
+
+const spring = { type: 'spring' as const, stiffness: 400, damping: 22 };
 
 export const HomeView: React.FC<HomeViewProps> = ({
   grade,
@@ -54,32 +92,32 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const { direction } = useLocaleContext();
 
   return (
-    <div className="space-y-6" dir={direction} data-home-layout="full" data-home-grade={grade}>
+    <div className="space-y-6" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
       <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-[0.2em] text-white/80 font-black">{t('systemBadge')}</span>
-            </div>
+            <p className="text-sm font-bold text-white/80">{t('systemBadge')}</p>
             <h1 className="text-2xl sm:text-3xl font-black">
               {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
             </h1>
-            <p className="text-xs text-white/80 font-medium">{t('platformTagline')}</p>
+            <p className="type-body font-medium text-white/85">{t('platformTagline')}</p>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
             {onOpenDressingRoom && (
               <button
                 onClick={onOpenDressingRoom}
-                className="flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white px-3.5 py-2.5 rounded-2xl text-xs font-black shadow-md transition-all cursor-pointer border border-white/25"
+                className="hit-target flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white px-3.5 rounded-2xl text-sm font-extrabold cursor-pointer border border-white/25"
               >
                 <span>{t('dressingRoomLabel')}</span>
-                <span className="bg-amber-950/20 px-1.5 py-0.5 rounded-md text-[11px]">🪙 {goldCoins}</span>
+                <span dir="ltr" className="bg-amber-950/20 px-1.5 py-0.5 rounded-md text-xs font-black">
+                  🪙 {goldCoins}
+                </span>
               </button>
             )}
 
             <span
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-black ${
+              className={`hit-target flex items-center gap-1.5 px-3.5 rounded-2xl text-sm font-extrabold ${
                 isGuest ? 'bg-white/20 text-white border border-white/30' : 'bg-emerald-500/80 text-white'
               }`}
             >
@@ -90,20 +128,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
 
         {isGuest && (
-          <div className="bg-white/15 backdrop-blur-xs rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs border border-white/20">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-amber-400/20 rounded-xl border border-amber-300/30 text-amber-300 shrink-0 text-lg">
-                💡
-              </div>
-              <div className="space-y-0.5">
-                <p className="font-bold text-white text-xs sm:text-sm">{t('guestBannerTitle')}</p>
-                <p className="text-white/85 text-[11px]">{t('guestBannerSubtitle')}</p>
-              </div>
+          <div className="rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white/15 border border-white/20">
+            <div className="space-y-0.5">
+              <p className="font-extrabold type-body">{t('guestBannerTitle')}</p>
+              <p className="text-sm font-medium text-white/85">{t('guestBannerSubtitle')}</p>
             </div>
             {onOpenAuthModal && (
               <button
                 onClick={onOpenAuthModal}
-                className="shrink-0 bg-white hover:bg-amber-50 text-emerald-900 px-4 py-2 rounded-xl font-black text-xs shadow-md active:scale-95 transition-all cursor-pointer"
+                className="hit-target shrink-0 bg-white hover:bg-amber-50 text-emerald-900 px-5 rounded-2xl font-extrabold text-base cursor-pointer"
               >
                 {t('guestSignupCta')}
               </button>
@@ -116,63 +149,52 @@ export const HomeView: React.FC<HomeViewProps> = ({
         {POLES.map((pole) => (
           <motion.button
             key={pole.id}
+            type="button"
+            data-pole={pole.id}
             onClick={() => onSelectPole(pole.id)}
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+            transition={spring}
             className={`relative overflow-hidden rounded-3xl p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br ${pole.gradient}`}
           >
-            <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-3">
+            <div
+              data-pole-icon={pole.id}
+              className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-3"
+            >
               {pole.icon}
             </div>
-            <h3 className="text-lg font-black">{t(pole.titleKey)}</h3>
-            <p className="text-xs text-white/85 mt-1">{t(pole.descKey)}</p>
+            <h3 className="text-lg font-extrabold">{t(pole.titleKey)}</h3>
+            <p className="type-body text-white/85 mt-1">{t(pole.descKey)}</p>
           </motion.button>
         ))}
       </div>
 
       {onOpenPreschool && (
-        <motion.div
-          whileHover={{ scale: 1.05 }}
+        <motion.button
+          type="button"
           whileTap={{ scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+          transition={spring}
           onClick={onOpenPreschool}
-          className="relative overflow-hidden rounded-3xl p-6 sm:p-7 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-xl cursor-pointer border-2 border-amber-300/40"
+          className="w-full relative overflow-hidden rounded-3xl p-5 sm:p-6 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-xl cursor-pointer text-start border-2 border-amber-300/40"
         >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-3xl sm:text-4xl shadow-inner shrink-0 border border-white/30">
+          <div className="relative z-10 flex flex-col gap-4">
+            <div className="flex items-start gap-3">
+              <div className="w-16 h-16 rounded-3xl bg-white/20 text-3xl flex items-center justify-center shrink-0 border border-white/30">
                 🦊
               </div>
-              <div className="space-y-1 text-right">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="bg-white/25 text-white text-[11px] font-black px-2.5 py-0.5 rounded-full">
-                    {t('preschoolFeatureBadge')}
-                  </span>
-                </div>
-                <h2 className="text-xl sm:text-2xl font-black">
-                  {t('preschoolFeatureTitle')}
-                </h2>
-                <p className="text-xs sm:text-sm text-white/90 font-bold max-w-xl">
-                  {t('preschoolFeatureDesc')}
+              <div className="min-w-0 space-y-1">
+                <p className="text-xs font-bold bg-white/25 inline-block px-2.5 py-0.5 rounded-full">
+                  {t('preschoolFeatureBadge')}
                 </p>
+                <h2 className="text-lg font-extrabold leading-snug">{t('preschoolFeatureTitle')}</h2>
+                <p className="text-sm font-medium text-white/90">{t('preschoolFeatureDesc')}</p>
               </div>
             </div>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenPreschool();
-              }}
-              className="shrink-0 bg-white hover:bg-amber-50 text-orange-950 px-6 py-3.5 rounded-2xl font-black text-sm shadow-lg active:scale-95 transition-all flex items-center gap-2 cursor-pointer border border-amber-200"
-            >
-              <span>{t('preschoolFeatureCta')}</span>
-            </button>
+            <span className="hit-target w-full inline-flex items-center justify-center bg-white text-orange-950 px-4 rounded-2xl font-extrabold text-sm">
+              {t('preschoolFeatureCta')}
+            </span>
           </div>
-
-          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none" />
-          <div className="absolute top-0 right-1/3 w-40 h-40 bg-amber-400/20 rounded-full blur-2xl pointer-events-none" />
-        </motion.div>
+          <div className="absolute -bottom-6 -start-6 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none" />
+        </motion.button>
       )}
     </div>
   );

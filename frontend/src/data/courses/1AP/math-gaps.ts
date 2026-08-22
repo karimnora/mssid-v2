@@ -1,0 +1,278 @@
+import { CourseLesson } from '../../../types';
+
+const SOURCE_NOTE =
+  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة أولى ابتدائي وفق شبكة المفاهيم: الفضاء والقدرات (T1)، ثم الرموز < > والمسطرة والمسائل (T3).';
+
+/** Notions T1 (grandeurs) + T3 (comparaison symboles, règle, problèmes) absentes du fichier math.ts d’origine. */
+export const MATH_1AP_GAPS: CourseLesson[] = [
+  {
+    id: 'math-1ap-t1-grandeurs',
+    grade: '1AP',
+    subject: 'math',
+    trimester: 1,
+    domainAr: 'القياس والقدرات',
+    sequenceAr: 'المقطع: الطول والكتلة والحجم',
+    categoryAr: 'الرياضيات - القدرات',
+    titleAr: 'أُقَارِنُ: أَطْوَلُ، أَثْقَلُ، أَكْبَرُ 📏⚖️',
+    summaryAr: 'يقارن الطفل الأشياء دون أعداد كبيرة: أطول/أقصر، أثقل/أخف، كبير/متوسط/صغير.',
+    objectiveAr: 'أن يستعمل مفردات الطول والكتلة والحجم في مواقف يومية.',
+    objectivesAr: [
+      'أَقُولُ «أَطْوَلُ / أَقْصَرُ / لَهُمَا نَفْسُ الطُّولِ».',
+      'أَقُولُ «أَثْقَلُ / أَخَفُّ».',
+      'أُرَتِّبُ ثَلَاثَةَ أَشْيَاءَ: كَبِيرٌ، مُتَوَسِّطٌ، صَغِيرٌ.',
+    ],
+    discoveryAr: 'المسطرة بجانب الممحاة: أيهما أطول؟ الكراسة والحقيبة: أيهما أثقل؟',
+    rulesAr: [
+      'الطُّولُ: نضع الشيئين على نفس خط البداية ثم ننظر أين ينتهي كل واحد.',
+      'أَطْوَلُ / أَقْصَرُ / لَهُمَا نَفْسُ الطُّولِ (Aussi long que).',
+      'الكُتْلَةُ: نرفع أو نزن باليد. أَثْقَلُ / أَخَفُّ.',
+      'الحَجْمُ: كَبِيرٌ، مُتَوَسِّطٌ، صَغِيرٌ (علبة، كأس، حبة تَمْر).',
+    ],
+    examplesAr: [
+      { problem: 'الثعبان والدودة. من الأطول؟', solution: 'الثعبان أطول. الدودة أقصر.' },
+      { problem: 'حجر وريشة. من الأثقل؟', solution: 'الحجر أثقل. الريشة أخف.' },
+    ],
+    detailedCourse: {
+      introAr: 'قبل الأعداد الكبيرة، ننظر ونلمس: هذا أطول، هذا أثقل، هذا أكبر.',
+      vocabulary: [
+        { termAr: 'أَطْوَلُ 📏', definitionAr: 'يمتد أكثر من الآخر.' },
+        { termAr: 'أَثْقَلُ 🪨', definitionAr: 'وزنه أكبر عندما نرفعه.' },
+        { termAr: 'كَبِيرٌ / مُتَوَسِّطٌ / صَغِيرٌ', definitionAr: 'ثلاث أحجام نرتبها من الأكبر إلى الأصغر.' },
+      ],
+      visualizationHintAr: 'صفّ مسطرة وقلماً وممحاة على حافة الطاولة من نفس النقطة.',
+      commonMistakes: [
+        { mistakeAr: 'الحكم على الطول دون محاذاة الطرف الأول.', correctionAr: 'نضع البدايتين معاً ثم نقارن النهايات.' },
+        { mistakeAr: 'الخلط بين أكبر وأثقل (علبة كبيرة فارغة أخف من حجر صغير).', correctionAr: 'الكبر للعين، والثقل لليد.' },
+      ],
+      takeawayAr: 'أطول ≠ أثقل. نحاذي للطول، نرفع للكتلة، نرتب ثلاثة أحجام.',
+    },
+    progressiveExercises: [
+      {
+        id: 'ex1-math1ap-grandeurs',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — ألعب وأتعلم',
+        problemAr: 'المسطرة والممحاة على خط واحد. أيهما أقصر؟ 📏🧼',
+        hintsAr: ['انظر أين ينتهي كل شيء.'],
+        solutionAr: 'المِمْحَاةُ أَقْصَرُ',
+        detailedCorrectionAr: 'نعم، الممحاة أقصر من المسطرة.',
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-math1ap-grandeurs',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — أتدرب',
+        problemAr: 'رتّب: فيل 🐘، قطة 🐱، نملة 🐜 من الأكبر إلى الأصغر.',
+        hintsAr: ['من يعيش في الغابة الضخم أولاً.'],
+        solutionAr: 'فِيلٌ، قِطَّةٌ، نَمْلَةٌ',
+        detailedCorrectionAr: 'كبير، متوسط، صغير: فيل ثم قطة ثم نملة.',
+        xpReward: 15,
+      },
+    ],
+    educationalGame: {
+      id: 'game-math-1ap-grandeurs',
+      type: 'association',
+      titleAr: 'ميزان القدرات ⚖️',
+      instructionsAr: 'اختر الكلمة الصحيحة!',
+      items: [
+        { questionOrPromptAr: 'الحجر 🪨 والريشة 🪶', correctAnswerAr: 'أَثْقَلُ', optionsAr: ['أَثْقَلُ', 'أَخَفُّ'], explanationAr: 'الحجر أثقل من الريشة.' },
+        { questionOrPromptAr: 'الحبل الطويل والحبل القصير', correctAnswerAr: 'أَطْوَلُ', optionsAr: ['أَطْوَلُ', 'أَقْصَرُ'], explanationAr: 'الحبل الطويل أطول.' },
+      ],
+      xpReward: 20,
+    },
+    quiz: [
+      {
+        id: 'q1-math1ap-grandeurs',
+        questionAr: 'علبة كبيرة فارغة وحجر صغير. أيهما أثقل غالباً؟',
+        options: [
+          { id: 'a', textAr: 'الحَجَرُ أَثْقَلُ', isCorrect: true, explanationAr: 'الثقل ليس الحجم: الحجر أثقل رغم صغره.' },
+          { id: 'b', textAr: 'العلبة دائماً أثقل لأنها كبيرة', isCorrect: false },
+        ],
+      },
+      {
+        id: 'q2-math1ap-grandeurs',
+        questionAr: 'قلم ومسطرة لهما نفس الطول. ماذا نقول؟',
+        options: [
+          { id: 'a', textAr: 'لَهُمَا نَفْسُ الطُّولِ', isCorrect: true, explanationAr: 'Aussi long que: نفس الطول.' },
+          { id: 'b', textAr: 'القلم دائماً أطول', isCorrect: false },
+        ],
+      },
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE,
+  },
+  {
+    id: 'math-1ap-t3-compare-symbols',
+    grade: '1AP',
+    subject: 'math',
+    trimester: 3,
+    domainAr: 'الأعداد والمقارنة',
+    sequenceAr: 'المقطع: الرمزان < و >',
+    categoryAr: 'الرياضيات - المقارنة',
+    titleAr: 'أُقَارِنُ بِالرَّمْزَيْنِ < وَ > 🐊',
+    summaryAr: 'بعد مقارنة «أكثر / أقل»، يتعلم الطفل فم التمساح: العدد الأكبر يفتح عليه الفم.',
+    objectiveAr: 'أن يضع الرمز < أو > بين عددين حتى 99.',
+    objectivesAr: [
+      'أَعْرِفُ أَنَّ فَمَ التِّمْسَاحِ يَفْتَحُ نَحْوَ العَدَدِ الأَكْبَرِ.',
+      'أَكْتُبُ 45 < 72 وَ 80 > 50.',
+      'أَنْظُرُ أَوَّلاً إِلَى رَقْمِ العَشَرَاتِ.',
+    ],
+    discoveryAr: 'التمساح جائع: يفتح فمه نحو أكبر كومة تَمْر. 32 تمرة و 58 تمرة: نحو أي جهة يفتح؟',
+    rulesAr: [
+      'الفم المفتوح نحو الأكبر: 8 > 3 (ثمانية أكبر من ثلاثة).',
+      '3 < 8 تعني: 3 أصغر من 8. نفس المعنى مقلوباً.',
+      'حتى 99: نقارن العشرات أولاً. 61 > 59 لأن 6 عشرات > 5 عشرات.',
+      'إذا تساوت العشرات ننظر إلى الوحدات: 47 > 42.',
+    ],
+    examplesAr: [
+      { problem: 'ضع الرمز: 24 … 31', solution: '24 < 31' },
+      { problem: 'ضع الرمز: 90 … 70', solution: '90 > 70' },
+    ],
+    detailedCourse: {
+      introAr: 'الكلمات «أكثر / أقل» صارت رمزاً صغيراً. التمساح يساعدنا حتى لا نعكس الاتجاه.',
+      vocabulary: [
+        { termAr: '> أَكْبَرُ مِنْ', definitionAr: 'الفم يفتح يساراً إذا كتبنا العدد الأكبر أولاً: 9 > 4.' },
+        { termAr: '< أَصْغَرُ مِنْ', definitionAr: 'الفم يفتح يميناً: 4 < 9.' },
+      ],
+      visualizationHintAr: 'ارسم تمساحاً بين عددين واجعل فمه نحو الكومة الأكبر.',
+      commonMistakes: [
+        { mistakeAr: 'عكس الرمز (كتابة 8 < 3).', correctionAr: 'الفم دائماً نحو العدد الأكبر.' },
+      ],
+      takeawayAr: 'التمساح يأكل العدد الأكبر. العشرات أولاً ثم الوحدات.',
+    },
+    progressiveExercises: [
+      {
+        id: 'ex1-math1ap-symbols',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — ألعب وأتعلم',
+        problemAr: '7 … 2  ضع > أو <',
+        hintsAr: ['أي عدد أكبر؟ الفم نحوه.'],
+        solutionAr: '7 > 2',
+        detailedCorrectionAr: '7 أكبر، فم التمساح نحو 7: 7 > 2.',
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-math1ap-symbols',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — أتدرب',
+        problemAr: '56 … 65',
+        hintsAr: ['انظر العشرات: 5 أم 6؟'],
+        solutionAr: '56 < 65',
+        detailedCorrectionAr: '5 عشرات أصغر من 6 عشرات: 56 < 65.',
+        xpReward: 15,
+      },
+    ],
+    educationalGame: {
+      id: 'game-math-1ap-symbols',
+      type: 'quiz_flash',
+      titleAr: 'فم التمساح 🐊',
+      instructionsAr: 'اختر الرمز الصحيح!',
+      items: [
+        { questionOrPromptAr: '40 … 40', correctAnswerAr: 'مُتَسَاوِيَانِ', optionsAr: ['مُتَسَاوِيَانِ', '40 > 40', '40 < 40'], explanationAr: 'نفس العدد: لا نفتح الفم.' },
+        { questionOrPromptAr: '81 … 18', correctAnswerAr: '81 > 18', optionsAr: ['81 > 18', '81 < 18'], explanationAr: '8 عشرات أكبر من 1 عشرة.' },
+      ],
+      xpReward: 20,
+    },
+    quiz: [
+      {
+        id: 'q1-math1ap-symbols',
+        questionAr: 'أي كتابة صحيحة؟',
+        options: [
+          { id: 'a', textAr: '29 < 52', isCorrect: true, explanationAr: '2 عشرات أصغر من 5 عشرات.' },
+          { id: 'b', textAr: '29 > 52', isCorrect: false },
+        ],
+      },
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE,
+  },
+  {
+    id: 'math-1ap-t3-ruler-align',
+    grade: '1AP',
+    subject: 'math',
+    trimester: 3,
+    domainAr: 'الهندسة',
+    sequenceAr: 'المقطع: المسطرة والخط المستقيم',
+    categoryAr: 'الرياضيات - الهندسة',
+    titleAr: 'أُحَاذِي النِّقَاطَ وَأَرْسُمُ بِالمِسْطَرَةِ 📏',
+    summaryAr: 'يتدرب الطفل على وضع المسطرة لمحاذاة نقطتين ورسم خط مستقيم.',
+    objectiveAr: 'أن يحاذي نقطتين ويرسم قطعة مستقيمة بالمسطرة.',
+    objectivesAr: [
+      'أَضَعُ المِسْطَرَةَ عَلَى نُقْطَتَيْنِ.',
+      'أَرْسُمُ خَطًّا مُسْتَقِيمًا دُونَ انْحِنَاءٍ.',
+      'أُمَيِّزُ الخَطَّ المُسْتَقِيمَ عَنِ الخَطِّ المُنْحَنِي.',
+    ],
+    discoveryAr: 'نقطتان على الورقة • • كيف نصل بينهما بأجمل خط؟ نضع المسطرة عليهما!',
+    rulesAr: [
+      'نضع حافة المسطرة على النقطتين معاً.',
+      'نمسك المسطرة بثبات ونمرّر القلم على الحافة.',
+      'الخط المستقيم لا ينحني. الخط المنحني مثل موجة البحر.',
+    ],
+    examplesAr: [
+      { problem: 'كيف نربط نقطتين بخط مستقيم؟', solution: 'نحاذي المسطرة على النقطتين ثم نرسم.' },
+    ],
+    detailedCourse: {
+      introAr: 'المسطرة صديقة المهندس الصغير: نقاط، حافة، خط واحد نظيف.',
+      vocabulary: [
+        { termAr: 'نُقْطَةٌ •', definitionAr: 'مكان صغير نبدأ منه أو نصل إليه.' },
+        { termAr: 'خَطٌّ مُسْتَقِيمٌ', definitionAr: 'خط على حافة المسطرة، بلا انحناء.' },
+      ],
+      visualizationHintAr: 'ضع نقطتين على ورقة مربعات واطلب الوصل بالمسطرة لا باليد الحرة.',
+      commonMistakes: [
+        { mistakeAr: 'الرسم باليد دون مسطرة فيُنعطف الخط.', correctionAr: 'الحافة هي الدليل: القلم يمشي عليها.' },
+      ],
+      takeawayAr: 'نقطتان + مسطرة = خط مستقيم.',
+    },
+    interactiveTool: 'geometry_visualizer',
+    progressiveExercises: [
+      {
+        id: 'ex1-math1ap-ruler',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — ألعب وأتعلم',
+        problemAr: 'لرسم خط مستقيم بين • و • ماذا نضع أولاً؟',
+        hintsAr: ['أداة هندسة في المقلمة.'],
+        solutionAr: 'المِسْطَرَةَ',
+        detailedCorrectionAr: 'نعم، نضع المسطرة على النقطتين.',
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-math1ap-ruler',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — أتدرب',
+        problemAr: 'خط الموجة 🌊 مستقيم أم منحنٍ؟',
+        hintsAr: ['هل يشبه حافة المسطرة؟'],
+        solutionAr: 'مُنْحَنٍ',
+        detailedCorrectionAr: 'الموجة منحنٍ، حافة المسطرة مستقيمة.',
+        xpReward: 15,
+      },
+    ],
+    educationalGame: {
+      id: 'game-math-1ap-ruler',
+      type: 'association',
+      titleAr: 'مسطرة أم يد؟ 📏',
+      instructionsAr: 'اختر الأداة الصحيحة!',
+      items: [
+        { questionOrPromptAr: 'وصل نقطتين بخط مستقيم', correctAnswerAr: 'المِسْطَرَةُ', optionsAr: ['المِسْطَرَةُ', 'اليَدُ فَقَطْ'], explanationAr: 'المسطرة تحاذي النقطتين.' },
+        { questionOrPromptAr: 'شكل الشمس', correctAnswerAr: 'خَطٌّ مُنْحَنٍ (دَائِرَةٌ)', optionsAr: ['خَطٌّ مُنْحَنٍ (دَائِرَةٌ)', 'قِطْعَةٌ مُسْتَقِيمَةٌ'], explanationAr: 'الدائرة خط منحنٍ مغلق.' },
+      ],
+      xpReward: 20,
+    },
+    quiz: [
+      {
+        id: 'q1-math1ap-ruler',
+        questionAr: 'ماذا نفعل قبل رسم الخط بين نقطتين؟',
+        options: [
+          { id: 'a', textAr: 'نُحَاذِي المِسْطَرَةَ عَلَى النُّقْطَتَيْنِ', isCorrect: true, explanationAr: 'المحاذاة أولاً ثم القلم.' },
+          { id: 'b', textAr: 'نرسم بسرعة دون النظر إلى النقط', isCorrect: false },
+        ],
+      },
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE,
+  },
+];

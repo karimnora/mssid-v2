@@ -22,6 +22,8 @@ interface PracticeExerciseCardProps {
   orderingShuffled: number[];
   orderingSelection: number[];
   onToggleOrderingItem: (exId: string, originalIdx: number) => void;
+  playful?: boolean;
+  leadAudio?: React.ReactNode;
 }
 
 // A single practice/evaluation exercise, self-contained: renders the right interaction widget for
@@ -51,6 +53,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   orderingShuffled,
   orderingSelection,
   onToggleOrderingItem,
+  playful = false,
+  leadAudio,
 }) => {
   const setAnswer = (value: string | number) => onAnswerChange(ex.id, value);
   const setMatchingSelectedLeft = (leftIdx: number | null) => onMatchingSelectLeft(ex.id, leftIdx);
@@ -73,15 +77,20 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-3xl p-5 space-y-3 shadow-xs">
+    <div className="bg-white border border-slate-200 rounded-3xl p-4 sm:p-5 space-y-3 shadow-xs min-w-0 overflow-x-hidden">
       <div className="flex items-center justify-between flex-wrap gap-2">
-        <span className="text-xs font-black text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
-          {ex.levelLabelAr}
+        <span className="text-sm font-extrabold text-[var(--brand-amber-dark)] bg-[var(--brand-amber)]/15 border border-[var(--brand-amber)]/30 px-3 py-1 rounded-full">
+          {playful ? (ex.level === 1 ? 'أَلْعَبُ' : ex.level === 2 ? 'أُحَاوِلُ' : 'أَرْبِطُ') : ex.levelLabelAr}
         </span>
-        <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>
+        {!playful && <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>}
       </div>
 
-      <p className="text-sm font-bold text-slate-900 whitespace-pre-line">{renderTextWithMath(renderArabicText(ex.problemAr))}</p>
+      <div className="flex items-start gap-2 type-quiz text-[var(--app-text)]">
+        {leadAudio}
+        <p className={`whitespace-pre-line min-w-0 ${playful ? 'text-lg font-black leading-snug' : ''}`}>
+          {renderTextWithMath(renderArabicText(ex.problemAr))}
+        </p>
+      </div>
 
       {/* QCM / True-False */}
       {(ex.type === 'qcm' || ex.type === 'true_false') && ex.options && (
@@ -90,8 +99,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
             const isSelected = answer === opt.id;
             let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
             if (isChecked) {
-              if (opt.isCorrect) style = 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold';
-              else if (isSelected) style = 'bg-rose-50 border-rose-400 text-rose-900';
+              if (opt.isCorrect) style = 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-bold';
+              else if (isSelected) style = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)]';
               else style = 'bg-slate-50 border-slate-100 text-slate-600';
             } else if (isSelected) {
               style = 'bg-indigo-50 border-indigo-500 text-indigo-900 font-bold';
@@ -101,11 +110,11 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
                 key={opt.id}
                 disabled={isChecked}
                 onClick={() => setAnswer(opt.id)}
-                className={`text-right p-3 rounded-xl border text-xs transition-all cursor-pointer flex items-center justify-between ${style}`}
+                className={`text-right p-3 min-h-12 rounded-xl border type-quiz transition-all cursor-pointer flex items-center justify-between gap-2 min-w-0 ${style}`}
               >
-                <span>{renderTextWithMath(renderArabicText(opt.textAr))}</span>
+                <span className="min-w-0 break-words">{renderTextWithMath(renderArabicText(opt.textAr))}</span>
                 {isChecked && opt.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
-                {isChecked && isSelected && !opt.isCorrect && <XCircle className="w-4 h-4 text-rose-500 shrink-0" />}
+                {isChecked && isSelected && !opt.isCorrect && <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />}
               </button>
             );
           })}
@@ -141,7 +150,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {ex.type === 'matching' && ex.matchingPairsAr && (
         <div className="space-y-2">
           <p className="text-xs text-slate-500">اضغط على عنصر من العمود الأيمن ثم على مقابله في العمود الأيسر لتربطهما:</p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 min-w-0">
             <div className="space-y-2">
               {ex.matchingPairsAr.map((pair, leftIdx) => {
                 const isConnected = matchingConnections[leftIdx] !== undefined;
@@ -157,9 +166,9 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
                     key={leftIdx}
                     disabled={isChecked}
                     onClick={() => (isConnected ? disconnectMatching(leftIdx) : setMatchingSelectedLeft(leftIdx))}
-                    className={`w-full text-right p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-between ${style}`}
+                    className={`w-full min-w-0 text-right p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-between gap-1 ${style}`}
                   >
-                    <span>{renderCell(pair.leftAr)}</span>
+                    <span className="min-w-0 break-words">{renderCell(pair.leftAr)}</span>
                     {isRight && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
                     {isWrong && <XCircle className="w-4 h-4 text-rose-500 shrink-0" />}
                   </button>
@@ -178,7 +187,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
                       if (matchingSelectedLeft === null || matchingSelectedLeft === undefined) return;
                       connectMatching(matchingSelectedLeft, rightIdx);
                     }}
-                    className={`w-full text-right p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                    className={`w-full min-w-0 text-right p-2.5 rounded-xl border text-xs font-bold transition-all cursor-pointer break-words ${
                       isUsed ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-white border-slate-200 hover:bg-indigo-50 hover:border-indigo-300'
                     }`}
                   >
@@ -266,7 +275,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
         <button
           onClick={() => onCheck(ex)}
           disabled={!canCheck}
-          className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
+          className="hit-target w-full sm:w-auto bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] disabled:opacity-40 disabled:cursor-not-allowed text-white text-base font-extrabold px-5 rounded-2xl cursor-pointer"
         >
           تحقق من الإجابة
         </button>

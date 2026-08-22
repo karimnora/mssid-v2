@@ -1,16 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&family=Cairo:wght@400;500;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+@import "@fontsource/cairo/arabic-400.css";
+@import "@fontsource/cairo/arabic-700.css";
+@import "@fontsource/cairo/arabic-800.css";
+@import "@fontsource/cairo/latin-400.css";
+@import "@fontsource/cairo/latin-700.css";
+@import "@fontsource/readex-pro/arabic-400.css";
+@import "@fontsource/readex-pro/arabic-700.css";
+@import "@fontsource/readex-pro/latin-400.css";
+@import "@fontsource/readex-pro/latin-700.css";
 @import "tailwindcss";
 
-/* Design-system brand accents — stable across all themes (do not vary per .theme-*) */
+/* Color bible — one job per hue. Emerald = CTA/success. Amber = reward. Blue = info. Coral = stop. */
 :root {
   --brand-emerald: #008751;
   --brand-emerald-dark: #006b40;
   --brand-amber: #F59E0B;
   --brand-amber-dark: #D97706;
-  --brand-blue: #3B82F6;
-  --brand-blue-dark: #2563EB;
-  --brand-coral: #E73B33;
-  --brand-coral-dark: #C42A23;
+  --brand-blue: #2563EB;
+  --brand-blue-dark: #1D4ED8;
+  --brand-coral: #C42A23;
+  --brand-coral-dark: #9F221C;
+  --type-body: 1.125rem;
+  --type-quiz: 1.25rem;
+  --hit: 48px;
 }
 
 :root, .theme-neutre, .theme-vibrant {
@@ -18,13 +29,13 @@
   --app-text: #0f172a;
   --app-text-muted: #64748b;
   --app-card-bg: #ffffff;
-  --app-card-border: #f1f5f9;
-  --app-card-subtle: #fef3c7;
+  --app-card-border: #E7E2D7;
+  --app-card-subtle: #FFF8E7;
   --app-input-bg: #ffffff;
   --app-input-border: #cbd5e1;
   --app-header-bg: rgba(255, 255, 255, 0.98);
   --app-footer-bg: #ffffff;
-  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
 body {
@@ -44,7 +55,7 @@ body {
   --app-input-border: #475569;
   --app-header-bg: rgba(15, 23, 42, 0.95);
   --app-footer-bg: #0b1329;
-  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
 .theme-sepia {
@@ -58,7 +69,7 @@ body {
   --app-input-border: #d6cebf;
   --app-header-bg: rgba(251, 249, 245, 0.95);
   --app-footer-bg: #f5f2eb;
-  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
 .theme-light {
@@ -66,13 +77,13 @@ body {
   --app-text: #0f172a;
   --app-text-muted: #64748b;
   --app-card-bg: #ffffff;
-  --app-card-border: #f3f4f6;
-  --app-card-subtle: #fef3c7;
+  --app-card-border: #E7E2D7;
+  --app-card-subtle: #FFF8E7;
   --app-input-bg: #ffffff;
   --app-input-border: #cbd5e1;
   --app-header-bg: rgba(255, 255, 255, 0.95);
   --app-footer-bg: #ffffff;
-  font-family: 'Readex Pro', 'Cairo', system-ui, -apple-system, sans-serif;
+  font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
 /* Vibrant Palette Custom Helper Utilities */
@@ -96,7 +107,23 @@ body {
 }
 
 .font-serif-arabic {
-  font-family: 'Amiri', serif;
+  font-family: 'Cairo', serif;
+}
+
+.type-body {
+  font-size: var(--type-body);
+  line-height: 1.65;
+}
+
+.type-quiz {
+  font-size: var(--type-quiz);
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+.hit-target {
+  min-width: var(--hit);
+  min-height: var(--hit);
 }
 
 /* Marker class paired with dir="rtl" across the app — kept as a real rule so

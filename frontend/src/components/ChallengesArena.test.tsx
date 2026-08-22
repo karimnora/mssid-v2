@@ -5,6 +5,11 @@ import { ChallengesArena } from './ChallengesArena';
 import { LocaleProvider } from '../context/LocaleContext';
 import { CHALLENGES_DATA } from '../data/challengesData';
 
+vi.mock('./preschool/usePreschoolAudio', () => ({
+  playSuccessChime: vi.fn(),
+  playGentleNudge: vi.fn(),
+}));
+
 const renderArena = (grade: '1AP' | '2AP' | '5AP') =>
   render(
     <LocaleProvider>

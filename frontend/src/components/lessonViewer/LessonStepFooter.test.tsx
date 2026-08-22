@@ -86,4 +86,52 @@ describe('LessonStepFooter', () => {
     await userEvent.click(screen.getByRole('button', { name: /الدرس الموالي/ }));
     expect(onFinishLesson).toHaveBeenCalledTimes(1);
   });
+
+  it('lets a 1AP child continue after answering, with a short mobile CTA', async () => {
+    const onFinishLesson = vi.fn();
+    render(
+      <LessonStepFooter
+        availableSteps={steps}
+        currentStepIndex={1}
+        isLastStep
+        nextStep={null}
+        prevStep={steps[0]}
+        nextLesson={nextLesson}
+        renderArabicText={(t) => t || ''}
+        compact
+        playful
+        hasQuiz
+        quizPassed
+        onGoToStep={vi.fn()}
+        onFinishLesson={onFinishLesson}
+      />
+    );
+    expect(document.querySelector('[data-lesson-footer="playful"]')).toBeTruthy();
+    expect(screen.getByText('الدرس الثاني')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: /الدَّرْسُ التَّالِي/ }));
+    expect(onFinishLesson).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText(/الدرس الموالي/)).not.toBeInTheDocument();
+  });
+
+  it('keeps 1AP waiting until every quiz question is answered', () => {
+    render(
+      <LessonStepFooter
+        availableSteps={steps}
+        currentStepIndex={1}
+        isLastStep
+        nextStep={null}
+        prevStep={steps[0]}
+        nextLesson={nextLesson}
+        renderArabicText={(t) => t || ''}
+        compact
+        playful
+        hasQuiz
+        quizPassed={false}
+        onGoToStep={vi.fn()}
+        onFinishLesson={vi.fn()}
+      />
+    );
+    expect(screen.getByText(/أَجِبْ ثُمَّ نَذْهَبُ/)).toBeInTheDocument();
+    expect(document.querySelector('[data-primary-cta="finish-lesson"]')).toBeNull();
+  });
 });

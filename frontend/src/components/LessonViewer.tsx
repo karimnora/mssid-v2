@@ -39,6 +39,9 @@ import { LessonEvaluationPanel } from './lessonViewer/LessonEvaluationPanel';
 import { LessonQuizPanel } from './lessonViewer/LessonQuizPanel';
 import { LessonContentPanel } from './lessonViewer/LessonContentPanel';
 import { LessonStepFooter } from './lessonViewer/LessonStepFooter';
+import { YoungLessonStory } from './lessonViewer/YoungLessonStory';
+import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { buildPlayful1APSteps, isPlayful1AP as isPlayful1APGrade, parsePlayfulSnippet } from './lessonViewer/youngLessonLayout';
 
 const ScienceLabSimulation = lazy(() => import('./ScienceLabSimulation').then((m) => ({ default: m.ScienceLabSimulation })));
 
@@ -94,6 +97,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     setSelectedExampleTier(1);
     setShowParentInfo(false);
     setShowRevisionSheet(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [lesson.id]);
 
   const renderArabicText = (text: string | undefined | null): string => {
@@ -105,7 +109,27 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     return renderTextWithMath(renderArabicText(text));
   };
 
+  const isPlayful1AP = isPlayful1APGrade(grade);
+  const isCompactGrade = grade === '1AP' || grade === '2AP';
+  const titleSnippet = isPlayful1AP ? parsePlayfulSnippet(renderArabicText(lesson.titleAr), 0) : null;
+
   const availableSteps = React.useMemo(() => {
+    if (isPlayful1AP) {
+      const iconFor = (id: TabId) => {
+        if (id === 'practice') return <Gamepad2 className="w-5 h-5" />;
+        if (id === 'quiz') return <Trophy className="w-5 h-5" />;
+        if (id === 'interactive') return <Sparkles className="w-5 h-5" />;
+        return <Glasses className="w-5 h-5" />;
+      };
+      return buildPlayful1APSteps(lesson, { hasInteractive: showInteractive }).map((step) => ({
+        id: step.id,
+        labelAr: step.labelAr,
+        icon: iconFor(step.id),
+        activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-blue-400',
+        badgeColor: 'from-blue-600 to-indigo-600',
+      }));
+    }
+
     const steps: LessonStep[] = [
       {
         id: 'explanation',
@@ -174,16 +198,23 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     }
 
     return steps;
-  }, [showInteractive, lesson.progressiveExercises, lesson.gameplay_simulation, practice.evaluationExercises.length, lesson.quiz.length]);
+  }, [isPlayful1AP, showInteractive, lesson, practice.evaluationExercises.length]);
 
   const currentStepIndex = Math.max(0, availableSteps.findIndex((s) => s.id === activeTab));
   const isLastStep = currentStepIndex >= availableSteps.length - 1;
   const nextStep = !isLastStep ? availableSteps[currentStepIndex + 1] : null;
   const prevStep = currentStepIndex > 0 ? availableSteps[currentStepIndex - 1] : null;
-  const isCompactGrade = grade === '1AP' || grade === '2AP';
   const hasQuiz = lesson.quiz.length > 0;
   const quizPassed = quizAlreadyValidated || quiz.quizFullyPassed;
-  const canCompleteLesson = !hasQuiz || quizPassed;
+  const quizAnswered = quizAlreadyValidated || quiz.quizAnswered;
+  const canCompleteLesson = isPlayful1AP ? !hasQuiz || quizAnswered : !hasQuiz || quizPassed;
+
+  const finishAndContinue = () => {
+    if (!canCompleteLesson) return;
+    if (quizPassed) onQuizFullyValidated?.(lesson.id);
+    if (nextLesson) onSelectLesson?.(nextLesson);
+    else onBack();
+  };
 
   const goToStep = (index: number) => {
     const clamped = Math.max(0, Math.min(availableSteps.length - 1, index));
@@ -230,7 +261,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   }
 
   return (
-    <div className="space-y-6 dir-rtl" dir="rtl">
+    <div className="space-y-4 sm:space-y-6 dir-rtl overflow-x-hidden" dir="rtl">
+      <div className={isPlayful1AP ? 'hidden sm:block' : undefined}>
       <CourseBreadcrumb
         grade={grade}
         subjectId={subjectId}
@@ -242,17 +274,19 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         }}
         onSubjectClick={onBack}
       />
+      </div>
 
       <Card padding="none" className="flex items-center justify-between flex-wrap gap-3 p-3.5">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
-            قائمة الدروس
+            <span className={isPlayful1AP ? 'sm:hidden' : 'hidden'}>الدروس</span>
+            <span className={isPlayful1AP ? 'hidden sm:inline' : undefined}>قائمة الدروس</span>
           </Button>
 
           {allLessons.length > 0 && currentIndex >= 0 && (
             <Badge variant="info">
               <span dir="ltr">{currentIndex + 1} / {allLessons.length}</span>
-              <span>الدرس</span>
+              <span>{isPlayful1AP ? 'دَرْس' : 'الدرس'}</span>
             </Badge>
           )}
         </div>
@@ -294,8 +328,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   disabled={!nextLesson || !isLastStep || !canCompleteLesson}
                   onClick={() => {
                     if (!isLastStep || !canCompleteLesson || !nextLesson) return;
-                    onQuizFullyValidated?.(lesson.id);
-                    onSelectLesson?.(nextLesson);
+                    finishAndContinue();
                   }}
                   title={
                     !canCompleteLesson
@@ -320,7 +353,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <RevisionSheetViewer lesson={lesson} onClose={() => setShowRevisionSheet(false)} tashkeelEnabled={tashkeelEnabled} />
       )}
 
-      {speech.isYoungGrade && (
+      {speech.isYoungGrade && !isPlayful1AP && (
         <button
           type="button"
           onClick={speech.handleToggleSpeech}
@@ -338,11 +371,63 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 }`
           }
         >
-          <span className={isCompactGrade ? 'text-lg' : 'text-2xl'}>{speech.isSpeaking ? '⏹️' : '🔊'}</span>
+          <span className={!isCompactGrade ? 'text-2xl' : 'text-lg'}>{speech.isSpeaking ? '⏹️' : '🔊'}</span>
           <span>{speech.isSpeaking ? 'إيقاف الاستماع' : 'إستمع للدرس'}</span>
         </button>
       )}
 
+      {isPlayful1AP ? (
+        <div className="rounded-3xl bg-emerald-50 border border-emerald-100 p-4 sm:p-8 space-y-3" data-lesson-hero="1ap">
+          {titleSnippet && (
+              <div className="flex items-center gap-3 min-w-0">
+                <TapSpeakButton
+                  snippetKey="title"
+                  text={titleSnippet.speak}
+                  speakingKey={speech.speakingKey}
+                  onSpeak={speech.speakSnippet}
+                  size="lg"
+                />
+                <button
+                  type="button"
+                  onClick={() => speech.speakSnippet('title', titleSnippet.speak)}
+                  className="flex-1 min-w-0 flex flex-col items-center gap-2 cursor-pointer"
+                >
+                  <span className="text-4xl sm:text-6xl leading-none" aria-hidden="true">
+                    {titleSnippet.letterVisual ?? titleSnippet.emoji}
+                  </span>
+                  <h1 className="text-xl sm:text-3xl font-black text-[#1E293B] leading-snug text-center px-1 break-words">
+                    {titleSnippet.headline}
+                  </h1>
+                </button>
+              </div>
+          )}
+          {lesson.sourceNoteAr && (
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowParentInfo((v) => !v)}
+                aria-expanded={showParentInfo}
+                className="flex items-center gap-1.5 text-slate-400 hover:text-slate-600 text-[11px] font-bold transition-colors cursor-pointer"
+              >
+                <Info className="w-3.5 h-3.5" />
+                <span>معلومة لولي الأمر</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showParentInfo ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+          )}
+          <AnimatePresence initial={false}>
+            {showParentInfo && lesson.sourceNoteAr && (
+              <motion.p
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="text-slate-500 text-xs leading-relaxed overflow-hidden"
+              >
+                {renderArabicMath(lesson.sourceNoteAr)}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+      ) : (
       <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
@@ -395,15 +480,16 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
         </div>
       </div>
+      )}
 
-      {lesson.missionTitleAr && (
+      {lesson.missionTitleAr && !isPlayful1AP && (
         <div className="bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-emerald)] text-white rounded-3xl p-5 shadow-md">
           <h2 className="font-black text-base sm:text-lg mb-1">{renderArabicText(lesson.missionTitleAr)}</h2>
           {lesson.missionIntroAr && <p className="text-xs sm:text-sm text-white/90 leading-relaxed">{renderArabicText(lesson.missionIntroAr)}</p>}
         </div>
       )}
 
-      {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
+      {lesson.objectivesAr && lesson.objectivesAr.length > 0 && !isPlayful1AP && (
         <Card padding="none" className="p-5">
           <h3 className="font-extrabold text-sm text-[var(--app-text)] flex items-center gap-2 mb-2.5">
             <Target className="w-4 h-4 text-[var(--brand-blue)]" />
@@ -427,12 +513,20 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               {currentStepIndex + 1}
             </span>
             <div>
-              <span className="text-[10px] sm:text-xs font-bold text-[var(--app-text-muted)] block">
-                مراحل الدرس خطوة بخطوة 🎯
-              </span>
-              <h2 className="text-xs sm:text-sm font-black text-[var(--app-text)]">
-                {availableSteps[currentStepIndex]?.labelAr || 'مرحلة الدرس'}
-              </h2>
+              {isPlayful1AP ? (
+                <h2 className="text-lg sm:text-xl font-black text-[var(--app-text)]">
+                  {availableSteps[currentStepIndex]?.labelAr || 'أَنْظُرُ'}
+                </h2>
+              ) : (
+                <>
+                  <span className="text-[10px] sm:text-xs font-bold text-[var(--app-text-muted)] block">
+                    مراحل الدرس خطوة بخطوة 🎯
+                  </span>
+                  <h2 className="text-xs sm:text-sm font-black text-[var(--app-text)]">
+                    {availableSteps[currentStepIndex]?.labelAr || 'مرحلة الدرس'}
+                  </h2>
+                </>
+              )}
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -482,15 +576,25 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={tabTransition}
+          className={isPlayful1AP ? 'pb-28 md:pb-8 min-w-0' : 'min-w-0'}
         >
           {activeTab === 'explanation' && (
-            <LessonExplanationView
-              lesson={lesson}
-              tashkeelEnabled={tashkeelEnabled}
-              availableSteps={availableSteps}
-              activeStepId={activeTab}
-              onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
-            />
+            isPlayful1AP ? (
+              <YoungLessonStory
+                lesson={lesson}
+                tashkeelEnabled={tashkeelEnabled}
+                speakingKey={speech.speakingKey}
+                onSpeak={speech.speakSnippet}
+              />
+            ) : (
+              <LessonExplanationView
+                lesson={lesson}
+                tashkeelEnabled={tashkeelEnabled}
+                availableSteps={availableSteps}
+                activeStepId={activeTab}
+                onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
+              />
+            )
           )}
 
           {activeTab === 'gameplay' && lesson.gameplay_simulation && (
@@ -507,6 +611,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               gameAnswers={quiz.gameAnswers}
               onSelectGameOption={quiz.handleSelectGameOption}
               onResetGame={() => quiz.setGameAnswers({})}
+              playful={isPlayful1AP}
+              speakingKey={isPlayful1AP ? speech.speakingKey : null}
+              onSpeak={isPlayful1AP ? speech.speakSnippet : undefined}
             />
           )}
 
@@ -547,6 +654,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onSelectOption={quiz.handleSelectOption}
               onShuffle={quiz.initializeShuffledQuiz}
               onReset={quiz.handleResetQuiz}
+              playful={isPlayful1AP}
+              speakingKey={isPlayful1AP ? speech.speakingKey : null}
+              onSpeak={isPlayful1AP ? speech.speakSnippet : undefined}
+              nextLessonTitle={isPlayful1AP && nextLesson ? renderArabicText(nextLesson.titleAr) : undefined}
+              onContinueNext={isPlayful1AP && canCompleteLesson ? finishAndContinue : undefined}
             />
           )}
         </motion.div>
@@ -561,15 +673,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         nextLesson={nextLesson}
         renderArabicText={renderArabicText}
         compact={isCompactGrade}
+        playful={isPlayful1AP}
         hasQuiz={hasQuiz}
-        quizPassed={quizPassed}
+        quizPassed={canCompleteLesson}
         onGoToStep={goToStep}
-        onFinishLesson={() => {
-          if (!canCompleteLesson) return;
-          onQuizFullyValidated?.(lesson.id);
-          if (nextLesson) onSelectLesson?.(nextLesson);
-          else onBack();
-        }}
+        onFinishLesson={finishAndContinue}
       />
     </div>
   );

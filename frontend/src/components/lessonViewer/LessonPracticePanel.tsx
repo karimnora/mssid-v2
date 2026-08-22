@@ -4,6 +4,7 @@ import { Badge } from '../ui';
 import { Sparkles } from 'lucide-react';
 import { PRACTICE_TIERS } from './shared';
 import { BoundPracticeCard, PracticeBindings } from './practiceBindings';
+import { TapSpeakButton } from './TapSpeakButton';
 
 interface LessonPracticePanelProps {
   lesson: CourseLesson;
@@ -12,6 +13,9 @@ interface LessonPracticePanelProps {
   gameAnswers: Record<number, string>;
   onSelectGameOption: (itemIndex: number, optionAr: string) => void;
   onResetGame: () => void;
+  playful?: boolean;
+  speakingKey?: string | null;
+  onSpeak?: (key: string, text: string) => void;
 }
 
 export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
@@ -21,6 +25,9 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
   gameAnswers,
   onSelectGameOption,
   onResetGame,
+  playful = false,
+  speakingKey = null,
+  onSpeak,
 }) => (
   <div className="space-y-6">
     {PRACTICE_TIERS.map((tier) => {
@@ -30,12 +37,29 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
         <div key={tier.level} className="space-y-3">
           <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-2">
             <span className="text-lg">{tier.icon}</span>
-            <h3 className="font-black text-sm text-[var(--app-text)]">{tier.titleAr}</h3>
+            <h3 className="font-black text-sm text-[var(--app-text)]">{playful ? (tier.level === 1 ? 'أَلْعَبُ' : tier.level === 2 ? 'أُحَاوِلُ' : 'أَرْبِطُ') : tier.titleAr}</h3>
             <span className="text-[10px] font-bold text-[var(--app-text-muted)]">({tierExercises.length})</span>
           </div>
           <div className="space-y-4">
             {tierExercises.map((ex) => (
-              <BoundPracticeCard key={ex.id} ex={ex} practice={practice} renderArabicText={renderArabicText} />
+              <BoundPracticeCard
+                key={ex.id}
+                ex={ex}
+                practice={practice}
+                renderArabicText={renderArabicText}
+                playful={playful}
+                leadAudio={
+                  playful && onSpeak ? (
+                    <TapSpeakButton
+                      snippetKey={`practice-${ex.id}`}
+                      text={ex.problemAr}
+                      speakingKey={speakingKey}
+                      onSpeak={onSpeak}
+                      size="lg"
+                    />
+                  ) : undefined
+                }
+              />
             ))}
           </div>
         </div>
@@ -43,52 +67,85 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
     })}
 
     {lesson.educationalGame && (
-      <div className="bg-gradient-to-r from-purple-950 to-slate-900 text-white rounded-3xl p-5 space-y-3 border border-purple-800/50">
+      <div className={playful
+        ? 'bg-violet-50 border border-violet-100 text-[#1E293B] rounded-3xl p-5 space-y-3'
+        : 'bg-gradient-to-r from-purple-950 to-slate-900 text-white rounded-3xl p-5 space-y-3 border border-purple-800/50'
+      }>
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-black text-sm flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-amber-300" />
-            <span>🏆 التحدي: {renderArabicText(lesson.educationalGame.titleAr)}</span>
+            <Sparkles className={`w-4 h-4 ${playful ? 'text-amber-500' : 'text-amber-300'}`} />
+            <span>{playful ? renderArabicText(lesson.educationalGame.titleAr) : `🏆 التحدي: ${renderArabicText(lesson.educationalGame.titleAr)}`}</span>
           </h3>
-          <Badge variant="xp"><span dir="ltr">+{lesson.educationalGame.xpReward} XP</span></Badge>
+          {!playful && <Badge variant="xp"><span dir="ltr">+{lesson.educationalGame.xpReward} XP</span></Badge>}
         </div>
-        <p className="text-xs text-purple-200">{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
+        <p className={playful ? 'text-sm text-slate-600' : 'text-xs text-purple-200'}>{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
         <div className="space-y-2">
           {lesson.educationalGame.items.map((item, i) => {
             const selected = gameAnswers[i];
             const isAnswered = selected !== undefined;
             const isCorrect = selected === item.correctAnswerAr;
             return (
-              <div key={i} className="bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs space-y-2">
-                <p className="font-bold mb-1.5">{renderArabicText(item.questionOrPromptAr)}</p>
+              <div key={i} className={playful
+                ? 'bg-white border border-violet-100 rounded-2xl p-4 text-base space-y-2'
+                : 'bg-slate-950/60 border border-purple-900/50 rounded-xl p-3 text-xs space-y-2'
+              }>
+                <p className="font-bold mb-1.5 flex items-center gap-2 min-w-0">
+                  {playful && onSpeak && (
+                    <TapSpeakButton
+                      snippetKey={`game-${i}`}
+                      text={item.questionOrPromptAr}
+                      speakingKey={speakingKey}
+                      onSpeak={onSpeak}
+                    />
+                  )}
+                  <span className="min-w-0 break-words">{renderArabicText(item.questionOrPromptAr)}</span>
+                </p>
                 {item.optionsAr && (
                   <div className="flex gap-2 flex-wrap">
                     {item.optionsAr.map((optAr) => {
                       const isThisCorrect = optAr === item.correctAnswerAr;
                       const isThisSelected = selected === optAr;
-                      let style = 'bg-white/10 text-purple-100 hover:bg-white/20 cursor-pointer';
+                      let style = playful
+                        ? 'bg-sky-50 text-[#1E293B] hover:bg-sky-100 cursor-pointer border border-sky-100'
+                        : 'bg-white/10 text-purple-100 hover:bg-white/20 cursor-pointer';
                       if (isAnswered) {
                         style = isThisCorrect
-                          ? 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold'
+                          ? playful
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold'
+                            : 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold'
                           : isThisSelected
-                          ? 'bg-rose-500/25 text-rose-200 border border-rose-400/50'
-                          : 'bg-white/5 text-purple-300/60';
+                          ? playful
+                            ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                            : 'bg-rose-500/25 text-rose-200 border border-rose-400/50'
+                          : playful
+                            ? 'bg-slate-50 text-slate-400'
+                            : 'bg-white/5 text-purple-300/60';
                       }
                       return (
+                        <div key={optAr} className="flex items-center gap-1 min-w-0">
+                          {playful && onSpeak && (
+                            <TapSpeakButton
+                              snippetKey={`game-${i}-opt-${optAr}`}
+                              text={optAr}
+                              speakingKey={speakingKey}
+                              onSpeak={onSpeak}
+                            />
+                          )}
                         <button
-                          key={optAr}
                           type="button"
                           disabled={isAnswered}
                           onClick={() => onSelectGameOption(i, optAr)}
-                          className={`px-2.5 py-1 rounded-lg transition-colors ${style}`}
+                          className={`px-3 py-2 rounded-2xl transition-colors min-h-12 ${style}`}
                         >
                           {renderArabicText(optAr)}
                         </button>
+                        </div>
                       );
                     })}
                   </div>
                 )}
                 {isAnswered && item.explanationAr && (
-                  <p className={`text-[11px] ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}`}>
+                  <p className={`text-sm ${isCorrect ? (playful ? 'text-emerald-700' : 'text-emerald-300') : (playful ? 'text-rose-700' : 'text-rose-300')}`}>
                     {isCorrect ? '✅ ' : '💡 '}{renderArabicText(item.explanationAr)}
                   </p>
                 )}
@@ -100,7 +157,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
           <button
             type="button"
             onClick={onResetGame}
-            className="text-[11px] font-bold text-purple-200 hover:text-white underline cursor-pointer"
+            className={playful ? 'text-sm font-bold text-slate-500 hover:text-slate-800 underline cursor-pointer' : 'text-[11px] font-bold text-purple-200 hover:text-white underline cursor-pointer'}
           >
             إعادة المحاولة 🔄
           </button>
