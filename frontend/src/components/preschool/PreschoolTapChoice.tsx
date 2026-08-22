@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolChoice, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
 import { localizeGlyph, activityPicture } from './preschoolGlyphs';
-import { PreschoolShapeMark, isGeometricShape } from './PreschoolShapeMark';
+import { PreschoolShapeMark, PreschoolColorDot, isGeometricShape, isColorDot } from './PreschoolShapeMark';
 
 interface PreschoolTapChoiceProps {
   activity: PreschoolActivity;
@@ -64,7 +64,8 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
       <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
         {choices.map((choice) => {
           const glyph = localizeGlyph(choice.asset, language);
-          const showShape = isGeometricShape(choice.asset);
+          const showColor = isColorDot(choice.asset);
+          const showShape = !showColor && isGeometricShape(choice.asset);
           const isWin = solved && choice.isCorrect;
           const isWrong = wrongId === choice.id;
 
@@ -86,13 +87,15 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
                               ? 'bg-rose-100 border-rose-400'
                               : 'bg-white border-amber-200 hover:border-amber-400'}`}
             >
-              {showShape
-                ? <PreschoolShapeMark asset={choice.asset} size={64} />
-                : (
-                  <span className={`font-black text-orange-900 ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}>
-                    {glyph}
-                  </span>
-                )}
+              {showColor
+                ? <PreschoolColorDot asset={choice.asset} size={64} />
+                : showShape
+                  ? <PreschoolShapeMark asset={choice.asset} size={64} />
+                  : (
+                    <span className={`font-black text-orange-900 ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}>
+                      {glyph}
+                    </span>
+                  )}
             </motion.button>
           );
         })}

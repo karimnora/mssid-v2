@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolChoice, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
+import { PreschoolColorDot, isColorDot } from './PreschoolShapeMark';
 
 interface PreschoolSequenceProps {
   activity: PreschoolActivity;
@@ -62,7 +63,7 @@ export const PreschoolSequence: React.FC<PreschoolSequenceProps> = ({
             className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border-2 border-amber-200 shadow-sm
                        flex items-center justify-center text-3xl sm:text-4xl select-none"
           >
-            {item}
+            {isColorDot(item) ? <PreschoolColorDot asset={item} size={40} /> : item}
           </div>
         ))}
 
@@ -79,7 +80,9 @@ export const PreschoolSequence: React.FC<PreschoolSequenceProps> = ({
                         ? 'bg-emerald-100 border-4 border-emerald-400'
                         : 'bg-amber-100 border-2 border-dashed border-amber-400 text-amber-600'}`}
         >
-          {solved ? answer : '?'}
+          {solved
+            ? (isColorDot(answer) ? <PreschoolColorDot asset={answer} size={40} /> : answer)
+            : '?'}
         </motion.div>
       </div>
 
@@ -112,7 +115,9 @@ export const PreschoolSequence: React.FC<PreschoolSequenceProps> = ({
                             ? 'bg-rose-100 border-rose-400'
                             : 'bg-white border-amber-200 hover:border-amber-400 text-orange-900'}`}
           >
-            {choice.asset}
+            {isColorDot(choice.asset)
+              ? <PreschoolColorDot asset={choice.asset} size={56} />
+              : choice.asset}
           </motion.button>
         ))}
       </div>

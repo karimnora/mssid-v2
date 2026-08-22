@@ -103,12 +103,12 @@ export const NUMBERS_MODULE_0_TO_10: PreschoolModule = {
       stepNumber: 5,
       interactionType: 'tap_choice',
       i18n: {
-        ar: { title: 'الأَرْبَعَةُ', promptAudio: 'اِلْمَسِ الرَّقْمَ أَرْبَعَة!', promptText: 'اطلبي من طفلك لمس الرقم 4.', successAudio: 'رَائِع! هَذَا هُوَ الأَرْبَعَة!' },
-        fr: { title: 'Quatre', promptAudio: 'Touche le chiffre quatre !', promptText: 'Demandez à votre enfant de toucher le chiffre 4.', successAudio: 'Super ! Voici le quatre !' },
-        en: { title: 'Four', promptAudio: 'Touch the number four!', promptText: 'Ask your child to tap the number 4.', successAudio: 'Great! That is four!' },
+        ar: { title: 'الأَرْبَعَةُ', promptAudio: 'كَمْ نَجْمَةً تَرَى؟ عُدَّ مَعِي!', promptText: 'اطلبي من طفلك عدّ النجمات الأربع ولمس الرقم الصحيح.', successAudio: 'رَائِع! أَرْبَعُ نَجْمَات!' },
+        fr: { title: 'Quatre', promptAudio: 'Combien vois-tu d\'étoiles ? Compte avec moi !', promptText: 'Demandez à votre enfant de compter les 4 étoiles.', successAudio: 'Super ! Exactement quatre !' },
+        en: { title: 'Four', promptAudio: 'How many stars do you see? Count with me!', promptText: 'Ask your child to count the 4 stars.', successAudio: 'Great! Exactly four!' },
       },
       visualAssets: {
-        mainSvgOrImage: '🦋',
+        mainSvgOrImage: '⭐⭐⭐⭐',
         choices: [
           { id: 'c4', asset: '4', isCorrect: true },
           { id: 'c9', asset: '9', isCorrect: false },

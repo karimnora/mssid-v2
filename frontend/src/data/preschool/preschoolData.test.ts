@@ -3,6 +3,7 @@ import { PRESCHOOL_MODULES } from './index';
 import { PreschoolLanguage } from './types';
 import { PRESCHOOL_BADGES } from './preschoolBadgesData';
 import { CHALLENGE_MODULE_IDS } from '../../components/preschool/useDailyChallenge';
+import { activityPicture, localizeGlyph } from '../../components/preschool/preschoolGlyphs';
 
 const LANGUAGES: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
@@ -161,5 +162,36 @@ describe('Preschool (Mode Éveil) data integrity', () => {
         });
       });
     });
+  });
+
+  it('color tap-choice answers use the matching colored disc, including blue', () => {
+    const dots: Record<string, string> = {
+      red: '🔴', orange: '🟠', yellow: '🟡', green: '🟢', blue: '🔵', purple: '🟣',
+    };
+    const colors = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-colors');
+    expect(colors).toBeTruthy();
+    for (const activity of colors!.activities) {
+      if (activity.interactionType !== 'tap_choice') continue;
+      const expected = dots[String(activity.targetValue)];
+      if (!expected) continue;
+      const correct = activity.visualAssets.choices?.find((c) => c.isCorrect);
+      expect(correct?.asset, activity.id).toBe(expected);
+    }
+  });
+
+  it('the fennec color path follows red, orange, yellow, green, then home', () => {
+    const colors = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-colors');
+    const path = colors?.activities.find((a) => a.id === 'colors-fennec-path');
+    expect(path?.visualAssets.pathStops?.map((s) => s.asset)).toEqual(['🍓', '🍊', '🍋', '🌴', '🏡']);
+  });
+
+  it('FR/EN letter games keep the Arabic glyph and the same picture the voice names', () => {
+    const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
+    const alif = letters?.activities.find((a) => a.id === 'letters-alif-rabbit');
+    expect(alif).toBeTruthy();
+    expect(activityPicture(alif!, 'fr')).toBe('🐰');
+    expect(activityPicture(alif!, 'en')).toBe('🐰');
+    expect(localizeGlyph('أ', 'fr')).toBe('أ');
+    expect(localizeGlyph('أ', 'en')).toBe('أ');
   });
 });

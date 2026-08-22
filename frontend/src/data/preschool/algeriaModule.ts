@@ -48,10 +48,9 @@ export const ALGERIA_MODULE: PreschoolModule = {
         pathToken: { startAsset: '🏜️', endAsset: '🇩🇿', travelerAsset: '🦊' },
         pathStops: [
           { x: 14, y: 32, asset: '🏜️', color: '#fde68a' },
-          { x: 40, y: 16, asset: '🐪', color: '#fed7aa' },
-          { x: 72, y: 26, asset: '🌴', color: '#bbf7d0' },
-          { x: 84, y: 56, asset: '⛰️', color: '#e2e8f0' },
-          { x: 56, y: 76, asset: '🌊', color: '#bae6fd' },
+          { x: 42, y: 18, asset: '🌴', color: '#bbf7d0' },
+          { x: 78, y: 32, asset: '⛰️', color: '#e2e8f0' },
+          { x: 82, y: 66, asset: '🌊', color: '#bae6fd' },
           { x: 22, y: 78, asset: '🇩🇿', color: '#86efac' },
         ],
       },

@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
 import { NUMBERS_MODULE_0_TO_10 } from '../../data/preschool/numbersModule';
+import { COLORS_MODULE } from '../../data/preschool/colorsModule';
 
 vi.mock('./usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
@@ -44,5 +45,11 @@ describe('PreschoolTapChoice', () => {
     fireEvent.click(screen.getByLabelText('0'));
     vi.advanceTimersByTime(900);
     expect(onComplete).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows a real blue disc in the blue color activity', () => {
+    const blue = COLORS_MODULE.activities.find((a) => a.id === 'colors-blue-sea')!;
+    render(<PreschoolTapChoice activity={blue} language="ar" onComplete={vi.fn()} />);
+    expect(document.querySelector('svg[data-color-dot="blue"]')).toBeTruthy();
   });
 });

@@ -798,13 +798,13 @@ export const LETTERS_MODULE: PreschoolModule = {
         fr: {
           title: 'Ma Petite Oreille Écoute',
           promptAudio: 'Écoute bien ! Mets le papillon et la fraise avec l\'éléphant, le gâteau et le croissant avec le chien !',
-          promptText: 'Aidez l\'enfant à trier selon le premier son : F (fraise, fleur) et K (kiwi, koala).',
+          promptText: 'Aidez l\'enfant à trier selon le premier son arabe : ف (papillon, fraise, éléphant) et ك (gâteau, croissant, chien).',
           successAudio: 'Quelle bonne oreille ! Tu as reconnu tous les sons !',
         },
         en: {
           title: 'My Little Ear Listens',
           promptAudio: 'Listen carefully! Put the butterfly and the strawberry with the elephant, the cake and the croissant with the dog!',
-          promptText: 'Help your child sort by first sound: F (frog, flower) and K (kiwi, kite).',
+          promptText: 'Help your child sort by the Arabic first sound: ف (butterfly, strawberry, elephant) and ك (cake, croissant, dog).',
           successAudio: 'What a smart ear! You heard every sound correctly!',
         },
       },

@@ -2,8 +2,20 @@ import React from 'react';
 
 type ShapeKind = 'circle' | 'square' | 'triangle' | 'diamond' | 'star' | 'heart';
 
+/** Color discs used in Mes couleurs — never treat these as hollow geometric shapes. */
+const COLOR_DOT_FILL: Record<string, { fill: string; id: string }> = {
+  '🔴': { fill: '#ef4444', id: 'red' },
+  '🟠': { fill: '#f97316', id: 'orange' },
+  '🟡': { fill: '#eab308', id: 'yellow' },
+  '🟢': { fill: '#22c55e', id: 'green' },
+  '🔵': { fill: '#3b82f6', id: 'blue' },
+  '🟣': { fill: '#a855f7', id: 'purple' },
+  '🟤': { fill: '#a16207', id: 'brown' },
+  '⚫': { fill: '#1e293b', id: 'black' },
+};
+
 const EMOJI_TO_SHAPE: Record<string, ShapeKind> = {
-  '⚪': 'circle', '⭕': 'circle', '🔵': 'circle',
+  '⚪': 'circle', '⭕': 'circle',
   '🟦': 'square', '⬜': 'square', '🔲': 'square',
   '🔺': 'triangle',
   '🔷': 'diamond', '🔹': 'diamond', '💎': 'diamond', '♦️': 'diamond',
@@ -11,9 +23,34 @@ const EMOJI_TO_SHAPE: Record<string, ShapeKind> = {
   '❤️': 'heart', '♥': 'heart', '💌': 'heart',
 };
 
-export function isGeometricShape(asset: string): boolean {
-  return asset in EMOJI_TO_SHAPE;
+export function isColorDot(asset: string): boolean {
+  return asset in COLOR_DOT_FILL;
 }
+
+export function isGeometricShape(asset: string): boolean {
+  return !isColorDot(asset) && asset in EMOJI_TO_SHAPE;
+}
+
+export const PreschoolColorDot: React.FC<{ asset: string; size?: number; className?: string }> = ({
+  asset, size = 56, className = '',
+}) => {
+  const spec = COLOR_DOT_FILL[asset];
+  if (!spec) {
+    return <span className={className} style={{ fontSize: size * 0.9 }}>{asset}</span>;
+  }
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      className={`shrink-0 ${className}`}
+      aria-hidden="true"
+      data-color-dot={spec.id}
+    >
+      <circle cx="50" cy="50" r="40" fill={spec.fill} stroke="rgba(15,23,42,0.2)" strokeWidth="4" />
+    </svg>
+  );
+};
 
 interface PreschoolShapeMarkProps {
   asset: string;

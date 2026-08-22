@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
+import { PreschoolColorDot, isColorDot } from './PreschoolShapeMark';
 
 interface PreschoolMemoryCardsProps {
   activity: PreschoolActivity;
@@ -93,7 +94,9 @@ export const PreschoolMemoryCards: React.FC<PreschoolMemoryCardsProps> = ({ acti
                 : 'bg-amber-300 border-amber-500'
             }`}
           >
-            {isFaceUp ? card.asset : '❓'}
+            {isFaceUp
+              ? (isColorDot(card.asset) ? <PreschoolColorDot asset={card.asset} size={48} /> : card.asset)
+              : '❓'}
           </motion.button>
         );
       })}

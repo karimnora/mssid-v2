@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
-import { rhymeSortAssets } from './preschoolGlyphs';
+import { PreschoolColorDot, isColorDot } from './PreschoolShapeMark';
 
 interface PreschoolSortingProps {
   activity: PreschoolActivity;
@@ -22,10 +22,9 @@ interface ItemState {
 // Pointer Events technique as PreschoolDragDrop, generalized to N bins. A wrong-bin drop never
 // "locks in" — the item snaps back to the tray for another try, exactly like a wrong tap elsewhere
 // in Mode Éveil: mistakes cost nothing but a soft sound.
-export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, language, onComplete }) => {
-  const rhyme = activity.id === 'letters-rhyme-sort' ? rhymeSortAssets(language) : null;
-  const bins = rhyme?.bins ?? activity.visualAssets.sortBins ?? [];
-  const sortItems = rhyme?.items ?? activity.visualAssets.sortItems ?? [];
+export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, onComplete }) => {
+  const bins = activity.visualAssets.sortBins ?? [];
+  const sortItems = activity.visualAssets.sortItems ?? [];
   const binRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [items, setItems] = useState<ItemState[]>(
     sortItems.map((it) => ({ id: it.id, asset: it.asset, correctBinId: it.correctBinId, sortedBinId: null, offset: { x: 0, y: 0 } }))
@@ -96,7 +95,9 @@ export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, la
             ref={(el) => { binRefs.current[bin.id] = el; }}
             className="w-28 h-28 sm:w-32 sm:h-32 rounded-[1.75rem] border-4 border-dashed border-sky-400 bg-sky-50 flex items-center justify-center"
           >
-            <span className="text-5xl select-none" aria-hidden="true">{bin.labelAsset}</span>
+            {isColorDot(bin.labelAsset)
+              ? <PreschoolColorDot asset={bin.labelAsset} size={56} />
+              : <span className="text-5xl select-none" aria-hidden="true">{bin.labelAsset}</span>}
           </div>
         ))}
       </div>
@@ -114,7 +115,9 @@ export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, la
             role="button"
             aria-label={it.asset}
           >
-            {it.asset}
+            {isColorDot(it.asset)
+              ? <PreschoolColorDot asset={it.asset} size={56} />
+              : it.asset}
           </motion.div>
         ))}
       </div>
