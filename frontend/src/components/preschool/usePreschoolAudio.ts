@@ -269,7 +269,7 @@ function playNoiseBurst(dur: number, peak: number, freq = 800, q = 2, delay = 0)
 }
 
 export type TownVehicleKind = 'bike' | 'car' | 'moto' | 'train' | 'taxi';
-export type FarmWalker = 'rabbit' | 'chick' | 'sheep' | 'tractor' | 'goat' | 'horse' | 'hen' | 'cow';
+export type FarmWalker = 'rabbit' | 'chick' | 'sheep' | 'tractor' | 'goat' | 'horse' | 'hen' | 'cow' | 'duck' | 'cat' | 'dog' | 'donkey' | 'rooster' | 'bee';
 
 function playHorn(delay = 0) {
   const ctx = getAudioContext();
@@ -631,13 +631,16 @@ function playTractorStart() {
 /** Cri de l’animal (ou démarrage du tracteur) — au premier mouvement. */
 export function playFarmStart(kind: FarmWalker) {
   resumeTownAudio();
-  if (kind === 'sheep' || kind === 'cow' || kind === 'hen' || kind === 'horse') {
+  const recorded: FarmWalker[] = ['sheep', 'cow', 'hen', 'horse', 'cat', 'dog', 'rooster', 'bee'];
+  if (recorded.includes(kind)) {
     playSoundBoxClip(kind, 2500);
     return;
   }
   if (kind === 'tractor') playTractorStart();
   else if (kind === 'chick') playChickPeep();
   else if (kind === 'goat') playGoatBleat();
+  else if (kind === 'duck') playDuckQuack();
+  else if (kind === 'donkey') playDonkeyBray();
   else playRabbitSqueak();
 }
 
@@ -775,7 +778,9 @@ export function setFarmMoving(kind: FarmWalker, moving: boolean) {
     motionStop = startEngineLoop({ hz: 42, type: 'sawtooth', peak: 0.08, noise: 0.05, lfoHz: 2.2 });
     return;
   }
-  const stepEvery = kind === 'cow' || kind === 'horse' ? 280 : 200;
+  const stepEvery = kind === 'cow' || kind === 'horse' || kind === 'donkey' ? 280
+    : kind === 'bee' ? 140
+    : 200;
   motionStop = startClickLoop(stepEvery, () => playFarmStep(kind));
   const cry = () => playFarmStart(kind);
   cryTimer = setInterval(cry, 2200);

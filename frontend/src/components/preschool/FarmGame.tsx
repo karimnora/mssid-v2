@@ -30,7 +30,7 @@ type Dir = 'up' | 'down' | 'left' | 'right';
 type PathMode = 'closed' | 'open';
 
 interface PathSeg { x: number; y: number; w: number; h: number }
-interface Patrol { y: number; minX: number; maxX: number; speed: number }
+interface Patrol { y: number; minX: number; maxX: number; speed: number; emoji?: string }
 interface DeadEnd {
   x: number; y: number;
   emoji: string;
@@ -45,6 +45,7 @@ interface FarmMap {
   hay: { x: number; y: number }[];
   deadEnds: DeadEnd[];
   patrols: Patrol[];
+  friends: { x: number; y: number; emoji: string }[];
   goalEmoji: string;
   showBarn: boolean;
 }
@@ -78,6 +79,7 @@ const MAP_RABBIT: FarmMap = {
   hay: [{ x: 500, y: 250 }],
   deadEnds: [],
   patrols: [],
+  friends: [{ x: 300, y: 250, emoji: '🐥' }, { x: 520, y: 400, emoji: '🐔' }],
   goalEmoji: '🥕',
   showBarn: false,
 };
@@ -95,6 +97,7 @@ const MAP_CHICK: FarmMap = {
   hay: [{ x: 560, y: 400 }],
   deadEnds: [],
   patrols: [],
+  friends: [],
   goalEmoji: '🐓',
   showBarn: false,
 };
@@ -112,6 +115,7 @@ const MAP_SHEEP: FarmMap = {
   hay: [{ x: 520, y: 230 }],
   deadEnds: [],
   patrols: [],
+  friends: [{ x: 200, y: 430, emoji: '🐑' }, { x: 500, y: 230, emoji: '🐄' }],
   goalEmoji: '🏠',
   showBarn: true,
 };
@@ -132,6 +136,7 @@ const MAP_TRACTOR: FarmMap = {
     hintAr: 'البركة! ليس من هنا', hintFr: 'Le bassin ! Pas par là', hintEn: 'The pond! Not this way',
   }],
   patrols: [],
+  friends: [],
   goalEmoji: '🌾',
   showBarn: false,
 };
@@ -155,6 +160,7 @@ const MAP_GOAT: FarmMap = {
     hintAr: 'الفزاعة! ارجع', hintFr: 'L’épouvantail ! Reviens', hintEn: 'Scarecrow! Go back',
   }],
   patrols: [],
+  friends: [],
   goalEmoji: '🫒',
   showBarn: false,
 };
@@ -176,6 +182,7 @@ const MAP_HORSE: FarmMap = {
     hintAr: 'مسدود! يميناً', hintFr: 'Cul-de-sac ! Va à droite', hintEn: 'Dead end! Go right',
   }],
   patrols: [],
+  friends: [],
   goalEmoji: '🪣',
   showBarn: false,
 };
@@ -203,6 +210,7 @@ const MAP_HEN: FarmMap = {
     },
   ],
   patrols: [],
+  friends: [],
   goalEmoji: '🪺',
   showBarn: false,
 };
@@ -226,8 +234,146 @@ const MAP_COW: FarmMap = {
     hintAr: 'التبن! الحليب يساراً', hintFr: 'Le foin ! Le lait est à gauche', hintEn: 'Hay! Milk is to the left',
   }],
   patrols: [{ y: 410, minX: 260, maxX: 520, speed: 28 }],
+  friends: [{ x: 300, y: 90, emoji: '🐔' }, { x: 560, y: 300, emoji: '🐑' }],
   goalEmoji: '🥛',
   showBarn: true,
+};
+
+// 9. Canard — C fermé jusqu’à la mare
+const MAP_DUCK: FarmMap = {
+  segs: [
+    { x: 40,  y: 40,  w: 720, h: 110 },
+    { x: 40,  y: 40,  w: 110, h: 400 },
+    { x: 40,  y: 330, w: 400, h: 110 },
+  ],
+  start: { x: 700, y: 95 },
+  goal: { x: 360, y: 385 },
+  trees: [{ x: 280, y: 200 }, { x: 500, y: 220 }, { x: 650, y: 280 }],
+  hay: [{ x: 560, y: 400 }],
+  deadEnds: [],
+  patrols: [],
+  friends: [{ x: 250, y: 250, emoji: '🐸' }, { x: 620, y: 180, emoji: '🐥' }],
+  goalEmoji: '💧',
+  showBarn: false,
+};
+
+// 10. Chat — fourche : poisson à gauche, pelote à droite
+const MAP_CAT: FarmMap = {
+  segs: [
+    { x: 40,  y: 40,  w: 720, h: 120 },
+    { x: 70,  y: 40,  w: 120, h: 420 },
+    { x: 600, y: 40,  w: 120, h: 420 },
+  ],
+  start: { x: 400, y: 100 },
+  goal: { x: 130, y: 400 },
+  trees: [{ x: 300, y: 260 }, { x: 480, y: 280 }],
+  hay: [{ x: 400, y: 400 }],
+  deadEnds: [{
+    x: 660, y: 400, emoji: '🧶',
+    hintAr: 'الكُرَة! السَّمَكَة يَسَاراً', hintFr: 'La pelote ! Le poisson est à gauche', hintEn: 'Yarn! The fish is to the left',
+  }],
+  patrols: [{ y: 100, minX: 180, maxX: 520, speed: 32, emoji: '🐭' }],
+  friends: [{ x: 400, y: 250, emoji: '🐄' }, { x: 250, y: 420, emoji: '🐔' }],
+  goalEmoji: '🐟',
+  showBarn: false,
+};
+
+// 11. Chien — labyrinthe fermé jusqu’à l’os
+const MAP_DOG: FarmMap = {
+  segs: [
+    { x: 40,  y: 36,  w: 720, h: 110 },
+    { x: 40,  y: 36,  w: 110, h: 250 },
+    { x: 40,  y: 176, w: 500, h: 110 },
+    { x: 430, y: 176, w: 110, h: 280 },
+    { x: 430, y: 356, w: 330, h: 110 },
+  ],
+  start: { x: 700, y: 90 },
+  goal: { x: 700, y: 410 },
+  trees: [{ x: 250, y: 320 }, { x: 620, y: 230 }],
+  hay: [{ x: 280, y: 90 }],
+  deadEnds: [{
+    x: 95, y: 230, emoji: '🐱',
+    hintAr: 'القِطَّة نَائِمَة! يَمِيناً', hintFr: 'Le chat dort ! Va à droite', hintEn: 'The cat is sleeping! Go right',
+  }],
+  patrols: [{ y: 90, minX: 200, maxX: 520, speed: 30, emoji: '🐔' }],
+  friends: [{ x: 180, y: 400, emoji: '🐑' }, { x: 680, y: 250, emoji: '🐄' }],
+  goalEmoji: '🦴',
+  showBarn: false,
+};
+
+// 12. Âne — S ouvert vers le foin (ferme algérienne)
+const MAP_DONKEY: FarmMap = {
+  segs: [
+    { x: 40,  y: 36,  w: 720, h: 110 },
+    { x: 650, y: 36,  w: 110, h: 230 },
+    { x: 40,  y: 160, w: 720, h: 110 },
+    { x: 40,  y: 160, w: 110, h: 290 },
+    { x: 40,  y: 350, w: 720, h: 110 },
+  ],
+  start: { x: 95, y: 90 },
+  goal: { x: 700, y: 405 },
+  trees: [{ x: 240, y: 300 }, { x: 500, y: 90 }],
+  hay: [{ x: 240, y: 90 }],
+  deadEnds: [{
+    x: 400, y: 215, emoji: '🌵',
+    hintAr: 'الصَّبَّار! اِتْبَعِ الدَّرْب', hintFr: 'Le cactus ! Reste sur le sentier', hintEn: 'Cactus! Stay on the path',
+  }],
+  patrols: [{ y: 405, minX: 200, maxX: 500, speed: 26, emoji: '🐐' }],
+  friends: [{ x: 300, y: 90, emoji: '🐑' }, { x: 520, y: 300, emoji: '🐔' }, { x: 180, y: 280, emoji: '🐄' }],
+  goalEmoji: '🌾',
+  showBarn: true,
+};
+
+// 13. Coq — trois chemins, le poulailler au milieu
+const MAP_ROOSTER: FarmMap = {
+  segs: [
+    { x: 40,  y: 360, w: 720, h: 110 },
+    { x: 40,  y: 40,  w: 110, h: 430 },
+    { x: 340, y: 40,  w: 110, h: 430 },
+    { x: 640, y: 40,  w: 110, h: 430 },
+  ],
+  start: { x: 400, y: 415 },
+  goal: { x: 395, y: 95 },
+  trees: [{ x: 250, y: 240 }, { x: 520, y: 240 }],
+  hay: [],
+  deadEnds: [
+    {
+      x: 95, y: 95, emoji: '🌙',
+      hintAr: 'اللَّيْل! الحَظِيرَة فِي الوَسَط', hintFr: 'La nuit ! Le poulailler est au milieu', hintEn: 'Night! The coop is in the middle',
+    },
+    {
+      x: 695, y: 95, emoji: '🥚',
+      hintAr: 'بَيْضَة! الحَظِيرَة فِي الوَسَط', hintFr: 'Un œuf ! Le poulailler est au milieu', hintEn: 'An egg! The coop is in the middle',
+    },
+  ],
+  patrols: [{ y: 415, minX: 180, maxX: 620, speed: 34, emoji: '🐥' }],
+  friends: [{ x: 250, y: 400, emoji: '🐔' }, { x: 550, y: 400, emoji: '🐔' }],
+  goalEmoji: '🏠',
+  showBarn: true,
+};
+
+// 14. Abeille — labyrinthe ouvert vers le tournesol
+const MAP_BEE: FarmMap = {
+  segs: [
+    { x: 40,  y: 36,  w: 500, h: 110 },
+    { x: 430, y: 36,  w: 110, h: 250 },
+    { x: 40,  y: 176, w: 500, h: 110 },
+    { x: 40,  y: 176, w: 110, h: 290 },
+    { x: 40,  y: 356, w: 720, h: 110 },
+    { x: 640, y: 176, w: 110, h: 290 },
+  ],
+  start: { x: 95, y: 90 },
+  goal: { x: 695, y: 230 },
+  trees: [{ x: 250, y: 300 }, { x: 500, y: 300 }],
+  hay: [{ x: 280, y: 90 }],
+  deadEnds: [{
+    x: 95, y: 410, emoji: '🕸️',
+    hintAr: 'العَنْكَبُوت! اِصْعَدْ يَمِيناً', hintFr: 'L’araignée ! Monte à droite', hintEn: 'Spider! Go up, then right',
+  }],
+  patrols: [{ y: 90, minX: 200, maxX: 400, speed: 36, emoji: '🦋' }],
+  friends: [{ x: 180, y: 250, emoji: '🌸' }, { x: 560, y: 90, emoji: '🌼' }, { x: 400, y: 420, emoji: '🐄' }],
+  goalEmoji: '🌻',
+  showBarn: false,
 };
 
 const LEVELS: FarmLevelCfg[] = [
@@ -255,6 +401,24 @@ const LEVELS: FarmLevelCfg[] = [
   { walker: 'cow',     walkerEmoji: '🐄', mode: 'open', speed: 140, timerSecs: 90, map: MAP_COW,
     finishAr: '🥛 الحليب', finishFr: '🥛 Lait', finishEn: '🥛 Milk',
     missionAr: 'أَوْصِلِ البَقَرَةَ إِلَى الحَلِيب! (يَسَاراً)', missionFr: 'Amène la vache au lait — à gauche !', missionEn: 'Take the cow to the milk — go left!' },
+  { walker: 'duck',    walkerEmoji: '🦆', mode: 'closed', speed: 120, timerSecs: null, map: MAP_DUCK,
+    finishAr: '💧 البِرْكَة', finishFr: '💧 Mare', finishEn: '💧 Pond',
+    missionAr: 'أَوْصِلِ البَطَّةَ إِلَى البِرْكَة!', missionFr: 'Amène le canard jusqu’à la mare !', missionEn: 'Take the duck to the pond!' },
+  { walker: 'cat',     walkerEmoji: '🐱', mode: 'open', speed: 130, timerSecs: null, map: MAP_CAT,
+    finishAr: '🐟 السَّمَكَة', finishFr: '🐟 Poisson', finishEn: '🐟 Fish',
+    missionAr: 'أَوْصِلِ القِطَّةَ إِلَى السَّمَكَة، لَا الكُرَة!', missionFr: 'Amène le chat au poisson — pas à la pelote !', missionEn: 'Take the cat to the fish — not the yarn!' },
+  { walker: 'dog',     walkerEmoji: '🐶', mode: 'closed', speed: 130, timerSecs: null, map: MAP_DOG,
+    finishAr: '🦴 العَظْمَة', finishFr: '🦴 Os', finishEn: '🦴 Bone',
+    missionAr: 'أَوْصِلِ الكَلْبَ إِلَى العَظْمَة!', missionFr: 'Amène le chien jusqu’à l’os !', missionEn: 'Take the dog to the bone!' },
+  { walker: 'donkey',  walkerEmoji: '🫏', mode: 'open', speed: 125, timerSecs: null, map: MAP_DONKEY,
+    finishAr: '🌾 التِّبْن', finishFr: '🌾 Foin', finishEn: '🌾 Hay',
+    missionAr: 'أَوْصِلِ الحِمَارَ إِلَى التِّبْن!', missionFr: 'Amène l’âne jusqu’au foin !', missionEn: 'Take the donkey to the hay!' },
+  { walker: 'rooster', walkerEmoji: '🐓', mode: 'open', speed: 135, timerSecs: null, map: MAP_ROOSTER,
+    finishAr: '🏠 الحَظِيرَة', finishFr: '🏠 Poulailler', finishEn: '🏠 Coop',
+    missionAr: 'أَوْصِلِ الدِّيكَ إِلَى الحَظِيرَة (فِي الوَسَط)!', missionFr: 'Amène le coq au poulailler — au milieu !', missionEn: 'Take the rooster to the coop — in the middle!' },
+  { walker: 'bee',     walkerEmoji: '🐝', mode: 'open', speed: 145, timerSecs: 80, map: MAP_BEE,
+    finishAr: '🌻 دَوَّار الشَّمْس', finishFr: '🌻 Tournesol', finishEn: '🌻 Sunflower',
+    missionAr: 'أَوْصِلِ النَّحْلَةَ إِلَى الزَّهْرَة! لَا العَنْكَبُوت', missionFr: 'Amène l’abeille à la fleur — pas l’araignée !', missionEn: 'Take the bee to the flower — not the spider!' },
 ];
 
 const LEVEL_DEFS: Omit<LevelDef, 'unlocked' | 'earnedStars'>[] = [
@@ -286,10 +450,34 @@ const LEVEL_DEFS: Omit<LevelDef, 'unlocked' | 'earnedStars'>[] = [
     titleAr: 'الدجاجة والعش', titleFr: 'Poule → nid', titleEn: 'Hen → nest',
     descAr: 'العش في الوسط', descFr: 'Le nid est au milieu', descEn: 'The nest is in the middle',
     gradient: 'from-rose-400 to-orange-500' },
-  { level: 8, emoji: '🐄', diffLabel: '🏆',
+  { level: 8, emoji: '🐄', diffLabel: '⭐⭐⭐',
     titleAr: 'البقرة والحليب', titleFr: 'Vache → lait', titleEn: 'Cow → milk',
     descAr: 'الحليب يساراً، ليس التبن', descFr: 'Le lait est à gauche, pas le foin', descEn: 'Milk is to the left, not the hay',
     gradient: 'from-rose-400 to-pink-600' },
+  { level: 9, emoji: '🦆', diffLabel: '⭐⭐',
+    titleAr: 'البطة والبركة', titleFr: 'Canard → mare', titleEn: 'Duck → pond',
+    descAr: 'أوصل البطة إلى البركة', descFr: 'Amène le canard à la mare', descEn: 'Take the duck to the pond',
+    gradient: 'from-sky-400 to-teal-500' },
+  { level: 10, emoji: '🐱', diffLabel: '⭐⭐',
+    titleAr: 'القطة والسمكة', titleFr: 'Chat → poisson', titleEn: 'Cat → fish',
+    descAr: 'إلى السمكة، ليس الكرة', descFr: 'Vers le poisson, pas la pelote', descEn: 'To the fish, not the yarn',
+    gradient: 'from-violet-400 to-purple-600' },
+  { level: 11, emoji: '🐶', diffLabel: '⭐⭐',
+    titleAr: 'الكلب والعظمة', titleFr: 'Chien → os', titleEn: 'Dog → bone',
+    descAr: 'أوصل الكلب إلى العظمة', descFr: 'Amène le chien à l’os', descEn: 'Take the dog to the bone',
+    gradient: 'from-amber-500 to-orange-700' },
+  { level: 12, emoji: '🫏', diffLabel: '⭐⭐⭐',
+    titleAr: 'الحمار والتبن', titleFr: 'Âne → foin', titleEn: 'Donkey → hay',
+    descAr: 'أوصل الحمار إلى التبن', descFr: 'Amène l’âne au foin', descEn: 'Take the donkey to the hay',
+    gradient: 'from-stone-400 to-neutral-600' },
+  { level: 13, emoji: '🐓', diffLabel: '⭐⭐⭐',
+    titleAr: 'الديك والحظيرة', titleFr: 'Coq → poulailler', titleEn: 'Rooster → coop',
+    descAr: 'الحظيرة في الوسط', descFr: 'Le poulailler est au milieu', descEn: 'The coop is in the middle',
+    gradient: 'from-red-400 to-rose-600' },
+  { level: 14, emoji: '🐝', diffLabel: '🏆',
+    titleAr: 'النحلة والزهرة', titleFr: 'Abeille → fleur', titleEn: 'Bee → flower',
+    descAr: 'إلى الزهرة، ليس العنكبوت', descFr: 'Vers la fleur, pas l’araignée', descEn: 'To the flower, not the spider',
+    gradient: 'from-yellow-400 to-amber-500' },
 ];
 
 function isOnPath(px: number, py: number, map: FarmMap): boolean {
@@ -340,6 +528,42 @@ function makeWalkerTexture(scene: Phaser.Scene, key: string, walker: FarmWalker)
     g.fillStyle(0xdc2626); g.fillTriangle(44, 10, 48, 4, 52, 10);
     g.fillStyle(0xf97316); g.fillTriangle(50, 22, 60, 24, 50, 28);
     g.fillStyle(0x1e293b); g.fillCircle(48, 20, 2);
+  } else if (walker === 'duck') {
+    g.fillStyle(0xf8fafc); g.fillEllipse(30, 34, 34, 20);
+    g.fillStyle(0xfacc15); g.fillCircle(48, 24, 10);
+    g.fillStyle(0xf97316); g.fillEllipse(58, 26, 14, 6);
+    g.fillStyle(0x1e293b); g.fillCircle(50, 22, 2);
+    g.fillStyle(0x22c55e); g.fillEllipse(18, 28, 10, 6);
+  } else if (walker === 'cat') {
+    g.fillStyle(0xf97316); g.fillEllipse(32, 34, 32, 22);
+    g.fillStyle(0xfb923c); g.fillCircle(44, 22, 12);
+    g.fillStyle(0xf97316); g.fillTriangle(36, 14, 40, 4, 44, 14); g.fillTriangle(48, 14, 54, 4, 56, 14);
+    g.fillStyle(0x1e293b); g.fillCircle(42, 20, 2); g.fillCircle(50, 20, 2);
+    g.fillStyle(0xf9a8d4); g.fillTriangle(46, 24, 52, 26, 46, 28);
+  } else if (walker === 'dog') {
+    g.fillStyle(0xb45309); g.fillEllipse(30, 34, 34, 20);
+    g.fillStyle(0x92400e); g.fillCircle(46, 22, 11);
+    g.fillStyle(0x78350f); g.fillEllipse(38, 18, 10, 16); g.fillEllipse(54, 18, 10, 16);
+    g.fillStyle(0x1e293b); g.fillCircle(44, 20, 2); g.fillCircle(50, 20, 2);
+    g.fillStyle(0xf9a8d4); g.fillEllipse(48, 28, 5, 3);
+  } else if (walker === 'donkey') {
+    g.fillStyle(0xa8a29e); g.fillEllipse(30, 34, 36, 20);
+    g.fillStyle(0x78716c); g.fillCircle(48, 22, 10);
+    g.fillStyle(0x57534e); g.fillEllipse(42, 8, 6, 18); g.fillEllipse(54, 8, 6, 18);
+    g.fillStyle(0x1e293b); g.fillCircle(50, 20, 2);
+    g.fillStyle(0xf5f5f4); g.fillRect(8, 28, 8, 12);
+  } else if (walker === 'rooster') {
+    g.fillStyle(0xf97316); g.fillEllipse(30, 34, 30, 20);
+    g.fillStyle(0xfacc15); g.fillCircle(46, 22, 10);
+    g.fillStyle(0xdc2626); g.fillTriangle(42, 8, 48, 0, 54, 10);
+    g.fillStyle(0xf97316); g.fillTriangle(52, 22, 62, 24, 52, 28);
+    g.fillStyle(0x7c3aed); g.fillEllipse(14, 28, 12, 10);
+    g.fillStyle(0x1e293b); g.fillCircle(48, 20, 2);
+  } else if (walker === 'bee') {
+    g.fillStyle(0xfacc15); g.fillEllipse(32, 30, 28, 18);
+    g.fillStyle(0x1e293b); g.fillRect(22, 22, 5, 16); g.fillRect(32, 22, 5, 16); g.fillRect(42, 22, 5, 16);
+    g.fillStyle(0xe0f2fe, 0.85); g.fillEllipse(20, 16, 14, 10); g.fillEllipse(44, 16, 14, 10);
+    g.fillStyle(0x1e293b); g.fillCircle(48, 28, 2);
   } else {
     g.fillStyle(0xf8fafc); g.fillEllipse(32, 32, 40, 24);
     g.fillStyle(0x1e293b); g.fillEllipse(22, 30, 10, 8); g.fillEllipse(40, 36, 12, 8);
@@ -456,7 +680,8 @@ function drawDirtPath(g: Phaser.GameObjects.Graphics, map: FarmMap, closed: bool
 }
 
 export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) => {
-  const { maxUnlocked, stars, completeLevel } = useLevelProgress('farm', 8);
+  const { maxUnlocked, stars, completeLevel } = useLevelProgress('farm', 14);
+  const unlockedCap = (stars[8] ?? 0) > 0 ? Math.max(maxUnlocked, 9) : maxUnlocked;
   const [phase, setPhase] = useState<'select' | 'play'>('select');
   const [activeLevel, setLevel] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -496,7 +721,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
       timeUp: t('⏰ انتهى الوقت! 😅', '⏰ Temps écoulé ! 😅', '⏰ Time’s up! 😅'),
       fence:  t('الطريق المسيَّج!', 'Reste sur le sentier !', 'Stay on the path!'),
       grass:  t('العشب بطيء', 'L’herbe est plus lente', 'Grass is slower'),
-      sheep:  t('خروف يعبر!', 'Mouton qui traverse !', 'Sheep crossing!'),
+      cross:  t('حَيَوَان يَعْبُر!', 'Un animal traverse !', 'An animal is crossing!'),
     };
 
     class FarmScene extends Phaser.Scene {
@@ -555,6 +780,10 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
           if (d.emoji === '💧') drawPond(dG, d.x, d.y);
           this.add.text(d.x, d.y, d.emoji, { fontSize: '36px' }).setOrigin(0.5).setDepth(4);
         });
+        map.friends.forEach((f) => {
+          this.add.text(f.x, f.y, f.emoji, { fontSize: '32px' }).setOrigin(0.5).setDepth(4);
+        });
+        if (map.goalEmoji === '💧') drawPond(dG, map.goal.x, map.goal.y);
 
         const gx = map.goal.x, gy = map.goal.y;
         drawGoalPad(dG, gx, gy);
@@ -582,7 +811,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
         this.walker.setCollideWorldBounds(true).setDepth(6).setOrigin(0.5, 0.5);
 
         map.patrols.forEach((p) => {
-          const txt = this.add.text(p.minX, p.y, '🐑', { fontSize: '36px' }).setOrigin(0.5).setDepth(5);
+          const txt = this.add.text(p.minX, p.y, p.emoji ?? '🐑', { fontSize: '36px' }).setOrigin(0.5).setDepth(5);
           this.movers.push({ obj: txt, dir: 1, p });
         });
 
@@ -734,7 +963,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
           if (m.obj.x > m.p.maxX || m.obj.x < m.p.minX) m.dir *= -1;
           if (Phaser.Math.Distance.Between(this.walker.x, this.walker.y, m.obj.x, m.obj.y) < 30) {
             this.walker.x += this.walker.x > m.obj.x ? 8 : -8;
-            this.bumpHint(labels.sheep, 'sheep');
+            this.bumpHint(labels.cross, 'sheep');
           }
         });
 
@@ -782,7 +1011,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
         onSelectLevel={lvl => { setLevel(lvl); setPhase('play'); }}
         levels={LEVEL_DEFS.map(d => ({
           ...d,
-          unlocked: d.level <= maxUnlocked,
+          unlocked: d.level <= unlockedCap,
           earnedStars: stars[d.level] ?? 0,
         }))}
       />
