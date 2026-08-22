@@ -101,5 +101,7 @@ export function useLessonQuiz(options: {
     handleSelectGameOption,
     handleResetQuiz,
     initializeShuffledQuiz,
+    quizFullyPassed:
+      lesson.quiz.length > 0 && awardedQuizIds.size === lesson.quiz.length,
   };
 }

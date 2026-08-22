@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { createFreshGuestProfile, normalizeUserProfile } from './useUserProgress';
+import {
+  applyLessonXp,
+  createFreshGuestProfile,
+  markLessonQuizComplete,
+  normalizeUserProfile,
+} from './useUserProgress';
 import { UserProfile } from '../types';
 
 describe('createFreshGuestProfile', () => {
@@ -23,5 +28,23 @@ describe('normalizeUserProfile', () => {
     const { completedLabIds: _dropped, ...legacy } = createFreshGuestProfile('2AP');
     const normalized = normalizeUserProfile(legacy as UserProfile);
     expect(normalized.completedLabIds).toEqual([]);
+  });
+});
+
+describe('lesson completion', () => {
+  it('awards XP without marking the lesson complete', () => {
+    const profile = createFreshGuestProfile('1AP');
+    const next = applyLessonXp(profile, 'math-1ap-nombres', 15);
+    expect(next.xp).toBe(15);
+    expect(next.completedLessonIds).toEqual([]);
+    expect(next.quizFullyValidatedLessonIds).toEqual([]);
+    expect(next.quizScores['math-1ap-nombres']).toBe(15);
+  });
+
+  it('marks the lesson complete only after a full quiz', () => {
+    const withXp = applyLessonXp(createFreshGuestProfile('1AP'), 'math-1ap-nombres', 15);
+    const done = markLessonQuizComplete(withXp, 'math-1ap-nombres');
+    expect(done.completedLessonIds).toEqual(['math-1ap-nombres']);
+    expect(done.quizFullyValidatedLessonIds).toEqual(['math-1ap-nombres']);
   });
 });

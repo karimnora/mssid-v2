@@ -180,6 +180,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const isLastStep = currentStepIndex >= availableSteps.length - 1;
   const nextStep = !isLastStep ? availableSteps[currentStepIndex + 1] : null;
   const prevStep = currentStepIndex > 0 ? availableSteps[currentStepIndex - 1] : null;
+  const isCompactGrade = grade === '1AP' || grade === '2AP';
+  const hasQuiz = lesson.quiz.length > 0;
+  const quizPassed = quizAlreadyValidated || quiz.quizFullyPassed;
+  const canCompleteLesson = !hasQuiz || quizPassed;
 
   const goToStep = (index: number) => {
     const clamped = Math.max(0, Math.min(availableSteps.length - 1, index));
@@ -253,55 +257,63 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
-          {enablePrintablePDFs && (
-            <Button
-              variant="outline"
-              size="sm"
-              icon={<Printer className="w-4 h-4" />}
-              onClick={() => setShowRevisionSheet(true)}
-              title="فيشة مراجعة قابلة للطباعة"
-            >
-              <span className="hidden sm:inline">فيشة المراجعة</span>
-              <span className="sm:hidden">📄</span>
-            </Button>
-          )}
-
-          {allLessons.length > 1 && (
-            <>
+        {!isCompactGrade && (
+          <div className="flex items-center gap-2">
+            {enablePrintablePDFs && (
               <Button
                 variant="outline"
-                size="md"
-                icon={<ChevronRight className="w-4 h-4" />}
-                disabled={!previousLesson}
-                onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
-                title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
+                size="sm"
+                icon={<Printer className="w-4 h-4" />}
+                onClick={() => setShowRevisionSheet(true)}
+                title="فيشة مراجعة قابلة للطباعة"
               >
-                <span className="hidden sm:inline">الدرس السابق</span>
-                <span className="sm:hidden">السابق</span>
+                <span className="hidden sm:inline">فيشة المراجعة</span>
+                <span className="sm:hidden">📄</span>
               </Button>
+            )}
 
-              <Button
-                variant={isLastStep ? 'info' : 'outline'}
-                size="md"
-                icon={isLastStep ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
-                iconPosition="end"
-                disabled={!nextLesson || !isLastStep}
-                onClick={() => isLastStep && nextLesson && onSelectLesson?.(nextLesson)}
-                title={
-                  !isLastStep
-                    ? 'أكمل جميع مراحل هذا الدرس للتمكن من الانتقال للدرس التالي 🔒'
-                    : nextLesson
-                    ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}`
-                    : 'لا يوجد درس تالي'
-                }
-              >
-                <span className="hidden sm:inline">الدرس التالي</span>
-                <span className="sm:hidden">التالي</span>
-              </Button>
-            </>
-          )}
-        </div>
+            {allLessons.length > 1 && (
+              <>
+                <Button
+                  variant="outline"
+                  size="md"
+                  icon={<ChevronRight className="w-4 h-4" />}
+                  disabled={!previousLesson}
+                  onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
+                  title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
+                >
+                  <span className="hidden sm:inline">الدرس السابق</span>
+                  <span className="sm:hidden">السابق</span>
+                </Button>
+
+                <Button
+                  variant={isLastStep && canCompleteLesson ? 'info' : 'outline'}
+                  size="md"
+                  icon={isLastStep && canCompleteLesson ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
+                  iconPosition="end"
+                  disabled={!nextLesson || !isLastStep || !canCompleteLesson}
+                  onClick={() => {
+                    if (!isLastStep || !canCompleteLesson || !nextLesson) return;
+                    onQuizFullyValidated?.(lesson.id);
+                    onSelectLesson?.(nextLesson);
+                  }}
+                  title={
+                    !canCompleteLesson
+                      ? 'أجب عن الاختبار بشكل صحيح للانتقال للدرس التالي 🔒'
+                      : !isLastStep
+                      ? 'أكمل جميع مراحل هذا الدرس للتمكن من الانتقال للدرس التالي 🔒'
+                      : nextLesson
+                      ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}`
+                      : 'لا يوجد درس تالي'
+                  }
+                >
+                  <span className="hidden sm:inline">الدرس التالي</span>
+                  <span className="sm:hidden">التالي</span>
+                </Button>
+              </>
+            )}
+          </div>
+        )}
       </Card>
 
       {showRevisionSheet && (
@@ -310,14 +322,23 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {speech.isYoungGrade && (
         <button
+          type="button"
           onClick={speech.handleToggleSpeech}
-          className={`w-full min-h-16 rounded-3xl flex items-center justify-center gap-3 text-lg sm:text-xl font-black shadow-lg transition-all cursor-pointer active:scale-[0.98] ${
-            speech.isSpeaking
-              ? 'bg-[var(--brand-coral)] text-white animate-pulse'
-              : 'bg-[var(--brand-amber)] text-slate-950 hover:brightness-105'
-          }`}
+          className={
+            isCompactGrade
+              ? `w-full min-h-12 rounded-2xl flex items-center justify-center gap-2 text-sm font-bold border cursor-pointer ${
+                  speech.isSpeaking
+                    ? 'bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border-[var(--brand-coral)]/40'
+                    : 'bg-white text-[var(--app-text)] border-[var(--app-card-border)]'
+                }`
+              : `w-full min-h-16 rounded-3xl flex items-center justify-center gap-3 text-lg sm:text-xl font-black shadow-lg transition-all cursor-pointer active:scale-[0.98] ${
+                  speech.isSpeaking
+                    ? 'bg-[var(--brand-coral)] text-white animate-pulse'
+                    : 'bg-[var(--brand-amber)] text-slate-950 hover:brightness-105'
+                }`
+          }
         >
-          <span className="text-2xl">{speech.isSpeaking ? '⏹️' : '🔊'}</span>
+          <span className={isCompactGrade ? 'text-lg' : 'text-2xl'}>{speech.isSpeaking ? '⏹️' : '🔊'}</span>
           <span>{speech.isSpeaking ? 'إيقاف الاستماع' : 'إستمع للدرس'}</span>
         </button>
       )}
@@ -399,7 +420,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </Card>
       )}
 
-      <div id="lesson-active-step-container" className="scroll-mt-20 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl p-3.5 sm:p-4 shadow-sm space-y-3">
+      <div id="lesson-active-step-container" className="scroll-mt-20 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl p-3.5 sm:p-4 shadow-sm space-y-3" data-lesson-layout={isCompactGrade ? 'compact' : 'full'}>
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2.5">
             <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-emerald-600 text-white flex items-center justify-center font-black text-sm shadow-xs">
@@ -421,6 +442,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </div>
         </div>
 
+        {!isCompactGrade && (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1">
           {availableSteps.map((step, idx) => {
             const isActive = step.id === activeTab;
@@ -450,6 +472,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             );
           })}
         </div>
+        )}
       </div>
 
       <AnimatePresence mode="wait">
@@ -535,12 +558,18 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         isLastStep={isLastStep}
         nextStep={nextStep}
         prevStep={prevStep}
-        previousLesson={previousLesson}
         nextLesson={nextLesson}
         renderArabicText={renderArabicText}
+        compact={isCompactGrade}
+        hasQuiz={hasQuiz}
+        quizPassed={quizPassed}
         onGoToStep={goToStep}
-        onSelectLesson={onSelectLesson}
-        onBack={onBack}
+        onFinishLesson={() => {
+          if (!canCompleteLesson) return;
+          onQuizFullyValidated?.(lesson.id);
+          if (nextLesson) onSelectLesson?.(nextLesson);
+          else onBack();
+        }}
       />
     </div>
   );

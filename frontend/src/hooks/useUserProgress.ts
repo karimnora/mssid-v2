@@ -59,6 +59,33 @@ export function createFreshGuestProfile(currentGrade: PrimaryGrade): UserProfile
   };
 }
 
+/** XP from a quiz item or exercise — does not mark the lesson complete. */
+export function applyLessonXp(prev: UserProfile, lessonId: string, earnedXp: number): UserProfile {
+  const newXp = prev.xp + earnedXp;
+  return {
+    ...prev,
+    xp: newXp,
+    level: Math.floor(newXp / 100) + 1,
+    quizScores: {
+      ...prev.quizScores,
+      [lessonId]: (prev.quizScores[lessonId] || 0) + earnedXp,
+    },
+  };
+}
+
+/** A lesson is complete only after the interactive quiz is fully correct (or a no-quiz lesson is finished). */
+export function markLessonQuizComplete(prev: UserProfile, lessonId: string): UserProfile {
+  return {
+    ...prev,
+    quizFullyValidatedLessonIds: prev.quizFullyValidatedLessonIds.includes(lessonId)
+      ? prev.quizFullyValidatedLessonIds
+      : [...prev.quizFullyValidatedLessonIds, lessonId],
+    completedLessonIds: prev.completedLessonIds.includes(lessonId)
+      ? prev.completedLessonIds
+      : [...prev.completedLessonIds, lessonId],
+  };
+}
+
 export function useUserProgress(options: { authUser: AuthUser | null }) {
   const { authUser } = options;
 
@@ -124,35 +151,15 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   }, [userProfile]);
 
   const handleQuizFullyValidated = (lessonId: string) => {
-    setUserProfile((prev) =>
-      prev.quizFullyValidatedLessonIds.includes(lessonId)
-        ? prev
-        : { ...prev, quizFullyValidatedLessonIds: [...prev.quizFullyValidatedLessonIds, lessonId] }
-    );
+    AuthService.markLessonCompleted(lessonId);
+    setUserProfile((prev) => markLessonQuizComplete(prev, lessonId));
     setRatingPromptTrigger((t) => t + 1);
   };
 
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
-    AuthService.addScore(earnedXp, lessonId);
+    AuthService.addScore(earnedXp);
     incrementDailyObjective();
-
-    setUserProfile((prev) => {
-      const alreadyCompleted = prev.completedLessonIds.includes(lessonId);
-      const newCompleted = alreadyCompleted ? prev.completedLessonIds : [...prev.completedLessonIds, lessonId];
-      const newXp = prev.xp + earnedXp;
-      const newLevel = Math.floor(newXp / 100) + 1;
-
-      return {
-        ...prev,
-        xp: newXp,
-        level: newLevel,
-        completedLessonIds: newCompleted,
-        quizScores: {
-          ...prev.quizScores,
-          [lessonId]: (prev.quizScores[lessonId] || 0) + earnedXp,
-        },
-      };
-    });
+    setUserProfile((prev) => applyLessonXp(prev, lessonId, earnedXp));
   };
 
   const handleCompleteExam = (examId: string) => {

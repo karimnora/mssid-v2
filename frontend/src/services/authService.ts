@@ -294,7 +294,7 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
     return user;
   }
 
-  static addScore(points: number, lessonId?: string): AuthUser | null {
+  static addScore(points: number): AuthUser | null {
     const user = this.getCurrentUser();
     if (!user) return null;
 
@@ -302,8 +302,6 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
     const newScore = currentScore + points;
     const newLevel = Math.floor(newScore / 100) + 1;
     const currentQuizzes = user.quizzesCompleted || 0;
-    const currentCompleted = user.completedLessonIds || [];
-    const newCompleted = lessonId && !currentCompleted.includes(lessonId) ? [...currentCompleted, lessonId] : currentCompleted;
 
     const updatedUser: AuthUser = {
       ...user,
@@ -311,7 +309,6 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
       xp: newScore,
       level: newLevel,
       quizzesCompleted: currentQuizzes + 1,
-      completedLessonIds: newCompleted,
       streakDays: Math.max(user.streakDays || 1, 1),
       lastActiveDate: new Date().toISOString().slice(0, 10),
     };
@@ -336,6 +333,42 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
       badges: updatedUser.badges || [],
       quizScores: updatedUser.quizScores || {},
     }).catch((err) => console.error('Erreur de synchronisation XP:', err));
+
+    return updatedUser;
+  }
+
+  /** Marks a lesson complete after a full quiz (or a no-quiz finish). XP is awarded separately via addScore. */
+  static markLessonCompleted(lessonId: string): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user || !lessonId) return user;
+
+    const currentCompleted = user.completedLessonIds || [];
+    if (currentCompleted.includes(lessonId)) return user;
+
+    const updatedUser: AuthUser = {
+      ...user,
+      completedLessonIds: [...currentCompleted, lessonId],
+      lastActiveDate: new Date().toISOString().slice(0, 10),
+    };
+
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      nom: updatedUser.nom,
+      name: updatedUser.nom,
+      grade: updatedUser.grade,
+      avatar: updatedUser.avatar || '🎓',
+      score: updatedUser.score,
+      xp: updatedUser.xp,
+      level: updatedUser.level,
+      streakDays: updatedUser.streakDays,
+      quizzesCompleted: updatedUser.quizzesCompleted,
+      lastActiveDate: updatedUser.lastActiveDate,
+      completedLessonIds: updatedUser.completedLessonIds,
+      badges: updatedUser.badges || [],
+      quizScores: updatedUser.quizScores || {},
+    }).catch((err) => console.error('Erreur de synchronisation leçon terminée:', err));
 
     return updatedUser;
   }
