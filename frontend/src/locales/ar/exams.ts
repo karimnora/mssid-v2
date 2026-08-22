@@ -72,6 +72,7 @@ export const exams = {
   minutesWithCount: '{minutes} دقيقة',
   pointsWithCount: '{points} نقاط',
   openExamPaper: 'فتح ورقة الامتحان',
+  startNextExamCta: 'ابدأ الموضوع',
 
   noExamsTitle: 'لا توجد مواضيع في هذا القسم بعد',
   noExamsDesc: 'اختر مادة أخرى أو فصلاً مختلفاً لعرض المواضيع المتوفرة لـ {gradeTitle}.',

@@ -96,7 +96,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
 
   return (
   <div id="active-interactive-tool-section" className="scroll-mt-24 transition-all duration-300 relative">
-    {mainCategory === 'labs' && (
+    {mainCategory === 'labs' && isLabSubjectId(selectedSubject) && (
       <motion.div
         key={`tool-header-${selectedSubject}`}
         initial={{ opacity: 0, y: -8, scale: 0.98 }}

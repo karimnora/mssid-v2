@@ -56,6 +56,7 @@ export const navigation = {
   termsMenuItem: 'الشروط والأحكام',
 
   mobileMenuTitle: 'القائمة',
+  parentDrawerLabel: 'ولي الأمر',
   gradeSectionLabel: 'اختر المستوى الدراسي:',
   mobileAppLabel: 'التطبيق المحمول (Android/iOS)',
   footerBrandVersion: 'مَسِيد DZ • الإصدار {version}',

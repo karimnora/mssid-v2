@@ -58,6 +58,7 @@ export const navigation: typeof navigationAr = {
   termsMenuItem: "Conditions d'utilisation",
 
   mobileMenuTitle: 'Menu',
+  parentDrawerLabel: 'Espace parent',
   gradeSectionLabel: 'Choisir le niveau scolaire :',
   mobileAppLabel: 'Application mobile (Android/iOS)',
   footerBrandVersion: 'Mssid DZ • Version {version}',

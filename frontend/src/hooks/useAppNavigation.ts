@@ -29,6 +29,12 @@ export function defaultLabForGrade(grade: PrimaryGrade): SubjectId {
   return 'arabic_conjugator';
 }
 
+/** 1AP/2AP land on the 4-tile picker (`math` is not a lab id). 3AP+ auto-opens a lab. */
+export function labsEntrySubjectForGrade(grade: PrimaryGrade): SubjectId {
+  if (grade === '1AP' || grade === '2AP') return 'math';
+  return defaultLabForGrade(grade);
+}
+
 function labAvailableForGrade(toolId: SubjectId, grade: PrimaryGrade): boolean {
   const tool = INTERACTIVE_LABS_LIST.find((item) => item.id === toolId);
   return Boolean(tool && isToolAvailableForGrade(tool, grade));
@@ -36,7 +42,7 @@ function labAvailableForGrade(toolId: SubjectId, grade: PrimaryGrade): boolean {
 
 function labOrFallback(toolId: SubjectId | undefined, grade: PrimaryGrade): SubjectId {
   if (toolId && labAvailableForGrade(toolId, grade)) return toolId;
-  return defaultLabForGrade(grade);
+  return labsEntrySubjectForGrade(grade);
 }
 
 type HistoryNavState = {
@@ -231,7 +237,7 @@ export function useAppNavigation(options: {
       setSelectedSubject('exams');
     } else if (tab === 'games') {
       setMainCategory('labs');
-      setSelectedSubject(defaultLabForGrade(grade));
+      setSelectedSubject(labsEntrySubjectForGrade(grade));
     }
   };
 
@@ -242,7 +248,7 @@ export function useAppNavigation(options: {
     if (pole === 'courses' && !COURSE_SUBJECTS_LIST.some((s) => s.id === selectedSubject)) {
       setSelectedSubject('math');
     } else if (pole === 'labs') {
-      setSelectedSubject(labOrFallback(selectedSubject, grade));
+      setSelectedSubject(labsEntrySubjectForGrade(grade));
     } else if (pole === 'exams') {
       setSelectedSubject('exams');
     } else if (pole === 'challenges') {
@@ -281,7 +287,7 @@ export function useAppNavigation(options: {
     setSelectedLesson(null);
     const currentTool = INTERACTIVE_LABS_LIST.find((s) => s.id === selectedSubject);
     if (currentTool && !isToolAvailableForGrade(currentTool, next)) {
-      setSelectedSubject(defaultLabForGrade(next));
+      setSelectedSubject(labsEntrySubjectForGrade(next));
     }
   };
 

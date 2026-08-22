@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'motion/react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { COURSES_DATA } from '../data/coursesData';
@@ -95,6 +96,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
+  const examFunnel = currentGrade === '2AP';
+  const showExamTools = currentGrade === '4AP' || currentGrade === '5AP';
 
   const [kindFilter, setKindFilter] = useState<KindFilter>(grade === '5AP' || !grade ? 'bep' : 'composition');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
@@ -220,6 +223,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           </Button>
 
           <div className="flex items-center gap-2 flex-wrap">
+            {showExamTools && (
+              <>
             {/* Global Solutions Toggle */}
             <button
               onClick={toggleAllSolutions}
@@ -267,10 +272,13 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 <RotateCcw className="w-3.5 h-3.5" />
               </button>
             </div>
+              </>
+            )}
           </div>
         </div>
 
         {/* Free Educational Banner */}
+        {showExamTools && (
         <div className="p-3.5 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs text-emerald-950">
           <div className="flex items-center gap-2">
             <span className="w-7 h-7 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shadow-xs">
@@ -287,6 +295,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           </div>
           <Badge variant="success">نسخة مجانية ومفتوحة 🎓</Badge>
         </div>
+        )}
 
         {/* Official Paper Layout */}
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
@@ -611,6 +620,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             return (
               <button
                 key={subj.id}
+                data-exam-subject={subj.id}
                 onClick={() => setSelectedSubject(isChosen ? null : subj.id)}
                 className={`rounded-2xl p-4 min-h-24 text-white shadow-xs cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
                   isChosen ? 'ring-4 ring-purple-400 scale-[1.03] shadow-md' : 'hover:scale-[1.02] active:scale-[0.98]'
@@ -628,9 +638,9 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       </div>
 
       {/* Step 2: Trimester Filter & Exam Cards List */}
-      <div className="space-y-4 pt-1">
+      <div className="space-y-4 pt-1" data-exam-layout={examFunnel ? 'funnel' : 'grid'}>
         {/* Trimester filter tabs for seasonal compositions */}
-        {kindFilter !== 'bep' && (
+        {kindFilter !== 'bep' && !examFunnel && (
           <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
             <button
               onClick={() => setSelectedTrimester('all')}
@@ -659,7 +669,37 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         )}
 
         {/* Exam Cards Grid */}
-        {displayedExams.length > 0 ? (
+        {examFunnel ? (
+          selectedSubject && displayedExams.length > 0 ? (
+            (() => {
+              const nextExam =
+                displayedExams.find((exam) => !completedExamIds.includes(exam.id)) ?? displayedExams[0];
+              return (
+                <motion.button
+                  type="button"
+                  data-next-exam-cta={nextExam.id}
+                  onClick={() => openExam(nextExam)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+                  className="w-full rounded-3xl p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br from-emerald-600 to-teal-700 space-y-2"
+                >
+                  <p className="text-xs font-bold text-white/80">{t('startNextExamCta')}</p>
+                  <h3 className="text-base font-black leading-relaxed">{renderArabicText(nextExam.titleAr)}</h3>
+                </motion.button>
+              );
+            })()
+          ) : selectedSubject ? (
+            <Card padding="none" className="p-10 text-center space-y-3 bg-[var(--app-card-bg)]">
+              <FileText className="w-10 h-10 opacity-30 mx-auto text-[var(--app-text-muted)]" />
+              <h3 className="text-sm font-extrabold text-[var(--app-text)]">{t('noExamsTitle')}</h3>
+            </Card>
+          ) : (
+            <p className="text-xs font-bold text-[var(--app-text-muted)] text-center py-4">
+              {t('subjectsOfGrade', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
+            </p>
+          )
+        ) : displayedExams.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {displayedExams.map((exam) => {
               const isCompleted = completedExamIds.includes(exam.id);

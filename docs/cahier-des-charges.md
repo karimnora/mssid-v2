@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Produit** | Mssid DZ — application éducative du primaire algérien |
-| **Version** | 1.1 |
+| **Version** | 1.2 |
 | **Date** | 22 août 2026 |
 | **Statut** | Décision produit ratifiée (lancement gratuit, souk plus tard) |
 | **Auteur** | Karim — ingénierie produit / technique |
@@ -85,8 +85,8 @@ Pas de Premium promis sur la fiche store au lancement. Pas de leçon vide. Pas d
 | **C-02** | Invité | Accès catalogue + leçon + quiz sans authentification. |
 | **C-03** | Compte | Inscription email / mot de passe. Sauvegarde XP, badges, progression. |
 | **C-04** | Préscolaire | Toujours visible (plus de flag `enablePreschoolModule`). Hub, activités, défi du jour en heure locale. |
-| **C-05** | Labs | Outils pédagogiques activés : labs avancés, lecture vocale, calculatrice, writing lab. Labo d’entrée 1AP/2AP : bande numérique (`primary_math_ops`), pas le conjugueur arabe. |
-| **C-06** | Examens | Toujours visible (plus de flag `enableExamSection`). Banque du **bundle** (devoirs, compositions, BEP), pas un paywall. 1AP : état vide + calculateur de moyenne, pas de faux sujets officiels. |
+| **C-05** | Labs | Outils pédagogiques activés : labs avancés, lecture vocale, calculatrice, writing lab. **1AP/2AP** : hub de **4 tuiles** (bande numérique, éveil, سوق, écriture) — pas les 4 catégories desktop, pas d’ouverture auto d’un labo, pas le conjugueur arabe. **3AP–5AP** : hub catégories. Lien profond / 3AP+ : jamais le conjugueur avant 3AP (`primary_math_ops`). |
+| **C-06** | Examens | Toujours visible (plus de flag `enableExamSection`). Banque du **bundle** (devoirs, compositions, BEP), pas un paywall. **1AP** : état vide + calculateur de moyenne, pas de faux sujets officiels. **2AP** : funnel type → matière → **un sujet à la fois**. Timer, impression et « tout afficher les solutions » **seulement en 4AP–5AP**. |
 | **C-07** | Fiches imprimables | Bouton impression/PDF activé (`enablePrintablePDFs: true`) au lancement. Un pack « plus » pourra s’ajouter plus tard sans retirer celui-ci. |
 | **C-08** | Défis | Arène / défi du jour utilisable sans paiement. |
 | **C-09** | Tuteur IA | Compte requis. Quota **3 questions / jour** (`ROLE_FREE`). Pas d’IA pour un invité. |
@@ -140,6 +140,10 @@ Les flags `enableExamSection` et `enablePreschoolModule` **n’existent plus** :
 | **F-08** | Nav mobile 1AP / 2AP | Quatre onglets : accueil, cours, labs, profil. Tuteur IA et examens hors barre. |
 | **F-09** | Leçon, un CTA | Un bouton d’action « Suivant ». En 1AP/2AP : pas de fiche imprimable ni précédent/suivant en en-tête ; parcours séquentiel. |
 | **F-10** | Leçon terminée | Une leçon n’entre dans `completedLessonIds` **que** si le quiz interactif est réussi à 100 % (ou s’il n’y a pas de quiz, au tap sur le CTA de fin). Une bonne réponse isolée donne de l’XP, pas le cours. |
+| **F-11** | Hub labs 1AP / 2AP | Quatre tuiles max : bande numérique, éveil scientifique/civique, سوق الجزائري, atelier d’écriture. Un tap ouvre l’outil. Retour = les 4 tuiles. |
+| **F-12** | Navbar enfant 1AP / 2AP | Chrome enfant : accueil + choix de niveau. Thème, langue, préscolaire, tuteur IA, compte / admin : **tiroir ولي الأمر**. 3AP–5AP : barre complète. |
+| **F-13** | Examens 2AP | Après le type (devoir / composition) et la matière, un seul CTA « ابدأ الموضوع » (prochain sujet non fait). Pas de grille de toutes les copies. Pas de timer / imprimer / tout-afficher avant 4AP. |
+| **F-14** | Liste des cours | Funnel matière → trimestre → cartes de leçons (titre, résumé, badges). **Ne pas** compresser 1AP/2AP en une colonne « titre + coche + CTA leçon suivante » : ce changement a été retiré. |
 
 ### 6.2 Auth et rôles (lancement)
 
@@ -172,6 +176,7 @@ Les libellés « PREMIUM / PRO » dans la navbar ne justifient **pas** un cadena
 | **PED-03** | Maths 5AP : nombres jusqu’au milliard, fractions, décimaux, proportionnalité, aires / volume pavé, conformément à `CLAUDE.md`. |
 | **PED-04** | Une leçon = une notion du programme, pas un chapitre inventé. |
 | **PED-05** | Design : pastel, fond `#F8F9FA`, texte `#1E293B`, coins très arrondis, spring Framer Motion, un bouton d’action principal par écran. |
+| **PED-06** | Catalogue : les leçons manquantes du programme s’ajoutent en **fichiers neufs** (ex. 1AP المدود / comparaison ; 5AP cercle, Projet 3 inventions & écologie, *will* + directions). **Interdit** de réécrire un fichier de leçon déjà livré. |
 
 ---
 
@@ -297,4 +302,11 @@ On **n’ouvre pas** le souk si : note Play sous ~4,2, IA en panne chronique, ou
 
 ---
 
-*Fin du cahier des charges v1.1. Toute modification des §5.2, §5.3 ou §11 (souk, flags T2, hors périmètre) exige une décision explicite de Karim.*
+## 16. Historique du document
+
+| Version | Date | Contenu |
+|---|---|---|
+| 1.1 | 22 août 2026 | Cartable gratuit, flags examens/prépa retirés, F-07 à F-10 (accueil, nav, leçon). |
+| 1.2 | 22 août 2026 | UX 6–11 ans : F-11 labs 4 tuiles, F-12 tiroir parent, F-13 examens 2AP, F-14 liste des cours inchangée. C-05 / C-06 alignés. PED-06 (nouveaux fichiers de leçons, pas de réécriture). |
+
+*Fin du cahier des charges v1.2. Toute modification des §5.2, §5.3 ou §11 (souk, flags T2, hors périmètre) exige une décision explicite de Karim.*

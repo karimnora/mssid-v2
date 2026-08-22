@@ -28,6 +28,7 @@ import { useAppNavigation } from './hooks/useAppNavigation';
 import { useUserProgress } from './hooks/useUserProgress';
 import { useAppModals } from './hooks/useAppModals';
 import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
+import { isLabSubjectId } from './navigation/appLocation';
 import {
   BookOpen,
   Calculator,
@@ -211,6 +212,7 @@ export default function App() {
                   tools={availableLabsForGrade}
                   selectedToolId={nav.selectedSubject}
                   onSelectTool={nav.handleSelectSubject}
+                  onClearTool={() => nav.setSelectedSubject('math')}
                 />
               ) : nav.mainCategory !== 'courses' && (
                 <div className="border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 bg-[var(--app-card-bg)] border-[var(--app-card-border)]">
@@ -246,7 +248,7 @@ export default function App() {
                 isLessonLocked={isLessonLocked}
                 onGoHome={nav.goHome}
               />
-            ) : (
+            ) : nav.mainCategory === 'labs' && !isLabSubjectId(nav.selectedSubject) ? null : (
               <ActiveWorkspace
                 grade={nav.grade}
                 selectedSubject={nav.selectedSubject}

@@ -76,6 +76,7 @@ export const exams: typeof examsAr = {
   minutesWithCount: '{minutes} min',
   pointsWithCount: '{points} points',
   openExamPaper: "Ouvrir le sujet d'examen",
+  startNextExamCta: 'Commencer le sujet',
 
   noExamsTitle: 'Aucun sujet dans cette section pour le moment',
   noExamsDesc: 'Choisis une autre matière ou un autre trimestre pour voir les sujets disponibles pour {gradeTitle}.',

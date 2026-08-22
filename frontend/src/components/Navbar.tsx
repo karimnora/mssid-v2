@@ -88,6 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
+  const young = currentGrade === '1AP' || currentGrade === '2AP';
   const [theme, setTheme] = useState<HeaderTheme>(currentTheme);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
@@ -141,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 transition-colors duration-300 bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir={direction}>
+      <header className="sticky top-0 z-40 transition-colors duration-300 bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir={direction} data-nav-child={young ? 'true' : 'false'}>
         <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
 
           {/* LOGO & BRAND — shrinks/truncates first, never forces the row wider */}
@@ -165,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* HOME BUTTON & GRADES NAVIGATION */}
-          <div className="hidden lg:flex items-center gap-2">
+          <div className={`${young ? 'flex' : 'hidden lg:flex'} items-center gap-2 min-w-0`}>
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={onHomeClick}
@@ -176,8 +177,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>{t('home')}</span>
             </motion.button>
 
-            <div className="flex items-center gap-1 p-1 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shrink-0">
-              {onOpenPreschool && (
+            <div className="flex items-center gap-1 p-1 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shrink overflow-x-auto">
+              {!young && onOpenPreschool && (
                 <motion.button
                   onClick={onOpenPreschool}
                   whileTap={{ scale: 0.94 }}
@@ -219,7 +220,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
 
             {/* AI Tutor Button */}
-            {isAiEnabled && (
+            {!young && isAiEnabled && (
               <motion.button
                 whileHover={{ y: -1 }}
                 whileTap={{ y: 1 }}
@@ -233,6 +234,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
 
             {/* XP & Badges Display */}
+            {!young && (
+            <>
             <button
               onClick={onOpenProfileModal}
               className="hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-2xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)] hover:opacity-90"
@@ -451,13 +454,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                 )}
               </AnimatePresence>
             </div>
+            </>
+            )}
 
-            {/* Mobile Menu Toggle */}
+            {/* Parent drawer — always visible on 1AP/2AP, mobile-only from 3AP */}
             <motion.button
-              whileTap={{ scale: 0.9 }}
+              type="button"
+              data-parent-drawer-trigger
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setIsMobileDrawerOpen((v) => !v)}
-              className="md:hidden p-2 rounded-xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)]"
-              title={t('mobileMenuTitle')}
+              className={`${young ? '' : 'md:hidden '}p-2 rounded-xl border text-xs font-bold transition-colors cursor-pointer bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)]`}
+              title={young ? t('parentDrawerLabel') : t('mobileMenuTitle')}
             >
               {isMobileDrawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </motion.button>
@@ -473,7 +481,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="md:hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end"
+            className={`${young ? '' : 'md:hidden '}fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-end`}
             dir={direction}
             onClick={(e) => { if (e.target === e.currentTarget) setIsMobileDrawerOpen(false); }}
           >
