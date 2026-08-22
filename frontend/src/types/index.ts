@@ -673,7 +673,8 @@ export interface CourseLesson {
   // T2/T3 server-side content gate. true means this object is a "shell": only catalog metadata is
   // bundled, and rulesAr/quiz are empty placeholders — LessonViewer fetches the real content from
   // GET /api/v1/courses/premium-lessons/{id}. While payment flags are off, that endpoint is open;
-  // once both flags are on it is PREMIUM/ADMIN only. Absent/false = fully bundled (T1, or not migrated).
+  // once both flags are on it is PREMIUM/ADMIN only. Absent/false = fully bundled. Currently unused
+  // in the 5AP math catalog (math-5ap-division is inlined); kept for a later paid window.
   premiumContentPending?: boolean;
 }
 
