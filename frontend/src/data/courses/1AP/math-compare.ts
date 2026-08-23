@@ -27,6 +27,30 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
       'بِقَدْرِ: نفس العدد في المجموعتين. مثال: 6 كؤوس بقدر 6 صحون.',
       'نقارن بعدّ أو بقراءة الرقم: من 10 إلى 49. الرموز < > تأتي في الفصل الثالث.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'أكثر من، أقل من، بقدر',
+      introAr: 'عدّ ثم اختر العبارة. بدون رموز < > هنا.',
+      problems: [
+        {
+          id: 'more',
+          situationAr: 'عند أمينة 5 تَمْرَاتٍ وعند يوسف 3. ماذا نقول؟',
+          choices: [
+            { textAr: '5 أكثر من 3', isCorrect: true, feedbackAr: 'نعم: العدد الأكبر = أكثر من.' },
+            { textAr: '5 أقل من 3', isCorrect: false, feedbackAr: '5 أكبر من 3.' },
+          ],
+        },
+        {
+          id: 'equal',
+          situationAr: '40 طفلاً و 40 مقعداً. ماذا نقول؟',
+          choices: [
+            { textAr: '40 بقدر 40', isCorrect: true, feedbackAr: 'نفس العدد = بقدر.' },
+            { textAr: '40 أكثر من 40', isCorrect: false, feedbackAr: 'العددان متساويان: بقدر.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       { problem: '32 كراسة في الصندوق و 28 في الرف. ماذا نقول؟', solution: '32 أكثر من 28.' },
       { problem: '40 طفلاً و 40 مقعداً. ماذا نقول؟', solution: '40 بقدر 40. الكميتان متساويتان.' },

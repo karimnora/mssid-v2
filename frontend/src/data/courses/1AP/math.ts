@@ -39,6 +39,19 @@ export const MATH_1AP: CourseLesson[] = [
       'بَيْنَ (Entre): الشيء في الوسط، مثل الكرة بين الكرسي والطاولة.',
       'أَعْلَى / أَسْفَل (Haut / Bas): السقف في الأعلى، والأرض في الأسفل.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'shape_explorer',
+      titleAr: 'أين يوجد الشيء؟',
+      introAr: 'اضغط على كل موضع: فوق، تحت، أمام، وراء، بين.',
+      shapes: [
+        { id: 'above', nameAr: 'فَوْقَ', visualHint: '☝️', propertiesAr: ['الشيء في الأعلى.', 'مثال: القطة فوق الكرسي.'] },
+        { id: 'below', nameAr: 'تَحْتَ', visualHint: '👇', propertiesAr: ['الشيء في الأسفل.', 'مثال: الكرة تحت الطاولة.'] },
+        { id: 'front', nameAr: 'أَمَامَ', visualHint: '👀', propertiesAr: ['الشيء مقابل وجهي.', 'مثال: الحقيبة أمام الباب.'] },
+        { id: 'back', nameAr: 'وَرَاءَ', visualHint: '🔙', propertiesAr: ['الشيء في ظهري.', 'مثال: الحديقة وراء المدرسة.'] },
+        { id: 'between', nameAr: 'بَيْنَ', visualHint: '↔️', propertiesAr: ['الشيء في الوسط.', 'مثال: الكرة بين الكرسي والطاولة.'] },
+      ],
+    },
     examplesAr: [
       { problem: 'أين تجلس القطة؟ 🐱 (فوق الكرسي)', solution: 'القطة فوق الكرسي.' },
       { problem: 'أين توجد الكرة؟ ⚽ (تحت الطاولة)', solution: 'الكرة تحت الطاولة.' },
@@ -130,6 +143,18 @@ export const MATH_1AP: CourseLesson[] = [
       'دَاخِلٌ 📦: الشيء المحاط والموجود في الداخل (مثل: الأقلام داخل المقلمة).',
       'خَارِجٌ 🚪: الشيء الموجود في الخارج.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'shape_explorer',
+      titleAr: 'يمين، يسار، داخل، خارج',
+      introAr: 'اضغط على كل كلمة مكانية.',
+      shapes: [
+        { id: 'right', nameAr: 'يَمِينٌ', visualHint: '✋', propertiesAr: ['اليد اليمنى: نأكل ونكتب ونسلّم بها.'] },
+        { id: 'left', nameAr: 'يَسَارٌ', visualHint: '🤚', propertiesAr: ['اليد اليسرى: المقابلة لجهة القلب.'] },
+        { id: 'in', nameAr: 'دَاخِلٌ', visualHint: '📦', propertiesAr: ['الشيء محاط من كل الجهات.', 'مثال: الأقلام داخل المقلمة.'] },
+        { id: 'out', nameAr: 'خَارِجٌ', visualHint: '🚪', propertiesAr: ['الشيء في الفضاء الخارجي.', 'مثال: الكرة خارج الصندوق.'] },
+      ],
+    },
     examplesAr: [
       { problem: 'أين توجد الأقلام؟ 🖍️ (داخل المقلمة)', solution: 'داخل المقلمة.' },
     ],
@@ -221,6 +246,19 @@ export const MATH_1AP: CourseLesson[] = [
       '4 🚗 = عجلات السيارة الأربع.',
       '5 🖐️ = أصابع اليد الواحدة.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'الأعداد من 0 إلى 5',
+      introAr: 'اضغط على كل عدد: ماذا يعني؟',
+      cards: [
+        { labelAr: 'صفر', valueDisplay: '0', explanationAr: 'لا يوجد أي شيء. الصندوق فارغ.' },
+        { labelAr: 'واحد', valueDisplay: '1', explanationAr: 'شمس واحدة، أنف واحد.' },
+        { labelAr: 'اثنان', valueDisplay: '2', explanationAr: 'عينان، أذنان، يدان.' },
+        { labelAr: 'ثلاثة', valueDisplay: '3', explanationAr: 'ثلاث تفاحات. قبل 3 يأتي 2، وبعده 4.' },
+        { labelAr: 'خمسة', valueDisplay: '5', explanationAr: 'أصابع اليد الواحدة.' },
+      ],
+    },
     examplesAr: [
       { problem: 'كم عدد التفاحات؟ 🍎🍎🍎', solution: '3 تفاحات' },
     ],
@@ -401,6 +439,18 @@ export const MATH_1AP: CourseLesson[] = [
       '9 = يد (5) + 4.',
       'السَّابِقُ: العدد الذي يأتي قبل. اللَّاحِقُ: الذي يأتي بعد.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'من 6 إلى 9',
+      introAr: 'يد كاملة ثم أصابع اليد الثانية.',
+      cards: [
+        { labelAr: 'ستة', valueDisplay: '6', explanationAr: '6 = يد (5) + 1.' },
+        { labelAr: 'سبعة', valueDisplay: '7', explanationAr: '6 قبله، 8 بعده.' },
+        { labelAr: 'ثمانية', valueDisplay: '8', explanationAr: '8 = يد (5) + 3.' },
+        { labelAr: 'تسعة', valueDisplay: '9', explanationAr: 'أكبر عدد بإصبع اليد الثانية قبل العشرة.' },
+      ],
+    },
     examplesAr: [
       { problem: 'ما قبل 7؟ ما بعد 7؟', solution: 'قبل 7: 6. بعد 7: 8.' },
     ],
@@ -488,6 +538,30 @@ export const MATH_1AP: CourseLesson[] = [
       'أَتَقَدَّمُ: أقف على 5 في الخط العددي وأتقدّم خطوتين → 7.',
       '3 + 2 = 5 (ثلاثة زائد اثنان يساوي خمسة).',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'أجمع: أضيف، أضمّ، أتقدّم',
+      introAr: 'مجاميع أصغر من 10. اختر العملية الصحيحة.',
+      problems: [
+        {
+          id: 'add-balloons',
+          situationAr: 'معك 3 بالونات، وأعطتك أمك بالونين. كم صار؟',
+          choices: [
+            { textAr: '3 + 2 = 5', isCorrect: true, feedbackAr: 'نعم: أضفت، ضممت، تقدّمت إلى 5.' },
+            { textAr: '3 − 2 = 1', isCorrect: false, feedbackAr: 'الأم أعطت بالونات: نضيف، لا ننقص.' },
+          ],
+        },
+        {
+          id: 'add-line',
+          situationAr: 'أقف على 4 في الخط العددي وأتقدّم خطوتين. أين أصل؟',
+          choices: [
+            { textAr: '6', isCorrect: true, feedbackAr: '4 ثم 5 ثم 6. 4 + 2 = 6.' },
+            { textAr: '2', isCorrect: false, feedbackAr: 'التقدّم يزيد العدد.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       { problem: '4 + 1 = ؟', solution: '5' },
     ],

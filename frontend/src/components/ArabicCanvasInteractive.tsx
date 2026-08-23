@@ -161,7 +161,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
     if ((lesson?.grade || grade) === '2AP') {
       return ARABIC_CANVAS_2AP_DEFAULT;
     }
-    if (lesson?.id.includes('arabic-4ap') || grade === '4AP') {
+    if (lesson?.id?.includes('arabic-4ap') || grade === '4AP') {
       return {
         sentence: 'يَقْرَأُ الطَّالِبُ المَاهِرُ الكِتَابَ القَيِّمَ فِي المَكْتَبَةِ',
         words: [
@@ -176,34 +176,6 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
       };
     }
 
-    return {
-      sentence: 'يُدَافِعُ الجُنُودُ البُسَلاءُ عَنِ الوَطَنِ العَزِيزِ بِشَجَاعَةٍ',
-      words: [
-        { id: 'w1', word: 'يُدَافِعُ', correctTag: 'فعل مضارع', hint: 'فعل مرفوع وعلامة رفعه الضمة الظاهرة' },
-        { id: 'w2', word: 'الجُنُودُ', correctTag: 'فاعل', hint: 'من يقوم بالدفاع؟ فاعل مرفوع بالضمة' },
-        { id: 'w3', word: 'البُسَلاءُ', correctTag: 'صفة (نعت)', hint: 'صفة مرفوعة تتبع الجنود' },
-        { id: 'w4', word: 'عَنِ', correctTag: 'حرف جر', hint: 'حرف جر مبني' },
-        { id: 'w5', word: 'الوَطَنِ', correctTag: 'اسم مجرور', hint: 'اسم مجرور بـ "عن" وعلامة جره الكسرة' },
-        { id: 'w6', word: 'العَزِيزِ', correctTag: 'صفة (نعت)', hint: 'صفة تتبع الوطن في الكسرة والتعريف' },
-        { id: 'w7', word: 'بِشَجَاعَةٍ', correctTag: 'جار ومجرور', hint: 'الباء حرف جر، وشجاعة اسم مجرور بالكسرة' }
-      ]
-    };
-  };
-      return {
-        sentence: 'يَقْرَأُ الطَّالِبُ المَاهِرُ الكِتَابَ القَيِّمَ فِي المَكْتَبَةِ',
-        words: [
-          { id: 'w1', word: 'يَقْرَأُ', correctTag: 'فعل مضارع', hint: 'يدل على حدث وقع في الزمن الحاضر أو المستقبل ويقبل السين' },
-          { id: 'w2', word: 'الطَّالِبُ', correctTag: 'فاعل', hint: 'اسم مرفوع يدل على من قام بالفعل (من يقرأ؟)' },
-          { id: 'w3', word: 'المَاهِرُ', correctTag: 'صفة (نعت)', hint: 'تتبع الموصوف في الحركة والتعريف والتذكير' },
-          { id: 'w4', word: 'الكِتَابَ', correctTag: 'مفعول به', hint: 'اسم منصوب وقع عليه فعل الفاعل (ماذا يقرأ؟)' },
-          { id: 'w5', word: 'القَيِّمَ', correctTag: 'صفة (نعت)', hint: 'تصف الكتاب وتتبعه في الحركة والتعريف' },
-          { id: 'w6', word: 'فِي', correctTag: 'حرف جر', hint: 'حرف مبني يجر الاسم الذي بعده' },
-          { id: 'w7', word: 'المَكْتَبَةِ', correctTag: 'اسم مجرور', hint: 'اسم كسرت آخره بسب حرف الجر "في"' }
-        ]
-      };
-    }
-
-    // Default 5AP sentences or generic lesson
     return {
       sentence: 'يُدَافِعُ الجُنُودُ البُسَلاءُ عَنِ الوَطَنِ العَزِيزِ بِشَجَاعَةٍ',
       words: [
@@ -376,7 +348,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
 
       {/* Mode Sub-Tabs */}
       <div className="flex items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 text-xs font-bold overflow-x-auto">
-        {is1AP && (
+        {(is1AP || prefersDiacritics) && (
         <button
           onClick={() => setActiveSubTab('diacritics')}
           className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
@@ -417,7 +389,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
         </button>
       </div>
 
-      {is1AP && activeSubTab === 'diacritics' && <TashkilPractice />}
+      {(is1AP || prefersDiacritics) && activeSubTab === 'diacritics' && <TashkilPractice />}
 
       {/* VIEW 1: GRAMMAR ANALYSIS (محلل الإعراب والتراكيب) */}
       {activeSubTab === 'grammar_analysis' && !is1AP && (

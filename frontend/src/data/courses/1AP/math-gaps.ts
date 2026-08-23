@@ -28,6 +28,17 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
       'الكُتْلَةُ: نرفع أو نزن باليد. أَثْقَلُ / أَخَفُّ.',
       'الحَجْمُ: كَبِيرٌ، مُتَوَسِّطٌ، صَغِيرٌ (علبة، كأس، حبة تَمْر).',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'shape_explorer',
+      titleAr: 'أطول، أثقل، أكبر',
+      introAr: 'اضغط على كل كلمة مقارنة.',
+      shapes: [
+        { id: 'longer', nameAr: 'أَطْوَلُ', visualHint: '📏', propertiesAr: ['نحاذي البدايتين ثم ننظر النهاية.', 'عكسه: أقصر.'] },
+        { id: 'heavier', nameAr: 'أَثْقَلُ', visualHint: '🪨', propertiesAr: ['نرفع باليد أو نزن.', 'عكسه: أخف. الحجر أثقل من الريشة.'] },
+        { id: 'size', nameAr: 'كَبِيرٌ / مُتَوَسِّطٌ / صَغِيرٌ', visualHint: '🐘🐱🐜', propertiesAr: ['ثلاثة أحجام نرتبها بالعين.', 'كبير ≠ أثقل دائماً.'] },
+      ],
+    },
     examplesAr: [
       { problem: 'الثعبان والدودة. من الأطول؟', solution: 'الثعبان أطول. الدودة أقصر.' },
       { problem: 'حجر وريشة. من الأثقل؟', solution: 'الحجر أثقل. الريشة أخف.' },
@@ -125,6 +136,18 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
       'حتى 99: نقارن العشرات أولاً. 61 > 59 لأن 6 عشرات > 5 عشرات.',
       'إذا تساوت العشرات ننظر إلى الوحدات: 47 > 42.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'فم التمساح: < و >',
+      introAr: 'الفم يفتح نحو العدد الأكبر.',
+      cards: [
+        { labelAr: 'أكبر من', valueDisplay: '8 > 3', explanationAr: 'الفم نحو 8. ثمانية أكبر من ثلاثة.' },
+        { labelAr: 'أصغر من', valueDisplay: '3 < 8', explanationAr: 'نفس المقارنة مقلوبة. 3 أصغر من 8.' },
+        { labelAr: 'العشرات أولاً', valueDisplay: '61 > 59', explanationAr: '6 عشرات > 5 عشرات، إذن 61 أكبر.' },
+        { labelAr: 'ثم الوحدات', valueDisplay: '47 > 42', explanationAr: 'العشرات متساوية (4): نقارن 7 و 2.' },
+      ],
+    },
     examplesAr: [
       { problem: 'ضع الرمز: 24 … 31', solution: '24 < 31' },
       { problem: 'ضع الرمز: 90 … 70', solution: '90 > 70' },

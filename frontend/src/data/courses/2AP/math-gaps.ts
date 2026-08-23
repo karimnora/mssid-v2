@@ -27,6 +27,26 @@ export const MATH_2AP_GAPS: CourseLesson[] = [
       'مِثَالُ 42 − 18: الوَحَدَاتُ 12 − 8 = 4، ثُمَّ العَشَرَاتُ 3 − 1 = 2. النَّاتِجُ 24.',
       'نَضَعُ العَدَدَ الأَكْبَرَ فَوْقَ دَائِماً فِي 2AP.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'الطرح بالاستعارة (عددان)',
+      introAr: 'وحدات فوق أصغر؟ نستعير 10 من العشرات. مبادرة 2AP على رقمين فقط.',
+      operations: [
+        {
+          id: '42-18',
+          labelAr: '42 − 18',
+          operationsAr: '  ³12\n  4̸2\n− 18\n----\n  24',
+          solutionAr: 'الوحدات: 2 أصغر من 8 → نستعير: 12 − 8 = 4. العشرات: 3 − 1 = 2. الناتج 24.',
+        },
+        {
+          id: '52-27',
+          labelAr: '52 − 27',
+          operationsAr: '  ⁴12\n  5̸2\n− 27\n----\n  25',
+          solutionAr: 'الوحدات: 12 − 7 = 5. العشرات: 4 − 2 = 2. الناتج 25.',
+        },
+      ],
+    },
     examplesAr: [
       { problem: 'احسب عمودياً: 52 − 27', solution: 'الوحدات: 12 − 7 = 5. العشرات: 4 − 2 = 2. الناتج 25.' },
       { problem: 'احسب: 30 − 14', solution: 'الوحدات: 10 − 4 = 6. العشرات: 2 − 1 = 1. الناتج 16.' },
@@ -123,6 +143,17 @@ export const MATH_2AP_GAPS: CourseLesson[] = [
       'السَّابِقُ = العدد − 1. التَّالِي = العدد + 1.',
       'عَلَى الشَّرِيطِ: كلما اتجهنا يميناً زاد العدد.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'إحاطة الأعداد',
+      introAr: 'الأصغر يساراً دائماً.',
+      cards: [
+        { labelAr: 'بين عشرتين', valueDisplay: '40 < 47 < 50', explanationAr: '47 بين أقرب عشرتين دون تجاوز ثم بعده.' },
+        { labelAr: 'بين مئتين', valueDisplay: '300 < 347 < 400', explanationAr: 'نفس الفكرة بالمئات.' },
+        { labelAr: 'السابق والتالي', valueDisplay: '46 → 47 → 48', explanationAr: 'السابق = العدد − 1. التالي = العدد + 1.' },
+      ],
+    },
     examplesAr: [
       { problem: 'أحِط 63 بعشرتين', solution: '60 < 63 < 70' },
       { problem: 'أحِط 508 بمئتين', solution: '500 < 508 < 600' },

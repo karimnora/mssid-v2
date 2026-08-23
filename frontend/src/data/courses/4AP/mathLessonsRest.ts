@@ -254,7 +254,18 @@ export const MATH_4AP_REST: CourseLesson[] = [
             operationsAr: '12 ÷ 4 = 3\nأو: 12 × 1/4 = 12/4 = 3',
         },
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+        type: 'number_cards',
+        titleAr: 'الكسور: الوحدة والكسر المتكافئ',
+        introAr: 'لا فاصلة عشرية هنا — ذلك درس 5AP.',
+        cards: [
+            { labelAr: 'البسط والمقام', valueDisplay: '3/4', explanationAr: 'البسط 3 = الأجزاء المأخوذة. المقام 4 = أجزاء الوحدة.' },
+            { labelAr: 'مقارنة بـ 1', valueDisplay: '3/4 < 1', explanationAr: 'البسط < المقام ⇒ الكسر < 1. 4/4 = 1. 5/4 > 1.' },
+            { labelAr: 'كسور متكافئة', valueDisplay: '1/2 = 2/4', explanationAr: 'نضرب البسط والمقام في نفس العدد: 1/2 = 2/4 = 3/6.' },
+            { labelAr: 'تقاسم 12 على 4', valueDisplay: '12 ÷ 4', explanationAr: 'كل طفل يأخذ 3 تفاحات = ربع 12.' },
+        ],
+    },
     ...build4ApPractice('math-4ap-fractions', [
         { problemAr: 'في الكسر 3/4، ما البسط؟', solutionAr: '3', detailedCorrectionAr: 'البسط الرقم العلوي.', options: [{ id: 'a', textAr: '3', isCorrect: true }, { id: 'b', textAr: '4', isCorrect: false }] },
         { problemAr: '3/4 أصغر من 1. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '3 < 4.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
@@ -406,7 +417,30 @@ export const MATH_4AP_REST: CourseLesson[] = [
             operationsAr: 'v = 120 ÷ 2 = 60 km/h',
         },
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+        type: 'word_problem_scenario',
+        titleAr: 'تناسبية بسيطة وسرعة',
+        introAr: 'قيمة الوحدة ثم الضرب. السرعة = المسافة ÷ الزمن.',
+        problems: [
+            {
+                id: 'books',
+                situationAr: '3 كتب ثمنها 150 دج. ما ثمن 5 كتب؟',
+                choices: [
+                    { textAr: '1 كتاب = 50 دج ثم 5 × 50 = 250 دج', isCorrect: true, feedbackAr: 'نجد قيمة الوحدة ثم نضرب.' },
+                    { textAr: '150 + 5 = 155 دج', isCorrect: false, feedbackAr: 'التناسب ضرب، لا جمع.' },
+                ],
+            },
+            {
+                id: 'speed',
+                situationAr: 'سيارة قطعت 120 km في 2 h. ما سرعتها؟',
+                choices: [
+                    { textAr: '120 ÷ 2 = 60 km/h', isCorrect: true, feedbackAr: 'السرعة = المسافة ÷ الزمن.' },
+                    { textAr: '120 × 2 = 240 km/h', isCorrect: false, feedbackAr: 'نقسم المسافة على الزمن.' },
+                ],
+            },
+        ],
+    },
     ...build4ApPractice('math-4ap-proportionally-time-data', [
         { problemAr: '2 قلم = 40 دج. 1 قلم = ؟', solutionAr: '20', detailedCorrectionAr: '40÷2=20.', type: 'calculation', calculationAnswer: 20 },
         { problemAr: '4 × 50 = 200. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '4×50=200.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
@@ -454,7 +488,18 @@ export const MATH_4AP_REST: CourseLesson[] = [
             solution: 'العربية (30) — أطول عمود.',
         },
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+        type: 'data_matching',
+        titleAr: 'أعمدة وجدول: مواد القسم',
+        introAr: 'أطول عمود = أكبر عدد. نجمع القيم للمجموع.',
+        rows: [
+            { labelAr: 'العربية', valueAr: '30' },
+            { labelAr: 'الرياضيات', valueAr: '25' },
+            { labelAr: 'الفرنسية', valueAr: '15' },
+        ],
+        insightAr: 'الأطول = العربية (30). المجموع 30+25+15 = 70. القطاع الأكبر في الدائرة يقابل العربية.',
+    },
     ...build4ApPractice('math-4ap-pie-charts-histograms', [
         { problemAr: 'أطول عمود = ؟', solutionAr: 'أكبر عدد', detailedCorrectionAr: 'الارتفاع = القيمة.', options: [{ id: 'a', textAr: 'أكبر عدد', isCorrect: true }, { id: 'b', textAr: 'أصغر عدد', isCorrect: false }] },
         { problemAr: '25+30+15 = 70. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'مجموع الأعمدة.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
