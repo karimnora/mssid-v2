@@ -3,6 +3,7 @@ package dz.mssid.education.service;
 import dz.mssid.education.entity.Role;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.exception.AiQuotaExceededException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,9 +22,22 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class AiQuotaService {
 
+    // Defaults, also used by AiQuotaServiceTest's plain `new AiQuotaService()` (no Spring context,
+    // so @Value below is never injected there — the field initializer is what applies in that case).
+    // In production these come from ai.quota.* / AI_QUOTA_* (see application.properties), editable in
+    // Render without a code change; the field initializer keeps unit tests independent of that config.
     public static final int FREE_DAILY_LIMIT = 3;
     public static final int PREMIUM_DAILY_LIMIT = 50;
     public static final int ADMIN_DAILY_LIMIT = 1000;
+
+    @Value("${ai.quota.free:3}")
+    private int freeDailyLimit = FREE_DAILY_LIMIT;
+
+    @Value("${ai.quota.premium:50}")
+    private int premiumDailyLimit = PREMIUM_DAILY_LIMIT;
+
+    @Value("${ai.quota.admin:1000}")
+    private int adminDailyLimit = ADMIN_DAILY_LIMIT;
 
     private static final long WINDOW_MS = 24L * 60 * 60 * 1000;
 
@@ -154,14 +168,14 @@ public class AiQuotaService {
         return new UserIdentity(auth.getName(), Role.RoleName.ROLE_FREE);
     }
 
-    private static int dailyLimit(Role.RoleName role) {
+    private int dailyLimit(Role.RoleName role) {
         if (role == Role.RoleName.ROLE_ADMIN) {
-            return ADMIN_DAILY_LIMIT;
+            return adminDailyLimit;
         }
         if (role == Role.RoleName.ROLE_PREMIUM) {
-            return PREMIUM_DAILY_LIMIT;
+            return premiumDailyLimit;
         }
-        return FREE_DAILY_LIMIT;
+        return freeDailyLimit;
     }
 
     private static String normalizeEmail(String email) {
