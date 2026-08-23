@@ -84,11 +84,37 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
           <div className="space-y-2">
             <h4 className="font-bold text-white text-base flex items-center gap-2">
               <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">4</span>
+              عدم بيع البيانات لأطراف ثالثة
+            </h4>
+            <p className="text-sm text-slate-300">
+              لا يقوم تطبيق مَسيد DZ ببيع أو تأجير أو مشاركة بيانات المستخدمين الشخصية مع أي طرف ثالث لأغراض تجارية أو إعلانية.
+            </p>
+          </div>
+
+          {/* Section 5 */}
+          <div className="space-y-2">
+            <h4 className="font-bold text-white text-base flex items-center gap-2">
+              <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">5</span>
+              مدة الاحتفاظ بالبيانات
+            </h4>
+            <p className="text-sm text-slate-300">
+              تُحفظ بيانات الحساب طوال فترة استخدام التطبيق النشط. عند حذف الحساب، تُحذف جميع البيانات المرتبطة به نهائياً من قواعد بياناتنا خلال مدة أقصاها 30 يوماً من تاريخ طلب الحذف.
+            </p>
+          </div>
+
+          {/* Section 6 */}
+          <div className="space-y-2">
+            <h4 className="font-bold text-white text-base flex items-center gap-2">
+              <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">6</span>
               حذف البيانات والحساب
             </h4>
             <p className="text-sm text-slate-300">
-              يمكن لأي ولي أمر أو مستخدم طلب حذف حسابه وكافة بياناته نهائياً عن طريق التواصل عبر البريد الإلكتروني المخصص للدعم: <code className="bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-mono">support@mssid-dz.com</code>.
+              يمكن لأي ولي أمر أو مستخدم طلب حذف حسابه وكافة بياناته نهائياً بطريقتين:
             </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-slate-300 mr-4">
+              <li><strong className="text-slate-100">من داخل التطبيق:</strong> صفحة الملف الشخصي ← حذف الحساب.</li>
+              <li><strong className="text-slate-100">من خارج التطبيق (بدون الحاجة لتثبيته أو تسجيل الدخول):</strong> أرسل بريداً إلكترونياً إلى <code className="bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-mono">support@mssid-dz.com</code> من نفس عنوان البريد المسجل بالحساب، تحديداً بطلب حذف الحساب. يتم تنفيذ الطلب وحذف كافة البيانات المرتبطة خلال مدة أقصاها 30 يوماً.</li>
+            </ul>
           </div>
 
           <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center space-y-1">
