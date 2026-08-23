@@ -53,8 +53,8 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             </h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-slate-300 mr-4">
               <li><strong className="text-slate-100">بيانات الحساب الشخصي (البريد والاسم والصف):</strong> تُستخدم فقط لتوثيق التسجيل ولتخصيص المحتوى التعليمي للمستوى الدراسي المقابل.</li>
-              <li><strong className="text-slate-100">إذن الكاميرا والمعرض (Camera & Photo Gallery):</strong> يُطلب فقط عند قيام ولي الأمر أو المستخدم برفع صورة وصل الدفع (BaridiMob / CCP) لتفعيل الاشتراك. لا يتم الوصول لأي صور أخرى على الجهاز.</li>
               <li><strong className="text-slate-100">رمز الجلسة المشفر:</strong> يتم تخزينه محلياً لتفادي إعادة تسجيل الدخول في كل مرة ولتوفير تجربة سريعة بدون إنترنت.</li>
+              <li><strong className="text-slate-100">التطبيق مجاني بالكامل حالياً:</strong> لا يوجد أي اشتراك مدفوع فعّال في هذه النسخة، وبالتالي لا يُطلب أي إذن وصول للكاميرا أو معرض الصور. إن تم تفعيل اشتراك مدفوع لاحقاً، سيتم تحديث هذه السياسة قبل ذلك ليوضح أي بيانات إضافية قد تُجمع (مثل صورة وصل دفع).</li>
             </ul>
           </div>
 
