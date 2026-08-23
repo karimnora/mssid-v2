@@ -315,6 +315,8 @@ public async request<T>(
       exerciseText?: string;
       solutionText?: string;
       quickCheck?: { questionAr: string; options: { labelAr: string; isCorrect: boolean }[] };
+      quotaRemaining?: number;
+      quotaLimit?: number;
     }>('/v1/ai/explain', {
       method: 'POST',
       body: JSON.stringify({
@@ -326,6 +328,17 @@ public async request<T>(
         grade: payload.grade,
         promptType: payload.promptType,
       }),
+    });
+  }
+
+  public async getAiQuota() {
+    return this.request<{
+      allowed?: boolean;
+      limit: number;
+      remaining: number;
+      resetHours?: number;
+    }>('/v1/ai/quota', {
+      method: 'GET',
     });
   }
 

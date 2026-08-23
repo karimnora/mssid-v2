@@ -3,7 +3,7 @@ import { PRESCHOOL_MODULES } from './index';
 import { PreschoolLanguage } from './types';
 import { PRESCHOOL_BADGES } from './preschoolBadgesData';
 import { CHALLENGE_MODULE_IDS } from '../../components/preschool/useDailyChallenge';
-import { activityPicture, localizeGlyph } from '../../components/preschool/preschoolGlyphs';
+import { activityPicture } from '../../components/preschool/preschoolGlyphs';
 
 const LANGUAGES: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
@@ -73,9 +73,12 @@ describe('Preschool (Mode Éveil) data integrity', () => {
             const assets = activity.visualAssets;
             switch (activity.interactionType) {
               case 'tap_choice': {
-                expect(assets.choices?.length, activity.id).toBeGreaterThanOrEqual(2);
-                const correctCount = assets.choices!.filter((c) => c.isCorrect).length;
-                expect(correctCount, `${activity.id} must have exactly one correct choice`).toBe(1);
+                LANGUAGES.forEach((lang) => {
+                  const choices = activity.i18n[lang].choices ?? assets.choices;
+                  expect(choices?.length, `${activity.id} ${lang}`).toBeGreaterThanOrEqual(2);
+                  const correctCount = choices!.filter((c) => c.isCorrect).length;
+                  expect(correctCount, `${activity.id} ${lang} must have exactly one correct choice`).toBe(1);
+                });
                 break;
               }
               case 'drag_drop': {
@@ -191,14 +194,16 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(path?.visualAssets.pathStops?.map((s) => s.asset)).toEqual(['🍓', '🍊', '🍋', '🌴', '🏡']);
   });
 
-  it('FR/EN letter games keep the Arabic glyph and the same picture the voice names', () => {
+  it('letter tap_choice isolates picture and glyphs per language', () => {
     const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
     const alif = letters?.activities.find((a) => a.id === 'letters-alif-rabbit');
     expect(alif).toBeTruthy();
-    expect(activityPicture(alif!, 'fr')).toBe('🐰');
-    expect(activityPicture(alif!, 'en')).toBe('🐰');
-    expect(localizeGlyph('أ', 'fr')).toBe('أ');
-    expect(localizeGlyph('أ', 'en')).toBe('أ');
+    expect(activityPicture(alif!, 'ar')).toBe('🐰');
+    expect(activityPicture(alif!, 'fr')).toBe('🍍');
+    expect(activityPicture(alif!, 'en')).toBe('🍎');
+    expect(alif!.i18n.ar.choices?.find((c) => c.isCorrect)?.asset).toBe('أ');
+    expect(alif!.i18n.fr.choices?.find((c) => c.isCorrect)?.asset).toBe('A');
+    expect(alif!.i18n.en.choices?.find((c) => c.isCorrect)?.asset).toBe('A');
   });
 
   it('seasons-connect names each season and matches winter to the scarf already taught', () => {

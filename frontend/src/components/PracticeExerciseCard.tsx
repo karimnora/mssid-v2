@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { CheckCircle2, XCircle, HelpCircle } from 'lucide-react';
 import { ProgressiveExercise } from '../types';
 import { renderTextWithMath } from './MathExpression';
+import { IrabTable } from './lessonViewer/IrabTable';
+import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
 
 interface PracticeExerciseCardProps {
   ex: ProgressiveExercise;
@@ -260,14 +262,28 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
 
       {isChecked && (
         <div
-          className={`text-sm p-3 rounded-xl border leading-relaxed whitespace-pre-line ${
+          className={`text-sm p-3 rounded-xl border leading-relaxed ${
             isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
           }`}
         >
           <span className="font-black block mb-1">
             {isCorrect ? '✅ أحسنت! إجابة صحيحة.' : `💡 ليست هذه الإجابة، لا بأس! إليك الشرح لتتعلم منه:`}
           </span>
-          {renderArabicText(ex.detailedCorrectionAr)}
+          {ex.irabTableAr && ex.irabTableAr.length > 0 ? (
+            <div className="space-y-2">
+              <p className="whitespace-pre-line">{renderArabicText(ex.detailedCorrectionAr)}</p>
+              <IrabTable rows={ex.irabTableAr} />
+            </div>
+          ) : ex.operationsAr ? (
+            <MathWorkedExample
+              solution={ex.detailedCorrectionAr}
+              operationsAr={ex.operationsAr}
+              renderArabicText={renderArabicText}
+              tone="light"
+            />
+          ) : (
+            <span className="whitespace-pre-line">{renderArabicText(ex.detailedCorrectionAr)}</span>
+          )}
         </div>
       )}
 

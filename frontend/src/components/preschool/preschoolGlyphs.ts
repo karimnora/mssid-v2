@@ -1,8 +1,8 @@
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 
 /** Same picture in AR/FR/EN — the spoken prompt already names that picture. */
-export function activityPicture(activity: PreschoolActivity, _language: PreschoolLanguage): string {
-  return activity.visualAssets.mainSvgOrImage;
+export function activityPicture(activity: PreschoolActivity, language: PreschoolLanguage): string {
+  return activity.i18n[language].image ?? activity.visualAssets.mainSvgOrImage;
 }
 
 /** Same emoji in every language so a match game never asks for a rabbit and shows a plane. */

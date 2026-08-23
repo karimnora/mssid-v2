@@ -21,8 +21,9 @@ interface ItemState {
 
 const spring = { type: 'spring' as const, stiffness: 420, damping: 22 };
 
-function itemsFromActivity(activity: PreschoolActivity): ItemState[] {
-  return (activity.visualAssets.sortItems ?? []).map((it) => ({
+function itemsFromActivity(activity: PreschoolActivity, language: PreschoolLanguage): ItemState[] {
+  const list = activity.i18n[language].sortItems ?? activity.visualAssets.sortItems ?? [];
+  return list.map((it) => ({
     id: it.id,
     asset: it.asset,
     label: it.label,
@@ -37,17 +38,17 @@ function itemsFromActivity(activity: PreschoolActivity): ItemState[] {
 // "locks in" — the item snaps back to the tray for another try, exactly like a wrong tap elsewhere
 // in Mode Éveil: mistakes cost nothing but a soft sound.
 export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, language, onComplete }) => {
-  const bins = activity.visualAssets.sortBins ?? [];
+  const bins = activity.i18n[language].sortBins ?? activity.visualAssets.sortBins ?? [];
   const binRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const [items, setItems] = useState<ItemState[]>(() => itemsFromActivity(activity));
+  const [items, setItems] = useState<ItemState[]>(() => itemsFromActivity(activity, language));
   const draggingId = useRef<string | null>(null);
   const startPos = useRef({ x: 0, y: 0 });
   const completedRef = useRef(false);
 
   useEffect(() => {
-    setItems(itemsFromActivity(activity));
+    setItems(itemsFromActivity(activity, language));
     completedRef.current = false;
-  }, [activity.id]);
+  }, [activity.id, language]);
 
   const findBinUnderPointer = (clientX: number, clientY: number): string | null => {
     const padding = 30;

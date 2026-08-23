@@ -157,7 +157,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                 المختبر التفاعلي للغة الأمازيغية (Tamazight)
               </h1>
               <span className="bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full">
-                تيفيناغ • Tifinagh 4AP/5AP
+                تيفيناغ • Tifinagh {grade}
               </span>
             </div>
             <p className="text-emerald-100 text-xs sm:text-sm mt-1.5 font-medium">

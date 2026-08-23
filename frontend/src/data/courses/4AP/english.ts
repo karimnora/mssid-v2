@@ -71,69 +71,49 @@ export const ENGLISH_4AP: CourseLesson[] = [
 },
 
 {
-    id: 'english-4ap-unit1-jobs-occupations',
+    id: 'english-4ap-unit1-numbers-colors',
     grade: '4AP',
     subject: 'english',
     categoryAr: 'Unit 1: Family & Friends',
     trimester: 1,
     objectivesAr: [
-        'أُسمّي مهناً شائعة بالإنجليزية.',
-        'أسأل عن مهنة شخص بـ "What does he/she do?"',
-        'أُجيب بتركيب "He/She is a/an [job]."',
+        'أعدّ من 1 إلى 20 بالإنجليزية.',
+        'أُسمّي الألوان الأساسية (red, blue, green, yellow).',
+        'أستعمل الأرقام والألوان في جمل بسيطة.',
     ],
     detailedCourse: {
-        introAr: 'بعد أن تعلمنا التعريف بأفراد عائلتنا، نتعلم اليوم كيف نتحدث عن مهنة كل واحد منهم بالإنجليزية.',
+        introAr: 'في 4AP نتعلم الأرقام حتى 20 والألوان الأساسية لنصف أشياءنا اليومية بالإنجليزية.',
         vocabulary: [
-            { termAr: 'Occupation / Job', definitionAr: 'المهنة، العمل الذي يمارسه شخص لكسب رزقه.' },
-            { termAr: 'a / an + job', definitionAr: 'نستعمل "a" قبل مهنة تبدأ بصوت ساكن، و"an" قبل مهنة تبدأ بصوت متحرك.' },
+            { termAr: 'Numbers 1–20', definitionAr: 'one, two, three … twenty.' },
+            { termAr: 'Colors', definitionAr: 'red, blue, green, yellow, black, white, orange.' },
         ],
-        visualizationHintAr: 'ارسم مع طفلك جدولاً بأفراد العائلة ومهنة كل واحد منهم، واكتبا معاً جملة "He/She is a/an..." لكل شخص.',
+        visualizationHintAr: 'ارسم 20 دائرة واكتب تحت كل واحدة رقمها بالإنجليزية ولونها.',
         commonMistakes: [
-            { mistakeAr: 'نسيان "a" أو "an" قبل اسم المهنة.', correctionAr: 'في الإنجليزية، نضع دائماً "a" أو "an" قبل اسم المهنة: "She is a teacher"، وليس "She is teacher".' },
+            { mistakeAr: 'الخلط بين thirteen و thirty.', correctionAr: 'thirteen = 13، thirty = 30.' },
         ],
-        takeawayAr: 'نسأل عن المهنة بـ "What does he/she do?" ونجيب بـ "He/She is a/an [job]." نستعمل "an" قبل الأصوات المتحركة مثل "an engineer".',
+        takeawayAr: 'Numbers 1–20 and basic colors are core 4AP vocabulary — not jobs (5AP topic).',
     },
-    titleAr: 'Unit 1 (bis): What Does Your Father Do? - Jobs & Occupations',
-    summaryAr: `يتعلم التلميذ أسماء المهن الشائعة (Teacher, Doctor, Policeman, Pilot, Engineer) ويستعمل تركيب "He/She is a/an..." للتعبير عن مهنة فرد من عائلته والسؤال عنها.`,
+    titleAr: 'Unit 1 (bis): Numbers 1–20 & Colors',
+    summaryAr: 'Pupils count from 1 to 20 and name basic colors (red, blue, green, yellow) — official 4AP English vocabulary before daily routines and school objects.',
     rulesAr: [
-        'Common Jobs: teacher (معلم), doctor (طبيب), policeman/policewoman (شرطي), pilot (طيار), farmer (فلاح), engineer (مهندس), nurse (ممرضة), baker (خباز).',
-        'Asking about a job: "What does your father do?" ➔ "He is a doctor."',
-        'Using a/an: نستعمل "a" قبل صوت ساكن (a teacher, a doctor)، و"an" قبل صوت متحرك (an engineer, an artist).',
-        'Describing what a job does: "A teacher teaches students." "A doctor helps sick people." "A pilot flies planes."'
+        'Numbers: one (1), two (2), three (3) … ten (10), eleven (11) … twenty (20).',
+        'Colors: red, blue, green, yellow, black, white, orange, pink, brown.',
+        'Structure: "I have [number] [objects]." Example: "I have five books."',
+        'Structure: "The [object] is [color]." Example: "The flag is green and white."',
     ],
     keyFormulas: [
-        { labelAr: 'السؤال عن المهنة', formulaAr: 'What does he/she do? ➔ He/She is a/an [job].' },
-        { labelAr: 'قاعدة a/an', formulaAr: 'a + صوت ساكن (a nurse) | an + صوت متحرك (an engineer)' }
+        { labelAr: 'Number + noun', formulaAr: 'I have three pencils.' },
+        { labelAr: 'Color description', formulaAr: 'The car is red.' },
     ],
     examplesAr: [
-        {
-            problem: 'How do you say "أمي طبيبة" in English?',
-            solution: '"My mother is a doctor."'
-        },
-        {
-            problem: 'Which article (a/an) goes before "engineer"?',
-            solution: '"an engineer" (لأن engineer يبدأ بصوت متحرك /e/).'
-        }
+        { problem: 'How do you say «خمسة عشر» in English?', solution: 'Fifteen.' },
+        { problem: 'Complete: "The sky is ...."', solution: '"The sky is blue."' },
     ],
     interactiveTool: 'english_lab',
     quiz: [
-        {
-            id: 'q1',
-            questionAr: 'What does a teacher do?',
-            options: [
-                { id: 'a', textAr: 'A teacher teaches students.', isCorrect: true, explanationAr: 'Correct! Teachers work to teach students at school.' },
-                { id: 'b', textAr: 'A teacher flies planes.', isCorrect: false }
-            ]
-        },
-        {
-            id: 'q2',
-            questionAr: 'Choose the correct article: "My uncle is ...... pilot."',
-            options: [
-                { id: 'a', textAr: 'a', isCorrect: true, explanationAr: 'Correct! "pilot" starts with a consonant sound, so we use "a".' },
-                { id: 'b', textAr: 'an', isCorrect: false }
-            ]
-        }
-    ]
+        { id: 'q1', questionAr: 'What number is «twelve»?', options: [{ id: 'a', textAr: '12', isCorrect: true, explanationAr: 'twelve = 12.' }, { id: 'b', textAr: '20', isCorrect: false }] },
+        { id: 'q2', questionAr: 'Green = ....', options: [{ id: 'a', textAr: 'أخضر', isCorrect: true, explanationAr: 'green = أخضر.' }, { id: 'b', textAr: 'أحمر', isCorrect: false }] },
+    ],
 },
 
 {
@@ -221,13 +201,13 @@ export const ENGLISH_4AP: CourseLesson[] = [
         commonMistakes: [
             { mistakeAr: 'نسيان "o\'clock" عند الإجابة عن السؤال عن الوقت.', correctionAr: 'الإجابة الكاملة يجب أن تحتوي "o\'clock" بعد الرقم: "It\'s seven o\'clock"، وليس "It\'s seven" فقط.' },
         ],
-        takeawayAr: 'What time is it? - It\'s [number] o\'clock. Daily routine: wake up, get up, eat breakfast, go to school, go to bed.',
+        takeawayAr: 'What time is it? - It\'s [number] o\'clock. Daily routine: wake up, get dressed, have breakfast, go to school, go to bed.',
     },
     titleAr: 'Unit 2: What Time Is It? My Daily Routine (Telling the Hour with o\'clock)',
     summaryAr: `Pupils learn to ask and tell the time using "What time is it? - It's ... o'clock", and to describe their daily routine with simple present verbs (wake up, get up, eat breakfast, go to school, go to bed) — the foundation for reading half-past and quarter-past times in the next lesson.`,
     rulesAr: [
       'Asking the Time: "What time is it?" (كم الساعة؟) ➔ "It\'s [number] o\'clock" (الساعة كذا تماماً).',
-      'Daily Routine Verbs: wake up (أستيقظ), get up (أنهض), eat breakfast (أتناول الفطور), go to school (أذهب إلى المدرسة), do homework (أُنجز واجباتي), go to bed (أخلد إلى النوم).',
+      'Daily Routine Verbs: wake up (أستيقظ), get up (أنهض), get dressed (أرتدي ملابسي), have breakfast (أتناول الفطور), go to school (أذهب إلى المدرسة), do homework (أُنجز واجباتي), go to bed (أخلد إلى النوم).',
       'Structure with Time: "I [verb] at [time] o\'clock." Example: "I wake up at seven o\'clock." "I go to bed at nine o\'clock."',
       'Order of the Day: morning (الصباح) ➔ afternoon (بعد الظهر) ➔ evening (المساء) ➔ night (الليل).'
     ],
@@ -625,68 +605,48 @@ export const ENGLISH_4AP: CourseLesson[] = [
 },
 
 {
-    id: 'english-4ap-unit6-present-continuous',
+    id: 'english-4ap-unit6-daily-routines-review',
     grade: '4AP',
     subject: 'english',
-    categoryAr: 'Unit 6: Games & Hobbies',
+    categoryAr: 'Unit 6: Daily Routine',
     trimester: 3,
     objectivesAr: [
-        'أُميّز بين المضارع البسيط (I play) والمضارع المستمر (I am playing).',
-        'أستعمل صيغة am/is/are + verb-ing لوصف فعل يحدث الآن.',
-        'أستعمل كلمات دلالية مثل "now" و"every day" للتمييز بين الزمنين.',
+        'أصف روتيني اليومي بالمضارع البسيط (Present Simple).',
+        'أستعمل wake up, get dressed, have breakfast, go to school.',
+        'أربط الأفعال بالوقت (at ... o\'clock).',
     ],
     detailedCourse: {
-        introAr: 'نستعمل المضارع البسيط للحديث عن عادة نقوم بها دائماً (I play football every day)، والمضارع المستمر للحديث عن فعل يحدث الآن بالضبط (I am playing football now).',
+        introAr: 'في 4AP نستعمل المضارع البسيط فقط لوصف العادات اليومية — بدون Present Continuous (موضوع 5AP).',
         vocabulary: [
-            { termAr: 'Present Simple', definitionAr: 'زمن يُستعمل للعادات والحقائق الثابتة، الفعل يبقى في صورته الأساسية (أو +s مع he/she/it).' },
-            { termAr: 'Present Continuous', definitionAr: 'زمن يُستعمل لفعل يحدث الآن، يتكون من am/is/are + الفعل + ing.' },
+            { termAr: 'Present Simple', definitionAr: 'زمن العادات: I wake up, I get dressed, I have breakfast.' },
+            { termAr: 'Daily routine', definitionAr: 'الأنشطة اليومية المتكررة.' },
         ],
-        visualizationHintAr: 'ارسم ساعة كبيرة بجانب كلمة "NOW" لتمثل المضارع المستمر، وشمساً تشرق كل يوم بجانب كلمة "EVERY DAY" لتمثل المضارع البسيط.',
+        visualizationHintAr: 'ارسم خطاً زمنياً من wake up إلى go to bed.',
         commonMistakes: [
-            { mistakeAr: 'نسيان إضافة "-ing" للفعل في المضارع المستمر.', correctionAr: 'يجب دائماً إضافة "-ing" للفعل بعد am/is/are: "I am playing"، وليس "I am play".' },
+            { mistakeAr: 'استعمال am/is/are + verb-ing للروتين.', correctionAr: 'Present Continuous للفعل الآن — في 4AP نكتفي بـ Present Simple للروتين.' },
         ],
-        takeawayAr: 'Present Simple = عادة متكررة (I play every day). Present Continuous = فعل يحدث الآن (I am playing now) = am/is/are + verb-ing.',
+        takeawayAr: 'I wake up at six. I get dressed. I have breakfast at seven. I go to school at eight.',
     },
-    titleAr: 'Unit 6 (bis): What Are You Doing? - Present Simple vs Present Continuous',
-    summaryAr: `يتعلم التلميذ الفرق بين المضارع البسيط (للعادات المتكررة) والمضارع المستمر (للأفعال التي تحدث الآن بالضبط)، ويستعمل صيغة am/is/are + verb-ing بشكل صحيح.`,
+    titleAr: 'Unit 6 (bis): My Daily Routine — Present Simple Review',
+    summaryAr: 'Pupils review daily routines with Present Simple: wake up, get dressed, have breakfast, go to school, go to bed — official 4AP scope (no Present Continuous).',
     rulesAr: [
-        'Present Simple (المضارع البسيط): يُستعمل للعادات والحقائق الثابتة. الفعل يبقى بصورته الأساسية مع I/You/We/They، ونضيف "-s" مع He/She/It. مثال: "I play football every day."',
-        'Present Continuous (المضارع المستمر): يُستعمل لفعل يحدث الآن بالضبط. التركيب: am/is/are + الفعل + ing. مثال: "I am playing football now."',
-        'اختيار الفعل المساعد: I ➔ am, He/She/It ➔ is, You/We/They ➔ are.',
-        'كلمات دلالية: Present Simple (every day, always, usually) | Present Continuous (now, at the moment, look!).'
+        'Present Simple for habits: I/You/We/They + verb | He/She/It + verb-s.',
+        'Daily routine: wake up → get dressed → have breakfast → go to school → do homework → go to bed.',
+        'Time: I [verb] at [number] o\'clock. Example: "I have breakfast at seven o\'clock."',
+        'Markers: every day, in the morning, at night.',
     ],
     keyFormulas: [
-        { labelAr: 'تركيب المضارع المستمر', formulaAr: 'am/is/are + verb + ing' },
-        { labelAr: 'الفعل المساعد المناسب', formulaAr: 'I→am | He/She/It→is | You/We/They→are' }
+        { labelAr: 'Routine + time', formulaAr: 'I get dressed at six o\'clock.' },
+        { labelAr: 'Routine sequence', formulaAr: 'wake up → get dressed → have breakfast → go to school' },
     ],
     examplesAr: [
-        {
-            problem: 'Complete: "Look! The children ...... (play) football in the garden now."',
-            solution: '"Look! The children are playing football in the garden now." (are + playing, لأن الفعل يحدث الآن).'
-        },
-        {
-            problem: 'Complete: "I ...... (read) a book every night before sleeping." (Present Simple)',
-            solution: '"I read a book every night before sleeping." (نستعمل صيغة الفعل الأساسية مع I في المضارع البسيط).'
-        }
+        { problem: 'Write: «أرتدي ملابسي ثم أتناول الفطور».', solution: '"I get dressed, then I have breakfast."' },
+        { problem: 'Complete: "I .... at eight o\'clock." (go to school)', solution: '"I go to school at eight o\'clock."' },
     ],
     interactiveTool: 'english_lab',
     quiz: [
-        {
-            id: 'q1',
-            questionAr: 'Choose the correct sentence for an action happening right now:',
-            options: [
-                { id: 'a', textAr: 'She is drawing a picture now.', isCorrect: true, explanationAr: 'Correct! "is drawing" (Present Continuous) describes an action happening right now.' },
-                { id: 'b', textAr: 'She draws a picture now.', isCorrect: false }
-            ]
-        },
-        {
-            id: 'q2',
-            questionAr: 'Which word signals the Present Simple tense?',
-            options: [
-                { id: 'a', textAr: 'every day', isCorrect: true, explanationAr: 'Correct! "every day" signals a habit, so we use the Present Simple.' },
-                { id: 'b', textAr: 'now', isCorrect: false }
-            ]
-        }
-    ]
+        { id: 'q1', questionAr: 'get dressed means ....', options: [{ id: 'a', textAr: 'أرتدي ملابسي', isCorrect: true, explanationAr: 'get dressed = أرتدي ملابسي.' }, { id: 'b', textAr: 'أنام', isCorrect: false }] },
+        { id: 'q2', questionAr: 'have breakfast means ....', options: [{ id: 'a', textAr: 'أتناول الفطور', isCorrect: true, explanationAr: 'have breakfast = أتناول الفطور.' }, { id: 'b', textAr: 'أذهب للمدرسة', isCorrect: false }] },
+    ],
 },
 ];

@@ -46,7 +46,30 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'The English Alphabet (26 letters):\n- 5 Vowels (حروف الفول): A, E, I, O, U.\n- 21 Consonants: B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z.',
       'Phonics Examples: /a/ as in Apple 🍎, /b/ as in Book 📘, /c/ as in Cat 🐱.'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'dialogue_scenario',
+        titleAr: 'Hello! What is your name?',
+        introAr: 'First English year: greetings and the alphabet — no present continuous.',
+        turns: [
+            {
+                promptAr: 'You meet Fennec in the morning. What do you say?',
+                lineAr: 'Fennec: « … ! What is your name? »',
+                choices: [
+                    { textAr: 'Hello', isCorrect: true, feedbackAr: 'Yes! Hello / Hi to greet someone.' },
+                    { textAr: 'I am running', isCorrect: false, feedbackAr: 'Present continuous is not a 3AP target.' },
+                ],
+            },
+            {
+                promptAr: 'How do you say your name?',
+                lineAr: 'You: « … Yassine. »',
+                choices: [
+                    { textAr: 'My name is', isCorrect: true, feedbackAr: 'My name is + name. Or: I am Yassine.' },
+                    { textAr: 'I will be', isCorrect: false, feedbackAr: 'Will is for later years, not 3AP Unit 1.' },
+                ],
+            },
+        ],
+    },
     examplesAr: [
       {
         problem: 'How do you reply when someone says "Nice to meet you"?',
@@ -149,7 +172,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Numbers 1 to 10:\n- 1 (One), 2 (Two), 3 (Three), 4 (Four), 5 (Five)\n- 6 (Six), 7 (Seven), 8 (Eight), 9 (Nine), 10 (Ten).',
       'Plural Nouns Rule: To make a noun plural, add "s" (ex: 1 book ➔ 2 books | 1 apple ➔ 3 apples).'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'My family and numbers 1–10',
+        introAr: 'Tap a word: family or a number.',
+        terms: [
+            { termAr: 'mother', meaningAr: 'أمي — mum / mother.', exampleAr: 'This is my mother.' },
+            { termAr: 'father', meaningAr: 'أبي — dad / father.', exampleAr: 'This is my father.' },
+            { termAr: 'one', meaningAr: 'العدد 1.', exampleAr: 'I have one sister.' },
+            { termAr: 'ten', meaningAr: 'العدد 10.', exampleAr: 'I can count to ten.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'How do you say "هذه أمي" in English?',
@@ -256,7 +290,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Demonstrative Questions: "What is this?" (ما هذا؟) ➔ "It is a pen" (إنه قلم حبر).',
       'Indefinite Articles (a / an):\n- Use "a" before consonant sounds (ex: a book, a pen, a ruler).\n- Use "an" before vowel sounds A, E, I, O, U (ex: an eraser, an apple).'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'School objects and classroom talk',
+        introAr: 'Objects and simple commands: Sit down, Open your book.',
+        terms: [
+            { termAr: 'a book', meaningAr: 'كتاب.', exampleAr: 'Open your book, please.' },
+            { termAr: 'a pencil', meaningAr: 'قلم رصاص.', exampleAr: 'This is my pencil.' },
+            { termAr: 'Sit down', meaningAr: 'أمر بسيط في القسم.', exampleAr: 'Sit down, please.' },
+            { termAr: 'Stand up', meaningAr: 'أمر بسيط في القسم.', exampleAr: 'Stand up, please.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Which article should you use before "eraser"? (a / an)',
@@ -358,7 +403,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Rooms of the House:\n- Living room (غرفة الضيوف)\n- Bedroom (غرفة النوم)\n- Kitchen (المطبخ)\n- Bathroom (الحمام)\n- Garden (الحديقة).',
       'Prepositions of Place (حروف الجر المكانية):\n- IN (في / بداخل) : ex: The book is in the bag.\n- ON (على / فوق) : ex: The pen is on the desk.\n- UNDER (تحت) : ex: The ball is under the bed.\n- NEXT TO (بجانب) : ex: The chair is next to the table.'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Colors, shapes and my home',
+        introAr: 'in / on / under + rooms of the house.',
+        terms: [
+            { termAr: 'red', meaningAr: 'أحمر.', exampleAr: 'The apple is red.' },
+            { termAr: 'a circle', meaningAr: 'دائرة.', exampleAr: 'This shape is a circle.' },
+            { termAr: 'kitchen', meaningAr: 'المطبخ.', exampleAr: 'Mum is in the kitchen.' },
+            { termAr: 'under', meaningAr: 'تحت.', exampleAr: 'The cat is under the table.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Translate: "القط في المطبخ"',
@@ -464,7 +520,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Expressing Ownership: "I have a [Toy/Pet]" (عندي / أمتلك...). Example: "I have a red car" (عندي سيارة حمراء).',
       'Expressing Likes & Dislikes:\n- "I like [Noun]" (أنا أحب...). Example: "I like cats."\n- "I don\'t like [Noun]" (أنا لا أحب...). Example: "I don\'t like dogs."\n- "My favorite toy is [Toy]" (لعبتي المفضلة هي...).'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Toys, pets and I like…',
+        introAr: 'I like / I have — no continuous tense.',
+        terms: [
+            { termAr: 'a ball', meaningAr: 'كرة.', exampleAr: 'I have a ball.' },
+            { termAr: 'a cat', meaningAr: 'قط.', exampleAr: 'I like my cat.' },
+            { termAr: 'I like', meaningAr: 'أحبّ.', exampleAr: 'I like football.' },
+            { termAr: 'I have', meaningAr: 'لديّ.', exampleAr: 'I have two toys.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'How do you say "أنا أحب الأرانب" in English?',
@@ -566,7 +633,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Asking "How many": "How many [plural noun] are there?" (كم عدد...؟) ➔ "There are [number] [plural noun]." (يوجد كذا...).',
       'Example: "How many toys are there?" - "There are twelve toys."'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Numbers 11 to 15',
+        introAr: 'Count things at home and at school.',
+        terms: [
+            { termAr: 'eleven', meaningAr: '11.', exampleAr: 'I have eleven pencils.' },
+            { termAr: 'twelve', meaningAr: '12.', exampleAr: 'There are twelve eggs in a carton.' },
+            { termAr: 'fifteen', meaningAr: '15.', exampleAr: 'I can count to fifteen.' },
+            { termAr: 'How many?', meaningAr: 'كم؟', exampleAr: 'How many books? Five books.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'How do you say "13" in English?',
@@ -668,7 +746,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Expressing Preferences: "I like [food/drink]" (أحب...) | "I don\'t like [food/drink]" (لا أحب...).',
       'Asking About Preferences: "Do you like apples?" (هل تحب التفاح؟) ➔ "Yes, I do." (نعم) أو "No, I don\'t." (لا).'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Food and drinks',
+        introAr: 'I like apples. I don\'t like milk.',
+        terms: [
+            { termAr: 'an apple', meaningAr: 'تفاحة.', exampleAr: 'I like apples.' },
+            { termAr: 'milk', meaningAr: 'حليب.', exampleAr: 'I don\'t like milk.' },
+            { termAr: 'bread', meaningAr: 'خبز.', exampleAr: 'I eat bread.' },
+            { termAr: 'water', meaningAr: 'ماء.', exampleAr: 'I drink water.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'How do you say "أنا أحب التفاح" in English?',
@@ -772,7 +861,18 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Descriptive Adjectives & Antonyms:\n- Big (كبير) ↔ Small (صغير)\n- Long (طويل) ↔ Short (قصير)\n- Example: "A big dog with small ears" | "Long hair".',
       'Annual 3AP Synthesis Checklist:\n1) Greet & introduce myself\n2) Name family, friends, school objects, colors, shapes, house rooms, toys, pets & body parts\n3) Count 1 to 20\n4) Follow classroom commands.'
     ],
-    interactiveTool: 'english_lab',
+    interactiveTool: 'english_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'My body',
+        introAr: 'Head, hand, leg — 3AP body words, then a short review.',
+        terms: [
+            { termAr: 'head', meaningAr: 'رأس.', exampleAr: 'This is my head.' },
+            { termAr: 'hand', meaningAr: 'يد.', exampleAr: 'I have two hands.' },
+            { termAr: 'leg', meaningAr: 'رجل.', exampleAr: 'I have two legs.' },
+            { termAr: 'eye', meaningAr: 'عين.', exampleAr: 'I have two eyes.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Count how many eyes and ears you have in English:',

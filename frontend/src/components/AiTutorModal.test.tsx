@@ -7,28 +7,47 @@ import { springBootApi } from '../services/springBootApi';
 describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
   beforeEach(() => {
     localStorage.clear();
+    vi.spyOn(springBootApi, 'getAiQuota').mockResolvedValue({
+      status: 200,
+      data: { allowed: true, remaining: 3, limit: 3, resetHours: 24 },
+    });
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
-  it('renders modal with the topic input when open', () => {
+  it('renders modal with the topic input when open', async () => {
     render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
 
     expect(screen.getByText(/المعلّم الذكي "مسيد"/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toBeInTheDocument();
+    expect(await screen.findByText('باقي 3 من 3 أسئلة اليوم')).toBeInTheDocument();
   });
 
-  it('pre-fills the topic with the first chip of the opened grade, not a 4AP/5AP default', () => {
+  it('pre-fills the topic with the first chip of the opened grade, not a 4AP/5AP default', async () => {
     const { rerender } = render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="1AP" />);
 
-    expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toHaveValue('حرف الباء وحركاته');
-    expect(screen.queryByDisplayValue(/القسمة/)).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /حرف الباء وحركاته/ })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.queryByPlaceholderText(/مثال: الكسور العشرية/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /حل مسألة أو سؤال/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /ولّد مسألة تدريبية جديدة/ })).not.toBeInTheDocument();
+    expect(await screen.findByText('باقي 3 من 3 أسئلة اليوم')).toBeInTheDocument();
 
     rerender(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
     expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toHaveValue('الحال والتمييز');
     expect(screen.queryByRole('button', { name: /إنّ وأخواتها/ })).not.toBeInTheDocument();
+  });
+
+  it('shows remaining daily questions in the modal', async () => {
+    vi.mocked(springBootApi.getAiQuota).mockResolvedValue({
+      status: 200,
+      data: { allowed: true, remaining: 2, limit: 3, resetHours: 12 },
+    });
+
+    render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
+
+    expect(await screen.findByText('باقي 2 من 3 أسئلة اليوم')).toBeInTheDocument();
   });
 
   it('displays a loading state while waiting for the AI response', async () => {
@@ -57,6 +76,25 @@ describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
     await waitFor(() => {
       expect(screen.getByText(/شرح مفصل للقسمة الإقليدية/i)).toBeInTheDocument();
     });
+  });
+
+  it('lets a 1AP child ask from chips with a listen button on the answer', async () => {
+    vi.spyOn(springBootApi, 'askGeminiExplain').mockResolvedValue({
+      status: 200,
+      data: {
+        responseText: 'الباء حرف من حروف الهجاء.',
+        status: 'success',
+        quotaRemaining: 2,
+        quotaLimit: 3,
+      },
+    });
+
+    render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="1AP" />);
+    fireEvent.click(screen.getByRole('button', { name: 'اشرح لي' }));
+
+    expect(await screen.findByText('الباء حرف من حروف الهجاء.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'استمع' })).toBeInTheDocument();
+    expect(screen.getByText('باقي 2 من 3 أسئلة اليوم')).toBeInTheDocument();
   });
 
   // Regression test for the bug found in the CMS/AI audit: the backend answers 200 OK even when

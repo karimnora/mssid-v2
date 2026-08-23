@@ -50,6 +50,15 @@ public class AiQuotaService {
         return snapshot;
     }
 
+    /**
+     * Read-only snapshot for the JWT principal — used by GET /api/v1/ai/quota so the modal can
+     * show remaining calls before the child spends one.
+     */
+    public QuotaSnapshot peekAuthenticatedUser() {
+        UserIdentity identity = resolveIdentityFromSecurityContext();
+        return peek(identity.email(), identity.role());
+    }
+
     public QuotaSnapshot peek(String email, Role.RoleName role) {
         int limit = dailyLimit(role);
         Window window = usage.get(normalizeEmail(email));
@@ -59,6 +68,37 @@ public class AiQuotaService {
         }
         int remaining = Math.max(0, limit - window.count);
         return new QuotaSnapshot(remaining > 0, limit, remaining, hoursLeft(window.resetAt, now));
+    }
+
+    /**
+     * Gives back the slot consumed just before a Gemini call that returned {@code status=error}.
+     * A FREE child must not lose 1 of 3 daily questions because the model timed out.
+     */
+    public QuotaSnapshot refundAuthenticatedUser() {
+        UserIdentity identity = resolveIdentityFromSecurityContext();
+        return refund(identity.email(), identity.role());
+    }
+
+    QuotaSnapshot refund(String email, Role.RoleName role) {
+        int limit = dailyLimit(role);
+        String key = normalizeEmail(email);
+        Window window = usage.get(key);
+        long now = System.currentTimeMillis();
+        if (window == null || now >= window.resetAt) {
+            return new QuotaSnapshot(true, limit, limit, 24);
+        }
+        synchronized (window) {
+            if (now >= window.resetAt) {
+                window.count = 0;
+                window.resetAt = now + WINDOW_MS;
+                return new QuotaSnapshot(true, limit, limit, 24);
+            }
+            if (window.count > 0) {
+                window.count--;
+            }
+            int remaining = Math.max(0, limit - window.count);
+            return new QuotaSnapshot(remaining > 0, limit, remaining, hoursLeft(window.resetAt, now));
+        }
     }
 
     QuotaSnapshot tryConsume(String email, Role.RoleName role) {

@@ -45,7 +45,30 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Consonnes M / N : "m" (comme dans *maman*) et "n" (comme dans *nid*).',
       'La Combinatoire (Consonne + Voyelle) : m + a = MA | m + i = MI | n + a = NA | n + i = NI.'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'dialogue_scenario',
+        titleAr: 'Bonjour ! Je me présente',
+        introAr: 'Choisis la bonne réplique. Pas de conjugaison : seulement les salutations de 3AP.',
+        turns: [
+            {
+                promptAr: 'Tu arrives en classe le matin. Que dis-tu ?',
+                lineAr: 'Amina : « … ! Je m\'appelle Amina. »',
+                choices: [
+                    { textAr: 'Bonjour', isCorrect: true, feedbackAr: 'Oui ! « Bonjour » se dit en arrivant.' },
+                    { textAr: 'Au revoir', isCorrect: false, feedbackAr: '« Au revoir » se dit en partant, pas en arrivant.' },
+                ],
+            },
+            {
+                promptAr: 'Yassine te demande ton prénom. Tu réponds :',
+                lineAr: 'Yassine : « Et toi ? »',
+                choices: [
+                    { textAr: 'Je m\'appelle…', isCorrect: true, feedbackAr: 'Formule de présentation de 3AP : Je m\'appelle + prénom.' },
+                    { textAr: 'J\'étais…', isCorrect: false, feedbackAr: 'L\'imparfait n\'est pas au programme de 3AP.' },
+                ],
+            },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Lit la syllabe formée : N + I = ?',
@@ -148,7 +171,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Consonnes T / D : "t" (comme dans *table*, *trousse*) et "d" (comme dans *date*, *ardoise*).',
       'La Combinatoire : t + o = TO | t + u = TU | d + o = DO | d + u = DU.'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Dans mon cartable',
+        introAr: 'Clique sur chaque mot : article + objet de classe (un / une).',
+        terms: [
+            { termAr: 'un stylo', meaningAr: 'Masculin : un / le stylo.', exampleAr: 'C\'est un stylo bleu.' },
+            { termAr: 'une règle', meaningAr: 'Féminin : une / la règle.', exampleAr: 'J\'ai une règle dans ma trousse.' },
+            { termAr: 'un cahier', meaningAr: 'Masculin : un cahier.', exampleAr: 'Ouvre ton cahier, s\'il te plaît.' },
+            { termAr: 'une gomme', meaningAr: 'Féminin : une gomme.', exampleAr: 'Passe-moi une gomme.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Complète avec l\'article indéfini (un/une) : "..... trousse"',
@@ -249,7 +283,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les voyelles E / É : "e" (comme dans *le*, *petit*) et "é" avec accent aigu (comme dans *école*, *vélos*).',
       'Les consonnes P / B : "p" (son sourd : *papa*, *pomme*) et "b" (son sonore : *banane*, *bus*).'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Mon ami, mon amie, les couleurs',
+        introAr: 'Présenter un camarade et nommer une couleur.',
+        terms: [
+            { termAr: 'un ami', meaningAr: 'Garçon : c\'est mon ami.', exampleAr: 'C\'est Yassine, c\'est mon ami.' },
+            { termAr: 'une amie', meaningAr: 'Fille : c\'est mon amie.', exampleAr: 'C\'est Lina, c\'est mon amie.' },
+            { termAr: 'rouge', meaningAr: 'Couleur : أحمر.', exampleAr: 'Le ballon est rouge.' },
+            { termAr: 'bleu', meaningAr: 'Couleur : أزرق.', exampleAr: 'Le sac est bleu.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Distingue P et B : "un [ ... ]allon" ?',
@@ -351,7 +396,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Consonnes L / R : "l" (*lune*, *lire*) et "r" (*radio*, *rue*).',
       'Les Consonnes F / V : "f" (*fille*, *fleur*) et "v" (*vélo*, *vache*).'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Voici ma famille',
+        introAr: 'IL pour un garçon, ELLE pour une fille.',
+        terms: [
+            { termAr: 'le père', meaningAr: 'On le remplace par IL.', exampleAr: 'Voici mon père. Il est ingénieur.' },
+            { termAr: 'la mère', meaningAr: 'On la remplace par ELLE.', exampleAr: 'Voici ma mère. Elle est médecin.' },
+            { termAr: 'le frère', meaningAr: 'Masculin : IL.', exampleAr: 'Mon frère s\'appelle Reda. Il a 6 ans.' },
+            { termAr: 'la sœur', meaningAr: 'Féminin : ELLE.', exampleAr: 'Ma sœur s\'appelle Sarah. Elle a 10 ans.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Remplace "Mon frère" par un pronom : "Mon frère joue au ballon."',
@@ -451,7 +507,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Quatre Saisons : le printemps (الربيع), l\'été (الصيف), l\'automne (الخريف), l\'hiver (الشتاء).',
       'Décrire le temps par saison : "En été, il fait chaud." "En hiver, il fait froid." "Au printemps, il fait doux." "En automne, il pleut souvent."'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Métiers et saisons',
+        introAr: 'Il est / Elle est + métier. Les quatre saisons.',
+        terms: [
+            { termAr: 'médecin', meaningAr: 'Elle est médecin.', exampleAr: 'Ma mère est médecin.' },
+            { termAr: 'enseignant', meaningAr: 'Il est enseignant.', exampleAr: 'Mon oncle est enseignant.' },
+            { termAr: 'l\'été', meaningAr: 'Saison chaude.', exampleAr: 'En été, il fait très chaud.' },
+            { termAr: 'l\'hiver', meaningAr: 'Saison froide.', exampleAr: 'En hiver, il fait froid.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Complète : "Ma mère travaille à l\'hôpital, elle est ....."',
@@ -555,7 +622,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'La lettre C : prononcée /k/ devant a, o, u (*cahier*, *coq*) et /s/ devant e, i (*cerise*, *ciel*).',
       'La lettre G : prononcée /g/ devant a, o, u (*gâteau*, *gomme*) et /ʒ/ devant e, i (*giraf*, *gilet*).'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Quel âge as-tu ?',
+        introAr: 'Nombres 1 à 10 et verbe avoir au présent (j\'ai).',
+        terms: [
+            { termAr: 'j\'ai', meaningAr: 'Verbe avoir, je.', exampleAr: 'J\'ai huit ans.' },
+            { termAr: 'tu as', meaningAr: 'Verbe avoir, tu.', exampleAr: 'Tu as quel âge ?' },
+            { termAr: 'huit', meaningAr: 'Le nombre 8.', exampleAr: 'J\'ai huit crayons.' },
+            { termAr: 'dix', meaningAr: 'Le nombre 10.', exampleAr: 'Nous avons dix doigts.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Conjugue le verbe Avoir : "Tu (avoir) quel âge ?"',
@@ -653,7 +731,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Sons composés CH / J : "ch" (*chat*, *chambre*) et "j" (*jardin*, *jupe*).',
       'Sons composés OU / ON : "ou" (*loup*, *poupée*) et "on" (*maison*, *ballon*).'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Dans ma maison',
+        introAr: 'Pièces et prépositions : dans, sur, sous.',
+        terms: [
+            { termAr: 'la cuisine', meaningAr: 'On y prépare les repas.', exampleAr: 'Maman est dans la cuisine.' },
+            { termAr: 'la chambre', meaningAr: 'On y dort.', exampleAr: 'Le lit est dans la chambre.' },
+            { termAr: 'sur', meaningAr: 'Préposition : فوق.', exampleAr: 'Le livre est sur la table.' },
+            { termAr: 'sous', meaningAr: 'Préposition : تحت.', exampleAr: 'Le chat est sous la chaise.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Où dort-on dans la maison ?',
@@ -755,7 +844,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Voyelles Nasales AN / EN : "an" (*maman*, *pantalon*) et "en" (*enfant*, *dent*).',
       'Les Voyelles Nasales IN / AIN : "in" (*lapin*, *jardin*) et "ain" (*train*, *main*).'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Les animaux de la maison',
+        introAr: 'Animaux domestiques et verbe être au présent.',
+        terms: [
+            { termAr: 'le chat', meaningAr: 'Animal domestique.', exampleAr: 'Le chat est petit.' },
+            { termAr: 'le chien', meaningAr: 'Animal domestique.', exampleAr: 'Le chien est fidèle.' },
+            { termAr: 'la poule', meaningAr: 'Animal de la ferme.', exampleAr: 'La poule est dans le jardin.' },
+            { termAr: 'il est', meaningAr: 'Verbe être, il.', exampleAr: 'Le chat est noir.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Complète avec le verbe ÊTRE : "Le chat ..... petit."',
@@ -860,7 +960,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Le Verbe BOIRE au présent (irrégulier) : Je bois | Tu bois | Il boit / Elle boit.',
       'Les Sons AU / EAU : "au" (*chaud*, *jaune*) et "eau" (*eau*, *gâteau*) se lisent tous les deux /o/.'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Les repas de la journée',
+        introAr: 'Manger / boire au présent, aliments du petit-déjeuner.',
+        terms: [
+            { termAr: 'le petit-déjeuner', meaningAr: 'Premier repas du matin.', exampleAr: 'Je prends le petit-déjeuner à 7 heures.' },
+            { termAr: 'je mange', meaningAr: 'Verbe manger, je (1er groupe).', exampleAr: 'Je mange du pain.' },
+            { termAr: 'je bois', meaningAr: 'Verbe boire, je.', exampleAr: 'Je bois du lait.' },
+            { termAr: 'le déjeuner', meaningAr: 'Repas de midi.', exampleAr: 'À midi, c\'est le déjeuner.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Complète avec le verbe MANGER : "Le matin, je ..... du pain."',
@@ -959,7 +1070,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Quantités simples : un peu de... (قليل من) / beaucoup de... (كثير من). Exemple : "Un peu de sucre" / "Beaucoup de légumes".',
       'Le Son QU : se lit toujours /k/, jamais /kw/ (*quatre*, *coq* — ici avec un C, mais même son /k/).'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Au marché',
+        introAr: 'J\'ai faim / j\'ai soif et petites quantités.',
+        terms: [
+            { termAr: 'j\'ai faim', meaningAr: 'Je veux manger.', exampleAr: 'J\'ai faim ! Je voudrais du pain.' },
+            { termAr: 'j\'ai soif', meaningAr: 'Je veux boire.', exampleAr: 'J\'ai soif. Je bois de l\'eau.' },
+            { termAr: 'un peu de', meaningAr: 'Petite quantité.', exampleAr: 'Un peu de fromage, s\'il te plaît.' },
+            { termAr: 'le marché', meaningAr: 'On y achète fruits et légumes.', exampleAr: 'Nous allons au marché le vendredi.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Comment dit-on "أنا جائع" en français ?',
@@ -1058,7 +1180,18 @@ export const FRENCH_3AP: CourseLesson[] = [
       'Les Sons Complexes :\n- "oi" se lit /wa/ (*oiseau*, *poisson*).\n- "gn" se lit /ɲ/ (*agneau*, *montagne*).\n- "ill" se lit /ij/ (*fille*, *papillon*).',
       'La Règle d\'or de la Lecture Combinatoire : Consonne + Voyelle = Syllabe (ex: p + a = pa), Syllabes assemblées = Mot (ex: pa + pa = papa), Mots assemblés = Phrase.'
     ],
-    interactiveTool: 'french_lab',
+    interactiveTool: 'french_dialogue_lab',
+    languageInteractive: {
+        type: 'vocabulary_explorer',
+        titleAr: 'Au jardin',
+        introAr: 'Fruits et goûts : j\'aime / je n\'aime pas.',
+        terms: [
+            { termAr: 'la pomme', meaningAr: 'Fruit.', exampleAr: 'J\'aime la pomme.' },
+            { termAr: 'l\'orange', meaningAr: 'Fruit.', exampleAr: 'Je mange une orange.' },
+            { termAr: 'j\'aime', meaningAr: 'Exprimer un goût positif.', exampleAr: 'J\'aime les dattes.' },
+            { termAr: 'je n\'aime pas', meaningAr: 'Exprimer un goût négatif.', exampleAr: 'Je n\'aime pas le citron.' },
+        ],
+    },
     examplesAr: [
       {
         problem: 'Lit le son complexe dans "POISSON" :',

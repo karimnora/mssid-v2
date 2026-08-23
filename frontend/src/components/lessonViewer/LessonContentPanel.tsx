@@ -181,10 +181,12 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
                     ))}
                   </ol>
                 )}
-                <div className="bg-[var(--brand-emerald)]/10 border border-[var(--brand-emerald)]/30 rounded-xl p-3 text-xs text-[var(--brand-emerald-dark)] whitespace-pre-line">
-                  <span className="font-bold">✅ الحل: </span>
-                  {renderArabicText(activeExample.solution)}
-                </div>
+                <MathWorkedExample
+                  solution={activeExample.solution}
+                  operationsAr={activeExample.operationsAr}
+                  renderArabicText={renderArabicText}
+                  tone="light"
+                />
               </motion.div>
             );
           })()}

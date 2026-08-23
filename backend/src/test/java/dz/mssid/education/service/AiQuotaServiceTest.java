@@ -107,4 +107,24 @@ class AiQuotaServiceTest {
         assertEquals(AiQuotaService.FREE_DAILY_LIMIT, ex.getLimit());
         assertEquals(0, ex.getRemaining());
     }
+
+    @Test
+    @DisplayName("refund restores a FREE slot after a consumed call — Gemini failure must not burn the day")
+    void refund_restoresConsumedSlot() {
+        String email = "kid@mssid.dz";
+        quotaService.tryConsume(email, Role.RoleName.ROLE_FREE);
+        quotaService.tryConsume(email, Role.RoleName.ROLE_FREE);
+        AiQuotaService.QuotaSnapshot afterRefund = quotaService.refund(email, Role.RoleName.ROLE_FREE);
+        assertEquals(2, afterRefund.remaining());
+        assertTrue(afterRefund.allowed());
+        AiQuotaService.QuotaSnapshot peeked = quotaService.peek(email, Role.RoleName.ROLE_FREE);
+        assertEquals(2, peeked.remaining());
+    }
+
+    @Test
+    @DisplayName("refund never drives the counter below zero")
+    void refund_doesNotGoNegative() {
+        AiQuotaService.QuotaSnapshot snapshot = quotaService.refund("unused@mssid.dz", Role.RoleName.ROLE_FREE);
+        assertEquals(AiQuotaService.FREE_DAILY_LIMIT, snapshot.remaining());
+    }
 }

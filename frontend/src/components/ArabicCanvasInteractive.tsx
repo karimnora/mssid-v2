@@ -14,6 +14,11 @@ import {
   Zap,
   Award
 } from 'lucide-react';
+import {
+  ARABIC_CANVAS_2AP_DEFAULT,
+  ARABIC_CANVAS_BY_LESSON,
+  arabicCanvasPrefersDiacritics,
+} from '../data/arabicCanvasByLesson';
 
 interface ArabicCanvasInteractiveProps {
   lesson?: CourseLesson;
@@ -120,6 +125,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
 }) => {
   const is1AP = (lesson?.grade || grade) === '1AP';
   const isHarakatLesson = !!lesson?.id?.includes('harakat');
+  const prefersDiacritics = arabicCanvasPrefersDiacritics(lesson?.id || '', lesson?.grade || grade);
   // Canvas State for Free Drawing / Writing
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -128,7 +134,7 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
   const [isEraser, setIsEraser] = useState<boolean>(false);
 
   const [activeSubTab, setActiveSubTab] = useState<'drawing' | 'grammar_analysis' | 'diacritics'>(
-    is1AP ? (isHarakatLesson ? 'diacritics' : 'drawing') : 'grammar_analysis',
+    is1AP ? (isHarakatLesson ? 'diacritics' : 'drawing') : prefersDiacritics ? 'diacritics' : 'grammar_analysis',
   );
 
   // Grammar Analysis State
@@ -138,7 +144,51 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
 
   // Custom sentences generated for the active lesson / grade
   const getLessonGrammarData = (): { sentence: string; words: GrammarWord[] } => {
+    if (lesson?.irabTableAr && lesson.irabTableAr.length > 0) {
+      return {
+        sentence: lesson.irabTableAr.map((row) => row.wordAr).join(' '),
+        words: lesson.irabTableAr.map((row, i) => ({
+          id: `w${i + 1}`,
+          word: row.wordAr,
+          correctTag: row.analysisAr,
+          hint: row.analysisAr,
+        })),
+      };
+    }
+    if (lesson?.id && ARABIC_CANVAS_BY_LESSON[lesson.id]) {
+      return ARABIC_CANVAS_BY_LESSON[lesson.id];
+    }
+    if ((lesson?.grade || grade) === '2AP') {
+      return ARABIC_CANVAS_2AP_DEFAULT;
+    }
     if (lesson?.id.includes('arabic-4ap') || grade === '4AP') {
+      return {
+        sentence: 'يَقْرَأُ الطَّالِبُ المَاهِرُ الكِتَابَ القَيِّمَ فِي المَكْتَبَةِ',
+        words: [
+          { id: 'w1', word: 'يَقْرَأُ', correctTag: 'فعل مضارع', hint: 'يدل على حدث وقع في الزمن الحاضر أو المستقبل ويقبل السين' },
+          { id: 'w2', word: 'الطَّالِبُ', correctTag: 'فاعل', hint: 'اسم مرفوع يدل على من قام بالفعل (من يقرأ؟)' },
+          { id: 'w3', word: 'المَاهِرُ', correctTag: 'صفة (نعت)', hint: 'تتبع الموصوف في الحركة والتعريف والتذكير' },
+          { id: 'w4', word: 'الكِتَابَ', correctTag: 'مفعول به', hint: 'اسم منصوب وقع عليه فعل الفاعل (ماذا يقرأ؟)' },
+          { id: 'w5', word: 'القَيِّمَ', correctTag: 'صفة (نعت)', hint: 'تصف الكتاب وتتبعه في الحركة والتعريف' },
+          { id: 'w6', word: 'فِي', correctTag: 'حرف جر', hint: 'حرف مبني يجر الاسم الذي بعده' },
+          { id: 'w7', word: 'المَكْتَبَةِ', correctTag: 'اسم مجرور', hint: 'اسم كسرت آخره بسب حرف الجر "في"' }
+        ]
+      };
+    }
+
+    return {
+      sentence: 'يُدَافِعُ الجُنُودُ البُسَلاءُ عَنِ الوَطَنِ العَزِيزِ بِشَجَاعَةٍ',
+      words: [
+        { id: 'w1', word: 'يُدَافِعُ', correctTag: 'فعل مضارع', hint: 'فعل مرفوع وعلامة رفعه الضمة الظاهرة' },
+        { id: 'w2', word: 'الجُنُودُ', correctTag: 'فاعل', hint: 'من يقوم بالدفاع؟ فاعل مرفوع بالضمة' },
+        { id: 'w3', word: 'البُسَلاءُ', correctTag: 'صفة (نعت)', hint: 'صفة مرفوعة تتبع الجنود' },
+        { id: 'w4', word: 'عَنِ', correctTag: 'حرف جر', hint: 'حرف جر مبني' },
+        { id: 'w5', word: 'الوَطَنِ', correctTag: 'اسم مجرور', hint: 'اسم مجرور بـ "عن" وعلامة جره الكسرة' },
+        { id: 'w6', word: 'العَزِيزِ', correctTag: 'صفة (نعت)', hint: 'صفة تتبع الوطن في الكسرة والتعريف' },
+        { id: 'w7', word: 'بِشَجَاعَةٍ', correctTag: 'جار ومجرور', hint: 'الباء حرف جر، وشجاعة اسم مجرور بالكسرة' }
+      ]
+    };
+  };
       return {
         sentence: 'يَقْرَأُ الطَّالِبُ المَاهِرُ الكِتَابَ القَيِّمَ فِي المَكْتَبَةِ',
         words: [
@@ -169,20 +219,25 @@ export const ArabicCanvasInteractive: React.FC<ArabicCanvasInteractiveProps> = (
   };
 
   const grammarData = getLessonGrammarData();
-
-  const availableTags = [
-    'فعل ماضٍ',
-    'فعل مضارع',
-    'فعل أمر',
-    'فاعل',
-    'مفعول به',
-    'صفة (نعت)',
-    'مبتدأ',
-    'خبر',
-    'حرف جر',
-    'اسم مجرور',
-    'جار ومجرور'
-  ];
+  const gradeKey = lesson?.grade || grade;
+  const baseTags =
+    gradeKey === '2AP'
+      ? ['اسم', 'فعل', 'حرف']
+      : [
+          'فعل ماضٍ',
+          'فعل مضارع',
+          'فعل أمر',
+          'فاعل',
+          'مفعول به',
+          'صفة (نعت)',
+          'مبتدأ',
+          'خبر',
+          'حرف جر',
+          'اسم مجرور',
+          'جار ومجرور',
+          'حرف عطف',
+        ];
+  const availableTags = [...new Set([...baseTags, ...grammarData.words.map((w) => w.correctTag)])];
 
   // Setup Canvas
   useEffect(() => {

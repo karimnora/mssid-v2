@@ -24,6 +24,7 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -67,7 +68,10 @@ class GeminiProxyControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.answer").value(response.getAnswer()))
-                .andExpect(jsonPath("$.status").value("success"));
+                .andExpect(jsonPath("$.status").value("success"))
+                .andExpect(jsonPath("$.quotaRemaining").value(2))
+                .andExpect(jsonPath("$.quotaLimit").value(3));
+        verify(aiQuotaService, never()).refundAuthenticatedUser();
     }
 
     @Test
@@ -142,5 +146,40 @@ class GeminiProxyControllerTest {
                 .andExpect(jsonPath("$.remaining").value(0));
 
         verify(geminiAiService, never()).generateExplanation(any());
+    }
+
+    @Test
+    @DisplayName("POST /api/v1/ai/explain - Gemini status=error refunds the quota slot")
+    void askGeminiAssistant_GeminiError_RefundsQuota() throws Exception {
+        GeminiPromptRequest request = new GeminiPromptRequest();
+        request.setTopic("الكسور");
+        request.setGrade("5AP");
+
+        when(geminiAiService.generateExplanation(any(GeminiPromptRequest.class)))
+                .thenReturn(new GeminiResponse("تعذر الاتصال بمساعد الذكاء الاصطناعي، حاول مجدداً بعد قليل.", "error"));
+        when(aiQuotaService.refundAuthenticatedUser())
+                .thenReturn(new AiQuotaService.QuotaSnapshot(true, 3, 3, 24));
+
+        mockMvc.perform(post("/api/v1/ai/explain")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("error"))
+                .andExpect(jsonPath("$.quotaRemaining").value(3));
+
+        verify(aiQuotaService).refundAuthenticatedUser();
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/ai/quota - returns remaining calls for the JWT principal")
+    void peekQuota_ReturnsRemaining() throws Exception {
+        when(aiQuotaService.peekAuthenticatedUser())
+                .thenReturn(new AiQuotaService.QuotaSnapshot(true, 3, 2, 18));
+
+        mockMvc.perform(get("/api/v1/ai/quota"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.limit").value(3))
+                .andExpect(jsonPath("$.remaining").value(2))
+                .andExpect(jsonPath("$.resetHours").value(18));
     }
 }

@@ -93,14 +93,11 @@ describe('4AP Mathematics Pedagogical Curriculum Tests', () => {
     });
   });
 
-  // 2026 interactiveTool audit: interactiveTool is intentionally omitted (not defaulted to a
-  // mismatched generic tool) on lessons where no existing tool genuinely fits the subject matter
-  // (fractions-decimals, geometry-lines-polygons, proportionally-time-data). See LessonViewer.tsx's
-  // hasRenderableInteractiveTool — an absent tool hides the tab rather than showing something wrong.
+  // P1: every 1AP–4AP math lesson now has a fitting tool (math_lab config, clock, geometry, converter).
   it('every 4AP math lesson with an interactiveTool should have one relevant to its content', () => {
     math4apLessons.forEach((lesson) => {
       if (lesson.interactiveTool) {
-        expect(['soroban', 'multiplication_table', 'unit_converter', 'geometry_visualizer']).toContain(lesson.interactiveTool);
+        expect(['soroban', 'multiplication_table', 'unit_converter', 'geometry_visualizer', 'math_lab']).toContain(lesson.interactiveTool);
       }
     });
   });
@@ -558,7 +555,8 @@ describe('3AP English Language Pedagogical Curriculum Tests', () => {
       expect(lesson.objectiveAr).toBeTruthy();
       expect(lesson.discoveryAr).toBeTruthy();
       expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(3);
-      expect(lesson.interactiveTool).toBe('english_lab');
+      expect(lesson.interactiveTool).toBe('english_dialogue_lab');
+      expect(lesson.languageInteractive).toBeDefined();
       expect(lesson.progressiveExercises).toBeDefined();
       expect(lesson.progressiveExercises!.length).toBeGreaterThanOrEqual(2);
       expect(lesson.educationalGame).toBeDefined();

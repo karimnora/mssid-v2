@@ -34,6 +34,18 @@ export const MATH_2AP: CourseLesson[] = [
       'نَقْرَأُ العَدَدَ من اليسار إلى اليمين: أولاً عدد العشرات ثم عدد الوحدات (مثال: 27 = سَبْعَةٌ وَعِشْرُونَ).',
       'العَدَدُ صِفْرٌ (0) يعني "لا شيء" ولا نضعه أبداً في مَنْزِلَةِ العَشَرَاتِ إن كان العدد أكبر من 9.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'من 0 إلى 49',
+      introAr: 'عشرات يساراً، وحدات يميناً.',
+      cards: [
+        { labelAr: 'سبعة وعشرون', valueDisplay: '27', explanationAr: '2 عشرات + 7 وحدات. نقرأ: سبعة وعشرون.' },
+        { labelAr: 'أربعة وثلاثون', valueDisplay: '34', explanationAr: '3 عشرات + 4 وحدات.' },
+        { labelAr: 'تسعة وأربعون', valueDisplay: '49', explanationAr: '4 عشرات + 9 وحدات. أكبر عدد في هذا الدرس.' },
+        { labelAr: 'عشرة', valueDisplay: '10', explanationAr: 'حزمة واحدة من 10. صفر وحدات.' },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'تفكيك العدد', formulaAr: '34 = 30 + 4 = (3 عشرات) + (4 وحدات)', noteAr: 'العشرات دائماً على اليسار' },
     ],
@@ -129,6 +141,18 @@ export const MATH_2AP: CourseLesson[] = [
       'الشَّرِيطُ العَدَدِيُّ: خط مرسوم عليه الأعداد بالترتيب، كلما اتجهنا لليمين زاد العدد.',
       'الجَدْوَلُ ذُو المَدْخَلَيْنِ: نقرأ المعلومة بتقاطع سطر (أفقي) مع عمود (عمودي).',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'shape_explorer',
+      titleAr: 'المواضع والشريط العددي',
+      introAr: 'أمام، خلف، فوق، تحت، يمين، يسار.',
+      shapes: [
+        { id: 'front', nameAr: 'أَمَامَ', visualHint: '👀', propertiesAr: ['أراه مباشرة أمامي.'] },
+        { id: 'back', nameAr: 'خَلْفَ', visualHint: '🔙', propertiesAr: ['لا أراه إلا إذا استدرت.'] },
+        { id: 'right', nameAr: 'يَمِينٌ', visualHint: '➡️', propertiesAr: ['غالباً اليد التي نكتب بها.'] },
+        { id: 'number-line', nameAr: 'الشَّرِيطُ العَدَدِيُّ', visualHint: '📏', propertiesAr: ['كلما اتجهنا يميناً زاد العدد.'] },
+      ],
+    },
     examplesAr: [
       { problem: 'في الشريط العددي، أين يقع العدد 12 بالنسبة للعدد 8؟', solution: '12 يقع على يمين 8 لأنه أكبر منه.' },
     ],
@@ -218,6 +242,26 @@ export const MATH_2AP: CourseLesson[] = [
       'ثم نجمع العشرات ونكتب الناتج في مكانه.',
       'إذا كان مجموع الوحدات أقل من 10، نكتبه مباشرة دون أي احتفاظ.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'الجمع العمودي دون احتفاظ',
+      introAr: 'وحدات تحت وحدات، عشرات تحت عشرات. نبدأ من اليمين.',
+      operations: [
+        {
+          id: '23-15',
+          labelAr: '23 + 15',
+          operationsAr: '  23\n+ 15\n----\n  38',
+          solutionAr: 'الوحدات: 3 + 5 = 8. العشرات: 2 + 1 = 3. الناتج 38.',
+        },
+        {
+          id: '32-46',
+          labelAr: '32 + 46',
+          operationsAr: '  32\n+ 46\n----\n  78',
+          solutionAr: 'الوحدات: 2 + 6 = 8. العشرات: 3 + 4 = 7. الناتج 78.',
+        },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'خطوات الجمع العمودي', formulaAr: '1) جمع الوحدات ← 2) جمع العشرات ← 3) قراءة الناتج' },
     ],
@@ -315,6 +359,18 @@ export const MATH_2AP: CourseLesson[] = [
       'الرمز > يعني "أكبر من"، والرمز < يعني "أصغر من"، ويشير رأس الرمز الحاد دائماً إلى العدد الأصغر.',
       'العدد 99 هو أكبر عدد من رقمين، ويليه مباشرة 100.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'من 50 إلى 99',
+      introAr: 'نقارن العشرات أولاً، ثم الوحدات.',
+      cards: [
+        { labelAr: 'أكبر من', valueDisplay: '>', explanationAr: 'رأس الرمز يشير إلى الأصغر. 87 > 78 لأن 8 عشرات > 7 عشرات.' },
+        { labelAr: 'أصغر من', valueDisplay: '<', explanationAr: '56 < 65.' },
+        { labelAr: 'تسعة وتسعون', valueDisplay: '99', explanationAr: 'أكبر عدد من رقمين. بعده 100.' },
+        { labelAr: 'خمسون', valueDisplay: '50', explanationAr: '5 عشرات، صفر وحدات.' },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'قاعدة المقارنة', formulaAr: 'أُقَارِنُ العَشَرَاتِ أَوَّلاً، ثُمَّ الوَحَدَاتِ إِنِ استَوَتِ العَشَرَاتُ' },
     ],
@@ -408,6 +464,18 @@ export const MATH_2AP: CourseLesson[] = [
       'نَقْرَأُ العَدَدَ من اليسار إلى اليمين: عدد المئات أولاً، ثم العشرات، ثم الوحدات (مثال: 347 = ثَلَاثُ مِئَةٍ وَسَبْعَةٌ وَأَرْبَعُونَ).',
       'العدد 999 هو أكبر عدد من 3 أرقام، ويليه مباشرة 1000.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'المئات: من 100 إلى 999',
+      introAr: 'مئات، عشرات، وحدات.',
+      cards: [
+        { labelAr: 'مئة', valueDisplay: '100', explanationAr: 'المئة = 10 عشرات = 100 وحدة.' },
+        { labelAr: 'ثلاث مئة وسبعة وأربعون', valueDisplay: '347', explanationAr: '3 مئات + 4 عشرات + 7 وحدات.' },
+        { labelAr: 'تسع مئة وتسعة وتسعون', valueDisplay: '999', explanationAr: 'أكبر عدد من 3 أرقام. بعده 1000.' },
+        { labelAr: 'مئتان', valueDisplay: '200', explanationAr: 'مئتان = 2 × 100.' },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'تفكيك عدد من 3 أرقام', formulaAr: '347 = 300 + 40 + 7 = (3 مئات) + (4 عشرات) + (7 وحدات)', noteAr: 'المئات على اليسار دائماً' },
     ],
@@ -499,6 +567,26 @@ export const MATH_2AP: CourseLesson[] = [
       'نضيف الـ 1 المحتفظ بها إلى مجموع العشرات.',
       'الاحتفاظ يعني ببساطة: 10 وحدات = عشرة واحدة كاملة ننقلها لخانة العشرات.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'الجمع بالاحتفاظ',
+      introAr: 'إذا بلغ مجموع الوحدات 10 أو أكثر: نكتب الوحدات ونحتفظ بـ 1 للعشرات.',
+      operations: [
+        {
+          id: '27-15',
+          labelAr: '27 + 15',
+          operationsAr: '  ¹\n  27\n+ 15\n----\n  42',
+          solutionAr: '7 + 5 = 12: نكتب 2 ونحتفظ بـ 1. العشرات: 2 + 1 + 1 = 4. الناتج 42.',
+        },
+        {
+          id: '38-47',
+          labelAr: '38 + 47',
+          operationsAr: '  ¹\n  38\n+ 47\n----\n  85',
+          solutionAr: '8 + 7 = 15: نكتب 5 ونحتفظ بـ 1. 3 + 4 + 1 = 8. الناتج 85.',
+        },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'قاعدة الاحتفاظ', formulaAr: 'إذا كان مجموع الوحدات ≥ 10 ← اكتب الوحدة واحتفظ بـ 1 للعشرات' },
     ],
@@ -589,6 +677,26 @@ export const MATH_2AP: CourseLesson[] = [
       'نبدأ الطرح من اليمين: نطرح الوحدات أولاً ثم العشرات.',
       'كلمات تدل على الطرح: "بقي"، "أنفق"، "أعطى"، "الفرق بين". كلمات تدل على الجمع: "مجموع"، "أضاف"، "اشترى إضافة إلى".',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'الطرح العمودي دون احتفاظ',
+      introAr: 'الكبير فوق. نبدأ من اليمين. (الاستعارة تُبدأ في درس لاحق، على عددين).',
+      operations: [
+        {
+          id: '48-23',
+          labelAr: '48 − 23',
+          operationsAr: '  48\n− 23\n----\n  25',
+          solutionAr: 'الوحدات: 8 − 3 = 5. العشرات: 4 − 2 = 2. الناتج 25.',
+        },
+        {
+          id: '76-41',
+          labelAr: '76 − 41',
+          operationsAr: '  76\n− 41\n----\n  35',
+          solutionAr: '6 − 1 = 5. 7 − 4 = 3. الناتج 35.',
+        },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'خطوات الطرح العمودي', formulaAr: 'العدد الكبير فوق، العدد الصغير تحت ← أطرح الوحدات ← أطرح العشرات' },
     ],
@@ -775,6 +883,18 @@ export const MATH_2AP: CourseLesson[] = [
       'نِصْفُ عَدَدٍ = تقسيمه إلى جزأين متساويين تماماً (مثال: نصف 8 = 4، لأن 4+4=8).',
       'الضعف والنصف عمليتان متعاكستان: إذا كان ضعف 6 هو 12، فإن نصف 12 هو 6.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'ضعف ونصف — بلا جداول ضرب',
+      introAr: 'الضعف = العدد + نفسه. النصف = قسمان متساويان. جداول الضرب في 3AP.',
+      cards: [
+        { labelAr: 'ضعف 5', valueDisplay: '5 + 5', explanationAr: 'ضعف 5 = 5 + 5 = 10. ليس «5 × 2» في هذا المستوى.' },
+        { labelAr: 'نصف 8', valueDisplay: '4 + 4', explanationAr: 'نصف 8 = 4 لأن 4 + 4 = 8.' },
+        { labelAr: 'ضعف 6', valueDisplay: '12', explanationAr: '6 + 6 = 12، إذن نصف 12 = 6.' },
+        { labelAr: 'نصف 20', valueDisplay: '10', explanationAr: '10 + 10 = 20.' },
+      ],
+    },
     keyFormulas: [
       { labelAr: 'الضعف', formulaAr: 'ضعف العدد = العدد × 2 = العدد + العدد' },
       { labelAr: 'النصف', formulaAr: 'نصف العدد = تقسيمه على جزأين متساويين' },
@@ -867,6 +987,7 @@ export const MATH_2AP: CourseLesson[] = [
       'لمقارنة الكتلة (الثقل)، نحمل الشيئين بيدينا أو نستعمل ميزاناً بسيطاً: الذي يُنزل الكفة هو الأثقل.',
       'الأشياء الكبيرة ليست دائماً أثقل: كرة كبيرة من الإسفنج قد تكون أخف من حجر صغير.',
     ],
+    interactiveTool: 'unit_converter',
     examplesAr: [
       { problem: 'قلم طوله 10 سم وممحاة طولها 4 سم. أيهما أطول؟', solution: 'القلم أطول من الممحاة.' },
       { problem: 'كيس رمل وكيس قطن بنفس الحجم. أيهما أثقل غالباً؟', solution: 'كيس الرمل أثقل عادة رغم تشابه الحجم.' },
@@ -1224,6 +1345,30 @@ export const MATH_2AP: CourseLesson[] = [
       'لِمَعْرِفَةِ ثَمَنِ عدة أشياء معاً، نجمع أثمانها (مثال: قلم بـ 30 دج + كراس بـ 50 دج = 80 دج).',
       'لِمَعْرِفَةِ البَاقِي بعد الدفع، نطرح ثمن الشيء من المبلغ الذي دفعناه (مثال: دفعت 100 دج لشيء ثمنه 60 دج، الباقي = 100 - 60 = 40 دج).',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'الدينار الجزائري في السوق',
+      introAr: 'نجمع الأثمان، ونطرح لمعرفة الباقي.',
+      problems: [
+        {
+          id: 'sum-buy',
+          situationAr: 'اشترى كريم كتاباً بـ 150 دج ودفتراً بـ 30 دج. كم دفع؟',
+          choices: [
+            { textAr: '150 + 30 = 180 دج', isCorrect: true, feedbackAr: 'ثمن عدة أشياء = جمع.' },
+            { textAr: '150 − 30 = 120 دج', isCorrect: false, feedbackAr: 'الشراء لشيئين نجمع الأثمان.' },
+          ],
+        },
+        {
+          id: 'change',
+          situationAr: 'دفعت سارة 200 دج ثمن لعبة تكلف 120 دج. كم أعاد البائع؟',
+          choices: [
+            { textAr: '200 − 120 = 80 دج', isCorrect: true, feedbackAr: 'الباقي = المدفوع − الثمن.' },
+            { textAr: '200 + 120 = 320 دج', isCorrect: false, feedbackAr: 'البائع يعيد الفرق، لا يجمع.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       { problem: 'اشترى كريم كتاباً بـ 150 دج ودفتراً بـ 30 دج. كم دفع في المجموع؟', solution: '150 + 30 = 180 دج.' },
       { problem: 'دفعت سارة 200 دج ثمن لعبة تكلف 120 دج. كم أعاد لها البائع؟', solution: '200 - 120 = 80 دج.' },

@@ -26,12 +26,13 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
   const [choices, setChoices] = useState<PreschoolChoice[]>([]);
+  const localizedChoices = activity.i18n[language].choices ?? activity.visualAssets.choices ?? [];
 
   useEffect(() => {
     setSolved(false);
     setWrongId(null);
-    setChoices(shuffleChoices(activity.visualAssets.choices || []));
-  }, [activity.id]);
+    setChoices(shuffleChoices(localizedChoices));
+  }, [activity.id, language]);
 
   const handleTap = (choiceId: string, isCorrect: boolean) => {
     if (solved) return;

@@ -253,6 +253,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 650000,
             solutionAr: '650,000 دج',
             detailedCorrectionAr: '2,450,000 − 1,800,000 = 650,000 دج. مدرسة "أ" حصلت على 650,000 دج أكثر من مدرسة "ب".',
+            operationsAr: '  2,450,000\n− 1,800,000\n-----------\n    650,000',
             xpReward: 25,
         },
     ],
@@ -429,6 +430,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'احسب عمودياً: 3,485 + 2,749.',
             stepsAr: ['الوحدات: 5+9=14، نكتب 4 ونحتفظ بـ1.', 'العشرات: 8+4+1=13، نكتب 3 ونحتفظ بـ1.', 'المئات: 4+7+1=12، نكتب 2 ونحتفظ بـ1.', 'الآلاف: 3+2+1=6.'],
             solution: '3,485 + 2,749 = 6,234.',
+            operationsAr: '  3,485\n+ 2,749\n-------\n  6,234',
         },
         {
             tier: 3,
@@ -436,6 +438,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'احسب عمودياً: 6,203 − 2,847.',
             stepsAr: ['نطرح خانة بخانة من اليمين إلى اليسار.', 'كلما كان رقم المطروح منه أصغر من رقم المطروح، نستلف 1 من الخانة الأعلى مباشرة.'],
             solution: '6,203 − 2,847 = 3,356.',
+            operationsAr: '  6,203\n− 2,847\n-------\n  3,356',
         },
         {
             tier: 4,
@@ -443,6 +446,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'اشترت مدرسة 24 طاولة بسعر 3,250 دج للطاولة الواحدة. احسب الثمن الإجمالي.',
             stepsAr: ['نضرب في الآحاد: 3,250 × 4 = 13,000.', 'نضرب في العشرات (مع الإزاحة): 3,250 × 20 = 65,000.', 'نجمع الحاصلين: 13,000 + 65,000 = 78,000.'],
             solution: 'الثمن الإجمالي = 78,000 دج.',
+            operationsAr: '    3,250\n  ×     24\n  --------\n    13,000\n  + 65,000\n  --------\n    78,000',
             isRealLife: true,
         },
         {
@@ -451,6 +455,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'دفع أب 5,000 دج ثمن 3 كراريس بسعر 320 دج للواحد و2 كتاب بسعر 890 دج للواحد. كم يسترجع من الباقي؟',
             stepsAr: ['ثمن الكراريس: 3 × 320 = 960 دج.', 'ثمن الكتب: 2 × 890 = 1,780 دج.', 'المجموع: 960 + 1,780 = 2,740 دج.', 'الباقي المسترجع: 5,000 − 2,740 = 2,260 دج.'],
             solution: 'يسترجع الأب 2,260 دج.',
+            operationsAr: '3 × 320 = 960\n2 × 890 = 1,780\n960 + 1,780 = 2,740\n\n  5,000\n− 2,740\n-------\n  2,260',
         },
     ],
     rulesAr: [
@@ -627,6 +632,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 2700,
             solutionAr: '2,700 دج',
             detailedCorrectionAr: 'ثمن الأسمدة = 18×950 = 17,100 دج. ثمن بيع التمر = 45×320 = 14,400 دج. الفرق = 17,100 − 14,400 = 2,700 دج (ثمن الأسمدة أكبر).',
+            operationsAr: '18 × 950 = 17,100\n45 × 320 = 14,400\n\n  17,100\n− 14,400\n--------\n   2,700',
             xpReward: 25,
         },
     ],
@@ -833,6 +839,7 @@ export const MATH_5AP: CourseLesson[] = [
                 '6×4=24، يتبقى 24−24=0.'
             ],
             solution: 'الحاصل = 14، والباقي = 0 (قسمة تامة).',
+            operationsAr: '84 ÷ 6\n6 × 14 = 84\nالباقي = 0',
         },
         {
             tier: 3,
@@ -844,6 +851,7 @@ export const MATH_5AP: CourseLesson[] = [
                 'نتحقق أن الباقي (4) أصغر من المقسوم عليه (7) ✓.'
             ],
             solution: 'القسمة صحيحة: 53 = (7×7)+4، والباقي 4 أصغر من 7.',
+            operationsAr: 'مقسوم = (مقسوم عليه × حاصل) + باقٍ\n53 = (7 × 7) + 4\n53 = 49 + 4\n53 = 53  ✓',
         },
         {
             tier: 4,
@@ -1197,6 +1205,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 2,
             solutionAr: '2 كتابين',
             detailedCorrectionAr: '1,250 ÷ 8: الحاصل=156 (8×156=1,248)، والباقي = 1,250−1,248 = 2 كتابين متبقيين بعد توزيع 156 كتاباً على كل مدرسة.',
+            operationsAr: '1,250 ÷ 8\n8 × 156 = 1,248\n1,250 − 1,248 = 2',
             xpReward: 25,
         }
     ],
@@ -1844,6 +1853,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'احسب: 12.5 + 3.75.',
             stepsAr: ['نكتب 12.50 لموازاة عدد المنازل مع 3.75.', 'نجمع عمودياً مع محاذاة الفاصلة: 12.50 + 3.75.'],
             solution: '12.5 + 3.75 = 16.25.',
+            operationsAr: '  12.50\n+  3.75\n-------\n  16.25',
         },
         {
             tier: 3,
@@ -1851,6 +1861,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'احسب: 8.4 − 2.65.',
             stepsAr: ['نكتب 8.40 لموازاة عدد المنازل مع 2.65.', 'نطرح عمودياً مع محاذاة الفاصلة والاستلاف عند الحاجة.'],
             solution: '8.4 − 2.65 = 5.75.',
+            operationsAr: '   8.40\n−  2.65\n-------\n   5.75',
         },
         {
             tier: 4,
@@ -1858,6 +1869,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'اشترت الأم علبة تمر بـ 320.50 دج وقارورة زيت بـ 145.75 دج. احسب المجموع.',
             stepsAr: ['نحاذي الفاصلتين ونجمع عمودياً: 320.50 + 145.75.'],
             solution: 'المجموع = 466.25 دج.',
+            operationsAr: '  320.50\n+ 145.75\n--------\n  466.25',
             isRealLife: true,
         },
         {
@@ -2030,6 +2042,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 232.5,
             solutionAr: '232.50 دج',
             detailedCorrectionAr: '500.00 − 267.50 = 232.50 دج يسترجعها الزبون.',
+            operationsAr: '  500.00\n− 267.50\n--------\n  232.50',
             xpReward: 25,
         },
     ],
@@ -2582,6 +2595,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'لملعب كرة قدم صغير شكل مستطيل طوله 20m وعرضه 10m. احسب محيطه.',
             stepsAr: ['نجمع الطول والعرض: 20+10=30.', 'نضرب المجموع في 2: 30×2=60.'],
             solution: 'المحيط = 60 m.',
+            operationsAr: '(20 + 10) × 2\n= 30 × 2\n= 60 m',
         },
         {
             tier: 2,
@@ -2589,6 +2603,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'احسب مساحة نفس الملعب (طوله 20m وعرضه 10m).',
             stepsAr: ['المساحة = الطول × العرض = 20 × 10.'],
             solution: 'المساحة = 200 m².',
+            operationsAr: '20 × 10 = 200 m²',
         },
         {
             tier: 3,
@@ -2596,6 +2611,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'قطعة أرض مربعة طول ضلعها 25m. احسب محيطها ومساحتها.',
             stepsAr: ['المحيط = الضلع × 4 = 25 × 4 = 100 m.', 'المساحة = الضلع × الضلع = 25 × 25 = 625 m².'],
             solution: 'المحيط = 100 m، والمساحة = 625 m².',
+            operationsAr: 'م = 25 × 4 = 100 m\nس = 25 × 25 = 625 m²',
         },
         {
             tier: 4,
@@ -2603,6 +2619,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'حقل مستطيل طوله 80m وعرضه نصف طوله. احسب عرضه ثم مساحته.',
             stepsAr: ['العرض = 80 ÷ 2 = 40 m.', 'المساحة = الطول × العرض = 80 × 40.'],
             solution: 'العرض = 40 m، والمساحة = 3,200 m².',
+            operationsAr: 'العرض = 80 ÷ 2 = 40 m\nالمساحة = 80 × 40 = 3,200 m²',
             isRealLife: true,
         },
         {
@@ -2779,6 +2796,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 4.5,
             solutionAr: '4.5 ha',
             detailedCorrectionAr: '45,000 m² ÷ 10,000 = 4.5 ha (لأن 1 ha = 10,000 m²).',
+            operationsAr: '45,000 ÷ 10,000 = 4.5 ha',
             xpReward: 25,
         },
     ],
@@ -4261,6 +4279,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 160,
             solutionAr: '160 cm³',
             detailedCorrectionAr: 'الحجم = 8×5×4 = 160 cm³.',
+            operationsAr: '8 × 5 × 4\n= 40 × 4\n= 160 cm³',
             xpReward: 25,
         },
         {
@@ -4510,6 +4529,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'إذا كان 5 كتب بـ750 دج، فكم سعر 8 كتب بنفس السعر؟ (استعمل الرابعة التناسبية)',
             stepsAr: ['الرابعة التناسبية: (8×750) ÷ 5.'],
             solution: 'سعر 8 كتب = 1,200 دج.',
+            operationsAr: '(8 × 750) ÷ 5\n= 6,000 ÷ 5\n= 1,200',
         },
         {
             tier: 4,
@@ -4517,6 +4537,7 @@ export const MATH_5AP: CourseLesson[] = [
             problem: 'شاحنة تستهلك 12 لتراً من البنزين لقطع مسافة 150 km. احسب كمية البنزين اللازمة لقطع 450 km.',
             stepsAr: ['الرابعة التناسبية: (450×12) ÷ 150.'],
             solution: 'كمية البنزين اللازمة = 36 لتراً.',
+            operationsAr: '(450 × 12) ÷ 150\n= 5,400 ÷ 150\n= 36 L',
             isRealLife: true,
         },
         {
@@ -4700,6 +4721,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 90,
             solutionAr: '90 قميصاً',
             detailedCorrectionAr: '(10×54)÷6 = 540÷6 = 90 قميصاً.',
+            operationsAr: '(10 × 54) ÷ 6\n= 540 ÷ 6\n= 90',
             xpReward: 25,
         },
     ],
@@ -5065,6 +5087,7 @@ export const MATH_5AP: CourseLesson[] = [
             calculationAnswer: 3,
             solutionAr: '3 ساعات',
             detailedCorrectionAr: 'الزمن = المسافة ÷ السرعة = 150÷50 = 3 ساعات.',
+            operationsAr: '150 ÷ 50 = 3 h',
             xpReward: 25,
         },
     ],

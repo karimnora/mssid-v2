@@ -514,7 +514,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     year: 2026,
     trimester: 3,
     kind: 'devoir',
-    titleAr: 'فرض منزلي 3 — المحيط والمساحة (السنة الرابعة)',
+    titleAr: 'فرض منزلي 3 — المحيط والتناسبية (السنة الرابعة)',
     sessionAr: 'فرض الفصل الثالث 2026',
     subject: 'math',
     grade: '4AP',
@@ -522,14 +522,14 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     totalPoints: 10,
     contentSource: 'complementary',
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
-    relatedLessonIds: ['math-4ap-perimeter-area-squares-rectangles', 'math-4ap-proportionally-time-data'],
+    relatedLessonIds: ['math-4ap-perimeter-squares-rectangles', 'math-4ap-proportionally-time-data'],
     exercises: [
       {
         titleAr: 'التمرين الأول (3 نقاط)',
         points: 3,
-        relatedLessonId: 'math-4ap-perimeter-area-squares-rectangles',
-        contentAr: 'مستطيل طوله 12m وعرضه 5m. احسب المحيط ثم المساحة.',
-        solutionAr: 'المحيط = (12 + 5) × 2 = 34m. المساحة = 12 × 5 = 60m².',
+        relatedLessonId: 'math-4ap-perimeter-squares-rectangles',
+        contentAr: 'مستطيل طوله 12m وعرضه 5m. احسب محيطه فقط.',
+        solutionAr: 'المحيط = (12 + 5) × 2 = 34m.',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -542,7 +542,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     problemExercise: {
       titleAr: 'وضعية قصيرة (4 نقاط)',
       points: 4,
-      relatedLessonId: 'math-4ap-perimeter-area-squares-rectangles',
+      relatedLessonId: 'math-4ap-perimeter-squares-rectangles',
       contentAr: 'حديقة مربعة ضلعها 9m يُراد إحاطتها بسياج مع باب عرضه 2m. ما طول السياج المستعمل؟',
       solutionAr: 'المحيط = 9 × 4 = 36m. السياج = 36 − 2 = 34m.',
     },

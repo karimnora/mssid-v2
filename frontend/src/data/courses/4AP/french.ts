@@ -145,67 +145,50 @@ export const FRENCH_4AP: CourseLesson[] = [
 },
 
 {
-    id: 'french-4ap-projet1-cod-pronoms',
+    id: 'french-4ap-projet1-seq2-prepositions-lieu',
     grade: '4AP',
     subject: 'french',
     trimester: 1,
     categoryAr: 'Projet 1 : C\'est notre quartier ! - Séquence 2',
-    titleAr: 'Projet 1 - Séquence 2 (bis) : Les pronoms compléments d\'objet direct (le, la, l\', les)',
-    summaryAr: `Après avoir appris à identifier le COD dans une phrase, l'élève apprend maintenant à le remplacer par un pronom (le, la, l', les) pour éviter les répétitions et alléger ses phrases.`,
+    titleAr: 'Projet 1 - Séquence 2 (bis) : Les prépositions de lieu (dans, sur, sous, devant, derrière)',
+    summaryAr: 'L\'élève localise des objets et des lieux du quartier avec les prépositions de lieu essentielles du programme 4AP — sans pronoms COD (5AP).',
     objectivesAr: [
-        'Je sais remplacer un nom COD par le pronom qui convient (le, la, l\', les).',
-        'Je sais placer correctement le pronom COD avant le verbe.',
+        'Je sais utiliser dans, sur, sous, devant, derrière pour situer un objet.',
+        'Je sais poser la question « Où est... ? » et y répondre.',
+        'Je décris la position d\'un lieu dans le quartier.',
     ],
     detailedCourse: {
-        introAr: 'Pour ne pas répéter tout le temps le même nom, on peut le remplacer par un petit mot : le, la, l\', ou les. Ce mot s\'appelle un pronom, et il prend toujours la place du COD, juste avant le verbe.',
+        introAr: 'Pour dire où se trouve quelque chose, on utilise des prépositions de lieu simples : dans (داخل), sur (فوق), sous (تحت), devant (أمام), derrière (وراء).',
         vocabulary: [
-            { termAr: 'Le pronom COD', definitionAr: 'Petit mot (le, la, l\', les) qui remplace le complément d\'objet direct pour éviter de le répéter.' },
+            { termAr: 'Préposition de lieu', definitionAr: 'Petit mot qui indique la position (dans, sur, sous...).' },
         ],
-        visualizationHintAr: 'Joue à « la phrase qui rétrécit » : dis d\'abord "Je regarde la maison", puis remplace "la maison" par "la" pour dire "Je la regarde" — la phrase devient plus courte !',
+        visualizationHintAr: 'Dessine ta chambre et place trois objets avec dans, sur et sous.',
         commonMistakes: [
-            { mistakeAr: 'Placer le pronom COD après le verbe.', correctionAr: 'En français, le pronom COD se place toujours avant le verbe conjugué (Je le vois), jamais après (pas "Je vois le").' },
+            { mistakeAr: 'Confondre sur et sous.', correctionAr: 'sur = au-dessus, sous = en dessous.' },
         ],
-        takeawayAr: '"le" remplace un nom masculin singulier, "la" un nom féminin singulier, "l\'" un nom commençant par une voyelle, "les" un nom pluriel. Le pronom COD se place toujours avant le verbe.',
+        takeawayAr: 'Où est le livre ? — Il est sur la table. / Il est dans le cartable. / Il est sous le lit.',
     },
     rulesAr: [
-        '"le" : remplace un nom masculin singulier (Je regarde le chat ➔ Je le regarde).',
-        '"la" : remplace un nom féminin singulier (Je regarde la maison ➔ Je la regarde).',
-        '"l\'" : remplace un nom (masculin ou féminin) commençant par une voyelle ou un h muet (J\'aime l\'école ➔ Je l\'aime).',
-        '"les" : remplace un nom pluriel, masculin ou féminin (Je regarde les enfants ➔ Je les regarde).',
-        'Le pronom COD se place toujours juste avant le verbe conjugué, jamais après.'
+        'dans = داخل (dans la classe)',
+        'sur = فوق (sur le bureau)',
+        'sous = تحت (sous la chaise)',
+        'devant = أمام (devant l\'école)',
+        'derrière = وراء (derrière la maison)',
+        'Question: « Où est + nom ? » — Réponse: « Il/Elle est + préposition + nom. »',
     ],
     keyFormulas: [
-        { labelAr: 'Choix du pronom COD', formulaAr: 'le (masc. sing.) | la (fém. sing.) | l\' (+ voyelle) | les (pluriel)' }
+        { labelAr: 'Question de lieu', formulaAr: 'Où est le cartable ?' },
+        { labelAr: 'Réponse', formulaAr: 'Il est dans le cartable.' },
     ],
     examplesAr: [
-        {
-            problem: 'Remplace le COD par un pronom dans la phrase : « Amine achète le pain. »',
-            solution: '« Amine l\'achète. » (le pronom "le" s\'élide en "l\'" devant le verbe "achète" qui commence par une voyelle).'
-        },
-        {
-            problem: 'Remplace le COD par un pronom : « Ma mère prépare la salade. »',
-            solution: '« Ma mère la prépare. » ("la salade" ➔ "la", pronom féminin singulier).'
-        }
+        { problem: 'Complète: « Le chat est ...... le lit. » (sous)', solution: '« Le chat est sous le lit. »' },
+        { problem: 'Traduis: « الكتاب فوق المكتب »', solution: '« Le livre est sur le bureau. »' },
     ],
     interactiveTool: 'french_lab',
     quiz: [
-        {
-            id: 'q1',
-            questionAr: 'Quel pronom remplace "les fleurs" dans "Je vois les fleurs" ?',
-            options: [
-                { id: 'a', textAr: 'les (Je les vois)', isCorrect: true, explanationAr: '"les fleurs" est un nom pluriel, on le remplace par "les".' },
-                { id: 'b', textAr: 'la (Je la vois)', isCorrect: false }
-            ]
-        },
-        {
-            id: 'q2',
-            questionAr: 'Où se place le pronom COD dans une phrase en français ?',
-            options: [
-                { id: 'a', textAr: 'Avant le verbe conjugué', isCorrect: true, explanationAr: 'Exactement ! Le pronom COD se place toujours avant le verbe (Je le vois).' },
-                { id: 'b', textAr: 'Après le verbe conjugué', isCorrect: false }
-            ]
-        }
-    ]
+        { id: 'q1', questionAr: 'Quelle préposition pour « تحت » ?', options: [{ id: 'a', textAr: 'sous', isCorrect: true, explanationAr: 'sous = تحت.' }, { id: 'b', textAr: 'sur', isCorrect: false }] },
+        { id: 'q2', questionAr: '« Où est... ? » sert à ....', options: [{ id: 'a', textAr: 'demander un lieu', isCorrect: true, explanationAr: 'سؤال عن المكان.' }, { id: 'b', textAr: 'demander l\'heure', isCorrect: false }] },
+    ],
 },
 
 {
@@ -336,69 +319,48 @@ export const FRENCH_4AP: CourseLesson[] = [
 },
 
 {
-    id: 'french-4ap-projet2-futur-simple',
+    id: 'french-4ap-projet2-adjectifs-qualificatifs',
     grade: '4AP',
     subject: 'french',
     trimester: 2,
     categoryAr: 'Projet 2 : C\'est un grand événement ! - Séquence 2',
-    titleAr: 'Projet 2 - Séquence 2 (bis) : « L\'année prochaine... » - Le futur simple des verbes du 1er et 2ème groupe',
-    summaryAr: `L'élève apprend à conjuguer au futur simple les verbes du 1er groupe (-er) et du 2ème groupe (-ir), pour parler d'événements et de fêtes à venir avec les auxiliaires avoir/être.`,
+    titleAr: 'Projet 2 - Séquence 2 (bis) : Les adjectifs qualificatifs (grand/grande, beau/belle)',
+    summaryAr: 'L\'élève accorde l\'adjectif qualificatif avec le nom (genre et nombre) pour décrire une fête ou un événement — programme 4AP, sans futur simple (5AP).',
     objectivesAr: [
-        'Je sais conjuguer un verbe du 1er groupe au futur simple.',
-        'Je sais conjuguer un verbe du 2ème groupe au futur simple.',
-        'J\'utilise le futur simple pour parler d\'un événement à venir.',
+        'Je sais accorder un adjectif qualificatif en genre et en nombre.',
+        'Je sais former le féminin des adjectifs courants (grand/grande, beau/belle).',
+        'Je décris une fête avec des adjectifs.',
     ],
     detailedCourse: {
-        introAr: 'Pour parler d\'une fête ou d\'un événement qui n\'est pas encore arrivé, on utilise le futur simple. C\'est un temps facile : on ajoute toujours les mêmes terminaisons à l\'infinitif du verbe.',
+        introAr: 'L\'adjectif qualificatif décrit le nom et s\'accorde avec lui : un grand gâteau, une grande fête, des beaux cadeaux.',
         vocabulary: [
-            { termAr: 'Le futur simple', definitionAr: 'Temps qui exprime une action qui se passera plus tard, dans l\'avenir.' },
-            { termAr: 'L\'infinitif', definitionAr: 'La forme "de base" du verbe, celle qu\'on trouve dans le dictionnaire (ex : chanter, finir).' },
+            { termAr: 'Adjectif qualificatif', definitionAr: 'Mot qui décrit une qualité du nom (grand, petit, beau...).' },
         ],
-        visualizationHintAr: 'Dessine une flèche du temps avec trois zones : "hier" (passé), "aujourd\'hui" (présent), "demain" (futur), et place une fête sur chaque zone.',
+        visualizationHintAr: 'Classe les adjectifs en masculin/féminin : grand → grande, petit → petite.',
         commonMistakes: [
-            { mistakeAr: 'Oublier de garder tout l\'infinitif avant d\'ajouter la terminaison du futur.', correctionAr: 'Au futur, on garde tout l\'infinitif (chanter) et on ajoute la terminaison (chanter+ai = chanterai), donc les lettres de l\'infinitif restent toujours présentes.' },
+            { mistakeAr: 'Oublier l\'accord au féminin.', correctionAr: 'On ajoute souvent -e au masculin : grand → grande.' },
         ],
-        takeawayAr: 'Futur simple = infinitif + terminaisons (-ai, -as, -a, -ons, -ez, -ont). Pour les verbes en -er et -ir, on garde tout l\'infinitif avant d\'ajouter la terminaison.',
+        takeawayAr: 'Adjectif + nom accordés : un beau gâteau, une belle fête, des grands cadeaux.',
     },
     rulesAr: [
-        'Le futur simple exprime une action qui aura lieu plus tard, dans l\'avenir (demain, l\'année prochaine, dans une semaine).',
-        'Formation du futur simple pour les verbes du 1er groupe (-er) : on garde l\'infinitif complet et on ajoute les terminaisons -ai, -as, -a, -ons, -ez, -ont. Exemple : chanter ➔ je chanterai, tu chanteras, il/elle chantera.',
-        'Formation du futur simple pour les verbes du 2ème groupe (-ir) : on garde l\'infinitif complet et on ajoute les mêmes terminaisons. Exemple : finir ➔ je finirai, tu finiras, il/elle finira.',
-        'Marqueurs de temps du futur : demain, l\'année prochaine, dans une semaine, bientôt, plus tard.'
+        'Accord en genre : grand (m.) → grande (f.)',
+        'Accord en nombre : grand → grands (m.pl.), grande → grandes (f.pl.)',
+        'Adjectifs irréguliers : beau/belle, blanc/blanche, nouveau/nouvelle',
+        'Place : l\'adjectif épithète est généralement après le nom (un gâteau délicieux).',
     ],
     keyFormulas: [
-        { labelAr: 'Terminaisons du futur simple', formulaAr: '-ai, -as, -a, -ons, -ez, -ont' },
-        { labelAr: 'Formation du futur simple', formulaAr: 'Infinitif complet + terminaison (chanter + ai = je chanterai)' }
+        { labelAr: 'Féminin simple', formulaAr: 'grand → grande, petit → petite' },
+        { labelAr: 'Pluriel', formulaAr: 'grand → grands / grandes' },
     ],
     examplesAr: [
-        {
-            problem: 'Conjugue le verbe "fêter" (1er groupe) au futur simple avec "Nous".',
-            solution: '« Nous fêterons » (fêter + ons = fêterons).'
-        },
-        {
-            problem: 'Complète : « L\'année prochaine, je (finir) ...... mes études primaires. »',
-            solution: '« L\'année prochaine, je finirai mes études primaires. » (finir + ai = finirai).'
-        }
+        { problem: 'Accorde: « une ...... (beau) fête »', solution: '« une belle fête »' },
+        { problem: 'Accorde: « des ...... (grand) cadeaux »', solution: '« des grands cadeaux »' },
     ],
     interactiveTool: 'french_lab',
     quiz: [
-        {
-            id: 'q1',
-            questionAr: 'Quelle est la conjugaison correcte du verbe "jouer" au futur simple avec "Tu" ?',
-            options: [
-                { id: 'a', textAr: 'Tu joueras', isCorrect: true, explanationAr: 'Bravo ! jouer + as = joueras.' },
-                { id: 'b', textAr: 'Tu joues', isCorrect: false }
-            ]
-        },
-        {
-            id: 'q2',
-            questionAr: 'Quel marqueur de temps indique une action au futur ?',
-            options: [
-                { id: 'a', textAr: 'demain', isCorrect: true, explanationAr: 'Exact ! "demain" indique une action qui n\'est pas encore arrivée.' },
-                { id: 'b', textAr: 'hier', isCorrect: false }
-            ]
-        }
-    ]
+        { id: 'q1', questionAr: 'Féminin de « grand » ?', options: [{ id: 'a', textAr: 'grande', isCorrect: true, explanationAr: 'grand → grande.' }, { id: 'b', textAr: 'grand', isCorrect: false }] },
+        { id: 'q2', questionAr: '« une belle fête » — belle accordé avec ....', options: [{ id: 'a', textAr: 'fête (féminin)', isCorrect: true, explanationAr: 'Accord au féminin.' }, { id: 'b', textAr: 'fête (masculin)', isCorrect: false }] },
+    ],
 },
 
 {

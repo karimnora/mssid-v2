@@ -27,6 +27,10 @@ public class GeminiResponse {
     private String solutionText;
     private QuickCheckDto quickCheck;
 
+    // Daily quota after this call (or after a refund if Gemini returned status=error).
+    private Integer quotaRemaining;
+    private Integer quotaLimit;
+
     public GeminiResponse(String text, String status) {
         this.answer = text;
         this.generatedText = text;

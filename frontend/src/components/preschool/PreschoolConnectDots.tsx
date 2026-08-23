@@ -24,8 +24,11 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ activity, language, onComplete }) => {
-  const pairs = activity.visualAssets.connectPairs || [];
-  const shuffledRight = useMemo(() => shuffle(pairs), [activity.id]);
+  const pairs = useMemo(
+    () => activity.i18n[language].connectPairs ?? activity.visualAssets.connectPairs ?? [],
+    [activity, language],
+  );
+  const shuffledRight = useMemo(() => shuffle(pairs), [activity.id, language, pairs]);
 
   const [selected, setSelected] = useState<NodeSel | null>(null);
   const [matchedIds, setMatchedIds] = useState<string[]>([]);

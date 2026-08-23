@@ -4,9 +4,11 @@ import {
   Shapes,
   Lightbulb,
   BarChart3,
-  Sparkles
+  Sparkles,
+  PencilLine
 } from 'lucide-react';
 import type { MathInteractiveConfig } from '../types';
+import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
 
 interface MathInteractiveProps {
   config: MathInteractiveConfig;
@@ -24,6 +26,7 @@ const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ confi
     config.type === 'number_cards' ? <Hash className="w-6 h-6 text-amber-400" /> :
     config.type === 'shape_explorer' ? <Shapes className="w-6 h-6 text-amber-400" /> :
     config.type === 'word_problem_scenario' ? <Lightbulb className="w-6 h-6 text-amber-400" /> :
+    config.type === 'written_operation' ? <PencilLine className="w-6 h-6 text-amber-400" /> :
     <BarChart3 className="w-6 h-6 text-amber-400" />;
 
   return (
@@ -142,22 +145,50 @@ const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ confi
 
       {config.type === 'data_matching' && (
         <div className="space-y-4">
-          <div className="bg-slate-950 rounded-3xl border border-emerald-800 overflow-hidden">
-            <table className="w-full text-sm">
-              <tbody>
-                {config.rows.map((r, idx) => (
-                  <tr key={idx} className={idx % 2 === 0 ? 'bg-emerald-950/60' : 'bg-slate-950'}>
-                    <td className="p-3 font-black text-amber-300 border-b border-emerald-900/60">{r.labelAr}</td>
-                    <td dir="ltr" className="p-3 font-mono font-bold text-slate-200 border-b border-emerald-900/60 text-right">{r.valueAr}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="overflow-hidden rounded-2xl border border-emerald-800">
+            {config.rows.map((row, idx) => (
+              <div
+                key={idx}
+                className={`flex items-center justify-between gap-3 px-4 py-3 ${
+                  idx % 2 === 0 ? 'bg-emerald-900/60' : 'bg-slate-950'
+                }`}
+              >
+                <span className="text-sm font-black text-amber-200">{row.labelAr}</span>
+                <span dir="ltr" className="text-sm font-mono font-bold text-emerald-100">{row.valueAr}</span>
+              </div>
+            ))}
           </div>
-          <div className="p-4 bg-emerald-900 border border-emerald-600 rounded-2xl text-xs text-emerald-100 font-bold leading-relaxed flex items-start gap-2">
-            <Sparkles className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
-            <span>{config.insightAr}</span>
+          <p className="text-sm font-bold text-slate-200 leading-relaxed bg-emerald-950 p-4 rounded-2xl border border-emerald-800">
+            {config.insightAr}
+          </p>
+        </div>
+      )}
+
+      {config.type === 'written_operation' && (
+        <div className="space-y-4">
+          <div className="flex flex-wrap gap-2">
+            {config.operations.map((op, idx) => (
+              <button
+                key={op.id}
+                type="button"
+                onClick={() => setActiveIdx(idx)}
+                className={`px-4 py-2.5 rounded-2xl border text-xs font-black cursor-pointer min-h-[44px] ${
+                  activeIdx === idx
+                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl'
+                    : 'bg-emerald-900/80 border-emerald-800 text-emerald-100'
+                }`}
+              >
+                {op.labelAr}
+              </button>
+            ))}
           </div>
+          {config.operations[activeIdx] && (
+            <MathWorkedExample
+              tone="dark"
+              operationsAr={config.operations[activeIdx].operationsAr}
+              solution={config.operations[activeIdx].solutionAr}
+            />
+          )}
         </div>
       )}
     </div>

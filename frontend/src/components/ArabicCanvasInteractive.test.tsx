@@ -29,3 +29,27 @@ describe('ArabicCanvasInteractive 1AP tashkil', () => {
     expect(screen.getByText(/أَحْسَنْتَ/)).toBeInTheDocument();
   });
 });
+
+describe('ArabicCanvasInteractive per-lesson sentences', () => {
+  it('opens 2AP shadda on tashkil, not the 5AP soldiers iʿrāb', () => {
+    render(
+      <ArabicCanvasInteractive
+        lesson={{ ...harakatLesson, id: 'arabic-2ap-t1-shadda', grade: '2AP' }}
+        grade="2AP"
+      />,
+    );
+    expect(document.querySelector('[data-arabic-tool="tashkil"]')).toBeTruthy();
+    expect(screen.queryByText(/يُدَافِعُ الجُنُودُ/)).not.toBeInTheDocument();
+  });
+
+  it('uses the 4AP lesson sentence, not the generic library phrase', () => {
+    render(
+      <ArabicCanvasInteractive
+        lesson={{ ...harakatLesson, id: 'arabic-4ap-fail-maf3ul-irab', grade: '4AP' }}
+        grade="4AP"
+      />,
+    );
+    expect(screen.getByText(/زَرَعَ الفَلَّاحُ القَمْحَ/)).toBeInTheDocument();
+    expect(screen.queryByText(/يَقْرَأُ الطَّالِبُ المَاهِرُ/)).not.toBeInTheDocument();
+  });
+});

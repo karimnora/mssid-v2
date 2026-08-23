@@ -8,8 +8,9 @@ import { ENGLISH_4AP } from './english';
 import { HISTORY_GEO_4AP } from './history_geo';
 import { CIVICS_4AP } from './civics';
 import { TAMAZIGHT_4AP } from './tamazight';
+import { enrich4ApLessons } from './4apLessonEnricher';
 
-export const COURSES_4AP: CourseLesson[] = [
+export const COURSES_4AP: CourseLesson[] = enrich4ApLessons([
   ...MATH_4AP,
   ...ARABIC_4AP,
   ...SCIENCE_4AP,
@@ -19,4 +20,4 @@ export const COURSES_4AP: CourseLesson[] = [
   ...HISTORY_GEO_4AP,
   ...CIVICS_4AP,
   ...TAMAZIGHT_4AP,
-];
+]);

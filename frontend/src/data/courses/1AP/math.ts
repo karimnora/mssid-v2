@@ -576,6 +576,18 @@ export const MATH_1AP: CourseLesson[] = [
       '15 = خَمْسَةَ عَشَرَ.  20 = عِشْرُونَ (عشرتان).',
       'الإِطَارُ: العدد بين جاره السابق واللاحق، أو بين عشرتين.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'من 10 إلى 20',
+      introAr: 'عشرة ووحدات. اضغط على كل بطاقة.',
+      cards: [
+        { labelAr: 'عشرة', valueDisplay: '10', explanationAr: 'عشرة واحدة، صفر وحدات.' },
+        { labelAr: 'أحد عشر', valueDisplay: '11', explanationAr: '11 = 10 + 1.' },
+        { labelAr: 'خمسة عشر', valueDisplay: '15', explanationAr: 'عشرة + 5 وحدات.' },
+        { labelAr: 'عشرون', valueDisplay: '20', explanationAr: 'عشرتان. إطار 14: 10 < 14 < 20.' },
+      ],
+    },
     examplesAr: [
       { problem: 'اكتب 16 بالحروف وفكّكه.', solution: 'سِتَّةَ عَشَرَ. 16 = 1 عشرة + 6 وحدات.' },
       { problem: 'أطّر 14 بين عددين متتاليين وبين عشرتين.', solution: '13 < 14 < 15. و 10 < 14 < 20.' },
@@ -664,6 +676,30 @@ export const MATH_1AP: CourseLesson[] = [
       'أَرْجِعُ: أقف على 7 وأتراجع خطوتين → 5.',
       '5 − 2 = 3 (خمسة ناقص اثنان يساوي ثلاثة).',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'أطرح: أنقص، أخرج، أرجع',
+      introAr: 'باقٍ أصغر من 10.',
+      problems: [
+        {
+          id: 'sub-apples',
+          situationAr: 'كان في الصحن 5 تفاحات، أكلت منها اثنتين. كم بقي؟',
+          choices: [
+            { textAr: '5 − 2 = 3', isCorrect: true, feedbackAr: 'أنقصتُ وأخرجتُ: بقي 3.' },
+            { textAr: '5 + 2 = 7', isCorrect: false, feedbackAr: 'الأكل ينقص الكمية.' },
+          ],
+        },
+        {
+          id: 'sub-line',
+          situationAr: 'أقف على 7 وأتراجع خطوتين. أين أصل؟',
+          choices: [
+            { textAr: '5', isCorrect: true, feedbackAr: '7 ثم 6 ثم 5. 7 − 2 = 5.' },
+            { textAr: '9', isCorrect: false, feedbackAr: 'التراجع ينقص العدد.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       { problem: '6 − 2 = ؟', solution: '4' },
     ],
@@ -755,6 +791,18 @@ export const MATH_1AP: CourseLesson[] = [
       'رقم العشرات يساراً، رقم الوحدات يميناً.',
       'الإِطَارُ بَيْنَ عَشْرَتَيْنِ: 30 < 34 < 40. وَبَيْنَ عَدَدَيْنِ مُتَتَالِيَيْنِ: 33 < 34 < 35.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'العشرات حتى 40',
+      introAr: 'حزم من 10 ثم وحدات. (هذه الأعداد تُثبَّت رسمياً في 2AP).',
+      cards: [
+        { labelAr: 'عشرون', valueDisplay: '20', explanationAr: 'عشرتان.' },
+        { labelAr: 'أربعة وثلاثون', valueDisplay: '34', explanationAr: '3 عشرات + 4 وحدات. 30 < 34 < 40.' },
+        { labelAr: 'اثنان وأربعون', valueDisplay: '42', explanationAr: '4 عشرات + 2 وحدات.' },
+        { labelAr: 'تسعة وأربعون', valueDisplay: '49', explanationAr: '4 عشرات + 9 وحدات.' },
+      ],
+    },
     examplesAr: [
       { problem: 'اكتب 42 بالحروف وفكّكه.', solution: 'اثنان وأربعون. 4 عشرات + 2 وحدات.' },
       { problem: 'أطّر 27 بين عشرتين.', solution: '20 < 27 < 30.' },
@@ -843,6 +891,18 @@ export const MATH_1AP: CourseLesson[] = [
       '73 = 3 وحدات + 7 عشرات = 3 + 70.',
       '99 = تِسْعَةٌ وَتِسْعُونَ: أكبر عدد برقمين في هذه السنة.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'العشرات والوحدات',
+      introAr: 'الرقم يميناً = وحدات. الرقم يساراً = عشرات.',
+      cards: [
+        { labelAr: 'ثمانية وخمسون', valueDisplay: '58', explanationAr: 'وحدات 8، عشرات 5.' },
+        { labelAr: 'ثلاثة وسبعون', valueDisplay: '73', explanationAr: '73 = 3 + 70.' },
+        { labelAr: 'تسعون', valueDisplay: '90', explanationAr: '9 عشرات، صفر وحدات.' },
+        { labelAr: 'تسعة وتسعون', valueDisplay: '99', explanationAr: 'أكبر عدد من رقمين.' },
+      ],
+    },
     examplesAr: [
       { problem: 'في العدد 58: ما رقم الوحدات؟ وما رقم العشرات؟', solution: 'الوحدات 8، العشرات 5.' },
     ],
@@ -929,6 +989,30 @@ export const MATH_1AP: CourseLesson[] = [
       'حساب ذهني حتى 20: 8 + 7 = 15، 14 − 6 = 8.',
       'نقرأ المسألة مرتين: ماذا حدث؟ ثم نختار العملية.',
     ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'مسألة: أجمع أم أطرح؟',
+      introAr: 'ربح / أضاف → جمع. فقد / أعطى → طرح. حساب حتى 20.',
+      problems: [
+        {
+          id: 'marbles',
+          situationAr: 'علي معه 3 بليات، ربح 2. كم صار معه؟',
+          choices: [
+            { textAr: '3 + 2 = 5', isCorrect: true, feedbackAr: 'ربح = جمع.' },
+            { textAr: '3 − 2 = 1', isCorrect: false, feedbackAr: 'الربح يزيد الكمية.' },
+          ],
+        },
+        {
+          id: 'dates',
+          situationAr: 'كان في السلة 12 تمرة، أكلت ليلى 4. كم بقي؟',
+          choices: [
+            { textAr: '12 − 4 = 8', isCorrect: true, feedbackAr: 'أكل = طرح.' },
+            { textAr: '12 + 4 = 16', isCorrect: false, feedbackAr: 'الأكل ينقص التمر.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       { problem: 'علي معه 3 بليات، ربح 2. كم صار معه؟', solution: 'جمع: 3 + 2 = 5.' },
       { problem: 'كان في السلة 12 تمرة، أكلت ليلى 4. كم بقي؟', solution: 'طرح: 12 − 4 = 8.' },

@@ -45,6 +45,17 @@ export interface LocalizedContent {
   successAudio?: string;
   /** Optional recorded success line. TTS is the fallback. */
   successAudioSrc?: string;
+  /** Optional hero image for tap_choice — when set per language, isolates AR/FR/EN visuals. */
+  image?: string;
+  /** Optional tap targets — when set per language, isolates letter glyphs (أ vs A). */
+  choices?: PreschoolChoice[];
+  /** Optional letter/shape to trace — when set, FR/EN show Latin letters instead of Arabic. */
+  glyph?: string;
+  /** Optional connect pairs — when set, FR/EN match Latin letters to their pictures. */
+  connectPairs?: PreschoolConnectPair[];
+  /** Optional sorting bins/items — when set, FR/EN use Latin first-sound discrimination. */
+  sortBins?: PreschoolSortBin[];
+  sortItems?: PreschoolSortItem[];
 }
 
 export interface PreschoolChoice {

@@ -236,6 +236,10 @@ export interface ProgressiveExercise {
   calculationAnswer?: number; // calculation — exact numeric expected answer
   solutionAr: string;
   detailedCorrectionAr: string;
+  /** Math only: posed operations for the official two-column correction (العمليات | الحل). */
+  operationsAr?: string;
+  /** Arabic grammar only: official الكلمة / إعرابها table shown after check. */
+  irabTableAr?: { wordAr: string; analysisAr: string }[];
   xpReward: number;
 }
 
@@ -266,6 +270,8 @@ export interface ProgressiveWorkedExample {
   problem: string;
   stepsAr?: string[]; // optional step-by-step breakdown
   solution: string;
+  /** Math only: posed operations for the official two-column layout. */
+  operationsAr?: string;
   isRealLife?: boolean; // marks the "situation concrète du quotidien" example (tier 4 by convention)
 }
 
@@ -537,11 +543,25 @@ export interface MathDataMatching {
   insightAr: string;
 }
 
+export interface MathWrittenOpItem {
+  id: string;
+  labelAr: string;
+  operationsAr: string;
+  solutionAr: string;
+}
+export interface MathWrittenOperation {
+  type: 'written_operation';
+  titleAr: string;
+  introAr: string;
+  operations: MathWrittenOpItem[];
+}
+
 export type MathInteractiveConfig =
   | MathNumberCards
   | MathShapeExplorer
   | MathWordProblemScenario
-  | MathDataMatching;
+  | MathDataMatching
+  | MathWrittenOperation;
 
 // Language interactive tool (french_dialogue_lab / english_dialogue_lab) — shared between French and
 // English 5AP (small lesson counts, very similar nature). Content-language convention unchanged despite

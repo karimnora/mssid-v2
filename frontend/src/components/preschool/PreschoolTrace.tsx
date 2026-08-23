@@ -71,7 +71,10 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
   const liveStroke = useRef<Pt[]>([]);
   const maskRef = useRef<ImageData | null>(null);
 
-  const glyph = localizeGlyph(activity.visualAssets.mainSvgOrImage, language);
+  const glyph = localizeGlyph(
+    activity.i18n[language].glyph ?? activity.visualAssets.mainSvgOrImage,
+    language,
+  );
 
   useEffect(() => {
     maskRef.current = rasterizeGlyph(glyph);
