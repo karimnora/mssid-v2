@@ -52,4 +52,32 @@ describe('ToolsHubView', () => {
     expect(screen.queryByText('🌟 جميع الأدوات')).toBeNull();
     expect(screen.getByText('اختر مختبراً آخر')).toBeInTheDocument();
   });
+
+  it('restores the mobile hub when catalog is reopened after a focused lab', () => {
+    const { rerender } = render(
+      <ToolsHubView
+        grade="5AP"
+        tools={INTERACTIVE_LABS_LIST}
+        selectedToolId="arabic_conjugator"
+        catalogOpen={false}
+        onCatalogOpenChange={vi.fn()}
+        onSelectTool={vi.fn()}
+      />,
+    );
+
+    rerender(
+      <ToolsHubView
+        grade="5AP"
+        tools={INTERACTIVE_LABS_LIST}
+        selectedToolId="arabic_conjugator"
+        catalogOpen
+        onCatalogOpenChange={vi.fn()}
+        onSelectTool={vi.fn()}
+      />,
+    );
+
+    expect(document.querySelector('[data-lab-focused="false"]')).toBeTruthy();
+    expect(screen.getByText('المختبرات التفاعلية')).toBeInTheDocument();
+    expect(screen.getByText('الهوية والتراث')).toBeInTheDocument();
+  });
 });

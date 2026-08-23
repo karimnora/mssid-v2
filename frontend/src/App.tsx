@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
-import { CourseLesson, SubjectInfo } from './types';
+import { CourseLesson, SubjectId, SubjectInfo } from './types';
 import { AuthService } from './services/authService';
 import { useAuth } from './context/AuthContext';
 import { useLocaleContext } from './context/LocaleContext';
@@ -137,6 +137,17 @@ export default function App() {
     modals.setIsAiModalOpen(true);
   };
 
+  /** Ouvre un lab en plein écran (catalogue fermé). */
+  const openLabFocused = (toolId: SubjectId) => {
+    setLabsCatalogOpen(false);
+    nav.openLab(toolId);
+  };
+
+  /** Onglet / pôle « المختبرات » → liste des labs, pas un lab auto. */
+  const openLabsCatalog = () => {
+    setLabsCatalogOpen(true);
+  };
+
   if (nav.isAdminConsoleActive) {
     return (
       <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingAdminConsole')} minHeight="100vh" />}>
@@ -191,16 +202,19 @@ export default function App() {
             authUser={authUser}
             userName={progress.userProfile.name}
             goldCoins={progress.userProfile.goldCoins || 150}
-            onSelectPole={nav.handleSelectPole}
+            onSelectPole={(pole) => {
+              nav.handleSelectPole(pole);
+              if (pole === 'labs') openLabsCatalog();
+            }}
             onOpenAuthModal={() => modals.openAuth('login')}
             onOpenPreschool={() => nav.setIsPreschoolActive(true)}
-            onOpenMarket={() => nav.openLab('algerian_market')}
-            onOpenWilayas={() => nav.openLab('wilayas_map')}
-            onOpenHistoryMuseum={() => nav.openLab('history_museum')}
-            onOpenScienceLab={() => nav.openLab('science_lab')}
-            onOpenTamazightLab={() => nav.openLab('tamazight_lab')}
-            onOpenTamazightCurriculum={() => nav.openLab('tamazight_curriculum')}
-            onOpenTouchWriting={() => nav.openLab('touch_writing')}
+            onOpenMarket={() => openLabFocused('algerian_market')}
+            onOpenWilayas={() => openLabFocused('wilayas_map')}
+            onOpenHistoryMuseum={() => openLabFocused('history_museum')}
+            onOpenScienceLab={() => openLabFocused('science_lab')}
+            onOpenTamazightLab={() => openLabFocused('tamazight_lab')}
+            onOpenTamazightCurriculum={() => openLabFocused('tamazight_curriculum')}
+            onOpenTouchWriting={() => openLabFocused('touch_writing')}
             onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
             onOpenHomeworkPin={() => modals.setIsHomeworkPinOpen(true)}
             onOpenPrintables={() => modals.setIsPrintablesOpen(true)}
@@ -269,10 +283,7 @@ export default function App() {
                   nav.setMainCategory('courses');
                 }}
                 onGoHome={nav.goHome}
-                onOpenLab={(toolId) => {
-                  setLabsCatalogOpen(false);
-                  nav.openLab(toolId);
-                }}
+                onOpenLab={openLabFocused}
                 onCompleteQuiz={progress.handleCompleteQuiz}
                 onQuizFullyValidated={progress.handleQuizFullyValidated}
                 onExamComplete={progress.handleCompleteExam}
@@ -280,7 +291,7 @@ export default function App() {
                 onVisitLab={progress.handleVisitLab}
                 onLabReward={progress.handleLabReward}
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
-                onShowLabCatalog={() => setLabsCatalogOpen(true)}
+                onShowLabCatalog={openLabsCatalog}
               />
             )}
           </>
@@ -348,7 +359,10 @@ export default function App() {
         grade={nav.grade}
         selectedSubject={nav.selectedSubject}
         activeTab={nav.mobileTab}
-        onSelectTab={nav.handleMobileTab}
+        onSelectTab={(tab) => {
+          nav.handleMobileTab(tab);
+          if (tab === 'games') openLabsCatalog();
+        }}
         onClearSelectedLesson={() => nav.setSelectedLesson(null)}
         onOpenAiTutor={openAiTutor}
         onOpenProfile={() => modals.setIsProfileModalOpen(true)}

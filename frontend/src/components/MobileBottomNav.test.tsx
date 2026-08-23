@@ -25,7 +25,7 @@ describe('MobileBottomNav', () => {
     expect(document.querySelector('[data-nav-compact="false"]')).toBeTruthy();
     expect(screen.getByText('الرئيسية')).toBeInTheDocument();
     expect(screen.getByText('الدروس')).toBeInTheDocument();
-    expect(screen.getByText('الألعاب')).toBeInTheDocument();
+    expect(screen.getByText('المختبرات')).toBeInTheDocument();
     expect(screen.getByText('التمارين')).toBeInTheDocument();
     expect(screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي')).toBeInTheDocument();
     expect(screen.getByText('الملف')).toBeInTheDocument();

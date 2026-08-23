@@ -1,7 +1,7 @@
 export const navigation = {
   home: 'الرئيسية',
   courses: 'الدروس',
-  games: 'الألعاب',
+  games: 'المختبرات',
   exercises: 'التمارين',
   profile: 'الملف',
   aiTutor: 'المعلم الذكي بالذكاء الاصطناعي',

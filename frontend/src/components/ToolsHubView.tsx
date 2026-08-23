@@ -209,15 +209,24 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   useEffect(() => {
     if (labFocused) {
       setMobileView('active');
-    } else if (!selectedToolId && mobileView === 'active') {
-      setMobileView('hub');
+      return;
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Catalogue rouvert (ex. « اختيار أداة أخرى ») : revenir au hub mobile.
+    // Sans ça, mobileView reste sur 'active' alors que hub/list seuls sont rendus → écran vide.
+    if (catalogOpen || !selectedToolId) {
+      setMobileView((prev) => (prev === 'active' ? 'hub' : prev));
+    }
   }, [selectedToolId, catalogOpen, labFocused]);
 
   useEffect(() => {
     if (catalogOpen) setIsGridExpanded(true);
   }, [catalogOpen]);
+
+  useEffect(() => {
+    if (!catalogOpen || labFocused) return;
+    const hub = document.getElementById('tools-hub-container');
+    hub?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+  }, [catalogOpen, labFocused]);
 
   const scrollToTool = () => {
     setTimeout(() => {

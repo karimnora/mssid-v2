@@ -3,7 +3,7 @@ import type { navigation as navigationAr } from '../ar/navigation';
 export const navigation: typeof navigationAr = {
   home: 'Accueil',
   courses: 'Cours',
-  games: 'Jeux',
+  games: 'Laboratoires',
   exercises: 'Exercices',
   profile: 'Profil',
   aiTutor: 'Tuteur intelligent (IA)',
