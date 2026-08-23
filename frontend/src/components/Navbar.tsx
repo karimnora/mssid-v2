@@ -142,10 +142,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header className="sticky top-0 z-40 transition-colors duration-300 bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir={direction} data-nav-child="false">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 grid grid-cols-[minmax(0,auto)_minmax(0,1fr)_auto] items-center gap-2 lg:gap-3">
 
           {/* LOGO & BRAND — shrinks/truncates first, never forces the row wider */}
-          <div className="flex items-center gap-2 min-w-0 shrink cursor-pointer group" onClick={onHomeClick}>
+          <div className="flex items-center gap-2 min-w-0 cursor-pointer group" onClick={onHomeClick}>
             <div className="shrink-0 transition-transform group-hover:scale-105">
               <MssidLogo size="md" />
             </div>
@@ -158,34 +158,39 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {t('brandBadge')}
                 </span>
               </div>
-              <p className="text-[11px] font-bold text-[var(--app-text-muted)] hidden sm:block truncate">
+              <p className="text-[11px] font-bold text-[var(--app-text-muted)] hidden xl:block truncate">
                 {t('brandTagline')}
               </p>
             </div>
           </div>
 
-          {/* HOME BUTTON & GRADES NAVIGATION */}
-          <div className="hidden lg:flex items-center gap-2 min-w-0">
+          {/* HOME BUTTON & GRADES NAVIGATION — center column shrinks; all grades visible without scroll */}
+          <div className="hidden lg:flex items-center justify-center gap-1 min-w-0 flex-1 overflow-hidden">
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={onHomeClick}
-              className="hit-target flex items-center gap-1.5 px-3 rounded-2xl text-sm font-extrabold cursor-pointer bg-[var(--brand-emerald)] text-white hover:bg-[var(--brand-emerald-dark)]"
+              className="hit-target flex items-center justify-center gap-1.5 px-2.5 xl:px-3 rounded-2xl text-sm font-extrabold cursor-pointer bg-[var(--brand-emerald)] text-white hover:bg-[var(--brand-emerald-dark)] shrink-0"
               title={t('backToHomeTitle')}
+              aria-label={t('home')}
             >
-              <Home className="w-3.5 h-3.5" />
-              <span>{t('home')}</span>
+              <Home className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden xl:inline">{t('home')}</span>
             </motion.button>
 
-            <div className="flex items-center gap-1 p-1 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shrink overflow-x-auto">
+            <div
+              data-nav-grade-strip
+              className={`grid ${onOpenPreschool ? 'grid-cols-6' : 'grid-cols-5'} gap-0.5 p-0.5 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] min-w-0 flex-1`}
+            >
               {onOpenPreschool && (
                 <motion.button
                   onClick={onOpenPreschool}
                   whileTap={{ scale: 0.94 }}
-                  className="hit-target px-3 rounded-xl text-sm font-extrabold transition-colors cursor-pointer bg-[var(--brand-amber)] text-slate-950 flex items-center gap-1"
+                  className="h-9 w-full min-w-0 rounded-xl text-xs font-extrabold transition-colors cursor-pointer bg-[var(--brand-amber)] text-slate-950 flex items-center justify-center shrink-0"
                   title={t('preschoolNavTitle')}
+                  aria-label={t('preschoolNavLabel')}
+                  data-nav-preschool="true"
                 >
-                  <span>🦊</span>
-                  <span>{t('preschoolNavLabel')}</span>
+                  <span aria-hidden>🦊</span>
                 </motion.button>
               )}
 
@@ -196,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     key={g.id}
                     onClick={() => onGradeChange(g.id)}
                     whileTap={{ scale: 0.94 }}
-                    className={`relative hit-target min-w-12 px-3 rounded-xl text-sm font-extrabold transition-colors cursor-pointer select-none ${
+                    className={`relative h-9 w-full min-w-0 rounded-xl text-xs font-extrabold transition-colors cursor-pointer select-none flex items-center justify-center ${
                       isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                     }`}
                     title={t(g.labelKey)}
@@ -216,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* ACTIONS & USER PROFILE — progressively hides labels/items below xl/lg/md */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex items-center justify-end gap-1.5 sm:gap-2 shrink-0 min-w-0">
 
             {/* AI Tutor Button */}
             {isAiEnabled && (
@@ -236,7 +241,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <>
             <button
               onClick={onOpenProfileModal}
-              className="hidden md:flex items-center gap-2 hit-target px-2.5 rounded-2xl border text-sm font-bold transition-colors cursor-pointer bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text)] hover:opacity-90"
+              className="hidden xl:flex items-center gap-2 hit-target px-2.5 rounded-2xl border text-sm font-bold transition-colors cursor-pointer bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text)] hover:opacity-90"
               title={t('xpLevelStatus', { level: displayLevel, xp: displayXp })}
             >
               <div className="flex items-center gap-1 text-orange-500">
@@ -258,10 +263,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </button>
 
-            <LanguageSwitcher compact className="hidden md:flex" />
+            <LanguageSwitcher compact className="hidden xl:flex" />
 
             {/* Theme Dropdown */}
-            <div className="hidden md:block relative" ref={themeRef}>
+            <div className="hidden xl:block relative" ref={themeRef}>
               <motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setIsThemeDropdownOpen((v) => !v)}
