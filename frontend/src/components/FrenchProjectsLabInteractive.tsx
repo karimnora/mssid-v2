@@ -289,7 +289,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
   }
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
+    <div className="space-y-6 max-w-5xl mx-auto" dir="ltr">
       {/* Top Banner */}
       <div className="bg-gradient-to-r from-sky-700 via-blue-800 to-indigo-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-600/40 relative overflow-hidden">
         <div className="relative z-10 space-y-2">
