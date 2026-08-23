@@ -132,6 +132,33 @@ describe('1AP playful lesson layout', () => {
     expect(onSpeak.mock.calls[0][1]).not.toMatch(/تَحْتَ/);
   });
 
+  it('does not treat the illustration/text as a second tap zone — only the speaker button speaks', () => {
+    const onSpeak = vi.fn();
+    render(<YoungLessonStory lesson={spatial} onSpeak={onSpeak} speakingKey={null} />);
+    const ruleHeadline = screen.getByText('فَوْقَ');
+    expect(ruleHeadline.closest('button')).toBeNull();
+    fireEvent.click(ruleHeadline);
+    expect(onSpeak).not.toHaveBeenCalled();
+  });
+
+  it('falls back to the lesson title emoji, not an unrelated default tile, when a card has none of its own', () => {
+    const noEmojiLesson: CourseLesson = {
+      ...spatial,
+      titleAr: 'الأَشْكَالُ 🔺',
+      discoveryAr: 'ما شكل عجلة الدراجة؟ وما شكل قطعة البيتزا؟',
+      // Cleared: spatial's own rulesAr/examplesAr contain فوق/تحت, which FALLBACK_EMOJI already
+      // maps to real icons — keeping them would confound this test with unrelated matches.
+      rulesAr: [],
+      examplesAr: [],
+    };
+    render(<YoungLessonStory lesson={noEmojiLesson} onSpeak={vi.fn()} />);
+    // Both discovery lines lack their own emoji entirely — they must reuse the title's 🔺,
+    // never the old positional DEFAULT_TILES pick (⭐ then 🎈).
+    expect(screen.getAllByText('🔺').length).toBe(2);
+    expect(screen.queryByText('⭐')).not.toBeInTheDocument();
+    expect(screen.queryByText('🎈')).not.toBeInTheDocument();
+  });
+
   it('uses a child quiz title without shuffle jargon', () => {
     render(
       <LessonQuizPanel

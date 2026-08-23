@@ -23,7 +23,7 @@ export const TapSpeakButton: React.FC<TapSpeakButtonProps> = ({
 }) => {
   if (!text) return null;
   const active = speakingKey === snippetKey;
-  const dim = size === 'lg' ? 'w-14 h-14 text-2xl' : 'w-11 h-11 text-xl';
+  const dim = size === 'lg' ? 'w-14 h-14 text-2xl' : 'w-12 h-12 text-xl';
 
   return (
     <motion.button
@@ -40,7 +40,7 @@ export const TapSpeakButton: React.FC<TapSpeakButtonProps> = ({
       transition={spring}
       className={`${dim} shrink-0 rounded-full flex items-center justify-center cursor-pointer shadow-sm ${
         active
-          ? 'bg-[var(--brand-coral)] text-white'
+          ? 'bg-[var(--brand-blue)] text-white'
           : 'bg-amber-200 text-slate-900 hover:bg-amber-300'
       }`}
     >

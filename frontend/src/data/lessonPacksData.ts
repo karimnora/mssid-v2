@@ -87,7 +87,7 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة السنة 1 ابتدائي (الحروف والأعداد)',
     titleFr: 'Pack Complet 1AP',
     descriptionAr: 'تعلم حروف الهجاء والأرقام حتى 20 والأشكال الهندسية مع التشكيل والأصوات.',
-    lessonsCount: 26,
+    lessonsCount: 49,
     updatedAt: '2026-07-15',
     isDownloaded: false,
   },

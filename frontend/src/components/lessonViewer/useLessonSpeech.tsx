@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
 import { isFeatureEnabled } from '../../featureFlags';
-import { speakText, speechLangForSubject, stopSpeech as stopSynth } from '../../utils/speech';
+import { speakText, speechLangForSubject, stopSpeech as stopSynth, useVoiceAvailable } from '../../utils/speech';
 
 export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const isYoungGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
@@ -10,6 +10,7 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const speakingKeyRef = useRef<string | null>(null);
   const lang = speechLangForSubject(lesson.subject);
   const snippetRate = isPlayful1AP ? 0.78 : 0.9;
+  const voiceAvailable = useVoiceAvailable(lang);
 
   const speakSnippet = (key: string, text: string) => {
     if (!isFeatureEnabled('voiceReading') || !text) return;
@@ -49,5 +50,6 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     speakingKey,
     speakSnippet,
     stopSpeech,
+    voiceAvailable,
   };
 }

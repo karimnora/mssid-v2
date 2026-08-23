@@ -236,7 +236,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: 'أصابع اليد الواحدة 5. والصفر يعني لا يوجد شيء.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-num5',
@@ -301,7 +300,7 @@ export const MATH_1AP: CourseLesson[] = [
       'أُسَمِّي الدَّائِرَةَ 🟡 وَالمُرَبَّعَ 🟦 وَالمُثَلَّثَ 🔺 وَالمُسْتَطِيلَ 🚪.',
       'أُفَرِّزُ الأَشْكَالَ: أَضَعُ كُلَّ نَوْعٍ فِي صُنْدُوقِهِ.',
     ],
-    discoveryAr: 'ما شكل عجلة الدراجة؟ وما شكل قطعة البيتزا؟',
+    discoveryAr: 'ما شكل عجلة الدراجة 🚲؟ وما شكل قطعة البيتزا 🍕؟',
     rulesAr: [
       'الدَّائِرَةُ 🟡: شكل مستدير كالشمس أو العجلة.',
       'المُرَبَّعُ 🟦: له 4 أضلاع متساوية مثل النافذة.',
@@ -417,7 +416,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: '0 إلى 9 أرقام. قبل / بعد. العشرة = بداية العشرات.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-num10',
@@ -506,7 +504,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: 'الجمع = أضيف أو أضمّ أو أتقدّم. نبدأ بمجاميع أصغر من 10.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-add',
@@ -596,7 +593,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: '10–20: أرقام + حروف. عشرات ووحدات. إطار بين جارين أو عشرتين.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-num20',
@@ -775,7 +771,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: '21–49: أرقام وحروف. عشرات ووحدات. إطار بين عشرتين أو جارين.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-t90',
@@ -863,7 +858,6 @@ export const MATH_1AP: CourseLesson[] = [
       ],
       takeawayAr: '50–99: وحدات يميناً وعشرات يساراً. الرموز < > في الدرس التالي.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math1ap-pl',

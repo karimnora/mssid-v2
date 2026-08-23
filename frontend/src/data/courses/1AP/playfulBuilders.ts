@@ -101,19 +101,31 @@ const OPPOSITES: Array<[RegExp, string]> = [
   [/أَكْثَر|أكثر/, 'أَقَلَّ مِنْ'],
   [/أَقَلّ|أقل/, 'أَكْثَرَ مِنْ'],
   [/بِقَدْر/, 'أَكْثَرَ مِنْ'],
+  [/مُثَلَّث|مثلث/, 'دَائِرَةٌ'],
+  [/دَائِرَة|دائرة/, 'مُرَبَّعٌ'],
+  [/مُرَبَّع|مربع/, 'مُثَلَّثٌ'],
+  [/مُسْتَطِيل|مستطيل/, 'دَائِرَةٌ'],
 ];
 
-export function oppositeChoice(solutionAr: string): string {
+/**
+ * A same-lesson sibling's solution (e.g. another letter, another surah name, another short
+ * sentence) makes a far more honest wrong answer than a made-up placeholder — the child still has
+ * to recognise which real answer fits, instead of learning to spot a fake option by its wording.
+ * `otherSolutions` only reaches here when no OPPOSITES entry matched.
+ */
+export function oppositeChoice(solutionAr: string, otherSolutions: string[] = []): string {
   const n = Number.parseInt(solutionAr.replace(/[^\d-]/g, ''), 10);
   if (!Number.isNaN(n) && String(n) && /\d/.test(solutionAr)) {
     return String(n === 0 ? 1 : n + 1);
   }
   const hit = OPPOSITES.find(([re]) => re.test(solutionAr));
   if (hit) return hit[1];
+  const sibling = otherSolutions.find((s) => s && s.trim() !== solutionAr.trim());
+  if (sibling) return sibling;
   return 'لَيْسَ هَذَا';
 }
 
-function asTapQcm(ex: ProgressiveExercise): ProgressiveExercise {
+function asTapQcm(ex: ProgressiveExercise, otherSolutions: string[] = []): ProgressiveExercise {
   if (ex.type && ex.type !== 'short_answer') return ex;
   const yes = ex.solutionAr;
   return {
@@ -121,7 +133,7 @@ function asTapQcm(ex: ProgressiveExercise): ProgressiveExercise {
     type: 'qcm',
     options: [
       { id: 'a', textAr: yes, isCorrect: true },
-      { id: 'b', textAr: oppositeChoice(yes), isCorrect: false },
+      { id: 'b', textAr: oppositeChoice(yes, otherSolutions), isCorrect: false },
     ],
   };
 }
@@ -139,8 +151,10 @@ export function applyPlayful1AP(
   return lessons.map((lesson) => {
     const pack = packs[lesson.id];
     if (!pack) return lesson;
+    const originalExercises = lesson.progressiveExercises || [];
+    const allSolutions = originalExercises.map((ex) => ex.solutionAr);
     const progressiveExercises = [
-      ...(lesson.progressiveExercises || []).map(asTapQcm),
+      ...originalExercises.map((ex) => asTapQcm(ex, allSolutions)),
       ...pack.extra,
     ];
     const educationalGame = lesson.educationalGame

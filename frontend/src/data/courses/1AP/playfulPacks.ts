@@ -57,7 +57,7 @@ export const PLAYFUL_PACKS: Record<string, PlayfulPack> = {
   'math-1ap-t1-numbers-0-5': pack(
     [pair('ex3-math1ap-num5', 'ارْبِطْ العَدَدَ 🔗', [
       { leftAr: '0', rightAr: '📭 فارغ' },
-      { leftAr: '2', rightAr: '🐰🐰 أذنان' },
+      { leftAr: '2', rightAr: '👂👂 أُذُنَا الأَرْنَبِ' },
       { leftAr: '5', rightAr: '🖐️ أصابع' },
     ])],
     [

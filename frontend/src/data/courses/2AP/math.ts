@@ -55,7 +55,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'كل عدد من رقمين = (عدد العشرات × 10) + عدد الوحدات. العشرات على اليسار، الوحدات على اليمين.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-numbers',
@@ -240,7 +239,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'الجمع العمودي: أحاذي الوحدات مع الوحدات والعشرات مع العشرات، وأجمع كل عمود بدءاً من اليمين.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-add1',
@@ -338,7 +336,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'لمقارنة عددين: قارن العشرات أولاً، فإن تساويا قارن الوحدات. فم التمساح (> أو <) ينفتح نحو العدد الأكبر دائماً.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-numbers2',
@@ -431,7 +428,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'كل عدد من 3 أرقام = (عدد المئات × 100) + (عدد العشرات × 10) + عدد الوحدات. المئات يسار، الوحدات يمين.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-numbers3',
@@ -522,7 +518,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'إذا تجاوز مجموع الوحدات 9: أكتب رقم الوحدات فقط، واحتفظ بـ1 (عشرة كاملة) وأضفها إلى مجموع العشرات.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-add2',
@@ -615,7 +610,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'الطرح العمودي: العدد الكبير فوق، الصغير تحت، نطرح الوحدات ثم العشرات. كلمة "بقي" أو "أخذ" تدل على الطرح.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-sub1',
@@ -802,7 +796,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'ضِعْفُ العدد = العدد + العدد (مثل 6+6=12). نِصْفُ العدد = تقسيمه لجزأين متساويين (مثل 12 نصفه 6).',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-doublehalf',
@@ -1247,7 +1240,6 @@ export const MATH_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'فئات الدينار: 50، 100، 200، 500 دج. لثمن أشياء متعددة: أجمع. للباقي بعد الدفع: أطرح المبلغ المدفوع ناقص الثمن.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-currency',

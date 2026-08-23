@@ -29,11 +29,15 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
   const discoveryLines = lesson.discoveryAr ? splitPlayfulLines(show(lesson.discoveryAr)) : [];
   const cards = (lesson.rulesAr || []).slice(0, 8);
   const example = lesson.examplesAr?.[0];
+  // Nearly every 1AP title already carries a real emoji ("الأَشْكَالُ: ... 🔺"). Reusing it as the
+  // last-resort fallback keeps any snippet without its own emoji on-topic instead of landing on an
+  // unrelated DEFAULT_TILES pick (a star for a bike wheel, a clover for "3 apples"...).
+  const themeEmoji = parsePlayfulSnippet(show(lesson.titleAr)).emoji;
 
   return (
     <div className="space-y-6" dir="rtl" data-lesson-story="1ap">
       {discoveryLines.map((line, i) => {
-        const snippet = parsePlayfulSnippet(line, i);
+        const snippet = parsePlayfulSnippet(line, i, themeEmoji);
         const key = `discovery-${i}`;
         return (
           <PlayfulSpeakCard
@@ -51,7 +55,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
       {cards.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
           {cards.map((rule, i) => {
-            const snippet = parsePlayfulSnippet(show(rule), i + 2);
+            const snippet = parsePlayfulSnippet(show(rule), i + 2, themeEmoji);
             const key = `rule-${i}`;
             return (
               <PlayfulSpeakCard
@@ -68,26 +72,30 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
         </div>
       )}
 
-      {example && (
-        <div className="space-y-3">
-          <PlayfulSpeakCard
-            snippetKey="example-problem"
-            snippet={parsePlayfulSnippet(show(example.problem), 6)}
-            speakingKey={speakingKey}
-            onSpeak={onSpeak}
-            tone="amber"
-            tashkeelEnabled={tashkeelEnabled}
-          />
-          <PlayfulSpeakCard
-            snippetKey="example-solution"
-            snippet={parsePlayfulSnippet(show(example.solution), 7)}
-            speakingKey={speakingKey}
-            onSpeak={onSpeak}
-            tone="emerald"
-            tashkeelEnabled={tashkeelEnabled}
-          />
-        </div>
-      )}
+      {example && (() => {
+        const problemSnippet = parsePlayfulSnippet(show(example.problem), 6, themeEmoji);
+        const solutionSnippet = parsePlayfulSnippet(show(example.solution), 7, problemSnippet.emoji);
+        return (
+          <div className="space-y-3">
+            <PlayfulSpeakCard
+              snippetKey="example-problem"
+              snippet={problemSnippet}
+              speakingKey={speakingKey}
+              onSpeak={onSpeak}
+              tone="amber"
+              tashkeelEnabled={tashkeelEnabled}
+            />
+            <PlayfulSpeakCard
+              snippetKey="example-solution"
+              snippet={solutionSnippet}
+              speakingKey={speakingKey}
+              onSpeak={onSpeak}
+              tone="emerald"
+              tashkeelEnabled={tashkeelEnabled}
+            />
+          </div>
+        );
+      })()}
     </div>
   );
 };
@@ -131,11 +139,10 @@ const PlayfulSpeakCard: React.FC<{
         onSpeak={onSpeak}
         size="lg"
       />
-      <button
-        type="button"
-        onClick={() => onSpeak(snippetKey, snippet.speak)}
-        className="flex-1 flex flex-col items-center justify-center gap-1 text-center cursor-pointer min-w-0"
-      >
+      {/* Display only — the loudspeaker button above is the single, unambiguous way to listen.
+          No onClick here: a duplicate tap zone doing the same thing as the button made a child
+          reasonably wonder whether tapping the picture/text was a selectable answer. */}
+      <div className="flex-1 flex flex-col items-center justify-center gap-1 text-center min-w-0">
         <span className="text-4xl sm:text-5xl leading-none" aria-hidden="true">
           {visual}
         </span>
@@ -143,7 +150,7 @@ const PlayfulSpeakCard: React.FC<{
         {whisper ? (
           <p className="text-sm font-bold text-slate-500 leading-snug line-clamp-2">{whisper}</p>
         ) : null}
-      </button>
+      </div>
     </motion.div>
   );
 };

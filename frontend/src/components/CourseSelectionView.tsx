@@ -5,6 +5,9 @@ import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { Card, Badge, Button } from './ui';
 import { Calculator, BookOpen, FlaskConical, Compass, Heart, Award, Languages, Globe, ChevronLeft, Star, Lock } from 'lucide-react';
+import { isFrenchFreeGrade, stripLatinGlosses } from './lessonViewer/youngLessonLayout';
+import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
 
 interface CourseSelectionViewProps {
   grade: PrimaryGrade;
@@ -75,30 +78,83 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
     setSelectedSubject(null);
   }, [grade]);
 
+  // 1AP-3AP: these readers are still fragile, so every screen (not just lesson content) gets a
+  // listen button on its instructions and subject names — matching the audio guidance level inside
+  // a lesson instead of leaving the child alone with plain text until they've picked a subject.
+  const showAudio = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null);
+  const voiceAvailable = useVoiceAvailable('ar-SA');
+  useEffect(() => stopSpeech, []);
+  const handleSpeak = (key: string, text: string) => {
+    if (speakingKey === key) {
+      stopSpeech();
+      setSpeakingKey(null);
+      return;
+    }
+    setSpeakingKey(key);
+    void speakText(text, 'ar-SA', 0.85).then(() => {
+      setSpeakingKey((prev) => (prev === key ? null : prev));
+    });
+  };
+
   // STEP 1 — Matière: giant colorful cards, fixed responsive grid, no horizontal scroll.
   const visibleSubjects = courseSubjects.filter((s) => isToolAvailableForGrade(s, grade));
 
   if (!selectedSubject) {
     return (
       <div className="space-y-4" dir="rtl">
+        {showAudio && voiceAvailable === false && (
+          <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold rounded-2xl px-4 py-2.5">
+            <span aria-hidden="true">🔇</span>
+            <span>القراءة الصوتية غير متوفرة على هذا الجهاز حالياً.</span>
+          </div>
+        )}
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h2 className="text-lg font-black text-[var(--app-text)]">اختر المادة التي تريد مراجعتها — {grade}</h2>
+          <div className="flex items-center gap-2 min-w-0">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="step1-heading"
+                text="اختر المادة التي تريد مراجعتها"
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <h2 className="text-lg font-black text-[var(--app-text)]">اختر المادة التي تريد مراجعتها — {grade}</h2>
+          </div>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {visibleSubjects.map((subj) => {
             const IconComp = SUBJECT_ICON_MAP[subj.icon] || BookOpen;
             return (
-              <motion.button
+              <motion.div
                 key={subj.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => setSelectedSubject(subj.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedSubject(subj.id);
+                  }
+                }}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`rounded-3xl p-5 sm:p-6 min-h-36 text-white shadow-md cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-2 text-center`}
+                className={`relative rounded-3xl p-5 sm:p-6 min-h-36 text-white shadow-md cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-2 text-center`}
               >
+                {showAudio && (
+                  <div className="absolute top-2 start-2">
+                    <TapSpeakButton
+                      snippetKey={`subject-${subj.id}`}
+                      text={subj.nameAr}
+                      speakingKey={speakingKey}
+                      onSpeak={handleSpeak}
+                    />
+                  </div>
+                )}
                 <span className="text-4xl sm:text-5xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
                 <IconComp className="w-4 h-4 opacity-70" />
                 <span className="font-black text-xs sm:text-sm leading-tight">{subj.nameAr}</span>
-              </motion.button>
+              </motion.div>
             );
           })}
         </div>
@@ -108,6 +164,9 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
 
   const subjectInfo = courseSubjects.find((s) => s.id === selectedSubject);
   const isLtrSubject = LTR_SUBJECTS.includes(selectedSubject);
+  // 1AP/2AP: title + icon is enough to pick a lesson — a full pedagogical summary paragraph and a
+  // quiz-count pill are reading load a 7-year-old doesn't need on a tile they're just scanning.
+  const isSimpleCard = grade === '1AP' || grade === '2AP';
   const termLessons = allCourseLessons.filter(
     (l) => l.subject === selectedSubject && l.grade === grade && l.trimester === selectedTrimester
   );
@@ -136,6 +195,14 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
         <span className="text-2xl">{SUBJECT_EMOJI[selectedSubject] || '📘'}</span>
         <h2 className="text-lg font-black text-[var(--app-text)]">{subjectInfo?.nameAr}</h2>
         <Badge variant="info">{grade}</Badge>
+        {showAudio && subjectInfo && (
+          <TapSpeakButton
+            snippetKey="step2-subject"
+            text={subjectInfo.nameAr}
+            speakingKey={speakingKey}
+            onSpeak={handleSpeak}
+          />
+        )}
       </div>
 
       {/* STEP 2 — Trimestre: 3 grands onglets très visibles */}
@@ -162,7 +229,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
               )}
               <span className="relative flex items-center justify-center gap-1.5">
                 {isTrimesterLocked(t) && <Lock className="w-3 h-3 shrink-0" />}
-                {TRIMESTER_LABELS[t]}
+                {isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}
               </span>
             </motion.button>
           );
@@ -195,7 +262,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                       {locked ? (
                         <span className="flex items-center gap-1 text-[10px] font-black text-amber-800 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full">
                           <Lock className="w-3 h-3" />
-                          <span>مميّز (Premium)</span>
+                          <span>مميّز</span>
                         </span>
                       ) : (
                         isCompleted && <Badge variant="success">✓ مكتمل</Badge>

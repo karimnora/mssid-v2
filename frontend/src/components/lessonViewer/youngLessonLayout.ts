@@ -4,6 +4,9 @@ import type { TabId } from './shared';
 /** 1AP only: picture-first sheet. 2AP stays on the compact (not preschool) viewer. */
 export const isPlayful1AP = (grade?: PrimaryGrade | string) => grade === '1AP';
 
+/** 1AP/2AP: no French in the UI per program (French starts 3AP) — strip Latin glosses like "(Trimestre 1)". */
+export const isFrenchFreeGrade = (grade?: PrimaryGrade | string) => grade === '1AP' || grade === '2AP';
+
 export type Playful1APStep = {
   id: TabId;
   labelAr: string;
@@ -65,16 +68,26 @@ export type PlayfulSnippet = {
   letterVisual: string | null;
 };
 
-function shortenWhisper(text: string): string {
-  const noParens = text.replace(/\([^)]*\)/g, '').replace(/\s{2,}/g, ' ').trim();
-  if (noParens.length <= 42) return noParens;
-  const cut = noParens.slice(0, 42);
+/** Trim to at most `maxLen` chars without cutting the last word in half. */
+function cutAtWordBoundary(text: string, maxLen: number, minKeep: number): string {
+  if (text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
   const lastSpace = cut.lastIndexOf(' ');
-  return (lastSpace > 16 ? cut.slice(0, lastSpace) : cut).trim();
+  return (lastSpace > minKeep ? cut.slice(0, lastSpace) : cut).trim();
 }
 
-/** Picture + short word for a 6-year-old. TTS reads only this snippet, never the whole lesson. */
-export function parsePlayfulSnippet(raw: string, fallbackIndex = 0): PlayfulSnippet {
+function shortenWhisper(text: string): string {
+  const noParens = text.replace(/\([^)]*\)/g, '').replace(/\s{2,}/g, ' ').trim();
+  return cutAtWordBoundary(noParens, 42, 16);
+}
+
+/**
+ * Picture + short word for a 6-year-old. TTS reads only this snippet, never the whole lesson.
+ * `siblingEmoji` (e.g. the emoji already resolved for a paired problem/solution) is tried before
+ * falling back to an arbitrary DEFAULT_TILES pick, so a bare answer like "3 تفاحات" (no emoji of
+ * its own) reuses the 🍎 from "كم عدد التفاحات؟ 🍎🍎🍎" instead of showing an unrelated 🍀.
+ */
+export function parsePlayfulSnippet(raw: string, fallbackIndex = 0, siblingEmoji?: string): PlayfulSnippet {
   const cleaned = stripLatinGlosses(raw);
   const emojiMatch = cleaned.match(EMOJI_RE);
   const withoutEmoji = cleaned
@@ -99,8 +112,8 @@ export function parsePlayfulSnippet(raw: string, fallbackIndex = 0): PlayfulSnip
         headline = withoutEmoji.slice(0, period).trim();
         whisper = shortenWhisper(withoutEmoji.slice(period + 1).trim());
       } else if (withoutEmoji.length > 36) {
-        headline = withoutEmoji.slice(0, 28).trim();
-        whisper = shortenWhisper(withoutEmoji.slice(28).trim());
+        headline = cutAtWordBoundary(withoutEmoji, 28, 12);
+        whisper = shortenWhisper(withoutEmoji.slice(headline.length).trim());
       } else {
         headline = withoutEmoji;
         whisper = '';
@@ -111,7 +124,7 @@ export function parsePlayfulSnippet(raw: string, fallbackIndex = 0): PlayfulSnip
   let emoji = emojiMatch?.[0] ?? '';
   if (!emoji) {
     const mapped = FALLBACK_EMOJI.find(([re]) => re.test(headline) || re.test(cleaned));
-    emoji = mapped?.[1] ?? DEFAULT_TILES[fallbackIndex % DEFAULT_TILES.length];
+    emoji = mapped?.[1] ?? siblingEmoji ?? DEFAULT_TILES[fallbackIndex % DEFAULT_TILES.length];
   }
 
   const lettersOnly = headline.replace(/[\s\u064B-\u0652\u0670\u0640]/g, '');

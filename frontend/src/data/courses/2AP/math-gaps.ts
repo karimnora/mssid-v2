@@ -44,7 +44,6 @@ export const MATH_2AP_GAPS: CourseLesson[] = [
       ],
       takeawayAr: 'وحدات أصغر فوق؟ أستعير 10، أطرح، ثم أنقص العشرات بواحد.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-subcarry',
@@ -140,7 +139,6 @@ export const MATH_2AP_GAPS: CourseLesson[] = [
       ],
       takeawayAr: 'أحصر العدد بين عشرتين أو مئتين متتاليتين، الأصغر يساراً.',
     },
-    interactiveTool: 'soroban',
     progressiveExercises: [
       {
         id: 'ex1-math2ap-frame',

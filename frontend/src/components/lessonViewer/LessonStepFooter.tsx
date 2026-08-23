@@ -46,6 +46,8 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
       className={
         playful
           ? 'sticky z-30 bg-white/95 backdrop-blur-md border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-lg space-y-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:bottom-3'
+          : compact
+          ? 'sticky z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:bottom-3'
           : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-sm space-y-4'
       }
       data-lesson-footer={playful ? 'playful' : compact ? 'compact' : 'full'}
@@ -153,7 +155,7 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer flex items-center gap-2"
+              className={`bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer flex items-center gap-2 ${compact ? 'min-h-14' : ''}`}
             >
               <span>{compact ? 'التالي' : `التالي: ${nextStep?.labelAr ?? ''}`}</span>
               <ArrowLeft className="w-4 h-4" />
@@ -168,7 +170,7 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer flex items-center gap-2 min-w-0"
+              className={`bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer flex items-center gap-2 min-w-0 ${compact ? 'min-h-14' : ''}`}
             >
               <span className="truncate">
                 {nextLesson ? `الدرس الموالي: ${renderArabicText(nextLesson.titleAr)}` : 'العودة لقائمة الدروس'}
