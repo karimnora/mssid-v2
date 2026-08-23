@@ -3,7 +3,7 @@ import { PRESCHOOL_MODULES } from './index';
 import { PreschoolLanguage } from './types';
 import { PRESCHOOL_BADGES } from './preschoolBadgesData';
 import { CHALLENGE_MODULE_IDS } from '../../components/preschool/useDailyChallenge';
-import { activityPicture } from '../../components/preschool/preschoolGlyphs';
+import { activityPicture, activityPathIcon } from '../../components/preschool/preschoolGlyphs';
 
 const LANGUAGES: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
@@ -91,17 +91,22 @@ describe('Preschool (Mode Éveil) data integrity', () => {
                 break;
               }
               case 'connect_dots': {
-                expect(assets.connectPairs?.length, activity.id).toBeGreaterThanOrEqual(2);
+                LANGUAGES.forEach((lang) => {
+                  const pairs = activity.i18n[lang].connectPairs ?? assets.connectPairs;
+                  expect(pairs?.length, `${activity.id} ${lang}`).toBeGreaterThanOrEqual(2);
+                });
                 break;
               }
               case 'sorting': {
-                const bins = assets.sortBins || [];
-                const items = assets.sortItems || [];
-                expect(bins.length, activity.id).toBeGreaterThanOrEqual(2);
-                expect(items.length, activity.id).toBeGreaterThan(0);
-                const binIds = new Set(bins.map((b) => b.id));
-                items.forEach((item) => {
-                  expect(binIds.has(item.correctBinId), `${activity.id}: item ${item.id} references unknown bin ${item.correctBinId}`).toBe(true);
+                LANGUAGES.forEach((lang) => {
+                  const bins = activity.i18n[lang].sortBins ?? assets.sortBins ?? [];
+                  const items = activity.i18n[lang].sortItems ?? assets.sortItems ?? [];
+                  expect(bins.length, `${activity.id} ${lang}`).toBeGreaterThanOrEqual(2);
+                  expect(items.length, `${activity.id} ${lang}`).toBeGreaterThan(0);
+                  const binIds = new Set(bins.map((b) => b.id));
+                  items.forEach((item) => {
+                    expect(binIds.has(item.correctBinId), `${activity.id} ${lang}: item ${item.id} references unknown bin ${item.correctBinId}`).toBe(true);
+                  });
                 });
                 break;
               }
@@ -119,6 +124,10 @@ describe('Preschool (Mode Éveil) data integrity', () => {
               }
               case 'trace': {
                 expect(assets.mainSvgOrImage?.trim(), activity.id).toBeTruthy();
+                LANGUAGES.forEach((lang) => {
+                  const glyph = activity.i18n[lang].glyph ?? assets.mainSvgOrImage;
+                  expect(glyph?.trim(), `${activity.id} ${lang}`).toBeTruthy();
+                });
                 break;
               }
               case 'coloring': {
@@ -204,6 +213,44 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(alif!.i18n.ar.choices?.find((c) => c.isCorrect)?.asset).toBe('أ');
     expect(alif!.i18n.fr.choices?.find((c) => c.isCorrect)?.asset).toBe('A');
     expect(alif!.i18n.en.choices?.find((c) => c.isCorrect)?.asset).toBe('A');
+  });
+
+  it('letter path icons follow the selected language, not Arabic targetValue', () => {
+    const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
+    const traceAlif = letters?.activities.find((a) => a.id === 'letters-trace-alif');
+    const tapTaa = letters?.activities.find((a) => a.id === 'letters-taa-apple');
+    expect(traceAlif).toBeTruthy();
+    expect(tapTaa).toBeTruthy();
+    expect(activityPathIcon(traceAlif!, 'fr')).toBe('A');
+    expect(activityPathIcon(traceAlif!, 'en')).toBe('A');
+    expect(activityPathIcon(traceAlif!, 'ar')).toBe('أ');
+    expect(activityPathIcon(tapTaa!, 'fr')).toBe('🍎');
+    expect(activityPathIcon(tapTaa!, 'en')).toBe('🚂');
+    expect(activityPathIcon(tapTaa!, 'ar')).toBe('🍎');
+  });
+
+  it('letter FR/EN never expose Arabic glyphs in tap, trace, or connect', () => {
+    const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
+    expect(letters).toBeTruthy();
+    const arabicLetter = /[\u0600-\u06FF]/;
+    for (const activity of letters!.activities) {
+      for (const lang of ['fr', 'en'] as const) {
+        const content = activity.i18n[lang];
+        for (const choice of content.choices ?? []) {
+          expect(choice.asset, `${activity.id} ${lang}`).not.toMatch(arabicLetter);
+        }
+        if (content.glyph) {
+          expect(content.glyph, `${activity.id} ${lang}`).not.toMatch(arabicLetter);
+        }
+        for (const pair of content.connectPairs ?? []) {
+          expect(pair.rightAsset, `${activity.id} ${lang}`).not.toMatch(arabicLetter);
+          expect(pair.leftAsset, `${activity.id} ${lang}`).not.toMatch(arabicLetter);
+        }
+        expect(content.promptAudio, `${activity.id} ${lang}`).not.toMatch(
+          /\b(Alif|Jeem|Ba|Mim|Saad|Faa|Lam|Waw|Tha|Seen|Dal|Ra|Qaf|Kaf|Noon|Haa|Yaa)\b/i,
+        );
+      }
+    }
   });
 
   it('seasons-connect names each season and matches winter to the scarf already taught', () => {

@@ -173,6 +173,14 @@ export function localizeGlyph(glyph: string, _language: PreschoolLanguage): stri
 
 /** Icon shown inside a path-view circle — never an internal slug like "basket". */
 export function activityPathIcon(activity: PreschoolActivity, language: PreschoolLanguage): string {
+  const content = activity.i18n[language];
+
+  // Per-language visuals already isolated in i18n (letters module tap/trace).
+  if (content.image) return content.image;
+  if (content.glyph) return content.glyph;
+  const correctChoice = content.choices?.find((c) => c.isCorrect);
+  if (correctChoice) return correctChoice.asset;
+
   const raw = String(activity.targetValue);
   if (SLUG_ICONS[raw]) return SLUG_ICONS[raw];
 

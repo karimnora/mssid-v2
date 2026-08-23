@@ -50,7 +50,7 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
     setMatchedIds([]);
     setWrongPulseId(null);
     setDragPos(null);
-  }, [activity.id]);
+  }, [activity.id, language]);
 
   useLayoutEffect(() => {
     setLineTick((n) => n + 1);
