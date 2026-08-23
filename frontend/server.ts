@@ -43,21 +43,30 @@ async function startServer() {
     res.json(aiLimiterCache.getStatsSummary());
   });
 
+  // SEC-10 (this dev-only Express server has no auth/session of its own — unlike the real Spring
+  // Boot backend, which verifies role from the HttpOnly JWT cookie server-side, see
+  // springBootApi.ts). It must never trust a client-supplied role or identity: doing so let anyone,
+  // including a logged-out visitor, claim `role: "ROLE_ADMIN"` and unlock the 1000/day quota,
+  // completely bypassing the free tier — and every accepted request bills the real Gemini API key.
+  // Not reachable in production (vercel.json serves only the static build, this server never runs
+  // there), but it's still live for anyone running `npm run dev`/`npm start` locally, so it gets the
+  // same no-client-trust rule as the real backend rather than staying a dormant footgun.
+  const CLIENT_ROLE: UserRole = "ROLE_FREE";
+
   // GET Quota Status
   app.get("/api/gemini/quota", (req, res) => {
-    const role = ((req.headers["x-user-role"] || req.query.role) as UserRole) || "ROLE_FREE";
-    const clientId = (req.headers["x-user-id"] as string) || (req.query.userId as string) || req.ip || "anonymous";
-    const status = aiLimiterCache.getQuotaStatus(clientId, role);
-    res.json({ role, clientId, ...status });
+    const clientId = req.ip || "anonymous";
+    const status = aiLimiterCache.getQuotaStatus(clientId, CLIENT_ROLE);
+    res.json({ role: CLIENT_ROLE, clientId, ...status });
   });
 
   // AI Tutor Explain API (with Rate Limiting & Query Cache)
   app.post("/api/gemini/explain", async (req, res) => {
     const { topic, question, grade, promptType, subject } = req.body;
-    
+
     // Determine Client Identity and Role
-    const clientRole = ((req.headers["x-user-role"] || req.body.role || req.body.userRole) as UserRole) || "ROLE_FREE";
-    const clientId = (req.headers["x-user-id"] as string) || req.body.userId || req.body.email || req.ip || "anonymous_client";
+    const clientRole = CLIENT_ROLE;
+    const clientId = req.ip || "anonymous_client";
 
     // 1. Check Query Cache
     const cacheKey = aiLimiterCache.generateCacheKey({
