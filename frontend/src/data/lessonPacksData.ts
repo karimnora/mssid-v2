@@ -1,4 +1,10 @@
 import { LessonPack } from '../types/ecosystem';
+import { COURSES_DATA } from './coursesData';
+import { PRESCHOOL_MODULES } from './preschool';
+
+function lessonsForGrade(grade: '1AP' | '2AP' | '3AP' | '4AP' | '5AP'): number {
+  return COURSES_DATA.filter((lesson) => lesson.grade === grade).length;
+}
 
 export const LESSON_PACKS_CATALOG: LessonPack[] = [
   {
@@ -12,8 +18,8 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة براعم مَسيد الشاملة (التحضيري)',
     titleFr: 'Pack Éveil Baraem (Préscolaire)',
     descriptionAr: 'جميع ألعاب الحروف، الأرقام، الأشكال والألوان بدون إنترنت للأطفال الصغار.',
-    lessonsCount: 24,
-    updatedAt: '2026-08-10',
+    lessonsCount: PRESCHOOL_MODULES.length,
+    updatedAt: '2026-08-23',
     isDownloaded: true,
   },
   {
@@ -27,8 +33,8 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة السنة 5 ابتدائي + بنك الامتحانات الرسمية',
     titleFr: 'Pack Complet 5AP + Annales Officielles',
     descriptionAr: 'جميع دروس الرياضيات، اللغة العربية، الفرنسية، العلوم، التاريخ، الجغرافيا، والتربية الإسلامية والمدنية.',
-    lessonsCount: 52,
-    updatedAt: '2026-08-12',
+    lessonsCount: lessonsForGrade('5AP'),
+    updatedAt: '2026-08-23',
     isDownloaded: true,
   },
   {
@@ -42,8 +48,8 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة السنة 4 ابتدائي الشاملة',
     titleFr: 'Pack Complet 4AP',
     descriptionAr: 'دروس وتمارين الفصل الأول والثاني والثالث مع التمارين التفاعلية ومخابر العلوم.',
-    lessonsCount: 45,
-    updatedAt: '2026-08-01',
+    lessonsCount: lessonsForGrade('4AP'),
+    updatedAt: '2026-08-23',
     isDownloaded: false,
   },
   {
@@ -51,14 +57,14 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     grade: '3AP',
     subject: 'البرنامج الشامل 3 ابتدائي',
     term: 1,
-    version: 1,
+    version: 2,
     sizeBytes: 3200000,
     sizeMb: 3.2,
     titleAr: 'حقيبة السنة 3 ابتدائي + بدايات الفرنسية والإنجليزية',
     titleFr: 'Pack Complet 3AP',
     descriptionAr: 'دروس وتدريبات تفاعلية ومختبرات اللغات الأجنبية والرياضيات والحساب.',
-    lessonsCount: 38,
-    updatedAt: '2026-07-28',
+    lessonsCount: lessonsForGrade('3AP'),
+    updatedAt: '2026-08-23',
     isDownloaded: false,
   },
   {
@@ -72,8 +78,8 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة السنة 2 ابتدائي (القراءة والحساب الأساسي)',
     titleFr: 'Pack Complet 2AP',
     descriptionAr: 'بناء المفردات والجمل، الجمع والطرح، والتربية العلمية والإسلامية والمدنية.',
-    lessonsCount: 63,
-    updatedAt: '2026-07-20',
+    lessonsCount: lessonsForGrade('2AP'),
+    updatedAt: '2026-08-23',
     isDownloaded: false,
   },
   {
@@ -87,8 +93,8 @@ export const LESSON_PACKS_CATALOG: LessonPack[] = [
     titleAr: 'حقيبة السنة 1 ابتدائي (الحروف والأعداد)',
     titleFr: 'Pack Complet 1AP',
     descriptionAr: 'تعلم حروف الهجاء والأرقام حتى 20 والأشكال الهندسية مع التشكيل والأصوات.',
-    lessonsCount: 49,
-    updatedAt: '2026-07-15',
+    lessonsCount: lessonsForGrade('1AP'),
+    updatedAt: '2026-08-23',
     isDownloaded: false,
   },
 ];

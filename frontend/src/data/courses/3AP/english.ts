@@ -1,6 +1,6 @@
 import { CourseLesson } from '../../../types';
 
-// 6 leçon(s) — english / 3AP
+// 8 leçon(s) — english / 3AP
 export const ENGLISH_3AP: CourseLesson[] = [
 // ==========================================
 // 🇬🇧 اللغة الإنجليزية (ENGLISH) - 3AP
@@ -96,7 +96,17 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'How do you ask someone for their name in English?',
         options: [
           { id: 'a', textAr: 'What is your name?', isCorrect: true, explanationAr: 'Correct! "What is your name?" is the exact English question.' },
-          { id: 'b', textAr: 'How old are you?', isCorrect: false }
+          { id: 'b', textAr: 'How old are you?', isCorrect: false, explanationAr: 'Incorrect. "How old are you?" asks about age, not about someone\'s name.' },
+          { id: 'c', textAr: 'Nice to meet you!', isCorrect: false, explanationAr: 'Incorrect. "Nice to meet you!" is a polite expression used after meeting someone, not a question asking for a name.' }
+        ]
+      },
+      {
+        id: 'q2-u1s1',
+        questionAr: 'Which of these letters is one of the 5 English vowels?',
+        options: [
+          { id: 'a', textAr: 'E', isCorrect: true, explanationAr: 'Correct! E is one of the 5 vowels: A, E, I, O, U.' },
+          { id: 'b', textAr: 'B', isCorrect: false, explanationAr: 'Incorrect. B is a consonant, not one of the 5 vowels (A, E, I, O, U).' },
+          { id: 'c', textAr: 'T', isCorrect: false, explanationAr: 'Incorrect. T is a consonant, not one of the 5 vowels (A, E, I, O, U).' }
         ]
       }
     ]
@@ -189,7 +199,17 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'How do you introduce your brother in English?',
         options: [
           { id: 'a', textAr: 'This is my brother.', isCorrect: true, explanationAr: 'Correct! "This is my brother" introduces your brother.' },
-          { id: 'b', textAr: 'This is my sister.', isCorrect: false }
+          { id: 'b', textAr: 'This is my sister.', isCorrect: false, explanationAr: 'Incorrect. "This is my sister" introduces a sister, not a brother.' },
+          { id: 'c', textAr: 'This is my father.', isCorrect: false, explanationAr: 'Incorrect. "This is my father" introduces your father, not your brother.' }
+        ]
+      },
+      {
+        id: 'q2-u1s2',
+        questionAr: 'What is the English word for the number "9"?',
+        options: [
+          { id: 'a', textAr: 'Nine', isCorrect: true, explanationAr: 'Correct! 9 is "Nine" in English.' },
+          { id: 'b', textAr: 'Ten', isCorrect: false, explanationAr: 'Incorrect. "Ten" is the number 10, not 9.' },
+          { id: 'c', textAr: 'Six', isCorrect: false, explanationAr: 'Incorrect. "Six" is the number 6, not 9.' }
         ]
       }
     ]
@@ -286,7 +306,17 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'What is the correct English sentence for "ما هذا؟ إنه كراس."',
         options: [
           { id: 'a', textAr: 'What is this? It is a notebook.', isCorrect: true, explanationAr: 'Correct! "notebook" means كراس.' },
-          { id: 'b', textAr: 'What is this? It is a book.', isCorrect: false }
+          { id: 'b', textAr: 'What is this? It is a book.', isCorrect: false, explanationAr: 'Incorrect. "Book" means كتاب, not كراس (notebook) — the correct word is "notebook".' },
+          { id: 'c', textAr: 'What is this? It is a pencil.', isCorrect: false, explanationAr: 'Incorrect. "Pencil" means قلم رصاص, not كراس (notebook).' }
+        ]
+      },
+      {
+        id: 'q2-u2s1',
+        questionAr: 'Which article is correct: "..... eraser" ?',
+        options: [
+          { id: 'a', textAr: 'an', isCorrect: true, explanationAr: 'Correct! We use "an" before vowel sounds, like the E in "eraser".' },
+          { id: 'b', textAr: 'a', isCorrect: false, explanationAr: 'Incorrect. "Eraser" starts with the vowel sound E, so we must use "an", not "a".' },
+          { id: 'c', textAr: 'the', isCorrect: false, explanationAr: 'Incorrect. "The" is a definite article used for a specific, already-known object, not for introducing a new object with "What is this?".' }
         ]
       }
     ]
@@ -378,7 +408,17 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'Which preposition means "على / فوق" in English?',
         options: [
           { id: 'a', textAr: 'ON', isCorrect: true, explanationAr: 'Correct! ON means على or فوق.' },
-          { id: 'b', textAr: 'UNDER', isCorrect: false }
+          { id: 'b', textAr: 'UNDER', isCorrect: false, explanationAr: 'Incorrect. UNDER means تحت, not على/فوق.' },
+          { id: 'c', textAr: 'IN', isCorrect: false, explanationAr: 'Incorrect. IN means في or داخل (inside), not على/فوق (on top).' }
+        ]
+      },
+      {
+        id: 'q2-u3s1',
+        questionAr: 'Which geometric shape has three sides?',
+        options: [
+          { id: 'a', textAr: 'Triangle', isCorrect: true, explanationAr: 'Correct! A triangle (مثلث) has three sides.' },
+          { id: 'b', textAr: 'Square', isCorrect: false, explanationAr: 'Incorrect. A square (مربع) has four sides, not three.' },
+          { id: 'c', textAr: 'Circle', isCorrect: false, explanationAr: 'Incorrect. A circle (دائرة) has no straight sides at all.' }
         ]
       }
     ]
@@ -474,100 +514,118 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'How do you say "لعبتي المفضلة هي الكرة" in English?',
         options: [
           { id: 'a', textAr: 'My favorite toy is the ball.', isCorrect: true, explanationAr: 'Correct! "My favorite toy is..." expresses your favorite toy.' },
-          { id: 'b', textAr: 'I don\'t like balls.', isCorrect: false }
+          { id: 'b', textAr: 'I don\'t like balls.', isCorrect: false, explanationAr: 'Incorrect. This sentence expresses dislike for balls, which is the opposite of saying it is your favorite toy.' },
+          { id: 'c', textAr: 'I have a ball.', isCorrect: false, explanationAr: 'Incorrect. "I have a ball" expresses ownership, not that it is your favorite toy.' }
+        ]
+      },
+      {
+        id: 'q2-u4s1',
+        questionAr: 'What is the English word for "أرنب"?',
+        options: [
+          { id: 'a', textAr: 'Rabbit', isCorrect: true, explanationAr: 'Correct! "Rabbit" means أرنب in English.' },
+          { id: 'b', textAr: 'Turtle', isCorrect: false, explanationAr: 'Incorrect. "Turtle" means سلحفاة, not أرنب.' },
+          { id: 'c', textAr: 'Bird', isCorrect: false, explanationAr: 'Incorrect. "Bird" means عصفور, not أرنب.' }
         ]
       }
     ]
 },
 
 {
-    id: 'english-3ap-u4-time-routines',
+    id: 'english-3ap-u4-numbers-counting',
     grade: '3AP',
     subject: 'english',
     trimester: 3,
-    domainAr: 'English Language - Time & Daily Routines',
-    sequenceAr: 'Unit 4 - Sequence 2: What Time Is It? My Daily Routine',
-    categoryAr: 'اللغة الإنجليزية - الوقت والروتين اليومي',
-    titleAr: 'UNIT 4 (S2) : WHAT TIME IS IT? MY DAILY ROUTINE',
-    summaryAr: 'Pupils learn to ask and tell the time using "What time is it? - It\'s ... o\'clock", and to describe their daily routine with simple present verbs (wake up, get up, eat breakfast, go to school, go to bed).',
-    objectiveAr: 'Ask and answer about time using o\'clock, and describe a simple daily routine in English.',
+    domainAr: 'English Language - Numbers & Counting',
+    sequenceAr: 'Unit 4 - Sequence 2: Counting My Things (Numbers 11-15)',
+    categoryAr: 'اللغة الإنجليزية - الأرقام من 11 إلى 15',
+    titleAr: 'UNIT 4 (S2) : COUNTING MY THINGS (NUMBERS 11 TO 15)',
+    summaryAr: 'Pupils learn numbers 11 to 15 in English (eleven to fifteen) and use them to count everyday objects like toys, books, and pencils, with the structure "How many...are there? - There are...".',
+    objectiveAr: 'Count from 11 to 15 in English and use "How many...are there?" to count objects.',
     objectivesAr: [
-        'أَسْأَلُ عَنِ الوَقْتِ وَأُجِيبُ بِـ "It\'s ... o\'clock".',
-        'أَصِفُ رُوتِينِي اليَوْمِيَّ بِأَفْعَالٍ بَسِيطَةٍ فِي الحَاضِرِ.',
+        'أَعُدُّ مِنْ 11 إِلَى 15 بِالإِنْجِلِيزِيَّةِ.',
+        'أَسْتَعْمِلُ "How many...are there?" لِعَدِّ الأَشْيَاءِ.',
     ],
     detailedCourse: {
-        introAr: 'لمعرفة الوقت بالإنجليزية نسأل "What time is it?" ونجيب بـ "It\'s ... o\'clock". ولوصف يومنا نستعمل أفعالاً بسيطة مثل wake up وgo to school.',
+        introAr: 'بعد أن تعلمنا العد من 1 إلى 10، نتعلم اليوم أرقاماً جديدة من 11 إلى 15 لنعدّ بها أشياءنا اليومية مثل الألعاب والأقلام.',
         vocabulary: [
-            { termAr: 'What time is it?', definitionAr: 'سؤال عن الوقت الحالي، الإجابة عليه تكون بصيغة "It\'s ... o\'clock".' },
-            { termAr: 'Daily routine', definitionAr: 'الأنشطة التي نقوم بها كل يوم بنفس الترتيب تقريباً، مثل الاستيقاظ والذهاب للمدرسة.' },
+            { termAr: 'How many...are there?', definitionAr: 'سؤال نستعمله لمعرفة عدد الأشياء: "كم عدد...؟"' },
+            { termAr: 'There are...', definitionAr: 'عبارة نجيب بها عن السؤال بعدد الأشياء الموجودة.' },
         ],
-        visualizationHintAr: 'ارسم ساعة بعقارب متحركة مع طفلك واطلب منه قول الوقت بالإنجليزية "It\'s ... o\'clock" لأوقات مختلفة من يومه.',
+        visualizationHintAr: 'اجمع 12 قلماً أو لعبة أمام طفلك واسأله "How many pencils are there?" وساعده على العد بالإنجليزية حتى الجواب.',
         commonMistakes: [
-            { mistakeAr: 'نسيان "o\'clock" عند الإجابة عن السؤال عن الوقت.', correctionAr: 'الإجابة الكاملة يجب أن تحتوي "o\'clock" بعد الرقم: "It\'s seven o\'clock"، وليس "It\'s seven" فقط.' },
+            { mistakeAr: 'نطق "eleven" و"twelve" كأنهما تتبعان نفس قاعدة "-teen".', correctionAr: 'eleven (11) وtwelve (12) كلمتان خاصتان، لا تتبعان قاعدة "-teen" كباقي الأعداد من 13 إلى 19.' },
         ],
-        takeawayAr: 'What time is it? - It\'s [number] o\'clock. Daily routine: wake up, get up, eat breakfast, go to school, go to bed.',
+        takeawayAr: 'Numbers 11-15: eleven, twelve, thirteen, fourteen, fifteen. How many...are there? - There are [number]...',
     },
     keyFormulas: [
-        { labelAr: 'Telling the time', formulaAr: 'It\'s + [number] + o\'clock' },
+        { labelAr: 'السؤال عن العدد', formulaAr: 'How many [things] are there? ➔ There are [number] [things].' },
     ],
-    discoveryAr: 'Yassine\'s morning:\n- "What time is it?" - "It\'s seven o\'clock! I wake up at seven o\'clock."\n- "I eat breakfast at half past seven."\n- "I go to school at eight o\'clock."\n- "I go to bed at nine o\'clock at night."',
+    discoveryAr: 'In the toy box:\n- "How many toys are there?" - "Let\'s count: Eleven, Twelve, Thirteen... There are thirteen toys!"\n- "How many pencils are there in your bag?" - "There are fifteen pencils!"',
     rulesAr: [
-      'Asking the Time: "What time is it?" (كم الساعة؟) ➔ "It\'s [number] o\'clock" (الساعة كذا تماماً).',
-      'Daily Routine Verbs: wake up (أستيقظ), get up (أنهض), eat breakfast (أتناول الفطور), go to school (أذهب إلى المدرسة), do homework (أُنجز واجباتي), go to bed (أخلد إلى النوم).',
-      'Structure with Time: "I [verb] at [time] o\'clock." Example: "I wake up at seven o\'clock." "I go to bed at nine o\'clock."',
-      'Order of the Day: morning (الصباح) ➔ afternoon (بعد الظهر) ➔ evening (المساء) ➔ night (الليل).'
+      'Numbers 11 to 15:\n- 11 (Eleven), 12 (Twelve), 13 (Thirteen), 14 (Fourteen), 15 (Fifteen).',
+      'Asking "How many": "How many [plural noun] are there?" (كم عدد...؟) ➔ "There are [number] [plural noun]." (يوجد كذا...).',
+      'Example: "How many toys are there?" - "There are twelve toys."'
     ],
     interactiveTool: 'english_lab',
     examplesAr: [
       {
-        problem: 'How do you ask "كم الساعة؟" in English?',
-        solution: '"What time is it?"'
+        problem: 'How do you say "13" in English?',
+        solution: '"Thirteen."'
       },
       {
-        problem: 'How do you say "أذهب إلى المدرسة الساعة الثامنة" in English?',
-        solution: '"I go to school at eight o\'clock."'
+        problem: 'How do you ask "كم عدد الألعاب الموجودة؟" in English?',
+        solution: '"How many toys are there?"'
       }
     ],
     progressiveExercises: [
       {
-        id: 'ex1-en3ap-time-1',
+        id: 'ex1-en3ap-num11-15-1',
         level: 1,
         levelLabelAr: '🟢 Level 1 — Easy',
-        problemAr: 'How do you say "أستيقظ" in English?',
-        hintsAr: ['Two words: wake ...'],
-        solutionAr: 'Wake up',
-        detailedCorrectionAr: 'Well done! 🌅 "Wake up" means أستيقظ.',
+        problemAr: 'What number comes right after "Ten (10)" in English?',
+        hintsAr: ['A special word, not "ten-one"'],
+        solutionAr: 'Eleven (11)',
+        detailedCorrectionAr: 'Great! 👏 Eleven (11) comes after Ten.',
         xpReward: 10
       },
       {
-        id: 'ex2-en3ap-time-2',
+        id: 'ex2-en3ap-num11-15-2',
         level: 2,
         levelLabelAr: '🟡 Level 2 — Medium',
-        problemAr: 'Complete: "It\'s eight ....." (الساعة الثامنة تماماً)',
-        hintsAr: ['A word that always follows the hour number'],
-        solutionAr: "o'clock",
-        detailedCorrectionAr: 'Awesome! 🎯 "It\'s eight o\'clock" means الساعة الثامنة تماماً.',
+        problemAr: 'How do you say "14" in English?',
+        hintsAr: ['Between thirteen and fifteen'],
+        solutionAr: 'Fourteen',
+        detailedCorrectionAr: 'Awesome! 🎯 14 = Fourteen.',
         xpReward: 15
       }
     ],
     educationalGame: {
-      id: 'game-en3ap-u4s2',
-      type: 'association',
-      titleAr: '🎮 My Day Time Challenge',
-      instructionsAr: 'Match the daily activity to its correct time expression!',
+      id: 'game-en3ap-u4-num11-15',
+      type: 'speed_calc',
+      titleAr: '🎮 Counting Challenge (11-15)',
+      instructionsAr: 'Match the number with its English word!',
       items: [
-        { questionOrPromptAr: 'I ..... at seven o\'clock in the morning.', correctAnswerAr: 'wake up', optionsAr: ['wake up', 'go to bed', 'eat dinner'], explanationAr: 'We wake up in the morning.' },
-        { questionOrPromptAr: 'I ..... at nine o\'clock at night.', correctAnswerAr: 'go to bed', optionsAr: ['go to bed', 'wake up', 'go to school'], explanationAr: 'We go to bed at night.' }
+        { questionOrPromptAr: 'Number 12 in English:', correctAnswerAr: 'Twelve', optionsAr: ['Twelve', 'Twenty', 'Two'], explanationAr: '12 is Twelve.' },
+        { questionOrPromptAr: 'Number 15 in English:', correctAnswerAr: 'Fifteen', optionsAr: ['Fifteen', 'Fifty', 'Five'], explanationAr: '15 is Fifteen.' }
       ],
       xpReward: 20
     },
     quiz: [
       {
-        id: 'q1-u4s2',
-        questionAr: 'What is the correct answer to "What time is it?" when the clock shows 7:00?',
+        id: 'q1-num11-15',
+        questionAr: 'How do you say "11" in English?',
         options: [
-          { id: 'a', textAr: 'It\'s seven o\'clock.', isCorrect: true, explanationAr: 'Correct! "It\'s seven o\'clock" is the right way to tell the time.' },
-          { id: 'b', textAr: 'It\'s seven.', isCorrect: false }
+          { id: 'a', textAr: 'Eleven', isCorrect: true, explanationAr: 'Correct! 11 is "Eleven".' },
+          { id: 'b', textAr: 'Ten-one', isCorrect: false, explanationAr: '"Eleven" is a special word, not "ten-one".' },
+          { id: 'c', textAr: 'Twelve', isCorrect: false, explanationAr: '"Twelve" is 12, not 11.' },
+        ]
+      },
+      {
+        id: 'q2-num11-15',
+        questionAr: 'Complete: "How many pencils ......?" (كم عدد الأقلام الموجودة؟)',
+        options: [
+          { id: 'a', textAr: 'are there', isCorrect: true, explanationAr: 'Correct! "How many pencils are there?" is the right question.' },
+          { id: 'b', textAr: 'is there', isCorrect: false, explanationAr: '"pencils" is plural, so we use "are", not "is".' },
         ]
       }
     ]
@@ -660,7 +718,17 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'How do you say "أنا لا أحب الحليب" in English?',
         options: [
           { id: 'a', textAr: "I don't like milk.", isCorrect: true, explanationAr: 'Correct! "I don\'t like milk" is the right negative sentence.' },
-          { id: 'b', textAr: 'I like milk.', isCorrect: false }
+          { id: 'b', textAr: 'I like milk.', isCorrect: false, explanationAr: 'Incorrect. "I like milk" expresses that you DO like milk, which is the opposite meaning.' },
+          { id: 'c', textAr: 'I have milk.', isCorrect: false, explanationAr: 'Incorrect. "I have milk" expresses possession, not a dislike for milk.' }
+        ]
+      },
+      {
+        id: 'q2-u4s3',
+        questionAr: 'What is the English word for "تفاحة"?',
+        options: [
+          { id: 'a', textAr: 'Apple', isCorrect: true, explanationAr: 'Correct! "Apple" means تفاحة in English.' },
+          { id: 'b', textAr: 'Banana', isCorrect: false, explanationAr: 'Incorrect. "Banana" means موزة, not تفاحة.' },
+          { id: 'c', textAr: 'Bread', isCorrect: false, explanationAr: 'Incorrect. "Bread" means خبز, not تفاحة.' }
         ]
       }
     ]
@@ -675,32 +743,32 @@ export const ENGLISH_3AP: CourseLesson[] = [
     sequenceAr: 'Unit 5 - Sequence 1: My Body Parts & Annual 3AP English Synthesis',
     categoryAr: 'اللغة الإنجليزية - أعضاء الجسم والمراجعة السنوية الشاملة',
     titleAr: 'UNIT 5 : MY BODY PARTS & ANNUAL 3AP ENGLISH SYNTHESIS',
-    summaryAr: 'In this final unit, pupils learn human body parts (head, face, eyes, ears, nose, mouth, hair, hands, legs, feet), numbers 11 to 20, adjectives of size (big/small, long/short), and complete a comprehensive review of all 3AP English skills.',
-    objectiveAr: 'Name body parts, count 11-20, use descriptive adjectives, and demonstrate full mastery of 3AP English curriculum.',
+    summaryAr: 'In this final unit, pupils learn human body parts (head, face, eyes, ears, nose, mouth, hair, hands, legs, feet), numbers 16 to 20 (continuing from 11-15 learned earlier), adjectives of size (big/small, long/short), and complete a comprehensive review of all 3AP English skills.',
+    objectiveAr: 'Name body parts, count 16-20, use descriptive adjectives, and demonstrate full mastery of 3AP English curriculum.',
     objectivesAr: [
         'أُسَمِّي أَعْضَاءَ جِسْمِي بِالإِنْجِلِيزِيَّةِ.',
-        'أَعُدُّ مِنْ 11 إِلَى 20 بِالإِنْجِلِيزِيَّةِ.',
+        'أَعُدُّ مِنْ 16 إِلَى 20 بِالإِنْجِلِيزِيَّةِ (بَعْدَ أَنْ تَعَلَّمْتُ 11 إِلَى 15 سَابِقاً).',
         'أُرَاجِعُ كُلَّ مَا تَعَلَّمْتُهُ خِلاَلَ السَّنَةِ.',
     ],
     detailedCourse: {
-        introAr: 'هذه آخر وحدة في السنة، نتعرف فيها على أعضاء الجسم والأرقام حتى 20، ونراجع كل ما تعلمناه هذه السنة في الإنجليزية.',
+        introAr: 'هذه آخر وحدة في السنة، نتعرف فيها على أعضاء الجسم ونُكمل العدّ من حيث توقفنا حتى 20، ونراجع كل ما تعلمناه هذه السنة في الإنجليزية.',
         vocabulary: [
             { termAr: 'Body parts', definitionAr: 'مفردات أعضاء الجسم: head, face, eyes, ears, nose, mouth, hands, legs.' },
             { termAr: 'Antonyms (الأضداد)', definitionAr: 'كلمات متضادة في المعنى: big ↔ small, long ↔ short.' },
         ],
         visualizationHintAr: 'العب لعبة "المعلم يقول" (Simon Says): "Touch your head!"، "Touch your nose!" مع صديق.',
         commonMistakes: [
-            { mistakeAr: 'الخلط بين الأعداد المفردة (13-19) وأعداد العشرات (30-90) بسبب تشابه النطق.', correctionAr: 'الأعداد thirteen (13) وthirty (30) تبدو متشابهة، يجب الانتباه للنهاية: -teen للآحاد، -ty للعشرات.' },
+            { mistakeAr: 'الخلط بين الأعداد المفردة (16-19) وأعداد العشرات (60-90) بسبب تشابه النطق.', correctionAr: 'الأعداد sixteen (16) وsixty (60) تبدو متشابهة، يجب الانتباه للنهاية: -teen للآحاد، -ty للعشرات.' },
         ],
-        takeawayAr: 'أعضاء الجسم: head, eyes, ears, nose, mouth, hands, legs, feet. الأرقام 11-20: eleven إلى twenty. الأضداد: big/small, long/short.',
+        takeawayAr: 'أعضاء الجسم: head, eyes, ears, nose, mouth, hands, legs, feet. الأرقام 16-20: sixteen إلى twenty (تكملة 11-15). الأضداد: big/small, long/short.',
     },
     keyFormulas: [
-        { labelAr: 'الأعداد 11-20', formulaAr: 'Eleven, Twelve, Thirteen... Twenty' },
+        { labelAr: 'الأعداد 16-20', formulaAr: 'Sixteen, Seventeen, Eighteen, Nineteen, Twenty' },
     ],
-    discoveryAr: 'Teacher leads the "Simon Says" game:\n- Teacher: "Touch your head! Touch your nose! Open your eyes!"\n- Pupils: "I have two eyes 👀, two ears 👂, one nose 👃, and one mouth 👄!"\n- Teacher: "Let\'s count from 11 to 20: Eleven, Twelve, Thirteen, Fourteen, Fifteen, Sixteen, Seventeen, Eighteen, Nineteen, Twenty!"',
+    discoveryAr: 'Teacher leads the "Simon Says" game:\n- Teacher: "Touch your head! Touch your nose! Open your eyes!"\n- Pupils: "I have two eyes 👀, two ears 👂, one nose 👃, and one mouth 👄!"\n- Teacher: "We know 11 to 15 already. Let\'s continue: Sixteen, Seventeen, Eighteen, Nineteen, Twenty!"',
     rulesAr: [
       'Body Parts Vocabulary:\n- Head (رأس)\n- Face (وجه)\n- Eyes (عينان)\n- Ears (أذنان)\n- Nose (أنف)\n- Mouth (فم)\n- Hair (شعر)\n- Hands (يدان)\n- Arms (ذراعان)\n- Legs (ساقان)\n- Feet (قدمان)\n- Fingers (أصابع اليد).',
-      'Numbers 11 to 20:\n- 11 (Eleven), 12 (Twelve), 13 (Thirteen), 14 (Fourteen), 15 (Fifteen)\n- 16 (Sixteen), 17 (Seventeen), 18 (Eighteen), 19 (Nineteen), 20 (Twenty).',
+      'Numbers 16 to 20 (تكملة الأرقام 11-15 التي تعلمناها سابقاً):\n- 16 (Sixteen), 17 (Seventeen), 18 (Eighteen), 19 (Nineteen), 20 (Twenty).',
       'Descriptive Adjectives & Antonyms:\n- Big (كبير) ↔ Small (صغير)\n- Long (طويل) ↔ Short (قصير)\n- Example: "A big dog with small ears" | "Long hair".',
       'Annual 3AP Synthesis Checklist:\n1) Greet & introduce myself\n2) Name family, friends, school objects, colors, shapes, house rooms, toys, pets & body parts\n3) Count 1 to 20\n4) Follow classroom commands.'
     ],
@@ -727,13 +795,13 @@ export const ENGLISH_3AP: CourseLesson[] = [
         xpReward: 10
       },
       {
-        id: 'ex2-en3ap-num11-2',
+        id: 'ex2-en3ap-num16-2',
         level: 2,
         levelLabelAr: '🟡 Level 2 — Medium',
-        problemAr: 'What number is "Fifteen" in figures?',
-        hintsAr: ['Between 14 and 16'],
-        solutionAr: '15',
-        detailedCorrectionAr: 'Awesome! 🎯 Fifteen = 15.',
+        problemAr: 'What number is "Seventeen" in figures?',
+        hintsAr: ['Between 16 and 18'],
+        solutionAr: '17',
+        detailedCorrectionAr: 'Awesome! 🎯 Seventeen = 17.',
         xpReward: 15
       }
     ],
@@ -744,7 +812,7 @@ export const ENGLISH_3AP: CourseLesson[] = [
       instructionsAr: 'Test your English skills across all 3AP units!',
       items: [
         { questionOrPromptAr: 'Touch your ..... (رأس)', correctAnswerAr: 'head', optionsAr: ['head', 'hand', 'foot'], explanationAr: 'Head means رأس.' },
-        { questionOrPromptAr: 'Number 12 in English word is:', correctAnswerAr: 'Twelve', optionsAr: ['Twelve', 'Twenty', 'Ten'], explanationAr: '12 is Twelve.' }
+        { questionOrPromptAr: 'Number 18 in English word is:', correctAnswerAr: 'Eighteen', optionsAr: ['Eighteen', 'Twelve', 'Eighty'], explanationAr: '18 is Eighteen.' }
       ],
       xpReward: 25
     },
@@ -754,7 +822,17 @@ export const ENGLISH_3AP: CourseLesson[] = [
         questionAr: 'Which phrase correctly describes a elephant in English?',
         options: [
           { id: 'a', textAr: 'A big animal with big ears.', isCorrect: true, explanationAr: 'Correct! An elephant is a big animal with big ears.' },
-          { id: 'b', textAr: 'A small bird with a book.', isCorrect: false }
+          { id: 'b', textAr: 'A small bird with a book.', isCorrect: false, explanationAr: 'Incorrect. This describes a small bird, not a big animal like an elephant.' },
+          { id: 'c', textAr: 'A small animal with a long tail.', isCorrect: false, explanationAr: 'Incorrect. An elephant is described as big, not small — this description does not match an elephant.' }
+        ]
+      },
+      {
+        id: 'q2-u5s1',
+        questionAr: 'What is the English word for the number "19"?',
+        options: [
+          { id: 'a', textAr: 'Nineteen', isCorrect: true, explanationAr: 'Correct! 19 is "Nineteen" in English.' },
+          { id: 'b', textAr: 'Ninety', isCorrect: false, explanationAr: 'Incorrect. "Ninety" is 90, not 19 — be careful not to confuse "-teen" numbers with "-ty" numbers.' },
+          { id: 'c', textAr: 'Nine', isCorrect: false, explanationAr: 'Incorrect. "Nine" is 9, not 19.' }
         ]
       }
     ]

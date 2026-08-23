@@ -763,7 +763,7 @@ export const FRENCH_5AP: CourseLesson[] = [
     ],
     missionTitleAr: '🎬 Mission : Journaliste des catastrophes',
     missionIntroAr: 'Tu es journaliste ! Pour rendre tes reportages plus percutants, apprends à transformer « Le pompier a sauvé l\'enfant » en « L\'enfant a été sauvé par le pompier » grâce à la voix passive.',
-    titleAr: 'Projet 2 : La voix passive simple',
+    titleAr: 'Complément du Projet 2 : La voix passive simple',
     summaryAr: `Dans cette leçon complémentaire du Projet 2, l'élève apprend à transformer une phrase active simple en phrase passive (et inversement), en utilisant l'auxiliaire être + participe passé et le complément d'agent introduit par « par ».`,
     detailedCourse: {
         introAr: 'Dans une phrase active, le sujet fait l\'action (Le pompier sauve l\'enfant). Dans une phrase passive, le sujet subit l\'action (L\'enfant est sauvé par le pompier). C\'est très utile pour raconter un événement en mettant l\'accent sur la victime ou le résultat plutôt que sur celui qui agit.',
@@ -1116,8 +1116,8 @@ export const FRENCH_5AP: CourseLesson[] = [
     id: 'french-5ap-projet3-visites-patrimoine',
     grade: '5AP',
     subject: 'french',
-    categoryAr: 'Projet 3 : Les visites, les lieux et le patrimoine',
-    unitAr: 'Projet 3 : Les visites, les lieux et le patrimoine',
+    categoryAr: 'Complément : Les visites, les lieux et le patrimoine',
+    unitAr: 'Complément : Les visites, les lieux et le patrimoine',
     trimester: 3,
     difficultyTier: 3,
     contentSource: 'corroborated',
@@ -1132,8 +1132,8 @@ export const FRENCH_5AP: CourseLesson[] = [
     ],
     missionTitleAr: '🏛️ Mission : Guide touristique en herbe',
     missionIntroAr: 'Tu deviens guide touristique pour un jour ! Prépare la visite d\'un lieu remarquable de ton pays, raconte ce que tu vas découvrir au futur, et évite les pièges des mots qui se ressemblent.',
-    titleAr: 'Projet 3 : Les visites, les lieux et le patrimoine — Les compléments circonstanciels, la phrase négative et le futur simple',
-    summaryAr: `Dans ce troisième projet, l'élève découvre un musée, une ville historique ou un événement culturel. Il apprend à utiliser les compléments circonstanciels de lieu, de temps et de manière, à construire une phrase négative, à conjuguer au futur simple, et à distinguer les homophones grammaticaux.`,
+    titleAr: 'Complément : Les visites, les lieux et le patrimoine — Les compléments circonstanciels, la phrase négative et le futur simple',
+    summaryAr: `Dans cette leçon complémentaire, l'élève découvre un musée, une ville historique ou un événement culturel. Il apprend à utiliser les compléments circonstanciels de lieu, de temps et de manière, à construire une phrase négative, à conjuguer au futur simple, et à distinguer les homophones grammaticaux.`,
     detailedCourse: {
         introAr: 'Pour bien décrire une visite, il faut savoir où (lieu), quand (temps) et comment (manière) les choses se passent. Le futur simple permet d\'annoncer ce qui va arriver, et il faut faire attention à ne pas confondre des mots qui se prononcent pareil mais s\'écrivent différemment.',
         vocabulary: [
@@ -1490,13 +1490,13 @@ export const FRENCH_5AP: CourseLesson[] = [
     id: 'french-5ap-projet3-connecteurs-chronologiques',
     grade: '5AP',
     subject: 'french',
-    categoryAr: 'Projet 3 : Les visites, les lieux et le patrimoine',
-    unitAr: 'Projet 3 : Les visites, les lieux et le patrimoine',
+    categoryAr: 'Complément : Les visites, les lieux et le patrimoine',
+    unitAr: 'Complément : Les visites, les lieux et le patrimoine',
     trimester: 3,
     difficultyTier: 2,
     contentSource: 'complementary',
     sourceType: 'original_authoring',
-    sourceReference: 'Contenu pédagogique original conçu par Mssid DZ pour introduire les articulateurs chronologiques dans le cadre du Projet 3 (récit de visite d\'un lieu du patrimoine) — non comparé à un document ministériel externe spécifique.',
+    sourceReference: 'Contenu pédagogique original conçu par Mssid DZ pour introduire les articulateurs chronologiques dans le cadre de la leçon complémentaire sur les visites et le patrimoine — non comparé à un document ministériel externe spécifique.',
     confidenceLevel: 'low',
     sourceNoteAr: 'Contenu pédagogique complémentaire (original). Il est recommandé de le vérifier avec l\'enseignant(e) de la classe avant de l\'utiliser comme référence unique de révision.',
     objectivesAr: [
@@ -1507,8 +1507,8 @@ export const FRENCH_5AP: CourseLesson[] = [
     ],
     missionTitleAr: '🗺️ Mission : Guide qui raconte sa visite',
     missionIntroAr: 'Après ta visite d\'un lieu du patrimoine, il faut la raconter dans le bon ordre ! Apprends à utiliser d\'abord, ensuite, puis, enfin pour que ton récit soit clair et bien organisé.',
-    titleAr: 'Projet 3 : Les articulateurs chronologiques (d\'abord, ensuite, puis, enfin)',
-    summaryAr: `Dans cette leçon complémentaire du Projet 3, l'élève apprend à utiliser les articulateurs chronologiques (d'abord, ensuite, puis, enfin) pour organiser un récit de visite dans l'ordre des événements, du début à la fin.`,
+    titleAr: 'Complément : Les articulateurs chronologiques (d\'abord, ensuite, puis, enfin)',
+    summaryAr: `Dans cette leçon complémentaire sur les visites et le patrimoine, l'élève apprend à utiliser les articulateurs chronologiques (d'abord, ensuite, puis, enfin) pour organiser un récit de visite dans l'ordre des événements, du début à la fin.`,
     detailedCourse: {
         introAr: 'Quand on raconte une visite ou une histoire, il faut que les événements soient dans le bon ordre pour que le lecteur comprenne bien. Les articulateurs chronologiques sont des mots qui indiquent l\'ordre des événements : d\'abord (au début), ensuite/puis (au milieu), enfin (à la fin).',
         vocabulary: [

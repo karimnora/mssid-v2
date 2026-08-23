@@ -96,7 +96,17 @@ export const CIVICS_3AP: CourseLesson[] = [
         questionAr: 'العملة الوطنية الرسمية للجمهورية الجزائرية هي:',
         options: [
           { id: 'a', textAr: 'الدِّينَارُ الجَزَائِرِيُّ (DZD)', isCorrect: true, explanationAr: 'صحيح! الدينار الجزائري هو عملة وطننا العزيز.' },
-          { id: 'b', textAr: 'الدرهم', isCorrect: false }
+          { id: 'b', textAr: 'الدرهم', isCorrect: false, explanationAr: 'الدرهم هو عملة المغرب، وليس عملة الجزائر.' },
+          { id: 'c', textAr: 'اليورو', isCorrect: false, explanationAr: 'اليورو هو عملة دول الاتحاد الأوروبي وليس عملة الجزائر.' }
+        ]
+      },
+      {
+        id: 'q2-cv',
+        questionAr: 'كلمة "الانضباط" في المدرسة تعني:',
+        options: [
+          { id: 'a', textAr: 'الالتزام بقواعد الحضور والسلوك داخل المدرسة', isCorrect: true, explanationAr: 'صحيح! الانضباط هو التزام التلميذ بقواعد الحضور والسلوك الحسن في مدرسته.' },
+          { id: 'b', textAr: 'التأخر عن الحصص من حين لآخر', isCorrect: false, explanationAr: 'التأخر عن الحصص يخالف قواعد الحياة المدرسية ولا يُعد انضباطاً.' },
+          { id: 'c', textAr: 'اللعب داخل القسم أثناء الدرس', isCorrect: false, explanationAr: 'اللعب أثناء الدرس يخل بالنظام ولا علاقة له بالانضباط.' }
         ]
       }
     ]
@@ -195,7 +205,17 @@ export const CIVICS_3AP: CourseLesson[] = [
         questionAr: 'ما الذي يجب فعله قبل أكل الفواكه والخضروات؟',
         options: [
           { id: 'a', textAr: 'غسلها جيداً بالماء', isCorrect: true, explanationAr: 'صحيح! الغسل يزيل الأوساخ والجراثيم عن الفواكه والخضر.' },
-          { id: 'b', textAr: 'لا حاجة لغسلها', isCorrect: false }
+          { id: 'b', textAr: 'لا حاجة لغسلها', isCorrect: false, explanationAr: 'عدم غسل الفواكه والخضروات يترك عليها الأوساخ والجراثيم التي قد تسبب المرض.' },
+          { id: 'c', textAr: 'تقشيرها فقط دون غسل', isCorrect: false, explanationAr: 'التقشير وحده لا يكفي، فاليدان قد تنقلان الأوساخ إلى الثمرة، لذا يجب غسلها أولاً.' }
+        ]
+      },
+      {
+        id: 'q2-cv3ap-safety',
+        questionAr: 'أَيُّ سُلُوكٍ يُعَرِّضُ التلميذ للخطر في المنزل؟',
+        options: [
+          { id: 'a', textAr: 'لمس المقابس الكهربائية بأيدٍ مبلولة', isCorrect: true, explanationAr: 'صحيح! الماء ناقل للكهرباء، ولمس المقابس بأيدٍ مبلولة خطر كبير.' },
+          { id: 'b', textAr: 'إخبار أحد الوالدين عند رؤية أداة حادة', isCorrect: false, explanationAr: 'هذا تصرف آمن وسليم، ولا يُعرّض التلميذ لأي خطر.' },
+          { id: 'c', textAr: 'الابتعاد عن السكاكين والمواقد', isCorrect: false, explanationAr: 'هذا تصرف آمن يحمي التلميذ من الخطر، وليس سلوكاً خطيراً.' }
         ]
       }
     ]
@@ -296,7 +316,17 @@ export const CIVICS_3AP: CourseLesson[] = [
         questionAr: 'كيف نتعامل مع رأي نختلف معه أثناء الحوار؟',
         options: [
           { id: 'a', textAr: 'نحترمه ونناقشه بهدوء دون غضب', isCorrect: true, explanationAr: 'صحيح! احترام الرأي المخالف بهدوء هو أساس الحوار الجيد.' },
-          { id: 'b', textAr: 'نرفضه بصوت عالٍ وغضب', isCorrect: false }
+          { id: 'b', textAr: 'نرفضه بصوت عالٍ وغضب', isCorrect: false, explanationAr: 'رفع الصوت والغضب يخالفان قواعد الحوار الهادئ ولا يحترمان رأي الآخر.' },
+          { id: 'c', textAr: 'نتجاهله ونقاطع صاحبه فوراً', isCorrect: false, explanationAr: 'المقاطعة وعدم الاستماع يخالفان أدب الحديث ولا يحلّان الخلاف.' }
+        ]
+      },
+      {
+        id: 'q2-cv3ap-dialogue',
+        questionAr: 'كيف نحافظ على بيئة المدرسة نظيفة وجميلة؟',
+        options: [
+          { id: 'a', textAr: 'نرمي النفايات في سلة المهملات المخصصة', isCorrect: true, explanationAr: 'صحيح! رمي النفايات في سلتها يحافظ على نظافة وجمال بيئة المدرسة.' },
+          { id: 'b', textAr: 'نرمي بقايا الأكل على أرض الساحة', isCorrect: false, explanationAr: 'هذا يُلوّث بيئة المدرسة ويضر بنظافتها وجمالها.' },
+          { id: 'c', textAr: 'نقطف أوراق النباتات والأشجار في الساحة', isCorrect: false, explanationAr: 'يجب المحافظة على النباتات والأشجار لا إتلافها، فهذا يضر ببيئة المدرسة.' }
         ]
       }
     ]
@@ -305,11 +335,15 @@ export const CIVICS_3AP: CourseLesson[] = [
 {
     id: 'art-3ap-t1-colors-rhythm',
     grade: '3AP',
-    subject: 'civics', // Grouped under creative activities (no dedicated Art SubjectId exists)
+    // No dedicated Art SubjectId exists in the app (checked: this is the only 'art-' lesson across
+    // all 5 grades) — creating one for a single lesson would add an entire subject tile with no
+    // other content behind it. Kept under 'civics' deliberately, but labeled unambiguously as arts
+    // content (domainAr/categoryAr below) so it never reads as an actual civics notion in the UI.
+    subject: 'civics',
     trimester: 1,
     domainAr: 'التربية الفنية والموسيقية',
     sequenceAr: 'السلسلة 1: الألوان الأساسية والإيقاع الموسيقي',
-    categoryAr: 'التربية الفنية - الألوان والإيقاع',
+    categoryAr: 'نَشَاطٌ فَنِّيٌّ مُدْمَجٌ ضِمْنَ التَّرْبِيَةِ المَدَنِيَّةِ - الأَلْوَانُ وَالإِيقَاعُ',
     titleAr: 'الأَلْوَانُ الأَسَاسِيَّةُ وَالأَلْوَانُ الثَّانَوِيَّةُ وَالإِيقَاعُ المُوسِيقِيُّ',
     summaryAr: 'يتعلم الطفل التمييز بين الألوان الأساسية (الأحمر، الأزرق، الأصفر) وكيفية مزجها للحصول على الألوان الثانوية (الأخضر، البرتقالي، البنفسجي)، إضافة للتعرف على الإيقاع والأنشودة.',
     objectiveAr: 'القدرة على مزج الألوان الأساسية، التعبير التشكيلي بالرسم، والإنشاد مع ضبط الإيقاع الصوتي.',
@@ -371,7 +405,17 @@ export const CIVICS_3AP: CourseLesson[] = [
         questionAr: 'اللون الأخضر هو لون:',
         options: [
           { id: 'a', textAr: 'ثَانَوِيٌّ (ينتج عن مزج الأصفر والأزرق)', isCorrect: true, explanationAr: 'صحيح! الأخضر لون ثانوِيّ.' },
-          { id: 'b', textAr: 'أساسي', isCorrect: false }
+          { id: 'b', textAr: 'أساسي', isCorrect: false, explanationAr: 'الألوان الأساسية هي الأحمر والأزرق والأصفر فقط، والأخضر ليس منها.' },
+          { id: 'c', textAr: 'لا ينتج عن مزج ألوان أخرى', isCorrect: false, explanationAr: 'هذا غير صحيح، فالأخضر ينتج فعلاً من مزج الأصفر والأزرق معاً.' }
+        ]
+      },
+      {
+        id: 'q2-art',
+        questionAr: 'ما هو اللون الناتج عن مزج الأحمر مع الأزرق؟',
+        options: [
+          { id: 'a', textAr: 'بَنَفْسَجِيٌّ', isCorrect: true, explanationAr: 'صحيح! مزج الأحمر مع الأزرق يعطي اللون البنفسجي.' },
+          { id: 'b', textAr: 'بَرْتُقَالِيٌّ', isCorrect: false, explanationAr: 'البرتقالي ينتج عن مزج الأحمر مع الأصفر، وليس مع الأزرق.' },
+          { id: 'c', textAr: 'أَخْضَرُ', isCorrect: false, explanationAr: 'الأخضر ينتج عن مزج الأصفر مع الأزرق، وليس الأحمر مع الأزرق.' }
         ]
       }
     ]

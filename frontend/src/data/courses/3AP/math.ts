@@ -1,6 +1,6 @@
 import { CourseLesson } from '../../../types';
 
-// 12 leçon(s) — math / 3AP
+// 17 leçon(s) — math / 3AP
 export const MATH_3AP: CourseLesson[] = [
 // ==========================================
 // 🔢 الرياضيات (MATHEMATIQUES) - 3AP
@@ -51,10 +51,12 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'فكك العدد 729 بأسلوب الضرب والجمع:',
+        operationsAr: '729\n= (7 × 100) + (2 × 10) + 9\n= 700 + 20 + 9',
         solution: '729 = (7 × 100) + (2 × 10) + 9'
       },
       {
         problem: 'قارن بين العددين 584 و 539 بوضع الرمز المناسب (< ، >):',
+        operationsAr: '  584\n> 539\n\nمئات: 5 = 5\nعشرات: 8 > 3',
         solution: 'المئات متساوية (5 = 5). نقارن العشرات: 8 أكبر من 3 ➔ 584 > 539.'
       }
     ],
@@ -106,8 +108,17 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'كتابة العدد (ثمانُمِائَةٍ وَخَمْسَةٌ وَأَرْبَعُونَ) بالأرقام هي:',
         options: [
           { id: 'a', textAr: '845', isCorrect: true, explanationAr: 'صحيح! 8 مئات + 4 عشرات + 5 وحدات = 845.' },
-          { id: 'b', textAr: '854', isCorrect: false },
-          { id: 'c', textAr: '458', isCorrect: false }
+          { id: 'b', textAr: '854', isCorrect: false, explanationAr: 'خطأ! هذا يقلب رقمي العشرات والوحدات؛ 854 تعني ثمانمائة وأربعة وخمسون وليس المطلوب.' },
+          { id: 'c', textAr: '458', isCorrect: false, explanationAr: 'خطأ! هذا يضع رقم الوحدات في مرتبة المئات؛ العدد الصحيح يبدأ بالمئات ثمانية (8) لا أربعة (4).' }
+        ]
+      },
+      {
+        id: 'q2-m3ap',
+        questionAr: 'عند مقارنة عددين مكوّنين من 3 أرقام، بأي منزلة نبدأ المقارنة أولاً؟',
+        options: [
+          { id: 'a', textAr: 'بالمئات', isCorrect: true, explanationAr: 'صحيح! نقارن المئات أولاً، فإذا تساوت ننتقل إلى العشرات ثم الوحدات.' },
+          { id: 'b', textAr: 'بالوحدات', isCorrect: false, explanationAr: 'خطأ! الوحدات هي آخر منزلة نقارنها، وليست الأولى.' },
+          { id: 'c', textAr: 'بالعشرات', isCorrect: false, explanationAr: 'خطأ! نبدأ بالمئات أولاً لأنها المنزلة الأكبر قيمة، ثم العشرات.' }
         ]
       }
     ]
@@ -156,6 +167,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'احسب عمودياً: 632 - 285',
+        operationsAr: '  632\n- 285\n-----\n  347',
         solution: '632 - 285 = 347 (استعارة 10 في الوحدات وفي العشرات).'
       }
     ],
@@ -198,7 +210,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'للتحقق من نتيجة عملية الطرح (750 - 200 = 550)، نقوم بـ:',
         options: [
           { id: 'a', textAr: 'جمع الفرق مع المطروح: 550 + 200 = 750', isCorrect: true, explanationAr: 'صحيح! نجمع الناتج مع المطروح لنحصل على المطروح منه.' },
-          { id: 'b', textAr: 'طرح 550 - 200', isCorrect: false }
+          { id: 'b', textAr: 'طرح 550 - 200', isCorrect: false, explanationAr: 'خطأ! طرح الناتج من المطروح لا يُرجع المطروح منه. للتحقق نجمع الفرق مع المطروح: 550 + 200 = 750.' }
         ]
       }
     ]
@@ -248,6 +260,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'احسب ناتج الضرب: 5 × 6',
+        operationsAr: '  6\n× 5\n---\n 30\n\n6 + 6 + 6 + 6 + 6 = 30',
         solution: '5 × 6 = 30 (معناه 6 تكررت 5 مرات).'
       }
     ],
@@ -291,7 +304,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'ما هي النتيجة الصحيحة لـ: 8 × 0 ؟',
         options: [
           { id: 'a', textAr: '0 (صفر دائماً)', isCorrect: true, explanationAr: 'صحيح! أي عدد نضربه في صفر يساوي صِفْراً.' },
-          { id: 'b', textAr: '8', isCorrect: false }
+          { id: 'b', textAr: '8', isCorrect: false, explanationAr: 'خطأ شائع: الضرب في صفر لا يُبقي العدد كما هو. أي عدد × 0 = 0 دائماً، حتى 8 × 0.' }
         ]
       }
     ]
@@ -339,6 +352,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'احسب: 6 × 9',
+        operationsAr: '  9\n× 6\n---\n 54\n\n6 × 10 = 60\n60 − 6 = 54',
         solution: '6 × 9 = 54 (يمكن التحقق: 6×10=60، ثم 60-6=54).'
       }
     ],
@@ -392,8 +406,8 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'ما هي النتيجة الصحيحة لـ: 9 × 9 ؟',
         options: [
           { id: 'a', textAr: '81', isCorrect: true, explanationAr: 'صحيح! 9 × 9 = 81.' },
-          { id: 'b', textAr: '72', isCorrect: false },
-          { id: 'c', textAr: '90', isCorrect: false }
+          { id: 'b', textAr: '72', isCorrect: false, explanationAr: '72 هو 8 × 9، وليس 9 × 9. جدول 9: 9 × 8 = 72 و 9 × 9 = 81.' },
+          { id: 'c', textAr: '90', isCorrect: false, explanationAr: '90 هو 9 × 10. لقد أضفت عشرة كاملة بدل أن تضرب 9 في 9.' }
         ]
       }
     ]
@@ -444,6 +458,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'إذا كان طول قطعة مستقيمة [AB] هو 8 cm، كم يبعد المنتصف M عن الطرف A؟',
+        operationsAr: '  8\n÷ 2\n---\n  4',
         solution: '8 ÷ 2 = 4 cm (يبعد المنتصف بـ 4 سم).'
       }
     ],
@@ -485,7 +500,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'القطعة المستقيمة تتميز بـ:',
         options: [
           { id: 'a', textAr: 'لها بداية ولها نهاية (محدودة من الطرفين)', isCorrect: true, explanationAr: 'صحيح! القطعة المستقيمة محدودة بطرفين عكس المستقيم المفتوح.' },
-          { id: 'b', textAr: 'ليس لها بداية ولا نهاية', isCorrect: false }
+          { id: 'b', textAr: 'ليس لها بداية ولا نهاية', isCorrect: false, explanationAr: 'هذا وصف المُسْتَقِيم المفتوح، وليس القطعة. القطعة [AB] محدودة بالنقطتين A و B.' }
         ]
       },
       {
@@ -493,7 +508,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'مستقيمان متوازيان هما مستقيمان:',
         options: [
           { id: 'a', textAr: 'لا يلتقيان أبداً مهما امتدّا', isCorrect: true, explanationAr: 'صحيح! هذا هو تعريف التوازي بالضبط.' },
-          { id: 'b', textAr: 'يتقاطعان في نقطة واحدة', isCorrect: false }
+          { id: 'b', textAr: 'يتقاطعان في نقطة واحدة', isCorrect: false, explanationAr: 'التقاطع في نقطة واحدة يصف مستقيمين متقاطعين (أو متعامدين إن كانت الزاوية 90°)، وليس المتوازيين.' }
         ]
       }
     ]
@@ -543,6 +558,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'احصر العدد 6280 بين ألفين متتاليتين:',
+        operationsAr: '6000 < 6280 < 7000\n\n6280 = 6 آلاف + 280',
         solution: '6000 < 6280 < 7000'
       }
     ],
@@ -584,7 +600,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'ما هو العدد التالي مباشرة للعدد 999؟',
         options: [
           { id: 'a', textAr: '1000 (أَلْفٌ)', isCorrect: true, explanationAr: 'صحيح! 999 + 1 = 1000 وهو أصغر عدد من 4 أرقام.' },
-          { id: 'b', textAr: '10000', isCorrect: false }
+          { id: 'b', textAr: '10000', isCorrect: false, explanationAr: '10000 هو عَشَرَةُ آلافٍ (5 أرقام). بعد 999 يأتي مباشرة 1000 (أَلْفٌ)، وليس القفزة إلى 10000.' }
         ]
       }
     ]
@@ -629,6 +645,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'احسب عمودياً: 132 × 4',
+        operationsAr: '  132\n×   4\n-----\n  528',
         solution: '(4×2=8)، (4×3=12 احتفاظ 1)، (4×1+1=5) ➔ 132 × 4 = 528.'
       }
     ],
@@ -671,7 +688,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'نتيجة الضرب العمودي لـ 203 × 3 هي:',
         options: [
           { id: 'a', textAr: '609', isCorrect: true, explanationAr: 'صحيح! (3×3=9)، (3×0=0)، (3×2=6) ➔ 609.' },
-          { id: 'b', textAr: '639', isCorrect: false }
+          { id: 'b', textAr: '639', isCorrect: false, explanationAr: 'الرقم 0 في العشرات يبقى صفراً: 3×0=0. الناتج 639 يضع 3 في العشرات وكأنك ضربت 213 × 3 وليس 203 × 3.' }
         ]
       }
     ]
@@ -721,10 +738,12 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'حول إلى السنتيمتر (cm): 3 m و 45 cm',
+        operationsAr: '3 m = 300 cm\n300 + 45 = 345 cm',
         solution: '3 m = 300 cm ➔ 300 + 45 = 345 cm.'
       },
       {
         problem: 'قارورتان: الأولى سعتها 1 L، والثانية سعتها 80 cL. أيّهما تحتوي كمية أكبر؟',
+        operationsAr: '1 L = 100 cL\n100 cL > 80 cL',
         solution: '1 L = 100 cL، وبما أن 100 cL > 80 cL فإن القارورة الأولى تحتوي كمية أكبر.'
       }
     ],
@@ -768,7 +787,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'التحويل الصحيح لـ 5 m إلى cm هو:',
         options: [
           { id: 'a', textAr: '500 cm', isCorrect: true, explanationAr: 'صحيح! 1 m = 100 cm ➔ 5 m = 500 cm.' },
-          { id: 'b', textAr: '50 cm', isCorrect: false }
+          { id: 'b', textAr: '50 cm', isCorrect: false, explanationAr: '50 cm تعادل نصف متر فقط. 1 m = 100 cm، إذن 5 m = 5 × 100 = 500 cm وليس 50.' }
         ]
       },
       {
@@ -776,7 +795,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'كم سنتيلتراً (cL) في 2 لتر (2 L)؟',
         options: [
           { id: 'a', textAr: '200 cL', isCorrect: true, explanationAr: 'صحيح! 1 L = 100 cL، إذن 2 L = 200 cL.' },
-          { id: 'b', textAr: '20 cL', isCorrect: false }
+          { id: 'b', textAr: '20 cL', isCorrect: false, explanationAr: '20 cL تعادل 0.2 L فقط. 1 L = 100 cL، إذن 2 L = 200 cL. لقد نسيت صفراً.' }
         ]
       }
     ]
@@ -864,7 +883,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'المستطيل يمتلك عدد زوايا قائمة يساوي:',
         options: [
           { id: 'a', textAr: '4 زوايا قائمة', isCorrect: true, explanationAr: 'صحيح! للمستطيل 4 زوايا قائمة.' },
-          { id: 'b', textAr: '2 زوايا', isCorrect: false }
+          { id: 'b', textAr: '2 زوايا', isCorrect: false, explanationAr: 'المستطيل له أربع زوايا وكلها قائمة. زاويتان قائمتان تصفان شكلاً آخر (مثل مثلث قائم أو شبه منحرف خاص)، وليس المستطيل.' }
         ]
       }
     ]
@@ -876,91 +895,93 @@ export const MATH_3AP: CourseLesson[] = [
     subject: 'math',
     trimester: 2,
     domainAr: 'الفضاء والهندسة',
-    sequenceAr: 'السلسلة 5: مُحيط الأشكال البسيطة بعدّ الخانات',
-    categoryAr: 'الرياضيات - القياس الهندسي',
-    titleAr: 'مُحِيطُ الأَشْكَالِ البَسِيطَةِ بِعَدِّ الخَانَاتِ وَبِالجَمْعِ',
-    summaryAr: 'يكتشف التلميذ مفهوم المحيط عبر عدّ الخانات على شبكة مربعات، ثم يحسب محيط المربع والمستطيل بجمع أطوال أضلاعه.',
-    objectiveAr: 'حساب محيط شكل بسيط (مربع، مستطيل) بعدّ خانات الشبكة أو بجمع أطوال الأضلاع.',
+    sequenceAr: 'السلسلة 5: المستقيمان المتعامدان',
+    categoryAr: 'الرياضيات - الهندسة والاستقامية',
+    titleAr: 'المُسْتَقِيمَانِ الـمُتَعَامِدَانِ: الكَشْفُ عَنِ التَّعَامُدِ بِالكُوسِ وَرَسْمُهُ',
+    summaryAr: 'يتعرف التلميذ على مفهوم التعامد بين مستقيمين (تكوين زاوية قائمة عند تقاطعهما)، ويستعمل الكوس للتحقق من التعامد ورسم مستقيمين متعامدين، بعد أن تعرف على التوازي في الفصل الأول والزاوية القائمة في هذا الفصل.',
+    objectiveAr: 'التحقق من تعامد مستقيمين باستعمال الكوس، ورسم مستقيمين متعامدين، والتمييز بين التعامد والتوازي.',
     objectivesAr: [
-        'أُدْرِكُ أن المحيط هو طول الخط الذي يحيط بالشكل من الخارج.',
-        'أَحْسُبُ محيط شكل مرسوم على شبكة مربعات بعدّ الخانات.',
-        'أَحْسُبُ محيط المربع والمستطيل بجمع أطوال أضلاعه الأربعة.',
+        'أُميّز مستقيمين متعامدين (يُكوّنان زاوية قائمة عند تقاطعهما).',
+        'أتحقق من تعامد مستقيمين باستعمال الكوس.',
+        'أرسم مستقيمين متعامدين بدقة.',
     ],
     detailedCourse: {
-        introAr: 'إذا أردنا أن نحيط حديقة بسياج، يجب أن نعرف طول السياج اللازم بالضبط: هذا هو "المحيط"، أي طول الخط المحيط بالشكل بالكامل.',
+        introAr: 'تعرفنا سابقاً على المستقيمات المتوازية (التي لا تلتقي أبداً) وعلى الزاوية القائمة. الآن نجمع الفكرتين: عندما يتقاطع مستقيمان ويُكوّنان زاوية قائمة، نسميهما "مستقيمين متعامدين".',
         vocabulary: [
-            { termAr: 'المحيط (Périmètre)', definitionAr: 'طول الخط الذي يحيط بشكل هندسي من الخارج، أي مجموع أطوال جميع أضلاعه.' },
+            { termAr: 'التعامد (Perpendicularité)', definitionAr: 'خاصية مستقيمين يتقاطعان مكوّنين زاوية قائمة (90°) بينهما.' },
+            { termAr: 'مستقيمان متعامدان', definitionAr: 'مستقيمان يقطع أحدهما الآخر بزاوية قائمة، مثل خطوط دفتر المربعات (الأفقية والعمودية).' },
         ],
-        visualizationHintAr: 'ارسم مستطيلاً على ورقة مربعات وعُدّ مع الطفل عدد أضلاع الخانات التي يمر عليها الخط المحيط بالشكل بالكامل.',
+        visualizationHintAr: 'انظر إلى ركن صفحة كراسك: الضلع الأفقي والضلع العمودي يلتقيان بزاوية قائمة تماماً — هذان الضلعان متعامدان.',
         commonMistakes: [
-            { mistakeAr: 'حساب مساحة الشكل (عدد الخانات الداخلية) بدل محيطه.', correctionAr: 'المحيط يقيس طول الخط الخارجي فقط، وليس عدد الخانات الممتلئة بداخل الشكل.' },
-            { mistakeAr: 'نسيان جمع ضلع أو أكثر عند حساب محيط المستطيل.', correctionAr: 'للمستطيل 4 أضلاع (طولان وعرضان)، ويجب جمع الأربعة جميعاً وليس ضلعين فقط.' },
+            { mistakeAr: 'الخلط بين مستقيمين متعامدين ومستقيمين متوازيين.', correctionAr: 'المتوازيان لا يلتقيان أبداً، أما المتعامدان فيتقاطعان بالضبط بزاوية قائمة — مفهومان مختلفان تماماً.' },
         ],
-        takeawayAr: 'المحيط = مجموع أطوال كل أضلاع الشكل. للمربع: محيط = الضلع × 4. للمستطيل: محيط = (الطول + العرض) × 2.',
+        takeawayAr: 'مستقيمان متعامدان = يتقاطعان بزاوية قائمة (90°)، نتحقق منها بالكوس. مستقيمان متوازيان = لا يلتقيان أبداً. المربع والمستطيل أضلاعهما المتجاورة متعامدة.',
     },
     keyFormulas: [
-        { labelAr: 'محيط المربع', formulaAr: 'محيط المربع = الضلع × 4' },
-        { labelAr: 'محيط المستطيل', formulaAr: 'محيط المستطيل = (الطول + العرض) × 2' },
+        { labelAr: 'شرط التعامد', formulaAr: 'مستقيمان متعامدان ⟺ الزاوية بينهما = 90°' },
     ],
-    discoveryAr: 'أراد الفلاح إحاطة حقل مستطيل طوله 8 أمتار وعرضه 5 أمتار بسياج معدني.\nكم متراً من السياج يحتاج بالضبط؟',
+    discoveryAr: 'ضع الكوس عند نقطة تقاطع خطي الطاولة (الطول والعرض). إذا انطبقت زاوية الكوس تماماً على زاوية التقاطع، فالخطان متعامدان!',
     rulesAr: [
-      'المحيط: طول الخط المحيط بالشكل من الخارج بالكامل.',
-      'محيط أي شكل = مجموع أطوال جميع أضلاعه.',
-      'محيط المربع = الضلع × 4 (لأن أضلاعه الأربعة متساوية).',
-      'محيط المستطيل = (الطول + العرض) × 2 (لأن له ضلعين طويلين وضلعين قصيرين متساويين).'
+      'مستقيمان متعامدان: هما مستقيمان يتقاطعان مكوّنين زاوية قائمة (90°) عند نقطة تقاطعهما، ونتحقق من ذلك بأداة الكوس.',
+      'الفرق بين التعامد والتوازي: المستقيمان المتوازيان لا يلتقيان أبداً مهما امتدّا، بينما المستقيمان المتعامدان يلتقيان في نقطة واحدة بالضبط بزاوية قائمة.',
+      'في المربع والمستطيل: كل ضلعين متجاورين (متتاليين) متعامدان، بينما كل ضلعين متقابلين متوازيان.'
     ],
     interactiveTool: 'geometry_visualizer',
     examplesAr: [
       {
-        problem: 'احسب محيط مربع طول ضلعه 6 سم.',
-        solution: 'محيط المربع = 6 × 4 = 24 سم.'
-      },
-      {
-        problem: 'احسب محيط مستطيل طوله 8 م وعرضه 5 م.',
-        solution: 'محيط المستطيل = (8 + 5) × 2 = 13 × 2 = 26 م.'
+        problem: 'عند تقاطع مستقيمين، كانت الزاوية بينهما 90°. ماذا نسمي هذين المستقيمين؟',
+        solution: 'نسميهما مستقيمين متعامدين، لأن زاوية تقاطعهما قائمة (90°).'
       }
     ],
     progressiveExercises: [
       {
-        id: 'ex1-math3ap-perimeter',
+        id: 'ex1-math3ap-perp1',
         level: 1,
         levelLabelAr: '🟢 المستوى 1 — سهل',
-        problemAr: 'مربع طول ضلعه 5 سم. ما محيطه؟',
-        hintsAr: ['اضرب طول الضلع في 4'],
-        solutionAr: '20 سم',
-        detailedCorrectionAr: 'أحسنت! 👏 5 × 4 = 20 سم.',
+        problemAr: 'بأي أداة نتحقق من تعامد مستقيمين؟',
+        hintsAr: ['نفس الأداة التي تحققنا بها من الزاوية القائمة'],
+        solutionAr: 'الكُوسُ',
+        detailedCorrectionAr: 'أحسنت! 👏 نستعمل الكوس للتحقق من التعامد كما فعلنا مع الزاوية القائمة.',
         xpReward: 10
       },
       {
-        id: 'ex2-math3ap-perimeter',
+        id: 'ex2-math3ap-perp2',
         level: 2,
         levelLabelAr: '🟡 المستوى 2 — متوسط',
-        problemAr: 'مستطيل طوله 7 م وعرضه 3 م. ما محيطه؟',
-        hintsAr: ['احسب (الطول + العرض) × 2'],
-        solutionAr: '20 م',
-        detailedCorrectionAr: 'ممتاز! 🎯 (7+3)×2 = 10×2 = 20 م.',
+        problemAr: 'في المستطيل، هل الضلعان المتجاوران (المتتاليان) متعامدان أم متوازيان؟',
+        hintsAr: ['فكر في زوايا المستطيل الأربع القائمة'],
+        solutionAr: 'مُتَعَامِدَانِ',
+        detailedCorrectionAr: 'ممتاز! ✨ كل ضلعين متجاورين في المستطيل يكوّنان زاوية قائمة، فهما متعامدان.',
         xpReward: 15
       }
     ],
     educationalGame: {
-      id: 'game-math-3ap-perimeter',
-      type: 'quiz_flash',
-      titleAr: '🎮 مهندس السياج الصغير',
-      instructionsAr: 'احسب طول السياج (المحيط) اللازم لكل حديقة!',
+      id: 'game-math-3ap-perp',
+      type: 'association',
+      titleAr: '🎮 صياد المستقيمات المتعامدة',
+      instructionsAr: 'صنّف كل زوج من المستقيمات: متعامدان أم متوازيان؟',
       items: [
-        { questionOrPromptAr: 'حديقة مربعة ضلعها 4 م', correctAnswerAr: '16 م', optionsAr: ['16 م', '8 م', '12 م'], explanationAr: '4 × 4 = 16 م.' },
-        { questionOrPromptAr: 'حديقة مستطيلة طولها 6 م وعرضها 2 م', correctAnswerAr: '16 م', optionsAr: ['16 م', '12 م', '8 م'], explanationAr: '(6+2)×2 = 16 م.' }
+        { questionOrPromptAr: 'خطا كراس الرياضيات (الأفقي والعمودي)', correctAnswerAr: 'مُتَعَامِدَانِ', optionsAr: ['مُتَعَامِدَانِ', 'مُتَوَازِيَانِ'], explanationAr: 'الخط الأفقي والخط العمودي يتقاطعان بزاوية قائمة، فهما متعامدان.' },
+        { questionOrPromptAr: 'خطا سكة الحديد', correctAnswerAr: 'مُتَوَازِيَانِ', optionsAr: ['مُتَعَامِدَانِ', 'مُتَوَازِيَانِ'], explanationAr: 'خطا السكة لا يلتقيان أبداً، فهما متوازيان.' }
       ],
       xpReward: 20
     },
     quiz: [
       {
-        id: 'q1-perimeter',
-        questionAr: 'ما هو محيط مربع طول ضلعه 9 سم؟',
+        id: 'q1-perp',
+        questionAr: 'مستقيمان متعامدان يتقاطعان بزاوية قياسها:',
         options: [
-          { id: 'a', textAr: '36 سم', isCorrect: true, explanationAr: 'صحيح! 9 × 4 = 36 سم.' },
-          { id: 'b', textAr: '18 سم', isCorrect: false },
-          { id: 'c', textAr: '81 سم', isCorrect: false }
+          { id: 'a', textAr: '90 دَرَجَةً (زاوية قائمة)', isCorrect: true, explanationAr: 'صحيح! التعامد يعني تقاطعاً بزاوية قائمة 90°.' },
+          { id: 'b', textAr: 'لاَ يَتَقَاطَعَانِ أَبَداً', isCorrect: false, explanationAr: 'هذا وصف التوازي، وليس التعامد.' },
+          { id: 'c', textAr: '45 دَرَجَةً', isCorrect: false, explanationAr: 'الزاوية القائمة هي 90°، وليس 45°.' },
+        ]
+      },
+      {
+        id: 'q2-perp',
+        questionAr: 'أَيُّ أَدَاةٍ نَسْتَعْمِلُهَا لِلتَّحَقُّقِ مِنْ تَعَامُدِ مُسْتَقِيمَيْنِ؟',
+        options: [
+          { id: 'a', textAr: 'الكُوسُ', isCorrect: true, explanationAr: 'صحيح! الكوس يتحقق من الزوايا القائمة والتعامد.' },
+          { id: 'b', textAr: 'الفَرْجَارُ', isCorrect: false, explanationAr: 'الفرجار يُستعمل لرسم الدوائر، وليس للتحقق من التعامد.' },
         ]
       }
     ]
@@ -1008,6 +1029,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'اشترى كريم قميصاً بـ 1500 دج وحذاءً بـ 2200 دج، ودفع بورقة 5000 دج. كم استرجع من الفكة؟',
+        operationsAr: '  1500\n+ 2200\n------\n  3700\n\n  5000\n- 3700\n------\n  1300',
         solution: 'المجموع: 1500 + 2200 = 3700 دج. الفكة: 5000 - 3700 = 1300 دج.'
       }
     ],
@@ -1050,8 +1072,8 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'اشترى ياسين حقيبة بـ 3200 دج، ودفع بورقة 5000 دج. كم استرجع من الفكة؟',
         options: [
           { id: 'a', textAr: '1800 دج', isCorrect: true, explanationAr: 'صحيح! 5000 - 3200 = 1800 دج.' },
-          { id: 'b', textAr: '2800 دج', isCorrect: false },
-          { id: 'c', textAr: '8200 دج', isCorrect: false }
+          { id: 'b', textAr: '2800 دج', isCorrect: false, explanationAr: '2800 يقترب من جمع أو طرح خاطئ للمنازل. الفكة = المدفوع − الثمن: 5000 − 3200 = 1800 دج، وليس 2800.' },
+          { id: 'c', textAr: '8200 دج', isCorrect: false, explanationAr: '8200 هو جمع 5000 + 3200. الفكة طرح وليست جمعاً: نرجع الفرق بعد الدفع.' }
         ]
       }
     ]
@@ -1099,6 +1121,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'كيف تكتب الساعة الرابعة بعد الزوال (مساءً) بالنظام الرقمي؟',
+        operationsAr: '4 + 12 = 16\n16:00',
         solution: '4 + 12 = 16:00'
       }
     ],
@@ -1141,7 +1164,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'في الساعة، دورة كاملة للعقرب الكبير تعبر عن:',
         options: [
           { id: 'a', textAr: '60 دقيقة (ساعة واحدة)', isCorrect: true, explanationAr: 'صحيح! 60 دقيقة تشكل ساعة واحدة كاملة.' },
-          { id: 'b', textAr: '24 دقيقة', isCorrect: false }
+          { id: 'b', textAr: '24 دقيقة', isCorrect: false, explanationAr: '24 ساعة هي مدة اليوم كاملاً، وليست دورة العقرب الكبير. العقرب الكبير يدور دورة كاملة في 60 دقيقة = ساعة واحدة.' }
         ]
       }
     ]
@@ -1189,6 +1212,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'ما هو نصف العدد 80 وما هو ربعه؟',
+        operationsAr: '80 ÷ 2 = 40   ← النصف 1/2\n80 ÷ 4 = 20   ← الربع 1/4',
         solution: 'نصف 80 هو 40، وربع 80 هو 20.'
       }
     ],
@@ -1231,7 +1255,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'الكسر الذي يعبر عن النصف هو:',
         options: [
           { id: 'a', textAr: '1/2', isCorrect: true, explanationAr: 'صحيح! 1/2 يقرأ النصف.' },
-          { id: 'b', textAr: '1/4', isCorrect: false }
+          { id: 'b', textAr: '1/4', isCorrect: false, explanationAr: '1/4 هو الرُّبُعُ (أربعة أجزاء متساوية)، وليس النِّصْفَ. النصف يقسم الشيء إلى جزأين متساويين ويُكتب 1/2.' }
         ]
       }
     ]
@@ -1283,6 +1307,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'وزّع 17 حبة حلوى بالتساوي على 5 أطفال. كم حبة يأخذ كل طفل؟ وكم يبقى؟',
+        operationsAr: '17 ÷ 5\n5 × 3 = 15\n17 - 15 = 2\n\nالتحقق:\n(5 × 3) + 2 = 17',
         solution: 'كل طفل يأخذ 3 حبات (5×3=15)، ويبقى 17-15=2 حبات. التحقق: (5×3)+2=17. ✓'
       }
     ],
@@ -1324,7 +1349,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'في القسمة بباقٍ، ماذا يجب أن يكون الباقي دائماً؟',
         options: [
           { id: 'a', textAr: 'أصغر من المقسوم عليه', isCorrect: true, explanationAr: 'صحيح! إذا كان الباقي أكبر أو يساوي المقسوم عليه، يمكن توزيع حصة إضافية.' },
-          { id: 'b', textAr: 'أكبر من المقسوم عليه', isCorrect: false }
+          { id: 'b', textAr: 'أكبر من المقسوم عليه', isCorrect: false, explanationAr: 'إذا كان الباقي أكبر من المقسوم عليه (أو يساويه) يمكن توزيع حصة إضافية، فالقسمة غير مكتملة. الباقي يجب أن يبقى أصغر من المقسوم عليه.' }
         ]
       }
     ]
@@ -1414,7 +1439,102 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'عدد أحرف المكعب يساوي:',
         options: [
           { id: 'a', textAr: '12 حرفاً', isCorrect: true, explanationAr: 'صحيح! للمكعب 12 حرفاً متساوياً.' },
-          { id: 'b', textAr: '6 أحرف', isCorrect: false }
+          { id: 'b', textAr: '6 أحرف', isCorrect: false, explanationAr: '6 هو عدد وجوه المكعب، وليس أحرفه. للمكعب 12 حرفاً و 6 وجوه و 8 رؤوس.' }
+        ]
+      }
+    ]
+},
+
+{
+    id: 'math-3ap-t3-multiplication-two-digit',
+    grade: '3AP',
+    subject: 'math',
+    trimester: 3,
+    domainAr: 'الأعداد والحساب',
+    sequenceAr: 'السلسلة 4: الضرب في عدد ذي رقمين',
+    categoryAr: 'الرياضيات - ضرب الأعداد',
+    titleAr: 'الضَّرْبُ فِي عَدَدٍ ذِي رَقْمَيْنِ بِتَفْكِيكِ العَدَدِ',
+    summaryAr: 'يتعلم التلميذ ضرب عدد في عدد آخر مكوّن من رقمين (مثل 23 × 12) بتفكيك العدد ذي الرقمين إلى عشرات ووحدات، ثم جمع النتيجتين الجزئيتين.',
+    objectiveAr: 'ضرب عدد في عدد ذي رقمين بتفكيكه إلى عشرات ووحدات وجمع حاصلي الضرب الجزئيين.',
+    objectivesAr: [
+        'أُفَكِّكُ عدداً ذا رقمين إلى عشرات ووحدات.',
+        'أَضْرِبُ عدداً في عدد ذي رقمين بتفكيك المضروب فيه.',
+    ],
+    detailedCourse: {
+        introAr: 'بعد أن تعلمنا الضرب في عدد ذي رقم واحد، نتعلم الآن الضرب في عدد ذي رقمين، بتقسيم العدد إلى عشرات ووحدات لتسهيل الحساب.',
+        vocabulary: [
+            { termAr: 'تفكيك العدد', definitionAr: 'كتابة عدد ذي رقمين كمجموع عشراته ووحداته (مثل: 12 = 10 + 2).' },
+        ],
+        visualizationHintAr: 'لضرب 23 × 12، تخيّل أنك تشتري 12 صندوقاً فيه 23 قلماً: احسب أولاً 10 صناديق ثم صندوقين، ثم اجمع.',
+        commonMistakes: [
+            { mistakeAr: 'نسيان جمع الناتجين الجزئيين في النهاية.', correctionAr: 'بعد حساب الضرب في العشرات والضرب في الوحدات، يجب دائماً جمع الناتجين للحصول على النتيجة النهائية.' },
+        ],
+        takeawayAr: 'لضرب عدد في عدد ذي رقمين: نُفكّك العدد ذا الرقمين إلى عشرات ووحدات، نضرب في كل جزء على حدة، ثم نجمع الناتجين.',
+    },
+    keyFormulas: [
+        { labelAr: 'تفكيك الضرب في عدد ذي رقمين', formulaAr: '23 × 12 = (23 × 10) + (23 × 2) = 230 + 46 = 276' },
+    ],
+    discoveryAr: 'اشترت المدرسة 12 كرتوناً، كل كرتون فيه 23 كتاباً. لحساب العدد الكلي:\n23 × 12 = 23 × (10 + 2) = (23 × 10) + (23 × 2) = 230 + 46 = 276 كتاباً.',
+    rulesAr: [
+      'لضرب عدد N في عدد ذي رقمين (مثل 12): نُفَكِّكُ 12 = 10 + 2، ثم نحسب (N × 10) و(N × 2) كل على حدة، ثم نجمع الناتجين: N × 12 = (N × 10) + (N × 2).',
+      'الضرب في 10: يكفي إضافة صفر إلى يمين العدد (مثال: 23 × 10 = 230).'
+    ],
+    examplesAr: [
+      {
+        problem: 'احسب 14 × 12 بتفكيك العدد 12.',
+        operationsAr: '14 × 10 = 140\n14 ×  2 =  28\n------------\n  140 + 28 = 168',
+        solution: '14 × 12 = (14 × 10) + (14 × 2) = 140 + 28 = 168.'
+      }
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-math3ap-mult2d1',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — سهل',
+        problemAr: 'فَكِّكْ العَدَدَ 13 إِلَى عَشَرَاتٍ وَوَحَدَاتٍ.',
+        hintsAr: ['كم عشرة وكم وحدة في 13؟'],
+        solutionAr: '13 = 10 + 3',
+        detailedCorrectionAr: 'أحسنت! 👏 13 يتكون من عشرة واحدة و3 وحدات.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-math3ap-mult2d2',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — متوسط',
+        problemAr: 'احسب 15 × 11 بتفكيك العدد 11.',
+        hintsAr: ['11 = 10 + 1، فاحسب (15×10) و(15×1) ثم اجمع'],
+        solutionAr: '165 (15×10=150 و15×1=15، والمجموع 150+15=165)',
+        detailedCorrectionAr: 'ممتاز! ✨ 15 × 11 = (15×10) + (15×1) = 150 + 15 = 165.',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-math-3ap-mult2d',
+      type: 'speed_calc',
+      titleAr: '🎮 مصنع الضرب في العشرات',
+      instructionsAr: 'احسب حاصل الضرب في العدد ذي الرقمين بسرعة!',
+      items: [
+        { questionOrPromptAr: '12 × 10 = ؟', correctAnswerAr: '120', optionsAr: ['120', '12', '112'], explanationAr: 'الضرب في 10 يعني إضافة صفر: 12 × 10 = 120.' },
+        { questionOrPromptAr: '20 × 12 = ؟', correctAnswerAr: '240', optionsAr: ['240', '220', '32'], explanationAr: '20 × 12 = (20×10) + (20×2) = 200 + 40 = 240.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-mult2d',
+        questionAr: 'لحساب 16 × 12، أي تفكيك صحيح؟',
+        options: [
+          { id: 'a', textAr: '(16 × 10) + (16 × 2)', isCorrect: true, explanationAr: 'صحيح! نفكك 12 = 10 + 2 ثم نضرب في كل جزء ونجمع.' },
+          { id: 'b', textAr: '(16 × 1) + (16 × 2)', isCorrect: false, explanationAr: '12 يتكون من عشرة (10) وليس واحد (1)؛ يجب ضرب في 10 لا في 1.' },
+          { id: 'c', textAr: '16 + 12', isCorrect: false, explanationAr: 'هذا جمع وليس ضرباً؛ الضرب يتطلب تفكيك عدد الرقمين ثم الضرب في كل جزء.' },
+        ]
+      },
+      {
+        id: 'q2-mult2d',
+        questionAr: 'كَمْ يُسَاوِي 30 × 10؟',
+        options: [
+          { id: 'a', textAr: '300', isCorrect: true, explanationAr: 'صحيح! نضيف صفراً إلى يمين 30 فنحصل على 300.' },
+          { id: 'b', textAr: '30', isCorrect: false, explanationAr: 'الضرب في 10 يضيف صفراً، فلا يبقى العدد كما هو.' },
         ]
       }
     ]
@@ -1426,7 +1546,7 @@ export const MATH_3AP: CourseLesson[] = [
     subject: 'math',
     trimester: 3,
     domainAr: 'تنظيم معطيات وحل المشكلات',
-    sequenceAr: 'السلسلة 4: استغلال معطيات والمسائل المركبة',
+    sequenceAr: 'السلسلة 5: استغلال معطيات والمسائل المركبة',
     categoryAr: 'الرياضيات - حل المشكلات',
     titleAr: 'مَنْهَجِيَّةُ حَلِّ الـمُشْكِلاَتِ وَالمَسَائِلِ الـمُرَكَّبَةِ وَاسْتِخْرَاجُ البَيَانَاتِ مِنَ الجَدَاوِلِ',
     summaryAr: 'يتدرب التلميذ على قراءة المسائل والوضعات الإدماجية ذات المرحلتين، وتحديد المعطيات والمطلوب واستخراج المعلومات من الجداول والمخططات البيانية البسيطة لتنظيم الحل.',
@@ -1459,6 +1579,7 @@ export const MATH_3AP: CourseLesson[] = [
     examplesAr: [
       {
         problem: 'وضعية إدماجية مركبة: مع أيوب 1000 DZD. اشترى كراساً بـ 250 DZD ومقلمة بـ 450 DZD.\n1) أحسب ثمن المشتريات الإجمالي.\n2) أحسب المبلغ المتبقي مع أيوب.',
+        operationsAr: '  250\n+ 450\n------\n  700\n\n 1000\n-  700\n------\n  300',
         solution: '1) ثمن المشتريات: 250 + 450 = 700 DZD.\n2) المبلغ المتبقي: 1000 - 700 = 300 DZD.'
       }
     ],
@@ -1501,7 +1622,7 @@ export const MATH_3AP: CourseLesson[] = [
         questionAr: 'عند إجابة المسألة في الامتحان يجب كتابة:',
         options: [
           { id: 'a', textAr: 'العملية العمودية والأفقية مع الجواب الكامل والوحدة (مثال: DZD)', isCorrect: true, explanationAr: 'صحيح! الإجابة المنهجية الكاملة تتضمن العمليات والجواب بالوحدات.' },
-          { id: 'b', textAr: 'الأرقام فقط بدون وحدات', isCorrect: false }
+          { id: 'b', textAr: 'الأرقام فقط بدون وحدات', isCorrect: false, explanationAr: 'الرقم وحده لا يكفي في المسألة: 300 بدون دج أو kg أو m يفقد المعنى. نكتب العملية والجواب والوحدة معاً.' }
         ]
       }
     ]

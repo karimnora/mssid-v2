@@ -1,6 +1,6 @@
 import { CourseLesson } from '../../../types';
 
-// 8 leçon(s) — french / 3AP
+// 11 leçon(s) — french / 3AP
 export const FRENCH_3AP: CourseLesson[] = [
 // ==========================================
 // 🇫🇷 اللغة الفرنسية (FRANÇAIS) - 3AP
@@ -95,7 +95,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Comment dit-on "إلى اللقاء" en français ?',
         options: [
           { id: 'a', textAr: 'Au revoir !', isCorrect: true, explanationAr: 'Exactement ! Au revoir signifie إلى اللقاء.' },
-          { id: 'b', textAr: 'Bonjour !', isCorrect: false }
+          { id: 'b', textAr: 'Bonjour !', isCorrect: false, explanationAr: 'Bonjour veut dire "صباح الخير / أهلاً", on le dit en arrivant, pas en partant.' },
+          { id: 'c', textAr: 'Salut !', isCorrect: false, explanationAr: 'Salut veut dire "مرحباً", c\'est aussi un mot pour arriver, pas pour partir.' }
+        ]
+      },
+      {
+        id: 'q2-p1s1',
+        questionAr: 'Quelle syllabe forme-t-on avec N + I ?',
+        options: [
+          { id: 'a', textAr: 'NI', isCorrect: true, explanationAr: 'Exact ! N + I = NI, comme dans le mot "Nid".' },
+          { id: 'b', textAr: 'NA', isCorrect: false, explanationAr: 'NA se forme avec N + A, pas avec N + I.' },
+          { id: 'c', textAr: 'MI', isCorrect: false, explanationAr: 'MI se forme avec la consonne M, pas avec la consonne N.' }
         ]
       }
     ]
@@ -183,8 +193,18 @@ export const FRENCH_3AP: CourseLesson[] = [
         id: 'q1-p1s2',
         questionAr: 'Lequel de ces mots contient la voyelle "U" ?',
         options: [
-          { id: 'a', textAr: 'Trousse (ou) / Livre', isCorrect: false },
-          { id: 'b', textAr: 'Jus (u) / Plume', isCorrect: true, explanationAr: 'Exactement ! Jus et Plume contiennent la voyelle U.' }
+          { id: 'a', textAr: 'Trousse (ou) / Livre', isCorrect: false, explanationAr: 'Trousse contient le son "ou" et Livre n\'a pas de U — cherche plutôt du côté de Jus et Plume.' },
+          { id: 'b', textAr: 'Jus (u) / Plume', isCorrect: true, explanationAr: 'Exactement ! Jus et Plume contiennent la voyelle U.' },
+          { id: 'c', textAr: 'Stylo (o) / Cahier', isCorrect: false, explanationAr: 'Stylo contient la voyelle O et Cahier n\'a pas de U non plus.' }
+        ]
+      },
+      {
+        id: 'q2-p1s2',
+        questionAr: 'Quel article utilise-t-on devant le mot "trousse" ?',
+        options: [
+          { id: 'a', textAr: 'Une', isCorrect: true, explanationAr: 'Bravo ! Trousse est un nom féminin, on dit "une trousse".' },
+          { id: 'b', textAr: 'Un', isCorrect: false, explanationAr: '"Un" s\'utilise devant un nom masculin, or trousse est féminin.' },
+          { id: 'c', textAr: 'Le', isCorrect: false, explanationAr: '"Le" est l\'article défini masculin ; pour trousse (féminin) on dit "la trousse", pas "le".' }
         ]
       }
     ]
@@ -275,7 +295,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Laquelle de ces phrases présente correctement une amie ?',
         options: [
           { id: 'a', textAr: 'C\'est Lina, c\'est mon amie.', isCorrect: true, explanationAr: 'Parfait ! C\'est la formule exacte pour présenter une amie.' },
-          { id: 'b', textAr: 'C\'est Lina, c\'est mon ami.', isCorrect: false }
+          { id: 'b', textAr: 'C\'est Lina, c\'est mon ami.', isCorrect: false, explanationAr: 'Lina est une fille, il faut donc dire "amie" (féminin) et non "ami" (masculin).' },
+          { id: 'c', textAr: 'C\'est Lina, c\'est mon amis.', isCorrect: false, explanationAr: '"Amis" est un pluriel ; pour parler d\'une seule amie on écrit "amie" au singulier.' }
+        ]
+      },
+      {
+        id: 'q2-p1s3',
+        questionAr: 'Comment dit-on "أزرق" en français ?',
+        options: [
+          { id: 'a', textAr: 'Bleu', isCorrect: true, explanationAr: 'Exact ! Bleu veut dire أزرق.' },
+          { id: 'b', textAr: 'Vert', isCorrect: false, explanationAr: 'Vert veut dire أخضر, pas أزرق.' },
+          { id: 'c', textAr: 'Jaune', isCorrect: false, explanationAr: 'Jaune veut dire أصفر, pas أزرق.' }
         ]
       }
     ]
@@ -367,7 +397,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Comment dit-on "الجد" en français ?',
         options: [
           { id: 'a', textAr: 'Le grand-père', isCorrect: true, explanationAr: 'Exact ! Le grand-père veut dire الجد.' },
-          { id: 'b', textAr: 'Le frère', isCorrect: false }
+          { id: 'b', textAr: 'Le frère', isCorrect: false, explanationAr: 'Le frère veut dire الأخ, pas الجد.' },
+          { id: 'c', textAr: 'La grand-mère', isCorrect: false, explanationAr: 'La grand-mère veut dire الجدة (féminin), pas الجد (masculin).' }
+        ]
+      },
+      {
+        id: 'q2-p2s1',
+        questionAr: 'Quel pronom remplace "Ma mère" dans la phrase "Ma mère est médecin" ?',
+        options: [
+          { id: 'a', textAr: 'Elle', isCorrect: true, explanationAr: 'Bravo ! Ma mère est un nom féminin, on le remplace par ELLE.' },
+          { id: 'b', textAr: 'Il', isCorrect: false, explanationAr: 'IL remplace un nom masculin ; "ma mère" est féminin, il faut donc utiliser ELLE.' },
+          { id: 'c', textAr: 'Ils', isCorrect: false, explanationAr: '"Ils" est un pronom pluriel ; ma mère est une seule personne, donc on utilise ELLE au singulier.' }
         ]
       }
     ]
@@ -461,7 +501,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Quelle saison vient juste avant le printemps ?',
         options: [
           { id: 'a', textAr: 'L\'hiver', isCorrect: true, explanationAr: 'Exactement ! L\'ordre est : hiver ➔ printemps ➔ été ➔ automne ➔ hiver.' },
-          { id: 'b', textAr: 'L\'été', isCorrect: false }
+          { id: 'b', textAr: 'L\'été', isCorrect: false, explanationAr: 'L\'été vient après le printemps, pas avant.' },
+          { id: 'c', textAr: 'L\'automne', isCorrect: false, explanationAr: 'L\'automne vient juste avant l\'hiver, pas avant le printemps.' }
+        ]
+      },
+      {
+        id: 'q2-p2s1b',
+        questionAr: 'Comment dit-on correctement le métier de médecin pour un homme ?',
+        options: [
+          { id: 'a', textAr: 'Il est médecin', isCorrect: true, explanationAr: 'Bravo ! On dit "Il est médecin", sans article devant le métier.' },
+          { id: 'b', textAr: 'Il est un médecin', isCorrect: false, explanationAr: 'On n\'utilise pas d\'article devant le métier : on dit "Il est médecin", pas "Il est un médecin".' },
+          { id: 'c', textAr: 'Elle est médecin', isCorrect: false, explanationAr: '"Elle" s\'utilise pour une femme ; ici on parle d\'un homme, donc on dit "Il est médecin".' }
         ]
       }
     ]
@@ -551,7 +601,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Comment prononce-t-on la lettre C dans le mot "CAHIER" ?',
         options: [
           { id: 'a', textAr: 'Le son /K/ (comme K)', isCorrect: true, explanationAr: 'Exactement ! Devant "A", la lettre C se prononce /K/.' },
-          { id: 'b', textAr: 'Le son /S/ (comme S)', isCorrect: false }
+          { id: 'b', textAr: 'Le son /S/ (comme S)', isCorrect: false, explanationAr: 'Le son /S/ s\'entend seulement quand C est devant E ou I (comme dans "cerise"), pas devant A.' },
+          { id: 'c', textAr: 'Le son /G/ (comme G)', isCorrect: false, explanationAr: 'La lettre C ne se prononce jamais /G/ ; devant A elle se prononce /K/.' }
+        ]
+      },
+      {
+        id: 'q2-p2s2',
+        questionAr: 'Comment dit-on "عندي 8 سنوات" en français ?',
+        options: [
+          { id: 'a', textAr: 'J\'ai 8 ans', isCorrect: true, explanationAr: 'Bravo ! On utilise le verbe AVOIR pour dire son âge : J\'ai 8 ans.' },
+          { id: 'b', textAr: 'Je suis 8 ans', isCorrect: false, explanationAr: 'On ne dit jamais "Je suis" pour l\'âge ; il faut utiliser le verbe AVOIR : "J\'ai 8 ans".' },
+          { id: 'c', textAr: 'Tu as 8 ans', isCorrect: false, explanationAr: '"Tu as" s\'utilise pour parler à quelqu\'un d\'autre ; pour parler de soi-même on dit "J\'ai 8 ans".' }
         ]
       }
     ]
@@ -639,7 +699,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Quel son composé entend-on dans le mot "MAISON" ?',
         options: [
           { id: 'a', textAr: 'Le son ON', isCorrect: true, explanationAr: 'Exactement ! Mais-ON contient le son composé ON.' },
-          { id: 'b', textAr: 'Le son OU', isCorrect: false }
+          { id: 'b', textAr: 'Le son OU', isCorrect: false, explanationAr: 'Le son OU ne se trouve pas dans "maison" ; on entend plutôt le son ON à la fin du mot.' },
+          { id: 'c', textAr: 'Le son CH', isCorrect: false, explanationAr: 'Il n\'y a pas de lettres CH dans "maison", donc pas de son CH.' }
+        ]
+      },
+      {
+        id: 'q2-p2s3',
+        questionAr: 'Quelle préposition signifie "تحت" (en dessous) ?',
+        options: [
+          { id: 'a', textAr: 'Sous', isCorrect: true, explanationAr: 'Exact ! "Sous" veut dire تحت (en dessous).' },
+          { id: 'b', textAr: 'Sur', isCorrect: false, explanationAr: '"Sur" veut dire على (au-dessus), pas تحت.' },
+          { id: 'c', textAr: 'Dans', isCorrect: false, explanationAr: '"Dans" veut dire في (à l\'intérieur), pas تحت.' }
         ]
       }
     ]
@@ -731,7 +801,220 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Comment conjugue-t-on le verbe ÊTRE avec "Je" ?',
         options: [
           { id: 'a', textAr: 'Je suis', isCorrect: true, explanationAr: 'Exactement ! On dit : Je suis.' },
-          { id: 'b', textAr: 'J\'ai', isCorrect: false }
+          { id: 'b', textAr: 'J\'ai', isCorrect: false, explanationAr: '"J\'ai" est la conjugaison du verbe AVOIR, pas du verbe ÊTRE.' },
+          { id: 'c', textAr: 'Tu es', isCorrect: false, explanationAr: '"Tu es" se conjugue avec "Tu" ; avec "Je" on dit "Je suis".' }
+        ]
+      },
+      {
+        id: 'q2-p3s1',
+        questionAr: 'Quel mot contient le son nasal "IN" ?',
+        options: [
+          { id: 'a', textAr: 'Lapin', isCorrect: true, explanationAr: 'Bravo ! Lapin contient le son nasal IN.' },
+          { id: 'b', textAr: 'Maman', isCorrect: false, explanationAr: 'Maman contient le son nasal AN, pas IN.' },
+          { id: 'c', textAr: 'Enfant', isCorrect: false, explanationAr: 'Enfant contient les sons EN et AN, pas IN.' }
+        ]
+      }
+    ]
+},
+
+// ==========================================
+// Trimestre 3 — Projet 4 : Qu'est-ce qu'on mange ?
+// ==========================================
+{
+    id: 'french-3ap-p4-seq1-meals-verbs',
+    grade: '3AP',
+    subject: 'french',
+    trimester: 3,
+    domainAr: 'Langue Française - Projet 4: Qu\'est-ce qu\'on mange ?',
+    sequenceAr: 'Séquence 1: Les repas et les aliments',
+    categoryAr: 'اللغة الفرنسية - التغذية وفعلي MANGER و BOIRE',
+    titleAr: 'P4-S1 : LES REPAS DE LA JOURNÉE (ALIMENTS, VERBES MANGER/BOIRE & SONS au / eau)',
+    summaryAr: 'Vocabulaire des repas de la journée et des aliments de base, conjugaison des verbes MANGER et BOIRE au présent, et étude des sons AU/EAU.',
+    objectiveAr: 'Nommer les repas et aliments principaux, utiliser les verbes manger et boire au présent, et lire les sons au/eau.',
+    objectivesAr: [
+        'Je nomme les 3 repas de la journée et des aliments simples en français.',
+        'Je conjugue MANGER et BOIRE au présent (Je, Tu, Il/Elle).',
+        'Je lis des mots contenant les sons au/eau.',
+    ],
+    detailedCourse: {
+        introAr: 'Chaque jour, on prend 3 repas principaux : le petit-déjeuner le matin, le déjeuner à midi, et le dîner le soir. Pour en parler, on utilise les verbes MANGER et BOIRE.',
+        vocabulary: [
+            { termAr: 'Le verbe MANGER', definitionAr: 'Verbe du 1er groupe : Je mange, Tu manges, Il/Elle mange.' },
+            { termAr: 'Le verbe BOIRE', definitionAr: 'Verbe irrégulier : Je bois, Tu bois, Il/Elle boit.' },
+        ],
+        visualizationHintAr: 'Décris ton petit-déjeuner d\'aujourd\'hui avec une phrase : "Je mange..." et "Je bois...".',
+        commonMistakes: [
+            { mistakeAr: 'Dire "Je manges" au lieu de "Je mange".', correctionAr: 'Avec "Je", le verbe MANGER (1er groupe) se termine par -e : Je mange (pas de S).' },
+        ],
+        takeawayAr: 'Les 3 repas : le petit-déjeuner, le déjeuner, le dîner. Je mange, Tu manges, Il/Elle mange. Je bois, Tu bois, Il/Elle boit. Sons : au/eau se lisent /o/.',
+    },
+    keyFormulas: [
+        { labelAr: 'MANGER au présent', formulaAr: 'Je mange | Tu manges | Il/Elle mange' },
+        { labelAr: 'BOIRE au présent', formulaAr: 'Je bois | Tu bois | Il/Elle boit' },
+    ],
+    discoveryAr: 'Le matin chez Sarah :\n- "Sarah, qu\'est-ce que tu manges au petit-déjeuner ?" - "Je mange du pain et je bois du lait chaud !"\n- "Et à midi ?" - "Au déjeuner, je mange du riz avec de la viande."',
+    rulesAr: [
+      'Les 3 repas de la journée : le petit-déjeuner (وجبة الفطور), le déjeuner (وجبة الغداء), le dîner (وجبة العشاء).',
+      'Les Aliments de base : le pain (الخبز), le lait (الحليب), le riz (الأرز), la viande (اللحم), le poisson (السمك), les œufs (البيض), le fromage (الجبن).',
+      'Le Verbe MANGER au présent (1er groupe) : Je mange | Tu manges | Il mange / Elle mange.',
+      'Le Verbe BOIRE au présent (irrégulier) : Je bois | Tu bois | Il boit / Elle boit.',
+      'Les Sons AU / EAU : "au" (*chaud*, *jaune*) et "eau" (*eau*, *gâteau*) se lisent tous les deux /o/.'
+    ],
+    interactiveTool: 'french_lab',
+    examplesAr: [
+      {
+        problem: 'Complète avec le verbe MANGER : "Le matin, je ..... du pain."',
+        solution: 'mange (Le matin, je mange du pain).'
+      }
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-fr3ap-p4s1-1',
+        level: 1,
+        levelLabelAr: '🟢 Niveau 1 — Facile',
+        problemAr: 'Quel repas prend-on le matin ?',
+        hintsAr: ['Premier repas de la journée'],
+        solutionAr: 'Le petit-déjeuner',
+        detailedCorrectionAr: 'Bravo ! 👏 On prend le petit-déjeuner le matin.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-fr3ap-p4s1-2',
+        level: 2,
+        levelLabelAr: '🟡 Niveau 2 — Moyen',
+        problemAr: 'Lit le mot avec le son EAU : G + Â + T + EAU = ?',
+        hintsAr: ['Un dessert sucré qu\'on mange à l\'anniversaire 🎂'],
+        solutionAr: 'GÂTEAU',
+        detailedCorrectionAr: 'Délicieux ! 🎂 G-Â-T-EAU forme le mot "Gâteau".',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-fr3ap-p4s1',
+      type: 'quiz_flash',
+      titleAr: '🎮 Jeu des Repas et des Aliments',
+      instructionsAr: 'Trouve le bon mot ou la bonne conjugaison !',
+      items: [
+        { questionOrPromptAr: 'Je ..... du lait (Verbe BOIRE)', correctAnswerAr: 'bois', optionsAr: ['bois', 'boit', 'manges'], explanationAr: 'Avec "Je", on dit : Je bois.' },
+        { questionOrPromptAr: 'Le repas du soir s\'appelle...', correctAnswerAr: 'le dîner', optionsAr: ['le dîner', 'le déjeuner', 'le petit-déjeuner'], explanationAr: 'Le repas du soir est le dîner.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-p4s1',
+        questionAr: 'Comment conjugue-t-on le verbe MANGER avec "Tu" ?',
+        options: [
+          { id: 'a', textAr: 'Tu manges', isCorrect: true, explanationAr: 'Exactement ! On dit : Tu manges (avec un S).' },
+          { id: 'b', textAr: 'Tu mange', isCorrect: false, explanationAr: 'Avec "Tu", il faut ajouter un S : Tu manges.' },
+          { id: 'c', textAr: 'Tu manger', isCorrect: false, explanationAr: 'C\'est l\'infinitif ; il faut conjuguer : Tu manges.' },
+        ]
+      },
+      {
+        id: 'q2-p4s1',
+        questionAr: 'Quel repas prend-on à midi ?',
+        options: [
+          { id: 'a', textAr: 'Le déjeuner', isCorrect: true, explanationAr: 'Bravo ! Le déjeuner se prend à midi.' },
+          { id: 'b', textAr: 'Le dîner', isCorrect: false, explanationAr: 'Le dîner se prend le soir, pas à midi.' },
+        ]
+      }
+    ]
+},
+
+{
+    id: 'french-3ap-p4-seq2-hunger-quantities',
+    grade: '3AP',
+    subject: 'french',
+    trimester: 3,
+    domainAr: 'Langue Française - Projet 4: Qu\'est-ce qu\'on mange ?',
+    sequenceAr: 'Séquence 2: Au marché et les petites quantités',
+    categoryAr: 'اللغة الفرنسية - الجوع والعطش والكميات البسيطة',
+    titleAr: 'P4-S2 : AU MARCHÉ (J\'AI FAIM / J\'AI SOIF, PETITES QUANTITÉS & SON qu)',
+    summaryAr: 'Expressions J\'ai faim / J\'ai soif, vocabulaire des fruits et légumes au marché, petites quantités (un peu de, beaucoup de) et étude du son QU.',
+    objectiveAr: 'Exprimer la faim et la soif, utiliser des quantités simples, et lire des mots avec le son QU.',
+    objectivesAr: [
+        'J\'exprime la faim et la soif avec "J\'ai faim" / "J\'ai soif".',
+        'J\'utilise des quantités simples : un peu de, beaucoup de.',
+        'Je lis des mots contenant le son QU.',
+    ],
+    detailedCourse: {
+        introAr: 'Au marché, on achète les aliments pour la maison. Pour dire qu\'on a besoin de manger ou de boire, on dit "J\'ai faim" ou "J\'ai soif" — avec le verbe AVOIR, pas ÊTRE.',
+        vocabulary: [
+            { termAr: 'J\'ai faim / J\'ai soif', definitionAr: 'Expressions avec le verbe AVOIR pour dire qu\'on a besoin de manger ou de boire.' },
+            { termAr: 'Un peu de / Beaucoup de', definitionAr: 'Expressions de quantité : un peu de (كمية قليلة) et beaucoup de (كمية كبيرة).' },
+        ],
+        visualizationHintAr: 'Imagine que tu es au marché avec ta maman : nomme 3 fruits et 3 légumes que tu voudrais acheter, en français.',
+        commonMistakes: [
+            { mistakeAr: 'Dire "Je suis faim" au lieu de "J\'ai faim".', correctionAr: 'En français, la faim et la soif utilisent le verbe AVOIR : "J\'ai faim", jamais "Je suis faim".' },
+        ],
+        takeawayAr: 'J\'ai faim / J\'ai soif (verbe AVOIR). Un peu de.../Beaucoup de... pour les quantités. Le son QU se lit /k/ (quatre, coq).',
+    },
+    keyFormulas: [
+        { labelAr: 'Exprimer la faim et la soif', formulaAr: 'J\'ai faim (أنا جائع) | J\'ai soif (أنا عطشان)' },
+    ],
+    discoveryAr: 'Au marché avec Grand-mère :\n- "Grand-mère, j\'ai faim !" - "Alors prenons des fruits : un peu de raisin et beaucoup de pommes !"\n- "Et j\'ai soif aussi !" - "On achète de l\'eau fraîche."',
+    rulesAr: [
+      'Exprimer la faim et la soif avec AVOIR : J\'ai faim (أنا جائع) | J\'ai soif (أنا عطشان) | Il/Elle a faim, Il/Elle a soif.',
+      'Fruits et légumes du marché : le raisin (العنب), la carotte (الجزر), la pomme de terre (البطاطا), l\'oignon (البصل), la banane (الموز).',
+      'Les Quantités simples : un peu de... (قليل من) / beaucoup de... (كثير من). Exemple : "Un peu de sucre" / "Beaucoup de légumes".',
+      'Le Son QU : se lit toujours /k/, jamais /kw/ (*quatre*, *coq* — ici avec un C, mais même son /k/).'
+    ],
+    interactiveTool: 'french_lab',
+    examplesAr: [
+      {
+        problem: 'Comment dit-on "أنا جائع" en français ?',
+        solution: 'J\'ai faim.'
+      }
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-fr3ap-p4s2-1',
+        level: 1,
+        levelLabelAr: '🟢 Niveau 1 — Facile',
+        problemAr: 'Comment dit-on qu\'on a besoin de boire, en français ?',
+        hintsAr: ['J\'ai + un mot qui veut dire "envie de boire"'],
+        solutionAr: 'J\'ai soif',
+        detailedCorrectionAr: 'Bravo ! 👏 On dit "J\'ai soif" pour exprimer le besoin de boire.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-fr3ap-p4s2-2',
+        level: 2,
+        levelLabelAr: '🟡 Niveau 2 — Moyen',
+        problemAr: 'Lit le mot avec le son QU : Q + U + A + T + R + E = ?',
+        hintsAr: ['Le chiffre après trois'],
+        solutionAr: 'QUATRE',
+        detailedCorrectionAr: 'Parfait ! 🔢 Q-U-A-T-R-E forme le mot "Quatre".',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-fr3ap-p4s2',
+      type: 'association',
+      titleAr: '🎮 Jeu du Marché : Faim, Soif et Quantités',
+      instructionsAr: 'Associe chaque situation à la bonne expression !',
+      items: [
+        { questionOrPromptAr: 'Tu veux boire de l\'eau (Comment le dire ?)', correctAnswerAr: 'J\'ai soif', optionsAr: ['J\'ai soif', 'J\'ai faim', 'Je suis fatigué'], explanationAr: 'On dit "J\'ai soif" pour exprimer le besoin de boire.' },
+        { questionOrPromptAr: 'Beaucoup de... (Quantité)', correctAnswerAr: 'كثير من', optionsAr: ['كثير من', 'قليل من', 'لا شيء'], explanationAr: '"Beaucoup de" veut dire كثير من.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-p4s2',
+        questionAr: 'Quelle expression utilise-t-on pour dire qu\'on a besoin de manger ?',
+        options: [
+          { id: 'a', textAr: 'J\'ai faim', isCorrect: true, explanationAr: 'Exactement ! "J\'ai faim" exprime le besoin de manger.' },
+          { id: 'b', textAr: 'Je suis faim', isCorrect: false, explanationAr: 'On utilise le verbe AVOIR, pas ÊTRE : "J\'ai faim".' },
+          { id: 'c', textAr: 'J\'ai soif', isCorrect: false, explanationAr: '"J\'ai soif" exprime le besoin de boire, pas de manger.' },
+        ]
+      },
+      {
+        id: 'q2-p4s2',
+        questionAr: 'Quel son entend-on dans le mot "QUATRE" ?',
+        options: [
+          { id: 'a', textAr: 'Le son /k/', isCorrect: true, explanationAr: 'Bravo ! QU se lit toujours /k/.' },
+          { id: 'b', textAr: 'Le son /g/', isCorrect: false, explanationAr: 'QU ne se lit jamais /g/, toujours /k/.' },
         ]
       }
     ]
@@ -821,7 +1104,17 @@ export const FRENCH_3AP: CourseLesson[] = [
         questionAr: 'Quelle est la forme négative pour exprimer qu\'on n\'aime pas quelque chose ?',
         options: [
           { id: 'a', textAr: 'Je n\'aime pas...', isCorrect: true, explanationAr: 'Bravo ! "Je n\'aime pas..." est la formule négative.' },
-          { id: 'b', textAr: 'J\'aime...', isCorrect: false }
+          { id: 'b', textAr: 'J\'aime...', isCorrect: false, explanationAr: '"J\'aime..." est la forme affirmative (positive), pas négative.' },
+          { id: 'c', textAr: 'Je n\'aime...', isCorrect: false, explanationAr: 'Il manque le mot "pas" à la fin ; la négation complète est "Je n\'aime pas...".' }
+        ]
+      },
+      {
+        id: 'q2-p3s2',
+        questionAr: 'Comment se lit le son "OI" dans le mot "OISEAU" ?',
+        options: [
+          { id: 'a', textAr: '/wa/', isCorrect: true, explanationAr: 'Exact ! Le son OI se lit /wa/, comme dans oiseau et poisson.' },
+          { id: 'b', textAr: '/ɲ/', isCorrect: false, explanationAr: 'Le son /ɲ/ correspond à "GN" (comme dans agneau), pas à "OI".' },
+          { id: 'c', textAr: '/ij/', isCorrect: false, explanationAr: 'Le son /ij/ correspond à "ILL" (comme dans papillon), pas à "OI".' }
         ]
       }
     ]

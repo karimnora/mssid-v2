@@ -41,10 +41,12 @@ export const MATH_5AP_CIRCLE: CourseLesson[] = [
       {
         problem: 'شعاع دائرة ساعة الحائط 12 cm. ما طول القطر؟',
         solution: 'ق = 2 × 12 = 24 cm.',
+        operationsAr: 'ق = 2 × ش\n= 2 × 12\n= 24 cm',
       },
       {
         problem: 'قطر صحن دائري 18 cm. ما طول الشعاع؟',
         solution: 'ش = 18 ÷ 2 = 9 cm.',
+        operationsAr: 'ش = ق ÷ 2\n= 18 ÷ 2\n= 9 cm',
       },
     ],
     detailedCourse: {

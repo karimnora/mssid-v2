@@ -4,6 +4,8 @@ import { BookOpen, Lightbulb, Sparkles, CheckCircle2, ArrowLeft, ArrowRight, Zap
 import { LoadingFallback } from './LoadingFallback';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
+import { IrabTable, irabAnalysisHeaderForGrade } from './lessonViewer/IrabTable';
 
 // R2.1 — same lazy split as LessonViewer.tsx (this was the other static import forcing
 // ScienceLabSimulation, and transitively ElectricityLabInteractive, back into the main chunk).
@@ -583,10 +585,11 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
                             <span className="text-amber-400">❓ المسألة / التطبيق: </span>
                             {formatEducationalText(lesson.examplesAr[selectedExampleIndex].problem)}
                           </div>
-                          <div className="text-xs text-emerald-300 font-bold bg-emerald-950/60 p-3 rounded-lg border border-emerald-800/60 whitespace-pre-line">
-                            <span className="text-emerald-400 block mb-1">💡 الحل والتبسيط المباشر: </span>
-                            {formatEducationalText(lesson.examplesAr[selectedExampleIndex].solution)}
-                          </div>
+                          <MathWorkedExample
+                            solution={lesson.examplesAr[selectedExampleIndex].solution}
+                            operationsAr={lesson.examplesAr[selectedExampleIndex].operationsAr}
+                            tone="dark"
+                          />
                         </div>
                       )}
                     </div>
@@ -597,6 +600,17 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
               {/* 2. ARABIC SUBJECT SIMULATOR */}
               {lesson.subject === 'arabic' && (
                 <div className="space-y-5">
+                  {lesson.irabTableAr && lesson.irabTableAr.length > 0 && (
+                    <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-amber-200 space-y-3">
+                      <h4 className="text-xs font-extrabold text-amber-800">
+                        {lesson.grade === '3AP' ? 'دَوْرُ كُلِّ كَلِمَةٍ فِي الجُمْلَةِ' : 'جَدْوَلُ الإِعْرَابِ'}
+                      </h4>
+                      <IrabTable
+                        rows={lesson.irabTableAr}
+                        analysisLabelAr={irabAnalysisHeaderForGrade(lesson.grade)}
+                      />
+                    </div>
+                  )}
                   <div className="bg-slate-950 p-4 sm:p-5 rounded-2xl border border-slate-800 space-y-4">
                     <div className="space-y-2">
                       <label className="text-xs font-extrabold text-amber-300 block">

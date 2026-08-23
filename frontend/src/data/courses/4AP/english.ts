@@ -1,6 +1,6 @@
 import { CourseLesson } from '../../../types';
 
-// 6 leçon(s) — english / 4AP
+// 7 leçon(s) — english / 4AP
 export const ENGLISH_4AP: CourseLesson[] = [
 // ==========================================
 // 17. ENGLISH LANGUAGE - 4AP (اللغة الإنجليزية - السنة الرابعة ابتدائي الجيل الثاني)
@@ -198,6 +198,104 @@ export const ENGLISH_4AP: CourseLesson[] = [
                 { id: 'c', textAr: 'under', isCorrect: false }
             ]
         }
+    ]
+},
+
+{
+    id: 'english-4ap-unit2-basic-time-routines',
+    grade: '4AP',
+    subject: 'english',
+    categoryAr: 'Unit 2: My Daily Routine',
+    trimester: 1,
+    objectivesAr: [
+        'أَسْأَلُ عَنِ الوَقْتِ وَأُجِيبُ بِـ "It\'s ... o\'clock".',
+        'أَصِفُ رُوتِينِي اليَوْمِيَّ بِأَفْعَالٍ بَسِيطَةٍ فِي الحَاضِرِ.',
+    ],
+    detailedCourse: {
+        introAr: 'لمعرفة الوقت بالإنجليزية نسأل "What time is it?" ونجيب بـ "It\'s ... o\'clock". ولوصف يومنا نستعمل أفعالاً بسيطة مثل wake up وgo to school.',
+        vocabulary: [
+            { termAr: 'What time is it?', definitionAr: 'سؤال عن الوقت الحالي، الإجابة عليه تكون بصيغة "It\'s ... o\'clock".' },
+            { termAr: 'Daily routine', definitionAr: 'الأنشطة التي نقوم بها كل يوم بنفس الترتيب تقريباً، مثل الاستيقاظ والذهاب للمدرسة.' },
+        ],
+        visualizationHintAr: 'ارسم ساعة بعقارب متحركة مع طفلك واطلب منه قول الوقت بالإنجليزية "It\'s ... o\'clock" لأوقات مختلفة من يومه.',
+        commonMistakes: [
+            { mistakeAr: 'نسيان "o\'clock" عند الإجابة عن السؤال عن الوقت.', correctionAr: 'الإجابة الكاملة يجب أن تحتوي "o\'clock" بعد الرقم: "It\'s seven o\'clock"، وليس "It\'s seven" فقط.' },
+        ],
+        takeawayAr: 'What time is it? - It\'s [number] o\'clock. Daily routine: wake up, get up, eat breakfast, go to school, go to bed.',
+    },
+    titleAr: 'Unit 2: What Time Is It? My Daily Routine (Telling the Hour with o\'clock)',
+    summaryAr: `Pupils learn to ask and tell the time using "What time is it? - It's ... o'clock", and to describe their daily routine with simple present verbs (wake up, get up, eat breakfast, go to school, go to bed) — the foundation for reading half-past and quarter-past times in the next lesson.`,
+    rulesAr: [
+      'Asking the Time: "What time is it?" (كم الساعة؟) ➔ "It\'s [number] o\'clock" (الساعة كذا تماماً).',
+      'Daily Routine Verbs: wake up (أستيقظ), get up (أنهض), eat breakfast (أتناول الفطور), go to school (أذهب إلى المدرسة), do homework (أُنجز واجباتي), go to bed (أخلد إلى النوم).',
+      'Structure with Time: "I [verb] at [time] o\'clock." Example: "I wake up at seven o\'clock." "I go to bed at nine o\'clock."',
+      'Order of the Day: morning (الصباح) ➔ afternoon (بعد الظهر) ➔ evening (المساء) ➔ night (الليل).'
+    ],
+    keyFormulas: [
+        { labelAr: 'Telling the time', formulaAr: 'It\'s + [number] + o\'clock' },
+    ],
+    examplesAr: [
+      {
+        problem: 'How do you ask "كم الساعة؟" in English?',
+        solution: '"What time is it?"'
+      },
+      {
+        problem: 'How do you say "أذهب إلى المدرسة الساعة الثامنة" in English?',
+        solution: '"I go to school at eight o\'clock."'
+      }
+    ],
+    interactiveTool: 'english_lab',
+    progressiveExercises: [
+      {
+        id: 'ex1-en4ap-time-1',
+        level: 1,
+        levelLabelAr: '🟢 Level 1 — Easy',
+        problemAr: 'How do you say "أستيقظ" in English?',
+        hintsAr: ['Two words: wake ...'],
+        solutionAr: 'Wake up',
+        detailedCorrectionAr: 'Well done! 🌅 "Wake up" means أستيقظ.',
+        xpReward: 10
+      },
+      {
+        id: 'ex2-en4ap-time-2',
+        level: 2,
+        levelLabelAr: '🟡 Level 2 — Medium',
+        problemAr: 'Complete: "It\'s eight ....." (الساعة الثامنة تماماً)',
+        hintsAr: ['A word that always follows the hour number'],
+        solutionAr: "o'clock",
+        detailedCorrectionAr: 'Awesome! 🎯 "It\'s eight o\'clock" means الساعة الثامنة تماماً.',
+        xpReward: 15
+      }
+    ],
+    educationalGame: {
+      id: 'game-en4ap-time-routines',
+      type: 'association',
+      titleAr: '🎮 My Day Time Challenge',
+      instructionsAr: 'Match the daily activity to its correct time expression!',
+      items: [
+        { questionOrPromptAr: 'I ..... at seven o\'clock in the morning.', correctAnswerAr: 'wake up', optionsAr: ['wake up', 'go to bed', 'eat dinner'], explanationAr: 'We wake up in the morning.' },
+        { questionOrPromptAr: 'I ..... at nine o\'clock at night.', correctAnswerAr: 'go to bed', optionsAr: ['go to bed', 'wake up', 'go to school'], explanationAr: 'We go to bed at night.' }
+      ],
+      xpReward: 20
+    },
+    quiz: [
+      {
+        id: 'q1-time-routines',
+        questionAr: 'What is the correct answer to "What time is it?" when the clock shows 7:00?',
+        options: [
+          { id: 'a', textAr: 'It\'s seven o\'clock.', isCorrect: true, explanationAr: 'Correct! "It\'s seven o\'clock" is the right way to tell the time.' },
+          { id: 'b', textAr: 'It\'s seven.', isCorrect: false, explanationAr: 'A full answer must include "o\'clock" after the number.' },
+          { id: 'c', textAr: 'It\'s seven minutes.', isCorrect: false, explanationAr: '"o\'clock" means the exact hour, not minutes.' },
+        ]
+      },
+      {
+        id: 'q2-time-routines',
+        questionAr: 'Which verb means "أذهب إلى المدرسة" ?',
+        options: [
+          { id: 'a', textAr: 'go to school', isCorrect: true, explanationAr: 'Correct! "go to school" means أذهب إلى المدرسة.' },
+          { id: 'b', textAr: 'go to bed', isCorrect: false, explanationAr: '"go to bed" means أخلد إلى النوم, not أذهب إلى المدرسة.' },
+        ]
+      }
     ]
 },
 

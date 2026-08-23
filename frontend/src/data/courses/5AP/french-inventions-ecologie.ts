@@ -24,7 +24,7 @@ export const FRENCH_5AP_INVENTIONS: CourseLesson[] = [
     missionTitleAr: '🌱 Mission : Inventeur écolo',
     missionIntroAr:
       'Ta classe prépare une exposition : une invention qui aide la planète. Tu présentes le projet au futur simple.',
-    titleAr: 'Projet 3 (complément officiel) : Inventions et écologie — vocabulaire, futur simple, production écrite',
+    titleAr: 'Projet 3 : Inventions et écologie — vocabulaire, futur simple, production écrite',
     summaryAr:
       "L'élève découvre le lexique des inventions et de l'écologie (recycler, trier, éolienne, solaire), conjugue au futur simple, et rédige un petit texte sur un geste écologique en Algérie (tri à l'école, énergie solaire au Sahara).",
     detailedCourse: {

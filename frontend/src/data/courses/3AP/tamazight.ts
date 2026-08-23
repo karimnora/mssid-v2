@@ -53,8 +53,17 @@ export const TAMAZIGHT_3AP: CourseLesson[] = [
         questionAr: 'أي من الحروف التالية يمثل حرف الميم (M) بالتيفيناغ ؟',
         options: [
           { id: 'a', textAr: 'ⵎ (Yam / M)', isCorrect: true, explanationAr: 'أحسنت! ⵎ هو حرف الميم التيفيناغي.' },
-          { id: 'b', textAr: 'ⴰ (A)', isCorrect: false },
-          { id: 'c', textAr: 'ⴱ (B)', isCorrect: false },
+          { id: 'b', textAr: 'ⴰ (A)', isCorrect: false, explanationAr: 'لا، ⴰ ينطق مثل الألف المفتوحة (A) كما في Aman، وليس الميم.' },
+          { id: 'c', textAr: 'ⴱ (B)', isCorrect: false, explanationAr: 'لا، ⴱ ينطق مثل الباء (B) كما في Baba، وليس الميم.' },
+        ],
+      },
+      {
+        id: 'q2-lettres',
+        questionAr: 'ماذا تعني كلمة « Azul » (ⴰⵣⵓⵍ) بالأمازيغية ؟',
+        options: [
+          { id: 'a', textAr: 'مرحباً وسلاماً', isCorrect: true, explanationAr: 'صحيح! Azul تحية أمازيغية جميلة تعني مرحباً وسلاماً.' },
+          { id: 'b', textAr: 'الماء', isCorrect: false, explanationAr: 'لا، هذا معنى كلمة Aman (الماء الصافي)، وليس Azul.' },
+          { id: 'c', textAr: 'الرسم والكتابة', isCorrect: false, explanationAr: 'لا، هذا معنى كلمة Tira (الرسم والكتابة)، وليس Azul.' },
         ],
       },
     ],
@@ -112,8 +121,17 @@ export const TAMAZIGHT_3AP: CourseLesson[] = [
         questionAr: 'ماذا يعني اللون « Azegzaw » (ⴰⵣⴻⴳⵣⴰⵡ) ؟',
         options: [
           { id: 'a', textAr: 'الأخضر', isCorrect: true, explanationAr: 'ممتاز! Azegzaw هو اللون الأخضر لون الطبيعة والربيع.' },
-          { id: 'b', textAr: 'الأصفر', isCorrect: false },
-          { id: 'c', textAr: 'الأسود', isCorrect: false },
+          { id: 'b', textAr: 'الأصفر', isCorrect: false, explanationAr: 'لا، الأصفر هو Awraɣ وليس Azegzaw.' },
+          { id: 'c', textAr: 'الأسود', isCorrect: false, explanationAr: 'لا، الأسود هو Aberkan وليس Azegzaw.' },
+        ],
+      },
+      {
+        id: 'q2-couleurs',
+        questionAr: 'ماذا يعني اللون « Awraɣ » (ⴰⵡⵔⴰⵖ) ؟',
+        options: [
+          { id: 'a', textAr: 'الأصفر', isCorrect: true, explanationAr: 'صحيح! Awraɣ هو الأصفر، لون الرمال والشمس.' },
+          { id: 'b', textAr: 'الأحمر', isCorrect: false, explanationAr: 'لا، الأحمر هو Azeggaɣ وليس Awraɣ.' },
+          { id: 'c', textAr: 'الأبيض', isCorrect: false, explanationAr: 'لا، الأبيض هو Amellal وليس Awraɣ.' },
         ],
       },
     ],
@@ -169,8 +187,17 @@ export const TAMAZIGHT_3AP: CourseLesson[] = [
         questionAr: 'ماذا تعني كلمة « Afus » (ⴰⴼⵓⵙ) ؟',
         options: [
           { id: 'a', textAr: 'اليد', isCorrect: true, explanationAr: 'أحسنت! Afus تعني اليد، ومنها عبارة "Afus deg ufus" (يداً في يد).' },
-          { id: 'b', textAr: 'العين', isCorrect: false },
-          { id: 'c', textAr: 'الرأس', isCorrect: false },
+          { id: 'b', textAr: 'العين', isCorrect: false, explanationAr: 'لا، العين هي Tiṭ وليس Afus.' },
+          { id: 'c', textAr: 'الرأس', isCorrect: false, explanationAr: 'لا، الرأس هو Aqerru وليس Afus.' },
+        ],
+      },
+      {
+        id: 'q2-corps',
+        questionAr: 'ماذا تعني كلمة « Tiṭ » (ⵜⵉⵟ) ؟',
+        options: [
+          { id: 'a', textAr: 'العين', isCorrect: true, explanationAr: 'صحيح! Tiṭ تعني العين، للإبصار ورؤية الجمال.' },
+          { id: 'b', textAr: 'اليد', isCorrect: false, explanationAr: 'لا، اليد هي Afus وليس Tiṭ.' },
+          { id: 'c', textAr: 'القلب', isCorrect: false, explanationAr: 'لا، القلب هو Ul وليس Tiṭ.' },
         ],
       },
     ],

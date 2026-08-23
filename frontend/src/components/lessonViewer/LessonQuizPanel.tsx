@@ -6,6 +6,7 @@ import { Trophy, Award, Shuffle, RotateCcw, CheckCircle2, XCircle, Lightbulb } f
 import { ConfettiBurst } from './ConfettiBurst';
 import { tabTransition } from './shared';
 import { TapSpeakButton } from './TapSpeakButton';
+import { getQuizFeedback, quizFeedbackSpeakText } from './quizFeedback';
 
 interface LessonQuizPanelProps {
   lesson: CourseLesson;
@@ -177,6 +178,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
           const isAnswered = selected !== undefined;
           const correctOpt = q.options.find((o) => o.isCorrect);
           const isUserCorrect = !!selected && !!correctOpt && selected === correctOpt.id;
+          const feedback = getQuizFeedback(q, selected);
 
           return (
             <div
@@ -298,38 +300,37 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
               </div>
 
               <AnimatePresence>
-                {isAnswered && (
+                {isAnswered && feedback && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={tabTransition}
-                    className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-xs text-[var(--app-text)] space-y-1 font-sans leading-relaxed overflow-hidden"
+                    className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-xs text-[var(--app-text)] space-y-2 font-sans leading-relaxed overflow-hidden"
+                    data-quiz-feedback={feedback.isCorrect ? 'correct' : 'wrong'}
                   >
-                    <span className="font-extrabold text-[var(--brand-blue-dark)] block flex items-center gap-1.5">
+                    <span className="font-extrabold text-[var(--brand-blue-dark)] flex items-center gap-1.5">
                       <Lightbulb className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
                       {onSpeak && (
                         <TapSpeakButton
                           snippetKey={`quiz-${q.id}-why`}
-                          text={
-                            q.options.find((o) => o.isCorrect)?.explanationAr ||
-                            q.options.find((o) => o.id === selected)?.explanationAr ||
-                            ''
-                          }
+                          text={quizFeedbackSpeakText(feedback)}
                           speakingKey={speakingKey}
                           onSpeak={onSpeak}
                           size="md"
                         />
                       )}
-                      <span>{playful ? 'لِمَاذَا؟' : 'التفسير والشرح العلمي للحل:'}</span>
+                      <span>{playful ? 'لِمَاذَا؟' : feedback.primaryLabelAr}</span>
                     </span>
                     <p className="text-[var(--app-text)] font-medium">
-                      {renderArabicText(
-                        q.options.find((o) => o.isCorrect)?.explanationAr ||
-                          q.options.find((o) => o.id === selected)?.explanationAr ||
-                          'الإجابة الصحيحة تم اختيارها استناداً لقاعدة الدرس الذهبية.',
-                      )}
+                      {renderArabicText(feedback.primaryAr)}
                     </p>
+                    {feedback.correctAr && (
+                      <p className="text-[var(--brand-emerald-dark)] font-semibold bg-[var(--brand-emerald)]/10 p-3 rounded-xl border border-[var(--brand-emerald)]/25">
+                        <span className="font-extrabold block mb-1">الصواب:</span>
+                        {renderArabicText(feedback.correctAr)}
+                      </p>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>

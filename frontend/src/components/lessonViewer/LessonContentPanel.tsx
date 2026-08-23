@@ -7,6 +7,8 @@ import { formatEducationalText } from '../../utils/textFormatter';
 import { BookOpen, GraduationCap, Lightbulb, Sparkles, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import { tabTransition } from './shared';
 import { TapSpeakButton } from './TapSpeakButton';
+import { MathWorkedExample } from './MathWorkedExample';
+import { IrabTable, irabAnalysisHeaderForGrade } from './IrabTable';
 
 const ScientificInquiryFlow = lazy(() => import('../ScientificInquiryFlow').then((m) => ({ default: m.ScientificInquiryFlow })));
 
@@ -190,6 +192,18 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
       </Card>
     )}
 
+    {lesson.irabTableAr && lesson.irabTableAr.length > 0 && (
+      <Card padding="none" className="p-5 sm:p-6 space-y-4">
+        <h3 className="font-extrabold text-base sm:text-lg text-[var(--app-text)]">
+          {lesson.grade === '3AP' ? 'دَوْرُ كُلِّ كَلِمَةٍ فِي الجُمْلَةِ' : 'جَدْوَلُ الإِعْرَابِ'}
+        </h3>
+        <IrabTable
+          rows={lesson.irabTableAr}
+          analysisLabelAr={irabAnalysisHeaderForGrade(lesson.grade)}
+        />
+      </Card>
+    )}
+
     <Card padding="none" className="p-5 sm:p-6 space-y-5">
       <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-3 flex-wrap gap-2">
         <div>
@@ -244,13 +258,18 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
                 </div>
                 <div className="bg-[var(--app-card-bg)] p-3 rounded-lg border border-[var(--brand-emerald)]/25 text-[var(--app-text)] font-medium leading-relaxed font-sans whitespace-pre-line">
                   {matchingExample ? (
-                    <span>
-                      <strong className="text-[var(--brand-emerald-dark)]">التطبيق: </strong>
-                      {formatEducationalText(matchingExample.problem)}
-                      <br />
-                      <strong className="text-[var(--brand-blue-dark)]">الحل والنتيجة: </strong>
-                      <span className="text-[var(--brand-blue-dark)] font-bold">{formatEducationalText(matchingExample.solution)}</span>
-                    </span>
+                    <div className="space-y-3">
+                      <p>
+                        <strong className="text-[var(--brand-emerald-dark)]">التطبيق: </strong>
+                        {formatEducationalText(matchingExample.problem)}
+                      </p>
+                      <MathWorkedExample
+                        solution={matchingExample.solution}
+                        operationsAr={matchingExample.operationsAr}
+                        renderArabicText={renderArabicText}
+                        tone="light"
+                      />
+                    </div>
                   ) : hasExplicitExample ? (
                     <span>
                       تطبيق القاعدة مبيّن أعلاه في الجزء المحدد بكلمة (مثال)، حيث تلاحظ تحويل النظرية إلى نتيجة حاسمة بسيطة.
@@ -342,10 +361,14 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={tabTransition}
-                    className="text-xs sm:text-sm text-emerald-200 font-sans border-t border-emerald-900/60 pt-3 leading-relaxed bg-emerald-950/80 p-4 rounded-xl border border-emerald-800/80 whitespace-pre-line overflow-hidden"
+                    className="border-t border-emerald-900/60 pt-3 overflow-hidden"
                   >
-                    <span className="font-extrabold text-amber-300 block mb-1">💡 الحل والتبسيط النموذجي:</span>
-                    {formatEducationalText(renderArabicText(ex.solution))}
+                    <MathWorkedExample
+                      solution={ex.solution}
+                      operationsAr={ex.operationsAr}
+                      renderArabicText={renderArabicText}
+                      tone="dark"
+                    />
                   </motion.div>
                 )}
               </AnimatePresence>

@@ -635,7 +635,14 @@ export interface CourseLesson {
   summaryAr: string;
   rulesAr: string[];
   keyFormulas?: KeyFormula[];
-  examplesAr?: { problem: string; solution: string }[];
+  // `operationsAr` is optional and math-specific: when present, LessonContentPanel/LessonExplanationView
+  // render the official Algerian 2-column layout (العمليات right, الحل/الأجوبة left) instead of a
+  // single flat solution paragraph — see CLAUDE.md's "Structure des Problèmes Mathématiques".
+  examplesAr?: { problem: string; solution: string; operationsAr?: string }[];
+  // Arabic grammar only: the official Algerian two-column إعراب table — الكلمة (word) on one side,
+  // إعرابها (its grammatical analysis) on the other — see CLAUDE.md's "Module I'rab" layout rule.
+  // Rendered by LessonContentPanel as a dedicated RTL table, distinct from the free-text rulesAr prose.
+  irabTableAr?: { wordAr: string; analysisAr: string }[];
   interactiveTool?: 'soroban' | 'unit_converter' | 'geometry_visualizer' | 'multiplication_table' | 'arabic_conjugator' | 'science_lab' | 'touch_writing' | 'tamazight_lab' | 'french_lab' | 'english_lab' | 'history_geo_lab' | 'islamic_lab' | 'arabic_canvas' | 'civics_lab' | 'math_lab' | 'french_dialogue_lab' | 'english_dialogue_lab' | 'clock_trainer';
   gameplay_simulation?: GameplaySimulation;
   quiz: QuizQuestion[];
