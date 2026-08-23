@@ -269,11 +269,18 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                       )}
                     </div>
 
-                    <div dir={isLtrSubject ? 'ltr' : 'rtl'} className="text-right">
-                      <h3 className="text-sm font-extrabold font-sans text-[var(--app-text)]">{lesson.titleAr}</h3>
-                      <p className="text-xs text-[var(--app-text-muted)] mt-1 line-clamp-2 leading-relaxed">
-                        {lesson.summaryAr}
-                      </p>
+                    <div dir={isLtrSubject ? 'ltr' : 'rtl'} className="text-right flex items-center gap-2">
+                      {isSimpleCard && <span className="text-2xl shrink-0">{SUBJECT_EMOJI[selectedSubject] || '📘'}</span>}
+                      <div className="min-w-0">
+                        <h3 className={isSimpleCard ? 'text-base font-extrabold font-sans text-[var(--app-text)]' : 'text-sm font-extrabold font-sans text-[var(--app-text)]'}>
+                          {lesson.titleAr}
+                        </h3>
+                        {!isSimpleCard && (
+                          <p className="text-xs text-[var(--app-text-muted)] mt-1 line-clamp-2 leading-relaxed">
+                            {lesson.summaryAr}
+                          </p>
+                        )}
+                      </div>
                     </div>
 
                     <div className="flex items-center justify-between pt-2 border-t border-[var(--app-card-border)] text-[11px] font-bold text-[var(--app-text-muted)]">
@@ -285,7 +292,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                             ))}
                           </span>
                         )}
-                        {lesson.quiz && lesson.quiz.length > 0 && (
+                        {!isSimpleCard && lesson.quiz && lesson.quiz.length > 0 && (
                           <span dir="ltr">{lesson.quiz.length} أسئلة</span>
                         )}
                       </div>

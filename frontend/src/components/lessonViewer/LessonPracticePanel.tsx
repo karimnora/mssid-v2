@@ -115,8 +115,8 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                             : 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold'
                           : isThisSelected
                           ? playful
-                            ? 'bg-rose-100 text-rose-800 border border-rose-200'
-                            : 'bg-rose-500/25 text-rose-200 border border-rose-400/50'
+                            ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                            : 'bg-amber-500/25 text-amber-200 border border-amber-400/50'
                           : playful
                             ? 'bg-slate-50 text-slate-400'
                             : 'bg-white/5 text-purple-300/60';
@@ -145,7 +145,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                   </div>
                 )}
                 {isAnswered && item.explanationAr && (
-                  <p className={`text-sm ${isCorrect ? (playful ? 'text-emerald-700' : 'text-emerald-300') : (playful ? 'text-rose-700' : 'text-rose-300')}`}>
+                  <p className={`text-sm ${isCorrect ? (playful ? 'text-emerald-700' : 'text-emerald-300') : (playful ? 'text-amber-800' : 'text-amber-300')}`}>
                     {isCorrect ? '✅ ' : '💡 '}{renderArabicText(item.explanationAr)}
                   </p>
                 )}

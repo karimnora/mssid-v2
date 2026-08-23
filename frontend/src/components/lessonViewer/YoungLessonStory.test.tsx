@@ -13,6 +13,7 @@ import {
   splitPlayfulLines,
   stripLatinGlosses,
 } from './youngLessonLayout';
+import { MATH_1AP } from '../../data/courses/1AP/math';
 
 const spatial: CourseLesson = {
   id: 'math-1ap-t1-spatial-relations',
@@ -100,6 +101,17 @@ describe('1AP playful lesson layout', () => {
     expect(snippet.emoji).toBe('☝️');
     expect(snippet.speak).not.toMatch(/Sur/);
     expect(snippet.speak.length).toBeLessThan(80);
+  });
+
+  it('shows a car for number 4, not the five-finger hand used for 5', () => {
+    const lesson = MATH_1AP.find((item) => item.id === 'math-1ap-t1-numbers-0-5');
+    const four = lesson?.rulesAr.find((rule) => rule.startsWith('4 '));
+    const five = lesson?.rulesAr.find((rule) => rule.startsWith('5 '));
+    expect(four).toBeTruthy();
+    expect(five).toBeTruthy();
+    expect(parsePlayfulSnippet(four!).emoji).toBe('🚗');
+    expect(parsePlayfulSnippet(four!).emoji).not.toBe(parsePlayfulSnippet(five!).emoji);
+    expect(four).not.toMatch(/🖐️|✋/);
   });
 
   it('splits a discovery into tap-sized lines so the child never hears the whole course', () => {
