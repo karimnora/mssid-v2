@@ -185,7 +185,9 @@ export default function App() {
         onOpenAiTutor={openAiTutor}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
         onOpenContactModal={() => modals.setIsContactModalOpen(true)}
-        onOpenMobileSimulator={() => modals.setIsMobileSimulatorOpen(true)}
+        /* Web-only marketing preview ("here's what the app looks like on a phone") — nonsensical
+           inside the native app itself, where the user already is the app. */
+        onOpenMobileSimulator={Capacitor.isNativePlatform() ? undefined : () => modals.setIsMobileSimulatorOpen(true)}
         onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
         onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}
         onOpenAdminConsole={() => nav.setIsAdminConsoleActive(true)}
