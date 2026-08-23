@@ -141,7 +141,6 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
           }}
         />
 
-        {/* Badge toast — shown on top of the activity player too */}
         <PreschoolBadgeToast
           badge={badgeQueue[0] ?? null}
           language={language}
@@ -163,7 +162,6 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
           onExit={() => setActiveModuleId(null)}
         />
 
-        {/* Module complete overlay */}
         <AnimatePresence>
           {moduleCompleteOverlay && (
             <PreschoolModuleCompleteOverlay

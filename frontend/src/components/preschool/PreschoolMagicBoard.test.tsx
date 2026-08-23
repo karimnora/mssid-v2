@@ -8,6 +8,7 @@ vi.mock('./usePreschoolAudio', () => ({
   playBubblePop: vi.fn(),
   resumeTownAudio: vi.fn(),
   usePreschoolSpeech: () => ({ speak: vi.fn() }),
+  usePreschoolMute: () => ({ muted: false, toggle: vi.fn(), setMuted: vi.fn() }),
 }));
 
 // Regression tests for: (1) removing the Eastern Arabic-Indic digits (١٢٣) that didn't match how

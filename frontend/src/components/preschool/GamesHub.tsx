@@ -15,6 +15,7 @@ import { LittleFisherGame } from './LittleFisherGame';
 import { DressDidoGame }    from './DressDidoGame';
 import { useLevelProgress } from './useLevelProgress';
 import { GAMES, GameId }    from './gamesHubCatalog';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 export type { GameId } from './gamesHubCatalog';
 export { GAMES } from './gamesHubCatalog';
@@ -69,7 +70,11 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
           <motion.div key={activeGame}
             initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }} transition={{ duration: 0.2 }}
+            className="relative"
           >
+            <div className="absolute top-4 end-4 z-20">
+              <PreschoolMuteButton language={language} />
+            </div>
             {renderGame()}
           </motion.div>
         ) : (
@@ -81,11 +86,14 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Header */}
               <div className="flex items-center justify-between gap-3 flex-wrap">
-                {onExit && (
-                  <button onClick={onExit}
-                    className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-indigo-50 cursor-pointer border border-indigo-200 transition-all active:scale-95"
-                  >🚪</button>
-                )}
+                <div className="flex items-center gap-2">
+                  {onExit && (
+                    <button onClick={onExit}
+                      className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-indigo-50 cursor-pointer border border-indigo-200 transition-all active:scale-95"
+                    >🚪</button>
+                  )}
+                  <PreschoolMuteButton language={language} className="border-indigo-200 text-indigo-800 hover:bg-indigo-50" />
+                </div>
                 <div className="flex-1 text-center">
                   <h1 className="text-2xl sm:text-3xl font-black text-indigo-950">{title}</h1>
                   <p className="text-sm font-bold text-indigo-700/70 mt-1">{subtitle}</p>

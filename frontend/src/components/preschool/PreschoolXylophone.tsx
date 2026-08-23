@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { playMusicalNote, playSuccessChime, playExplorationSound, usePreschoolSpeech } from './usePreschoolAudio';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 interface PreschoolXylophoneProps {
   language: PreschoolLanguage;
@@ -258,13 +259,16 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
     >
       {/* Top Header */}
       <div className="max-w-5xl w-full mx-auto flex items-center justify-between gap-2 sm:gap-4 mb-3">
-        <button
-          onClick={onExit}
-          className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-          aria-label="خروج"
-        >
-          🚪
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onExit}
+            className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            aria-label="خروج"
+          >
+            🚪
+          </button>
+          <PreschoolMuteButton language={language} className="border-purple-200 text-purple-800 hover:bg-purple-50" />
+        </div>
 
         <h1 className="text-lg sm:text-2xl font-black text-purple-950 text-center flex-1 truncate px-2">
           {labels.title}

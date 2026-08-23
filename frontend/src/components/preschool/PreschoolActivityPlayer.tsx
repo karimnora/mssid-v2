@@ -16,6 +16,7 @@ import { PreschoolJigsaw } from './PreschoolJigsaw';
 import { PreschoolSequence } from './PreschoolSequence';
 import { PreschoolListenTap } from './PreschoolListenTap';
 import { usePreschoolSpeech } from './usePreschoolAudio';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 interface PreschoolActivityPlayerProps {
   activity: PreschoolActivity;
@@ -68,14 +69,17 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   return (
     <div dir={dir} className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-sky-100 px-4 py-6 flex flex-col">
       <div className="flex items-center justify-between max-w-lg w-full mx-auto mb-4">
-        <button
-          onClick={onExit}
-          className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-          aria-label={t('خروج', 'Retour', 'Back')}
-          title={t('خروج', 'Retour', 'Back')}
-        >
-          🚪
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onExit}
+            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
+            aria-label={t('خروج', 'Retour', 'Back')}
+            title={t('خروج', 'Retour', 'Back')}
+          >
+            🚪
+          </button>
+          <PreschoolMuteButton language={language} />
+        </div>
 
         <div className="flex items-center gap-2">
           <button

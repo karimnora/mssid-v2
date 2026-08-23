@@ -1,6 +1,77 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 
+// ─── Global mute (TTS + SFX + loops) ─────────────────────────────────────────
+const MUTE_STORAGE_KEY = 'mssid_preschool_muted';
+const muteListeners = new Set<() => void>();
+
+function readStoredMute(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    return window.localStorage.getItem(MUTE_STORAGE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+let preschoolMuted = readStoredMute();
+
+export function isPreschoolMuted(): boolean {
+  return preschoolMuted;
+}
+
+function silenceAllPreschoolAudio() {
+  stopRecordedClip();
+  stopSoundBoxClip();
+  stopMotionAudio();
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+  if (sharedAudioCtx && sharedAudioCtx.state === 'running') {
+    void sharedAudioCtx.suspend();
+  }
+}
+
+export function setPreschoolMuted(next: boolean) {
+  if (preschoolMuted === next) return;
+  preschoolMuted = next;
+  if (typeof window !== 'undefined') {
+    try {
+      window.localStorage.setItem(MUTE_STORAGE_KEY, next ? '1' : '0');
+    } catch {
+      /* ignore quota / private mode */
+    }
+  }
+  if (next) {
+    silenceAllPreschoolAudio();
+  } else {
+    resumeTownAudio();
+  }
+  muteListeners.forEach((listener) => listener());
+}
+
+export function togglePreschoolMute(): boolean {
+  setPreschoolMuted(!preschoolMuted);
+  return preschoolMuted;
+}
+
+/** React hook — mute state synced across all preschool screens. */
+export function usePreschoolMute() {
+  const [muted, setMuted] = useState(isPreschoolMuted);
+  useEffect(() => {
+    const sync = () => setMuted(isPreschoolMuted());
+    muteListeners.add(sync);
+    return () => {
+      muteListeners.delete(sync);
+    };
+  }, []);
+  return {
+    muted,
+    toggle: () => togglePreschoolMute(),
+    setMuted: setPreschoolMuted,
+  };
+}
+
 // Web Speech API TTS wrapper — MVP voice for "Amine le Fennec" and activity prompts. Browser Arabic
 // TTS quality is mediocre (see mssid UX audit notes), so this is explicitly a placeholder: swap for
 // pre-recorded professional voice-overs per language once produced, behind the same `speak()` call
@@ -32,6 +103,7 @@ function stopRecordedClip() {
 }
 
 function playRecordedClip(src: string, onFail: () => void) {
+  if (isPreschoolMuted()) return;
   stopRecordedClip();
   if (typeof Audio === 'undefined') {
     onFail();
@@ -87,6 +159,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
   }, [language]);
 
   const speakTts = useCallback((text: string) => {
+    if (isPreschoolMuted()) return;
     if (typeof window === 'undefined' || !window.speechSynthesis || !text) return;
     window.speechSynthesis.cancel();
 
@@ -114,7 +187,16 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
     window.speechSynthesis.speak(utterance);
   }, [language]);
 
+  const stop = useCallback(() => {
+    stopRecordedClip();
+    if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
+  }, []);
+
   const speak = useCallback((text: string, recordedSrc?: string) => {
+    if (isPreschoolMuted()) {
+      stop();
+      return;
+    }
     stopRecordedClip();
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
@@ -124,12 +206,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
       return;
     }
     speakTts(text);
-  }, [speakTts]);
-
-  const stop = useCallback(() => {
-    stopRecordedClip();
-    if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
-  }, []);
+  }, [speakTts, stop]);
 
   return { speak, stop, hasVoice };
 }
@@ -139,6 +216,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
 // should never feel punitive at this age).
 let sharedAudioCtx: AudioContext | null = null;
 function getAudioContext(): AudioContext | null {
+  if (isPreschoolMuted()) return null;
   if (typeof window === 'undefined') return null;
   const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
   if (!AudioCtx) return null;
@@ -188,6 +266,7 @@ export function playBubblePop() {
 
 /** Unlock Web Audio after a tap (browser autoplay policy). */
 export function resumeTownAudio() {
+  if (isPreschoolMuted()) return;
   const ctx = getAudioContext();
   if (ctx && ctx.state === 'suspended') void ctx.resume();
 }
@@ -212,6 +291,7 @@ export function stopSoundBoxClip() {
 }
 
 export function playSoundBoxClip(soundKey: string, maxMs = 4000) {
+  if (isPreschoolMuted()) return;
   stopSoundBoxClip();
   resumeTownAudio();
   const audio = new Audio();
@@ -774,6 +854,10 @@ function startClickLoop(everyMs: number, click: () => void): StopFn {
 
 /** Moteur / sonnette / rails tant que l’enfant avance en ville. */
 export function setTownMoving(kind: TownVehicleKind, moving: boolean) {
+  if (isPreschoolMuted()) {
+    stopMotionAudio();
+    return;
+  }
   resumeTownAudio();
   const key = `town:${kind}`;
   if (!moving) {
@@ -804,6 +888,10 @@ export function setTownMoving(kind: TownVehicleKind, moving: boolean) {
 
 /** Tracteur, pas et cris d’animaux tant que l’enfant avance à la ferme. */
 export function setFarmMoving(kind: FarmWalker, moving: boolean) {
+  if (isPreschoolMuted()) {
+    stopMotionAudio();
+    return;
+  }
   resumeTownAudio();
   const key = `farm:${kind}`;
   if (!moving) {

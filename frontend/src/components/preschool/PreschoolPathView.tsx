@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { PreschoolModule, PreschoolLanguage } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
 import { activityPathIcon } from './preschoolGlyphs';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 interface PreschoolPathViewProps {
   module: PreschoolModule;
@@ -31,14 +32,17 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
       <div className="max-w-md mx-auto space-y-5">
         {/* Header */}
         <div className="flex items-center justify-between gap-2">
-          <button
-            onClick={onExit}
-            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl
-                       hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-            aria-label={t('خروج', 'Quitter', 'Exit')}
-          >
-            🚪
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onExit}
+              className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl
+                         hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
+              aria-label={t('خروج', 'Quitter', 'Exit')}
+            >
+              🚪
+            </button>
+            <PreschoolMuteButton language={language} />
+          </div>
 
           <div className="flex-1 text-center">
             <h1 className="text-lg sm:text-xl font-black text-orange-900">

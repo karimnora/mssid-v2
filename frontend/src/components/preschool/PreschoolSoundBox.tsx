@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { playSoundBoxClip, stopSoundBoxClip, playSuccessChime, playGentleNudge, resumeTownAudio, usePreschoolSpeech } from './usePreschoolAudio';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 interface PreschoolSoundBoxProps {
   language: PreschoolLanguage;
@@ -312,13 +313,16 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
       className="min-h-screen bg-gradient-to-b from-amber-100 via-orange-50 to-teal-100 p-3 sm:p-6 flex flex-col"
     >
       <div className="max-w-5xl w-full mx-auto flex items-center justify-between gap-2 sm:gap-4 mb-3">
-        <button
-          onClick={onExit}
-          className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-          aria-label={language === 'ar' ? 'خروج' : language === 'fr' ? 'Retour' : 'Back'}
-        >
-          🚪
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onExit}
+            className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            aria-label={language === 'ar' ? 'خروج' : language === 'fr' ? 'Retour' : 'Back'}
+          >
+            🚪
+          </button>
+          <PreschoolMuteButton language={language} className="border-amber-200 text-amber-900 hover:bg-amber-50" />
+        </div>
 
         <h1 className="text-lg sm:text-2xl font-black text-amber-950 text-center flex-1 truncate px-2">
           {labels.title}

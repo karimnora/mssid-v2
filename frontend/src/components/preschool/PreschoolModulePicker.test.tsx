@@ -6,6 +6,7 @@ import { PRESCHOOL_MODULES } from '../../data/preschool';
 
 vi.mock('./usePreschoolAudio', () => ({
   usePreschoolSpeech: () => ({ speak: vi.fn() }),
+  usePreschoolMute: () => ({ muted: false, toggle: vi.fn(), setMuted: vi.fn() }),
   playSuccessChime: vi.fn(),
   playBubblePop: vi.fn(),
 }));

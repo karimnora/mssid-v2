@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { playSuccessChime, playBubblePop, usePreschoolSpeech } from './usePreschoolAudio';
 import { SensoryTapGame } from './SensoryTapGame';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 interface PreschoolMagicBoardProps {
   language: PreschoolLanguage;
@@ -447,13 +448,16 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     >
       {/* Top Header */}
       <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-2 mb-2">
-        <button
-          onClick={onExit}
-          className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-          aria-label="خروج"
-        >
-          🚪
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onExit}
+            className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            aria-label="خروج"
+          >
+            🚪
+          </button>
+          <PreschoolMuteButton language={language} />
+        </div>
 
         <h1 className="text-base sm:text-2xl font-black text-orange-950 text-center flex-1 truncate px-2">
           {labels.title}

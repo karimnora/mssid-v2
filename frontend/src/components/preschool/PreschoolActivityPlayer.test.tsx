@@ -6,6 +6,7 @@ import { NUMBERS_MODULE_0_TO_10 } from '../../data/preschool/numbersModule';
 
 vi.mock('./usePreschoolAudio', () => ({
   usePreschoolSpeech: () => ({ speak: vi.fn(), stop: vi.fn(), hasVoice: true }),
+  usePreschoolMute: () => ({ muted: false, toggle: vi.fn(), setMuted: vi.fn() }),
   playSuccessChime: vi.fn(),
   playGentleNudge: vi.fn(),
 }));

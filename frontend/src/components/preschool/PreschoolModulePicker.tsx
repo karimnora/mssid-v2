@@ -6,6 +6,7 @@ import { PreschoolSpecialTool } from './PreschoolApp';
 import { PreschoolPrintablesModal } from './PreschoolPrintablesModal';
 import { DailyChallengeBanner } from './DailyChallengeBanner';
 import { ChallengeItem } from './useDailyChallenge';
+import { PreschoolMuteButton } from './PreschoolMuteButton';
 
 interface DailyChallengeData {
   items: ChallengeItem[];
@@ -189,13 +190,16 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
     <div dir={dir} className="min-h-screen bg-[#F8F9FA] px-4 py-6 sm:py-8">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <button
-            onClick={goBack}
-            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-            aria-label={view === 'home' ? 'خروج / Quitter / Exit' : 'رجوع / Retour / Back'}
-          >
-            {view === 'home' ? '🚪' : dir === 'rtl' ? '▶' : '◀'}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={goBack}
+              className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+              aria-label={view === 'home' ? 'خروج / Quitter / Exit' : 'رجوع / Retour / Back'}
+            >
+              {view === 'home' ? '🚪' : dir === 'rtl' ? '▶' : '◀'}
+            </button>
+            <PreschoolMuteButton language={language} />
+          </div>
 
           <div className="flex items-center gap-1 bg-white p-1 rounded-2xl shadow-sm border border-orange-200">
             {(['ar', 'fr', 'en'] as PreschoolLanguage[]).map((l) => (
