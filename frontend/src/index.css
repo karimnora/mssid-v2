@@ -168,14 +168,24 @@ body {
     inset: 0;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 12mm !important;
     box-shadow: none !important;
     background: #ffffff !important;
     color: #0f172a !important;
+    border: none !important;
+    border-radius: 0 !important;
   }
+  .printable-sheet,
   .printable-sheet * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    color: #0f172a !important;
+  }
+  /* Interactive chrome (solutions toggles, CTAs) must not appear on the paper copy. */
+  .no-print,
+  .printable-sheet .no-print {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 

@@ -57,6 +57,20 @@ describe('LessonViewer — 2AP sticky footer clearance', () => {
   });
 });
 
+describe('LessonViewer — printable revision sheet', () => {
+  it('exposes the revision-sheet print entry on 1AP (compact grade)', () => {
+    renderViewer();
+    expect(document.querySelector('[data-lesson-print="true"]')).toBeTruthy();
+  });
+
+  it('opens a printable-sheet fiche when the print button is clicked', () => {
+    renderViewer();
+    fireEvent.click(document.querySelector('[data-lesson-print="true"]') as HTMLElement);
+    expect(document.querySelector('.printable-sheet')).toBeTruthy();
+    expect(screen.getAllByText(/فيشة مراجعة/).length).toBeGreaterThan(0);
+  });
+});
+
 describe('LessonViewer — 1AP parent info panel', () => {
   it('offers the parent-info toggle when the lesson has objectives even without a source note', () => {
     renderViewer();

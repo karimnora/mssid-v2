@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { ExamsViewer } from './ExamsViewer';
 import { LocaleProvider } from '../context/LocaleContext';
 
-const renderExams = (grade: '1AP' | '2AP' | '5AP', onOpenCourses = vi.fn()) =>
+const renderExams = (grade: '1AP' | '2AP' | '3AP' | '5AP', onOpenCourses = vi.fn()) =>
   render(
     <LocaleProvider>
       <ExamsViewer grade={grade} onOpenCourses={onOpenCourses} />
@@ -23,12 +23,30 @@ describe('ExamsViewer bank', () => {
     expect(screen.getByText('جميع الفصول')).toBeInTheDocument();
   });
 
-  it('hides timer and print on a 2AP paper', async () => {
+  it('hides timer and solutions on a 2AP paper but keeps print', async () => {
     renderExams('2AP');
     await userEvent.click(document.querySelector('[data-exam-subject="math"]') as HTMLElement);
     await userEvent.click(screen.getAllByText('فتح ورقة الامتحان')[0]);
-    expect(screen.queryByText('طباعة')).not.toBeInTheDocument();
+    expect(screen.getByText('طباعة')).toBeInTheDocument();
+    expect(document.querySelector('[data-exam-print="true"]')).toBeTruthy();
+    expect(document.querySelector('.printable-sheet')).toBeTruthy();
     expect(screen.queryByText(/إظهار كافة الحلول/)).not.toBeInTheDocument();
+  });
+
+  it('marks the open 5AP paper as printable so window.print is not blank', async () => {
+    renderExams('5AP');
+    await userEvent.click(document.querySelector('[data-exam-subject="math"]') as HTMLElement);
+    await userEvent.click(screen.getAllByText('فتح ورقة الامتحان')[0]);
+    expect(screen.getByText('طباعة')).toBeInTheDocument();
+    expect(document.querySelector('.printable-sheet')).toBeTruthy();
+  });
+
+  it('marks the open 3AP paper as printable', async () => {
+    renderExams('3AP');
+    await userEvent.click(document.querySelector('[data-exam-subject="math"]') as HTMLElement);
+    await userEvent.click(screen.getAllByText('فتح ورقة الامتحان')[0]);
+    expect(screen.getByText('طباعة')).toBeInTheDocument();
+    expect(document.querySelector('.printable-sheet')).toBeTruthy();
   });
 
   it('sends 1AP to courses instead of an empty bank or average calculator', async () => {

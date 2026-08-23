@@ -94,7 +94,9 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
+  /** Solutions + timer : 4AP/5AP. Impression du sujet : tous les niveaux qui ont des examens. */
   const showExamTools = currentGrade === '4AP' || currentGrade === '5AP';
+  const showPrintButton = currentGrade !== '1AP';
 
   const [kindFilter, setKindFilter] = useState<KindFilter>(grade === '5AP' || !grade ? 'bep' : 'composition');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
@@ -247,17 +249,23 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               {allSolutionsVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
               <span>{allSolutionsVisible ? 'إخفاء كافة الحلول' : 'إظهار كافة الحلول مجاناً ✨'}</span>
             </button>
+              </>
+            )}
 
-            {/* Print Button */}
+            {showPrintButton && (
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-[var(--app-card-border)] transition-colors cursor-pointer border border-[var(--app-card-border)]"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-[var(--app-card-border)] transition-colors cursor-pointer border border-[var(--app-card-border)] no-print"
               title="طباعة ورقة الامتحان"
+              data-exam-print="true"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>طباعة</span>
             </button>
+            )}
 
+            {showExamTools && (
+              <>
             {/* Exam Simulation Timer */}
             <div className="bg-slate-900 text-white px-3 py-1.5 rounded-xl flex items-center gap-2.5 shadow-xs">
               <Clock className="w-4 h-4 text-amber-400" />
@@ -307,8 +315,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         </div>
         )}
 
-        {/* Official Paper Layout */}
-        <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+        {/* Official Paper Layout — must use .printable-sheet or @media print hides everything */}
+        <div className="printable-sheet bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-[var(--app-text)]">
           {/* Paper Header */}
           <div className="border-b border-[var(--app-card-border)] pb-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-1.5">
@@ -348,7 +356,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 ];
                 if (linkedLessonIds.length === 0) return null;
                 return (
-                  <div className="pt-1 space-y-1">
+                  <div className="pt-1 space-y-1 no-print">
                     <p className="text-[11px] font-black text-[var(--app-text)]">{t('relatedLessonsTitle')}</p>
                     <ul className="text-[11px] text-[var(--app-text-muted)] font-bold space-y-0.5">
                       {linkedLessonIds.map((id) => {
@@ -397,7 +405,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   </div>
 
                   {/* Free Solution Toggle Button */}
-                  <div className="flex items-center justify-between pt-1">
+                  <div className="flex items-center justify-between pt-1 no-print">
                     <button
                       onClick={() => toggleSolution(solKey)}
                       className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
@@ -422,7 +430,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
                   {/* Solution Box */}
                   {isSolVisible && (
-                    <div className="space-y-2">
+                    <div className="space-y-2 no-print">
                       <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
                         <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
                           <Check className="w-3.5 h-3.5" />
@@ -465,7 +473,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               </div>
 
               {/* Problem Solution Toggle Button */}
-              <div className="flex items-center justify-between pt-1">
+              <div className="flex items-center justify-between pt-1 no-print">
                 <button
                   onClick={() => toggleSolution('problem')}
                   className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
@@ -490,7 +498,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
               {/* Problem Solution Content */}
               {showSolutions['problem'] && (
-                <div className="space-y-2">
+                <div className="space-y-2 no-print">
                   <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
                     <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
                       <Check className="w-3.5 h-3.5" />
@@ -509,7 +517,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           </div>
 
           {/* Completion Button & Rewards */}
-          <div className="pt-4 border-t border-[var(--app-card-border)]">
+          <div className="pt-4 border-t border-[var(--app-card-border)] no-print">
             {isCompleted ? (
               <div className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 text-sm font-black">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600" />

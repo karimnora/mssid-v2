@@ -296,22 +296,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
         </div>
 
-        {!isCompactGrade && (
-          <div className="flex items-center gap-2">
-            {enablePrintablePDFs && (
-              <Button
-                variant="outline"
-                size="sm"
-                icon={<Printer className="w-4 h-4" />}
-                onClick={() => setShowRevisionSheet(true)}
-                title="فيشة مراجعة قابلة للطباعة"
-              >
-                <span className="hidden sm:inline">فيشة المراجعة</span>
-                <span className="sm:hidden">📄</span>
-              </Button>
-            )}
+        <div className="flex items-center gap-2">
+          {enablePrintablePDFs && (
+            <Button
+              variant="outline"
+              size="sm"
+              icon={<Printer className="w-4 h-4" />}
+              onClick={() => setShowRevisionSheet(true)}
+              title="فيشة مراجعة قابلة للطباعة"
+              data-lesson-print="true"
+            >
+              <span className="hidden sm:inline">فيشة المراجعة</span>
+              <span className="sm:hidden">📄</span>
+            </Button>
+          )}
 
-            {allLessons.length > 1 && (
+          {!isCompactGrade && allLessons.length > 1 && (
               <>
                 <Button
                   variant="outline"
@@ -349,9 +349,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   <span className="sm:hidden">التالي</span>
                 </Button>
               </>
-            )}
-          </div>
-        )}
+          )}
+        </div>
       </Card>
 
       {showRevisionSheet && (
