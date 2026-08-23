@@ -35,6 +35,28 @@ const renderViewer = () =>
     </LocaleProvider>,
   );
 
+describe('LessonViewer — 2AP sticky footer clearance', () => {
+  it('reserves bottom padding so the sticky next-step footer does not cover lesson content', () => {
+    const lesson2ap: CourseLesson = {
+      ...lesson,
+      id: 'math-2ap-sample',
+      grade: '2AP',
+      titleAr: 'الأعداد',
+      quiz: [{ id: 'q1', questionAr: 'سؤال', options: [{ id: 'a', textAr: 'نعم', isCorrect: true }] }],
+    };
+
+    const { container } = render(
+      <LocaleProvider>
+        <LessonViewer lesson={lesson2ap} onBack={vi.fn()} onCompleteQuiz={vi.fn()} />
+      </LocaleProvider>,
+    );
+
+    const contentPanel = container.querySelector('.pb-28');
+    expect(contentPanel).toBeTruthy();
+    expect(document.querySelector('[data-lesson-footer="compact"]')).toBeTruthy();
+  });
+});
+
 describe('LessonViewer — 1AP parent info panel', () => {
   it('offers the parent-info toggle when the lesson has objectives even without a source note', () => {
     renderViewer();

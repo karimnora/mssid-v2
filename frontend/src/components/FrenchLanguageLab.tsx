@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { speakText } from '../utils/speech';
+import { PrimaryGrade } from '../types';
+import { allowedFrenchTenses, FrenchTense } from '../utils/labGradePolicy';
 import {
   Volume2,
   Sparkles,
@@ -308,17 +310,24 @@ const FRENCH_VERBS_DATABASE: FrenchVerbData[] = [
 
 interface FrenchLabProps {
   initialTab?: 'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production';
-  grade?: string;
+  grade?: PrimaryGrade;
 }
 
 export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conjugator', grade = '4AP' }) => {
+  const permittedTenses = allowedFrenchTenses(grade);
   const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production'>(initialTab);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   // Conjugator State
   const [selectedVerb, setSelectedVerb] = useState<FrenchVerbData>(FRENCH_VERBS_DATABASE[0]);
-  const [selectedTense, setSelectedTense] = useState<'presents' | 'futur' | 'passeCompose' | 'imparfait'>('presents');
+  const [selectedTense, setSelectedTense] = useState<FrenchTense>(permittedTenses[0]);
   const [searchFilter, setSearchFilter] = useState<string>('');
+
+  useEffect(() => {
+    if (!permittedTenses.includes(selectedTense)) {
+      setSelectedTense(permittedTenses[0]);
+    }
+  }, [grade, permittedTenses, selectedTense]);
 
   // Quiz Game State
   const [quizScore, setQuizScore] = useState<number>(0);
@@ -521,7 +530,7 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
 
               {/* Tense Selector Tabs */}
               <div className="flex items-center gap-1.5 bg-slate-900 p-1.5 rounded-2xl border border-slate-800 flex-wrap">
-                {(['presents', 'futur', 'passeCompose', 'imparfait'] as const).map((tenseKey) => (
+                {permittedTenses.map((tenseKey) => (
                   <button
                     key={tenseKey}
                     onClick={() => setSelectedTense(tenseKey)}

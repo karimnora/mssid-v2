@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react';
 import { TextToSpeechButton } from './TextToSpeechButton';
 import { evaluateExpression, generateExplanation, MathParserError } from '../utils/mathParser';
 import { useLocaleContext } from '../context/LocaleContext';
+import { PrimaryGrade } from '../types';
+import { allowedCalculatorKeys } from '../utils/labGradePolicy';
 
 const BUTTON_LAYOUT = [
   ['7', '8', '9', '+'],
@@ -11,8 +13,13 @@ const BUTTON_LAYOUT = [
   ['(', ')', 'x', 'C'],
 ];
 
-export const EducationalCalculator: React.FC = () => {
+interface EducationalCalculatorProps {
+  grade?: PrimaryGrade;
+}
+
+export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ grade = '3AP' }) => {
   const { t } = useLocaleContext();
+  const allowedKeys = useMemo(() => allowedCalculatorKeys(grade), [grade]);
   const [expression, setExpression] = useState('');
   const [result, setResult] = useState<string>('');
   const [explanation, setExplanation] = useState('');
@@ -66,16 +73,24 @@ export const EducationalCalculator: React.FC = () => {
             placeholder={t('common', 'expressionPlaceholder')}
           />
           <div className="mt-3 grid grid-cols-4 gap-2">
-            {BUTTON_LAYOUT.flat().map((buttonValue) => (
+            {BUTTON_LAYOUT.flat().map((buttonValue) => {
+              const disabled = !allowedKeys.has(buttonValue);
+              return (
               <button
                 key={buttonValue}
                 type="button"
+                disabled={disabled}
                 onClick={() => handleButton(buttonValue)}
-                className="rounded-2xl bg-indigo-600 text-white py-3 text-lg font-bold shadow-sm hover:bg-indigo-700 transition"
+                className={`rounded-2xl py-3 text-lg font-bold shadow-sm transition ${
+                  disabled
+                    ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
+                    : 'bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer'
+                }`}
               >
                 {buttonValue}
               </button>
-            ))}
+            );
+            })}
           </div>
         </div>
 

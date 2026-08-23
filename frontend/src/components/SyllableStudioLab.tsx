@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import { canShowFrenchInLab } from '../utils/labGradePolicy';
 
 interface SyllableStudioLabProps {
   grade?: PrimaryGrade;
@@ -34,7 +35,8 @@ const FRENCH_WORDS: SyllableWord[] = [
 
 const SYLLABLE_COLORS = ['bg-sky-500', 'bg-amber-500', 'bg-emerald-500', 'bg-fuchsia-500'];
 
-export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ onReward }) => {
+export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2AP', onReward }) => {
+  const showFrench = canShowFrenchInLab(grade);
   const [activeTab, setActiveTab] = useState<StudioTab>('arabic');
   const [wordIdx, setWordIdx] = useState<number>(0);
   const [guess, setGuess] = useState<number | null>(null);
@@ -44,11 +46,18 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ onReward }
   const currentWord = words[wordIdx % words.length];
 
   const switchTab = (tab: StudioTab) => {
+    if (tab === 'french' && !showFrench) return;
     setActiveTab(tab);
     setWordIdx(0);
     setGuess(null);
     setRevealed(false);
   };
+
+  useEffect(() => {
+    if (!showFrench && activeTab === 'french') {
+      setActiveTab('arabic');
+    }
+  }, [showFrench, activeTab]);
 
   const handleGuess = (n: number) => {
     setGuess(n);
@@ -86,6 +95,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ onReward }
         >
           🇩🇿 كلمات عربية
         </button>
+        {showFrench && (
         <button
           onClick={() => switchTab('french')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
@@ -94,6 +104,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ onReward }
         >
           🇫🇷 Mots français
         </button>
+        )}
       </div>
 
       <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">

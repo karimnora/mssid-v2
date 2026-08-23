@@ -7,6 +7,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SubjectInfo, SubjectId, PrimaryGrade } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
+import { canShowFrenchInLab } from '../utils/labGradePolicy';
 import {
   Calculator,
   BookOpen,
@@ -124,6 +125,9 @@ interface ToolsHubViewProps {
   grade: PrimaryGrade;
   tools: SubjectInfo[];
   selectedToolId: SubjectId | null;
+  /** false = lab plein écran (P0) ; true = catalogue visible, lab masqué */
+  catalogOpen: boolean;
+  onCatalogOpenChange: (open: boolean) => void;
   onSelectTool: (id: SubjectId) => void;
   onClearTool?: () => void;
 }
@@ -140,16 +144,24 @@ type MobileView = 'hub' | 'list' | 'active';
 
 // ─── Composant principal ──────────────────────────────────────────────────────
 export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
-  grade, tools, selectedToolId, onSelectTool, onClearTool,
+  grade,
+  tools,
+  selectedToolId,
+  catalogOpen,
+  onCatalogOpenChange,
+  onSelectTool,
+  onClearTool,
 }) => {
+  const labFocused = Boolean(selectedToolId) && !catalogOpen;
+
   // — état mobile
-  const [mobileView, setMobileView]         = useState<MobileView>('hub');
+  const [mobileView, setMobileView]         = useState<MobileView>(() => (selectedToolId && !catalogOpen ? 'active' : 'hub'));
   const [mobileCatKey, setMobileCatKey]     = useState<string>(MOBILE_CATS[0].key);
 
   // — état desktop (original)
   const [activeFilterCategory, setActiveFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery]                   = useState<string>('');
-  const [isGridExpanded, setIsGridExpanded]             = useState<boolean>(true);
+  const [isGridExpanded, setIsGridExpanded]             = useState<boolean>(catalogOpen);
 
   const availableTools = useMemo(
     () => tools.filter(t => isToolAvailableForGrade(t, grade)),
@@ -194,13 +206,18 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
     };
   }, [mobileView]);
 
-  // Si l'outil est désélectionné depuis l'extérieur, revenir au hub
   useEffect(() => {
-    if (!selectedToolId && mobileView === 'active') {
+    if (labFocused) {
+      setMobileView('active');
+    } else if (!selectedToolId && mobileView === 'active') {
       setMobileView('hub');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedToolId]);
+  }, [selectedToolId, catalogOpen, labFocused]);
+
+  useEffect(() => {
+    if (catalogOpen) setIsGridExpanded(true);
+  }, [catalogOpen]);
 
   const scrollToTool = () => {
     setTimeout(() => {
@@ -211,22 +228,49 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
 
   const handleMobileSelect = (id: SubjectId) => {
     onSelectTool(id);
+    onCatalogOpenChange(false);
     setMobileView('active');
     scrollToTool();
   };
 
   const handleDesktopSelect = (id: SubjectId) => {
     onSelectTool(id);
+    onCatalogOpenChange(false);
     scrollToTool();
   };
 
+  const openCatalog = () => {
+    onCatalogOpenChange(true);
+    setMobileView('hub');
+  };
+
   return (
-    <div id="tools-hub-container" dir="rtl" data-labs-layout="full">
+    <div id="tools-hub-container" dir="rtl" data-labs-layout="full" data-lab-focused={labFocused ? 'true' : 'false'}>
+
+      {/* Bandeau compact — lab ouvert, catalogue masqué (P0) */}
+      {labFocused && currentSelectedTool && (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-amber-400/40 bg-gradient-to-r from-amber-500/10 to-orange-500/5 p-4 shadow-sm">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="text-2xl shrink-0">🔬</span>
+            <div className="min-w-0">
+              <p className="text-xs text-[var(--app-text-muted)]">المختبر المفتوح</p>
+              <p className="text-sm font-black text-[var(--app-text)] truncate">{currentSelectedTool.nameAr}</p>
+            </div>
+          </div>
+          <motion.button
+            whileTap={{ scale: 0.96 }}
+            onClick={openCatalog}
+            className="min-h-12 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-black shadow-md cursor-pointer shrink-0"
+          >
+            اختر مختبراً آخر
+          </motion.button>
+        </div>
+      )}
 
       {/* ════════════════════════════════════════════════════════════════
           MOBILE  (block md:hidden)
       ════════════════════════════════════════════════════════════════ */}
-      <div className="block md:hidden">
+      <div className={`block md:hidden ${labFocused ? 'hidden' : ''}`}>
         <AnimatePresence mode="wait">
 
           {/* Vue 1 — Hub catégories */}
@@ -314,6 +358,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                   >
                     <ToolCard
                       tool={tool}
+                      grade={grade}
                       isActive={selectedToolId === tool.id}
                       onSelect={() => handleMobileSelect(tool.id)}
                     />
@@ -323,39 +368,13 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
             </motion.div>
           )}
 
-          {/* Vue 3 — Retour simple (sans répéter le titre, le parent le gère) */}
-          {mobileView === 'active' && (
-            <motion.div
-              key="active"
-              variants={pageVariants} initial="enter" animate="center" exit="exit"
-              transition={pageTransition}
-              className="flex flex-wrap items-center gap-2 pt-1"
-            >
-              <motion.button
-                whileTap={{ scale: 0.96 }}
-                onClick={() => setMobileView('list')}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] text-[var(--app-text)] font-black text-xs cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" />
-                <span>قائمة {activeMobileCat.labelAr}</span>
-              </motion.button>
-              <motion.button
-                whileTap={{ scale: 0.96 }}
-                onClick={() => setMobileView('hub')}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] text-[var(--app-text-muted)] font-black text-xs cursor-pointer"
-              >
-                🏠 الرئيسية
-              </motion.button>
-            </motion.div>
-          )}
-
         </AnimatePresence>
       </div>
 
       {/* ════════════════════════════════════════════════════════════════
-          DESKTOP  (hidden md:block) — code original INCHANGÉ
+          DESKTOP  (hidden md:block)
       ════════════════════════════════════════════════════════════════ */}
-      <div className="hidden md:block space-y-4">
+      <div className={`hidden md:block space-y-4 ${labFocused ? 'hidden' : ''}`}>
 
         {/* Top Header & Compact Navigation Banner */}
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-4 sm:p-5 shadow-sm space-y-4">
@@ -480,7 +499,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {filteredToolsBySearch.map(tool => (
-                      <ToolCard key={tool.id} tool={tool} isActive={selectedToolId === tool.id} onSelect={() => handleDesktopSelect(tool.id)} />
+                      <ToolCard key={tool.id} grade={grade} tool={tool} isActive={selectedToolId === tool.id} onSelect={() => handleDesktopSelect(tool.id)} />
                     ))}
                   </div>
                 )}
@@ -507,7 +526,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                       {groupTools.map(tool => (
-                        <ToolCard key={tool.id} tool={tool} isActive={selectedToolId === tool.id} onSelect={() => handleDesktopSelect(tool.id)} />
+                        <ToolCard key={tool.id} grade={grade} tool={tool} isActive={selectedToolId === tool.id} onSelect={() => handleDesktopSelect(tool.id)} />
                       ))}
                     </div>
                   </div>
@@ -529,8 +548,9 @@ interface ToolCardProps {
   onSelect: () => void;
 }
 
-const ToolCard: React.FC<ToolCardProps> = ({ tool, isActive, onSelect }) => {
+const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isActive, onSelect, grade }) => {
   const IconComp = ICON_MAP[tool.icon] || Sparkles;
+  const showFrenchLabel = canShowFrenchInLab(grade);
 
   return (
     <button
@@ -564,7 +584,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool, isActive, onSelect }) => {
 
       <div className="w-full relative z-10">
         <h4 className="font-black text-sm text-white mb-1 leading-snug">{tool.nameAr}</h4>
-        {tool.nameFr && (
+        {showFrenchLabel && tool.nameFr && (
           <p className="text-[10px] text-white/70 font-sans tracking-wide mb-1.5 line-clamp-1">{tool.nameFr}</p>
         )}
         <p className="text-[11px] text-white/85 line-clamp-2 leading-relaxed font-arabic">

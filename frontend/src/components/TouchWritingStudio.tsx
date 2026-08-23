@@ -24,6 +24,7 @@ import {
   RefreshCw,
 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import { canShowEnglishInLab, canShowFrenchInLab } from '../utils/labGradePolicy';
 
 interface TouchWritingStudioProps {
   grade?: PrimaryGrade;
@@ -672,6 +673,9 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
     return 'ar';
   };
 
+  const showFrenchLang = canShowFrenchInLab(grade);
+  const showEnglishLang = canShowEnglishInLab(grade);
+
   const [activeLang, setActiveLang] = useState<WritingLanguage>(getDefaultLanguage());
   const [boardTheme, setBoardTheme] = useState<BoardTheme>('seyes');
   const [pedagogicalStep, setPedagogicalStep] = useState<PedagogicalStep>('guide');
@@ -708,6 +712,11 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
   const currentItem = currentItems.find((item) => item.id === selectedItemId) || currentItems[0];
 
   // Sync selected item when language changes
+  useEffect(() => {
+    if (activeLang === 'fr' && !showFrenchLang) setActiveLang('ar');
+    if (activeLang === 'en' && !showEnglishLang) setActiveLang('ar');
+  }, [grade, showFrenchLang, showEnglishLang, activeLang]);
+
   useEffect(() => {
     const items = getItemsForLang();
     if (items.length > 0 && !items.some((i) => i.id === selectedItemId)) {
@@ -1060,6 +1069,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
           <span className="truncate">العربية والأرقام (1AP & 2AP)</span>
         </button>
 
+        {showFrenchLang && (
         <button
           onClick={() => {
             setActiveLang('fr');
@@ -1074,7 +1084,9 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
           <span>🇫🇷</span>
           <span className="truncate">Français Cursive (3AP)</span>
         </button>
+        )}
 
+        {showEnglishLang && (
         <button
           onClick={() => {
             setActiveLang('en');
@@ -1089,6 +1101,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
           <span>🇬🇧</span>
           <span className="truncate">English Script (4AP & 5AP)</span>
         </button>
+        )}
 
         <button
           onClick={() => {

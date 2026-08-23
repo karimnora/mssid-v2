@@ -60,6 +60,7 @@ interface ActiveWorkspaceProps {
   onVisitLab: (labId: string) => void;
   onLabReward: (coins: number, xp: number) => void;
   onEarnCoins: (amount: number) => void;
+  onShowLabCatalog?: () => void;
 }
 
 export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
@@ -83,6 +84,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onVisitLab,
   onLabReward,
   onEarnCoins,
+  onShowLabCatalog,
 }) => {
   const t = useTranslation('navigation');
 
@@ -123,6 +125,10 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
         </div>
         <button
           onClick={() => {
+            if (onShowLabCatalog) {
+              onShowLabCatalog();
+              return;
+            }
             const hub = document.getElementById('tools-hub-container');
             if (hub) {
               hub.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -175,7 +181,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
       ) : selectedSubject === 'english_lab' ? (
         <EnglishLanguageLab grade={grade} />
       ) : selectedSubject === 'educational_calculator' ? (
-        <EducationalCalculator />
+        <EducationalCalculator grade={grade} />
       ) : selectedSubject === 'soroban' ? (
         <SorobanInteractive grade={grade} />
       ) : selectedSubject === 'electricity' ? (

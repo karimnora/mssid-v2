@@ -10,7 +10,9 @@ describe('ToolsHubView', () => {
       <ToolsHubView
         grade="1AP"
         tools={INTERACTIVE_LABS_LIST}
-        selectedToolId="primary_math_ops"
+        selectedToolId={null}
+        catalogOpen
+        onCatalogOpenChange={vi.fn()}
         onSelectTool={vi.fn()}
       />
     );
@@ -25,11 +27,29 @@ describe('ToolsHubView', () => {
       <ToolsHubView
         grade="5AP"
         tools={INTERACTIVE_LABS_LIST}
-        selectedToolId="arabic_conjugator"
+        selectedToolId={null}
+        catalogOpen
+        onCatalogOpenChange={vi.fn()}
         onSelectTool={vi.fn()}
       />
     );
     expect(document.querySelector('[data-labs-layout="full"]')).toBeTruthy();
     expect(document.querySelector('[data-labs-layout="young"]')).toBeNull();
+  });
+
+  it('hides catalog grid when a lab is focused (P0)', () => {
+    render(
+      <ToolsHubView
+        grade="5AP"
+        tools={INTERACTIVE_LABS_LIST}
+        selectedToolId="arabic_conjugator"
+        catalogOpen={false}
+        onCatalogOpenChange={vi.fn()}
+        onSelectTool={vi.fn()}
+      />
+    );
+    expect(document.querySelector('[data-lab-focused="true"]')).toBeTruthy();
+    expect(screen.queryByText('🌟 جميع الأدوات')).toBeNull();
+    expect(screen.getByText('اختر مختبراً آخر')).toBeInTheDocument();
   });
 });

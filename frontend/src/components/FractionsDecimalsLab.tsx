@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import { canShowDecimalsTab } from '../utils/labGradePolicy';
 
 interface FractionsDecimalsLabProps {
   grade?: PrimaryGrade;
@@ -31,7 +32,8 @@ const DECIMAL_QUESTIONS = [
   { id: 2, qAr: 'أَيُّ عَدَدٍ عَشْرِيٍّ يُسَاوِي 1/10؟', correct: 0.1, options: [0.1, 1, 0.7] },
 ];
 
-export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ onReward }) => {
+export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grade = '4AP', onReward }) => {
+  const showDecimals = canShowDecimalsTab(grade);
   const [activeTab, setActiveTab] = useState<FractionsTab>('visual');
   const [qIdx, setQIdx] = useState<number>(0);
   const [filled, setFilled] = useState<number>(0);
@@ -64,6 +66,12 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ onRe
     if (val === correct) onReward?.(5, 15);
   };
 
+  useEffect(() => {
+    if (!showDecimals && activeTab === 'decimals') {
+      setActiveTab('visual');
+    }
+  }, [showDecimals, activeTab]);
+
   return (
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-orange-600 via-amber-700 to-yellow-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-500/40 relative overflow-hidden">
@@ -88,6 +96,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ onRe
         >
           🍕 الكسور بالصور
         </button>
+        {showDecimals && (
         <button
           onClick={() => setActiveTab('decimals')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
@@ -96,6 +105,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ onRe
         >
           🔢 الأعداد العشرية
         </button>
+        )}
       </div>
 
       {activeTab === 'visual' && (

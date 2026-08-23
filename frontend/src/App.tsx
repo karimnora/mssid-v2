@@ -85,6 +85,8 @@ export default function App() {
     }
     return 'neutre';
   });
+  /** P0 labs : catalogue masqué tant qu'un lab est ouvert (1 carte = 1 écran). */
+  const [labsCatalogOpen, setLabsCatalogOpen] = useState(false);
 
   useEffect(() => {
     window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
@@ -211,8 +213,9 @@ export default function App() {
                   grade={nav.grade}
                   tools={availableLabsForGrade}
                   selectedToolId={nav.selectedSubject}
+                  catalogOpen={labsCatalogOpen}
+                  onCatalogOpenChange={setLabsCatalogOpen}
                   onSelectTool={nav.handleSelectSubject}
-                  onClearTool={() => nav.setSelectedSubject('math')}
                 />
               ) : nav.mainCategory !== 'courses' && (
                 <div className="border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 bg-[var(--app-card-bg)] border-[var(--app-card-border)]">
@@ -248,7 +251,7 @@ export default function App() {
                 isLessonLocked={isLessonLocked}
                 onGoHome={nav.goHome}
               />
-            ) : nav.mainCategory === 'labs' && !isLabSubjectId(nav.selectedSubject) ? null : (
+            ) : nav.mainCategory === 'labs' && (!isLabSubjectId(nav.selectedSubject) || labsCatalogOpen) ? null : (
               <ActiveWorkspace
                 grade={nav.grade}
                 selectedSubject={nav.selectedSubject}
@@ -265,7 +268,10 @@ export default function App() {
                   nav.setMainCategory('courses');
                 }}
                 onGoHome={nav.goHome}
-                onOpenLab={nav.openLab}
+                onOpenLab={(toolId) => {
+                  setLabsCatalogOpen(false);
+                  nav.openLab(toolId);
+                }}
                 onCompleteQuiz={progress.handleCompleteQuiz}
                 onQuizFullyValidated={progress.handleQuizFullyValidated}
                 onExamComplete={progress.handleCompleteExam}
@@ -273,6 +279,7 @@ export default function App() {
                 onVisitLab={progress.handleVisitLab}
                 onLabReward={progress.handleLabReward}
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
+                onShowLabCatalog={() => setLabsCatalogOpen(true)}
               />
             )}
           </>

@@ -17,6 +17,10 @@ import {
   Volume2,
 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import {
+  canShowColumnCarryOps,
+  primaryMathNumberStripMax,
+} from '../utils/labGradePolicy';
 
 interface PrimaryMathLabInteractiveProps {
   grade?: PrimaryGrade;
@@ -27,15 +31,23 @@ interface PrimaryMathLabInteractiveProps {
 type SubTab = 'number_strip' | 'column_addition' | 'column_subtraction';
 
 export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps> = ({
+  grade = '2AP',
   onReward,
   onBack,
 }) => {
+  const stripMax = primaryMathNumberStripMax(grade);
+  const stripCount = stripMax + 1;
+  const showColumnOps = canShowColumnCarryOps(grade);
+
   const [activeTab, setActiveTab] = useState<SubTab>('number_strip');
 
   // --- 1. Number Strip State (0 to 99) ---
-  const [selectedNumber, setSelectedNumber] = useState<number>(25);
+  const [selectedNumber, setSelectedNumber] = useState<number>(() => Math.min(25, stripMax));
   const [stripFilter, setStripFilter] = useState<'all' | 'even' | 'odd' | 'tens'>('all');
-  const [mysteryTarget, setMysteryTarget] = useState<number>(() => Math.floor(Math.random() * 90) + 10);
+  const [mysteryTarget, setMysteryTarget] = useState<number>(() => {
+    const min = stripMax <= 20 ? 1 : 10;
+    return Math.floor(Math.random() * Math.max(1, stripMax - min)) + min;
+  });
   const [mysteryFeedback, setMysteryFeedback] = useState<string | null>(null);
 
   // --- 2. Column Addition State ---
@@ -134,13 +146,17 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
         <div className="relative z-10 space-y-2">
           <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>مختبر الرياضيات التفاعلي — السنة الأولى والثانية ابتدائي (1AP / 2AP)</span>
+            <span>مختبر الرياضيات التفاعلي — {grade === '1AP' ? 'السنة الأولى (0–20)' : 'السنة الأولى والثانية (1AP / 2AP)'}</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-black font-sans">
-            الشريط العددي حتى 99 والعمليات العمودية (الجمع والطرح)
+            {grade === '1AP'
+              ? 'الشريط العددي حتى 20'
+              : 'الشريط العددي حتى 99 والعمليات العمودية (الجمع والطرح)'}
           </h1>
           <p className="text-xs sm:text-sm text-amber-100 leading-relaxed max-w-3xl">
-            استكشف الشريط العددي من 0 إلى 99، وتعلّم تفكيك الوحدات والعشرات، وتدرّب خطوة بخطوة على وضع العمليات الحسابية بالاحتفاظ والاستعارة.
+            {grade === '1AP'
+              ? 'استكشف الأعداد من 0 إلى 20 وتعلّم تفكيك الوحدات والعشرات.'
+              : 'استكشف الشريط العددي من 0 إلى 99، وتعلّم تفكيك الوحدات والعشرات، وتدرّب خطوة بخطوة على وضع العمليات الحسابية بالاحتفاظ والاستعارة.'}
           </p>
         </div>
       </div>
@@ -155,9 +171,10 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>🔢 الشريط العددي (0 إلى 99)</span>
+          <span>🔢 الشريط العددي (0 إلى {stripMax})</span>
         </button>
 
+        {showColumnOps && (
         <button
           onClick={() => setActiveTab('column_addition')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
@@ -179,6 +196,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
         >
           <span>➖ الطرح العمودي بالاستعارة</span>
         </button>
+        )}
       </div>
 
       {/* TAB 1: Number Strip (0 to 99) */}
@@ -270,8 +288,9 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   stripFilter === 'all' ? 'bg-amber-500 text-slate-950 font-sans' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
-                الكل (0-99)
+                الكل (0-{stripMax})
               </button>
+              {stripMax > 20 && (
               <button
                 onClick={() => setStripFilter('tens')}
                 className={`px-3 py-1 rounded-xl text-xs font-black cursor-pointer ${
@@ -280,6 +299,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               >
                 العشرات الكاملة (10, 20...)
               </button>
+              )}
               <button
                 onClick={() => setStripFilter('even')}
                 className={`px-3 py-1 rounded-xl text-xs font-black cursor-pointer ${
@@ -300,7 +320,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
             {/* 0-99 Interactive Grid */}
             <div className="grid grid-cols-5 sm:grid-cols-10 gap-1.5 max-h-72 overflow-y-auto p-2 border border-[var(--app-card-border)] rounded-2xl bg-[var(--app-card-subtle)]">
-              {Array.from({ length: 100 }).map((_, num) => {
+              {Array.from({ length: stripCount }).map((_, num) => {
                 const isSelected = selectedNumber === num;
                 const isTens = num % 10 === 0;
                 const isEven = num % 2 === 0;
