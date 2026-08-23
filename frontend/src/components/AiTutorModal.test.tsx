@@ -20,6 +20,17 @@ describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
     expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toBeInTheDocument();
   });
 
+  it('pre-fills the topic with the first chip of the opened grade, not a 4AP/5AP default', () => {
+    const { rerender } = render(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="1AP" />);
+
+    expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toHaveValue('حرف الباء وحركاته');
+    expect(screen.queryByDisplayValue(/القسمة/)).not.toBeInTheDocument();
+
+    rerender(<AiTutorModal isOpen={true} onClose={vi.fn()} grade="5AP" />);
+    expect(screen.getByPlaceholderText(/مثال: الكسور العشرية/i)).toHaveValue('الحال والتمييز');
+    expect(screen.queryByRole('button', { name: /إنّ وأخواتها/ })).not.toBeInTheDocument();
+  });
+
   it('displays a loading state while waiting for the AI response', async () => {
     vi.spyOn(springBootApi, 'askGeminiExplain').mockImplementation(
       () => new Promise(() => {}) // never resolves — keeps the button in loading state
@@ -119,11 +130,20 @@ describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
     await waitFor(() => {
       expect(screen.getByText('احسب ناتج 24 × 3.')).toBeInTheDocument();
     });
-    expect(screen.getByText(/الجواب هو 72/)).toBeInTheDocument();
     expect(screen.getByText(/كم ناتج 24 × 3؟/)).toBeInTheDocument();
+    expect(screen.queryByText(/الجواب هو 72/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByText('72'));
     expect(screen.getByText(/أحسنت! إجابة صحيحة/)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /عرض الحل للوالدين/ }));
+    expect(screen.getByText('بوابة الوالدين')).toBeInTheDocument();
+    const prompt = screen.getByText(/^\d+ \+ \d+ = \?$/);
+    const [a, b] = prompt.textContent!.match(/\d+/g)!.map(Number);
+    fireEvent.change(screen.getByPlaceholderText('اكتب الناتج هنا'), { target: { value: String(a + b) } });
+    fireEvent.click(screen.getByRole('button', { name: 'متابعة' }));
+
+    expect(screen.getByText(/الجواب هو 72/)).toBeInTheDocument();
   });
 
   it('surfaces the daily quota message when the backend answers 429', async () => {

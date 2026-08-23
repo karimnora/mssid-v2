@@ -35,9 +35,14 @@ export const AI_TUTOR_SUGGESTED_TOPICS: Record<PrimaryGrade, SuggestedTopic[]> =
     { labelAr: 'Family in English', subjectEmoji: '🇬🇧' },
   ],
   '5AP': [
-    { labelAr: 'إنّ وأخواتها', subjectEmoji: '📖' },
-    { labelAr: 'حساب حجم متوازي المستطيلات', subjectEmoji: '🔢' },
+    // الحال/التمييز and decimals are 5AP-new; إنّ وأخواتها is taught in 4AP (see CLAUDE.md).
+    { labelAr: 'الحال والتمييز', subjectEmoji: '📖' },
+    { labelAr: 'الأعداد العشرية', subjectEmoji: '🔢' },
     { labelAr: 'ثورة أول نوفمبر 1954', subjectEmoji: '🇩🇿' },
     { labelAr: 'Le passé composé', subjectEmoji: '🇫🇷' },
   ],
 };
+
+export function defaultAiTutorTopicForGrade(grade: PrimaryGrade): string {
+  return AI_TUTOR_SUGGESTED_TOPICS[grade]?.[0]?.labelAr ?? '';
+}

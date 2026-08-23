@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.ArgumentMatchers.eq;
@@ -59,6 +61,23 @@ class GeminiAiServiceTest {
     // Regression test for the flag/logging audit: a failed Gemini call used to disappear with zero
     // trace anywhere — not even an SLF4J log line, let alone something an admin could query. The fake
     // API key in setUp() means every call above already exercises this failure path.
+    @Test
+    @DisplayName("GRADE_CURRICULUM digest matches الجيل الثاني — 3AP is جملة اسمية, 5AP is حال not إنّ")
+    void curriculumDigest_MatchesOfficialProgrammeBoundaries() throws Exception {
+        java.lang.reflect.Field field = GeminiAiService.class.getDeclaredField("GRADE_CURRICULUM");
+        field.setAccessible(true);
+        @SuppressWarnings("unchecked")
+        Map<String, String> digest = (Map<String, String>) field.get(null);
+
+        assertTrue(digest.get("2AP").contains("اسم/فعل/حرف"));
+        assertTrue(digest.get("3AP").contains("الجملة الاسمية والفعلية"));
+        assertTrue(digest.get("3AP").contains("لا تشرح اسم/فعل"));
+        assertTrue(digest.get("4AP").contains("إنّ وأخواتها"));
+        assertTrue(digest.get("5AP").contains("الحال"));
+        assertTrue(digest.get("5AP").contains("الأعداد العشرية"));
+        assertTrue(digest.get("5AP").contains("لا تشرح إنّ"));
+    }
+
     @Test
     @DisplayName("generateExplanation - records an AI_TUTOR_CALL_FAILED audit entry when the Gemini call fails")
     void generateExplanation_Failure_RecordsAuditEntry() {

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { X, Sparkles, Bot, RefreshCw, ShieldAlert, Lightbulb } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { X, Sparkles, Bot, RefreshCw, ShieldAlert, Lightbulb, Lock } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
-import { AI_TUTOR_SUGGESTED_TOPICS } from '../data/aiTutorSuggestedTopics';
+import { AI_TUTOR_SUGGESTED_TOPICS, defaultAiTutorTopicForGrade } from '../data/aiTutorSuggestedTopics';
 import { QuickCheckQuiz, QuickCheckOption } from './QuickCheckQuiz';
+import { ParentGateModal } from './ParentGateModal';
 
 interface AiTutorModalProps {
   isOpen: boolean;
@@ -20,15 +21,27 @@ interface AiResult {
 }
 
 export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, grade }) => {
-  const [topic, setTopic] = useState('القسمة الأقليدية والكسور');
+  const [topic, setTopic] = useState(() => defaultAiTutorTopicForGrade(grade));
   const [question, setQuestion] = useState('');
   const [promptType, setPromptType] = useState<'explain' | 'solve' | 'generate'>('explain');
   const [loading, setLoading] = useState(false);
   const [aiResult, setAiResult] = useState<AiResult | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [solutionUnlocked, setSolutionUnlocked] = useState(false);
+  const [showParentGate, setShowParentGate] = useState(false);
 
   const currentUser = AuthService.getCurrentUser();
   const userRole = currentUser?.role || 'ROLE_FREE';
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setTopic(defaultAiTutorTopicForGrade(grade));
+    setQuestion('');
+    setAiResult(null);
+    setErrorMsg(null);
+    setSolutionUnlocked(false);
+    setShowParentGate(false);
+  }, [isOpen, grade]);
 
   if (!isOpen) return null;
 
@@ -38,6 +51,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
     setLoading(true);
     setErrorMsg(null);
     setAiResult(null);
+    setSolutionUnlocked(false);
 
     try {
       const springRes = await springBootApi.askGeminiExplain({
@@ -244,7 +258,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             </div>
           )}
 
-          {/* "generate" mode — structured output: exercise, solution, and an interactive check question */}
+          {/* "generate" mode — exercise and QCM first; corrigé only after parent gate */}
           {aiResult?.exerciseText && (
             <div className="space-y-3">
               <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 space-y-2 shadow-inner">
@@ -257,7 +271,25 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                 </p>
               </div>
 
-              {aiResult.solutionText && (
+              {aiResult.quickCheck && (
+                <QuickCheckQuiz
+                  questionAr={aiResult.quickCheck.questionAr}
+                  options={aiResult.quickCheck.options}
+                />
+              )}
+
+              {aiResult.solutionText && !solutionUnlocked && (
+                <button
+                  type="button"
+                  onClick={() => setShowParentGate(true)}
+                  className="w-full min-h-[60px] bg-white hover:bg-emerald-50 border border-slate-300 hover:border-emerald-400 text-slate-700 hover:text-emerald-800 font-bold text-sm py-3 px-4 rounded-2xl transition-colors cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <Lock className="w-5 h-5 shrink-0" />
+                  <span>عرض الحل للوالدين</span>
+                </button>
+              )}
+
+              {aiResult.solutionText && solutionUnlocked && (
                 <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl space-y-1.5">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800">
                     <Lightbulb className="w-4 h-4 shrink-0" />
@@ -268,17 +300,19 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                   </p>
                 </div>
               )}
-
-              {aiResult.quickCheck && (
-                <QuickCheckQuiz
-                  questionAr={aiResult.quickCheck.questionAr}
-                  options={aiResult.quickCheck.options}
-                />
-              )}
             </div>
           )}
         </div>
       </div>
+
+      <ParentGateModal
+        isOpen={showParentGate}
+        onClose={() => setShowParentGate(false)}
+        onVerified={() => {
+          setShowParentGate(false);
+          setSolutionUnlocked(true);
+        }}
+      />
     </div>
   );
 };
