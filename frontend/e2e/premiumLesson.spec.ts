@@ -13,7 +13,7 @@ const fullContent = JSON.parse(
 
 test.beforeEach(async ({ page }) => {
   await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
-  await page.goto('/');
+  await page.goto('/?g=5AP');
   await page.getByRole('button', { name: 'مراجعة الدروس' }).click();
   await page.getByRole('button', { name: 'الرياضيات' }).click();
   await page.getByRole('button', { name: 'الفصل الثاني (Trimestre 2)' }).click();
@@ -27,7 +27,10 @@ test('a guest opens math-5ap-division and sees rules without a premium fetch', a
   });
 
   await page.getByText(fullContent.titleAr, { exact: true }).click();
-  await page.getByRole('button', { name: 'المرحلة الموالية: الملخص والقواعد' }).click();
+  // Footer CTA is `التالي: {stepLabel}` (LessonStepFooter), not the older
+  // `المرحلة الموالية:` copy. Prefer the data attribute so a future label tweak
+  // does not break the guest/premium path this spec actually guards.
+  await page.locator('[data-primary-cta="next-step"]').click();
 
   await expect(page.getByText(`${fullContent.rulesAr.length} قواعد أساسية`)).toBeVisible();
   await expect(page.getByText(fullContent.detailedCourse.vocabulary[0].definitionAr)).toBeVisible();

@@ -202,7 +202,7 @@ export const courses = {
   nextStepPreviewLabel: 'الخطوة التالية: {label} (بقي {remaining} مراحل)',
   allStepsDoneMsg: 'أحسنت يا بطل! أتممت جميع مراحل هذا الدرس 🏆',
   previousStepButton: 'السابق: {label}',
-  nextStepButton: 'المرحلة الموالية: {label}',
+  nextStepButton: 'التالي: {label}',
   congratsHeading: 'أحسنت يا بطل! أتممت جميع مراحل هذا الدرس بنجاح! 🏆',
   allStepsCompletedNote: 'أكملت كافة المراحل ({current} / {total}). يمكنك الآن الانتقال إلى الدرس التالي!',
   reviewFromStartButton: 'مراجعة من البداية',

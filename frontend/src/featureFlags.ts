@@ -14,7 +14,9 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // ready to introduce payments — this is the master kill-switch, enableTrimesterPaywall below is
   // the specific T2/T3 lock and stays subordinate to this one either way (see trimesterAccess.ts).
   enablePayments: false,
-  tamazight: false,
+  // ON so the Amazigh course + tamazight_lab + tamazight_curriculum appear in the hub.
+  // Admin can still hide them from the Feature Flags tab (override to false).
+  tamazight: true,
   enableAITutor: true,
   advancedLabs: true,
   voiceReading: true,
