@@ -81,10 +81,10 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           <button
             onClick={replayPrompt}
             className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-            aria-label={t('إعادة الاستماع', 'Réécouter', 'Replay')}
-            title={t('استمع للصوت', 'Écouter à nouveau', 'Listen again')}
+            aria-label={missingVoice ? t('لا يوجد صوت', 'Pas de voix', 'No voice') : t('إعادة الاستماع', 'Réécouter', 'Replay')}
+            title={missingVoice ? t('لا يوجد صوت على هذا الجهاز، اضغط على "نصيحة لولي الأمر"', 'Pas de voix sur cet appareil — voir « Astuce pour le parent »', 'No voice on this device — see "Tip for the grown-up"') : t('استمع للصوت', 'Écouter à nouveau', 'Listen again')}
           >
-            🔊
+            {missingVoice ? '🔇' : '🔊'}
           </button>
 
           {/* Skip never blocks — but it must not count as a success (badges / défi / path stars). */}

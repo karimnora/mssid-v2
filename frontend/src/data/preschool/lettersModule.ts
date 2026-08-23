@@ -216,7 +216,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre Th',
+          title: 'La Pêche à la Lettre R',
           promptAudio: 'Touche la lettre R ! R comme Renard !',
           promptText: 'Aidez votre enfant à toucher les lettres T et H ensemble.',
           successAudio: 'Bravo ! R comme Renard !',
@@ -228,7 +228,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         en: {
-          title: 'Catch the Letter Th',
+          title: 'Catch the Letter F',
           promptAudio: 'Touch the letter F! F for Fox!',
           promptText: 'Help your child tap the Th sound.',
           successAudio: 'Well done! F for Fox!',
@@ -775,7 +775,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre Ch',
+          title: 'La Pêche à la Lettre S',
           promptAudio: 'Touche la lettre S ! S comme Soleil !',
           promptText: 'Aidez votre enfant à trouver Ch comme dans chat.',
           successAudio: 'Bravo ! S comme Soleil !',
@@ -787,7 +787,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         en: {
-          title: 'Catch the Letters Sh',
+          title: 'Catch the Letter S',
           promptAudio: 'Touch the letter S! S for Sun!',
           promptText: 'Help your child tap the Sh sound.',
           successAudio: 'Well done! S for Sun!',
@@ -823,10 +823,10 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre Ç',
-          promptAudio: 'Touche la lettre F ! F comme Fleur !',
+          title: 'La Pêche à la Lettre F',
+          promptAudio: 'Touche la lettre F ! F comme Faucon !',
           promptText: 'Aidez votre enfant à toucher le C cédille.',
-          successAudio: 'Bravo ! F comme Fleur !',
+          successAudio: 'Bravo ! F comme Faucon !',
           image: '🦅',
           choices: [
             { id: 'f', asset: 'F', isCorrect: true },
@@ -835,7 +835,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         en: {
-          title: 'Catch the Letter S',
+          title: 'Catch the Letter F',
           promptAudio: 'Touch the letter F! F for Falcon!',
           promptText: 'Help your child tap the letter S.',
           successAudio: 'Well done! F for Falcon!',
@@ -1000,10 +1000,10 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre Z',
-          promptAudio: 'Touche la lettre G ! G comme Girafe !',
+          title: 'La Pêche à la Lettre G',
+          promptAudio: 'Touche la lettre G ! G comme Gazelle !',
           promptText: 'Aidez votre enfant à toucher la lettre Z.',
-          successAudio: 'Bravo ! G comme Girafe !',
+          successAudio: 'Bravo ! G comme Gazelle !',
           image: '🦌',
           choices: [
             { id: 'g', asset: 'G', isCorrect: true },
@@ -1012,7 +1012,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         en: {
-          title: 'Catch the Letter Z',
+          title: 'Catch the Letter G',
           promptAudio: 'Touch the letter G! G for Gazelle!',
           promptText: 'Help your child tap the letter Z.',
           successAudio: 'Well done! G for Gazelle!',
@@ -1096,7 +1096,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre G',
+          title: 'La Pêche à la Lettre M',
           promptAudio: 'Touche la lettre M ! M comme Mouton !',
           promptText: 'Aidez votre enfant à toucher la lettre G.',
           successAudio: 'Bravo ! M comme Mouton !',
@@ -1108,7 +1108,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         en: {
-          title: 'Catch the Letter G',
+          title: 'Catch the Letter S',
           promptAudio: 'Touch the letter S! S for Sheep!',
           promptText: 'Help your child tap the letter G.',
           successAudio: 'Well done! S for Sheep!',
@@ -1144,7 +1144,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre F',
+          title: 'La Pêche à la Lettre E',
           promptAudio: 'Touche la lettre E ! E comme Éléphant !',
           promptText: 'Aidez votre enfant à toucher la lettre F.',
           successAudio: 'Bravo ! E comme Éléphant !',
@@ -1156,7 +1156,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         en: {
-          title: 'Catch the Letter F',
+          title: 'Catch the Letter E',
           promptAudio: 'Touch the letter E! E for Elephant!',
           promptText: 'Help your child tap the letter F.',
           successAudio: 'Well done! E for Elephant!',
@@ -1273,11 +1273,11 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre K',
+          title: 'La Pêche à la Lettre C',
           promptAudio: 'Touche la lettre C ! C comme Chat !',
           promptText: 'Aidez votre enfant à toucher la lettre K.',
           successAudio: 'Bravo ! C comme Chat !',
-          image: '🐶',
+          image: '🐱',
           choices: [
             { id: 'c', asset: 'C', isCorrect: true },
             { id: 'c-w0', asset: 'A', isCorrect: false },
@@ -1289,7 +1289,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           promptAudio: 'Touch the letter K! K for Kite!',
           promptText: 'Help your child tap the letter K.',
           successAudio: 'Well done! K for Kite!',
-          image: '🐶',
+          image: '🪁',
           choices: [
             { id: 'k', asset: 'K', isCorrect: true },
             { id: 'k-w0', asset: 'I', isCorrect: false },
@@ -1450,7 +1450,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           ],
         },
         fr: {
-          title: 'La Pêche à la Lettre H',
+          title: 'La Pêche à la Lettre L',
           promptAudio: 'Touche la lettre L ! L comme Lune !',
           promptText: 'Aidez votre enfant à toucher la lettre H.',
           successAudio: 'Bravo ! L comme Lune !',
@@ -1466,7 +1466,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           promptAudio: 'Touch the letter H! H for House!',
           promptText: 'Help your child tap the letter H.',
           successAudio: 'Well done! H for House!',
-          image: '🌙',
+          image: '🏠',
           choices: [
             { id: 'h', asset: 'H', isCorrect: true },
             { id: 'h-w0', asset: 'F', isCorrect: false },

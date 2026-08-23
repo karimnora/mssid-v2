@@ -253,6 +253,55 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     }
   });
 
+  it('FR/EN letter tap_choice: title, promptAudio and successAudio all name the same letter', () => {
+    // Regression guard for a real content bug found in review: several FR/EN letter activities had a
+    // title naming one letter while promptAudio/successAudio and the actual tappable choice taught a
+    // different one (e.g. title "La Pêche à la Lettre Th" but promptAudio/choice were about "R").
+    // Only single, unaccented Latin letters are checked — digraph titles (Th, Ch, Sh…) describe an
+    // Arabic sound that has no 1:1 Latin letter and are intentionally out of scope here.
+    // Tokens can be a single letter (A) or a digraph describing an Arabic sound (Th, Ch, Sh, Ç) — any
+    // length is accepted here, title vs. audio just have to agree on the same token.
+    const letterAfter = (text: string, word: 'lettre' | 'letter'): string | null => {
+      const m = text.match(new RegExp(`\\b${word}s?\\s+([A-Za-zÀ-ÖØ-öø-ÿ]+)\\b`, 'i'));
+      return m ? m[1].toUpperCase() : null;
+    };
+    const leadingLetterOf = (text: string): string | null => {
+      // successAudio pattern: "Bravo ! A comme Ananas !" / "Well done! A for Apple!"
+      const m = text.match(/\b([A-Za-zÀ-ÖØ-öø-ÿ]+)\s+(?:comme|for)\b/i);
+      return m ? m[1].toUpperCase() : null;
+    };
+
+    const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
+    expect(letters).toBeTruthy();
+
+    const issues: string[] = [];
+    for (const activity of letters!.activities) {
+      if (activity.interactionType !== 'tap_choice') continue;
+      for (const [lang, word] of [['fr', 'lettre'], ['en', 'letter']] as const) {
+        const content = activity.i18n[lang];
+        const correct = content.choices?.find((c) => c.isCorrect)?.asset?.toUpperCase();
+
+        const titleLetter = letterAfter(content.title, word);
+        const audioLetter = letterAfter(content.promptAudio, word);
+        const successLetter = leadingLetterOf(content.successAudio ?? '');
+
+        // title and promptAudio must always agree on which letter/sound is being taught.
+        if (titleLetter && audioLetter && titleLetter !== audioLetter) {
+          issues.push(`${activity.id} ${lang}: title says "${word} ${titleLetter}" but promptAudio says "${word} ${audioLetter}"`);
+        }
+        // The audio directly names the tile the child is asked to tap — when it's a single Latin
+        // letter, it must be the one actually marked correct among the choices.
+        if (audioLetter && audioLetter.length === 1 && correct && audioLetter !== correct) {
+          issues.push(`${activity.id} ${lang}: promptAudio says "${word} ${audioLetter}" but the correct choice is "${correct}"`);
+        }
+        if (successLetter && audioLetter && successLetter !== audioLetter) {
+          issues.push(`${activity.id} ${lang}: successAudio leads with "${successLetter}" but promptAudio said "${word} ${audioLetter}"`);
+        }
+      }
+    }
+    expect(issues).toEqual([]);
+  });
+
   it('seasons-connect names each season and matches winter to the scarf already taught', () => {
     const seasons = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-seasons');
     const connect = seasons?.activities.find((a) => a.id === 'seasons-connect');
