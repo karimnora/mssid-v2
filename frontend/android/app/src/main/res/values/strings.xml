@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mssid DZ - مسيد</string>
+    <string name="title_activity_main">Mssid DZ - مسيد</string>
+    <string name="package_name">dz.mssid.app</string>
+    <string name="custom_url_scheme">dz.mssid.app</string>
+</resources>

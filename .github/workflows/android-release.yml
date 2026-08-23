@@ -1,0 +1,96 @@
+name: Android Release Build
+
+# Builds a signed AAB (Play Store) + APK (direct distribution) from the Capacitor android/ project
+# that's committed in frontend/android/. Manual by default — a signed release build isn't something
+# we want firing on every push — plus automatic on version tags (v1.0.0, v1.0.1, ...) so cutting a
+# tag is enough to produce the artifacts for that release.
+#
+# No local Android SDK/Studio is assumed anywhere in this repo's dev setup; this workflow is the
+# only place these builds actually happen (see ANDROID_BUILD_GUIDE.md).
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   ANDROID_KEYSTORE_BASE64  — `certutil -encode mssid-release-key.jks keystore.b64` (Windows) or
+#                              `base64 -w0 mssid-release-key.jks` (Linux/Mac), paste the file content.
+#   ANDROID_KEYSTORE_PASSWORD
+#   ANDROID_KEY_ALIAS
+#   ANDROID_KEY_PASSWORD
+#   VITE_SPRING_BOOT_URL     — production backend URL baked into this build (see .env.example —
+#                              without it the app falls back to localhost, which is unreachable from
+#                              a real device and breaks login/signup/AI tutor entirely).
+on:
+  workflow_dispatch: {}
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: npm ci
+
+      # Same web bundle the Play Store build ships — built once here, then handed to Capacitor.
+      - run: npm run build
+        env:
+          VITE_SPRING_BOOT_URL: ${{ secrets.VITE_SPRING_BOOT_URL }}
+
+      - run: npx cap sync android
+
+      # AGP 8.13 (see android/build.gradle) requires JDK 17+; Temurin 21 matches what backend CI
+      # already uses (.github/workflows/ci.yml) so we're not tracking a second JDK version in this repo.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      # Decode the release keystore from its secret into the exact path keystore.properties.example
+      # documents, and write keystore.properties from the other three secrets — this is the only
+      # place either the key or its passwords ever touch disk, and only for the lifetime of this job.
+      - name: Set up release signing
+        working-directory: frontend/android
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > mssid-release-key.jks
+          cat > keystore.properties <<EOF
+          storeFile=../mssid-release-key.jks
+          storePassword=$ANDROID_KEYSTORE_PASSWORD
+          keyAlias=$ANDROID_KEY_ALIAS
+          keyPassword=$ANDROID_KEY_PASSWORD
+          EOF
+
+      - name: Build signed AAB + APK
+        working-directory: frontend/android
+        run: |
+          chmod +x gradlew
+          ./gradlew bundleRelease assembleRelease
+
+      # Runs even if the build step fails, so a signed key never lingers in the runner's workspace
+      # (and therefore never ends up in a cache or a debug artifact upload) longer than it has to.
+      - name: Remove the decoded keystore
+        if: always()
+        working-directory: frontend/android
+        run: rm -f mssid-release-key.jks keystore.properties
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mssid-android-release
+          path: |
+            frontend/android/app/build/outputs/bundle/release/app-release.aab
+            frontend/android/app/build/outputs/apk/release/app-release.apk
+          retention-days: 30

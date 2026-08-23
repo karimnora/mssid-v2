@@ -1,0 +1,61 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="bookCoverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="whitePageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background square (maskable-safe: art stays within the inner ~80% safe zone) -->
+  <rect width="512" height="512" rx="96" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="480" height="480" rx="84" fill="#020617" />
+
+  <!-- Symbol group, scaled up from the 64x64 MssidLogo viewBox and centered -->
+  <g transform="translate(64,64) scale(6)">
+    <!-- Open Book Wings (Left & Right Pages) -->
+    <path
+      d="M 8,42 Q 20,38 32,44 Q 44,38 56,42 L 56,22 Q 44,18 32,24 Q 20,18 8,22 Z"
+      fill="url(#bookCoverGrad)"
+      stroke="#34d399"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+    />
+    <path d="M 11,39.5 Q 21.5,36 31,41.5 L 31,23.5 Q 21.5,18 11,21.5 Z" fill="url(#whitePageGrad)" />
+    <path d="M 53,39.5 Q 42.5,36 33,41.5 L 33,23.5 Q 42.5,18 53,21.5 Z" fill="url(#whitePageGrad)" />
+
+    <!-- Book Spine Center Line -->
+    <line x1="32" y1="23" x2="32" y2="44" stroke="#047857" stroke-width="1.5" stroke-linecap="round" />
+
+    <!-- Calligraphic Arabic Letter 'م' (Meem) in Gold on the Spine -->
+    <path
+      d="M 32 18 C 29 18 28 20 29.5 21.5 C 31 23 33 22 32 20.5 C 31.5 19.8 30.5 19.5 32 19.5 C 34 19.5 34.5 22 34.5 25 L 34.5 28"
+      stroke="url(#goldGrad)"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+
+    <!-- Sparkles -->
+    <path d="M 46 8 L 47.5 12 L 51.5 13.5 L 47.5 15 L 46 19 L 44.5 15 L 40.5 13.5 L 44.5 12 Z" fill="url(#goldGrad)" />
+    <path d="M 18 10 L 19 12.5 L 21.5 13.5 L 19 14.5 L 18 17 L 17 14.5 L 14.5 13.5 L 17 12.5 Z" fill="#34d399" />
+
+    <!-- Rays of Light beneath the book -->
+    <path d="M 22 48 L 18 53" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" />
+    <path d="M 32 49 L 32 55" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" />
+    <path d="M 42 48 L 46 53" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" />
+  </g>
+</svg>
