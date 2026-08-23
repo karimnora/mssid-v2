@@ -45,6 +45,17 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             </div>
           </div>
 
+          {/* Publisher identity */}
+          <div className="space-y-2">
+            <h4 className="font-bold text-white text-base flex items-center gap-2">
+              <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">•</span>
+              الجهة الناشرة
+            </h4>
+            <p className="text-sm text-slate-300">
+              تطبيق ومنصة مَسيد DZ يديرها ويطوّرها مطوّر مستقل مقيم في الجزائر. للتواصل بخصوص أي استفسار قانوني أو تقني: <code className="bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-mono">mssid.dz.app@gmail.com</code>.
+            </p>
+          </div>
+
           {/* Section 1 */}
           <div className="space-y-2">
             <h4 className="font-bold text-white text-base flex items-center gap-2">
@@ -113,7 +124,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             </p>
             <ul className="list-disc list-inside space-y-1 text-sm text-slate-300 mr-4">
               <li><strong className="text-slate-100">من داخل التطبيق:</strong> صفحة الملف الشخصي ← حذف الحساب.</li>
-              <li><strong className="text-slate-100">من خارج التطبيق (بدون الحاجة لتثبيته أو تسجيل الدخول):</strong> أرسل بريداً إلكترونياً إلى <code className="bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-mono">support@mssid-dz.com</code> من نفس عنوان البريد المسجل بالحساب، تحديداً بطلب حذف الحساب. يتم تنفيذ الطلب وحذف كافة البيانات المرتبطة خلال مدة أقصاها 30 يوماً.</li>
+              <li><strong className="text-slate-100">من خارج التطبيق (بدون الحاجة لتثبيته أو تسجيل الدخول):</strong> أرسل بريداً إلكترونياً إلى <code className="bg-slate-800 px-2 py-0.5 rounded text-emerald-400 font-mono">mssid.dz.app@gmail.com</code> من نفس عنوان البريد المسجل بالحساب، تحديداً بطلب حذف الحساب. يتم تنفيذ الطلب وحذف كافة البيانات المرتبطة خلال مدة أقصاها 30 يوماً.</li>
             </ul>
           </div>
 

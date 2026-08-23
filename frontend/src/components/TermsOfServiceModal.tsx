@@ -165,7 +165,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
               التواصل
             </h4>
             <p className="text-sm text-slate-300">
-              لأي استفسار متعلق بالاشتراك أو الاسترجاع أو هذه الشروط، يُرجى التواصل عبر: <code className="bg-slate-800 px-2 py-0.5 rounded text-blue-400 font-mono">support@mssid-dz.com</code>.
+              لأي استفسار متعلق بالاشتراك أو الاسترجاع أو هذه الشروط، يُرجى التواصل عبر: <code className="bg-slate-800 px-2 py-0.5 rounded text-blue-400 font-mono">mssid.dz.app@gmail.com</code>.
             </p>
           </div>
 

@@ -837,9 +837,9 @@ L'application ne contient AUCUNE publicité d'annonceurs tiers, AUCUN réseau pu
 Toutes les communications entre l'application mobile et les serveurs sont sécurisées par un chiffrement SSL/TLS (HTTPS). Les données sont traitées par notre backend sécurisé Spring Boot.
 
 5. DROITS DE SUPPRESSION DES DONNÉES (PARENTAL RIGHTS)
-Les parents peuvent à tout moment demander la suppression intégrale du compte et des données associées de leur enfant en envoyant un e-mail à : support@mssid-dz.com.
+Les parents peuvent à tout moment demander la suppression intégrale du compte et des données associées de leur enfant en envoyant un e-mail à : mssid.dz.app@gmail.com.
 
-Contact Support : support@mssid-dz.com / https://mssid-dz.com
+Contact Support : mssid.dz.app@gmail.com / https://mssid-dz.com
 ```
 
 ---
