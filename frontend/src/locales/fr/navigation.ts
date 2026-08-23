@@ -105,6 +105,7 @@ export const navigation: typeof navigationAr = {
   footerBrandName: 'Mssid DZ',
   footerCurriculumLine: '• Programme officiel du ministère de l’Éducation nationale algérien',
   footerAiTutorLink: 'Tuteur Mssid',
+  footerCopyright: '© {year} Mssid DZ',
   footerWebVersionLink: 'Version web complète',
   footerPlayStoreLink: "Télécharger sur Google Play",
 

@@ -169,8 +169,9 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
             </p>
           </div>
 
-          <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center">
-            آخر تحديث: أوت 2026 — مسودة بانتظار المراجعة النهائية
+          <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center space-y-1">
+            <p>آخر تحديث: أوت 2026 — مسودة بانتظار المراجعة النهائية</p>
+            <p className="opacity-70">© 2026 مَسِيد DZ</p>
           </div>
 
         </div>

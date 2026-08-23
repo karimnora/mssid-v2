@@ -91,8 +91,9 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
             </p>
           </div>
 
-          <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center">
-            آخر تحديث: أوت 2026 • متوافق مع سياسات Google Play Console لعام 2026
+          <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center space-y-1">
+            <p>آخر تحديث: أوت 2026 • متوافق مع سياسات Google Play Console لعام 2026</p>
+            <p className="opacity-70">© 2026 مَسِيد DZ</p>
           </div>
 
         </div>

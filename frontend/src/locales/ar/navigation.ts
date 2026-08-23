@@ -103,6 +103,7 @@ export const navigation = {
   footerBrandName: 'مَسِيد Mssid DZ',
   footerCurriculumLine: '• المنهاج الرسمي لوزارة التربية الوطنية الجزائرية',
   footerAiTutorLink: 'المعلم مسيد',
+  footerCopyright: '© {year} مَسِيد DZ',
   footerWebVersionLink: 'النسخة الكاملة على الويب',
   footerPlayStoreLink: 'حمّل التطبيق من Google Play',
 

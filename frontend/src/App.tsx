@@ -302,9 +302,10 @@ export default function App() {
 
       <footer className="py-6 mt-12 transition-colors duration-300 bg-[var(--app-footer-bg)] border-t border-[var(--app-card-border)] text-[var(--app-text-muted)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-[var(--app-text)]">{t('navigation', 'footerBrandName')}</span>
             <span className="opacity-75">{t('navigation', 'footerCurriculumLine')}</span>
+            <span className="opacity-60">{t('navigation', 'footerCopyright', { year: new Date().getFullYear() })}</span>
           </div>
           <div className="flex items-center gap-4">
             <button onClick={openAiTutor} className="hover:text-[var(--brand-amber)] cursor-pointer">
