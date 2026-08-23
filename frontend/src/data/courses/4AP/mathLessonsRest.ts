@@ -149,7 +149,26 @@ export const MATH_4AP_REST: CourseLesson[] = [
             operationsAr: '758 ÷ 32\n64 ÷ 32 = 2\n118 ÷ 32 = 3 (الباقي 22)\n(32 × 23) + 22 = 758 ✓',
         },
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'قسمة على عدد من رقمين',
+      introAr: 'تقدير الحاصل ثم التحقق: المقسوم = (المقسوم عليه × الحاصل) + الباقي.',
+      operations: [
+        {
+          id: '936-24',
+          labelAr: '936 ÷ 24',
+          operationsAr: '936 ÷ 24\n= 39 (باقٍ 0)\n24 × 39 = 936 ✓',
+          solutionAr: 'الحاصل 39. التحقق: 24×39=936.',
+        },
+        {
+          id: '758-32',
+          labelAr: '758 ÷ 32',
+          operationsAr: '758 ÷ 32\n= 23 (باقٍ 22)\n(32×23)+22=758 ✓',
+          solutionAr: 'الحاصل 23 والباقي 22. الباقي < 32.',
+        },
+      ],
+    },
     ...build4ApPractice('math-4ap-division-two-digit-divisor', [
         { problemAr: '850 ÷ 25 = ؟', solutionAr: '34', detailedCorrectionAr: '850÷25=34 والباقي 0.', type: 'calculation', calculationAnswer: 34 },
         { problemAr: '936 ÷ 24: الباقي يساوي 0. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '24×39=936.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },

@@ -52,7 +52,17 @@ export const MATH_4AP: CourseLesson[] = [
             operationsAr: '68,425\n= (6 × 10,000) + (8 × 1,000) + (4 × 100) + (2 × 10) + 5\n= 60,000 + 8,000 + 400 + 20 + 5',
         },
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'أعداد حتى 99,999',
+      introAr: 'منازل: ع.آ | آلاف | مئات | عشرات | وحدات.',
+      cards: [
+        { labelAr: 'تفكيك 45,678', valueDisplay: '45678', explanationAr: '(4×10000)+(5×1000)+(6×100)+(7×10)+8' },
+        { labelAr: 'حصر 68,425', valueDisplay: '68000 < 68425 < 69000', explanationAr: 'بين ألفين متتاليتين.' },
+        { labelAr: 'رقم الآلاف في 54,892', valueDisplay: '4', explanationAr: 'ليس 5 (عشرات الآلاف).' },
+      ],
+    },
     progressiveExercises: [
         {
             id: 'math-4ap-numbers-under-100k-p1',
@@ -209,7 +219,17 @@ export const MATH_4AP: CourseLesson[] = [
             operationsAr: 'عدد الخانات:\n9,875 → 4 أرقام (الأصغر)\n12,405 و 12,450 و 21,045 → 5 أرقام\nمقارنة 12,405 و 12,450: 12,4.. ثم 0 < 5\nمقارنة مع 21,045: 1 < 2 في عشرات الآلاف\n\n12,000 < 12,450 < 13,000',
         },
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'مقارنة وترتيب وحصر',
+      introAr: 'عدّ الخانات أولاً، ثم قارن من اليسار.',
+      cards: [
+        { labelAr: 'عدد الخانات', valueDisplay: '9999 < 10002', explanationAr: '5 أرقام > 4 أرقام.' },
+        { labelAr: 'ترتيب تصاعدي', valueDisplay: '9875 < 12405 < 12450', explanationAr: 'من الأصغر إلى الأكبر.' },
+        { labelAr: 'حصر 12450', valueDisplay: '12000 < 12450 < 13000', explanationAr: 'بين ألفين متتاليتين.' },
+      ],
+    },
     progressiveExercises: [
         {
             id: 'math-4ap-compare-order-100k-p1',

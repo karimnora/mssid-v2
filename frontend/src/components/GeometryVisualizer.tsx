@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Gamepad2, Compass, CheckCircle2, XCircle, Trophy, RotateCcw, Sparkles } from 'lucide-react';
 import { Shape3DViewer, Solid3DId, ShapeDimensions, HighlightFeature } from './Shape3DViewer';
@@ -391,13 +391,30 @@ interface GeometryVisualizerProps {
 }
 
 export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = '4AP', theme = 'dark' }) => {
+  const allows3D = grade === '3AP' || grade === '4AP' || grade === '5AP';
+  const shapeCatalog = useMemo(
+    () => (allows3D ? SHAPES : SHAPES.filter((s) => s.category === '2d')),
+    [allows3D],
+  );
+
   const [selectedId, setSelectedId] = useState<string>('square');
   const [dimensionsByShape, setDimensionsByShape] = useState<Record<string, ShapeDimensions>>(DEFAULT_DIMS);
   const [highlightFeature, setHighlightFeature] = useState<HighlightFeature>(null);
   const [appMode, setAppMode] = useState<'explore' | 'quiz'>('explore');
-  const [activeCategory, setActiveCategory] = useState<'all' | '2d' | '3d'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | '2d' | '3d'>(allows3D ? 'all' : '2d');
 
-  const selectedShape = SHAPES.find(s => s.id === selectedId) || SHAPES[0];
+  useEffect(() => {
+    if (!allows3D) {
+      setActiveCategory('2d');
+      setSelectedId((prev) => {
+        const current = SHAPES.find((s) => s.id === prev);
+        if (current?.category === '3d') return 'square';
+        return prev;
+      });
+    }
+  }, [allows3D]);
+
+  const selectedShape = shapeCatalog.find((s) => s.id === selectedId) || shapeCatalog[0];
   const currentDims = dimensionsByShape[selectedId] || { a: 5, b: 5, c: 5 };
   const measurements = selectedShape.category === '3d' ? computeMeasurements(selectedId, currentDims) : {};
 
@@ -405,7 +422,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
     setDimensionsByShape(prev => ({ ...prev, [selectedId]: { ...(prev[selectedId] || currentDims), [key]: value } }));
   };
 
-  const filteredShapes = SHAPES.filter(s => activeCategory === 'all' ? true : s.category === activeCategory);
+  const filteredShapes = shapeCatalog.filter(s => activeCategory === 'all' ? true : s.category === activeCategory);
 
   const isNeutre = theme === 'neutre';
   const isLight = theme === 'light';
@@ -482,11 +499,11 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                 {([
                   { id: 'all', label: 'الكل' },
                   { id: '2d', label: '2D' },
-                  { id: '3d', label: '3D' },
+                  ...(allows3D ? [{ id: '3d' as const, label: '3D' }] : []),
                 ] as const).map(({ id, label }) => (
                   <button
                     key={id} type="button"
-                    onClick={() => { setActiveCategory(id); if (id !== 'all') { const first = SHAPES.find(s => s.category === id); if (first) setSelectedId(first.id); } }}
+                    onClick={() => { setActiveCategory(id); if (id !== 'all') { const first = shapeCatalog.find(s => s.category === id); if (first) setSelectedId(first.id); } }}
                     className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${activeCategory === id ? 'bg-amber-500 text-slate-950 font-black' : 'opacity-60 hover:opacity-90'}`}
                   >
                     {label}

@@ -47,7 +47,17 @@ export const MATH_3AP: CourseLesson[] = [
       'تفكيك الضربي: 486 = (4 × 100) + (8 × 10) + 6',
       'مقارنة عددين من 3 أرقام: نقارن المئات أولاً، إذا تساوت نقارن العشرات، ثم الوحدات.'
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'من 0 إلى 999: مئات، عشرات، وحدات',
+      introAr: 'جدول المنازل — ليس السوروبان.',
+      cards: [
+        { labelAr: 'تفكيك 729', valueDisplay: '729', explanationAr: '(7×100)+(2×10)+9 = 700+20+9' },
+        { labelAr: 'مقارنة', valueDisplay: '584 > 539', explanationAr: 'المئات متساوية: نقارن العشرات 8 > 3.' },
+        { labelAr: 'رقم المئات في 642', valueDisplay: '6', explanationAr: '642: رقم المئات = 6.' },
+      ],
+    },
     examplesAr: [
       {
         problem: 'فكك العدد 729 بأسلوب الضرب والجمع:',
@@ -163,7 +173,26 @@ export const MATH_3AP: CourseLesson[] = [
       'الطرح بالاستعارة / الاستدراك: عندما يكون الرقم الأعلى أصغر من الرقم الأسفل، نستعير 10 من المرتبة الموالية ونضيف 1 إلى المرتبة الموالية أسفل.',
       'التحقق من صحة الطرح: (الفرق + المطروح = المطروح منه).'
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'جمع وطرح عمودي (3 أرقام)',
+      introAr: 'وحدات تحت وحدات. احتفاظ في الجمع، استعارة في الطرح.',
+      operations: [
+        {
+          id: '475-285',
+          labelAr: '475 + 285',
+          operationsAr: '  475\n+ 285\n-----\n  760',
+          solutionAr: '7+5=12 (احتفظ 1)، 7+8+1=16، 4+2=6. الناتج 760.',
+        },
+        {
+          id: '632-285',
+          labelAr: '632 − 285',
+          operationsAr: '  632\n- 285\n-----\n  347',
+          solutionAr: 'استعارة في الوحدات والعشرات. التحقق: 347+285=632.',
+        },
+      ],
+    },
     examplesAr: [
       {
         problem: 'احسب عمودياً: 632 - 285',
@@ -555,7 +584,17 @@ export const MATH_3AP: CourseLesson[] = [
       'التفكيك النموذجي: 3645 = (3 × 1000) + (6 × 100) + (4 × 10) + 5.',
       'الحصر بين ألفين متتاليتين: 3000 < 3645 < 4000.'
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'الآلاف حتى 9999',
+      introAr: 'آ | م | ع | و — حصر بين ألفين.',
+      cards: [
+        { labelAr: '8450 دج', valueDisplay: '8450', explanationAr: '8 آلاف + 4 مئات + 5 عشرات + 0 وحدات.' },
+        { labelAr: 'تفكيك 3645', valueDisplay: '3645', explanationAr: '(3×1000)+(6×100)+(4×10)+5' },
+        { labelAr: 'حصر 6280', valueDisplay: '6000 < 6280 < 7000', explanationAr: 'بين ألفين متتاليتين.' },
+      ],
+    },
     examplesAr: [
       {
         problem: 'احصر العدد 6280 بين ألفين متتاليتين:',
@@ -1027,7 +1066,30 @@ export const MATH_3AP: CourseLesson[] = [
       'إذا كانت الفكة صفراً، فهذا يعني أننا دفعنا المبلغ بالضبط دون زيادة.',
       'الأوراق والقطع النقدية الجزائرية الشائعة: 100، 200، 500، 1000، 2000 دج.'
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'شراء ورد الفكة بالدينار',
+      introAr: 'المجموع = جمع. الفكة = المدفوع − المجموع.',
+      problems: [
+        {
+          id: 'change-shoes',
+          situationAr: 'اشترت أم سامي حذاءً بـ 2800 دج ودفعت 5000 دج. كم الفكة؟',
+          choices: [
+            { textAr: '5000 − 2800 = 2200 دج', isCorrect: true, feedbackAr: 'الفكة = المدفوع − الثمن.' },
+            { textAr: '5000 + 2800 = 7800 دج', isCorrect: false, feedbackAr: 'نطرح لا نجمع للفكة.' },
+          ],
+        },
+        {
+          id: 'sum-then-change',
+          situationAr: 'قميص 1500 + حذاء 2200، دفع 5000 دج. الفكة؟',
+          choices: [
+            { textAr: '3700 ثم 1300 دج فكة', isCorrect: true, feedbackAr: '1500+2200=3700. 5000−3700=1300.' },
+            { textAr: '1300 دج بدون جمع', isCorrect: false, feedbackAr: 'اجمع أولاً ثم اطرح.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       {
         problem: 'اشترى كريم قميصاً بـ 1500 دج وحذاءً بـ 2200 دج، ودفع بورقة 5000 دج. كم استرجع من الفكة؟',
@@ -1318,7 +1380,22 @@ export const MATH_3AP: CourseLesson[] = [
       'البَاقِي: ما تبقى بعد التوزيع، ويكون دائماً أصغر من المقسوم عليه.',
       'التحقق: (المقسوم عليه × الخارج) + الباقي = المقسوم.'
     ],
-    interactiveTool: 'soroban',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'word_problem_scenario',
+      titleAr: 'قسمة بباقٍ',
+      introAr: 'المقسوم = (المقسوم عليه × الخارج) + الباقي. الباقي < المقسوم عليه.',
+      problems: [
+        {
+          id: '17-5',
+          situationAr: '17 كراساً على 5 تلاميذ بالتساوي. كم لكل واحد؟ وما الباقي؟',
+          choices: [
+            { textAr: '3 لكل واحد، باقٍ 2', isCorrect: true, feedbackAr: '5×3=15، 17−15=2. (5×3)+2=17.' },
+            { textAr: '4 لكل واحد، باقٍ 0', isCorrect: false, feedbackAr: '5×4=20 > 17.' },
+          ],
+        },
+      ],
+    },
     examplesAr: [
       {
         problem: 'وزّع 17 حبة حلوى بالتساوي على 5 أطفال. كم حبة يأخذ كل طفل؟ وكم يبقى؟',
