@@ -37,6 +37,11 @@ export function canShowDecimalsTab(grade: PrimaryGrade): boolean {
   return grade === '5AP';
 }
 
+/** Respiration / sang = 5AP ; digestion seule en 4AP. */
+export function canShowRespiratoryAnatomyTab(grade: PrimaryGrade): boolean {
+  return gradeAtLeast(grade, '5AP');
+}
+
 /** 1AP : 0–20 ; 2AP+ : 0–99. */
 export function primaryMathNumberStripMax(grade: PrimaryGrade): number {
   return grade === '1AP' ? 20 : 99;

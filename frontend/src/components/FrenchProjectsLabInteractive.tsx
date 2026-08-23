@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Badge, Button } from './ui';
 import { isFeatureEnabled } from '../featureFlags';
 import {
@@ -41,8 +41,115 @@ interface FrenchProject {
   }[];
 }
 
+/** Projets visibles pour le niveau — un 3AP ne voit jamais les textes 5AP. */
+export function frenchProjectsForGrade(grade: PrimaryGrade): FrenchProject[] {
+  const exact = OFFICIAL_FRENCH_PROJECTS.filter((p) => p.grade === grade);
+  if (exact.length > 0) return exact;
+  if (grade === '4AP') {
+    return OFFICIAL_FRENCH_PROJECTS.filter((p) => p.grade === '3AP');
+  }
+  return [];
+}
+
 const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
-  // 5AP Projects
+  // ─── 3AP — 4 projets officiels (1re année de français) ───────────────────
+  {
+    id: 'fr-3ap-p1',
+    grade: '3AP',
+    projectNumber: 1,
+    titleFr: 'Projet 1 : Mon école',
+    titleAr: 'المشروع 1 : مدرستي',
+    themeFr: 'La classe, la cour de récréation, les objets scolaires et les amis.',
+    objectiveFr: 'Se présenter, nommer la classe et les objets de l’école avec les articles définis (le, la, les) et le présent des verbes être et avoir.',
+    sequences: [
+      {
+        number: 1,
+        titleFr: 'Séquence 1 : Bienvenue à l’école !',
+        textSupportFr: 'Je m’appelle Amine. Je suis en classe de 3AP. Mon école est grande et propre. J’ai un cartable bleu, un cahier et un stylo. Ma maîtresse s’appelle Madame Salima.',
+        vocabList: [
+          { wordFr: 'L’école', meaningAr: 'المدرسة', audioText: 'L’école' },
+          { wordFr: 'Le cartable', meaningAr: 'الحقيبة المدرسية', audioText: 'Le cartable' },
+          { wordFr: 'La maîtresse', meaningAr: 'المعلّمة', audioText: 'La maîtresse' },
+        ],
+        grammarRuleFr: 'Les articles définis : le (masculin), la (féminin), les (pluriel). Ex : le stylo, la règle, les cahiers.',
+        conjugationRuleFr: 'Être et Avoir au présent : Je suis / J’ai — Tu es / Tu as — Il est / Il a.',
+        productionTaskFr: 'Présente ton école en 3 phrases : ton nom, ta classe et un objet que tu as dans ton cartable.',
+      },
+    ],
+  },
+  {
+    id: 'fr-3ap-p2',
+    grade: '3AP',
+    projectNumber: 2,
+    titleFr: 'Projet 2 : Ma famille et ma maison',
+    titleAr: 'المشروع 2 : عائلتي ومنزلي',
+    themeFr: 'Les membres de la famille algérienne et les pièces de la maison.',
+    objectiveFr: 'Décrire sa famille et sa maison avec les adjectifs possessifs (mon, ma, mes).',
+    sequences: [
+      {
+        number: 1,
+        titleFr: 'Séquence 1 : Chez nous à Alger',
+        textSupportFr: 'Voici ma famille. Mon père travaille. Ma mère cuisine dans la cuisine. J’ai un frère et une sœur. Notre salon est grand. Ma chambre est petite mais jolie.',
+        vocabList: [
+          { wordFr: 'Le père / La mère', meaningAr: 'الأب / الأم', audioText: 'Le père' },
+          { wordFr: 'La cuisine', meaningAr: 'المطبخ', audioText: 'La cuisine' },
+          { wordFr: 'La chambre', meaningAr: 'غرفة النوم', audioText: 'La chambre' },
+        ],
+        grammarRuleFr: 'Les adjectifs possessifs : mon, ma, mes (devant un nom). Ex : mon frère, ma sœur, mes livres.',
+        conjugationRuleFr: 'Les verbes du 1er groupe au présent : habiter → j’habite, tu habites, il habite.',
+        productionTaskFr: 'Dessine ta maison et écris 4 phrases : une pièce + un membre de ta famille dans chaque phrase.',
+      },
+    ],
+  },
+  {
+    id: 'fr-3ap-p3',
+    grade: '3AP',
+    projectNumber: 3,
+    titleFr: 'Projet 3 : Les animaux domestiques',
+    titleAr: 'المشروع 3 : الحيوانات الأليفة',
+    themeFr: 'Le chat, le chien, le mouton et les animaux de la ferme algérienne.',
+    objectiveFr: 'Décrire un animal domestique : couleur, taille, alimentation.',
+    sequences: [
+      {
+        number: 1,
+        titleFr: 'Séquence 1 : Mon chat Minou',
+        textSupportFr: 'J’ai un chat. Il s’appelle Minou. Il est petit et gris. Il aime le lait et le poisson. Il dort sur le tapis du salon. Minou est très gentil.',
+        vocabList: [
+          { wordFr: 'Le chat', meaningAr: 'القط', audioText: 'Le chat' },
+          { wordFr: 'Petit / Grand', meaningAr: 'صغير / كبير', audioText: 'Petit' },
+          { wordFr: 'Le lait', meaningAr: 'الحليب', audioText: 'Le lait' },
+        ],
+        grammarRuleFr: 'L’adjectif qualificatif simple après le nom : un chat gris, une vache blanche.',
+        conjugationRuleFr: 'Le verbe aimer au présent : j’aime, tu aimes, il aime.',
+        productionTaskFr: 'Choisis un animal domestique algérien et écris 4 phrases pour le décrire.',
+      },
+    ],
+  },
+  {
+    id: 'fr-3ap-p4',
+    grade: '3AP',
+    projectNumber: 4,
+    titleFr: 'Projet 4 : L’alimentation',
+    titleAr: 'المشروع 4 : التغذية',
+    themeFr: 'Les plats algériens, les fruits, les légumes et les repas de la journée.',
+    objectiveFr: 'Parler des repas, des aliments sains et utiliser « je mange / je bois » au présent.',
+    sequences: [
+      {
+        number: 1,
+        titleFr: 'Séquence 1 : Un repas équilibré',
+        textSupportFr: 'Le matin, je mange du pain avec du beurre et je bois du lait. À midi, je mange du couscous ou de la chorba. Le soir, je mange des fruits : des oranges et des dattes.',
+        vocabList: [
+          { wordFr: 'Le pain', meaningAr: 'الخبز', audioText: 'Le pain' },
+          { wordFr: 'Le couscous', meaningAr: 'الكسكس', audioText: 'Le couscous' },
+          { wordFr: 'Les fruits', meaningAr: 'الفواكه', audioText: 'Les fruits' },
+        ],
+        grammarRuleFr: 'Partitifs : du, de la, des (devant un aliment). Ex : du pain, de la salade, des dattes.',
+        conjugationRuleFr: 'Manger et boire au présent : je mange, je bois — tu manges, tu bois.',
+        productionTaskFr: 'Écris ton menu d’une journée (petit-déjeuner, déjeuner, dîner) en 3 phrases.',
+      },
+    ],
+  },
+  // ─── 5AP — 3 projets officiels ───────────────────────────────────────────
   {
     id: 'fr-5ap-p1',
     grade: '5AP',
@@ -131,16 +238,27 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
 ];
 
 export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractiveProps> = ({
+  grade = '3AP',
   onReward,
   onBack,
 }) => {
-  const [selectedProjectId, setSelectedProjectId] = useState<string>(OFFICIAL_FRENCH_PROJECTS[0].id);
+  const gradeProjects = frenchProjectsForGrade(grade);
+  const [selectedProjectId, setSelectedProjectId] = useState<string>(() => gradeProjects[0]?.id ?? '');
   const [selectedSeqNum, setSelectedSeqNum] = useState<number>(1);
   const [userWritingText, setUserWritingText] = useState<string>('');
   const [writingFeedback, setWritingFeedback] = useState<string | null>(null);
 
-  const currentProject = OFFICIAL_FRENCH_PROJECTS.find((p) => p.id === selectedProjectId) || OFFICIAL_FRENCH_PROJECTS[0];
-  const currentSequence = currentProject.sequences.find((s) => s.number === selectedSeqNum) || currentProject.sequences[0];
+  const currentProject = gradeProjects.find((p) => p.id === selectedProjectId) || gradeProjects[0];
+  const currentSequence = currentProject?.sequences.find((s) => s.number === selectedSeqNum) || currentProject?.sequences[0];
+
+  useEffect(() => {
+    if (gradeProjects.length > 0 && !gradeProjects.some((p) => p.id === selectedProjectId)) {
+      setSelectedProjectId(gradeProjects[0].id);
+      setSelectedSeqNum(1);
+      setUserWritingText('');
+      setWritingFeedback(null);
+    }
+  }, [grade, gradeProjects, selectedProjectId]);
 
   const speakFrench = (text: string) => {
     if (!isFeatureEnabled('voiceReading')) return;
@@ -162,6 +280,14 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
     }
   };
 
+  if (!currentProject || !currentSequence) {
+    return (
+      <div className="rounded-3xl border border-sky-200 bg-sky-50 p-8 text-center text-sm text-sky-900">
+        Aucun projet officiel disponible pour {grade}.
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Top Banner */}
@@ -169,20 +295,30 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
         <div className="relative z-10 space-y-2">
           <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>Programme Officiel de Français — 3AP, 4AP et 5AP (3 Projets du Ministère)</span>
+            <span>
+              {grade === '5AP'
+                ? 'Programme Officiel de Français — 5AP (3 Projets du Ministère)'
+                : grade === '4AP'
+                ? 'Révision — Projets officiels 3AP (en attendant le cycle 4AP)'
+                : 'Programme Officiel de Français — 3AP (4 Projets du Ministère)'}
+            </span>
           </div>
           <h1 className="text-xl sm:text-3xl font-black font-sans">
             Atelier des Projets Officiels de Français
           </h1>
           <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-3xl">
-            Retrouvez l’intégralité des 3 Projets officiels : Textes supports, écoute audio, lexique thématique, règles de grammaire et de conjugaison en contexte, et production écrite guidée.
+            {grade === '3AP'
+              ? 'Les 4 projets de la 1re année de français : Mon école, Ma famille, Les animaux domestiques et L’alimentation.'
+              : grade === '4AP'
+              ? 'Révise les projets 3AP avant les contenus avancés de 5AP.'
+              : 'Les 3 projets officiels de 5AP : animaux sauvages, catastrophes naturelles et écologie.'}
           </p>
         </div>
       </div>
 
       {/* Project Selector Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        {OFFICIAL_FRENCH_PROJECTS.map((proj) => {
+      <div className={`grid grid-cols-1 gap-3 ${gradeProjects.length >= 3 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-3'}`}>
+        {gradeProjects.map((proj) => {
           const isSelected = selectedProjectId === proj.id;
           return (
             <button

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sparkles, RotateCcw } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import { canShowRespiratoryAnatomyTab } from '../utils/labGradePolicy';
 
 interface HumanAnatomyLabProps {
   grade?: PrimaryGrade;
@@ -40,7 +41,8 @@ const ORGAN_LABEL: Record<string, string> = Object.fromEntries(
   [...DIGESTIVE_ORGANS, ...RESPIRATORY_ORGANS].map((o) => [o.id, o.nameAr])
 );
 
-export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ onReward }) => {
+export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '5AP', onReward }) => {
+  const showRespiratory = canShowRespiratoryAnatomyTab(grade);
   const [activeTab, setActiveTab] = useState<AnatomyTab>('digestive');
   const [selectedOrgan, setSelectedOrgan] = useState<string>('mouth');
   const [answers, setAnswers] = useState<Record<string, Record<number, boolean>>>({ digestive: {}, respiratory: {} });
@@ -51,9 +53,17 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ onReward }) =>
   const currentOrgan = organs.find((o) => o.id === selectedOrgan) || organs[0];
 
   const switchTab = (tab: AnatomyTab) => {
+    if (tab === 'respiratory' && !showRespiratory) return;
     setActiveTab(tab);
     setSelectedOrgan(tab === 'digestive' ? 'mouth' : 'nose');
   };
+
+  useEffect(() => {
+    if (!showRespiratory && activeTab === 'respiratory') {
+      setActiveTab('digestive');
+      setSelectedOrgan('mouth');
+    }
+  }, [showRespiratory, activeTab]);
 
   const handleAnswer = (qId: number, optionId: string, correctId: string) => {
     setAnswers((prev) => ({ ...prev, [activeTab]: { ...prev[activeTab], [qId]: true } }));
@@ -71,11 +81,15 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ onReward }) =>
         <div className="relative z-10 space-y-2">
           <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>مختبر جسم الإنسان (5AP)</span>
+            <span>{grade === '4AP' ? 'مختبر الجهاز الهضمي (4AP)' : 'مختبر جسم الإنسان (4AP–5AP)'}</span>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">الجهاز الهضمي والجهاز التنفسي</h1>
+          <h1 className="text-xl sm:text-3xl font-black font-sans">
+            {showRespiratory ? 'الجهاز الهضمي والجهاز التنفسي' : 'الجهاز الهضمي'}
+          </h1>
           <p className="text-xs sm:text-sm text-rose-100 leading-relaxed max-w-3xl">
-            اكتشف مسار الطعام داخل جسمك، وتعرّف على كيفية تنفسك وتبادل الهواء في رئتيك.
+            {showRespiratory
+              ? 'اكتشف مسار الطعام داخل جسمك، وتعرّف على كيفية تنفسك وتبادل الهواء في رئتيك.'
+              : 'اكتشف مسار الطعام خطوة بخطوة من الفم إلى الأمعاء — برنامج السنة الرابعة.'}
           </p>
         </div>
       </div>
@@ -89,6 +103,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ onReward }) =>
         >
           <span>🍽️ الجهاز الهضمي</span>
         </button>
+        {showRespiratory && (
         <button
           onClick={() => switchTab('respiratory')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
@@ -97,6 +112,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ onReward }) =>
         >
           <span>🫁 الجهاز التنفسي</span>
         </button>
+        )}
       </div>
 
       {/* Organ path selector */}

@@ -6,6 +6,7 @@ import {
   canShowColumnCarryOps,
   canShowDecimalsTab,
   canShowFrenchInLab,
+  canShowRespiratoryAnatomyTab,
   primaryMathNumberStripMax,
 } from './labGradePolicy';
 
@@ -45,5 +46,10 @@ describe('labGradePolicy', () => {
     expect(allowedCalculatorKeys('1AP').has('*')).toBe(false);
     expect(allowedCalculatorKeys('2AP').has('/')).toBe(false);
     expect(allowedCalculatorKeys('3AP').has('*')).toBe(true);
+  });
+
+  it('limits anatomy tabs by grade', () => {
+    expect(canShowRespiratoryAnatomyTab('4AP')).toBe(false);
+    expect(canShowRespiratoryAnatomyTab('5AP')).toBe(true);
   });
 });
