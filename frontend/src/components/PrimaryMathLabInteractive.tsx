@@ -175,6 +175,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
         </button>
 
         {showColumnOps && (
+        <>
         <button
           onClick={() => setActiveTab('column_addition')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
@@ -196,6 +197,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
         >
           <span>➖ الطرح العمودي بالاستعارة</span>
         </button>
+        </>
         )}
       </div>
 

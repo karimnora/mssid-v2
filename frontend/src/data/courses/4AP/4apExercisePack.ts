@@ -10,6 +10,7 @@ type ExerciseInput = {
   calculationAnswer?: number;
   operationsAr?: string;
   irabTableAr?: ProgressiveExercise['irabTableAr'];
+  fillBlankAnswerAr?: string;
 };
 
 const TIER_LABELS = ['أكتشف', 'أتدرب', 'أتقن', 'أتحدى'] as const;

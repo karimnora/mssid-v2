@@ -56,6 +56,13 @@ target/
 .env.production.local
 
 # =========================
+# Android signing — never commit a release keystore or its credentials
+# =========================
+*.jks
+*.keystore
+keystore.properties
+
+# =========================
 # OS
 # =========================
 .DS_Store
