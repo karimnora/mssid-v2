@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
+import { Capacitor } from '@capacitor/core';
 import { CourseLesson, SubjectInfo } from './types';
 import { AuthService } from './services/authService';
 import { useAuth } from './context/AuthContext';
@@ -299,6 +300,18 @@ export default function App() {
             <button onClick={() => modals.setIsContactModalOpen(true)} className="hover:text-[var(--brand-emerald)] cursor-pointer">
               {t('navigation', 'contactUs')}
             </button>
+            {/* Native app -> link back to the web version; web -> link to the Play Store listing.
+                The Play Store URL is deterministic from capacitor.config.json's appId, so it's safe
+                to publish ahead of approval, but it 404s until the app is actually live there. */}
+            {Capacitor.isNativePlatform() ? (
+              <a href="https://mssid-dz.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--brand-blue)] cursor-pointer">
+                {t('navigation', 'footerWebVersionLink')}
+              </a>
+            ) : (
+              <a href="https://play.google.com/store/apps/details?id=dz.mssid.app" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--brand-blue)] cursor-pointer">
+                {t('navigation', 'footerPlayStoreLink')}
+              </a>
+            )}
           </div>
         </div>
       </footer>

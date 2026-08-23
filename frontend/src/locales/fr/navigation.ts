@@ -54,7 +54,7 @@ export const navigation: typeof navigationAr = {
   adminConsole: "Tableau de bord d'administration",
 
   toolsSectionTitle: 'Outils et paramètres',
-  privacyPolicyMenuItem: 'Politique de confidentialité Google Play',
+  privacyPolicyMenuItem: 'Politique de confidentialité',
   termsMenuItem: "Conditions d'utilisation",
 
   mobileMenuTitle: 'Menu',
@@ -105,6 +105,8 @@ export const navigation: typeof navigationAr = {
   footerBrandName: 'Mssid DZ',
   footerCurriculumLine: '• Programme officiel du ministère de l’Éducation nationale algérien',
   footerAiTutorLink: 'Tuteur Mssid',
+  footerWebVersionLink: 'Version web complète',
+  footerPlayStoreLink: "Télécharger sur Google Play",
 
   openLockedLessonTitle: 'Ouvrir les cours du trimestre {trimesterLabel} — {title}',
   trimesterSecond: '2',

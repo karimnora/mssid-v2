@@ -52,7 +52,7 @@ export const navigation = {
   adminConsole: 'لوحة تحكم الإدارة',
 
   toolsSectionTitle: 'أدوات وإعدادات',
-  privacyPolicyMenuItem: 'سياسة الخصوصية Google Play',
+  privacyPolicyMenuItem: 'سياسة الخصوصية',
   termsMenuItem: 'الشروط والأحكام',
 
   mobileMenuTitle: 'القائمة',
@@ -103,6 +103,8 @@ export const navigation = {
   footerBrandName: 'مَسِيد Mssid DZ',
   footerCurriculumLine: '• المنهاج الرسمي لوزارة التربية الوطنية الجزائرية',
   footerAiTutorLink: 'المعلم مسيد',
+  footerWebVersionLink: 'النسخة الكاملة على الويب',
+  footerPlayStoreLink: 'حمّل التطبيق من Google Play',
 
   openLockedLessonTitle: 'افتح دروس الفصل {trimesterLabel} — {title}',
   trimesterSecond: 'الثاني',
