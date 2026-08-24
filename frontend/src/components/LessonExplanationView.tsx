@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { CourseLesson } from '../types';
 import { BookOpen, Lightbulb, Sparkles, CheckCircle2, ArrowLeft, ArrowRight, Zap, Target, HelpCircle, Glasses, Calculator, Play, RefreshCw, Layers } from 'lucide-react';
 import { LoadingFallback } from './LoadingFallback';
@@ -37,6 +37,12 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
   onSpeak,
 }) => {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
+  // Switching to a lesson with fewer explanation steps while deep in the previous lesson's
+  // steps left activeStepIndex pointing past content.steps, crashing content.steps[activeStepIndex]
+  // (remonte utilisateur : erreur nécessitant un refresh après avoir changé de leçon).
+  useEffect(() => {
+    setActiveStepIndex(0);
+  }, [lesson.id]);
   const [interactiveMode, setInteractiveMode] = useState<'real_world' | 'step_by_step' | 'interactive_demo'>('real_world');
   const [demoValue, setDemoValue] = useState<number>(10);
   const [selectedExampleIndex, setSelectedExampleIndex] = useState<number>(0);

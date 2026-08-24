@@ -159,7 +159,7 @@ export default function App() {
   if (nav.isPreschoolActive) {
     return (
       <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingPreschool')} minHeight="100vh" />}>
-        <PreschoolApp onExit={() => nav.setIsPreschoolActive(false)} />
+        <PreschoolApp onExit={() => { nav.setIsPreschoolActive(false); nav.goHome(); }} />
       </Suspense>
     );
   }
