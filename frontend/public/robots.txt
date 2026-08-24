@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://mssid.dz/sitemap.xml
+Sitemap: https://mssid-dz.com/sitemap.xml

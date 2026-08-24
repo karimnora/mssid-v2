@@ -32,8 +32,8 @@ const ORGANIZATION_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Mssid DZ',
-  url: 'https://mssid.dz/',
-  logo: 'https://mssid.dz/pwa-512x512.png',
+  url: 'https://mssid-dz.com/',
+  logo: 'https://mssid-dz.com/pwa-512x512.png',
   description: metadata.ar.description,
   areaServed: 'DZ',
 };
@@ -42,7 +42,7 @@ const WEBSITE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Mssid DZ',
-  url: 'https://mssid.dz/',
+  url: 'https://mssid-dz.com/',
   inLanguage: 'ar',
 };
 
@@ -51,8 +51,8 @@ const COURSE_JSON_LD = {
   '@type': 'Course',
   name: 'برنامج التعليم الابتدائي الجزائري - مَسِيد DZ',
   description: metadata.ar.description,
-  provider: { '@type': 'Organization', name: 'Mssid DZ', sameAs: 'https://mssid.dz/' },
-  url: 'https://mssid.dz/',
+  provider: { '@type': 'Organization', name: 'Mssid DZ', sameAs: 'https://mssid-dz.com/' },
+  url: 'https://mssid-dz.com/',
   hasCourseInstance: ['1AP', '2AP', '3AP', '4AP', '5AP'].map((grade) => ({
     '@type': 'CourseInstance',
     name: grade,
@@ -73,11 +73,11 @@ export const SeoHead: React.FC = () => {
       <meta property="og:title" content={localeMeta.title} />
       <meta property="og:description" content={localeMeta.description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://mssid.dz/" />
+      <meta property="og:url" content="https://mssid-dz.com/" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={localeMeta.title} />
       <meta name="twitter:description" content={localeMeta.description} />
-      <link rel="canonical" href="https://mssid.dz/" />
+      <link rel="canonical" href="https://mssid-dz.com/" />
       <script type="application/ld+json">{JSON.stringify(ORGANIZATION_JSON_LD)}</script>
       <script type="application/ld+json">{JSON.stringify(WEBSITE_JSON_LD)}</script>
       <script type="application/ld+json">{JSON.stringify(COURSE_JSON_LD)}</script>

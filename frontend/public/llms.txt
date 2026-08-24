@@ -9,7 +9,7 @@ Mssid DZ propose des cours complets, des exercices interactifs, des laboratoires
 - Histoire-Géographie, Français, Anglais, Tamazight — matières enseignées à partir de la 3AP
 
 ## Accès
-- [Mssid DZ](https://mssid.dz/): application web (PWA, utilisable hors-ligne) donnant accès à l'ensemble des cours, exercices, laboratoires interactifs, défis et examens du primaire algérien.
+- [Mssid DZ](https://mssid-dz.com/): application web (PWA, utilisable hors-ligne) donnant accès à l'ensemble des cours, exercices, laboratoires interactifs, défis et examens du primaire algérien.
 
 ## Notes pour les agents et modèles de langage
 - L'interface de l'application est actuellement en langue arabe uniquement. Le français, l'anglais et le tamazight sont des matières enseignées dans le contenu pédagogique, pas des langues d'interface alternatives du site.
