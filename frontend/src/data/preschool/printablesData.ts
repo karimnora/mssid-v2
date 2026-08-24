@@ -233,6 +233,21 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
       { glyph: '9', repeatCount: 5 },
     ],
   },
+  {
+    id: 'numbers-trace-10',
+    category: 'chiffres',
+    kind: 'letter_trace',
+    headerIcon: '🔟',
+    titleI18n: { ar: 'تَتَبُّعُ الرَّقْمِ 10', fr: 'Traçage du Chiffre 10', en: 'Tracing the Number 10' },
+    instructionI18n: {
+      ar: 'تتبّع الرقم 10 بقلمك، صفاً بعد صف.',
+      fr: 'Trace le nombre 10 au crayon, ligne après ligne.',
+      en: 'Trace the number 10 with your pencil, row after row.',
+    },
+    traceRows: [
+      { glyph: '10', repeatCount: 6 },
+    ],
+  },
 
   // ---------- LOGIQUE (dénombrement, discrimination) ----------
   {
@@ -727,6 +742,25 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
       { glyph: '3', repeatCount: 4 },
       { glyph: '4', repeatCount: 4 },
       { glyph: '5', repeatCount: 4 },
+    ],
+  },
+  {
+    id: 'numbers-trace-6-to-10-big',
+    category: 'chiffres',
+    kind: 'letter_trace',
+    headerIcon: '🔟',
+    titleI18n: { ar: 'الأَرْقَامُ الكَبِيرَة 6 إِلَى 10', fr: 'Grands chiffres 6 à 10', en: 'Big numbers 6 to 10' },
+    instructionI18n: {
+      ar: 'تَتَبَّعْ كُلَّ رَقْمٍ الكَبِيرِ بِقَلَمِكَ.',
+      fr: 'Trace chaque grand chiffre avec ton crayon.',
+      en: 'Trace each big number with your pencil.',
+    },
+    traceRows: [
+      { glyph: '6', repeatCount: 4 },
+      { glyph: '7', repeatCount: 4 },
+      { glyph: '8', repeatCount: 4 },
+      { glyph: '9', repeatCount: 4 },
+      { glyph: '10', repeatCount: 4 },
     ],
   },
   {
