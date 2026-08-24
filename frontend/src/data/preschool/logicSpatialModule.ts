@@ -10,7 +10,7 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
   id: 'preschool-logic-spatial',
   domain: 'shapes',
   icon: '🧠',
-  totalSteps: 8,
+  totalSteps: 10,
   titleI18n: {
     ar: 'أُفَكِّرُ وَأُرَتِّبُ',
     fr: 'Logique et espace',
@@ -247,10 +247,80 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
       },
     },
     {
+      id: 'logic-front-behind',
+      domain: 'shapes',
+      targetValue: 'front',
+      stepNumber: 7,
+      interactionType: 'tap_choice',
+      i18n: {
+        ar: {
+          title: 'القِطُّ أَمَام',
+          promptAudio: 'اِلْمَسِ القِطَّ! القِطُّ أَمَامَ البَاب، وَالفَأْرُ مُخْتَبِئٌ وَرَاءَ الصُّنْدُوق!',
+          promptText: 'أمام = القط عند الباب. وراء = الفأر خلف الصندوق يختبئ.',
+          successAudio: 'القِطُّ أَمَامَ البَاب! أَحْسَنْت!',
+        },
+        fr: {
+          title: 'Le Chat Devant',
+          promptAudio: 'Touche le chat ! Le chat est devant la porte, la souris se cache derrière la boîte !',
+          promptText: 'Devant = le chat près de la porte. Derrière = la souris cachée derrière la boîte.',
+          successAudio: 'Le chat est devant la porte ! Bravo !',
+        },
+        en: {
+          title: 'The Cat in Front',
+          promptAudio: 'Touch the cat! The cat is in front of the door, the mouse hides behind the box!',
+          promptText: 'In front = the cat by the door. Behind = the mouse hidden behind the box.',
+          successAudio: 'The cat is in front of the door! Well done!',
+        },
+      },
+      visualAssets: {
+        mainSvgOrImage: '🚪',
+        choices: [
+          { id: 'cat',   asset: '🐱', isCorrect: true },
+          { id: 'mouse', asset: '🐭', isCorrect: false },
+          { id: 'fish',  asset: '🐟', isCorrect: false },
+        ],
+      },
+    },
+    {
+      id: 'logic-right-left',
+      domain: 'shapes',
+      targetValue: 'right',
+      stepNumber: 8,
+      interactionType: 'tap_choice',
+      i18n: {
+        ar: {
+          title: 'اليَدُ اليُمْنَى',
+          promptAudio: 'اِلْمَسِ اليَدَ اليُمْنَى! بِهَا نَأْكُلُ وَنُصَافِح!',
+          promptText: 'اليمنى تشير لليمين 🫱. اليسرى تشير لليسار 🫲.',
+          successAudio: 'هَذِهِ اليَدُ اليُمْنَى! أَحْسَنْت!',
+        },
+        fr: {
+          title: 'La Main Droite',
+          promptAudio: 'Touche la main droite ! Avec elle on mange et on salue !',
+          promptText: 'La main droite pointe à droite 🫱. La main gauche pointe à gauche 🫲.',
+          successAudio: 'Voici la main droite ! Bravo !',
+        },
+        en: {
+          title: 'The Right Hand',
+          promptAudio: 'Touch the right hand! We eat and shake hands with it!',
+          promptText: 'The right hand points right 🫱. The left hand points left 🫲.',
+          successAudio: 'That is the right hand! Well done!',
+        },
+      },
+      visualAssets: {
+        mainSvgOrImage: '👋',
+        choices: [
+          { id: 'right', asset: '🫱', isCorrect: true },
+          { id: 'left',  asset: '🫲', isCorrect: false },
+          { id: 'fist',  asset: '✊', isCorrect: false },
+        ],
+      },
+    },
+    {
       id: 'logic-pattern-colors',
       domain: 'shapes',
       targetValue: 'pattern',
-      stepNumber: 7,
+      stepNumber: 9,
       interactionType: 'sequence',
       i18n: {
         ar: {
@@ -286,7 +356,7 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
       id: 'logic-memory',
       domain: 'shapes',
       targetValue: 'logic-memory',
-      stepNumber: 8,
+      stepNumber: 10,
       interactionType: 'memory_cards',
       i18n: {
         ar: {
