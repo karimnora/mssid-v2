@@ -76,7 +76,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               عدم وجود إعلانات موجهة أو تتبع
             </h4>
             <p className="text-sm text-slate-300">
-              تطبيق مَسيد DZ خالي تماماً من الإعلانات التجارية الموجهة للأطفال أو أدوات التتبع السلوكي الخارجية (AdMob / Facebook Pixel Tracker).
+              تطبيق مَسيد DZ خالي تماماً من الإعلانات التجارية الموجهة للأطفال أو أدوات التتبع السلوكي الخارجية (AdMob / Facebook Pixel Tracker). نستخدم فقط إحصائيات زيارات إجمالية وغير شخصية عبر Vercel Analytics — دون ملفات تعريف ارتباط (Cookies) ودون تتبع فردي لأي مستخدم.
             </p>
           </div>
 
