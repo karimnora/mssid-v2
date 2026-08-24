@@ -78,6 +78,11 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
 
   const labels = {
     printables: t('أَوْرَاقٌ لِلطِّبَاعَةِ 🖨️', 'Fiches à imprimer 🖨️', 'Printable sheets 🖨️'),
+    printablesDesc: t(
+      'اطْبَعْ أَوْرَاقَ تَمَارِينَ وَرَقِيَّة لِطِفْلِكَ',
+      'Imprime des fiches d’exercices papier pour ton enfant',
+      'Print paper worksheets for your child',
+    ),
     title: t('عَالَمُ الصِّغَار (3-5 سَنَوَات) 🎈', 'Monde des Petits (3-5 ans) 🎈', 'Little Ones World (3-5 years) 🎈'),
     subtitle: t(
       'اِخْتَرْ بَاباً وَالْعَبْ مَعَ دِيدُو!',
@@ -239,6 +244,28 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
             language={language}
             onNavigateToActivity={onNavigateToActivity}
           />
+        )}
+
+        {/* Parent-facing feature (printing needs an adult) — was buried as a small toolbar pill
+            up top, easy to miss next to the back/mute/language controls. A proper banner here
+            gives it the visual weight it needs, same treatment as the daily challenge above it. */}
+        {view === 'home' && (
+          <motion.button
+            onClick={() => setShowPrintables(true)}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 24 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full rounded-3xl shadow-md border border-sky-300 bg-gradient-to-r from-sky-400 to-cyan-400 px-4 py-3.5 flex items-center gap-3 cursor-pointer text-start mx-1"
+          >
+            <span className="text-3xl shrink-0">🖨️</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-white font-black text-base">{labels.printables}</p>
+              <p className="text-white/90 text-xs font-bold leading-snug">{labels.printablesDesc}</p>
+            </div>
+            <span className="text-white text-xl shrink-0">{dir === 'rtl' ? '◀' : '▶'}</span>
+          </motion.button>
         )}
 
         {view === 'home' && (
