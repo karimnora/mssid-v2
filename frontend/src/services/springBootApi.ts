@@ -230,6 +230,12 @@ public async request<T>(
 
     return { data, status, headers: response.headers };
   } catch (err: any) {
+    // Cleared here (not just in `finally`) because the AbortError and network-failure branches
+    // below can `await` a multi-second retry wait before returning — leaving this attempt's own
+    // guard timer armed for that entire wait was harmless in production (nothing listens to an
+    // abort on an already-settled fetch) but left dangling fake timers across tests that await a
+    // retry wait, which is exactly what made two of the tests below flaky.
+    clearTimeout(timeoutId);
     if (err?.name === 'AbortError') {
       if (!_isRetryAfterColdStart) {
         console.warn(`[mssid dz] Timeout (${timeoutMs}ms) sur ${url}, nouvelle tentative avec un délai plus long (cold start possible)`);
@@ -243,12 +249,15 @@ public async request<T>(
     }
     // A free-tier host (Render) that's been idle 15+ min can refuse/drop the very first request
     // while its container spins back up (~30-50s) — the exact failure a real visitor could hit, not
-    // just a genuinely unreachable server. One silent retry after a short wait recovers from that
-    // transparently in most cases; a truly offline/broken backend still ends up with the same error,
-    // just a few seconds later.
+    // just a genuinely unreachable server. Unlike the AbortError/timeout branch above (which already
+    // burns 15s of real wall-clock time just waiting on the hung first attempt), a connection-refused
+    // failure here returns almost instantly — a short wait before retrying used to fire the retry at
+    // ~5s, still deep inside the 30-50s boot window, so it just failed again and gave up (remonte
+    // utilisateur + testeurs : echecs de connexion/inscription repetes). Wait long enough for the
+    // container to actually finish booting before trying again.
     if (!_isRetryAfterColdStart) {
-      console.warn(`[mssid dz] Échec réseau sur ${url}, nouvelle tentative dans 5s (possible cold start)`, err.message);
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      console.warn(`[mssid dz] Échec réseau sur ${url}, nouvelle tentative dans 20s (possible cold start)`, err.message);
+      await new Promise((resolve) => setTimeout(resolve, 20000));
       return this.request<T>(endpoint, options, _isRetryAfterRefresh, true);
     }
 

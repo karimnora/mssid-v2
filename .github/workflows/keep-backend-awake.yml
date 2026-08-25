@@ -3,12 +3,15 @@ name: Keep Render backend awake
 # Render's free web-service tier sleeps after 15 minutes with no requests, then takes ~30-50s to
 # spin back up on the next one — during that boot window the first few real requests from users can
 # fail outright (see springBootApi.ts's request() catch, and the auto-retry it does for exactly this
-# case). Pinging the public health endpoint every 10 minutes keeps the container warm throughout the
-# testing/beta phase so real visitors never hit a cold start. Remove this once on a paid always-on
-# Render plan, or if traffic alone becomes frequent enough to keep it awake naturally.
+# case). Pinging the public health endpoint every 5 minutes keeps the container warm throughout the
+# testing/beta phase so real visitors never hit a cold start. 5 min (not 10) leaves real margin
+# against GitHub Actions' own scheduling drift on free/scheduled crons — a 10-minute interval that
+# slips by even a few minutes can land past Render's 15-minute sleep threshold (remonte utilisateur +
+# testeurs : echecs de connexion/inscription repetes). Remove this once on a paid always-on Render
+# plan, or if traffic alone becomes frequent enough to keep it awake naturally.
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch: {}
 
 jobs:

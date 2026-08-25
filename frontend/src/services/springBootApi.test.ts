@@ -211,13 +211,14 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
         global.fetch = mockFetch;
 
         const resultPromise = springBootApi.request('/health');
-        await vi.advanceTimersByTimeAsync(5000);
+        await vi.advanceTimersByTimeAsync(20000);
         const result = await resultPromise;
 
         expect(mockFetch).toHaveBeenCalledTimes(2);
         expect(result.status).toBe(200);
         expect(result.error).toBeUndefined();
       } finally {
+        vi.clearAllTimers();
         vi.useRealTimers();
       }
     });
@@ -229,7 +230,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
         global.fetch = mockFetch;
 
         const resultPromise = springBootApi.request('/health');
-        await vi.advanceTimersByTimeAsync(5000);
+        await vi.advanceTimersByTimeAsync(20000);
         const result = await resultPromise;
 
         expect(mockFetch).toHaveBeenCalledTimes(2);

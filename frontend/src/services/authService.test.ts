@@ -176,14 +176,15 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
     });
 
     it('reports failure when the network itself is unreachable', async () => {
-      // springBootApi.request() silently retries once after 5s on a raw network failure (see
-      // Phase 34's cold-start recovery) — use fake timers so this test doesn't actually wait 5s.
+      // springBootApi.request() silently retries once after 20s on a raw network failure (see
+      // Phase 34's cold-start recovery, widened in Phase 155) — use fake timers so this test
+      // doesn't actually wait 20s.
       vi.useFakeTimers();
       try {
         global.fetch = vi.fn().mockRejectedValue(new Error('Failed to fetch'));
 
         const resultPromise = AuthService.verifyReceiptAsync(42, false, 'test');
-        await vi.advanceTimersByTimeAsync(5000);
+        await vi.advanceTimersByTimeAsync(20000);
         const result = await resultPromise;
 
         expect(result.success).toBe(false);
