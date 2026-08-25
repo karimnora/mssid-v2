@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 transition-colors duration-300 bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir={direction} data-nav-child="false">
+      <header className="sticky top-0 z-40 pt-[env(safe-area-inset-top)] transition-colors duration-300 bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md" dir={direction} data-nav-child="false">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 grid grid-cols-[minmax(0,auto)_minmax(0,1fr)_auto] items-center gap-2 lg:gap-3">
 
           {/* LOGO & BRAND — shrinks/truncates first, never forces the row wider */}
