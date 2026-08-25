@@ -26,6 +26,8 @@ export const navigation: typeof navigationAr = {
   grade4APFull: '4ème année',
   grade5APFull: '5ème année',
 
+  themeAutoFull: 'Automatique (selon le téléphone)',
+  themeAutoShort: 'Auto',
   themeNeutreFull: 'Coloré et vif',
   themeNeutreShort: 'Coloré',
   themeLightFull: 'Clair',

@@ -24,6 +24,8 @@ export const navigation = {
   grade4APFull: 'السنة الرابعة',
   grade5APFull: 'السنة الخامسة',
 
+  themeAutoFull: 'تلقائي (حسب الهاتف)',
+  themeAutoShort: 'تلقائي',
   themeNeutreFull: 'النمط الملوّن والمنعش',
   themeNeutreShort: 'ملوّن',
   themeLightFull: 'فاتح',

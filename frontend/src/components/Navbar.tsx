@@ -51,6 +51,10 @@ interface NavbarProps {
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
   onThemeChange?: (theme: HeaderTheme) => void;
+  /** Whether the app is currently following the OS/browser dark-mode preference rather than a
+   * manually picked theme — drives the "تلقائي" option's highlighted state. */
+  isThemeAuto?: boolean;
+  onThemeAuto?: () => void;
 }
 
 const GRADES: { id: PrimaryGrade; labelKey: 'grade1APFull' | 'grade2APFull' | 'grade3APFull' | 'grade4APFull' | 'grade5APFull'; badge: string }[] = [
@@ -87,6 +91,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onHomeClick,
   currentTheme = 'neutre',
   onThemeChange,
+  isThemeAuto = false,
+  onThemeAuto,
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
@@ -296,6 +302,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <div className="text-[10px] font-bold px-2 py-1 border-b mb-1 text-[var(--app-text-muted)] border-[var(--app-card-border)]">
                       {t('chooseThemeLabel')}
                     </div>
+                    {onThemeAuto && (
+                      <button
+                        onClick={onThemeAuto}
+                        className={`w-full text-start px-2.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between transition-colors cursor-pointer ${
+                          isThemeAuto
+                            ? 'bg-[var(--brand-blue)] text-white font-black shadow-sm'
+                            : 'hover:bg-[var(--app-card-subtle)] text-[var(--app-text)]'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                          <span>{t('themeAutoFull')}</span>
+                        </div>
+                        {isThemeAuto && <Check className="w-3.5 h-3.5 text-white" />}
+                      </button>
+                    )}
                     {THEME_OPTIONS.map((opt) => (
                       <button
                         key={opt.id}
@@ -543,6 +565,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div>
                   <label className="text-xs font-bold text-[var(--app-text-muted)] block mb-2">{t('themeSectionLabel')}</label>
                   <div className="flex items-center gap-2">
+                    {onThemeAuto && (
+                      <button
+                        onClick={onThemeAuto}
+                        className={`min-h-11 flex-1 py-2 px-1 rounded-xl text-[11px] font-bold border transition-colors ${
+                          isThemeAuto
+                            ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)]'
+                            : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
+                        }`}
+                      >
+                        {t('themeAutoShort')}
+                      </button>
+                    )}
                     {THEME_OPTIONS.map((opt) => (
                       <button
                         key={opt.id}

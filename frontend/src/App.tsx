@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
 import { CourseLesson, SubjectId, SubjectInfo } from './types';
@@ -80,16 +80,20 @@ export default function App() {
 
   const selectedTrimester: number | 'all' = 'all';
   const [lockedLesson, setLockedLesson] = useState<CourseLesson | null>(null);
-  // Whether the user has ever manually picked a theme (vs. still following the OS/browser
-  // preference). Read once at mount, updated by the manual toggle below — see the matchMedia
-  // effect further down, which stops reacting to system changes once this flips true.
-  const themeManualRef = useRef(
+  // Whether the user has manually picked a theme (vs. following the OS/browser preference).
+  // Plain state (not a ref) so the "تلقائي" toggle's highlighted state re-renders correctly —
+  // see the matchMedia effect further down, which only reacts to system changes while this is
+  // false, and the onThemeAuto handler below, which is the UI's only way back to auto-follow
+  // once a manual pick has been made (remonte utilisateur : aucune echappatoire dans le menu
+  // pour revenir en mode automatique apres un choix manuel, meme accidentel).
+  const [themeIsManual, setThemeIsManual] = useState<boolean>(
     typeof window !== 'undefined' && window.localStorage.getItem(THEME_MANUAL_KEY) === 'true'
   );
   const [headerTheme, setHeaderTheme] = useState<HeaderTheme>(() => {
     if (typeof window !== 'undefined') {
       const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
-      if (themeManualRef.current && (saved === 'neutre' || saved === 'light' || saved === 'dark')) {
+      const manual = window.localStorage.getItem(THEME_MANUAL_KEY) === 'true';
+      if (manual && (saved === 'neutre' || saved === 'light' || saved === 'dark')) {
         return saved;
       }
       if (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -106,17 +110,22 @@ export default function App() {
   }, [headerTheme]);
 
   // Follow the OS/browser dark-mode preference live (e.g. a phone's battery-saver mode flipping
-  // to dark) until the user manually picks a theme via the toggle — remonte utilisateur : le
-  // footer restait clair quand le mode economie d'energie du telephone passait en sombre.
+  // to dark) whenever not manually overridden — remonte utilisateur : le footer restait clair
+  // quand le mode economie d'energie du telephone passait en sombre.
   useEffect(() => {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+    if (themeIsManual || typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e: MediaQueryListEvent) => {
-      if (!themeManualRef.current) setHeaderTheme(e.matches ? 'dark' : 'neutre');
-    };
+    const handleChange = (e: MediaQueryListEvent) => setHeaderTheme(e.matches ? 'dark' : 'neutre');
     mq.addEventListener('change', handleChange);
     return () => mq.removeEventListener('change', handleChange);
-  }, []);
+  }, [themeIsManual]);
+
+  const handleThemeAuto = () => {
+    setThemeIsManual(false);
+    window.localStorage.removeItem(THEME_MANUAL_KEY);
+    const isDark = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setHeaderTheme(isDark ? 'dark' : 'neutre');
+  };
 
   const tamazightFlag = useFeatureFlag('tamazight');
   const educationalCalculatorFlag = useFeatureFlag('educationalCalculator');
@@ -220,10 +229,12 @@ export default function App() {
         onHomeClick={nav.goHome}
         currentTheme={headerTheme}
         onThemeChange={(t) => {
-          themeManualRef.current = true;
+          setThemeIsManual(true);
           window.localStorage.setItem(THEME_MANUAL_KEY, 'true');
           setHeaderTheme(t);
         }}
+        isThemeAuto={!themeIsManual}
+        onThemeAuto={handleThemeAuto}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
