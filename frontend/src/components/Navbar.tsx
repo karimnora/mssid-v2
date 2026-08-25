@@ -61,9 +61,11 @@ const GRADES: { id: PrimaryGrade; labelKey: 'grade1APFull' | 'grade2APFull' | 'g
   { id: '5AP', labelKey: 'grade5APFull', badge: '5AP' },
 ];
 
+// 'light' was dropped from this list (remonte utilisateur : rendu visuellement identique a
+// 'neutre') — HeaderTheme keeps the 'light' value itself for backward compatibility with
+// anyone who already had it saved, it just isn't offered as a choice anymore.
 const THEME_OPTIONS: { id: HeaderTheme; icon: React.ReactNode }[] = [
   { id: 'neutre', icon: <Sparkles className="w-3.5 h-3.5 text-amber-400" /> },
-  { id: 'light', icon: <Sun className="w-3.5 h-3.5 text-amber-500" /> },
   { id: 'dark', icon: <Moon className="w-3.5 h-3.5 text-[var(--brand-blue)]" /> },
 ];
 
