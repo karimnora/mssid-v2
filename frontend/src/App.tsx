@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
 import { CourseLesson, SubjectId, SubjectInfo } from './types';
@@ -70,6 +70,7 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 };
 
 const THEME_STORAGE_KEY = 'mssid_theme';
+const THEME_MANUAL_KEY = 'mssid_theme_manual';
 
 export default function App() {
   const { authUser } = useAuth();
@@ -79,10 +80,21 @@ export default function App() {
 
   const selectedTrimester: number | 'all' = 'all';
   const [lockedLesson, setLockedLesson] = useState<CourseLesson | null>(null);
+  // Whether the user has ever manually picked a theme (vs. still following the OS/browser
+  // preference). Read once at mount, updated by the manual toggle below — see the matchMedia
+  // effect further down, which stops reacting to system changes once this flips true.
+  const themeManualRef = useRef(
+    typeof window !== 'undefined' && window.localStorage.getItem(THEME_MANUAL_KEY) === 'true'
+  );
   const [headerTheme, setHeaderTheme] = useState<HeaderTheme>(() => {
     if (typeof window !== 'undefined') {
       const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
-      if (saved === 'neutre' || saved === 'light' || saved === 'dark') return saved;
+      if (themeManualRef.current && (saved === 'neutre' || saved === 'light' || saved === 'dark')) {
+        return saved;
+      }
+      if (typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
     }
     return 'neutre';
   });
@@ -92,6 +104,19 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
   }, [headerTheme]);
+
+  // Follow the OS/browser dark-mode preference live (e.g. a phone's battery-saver mode flipping
+  // to dark) until the user manually picks a theme via the toggle — remonte utilisateur : le
+  // footer restait clair quand le mode economie d'energie du telephone passait en sombre.
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!themeManualRef.current) setHeaderTheme(e.matches ? 'dark' : 'neutre');
+    };
+    mq.addEventListener('change', handleChange);
+    return () => mq.removeEventListener('change', handleChange);
+  }, []);
 
   const tamazightFlag = useFeatureFlag('tamazight');
   const educationalCalculatorFlag = useFeatureFlag('educationalCalculator');
@@ -194,7 +219,11 @@ export default function App() {
         onOpenPreschool={() => nav.setIsPreschoolActive(true)}
         onHomeClick={nav.goHome}
         currentTheme={headerTheme}
-        onThemeChange={(t) => setHeaderTheme(t)}
+        onThemeChange={(t) => {
+          themeManualRef.current = true;
+          window.localStorage.setItem(THEME_MANUAL_KEY, 'true');
+          setHeaderTheme(t);
+        }}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
