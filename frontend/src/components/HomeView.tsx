@@ -93,14 +93,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   return (
     <div className="space-y-6" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
-      <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-4">
-        <div className="flex items-center justify-between flex-wrap gap-3">
+      <div className="rounded-3xl p-4 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3">
           <div className="space-y-1">
-            <p className="text-sm font-bold text-white/80">{t('systemBadge')}</p>
-            <h1 className="text-2xl sm:text-3xl font-black">
+            <p className="text-xs sm:text-sm font-bold text-white/80">{t('systemBadge')}</p>
+            <h1 className="text-xl sm:text-3xl font-black">
               {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
             </h1>
-            <p className="type-body font-medium text-white/85">{t('platformTagline')}</p>
+            <p className="text-sm sm:text-lg font-medium text-white/85">{t('platformTagline')}</p>
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
@@ -128,15 +128,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
 
         {isGuest && (
-          <div className="rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white/15 border border-white/20">
+          <div className="rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 bg-white/15 border border-white/20">
             <div className="space-y-0.5">
-              <p className="font-extrabold type-body">{t('guestBannerTitle')}</p>
-              <p className="text-sm font-medium text-white/85">{t('guestBannerSubtitle')}</p>
+              <p className="font-extrabold text-sm sm:text-lg">{t('guestBannerTitle')}</p>
+              <p className="text-xs sm:text-sm font-medium text-white/85">{t('guestBannerSubtitle')}</p>
             </div>
             {onOpenAuthModal && (
               <button
                 onClick={onOpenAuthModal}
-                className="hit-target shrink-0 bg-white hover:bg-amber-50 text-emerald-900 px-5 rounded-2xl font-extrabold text-base cursor-pointer"
+                className="hit-target shrink-0 bg-white hover:bg-amber-50 text-emerald-900 px-5 rounded-2xl font-extrabold text-sm sm:text-base cursor-pointer"
               >
                 {t('guestSignupCta')}
               </button>
@@ -145,7 +145,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
         {POLES.map((pole) => (
           <motion.button
             key={pole.id}
@@ -154,16 +154,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
             onClick={() => onSelectPole(pole.id)}
             whileTap={{ scale: 0.95 }}
             transition={spring}
-            className={`relative overflow-hidden rounded-3xl p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br ${pole.gradient}`}
+            className={`relative overflow-hidden rounded-3xl p-4 sm:p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br ${pole.gradient}`}
           >
             <div
               data-pole-icon={pole.id}
-              className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center mb-3"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-white flex items-center justify-center mb-2 sm:mb-3"
             >
               {pole.icon}
             </div>
-            <h3 className="text-lg font-extrabold">{t(pole.titleKey)}</h3>
-            <p className="type-body text-white/85 mt-1">{t(pole.descKey)}</p>
+            <h3 className="text-sm sm:text-lg font-extrabold">{t(pole.titleKey)}</h3>
+            <p className="text-xs sm:text-lg text-white/85 mt-1">{t(pole.descKey)}</p>
           </motion.button>
         ))}
       </div>
