@@ -345,7 +345,7 @@ export default function App() {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-[var(--app-text)]">{t('navigation', 'footerBrandName')}</span>
             <span className="opacity-75">{t('navigation', 'footerCurriculumLine')}</span>
-            <span className="opacity-60">{t('navigation', 'footerCopyright', { year: new Date().getFullYear() })}</span>
+            <span>{t('navigation', 'footerCopyright', { year: new Date().getFullYear() })}</span>
           </div>
           <div className="flex items-center gap-4">
             <button onClick={openAiTutor} className="hover:text-[var(--brand-amber)] cursor-pointer">
