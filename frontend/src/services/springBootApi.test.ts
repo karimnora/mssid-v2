@@ -31,7 +31,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       );
     });
 
-    it('logout() calls the backend to clear the auth cookie instead of touching localStorage', async () => {
+    it('logout() calls the backend to clear the auth cookie (no token ever touches localStorage)', async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         status: 200,
         ok: true,
@@ -116,6 +116,9 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
 
   describe('Error Handling & Boundary Edge Cases', () => {
     it('handles 401 Unauthorized status by asking the server to clear the auth cookie', async () => {
+      // Only exercised for a browser that has authenticated before — see the dedicated test below
+      // for the (much more common) guest case, where this cascade is skipped entirely.
+      localStorage.setItem('mssid_had_session', 'true');
       const mockFetch = vi.fn().mockResolvedValue({
         status: 401,
         ok: false,
@@ -137,6 +140,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
     });
 
     it('SEC-06: silently refreshes and retries once when a 401 is just an expired access token', async () => {
+      localStorage.setItem('mssid_had_session', 'true');
       const mockFetch = vi.fn().mockImplementation((url: string) => {
         if (url.includes('/v1/auth/refresh')) {
           return Promise.resolve({
@@ -177,6 +181,50 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
       await springBootApi.request('/v1/auth/login', { method: 'POST' });
 
       expect(mockFetch).not.toHaveBeenCalledWith(expect.stringContaining('/v1/auth/refresh'), expect.anything());
+    });
+
+    it('a guest who has never authenticated on this browser skips the refresh+logout cascade entirely on a 401', async () => {
+      // No 'mssid_had_session' in localStorage — beforeEach already clears it. This is the common
+      // case (a first-time visitor) that used to cost 2 extra Render round trips on every boot.
+      const mockFetch = vi.fn().mockResolvedValue({ status: 401, ok: false, headers: new Headers(), json: async () => ({}) });
+      global.fetch = mockFetch;
+
+      const result = await springBootApi.request('/protected-route');
+      await Promise.resolve();
+
+      expect(result.status).toBe(401);
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(mockFetch).not.toHaveBeenCalledWith(expect.stringContaining('/v1/auth/refresh'), expect.anything());
+      expect(mockFetch).not.toHaveBeenCalledWith(expect.stringContaining('/v1/auth/logout'), expect.anything());
+    });
+
+    it('marks the browser as having had a session once /users/me confirms one, so a later 401 can refresh', async () => {
+      const mockFetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ email: 'younes@mssid.dz' }),
+      });
+      global.fetch = mockFetch;
+
+      expect(localStorage.getItem('mssid_had_session')).toBeNull();
+      await springBootApi.fetchCurrentUser();
+      expect(localStorage.getItem('mssid_had_session')).toBe('true');
+    });
+
+    it('logout() clears the had-session marker', async () => {
+      localStorage.setItem('mssid_had_session', 'true');
+      const mockFetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ message: 'Déconnexion réussie' }),
+      });
+      global.fetch = mockFetch;
+
+      await springBootApi.logout();
+
+      expect(localStorage.getItem('mssid_had_session')).toBeNull();
     });
 
     it('handles 429 Rate Limit Exceeded status from Spring Boot backend', async () => {

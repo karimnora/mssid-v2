@@ -50,6 +50,25 @@ export interface SpringBootAuthResponse {
 // loop (refresh calling refresh) or make no sense (a failed login isn't fixed by refreshing).
 const AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH = ['/v1/auth/login', '/v1/auth/register', '/v1/auth/logout', '/v1/auth/refresh'];
 
+// Not a session, not a token — just "has this browser ever completed a login on this app before".
+// The HttpOnly auth cookie itself stays fully invisible to JS (SEC-01); this is only a heuristic to
+// skip the refresh+logout round trip on the very first /users/me 401 for a browser that has never
+// authenticated (a guest visiting for the first time never needed either call — remonte utilisateur
+// + PageSpeed : ~1.8s of the critical path was this cascade running for every guest, every visit).
+// Self-heals both ways: set on any confirmed-authenticated response, cleared once a refresh attempt
+// genuinely fails, so a stale 'true' left over from an expired/cleared session costs at most one
+// wasted round trip before correcting itself.
+const HAD_SESSION_KEY = 'mssid_had_session';
+function hadSessionBefore(): boolean {
+  return typeof window !== 'undefined' && window.localStorage.getItem(HAD_SESSION_KEY) === 'true';
+}
+function markHadSession(): void {
+  if (typeof window !== 'undefined') window.localStorage.setItem(HAD_SESSION_KEY, 'true');
+}
+function clearHadSession(): void {
+  if (typeof window !== 'undefined') window.localStorage.removeItem(HAD_SESSION_KEY);
+}
+
 class SpringBootApiService {
   private requestTimeoutMs = 15000;
 
@@ -67,6 +86,7 @@ class SpringBootApiService {
   // `credentials: 'include'` so the browser attaches that cookie automatically; logging out means
   // asking the server to clear it, not deleting a localStorage entry.
   public async logout(): Promise<void> {
+    clearHadSession();
     await this.request('/v1/auth/logout', { method: 'POST' }).catch(() => {});
   }
 
@@ -181,15 +201,21 @@ public async request<T>(
       // SEC-06: the access token cookie is only good for 24h — a 401 here usually just means it
       // expired, not that the session is truly over. Try a silent refresh-and-retry once before
       // giving up; only fall back to logging out if the refresh itself fails (revoked/expired
-      // refresh token, or no session at all).
-      const canAttemptRefresh = !_isRetryAfterRefresh && !AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH.includes(normalizedEndpoint);
+      // refresh token, or no session at all). Skipped entirely for a browser that has never
+      // authenticated — see HAD_SESSION_KEY above.
+      const canAttemptRefresh = !_isRetryAfterRefresh && !AUTH_ENDPOINTS_EXEMPT_FROM_REFRESH.includes(normalizedEndpoint) && hadSessionBefore();
       if (canAttemptRefresh && (await this.tryRefresh())) {
         return this.request<T>(endpoint, options, true);
       }
 
-      // Best-effort: ask the server to drop the (presumably expired/invalid) auth cookie.
+      // Best-effort: ask the server to drop the (presumably expired/invalid) auth cookie — pointless
+      // for a browser that never had one, so skip the request entirely in that case. logout() itself
+      // clears HAD_SESSION_KEY, so this also self-heals a stale 'true' left over from a session that
+      // really is gone (expired/cleared cookie) after this one wasted round trip.
       // Fire-and-forget — a stuck logout call must never block surfacing this 401 to the caller.
-      this.logout().catch(() => {});
+      if (hadSessionBefore()) {
+        this.logout().catch(() => {});
+      }
       // On extrait le message JSON du backend si présent, sinon fallback
       const errorData = await response.json().catch(() => ({}));
       return {
@@ -277,7 +303,9 @@ public async request<T>(
   // hydrate the current user from the server instead of trusting a cached localStorage profile.
   // A 401 here simply means "not logged in" (no cookie / expired session).
   public async fetchCurrentUser() {
-    return this.request<any>('/v1/users/me', { method: 'GET' });
+    const res = await this.request<any>('/v1/users/me', { method: 'GET' });
+    if (res.data && !res.error) markHadSession();
+    return res;
   }
 
   public async login(credentials: { email: string; password?: string; passwordHash?: string }) {
@@ -289,10 +317,12 @@ public async request<T>(
 
     // SEC-01: the JWT arrives as a Set-Cookie header the browser stores itself (HttpOnly) — the
     // response body no longer carries a `token` field at all, nothing to persist here.
-    return this.request<SpringBootAuthResponse>('/v1/auth/login', {
+    const res = await this.request<SpringBootAuthResponse>('/v1/auth/login', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
+    if (res.data && !res.error) markHadSession();
+    return res;
   }
 
   public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string; parentEmail?: string }) {
@@ -306,10 +336,12 @@ public async request<T>(
       parentEmail: userData.parentEmail || undefined,
     };
 
-    return this.request<SpringBootAuthResponse>('/v1/auth/register', {
+    const res = await this.request<SpringBootAuthResponse>('/v1/auth/register', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
+    if (res.data && !res.error) markHadSession();
+    return res;
   }
 
   // --- Proxy IA Gemini ---
