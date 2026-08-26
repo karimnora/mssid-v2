@@ -45,8 +45,10 @@ const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
 
 // Toggle = instant local effect via setFeatureFlagOverride/resetFeatureFlagOverride (unchanged UX,
 // no redeploy needed), THEN a best-effort PUT/DELETE against the server so the change is shared
-// across admins/devices. On network failure the local toggle still stands (never silently reverted)
-// but an inline warning tells the admin it didn't reach the server.
+// across admins/devices. On network/server failure the local change is rolled back to what it was
+// before the click and an inline warning explains why — a failed sync must never leave the flag
+// standing in a state the server never confirmed (e.g. someone toggling the paywall off locally
+// while the server rejects the write).
 const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolean; overridden: boolean; dormant: boolean }> = ({
   id,
   meta,
@@ -57,32 +59,41 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
   const [syncError, setSyncError] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
 
-  const handleToggle = async () => {
-    setSyncError(false);
-    setFeatureFlagOverride(id, !enabled);
+  const syncOrRevert = async (serverCall: () => Promise<{ error?: unknown }>, revert: () => void) => {
     setIsSyncing(true);
     try {
-      const res = await springBootApi.updateFeatureFlag(id, !enabled);
-      if (res.error) setSyncError(true);
+      const res = await serverCall();
+      if (res.error) {
+        revert();
+        setSyncError(true);
+      }
     } catch {
+      revert();
       setSyncError(true);
     } finally {
       setIsSyncing(false);
     }
   };
 
-  const handleReset = async () => {
+  const handleToggle = () => {
     setSyncError(false);
+    const wasOverridden = overridden;
+    const previousEnabled = enabled;
+    setFeatureFlagOverride(id, !enabled);
+    void syncOrRevert(
+      () => springBootApi.updateFeatureFlag(id, !enabled),
+      () => (wasOverridden ? setFeatureFlagOverride(id, previousEnabled) : resetFeatureFlagOverride(id))
+    );
+  };
+
+  const handleReset = () => {
+    setSyncError(false);
+    const previousEnabled = enabled;
     resetFeatureFlagOverride(id);
-    setIsSyncing(true);
-    try {
-      const res = await springBootApi.deleteFeatureFlagOverride(id);
-      if (res.error) setSyncError(true);
-    } catch {
-      setSyncError(true);
-    } finally {
-      setIsSyncing(false);
-    }
+    void syncOrRevert(
+      () => springBootApi.deleteFeatureFlagOverride(id),
+      () => setFeatureFlagOverride(id, previousEnabled)
+    );
   };
 
   return (
@@ -139,7 +150,7 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
       {syncError && (
         <div className="flex items-center gap-1.5 px-2 text-[10px] font-bold text-rose-300">
           <AlertTriangle className="w-3 h-3 shrink-0" />
-          <span>لم تتم مزامنة هذا التعديل مع الخادم — لن يظهر لبقية المشرفين</span>
+          <span>تعذّرت مزامنة هذا التعديل مع الخادم — تم إلغاؤه تلقائياً، أعد المحاولة</span>
         </div>
       )}
     </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { FeatureFlagsModule } from './FeatureFlagsModule';
 import { springBootApi } from '../../services/springBootApi';
-import { setFeatureFlagOverride, resetFeatureFlagOverride } from '../../featureFlags';
+import { setFeatureFlagOverride, resetFeatureFlagOverride, isFlagOverridden, getFeatureFlags } from '../../featureFlags';
 
 // Regression test for the bug report: toggling enableTrimesterPaywall alone (or enablePayments
 // alone) has zero visible effect anywhere in the app, since isLessonLocked requires BOTH to be true
@@ -53,5 +53,48 @@ describe('FeatureFlagsModule — enableTrimesterPaywall dependency on enablePaym
     render(<FeatureFlagsModule />);
     expect(screen.queryByText(/وضع التحضيري/)).not.toBeInTheDocument();
     expect(screen.queryByText(/قسم الامتحانات الرسمية/)).not.toBeInTheDocument();
+  });
+});
+
+// Regression test for the external review finding: toggling a flag was purely optimistic — if the
+// PUT/DELETE against the server failed (network error or non-admin 403), the local override was
+// never reverted, so the flag stayed silently flipped in that one browser forever. A failed sync
+// must instead roll back to the last server-confirmed state and say why (review externe #6).
+describe('FeatureFlagsModule — rollback on failed server sync', () => {
+  afterEach(() => {
+    resetFeatureFlagOverride('enablePrintablePDFs');
+    vi.restoreAllMocks();
+  });
+
+  it('reverts an optimistic toggle when the server rejects the update, and warns', async () => {
+    vi.spyOn(springBootApi, 'updateFeatureFlag').mockResolvedValue({ error: 'forbidden' } as any);
+    const wasEnabled = getFeatureFlags().enablePrintablePDFs;
+
+    render(<FeatureFlagsModule />);
+    // enablePayments, enableTrimesterPaywall, enablePrintablePDFs = 3rd core switch.
+    const toggle = screen.getAllByRole('switch')[2];
+    expect(toggle.getAttribute('aria-checked')).toBe(String(wasEnabled));
+
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute('aria-checked')).toBe(String(!wasEnabled)); // optimistic flip
+
+    await waitFor(() => expect(toggle.getAttribute('aria-checked')).toBe(String(wasEnabled))); // rolled back
+    expect(isFlagOverridden('enablePrintablePDFs')).toBe(false);
+    expect(await screen.findByText(/تعذّرت مزامنة هذا التعديل/)).toBeInTheDocument();
+  });
+
+  it('reverts a failed reset back to the previous override instead of leaving it cleared', async () => {
+    setFeatureFlagOverride('enablePrintablePDFs', true);
+    vi.spyOn(springBootApi, 'deleteFeatureFlagOverride').mockResolvedValue({ error: 'network' } as any);
+
+    render(<FeatureFlagsModule />);
+    const toggle = screen.getAllByRole('switch')[2];
+    const resetButton = screen.getByTitle('إعادة الضبط الافتراضي');
+
+    fireEvent.click(resetButton);
+
+    await waitFor(() => expect(isFlagOverridden('enablePrintablePDFs')).toBe(true));
+    expect(toggle.getAttribute('aria-checked')).toBe('true');
+    expect(await screen.findByText(/تعذّرت مزامنة هذا التعديل/)).toBeInTheDocument();
   });
 });
