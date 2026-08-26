@@ -13,7 +13,6 @@ import {
   isToolAvailableForGrade,
   isSubjectFeatureEnabled,
 } from './data/subjectsData';
-import { COURSES_DATA } from './data/coursesData';
 import { CourseSelectionView } from './components/CourseSelectionView';
 import { HomeView } from './components/HomeView';
 import { Navbar, HeaderTheme } from './components/Navbar';
@@ -155,9 +154,25 @@ export default function App() {
     onLessonLocked: setLockedLesson,
   });
 
+  // The full lesson catalog (~4.6 MB) is dynamically imported rather than a top-level `import`,
+  // so a visitor's first paint (home screen, no course content needed there) never waits on it.
+  // Kicked off right after mount — not gated on the user navigating into "الدروس" — so it's very
+  // likely already resolved by the time they actually get there; courseSelectionView/
+  // ActiveWorkspace show a loading state below for the rare case it isn't yet.
+  const [coursesData, setCoursesData] = useState<CourseLesson[] | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('./data/coursesData').then((m) => {
+      if (!cancelled) setCoursesData(m.COURSES_DATA);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter((s) => isToolAvailableForGrade(s, nav.grade) && isSubjectVisible(s));
   const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, nav.grade) && isSubjectVisible(tool));
-  const currentLessons = COURSES_DATA.filter(
+  const currentLessons = (coursesData ?? []).filter(
     (l) => l.subject === nav.selectedSubject &&
       (l.grade === nav.grade || nav.selectedSubject === 'soroban') &&
       (selectedTrimester === 'all' || l.trimester === selectedTrimester)
@@ -298,11 +313,13 @@ export default function App() {
               )}
             </div>
 
-            {nav.mainCategory === 'courses' && !nav.selectedLesson ? (
+            {coursesData === null && nav.mainCategory === 'courses' ? (
+              <LoadingFallback label={t('navigation', 'loadingCourses')} minHeight="50vh" />
+            ) : nav.mainCategory === 'courses' && !nav.selectedLesson ? (
               <CourseSelectionView
                 grade={nav.grade}
                 courseSubjects={visibleCourseSubjects}
-                allCourseLessons={COURSES_DATA}
+                allCourseLessons={coursesData ?? []}
                 completedLessonIds={progress.userProfile.completedLessonIds}
                 onSelectLesson={nav.handleSelectLesson}
                 isLessonLocked={isLessonLocked}

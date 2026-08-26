@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
-import { COURSES_DATA } from '../data/coursesData';
 import { CourseLesson, ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
 import { getExamKind } from '../utils/examKind';
@@ -66,9 +65,10 @@ const ReviseLessonButton: React.FC<{
   lessonId?: string;
   label: string;
   onOpenLesson?: (lesson: CourseLesson) => void;
-}> = ({ lessonId, label, onOpenLesson }) => {
+  allCourseLessons: CourseLesson[];
+}> = ({ lessonId, label, onOpenLesson, allCourseLessons }) => {
   if (!lessonId || !onOpenLesson) return null;
-  const lesson = COURSES_DATA.find((item) => item.id === lessonId);
+  const lesson = allCourseLessons.find((item) => item.id === lessonId);
   if (!lesson) return null;
   return (
     <button
@@ -102,6 +102,18 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
   const [selectedTrimester, setSelectedTrimester] = useState<TrimesterTab>('all');
   const [selectedExamId, setSelectedExamId] = useState<string | null>(null);
+  // Dynamic import: only needed for the "related lessons" links on a solution — not for viewing
+  // the exam itself — so it shouldn't force the full ~4.6 MB lesson catalog into the exams bundle.
+  const [allCourseLessons, setAllCourseLessons] = useState<CourseLesson[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    import('../data/coursesData').then((m) => {
+      if (!cancelled) setAllCourseLessons(m.COURSES_DATA);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Automatically reset internal filters when user switches grade in the top navbar
   useEffect(() => {
@@ -360,7 +372,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     <p className="text-[11px] font-black text-[var(--app-text)]">{t('relatedLessonsTitle')}</p>
                     <ul className="text-[11px] text-[var(--app-text-muted)] font-bold space-y-0.5">
                       {linkedLessonIds.map((id) => {
-                        const lesson = COURSES_DATA.find((item) => item.id === id);
+                        const lesson = allCourseLessons.find((item) => item.id === id);
                         return <li key={id}>{lesson ? lesson.titleAr : id}</li>;
                       })}
                     </ul>
@@ -442,6 +454,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                         lessonId={ex.relatedLessonId}
                         label={t('reviseLessonCta')}
                         onOpenLesson={onOpenLesson}
+                        allCourseLessons={allCourseLessons}
                       />
                     </div>
                   )}
@@ -510,6 +523,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     lessonId={selectedExam.problemExercise.relatedLessonId}
                     label={t('reviseLessonCta')}
                     onOpenLesson={onOpenLesson}
+                    allCourseLessons={allCourseLessons}
                   />
                 </div>
               )}

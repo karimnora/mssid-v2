@@ -83,6 +83,7 @@ export const navigation = {
   backToHomeFull: 'الصفحة الرئيسية 🏠',
 
   loadingAdminConsole: 'جاري تحميل لوحة تحكم الإدارة...',
+  loadingCourses: 'جاري تحميل الدروس...',
   loadingPreschool: 'جاري تحميل وضع التحضيري...',
   loadingInteractiveTool: 'جاري تحميل الأداة التفاعلية...',
 

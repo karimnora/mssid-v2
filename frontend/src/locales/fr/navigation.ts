@@ -85,6 +85,7 @@ export const navigation: typeof navigationAr = {
   backToHomeFull: "Page d'accueil 🏠",
 
   loadingAdminConsole: "Chargement du tableau de bord d'administration...",
+  loadingCourses: 'Chargement des cours...',
   loadingPreschool: 'Chargement du mode préscolaire...',
   loadingInteractiveTool: "Chargement de l'outil interactif...",
 
