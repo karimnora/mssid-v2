@@ -62,7 +62,10 @@ export const ScienceReactorInteractive: React.FC<ScienceReactorInteractiveProps>
   return (
     <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-md space-y-6 dir-rtl" dir="rtl">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-cyan-950 text-white rounded-2xl p-5 shadow-sm border border-cyan-800/50 flex items-center justify-between flex-wrap gap-3">
+      <div
+        className="text-white rounded-2xl p-5 shadow-sm border border-cyan-800/50 flex items-center justify-between flex-wrap gap-3"
+        style={{ backgroundImage: 'linear-gradient(to right, #0f172a, #1e1b4b, #083344)' }}
+      >
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-cyan-400 text-slate-950 font-black flex items-center justify-center text-2xl shadow-sm">
             🧪

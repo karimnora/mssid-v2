@@ -26,7 +26,10 @@ export const LessonEvaluationPanel: React.FC<LessonEvaluationPanelProps> = ({
 
   return (
     <div className="space-y-5">
-      <div className="bg-gradient-to-r from-rose-950 to-slate-900 text-white rounded-3xl p-5 border border-rose-800/50">
+      <div
+        className="text-white rounded-3xl p-5 border border-rose-800/50"
+        style={{ backgroundImage: 'linear-gradient(to right, #4c0519, #0f172a)' }}
+      >
         <h3 className="font-black text-sm flex items-center gap-2 mb-1">
           <ClipboardCheck className="w-5 h-5 text-rose-300" />
           <span>التقييم النهائي للدرس</span>

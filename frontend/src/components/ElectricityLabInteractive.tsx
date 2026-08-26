@@ -458,7 +458,10 @@ export const ElectricityLabInteractive: React.FC = () => {
             </div>
 
             {/* VISUAL SVG CIRCUIT BENCHMARK CANOPY */}
-            <div className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 rounded-2xl border border-slate-800/80 p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+            <div
+              className="rounded-2xl border border-slate-800/80 p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]"
+              style={{ backgroundImage: 'linear-gradient(to bottom, #020617, #0f172a, #020617)' }}
+            >
               
               {/* Background Voltage Grid Lines */}
               <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />

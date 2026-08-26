@@ -59,7 +59,10 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
     )}
 
     {lesson.summaryAr && (
-      <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-indigo-950 text-white rounded-3xl p-5 sm:p-6 border border-emerald-800/80 shadow-md space-y-3">
+      <div
+        className="text-white rounded-3xl p-5 sm:p-6 border border-emerald-800/80 shadow-md space-y-3"
+        style={{ backgroundImage: 'linear-gradient(to right, #064e3b, #0f172a, #1e1b4b)' }}
+      >
         <div className="flex items-center justify-between border-b border-emerald-800/60 pb-3 flex-wrap gap-2">
           <div className="flex items-center gap-2.5">
             {speak('summary', lesson.summaryAr)}

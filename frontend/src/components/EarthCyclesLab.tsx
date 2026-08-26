@@ -100,8 +100,11 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward }) => {
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
           <div
             className={`max-w-md mx-auto p-8 rounded-3xl border-2 transition-colors duration-500 ${
-              isDaytime(hour) ? 'bg-gradient-to-b from-sky-200 to-amber-100 border-amber-300' : 'bg-gradient-to-b from-indigo-950 to-slate-800 border-indigo-500'
+              isDaytime(hour) ? 'bg-gradient-to-b from-sky-200 to-amber-100 border-amber-300' : 'border-indigo-500'
             }`}
+            // Plain hex linear-gradient via inline style for the night case: Tailwind v4's oklch()-based
+            // gradients silently fail to paint on some older Android WebViews.
+            style={isDaytime(hour) ? undefined : { backgroundImage: 'linear-gradient(to bottom, #1e1b4b, #1e293b)' }}
           >
             <div className="text-7xl">{isDaytime(hour) ? '☀️' : '🌙'}</div>
             <div className={`font-black text-2xl mt-2 font-sans ${isDaytime(hour) ? 'text-amber-900' : 'text-white'}`}>

@@ -143,8 +143,8 @@ export const SolarOasisPumpLab: React.FC<Props> = ({ onReward }) => {
             <div className="bg-white/80 backdrop-blur-xs p-4 rounded-2xl border border-yellow-300 text-center space-y-2">
               <div className="font-black text-xs text-slate-800">الألواح الشمسية الكهروضوئية</div>
               <div
-                className="w-24 h-16 mx-auto bg-gradient-to-br from-blue-900 to-indigo-950 border-2 border-slate-400 rounded-lg shadow-md transition-transform duration-300 flex items-center justify-center text-yellow-300 text-xs font-mono font-bold"
-                style={{ transform: `rotate(-${solarAngle / 2}deg)` }}
+                className="w-24 h-16 mx-auto border-2 border-slate-400 rounded-lg shadow-md transition-transform duration-300 flex items-center justify-center text-yellow-300 text-xs font-mono font-bold"
+                style={{ transform: `rotate(-${solarAngle / 2}deg)`, backgroundImage: 'linear-gradient(to bottom right, #1e3a8a, #1e1b4b)' }}
               >
                 ⚡ {powerGeneratedWatts}W
               </div>

@@ -539,13 +539,14 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     onClick={() => handleKeyPress(key)}
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.94 }}
-                    className={`relative flex-1 ${key.heightClass} rounded-2xl bg-gradient-to-b from-amber-700 via-amber-800 to-amber-950 shadow-xl border-3 ${
+                    className={`relative flex-1 ${key.heightClass} rounded-2xl shadow-xl border-3 ${
                       isTarget
                         ? 'border-yellow-300 ring-4 ring-yellow-400 animate-bounce'
                         : 'border-amber-600'
                     } flex flex-col items-center justify-between py-4 cursor-pointer text-amber-100 select-none ${
                       isPressed ? 'brightness-150' : ''
                     }`}
+                    style={{ backgroundImage: 'linear-gradient(to bottom, #b45309, #92400e, #451a03)' }}
                   >
                     <div className="w-3 h-3 rounded-full bg-amber-900 border border-amber-600" />
                     {isTarget && <div className="text-xl animate-spin">⭐</div>}
@@ -607,7 +608,10 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
 
         {/* 5. MANDOLE / OUD VIEW */}
         {instrument === 'mandole' && (
-          <div className="w-full max-w-2xl bg-gradient-to-b from-amber-800 to-amber-950 p-6 rounded-[2.5rem] shadow-2xl border-4 border-amber-600 text-white flex flex-col items-center gap-4">
+          <div
+            className="w-full max-w-2xl p-6 rounded-[2.5rem] shadow-2xl border-4 border-amber-600 text-white flex flex-col items-center gap-4"
+            style={{ backgroundImage: 'linear-gradient(to bottom, #92400e, #451a03)' }}
+          >
             <div className="text-center">
               <h2 className="text-base sm:text-lg font-black text-amber-200">
                 {language === 'ar' ? '🪕 المَنْدُول وَالعُود' : language === 'fr' ? '🪕 Mandole et oud' : '🪕 Mandole and oud'}

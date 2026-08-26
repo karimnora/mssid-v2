@@ -16,7 +16,10 @@ const GRADES_DETAIL: { id: PrimaryGrade; titleAr: string; levelName: string; des
 
 export const GradeSelectorBanner: React.FC<GradeSelectorProps> = ({ currentGrade, onGradeChange }) => {
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-800/40 relative overflow-hidden mb-8 dir-rtl">
+    <div
+      className="text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-800/40 relative overflow-hidden mb-8 dir-rtl"
+      style={{ backgroundImage: 'linear-gradient(to bottom right, #0f172a, #022c22, #0f172a)' }}
+    >
       {/* Subtle background glow */}
       <div className="absolute -top-24 -left-24 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl pointer-events-none" />

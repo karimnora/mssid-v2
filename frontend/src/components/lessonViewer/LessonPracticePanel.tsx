@@ -67,10 +67,13 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
     })}
 
     {lesson.educationalGame && (
-      <div className={playful
-        ? 'bg-violet-50 border border-violet-100 text-[#1E293B] rounded-3xl p-5 space-y-3'
-        : 'bg-gradient-to-r from-purple-950 to-slate-900 text-white rounded-3xl p-5 space-y-3 border border-purple-800/50'
-      }>
+      <div
+        className={playful
+          ? 'bg-violet-50 border border-violet-100 text-[#1E293B] rounded-3xl p-5 space-y-3'
+          : 'text-white rounded-3xl p-5 space-y-3 border border-purple-800/50'
+        }
+        style={playful ? undefined : { backgroundImage: 'linear-gradient(to right, #3b0764, #0f172a)' }}
+      >
         <div className="flex items-center justify-between flex-wrap gap-2">
           <h3 className="font-black text-sm flex items-center gap-2">
             <Sparkles className={`w-4 h-4 ${playful ? 'text-amber-500' : 'text-amber-300'}`} />

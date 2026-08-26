@@ -89,8 +89,12 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
             className={
               playful
                 ? 'bg-emerald-50 border border-emerald-100 rounded-3xl p-4 sm:p-5 space-y-4 shadow-sm'
-                : 'bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-5 border border-indigo-800/80 space-y-4 shadow-md'
+                : 'text-white rounded-2xl p-5 border border-indigo-800/80 space-y-4 shadow-md'
             }
+            // Plain hex linear-gradient via inline style, not Tailwind's gradient utilities — Tailwind
+            // v4's oklch()-based palette/gradients silently fail to paint on some older Android
+            // WebViews.
+            style={playful ? undefined : { backgroundImage: 'linear-gradient(to right, #0f172a, #1e1b4b, #0f172a)' }}
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div className="flex items-center gap-3 min-w-0">

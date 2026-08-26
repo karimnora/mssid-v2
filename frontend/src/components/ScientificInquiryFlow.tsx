@@ -24,7 +24,10 @@ export const ScientificInquiryFlow: React.FC<ScientificInquiryFlowProps> = ({
   const chosenHypothesis = inquiry.hypothesisOptions.find((h) => h.id === hypothesisId);
 
   return (
-    <div className="bg-gradient-to-br from-sky-950 via-slate-900 to-emerald-950 text-white rounded-3xl p-5 sm:p-6 border border-sky-800/60 shadow-md space-y-4">
+    <div
+      className="text-white rounded-3xl p-5 sm:p-6 border border-sky-800/60 shadow-md space-y-4"
+      style={{ backgroundImage: 'linear-gradient(to bottom right, #082f49, #0f172a, #022c22)' }}
+    >
       <div className="flex items-center gap-2.5">
         <div className="p-2 bg-sky-500/20 text-sky-300 rounded-xl border border-sky-500/30">
           <FlaskConical className="w-5 h-5" />

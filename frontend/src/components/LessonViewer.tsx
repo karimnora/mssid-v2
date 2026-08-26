@@ -425,11 +425,19 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </AnimatePresence>
         </div>
       ) : (
-      <div className={
-        grade === '2AP'
-          ? 'bg-emerald-50 border border-emerald-100 rounded-3xl p-6 shadow-sm relative overflow-hidden'
-          : 'bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden'
-      }>
+      <div
+        className={
+          grade === '2AP'
+            ? 'bg-emerald-50 border border-emerald-100 rounded-3xl p-6 shadow-sm relative overflow-hidden'
+            : 'text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden'
+        }
+        // Plain hex linear-gradient via inline style, not Tailwind's gradient utilities: Tailwind v4
+        // compiles its palette (and gradient color-interpolation) through oklch(), which silently
+        // fails to paint on older Android WebViews — same bug/fix as ExamsViewer's hero card
+        // (remonte utilisateur : titre et description de la leçon illisibles, texte clair sur fond
+        // clair car le degrade sombre ne s'affichait pas).
+        style={grade === '2AP' ? undefined : { backgroundImage: 'linear-gradient(to right, #0f172a, #022c22, #0f172a)' }}
+      >
         <div className="relative z-10">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
             <div className={`flex items-center gap-2 text-xs font-bold ${grade === '2AP' ? 'text-emerald-700' : 'text-emerald-400'}`}>

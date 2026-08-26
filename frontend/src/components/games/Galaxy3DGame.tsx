@@ -265,7 +265,11 @@ export const Galaxy3DGame: React.FC<Galaxy3DGameProps> = ({ onExit, onComplete, 
 
   if (phase === 'select') {
     return (
-      <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-slate-950 to-indigo-950 p-4 pb-8" dir="rtl">
+      <div
+        className="flex flex-col items-center min-h-screen p-4 pb-8"
+        style={{ backgroundImage: 'linear-gradient(to bottom right, #020617, #1e1b4b)' }}
+        dir="rtl"
+      >
         <div className="w-full flex items-center justify-between mb-6">
           <button onClick={onExit} className="bg-white/10 rounded-2xl px-4 py-2 text-white/80 font-bold text-sm">
             ← خروج
@@ -307,7 +311,11 @@ export const Galaxy3DGame: React.FC<Galaxy3DGameProps> = ({ onExit, onComplete, 
   if (phase === 'win' || phase === 'lose') {
     const earned = phase === 'win' ? 25 * (levelIdx + 1) : 0;
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-slate-950 to-indigo-950 p-4" dir="rtl">
+      <div
+        className="flex flex-col items-center justify-center min-h-screen p-4"
+        style={{ backgroundImage: 'linear-gradient(to bottom right, #020617, #1e1b4b)' }}
+        dir="rtl"
+      >
         <motion.div
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}

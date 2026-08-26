@@ -51,7 +51,11 @@ export const LevelSelectScreen: React.FC<LevelSelectScreenProps> = ({
   const bestLabel  = t('أفضل نتيجة', 'Meilleur résultat', 'Best score');
 
   return (
-    <div dir={dir} className="min-h-screen bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900 flex flex-col items-center py-6 px-4 gap-5">
+    <div
+      dir={dir}
+      className="min-h-screen flex flex-col items-center py-6 px-4 gap-5"
+      style={{ backgroundImage: 'linear-gradient(to bottom, #0f172a, #1e1b4b, #0f172a)' }}
+    >
       {/* Header */}
       <div className="w-full max-w-2xl flex items-center justify-between">
         <motion.button

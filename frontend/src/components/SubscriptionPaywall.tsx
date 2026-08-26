@@ -98,7 +98,10 @@ export const SubscriptionPaywall: React.FC<Props> = ({
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
       <div className="bg-white border border-purple-200 w-full max-w-3xl rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[92vh] overflow-y-auto" dir={direction}>
         {/* Header Header */}
-        <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-950 text-white p-6 rounded-t-3xl relative overflow-hidden">
+        <div
+          className="text-white p-6 rounded-t-3xl relative overflow-hidden"
+          style={{ backgroundImage: 'linear-gradient(to right, #581c87, #312e81, #3b0764)' }}
+        >
           <button
             onClick={onClose}
             className="absolute top-4 left-4 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all cursor-pointer"

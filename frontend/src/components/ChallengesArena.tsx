@@ -194,7 +194,12 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
         dir="rtl"
         data-challenges-layout={isYoung ? 'young' : 'full'}
       >
-        <div className="bg-gradient-to-r from-rose-900 via-orange-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-800/40">
+        {/* Plain hex linear-gradient via inline style, not Tailwind's gradient utilities — Tailwind v4's
+            oklch()-based palette/gradients silently fail to paint on some older Android WebViews. */}
+        <div
+          className="text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-800/40"
+          style={{ backgroundImage: 'linear-gradient(to right, #881337, #431407, #0f172a)' }}
+        >
           <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-400/30 text-rose-200 px-3 py-1 rounded-full text-xs font-bold mb-2">
             <Trophy className="w-3.5 h-3.5 text-amber-400" />
             <span>نادي التحديات والمسابقات{grade ? ` (${grade})` : ''}</span>

@@ -403,7 +403,10 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
       </div>
 
       {/* Danger Scene Card */}
-      <div className="bg-gradient-to-r from-rose-950/80 via-slate-900 to-slate-900 p-5 rounded-2xl border border-rose-900/60 space-y-2">
+      <div
+        className="p-5 rounded-2xl border border-rose-900/60 space-y-2"
+        style={{ backgroundImage: 'linear-gradient(to right, rgba(76, 5, 25, 0.8), #0f172a, #0f172a)' }}
+      >
         <div className="flex items-center gap-2 text-rose-400 font-extrabold text-xs">
           <AlertTriangle className="w-4 h-4" />
           <span>الموقف والخطورة المنزلية:</span>

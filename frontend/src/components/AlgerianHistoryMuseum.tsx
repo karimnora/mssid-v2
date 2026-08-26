@@ -809,7 +809,10 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           </div>
 
           {/* Anthem Section */}
-          <div className="bg-gradient-to-br from-emerald-900 to-teal-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl space-y-6 border border-emerald-600/30">
+          <div
+            className="rounded-3xl p-6 sm:p-8 text-white shadow-xl space-y-6 border border-emerald-600/30"
+            style={{ backgroundImage: 'linear-gradient(to bottom right, #064e3b, #042f2e)' }}
+          >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/20 pb-4">
               <div className="flex items-center gap-3">
                 <span className="text-4xl">🎵</span>
