@@ -1,11 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import { CourseLesson, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { COURSES_DATA } from '../data/coursesData';
 import { AuthService } from '../services/authService';
 import { AiTutorModal } from './AiTutorModal';
 import { BadgeUnlockToast } from './BadgeUnlockToast';
-import { ProfileModal } from './ProfileModal';
 import { AuthModal } from './AuthModal';
 import { EmailVerificationPopup } from './EmailVerificationPopup';
 import { MobileAppSimulator } from './MobileAppSimulator';
@@ -22,6 +20,10 @@ const DidouDressingRoomModal = lazy(() => import('./DidouDressingRoomModal').the
 const HomeworkPinModal = lazy(() => import('./HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
 const PrintableWorksheetsGeneratorModal = lazy(() => import('./PrintableWorksheetsGeneratorModal').then((m) => ({ default: m.PrintableWorksheetsGeneratorModal })));
 const OfflinePacksManagerModal = lazy(() => import('./OfflinePacksManagerModal').then((m) => ({ default: m.OfflinePacksManagerModal })));
+// Lazy specifically because ProfileModal pulls in badgeEngine.ts, which needs the full lesson
+// catalog to map completed-lesson ids to subjects — no reason that forces itself into the initial
+// bundle before the user has even opened their profile.
+const ProfileModal = lazy(() => import('./ProfileModal').then((m) => ({ default: m.ProfileModal })));
 
 type Modals = ReturnType<typeof useAppModals>;
 
@@ -77,22 +79,24 @@ export const AppModals: React.FC<AppModalsProps> = ({
 
     <BadgeUnlockToast queue={newlyUnlockedBadges} onDismiss={onDismissBadge} />
 
-    <ProfileModal
-      isOpen={modals.isProfileModalOpen}
-      onClose={() => modals.setIsProfileModalOpen(false)}
-      userProfile={userProfile}
-      authUser={authUser}
-      tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-      onToggleTashkeel={(next) => {
-        setUserProfile((prev) => ({ ...prev, tashkeelEnabled: next }));
-      }}
-      onResetProgress={() => {
-        if (onResetProgress()) modals.setIsProfileModalOpen(false);
-      }}
-      onUpdateName={onUpdateName}
-      onUpdateAvatar={onUpdateAvatar}
-      onRefreshFromDb={onRefreshFromDb}
-    />
+    <Suspense fallback={null}>
+      <ProfileModal
+        isOpen={modals.isProfileModalOpen}
+        onClose={() => modals.setIsProfileModalOpen(false)}
+        userProfile={userProfile}
+        authUser={authUser}
+        tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+        onToggleTashkeel={(next) => {
+          setUserProfile((prev) => ({ ...prev, tashkeelEnabled: next }));
+        }}
+        onResetProgress={() => {
+          if (onResetProgress()) modals.setIsProfileModalOpen(false);
+        }}
+        onUpdateName={onUpdateName}
+        onUpdateAvatar={onUpdateAvatar}
+        onRefreshFromDb={onRefreshFromDb}
+      />
+    </Suspense>
 
     <ContactModal
       isOpen={modals.isContactModalOpen}
@@ -123,8 +127,12 @@ export const AppModals: React.FC<AppModalsProps> = ({
         try {
           const target = JSON.parse(raw);
           if (target?.type === 'lesson' && target.lessonId) {
-            const lesson = COURSES_DATA.find((l) => l.id === target.lessonId);
-            if (lesson) onRestoreLesson(lesson);
+            // Dynamic import: this login->redirect path is rare, no reason it should force the
+            // ~4.6 MB lesson catalog into every visitor's initial bundle.
+            import('../data/coursesData').then(({ COURSES_DATA }) => {
+              const lesson = COURSES_DATA.find((l) => l.id === target.lessonId);
+              if (lesson) onRestoreLesson(lesson);
+            });
           }
         } catch {
           // Ignore malformed/stale redirect payloads — worst case the user just lands on the dashboard.

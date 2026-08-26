@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
-import { COURSES_DATA } from '../data/coursesData';
 import {
   CHALLENGES_TAB_LIST,
   COURSE_SUBJECTS_LIST,
@@ -62,8 +61,12 @@ function readBootLocation(): { view: AppView; grade: PrimaryGrade } {
   return { view: parsed.view, grade: parsed.grade ?? '5AP' };
 }
 
-function lessonFromId(lessonId: string | null): CourseLesson | null {
+// Dynamically imported (not a top-level `import`) so the ~4.6 MB lesson catalog isn't part of the
+// bundle every visitor has to load before first paint just to support the rare case of opening the
+// app on a deep link straight into one lesson, or restoring one via browser back/forward.
+async function lessonFromId(lessonId: string | null): Promise<CourseLesson | null> {
   if (!lessonId) return null;
+  const { COURSES_DATA } = await import('../data/coursesData');
   return COURSES_DATA.find((item) => item.id === lessonId) ?? null;
 }
 
@@ -76,20 +79,16 @@ export function useAppNavigation(options: {
   const boot = readBootLocation();
 
   const [grade, setGrade] = useState<PrimaryGrade>(boot.grade);
+  // Booting straight onto a lesson deep link starts on the 'math' placeholder subject and no
+  // selected lesson — see the effect below, which resolves the real lesson asynchronously (the
+  // catalog lookup it needs is now a dynamic import, not part of the initial bundle).
   const [selectedSubject, setSelectedSubject] = useState<SubjectId>(() => {
     if (boot.view.name === 'labs') return labOrFallback(boot.view.toolId, boot.grade);
     if (boot.view.name === 'exams') return 'exams';
     if (boot.view.name === 'challenges') return 'challenges';
-    if (boot.view.name === 'lesson') {
-      return lessonFromId(boot.view.lessonId)?.subject ?? 'math';
-    }
     return 'math';
   });
-  const [selectedLesson, setSelectedLesson] = useState<CourseLesson | null>(() => {
-    if (boot.view.name !== 'lesson') return null;
-    const lesson = lessonFromId(boot.view.lessonId);
-    return lesson && !isLessonLocked(lesson) ? lesson : null;
-  });
+  const [selectedLesson, setSelectedLesson] = useState<CourseLesson | null>(null);
   const [mainCategory, setMainCategory] = useState<MainCategory>(() => {
     if (boot.view.name === 'labs') return 'labs';
     if (boot.view.name === 'exams') return 'exams';
@@ -105,6 +104,23 @@ export function useAppNavigation(options: {
   const lastPathRef = useRef(typeof window !== 'undefined' ? window.location.pathname : '/');
   const isLessonLockedRef = useRef(isLessonLocked);
   isLessonLockedRef.current = isLessonLocked;
+
+  // Resolves a boot-time lesson deep link once the catalog's dynamic import lands — runs once,
+  // after first paint, so opening the app on a shared lesson link briefly shows the default view
+  // before snapping to the right lesson instead of blocking the initial render on it.
+  useEffect(() => {
+    if (boot.view.name !== 'lesson') return;
+    let cancelled = false;
+    lessonFromId(boot.view.lessonId).then((lesson) => {
+      if (cancelled || !lesson || isLessonLockedRef.current(lesson)) return;
+      setSelectedSubject(lesson.subject);
+      setSelectedLesson(lesson);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (accountGrade && isValidGrade(accountGrade)) {
@@ -129,8 +145,9 @@ export function useAppNavigation(options: {
     if (state.selectedSubject) setSelectedSubject(state.selectedSubject);
     if (state.grade && isValidGrade(state.grade)) setGrade(state.grade);
     if (state.selectedLessonId) {
-      const lesson = lessonFromId(state.selectedLessonId);
-      setSelectedLesson(lesson && !isLessonLockedRef.current(lesson) ? lesson : null);
+      lessonFromId(state.selectedLessonId).then((lesson) => {
+        setSelectedLesson(lesson && !isLessonLockedRef.current(lesson) ? lesson : null);
+      });
     } else {
       setSelectedLesson(null);
     }

@@ -3,7 +3,6 @@ import { Badge as BadgeInfo, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { incrementDailyObjective } from '../utils/dailyObjective';
-import { applyBadgeEvaluation } from '../utils/badgeEngine';
 import { getStoredLocale } from '../localePreference';
 import { locales } from '../locales';
 
@@ -130,13 +129,24 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   const [ratingPromptTrigger, setRatingPromptTrigger] = useState(0);
 
   useEffect(() => {
-    const { profile: updated, newlyUnlocked } = applyBadgeEvaluation(userProfile);
-    if (newlyUnlocked.length > 0) {
-      setUserProfile(updated);
-      setNewlyUnlockedBadges((prev) => [...prev, ...newlyUnlocked]);
-      AuthService.syncBadges(updated.badges, updated.badgeUnlockedAt);
-      setRatingPromptTrigger((t) => t + 1);
-    }
+    // Dynamic import: badgeEngine.ts needs the full lesson catalog (to map completed-lesson ids
+    // to subjects) — deferring it here keeps that ~4.6 MB out of the initial bundle. Badge
+    // evaluation already only runs after progress actually changes, well after first paint, so
+    // the extra fetch is invisible in practice.
+    let cancelled = false;
+    import('../utils/badgeEngine').then(({ applyBadgeEvaluation }) => {
+      if (cancelled) return;
+      const { profile: updated, newlyUnlocked } = applyBadgeEvaluation(userProfile);
+      if (newlyUnlocked.length > 0) {
+        setUserProfile(updated);
+        setNewlyUnlockedBadges((prev) => [...prev, ...newlyUnlocked]);
+        AuthService.syncBadges(updated.badges, updated.badgeUnlockedAt);
+        setRatingPromptTrigger((t) => t + 1);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     userProfile.xp,
