@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { RotateCcw, VolumeX } from 'lucide-react';
+import { Info, RotateCcw } from 'lucide-react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { PreschoolMascot, MascotMood } from './PreschoolMascot';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
@@ -89,7 +89,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
             aria-label={missingVoice ? t('لا يوجد صوت', 'Pas de voix', 'No voice') : t('إعادة الاستماع', 'Réécouter', 'Replay')}
             title={missingVoice ? t('لا يوجد صوت على هذا الجهاز، اضغط على "نصيحة لولي الأمر"', 'Pas de voix sur cet appareil — voir « Astuce pour le parent »', 'No voice on this device — see "Tip for the grown-up"') : t('استمع للصوت', 'Écouter à nouveau', 'Listen again')}
           >
-            {missingVoice ? <VolumeX className="w-5 h-5" strokeWidth={2.5} /> : <RotateCcw className="w-5 h-5" strokeWidth={2.5} />}
+            {missingVoice ? <Info className="w-5 h-5" strokeWidth={2.5} /> : <RotateCcw className="w-5 h-5" strokeWidth={2.5} />}
           </button>
 
           {/* Skip never blocks — but it must not count as a success (badges / défi / path stars). */}
