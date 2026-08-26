@@ -74,4 +74,45 @@ describe('useLessonQuiz', () => {
     expect(result.current.quizAnswered).toBe(true);
     expect(result.current.quizFullyPassed).toBe(false);
   });
+
+  // Regression test for a locked-forever question (review externe #2, principe "zero frustration") :
+  // a wrong guess used to be a dead end (selectedAnswers[questionId] !== undefined blocked any
+  // further click on that question). It must now be a real retry, not just a recorded miss.
+  it('lets the student try again after a wrong guess, and awards XP once they get it right', () => {
+    const onCompleteQuiz = vi.fn();
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: false, onCompleteQuiz })
+    );
+
+    act(() => {
+      result.current.handleSelectOption('q1', 'b'); // wrong
+    });
+    expect(onCompleteQuiz).not.toHaveBeenCalled();
+    expect(result.current.selectedAnswers.q1).toBe('b');
+
+    act(() => {
+      result.current.handleSelectOption('q1', 'a'); // retry, correct this time
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledWith('math-1ap-nombres', 15);
+    expect(result.current.selectedAnswers.q1).toBe('a');
+    expect(result.current.awardedQuizIds.has('q1')).toBe(true);
+  });
+
+  it('ignores further clicks on a question once it has been answered correctly (no double XP)', () => {
+    const onCompleteQuiz = vi.fn();
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: false, onCompleteQuiz })
+    );
+
+    act(() => {
+      result.current.handleSelectOption('q1', 'a'); // correct
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+
+    act(() => {
+      result.current.handleSelectOption('q1', 'b'); // locked now, must be a no-op
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+    expect(result.current.selectedAnswers.q1).toBe('a');
+  });
 });

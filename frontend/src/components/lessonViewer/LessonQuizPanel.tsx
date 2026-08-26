@@ -12,6 +12,7 @@ interface LessonQuizPanelProps {
   lesson: CourseLesson;
   shuffledQuiz: CourseLesson['quiz'];
   selectedAnswers: Record<string, string>;
+  awardedQuizIds: Set<string>;
   recentAnswerId: string | null;
   renderArabicText: (text: string | undefined | null) => string;
   onSelectOption: (questionId: string, optionId: string) => void;
@@ -28,6 +29,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
   lesson,
   shuffledQuiz,
   selectedAnswers,
+  awardedQuizIds,
   recentAnswerId,
   renderArabicText,
   onSelectOption,
@@ -41,7 +43,6 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
 }) => {
   const activeQuiz = shuffledQuiz.length > 0 ? shuffledQuiz : lesson.quiz;
   const totalQuestions = activeQuiz.length;
-  const answeredCount = Object.keys(selectedAnswers).length;
   const optionLetters = ['أ', 'ب', 'ج', 'د', 'هـ'];
 
   let correctCount = 0;
@@ -52,8 +53,13 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
       correctCount++;
     }
   });
+  // Retry is now allowed on a wrong guess (see useLessonQuiz), so selectedAnswers holds an entry
+  // for every question ever ATTEMPTED, not just the ones actually solved — completion and the
+  // progress counter must track correctCount, not Object.keys(selectedAnswers).length, or a quiz
+  // with every question attempted-but-still-wrong would wrongly show as "complete".
+  const answeredCount = correctCount;
 
-  const quizComplete = totalQuestions > 0 && answeredCount === totalQuestions;
+  const quizComplete = totalQuestions > 0 && correctCount === totalQuestions;
   const scorePercentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
 
   return (
@@ -179,9 +185,13 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
       <div className="space-y-6">
         {activeQuiz.map((q, qIdx) => {
           const selected = selectedAnswers[q.id];
-          const isAnswered = selected !== undefined;
           const correctOpt = q.options.find((o) => o.isCorrect);
           const isUserCorrect = !!selected && !!correctOpt && selected === correctOpt.id;
+          // "Answered" now means "answered correctly" (locked, XP awarded) — a wrong guess is a
+          // transient state (hasAttempted), not a dead end: the student keeps the other options
+          // live and can try again. See useLessonQuiz.handleSelectOption.
+          const isAnswered = awardedQuizIds.has(q.id) || isUserCorrect;
+          const hasAttempted = selected !== undefined;
           const feedback = getQuizFeedback(q, selected);
 
           return (
@@ -189,9 +199,9 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
               key={q.id}
               className={`p-3 sm:p-5 rounded-2xl border transition-colors space-y-4 min-w-0 ${
                 isAnswered
-                  ? isUserCorrect
-                    ? 'border-[var(--brand-emerald)]/40 bg-[var(--brand-emerald)]/5'
-                    : 'border-[var(--brand-coral)]/40 bg-[var(--brand-coral)]/5'
+                  ? 'border-[var(--brand-emerald)]/40 bg-[var(--brand-emerald)]/5'
+                  : hasAttempted
+                  ? 'border-[var(--brand-coral)]/40 bg-[var(--brand-coral)]/5'
                   : 'border-[var(--app-card-border)] bg-[var(--app-card-bg)]'
               }`}
             >
@@ -214,7 +224,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                   <span className={`min-w-0 break-words ${playful ? 'text-lg font-black leading-snug' : ''}`}>{q.questionAr}</span>
                 </div>
 
-                {isAnswered && (
+                {hasAttempted && (
                   <span className="relative shrink-0">
                     {isUserCorrect && recentAnswerId === q.id && <ConfettiBurst />}
                     <motion.span
@@ -250,13 +260,15 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                   let btnStyle = 'bg-[var(--app-card-bg)] border-[var(--app-card-border)] hover:border-[var(--brand-blue)]/50 text-[var(--app-text)]';
 
                   if (isAnswered) {
-                    if (opt.isCorrect) {
-                      btnStyle = 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-extrabold shadow-xs';
-                    } else if (isOptSelected && !opt.isCorrect) {
-                      btnStyle = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)] font-bold';
-                    } else {
-                      btnStyle = 'bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text-muted)] opacity-60';
-                    }
+                    // Correctly answered: reveal + lock. The wrong options are muted, not hidden,
+                    // so the student can still see what the other choices were.
+                    btnStyle = opt.isCorrect
+                      ? 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-extrabold shadow-xs'
+                      : 'bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text-muted)] opacity-60';
+                  } else if (hasAttempted && isOptSelected) {
+                    // Just picked wrong: flash only this option red — the other options stay live
+                    // and unrevealed so the retry is a real retry, not a giveaway.
+                    btnStyle = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)] font-bold';
                   }
 
                   return (
@@ -281,6 +293,8 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                           className={`w-10 h-10 rounded-lg text-sm font-bold flex items-center justify-center shrink-0 border ${
                             isAnswered && opt.isCorrect
                               ? 'bg-[var(--brand-emerald)] text-white border-[var(--brand-emerald-dark)]'
+                              : hasAttempted && isOptSelected && !isAnswered
+                              ? 'bg-[var(--brand-coral)] text-white border-[var(--brand-coral-dark)]'
                               : isOptSelected
                               ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)]'
                               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
@@ -294,7 +308,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                       {isAnswered && opt.isCorrect && (
                         <CheckCircle2 className="w-4 h-4 text-[var(--brand-emerald)] shrink-0" />
                       )}
-                      {isAnswered && isOptSelected && !opt.isCorrect && (
+                      {hasAttempted && isOptSelected && !isAnswered && (
                         <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />
                       )}
                     </button>
@@ -304,7 +318,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
               </div>
 
               <AnimatePresence>
-                {isAnswered && feedback && (
+                {hasAttempted && feedback && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
@@ -318,7 +332,10 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                       {onSpeak && (
                         <TapSpeakButton
                           snippetKey={`quiz-${q.id}-why`}
-                          text={quizFeedbackSpeakText(feedback)}
+                          // While the question is still retry-able, only speak why THIS choice was
+                          // wrong — never the answer itself (quizFeedbackSpeakText would read out
+                          // feedback.correctAr too, handing over the solution via the audio button).
+                          text={isAnswered ? quizFeedbackSpeakText(feedback) : feedback.primaryAr}
                           speakingKey={speakingKey}
                           onSpeak={onSpeak}
                           size="md"
@@ -329,7 +346,10 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     <p className="text-[var(--app-text)] font-medium">
                       {renderArabicText(feedback.primaryAr)}
                     </p>
-                    {feedback.correctAr && (
+                    {/* Deliberately gated on isAnswered (correct), not just feedback.correctAr being
+                        present: revealing the right answer on a wrong guess would defeat the retry
+                        this panel now allows — the student discovers it by getting it right instead. */}
+                    {isAnswered && feedback.correctAr && (
                       <p className="text-[var(--brand-emerald-dark)] font-semibold bg-[var(--brand-emerald)]/10 p-3 rounded-xl border border-[var(--brand-emerald)]/25">
                         <span className="font-extrabold block mb-1">الصواب:</span>
                         {renderArabicText(feedback.correctAr)}

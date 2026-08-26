@@ -672,6 +672,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               lesson={lesson}
               shuffledQuiz={quiz.shuffledQuiz}
               selectedAnswers={quiz.selectedAnswers}
+              awardedQuizIds={quiz.awardedQuizIds}
               recentAnswerId={quiz.recentAnswerId}
               renderArabicText={renderArabicText}
               onSelectOption={quiz.handleSelectOption}

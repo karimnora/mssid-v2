@@ -177,6 +177,7 @@ describe('1AP playful lesson layout', () => {
         lesson={spatial}
         shuffledQuiz={spatial.quiz}
         selectedAnswers={{}}
+        awardedQuizIds={new Set()}
         recentAnswerId={null}
         renderArabicText={(t) => t || ''}
         onSelectOption={() => {}}
@@ -200,6 +201,7 @@ describe('1AP playful lesson layout', () => {
         lesson={spatial}
         shuffledQuiz={spatial.quiz}
         selectedAnswers={{ q1: 'a' }}
+        awardedQuizIds={new Set(['q1'])}
         recentAnswerId={null}
         renderArabicText={(t) => t || ''}
         onSelectOption={() => {}}
@@ -250,6 +252,7 @@ describe('2AP explainer keeps compact sheet but drops generic supermarket', () =
           lesson={math2ap}
           shuffledQuiz={math2ap.quiz}
           selectedAnswers={{}}
+          awardedQuizIds={new Set()}
           recentAnswerId={null}
           renderArabicText={(t) => t || ''}
           onSelectOption={() => {}}

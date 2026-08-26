@@ -48,7 +48,10 @@ export function useLessonQuiz(options: {
   }, [recentAnswerId]);
 
   const handleSelectOption = (questionId: string, optionId: string) => {
-    if (selectedAnswers[questionId] !== undefined) return;
+    // Locked only once answered CORRECTLY (XP already awarded) — a wrong guess must never be a
+    // dead end: the student can keep trying instead of the question freezing forever (remonte
+    // revue externe : principe "zero frustration" du cahier des charges pour les 6-11 ans).
+    if (awardedQuizIds.has(questionId)) return;
     setSelectedAnswers((prev) => ({ ...prev, [questionId]: optionId }));
     const currentQuiz = shuffledQuiz.length > 0 ? shuffledQuiz : lesson.quiz;
     const question = currentQuiz.find((q) => q.id === questionId);
@@ -56,7 +59,7 @@ export function useLessonQuiz(options: {
     const isCorrect = !!correctOpt && correctOpt.id === optionId;
     setRecentAnswerId(questionId);
     if (isCorrect) playSuccessChime(); else playGentleNudge();
-    if (isCorrect && !awardedQuizIds.has(questionId)) {
+    if (isCorrect) {
       onCompleteQuiz(lesson.id, quizAlreadyValidated ? 5 : 15);
       const newAwarded = new Set(awardedQuizIds).add(questionId);
       setAwardedQuizIds(newAwarded);
@@ -91,6 +94,7 @@ export function useLessonQuiz(options: {
 
   return {
     selectedAnswers,
+    awardedQuizIds,
     shuffledQuiz,
     recentAnswerId,
     visibleSolutions,
