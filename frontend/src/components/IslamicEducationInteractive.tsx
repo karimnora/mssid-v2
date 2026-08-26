@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   BookOpen,
   Heart,
@@ -112,6 +112,12 @@ const QuranExplorerView: React.FC<{ config: IslamicQuranExplorer }> = ({ config 
 
 const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({ config }) => {
   const [activeIdx, setActiveIdx] = useState(0);
+  // Switching to a lesson whose config.steps/scenarios array is shorter than the previous one's,
+  // while deep into it, left activeIdx pointing past the new array — crashes config.steps[activeIdx]
+  // (meme classe de bug que LessonExplanationView, remonte utilisateur : ecran d'erreur intermittent).
+  useEffect(() => {
+    setActiveIdx(0);
+  }, [config]);
 
   const headerIcon =
     config.type === 'quran_explorer' ? <BookOpen className="w-6 h-6 text-amber-400" /> :
