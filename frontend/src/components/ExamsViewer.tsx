@@ -556,7 +556,15 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
       {/* Hero Header with Active Grade Indicator */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-7 shadow-xl border border-blue-800/40 relative overflow-hidden">
+      {/* Plain hex linear-gradient via inline style, not Tailwind's gradient utilities: Tailwind v4
+          compiles its palette (and gradient color-interpolation) through oklch(), which silently
+          fails to paint on older Android WebViews (remonte utilisateur : fond absent, texte blanc
+          illisible sur fond clair, seule cette carte etait touchee car c'est la seule qui n'utilise
+          pas les variables de couleur du projet, deja en hexadecimal, contrairement aux autres cartes). */}
+      <div
+        className="text-white rounded-3xl p-6 sm:p-7 shadow-xl border border-blue-800/40 relative overflow-hidden"
+        style={{ backgroundImage: 'linear-gradient(to right, #1e3a8a, #1e1b4b, #0f172a)' }}
+      >
         <div className="relative z-10 space-y-2 max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
