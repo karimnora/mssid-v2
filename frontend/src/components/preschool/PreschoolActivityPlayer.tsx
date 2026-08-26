@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { RotateCcw, VolumeX } from 'lucide-react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { PreschoolMascot, MascotMood } from './PreschoolMascot';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
@@ -84,11 +85,11 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         <div className="flex items-center gap-2">
           <button
             onClick={replayPrompt}
-            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
+            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100 text-orange-700"
             aria-label={missingVoice ? t('لا يوجد صوت', 'Pas de voix', 'No voice') : t('إعادة الاستماع', 'Réécouter', 'Replay')}
             title={missingVoice ? t('لا يوجد صوت على هذا الجهاز، اضغط على "نصيحة لولي الأمر"', 'Pas de voix sur cet appareil — voir « Astuce pour le parent »', 'No voice on this device — see "Tip for the grown-up"') : t('استمع للصوت', 'Écouter à nouveau', 'Listen again')}
           >
-            {missingVoice ? '🔇' : '🔊'}
+            {missingVoice ? <VolumeX className="w-5 h-5" strokeWidth={2.5} /> : <RotateCcw className="w-5 h-5" strokeWidth={2.5} />}
           </button>
 
           {/* Skip never blocks — but it must not count as a success (badges / défi / path stars). */}
