@@ -344,7 +344,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-[var(--app-text)]">{t('navigation', 'footerBrandName')}</span>
-            <span className="opacity-75">{t('navigation', 'footerCurriculumLine')}</span>
+            <span>{t('navigation', 'footerCurriculumLine')}</span>
             <span>{t('navigation', 'footerCopyright', { year: new Date().getFullYear() })}</span>
           </div>
           <div className="flex items-center gap-4">

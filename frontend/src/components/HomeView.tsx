@@ -162,7 +162,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             >
               {pole.icon}
             </div>
-            <h3 className="text-sm sm:text-lg font-extrabold">{t(pole.titleKey)}</h3>
+            <h2 className="text-sm sm:text-lg font-extrabold">{t(pole.titleKey)}</h2>
             <p className="text-xs sm:text-lg text-white/85 mt-1">{t(pole.descKey)}</p>
           </motion.button>
         ))}
