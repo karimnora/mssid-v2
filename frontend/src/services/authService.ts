@@ -161,7 +161,12 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
     }
 
     const u = response.data.user || {};
-    const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 140;
+    // SEC/DATA-01: `||` treats a genuine 0 (or empty array) as "missing" and falls through to these
+    // defaults — a real student back at day 0 of their streak, or with zero quizzes/lessons done,
+    // was getting shown fabricated demo progress (4-day streak, 3 quizzes, a 5AP lesson they never
+    // opened) instead of their real, honest state. `??` only falls back on null/undefined, and the
+    // fallback values themselves are now honest "no data yet" values, not invented demo numbers.
+    const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 0;
     const levelVal = u.level !== undefined ? u.level : Math.floor(scoreVal / 100) + 1;
 
     const authUser: AuthUser = {
@@ -172,10 +177,10 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       score: scoreVal,
       xp: scoreVal,
       level: levelVal,
-      grade: u.grade || '5AP',
-      streakDays: u.streakDays || 4,
-      quizzesCompleted: u.quizzesCompleted || 3,
-      completedLessonIds: u.completedLessonIds || ['math-5ap-numbers'],
+      grade: u.grade ?? '5AP',
+      streakDays: u.streakDays ?? 0,
+      quizzesCompleted: u.quizzesCompleted ?? 0,
+      completedLessonIds: u.completedLessonIds ?? [],
       badges: u.badges || [],
       quizScores: u.quizScores || {},
       emailVerified: u.emailVerified ?? false,

@@ -65,6 +65,60 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
     });
   });
 
+  describe('loginAsync - real backend login (no fabricated demo progress)', () => {
+    const originalFetch = global.fetch;
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    // Regression test: `||` treated a genuine 0/[] from the backend as "missing" and fell through
+    // to hardcoded demo values (4-day streak, 3 quizzes, a specific 5AP lesson marked done) — a real
+    // student starting fresh saw fabricated progress instead of their honest, empty state.
+    it('preserves a real 0 streak / 0 quizzes / no completed lessons instead of inventing demo progress', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({
+          nom: 'يونس',
+          email: 'younes@mssid.dz',
+          user: {
+            id: 42,
+            grade: '2AP',
+            streakDays: 0,
+            quizzesCompleted: 0,
+            completedLessonIds: [],
+            score: 0,
+          },
+        }),
+      });
+
+      const result = await AuthService.loginAsync('younes@mssid.dz', 'password123');
+
+      expect(result.user?.grade).toBe('2AP');
+      expect(result.user?.streakDays).toBe(0);
+      expect(result.user?.quizzesCompleted).toBe(0);
+      expect(result.user?.completedLessonIds).toEqual([]);
+      expect(result.user?.xp).toBe(0);
+    });
+
+    it('still falls back to honest empty defaults when the backend omits progress fields entirely', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ nom: 'يونس', email: 'younes@mssid.dz', user: { id: 42, grade: '3AP' } }),
+      });
+
+      const result = await AuthService.loginAsync('younes@mssid.dz', 'password123');
+
+      expect(result.user?.streakDays).toBe(0);
+      expect(result.user?.quizzesCompleted).toBe(0);
+      expect(result.user?.completedLessonIds).toEqual([]);
+    });
+  });
+
   describe('Payment Receipts & Verification Logic', () => {
     it('initializes default payment receipts when empty', () => {
       const receipts = AuthService.getReceipts();
