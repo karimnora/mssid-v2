@@ -248,6 +248,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <motion.button
               key={subject.id}
               type="button"
+              data-subject-card={subject.id}
               whileTap={{ scale: 0.95 }}
               transition={spring}
               onClick={() => openSubject(subject.id)}

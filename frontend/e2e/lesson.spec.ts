@@ -12,8 +12,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('a student can navigate to a lesson and complete its quiz', async ({ page }) => {
-  await page.getByRole('button', { name: 'مراجعة الدروس' }).click();
-  await page.getByRole('button', { name: 'الرياضيات' }).click();
+  // Home now shows subject cards directly (see HomeView.tsx's "kids" redesign) — a subject opens
+  // straight into its trimester picker, no more intermediate "مراجعة الدروس" button to click first.
+  // data-subject-card (not the visible label): "الرياضيات" also matches the hero's continue-CTA and
+  // the unrelated math-lab card, which happens to share the same "kids-card-maths" CSS class.
+  await page.locator('[data-subject-card="math"]').click();
   await page.getByRole('button', { name: 'الفصل الأول (Trimestre 1)' }).click();
   await page.getByText(lesson.titleAr, { exact: true }).click();
 
