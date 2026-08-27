@@ -44,7 +44,7 @@ interface MobileCat {
   emoji: string;
   labelAr: string;
   hintAr: string;
-  gradient: string;
+  cardClass: string;
   toolIds: SubjectId[];
 }
 
@@ -54,7 +54,7 @@ const MOBILE_CATS: MobileCat[] = [
     emoji: '🇩🇿',
     labelAr: 'الهوية والتراث',
     hintAr: 'ولايات • تاريخ • خرائط',
-    gradient: 'from-green-500 to-emerald-700',
+    cardClass: 'kids-cat-identity',
     toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map'] as SubjectId[],
   },
   {
@@ -62,7 +62,7 @@ const MOBILE_CATS: MobileCat[] = [
     emoji: '📐',
     labelAr: 'الرياضيات والحساب',
     hintAr: 'عمليات • هندسة • أعداد',
-    gradient: 'from-sky-500 to-blue-700',
+    cardClass: 'kids-cat-math',
     toolIds: ['primary_math_ops', 'soroban', 'multiplication', 'educational_calculator', 'converter', 'geometry', 'fractions_lab', 'area_grid', 'clock_trainer'] as SubjectId[],
   },
   {
@@ -70,7 +70,7 @@ const MOBILE_CATS: MobileCat[] = [
     emoji: '🧪',
     labelAr: 'العلوم والإيقاظ',
     hintAr: 'تجارب • جسم الإنسان • أرض',
-    gradient: 'from-cyan-500 to-teal-700',
+    cardClass: 'kids-cat-science',
     toolIds: ['science_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
   },
   {
@@ -78,7 +78,7 @@ const MOBILE_CATS: MobileCat[] = [
     emoji: '🗣️',
     labelAr: 'اللغات والتعبير',
     hintAr: 'عربي • فرنسي • أمازيغية',
-    gradient: 'from-violet-500 to-purple-700',
+    cardClass: 'kids-cat-langs',
     toolIds: ['french_projects', 'english_audio_dialogues', 'touch_writing', 'arabic_conjugator', 'french_lab', 'english_lab', 'tamazight_lab', 'tamazight_curriculum', 'syllable_studio', 'speed_reading'] as SubjectId[],
   },
 ];
@@ -115,7 +115,7 @@ const DESKTOP_GROUPS: {
   {
     key: 'languages_expression',
     labelAr: '🗣️ اللغات، المشاريع، الخط والتصريف',
-    badgeColor: 'bg-purple-100 text-purple-900 border-purple-300',
+    badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     icon: Languages,
     toolIds: ['french_projects', 'english_audio_dialogues', 'touch_writing', 'arabic_conjugator', 'french_lab', 'english_lab', 'tamazight_lab', 'tamazight_curriculum', 'syllable_studio', 'speed_reading'] as SubjectId[],
   },
@@ -292,7 +292,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
             >
               {/* Header compact */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-lg shadow-md shrink-0">
+                <div className="w-10 h-10 rounded-2xl kids-cat-identity flex items-center justify-center text-lg shrink-0">
                   🔬
                 </div>
                 <div>
@@ -313,7 +313,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                       transition={{ delay: i * 0.07, type: 'spring', stiffness: 260, damping: 22 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => { setMobileCatKey(cat.key); setMobileView('list'); }}
-                      className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${cat.gradient} px-5 py-4 text-right text-white shadow-md cursor-pointer flex items-center gap-4`}
+                      className={`kids-pop relative overflow-hidden rounded-[22px] ${cat.cardClass} px-5 py-4 text-right text-white cursor-pointer flex items-center gap-4 min-h-[88px]`}
                     >
                       <div className="absolute inset-0 bg-white/5 rounded-3xl" />
                       <span className="text-3xl drop-shadow-sm shrink-0 relative z-10">{cat.emoji}</span>
@@ -348,7 +348,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                 >
                   <ChevronRight className="w-4 h-4 text-[var(--app-text-muted)]" />
                 </motion.button>
-                <div className={`w-9 h-9 rounded-2xl bg-gradient-to-br ${activeMobileCat.gradient} flex items-center justify-center text-base shadow-sm shrink-0`}>
+                <div className={`w-9 h-9 rounded-2xl ${activeMobileCat.cardClass} flex items-center justify-center text-base shrink-0`}>
                   {activeMobileCat.emoji}
                 </div>
                 <div>
@@ -550,7 +550,40 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   );
 };
 
-// ─── Tool Card — design gradient original (commun mobile + desktop) ───────────
+const KIDS_LAB_CARD: Partial<Record<SubjectId, string>> = {
+  wilayas_map: 'kids-card-wilayas',
+  history_museum: 'kids-card-histoire',
+  algerian_market: 'kids-card-defis',
+  topography_map: 'kids-card-islamique',
+  primary_math_ops: 'kids-card-maths',
+  soroban: 'kids-card-maths-soft',
+  multiplication: 'kids-card-maths-deep',
+  educational_calculator: 'kids-card-maths',
+  converter: 'kids-card-maths-soft',
+  geometry: 'kids-card-maths-deep',
+  fractions_lab: 'kids-card-maths',
+  area_grid: 'kids-card-maths-soft',
+  clock_trainer: 'kids-card-maths-deep',
+  science_lab: 'kids-card-sciences',
+  electricity: 'kids-card-sciences-deep',
+  primary_discovery: 'kids-card-sciences-soft',
+  human_anatomy: 'kids-card-histoire',
+  earth_cycles: 'kids-card-sciences',
+  french_projects: 'kids-card-francais',
+  english_audio_dialogues: 'kids-card-english',
+  touch_writing: 'kids-card-francais',
+  arabic_conjugator: 'kids-card-arabe',
+  french_lab: 'kids-card-francais',
+  english_lab: 'kids-card-english',
+  tamazight_lab: 'kids-card-amazigh',
+  tamazight_curriculum: 'kids-card-amazigh',
+  syllable_studio: 'kids-card-arabe',
+  speed_reading: 'kids-card-arabe',
+};
+
+const springTap = { type: 'spring' as const, stiffness: 400, damping: 22 };
+
+// ─── Tool Card — palette kids (commun mobile + desktop) ──────────────────────
 interface ToolCardProps {
   tool: SubjectInfo;
   isActive: boolean;
@@ -560,30 +593,30 @@ interface ToolCardProps {
 const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isActive, onSelect, grade }) => {
   const IconComp = ICON_MAP[tool.icon] || Sparkles;
   const showFrenchLabel = canShowFrenchInLab(grade);
+  const cardClass = KIDS_LAB_CARD[tool.id] ?? 'kids-card-labs';
 
   return (
-    <button
+    <motion.button
+      type="button"
       onClick={onSelect}
-      className={`rounded-2xl p-4 text-right text-white shadow-md cursor-pointer bg-gradient-to-br ${tool.color} flex flex-col justify-between gap-3 transition-all relative overflow-hidden group w-full ${
-        isActive
-          ? 'ring-4 ring-amber-300 ring-offset-2 scale-[1.02] shadow-xl'
-          : 'hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]'
+      whileTap={{ scale: 0.95 }}
+      transition={springTap}
+      className={`kids-pop rounded-[22px] p-4 text-start text-white cursor-pointer ${cardClass} flex flex-col justify-between gap-3 relative overflow-hidden w-full min-h-[132px] ${
+        isActive ? 'ring-4 ring-[var(--kids-sun-1)] ring-offset-2' : ''
       }`}
     >
-      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all rounded-2xl" />
-
-      <div className="flex items-start justify-between w-full relative z-10">
-        <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0 backdrop-blur-xs">
+      <div className="flex items-start justify-between w-full">
+        <div className="w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center shrink-0">
           <IconComp className="w-5 h-5 text-white" />
         </div>
         <div className="flex items-center gap-1.5">
           {tool.minGrade && (
-            <span className="bg-black/25 text-white text-[10px] font-black px-2 py-0.5 rounded-full">
+            <span className="bg-white/20 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full">
               {tool.minGrade}
             </span>
           )}
           {isActive && (
-            <span className="bg-amber-400 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1">
+            <span className="bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1">
               <CheckCircle2 className="w-3 h-3" />
               <span>مفتوح</span>
             </span>
@@ -591,15 +624,15 @@ const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isA
         </div>
       </div>
 
-      <div className="w-full relative z-10">
-        <h4 className="font-black text-sm text-white mb-1 leading-snug">{tool.nameAr}</h4>
+      <div className="w-full">
+        <h4 className="font-extrabold text-[15px] text-white mb-0.5 leading-snug">{tool.nameAr}</h4>
         {showFrenchLabel && tool.nameFr && (
-          <p className="text-[10px] text-white/70 font-sans tracking-wide mb-1.5 line-clamp-1">{tool.nameFr}</p>
+          <p className="text-[10px] text-white/80 font-sans tracking-wide mb-1 line-clamp-1">{tool.nameFr}</p>
         )}
-        <p className="text-[11px] text-white/85 line-clamp-2 leading-relaxed font-arabic">
+        <p className="text-[11.5px] text-white/90 line-clamp-2 leading-relaxed">
           {tool.description}
         </p>
       </div>
-    </button>
+    </motion.button>
   );
 };

@@ -1,11 +1,14 @@
 import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { HomeView } from './HomeView';
 import { LocaleProvider } from '../context/LocaleContext';
 import { setStoredLocale } from '../localePreference';
 
-const renderHome = (grade: '1AP' | '2AP' | '5AP') =>
+const renderHome = (
+  grade: '1AP' | '2AP' | '5AP',
+  extras?: Partial<React.ComponentProps<typeof HomeView>>,
+) =>
   render(
     <LocaleProvider>
       <HomeView
@@ -14,6 +17,8 @@ const renderHome = (grade: '1AP' | '2AP' | '5AP') =>
         userName=""
         onSelectPole={vi.fn()}
         onOpenPreschool={vi.fn()}
+        onOpenMathLab={vi.fn()}
+        {...extras}
       />
     </LocaleProvider>
   );
@@ -33,6 +38,9 @@ describe('HomeView', () => {
     expect(document.querySelector('[data-home-poles="kids"]')).toBeTruthy();
     expect(document.querySelector('[data-home-layout="young"]')).toBeNull();
     expect(screen.getByText(/مراجعة الدروس/)).toBeInTheDocument();
+    expect(screen.getByText(/دروس الرياضيات/)).toBeInTheDocument();
+    expect(screen.getByText(/اللغة العربية/)).toBeInTheDocument();
+    expect(screen.getAllByText(/الرياضيات/).length).toBeGreaterThan(0);
     expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
     expect(screen.getByText(/بنك الامتحانات/)).toBeInTheDocument();
     expect(screen.getByText(/المختبرات والأدوات/)).toBeInTheDocument();
@@ -40,6 +48,20 @@ describe('HomeView', () => {
     expect(document.querySelector('[data-pole-icon="challenges"]')).toBeTruthy();
     expect(document.querySelector('[data-pole-icon="exams"]')).toBeTruthy();
     expect(document.querySelector('[data-pole-icon="labs"]')).toBeTruthy();
+  });
+
+  it('opens math lessons from the continue CTA', () => {
+    const onSelectSubject = vi.fn();
+    renderHome('5AP', { onSelectSubject });
+    fireEvent.click(screen.getByRole('button', { name: /دروس الرياضيات/ }));
+    expect(onSelectSubject).toHaveBeenCalledWith('math');
+  });
+
+  it('shows the math lab shortcut instead of Tamazight', () => {
+    renderHome('5AP');
+    expect(screen.getByText('الرياضيات والحساب')).toBeInTheDocument();
+    expect(screen.queryByText(/الأمازيغية/)).toBeNull();
+    expect(screen.queryByText(/تيفيناغ/)).toBeNull();
   });
 
   it('shows the four poles on 2AP', () => {

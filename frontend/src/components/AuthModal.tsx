@@ -4,7 +4,6 @@ import { AuthUser } from '../types/auth';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap } from 'lucide-react';
-import { MssidLogo } from './MssidLogo';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
@@ -180,46 +179,47 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="bg-white border border-slate-200 w-full max-w-md max-h-[90vh] rounded-3xl shadow-2xl text-slate-800 flex flex-col overflow-hidden"
+        className="kids-modal-panel w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden"
         dir={direction}
       >
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white p-5 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2.5">
-            <MssidLogo size="sm" />
-            <div>
-              <h2 className="text-base font-extrabold font-sans">
+        <div className="kids-modal-header p-4 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-12 h-12 rounded-[16px] bg-white/20 flex items-center justify-center text-2xl shrink-0">🦊</div>
+            <div className="min-w-0">
+              <h2 className="text-base font-extrabold truncate">
                 {authFlow === 'forgot' || authFlow === 'reset'
                   ? t('titleRecovery')
                   : isLogin ? t('login') : t('titleRegister')}
               </h2>
-              <p className="text-[11px] text-emerald-200">{t('platformSubtitle')}</p>
+              <p className="text-[11px] text-white/90">{t('platformSubtitle')}</p>
             </div>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-1.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all cursor-pointer"
+            className="kids-close cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Auth Mode Tabs */}
         {authFlow === 'credentials' && (
-        <div className="flex border-b border-slate-200 bg-slate-50 shrink-0">
+        <div className="flex gap-2 p-3 bg-[#FFF8E7] shrink-0">
           <button
             type="button"
             onClick={() => setIsLogin(true)}
-            className={`flex-1 py-3 text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-2 border-b-2 ${
+            className={`flex-1 hit-target rounded-2xl text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2 ${
               isLogin
-                ? 'border-emerald-700 text-emerald-700 bg-white'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
             }`}
           >
             <LogIn className="w-4 h-4" />
@@ -228,10 +228,10 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           <button
             type="button"
             onClick={() => setIsLogin(false)}
-            className={`flex-1 py-3 text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-2 border-b-2 ${
+            className={`flex-1 hit-target rounded-2xl text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2 ${
               !isLogin
-                ? 'border-emerald-700 text-emerald-700 bg-white'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
             }`}
           >
             <UserPlus className="w-4 h-4" />
@@ -243,11 +243,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         {/* "Mot de passe oublié" — step 1: enter the email to receive a reset code */}
         {authFlow === 'forgot' && (
           <form onSubmit={handleForgotSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
               {t('forgotIntro')}
             </p>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">{t('emailLabel')}</label>
+              <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('emailLabel')}</label>
               <input
                 type="email"
                 required
@@ -255,12 +255,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="example@mssid.dz"
                 autoComplete="email"
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none dir-ltr"
+                className="kids-input dir-ltr"
               />
             </div>
 
             {statusMessage && (
-              <div className={`p-3 rounded-xl text-xs font-bold ${statusMessage.type === 'success' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+              <div className={`p-3 text-sm font-bold ${statusMessage.type === 'success' ? 'kids-msg-ok' : 'kids-msg-err'}`}>
                 {statusMessage.text}
               </div>
             )}
@@ -268,7 +268,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-900/20 transition-all cursor-pointer mt-2 active:scale-[0.98]"
+              className="kids-cta cursor-pointer mt-2"
             >
               {loading ? t('forgotSubmitLoading') : t('forgotSubmit')}
             </button>
@@ -277,7 +277,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               <button
                 type="button"
                 onClick={() => { setAuthFlow('credentials'); setStatusMessage(null); }}
-                className="text-xs text-emerald-700 font-bold hover:underline cursor-pointer"
+                className="text-sm text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
               >
                 {t('backToLogin')}
               </button>
@@ -288,11 +288,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         {/* "Mot de passe oublié" — step 2: enter the code + a new password */}
         {authFlow === 'reset' && (
           <form onSubmit={handleResetSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
-            <p className="text-xs text-slate-600 leading-relaxed">
-              {t('resetIntroPrefix')} <span className="font-bold dir-ltr inline-block">{email}</span>{t('resetIntroSuffix')}
+            <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
+              {t('resetIntroPrefix')} <span className="font-extrabold dir-ltr inline-block">{email}</span>{t('resetIntroSuffix')}
             </p>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">{t('verificationCodeLabel')}</label>
+              <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('verificationCodeLabel')}</label>
               <input
                 type="text"
                 inputMode="numeric"
@@ -302,11 +302,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onChange={(e) => setResetCode(e.target.value.replace(/\D/g, ''))}
                 placeholder="123456"
                 dir="ltr"
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono font-extrabold text-center tracking-widest focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="kids-input font-mono text-center tracking-widest"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">{t('newPasswordLabel')}</label>
+              <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('newPasswordLabel')}</label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -315,21 +315,21 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="••••••••"
                   autoComplete="new-password"
-                  className="w-full px-3.5 py-2.5 pl-10 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                  className="kids-input pl-12"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-label={showPassword ? t('hidePassword') : t('showPassword')}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--kids-muted)] cursor-pointer w-8 h-8 flex items-center justify-center"
                 >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
             </div>
 
             {statusMessage && (
-              <div className={`p-3 rounded-xl text-xs font-bold ${statusMessage.type === 'success' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+              <div className={`p-3 text-sm font-bold ${statusMessage.type === 'success' ? 'kids-msg-ok' : 'kids-msg-err'}`}>
                 {statusMessage.text}
               </div>
             )}
@@ -337,7 +337,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <button
               type="submit"
               disabled={loading || resetCode.length !== 6}
-              className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-900/20 transition-all cursor-pointer mt-2 active:scale-[0.98]"
+              className="kids-cta cursor-pointer mt-2"
             >
               {loading ? t('resetSubmitLoading') : t('resetSubmit')}
             </button>
@@ -346,7 +346,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               <button
                 type="button"
                 onClick={() => { setAuthFlow('credentials'); setStatusMessage(null); }}
-                className="text-xs text-emerald-700 font-bold hover:underline cursor-pointer"
+                className="text-sm text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
               >
                 {t('backToLogin')}
               </button>
@@ -354,7 +354,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 type="button"
                 onClick={handleResendResetCode}
                 disabled={resendCooldown > 0}
-                className="text-xs text-emerald-700 font-bold hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
+                className="text-sm text-[var(--kids-grass-2)] font-extrabold disabled:opacity-50 cursor-pointer"
               >
                 {resendCooldown > 0 ? t('resendAfterSeconds', { seconds: resendCooldown }) : t('resendPrompt')}
               </button>
@@ -367,42 +367,42 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
           {!isLogin && (
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">{t('fullNameLabel')}</label>
+              <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('fullNameLabel')}</label>
               <input
                 type="text"
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
                 placeholder={t('fullNamePlaceholder')}
                 autoComplete="name"
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="kids-input"
               />
             </div>
           )}
 
           {!isLogin && (
             <div>
-              <label className="flex items-center gap-1.5 text-xs font-bold text-slate-700 mb-1">
-                <GraduationCap className="w-3.5 h-3.5 text-emerald-700" />
+              <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
+                <GraduationCap className="w-4 h-4 text-[var(--kids-grass-2)]" />
                 <span>{t('gradeLabel')}</span>
               </label>
               <select
                 required
                 value={grade}
                 onChange={(e) => setGrade(e.target.value as PrimaryGrade)}
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="kids-input"
               >
                 <option value="" disabled>{t('gradeChoosePlaceholder')}</option>
                 {(Object.keys(GRADE_OPTION_KEYS) as PrimaryGrade[]).map((id) => (
                   <option key={id} value={id}>{t(GRADE_OPTION_KEYS[id])}</option>
                 ))}
               </select>
-              <p className="text-[10px] text-slate-500 mt-1">{t('gradeHint')}</p>
+              <p className="text-xs text-[var(--kids-muted)] mt-1.5 font-bold">{t('gradeHint')}</p>
             </div>
           )}
 
           {!isLogin && (
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">
+              <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
                 {t('parentEmailLabel')}
               </label>
               <input
@@ -411,16 +411,16 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onChange={(e) => setParentEmail(e.target.value)}
                 placeholder="parent@example.com"
                 autoComplete="off"
-                className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none dir-ltr"
+                className="kids-input dir-ltr"
               />
-              <p className="text-[10px] text-slate-500 mt-1">
+              <p className="text-xs text-[var(--kids-muted)] mt-1.5 font-bold">
                 {t('parentEmailHint')}
               </p>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">{t('emailLabel')}</label>
+            <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('emailLabel')}</label>
             <input
               type="email"
               required
@@ -428,12 +428,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@mssid.dz"
               autoComplete="email"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none dir-ltr"
+              className="kids-input dir-ltr"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">{t('passwordLabel')}</label>
+            <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('passwordLabel')}</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -442,22 +442,22 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 autoComplete={isLogin ? 'current-password' : 'new-password'}
-                className="w-full px-3.5 py-2.5 pl-10 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                className="kids-input pl-12"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((v) => !v)}
                 aria-label={showPassword ? t('hidePassword') : t('showPassword')}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--kids-muted)] cursor-pointer w-8 h-8 flex items-center justify-center"
               >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
             </div>
             {isLogin && (
               <button
                 type="button"
                 onClick={() => { setAuthFlow('forgot'); setStatusMessage(null); }}
-                className="text-[11px] text-emerald-700 font-bold hover:underline cursor-pointer mt-1.5"
+                className="text-sm text-[var(--kids-grass-2)] font-extrabold cursor-pointer mt-2"
               >
                 {t('forgotPasswordLink')}
               </button>
@@ -466,10 +466,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
           {statusMessage && (
             <div
-              className={`p-3 rounded-xl text-xs font-bold ${
-                statusMessage.type === 'success'
-                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                  : 'bg-red-50 text-red-800 border border-red-200'
+              className={`p-3 text-sm font-bold ${
+                statusMessage.type === 'success' ? 'kids-msg-ok' : 'kids-msg-err'
               }`}
             >
               {statusMessage.text}
@@ -477,13 +475,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           )}
 
           {!isLogin && (onOpenPrivacyPolicy || onOpenTermsOfService) && (
-            <p className="text-[11px] text-slate-500 text-center leading-relaxed">
+            <p className="text-xs text-[var(--kids-muted)] text-center leading-relaxed font-bold">
               {t('termsAgreementPrefix')}{' '}
               {onOpenTermsOfService && (
                 <button
                   type="button"
                   onClick={onOpenTermsOfService}
-                  className="text-emerald-700 font-bold hover:underline cursor-pointer"
+                  className="text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
                 >
                   {t('termsLink')}
                 </button>
@@ -493,7 +491,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 <button
                   type="button"
                   onClick={onOpenPrivacyPolicy}
-                  className="text-emerald-700 font-bold hover:underline cursor-pointer"
+                  className="text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
                 >
                   {t('privacyLink')}
                 </button>
@@ -504,9 +502,9 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 disabled:opacity-50 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-emerald-900/20 transition-all cursor-pointer flex items-center justify-center gap-2 mt-2 active:scale-[0.98]"
+            className="kids-cta cursor-pointer flex items-center justify-center gap-2 mt-2"
           >
-            <KeyRound className="w-4 h-4 text-amber-300" />
+            <KeyRound className="w-4 h-4 text-[var(--kids-sun-1)]" />
             <span>
               {loading
                 ? t('submitLoading')
@@ -520,7 +518,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <button
               type="button"
               onClick={() => setIsLogin(!isLogin)}
-              className="text-xs text-emerald-700 font-bold hover:underline cursor-pointer"
+              className="text-sm text-[var(--kids-grass-2)] font-extrabold cursor-pointer"
             >
               {isLogin ? t('toggleToRegister') : t('toggleToLogin')}
             </button>

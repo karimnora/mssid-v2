@@ -22,6 +22,22 @@
   --type-body: 1.125rem;
   --type-quiz: 1.25rem;
   --hit: 48px;
+
+  /* Accueil enfants — pop 3D, pastel vif, pas de néon */
+  --kids-ink: #33261A;
+  --kids-muted: #8A7A68;
+  --kids-sky-1: #4FB8F0;
+  --kids-sky-2: #2E8FDB;
+  --kids-grass-1: #3FCB7E;
+  --kids-grass-2: #189A5A;
+  --kids-sun-1: #FFC93C;
+  --kids-sun-2: #F5A623;
+  --kids-coral-1: #FF8A65;
+  --kids-coral-2: #E24A1C;
+  --kids-mint-1: #4ADEDE;
+  --kids-mint-2: #1CACAC;
+  --kids-pop: 0 6px 0 rgba(51, 38, 26, 0.12);
+  --kids-pop-soft: 0 10px 22px rgba(51, 38, 26, 0.10);
 }
 
 :root, .theme-neutre, .theme-vibrant {
@@ -124,6 +140,154 @@ body {
 .hit-target {
   min-width: var(--hit);
   min-height: var(--hit);
+}
+
+.kids-pop {
+  box-shadow: var(--kids-pop);
+}
+
+.kids-pop-soft {
+  box-shadow: var(--kids-pop-soft);
+}
+
+.kids-hero {
+  background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-grass-2));
+  animation: kids-pop-in 0.45s ease both;
+}
+
+.kids-card-arabe { background: linear-gradient(150deg, #4ADE80, #008751); }
+.kids-card-maths { background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-sky-2)); }
+.kids-card-maths-soft { background: linear-gradient(150deg, #7DD3FC, var(--kids-sky-2)); }
+.kids-card-maths-deep { background: linear-gradient(150deg, var(--kids-sky-2), #1E40AF); }
+.kids-card-sciences { background: linear-gradient(150deg, var(--kids-mint-1), var(--kids-mint-2)); }
+.kids-card-sciences-soft { background: linear-gradient(150deg, #5EEAD4, var(--kids-mint-2)); }
+.kids-card-sciences-deep { background: linear-gradient(150deg, var(--kids-mint-2), #0F766E); }
+.kids-card-francais { background: linear-gradient(150deg, #7BA6F7, #1D4ED8); }
+.kids-card-islamique { background: linear-gradient(150deg, var(--kids-sun-1), var(--kids-grass-2)); }
+.kids-card-histoire { background: linear-gradient(150deg, var(--kids-coral-1), var(--kids-coral-2)); }
+.kids-card-civics { background: linear-gradient(150deg, #60A5FA, var(--brand-blue-dark)); }
+.kids-card-english { background: linear-gradient(150deg, #67E8F9, #0E7490); }
+.kids-card-examens { background: linear-gradient(150deg, var(--kids-sky-2), var(--brand-blue-dark)); }
+.kids-card-defis { background: linear-gradient(150deg, var(--kids-sun-1), var(--kids-coral-2)); }
+.kids-card-labs { background: linear-gradient(150deg, var(--kids-sun-1), var(--kids-grass-2)); }
+.kids-card-wilayas { background: linear-gradient(150deg, var(--kids-sun-1), var(--kids-grass-2)); }
+.kids-card-amazigh { background: linear-gradient(150deg, var(--kids-mint-1), #0E7490); }
+.kids-card-presco { background: linear-gradient(150deg, var(--kids-sun-1), var(--kids-coral-2)); }
+.kids-cat-identity { background: linear-gradient(150deg, var(--kids-sun-1), var(--kids-grass-2)); }
+.kids-cat-math { background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-sky-2)); }
+.kids-cat-science { background: linear-gradient(150deg, var(--kids-mint-1), var(--kids-mint-2)); }
+.kids-cat-langs { background: linear-gradient(150deg, var(--kids-sky-1), #1D4ED8); }
+
+.kids-nav-ai {
+  animation: kids-bounce 2.4s ease-in-out infinite;
+}
+
+.kids-modal-overlay {
+  background: rgba(51, 38, 26, 0.42);
+}
+
+.kids-modal-panel {
+  background: #FFFBF0;
+  border: 3px solid #E7E2D7;
+  border-radius: 30px;
+  box-shadow: var(--kids-pop-soft);
+  color: var(--kids-ink);
+}
+
+.kids-modal-header {
+  background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-grass-2));
+  color: #fff;
+}
+
+.kids-input {
+  width: 100%;
+  min-height: var(--hit);
+  padding: 0.7rem 0.95rem;
+  background: #fff;
+  border: 2px solid #E7E2D7;
+  border-radius: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--kids-ink);
+}
+
+.kids-input:focus {
+  outline: none;
+  border-color: var(--kids-grass-2);
+  box-shadow: 0 0 0 3px rgba(24, 154, 90, 0.18);
+}
+
+.kids-cta {
+  min-height: var(--hit);
+  width: 100%;
+  padding: 0 1.25rem;
+  background: var(--kids-grass-2);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 18px;
+  box-shadow: var(--kids-pop);
+}
+
+.kids-cta:disabled {
+  opacity: 0.5;
+}
+
+.kids-cta-amber {
+  min-height: var(--hit);
+  padding: 0 1.25rem;
+  background: linear-gradient(120deg, var(--kids-sun-1), var(--kids-sun-2));
+  color: #5A3B00;
+  font-weight: 800;
+  border-radius: 18px;
+  box-shadow: var(--kids-pop);
+}
+
+.kids-cta-amber:disabled {
+  opacity: 0.5;
+}
+
+.kids-msg-ok {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 2px solid #A7F3D0;
+  border-radius: 1rem;
+}
+
+.kids-msg-err {
+  background: #FFF5F4;
+  color: #9F221C;
+  border: 2px solid #F0C9C6;
+  border-radius: 1rem;
+}
+
+.kids-close {
+  width: var(--hit);
+  height: var(--hit);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@keyframes kids-pop-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes kids-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kids-hero,
+  .kids-nav-ai {
+    animation: none !important;
+  }
 }
 
 /* Marker class paired with dir="rtl" across the app — kept as a real rule so

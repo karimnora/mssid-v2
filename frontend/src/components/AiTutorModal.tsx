@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { X, Sparkles, Bot, RefreshCw, ShieldAlert, Lightbulb, Lock } from 'lucide-react';
+import { X, Sparkles, RefreshCw, ShieldAlert, Lightbulb, Lock } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
@@ -159,81 +159,91 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
     : null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
-      <div className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in duration-200">
-        
+    <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 12 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 28 }}
+        className="kids-modal-panel w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden"
+      >
         {/* Header */}
-        <div className="bg-gradient-to-r from-amber-600 via-emerald-700 to-teal-800 text-white p-4 sm:p-5 flex items-center justify-between shrink-0 shadow-md">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center font-bold text-amber-200">
-              <Bot className="w-6 h-6" />
+        <div className="kids-modal-header p-4 sm:p-5 flex items-center justify-between shrink-0 gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-12 h-12 rounded-[16px] bg-white/20 flex items-center justify-center text-2xl shrink-0">
+              🦊
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-base sm:text-lg font-black font-sans">المعلّم الذكي "مسيد" 🇩🇿</h2>
+                <h2 className="text-base sm:text-lg font-extrabold">المعلّم الذكي "مسيد" 🇩🇿</h2>
                 {!young && (
                   <>
-                    <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">
+                    <span className="bg-gradient-to-r from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-[#5A3B00] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
                       Gemini AI
                     </span>
-                    <span className="bg-slate-900/80 text-amber-300 text-[10px] font-mono px-2 py-0.5 rounded-full border border-amber-400/30">
+                    <span className="bg-white/20 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full">
                       {userRole}
                     </span>
                   </>
                 )}
               </div>
-              <p className="text-xs text-amber-100 font-sans">
+              <p className="text-xs text-white/90 font-bold">
                 مساعدك الشخصي للرياضيات واللغة العربية وفق المنهاج الجزائري ({grade})
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="kids-close cursor-pointer"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {!young && (
-          <div className="bg-slate-100 p-3 border-b border-slate-200 flex items-center gap-2 overflow-x-auto text-xs font-bold shrink-0">
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setPromptType('explain')}
-                className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
-                  promptType === 'explain' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-white text-slate-700 hover:bg-slate-200'
-                }`}
-              >
-                اشرح لي درساً
-              </button>
-              <button
-                onClick={() => setPromptType('solve')}
-                className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
-                  promptType === 'solve' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-white text-slate-700 hover:bg-slate-200'
-                }`}
-              >
-                حل مسألة أو سؤال
-              </button>
-              <button
-                onClick={() => setPromptType('generate')}
-                className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
-                  promptType === 'generate' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-white text-slate-700 hover:bg-slate-200'
-                }`}
-              >
-                ولّد مسألة تدريبية جديدة
-              </button>
-            </div>
+          <div className="bg-[#FFF8E7] p-3 flex items-center gap-2 overflow-x-auto shrink-0">
+            <button
+              type="button"
+              onClick={() => setPromptType('explain')}
+              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer whitespace-nowrap ${
+                promptType === 'explain'
+                  ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                  : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+              }`}
+            >
+              اشرح لي درساً
+            </button>
+            <button
+              type="button"
+              onClick={() => setPromptType('solve')}
+              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer whitespace-nowrap ${
+                promptType === 'solve'
+                  ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                  : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+              }`}
+            >
+              حل مسألة أو سؤال
+            </button>
+            <button
+              type="button"
+              onClick={() => setPromptType('generate')}
+              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer whitespace-nowrap ${
+                promptType === 'generate'
+                  ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                  : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+              }`}
+            >
+              ولّد مسألة تدريبية جديدة
+            </button>
           </div>
         )}
 
         {/* Body Content */}
         <div className="p-4 sm:p-5 overflow-y-auto flex-1 space-y-4">
-          <div className={`space-y-3 p-3.5 rounded-2xl border ${young ? 'bg-[#F8F9FA] border-amber-100' : 'bg-slate-50 border-slate-200'}`}>
+          <div className="space-y-3 p-3.5 rounded-[22px] border-2 border-[#E7E2D7] bg-white">
             <div>
-              <label className={`font-bold text-slate-600 block mb-2 ${young ? 'text-sm' : 'text-[11px]'}`}>
+              <label className={`font-extrabold text-[var(--kids-ink)] block mb-2 ${young ? 'text-base' : 'text-sm'}`}>
                 {young ? 'اختر درساً:' : 'الموضوع أو الدرس المطلوب:'}
               </label>
               {!young && (
@@ -242,11 +252,11 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   placeholder="مثال: الكسور العشرية، القواعد، السوروبان..."
-                  className="w-full bg-white border border-slate-300 text-xs font-bold rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="kids-input"
                 />
               )}
               {suggestedTopics.length > 0 && (
-                <div className={`flex flex-wrap ${young ? 'gap-2.5' : 'gap-1.5 mt-2'}`}>
+                <div className={`flex flex-wrap ${young ? 'gap-2.5' : 'gap-2 mt-2'}`}>
                   {suggestedTopics.map((s) => {
                     const selected = topic === s.labelAr;
                     if (young) {
@@ -256,13 +266,12 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                           type="button"
                           aria-pressed={selected}
                           onClick={() => setTopic(s.labelAr)}
-                          whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           transition={spring}
-                          className={`min-h-[60px] flex items-center gap-2 text-base font-bold px-4 py-3 rounded-2xl cursor-pointer ${
+                          className={`min-h-[60px] flex items-center gap-2 text-base font-extrabold px-4 py-3 rounded-2xl cursor-pointer ${
                             selected
-                              ? 'bg-emerald-600 text-white'
-                              : 'bg-white text-slate-800 border border-slate-200 hover:bg-amber-50'
+                              ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                              : 'bg-[#FFFBF0] text-[var(--kids-ink)] border-2 border-[#E7E2D7]'
                           }`}
                         >
                           <span>{s.subjectEmoji}</span>
@@ -276,7 +285,11 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                         type="button"
                         aria-pressed={selected}
                         onClick={() => setTopic(s.labelAr)}
-                        className="flex items-center gap-1 bg-white hover:bg-emerald-50 border border-slate-300 hover:border-emerald-400 text-slate-700 hover:text-emerald-800 text-[11px] font-bold px-2.5 py-1 rounded-full transition-colors cursor-pointer"
+                        className={`flex items-center gap-1 min-h-[40px] text-sm font-extrabold px-3 py-1.5 rounded-full cursor-pointer ${
+                          selected
+                            ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
+                            : 'bg-[#FFFBF0] text-[var(--kids-ink)] border-2 border-[#E7E2D7]'
+                        }`}
                       >
                         <span>{s.subjectEmoji}</span>
                         <span>{s.labelAr}</span>
@@ -289,29 +302,29 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
 
             {!young && promptType === 'solve' && (
               <div>
-                <label className="text-[11px] font-bold text-slate-600 block mb-1">سؤالك أو نص المسألة بالتفصيل:</label>
+                <label className="text-sm font-extrabold text-[var(--kids-ink)] block mb-1.5">سؤالك أو نص المسألة بالتفصيل:</label>
                 <textarea
                   rows={2}
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   placeholder="اكتب المسألة أو القاعدة التي تريد حلاً نموذجياً لها..."
-                  className="w-full bg-white border border-slate-300 text-xs font-medium rounded-xl p-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="kids-input min-h-[72px] py-3"
                 />
               </div>
             )}
 
             {quotaLabel && (
-              <p className={`font-bold text-slate-600 ${young ? 'text-sm' : 'text-xs'}`}>{quotaLabel}</p>
+              <p className={`font-extrabold text-[var(--kids-muted)] ${young ? 'text-sm' : 'text-xs'}`}>{quotaLabel}</p>
             )}
 
             <motion.button
+              type="button"
               onClick={handleSendPrompt}
               disabled={loading || quota?.remaining === 0}
-              whileHover={{ scale: loading ? 1 : 1.02 }}
               whileTap={{ scale: loading ? 1 : 0.95 }}
               transition={spring}
-              className={`w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-extrabold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                young ? 'min-h-[60px] text-base py-3' : 'text-xs py-2.5 shadow-xs'
+              className={`kids-cta flex items-center justify-center gap-2 cursor-pointer ${
+                young ? '!min-h-[60px] text-base' : ''
               }`}
             >
               {loading ? (
@@ -321,7 +334,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <Sparkles className="w-4 h-4 text-[var(--kids-sun-1)]" />
                   <span>{young ? 'اشرح لي' : 'اطلب الإجابة من المعلم الذكي'}</span>
                 </>
               )}
@@ -329,18 +342,18 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
           </div>
 
           {errorMsg && (
-            <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-2xl text-xs font-bold space-y-2">
+            <div className="kids-msg-err p-4 text-sm font-bold space-y-2">
               <div className="flex items-center gap-2">
-                <ShieldAlert className="w-5 h-5 shrink-0 text-amber-600" />
-                <span className="text-sm font-extrabold">تنبيه:</span>
+                <ShieldAlert className="w-5 h-5 shrink-0" />
+                <span className="font-extrabold">تنبيه:</span>
               </div>
-              <p className="leading-relaxed font-sans">{errorMsg}</p>
+              <p className="leading-relaxed">{errorMsg}</p>
             </div>
           )}
 
           {aiResult?.text && (
-            <div className={`p-5 rounded-2xl space-y-3 ${young ? 'bg-[#F8F9FA] border border-amber-100 text-slate-900' : 'bg-slate-900 text-white border border-slate-800 shadow-inner'}`}>
-              <div className={`flex items-center justify-between pb-2 text-xs font-bold ${young ? 'border-b border-amber-100 text-emerald-800' : 'border-b border-slate-800 text-amber-400'}`}>
+            <div className="p-5 rounded-[22px] space-y-3 bg-white border-2 border-[#E7E2D7]">
+              <div className="flex items-center justify-between pb-2 text-sm font-extrabold border-b-2 border-[#E7E2D7] text-[var(--kids-grass-2)]">
                 <div className="flex items-center gap-1.5">
                   {young && (
                     <TapSpeakButton
@@ -351,13 +364,13 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                       size="lg"
                     />
                   )}
-                  <Bot className={`w-4 h-4 ${young ? 'text-emerald-600' : 'text-emerald-400'}`} />
+                  <span>🦊</span>
                   <span>شرح المعلم مسيد:</span>
                 </div>
-                <span className={`text-[10px] font-mono ${young ? 'text-slate-500' : 'text-slate-300'}`}>المنهاج الجزائري</span>
+                <span className="text-[10px] font-bold text-[var(--kids-muted)]">المنهاج الجزائري</span>
               </div>
 
-              <div className={`leading-relaxed font-sans whitespace-pre-line pt-1 ${young ? 'text-lg text-slate-800' : 'text-xs text-slate-200'}`}>
+              <div className={`leading-relaxed whitespace-pre-line pt-1 text-[var(--kids-ink)] ${young ? 'text-lg' : 'text-sm'}`}>
                 {aiResult.text}
               </div>
             </div>
@@ -365,12 +378,12 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
 
           {aiResult?.exerciseText && (
             <div className="space-y-3">
-              <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 space-y-2 shadow-inner">
-                <div className="flex items-center gap-1.5 border-b border-slate-800 pb-2 text-xs font-bold text-amber-400">
-                  <Sparkles className="w-4 h-4 text-emerald-400" />
+              <div className="bg-white text-[var(--kids-ink)] p-5 rounded-[22px] border-2 border-[#E7E2D7] space-y-2">
+                <div className="flex items-center gap-1.5 border-b-2 border-[#E7E2D7] pb-2 text-sm font-extrabold text-[var(--kids-grass-2)]">
+                  <Sparkles className="w-4 h-4" />
                   <span>التمرين:</span>
                 </div>
-                <p className="text-xs text-slate-200 leading-relaxed font-sans whitespace-pre-line pt-1">
+                <p className="text-sm leading-relaxed whitespace-pre-line pt-1 font-bold">
                   {aiResult.exerciseText}
                 </p>
               </div>
@@ -386,20 +399,20 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
                 <button
                   type="button"
                   onClick={() => setShowParentGate(true)}
-                  className="w-full min-h-[60px] bg-white hover:bg-emerald-50 border border-slate-300 hover:border-emerald-400 text-slate-700 hover:text-emerald-800 font-bold text-sm py-3 px-4 rounded-2xl transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full min-h-[60px] bg-white border-2 border-[#E7E2D7] text-[var(--kids-ink)] font-extrabold text-sm py-3 px-4 rounded-2xl cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <Lock className="w-5 h-5 shrink-0" />
+                  <Lock className="w-5 h-5 shrink-0 text-[var(--kids-muted)]" />
                   <span>عرض الحل للوالدين</span>
                 </button>
               )}
 
               {aiResult.solutionText && solutionUnlocked && (
-                <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-800">
+                <div className="kids-msg-ok p-4 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-sm font-extrabold">
                     <Lightbulb className="w-4 h-4 shrink-0" />
                     <span>الحل (للتحقق مع الوالدين):</span>
                   </div>
-                  <p className="text-xs text-emerald-900 leading-relaxed font-sans whitespace-pre-line">
+                  <p className="text-sm leading-relaxed whitespace-pre-line font-bold">
                     {aiResult.solutionText}
                   </p>
                 </div>
@@ -407,7 +420,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
 
       <ParentGateModal
         isOpen={showParentGate}

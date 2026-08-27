@@ -103,6 +103,7 @@ export default function App() {
   });
   /** P0 labs : catalogue masqué tant qu'un lab est ouvert (1 carte = 1 écran). */
   const [labsCatalogOpen, setLabsCatalogOpen] = useState(false);
+  const [courseEntrySubject, setCourseEntrySubject] = useState<SubjectId | null>(null);
 
   useEffect(() => {
     window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
@@ -280,9 +281,17 @@ export default function App() {
             authUser={authUser}
             userName={progress.userProfile.name}
             goldCoins={progress.userProfile.goldCoins || 150}
+            xp={progress.userProfile.xp}
+            level={progress.userProfile.level}
+            courseSubjects={visibleCourseSubjects}
             onSelectPole={(pole) => {
+              setCourseEntrySubject(null);
               nav.handleSelectPole(pole);
               if (pole === 'labs') openLabsCatalog();
+            }}
+            onSelectSubject={(subject) => {
+              setCourseEntrySubject(subject);
+              nav.handleSelectSubject(subject);
             }}
             onOpenAuthModal={() => modals.openAuth('login')}
             onOpenPreschool={() => nav.setIsPreschoolActive(true)}
@@ -290,7 +299,7 @@ export default function App() {
             onOpenWilayas={() => openLabFocused('wilayas_map')}
             onOpenHistoryMuseum={() => openLabFocused('history_museum')}
             onOpenScienceLab={() => openLabFocused('science_lab')}
-            onOpenTamazightLab={() => openLabFocused('tamazight_lab')}
+            onOpenMathLab={() => openLabFocused('primary_math_ops')}
             onOpenTamazightCurriculum={() => openLabFocused('tamazight_curriculum')}
             onOpenTouchWriting={() => openLabFocused('touch_writing')}
             onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
@@ -345,6 +354,7 @@ export default function App() {
                 onSelectLesson={nav.handleSelectLesson}
                 isLessonLocked={isLessonLocked}
                 onGoHome={nav.goHome}
+                initialSubjectId={courseEntrySubject}
               />
             ) : nav.mainCategory === 'labs' && (!isLabSubjectId(nav.selectedSubject) || labsCatalogOpen) ? null : (
               <ActiveWorkspace

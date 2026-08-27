@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade, SubjectId, SubjectInfo, CourseLesson } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { Card, Badge, Button } from './ui';
-import { Calculator, BookOpen, FlaskConical, Compass, Heart, Award, Languages, Globe, ChevronLeft, Star, Lock } from 'lucide-react';
+import { BookOpen, ChevronLeft, Star, Lock } from 'lucide-react';
 import { isFrenchFreeGrade, stripLatinGlosses } from './lessonViewer/youngLessonLayout';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
@@ -20,22 +20,32 @@ interface CourseSelectionViewProps {
    * seems to happen. Absent entirely means "nothing is ever locked" (no behavior change). */
   isLessonLocked?: (lesson: CourseLesson) => boolean;
   onGoHome: () => void;
+  /** When the child picked a subject on HomeView, skip the matière step. */
+  initialSubjectId?: SubjectId | null;
 }
-
-const SUBJECT_ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
-  Calculator, BookOpen, FlaskConical, Compass, Heart, Award, Languages, Globe,
-};
 
 const SUBJECT_EMOJI: Record<string, string> = {
   math: '📐',
-  arabic: '📖',
+  arabic: '📗',
   tamazight: 'ⵣ',
   science: '🧪',
-  history_geo: '🌍',
+  history_geo: '🧭',
   islamic: '🕌',
   civics: '⚖️',
   french: '🇫🇷',
   english: '🇬🇧',
+};
+
+const SUBJECT_CARD: Record<string, string> = {
+  arabic: 'kids-card-arabe',
+  math: 'kids-card-maths',
+  french: 'kids-card-francais',
+  science: 'kids-card-sciences',
+  islamic: 'kids-card-islamique',
+  history_geo: 'kids-card-histoire',
+  civics: 'kids-card-civics',
+  english: 'kids-card-english',
+  tamazight: 'kids-card-amazigh',
 };
 
 // Subjects whose lesson text reads left-to-right — flips only the card's text content, never the
@@ -69,12 +79,21 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   onSelectLesson,
   isLessonLocked,
   onGoHome,
+  initialSubjectId = null,
 }) => {
-  const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
+  const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(() =>
+    initialSubjectId && courseSubjects.some((subject) => subject.id === initialSubjectId)
+      ? initialSubjectId
+      : null,
+  );
   const [selectedTrimester, setSelectedTrimester] = useState<1 | 2 | 3>(() => getDefaultTrimester());
 
   // Changing level restarts the Matière choice — a 1AP subject list may not even apply to 5AP.
+  // Do not wipe on mount: that would cancel a subject picked from HomeView.
+  const previousGradeRef = useRef(grade);
   useEffect(() => {
+    if (previousGradeRef.current === grade) return;
+    previousGradeRef.current = grade;
     setSelectedSubject(null);
   }, [grade]);
 
@@ -124,7 +143,6 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {visibleSubjects.map((subj) => {
-            const IconComp = SUBJECT_ICON_MAP[subj.icon] || BookOpen;
             return (
               <motion.div
                 key={subj.id}
@@ -137,9 +155,8 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     setSelectedSubject(subj.id);
                   }
                 }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className={`relative rounded-3xl p-5 sm:p-6 min-h-36 text-white shadow-md cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-2 text-center`}
+                whileTap={{ scale: 0.95 }}
+                className={`kids-pop relative overflow-hidden rounded-[22px] p-5 sm:p-6 min-h-36 text-white cursor-pointer flex flex-col items-center justify-center gap-2 text-center ${SUBJECT_CARD[subj.id] ?? 'kids-card-arabe'}`}
               >
                 {showAudio && (
                   <div className="absolute top-2 start-2">
@@ -151,9 +168,10 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     />
                   </div>
                 )}
-                <span className="text-4xl sm:text-5xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
-                <IconComp className="w-4 h-4 opacity-70" />
-                <span className="font-black text-xs sm:text-sm leading-tight">{subj.nameAr}</span>
+                <span className="absolute top-3 end-3 w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center text-[22px]">
+                  {SUBJECT_EMOJI[subj.id] || '📘'}
+                </span>
+                <span className="font-extrabold text-sm sm:text-base leading-tight mt-8">{subj.nameAr}</span>
               </motion.div>
             );
           })}
@@ -214,19 +232,19 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
               key={t}
               onClick={() => setSelectedTrimester(t)}
               whileTap={{ scale: 0.96 }}
-              className={`relative min-h-16 rounded-2xl font-black text-xs sm:text-sm px-2 transition-colors cursor-pointer ${
-                isActive
-                  ? 'text-white shadow-lg'
-                  : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
-              }`}
-            >
-              {isActive && (
-                <motion.span
-                  layoutId="term-tab-active"
-                  className="absolute inset-0 rounded-2xl bg-[var(--brand-blue)]"
-                  transition={{ type: 'spring', stiffness: 450, damping: 32 }}
-                />
-              )}
+                  className={`relative min-h-16 rounded-2xl font-extrabold text-xs sm:text-sm px-2 cursor-pointer ${
+                    isActive
+                      ? 'text-white kids-pop'
+                      : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="term-tab-active"
+                      className={`absolute inset-0 rounded-2xl ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-maths'}`}
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    />
+                  )}
               <span className="relative flex items-center justify-center gap-1.5">
                 {isTrimesterLocked(t) && <Lock className="w-3 h-3 shrink-0" />}
                 {isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}
@@ -254,13 +272,16 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                   <Card
                     key={lesson.id}
                     interactive
-                    className={`p-5 space-y-3 h-full ${locked ? 'relative overflow-hidden' : ''}`}
+                    padding="none"
+                    className={`h-full overflow-hidden !bg-white !border-[#E7E2D7] rounded-[22px] ${locked ? 'relative' : ''}`}
                     onClick={() => onSelectLesson(lesson)}
                   >
+                    <div className={`h-3.5 w-full ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-arabe'}`} />
+                    <div className="p-5 space-y-3">
                     <div className="flex items-center justify-between flex-wrap gap-1.5">
                       <Badge variant="info">{lesson.categoryAr}</Badge>
                       {locked ? (
-                        <span className="flex items-center gap-1 text-[10px] font-black text-amber-800 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full">
+                        <span className="flex items-center gap-1 text-[10px] font-extrabold text-[#5A3B00] bg-[#FFF8E7] border-2 border-[#F5D98A] px-2 py-0.5 rounded-full">
                           <Lock className="w-3 h-3" />
                           <span>مميّز</span>
                         </span>
@@ -286,7 +307,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     <div className="flex items-center justify-between pt-2 border-t border-[var(--app-card-border)] text-[11px] font-bold text-[var(--app-text-muted)]">
                       <div className="flex items-center gap-2">
                         {lesson.difficultyTier && (
-                          <span className="flex items-center gap-0.5 text-amber-500">
+                          <span className="flex items-center gap-0.5 text-[var(--kids-sun-2)]">
                             {Array.from({ length: lesson.difficultyTier }).map((_, i) => (
                               <Star key={i} className="w-3 h-3 fill-current" />
                             ))}
@@ -297,6 +318,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                         )}
                       </div>
                       <ChevronLeft className="w-4 h-4" />
+                    </div>
                     </div>
                   </Card>
                 );

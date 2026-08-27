@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Mail, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { AuthService } from '../services/authService';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
@@ -57,7 +57,7 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4"
       dir={direction}
       onClick={onClose}
     >
@@ -65,24 +65,24 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
         initial={{ opacity: 0, scale: 0.92, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        className="bg-white w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden"
+        className="kids-modal-panel w-full max-w-sm overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative bg-gradient-to-br from-amber-400 via-orange-400 to-amber-500 text-white p-6 pb-8 text-center">
+        <div className="relative kids-modal-header p-6 pb-8 text-center">
           <button
             onClick={onClose}
-            className="absolute top-3 left-3 p-1.5 bg-white/20 hover:bg-white/30 rounded-full transition-all cursor-pointer"
+            className="kids-close absolute top-3 left-3 cursor-pointer"
             aria-label={tCommon('close')}
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
-          <div className="w-16 h-16 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-2">
-            <Mail className="w-8 h-8" />
+          <div className="w-16 h-16 mx-auto rounded-[20px] bg-white/20 flex items-center justify-center mb-2 text-3xl">
+            🦊
           </div>
-          <h2 className="text-lg font-black">{t('verifyTitle')}</h2>
-          <p className="text-xs text-white/90 mt-1.5 leading-relaxed">
+          <h2 className="text-lg font-extrabold">{t('verifyTitle')}</h2>
+          <p className="text-sm text-white/90 mt-1.5 leading-relaxed font-bold">
             {t('verifyIntro')}<br />
-            <span dir="ltr" className="font-mono font-bold">{email}</span>
+            <span dir="ltr" className="font-extrabold">{email}</span>
           </p>
         </div>
 
@@ -97,19 +97,19 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
               placeholder="123456"
               dir="ltr"
               autoFocus
-              className="flex-1 px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-mono font-extrabold text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="kids-input flex-1 font-mono text-center tracking-widest"
             />
             <button
               onClick={handleVerifyCode}
               disabled={verificationCode.length !== 6 || verifyState === 'loading'}
-              className="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-extrabold text-xs rounded-xl transition-all cursor-pointer shrink-0"
+              className="kids-cta-amber cursor-pointer shrink-0 disabled:cursor-not-allowed"
             >
               {verifyState === 'loading' ? '...' : t('verifyConfirm')}
             </button>
           </div>
 
           {verifyMessage && (
-            <p className={`text-[11px] font-bold ${verifyState === 'success' ? 'text-emerald-700' : 'text-rose-700'}`}>
+            <p className={`text-xs font-bold ${verifyState === 'success' ? 'text-[var(--kids-grass-2)]' : 'text-[var(--brand-coral)]'}`}>
               {verifyMessage}
             </p>
           )}
@@ -118,13 +118,13 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
             <button
               onClick={handleResendCode}
               disabled={resendCooldown > 0}
-              className="text-[11px] font-bold text-amber-700 hover:underline disabled:opacity-50 disabled:no-underline cursor-pointer"
+              className="text-xs font-extrabold text-[#8A5A12] disabled:opacity-50 cursor-pointer"
             >
               {resendCooldown > 0 ? t('resendAfterSeconds', { seconds: resendCooldown }) : t('resendPrompt')}
             </button>
             <button
               onClick={onClose}
-              className="text-[11px] font-bold text-slate-500 hover:text-slate-700 hover:underline cursor-pointer"
+              className="text-xs font-extrabold text-[var(--kids-muted)] cursor-pointer"
             >
               {t('verifyNotNow')}
             </button>
