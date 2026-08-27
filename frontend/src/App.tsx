@@ -72,7 +72,7 @@ const THEME_STORAGE_KEY = 'mssid_theme';
 const THEME_MANUAL_KEY = 'mssid_theme_manual';
 
 export default function App() {
-  const { authUser } = useAuth();
+  const { authUser, isAuthLoading } = useAuth();
   const { direction, t } = useLocaleContext();
   const modals = useAppModals();
   const progress = useUserProgress({ authUser });
@@ -154,6 +154,19 @@ export default function App() {
     onLessonLocked: setLockedLesson,
   });
 
+  // /admin is reachable by URL alone (see appLocation.ts's plain 'admin' route), so this must never
+  // assume a visitor who lands there is staff. The backend already refuses non-admin writes (see
+  // FeatureFlagController/AdminController's @PreAuthorize("hasRole('ADMIN')")), but the console UI
+  // itself was still rendering for anyone who typed /admin — kick non-admins back out (revue externe
+  // #6). Waits on isAuthLoading so a real admin refreshing the page mid-session-hydration isn't
+  // bounced before their role has even loaded.
+  useEffect(() => {
+    if (nav.isAdminConsoleActive && !isAuthLoading && authUser?.role !== 'ROLE_ADMIN') {
+      nav.setIsAdminConsoleActive(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nav.isAdminConsoleActive, isAuthLoading, authUser?.role]);
+
   // The full lesson catalog (~4.6 MB) is dynamically imported rather than a top-level `import`,
   // so a visitor's first paint (home screen, no course content needed there) never waits on it.
   // Kicked off right after mount — not gated on the user navigating into "الدروس" — so it's very
@@ -198,6 +211,14 @@ export default function App() {
   };
 
   if (nav.isAdminConsoleActive) {
+    if (isAuthLoading) {
+      return <LoadingFallback label={t('navigation', 'loadingAdminConsole')} minHeight="100vh" />;
+    }
+    if (authUser?.role !== 'ROLE_ADMIN') {
+      // Non-admin on /admin: render nothing while the effect above flips isAdminConsoleActive off
+      // on the next tick, rather than ever mounting the console (and its lazy chunk) for them.
+      return null;
+    }
     return (
       <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingAdminConsole')} minHeight="100vh" />}>
         <AdminConsoleView onExitAdminConsole={() => nav.setIsAdminConsoleActive(false)} />
