@@ -35,7 +35,6 @@ export const home = {
   sectionViewAll: 'عرض الكل ›',
   showMoreSubjects: '+ عرض جميع المواد',
   openSubjectHint: 'دروس وتمارين منهاجك',
-  examPopularBadge: '⭐ الأكثر استخدامًا',
   examBemTitle: 'شهادة التعليم الابتدائي',
   examBemDesc: 'مواضيع • حلول مجانية كاملة',
   examTrimesterTitle: 'الاختبارات الفصلية',

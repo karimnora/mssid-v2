@@ -37,7 +37,6 @@ export const home: typeof homeAr = {
   sectionViewAll: 'Tout voir ›',
   showMoreSubjects: '+ Voir toutes les matières',
   openSubjectHint: 'Leçons et exercices de ton programme',
-  examPopularBadge: '⭐ Le plus utilisé',
   examBemTitle: 'Certificat de fin de primaire',
   examBemDesc: 'Sujets • corrigés gratuits complets',
   examTrimesterTitle: 'Évaluations trimestrielles',

@@ -298,11 +298,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
           onClick={() => onSelectPole('exams')}
           className="kids-pop kids-card-examens relative w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
         >
-          {grade === '5AP' && (
-            <span className="absolute -top-2 end-3.5 bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 text-[11px] font-extrabold px-3 py-1 rounded-xl shadow-[0_3px_0_rgba(0,0,0,0.12)]">
-              {t('examPopularBadge')}
-            </span>
-          )}
           <div className="min-w-0">
             <h3 className="text-[15px] font-extrabold">{grade === '5AP' ? t('examBemTitle') : t('examTrimesterTitle')}</h3>
             <p className="text-[11.5px] text-white/90 mt-0.5">{grade === '5AP' ? t('examBemDesc') : t('examTrimesterDesc')}</p>
