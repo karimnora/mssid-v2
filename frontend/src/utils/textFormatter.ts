@@ -7,6 +7,36 @@ export function stripArabicTashkeel(text: string): string {
   return text.replace(/[\u064B-\u0652]/g, '');
 }
 
+// Unicode "Left-to-Right Isolate" (U+2066) / "Pop Directional Isolate" (U+2069) \u2014 invisible
+// control characters, safe to embed in plain text rendered by React (no HTML/markup involved).
+// Written as escapes rather than the raw invisible glyphs so they stay visible/greppable in source.
+export const LRI = '\u2066';
+export const PDI = '\u2069';
+
+// Matches a run of digits/operators/punctuation long enough to be a math expression: starts and
+// ends on a digit (or %, \u00B0, closing paren), and may contain operators, commas, decimal points,
+// same-line spaces and parentheses in between. Deliberately requires digit-anchored ends so it
+// never reaches into the Arabic word on either side. The inner whitespace is space/tab only (not
+// \n): this runs after the newline-insertion passes above, and a run must never bridge across an
+// already-inserted line break \u2014 otherwise an unrelated genuine list marker on the next line (e.g.
+// "2)") gets swallowed into the previous line's math isolate.
+const MATH_RUN = /[0-9][0-9.,%\u00B0+\-\u00D7\u00F7/=<>() \t]*[0-9%\u00B0)]/g;
+// A lone number ("142,800") has no bidi-reordering risk by itself \u2014 only wrap runs that actually
+// combine multiple terms with an operator/comparison symbol.
+const HAS_OPERATOR = /[+\-\u00D7\u00F7/=<>]/;
+
+/**
+ * Wraps embedded math expressions (e.g. "45,618 = (4 \u00D7 10,000) + (5 \u00D7 1,000) + ...") in bidi
+ * isolates so the browser renders them left-to-right in place, instead of reordering the terms
+ * against the surrounding RTL Arabic paragraph. Without this, a solution like
+ * "\u0628) 45,618 = (4 \u00D7 10,000) + (5 \u00D7 1,000) + (6 \u00D7 100) + (1 \u00D7 10) + 8." can visually scramble into
+ * something like "(10 \u00D7 1) + (100 \u00D7 1) + (1,000 \u00D7 5) + (10,000 \u00D7 4)" \u2014 unreadable for a child
+ * checking their answer (revue utilisateur : r\u00E9ponses des examens mal affich\u00E9es).
+ */
+export function isolateMathRuns(text: string): string {
+  return text.replace(MATH_RUN, (run) => (HAS_OPERATOR.test(run) ? `${LRI}${run}${PDI}` : run));
+}
+
 export function formatEducationalText(text: string | undefined | null, options?: { hideTashkeel?: boolean }): string {
   if (!text) return '';
 
@@ -19,11 +49,16 @@ export function formatEducationalText(text: string | undefined | null, options?:
   formatted = formatted.replace(/\r\n/g, '\n');
 
   // Insert a newline before numbered steps: " 1)", " 2)", " 1-", " 2-", " 1.", " 2.", " 1/ "
-  // Matches digits 1-20 followed by ), -, ., or / when preceded by space/sentence boundary
-  formatted = formatted.replace(/(?<!^|\n)\s+(?=\b([1-9]|1[0-9]|20)[\)\-\.\/]\s*)/g, '\n');
+  // Matches digits 1-20 followed by ), -, ., or / when preceded by space/sentence boundary.
+  // Excludes a digit/operator/"(" right before the whitespace: without this, a math expression
+  // like "(1 × 10) + 8." gets its "10)" and "8." mistaken for step markers "10)"/"8." and split
+  // onto their own lines mid-formula (revue utilisateur : réponses des examens mal affichées).
+  formatted = formatted.replace(/(?<![0-9+\-×÷=<>(])(?<!^|\n)\s+(?=\b([1-9]|1[0-9]|20)[\)\-\.\/]\s*)/g, '\n');
 
   // Insert a newline before bullet points: " •", " *", " -"
-  formatted = formatted.replace(/(?<!^|\n)\s+(?=[•\*\-]\s+)/g, '\n');
+  // Same digit/operator exclusion as the numbered-step rule above: without it, a subtraction like
+  // "48 - 23 = 25" gets its " - " mistaken for a bullet marker and split into "48" / "- 23 = 25".
+  formatted = formatted.replace(/(?<![0-9+\-×÷=<>(])(?<!^|\n)\s+(?=[•\*\-]\s+)/g, '\n');
 
   // Key process markers in primary school math, science, and grammar
   const processKeywords = [
@@ -67,6 +102,8 @@ export function formatEducationalText(text: string | undefined | null, options?:
 
   // Clean up excessive blank lines (max 2 consecutive newlines)
   formatted = formatted.replace(/\n{3,}/g, '\n\n');
+
+  formatted = isolateMathRuns(formatted);
 
   return formatted.trim();
 }
