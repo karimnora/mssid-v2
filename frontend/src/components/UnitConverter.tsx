@@ -17,6 +17,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
   const isNeutre = theme === 'neutre';
   const isLight = theme === 'light';
   const isSepia = theme === 'sepia';
+  const isBright = isNeutre || isLight || isSepia;
 
   const cardStyle = isNeutre
     ? 'bg-white border-slate-200 text-slate-900 shadow-sm'
@@ -149,7 +150,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
         </div>
 
         {/* Category Switcher Buttons */}
-        <div className={`flex items-center p-1 rounded-xl border text-xs font-bold flex-wrap gap-1 ${theme === 'light' ? 'bg-slate-100 border-slate-200' : 'bg-slate-950/80 border-slate-800'}`}>
+        <div className={`flex items-center p-1 rounded-xl border text-xs font-bold flex-wrap gap-1 ${isBright ? 'bg-slate-100 border-slate-200' : 'bg-slate-950/80 border-slate-800'}`}>
           {(Object.keys(UNITS_CONFIG) as UnitCategory[]).map((catKey) => {
             const isCatActive = category === catKey;
             const IconComp = UNITS_CONFIG[catKey].icon;
@@ -157,10 +158,12 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
               <button
                 key={catKey}
                 onClick={() => handleCategoryChange(catKey)}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                className={`flex items-center gap-1 px-3 py-1.5 min-h-[var(--hit)] rounded-lg transition-all cursor-pointer ${
                   isCatActive
-                    ? 'bg-teal-600 text-white shadow-xs'
-                    : 'opacity-70 hover:opacity-100 hover:bg-teal-500/10'
+                    ? 'bg-[#008751] text-white shadow-xs'
+                    : isBright
+                      ? 'text-slate-800 hover:bg-teal-500/10'
+                      : 'text-slate-200 hover:bg-teal-500/10'
                 }`}
               >
                 <IconComp className="w-3.5 h-3.5" />
@@ -219,7 +222,11 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
           <div className="md:col-span-2 space-y-1">
             <label className="text-[10px] font-bold opacity-60 block uppercase">النتيجة المحولة:</label>
             <div className="flex gap-2">
-              <div className="w-full bg-teal-500/10 border border-teal-500/30 text-teal-400 font-black text-sm rounded-xl px-3 py-2 flex items-center overflow-x-auto font-mono">
+              <div className={`w-full font-black text-sm rounded-xl px-3 py-2 flex items-center overflow-x-auto font-mono border ${
+                isBright
+                  ? 'bg-teal-50 border-teal-200 text-teal-900'
+                  : 'bg-teal-500/10 border-teal-500/30 text-teal-300'
+              }`}>
                 {convertedValue.toLocaleString('ar-DZ', { maximumFractionDigits: 6 })}
               </div>
               <select
@@ -239,40 +246,40 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
       </div>
 
       {/* Official Scale Reference Table */}
-      <div className={`rounded-xl p-4 border ${theme === 'light' ? 'bg-slate-900 text-white border-slate-800' : 'bg-black/60 text-slate-200 border-slate-800'}`}>
-        <span className="text-[10px] font-mono text-teal-400 block mb-2 uppercase tracking-wider">
+      <div className={`rounded-xl p-4 border ${isBright ? 'bg-slate-900 text-white border-slate-800' : 'bg-black/60 text-slate-200 border-slate-800'}`}>
+        <span className="text-[10px] font-mono text-teal-300 block mb-2 uppercase tracking-wider">
           جدول المهارات والنسب المرجعية للشهادة:
         </span>
         <div className="flex items-center justify-between text-xs font-bold flex-wrap gap-2">
           {category === 'area' && (
             <>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 الهكتار (ha) = 100 آر (a) = 10,000 m²</div>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 الآر (a) = 1 dam² = 100 m²</div>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 السانتيار (ca) = 1 m²</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 الهكتار (ha) = 100 آر (a) = 10,000 m²</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 الآر (a) = 1 dam² = 100 m²</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 السانتيار (ca) = 1 m²</div>
             </>
           )}
           {category === 'weight' && (
             <>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 طن (t) = 10 قنطار (q) = 1000 kg</div>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 kg = 1000 g = 10 hg = 100 dag</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 طن (t) = 10 قنطار (q) = 1000 kg</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 kg = 1000 g = 10 hg = 100 dag</div>
             </>
           )}
           {category === 'length' && (
             <>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 km = 10 hm = 100 dam = 1000 m</div>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 m = 10 dm = 100 cm = 1000 mm</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 km = 10 hm = 100 dam = 1000 m</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 m = 10 dm = 100 cm = 1000 mm</div>
             </>
           )}
           {category === 'capacity' && (
             <>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 hL = 10 daL = 100 L</div>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1 L = 10 dL = 100 cL = 1000 mL</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 hL = 10 daL = 100 L</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1 L = 10 dL = 100 cL = 1000 mL</div>
             </>
           )}
           {category === 'time' && (
             <>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1h = 60min = 3600s</div>
-              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60">1min = 60s</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1h = 60min = 3600s</div>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-white">1min = 60s</div>
             </>
           )}
         </div>

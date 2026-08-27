@@ -629,24 +629,44 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                   {/* Formulas */}
                   <div className="space-y-2">
                     {selectedShape.perimeterFormulaAr && (
-                      <div className="bg-emerald-500/10 border border-emerald-500/30 p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1 text-xs font-bold text-emerald-400">
+                      <div className={`p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1 text-xs font-bold border ${
+                        isDark
+                          ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                          : 'bg-emerald-50 border-emerald-200 text-emerald-950'
+                      }`}>
                         <span>قانون المحيط:</span>
-                        <span className="font-mono text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded">{selectedShape.perimeterFormulaAr}</span>
+                        <span className={`font-mono px-2 py-0.5 rounded ${isDark ? 'text-emerald-300 bg-emerald-500/20' : 'text-emerald-950 bg-emerald-100'}`}>
+                          {selectedShape.perimeterFormulaAr}
+                        </span>
                       </div>
                     )}
                     {selectedShape.areaFormulaAr && (
-                      <div className="bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1 text-xs font-bold text-amber-400">
-                        <span>{selectedShape.category === '3d' ? 'قانون المساحة:' : 'قانون المساحة:'}</span>
-                        <span className="font-mono text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded">
-                          {selectedShape.areaFormulaAr} {measurements.areaLabel && <span className="text-amber-200 font-medium">{measurements.areaLabel}</span>}
+                      <div className={`p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1 text-xs font-bold border ${
+                        isDark
+                          ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                          : 'bg-amber-50 border-amber-200 text-amber-950'
+                      }`}>
+                        <span>قانون المساحة:</span>
+                        <span className={`font-mono px-2 py-0.5 rounded ${isDark ? 'text-amber-300 bg-amber-500/20' : 'text-amber-950 bg-amber-100'}`}>
+                          {selectedShape.areaFormulaAr}{' '}
+                          {measurements.areaLabel && (
+                            <span className={`font-medium ${isDark ? 'text-amber-200' : 'text-amber-950'}`}>{measurements.areaLabel}</span>
+                          )}
                         </span>
                       </div>
                     )}
                     {selectedShape.volumeFormulaAr && (
-                      <div className="bg-purple-500/10 border border-purple-500/30 p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1 text-xs font-bold text-purple-400">
+                      <div className={`p-2.5 rounded-xl flex items-center justify-between flex-wrap gap-1 text-xs font-bold border ${
+                        isDark
+                          ? 'bg-purple-500/10 border-purple-500/30 text-purple-400'
+                          : 'bg-purple-50 border-purple-200 text-purple-950'
+                      }`}>
                         <span>قانون الحجم:</span>
-                        <span className="font-mono text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded">
-                          {selectedShape.volumeFormulaAr} {measurements.volumeLabel && <span className="text-purple-200 font-medium">{measurements.volumeLabel}</span>}
+                        <span className={`font-mono px-2 py-0.5 rounded ${isDark ? 'text-purple-300 bg-purple-500/20' : 'text-purple-950 bg-purple-100'}`}>
+                          {selectedShape.volumeFormulaAr}{' '}
+                          {measurements.volumeLabel && (
+                            <span className={`font-medium ${isDark ? 'text-purple-200' : 'text-purple-950'}`}>{measurements.volumeLabel}</span>
+                          )}
                         </span>
                       </div>
                     )}

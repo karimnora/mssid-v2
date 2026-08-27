@@ -140,7 +140,10 @@ export const labsSocial: typeof arLabsSocial = {
   topographyBadge: "Carte du relief et du climat de l'Algérie (4AP - 5AP)",
   topographyTitle: "Du littoral au Sahara : le relief de l'Algérie",
   topographyIntro:
-    "Explore la coupe du relief de l'Algérie du nord au sud, et découvre le climat, les précipitations et la végétation de chaque région.",
+    "Clique sur la carte de l'Algérie ou sur la coupe nord-sud, et découvre le climat, les précipitations et la végétation de chaque région.",
+  topographyMapInstruction: "Clique sur une région de la carte de l'Algérie pour l'explorer",
+  topographyCrossSectionLabel: 'Coupe du nord au sud (hauteur du relief)',
+  topographySeaLabel: 'Mer Méditerranée',
   topographyInstructionBar: '⬆️ Nord (la mer) — clique sur une région pour l\'explorer — Sud (le Sahara) ⬇️',
   topographyReliefLabel: 'Relief',
   topographyClimateLabel: 'Climat et précipitations',

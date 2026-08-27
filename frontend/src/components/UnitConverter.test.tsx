@@ -26,6 +26,12 @@ describe('UnitConverter Component & Logic Tests', () => {
     expect(resultBox).toBeInTheDocument();
   });
 
+  it('keeps inactive measurement tabs readable on the cream theme', () => {
+    render(<UnitConverter grade="5AP" theme="neutre" />);
+    expect(screen.getByRole('button', { name: /مساحات/ })).toHaveClass('text-slate-800');
+    expect(screen.getByRole('button', { name: /أطوال/ })).toHaveClass('text-white');
+  });
+
   it('switches category to weight and performs kilogram to gram conversion', () => {
     render(<UnitConverter grade="5AP" />);
 

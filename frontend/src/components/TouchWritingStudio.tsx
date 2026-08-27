@@ -25,6 +25,13 @@ import {
 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowEnglishInLab, canShowFrenchInLab } from '../utils/labGradePolicy';
+import {
+  ARABIC_NUMBERS_EXTRA,
+  ENGLISH_ITEMS,
+  FRENCH_ITEMS,
+  TAMAZIGHT_ITEMS,
+  type LetterData,
+} from '../data/touchWritingLetters';
 
 interface TouchWritingStudioProps {
   grade?: PrimaryGrade;
@@ -35,21 +42,6 @@ interface TouchWritingStudioProps {
 export type WritingLanguage = 'ar' | 'fr' | 'en' | 'ber';
 export type BoardTheme = 'seyes' | 'blackboard' | 'wood' | 'neon';
 export type PedagogicalStep = 'watch' | 'guide' | 'challenge';
-
-interface LetterData {
-  id: string;
-  char: string;
-  name: string;
-  phonics: string;
-  exampleWord: string;
-  exampleTranslation: string;
-  icon: string;
-  strokeHintAr: string;
-  strokeHintFr: string;
-  strokesSvg: string[]; // SVG path for each stroke in sequence
-  dots: { x: number; y: number; order: number }[]; // Key control points (0-300 coordinates)
-  direction: 'rtl' | 'ltr';
-}
 
 // -------------------------------------------------------------
 // CURRICULUM LETTERS & NUMBERS DATA
@@ -506,159 +498,15 @@ const ARABIC_ITEMS: LetterData[] = [
     dots: [{ x: 175, y: 75, order: 1 }, { x: 135, y: 75, order: 2 }, { x: 130, y: 130, order: 3 }, { x: 175, y: 165, order: 4 }, { x: 115, y: 190, order: 5 }],
     direction: 'ltr',
   },
-];
-
-// 2. FRENCH CURSIVE (3AP) - Seyès Interlines Progression
-const FRENCH_ITEMS: LetterData[] = [
-  {
-    id: 'fr_a',
-    char: 'a',
-    name: 'Lettre a (cursive)',
-    phonics: '/a/ comme Ananas',
-    exampleWord: 'ami',
-    exampleTranslation: 'صديق مخلص',
-    icon: '🤝',
-    strokeHintAr: 'ابدأ بالدائرة من الأعلى نحو اليسار على السطر (1)، ثم انزل بخط عمودي مع سن صغير للربط (2).',
-    strokeHintFr: 'Trace le rond en tournant vers la gauche sur 1 interligne (1), puis la canne qui descend (2).',
-    strokesSvg: ['M 170, 130 C 150, 120 120, 135 120, 160 C 120, 185 150, 190 170, 175', 'M 170, 130 L 170, 180 C 170, 185 180, 185 185, 180'],
-    dots: [{ x: 170, y: 130, order: 1 }, { x: 120, y: 160, order: 2 }, { x: 150, y: 190, order: 3 }, { x: 170, y: 130, order: 4 }, { x: 170, y: 180, order: 5 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'fr_l',
-    char: 'l',
-    name: 'Lettre l (grande boucle)',
-    phonics: '/l/ comme Livre',
-    exampleWord: 'livre',
-    exampleTranslation: 'كتاب القراءة',
-    icon: '📖',
-    strokeHintAr: 'اصعد بلفة مائلة واسعة حتى السطر الثالث العلوي (+3) (1)، ثم انزل مستقيماً مع خطاف الربط (2).',
-    strokeHintFr: 'Monte en boucle jusqu\'au 3e interligne (+3) (1), puis descends tout droit jusqu\'à la ligne (2).',
-    strokesSvg: ['M 115, 180 C 135, 160 160, 80 155, 60 C 150, 50 140, 60 135, 90 L 135, 175 C 135, 185 150, 185 160, 180'],
-    dots: [{ x: 115, y: 180, order: 1 }, { x: 155, y: 60, order: 2 }, { x: 135, y: 120, order: 3 }, { x: 135, y: 180, order: 4 }, { x: 160, y: 180, order: 5 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'fr_m',
-    char: 'm',
-    name: 'Lettre m (trois ponts)',
-    phonics: '/m/ comme Maman',
-    exampleWord: 'maman',
-    exampleTranslation: 'الأم الحنونة',
-    icon: '🤱',
-    strokeHintAr: 'ارسم ثلاثة جسور متتالية متناسقة الارتفاع (1 interligne) ثم اختم بذراع الوصل.',
-    strokeHintFr: 'Trace 3 ponts réguliers qui touchent le 1er interligne (1, 2, 3) avec une petite canne.',
-    strokesSvg: ['M 100, 150 C 105, 130 120, 130 125, 150 L 125, 180 M 125, 150 C 130, 130 145, 130 150, 150 L 150, 180 M 150, 150 C 155, 130 170, 130 175, 150 L 175, 178 C 175, 185 185, 185 190, 180'],
-    dots: [{ x: 100, y: 150, order: 1 }, { x: 125, y: 130, order: 2 }, { x: 125, y: 180, order: 3 }, { x: 150, y: 130, order: 4 }, { x: 175, y: 130, order: 5 }, { x: 190, y: 180, order: 6 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'fr_p',
-    char: 'p',
-    name: 'Lettre p (jambage bas -2)',
-    phonics: '/p/ comme Papillon',
-    exampleWord: 'porte',
-    exampleTranslation: 'باب المدرسة',
-    icon: '🦋',
-    strokeHintAr: 'اصعد بخط مائل للسطر الأول (1)، ثم انزل مستقيماً لخطين تحت السطر (-2) (2)، ثم ارسم القوس الصغير (3).',
-    strokeHintFr: 'Monte comme un 1 (1), descends tout droit 2 lignes en bas (-2) (2), puis fais un pont (3).',
-    strokesSvg: ['M 115, 160 L 135, 130 L 135, 230 M 135, 145 C 145, 130 170, 130 170, 155 C 170, 175 145, 180 135, 180 C 145, 180 160, 180 175, 180'],
-    dots: [{ x: 115, y: 160, order: 1 }, { x: 135, y: 130, order: 2 }, { x: 135, y: 230, order: 3 }, { x: 170, y: 155, order: 4 }, { x: 175, y: 180, order: 5 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'fr_e_accent',
-    char: 'é',
-    name: 'Lettre é (accent aigu)',
-    phonics: '/e/ comme École',
-    exampleWord: 'école',
-    exampleTranslation: 'مدرسة النجاح',
-    icon: '🏫',
-    strokeHintAr: 'ارسم حلقة حرف e في السطر الأول (1)، ثم ضع الشدّة المائلة من اليمين نحو اليسار (2).',
-    strokeHintFr: 'Fais la petite boucle du "e" (1), puis ajoute l\'accent aigu qui monte de gauche à droite (2).',
-    strokesSvg: ['M 120, 160 L 170, 160 C 170, 135 130, 135 125, 160 C 120, 185 160, 185 175, 175', 'M 155, 110 L 140, 125'],
-    dots: [{ x: 120, y: 160, order: 1 }, { x: 150, y: 135, order: 2 }, { x: 125, y: 160, order: 3 }, { x: 175, y: 175, order: 4 }, { x: 155, y: 110, order: 5 }],
-    direction: 'ltr',
-  },
-];
-
-// 3. ENGLISH SCRIPT & PHONICS (4AP & 5AP)
-const ENGLISH_ITEMS: LetterData[] = [
-  {
-    id: 'en_A',
-    char: 'A',
-    name: 'Capital A (Print)',
-    phonics: '/æ/ like Apple',
-    exampleWord: 'Apple',
-    exampleTranslation: 'تفاحة حمراء لديدو 🍎',
-    icon: '🍎',
-    strokeHintAr: 'انزل بميلان من القمة لليسار (1)، ثم من القمة لليمين (2)، ثم ارسم الجسر في المنتصف (3).',
-    strokeHintFr: 'Trace la barre oblique gauche (1), la droite (2), puis le pont au milieu (3).',
-    strokesSvg: ['M 150, 60 L 105, 200', 'M 150, 60 L 195, 200', 'M 120, 145 L 180, 145'],
-    dots: [{ x: 150, y: 60, order: 1 }, { x: 105, y: 200, order: 2 }, { x: 150, y: 60, order: 3 }, { x: 195, y: 200, order: 4 }, { x: 120, y: 145, order: 5 }, { x: 180, y: 145, order: 6 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'en_b',
-    char: 'b',
-    name: 'Lower-case b (Print)',
-    phonics: '/b/ like Book',
-    exampleWord: 'Book',
-    exampleTranslation: 'كتاب الإنجليزية 📘',
-    icon: '📘',
-    strokeHintAr: 'انزل بخط مستقيم طويل من الأعلى للأسفل (1)، ثم ارسم الدائرة المكتملة إلى اليمين (2).',
-    strokeHintFr: 'Ligne droite de haut en bas (1), puis le ventre rond vers la droite (2).',
-    strokesSvg: ['M 120, 60 L 120, 200', 'M 120, 140 C 145, 125 180, 135 180, 165 C 180, 195 145, 205 120, 195'],
-    dots: [{ x: 120, y: 60, order: 1 }, { x: 120, y: 200, order: 2 }, { x: 120, y: 140, order: 3 }, { x: 180, y: 165, order: 4 }, { x: 120, y: 195, order: 5 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'en_s',
-    char: 'S',
-    name: 'Letter S (Curve)',
-    phonics: '/s/ like Sun',
-    exampleWord: 'Sun',
-    exampleTranslation: 'شمس الواحات الساطعة ☀️',
-    icon: '☀️',
-    strokeHintAr: 'انعطف يساراً ثم اعبر لليمين ثم انعطف يساراً كحركة الثعبان الرشيقة.',
-    strokeHintFr: 'Tourne à gauche en haut, croise à droite, puis tourne à gauche en bas comme un serpent.',
-    strokesSvg: ['M 175, 90 C 160, 65 125, 65 125, 95 C 125, 130 175, 135 175, 170 C 175, 205 125, 205 115, 180'],
-    dots: [{ x: 175, y: 90, order: 1 }, { x: 125, y: 80, order: 2 }, { x: 150, y: 130, order: 3 }, { x: 175, y: 170, order: 4 }, { x: 115, y: 180, order: 5 }],
-    direction: 'ltr',
-  },
-];
-
-// 4. TAMAZIGHT TIFINAGH (4AP & 5AP)
-const TAMAZIGHT_ITEMS: LetterData[] = [
-  {
-    id: 'ber_yaz',
-    char: 'ⵣ',
-    name: 'Yaz (ⵣ - Amazigh)',
-    phonics: '/z/ Amaziɣ',
-    exampleWord: 'Amaziɣ',
-    exampleTranslation: 'الإنسان الحر الأصيل',
-    icon: 'ⵣ',
-    strokeHintAr: 'خط عمودي في الوسط (1)، ثم هلال علوي مرفوع للسماء (2)، ثم هلال سفلي راسخ في الأرض (3).',
-    strokeHintFr: 'Ligne verticale au centre (1), demi-cercle haut vers le ciel (2), demi-cercle bas (3).',
-    strokesSvg: ['M 150, 50 L 150, 210', 'M 90, 80 Q 150, 110 210, 80', 'M 90, 180 Q 150, 150 210, 180'],
-    dots: [{ x: 150, y: 50, order: 1 }, { x: 150, y: 210, order: 2 }, { x: 90, y: 80, order: 3 }, { x: 210, y: 80, order: 4 }, { x: 90, y: 180, order: 5 }, { x: 210, y: 180, order: 6 }],
-    direction: 'ltr',
-  },
-  {
-    id: 'ber_yar',
-    char: 'ⵔ',
-    name: 'Yar (ⵔ - Cercle)',
-    phonics: '/r/ Argaz',
-    exampleWord: 'Argaz',
-    exampleTranslation: 'الرجل الحكيم (ⵔ)',
-    icon: '🧔',
-    strokeHintAr: 'ارسم دائرة هندسية تامة ومغلقة بحركة انسيابية من الأعلى إلى الأسفل.',
-    strokeHintFr: 'Trace un cercle géométrique parfait et fermé de haut en bas.',
-    strokesSvg: ['M 150, 60 A 70,70 0 1,0 150,200 A 70,70 0 1,0 150,60'],
-    dots: [{ x: 150, y: 60, order: 1 }, { x: 80, y: 130, order: 2 }, { x: 150, y: 200, order: 3 }, { x: 220, y: 130, order: 4 }],
-    direction: 'ltr',
-  },
-];
+  ...ARABIC_NUMBERS_EXTRA,
+].sort((a, b) => {
+  const aNum = a.id.startsWith('num_');
+  const bNum = b.id.startsWith('num_');
+  if (aNum && bNum) return Number(a.char) - Number(b.char);
+  if (aNum) return 1;
+  if (bNum) return -1;
+  return 0;
+});
 
 export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
   grade = '3AP',
@@ -1473,7 +1321,20 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
               <span className="text-[10px] text-[var(--app-text-muted)]">({currentItems.length} عناصر)</span>
             </div>
 
-            <div className="grid grid-cols-4 gap-2 max-h-56 overflow-y-auto p-1">
+            {activeLang === 'en' && (
+              <p className="text-[10px] font-bold text-[var(--app-text-muted)]">A–Z ثم a–z — كل حروف الإنجليزية</p>
+            )}
+            {activeLang === 'fr' && (
+              <p className="text-[10px] font-bold text-[var(--app-text-muted)]">a–z ثم é è ê à ç — كورسيف 3AP</p>
+            )}
+            {activeLang === 'ber' && (
+              <p className="text-[10px] font-bold text-[var(--app-text-muted)]">الأبجدية التيفيناغ IRCAM (31 حرفاً)</p>
+            )}
+            {activeLang === 'ar' && (
+              <p className="text-[10px] font-bold text-[var(--app-text-muted)]">28 حرفاً عربياً + الأرقام 0–9</p>
+            )}
+
+            <div className="grid grid-cols-5 sm:grid-cols-6 gap-1.5 max-h-80 overflow-y-auto overscroll-contain p-1">
               {currentItems.map((item) => {
                 const isSelected = selectedItemId === item.id;
                 return (
@@ -1485,14 +1346,14 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
                       playSoundEffect('click');
                       speakItem(item);
                     }}
-                    className={`p-2.5 rounded-2xl border text-center transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
+                    className={`min-h-12 p-2 rounded-2xl border text-center transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                       isSelected
-                        ? 'bg-blue-600 text-white border-blue-600 shadow-md scale-105 ring-2 ring-blue-300'
+                        ? 'bg-blue-600 text-white border-blue-600 shadow-md ring-2 ring-blue-300'
                         : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] border-[var(--app-card-border)] hover:bg-blue-50/50 hover:border-blue-300'
                     }`}
                   >
-                    <span className="text-xl font-black">{item.char}</span>
-                    <span className="text-[9px] font-bold opacity-80 truncate w-full">{item.name}</span>
+                    <span className="text-xl font-black leading-none">{item.char}</span>
+                    <span className="text-[8px] font-bold opacity-80 truncate w-full">{item.name}</span>
                   </button>
                 );
               })}
