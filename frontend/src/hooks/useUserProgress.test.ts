@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { renderHook, act } from '@testing-library/react';
 import {
   applyChallengeXp,
   applyGameXp,
@@ -6,8 +7,14 @@ import {
   createFreshGuestProfile,
   markLessonQuizComplete,
   normalizeUserProfile,
+  useUserProgress,
 } from './useUserProgress';
 import { UserProfile } from '../types';
+import { AuthUser } from '../types/auth';
+
+vi.mock('../utils/badgeEngine', () => ({
+  applyBadgeEvaluation: (profile: UserProfile) => ({ profile, newlyUnlocked: [] }),
+}));
 
 describe('createFreshGuestProfile', () => {
   it('starts at the requested grade with no XP, lessons, or fake 5AP seed', () => {
@@ -64,5 +71,117 @@ describe('challenge and game XP', () => {
     const first = applyGameXp(createFreshGuestProfile('3AP'), 'dido_runner', 20);
     expect(first.xp).toBe(20);
     expect(applyGameXp(first, 'dido_runner', 20).xp).toBe(20);
+  });
+});
+
+// Regression test for the external review finding: a child who spent all their coins down to a
+// real 0 balance got silently reset to 150 free coins on the next lab reward, because `|| 150`
+// treats a genuine 0 as "missing" (revue externe #4).
+describe('handleLabReward', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('adds the reward on top of a real zero balance instead of resetting to the 150 demo default', () => {
+    const { result } = renderHook(() => useUserProgress({ authUser: null }));
+
+    act(() => {
+      result.current.setUserProfile((prev) => ({ ...prev, goldCoins: 0 }));
+    });
+    act(() => {
+      result.current.handleLabReward(20, 0);
+    });
+
+    expect(result.current.userProfile.goldCoins).toBe(20);
+  });
+
+  it('still applies the 150 default when goldCoins was never set', () => {
+    const { result } = renderHook(() => useUserProgress({ authUser: null }));
+
+    act(() => {
+      result.current.setUserProfile((prev) => ({ ...prev, goldCoins: undefined }));
+    });
+    act(() => {
+      result.current.handleLabReward(20, 0);
+    });
+
+    expect(result.current.userProfile.goldCoins).toBe(170);
+  });
+});
+
+// Regression test for the external review finding: on a family device shared between siblings, a
+// guest's (or a previous sibling's) local completedExamIds/completedChallengeIds/badges used to
+// bleed into whichever real account logged in next, whenever that account's own server data for a
+// field happened to be a genuinely empty array — `authUser.completedExamIds.length > 0 ? ... : prev`
+// silently kept the leftover local data instead of trusting the server (revue externe #5).
+describe('authUser merge does not leak local guest/sibling progress into a real account', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('trusts the server\'s genuinely empty history instead of falling back to local leftovers', () => {
+    const { result, rerender } = renderHook(
+      ({ authUser }: { authUser: AuthUser | null }) => useUserProgress({ authUser }),
+      { initialProps: { authUser: null as AuthUser | null } }
+    );
+
+    act(() => {
+      result.current.setUserProfile((prev) => ({
+        ...prev,
+        completedExamIds: ['exam-from-sibling'],
+        completedChallengeIds: ['challenge-from-sibling'],
+        badges: ['badge-from-sibling'],
+        streakDays: 12,
+      }));
+    });
+
+    const realAccount: AuthUser = {
+      id: 1,
+      nom: 'Kid B',
+      email: 'kidb@example.com',
+      role: 'ROLE_FREE',
+      score: 0,
+      completedExamIds: [],
+      completedChallengeIds: [],
+      badges: [],
+      streakDays: 0,
+    };
+
+    act(() => {
+      rerender({ authUser: realAccount });
+    });
+
+    expect(result.current.userProfile.completedExamIds).toEqual([]);
+    expect(result.current.userProfile.completedChallengeIds).toEqual([]);
+    expect(result.current.userProfile.badges).toEqual([]);
+    expect(result.current.userProfile.streakDays).toBe(0);
+  });
+
+  it('still keeps local progress when the server genuinely has not sent that field at all', () => {
+    const { result, rerender } = renderHook(
+      ({ authUser }: { authUser: AuthUser | null }) => useUserProgress({ authUser }),
+      { initialProps: { authUser: null as AuthUser | null } }
+    );
+
+    act(() => {
+      result.current.setUserProfile((prev) => ({
+        ...prev,
+        completedExamIds: ['exam-local'],
+      }));
+    });
+
+    const realAccount: AuthUser = {
+      id: 2,
+      nom: 'Kid A',
+      email: 'kida@example.com',
+      role: 'ROLE_FREE',
+      score: 5,
+    };
+
+    act(() => {
+      rerender({ authUser: realAccount });
+    });
+
+    expect(result.current.userProfile.completedExamIds).toEqual(['exam-local']);
   });
 });

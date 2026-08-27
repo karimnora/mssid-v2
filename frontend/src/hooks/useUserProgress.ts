@@ -159,20 +159,25 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   ]);
 
   useEffect(() => {
+    // Trust the server's fields directly (?? only falls back to `prev` when the field is truly
+    // absent from the API response, never when it's a genuine empty array/zero). Devices are often
+    // shared between siblings in a family: falling back to `prev` on a merely-empty server value
+    // used to let one child's local guest/leftover progress (exams, challenges, badges) bleed into
+    // whichever real account next logs in on that same browser (revue externe #5).
     if (authUser) {
-      const xp = authUser.score !== undefined ? authUser.score : (authUser.xp !== undefined ? authUser.xp : 140);
+      const xp = authUser.score !== undefined ? authUser.score : (authUser.xp !== undefined ? authUser.xp : 0);
       const level = authUser.level !== undefined ? authUser.level : Math.floor(xp / 100) + 1;
       setUserProfile((prev) => ({
         ...prev,
         name: authUser.nom || prev.name,
         xp: xp,
         level: level,
-        streakDays: authUser.streakDays || prev.streakDays,
+        streakDays: authUser.streakDays ?? prev.streakDays,
         completedLessonIds: authUser.completedLessonIds || prev.completedLessonIds,
-        completedExamIds: authUser.completedExamIds && authUser.completedExamIds.length > 0 ? authUser.completedExamIds : prev.completedExamIds,
-        completedChallengeIds: authUser.completedChallengeIds && authUser.completedChallengeIds.length > 0 ? authUser.completedChallengeIds : prev.completedChallengeIds,
-        badges: authUser.badges && authUser.badges.length > 0 ? authUser.badges : prev.badges,
-        badgeUnlockedAt: { ...authUser.badgeUnlockedAt, ...prev.badgeUnlockedAt },
+        completedExamIds: authUser.completedExamIds ?? prev.completedExamIds,
+        completedChallengeIds: authUser.completedChallengeIds ?? prev.completedChallengeIds,
+        badges: authUser.badges ?? prev.badges,
+        badgeUnlockedAt: authUser.badgeUnlockedAt ?? prev.badgeUnlockedAt,
         quizScores: authUser.quizScores || prev.quizScores,
         tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
         goldCoins: authUser.goldCoins ?? prev.goldCoins,
@@ -225,7 +230,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   };
 
   const handleLabReward = (coins: number, xp: number) => {
-    const newCoins = (userProfile.goldCoins || 150) + coins;
+    const newCoins = (userProfile.goldCoins ?? 150) + coins;
     setUserProfile((prev) => ({
       ...prev,
       goldCoins: newCoins,
