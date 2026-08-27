@@ -237,6 +237,22 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
   },
 ];
 
+// A raw character count let a child pass this by typing anything 21+ characters long — a typo-only
+// string like "je suis beojg alors bonne nuit" (31 chars, one real French word away from gibberish)
+// got the same "Bravo, ta production est riche" praise and the same XP/coins as a real paragraph.
+// No AI grading here (this lab runs fully offline, no network call per validation), so this stays a
+// heuristic — but requiring several DISTINCT real words is a much higher bar than a length count,
+// and roughly matches "4 à 5 lignes" / "4 conseils" worth of actual writing.
+export function isWritingRichEnough(text: string): boolean {
+  const words = text
+    .trim()
+    .split(/\s+/)
+    .map((w) => w.replace(/[.,!?;:'"’«»]/g, ''))
+    .filter((w) => /[a-zA-ZÀ-ÿ]{2,}/.test(w));
+  const distinctWords = new Set(words.map((w) => w.toLowerCase()));
+  return words.length >= 8 && distinctWords.size >= 5;
+}
+
 export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractiveProps> = ({
   grade = '3AP',
   onReward,
@@ -272,11 +288,11 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
   };
 
   const handleValidateWriting = () => {
-    if (userWritingText.trim().length > 20) {
+    if (isWritingRichEnough(userWritingText)) {
       setWritingFeedback('Bravo ! Ta production est riche et respecte bien les consignes du projet officiel 🌟');
       onReward?.(10, 30);
     } else {
-      setWritingFeedback('Essaie d’écrire au moins 3 à 4 phrases complètes avec des verbes et des adjectifs.');
+      setWritingFeedback('Essaie d’écrire au moins 3 à 4 phrases complètes, avec au moins 8 mots différents (verbes, adjectifs...).');
     }
   };
 
