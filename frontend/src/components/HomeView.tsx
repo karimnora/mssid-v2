@@ -38,40 +38,44 @@ interface HomeViewProps {
   onOpenOfflinePacks?: () => void;
 }
 
+// Literal hex stops (not Tailwind's bg-gradient-* utilities, which compile to oklch() in this
+// Tailwind v4 setup) — inline gradients render correctly on every Android WebView, including the
+// older ones where oklch() silently failed to paint at all (see LessonViewer.tsx/ExamsViewer.tsx,
+// Phases 167/170: two separate "texte invisible" bug reports traced to that exact mechanism).
 const POLES: {
   id: HomePoleId;
   icon: React.ReactNode;
   titleKey: 'poleCoursesTitle' | 'poleChallengesTitle' | 'poleExamsTitle' | 'poleLabsTitle';
   descKey: 'poleCoursesDesc' | 'poleChallengesDesc' | 'poleExamsDesc' | 'poleLabsDesc';
-  gradient: string;
+  gradientCss: string;
 }[] = [
   {
     id: 'courses',
     icon: <CoursesPoleIcon />,
     titleKey: 'poleCoursesTitle',
     descKey: 'poleCoursesDesc',
-    gradient: 'from-emerald-600 to-teal-700',
+    gradientCss: 'linear-gradient(150deg, #3FCB7E, #189A5A)',
   },
   {
     id: 'challenges',
     icon: <ChallengesPoleIcon />,
     titleKey: 'poleChallengesTitle',
     descKey: 'poleChallengesDesc',
-    gradient: 'from-rose-500 to-amber-600',
+    gradientCss: 'linear-gradient(150deg, #FF8A65, #F4511E)',
   },
   {
     id: 'exams',
     icon: <ExamsPoleIcon />,
     titleKey: 'poleExamsTitle',
     descKey: 'poleExamsDesc',
-    gradient: 'from-blue-600 to-indigo-700',
+    gradientCss: 'linear-gradient(150deg, #4FB8F0, #2E8FDB)',
   },
   {
     id: 'labs',
     icon: <LabsPoleIcon />,
     titleKey: 'poleLabsTitle',
     descKey: 'poleLabsDesc',
-    gradient: 'from-amber-500 to-emerald-600',
+    gradientCss: 'linear-gradient(150deg, #A78BFA, #7C5CDB)',
   },
 ];
 
@@ -93,7 +97,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   return (
     <div className="space-y-6" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
-      <div className="rounded-3xl p-4 sm:p-8 bg-gradient-to-l from-[var(--brand-emerald)] via-teal-700 to-[var(--brand-blue)] text-white shadow-xl space-y-3 sm:space-y-4">
+      <div
+        className="rounded-3xl p-4 sm:p-8 text-white vibrant-card space-y-3 sm:space-y-4"
+        style={{ backgroundImage: 'linear-gradient(150deg, #4FB8F0, #189A5A)' }}
+      >
         <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3">
           <div className="space-y-1">
             <p className="text-xs sm:text-sm font-bold text-white/80">{t('systemBadge')}</p>
@@ -107,7 +114,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {onOpenDressingRoom && (
               <button
                 onClick={onOpenDressingRoom}
-                className="hit-target flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white px-3.5 rounded-2xl text-sm font-extrabold cursor-pointer border border-white/25"
+                className="hit-target flex items-center gap-1.5 bg-white/20 hover:bg-white/30 text-white px-3.5 rounded-full text-sm font-extrabold cursor-pointer border border-white/25"
               >
                 <span>{t('dressingRoomLabel')}</span>
                 <span dir="ltr" className="bg-amber-950/20 px-1.5 py-0.5 rounded-md text-xs font-black">
@@ -117,7 +124,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             )}
 
             <span
-              className={`hit-target flex items-center gap-1.5 px-3.5 rounded-2xl text-sm font-extrabold ${
+              className={`hit-target flex items-center gap-1.5 px-3.5 rounded-full text-sm font-extrabold ${
                 isGuest ? 'bg-white/20 text-white border border-white/30' : 'bg-emerald-500/80 text-white'
               }`}
             >
@@ -154,7 +161,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
             onClick={() => onSelectPole(pole.id)}
             whileTap={{ scale: 0.95 }}
             transition={spring}
-            className={`relative overflow-hidden rounded-3xl p-4 sm:p-6 text-start text-white shadow-md cursor-pointer bg-gradient-to-br ${pole.gradient}`}
+            className="relative overflow-hidden rounded-3xl p-4 sm:p-6 text-start text-white cursor-pointer vibrant-card"
+            style={{ backgroundImage: pole.gradientCss }}
           >
             <div
               data-pole-icon={pole.id}
@@ -174,7 +182,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
           whileTap={{ scale: 0.95 }}
           transition={spring}
           onClick={onOpenPreschool}
-          className="w-full relative overflow-hidden rounded-3xl p-5 sm:p-6 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-xl cursor-pointer text-start border-2 border-amber-300/40"
+          className="w-full relative overflow-hidden rounded-3xl p-5 sm:p-6 text-white vibrant-card cursor-pointer text-start border-2 border-white/30"
+          style={{ backgroundImage: 'linear-gradient(150deg, #FF6FA5, #E8447C)' }}
         >
           <div className="relative z-10 flex flex-col gap-4">
             <div className="flex items-start gap-3">
@@ -189,7 +198,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <p className="text-sm font-medium text-white/90">{t('preschoolFeatureDesc')}</p>
               </div>
             </div>
-            <span className="hit-target w-full inline-flex items-center justify-center bg-white text-orange-950 px-4 rounded-2xl font-extrabold text-sm">
+            <span className="hit-target w-full inline-flex items-center justify-center bg-white text-[#8A1450] px-4 rounded-2xl font-extrabold text-sm">
               {t('preschoolFeatureCta')}
             </span>
           </div>

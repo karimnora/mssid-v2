@@ -98,7 +98,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       <button
         type="button"
         onClick={onOpenAiTutor}
-        className={`flex flex-col items-center justify-center -mt-5 bg-[var(--brand-emerald)] text-white min-h-12 min-w-12 p-3 rounded-3xl active:scale-95 transition-all ring-4 cursor-pointer ${ringClass}`}
+        className={`flex flex-col items-center justify-center -mt-5 bg-[var(--brand-emerald)] text-white min-h-14 min-w-14 p-3 rounded-full active:scale-95 transition-all ring-4 cursor-pointer bounce-soft ${ringClass}`}
         title={t('aiTutor')}
       >
         <Bot className="w-6 h-6" />

@@ -86,24 +86,36 @@ body {
   font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
-/* Vibrant Palette Custom Helper Utilities */
+/* "Pop" style — flat offset shadow (no blur) instead of a blurred drop shadow, the chunky
+   "candy button" look used on kid-facing hero/pole/nav cards. Theme-agnostic (fixed dark rgba,
+   not a theme token) so it reads the same over any --app-bg. .vibrant-btn presses in on tap. */
 .vibrant-card {
-  background-color: var(--app-card-bg);
-  border-radius: 1.5rem;
-  border-bottom-width: 4px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
 }
 
 .vibrant-btn {
-  border-bottom-width: 4px;
-  font-weight: 800;
-  transition: transform 0.1s ease, border-color 0.1s ease;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .vibrant-btn:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.bounce-soft {
+  animation: gentle-bounce 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bounce-soft {
+    animation: none;
+  }
 }
 
 .font-serif-arabic {
