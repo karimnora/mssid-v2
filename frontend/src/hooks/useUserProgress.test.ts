@@ -185,3 +185,35 @@ describe('authUser merge does not leak local guest/sibling progress into a real 
     expect(result.current.userProfile.completedExamIds).toEqual(['exam-local']);
   });
 });
+
+describe('logout does not replay the welcome badge toast', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('clears the unlock queue when resetting to a guest profile', () => {
+    const { result } = renderHook(() => useUserProgress({ authUser: null }));
+
+    act(() => {
+      result.current.setNewlyUnlockedBadges([
+        {
+          id: 'b_welcome',
+          titleAr: 'مجتهد الجزائر',
+          descriptionAr: 'انضمامك لمنصة مسيد DZ والبدء في التعلم',
+          icon: '🇩🇿',
+          category: 'general',
+          criteria: { type: 'first_login' },
+        },
+      ]);
+    });
+    expect(result.current.newlyUnlockedBadges).toHaveLength(1);
+
+    act(() => {
+      result.current.handleLogoutProgressReset('5AP');
+    });
+
+    expect(result.current.newlyUnlockedBadges).toEqual([]);
+    expect(result.current.userProfile.badges).toEqual([]);
+    expect(result.current.userProfile.xp).toBe(0);
+  });
+});

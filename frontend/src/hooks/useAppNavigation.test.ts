@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { renderHook, act } from '@testing-library/react';
 import { isToolAvailableForGrade, INTERACTIVE_LABS_LIST } from '../data/subjectsData';
-import { defaultLabForGrade, labsEntrySubjectForGrade } from './useAppNavigation';
+import { defaultLabForGrade, labsEntrySubjectForGrade, useAppNavigation } from './useAppNavigation';
 
 describe('defaultLabForGrade', () => {
   it('opens a 1AP-safe lab instead of the Arabic conjugator', () => {
@@ -29,5 +30,40 @@ describe('labsEntrySubjectForGrade', () => {
     expect(labsEntrySubjectForGrade('1AP')).toBe('primary_math_ops');
     expect(labsEntrySubjectForGrade('2AP')).toBe('primary_math_ops');
     expect(labsEntrySubjectForGrade('5AP')).toBe('arabic_conjugator');
+  });
+});
+
+describe('mobile footer tab follows the open view', () => {
+  it('leaves Accueil when opening courses, exams, labs, or challenges from home', () => {
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+
+    act(() => {
+      result.current.goHome();
+    });
+    expect(result.current.mobileTab).toBe('home');
+
+    act(() => {
+      result.current.handleSelectPole('courses');
+    });
+    expect(result.current.mobileTab).toBe('courses');
+    expect(result.current.isHomeActive).toBe(false);
+
+    act(() => {
+      result.current.goHome();
+      result.current.handleSelectPole('exams');
+    });
+    expect(result.current.mobileTab).toBe('exercises');
+
+    act(() => {
+      result.current.goHome();
+      result.current.handleSelectPole('labs');
+    });
+    expect(result.current.mobileTab).toBe('games');
+
+    act(() => {
+      result.current.goHome();
+      result.current.handleSelectPole('challenges');
+    });
+    expect(result.current.mobileTab).toBe('exercises');
   });
 });

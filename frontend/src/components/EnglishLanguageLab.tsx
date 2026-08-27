@@ -250,11 +250,11 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
       explanation: 'The Past Simple of "to go" is irregular: "went".'
     },
     {
-      sentenceEn: 'Look! The students ____ English right now.',
-      verbName: 'to learn / speak (Present Continuous)',
-      options: ['are speaking', 'is speaking', 'speaks'],
-      correct: 'are speaking',
-      explanation: 'With "The students" (They), we use "are" + verb "-ing": "are speaking".'
+      sentenceEn: 'Look! The students ____ football right now.',
+      verbName: 'to play (Present Continuous)',
+      options: ['are playing', 'is playing', 'plays'],
+      correct: 'are playing',
+      explanation: 'With "The students" (They), we use "are" + verb "-ing": "are playing".'
     }
   ];
 

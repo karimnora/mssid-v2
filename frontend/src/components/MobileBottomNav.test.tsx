@@ -31,6 +31,30 @@ describe('MobileBottomNav', () => {
     expect(screen.getByText('الملف')).toBeInTheDocument();
   });
 
+  it('marks the Accueil tab as current on the home screen', () => {
+    renderNav('5AP');
+    expect(screen.getByRole('button', { name: 'الرئيسية' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('button', { name: 'الدروس' })).not.toHaveAttribute('aria-current');
+  });
+
+  it('marks the Lessons tab as current when that tab is active', () => {
+    render(
+      <LocaleProvider>
+        <MobileBottomNav
+          grade="5AP"
+          selectedSubject="math"
+          activeTab="courses"
+          onSelectTab={vi.fn()}
+          onOpenAiTutor={vi.fn()}
+          onOpenProfile={vi.fn()}
+          onClearSelectedLesson={vi.fn()}
+        />
+      </LocaleProvider>,
+    );
+    expect(screen.getByRole('button', { name: 'الدروس' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('button', { name: 'الرئيسية' })).not.toHaveAttribute('aria-current');
+  });
+
   it('shows the AI tutor and exams tab from 5AP', () => {
     renderNav('5AP');
     expect(document.querySelector('[data-nav-compact="false"]')).toBeTruthy();

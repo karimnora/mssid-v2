@@ -4,10 +4,15 @@ import { BADGES_CATALOG } from '../data/badgesData';
 
 const SUBJECT_BY_LESSON_ID = new Map(COURSES_DATA.map((lesson) => [lesson.id, lesson.subject]));
 
-function isCriteriaMet(criteria: BadgeCriteria, profile: UserProfile): boolean {
+export type BadgeEvalOptions = {
+  /** Welcome (`first_login`) is for a real account, not a guest session after logout. */
+  isAuthenticated?: boolean;
+};
+
+function isCriteriaMet(criteria: BadgeCriteria, profile: UserProfile, options?: BadgeEvalOptions): boolean {
   switch (criteria.type) {
     case 'first_login':
-      return true;
+      return options?.isAuthenticated === true;
     case 'lessons_completed_subject': {
       const count = profile.completedLessonIds.filter((id) => SUBJECT_BY_LESSON_ID.get(id) === criteria.subject).length;
       return count >= criteria.count;
@@ -32,8 +37,8 @@ function isCriteriaMet(criteria: BadgeCriteria, profile: UserProfile): boolean {
 }
 
 /** Pure: every badge id whose criteria is currently satisfied by this profile (regardless of what's already unlocked). */
-export function evaluateEligibleBadgeIds(profile: UserProfile): string[] {
-  return BADGES_CATALOG.filter((b) => isCriteriaMet(b.criteria, profile)).map((b) => b.id);
+export function evaluateEligibleBadgeIds(profile: UserProfile, options?: BadgeEvalOptions): string[] {
+  return BADGES_CATALOG.filter((b) => isCriteriaMet(b.criteria, profile, options)).map((b) => b.id);
 }
 
 /**
@@ -42,8 +47,11 @@ export function evaluateEligibleBadgeIds(profile: UserProfile): string[] {
  * Returns the SAME profile reference when nothing new was unlocked, so callers can use
  * that to skip a state update (see the effect in App.tsx).
  */
-export function applyBadgeEvaluation(profile: UserProfile): { profile: UserProfile; newlyUnlocked: Badge[] } {
-  const eligibleIds = evaluateEligibleBadgeIds(profile);
+export function applyBadgeEvaluation(
+  profile: UserProfile,
+  options?: BadgeEvalOptions,
+): { profile: UserProfile; newlyUnlocked: Badge[] } {
+  const eligibleIds = evaluateEligibleBadgeIds(profile, options);
   const newlyUnlockedIds = eligibleIds.filter((id) => !profile.badges.includes(id));
 
   if (newlyUnlockedIds.length === 0) {

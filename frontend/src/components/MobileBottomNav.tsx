@@ -57,8 +57,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       type="button"
       onClick={() => handleTab(tab)}
       className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-12 rounded-2xl transition-colors cursor-pointer ${
-        activeTab === tab ? activeTabClass : inactiveTabClass
+        activeTab === tab ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
       }`}
+      aria-current={activeTab === tab ? 'page' : undefined}
     >
       {icon}
       <span className="text-[11px] font-extrabold">{label}</span>

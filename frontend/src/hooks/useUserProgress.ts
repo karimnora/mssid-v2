@@ -136,7 +136,9 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     let cancelled = false;
     import('../utils/badgeEngine').then(({ applyBadgeEvaluation }) => {
       if (cancelled) return;
-      const { profile: updated, newlyUnlocked } = applyBadgeEvaluation(userProfile);
+      const { profile: updated, newlyUnlocked } = applyBadgeEvaluation(userProfile, {
+        isAuthenticated: Boolean(authUser),
+      });
       if (newlyUnlocked.length > 0) {
         setUserProfile(updated);
         setNewlyUnlockedBadges((prev) => [...prev, ...newlyUnlocked]);
@@ -156,6 +158,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     userProfile.completedChallengeIds.length,
     userProfile.completedGameIds.length,
     userProfile.completedLabIds.length,
+    authUser,
   ]);
 
   useEffect(() => {
@@ -289,6 +292,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
 
   const handleLogoutProgressReset = (currentGrade: PrimaryGrade) => {
     localStorage.removeItem('mssid_user_profile');
+    setNewlyUnlockedBadges([]);
     setUserProfile(() => createFreshGuestProfile(currentGrade));
   };
 

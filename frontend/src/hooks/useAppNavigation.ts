@@ -95,7 +95,6 @@ export function useAppNavigation(options: {
     if (boot.view.name === 'challenges') return 'challenges';
     return 'courses';
   });
-  const [mobileTab, setMobileTab] = useState<MobileTab>(() => mobileTabForView(boot.view));
   const [isHomeActive, setIsHomeActive] = useState(boot.view.name === 'home');
   const [isAdminConsoleActive, setIsAdminConsoleActive] = useState(boot.view.name === 'admin');
   const [isPreschoolActive, setIsPreschoolActive] = useState(boot.view.name === 'eveil');
@@ -135,7 +134,6 @@ export function useAppNavigation(options: {
       setSelectedLesson(null);
       setIsPreschoolActive(false);
       setIsAdminConsoleActive(false);
-      setMobileTab('home');
       return;
     }
     setIsPreschoolActive(Boolean(state.isPreschoolActive));
@@ -151,15 +149,6 @@ export function useAppNavigation(options: {
     } else {
       setSelectedLesson(null);
     }
-    const view = viewFromNavState({
-      isAdminConsoleActive: Boolean(state.isAdminConsoleActive),
-      isPreschoolActive: Boolean(state.isPreschoolActive),
-      isHomeActive: state.isHomeActive !== undefined ? state.isHomeActive : true,
-      selectedLessonId: state.selectedLessonId,
-      mainCategory: state.mainCategory ?? 'courses',
-      selectedSubject: state.selectedSubject ?? 'math',
-    });
-    setMobileTab(mobileTabForView(view));
   }, []);
 
   useEffect(() => {
@@ -220,25 +209,20 @@ export function useAppNavigation(options: {
     setSelectedLesson(null);
     if (INTERACTIVE_LABS_LIST.some((s) => s.id === subject)) {
       setMainCategory('labs');
-      setMobileTab('games');
       setIsHomeActive(false);
     } else if (OFFICIAL_EXAMS_LIST.some((s) => s.id === subject)) {
       setMainCategory('exams');
-      setMobileTab('exercises');
       setIsHomeActive(false);
     } else if (CHALLENGES_TAB_LIST.some((s) => s.id === subject)) {
       setMainCategory('challenges');
-      setMobileTab('exercises');
       setIsHomeActive(false);
     } else {
       setMainCategory('courses');
-      setMobileTab('courses');
       setIsHomeActive(false);
     }
   };
 
   const handleMobileTab = (tab: MobileTab) => {
-    setMobileTab(tab);
     setSelectedLesson(null);
     if (tab === 'home') {
       setIsHomeActive(true);
@@ -281,13 +265,11 @@ export function useAppNavigation(options: {
     setSelectedLesson(lesson);
     setMainCategory('courses');
     setIsHomeActive(false);
-    setMobileTab('courses');
   };
 
   const goHome = () => {
     setSelectedLesson(null);
     setIsHomeActive(true);
-    setMobileTab('home');
   };
 
   const openLab = (toolId: SubjectId) => {
@@ -295,7 +277,6 @@ export function useAppNavigation(options: {
     setSelectedSubject(toolId);
     setSelectedLesson(null);
     setIsHomeActive(false);
-    setMobileTab('games');
   };
 
   const handleGradeChange = (next: PrimaryGrade) => {
@@ -306,6 +287,17 @@ export function useAppNavigation(options: {
       setSelectedSubject(labsEntrySubjectForGrade(next));
     }
   };
+
+  const mobileTab = mobileTabForView(
+    viewFromNavState({
+      isAdminConsoleActive,
+      isPreschoolActive,
+      isHomeActive,
+      selectedLessonId: selectedLesson?.id ?? null,
+      mainCategory,
+      selectedSubject,
+    }),
+  );
 
   return {
     grade,

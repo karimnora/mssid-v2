@@ -337,10 +337,10 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
   const QUIZ_QUESTIONS = [
     {
       sentenceFr: 'Amina ____ un bel oiseau dans le jardin.',
-      verbName: 'voir (présent)',
-      options: ['vois', 'voit', 'voyons'],
-      correct: 'voit',
-      explanation: 'Avec "Amina" (elle / 3ème personne du singulier), le verbe voir au présent s\'écrit "voit".'
+      verbName: 'avoir (présent)',
+      options: ['as', 'a', 'avons'],
+      correct: 'a',
+      explanation: 'Avec "Amina" (elle / 3ème personne du singulier), le verbe avoir au présent s\'écrit "a".'
     },
     {
       sentenceFr: 'Demain, nous ____ au parc de loisirs.',
@@ -350,11 +350,11 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
       explanation: 'Au futur simple avec "nous", le verbe aller devient "nous irons".'
     },
     {
-      sentenceFr: 'Les pompiers ____ le feu rapidement.',
-      verbName: 'éteindre / finir (passé composé)',
+      sentenceFr: 'Les pompiers ____ leur travail rapidement.',
+      verbName: 'finir (passé composé)',
       options: ['ont fini', 'as fini', 'avons fini'],
       correct: 'ont fini',
-      explanation: 'Avec "Les pompiers" (ils), l\'auxiliaire avoir au passé composé est "ont fini".'
+      explanation: 'Avec "Les pompiers" (ils), le verbe finir au passé composé s\'écrit "ont fini".'
     }
   ];
 

@@ -17,3 +17,16 @@ describe('lab_visited badges', () => {
     expect(evaluateEligibleBadgeIds(visited)).toContain('b_gold_dinar');
   });
 });
+
+describe('first_login welcome badge', () => {
+  it('does not grant مجتهد الجزائر to a guest or a fresh profile after logout', () => {
+    const fresh = createFreshGuestProfile('5AP');
+    expect(evaluateEligibleBadgeIds(fresh)).not.toContain('b_welcome');
+    expect(evaluateEligibleBadgeIds(fresh, { isAuthenticated: false })).not.toContain('b_welcome');
+  });
+
+  it('grants مجتهد الجزائر only for a signed-in account', () => {
+    const fresh = createFreshGuestProfile('5AP');
+    expect(evaluateEligibleBadgeIds(fresh, { isAuthenticated: true })).toContain('b_welcome');
+  });
+});
