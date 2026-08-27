@@ -48,7 +48,10 @@ export type PedagogicalStep = 'watch' | 'guide' | 'challenge';
 // -------------------------------------------------------------
 
 // 1. ARABIC (1AP & 2AP) - All 28 Letters & Official Numbers
-const ARABIC_ITEMS: LetterData[] = [
+// The `as LetterData[]` on the literal (before .sort()) matters: contextual typing from the outer
+// `: LetterData[]` annotation does not flow through the .sort() call, so without it every literal
+// `direction: 'rtl'/'ltr'` string widens to plain `string` and fails LetterData's union type.
+const ARABIC_ITEMS: LetterData[] = ([
   {
     id: 'ar_alif',
     char: 'أ',
@@ -499,7 +502,7 @@ const ARABIC_ITEMS: LetterData[] = [
     direction: 'ltr',
   },
   ...ARABIC_NUMBERS_EXTRA,
-].sort((a, b) => {
+] as LetterData[]).sort((a, b) => {
   const aNum = a.id.startsWith('num_');
   const bNum = b.id.startsWith('num_');
   if (aNum && bNum) return Number(a.char) - Number(b.char);
