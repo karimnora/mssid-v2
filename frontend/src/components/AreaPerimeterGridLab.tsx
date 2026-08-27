@@ -89,10 +89,12 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
           <div className="p-3 rounded-2xl bg-emerald-100 border border-emerald-300 text-center min-w-[110px]">
             <p className="text-[10px] font-black text-emerald-700">المِسَاحَةُ (Aire)</p>
             <p className="text-2xl font-black text-emerald-900 font-sans">{area}</p>
+            <p className="text-[10px] font-black text-emerald-800">{area === 1 ? 'مربع' : 'مربعات'}</p>
           </div>
           <div className="p-3 rounded-2xl bg-teal-100 border border-teal-300 text-center min-w-[110px]">
             <p className="text-[10px] font-black text-teal-700">المُحِيطُ (Périmètre)</p>
             <p className="text-2xl font-black text-teal-900 font-sans">{perimeter}</p>
+            <p className="text-[10px] font-black text-teal-800">{perimeter === 1 ? 'ضلع' : 'أضلاع'}</p>
           </div>
           <button
             onClick={resetGrid}

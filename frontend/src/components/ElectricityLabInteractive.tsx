@@ -72,6 +72,10 @@ export const ElectricityLabInteractive: React.FC = () => {
   const [circuitType, setCircuitType] = useState<CircuitType>('series');
   const [bulb1Broken, setBulb1Broken] = useState<boolean>(false);
   const [bulb2Broken, setBulb2Broken] = useState<boolean>(false);
+  const bulb1Lit =
+    !bulb1Broken && switchClosed && (circuitType === 'parallel' || !bulb2Broken);
+  const bulb2Lit =
+    !bulb2Broken && switchClosed && (circuitType === 'parallel' || !bulb1Broken);
 
   // Challenge Quiz State
   const [quizScore, setQuizScore] = useState<number>(0);
@@ -1035,16 +1039,12 @@ export const ElectricityLabInteractive: React.FC = () => {
                     cx="0"
                     cy="0"
                     r="22"
-                    fill={
-                      (!bulb1Broken && (circuitType === 'parallel' || !bulb2Broken) && switchClosed)
-                        ? '#fef08a'
-                        : '#334155'
-                    }
+                    fill={bulb1Lit ? '#fef08a' : '#334155'}
                     stroke="#64748b"
                     strokeWidth="2"
                   />
-                  <text x="0" y="5" fontSize="14" textAnchor="middle">
-                    {bulb1Broken ? '❌' : '💡'}
+                  <text x="0" y="5" fontSize={bulb1Broken || bulb1Lit ? 14 : 9} textAnchor="middle" fill={bulb1Lit ? undefined : '#cbd5e1'}>
+                    {bulb1Broken ? '❌' : bulb1Lit ? '💡' : 'طافئ'}
                   </text>
                   <text x="0" y="-30" fill="#f8fafc" fontSize="10" fontWeight="bold" textAnchor="middle">مصباح 1</text>
                 </g>
@@ -1055,30 +1055,30 @@ export const ElectricityLabInteractive: React.FC = () => {
                     cx="0"
                     cy="0"
                     r="22"
-                    fill={
-                      (!bulb2Broken && (circuitType === 'parallel' || !bulb1Broken) && switchClosed)
-                        ? '#fef08a'
-                        : '#334155'
-                    }
+                    fill={bulb2Lit ? '#fef08a' : '#334155'}
                     stroke="#64748b"
                     strokeWidth="2"
                   />
-                  <text x="0" y="5" fontSize="14" textAnchor="middle">
-                    {bulb2Broken ? '❌' : '💡'}
+                  <text x="0" y="5" fontSize={bulb2Broken || bulb2Lit ? 14 : 9} textAnchor="middle" fill={bulb2Lit ? undefined : '#cbd5e1'}>
+                    {bulb2Broken ? '❌' : bulb2Lit ? '💡' : 'طافئ'}
                   </text>
                   <text x="0" y="-30" fill="#f8fafc" fontSize="10" fontWeight="bold" textAnchor="middle">مصباح 2</text>
                 </g>
               </svg>
 
-              {/* Status Banner */}
+              {/* Status Banner — reflects the live experiment, not only the rule */}
               <div className="text-xs text-center font-bold text-amber-300 mt-2">
                 {circuitType === 'series' ? (
                   <span>
-                    الربط على التسلسل: شدة الإضاءة خافتة، وإذا تلف أحد المصباحين ينطفئ الآخر فوراً!
+                    {bulb1Broken || bulb2Broken
+                      ? 'دارة مفتوحة: المصباح التالف قطع الحلقة، فانطفأ المصباح الآخر أيضاً!'
+                      : 'الربط على التسلسل: شدة الإضاءة خافتة، وإذا تلف أحد المصباحين ينطفئ الآخر فوراً!'}
                   </span>
                 ) : (
                   <span>
-                    الربط على التفرع: شدة الإضاءة قوية، وإذا تلف أحد المصباحين يظل المصباح الثاني مشتعلاً!
+                    {(bulb1Broken || bulb2Broken) && (bulb1Lit || bulb2Lit)
+                      ? 'المصباح التالف انطفأ، والمصباح الآخر ما زال مشتعلاً — فرعان مستقلان!'
+                      : 'الربط على التفرع: شدة الإضاءة قوية، وإذا تلف أحد المصباحين يظل المصباح الثاني مشتعلاً!'}
                   </span>
                 )}
               </div>
@@ -1099,7 +1099,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                         : 'bg-emerald-600 text-white'
                     }`}
                   >
-                    {bulb1Broken ? 'تالف / مفكوك ❌' : 'سليم ويعمل ✅'}
+                    {bulb1Broken ? 'تالف / مفكوك ❌' : 'سليم ✅'}
                   </button>
                 </div>
 
@@ -1113,7 +1113,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                         : 'bg-emerald-600 text-white'
                     }`}
                   >
-                    {bulb2Broken ? 'تالف / مفكوك ❌' : 'سليم ويعمل ✅'}
+                    {bulb2Broken ? 'تالف / مفكوك ❌' : 'سليم ✅'}
                   </button>
                 </div>
 
