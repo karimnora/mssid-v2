@@ -283,6 +283,38 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             />
           </Card>
 
+          {/* Grade + Language Cards — kept right after Identity (not buried below the badges
+              gallery) so changing level/language stays a one-tap-in reach, like the old navbar
+              dropdown used to be (remonte utilisateur : "je veux reprendre la liberté de changer
+              la langue et les niveaux comme avant" after the navbar's grade readout became a
+              plain, non-interactive badge in the kids redesign). */}
+          {currentGrade && onGradeChange && (
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
+              <div data-profile-grade-strip className="grid grid-cols-5 gap-1.5">
+                {NAV_GRADES.map((g) => (
+                  <button
+                    key={g.id}
+                    type="button"
+                    onClick={() => onGradeChange(g.id)}
+                    className={`hit-target rounded-2xl text-xs font-extrabold cursor-pointer ${
+                      currentGrade === g.id
+                        ? 'bg-[var(--kids-grass-2)] text-white'
+                        : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                    }`}
+                  >
+                    {g.badge}
+                  </button>
+                ))}
+              </div>
+            </Card>
+          )}
+
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
+            <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
+            <LanguageSwitcher />
+          </Card>
+
           {/* Email Verification Reminder Card — discreet, non-blocking (SEC-08) */}
           {authUser && !authUser.emailVerified && (
             <Card padding="md" className="!bg-[#FFF8E7] !border-[#F5D98A] space-y-2.5 rounded-[22px]">
@@ -443,34 +475,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           </div>
 
-          {currentGrade && onGradeChange && (
-              <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
-                <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
-                <div data-profile-grade-strip className="grid grid-cols-5 gap-1.5">
-                  {NAV_GRADES.map((g) => (
-                    <button
-                      key={g.id}
-                      type="button"
-                      onClick={() => onGradeChange(g.id)}
-                      className={`hit-target rounded-2xl text-xs font-extrabold cursor-pointer ${
-                        currentGrade === g.id
-                          ? 'bg-[var(--kids-grass-2)] text-white'
-                          : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                      }`}
-                    >
-                      {g.badge}
-                    </button>
-                  ))}
-                </div>
-              </Card>
-            )}
-
-            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
-              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
-              <LanguageSwitcher />
-            </Card>
-
-            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
               <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
               <div className="grid grid-cols-3 gap-1.5">
                 {onThemeAuto && (

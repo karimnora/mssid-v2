@@ -75,13 +75,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </motion.button>
 
-        <p
+        <motion.button
+          type="button"
           data-nav-grade-readout
-          className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center shrink-0"
+          whileTap={{ scale: 0.95 }}
+          onClick={onOpenProfileModal}
+          className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center shrink-0 cursor-pointer"
+          title={t('changeGradeOrLanguageTitle')}
         >
           <span className="sr-only">{t(gradeMeta.labelKey)}</span>
           <span aria-hidden>{gradeMeta.badge}</span>
-        </p>
+        </motion.button>
 
         <motion.button
           type="button"

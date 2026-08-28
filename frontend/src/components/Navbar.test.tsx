@@ -41,4 +41,15 @@ describe('Navbar', () => {
     fireEvent.click(document.querySelector('[data-nav-avatar]') as HTMLElement);
     expect(onOpenProfileModal).toHaveBeenCalledTimes(1);
   });
+
+  // Regression: the grade readout used to be a plain <p>, with no way to change grade or
+  // language without already knowing to tap the avatar first. Tapping the grade badge now also
+  // opens the profile (where the grade picker and LanguageSwitcher live) — a second, more
+  // discoverable entry point to the same place, not a new separate menu.
+  it('also opens the profile from the grade badge', () => {
+    const onOpenProfileModal = vi.fn();
+    renderNav('2AP', onOpenProfileModal);
+    fireEvent.click(document.querySelector('[data-nav-grade-readout]') as HTMLElement);
+    expect(onOpenProfileModal).toHaveBeenCalledTimes(1);
+  });
 });
