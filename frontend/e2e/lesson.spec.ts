@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { MATH_5AP } from '../src/data/courses/5AP/math';
+import { openMathTrimester1 } from './helpers';
 
 // Driven directly from the real lesson data (not hardcoded strings) so this test stays correct if
 // the lesson's questions/options are ever edited. Trimester 1 is always free/unlocked regardless of
@@ -13,13 +14,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('a student can navigate to a lesson and complete its quiz', async ({ page }) => {
-  // Home now shows subject cards directly (see HomeView.tsx's "kids" redesign) — a subject opens
-  // straight into its trimester picker, no more intermediate "مراجعة الدروس" button to click first.
-  // data-subject-card (not the visible label): "الرياضيات" also matches the hero's continue-CTA and
-  // the unrelated math-lab card, which happens to share the same "kids-card-maths" CSS class.
-  await page.locator('[data-subject-card="math"]').click();
-  await page.getByRole('button', { name: 'الفصل الأول (Trimestre 1)' }).click();
-  await page.getByText(lesson.titleAr, { exact: true }).click();
+  await openMathTrimester1(page);
+
+  const lessonCard = page.locator(`[data-lesson-id="${lesson.id}"]`);
+  await expect(lessonCard).toBeVisible({ timeout: 60_000 });
+  await lessonCard.click();
 
   // Not anchored: the step-pastille button's accessible name also concatenates an icon and a step
   // index around the label, so only a substring match is reliable here.

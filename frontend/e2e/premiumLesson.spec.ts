@@ -11,15 +11,14 @@ const fullContent = JSON.parse(
   fs.readFileSync(path.join(__dirname, '../scripts/premium-content-out/math-5ap-division.full.json'), 'utf-8')
 );
 
+import { waitForCoursesReady } from './helpers';
+
 test.beforeEach(async ({ page }) => {
   await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
   await page.goto('/?g=5AP');
-  // Home now shows subject cards directly (see HomeView.tsx's "kids" redesign) — a subject opens
-  // straight into its trimester picker, no more intermediate "مراجعة الدروس" button to click first.
-  // data-subject-card (not the visible label): "الرياضيات" also matches the hero's continue-CTA and
-  // the unrelated math-lab card, which happens to share the same "kids-card-maths" CSS class.
   await page.locator('[data-subject-card="math"]').click();
-  await page.getByRole('button', { name: 'الفصل الثاني (Trimestre 2)' }).click();
+  await waitForCoursesReady(page);
+  await page.getByRole('button', { name: /الفصل الثاني|Trimestre 2/i }).click();
 });
 
 test('a guest opens math-5ap-division and sees rules without a premium fetch', async ({ page }) => {

@@ -8,12 +8,13 @@ const challenge = CHALLENGES_DATA.find((c) => c.id === 'challenge-math-large-num
 test.beforeEach(async ({ page }) => {
   await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
   // challenge-math-large-numbers is authored for 5AP only (getArenaChallenges filters by grade).
-  await page.goto('/?g=5AP');
+  await page.goto('/challenges?g=5AP');
 });
 
 test('a student can complete a challenge, answering every item correctly', async ({ page }) => {
-  await page.getByRole('button', { name: 'ساحة التحديات' }).click();
-  await page.locator('[data-challenge-id="challenge-math-large-numbers"]').click();
+  const card = page.locator('[data-challenge-id="challenge-math-large-numbers"]');
+  await expect(card).toBeVisible({ timeout: 60_000 });
+  await card.click();
 
   for (let i = 0; i < challenge.items.length; i++) {
     const item = challenge.items[i];

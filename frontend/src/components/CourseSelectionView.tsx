@@ -286,6 +286,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     key={lesson.id}
                     interactive
                     padding="none"
+                    data-lesson-id={lesson.id}
                     className={`h-full overflow-hidden light-surface !border-[#E7E2D7] rounded-[22px] ${locked ? 'relative' : ''}`}
                     onClick={() => onSelectLesson(lesson)}
                   >
