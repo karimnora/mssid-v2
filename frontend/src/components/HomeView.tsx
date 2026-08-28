@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade, SubjectId, SubjectInfo } from '../types';
@@ -10,6 +10,8 @@ import {
   ExamsPoleIcon,
   LabsPoleIcon,
 } from './HomePoleIcons';
+import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { speakText, stopSpeech } from '../utils/speech';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -108,6 +110,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const { direction, locale } = useLocaleContext();
   const [showAllSubjects, setShowAllSubjects] = useState(false);
 
+  // 1AP-3AP: same audio guidance level as CourseSelectionView — this is the very first screen a
+  // fragile reader lands on, so it needs a listen button at least as much as the screens after it.
+  const showAudio = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null);
+  const speechLang = locale === 'fr' ? 'fr-FR' : 'ar-SA';
+  useEffect(() => stopSpeech, []);
+  const handleSpeak = (key: string, text: string) => {
+    if (speakingKey === key) {
+      stopSpeech();
+      setSpeakingKey(null);
+      return;
+    }
+    setSpeakingKey(key);
+    void speakText(text, speechLang, 0.85).then(() => {
+      setSpeakingKey((prev) => (prev === key ? null : prev));
+    });
+  };
+
   const displayLevel = level ?? Math.floor(xp / 100) + 1;
   const progressPercent = xp % 100;
 
@@ -160,9 +180,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <p className="text-[12.5px] font-bold text-white/90">{t('systemBadge')}</p>
-            <h1 className="text-[22px] font-black leading-snug mt-0.5">
-              {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
-            </h1>
+            <div className="flex items-center gap-2 mt-0.5">
+              <h1 className="text-[22px] font-black leading-snug">
+                {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
+              </h1>
+              {showAudio && (
+                <TapSpeakButton
+                  snippetKey="home-welcome"
+                  text={isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
+                  speakingKey={speakingKey}
+                  onSpeak={handleSpeak}
+                  size="lg"
+                />
+              )}
+            </div>
             <p className="text-[13px] font-medium text-white/90 leading-relaxed mt-1">
               {t('heroGradeLine', { grade: tNav(GRADE_NAV_KEY[grade]) })}
             </p>
@@ -210,7 +241,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
+        {!isYoung && (
+          <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
+        )}
       </section>
 
       {isGuest && (
@@ -239,11 +272,21 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             type="button"
             onClick={() => onSelectPole('courses')}
-            className="text-[12.5px] font-bold text-[var(--kids-grass-2)]"
+            className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
           >
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
+          <div className="flex items-center gap-1.5">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="home-pole-courses"
+                text={t('poleCoursesTitle')}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
+          </div>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {visibleSubjects.map((subject) => (
@@ -285,11 +328,21 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             type="button"
             onClick={() => onSelectPole(examsPoleTarget)}
-            className="text-[12.5px] font-bold text-[var(--kids-grass-2)]"
+            className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
           >
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleExamsTitle')} 📝</h2>
+          <div className="flex items-center gap-1.5">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="home-pole-exams"
+                text={t('poleExamsTitle')}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleExamsTitle')} 📝</h2>
+          </div>
         </div>
         <motion.button
           type="button"
@@ -303,9 +356,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <h3 className="text-[15px] font-extrabold">
               {grade === '1AP' ? t('examPracticeTitle') : grade === '5AP' ? t('examBemTitle') : t('examTrimesterTitle')}
             </h3>
-            <p className="text-[11.5px] text-white/90 mt-0.5">
-              {grade === '1AP' ? t('examPracticeDesc') : grade === '5AP' ? t('examBemDesc') : t('examTrimesterDesc')}
-            </p>
+            {!isYoung && (
+              <p className="text-[11.5px] text-white/90 mt-0.5">
+                {grade === '5AP' ? t('examBemDesc') : t('examTrimesterDesc')}
+              </p>
+            )}
           </div>
           <span data-pole-icon="exams" className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
             <ExamsPoleIcon className="w-8 h-8" />
@@ -321,7 +376,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         >
           <div className="min-w-0">
             <h3 className="text-[15px] font-extrabold">{t('poleChallengesTitle')}</h3>
-            <p className="text-[11.5px] text-white/90 mt-0.5">{t('poleChallengesDesc')}</p>
+            {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('poleChallengesDesc')}</p>}
           </div>
           <span data-pole-icon="challenges" className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
             <ChallengesPoleIcon className="w-8 h-8" />
@@ -335,14 +390,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
             type="button"
             data-pole="labs"
             onClick={() => onSelectPole('labs')}
-            className="text-[12.5px] font-bold text-[var(--kids-grass-2)]"
+            className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
           >
             <span data-pole-icon="labs" className="inline-flex align-middle me-1" aria-hidden>
               <LabsPoleIcon className="w-4 h-4" />
             </span>
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleLabsTitle')} 🔬</h2>
+          <div className="flex items-center gap-1.5">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="home-pole-labs"
+                text={t('poleLabsTitle')}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleLabsTitle')} 🔬</h2>
+          </div>
         </div>
         {onOpenWilayas && (
           <motion.button
@@ -354,7 +419,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           >
             <div className="min-w-0">
               <h3 className="text-[15px] font-extrabold">{t('labWilayasTitle')}</h3>
-              <p className="text-[11.5px] text-white/90 mt-0.5">{t('labWilayasDesc')}</p>
+              {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labWilayasDesc')}</p>}
             </div>
             <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">🇩🇿</span>
           </motion.button>
@@ -369,7 +434,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           >
             <div className="min-w-0">
               <h3 className="text-[15px] font-extrabold">{t('labMathTitle')}</h3>
-              <p className="text-[11.5px] text-white/90 mt-0.5">{t('labMathDesc')}</p>
+              {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labMathDesc')}</p>}
             </div>
             <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">📐</span>
           </motion.button>

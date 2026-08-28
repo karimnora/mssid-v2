@@ -51,7 +51,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     <button
       type="button"
       onClick={() => handleTab(tab)}
-      className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-12 rounded-2xl transition-colors cursor-pointer ${
+      className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-[60px] rounded-2xl transition-colors cursor-pointer ${
         activeTab === tab && !profileOpen ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
       }`}
       aria-current={activeTab === tab && !profileOpen ? 'page' : undefined}
@@ -75,7 +75,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <button
           type="button"
           onClick={onOpenAiTutor}
-          className={`kids-nav-ai kids-pop w-[56px] h-[56px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 border-[var(--app-footer-bg)] cursor-pointer`}
+          className={`kids-nav-ai kids-pop w-[60px] h-[60px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 border-[var(--app-footer-bg)] cursor-pointer`}
           title={t('aiTutor')}
         >
           <span aria-hidden>🦊</span>
@@ -87,7 +87,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       <button
         type="button"
         onClick={onOpenProfile}
-        className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-12 rounded-2xl transition-colors cursor-pointer ${
+        className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-[60px] rounded-2xl transition-colors cursor-pointer ${
           profileOpen ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
         }`}
         aria-current={profileOpen ? 'page' : undefined}
