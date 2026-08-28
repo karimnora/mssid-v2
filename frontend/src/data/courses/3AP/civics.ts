@@ -1,6 +1,6 @@
 import { CourseLesson } from '../../../types';
 
-// 4 leçon(s) — civics / 3AP (dont 1 leçon d'éducation artistique, sans SubjectId dédié)
+// 3 leçon(s) — civics / 3AP
 export const CIVICS_3AP: CourseLesson[] = [
 // ==========================================
 // 🇩🇿 التربية المدنية (CIVICS) - 3AP
@@ -327,95 +327,6 @@ export const CIVICS_3AP: CourseLesson[] = [
           { id: 'a', textAr: 'نرمي النفايات في سلة المهملات المخصصة', isCorrect: true, explanationAr: 'صحيح! رمي النفايات في سلتها يحافظ على نظافة وجمال بيئة المدرسة.' },
           { id: 'b', textAr: 'نرمي بقايا الأكل على أرض الساحة', isCorrect: false, explanationAr: 'هذا يُلوّث بيئة المدرسة ويضر بنظافتها وجمالها.' },
           { id: 'c', textAr: 'نقطف أوراق النباتات والأشجار في الساحة', isCorrect: false, explanationAr: 'يجب المحافظة على النباتات والأشجار لا إتلافها، فهذا يضر ببيئة المدرسة.' }
-        ]
-      }
-    ]
-},
-
-{
-    id: 'art-3ap-t1-colors-rhythm',
-    grade: '3AP',
-    // No dedicated Art SubjectId exists in the app (checked: this is the only 'art-' lesson across
-    // all 5 grades) — creating one for a single lesson would add an entire subject tile with no
-    // other content behind it. Kept under 'civics' deliberately, but labeled unambiguously as arts
-    // content (domainAr/categoryAr below) so it never reads as an actual civics notion in the UI.
-    subject: 'civics',
-    trimester: 1,
-    domainAr: 'التربية الفنية والموسيقية',
-    sequenceAr: 'السلسلة 1: الألوان الأساسية والإيقاع الموسيقي',
-    categoryAr: 'نَشَاطٌ فَنِّيٌّ مُدْمَجٌ ضِمْنَ التَّرْبِيَةِ المَدَنِيَّةِ - الأَلْوَانُ وَالإِيقَاعُ',
-    titleAr: 'الأَلْوَانُ الأَسَاسِيَّةُ وَالأَلْوَانُ الثَّانَوِيَّةُ وَالإِيقَاعُ المُوسِيقِيُّ',
-    summaryAr: 'يتعلم الطفل التمييز بين الألوان الأساسية (الأحمر، الأزرق، الأصفر) وكيفية مزجها للحصول على الألوان الثانوية (الأخضر، البرتقالي، البنفسجي)، إضافة للتعرف على الإيقاع والأنشودة.',
-    objectiveAr: 'القدرة على مزج الألوان الأساسية، التعبير التشكيلي بالرسم، والإنشاد مع ضبط الإيقاع الصوتي.',
-    objectivesAr: [
-        'أُمَيِّزُ الأَلْوَانَ الأَسَاسِيَّةَ الثَّلاَثَةَ.',
-        'أَمْزُجُ لَوْنَيْنِ أَسَاسِيَّيْنِ لِلْحُصُولِ عَلَى لَوْنٍ ثَانَوِيٍّ.',
-    ],
-    detailedCourse: {
-        introAr: 'ثلاثة ألوان فقط (الأحمر والأزرق والأصفر) تكفي لصنع كل الألوان الأخرى تقريباً عند مزجها معاً بطرق مختلفة!',
-        vocabulary: [
-            { termAr: 'الألوان الأساسية', definitionAr: 'الأحمر والأزرق والأصفر، لا يمكن الحصول عليها من مزج ألوان أخرى.' },
-            { termAr: 'الألوان الثانوية', definitionAr: 'ألوان ناتجة عن مزج لونين أساسيين معاً، كالأخضر والبرتقالي والبنفسجي.' },
-        ],
-        visualizationHintAr: 'جرّب بنفسك مزج قطرة من اللون الأصفر مع قطرة من اللون الأزرق على ورقة رسم وشاهد اللون الأخضر يظهر أمامك.',
-        commonMistakes: [
-            { mistakeAr: 'الاعتقاد أن اللون الأخضر لون أساسي.', correctionAr: 'الأخضر لون ثانوي ينتج عن مزج الأصفر والأزرق، وليس لوناً أساسياً بحد ذاته.' },
-        ],
-        takeawayAr: 'الألوان الأساسية: أحمر، أزرق، أصفر. أصفر+أزرق=أخضر. أحمر+أصفر=برتقالي. أحمر+أزرق=بنفسجي.',
-    },
-    keyFormulas: [
-        { labelAr: 'مزج الألوان الثانوية', formulaAr: 'أصفر+أزرق=أخضر | أحمر+أصفر=برتقالي | أحمر+أزرق=بنفسجي' },
-    ],
-    discoveryAr: 'عندما نمزج اللون الأصفر مع الأزرق على ورقة الرسم نتحصل على اللون الأخضر اللطيف! 🎨',
-    rulesAr: [
-      'الأَلْوَانُ الأَسَاسِيَّةُ الثلاثة: الأَحْمَرُ، الأَزْرَقُ، الأَصْفَرُ (لا يمكن تركيبها من ألوان أخرى).',
-      'الأَلْوَانُ الثَّانَوِيَّةُ نتحصل عليها بمزج لونين أساسيين:\n- أصفر + أزرق = أَخْضَرُ 🌿\n- أحمر + أصفر = بَرْتُقَالِيُّ 🍊\n- أحمر + أزرق = بَنَفْسَجِيُّ 🍇'
-    ],
-    examplesAr: [
-      {
-        problem: 'ما هو اللون الناتج عن مزج اللونين الأصفر والأزرق؟',
-        solution: 'اللون الأخضر.'
-      }
-    ],
-    progressiveExercises: [
-      {
-        id: 'ex1-art3ap-mix',
-        level: 1,
-        levelLabelAr: '🟢 المستوى 1 — سهل',
-        problemAr: 'اذكر الألوان الأساسية الثلاثة في الرسم:',
-        hintsAr: ['الأحمر والأزرق و...'],
-        solutionAr: 'الأَحْمَرُ، الأَزْرَقُ، وَالأَصْفَرُ',
-        detailedCorrectionAr: 'أحسنت! 🎨 هذه هي الألوان الأساسية الثلاثة.',
-        xpReward: 10
-      }
-    ],
-    educationalGame: {
-      id: 'game-art-3ap-palette',
-      type: 'quiz_flash',
-      titleAr: '🎮 لعبة خلط الألوان السحرية',
-      instructionsAr: 'مزج الألوان واكتشف النتيجة!',
-      items: [
-        { questionOrPromptAr: 'أحمر + أصفر يعطينا لون .....', correctAnswerAr: 'بَرْتُقَالِيُّ', optionsAr: ['بَرْتُقَالِيُّ', 'أخضر', 'أسود'], explanationAr: 'مزج الأحمر والأصفر يعطي البرتقالي.' }
-      ],
-      xpReward: 20
-    },
-    quiz: [
-      {
-        id: 'q1-art',
-        questionAr: 'اللون الأخضر هو لون:',
-        options: [
-          { id: 'a', textAr: 'ثَانَوِيٌّ (ينتج عن مزج الأصفر والأزرق)', isCorrect: true, explanationAr: 'صحيح! الأخضر لون ثانوِيّ.' },
-          { id: 'b', textAr: 'أساسي', isCorrect: false, explanationAr: 'الألوان الأساسية هي الأحمر والأزرق والأصفر فقط، والأخضر ليس منها.' },
-          { id: 'c', textAr: 'لا ينتج عن مزج ألوان أخرى', isCorrect: false, explanationAr: 'هذا غير صحيح، فالأخضر ينتج فعلاً من مزج الأصفر والأزرق معاً.' }
-        ]
-      },
-      {
-        id: 'q2-art',
-        questionAr: 'ما هو اللون الناتج عن مزج الأحمر مع الأزرق؟',
-        options: [
-          { id: 'a', textAr: 'بَنَفْسَجِيٌّ', isCorrect: true, explanationAr: 'صحيح! مزج الأحمر مع الأزرق يعطي اللون البنفسجي.' },
-          { id: 'b', textAr: 'بَرْتُقَالِيٌّ', isCorrect: false, explanationAr: 'البرتقالي ينتج عن مزج الأحمر مع الأصفر، وليس مع الأزرق.' },
-          { id: 'c', textAr: 'أَخْضَرُ', isCorrect: false, explanationAr: 'الأخضر ينتج عن مزج الأصفر مع الأزرق، وليس الأحمر مع الأزرق.' }
         ]
       }
     ]

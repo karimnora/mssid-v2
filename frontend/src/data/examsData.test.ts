@@ -114,4 +114,32 @@ describe('exam bank integrity', () => {
     expect(devoirs.some((e) => e.subject === 'arabic')).toBe(true);
     expect(devoirs.some((e) => e.subject === 'science')).toBe(true);
   });
+
+  it('ships P2 tamazight, art and technology compositions on 3AP–5AP T1–T3', () => {
+    (['3AP', '4AP', '5AP'] as const).forEach((grade) => {
+      (['tamazight', 'art', 'technology'] as const).forEach((subject) => {
+        ([1, 2, 3] as const).forEach((trimester) => {
+          expect(
+            OFFICIAL_EXAMS_DATA.some(
+              (exam) =>
+                exam.grade === grade &&
+                exam.subject === subject &&
+                exam.trimester === trimester &&
+                getExamKind(exam) === 'composition'
+            ),
+            `${grade} ${subject} T${trimester}`
+          ).toBe(true);
+        });
+      });
+    });
+  });
+
+  it('never puts tamazight, art or technology before 3AP', () => {
+    const tooEarly = OFFICIAL_EXAMS_DATA.filter(
+      (exam) =>
+        (exam.grade === '1AP' || exam.grade === '2AP') &&
+        (exam.subject === 'tamazight' || exam.subject === 'art' || exam.subject === 'technology')
+    );
+    expect(tooEarly).toEqual([]);
+  });
 });

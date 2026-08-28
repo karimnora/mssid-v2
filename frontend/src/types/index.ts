@@ -9,6 +9,8 @@ export type SubjectId =
   | 'math'
   | 'arabic'
   | 'tamazight'
+  | 'art'
+  | 'technology'
   | 'soroban'
   | 'exams'
   | 'science'
@@ -712,6 +714,8 @@ export interface ExamExercise {
   solutionAr: string;
   /** Math papers: posed operations for the official notebook columns (العمليات | الحل). */
   operationsAr?: string;
+  /** Arabic grammar: الكلمة / إعرابها shown blank on the subject, filled in the corrigé. */
+  irabTableAr?: { wordAr: string; analysisAr: string }[];
   /** Lesson to open after the corrigé — one notion, not the whole paper. */
   relatedLessonId?: string;
 }

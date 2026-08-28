@@ -12,6 +12,7 @@ import { ENGLISH_5AP } from './english';
 import { ENGLISH_5AP_WILL_DIRECTIONS } from './english-will-directions';
 import { SOROBAN_5AP } from './soroban';
 import { TAMAZIGHT_5AP } from './tamazight';
+import { ART_5AP } from './art';
 
 export const COURSES_5AP: CourseLesson[] = [
   ...MATH_5AP,
@@ -27,4 +28,5 @@ export const COURSES_5AP: CourseLesson[] = [
   ...ENGLISH_5AP_WILL_DIRECTIONS,
   ...SOROBAN_5AP,
   ...TAMAZIGHT_5AP,
+  ...ART_5AP,
 ];

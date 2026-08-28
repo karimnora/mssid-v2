@@ -1,6 +1,7 @@
 import { OfficialExam } from '../types';
 import { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR } from './examSourceNotes';
 import { EXTRA_EXAM_PAPERS } from './exams/extraPapers';
+import { P2_EXAM_PAPERS } from './exams/p2ExamPapers';
 
 export { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR };
 
@@ -1697,4 +1698,4 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
   },
 ];
 
-export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [...CORE_EXAM_PAPERS, ...EXTRA_EXAM_PAPERS];
+export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [...CORE_EXAM_PAPERS, ...EXTRA_EXAM_PAPERS, ...P2_EXAM_PAPERS];
