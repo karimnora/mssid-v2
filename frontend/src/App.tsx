@@ -242,36 +242,11 @@ export default function App() {
 
       <Navbar
         currentGrade={nav.grade}
-        onGradeChange={(g) => {
-          nav.handleGradeChange(g);
-          if (authUser) AuthService.updateGrade(g);
-        }}
         userProfile={progress.userProfile}
         authUser={authUser}
-        onOpenAuthModal={() => modals.openAuth('login')}
-        onLogout={() => {
-          AuthService.logout();
-          progress.handleLogoutProgressReset(nav.grade);
-        }}
-        onOpenAiTutor={openAiTutor}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
-        onOpenContactModal={() => modals.setIsContactModalOpen(true)}
-        /* Web-only marketing preview ("here's what the app looks like on a phone") — nonsensical
-           inside the native app itself, where the user already is the app. */
-        onOpenMobileSimulator={Capacitor.isNativePlatform() ? undefined : () => modals.setIsMobileSimulatorOpen(true)}
-        onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
-        onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}
-        onOpenAdminConsole={() => nav.setIsAdminConsoleActive(true)}
-        onOpenPreschool={() => nav.setIsPreschoolActive(true)}
         onHomeClick={nav.goHome}
         currentTheme={headerTheme}
-        onThemeChange={(t) => {
-          setThemeIsManual(true);
-          window.localStorage.setItem(THEME_MANUAL_KEY, 'true');
-          setHeaderTheme(t);
-        }}
-        isThemeAuto={!themeIsManual}
-        onThemeAuto={handleThemeAuto}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
@@ -458,7 +433,28 @@ export default function App() {
           nav.setSelectedSubject(subject);
           nav.setIsHomeActive(false);
         }}
-        onGradeChange={(g) => nav.setGrade(g)}
+        onGradeChange={(g) => {
+          nav.handleGradeChange(g);
+          if (authUser) AuthService.updateGrade(g);
+        }}
+        onOpenAuthModal={() => modals.openAuth('login')}
+        onLogout={() => {
+          AuthService.logout();
+          progress.handleLogoutProgressReset(nav.grade);
+        }}
+        onOpenAdminConsole={() => nav.setIsAdminConsoleActive(true)}
+        onOpenPreschool={() => nav.setIsPreschoolActive(true)}
+        onOpenContactModal={() => modals.setIsContactModalOpen(true)}
+        onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
+        onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}
+        currentTheme={headerTheme}
+        onThemeChange={(t) => {
+          setThemeIsManual(true);
+          window.localStorage.setItem(THEME_MANUAL_KEY, 'true');
+          setHeaderTheme(t);
+        }}
+        isThemeAuto={!themeIsManual}
+        onThemeAuto={handleThemeAuto}
         onResetProgress={progress.handleResetProgress}
         onUpdateName={progress.handleUpdateProfileName}
         onUpdateAvatar={progress.handleUpdateProfileAvatar}

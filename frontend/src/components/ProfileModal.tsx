@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { UserProfile } from '../types';
+import { UserProfile, PrimaryGrade } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Award, Flame, Trophy, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles, Mail } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles, Mail, KeyRound, LogOut, MessageSquare, FileText, Home } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
@@ -12,6 +12,8 @@ import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
 import { AuthService } from '../services/authService';
 import { ParentGateModal } from './ParentGateModal';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { HeaderTheme, NAV_GRADES, THEME_OPTIONS } from './Navbar';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -24,6 +26,19 @@ interface ProfileModalProps {
   onUpdateName?: (newName: string) => void;
   onUpdateAvatar?: (newAvatar: string) => void;
   onRefreshFromDb?: () => Promise<void>;
+  currentGrade?: PrimaryGrade;
+  onGradeChange?: (grade: PrimaryGrade) => void;
+  onOpenAuthModal?: () => void;
+  onLogout?: () => void;
+  onOpenAdminConsole?: () => void;
+  onOpenPreschool?: () => void;
+  onOpenContactModal?: () => void;
+  onOpenPrivacyPolicy?: () => void;
+  onOpenTermsOfService?: () => void;
+  currentTheme?: HeaderTheme;
+  onThemeChange?: (theme: HeaderTheme) => void;
+  isThemeAuto?: boolean;
+  onThemeAuto?: () => void;
 }
 
 const AVATAR_OPTIONS = [
@@ -43,8 +58,22 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onUpdateName,
   onUpdateAvatar,
   onRefreshFromDb,
+  currentGrade,
+  onGradeChange,
+  onOpenAuthModal,
+  onLogout,
+  onOpenAdminConsole,
+  onOpenPreschool,
+  onOpenContactModal,
+  onOpenPrivacyPolicy,
+  onOpenTermsOfService,
+  currentTheme = 'neutre',
+  onThemeChange,
+  isThemeAuto = false,
+  onThemeAuto,
 }) => {
   const t = useTranslation('common');
+  const tNav = useTranslation('navigation');
   const { direction } = useLocaleContext();
   const currentName = authUser?.nom || userProfile.name;
   const [editedName, setEditedName] = useState(currentName);
@@ -457,9 +486,142 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           )}
 
           {pane === 'parents' && (
+            <>
+            {currentGrade && onGradeChange && (
+              <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+                <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
+                <div data-profile-grade-strip className="grid grid-cols-5 gap-1.5">
+                  {NAV_GRADES.map((g) => (
+                    <button
+                      key={g.id}
+                      type="button"
+                      onClick={() => onGradeChange(g.id)}
+                      className={`hit-target rounded-2xl text-xs font-extrabold cursor-pointer ${
+                        currentGrade === g.id
+                          ? 'bg-[var(--kids-grass-2)] text-white'
+                          : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                      }`}
+                    >
+                      {g.badge}
+                    </button>
+                  ))}
+                </div>
+              </Card>
+            )}
+
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
+              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
+              <LanguageSwitcher />
+            </Card>
+
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
+              <div className="grid grid-cols-3 gap-1.5">
+                {onThemeAuto && (
+                  <button
+                    type="button"
+                    onClick={onThemeAuto}
+                    className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
+                      isThemeAuto ? 'bg-[var(--kids-grass-2)] text-white' : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                    }`}
+                  >
+                    {tNav('themeAutoShort')}
+                  </button>
+                )}
+                {THEME_OPTIONS.map((opt) => (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => onThemeChange?.(opt.id)}
+                    className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
+                      !isThemeAuto && currentTheme === opt.id
+                        ? 'bg-[var(--kids-grass-2)] text-white'
+                        : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                    }`}
+                  >
+                    {tNav(opt.id === 'neutre' ? 'themeNeutreShort' : 'themeDarkShort')}
+                  </button>
+                ))}
+              </div>
+            </Card>
+
             <Card padding="md" className="!bg-white !border-[#E7E2D7] rounded-[22px]">
               <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
             </Card>
+
+            <div className="space-y-2">
+              {onOpenPreschool && (
+                <button
+                  type="button"
+                  onClick={() => { onOpenPreschool(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-[#FFF8E7] border-2 border-[#F5D98A] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <Home className="w-4 h-4" />
+                  {t('profilePreschoolCta')}
+                </button>
+              )}
+              {!authUser && onOpenAuthModal && (
+                <button
+                  type="button"
+                  onClick={() => { onOpenAuthModal(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-[var(--kids-grass-2)] text-white text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <KeyRound className="w-4 h-4" />
+                  {tNav('loginRegisterCta')}
+                </button>
+              )}
+              {authUser && onLogout && (
+                <button
+                  type="button"
+                  onClick={() => { onLogout(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--brand-coral)] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  {tNav('logout')}
+                </button>
+              )}
+              {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
+                <button
+                  type="button"
+                  onClick={() => { onOpenAdminConsole(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-[var(--brand-amber)]/20 border-2 border-[var(--brand-amber)] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  {tNav('adminConsole')}
+                </button>
+              )}
+              {onOpenContactModal && (
+                <button
+                  type="button"
+                  onClick={() => { onOpenContactModal(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  {tNav('contactUs')}
+                </button>
+              )}
+              {onOpenPrivacyPolicy && (
+                <button
+                  type="button"
+                  onClick={() => { onOpenPrivacyPolicy(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  {tNav('privacyPolicyMenuItem')}
+                </button>
+              )}
+              {onOpenTermsOfService && (
+                <button
+                  type="button"
+                  onClick={() => { onOpenTermsOfService(); onClose(); }}
+                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  {tNav('termsMenuItem')}
+                </button>
+              )}
+            </div>
+            </>
           )}
         </div>
 

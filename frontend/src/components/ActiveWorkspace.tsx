@@ -90,9 +90,16 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
     }
   }, [selectedSubject, onVisitLab]);
 
+  const labOpen = isLabSubjectId(selectedSubject);
+
   return (
   <div id="active-interactive-tool-section" className="scroll-mt-24 transition-all duration-300 relative">
       <Suspense fallback={<LoadingFallback label={t('loadingInteractiveTool')} />}>
+      <div
+        data-lab-shell={labOpen ? 'true' : undefined}
+        className={labOpen ? 'lab-interior kids-pole overflow-hidden rounded-[28px]' : undefined}
+      >
+      {labOpen && <div className="kids-hero-band" />}
       {selectedSubject === 'algerian_market' ? (
         <AlgerianCurrencyMarket
           grade={grade}
@@ -191,6 +198,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           onHomeClick={onBackToCourses}
         />
       ) : null}
+      </div>
     </Suspense>
   </div>
   );

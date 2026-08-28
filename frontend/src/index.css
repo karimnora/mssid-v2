@@ -172,6 +172,40 @@ body {
   width: 100%;
 }
 
+.lab-interior {
+  background: #ffffff;
+  color: var(--kids-ink);
+}
+
+.lab-interior .bg-slate-900:not([data-lab-instrument]),
+.lab-interior .bg-slate-950:not([data-lab-instrument]),
+.lab-interior .bg-slate-800,
+.lab-interior .bg-slate-800\/80,
+.lab-interior .bg-slate-800\/90,
+.lab-interior .bg-slate-950\/80 {
+  background-color: #ffffff !important;
+  border-color: #E7E2D7 !important;
+}
+
+.lab-interior [class*="from-violet"],
+.lab-interior [class*="from-fuchsia"],
+.lab-interior [class*="from-purple"],
+.lab-interior [class*="from-indigo"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  color: var(--kids-ink) !important;
+  border-color: #E7E2D7 !important;
+}
+
+.lab-interior [class*="bg-purple-"],
+.lab-interior [class*="bg-indigo-"],
+.lab-interior [class*="bg-fuchsia-"],
+.lab-interior [class*="bg-violet-"] {
+  background-color: var(--brand-emerald) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-emerald) !important;
+}
+
 .kids-card-arabe { background: linear-gradient(150deg, #4ADE80, #008751); }
 .kids-card-maths { background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-sky-2)); }
 .kids-card-maths-soft { background: linear-gradient(150deg, #7DD3FC, var(--kids-sky-2)); }

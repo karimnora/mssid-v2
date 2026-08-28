@@ -195,7 +195,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
       : currentVerb.imperative || currentVerb.present;
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -203,8 +203,8 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
             <Sparkles className="w-6 h-6 animate-pulse" />
           </div>
           <div>
-            <h2 className="text-lg font-black text-emerald-300">أَدَاةُ تَصْرِيفِ الأَفْعَالِ العَرَبِيَّةِ التَّفَاعُلِيَّةِ</h2>
-            <p className="text-xs text-slate-300">جدول التصريف التفاعلي مع قواعد الفك والزيادة والتغيير</p>
+            <h2 className="text-lg font-extrabold text-[var(--kids-ink)]">أَدَاةُ تَصْرِيفِ الأَفْعَالِ العَرَبِيَّةِ التَّفَاعُلِيَّةِ</h2>
+            <p className="text-xs text-[var(--kids-muted)]">جدول التصريف التفاعلي مع قواعد الفك والزيادة والتغيير</p>
           </div>
         </div>
         <span className="bg-emerald-400/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold">

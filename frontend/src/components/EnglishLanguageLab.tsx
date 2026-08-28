@@ -279,7 +279,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
   );
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4 flex-wrap gap-3">
         <div className="flex items-center gap-3">
@@ -287,10 +287,10 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
             <Globe className="w-6 h-6 animate-pulse" />
           </div>
           <div>
-            <h2 className="text-lg font-black text-indigo-300">
+            <h2 className="text-lg font-extrabold text-[var(--kids-ink)]">
               أَدَاةُ تَصْرِيفِ الأَفْعَالِ الإِنْجِلِيزِيَّةِ التَّفَاعُلِيَّةِ (English Verbs Conjugator 3AP-5AP)
             </h2>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-[var(--kids-muted)]">
               تصريف تفاعلي ممتع وشامل لأهم الأفعال الإنجليزية المقررة في المنهج الابتدائي مع الاستماع والتحديات
             </p>
           </div>

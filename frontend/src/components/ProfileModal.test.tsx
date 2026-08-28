@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import { ProfileModal } from './ProfileModal';
 import { AuthService } from '../services/authService';
 import { AuthUser } from '../types/auth';
@@ -192,5 +192,28 @@ describe('ProfileModal email verification reminder', () => {
     });
 
     expect(screen.getByRole('button', { name: /إعادة الإرسال بعد \d+ ثانية/ })).toBeDisabled();
+  });
+});
+
+describe('ProfileModal parent settings', () => {
+  it('lets a parent change the school year after unlocking Parents', () => {
+    const onGradeChange = vi.fn();
+    renderModal(
+      <ProfileModal
+        isOpen={true}
+        onClose={vi.fn()}
+        userProfile={baseUserProfile}
+        authUser={{ ...baseAuthUser, emailVerified: true }}
+        tashkeelEnabled={false}
+        onToggleTashkeel={vi.fn()}
+        onResetProgress={vi.fn()}
+        currentGrade="1AP"
+        onGradeChange={onGradeChange}
+      />
+    );
+    openParentsPane();
+    const strip = document.querySelector('[data-profile-grade-strip]') as HTMLElement;
+    fireEvent.click(within(strip).getByText('5AP'));
+    expect(onGradeChange).toHaveBeenCalledWith('5AP');
   });
 });

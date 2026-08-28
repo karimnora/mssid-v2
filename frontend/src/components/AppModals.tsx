@@ -15,6 +15,7 @@ import { ContactModal } from './ContactModal';
 import { Badge as BadgeInfo } from '../types';
 import { useAppModals } from '../hooks/useAppModals';
 import { useTranslation } from '../hooks/useTranslation';
+import { HeaderTheme } from './Navbar';
 
 const DidouDressingRoomModal = lazy(() => import('./DidouDressingRoomModal').then((m) => ({ default: m.DidouDressingRoomModal })));
 const HomeworkPinModal = lazy(() => import('./HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
@@ -42,6 +43,17 @@ interface AppModalsProps {
   onRestoreLesson: (lesson: CourseLesson) => void;
   onStartHomework: (subject: CourseLesson['subject']) => void;
   onGradeChange: (grade: PrimaryGrade) => void;
+  onOpenAuthModal: () => void;
+  onLogout: () => void;
+  onOpenAdminConsole: () => void;
+  onOpenPreschool: () => void;
+  onOpenContactModal: () => void;
+  onOpenPrivacyPolicy: () => void;
+  onOpenTermsOfService: () => void;
+  currentTheme: HeaderTheme;
+  onThemeChange: (theme: HeaderTheme) => void;
+  isThemeAuto: boolean;
+  onThemeAuto: () => void;
   onResetProgress: () => boolean;
   onUpdateName: (name: string) => void;
   onUpdateAvatar: (avatar: string) => void;
@@ -63,6 +75,17 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onRestoreLesson,
   onStartHomework,
   onGradeChange,
+  onOpenAuthModal,
+  onLogout,
+  onOpenAdminConsole,
+  onOpenPreschool,
+  onOpenContactModal,
+  onOpenPrivacyPolicy,
+  onOpenTermsOfService,
+  currentTheme,
+  onThemeChange,
+  isThemeAuto,
+  onThemeAuto,
   onResetProgress,
   onUpdateName,
   onUpdateAvatar,
@@ -95,6 +118,28 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onUpdateName={onUpdateName}
         onUpdateAvatar={onUpdateAvatar}
         onRefreshFromDb={onRefreshFromDb}
+        currentGrade={grade}
+        onGradeChange={onGradeChange}
+        onOpenAuthModal={onOpenAuthModal}
+        onLogout={onLogout}
+        onOpenAdminConsole={onOpenAdminConsole}
+        onOpenPreschool={onOpenPreschool}
+        onOpenContactModal={() => {
+          modals.setIsProfileModalOpen(false);
+          onOpenContactModal();
+        }}
+        onOpenPrivacyPolicy={() => {
+          modals.setIsProfileModalOpen(false);
+          onOpenPrivacyPolicy();
+        }}
+        onOpenTermsOfService={() => {
+          modals.setIsProfileModalOpen(false);
+          onOpenTermsOfService();
+        }}
+        currentTheme={currentTheme}
+        onThemeChange={onThemeChange}
+        isThemeAuto={isThemeAuto}
+        onThemeAuto={onThemeAuto}
       />
     </Suspense>
 

@@ -142,18 +142,18 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   return (
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       {/* Header */}
-      <div className="bg-gradient-to-r from-amber-600 via-yellow-600 to-emerald-700 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-amber-500/40 relative overflow-hidden">
+      <div className="kids-pole rounded-[28px] p-6 sm:p-8 relative overflow-hidden">
         <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+          <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
+            <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
             <span>مختبر الرياضيات التفاعلي — {grade === '1AP' ? 'السنة الأولى (0–20)' : 'السنة الأولى والثانية (1AP / 2AP)'}</span>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">
+          <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">
             {grade === '1AP'
               ? 'الشريط العددي حتى 20'
               : 'الشريط العددي حتى 99 والعمليات العمودية (الجمع والطرح)'}
           </h1>
-          <p className="text-xs sm:text-sm text-amber-100 leading-relaxed max-w-3xl">
+          <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
             {grade === '1AP'
               ? 'استكشف الأعداد من 0 إلى 20 وتعلّم تفكيك الوحدات والعشرات.'
               : 'استكشف الشريط العددي من 0 إلى 99، وتعلّم تفكيك الوحدات والعشرات، وتدرّب خطوة بخطوة على وضع العمليات الحسابية بالاحتفاظ والاستعارة.'}

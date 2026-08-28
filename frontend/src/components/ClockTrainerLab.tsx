@@ -86,14 +86,14 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
 
   return (
     <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
-      <div className="bg-gradient-to-r from-violet-700 via-purple-800 to-fuchsia-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-violet-600/40 relative overflow-hidden">
+      <div className="kids-pole rounded-[28px] p-6 sm:p-8 relative overflow-hidden">
         <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+          <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
+            <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
             <span>مختبر قراءة السَّاعة (2AP - 5AP)</span>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">مُدَرِّبُ السَّاعَةِ التَّفَاعُلِيُّ</h1>
-          <p className="text-xs sm:text-sm text-violet-100 leading-relaxed max-w-3xl">
+          <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">مُدَرِّبُ السَّاعَةِ التَّفَاعُلِيُّ</h1>
+          <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
             اضبط عقارب الساعة وشاهد الوقت الرقمي فوراً، ثم اختبر نفسك في قراءة الساعة.
           </p>
         </div>
@@ -103,7 +103,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
         <button
           onClick={() => setActiveTab('explore')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-            activeTab === 'explore' ? 'bg-violet-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+            activeTab === 'explore' ? 'bg-[var(--brand-emerald)] text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
           🕐 اضبط الساعة
@@ -111,7 +111,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
         <button
           onClick={() => setActiveTab('quiz')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-            activeTab === 'quiz' ? 'bg-fuchsia-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+            activeTab === 'quiz' ? 'bg-[var(--brand-emerald)] text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
           🧠 اختبر معلوماتك
@@ -121,7 +121,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
       {activeTab === 'explore' && (
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
           <AnalogClock hour={hour} minute={minute} />
-          <p className="font-black text-3xl text-violet-800 font-sans tabular-nums">
+          <p className="font-extrabold text-3xl text-[var(--brand-emerald)] font-sans tabular-nums">
             {String(hour).padStart(2, '0')}:{String(minute).padStart(2, '0')}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
@@ -133,7 +133,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
                 max={11}
                 value={hour % 12}
                 onChange={(e) => setHour(Number(e.target.value))}
-                className="w-full cursor-pointer accent-violet-600"
+                className="w-full cursor-pointer accent-[var(--brand-emerald)]"
               />
             </div>
             <div className="space-y-1.5">
@@ -145,7 +145,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
                 step={minuteStep}
                 value={minute}
                 onChange={(e) => setMinute(Number(e.target.value))}
-                className="w-full cursor-pointer accent-fuchsia-600"
+                className="w-full cursor-pointer accent-[var(--brand-emerald)]"
               />
             </div>
           </div>
@@ -168,7 +168,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
                       ? isCorrectOpt
                         ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
                         : 'bg-slate-100 text-slate-400 border-slate-200'
-                      : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-violet-400'
+                      : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-[var(--brand-emerald)]'
                   }`}
                 >
                   {opt.labelAr}
@@ -184,7 +184,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
           {answered !== null && (
             <button
               onClick={nextQuiz}
-              className="px-5 py-3 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+              className="hit-target px-5 py-3 rounded-2xl bg-[var(--brand-emerald)] text-white font-extrabold text-xs sm:text-sm cursor-pointer"
             >
               السُّؤَالُ التَّالِي ⟵
             </button>

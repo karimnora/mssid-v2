@@ -260,7 +260,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
           </div>
 
           {/* Abacus Graphics Container */}
-          <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 text-white shadow-inner relative border-4 border-amber-900/60 overflow-x-auto">
+          <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 text-white shadow-inner relative border-4 border-amber-900/60 overflow-x-auto" data-lab-instrument="true">
             {/* Wooden Frame Label */}
             <div className="text-center text-[9px] sm:text-[10px] font-mono text-amber-300 uppercase tracking-widest mb-2 sm:mb-3">
               SOROBAN ALGERIA // JAPANESE ABACUS SIMULATOR

@@ -93,7 +93,7 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
     isConductorInSlot;
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -385,7 +385,7 @@ const SafetyRoleplayView: React.FC<{ gameplay: SafetyRoleplayGameplay; showFrenc
   const selectedChoice = gameplay.choices.find((c) => c.id === selectedChoiceId);
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -531,7 +531,7 @@ const MixturesLabView: React.FC<{ gameplay: MixtureGameplay; showFrench: boolean
   const selectedMethod = recipe.availableMethods.find((m) => m.id === selectedMethodId);
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -676,7 +676,7 @@ const ProcessStagesView: React.FC<{ gameplay: ProcessStagesGameplay; showFrench:
   const stage = gameplay.stages[activeIdx];
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-6 space-y-6 dir-rtl" dir="rtl">
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-teal-500/20 text-teal-400 rounded-2xl border border-teal-500/30">
@@ -732,7 +732,7 @@ const MatchingLabView: React.FC<{ gameplay: MatchingLabGameplay; showFrench: boo
   const pair = gameplay.pairs[activeIdx];
 
   return (
-    <div className="bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">
+    <div className="kids-pole rounded-[28px] p-6 space-y-6 dir-rtl" dir="rtl">
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-cyan-500/20 text-cyan-400 rounded-2xl border border-cyan-500/30">

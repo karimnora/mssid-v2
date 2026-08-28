@@ -1,86 +1,44 @@
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen, within, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Navbar } from './Navbar';
 import { LocaleProvider } from '../context/LocaleContext';
 import { createFreshGuestProfile } from '../hooks/useUserProgress';
 
-const renderNav = (grade: '1AP' | '5AP') =>
+const renderNav = (grade: '1AP' | '2AP' | '5AP', onOpenProfileModal = vi.fn()) =>
   render(
     <LocaleProvider>
       <Navbar
         currentGrade={grade}
-        onGradeChange={vi.fn()}
         userProfile={createFreshGuestProfile(grade)}
         authUser={null}
-        onOpenAuthModal={vi.fn()}
-        onLogout={vi.fn()}
-        onOpenAiTutor={vi.fn()}
-        onOpenProfileModal={vi.fn()}
-        onOpenPreschool={vi.fn()}
+        onOpenProfileModal={onOpenProfileModal}
         onHomeClick={vi.fn()}
       />
     </LocaleProvider>
   );
 
 describe('Navbar', () => {
-  it('uses the full chrome on 1AP', () => {
+  it('shows the child chrome on 1AP: logo, grade readout, avatar', () => {
     renderNav('1AP');
-    expect(document.querySelector('[data-nav-child="false"]')).toBeTruthy();
-    expect(screen.getByText('الرئيسية')).toBeInTheDocument();
+    expect(document.querySelector('[data-nav-child="true"]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-grade-readout]')?.textContent).toContain('1AP');
+    expect(document.querySelector('[data-nav-avatar]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-grade-strip]')).toBeNull();
+    expect(document.querySelector('[data-parent-drawer-trigger]')).toBeNull();
+    expect(screen.queryByText('تغيير المظهر والثيم')).not.toBeInTheDocument();
   });
 
-  it('keeps the adult chrome from 5AP', () => {
+  it('keeps the same child chrome on 5AP', () => {
     renderNav('5AP');
-    expect(document.querySelector('[data-nav-child="false"]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-child="true"]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-grade-readout]')?.textContent).toContain('5AP');
   });
 
-  it('shows all grade levels in the nav strip without horizontal scroll', () => {
-    renderNav('5AP');
-    const strip = document.querySelector('[data-nav-grade-strip]');
-    expect(strip).toBeTruthy();
-    expect(strip?.className).toMatch(/grid-cols-6/);
-    expect(strip?.className).not.toMatch(/overflow-x-auto/);
-
-    const stripScope = within(strip as HTMLElement);
-    ['1AP', '2AP', '3AP', '4AP', '5AP'].forEach((grade) => {
-      expect(stripScope.getByText(grade)).toBeInTheDocument();
-    });
-
-    const preschool = document.querySelector('[data-nav-preschool="true"]');
-    expect(preschool).toBeTruthy();
-    expect(preschool?.getAttribute('aria-label')).toBeTruthy();
-    expect(preschool?.textContent).toContain('🦊');
-  });
-
-  it('asks a parent before changing the school year', () => {
-    const onGradeChange = vi.fn();
-    render(
-      <LocaleProvider>
-        <Navbar
-          currentGrade="1AP"
-          onGradeChange={onGradeChange}
-          userProfile={createFreshGuestProfile('1AP')}
-          authUser={null}
-          onOpenAuthModal={vi.fn()}
-          onLogout={vi.fn()}
-          onOpenAiTutor={vi.fn()}
-          onOpenProfileModal={vi.fn()}
-          onOpenPreschool={vi.fn()}
-          onHomeClick={vi.fn()}
-        />
-      </LocaleProvider>,
-    );
-
-    const strip = document.querySelector('[data-nav-grade-strip]') as HTMLElement;
-    fireEvent.click(within(strip).getByText('5AP'));
-    expect(screen.getByText('بوابة الوالدين')).toBeInTheDocument();
-    expect(onGradeChange).not.toHaveBeenCalled();
-
-    const prompt = screen.getByText(/^\d+ \+ \d+ = \?$/);
-    const [a, b] = prompt.textContent!.match(/\d+/g)!.map(Number);
-    fireEvent.change(screen.getByPlaceholderText('اكتب الناتج هنا'), { target: { value: String(a + b) } });
-    fireEvent.click(screen.getByRole('button', { name: 'متابعة' }));
-    expect(onGradeChange).toHaveBeenCalledWith('5AP');
+  it('opens the profile from the avatar, not a parent drawer', () => {
+    const onOpenProfileModal = vi.fn();
+    renderNav('2AP', onOpenProfileModal);
+    fireEvent.click(document.querySelector('[data-nav-avatar]') as HTMLElement);
+    expect(onOpenProfileModal).toHaveBeenCalledTimes(1);
   });
 });
