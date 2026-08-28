@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { PrimaryGrade, UserProfile } from '../types';
-import { AuthUser } from '../types/auth';
+import { PrimaryGrade } from '../types';
 import { MssidLogo } from './MssidLogo';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
@@ -23,8 +22,6 @@ export const THEME_OPTIONS: { id: HeaderTheme; labelKey: 'themeNeutreFull' | 'th
 
 interface NavbarProps {
   currentGrade: PrimaryGrade;
-  userProfile: UserProfile;
-  authUser: AuthUser | null;
   onOpenProfileModal: () => void;
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
@@ -38,8 +35,6 @@ const applyThemeToRoot = (selectedTheme: HeaderTheme) => {
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentGrade,
-  userProfile,
-  authUser,
   onOpenProfileModal,
   onHomeClick,
   currentTheme = 'neutre',
@@ -47,7 +42,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
   const gradeMeta = NAV_GRADES.find((g) => g.id === currentGrade) ?? NAV_GRADES[0];
-  const avatar = userProfile.avatar || (authUser?.nom ? authUser.nom.charAt(0).toUpperCase() : '🎓');
 
   useEffect(() => {
     const validTheme: HeaderTheme = (['neutre', 'light', 'dark'].includes(currentTheme) ? currentTheme : 'neutre') as HeaderTheme;
@@ -75,6 +69,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </motion.button>
 
+        {/* Sole profile shortcut left in the header — the top avatar was dropped: it opened the
+            exact same modal as this badge and as the bottom nav's "Moi" tab, three tap targets
+            for one destination (remonte utilisateur : "ces trois icones font exactement la meme
+            chose"). This one stays because it also shows the grade at a glance, which neither of
+            the other two did. */}
         <motion.button
           type="button"
           data-nav-grade-readout
@@ -85,18 +84,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <span className="sr-only">{t(gradeMeta.labelKey)}</span>
           <span aria-hidden>{gradeMeta.badge}</span>
-        </motion.button>
-
-        <motion.button
-          type="button"
-          data-nav-avatar
-          whileTap={{ scale: 0.95 }}
-          onClick={onOpenProfileModal}
-          className="hit-target w-12 rounded-2xl bg-[var(--brand-emerald)] text-white text-xl flex items-center justify-center cursor-pointer shrink-0"
-          aria-label={t('profile')}
-          title={t('profile')}
-        >
-          {avatar}
         </motion.button>
       </div>
     </header>

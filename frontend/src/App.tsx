@@ -242,8 +242,6 @@ export default function App() {
 
       <Navbar
         currentGrade={nav.grade}
-        userProfile={progress.userProfile}
-        authUser={authUser}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
         onHomeClick={nav.goHome}
         currentTheme={headerTheme}
