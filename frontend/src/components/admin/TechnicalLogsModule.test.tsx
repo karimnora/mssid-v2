@@ -18,6 +18,14 @@ const failedEmailEntry = {
 describe('TechnicalLogsModule — event log filtering', () => {
   beforeEach(() => {
     vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: {} } as any);
+    vi.spyOn(springBootApi, 'getAdminInfraQuotas').mockResolvedValue({
+      data: {
+        fetchedAt: '2026-08-28T08:00:00Z',
+        resend: { provider: 'resend', status: 'not_configured', meters: [] },
+        neon: { provider: 'neon', status: 'not_configured', meters: [] },
+        render: { provider: 'render', status: 'not_configured', meters: [] },
+      },
+    } as any);
   });
 
   afterEach(() => {
@@ -84,5 +92,42 @@ describe('TechnicalLogsModule — event log filtering', () => {
         expect.objectContaining({ actionType: undefined, outcome: undefined, actorEmail: undefined })
       );
     });
+  });
+});
+
+describe('TechnicalLogsModule — infra quotas', () => {
+  beforeEach(() => {
+    vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: {} } as any);
+    vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({ data: [] } as any);
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('shows remaining Resend emails and Neon CU-hours from GET /v1/admin/infra/quotas', async () => {
+    vi.spyOn(springBootApi, 'getAdminInfraQuotas').mockResolvedValue({
+      data: {
+        fetchedAt: '2026-08-28T08:00:00Z',
+        resend: {
+          provider: 'resend',
+          status: 'ok',
+          dashboardUrl: 'https://resend.com/settings/usage',
+          meters: [{ id: 'emails_daily', label: "E-mails aujourd'hui", used: 12, limit: 100, unit: 'emails' }],
+        },
+        neon: {
+          provider: 'neon',
+          status: 'ok',
+          meters: [{ id: 'compute_cu_hours', label: 'Compute Neon (CU-h / mois)', used: 40, limit: 100, unit: 'CU-h' }],
+        },
+        render: { provider: 'render', status: 'not_configured', meters: [] },
+      },
+    } as any);
+
+    render(<TechnicalLogsModule />);
+
+    expect(await screen.findByText(/متبقي 88 \/ 100 emails/)).toBeInTheDocument();
+    expect(screen.getByText(/متبقي 60 \/ 100 CU-h/)).toBeInTheDocument();
+    expect(screen.getByText(/غير مُعدّ — أضف المفتاح على Render/)).toBeInTheDocument();
   });
 });

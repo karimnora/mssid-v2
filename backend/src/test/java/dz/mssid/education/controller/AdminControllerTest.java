@@ -2,11 +2,13 @@ package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.dto.AdminStatsOverviewDto;
+import dz.mssid.education.dto.InfraQuotasDto;
 import dz.mssid.education.dto.PaymentsStatsDto;
 import dz.mssid.education.entity.ContactMessage;
 import dz.mssid.education.repository.ContactMessageRepository;
 import dz.mssid.education.service.AdminAuditLogService;
 import dz.mssid.education.service.AdminStatsService;
+import dz.mssid.education.service.InfraQuotaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,6 +41,9 @@ class AdminControllerTest {
 
     @Mock
     private ContactMessageRepository contactMessageRepository;
+
+    @Mock
+    private InfraQuotaService infraQuotaService;
 
     @InjectMocks
     private AdminController adminController;
@@ -126,5 +131,25 @@ class AdminControllerTest {
                 .andExpect(jsonPath("$.length()").value(1))
                 .andExpect(jsonPath("$[0].name").value("يونس الجزائري"))
                 .andExpect(jsonPath("$[0].type").value("bug"));
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/admin/infra/quotas - Returns live provider quotas from InfraQuotaService")
+    void getInfraQuotas_Success() throws Exception {
+        InfraQuotasDto quotas = InfraQuotasDto.builder()
+                .fetchedAt("2026-08-28T08:00:00Z")
+                .resend(InfraQuotasDto.ProviderQuota.builder()
+                        .provider("resend")
+                        .status("ok")
+                        .meters(List.of(InfraQuotasDto.Meter.builder()
+                                .id("emails_daily").used(12.0).limit(100.0).unit("emails").build()))
+                        .build())
+                .build();
+        when(infraQuotaService.getQuotas()).thenReturn(quotas);
+
+        mockMvc.perform(get("/api/v1/admin/infra/quotas"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.resend.status").value("ok"))
+                .andExpect(jsonPath("$.resend.meters[0].used").value(12));
     }
 }

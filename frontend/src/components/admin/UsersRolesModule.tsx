@@ -115,19 +115,19 @@ export const UsersRolesModule: React.FC = () => {
   return (
     <div className="bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl text-slate-100 flex flex-col overflow-hidden dir-rtl" dir="rtl">
       {/* Header */}
-      <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-2xl">
+      <div className="p-4 sm:p-5 border-b border-slate-800 flex items-start justify-between bg-slate-950/80 gap-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="p-2.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-2xl shrink-0">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <div>
-            <h2 className="text-lg font-black font-sans text-white flex items-center gap-2">
-              <span>لوحة تحكم المشرف والربط الآمن للمستخدمين - mssid dz</span>
+          <div className="min-w-0">
+            <h2 className="text-base sm:text-lg font-black font-sans text-white flex flex-wrap items-center gap-2">
+              <span>لوحة تحكم المشرف</span>
               <span className="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full font-mono">
                 ROLE_ADMIN
               </span>
             </h2>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-300 hidden sm:block">
               إدارة أمنية متكاملة للمستخدمين، الصلاحيات (RBAC)، والمصادقة على اشتراكات بريدي موب
             </p>
           </div>
@@ -135,28 +135,30 @@ export const UsersRolesModule: React.FC = () => {
       </div>
 
       {/* Tab Switcher Bar */}
-      <div className="flex border-b border-slate-800 bg-slate-950 px-4 pt-2">
+      <div className="flex border-b border-slate-800 bg-slate-950 px-2 sm:px-4 pt-2 overflow-x-auto">
         <button
           onClick={() => setActiveTab('RECEIPTS')}
-          className={`px-5 py-3 text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 ${
+          className={`px-4 sm:px-5 min-h-[var(--hit)] text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === 'RECEIPTS'
               ? 'border-amber-400 text-amber-300 bg-slate-900 rounded-t-xl'
               : 'border-transparent text-slate-300 hover:text-white'
           }`}
         >
           <ShieldCheck className="w-4 h-4 text-amber-400" />
-          <span>معالجة وصولات الدفع ({receipts.length})</span>
+          <span className="sm:hidden">وصولات ({receipts.length})</span>
+          <span className="hidden sm:inline">معالجة وصولات الدفع ({receipts.length})</span>
         </button>
         <button
           onClick={() => setActiveTab('USERS')}
-          className={`px-5 py-3 text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 ${
+          className={`px-4 sm:px-5 min-h-[var(--hit)] text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 shrink-0 ${
             activeTab === 'USERS'
               ? 'border-purple-500 text-purple-300 bg-slate-900 rounded-t-xl'
               : 'border-transparent text-slate-300 hover:text-white'
           }`}
         >
           <Users className="w-4 h-4 text-purple-400" />
-          <span>إدارة حسابات المستخدمين والصلاحيات (RBAC)</span>
+          <span className="sm:hidden">حسابات</span>
+          <span className="hidden sm:inline">إدارة حسابات المستخدمين والصلاحيات (RBAC)</span>
         </button>
       </div>
 
@@ -170,7 +172,7 @@ export const UsersRolesModule: React.FC = () => {
             </span>
             <button
               onClick={() => setFilterStatus('ALL')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
+              className={`px-3 min-h-[var(--hit)] rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 filterStatus === 'ALL' ? 'bg-purple-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
               }`}
             >
@@ -178,7 +180,7 @@ export const UsersRolesModule: React.FC = () => {
             </button>
             <button
               onClick={() => setFilterStatus('PENDING_VERIFICATION')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
+              className={`px-3 min-h-[var(--hit)] rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 filterStatus === 'PENDING_VERIFICATION' ? 'bg-amber-500 text-slate-950 font-black' : 'bg-slate-800 text-amber-300 hover:bg-slate-700'
               }`}
             >
@@ -186,7 +188,7 @@ export const UsersRolesModule: React.FC = () => {
             </button>
             <button
               onClick={() => setFilterStatus('APPROVED')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
+              className={`px-3 min-h-[var(--hit)] rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 filterStatus === 'APPROVED' ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-emerald-300 hover:bg-slate-700'
               }`}
             >
@@ -195,7 +197,7 @@ export const UsersRolesModule: React.FC = () => {
             <button
               onClick={loadReceipts}
               disabled={loadingReceipts}
-              className="mr-auto px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-50 cursor-pointer shrink-0 flex items-center gap-1.5"
+              className="mr-auto px-3 min-h-[var(--hit)] rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-50 cursor-pointer shrink-0 flex items-center gap-1.5"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>{loadingReceipts ? 'جاري التحميل...' : 'تحديث القائمة'}</span>
@@ -411,7 +413,7 @@ export const UsersRolesModule: React.FC = () => {
                     <select
                       value={u.role}
                       onChange={(e) => handleRoleChange(u.id, e.target.value as UserRole)}
-                      className="bg-slate-950 border border-slate-700 text-xs font-extrabold text-amber-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-purple-500 cursor-pointer"
+                      className="bg-slate-950 border border-slate-700 text-xs font-extrabold text-amber-300 rounded-xl px-3 min-h-[var(--hit)] focus:outline-none focus:border-purple-500 cursor-pointer min-w-0 max-w-full"
                     >
                       <option value="ROLE_FREE">👤 ROLE_FREE (تلميذ مجاني)</option>
                       <option value="ROLE_PREMIUM">⭐ ROLE_PREMIUM (مشترك تميز)</option>

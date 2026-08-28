@@ -62,7 +62,7 @@ export const ContactMessagesModule: React.FC = () => {
   return (
     <div className="space-y-6 dir-rtl font-sans" dir="rtl">
       {/* Header Banner */}
-      <div className="bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-slate-900 text-white rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center shrink-0">
             <Mail className="w-7 h-7" />
@@ -78,7 +78,7 @@ export const ContactMessagesModule: React.FC = () => {
         <button
           onClick={loadMessages}
           disabled={isLoading}
-          className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-md transition-all cursor-pointer shrink-0"
+          className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-extrabold text-xs min-h-[var(--hit)] px-4 rounded-xl shadow-md transition-all cursor-pointer shrink-0 w-full sm:w-auto"
         >
           <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
           <span>{isLoading ? 'جاري التحميل...' : 'تحديث القائمة'}</span>
@@ -92,7 +92,7 @@ export const ContactMessagesModule: React.FC = () => {
             <button
               key={t}
               onClick={() => setFilterType(t)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
+              className={`px-3 min-h-[var(--hit)] rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                 filterType === t ? 'bg-purple-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
               }`}
             >
@@ -107,7 +107,7 @@ export const ContactMessagesModule: React.FC = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="بحث بالاسم أو البريد الإلكتروني أو نص الرسالة..."
-            className="w-full pr-9 pl-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full pr-9 pl-3 min-h-[var(--hit)] bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
         </div>
       </div>

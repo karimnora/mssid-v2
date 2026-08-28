@@ -35,6 +35,30 @@ export interface ApiResponse<T> {
   status: number;
 }
 
+export interface InfraQuotaMeter {
+  id: string;
+  label: string;
+  used: number;
+  limit: number;
+  unit: string;
+}
+
+export interface InfraProviderQuota {
+  provider: string;
+  status: 'ok' | 'not_configured' | 'error' | string;
+  error?: string;
+  dashboardUrl?: string;
+  note?: string;
+  meters: InfraQuotaMeter[];
+}
+
+export interface InfraQuotasResponse {
+  fetchedAt: string;
+  resend: InfraProviderQuota;
+  neon: InfraProviderQuota;
+  render: InfraProviderQuota;
+}
+
 export interface SpringBootAuthResponse {
   // SEC-01: the backend no longer puts the JWT in the response body — it arrives as an HttpOnly
   // cookie instead (see AuthController.java). Kept optional only for older/non-browser callers.
@@ -498,6 +522,12 @@ public async request<T>(
 
   public async getContactMessages() {
     return this.request<any[]>('/v1/admin/contact-messages', {
+      method: 'GET',
+    });
+  }
+
+  public async getAdminInfraQuotas() {
+    return this.request<InfraQuotasResponse>('/v1/admin/infra/quotas', {
       method: 'GET',
     });
   }

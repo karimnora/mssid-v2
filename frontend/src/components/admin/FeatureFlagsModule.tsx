@@ -98,8 +98,8 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
 
   return (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between gap-4 p-4 bg-slate-900 border border-slate-800 rounded-2xl">
-        <div className="space-y-0.5">
+      <div className="flex items-center justify-between gap-4 p-4 bg-slate-900 border border-slate-800 rounded-2xl flex-col sm:flex-row">
+        <div className="space-y-0.5 min-w-0 w-full">
           <div className="flex items-center gap-2 flex-wrap">
             <h4 className="text-xs font-extrabold text-white">{meta.labelAr}</h4>
             {overridden && (
@@ -121,13 +121,13 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
           )}
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
           {overridden && (
             <button
               onClick={handleReset}
               disabled={isSyncing}
               title="إعادة الضبط الافتراضي"
-              className="w-7 h-7 flex items-center justify-center rounded-full text-slate-300 hover:text-slate-100 hover:bg-slate-800 disabled:opacity-50 cursor-pointer"
+              className="min-w-[var(--hit)] min-h-[var(--hit)] flex items-center justify-center rounded-full text-slate-300 hover:text-slate-100 hover:bg-slate-800 disabled:opacity-50 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -137,13 +137,15 @@ const ToggleRow: React.FC<{ id: FeatureFlagName; meta: FlagMeta; enabled: boolea
             aria-checked={enabled}
             onClick={handleToggle}
             disabled={isSyncing}
-            className={`relative w-12 h-7 rounded-full transition-colors cursor-pointer disabled:opacity-70 ${enabled ? 'bg-emerald-500' : 'bg-slate-700'}`}
+            className="min-w-[var(--hit)] min-h-[var(--hit)] flex items-center justify-center cursor-pointer disabled:opacity-70"
           >
-            <span
-              className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow-sm transition-transform ${
-                enabled ? 'translate-x-0.5' : 'translate-x-5'
-              }`}
-            />
+            <span className={`relative block w-12 h-7 rounded-full transition-colors ${enabled ? 'bg-emerald-500' : 'bg-slate-700'}`}>
+              <span
+                className={`absolute top-0.5 w-6 h-6 bg-white rounded-full shadow-sm transition-transform ${
+                  enabled ? 'translate-x-0.5' : 'translate-x-5'
+                }`}
+              />
+            </span>
           </button>
         </div>
       </div>
@@ -166,7 +168,7 @@ export const FeatureFlagsModule: React.FC = () => {
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-6">
         <div className="flex items-center gap-2">
           <span className="bg-amber-500/20 text-amber-300 text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-500/30">
             Feature Flags

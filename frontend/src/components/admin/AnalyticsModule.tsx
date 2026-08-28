@@ -35,12 +35,12 @@ const StatCard: React.FC<{ icon: React.ReactNode; labelAr: string; value: React.
   sub,
   accent = 'text-amber-400',
 }) => (
-  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2">
+  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 sm:p-5 space-y-2 min-w-0">
     <div className="flex items-center justify-between text-slate-500">
       <span className="text-[11px] font-extrabold uppercase tracking-wider">{labelAr}</span>
       <span className={accent}>{icon}</span>
     </div>
-    <div className="text-2xl font-black text-white font-mono">{value}</div>
+    <div className="text-xl sm:text-2xl font-black text-white font-mono break-all">{value}</div>
     {sub && <div className="text-[11px] text-slate-500">{sub}</div>}
   </div>
 );
@@ -106,7 +106,7 @@ export const AnalyticsModule: React.FC = () => {
 
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <span className="bg-amber-500/20 text-amber-300 text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-500/30">
@@ -121,7 +121,7 @@ export const AnalyticsModule: React.FC = () => {
         <button
           onClick={loadStats}
           disabled={isLoading}
-          className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 border border-slate-700 font-bold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer shrink-0"
+          className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 border border-slate-700 font-bold text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer shrink-0 w-full sm:w-auto"
         >
           <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
           <span>{isLoading ? 'جاري التحديث...' : 'تحديث البيانات'}</span>
@@ -139,7 +139,7 @@ export const AnalyticsModule: React.FC = () => {
       ) : stats ? (
         <>
           {/* Core user metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <StatCard icon={<Users className="w-5 h-5" />} labelAr="إجمالي المستخدمين" value={stats.totalUsers} />
             <StatCard icon={<UserPlus className="w-5 h-5" />} labelAr="مستخدمون جدد (7 أيام)" value={stats.newUsersLast7Days} accent="text-emerald-400" />
             <StatCard icon={<UserPlus className="w-5 h-5" />} labelAr="مستخدمون جدد (30 يوم)" value={stats.newUsersLast30Days} accent="text-emerald-400" />
@@ -147,7 +147,7 @@ export const AnalyticsModule: React.FC = () => {
           </div>
 
           {/* XP / level / streak aggregates */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <StatCard icon={<TrendingUp className="w-5 h-5" />} labelAr="إجمالي نقاط الخبرة XP" value={stats.totalXp} />
             <StatCard icon={<TrendingUp className="w-5 h-5" />} labelAr="متوسط نقاط الخبرة" value={stats.averageXp} />
             <StatCard icon={<Trophy className="w-5 h-5" />} labelAr="متوسط المستوى" value={stats.averageLevel} />
@@ -155,7 +155,7 @@ export const AnalyticsModule: React.FC = () => {
           </div>
 
           {/* Self-reported completion counts — not verified telemetry, just summed completion-id lists */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <StatCard
               icon={<BookOpenCheck className="w-5 h-5" />}
               labelAr="دروس مكتملة (مُصرَّح بها)"

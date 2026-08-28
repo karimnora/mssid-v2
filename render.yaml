@@ -27,6 +27,16 @@ services:
         value: None
       - key: RESEND_API_KEY
         sync: false
+      # Optional — Admin Console "quotas infra" (Technical Logs). Without these the CRM cards show
+      # "not configured" instead of live numbers; the app itself keeps working.
+      - key: NEON_API_KEY
+        sync: false
+      - key: NEON_PROJECT_ID
+        sync: false
+      - key: RENDER_API_KEY
+        sync: false
+      - key: RENDER_SERVICE_ID
+        sync: false
       - key: GEMINI_API_KEY
         sync: false
       # Daily Gemini call quota per role (AiQuotaService) — lower AI_QUOTA_FREE here (no code

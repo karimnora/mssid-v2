@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { HardDrive, Server, CheckCircle2, XCircle, RefreshCw, ScrollText, Filter, RotateCcw } from 'lucide-react';
-import { springBootApi } from '../../services/springBootApi';
+import { HardDrive, Server, CheckCircle2, XCircle, RefreshCw, ScrollText, Filter, RotateCcw, Mail, Database, Cloud } from 'lucide-react';
+import { springBootApi, InfraProviderQuota, InfraQuotasResponse } from '../../services/springBootApi';
 
 interface AuditLogEntry {
   id: number;
@@ -64,6 +64,10 @@ export const TechnicalLogsModule: React.FC = () => {
   const [draftFilters, setDraftFilters] = useState<Filters>(EMPTY_FILTERS);
   const [appliedFilters, setAppliedFilters] = useState<Filters>(EMPTY_FILTERS);
 
+  const [infraQuotas, setInfraQuotas] = useState<InfraQuotasResponse | null>(null);
+  const [infraQuotasError, setInfraQuotasError] = useState<string | null>(null);
+  const [isLoadingQuotas, setIsLoadingQuotas] = useState(true);
+
   const computeStorageUsage = () => {
     let totalBytes = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -95,6 +99,25 @@ export const TechnicalLogsModule: React.FC = () => {
     }
   };
 
+  const loadInfraQuotas = async () => {
+    setIsLoadingQuotas(true);
+    setInfraQuotasError(null);
+    try {
+      const res = await springBootApi.getAdminInfraQuotas();
+      if (res.error) {
+        setInfraQuotasError(res.error);
+        setInfraQuotas(null);
+      } else {
+        setInfraQuotas(res.data || null);
+      }
+    } catch {
+      setInfraQuotasError('تعذر الاتصال بالخادم لجلب حصص Resend / Neon / Render.');
+      setInfraQuotas(null);
+    } finally {
+      setIsLoadingQuotas(false);
+    }
+  };
+
   const loadAuditLog = async (filters: Filters) => {
     setIsLoadingLog(true);
     setLogError(null);
@@ -122,6 +145,7 @@ export const TechnicalLogsModule: React.FC = () => {
   useEffect(() => {
     computeStorageUsage();
     checkServerReachability();
+    loadInfraQuotas();
     loadAuditLog(EMPTY_FILTERS);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -140,6 +164,7 @@ export const TechnicalLogsModule: React.FC = () => {
   const handleRefreshAll = () => {
     computeStorageUsage();
     checkServerReachability();
+    loadInfraQuotas();
     loadAuditLog(appliedFilters);
   };
 
@@ -148,22 +173,22 @@ export const TechnicalLogsModule: React.FC = () => {
   return (
     <div className="space-y-6 dir-rtl font-sans" dir="rtl">
       {/* Header Banner */}
-      <div className="bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-slate-900 text-white rounded-2xl p-4 sm:p-6 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0">
             <ScrollText className="w-7 h-7" />
           </div>
           <div>
-            <h2 className="text-xl font-black tracking-tight text-white">السجلات التقنية (Technical Logs)</h2>
+            <h2 className="text-lg sm:text-xl font-black tracking-tight text-white">السجلات التقنية (Technical Logs)</h2>
             <p className="text-xs text-slate-300 mt-1">
-              حالة اتصال الخادم، سعة التخزين المحلية، وسجل أحداث حقيقي (تسجيل، دخول، بريد إلكتروني، مدفوعات...) — كل رقم هنا مصدره فعلي، لا توجد أي قيم ثابتة.
+              حالة اتصال الخادم، حصص Resend / Neon / Render، سعة التخزين المحلية، وسجل أحداث حقيقي — كل رقم هنا مصدره فعلي، لا توجد أي قيم ثابتة.
             </p>
           </div>
         </div>
 
         <button
           onClick={handleRefreshAll}
-          className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-md transition-all cursor-pointer shrink-0"
+          className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs min-h-[var(--hit)] px-4 rounded-xl shadow-md transition-all cursor-pointer shrink-0 w-full sm:w-auto"
         >
           <RefreshCw className="w-4 h-4" />
           <span>إعادة الفحص</span>
@@ -224,14 +249,45 @@ export const TechnicalLogsModule: React.FC = () => {
         </div>
       </div>
 
+      {/* Live provider quotas — GET /v1/admin/infra/quotas, never hardcoded leftover numbers */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between px-1 gap-2">
+          <h3 className="font-extrabold text-sm text-white">حصص البنية التحتية</h3>
+          <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">GET /v1/admin/infra/quotas</span>
+        </div>
+        {isLoadingQuotas ? (
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-xs text-slate-500">جاري تحميل الحصص من المزودين...</div>
+        ) : infraQuotasError ? (
+          <div className="bg-rose-950/40 border border-rose-800 text-rose-300 text-xs font-bold p-4 rounded-2xl">{infraQuotasError}</div>
+        ) : infraQuotas ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            <ProviderQuotaCard
+              title="Resend — البريد"
+              icon={<Mail className="w-5 h-5 text-amber-400" />}
+              quota={infraQuotas.resend}
+            />
+            <ProviderQuotaCard
+              title="Neon — PostgreSQL"
+              icon={<Database className="w-5 h-5 text-emerald-400" />}
+              quota={infraQuotas.neon}
+            />
+            <ProviderQuotaCard
+              title="Render — Java"
+              icon={<Cloud className="w-5 h-5 text-sky-400" />}
+              quota={infraQuotas.render}
+            />
+          </div>
+        ) : null}
+      </div>
+
       {/* Audit Log Table */}
-      <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="bg-slate-900 p-4 sm:p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3 gap-2">
           <h3 className="font-extrabold text-base text-white flex items-center gap-2">
-            <ScrollText className="w-5 h-5 text-amber-400" />
-            <span>سجل الأحداث (Event Log)</span>
+            <ScrollText className="w-5 h-5 text-amber-400 shrink-0" />
+            <span>سجل الأحداث</span>
           </h3>
-          <span className="text-[11px] text-slate-500 font-mono">GET /v1/admin/audit-log</span>
+          <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">GET /v1/admin/audit-log</span>
         </div>
 
         {/* Filter Bar */}
@@ -244,7 +300,7 @@ export const TechnicalLogsModule: React.FC = () => {
             <select
               value={draftFilters.actionType}
               onChange={(e) => setDraftFilters((f) => ({ ...f, actionType: e.target.value }))}
-              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2 cursor-pointer"
+              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 min-h-[var(--hit)] cursor-pointer w-full"
             >
               <option value="">كل أنواع الأحداث</option>
               {KNOWN_ACTION_TYPES.map((type) => (
@@ -255,7 +311,7 @@ export const TechnicalLogsModule: React.FC = () => {
             <select
               value={draftFilters.outcome}
               onChange={(e) => setDraftFilters((f) => ({ ...f, outcome: e.target.value }))}
-              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2 cursor-pointer"
+              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 min-h-[var(--hit)] cursor-pointer w-full"
             >
               <option value="">كل النتائج</option>
               <option value="SUCCESS">✅ نجاح فقط</option>
@@ -267,7 +323,7 @@ export const TechnicalLogsModule: React.FC = () => {
               placeholder="البحث بالبريد الإلكتروني..."
               value={draftFilters.actorEmail}
               onChange={(e) => setDraftFilters((f) => ({ ...f, actorEmail: e.target.value }))}
-              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2 placeholder:text-slate-600"
+              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 min-h-[var(--hit)] placeholder:text-slate-600 w-full"
               dir="ltr"
             />
 
@@ -275,7 +331,7 @@ export const TechnicalLogsModule: React.FC = () => {
               type="date"
               value={draftFilters.dateFrom}
               onChange={(e) => setDraftFilters((f) => ({ ...f, dateFrom: e.target.value }))}
-              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2"
+              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 min-h-[var(--hit)] w-full"
               title="من تاريخ"
             />
 
@@ -283,14 +339,14 @@ export const TechnicalLogsModule: React.FC = () => {
               type="date"
               value={draftFilters.dateTo}
               onChange={(e) => setDraftFilters((f) => ({ ...f, dateTo: e.target.value }))}
-              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 py-2"
+              className="bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl px-3 min-h-[var(--hit)] w-full"
               title="إلى تاريخ"
             />
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={handleApplyFilters}
-              className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs px-4 py-2 rounded-xl transition-all cursor-pointer"
+              className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer"
             >
               <Filter className="w-3.5 h-3.5" />
               <span>تطبيق الفلترة</span>
@@ -359,3 +415,72 @@ export const TechnicalLogsModule: React.FC = () => {
     </div>
   );
 };
+
+const PROVIDER_STATUS_AR: Record<string, string> = {
+  ok: 'مباشر من الـ API',
+  not_configured: 'غير مُعدّ — أضف المفتاح على Render',
+  error: 'تعذر الجلب',
+};
+
+const ProviderQuotaCard: React.FC<{ title: string; icon: React.ReactNode; quota: InfraProviderQuota }> = ({
+  title,
+  icon,
+  quota,
+}) => {
+  const meters = quota.meters || [];
+  return (
+    <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+      <div className="flex items-center justify-between text-slate-500">
+        <span className="text-xs font-extrabold uppercase tracking-wider">{title}</span>
+        {icon}
+      </div>
+      {meters.length === 0 ? (
+        <p className="text-sm text-slate-300 font-bold leading-relaxed">
+          {quota.status === 'error' ? (quota.error || PROVIDER_STATUS_AR.error) : (quota.note || PROVIDER_STATUS_AR[quota.status] || PROVIDER_STATUS_AR.not_configured)}
+        </p>
+      ) : (
+        meters.map((meter) => {
+          const remaining = Math.max(0, meter.limit - meter.used);
+          const pct = meter.limit > 0 ? Math.min(100, (meter.used / meter.limit) * 100) : 0;
+          const bar =
+            pct >= 90 ? 'bg-rose-500' : pct >= 70 ? 'bg-amber-500' : 'bg-emerald-500';
+          return (
+            <div key={meter.id} className="space-y-1.5">
+              <div className="flex flex-col items-end sm:flex-row sm:items-baseline sm:justify-between gap-1 min-w-0">
+                <span className="text-[11px] font-bold text-slate-400 self-start">{meter.label}</span>
+                <span className="text-sm font-black text-white font-mono shrink-0" dir="ltr">
+                  متبقي {formatQuotaNumber(remaining)} / {formatQuotaNumber(meter.limit)} {meter.unit}
+                </span>
+              </div>
+              <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div className={`h-full rounded-full ${bar}`} style={{ width: `${pct}%` }} />
+              </div>
+              <p className="text-[10px] text-slate-500 font-mono" dir="ltr">
+                used {formatQuotaNumber(meter.used)} · {Math.round(pct)}%
+              </p>
+            </div>
+          );
+        })
+      )}
+      {quota.note && meters.length > 0 && (
+        <p className="text-[10px] text-slate-500 leading-relaxed">{quota.note}</p>
+      )}
+      {quota.dashboardUrl && (
+        <a
+          href={quota.dashboardUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center min-h-[var(--hit)] text-[11px] font-bold text-amber-400 hover:text-amber-300"
+        >
+          فتح لوحة المزود ↗
+        </a>
+      )}
+    </div>
+  );
+};
+
+function formatQuotaNumber(value: number): string {
+  if (!Number.isFinite(value)) return '—';
+  if (Number.isInteger(value) || Math.abs(value) >= 10) return String(Math.round(value * 10) / 10);
+  return String(Math.round(value * 100) / 100);
+}

@@ -2,10 +2,12 @@ package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.dto.AdminStatsOverviewDto;
+import dz.mssid.education.dto.InfraQuotasDto;
 import dz.mssid.education.entity.ContactMessage;
 import dz.mssid.education.repository.ContactMessageRepository;
 import dz.mssid.education.service.AdminAuditLogService;
 import dz.mssid.education.service.AdminStatsService;
+import dz.mssid.education.service.InfraQuotaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ public class AdminController {
     private final AdminStatsService adminStatsService;
     private final AdminAuditLogService adminAuditLogService;
     private final ContactMessageRepository contactMessageRepository;
+    private final InfraQuotaService infraQuotaService;
 
     @GetMapping("/stats/overview")
     public ResponseEntity<AdminStatsOverviewDto> getStatsOverview() {
@@ -52,5 +55,15 @@ public class AdminController {
     @GetMapping("/contact-messages")
     public ResponseEntity<List<ContactMessage>> getContactMessages() {
         return ResponseEntity.ok(contactMessageRepository.findAllByOrderBySubmittedAtDesc());
+    }
+
+    /**
+     * Live Resend / Neon / Render free-tier quotas for the Technical Logs CRM tab. Admin-only
+     * (class-level @PreAuthorize). Missing provider keys return status=not_configured per card,
+     * not a 500 — the admin still sees the other providers.
+     */
+    @GetMapping("/infra/quotas")
+    public ResponseEntity<InfraQuotasDto> getInfraQuotas() {
+        return ResponseEntity.ok(infraQuotaService.getQuotas());
     }
 }
