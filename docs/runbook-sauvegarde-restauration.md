@@ -10,20 +10,36 @@
 ## 1. Vérifier le PITR (Point-In-Time Recovery) Neon
 
 Neon garde un historique des changements de la base et permet de revenir à un instant T, mais
-la **fenêtre de rétention dépend du plan** :
+la **fenêtre de rétention dépend du plan**.
 
-- **Free** : ~24h de PITR (peut varier, à confirmer dans le dashboard).
-- **Launch/Scale** (payant) : plusieurs jours configurables.
+**Confirmé le 28/08/2026 sur le projet de prod (`ep-orange-unit-za6ig2of`, plan Free) :
+fenêtre de 6 heures seulement** (Branches → Backup & Restore → "Restore from history").
+C'est court : un incident découvert après un week-end ou une nuit dépasse largement cette
+fenêtre, surtout tant qu'aucun monitoring (Sentry) n'est en place pour détecter un problème
+rapidement. Passer à un plan payant (rétention configurable, plusieurs jours) est un arbitrage
+coût/risque à trancher plus tard — pas bloquant pour un lancement gratuit modeste, mais à garder
+en tête si le trafic ou le nombre de comptes augmente.
 
-### À faire dans le dashboard Neon (https://console.neon.tech)
+### Mitigation gratuite immédiate : snapshot manuel avant toute opération à risque
 
-1. Ouvre le projet → **Settings** → **Backup & restore** (ou "Point-in-time restore" selon la
-   version de l'UI).
-2. Note la fenêtre de rétention actuelle (ex. "24 hours"). C'est ta perte de données maximale
-   en cas d'incident si tu ne restaures pas à temps.
-3. Si le plan actuel est Free et que la fenêtre te semble trop courte pour un service avec des
-   comptes d'enfants (recommandé : au moins 7 jours), c'est un arbitrage produit/coût à trancher
-   — pas un correctif technique.
+Le plan Free permet de créer un **snapshot manuel** (bouton "Create" dans Backup & Restore →
+"Or restore from a snapshot") sans limite de 6h — mais sans planification automatique (ça,
+c'est réservé au plan payant, "Upgrade for schedules"). Un snapshot manuel n'expire pas comme
+la fenêtre glissante de 6h.
+
+**Règle à suivre : créer un snapshot manuel juste avant toute action à risque**, c'est-à-dire :
+- un déploiement backend qui inclut une nouvelle migration Flyway (`V*.sql`),
+- une action admin en masse (changement de rôle en lot, suppression, etc.),
+- toute opération qu'on ne peut pas facilement annuler autrement.
+
+Ça coûte 30 secondes et zéro euro, et ça couvre exactement les moments où le risque d'erreur
+humaine est le plus élevé.
+
+### À vérifier périodiquement dans le dashboard Neon (https://console.neon.tech)
+
+1. Ouvre le projet de prod → **Branches** → **Backup & Restore** sur la branche `production`.
+2. Relis la fenêtre affichée ("Restore from history to any point in the past N hour window") —
+   Neon peut faire évoluer ce chiffre selon le plan/l'usage, donc revérifier de temps en temps.
 
 ---
 
@@ -76,6 +92,11 @@ corrective, jamais en éditant un fichier `V*.sql` déjà appliqué en prod.
 
 ## 5. Ce qui reste à décider (pas un correctif de code)
 
-- Fenêtre de rétention PITR Neon suffisante pour un service avec des comptes d'enfants (§1).
+- Fenêtre PITR de 6h (plan Free) suffisante ou upgrade Neon nécessaire, à réévaluer si le
+  trafic/nombre de comptes augmente (§1).
+- Un second projet Neon nommé "mssid" existe dans l'organisation, inactif depuis 11+ jours —
+  probablement un doublon de configuration initiale. À confirmer qu'il ne contient aucune donnée
+  utile avant de le supprimer (évite toute confusion future sur "quel projet est la vraie prod").
 - Monitoring/alerting (ex. Sentry) — sans ça, un incident se découvre par les retours
-  utilisateurs, pas par une alerte automatique.
+  utilisateurs, pas par une alerte automatique, ce qui aggrave l'impact de la fenêtre PITR courte
+  ci-dessus (le temps de détection mange une partie du budget de 6h).
