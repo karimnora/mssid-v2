@@ -144,11 +144,20 @@ const TAMAZIGHT_PACKS: Record<string, PracticePack> = Object.fromEntries(
   ].map(([id, topic]) => [id, genericPack(id, topic)]),
 );
 
+const ART_PACKS: Record<string, PracticePack> = Object.fromEntries(
+  [
+    ['art-4ap-t1-warm-cool-colors', 'الألوان الدافئة والباردة'],
+    ['art-4ap-t2-perspective-simple', 'المنظور البسيط'],
+    ['art-4ap-t3-pottery-crafts', 'الفخار والحرف اليدوية'],
+  ].map(([id, topic]) => [id, genericPack(id, topic)]),
+);
+
 const ALL_PACKS: Record<string, PracticePack> = {
   ...ENGLISH_PACKS,
   ...FRENCH_PACKS,
   ...CIVICS_PACKS,
   ...TAMAZIGHT_PACKS,
+  ...ART_PACKS,
 };
 
 function levelsOf(lesson: CourseLesson): number[] {

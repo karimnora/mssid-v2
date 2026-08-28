@@ -1,9 +1,14 @@
 import { OfficialExam } from '../types';
-import { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR } from './examSourceNotes';
+import { ACQUIS_SOURCE_NOTE_AR, BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR } from './examSourceNotes';
+import { ACQUIS_EXAM_PAPERS } from './exams/acquisPapers';
+import { DEVOIR_EXAM_PAPERS } from './exams/devoirPapers';
 import { EXTRA_EXAM_PAPERS } from './exams/extraPapers';
+import { VARIANT_EXAM_PAPERS } from './exams/variantPapers';
+import { TERM23_SECONDARY_PAPERS } from './exams/term23SecondaryPapers';
+import { SECONDARY_DEVOIR_PAPERS } from './exams/secondaryDevoirPapers';
 import { P2_EXAM_PAPERS } from './exams/p2ExamPapers';
 
-export { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR };
+export { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR, ACQUIS_SOURCE_NOTE_AR };
 
 const CORE_EXAM_PAPERS: OfficialExam[] = [
   {
@@ -1698,4 +1703,13 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
   },
 ];
 
-export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [...CORE_EXAM_PAPERS, ...EXTRA_EXAM_PAPERS, ...P2_EXAM_PAPERS];
+export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [
+  ...CORE_EXAM_PAPERS,
+  ...EXTRA_EXAM_PAPERS,
+  ...ACQUIS_EXAM_PAPERS,
+  ...VARIANT_EXAM_PAPERS,
+  ...TERM23_SECONDARY_PAPERS,
+  ...DEVOIR_EXAM_PAPERS,
+  ...SECONDARY_DEVOIR_PAPERS,
+  ...P2_EXAM_PAPERS,
+];
