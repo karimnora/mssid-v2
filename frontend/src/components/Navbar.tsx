@@ -22,7 +22,6 @@ export const THEME_OPTIONS: { id: HeaderTheme; labelKey: 'themeNeutreFull' | 'th
 
 interface NavbarProps {
   currentGrade: PrimaryGrade;
-  onOpenProfileModal: () => void;
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
 }
@@ -35,7 +34,6 @@ const applyThemeToRoot = (selectedTheme: HeaderTheme) => {
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentGrade,
-  onOpenProfileModal,
   onHomeClick,
   currentTheme = 'neutre',
 }) => {
@@ -69,22 +67,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </motion.button>
 
-        {/* Sole profile shortcut left in the header — the top avatar was dropped: it opened the
-            exact same modal as this badge and as the bottom nav's "Moi" tab, three tap targets
-            for one destination (remonte utilisateur : "ces trois icones font exactement la meme
-            chose"). This one stays because it also shows the grade at a glance, which neither of
-            the other two did. */}
-        <motion.button
-          type="button"
+        {/* Read-only grade indicator, not a button: the top avatar was already dropped for
+            duplicating this badge and the bottom nav's "Moi" tab (three tap targets, one
+            destination). Making this badge open the profile too still left two tap targets doing
+            the same thing — "Moi" already reaches the grade/language pickers in one tap (they sit
+            at the top of the profile since Phase 193), so this stays purely informational
+            (remonte utilisateur : "انا et le grade de haut ont la meme choses ... je veux pas
+            qu'il soit redondant"). */}
+        <p
           data-nav-grade-readout
-          whileTap={{ scale: 0.95 }}
-          onClick={onOpenProfileModal}
-          className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center shrink-0 cursor-pointer"
-          title={t('changeGradeOrLanguageTitle')}
+          className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center shrink-0"
         >
           <span className="sr-only">{t(gradeMeta.labelKey)}</span>
           <span aria-hidden>{gradeMeta.badge}</span>
-        </motion.button>
+        </p>
       </div>
     </header>
   );

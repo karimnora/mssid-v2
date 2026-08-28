@@ -14,7 +14,6 @@ export const navigation = {
   brandBadge: 'مَسِيد الجزائر',
   brandTagline: 'المنصة التعليمية للابتدائي الجزائري',
   backToHomeTitle: 'العودة للصفحة الرئيسية',
-  changeGradeOrLanguageTitle: 'تغيير المستوى أو اللغة',
 
   preschoolNavLabel: 'التحضيري',
   preschoolNavTitle: 'قسم التحضيري والإيقاظ (3 إلى 5 سنوات)',

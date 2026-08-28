@@ -16,7 +16,6 @@ export const navigation: typeof navigationAr = {
   brandBadge: 'Mssid Algérie',
   brandTagline: 'La plateforme éducative du primaire algérien',
   backToHomeTitle: "Retour à l'accueil",
-  changeGradeOrLanguageTitle: 'Changer de niveau ou de langue',
 
   preschoolNavLabel: 'Préscolaire',
   preschoolNavTitle: "Section préscolaire et éveil (3 à 5 ans)",
