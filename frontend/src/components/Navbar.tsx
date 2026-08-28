@@ -24,6 +24,8 @@ interface NavbarProps {
   currentGrade: PrimaryGrade;
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
+  onOpenProfileModal: () => void;
+  avatar?: string;
 }
 
 const applyThemeToRoot = (selectedTheme: HeaderTheme) => {
@@ -36,6 +38,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentGrade,
   onHomeClick,
   currentTheme = 'neutre',
+  onOpenProfileModal,
+  avatar,
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
@@ -74,13 +78,32 @@ export const Navbar: React.FC<NavbarProps> = ({
             at the top of the profile since Phase 193), so this stays purely informational
             (remonte utilisateur : "انا et le grade de haut ont la meme choses ... je veux pas
             qu'il soit redondant"). */}
-        <p
-          data-nav-grade-readout
-          className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center shrink-0"
-        >
-          <span className="sr-only">{t(gradeMeta.labelKey)}</span>
-          <span aria-hidden>{gradeMeta.badge}</span>
-        </p>
+        <div className="flex items-center gap-2 shrink-0">
+          <p
+            data-nav-grade-readout
+            className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center"
+          >
+            <span className="sr-only">{t(gradeMeta.labelKey)}</span>
+            <span aria-hidden>{gradeMeta.badge}</span>
+          </p>
+
+          {/* Desktop-only: MobileBottomNav (with its "Moi" tab, the sole profile entry point on
+              phones) is md:hidden, so without a header button desktop/tablet users would have no
+              way at all to reach the profile — a real gap found live, not a caching issue (the
+              earlier grade-badge/avatar removals only accounted for mobile). Hidden below md so
+              it doesn't reintroduce the redundancy "Moi" already covers on phones. */}
+          <motion.button
+            type="button"
+            data-nav-desktop-profile
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenProfileModal}
+            className="hidden md:flex hit-target w-10 h-10 rounded-2xl bg-[var(--brand-emerald)] text-white text-lg items-center justify-center cursor-pointer"
+            aria-label={t('profile')}
+            title={t('profile')}
+          >
+            <span aria-hidden>{avatar || '🎓'}</span>
+          </motion.button>
+        </div>
       </div>
     </header>
   );

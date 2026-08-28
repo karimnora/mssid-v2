@@ -244,6 +244,8 @@ export default function App() {
         currentGrade={nav.grade}
         onHomeClick={nav.goHome}
         currentTheme={headerTheme}
+        onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
+        avatar={progress.userProfile.avatar}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
