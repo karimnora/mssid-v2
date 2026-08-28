@@ -293,19 +293,24 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           {currentGrade && onGradeChange && (
             <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
               <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
-              <div data-profile-grade-strip className="grid grid-cols-5 gap-1.5">
+              {/* Full-name, two-per-row list (not the old five-abbreviation strip) — bigger tap
+                  targets and the actual grade name, matching how this screen looked before the
+                  kids redesign (remonte utilisateur : capture d'une ancienne version, meme
+                  fonctionnement demande, sans le prescolaire qui a sa propre carte dediee, avec le
+                  design actuel). */}
+              <div data-profile-grade-strip className="grid grid-cols-2 gap-2">
                 {NAV_GRADES.map((g) => (
                   <button
                     key={g.id}
                     type="button"
                     onClick={() => onGradeChange(g.id)}
-                    className={`hit-target rounded-2xl text-xs font-extrabold cursor-pointer ${
+                    className={`hit-target rounded-2xl px-3 py-3 text-sm font-extrabold cursor-pointer ${
                       currentGrade === g.id
-                        ? 'bg-[var(--kids-grass-2)] text-white'
+                        ? 'kids-pop bg-[var(--kids-grass-2)] text-white'
                         : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
                     }`}
                   >
-                    {g.badge}
+                    {tNav(g.labelKey)}
                   </button>
                 ))}
               </div>

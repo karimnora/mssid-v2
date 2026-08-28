@@ -198,7 +198,7 @@ describe('ProfileModal parent settings', () => {
       />
     );
     const strip = document.querySelector('[data-profile-grade-strip]') as HTMLElement;
-    fireEvent.click(within(strip).getByText('5AP'));
+    fireEvent.click(within(strip).getByText('السنة الخامسة'));
     expect(onGradeChange).toHaveBeenCalledWith('5AP');
   });
 });
