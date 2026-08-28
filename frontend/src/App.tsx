@@ -443,7 +443,6 @@ export default function App() {
           progress.handleLogoutProgressReset(nav.grade);
         }}
         onOpenAdminConsole={() => nav.setIsAdminConsoleActive(true)}
-        onOpenPreschool={() => nav.setIsPreschoolActive(true)}
         onOpenContactModal={() => modals.setIsContactModalOpen(true)}
         onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
         onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}

@@ -47,7 +47,6 @@ interface AppModalsProps {
   onOpenAuthModal: () => void;
   onLogout: () => void;
   onOpenAdminConsole: () => void;
-  onOpenPreschool: () => void;
   onOpenContactModal: () => void;
   onOpenPrivacyPolicy: () => void;
   onOpenTermsOfService: () => void;
@@ -79,7 +78,6 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onOpenAuthModal,
   onLogout,
   onOpenAdminConsole,
-  onOpenPreschool,
   onOpenContactModal,
   onOpenPrivacyPolicy,
   onOpenTermsOfService,
@@ -116,19 +114,6 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onUpdateAvatar={onUpdateAvatar}
         onRefreshFromDb={onRefreshFromDb}
         onOpenAdminConsole={onOpenAdminConsole}
-        onOpenPreschool={onOpenPreschool}
-        onOpenContactModal={() => {
-          modals.setIsProfileModalOpen(false);
-          onOpenContactModal();
-        }}
-        onOpenPrivacyPolicy={() => {
-          modals.setIsProfileModalOpen(false);
-          onOpenPrivacyPolicy();
-        }}
-        onOpenTermsOfService={() => {
-          modals.setIsProfileModalOpen(false);
-          onOpenTermsOfService();
-        }}
       />
     </Suspense>
 
@@ -149,6 +134,18 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onThemeChange={onThemeChange}
         isThemeAuto={isThemeAuto}
         onThemeAuto={onThemeAuto}
+        onOpenContactModal={() => {
+          modals.setIsSettingsModalOpen(false);
+          onOpenContactModal();
+        }}
+        onOpenPrivacyPolicy={() => {
+          modals.setIsSettingsModalOpen(false);
+          onOpenPrivacyPolicy();
+        }}
+        onOpenTermsOfService={() => {
+          modals.setIsSettingsModalOpen(false);
+          onOpenTermsOfService();
+        }}
       />
     </Suspense>
 

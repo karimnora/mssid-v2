@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PrimaryGrade } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Settings, KeyRound, LogOut } from 'lucide-react';
+import { X, Settings, KeyRound, LogOut, MessageSquare, FileText } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
@@ -24,6 +24,9 @@ interface SettingsModalProps {
   onThemeChange?: (theme: HeaderTheme) => void;
   isThemeAuto?: boolean;
   onThemeAuto?: () => void;
+  onOpenContactModal?: () => void;
+  onOpenPrivacyPolicy?: () => void;
+  onOpenTermsOfService?: () => void;
 }
 
 // Split out of ProfileModal (remonte utilisateur : "je veux désassocier le profile et Réglages
@@ -45,6 +48,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onThemeChange,
   isThemeAuto = false,
   onThemeAuto,
+  onOpenContactModal,
+  onOpenPrivacyPolicy,
+  onOpenTermsOfService,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
@@ -159,6 +165,39 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               {tNav('logout')}
             </button>
           )}
+
+          <div className="space-y-2 pt-2">
+            {onOpenContactModal && (
+              <button
+                type="button"
+                onClick={() => { onOpenContactModal(); onClose(); }}
+                className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+              >
+                <MessageSquare className="w-4 h-4" />
+                {tNav('contactUs')}
+              </button>
+            )}
+            {onOpenPrivacyPolicy && (
+              <button
+                type="button"
+                onClick={() => { onOpenPrivacyPolicy(); onClose(); }}
+                className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+              >
+                <FileText className="w-4 h-4" />
+                {tNav('privacyPolicyMenuItem')}
+              </button>
+            )}
+            {onOpenTermsOfService && (
+              <button
+                type="button"
+                onClick={() => { onOpenTermsOfService(); onClose(); }}
+                className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+              >
+                <FileText className="w-4 h-4" />
+                {tNav('termsMenuItem')}
+              </button>
+            )}
+          </div>
         </div>
       </motion.div>
     </motion.div>

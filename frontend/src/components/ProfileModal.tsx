@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail, MessageSquare, FileText, Home } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { Card, XPProgressBar } from './ui';
@@ -21,10 +21,6 @@ interface ProfileModalProps {
   onUpdateAvatar?: (newAvatar: string) => void;
   onRefreshFromDb?: () => Promise<void>;
   onOpenAdminConsole?: () => void;
-  onOpenPreschool?: () => void;
-  onOpenContactModal?: () => void;
-  onOpenPrivacyPolicy?: () => void;
-  onOpenTermsOfService?: () => void;
 }
 
 const AVATAR_OPTIONS = [
@@ -43,10 +39,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onUpdateAvatar,
   onRefreshFromDb,
   onOpenAdminConsole,
-  onOpenPreschool,
-  onOpenContactModal,
-  onOpenPrivacyPolicy,
-  onOpenTermsOfService,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
@@ -404,58 +396,16 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           </div>
 
-          <div className="space-y-2">
-              {onOpenPreschool && (
-                <button
-                  type="button"
-                  onClick={() => { onOpenPreschool(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-[#FFF8E7] border-2 border-[#F5D98A] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <Home className="w-4 h-4" />
-                  {t('profilePreschoolCta')}
-                </button>
-              )}
-              {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
-                <button
-                  type="button"
-                  onClick={() => { onOpenAdminConsole(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-[var(--brand-amber)]/20 border-2 border-[var(--brand-amber)] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <ShieldCheck className="w-4 h-4" />
-                  {tNav('adminConsole')}
-                </button>
-              )}
-              {onOpenContactModal && (
-                <button
-                  type="button"
-                  onClick={() => { onOpenContactModal(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  {tNav('contactUs')}
-                </button>
-              )}
-              {onOpenPrivacyPolicy && (
-                <button
-                  type="button"
-                  onClick={() => { onOpenPrivacyPolicy(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4" />
-                  {tNav('privacyPolicyMenuItem')}
-                </button>
-              )}
-              {onOpenTermsOfService && (
-                <button
-                  type="button"
-                  onClick={() => { onOpenTermsOfService(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4" />
-                  {tNav('termsMenuItem')}
-                </button>
-              )}
-            </div>
+          {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
+            <button
+              type="button"
+              onClick={() => { onOpenAdminConsole(); onClose(); }}
+              className="w-full hit-target rounded-2xl bg-[var(--brand-amber)]/20 border-2 border-[var(--brand-amber)] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2"
+            >
+              <ShieldCheck className="w-4 h-4" />
+              {tNav('adminConsole')}
+            </button>
+          )}
         </div>
 
         {/* Footer */}
