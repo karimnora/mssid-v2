@@ -22,10 +22,9 @@ createRoot(document.getElementById('root')!).render(
           </AuthProvider>
         </LocaleProvider>
       </HelmetProvider>
-      {/* Cookieless, no individual profile — aggregate visit counts only (see privacy.html §2).
-          Web only, deliberately: gated off in the native app so the Android Data Safety form's
-          "no analytics SDK" answer stays true by construction, not just by the script failing to
-          resolve against a capacitor:// origin. */}
+      {/* Aggregate visit counts only (Vercel Analytics). Auth cookies are separate HttpOnly
+          session cookies set by the Spring API — see privacy.html §2–3. Web only: gated off
+          in the native app so the Android Data Safety form's "no analytics SDK" answer stays true. */}
       {!Capacitor.isNativePlatform() && <Analytics />}
     </ErrorBoundary>
   </StrictMode>,

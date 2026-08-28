@@ -1,15 +1,12 @@
 package dz.mssid.education.security;
 
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.util.Date;
 import java.util.Set;
 
@@ -33,6 +30,8 @@ public class JwtTokenProvider {
             "MssidDzSecretKeyForJWTAuth2026AlgerianEducationPortal"
     );
 
+    private SecretKey signingKey;
+
     @PostConstruct
     void validateSecretIsNotThePublicDefault() {
         if (KNOWN_PUBLIC_DEFAULTS.contains(jwtSecret)) {
@@ -42,11 +41,12 @@ public class JwtTokenProvider {
                     "application — otherwise anyone can forge a valid authentication token."
             );
         }
+        // Resolves Base64 *or* a long raw string (Render generateValue) and fails fast if too short.
+        this.signingKey = JwtSecretKeys.fromSecret(jwtSecret);
     }
 
     private SecretKey getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
-        return Keys.hmacShaKeyFor(keyBytes);
+        return signingKey;
     }
 
     /**

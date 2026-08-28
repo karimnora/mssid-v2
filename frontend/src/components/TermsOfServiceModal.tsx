@@ -6,10 +6,6 @@ interface TermsOfServiceModalProps {
   onClose: () => void;
 }
 
-// Original draft, written for this app's actual product/payment flow — NOT a substitute for legal
-// review. Flagged to the team as a draft pending confirmation before being treated as final/binding,
-// same "pre-launch, needs a human sign-off" status as the parental-supervision decision it sits next
-// to in the audit.
 export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
@@ -42,9 +38,9 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
           <div className="p-4 bg-blue-950/40 border border-blue-800/60 rounded-2xl flex items-start gap-3">
             <Scale className="w-5 h-5 text-blue-400 shrink-0 mt-1" />
             <div>
-              <h3 className="font-bold text-blue-300 text-base mb-1">مسودة أولية — Draft en attente de validation juridique</h3>
+              <h3 className="font-bold text-blue-300 text-base mb-1">الخدمة حالياً مجانية</h3>
               <p className="text-sm text-slate-300">
-                هذه صياغة أولية أعدّها فريق مَسيد DZ لتغطية الاستخدام والاشتراك والدفع، بانتظار مراجعة نهائية قبل اعتمادها رسمياً.
+                تغطي هذه الشروط استخدام مَسيد DZ كما هو متاح اليوم (التربية التحضيرية حتى 5AP، دون اشتراك مدفوع مفعّل). يمكن تحديثها؛ يُعلَن أي تغيير جوهري داخل التطبيق.
               </p>
             </div>
           </div>
@@ -56,7 +52,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
               موضوع الخدمة
             </h4>
             <p className="text-sm text-slate-300">
-              مَسِيد DZ منصة تعليمية رقمية داعمة للمنهاج الرسمي الجزائري للتعليم الابتدائي (السنة الأولى إلى الخامسة ابتدائي)، توفر دروساً وتمارين ومختبرات تفاعلية وامتحانات نموذجية. هي أداة دعم ومراجعة مكمّلة للتمدرس النظامي، وليست بديلاً عنه ولا عن المدرسة الرسمية.
+              مَسِيد DZ منصة تعليمية رقمية داعمة للمنهاج الجزائري (التربية التحضيرية ثم السنة الأولى إلى الخامسة ابتدائي)، توفر دروساً وتمارين ومختبرات تفاعلية وامتحانات نموذجية. هي أداة دعم ومراجعة مكمّلة للتمدرس النظامي، وليست بديلاً عنه ولا عن المدرسة الرسمية.
             </p>
           </div>
 
@@ -67,7 +63,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
               إنشاء الحساب وحماية البيانات
             </h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-slate-300 mr-4">
-              <li>يُفترض أن يتم إنشاء الحساب وتفعيل الاشتراك من طرف ولي الأمر أو تحت إشرافه، نظراً للفئة العمرية المستهدفة (6 إلى 11 سنة تقريباً).</li>
+              <li>يُفترض أن يتم إنشاء الحساب من طرف ولي الأمر أو تحت إشرافه، نظراً للفئة العمرية المستهدفة (حوالي 3 إلى 11 سنة).</li>
               <li>المعلومات المُدخلة عند التسجيل (الاسم، البريد الإلكتروني، المستوى الدراسي) يجب أن تكون صحيحة وقابلة للتواصل عبرها.</li>
               <li>يتم التعامل مع البيانات الشخصية وجمعها وفقاً لأحكام <strong className="text-slate-100">القانون رقم 18-07 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي</strong>. لمزيد من التفاصيل يُرجى مراجعة سياسة الخصوصية.</li>
               <li>كلمة المرور شخصية وسرية؛ يتحمل صاحب الحساب مسؤولية الحفاظ عليها وعدم مشاركتها.</li>
@@ -170,7 +166,7 @@ export const TermsOfServiceModal: React.FC<TermsOfServiceModalProps> = ({ isOpen
           </div>
 
           <div className="pt-4 border-t border-slate-800 text-xs text-slate-300 text-center space-y-1">
-            <p>آخر تحديث: أوت 2026 — مسودة بانتظار المراجعة النهائية</p>
+            <p>آخر تحديث: 28 أوت 2026</p>
             <p className="opacity-70">© 2026 مَسِيد DZ</p>
           </div>
 

@@ -26,6 +26,7 @@
 15. [FAQ Technique Développeur](#15-faq-technique-développeur)
 16. [Système de Rate-Limiting & Caching des Requêtes IA Gemini](#16-système-de-rate-limiting--caching-des-requêtes-ia-gemini-cache-in-memory--quotas-par-rôle)
 17. [Guide de Publication Google Play Store & Android App Bundle (.aab)](#17-guide-de-publication-google-play-store--android-app-bundle-aab)
+18. [Production : CORS, journaux, sauvegardes](#18-production--cors-journaux-sauvegardes)
 
 ---
 
@@ -814,62 +815,37 @@ npx @bubblewrap/cli build
 
 ---
 
-### 17.3 Modèle de Politique de Confidentialité (Privacy Policy) Type COPPA & Google Play
+### 17.3 Politique de confidentialité (source de vérité)
 
-Le modèle ci-dessous est intégré dans l'application (`PrivacyPolicyModal.tsx`) et accessible à l'URL publique de confidentialité exigée par la Google Play Console :
+Le texte opposable est **celui publié** :
 
-```text
-POLITIQUE DE CONFIDENTIALITÉ — APPLICATION MSSID DZ (مَسِيد)
-Dernière mise à jour : 05 Août 2026
+- `frontend/public/privacy.html` (URL Play Console / site : `/privacy.html`)
+- `frontend/src/components/PrivacyPolicyModal.tsx` (copie in-app, à garder alignée)
 
-1. OBJET ET PÉRIMÈTRE
-L'application Mssid DZ (com.mssid.app) est une application éducative destinée aux enfants du primaire (âges de 6 à 12 ans, 1AP à 5AP) et à leurs parents en Algérie. Nous appliquons les normes de protection de la vie privée des enfants COPPA (Children's Online Privacy Protection Act) ainsi que la politique "Designed for Families" de Google Play.
-
-2. COLLECTE DES DONNÉES ET UTILISATION
-- Identifiants de compte : Adresse e-mail, nom/pseudo et niveau scolaire (1AP-5AP). Ces données sont uniquement utilisées pour l'authentification et la personnalisation pédagogique.
-- Autorisation Caméra et Galerie Photos : L'accès à la caméra et à la galerie d'images est sollicité exclusivement lorsqu'un parent souhaite importer une photo de reçu de paiement (BaridiMob / CCP) pour valider un abonnement Premium. Aucune autre photo n'est accédée ou stockée.
-- Jetons d'authentification (JWT) : Stockés de façon sécurisée localement pour maintenir la session active sans ré-authentification constante.
-
-3. AUCUNE PUBLICITÉ NI TRAÇAGE COMMERCIAL
-L'application ne contient AUCUNE publicité d'annonceurs tiers, AUCUN réseau publicitaire ciblé (AdMob, Facebook Audience Network) et aucun traqueur comportemental.
-
-4. SÉCURITÉ ET STOCKAGE DES DONNÉES
-Toutes les communications entre l'application mobile et les serveurs sont sécurisées par un chiffrement SSL/TLS (HTTPS). Les données sont traitées par notre backend sécurisé Spring Boot.
-
-5. DROITS DE SUPPRESSION DES DONNÉES (PARENTAL RIGHTS)
-Les parents peuvent à tout moment demander la suppression intégrale du compte et des données associées de leur enfant en envoyant un e-mail à : mssid.dz.app@gmail.com.
-
-Contact Support : mssid.dz.app@gmail.com / https://mssid-dz.com
-```
+Il décrit les cookies de session HttpOnly, les sous-traitants (Vercel, Render, Neon, Resend, Gemini), le préscolaire, et **ne revendique pas** COPPA ni Designed for Families. Ne pas recoller un modèle US ici.
 
 ---
 
-### 17.4 Guide Pas-à-Pas : Configuration "Designed for Families" sur Google Play Console
+### 17.4 Google Play « Designed for Families »
 
-Pour valider l'application sur la Google Play Console dans la section **Conçu pour les familles (Designed for Families)**, suivez la procédure ci-dessous :
+**Ne pas cocher Families / COPPA** tant qu’un conseil n’a pas validé le consentement parental et la Data Safety. Les étapes Play restent un guide opérationnel ; la déclaration COPPA de l’ancienne version de ce document est **retirée**.
 
-1. **Étape 1 : Public cible et contenu (Target Audience & Content)**
-   * Allez dans `Console Google Play ➔ Enquête sur le public cible`.
-   * Sélectionner les tranches d'âge : **6-8 ans**, **9-11 ans** et **12 ans et plus** (ou Cocher "Enfants et Familles").
-   * Déclarer que l'application s'adresse directement aux enfants.
+---
 
-2. **Étape 2 : Déclaration des publicités (Ads Policy)**
-   * Sélectionner : **"Non, mon application ne contient pas de publicités"**.
+## 18. Production : CORS, journaux, sauvegardes
 
-3. **Étape 3 : Questionnaires de sécurité des données (Data Safety)**
-   * Indiquer le type de données collectées : `Email` (pour authentification), `Nom` (pour le profil), et `Photos/Vidéos` (pour les reçus de paiement uniquement, facultatif).
-   * Préciser que les données sont **chiffrées en transit (HTTPS/SSL)** et que l'utilisateur peut demander la **suppression des données**.
+Voir aussi le README racine, section « Checklist mise en production (P0) ».
 
-4. **Étape 4 : Évaluation du contenu (IARC Content Rating)**
-   * Compléter le questionnaire IARC. Sélectionner la catégorie **Éducation / Enseignement**.
-   * Répondre "Non" à toutes les questions sur la violence, le langage vulgaire ou le contenu sensible.
-   * Résultat attendu : Classification **PEGI 3** / **USK 0** / **Everyone**.
-
-5. **Étape 5 : Inscription au programme "Designed for Families"**
-   * Cocher l'adhésion au programme **Designed for Families**.
-   * Confirmer la conformité avec la loi **COPPA** et soumettre la Politique de Confidentialité (`https://mssid-dz.com/privacy`).
+| Sujet | Où |
+| --- | --- |
+| CORS prod + Capacitor `https://localhost` | `render.yaml` → `CORS_ALLOWED_ORIGINS` |
+| Logs silencieux | `SPRING_PROFILES_ACTIVE=prod` → `application-prod.properties` |
+| JWT ≥ 32 octets | Render `JWT_SECRET` ; code : `JwtSecretKeys` |
+| PITR Neon | Console Neon (pas dans git) + test restore documenté dans le README |
 
 ---
 
 *Fin de la Documentation Technique & Architecture Officielle — Mssid DZ (مَسِيد)*
+
+
 

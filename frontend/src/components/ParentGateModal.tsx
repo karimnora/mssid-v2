@@ -7,10 +7,7 @@ interface ParentGateModalProps {
   onVerified: () => void;
 }
 
-// COPPA / Google Play Families-style Parent Gate: a simple arithmetic check before a sensitive
-// action (purchase, external link, account deletion) — not meant to be unsolvable by a child, just
-// a deliberate friction step an accidental tap can't clear. See the "Diagnostic de Lancement"
-// roadmap's J-3→J-1 phase for the product decision behind this.
+// Friction step before sensitive actions (delete, store links). Not a legal parental-consent flow.
 export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClose, onVerified }) => {
   const [a, setA] = useState(0);
   const [b, setB] = useState(0);

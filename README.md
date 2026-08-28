@@ -194,6 +194,32 @@ cd backend
 
 Le fichier JAR généré se trouve dans : `backend/target/education-0.0.1-SNAPSHOT.jar`
 
+En local, pour des logs SQL/DEBUG : `SPRING_PROFILES_ACTIVE=dev` (voir `backend/src/main/resources/application-dev.properties`). Render pose `SPRING_PROFILES_ACTIVE=prod`.
+
+---
+
+## 🔐 Checklist mise en production (P0)
+
+Vérifier **sur les dashboards** (pas seulement dans git) :
+
+1. **CORS** — Render `CORS_ALLOWED_ORIGINS` = `https://mssid-dz.com,https://www.mssid-dz.com,https://localhost` (Capacitor). Tester un preflight `OPTIONS` depuis le site réel : pas de 403.
+2. **Cookies** — `COOKIE_SECURE=true`, `COOKIE_SAME_SITE=None` si le front (Vercel) et l’API (Render) sont sur des domaines différents.
+3. **JWT** — `JWT_SECRET` défini, ≥ 32 octets. Générer : `openssl rand -base64 32`. Ne jamais laisser le défaut du dépôt.
+4. **Front** — `VITE_SPRING_BOOT_URL=https://mssid-backend.onrender.com/api` (ou le domaine API définitif) **au build** Vercel / Capacitor.
+5. **Clés** — `GEMINI_API_KEY`, `RESEND_API_KEY`, `DATABASE_*` renseignés. Logs : profil `prod` (pas de `show-sql` / Security DEBUG).
+
+### Sauvegardes Neon (PITR) et restauration
+
+Neon ne se configure pas dans ce dépôt. À faire **une fois** dans [console.neon.tech](https://console.neon.tech) sur le projet prod :
+
+1. Project → **Backups** / **Point-in-time restore** : activer PITR (plan qui le permet).
+2. Noter la fenêtre de rétention (souvent 7 jours sur les plans payants ; le free tier peut n’offrir qu’un restore limité — vérifier le plan actuel).
+3. **Test restore** : restaurer vers une branche jetable, `SELECT count(*) FROM users;`, puis supprimer la branche. Sans ce test, on n’a pas de restauration.
+4. Après incident : restore PITR à l’horodatage voulu → mettre à jour `DATABASE_URL` Render vers la branche restaurée **ou** promouvoir la branche, puis redémarrer le service `mssid-backend`.
+5. Rollback appli : Render → service → **Rollback** vers l’image Docker précédente ; Vercel → Deployment → Promote previous.
+
+Le cron GitHub `keep-backend-awake.yml` ping `https://mssid-backend.onrender.com/api/health` pour limiter le sleep free-tier ; ce n’est pas une sauvegarde.
+
 ---
 
 ## 📱 7. Application Mobile Android (.APK / .AAB)
