@@ -35,6 +35,8 @@ export const home = {
   sectionViewAll: 'عرض الكل ›',
   showMoreSubjects: '+ عرض جميع المواد',
   openSubjectHint: 'دروس وتمارين منهاجك',
+  examPracticeTitle: 'تمارين صغيرة في الدروس',
+  examPracticeDesc: 'اختبارات قصيرة داخل كل درس — بدون امتحانات فصلية رسمية في السنة الأولى',
   examBemTitle: 'شهادة التعليم الابتدائي',
   examBemDesc: 'مواضيع • حلول مجانية كاملة',
   examTrimesterTitle: 'الاختبارات الفصلية',

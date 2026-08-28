@@ -37,6 +37,8 @@ export const home: typeof homeAr = {
   sectionViewAll: 'Tout voir ›',
   showMoreSubjects: '+ Voir toutes les matières',
   openSubjectHint: 'Leçons et exercices de ton programme',
+  examPracticeTitle: 'Petits tests dans les leçons',
+  examPracticeDesc: 'Des quiz courts dans chaque leçon — pas d’examens trimestriels officiels en 1re année',
   examBemTitle: 'Certificat de fin de primaire',
   examBemDesc: 'Sujets • corrigés gratuits complets',
   examTrimesterTitle: 'Évaluations trimestrielles',

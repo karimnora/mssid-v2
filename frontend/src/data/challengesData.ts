@@ -1,4 +1,7 @@
-import { Challenge } from '../types';
+import { Challenge, PrimaryGrade } from '../types';
+import { COURSES_DATA } from './coursesData';
+import { ISLAMIC_CIVICS_3TO5_CHALLENGES } from './challenges/islamicCivics3to5';
+import { buildDailyLessonChallenges, localDayKey } from './challenges/fromLessons';
 
 // Challenges Arena — standalone timed mini-games/challenges bank for 5AP, 4AP and 3AP, browsable
 // independently of lessons (mirrors OFFICIAL_EXAMS_DATA's standalone-bank pattern). Content is
@@ -1349,4 +1352,13 @@ export const CHALLENGES_DATA: Challenge[] = [
       { questionOrPromptAr: 'للوقاية من الفيضانات يجب:', correctAnswerAr: 'عدم البناء قرب الوديان', optionsAr: ['عدم البناء قرب الوديان', 'البناء في كل مكان'] },
     ],
   },
+
+  ...ISLAMIC_CIVICS_3TO5_CHALLENGES,
 ];
+
+/** Authored bank + daily lesson-sourced flash challenges (islamic/civics 3AP–5AP). */
+export function getArenaChallenges(grade?: PrimaryGrade, now = new Date()): Challenge[] {
+  const authored = grade ? CHALLENGES_DATA.filter((challenge) => challenge.grade === grade) : CHALLENGES_DATA;
+  const generated = buildDailyLessonChallenges(COURSES_DATA, { grade, dayKey: localDayKey(now) });
+  return [...generated, ...authored];
+}

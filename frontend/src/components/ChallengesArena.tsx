@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getArenaChallenges } from '../data/challengesData';
+import { localDayKey } from '../data/challenges/fromLessons';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
@@ -59,11 +60,16 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
 
   const isYoung = grade === '1AP' || grade === '2AP';
 
+  // Recomputed on every render (cheap: one Date + toISOString), included in the memo key below so a
+  // session left open across midnight gets today's daily challenge set instead of freezing on the
+  // day the component first mounted.
+  const dayKey = localDayKey();
+
   // Every count/list in this arena is derived from this grade-scoped base list — never a hardcoded
   // total — so a 3AP student never sees mode/subject counts inflated by 5AP-only content.
   const gradeChallenges = useMemo(
     () => getArenaChallenges(grade),
-    [grade]
+    [grade, dayKey]
   );
 
   const challengeSubjects = useMemo(() => {

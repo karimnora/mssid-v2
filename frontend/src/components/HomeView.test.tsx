@@ -43,6 +43,10 @@ describe('HomeView', () => {
     expect(screen.getAllByText(/الرياضيات/).length).toBeGreaterThan(0);
     expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
     expect(screen.getByText(/بنك الامتحانات/)).toBeInTheDocument();
+    // 1AP has no formal trimester exams (see CLAUDE.md curriculum notes) — the card itself (not the
+    // section header, which stays generic) shows a lighter "in-lesson practice" framing instead of
+    // the exam-bank card used from 2AP up.
+    expect(screen.getByText(/تمارين صغيرة/)).toBeInTheDocument();
     expect(screen.getByText(/المختبرات والأدوات/)).toBeInTheDocument();
     expect(document.querySelector('[data-pole-icon="courses"]')).toBeTruthy();
     expect(document.querySelector('[data-pole-icon="challenges"]')).toBeTruthy();
