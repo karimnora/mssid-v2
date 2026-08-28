@@ -262,7 +262,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <h3 className="text-[15.5px] font-extrabold leading-snug">
                 {locale === 'fr' ? subject.nameFr : subject.nameAr}
               </h3>
-              <p className="text-[11.5px] text-white/90 mt-0.5">{t('openSubjectHint')}</p>
             </motion.button>
           ))}
         </div>

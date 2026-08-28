@@ -34,7 +34,6 @@ export const home = {
   coinsLabel: 'نقطة',
   sectionViewAll: 'عرض الكل ›',
   showMoreSubjects: '+ عرض جميع المواد',
-  openSubjectHint: 'دروس وتمارين منهاجك',
   examPracticeTitle: 'تمارين صغيرة في الدروس',
   examPracticeDesc: 'اختبارات قصيرة داخل كل درس — بدون امتحانات فصلية رسمية في السنة الأولى',
   examBemTitle: 'شهادة التعليم الابتدائي',
