@@ -30,6 +30,7 @@ export const auth: typeof authAr = {
   resetIntroSuffix: ', ainsi que ton nouveau mot de passe.',
   verificationCodeLabel: 'Code de vérification :',
   newPasswordLabel: 'Nouveau mot de passe :',
+  newPasswordMinLengthHint: '8 caractères minimum',
   hidePassword: 'Masquer le mot de passe',
   showPassword: 'Afficher le mot de passe',
   resetSubmitLoading: 'Changement en cours...',
@@ -52,6 +53,7 @@ export const auth: typeof authAr = {
   parentEmailHint: "Nous aide à contacter le parent en cas de besoin (par exemple pour l'abonnement). Aucune activation ne sera demandée pour cet e-mail.",
 
   passwordLabel: 'Mot de passe :',
+  passwordMinLengthHint: '8 caractères minimum',
   forgotPasswordLink: 'Mot de passe oublié ?',
 
   termsAgreementPrefix: 'En créant un compte, tu acceptes',

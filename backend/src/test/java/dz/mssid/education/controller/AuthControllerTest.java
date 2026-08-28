@@ -413,4 +413,15 @@ class AuthControllerTest {
                         .content("{\"email\":\"amina@mssid.dz\",\"code\":\"000000\",\"newPassword\":\"NewPass123!\"}"))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    @DisplayName("POST /reset-password - Password under 8 chars is rejected before the service is even called")
+    void resetPassword_ShortPassword_BadRequest() throws Exception {
+        mockMvc.perform(post("/api/v1/auth/reset-password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"amina@mssid.dz\",\"code\":\"654321\",\"newPassword\":\"short1\"}"))
+                .andExpect(status().isBadRequest());
+
+        verify(passwordResetService, never()).resetPassword(any(), any(), any());
+    }
 }

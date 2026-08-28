@@ -311,6 +311,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
+                  minLength={8}
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="••••••••"
@@ -326,6 +327,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
+              <p className="text-xs text-[var(--kids-muted)] mt-1">{t('newPasswordMinLengthHint')}</p>
             </div>
 
             {statusMessage && (
@@ -438,6 +440,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               <input
                 type={showPassword ? 'text' : 'password'}
                 required
+                minLength={isLogin ? undefined : 8}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
@@ -453,6 +456,9 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>
             </div>
+            {!isLogin && (
+              <p className="text-xs text-[var(--kids-muted)] mt-1">{t('passwordMinLengthHint')}</p>
+            )}
             {isLogin && (
               <button
                 type="button"

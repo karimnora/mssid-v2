@@ -212,7 +212,11 @@ public class AuthController {
     /** Body: {"email": "...", "code": "123456", "newPassword": "..."}. */
     @PostMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> body) {
-        boolean success = passwordResetService.resetPassword(body.get("email"), body.get("code"), body.get("newPassword"));
+        String newPassword = body.get("newPassword");
+        if (newPassword == null || newPassword.length() < 8) {
+            return ResponseEntity.badRequest().body(Map.of("message", "كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل."));
+        }
+        boolean success = passwordResetService.resetPassword(body.get("email"), body.get("code"), newPassword);
         if (!success) {
             return ResponseEntity.badRequest().body(Map.of("message", "الرمز غير صحيح أو منتهي الصلاحية."));
         }

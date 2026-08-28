@@ -28,6 +28,7 @@ export const auth = {
   resetIntroSuffix: '، وكلمة المرور الجديدة.',
   verificationCodeLabel: 'رمز التحقق:',
   newPasswordLabel: 'كلمة المرور الجديدة:',
+  newPasswordMinLengthHint: '8 أحرف على الأقل',
   hidePassword: 'إخفاء كلمة المرور',
   showPassword: 'إظهار كلمة المرور',
   resetSubmitLoading: 'جاري التغيير...',
@@ -50,6 +51,7 @@ export const auth = {
   parentEmailHint: 'يساعدنا على التواصل مع ولي الأمر عند الحاجة (مثلاً بخصوص الاشتراك). لن يُطلب أي تفعيل لهذا البريد.',
 
   passwordLabel: 'كلمة المرور:',
+  passwordMinLengthHint: '8 أحرف على الأقل',
   forgotPasswordLink: 'نسيت كلمة المرور؟',
 
   termsAgreementPrefix: 'بإنشاء الحساب، أنت توافق على',
