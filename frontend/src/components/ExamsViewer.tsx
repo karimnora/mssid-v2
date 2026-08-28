@@ -686,11 +686,11 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         const kinds = examKindOrder(currentGrade).filter((kind) =>
           gradeExams.some((e) => getExamKind(e) === kind)
         );
-        const meta: Record<ExamKind, { title: string; desc: string; active: string; idle: string }> = {
-          acquis: { title: t('kindAcquisTitle'), desc: t('kindAcquisDesc'), active: 'bg-teal-600 text-white border-teal-500', idle: 'hover:border-teal-400/50' },
-          bep: { title: t('kindBepTitle'), desc: t('kindBepDesc'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
-          composition: { title: t('kindCompositionsTitle'), desc: t('kindCompositionsDesc'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },
-          devoir: { title: t('kindDevoirsTitle'), desc: t('kindDevoirsDesc'), active: 'bg-amber-500 text-white border-amber-400', idle: 'hover:border-amber-400/50' },
+        const meta: Record<ExamKind, { title: string; active: string; idle: string }> = {
+          acquis: { title: t('kindAcquisTitle'), active: 'bg-teal-600 text-white border-teal-500', idle: 'hover:border-teal-400/50' },
+          bep: { title: t('kindBepTitle'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
+          composition: { title: t('kindCompositionsTitle'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },
+          devoir: { title: t('kindDevoirsTitle'), active: 'bg-amber-500 text-white border-amber-400', idle: 'hover:border-amber-400/50' },
         };
         const cols =
           kinds.length >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : kinds.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
@@ -718,9 +718,6 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     {t('examsCountLabel', {
                       count: OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade && getExamKind(e) === kind).length,
                     })}
-                  </p>
-                  <p className={`text-xs leading-snug ${selected ? 'text-white/85' : 'text-[var(--app-text-muted)]'}`}>
-                    {styles.desc}
                   </p>
                 </button>
               );

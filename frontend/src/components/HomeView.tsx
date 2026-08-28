@@ -108,7 +108,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const t = useTranslation('home');
   const tNav = useTranslation('navigation');
   const { direction, locale } = useLocaleContext();
-  const [showAllSubjects, setShowAllSubjects] = useState(false);
 
   // 1AP-3AP: same audio guidance level as CourseSelectionView — this is the very first screen a
   // fragile reader lands on, so it needs a listen button at least as much as the screens after it.
@@ -140,7 +139,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
     );
   }, [courseSubjects, grade]);
 
-  const visibleSubjects = showAllSubjects ? subjects : subjects.slice(0, VISIBLE_SUBJECTS);
+  const visibleSubjects = subjects.slice(0, VISIBLE_SUBJECTS);
   const preschoolBlock = onOpenPreschool ? (
     <motion.button
       type="button"
@@ -308,19 +307,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </motion.button>
           ))}
         </div>
-        {subjects.length > VISIBLE_SUBJECTS && !showAllSubjects && (
-          <div className="text-center mt-2.5">
-            <motion.button
-              type="button"
-              whileTap={{ scale: 0.95 }}
-              transition={spring}
-              onClick={() => setShowAllSubjects(true)}
-              className="hit-target inline-flex items-center px-4 rounded-2xl text-[13px] font-extrabold text-[var(--kids-grass-2)] bg-white border-2 border-dashed border-[var(--kids-grass-1)]"
-            >
-              {t('showMoreSubjects')}
-            </motion.button>
-          </div>
-        )}
       </section>
 
       <section>
