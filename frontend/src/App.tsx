@@ -471,6 +471,7 @@ export default function App() {
         onOpenProfile={() => modals.setIsProfileModalOpen(true)}
         profileOpen={modals.isProfileModalOpen}
         theme={headerTheme}
+        avatar={progress.userProfile.avatar}
       />
     </div>
   );

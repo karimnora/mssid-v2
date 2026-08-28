@@ -69,6 +69,8 @@ export const common: typeof commonAr = {
   profileParentsTab: 'Parents',
   profileGradeLabel: 'Niveau scolaire',
   profileThemeLabel: "Apparence de l'application",
+  settingsSectionLabel: 'Réglages',
+  progressSectionLabel: 'Ma progression et mes badges',
   profilePreschoolCta: 'Section préparatoire',
   deletingAccountLabel: 'Suppression en cours...',
   confirmDeleteAccountLabel: 'Appuie à nouveau pour confirmer la suppression définitive du compte',

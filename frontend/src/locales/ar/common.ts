@@ -65,6 +65,8 @@ export const common = {
   profileParentsTab: 'الوالدان',
   profileGradeLabel: 'المستوى الدراسي',
   profileThemeLabel: 'مظهر التطبيق',
+  settingsSectionLabel: 'الإعدادات',
+  progressSectionLabel: 'تقدمي وأوسمتي',
   profilePreschoolCta: 'قسم التحضيري',
   deletingAccountLabel: 'جارٍ الحذف...',
   confirmDeleteAccountLabel: 'اضغط مجدداً لتأكيد حذف الحساب نهائياً',

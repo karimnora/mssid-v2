@@ -15,6 +15,7 @@ interface MobileBottomNavProps {
   onClearSelectedLesson: () => void;
   profileOpen?: boolean;
   theme?: string;
+  avatar?: string;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
@@ -26,6 +27,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onClearSelectedLesson,
   profileOpen = false,
   theme = 'dark',
+  avatar,
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
@@ -91,7 +93,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         aria-current={profileOpen ? 'page' : undefined}
         aria-label={t('profile')}
       >
-        <span className="text-[22px] leading-none" aria-hidden>🦊</span>
+        <span className="text-[22px] leading-none" aria-hidden>{avatar || '🦊'}</span>
         <span className="text-[11px] font-extrabold">{t('meTab')}</span>
       </button>
     </nav>

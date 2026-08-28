@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile, PrimaryGrade } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Target, Sparkles, Mail, KeyRound, LogOut, MessageSquare, FileText, Home } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Settings, Trophy, Sparkles, Mail, KeyRound, LogOut, MessageSquare, FileText, Home } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
 import { Card, XPProgressBar } from './ui';
-import { getDailyObjectiveProgress, DAILY_OBJECTIVE_TARGET } from '../utils/dailyObjective';
 import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
 import { AuthService } from '../services/authService';
@@ -178,8 +177,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const nextLevelXp = currentLevel * 100;
   const xpInCurrentLevel = totalXp % 100;
   const currentLevelProgress = Math.min(100, Math.round((xpInCurrentLevel / 100) * 100));
-  const dailyObjective = getDailyObjectiveProgress();
-  const dailyObjectiveDone = dailyObjective.count >= DAILY_OBJECTIVE_TARGET;
 
   // Conic-gradient ring around the avatar: fuses "who you are" (avatar) with "how far along you
   // are" (% to next level) into a single glance, instead of making the XP bar further down the only
@@ -283,11 +280,16 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             />
           </Card>
 
-          {/* Grade + Language Cards — kept right after Identity (not buried below the badges
-              gallery) so changing level/language stays a one-tap-in reach, like the old navbar
-              dropdown used to be (remonte utilisateur : "je veux reprendre la liberté de changer
-              la langue et les niveaux comme avant" after the navbar's grade readout became a
-              plain, non-interactive badge in the kids redesign). */}
+          {/* Settings group — grade, language, theme, tashkeel, and the connect/disconnect
+              action all live here, right after Identity, so changing any of them stays a
+              one-tap-in reach instead of being buried below the progress/badges content
+              (remonte utilisateur : reorganisation demandee, param./langue/connexion en haut,
+              niveau/avatar/progression/badges en bas). */}
+          <div className="flex items-center gap-1.5 px-1">
+            <Settings className="w-4 h-4 text-[var(--kids-grass-2)]" />
+            <span className="text-xs font-black text-[var(--kids-muted)]">{t('settingsSectionLabel')}</span>
+          </div>
+
           {currentGrade && onGradeChange && (
             <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
               <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
@@ -314,6 +316,62 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
             <LanguageSwitcher />
           </Card>
+
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+            <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
+            <div className="grid grid-cols-3 gap-1.5">
+              {onThemeAuto && (
+                <button
+                  type="button"
+                  onClick={onThemeAuto}
+                  className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
+                    isThemeAuto ? 'bg-[var(--kids-grass-2)] text-white' : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                  }`}
+                >
+                  {tNav('themeAutoShort')}
+                </button>
+              )}
+              {THEME_OPTIONS.map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => onThemeChange?.(opt.id)}
+                  className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
+                    !isThemeAuto && currentTheme === opt.id
+                      ? 'bg-[var(--kids-grass-2)] text-white'
+                      : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
+                  }`}
+                >
+                  {tNav(opt.id === 'neutre' ? 'themeNeutreShort' : 'themeDarkShort')}
+                </button>
+              ))}
+            </div>
+          </Card>
+
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] rounded-[22px]">
+            <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
+          </Card>
+
+          {!authUser && onOpenAuthModal && (
+            <button
+              type="button"
+              onClick={() => { onOpenAuthModal(); onClose(); }}
+              className="w-full hit-target rounded-2xl bg-[var(--kids-grass-2)] text-white text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2"
+            >
+              <KeyRound className="w-4 h-4" />
+              {tNav('loginRegisterCta')}
+            </button>
+          )}
+          {authUser && onLogout && (
+            <button
+              type="button"
+              onClick={() => { onLogout(); onClose(); }}
+              className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--brand-coral)] cursor-pointer flex items-center justify-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              {tNav('logout')}
+            </button>
+          )}
 
           {/* Email Verification Reminder Card — discreet, non-blocking (SEC-08) */}
           {authUser && !authUser.emailVerified && (
@@ -358,6 +416,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               </button>
             </Card>
           )}
+
+          {/* Progress group — avatar, level/XP, and badges, moved below Settings (remonte
+              utilisateur : niveau/avatar/progression/badges en bas). */}
+          <div className="flex items-center gap-1.5 px-1 pt-2">
+            <Trophy className="w-4 h-4 text-[var(--kids-sun-2)]" />
+            <span className="text-xs font-black text-[var(--kids-muted)]">{t('progressSectionLabel')}</span>
+          </div>
 
           {/* Avatar Picker Card */}
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
@@ -411,28 +476,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </div>
           </Card>
 
-          {/* Daily Objective ("Objectif du jour") */}
-          <Card padding="md" className={`space-y-2 rounded-[22px] ${dailyObjectiveDone ? '!bg-[#ECFDF5] !border-[#A7F3D0]' : '!bg-[#FFF8E7] !border-[#F5D98A]'}`}>
-            <div className="flex items-center justify-between text-sm font-extrabold text-[var(--kids-ink)]">
-              <div className="flex items-center gap-1.5">
-                <Target className="w-4 h-4 text-[var(--kids-sun-2)]" />
-                <span>{t('dailyObjectiveLabel')}</span>
-              </div>
-              <span className="font-extrabold">{t('dailyObjectiveCount', { count: Math.min(dailyObjective.count, DAILY_OBJECTIVE_TARGET), target: DAILY_OBJECTIVE_TARGET })}</span>
-            </div>
-            <div className="w-full bg-white h-2.5 rounded-full overflow-hidden border-2 border-[#E7E2D7]">
-              <div
-                className={`h-full rounded-full transition-all duration-500 ${dailyObjectiveDone ? 'bg-[var(--kids-grass-2)]' : 'bg-[var(--kids-sun-1)]'}`}
-                style={{ width: `${Math.min(100, (dailyObjective.count / DAILY_OBJECTIVE_TARGET) * 100)}%` }}
-              />
-            </div>
-            <p className="text-xs font-bold text-[var(--kids-muted)]">
-              {dailyObjectiveDone
-                ? t('dailyObjectiveDoneMsg')
-                : t('dailyObjectiveRemainingMsg', { remaining: DAILY_OBJECTIVE_TARGET - dailyObjective.count })}
-            </p>
-          </Card>
-
           <div className="grid gap-4">
             {/* Badges Gallery Card — always driven by userProfile.badges, kept live by the badge-evaluation
                 effect in App.tsx, so this gallery reflects real progress rather than a fixed mock list. */}
@@ -475,42 +518,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           </div>
 
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
-              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
-              <div className="grid grid-cols-3 gap-1.5">
-                {onThemeAuto && (
-                  <button
-                    type="button"
-                    onClick={onThemeAuto}
-                    className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
-                      isThemeAuto ? 'bg-[var(--kids-grass-2)] text-white' : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                    }`}
-                  >
-                    {tNav('themeAutoShort')}
-                  </button>
-                )}
-                {THEME_OPTIONS.map((opt) => (
-                  <button
-                    key={opt.id}
-                    type="button"
-                    onClick={() => onThemeChange?.(opt.id)}
-                    className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
-                      !isThemeAuto && currentTheme === opt.id
-                        ? 'bg-[var(--kids-grass-2)] text-white'
-                        : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                    }`}
-                  >
-                    {tNav(opt.id === 'neutre' ? 'themeNeutreShort' : 'themeDarkShort')}
-                  </button>
-                ))}
-              </div>
-            </Card>
-
-            <Card padding="md" className="!bg-white !border-[#E7E2D7] rounded-[22px]">
-              <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
-            </Card>
-
-            <div className="space-y-2">
+          <div className="space-y-2">
               {onOpenPreschool && (
                 <button
                   type="button"
@@ -519,26 +527,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 >
                   <Home className="w-4 h-4" />
                   {t('profilePreschoolCta')}
-                </button>
-              )}
-              {!authUser && onOpenAuthModal && (
-                <button
-                  type="button"
-                  onClick={() => { onOpenAuthModal(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-[var(--kids-grass-2)] text-white text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <KeyRound className="w-4 h-4" />
-                  {tNav('loginRegisterCta')}
-                </button>
-              )}
-              {authUser && onLogout && (
-                <button
-                  type="button"
-                  onClick={() => { onLogout(); onClose(); }}
-                  className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--brand-coral)] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <LogOut className="w-4 h-4" />
-                  {tNav('logout')}
                 </button>
               )}
               {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
