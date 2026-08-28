@@ -127,21 +127,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
       whileTap={{ scale: 0.95 }}
       transition={spring}
       onClick={onOpenPreschool}
-      className="kids-pop kids-pole w-full relative overflow-hidden rounded-[22px] cursor-pointer text-start"
+      className="kids-pop kids-card-presco w-full relative overflow-hidden rounded-[22px] p-4 text-white cursor-pointer text-start"
     >
-      <div className="kids-pole-band kids-card-presco" />
-      <div className="p-4 flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[11px] font-bold bg-[#FFF8E7] text-[var(--kids-ink)] inline-block px-2.5 py-0.5 rounded-full mb-1">
+          <p className="text-[11px] font-bold bg-white/25 inline-block px-2.5 py-0.5 rounded-full mb-1">
             {t('preschoolFeatureBadge')}
           </p>
-          <h2 className="text-[15px] font-extrabold leading-snug text-[var(--kids-ink)]">{t('preschoolFeatureTitle')}</h2>
-          <p className="text-[11.5px] font-medium text-[var(--kids-muted)] mt-0.5">{t('preschoolFeatureDesc')}</p>
-          <span className="mt-2 hit-target inline-flex items-center justify-center bg-[var(--brand-emerald)] text-white px-4 rounded-2xl font-extrabold text-sm">
+          <h2 className="text-[15px] font-extrabold leading-snug">{t('preschoolFeatureTitle')}</h2>
+          <p className="text-[11.5px] font-medium text-white/90 mt-0.5">{t('preschoolFeatureDesc')}</p>
+          <span className="mt-2 hit-target inline-flex items-center justify-center bg-white text-amber-950 px-4 rounded-2xl font-extrabold text-sm">
             {t('preschoolFeatureCta')}
           </span>
         </div>
-        <div className="w-[46px] h-[46px] rounded-2xl bg-[#FFF8E7] text-[23px] flex items-center justify-center shrink-0">
+        <div className="w-[46px] h-[46px] rounded-2xl bg-white/25 text-[23px] flex items-center justify-center shrink-0">
           🎈
         </div>
       </div>
@@ -157,16 +156,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   return (
     <div className="space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
-      <section className="kids-pole kids-pop-soft relative overflow-hidden rounded-[30px]">
-        <div className="kids-hero-band" />
-        <div className="p-5">
+      <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <p className="text-[12.5px] font-bold text-[var(--kids-muted)]">{t('systemBadge')}</p>
-            <h1 className="text-[22px] font-black leading-snug mt-0.5 text-[var(--kids-ink)]">
+            <p className="text-[12.5px] font-bold text-white/90">{t('systemBadge')}</p>
+            <h1 className="text-[22px] font-black leading-snug mt-0.5">
               {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
             </h1>
-            <p className="text-[13px] font-medium text-[var(--kids-muted)] leading-relaxed mt-1">
+            <p className="text-[13px] font-medium text-white/90 leading-relaxed mt-1">
               {t('heroGradeLine', { grade: tNav(GRADE_NAV_KEY[grade]) })}
             </p>
           </div>
@@ -174,7 +171,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             type="button"
             onClick={onOpenDressingRoom}
             disabled={!onOpenDressingRoom}
-            className="w-16 h-16 rounded-[20px] bg-[#FFF8E7] flex items-center justify-center text-4xl shrink-0 disabled:cursor-default"
+            className="w-16 h-16 rounded-[20px] bg-white/20 flex items-center justify-center text-4xl shrink-0 disabled:cursor-default"
             aria-label={t('dressingRoomLabel')}
           >
             🦊
@@ -182,7 +179,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
 
         <div className="flex flex-wrap gap-2 justify-start mt-3.5">
-          <span className="inline-flex items-center gap-1.5 rounded-2xl px-3.5 py-2 text-[13px] font-extrabold bg-[#FFF8E7] text-[var(--kids-ink)]">
+          <span className="inline-flex items-center gap-1.5 rounded-2xl px-3.5 py-2 text-[13px] font-extrabold bg-white/20">
             ⭐ {t('levelPill', { level: displayLevel })}
           </span>
           <button
@@ -191,7 +188,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             disabled={!onOpenDressingRoom}
             className="hit-target inline-flex items-center gap-1.5 rounded-2xl px-3.5 text-[13px] font-extrabold bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 disabled:cursor-default"
           >
-            🦊 {goldCoins} {t('coinsLabel')}
+            🪙 {goldCoins} {t('coinsLabel')}
           </button>
         </div>
 
@@ -201,20 +198,19 @@ export const HomeView: React.FC<HomeViewProps> = ({
           whileTap={{ scale: 0.95 }}
           transition={spring}
           onClick={() => openSubject('math')}
-          className="kids-pop hit-target mt-3.5 w-full rounded-[18px] bg-[var(--brand-emerald)] text-white font-extrabold text-[14.5px] flex items-center justify-center gap-2"
+          className="kids-pop hit-target mt-3.5 w-full rounded-[18px] bg-white text-[var(--kids-grass-2)] font-extrabold text-[14.5px] flex items-center justify-center gap-2"
         >
           <span data-pole-icon="courses" hidden />
           {t('heroContinueCta')}
         </motion.button>
 
-        <div className="mt-3.5 h-2 rounded-full bg-[#E7E2D7] overflow-hidden">
+        <div className="mt-3.5 h-2 rounded-full bg-white/20 overflow-hidden">
           <div
             className="h-full rounded-full bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)]"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <p className="text-[11.5px] text-[var(--kids-muted)] mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
-        </div>
+        <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
       </section>
 
       {isGuest && (
@@ -258,18 +254,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
               whileTap={{ scale: 0.95 }}
               transition={spring}
               onClick={() => openSubject(subject.id)}
-              className="kids-pop kids-pole relative overflow-hidden rounded-3xl text-start min-h-[136px] flex flex-col"
+              className={`kids-pop relative overflow-hidden rounded-3xl p-4 pt-16 text-white text-start min-h-[136px] flex flex-col justify-end ${SUBJECT_CARD[subject.id] ?? 'kids-card-arabe'}`}
             >
-              <div className={`kids-pole-band ${SUBJECT_CARD[subject.id] ?? 'kids-card-arabe'}`} />
-              <div className="p-4 flex flex-col flex-1 justify-end relative">
-                <span className="absolute top-3 end-3.5 w-[42px] h-[42px] rounded-[14px] bg-[#FFF8E7] flex items-center justify-center text-[22px]">
-                  {SUBJECT_EMOJI[subject.id] ?? '📘'}
-                </span>
-                <h3 className="text-[15.5px] font-extrabold leading-snug text-[var(--kids-ink)]">
-                  {locale === 'fr' ? subject.nameFr : subject.nameAr}
-                </h3>
-                <p className="text-[11.5px] text-[var(--kids-muted)] mt-0.5">{t('openSubjectHint')}</p>
-              </div>
+              <span className="absolute top-3.5 end-3.5 w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center text-[22px]">
+                {SUBJECT_EMOJI[subject.id] ?? '📘'}
+              </span>
+              <h3 className="text-[15.5px] font-extrabold leading-snug">
+                {locale === 'fr' ? subject.nameFr : subject.nameAr}
+              </h3>
+              <p className="text-[11.5px] text-white/90 mt-0.5">{t('openSubjectHint')}</p>
             </motion.button>
           ))}
         </div>
@@ -297,46 +290,44 @@ export const HomeView: React.FC<HomeViewProps> = ({
           >
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--kids-ink)]">
-            {t('poleExamsTitle')} 📝
-          </h2>
+          <h2 className="text-[17px] font-extrabold text-[var(--kids-ink)]">{t('poleExamsTitle')} 📝</h2>
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          <motion.button
-            type="button"
-            data-pole="exams"
-            whileTap={{ scale: 0.95 }}
-            transition={spring}
-            onClick={() => onSelectPole(examsPoleTarget)}
-            className="kids-pop kids-pole relative overflow-hidden rounded-[22px] text-start min-h-[128px] flex flex-col"
-          >
-            <div className="kids-pole-band kids-card-examens" />
-            <div className="p-4 flex flex-col items-start gap-2 flex-1 justify-between">
-              <span data-pole-icon="exams" className="w-[42px] h-[42px] rounded-2xl bg-[#FFF8E7] flex items-center justify-center shrink-0">
-                <ExamsPoleIcon className="w-7 h-7" />
-              </span>
-              <h3 className="text-[13.5px] font-extrabold text-[var(--kids-ink)] leading-snug">
-                {grade === '1AP' ? t('examPracticeTitle') : grade === '5AP' ? t('examBemTitle') : t('examTrimesterTitle')}
-              </h3>
-            </div>
-          </motion.button>
-          <motion.button
-            type="button"
-            data-pole="challenges"
-            whileTap={{ scale: 0.95 }}
-            transition={spring}
-            onClick={() => onSelectPole('challenges')}
-            className="kids-pop kids-pole relative overflow-hidden rounded-[22px] text-start min-h-[128px] flex flex-col"
-          >
-            <div className="kids-pole-band kids-card-defis" />
-            <div className="p-4 flex flex-col items-start gap-2 flex-1 justify-between">
-              <span data-pole-icon="challenges" className="w-[42px] h-[42px] rounded-2xl bg-[#FFF8E7] flex items-center justify-center shrink-0">
-                <ChallengesPoleIcon className="w-7 h-7" />
-              </span>
-              <h3 className="text-[13.5px] font-extrabold text-[var(--kids-ink)] leading-snug">{t('poleChallengesTitle')}</h3>
-            </div>
-          </motion.button>
-        </div>
+        <motion.button
+          type="button"
+          data-pole="exams"
+          whileTap={{ scale: 0.95 }}
+          transition={spring}
+          onClick={() => onSelectPole(examsPoleTarget)}
+          className="kids-pop kids-card-examens relative w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
+        >
+          <div className="min-w-0">
+            <h3 className="text-[15px] font-extrabold">
+              {grade === '1AP' ? t('examPracticeTitle') : grade === '5AP' ? t('examBemTitle') : t('examTrimesterTitle')}
+            </h3>
+            <p className="text-[11.5px] text-white/90 mt-0.5">
+              {grade === '1AP' ? t('examPracticeDesc') : grade === '5AP' ? t('examBemDesc') : t('examTrimesterDesc')}
+            </p>
+          </div>
+          <span data-pole-icon="exams" className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
+            <ExamsPoleIcon className="w-8 h-8" />
+          </span>
+        </motion.button>
+        <motion.button
+          type="button"
+          data-pole="challenges"
+          whileTap={{ scale: 0.95 }}
+          transition={spring}
+          onClick={() => onSelectPole('challenges')}
+          className="kids-pop kids-card-defis w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3"
+        >
+          <div className="min-w-0">
+            <h3 className="text-[15px] font-extrabold">{t('poleChallengesTitle')}</h3>
+            <p className="text-[11.5px] text-white/90 mt-0.5">{t('poleChallengesDesc')}</p>
+          </div>
+          <span data-pole-icon="challenges" className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
+            <ChallengesPoleIcon className="w-8 h-8" />
+          </span>
+        </motion.button>
       </section>
 
       <section>
@@ -354,38 +345,36 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </button>
           <h2 className="text-[17px] font-extrabold text-[var(--kids-ink)]">{t('poleLabsTitle')} 🔬</h2>
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          {onOpenWilayas && (
-            <motion.button
-              type="button"
-              whileTap={{ scale: 0.95 }}
-              transition={spring}
-              onClick={onOpenWilayas}
-              className="kids-pop kids-pole relative overflow-hidden rounded-[22px] text-start min-h-[128px] flex flex-col"
-            >
-              <div className="kids-pole-band kids-card-wilayas" />
-              <div className="p-4 flex flex-col items-start gap-2 flex-1 justify-between">
-                <span className="w-[42px] h-[42px] rounded-2xl bg-[#FFF8E7] flex items-center justify-center text-[20px] shrink-0">🇩🇿</span>
-                <h3 className="text-[13.5px] font-extrabold text-[var(--kids-ink)] leading-snug">{t('labWilayasTitle')}</h3>
-              </div>
-            </motion.button>
-          )}
-          {onOpenMathLab && (
-            <motion.button
-              type="button"
-              whileTap={{ scale: 0.95 }}
-              transition={spring}
-              onClick={onOpenMathLab}
-              className="kids-pop kids-pole relative overflow-hidden rounded-[22px] text-start min-h-[128px] flex flex-col"
-            >
-              <div className="kids-pole-band kids-card-maths" />
-              <div className="p-4 flex flex-col items-start gap-2 flex-1 justify-between">
-                <span className="w-[42px] h-[42px] rounded-2xl bg-[#FFF8E7] flex items-center justify-center text-[20px] shrink-0">📐</span>
-                <h3 className="text-[13.5px] font-extrabold text-[var(--kids-ink)] leading-snug">{t('labMathTitle')}</h3>
-              </div>
-            </motion.button>
-          )}
-        </div>
+        {onOpenWilayas && (
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            transition={spring}
+            onClick={onOpenWilayas}
+            className="kids-pop kids-card-wilayas w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
+          >
+            <div className="min-w-0">
+              <h3 className="text-[15px] font-extrabold">{t('labWilayasTitle')}</h3>
+              <p className="text-[11.5px] text-white/90 mt-0.5">{t('labWilayasDesc')}</p>
+            </div>
+            <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">🇩🇿</span>
+          </motion.button>
+        )}
+        {onOpenMathLab && (
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            transition={spring}
+            onClick={onOpenMathLab}
+            className="kids-pop kids-card-maths w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3"
+          >
+            <div className="min-w-0">
+              <h3 className="text-[15px] font-extrabold">{t('labMathTitle')}</h3>
+              <p className="text-[11.5px] text-white/90 mt-0.5">{t('labMathDesc')}</p>
+            </div>
+            <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">📐</span>
+          </motion.button>
+        )}
       </section>
 
       {!isYoung && preschoolBlock}

@@ -118,17 +118,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
   const [showDeleteParentGate, setShowDeleteParentGate] = useState(false);
-  const [pane, setPane] = useState<'me' | 'parents'>('me');
-  const [parentsUnlocked, setParentsUnlocked] = useState(false);
-  const [parentsGateOpen, setParentsGateOpen] = useState(false);
-
-  const openParentsPane = () => {
-    if (parentsUnlocked) {
-      setPane('parents');
-      return;
-    }
-    setParentsGateOpen(true);
-  };
 
   // Parent Gate sits after the two-step confirm above, right before the actual DELETE call — the
   // last point before the action is irreversible.
@@ -155,10 +144,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   };
 
   useEffect(() => {
-    if (!isOpen) return;
-    setPane('me');
-    setParentsUnlocked(false);
-  }, [isOpen]);
+    setEditedName(authUser?.nom || userProfile.name);
+  }, [authUser?.nom, userProfile.name]);
 
   useEffect(() => {
     setSelectedAvatar(userProfile.avatar || '🎓');
@@ -279,31 +266,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           </div>
         </div>
 
-        <div className="flex gap-2 px-4 pt-3 bg-[#FFF8E7] shrink-0">
-          <button
-            type="button"
-            onClick={() => setPane('me')}
-            className={`flex-1 hit-target rounded-2xl text-sm font-extrabold cursor-pointer ${
-              pane === 'me' ? 'bg-[var(--kids-grass-2)] text-white kids-pop' : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-            }`}
-          >
-            {t('profileMeTab')}
-          </button>
-          <button
-            type="button"
-            onClick={openParentsPane}
-            className={`flex-1 hit-target rounded-2xl text-sm font-extrabold cursor-pointer ${
-              pane === 'parents' ? 'bg-[var(--kids-grass-2)] text-white kids-pop' : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-            }`}
-          >
-            {t('profileParentsTab')}
-          </button>
-        </div>
-
         {/* Modal Scrollable Body */}
         <div className="p-5 overflow-y-auto flex-1 space-y-6">
-          {pane === 'parents' && (
-          <>
           {/* Identity Card */}
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
             <label className="text-sm font-extrabold text-[var(--kids-ink)] flex items-center gap-1.5">
@@ -362,11 +326,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               </button>
             </Card>
           )}
-          </>
-          )}
 
-          {pane === 'me' && (
-          <>
           {/* Avatar Picker Card */}
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
             <label className="text-sm font-extrabold text-[var(--kids-ink)] flex items-center gap-1.5">
@@ -482,12 +442,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               </div>
             </Card>
           </div>
-          </>
-          )}
 
-          {pane === 'parents' && (
-            <>
-            {currentGrade && onGradeChange && (
+          {currentGrade && onGradeChange && (
               <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
                 <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
                 <div data-profile-grade-strip className="grid grid-cols-5 gap-1.5">
@@ -621,14 +577,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 </button>
               )}
             </div>
-            </>
-          )}
         </div>
 
         {/* Footer */}
         <div className="bg-[#FFF8E7] border-t-2 border-[#E7E2D7] p-4 shrink-0 space-y-2.5">
           <div className="flex items-center justify-between gap-3">
-            {pane === 'parents' ? (
             <button
               onClick={onResetProgress}
               className="text-sm font-extrabold text-[var(--brand-coral)] flex items-center gap-1 cursor-pointer min-h-[var(--hit)]"
@@ -636,7 +589,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <RefreshCw className="w-4 h-4" />
               <span>{t('resetProgress')}</span>
             </button>
-            ) : <span />}
             <button
               onClick={handleSave}
               className="kids-cta !w-auto px-6 cursor-pointer"
@@ -645,7 +597,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </button>
           </div>
 
-          {pane === 'parents' && authUser && (
+          {authUser && (
             <div className="flex items-center justify-between border-t-2 border-[#E7E2D7] pt-2.5">
               <button
                 onClick={handleDeleteAccount}
@@ -678,15 +630,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       isOpen={showDeleteParentGate}
       onClose={() => setShowDeleteParentGate(false)}
       onVerified={performAccountDeletion}
-    />
-    <ParentGateModal
-      isOpen={parentsGateOpen}
-      onClose={() => setParentsGateOpen(false)}
-      onVerified={() => {
-        setParentsUnlocked(true);
-        setParentsGateOpen(false);
-        setPane('parents');
-      }}
     />
     </>
   );

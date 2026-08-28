@@ -20,7 +20,7 @@ const renderNav = (grade: '1AP' | '5AP') =>
   );
 
 describe('MobileBottomNav', () => {
-  it('shows four tabs on 1AP: home, courses, play, me', () => {
+  it('shows four tabs plus the AI tutor button on 1AP: home, courses, play, me', () => {
     renderNav('1AP');
     expect(document.querySelector('[data-nav-compact="true"]')).toBeTruthy();
     expect(screen.getByText('الرئيسية')).toBeInTheDocument();
@@ -28,7 +28,26 @@ describe('MobileBottomNav', () => {
     expect(screen.getByText('أَلْعَبُ')).toBeInTheDocument();
     expect(screen.getByText('أَنَا')).toBeInTheDocument();
     expect(screen.queryByText('التمارين')).not.toBeInTheDocument();
-    expect(screen.queryByTitle('المعلم الذكي بالذكاء الاصطناعي')).not.toBeInTheDocument();
+    expect(screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي')).toBeInTheDocument();
+  });
+
+  it('calls onOpenAiTutor when the center fox button is tapped', () => {
+    const onOpenAiTutor = vi.fn();
+    render(
+      <LocaleProvider>
+        <MobileBottomNav
+          grade="5AP"
+          selectedSubject="math"
+          activeTab="home"
+          onSelectTab={vi.fn()}
+          onOpenAiTutor={onOpenAiTutor}
+          onOpenProfile={vi.fn()}
+          onClearSelectedLesson={vi.fn()}
+        />
+      </LocaleProvider>,
+    );
+    screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي').click();
+    expect(onOpenAiTutor).toHaveBeenCalledTimes(1);
   });
 
   it('marks the Accueil tab as current on the home screen', () => {

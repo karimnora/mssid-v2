@@ -6,7 +6,6 @@ import { AuthService } from '../services/authService';
 import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
-import { AskAdultScreen } from './ParentGateModal';
 
 interface Props {
   isOpen: boolean;
@@ -45,7 +44,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const [loading, setLoading] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [parentReady, setParentReady] = useState(false);
 
   // 'credentials' = the normal login/register form above. 'forgot'/'reset' replace it entirely with
   // the password-recovery steps (request a code, then use it) — see handleForgotSubmit/handleResetSubmit.
@@ -66,7 +64,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
       setResetCode('');
       setNewPassword('');
       setStatusMessage(null);
-      setParentReady(false);
     }
   }, [isOpen, initialMode]);
 
@@ -213,10 +210,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           </button>
         </div>
 
-        {!parentReady ? (
-          <AskAdultScreen onAskAdult={() => setParentReady(true)} onClose={onClose} />
-        ) : (
-        <>
         {/* Auth Mode Tabs */}
         {authFlow === 'credentials' && (
         <div className="flex gap-2 p-3 bg-[#FFF8E7] shrink-0">
@@ -537,8 +530,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </button>
           </div>
         </form>
-        )}
-        </>
         )}
       </motion.div>
     </motion.div>

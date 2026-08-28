@@ -21,6 +21,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   selectedSubject,
   activeTab,
   onSelectTab,
+  onOpenAiTutor,
   onOpenProfile,
   onClearSelectedLesson,
   profileOpen = false,
@@ -76,6 +77,21 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     >
       {tabButton('home', <Home className="w-5 h-5" />, t('home'))}
       {tabButton('courses', <BookOpen className="w-5 h-5" />, t('courses'))}
+
+      <div className="flex flex-col items-center flex-1">
+        <button
+          type="button"
+          onClick={onOpenAiTutor}
+          className={`kids-nav-ai kids-pop w-[56px] h-[56px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 cursor-pointer ${
+            isDark ? 'border-slate-900' : 'border-white'
+          }`}
+          title={t('aiTutor')}
+        >
+          <span aria-hidden>🦊</span>
+        </button>
+        <span className="text-[11px] font-extrabold text-[var(--kids-coral-2)] mt-0.5">{t('aiTutorShort')}</span>
+      </div>
+
       {tabButton('games', <Gamepad2 className="w-5 h-5" />, t('playTab'))}
       <button
         type="button"
