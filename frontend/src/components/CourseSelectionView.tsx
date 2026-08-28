@@ -286,7 +286,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     key={lesson.id}
                     interactive
                     padding="none"
-                    className={`h-full overflow-hidden !bg-white !border-[#E7E2D7] rounded-[22px] ${locked ? 'relative' : ''}`}
+                    className={`h-full overflow-hidden light-surface !border-[#E7E2D7] rounded-[22px] ${locked ? 'relative' : ''}`}
                     onClick={() => onSelectLesson(lesson)}
                   >
                     <div className={`h-3.5 w-full ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-arabe'}`} />
@@ -306,18 +306,18 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     <div dir={isLtrSubject ? 'ltr' : 'rtl'} className="text-right flex items-center gap-2">
                       {isSimpleCard && <span className="text-2xl shrink-0">{SUBJECT_EMOJI[selectedSubject] || '📘'}</span>}
                       <div className="min-w-0">
-                        <h3 className={isSimpleCard ? 'text-base font-extrabold font-sans text-[var(--app-text)]' : 'text-sm font-extrabold font-sans text-[var(--app-text)]'}>
+                        <h3 className={isSimpleCard ? 'text-base font-extrabold font-sans text-slate-900' : 'text-sm font-extrabold font-sans text-slate-900'}>
                           {lesson.titleAr}
                         </h3>
                         {!isSimpleCard && (
-                          <p className="text-xs text-[var(--app-text-muted)] mt-1 line-clamp-2 leading-relaxed">
+                          <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
                             {lesson.summaryAr}
                           </p>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-[var(--app-card-border)] text-[11px] font-bold text-[var(--app-text-muted)]">
+                    <div className="flex items-center justify-between pt-2 border-t border-[#E7E2D7] text-[11px] font-bold text-slate-500">
                       <div className="flex items-center gap-2">
                         {lesson.difficultyTier && (
                           <span className="flex items-center gap-0.5 text-[var(--kids-sun-2)]">

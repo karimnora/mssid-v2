@@ -79,7 +79,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-3xl p-4 sm:p-5 space-y-3 shadow-xs min-w-0 overflow-x-hidden">
+    <div className="exercise-surface border rounded-3xl p-4 sm:p-5 space-y-3 shadow-xs min-w-0 overflow-x-hidden">
       <div className="flex items-center justify-between flex-wrap gap-2">
         <span className="text-sm font-extrabold text-[var(--brand-amber-dark)] bg-[var(--brand-amber)]/15 border border-[var(--brand-amber)]/30 px-3 py-1 rounded-full">
           {playful ? (ex.level === 1 ? 'أَلْعَبُ' : ex.level === 2 ? 'أُحَاوِلُ' : 'أَرْبِطُ') : ex.levelLabelAr}
@@ -87,7 +87,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
         {!playful && <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>}
       </div>
 
-      <div className="flex items-start gap-2 type-quiz text-[var(--app-text)]">
+      <div className="flex items-start gap-2 type-quiz text-slate-900">
         {leadAudio}
         <p className={`whitespace-pre-line min-w-0 ${playful ? 'text-lg font-black leading-snug' : ''}`}>
           {renderTextWithMath(renderArabicText(ex.problemAr))}
@@ -131,7 +131,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           value={String(answer ?? '')}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="اكتب إجابتك هنا..."
-          className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold disabled:bg-slate-50"
+          className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold text-slate-900 disabled:bg-slate-50"
         />
       )}
 
@@ -143,7 +143,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           value={answer ?? ''}
           onChange={(e) => setAnswer(e.target.value === '' ? '' : Number(e.target.value))}
           placeholder="اكتب الناتج..."
-          className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold disabled:bg-slate-50"
+          className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold text-slate-900 disabled:bg-slate-50"
           dir="ltr"
         />
       )}

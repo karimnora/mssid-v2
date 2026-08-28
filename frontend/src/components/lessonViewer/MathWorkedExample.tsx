@@ -27,7 +27,7 @@ export const MathWorkedExample: React.FC<MathWorkedExampleProps> = ({
     const box =
       tone === 'dark'
         ? 'text-xs sm:text-sm text-emerald-200 font-sans leading-relaxed bg-emerald-950/80 p-4 rounded-2xl border border-emerald-800/80 whitespace-pre-line'
-        : 'text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line';
+        : 'text-xs sm:text-sm text-slate-900 font-sans leading-relaxed whitespace-pre-line';
     return (
       <div className={box} data-math-worked-example="flat">
         <span className={`font-extrabold block mb-1 ${tone === 'dark' ? 'text-amber-300' : 'text-[var(--brand-blue-dark)]'}`}>

@@ -71,6 +71,8 @@ body {
   --app-input-border: #475569;
   --app-header-bg: rgba(15, 23, 42, 0.95);
   --app-footer-bg: #0b1329;
+  --kids-ink: #f8fafc;
+  --kids-muted: #94a3b8;
   font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
@@ -137,6 +139,75 @@ body {
   font-weight: 700;
 }
 
+/* White "paper" surfaces — always dark ink, even in dark mode. */
+.exercise-surface,
+.light-surface {
+  background-color: #ffffff;
+  border-color: #e7e2d7;
+  color: #0f172a;
+  --kids-ink: #0f172a;
+  --kids-muted: #64748b;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+}
+
+.exercise-surface .type-quiz,
+.exercise-surface input,
+.exercise-surface textarea,
+.light-surface .type-quiz,
+.light-surface input,
+.light-surface textarea {
+  color: #0f172a;
+}
+
+.exercise-surface input::placeholder,
+.exercise-surface textarea::placeholder,
+.light-surface input::placeholder,
+.light-surface textarea::placeholder {
+  color: #64748b;
+}
+
+/* Dark-mode: amber/emerald banners on tinted backgrounds need light ink. */
+.theme-dark .exam-amber-banner,
+.theme-midnight .exam-amber-banner {
+  color: #fcd34d;
+}
+
+.theme-dark .exam-amber-banner-sub,
+.theme-midnight .exam-amber-banner-sub {
+  color: #fbbf24;
+}
+
+.theme-dark .exam-emerald-banner,
+.theme-midnight .exam-emerald-banner {
+  color: #a7f3d0;
+}
+
+.theme-dark .exam-emerald-banner-sub,
+.theme-midnight .exam-emerald-banner-sub {
+  color: #6ee7b7;
+}
+
+.theme-dark .exam-timer-value,
+.theme-midnight .exam-timer-value {
+  color: #fcd34d;
+}
+
+/* Any explicit white card keeps dark ink in dark mode (modals, lesson cards, etc.). */
+.theme-dark .bg-white,
+.theme-midnight .bg-white,
+.theme-dark [class*=":!bg-white"],
+.theme-midnight [class*=":!bg-white"],
+.theme-dark [class*="FFFBF0"],
+.theme-midnight [class*="FFFBF0"],
+.theme-dark [class*="FFF8E7"],
+.theme-midnight [class*="FFF8E7"] {
+  --kids-ink: #0f172a;
+  --kids-muted: #64748b;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+}
+
 .hit-target {
   min-width: var(--hit);
   min-height: var(--hit);
@@ -164,7 +235,11 @@ body {
 .kids-pole {
   background: #ffffff;
   border: 2px solid #E7E2D7;
-  color: var(--kids-ink);
+  color: #0f172a;
+  --kids-ink: #0f172a;
+  --kids-muted: #64748b;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
 }
 
 .kids-pole-band {
@@ -174,7 +249,11 @@ body {
 
 .lab-interior {
   background: #ffffff;
-  color: var(--kids-ink);
+  color: #0f172a;
+  --kids-ink: #0f172a;
+  --kids-muted: #64748b;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
 }
 
 .lab-interior .bg-slate-900:not([data-lab-instrument]),
@@ -242,7 +321,11 @@ body {
   border: 3px solid #E7E2D7;
   border-radius: 30px;
   box-shadow: var(--kids-pop-soft);
-  color: var(--kids-ink);
+  color: #0f172a;
+  --kids-ink: #0f172a;
+  --kids-muted: #64748b;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
 }
 
 .kids-modal-header {
@@ -259,7 +342,7 @@ body {
   border-radius: 1rem;
   font-weight: 700;
   font-size: 1rem;
-  color: var(--kids-ink);
+  color: #0f172a;
 }
 
 .kids-input:focus {

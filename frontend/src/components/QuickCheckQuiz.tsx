@@ -32,8 +32,8 @@ export const QuickCheckQuiz: React.FC<QuickCheckQuizProps> = ({ questionAr, opti
   if (!options || options.length === 0) return null;
 
   return (
-    <div className="bg-white border-2 border-[#E7E2D7] rounded-[22px] p-4 space-y-3">
-      <p className="text-sm font-extrabold text-[var(--kids-ink)] flex items-center gap-1.5">
+    <div className="exercise-surface border-2 border-[#E7E2D7] rounded-[22px] p-4 space-y-3">
+      <p className="text-sm font-extrabold text-slate-900 flex items-center gap-1.5">
         <Brain className="w-4 h-4 text-[var(--kids-grass-2)] shrink-0" />
         <span>سؤال تحقق سريع: {questionAr}</span>
       </p>

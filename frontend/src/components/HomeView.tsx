@@ -215,7 +215,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {isGuest && (
         <div className="rounded-[20px] p-3.5 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-subtle)] kids-pop-soft flex items-center justify-between gap-3">
-          <p className="text-xs font-medium text-[var(--kids-muted)] leading-relaxed">
+          <p className="text-xs font-medium text-[var(--app-text-muted)] leading-relaxed">
             {t('guestBannerSubtitle')}
           </p>
           {onOpenAuthModal && (
@@ -243,7 +243,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           >
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--kids-ink)]">{t('poleCoursesTitle')} 📚</h2>
+          <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {visibleSubjects.map((subject) => (
@@ -290,7 +290,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           >
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--kids-ink)]">{t('poleExamsTitle')} 📝</h2>
+          <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleExamsTitle')} 📝</h2>
         </div>
         <motion.button
           type="button"
@@ -343,7 +343,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
             {t('sectionViewAll')}
           </button>
-          <h2 className="text-[17px] font-extrabold text-[var(--kids-ink)]">{t('poleLabsTitle')} 🔬</h2>
+          <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleLabsTitle')} 🔬</h2>
         </div>
         {onOpenWilayas && (
           <motion.button

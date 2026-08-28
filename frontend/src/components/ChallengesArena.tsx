@@ -469,7 +469,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
       </div>
 
       <Card padding="lg" className="space-y-5">
-        <h3 className="font-black text-base leading-relaxed">{currentItem && renderArabicText(currentItem.questionOrPromptAr)}</h3>
+        <h3 className="font-black text-base leading-relaxed text-[var(--app-text)]">{currentItem && renderArabicText(currentItem.questionOrPromptAr)}</h3>
 
         {currentItem?.optionsAr && currentItem.optionsAr.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

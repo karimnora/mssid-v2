@@ -56,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className="sticky top-0 z-40 pt-[env(safe-area-inset-top)] bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--kids-ink)] shadow-sm backdrop-blur-md"
+      className="sticky top-0 z-40 pt-[env(safe-area-inset-top)] bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md"
       dir={direction}
       data-nav-child="true"
     >

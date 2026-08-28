@@ -35,20 +35,11 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     onClearSelectedLesson();
   };
 
-  const isDark = theme === 'dark' || theme === 'midnight';
   const activeLabId = isLabSubjectId(selectedSubject) ? selectedSubject : undefined;
 
-  const navBgClass = isDark
-    ? 'bg-slate-900 text-white border-slate-800'
-    : 'bg-white text-[var(--kids-ink)] border-[var(--app-card-subtle)]';
-
-  const activeTabClass = isDark
-    ? 'text-emerald-400 font-extrabold'
-    : 'text-[var(--kids-grass-2)] font-extrabold';
-
-  const inactiveTabClass = isDark
-    ? 'text-slate-400'
-    : 'text-[var(--kids-muted)]';
+  const navBgClass = 'bg-[var(--app-footer-bg)] border-[var(--app-card-border)]';
+  const activeTabClass = 'text-[var(--brand-emerald)] font-extrabold';
+  const inactiveTabClass = 'text-[var(--app-text-muted)]';
 
   const tabButton = (
     tab: 'home' | 'courses' | 'games',
@@ -82,9 +73,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <button
           type="button"
           onClick={onOpenAiTutor}
-          className={`kids-nav-ai kids-pop w-[56px] h-[56px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 cursor-pointer ${
-            isDark ? 'border-slate-900' : 'border-white'
-          }`}
+          className={`kids-nav-ai kids-pop w-[56px] h-[56px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 border-[var(--app-footer-bg)] cursor-pointer`}
           title={t('aiTutor')}
         >
           <span aria-hidden>🦊</span>

@@ -297,9 +297,9 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             {showExamTools && (
               <>
             {/* Exam Simulation Timer */}
-            <div className="bg-[var(--app-card-subtle)] text-[var(--kids-ink)] px-3 py-1.5 rounded-xl flex items-center gap-2.5 border-2 border-[var(--app-card-border)]">
-              <Clock className="w-4 h-4 text-[var(--brand-amber-dark)]" />
-              <span className="font-mono font-black text-amber-800 text-sm">{formatTimer(timerSeconds)}</span>
+            <div className="bg-[var(--app-card-subtle)] text-[var(--app-text)] px-3 py-1.5 rounded-xl flex items-center gap-2.5 border-2 border-[var(--app-card-border)]">
+              <Clock className="w-4 h-4 text-[var(--brand-amber)]" />
+              <span className="font-mono font-black text-sm exam-timer-value">{formatTimer(timerSeconds)}</span>
               <button
                 onClick={() => setIsTimerRunning(!isTimerRunning)}
                 className={`min-w-8 min-h-8 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center ${
@@ -333,10 +333,10 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               ✨
             </span>
             <div>
-              <span className="font-extrabold block text-emerald-900">
+              <span className="font-extrabold block exam-emerald-banner text-emerald-900">
                 جميع الحلول النموذجية وسلالم التنقيط مجانية 100% ومتاحة بالكامل
               </span>
-              <span className="text-emerald-700 text-[11px]">
+              <span className="exam-emerald-banner-sub text-emerald-700 text-[11px]">
                 تدرّب بمرونة، تحقق من خطوات الحل، واكسب نقاط الخبرة!
               </span>
             </div>
@@ -526,15 +526,15 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           {/* Part 2: Integrated Situation (الوضعية الإدماجية) */}
           <div className="space-y-4 pt-2">
             <div className="flex items-center justify-between bg-amber-500/15 px-4 py-2.5 rounded-xl border border-amber-400/30">
-              <h2 className="font-black text-xs sm:text-sm text-amber-950">
+              <h2 className="font-black text-xs sm:text-sm exam-amber-banner text-amber-950">
                 الجزء الثاني: الوضعية الإدماجية المركبة ({selectedExam.problemExercise.points} نقاط)
               </h2>
-              <span className="text-[11px] text-amber-900 font-bold">الإنتاج والحل المركب</span>
+              <span className="text-[11px] exam-amber-banner-sub text-amber-900 font-bold">الإنتاج والحل المركب</span>
             </div>
 
             <div className="p-5 rounded-2xl border border-amber-300/40 bg-amber-500/5 space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
-                <h3 className="font-black text-sm text-amber-950">{selectedExam.problemExercise.titleAr}</h3>
+                <h3 className="font-black text-sm exam-amber-banner text-amber-950">{selectedExam.problemExercise.titleAr}</h3>
                 <span className="text-xs font-black bg-amber-500 text-slate-950 px-3 py-0.5 rounded-full">
                   {selectedExam.problemExercise.points} نقاط كاملة
                 </span>
@@ -604,7 +604,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           {/* Completion Button & Rewards */}
           <div className="pt-4 border-t border-[var(--app-card-border)] no-print">
             {isCompleted ? (
-              <div className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 text-sm font-black">
+              <div className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 exam-emerald-banner text-emerald-800 text-sm font-black">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                 <span>أحسنت! لقد أتممت هذا الموضوع بنجاح وتم تسجيل تقدمك ✅</span>
               </div>
