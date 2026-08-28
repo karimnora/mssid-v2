@@ -7,6 +7,7 @@ import dz.mssid.education.dto.InfraQuotasDto.Meter;
 import dz.mssid.education.dto.InfraQuotasDto.ProviderQuota;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -89,6 +90,10 @@ public class InfraQuotaService {
     private final ObjectMapper objectMapper;
     private final ResendEmailService resendEmailService;
 
+    // Two constructors: Spring Boot otherwise picks the greediest one (the 3-arg test helper) and
+    // fails context load looking for a RestTemplate bean that this app never registers
+    // (EducationApplicationTests.contextLoads on CI). @Autowired pins the production ctor.
+    @Autowired
     public InfraQuotaService(ObjectMapper objectMapper, ResendEmailService resendEmailService) {
         this.objectMapper = objectMapper;
         this.resendEmailService = resendEmailService;
