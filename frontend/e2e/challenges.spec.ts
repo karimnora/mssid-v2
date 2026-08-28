@@ -7,12 +7,13 @@ const challenge = CHALLENGES_DATA.find((c) => c.id === 'challenge-math-large-num
 
 test.beforeEach(async ({ page }) => {
   await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
-  await page.goto('/');
+  // challenge-math-large-numbers is authored for 5AP only (getArenaChallenges filters by grade).
+  await page.goto('/?g=5AP');
 });
 
 test('a student can complete a challenge, answering every item correctly', async ({ page }) => {
   await page.getByRole('button', { name: 'ساحة التحديات' }).click();
-  await page.getByText(challenge.titleAr, { exact: true }).click();
+  await page.locator('[data-challenge-id="challenge-math-large-numbers"]').click();
 
   for (let i = 0; i < challenge.items.length; i++) {
     const item = challenge.items[i];

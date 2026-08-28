@@ -8,7 +8,8 @@ const lesson = MATH_5AP.find((l) => l.id === 'math-5ap-large-numbers')!;
 
 test.beforeEach(async ({ page }) => {
   await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
-  await page.goto('/');
+  // math-5ap-large-numbers lives in the 5AP catalogue; guests boot on 1AP when ?g= is absent.
+  await page.goto('/?g=5AP');
 });
 
 test('a student can navigate to a lesson and complete its quiz', async ({ page }) => {
