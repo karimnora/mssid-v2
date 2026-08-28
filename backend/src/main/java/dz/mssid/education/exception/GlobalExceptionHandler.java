@@ -1,5 +1,6 @@
 package dz.mssid.education.exception;
 
+import io.sentry.Sentry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -79,6 +80,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataAccessException.class)
     public ResponseEntity<Map<String, Object>> handleDataAccessException(DataAccessException ex) {
         log.error("Erreur d'accès aux données non gérée explicitement", ex);
+        // Sentry (Phase 190): this @ExceptionHandler swallows the exception before Spring/Sentry's
+        // own resolver would ever see it, so it must be reported explicitly. No-op if sentry.dsn
+        // is blank (see application.properties). Always a real bug/infra issue, never noise.
+        Sentry.captureException(ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
                 "status", 500,
                 "error", "Internal Server Error",
@@ -88,9 +93,15 @@ public class GlobalExceptionHandler {
 
     /**
      * Intercepte les exceptions métier génériques (ex: email déjà utilisé, utilisateur introuvable).
+     * Sentry (Phase 190): captured here too even though this handler also carries expected
+     * business-rule rejections (email taken, etc.) alongside real bugs — there's no reliable way to
+     * tell them apart generically at this layer. Mute the specific issue in the Sentry dashboard
+     * once you recognize a business-rule message repeating; missing an actual bug here would be the
+     * worse failure mode.
      */
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Map<String, Object>> handleRuntimeException(RuntimeException ex) {
+        Sentry.captureException(ex);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
                 "status", 400,
                 "error", "Bad Request",

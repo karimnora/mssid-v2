@@ -36,6 +36,10 @@ services:
         value: https://mssid-dz.com,https://www.mssid-dz.com,https://localhost
       - key: RESEND_API_KEY
         sync: false
+      # Optional — Sentry error tracking (Phase 190). Free project at sentry.io, paste its DSN
+      # here. Blank/unset = the SDK stays fully no-op, nothing else changes.
+      - key: SENTRY_DSN
+        sync: false
       # Optional — Admin Console "quotas infra" (Technical Logs). Without these the CRM cards show
       # "not configured" instead of live numbers; the app itself keeps working.
       - key: NEON_API_KEY

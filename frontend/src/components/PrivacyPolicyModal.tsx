@@ -99,6 +99,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
               <li><strong className="text-slate-100">Neon:</strong> قاعدة البيانات PostgreSQL.</li>
               <li><strong className="text-slate-100">Resend:</strong> البريد المعاملاتي (تأكيد الحساب / إعادة كلمة المرور / إشعار ولي اختياري).</li>
               <li><strong className="text-slate-100">Google Gemini:</strong> المعلّم الذكي — قد يتضمّن الطلب نص السؤال أو سياق الدرس.</li>
+              <li><strong className="text-slate-100">Sentry:</strong> تتبّع الأعطال التقنية (تقارير الأخطاء البرمجية فقط — دون اسمك أو بريدك الإلكتروني).</li>
             </ul>
             <p>قد توجد خوادم هؤلاء المقدّمين خارج الجزائر.</p>
           </div>

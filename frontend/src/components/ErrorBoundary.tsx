@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Sentry from '@sentry/react';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -24,6 +25,10 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
 
   componentDidCatch(error: unknown, info: React.ErrorInfo) {
     console.error('[mssid] Uncaught render error:', error, info.componentStack);
+    // Sentry (Phase 190): React only reaches this via the class-component boundary — Sentry's
+    // global window.onerror listener never sees a render error caught here, so it's reported
+    // explicitly. No-op if Sentry.init() was never called (no VITE_SENTRY_DSN, see main.tsx).
+    Sentry.captureException(error, { extra: { componentStack: info.componentStack ?? undefined } });
   }
 
   handleReload = () => {

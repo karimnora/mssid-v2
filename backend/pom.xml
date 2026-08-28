@@ -74,6 +74,15 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- Sentry: error tracking (Phase 190). No-op if sentry.dsn is blank (see
+		     application.properties) — matches the app's existing "optional if env var absent"
+		     pattern (Gemini, Resend, Neon...). Free-tier launch: ~5k events/month free. -->
+		<dependency>
+			<groupId>io.sentry</groupId>
+			<artifactId>sentry-spring-boot-starter-jakarta</artifactId>
+			<version>8.54.0</version>
+		</dependency>
+
 		<!-- JWT (JJWT standard pour Spring Boot 3) -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
