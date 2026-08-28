@@ -1,4 +1,4 @@
-import { CourseLesson, ProgressiveExercise, QuizQuestion } from '../../types';
+import { CourseLesson, PedagogicalLevel, ProgressiveExercise, QuizQuestion } from '../../types';
 
 function q(id: string, questionAr: string, correctAr: string, wrong: [string, string], explanationAr: string): QuizQuestion {
   return {
@@ -289,7 +289,7 @@ export const HOMEWORK_PROG_BOOST: Record<string, ProgressiveExercise[]> = {
   ],
 };
 
-function hasLevels(exercises: ProgressiveExercise[] | undefined, levels: number[]): boolean {
+function hasLevels(exercises: ProgressiveExercise[] | undefined, levels: PedagogicalLevel[]): boolean {
   const have = new Set((exercises || []).map((ex) => ex.level));
   return levels.every((lv) => have.has(lv));
 }
