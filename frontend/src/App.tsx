@@ -236,7 +236,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen font-sans antialiased selection:bg-purple-500 selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
+    <div className="min-h-screen font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
       <SeoHead />
       <PwaInstallBanner />
 
@@ -324,7 +324,7 @@ export default function App() {
                   {(nav.mainCategory === 'exams' ? OFFICIAL_EXAMS_LIST : CHALLENGES_TAB_LIST).map((subj) => {
                       const IconComp = ICON_MAP[subj.icon] || BookOpen;
                       const isSelected = nav.selectedSubject === subj.id;
-                      const activeClass = nav.mainCategory === 'exams' ? 'bg-[var(--brand-blue)] text-white' : 'bg-[var(--brand-coral)] text-white';
+                      const activeClass = nav.mainCategory === 'exams' ? 'bg-[var(--brand-blue)] text-white' : 'bg-[var(--brand-amber)] text-white';
                       return (
                         <motion.button
                           key={subj.id}
@@ -381,7 +381,6 @@ export default function App() {
                 onVisitLab={progress.handleVisitLab}
                 onLabReward={progress.handleLabReward}
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
-                onShowLabCatalog={openLabsCatalog}
               />
             )}
           </>
@@ -396,9 +395,6 @@ export default function App() {
             <span>{t('navigation', 'footerCopyright', { year: new Date().getFullYear() })}</span>
           </div>
           <div className="flex items-center gap-4">
-            <button onClick={openAiTutor} className="hover:text-[var(--brand-amber)] cursor-pointer">
-              {t('navigation', 'footerAiTutorLink')}
-            </button>
             <button onClick={() => modals.setIsContactModalOpen(true)} className="hover:text-[var(--brand-emerald)] cursor-pointer">
               {t('navigation', 'contactUs')}
             </button>
@@ -480,6 +476,7 @@ export default function App() {
         onClearSelectedLesson={() => nav.setSelectedLesson(null)}
         onOpenAiTutor={openAiTutor}
         onOpenProfile={() => modals.setIsProfileModalOpen(true)}
+        profileOpen={modals.isProfileModalOpen}
         theme={headerTheme}
       />
     </div>

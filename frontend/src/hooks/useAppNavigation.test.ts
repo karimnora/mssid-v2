@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { isToolAvailableForGrade, INTERACTIVE_LABS_LIST } from '../data/subjectsData';
 import { defaultLabForGrade, labsEntrySubjectForGrade, useAppNavigation } from './useAppNavigation';
+import { GRADE_STORAGE_KEY } from '../navigation/appLocation';
 
 describe('defaultLabForGrade', () => {
   it('opens a 1AP-safe lab instead of the Arabic conjugator', () => {
@@ -33,6 +34,33 @@ describe('labsEntrySubjectForGrade', () => {
   });
 });
 
+describe('guest boot grade', () => {
+  beforeEach(() => {
+    window.localStorage.removeItem(GRADE_STORAGE_KEY);
+    window.history.replaceState(null, '', '/');
+  });
+
+  it('boots on 1AP when the URL has no grade and storage is empty', () => {
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+    expect(result.current.grade).toBe('1AP');
+  });
+
+  it('restores the last picked grade from storage', () => {
+    window.localStorage.setItem(GRADE_STORAGE_KEY, '3AP');
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+    expect(result.current.grade).toBe('3AP');
+  });
+
+  it('persists a grade change', () => {
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+    act(() => {
+      result.current.handleGradeChange('4AP');
+    });
+    expect(result.current.grade).toBe('4AP');
+    expect(window.localStorage.getItem(GRADE_STORAGE_KEY)).toBe('4AP');
+  });
+});
+
 describe('mobile footer tab follows the open view', () => {
   it('leaves Accueil when opening courses, exams, labs, or challenges from home', () => {
     const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
@@ -52,7 +80,7 @@ describe('mobile footer tab follows the open view', () => {
       result.current.goHome();
       result.current.handleSelectPole('exams');
     });
-    expect(result.current.mobileTab).toBe('exercises');
+    expect(result.current.mobileTab).toBe('courses');
 
     act(() => {
       result.current.goHome();
@@ -64,6 +92,6 @@ describe('mobile footer tab follows the open view', () => {
       result.current.goHome();
       result.current.handleSelectPole('challenges');
     });
-    expect(result.current.mobileTab).toBe('exercises');
+    expect(result.current.mobileTab).toBe('games');
   });
 });

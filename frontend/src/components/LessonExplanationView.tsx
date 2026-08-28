@@ -258,7 +258,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
           <Sparkles className="w-3.5 h-3.5 text-slate-950" />
           <span>شرح وتبسيط الدرس والتطبيقات الواقعية</span>
         </span>
-        <span className="bg-slate-900 text-slate-200 text-xs font-bold px-3 py-1 rounded-full border border-slate-800">
+        <span className="bg-[#FFF8E7] text-[var(--kids-ink)] text-xs font-bold px-3 py-1 rounded-full border-2 border-[#E7E2D7]">
           المستوى المقرر: {lesson.grade}
         </span>
       </div>

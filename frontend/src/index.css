@@ -155,6 +155,23 @@ body {
   animation: kids-pop-in 0.45s ease both;
 }
 
+.kids-hero-band {
+  height: 14px;
+  width: 100%;
+  background: var(--brand-emerald);
+}
+
+.kids-pole {
+  background: #ffffff;
+  border: 2px solid #E7E2D7;
+  color: var(--kids-ink);
+}
+
+.kids-pole-band {
+  height: 14px;
+  width: 100%;
+}
+
 .kids-card-arabe { background: linear-gradient(150deg, #4ADE80, #008751); }
 .kids-card-maths { background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-sky-2)); }
 .kids-card-maths-soft { background: linear-gradient(150deg, #7DD3FC, var(--kids-sky-2)); }
@@ -351,6 +368,44 @@ body {
     display: none !important;
     visibility: hidden !important;
   }
+
+  .printable-sheet[data-print-mode="subject"] .print-corrige {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  .printable-sheet[data-print-mode="subject"] .print-answer-lines,
+  .printable-sheet[data-print-mode="subject"] .print-answer-lines * {
+    display: block !important;
+    visibility: visible !important;
+  }
+  .printable-sheet[data-print-mode="corrige"] .print-corrige,
+  .printable-sheet[data-print-mode="corrige"] .print-corrige * {
+    display: block !important;
+    visibility: visible !important;
+  }
+  .printable-sheet[data-print-mode="corrige"] .print-corrige-box {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+  .printable-sheet[data-print-mode="corrige"] .print-answer-lines,
+  .printable-sheet[data-print-mode="corrige"] .print-identity,
+  .printable-sheet[data-print-mode="corrige"] .print-identity * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+.print-answer-lines {
+  display: none;
+}
+.print-answer-line {
+  border-bottom: 1px solid #94a3b8;
+  height: 1.35rem;
+  margin-top: 0.15rem;
+}
+.print-corrige--screen-hidden {
+  display: none;
 }
 
 

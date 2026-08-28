@@ -84,6 +84,10 @@ export const auth = {
   gateError: 'إجابة غير صحيحة، حاول مجدداً.',
   gateContinue: 'متابعة',
 
+  askAdultTitle: 'اطلب من بابا أو ماما',
+  askAdultBody: 'هذا المكان للكبار. اضغط الزر الأخضر عندما يكون ولي الأمر معك.',
+  askAdultCta: 'أنا ولي الأمر',
+
   // --- HomeworkPinModal ---
   hwTitle: 'الواجبات ورمز PIN السريع',
   hwSubtitle: 'انضم لواجب بدون كلمة سر أو شارك واجبك مع تلاميذك',

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CHALLENGES_DATA } from '../data/challengesData';
+import { getArenaChallenges } from '../data/challengesData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
@@ -40,10 +40,10 @@ const MODE_MATCH: Record<Exclude<ChallengeMode, 'all'>, (c: Challenge) => boolea
   boss: (c) => c.format === 'boss_mix',
 };
 
-const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: string; descAr: string; gradient: string }[] = [
-  { id: 'quick', icon: '🎯', titleAr: 'اختبار سريع', descAr: '10 أسئلة خاطفة بدون وقت محدد', gradient: 'from-sky-600 to-blue-800' },
-  { id: 'chrono', icon: '⏱️', titleAr: 'تحدي الزمن', descAr: 'دقيقتان لحل أكبر عدد من الأسئلة', gradient: 'from-amber-500 to-orange-700' },
-  { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', gradient: 'from-fuchsia-700 to-purple-900' },
+const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: string; descAr: string; bandClass: string }[] = [
+  { id: 'quick', icon: '🎯', titleAr: 'اختبار سريع', descAr: '10 أسئلة خاطفة بدون وقت محدد', bandClass: 'kids-card-examens' },
+  { id: 'chrono', icon: '⏱️', titleAr: 'تحدي الزمن', descAr: 'دقيقتان لحل أكبر عدد من الأسئلة', bandClass: 'kids-card-defis' },
+  { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', bandClass: 'kids-card-labs' },
 ];
 
 export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
@@ -62,7 +62,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   // Every count/list in this arena is derived from this grade-scoped base list — never a hardcoded
   // total — so a 3AP student never sees mode/subject counts inflated by 5AP-only content.
   const gradeChallenges = useMemo(
-    () => (grade ? CHALLENGES_DATA.filter((c) => c.grade === grade) : CHALLENGES_DATA),
+    () => getArenaChallenges(grade),
     [grade]
   );
 
@@ -75,14 +75,19 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   const [difficultyFilter, setDifficultyFilter] = useState<Challenge['difficulty'] | 'all'>('all');
   const [modeFilter, setModeFilter] = useState<ChallengeMode>('all');
   const filteredChallenges = useMemo(
-    () =>
-      gradeChallenges.filter(
+    () => {
+      const list = gradeChallenges.filter(
         (c) =>
           (subjectFilter === 'all' || c.subject === subjectFilter) &&
           (difficultyFilter === 'all' || c.difficulty === difficultyFilter) &&
           (modeFilter === 'all' || MODE_MATCH[modeFilter](c))
-      ),
-    [gradeChallenges, subjectFilter, difficultyFilter, modeFilter]
+      );
+      if (!isYoung) return list;
+      return list
+        .filter((c) => c.difficulty !== 'hard' && c.format !== 'boss_mix' && c.timeLimitSeconds == null)
+        .slice(0, 3);
+    },
+    [gradeChallenges, subjectFilter, difficultyFilter, modeFilter, isYoung]
   );
 
   // Mode-card counts respect grade + whichever subject/difficulty pill is currently active, so they
@@ -196,22 +201,22 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
       >
         {/* Plain hex linear-gradient via inline style, not Tailwind's gradient utilities — Tailwind v4's
             oklch()-based palette/gradients silently fail to paint on some older Android WebViews. */}
-        <div
-          className="text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-800/40"
-          style={{ backgroundImage: 'linear-gradient(to right, #881337, #431407, #0f172a)' }}
-        >
-          <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-400/30 text-rose-200 px-3 py-1 rounded-full text-xs font-bold mb-2">
-            <Trophy className="w-3.5 h-3.5 text-amber-400" />
+        <div className="bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl overflow-hidden">
+          <div className="kids-pole-band kids-card-defis" />
+          <div className="p-6 sm:p-8">
+          <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-3 py-1 rounded-full text-xs font-bold mb-2">
+            <Trophy className="w-3.5 h-3.5 text-amber-700" />
             <span>نادي التحديات والمسابقات{grade ? ` (${grade})` : ''}</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black font-sans">
+          <h1 className="text-xl sm:text-2xl font-black font-sans text-[var(--kids-ink)]">
             {isYoung ? 'تحديات قصيرة لمستواك' : 'تحديات مؤقتة لكسب نقاط الخبرة'}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-[var(--kids-muted)] mt-1 max-w-2xl">
             {isYoung
               ? 'سؤال أو اثنان، ثم أحسنت — مثل اللعب بعد الدرس.'
               : 'اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.'}
           </p>
+          </div>
         </div>
 
         {!isYoung && (
@@ -221,7 +226,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             {modeFilter !== 'all' && (
               <button
                 onClick={() => setModeFilter('all')}
-                className="text-rose-600 hover:text-rose-700 underline font-black cursor-pointer"
+                className="text-[var(--brand-emerald)] hover:text-[var(--brand-emerald-dark)] underline font-black cursor-pointer"
               >
                 إلغاء الفلترة وعرض الكل ✕
               </button>
@@ -241,37 +246,36 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                       document.getElementById('challenges-list-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 50);
                   }}
-                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`relative rounded-3xl p-5 min-h-40 text-white shadow-lg cursor-pointer bg-gradient-to-br ${mode.gradient} flex flex-col justify-between gap-3 text-center border-2 transition-all ${
-                    isActive ? 'border-white ring-4 ring-amber-400/80 shadow-2xl scale-[1.02]' : 'border-transparent hover:border-white/40'
+                  className={`relative rounded-3xl overflow-hidden min-h-40 cursor-pointer flex flex-col justify-between gap-3 text-center border-2 transition-all bg-[var(--app-card-bg)] ${
+                    isActive ? 'border-[var(--brand-amber)] ring-2 ring-amber-400/60' : 'border-[var(--app-card-border)]'
                   }`}
                 >
-                  {/* Top Header */}
+                  <div className={`kids-pole-band ${mode.bandClass}`} />
+                  <div className="p-5 flex flex-col justify-between gap-3 flex-1">
                   <div className="flex items-center justify-between w-full">
                     <span className="text-3xl leading-none">{mode.icon}</span>
-                    <Badge variant="neutral" className="!bg-white/20 !text-white !border-white/30 text-[10px] font-black">
+                    <Badge variant="neutral" className="text-[10px] font-black">
                       <span dir="ltr">{count}</span> تحديات
                     </Badge>
                   </div>
 
-                  {/* Title & Desc */}
                   <div className="space-y-1">
-                    <span className="font-black text-base block">{mode.titleAr}</span>
-                    <span className="text-xs text-white/85 leading-snug block">{mode.descAr}</span>
+                    <span className="font-black text-base block text-[var(--kids-ink)]">{mode.titleAr}</span>
+                    <span className="text-xs text-[var(--kids-muted)] leading-snug block">{mode.descAr}</span>
                   </div>
 
-                  {/* Explicit Action Button / Feedback */}
-                  <div className="pt-2 border-t border-white/20">
+                  <div className="pt-2 border-t border-[var(--app-card-border)]">
                     {isActive ? (
-                      <span className="w-full py-1.5 px-3 rounded-xl bg-amber-400 text-amber-950 font-black text-xs inline-flex items-center justify-center gap-1 shadow-md">
-                        <span>النمط المفعّل حالياً (انزل للأسفل 👇)</span>
+                      <span className="w-full py-1.5 px-3 rounded-xl bg-amber-400 text-amber-950 font-black text-xs inline-flex items-center justify-center gap-1">
+                        <span>النمط المفعّل حالياً</span>
                       </span>
                     ) : (
-                      <span className="w-full py-1.5 px-3 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs inline-flex items-center justify-center gap-1 transition-colors">
-                        <span>تصفية بهذا النمط والانتقال إليه 👇</span>
+                      <span className="w-full py-1.5 px-3 rounded-xl bg-[var(--app-card-subtle)] text-[var(--kids-ink)] font-bold text-xs inline-flex items-center justify-center gap-1">
+                        <span>تصفية بهذا النمط</span>
                       </span>
                     )}
+                  </div>
                   </div>
                 </motion.div>
               );
@@ -284,11 +288,11 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
         <div id="challenges-list-section" className="space-y-4 scroll-mt-20">
           <div className="flex items-center justify-between flex-wrap gap-2 pt-2 border-t border-[var(--app-card-border)]">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[var(--brand-amber)]"></span>
               <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
                 قائمة التحديات المتاحة ({filteredChallenges.length})
                 {modeFilter !== 'all' && (
-                  <span className="text-xs font-bold text-rose-600 mr-2">
+                  <span className="text-xs font-bold text-amber-800 mr-2">
                     — نمط: {MODE_CARDS.find((m) => m.id === modeFilter)?.titleAr}
                   </span>
                 )}
@@ -309,7 +313,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             <button
               onClick={() => setSubjectFilter('all')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                subjectFilter === 'all' ? 'bg-rose-600 text-white shadow-xs font-extrabold scale-105' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200'
+                subjectFilter === 'all' ? 'bg-[var(--brand-emerald)] text-white font-extrabold' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
               }`}
             >
               الكل
@@ -319,7 +323,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                 key={s.id}
                 onClick={() => setSubjectFilter(s.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                  subjectFilter === s.id ? 'bg-rose-600 text-white shadow-xs font-extrabold scale-105' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200'
+                  subjectFilter === s.id ? 'bg-[var(--brand-emerald)] text-white font-extrabold' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
                 {s.nameAr}
@@ -335,7 +339,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                 key={d}
                 onClick={() => setDifficultyFilter(d)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
-                  difficultyFilter === d ? 'bg-amber-500 text-slate-950 shadow-xs font-extrabold scale-105' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200'
+                  difficultyFilter === d ? 'bg-[var(--brand-amber)] text-amber-950 font-extrabold' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
                 {d === 'all' ? 'الكل' : DIFFICULTY_LABEL[d]}
@@ -353,7 +357,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                   setSubjectFilter('all');
                   setDifficultyFilter('all');
                 }}
-                className="text-xs text-rose-600 font-black hover:underline cursor-pointer"
+                className="text-xs text-[var(--brand-emerald)] font-black hover:underline cursor-pointer"
               >
                 إعادة ضبط جميع الفلاتر وعرض كل التحديات
               </button>
@@ -366,11 +370,16 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                 return (
                   <motion.div
                     key={challenge.id}
-                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 22 }}
                   >
-                  <Card interactive padding={isYoung ? 'lg' : 'md'} onClick={() => startChallenge(challenge)} className="space-y-3">
+                  <Card
+                    interactive
+                    padding={isYoung ? 'lg' : 'md'}
+                    onClick={() => startChallenge(challenge)}
+                    className="space-y-3"
+                    data-challenge-id={challenge.id}
+                  >
                     <div className="flex items-center justify-between">
                       <Badge variant="info">{subjectName}</Badge>
                       {!isYoung && (
@@ -385,7 +394,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                       {!isYoung && <span>{FORMAT_LABEL[challenge.format]}</span>}
                       <span>{challenge.items.length} أسئلة</span>
                     </div>
-                    <Button variant="danger" size={isYoung ? 'md' : 'sm'} fullWidth icon={<Zap className="w-4 h-4" />}>
+                    <Button variant="primary" size={isYoung ? 'md' : 'sm'} fullWidth icon={<Zap className="w-4 h-4" />}>
                       {done ? 'إعادة' : 'ابدأ التحدي'}
                       {!done && !isYoung && (
                         <span> (<span dir="ltr">+{challenge.xpReward} XP</span>)</span>
@@ -425,7 +434,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             <Button variant="outline" onClick={exitChallenge} icon={<ChevronLeft className="w-4 h-4" />}>
               العودة للقائمة
             </Button>
-            <Button variant="danger" onClick={() => startChallenge(activeChallenge)} icon={<RotateCcw className="w-4 h-4" />}>
+            <Button variant="primary" onClick={() => startChallenge(activeChallenge)} icon={<RotateCcw className="w-4 h-4" />}>
               العب من جديد
             </Button>
           </div>
@@ -469,13 +478,13 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                     isAnswerRevealed && isCorrectOpt
                       ? 'bg-emerald-100 border-emerald-400 text-emerald-900'
                       : isAnswerRevealed && isThisSelected && !isCorrectOpt
-                      ? 'bg-rose-100 border-rose-400 text-rose-900'
+                      ? 'bg-[#FFF5F4] border-[#F0C9C6] text-[#9F221C]'
                       : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)]'
                   }`}
                 >
                   <span>{opt}</span>
                   {isAnswerRevealed && isCorrectOpt && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
-                  {isAnswerRevealed && isThisSelected && !isCorrectOpt && <XCircle className="w-4 h-4 text-rose-600 shrink-0" />}
+                  {isAnswerRevealed && isThisSelected && !isCorrectOpt && <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />}
                 </button>
               );
             })}
@@ -508,7 +517,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
         </AnimatePresence>
 
         {isAnswerRevealed && (
-          <Button variant="danger" fullWidth onClick={goNext}>
+          <Button variant="primary" fullWidth onClick={goNext}>
             {itemIndex + 1 >= activeChallenge.items.length ? 'إنهاء التحدي' : 'السؤال التالي'}
           </Button>
         )}

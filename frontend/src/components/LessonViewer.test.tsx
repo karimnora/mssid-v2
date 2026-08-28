@@ -92,3 +92,49 @@ describe('LessonViewer — 1AP parent info panel', () => {
     expect(heroTitle?.closest('button')).toBeNull();
   });
 });
+
+describe('LessonViewer — 3AP max 4 steps', () => {
+  it('caps the 3AP step strip at four tabs even when the lesson has extra stages', () => {
+    const lesson3ap: CourseLesson = {
+      ...lesson,
+      id: 'math-3ap-sample',
+      grade: '3AP',
+      titleAr: 'الضرب',
+      quiz: [{ id: 'q1', questionAr: 'سؤال', options: [{ id: 'a', textAr: 'نعم', isCorrect: true }] }],
+      progressiveExercises: [
+        {
+          id: 'ex1',
+          level: 1,
+          levelLabelAr: 'أكتشف',
+          problemAr: '2×3',
+          hintsAr: [],
+          solutionAr: '6',
+          detailedCorrectionAr: '2+2+2',
+          xpReward: 5,
+        },
+      ],
+      evaluationExercises: [
+        {
+          id: 'ev1',
+          level: 4,
+          levelLabelAr: 'أتحدى',
+          problemAr: '4×5',
+          hintsAr: [],
+          solutionAr: '20',
+          detailedCorrectionAr: '20',
+          xpReward: 8,
+        },
+      ],
+    };
+
+    const { container } = render(
+      <LocaleProvider>
+        <LessonViewer lesson={lesson3ap} grade="3AP" onBack={vi.fn()} onCompleteQuiz={vi.fn()} />
+      </LocaleProvider>,
+    );
+
+    const strip = container.querySelector('[data-lesson-step-count]');
+    expect(strip).toBeTruthy();
+    expect(Number(strip?.getAttribute('data-lesson-step-count'))).toBeLessThanOrEqual(4);
+  });
+});

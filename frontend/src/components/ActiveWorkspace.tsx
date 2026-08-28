@@ -1,7 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { motion } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId, UserProfile } from '../types';
-import { INTERACTIVE_LABS_LIST } from '../data/subjectsData';
 import { LessonViewer } from './LessonViewer';
 import { ExamsViewer } from './ExamsViewer';
 import { LoadingFallback } from './LoadingFallback';
@@ -60,7 +58,6 @@ interface ActiveWorkspaceProps {
   onVisitLab: (labId: string) => void;
   onLabReward: (coins: number, xp: number) => void;
   onEarnCoins: (amount: number) => void;
-  onShowLabCatalog?: () => void;
 }
 
 export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
@@ -84,7 +81,6 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onVisitLab,
   onLabReward,
   onEarnCoins,
-  onShowLabCatalog,
 }) => {
   const t = useTranslation('navigation');
 
@@ -96,51 +92,6 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
 
   return (
   <div id="active-interactive-tool-section" className="scroll-mt-24 transition-all duration-300 relative">
-    {mainCategory === 'labs' && isLabSubjectId(selectedSubject) && (
-      <motion.div
-        key={`tool-header-${selectedSubject}`}
-        initial={{ opacity: 0, y: -8, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.3 }}
-        className="mb-4 p-3.5 bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/5 border-2 border-amber-400/40 rounded-2xl flex items-center justify-between flex-wrap gap-2 shadow-xs ring-4 ring-amber-400/15"
-      >
-        <div className="flex items-center gap-2.5">
-          <span className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center text-sm shadow-xs animate-bounce">
-            🎯
-          </span>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-black text-[var(--app-text)]">
-                {INTERACTIVE_LABS_LIST.find((lab) => lab.id === selectedSubject)?.nameAr || t('fallbackLabName')}
-              </span>
-              <span className="bg-emerald-500/20 text-emerald-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                {t('labReadyHint')}
-              </span>
-            </div>
-            <p className="text-[11px] text-[var(--app-text-muted)]">
-              {t('labOpenedToast')}
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={() => {
-            if (onShowLabCatalog) {
-              onShowLabCatalog();
-              return;
-            }
-            const hub = document.getElementById('tools-hub-container');
-            if (hub) {
-              hub.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-[var(--app-card-bg)] text-[var(--app-text)] hover:bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] shadow-xs transition-all cursor-pointer hover:scale-105"
-        >
-          <span>{t('chooseAnotherTool')}</span>
-        </button>
-      </motion.div>
-    )}
-
       <Suspense fallback={<LoadingFallback label={t('loadingInteractiveTool')} />}>
       {selectedSubject === 'algerian_market' ? (
         <AlgerianCurrencyMarket

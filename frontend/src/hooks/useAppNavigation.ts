@@ -16,6 +16,8 @@ import {
   isValidGrade,
   mobileTabForView,
   parseAppLocation,
+  persistGrade,
+  readStoredGrade,
   toAppHref,
   viewFromNavState,
 } from '../navigation/appLocation';
@@ -55,10 +57,10 @@ type HistoryNavState = {
 
 function readBootLocation(): { view: AppView; grade: PrimaryGrade } {
   if (typeof window === 'undefined') {
-    return { view: { name: 'home' }, grade: '5AP' };
+    return { view: { name: 'home' }, grade: '1AP' };
   }
   const parsed = parseAppLocation(window.location.pathname, window.location.search);
-  return { view: parsed.view, grade: parsed.grade ?? '5AP' };
+  return { view: parsed.view, grade: parsed.grade ?? readStoredGrade() ?? '1AP' };
 }
 
 // Dynamically imported (not a top-level `import`) so the ~4.6 MB lesson catalog isn't part of the
@@ -124,6 +126,7 @@ export function useAppNavigation(options: {
   useEffect(() => {
     if (accountGrade && isValidGrade(accountGrade)) {
       setGrade(accountGrade);
+      persistGrade(accountGrade);
     }
   }, [accountGrade]);
 
@@ -281,6 +284,7 @@ export function useAppNavigation(options: {
 
   const handleGradeChange = (next: PrimaryGrade) => {
     setGrade(next);
+    persistGrade(next);
     setSelectedLesson(null);
     const currentTool = INTERACTIVE_LABS_LIST.find((s) => s.id === selectedSubject);
     if (currentTool && !isToolAvailableForGrade(currentTool, next)) {

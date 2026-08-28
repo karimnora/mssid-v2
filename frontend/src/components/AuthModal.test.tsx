@@ -7,6 +7,10 @@ import { LocaleProvider } from '../context/LocaleContext';
 
 const renderAuth = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
+const enterAdultForm = () => {
+  fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
+};
+
 describe('AuthModal Integration Tests', () => {
   const originalFetch = global.fetch;
 
@@ -25,6 +29,8 @@ describe('AuthModal Integration Tests', () => {
 
   it('renders login form by default when isOpen is true', () => {
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    expect(screen.getByRole('button', { name: 'أنا ولي الأمر' })).toBeInTheDocument();
+    enterAdultForm();
 
     expect(screen.getByRole('heading', { name: 'تسجيل الدخول' })).toBeInTheDocument();
     expect(screen.getByPlaceholderText('example@mssid.dz')).toBeInTheDocument();
@@ -33,6 +39,7 @@ describe('AuthModal Integration Tests', () => {
 
   it('switches between Login mode and Register mode when tabs are clicked', () => {
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
 
     const registerTab = screen.getAllByRole('button', { name: /إنشاء حساب/i })[0];
     fireEvent.click(registerTab);
@@ -43,6 +50,7 @@ describe('AuthModal Integration Tests', () => {
 
   it('shows a required grade selector only in registration mode, defaulting to no selection', () => {
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
 
     // Login mode: no grade selector
     expect(screen.queryByText('المستوى الدراسي:')).not.toBeInTheDocument();
@@ -65,6 +73,7 @@ describe('AuthModal Integration Tests', () => {
     global.fetch = mockFetch;
 
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
     fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
 
     fireEvent.change(screen.getByPlaceholderText('مثال: يونس الجزائري'), { target: { value: 'يونس' } });
@@ -102,6 +111,7 @@ describe('AuthModal Integration Tests', () => {
     global.fetch = mockFetch;
 
     renderAuth(<AuthModal isOpen={true} onClose={handleClose} onAuthSuccess={handleAuthSuccess} />);
+    enterAdultForm();
 
     const emailInput = screen.getByPlaceholderText('example@mssid.dz');
     const passwordInput = screen.getByPlaceholderText('••••••••');
@@ -135,6 +145,7 @@ describe('AuthModal password recovery flow', () => {
 
   it('shows a "forgot password?" link only in login mode', () => {
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
     expect(screen.getByText('نسيت كلمة المرور؟')).toBeInTheDocument();
 
     fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
@@ -147,6 +158,7 @@ describe('AuthModal password recovery flow', () => {
       .mockResolvedValue({ success: true, message: 'إذا كان هذا البريد مسجلاً لدينا، فستصلك رسالة تحتوي على رمز.' });
 
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
     fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
 
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
@@ -165,6 +177,7 @@ describe('AuthModal password recovery flow', () => {
       .mockResolvedValue({ success: true, message: 'تم تغيير كلمة المرور بنجاح.' });
 
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
     fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
     fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));
@@ -190,6 +203,7 @@ describe('AuthModal password recovery flow', () => {
     });
 
     renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
+    enterAdultForm();
     fireEvent.click(screen.getByText('نسيت كلمة المرور؟'));
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
     fireEvent.click(screen.getByRole('button', { name: 'إرسال رمز إعادة التعيين' }));

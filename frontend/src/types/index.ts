@@ -710,12 +710,14 @@ export interface ExamExercise {
   points: number;
   contentAr: string;
   solutionAr: string;
+  /** Math papers: posed operations for the official notebook columns (العمليات | الحل). */
+  operationsAr?: string;
   /** Lesson to open after the corrigé — one notion, not the whole paper. */
   relatedLessonId?: string;
 }
 
 /** How the paper is used in class — mirrors DzExams folders, without copying their files. */
-export type ExamKind = 'devoir' | 'composition' | 'bep';
+export type ExamKind = 'devoir' | 'composition' | 'bep' | 'acquis';
 
 export interface OfficialExam {
   id: string;

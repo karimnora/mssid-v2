@@ -126,7 +126,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         labelAr: step.labelAr,
         icon: iconFor(step.id),
         activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-blue-400',
-        badgeColor: 'from-blue-600 to-indigo-600',
+        badgeColor: 'from-blue-600 to-blue-700',
       }));
     }
 
@@ -139,7 +139,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         labelAr: short2AP ? 'أَتَعَلَّمُ' : 'شرح الدرس والتطبيقات',
         icon: <Glasses className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-blue-400',
-        badgeColor: 'from-blue-600 to-indigo-600',
+        badgeColor: 'from-blue-600 to-blue-700',
       },
       {
         id: 'content',
@@ -176,7 +176,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         labelAr: short2AP ? 'أَلْعَبُ' : 'لعبة المحاكاة التفاعلية',
         icon: <Gamepad2 className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-sky-400',
-        badgeColor: 'from-purple-600 to-indigo-600',
+        badgeColor: 'from-blue-600 to-blue-700',
       });
     }
 
@@ -186,7 +186,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         labelAr: short2AP ? `تَقْيِيمِي (${practice.evaluationExercises.length})` : `التقييم النهائي (${practice.evaluationExercises.length})`,
         icon: <ClipboardCheck className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-coral)] text-white ring-2 ring-rose-400',
-        badgeColor: 'from-rose-500 to-pink-600',
+        badgeColor: 'from-amber-500 to-orange-600',
       });
     }
 
@@ -198,6 +198,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         activeClass: 'bg-[var(--brand-emerald)] text-white ring-2 ring-emerald-400',
         badgeColor: 'from-emerald-500 to-teal-600',
       });
+    }
+
+    if (grade === '3AP' && steps.length > 4) {
+      const preferred: TabId[] = ['explanation', 'content', 'practice', 'quiz'];
+      const picked = preferred
+        .map((id) => steps.find((s) => s.id === id))
+        .filter((s): s is LessonStep => Boolean(s));
+      if (picked.length < 4) {
+        for (const step of steps) {
+          if (picked.length >= 4) break;
+          if (!picked.some((s) => s.id === step.id) && step.id !== 'gameplay' && step.id !== 'interactive') {
+            picked.push(step);
+          }
+        }
+      }
+      return picked.slice(0, 4);
     }
 
     return steps;
@@ -425,28 +441,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </AnimatePresence>
         </div>
       ) : (
-      <div
-        className={
-          grade === '2AP'
-            ? 'bg-emerald-50 border border-emerald-100 rounded-3xl p-6 shadow-sm relative overflow-hidden'
-            : 'text-white rounded-3xl p-6 shadow-xl border border-emerald-800/40 relative overflow-hidden'
-        }
-        // Plain hex linear-gradient via inline style, not Tailwind's gradient utilities: Tailwind v4
-        // compiles its palette (and gradient color-interpolation) through oklch(), which silently
-        // fails to paint on older Android WebViews — same bug/fix as ExamsViewer's hero card
-        // (remonte utilisateur : titre et description de la leçon illisibles, texte clair sur fond
-        // clair car le degrade sombre ne s'affichait pas).
-        style={grade === '2AP' ? undefined : { backgroundImage: 'linear-gradient(to right, #0f172a, #022c22, #0f172a)' }}
-      >
-        <div className="relative z-10">
+      <div className="bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl overflow-hidden relative">
+        <div className="kids-hero-band" />
+        <div className="relative z-10 p-6">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
-            <div className={`flex items-center gap-2 text-xs font-bold ${grade === '2AP' ? 'text-emerald-700' : 'text-emerald-400'}`}>
+            <div className="flex items-center gap-2 text-xs font-bold text-emerald-700">
               <BookOpen className="w-4 h-4" />
               {lesson.contentSource === 'official_verified' && <span>✅ محتوى مطابق لبرنامج رسمي موثّق</span>}
-              {lesson.contentSource === 'corroborated' && <span className={grade === '2AP' ? 'text-sky-700' : 'text-sky-300'}>🔎 محتوى مُرجَّح (تمت مقارنته بمصدر ثانوي غير رسمي)</span>}
-              {lesson.contentSource === 'complementary' && <span className={grade === '2AP' ? 'text-amber-700' : 'text-amber-300'}>✨ محتوى تربوي تكميلي أصلي (مسيد DZ)</span>}
+              {lesson.contentSource === 'corroborated' && <span className="text-sky-700">🔎 محتوى مُرجَّح (تمت مقارنته بمصدر ثانوي غير رسمي)</span>}
+              {lesson.contentSource === 'complementary' && <span className="text-amber-700">✨ محتوى تربوي تكميلي أصلي (مسيد DZ)</span>}
               {(lesson.contentSource === 'needs_verification' || !lesson.contentSource) && (
-                <span className={grade === '2AP' ? 'text-slate-500' : 'text-slate-400'}>⚠️ محتوى بحاجة إلى تحقق (المصدر غير مؤكد بعد)</span>
+                <span className="text-slate-500">⚠️ محتوى بحاجة إلى تحقق (المصدر غير مؤكد بعد)</span>
               )}
             </div>
             {lesson.difficultyTier && (
@@ -465,17 +470,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 size={grade === '2AP' ? 'lg' : 'md'}
               />
             )}
-            <h1 className={`text-xl sm:text-2xl font-black min-w-0 ${grade === '2AP' ? 'text-[#1E293B]' : ''}`}>{renderArabicText(lesson.titleAr)}</h1>
+            <h1 className="text-xl sm:text-2xl font-black min-w-0 text-[var(--kids-ink)]">{renderArabicText(lesson.titleAr)}</h1>
           </div>
-          <p className={`text-xs sm:text-sm leading-relaxed max-w-3xl ${grade === '2AP' ? 'text-slate-600' : 'text-slate-300'}`}>
+          <p className="text-xs sm:text-sm leading-relaxed max-w-3xl text-[var(--kids-muted)]">
             {renderArabicMath(lesson.summaryAr)}
           </p>
           {lesson.sourceNoteAr && (
-            <div className={`mt-3 border-t pt-2 ${grade === '2AP' ? 'border-emerald-200' : 'border-white/10'}`}>
+            <div className="mt-3 border-t pt-2 border-[var(--app-card-border)]">
               <button
                 onClick={() => setShowParentInfo((v) => !v)}
                 aria-expanded={showParentInfo}
-                className={`flex items-center gap-1.5 text-[11px] font-bold transition-colors cursor-pointer ${grade === '2AP' ? 'text-slate-500 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'}`}
+                className="flex items-center gap-1.5 text-[11px] font-bold transition-colors cursor-pointer text-slate-500 hover:text-slate-700"
               >
                 <Info className="w-3.5 h-3.5" />
                 <span>معلومة لولي الأمر</span>
@@ -490,7 +495,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <p className={`text-[10px] leading-relaxed max-w-3xl pt-2 ${grade === '2AP' ? 'text-slate-500' : 'text-slate-400'}`}>
+                    <p className="text-[10px] leading-relaxed max-w-3xl pt-2 text-slate-500">
                       {renderArabicMath(lesson.sourceNoteAr)}
                     </p>
                   </motion.div>
@@ -503,9 +508,12 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       )}
 
       {lesson.missionTitleAr && !isPlayful1AP && (
-        <div className="bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-emerald)] text-white rounded-3xl p-5 shadow-md">
-          <h2 className="font-black text-base sm:text-lg mb-1">{renderArabicText(lesson.missionTitleAr)}</h2>
-          {lesson.missionIntroAr && <p className="text-xs sm:text-sm text-white/90 leading-relaxed">{renderArabicText(lesson.missionIntroAr)}</p>}
+        <div className="bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl overflow-hidden">
+          <div className="h-3.5 w-full bg-[var(--brand-blue)]" />
+          <div className="p-5">
+            <h2 className="font-black text-base sm:text-lg mb-1 text-[var(--kids-ink)]">{renderArabicText(lesson.missionTitleAr)}</h2>
+            {lesson.missionIntroAr && <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed">{renderArabicText(lesson.missionIntroAr)}</p>}
+          </div>
         </div>
       )}
 
@@ -557,7 +565,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </div>
 
         {!isCompactGrade && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1" data-lesson-step-count={availableSteps.length}>
           {availableSteps.map((step, idx) => {
             const isActive = step.id === activeTab;
             const isCompleted = idx < currentStepIndex;

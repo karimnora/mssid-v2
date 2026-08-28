@@ -21,6 +21,13 @@ describe('getExamKind', () => {
     expect(getExamKind(devoir!)).toBe('devoir');
   });
 
+  it('tags the 5AP end-of-cycle pack as évaluation des acquis', () => {
+    const paper = OFFICIAL_EXAMS_DATA.find((e) => e.id === 'exam-5ap-math-acquis-2026');
+    expect(paper).toBeDefined();
+    expect(getExamKind(paper!)).toBe('acquis');
+    expect(paper!.trimester).toBeUndefined();
+  });
+
   it('never classifies a 1AP paper (initiation year has no formal exams)', () => {
     expect(OFFICIAL_EXAMS_DATA.filter((e) => e.grade === '1AP')).toEqual([]);
   });

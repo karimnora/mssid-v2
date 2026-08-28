@@ -61,6 +61,8 @@ export const common = {
   dailyObjectiveDoneMsg: '🎉 تم بلوغ هدف اليوم! عد غداً لتحدٍ جديد.',
   dailyObjectiveRemainingMsg: 'أكمل بعد {remaining} تمارين أو تقييمات اليوم لبلوغ الهدف.',
   badgesGalleryLabel: 'الأوسمة والمكافآت ({unlocked}/{total}):',
+  profileMeTab: 'أنا',
+  profileParentsTab: 'الوالدان',
   deletingAccountLabel: 'جارٍ الحذف...',
   confirmDeleteAccountLabel: 'اضغط مجدداً لتأكيد حذف الحساب نهائياً',
   deleteAccountLabel: 'حذف الحساب نهائياً',

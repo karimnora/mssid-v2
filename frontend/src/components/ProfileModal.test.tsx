@@ -9,6 +9,14 @@ import { LocaleProvider } from '../context/LocaleContext';
 
 const renderModal = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
+const openParentsPane = () => {
+  fireEvent.click(screen.getByRole('button', { name: 'الوالدان' }));
+  const prompt = screen.getByText(/^\d+ \+ \d+ = \?$/);
+  const [a, b] = prompt.textContent!.match(/\d+/g)!.map(Number);
+  fireEvent.change(screen.getByPlaceholderText('اكتب الناتج هنا'), { target: { value: String(a + b) } });
+  fireEvent.click(screen.getByRole('button', { name: 'متابعة' }));
+};
+
 const baseUserProfile: UserProfile = {
   name: 'يونس',
   grade: '5AP',
@@ -57,6 +65,7 @@ describe('ProfileModal email verification reminder', () => {
         onResetProgress={vi.fn()}
       />
     );
+    openParentsPane();
 
     expect(screen.getByText('قم بتأكيد بريدك الإلكتروني')).toBeInTheDocument();
   });
@@ -73,6 +82,7 @@ describe('ProfileModal email verification reminder', () => {
         onResetProgress={vi.fn()}
       />
     );
+    openParentsPane();
 
     expect(screen.queryByText('قم بتأكيد بريدك الإلكتروني')).not.toBeInTheDocument();
   });
@@ -93,6 +103,7 @@ describe('ProfileModal email verification reminder', () => {
         onResetProgress={vi.fn()}
       />
     );
+    openParentsPane();
 
     const input = screen.getByPlaceholderText('123456');
     fireEvent.change(input, { target: { value: '123456' } });
@@ -121,6 +132,7 @@ describe('ProfileModal email verification reminder', () => {
         onResetProgress={vi.fn()}
       />
     );
+    openParentsPane();
 
     fireEvent.change(screen.getByPlaceholderText('123456'), { target: { value: '000000' } });
     fireEvent.click(screen.getByRole('button', { name: 'تأكيد' }));
@@ -142,6 +154,7 @@ describe('ProfileModal email verification reminder', () => {
         onResetProgress={vi.fn()}
       />
     );
+    openParentsPane();
 
     const button = screen.getByRole('button', { name: 'تأكيد' });
     expect(button).toBeDisabled();
@@ -169,6 +182,7 @@ describe('ProfileModal email verification reminder', () => {
         onResetProgress={vi.fn()}
       />
     );
+    openParentsPane();
 
     const resendButton = screen.getByRole('button', { name: /لم يصلك الرمز؟ إعادة الإرسال/ });
     fireEvent.click(resendButton);

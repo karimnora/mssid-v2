@@ -4,7 +4,7 @@ import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { CourseLesson, ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
-import { getExamKind } from '../utils/examKind';
+import { getExamKind, examUsesTrimester, preferredExamKind, examKindOrder, examKindBadgeKey } from '../utils/examKind';
 import { useTranslation } from '../hooks/useTranslation';
 import {
   Clock,
@@ -94,11 +94,12 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
+  const isYoungExam = currentGrade === '1AP' || currentGrade === '2AP';
   /** Solutions + timer : 4AP/5AP. Impression du sujet : tous les niveaux qui ont des examens. */
   const showExamTools = currentGrade === '4AP' || currentGrade === '5AP';
   const showPrintButton = currentGrade !== '1AP';
 
-  const [kindFilter, setKindFilter] = useState<KindFilter>(grade === '5AP' || !grade ? 'bep' : 'composition');
+  const [kindFilter, setKindFilter] = useState<KindFilter>(preferredExamKind(grade));
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
   const [selectedTrimester, setSelectedTrimester] = useState<TrimesterTab>('all');
   const [selectedExamId, setSelectedExamId] = useState<string | null>(null);
@@ -119,7 +120,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   useEffect(() => {
     setSelectedSubject(null);
     setSelectedExamId(null);
-    const preferred: ExamKind = grade === '5AP' ? 'bep' : 'composition';
+    setSelectedTrimester('all');
+    const preferred = preferredExamKind(grade);
     const hasPreferred = OFFICIAL_EXAMS_DATA.some((e) => e.grade === grade && getExamKind(e) === preferred);
     if (hasPreferred) {
       setKindFilter(preferred);
@@ -155,13 +157,10 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
   // Exams filtered by trimester (when applicable)
   const displayedExams = useMemo(() => {
-    if (kindFilter === 'bep') {
-      return subjectExams;
+    if (examUsesTrimester(kindFilter) && selectedTrimester !== 'all') {
+      return subjectExams.filter((e) => e.trimester === selectedTrimester);
     }
-    if (selectedTrimester === 'all') {
-      return subjectExams;
-    }
-    return subjectExams.filter((e) => e.trimester === selectedTrimester);
+    return subjectExams;
   }, [kindFilter, selectedTrimester, subjectExams]);
 
   const selectedExam = useMemo(() => {
@@ -175,6 +174,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   // Interactive timer
   const [timerSeconds, setTimerSeconds] = useState<number>(5400);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+  const [printMode, setPrintMode] = useState<'subject' | 'corrige'>('subject');
 
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
@@ -192,6 +192,12 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
     }
     return () => clearInterval(interval);
   }, [isTimerRunning, timerSeconds]);
+
+  useEffect(() => {
+    const resetPrintMode = () => setPrintMode('subject');
+    window.addEventListener('afterprint', resetPrintMode);
+    return () => window.removeEventListener('afterprint', resetPrintMode);
+  }, []);
 
   const toggleSolution = (key: string) => {
     setShowSolutions((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -223,8 +229,9 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
     setIsTimerRunning(false);
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handlePrint = (mode: 'subject' | 'corrige' = 'subject') => {
+    setPrintMode(mode);
+    window.setTimeout(() => window.print(), 50);
   };
 
   // ================= VIEW 3: Detailed Exam Sheet & Free Solutions =================
@@ -254,7 +261,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               onClick={toggleAllSolutions}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 allSolutionsVisible
-                  ? 'bg-purple-100 text-purple-900 border border-purple-300'
+                  ? 'bg-sky-100 text-sky-950 border border-sky-300'
                   : 'bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100'
               }`}
             >
@@ -265,27 +272,38 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             )}
 
             {showPrintButton && (
+            <>
             <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-[var(--app-card-border)] transition-colors cursor-pointer border border-[var(--app-card-border)] no-print"
-              title="طباعة ورقة الامتحان"
+              onClick={() => handlePrint('subject')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-[var(--app-card-border)] transition-colors cursor-pointer border border-[var(--app-card-border)] no-print min-h-12"
+              title={t('printExamTitle')}
               data-exam-print="true"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>طباعة</span>
+              <span>{t('printSubject')}</span>
             </button>
+            <button
+              onClick={() => handlePrint('corrige')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-900 hover:bg-emerald-100 transition-colors cursor-pointer border border-emerald-200 no-print min-h-12"
+              title={t('printCorrigeTitle')}
+              data-exam-print-corrige="true"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>{t('printCorrige')}</span>
+            </button>
+            </>
             )}
 
             {showExamTools && (
               <>
             {/* Exam Simulation Timer */}
-            <div className="bg-slate-900 text-white px-3 py-1.5 rounded-xl flex items-center gap-2.5 shadow-xs">
-              <Clock className="w-4 h-4 text-amber-400" />
-              <span className="font-mono font-black text-amber-300 text-sm">{formatTimer(timerSeconds)}</span>
+            <div className="bg-[var(--app-card-subtle)] text-[var(--kids-ink)] px-3 py-1.5 rounded-xl flex items-center gap-2.5 border-2 border-[var(--app-card-border)]">
+              <Clock className="w-4 h-4 text-[var(--brand-amber-dark)]" />
+              <span className="font-mono font-black text-amber-800 text-sm">{formatTimer(timerSeconds)}</span>
               <button
                 onClick={() => setIsTimerRunning(!isTimerRunning)}
-                className={`p-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                  isTimerRunning ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white hover:bg-emerald-500'
+                className={`min-w-8 min-h-8 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center ${
+                  isTimerRunning ? 'bg-[var(--brand-coral)] text-white' : 'bg-[var(--brand-emerald)] text-white'
                 }`}
                 title={isTimerRunning ? 'إيقاف مؤقت' : 'تشغيل المؤقت'}
               >
@@ -328,12 +346,32 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         )}
 
         {/* Official Paper Layout — must use .printable-sheet or @media print hides everything */}
-        <div className="printable-sheet bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-[var(--app-text)]">
+        <div
+          className="printable-sheet bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-[var(--app-text)]"
+          data-print-mode={printMode}
+        >
+          <div
+            className="print-identity grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] font-bold border border-[var(--app-card-border)] rounded-xl p-3 bg-white text-slate-900"
+            data-exam-print-identity="true"
+          >
+            <div>
+              {t('printLastName')} <span className="inline-block min-w-20 border-b border-slate-400">........</span>
+            </div>
+            <div>
+              {t('printFirstName')} <span className="inline-block min-w-20 border-b border-slate-400">........</span>
+            </div>
+            <div>
+              {t('printClass')} <span className="inline-block min-w-16 border-b border-slate-400">........</span>
+            </div>
+            <div>
+              {t('printNumber')} <span className="inline-block min-w-12 border-b border-slate-400">........</span>
+            </div>
+          </div>
           {/* Paper Header */}
           <div className="border-b border-[var(--app-card-border)] pb-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-black text-purple-700 bg-purple-100 px-3 py-0.5 rounded-full border border-purple-200">
+                <span className="text-xs font-black text-[var(--brand-blue-dark)] bg-sky-100 px-3 py-0.5 rounded-full border border-sky-200">
                   الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية الوطنية
                 </span>
                 <span className="text-xs font-bold text-[var(--brand-blue)] bg-[var(--brand-blue)]/10 px-2.5 py-0.5 rounded-full">
@@ -343,18 +381,14 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   {t(GRADE_TITLE_KEY[selectedExam.grade])}
                 </span>
                 <span className="text-xs font-extrabold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">
-                  {getExamKind(selectedExam) === 'devoir'
-                    ? t('devoirBadge')
-                    : getExamKind(selectedExam) === 'bep'
-                      ? t('bepBadge')
-                      : t('compositionBadge')}
+                  {t(examKindBadgeKey(getExamKind(selectedExam)))}
                 </span>
               </div>
               <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] tracking-tight font-sans">
                 {renderArabicText(selectedExam.titleAr)}
               </h1>
               {selectedExam.sourceNoteAr && (
-                <p className="text-xs text-[var(--app-text-muted)] max-w-2xl">{selectedExam.sourceNoteAr}</p>
+                <p className="text-xs text-[var(--app-text-muted)] max-w-2xl no-print">{selectedExam.sourceNoteAr}</p>
               )}
               {(() => {
                 const linkedLessonIds = [
@@ -416,40 +450,66 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     {formatEducationalText(renderArabicText(ex.contentAr))}
                   </div>
 
-                  {/* Free Solution Toggle Button */}
-                  <div className="flex items-center justify-between pt-1 no-print">
-                    <button
-                      onClick={() => toggleSolution(solKey)}
-                      className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
-                        isSolVisible
-                          ? 'bg-purple-100 text-purple-900 border border-purple-300'
-                          : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
-                      }`}
-                    >
-                      {isSolVisible ? (
-                        <>
-                          <EyeOff className="w-3.5 h-3.5" />
-                          <span>إخفاء الحل النموذجي</span>
-                        </>
-                      ) : (
-                        <>
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          <span>إظهار الحل النموذجي والتنقيط (مجاناً)</span>
-                        </>
-                      )}
-                    </button>
+                  {showExamTools && (
+                    <div className="flex items-center justify-between pt-1 no-print">
+                      <button
+                        onClick={() => toggleSolution(solKey)}
+                        className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
+                          isSolVisible
+                            ? 'bg-sky-100 text-sky-950 border border-sky-300'
+                            : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
+                        }`}
+                      >
+                        {isSolVisible ? (
+                          <>
+                            <EyeOff className="w-3.5 h-3.5" />
+                            <span>إخفاء الحل النموذجي</span>
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <span>إظهار الحل النموذجي والتنقيط (مجاناً)</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  )}
+
+                  <div className="print-answer-lines" aria-hidden="true">
+                    <div className="print-answer-line" />
+                    <div className="print-answer-line" />
+                    <div className="print-answer-line" />
+                    <div className="print-answer-line" />
                   </div>
 
-                  {/* Solution Box */}
-                  {isSolVisible && (
-                    <div className="space-y-2 no-print">
-                      <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
-                        <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
-                          <Check className="w-3.5 h-3.5" />
-                          <span>الحل النموذجي المعتمد وسلّم التنقيط:</span>
+                  <div className={`print-corrige ${isSolVisible && showExamTools ? '' : 'print-corrige--screen-hidden'}`}>
+                    {selectedExam.subject === 'math' ? (
+                      <div className="print-corrige-box grid grid-cols-2 gap-2 p-3 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans border-2 border-[#E7E2D7]" dir="rtl">
+                        <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1">
+                          <p className="text-[11px] font-extrabold text-[var(--brand-blue)]">العمليات</p>
+                          <div className="whitespace-pre-line leading-relaxed">
+                            {formatEducationalText(ex.operationsAr || '—')}
+                          </div>
                         </div>
-                        {formatEducationalText(ex.solutionAr)}
+                        <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1">
+                          <p className="text-[11px] font-extrabold text-[var(--brand-emerald)]">الحل</p>
+                          <div className="whitespace-pre-line leading-relaxed">
+                            {formatEducationalText(ex.solutionAr)}
+                          </div>
+                        </div>
                       </div>
+                    ) : (
+                    <div className="print-corrige-box p-4 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border-2 border-[#E7E2D7]">
+                      <div className="flex items-center gap-1.5 text-[11px] font-extrabold text-[var(--brand-emerald)] mb-2 border-b border-[#E7E2D7] pb-1">
+                        <Check className="w-3.5 h-3.5" />
+                        <span>الحل النموذجي المعتمد وسلّم التنقيط:</span>
+                      </div>
+                      {formatEducationalText(ex.solutionAr)}
+                    </div>
+                    )}
+                  </div>
+                  {showExamTools && isSolVisible && (
+                    <div className="no-print">
                       <ReviseLessonButton
                         lessonId={ex.relatedLessonId}
                         label={t('reviseLessonCta')}
@@ -485,40 +545,51 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr))}
               </div>
 
-              {/* Problem Solution Toggle Button */}
-              <div className="flex items-center justify-between pt-1 no-print">
-                <button
-                  onClick={() => toggleSolution('problem')}
-                  className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
-                    showSolutions['problem']
-                      ? 'bg-amber-200 text-amber-950 border border-amber-400'
-                      : 'bg-amber-500 hover:bg-amber-600 text-slate-950 font-black shadow-xs'
-                  }`}
-                >
-                  {showSolutions['problem'] ? (
-                    <>
-                      <EyeOff className="w-3.5 h-3.5" />
-                      <span>إخفاء حل الوضعية الإدماجية</span>
-                    </>
-                  ) : (
-                    <>
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>إظهار الحل الإدماجي المفصل وسلم التنقيط (مجاناً)</span>
-                    </>
-                  )}
-                </button>
+              {showExamTools && (
+                <div className="flex items-center justify-between pt-1 no-print">
+                  <button
+                    onClick={() => toggleSolution('problem')}
+                    className={`inline-flex items-center gap-1.5 text-xs font-black px-3.5 py-2 rounded-xl transition-all cursor-pointer ${
+                      showSolutions['problem']
+                        ? 'bg-amber-200 text-amber-950 border border-amber-400'
+                        : 'bg-amber-500 hover:bg-amber-600 text-slate-950 font-black shadow-xs'
+                    }`}
+                  >
+                    {showSolutions['problem'] ? (
+                      <>
+                        <EyeOff className="w-3.5 h-3.5" />
+                        <span>إخفاء حل الوضعية الإدماجية</span>
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>إظهار الحل الإدماجي المفصل وسلم التنقيط (مجاناً)</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+
+              <div className="print-answer-lines" aria-hidden="true">
+                <div className="print-answer-line" />
+                <div className="print-answer-line" />
+                <div className="print-answer-line" />
+                <div className="print-answer-line" />
+                <div className="print-answer-line" />
+                <div className="print-answer-line" />
               </div>
 
-              {/* Problem Solution Content */}
-              {showSolutions['problem'] && (
-                <div className="space-y-2 no-print">
-                  <div className="p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800 animate-in fade-in duration-200">
-                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
-                      <Check className="w-3.5 h-3.5" />
-                      <span>سلم التنقيط والحل النموذجي للوضعية الإدماجية:</span>
-                    </div>
-                    {formatEducationalText(selectedExam.problemExercise.solutionAr)}
+              <div className={`print-corrige ${showSolutions['problem'] && showExamTools ? '' : 'print-corrige--screen-hidden'}`}>
+                <div className="print-corrige-box p-4 rounded-xl bg-slate-900 text-white text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border border-slate-800">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400 mb-2 uppercase font-bold border-b border-slate-800 pb-1">
+                    <Check className="w-3.5 h-3.5" />
+                    <span>سلم التنقيط والحل النموذجي للوضعية الإدماجية:</span>
                   </div>
+                  {formatEducationalText(selectedExam.problemExercise.solutionAr)}
+                </div>
+              </div>
+              {showExamTools && showSolutions['problem'] && (
+                <div className="no-print">
                   <ReviseLessonButton
                     lessonId={selectedExam.problemExercise.relatedLessonId}
                     label={t('reviseLessonCta')}
@@ -611,29 +682,34 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
         </div>
       ) : (
         <>
-      {(() => {
-        const kindOrder: ExamKind[] = currentGrade === '5AP'
-          ? ['bep', 'composition', 'devoir']
-          : ['composition', 'devoir'];
-        const kinds = kindOrder.filter((kind) => gradeExams.some((e) => getExamKind(e) === kind));
+      {!isYoungExam && (() => {
+        const kinds = examKindOrder(currentGrade).filter((kind) =>
+          gradeExams.some((e) => getExamKind(e) === kind)
+        );
         const meta: Record<ExamKind, { title: string; desc: string; active: string; idle: string }> = {
+          acquis: { title: t('kindAcquisTitle'), desc: t('kindAcquisDesc'), active: 'bg-teal-600 text-white border-teal-500', idle: 'hover:border-teal-400/50' },
           bep: { title: t('kindBepTitle'), desc: t('kindBepDesc'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
           composition: { title: t('kindCompositionsTitle'), desc: t('kindCompositionsDesc'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },
           devoir: { title: t('kindDevoirsTitle'), desc: t('kindDevoirsDesc'), active: 'bg-amber-500 text-white border-amber-400', idle: 'hover:border-amber-400/50' },
         };
+        const cols =
+          kinds.length >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : kinds.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
         return (
-          <div className={`grid grid-cols-1 gap-3 ${kinds.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+          <div className={`grid grid-cols-1 gap-3 ${cols}`}>
             {kinds.map((kind) => {
               const selected = kindFilter === kind;
               const styles = meta[kind];
               return (
                 <button
                   key={kind}
+                  type="button"
+                  data-exam-kind={kind}
                   onClick={() => {
                     setKindFilter(kind);
                     setSelectedSubject(null);
+                    if (!examUsesTrimester(kind)) setSelectedTrimester('all');
                   }}
-                  className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer space-y-1 ${
+                  className={`p-4 sm:p-5 rounded-2xl border text-right transition-all cursor-pointer space-y-1 min-h-[48px] ${
                     selected ? `${styles.active} shadow-md scale-[1.01]` : `bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] ${styles.idle}`
                   }`}
                 >
@@ -652,6 +728,26 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           </div>
         );
       })()}
+
+      {!isYoungExam && (
+      <p
+        data-exam-filter-trail
+        className="text-xs font-bold text-[var(--app-text-muted)] px-1"
+      >
+        {t('filterTrail', {
+          gradeTitle: t(GRADE_TITLE_KEY[currentGrade]),
+          kind: t(examKindBadgeKey(kindFilter)),
+          subject: selectedSubject
+            ? (SUBJECTS_LIST.find((s) => s.id === selectedSubject)?.nameAr ?? t('allSubjectsShort'))
+            : t('allSubjectsShort'),
+          trimester: examUsesTrimester(kindFilter)
+            ? selectedTrimester === 'all'
+              ? t('allTrimesters')
+              : t(`trimesterOrdinal${selectedTrimester}` as 'trimesterOrdinal1' | 'trimesterOrdinal2' | 'trimesterOrdinal3')
+            : t('endOfCycleShort'),
+        })}
+      </p>
+      )}
 
       {/* Step 1: Subject Selection Grid for Current Grade */}
       <div className="space-y-3">
@@ -680,7 +776,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 data-exam-subject={subj.id}
                 onClick={() => setSelectedSubject(isChosen ? null : subj.id)}
                 className={`rounded-2xl p-4 min-h-24 text-white shadow-xs cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
-                  isChosen ? 'ring-4 ring-purple-400 scale-[1.03] shadow-md' : 'hover:scale-[1.02] active:scale-[0.98]'
+                  isChosen ? 'ring-4 ring-[var(--brand-blue)] scale-[1.03] shadow-md' : 'hover:scale-[1.02] active:scale-[0.98]'
                 }`}
               >
                 <span className="text-2xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
@@ -697,9 +793,11 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       {/* Step 2: Trimester Filter & Exam Cards List */}
       <div className="space-y-4 pt-1" data-exam-layout="grid">
         {/* Trimester filter tabs for seasonal compositions */}
-        {kindFilter !== 'bep' && (
+        {!isYoungExam && examUsesTrimester(kindFilter) && (
           <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
             <button
+              type="button"
+              data-exam-trimester="all"
               onClick={() => setSelectedTrimester('all')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-colors cursor-pointer ${
                 selectedTrimester === 'all'
@@ -712,6 +810,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             {[1, 2, 3].map((trim) => (
               <button
                 key={trim}
+                type="button"
+                data-exam-trimester={trim}
                 onClick={() => setSelectedTrimester(trim as TrimesterTab)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-colors cursor-pointer ${
                   selectedTrimester === trim
@@ -746,11 +846,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     </Badge>
                     <div className="flex items-center gap-1">
                       <span className="text-[10px] font-black bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-200">
-                        {getExamKind(exam) === 'devoir'
-                          ? t('devoirBadge')
-                          : getExamKind(exam) === 'bep'
-                            ? t('bepBadge')
-                            : t('compositionBadge')}
+                        {t(examKindBadgeKey(getExamKind(exam)))}
                       </span>
                       <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
                         حلول مجانية ✨

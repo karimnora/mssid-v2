@@ -1,11 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { X, ShieldCheck } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface ParentGateModalProps {
   isOpen: boolean;
   onClose: () => void;
   onVerified: () => void;
 }
+
+interface AskAdultScreenProps {
+  onAskAdult: () => void;
+  onClose: () => void;
+}
+
+/** Child-first step before an adult form (auth, paywall). Not a legal consent flow. */
+export const AskAdultScreen: React.FC<AskAdultScreenProps> = ({ onAskAdult, onClose }) => {
+  const t = useTranslation('auth');
+  return (
+    <div className="p-6 space-y-5 text-center">
+      <div className="text-5xl" aria-hidden>🦊</div>
+      <h2 className="text-xl font-black text-[var(--kids-ink)]">{t('askAdultTitle')}</h2>
+      <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{t('askAdultBody')}</p>
+      <button
+        type="button"
+        onClick={onAskAdult}
+        className="kids-cta cursor-pointer"
+      >
+        {t('askAdultCta')}
+      </button>
+      <button
+        type="button"
+        onClick={onClose}
+        className="text-sm font-extrabold text-[var(--kids-muted)] cursor-pointer min-h-12"
+      >
+        {t('verifyNotNow')}
+      </button>
+    </div>
+  );
+};
 
 // Friction step before sensitive actions (delete, store links). Not a legal parental-consent flow.
 export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClose, onVerified }) => {

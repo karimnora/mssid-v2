@@ -258,7 +258,9 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
 
       {/* Bandeau compact — lab ouvert, catalogue masqué (P0) */}
       {labFocused && currentSelectedTool && (
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-amber-400/40 bg-gradient-to-r from-amber-500/10 to-orange-500/5 p-4 shadow-sm">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl border-2 border-[var(--app-card-border)] bg-[var(--app-card-bg)] overflow-hidden">
+          <div className="kids-hero-band w-full" />
+          <div className="flex flex-wrap items-center justify-between gap-3 w-full px-4 pb-4">
           <div className="flex items-center gap-3 min-w-0">
             <span className="text-2xl shrink-0">🔬</span>
             <div className="min-w-0">
@@ -269,10 +271,11 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
           <motion.button
             whileTap={{ scale: 0.96 }}
             onClick={openCatalog}
-            className="min-h-12 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-black shadow-md cursor-pointer shrink-0"
+            className="min-h-12 px-5 py-3 rounded-2xl bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white text-xs font-extrabold cursor-pointer shrink-0"
           >
             اختر مختبراً آخر
           </motion.button>
+          </div>
         </div>
       )}
 
@@ -420,7 +423,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
               {currentSelectedTool && (
                 <button
                   onClick={scrollToTool}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white transition-all cursor-pointer active:scale-95"
                 >
                   انتقل للأداة المفتوحة 👇
                 </button>

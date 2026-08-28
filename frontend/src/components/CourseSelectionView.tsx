@@ -8,6 +8,7 @@ import { BookOpen, ChevronLeft, Star, Lock } from 'lucide-react';
 import { isFrenchFreeGrade, stripLatinGlosses } from './lessonViewer/youngLessonLayout';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface CourseSelectionViewProps {
   grade: PrimaryGrade;
@@ -81,6 +82,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   onGoHome,
   initialSubjectId = null,
 }) => {
+  const t = useTranslation('courses');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(() =>
     initialSubjectId && courseSubjects.some((subject) => subject.id === initialSubjectId)
       ? initialSubjectId
@@ -245,9 +247,16 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                       transition={{ type: 'spring', stiffness: 450, damping: 32 }}
                     />
                   )}
-              <span className="relative flex items-center justify-center gap-1.5">
+              <span className="relative flex flex-col items-center justify-center gap-0.5">
                 {isTrimesterLocked(t) && <Lock className="w-3 h-3 shrink-0" />}
-                {isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}
+                {grade === '1AP' || grade === '2AP' ? (
+                  <>
+                    <span className="text-lg leading-none">{t}</span>
+                    <span className="text-[10px] font-bold">فصل</span>
+                  </>
+                ) : (
+                  <span>{isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}</span>
+                )}
               </span>
             </motion.button>
           );
@@ -283,7 +292,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                       {locked ? (
                         <span className="flex items-center gap-1 text-[10px] font-extrabold text-[#5A3B00] bg-[#FFF8E7] border-2 border-[#F5D98A] px-2 py-0.5 rounded-full">
                           <Lock className="w-3 h-3" />
-                          <span>مميّز</span>
+                          <span>{t('premiumBadge')}</span>
                         </span>
                       ) : (
                         isCompleted && <Badge variant="success">✓ مكتمل</Badge>

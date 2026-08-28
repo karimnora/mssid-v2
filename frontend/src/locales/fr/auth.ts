@@ -86,6 +86,10 @@ export const auth: typeof authAr = {
   gateError: 'Réponse incorrecte, réessaie.',
   gateContinue: 'Continuer',
 
+  askAdultTitle: 'Demande à un adulte',
+  askAdultBody: 'Cet écran est pour les parents. Appuie sur le bouton vert quand un adulte est avec toi.',
+  askAdultCta: 'Je suis le parent',
+
   // --- HomeworkPinModal ---
   hwTitle: 'Devoirs et code PIN rapide',
   hwSubtitle: 'Rejoins un devoir sans mot de passe ou partage ton devoir avec tes élèves',

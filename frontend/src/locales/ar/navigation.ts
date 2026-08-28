@@ -2,6 +2,8 @@ export const navigation = {
   home: 'الرئيسية',
   courses: 'الدروس',
   games: 'المختبرات',
+  playTab: 'أَلْعَبُ',
+  meTab: 'أَنَا',
   exercises: 'التمارين',
   profile: 'الملف',
   aiTutor: 'المعلم الذكي بالذكاء الاصطناعي',

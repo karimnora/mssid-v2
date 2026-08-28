@@ -16,7 +16,7 @@ export const courses: typeof coursesAr = {
   trimester1Label: 'الفصل الأول (Trimestre 1)',
   trimester2Label: 'الفصل الثاني (Trimestre 2)',
   trimester3Label: 'الفصل الثالث (Trimestre 3)',
-  premiumBadge: 'Premium',
+  premiumBadge: 'Pour les parents',
   completedBadge: '✓ Terminé',
   quizCountLabel: '{count} questions',
   noLessonsHeading: 'Pas encore de cours dans ce trimestre',

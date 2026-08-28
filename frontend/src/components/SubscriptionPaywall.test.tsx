@@ -47,6 +47,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     });
 
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
@@ -70,6 +71,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     });
 
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
@@ -83,6 +85,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
 
   it('displays the subscription price from the shared constant, not a separate hardcoded value', () => {
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
     expect(screen.getByText(/السعر: 1500 دج/)).toBeInTheDocument();
   });
 });

@@ -4,6 +4,8 @@ export const navigation: typeof navigationAr = {
   home: 'Accueil',
   courses: 'Cours',
   games: 'Laboratoires',
+  playTab: 'Jouer',
+  meTab: 'Moi',
   exercises: 'Exercices',
   profile: 'Profil',
   aiTutor: 'Tuteur intelligent (IA)',

@@ -30,6 +30,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Badge } from './ui';
+import { ParentGateModal } from './ParentGateModal';
 
 export type HeaderTheme = 'light' | 'neutre' | 'dark';
 
@@ -100,6 +101,19 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
+  const [pendingGrade, setPendingGrade] = useState<PrimaryGrade | null>(null);
+
+  const requestGradeChange = (next: PrimaryGrade) => {
+    if (next === currentGrade) return;
+    setPendingGrade(next);
+  };
+
+  const confirmGradeChange = () => {
+    if (!pendingGrade) return;
+    onGradeChange(pendingGrade);
+    setPendingGrade(null);
+    setIsMobileDrawerOpen(false);
+  };
 
   const profileRef = useRef<HTMLDivElement>(null);
   const themeRef = useRef<HTMLDivElement>(null);
@@ -207,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 return (
                   <motion.button
                     key={g.id}
-                    onClick={() => onGradeChange(g.id)}
+                    onClick={() => requestGradeChange(g.id)}
                     whileTap={{ scale: 0.94 }}
                     className={`relative h-9 w-full min-w-0 rounded-xl text-xs font-extrabold transition-colors cursor-pointer select-none flex items-center justify-center ${
                       isActive ? 'text-white' : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
@@ -547,7 +561,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {GRADES.map((g) => (
                       <button
                         key={g.id}
-                        onClick={() => { onGradeChange(g.id); setIsMobileDrawerOpen(false); }}
+                        onClick={() => requestGradeChange(g.id)}
                         className={`min-h-12 p-2 rounded-xl text-xs font-extrabold border transition-colors text-center ${
                           currentGrade === g.id
                             ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)] shadow-md'
@@ -670,6 +684,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ParentGateModal
+        isOpen={pendingGrade !== null}
+        onClose={() => setPendingGrade(null)}
+        onVerified={confirmGradeChange}
+      />
     </>
   );
 };

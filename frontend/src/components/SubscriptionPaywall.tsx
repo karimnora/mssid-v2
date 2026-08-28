@@ -3,7 +3,7 @@ import { AuthUser, PaymentReceipt, PaymentMethod } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { SUBSCRIPTION_PRICE_DZD } from '../constants/pricing';
 import { Lock, ShieldCheck, Upload, CheckCircle2, AlertCircle, Clock, FileText, Smartphone, CreditCard, Sparkles, X, Eye } from 'lucide-react';
-import { ParentGateModal } from './ParentGateModal';
+import { ParentGateModal, AskAdultScreen } from './ParentGateModal';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
@@ -32,6 +32,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   const [submittedReceipt, setSubmittedReceipt] = useState<PaymentReceipt | null>(null);
   const [customError, setCustomError] = useState<string | null>(null);
   const [showParentGate, setShowParentGate] = useState(false);
+  const [parentReady, setParentReady] = useState(false);
 
   const currentUser = user || AuthService.getCurrentUser();
 
@@ -96,7 +97,14 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   return (
     <>
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="bg-white border border-purple-200 w-full max-w-3xl rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[92vh] overflow-y-auto" dir={direction}>
+      <div className="bg-white border-2 border-[#E7E2D7] w-full max-w-3xl rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[92vh] overflow-y-auto" dir={direction}>
+        {!parentReady ? (
+          <>
+            <div className="h-3.5 w-full bg-[var(--brand-coral)]" />
+            <AskAdultScreen onAskAdult={() => setParentReady(true)} onClose={onClose} />
+          </>
+        ) : (
+        <>
         {/* Header Header */}
         <div
           className="text-white p-6 rounded-t-3xl relative overflow-hidden"
@@ -301,7 +309,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 bg-gradient-to-r from-purple-700 to-indigo-800 text-white font-extrabold rounded-2xl hover:from-purple-800 hover:to-indigo-900 shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm"
+                  className="w-full py-3.5 bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white font-extrabold rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm"
                 >
                   <ShieldCheck className="w-5 h-5 text-amber-400" />
                   <span>{isSubmitting ? t('submittingButton') : t('submitButton')}</span>
@@ -310,6 +318,8 @@ export const SubscriptionPaywall: React.FC<Props> = ({
             </form>
           )}
         </div>
+        </>
+        )}
       </div>
     </div>
     <ParentGateModal

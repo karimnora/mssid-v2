@@ -65,6 +65,8 @@ export const common: typeof commonAr = {
   dailyObjectiveDoneMsg: "🎉 Objectif du jour atteint ! Reviens demain pour un nouveau défi.",
   dailyObjectiveRemainingMsg: "Termine encore {remaining} exercices ou évaluations aujourd'hui pour atteindre l'objectif.",
   badgesGalleryLabel: 'Badges et récompenses ({unlocked}/{total}) :',
+  profileMeTab: 'Moi',
+  profileParentsTab: 'Parents',
   deletingAccountLabel: 'Suppression en cours...',
   confirmDeleteAccountLabel: 'Appuie à nouveau pour confirmer la suppression définitive du compte',
   deleteAccountLabel: 'Supprimer définitivement le compte',

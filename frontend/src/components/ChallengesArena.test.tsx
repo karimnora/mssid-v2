@@ -10,7 +10,7 @@ vi.mock('./preschool/usePreschoolAudio', () => ({
   playGentleNudge: vi.fn(),
 }));
 
-const renderArena = (grade: '1AP' | '2AP' | '5AP') =>
+const renderArena = (grade: '1AP' | '2AP' | '3AP' | '5AP') =>
   render(
     <LocaleProvider>
       <ChallengesArena grade={grade} onChallengeComplete={vi.fn()} />
@@ -33,5 +33,15 @@ describe('ChallengesArena', () => {
     expect(first).toBeTruthy();
     expect(screen.getByText(first!.titleAr)).toBeInTheDocument();
     expect(screen.queryByText('ألعاب الترويح')).not.toBeInTheDocument();
+    expect(screen.queryByText('التحدي الكبير للفصل')).not.toBeInTheDocument();
+  });
+
+  it('lists 3AP islamic and civics challenges including today’s lesson pack', () => {
+    renderArena('3AP');
+    expect(screen.getByText('سباق أركان الإسلام والوضوء')).toBeInTheDocument();
+    expect(screen.getByText('قواعد المدرسة ورموز الجزائر')).toBeInTheDocument();
+    expect(screen.getAllByText('تدريب اليوم: التربية الإسلامية').length).toBeGreaterThan(0);
+    expect(screen.getByRole('button', { name: 'التربية الإسلامية' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'التربية المدنية' })).toBeInTheDocument();
   });
 });

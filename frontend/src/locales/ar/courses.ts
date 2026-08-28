@@ -15,7 +15,7 @@ export const courses = {
   trimester1Label: 'الفصل الأول (Trimestre 1)',
   trimester2Label: 'الفصل الثاني (Trimestre 2)',
   trimester3Label: 'الفصل الثالث (Trimestre 3)',
-  premiumBadge: 'مميّز (Premium)',
+  premiumBadge: 'للوالدين',
   completedBadge: '✓ مكتمل',
   quizCountLabel: '{count} أسئلة',
   noLessonsHeading: 'لا توجد دروس بعد في هذا الفصل',

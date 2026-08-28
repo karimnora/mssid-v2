@@ -3,6 +3,28 @@ import { INTERACTIVE_LABS_LIST } from '../data/subjectsData';
 
 export const VALID_GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 
+/** Last grade the visitor picked — used when the URL has no `?g=` so a guest never boots on 5AP. */
+export const GRADE_STORAGE_KEY = 'mssid_grade';
+
+export function readStoredGrade(): PrimaryGrade | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const saved = window.localStorage.getItem(GRADE_STORAGE_KEY);
+    return isValidGrade(saved) ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+export function persistGrade(grade: PrimaryGrade): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(GRADE_STORAGE_KEY, grade);
+  } catch {
+    // Quota / private mode — navigation still works from URL and in-memory state.
+  }
+}
+
 const LAB_IDS = new Set<string>(INTERACTIVE_LABS_LIST.map((lab) => lab.id));
 
 /** Safe lesson-id pattern — matches the server ProgressGuard allow-list. */
@@ -144,10 +166,9 @@ export function mobileTabForView(view: AppView): MobileTab {
       return 'home';
     case 'courses':
     case 'lesson':
-      return 'courses';
     case 'exams':
+      return 'courses';
     case 'challenges':
-      return 'exercises';
     case 'labs':
       return 'games';
   }
