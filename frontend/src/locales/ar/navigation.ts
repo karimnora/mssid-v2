@@ -6,6 +6,7 @@ export const navigation = {
   meTab: 'أَنَا',
   exercises: 'التمارين',
   profile: 'الملف',
+  settings: 'الإعدادات',
   aiTutor: 'المعلم الذكي بالذكاء الاصطناعي',
   aiTutorShort: 'المعلم',
   aiTutorNavLabel: 'المعلّم الذكي',

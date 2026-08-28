@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
+import { Settings } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { MssidLogo } from './MssidLogo';
 import { useTranslation } from '../hooks/useTranslation';
@@ -25,6 +26,7 @@ interface NavbarProps {
   onHomeClick: () => void;
   currentTheme?: HeaderTheme;
   onOpenProfileModal: () => void;
+  onOpenSettingsModal: () => void;
   avatar?: string;
 }
 
@@ -39,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onHomeClick,
   currentTheme = 'neutre',
   onOpenProfileModal,
+  onOpenSettingsModal,
   avatar,
 }) => {
   const t = useTranslation('navigation');
@@ -71,14 +74,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </motion.button>
 
-        {/* Read-only grade indicator, not a button: the top avatar was already dropped for
-            duplicating this badge and the bottom nav's "Moi" tab (three tap targets, one
-            destination). Making this badge open the profile too still left two tap targets doing
-            the same thing — "Moi" already reaches the grade/language pickers in one tap (they sit
-            at the top of the profile since Phase 193), so this stays purely informational
-            (remonte utilisateur : "انا et le grade de haut ont la meme choses ... je veux pas
-            qu'il soit redondant"). */}
         <div className="flex items-center gap-2 shrink-0">
+          {/* Read-only grade indicator, not a button — settings (including grade change) now
+              live behind their own dedicated ⚙️ icon (remonte utilisateur : "je veux désassocier
+              le profile et Réglages dans un nouveau icon ⚙️ dans le header"), so this badge no
+              longer needs to double as an entry point to anything. */}
           <p
             data-nav-grade-readout
             className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center"
@@ -86,6 +86,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="sr-only">{t(gradeMeta.labelKey)}</span>
             <span aria-hidden>{gradeMeta.badge}</span>
           </p>
+
+          <motion.button
+            type="button"
+            data-nav-settings
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenSettingsModal}
+            className="hit-target w-10 h-10 rounded-2xl bg-[#FFFBF0] border-2 border-[#E7E2D7] text-[var(--kids-muted)] flex items-center justify-center cursor-pointer"
+            aria-label={t('settings')}
+            title={t('settings')}
+          >
+            <Settings className="w-5 h-5" />
+          </motion.button>
 
           {/* Desktop-only: MobileBottomNav (with its "Moi" tab, the sole profile entry point on
               phones) is md:hidden, so without a header button desktop/tablet users would have no

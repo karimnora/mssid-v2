@@ -1,43 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { UserProfile, PrimaryGrade } from '../types';
+import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Settings, Trophy, Sparkles, Mail, KeyRound, LogOut, MessageSquare, FileText, Home } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail, MessageSquare, FileText, Home } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
-import { TashkeelToggle } from './TashkeelToggle';
 import { Card, XPProgressBar } from './ui';
 import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
 import { AuthService } from '../services/authService';
 import { ParentGateModal } from './ParentGateModal';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { HeaderTheme, NAV_GRADES, THEME_OPTIONS } from './Navbar';
 
 interface ProfileModalProps {
   isOpen: boolean;
   onClose: () => void;
   userProfile: UserProfile;
   authUser?: AuthUser | null;
-  tashkeelEnabled: boolean;
-  onToggleTashkeel: (next: boolean) => void;
   onResetProgress: () => void;
   onUpdateName?: (newName: string) => void;
   onUpdateAvatar?: (newAvatar: string) => void;
   onRefreshFromDb?: () => Promise<void>;
-  currentGrade?: PrimaryGrade;
-  onGradeChange?: (grade: PrimaryGrade) => void;
-  onOpenAuthModal?: () => void;
-  onLogout?: () => void;
   onOpenAdminConsole?: () => void;
   onOpenPreschool?: () => void;
   onOpenContactModal?: () => void;
   onOpenPrivacyPolicy?: () => void;
   onOpenTermsOfService?: () => void;
-  currentTheme?: HeaderTheme;
-  onThemeChange?: (theme: HeaderTheme) => void;
-  isThemeAuto?: boolean;
-  onThemeAuto?: () => void;
 }
 
 const AVATAR_OPTIONS = [
@@ -51,25 +38,15 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onClose,
   userProfile,
   authUser,
-  tashkeelEnabled,
-  onToggleTashkeel,
   onResetProgress,
   onUpdateName,
   onUpdateAvatar,
   onRefreshFromDb,
-  currentGrade,
-  onGradeChange,
-  onOpenAuthModal,
-  onLogout,
   onOpenAdminConsole,
   onOpenPreschool,
   onOpenContactModal,
   onOpenPrivacyPolicy,
   onOpenTermsOfService,
-  currentTheme = 'neutre',
-  onThemeChange,
-  isThemeAuto = false,
-  onThemeAuto,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
@@ -280,104 +257,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             />
           </Card>
 
-          {/* Settings group — grade, language, theme, tashkeel, and the connect/disconnect
-              action all live here, right after Identity, so changing any of them stays a
-              one-tap-in reach instead of being buried below the progress/badges content
-              (remonte utilisateur : reorganisation demandee, param./langue/connexion en haut,
-              niveau/avatar/progression/badges en bas). */}
-          <div className="flex items-center gap-1.5 px-1">
-            <Settings className="w-4 h-4 text-[var(--kids-grass-2)]" />
-            <span className="text-xs font-black text-[var(--kids-muted)]">{t('settingsSectionLabel')}</span>
-          </div>
-
-          {currentGrade && onGradeChange && (
-            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
-              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
-              {/* Full-name, two-per-row list (not the old five-abbreviation strip) — bigger tap
-                  targets and the actual grade name, matching how this screen looked before the
-                  kids redesign (remonte utilisateur : capture d'une ancienne version, meme
-                  fonctionnement demande, sans le prescolaire qui a sa propre carte dediee, avec le
-                  design actuel). */}
-              <div data-profile-grade-strip className="grid grid-cols-2 gap-2">
-                {NAV_GRADES.map((g) => (
-                  <button
-                    key={g.id}
-                    type="button"
-                    onClick={() => onGradeChange(g.id)}
-                    className={`hit-target rounded-2xl px-3 py-3 text-sm font-extrabold cursor-pointer ${
-                      currentGrade === g.id
-                        ? 'kids-pop bg-[var(--kids-grass-2)] text-white'
-                        : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                    }`}
-                  >
-                    {tNav(g.labelKey)}
-                  </button>
-                ))}
-              </div>
-            </Card>
-          )}
-
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
-            <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
-            <LanguageSwitcher />
-          </Card>
-
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
-            <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
-            <div className="grid grid-cols-3 gap-1.5">
-              {onThemeAuto && (
-                <button
-                  type="button"
-                  onClick={onThemeAuto}
-                  className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
-                    isThemeAuto ? 'bg-[var(--kids-grass-2)] text-white' : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                  }`}
-                >
-                  {tNav('themeAutoShort')}
-                </button>
-              )}
-              {THEME_OPTIONS.map((opt) => (
-                <button
-                  key={opt.id}
-                  type="button"
-                  onClick={() => onThemeChange?.(opt.id)}
-                  className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
-                    !isThemeAuto && currentTheme === opt.id
-                      ? 'bg-[var(--kids-grass-2)] text-white'
-                      : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                  }`}
-                >
-                  {tNav(opt.id === 'neutre' ? 'themeNeutreShort' : 'themeDarkShort')}
-                </button>
-              ))}
-            </div>
-          </Card>
-
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] rounded-[22px]">
-            <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
-          </Card>
-
-          {!authUser && onOpenAuthModal && (
-            <button
-              type="button"
-              onClick={() => { onOpenAuthModal(); onClose(); }}
-              className="w-full hit-target rounded-2xl bg-[var(--kids-grass-2)] text-white text-sm font-extrabold cursor-pointer flex items-center justify-center gap-2"
-            >
-              <KeyRound className="w-4 h-4" />
-              {tNav('loginRegisterCta')}
-            </button>
-          )}
-          {authUser && onLogout && (
-            <button
-              type="button"
-              onClick={() => { onLogout(); onClose(); }}
-              className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--brand-coral)] cursor-pointer flex items-center justify-center gap-2"
-            >
-              <LogOut className="w-4 h-4" />
-              {tNav('logout')}
-            </button>
-          )}
-
           {/* Email Verification Reminder Card — discreet, non-blocking (SEC-08) */}
           {authUser && !authUser.emailVerified && (
             <Card padding="md" className="!bg-[#FFF8E7] !border-[#F5D98A] space-y-2.5 rounded-[22px]">
@@ -422,8 +301,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           )}
 
-          {/* Progress group — avatar, level/XP, and badges, moved below Settings (remonte
-              utilisateur : niveau/avatar/progression/badges en bas). */}
+          {/* Progress group — avatar, level/XP, and badges. Grade/language/theme/tashkeel/
+              connexion moved out to SettingsModal, opened from a dedicated ⚙️ header icon
+              (remonte utilisateur : "je veux désassocier le profile et Réglages dans un nouveau
+              icon ⚙️ dans le header"). */}
           <div className="flex items-center gap-1.5 px-1 pt-2">
             <Trophy className="w-4 h-4 text-[var(--kids-sun-2)]" />
             <span className="text-xs font-black text-[var(--kids-muted)]">{t('progressSectionLabel')}</span>

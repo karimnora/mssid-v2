@@ -4,6 +4,7 @@ export function useAppModals() {
   const [authModalInitialMode, setAuthModalInitialMode] = useState<'login' | 'register'>('login');
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isEmailVerifyPopupOpen, setIsEmailVerifyPopupOpen] = useState(false);
   const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
@@ -26,6 +27,8 @@ export function useAppModals() {
     setIsAiModalOpen,
     isProfileModalOpen,
     setIsProfileModalOpen,
+    isSettingsModalOpen,
+    setIsSettingsModalOpen,
     isAuthModalOpen,
     setIsAuthModalOpen,
     isEmailVerifyPopupOpen,

@@ -8,6 +8,7 @@ export const navigation: typeof navigationAr = {
   meTab: 'Moi',
   exercises: 'Exercices',
   profile: 'Profil',
+  settings: 'Réglages',
   aiTutor: 'Tuteur intelligent (IA)',
   aiTutorShort: 'Tuteur',
   aiTutorNavLabel: 'Tuteur IA',

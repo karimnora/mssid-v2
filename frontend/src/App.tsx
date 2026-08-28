@@ -245,6 +245,7 @@ export default function App() {
         onHomeClick={nav.goHome}
         currentTheme={headerTheme}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
+        onOpenSettingsModal={() => modals.setIsSettingsModalOpen(true)}
         avatar={progress.userProfile.avatar}
       />
 

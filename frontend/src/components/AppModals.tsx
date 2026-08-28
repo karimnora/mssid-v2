@@ -25,6 +25,7 @@ const OfflinePacksManagerModal = lazy(() => import('./OfflinePacksManagerModal')
 // catalog to map completed-lesson ids to subjects — no reason that forces itself into the initial
 // bundle before the user has even opened their profile.
 const ProfileModal = lazy(() => import('./ProfileModal').then((m) => ({ default: m.ProfileModal })));
+const SettingsModal = lazy(() => import('./SettingsModal').then((m) => ({ default: m.SettingsModal })));
 
 type Modals = ReturnType<typeof useAppModals>;
 
@@ -108,20 +109,12 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onClose={() => modals.setIsProfileModalOpen(false)}
         userProfile={userProfile}
         authUser={authUser}
-        tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-        onToggleTashkeel={(next) => {
-          setUserProfile((prev) => ({ ...prev, tashkeelEnabled: next }));
-        }}
         onResetProgress={() => {
           if (onResetProgress()) modals.setIsProfileModalOpen(false);
         }}
         onUpdateName={onUpdateName}
         onUpdateAvatar={onUpdateAvatar}
         onRefreshFromDb={onRefreshFromDb}
-        currentGrade={grade}
-        onGradeChange={onGradeChange}
-        onOpenAuthModal={onOpenAuthModal}
-        onLogout={onLogout}
         onOpenAdminConsole={onOpenAdminConsole}
         onOpenPreschool={onOpenPreschool}
         onOpenContactModal={() => {
@@ -136,6 +129,22 @@ export const AppModals: React.FC<AppModalsProps> = ({
           modals.setIsProfileModalOpen(false);
           onOpenTermsOfService();
         }}
+      />
+    </Suspense>
+
+    <Suspense fallback={null}>
+      <SettingsModal
+        isOpen={modals.isSettingsModalOpen}
+        onClose={() => modals.setIsSettingsModalOpen(false)}
+        authUser={authUser}
+        tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+        onToggleTashkeel={(next) => {
+          setUserProfile((prev) => ({ ...prev, tashkeelEnabled: next }));
+        }}
+        currentGrade={grade}
+        onGradeChange={onGradeChange}
+        onOpenAuthModal={onOpenAuthModal}
+        onLogout={onLogout}
         currentTheme={currentTheme}
         onThemeChange={onThemeChange}
         isThemeAuto={isThemeAuto}
