@@ -317,4 +317,44 @@ describe('exam bank integrity', () => {
     );
     expect(tooEarly).toEqual([]);
   });
+
+  it('fills operationsAr whenever an exercise instructs a posed vertical calculation', () => {
+    // "عمود…" also appears in geometry (perpendicular lines/angles) — those are excluded via مستقيم/زاوي.
+    OFFICIAL_EXAMS_DATA.forEach((exam) => {
+      [...exam.exercises, exam.problemExercise].forEach((ex) => {
+        const asksForPosedOperation = /عمود/.test(ex.contentAr) && /\d/.test(ex.contentAr) && !/مستقيم|زاوي|زوايا/.test(ex.contentAr);
+        if (asksForPosedOperation) {
+          expect(ex.operationsAr, `${exam.id} — ${ex.titleAr}`).toBeTruthy();
+        }
+      });
+    });
+  });
+
+  it('ships history_geo, tamazight, art and technology devoirs each term on 3AP–5AP', () => {
+    (['3AP', '4AP', '5AP'] as const).forEach((grade) => {
+      (['history_geo', 'tamazight', 'art', 'technology'] as const).forEach((subject) => {
+        ([1, 2, 3] as const).forEach((trimester) => {
+          const n = OFFICIAL_EXAMS_DATA.filter(
+            (exam) =>
+              exam.grade === grade &&
+              exam.subject === subject &&
+              exam.trimester === trimester &&
+              getExamKind(exam) === 'devoir'
+          ).length;
+          expect(n, `${grade} ${subject} T${trimester}`).toBeGreaterThanOrEqual(1);
+        });
+      });
+    });
+  });
+
+  it('gives every 4AP/5AP arabic composition at least one إعراب exercise with irabTableAr', () => {
+    const compositions = OFFICIAL_EXAMS_DATA.filter(
+      (exam) => exam.subject === 'arabic' && (exam.grade === '4AP' || exam.grade === '5AP') && getExamKind(exam) === 'composition'
+    );
+    expect(compositions.length).toBeGreaterThan(0);
+    compositions.forEach((exam) => {
+      const hasIrabTable = exam.exercises.some((ex) => (ex.irabTableAr?.length || 0) > 0);
+      expect(hasIrabTable, exam.id).toBe(true);
+    });
+  });
 });

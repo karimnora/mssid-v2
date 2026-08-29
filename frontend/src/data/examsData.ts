@@ -7,6 +7,8 @@ import { VARIANT_EXAM_PAPERS } from './exams/variantPapers';
 import { TERM23_SECONDARY_PAPERS } from './exams/term23SecondaryPapers';
 import { SECONDARY_DEVOIR_PAPERS } from './exams/secondaryDevoirPapers';
 import { P2_EXAM_PAPERS } from './exams/p2ExamPapers';
+import { P2_DEVOIR_PAPERS } from './exams/p2DevoirPapers';
+import { HISTORY_GEO_DEVOIR_PAPERS } from './exams/historyGeoDevoirPapers';
 
 export { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR, ACQUIS_SOURCE_NOTE_AR };
 
@@ -21,6 +23,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     grade: '5AP',
     durationMinutes: 90,
     totalPoints: 10,
+    contentSource: 'needs_verification',
+    sourceNoteAr: 'يحمل عنوان هذا الموضوع اسم مقاطعة تعليمية محددة (صالح باي)، على عكس بقية نماذج شهادة التعليم الابتدائي في هذه القائمة، مما يرجّح أنه اختبار مشترك حقيقي متداول بين مدارس المقاطعة وليس تأليفاً أصلياً لمَسِيد DZ. لم يُتحقّق بعد من مصدره الدقيق أو من مطابقته الحرفية لوثيقة المقاطعة؛ يُرجى التعامل معه كنموذج تدريبي عام حتى تأكيد مصدره.',
     exercises: [
       {
         titleAr: 'التمرين الأول (1.5 نقطة)',
@@ -32,7 +36,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الثاني (1.5 نقطة)',
         points: 1.5,
         contentAr: 'أنجز العمليات الآتية عمودياً:\n1) 2345 × 76 = ...\n2) 100167 - 56789 = ...\n3) 436783 + 12589 = ...',
-        solutionAr: '1) 2345 × 76 = 178,220.\n2) 100167 - 56789 = 43,378.\n3) 436783 + 12589 = 449,372.'
+        solutionAr: '1) 2345 × 76 = 178,220.\n2) 100167 - 56789 = 43,378.\n3) 436783 + 12589 = 449,372.',
+        operationsAr: '1)\n     2345\n  ×    76\n  -------\n  178,220\n\n2)\n   100167\n  −  56789\n  --------\n    43,378\n\n3)\n   436783\n  +  12589\n  --------\n   449,372'
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
@@ -116,7 +121,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الأول (1.5 نقطة)',
         points: 1.5,
         contentAr: 'احسب بوضع العملية العمودية:\n1) 700.80 - 27.4 = ...\n2) 72.25 × 8 = ...\n3) 120.25 + 14.03 = ...',
-        solutionAr: '1) 700.80 - 27.4 = 673.4\n2) 72.25 × 8 = 578\n3) 120.25 + 14.03 = 134.28'
+        solutionAr: '1) 700.80 - 27.4 = 673.4\n2) 72.25 × 8 = 578\n3) 120.25 + 14.03 = 134.28',
+        operationsAr: '1)\n   700.80\n  −  27.40\n  --------\n   673.40\n\n2)\n    72.25\n  ×     8\n  --------\n   578.00\n\n3)\n   120.25\n  +  14.03\n  --------\n   134.28'
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -161,7 +167,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الأول (1.5 نقطة)',
         points: 1.5,
         contentAr: 'احسب عمودياً العمليات الآتية:\n1) 135.15 × 6 = ...\n2) 120.1 - 10 = ...\n3) 17.37 + 3.12 = ...',
-        solutionAr: '1) 135.15 × 6 = 810.90\n2) 120.1 - 10 = 110.1\n3) 17.37 + 3.12 = 20.49'
+        solutionAr: '1) 135.15 × 6 = 810.90\n2) 120.1 - 10 = 110.1\n3) 17.37 + 3.12 = 20.49',
+        operationsAr: '1)\n   135.15\n  ×      6\n  --------\n   810.90\n\n2)\n   120.10\n  −  10.00\n  --------\n   110.10\n\n3)\n    17.37\n  +   3.12\n  --------\n    20.49'
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -220,6 +227,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-operations',
         contentAr: 'أنجز عمودياً مع الاحتفاظ:\n1) 458,675 + 327,548 = ...\n2) 70,502 − 38,649 = ...',
         solutionAr: '1) 458,675 + 327,548 = 786,223.\n2) 70,502 − 38,649 = 31,853.',
+        operationsAr: '1)\n   458,675\n  + 327,548\n  ---------\n   786,223\n\n2)\n    70,502\n  −  38,649\n  ---------\n    31,853',
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
@@ -377,6 +385,12 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'arabic-5ap-sentence-components',
         contentAr: 'في الجملة: « كافأتِ المعلمةُ التلميذةَ المجتهدةَ. »\n1) حدد الفاعل والمفعول به.\n2) ما علامة رفع الفاعل وعلامة نصب المفعول به؟',
         solutionAr: '1) الفاعل: المعلمةُ. المفعول به: التلميذةَ.\n2) الفاعل مرفوع بالضمة الظاهرة، والمفعول به منصوب بالفتحة الظاهرة.',
+        irabTableAr: [
+          { wordAr: 'كَافَأَتِ', analysisAr: 'فعل ماضٍ مبني على الفتح، والتاء للتأنيث.' },
+          { wordAr: 'المُعَلِّمَةُ', analysisAr: 'فاعل مرفوع وعلامة رفعه الضمة الظاهرة.' },
+          { wordAr: 'التِّلْمِيذَةَ', analysisAr: 'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+          { wordAr: 'المُجْتَهِدَةَ', analysisAr: 'نعت منصوب مطابق لمنعوته (التلميذةَ) وعلامة نصبه الفتحة الظاهرة.' },
+        ],
       },
       {
         titleAr: 'التمرين الثالث: الصرف (1.5 نقطة)',
@@ -428,6 +442,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'arabic-5ap-kan-inna',
         contentAr: 'في الجملة: « كَانَ الجَوُّ بَارِداً. »\n1) حدد اسم «كان» وخبرها.\n2) ما حركة إعراب كل منهما؟',
         solutionAr: '1) اسم كان: الجوُّ. خبر كان: بارداً.\n2) اسم كان مرفوع (الضمة)، وخبر كان منصوب (الفتحة).',
+        irabTableAr: [
+          { wordAr: 'كَانَ', analysisAr: 'فعل ماضٍ ناقص مبني على الفتح.' },
+          { wordAr: 'الجَوُّ', analysisAr: 'اسم كان مرفوع وعلامة رفعه الضمة الظاهرة.' },
+          { wordAr: 'بَارِداً', analysisAr: 'خبر كان منصوب وعلامة نصبه الفتحة الظاهرة.' },
+        ],
       },
       {
         titleAr: 'التمرين الثالث: الصرف (1.5 نقطة)',
@@ -467,7 +486,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-5ap-hal-five-names-verbs', 'arabic-5ap-bare-augmented-participles', 'arabic-5ap-spelling-hamzas', 'arabic-5ap-integration-writing'],
     exercises: [
       { titleAr: 'التمرين الأول: الفهم (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'اقرأ ثم أجب:\n« عادَ أَخُوكَ مِنَ السَّفَرِ مُبْتَسِماً، وَهُوَ يَحْمِلُ هَدَايَا لِلْجَمِيعِ. »\n1) استخرج الحال من النص.\n2) استخرج اسماً من الأسماء الخمسة.', solutionAr: '1) الحال: مبتسماً.\n2) أَخُوكَ (من الأسماء الخمسة: أخ).' },
-      { titleAr: 'التمرين الثاني: القواعد (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'في الجملة: « التلميذانِ يَكْتُبَانِ الدَّرْسَ. »\n1) أعرب «يكتبان» (من الأفعال الخمسة).\n2) بيّن علامة إعرابه.', solutionAr: '1) يكتبان: فعل مضارع مرفوع لأنه من الأفعال الخمسة.\n2) علامة رفعه ثبوت النون.' },
+      { titleAr: 'التمرين الثاني: القواعد (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'في الجملة: « التلميذانِ يَكْتُبَانِ الدَّرْسَ. »\n1) أعرب «يكتبان» (من الأفعال الخمسة).\n2) بيّن علامة إعرابه.', solutionAr: '1) يكتبان: فعل مضارع مرفوع لأنه من الأفعال الخمسة.\n2) علامة رفعه ثبوت النون.', irabTableAr: [
+        { wordAr: 'التِّلْمِيذَانِ', analysisAr: 'مبتدأ مرفوع وعلامة رفعه الألف لأنه مثنى.' },
+        { wordAr: 'يَكْتُبَانِ', analysisAr: 'فعل مضارع مرفوع بثبوت النون لأنه من الأفعال الخمسة، والألف ضمير متصل مبني في محل رفع فاعل.' },
+        { wordAr: 'الدَّرْسَ', analysisAr: 'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث: الصرف (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-bare-augmented-participles', contentAr: 'ميّز الفعل المجرد من الفعل المزيد فيما يلي: خرجَ - أَخْرَجَ - اسْتَخْرَجَ.', solutionAr: 'خرجَ: مجرد (ثلاثي على وزن فَعَلَ). أَخْرَجَ: مزيد بحرف. اسْتَخْرَجَ: مزيد بثلاثة أحرف.' },
       { titleAr: 'التمرين الرابع: الإملاء (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-hamzas', contentAr: 'أدرج الهمزة الصحيحة: « ...بن خالد تلميذٌ مجتهدٌ » و« هذا كتابٌ ...خضرُ اللون ».', solutionAr: 'ابنُ خالد (همزة وصل تسقط نطقاً في درج الكلام). أَخضر (همزة قطع تُنطق دائماً).' },
     ],
@@ -725,6 +748,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-operations-addition-multiplication',
         contentAr: 'أنجز عمودياً:\n1) 3,458 + 2,764 = ...\n2) 345 × 26 = ...',
         solutionAr: '1) 3,458 + 2,764 = 6,222.\n2) 345 × 26 = 8,970.',
+        operationsAr: '1)\n  3,458\n+ 2,764\n-------\n  6,222\n\n2)\n     345\n  ×   26\n  ------\n   2070\n+ 6900\n  ------\n   8,970',
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
@@ -852,6 +876,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'arabic-4ap-parts-of-speech-sentences',
         contentAr: 'حدد الفاعل والمفعول به وأعربهما: « يَغْرِسُ الفَلَّاحُ الشَّجَرَةَ. »',
         solutionAr: 'الفاعل: الفَلَّاحُ مرفوع بالضمة. المفعول به: الشَّجَرَةَ منصوب بالفتحة.',
+        irabTableAr: [
+          { wordAr: 'يَغْرِسُ', analysisAr: 'فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة.' },
+          { wordAr: 'الفَلَّاحُ', analysisAr: 'فاعل مرفوع وعلامة رفعه الضمة الظاهرة.' },
+          { wordAr: 'الشَّجَرَةَ', analysisAr: 'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+        ],
       },
       {
         titleAr: 'التمرين الثالث: الصرف (1.5 نقطة)',
@@ -890,7 +919,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
       { titleAr: 'التمرين الأول: الفهم (1.5 نقطة)', points: 1.5, contentAr: 'اقرأ النص التالي ثم أجب:\n« كان الجو بارداً صباح أمس، لكن التلاميذ وصلوا إلى المدرسة في الوقت المحدد. »\n1) كيف كان الجو صباح أمس؟\n2) استخرج الناسخ الفعلي من النص.', solutionAr: '1) كان الجو بارداً.\n2) الناسخ الفعلي هو « كان ».' },
-      { titleAr: 'التمرين الثاني: القواعد (1.5 نقطة)', points: 1.5, contentAr: 'أدخل « إنّ » على الجملة: « النصرُ قريبٌ. » واضبط الاسم والخبر.', solutionAr: '« إنَّ النصرَ قريبٌ. » — النصرَ: اسم إنّ منصوب. قريبٌ: خبر إنّ مرفوع.' },
+      { titleAr: 'التمرين الثاني: القواعد (1.5 نقطة)', points: 1.5, contentAr: 'أدخل « إنّ » على الجملة: « النصرُ قريبٌ. » واضبط الاسم والخبر.', solutionAr: '« إنَّ النصرَ قريبٌ. » — النصرَ: اسم إنّ منصوب. قريبٌ: خبر إنّ مرفوع.', irabTableAr: [
+        { wordAr: 'إِنَّ', analysisAr: 'حرف توكيد ونصب.' },
+        { wordAr: 'النَّصْرَ', analysisAr: 'اسم إنّ منصوب وعلامة نصبه الفتحة الظاهرة.' },
+        { wordAr: 'قَرِيبٌ', analysisAr: 'خبر إنّ مرفوع وعلامة رفعه الضمة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث: الصرف (1.5 نقطة)', points: 1.5, contentAr: 'اكتب جمع المذكر السالم من الكلمات: معلّم - مُجتهد.', solutionAr: 'معلّم → معلّمونَ. مُجتهد → مُجتهدونَ.' },
       { titleAr: 'التمرين الرابع: الإملاء (1.5 نقطة)', points: 1.5, contentAr: 'اكتب الهمزة المتوسطة في مكانها الصحيح: « س...ال » (سؤال/سءال/سأال).', solutionAr: 'الصحيح: « سُؤَال » — الهمزة على الواو لأنها مضمومة وما قبلها مفتوح، والضمة أقوى من الفتحة.' },
     ],
@@ -910,7 +943,10 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
       { titleAr: 'التمرين الأول: الفهم (1.5 نقطة)', points: 1.5, contentAr: 'اقرأ النص التالي ثم أجب:\n« شاهدتُ عصفوراً جميلاً فوق الشجرة العالية، فسررتُ كثيراً لجماله. »\n1) بمَ شعر الكاتب عند رؤية العصفور؟\n2) استخرج صفة وموصوفها من النص.', solutionAr: '1) شعر بالسرور.\n2) الصفة: جميلاً. الموصوف: عصفوراً.' },
-      { titleAr: 'التمرين الثاني: القواعد (1.5 نقطة)', points: 1.5, contentAr: 'أعرب كلمة « الحديقةِ » في الجملة: « لعب الأطفال في الحديقةِ. »', solutionAr: 'الحديقةِ: اسم مجرور بحرف الجر « في »، وعلامة جره الكسرة الظاهرة.' },
+      { titleAr: 'التمرين الثاني: القواعد (1.5 نقطة)', points: 1.5, contentAr: 'أعرب كلمة « الحديقةِ » في الجملة: « لعب الأطفال في الحديقةِ. »', solutionAr: 'الحديقةِ: اسم مجرور بحرف الجر « في »، وعلامة جره الكسرة الظاهرة.', irabTableAr: [
+        { wordAr: 'فِي', analysisAr: 'حرف جر مبني لا محل له من الإعراب.' },
+        { wordAr: 'الحَدِيقَةِ', analysisAr: 'اسم مجرور بـ"في" وعلامة جره الكسرة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث: الصرف (1.5 نقطة)', points: 1.5, contentAr: 'اكتب فعل الأمر من الأفعال: يحفظ (مع أنتم) - يكتب (مع أنتِ).', solutionAr: 'يحفظ → احفظوا. يكتب → اكتبي.' },
       { titleAr: 'التمرين الرابع: الإملاء (1.5 نقطة)', points: 1.5, contentAr: 'اكتب جمع التكسير من الكلمات: كتاب - طفل - قلم.', solutionAr: 'كتاب → كُتُب. طفل → أطفال. قلم → أقلام.' },
     ],
@@ -1094,7 +1130,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'فكك العدد 573 بأسلوب الضرب والجمع.', solutionAr: '573 = (5 × 100) + (7 × 10) + 3.' },
-      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'احسب عمودياً: 245 + 138 = ...', solutionAr: '245 + 138 = 383.' },
+      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'احسب عمودياً: 245 + 138 = ...', solutionAr: '245 + 138 = 383.', operationsAr: '  245\n+ 138\n-----\n  383' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'حوّل الجمع المكرر التالي إلى عملية ضرب: 6 + 6 + 6 = ...', solutionAr: '3 × 6 = 18.' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'اشترى أمين 4 دفاتر بسعر 50 دج للدفتر الواحد.\n1) احسب المبلغ الذي دفعه أمين.', solutionAr: '1) المبلغ المدفوع = 4 × 50 = 200 دج.' },
@@ -1113,7 +1149,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'ما هو رقم الآلاف في العدد 4,821؟', solutionAr: 'رقم الآلاف هو 4.' },
-      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'احسب عمودياً: 123 × 3 = ...', solutionAr: '123 × 3 = 369.' },
+      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'احسب عمودياً: 123 × 3 = ...', solutionAr: '123 × 3 = 369.', operationsAr: '  123\n×   3\n-----\n  369' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'حوّل: 4 m إلى cm.', solutionAr: '4 m = 400 cm.' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'يملك بائع 250 كتاباً، باع منها 120 كتاباً.\n1) كم كتاباً بقي لدى البائع؟', solutionAr: '1) الكتب المتبقية = 250 - 120 = 130 كتاباً.' },
@@ -1341,7 +1377,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'فَكِّكْ العَدَدَ 36 إلى عشرات ووحدات: 36 = ... + ...', solutionAr: '36 = 30 + 6 (3 عشرات و 6 وحدات).' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'اختر الإجابة الصحيحة: أَيُّ عَدَدٍ أَكْبَرُ؟\nأ) 27  ب) 24', solutionAr: 'الإجابة الصحيحة: أ) 27 (لأن 7 > 4 في الوحدات، والعشرات متساوية).' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'احسب عمودياً: 23 + 14 = ...', solutionAr: 'الوحدات: 3+4=7. العشرات: 2+1=3. الناتج: 37.' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'احسب عمودياً: 23 + 14 = ...', solutionAr: 'الوحدات: 3+4=7. العشرات: 2+1=3. الناتج: 37.', operationsAr: '  23\n+ 14\n----\n  37' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'عند سارة 15 قلماً، أعطتها معلمتها 12 قلماً آخر.\n1) كم قلماً أصبح عند سارة؟', solutionAr: '1) 15 + 12 = 27 قلماً (نستعمل الجمع لأن العدد ازداد).' },
   },
@@ -1360,8 +1396,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['math-2ap-t2-addition-with-carry', 'math-2ap-t2-subtraction-with-carry', 'math-2ap-t2-number-framing'],
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-number-framing', contentAr: 'رتب هذه الأعداد تصاعدياً (من الأصغر إلى الأكبر): 58 - 85 - 68', solutionAr: '58 < 68 < 85.' },
-      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-addition-with-carry', contentAr: 'احسب عمودياً بالاحتفاظ: 27 + 15 = ...', solutionAr: 'الوحدات: 7+5=12 (نكتب 2 ونحتفظ بـ1). العشرات: 2+1+1=4. الناتج: 42.' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-subtraction-with-carry', contentAr: 'احسب عمودياً بالاحتفاظ: 42 − 18 = ...', solutionAr: 'الوحدات: نستعير فتصبح 12−8=4. العشرات: 3−1=2. الناتج: 24.' },
+      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-addition-with-carry', contentAr: 'احسب عمودياً بالاحتفاظ: 27 + 15 = ...', solutionAr: 'الوحدات: 7+5=12 (نكتب 2 ونحتفظ بـ1). العشرات: 2+1+1=4. الناتج: 42.', operationsAr: '  27\n+ 15\n----\n  42' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-subtraction-with-carry', contentAr: 'احسب عمودياً بالاحتفاظ: 42 − 18 = ...', solutionAr: 'الوحدات: نستعير فتصبح 12−8=4. العشرات: 3−1=2. الناتج: 24.', operationsAr: '  42\n− 18\n----\n  24' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t2-subtraction-with-carry', contentAr: 'عند ياسين 48 صورة، أعطى 23 صورة لأخيه.\n1) كم صورة بقيت عند ياسين؟', solutionAr: '1) 48 - 23 = 25 صورة (نستعمل الطرح لأن كلمة "أعطى" تعني نقصاناً).' },
   },
@@ -1684,7 +1720,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['math-4ap-numbers-under-100k', 'math-4ap-operations-addition-multiplication'],
     exercises: [
       { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-numbers-under-100k', contentAr: 'اكتب 45,618 بالحروف، ثم فكّكه بأسلوب الضرب والجمع.', solutionAr: 'خمسة وأربعون ألفاً وستمائة وثمانية عشر.\n45,618 = (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'أنجز عمودياً: 3,458 + 2,764.', solutionAr: '3,458 + 2,764 = 6,222.' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'أنجز عمودياً: 3,458 + 2,764.', solutionAr: '3,458 + 2,764 = 6,222.', operationsAr: '  3,458\n+ 2,764\n-------\n  6,222' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'اشترى المدير 15 كرسياً بسعر 2,400 دج للكرسي. ما ثمن الكراسي؟', solutionAr: '2,400 × 15 = 36,000 دج.' },
   },
@@ -1703,7 +1739,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     exercises: [
       { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'اكتب بالأرقام: خمسة ملايين وثلاثة آلاف.', solutionAr: '5,003,000.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'احسب عمودياً: 4,250 − 1,875.', solutionAr: '4,250 − 1,875 = 2,375.' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'احسب عمودياً: 4,250 − 1,875.', solutionAr: '4,250 − 1,875 = 2,375.', operationsAr: '  4,250\n− 1,875\n-------\n  2,375' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'اشترت الأم 3 كتب بـ 850 دج للكتاب. دفعت ورقة 5,000 دج. كم تسترجع؟', solutionAr: 'ثمن الكتب = 3 × 850 = 2,550 دج. الباقي = 5,000 − 2,550 = 2,450 دج.' },
   },
@@ -1718,4 +1754,6 @@ export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [
   ...DEVOIR_EXAM_PAPERS,
   ...SECONDARY_DEVOIR_PAPERS,
   ...P2_EXAM_PAPERS,
+  ...P2_DEVOIR_PAPERS,
+  ...HISTORY_GEO_DEVOIR_PAPERS,
 ];

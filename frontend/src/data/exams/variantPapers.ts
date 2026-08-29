@@ -25,7 +25,7 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['math-3ap-t1-numbers-to-999', 'math-3ap-t1-addition-subtraction', 'math-3ap-t1-multiplication-intro'],
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t1-numbers-to-999', contentAr: 'فكّك العدد 846 بأسلوب الضرب والجمع.', solutionAr: '846 = (8 × 100) + (4 × 10) + 6.' },
-      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t1-addition-subtraction', contentAr: 'احسب عمودياً: 367 − 159 = ...', solutionAr: '367 − 159 = 208.' },
+      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t1-addition-subtraction', contentAr: 'احسب عمودياً: 367 − 159 = ...', solutionAr: '367 − 159 = 208.', operationsAr: '  367\n− 159\n-----\n  208' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t1-multiplication-intro', contentAr: 'حوّل إلى ضرب: 7 + 7 + 7 + 7 = ...', solutionAr: '4 × 7 = 28.' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-3ap-t1-multiplication-intro', contentAr: 'اشترت ليلى 5 أقلام بسعر 30 دج للقلم.\n1) احسب المبلغ المدفوع.\n2) دفعت ورقة 200 دج. كم تسترجع؟', solutionAr: '1) 5 × 30 = 150 دج.\n2) 200 − 150 = 50 دج.' },
@@ -67,7 +67,7 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['math-3ap-t2-thousands-numbers', 'math-3ap-t2-vertical-multiplication', 'math-3ap-t2-units-length-mass'],
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-thousands-numbers', contentAr: 'ما رقم المئات في 3,652؟ واكتب العدد بالأرقام: ثلاثة آلاف وأربعون.', solutionAr: 'رقم المئات = 6. العدد: 3,040.' },
-      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-vertical-multiplication', contentAr: 'احسب عمودياً: 214 × 4 = ...', solutionAr: '214 × 4 = 856.' },
+      { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-vertical-multiplication', contentAr: 'احسب عمودياً: 214 × 4 = ...', solutionAr: '214 × 4 = 856.', operationsAr: '  214\n×   4\n-----\n  856' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-units-length-mass', contentAr: 'حوّل: 3 m إلى cm، و 2 kg إلى g.', solutionAr: '3 m = 300 cm. 2 kg = 2,000 g.' },
     ],
     problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-3ap-t2-currency-change', contentAr: 'ثمن كتاب 120 دج. اشترت نورة 3 كتب ودفعت 500 دج.\n1) ثمن الكتب؟\n2) كم تسترجع؟', solutionAr: '1) 3 × 120 = 360 دج.\n2) 500 − 360 = 140 دج.' },
@@ -415,7 +415,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-4ap-fail-maf3ul-irab', 'arabic-4ap-verb-conjugation', 'arabic-4ap-spelling-taa-hamza'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-parts-of-speech-sentences', contentAr: '« يحترمُ الولدُ الكبيرَ. » استخرج الفعل والفاعل.', solutionAr: 'الفعل: يحترمُ. الفاعل: الولدُ.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-fail-maf3ul-irab', contentAr: 'أعرب « الحديقةَ » في: زرعَ الفلاحُ الحديقةَ.', solutionAr: 'مفعول به منصوب بالفتحة.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-fail-maf3ul-irab', contentAr: 'أعرب « الحديقةَ » في: زرعَ الفلاحُ الحديقةَ.', solutionAr: 'مفعول به منصوب بالفتحة.', irabTableAr: [
+        { wordAr: 'زَرَعَ', analysisAr: 'فعل ماضٍ مبني على الفتح.' },
+        { wordAr: 'الفَلَّاحُ', analysisAr: 'فاعل مرفوع وعلامة رفعه الضمة الظاهرة.' },
+        { wordAr: 'الحَدِيقَةَ', analysisAr: 'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-verb-conjugation', contentAr: 'صرّف « فَتَحَ » في المضارع مع أنتم.', solutionAr: 'أنتم تَفْتَحُونَ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-spelling-taa-hamza', contentAr: 'ميّز التاء: شجرة — نبتْ.', solutionAr: 'شجرة: مربوطة. بنتْ/نبتْ: مفتوحة.' },
     ],
@@ -436,7 +440,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['arabic-4ap-huruf-atf', 'arabic-4ap-parts-of-speech-sentences', 'arabic-4ap-written-production'],
     exercises: [
-      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-huruf-atf', contentAr: 'استخرج حرف عطف: « جاء أحمدُ وسعيدٌ. »', solutionAr: 'الواو.' },
+      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-huruf-atf', contentAr: 'استخرج حرف عطف: « جاء أحمدُ وسعيدٌ. »', solutionAr: 'الواو.', irabTableAr: [
+        { wordAr: 'جَاءَ', analysisAr: 'فعل ماضٍ مبني على الفتح.' },
+        { wordAr: 'أَحْمَدُ', analysisAr: 'فاعل مرفوع وعلامة رفعه الضمة الظاهرة.' },
+        { wordAr: 'سَعِيدٌ', analysisAr: 'معطوف على الفاعل (أحمدُ) مرفوع مثله وعلامة رفعه الضمة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-parts-of-speech-sentences', contentAr: 'ميّز الاسم والفعل والحرف: في — يكتب — كتاب.', solutionAr: 'في: حرف. يكتب: فعل. كتاب: اسم.' },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-verb-conjugation', contentAr: 'الأمر من « يجلس » للمخاطب أنتَ.', solutionAr: 'اجلسْ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-spelling-taa-hamza', contentAr: 'همزة قطع أم وصل: إسماعيل / اجلس.', solutionAr: 'إسماعيل: قطع. اجلس: وصل.' },
@@ -458,7 +466,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['arabic-4ap-kan-inna', 'arabic-4ap-sifa-mawsuf', 'arabic-4ap-hamza-mutawassita'],
     exercises: [
-      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: 'حدّد اسم كان وخبرها: « كانت السماءُ صافيةً. »', solutionAr: 'الاسم: السماءُ مرفوع. الخبر: صافيةً منصوب.' },
+      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: 'حدّد اسم كان وخبرها: « كانت السماءُ صافيةً. »', solutionAr: 'الاسم: السماءُ مرفوع. الخبر: صافيةً منصوب.', irabTableAr: [
+        { wordAr: 'كَانَتِ', analysisAr: 'فعل ماضٍ ناقص مبني على الفتح، والتاء للتأنيث.' },
+        { wordAr: 'السَّمَاءُ', analysisAr: 'اسم كان مرفوع وعلامة رفعه الضمة الظاهرة.' },
+        { wordAr: 'صَافِيَةً', analysisAr: 'خبر كان منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: 'أدخل إنّ على: العلمُ نورٌ.', solutionAr: 'إنَّ العلمَ نورٌ.' },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-sifa-mawsuf', contentAr: 'استخرج النعت: « قرأتُ قصةً مفيدةً. »', solutionAr: 'مفيدةً نعت لـ قصةً.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-hamza-mutawassita', contentAr: 'صحيح الهمزة: سُـ...ال.', solutionAr: 'سُؤَال (على الواو).' },
@@ -481,7 +493,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-4ap-asma-mawsula', 'arabic-4ap-kan-inna', 'arabic-4ap-sifa-mawsuf'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-asma-mawsula', contentAr: 'ضع اسماً موصولاً: «... نجح يستحق المكافأة» (للمفرد المذكر).', solutionAr: 'الذي.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: 'خبر أصبح في: أصبح الجوُّ معتدلاً.', solutionAr: 'معتدلاً.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: 'خبر أصبح في: أصبح الجوُّ معتدلاً.', solutionAr: 'معتدلاً.', irabTableAr: [
+        { wordAr: 'أَصْبَحَ', analysisAr: 'فعل ماضٍ ناقص من أخوات كان، مبني على الفتح.' },
+        { wordAr: 'الجَوُّ', analysisAr: 'اسم أصبح مرفوع وعلامة رفعه الضمة الظاهرة.' },
+        { wordAr: 'مُعْتَدِلاً', analysisAr: 'خبر أصبح منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-sifa-mawsuf', contentAr: 'اجعل النعت مطابقاً: رأيتُ تلميذتينِ ...... (مجتهد).', solutionAr: 'مجتهدتينِ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-verb-mu3tal', contentAr: 'الأمر من « وَصَلَ » للمخاطب.', solutionAr: 'صِلْ.' },
     ],
@@ -503,7 +519,10 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-4ap-sifa-mawsuf', 'arabic-4ap-asma-mawsula', 'arabic-4ap-written-production'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-sifa-mawsuf', contentAr: 'استخرج الصفة والموصوف: « هذا جبلٌ عالٍ. »', solutionAr: 'موصوف: جبلٌ. صفة: عالٍ.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-fail-maf3ul-irab', contentAr: 'أعرب « في الساحةِ » إن اعتبرت الجار والمجرور.', solutionAr: 'في: حرف جر. الساحةِ: اسم مجرور بالكسرة.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-fail-maf3ul-irab', contentAr: 'أعرب « في الساحةِ » إن اعتبرت الجار والمجرور.', solutionAr: 'في: حرف جر. الساحةِ: اسم مجرور بالكسرة.', irabTableAr: [
+        { wordAr: 'فِي', analysisAr: 'حرف جر مبني لا محل له من الإعراب.' },
+        { wordAr: 'السَّاحَةِ', analysisAr: 'اسم مجرور بـ"في" وعلامة جره الكسرة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-verb-conjugation', contentAr: 'الأمر من يقرأ للمخاطبة أنتِ.', solutionAr: 'اقرئي.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-hamza-mutawassita', contentAr: 'اكتب جمع « سؤال ».', solutionAr: 'أسئلة.' },
     ],
@@ -524,7 +543,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['arabic-4ap-written-production', 'arabic-4ap-kan-inna', 'arabic-4ap-sifa-mawsuf'],
     exercises: [
-      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: '« إنّ الصدقَ منجاةٌ. » أعرب اسم إنّ.', solutionAr: 'الصدقَ: اسم إنّ منصوب بالفتحة.' },
+      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-kan-inna', contentAr: '« إنّ الصدقَ منجاةٌ. » أعرب اسم إنّ.', solutionAr: 'الصدقَ: اسم إنّ منصوب بالفتحة.', irabTableAr: [
+        { wordAr: 'إِنَّ', analysisAr: 'حرف توكيد ونصب.' },
+        { wordAr: 'الصِّدْقَ', analysisAr: 'اسم إنّ منصوب وعلامة نصبه الفتحة الظاهرة.' },
+        { wordAr: 'مَنْجَاةٌ', analysisAr: 'خبر إنّ مرفوع وعلامة رفعه الضمة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-asma-mawsula', contentAr: 'الاسم الموصول للمثنى المذكر.', solutionAr: 'اللذان / اللذين حسب الإعراب.' },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-sifa-mawsuf', contentAr: 'اجعل « مجتهد » نعتاً لـ « التلاميذُ ».', solutionAr: 'التلاميذُ المجتهدونَ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-4ap-spelling-taa-hamza', contentAr: 'صحّح: مبدئ / مبدأ.', solutionAr: 'مبدأ (همزة على الألف).' },
@@ -683,7 +706,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-5ap-sentence-components', 'arabic-5ap-passive-voice', 'arabic-5ap-spelling-taas'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-sentence-components', contentAr: '« السماءُ صافيةٌ والطيورُ تُغرّدُ. » استخرج جملة اسمية وفعلية.', solutionAr: 'اسمية: السماءُ صافيةٌ. فعلية: تُغرّدُ (الطيورُ تُغرّدُ).' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-sentence-components', contentAr: 'أعرب الفاعل في: سمعَ القاضي الحجةَ.', solutionAr: 'القاضي: فاعل مرفوع بالضمة.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-sentence-components', contentAr: 'أعرب الفاعل في: سمعَ القاضي الحجةَ.', solutionAr: 'القاضي: فاعل مرفوع بالضمة.', irabTableAr: [
+        { wordAr: 'سَمِعَ', analysisAr: 'فعل ماضٍ مبني على الفتح.' },
+        { wordAr: 'القَاضِي', analysisAr: 'فاعل مرفوع وعلامة رفعه الضمة المقدرة على الياء (اسم منقوص).' },
+        { wordAr: 'الحُجَّةَ', analysisAr: 'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-passive-voice', contentAr: 'حوّل إلى المجهول: فتحَ الحارسُ البابَ.', solutionAr: 'فُتِحَ البابُ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-taas', contentAr: 'ميّز: قضاة — قضتْ.', solutionAr: 'قضاة: مربوطة. قضتْ: مفتوحة.' },
     ],
@@ -705,7 +732,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-5ap-passive-voice', 'arabic-5ap-sentence-components', 'arabic-5ap-spelling-taas'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-sentence-components', contentAr: 'حدد المبتدأ والخبر: العلمُ نورٌ.', solutionAr: 'المبتدأ: العلمُ. الخبر: نورٌ.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-sentence-components', contentAr: 'أعرب المفعول به: قرأَ الولدُ الدرسَ.', solutionAr: 'الدرسَ: مفعول به منصوب بالفتحة.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-sentence-components', contentAr: 'أعرب المفعول به: قرأَ الولدُ الدرسَ.', solutionAr: 'الدرسَ: مفعول به منصوب بالفتحة.', irabTableAr: [
+        { wordAr: 'قَرَأَ', analysisAr: 'فعل ماضٍ مبني على الفتح.' },
+        { wordAr: 'الوَلَدُ', analysisAr: 'فاعل مرفوع وعلامة رفعه الضمة الظاهرة.' },
+        { wordAr: 'الدَّرْسَ', analysisAr: 'مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-passive-voice', contentAr: 'نائب الفاعل في: كُسِرَ الزجاجُ.', solutionAr: 'الزجاجُ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-taas', contentAr: 'أكمل بتاء مناسبة: مكتب... / سكت...', solutionAr: 'مكتبة. سكتتْ.' },
     ],
@@ -727,7 +758,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-5ap-kan-inna', 'arabic-5ap-annexation-adjective', 'arabic-5ap-morphology-verbs'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-annexation-adjective', contentAr: 'استخرج نعتاً: « مررتُ بحديقةٍ واسعةٍ. »', solutionAr: 'واسعةٍ نعت لـ حديقةٍ.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-kan-inna', contentAr: 'اسم إنّ وخبرها: إنّ العملَ شريفٌ.', solutionAr: 'العملَ منصوب. شريفٌ مرفوع.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-kan-inna', contentAr: 'اسم إنّ وخبرها: إنّ العملَ شريفٌ.', solutionAr: 'العملَ منصوب. شريفٌ مرفوع.', irabTableAr: [
+        { wordAr: 'إِنَّ', analysisAr: 'حرف توكيد ونصب.' },
+        { wordAr: 'العَمَلَ', analysisAr: 'اسم إنّ منصوب وعلامة نصبه الفتحة الظاهرة.' },
+        { wordAr: 'شَرِيفٌ', analysisAr: 'خبر إنّ مرفوع وعلامة رفعه الضمة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-morphology-verbs', contentAr: 'الأمر من سمعَ للمخاطب.', solutionAr: 'اسمعْ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-taas', contentAr: 'ميّز: رحمة — نمتْ.', solutionAr: 'رحمة مربوطة. نمتْ مفتوحة.' },
     ],
@@ -748,7 +783,11 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['arabic-5ap-kan-inna', 'arabic-5ap-annexation-adjective', 'arabic-5ap-morphology-verbs'],
     exercises: [
-      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-kan-inna', contentAr: 'خبر كان: كان المطرُ غزيراً.', solutionAr: 'غزيراً.' },
+      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-kan-inna', contentAr: 'خبر كان: كان المطرُ غزيراً.', solutionAr: 'غزيراً.', irabTableAr: [
+        { wordAr: 'كَانَ', analysisAr: 'فعل ماضٍ ناقص مبني على الفتح.' },
+        { wordAr: 'المَطَرُ', analysisAr: 'اسم كان مرفوع وعلامة رفعه الضمة الظاهرة.' },
+        { wordAr: 'غَزِيراً', analysisAr: 'خبر كان منصوب وعلامة نصبه الفتحة الظاهرة.' },
+      ] },
       { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-annexation-adjective', contentAr: 'حدّد المضاف والمضاف إليه: كتابُ التلميذِ.', solutionAr: 'كتابُ مضاف. التلميذِ مضاف إليه.' },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-morphology-verbs', contentAr: 'المضارع والأمر من « خرجَ » (أنتَ).', solutionAr: 'يخرجُ / اخرجْ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-taas', contentAr: 'صحّح الوقف: مدرسة.', solutionAr: 'عند الوقف تُلفظ هاءً: مدرسه.' },
@@ -771,7 +810,10 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-5ap-hal-five-names-verbs', 'arabic-5ap-bare-augmented-participles', 'arabic-5ap-spelling-hamzas'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'استخرج الحال: جاء الولدُ ضاحكاً.', solutionAr: 'ضاحكاً.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'أعرب « أبوك » في: حضرَ أبوك.', solutionAr: 'فاعل مرفوع بالواو لأنه من الأسماء الخمسة.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'أعرب « أبوك » في: حضرَ أبوك.', solutionAr: 'فاعل مرفوع بالواو لأنه من الأسماء الخمسة.', irabTableAr: [
+        { wordAr: 'حَضَرَ', analysisAr: 'فعل ماضٍ مبني على الفتح.' },
+        { wordAr: 'أَبُوكَ', analysisAr: 'فاعل مرفوع بالواو لأنه من الأسماء الخمسة، والكاف ضمير متصل مبني في محل جر مضاف إليه.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-bare-augmented-participles', contentAr: 'ميّز المزيد: قَطَعَ / انْقَطَعَ.', solutionAr: 'قطع مجرد. انقطع مزيد.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-hamzas', contentAr: 'همزة: ...ستأذن / أحمد.', solutionAr: 'استأذن وصل. أحمد قطع.' },
     ],
@@ -793,7 +835,10 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     relatedLessonIds: ['arabic-5ap-hal-five-names-verbs', 'arabic-5ap-integration-writing', 'arabic-5ap-spelling-hamzas'],
     exercises: [
       { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'علامة رفع الأفعال الخمسة في: أنتم تكتبون.', solutionAr: 'ثبوت النون.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'حوّل للمثنى: التلميذ يكتب.', solutionAr: 'التلميذان يكتبانِ.' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-hal-five-names-verbs', contentAr: 'حوّل للمثنى: التلميذ يكتب.', solutionAr: 'التلميذان يكتبانِ.', irabTableAr: [
+        { wordAr: 'التِّلْمِيذَانِ', analysisAr: 'مبتدأ مرفوع وعلامة رفعه الألف لأنه مثنى.' },
+        { wordAr: 'يَكْتُبَانِ', analysisAr: 'فعل مضارع مرفوع بثبوت النون لأنه من الأفعال الخمسة، والألف ضمير متصل مبني في محل رفع فاعل.' },
+      ] },
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-bare-augmented-participles', contentAr: 'اسم الفاعل من « درسَ ».', solutionAr: 'دارِسٌ.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'arabic-5ap-spelling-hamzas', contentAr: 'أدخل همزة القطع: ...مل.', solutionAr: 'أمل / إمل حسب المعنى؛ الأرجح أَمَل.' },
     ],
