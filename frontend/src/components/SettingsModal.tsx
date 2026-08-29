@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PrimaryGrade } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Settings, KeyRound, LogOut, MessageSquare, FileText } from 'lucide-react';
+import { X, Settings, KeyRound, LogOut, MessageSquare, FileText, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
@@ -27,6 +27,7 @@ interface SettingsModalProps {
   onOpenContactModal?: () => void;
   onOpenPrivacyPolicy?: () => void;
   onOpenTermsOfService?: () => void;
+  onOpenAdminConsole?: () => void;
 }
 
 // Split out of ProfileModal (remonte utilisateur : "je veux désassocier le profile et Réglages
@@ -51,6 +52,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onOpenContactModal,
   onOpenPrivacyPolicy,
   onOpenTermsOfService,
+  onOpenAdminConsole,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
@@ -163,6 +165,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             >
               <LogOut className="w-4 h-4" />
               {tNav('logout')}
+            </button>
+          )}
+
+          {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
+            <button
+              type="button"
+              onClick={() => { onOpenAdminConsole(); onClose(); }}
+              className="w-full hit-target rounded-2xl bg-[var(--brand-amber)]/20 border-2 border-[var(--brand-amber)] text-sm font-extrabold text-[#5A3B00] cursor-pointer flex items-center justify-center gap-2"
+            >
+              <ShieldCheck className="w-4 h-4" />
+              {tNav('adminConsole')}
             </button>
           )}
 

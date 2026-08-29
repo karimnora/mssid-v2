@@ -146,6 +146,10 @@ export const AppModals: React.FC<AppModalsProps> = ({
           modals.setIsSettingsModalOpen(false);
           onOpenTermsOfService();
         }}
+        onOpenAdminConsole={() => {
+          modals.setIsSettingsModalOpen(false);
+          onOpenAdminConsole();
+        }}
       />
     </Suspense>
 
