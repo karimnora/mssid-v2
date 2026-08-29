@@ -19,6 +19,15 @@ describe('CHALLENGES_DATA 1AP/2AP', () => {
     });
   });
 
+  it('gives every authored challenge (all grades) at least 5 items, with the correct answer among the options', () => {
+    CHALLENGES_DATA.forEach((challenge) => {
+      expect(challenge.items.length, challenge.id).toBeGreaterThanOrEqual(5);
+      challenge.items.forEach((item) => {
+        expect(item.optionsAr, `${challenge.id}: ${item.questionOrPromptAr}`).toContain(item.correctAnswerAr);
+      });
+    });
+  });
+
   it('ships thematic 1AP arabic and 2AP multiplication arena challenges', () => {
     const thematic = CHALLENGES_DATA.find((c) => c.id === 'challenge-1ap-arabic-thematic-axes');
     const mult = CHALLENGES_DATA.find((c) => c.id === 'challenge-2ap-math-multiplication-groups');

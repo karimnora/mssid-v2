@@ -22,16 +22,24 @@ describe('ChallengesArena', () => {
     renderArena('1AP');
     expect(document.querySelector('[data-challenges-layout="young"]')).toBeTruthy();
     expect(screen.queryByText('ألعاب الترويح')).not.toBeInTheDocument();
-    const first = CHALLENGES_DATA.find((c) => c.grade === '1AP');
-    expect(first).toBeTruthy();
-    expect(screen.getByText(first!.titleAr)).toBeInTheDocument();
+    // Displayed set rotates daily (seeded by date) instead of always the same first 3, so assert
+    // membership in the 1AP pool rather than a specific fixed challenge.
+    const oneApIds = new Set(CHALLENGES_DATA.filter((c) => c.grade === '1AP').map((c) => c.id));
+    const cards = document.querySelectorAll('[data-challenge-id]');
+    expect(cards.length).toBe(3);
+    cards.forEach((card) => {
+      expect(oneApIds.has(card.getAttribute('data-challenge-id')!)).toBe(true);
+    });
   });
 
   it('lists 2AP challenges', () => {
     renderArena('2AP');
-    const first = CHALLENGES_DATA.find((c) => c.grade === '2AP');
-    expect(first).toBeTruthy();
-    expect(screen.getByText(first!.titleAr)).toBeInTheDocument();
+    const twoApIds = new Set(CHALLENGES_DATA.filter((c) => c.grade === '2AP').map((c) => c.id));
+    const cards = document.querySelectorAll('[data-challenge-id]');
+    expect(cards.length).toBe(3);
+    cards.forEach((card) => {
+      expect(twoApIds.has(card.getAttribute('data-challenge-id')!)).toBe(true);
+    });
     expect(screen.queryByText('ألعاب الترويح')).not.toBeInTheDocument();
     expect(screen.queryByText('التحدي الكبير للفصل')).not.toBeInTheDocument();
   });

@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getArenaChallenges } from '../data/challengesData';
-import { localDayKey } from '../data/challenges/fromLessons';
+import { localDayKey, seededShuffle } from '../data/challenges/fromLessons';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { Challenge, PrimaryGrade, SubjectId } from '../types';
 import { Button, Card, Badge, XPProgressBar } from './ui';
 import { Trophy, Timer, ChevronLeft, CheckCircle2, XCircle, Sparkles, RotateCcw, Zap } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
 import { playGentleNudge, playSuccessChime } from './preschool/usePreschoolAudio';
+import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { isFeatureEnabled } from '../featureFlags';
+import { speakText, speechLangForSubject, stopSpeech as stopSynth } from '../utils/speech';
 
 interface ChallengesArenaProps {
   /** Scopes the entire arena (mode counts, subject list, challenge grid) to the current grade — omit to browse all grades. */
@@ -89,11 +92,12 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
           (modeFilter === 'all' || MODE_MATCH[modeFilter](c))
       );
       if (!isYoung) return list;
-      return list
-        .filter((c) => c.difficulty !== 'hard' && c.format !== 'boss_mix' && c.timeLimitSeconds == null)
-        .slice(0, 3);
+      const youngPool = list.filter((c) => c.difficulty !== 'hard' && c.format !== 'boss_mix' && c.timeLimitSeconds == null);
+      // Rotates daily (like the preschool daily challenge) instead of always truncating to the same
+      // 3 items — otherwise most of the 1AP/2AP bank stayed permanently hidden behind the age filter.
+      return seededShuffle(youngPool, `young|${grade}|${subjectFilter}|${difficultyFilter}|${dayKey}`).slice(0, 3);
     },
-    [gradeChallenges, subjectFilter, difficultyFilter, modeFilter, isYoung]
+    [gradeChallenges, subjectFilter, difficultyFilter, modeFilter, isYoung, grade, dayKey]
   );
 
   // Mode-card counts respect grade + whichever subject/difficulty pill is currently active, so they
@@ -118,6 +122,34 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   const [isFinished, setIsFinished] = useState(false);
   const [runXp, setRunXp] = useState(0);
   const finishedRef = useRef(false);
+
+  // Question/option read-aloud for 1AP/2AP — same TapSpeakButton + speech engine pattern as the
+  // lesson viewer's useLessonSpeech, kept local here since a Challenge isn't a CourseLesson.
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null);
+  const speakingKeyRef = useRef<string | null>(null);
+  const speakSnippet = (key: string, text: string) => {
+    if (!isFeatureEnabled('voiceReading') || !text) return;
+    if (speakingKeyRef.current === key) {
+      stopSynth();
+      speakingKeyRef.current = null;
+      setSpeakingKey(null);
+      return;
+    }
+    speakingKeyRef.current = key;
+    setSpeakingKey(key);
+    const lang = speechLangForSubject(activeChallenge?.subject ?? 'arabic');
+    void speakText(text, lang, 0.85).then(() => {
+      if (speakingKeyRef.current === key) {
+        speakingKeyRef.current = null;
+        setSpeakingKey(null);
+      }
+    });
+  };
+  useEffect(() => {
+    stopSynth();
+    speakingKeyRef.current = null;
+    setSpeakingKey(null);
+  }, [itemIndex, activeChallenge]);
 
   /** Marks the run finished and reports its earned XP up to the parent exactly once — call instead of setIsFinished directly. */
   const finishChallenge = () => {
@@ -469,7 +501,18 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
       </div>
 
       <Card padding="lg" className="space-y-5">
-        <h3 className="font-black text-base leading-relaxed text-[var(--app-text)]">{currentItem && renderArabicText(currentItem.questionOrPromptAr)}</h3>
+        <div className="flex items-center gap-3">
+          {isYoung && currentItem && (
+            <TapSpeakButton
+              snippetKey={`q-${itemIndex}`}
+              text={stripArabicTashkeel(currentItem.questionOrPromptAr).replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')}
+              speakingKey={speakingKey}
+              onSpeak={speakSnippet}
+              size={grade === '1AP' ? 'lg' : 'md'}
+            />
+          )}
+          <h3 className="font-black text-base leading-relaxed text-[var(--app-text)] flex-1">{currentItem && renderArabicText(currentItem.questionOrPromptAr)}</h3>
+        </div>
 
         {currentItem?.optionsAr && currentItem.optionsAr.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -488,7 +531,18 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                       : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)]'
                   }`}
                 >
-                  <span>{opt}</span>
+                  <span className="flex items-center gap-2 min-w-0">
+                    {isYoung && (
+                      <TapSpeakButton
+                        snippetKey={`q-${itemIndex}-opt-${idx}`}
+                        text={stripArabicTashkeel(opt).replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')}
+                        speakingKey={speakingKey}
+                        onSpeak={speakSnippet}
+                        size="md"
+                      />
+                    )}
+                    <span>{opt}</span>
+                  </span>
                   {isAnswerRevealed && isCorrectOpt && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
                   {isAnswerRevealed && isThisSelected && !isCorrectOpt && <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />}
                 </button>
