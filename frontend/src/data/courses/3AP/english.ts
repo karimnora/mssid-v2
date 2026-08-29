@@ -43,7 +43,7 @@ export const ENGLISH_3AP: CourseLesson[] = [
       'Asking Name: "What is your name?" (ما اسمك؟) ➔ "My name is [Name]" or "I am [Name]".',
       'Asking Age: "How old are you?" (كم عمرك؟) ➔ "I am 8 years old" (عمري 8 سنوات).',
       'Polite Expressions: "Nice to meet you!" (سررت بلقائك) | "Please" (من فضلك) | "Thank you" (شكراً).',
-      'The English Alphabet (26 letters):\n- 5 Vowels (حروف الفول): A, E, I, O, U.\n- 21 Consonants: B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z.',
+      'The English Alphabet (26 letters):\n- 5 Vowels (حروف العلة): A, E, I, O, U.\n- 21 Consonants: B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z.',
       'Phonics Examples: /a/ as in Apple 🍎, /b/ as in Book 📘, /c/ as in Cat 🐱.'
     ],
     interactiveTool: 'english_dialogue_lab',

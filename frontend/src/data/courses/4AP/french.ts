@@ -77,29 +77,28 @@ export const FRENCH_4AP: CourseLesson[] = [
     trimester: 1,
     categoryAr: 'Projet 1 : C\'est notre quartier ! - Séquence 2',
     titleAr: 'Projet 1 - Séquence 2 : « Où habites-tu ? » - La maison, le quartier, les verbes du 1er groupe & le sujet (GNS/GV)',
-    summaryAr: `L'élève apprend à décrire sa maison, localiser son logement dans le quartier en utilisant les prépositions de lieu (près de, loin de, en face de, à côté de), identifier le Groupe Nominal Sujet (GNS), le Groupe Verbal (GV), les compléments COD/COI, et conjuguer les verbes du 1er groupe au présent.`,
+    summaryAr: `L'élève apprend à décrire sa maison, localiser son logement dans le quartier en utilisant les prépositions de lieu (près de, loin de, en face de, à côté de), identifier le Groupe Nominal Sujet (GNS) et le Groupe Verbal (GV) dans une phrase simple, et conjuguer les verbes du 1er groupe au présent.`,
     objectivesAr: [
         'Je sais décrire ma maison et localiser mon quartier avec des indicateurs de lieu.',
         'Je sais identifier le GNS et le GV dans une phrase simple.',
-        'Je sais reconnaître un COD et un COI dans une phrase.',
+        'Je sais conjuguer un verbe du 1er groupe (-er) au présent.',
     ],
     detailedCourse: {
-        introAr: 'Une phrase simple se compose toujours d\'un sujet (GNS) et d\'un verbe (GV). Le GV peut aussi contenir un complément qui précise l\'action : un COD (sans préposition) ou un COI (avec préposition à/de).',
+        introAr: 'Une phrase simple se compose toujours d\'un sujet (GNS) et d\'un verbe (GV). Le GNS répond à la question "qui fait l\'action ?", le GV décrit l\'action.',
         vocabulary: [
-            { termAr: 'COD (Complément d\'Objet Direct)', definitionAr: 'Complément relié directement au verbe, sans préposition. Répond à la question "quoi ?" ou "qui ?". Exemple : "Il regarde la maison" (COD = la maison).' },
-            { termAr: 'COI (Complément d\'Objet Indirect)', definitionAr: 'Complément relié au verbe par une préposition (à, de). Exemple : "Il parle à son voisin" (COI = à son voisin).' },
+            { termAr: 'GNS (Groupe Nominal Sujet)', definitionAr: 'La personne ou la chose qui fait l\'action. Répond à la question "qui ?" avant le verbe. Exemple : "Amine (GNS) joue dans le jardin".' },
+            { termAr: 'GV (Groupe Verbal)', definitionAr: 'Le verbe et ce qu\'il dit de l\'action. Exemple : "Amine joue dans le jardin (GV)".' },
         ],
-        visualizationHintAr: 'Dans une phrase, souligne le verbe, puis pose la question "quoi ?" juste après : si tu trouves une réponse sans mot de liaison, c\'est un COD ; si la réponse commence par "à" ou "de", c\'est un COI.',
+        visualizationHintAr: 'Dans une phrase, cherche d\'abord le verbe, puis pose la question "qui fait l\'action ?" juste avant lui : la réponse est le GNS. Tout le reste, à partir du verbe, forme le GV.',
         commonMistakes: [
-            { mistakeAr: 'Confondre le COD avec le sujet de la phrase.', correctionAr: 'Le sujet fait l\'action (avant le verbe généralement), alors que le COD subit l\'action (après le verbe, sans préposition).' },
+            { mistakeAr: 'Confondre le GNS avec le premier mot de la phrase.', correctionAr: 'Le GNS n\'est pas toujours le premier mot : il faut chercher qui fait vraiment l\'action du verbe.' },
         ],
-        takeawayAr: 'La phrase simple = GNS + GV. Le COD suit le verbe directement (sans préposition), le COI le suit avec une préposition (à, de).',
+        takeawayAr: 'La phrase simple = GNS (qui fait l\'action) + GV (le verbe et ce qu\'il décrit).',
     },
     rulesAr: [
         'Vocabulaire - La maison et le quartier : La maison (le salon, la chambre, la cuisine, le jardin, la salle de bain). Le quartier (la rue, l\'avenue, l\'école, la pharmacie, le stade, la boulangerie).',
         'Vocabulaire - Les indicateurs de lieu : près de, loin de, en face de, à côté de, dans. (Exemple : "J\'habite près de l\'école").',
         'Grammaire - La structure de la phrase simple : La phrase se compose d\'un Groupe Nominal Sujet (GNS) et d\'un Groupe Verbal (GV). Exemple : "Mouloud (GNS) habite dans un beau quartier (GV)".',
-        'Grammaire - Le COD et le COI : Le COD complète directement le verbe sans préposition (Il achète un cadeau). Le COI est relié au verbe par "à" ou "de" (Il parle à son ami).',
         'Conjugaison - Les verbes du 1er groupe (-er) au présent : habiter, trouver, visiter. Les terminaisons sont : -e, -es, -e, -ons, -ez, -ent.',
         'Orthographe - Le pluriel des noms simples : On ajoute généralement un "-s" au pluriel. Exemple : un voisin ➔ des voisins.'
     ],
@@ -135,10 +134,10 @@ export const FRENCH_4AP: CourseLesson[] = [
         },
         {
             id: 'q3',
-            questionAr: 'Dans la phrase "Il parle à son voisin", quel est le complément et son type ?',
+            questionAr: 'Dans la phrase "Le chat dort sur le tapis", quel est le Groupe Verbal (GV) ?',
             options: [
-                { id: 'a', textAr: '"à son voisin" est un COI (relié au verbe par "à")', isCorrect: true, explanationAr: 'Exactement ! La préposition "à" indique un complément d\'objet indirect (COI).' },
-                { id: 'b', textAr: '"à son voisin" est un COD', isCorrect: false }
+                { id: 'a', textAr: 'dort sur le tapis', isCorrect: true, explanationAr: 'Exactement ! "dort sur le tapis" décrit l\'action : c\'est le GV.' },
+                { id: 'b', textAr: 'Le chat', isCorrect: false }
             ]
         }
     ]

@@ -256,6 +256,7 @@ export const MATH_1AP: CourseLesson[] = [
         { labelAr: 'واحد', valueDisplay: '1', explanationAr: 'شمس واحدة، أنف واحد.' },
         { labelAr: 'اثنان', valueDisplay: '2', explanationAr: 'عينان، أذنان، يدان.' },
         { labelAr: 'ثلاثة', valueDisplay: '3', explanationAr: 'ثلاث تفاحات. قبل 3 يأتي 2، وبعده 4.' },
+        { labelAr: 'أربعة', valueDisplay: '4', explanationAr: 'عجلات السيارة الأربع. قبل 4 يأتي 3، وبعده 5.' },
         { labelAr: 'خمسة', valueDisplay: '5', explanationAr: 'أصابع اليد الواحدة.' },
       ],
     },
