@@ -128,6 +128,7 @@ export default function App() {
   };
 
   const tamazightFlag = useFeatureFlag('tamazight');
+  const technologyFlag = useFeatureFlag('technology');
   const educationalCalculatorFlag = useFeatureFlag('educationalCalculator');
   const writingLabFlag = useFeatureFlag('writingLab');
   const advancedLabsFlag = useFeatureFlag('advancedLabs');
@@ -137,6 +138,7 @@ export default function App() {
   const isSubjectVisible = (s: SubjectInfo): boolean =>
     isSubjectFeatureEnabled(s, {
       tamazight: tamazightFlag,
+      technology: technologyFlag,
       educationalCalculator: educationalCalculatorFlag,
       writingLab: writingLabFlag,
       advancedLabs: advancedLabsFlag,

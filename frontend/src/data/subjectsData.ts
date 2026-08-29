@@ -71,6 +71,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     description: 'الكهرباء، الآلات البسيطة، القياس، المادة والاحتراق — الجانب التكنولوجي من منهاج التربية العلمية.',
     category: 'course',
     minGrade: '3AP',
+    featureFlag: 'technology',
   },
   {
     id: 'art',

@@ -41,6 +41,7 @@ const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
   { id: 'educationalCalculator', meta: { labelAr: 'الآلة الحاسبة التعليمية', descriptionAr: 'ON: أداة «الحاسبة التعليمية المفسرة» ظاهرة في قائمة الأدوات. OFF: مخفية تماماً.' } },
   { id: 'writingLab', meta: { labelAr: 'مخبر الكتابة', descriptionAr: 'ON: «أستوديو الكتابة والخط وتتبع الحروف» ظاهر في قائمة الأدوات. OFF: مخفي تماماً.' } },
   { id: 'tamazight', meta: { labelAr: 'اللغة الأمازيغية (تجريبي)', descriptionAr: 'ON: مادة الأمازيغية ودروسها، مختبرها التفاعلي، ومنهاجها الرسمي ظاهرة في الدروس والأدوات. OFF: الثلاثة مخفية تماماً من واجهة التلميذ.' } },
+  { id: 'technology', meta: { labelAr: 'التكنولوجيا (لا يوجد محتوى بعد)', descriptionAr: 'ON: مادة التكنولوجيا ظاهرة في قائمة المواد رغم عدم وجود دروس فعلية بعد (شاشة فارغة للتلميذ). OFF (الافتراضي): مخفية تماماً حتى تجهيز دروس حقيقية.' } },
 ];
 
 // Toggle = instant local effect via setFeatureFlagOverride/resetFeatureFlagOverride (unchanged UX,

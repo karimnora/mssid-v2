@@ -1,6 +1,7 @@
 export type FeatureFlagName =
   | 'enablePayments'
   | 'tamazight'
+  | 'technology'
   | 'enableAITutor'
   | 'advancedLabs'
   | 'voiceReading'
@@ -17,6 +18,9 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // ON so the Amazigh course + tamazight_lab + tamazight_curriculum appear in the hub.
   // Admin can still hide them from the Feature Flags tab (override to false).
   tamazight: true,
+  // OFF: no technology lessons exist yet (subject was showing as a clickable dead end in the
+  // catalog for 3AP+). Flip on once real lessons ship for the grades that need them.
+  technology: false,
   enableAITutor: true,
   advancedLabs: true,
   voiceReading: true,

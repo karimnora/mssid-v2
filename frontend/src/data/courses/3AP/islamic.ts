@@ -221,7 +221,7 @@ export const ISLAMIC_3AP: CourseLesson[] = [
 },
 
 {
-    id: 'islamic-3ap-t2-surah-tin-zalzalah-qadr',
+    id: 'islamic-3ap-t2-surah-tin-bayyina',
     grade: '3AP',
     subject: 'islamic',
     trimester: 2,

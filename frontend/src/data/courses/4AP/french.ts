@@ -1,6 +1,6 @@
 import { CourseLesson } from '../../../types';
 
-// 6 leçon(s) — french / 4AP
+// 9 leçon(s) — french / 4AP
 export const FRENCH_4AP: CourseLesson[] = [
 // ==========================================
 // 16. FRANÇAIS - 4AP (اللغة الفرنسية - السنة الرابعة ابتدائي الجيل الثاني)

@@ -3,22 +3,6 @@ import { build4ApPractice } from './4apExercisePack';
 
 type PracticePack = ReturnType<typeof build4ApPractice>;
 
-function genericPack(prefix: string, topicAr: string): PracticePack {
-  return build4ApPractice(
-    prefix,
-    [
-      { problemAr: `ما الفكرة الأساسية في درس «${topicAr}»؟`, solutionAr: topicAr, detailedCorrectionAr: `راجع ملخص الدرس حول ${topicAr}.`, options: [{ id: 'a', textAr: topicAr, isCorrect: true }, { id: 'b', textAr: 'موضوع خارج البرنامج', isCorrect: false }] },
-      { problemAr: `طبّق قاعدة من درس «${topicAr}» على مثال بسيط.`, solutionAr: 'صحيح', detailedCorrectionAr: 'راجع الأمثلة في الدرس.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
-      { problemAr: `أكمل: «${topicAr}» يتعلّق بـ ....`, solutionAr: 'البرنامج الرسمي', detailedCorrectionAr: 'هذا الدرس من منهج 4AP.', type: 'fill_blank', fillBlankAnswerAr: 'البرنامج' },
-      { problemAr: `تحدٍّ: اربط «${topicAr}» بوضعية من حياتك اليومية.`, solutionAr: 'وضعية واقعية', detailedCorrectionAr: 'اربط الدرس بسياق جزائري مألوف.', options: [{ id: 'a', textAr: 'وضعية واقعية', isCorrect: true }, { id: 'b', textAr: 'خارج السياق', isCorrect: false }] },
-    ],
-    [
-      { problemAr: `تقويم: ما الهدف الرئيسي لدرس «${topicAr}»؟`, solutionAr: topicAr, detailedCorrectionAr: `الهدف مرتبط بـ ${topicAr}.`, options: [{ id: 'a', textAr: topicAr, isCorrect: true }, { id: 'b', textAr: 'موضوع 5AP', isCorrect: false }] },
-      { problemAr: `تقويم: الدرس «${topicAr}» ينتمي إلى برنامج السنة الرابعة. (صح/خطأ)`, solutionAr: 'صحيح', detailedCorrectionAr: '4AP — الجيل الثاني.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
-    ],
-  );
-}
-
 const ENGLISH_PACKS: Record<string, PracticePack> = {
   'english-4ap-unit1-family-friends': build4ApPractice('english-4ap-unit1-family-friends', [
     { problemAr: 'My name is Amine. — ما الضمير المناسب؟', solutionAr: 'I / My', detailedCorrectionAr: 'I للمتكلم، My للملكية.', options: [{ id: 'a', textAr: 'I / My', isCorrect: true }, { id: 'b', textAr: 'He / His', isCorrect: false }] },
@@ -112,52 +96,173 @@ const ENGLISH_PACKS: Record<string, PracticePack> = {
   ]),
 };
 
-const FRENCH_PACKS: Record<string, PracticePack> = Object.fromEntries(
-  [
-    ['french-4ap-projet1-seq1-presentation-famille', 'Se présenter — Être et Avoir'],
-    ['french-4ap-projet1-seq2-maison-quartier', 'Maison et quartier — GNS/GV'],
-    ['french-4ap-projet1-seq2-prepositions-lieu', 'Prépositions de lieu'],
-    ['french-4ap-projet2-seq1-anniversaire-fete', 'Fêtes — forme négative'],
-    ['french-4ap-projet2-seq2-fetes-nationales-possessifs', 'Fêtes nationales — possessifs'],
-    ['french-4ap-projet2-adjectifs-qualificatifs', 'Adjectifs qualificatifs'],
-    ['french-4ap-projet3-seq1-animaux-domestiques', 'Animaux domestiques'],
-    ['french-4ap-projet3-seq2-environnement-imperatif', 'Environnement — impératif'],
-    ['french-4ap-projet3-homophones', 'Homophones'],
-  ].map(([id, topic]) => [id, genericPack(id, topic)]),
-);
+const FRENCH_PACKS: Record<string, PracticePack> = {
+  'french-4ap-projet1-seq1-presentation-famille': build4ApPractice('french-4ap-projet1-seq1-presentation-famille', [
+    { problemAr: 'Complète : Je ___ Yacine. (verbe Être)', solutionAr: 'suis', detailedCorrectionAr: 'Je suis — 1re personne du singulier du verbe Être.', options: [{ id: 'a', textAr: 'suis', isCorrect: true }, { id: 'b', textAr: 'as', isCorrect: false }] },
+    { problemAr: 'Tu ___ dix ans. (verbe Avoir)', solutionAr: 'as', detailedCorrectionAr: 'Tu as — 2e personne du singulier du verbe Avoir.', type: 'fill_blank', fillBlankAnswerAr: 'as' },
+    { problemAr: '"Il est" s\'écrit avec un "t". (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Il/Elle est se termine par "t", contrairement à "Tu es".', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Quel article utiliser : "___ garçon que je connais bien" (précis) ?', solutionAr: 'Le', detailedCorrectionAr: 'On connaît déjà ce garçon précis : article défini "Le".', options: [{ id: 'a', textAr: 'Le', isCorrect: true }, { id: 'b', textAr: 'Un', isCorrect: false }] },
+  ], [
+    { problemAr: '"un/une/des" sont des articles indéfinis. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Ils désignent une personne ou chose non précisée.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Comment conjugue-t-on "avoir" avec "Nous" ?', solutionAr: 'Nous avons', detailedCorrectionAr: 'Nous avons — 1re personne du pluriel.', options: [{ id: 'a', textAr: 'Nous avons', isCorrect: true }, { id: 'b', textAr: 'Nous ont', isCorrect: false }] },
+  ]),
+  'french-4ap-projet1-seq2-maison-quartier': build4ApPractice('french-4ap-projet1-seq2-maison-quartier', [
+    { problemAr: 'Dans "Le chat dort", quel est le GNS ?', solutionAr: 'Le chat', detailedCorrectionAr: '"Le chat" fait l\'action de dormir : c\'est le sujet (GNS).', options: [{ id: 'a', textAr: 'Le chat', isCorrect: true }, { id: 'b', textAr: 'dort', isCorrect: false }] },
+    { problemAr: 'Conjugue "habiter" avec "Nous" : Nous ___.', solutionAr: 'habitons', detailedCorrectionAr: 'Nous habitons — terminaison -ons au présent.', type: 'fill_blank', fillBlankAnswerAr: 'habitons' },
+    { problemAr: 'Le GV contient toujours le verbe. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Le Groupe Verbal se construit autour du verbe.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Dans "Amine joue dans le jardin", que représente "joue dans le jardin" ?', solutionAr: 'le GV', detailedCorrectionAr: 'Tout ce qui suit le sujet, à partir du verbe, forme le GV.', options: [{ id: 'a', textAr: 'le GV', isCorrect: true }, { id: 'b', textAr: 'le GNS', isCorrect: false }] },
+  ], [
+    { problemAr: 'Une phrase simple = GNS + GV. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'C\'est la structure de base de la phrase simple.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Conjugue "trouver" avec "Elle" :', solutionAr: 'Elle trouve', detailedCorrectionAr: 'Elle trouve — terminaison -e au présent.', options: [{ id: 'a', textAr: 'Elle trouve', isCorrect: true }, { id: 'b', textAr: 'Elle trouves', isCorrect: false }] },
+  ]),
+  'french-4ap-projet1-seq2-prepositions-lieu': build4ApPractice('french-4ap-projet1-seq2-prepositions-lieu', [
+    { problemAr: 'Le livre est ___ la table (au-dessus).', solutionAr: 'sur', detailedCorrectionAr: '"sur" indique une position au-dessus.', type: 'fill_blank', fillBlankAnswerAr: 'sur' },
+    { problemAr: 'Le chat est ... le lit (en dessous).', solutionAr: 'sous', detailedCorrectionAr: '"sous" indique une position en dessous.', options: [{ id: 'a', textAr: 'sous', isCorrect: true }, { id: 'b', textAr: 'sur', isCorrect: false }] },
+    { problemAr: '"devant" et "derrière" veulent dire la même chose. (vrai/faux)', solutionAr: 'faux', detailedCorrectionAr: '"devant" = en face, "derrière" = à l\'arrière : ce sont des contraires.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: false }, { id: 'false', textAr: 'faux', isCorrect: true }] },
+    { problemAr: 'Traduis : « أمام المدرسة »', solutionAr: 'devant l\'école', detailedCorrectionAr: '"أمام" se traduit par "devant".', options: [{ id: 'a', textAr: 'devant l\'école', isCorrect: true }, { id: 'b', textAr: 'derrière l\'école', isCorrect: false }] },
+  ], [
+    { problemAr: '"dans" se traduit par "داخل" en arabe. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: '"dans" indique l\'intérieur d\'un lieu.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Complète : Le stylo est ... le cartable.', solutionAr: 'dans', detailedCorrectionAr: 'Le stylo est à l\'intérieur du cartable : "dans".', type: 'fill_blank', fillBlankAnswerAr: 'dans' },
+  ]),
+  'french-4ap-projet2-seq1-anniversaire-fete': build4ApPractice('french-4ap-projet2-seq1-anniversaire-fete', [
+    { problemAr: 'Mets à la forme négative : « Il fait un gâteau. »', solutionAr: 'Il ne fait pas un gâteau.', detailedCorrectionAr: 'On encadre le verbe avec "ne" et "pas".', options: [{ id: 'a', textAr: 'Il ne fait pas un gâteau.', isCorrect: true }, { id: 'b', textAr: 'Il fait pas ne un gâteau.', isCorrect: false }] },
+    { problemAr: 'Je ___ un gâteau pour la fête. (verbe Faire)', solutionAr: 'fais', detailedCorrectionAr: 'Je fais — 1re personne du singulier.', type: 'fill_blank', fillBlankAnswerAr: 'fais' },
+    { problemAr: 'La forme négative encadre le verbe avec "ne...pas". (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'C\'est la structure de base de la négation.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Quelle phrase est correcte à la forme négative ?', solutionAr: 'Je ne mange pas de gâteau.', detailedCorrectionAr: '"ne" avant le verbe, "pas" après.', options: [{ id: 'a', textAr: 'Je ne mange pas de gâteau.', isCorrect: true }, { id: 'b', textAr: 'Je mange ne pas de gâteau.', isCorrect: false }] },
+  ], [
+    { problemAr: '« Vous faites vos devoirs. » — le verbe Faire est bien conjugué. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Vous faites — 2e personne du pluriel.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Comment conjugue-t-on "faire" avec "Ils" ?', solutionAr: 'Ils font', detailedCorrectionAr: 'Ils font — forme irrégulière du verbe Faire.', options: [{ id: 'a', textAr: 'Ils font', isCorrect: true }, { id: 'b', textAr: 'Ils faisent', isCorrect: false }] },
+  ]),
+  'french-4ap-projet2-seq2-fetes-nationales-possessifs': build4ApPractice('french-4ap-projet2-seq2-fetes-nationales-possessifs', [
+    { problemAr: 'Complète : « ___ anniversaire est demain » (le mien).', solutionAr: 'Mon', detailedCorrectionAr: '"Mon" indique que l\'anniversaire m\'appartient.', options: [{ id: 'a', textAr: 'Mon', isCorrect: true }, { id: 'b', textAr: 'Ton', isCorrect: false }] },
+    { problemAr: '___ fête est très belle. (celle-ci, féminin)', solutionAr: 'Cette', detailedCorrectionAr: '"Cette" désigne une chose précise au féminin singulier.', type: 'fill_blank', fillBlankAnswerAr: 'Cette' },
+    { problemAr: 'L\'Aïd et Yennayer sont des fêtes célébrées en Algérie. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Ce sont deux fêtes importantes du calendrier algérien.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Comment conjugue-t-on "aller" avec "Nous" ?', solutionAr: 'Nous allons', detailedCorrectionAr: 'Nous allons — forme irrégulière du verbe Aller.', options: [{ id: 'a', textAr: 'Nous allons', isCorrect: true }, { id: 'b', textAr: 'Nous allez', isCorrect: false }] },
+  ], [
+    { problemAr: '"ces" est un adjectif démonstratif pluriel. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: '"ces" désigne plusieurs choses précises.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Quel mot indique que le cadeau m\'appartient ?', solutionAr: 'mon cadeau', detailedCorrectionAr: '"mon" est un adjectif possessif.', options: [{ id: 'a', textAr: 'mon cadeau', isCorrect: true }, { id: 'b', textAr: 'ce cadeau', isCorrect: false }] },
+  ]),
+  'french-4ap-projet2-adjectifs-qualificatifs': build4ApPractice('french-4ap-projet2-adjectifs-qualificatifs', [
+    { problemAr: 'Accorde : « une ___ fête » (grand).', solutionAr: 'grande', detailedCorrectionAr: 'fête est féminin : on ajoute un "e".', options: [{ id: 'a', textAr: 'grande', isCorrect: true }, { id: 'b', textAr: 'grand', isCorrect: false }] },
+    { problemAr: 'Féminin de "beau" : un beau cadeau → une ___ fête.', solutionAr: 'belle', detailedCorrectionAr: 'beau devient belle au féminin.', type: 'fill_blank', fillBlankAnswerAr: 'belle' },
+    { problemAr: 'L\'adjectif qualificatif s\'accorde avec le nom qu\'il décrit. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Accord en genre et en nombre.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Pluriel de « un beau cadeau » :', solutionAr: 'de beaux cadeaux', detailedCorrectionAr: 'beau devient beaux au pluriel.', options: [{ id: 'a', textAr: 'de beaux cadeaux', isCorrect: true }, { id: 'b', textAr: 'des beau cadeau', isCorrect: false }] },
+  ], [
+    { problemAr: '"grand/grande" : le féminin ajoute un "e". (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'C\'est la règle générale du féminin des adjectifs.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Accorde : « des ___ gâteaux » (petit).', solutionAr: 'petits', detailedCorrectionAr: 'gâteaux est masculin pluriel : on ajoute un "s".', options: [{ id: 'a', textAr: 'petits', isCorrect: true }, { id: 'b', textAr: 'petit', isCorrect: false }] },
+  ]),
+  'french-4ap-projet3-seq1-animaux-domestiques': build4ApPractice('french-4ap-projet3-seq1-animaux-domestiques', [
+    { problemAr: 'Dans "un petit chat", quel mot est l\'adjectif épithète ?', solutionAr: 'petit', detailedCorrectionAr: '"petit" est collé au nom "chat" sans verbe entre eux.', options: [{ id: 'a', textAr: 'petit', isCorrect: true }, { id: 'b', textAr: 'chat', isCorrect: false }] },
+    { problemAr: 'Conjugue "finir" avec "Je" : Je ___.', solutionAr: 'finis', detailedCorrectionAr: 'Je finis — terminaison -is au présent (2e groupe).', type: 'fill_blank', fillBlankAnswerAr: 'finis' },
+    { problemAr: 'L\'adjectif épithète est collé au nom sans verbe entre eux. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Contrairement à l\'attribut, relié par le verbe être.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Quel est un verbe du 2ème groupe (-ir) ?', solutionAr: 'finir', detailedCorrectionAr: 'finir se termine en -ir et se conjugue comme les verbes du 2e groupe.', options: [{ id: 'a', textAr: 'finir', isCorrect: true }, { id: 'b', textAr: 'habiter', isCorrect: false }] },
+  ], [
+    { problemAr: 'Le chat, le chien, le lapin sont des animaux domestiques. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Ce sont des animaux qui vivent avec les humains.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Conjugue "choisir" avec "Nous" :', solutionAr: 'Nous choisissons', detailedCorrectionAr: 'Nous choisissons — terminaison -issons au présent.', options: [{ id: 'a', textAr: 'Nous choisissons', isCorrect: true }, { id: 'b', textAr: 'Nous choisissez', isCorrect: false }] },
+  ]),
+  'french-4ap-projet3-seq2-environnement-imperatif': build4ApPractice('french-4ap-projet3-seq2-environnement-imperatif', [
+    { problemAr: 'Quelle phrase est à l\'impératif ?', solutionAr: 'Nettoie ta classe !', detailedCorrectionAr: 'L\'impératif donne un ordre sans exprimer le sujet.', options: [{ id: 'a', textAr: 'Nettoie ta classe !', isCorrect: true }, { id: 'b', textAr: 'Tu nettoies ta classe.', isCorrect: false }] },
+    { problemAr: 'Donne un ordre avec "jeter" : « Ne ___ pas les papiers par terre ! »', solutionAr: 'jette', detailedCorrectionAr: 'Ne jette pas — impératif du verbe jeter.', type: 'fill_blank', fillBlankAnswerAr: 'jette' },
+    { problemAr: 'On n\'exprime pas le sujet à l\'impératif. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'C\'est la particularité de ce mode verbal.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Dans "maison", la lettre "s" se prononce...', solutionAr: '[z]', detailedCorrectionAr: 'Entre deux voyelles, le "s" se prononce [z].', options: [{ id: 'a', textAr: '[z]', isCorrect: true }, { id: 'b', textAr: '[s]', isCorrect: false }] },
+  ], [
+    { problemAr: 'Dans "salle", le "s" se prononce [s]. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'En début de mot, le "s" se prononce [s].', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Quelle consigne protège l\'environnement ?', solutionAr: 'Ne jette pas de déchets par terre !', detailedCorrectionAr: 'C\'est une consigne de propreté à l\'impératif.', options: [{ id: 'a', textAr: 'Ne jette pas de déchets par terre !', isCorrect: true }, { id: 'b', textAr: 'Jette tes déchets partout !', isCorrect: false }] },
+  ]),
+  'french-4ap-projet3-homophones': build4ApPractice('french-4ap-projet3-homophones', [
+    { problemAr: 'Complète : « Il ___ un chat » (verbe avoir).', solutionAr: 'a', detailedCorrectionAr: '"a" est une forme du verbe avoir.', options: [{ id: 'a', textAr: 'a', isCorrect: true }, { id: 'b', textAr: 'à', isCorrect: false }] },
+    { problemAr: 'Complète : « Il va ___ l\'école » (préposition).', solutionAr: 'à', detailedCorrectionAr: '"à" est une préposition de lieu.', type: 'fill_blank', fillBlankAnswerAr: 'à' },
+    { problemAr: '"est" est une forme du verbe être. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Il/Elle est — verbe être.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Complète : « Sami ___ son frère jouent. »', solutionAr: 'ont', detailedCorrectionAr: 'Ils "ont" un jeu (verbe avoir), pas "on" (pronom).', options: [{ id: 'a', textAr: 'ont', isCorrect: true }, { id: 'b', textAr: 'on', isCorrect: false }] },
+  ], [
+    { problemAr: '"son" peut être un adjectif possessif. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Ex : "son cahier" — le cahier de lui/elle.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Complète : « Le chat ___ noir. »', solutionAr: 'est', detailedCorrectionAr: '"est" — verbe être, ici pas de liaison "et".', options: [{ id: 'a', textAr: 'est', isCorrect: true }, { id: 'b', textAr: 'et', isCorrect: false }] },
+  ]),
+};
 
-const CIVICS_PACKS: Record<string, PracticePack> = Object.fromEntries(
-  [
-    ['civics-4ap-public-private-property', 'الملكية العامة والخاصة'],
-    ['civics-4ap-public-institutions', 'المؤسسات العمومية'],
-    ['civics-4ap-road-safety', 'السلامة المرورية'],
-    ['civics-4ap-national-identity-symbols', 'الهوية الوطنية والرموز'],
-  ].map(([id, topic]) => [id, genericPack(id, topic)]),
-);
+const CIVICS_PACKS: Record<string, PracticePack> = {
+  'civics-4ap-public-private-property': build4ApPractice('civics-4ap-public-private-property', [
+    { problemAr: 'المدرسة والحديقة العامة أمثلة على:', solutionAr: 'ملكية عامة', detailedCorrectionAr: 'المدرسة والحديقة تخدمان جميع المواطنين، فهما ملكية عامة.', options: [{ id: 'a', textAr: 'ملكية عامة', isCorrect: true }, { id: 'b', textAr: 'ملكية خاصة', isCorrect: false }] },
+    { problemAr: 'بيتي وسيارة أبي هما ملكية ....', solutionAr: 'خاصة', detailedCorrectionAr: 'تخص عائلتي فقط، فهي ملكية خاصة.', type: 'fill_blank', fillBlankAnswerAr: 'خاصة' },
+    { problemAr: 'يحق لأي شخص إتلاف الملكية العامة لأنها لا تخص أحداً. (صح/خطأ)', solutionAr: 'خطأ', detailedCorrectionAr: 'الملكية العامة تخص الجميع، ويجب على الجميع احترامها والحفاظ عليها.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: false }, { id: 'false', textAr: 'خطأ', isCorrect: true }] },
+    { problemAr: 'لماذا نحترم الملكية العامة؟', solutionAr: 'لأنها تخدم جميع المواطنين', detailedCorrectionAr: 'الملكية العامة (المدارس، الحدائق...) ملك للجميع.', options: [{ id: 'a', textAr: 'لأنها تخدم جميع المواطنين', isCorrect: true }, { id: 'b', textAr: 'لأنها ملك شخص واحد', isCorrect: false }] },
+  ], [
+    { problemAr: 'الملكية الخاصة تخص شخصاً أو عائلة معينة. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'بعكس الملكية العامة التي تخص الجميع.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'أي من هذه ملكية خاصة؟', solutionAr: 'دراجة أخي', detailedCorrectionAr: 'دراجة أخي تخصه هو وحده، فهي ملكية خاصة.', options: [{ id: 'a', textAr: 'دراجة أخي', isCorrect: true }, { id: 'b', textAr: 'الحديقة العمومية', isCorrect: false }] },
+  ]),
+  'civics-4ap-public-institutions': build4ApPractice('civics-4ap-public-institutions', [
+    { problemAr: 'أين نرسل الطرود والرسائل؟', solutionAr: 'البريد', detailedCorrectionAr: 'مؤسسة البريد مسؤولة عن الطرود والرسائل.', options: [{ id: 'a', textAr: 'البريد', isCorrect: true }, { id: 'b', textAr: 'البلدية', isCorrect: false }] },
+    { problemAr: 'نتوجه إلى ... لإصدار وثائق الحالة المدنية.', solutionAr: 'البلدية', detailedCorrectionAr: 'البلدية مسؤولة عن وثائق الحالة المدنية للمواطنين.', type: 'fill_blank', fillBlankAnswerAr: 'البلدية' },
+    { problemAr: 'المؤسسات العمومية تخدم جميع المواطنين. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'مثل المدرسة والبريد والبلدية، كلها في خدمة المواطنين.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'ما دور المدرسة كمؤسسة عمومية؟', solutionAr: 'التعليم والتربية', detailedCorrectionAr: 'المدرسة مؤسسة عمومية دورها التعليم والتربية.', options: [{ id: 'a', textAr: 'التعليم والتربية', isCorrect: true }, { id: 'b', textAr: 'بيع المنتجات', isCorrect: false }] },
+  ], [
+    { problemAr: 'البريد مؤسسة عمومية. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'البريد يخدم جميع المواطنين، فهو مؤسسة عمومية.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'من يدير شؤون الحي والمواطنين محلياً؟', solutionAr: 'البلدية', detailedCorrectionAr: 'البلدية هي المؤسسة المحلية المسؤولة عن شؤون السكان.', options: [{ id: 'a', textAr: 'البلدية', isCorrect: true }, { id: 'b', textAr: 'المكتبة', isCorrect: false }] },
+  ]),
+  'civics-4ap-road-safety': build4ApPractice('civics-4ap-road-safety', [
+    { problemAr: 'ماذا يعني اللون الأحمر في إشارة المرور؟', solutionAr: 'قف', detailedCorrectionAr: 'الأحمر يعني التوقف الفوري.', options: [{ id: 'a', textAr: 'قف', isCorrect: true }, { id: 'b', textAr: 'انطلق', isCorrect: false }] },
+    { problemAr: 'نعبر الطريق من ... المخصص للراجلين.', solutionAr: 'الممر', detailedCorrectionAr: 'ممر الراجلين هو المكان الآمن لعبور الطريق.', type: 'fill_blank', fillBlankAnswerAr: 'الممر' },
+    { problemAr: 'يجوز عبور الطريق دون النظر يميناً وشمالاً. (صح/خطأ)', solutionAr: 'خطأ', detailedCorrectionAr: 'يجب النظر يميناً وشمالاً قبل العبور لتجنب الحوادث.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: false }, { id: 'false', textAr: 'خطأ', isCorrect: true }] },
+    { problemAr: 'ماذا يعني اللون الأخضر في إشارة المرور؟', solutionAr: 'يمكن السير', detailedCorrectionAr: 'الأخضر يعني أن الطريق آمن للعبور أو السير.', options: [{ id: 'a', textAr: 'يمكن السير', isCorrect: true }, { id: 'b', textAr: 'قف فوراً', isCorrect: false }] },
+  ], [
+    { problemAr: 'احترام قواعد المرور يحمي حياتنا وحياة الآخرين. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'قواعد المرور وُضعت للسلامة العامة.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'أين يجب أن يمشي الراجل؟', solutionAr: 'على الرصيف المخصص للمشاة', detailedCorrectionAr: 'الرصيف مكان آمن بعيداً عن حركة السيارات.', options: [{ id: 'a', textAr: 'على الرصيف المخصص للمشاة', isCorrect: true }, { id: 'b', textAr: 'في منتصف الطريق', isCorrect: false }] },
+  ]),
+  'civics-4ap-national-identity-symbols': build4ApPractice('civics-4ap-national-identity-symbols', [
+    { problemAr: 'ما لون علم الجزائر؟', solutionAr: 'أخضر وأبيض بهلال ونجمة حمراء', detailedCorrectionAr: 'العلم الجزائري أخضر وأبيض، ويتوسطه هلال ونجمة حمراء.', options: [{ id: 'a', textAr: 'أخضر وأبيض بهلال ونجمة حمراء', isCorrect: true }, { id: 'b', textAr: 'أزرق وأصفر', isCorrect: false }] },
+    { problemAr: 'نشيد بلادنا الوطني اسمه ....', solutionAr: 'قسماً', detailedCorrectionAr: '«قسماً» هو النشيد الوطني الجزائري.', type: 'fill_blank', fillBlankAnswerAr: 'قسماً' },
+    { problemAr: 'العلم الوطني رمز يحترمه جميع المواطنين. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'العلم رمز للسيادة الوطنية يستحق الاحترام.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'ماذا يرمز اللون الأخضر في العلم الجزائري؟', solutionAr: 'الخير والطبيعة', detailedCorrectionAr: 'الأخضر يرمز إلى الخير والطبيعة والإسلام.', options: [{ id: 'a', textAr: 'الخير والطبيعة', isCorrect: true }, { id: 'b', textAr: 'الحرب', isCorrect: false }] },
+  ], [
+    { problemAr: 'الهلال والنجمة الحمراء يظهران في علم الجزائر. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'هما جزء أساسي من رمزية العلم الوطني.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'لماذا نحترم الرموز الوطنية؟', solutionAr: 'لأنها تمثل هويتنا وبلادنا', detailedCorrectionAr: 'الرموز الوطنية تعبّر عن هوية وسيادة البلاد.', options: [{ id: 'a', textAr: 'لأنها تمثل هويتنا وبلادنا', isCorrect: true }, { id: 'b', textAr: 'لأنها مجرد ألوان بلا معنى', isCorrect: false }] },
+  ]),
+};
 
-const TAMAZIGHT_PACKS: Record<string, PracticePack> = Object.fromEntries(
-  [
-    ['tamazight-4ap-agemmay-tifinagh-lettres', 'الأبجدية التيفيناغ'],
-    ['tamazight-4ap-chiffres-comptage', 'الأرقام والعد'],
-    ['tamazight-4ap-famille-salutations', 'العائلة والتحيات'],
-    ['tamazight-4ap-yennayer-patrimoine', 'يناير والتراث'],
-  ].map(([id, topic]) => [id, genericPack(id, topic)]),
-);
-
-const ART_PACKS: Record<string, PracticePack> = Object.fromEntries(
-  [
-    ['art-4ap-t1-warm-cool-colors', 'الألوان الدافئة والباردة'],
-    ['art-4ap-t2-perspective-simple', 'المنظور البسيط'],
-    ['art-4ap-t3-pottery-crafts', 'الفخار والحرف اليدوية'],
-  ].map(([id, topic]) => [id, genericPack(id, topic)]),
-);
+const TAMAZIGHT_PACKS: Record<string, PracticePack> = {
+  'tamazight-4ap-agemmay-tifinagh-lettres': build4ApPractice('tamazight-4ap-agemmay-tifinagh-lettres', [
+    { problemAr: 'ما اسم الأبجدية الأمازيغية الرسمية؟', solutionAr: 'تيفيناغ', detailedCorrectionAr: 'تيفيناغ (Tifinagh) هي الأبجدية الأمازيغية الرسمية.', options: [{ id: 'a', textAr: 'تيفيناغ', isCorrect: true }, { id: 'b', textAr: 'اللاتينية', isCorrect: false }] },
+    { problemAr: 'كلمة Agemmay تعني ....', solutionAr: 'الأبجدية', detailedCorrectionAr: 'Agemmay = الأبجدية / الحروف الهجائية.', type: 'fill_blank', fillBlankAnswerAr: 'الأبجدية' },
+    { problemAr: 'التيفيناغ من أقدم أنظمة الكتابة في شمال إفريقيا. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'تيفيناغ نظام كتابة عريق موجود منذ زمن بعيد.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'أشكال حروف التيفيناغ مستوحاة من:', solutionAr: 'الطبيعة والرموز التراثية', detailedCorrectionAr: 'الدوائر والخطوط والصلبان مستوحاة من الطبيعة والتراث.', options: [{ id: 'a', textAr: 'الطبيعة والرموز التراثية', isCorrect: true }, { id: 'b', textAr: 'الحروف الصينية', isCorrect: false }] },
+  ], [
+    { problemAr: 'لكل حرف تيفيناغي نسخ لاتيني مقابل. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'يُستعمل النسخ اللاتيني للمساعدة على النطق والكتابة.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'حروف التيفيناغ تتميز بأشكالها:', solutionAr: 'الهندسية (دوائر وخطوط)', detailedCorrectionAr: 'أشكال هندسية متقنة من دوائر وخطوط وصلبان.', options: [{ id: 'a', textAr: 'الهندسية (دوائر وخطوط)', isCorrect: true }, { id: 'b', textAr: 'المستديرة فقط', isCorrect: false }] },
+  ]),
+  'tamazight-4ap-chiffres-comptage': build4ApPractice('tamazight-4ap-chiffres-comptage', [
+    { problemAr: 'كيف نقول «واحد» بالأمازيغية؟', solutionAr: 'Yiwen', detailedCorrectionAr: 'Yiwen = واحد (1).', options: [{ id: 'a', textAr: 'Yiwen', isCorrect: true }, { id: 'b', textAr: 'Sin', isCorrect: false }] },
+    { problemAr: 'العدد Kraḍ بالأمازيغية يعني ....', solutionAr: 'ثلاثة', detailedCorrectionAr: 'Kraḍ = ثلاثة (3).', type: 'fill_blank', fillBlankAnswerAr: 'ثلاثة' },
+    { problemAr: 'Semmus تعني خمسة بالأمازيغية. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'Semmus = خمسة (5).', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'ما ترتيب هذه الأعداد تصاعدياً: Sa, Yiwen, Ttam؟', solutionAr: 'Yiwen، Sa، Ttam', detailedCorrectionAr: 'Yiwen(1) < Sa(7) < Ttam(8).', options: [{ id: 'a', textAr: 'Yiwen، Sa، Ttam', isCorrect: true }, { id: 'b', textAr: 'Ttam، Sa، Yiwen', isCorrect: false }] },
+  ], [
+    { problemAr: 'Mraw تعني عشرة بالأمازيغية. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'Mraw = عشرة (10).', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'كيف نكتب الأعداد الأمازيغية؟', solutionAr: 'بالخط التيفيناغي واللاتيني', detailedCorrectionAr: 'يمكن كتابتها بالطريقتين.', options: [{ id: 'a', textAr: 'بالخط التيفيناغي واللاتيني', isCorrect: true }, { id: 'b', textAr: 'بالخط الصيني فقط', isCorrect: false }] },
+  ]),
+  'tamazight-4ap-famille-salutations': build4ApPractice('tamazight-4ap-famille-salutations', [
+    { problemAr: 'كلمة Azul تعني:', solutionAr: 'مرحباً / السلام', detailedCorrectionAr: 'Azul تحية شائعة تعني مرحباً أو السلام.', options: [{ id: 'a', textAr: 'مرحباً / السلام', isCorrect: true }, { id: 'b', textAr: 'وداعاً', isCorrect: false }] },
+    { problemAr: 'كلمة Yemma تعني ....', solutionAr: 'الأم', detailedCorrectionAr: 'Yemma = الأم.', type: 'fill_blank', fillBlankAnswerAr: 'الأم' },
+    { problemAr: 'Baba تعني الأب بالأمازيغية. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'Baba = الأب.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'كلمة Tanemmirt تعني:', solutionAr: 'شكراً', detailedCorrectionAr: 'Tanemmirt = شكراً.', options: [{ id: 'a', textAr: 'شكراً', isCorrect: true }, { id: 'b', textAr: 'أخي', isCorrect: false }] },
+  ], [
+    { problemAr: 'Gma تعني الأخ. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'Gma = الأخ.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'ما معنى Weltma؟', solutionAr: 'أختي', detailedCorrectionAr: 'Weltma = أختي.', options: [{ id: 'a', textAr: 'أختي', isCorrect: true }, { id: 'b', textAr: 'جدي', isCorrect: false }] },
+  ]),
+  'tamazight-4ap-yennayer-patrimoine': build4ApPractice('tamazight-4ap-yennayer-patrimoine', [
+    { problemAr: 'متى يحتفل الجزائريون بعيد يناير؟', solutionAr: '12 جانفي', detailedCorrectionAr: 'يُحتفل بعيد يناير في 12 جانفي من كل سنة.', options: [{ id: 'a', textAr: '12 جانفي', isCorrect: true }, { id: 'b', textAr: '1 نوفمبر', isCorrect: false }] },
+    { problemAr: 'إلى ماذا يرمز عيد يناير بالإضافة إلى الأرض؟', solutionAr: 'الخير والخصوبة', detailedCorrectionAr: 'يرمز إلى الأرض والخير والخصوبة وتجدد الطبيعة.', options: [{ id: 'a', textAr: 'الخير والخصوبة', isCorrect: true }, { id: 'b', textAr: 'الحرب', isCorrect: false }] },
+    { problemAr: 'يناير هو رأس السنة الفلاحية الأمازيغية. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'يناير (Yennayer) رأس السنة الأمازيغية الفلاحية.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'من الأطباق التقليدية المرتبطة بعيد يناير:', solutionAr: 'Seksu (كسكس)', detailedCorrectionAr: 'الكسكس من الأطباق التقليدية لهذا العيد.', options: [{ id: 'a', textAr: 'Seksu (كسكس)', isCorrect: true }, { id: 'b', textAr: 'البيتزا', isCorrect: false }] },
+  ], [
+    { problemAr: 'عيد يناير عيد وطني رسمي في الجزائر. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'أصبح عيد يناير عطلة وطنية رسمية في الجزائر.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+    { problemAr: 'ماذا يعبّر عنه الاحتفال بيناير؟', solutionAr: 'التضامن والبهجة الوطنية', detailedCorrectionAr: 'يجسد الاحتفال روح التضامن والفرح الجماعي.', options: [{ id: 'a', textAr: 'التضامن والبهجة الوطنية', isCorrect: true }, { id: 'b', textAr: 'الحزن والعزلة', isCorrect: false }] },
+  ]),
+};
 
 const ALL_PACKS: Record<string, PracticePack> = {
   ...ENGLISH_PACKS,
   ...FRENCH_PACKS,
   ...CIVICS_PACKS,
   ...TAMAZIGHT_PACKS,
-  ...ART_PACKS,
 };
 
 function levelsOf(lesson: CourseLesson): number[] {
