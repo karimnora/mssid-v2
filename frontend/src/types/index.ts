@@ -558,12 +558,48 @@ export interface MathWrittenOperation {
   operations: MathWrittenOpItem[];
 }
 
+// Concrete, tap-only counting practice for young beginners (préscolaire/1AP): the child counts
+// a cluster of repeated emoji objects and taps the matching number — no keyboard input, per
+// CLAUDE.md's "zéro texte" / tap-only ergonomics for that age group.
+export interface MathCountingItem {
+  id: string;
+  emoji: string;
+  count: number;
+  labelAr: string;
+  choices: number[];
+}
+export interface MathVisualCounting {
+  type: 'visual_counting';
+  titleAr: string;
+  introAr: string;
+  items: MathCountingItem[];
+}
+
+// Base-10 block visualization (hundreds/tens/units) for place-value lessons — lets the child see
+// a number's composition instead of only reading a textual explanation.
+export interface MathPlaceValueItem {
+  id: string;
+  value: number;
+  hundreds?: number;
+  tens: number;
+  units: number;
+  labelAr: string;
+}
+export interface MathPlaceValueBlocks {
+  type: 'place_value_blocks';
+  titleAr: string;
+  introAr: string;
+  items: MathPlaceValueItem[];
+}
+
 export type MathInteractiveConfig =
   | MathNumberCards
   | MathShapeExplorer
   | MathWordProblemScenario
   | MathDataMatching
-  | MathWrittenOperation;
+  | MathWrittenOperation
+  | MathVisualCounting
+  | MathPlaceValueBlocks;
 
 // Language interactive tool (french_dialogue_lab / english_dialogue_lab) — shared between French and
 // English 5AP (small lesson counts, very similar nature). Content-language convention unchanged despite

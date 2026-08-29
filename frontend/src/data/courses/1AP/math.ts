@@ -248,16 +248,16 @@ export const MATH_1AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
-      titleAr: 'الأعداد من 0 إلى 5',
-      introAr: 'اضغط على كل عدد: ماذا يعني؟',
-      cards: [
-        { labelAr: 'صفر', valueDisplay: '0', explanationAr: 'لا يوجد أي شيء. الصندوق فارغ.' },
-        { labelAr: 'واحد', valueDisplay: '1', explanationAr: 'شمس واحدة، أنف واحد.' },
-        { labelAr: 'اثنان', valueDisplay: '2', explanationAr: 'عينان، أذنان، يدان.' },
-        { labelAr: 'ثلاثة', valueDisplay: '3', explanationAr: 'ثلاث تفاحات. قبل 3 يأتي 2، وبعده 4.' },
-        { labelAr: 'أربعة', valueDisplay: '4', explanationAr: 'عجلات السيارة الأربع. قبل 4 يأتي 3، وبعده 5.' },
-        { labelAr: 'خمسة', valueDisplay: '5', explanationAr: 'أصابع اليد الواحدة.' },
+      type: 'visual_counting',
+      titleAr: 'عُدَّ الأشياء من 0 إلى 5',
+      introAr: 'عُدَّ الأشياء في الصندوق ثم اضغط على العدد الصحيح 👇',
+      items: [
+        { id: 'n0', emoji: '🍉', count: 0, labelAr: 'الصندوق فارغ... كم بطيخة تراها؟', choices: [0, 1, 2] },
+        { id: 'n1', emoji: '🍉', count: 1, labelAr: 'كم بطيخة؟', choices: [1, 2, 3] },
+        { id: 'n2', emoji: '🌸', count: 2, labelAr: 'كم زهرة؟', choices: [1, 2, 3] },
+        { id: 'n3', emoji: '⚽', count: 3, labelAr: 'كم كرة؟', choices: [2, 3, 4] },
+        { id: 'n4', emoji: '🍅', count: 4, labelAr: 'كم طماطم؟', choices: [3, 4, 5] },
+        { id: 'n5', emoji: '🍏', count: 5, labelAr: 'كم تفاحة؟', choices: [4, 5, 6] },
       ],
     },
     examplesAr: [
@@ -442,14 +442,14 @@ export const MATH_1AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
-      titleAr: 'من 6 إلى 9',
-      introAr: 'يد كاملة ثم أصابع اليد الثانية.',
-      cards: [
-        { labelAr: 'ستة', valueDisplay: '6', explanationAr: '6 = يد (5) + 1.' },
-        { labelAr: 'سبعة', valueDisplay: '7', explanationAr: '6 قبله، 8 بعده.' },
-        { labelAr: 'ثمانية', valueDisplay: '8', explanationAr: '8 = يد (5) + 3.' },
-        { labelAr: 'تسعة', valueDisplay: '9', explanationAr: 'أكبر عدد بإصبع اليد الثانية قبل العشرة.' },
+      type: 'visual_counting',
+      titleAr: 'عُدَّ من 6 إلى 9',
+      introAr: 'يد كاملة (5) + أصابع اليد الثانية. عُدَّ ثم اضغط على العدد الصحيح 👇',
+      items: [
+        { id: 'n6', emoji: '⭐', count: 6, labelAr: 'كم نجمة؟', choices: [5, 6, 7] },
+        { id: 'n7', emoji: '🎈', count: 7, labelAr: 'كم بالوناً؟', choices: [6, 7, 8] },
+        { id: 'n8', emoji: '🐟', count: 8, labelAr: 'كم سمكة؟', choices: [7, 8, 9] },
+        { id: 'n9', emoji: '🌼', count: 9, labelAr: 'كم زهرة؟', choices: [8, 9, 10] },
       ],
     },
     examplesAr: [
@@ -653,14 +653,14 @@ export const MATH_1AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
-      titleAr: 'من 10 إلى 20',
-      introAr: 'عشرة ووحدات. اضغط على كل بطاقة.',
-      cards: [
-        { labelAr: 'عشرة', valueDisplay: '10', explanationAr: 'عشرة واحدة، صفر وحدات.' },
-        { labelAr: 'أحد عشر', valueDisplay: '11', explanationAr: '11 = 10 + 1.' },
-        { labelAr: 'خمسة عشر', valueDisplay: '15', explanationAr: 'عشرة + 5 وحدات.' },
-        { labelAr: 'عشرون', valueDisplay: '20', explanationAr: 'عشرتان. إطار 14: 10 < 14 < 20.' },
+      type: 'place_value_blocks',
+      titleAr: 'من 10 إلى 20: عشرة ووحدات',
+      introAr: 'اضغط على كل عدد لترى حزمة العشرة ووحداته المفردة.',
+      items: [
+        { id: 'pv10', value: 10, tens: 1, units: 0, labelAr: 'عشرة' },
+        { id: 'pv11', value: 11, tens: 1, units: 1, labelAr: 'أحد عشر' },
+        { id: 'pv15', value: 15, tens: 1, units: 5, labelAr: 'خمسة عشر' },
+        { id: 'pv20', value: 20, tens: 2, units: 0, labelAr: 'عشرون (إطار 14: 10 < 14 < 20)' },
       ],
     },
     examplesAr: [
@@ -868,14 +868,14 @@ export const MATH_1AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
-      titleAr: 'العشرات حتى 40',
-      introAr: 'حزم من 10 ثم وحدات. (هذه الأعداد تُثبَّت رسمياً في 2AP).',
-      cards: [
-        { labelAr: 'عشرون', valueDisplay: '20', explanationAr: 'عشرتان.' },
-        { labelAr: 'أربعة وثلاثون', valueDisplay: '34', explanationAr: '3 عشرات + 4 وحدات. 30 < 34 < 40.' },
-        { labelAr: 'اثنان وأربعون', valueDisplay: '42', explanationAr: '4 عشرات + 2 وحدات.' },
-        { labelAr: 'تسعة وأربعون', valueDisplay: '49', explanationAr: '4 عشرات + 9 وحدات.' },
+      type: 'place_value_blocks',
+      titleAr: 'العشرات حتى 49',
+      introAr: 'حزم من 10 ثم وحدات مفردة. (هذه الأعداد تُثبَّت رسمياً في 2AP).',
+      items: [
+        { id: 'pv20b', value: 20, tens: 2, units: 0, labelAr: 'عشرون' },
+        { id: 'pv34', value: 34, tens: 3, units: 4, labelAr: 'أربعة وثلاثون (30 < 34 < 40)' },
+        { id: 'pv42', value: 42, tens: 4, units: 2, labelAr: 'اثنان وأربعون' },
+        { id: 'pv49', value: 49, tens: 4, units: 9, labelAr: 'تسعة وأربعون' },
       ],
     },
     examplesAr: [
@@ -968,14 +968,14 @@ export const MATH_1AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
+      type: 'place_value_blocks',
       titleAr: 'العشرات والوحدات',
-      introAr: 'الرقم يميناً = وحدات. الرقم يساراً = عشرات.',
-      cards: [
-        { labelAr: 'ثمانية وخمسون', valueDisplay: '58', explanationAr: 'وحدات 8، عشرات 5.' },
-        { labelAr: 'ثلاثة وسبعون', valueDisplay: '73', explanationAr: '73 = 3 + 70.' },
-        { labelAr: 'تسعون', valueDisplay: '90', explanationAr: '9 عشرات، صفر وحدات.' },
-        { labelAr: 'تسعة وتسعون', valueDisplay: '99', explanationAr: 'أكبر عدد من رقمين.' },
+      introAr: 'اضغط على كل عدد لترى حزم العشرات ووحداته المفردة.',
+      items: [
+        { id: 'pv58', value: 58, tens: 5, units: 8, labelAr: 'ثمانية وخمسون' },
+        { id: 'pv73', value: 73, tens: 7, units: 3, labelAr: 'ثلاثة وسبعون' },
+        { id: 'pv90', value: 90, tens: 9, units: 0, labelAr: 'تسعون' },
+        { id: 'pv99', value: 99, tens: 9, units: 9, labelAr: 'تسعة وتسعون (أكبر عدد من رقمين)' },
       ],
     },
     examplesAr: [

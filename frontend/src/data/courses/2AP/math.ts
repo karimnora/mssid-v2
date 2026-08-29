@@ -36,14 +36,14 @@ export const MATH_2AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
+      type: 'place_value_blocks',
       titleAr: 'من 0 إلى 49',
-      introAr: 'عشرات يساراً، وحدات يميناً.',
-      cards: [
-        { labelAr: 'سبعة وعشرون', valueDisplay: '27', explanationAr: '2 عشرات + 7 وحدات. نقرأ: سبعة وعشرون.' },
-        { labelAr: 'أربعة وثلاثون', valueDisplay: '34', explanationAr: '3 عشرات + 4 وحدات.' },
-        { labelAr: 'تسعة وأربعون', valueDisplay: '49', explanationAr: '4 عشرات + 9 وحدات. أكبر عدد في هذا الدرس.' },
-        { labelAr: 'عشرة', valueDisplay: '10', explanationAr: 'حزمة واحدة من 10. صفر وحدات.' },
+      introAr: 'اضغط على كل عدد لترى حزم العشرات ووحداته المفردة.',
+      items: [
+        { id: 'pv27', value: 27, tens: 2, units: 7, labelAr: 'سبعة وعشرون' },
+        { id: 'pv34c', value: 34, tens: 3, units: 4, labelAr: 'أربعة وثلاثون' },
+        { id: 'pv49b', value: 49, tens: 4, units: 9, labelAr: 'تسعة وأربعون (أكبر عدد في هذا الدرس)' },
+        { id: 'pv10b', value: 10, tens: 1, units: 0, labelAr: 'عشرة (حزمة واحدة من 10)' },
       ],
     },
     keyFormulas: [
@@ -466,14 +466,14 @@ export const MATH_2AP: CourseLesson[] = [
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
-      type: 'number_cards',
+      type: 'place_value_blocks',
       titleAr: 'المئات: من 100 إلى 999',
-      introAr: 'مئات، عشرات، وحدات.',
-      cards: [
-        { labelAr: 'مئة', valueDisplay: '100', explanationAr: 'المئة = 10 عشرات = 100 وحدة.' },
-        { labelAr: 'ثلاث مئة وسبعة وأربعون', valueDisplay: '347', explanationAr: '3 مئات + 4 عشرات + 7 وحدات.' },
-        { labelAr: 'تسع مئة وتسعة وتسعون', valueDisplay: '999', explanationAr: 'أكبر عدد من 3 أرقام. بعده 1000.' },
-        { labelAr: 'مئتان', valueDisplay: '200', explanationAr: 'مئتان = 2 × 100.' },
+      introAr: 'اضغط على كل عدد لترى حزم المئات والعشرات والوحدات.',
+      items: [
+        { id: 'pv100', value: 100, hundreds: 1, tens: 0, units: 0, labelAr: 'مئة' },
+        { id: 'pv347', value: 347, hundreds: 3, tens: 4, units: 7, labelAr: 'ثلاث مئة وسبعة وأربعون' },
+        { id: 'pv999', value: 999, hundreds: 9, tens: 9, units: 9, labelAr: 'تسع مئة وتسعة وتسعون (أكبر عدد من 3 أرقام)' },
+        { id: 'pv200', value: 200, hundreds: 2, tens: 0, units: 0, labelAr: 'مئتان' },
       ],
     },
     keyFormulas: [
