@@ -6,6 +6,8 @@ import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatt
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
 import { IrabTable, irabAnalysisHeaderForGrade } from './lessonViewer/IrabTable';
+import { ArabicReadingStoryPanel } from './lessonViewer/ArabicReadingStoryPanel';
+import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 
 // R2.1 — same lazy split as LessonViewer.tsx (this was the other static import forcing
 // ScienceLabSimulation, and transitively ElectricityLabInteractive, back into the main chunk).
@@ -264,7 +266,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
       </div>
 
       {/* REAL LESSON OBJECTIVE, DISCOVERY HOOK & GUIDED EXAMPLE (when authored for this specific lesson) */}
-      {(lesson.objectiveAr || lesson.discoveryAr || lesson.guidedExampleAr) && (
+      {(lesson.objectiveAr || lesson.discoveryAr || lesson.readingStory || lesson.multiplicationVisuals?.length || lesson.guidedExampleAr) && (
         <div className="bg-indigo-50 border border-indigo-200/80 rounded-3xl p-5 shadow-xs space-y-4">
           {lesson.objectiveAr && (
             <div className="space-y-1.5">
@@ -276,7 +278,16 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
               <p className="text-xs sm:text-sm text-indigo-950 font-sans leading-relaxed">{renderArabicText(lesson.objectiveAr)}</p>
             </div>
           )}
-          {lesson.discoveryAr && (
+          {lesson.readingStory ? (
+            <div className="bg-white/70 p-3 rounded-xl border border-indigo-200/60">
+              <ArabicReadingStoryPanel
+                story={lesson.readingStory}
+                renderArabicText={renderArabicText}
+                speakingKey={speakingKey}
+                onSpeak={onSpeak}
+              />
+            </div>
+          ) : lesson.discoveryAr ? (
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm">
                 {speak('discovery', lesson.discoveryAr)}
@@ -286,6 +297,16 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
               <p className="text-xs sm:text-sm text-indigo-950 font-sans leading-relaxed bg-white/70 p-3 rounded-xl border border-indigo-200/60">
                 {renderArabicText(lesson.discoveryAr)}
               </p>
+            </div>
+          ) : null}
+          {lesson.multiplicationVisuals && lesson.multiplicationVisuals.length > 0 && (
+            <div className="space-y-3">
+              <p className="text-xs font-black text-emerald-800">مجموعات متساوية — جمع مكرر ✖️</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {lesson.multiplicationVisuals.map((demo, i) => (
+                  <MultiplicationGroupsVisual key={`mult-demo-${i}`} {...demo} />
+                ))}
+              </div>
             </div>
           )}
           {lesson.guidedExampleAr && (

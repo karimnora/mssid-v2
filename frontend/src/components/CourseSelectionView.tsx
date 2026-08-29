@@ -9,6 +9,7 @@ import { isFrenchFreeGrade, stripLatinGlosses } from './lessonViewer/youngLesson
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
 import { useTranslation } from '../hooks/useTranslation';
+import { getOfficialAxisLabel } from '../utils/curriculumMeta';
 
 interface CourseSelectionViewProps {
   grade: PrimaryGrade;
@@ -293,7 +294,14 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     <div className={`h-3.5 w-full ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-arabe'}`} />
                     <div className="p-5 space-y-3">
                     <div className="flex items-center justify-between flex-wrap gap-1.5">
-                      <Badge variant="info">{lesson.categoryAr}</Badge>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <Badge variant="info">{lesson.categoryAr}</Badge>
+                        {getOfficialAxisLabel(lesson) && (
+                          <Badge variant="xp" className="!text-[10px] max-w-[11rem] truncate" title={getOfficialAxisLabel(lesson)}>
+                            📘 {getOfficialAxisLabel(lesson)}
+                          </Badge>
+                        )}
+                      </div>
                       {locked ? (
                         <span className="flex items-center gap-1 text-[10px] font-extrabold text-[#5A3B00] bg-[#FFF8E7] border-2 border-[#F5D98A] px-2 py-0.5 rounded-full">
                           <Lock className="w-3 h-3" />

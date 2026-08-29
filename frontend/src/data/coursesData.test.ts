@@ -3,6 +3,11 @@ import { COURSES_DATA } from './coursesData';
 import { OFFICIAL_EXAMS_DATA } from './examsData';
 import { PLAYFUL_PACKS } from './courses/1AP/playfulPacks';
 import { SURAH_2AP_COUNTS } from './courses/2AP/shortSurahs';
+import { AI_TUTOR_SUGGESTED_TOPICS } from './aiTutorSuggestedTopics';
+
+function countArabicWords(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
 
 describe('5AP Mathematics Pedagogical Curriculum Tests', () => {
   const math5apLessons = COURSES_DATA.filter(
@@ -697,20 +702,33 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
       'math-2ap-t3-right-angle',
       'math-2ap-t3-meter-cm',
       'math-2ap-t3-gram-kg',
+      'math-2ap-t3-multiplication-concept',
       'arabic-2ap-t1-reading-school',
+      'arabic-2ap-t2-reading-neighborhood',
       'arabic-2ap-t3-copy-dictation',
       'arabic-2ap-t3-ism-fil-harf',
       'arabic-2ap-t3-gender-number',
       'science-2ap-t2-animal-movement',
       'science-2ap-t3-air',
-      'science-2ap-t3-simple-tools',
-      'science-2ap-t3-basic-electric',
       'civics-2ap-t1-personal-documents',
       'islamic-2ap-t3-surah-takathur',
     ].forEach((id) => {
       expect(ids, id).toContain(id);
     });
+    [
+      'science-2ap-t2-animal-reproduction',
+      'science-2ap-t3-simple-tools',
+      'science-2ap-t3-basic-electric',
+    ].forEach((id) => {
+      expect(ids, id).not.toContain(id);
+    });
     expect(ids.some((id) => id.startsWith('french-2ap'))).toBe(false);
+  });
+
+  it('keeps reproduction, tools and electricity in 3AP (moved from 2AP)', () => {
+    const ids3 = COURSES_DATA.filter((l) => l.grade === '3AP' && l.subject === 'science').map((l) => l.id);
+    expect(ids3.some((id) => id.includes('electric'))).toBe(true);
+    expect(ids3.some((id) => id.includes('lever') || id.includes('rafi'))).toBe(true);
   });
 
   it('does not put multiplication tables in 2AP (3AP notion)', () => {
@@ -718,6 +736,29 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
       expect(lesson.interactiveTool).not.toBe('multiplication_table');
       expect(lesson.titleAr).not.toMatch(/جَدْوَلُ الضَّرْبِ|جدول الضرب/);
     });
+  });
+
+  it('2AP arabic reading-neighborhood text is 40–50 vocalized words', () => {
+    const lesson = grade2apLessons.find((l) => l.id === 'arabic-2ap-t2-reading-neighborhood')!;
+    const text = lesson.discoveryAr ?? '';
+    const words = countArabicWords(text);
+    expect(words).toBeGreaterThanOrEqual(40);
+    expect(words).toBeLessThanOrEqual(50);
+    expect(text).toMatch(/عُمَرُ/);
+    expect(text).toMatch(/[\u064B-\u0652]/);
+  });
+
+  it('2AP reading lessons ship scene cards and multiplication lesson ships group visuals', () => {
+    const school = grade2apLessons.find((l) => l.id === 'arabic-2ap-t1-reading-school')!;
+    const hood = grade2apLessons.find((l) => l.id === 'arabic-2ap-t2-reading-neighborhood')!;
+    const mult = grade2apLessons.find((l) => l.id === 'math-2ap-t3-multiplication-concept')!;
+    expect(school.readingStory?.scenes.length).toBeGreaterThanOrEqual(5);
+    expect(school.readingStory?.characters.some((c) => c.nameAr.includes('سَامِي'))).toBe(true);
+    expect(hood.readingStory?.characters.some((c) => c.nameAr.includes('عُمَر'))).toBe(true);
+    expect(hood.readingStory?.scenes.length).toBeGreaterThanOrEqual(6);
+    expect(mult.multiplicationVisuals?.length).toBeGreaterThanOrEqual(2);
+    expect(mult.progressiveExercises?.every((ex) => ex.multiplicationVisual)).toBe(true);
+    expect(mult.mathInteractive?.type === 'number_cards' && mult.mathInteractive.cards.every((c) => c.multiplicationVisual)).toBe(true);
   });
 
   it('clock lessons use the clock trainer lab', () => {
@@ -737,7 +778,7 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
   it('2AP catalogue has unique ids and matches the published pack count', () => {
     const ids = grade2apLessons.map((l) => l.id);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(ids.length).toBe(63);
+    expect(ids.length).toBe(61);
   });
 
   it('2AP quran lessons cover Fil, Qariah, Quraish, Humazah, Maun, Asr, Takathur — not a 1AP remake', () => {
@@ -863,6 +904,41 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     expect(arabic.some((l) => l.id === 'arabic-1ap-t2-letter-positions')).toBe(true);
   });
 
+  it('1AP arabic covers all 8 official thematic axes (المدرسة، العائلة، الحي، الصحة، التسلية، الطبيعة، طفولتي، الأعياد)', () => {
+    const arabic = bySubject1ap('arabic');
+    const ids = arabic.map((l) => l.id);
+    expect(ids).toContain('arabic-1ap-t1-oral-daily');
+    expect(ids).toContain('arabic-1ap-t2-neighborhood-home');
+    expect(ids).toContain('arabic-1ap-t2-health-sports');
+    expect(ids).toContain('arabic-1ap-t3-play-entertainment');
+    expect(ids).toContain('arabic-1ap-t3-childhood-holidays');
+    const blob = arabic.map((l) => `${l.titleAr} ${l.summaryAr} ${l.sequenceAr}`).join(' ');
+    expect(blob).toMatch(/حَيِّ|الحي|المنزل|بَيْت/);
+    expect(blob).toMatch(/صِحَّ|رِيَاض/);
+    expect(blob).toMatch(/لَعِب|تَسْلِ|تسلية/);
+    expect(blob).toMatch(/حيوان|طبيع|حديقة/);
+    expect(blob).toMatch(/عِيد|طُفُول/);
+    expect(blob).toMatch(/مَدْرَس|عَائِل/);
+  });
+
+  it('1AP arabic thematic lessons expose officialAxisAr and curriculumAlignment', () => {
+    const thematicIds = [
+      'arabic-1ap-t2-neighborhood-home',
+      'arabic-1ap-t2-health-sports',
+      'arabic-1ap-t3-play-entertainment',
+      'arabic-1ap-t3-childhood-holidays',
+    ];
+    const byId = new Map(COURSES_DATA.map((l) => [l.id, l]));
+    thematicIds.forEach((id) => {
+      const lesson = byId.get(id);
+      expect(lesson, id).toBeTruthy();
+      expect(lesson!.officialAxisAr, id).toBeTruthy();
+      expect(lesson!.curriculumAlignment?.program, id).toBe('algeria_gen2');
+      expect(lesson!.curriculumAlignment?.axisId, id).toBeTruthy();
+      expect(lesson!.instructionAudioAr, id).toBeTruthy();
+    });
+  });
+
   it('1AP harakat lesson is fully vocalized and teaches tashkil of the four short vowels', () => {
     const lesson = bySubject1ap('arabic').find((l) => l.id === 'arabic-1ap-t1-harakat')!;
     const tashkeel = /[\u064B-\u0652]/;
@@ -950,13 +1026,15 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     });
   });
 
-  it('1AP maths follows the year grid: 0–9 then 10–49 then 50–99, no clock or money titles', () => {
+  it('1AP maths follows official grid: 0–20 only, no clock or money titles', () => {
     const math = bySubject1ap('math');
     const ids = math.map((l) => l.id);
 
     expect(ids).toContain('math-1ap-t1-grandeurs');
     expect(ids).toContain('math-1ap-t3-compare-symbols');
     expect(ids).toContain('math-1ap-t3-ruler-align');
+    expect(ids).not.toContain('math-1ap-t3-complete-tens-up-to-90');
+    expect(ids).not.toContain('math-1ap-t3-place-value-and-n99');
 
     const sixToNine = math.find((l) => l.id === 'math-1ap-t2-numbers-6-10')!;
     expect(sixToNine.trimester).toBe(1);
@@ -966,24 +1044,32 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     const tenToTwenty = math.find((l) => l.id === 'math-1ap-t2-numbers-11-20')!;
     expect(tenToTwenty.trimester).toBe(2);
 
-    const twentyOneToFortyNine = math.find((l) => l.id === 'math-1ap-t3-complete-tens-up-to-90')!;
-    expect(twentyOneToFortyNine.trimester).toBe(2);
-    expect(twentyOneToFortyNine.titleAr).toMatch(/21/);
-    expect(twentyOneToFortyNine.titleAr).toMatch(/49/);
-
-    const fiftyToNinetyNine = math.find((l) => l.id === 'math-1ap-t3-place-value-and-n99')!;
-    expect(fiftyToNinetyNine.trimester).toBe(3);
-    expect(fiftyToNinetyNine.titleAr).toMatch(/50/);
-    expect(fiftyToNinetyNine.titleAr).toMatch(/99/);
-    expect(fiftyToNinetyNine.objectivesAr!.join(' ')).not.toMatch(/[<>]/);
-
     const problems = math.find((l) => l.id === 'math-1ap-t3-addition-and-time-money')!;
     expect(problems.titleAr).not.toMatch(/ساعة|نقود/);
     expect(problems.summaryAr).toMatch(/مسألة|مسائل/);
+    expect(problems.summaryAr).toMatch(/20/);
 
     math.forEach((lesson) => {
       expect(lesson.titleAr).not.toMatch(/ساعة|نقود/);
+      const blob = `${lesson.titleAr} ${lesson.summaryAr} ${lesson.objectivesAr?.join(' ') ?? ''}`;
+      expect(blob).not.toMatch(/99|49|21–49|50–99|50 إ|21 إ/);
     });
+  });
+
+  it('1AP science has a dedicated movement and rest lesson (not only body parts)', () => {
+    const science = bySubject1ap('science');
+    const ids = science.map((l) => l.id);
+    expect(ids).toContain('science-1ap-t2-movement-effort');
+    expect(ids).toContain('science-1ap-t2-my-body-parts');
+    const movement = science.find((l) => l.id === 'science-1ap-t2-movement-effort')!;
+    expect(movement.summaryAr).toMatch(/مَشْ|مشي|جَرْ|جري|رَاح|راح/);
+    expect(movement.titleAr).not.toMatch(/حَيَوَان/);
+  });
+
+  it('1AP AI tutor suggestions align with curriculum (no five pillars as core)', () => {
+    const labels = AI_TUTOR_SUGGESTED_TOPICS['1AP'].map((t) => t.labelAr).join(' ');
+    expect(labels).not.toMatch(/أَرْكَانِ الإِسْلَامِ|أركان الإسلام الخمسة/);
+    expect(labels).toMatch(/شَهَاد|آدَاب|حَرْف|حَوَاس|أعداد/);
   });
 });
 

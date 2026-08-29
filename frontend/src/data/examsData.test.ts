@@ -127,6 +127,51 @@ describe('exam bank integrity', () => {
     });
   });
 
+  it('ships 2AP composition matrix T1-T3 for core subjects', () => {
+    (['math', 'arabic', 'science', 'islamic', 'civics'] as const).forEach((subject) => {
+      ([1, 2, 3] as const).forEach((trimester) => {
+        expect(
+          OFFICIAL_EXAMS_DATA.some(
+            (e) =>
+              e.grade === '2AP' &&
+              e.subject === subject &&
+              e.trimester === trimester &&
+              getExamKind(e) === 'composition'
+          ),
+          `2AP ${subject} T${trimester}`
+        ).toBe(true);
+      });
+    });
+  });
+
+  it('links every exercise on 2AP gap-fill compositions', () => {
+    const gapFill = [
+      'exam-2ap-math-t1-2026',
+      'exam-2ap-math-t2-2026',
+      'exam-2ap-math-t3-2026',
+      'exam-2ap-arabic-t1-2026',
+      'exam-2ap-arabic-t2-2026',
+      'exam-2ap-arabic-t3-2026',
+      'exam-2ap-science-t1-2026',
+      'exam-2ap-science-t2-2026',
+      'exam-2ap-science-t3-2026',
+      'exam-2ap-islamic-t1-2026',
+      'exam-2ap-civics-t1-2026',
+      'exam-2ap-islamic-t2-2026',
+      'exam-2ap-islamic-t3-2026',
+      'exam-2ap-civics-t2-2026',
+      'exam-2ap-civics-t3-2026',
+    ];
+    gapFill.forEach((id) => {
+      const exam = OFFICIAL_EXAMS_DATA.find((item) => item.id === id);
+      expect(exam, id).toBeTruthy();
+      expect(exam!.relatedLessonIds?.length, `${id} relatedLessonIds`).toBeGreaterThan(0);
+      [...exam!.exercises, exam!.problemExercise].forEach((ex) => {
+        expect(ex.relatedLessonId, `${id} / ${ex.titleAr}`).toBeTruthy();
+      });
+    });
+  });
+
   it('adds math homework T2/T3 for 3APâ5AP', () => {
     [
       'homework-3ap-math-t3-2026',

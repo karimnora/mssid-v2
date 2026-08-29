@@ -81,7 +81,18 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
           </h3>
           {!playful && <Badge variant="xp"><span dir="ltr">+{lesson.educationalGame.xpReward} XP</span></Badge>}
         </div>
-        <p className={playful ? 'text-sm text-slate-600' : 'text-xs text-purple-200'}>{renderArabicText(lesson.educationalGame.instructionsAr)}</p>
+        <p className={`flex items-center gap-2 ${playful ? 'text-sm text-slate-600' : 'text-xs text-purple-200'}`}>
+          {playful && onSpeak && lesson.educationalGame.instructionsAr && (
+            <TapSpeakButton
+              snippetKey="game-instructions"
+              text={lesson.educationalGame.instructionsAr}
+              speakingKey={speakingKey}
+              onSpeak={onSpeak}
+              size="lg"
+            />
+          )}
+          <span>{renderArabicText(lesson.educationalGame.instructionsAr)}</span>
+        </p>
         <div className="space-y-2">
           {lesson.educationalGame.items.map((item, i) => {
             const selected = gameAnswers[i];

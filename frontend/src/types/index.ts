@@ -202,12 +202,28 @@ export interface MatchingLabGameplay {
   pairs: ScienceMatchPair[];
 }
 
+export interface MovementLabAction {
+  id: string;
+  labelAr: string;
+  emoji: string;
+  feedbackAr: string;
+}
+
+/** 1AP sciences: tap walk / run / jump / rest — no French toggle bar. */
+export interface MovementLabGameplay {
+  type: 'movement_lab';
+  titleAr: string;
+  instructionsAr: string;
+  actions: MovementLabAction[];
+}
+
 export type GameplaySimulation =
   | CircuitGameplay
   | SafetyRoleplayGameplay
   | MixtureGameplay
   | ProcessStagesGameplay
-  | MatchingLabGameplay;
+  | MatchingLabGameplay
+  | MovementLabGameplay;
 
 export type PedagogicalLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -243,6 +259,8 @@ export interface ProgressiveExercise {
   /** Arabic grammar only: official الكلمة / إعرابها table shown after check. */
   irabTableAr?: { wordAr: string; analysisAr: string }[];
   xpReward: number;
+  /** Math 2AP: show equal groups under the problem (repeated addition). */
+  multiplicationVisual?: { groups: number; perGroup: number; itemEmoji?: string };
 }
 
 // --- "Cours détaillé" depth expansion (consolidation round 2) ---
@@ -262,6 +280,32 @@ export interface DetailedCourse {
   visualizationHintAr?: string; // idée d'illustration/visualisation pour l'enfant
   commonMistakes?: CommonMistake[];
   takeawayAr: string; // synthèse "À retenir"
+}
+
+/** 2AP Arabic reading: scene cards + character roster. */
+export interface ReadingStoryCharacter {
+  nameAr: string;
+  roleAr: string;
+  emoji: string;
+}
+
+export interface ReadingStoryScene {
+  id: string;
+  emoji: string;
+  textAr: string;
+}
+
+export interface ReadingStory {
+  titleAr?: string;
+  characters: ReadingStoryCharacter[];
+  scenes: ReadingStoryScene[];
+}
+
+export interface MultiplicationVisualDemo {
+  groups: number;
+  perGroup: number;
+  itemEmoji?: string;
+  captionAr?: string;
 }
 
 // 5-tier worked example progression: découverte → application → réflexion → situation concrète → défi.
@@ -495,6 +539,8 @@ export interface MathNumberCard {
   labelAr: string;
   valueDisplay: string;
   explanationAr: string;
+  /** Optional row visual for repeated-addition (2AP multiplication). */
+  multiplicationVisual?: { groups: number; perGroup: number; itemEmoji?: string };
 }
 export interface MathNumberCards {
   type: 'number_cards';
@@ -684,6 +730,17 @@ export interface TrimesterEvaluation {
   }[];
 }
 
+export type CurriculumProgram = 'algeria_gen2';
+
+/** Maps a lesson to an official الجيل الثاني program axis (Algerian primary). */
+export interface CurriculumAlignment {
+  program: CurriculumProgram;
+  /** Stable id, e.g. `axis-neighborhood-home`. */
+  axisId: string;
+  axisNumber?: number;
+  trimester: 1 | 2 | 3;
+}
+
 export interface CourseLesson {
   id: string;
   grade: PrimaryGrade;
@@ -707,8 +764,17 @@ export interface CourseLesson {
   trimester?: 1 | 2 | 3;
   domainAr?: string;
   sequenceAr?: string;
+  /** Official program axis label (الجيل الثاني) — shown to parents; falls back to sequenceAr in UI. */
+  officialAxisAr?: string;
+  curriculumAlignment?: CurriculumAlignment;
+  /** 1AP: short Fusha consigne read aloud via TapSpeakButton (zero-text UX). */
+  instructionAudioAr?: string;
   objectiveAr?: string;
   discoveryAr?: string;
+  /** 2AP reading lessons: structured text as scene cards (replaces flat discovery display). */
+  readingStory?: ReadingStory;
+  /** 2AP multiplication intro: equal-group visuals in the explainer. */
+  multiplicationVisuals?: MultiplicationVisualDemo[];
   guidedExampleAr?: { problem: string; hint: string; solution: string };
   progressiveExercises?: ProgressiveExercise[];
   educationalGame?: EducationalGame;
@@ -754,6 +820,8 @@ export interface ExamExercise {
   irabTableAr?: { wordAr: string; analysisAr: string }[];
   /** Lesson to open after the corrigé — one notion, not the whole paper. */
   relatedLessonId?: string;
+  /** 2AP prep mode: short oral consigne for the child (read by parent). */
+  childPrepHintAr?: string;
 }
 
 /** How the paper is used in class — mirrors DzExams folders, without copying their files. */
@@ -799,6 +867,8 @@ export interface Challenge {
   timeLimitSeconds?: number;
   xpReward: number;
   items: ChallengeItem[];
+  /** Optional link back to course lessons this challenge reinforces. */
+  relatedLessonIds?: string[];
 }
 
 // Data-driven unlock condition for a Badge — evaluated by utils/badgeEngine.ts against

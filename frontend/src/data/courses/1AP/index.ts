@@ -5,6 +5,7 @@ import { MATH_1AP_GAPS } from './math-gaps';
 import { ARABIC_1AP } from './arabic';
 import { ARABIC_1AP_MADD } from './arabic-madd';
 import { ARABIC_1AP_GAPS } from './arabic-gaps';
+import { ARABIC_1AP_THEMES } from './arabic-themes';
 import { SCIENCE_1AP } from './science';
 import { ISLAMIC_1AP } from './islamic';
 import { CIVICS_1AP } from './civics';
@@ -19,6 +20,7 @@ export const COURSES_1AP: CourseLesson[] = applyPlayful1AP(
     ...ARABIC_1AP,
     ...ARABIC_1AP_MADD,
     ...ARABIC_1AP_GAPS,
+    ...ARABIC_1AP_THEMES,
     ...SCIENCE_1AP,
     ...ISLAMIC_1AP,
     ...CIVICS_1AP,

@@ -14,7 +14,7 @@ export const AI_TUTOR_SUGGESTED_TOPICS: Record<PrimaryGrade, SuggestedTopic[]> =
     { labelAr: 'حرف الباء وحركاته', subjectEmoji: '📖' },
     { labelAr: 'الأعداد من 6 إلى 10', subjectEmoji: '🔢' },
     { labelAr: 'الحواس الخمس', subjectEmoji: '🧪' },
-    { labelAr: 'أركان الإسلام الخمسة', subjectEmoji: '🕌' },
+    { labelAr: 'الشَّهَادَتَانِ وَآدَابُ المُسْلِمِ', subjectEmoji: '🕌' },
   ],
   '2AP': [
     { labelAr: 'الشدة والتنوين', subjectEmoji: '📖' },

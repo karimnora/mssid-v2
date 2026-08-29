@@ -11,6 +11,8 @@ export interface BadgeProps {
   /** Play a spring pop-in — use for a badge that just got unlocked, not for static labels. */
   pop?: boolean;
   className?: string;
+  /** Native tooltip — use when `children` can be truncated (e.g. paired with a `truncate` className) so the full text stays reachable on hover. */
+  title?: string;
 }
 
 const VARIANT_STYLES: Record<BadgeVariant, string> = {
@@ -21,9 +23,10 @@ const VARIANT_STYLES: Record<BadgeVariant, string> = {
   neutral: 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]',
 };
 
-export const Badge: React.FC<BadgeProps> = ({ variant = 'neutral', icon, children, pop = false, className = '' }) => {
+export const Badge: React.FC<BadgeProps> = ({ variant = 'neutral', icon, children, pop = false, className = '', title }) => {
   const pill = (
     <span
+      title={title}
       className={[
         'inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-extrabold whitespace-nowrap',
         VARIANT_STYLES[variant],

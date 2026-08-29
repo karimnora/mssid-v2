@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ElectricityLabInteractive } from './ElectricityLabInteractive';
+import { MovementLabView } from './lessonViewer/MovementLabView';
 import {
   GameplaySimulation,
   CircuitGameplay,
@@ -35,6 +36,12 @@ interface ScienceLabSimulationProps {
 export const ScienceLabSimulation: React.FC<ScienceLabSimulationProps> = ({ gameplay, grade = '4AP' }) => {
   // Global state for optional French terminology display
   const [showFrench, setShowFrench] = useState<boolean>(false);
+
+  // 1AP has zero French per the official programme — the movement lab skips the French toggle
+  // bar entirely rather than showing an always-empty/irrelevant control to a 6-7 year old.
+  if (gameplay.type === 'movement_lab') {
+    return <MovementLabView gameplay={gameplay} grade={grade} />;
+  }
 
   return (
     <div className="space-y-4">

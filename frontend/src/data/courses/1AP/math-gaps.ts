@@ -1,7 +1,7 @@
 import { CourseLesson } from '../../../types';
 
 const SOURCE_NOTE =
-  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة أولى ابتدائي وفق شبكة المفاهيم: الفضاء والقدرات (T1)، ثم الرموز < > والمسطرة والمسائل (T3).';
+  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة أولى ابتدائي وفق المنهاج الرسمي 0–20: الفضاء والقدرات (T1)، ثم الرموز < > والمسطرة والمسائل (T3).';
 
 /** Notions T1 (grandeurs) + T3 (comparaison symboles, règle, problèmes) absentes du fichier math.ts d’origine. */
 export const MATH_1AP_GAPS: CourseLesson[] = [
@@ -123,18 +123,18 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
     categoryAr: 'الرياضيات - المقارنة',
     titleAr: 'أُقَارِنُ بِالرَّمْزَيْنِ < وَ > 🐊',
     summaryAr: 'بعد مقارنة «أكثر / أقل»، يتعلم الطفل فم التمساح: العدد الأكبر يفتح عليه الفم.',
-    objectiveAr: 'أن يضع الرمز < أو > بين عددين حتى 99.',
+    objectiveAr: 'أن يضع الرمز < أو > بين عددين حتى 20.',
     objectivesAr: [
       'أَعْرِفُ أَنَّ فَمَ التِّمْسَاحِ يَفْتَحُ نَحْوَ العَدَدِ الأَكْبَرِ.',
-      'أَكْتُبُ 45 < 72 وَ 80 > 50.',
-      'أَنْظُرُ أَوَّلاً إِلَى رَقْمِ العَشَرَاتِ.',
+      'أَكْتُبُ 12 < 18 وَ 15 > 9.',
+      'أَقَارِنُ الأَعْدَادَ حَتَّى 20.',
     ],
-    discoveryAr: 'التمساح جائع: يفتح فمه نحو أكبر كومة تَمْر. 32 تمرة و 58 تمرة: نحو أي جهة يفتح؟',
+    discoveryAr: 'التمساح جائع: يفتح فمه نحو أكبر كومة تَمْر. 12 تمرة و 18 تمرة: نحو أي جهة يفتح؟',
     rulesAr: [
       'الفم المفتوح نحو الأكبر: 8 > 3 (ثمانية أكبر من ثلاثة).',
       '3 < 8 تعني: 3 أصغر من 8. نفس المعنى مقلوباً.',
-      'حتى 99: نقارن العشرات أولاً. 61 > 59 لأن 6 عشرات > 5 عشرات.',
-      'إذا تساوت العشرات ننظر إلى الوحدات: 47 > 42.',
+      'حتى 20: نقارن مباشرة. 15 > 12 لأن 15 أكبر.',
+      'إذا تساويا: 14 = 14 (لا نفتح الفم).',
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
@@ -144,13 +144,13 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
       cards: [
         { labelAr: 'أكبر من', valueDisplay: '8 > 3', explanationAr: 'الفم نحو 8. ثمانية أكبر من ثلاثة.' },
         { labelAr: 'أصغر من', valueDisplay: '3 < 8', explanationAr: 'نفس المقارنة مقلوبة. 3 أصغر من 8.' },
-        { labelAr: 'العشرات أولاً', valueDisplay: '61 > 59', explanationAr: '6 عشرات > 5 عشرات، إذن 61 أكبر.' },
-        { labelAr: 'ثم الوحدات', valueDisplay: '47 > 42', explanationAr: 'العشرات متساوية (4): نقارن 7 و 2.' },
+        { labelAr: 'حتى 20', valueDisplay: '18 > 12', explanationAr: '18 أكبر من 12.' },
+        { labelAr: 'متساويان', valueDisplay: '14 = 14', explanationAr: 'نفس العدد: لا نفتح الفم.' },
       ],
     },
     examplesAr: [
-      { problem: 'ضع الرمز: 24 … 31', solution: '24 < 31' },
-      { problem: 'ضع الرمز: 90 … 70', solution: '90 > 70' },
+      { problem: 'ضع الرمز: 14 … 17', solution: '14 < 17' },
+      { problem: 'ضع الرمز: 19 … 11', solution: '19 > 11' },
     ],
     detailedCourse: {
       introAr: 'الكلمات «أكثر / أقل» صارت رمزاً صغيراً. التمساح يساعدنا حتى لا نعكس الاتجاه.',
@@ -162,7 +162,7 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
       commonMistakes: [
         { mistakeAr: 'عكس الرمز (كتابة 8 < 3).', correctionAr: 'الفم دائماً نحو العدد الأكبر.' },
       ],
-      takeawayAr: 'التمساح يأكل العدد الأكبر. العشرات أولاً ثم الوحدات.',
+      takeawayAr: 'التمساح يأكل العدد الأكبر. نقارن حتى 20.',
     },
     progressiveExercises: [
       {
@@ -179,10 +179,10 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
         id: 'ex2-math1ap-symbols',
         level: 2,
         levelLabelAr: '🟡 المستوى 2 — أتدرب',
-        problemAr: '56 … 65',
-        hintsAr: ['انظر العشرات: 5 أم 6؟'],
-        solutionAr: '56 < 65',
-        detailedCorrectionAr: '5 عشرات أصغر من 6 عشرات: 56 < 65.',
+        problemAr: '15 … 12  ضع > أو <',
+        hintsAr: ['أي عدد أكبر؟ الفم نحوه.'],
+        solutionAr: '15 > 12',
+        detailedCorrectionAr: '15 أكبر، فم التمساح نحو 15: 15 > 12.',
         xpReward: 15,
       },
     ],
@@ -192,8 +192,8 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
       titleAr: 'فم التمساح 🐊',
       instructionsAr: 'اختر الرمز الصحيح!',
       items: [
-        { questionOrPromptAr: '40 … 40', correctAnswerAr: 'مُتَسَاوِيَانِ', optionsAr: ['مُتَسَاوِيَانِ', '40 > 40', '40 < 40'], explanationAr: 'نفس العدد: لا نفتح الفم.' },
-        { questionOrPromptAr: '81 … 18', correctAnswerAr: '81 > 18', optionsAr: ['81 > 18', '81 < 18'], explanationAr: '8 عشرات أكبر من 1 عشرة.' },
+        { questionOrPromptAr: '14 … 14', correctAnswerAr: 'مُتَسَاوِيَانِ', optionsAr: ['مُتَسَاوِيَانِ', '14 > 14', '14 < 14'], explanationAr: 'نفس العدد: لا نفتح الفم.' },
+        { questionOrPromptAr: '18 … 9', correctAnswerAr: '18 > 9', optionsAr: ['18 > 9', '18 < 9'], explanationAr: '18 أكبر من 9.' },
       ],
       xpReward: 20,
     },
@@ -202,8 +202,8 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
         id: 'q1-math1ap-symbols',
         questionAr: 'أي كتابة صحيحة؟',
         options: [
-          { id: 'a', textAr: '29 < 52', isCorrect: true, explanationAr: '2 عشرات أصغر من 5 عشرات.' },
-          { id: 'b', textAr: '29 > 52', isCorrect: false },
+          { id: 'a', textAr: '12 < 17', isCorrect: true, explanationAr: '12 أصغر من 17.' },
+          { id: 'b', textAr: '12 > 17', isCorrect: false },
         ],
       },
     ],

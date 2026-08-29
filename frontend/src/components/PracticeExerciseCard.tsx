@@ -4,6 +4,7 @@ import { ProgressiveExercise } from '../types';
 import { renderTextWithMath } from './MathExpression';
 import { IrabTable } from './lessonViewer/IrabTable';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
+import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 
 interface PracticeExerciseCardProps {
   ex: ProgressiveExercise;
@@ -93,6 +94,10 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           {renderTextWithMath(renderArabicText(ex.problemAr))}
         </p>
       </div>
+
+      {ex.multiplicationVisual && (
+        <MultiplicationGroupsVisual {...ex.multiplicationVisual} compact />
+      )}
 
       {/* QCM / True-False */}
       {(ex.type === 'qcm' || ex.type === 'true_false') && ex.options && (

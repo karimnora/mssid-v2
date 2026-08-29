@@ -1,7 +1,7 @@
 import { CourseLesson } from '../../../types';
 
 const SOURCE_NOTE =
-  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة ثانية: طرح بالاحتفاظ، إحاطة الأعداد، الزاوية القائمة، المتر والغرام — دون جداول الضرب (مؤجّلة إلى 3AP).';
+  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة ثانية: طرح بالاحتفاظ، إحاطة الأعداد، الزاوية القائمة، المتر والغرام، مفهوم الضرب كجمع مكرر — دون جداول الضرب (مؤجّلة إلى 3AP).';
 
 export const MATH_2AP_GAPS: CourseLesson[] = [
   {
@@ -474,6 +474,117 @@ export const MATH_2AP_GAPS: CourseLesson[] = [
         options: [
           { id: 'a', textAr: '1 كغ أثقل من 1 غ', isCorrect: true, explanationAr: 'الكيلوغرام يساوي 1000 غرام.' },
           { id: 'b', textAr: '1 غ أثقل من 1 كغ', isCorrect: false },
+        ],
+      },
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE,
+  },
+
+  {
+    id: 'math-2ap-t3-multiplication-concept',
+    grade: '2AP',
+    subject: 'math',
+    trimester: 3,
+    domainAr: 'الأعداد والحساب',
+    sequenceAr: 'السلسلة 9: الضرب كجمع مكرر',
+    categoryAr: 'الرياضيات - مقدمة الضرب',
+    titleAr: 'الضَّرْبُ جَمْعاً مُكَرَّراً: 3 + 3 + 3 ✖️',
+    summaryAr: 'يكتشف التلميذ أن الضرب في 2AP هو جمع متكرر لنفس العدد (مجموعات متساوية) — بلا حفظ جداول الضرب.',
+    objectiveAr: 'ربط مجموعات متساوية بجمع مكرر، وقراءة صيغة بسيطة مثل 3 × 3 = 9.',
+    objectivesAr: [
+      'أَعُدُّ مَجْمُوعَاتٍ مُتَسَاوِيَةً (3 + 3 + 3).',
+      'أَفْهَمُ أن «3 × 3» تعني ثلاث مرات العدد 3.',
+      'أَحْسُبُ ضَرْبَ أعدادٍ صغيرةٍ بِجَمْعٍ مُكَرَّرٍ دُونَ جَدْوَلِ ضَرْبٍ.',
+    ],
+    discoveryAr: 'في كل صف 4 طاولات، وفي 3 صفوف. كم طاولة؟ نعد: 4 + 4 + 4 = 12.',
+    multiplicationVisuals: [
+      { groups: 3, perGroup: 4, itemEmoji: '🪑', captionAr: 'ثلاثة صفوف، في كل صف 4 طاولات — مثل القسم.' },
+      { groups: 3, perGroup: 3, itemEmoji: '⭐', captionAr: '3 × 3 = جمع ثلاث مرات العدد 3.' },
+    ],
+    rulesAr: [
+      'الضَّرْبُ في 2AP = جَمْعُ نَفْسِ العَدَدِ عِدَّةَ مَرَّاتٍ (جَمْعٌ مُكَرَّرٌ).',
+      'مِثَال: 3 × 4 = 3 + 3 + 3 + 3 = 12 (أربع مجموعات من 3).',
+      'مِثَال: 5 × 2 = 5 + 5 = 10 (مجموعتان من 5).',
+      'جَدَاوِلُ الضَّرْبِ تُدْرَسُ في 3AP — هنا نفهم الفكرة فقط.',
+    ],
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'number_cards',
+      titleAr: 'مجموعات متساوية — جمع مكرر',
+      introAr: 'كل بطاقة: عدّ المجموعات وجمعها. 3 × 3 = 3 + 3 + 3. لا جداول ضرب في 2AP.',
+      cards: [
+        { labelAr: '3 × 3', valueDisplay: '3 + 3 + 3 = 9', explanationAr: 'ثلاث مجموعات من 3: 3 + 3 + 3 = 9.', multiplicationVisual: { groups: 3, perGroup: 3, itemEmoji: '⭐' } },
+        { labelAr: '4 × 2', valueDisplay: '4 + 4 = 8', explanationAr: 'مجموعتان من 4: 4 + 4 = 8.', multiplicationVisual: { groups: 2, perGroup: 4, itemEmoji: '🍎' } },
+        { labelAr: '2 × 5', valueDisplay: '2 + 2 + 2 + 2 + 2 = 10', explanationAr: 'خمس مجموعات من 2.', multiplicationVisual: { groups: 5, perGroup: 2, itemEmoji: '⭐' } },
+        { labelAr: '5 × 3', valueDisplay: '5 + 5 + 5 = 15', explanationAr: 'ثلاث مجموعات من 5.', multiplicationVisual: { groups: 3, perGroup: 5, itemEmoji: '🍎' } },
+      ],
+    },
+    keyFormulas: [
+      { labelAr: 'جمع مكرر', formulaAr: 'a × b = a + a + … (b مرات)' },
+    ],
+    examplesAr: [
+      { problem: 'احسب: 2 × 4', solution: '2 + 2 + 2 + 2 = 8' },
+      { problem: 'في 3 أكياس 5 تفاحات. كم تفاحة؟', solution: '5 + 5 + 5 = 15 تفاحة (3 × 5 = 15)' },
+    ],
+    detailedCourse: {
+      introAr: 'الضرب ليس حفظاً في 2AP: نعد مجموعات متساوية ونجمع. مثل صفوف الكراسي في القسم.',
+      vocabulary: [
+        { termAr: 'مَجْمُوعَةٌ 👥', definitionAr: 'عدد متساوٍ من الأشياء مجتمعة.' },
+        { termAr: 'جَمْعٌ مُكَرَّرٌ ➕', definitionAr: 'إضافة نفس العدد عدة مرات.' },
+        { termAr: 'عَلامَةُ ×', definitionAr: 'اختصار لـ «مرات» — 3 × 4 = 3 أربع مرات.' },
+      ],
+      visualizationHintAr: 'ارسم 3 صفوف من 4 نقاط: عد كل صف (4) ثم اجمع 4 + 4 + 4.',
+      commonMistakes: [
+        { mistakeAr: 'جمع عددين مختلفين (3 + 4 بدل 3 + 3 + 3).', correctionAr: 'في a × b نكرر a وليس b+a.' },
+        { mistakeAr: 'حفظ جدول الضرب دون فهم المجموعات.', correctionAr: 'عد المجموعات أولاً، ثم اجمع.' },
+      ],
+      takeawayAr: 'الضرب = جمع مكرر لنفس العدد. 3 × 4 = 3 + 3 + 3 + 3.',
+    },
+    progressiveExercises: [
+      {
+        id: 'ex1-math2ap-mult',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — أكتشف',
+        problemAr: '3 × 2 = 3 + … = ؟',
+        hintsAr: ['مجموعتان من 3.'],
+        solutionAr: '6',
+        detailedCorrectionAr: '3 + 3 = 6.',
+        multiplicationVisual: { groups: 2, perGroup: 3, itemEmoji: '⭐' },
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-math2ap-mult',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — أتدرب',
+        problemAr: '4 × 3 = 4 + 4 + 4 = ؟',
+        hintsAr: ['اجمع ثلاث مرات 4.'],
+        solutionAr: '12',
+        detailedCorrectionAr: '4 + 4 + 4 = 12.',
+        multiplicationVisual: { groups: 3, perGroup: 4, itemEmoji: '🍎' },
+        xpReward: 15,
+      },
+    ],
+    educationalGame: {
+      id: 'game-math-2ap-mult',
+      type: 'quiz_flash',
+      titleAr: 'مجموعات متساوية ✖️',
+      instructionsAr: 'اختر ناتج الجمع المكرر!',
+      items: [
+        { questionOrPromptAr: '2 × 5 = ؟', correctAnswerAr: '10', optionsAr: ['10', '7', '12'], explanationAr: '2 + 2 + 2 + 2 + 2 = 10.' },
+        { questionOrPromptAr: '5 × 2 = ؟', correctAnswerAr: '10', optionsAr: ['10', '7', '15'], explanationAr: '5 + 5 = 10.' },
+      ],
+      xpReward: 20,
+    },
+    quiz: [
+      {
+        id: 'q1-math2ap-mult',
+        questionAr: '3 × 4 تعني:',
+        options: [
+          { id: 'a', textAr: '3 + 3 + 3 + 3 = 12', isCorrect: true, explanationAr: 'أربع مجموعات من 3.' },
+          { id: 'b', textAr: '3 + 4 = 7', isCorrect: false },
         ],
       },
     ],

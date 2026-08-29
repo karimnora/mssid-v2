@@ -171,6 +171,37 @@ describe('1AP playful lesson layout', () => {
     expect(screen.queryByText('🎈')).not.toBeInTheDocument();
   });
 
+  it('surfaces detailedCourse vocab, home activity, and takeaway in 1AP story', () => {
+    const richLesson: CourseLesson = {
+      ...spatial,
+      detailedCourse: {
+        introAr: 'intro',
+        vocabulary: [
+          { termAr: 'بَيْتٌ 🏠', definitionAr: 'مسكن العائلة.' },
+          { termAr: 'شَارِعٌ 🛣️', definitionAr: 'طريق في الحي.' },
+        ],
+        visualizationHintAr: 'ارسم بيتاً وشارعاً في دفترك.',
+        takeawayAr: 'بيت وشارع — كلمات حَيِّي.',
+      },
+    };
+    const onSpeak = vi.fn();
+    render(<YoungLessonStory lesson={richLesson} onSpeak={onSpeak} speakingKey={null} />);
+
+    expect(document.querySelector('[data-lesson-vocab="1ap"]')).toBeTruthy();
+    expect(screen.getByText('كَلِمَاتٌ جَدِيدَةٌ 📚')).toBeInTheDocument();
+    expect(screen.getByText('مسكن العائلة.')).toBeInTheDocument();
+    expect(document.querySelector('[data-lesson-takeaway="1ap"]')).toBeTruthy();
+    expect(screen.getByText(/أتذكر: بيت وشارع/)).toBeInTheDocument();
+
+    expect(screen.getByRole('button', { name: /نشاط مع وليّ الأمر/ })).toBeInTheDocument();
+    expect(screen.queryByText(/ارسم بيتاً/)).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /نشاط مع وليّ الأمر/ }));
+    expect(screen.getByText(/ارسم بيتاً وشارعاً في دفترك/)).toBeInTheDocument();
+
+    fireEvent.click(document.querySelector('[data-tap-speak="takeaway"]')!);
+    expect(onSpeak).toHaveBeenCalledWith('takeaway', expect.stringMatching(/بيت وشارع/));
+  });
+
   it('uses a child quiz title without shuffle jargon', () => {
     render(
       <LessonQuizPanel

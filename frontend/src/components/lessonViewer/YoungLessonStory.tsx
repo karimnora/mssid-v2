@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ChevronDown, Home } from 'lucide-react';
 import { CourseLesson } from '../../types';
 import { stripArabicTashkeel } from '../../utils/textFormatter';
 import { parsePlayfulSnippet, splitPlayfulLines, stripLatinGlosses } from './youngLessonLayout';
@@ -29,6 +30,10 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
   const discoveryLines = lesson.discoveryAr ? splitPlayfulLines(show(lesson.discoveryAr)) : [];
   const cards = (lesson.rulesAr || []).slice(0, 8);
   const example = lesson.examplesAr?.[0];
+  const vocabulary = (lesson.detailedCourse?.vocabulary || []).slice(0, 6);
+  const homeHint = lesson.detailedCourse?.visualizationHintAr;
+  const takeaway = lesson.detailedCourse?.takeawayAr;
+  const [showHomeActivity, setShowHomeActivity] = useState(false);
   // Nearly every 1AP title already carries a real emoji ("الأَشْكَالُ: ... 🔺"). Reusing it as the
   // last-resort fallback keeps any snippet without its own emoji on-topic instead of landing on an
   // unrelated DEFAULT_TILES pick (a star for a bike wheel, a clover for "3 apples"...).
@@ -72,6 +77,45 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
         </div>
       )}
 
+      {vocabulary.length > 0 && (
+        <div className="space-y-3" data-lesson-vocab="1ap">
+          <h3 className="text-sm font-black text-slate-700 text-center">كَلِمَاتٌ جَدِيدَةٌ 📚</h3>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {vocabulary.map((entry, i) => {
+              const termShown = show(entry.termAr);
+              const defShown = show(entry.definitionAr);
+              const snippet = parsePlayfulSnippet(termShown, i + 10, themeEmoji);
+              const key = `vocab-${i}`;
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded-3xl border border-[#E7E2D7] bg-white px-3 py-4 flex items-center gap-3 min-h-[5.5rem] min-w-0 shadow-sm"
+                >
+                  <TapSpeakButton
+                    snippetKey={key}
+                    text={snippet.speak || termShown}
+                    speakingKey={speakingKey}
+                    onSpeak={onSpeak}
+                    size="lg"
+                  />
+                  <div className="flex-1 flex flex-col items-center justify-center gap-0.5 text-center min-w-0">
+                    <span className="text-3xl sm:text-4xl leading-none" aria-hidden="true">
+                      {snippet.letterVisual ?? snippet.emoji}
+                    </span>
+                    <p className="text-lg sm:text-xl font-black text-[#1E293B] leading-snug break-words">
+                      {snippet.headline}
+                    </p>
+                    <p className="text-xs sm:text-sm font-bold text-slate-500 leading-snug line-clamp-2">{defShown}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {example && (() => {
         const problemSnippet = parsePlayfulSnippet(show(example.problem), 6, themeEmoji);
         const solutionSnippet = parsePlayfulSnippet(show(example.solution), 7, problemSnippet.emoji);
@@ -96,6 +140,63 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
           </div>
         );
       })()}
+
+      {homeHint && (
+        <div className="rounded-3xl border border-[#E7E2D7] bg-[#FFF8E7] overflow-hidden" data-lesson-home-activity="1ap">
+          <button
+            type="button"
+            onClick={() => setShowHomeActivity((v) => !v)}
+            aria-expanded={showHomeActivity}
+            className="w-full min-h-[60px] flex items-center justify-center gap-2 px-4 py-3 text-sm font-black text-[#5A3B00] cursor-pointer"
+          >
+            <Home className="w-4 h-4 shrink-0" aria-hidden="true" />
+            <span>نشاط مع وليّ الأمر 🏠</span>
+            <ChevronDown className={`w-4 h-4 shrink-0 transition-transform ${showHomeActivity ? 'rotate-180' : ''}`} />
+          </button>
+          <AnimatePresence initial={false}>
+            {showHomeActivity && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="flex items-start gap-3 px-4 pb-4 border-t border-[#F5D98A]/60 pt-3">
+                  <TapSpeakButton
+                    snippetKey="home-activity"
+                    text={show(homeHint)}
+                    speakingKey={speakingKey}
+                    onSpeak={onSpeak}
+                    size="lg"
+                  />
+                  <p className="text-sm font-bold text-[#5A3B00] leading-relaxed flex-1 min-w-0">{show(homeHint)}</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {takeaway && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          data-lesson-takeaway="1ap"
+          className="flex items-start gap-3 rounded-3xl border border-[#F5D98A] bg-[#FFF8E7] px-4 py-4 min-h-12"
+        >
+          <TapSpeakButton
+            snippetKey="takeaway"
+            text={show(takeaway)}
+            speakingKey={speakingKey}
+            onSpeak={onSpeak}
+            size="lg"
+          />
+          <p className="text-base sm:text-lg font-black text-[#5A3B00] leading-snug flex-1 min-w-0">
+            <span className="mr-1" aria-hidden="true">💡</span>
+            أتذكر: {show(takeaway)}
+          </p>
+        </motion.div>
+      )}
     </div>
   );
 };

@@ -10,6 +10,7 @@ import {
   Boxes
 } from 'lucide-react';
 import type { MathInteractiveConfig, MathCountingItem, MathPlaceValueItem } from '../types';
+import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
 
 interface MathInteractiveProps {
@@ -76,6 +77,9 @@ const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ confi
                 {config.cards[activeIdx].valueDisplay}
               </span>
             </div>
+            {config.cards[activeIdx].multiplicationVisual && (
+              <MultiplicationGroupsVisual {...config.cards[activeIdx].multiplicationVisual!} compact />
+            )}
             <p className="text-sm font-bold text-slate-200 leading-relaxed bg-emerald-950 p-4 rounded-2xl border border-emerald-800">
               {config.cards[activeIdx].explanationAr}
             </p>

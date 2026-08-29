@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
+import { getOfficialAxisLabel } from '../utils/curriculumMeta';
 import { TabId, LessonStep, tabTransition } from './lessonViewer/shared';
 import { usePremiumLessonContent } from './lessonViewer/usePremiumLessonContent';
 import { useLessonSpeech } from './lessonViewer/useLessonSpeech';
@@ -401,7 +402,19 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 </div>
               </div>
           )}
-          {(lesson.sourceNoteAr || (lesson.objectivesAr && lesson.objectivesAr.length > 0)) && (
+          {lesson.instructionAudioAr && (
+            <div className="flex items-center justify-center gap-3 bg-white/80 border border-emerald-100 rounded-2xl px-4 py-3">
+              <TapSpeakButton
+                snippetKey="instruction"
+                text={lesson.instructionAudioAr}
+                speakingKey={speech.speakingKey}
+                onSpeak={speech.speakSnippet}
+                size="lg"
+              />
+              <p className="text-sm font-bold text-slate-700 text-center leading-relaxed">{renderArabicMath(lesson.instructionAudioAr)}</p>
+            </div>
+          )}
+          {(lesson.sourceNoteAr || (lesson.objectivesAr && lesson.objectivesAr.length > 0) || getOfficialAxisLabel(lesson)) && (
             <div className="flex justify-center">
               <button
                 onClick={() => setShowParentInfo((v) => !v)}
@@ -415,13 +428,18 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             </div>
           )}
           <AnimatePresence initial={false}>
-            {showParentInfo && (lesson.sourceNoteAr || (lesson.objectivesAr && lesson.objectivesAr.length > 0)) && (
+            {showParentInfo && (lesson.sourceNoteAr || (lesson.objectivesAr && lesson.objectivesAr.length > 0) || getOfficialAxisLabel(lesson)) && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 className="text-slate-500 text-xs leading-relaxed overflow-hidden space-y-2"
               >
+                {getOfficialAxisLabel(lesson) && (
+                  <p className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-100 rounded-xl px-3 py-2">
+                    محور المنهاج: {renderArabicMath(getOfficialAxisLabel(lesson)!)}
+                  </p>
+                )}
                 {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
                   <div className="space-y-1">
                     <span className="font-extrabold text-slate-600 block">سيتعلم طفلك في هذا الدرس:</span>
@@ -457,6 +475,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             {lesson.difficultyTier && (
               <Badge variant="xp">
                 {'⭐'.repeat(lesson.difficultyTier)} {lesson.difficultyTier === 1 ? 'سهل' : lesson.difficultyTier === 2 ? 'متوسط' : 'متقدم'}
+              </Badge>
+            )}
+            {getOfficialAxisLabel(lesson) && (
+              <Badge variant="info" className="max-w-[14rem] truncate" title={getOfficialAxisLabel(lesson)}>
+                {getOfficialAxisLabel(lesson)}
               </Badge>
             )}
           </div>
