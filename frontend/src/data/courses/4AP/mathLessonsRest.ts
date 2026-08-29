@@ -98,7 +98,26 @@ export const MATH_4AP_REST: CourseLesson[] = [
             operationsAr: '245 ÷ 8\n24 ÷ 8 = 3 (الباقي 0)\n5 ÷ 8 = 0 (الباقي 5)\nالحاصل = 30، الباقي = 5\n(30 × 8) + 5 = 245 ✓',
         },
     ],
-    interactiveTool: 'multiplication_table',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+      type: 'written_operation',
+      titleAr: 'القسمة الإقليدية عمودياً',
+      introAr: 'اضغط على كل قسمة لترى خطواتها كاملة: اقسم، اضرب، اطرح، أنزل.',
+      operations: [
+        {
+          id: 'div1',
+          labelAr: '245 ÷ 8',
+          operationsAr: '245 ÷ 8\n24 ÷ 8 = 3 (الباقي 0)\n5 ÷ 8 = 0 (الباقي 5)\nالحاصل = 30، الباقي = 5\n(30 × 8) + 5 = 245 ✓',
+          solutionAr: '245 ÷ 8 = 30 والباقي 5.',
+        },
+        {
+          id: 'div2',
+          labelAr: '187 ÷ 6',
+          operationsAr: '187 ÷ 6\n18 ÷ 6 = 3 (الباقي 0)\n7 ÷ 6 = 1 (الباقي 1)\nالحاصل = 31، الباقي = 1\n(31 × 6) + 1 = 187 ✓',
+          solutionAr: '187 ÷ 6 = 31 والباقي 1.',
+        },
+      ],
+    },
     ...build4ApPractice('math-4ap-division-euclidean', [
         { problemAr: 'في القسمة الإقليدية، ماذا يمثل الباقي؟', solutionAr: 'ما تبقى بعد التوزيع', detailedCorrectionAr: 'الباقي هو الكمية غير الموزّعة.', options: [{ id: 'a', textAr: 'ما تبقى بعد التوزيع', isCorrect: true }, { id: 'b', textAr: 'عدد الحصص', isCorrect: false }] },
         { problemAr: '187 ÷ 6: ما الحاصل والباقي؟', solutionAr: '31 والباقي 1', detailedCorrectionAr: '(31×6)+1=187.', type: 'qcm', options: [{ id: 'a', textAr: '31 والباقي 1', isCorrect: true }, { id: 'b', textAr: '30 والباقي 7', isCorrect: false }] },
