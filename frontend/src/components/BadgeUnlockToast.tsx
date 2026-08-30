@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Badge } from '../types';
-import { X } from 'lucide-react';
+import { X, Share2 } from 'lucide-react';
 
 interface BadgeUnlockToastProps {
   /** Queue of newly-unlocked badges — only the first is shown; dismissing (or the auto-timeout) advances the queue. */
   queue: Badge[];
   onDismiss: () => void;
+  /** Opens the shareable-certificate modal for the currently-shown badge (see CertificateModal). */
+  onShare?: (badge: Badge) => void;
 }
 
 const AUTO_DISMISS_MS = 5000;
 
 /** Celebratory toast shown the moment a badge's criteria becomes true (see utils/badgeEngine.ts). */
-export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDismiss }) => {
+export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDismiss, onShare }) => {
   const current = queue[0];
 
   useEffect(() => {
@@ -62,13 +64,24 @@ export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDis
               <p className="text-sm font-extrabold leading-tight truncate">{current.titleAr}</p>
               <p className="text-[11px] text-white/85 leading-snug">{current.descriptionAr}</p>
             </div>
-            <button
-              onClick={onDismiss}
-              className="shrink-0 w-6 h-6 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
-              aria-label="إغلاق"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
+            <div className="flex items-center gap-1.5 shrink-0">
+              {onShare && (
+                <button
+                  onClick={() => onShare(current)}
+                  className="w-6 h-6 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
+                  aria-label="مشاركة الشهادة"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                </button>
+              )}
+              <button
+                onClick={onDismiss}
+                className="w-6 h-6 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
+                aria-label="إغلاق"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

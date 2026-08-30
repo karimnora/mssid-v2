@@ -1,9 +1,10 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { CourseLesson, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { AiTutorModal } from './AiTutorModal';
 import { BadgeUnlockToast } from './BadgeUnlockToast';
+import { CertificateModal } from './CertificateModal';
 import { AuthModal } from './AuthModal';
 import { EmailVerificationPopup } from './EmailVerificationPopup';
 import { MobileAppSimulator } from './MobileAppSimulator';
@@ -91,6 +92,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onRefreshFromDb,
 }) => {
   const t = useTranslation('navigation');
+  const [certificateBadge, setCertificateBadge] = useState<BadgeInfo | null>(null);
   return (
   <>
     <AiTutorModal
@@ -99,7 +101,14 @@ export const AppModals: React.FC<AppModalsProps> = ({
       grade={grade}
     />
 
-    <BadgeUnlockToast queue={newlyUnlockedBadges} onDismiss={onDismissBadge} />
+    <BadgeUnlockToast queue={newlyUnlockedBadges} onDismiss={onDismissBadge} onShare={setCertificateBadge} />
+
+    <CertificateModal
+      badge={certificateBadge}
+      childName={userProfile.name}
+      grade={userProfile.grade}
+      onClose={() => setCertificateBadge(null)}
+    />
 
     <Suspense fallback={null}>
       <ProfileModal
@@ -114,6 +123,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onUpdateAvatar={onUpdateAvatar}
         onRefreshFromDb={onRefreshFromDb}
         onOpenAdminConsole={onOpenAdminConsole}
+        onShareBadge={setCertificateBadge}
       />
     </Suspense>
 

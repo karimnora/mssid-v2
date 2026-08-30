@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail, Share2 } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { Card, XPProgressBar } from './ui';
@@ -10,6 +10,7 @@ import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
 import { AuthService } from '../services/authService';
 import { ParentGateModal } from './ParentGateModal';
+import { Badge as BadgeInfo } from '../types';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -21,6 +22,8 @@ interface ProfileModalProps {
   onUpdateAvatar?: (newAvatar: string) => void;
   onRefreshFromDb?: () => Promise<void>;
   onOpenAdminConsole?: () => void;
+  /** Opens the shareable-certificate modal for an already-unlocked badge (see CertificateModal). */
+  onShareBadge?: (badge: BadgeInfo) => void;
 }
 
 const AVATAR_OPTIONS = [
@@ -39,6 +42,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onUpdateAvatar,
   onRefreshFromDb,
   onOpenAdminConsole,
+  onShareBadge,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
@@ -376,7 +380,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                       <div className="text-2xl p-1.5 bg-white rounded-xl border-2 border-[#E7E2D7] shrink-0">
                         {b.icon}
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5">
                           <h4 className="font-extrabold text-sm">{b.titleAr}</h4>
                           {isUnlocked ? (
@@ -389,6 +393,16 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                           {isUnlocked ? b.descriptionAr : describeCriteria(b.criteria)}
                         </p>
                       </div>
+                      {isUnlocked && onShareBadge && (
+                        <button
+                          type="button"
+                          onClick={() => onShareBadge(b)}
+                          className="shrink-0 w-8 h-8 rounded-xl bg-white border-2 border-[#F5D98A] text-[#92400E] flex items-center justify-center cursor-pointer hover:bg-[#FFF3D6]"
+                          aria-label={`مشاركة وسام ${b.titleAr}`}
+                        >
+                          <Share2 className="w-4 h-4" />
+                        </button>
+                      )}
                     </div>
                   );
                 })}
