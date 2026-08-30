@@ -258,6 +258,10 @@ export const AppModals: React.FC<AppModalsProps> = ({
           isOpen={modals.isPrintablesOpen}
           onClose={() => modals.setIsPrintablesOpen(false)}
           defaultGrade={grade}
+          onOpenCertificates={() => {
+            modals.setIsPrintablesOpen(false);
+            modals.setIsHonorCertificatesOpen(true);
+          }}
         />
       )}
 

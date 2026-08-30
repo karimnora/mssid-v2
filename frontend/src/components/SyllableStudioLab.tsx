@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowFrenchInLab } from '../utils/labGradePolicy';
 
@@ -35,7 +35,7 @@ const FRENCH_WORDS: SyllableWord[] = [
 
 const SYLLABLE_COLORS = ['bg-sky-500', 'bg-amber-500', 'bg-emerald-500', 'bg-fuchsia-500'];
 
-export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2AP', onReward }) => {
+export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2AP', onReward, onBack }) => {
   const showFrench = canShowFrenchInLab(grade);
   const [activeTab, setActiveTab] = useState<StudioTab>('arabic');
   const [wordIdx, setWordIdx] = useState<number>(0);
@@ -74,15 +74,26 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
   return (
     <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-cyan-700 via-sky-800 to-blue-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-cyan-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>أستوديو المقاطع الصوتية (1AP - 3AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-14 h-14 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-6 h-6" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>أستوديو المقاطع الصوتية (1AP - 3AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">تَفْكِيكُ الكَلِمَاتِ إِلَى مَقَاطِعَ</h1>
+            <p className="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-3xl">
+              صفّق مع كل مقطع صوتي تسمعه، ثم شاهد الكلمة وهي تنقسم إلى مقاطعها الملونة.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">تَفْكِيكُ الكَلِمَاتِ إِلَى مَقَاطِعَ</h1>
-          <p className="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-3xl">
-            صفّق مع كل مقطع صوتي تسمعه، ثم شاهد الكلمة وهي تنقسم إلى مقاطعها الملونة.
-          </p>
         </div>
       </div>
 

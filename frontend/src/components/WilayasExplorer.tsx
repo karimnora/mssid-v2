@@ -39,6 +39,21 @@ interface WilayasExplorerProps {
   onReward?: (coins: number, xp: number) => void;
 }
 
+// wilayasData.ts's mapPosition values are geographically literal, but Algeria's real geography
+// crams the huge majority of wilayas (30 of 58) into just the northernmost ~12% of that vertical
+// range (the coastal/Tell band) while the sparse Sahara stretches over the remaining ~80% — so a
+// literal 1:1 plot makes ~30 pins overlap into an unreadable blob at the top of the map. This
+// stretches that crowded band out to ~42% of the display height (compressing the sparser south
+// to make room) so every pin gets breathing room, at the cost of exact geographic proportion —
+// a legibility trade worth making for a tap target aimed at 8-11 year olds.
+const CROWDED_BAND_MAX_Y = 29;
+const remapMapY = (y: number): number => {
+  if (y <= CROWDED_BAND_MAX_Y) {
+    return 4 + ((y - 17) / (CROWDED_BAND_MAX_Y - 17)) * 42;
+  }
+  return 46 + ((y - 30) / (96 - 30)) * 52;
+};
+
 // 6 Guided Algerian Expeditions
 interface Expedition {
   id: string;
@@ -71,7 +86,7 @@ const EXPEDITIONS_LIST: Expedition[] = [
     badge: '🏰',
     descriptionAr: 'مدن الورود والتيطري ومعسكر موطن الأمير عبد القادر وقلاع سيدي بلعباس.',
     regionColor: 'from-emerald-600 to-teal-500',
-    wilayaCodes: [9, 26, 44, 48, 29, 22, 24, 41],
+    wilayaCodes: [9, 26, 44, 48, 29, 22, 24, 41, 10],
     rewardCoins: 35,
     rewardXp: 70,
   },
@@ -82,7 +97,7 @@ const EXPEDITIONS_LIST: Expedition[] = [
     badge: '🦅',
     descriptionAr: 'عواصم الحبوب، مدينة الجسور المعلقة قسنطينة، تيمقاد الأثرية ومهد الثورة.',
     regionColor: 'from-amber-600 to-orange-500',
-    wilayaCodes: [19, 34, 25, 5, 4, 40, 43, 20, 14, 38],
+    wilayaCodes: [19, 34, 25, 5, 4, 40, 43, 20, 14, 38, 12],
     rewardCoins: 45,
     rewardXp: 90,
   },
@@ -176,6 +191,15 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   >('map_list');
   const [showCertificateModal, setShowCertificateModal] = useState(false);
   const [mapZoomLevel, setMapZoomLevel] = useState<'national' | 'north' | 'south'>('national');
+  // True optical zoom (distinct from mapZoomLevel's region filter above): grows the map's real
+  // pixel size inside its scrollable wrapper, so the browser's native scroll/drag handles panning
+  // for free instead of hand-rolling pointer-drag logic — works the same with mouse, trackpad and
+  // touch. Steps of 0.5x, 1x (fit) to 3x (close-up on the crowded north).
+  const MAP_ZOOM_MIN = 1;
+  const MAP_ZOOM_MAX = 3;
+  const [mapScale, setMapScale] = useState(1);
+  const zoomIn = () => setMapScale((z) => Math.min(MAP_ZOOM_MAX, +(z + 0.5).toFixed(1)));
+  const zoomOut = () => setMapScale((z) => Math.max(MAP_ZOOM_MIN, +(z - 0.5).toFixed(1)));
   const certificatePrintRef = useRef<HTMLDivElement>(null);
 
   // Visited / Discovered wilayas for the passport
@@ -480,9 +504,10 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
           {onBack && (
             <button
               onClick={onBack}
-              className="px-4 py-2.5 bg-white/15 hover:bg-white/25 text-white rounded-2xl font-black text-xs transition-all border border-white/30 shadow-sm cursor-pointer whitespace-nowrap"
+              aria-label="العودة للأدوات"
+              className="w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
             >
-              العودة للأدوات
+              <ArrowRight className="w-5 h-5" />
             </button>
           )}
         </div>
@@ -568,8 +593,8 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   خريطة الجزائر التفاعلية — انقر على أي ولاية لاستكشافها
                 </h3>
               </div>
-              <div className="flex items-center gap-2 text-xs">
-                <span className="text-[var(--app-text-muted)] font-medium">عرض النطاق:</span>
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 text-xs w-full sm:w-auto">
+                <span className="text-[var(--app-text-muted)] font-medium w-full sm:w-auto text-center sm:text-start">عرض النطاق:</span>
                 <button
                   onClick={() => setMapZoomLevel('national')}
                   className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
@@ -600,30 +625,61 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                 >
                   الجنوب والصحراء
                 </button>
+
+                <span className="hidden sm:block w-px h-5 bg-[var(--app-card-border)] mx-1" />
+
+                <button
+                  onClick={zoomOut}
+                  disabled={mapScale <= MAP_ZOOM_MIN}
+                  aria-label="تصغير الخريطة"
+                  className="min-w-[44px] min-h-[44px] rounded-lg font-black text-base flex items-center justify-center bg-[var(--app-card-subtle)] text-[var(--app-text)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-[var(--app-card-bg)] border border-[var(--app-card-border)]"
+                >
+                  −
+                </button>
+                <span className="text-[11px] font-black text-[var(--app-text-muted)] w-10 text-center" dir="ltr">
+                  {Math.round(mapScale * 100)}%
+                </span>
+                <button
+                  onClick={zoomIn}
+                  disabled={mapScale >= MAP_ZOOM_MAX}
+                  aria-label="تكبير الخريطة"
+                  className="min-w-[44px] min-h-[44px] rounded-lg font-black text-base flex items-center justify-center bg-[var(--app-card-subtle)] text-[var(--app-text)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-[var(--app-card-bg)] border border-[var(--app-card-border)]"
+                >
+                  +
+                </button>
               </div>
             </div>
 
-            {/* Stylized Visual Map Stage */}
-            <div className="relative w-full h-80 sm:h-96 rounded-2xl bg-gradient-to-b from-sky-100 via-amber-50 to-amber-100 dark:from-slate-900 dark:via-emerald-950/20 dark:to-amber-950/30 border border-emerald-200 dark:border-emerald-900/50 overflow-hidden select-none">
+            {/* Stylized Visual Map Stage — the outer div is a fixed-size scrollable "window";
+                the inner stage grows to mapScale×its base size, so zooming in reveals more real
+                pixel detail and native scroll/touch-drag pans around it for free (no hand-rolled
+                pointer-drag math needed). */}
+            <div className="w-full h-[400px] sm:h-[480px] overflow-auto rounded-2xl border border-emerald-200 dark:border-emerald-900/50">
+            <div
+              className="relative select-none"
+              style={{ width: `${100 * mapScale}%`, height: `${420 * mapScale}px` }}
+            >
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-sky-100 via-amber-50 to-amber-100 dark:from-slate-900 dark:via-emerald-950/20 dark:to-amber-950/30 overflow-hidden">
               {/* Sea banner top */}
-              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-sky-400/25 to-transparent flex items-center justify-center">
+              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-sky-400/25 to-transparent flex items-center justify-center">
                 <span className="text-[11px] font-black text-sky-800 dark:text-sky-300 tracking-wider">
                   🌊 البحر الأبيض المتوسط (Méditerranée)
                 </span>
               </div>
 
-              {/* Geographic Zones Bands */}
-              <div className="absolute top-10 left-4 right-4 h-16 rounded-xl border border-blue-300/40 bg-blue-500/5 flex items-center justify-start px-4">
+              {/* Geographic Zones Bands — percentage-based so they track remapMapY's breakpoints
+                  (4%/46%/98%) rather than fixed pixel offsets tuned for the old, shorter map. */}
+              <div className="absolute left-4 right-4 rounded-xl border border-blue-300/40 bg-blue-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '4%', height: '25%' }}>
                 <span className="text-[10px] font-black text-blue-900 dark:text-blue-300">
                   النطاق التلي والساحلي
                 </span>
               </div>
-              <div className="absolute top-28 left-4 right-4 h-16 rounded-xl border border-amber-300/40 bg-amber-500/5 flex items-center justify-start px-4">
+              <div className="absolute left-4 right-4 rounded-xl border border-amber-300/40 bg-amber-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '29%', height: '17%' }}>
                 <span className="text-[10px] font-black text-amber-900 dark:text-amber-300">
                   نطاق الهضاب العليا والسهوب
                 </span>
               </div>
-              <div className="absolute top-46 bottom-4 left-4 right-4 rounded-xl border border-emerald-300/40 bg-emerald-500/5 flex items-end justify-start p-4">
+              <div className="absolute left-4 right-4 bottom-4 rounded-xl border border-emerald-300/40 bg-emerald-500/5 flex items-end justify-start p-4" style={{ top: '46%' }}>
                 <span className="text-[10px] font-black text-emerald-900 dark:text-emerald-300">
                   نطاق الصحراء والواحات وجبال الهقار والطاسيلي
                 </span>
@@ -645,7 +701,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                     onClick={() => handleSelectWilaya(w)}
                     style={{
                       left: `${pos.xPercent}%`,
-                      top: `${pos.yPercent}%`,
+                      top: `${remapMapY(pos.yPercent)}%`,
                       transform: 'translate(-50%, -50%)',
                     }}
                     title={`${w.codeStr} - ${w.nameAr}`}
@@ -670,6 +726,8 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   </button>
                 );
               })}
+            </div>
+            </div>
             </div>
           </div>
 

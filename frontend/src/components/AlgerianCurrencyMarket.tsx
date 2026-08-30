@@ -347,9 +347,10 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
         {onBack && (
           <button
             onClick={onBack}
-            className="z-10 px-5 py-2.5 bg-white/15 hover:bg-white/25 text-white rounded-2xl font-black text-xs transition-all border border-white/30 shadow-sm cursor-pointer whitespace-nowrap"
+            aria-label="العودة للأدوات"
+            className="z-10 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >
-            العودة للأدوات
+            <ArrowRight className="w-5 h-5" />
           </button>
         )}
       </div>

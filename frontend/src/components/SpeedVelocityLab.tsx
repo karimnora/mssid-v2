@@ -540,6 +540,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
 
   return (
     <div
+      data-lab-instrument
       className="w-full bg-slate-950 text-slate-100 rounded-3xl p-4 sm:p-6 font-sans shadow-2xl border border-slate-800 flex flex-col items-center select-none"
       dir={language === 'ar' ? 'rtl' : 'ltr'}
     >
@@ -549,9 +550,10 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           {onBack && (
             <button
               onClick={onBack}
-              className="px-4 py-2 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-black text-sm border border-slate-700 active:scale-95 transition-all"
+              aria-label={t('العودة للدروس والمختبرات', 'Retour')}
+              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-lg border border-slate-700 active:scale-95 transition-all"
             >
-              ⬅️ {t('العودة للدروس والمختبرات', 'Retour')}
+              ⬅️
             </button>
           )}
           <div className="flex items-center gap-2">
@@ -715,7 +717,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     value={vehicleAId}
                     onChange={(e) => setVehicleAId(e.target.value)}
                     disabled={raceState === 'racing' || raceState === 'countdown'}
-                    className="w-full bg-slate-900 text-white font-bold text-sm rounded-xl px-3 py-2 border border-indigo-500/40 focus:outline-none"
+                    className="w-full appearance-none bg-slate-900 text-white font-bold text-sm rounded-xl px-3 py-2 border border-indigo-500/40 focus:outline-none"
                   >
                     {CITY_VEHICLES.map((v) => (
                       <option key={v.id} value={v.id}>
@@ -748,7 +750,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     value={distanceMeters}
                     onChange={(e) => setDistanceMeters(Number(e.target.value))}
                     disabled={raceState === 'racing' || raceState === 'countdown'}
-                    className="bg-transparent text-amber-300 font-black focus:outline-none"
+                    className="appearance-none bg-transparent text-amber-300 font-black focus:outline-none"
                   >
                     <option value={100}>100 m</option>
                     <option value={200}>200 m</option>
@@ -805,7 +807,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     value={vehicleBId}
                     onChange={(e) => setVehicleBId(e.target.value)}
                     disabled={raceState === 'racing' || raceState === 'countdown'}
-                    className="w-full bg-slate-900 text-white font-bold text-sm rounded-xl px-3 py-2 border border-rose-500/40 focus:outline-none"
+                    className="w-full appearance-none bg-slate-900 text-white font-bold text-sm rounded-xl px-3 py-2 border border-rose-500/40 focus:outline-none"
                   >
                     {CITY_VEHICLES.map((v) => (
                       <option key={v.id} value={v.id}>
@@ -1331,7 +1333,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 <select
                   value={selectedTripId}
                   onChange={(e) => setSelectedTripId(e.target.value)}
-                  className="w-full bg-slate-950 text-white font-bold text-sm rounded-xl px-3 py-2.5 border border-slate-800 focus:outline-none"
+                  className="w-full appearance-none bg-slate-950 text-white font-bold text-sm rounded-xl px-3 py-2.5 border border-slate-800 focus:outline-none"
                 >
                   {ALGERIAN_TRIPS.map((tr) => (
                     <option key={tr.id} value={tr.id}>
@@ -1346,7 +1348,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 <select
                   value={tripVehicleId}
                   onChange={(e) => setTripVehicleId(e.target.value)}
-                  className="w-full bg-slate-950 text-white font-bold text-sm rounded-xl px-3 py-2.5 border border-slate-800 focus:outline-none"
+                  className="w-full appearance-none bg-slate-950 text-white font-bold text-sm rounded-xl px-3 py-2.5 border border-slate-800 focus:outline-none"
                 >
                   {CITY_VEHICLES.map((v) => (
                     <option key={v.id} value={v.id}>
@@ -1361,7 +1363,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 <select
                   value={departureHour}
                   onChange={(e) => setDepartureHour(Number(e.target.value))}
-                  className="w-full bg-slate-950 text-white font-bold text-sm rounded-xl px-3 py-2.5 border border-slate-800 focus:outline-none"
+                  className="w-full appearance-none bg-slate-950 text-white font-bold text-sm rounded-xl px-3 py-2.5 border border-slate-800 focus:outline-none"
                 >
                   {Array.from({ length: 24 }).map((_, h) => (
                     <option key={h} value={h}>

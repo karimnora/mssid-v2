@@ -313,10 +313,10 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
             {onBack && (
               <button
                 onClick={onBack}
-                className="px-3.5 py-2.5 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+                aria-label="العودة"
+                className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white/20 hover:bg-white/30 text-white transition-all cursor-pointer"
               >
-                <span>العودة</span>
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-5 h-5" />
               </button>
             )}
           </div>

@@ -467,9 +467,10 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
         {onBack && (
           <button
             onClick={onBack}
-            className="z-10 px-5 py-2.5 bg-white/15 hover:bg-white/25 text-white rounded-2xl font-black text-xs transition-all border border-white/30 shadow-sm cursor-pointer whitespace-nowrap"
+            aria-label="العودة للأدوات"
+            className="z-10 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >
-            العودة للأدوات
+            <ArrowRight className="w-5 h-5" />
           </button>
         )}
       </div>
@@ -576,7 +577,17 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                   <motion.button
                     key={hero.id}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => setSelectedHero(hero)}
+                    onClick={() => {
+                      setSelectedHero(hero);
+                      // On mobile the detail panel sits below the (scrollable) heroes grid, not
+                      // beside it like the desktop sticky sidebar — without this, tapping a hero
+                      // silently updates state below the fold and the child sees no visible
+                      // reaction to their tap. The timeout lets the panel's content re-render with
+                      // the new hero before we measure where to scroll.
+                      setTimeout(() => {
+                        document.getElementById('hero-detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 80);
+                    }}
                     className={`p-4 rounded-3xl border-2 text-right transition-all flex flex-col justify-between gap-3 cursor-pointer ${
                       isSelected
                         ? 'bg-emerald-50/20 dark:bg-emerald-950/30 border-emerald-600 shadow-md scale-[1.02]'
@@ -613,7 +624,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           </div>
 
           {/* Right Column: Selected Hero Full Profile Card (5 cols) */}
-          <div className="lg:col-span-5 space-y-4 sticky top-6">
+          <div id="hero-detail-panel" className="lg:col-span-5 space-y-4 lg:sticky lg:top-6 scroll-mt-20">
             <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border-2 border-emerald-600 shadow-xl space-y-5">
               <div className="flex items-start justify-between border-b border-[var(--app-card-border)] pb-4">
                 <div className="flex items-center gap-3">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Sparkles, RotateCcw } from 'lucide-react';
+import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowRespiratoryAnatomyTab } from '../utils/labGradePolicy';
 
@@ -13,15 +13,15 @@ type AnatomyTab = 'digestive' | 'respiratory';
 
 const DIGESTIVE_ORGANS = [
   { id: 'mouth', order: 1, nameAr: 'الفَمُ', icon: '👄', roleAr: 'يَبْدَأُ الهَضْمُ هُنَا: الأَسْنَانُ تَطْحَنُ الطَّعَامَ وَاللُّعَابُ يُلَيِّنُهُ.' },
-  { id: 'esophagus', order: 2, nameAr: 'المَرِيءُ', icon: '⬇️', roleAr: 'أُنْبُوبٌ يَنْقُلُ الطَّعَامَ المَمْضُوغَ مِنَ الفَمِ إِلَى المَعِدَةِ.' },
-  { id: 'stomach', order: 3, nameAr: 'المَعِدَةُ', icon: '🟠', roleAr: 'كِيسٌ عَضَلِيٌّ يَهْضِمُ الطَّعَامَ بِعُصَارَاتٍ خَاصَّةٍ فَيُصْبِحُ سَائِلاً.' },
+  { id: 'esophagus', order: 2, nameAr: 'المَرِيءُ', icon: '〰️', roleAr: 'أُنْبُوبٌ يَنْقُلُ الطَّعَامَ المَمْضُوغَ مِنَ الفَمِ إِلَى المَعِدَةِ.' },
+  { id: 'stomach', order: 3, nameAr: 'المَعِدَةُ', icon: '🫙', roleAr: 'كِيسٌ عَضَلِيٌّ يَهْضِمُ الطَّعَامَ بِعُصَارَاتٍ خَاصَّةٍ فَيُصْبِحُ سَائِلاً.' },
   { id: 'small_intestine', order: 4, nameAr: 'الأَمْعَاءُ الدَّقِيقَةُ', icon: '🌀', roleAr: 'تَمْتَصُّ العَنَاصِرَ المُفِيدَةَ مِنَ الطَّعَامِ إِلَى الدَّمِ.' },
   { id: 'large_intestine', order: 5, nameAr: 'الأَمْعَاءُ الغَلِيظَةُ', icon: '🟤', roleAr: 'تَمْتَصُّ المَاءَ وَتُخْرِجُ الفَضَلَاتِ غَيْرَ المُفِيدَةِ.' },
 ];
 
 const RESPIRATORY_ORGANS = [
   { id: 'nose', order: 1, nameAr: 'الأَنْفُ وَالفَمُ', icon: '👃', roleAr: 'يَدْخُلُ الهَوَاءُ مِنْ هُنَا وَيُنَقَّى وَيُدَفَّأُ.' },
-  { id: 'trachea', order: 2, nameAr: 'القَصَبَةُ الهَوَائِيَّةُ', icon: '⬇️', roleAr: 'أُنْبُوبٌ يَنْقُلُ الهَوَاءَ نَحْوَ الرِّئَتَيْنِ.' },
+  { id: 'trachea', order: 2, nameAr: 'القَصَبَةُ الهَوَائِيَّةُ', icon: '🌬️', roleAr: 'أُنْبُوبٌ يَنْقُلُ الهَوَاءَ نَحْوَ الرِّئَتَيْنِ.' },
   { id: 'lungs', order: 3, nameAr: 'الرِّئَتَانِ', icon: '🫁', roleAr: 'عُضْوَانِ إِسْفَنْجِيَّانِ يَمْتَلِئَانِ بِالهَوَاءِ وَيُبَادِلَانِ الأُكْسِجِينَ وَثَانِي أُكْسِيدِ الكَرْبُونِ.' },
   { id: 'heart_blood', order: 4, nameAr: 'الدَّمُ', icon: '❤️', roleAr: 'يَحْمِلُ الأُكْسِجِينَ مِنَ الرِّئَتَيْنِ إِلَى كُلِّ خَلَايَا الجِسْمِ.' },
 ];
@@ -41,7 +41,7 @@ const ORGAN_LABEL: Record<string, string> = Object.fromEntries(
   [...DIGESTIVE_ORGANS, ...RESPIRATORY_ORGANS].map((o) => [o.id, o.nameAr])
 );
 
-export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '5AP', onReward }) => {
+export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '5AP', onReward, onBack }) => {
   const showRespiratory = canShowRespiratoryAnatomyTab(grade);
   const [activeTab, setActiveTab] = useState<AnatomyTab>('digestive');
   const [selectedOrgan, setSelectedOrgan] = useState<string>('mouth');
@@ -78,19 +78,30 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '5AP',
   return (
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-rose-700 via-pink-800 to-fuchsia-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>{grade === '4AP' ? 'مختبر الجهاز الهضمي (4AP)' : 'مختبر جسم الإنسان (4AP–5AP)'}</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>{grade === '4AP' ? 'مختبر الجهاز الهضمي (4AP)' : 'مختبر جسم الإنسان (4AP–5AP)'}</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">
+              {showRespiratory ? 'الجهاز الهضمي والجهاز التنفسي' : 'الجهاز الهضمي'}
+            </h1>
+            <p className="text-xs sm:text-sm text-rose-100 leading-relaxed max-w-3xl">
+              {showRespiratory
+                ? 'اكتشف مسار الطعام داخل جسمك، وتعرّف على كيفية تنفسك وتبادل الهواء في رئتيك.'
+                : 'اكتشف مسار الطعام خطوة بخطوة من الفم إلى الأمعاء — برنامج السنة الرابعة.'}
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">
-            {showRespiratory ? 'الجهاز الهضمي والجهاز التنفسي' : 'الجهاز الهضمي'}
-          </h1>
-          <p className="text-xs sm:text-sm text-rose-100 leading-relaxed max-w-3xl">
-            {showRespiratory
-              ? 'اكتشف مسار الطعام داخل جسمك، وتعرّف على كيفية تنفسك وتبادل الهواء في رئتيك.'
-              : 'اكتشف مسار الطعام خطوة بخطوة من الفم إلى الأمعاء — برنامج السنة الرابعة.'}
-          </p>
         </div>
       </div>
 

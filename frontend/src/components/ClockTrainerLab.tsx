@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 
 interface ClockTrainerLabProps {
@@ -58,7 +58,7 @@ const AnalogClock: React.FC<{ hour: number; minute: number }> = ({ hour, minute 
   );
 };
 
-export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onReward }) => {
+export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onReward, onBack }) => {
   const { minuteStep, quizTimes } = clockTrainerForGrade(grade);
   const [activeTab, setActiveTab] = useState<ClockTab>('explore');
   const [hour, setHour] = useState<number>(9);
@@ -87,15 +87,26 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onRewar
   return (
     <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
       <div className="kids-pole rounded-[28px] p-6 sm:p-8 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
-            <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
-            <span>مختبر قراءة السَّاعة (2AP - 5AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
+              <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
+              <span>مختبر قراءة السَّاعة (2AP - 5AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">مُدَرِّبُ السَّاعَةِ التَّفَاعُلِيُّ</h1>
+            <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
+              اضبط عقارب الساعة وشاهد الوقت الرقمي فوراً، ثم اختبر نفسك في قراءة الساعة.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">مُدَرِّبُ السَّاعَةِ التَّفَاعُلِيُّ</h1>
-          <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
-            اضبط عقارب الساعة وشاهد الوقت الرقمي فوراً، ثم اختبر نفسك في قراءة الساعة.
-          </p>
         </div>
       </div>
 

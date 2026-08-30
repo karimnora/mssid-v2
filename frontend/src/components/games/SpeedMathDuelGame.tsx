@@ -252,7 +252,7 @@ export const SpeedMathDuelGame: React.FC<SpeedMathDuelGameProps> = ({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 sm:p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border-2 border-emerald-500/30 relative overflow-hidden" dir="rtl">
+    <div data-lab-instrument className="w-full max-w-2xl mx-auto p-4 sm:p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border-2 border-emerald-500/30 relative overflow-hidden" dir="rtl">
       {/* Background Neon Accent Glow */}
       <div className="absolute -top-20 -right-20 w-48 h-48 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />

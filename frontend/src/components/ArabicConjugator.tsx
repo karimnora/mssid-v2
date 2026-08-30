@@ -197,7 +197,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
   return (
     <div className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl border border-emerald-500/30">
             <Sparkles className="w-6 h-6 animate-pulse" />
@@ -207,14 +207,14 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
             <p className="text-xs text-[var(--kids-muted)]">جدول التصريف التفاعلي مع قواعد الفك والزيادة والتغيير</p>
           </div>
         </div>
-        <span className="bg-emerald-400/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold">
+        <span className="bg-emerald-400/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold">
           جدول الضمائر التفاعلي
         </span>
       </div>
 
       {/* Verb Selector */}
       <div className="space-y-2">
-        <h3 className="text-xs font-extrabold text-slate-300">1. إخْتَرِ الفِعْلَ المُرَادَ تَصْرِيفُهُ:</h3>
+        <h3 className="text-xs font-extrabold text-[var(--app-text-muted)]">1. إخْتَرِ الفِعْلَ المُرَادَ تَصْرِيفُهُ:</h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {VERBS_DATABASE.map((v, idx) => {
             const isSelected = idx === selectedVerbIndex;
@@ -225,7 +225,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
                 className={`p-3 rounded-2xl border text-right transition-all cursor-pointer ${
                   isSelected
                     ? 'bg-emerald-500 text-slate-950 font-black border-emerald-300 shadow-lg scale-[1.02]'
-                    : 'bg-slate-800/80 hover:bg-slate-800 border-slate-700 text-slate-200'
+                    : 'bg-[var(--app-card-subtle)] hover:bg-[var(--app-card-bg)] border-[var(--app-card-border)] text-[var(--app-text)]'
                 }`}
               >
                 <div className="text-sm font-black">{v.verb}</div>
@@ -238,14 +238,14 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
 
       {/* Tense Selector */}
       <div className="space-y-2">
-        <h3 className="text-xs font-extrabold text-slate-300">2. إخْتَرِ الزَّمَنَ:</h3>
+        <h3 className="text-xs font-extrabold text-[var(--app-text-muted)]">2. إخْتَرِ الزَّمَنَ:</h3>
         <div className="flex gap-3">
           <button
             onClick={() => setSelectedTense('past')}
             className={`px-5 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
               selectedTense === 'past'
                 ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md'
-                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)]'
             }`}
           >
             📜 الزَّمَنُ المَاضِي
@@ -255,7 +255,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
             className={`px-5 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
               selectedTense === 'present'
                 ? 'bg-cyan-500 text-slate-950 border-cyan-300 shadow-md'
-                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)]'
             }`}
           >
             ⚡ الزَّمَنُ المُضَارِعُ
@@ -266,7 +266,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
               className={`px-5 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
                 selectedTense === 'imperative'
                   ? 'bg-indigo-500 text-white border-indigo-300 shadow-md'
-                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                  : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)] hover:bg-[var(--app-card-bg)]'
               }`}
             >
               🎯 زَمَنُ الأَمْرِ
@@ -286,17 +286,17 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
 
       {/* Conjugation Grid */}
       <div className="space-y-2">
-        <h3 className="text-xs font-extrabold text-slate-300">3. جَدْوَلُ التَّصْرِيفِ مَعَ كَافَّةِ الضَّمَائِرِ:</h3>
+        <h3 className="text-xs font-extrabold text-[var(--app-text-muted)]">3. جَدْوَلُ التَّصْرِيفِ مَعَ كَافَّةِ الضَّمَائِرِ:</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {Object.entries(conjugationMap).map(([pronoun, conjugatedForm]) => (
             <div
               key={pronoun}
-              className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 text-center space-y-1 hover:border-emerald-500/50 transition-colors"
+              className="bg-[var(--app-card-subtle)] p-3.5 rounded-2xl border border-[var(--app-card-border)] text-center space-y-1 hover:border-emerald-500/50 transition-colors"
             >
-              <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20 inline-block">
+              <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20 inline-block">
                 {pronoun}
               </span>
-              <div className="text-base font-black text-white pt-1">{conjugatedForm}</div>
+              <div className="text-base font-black text-[var(--app-text)] pt-1">{conjugatedForm}</div>
             </div>
           ))}
         </div>

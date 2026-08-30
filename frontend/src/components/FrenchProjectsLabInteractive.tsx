@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   Trophy,
   ArrowRight,
+  ArrowLeft,
   Layers,
   FileText,
   HelpCircle,
@@ -308,27 +309,38 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
     <div className="space-y-6 max-w-5xl mx-auto" dir="ltr">
       {/* Top Banner */}
       <div className="bg-gradient-to-r from-sky-700 via-blue-800 to-indigo-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>
-              {grade === '5AP'
-                ? 'Programme Officiel de Français — 5AP (3 Projets du Ministère)'
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="Retour"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>
+                {grade === '5AP'
+                  ? 'Programme Officiel de Français — 5AP (3 Projets du Ministère)'
+                  : grade === '4AP'
+                  ? 'Révision — Projets officiels 3AP (en attendant le cycle 4AP)'
+                  : 'Programme Officiel de Français — 3AP (4 Projets du Ministère)'}
+              </span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">
+              Atelier des Projets Officiels de Français
+            </h1>
+            <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-3xl">
+              {grade === '3AP'
+                ? 'Les 4 projets de la 1re année de français : Mon école, Ma famille, Les animaux domestiques et L’alimentation.'
                 : grade === '4AP'
-                ? 'Révision — Projets officiels 3AP (en attendant le cycle 4AP)'
-                : 'Programme Officiel de Français — 3AP (4 Projets du Ministère)'}
-            </span>
+                ? 'Révise les projets 3AP avant les contenus avancés de 5AP.'
+                : 'Les 3 projets officiels de 5AP : animaux sauvages, catastrophes naturelles et écologie.'}
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">
-            Atelier des Projets Officiels de Français
-          </h1>
-          <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-3xl">
-            {grade === '3AP'
-              ? 'Les 4 projets de la 1re année de français : Mon école, Ma famille, Les animaux domestiques et L’alimentation.'
-              : grade === '4AP'
-              ? 'Révise les projets 3AP avant les contenus avancés de 5AP.'
-              : 'Les 3 projets officiels de 5AP : animaux sauvages, catastrophes naturelles et écologie.'}
-          </p>
         </div>
       </div>
 

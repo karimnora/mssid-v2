@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
 import { isFeatureEnabled } from '../featureFlags';
 import {
+  ArrowLeft,
   Globe,
   Sparkles,
   Volume2,
@@ -169,17 +170,28 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-800 via-purple-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-700/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Headphones className="w-3.5 h-3.5 text-yellow-300" />
-            <span>Official English Audio Lab — 3AP, 4AP & 5AP</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="Back"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Headphones className="w-3.5 h-3.5 text-yellow-300" />
+              <span>Official English Audio Lab — 3AP, 4AP & 5AP</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">
+              Interactive English Listening & Speaking Studio
+            </h1>
+            <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed max-w-3xl">
+              Listen to native pronunciation, practice real-time dialogues, adjust playback speed, and test your listening comprehension with Algerian curriculum units.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">
-            Interactive English Listening & Speaking Studio
-          </h1>
-          <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed max-w-3xl">
-            Listen to native pronunciation, practice real-time dialogues, adjust playback speed, and test your listening comprehension with Algerian curriculum units.
-          </p>
         </div>
       </div>
 

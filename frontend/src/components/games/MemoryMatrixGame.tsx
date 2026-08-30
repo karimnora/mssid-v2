@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { PrimaryGrade } from '../../types';
 import { playSuccessChime, playGentleNudge, playModuleCompleteFanfare } from '../preschool/usePreschoolAudio';
 import { Trophy, Timer, Brain, ArrowRight, RefreshCw, Sparkles, Star } from 'lucide-react';
+import { TapSpeakButton } from '../lessonViewer/TapSpeakButton';
+import { speakText, stopSpeech as stopSynth } from '../../utils/speech';
 
 interface MemoryMatrixGameProps {
   grade?: PrimaryGrade;
@@ -18,7 +20,7 @@ interface MemoryCardItem {
   category: string;
 }
 
-type MemoryTheme = 'science' | 'arabic' | 'algeria' | 'math';
+type MemoryTheme = 'colors' | 'science' | 'arabic' | 'algeria' | 'math';
 
 const THEME_DATA: Record<
   MemoryTheme,
@@ -28,6 +30,19 @@ const THEME_DATA: Record<
     pairs: { id: string; a: { text: string; icon: string }; b: { text: string; icon: string } }[];
   }
 > = {
+  // The only theme offered to 1AP/2AP (see isYoung below) — CLAUDE.md caps their curriculum at
+  // colors/shapes/five-senses vocabulary, so the other four themes (human organs, fractions,
+  // wilaya monuments, synonyms/antonyms) stay reserved for 3AP+ even at a reduced card count.
+  colors: {
+    titleAr: 'الألوان والأشياء',
+    icon: '🎨',
+    pairs: [
+      { id: 'p1', a: { text: 'أَحْمَرُ', icon: '🔴' }, b: { text: 'تُفَّاحَةٌ', icon: '🍎' } },
+      { id: 'p2', a: { text: 'أَصْفَرُ', icon: '🟡' }, b: { text: 'مَوْزَةٌ', icon: '🍌' } },
+      { id: 'p3', a: { text: 'أَخْضَرُ', icon: '🟢' }, b: { text: 'وَرَقَةُ شَجَرٍ', icon: '🍃' } },
+      { id: 'p4', a: { text: 'أَزْرَقُ', icon: '🔵' }, b: { text: 'السَّمَاءُ', icon: '🌤️' } },
+    ],
+  },
   science: {
     titleAr: 'العلوم وجسم الإنسان',
     icon: '🧪',
@@ -83,13 +98,30 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
   onExit,
   onComplete,
 }) => {
-  const [selectedTheme, setSelectedTheme] = useState<MemoryTheme>('science');
+  const isYoung = grade === '1AP' || grade === '2AP';
+  const availableThemes: MemoryTheme[] = isYoung
+    ? ['colors']
+    : ['science', 'arabic', 'algeria', 'math'];
+  const [selectedTheme, setSelectedTheme] = useState<MemoryTheme>(isYoung ? 'colors' : 'science');
   const [cards, setCards] = useState<MemoryCardItem[]>([]);
   const [flippedUids, setFlippedUids] = useState<string[]>([]);
   const [matchedPairIds, setMatchedPairIds] = useState<string[]>([]);
   const [moves, setMoves] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isWon, setIsWon] = useState(false);
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null);
+  const speakSnippet = (key: string, text: string) => {
+    if (speakingKey === key) {
+      stopSynth();
+      setSpeakingKey(null);
+      return;
+    }
+    setSpeakingKey(key);
+    void speakText(text, 'ar-SA', 0.85).then(() => {
+      setSpeakingKey((k) => (k === key ? null : k));
+    });
+  };
+  useEffect(() => stopSynth, []);
 
   // Initialize and shuffle cards
   const initGame = (themeKey: MemoryTheme) => {
@@ -187,7 +219,7 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 sm:p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border-2 border-indigo-500/30 relative overflow-hidden" dir="rtl">
+    <div data-lab-instrument className="w-full max-w-3xl mx-auto p-4 sm:p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border-2 border-indigo-500/30 relative overflow-hidden" dir="rtl">
       {/* Background Accent Glow */}
       <div className="absolute -top-24 -left-24 w-52 h-52 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-52 h-52 bg-purple-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -207,7 +239,9 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
         {onExit && (
           <button
             onClick={onExit}
-            className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+            className={`rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold transition-all cursor-pointer flex items-center gap-1 ${
+              isYoung ? 'min-w-[60px] min-h-[60px] px-4 text-sm' : 'px-3 py-1.5 text-xs'
+            }`}
           >
             <span>خروج</span>
             <ArrowRight className="w-4 h-4" />
@@ -215,9 +249,11 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
         )}
       </div>
 
-      {/* Theme Selector Pills */}
+      {/* Theme Selector Pills — 1AP/2AP only ever get one age-appropriate theme, so there's
+          nothing to choose between; skip the selector entirely for them. */}
+      {availableThemes.length > 1 && (
       <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-4 scrollbar-none">
-        {(Object.keys(THEME_DATA) as MemoryTheme[]).map((themeKey) => {
+        {availableThemes.map((themeKey) => {
           const t = THEME_DATA[themeKey];
           const isCurrent = selectedTheme === themeKey;
           return (
@@ -236,6 +272,7 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
           );
         })}
       </div>
+      )}
 
       {/* Game HUD */}
       <div className="flex items-center justify-between bg-slate-800/80 px-4 py-2.5 rounded-2xl border border-slate-700/60 mb-5">
@@ -285,6 +322,15 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
                     <span className="text-xs font-bold text-slate-100 line-clamp-2 leading-tight">
                       {card.label}
                     </span>
+                    {isYoung && (
+                      <TapSpeakButton
+                        snippetKey={card.uid}
+                        text={card.label}
+                        speakingKey={speakingKey}
+                        onSpeak={speakSnippet}
+                        size="md"
+                      />
+                    )}
                   </motion.div>
                 ) : (
                   <div className="flex flex-col items-center justify-center gap-1 opacity-60">

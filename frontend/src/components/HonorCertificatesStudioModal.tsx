@@ -229,7 +229,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
       setIsSpeaking(false);
       return;
     }
-    const textToSpeak = `الجمهورية الجزائرية الديمقراطية الشعبية. تمنح مدرسة ${schoolName} بولاية ${selectedWilaya.nameAr}، ${currentTemplate.titleAr} للبطل المجتهد ${studentName}، بالمستوى ${grade}، ${selectedHonor}. ألف مبروك هذا النجاح المشرف!`;
+    const textToSpeak = `بكل فخر واعتزاز، تمنح مدرسة ${schoolName} بولاية ${selectedWilaya.nameAr}، ${currentTemplate.titleAr} للبطل المجتهد ${studentName}، بالمستوى ${grade}، ${selectedHonor}. ألف مبروك هذا النجاح المشرف!`;
     setIsSpeaking(true);
     speakTextShared(textToSpeak, 'ar-SA', 0.88);
     speechTimeoutRef.current = window.setTimeout(() => {
@@ -443,7 +443,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 <span className="font-bold text-slate-600 block mb-1">نوع الختم الذهبي:</span>
                 <div className="grid grid-cols-2 gap-1.5">
                   {[
-                    { id: 'republic_gold', label: '🇩🇿 ختم الجمهورية' },
+                    { id: 'republic_gold', label: '🇩🇿 ختم الفخر الوطني' },
                     { id: 'star_crescent', label: '🌙 الهلال والنجمة' },
                     { id: 'didou_seal', label: '🦊 ختم ديدو الرسمي' },
                     { id: 'trophy_gold', label: '🏆 كأس الامتياز' },
@@ -584,7 +584,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                       <>
                         <span className="text-2xl sm:text-3xl">🇩🇿</span>
                         <span className="text-[7px] sm:text-[8px] font-black tracking-tighter text-center leading-tight mt-0.5">
-                          الجمهورية الجزائرية<br />ختم الامتياز
+                          فخر الجزائر<br />ختم الامتياز
                         </span>
                       </>
                     ) : sealType === 'star_crescent' ? (

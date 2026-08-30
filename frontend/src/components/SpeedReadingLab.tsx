@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sparkles, Clock } from 'lucide-react';
+import { ArrowRight, Sparkles, Clock } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 
 interface SpeedReadingLabProps {
@@ -48,7 +48,7 @@ const PASSAGES: Passage[] = [
   },
 ];
 
-export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward }) => {
+export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBack }) => {
   const [passageIdx, setPassageIdx] = useState<number>(0);
   const [phase, setPhase] = useState<'ready' | 'reading' | 'quiz' | 'results'>('ready');
   const [elapsedSec, setElapsedSec] = useState<number>(0);
@@ -102,15 +102,26 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward }) =>
   return (
     <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-blue-700 via-indigo-800 to-violet-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>مُدَرِّبُ القِرَاءَةِ السَّرِيعَةِ وَالفَهْمِ (3AP - 5AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>مُدَرِّبُ القِرَاءَةِ السَّرِيعَةِ وَالفَهْمِ (3AP - 5AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">القِرَاءَةُ السَّرِيعَةُ وَاختِبَارُ الفَهْمِ</h1>
+            <p className="text-xs sm:text-sm text-blue-100 leading-relaxed max-w-3xl">
+              اقرأ النص بسرعة وتركيز، ثم أجب عن أسئلة الفهم لترى كم فهمت مما قرأت.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">القِرَاءَةُ السَّرِيعَةُ وَاختِبَارُ الفَهْمِ</h1>
-          <p className="text-xs sm:text-sm text-blue-100 leading-relaxed max-w-3xl">
-            اقرأ النص بسرعة وتركيز، ثم أجب عن أسئلة الفهم لترى كم فهمت مما قرأت.
-          </p>
         </div>
       </div>
 

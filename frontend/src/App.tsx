@@ -393,7 +393,7 @@ export default function App() {
                   nav.setSelectedLesson(null);
                   nav.setMainCategory('courses');
                 }}
-                onGoHome={nav.goHome}
+                onBackToLabsCatalog={openLabsCatalog}
                 onOpenLab={openLabFocused}
                 onCompleteQuiz={progress.handleCompleteQuiz}
                 onQuizFullyValidated={progress.handleQuizFullyValidated}

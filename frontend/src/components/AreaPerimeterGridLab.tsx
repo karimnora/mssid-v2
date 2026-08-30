@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Sparkles, RotateCcw } from 'lucide-react';
+import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 
 interface AreaPerimeterGridLabProps {
@@ -17,7 +17,7 @@ const CHALLENGES = [
 
 const key = (r: number, c: number) => `${r}-${c}`;
 
-export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onReward }) => {
+export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onReward, onBack }) => {
   const [cells, setCells] = useState<Set<string>>(new Set());
   const [challengeIdx, setChallengeIdx] = useState<number>(0);
   const [achieved, setAchieved] = useState<boolean>(false);
@@ -72,15 +72,26 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
   return (
     <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-lime-700 via-emerald-800 to-teal-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-lime-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>مختبر المساحة والمحيط (4AP - 5AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>مختبر المساحة والمحيط (4AP - 5AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">شَبَكَةُ المِسَاحَةِ وَالمُحِيطِ التَّفَاعُلِيَّةُ</h1>
+            <p className="text-xs sm:text-sm text-lime-100 leading-relaxed max-w-3xl">
+              انقر على المربعات لبناء شكل، وشاهد المساحة والمحيط يُحسبان تلقائياً أمامك.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">شَبَكَةُ المِسَاحَةِ وَالمُحِيطِ التَّفَاعُلِيَّةُ</h1>
-          <p className="text-xs sm:text-sm text-lime-100 leading-relaxed max-w-3xl">
-            انقر على المربعات لبناء شكل، وشاهد المساحة والمحيط يُحسبان تلقائياً أمامك.
-          </p>
         </div>
       </div>
 

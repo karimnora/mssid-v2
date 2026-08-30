@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowDecimalsTab } from '../utils/labGradePolicy';
 
@@ -32,7 +32,7 @@ const DECIMAL_QUESTIONS = [
   { id: 2, qAr: 'أَيُّ عَدَدٍ عَشْرِيٍّ يُسَاوِي 1/10؟', correct: 0.1, options: [0.1, 1, 0.7] },
 ];
 
-export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grade = '4AP', onReward }) => {
+export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grade = '4AP', onReward, onBack }) => {
   const showDecimals = canShowDecimalsTab(grade);
   const [activeTab, setActiveTab] = useState<FractionsTab>('visual');
   const [qIdx, setQIdx] = useState<number>(0);
@@ -75,15 +75,26 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
   return (
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-orange-600 via-amber-700 to-yellow-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-500/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-200" />
-            <span>مختبر الكسور والأعداد العشرية (4AP - 5AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-200" />
+              <span>مختبر الكسور والأعداد العشرية (4AP - 5AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">الكُسُورُ وَالأَعْدَادُ العَشْرِيَّةُ</h1>
+            <p className="text-xs sm:text-sm text-orange-100 leading-relaxed max-w-3xl">
+              لوّن أجزاء الشكل لتشكيل الكسر المطلوب، وتعرّف على العلاقة بين الكسور والأعداد العشرية.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">الكُسُورُ وَالأَعْدَادُ العَشْرِيَّةُ</h1>
-          <p className="text-xs sm:text-sm text-orange-100 leading-relaxed max-w-3xl">
-            لوّن أجزاء الشكل لتشكيل الكسر المطلوب، وتعرّف على العلاقة بين الكسور والأعداد العشرية.
-          </p>
         </div>
       </div>
 

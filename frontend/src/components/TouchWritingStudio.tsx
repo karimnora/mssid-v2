@@ -893,10 +893,10 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
             {onBack && (
               <button
                 onClick={onBack}
-                className="px-4 py-2 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs transition-all flex items-center gap-2 cursor-pointer"
+                aria-label="العودة"
+                className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/20 hover:bg-white/30 text-white transition-all cursor-pointer"
               >
-                <span>العودة</span>
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-6 h-6" />
               </button>
             )}
           </div>

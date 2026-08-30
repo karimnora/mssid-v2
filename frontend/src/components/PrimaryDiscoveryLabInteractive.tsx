@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
 import {
+  ArrowRight,
   Eye,
   Ear,
   Hand,
@@ -168,17 +169,28 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       {/* Header */}
       <div className="bg-gradient-to-r from-teal-700 via-cyan-800 to-blue-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>مختبر الإيقاظ العلمي والتربية المدنية (1AP / 2AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-14 h-14 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-6 h-6" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>مختبر الإيقاظ العلمي والتربية المدنية (1AP / 2AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">
+              الحواس الخمس، مراحل نمو النبات، وحقوق وواجبات الطفل
+            </h1>
+            <p className="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-3xl">
+              اكتشف أعضاء الحواس الخمس ووظائفها، جرب محاكاة نمو النبتة بالماء والشمس، وتعرّف على حقوقك وواجباتك كمواطن صالح.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">
-            الحواس الخمس، مراحل نمو النبات، وحقوق وواجبات الطفل
-          </h1>
-          <p className="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-3xl">
-            اكتشف أعضاء الحواس الخمس ووظائفها، جرب محاكاة نمو النبتة بالماء والشمس، وتعرّف على حقوقك وواجباتك كمواطن صالح.
-          </p>
         </div>
       </div>
 

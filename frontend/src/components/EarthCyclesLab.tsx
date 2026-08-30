@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 
 interface EarthCyclesLabProps {
@@ -33,7 +33,7 @@ const SEASON_QUESTIONS = [
   { id: 2, qAr: 'فِي أَيِّ فَصْلٍ تَتَسَاقَطُ أَوْرَاقُ الأَشْجَارِ؟', correct: 'autumn', options: ['autumn', 'spring', 'summer'] },
 ];
 
-export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward }) => {
+export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack }) => {
   const [activeTab, setActiveTab] = useState<CyclesTab>('day_night');
   const [hour, setHour] = useState<number>(12);
   const [selectedSeason, setSelectedSeason] = useState<string>('summer');
@@ -64,15 +64,26 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward }) => {
   return (
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-indigo-700 via-blue-800 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>مختبر دورات الأرض (3AP - 5AP)</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>مختبر دورات الأرض (3AP - 5AP)</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">اللَّيْلُ وَالنَّهَارُ، الفُصُولُ، وَالظِّلُّ</h1>
+            <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed max-w-3xl">
+              اكتشف كيف يدور الليل والنهار، تعرّف على فصول السنة في الجزائر، وشاهد كيف يتغير طول الظل خلال اليوم.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">اللَّيْلُ وَالنَّهَارُ، الفُصُولُ، وَالظِّلُّ</h1>
-          <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed max-w-3xl">
-            اكتشف كيف يدور الليل والنهار، تعرّف على فصول السنة في الجزائر، وشاهد كيف يتغير طول الظل خلال اليوم.
-          </p>
         </div>
       </div>
 

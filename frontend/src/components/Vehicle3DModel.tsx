@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { motion } from 'motion/react';
 
 export interface Vehicle3DModelProps {
@@ -19,6 +19,13 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
   viewPerspective = '3d',
 }) => {
   const is3D = viewPerspective === '3d';
+  // Every gradient id below must be unique per rendered instance, not just per vehicleId — a race
+  // with the same vehicle (or a taxi + sport_car, which share the window/wheel gradients) on both
+  // lanes previously duplicated these ids across two <svg> elements in the same document, so the
+  // browser resolved every url(#...) reference to whichever definition it saw first, corrupting
+  // the second vehicle's colors (wrong windows/wheels, or a train/plane rendered in the other's
+  // gradient). useId() ties each gradient to this specific component instance.
+  const uid = useId();
 
   // Render specialized vector 3D models for key vehicles
   const renderSpecialized3D = () => {
@@ -34,15 +41,15 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
             {/* 3D Car Vector SVG */}
             <svg viewBox="0 0 140 70" className="w-full h-full drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)]">
               <defs>
-                <linearGradient id={`carBodyGrad-${vehicleId}`} x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id={`carBodyGrad-${uid}`} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor={carColor} />
                   <stop offset="100%" stopColor={roofColor} />
                 </linearGradient>
-                <linearGradient id="windowGrad" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient id={`windowGrad-${uid}`} x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stopColor="#bae6fd" />
                   <stop offset="100%" stopColor="#0284c7" />
                 </linearGradient>
-                <radialGradient id="wheelGrad" cx="50%" cy="50%" r="50%">
+                <radialGradient id={`wheelGrad-${uid}`} cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#94a3b8" />
                   <stop offset="40%" stopColor="#475569" />
                   <stop offset="100%" stopColor="#0f172a" />
@@ -57,7 +64,7 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
               {/* Main Body Aero Chassis */}
               <path
                 d="M 15 45 C 10 45 5 40 10 32 C 15 25 35 25 45 20 C 55 12 85 10 105 18 C 115 22 125 28 130 36 C 135 44 130 46 125 46 Z"
-                fill={`url(#carBodyGrad-${vehicleId})`}
+                fill={`url(#carBodyGrad-${uid})`}
                 stroke="#1e293b"
                 strokeWidth="1.5"
               />
@@ -65,7 +72,7 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
               {/* Cabin Glass Windshield */}
               <path
                 d="M 50 21 C 58 14 82 12 98 19 C 105 23 110 28 114 34 L 46 34 Z"
-                fill="url(#windowGrad)"
+                fill={`url(#windowGrad-${uid})`}
                 stroke="#0f172a"
                 strokeWidth="1"
               />
@@ -86,14 +93,14 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
               {/* Front and Back Wheels with rotation effect */}
               <g>
                 {/* Back Wheel */}
-                <circle cx="35" cy="46" r="11" fill="url(#wheelGrad)" stroke="#000" strokeWidth="2" />
+                <circle cx="35" cy="46" r="11" fill={`url(#wheelGrad-${uid})`} stroke="#000" strokeWidth="2" />
                 <circle cx="35" cy="46" r="4" fill="#ffffff" />
                 {isRacing && (
                   <line x1="35" y1="36" x2="35" y2="56" stroke="#fff" strokeWidth="1" strokeDasharray="2 2" />
                 )}
 
                 {/* Front Wheel */}
-                <circle cx="105" cy="46" r="11" fill="url(#wheelGrad)" stroke="#000" strokeWidth="2" />
+                <circle cx="105" cy="46" r="11" fill={`url(#wheelGrad-${uid})`} stroke="#000" strokeWidth="2" />
                 <circle cx="105" cy="46" r="4" fill="#ffffff" />
                 {isRacing && (
                   <line x1="105" y1="36" x2="105" y2="56" stroke="#fff" strokeWidth="1" strokeDasharray="2 2" />
@@ -113,7 +120,7 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
           <div className="relative w-32 h-16 flex items-center justify-center [transform-style:preserve-3d]">
             <svg viewBox="0 0 160 70" className="w-full h-full drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)]">
               <defs>
-                <linearGradient id="coradiaGrad" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id={`coradiaGrad-${uid}`} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#f8fafc" />
                   <stop offset="40%" stopColor="#e2e8f0" />
                   <stop offset="100%" stopColor="#8b5cf6" />
@@ -122,7 +129,7 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
               {/* Train Sleek Aerodynamic Body */}
               <path
                 d="M 10 44 L 10 18 C 10 18 100 16 130 20 C 145 24 155 35 155 44 Z"
-                fill="url(#coradiaGrad)"
+                fill={`url(#coradiaGrad-${uid})`}
                 stroke="#475569"
                 strokeWidth="1.5"
               />
@@ -176,13 +183,13 @@ export const Vehicle3DModel: React.FC<Vehicle3DModelProps> = ({
           <div className="relative w-28 h-16 flex items-center justify-center [transform-style:preserve-3d]">
             <svg viewBox="0 0 140 70" className="w-full h-full drop-shadow-[0_10px_12px_rgba(0,0,0,0.5)]">
               <defs>
-                <linearGradient id="planeGrad" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id={`planeGrad-${uid}`} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#ffffff" />
                   <stop offset="100%" stopColor="#cbd5e1" />
                 </linearGradient>
               </defs>
               {/* Fuselage */}
-              <path d="M 10 32 C 10 32 100 24 125 30 C 135 32 135 38 125 40 C 100 46 10 38 10 38 Z" fill="url(#planeGrad)" stroke="#64748b" strokeWidth="1" />
+              <path d="M 10 32 C 10 32 100 24 125 30 C 135 32 135 38 125 40 C 100 46 10 38 10 38 Z" fill={`url(#planeGrad-${uid})`} stroke="#64748b" strokeWidth="1" />
               {/* Tail Fin */}
               <path d="M 12 33 L 5 12 L 20 12 L 30 33 Z" fill="#0284c7" />
               {/* Wings */}

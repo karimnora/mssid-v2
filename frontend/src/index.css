@@ -256,12 +256,21 @@ body {
   --app-text-muted: #64748b;
 }
 
-.lab-interior .bg-slate-900:not([data-lab-instrument]),
-.lab-interior .bg-slate-950:not([data-lab-instrument]),
-.lab-interior .bg-slate-800,
-.lab-interior .bg-slate-800\/80,
-.lab-interior .bg-slate-800\/90,
-.lab-interior .bg-slate-950\/80 {
+/* Forces dark "instrument panel" backgrounds to white so pre-existing labs read correctly against
+   the app's light theme — but only when nothing inside deliberately opted out. A component whose
+   dark background is paired with light text as ONE coherent, self-contained theme (a racing HUD, a
+   boss-battle arena, an arcade game — anything that wants to look dark regardless of the app's own
+   light/dark setting) must mark its own root `data-lab-instrument`: the :has() below then skips the
+   whole force-white block for that lab, so the component's own dark bg + light text pairing renders
+   as designed instead of being half-flipped (white bg forced, but the light text never adjusted,
+   which is what made e.g. the Arabic conjugator's unselected buttons render as invisible white-on-
+   white text before this rule existed). */
+.lab-interior:not(:has([data-lab-instrument])) .bg-slate-900,
+.lab-interior:not(:has([data-lab-instrument])) .bg-slate-950,
+.lab-interior:not(:has([data-lab-instrument])) .bg-slate-800,
+.lab-interior:not(:has([data-lab-instrument])) .bg-slate-800\/80,
+.lab-interior:not(:has([data-lab-instrument])) .bg-slate-800\/90,
+.lab-interior:not(:has([data-lab-instrument])) .bg-slate-950\/80 {
   background-color: #ffffff !important;
   border-color: #E7E2D7 !important;
 }

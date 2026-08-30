@@ -334,7 +334,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-4 sm:p-6 bg-slate-950 text-white rounded-3xl shadow-2xl border-2 border-rose-500/40 relative overflow-hidden" dir="rtl">
+    <div data-lab-instrument className="w-full max-w-2xl mx-auto p-4 sm:p-6 bg-slate-950 text-white rounded-3xl shadow-2xl border-2 border-rose-500/40 relative overflow-hidden" dir="rtl">
       {/* Dynamic Arena Background */}
       <div className="absolute inset-0 bg-radial from-rose-950/30 via-slate-950 to-slate-950 pointer-events-none" />
 

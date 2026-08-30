@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PrimaryGrade } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
@@ -243,7 +243,7 @@ const AlgeriaReliefMap: React.FC<{
   );
 };
 
-export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward }) => {
+export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward, onBack }) => {
   const t = useTranslation('labsSocial');
   const [selectedId, setSelectedId] = useState<string>('tell');
   const [answers, setAnswers] = useState<Record<number, boolean>>({});
@@ -258,15 +258,26 @@ export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward }) 
   return (
     <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-orange-700 via-red-800 to-rose-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-600/40 relative overflow-hidden">
-        <div className="relative z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>{t('topographyBadge')}</span>
+        <div className="relative z-10 flex items-start gap-3">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="العودة للأدوات"
+              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          )}
+          <div className="space-y-2 flex-1 min-w-0">
+            <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+              <span>{t('topographyBadge')}</span>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">{t('topographyTitle')}</h1>
+            <p className="text-xs sm:text-sm text-orange-100 leading-relaxed max-w-3xl">
+              {t('topographyIntro')}
+            </p>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans">{t('topographyTitle')}</h1>
-          <p className="text-xs sm:text-sm text-orange-100 leading-relaxed max-w-3xl">
-            {t('topographyIntro')}
-          </p>
         </div>
       </div>
 
