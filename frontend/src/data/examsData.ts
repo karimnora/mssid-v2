@@ -9,6 +9,10 @@ import { SECONDARY_DEVOIR_PAPERS } from './exams/secondaryDevoirPapers';
 import { P2_EXAM_PAPERS } from './exams/p2ExamPapers';
 import { P2_DEVOIR_PAPERS } from './exams/p2DevoirPapers';
 import { HISTORY_GEO_DEVOIR_PAPERS } from './exams/historyGeoDevoirPapers';
+import { DEVOIR_EXTRA_2AP } from './exams/devoirExtra2AP';
+import { DEVOIR_EXTRA_3AP } from './exams/devoirExtra3AP';
+import { DEVOIR_EXTRA_4AP } from './exams/devoirExtra4AP';
+import { DEVOIR_EXTRA_5AP } from './exams/devoirExtra5AP';
 
 export { BEP_SOURCE_NOTE_AR, COMPOSITION_SOURCE_NOTE_AR, DEVOIR_SOURCE_NOTE_AR, ACQUIS_SOURCE_NOTE_AR };
 
@@ -1756,4 +1760,8 @@ export const OFFICIAL_EXAMS_DATA: OfficialExam[] = [
   ...P2_EXAM_PAPERS,
   ...P2_DEVOIR_PAPERS,
   ...HISTORY_GEO_DEVOIR_PAPERS,
+  ...DEVOIR_EXTRA_2AP,
+  ...DEVOIR_EXTRA_3AP,
+  ...DEVOIR_EXTRA_4AP,
+  ...DEVOIR_EXTRA_5AP,
 ];
