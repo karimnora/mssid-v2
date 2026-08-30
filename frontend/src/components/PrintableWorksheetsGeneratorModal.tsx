@@ -7,6 +7,7 @@ interface PrintableWorksheetsGeneratorModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultGrade?: PrimaryGrade;
+  onOpenCertificates?: () => void;
 }
 
 type SheetType = 'exam' | 'summary_card';
@@ -15,6 +16,7 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
   isOpen,
   onClose,
   defaultGrade = '5AP',
+  onOpenCertificates,
 }) => {
   const [selectedGrade, setSelectedGrade] = useState<PrimaryGrade>(defaultGrade);
   const [selectedSubject, setSelectedSubject] = useState<SubjectId>('math');
@@ -48,6 +50,16 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
           </div>
 
           <div className="flex items-center gap-2">
+            {onOpenCertificates && (
+              <button
+                onClick={onOpenCertificates}
+                className="px-3.5 py-2 bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-black text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
+              >
+                <span>📜</span>
+                <span>استوديو الشهادات ولوحات الشرف 🏆</span>
+              </button>
+            )}
+
             <button
               onClick={handlePrint}
               className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer"

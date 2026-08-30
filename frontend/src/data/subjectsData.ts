@@ -446,6 +446,17 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     category: 'tool',
     minGrade: '4AP',
   },
+  {
+    id: 'speed_lab',
+    nameAr: 'مختبر السرعة والحركة «في المدينة» (2D / 3D)',
+    nameFr: 'Labo de Vitesse & Mouvement « En Ville »',
+    icon: 'Zap',
+    color: 'from-amber-500 via-orange-500 to-rose-600',
+    bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
+    description: 'محاكاة تفاعلية لحساب ومقارنة السرعة (v = d/t) بتأثيرات 2D/3D، سباقات سيارات المدينة، ورادارات مراقبة السرعة من 1AP إلى 5AP.',
+    category: 'tool',
+    minGrade: '1AP',
+  },
   // 3. OFFICIAL STANDALONE EXAMS
   {
     id: 'exams',

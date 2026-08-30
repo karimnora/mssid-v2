@@ -2,7 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade, SubjectId, SubjectInfo } from '../types';
+import { DidouAvatarConfig } from '../types/ecosystem';
 import { COURSE_SUBJECTS_LIST, isToolAvailableForGrade } from '../data/subjectsData';
+import { DIDOU_OUTFITS_LIST } from '../data/outfitsData';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import {
@@ -12,6 +14,7 @@ import {
 } from './HomePoleIcons';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech } from '../utils/speech';
+import { DidouVirtualCompanion } from './DidouVirtualCompanion';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -25,6 +28,7 @@ interface HomeViewProps {
   goldCoins?: number;
   xp?: number;
   level?: number;
+  avatarConfig?: DidouAvatarConfig;
   courseSubjects?: SubjectInfo[];
   onSelectPole: (pole: HomePoleId) => void;
   onSelectSubject?: (subject: SubjectId) => void;
@@ -40,7 +44,9 @@ interface HomeViewProps {
   onOpenDressingRoom?: () => void;
   onOpenHomeworkPin?: () => void;
   onOpenPrintables?: () => void;
+  onOpenHonorCertificates?: () => void;
   onOpenOfflinePacks?: () => void;
+  onFeedDidou?: (treatId: string, energyBonus: number, xpBonus: number, cost: number) => void;
 }
 
 const SUBJECT_ORDER: SubjectId[] = [
@@ -94,6 +100,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   goldCoins = 150,
   xp = 0,
   level,
+  avatarConfig,
   courseSubjects,
   onSelectPole,
   onSelectSubject,
@@ -102,12 +109,19 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenWilayas,
   onOpenMathLab,
   onOpenDressingRoom,
+  onOpenHonorCertificates,
+  onFeedDidou,
 }) => {
   const isGuest = !authUser;
   const isYoung = grade === '1AP' || grade === '2AP';
   const t = useTranslation('home');
   const tNav = useTranslation('navigation');
   const { direction, locale } = useLocaleContext();
+
+  const activeSpecies = avatarConfig?.species || 'fennec';
+  const activeOutfitId = avatarConfig?.activeOutfit || 'default';
+  const activeOutfit = DIDOU_OUTFITS_LIST.find((o) => o.id === activeOutfitId) || DIDOU_OUTFITS_LIST[0];
+  const petEmoji = activeSpecies === 'eagle' ? '🦅' : '🦊';
 
   // 1AP-3AP: same audio guidance level as CourseSelectionView — this is the very first screen a
   // fragile reader lands on, so it needs a listen button at least as much as the screens after it.
@@ -201,10 +215,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
             type="button"
             onClick={onOpenDressingRoom}
             disabled={!onOpenDressingRoom}
-            className="w-16 h-16 rounded-[20px] bg-white/20 flex items-center justify-center text-4xl shrink-0 disabled:cursor-default"
+            className="w-16 h-16 rounded-[20px] bg-white/20 hover:bg-white/30 flex items-center justify-center text-3xl shrink-0 disabled:cursor-default relative group cursor-pointer transition-transform active:scale-95"
             aria-label={t('dressingRoomLabel')}
+            title="خزانة وتخصيص ديدو"
           >
-            🦊
+            <span>{petEmoji}</span>
+            <span className="absolute bottom-1 end-1 text-sm bg-black/40 rounded-lg px-1">
+              {activeOutfit.icon}
+            </span>
           </button>
         </div>
 
@@ -244,6 +262,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
         )}
       </section>
+
+      {/* VIRTUAL COMPANION EMBEDDED CARD */}
+      <DidouVirtualCompanion
+        avatarConfig={avatarConfig}
+        goldCoins={goldCoins}
+        xp={xp}
+        level={displayLevel}
+        userName={userName}
+        onOpenDressingRoom={onOpenDressingRoom}
+        onFeed={onFeedDidou}
+      />
 
       {isGuest && (
         <div className="rounded-[20px] p-3.5 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-subtle)] kids-pop-soft flex items-center justify-between gap-3">
@@ -416,13 +445,35 @@ export const HomeView: React.FC<HomeViewProps> = ({
             whileTap={{ scale: 0.95 }}
             transition={spring}
             onClick={onOpenMathLab}
-            className="kids-pop kids-card-maths w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3"
+            className="kids-pop kids-card-maths w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
           >
             <div className="min-w-0">
               <h3 className="text-[15px] font-extrabold">{t('labMathTitle')}</h3>
               {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labMathDesc')}</p>}
             </div>
             <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">📐</span>
+          </motion.button>
+        )}
+        {onOpenHonorCertificates && (
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            transition={spring}
+            onClick={onOpenHonorCertificates}
+            className="kids-pop bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 w-full rounded-[22px] p-4 text-amber-950 text-start flex items-center justify-between gap-3 shadow-md border-2 border-amber-300"
+          >
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5">
+                <h3 className="text-[15px] font-black">استوديو لوحات الشرف والشهادات الرسمية 📜</h3>
+                <span className="text-[10px] bg-amber-950 text-amber-200 px-2 py-0.5 rounded-full font-black">A4</span>
+              </div>
+              <p className="text-[11.5px] text-amber-900 font-bold mt-0.5">
+                توليد وطباعة شهادات التقدير، الامتياز وفارس الحساب بأسماء تلاميذك
+              </p>
+            </div>
+            <span className="w-[46px] h-[46px] rounded-2xl bg-amber-950/20 flex items-center justify-center text-[24px] shrink-0">
+              🏆
+            </span>
           </motion.button>
         )}
       </section>

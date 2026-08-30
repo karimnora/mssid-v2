@@ -69,9 +69,9 @@ const MOBILE_CATS: MobileCat[] = [
     key: 'science_discovery',
     emoji: '🧪',
     labelAr: 'العلوم والإيقاظ',
-    hintAr: 'تجارب • جسم الإنسان • أرض',
+    hintAr: 'تجارب • سرعة وحركة • أرض',
     cardClass: 'kids-cat-science',
-    toolIds: ['science_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
+    toolIds: ['science_lab', 'speed_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
   },
   {
     key: 'languages_expression',
@@ -110,7 +110,7 @@ const DESKTOP_GROUPS: {
     labelAr: '🧪 العلوم، التجارب والإيقاظ العلمي',
     badgeColor: 'bg-teal-100 text-teal-900 border-teal-300',
     icon: FlaskConical,
-    toolIds: ['science_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
+    toolIds: ['science_lab', 'speed_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
   },
   {
     key: 'languages_expression',

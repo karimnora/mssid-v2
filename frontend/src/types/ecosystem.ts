@@ -7,7 +7,28 @@ export type DidouOutfitId =
   | 'robe_kabyle'
   | 'maillot_verts_dz'
   | 'tarbouche_casbah'
-  | 'chapeau_diplome';
+  | 'chapeau_diplome'
+  | 'astronaute_dz'
+  | 'docteur_savant'
+  | 'chevalier_numidie'
+  | 'pilote_aerien';
+
+export type DidouPetSpecies = 'fennec' | 'eagle';
+
+export type DidouMood = 'happy' | 'proud' | 'thinking' | 'celebrating' | 'hungry' | 'sleepy' | 'studying';
+
+export interface DidouTreatItem {
+  id: string;
+  nameAr: string;
+  nameFr: string;
+  icon: string;
+  energyBonus: number;
+  xpBonus: number;
+  priceGoldCoins: number;
+  descriptionAr: string;
+  descriptionFr: string;
+  originWilayaAr: string;
+}
 
 export interface DidouOutfitItem {
   id: DidouOutfitId;
@@ -22,9 +43,23 @@ export interface DidouOutfitItem {
 }
 
 export interface DidouAvatarConfig {
+  species?: DidouPetSpecies;
   activeOutfit: DidouOutfitId;
   unlockedOutfits: DidouOutfitId[];
-  mood?: 'happy' | 'proud' | 'thinking' | 'celebrating';
+  mood?: DidouMood;
+  energy?: number; // 0 - 100
+  energyLevel?: number; // 0 - 100
+  happinessLevel?: number; // 0 - 100
+  friendshipLevel?: number; // 1 - 10
+  friendshipXp?: number;
+  fedCount?: number;
+  totalTreatsGiven?: number;
+  patCount?: number;
+  currentStage?: number;
+  wisdomPoints?: number;
+  lastFedTimestamp?: number;
+  lastFedAt?: string;
+  customName?: string;
 }
 
 export interface HomeworkAssignment {
@@ -83,4 +118,7 @@ export interface WilayaInfo {
   natureAr?: string;
   postalPrefix?: string;
   mapPosition?: { xPercent: number; yPercent: number };
+  historyFactAr?: string;
+  clues?: string[];
+  stageGroup?: 'coastal' | 'tell' | 'plateaus' | 'oasis' | 'deep_sahara' | 'new_10';
 }

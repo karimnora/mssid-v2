@@ -35,6 +35,7 @@ const ClockTrainerLab = lazy(() => import('./ClockTrainerLab').then((m) => ({ de
 const SyllableStudioLab = lazy(() => import('./SyllableStudioLab').then((m) => ({ default: m.SyllableStudioLab })));
 const SpeedReadingLab = lazy(() => import('./SpeedReadingLab').then((m) => ({ default: m.SpeedReadingLab })));
 const TopographyMapLab = lazy(() => import('./TopographyMapLab').then((m) => ({ default: m.TopographyMapLab })));
+const SpeedVelocityLab = lazy(() => import('./SpeedVelocityLab').then((m) => ({ default: m.SpeedVelocityLab })));
 const ChallengesArena = lazy(() => import('./ChallengesArena').then((m) => ({ default: m.ChallengesArena })));
 
 interface ActiveWorkspaceProps {
@@ -166,6 +167,8 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
         <SpeedReadingLab grade={grade} onBack={onGoHome} onReward={onLabReward} />
       ) : selectedSubject === 'topography_map' ? (
         <TopographyMapLab grade={grade} onBack={onGoHome} onReward={onLabReward} />
+      ) : selectedSubject === 'speed_lab' ? (
+        <SpeedVelocityLab grade={grade} onBack={onGoHome} onReward={onLabReward} />
       ) : selectedSubject === 'exams' ? (
         <ExamsViewer
           grade={grade}

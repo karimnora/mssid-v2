@@ -21,6 +21,7 @@ import { HeaderTheme } from './Navbar';
 const DidouDressingRoomModal = lazy(() => import('./DidouDressingRoomModal').then((m) => ({ default: m.DidouDressingRoomModal })));
 const HomeworkPinModal = lazy(() => import('./HomeworkPinModal').then((m) => ({ default: m.HomeworkPinModal })));
 const PrintableWorksheetsGeneratorModal = lazy(() => import('./PrintableWorksheetsGeneratorModal').then((m) => ({ default: m.PrintableWorksheetsGeneratorModal })));
+const HonorCertificatesStudioModal = lazy(() => import('./HonorCertificatesStudioModal').then((m) => ({ default: m.HonorCertificatesStudioModal })));
 const OfflinePacksManagerModal = lazy(() => import('./OfflinePacksManagerModal').then((m) => ({ default: m.OfflinePacksManagerModal })));
 // Lazy specifically because ProfileModal pulls in badgeEngine.ts, which needs the full lesson
 // catalog to map completed-lesson ids to subjects — no reason that forces itself into the initial
@@ -256,6 +257,15 @@ export const AppModals: React.FC<AppModalsProps> = ({
         <PrintableWorksheetsGeneratorModal
           isOpen={modals.isPrintablesOpen}
           onClose={() => modals.setIsPrintablesOpen(false)}
+          defaultGrade={grade}
+        />
+      )}
+
+      {modals.isHonorCertificatesOpen && (
+        <HonorCertificatesStudioModal
+          isOpen={modals.isHonorCertificatesOpen}
+          onClose={() => modals.setIsHonorCertificatesOpen(false)}
+          userProfile={userProfile}
           defaultGrade={grade}
         />
       )}

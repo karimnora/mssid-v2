@@ -27,10 +27,10 @@ describe('WilayasExplorer — quiz options only reveal what the question actuall
 
   it('questionType 0 ("what is the wilaya\'s number?") never prints the wilaya name in the options', () => {
     const { container } = render(<WilayasExplorer />);
-    fireEvent.click(screen.getByText('🏆 مسابقة وألغاز الولايات'));
+    fireEvent.click(screen.getByText('🏆 المسابقة الكبرى'));
 
     // quizIndex starts at 0, so WILAYAS_LIST[0] (أدرار) is always the first target and
-    // questionType = 0 % 3 = 0 deterministically.
+    // questionType = 0 % 4 = 0 deterministically.
     expect(screen.getByText('ما هو رقم ولاية', { exact: false })).toBeInTheDocument();
 
     // The wilaya name should appear exactly once — inside the question — never again in an option.
@@ -45,9 +45,9 @@ describe('WilayasExplorer — quiz options only reveal what the question actuall
 
   it('questionType 2 ("what is the capital?") shows only capital names — never the wilaya name a second time', () => {
     const { container } = render(<WilayasExplorer />);
-    fireEvent.click(screen.getByText('🏆 مسابقة وألغاز الولايات'));
+    fireEvent.click(screen.getByText('🏆 المسابقة الكبرى'));
 
-    // Advance quizIndex from 0 to 2 (questionType 2 % 3 = 2) by answering + clicking "next" twice.
+    // Advance quizIndex from 0 to 2 (questionType 2 % 4 = 2) by answering + clicking "next" twice.
     for (let i = 0; i < 2; i++) {
       fireEvent.click(getOptionButtons(container)[0]);
       fireEvent.click(screen.getByText('السؤال التالي ➡️'));

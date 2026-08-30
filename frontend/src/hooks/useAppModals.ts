@@ -14,6 +14,7 @@ export function useAppModals() {
   const [isDressingRoomOpen, setIsDressingRoomOpen] = useState(false);
   const [isHomeworkPinOpen, setIsHomeworkPinOpen] = useState(false);
   const [isPrintablesOpen, setIsPrintablesOpen] = useState(false);
+  const [isHonorCertificatesOpen, setIsHonorCertificatesOpen] = useState(false);
   const [isOfflinePacksOpen, setIsOfflinePacksOpen] = useState(false);
 
   const openAuth = (mode: 'login' | 'register' = 'login') => {
@@ -47,6 +48,8 @@ export function useAppModals() {
     setIsHomeworkPinOpen,
     isPrintablesOpen,
     setIsPrintablesOpen,
+    isHonorCertificatesOpen,
+    setIsHonorCertificatesOpen,
     isOfflinePacksOpen,
     setIsOfflinePacksOpen,
     openAuth,

@@ -458,26 +458,37 @@ body {
     visibility: hidden;
   }
   .printable-sheet,
-  .printable-sheet * {
+  .printable-sheet *,
+  .printable-certificate,
+  .printable-certificate * {
     visibility: visible;
   }
-  .printable-sheet {
+  .printable-sheet,
+  .printable-certificate {
     position: absolute;
     inset: 0;
     width: 100%;
     margin: 0;
-    padding: 12mm !important;
     box-shadow: none !important;
-    background: #ffffff !important;
     color: #0f172a !important;
+  }
+  .printable-sheet {
+    padding: 12mm !important;
+    background: #ffffff !important;
     border: none !important;
     border-radius: 0 !important;
   }
+  .printable-certificate {
+    padding: 10mm !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
   .printable-sheet,
-  .printable-sheet * {
+  .printable-sheet *,
+  .printable-certificate,
+  .printable-certificate * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    color: #0f172a !important;
   }
   /* Interactive chrome (solutions toggles, CTAs) must not appear on the paper copy. */
   .no-print,

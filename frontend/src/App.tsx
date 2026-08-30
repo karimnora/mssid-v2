@@ -15,6 +15,7 @@ import {
 } from './data/subjectsData';
 import { CourseSelectionView } from './components/CourseSelectionView';
 import { HomeView } from './components/HomeView';
+import { DidouVirtualCompanion } from './components/DidouVirtualCompanion';
 import { Navbar, HeaderTheme } from './components/Navbar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
@@ -211,6 +212,48 @@ export default function App() {
     setLabsCatalogOpen(true);
   };
 
+  const handleFeedDidou = (treatId: string, energyBonus: number, xpBonus: number, cost: number) => {
+    progress.setUserProfile((prev) => {
+      const currentCoins = prev.goldCoins ?? 150;
+      if (currentCoins < cost) return prev;
+      const currentConfig = prev.avatarConfig || {
+        species: 'fennec',
+        activeOutfit: 'default',
+        unlockedOutfits: ['default'],
+        happinessLevel: 80,
+        energy: 80,
+        mood: 'happy',
+        currentStage: 1,
+        totalTreatsGiven: 0,
+        wisdomPoints: 0,
+      };
+      // DidouVirtualCompanion / DidouDressingRoomModal both read `energy` (not `energyLevel`) for
+      // the energy bar — keep writing the field they actually display.
+      const newEnergy = Math.min(100, (currentConfig.energy ?? 80) + energyBonus);
+      const newHappiness = Math.min(100, (currentConfig.happinessLevel ?? 80) + Math.round(energyBonus / 2));
+      const newCoins = Math.max(0, currentCoins - cost);
+      const newXp = prev.xp + xpBonus;
+      const updatedConfig = {
+        ...currentConfig,
+        energy: newEnergy,
+        happinessLevel: newHappiness,
+        mood: 'happy' as const,
+        totalTreatsGiven: (currentConfig.totalTreatsGiven || 0) + 1,
+        lastFedAt: new Date().toISOString(),
+      };
+      const updated = {
+        ...prev,
+        goldCoins: newCoins,
+        xp: newXp,
+        level: Math.floor(newXp / 100) + 1,
+        avatarConfig: updatedConfig,
+      };
+      localStorage.setItem('mssid_user_profile', JSON.stringify(updated));
+      void AuthService.syncGoldCoinsAndAvatar(newCoins, updatedConfig);
+      return updated;
+    });
+  };
+
   if (nav.isAdminConsoleActive) {
     if (isAuthLoading) {
       return <LoadingFallback label={t('navigation', 'loadingAdminConsole')} minHeight="100vh" />;
@@ -258,6 +301,7 @@ export default function App() {
             goldCoins={progress.userProfile.goldCoins || 150}
             xp={progress.userProfile.xp}
             level={progress.userProfile.level}
+            avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
             courseSubjects={visibleCourseSubjects}
             onSelectPole={(pole) => {
               setCourseEntrySubject(null);
@@ -280,7 +324,9 @@ export default function App() {
             onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
             onOpenHomeworkPin={() => modals.setIsHomeworkPinOpen(true)}
             onOpenPrintables={() => modals.setIsPrintablesOpen(true)}
+            onOpenHonorCertificates={() => modals.setIsHonorCertificatesOpen(true)}
             onOpenOfflinePacks={() => modals.setIsOfflinePacksOpen(true)}
+            onFeedDidou={handleFeedDidou}
           />
         ) : (
           <>
@@ -358,6 +404,18 @@ export default function App() {
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
               />
             )}
+
+            {/* FLOATING COMPANION BUTTON WHEN OUTSIDE HOME */}
+            <DidouVirtualCompanion
+              avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
+              goldCoins={progress.userProfile.goldCoins || 150}
+              xp={progress.userProfile.xp}
+              level={progress.userProfile.level}
+              userName={progress.userProfile.name}
+              onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
+              onFeed={handleFeedDidou}
+              isFloating={true}
+            />
           </>
         )}
       </main>
