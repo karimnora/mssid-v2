@@ -240,6 +240,14 @@ body {
   --kids-muted: #64748b;
   --app-text: #0f172a;
   --app-text-muted: #64748b;
+  /* These two always read against a forced-light card, so any child using
+     var(--app-card-bg)/var(--app-card-subtle) for its own background must get
+     the light-theme values too — otherwise in dark mode the ink vars above stay
+     dark while the card vars fall through to the dark theme, pairing dark text
+     on a dark background (invisible). */
+  --app-card-bg: #ffffff;
+  --app-card-subtle: #FFF8E7;
+  --app-card-border: #E7E2D7;
 }
 
 .kids-pole-band {
@@ -254,6 +262,10 @@ body {
   --kids-muted: #64748b;
   --app-text: #0f172a;
   --app-text-muted: #64748b;
+  /* Same reasoning as .kids-pole above. */
+  --app-card-bg: #ffffff;
+  --app-card-subtle: #FFF8E7;
+  --app-card-border: #E7E2D7;
 }
 
 /* Forces dark "instrument panel" backgrounds to white so pre-existing labs read correctly against
