@@ -1026,15 +1026,16 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     });
   });
 
-  it('1AP maths follows official grid: 0–20 only, no clock or money titles', () => {
+  it('1AP maths follows official grid: natural numbers below 100, no clock or money titles', () => {
+    // La "الكفاءة الشاملة" officielle (الوثيقة المرافقة لمنهاج الرياضيات 1AP) cible explicitement
+    // "الأعداد الطبيعية الأصغر من 100", pas seulement 0-20 (voir CLAUDE.md).
     const math = bySubject1ap('math');
     const ids = math.map((l) => l.id);
 
     expect(ids).toContain('math-1ap-t1-grandeurs');
     expect(ids).toContain('math-1ap-t3-compare-symbols');
     expect(ids).toContain('math-1ap-t3-ruler-align');
-    expect(ids).not.toContain('math-1ap-t3-complete-tens-up-to-90');
-    expect(ids).not.toContain('math-1ap-t3-place-value-and-n99');
+    expect(ids).toContain('math-1ap-t3-numbers-21-99');
 
     const sixToNine = math.find((l) => l.id === 'math-1ap-t2-numbers-6-10')!;
     expect(sixToNine.trimester).toBe(1);
@@ -1044,6 +1045,10 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     const tenToTwenty = math.find((l) => l.id === 'math-1ap-t2-numbers-11-20')!;
     expect(tenToTwenty.trimester).toBe(2);
 
+    const twentyOneToNinetyNine = math.find((l) => l.id === 'math-1ap-t3-numbers-21-99')!;
+    expect(twentyOneToNinetyNine.trimester).toBe(3);
+    expect(twentyOneToNinetyNine.titleAr).toMatch(/99|21/);
+
     const problems = math.find((l) => l.id === 'math-1ap-t3-addition-and-time-money')!;
     expect(problems.titleAr).not.toMatch(/ساعة|نقود/);
     expect(problems.summaryAr).toMatch(/مسألة|مسائل/);
@@ -1051,8 +1056,6 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
 
     math.forEach((lesson) => {
       expect(lesson.titleAr).not.toMatch(/ساعة|نقود/);
-      const blob = `${lesson.titleAr} ${lesson.summaryAr} ${lesson.objectivesAr?.join(' ') ?? ''}`;
-      expect(blob).not.toMatch(/99|49|21–49|50–99|50 إ|21 إ/);
     });
   });
 
