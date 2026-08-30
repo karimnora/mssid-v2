@@ -85,13 +85,13 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
     totalPoints: 10,
     contentSource: 'complementary',
     sourceNoteAr: note,
-    relatedLessonIds: ['math-3ap-t2-thousands-numbers', 'math-3ap-t2-right-angles', 'math-3ap-t2-perimeter-grid'],
+    relatedLessonIds: ['math-3ap-t2-thousands-numbers', 'math-3ap-t2-right-angles', 'math-3ap-t2-perpendicular-lines'],
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-thousands-numbers', contentAr: 'رتّب تصاعدياً: 2,080 — 2,800 — 2,008.', solutionAr: '2,008 < 2,080 < 2,800.' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-right-angles', contentAr: 'كم زاوية قائمة في المربع؟', solutionAr: '4 زوايا قائمة.' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-perimeter-grid', contentAr: 'محيط مربع طول ضلعه 6 cm. احسبه.', solutionAr: '6 × 4 = 24 cm.' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-3ap-t2-right-angles', contentAr: 'محيط مربع طول ضلعه 6 cm. احسبه.', solutionAr: '6 × 4 = 24 cm.' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-3ap-t2-perimeter-grid', contentAr: 'مستطيل طوله 9 cm وعرضه 4 cm. احسب محيطه.', solutionAr: 'المحيط = (9 + 4) × 2 = 26 cm.' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-3ap-t2-right-angles', contentAr: 'مستطيل طوله 9 cm وعرضه 4 cm. احسب محيطه.', solutionAr: 'المحيط = (9 + 4) × 2 = 26 cm.' },
   },
   {
     id: 'exam-3ap-math-t3-b-2026',

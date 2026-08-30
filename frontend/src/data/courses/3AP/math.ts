@@ -931,7 +931,7 @@ export const MATH_3AP: CourseLesson[] = [
 },
 
 {
-    id: 'math-3ap-t2-perimeter-grid',
+    id: 'math-3ap-t2-perpendicular-lines',
     grade: '3AP',
     subject: 'math',
     trimester: 2,
