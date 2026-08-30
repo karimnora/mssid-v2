@@ -10,7 +10,6 @@ export type SubjectId =
   | 'arabic'
   | 'tamazight'
   | 'art'
-  | 'technology'
   | 'soroban'
   | 'exams'
   | 'science'

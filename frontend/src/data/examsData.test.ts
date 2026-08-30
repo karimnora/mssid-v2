@@ -290,9 +290,9 @@ describe('exam bank integrity', () => {
     });
   });
 
-  it('ships P2 tamazight, art and technology compositions on 3AP–5AP T1–T3', () => {
+  it('ships P2 tamazight and art compositions on 3AP–5AP T1–T3', () => {
     (['3AP', '4AP', '5AP'] as const).forEach((grade) => {
-      (['tamazight', 'art', 'technology'] as const).forEach((subject) => {
+      (['tamazight', 'art'] as const).forEach((subject) => {
         ([1, 2, 3] as const).forEach((trimester) => {
           expect(
             OFFICIAL_EXAMS_DATA.some(
@@ -309,11 +309,11 @@ describe('exam bank integrity', () => {
     });
   });
 
-  it('never puts tamazight, art or technology before 3AP', () => {
+  it('never puts tamazight or art before 3AP', () => {
     const tooEarly = OFFICIAL_EXAMS_DATA.filter(
       (exam) =>
         (exam.grade === '1AP' || exam.grade === '2AP') &&
-        (exam.subject === 'tamazight' || exam.subject === 'art' || exam.subject === 'technology')
+        (exam.subject === 'tamazight' || exam.subject === 'art')
     );
     expect(tooEarly).toEqual([]);
   });
@@ -330,9 +330,9 @@ describe('exam bank integrity', () => {
     });
   });
 
-  it('ships history_geo, tamazight, art and technology devoirs each term on 3AP–5AP', () => {
+  it('ships history_geo, tamazight and art devoirs each term on 3AP–5AP', () => {
     (['3AP', '4AP', '5AP'] as const).forEach((grade) => {
-      (['history_geo', 'tamazight', 'art', 'technology'] as const).forEach((subject) => {
+      (['history_geo', 'tamazight', 'art'] as const).forEach((subject) => {
         ([1, 2, 3] as const).forEach((trimester) => {
           const n = OFFICIAL_EXAMS_DATA.filter(
             (exam) =>

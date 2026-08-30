@@ -62,18 +62,6 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     category: 'course',
   },
   {
-    id: 'technology',
-    nameAr: 'التكنولوجيا',
-    nameFr: 'Technologie',
-    icon: 'Cpu',
-    color: 'from-slate-500 to-zinc-700',
-    bgLight: 'bg-slate-50 text-slate-900 border-slate-200',
-    description: 'الكهرباء، الآلات البسيطة، القياس، المادة والاحتراق — الجانب التكنولوجي من منهاج التربية العلمية.',
-    category: 'course',
-    minGrade: '3AP',
-    featureFlag: 'technology',
-  },
-  {
     id: 'art',
     nameAr: 'التربية الفنية والموسيقية',
     nameFr: 'Arts plastiques',

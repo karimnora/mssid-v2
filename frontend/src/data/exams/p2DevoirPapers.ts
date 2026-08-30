@@ -39,7 +39,7 @@ function paper(opts: {
 const DUR: Record<PrimaryGrade, number> = { '1AP': 20, '2AP': 20, '3AP': 20, '4AP': 25, '5AP': 25 };
 
 /**
- * Weekly-style homework for tamazight / art / technology so P2 subjects get the same
+ * Weekly-style homework for tamazight / art, plus a science/technology strand, so P2 subjects get the same
  * T1–T3 devoir cadence as math/arabic on 3AP–5AP (audit gap: 0 devoirs for these 3 subjects).
  * Same relatedLessonIds as the P2_EXAM_PAPERS composition for that grade/trimester, new exercises.
  */
@@ -318,12 +318,12 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     problem: ex('وضعية قصيرة (4 نقاط)', 4, 'اقترح موضوعاً لجدارية تراثية جزائرية.', 'مثال: القصبة، النخيل، العلم الوطني — مع تبرير بسيط للرمز المختار.', 'art-5ap-t3-heritage-mural'),
   }),
 
-  // ═══════════ Technology ═══════════
+  // ═══════════ Science & Technology strand ═══════════
   paper({
     id: 'homework-3ap-technology-t1-2026',
     trimester: 1,
     grade: '3AP',
-    subject: 'technology',
+    subject: 'science',
     n: 1,
     titleAr: 'الكتلة وحالات المادة (السنة الثالثة)',
     durationMinutes: DUR['3AP'],
@@ -338,7 +338,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-3ap-technology-t2-2026',
     trimester: 2,
     grade: '3AP',
-    subject: 'technology',
+    subject: 'science',
     n: 2,
     titleAr: 'الطقس وأدوات القياس (السنة الثالثة)',
     durationMinutes: DUR['3AP'],
@@ -353,7 +353,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-3ap-technology-t3-2026',
     trimester: 3,
     grade: '3AP',
-    subject: 'technology',
+    subject: 'science',
     n: 3,
     titleAr: 'الدارة الكهربائية البسيطة (السنة الثالثة)',
     durationMinutes: DUR['3AP'],
@@ -368,7 +368,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-4ap-technology-t1-2026',
     trimester: 1,
     grade: '4AP',
-    subject: 'technology',
+    subject: 'science',
     n: 1,
     titleAr: 'حالات المادة وتحولاتها (السنة الرابعة)',
     durationMinutes: DUR['4AP'],
@@ -383,7 +383,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-4ap-technology-t2-2026',
     trimester: 2,
     grade: '4AP',
-    subject: 'technology',
+    subject: 'science',
     n: 2,
     titleAr: 'الهواء والاحتراق (السنة الرابعة)',
     durationMinutes: DUR['4AP'],
@@ -398,7 +398,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-4ap-technology-t3-2026',
     trimester: 3,
     grade: '4AP',
-    subject: 'technology',
+    subject: 'science',
     n: 3,
     titleAr: 'دوران الأرض والسلامة من الحريق (السنة الرابعة)',
     durationMinutes: DUR['4AP'],
@@ -413,7 +413,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-5ap-technology-t1-2026',
     trimester: 1,
     grade: '5AP',
-    subject: 'technology',
+    subject: 'science',
     n: 1,
     titleAr: 'خلائط المادة وخصائص الهواء (السنة الخامسة)',
     durationMinutes: DUR['5AP'],
@@ -428,7 +428,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-5ap-technology-t2-2026',
     trimester: 2,
     grade: '5AP',
-    subject: 'technology',
+    subject: 'science',
     n: 2,
     titleAr: 'الدارة الكهربائية والسلامة (السنة الخامسة)',
     durationMinutes: DUR['5AP'],
@@ -443,7 +443,7 @@ export const P2_DEVOIR_PAPERS: OfficialExam[] = [
     id: 'homework-5ap-technology-t3-2026',
     trimester: 3,
     grade: '5AP',
-    subject: 'technology',
+    subject: 'science',
     n: 3,
     titleAr: 'التلوث ومعالجة النفايات (السنة الخامسة)',
     durationMinutes: DUR['5AP'],

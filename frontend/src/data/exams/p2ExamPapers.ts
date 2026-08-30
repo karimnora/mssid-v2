@@ -42,7 +42,7 @@ function paper(opts: {
 
 const DUR: Record<PrimaryGrade, number> = { '1AP': 30, '2AP': 30, '3AP': 30, '4AP': 45, '5AP': 45 };
 
-/** P2 — tamazight, art, technology compositions (3AP–5AP × T1–T3). Original papers. */
+/** P2 — tamazight, art compositions, plus a science/technology strand (3AP–5AP × T1–T3). Original papers. */
 export const P2_EXAM_PAPERS: OfficialExam[] = [
   // —— Tamazight ——
   paper({
@@ -322,13 +322,13 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     problem: ex('وضعية بسيطة (4 نقاط)', 4, 'اقترح موضوع جدارية تراثية لقسمك (علم، قصبة، نخيل...).', 'إجابة مع تبرير بسيط للرمز المختار.', 'art-5ap-t3-heritage-mural'),
   }),
 
-  // —— Technology (science lessons, technology subject strand) ——
+  // —— Science & Technology strand (kept as science exams; "technology" is not a separate official subject) ——
   paper({
     id: 'exam-3ap-technology-t1-2026',
     trimester: 1,
     grade: '3AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الأول في التكنولوجيا - السنة الثالثة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الأول في العلوم والتكنولوجيا - السنة الثالثة',
     durationMinutes: DUR['3AP'],
     relatedLessonIds: ['science-3ap-u3-matter-states-scale-mass'],
     exercises: [
@@ -342,8 +342,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-3ap-technology-t2-2026',
     trimester: 2,
     grade: '3AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الثاني في التكنولوجيا - السنة الثالثة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الثاني في العلوم والتكنولوجيا - السنة الثالثة',
     durationMinutes: DUR['3AP'],
     relatedLessonIds: ['science-3ap-u3-weather-climate-raingauge'],
     exercises: [
@@ -357,8 +357,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-3ap-technology-t3-2026',
     trimester: 3,
     grade: '3AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الثالث في التكنولوجيا - السنة الثالثة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الثالث في العلوم والتكنولوجيا - السنة الثالثة',
     durationMinutes: DUR['3AP'],
     relatedLessonIds: ['science-3ap-u3-time-thermometer-electricity', 'science-3ap-u3-lever-balance'],
     exercises: [
@@ -373,8 +373,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-4ap-technology-t1-2026',
     trimester: 1,
     grade: '4AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الأول في التكنولوجيا - السنة الرابعة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الأول في العلوم والتكنولوجيا - السنة الرابعة',
     durationMinutes: DUR['4AP'],
     relatedLessonIds: ['science-4ap-states-of-matter-phase-changes'],
     exercises: [
@@ -388,8 +388,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-4ap-technology-t2-2026',
     trimester: 2,
     grade: '4AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الثاني في التكنولوجيا - السنة الرابعة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الثاني في العلوم والتكنولوجيا - السنة الرابعة',
     durationMinutes: DUR['4AP'],
     relatedLessonIds: ['science-4ap-air-combustion'],
     exercises: [
@@ -403,8 +403,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-4ap-technology-t3-2026',
     trimester: 3,
     grade: '4AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الثالث في التكنولوجيا - السنة الرابعة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الثالث في العلوم والتكنولوجيا - السنة الرابعة',
     durationMinutes: DUR['4AP'],
     relatedLessonIds: ['science-4ap-earth-rotation-seasons-time', 'science-4ap-combustion-fire-safety'],
     exercises: [
@@ -419,8 +419,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-5ap-technology-t1-2026',
     trimester: 1,
     grade: '5AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الأول في التكنولوجيا - السنة الخامسة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الأول في العلوم والتكنولوجيا - السنة الخامسة',
     durationMinutes: DUR['5AP'],
     relatedLessonIds: ['science-5ap-matter-mixtures', 'science-5ap-air-properties'],
     exercises: [
@@ -434,8 +434,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-5ap-technology-t2-2026',
     trimester: 2,
     grade: '5AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الثاني في التكنولوجيا - السنة الخامسة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الثاني في العلوم والتكنولوجيا - السنة الخامسة',
     durationMinutes: DUR['5AP'],
     relatedLessonIds: ['science-5ap-electric-circuit', 'science-5ap-electrical-safety'],
     exercises: [
@@ -449,8 +449,8 @@ export const P2_EXAM_PAPERS: OfficialExam[] = [
     id: 'exam-5ap-technology-t3-2026',
     trimester: 3,
     grade: '5AP',
-    subject: 'technology',
-    titleAr: 'اختبار الفصل الثالث في التكنولوجيا - السنة الخامسة',
+    subject: 'science',
+    titleAr: 'اختبار الفصل الثالث في العلوم والتكنولوجيا - السنة الخامسة',
     durationMinutes: DUR['5AP'],
     relatedLessonIds: ['science-5ap-pollution-waste-treatment'],
     exercises: [

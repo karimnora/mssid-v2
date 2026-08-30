@@ -9,9 +9,9 @@ const GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 const CORE_SUBJECTS_BY_GRADE: Record<PrimaryGrade, SubjectId[]> = {
   '1AP': ['math', 'arabic', 'islamic', 'science', 'civics'],
   '2AP': ['math', 'arabic', 'islamic', 'science', 'civics'],
-  '3AP': ['math', 'arabic', 'french', 'english', 'islamic', 'science', 'civics', 'history_geo', 'tamazight', 'art', 'technology'],
-  '4AP': ['math', 'arabic', 'french', 'english', 'islamic', 'science', 'civics', 'history_geo', 'tamazight', 'art', 'technology'],
-  '5AP': ['math', 'arabic', 'french', 'english', 'islamic', 'science', 'civics', 'history_geo', 'tamazight', 'art', 'technology'],
+  '3AP': ['math', 'arabic', 'french', 'english', 'islamic', 'science', 'civics', 'history_geo', 'tamazight', 'art'],
+  '4AP': ['math', 'arabic', 'french', 'english', 'islamic', 'science', 'civics', 'history_geo', 'tamazight', 'art'],
+  '5AP': ['math', 'arabic', 'french', 'english', 'islamic', 'science', 'civics', 'history_geo', 'tamazight', 'art'],
 };
 
 const COURSE_SUBJECTS = new Set(
