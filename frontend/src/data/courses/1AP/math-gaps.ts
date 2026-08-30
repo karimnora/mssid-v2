@@ -141,6 +141,7 @@ export const MATH_1AP_GAPS: CourseLesson[] = [
       type: 'number_cards',
       titleAr: 'فم التمساح: < و >',
       introAr: 'الفم يفتح نحو العدد الأكبر.',
+      themeEmoji: '🐊',
       cards: [
         { labelAr: 'أكبر من', valueDisplay: '8 > 3', explanationAr: 'الفم نحو 8. ثمانية أكبر من ثلاثة.' },
         { labelAr: 'أصغر من', valueDisplay: '3 < 8', explanationAr: 'نفس المقارنة مقلوبة. 3 أصغر من 8.' },

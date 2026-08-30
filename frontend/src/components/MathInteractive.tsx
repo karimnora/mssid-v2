@@ -25,14 +25,17 @@ interface MathInteractiveProps {
 const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ config }) => {
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const headerIcon =
+  const headerIcon = config.themeEmoji ? (
+    <span className="text-2xl leading-none" aria-hidden="true">{config.themeEmoji}</span>
+  ) : (
     config.type === 'number_cards' ? <Hash className="w-6 h-6 text-amber-400" /> :
     config.type === 'shape_explorer' ? <Shapes className="w-6 h-6 text-amber-400" /> :
     config.type === 'word_problem_scenario' ? <Lightbulb className="w-6 h-6 text-amber-400" /> :
     config.type === 'written_operation' ? <PencilLine className="w-6 h-6 text-amber-400" /> :
     config.type === 'visual_counting' ? <Grid3x3 className="w-6 h-6 text-amber-400" /> :
     config.type === 'place_value_blocks' ? <Boxes className="w-6 h-6 text-amber-400" /> :
-    <BarChart3 className="w-6 h-6 text-amber-400" />;
+    <BarChart3 className="w-6 h-6 text-amber-400" />
+  );
 
   return (
     <div className="bg-emerald-950 text-white rounded-3xl p-6 border border-emerald-800 shadow-2xl space-y-6 dir-rtl" dir="rtl">

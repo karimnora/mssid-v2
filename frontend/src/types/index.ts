@@ -546,6 +546,8 @@ export interface MathNumberCards {
   type: 'number_cards';
   titleAr: string;
   introAr: string;
+  /** Optional single emoji reflecting the lesson's own theme (e.g. 🐊 for the < > "crocodile" lesson) — overrides the generic per-type header icon. */
+  themeEmoji?: string;
   cards: MathNumberCard[];
 }
 
@@ -559,6 +561,7 @@ export interface MathShapeExplorer {
   type: 'shape_explorer';
   titleAr: string;
   introAr: string;
+  themeEmoji?: string;
   shapes: MathShapeItem[];
 }
 
@@ -576,6 +579,7 @@ export interface MathWordProblemScenario {
   type: 'word_problem_scenario';
   titleAr: string;
   introAr: string;
+  themeEmoji?: string;
   problems: MathWordProblemItem[];
 }
 
@@ -587,6 +591,7 @@ export interface MathDataMatching {
   type: 'data_matching';
   titleAr: string;
   introAr: string;
+  themeEmoji?: string;
   rows: MathDataRow[];
   insightAr: string;
 }
@@ -601,6 +606,7 @@ export interface MathWrittenOperation {
   type: 'written_operation';
   titleAr: string;
   introAr: string;
+  themeEmoji?: string;
   operations: MathWrittenOpItem[];
 }
 
@@ -618,6 +624,7 @@ export interface MathVisualCounting {
   type: 'visual_counting';
   titleAr: string;
   introAr: string;
+  themeEmoji?: string;
   items: MathCountingItem[];
 }
 
@@ -635,6 +642,7 @@ export interface MathPlaceValueBlocks {
   type: 'place_value_blocks';
   titleAr: string;
   introAr: string;
+  themeEmoji?: string;
   items: MathPlaceValueItem[];
 }
 
