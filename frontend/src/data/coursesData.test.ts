@@ -1035,7 +1035,8 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     expect(ids).toContain('math-1ap-t1-grandeurs');
     expect(ids).toContain('math-1ap-t3-compare-symbols');
     expect(ids).toContain('math-1ap-t3-ruler-align');
-    expect(ids).toContain('math-1ap-t3-numbers-21-99');
+    expect(ids).toContain('math-1ap-t3-complete-tens-up-to-90');
+    expect(ids).toContain('math-1ap-t3-place-value-and-n99');
 
     const sixToNine = math.find((l) => l.id === 'math-1ap-t2-numbers-6-10')!;
     expect(sixToNine.trimester).toBe(1);
@@ -1045,9 +1046,13 @@ describe('1AP Pedagogical Curriculum Tests (initiation year — no official exam
     const tenToTwenty = math.find((l) => l.id === 'math-1ap-t2-numbers-11-20')!;
     expect(tenToTwenty.trimester).toBe(2);
 
-    const twentyOneToNinetyNine = math.find((l) => l.id === 'math-1ap-t3-numbers-21-99')!;
-    expect(twentyOneToNinetyNine.trimester).toBe(3);
-    expect(twentyOneToNinetyNine.titleAr).toMatch(/99|21/);
+    const twentyOneToFortyNine = math.find((l) => l.id === 'math-1ap-t3-complete-tens-up-to-90')!;
+    expect(twentyOneToFortyNine.trimester).toBe(2);
+    expect(twentyOneToFortyNine.titleAr).toMatch(/49|21/);
+
+    const fiftyToNinetyNine = math.find((l) => l.id === 'math-1ap-t3-place-value-and-n99')!;
+    expect(fiftyToNinetyNine.trimester).toBe(3);
+    expect(fiftyToNinetyNine.titleAr).toMatch(/99|50/);
 
     const problems = math.find((l) => l.id === 'math-1ap-t3-addition-and-time-money')!;
     expect(problems.titleAr).not.toMatch(/ساعة|نقود/);
