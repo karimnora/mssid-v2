@@ -405,17 +405,24 @@ export default function App() {
               />
             )}
 
-            {/* FLOATING COMPANION BUTTON WHEN OUTSIDE HOME */}
-            <DidouVirtualCompanion
-              avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
-              goldCoins={progress.userProfile.goldCoins || 150}
-              xp={progress.userProfile.xp}
-              level={progress.userProfile.level}
-              userName={progress.userProfile.name}
-              onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
-              onFeed={handleFeedDidou}
-              isFloating={true}
-            />
+            {/* FLOATING COMPANION BUTTON WHEN OUTSIDE HOME — hidden during exams and the challenges
+                arena: an exam needs an uncluttered, focused screen, and inside challenges Didou is
+                already the on-screen hero of the boss-battle game, so a second floating Didou would
+                just be visual noise (and the arena's own timed sub-games deserve the same focus as
+                an exam). Unmounting here also means its audio/timeout cleanup runs on every exit
+                instead of the companion silently running in the background on every other screen. */}
+            {nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
+              <DidouVirtualCompanion
+                avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
+                goldCoins={progress.userProfile.goldCoins || 150}
+                xp={progress.userProfile.xp}
+                level={progress.userProfile.level}
+                userName={progress.userProfile.name}
+                onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
+                onFeed={handleFeedDidou}
+                isFloating={true}
+              />
+            )}
           </>
         )}
       </main>
