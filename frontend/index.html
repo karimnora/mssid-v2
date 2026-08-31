@@ -14,8 +14,11 @@
         via <meta>, they only work as a real HTTP response header (e.g. from server.ts).
       - In `npm run dev`, @vitejs/plugin-react's Fast Refresh preamble is an inline <script> — if it
         gets blocked, that only affects hot-reload in development, never the production build.
+      - script-src/connect-src/frame-src allow accounts.google.com for Google Identity Services (the
+        "Continuer avec Google" button, see AuthModal.tsx): the library's own <script> tag, its
+        internal fetch calls, and the button/One Tap iframe it renders all come from that origin.
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: http://localhost:8080 http://localhost:3000; object-src 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: http://localhost:8080 http://localhost:3000; frame-src https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self';" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#008751" />
     <meta name="mobile-web-app-capable" content="yes" />
