@@ -29,6 +29,7 @@ import { useAppNavigation } from './hooks/useAppNavigation';
 import { useUserProgress } from './hooks/useUserProgress';
 import { useAppModals } from './hooks/useAppModals';
 import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
+import { isLabFreeForGuest, isLessonFreeForGuest } from './utils/guestAccess';
 import { isLabSubjectId } from './navigation/appLocation';
 import {
   BookOpen,
@@ -143,17 +144,53 @@ export default function App() {
       advancedLabs: advancedLabsFlag,
     });
 
-  const isLessonLocked = (lesson: CourseLesson): boolean =>
-    isLessonLockedCheck(lesson, {
+  // The full lesson catalog (~4.6 MB) is dynamically imported rather than a top-level `import`,
+  // so a visitor's first paint (home screen, no course content needed there) never waits on it.
+  // Kicked off right after mount — not gated on the user navigating into "الدروس" — so it's very
+  // likely already resolved by the time they actually get there; courseSelectionView/
+  // ActiveWorkspace show a loading state below for the rare case it isn't yet. Declared before
+  // isLessonLocked below since the guest-preview check needs it to find a lesson's siblings.
+  const [coursesData, setCoursesData] = useState<CourseLesson[] | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('./data/coursesData').then((m) => {
+      if (!cancelled) setCoursesData(m.COURSES_DATA);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const isGuest = !authUser;
+
+  // Guest gate: no account yet → only the first lesson of each subject is open (isLessonLocked),
+  // and any other lock reason (the dormant trimester paywall) is moot for a guest since they'd be
+  // blocked here first anyway — onLessonLocked below always routes a guest to the login modal
+  // rather than the payment paywall, since "create an account" is the actionable first step.
+  const isLessonLocked = (lesson: CourseLesson): boolean => {
+    if (isGuest && !isLessonFreeForGuest(lesson, coursesData)) return true;
+    return isLessonLockedCheck(lesson, {
       enablePayments: enablePaymentsFlag,
       enableTrimesterPaywall,
       userRole: authUser?.role,
     });
+  };
+
+  const onLessonLocked = (lesson: CourseLesson) => {
+    if (isGuest) {
+      modals.openAuth('login');
+      return;
+    }
+    setLockedLesson(lesson);
+  };
 
   const nav = useAppNavigation({
     isLessonLocked,
     accountGrade: authUser?.grade,
-    onLessonLocked: setLockedLesson,
+    onLessonLocked,
+    isGuest,
+    isLabFreeForGuest,
+    onGuestBlocked: () => modals.openAuth('login'),
   });
 
   // /admin is reachable by URL alone (see appLocation.ts's plain 'admin' route), so this must never
@@ -168,22 +205,6 @@ export default function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nav.isAdminConsoleActive, isAuthLoading, authUser?.role]);
-
-  // The full lesson catalog (~4.6 MB) is dynamically imported rather than a top-level `import`,
-  // so a visitor's first paint (home screen, no course content needed there) never waits on it.
-  // Kicked off right after mount — not gated on the user navigating into "الدروس" — so it's very
-  // likely already resolved by the time they actually get there; courseSelectionView/
-  // ActiveWorkspace show a loading state below for the rare case it isn't yet.
-  const [coursesData, setCoursesData] = useState<CourseLesson[] | null>(null);
-  useEffect(() => {
-    let cancelled = false;
-    import('./data/coursesData').then((m) => {
-      if (!cancelled) setCoursesData(m.COURSES_DATA);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter((s) => isToolAvailableForGrade(s, nav.grade) && isSubjectVisible(s));
   const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, nav.grade) && isSubjectVisible(tool));
@@ -324,7 +345,6 @@ export default function App() {
             onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
             onOpenHomeworkPin={() => modals.setIsHomeworkPinOpen(true)}
             onOpenPrintables={() => modals.setIsPrintablesOpen(true)}
-            onOpenHonorCertificates={() => modals.setIsHonorCertificatesOpen(true)}
             onOpenOfflinePacks={() => modals.setIsOfflinePacksOpen(true)}
             onFeedDidou={handleFeedDidou}
           />

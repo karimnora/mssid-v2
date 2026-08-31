@@ -76,8 +76,20 @@ export function useAppNavigation(options: {
   isLessonLocked: (lesson: CourseLesson) => boolean;
   accountGrade?: string;
   onLessonLocked?: (lesson: CourseLesson) => void;
+  /** No account yet: browsing stays open, but only a couple of labs are actually openable —
+      everything else (other labs, all exams, all challenges) redirects to onGuestBlocked. */
+  isGuest?: boolean;
+  isLabFreeForGuest?: (toolId: SubjectId) => boolean;
+  onGuestBlocked?: () => void;
 }) {
-  const { isLessonLocked, accountGrade, onLessonLocked } = options;
+  const {
+    isLessonLocked,
+    accountGrade,
+    onLessonLocked,
+    isGuest = false,
+    isLabFreeForGuest = () => false,
+    onGuestBlocked,
+  } = options;
   const boot = readBootLocation();
 
   const [grade, setGrade] = useState<PrimaryGrade>(boot.grade);
@@ -208,6 +220,15 @@ export function useAppNavigation(options: {
   ]);
 
   const handleSelectSubject = (subject: SubjectId) => {
+    if (isGuest) {
+      const isLab = INTERACTIVE_LABS_LIST.some((s) => s.id === subject);
+      const isExam = OFFICIAL_EXAMS_LIST.some((s) => s.id === subject);
+      const isChallenge = CHALLENGES_TAB_LIST.some((s) => s.id === subject);
+      if ((isLab && !isLabFreeForGuest(subject)) || isExam || isChallenge) {
+        onGuestBlocked?.();
+        return;
+      }
+    }
     setSelectedSubject(subject);
     setSelectedLesson(null);
     if (INTERACTIVE_LABS_LIST.some((s) => s.id === subject)) {
@@ -226,6 +247,10 @@ export function useAppNavigation(options: {
   };
 
   const handleMobileTab = (tab: MobileTab) => {
+    if (isGuest && tab === 'exercises') {
+      onGuestBlocked?.();
+      return;
+    }
     setSelectedLesson(null);
     if (tab === 'home') {
       setIsHomeActive(true);
@@ -245,6 +270,10 @@ export function useAppNavigation(options: {
   };
 
   const handleSelectPole = (pole: HomePoleId) => {
+    if (isGuest && (pole === 'exams' || pole === 'challenges')) {
+      onGuestBlocked?.();
+      return;
+    }
     setMainCategory(pole);
     setIsHomeActive(false);
     setSelectedLesson(null);
@@ -276,6 +305,10 @@ export function useAppNavigation(options: {
   };
 
   const openLab = (toolId: SubjectId) => {
+    if (isGuest && !isLabFreeForGuest(toolId)) {
+      onGuestBlocked?.();
+      return;
+    }
     setMainCategory('labs');
     setSelectedSubject(toolId);
     setSelectedLesson(null);
