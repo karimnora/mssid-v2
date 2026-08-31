@@ -879,7 +879,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   {/* Vehicle A */}
                   <div
                     className="absolute flex items-center transition-all duration-75"
-                    style={{ left: `calc(40px + ${progressA * 80}% )`, transform: 'translateY(-2px)' }}
+                    style={{ insetInlineStart: `calc(40px + ${progressA * 80}% )`, transform: 'translateY(-2px)' }}
                   >
                     <Vehicle3DModel
                       vehicleId={vehicleA.id}
@@ -920,7 +920,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   {/* Vehicle B */}
                   <div
                     className="absolute flex items-center transition-all duration-75"
-                    style={{ left: `calc(40px + ${progressB * 80}% )`, transform: 'translateY(-2px)' }}
+                    style={{ insetInlineStart: `calc(40px + ${progressB * 80}% )`, transform: 'translateY(-2px)' }}
                   >
                     <Vehicle3DModel
                       vehicleId={vehicleB.id}

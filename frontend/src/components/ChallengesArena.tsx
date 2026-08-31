@@ -652,7 +652,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
           <div className="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-amber-400 to-yellow-300 text-amber-950 flex items-center justify-center shadow-lg shadow-amber-500/20">
             <Trophy className="w-10 h-10 animate-bounce" />
           </div>
-          <h2 className="text-2xl font-black text-[var(--kids-ink)]">أحسنت يا بطل! انتهى التحدي</h2>
+          <h2 className="text-2xl font-black text-[var(--kids-ink)]">أحسنت يا بطل! انتهى التحدي!</h2>
           <p className="text-sm text-[var(--app-text-muted)] font-bold">{renderArabicText(activeChallenge.titleAr)}</p>
 
           <div className="max-w-xs mx-auto">

@@ -15,7 +15,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'التمور، الكسكسي الصحراوي، الشاي الأصيل',
     natureAr: 'الكثبان الرملية الذهبية وعروق قورارة',
     postalPrefix: '01',
-    mapPosition: { xPercent: 32, yPercent: 68 },
+    mapPosition: { xPercent: 33.9, yPercent: 66.9 },
   },
   {
     code: 2,
@@ -31,7 +31,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الحمضيات، الأسماك الطازجة، الخبز التقليدي',
     natureAr: 'شواطئ تنس وجبال الظهرة',
     postalPrefix: '02',
-    mapPosition: { xPercent: 43, yPercent: 21 },
+    mapPosition: { xPercent: 38.3, yPercent: 19.1 },
   },
   {
     code: 3,
@@ -47,7 +47,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الزربية القشابية الصوفية، المردود',
     natureAr: 'جبال العمور وواحات النخيل',
     postalPrefix: '03',
-    mapPosition: { xPercent: 48, yPercent: 40 },
+    mapPosition: { xPercent: 46.7, yPercent: 43.9 },
   },
   {
     code: 4,
@@ -63,7 +63,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الشخشوخة الشاوية، البرنوس الشاوي',
     natureAr: 'شط قريقر وجبال قريقر الشامخة',
     postalPrefix: '04',
-    mapPosition: { xPercent: 78, yPercent: 25 },
+    mapPosition: { xPercent: 73.6, yPercent: 26.3 },
   },
   {
     code: 5,
@@ -79,7 +79,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'العيش بالأعشاب، زيوت الزيتون الجبلية، الفخار التقليدي',
     natureAr: 'غابات الأرز الأطلسي في بلزمة وجبال الشلعلع',
     postalPrefix: '05',
-    mapPosition: { xPercent: 75, yPercent: 30 },
+    mapPosition: { xPercent: 75.6, yPercent: 32.5 },
   },
   {
     code: 6,
@@ -95,7 +95,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'زيت الزيتون الأصلي، التين المجفف، الكسكسي البحري',
     natureAr: 'الحظيرة الوطنية لقورايا وشلالات كفريدة',
     postalPrefix: '06',
-    mapPosition: { xPercent: 62, yPercent: 18 },
+    mapPosition: { xPercent: 60.5, yPercent: 12.1 },
   },
   {
     code: 7,
@@ -111,7 +111,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'تمور دقلة نور الفاخرة، الدوبارة البسكرية الحارة، الشخشوخة',
     natureAr: 'واحات النخيل ومضائق وادي غوفي',
     postalPrefix: '07',
-    mapPosition: { xPercent: 68, yPercent: 38 },
+    mapPosition: { xPercent: 68.9, yPercent: 36.9 },
   },
   {
     code: 8,
@@ -127,7 +127,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'خبز القلة، التمور الفاخرة، الشاي الصحراوي المنعنع',
     natureAr: 'الكثبان الرملية العملاقة في تاغيت ووادي الساورة',
     postalPrefix: '08',
-    mapPosition: { xPercent: 25, yPercent: 48 },
+    mapPosition: { xPercent: 28, yPercent: 47.8 },
   },
   {
     code: 9,
@@ -143,7 +143,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'ماء الزهر المقطر، حلوى المشوك، الحمضيات العطرة',
     natureAr: 'غابات الأرز الأطلسي بقمم الشريعة وسهل متيجة الخصب',
     postalPrefix: '09',
-    mapPosition: { xPercent: 52, yPercent: 21 },
+    mapPosition: { xPercent: 46.9, yPercent: 20.9 },
   },
   {
     code: 10,
@@ -159,7 +159,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'زيت الزيتون البكر، العسل الجبلي الصافي',
     natureAr: 'قمم جبال جرجرة وغابات تيكجدة الخضراء',
     postalPrefix: '10',
-    mapPosition: { xPercent: 58, yPercent: 22 },
+    mapPosition: { xPercent: 58, yPercent: 28.8 },
   },
   {
     code: 11,
@@ -175,7 +175,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الشاي الصحراوي، الحلي الفضية التارقية، خبز التاغلا',
     natureAr: 'جبال الهقار البركانية والغرانيتية الخالدة',
     postalPrefix: '11',
-    mapPosition: { xPercent: 50, yPercent: 88 },
+    mapPosition: { xPercent: 50, yPercent: 85 },
   },
   {
     code: 12,
@@ -191,7 +191,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المحكوك التبسي، الكسكسي بالقديد',
     natureAr: 'جبال الدكان والشطوط الملحية',
     postalPrefix: '12',
-    mapPosition: { xPercent: 84, yPercent: 29 },
+    mapPosition: { xPercent: 84.6, yPercent: 34.2 },
   },
   {
     code: 13,
@@ -207,7 +207,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الشدة التلمسانية المصنفة في اليونسكو، الكعك التلمساني',
     natureAr: 'مغارات بني عاد العجيبة وشلالات الأوريط',
     postalPrefix: '13',
-    mapPosition: { xPercent: 27, yPercent: 28 },
+    mapPosition: { xPercent: 24.5, yPercent: 28.1 },
   },
   {
     code: 14,
@@ -223,7 +223,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الكسكسي باللحم المجفف، الخبز التقليدي بالخميرة الطبيعية',
     natureAr: 'سهول السرسو الخصبة لزراعة الحبوب',
     postalPrefix: '14',
-    mapPosition: { xPercent: 41, yPercent: 30 },
+    mapPosition: { xPercent: 44.5, yPercent: 37.7 },
   },
   {
     code: 15,
@@ -239,7 +239,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الحلي الفضية المرجانية، الفخار القبائلي، التين وزيت الزيتون',
     natureAr: 'جبال جرجرة وسواحل تيقزيرت وأزفون',
     postalPrefix: '15',
-    mapPosition: { xPercent: 57, yPercent: 19 },
+    mapPosition: { xPercent: 53.8, yPercent: 16.6 },
   },
   {
     code: 16,
@@ -255,7 +255,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الرشتة العاصمية الأصيلة، الشربات، حلوى البقلاوة وتشاراك العريان',
     natureAr: 'حديقة التجارب بالحامة وغابات باينام وميناء سيدي فرج',
     postalPrefix: '16',
-    mapPosition: { xPercent: 53, yPercent: 19 },
+    mapPosition: { xPercent: 45, yPercent: 15 },
   },
   {
     code: 17,
@@ -271,7 +271,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المشوي الجزائري اللذيذ، البرنوس والقشابية الوبرية',
     natureAr: 'غابة سن البا وسلسلة جبال أولاد نايل',
     postalPrefix: '17',
-    mapPosition: { xPercent: 51, yPercent: 35 },
+    mapPosition: { xPercent: 53.2, yPercent: 39.4 },
   },
   {
     code: 18,
@@ -287,7 +287,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'كسكسي السمك، السردين الطازج، الفطائر التقليدية',
     natureAr: 'حظيرة تازة الوطنية وغابات الكورنيش الجيجلي',
     postalPrefix: '18',
-    mapPosition: { xPercent: 67, yPercent: 18 },
+    mapPosition: { xPercent: 62.6, yPercent: 18.2 },
   },
   {
     code: 19,
@@ -303,7 +303,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الثريدة السطايفية، الشخشوخة، المكسرات والحلويات',
     natureAr: 'جبل مقرس وسهول الهضاب العليا الواسعة',
     postalPrefix: '19',
-    mapPosition: { xPercent: 68, yPercent: 23 },
+    mapPosition: { xPercent: 67, yPercent: 30.6 },
   },
   {
     code: 20,
@@ -319,7 +319,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المرقاز السعيدي، الكسكسي بالبصل والزبيب',
     natureAr: 'غابات المرجة ومنابع عين السخونة الدافئة',
     postalPrefix: '20',
-    mapPosition: { xPercent: 34, yPercent: 32 },
+    mapPosition: { xPercent: 35.7, yPercent: 36 },
   },
   {
     code: 21,
@@ -335,7 +335,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'فراولة سكيكدة الشهيرة، الأسماك المشوية، الكسكس الحار',
     natureAr: 'شواطئ العرائش وشبه جزيرة المصنعة وغابات المصنع',
     postalPrefix: '21',
-    mapPosition: { xPercent: 74, yPercent: 18 },
+    mapPosition: { xPercent: 69.4, yPercent: 13.9 },
   },
   {
     code: 22,
@@ -351,7 +351,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الكارانتيكا، المردود، الحريرة العباسية',
     natureAr: 'بحيرة سيدي محمد بن علي وجبال التسالة',
     postalPrefix: '22',
-    mapPosition: { xPercent: 31, yPercent: 27 },
+    mapPosition: { xPercent: 26.7, yPercent: 34.2 },
   },
   {
     code: 23,
@@ -367,7 +367,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'البراك العنابي الأصيل، الملوخية الشرقية، الأسماك',
     natureAr: 'مرتفعات سرايدي وغابات الأيدوغ المطلة على البحر',
     postalPrefix: '23',
-    mapPosition: { xPercent: 82, yPercent: 17 },
+    mapPosition: { xPercent: 87.1, yPercent: 17.4 },
   },
   {
     code: 24,
@@ -383,7 +383,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'طاجين الزيتون التقليدي، العسل الصافي، الخبز الديار',
     natureAr: 'جبل ماونة الخلاب ومنابع المياه الحارة الطبيعية',
     postalPrefix: '24',
-    mapPosition: { xPercent: 80, yPercent: 20 },
+    mapPosition: { xPercent: 89.1, yPercent: 23.6 },
   },
   {
     code: 25,
@@ -399,7 +399,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الشباح الصفرة القسنطينية، الجوزية، الملاية، الرفيس',
     natureAr: 'أخدود وادي الرمال الساحر وجبال الشاطابة',
     postalPrefix: '25',
-    mapPosition: { xPercent: 73, yPercent: 21 },
+    mapPosition: { xPercent: 82.1, yPercent: 28 },
   },
   {
     code: 26,
@@ -415,7 +415,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'العنب التيتري، القهوة بالتوابل، الكسكسي بالخضار',
     natureAr: 'مضائق الحمدانية وجبال الشريعة الجنوبية',
     postalPrefix: '26',
-    mapPosition: { xPercent: 51, yPercent: 24 },
+    mapPosition: { xPercent: 51.3, yPercent: 33.1 },
   },
   {
     code: 27,
@@ -431,7 +431,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'مجدول مستغانم، الأسماك البحرية، حلوى العرايش',
     natureAr: 'شواطئ كاب إيفي ومرتفعات جبال الظهرة',
     postalPrefix: '27',
-    mapPosition: { xPercent: 37, yPercent: 22 },
+    mapPosition: { xPercent: 29.4, yPercent: 17.4 },
   },
   {
     code: 28,
@@ -447,7 +447,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المهراس المسيلية الحارة (الزفيطي)، الشخشوخة',
     natureAr: 'شط الحضنة البيئي وجبال بوطالب',
     postalPrefix: '28',
-    mapPosition: { xPercent: 60, yPercent: 30 },
+    mapPosition: { xPercent: 60.1, yPercent: 35 },
   },
   {
     code: 29,
@@ -463,7 +463,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'زيت الزيتون المعسكري، الكعك، الطاجين التقليدي',
     natureAr: 'جبال بني شقران ومحمية بوحنيفية المعدنية',
     postalPrefix: '29',
-    mapPosition: { xPercent: 35, yPercent: 26 },
+    mapPosition: { xPercent: 33.3, yPercent: 29.8 },
   },
   {
     code: 30,
@@ -479,7 +479,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'تمور الغرس والغرس المعسل، الكسكسي الصحراوي الأصيل',
     natureAr: 'حقول حاسي مسعود وواحات النخيل الغناء',
     postalPrefix: '30',
-    mapPosition: { xPercent: 61, yPercent: 52 },
+    mapPosition: { xPercent: 59.8, yPercent: 53.3 },
   },
   {
     code: 31,
@@ -495,7 +495,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الكرنتيكا (الكاران) مع الكمون والحرور، حساء البايلا، المحاجب',
     natureAr: 'شواطئ عين الترك والأندلسيات وغابات جبل مرجاجو المطلة على البحر',
     postalPrefix: '31',
-    mapPosition: { xPercent: 30, yPercent: 23 },
+    mapPosition: { xPercent: 31.3, yPercent: 23.5 },
   },
   {
     code: 32,
@@ -511,7 +511,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'لحم الضأن المشوي، الكسكسي بالقديد، المردود',
     natureAr: 'واحة بريزينة وكثبان الرويسات وجبال القصور',
     postalPrefix: '32',
-    mapPosition: { xPercent: 38, yPercent: 44 },
+    mapPosition: { xPercent: 37.8, yPercent: 45.7 },
   },
   {
     code: 33,
@@ -527,7 +527,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'خبز التاغلا الصحراوي، الشاي التارقي، لحم الإبل',
     natureAr: 'هضبة الطاسيلي الصخرية والغابات الحجرية',
     postalPrefix: '33',
-    mapPosition: { xPercent: 72, yPercent: 72 },
+    mapPosition: { xPercent: 69.5, yPercent: 70.3 },
   },
   {
     code: 34,
@@ -543,7 +543,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المحاجب، العيش، الكسكس بالخضار الجبلية',
     natureAr: 'غابات المنصورة وجبال البيبان الشامخة',
     postalPrefix: '34',
-    mapPosition: { xPercent: 63, yPercent: 23 },
+    mapPosition: { xPercent: 64.8, yPercent: 24.5 },
   },
   {
     code: 35,
@@ -559,7 +559,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'أسماك السردين والميرلان، زيت الزيتون، العسل',
     natureAr: 'شواطئ قورصو وزموري وغابات رأس جنات',
     postalPrefix: '35',
-    mapPosition: { xPercent: 55, yPercent: 19 },
+    mapPosition: { xPercent: 55.9, yPercent: 22.6 },
   },
   {
     code: 36,
@@ -575,7 +575,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الأسماك الطازجة، الجمبري الوردية، العسل الصافي',
     natureAr: 'بحيرة الملاح وبحيرة الطيور ومحمية القالة الوطنية',
     postalPrefix: '36',
-    mapPosition: { xPercent: 85, yPercent: 17 },
+    mapPosition: { xPercent: 78.3, yPercent: 15.5 },
   },
   {
     code: 37,
@@ -591,7 +591,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'بلغمان الحساني، الشاي التندوفي على الجمر، التمور',
     natureAr: 'الحمادة الصخرية والواحات الصحراوية',
     postalPrefix: '37',
-    mapPosition: { xPercent: 12, yPercent: 62 },
+    mapPosition: { xPercent: 16.3, yPercent: 61.1 },
   },
   {
     code: 38,
@@ -607,7 +607,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الكسكس باللحم الجبلي، خبز الطاجين التقليدي',
     natureAr: 'غابات الأرز الأطلسي الخالدة بقمة سلمان',
     postalPrefix: '38',
-    mapPosition: { xPercent: 45, yPercent: 26 },
+    mapPosition: { xPercent: 42.4, yPercent: 31.6 },
   },
   {
     code: 39,
@@ -623,7 +623,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المطابيق السوفية، التمور الفاخرة، كعك التوابل',
     natureAr: 'الكثبان الرملية الذهبية للعرق الشرقي الكبير',
     postalPrefix: '39',
-    mapPosition: { xPercent: 72, yPercent: 44 },
+    mapPosition: { xPercent: 73.4, yPercent: 49.3 },
   },
   {
     code: 40,
@@ -639,7 +639,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'تفاح بوحمامة، الشرشم الشاوي، العسل الصافي',
     natureAr: 'غابات الأوراس وشليعة أعلى قمة بشرق الجزائر',
     postalPrefix: '40',
-    mapPosition: { xPercent: 80, yPercent: 32 },
+    mapPosition: { xPercent: 78, yPercent: 38.7 },
   },
   {
     code: 41,
@@ -655,7 +655,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الرفيس الزراوي، الملوخية، عصيدة القمح',
     natureAr: 'غابات المشروحة وجبال بوهدمة',
     postalPrefix: '41',
-    mapPosition: { xPercent: 84, yPercent: 22 },
+    mapPosition: { xPercent: 80.5, yPercent: 21.8 },
   },
   {
     code: 42,
@@ -671,7 +671,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'حساء السمك الشنوي، الأسماك المقلية، الفواكه',
     natureAr: 'جبل شنوة الشامخ والشواطئ اللازوردية',
     postalPrefix: '42',
-    mapPosition: { xPercent: 50, yPercent: 19 },
+    mapPosition: { xPercent: 51.4, yPercent: 10.4 },
   },
   {
     code: 43,
@@ -687,7 +687,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الرفيس، الشخشوخة، الفلاحة والحبوب',
     natureAr: 'بحيرة سد بني هارون الشاسعة ومناظر عين التين',
     postalPrefix: '43',
-    mapPosition: { xPercent: 71, yPercent: 20 },
+    mapPosition: { xPercent: 71.4, yPercent: 20 },
   },
   {
     code: 44,
@@ -703,7 +703,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الفواكه والحمضيات، الطاجين التقليدي',
     natureAr: 'جبال زكار وسهل وادي الشلف الخصب',
     postalPrefix: '44',
-    mapPosition: { xPercent: 47, yPercent: 22 },
+    mapPosition: { xPercent: 49.1, yPercent: 26.9 },
   },
   {
     code: 45,
@@ -719,7 +719,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المرقة بالتعمير، لحم الماشية، التمور',
     natureAr: 'الكثبان الرملية بعين الصفراء وجبال المزي',
     postalPrefix: '45',
-    mapPosition: { xPercent: 30, yPercent: 41 },
+    mapPosition: { xPercent: 30.6, yPercent: 41.5 },
   },
   {
     code: 46,
@@ -735,7 +735,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'حساء الشوربة بيضاء بالسمك، السردين البني صافي',
     natureAr: 'جزيرة رشقون ومصب وادي التافنة',
     postalPrefix: '46',
-    mapPosition: { xPercent: 28, yPercent: 25 },
+    mapPosition: { xPercent: 22.5, yPercent: 21.8 },
   },
   {
     code: 47,
@@ -751,7 +751,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'زربية وادي ميزاب الصوفية، الحلويات التقليدية، التمر المجفف',
     natureAr: 'هضبة الشبكة الصخرية وبساتين النخيل المحفوظة',
     postalPrefix: '47',
-    mapPosition: { xPercent: 52, yPercent: 49 },
+    mapPosition: { xPercent: 52.8, yPercent: 48.9 },
   },
   {
     code: 48,
@@ -767,7 +767,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الكسكسي بالقرع واللحم، الخبز التقليدي',
     natureAr: 'سهل البطحاء الفلاحي وغابات زمورة',
     postalPrefix: '48',
-    mapPosition: { xPercent: 39, yPercent: 24 },
+    mapPosition: { xPercent: 40.1, yPercent: 25.3 },
   },
   {
     code: 49,
@@ -783,7 +783,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الكسكسي القوراري، خبز أنور، الشاي المنعنع',
     natureAr: 'سبخة تيميمون والكثبان الرملية الحمراء الساحرة',
     postalPrefix: '49',
-    mapPosition: { xPercent: 35, yPercent: 62 },
+    mapPosition: { xPercent: 36.8, yPercent: 60.7 },
   },
   {
     code: 50,
@@ -799,7 +799,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'خبز التاغلا الصحراوي، حليب الإبل، الشاي',
     natureAr: ' صحراء تنزروفت الشاسعة والمساحات الرملية',
     postalPrefix: '50',
-    mapPosition: { xPercent: 30, yPercent: 85 },
+    mapPosition: { xPercent: 32.3, yPercent: 82.3 },
   },
   {
     code: 51,
@@ -815,7 +815,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'لحم المشوي الجلالي، الدوبارة، التمور',
     natureAr: 'واحات النخيل الممتدة على وادي جدي',
     postalPrefix: '51',
-    mapPosition: { xPercent: 64, yPercent: 40 },
+    mapPosition: { xPercent: 62.1, yPercent: 41.3 },
   },
   {
     code: 52,
@@ -831,7 +831,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'التمر الحمراوي، خبز القلة، الشاي المنعنع',
     natureAr: 'الواحة القديمة الملتفة بالكثبان العظيمة',
     postalPrefix: '52',
-    mapPosition: { xPercent: 22, yPercent: 54 },
+    mapPosition: { xPercent: 25, yPercent: 54 },
   },
   {
     code: 53,
@@ -847,7 +847,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'المرقة الصحراوية، تمور تديكلت، خبز الملة',
     natureAr: 'الكثبان الرملية المتحركة وعروق تديكلت',
     postalPrefix: '53',
-    mapPosition: { xPercent: 48, yPercent: 66 },
+    mapPosition: { xPercent: 48.2, yPercent: 64.7 },
   },
   {
     code: 54,
@@ -863,7 +863,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'الشاي التارقي الأصيل، خبز الجمر، الشواء',
     natureAr: 'التشكيلات الصخرية العجيبة والكثبان الممتدة',
     postalPrefix: '54',
-    mapPosition: { xPercent: 54, yPercent: 96 },
+    mapPosition: { xPercent: 53.6, yPercent: 92.4 },
   },
   {
     code: 55,
@@ -879,7 +879,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'تمور دقلة نور ورأس السكر، الكسكس السوفي',
     natureAr: 'واحات وادي ريغ الممتدة وبحيرة للا ميمونة',
     postalPrefix: '55',
-    mapPosition: { xPercent: 68, yPercent: 46 },
+    mapPosition: { xPercent: 64.4, yPercent: 47.7 },
   },
   {
     code: 56,
@@ -895,7 +895,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'خبز التاغلا، الشاي الصحراوي الفاخر، الأرز التارقي',
     natureAr: 'واد إهرير والمناظر الطبيعية لفرجان الطاسيلي',
     postalPrefix: '56',
-    mapPosition: { xPercent: 78, yPercent: 80 },
+    mapPosition: { xPercent: 74.9, yPercent: 77.7 },
   },
   {
     code: 57,
@@ -911,7 +911,7 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'دقلة نور المغيرية الفاخرة، المطابيق الصحراوية',
     natureAr: 'بحيرة شط ملغيغ الملحية وواحات النخيل',
     postalPrefix: '57',
-    mapPosition: { xPercent: 70, yPercent: 42 },
+    mapPosition: { xPercent: 71.1, yPercent: 43.1 },
   },
   {
     code: 58,
@@ -927,6 +927,6 @@ export const WILAYAS_LIST: WilayaInfo[] = [
     specialtyAr: 'حمضيات المنيعة، تمور التقربوش، الخبز الصاج',
     natureAr: 'الكثبان الرملية الذهبية ومستنقع المنيعة',
     postalPrefix: '58',
-    mapPosition: { xPercent: 48, yPercent: 54 },
+    mapPosition: { xPercent: 47.6, yPercent: 54.3 },
   },
 ];

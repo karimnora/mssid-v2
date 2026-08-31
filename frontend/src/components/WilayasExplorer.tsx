@@ -39,21 +39,6 @@ interface WilayasExplorerProps {
   onReward?: (coins: number, xp: number) => void;
 }
 
-// wilayasData.ts's mapPosition values are geographically literal, but Algeria's real geography
-// crams the huge majority of wilayas (30 of 58) into just the northernmost ~12% of that vertical
-// range (the coastal/Tell band) while the sparse Sahara stretches over the remaining ~80% — so a
-// literal 1:1 plot makes ~30 pins overlap into an unreadable blob at the top of the map. This
-// stretches that crowded band out to ~42% of the display height (compressing the sparser south
-// to make room) so every pin gets breathing room, at the cost of exact geographic proportion —
-// a legibility trade worth making for a tap target aimed at 8-11 year olds.
-const CROWDED_BAND_MAX_Y = 29;
-const remapMapY = (y: number): number => {
-  if (y <= CROWDED_BAND_MAX_Y) {
-    return 4 + ((y - 17) / (CROWDED_BAND_MAX_Y - 17)) * 42;
-  }
-  return 46 + ((y - 30) / (96 - 30)) * 52;
-};
-
 // 6 Guided Algerian Expeditions
 interface Expedition {
   id: string;
@@ -657,7 +642,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
             <div className="w-full h-[400px] sm:h-[480px] overflow-auto rounded-2xl border border-emerald-200 dark:border-emerald-900/50">
             <div
               className="relative select-none"
-              style={{ width: `${100 * mapScale}%`, height: `${420 * mapScale}px` }}
+              style={{ width: `${100 * mapScale}%`, height: `${460 * mapScale}px` }}
             >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-sky-100 via-amber-50 to-amber-100 dark:from-slate-900 dark:via-emerald-950/20 dark:to-amber-950/30 overflow-hidden">
               {/* Sea banner top */}
@@ -667,19 +652,21 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                 </span>
               </div>
 
-              {/* Geographic Zones Bands — percentage-based so they track remapMapY's breakpoints
-                  (4%/46%/98%) rather than fixed pixel offsets tuned for the old, shorter map. */}
-              <div className="absolute left-4 right-4 rounded-xl border border-blue-300/40 bg-blue-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '4%', height: '25%' }}>
+              {/* Geographic Zones Bands — percentage boundaries tuned to the actual pin distribution
+                  after the anti-overlap relayout below (north/high-plateaus/sahara ranges overlap a
+                  bit in real geography too, so these are an approximate decorative backdrop, not a
+                  strict per-pin boundary). */}
+              <div className="absolute left-4 right-4 rounded-xl border border-blue-300/40 bg-blue-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '2%', height: '32%' }}>
                 <span className="text-[10px] font-black text-blue-900 dark:text-blue-300">
                   النطاق التلي والساحلي
                 </span>
               </div>
-              <div className="absolute left-4 right-4 rounded-xl border border-amber-300/40 bg-amber-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '29%', height: '17%' }}>
+              <div className="absolute left-4 right-4 rounded-xl border border-amber-300/40 bg-amber-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '34%', height: '20%' }}>
                 <span className="text-[10px] font-black text-amber-900 dark:text-amber-300">
                   نطاق الهضاب العليا والسهوب
                 </span>
               </div>
-              <div className="absolute left-4 right-4 bottom-4 rounded-xl border border-emerald-300/40 bg-emerald-500/5 flex items-end justify-start p-4" style={{ top: '46%' }}>
+              <div className="absolute left-4 right-4 bottom-4 rounded-xl border border-emerald-300/40 bg-emerald-500/5 flex items-end justify-start p-4" style={{ top: '54%' }}>
                 <span className="text-[10px] font-black text-emerald-900 dark:text-emerald-300">
                   نطاق الصحراء والواحات وجبال الهقار والطاسيلي
                 </span>
@@ -701,7 +688,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                     onClick={() => handleSelectWilaya(w)}
                     style={{
                       left: `${pos.xPercent}%`,
-                      top: `${remapMapY(pos.yPercent)}%`,
+                      top: `${pos.yPercent}%`,
                       transform: 'translate(-50%, -50%)',
                     }}
                     title={`${w.codeStr} - ${w.nameAr}`}

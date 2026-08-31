@@ -287,20 +287,20 @@ body {
   border-color: #E7E2D7 !important;
 }
 
-.lab-interior [class*="from-violet"],
-.lab-interior [class*="from-fuchsia"],
-.lab-interior [class*="from-purple"],
-.lab-interior [class*="from-indigo"] {
+.lab-interior:not(:has([data-lab-instrument])) [class*="from-violet"],
+.lab-interior:not(:has([data-lab-instrument])) [class*="from-fuchsia"],
+.lab-interior:not(:has([data-lab-instrument])) [class*="from-purple"],
+.lab-interior:not(:has([data-lab-instrument])) [class*="from-indigo"] {
   background-image: none !important;
   background-color: #ffffff !important;
   color: var(--kids-ink) !important;
   border-color: #E7E2D7 !important;
 }
 
-.lab-interior [class*="bg-purple-"],
-.lab-interior [class*="bg-indigo-"],
-.lab-interior [class*="bg-fuchsia-"],
-.lab-interior [class*="bg-violet-"] {
+.lab-interior:not(:has([data-lab-instrument])) [class*="bg-purple-"],
+.lab-interior:not(:has([data-lab-instrument])) [class*="bg-indigo-"],
+.lab-interior:not(:has([data-lab-instrument])) [class*="bg-fuchsia-"],
+.lab-interior:not(:has([data-lab-instrument])) [class*="bg-violet-"] {
   background-color: var(--brand-emerald) !important;
   color: #ffffff !important;
   border-color: var(--brand-emerald) !important;
