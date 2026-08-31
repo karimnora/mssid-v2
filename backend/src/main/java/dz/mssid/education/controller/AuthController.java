@@ -1,6 +1,7 @@
 package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.AuthResponse;
+import dz.mssid.education.dto.GoogleAuthRequest;
 import dz.mssid.education.dto.LoginRequest;
 import dz.mssid.education.dto.RegisterRequest;
 import dz.mssid.education.dto.UserProfileDto;
@@ -88,6 +89,26 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", e.getMessage()));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Identifiants incorrects ou compte introuvable"));
+        }
+    }
+
+    /**
+     * Verifies a Google ID token server-side and signs the visitor in (creating or linking their
+     * account as needed) — issues the exact same cookies as /login and /register.
+     */
+    @PostMapping("/google")
+    public ResponseEntity<?> loginWithGoogle(@Valid @RequestBody GoogleAuthRequest request, HttpServletResponse httpResponse) {
+        try {
+            AuthResponse response = authService.loginWithGoogle(request.getIdToken());
+            attachAuthCookie(httpResponse, response.getToken());
+            attachRefreshCookie(httpResponse, response.getRefreshToken());
+            return ResponseEntity.ok(stripToken(response));
+        } catch (org.springframework.security.authentication.BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", e.getMessage()));
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Map.of("message", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Échec de la connexion avec Google."));
         }
     }
 

@@ -256,6 +256,41 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
   }
 }
 
+static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | null; error?: string }> {
+  try {
+    const response = await springBootApi.loginWithGoogle(idToken);
+
+    if (response.error || !response.data) {
+      return { user: null, error: response.error || 'Échec de la connexion avec Google.' };
+    }
+
+    const u = response.data.user || {};
+    const authUser: AuthUser = {
+      id: u.id || Math.floor(Math.random() * 9000) + 1000,
+      nom: response.data.nom || u.nom || '',
+      email: response.data.email || u.email || '',
+      role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
+      score: u.score ?? 0,
+      xp: u.xp ?? u.score ?? 0,
+      level: u.level ?? 1,
+      grade: u.grade ?? '5AP',
+      streakDays: u.streakDays ?? 0,
+      quizzesCompleted: u.quizzesCompleted ?? 0,
+      completedLessonIds: u.completedLessonIds ?? [],
+      badges: u.badges || [],
+      quizScores: u.quizScores || {},
+      emailVerified: u.emailVerified ?? false,
+      goldCoins: u.goldCoins ?? 150,
+      avatarConfig: u.avatarConfig,
+    };
+
+    this.setCurrentUser(authUser);
+    return { user: authUser };
+  } catch (err: any) {
+    return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
+  }
+}
+
   static switchDemoRole(role: UserRole): AuthUser {
     let email = 'free@mssid.dz';
     if (role === 'ROLE_PREMIUM') email = 'premium@mssid.dz';

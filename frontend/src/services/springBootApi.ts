@@ -368,6 +368,17 @@ public async request<T>(
     return res;
   }
 
+  public async loginWithGoogle(idToken: string) {
+    // Same cookie-issuing flow as login()/register() — the backend verifies idToken itself
+    // (GoogleIdTokenVerifier) and never trusts anything else the frontend could claim.
+    const res = await this.request<SpringBootAuthResponse>('/v1/auth/google', {
+      method: 'POST',
+      body: JSON.stringify({ idToken }),
+    });
+    if (res.data && !res.error) markHadSession();
+    return res;
+  }
+
   // --- Proxy IA Gemini ---
   public async askGeminiExplain(payload: { topic?: string; prompt?: string; question?: string; grade?: string; subjectContext?: string; promptType?: string; examId?: number }) {
     const formattedPrompt = payload.prompt || `${payload.topic || ''} ${payload.question || ''}`.trim();

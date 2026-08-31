@@ -49,7 +49,7 @@ public class SecurityConfig {
 
                         // 2. Endpoints publics
                         .requestMatchers(HttpMethod.GET, "/api/health").permitAll()
-                        .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/logout", "/api/v1/auth/refresh").permitAll()
+                        .requestMatchers("/api/v1/auth/login", "/api/v1/auth/register", "/api/v1/auth/google", "/api/v1/auth/logout", "/api/v1/auth/refresh").permitAll()
                         .requestMatchers("/api/v1/auth/forgot-password", "/api/v1/auth/reset-password").permitAll()
                         .requestMatchers("/api/v1/exams/public/**").permitAll()
                         // SEC-10: /api/v1/ai/** and /api/gemini/** require a JWT cookie (anyRequest

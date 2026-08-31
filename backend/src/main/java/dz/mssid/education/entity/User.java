@@ -62,6 +62,17 @@ public class User implements UserDetails {
     @Column(name = "grade")
     private String grade;
 
+    // Informational only — set at account creation, never re-checked afterwards (a Google-linked
+    // account still logs in with a password too, if one gets set later). "LOCAL" or "GOOGLE".
+    @Column(name = "provider", nullable = false)
+    @Builder.Default
+    private String provider = "LOCAL";
+
+    // Google's stable per-account subject id ("sub" claim), set the first time this email signs in
+    // with Google — either at account creation or to link an existing password-based account.
+    @Column(name = "google_id", unique = true)
+    private String googleId;
+
     // Minimal parental supervision (product decision, pre-launch audit): optional, no verification
     // flow — just lets an admin reach a parent later (payment issue, moderation) without gating
     // account creation on it.

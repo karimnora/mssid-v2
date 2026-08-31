@@ -13,6 +13,8 @@ export const auth: typeof authAr = {
   registerErrorDefault: 'Impossible de créer le compte, réessaie plus tard.',
   registerSuccessWelcome: 'Ton compte a été créé avec succès ! Bienvenue {name}',
   genericConnectionError: 'Une erreur de connexion est survenue. Vérifie ta connexion internet et réessaie plus tard.',
+  googleAuthErrorDefault: 'La connexion avec Google a échoué. Réessaie plus tard.',
+  orDivider: 'ou',
 
   titleRecovery: 'Récupération du mot de passe',
   titleRegister: 'Créer un nouveau compte',

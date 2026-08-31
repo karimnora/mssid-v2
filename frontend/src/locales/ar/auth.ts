@@ -11,6 +11,8 @@ export const auth = {
   registerErrorDefault: 'تعذر إنشاء الحساب، يرجى المحاولة لاحقاً.',
   registerSuccessWelcome: 'تم إنشاء حسابك بنجاح! أهلاً بك {name}',
   genericConnectionError: 'حدث خطأ في الاتصال. يرجى التأكد من شبكة الإنترنت والمحاولة لاحقاً.',
+  googleAuthErrorDefault: 'تعذرت المصادقة عبر Google. يرجى المحاولة لاحقاً.',
+  orDivider: 'أو',
 
   titleRecovery: 'استعادة كلمة المرور',
   titleRegister: 'إنشاء حساب جديد',

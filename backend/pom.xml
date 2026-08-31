@@ -83,6 +83,15 @@
 			<version>8.54.0</version>
 		</dependency>
 
+		<!-- Google Sign-In: verifies a Google-issued ID token server-side (GoogleIdTokenVerifier) —
+		     no full OAuth2 redirect flow, no client secret needed, just audience+signature checks
+		     against Google's public certs. Pulls in google-http-client/google-oauth-client transitively. -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>2.7.2</version>
+		</dependency>
+
 		<!-- JWT (JJWT standard pour Spring Boot 3) -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>

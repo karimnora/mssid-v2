@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade } from '../types';
@@ -29,6 +29,11 @@ const GRADE_OPTION_KEYS: Record<PrimaryGrade, 'grade1APOption' | 'grade2APOption
   '4AP': 'grade4APOption',
   '5AP': 'grade5APOption',
 };
+
+// Public value, not a secret — same env-var pattern as springBootApi.ts's VITE_SPRING_BOOT_URL.
+// Empty/unset = the Google button below never renders, nothing else about the form changes.
+const GOOGLE_CLIENT_ID: string =
+  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID) || '';
 
 export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService }) => {
   const t = useTranslation('auth');
@@ -72,6 +77,71 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     const timer = setInterval(() => setResendCooldown((s) => Math.max(0, s - 1)), 1000);
     return () => clearInterval(timer);
   }, [resendCooldown]);
+
+  const googleButtonRef = useRef<HTMLDivElement>(null);
+  const [googleReady, setGoogleReady] = useState<boolean>(false);
+
+  // Loads Google Identity Services once, app-wide (checks for an already-injected/loaded script
+  // first) — a no-op entirely when VITE_GOOGLE_CLIENT_ID isn't set, so nothing else about the modal
+  // changes for a deployment that hasn't created a Google Cloud OAuth client yet.
+  useEffect(() => {
+    if (!GOOGLE_CLIENT_ID) return;
+    if ((window as any).google?.accounts?.id) {
+      setGoogleReady(true);
+      return;
+    }
+    const existing = document.getElementById('google-identity-script') as HTMLScriptElement | null;
+    if (existing) {
+      existing.addEventListener('load', () => setGoogleReady(true));
+      return;
+    }
+    const script = document.createElement('script');
+    script.id = 'google-identity-script';
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => setGoogleReady(true);
+    document.head.appendChild(script);
+  }, []);
+
+  // Sends the Google-issued ID token straight to the backend for verification — never trusts
+  // anything else from the credential response, same success/error handling as handleSubmit below.
+  const handleGoogleCredential = async (response: { credential?: string }) => {
+    if (!response?.credential) return;
+    setLoading(true);
+    setStatusMessage(null);
+    try {
+      const result = await AuthService.loginWithGoogleAsync(response.credential);
+      if (result.error || !result.user) {
+        setStatusMessage({ type: 'error', text: result.error || t('googleAuthErrorDefault') });
+        return;
+      }
+      setStatusMessage({ type: 'success', text: t('loginSuccessWelcomeBack', { name: result.user.nom }) });
+      onAuthSuccess(result.user);
+      onClose();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Re-initializes/re-renders Google's own button whenever the modal (re)opens on the credentials
+  // step, or the login/register tab flips (its label switches between "Sign in" / "Sign up").
+  useEffect(() => {
+    if (!googleReady || !GOOGLE_CLIENT_ID || authFlow !== 'credentials' || !isOpen) return;
+    const g = (window as any).google;
+    if (!g?.accounts?.id || !googleButtonRef.current) return;
+    g.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: handleGoogleCredential });
+    googleButtonRef.current.innerHTML = '';
+    g.accounts.id.renderButton(googleButtonRef.current, {
+      theme: 'outline',
+      size: 'large',
+      width: 320,
+      shape: 'pill',
+      text: isLogin ? 'signin_with' : 'signup_with',
+      locale: direction === 'rtl' ? 'ar' : 'fr',
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [googleReady, authFlow, isOpen, isLogin, direction]);
 
   if (!isOpen) return null;
 
@@ -366,6 +436,17 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* Form */}
         {authFlow === 'credentials' && (
+        <>
+        {GOOGLE_CLIENT_ID && (
+          <div className="px-5 pt-4 space-y-3 shrink-0">
+            <div ref={googleButtonRef} className="w-full flex justify-center min-h-[44px]" />
+            <div className="flex items-center gap-3">
+              <div className="h-px flex-1 bg-[#E7E2D7]" />
+              <span className="text-xs font-extrabold text-[var(--kids-muted)]">{t('orDivider')}</span>
+              <div className="h-px flex-1 bg-[#E7E2D7]" />
+            </div>
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
           {!isLogin && (
             <div>
@@ -530,6 +611,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </button>
           </div>
         </form>
+        </>
         )}
       </motion.div>
     </motion.div>
