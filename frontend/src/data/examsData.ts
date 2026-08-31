@@ -34,7 +34,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الأول (1.5 نقطة)',
         points: 1.5,
         contentAr: 'أ) أكتب العدد الآتي بالأرقام: [مليونان وثلاثمائة وواحد وثمانون ألفاً وسبعمائة وواحد وأربعون].\nب) أحصر العدد 42 بين مضاعفين متتاليين للعدد 5.\nجـ) ما هو عدد المئات في العدد الآتي: 26281؟',
-        solutionAr: 'أ) كتابة العدد بالأرقام: 2 381 741.\nب) حصر العدد 42 بين مضاعفين متتاليين للعدد 5: 40 < 42 < 45.\nجـ) رقم المئات هو 2، أما عدد المئات في العدد 26281 فهو 262 (لأن 26281 ÷ 100 = 262 والباقي 81).'
+        solutionAr: 'أ) كتابة العدد بالأرقام: 2 381 741.\nب) حصر العدد 42 بين مضاعفين متتاليين للعدد 5: 40 < 42 < 45.\nجـ) رقم المئات هو 2، أما عدد المئات في العدد 26281 فهو 262 (لأن 26281 ÷ 100 = 262 والباقي 81).',
+        operationsAr: 'ب) 5 × 8 = 40   5 × 9 = 45\n   40 < 42 < 45\n\nجـ) 26281 ÷ 100\n   100 × 262 = 26200\n   26281 − 26200 = 81\n   الحاصل = 262، الباقي = 81'
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -47,13 +48,15 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الثالث (1.5 نقطة)',
         points: 1.5,
         contentAr: 'لخياطة قطعة قماش طولها 26 متراً استعملت منها 19 متراً.\n- جد طول القطعة الباقية بالسنتيمتر (cm).',
-        solutionAr: '1) طول القماش المتبقي بالأمتار: 26 - 19 = 7 أمتار.\n2) تحويل إلى السنتيمتر: 7m = 700 cm.'
+        solutionAr: '1) طول القماش المتبقي بالأمتار: 26 - 19 = 7 أمتار.\n2) تحويل إلى السنتيمتر: 7m = 700 cm.',
+        operationsAr: '   26\n− 19\n----\n    7  (m)\n\n7 m × 100 = 700 cm'
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
         points: 1.5,
         contentAr: '- أرسم قطعة المستقيم [AB] طولها 6cm وعين النقطة O منتصفها.\n- ارسم المستقيم (C) عمودياً على قطعة المستقيم [AB] ويمر بالنقطة O.\n- ما نوع الزوايا الناتجة؟',
-        solutionAr: '1) طول القطعة AO يساوي OB ويساوي 3cm.\n2) نوع الزوايا الناتجة عن تعامد المستقيم (C) مع القطعة [AB] في النقطة O هي زوايا قائمة (90 درجة) وعددها 4 زوايا قائمة.'
+        solutionAr: '1) طول القطعة AO يساوي OB ويساوي 3cm.\n2) نوع الزوايا الناتجة عن تعامد المستقيم (C) مع القطعة [AB] في النقطة O هي زوايا قائمة (90 درجة) وعددها 4 زوايا قائمة.',
+        operationsAr: '6 ÷ 2 = 3 cm'
       }
     ],
     problemExercise: {
@@ -80,19 +83,22 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الأول (1.5 نقطة)',
         points: 1.5,
         contentAr: 'ضع الرمز المناسب مكان النقط ( > ، < ، = ):\n1) 10/2 ..... 9\n2) 283.5 ..... 35.28\n3) 3h15min ..... 195min',
-        solutionAr: '1) 10/2 = 5 ، وبما أن 5 < 9 فإن: 10/2 < 9.\n2) 283.5 أكبر من 35.28 لأن الجزء الصحيح 283 > 35.\n3) 3h15min = (3 × 60) + 15 = 180 + 15 = 195min. إذن: 3h15min = 195min.'
+        solutionAr: '1) 10/2 = 5 ، وبما أن 5 < 9 فإن: 10/2 < 9.\n2) 283.5 أكبر من 35.28 لأن الجزء الصحيح 283 > 35.\n3) 3h15min = (3 × 60) + 15 = 180 + 15 = 195min. إذن: 3h15min = 195min.',
+        operationsAr: '1) 10 ÷ 2 = 5\n   5 < 9\n\n3) 3 × 60 = 180\n   180 + 15 = 195'
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
         points: 1.5,
         contentAr: 'بمناسبة عيد الفطر المبارك قام بائع الملابس بتخفيض الأسعار بنسبة 15%، فإذا كان سعر الفستان 4500 دينار:\n- أحسب مبلغ التخفيض.\n- ما هو ثمن الفستان بعد التخفيض؟',
-        solutionAr: '1) حساب مبلغ التخفيض: (4500 × 15) ÷ 100 = 67500 ÷ 100 = 675 دينار.\n2) ثمن الفستان بعد التخفيض: 4500 - 675 = 3825 دينار.'
+        solutionAr: '1) حساب مبلغ التخفيض: (4500 × 15) ÷ 100 = 67500 ÷ 100 = 675 دينار.\n2) ثمن الفستان بعد التخفيض: 4500 - 675 = 3825 دينار.',
+        operationsAr: '(4500 × 15) ÷ 100\n= 67500 ÷ 100\n= 675\n\n  4500\n−  675\n------\n  3825'
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
         points: 1.5,
         contentAr: 'يسير دراج بسرعة منتظمة حيث يقطع مسافة 30km في 1h (ساعة واحدة).\n- من خلال ملاحظتك للشكل، استنتج المسافة التي يقطعها الدراج في 2h ثم في 3h.',
-        solutionAr: '1) المسافة المقطوعة في 2h: 30 × 2 = 60 km.\n2) المسافة المقطوعة في 3h: 30 × 3 = 90 km.\nنلاحظ أن الوضعية متناسبة لأن النسب ثابته.'
+        solutionAr: '1) المسافة المقطوعة في 2h: 30 × 2 = 60 km.\n2) المسافة المقطوعة في 3h: 30 × 3 = 90 km.\nنلاحظ أن الوضعية متناسبة لأن النسب ثابته.',
+        operationsAr: '30 × 2 = 60\n30 × 3 = 90'
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
@@ -105,7 +111,8 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       titleAr: 'الوضعية الإدماجية (4 نقاط)',
       points: 4,
       contentAr: 'يقدر إنتاج معصرة بـ 150L من زيت الزيتون، وضعها صاحبها في قارورات سعة القارورة الواحدة 100cL.\n- كم عدد القارورات التي ملأها؟\n- إذا كان ثمن اللتر الواحد 700 دينار، أحسب ثمن بيع الزيت الإجمالي.',
-      solutionAr: '1) التحويل: 100cL = 1L.\n2) عدد القارورات المملوءة = 150 ÷ 1 = 150 قارورة.\n3) ثمن بيع الزيت الإجمالي = 150 × 700 = 105,000 دينار جزائري.'
+      solutionAr: '1) التحويل: 100cL = 1L.\n2) عدد القارورات المملوءة = 150 ÷ 1 = 150 قارورة.\n3) ثمن بيع الزيت الإجمالي = 150 × 700 = 105,000 دينار جزائري.',
+      operationsAr: '150 ÷ 1 = 150\n150 × 700 = 105,000'
     }
   },
   {
@@ -132,26 +139,30 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الثاني (1.5 نقطة)',
         points: 1.5,
         contentAr: 'يخطو جدك 250 خطوة من المنزل إلى المسجد، إذا علمت أن طول كل خطوة هو 50cm.\n- احسب بالأمتار المسافة التي يقطعها الجد للذهاب إلى المسجد.',
-        solutionAr: '1) حساب المسافة بالسنتيمتر: 250 × 50 = 12500 cm.\n2) تحويل المسافة إلى الأمتار: 12500 cm = 125 m.'
+        solutionAr: '1) حساب المسافة بالسنتيمتر: 250 × 50 = 12500 cm.\n2) تحويل المسافة إلى الأمتار: 12500 cm = 125 m.',
+        operationsAr: '   250\n×   50\n------\n 12500\n\n12500 cm = 125 m'
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
         points: 1.5,
         contentAr: 'أقلعت طائرة من المطار (أ) على الساعة 6h20min ودامت رحلتها في الجو 55min.\n- ما هو وقت وصول الطائرة إلى المطار (ب)؟',
-        solutionAr: 'وقت الوصول = وقت الانطلاق + مدة السفر.\n6h 20min + 55min = 6h 75min = 7h 15min.\nوصلت الطائرة على الساعة 7 و15 دقيقة.'
+        solutionAr: 'وقت الوصول = وقت الانطلاق + مدة السفر.\n6h 20min + 55min = 6h 75min = 7h 15min.\nوصلت الطائرة على الساعة 7 و15 دقيقة.',
+        operationsAr: '   6h 20min\n+     55min\n-----------\n   6h 75min = 7h 15min'
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
         points: 1.5,
         contentAr: 'ارسم قطعة مستقيمة AB طولها 6cm. عين النقطة O منتصف هذه القطعة.\n- احسب طول القطعة AO.',
-        solutionAr: 'النقطة O تقسم AB إلى النصف، إذن طول AO = 6 ÷ 2 = 3 cm.'
+        solutionAr: 'النقطة O تقسم AB إلى النصف، إذن طول AO = 6 ÷ 2 = 3 cm.',
+        operationsAr: '6 ÷ 2 = 3 cm'
       }
     ],
     problemExercise: {
       titleAr: 'الوضعية الإدماجية (4 نقاط)',
       points: 4,
       contentAr: 'اشترى فاكهاني 4 صناديق برتقال، وزن الصندوق الواحد 10kg وثمن الكيلوغرام الواحد 50 دينار. واشترى 30kg تفاح بسعر 60 دينار للكيلوغرام.\nواكترى مركبة لنقل الفاكهة بـ 150 دينار.\n- احسب ثمن شراء البرتقال والتفاح وكلفة المشتريات الإجمالية.',
-      solutionAr: '1) وزن البرتقال الكلي = 4 × 10 = 40 kg.\n2) ثمن شراء البرتقال = 40 × 50 = 2000 DA.\n3) ثمن شراء التفاح = 30 × 60 = 1800 DA.\n4) ثمن المشتريات الإجمالي = 2000 + 1800 = 3800 DA.\n5) الكلفة الإجمالية للمشتريات = 3800 + 150 (النقل) = 3950 DA.'
+      solutionAr: '1) وزن البرتقال الكلي = 4 × 10 = 40 kg.\n2) ثمن شراء البرتقال = 40 × 50 = 2000 DA.\n3) ثمن شراء التفاح = 30 × 60 = 1800 DA.\n4) ثمن المشتريات الإجمالي = 2000 + 1800 = 3800 DA.\n5) الكلفة الإجمالية للمشتريات = 3800 + 150 (النقل) = 3950 DA.',
+      operationsAr: '4 × 10 = 40  (kg)\n40 × 50 = 2000\n30 × 60 = 1800\n\n  2000\n+ 1800\n------\n  3800\n\n  3800\n+  150\n------\n  3950'
     }
   },
   {
@@ -178,26 +189,30 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الثاني (1.5 نقطة)',
         points: 1.5,
         contentAr: 'استفاد عامل من زيادة قدرها 10% من أجرته الشهرية التي تبلغ 40,000 DA.\n- احسب مقدار الزيادة بالدينار.\n- ما هو مقدار أجرته الشهرية الجديدة بعد الزيادة؟',
-        solutionAr: '1) مقدار الزيادة = (40000 × 10) ÷ 100 = 4000 DA.\n2) الأجرة الجديدة = 40000 + 4000 = 44,000 DA.'
+        solutionAr: '1) مقدار الزيادة = (40000 × 10) ÷ 100 = 4000 DA.\n2) الأجرة الجديدة = 40000 + 4000 = 44,000 DA.',
+        operationsAr: '(40000 × 10) ÷ 100\n= 400000 ÷ 100\n= 4000\n\n 40000\n+ 4000\n------\n 44000'
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
         points: 1.5,
         contentAr: 'في مدرسة 200 تلميذاً، 60% منهم إناث.\n- احسب عدد الإناث وعدد الذكور ونسبة الذكور المئوية.',
-        solutionAr: '1) عدد الإناث = (200 × 60) ÷ 100 = 120 بنتاً.\n2) عدد الذكور = 200 - 120 = 80 ولداً.\n3) نسبة الذكور المئوية = 100% - 60% = 40% (أو (80 × 100) ÷ 200 = 40%).'
+        solutionAr: '1) عدد الإناث = (200 × 60) ÷ 100 = 120 بنتاً.\n2) عدد الذكور = 200 - 120 = 80 ولداً.\n3) نسبة الذكور المئوية = 100% - 60% = 40% (أو (80 × 100) ÷ 200 = 40%).',
+        operationsAr: '(200 × 60) ÷ 100\n= 12000 ÷ 100\n= 120\n\n  200\n− 120\n-----\n   80'
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
         points: 1.5,
         contentAr: 'ارسم مستقيماً (D)، عين عليه النقطتين A و B المسافة بينهما 4cm.\nعين النقطة O منتصف القطعة [AB]. ارسم الدائرة التي مركزها O ونصف قطرها OA.',
-        solutionAr: 'طول نصف القطر OA = 2cm وقطر الدائرة AB = 4cm.'
+        solutionAr: 'طول نصف القطر OA = 2cm وقطر الدائرة AB = 4cm.',
+        operationsAr: '4 ÷ 2 = 2 cm'
       }
     ],
     problemExercise: {
       titleAr: 'الوضعية الإدماجة (4 نقاط)',
       points: 4,
       contentAr: 'اشترى مدير مدرسة 120 قرصاً مضغوطاً بـ 45 DA للقرص ونقلها بـ 100 DA. وباع القرص الواحد بـ 55 DA.\n- احسب كلفة الأقراص وثمن بيعها وهل ربح المدير أم خسر وكم كان ذلك؟',
-      solutionAr: '1) ثمن شراء الأقراص = 120 × 45 = 5400 DA.\n2) الكلفة الإجمالية = 5400 + 100 = 5500 DA.\n3) ثمن بيع الأقراص = 120 × 55 = 6600 DA.\n4) بما أن ثمن البيع (6600) أكبر من الكلفة (5500) فإن المدير ربح.\n5) الربح الصافي = 6600 - 5500 = 1100 DA.'
+      solutionAr: '1) ثمن شراء الأقراص = 120 × 45 = 5400 DA.\n2) الكلفة الإجمالية = 5400 + 100 = 5500 DA.\n3) ثمن بيع الأقراص = 120 × 55 = 6600 DA.\n4) بما أن ثمن البيع (6600) أكبر من الكلفة (5500) فإن المدير ربح.\n5) الربح الصافي = 6600 - 5500 = 1100 DA.',
+      operationsAr: '  120\n×  45\n-----\n 5400\n\n 5400\n+  100\n------\n 5500\n\n  120\n×  55\n-----\n 6600\n\n 6600\n− 5500\n------\n 1100'
     }
   },
 
@@ -239,6 +254,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-operations',
         contentAr: 'احسب: 246 × 37.\nثم قدّر 2,891 + 4,112 بتقريب كل عدد لأقرب ألف.',
         solutionAr: '246 × 37 = 9,102.\nالتقدير: 3,000 + 4,000 = 7,000.',
+        operationsAr: '   246\n×    37\n-------\n  1,722   (246 × 7)\n+ 7,380   (246 × 30)\n-------\n  9,102\n\n2,891 ≈ 3,000    4,112 ≈ 4,000\n3,000 + 4,000 = 7,000',
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
@@ -246,6 +262,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-lines-angles',
         contentAr: 'ارسم قطعة [AB] طولها 8cm وعيّن منتصفها O.\n- احسب طول [AO].\n- إذا كان (d) عمودياً على [AB] في O، فما قياس الزوايا الناتجة؟',
         solutionAr: 'طول [AO] = 8 ÷ 2 = 4cm.\nالتعامد ينتج 4 زوايا قائمة (90° لكل واحدة).',
+        operationsAr: '8 ÷ 2 = 4 cm',
       },
     ],
     problemExercise: {
@@ -254,6 +271,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       relatedLessonId: 'math-5ap-operations',
       contentAr: 'اشترى تاجر 25 كيس أرز بسعر 850 دج للكيس. باع 18 كيساً بسعر 1000 دج للكيس، وبقي 7 أكياس في المخزن.\n1) احسب ثمن شراء الأكياس كلها.\n2) احسب ثمن بيع الأكياس الـ18.\n3) احسب الربح المحقق على الأكياس المباعة فقط.',
       solutionAr: '1) ثمن الشراء الكلي = 25 × 850 = 21,250 دج.\n2) ثمن بيع 18 كيساً = 18 × 1000 = 18,000 دج.\n3) ثمن شراء الأكياس المباعة = 18 × 850 = 15,300 دج. الربح = 18,000 − 15,300 = 2,700 دج. الأكياس السبعة المتبقية لم تُبع بعد فلا تدخل في حساب الربح.',
+      operationsAr: '   25\n×  850\n------\n21,250\n\n   18\n×1,000\n------\n18,000\n\n   18\n×  850\n------\n15,300\n\n18,000\n−15,300\n------\n 2,700',
     },
   },
   {
@@ -276,6 +294,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-division',
         contentAr: 'أجرِ القسمة الإقليدية: 547 ÷ 8.\nاكتب المساواة: المقسوم = (القاسم × الحاصل) + الباقي.\nتحقق أن الباقي أصغر من القاسم.',
         solutionAr: '547 = (8 × 68) + 3. الحاصل = 68، الباقي = 3.\nالتحقق: 8 × 68 = 544 و 544 + 3 = 547. الباقي 3 < 8 ✓',
+        operationsAr: '547 ÷ 8\n8 × 68 = 544\n547 − 544 = 3\nالحاصل = 68، الباقي = 3\n\nالتحقق: (8 × 68) + 3 = 544 + 3 = 547 ✓',
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -283,6 +302,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-fractions',
         contentAr: 'قارن باستعمال < أو > أو = بعد توحيد المقامات عند الحاجة:\n1) 5/8 ..... 3/4\n2) 17/5 ..... 4',
         solutionAr: '1) 3/4 = 6/8 و 5/8 < 6/8 إذن 5/8 < 3/4.\n2) 17/5 = 3 + 2/5 و 2/5 < 1 إذن 17/5 < 4.',
+        operationsAr: '1) 3/4 = (3×2)/(4×2) = 6/8\n   5/8 < 6/8\n\n2) 17 ÷ 5 = 3 والباقي 2\n   17/5 = 3 + 2/5',
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
@@ -290,6 +310,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-decimals',
         contentAr: 'أنجز مع محاذاة الفاصلة: 9.25 + 4.6 + 0.08.\nثم رتّب تنازلياً: 8.09 — 8.9 — 8.19.',
         solutionAr: '9.25 + 4.60 + 0.08 = 13.93.\nالترتيب التنازلي: 8.9 > 8.19 > 8.09.',
+        operationsAr: '   9.25\n+  4.60\n+  0.08\n-------\n  13.93',
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
@@ -297,6 +318,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-lengths-masses-capacities',
         contentAr: 'حوّل:\n1) 3.2 km إلى m ثم إلى cm.\n2) 750 g إلى kg.',
         solutionAr: '1) 3.2 km = 3,200 m = 320,000 cm.\n2) 750 g = 0.75 kg.',
+        operationsAr: '3.2 × 1,000 = 3,200 m\n3,200 × 100 = 320,000 cm\n\n750 ÷ 1,000 = 0.75 kg',
       },
     ],
     problemExercise: {
@@ -305,6 +327,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       relatedLessonId: 'math-5ap-fractions',
       contentAr: 'خصّص فلاح 3/5 من أرضه (مساحتها الكلية 900 m²) لزراعة القمح، والباقي للخضروات.\n1) احسب مساحة الأرض المخصصة للقمح.\n2) احسب مساحة الأرض المخصصة للخضروات.\n3) عبّر عن مساحة الخضروات بكسر من الأرض الكلية.',
       solutionAr: '1) مساحة القمح = 900 × 3/5 = 540 m².\n2) مساحة الخضروات = 900 − 540 = 360 m².\n3) الباقي = 2/5 من الأرض لأن 1 − 3/5 = 2/5، والتحقق: 900 × 2/5 = 360 m².',
+      operationsAr: '900 × 3/5 = (900 × 3) ÷ 5\n= 2,700 ÷ 5\n= 540\n\n  900\n− 540\n-----\n  360',
     },
   },
   {
@@ -327,6 +350,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-perimeters-areas',
         contentAr: 'مستطيل طوله 7cm وعرضه 4cm.\n1) احسب محيطه ومساحته.\n2) عبّر عن المحيط بالمتر.',
         solutionAr: 'المحيط = (7 + 4) × 2 = 22cm = 0.22m.\nالمساحة = 7 × 4 = 28cm².',
+        operationsAr: '(7 + 4) × 2\n= 11 × 2\n= 22 cm = 0.22 m\n\n7 × 4 = 28 cm²',
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -334,6 +358,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-proportionality-ruleofthree',
         contentAr: 'إذا كان 3kg من التفاح بـ450 دج، فما ثمن 5kg من نفس التفاح؟ (قاعدة الثلاثة)',
         solutionAr: 'ثمن 5kg = (5 × 450) ÷ 3 = 750 دج.',
+        operationsAr: '(5 × 450) ÷ 3\n= 2,250 ÷ 3\n= 750 دج',
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
@@ -341,6 +366,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-percentage-scale',
         contentAr: 'احسب 15% من 6,000 دج.\nثم احسب الثمن بعد تخفيض 15% إذا كان الثمن الأصلي 6,000 دج.',
         solutionAr: 'مبلغ 15% = (6,000 × 15) ÷ 100 = 900 دج.\nالثمن بعد التخفيض = 6,000 − 900 = 5,100 دج.',
+        operationsAr: '(6,000 × 15) ÷ 100\n= 90,000 ÷ 100\n= 900\n\n 6,000\n−   900\n-------\n 5,100',
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
@@ -356,6 +382,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       relatedLessonId: 'math-5ap-durations',
       contentAr: 'يقطع دراج مسافة 60km بسرعة منتظمة في 2h.\n1) احسب سرعته المتوسطة بالـ km/h.\n2) بنفس السرعة، ما المسافة التي يقطعها في 3h؟\n3) كم يستغرق لقطع 45km بهذه السرعة؟',
       solutionAr: '1) السرعة = 60 ÷ 2 = 30 km/h.\n2) المسافة في 3h = 30 × 3 = 90 km.\n3) المدة = 45 ÷ 30 = 1.5h = 1h30min.',
+      operationsAr: '60 ÷ 2 = 30  (km/h)\n30 × 3 = 90  (km)\n45 ÷ 30 = 1.5 h = 1h 30min',
     },
   },
 
@@ -745,6 +772,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-numbers-under-100k',
         contentAr: 'أ) اكتب بالأرقام: [خمسة وأربعون ألفاً وستمائة وثمانية عشر].\nب) فكّك 45,618 بأسلوب الضرب والجمع.\nجـ) ما رقم عشرات الآلاف في هذا العدد؟',
         solutionAr: 'أ) 45,618.\nب) 45,618 = (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8.\nجـ) رقم عشرات الآلاف = 4.',
+        operationsAr: '45,618\n= (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8\n= 40,000 + 5,000 + 600 + 10 + 8',
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -775,6 +803,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       relatedLessonId: 'math-4ap-operations-addition-multiplication',
       contentAr: 'اشترى مدير مدرسة 15 كرسياً بسعر 2,400 دج للكرسي و8 طاولات بسعر 5,500 دج للطاولة.\n1) احسب ثمن الكراسي.\n2) احسب ثمن الطاولات.\n3) احسب المبلغ الإجمالي.',
       solutionAr: '1) 2,400 × 15 = 36,000 دج.\n2) 5,500 × 8 = 44,000 دج.\n3) 36,000 + 44,000 = 80,000 دج.',
+      operationsAr: '  2,400\n×    15\n-------\n 12,000  (2,400×5)\n+24,000  (2,400×10)\n-------\n 36,000\n\n  5,500\n×     8\n-------\n 44,000\n\n 36,000\n+44,000\n-------\n 80,000',
     },
   },
   {
@@ -797,6 +826,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-division-euclidean',
         contentAr: 'أجرِ القسمة الإقليدية: 187 ÷ 6.\nاكتب المساواة وتحقق أن الباقي أصغر من القاسم.',
         solutionAr: '187 = (6 × 31) + 1. الحاصل = 31، الباقي = 1.\nالتحقق: (6 × 31) + 1 = 186 + 1 = 187 و 1 < 6 ✓',
+        operationsAr: '187 ÷ 6\n6 × 31 = 186\n187 − 186 = 1\nالحاصل = 31، الباقي = 1\n\nالتحقق: (6 × 31) + 1 = 187 ✓',
       },
       {
         titleAr: 'التمرين الثاني (1.5 نقطة)',
@@ -804,6 +834,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-fractions',
         contentAr: 'قارن 5/8 بالعدد 1 ثم بـ 1/2 باستعمال < أو > أو =.',
         solutionAr: '5/8 < 1 لأن البسط أصغر من المقام.\n5/8 > 1/2 لأن 5/8 = 5/8 و 1/2 = 4/8، فـ 5 > 4.',
+        operationsAr: '1/2 = (1×4)/(2×4) = 4/8\n5/8 > 4/8',
       },
       {
         titleAr: 'التمرين الثالث (1.5 نقطة)',
@@ -811,6 +842,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-measurements-lengths-masses-capacities',
         contentAr: 'حوّل: 1) 3 km إلى m. 2) 1,800 g إلى kg.',
         solutionAr: '1) 3 km = 3,000 m.\n2) 1,800 g = 1 kg و 800 g.',
+        operationsAr: '3 × 1,000 = 3,000 m\n\n1,800 = 1,000 + 800\n= 1 kg + 800 g',
       },
       {
         titleAr: 'التمرين الرابع (1.5 نقطة)',
@@ -818,6 +850,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-division-euclidean',
         contentAr: 'وزّع المعلّم 245 كراساً على 8 أقسام بالتساوي.\n1) كم كراساً يأخذ كل قسم؟\n2) كم يبقى؟',
         solutionAr: '245 = (8 × 30) + 5. كل قسم 30 كراساً ويبقى 5.',
+        operationsAr: '245 ÷ 8\n8 × 30 = 240\n245 − 240 = 5\nالحاصل = 30، الباقي = 5',
       },
     ],
     problemExercise: {
@@ -826,6 +859,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       relatedLessonId: 'math-4ap-fractions',
       contentAr: 'اشترت خياطة قطعة قماش وقسّمتها: استعملت 3/8 لفستان و 1/4 لقميص.\n1) اكتب 1/4 بكسر مقامه 8.\n2) ما مجموع الجزء المستعمل؟\n3) هل المجموع أصغر من 1؟',
       solutionAr: '1) 1/4 = 2/8.\n2) 3/8 + 2/8 = 5/8.\n3) نعم، 5/8 < 1 لأن البسط أصغر من المقام.',
+      operationsAr: '1/4 = (1×2)/(4×2) = 2/8\n\n  3/8\n+ 2/8\n-----\n  5/8',
     },
   },
   {
@@ -842,12 +876,12 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-4ap-perimeter-squares-rectangles', 'math-4ap-proportionally-time-data', 'math-4ap-geometry-lines-polygons'],
     exercises: [
-      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-perimeter-squares-rectangles', contentAr: 'ارسم مستطيلاً طوله 9cm وعرضه 5cm.\nاحسب محيطه فقط.', solutionAr: 'المحيط = (9 + 5) × 2 = 28cm.' },
-      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-proportionally-time-data', contentAr: 'انطلقت حافلة على الساعة 07h45min ووصلت على الساعة 10h20min.\n- احسب مدة الرحلة.', solutionAr: '10h20min - 07h45min:\nتحويل: 09h80min - 07h45min = 2h35min.\nمدة الرحلة = 2 ساعة و35 دقيقة.' },
-      { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-proportionally-time-data', contentAr: 'إذا كان 4kg من البرتقال بـ320 دج، فما ثمن 6kg من نفس البرتقال؟ (استعمل التناسبية)', solutionAr: 'ثمن الكيلوغرام الواحد = 320 ÷ 4 = 80 دج.\nثمن 6kg = 80 × 6 = 480 دج.' },
+      { titleAr: 'التمرين الأول (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-perimeter-squares-rectangles', contentAr: 'ارسم مستطيلاً طوله 9cm وعرضه 5cm.\nاحسب محيطه فقط.', solutionAr: 'المحيط = (9 + 5) × 2 = 28cm.', operationsAr: '(9 + 5) × 2\n= 14 × 2\n= 28 cm' },
+      { titleAr: 'التمرين الثاني (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-proportionally-time-data', contentAr: 'انطلقت حافلة على الساعة 07h45min ووصلت على الساعة 10h20min.\n- احسب مدة الرحلة.', solutionAr: '10h20min - 07h45min:\nتحويل: 09h80min - 07h45min = 2h35min.\nمدة الرحلة = 2 ساعة و35 دقيقة.', operationsAr: '  10h 20min → 09h 80min\n−  07h 45min\n-----------\n  02h 35min' },
+      { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-proportionally-time-data', contentAr: 'إذا كان 4kg من البرتقال بـ320 دج، فما ثمن 6kg من نفس البرتقال؟ (استعمل التناسبية)', solutionAr: 'ثمن الكيلوغرام الواحد = 320 ÷ 4 = 80 دج.\nثمن 6kg = 80 × 6 = 480 دج.', operationsAr: '320 ÷ 4 = 80\n80 × 6 = 480 دج' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-geometry-lines-polygons', contentAr: 'ارسم مستقيمين (D1) و(D2) متوازيين، وارسم مستقيماً (D3) عمودياً على (D1).\n- ماذا تستنتج عن العلاقة بين (D3) و(D2)؟', solutionAr: 'إذا كان (D1) موازياً لـ(D2)، و(D3) عمودياً على (D1)، فإن (D3) عمودي على (D2) حتماً.' },
     ],
-    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-perimeter-squares-rectangles', contentAr: 'حقل مستطيل الشكل طوله 40m وعرضه 25m. أراد صاحبه إحاطته بسياج مع ترك باب عرضه 4m.\n1) احسب محيط الحقل.\n2) احسب طول السياج المستعمل.', solutionAr: '1) المحيط = (40 + 25) × 2 = 130m.\n2) طول السياج = 130 - 4 = 126m.' },
+    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-perimeter-squares-rectangles', contentAr: 'حقل مستطيل الشكل طوله 40m وعرضه 25m. أراد صاحبه إحاطته بسياج مع ترك باب عرضه 4m.\n1) احسب محيط الحقل.\n2) احسب طول السياج المستعمل.', solutionAr: '1) المحيط = (40 + 25) × 2 = 130m.\n2) طول السياج = 130 - 4 = 126m.', operationsAr: '(40 + 25) × 2\n= 65 × 2\n= 130 m\n\n  130\n−   4\n-----\n  126' },
   },
 
   // ==========================================
@@ -1133,11 +1167,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     contentSource: 'complementary',
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
-      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'فكك العدد 573 بأسلوب الضرب والجمع.', solutionAr: '573 = (5 × 100) + (7 × 10) + 3.' },
+      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'فكك العدد 573 بأسلوب الضرب والجمع.', solutionAr: '573 = (5 × 100) + (7 × 10) + 3.', operationsAr: '573\n= (5 × 100) + (7 × 10) + 3\n= 500 + 70 + 3' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'احسب عمودياً: 245 + 138 = ...', solutionAr: '245 + 138 = 383.', operationsAr: '  245\n+ 138\n-----\n  383' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'حوّل الجمع المكرر التالي إلى عملية ضرب: 6 + 6 + 6 = ...', solutionAr: '3 × 6 = 18.' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'حوّل الجمع المكرر التالي إلى عملية ضرب: 6 + 6 + 6 = ...', solutionAr: '3 × 6 = 18.', operationsAr: '6 + 6 + 6 = 18\n3 × 6 = 18' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'اشترى أمين 4 دفاتر بسعر 50 دج للدفتر الواحد.\n1) احسب المبلغ الذي دفعه أمين.', solutionAr: '1) المبلغ المدفوع = 4 × 50 = 200 دج.' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'اشترى أمين 4 دفاتر بسعر 50 دج للدفتر الواحد.\n1) احسب المبلغ الذي دفعه أمين.', solutionAr: '1) المبلغ المدفوع = 4 × 50 = 200 دج.', operationsAr: '  50\n×   4\n-----\n  200' },
   },
   {
     id: 'exam-3ap-math-t2-2026',
@@ -1154,9 +1188,9 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     exercises: [
       { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'ما هو رقم الآلاف في العدد 4,821؟', solutionAr: 'رقم الآلاف هو 4.' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'احسب عمودياً: 123 × 3 = ...', solutionAr: '123 × 3 = 369.', operationsAr: '  123\n×   3\n-----\n  369' },
-      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'حوّل: 4 m إلى cm.', solutionAr: '4 m = 400 cm.' },
+      { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'حوّل: 4 m إلى cm.', solutionAr: '4 m = 400 cm.', operationsAr: '4 × 100 = 400 cm' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'يملك بائع 250 كتاباً، باع منها 120 كتاباً.\n1) كم كتاباً بقي لدى البائع؟', solutionAr: '1) الكتب المتبقية = 250 - 120 = 130 كتاباً.' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'يملك بائع 250 كتاباً، باع منها 120 كتاباً.\n1) كم كتاباً بقي لدى البائع؟', solutionAr: '1) الكتب المتبقية = 250 - 120 = 130 كتاباً.', operationsAr: '  250\n− 120\n-----\n  130' },
   },
   {
     id: 'exam-3ap-math-t3-2026',
@@ -1171,11 +1205,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     contentSource: 'complementary',
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     exercises: [
-      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'ما هو نصف العدد 60؟', solutionAr: 'نصف 60 هو 30.' },
+      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, contentAr: 'ما هو نصف العدد 60؟', solutionAr: 'نصف 60 هو 30.', operationsAr: '60 ÷ 2 = 30' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, contentAr: 'العقرب الكبير في الساعة يشير إلى 12 والعقرب الصغير إلى 7. كم الساعة؟', solutionAr: 'الساعة السابعة تماماً (07:00).' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, contentAr: 'كم رأساً وكم حرفاً للمكعب؟', solutionAr: '8 رؤوس و12 حرفاً.' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'وزّعت معلمة 36 قلماً بالتساوي على 4 تلاميذ.\n1) كم قلماً يحصل عليه كل تلميذ؟', solutionAr: '1) نصيب كل تلميذ = 36 ÷ 4 = 9 أقلام.' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, contentAr: 'وزّعت معلمة 36 قلماً بالتساوي على 4 تلاميذ.\n1) كم قلماً يحصل عليه كل تلميذ؟', solutionAr: '1) نصيب كل تلميذ = 36 ÷ 4 = 9 أقلام.', operationsAr: '36 ÷ 4 = 9' },
   },
 
   // ==========================================
@@ -1379,11 +1413,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-2ap-t1-numbers-0-49', 'math-2ap-t1-addition-no-carry'],
     exercises: [
-      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'فَكِّكْ العَدَدَ 36 إلى عشرات ووحدات: 36 = ... + ...', solutionAr: '36 = 30 + 6 (3 عشرات و 6 وحدات).' },
+      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'فَكِّكْ العَدَدَ 36 إلى عشرات ووحدات: 36 = ... + ...', solutionAr: '36 = 30 + 6 (3 عشرات و 6 وحدات).', operationsAr: '36 = 30 + 6' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'اختر الإجابة الصحيحة: أَيُّ عَدَدٍ أَكْبَرُ؟\nأ) 27  ب) 24', solutionAr: 'الإجابة الصحيحة: أ) 27 (لأن 7 > 4 في الوحدات، والعشرات متساوية).' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'احسب عمودياً: 23 + 14 = ...', solutionAr: 'الوحدات: 3+4=7. العشرات: 2+1=3. الناتج: 37.', operationsAr: '  23\n+ 14\n----\n  37' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'عند سارة 15 قلماً، أعطتها معلمتها 12 قلماً آخر.\n1) كم قلماً أصبح عند سارة؟', solutionAr: '1) 15 + 12 = 27 قلماً (نستعمل الجمع لأن العدد ازداد).' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'عند سارة 15 قلماً، أعطتها معلمتها 12 قلماً آخر.\n1) كم قلماً أصبح عند سارة؟', solutionAr: '1) 15 + 12 = 27 قلماً (نستعمل الجمع لأن العدد ازداد).', operationsAr: '  15\n+ 12\n----\n  27' },
   },
   {
     id: 'exam-2ap-math-t2-2026',
@@ -1403,7 +1437,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-addition-with-carry', contentAr: 'احسب عمودياً بالاحتفاظ: 27 + 15 = ...', solutionAr: 'الوحدات: 7+5=12 (نكتب 2 ونحتفظ بـ1). العشرات: 2+1+1=4. الناتج: 42.', operationsAr: '  27\n+ 15\n----\n  42' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t2-subtraction-with-carry', contentAr: 'احسب عمودياً بالاحتفاظ: 42 − 18 = ...', solutionAr: 'الوحدات: نستعير فتصبح 12−8=4. العشرات: 3−1=2. الناتج: 24.', operationsAr: '  42\n− 18\n----\n  24' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t2-subtraction-with-carry', contentAr: 'عند ياسين 48 صورة، أعطى 23 صورة لأخيه.\n1) كم صورة بقيت عند ياسين؟', solutionAr: '1) 48 - 23 = 25 صورة (نستعمل الطرح لأن كلمة "أعطى" تعني نقصاناً).' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t2-subtraction-with-carry', contentAr: 'عند ياسين 48 صورة، أعطى 23 صورة لأخيه.\n1) كم صورة بقيت عند ياسين؟', solutionAr: '1) 48 - 23 = 25 صورة (نستعمل الطرح لأن كلمة "أعطى" تعني نقصاناً).', operationsAr: '  48\n− 23\n----\n  25' },
   },
   {
     id: 'exam-2ap-math-t3-2026',
@@ -1419,11 +1453,11 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: COMPOSITION_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-2ap-t2-number-framing', 'math-2ap-t3-right-angle', 'math-2ap-t3-clock-reading', 'math-2ap-t3-multiplication-concept', 'math-2ap-t3-double-half'],
     exercises: [
-      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: '3 × 2 = 3 + 3 = …', solutionAr: '6 (جمع مكرر: 3 + 3 = 6).' },
+      { titleAr: 'التمرين الأول (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: '3 × 2 = 3 + 3 = …', solutionAr: '6 (جمع مكرر: 3 + 3 = 6).', operationsAr: '3 × 2 = 3 + 3\n= 6' },
       { titleAr: 'التمرين الثاني (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t3-right-angle', contentAr: 'كم زاوية قائمة للمستطيل؟\nأ) 4  ب) 3  جـ) 0', solutionAr: 'الإجابة الصحيحة: أ) 4.' },
       { titleAr: 'التمرين الثالث (2 نقطتان)', points: 2, relatedLessonId: 'math-2ap-t3-clock-reading', contentAr: 'العقرب الصغير على الرقم 8 والعقرب الكبير على الرقم 12. كم الساعة؟', solutionAr: 'الساعة الثامنة تماماً (8:00).' },
     ],
-    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t3-double-half', contentAr: 'عند نور 14 حبة فراولة، تريد اقتسامها بالتساوي مع أختها.\n1) كم حبة تأخذ كل واحدة منهما؟', solutionAr: '1) نصف 14 = 7 (لأن 7 + 7 = 14)، إذن تأخذ كل واحدة 7 حبات.' },
+    problemExercise: { titleAr: 'وضعية بسيطة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t3-double-half', contentAr: 'عند نور 14 حبة فراولة، تريد اقتسامها بالتساوي مع أختها.\n1) كم حبة تأخذ كل واحدة منهما؟', solutionAr: '1) نصف 14 = 7 (لأن 7 + 7 = 14)، إذن تأخذ كل واحدة 7 حبات.', operationsAr: '14 ÷ 2 = 7\n(7 + 7 = 14)' },
   },
 
   // ==========================================
@@ -1664,10 +1698,10 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-2ap-t1-numbers-0-49', 'math-2ap-t1-addition-no-carry'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'فَكِّكْ: 47 = ... عشرات و ... وحدات.', solutionAr: '47 = 4 عشرات و 7 وحدات (40 + 7).' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'احسب دون احتفاظ: 22 + 15 = ...', solutionAr: '2+5=7 في الوحدات، 2+1=3 في العشرات. الناتج 37.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t1-numbers-0-49', contentAr: 'فَكِّكْ: 47 = ... عشرات و ... وحدات.', solutionAr: '47 = 4 عشرات و 7 وحدات (40 + 7).', operationsAr: '47 = 40 + 7' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'احسب دون احتفاظ: 22 + 15 = ...', solutionAr: '2+5=7 في الوحدات، 2+1=3 في العشرات. الناتج 37.', operationsAr: '  22\n+ 15\n----\n  37' },
     ],
-    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'عند آدم 16 كرّاساً، اشترى 11 كرّاساً آخر. كم كرّاساً أصبح عنده؟', solutionAr: '16 + 11 = 27 كرّاساً.' },
+    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t1-addition-no-carry', contentAr: 'عند آدم 16 كرّاساً، اشترى 11 كرّاساً آخر. كم كرّاساً أصبح عنده؟', solutionAr: '16 + 11 = 27 كرّاساً.', operationsAr: '  16\n+ 11\n----\n  27' },
   },
   {
     id: 'homework-2ap-arabic-t1-2026',
@@ -1703,10 +1737,10 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     contentSource: 'complementary',
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'اكتب 4 آلاف و 7 عشرات بالأرقام.', solutionAr: '4070.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'احسب: 8 × 6 = ... ثم 8 × 60 = ...', solutionAr: '8 × 6 = 48 و 8 × 60 = 480 (نضيف صفراً لأن 60 = 6 عشرات).' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'اكتب 4 آلاف و 7 عشرات بالأرقام.', solutionAr: '4070.', operationsAr: '4,000 + 70 = 4,070' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'احسب: 8 × 6 = ... ثم 8 × 60 = ...', solutionAr: '8 × 6 = 48 و 8 × 60 = 480 (نضيف صفراً لأن 60 = 6 عشرات).', operationsAr: '8 × 6 = 48\n8 × 60 = 480' },
     ],
-    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'علبة فيها 9 أقلام. كم قلماً في 4 علب مماثلة؟', solutionAr: '9 × 4 = 36 قلماً (جمع متكرر: 9+9+9+9).' },
+    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'علبة فيها 9 أقلام. كم قلماً في 4 علب مماثلة؟', solutionAr: '9 × 4 = 36 قلماً (جمع متكرر: 9+9+9+9).', operationsAr: '  9\n× 4\n---\n 36' },
   },
   {
     id: 'homework-4ap-math-t1-2026',
@@ -1723,10 +1757,10 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-4ap-numbers-under-100k', 'math-4ap-operations-addition-multiplication'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-numbers-under-100k', contentAr: 'اكتب 45,618 بالحروف، ثم فكّكه بأسلوب الضرب والجمع.', solutionAr: 'خمسة وأربعون ألفاً وستمائة وثمانية عشر.\n45,618 = (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-numbers-under-100k', contentAr: 'اكتب 45,618 بالحروف، ثم فكّكه بأسلوب الضرب والجمع.', solutionAr: 'خمسة وأربعون ألفاً وستمائة وثمانية عشر.\n45,618 = (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8.', operationsAr: '45,618\n= (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8\n= 40,000 + 5,000 + 600 + 10 + 8' },
       { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'أنجز عمودياً: 3,458 + 2,764.', solutionAr: '3,458 + 2,764 = 6,222.', operationsAr: '  3,458\n+ 2,764\n-------\n  6,222' },
     ],
-    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'اشترى المدير 15 كرسياً بسعر 2,400 دج للكرسي. ما ثمن الكراسي؟', solutionAr: '2,400 × 15 = 36,000 دج.' },
+    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'اشترى المدير 15 كرسياً بسعر 2,400 دج للكرسي. ما ثمن الكراسي؟', solutionAr: '2,400 × 15 = 36,000 دج.', operationsAr: '  2,400\n×    15\n-------\n 12,000  (2,400×5)\n+24,000  (2,400×10)\n-------\n 36,000' },
   },
   {
     id: 'homework-5ap-math-t1-2026',
@@ -1742,10 +1776,10 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     contentSource: 'complementary',
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'اكتب بالأرقام: خمسة ملايين وثلاثة آلاف.', solutionAr: '5,003,000.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'اكتب بالأرقام: خمسة ملايين وثلاثة آلاف.', solutionAr: '5,003,000.', operationsAr: '5,000,000 + 3,000 = 5,003,000' },
       { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'احسب عمودياً: 4,250 − 1,875.', solutionAr: '4,250 − 1,875 = 2,375.', operationsAr: '  4,250\n− 1,875\n-------\n  2,375' },
     ],
-    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'اشترت الأم 3 كتب بـ 850 دج للكتاب. دفعت ورقة 5,000 دج. كم تسترجع؟', solutionAr: 'ثمن الكتب = 3 × 850 = 2,550 دج. الباقي = 5,000 − 2,550 = 2,450 دج.' },
+    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'اشترت الأم 3 كتب بـ 850 دج للكتاب. دفعت ورقة 5,000 دج. كم تسترجع؟', solutionAr: 'ثمن الكتب = 3 × 850 = 2,550 دج. الباقي = 5,000 − 2,550 = 2,450 دج.', operationsAr: '  850\n×   3\n-----\n 2,550\n\n 5,000\n− 2,550\n-------\n 2,450' },
   },
 ];
 
