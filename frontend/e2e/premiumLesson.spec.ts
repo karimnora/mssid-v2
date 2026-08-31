@@ -14,14 +14,22 @@ const fullContent = JSON.parse(
 import { waitForCoursesReady } from './helpers';
 
 test.beforeEach(async ({ page }) => {
-  await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
+  // math-5ap-division is a Trimester-2 lesson, so it's login-gated by the guest wall (only each
+  // subject's very first lesson stays free for guests) — mock an authenticated 5AP student so this
+  // spec can still reach it and verify the premium-fetch assertion below.
+  await page.route('**/v1/users/me', (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({ id: 1, nom: 'Élève Test', email: 'student@mssid.dz', role: 'ROLE_FREE', grade: '5AP' }),
+    })
+  );
   await page.goto('/?g=5AP');
   await page.locator('[data-subject-card="math"]').click();
   await waitForCoursesReady(page);
   await page.getByRole('button', { name: /الفصل الثاني|Trimestre 2/i }).click();
 });
 
-test('a guest opens math-5ap-division and sees rules without a premium fetch', async ({ page }) => {
+test('a logged-in student opens math-5ap-division and sees rules without a premium fetch', async ({ page }) => {
   let premiumFetched = false;
   await page.route('**/v1/courses/premium-lessons/**', (route) => {
     premiumFetched = true;
@@ -31,7 +39,7 @@ test('a guest opens math-5ap-division and sees rules without a premium fetch', a
   await page.getByText(fullContent.titleAr, { exact: true }).click();
   // Footer CTA is `التالي: {stepLabel}` (LessonStepFooter), not the older
   // `المرحلة الموالية:` copy. Prefer the data attribute so a future label tweak
-  // does not break the guest/premium path this spec actually guards.
+  // does not break the premium-fetch path this spec actually guards.
   await page.locator('[data-primary-cta="next-step"]').click();
 
   await expect(page.getByText(`${fullContent.rulesAr.length} قواعد أساسية`)).toBeVisible();

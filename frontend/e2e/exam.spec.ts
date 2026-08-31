@@ -9,7 +9,14 @@ import { OFFICIAL_EXAMS_DATA } from '../src/data/examsData';
 const exam = OFFICIAL_EXAMS_DATA.find((e) => e.id === 'exam-2018-trim1-math')!;
 
 test.beforeEach(async ({ page }) => {
-  await page.route('**/v1/users/me', (route) => route.fulfill({ status: 401, body: '{}' }));
+  // Exams are login-gated for guests (see useAppNavigation's guest wall, added after this spec was
+  // written) — mock an authenticated 5AP student so the exams pole is reachable at all.
+  await page.route('**/v1/users/me', (route) =>
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({ id: 1, nom: 'Élève Test', email: 'student@mssid.dz', role: 'ROLE_FREE', grade: '5AP' }),
+    })
+  );
   await page.goto('/?g=5AP');
 });
 
