@@ -20,6 +20,7 @@ test.beforeEach(async ({ page }) => {
   await page.route('**/v1/users/me', (route) =>
     route.fulfill({
       status: 200,
+      contentType: 'application/json',
       body: JSON.stringify({ id: 1, nom: 'Élève Test', email: 'student@mssid.dz', role: 'ROLE_FREE', grade: '5AP' }),
     })
   );
