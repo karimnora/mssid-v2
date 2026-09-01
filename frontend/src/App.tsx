@@ -345,6 +345,7 @@ export default function App() {
             onOpenDressingRoom={() => modals.setIsDressingRoomOpen(true)}
             onOpenHomeworkPin={() => modals.setIsHomeworkPinOpen(true)}
             onOpenPrintables={() => modals.setIsPrintablesOpen(true)}
+            onOpenHonorCertificates={() => modals.setIsHonorCertificatesOpen(true)}
             onOpenOfflinePacks={() => modals.setIsOfflinePacksOpen(true)}
             onFeedDidou={handleFeedDidou}
           />

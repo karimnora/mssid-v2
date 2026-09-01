@@ -41,6 +41,8 @@ export type CertificateTemplateId =
   | 'science_explorer'
   | 'wilayas_ambassador'
   | 'daily_perseverance'
+  | 'first_ap_graduate'
+  | 'second_ap_graduate'
   | 'exam_acquis_5ap';
 
 interface CertificateTemplate {
@@ -140,6 +142,30 @@ const CERTIFICATE_TEMPLATES: CertificateTemplate[] = [
     sealDefault: 'didou_seal',
     recommendedFor: 'المواظبة اليومية، التحلي بالأخلاق العالية، وروح التعاون',
     defaultMotivation: 'نظراً لالتزامه اليومي بأداء واجباته المدرسية، وتحليه بروح الأخوة والاحترام داخل فضاء التعلم.',
+  },
+  {
+    id: 'first_ap_graduate',
+    titleAr: 'شَهَادَةُ الفَاتِحِينَ الصِّغَارِ: عَتَبَةُ القِرَاءَةِ وَالعَدِّ',
+    subtitleAr: 'DIPLÔME DE RÉUSSITE — FIN DE 1ÈRE ANNÉE PRIMAIRE',
+    badgeEmoji: '🔤',
+    primaryColor: 'from-lime-600 via-green-500 to-emerald-600',
+    borderClass: 'border-lime-500',
+    themeBg: 'bg-gradient-to-br from-lime-50/70 via-white to-green-50/60',
+    sealDefault: 'didou_seal',
+    recommendedFor: 'إتمام الحروف الهجائية كاملة، القراءة الأولى، والعدّ إلى 100',
+    defaultMotivation: 'تهنئة خالصة لخطوته الأولى الرائعة في عالم المعرفة: أتقن الحروف الهجائية، بدأ القراءة والكتابة، وتعلّم العدّ بثقة. ألف مبروك يا بطل السنة الأولى!',
+  },
+  {
+    id: 'second_ap_graduate',
+    titleAr: 'شَهَادَةُ عُبُورِ عَتَبَةِ المِئَاتِ: نَجَاحُ السَّنَةِ الثَّانِيَة',
+    subtitleAr: 'DIPLÔME DE RÉUSSITE — FIN DE 2ÈME ANNÉE PRIMAIRE',
+    badgeEmoji: '💯',
+    primaryColor: 'from-indigo-700 via-blue-600 to-cyan-600',
+    borderClass: 'border-indigo-600',
+    themeBg: 'bg-gradient-to-br from-indigo-50/70 via-white to-blue-50/60',
+    sealDefault: 'didou_seal',
+    recommendedFor: 'إتقان الأعداد إلى 999، الجمع بالاحتفاظ، وجداول الضرب الأولى',
+    defaultMotivation: 'تتويجاً لمساره المتميز في السنة الثانية: تجاوز عتبة المئات، أتقن الجمع بالاحتفاظ، وخطا خطوات واثقة في عالم الضرب والقراءة. ألف مبروك يا نجم السنة الثانية!',
   },
   {
     id: 'exam_acquis_5ap',
@@ -316,6 +342,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                     key={tmpl.id}
                     onClick={() => {
                       setSelectedTemplateId(tmpl.id);
+                      setSealType(tmpl.sealDefault as typeof sealType);
                       setCustomMotivation('');
                     }}
                     className={`p-2.5 rounded-xl border text-right transition-all flex items-center gap-2 cursor-pointer ${

@@ -117,7 +117,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
                 key={opt.id}
                 disabled={isChecked}
                 onClick={() => setAnswer(opt.id)}
-                className={`text-right p-3 min-h-12 rounded-xl border type-quiz transition-all cursor-pointer flex items-center justify-between gap-2 min-w-0 ${style}`}
+                className={`text-right p-3 min-h-[var(--hit)] rounded-xl border type-quiz transition-all cursor-pointer flex items-center justify-between gap-2 min-w-0 ${style}`}
               >
                 <span className="min-w-0 break-words">{renderTextWithMath(renderArabicText(opt.textAr))}</span>
                 {isChecked && opt.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
