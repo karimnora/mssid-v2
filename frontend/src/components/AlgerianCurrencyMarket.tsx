@@ -149,6 +149,14 @@ interface AlgerianCurrencyMarketProps {
   onEarnCoins?: (amount: number) => void;
 }
 
+// 1AP (nombres < 100) ne voit que les pièces courantes ; 2AP (nombres < 1000) débloque les
+// billets jusqu'à 1000 DA ; à partir de 3AP (nombres < 100 000) toutes les coupures sont visibles.
+const getMaxDenominationForGrade = (grade?: string): number => {
+  if (grade === '1AP') return 100;
+  if (grade === '2AP') return 1000;
+  return Infinity;
+};
+
 export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   onBack,
   grade = '3AP',
@@ -157,6 +165,11 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'shop' | 'change_game' | 'speed_math'>('shop');
   const [selectedProductCategory, setSelectedProductCategory] = useState<string>('all');
+
+  const visibleDenominations = useMemo(() => {
+    const maxValue = getMaxDenominationForGrade(grade);
+    return CURRENCY_DENOMINATIONS.filter((cur) => cur.value <= maxValue);
+  }, [grade]);
 
   // Shopping mode state
   const [cart, setCart] = useState<Record<string, number>>({ dates: 1, milk: 2, bread: 1 });
@@ -553,7 +566,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
 
                 {/* Denominations Grid */}
                 <div className="grid grid-cols-3 gap-2">
-                  {CURRENCY_DENOMINATIONS.map((cur) => (
+                  {visibleDenominations.map((cur) => (
                     <button
                       key={cur.value}
                       onClick={() => setTenderedBills((prev) => [...prev, cur.value])}
@@ -659,7 +672,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               </h4>
 
               <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2">
-                {CURRENCY_DENOMINATIONS.map((cur) => (
+                {visibleDenominations.map((cur) => (
                   <button
                     key={cur.value}
                     onClick={() => handleGameAddChange(cur.value)}

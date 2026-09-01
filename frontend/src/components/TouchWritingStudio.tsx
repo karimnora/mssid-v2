@@ -1156,7 +1156,8 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
               onTouchStart={handleStartDraw}
               onTouchMove={handleDrawMove}
               onTouchEnd={handleStopDraw}
-              className="absolute inset-0 w-full h-full cursor-crosshair z-10"
+              className="absolute inset-0 w-full h-full cursor-crosshair z-10 touch-none"
+              style={{ touchAction: 'none' }}
             />
           </div>
 

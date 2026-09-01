@@ -30,7 +30,6 @@ import {
 } from 'lucide-react';
 import { WILAYAS_LIST } from '../data/wilayasData';
 import { WilayaInfo } from '../types/ecosystem';
-import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { ALGERIA_MAP_VIEWBOX, ALGERIA_OUTLINE_PATH, ALGERIA_MAP_SEA } from '../data/algeriaMapOutline';
 
@@ -45,7 +44,6 @@ const WILAYA_MAP_BANDS: { id: 'north' | 'high_plateaus' | 'sahara'; y0: number; 
 
 interface WilayasExplorerProps {
   onBack?: () => void;
-  grade?: PrimaryGrade;
   onReward?: (coins: number, xp: number) => void;
 }
 
@@ -175,7 +173,6 @@ const getAdventureRank = (count: number) => {
 
 export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   onBack,
-  grade = '5AP',
   onReward,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -733,7 +730,8 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                       transform: 'translate(-50%, -50%)',
                     }}
                     title={`${w.codeStr} - ${w.nameAr}`}
-                    className={`absolute z-10 transition-transform duration-200 cursor-pointer group flex flex-col items-center ${
+                    aria-label={`${w.nameAr}, الولاية رقم ${w.codeStr}`}
+                    className={`absolute z-10 p-2.5 transition-transform duration-200 cursor-pointer group flex flex-col items-center ${
                       isSelected ? 'scale-125 z-30' : 'hover:scale-115'
                     }`}
                   >

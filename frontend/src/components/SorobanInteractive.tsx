@@ -76,6 +76,15 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
   // Selected Rule Guide
   const [selectedRuleIndex, setSelectedRuleIndex] = useState(0);
 
+  // Beginner micro-tutorial (3 steps): raise the unit bead (5), lower one unit bead (1), free practice
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [tutorialStep, setTutorialStep] = useState(0);
+  const TUTORIAL_STEPS = [
+    { titleAr: 'الخطوة 1: الخرزة الخماسية', bodyAr: 'اضغط على الخرزة العلوية في تِيجة الوحدات (أقصى اليمين) لترفعها. هذه الخرزة تساوي 5.' },
+    { titleAr: 'الخطوة 2: خرزات الوحدة', bodyAr: 'الآن اضغط على إحدى الخرزات السفلية في نفس التيجة. كل خرزة سفلية تساوي 1 فقط.' },
+    { titleAr: 'الخطوة 3: جرّب بنفسك!', bodyAr: 'أحسنت! لديك الآن 6 (5+1) على المعداد. استمر في التجربة بحرية أو اضغط "إنهاء الدرس".' },
+  ];
+
   // Calculate current value represented on abacus
   const currentValue = rods.reduce((acc, rod, idx) => {
     const power = Math.pow(10, 4 - idx);
@@ -163,6 +172,28 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
     }
   }, [anzanRunning, currentFlashIndex, currentAnzanEx]);
 
+  const startTutorial = () => {
+    handleResetAbacus();
+    setTutorialStep(0);
+    setShowTutorial(true);
+  };
+
+  const endTutorial = () => {
+    setShowTutorial(false);
+    setTutorialStep(0);
+  };
+
+  // Auto-advance the tutorial as the child performs the requested gesture on the units rod (index 4)
+  useEffect(() => {
+    if (!showTutorial) return;
+    const unitRod = rods[4];
+    if (tutorialStep === 0 && unitRod.upper) {
+      setTutorialStep(1);
+    } else if (tutorialStep === 1 && unitRod.lowerCount >= 1) {
+      setTutorialStep(2);
+    }
+  }, [rods, showTutorial, tutorialStep]);
+
   const verifyAnzanAnswer = () => {
     const userVal = parseInt(userAnzanAnswer.trim(), 10);
     const elapsed = answerTimerStartedAt ? (Date.now() - answerTimerStartedAt) / 1000 : null;
@@ -213,7 +244,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               activeTab === 'anzan' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            تحدي Anzan السريع
+            تحدي الحساب الذهني السريع
           </button>
           <button
             onClick={() => setActiveToolTab('rules')}
@@ -264,8 +295,53 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 <RotateCcw className="w-3.5 h-3.5" />
                 تصفير المعداد
               </button>
+              <button
+                onClick={startTutorial}
+                className="flex items-center gap-1 px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-xs font-bold cursor-pointer"
+              >
+                🎓 دليل المبتدئين (3 خطوات)
+              </button>
             </div>
           </div>
+
+          {/* Beginner Micro-Tutorial Banner (3 steps) */}
+          {showTutorial && (
+            <div className="bg-indigo-50 border border-indigo-200 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-start gap-2.5 flex-1">
+                <div className="flex items-center gap-1 shrink-0 mt-0.5">
+                  {TUTORIAL_STEPS.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`w-2 h-2 rounded-full ${i <= tutorialStep ? 'bg-indigo-600' : 'bg-indigo-200'}`}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <h4 className="font-black text-xs sm:text-sm text-indigo-900">
+                      {TUTORIAL_STEPS[tutorialStep].titleAr}
+                    </h4>
+                    <button
+                      onClick={() => speakText(TUTORIAL_STEPS[tutorialStep].bodyAr, 'ar-SA', 0.88)}
+                      aria-label="استمع للشرح"
+                      className="w-6 h-6 shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
+                    >
+                      <Volume2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-indigo-800 mt-0.5 leading-relaxed">
+                    {TUTORIAL_STEPS[tutorialStep].bodyAr}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={endTutorial}
+                className="shrink-0 px-3 py-1.5 bg-white border border-indigo-300 text-indigo-700 hover:bg-indigo-100 rounded-lg text-xs font-bold cursor-pointer"
+              >
+                {tutorialStep === 2 ? 'إنهاء الدرس' : 'تخطي'}
+              </button>
+            </div>
+          )}
 
           {/* Abacus Graphics Container */}
           <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 text-white shadow-inner relative border-4 border-amber-900/60 overflow-x-auto" data-lab-instrument="true">
@@ -278,9 +354,15 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               {rods.map((rod, idx) => {
                 const rodPowerLabel = ['عشرات الآلاف', 'الآلاف', 'المئات', 'العشرات', 'الوحدات'][idx];
                 const digitValue = (rod.upper ? 5 : 0) + rod.lowerCount;
+                const isTutorialTarget = showTutorial && tutorialStep < 2 && idx === 4;
 
                 return (
-                  <div key={idx} className="flex flex-col items-center">
+                  <div
+                    key={idx}
+                    className={`flex flex-col items-center transition-all ${
+                      isTutorialTarget ? 'ring-4 ring-indigo-400 ring-offset-2 ring-offset-slate-900 rounded-2xl animate-pulse' : ''
+                    }`}
+                  >
                     {/* Upper Rod Section (Value 5) */}
                     <div className="w-9 sm:w-12 h-16 sm:h-20 bg-slate-800/80 rounded-t-xl border-x-2 border-slate-600 relative flex justify-center py-1 sm:py-2">
                       <div className="w-1 sm:w-1.5 h-full bg-amber-400/40 absolute top-0 rounded-full" />
@@ -345,7 +427,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
               <div>
                 <span className="bg-indigo-500/30 text-indigo-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-indigo-400/20 inline-block">
-                  تدريب Anzan - الحساب الذهني الخاطف
+                  تدريب الحساب الذهني الخاطف (Anzan)
                 </span>
                 <h4 className="text-base sm:text-lg font-bold mt-1">
                   {generatedExercise ? 'تمرين مولّد جديد 🎲' : `تمرين ${anzanExerciseIndex + 1} من ${SOROBAN_PRACTICE_EXERCISES.length}`}
@@ -431,7 +513,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 className="w-full sm:w-auto flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-slate-950 font-bold text-xs px-4 py-3 rounded-xl transition-all cursor-pointer shadow-md"
               >
                 <Play className="w-4 h-4" />
-                <span>{anzanRunning ? 'جاري العرض الخاطف...' : 'ابدأ العرض الخاطف (Anzan)'}</span>
+                <span>{anzanRunning ? 'جاري العرض الخاطف...' : 'ابدأ العرض الخاطف'}</span>
               </button>
 
               <div className="flex items-center gap-2 w-full sm:w-auto">
