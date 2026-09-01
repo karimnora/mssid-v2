@@ -17,7 +17,6 @@ import {
   HelpCircle,
   TrendingUp,
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
 import { AuthService } from '../services/authService';
 
 interface MarketItem {
@@ -156,7 +155,6 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   goldCoins = 150,
   onEarnCoins,
 }) => {
-  const { authUser } = useAuth();
   const [activeTab, setActiveTab] = useState<'shop' | 'change_game' | 'speed_math'>('shop');
   const [selectedProductCategory, setSelectedProductCategory] = useState<string>('all');
 

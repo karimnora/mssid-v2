@@ -37,12 +37,12 @@ export const TAMAZIGHT_5AP: CourseLesson[] = [
       'الفعل يتصرف مع الضمائر في أزمنة: الماضي (Izri)، المضارع المستمر (Urmir ussid)، والمستقبل (Ad + Amyag).',
     ],
     keyFormulas: [
-      { labelAr: 'صيغة التأنيث العامة', formulaAr: 'Isem amalay (A...) ➔ Isem unti (T...t) : Aqcic (ولد) ➔ Taqfict (بنت)' },
+      { labelAr: 'صيغة التأنيث العامة', formulaAr: 'Isem amalay (A...) ➔ Isem unti (T...t) : Aqcic (ولد) ➔ Taqcict (بنت)' },
     ],
     examplesAr: [
       {
         problem: 'حول الكلمات التالية إلى المؤنث:\n1. Aqcic (ولد)\n2. Argaz (رجل)\n3. Amdakkel (صديق)',
-        solution: '1. Taqfict (بنت)\n2. Tameṭṭut (امرأة)\n3. Tamdakkelt (صديقة)',
+        solution: '1. Taqcict (بنت)\n2. Tameṭṭut (امرأة)\n3. Tamdakkelt (صديقة)',
       },
     ],
     interactiveTool: 'tamazight_lab',
