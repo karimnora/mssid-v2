@@ -73,15 +73,21 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
 
   const handleAdvanceDay = () => {
     if (!hasWater) {
-      setPlantFeedback('⚠️ النبتة ذبلت وجفت لعدم وجود الماء! الماء ضروري لإنتاش البذرة ونمو النبات.');
+      const msg = '⚠️ ذبلت النبتة لأنها بلا ماء! كل نبتة تحتاج الماء لتعيش.';
+      setPlantFeedback(msg);
+      speakText(msg);
       return;
     }
     if (!hasLight) {
-      setPlantFeedback('⚠️ النبتة صفراء وشاحبة بسبب غياب ضوء الشمس! الضوء ضروري لعملية التركيب الضوئي.');
+      const msg = '⚠️ اصفرّت أوراق النبتة لأنها بلا ضوء شمس! الضوء يساعدها على صنع غذائها.';
+      setPlantFeedback(msg);
+      speakText(msg);
       return;
     }
     if (!hasAir) {
-      setPlantFeedback('⚠️ النبتة اختنقت لعدم وجود الهواء! النبات كائن حي يتنفس كالإنسان.');
+      const msg = '⚠️ لا يمكن للنبتة أن تعيش بلا هواء! هي تتنفس مثلنا تماماً.';
+      setPlantFeedback(msg);
+      speakText(msg);
       return;
     }
 
@@ -238,8 +244,8 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
                 التربية العلمية والتكنولوجية
               </span>
             </div>
-            <p className="text-teal-100 text-xs sm:text-sm mt-1.5 font-medium max-w-2xl leading-relaxed">
-              محاكاة تفاعلية للتجارب المقررة في المنهاج الجزائري: حالات المادة ودورة الماء، إنتاش ونمو النبات الأخضر، والمغناطيس والبوصلة! 🧪🌱
+            <p className="text-teal-100 text-sm mt-1.5 font-bold max-w-2xl leading-relaxed">
+              العب وجرّب بنفسك: الماء والحرارة، نمو النبات، والمغناطيس والبوصلة! 🧪🌱
             </p>
           </div>
         </div>
@@ -259,85 +265,85 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 bg-[var(--app-card-bg)] p-2 rounded-2xl border border-[var(--app-card-border)] shadow-xs">
         <button
           onClick={() => setActiveTab('foggara')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'foggara'
-              ? 'bg-amber-700 text-white shadow-md'
+              ? 'bg-amber-700 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <span>🏛️</span>
-          <span>فقارة أدرار وتيميمون</span>
+          <span className="text-xl">🏛️</span>
+          <span>الفقارة</span>
         </button>
 
         <button
           onClick={() => setActiveTab('solar_pump')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'solar_pump'
-              ? 'bg-yellow-600 text-white shadow-md'
+              ? 'bg-yellow-600 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <Sun className="w-3.5 h-3.5" />
-          <span>ضخ المياه بالطاقة الشمسية</span>
+          <Sun className="w-5 h-5" />
+          <span>الطاقة الشمسية</span>
         </button>
 
         <button
           onClick={() => setActiveTab('density_chott')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'density_chott'
-              ? 'bg-sky-600 text-white shadow-md'
+              ? 'bg-sky-600 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <span>🌴</span>
-          <span>كثافة دقلة نور وشط ملغيغ</span>
+          <span className="text-xl">🌴</span>
+          <span>هل يطفو أم يغرق؟</span>
         </button>
 
         <button
           onClick={() => setActiveTab('water_cycle')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'water_cycle'
-              ? 'bg-blue-600 text-white shadow-md'
+              ? 'bg-blue-600 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <Droplets className="w-3.5 h-3.5" />
-          <span>حالات المادة</span>
+          <Droplets className="w-5 h-5" />
+          <span>الماء والحرارة</span>
         </button>
 
         <button
           onClick={() => setActiveTab('plant_growth')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'plant_growth'
-              ? 'bg-emerald-600 text-white shadow-md'
+              ? 'bg-emerald-600 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <Leaf className="w-3.5 h-3.5" />
-          <span>إنتاش النبات</span>
+          <Leaf className="w-5 h-5" />
+          <span>النبتة تكبر</span>
         </button>
 
         <button
           onClick={() => setActiveTab('compass')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'compass'
-              ? 'bg-amber-600 text-white shadow-md'
+              ? 'bg-amber-600 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <Compass className="w-3.5 h-3.5" />
+          <Compass className="w-5 h-5" />
           <span>المغناطيس</span>
         </button>
 
         <button
           onClick={() => setActiveTab('quiz')}
-          className={`py-2.5 px-2 rounded-xl font-black text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+          className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'quiz'
-              ? 'bg-teal-600 text-white shadow-md'
+              ? 'bg-teal-600 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
-          <Award className="w-3.5 h-3.5" />
+          <Award className="w-5 h-5" />
           <span>تحدي العالِم</span>
         </button>
       </div>
@@ -374,11 +380,20 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
               <span className="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
                 التحكم في درجة الحرارة 🌡️
               </span>
-              <h2 className="text-xl font-black text-[var(--app-text)]">
-                تغيير حالة المادة بالحرارة
-              </h2>
-              <p className="text-xs text-[var(--app-text-muted)] font-medium">
-                حرك شريط الحرارة لملاحظة تحول الماء بين الحالة الصلبة، السائلة، والغازية.
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-black text-[var(--app-text)]">
+                  الماء يتغيّر مع الحرارة!
+                </h2>
+                <button
+                  onClick={() => speakText('الماء يتغيّر مع الحرارة! حرّك المؤشر وشاهد الماء يتحول إلى ثلج أو إلى بخار.')}
+                  aria-label="استمع للشرح"
+                  className="w-9 h-9 shrink-0 flex items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
+              </div>
+              <p className="text-sm text-[var(--app-text-muted)] font-bold">
+                حرّك المؤشر وشاهد: هل يتحول الماء إلى ثلج 🧊 أم إلى بخار ♨️؟
               </p>
             </div>
 
@@ -426,23 +441,38 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
               }`}
             >
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-2xl">
+                <span className="text-3xl">
                   {waterPhase === 'solid' ? '🧊' : waterPhase === 'liquid' ? '💧' : '♨️'}
                 </span>
-                <h3 className="font-black text-sm">
+                <h3 className="font-black text-base">
                   {waterPhase === 'solid'
-                    ? 'الحالة الصلبة (جليد / ثلج)'
+                    ? 'ثلج (حالة صلبة)'
                     : waterPhase === 'liquid'
-                    ? 'الحالة السائلة (ماء جارٍ)'
-                    : 'الحالة الغازية (بخار ماء)'}
+                    ? 'ماء (حالة سائلة)'
+                    : 'بخار (حالة غازية)'}
                 </h3>
+                <button
+                  onClick={() =>
+                    speakText(
+                      waterPhase === 'solid'
+                        ? 'الثلج قاسٍ وله شكل ثابت لا يتغيّر.'
+                        : waterPhase === 'liquid'
+                        ? 'الماء السائل يسيل ويأخذ شكل الإناء الذي نضعه فيه.'
+                        : 'بخار الماء خفيف جداً ولا نراه، وينتشر في الهواء.'
+                    )
+                  }
+                  aria-label="استمع"
+                  className="w-8 h-8 shrink-0 flex items-center justify-center bg-white/70 hover:bg-white rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                </button>
               </div>
-              <p className="text-xs font-bold leading-relaxed">
+              <p className="text-sm font-bold leading-relaxed">
                 {waterPhase === 'solid'
-                  ? 'جزيئات الماء متراصة ومتماسكة وتأخذ شكلاً ثابتاً وحجماً محدداً.'
+                  ? 'الثلج قاسٍ وله شكل ثابت لا يتغيّر، مثل مكعب الثلج! 🧊'
                   : waterPhase === 'liquid'
-                  ? 'الماء يأخذ شكل الإناء الذي يوضع فيه، قابل للجريان وله حجم ثابت.'
-                  : 'بخار الماء يملأ كل الحيز المتاح له، غير مرئي وقابل للانتشار والانضغاط.'}
+                  ? 'الماء السائل يسيل ويأخذ شكل الإناء الذي نضعه فيه.'
+                  : 'بخار الماء خفيف جداً ولا نراه، وينتشر في الهواء من حولنا.'}
               </p>
             </div>
 
@@ -473,7 +503,18 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           <div className="lg:col-span-7 bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-md space-y-6">
             <h3 className="font-black text-base text-[var(--app-text)] flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-blue-600" />
-              <span>محاكاة دورة الماء في الطبيعة الجزائرية:</span>
+              <span>رحلة الماء في الطبيعة:</span>
+              <button
+                onClick={() =>
+                  speakText(
+                    'رحلة الماء في الطبيعة: أولاً، الشمس تسخّن الماء فيتبخر ويصعد إلى السماء. ثانياً، يتكاثف البخار ويصنع الغيوم. ثالثاً، تسقط الأمطار من الغيوم. رابعاً، تجري المياه في الأودية نحو البحر، ثم تبدأ الرحلة من جديد!'
+                  )
+                }
+                aria-label="استمع للشرح"
+                className="w-8 h-8 shrink-0 flex items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full transition-colors cursor-pointer"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </h3>
 
             {/* Nature Landscape representation */}
@@ -511,21 +552,25 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
 
             {/* Cycle steps summary */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
-              <div className="bg-blue-50 p-2.5 rounded-2xl border border-blue-200">
-                <span className="font-black text-blue-900 block">1. التبخر</span>
-                <span className="text-[10px] text-blue-700 font-bold">بفعل حرارة الشمس</span>
+              <div className="bg-blue-50 p-3 rounded-2xl border border-blue-200">
+                <span className="text-xl block mb-0.5">☀️💨</span>
+                <span className="font-black text-blue-900 block">1. التبخّر</span>
+                <span className="text-[11px] text-blue-700 font-bold">الشمس تسخّن الماء</span>
               </div>
-              <div className="bg-slate-100 p-2.5 rounded-2xl border border-slate-300">
+              <div className="bg-slate-100 p-3 rounded-2xl border border-slate-300">
+                <span className="text-xl block mb-0.5">☁️</span>
                 <span className="font-black text-slate-900 block">2. التكاثف</span>
-                <span className="text-[10px] text-slate-700 font-bold">تشكل السحب والغيوم</span>
+                <span className="text-[11px] text-slate-700 font-bold">تتكوّن الغيوم</span>
               </div>
-              <div className="bg-sky-50 p-2.5 rounded-2xl border border-sky-200">
+              <div className="bg-sky-50 p-3 rounded-2xl border border-sky-200">
+                <span className="text-xl block mb-0.5">🌧️</span>
                 <span className="font-black text-sky-900 block">3. التساقط</span>
-                <span className="text-[10px] text-sky-700 font-bold">أمطار وثلوج</span>
+                <span className="text-[11px] text-sky-700 font-bold">تنزل الأمطار</span>
               </div>
-              <div className="bg-emerald-50 p-2.5 rounded-2xl border border-emerald-200">
+              <div className="bg-emerald-50 p-3 rounded-2xl border border-emerald-200">
+                <span className="text-xl block mb-0.5">🌊</span>
                 <span className="font-black text-emerald-900 block">4. الجريان</span>
-                <span className="text-[10px] text-emerald-700 font-bold">الأودية والبحار</span>
+                <span className="text-[11px] text-emerald-700 font-bold">تجري نحو البحر</span>
               </div>
             </div>
           </div>
@@ -541,13 +586,24 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           <div className="lg:col-span-5 bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-md space-y-6">
             <div className="space-y-1">
               <span className="text-xs font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                شروط الإنتاش والنمو 🧪
+                ماذا تحتاج النبتة؟ 🌱
               </span>
-              <h2 className="text-xl font-black text-[var(--app-text)]">
-                التحكم في شروط حياة النبات
-              </h2>
-              <p className="text-xs text-[var(--app-text-muted)] font-medium">
-                قم بتوفير أو حجب العناصر الحيوية وشاهد كيف يتأثر نمو بذرة الفاصولياء.
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-black text-[var(--app-text)]">
+                  ساعد البذرة على النمو!
+                </h2>
+                <button
+                  onClick={() =>
+                    speakText('ساعد البذرة على النمو! تحتاج النبتة إلى ثلاثة أشياء: الماء، وضوء الشمس، والهواء. جرّب أن تحجب واحداً منها وشاهد ماذا يحدث!')
+                  }
+                  aria-label="استمع للشرح"
+                  className="w-9 h-9 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
+              </div>
+              <p className="text-sm text-[var(--app-text-muted)] font-bold">
+                اضغط على العناصر لتوفيرها أو حجبها، وشاهد ماذا يحدث لبذرة الفاصولياء 🫘
               </p>
             </div>
 
@@ -639,32 +695,32 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
                 {plantDay === 1 && (
                   <div className="text-center space-y-1">
                     <span className="text-4xl block animate-pulse">🌰</span>
-                    <span className="text-[11px] font-black bg-amber-200 text-amber-950 px-2 py-0.5 rounded-lg">
-                      اليوم 1: انتفاخ البذرة بالماء
+                    <span className="text-xs font-black bg-amber-200 text-amber-950 px-2 py-1 rounded-lg">
+                      اليوم 1: البذرة تشرب الماء
                     </span>
                   </div>
                 )}
                 {plantDay === 2 && (
                   <div className="text-center space-y-1">
                     <span className="text-5xl block animate-bounce">🌱</span>
-                    <span className="text-[11px] font-black bg-amber-200 text-amber-950 px-2 py-0.5 rounded-lg">
-                      اليوم 2: ظهور الجذير نحو الأسفل
+                    <span className="text-xs font-black bg-amber-200 text-amber-950 px-2 py-1 rounded-lg">
+                      اليوم 2: جذر صغير ينزل للأسفل
                     </span>
                   </div>
                 )}
                 {plantDay === 3 && (
                   <div className="text-center space-y-1">
                     <span className="text-6xl block">🌿</span>
-                    <span className="text-[11px] font-black bg-emerald-200 text-emerald-950 px-2 py-0.5 rounded-lg">
-                      اليوم 3: صعود السويقة وظهور الفلقتين
+                    <span className="text-xs font-black bg-emerald-200 text-emerald-950 px-2 py-1 rounded-lg">
+                      اليوم 3: ساق صغيرة تخرج للأعلى
                     </span>
                   </div>
                 )}
                 {plantDay === 4 && (
                   <div className="text-center space-y-1">
                     <span className="text-7xl block">🪴</span>
-                    <span className="text-[11px] font-black bg-emerald-200 text-emerald-950 px-2 py-0.5 rounded-lg">
-                      اليوم 4: تفتح الأوراق الخضراء الأولى
+                    <span className="text-xs font-black bg-emerald-200 text-emerald-950 px-2 py-1 rounded-lg">
+                      اليوم 4: أول أوراق خضراء تظهر
                     </span>
                   </div>
                 )}
@@ -680,23 +736,26 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
 
               {/* Soil layer */}
               <div className="w-full h-16 bg-amber-900 rounded-2xl border-t-4 border-amber-700 flex items-center justify-center text-amber-200 text-xs font-black shadow-md">
-                تربة زراعية خصبة غنية بالأملاح المعدنية
+                🟫 تربة خصبة تغذي النبتة
               </div>
             </div>
 
             {/* Stages overview */}
             <div className="grid grid-cols-3 gap-2 text-xs">
-              <div className="bg-[var(--app-card-subtle)] p-2.5 rounded-2xl border border-[var(--app-card-border)]">
-                <span className="font-black text-[var(--app-text)] block">الجذير:</span>
-                <span className="text-[10px] text-[var(--app-text-muted)] font-bold">ينمو نحو الأسفل لامتصاص الماء</span>
+              <div className="bg-[var(--app-card-subtle)] p-3 rounded-2xl border border-[var(--app-card-border)]">
+                <span className="text-lg block">⬇️</span>
+                <span className="font-black text-[var(--app-text)] block">الجذر</span>
+                <span className="text-[11px] text-[var(--app-text-muted)] font-bold">يشرب الماء من التربة</span>
               </div>
-              <div className="bg-[var(--app-card-subtle)] p-2.5 rounded-2xl border border-[var(--app-card-border)]">
-                <span className="font-black text-[var(--app-text)] block">السويقة:</span>
-                <span className="text-[10px] text-[var(--app-text-muted)] font-bold">تنمو نحو الأعلى باتجاه الضوء</span>
+              <div className="bg-[var(--app-card-subtle)] p-3 rounded-2xl border border-[var(--app-card-border)]">
+                <span className="text-lg block">⬆️</span>
+                <span className="font-black text-[var(--app-text)] block">الساق</span>
+                <span className="text-[11px] text-[var(--app-text-muted)] font-bold">تكبر نحو ضوء الشمس</span>
               </div>
-              <div className="bg-[var(--app-card-subtle)] p-2.5 rounded-2xl border border-[var(--app-card-border)]">
-                <span className="font-black text-[var(--app-text)] block">الأوراق:</span>
-                <span className="text-[10px] text-[var(--app-text-muted)] font-bold">تقوم بالتركيب الضوئي والتنفس</span>
+              <div className="bg-[var(--app-card-subtle)] p-3 rounded-2xl border border-[var(--app-card-border)]">
+                <span className="text-lg block">🍃</span>
+                <span className="font-black text-[var(--app-text)] block">الأوراق</span>
+                <span className="text-[11px] text-[var(--app-text-muted)] font-bold">تصنع غذاء النبتة</span>
               </div>
             </div>
           </div>
@@ -712,11 +771,20 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           <div className="lg:col-span-6 bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-md space-y-5">
             <div className="space-y-1">
               <span className="text-xs font-black text-amber-600 bg-amber-50 px-3 py-1 rounded-full">
-                تجاذب وتنافر الأقطاب 🧲
+                هل يتجاذبان أم يتنافران؟ 🧲
               </span>
-              <h2 className="text-lg font-black text-[var(--app-text)]">
-                تجربة قطبي المغناطيس (شمالي N / جنوبي S)
-              </h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-lg font-black text-[var(--app-text)]">
+                  ألعب بالمغناطيس!
+                </h2>
+                <button
+                  onClick={() => speakText('لكل مغناطيس قطبان: شمالي وجنوبي. القطبان المختلفان يتجاذبان، والقطبان المتشابهان يتنافران.')}
+                  aria-label="استمع للشرح"
+                  className="w-9 h-9 shrink-0 flex items-center justify-center bg-amber-100 hover:bg-amber-200 text-amber-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {/* Interactive Magnet Stage */}
@@ -751,45 +819,67 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
             <div className="flex gap-2">
               <button
                 onClick={() => setMagnetPole('attract')}
-                className={`flex-1 py-3 rounded-xl font-black text-xs transition-all cursor-pointer ${
+                className={`flex-1 py-3.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
                   magnetPole === 'attract'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-emerald-600 text-white shadow-sm scale-[1.02]'
                     : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)]'
                 }`}
               >
-                🧲 أقطاب مختلفة (تجاذب N مع S)
+                🧲 قطبان مختلفان (يتجاذبان)
               </button>
 
               <button
                 onClick={() => setMagnetPole('repel')}
-                className={`flex-1 py-3 rounded-xl font-black text-xs transition-all cursor-pointer ${
+                className={`flex-1 py-3.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
                   magnetPole === 'repel'
-                    ? 'bg-rose-600 text-white shadow-sm'
+                    ? 'bg-rose-600 text-white shadow-sm scale-[1.02]'
                     : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)]'
                 }`}
               >
-                🚫 أقطاب متشابهة (تنافر N مع N)
+                🚫 قطبان متشابهان (يتنافران)
               </button>
             </div>
 
-            <p className="text-xs text-[var(--app-text-muted)] font-bold bg-[var(--app-card-subtle)] p-3 rounded-xl border border-[var(--app-card-border)]">
-              💡 <span className="text-[var(--app-text)]">القاعدة العلمية:</span> الأقطاب المتشابهة تتنافر وتتباعد، بينما الأقطاب المغناطيسية المختلفة تتجاذب وتلتصق بقوة.
-            </p>
+            <div className="flex items-start gap-2 text-sm text-[var(--app-text-muted)] font-bold bg-[var(--app-card-subtle)] p-3 rounded-xl border border-[var(--app-card-border)]">
+              <span className="flex-1">
+                💡 <span className="text-[var(--app-text)]">تذكّر:</span> القطبان المتشابهان يتنافران ويبتعدان، والقطبان المختلفان يتجاذبان ويلتصقان!
+              </span>
+              <button
+                onClick={() => speakText('تذكّر: القطبان المتشابهان يتنافران ويبتعدان، والقطبان المختلفان يتجاذبان ويلتصقان!')}
+                aria-label="استمع"
+                className="w-8 h-8 shrink-0 flex items-center justify-center bg-white/70 hover:bg-white rounded-full transition-colors cursor-pointer"
+              >
+                <Volume2 className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
 
           {/* Compass & Directions (6 Cols) */}
           <div className="lg:col-span-6 bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-md space-y-5 text-center">
             <div className="space-y-1">
               <span className="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                البوصلة والجهات الأربع 🧭
+                الجهات الأربع 🧭
               </span>
-              <h2 className="text-lg font-black text-[var(--app-text)]">
-                تحديد الاتجاهات الجغرافية
-              </h2>
+              <div className="flex items-center justify-center gap-2">
+                <h2 className="text-lg font-black text-[var(--app-text)]">
+                  البوصلة تجد الشمال دائماً!
+                </h2>
+                <button
+                  onClick={() => speakText('البوصلة تجد الشمال دائماً! إبرتها الحمراء تشير دوماً نحو الشمال، مهما حرّكناها.')}
+                  aria-label="استمع للشرح"
+                  className="w-9 h-9 shrink-0 flex items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {/* Compass Circle */}
-            <div className="relative w-48 h-48 mx-auto rounded-full bg-slate-900 border-4 border-amber-500 shadow-xl flex items-center justify-center text-white">
+            {/* Inline background (not the bg-slate-900 class) so this permanently-dark compass face
+                is never neutralized by the lab-interior wrapper's force-light-card override, which
+                would otherwise turn the circle white while leaving its light-colored N/S/E/W labels
+                untouched — invisible light-on-white text. */}
+            <div className="relative w-48 h-48 mx-auto rounded-full border-4 border-amber-500 shadow-xl flex items-center justify-center text-white" style={{ backgroundColor: '#0f172a' }}>
               {/* Compass Cardinal Points */}
               <span className="absolute top-2 font-black text-rose-400 text-xs">الشمال N</span>
               <span className="absolute bottom-2 font-black text-slate-300 text-xs">الجنوب S</span>
@@ -808,20 +898,20 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
             <div className="flex gap-2 justify-center">
               <button
                 onClick={() => setCompassAngle((p) => p + 45)}
-                className="px-4 py-2 bg-[var(--app-card-subtle)] hover:bg-slate-200 text-[var(--app-text)] font-black rounded-xl text-xs transition-colors cursor-pointer border border-[var(--app-card-border)]"
+                className="px-4 py-2.5 bg-[var(--app-card-subtle)] hover:bg-slate-200 text-[var(--app-text)] font-black rounded-xl text-xs transition-colors cursor-pointer border border-[var(--app-card-border)]"
               >
-                تدوير البوصلة 45° 🔄
+                🔄 حرّك البوصلة
               </button>
               <button
                 onClick={() => setCompassAngle(0)}
-                className="px-4 py-2 bg-blue-600 text-white font-black rounded-xl text-xs hover:bg-blue-700 transition-colors cursor-pointer"
+                className="px-4 py-2.5 bg-blue-600 text-white font-black rounded-xl text-xs hover:bg-blue-700 transition-colors cursor-pointer"
               >
-                إعادة ضبط الشمال (0°) 🧭
+                🧭 عودة للشمال
               </button>
             </div>
 
-            <p className="text-xs text-[var(--app-text-muted)] font-bold">
-              تعتمد البوصلة على إبرة ممغنطة تشير دائماً إلى القطب الشمالي لكوكب الأرض.
+            <p className="text-sm text-[var(--app-text-muted)] font-bold">
+              إبرة البوصلة الحمراء تشير دائماً نحو الشمال، أينما كنت! 🔴
             </p>
           </div>
         </div>

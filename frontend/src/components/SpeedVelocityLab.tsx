@@ -954,21 +954,55 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                         : t('تعادل رائع وسرعة متكافئة!', 'Égalité parfaite !')}
                     </h2>
 
-                    <div className="w-full bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs sm:text-sm text-slate-300 text-start space-y-2">
-                      <div className="flex justify-between border-b border-slate-800 pb-1">
-                        <span>🔵 {t(vehicleA.nameAr, vehicleA.nameFr)}</span>
-                        <span className="font-mono text-cyan-400 font-bold">{timeA.toFixed(2)} s ({realSpeedA.toFixed(0)} km/h)</span>
-                      </div>
-                      <div className="flex justify-between border-b border-slate-800 pb-1">
-                        <span>🔴 {t(vehicleB.nameAr, vehicleB.nameFr)}</span>
-                        <span className="font-mono text-rose-400 font-bold">{timeB.toFixed(2)} s ({realSpeedB.toFixed(0)} km/h)</span>
-                      </div>
-                      <div className="pt-1 text-amber-300 font-bold text-center">
-                        ⚡ {t(
-                          `فارق الوصول: ${Math.abs(timeA - timeB).toFixed(2)} ثانية!`,
-                          `Différence d'arrivée : ${Math.abs(timeA - timeB).toFixed(2)} secondes !`
-                        )}
-                      </div>
+                    {/* Simple why-it-won sentence a young child can grasp without reading the numbers
+                        below: speed = winning, in one plain phrase tied to the actual result. */}
+                    <p className="text-sm font-bold text-slate-200 -mt-2">
+                      {winner === 'TIE'
+                        ? t('السيارتان وصلتا معاً بنفس السرعة! 🤝', 'Les deux voitures sont arrivées ensemble, à la même vitesse ! 🤝')
+                        : t(
+                            `وصلت أولاً لأنها تسير بسرعة أكبر (${(winner === 'A' ? realSpeedA : realSpeedB).toFixed(0)} كم/سا)! 🚀`,
+                            `Arrivée première car elle roule plus vite (${(winner === 'A' ? realSpeedA : realSpeedB).toFixed(0)} km/h) ! 🚀`
+                          )}
+                    </p>
+
+                    <div className="w-full bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-4">
+                      {/* Visual race-bar comparison — lets a child SEE who was faster at a glance,
+                          without needing to read/compare decimal seconds. Bar width ∝ speed. */}
+                      {[
+                        { label: t(vehicleA.nameAr, vehicleA.nameFr), emoji: vehicleA.emoji, time: timeA, speed: realSpeedA, color: 'cyan', isWinner: winner === 'A' },
+                        { label: t(vehicleB.nameAr, vehicleB.nameFr), emoji: vehicleB.emoji, time: timeB, speed: realSpeedB, color: 'rose', isWinner: winner === 'B' },
+                      ].map((row, idx) => (
+                        <div key={idx} className="text-start space-y-1.5">
+                          <div className="flex items-center justify-between text-sm font-black text-slate-200">
+                            <span className="flex items-center gap-1.5">
+                              <span className="text-xl">{row.emoji}</span>
+                              <span>{row.label}</span>
+                              {winner !== 'TIE' && <span className="text-lg">{row.isWinner ? '🥇' : '🥈'}</span>}
+                            </span>
+                            <span className={`font-mono font-black ${row.color === 'cyan' ? 'text-cyan-400' : 'text-rose-400'}`}>
+                              {row.time.toFixed(1)} {t('ثانية', 's')}
+                            </span>
+                          </div>
+                          <div className="w-full h-4 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+                            <div
+                              className={`h-full rounded-full ${row.color === 'cyan' ? 'bg-cyan-500' : 'bg-rose-500'}`}
+                              style={{ width: `${Math.min(100, (row.speed / Math.max(realSpeedA, realSpeedB)) * 100)}%` }}
+                            />
+                          </div>
+                          <span className="text-[11px] font-bold text-slate-400">
+                            ⚡ {t('السرعة:', 'Vitesse :')} {row.speed.toFixed(0)} km/h
+                          </span>
+                        </div>
+                      ))}
+
+                      {winner !== 'TIE' && (
+                        <div className="pt-1 text-amber-300 font-bold text-center text-sm border-t border-slate-800">
+                          ⏱️ {t(
+                            `الفارق بينهما: ${Math.abs(timeA - timeB).toFixed(1)} ثانية فقط!`,
+                            `Seulement ${Math.abs(timeA - timeB).toFixed(1)} secondes d'écart !`
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     <button
