@@ -32,6 +32,16 @@ import { WILAYAS_LIST } from '../data/wilayasData';
 import { WilayaInfo } from '../types/ecosystem';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
+import { ALGERIA_MAP_VIEWBOX, ALGERIA_OUTLINE_PATH, ALGERIA_MAP_SEA } from '../data/algeriaMapOutline';
+
+// Same 3-way split as the region legend/dots below (blue=north, amber=high plateaus, emerald=sahara),
+// expressed as Y bands (percent of the outline's own viewBox height) so they can be clipped to the
+// real country silhouette — same technique as TopographyMapLab's ALGERIA_MAP_BANDS.
+const WILAYA_MAP_BANDS: { id: 'north' | 'high_plateaus' | 'sahara'; y0: number; y1: number; fill: string }[] = [
+  { id: 'north', y0: 0, y1: 96, fill: '#3b82f6' },
+  { id: 'high_plateaus', y0: 96, y1: 155, fill: '#d97706' },
+  { id: 'sahara', y0: 155, y1: 500, fill: '#059669' },
+];
 
 interface WilayasExplorerProps {
   onBack?: () => void;
@@ -210,6 +220,13 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   // Mark wilaya as discovered
   const handleSelectWilaya = (w: WilayaInfo) => {
     setSelectedWilaya(w);
+    // On mobile the detail panel sits below the map/list, not beside it like the desktop sticky
+    // sidebar — without this, tapping a wilaya silently updates state below the fold. The timeout
+    // lets the panel's content re-render with the new wilaya before we measure where to scroll
+    // (same pattern as AlgerianHistoryMuseum's hero-detail-panel).
+    setTimeout(() => {
+      document.getElementById('wilaya-detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
     if (!discoveredCodes.includes(w.code)) {
       const updated = [...discoveredCodes, w.code];
       setDiscoveredCodes(updated);
@@ -644,33 +661,57 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
               className="relative select-none"
               style={{ width: `${100 * mapScale}%`, height: `${460 * mapScale}px` }}
             >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-sky-100 via-amber-50 to-amber-100 dark:from-slate-900 dark:via-emerald-950/20 dark:to-amber-950/30 overflow-hidden">
-              {/* Sea banner top */}
-              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-sky-400/25 to-transparent flex items-center justify-center">
-                <span className="text-[11px] font-black text-sky-800 dark:text-sky-300 tracking-wider">
-                  🌊 البحر الأبيض المتوسط (Méditerranée)
-                </span>
-              </div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-sky-50 to-amber-50 dark:from-slate-900 dark:to-amber-950/30 overflow-hidden">
+              {/* Real Algeria silhouette (same outline/viewBox as TopographyMapLab) as an absolutely
+                  positioned backdrop filling the stage exactly — preserveAspectRatio="none" so its
+                  own 0-100% coordinate space lines up 1:1 with the pins' percent-based left/top below,
+                  regardless of the stage's actual pixel aspect ratio. */}
+              <svg
+                viewBox={ALGERIA_MAP_VIEWBOX}
+                preserveAspectRatio="none"
+                className="absolute inset-0 w-full h-full"
+                role="img"
+                aria-label="خريطة الجزائر الحقيقية بولاياتها الـ 58"
+              >
+                <defs>
+                  <clipPath id="wilayas-map-clip">
+                    <path d={ALGERIA_OUTLINE_PATH} />
+                  </clipPath>
+                </defs>
 
-              {/* Geographic Zones Bands — percentage boundaries tuned to the actual pin distribution
-                  after the anti-overlap relayout below (north/high-plateaus/sahara ranges overlap a
-                  bit in real geography too, so these are an approximate decorative backdrop, not a
-                  strict per-pin boundary). */}
-              <div className="absolute left-4 right-4 rounded-xl border border-blue-300/40 bg-blue-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '2%', height: '32%' }}>
-                <span className="text-[10px] font-black text-blue-900 dark:text-blue-300">
-                  النطاق التلي والساحلي
-                </span>
-              </div>
-              <div className="absolute left-4 right-4 rounded-xl border border-amber-300/40 bg-amber-500/5 flex items-start justify-start px-4 pt-1" style={{ top: '34%', height: '20%' }}>
-                <span className="text-[10px] font-black text-amber-900 dark:text-amber-300">
-                  نطاق الهضاب العليا والسهوب
-                </span>
-              </div>
-              <div className="absolute left-4 right-4 bottom-4 rounded-xl border border-emerald-300/40 bg-emerald-500/5 flex items-end justify-start p-4" style={{ top: '54%' }}>
-                <span className="text-[10px] font-black text-emerald-900 dark:text-emerald-300">
-                  نطاق الصحراء والواحات وجبال الهقار والطاسيلي
-                </span>
-              </div>
+                <rect
+                  x={ALGERIA_MAP_SEA.x0}
+                  y="0"
+                  width={ALGERIA_MAP_SEA.x1 - ALGERIA_MAP_SEA.x0}
+                  height={ALGERIA_MAP_SEA.y1}
+                  fill="#7dd3fc"
+                  opacity="0.55"
+                />
+                <text
+                  x={(ALGERIA_MAP_SEA.x0 + ALGERIA_MAP_SEA.x1) / 2}
+                  y="18"
+                  textAnchor="middle"
+                  fill="#0c4a6e"
+                  fontSize="13"
+                  fontWeight="800"
+                >
+                  🌊 البحر الأبيض المتوسط
+                </text>
+
+                <g clipPath="url(#wilayas-map-clip)">
+                  {WILAYA_MAP_BANDS.map((band) => (
+                    <rect key={band.id} x="0" y={band.y0} width="470" height={band.y1 - band.y0} fill={band.fill} opacity="0.16" />
+                  ))}
+                </g>
+
+                <path d={ALGERIA_OUTLINE_PATH} fill="none" stroke="#0f172a" strokeWidth="2.4" strokeLinejoin="round" />
+
+                {/* North compass, matching TopographyMapLab's convention */}
+                <g transform="translate(415, 60)">
+                  <path d="M0 -14 L8 8 L0 3 L-8 8 Z" fill="#0f172a" />
+                  <text x="0" y="24" textAnchor="middle" fontSize="12" fontWeight="800" fill="#0f172a">شمال</text>
+                </g>
+              </svg>
 
               {/* Interactive Pins on Map */}
               {WILAYAS_LIST.map((w) => {
@@ -821,7 +862,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
             </div>
 
             {/* Detailed Selected Card (5 Cols) */}
-            <div className="lg:col-span-5 space-y-4 sticky top-6">
+            <div id="wilaya-detail-panel" className="lg:col-span-5 space-y-4 lg:sticky lg:top-6 scroll-mt-20">
               {selectedWilaya ? (
                 <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border-2 border-emerald-500 shadow-xl space-y-5">
                   {/* Header of the card */}
