@@ -20,7 +20,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
   };
 
   return (
-    <div className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div data-lab-instrument className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">

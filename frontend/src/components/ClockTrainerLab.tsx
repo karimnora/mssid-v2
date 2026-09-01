@@ -45,9 +45,13 @@ const AnalogClock: React.FC<{ hour: number; minute: number }> = ({ hour, minute 
           style={{ transform: `translateX(-50%) rotate(${i * 30}deg)`, transformOrigin: '50% 88px' }}
         />
       ))}
+      {/* Inline background (not the bg-slate-900 class): the lab-interior wrapper's force-light-card
+          override neutralizes that exact class to white, which made this hand invisible against the
+          white clock face — the clock then looked frozen near 12 no matter the real hour, since only
+          the (unaffected, sky-600) minute hand stayed visible. */}
       <div
-        className="absolute w-1.5 h-14 bg-slate-900 left-1/2 top-1/2 rounded-full origin-bottom"
-        style={{ transform: `translate(-50%, -100%) rotate(${hourDeg}deg)` }}
+        className="absolute w-1.5 h-14 left-1/2 top-1/2 rounded-full origin-bottom"
+        style={{ transform: `translate(-50%, -100%) rotate(${hourDeg}deg)`, backgroundColor: '#0f172a' }}
       />
       <div
         className="absolute w-1 h-20 bg-sky-600 left-1/2 top-1/2 rounded-full origin-bottom"

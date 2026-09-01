@@ -195,7 +195,7 @@ export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP
       : currentVerb.imperative || currentVerb.present;
 
   return (
-    <div className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div data-lab-instrument className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4">
         <div className="flex items-center gap-3">

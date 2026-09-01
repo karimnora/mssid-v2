@@ -62,7 +62,10 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    // data-lab-instrument: the header's from-indigo gradient banner otherwise gets forced to a
+    // white background by the lab-interior wrapper's override, while its text-indigo-100 subtitle
+    // (untouched by that rule) stays light-on-white and becomes unreadable.
+    <div data-lab-instrument className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
       <div className="bg-gradient-to-r from-indigo-700 via-blue-800 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (

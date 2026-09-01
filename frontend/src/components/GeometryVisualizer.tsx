@@ -440,7 +440,12 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
     : 'bg-slate-800/80 border-slate-700/80';
 
   return (
-    <div className={`${cardBg} border rounded-2xl p-4 sm:p-5 shadow-sm transition-colors duration-300`} dir="rtl">
+    // data-lab-instrument: this component already adapts cardBg/subBg to the app's own theme prop
+    // (light/neutre/sepia/dark) correctly on its own — without this opt-out, the lab-interior
+    // wrapper's force-light-card override still neutralizes its bg-slate-900/bg-slate-800/80 classes
+    // to white whenever theme='dark', while every light-on-dark text color inside (text-emerald-300,
+    // text-amber-300, text-red-300...) stays untouched, breaking the quiz tab's answer feedback.
+    <div data-lab-instrument className={`${cardBg} border rounded-2xl p-4 sm:p-5 shadow-sm transition-colors duration-300`} dir="rtl">
       {/* ── Header ── */}
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-700/25 flex-wrap gap-3">
         <div className="flex items-center gap-2.5">

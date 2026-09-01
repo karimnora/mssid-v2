@@ -56,11 +56,17 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
   const canSpeak = useMemo(() => !!result || !!errorMessage || !!explanation, [result, errorMessage, explanation]);
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-md text-slate-900 max-w-4xl mx-auto">
+    // data-lab-instrument: the keypad's bg-indigo-600 buttons otherwise get repainted green by the
+    // lab-interior wrapper's force-light-card override (harmless to read, but not the intended
+    // color) — everything else here already uses its own light theme regardless of this attribute.
+    <div data-lab-instrument className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-md text-slate-900 max-w-4xl mx-auto">
       <div className="flex flex-col gap-4">
-        <div>
-          <h2 className="text-xl font-extrabold">{t('common', 'calculatorTitle')}</h2>
-          <p className="text-sm opacity-70 mt-1">{t('common', 'calculatorHelp')}</p>
+        <div className="flex items-start gap-2">
+          <div className="flex-1">
+            <h2 className="text-xl font-extrabold">{t('common', 'calculatorTitle')}</h2>
+            <p className="text-sm opacity-70 mt-1">{t('common', 'calculatorHelp')}</p>
+          </div>
+          <TextToSpeechButton text={t('common', 'calculatorHelp')} />
         </div>
 
         <div className="rounded-3xl bg-slate-50 p-4 border border-slate-200 shadow-sm">

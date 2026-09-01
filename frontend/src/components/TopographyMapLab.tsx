@@ -321,7 +321,10 @@ export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward, on
         <p className="text-xs font-black text-[var(--app-text-muted)] text-center">
           {t('topographyInstructionBar')}
         </p>
-        <div className="flex items-end gap-2 h-40 sm:h-48">
+        {/* dir="ltr": REGIONS is ordered north→south (Tell...Sahara) to match the relief map above
+            (also forced dir="ltr" for the same reason) — without it, the page's ambient RTL flips
+            the visual order of these flex/grid items to south→north, contradicting the map. */}
+        <div dir="ltr" className="flex items-end gap-2 h-40 sm:h-48">
           {REGIONS.map((region) => {
             const isSelected = selectedId === region.id;
             return (
@@ -343,7 +346,7 @@ export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward, on
             );
           })}
         </div>
-        <div className="grid grid-cols-4 gap-2">
+        <div dir="ltr" className="grid grid-cols-4 gap-2">
           {REGIONS.map((region) => (
             <p key={region.id} className="text-[10px] sm:text-[11px] font-black text-center text-[var(--app-text-muted)] leading-tight">
               {region.nameAr}

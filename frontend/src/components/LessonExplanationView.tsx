@@ -570,7 +570,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
                       </div>
                       <div className="bg-slate-900 p-3.5 rounded-xl border border-slate-800 space-y-1">
                         <span className="text-[10px] text-slate-300 block font-bold">2. تطبيق قاعدة الدرس:</span>
-                        <p className="text-xs font-bold text-sky-300 font-mono">
+                        <p dir="ltr" className="text-xs font-bold text-sky-300 font-mono text-right">
                           {lesson.keyFormulas?.[0]?.formulaAr || `حساب متناسب × 10`}
                         </p>
                       </div>

@@ -290,7 +290,7 @@ export const ElectricityLabInteractive: React.FC = () => {
   };
 
   return (
-    <div className="kids-pole rounded-[28px] p-4 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div data-lab-instrument className="kids-pole rounded-[28px] p-4 sm:p-6 space-y-6 dir-rtl" dir="rtl">
       {/* Top Title Bar */}
       <div className="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">

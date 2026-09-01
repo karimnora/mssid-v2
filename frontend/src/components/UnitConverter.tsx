@@ -133,7 +133,13 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
   };
 
   return (
-    <div className={`${cardStyle} border rounded-2xl p-4 sm:p-6 shadow-xs dir-rtl transition-colors duration-300`} dir="rtl">
+    // data-lab-instrument: this component already adapts cardStyle/subBoxStyle to the app's own
+    // theme prop correctly on its own, and its "official reference table" box (bg-slate-900 /
+    // bg-slate-800/80) is deliberately dark in EVERY theme, including bright/light — the app's
+    // default. Without this opt-out, the lab-interior wrapper's force-light-card override still
+    // neutralizes those exact classes to white while leaving their white/light text untouched,
+    // making the reference table (and, in dark theme, the category-selector bar) unreadable.
+    <div data-lab-instrument className={`${cardStyle} border rounded-2xl p-4 sm:p-6 shadow-xs dir-rtl transition-colors duration-300`} dir="rtl">
       <div className="flex items-center justify-between mb-4 border-b border-slate-700/30 pb-3 flex-wrap gap-2">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold">
