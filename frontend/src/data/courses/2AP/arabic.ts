@@ -37,7 +37,7 @@ export const ARABIC_2AP: CourseLesson[] = [
     detailedCourse: {
       introAr: 'الحروف وحدها صامتة، لكن عندما نضع فوقها أو تحتها حركة صغيرة، تنطق بصوت واضح. الحركات الثلاث هي مفتاح القراءة السليمة.',
       vocabulary: [
-        { termAr: 'الفَتْحَةُ ˘', definitionAr: 'حركة فوق الحرف صوتها "أَ" خفيف.' },
+        { termAr: 'الفَتْحَةُ ـَ', definitionAr: 'حركة فوق الحرف صوتها "أَ" خفيف.' },
         { termAr: 'الضَّمَّةُ ُ', definitionAr: 'حركة فوق الحرف تشبه الواو الصغيرة، صوتها "أُ".' },
         { termAr: 'الكَسْرَةُ ِ', definitionAr: 'حركة تحت الحرف، صوتها "إِ".' },
       ],
@@ -887,7 +887,6 @@ export const ARABIC_2AP: CourseLesson[] = [
       ],
       takeawayAr: 'القراءة الجيدة: أنظر للعنوان، أقرأ ببطء ووضوح، أتوقف عند علامات الترقيم، ثم ألخص الفكرة العامة بجملة واحدة.',
     },
-    interactiveTool: 'arabic_canvas',
     progressiveExercises: [
       {
         id: 'ex1-ar2ap-reading',

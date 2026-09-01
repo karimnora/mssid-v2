@@ -141,7 +141,7 @@ export const PLAYFUL_PACKS: Record<string, PlayfulPack> = {
       g('7 + 6 = ؟ (ذهنياً إلى 20)', '13', '12', '7 + 6 = 13.'),
     ],
     [
-      q('q2-math1ap-tm', 'مع سامي 9، أخذ 3. كم صار؟', '12', '6', 'أخذ = جمع. 9 + 3 = 12.'),
+      q('q2-math1ap-tm', 'مع سامي 9، أُعْطِيَ 3 أُخْرَى. كم صار؟', '12', '6', 'أُعْطِيَ = جَمْعٌ. 9 + 3 = 12.'),
       q('q3-math1ap-tm', '15 − 5 = ؟', '10', '20', '15 ناقص 5 = 10.'),
       q('q4-math1ap-tm', 'كلمة «بقي» تعني غالباً:', 'طَرْحٌ −', 'جَمْعٌ +', 'بقي = أنقصنا.'),
     ],
@@ -373,7 +373,7 @@ export const PLAYFUL_PACKS: Record<string, PlayfulPack> = {
   'arabic-1ap-t1-letters-jim-ha-kha': pack(
     [pair('ex3-ar1ap-jha', 'ارْبِطْ 🔗', [
       { leftAr: 'جَ', rightAr: '🐪 جَمَل' },
-      { leftAr: 'حَ', rightAr: '🍐 حَلَزُون أو حَقْل' },
+      { leftAr: 'حَ', rightAr: '🐌 حَلَزُون' },
       { leftAr: 'خَ', rightAr: '🥬 خَسّ' },
     ])],
     [g('جَرَسٌ 🔔 يبدأ بـ', 'جَ', 'حَ', 'جيم نقطة وسط.'),

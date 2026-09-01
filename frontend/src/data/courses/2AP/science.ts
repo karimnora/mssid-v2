@@ -447,7 +447,7 @@ export const SCIENCE_2AP: CourseLesson[] = [
       instructionsAr: 'اربط كل حيوان بنوعه وصوته المميز!',
       pairs: [
         { leftAr: 'القِطَّةُ 🐈', rightAr: 'أَلِيفَةٌ، تَمُوءُ', explanationAr: 'تعيش قرب الإنسان في البيت.' },
-        { leftAr: 'الدَّجَاجَةُ 🐔', rightAr: 'أَلِيفَةٌ، تُقَقِّقُ', explanationAr: 'يربيها الإنسان في المزرعة.' },
+        { leftAr: 'الدَّجَاجَةُ 🐔', rightAr: 'أَلِيفَةٌ، تُقَوْقِئُ', explanationAr: 'يربيها الإنسان في المزرعة.' },
         { leftAr: 'الأَسَدُ 🦁', rightAr: 'بَرِّيٌّ، يَزْأَرُ', explanationAr: 'يعيش حراً بعيداً عن الإنسان.' },
         { leftAr: 'الذِّئْبُ 🐺', rightAr: 'بَرِّيٌّ، يَعْوِي', explanationAr: 'يعيش في الغابة بعيداً عن الإنسان.' },
       ],
@@ -702,6 +702,7 @@ export const SCIENCE_2AP: CourseLesson[] = [
     contentSource: 'complementary',
     sourceType: 'original_authoring',
     confidenceLevel: 'medium',
-    sourceNoteAr: SOURCE_NOTE_2AP_SCIENCE,
+    sourceNoteAr:
+      'إثراء تربوي تكميلي: المنهاج الرسمي للسنة الثانية ابتدائي يقتصر على الحالتين الصلبة والسائلة للماء، بينما هذا الدرس يضيف الحالة الغازية (التبخر) كتوسيع اختياري يتجاوز البرنامج الرسمي.',
   },
 ];

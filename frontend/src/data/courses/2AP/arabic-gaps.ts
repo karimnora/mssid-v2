@@ -82,7 +82,6 @@ export const ARABIC_2AP_GAPS: CourseLesson[] = [
       ],
       takeawayAr: 'أقرأ النص المشكول، أفهم من/أين/ماذا، ألخص بجملة.',
     },
-    interactiveTool: 'arabic_canvas',
     progressiveExercises: [
       {
         id: 'ex1-ar2ap-read1',
@@ -174,7 +173,6 @@ export const ARABIC_2AP_GAPS: CourseLesson[] = [
       ],
       takeawayAr: 'أقرأ عن الحي: ألعب، أجري، أشرب ماءً بارداً، أحافظ على النظافة، أعود قبل المغرب.',
     },
-    interactiveTool: 'arabic_canvas',
     progressiveExercises: [
       {
         id: 'ex1-ar2ap-read2',
@@ -273,7 +271,6 @@ export const ARABIC_2AP_GAPS: CourseLesson[] = [
       ],
       takeawayAr: 'أنسخ ثم أراجع. في الإملاء أكتب الكلمة الناقصة بحركاتها.',
     },
-    interactiveTool: 'arabic_canvas',
     progressiveExercises: [
       {
         id: 'ex1-ar2ap-dict',

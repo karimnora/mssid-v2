@@ -887,9 +887,9 @@ export const MATH_2AP: CourseLesson[] = [
     mathInteractive: {
       type: 'number_cards',
       titleAr: 'ضعف ونصف — بلا جداول ضرب',
-      introAr: 'الضعف = العدد + نفسه. النصف = قسمان متساويان. جداول الضرب في 3AP.',
+      introAr: 'الضعف = العدد + نفسه، وهو أيضاً جدول الضرب في 2. النصف = قسمان متساويان. نتعلم في هذه السنة جداول 2 و3 و4 و5 و10، وبقية الجداول في السنة الثالثة ابتدائي.',
       cards: [
-        { labelAr: 'ضعف 5', valueDisplay: '5 + 5', explanationAr: 'ضعف 5 = 5 + 5 = 10. ليس «5 × 2» في هذا المستوى.' },
+        { labelAr: 'ضعف 5', valueDisplay: '5 + 5', explanationAr: 'ضعف 5 = 5 + 5 = 10. وهذا هو أيضاً جدول الضرب في 2: 5 × 2 = 10.' },
         { labelAr: 'نصف 8', valueDisplay: '4 + 4', explanationAr: 'نصف 8 = 4 لأن 4 + 4 = 8.' },
         { labelAr: 'ضعف 6', valueDisplay: '12', explanationAr: '6 + 6 = 12، إذن نصف 12 = 6.' },
         { labelAr: 'نصف 20', valueDisplay: '10', explanationAr: '10 + 10 = 20.' },
