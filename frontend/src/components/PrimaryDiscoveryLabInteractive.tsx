@@ -16,8 +16,10 @@ import {
   Shield,
   Heart,
   BookOpen,
+  Volume2,
 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import { speakText } from '../utils/speech';
 
 interface PrimaryDiscoveryLabInteractiveProps {
   grade?: PrimaryGrade;
@@ -55,7 +57,6 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
       organAr: 'العَيْنُ 👁️',
       roleAr: 'أَرَى بِهَا الأَلْوَانَ وَالأَشْكَالَ وَالضَّوْءَ وَالمَنَاظِرَ الجَمِيلَةَ.',
       icon: '👁️',
-      color: 'from-blue-600 to-indigo-700',
     },
     {
       id: 'hearing',
@@ -63,7 +64,6 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
       organAr: 'الأُذُنُ 👂',
       roleAr: 'أَسْمَعُ بِهَا الأَصْوَاتَ وَالأَنَاشِيدَ وَجَرَسَ المَدْرَسَةِ.',
       icon: '👂',
-      color: 'from-emerald-600 to-teal-700',
     },
     {
       id: 'taste',
@@ -71,7 +71,6 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
       organAr: 'اللِّسَانُ 👅',
       roleAr: 'أَتَذَوَّقُ بِهِ الطَّعَامَ الحُلْوَ وَالمَالِحَ وَالحَامِضَ.',
       icon: '👅',
-      color: 'from-rose-600 to-red-700',
     },
     {
       id: 'smell',
@@ -79,7 +78,6 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
       organAr: 'الأَنْفُ 👃',
       roleAr: 'أَشُمُّ بِهِ العُطُورَ الزَّكِيَّةَ وَرَائِحَةَ الأَزْهَارِ وَالطَّعَامِ.',
       icon: '👃',
-      color: 'from-amber-600 to-yellow-700',
     },
     {
       id: 'touch',
@@ -87,7 +85,6 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
       organAr: 'الجِلْدُ وَاليَدُ ✋',
       roleAr: 'أَلْمَسُ بِهِ الأَشْيَاءَ فَأَعْرِفُ السَّاخِنَ وَالبَارِدَ، النَّاعِمَ وَالخَشِنَ.',
       icon: '✋',
-      color: 'from-purple-600 to-fuchsia-700',
     },
   ];
 
@@ -121,24 +118,31 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
     { stage: 4, titleAr: '4. نبتة كاملة مزهرة ومثمرة (Plante adulte)', descAr: 'نبتة يانعة بأزهار وثمار وجذور قوية تمتص الماء والأملاح.', icon: '🌸' },
   ];
 
+  // hasWater/hasSun reset to false after each stage advance (not left at true forever) so the next
+  // stage genuinely needs BOTH again — otherwise, once both had been true once, either button alone
+  // kept advancing every later stage, letting a child skip the "needs both" lesson entirely.
   const handleWater = () => {
-    setHasWater(true);
     if (hasSun && plantStage < 4) {
       setPlantStage((prev) => prev + 1);
+      setHasWater(false);
+      setHasSun(false);
       setPlantMessage('رائع! توفر الماء والشمس فكبرت النبتة درجة! 🌿');
       onReward?.(5, 15);
     } else {
+      setHasWater(true);
       setPlantMessage('سقيت النبتة بالماء المنعش 💧، وفر لها ضوء الشمس الآن!');
     }
   };
 
   const handleSun = () => {
-    setHasSun(true);
     if (hasWater && plantStage < 4) {
       setPlantStage((prev) => prev + 1);
+      setHasWater(false);
+      setHasSun(false);
       setPlantMessage('ممتاز! بفضل ضوء الشمس والماء، نمت النبتة وأزهرت! 🌸');
       onReward?.(5, 15);
     } else {
+      setHasSun(true);
       setPlantMessage('تشرق الشمس على النبتة ☀️، اسقها بالماء الآن!');
     }
   };
@@ -269,10 +273,17 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                   <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center text-4xl shrink-0">
                     {cur.icon}
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-1 flex-1">
                     <h3 className="text-lg font-black text-[var(--app-text)]">{cur.nameAr}</h3>
                     <p className="text-xs font-bold text-teal-600">العضو المسؤول: {cur.organAr}</p>
                   </div>
+                  <button
+                    onClick={() => speakText(`${cur.nameAr}. ${cur.organAr}. ${cur.roleAr}`, 'ar-SA', 0.85)}
+                    aria-label="استمع للشرح"
+                    className="w-10 h-10 shrink-0 flex items-center justify-center bg-teal-100 hover:bg-teal-200 text-teal-700 rounded-full transition-colors cursor-pointer"
+                  >
+                    <Volume2 className="w-5 h-5" />
+                  </button>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] text-sm font-bold text-[var(--app-text)] leading-relaxed">
@@ -347,8 +358,23 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
             <div className="text-7xl animate-bounce duration-1000">
               {PLANT_STAGES_INFO[plantStage - 1].icon}
             </div>
-            <div className="font-black text-base text-emerald-950 font-sans">
-              {PLANT_STAGES_INFO[plantStage - 1].titleAr}
+            <div className="flex items-center justify-center gap-2">
+              <div className="font-black text-base text-emerald-950 font-sans">
+                {PLANT_STAGES_INFO[plantStage - 1].titleAr}
+              </div>
+              <button
+                onClick={() =>
+                  speakText(
+                    `${PLANT_STAGES_INFO[plantStage - 1].titleAr}. ${PLANT_STAGES_INFO[plantStage - 1].descAr}`,
+                    'ar-SA',
+                    0.85
+                  )
+                }
+                aria-label="استمع للشرح"
+                className="w-8 h-8 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+              >
+                <Volume2 className="w-4 h-4" />
+              </button>
             </div>
             <p className="text-xs text-emerald-800 leading-relaxed">
               {PLANT_STAGES_INFO[plantStage - 1].descAr}
@@ -418,7 +444,16 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                   key={card.id}
                   className="p-5 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-4"
                 >
-                  <p className="font-black text-sm text-[var(--app-text)] leading-relaxed">{card.textAr}</p>
+                  <div className="flex items-start gap-2">
+                    <p className="font-black text-sm text-[var(--app-text)] leading-relaxed flex-1">{card.textAr}</p>
+                    <button
+                      onClick={() => speakText(card.textAr, 'ar-SA', 0.85)}
+                      aria-label="استمع"
+                      className="w-8 h-8 shrink-0 flex items-center justify-center bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full transition-colors cursor-pointer"
+                    >
+                      <Volume2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <button

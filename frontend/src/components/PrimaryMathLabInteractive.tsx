@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
-import { isFeatureEnabled } from '../featureFlags';
+import { speakText } from '../utils/speech';
 import {
   Calculator,
   Sparkles,
@@ -44,11 +44,6 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   // --- 1. Number Strip State (0 to 99) ---
   const [selectedNumber, setSelectedNumber] = useState<number>(() => Math.min(25, stripMax));
   const [stripFilter, setStripFilter] = useState<'all' | 'even' | 'odd' | 'tens'>('all');
-  const [mysteryTarget, setMysteryTarget] = useState<number>(() => {
-    const min = stripMax <= 20 ? 1 : 10;
-    return Math.floor(Math.random() * Math.max(1, stripMax - min)) + min;
-  });
-  const [mysteryFeedback, setMysteryFeedback] = useState<string | null>(null);
 
   // --- 2. Column Addition State ---
   const [addNum1, setAddNum1] = useState<number>(47);
@@ -67,16 +62,11 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   const [subFeedback, setSubFeedback] = useState<string | null>(null);
   const [subSuccess, setSubSuccess] = useState<boolean>(false);
 
-  // Sound synthesis
+  // Sound synthesis — routed through the shared speakText utility so this gets the same reliable
+  // native Android TTS (via Capacitor) as other labs, instead of the Android WebView's own
+  // window.speechSynthesis, which commonly reports zero installed voices there.
   const speakNumber = (num: number) => {
-    if (!isFeatureEnabled('voiceReading')) return;
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(`${num}`);
-      utterance.lang = 'ar-SA';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    }
+    speakText(`${num}`, 'ar-SA', 0.9);
   };
 
   // Check Addition
@@ -97,8 +87,15 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   };
 
   const newAdditionExercise = () => {
-    const n1 = Math.floor(Math.random() * 60) + 15;
-    const n2 = Math.floor(Math.random() * 35) + 8;
+    // The result only has tens+units input boxes (no hundreds), so the sum must stay ≤99 — the old
+    // ranges (15-74 + 8-42) could reach 116, making the exercise impossible to answer correctly.
+    // Also force a genuine carry (units digits summing to ≥10) to match "الجمع بالاحتفاظ".
+    let n1 = 0;
+    let n2 = 0;
+    do {
+      n1 = Math.floor(Math.random() * 60) + 15; // 15–74
+      n2 = Math.floor(Math.random() * 35) + 8; // 8–42
+    } while (n1 + n2 > 99 || (n1 % 10) + (n2 % 10) < 10);
     setAddNum1(n1);
     setAddNum2(n2);
     setAddUnitsInput('');
@@ -126,8 +123,15 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   };
 
   const newSubtractionExercise = () => {
-    const n1 = Math.floor(Math.random() * 50) + 40;
-    const n2 = Math.floor(Math.random() * 30) + 11;
+    // The tab is titled "بالاستعارة" (WITH borrowing), so force the units digit of n1 to be
+    // strictly smaller than n2's — otherwise the random pair sometimes needed no borrowing at all,
+    // silently skipping the very skill this exercise claims to practice.
+    let n1 = 0;
+    let n2 = 0;
+    do {
+      n1 = Math.floor(Math.random() * 50) + 40; // 40–89
+      n2 = Math.floor(Math.random() * 30) + 11; // 11–40
+    } while (n1 <= n2 || n1 % 10 >= n2 % 10);
     setSubNum1(n1);
     setSubNum2(n2);
     setSubUnitsInput('');
@@ -384,8 +388,12 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
             </Button>
           </div>
 
-          {/* Interactive Column Grid */}
-          <div className="max-w-xs mx-auto p-6 rounded-3xl bg-[var(--app-card-subtle)] border-2 border-emerald-300 space-y-4 text-center">
+          {/* Interactive Column Grid — every row below is forced dir="ltr": Western digits are
+              always read left-to-right even on an RTL page, but splitting tens/units into two
+              separate flex items (instead of one text node) means the ambient RTL direction was
+              reordering the flex items themselves, not just text shaping — visually swapping tens
+              and units (e.g. 47 rendered as "7" on the right and "4" on the left, reading as "74"). */}
+          <div className="max-w-xs mx-auto p-6 rounded-3xl bg-[var(--app-card-subtle)] border-2 border-emerald-300 space-y-4 text-center" dir="ltr">
             {/* Carry input */}
             <div className="flex items-center justify-end gap-6 pl-8">
               <div className="w-8 h-8 rounded-full border-2 border-dashed border-amber-500 flex items-center justify-center bg-amber-50">
@@ -471,8 +479,10 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
             </Button>
           </div>
 
-          {/* Interactive Subtraction Grid */}
-          <div className="max-w-xs mx-auto p-6 rounded-3xl bg-[var(--app-card-subtle)] border-2 border-blue-300 space-y-4 text-center">
+          {/* Interactive Subtraction Grid — dir="ltr" for the same reason as the addition grid
+              above: keeps tens/units digits in the correct left-to-right numeral order instead of
+              being reordered by the page's ambient RTL direction. */}
+          <div className="max-w-xs mx-auto p-6 rounded-3xl bg-[var(--app-card-subtle)] border-2 border-blue-300 space-y-4 text-center" dir="ltr">
             {/* Row 1 */}
             <div className="flex items-center justify-end gap-6 text-3xl font-black font-mono text-[var(--app-text)] pl-8">
               <span className="w-8">{Math.floor(subNum1 / 10)}</span>
