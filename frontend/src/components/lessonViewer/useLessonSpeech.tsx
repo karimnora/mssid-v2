@@ -10,10 +10,14 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const speakingKeyRef = useRef<string | null>(null);
   const lang = speechLangForSubject(lesson.subject);
   const snippetRate = isPlayful1AP ? 0.78 : 0.9;
-  const voiceAvailable = useVoiceAvailable(lang);
+  const rawVoiceAvailable = useVoiceAvailable(lang);
+  // Tamazight content is mostly Tifinagh/Latin-script amazigh — no TTS voice can read it correctly,
+  // so the arabic fallback voice would just mispronounce it. Report unavailable instead of guessing.
+  const isTamazight = lesson.subject === 'tamazight';
+  const voiceAvailable = isTamazight ? false : rawVoiceAvailable;
 
   const speakSnippet = (key: string, text: string) => {
-    if (!isFeatureEnabled('voiceReading') || !text) return;
+    if (!isFeatureEnabled('voiceReading') || !text || isTamazight) return;
     if (speakingKeyRef.current === key) {
       stopSynth();
       speakingKeyRef.current = null;

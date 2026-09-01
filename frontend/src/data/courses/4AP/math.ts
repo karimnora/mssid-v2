@@ -379,7 +379,32 @@ export const MATH_4AP: CourseLesson[] = [
             operationsAr: '   2,500\n×     24\n--------\n  10,000   (2,500 × 4)\n  50,000   (2,500 × 20)\n--------\n  60,000\n\n   1,800\n×     15\n--------\n   9,000   (1,800 × 5)\n  18,000   (1,800 × 10)\n--------\n  27,000\n\n  60,000\n+ 27,000\n--------\n  87,000',
         },
     ],
-    interactiveTool: 'multiplication_table',
+    interactiveTool: 'math_lab',
+    mathInteractive: {
+        type: 'written_operation',
+        titleAr: 'الجمع والطرح والضرب العمودي',
+        introAr: 'اضغط على كل عملية لترى خطواتها كاملة: الاحتفاظ في الجمع، الاستدراك في الطرح، والحاصل الجزئي في الضرب.',
+        operations: [
+            {
+                id: 'add1',
+                labelAr: '3,458 + 2,764',
+                operationsAr: '  3,458\n+ 2,764\n-------\n  6,222',
+                solutionAr: '3,458 + 2,764 = 6,222.',
+            },
+            {
+                id: 'sub1',
+                labelAr: '5,200 − 1,850',
+                operationsAr: '  5,200\n− 1,850\n-------\n  3,350',
+                solutionAr: '5,200 − 1,850 = 3,350.',
+            },
+            {
+                id: 'mul1',
+                labelAr: '345 × 26',
+                operationsAr: '    345\n  ×  26\n  ------\n   2,070   (345 × 6)\n   6,900   (345 × 20)\n  ------\n   8,970',
+                solutionAr: '345 × 26 = 8,970.',
+            },
+        ],
+    },
     progressiveExercises: [
         {
             id: 'math-4ap-operations-addition-multiplication-p1',

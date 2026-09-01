@@ -35,8 +35,8 @@ describe('labGradePolicy', () => {
     expect(canShowDecimalsTab('5AP')).toBe(true);
   });
 
-  it('limits primary math strip for 1AP', () => {
-    expect(primaryMathNumberStripMax('1AP')).toBe(20);
+  it('limits primary math strip to the official < 100 ceiling for 1AP and 2AP', () => {
+    expect(primaryMathNumberStripMax('1AP')).toBe(99);
     expect(primaryMathNumberStripMax('2AP')).toBe(99);
     expect(canShowColumnCarryOps('1AP')).toBe(false);
     expect(canShowColumnCarryOps('2AP')).toBe(true);

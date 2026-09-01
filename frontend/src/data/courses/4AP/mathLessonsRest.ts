@@ -242,15 +242,15 @@ export const MATH_4AP_REST: CourseLesson[] = [
     ],
     interactiveTool: 'unit_converter',
     ...build4ApPractice('math-4ap-measurements-lengths-masses-capacities', [
-        { problemAr: '2.5 kg = ؟ g', solutionAr: '2500', detailedCorrectionAr: '2.5×1000=2500g.', type: 'calculation', calculationAnswer: 2500 },
+        { problemAr: '2 kg 500 g = ؟ g', solutionAr: '2500', detailedCorrectionAr: '2kg=2000g، 2000+500=2500g.', type: 'calculation', calculationAnswer: 2500 },
         { problemAr: '1 m = 100 cm. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '1m=100cm.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
-        { problemAr: '350 cm = ؟ m', solutionAr: '3.5', detailedCorrectionAr: '350÷100=3.5m.', type: 'fill_blank', fillBlankAnswerAr: '3.5' },
-        { problemAr: '4,200 g = ؟ kg', solutionAr: '4.2', detailedCorrectionAr: '4200÷1000=4.2kg.', type: 'calculation', calculationAnswer: 4.2 },
+        { problemAr: '300 cm = ؟ m', solutionAr: '3', detailedCorrectionAr: '300÷100=3m.', type: 'fill_blank', fillBlankAnswerAr: '3' },
+        { problemAr: '4 kg 200 g = ؟ g', solutionAr: '4200', detailedCorrectionAr: '4kg=4000g، 4000+200=4200g.', type: 'calculation', calculationAnswer: 4200 },
     ], [
         { problemAr: '1 t = 1,000 kg. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'الطن = ألف كيلوغرام.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
         { problemAr: '5 m = ؟ cm', solutionAr: '500', detailedCorrectionAr: '5×100=500cm.', type: 'calculation', calculationAnswer: 500 },
     ]),
-    quiz: [{ id: 'q1', questionAr: '2.5 kg = ؟ g', options: [{ id: 'a', textAr: '2,500 g', isCorrect: true, explanationAr: '×1000.' }, { id: 'b', textAr: '250 g', isCorrect: false }] }],
+    quiz: [{ id: 'q1', questionAr: '2 kg 500 g = ؟ g', options: [{ id: 'a', textAr: '2,500 g', isCorrect: true, explanationAr: '2000+500=2500g.' }, { id: 'b', textAr: '250 g', isCorrect: false }] }],
     trimester: 2,
 },
 
@@ -417,31 +417,31 @@ export const MATH_4AP_REST: CourseLesson[] = [
     grade: '4AP',
     subject: 'math',
     categoryAr: 'تنظيم المعطيات والتناسبية',
-    titleAr: 'التناسبية البسيطة: الجداول، السرعة والمدة',
-    summaryAr: 'حل مشكلات تناسبية بسيطة بجداول القيم المترابطة، ومقدمة السرعة = المسافة ÷ الزمن.',
+    titleAr: 'التناسبية البسيطة: الجداول وحل المشكلات',
+    summaryAr: 'حل مشكلات تناسبية بسيطة بجداول القيم المترابطة: كلما زادت الكمية المشتراة زاد الثمن بنفس النسبة.',
     objectivesAr: [
         'أكمّل جدول تناسب بسيط.',
         'أحل مشكلة تناسبية (3 كتب = 150 دج، 5 كتب = ؟).',
-        'أفهم العلاقة بين المسافة والزمن والسرعة.',
+        'أحل مشكلة تناسبية بسياق آخر (ثمن حسب الكمية المشتراة).',
     ],
     detailedCourse: {
         introAr: 'في التناسب البسيط، عندما يتضاعف أحد الكميتين يتضاعف الآخر بنفس النسبة.',
         vocabulary: [
             { termAr: 'التناسب', definitionAr: 'علاقة بين كميتين تتغيران معاً بنفس النسبة.' },
-            { termAr: 'السرعة', definitionAr: 'المسافة المقطوعة في وحدة زمن (km/h).' },
+            { termAr: 'القيمة الوحدوية', definitionAr: 'ثمن أو مقدار الوحدة الواحدة، نجدها بالقسمة على العدد الكلي.' },
         ],
         visualizationHintAr: 'جدول: عدد الكتب | الثمن — 1|50، 2|100، 3|150...',
         commonMistakes: [{ mistakeAr: 'جمع بدل الضرب في التناسب.', correctionAr: 'التناسب = ضرب بنفس المعامل.' }],
-        takeawayAr: 'إذا 2 = 100 فـ 1 = 50 و 5 = 250. السرعة = المسافة ÷ الزمن.',
+        takeawayAr: 'إذا 2 = 100 فـ 1 = 50 و 5 = 250: نجد قيمة الوحدة ثم نضرب في العدد المطلوب.',
     },
     rulesAr: [
         'التناسب البسيط: نجد قيمة الوحدة ثم نضرب.',
-        'السرعة = المسافة ÷ الزمن.',
-        'المدة = المسافة ÷ السرعة.',
+        'كلما زادت الكمية المشتراة زاد الثمن بنفس النسبة، والعكس صحيح.',
+        'نتحقق من التناسب: إذا تضاعفت الكمية يتضاعف الثمن.',
     ],
     keyFormulas: [
         { labelAr: 'التناسب', formulaAr: '3 كتب = 150 دج ⟹ 1 كتاب = 50 دج' },
-        { labelAr: 'السرعة', formulaAr: 'v = d ÷ t' },
+        { labelAr: 'قيمة الوحدة', formulaAr: 'الثمن الكلي ÷ العدد = ثمن الوحدة' },
     ],
     examplesAr: [
         {
@@ -450,16 +450,16 @@ export const MATH_4AP_REST: CourseLesson[] = [
             operationsAr: '150 ÷ 3 = 50 دج/كتاب\n50 × 5 = 250 دج',
         },
         {
-            problem: 'سيارة قطعت 120 km في 2 h. ما سرعتها؟',
-            solution: '120 ÷ 2 = 60 km/h.',
-            operationsAr: 'v = 120 ÷ 2 = 60 km/h',
+            problem: 'كيس أرز 2 kg ثمنه 300 دج. ما ثمن 5 kg من نفس الأرز؟',
+            solution: '1 kg = 150 دج. 5 kg = 750 دج.',
+            operationsAr: '300 ÷ 2 = 150 دج/kg\n150 × 5 = 750 دج',
         },
     ],
     interactiveTool: 'math_lab',
     mathInteractive: {
         type: 'word_problem_scenario',
-        titleAr: 'تناسبية بسيطة وسرعة',
-        introAr: 'قيمة الوحدة ثم الضرب. السرعة = المسافة ÷ الزمن.',
+        titleAr: 'تناسبية بسيطة: الثمن حسب الكمية',
+        introAr: 'قيمة الوحدة ثم الضرب في التناسب البسيط.',
         problems: [
             {
                 id: 'books',
@@ -470,11 +470,11 @@ export const MATH_4AP_REST: CourseLesson[] = [
                 ],
             },
             {
-                id: 'speed',
-                situationAr: 'سيارة قطعت 120 km في 2 h. ما سرعتها؟',
+                id: 'rice',
+                situationAr: 'كيس أرز 2 kg ثمنه 300 دج. ما ثمن 5 kg؟',
                 choices: [
-                    { textAr: '120 ÷ 2 = 60 km/h', isCorrect: true, feedbackAr: 'السرعة = المسافة ÷ الزمن.' },
-                    { textAr: '120 × 2 = 240 km/h', isCorrect: false, feedbackAr: 'نقسم المسافة على الزمن.' },
+                    { textAr: '300 ÷ 2 = 150 دج/kg ثم 150 × 5 = 750 دج', isCorrect: true, feedbackAr: 'نجد ثمن الكيلوغرام الواحد ثم نضرب في 5.' },
+                    { textAr: '300 + 5 = 305 دج', isCorrect: false, feedbackAr: 'التناسب ضرب، لا جمع.' },
                 ],
             },
         ],
@@ -483,10 +483,10 @@ export const MATH_4AP_REST: CourseLesson[] = [
         { problemAr: '2 قلم = 40 دج. 1 قلم = ؟', solutionAr: '20', detailedCorrectionAr: '40÷2=20.', type: 'calculation', calculationAnswer: 20 },
         { problemAr: '4 × 50 = 200. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '4×50=200.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
         { problemAr: '3 كتب = 150 دج. 5 كتب = ؟', solutionAr: '250', detailedCorrectionAr: '50×5=250.', type: 'calculation', calculationAnswer: 250, operationsAr: '150 ÷ 3 = 50\n50 × 5 = 250 دج' },
-        { problemAr: '120 km في 2 h: السرعة = ؟ km/h', solutionAr: '60', detailedCorrectionAr: '120÷2=60.', type: 'calculation', calculationAnswer: 60 },
+        { problemAr: '4 m قماش = 80 دج. 7 m = ؟', solutionAr: '140', detailedCorrectionAr: '80÷4=20، 20×7=140.', type: 'calculation', calculationAnswer: 140 },
     ], [
         { problemAr: 'التناسب: نضرب بنفس المعامل. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'نسبة ثابتة.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
-        { problemAr: '80 km في 4 h = ؟ km/h', solutionAr: '20', detailedCorrectionAr: '80÷4=20.', type: 'calculation', calculationAnswer: 20 },
+        { problemAr: '3 kg برتقال = 90 دج. 4 kg = ؟', solutionAr: '120', detailedCorrectionAr: '90÷3=30، 30×4=120.', type: 'calculation', calculationAnswer: 120 },
     ]),
     quiz: [{ id: 'q1', questionAr: '3 كتب = 150. 5 كتب؟', options: [{ id: 'a', textAr: '250 دج', isCorrect: true, explanationAr: '50×5.' }, { id: 'b', textAr: '200 دج', isCorrect: false }] }],
     trimester: 3,
@@ -522,7 +522,7 @@ export const MATH_4AP_REST: CourseLesson[] = [
     keyFormulas: [{ labelAr: 'قراءة عمود', formulaAr: 'الارتفاع = القيمة على المحور' }],
     examplesAr: [
         {
-            problem: 'رسم أعمدة: الرياضيات 25، العربية 30، الفrench 15. أي مادة الأكثر؟',
+            problem: 'رسم أعمدة: الرياضيات 25، العربية 30، الفرنسية 15. أي مادة الأكثر؟',
             solution: 'العربية (30) — أطول عمود.',
         },
     ],

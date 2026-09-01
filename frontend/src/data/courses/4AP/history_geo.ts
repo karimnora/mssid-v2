@@ -934,6 +934,18 @@ export const HISTORY_GEO_4AP: CourseLesson[] = [
             solution: 'الشمال سهول وهضاب خضراء، والجنوب صحراء واسعة — وهذا يطابق تضاريس الجزائر.',
         },
     ],
+    interactiveTool: 'history_geo_lab',
+    historyGeoInteractive: {
+        type: 'archaeology_sources',
+        titleAr: 'مستكشف عناصر الخريطة',
+        introAr: 'انقر على كل عنصر لتكتشف دوره في قراءة خريطة الجزائر.',
+        sources: [
+            { id: 'map-title', type: 'map', titleAr: 'العنوان', descriptionAr: 'يخبرنا العنوان بموضوع الخريطة، مثل «خريطة الجزائر الطبيعية».', period: 'عنصر أساسي' },
+            { id: 'map-legend', type: 'map', titleAr: 'المفتاح (الأسطورة)', descriptionAr: 'مفتاح الخريطة يشرح الرموز والألوان: أخضر = سهول، أصفر = صحراء...', period: 'عنصر أساسي' },
+            { id: 'map-scale', type: 'map', titleAr: 'السلّم', descriptionAr: 'سلّم الخريطة يحوّل السنتمتر على الورق إلى كيلومترات على الأرض.', period: 'عنصر أساسي' },
+            { id: 'map-compass', type: 'map', titleAr: 'وردة الاتجاه', descriptionAr: 'تبيّن جهات الاتجاه: الشمال أعلى الخريطة عادة، والجنوب أسفلها، والشرق يمينها، والغرب يسارها.', period: 'عنصر أساسي' },
+        ],
+    },
     progressiveExercises: [
         {
             id: 'geo-4ap-map-legend-ex1',

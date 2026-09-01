@@ -1583,7 +1583,7 @@ export const ARABIC_4AP: CourseLesson[] = [
             hintsAr: ['مَا قَبْلَهَا مَكْسُورٌ.'],
             fillBlankAnswerAr: 'نبرة',
             solutionAr: 'نبرة',
-            detailedCorrectionAr: 'مِئَة: البَاءُ؟ المِيمُ مَكْسُورَةٌ فَالنَّبْرَةُ وَاجِبَةٌ.',
+            detailedCorrectionAr: 'مِئَة: المِيمُ مَكْسُورَةٌ فَالنَّبْرَةُ وَاجِبَةٌ.',
             xpReward: 15,
         },
     ],

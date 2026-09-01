@@ -119,7 +119,6 @@ export const ART_3AP: CourseLesson[] = [
       'الدائرة والمربع والمثلث أشكال أساسية في الرسم.',
       'نُكَبِّرُ الشكل المهم ونُصَغِّرُ الخلفية لإبراز الموضوع.',
     ],
-    interactiveTool: 'science_lab',
     gameplay_simulation: {
       type: 'matching_lab',
       titleAr: 'مختبر الأشكال والتكوين 🔺',
@@ -204,7 +203,6 @@ export const ART_3AP: CourseLesson[] = [
       'التكرار المنتظم يُنتِج إيقاعاً بصرياً جميلاً.',
       'الزليج الجزائري يعتمد على أشكال هندسية متداخلة.',
     ],
-    interactiveTool: 'science_lab',
     gameplay_simulation: {
       type: 'matching_lab',
       titleAr: 'مختبر الزخارف الجزائرية 🀄',

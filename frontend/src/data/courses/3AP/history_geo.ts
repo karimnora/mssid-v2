@@ -1,5 +1,8 @@
 import { CourseLesson } from '../../../types';
 
+const SOURCE_NOTE_3AP_HISTORY_GEO =
+  'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ بصفة استباقية: المنهاج الرسمي الجزائري (الجيل الثاني) يُدرِج مادة التاريخ والجغرافيا رسمياً ابتداءً من السنة الرابعة ابتدائي (4AP)، وهذا الدرس يُقدَّم مسبقاً في السنة الثالثة ابتدائي كتمهيد وإثراء بيداغوجي.';
+
 // 3 leçon(s) — history_geo / 3AP
 export const HISTORY_GEO_3AP: CourseLesson[] = [
 // ==========================================
@@ -24,8 +27,8 @@ export const HISTORY_GEO_3AP: CourseLesson[] = [
     detailedCourse: {
         introAr: 'كل شيء حولنا مرتبط بالزمان والمكان: نعرف متى وقع حدث (ماضٍ، حاضر، مستقبل)، ونعرف أين يقع شيء (أمام، خلف، شمال، جنوب...).',
         vocabulary: [
-            { termAr: 'السلم الزمني (La frise chronologique)', definitionAr: 'خط نُرتّب عليه الأحداث من الأقدم إلى الأحدث.' },
-            { termAr: 'الاتجاهات الأربعة (Les 4 points cardinaux)', definitionAr: 'الشمال والجنوب والشرق والغرب، تساعدنا على تحديد المواقع على الخريطة.' },
+            { termAr: 'السلم الزمني', definitionAr: 'خط نُرتّب عليه الأحداث من الأقدم إلى الأحدث.' },
+            { termAr: 'الاتجاهات الأربعة', definitionAr: 'الشمال والجنوب والشرق والغرب، تساعدنا على تحديد المواقع على الخريطة.' },
         ],
         visualizationHintAr: 'قف في وسط الغرفة وأشِر بيدك: أمامك، خلفك، يمينك، يسارك — ثم اربط هذه الجهات بالشمال والجنوب والشرق والغرب باستعمال الشمس.',
         commonMistakes: [
@@ -126,7 +129,11 @@ export const HISTORY_GEO_3AP: CourseLesson[] = [
           { id: 'c', textAr: 'فِي يَمِينِ الخَرِيطَةِ', isCorrect: false, explanationAr: 'غير صحيح، يمين الخريطة يمثل الشَّرْقَ لا الشَّمَالَ.' }
         ]
       }
-    ]
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE_3AP_HISTORY_GEO,
 },
 
 {
@@ -238,7 +245,11 @@ export const HISTORY_GEO_3AP: CourseLesson[] = [
           { id: 'c', textAr: 'بِوِلَايَةِ بَاتْنَةَ', isCorrect: false, explanationAr: 'غير صحيح، ولاية باتنة هي موقع مدينة تيمقاد الرومانية، وليست موقع نقوش طاسيلي ناجر.' }
         ]
       }
-    ]
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE_3AP_HISTORY_GEO,
 },
 
 {
@@ -338,7 +349,11 @@ export const HISTORY_GEO_3AP: CourseLesson[] = [
           { id: 'c', textAr: 'مَعَ اسْتِقْلَالِ الجَزَائِرِ', isCorrect: false, explanationAr: 'غير صحيح، استقلال الجزائر حدث تاريخي وقع سنة 1962، ولا علاقة له ببداية التقويم الهجري.' }
         ]
       }
-    ]
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE_3AP_HISTORY_GEO,
 },
 
 {
@@ -448,7 +463,11 @@ export const HISTORY_GEO_3AP: CourseLesson[] = [
           { id: 'c', textAr: 'مِنْطَقَةٌ بِلَا أَيِّ سُكَّانٍ', isCorrect: false, explanationAr: 'غير صحيح، المدينة تجمع سكاني كبير ومكتظ بالسكان، وليست منطقة بلا سكان.' }
         ]
       }
-    ]
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE_3AP_HISTORY_GEO,
 },
 
 {
@@ -549,6 +568,10 @@ export const HISTORY_GEO_3AP: CourseLesson[] = [
           { id: 'b', textAr: 'جِبَالُ الهِمَالَايَا', isCorrect: false, explanationAr: 'جبال الهيمالايا في آسيا، وليست في الجزائر. سلسلتا الجزائر هما الأطلس التلي والأطلس الصحراوي.' }
         ]
       }
-    ]
+    ],
+    contentSource: 'complementary',
+    sourceType: 'original_authoring',
+    confidenceLevel: 'medium',
+    sourceNoteAr: SOURCE_NOTE_3AP_HISTORY_GEO,
 },
 ];

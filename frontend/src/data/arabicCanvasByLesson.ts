@@ -80,8 +80,8 @@ export const ARABIC_CANVAS_BY_LESSON: Record<string, CanvasGrammarSentence> = {
 
   'arabic-3ap-t1-nominal-verbal-sentences': pack('كَتَبَ التِّلْمِيذُ الفَرَضَ', [
     { word: 'كَتَبَ', correctTag: 'فعل ماضٍ', hint: 'الجملة فعلية لأنها تبدأ بفعل.' },
-    { word: 'التِّلْمِيذُ', correctTag: 'فاعل', hint: 'من كتب؟' },
-    { word: 'الفَرَضَ', correctTag: 'مفعول به', hint: 'ماذا كتب؟' },
+    { word: 'التِّلْمِيذُ', correctTag: 'مَنْ قَامَ بِالفِعْلِ؟', hint: 'من كتب؟' },
+    { word: 'الفَرَضَ', correctTag: 'عَلَى مَاذَا وَقَعَ الفِعْلُ؟', hint: 'ماذا كتب؟' },
   ]),
   'arabic-3ap-t1-demonstratives-expressions': pack('هَذَا قَلَمٌ', [
     { word: 'هَذَا', correctTag: 'مبتدأ', hint: 'اسم إشارة في محل مبتدأ.' },
@@ -89,35 +89,35 @@ export const ARABIC_CANVAS_BY_LESSON: Record<string, CanvasGrammarSentence> = {
   ]),
   'arabic-3ap-t2-singular-dual-plural': pack('فَتَحَ التِّلْمِيذَانِ النَّافِذَتَيْنِ', [
     { word: 'فَتَحَ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ.' },
-    { word: 'التِّلْمِيذَانِ', correctTag: 'فاعل', hint: 'مثنى مرفوع بالألف.' },
-    { word: 'النَّافِذَتَيْنِ', correctTag: 'مفعول به', hint: 'مثنى منصوب بالياء.' },
+    { word: 'التِّلْمِيذَانِ', correctTag: 'مَنْ قَامَ بِالفِعْلِ؟', hint: 'مثنى ينتهي بـ (انِ).' },
+    { word: 'النَّافِذَتَيْنِ', correctTag: 'عَلَى مَاذَا وَقَعَ الفِعْلُ؟', hint: 'مثنى ينتهي بـ (يْنِ).' },
   ]),
   'arabic-3ap-t2-idafa-construct': pack('كِتَابُ التِّلْمِيذِ جَدِيدٌ', [
-    { word: 'كِتَابُ', correctTag: 'مبتدأ', hint: 'مضاف مرفوع.' },
-    { word: 'التِّلْمِيذِ', correctTag: 'اسم مجرور', hint: 'مضاف إليه مجرور.' },
+    { word: 'كِتَابُ', correctTag: 'مضاف', hint: 'مضاف مرفوع.' },
+    { word: 'التِّلْمِيذِ', correctTag: 'مضاف إليه', hint: 'مضاف إليه مجرور.' },
     { word: 'جَدِيدٌ', correctTag: 'خبر', hint: 'خبر المبتدأ.' },
   ]),
   'arabic-3ap-t3-subject-object': pack('شَرِبَ الضَّيْفُ الحَلِيبَ', [
     { word: 'شَرِبَ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ.' },
-    { word: 'الضَّيْفُ', correctTag: 'فاعل', hint: 'من شرب؟ مرفوع.' },
-    { word: 'الحَلِيبَ', correctTag: 'مفعول به', hint: 'ماذا شرب؟ منصوب.' },
+    { word: 'الضَّيْفُ', correctTag: 'مَنْ قَامَ بِالفِعْلِ؟', hint: 'من شرب؟' },
+    { word: 'الحَلِيبَ', correctTag: 'عَلَى مَاذَا وَقَعَ الفِعْلُ؟', hint: 'ماذا شرب؟' },
   ]),
   'arabic-3ap-t3-question-tools': pack('أَيْنَ جَلَسَ الضَّيْفُ؟', [
     { word: 'أَيْنَ', correctTag: 'اسم استفهام', hint: 'يسأل عن المكان.' },
     { word: 'جَلَسَ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ.' },
     { word: 'الضَّيْفُ', correctTag: 'فاعل', hint: 'من جلس؟' },
   ]),
-  'arabic-3ap-t3-derived-words': pack('الكَاتِبُ يَكْتُبُ رِسَالَةً', [
-    { word: 'الكَاتِبُ', correctTag: 'مبتدأ', hint: 'اسم فاعل من كتب.' },
-    { word: 'يَكْتُبُ', correctTag: 'فعل مضارع', hint: 'فعل مضارع.' },
-    { word: 'رِسَالَةً', correctTag: 'مفعول به', hint: 'ماذا يكتب؟' },
+  'arabic-3ap-t3-derived-words': pack('كَتَبَ الكَاتِبُ مَكْتُوباً فِي المَكْتَبَةِ', [
+    { word: 'كَتَبَ', correctTag: 'فعل', hint: 'الفعل الأصلي في عائلة الكلمة (الجذر: ك-ت-ب).' },
+    { word: 'الكَاتِبُ', correctTag: 'اسم فاعل', hint: 'من قام بالكتابة — اسم فاعل من نفس الجذر.' },
+    { word: 'مَكْتُوباً', correctTag: 'اسم مفعول', hint: 'ما وقعت عليه الكتابة — اسم مفعول من نفس الجذر.' },
+    { word: 'المَكْتَبَةِ', correctTag: 'اسم مكان', hint: 'مكان الكتب — اسم مكان من نفس الجذر.' },
   ]),
 
-  'arabic-4ap-parts-of-speech-sentences': pack('الجَوُّ صَحْوٌ فِي وَهْرَانَ', [
-    { word: 'الجَوُّ', correctTag: 'مبتدأ', hint: 'اسم مرفوع بدأت به الجملة الاسمية.' },
-    { word: 'صَحْوٌ', correctTag: 'خبر', hint: 'يخبر عن الجو.' },
-    { word: 'فِي', correctTag: 'حرف جر', hint: 'حرف جر.' },
-    { word: 'وَهْرَانَ', correctTag: 'اسم مجرور', hint: 'مجرور ممنوع من الصرف.' },
+  'arabic-4ap-parts-of-speech-sentences': pack('يَغْرِسُ الفَلَّاحُ الشَّجَرَةَ', [
+    { word: 'يَغْرِسُ', correctTag: 'فعل مضارع', hint: 'فعل مضارع مرفوع تبدأ به الجملة الفعلية.' },
+    { word: 'الفَلَّاحُ', correctTag: 'فاعل', hint: 'من يغرس؟ فاعل مرفوع.' },
+    { word: 'الشَّجَرَةَ', correctTag: 'مفعول به', hint: 'ماذا يغرس؟ مفعول به منصوب.' },
   ]),
   'arabic-4ap-fail-maf3ul-irab': pack('زَرَعَ الفَلَّاحُ القَمْحَ', [
     { word: 'زَرَعَ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ مبني.' },
@@ -128,12 +128,12 @@ export const ARABIC_CANVAS_BY_LESSON: Record<string, CanvasGrammarSentence> = {
     { word: 'جَاءَ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ.' },
     { word: 'سَامِي', correctTag: 'فاعل', hint: 'فاعل مرفوع.' },
     { word: 'وَ', correctTag: 'حرف عطف', hint: 'حرف عطف يتبع المعطوف المعطوف عليه في الحركة.' },
-    { word: 'أَمِينٌ', correctTag: 'فاعل', hint: 'معطوف على سامي يتبعه في الرفع.' },
+    { word: 'أَمِينٌ', correctTag: 'معطوف', hint: 'معطوف على سامي يتبعه في الرفع.' },
   ]),
   'arabic-4ap-kan-inna': pack('كَانَ البَحْرُ هَادِئاً', [
     { word: 'كَانَ', correctTag: 'فعل ماضٍ', hint: 'كان الناسخة.' },
-    { word: 'البَحْرُ', correctTag: 'مبتدأ', hint: 'اسم كان مرفوع.' },
-    { word: 'هَادِئاً', correctTag: 'خبر', hint: 'خبر كان منصوب.' },
+    { word: 'البَحْرُ', correctTag: 'اسم كان', hint: 'اسم كان مرفوع.' },
+    { word: 'هَادِئاً', correctTag: 'خبر كان', hint: 'خبر كان منصوب.' },
   ]),
   'arabic-4ap-sifa-mawsuf': pack('قَرَأْتُ قِصَّةً مُمْتِعَةً', [
     { word: 'قَرَأْتُ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ والتاء فاعل.' },
@@ -142,7 +142,7 @@ export const ARABIC_CANVAS_BY_LESSON: Record<string, CanvasGrammarSentence> = {
   ]),
   'arabic-4ap-asma-mawsula': pack('جَاءَ الَّذِي نَجَحَ', [
     { word: 'جَاءَ', correctTag: 'فعل ماضٍ', hint: 'فعل ماضٍ.' },
-    { word: 'الَّذِي', correctTag: 'فاعل', hint: 'اسم موصول في محل فاعل.' },
+    { word: 'الَّذِي', correctTag: 'اسم موصول (في محل رفع فاعل)', hint: 'اسم موصول في محل فاعل.' },
     { word: 'نَجَحَ', correctTag: 'فعل ماضٍ', hint: 'صلة الموصول.' },
   ]),
   'arabic-4ap-written-production': pack('المَدْرَسَةُ بَيْتُ العِلْمِ', [
@@ -183,10 +183,10 @@ export const ARABIC_CANVAS_BY_LESSON: Record<string, CanvasGrammarSentence> = {
     { word: 'دَعَا', correctTag: 'فعل ناقص', hint: 'حرف العلة في آخر الفعل.' },
     { word: 'رَوَى', correctTag: 'فعل لفيف', hint: 'يحتوي على حرفي علة متتاليين (الواو والياء).' },
   ]),
-  'arabic-4ap-verb-conjugation': pack('يَكْتُبُ الوَلَدُ وَيَكْتُبَانِ الوَلَدَانِ وَيَكْتُبُونَ الأَوْلَادُ', [
-    { word: 'يَكْتُبُ', correctTag: 'مرفوع بالضمة', hint: 'فعل مضارع للغائب المفرد، علامة رفعه الضمة.' },
-    { word: 'يَكْتُبَانِ', correctTag: 'مرفوع بثبوت النون', hint: 'فعل مضارع للغائبين (مثنى)، من الأفعال الخمسة.' },
-    { word: 'يَكْتُبُونَ', correctTag: 'مرفوع بثبوت النون', hint: 'فعل مضارع لجماعة الغائبين، من الأفعال الخمسة.' },
+  'arabic-4ap-verb-conjugation': pack('هُوَ يَكْتُبُ وَهُمَا يَكْتُبَانِ وَهُمْ يَكْتُبُونَ', [
+    { word: 'يَكْتُبُ', correctTag: 'فعل مضارع مفرد', hint: 'فعل مضارع مع ضمير الغائب المفرد (هو)، علامة رفعه الضمة.' },
+    { word: 'يَكْتُبَانِ', correctTag: 'فعل مضارع مثنى (من الأفعال الخمسة)', hint: 'فعل مضارع مع ضمير الغائبين (هما)، من الأفعال الخمسة، علامة رفعه ثبوت النون.' },
+    { word: 'يَكْتُبُونَ', correctTag: 'فعل مضارع جمع (من الأفعال الخمسة)', hint: 'فعل مضارع مع ضمير جماعة الغائبين (هم)، من الأفعال الخمسة، علامة رفعه ثبوت النون.' },
   ]),
   'arabic-4ap-spelling-taa-hamza': pack('كَتَبَتْ المُعَلِّمَةُ', [
     { word: 'كَتَبَتْ', correctTag: 'تاء مفتوحة', hint: 'تاء الفعل، تبقى تاءً عند الوقف عليها.' },

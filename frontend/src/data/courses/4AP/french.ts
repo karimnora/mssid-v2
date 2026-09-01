@@ -157,9 +157,9 @@ export const FRENCH_4AP: CourseLesson[] = [
         'Je décris la position d\'un lieu dans le quartier.',
     ],
     detailedCourse: {
-        introAr: 'Pour dire où se trouve quelque chose, on utilise des prépositions de lieu simples : dans (داخل), sur (فوق), sous (تحت), devant (أمام), derrière (وراء).',
+        introAr: 'Pour dire où se trouve quelque chose, on utilise des prépositions de lieu simples : dans, sur, sous, devant, derrière.',
         vocabulary: [
-            { termAr: 'Préposition de lieu', definitionAr: 'Petit mot qui indique la position (dans, sur, sous...).' },
+            { termAr: 'Préposition de lieu', definitionAr: 'Petit mot qui indique la position (dans = داخل, sur = فوق, sous = تحت, devant = أمام, derrière = وراء).' },
         ],
         visualizationHintAr: 'Dessine ta chambre et place trois objets avec dans, sur et sous.',
         commonMistakes: [
@@ -168,11 +168,11 @@ export const FRENCH_4AP: CourseLesson[] = [
         takeawayAr: 'Où est le livre ? — Il est sur la table. / Il est dans le cartable. / Il est sous le lit.',
     },
     rulesAr: [
-        'dans = داخل (dans la classe)',
-        'sur = فوق (sur le bureau)',
-        'sous = تحت (sous la chaise)',
-        'devant = أمام (devant l\'école)',
-        'derrière = وراء (derrière la maison)',
+        'dans (dans la classe)',
+        'sur (sur le bureau)',
+        'sous (sous la chaise)',
+        'devant (devant l\'école)',
+        'derrière (derrière la maison)',
         'Question: « Où est + nom ? » — Réponse: « Il/Elle est + préposition + nom. »',
     ],
     keyFormulas: [
@@ -181,7 +181,7 @@ export const FRENCH_4AP: CourseLesson[] = [
     ],
     examplesAr: [
         { problem: 'Complète: « Le chat est ...... le lit. » (sous)', solution: '« Le chat est sous le lit. »' },
-        { problem: 'Traduis: « الكتاب فوق المكتب »', solution: '« Le livre est sur le bureau. »' },
+        { problem: 'Complète: « Le stylo est ...... la trousse. » (dans)', solution: '« Le stylo est dans la trousse. »' },
     ],
     interactiveTool: 'french_lab',
     quiz: [
