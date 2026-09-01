@@ -41,7 +41,7 @@ const ORGAN_LABEL: Record<string, string> = Object.fromEntries(
   [...DIGESTIVE_ORGANS, ...RESPIRATORY_ORGANS].map((o) => [o.id, o.nameAr])
 );
 
-export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '5AP', onReward, onBack }) => {
+export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP', onReward, onBack }) => {
   const showRespiratory = canShowRespiratoryAnatomyTab(grade);
   const [activeTab, setActiveTab] = useState<AnatomyTab>('digestive');
   const [selectedOrgan, setSelectedOrgan] = useState<string>('mouth');

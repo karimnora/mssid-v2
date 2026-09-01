@@ -18,11 +18,9 @@ import {
   BookOpen,
   Volume2,
 } from 'lucide-react';
-import { PrimaryGrade } from '../types';
 import { speakText } from '../utils/speech';
 
 interface PrimaryDiscoveryLabInteractiveProps {
-  grade?: PrimaryGrade;
   onReward?: (coins: number, xp: number) => void;
   onBack?: () => void;
 }

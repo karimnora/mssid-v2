@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, Sparkles, Clock } from 'lucide-react';
-import { PrimaryGrade } from '../types';
 
 interface SpeedReadingLabProps {
-  grade?: PrimaryGrade;
   onReward?: (coins: number, xp: number) => void;
   onBack?: () => void;
 }

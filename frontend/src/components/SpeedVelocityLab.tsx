@@ -2,8 +2,8 @@
  * SpeedVelocityLab.tsx — مختبر السرعة والحركة «في المدينة» (2D / 3D)
  * Conçu pour les élèves de 1AP à 5AP avec adaptation pédagogique par niveau :
  * - 1AP / 2AP : Éveil intuitif, "Plus rapide / Plus lent", sécurité routière en ville, course 2D/3D visuelle.
- * - 3AP : Mesure des vitesses en km/h, ordre de grandeur des véhicules, chronométrage.
- * - 4AP / 5AP : Formules officielles (v = d/t, d = v × t, t = d/v), trajets réels entre villes d'Algérie, radar de vitesse et défis calculatoires.
+ * - 3AP / 4AP : Mesure des vitesses en km/h, ordre de grandeur des véhicules, chronométrage (pas de formule).
+ * - 5AP : Formules officielles (v = d/t, d = v × t, t = d/v), trajets réels entre villes d'Algérie, radar de vitesse et défis calculatoires (programme officiel : vitesse et durées réservées à la 5AP).
  */
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -224,8 +224,10 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
   onReward,
 }) => {
   const isEarlyGrade = grade === '1AP' || grade === '2AP';
-  const isMiddleGrade = grade === '3AP';
-  const isUpperGrade = grade === '4AP' || grade === '5AP';
+  // 4AP reste au stade "mesure/ordre de grandeur" comme la 3AP : le programme officiel réserve
+  // les formules de vitesse/distance/temps (v = d/t...) à la 5AP uniquement.
+  const isMiddleGrade = grade === '3AP' || grade === '4AP';
+  const isUpperGrade = grade === '5AP';
 
   const [activeTab, setActiveTab] = useState<LabTab>('race');
   const [viewPerspective, setViewPerspective] = useState<ViewPerspective>('3d');
@@ -436,12 +438,12 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
     } else if (isMiddleGrade) {
       return [
         {
-          questionAr: 'سَيَّارَةٌ تَسِيرُ بِسُرْعَةِ 60 كم/سا، كَمْ كِيلُومِتْراً تَقْطَعُ خِلَالَ سَاعَتَيْنِ (2h)؟',
-          questionFr: 'Une voiture roule à 60 km/h. Quelle distance parcourt-elle en 2h ?',
-          options: ['30 km', '60 km', '120 km', '180 km'],
-          correctIndex: 2,
-          explanationAr: 'المسافة = السرعة × الزمن (60 × 2 = 120 كم).',
-          explanationFr: 'Distance = Vitesse × Temps (60 × 2 = 120 km).',
+          questionAr: 'فِي سِبَاقٍ عَلَى نَفْسِ المَسَافَةِ بَيْنَ دَرَّاجَةٍ (20 كم/سا) وَحَافِلَةٍ (40 كم/سا)، أَيَّتُهُمَا تَصِلُ أَوَّلاً؟',
+          questionFr: 'Course sur la même distance : un vélo (20 km/h) et un bus (40 km/h). Lequel arrive en premier ?',
+          options: ['الدَّرَّاجَة', 'الحَافِلَة', 'يَصِلَانِ مَعاً'],
+          correctIndex: 1,
+          explanationAr: 'الحافلة أسرع (40 كم/سا)، فتصل أولاً رغم أنها تقطع نفس المسافة.',
+          explanationFr: 'Le bus est plus rapide (40 km/h), il arrive donc en premier sur la même distance.',
         },
         {
           questionAr: 'مَا هِيَ السُّرْعَةُ القَانُونِيَّةُ لِلسَّيَّارَاتِ دَاخِلَ الشَّوَارِعِ الحَضَرِيَّةِ؟',
@@ -570,6 +572,8 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               <p className="text-xs sm:text-sm text-slate-400">
                 {isEarlyGrade
                   ? t('اكتشف أسرع وأبطأ وسائل النقل مع قواعد السلامة والسباقات الممتعة!', 'Découvre les allures des véhicules et la sécurité routière en ville !')
+                  : isMiddleGrade
+                  ? t('قِسْ السُّرْعَة بِالكم/سا وَقَارِن بَيْنَ وَسَائِلِ النَّقْلِ فِي سِبَاقَاتٍ مُحَاكَاة!', 'Mesure les vitesses en km/h et compare les véhicules dans des courses simulées !')
                   : t('محاكاة تفاعلية 2D/3D، حساب v = d/t، ومقارنة السرعات بين مدن الجزائر.', 'Simulation 2D/3D, calcul de vitesse v = d/t et trajets d’Algérie.')}
               </p>
             </div>

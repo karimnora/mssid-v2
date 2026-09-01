@@ -160,16 +160,16 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
               <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
-              <span>مختبر الرياضيات التفاعلي — {grade === '1AP' ? 'السنة الأولى (0–20)' : 'السنة الأولى والثانية (1AP / 2AP)'}</span>
+              <span>مختبر الرياضيات التفاعلي — {grade === '1AP' ? 'السنة الأولى (0–99)' : 'السنة الأولى والثانية (1AP / 2AP)'}</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">
               {grade === '1AP'
-                ? 'الشريط العددي حتى 20'
+                ? 'الشريط العددي حتى 99'
                 : 'الشريط العددي حتى 99 والعمليات العمودية (الجمع والطرح)'}
             </h1>
             <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
               {grade === '1AP'
-                ? 'استكشف الأعداد من 0 إلى 20 وتعلّم تفكيك الوحدات والعشرات.'
+                ? 'استكشف الأعداد من 0 إلى 99 وتعلّم تفكيك الوحدات والعشرات.'
                 : 'استكشف الشريط العددي من 0 إلى 99، وتعلّم تفكيك الوحدات والعشرات، وتدرّب خطوة بخطوة على وضع العمليات الحسابية بالاحتفاظ والاستعارة.'}
             </p>
           </div>
@@ -388,14 +388,16 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
             </Button>
           </div>
 
-          {/* Interactive Column Grid — every row below is forced dir="ltr": Western digits are
-              always read left-to-right even on an RTL page, but splitting tens/units into two
-              separate flex items (instead of one text node) means the ambient RTL direction was
-              reordering the flex items themselves, not just text shaping — visually swapping tens
-              and units (e.g. 47 rendered as "7" on the right and "4" on the left, reading as "74"). */}
+          {/* Interactive Column Grid — every row below is forced dir="ltr" (Western digits are
+              always read left-to-right even on an RTL page) AND uses justify-center with a
+              same-width leading spacer/operator column, instead of justify-end/between + one-sided
+              padding: that edge-anchored approach was tuned for the old ambient-RTL layout, and
+              flipped to the wrong edge once dir="ltr" changed which side "end" means, throwing the
+              rows out of alignment with each other. Centering is symmetric regardless of direction,
+              so it can't drift like that again. */}
           <div className="max-w-xs mx-auto p-6 rounded-3xl bg-[var(--app-card-subtle)] border-2 border-emerald-300 space-y-4 text-center" dir="ltr">
-            {/* Carry input */}
-            <div className="flex items-center justify-end gap-6 pl-8">
+            {/* Carry input — leading column aligns with the tens digit below */}
+            <div className="flex items-center justify-center gap-6">
               <div className="w-8 h-8 rounded-full border-2 border-dashed border-amber-500 flex items-center justify-center bg-amber-50">
                 <input
                   type="text"
@@ -407,26 +409,26 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   title="مكان الاحتفاظ"
                 />
               </div>
-              <div className="w-8" />
+              <span className="w-8" />
             </div>
 
-            {/* Row 1 */}
-            <div className="flex items-center justify-end gap-6 text-3xl font-black font-mono text-[var(--app-text)] pl-8">
+            {/* Row 1 — leading spacer matches row 2's operator column width */}
+            <div className="flex items-center justify-center gap-6 text-3xl font-black font-mono text-[var(--app-text)]">
+              <span className="w-8" />
               <span className="w-8">{Math.floor(addNum1 / 10)}</span>
               <span className="w-8">{addNum1 % 10}</span>
             </div>
 
             {/* Row 2 with + sign */}
-            <div className="flex items-center justify-between text-3xl font-black font-mono text-[var(--app-text)] border-b-4 border-slate-900 pb-2">
-              <span className="text-emerald-600 text-4xl">+</span>
-              <div className="flex items-center gap-6">
-                <span className="w-8">{Math.floor(addNum2 / 10)}</span>
-                <span className="w-8">{addNum2 % 10}</span>
-              </div>
+            <div className="flex items-center justify-center gap-6 text-3xl font-black font-mono text-[var(--app-text)] border-b-4 border-slate-900 pb-2">
+              <span className="w-8 text-emerald-600 text-4xl">+</span>
+              <span className="w-8">{Math.floor(addNum2 / 10)}</span>
+              <span className="w-8">{addNum2 % 10}</span>
             </div>
 
             {/* Result inputs */}
-            <div className="flex items-center justify-end gap-6 pt-2 pl-8">
+            <div className="flex items-center justify-center gap-6 pt-2">
+              <span className="w-8" />
               <input
                 type="text"
                 maxLength={1}
@@ -480,26 +482,28 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
           </div>
 
           {/* Interactive Subtraction Grid — dir="ltr" for the same reason as the addition grid
-              above: keeps tens/units digits in the correct left-to-right numeral order instead of
-              being reordered by the page's ambient RTL direction. */}
+              above, plus justify-center with a same-width leading spacer instead of
+              justify-end/between + one-sided padding (see the addition grid's comment: that
+              edge-anchored approach flips to the wrong edge once dir="ltr" changes what "end"
+              means, throwing the rows out of alignment with each other). */}
           <div className="max-w-xs mx-auto p-6 rounded-3xl bg-[var(--app-card-subtle)] border-2 border-blue-300 space-y-4 text-center" dir="ltr">
-            {/* Row 1 */}
-            <div className="flex items-center justify-end gap-6 text-3xl font-black font-mono text-[var(--app-text)] pl-8">
+            {/* Row 1 — leading spacer matches row 2's operator column width */}
+            <div className="flex items-center justify-center gap-6 text-3xl font-black font-mono text-[var(--app-text)]">
+              <span className="w-8" />
               <span className="w-8">{Math.floor(subNum1 / 10)}</span>
               <span className="w-8">{subNum1 % 10}</span>
             </div>
 
             {/* Row 2 with - sign */}
-            <div className="flex items-center justify-between text-3xl font-black font-mono text-[var(--app-text)] border-b-4 border-slate-900 pb-2">
-              <span className="text-blue-600 text-4xl">-</span>
-              <div className="flex items-center gap-6">
-                <span className="w-8">{Math.floor(subNum2 / 10)}</span>
-                <span className="w-8">{subNum2 % 10}</span>
-              </div>
+            <div className="flex items-center justify-center gap-6 text-3xl font-black font-mono text-[var(--app-text)] border-b-4 border-slate-900 pb-2">
+              <span className="w-8 text-blue-600 text-4xl">-</span>
+              <span className="w-8">{Math.floor(subNum2 / 10)}</span>
+              <span className="w-8">{subNum2 % 10}</span>
             </div>
 
             {/* Result inputs */}
-            <div className="flex items-center justify-end gap-6 pt-2 pl-8">
+            <div className="flex items-center justify-center gap-6 pt-2">
+              <span className="w-8" />
               <input
                 type="text"
                 maxLength={1}

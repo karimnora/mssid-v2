@@ -147,7 +147,7 @@ const FRENCH_VERBS_DATABASE: FrenchVerbData[] = [
       'Il / Elle / On': { full: 'Il / Elle chantait', stem: 'chant', ending: 'ait' },
       'Nous': { full: 'Nous chantions', stem: 'chant', ending: 'ions' },
       'Vous': { full: 'Vous chantiez', stem: 'chant', ending: 'iez' },
-      'Ils / Elles': { full: 'Ils / Elles me me chantaient', stem: 'chant', ending: 'aient' },
+      'Ils / Elles': { full: 'Ils / Elles chantaient', stem: 'chant', ending: 'aient' },
     }
   },
   {
@@ -165,7 +165,7 @@ const FRENCH_VERBS_DATABASE: FrenchVerbData[] = [
       'Ils / Elles': { full: 'Ils / Elles finissent', stem: 'fin', ending: 'issent' },
     },
     futur: {
-      'Je': { full: 'Je me me me finirai', stem: 'finir', ending: 'ai' },
+      'Je': { full: 'Je finirai', stem: 'finir', ending: 'ai' },
       'Tu': { full: 'Tu finiras', stem: 'finir', ending: 'as' },
       'Il / Elle / On': { full: 'Il / Elle finira', stem: 'finir', ending: 'a' },
       'Nous': { full: 'Nous finirons', stem: 'finir', ending: 'ons' },
@@ -186,7 +186,7 @@ const FRENCH_VERBS_DATABASE: FrenchVerbData[] = [
       'Il / Elle / On': { full: 'Il / Elle finissait', stem: 'finiss', ending: 'ait' },
       'Nous': { full: 'Nous finissions', stem: 'finiss', ending: 'ions' },
       'Vous': { full: 'Vous finissiez', stem: 'finiss', ending: 'iez' },
-      'Ils / Elles': { full: 'Ils / Elles me finissaient', stem: 'finiss', ending: 'aient' },
+      'Ils / Elles': { full: 'Ils / Elles finissaient', stem: 'finiss', ending: 'aient' },
     }
   },
   {
@@ -264,7 +264,7 @@ const FRENCH_VERBS_DATABASE: FrenchVerbData[] = [
       'Il / Elle / On': { full: 'Il / Elle allait', stem: 'all', ending: 'ait' },
       'Nous': { full: 'Nous allions', stem: 'all', ending: 'ions' },
       'Vous': { full: 'Vous alliez', stem: 'all', ending: 'iez' },
-      'Ils / Elles': { full: 'Ils / Elles me me allaient', stem: 'all', ending: 'aient' },
+      'Ils / Elles': { full: 'Ils / Elles allaient', stem: 'all', ending: 'aient' },
     }
   },
   {
@@ -313,7 +313,7 @@ interface FrenchLabProps {
   grade?: PrimaryGrade;
 }
 
-export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conjugator', grade = '4AP' }) => {
+export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conjugator', grade = '3AP' }) => {
   const permittedTenses = allowedFrenchTenses(grade);
   const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production'>(initialTab);
   const [speakingText, setSpeakingText] = useState<string | null>(null);

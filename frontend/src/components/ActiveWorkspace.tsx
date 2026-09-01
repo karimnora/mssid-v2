@@ -109,7 +109,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           onEarnCoins={onEarnCoins}
         />
       ) : selectedSubject === 'wilayas_map' ? (
-        <WilayasExplorer grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <WilayasExplorer onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'history_museum' ? (
         <AlgerianHistoryMuseum grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'science_lab' ? (
@@ -128,13 +128,13 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
       ) : selectedSubject === 'primary_math_ops' ? (
         <PrimaryMathLabInteractive grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'primary_discovery' ? (
-        <PrimaryDiscoveryLabInteractive grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <PrimaryDiscoveryLabInteractive onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'french_projects' ? (
         <FrenchProjectsLabInteractive grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'english_audio_dialogues' ? (
         <EnglishAudioDialoguesLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'arabic_conjugator' ? (
-        <ArabicConjugator grade={grade} />
+        <ArabicConjugator />
       ) : selectedSubject === 'french_lab' ? (
         <FrenchLanguageLab grade={grade} />
       ) : selectedSubject === 'english_lab' ? (
@@ -154,19 +154,19 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
       ) : selectedSubject === 'human_anatomy' ? (
         <HumanAnatomyLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'earth_cycles' ? (
-        <EarthCyclesLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <EarthCyclesLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'fractions_lab' ? (
         <FractionsDecimalsLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'area_grid' ? (
-        <AreaPerimeterGridLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <AreaPerimeterGridLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'clock_trainer' ? (
         <ClockTrainerLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'syllable_studio' ? (
         <SyllableStudioLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'speed_reading' ? (
-        <SpeedReadingLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <SpeedReadingLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'topography_map' ? (
-        <TopographyMapLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <TopographyMapLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'speed_lab' ? (
         <SpeedVelocityLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'exams' ? (

@@ -17,7 +17,7 @@ interface EducationalCalculatorProps {
   grade?: PrimaryGrade;
 }
 
-export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ grade = '3AP' }) => {
+export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ grade = '1AP' }) => {
   const { t } = useLocaleContext();
   const allowedKeys = useMemo(() => allowedCalculatorKeys(grade), [grade]);
   const [expression, setExpression] = useState('');

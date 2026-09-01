@@ -1,9 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
-import { PrimaryGrade } from '../types';
 
 interface AreaPerimeterGridLabProps {
-  grade?: PrimaryGrade;
   onReward?: (coins: number, xp: number) => void;
   onBack?: () => void;
 }

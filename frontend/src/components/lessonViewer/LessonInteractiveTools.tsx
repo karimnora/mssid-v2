@@ -45,7 +45,7 @@ export const LessonInteractiveTools: React.FC<{ lesson: CourseLesson }> = ({ les
         {effectiveTool === 'science_lab' && lesson.gameplay_simulation && (
           <ScienceLabSimulation gameplay={lesson.gameplay_simulation} grade={lesson.grade} />
         )}
-        {effectiveTool === 'arabic_conjugator' && <ArabicConjugator grade={lesson.grade} />}
+        {effectiveTool === 'arabic_conjugator' && <ArabicConjugator />}
         {effectiveTool === 'multiplication_table' && <MultiplicationTableInteractive grade={lesson.grade} />}
         {effectiveTool === 'french_lab' && <FrenchLanguageLab grade={lesson.grade} />}
         {effectiveTool === 'english_lab' && <EnglishLanguageLab grade={lesson.grade} />}

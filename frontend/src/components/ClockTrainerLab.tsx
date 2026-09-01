@@ -62,7 +62,7 @@ const AnalogClock: React.FC<{ hour: number; minute: number }> = ({ hour, minute 
   );
 };
 
-export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade, onReward, onBack }) => {
+export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP', onReward, onBack }) => {
   const { minuteStep, quizTimes } = clockTrainerForGrade(grade);
   const [activeTab, setActiveTab] = useState<ClockTab>('explore');
   const [hour, setHour] = useState<number>(9);

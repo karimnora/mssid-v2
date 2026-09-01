@@ -389,7 +389,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-orange-50 text-orange-900 border-orange-200',
     description: 'تلوين تفاعلي لتشكيل الكسور، وخط أعداد عشرية لفهم العلاقة بين الكسور والأعداد العشرية.',
     category: 'tool',
-    minGrade: '4AP',
+    minGrade: '3AP',
   },
   {
     id: 'area_grid',
@@ -433,7 +433,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-blue-50 text-blue-900 border-blue-200',
     description: 'نصوص قرائية موقوتة مع أسئلة فهم فوري لتطوير سرعة القراءة والاستيعاب.',
     category: 'tool',
-    minGrade: '3AP',
+    minGrade: '2AP',
   },
   {
     id: 'topography_map',

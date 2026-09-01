@@ -32,7 +32,7 @@ const DECIMAL_QUESTIONS = [
   { id: 2, qAr: 'أَيُّ عَدَدٍ عَشْرِيٍّ يُسَاوِي 1/10؟', correct: 0.1, options: [0.1, 1, 0.7] },
 ];
 
-export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grade = '4AP', onReward, onBack }) => {
+export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grade = '3AP', onReward, onBack }) => {
   const showDecimals = canShowDecimalsTab(grade);
   const [activeTab, setActiveTab] = useState<FractionsTab>('visual');
   const [qIdx, setQIdx] = useState<number>(0);

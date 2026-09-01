@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { PrimaryGrade } from '../types';
 
 interface EarthCyclesLabProps {
-  grade?: PrimaryGrade;
   onReward?: (coins: number, xp: number) => void;
   onBack?: () => void;
 }

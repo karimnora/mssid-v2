@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
-import { PrimaryGrade } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 import {
   ALGERIA_MAP_BANDS,
@@ -12,7 +11,6 @@ import {
 } from '../data/algeriaMapOutline';
 
 interface TopographyMapLabProps {
-  grade?: PrimaryGrade;
   onReward?: (coins: number, xp: number) => void;
   onBack?: () => void;
 }

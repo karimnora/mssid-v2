@@ -213,7 +213,7 @@ interface EnglishLabProps {
   grade?: PrimaryGrade;
 }
 
-export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'conjugator', grade = '4AP' }) => {
+export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'conjugator', grade = '3AP' }) => {
   const permittedTenses = allowedEnglishTenses(grade);
   const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'phonics' | 'grammar'>(initialTab);
   const [speakingText, setSpeakingText] = useState<string | null>(null);

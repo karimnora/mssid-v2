@@ -42,9 +42,11 @@ export function canShowRespiratoryAnatomyTab(grade: PrimaryGrade): boolean {
   return gradeAtLeast(grade, '5AP');
 }
 
-/** 1AP : 0–20 ; 2AP+ : 0–99. */
-export function primaryMathNumberStripMax(grade: PrimaryGrade): number {
-  return grade === '1AP' ? 20 : 99;
+/** 1AP's officially confirmed ceiling is "less than 100" (0-99) — the same range this tool already
+ * used for 2AP+. An earlier "0-20" assumption for 1AP was wrong (see CLAUDE.md's curriculum
+ * reference, which explicitly documents this correction) and had regressed back into this file. */
+export function primaryMathNumberStripMax(_grade: PrimaryGrade): number {
+  return 99;
 }
 
 /** Juxtaposition / pose avec retenue = 2AP+. */

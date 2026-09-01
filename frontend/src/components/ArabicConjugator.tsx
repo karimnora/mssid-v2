@@ -178,11 +178,7 @@ const VERBS_DATABASE: VerbData[] = [
   }
 ];
 
-interface ArabicConjugatorProps {
-  grade?: string;
-}
-
-export const ArabicConjugator: React.FC<ArabicConjugatorProps> = ({ grade = '4AP' }) => {
+export const ArabicConjugator: React.FC = () => {
   const [selectedVerbIndex, setSelectedVerbIndex] = useState<number>(0);
   const [selectedTense, setSelectedTense] = useState<'past' | 'present' | 'imperative'>('past');
 
