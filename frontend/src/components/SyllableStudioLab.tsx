@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, Volume2 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowFrenchInLab } from '../utils/labGradePolicy';
+import { speakText } from '../utils/speech';
 
 interface SyllableStudioLabProps {
   grade?: PrimaryGrade;
@@ -42,8 +43,25 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
   const [guess, setGuess] = useState<number | null>(null);
   const [revealed, setRevealed] = useState<boolean>(false);
 
+  const [speaking, setSpeaking] = useState<boolean>(false);
+
   const words = activeTab === 'arabic' ? ARABIC_WORDS : FRENCH_WORDS;
   const currentWord = words[wordIdx % words.length];
+
+  const playWord = () => {
+    setSpeaking(true);
+    void speakText(currentWord.word, activeTab === 'arabic' ? 'ar-SA' : 'fr-FR', 0.75).then(() => {
+      setSpeaking(false);
+    });
+  };
+
+  // Auto-play the word whenever a new one appears — the whole exercise is "how many syllables do
+  // you HEAR", so a pre-literate child needs to hear it without an extra required tap first. The
+  // manual replay button below stays for hearing it again.
+  useEffect(() => {
+    playWord();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentWord.word]);
 
   const switchTab = (tab: StudioTab) => {
     if (tab === 'french' && !showFrench) return;
@@ -123,9 +141,20 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
           {activeTab === 'arabic' ? 'كَمْ مَقْطَعاً صَوْتِيّاً تَسْمَعُ فِي هَذِهِ الكَلِمَةِ؟' : 'Combien de syllabes entends-tu dans ce mot ?'}
         </p>
 
-        <h2 className={`text-4xl sm:text-5xl font-black text-[var(--app-text)] ${activeTab === 'french' ? 'font-sans' : ''}`}>
-          {currentWord.word}
-        </h2>
+        <div className="flex items-center justify-center gap-3">
+          <h2 className={`text-4xl sm:text-5xl font-black text-[var(--app-text)] ${activeTab === 'french' ? 'font-sans' : ''}`}>
+            {currentWord.word}
+          </h2>
+          <button
+            onClick={playWord}
+            aria-label="استمع للكلمة من جديد"
+            className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center transition-all cursor-pointer ${
+              speaking ? 'bg-cyan-600 text-white animate-pulse' : 'bg-cyan-100 text-cyan-700 hover:bg-cyan-200'
+            }`}
+          >
+            <Volume2 className="w-6 h-6" />
+          </button>
+        </div>
 
         {!revealed ? (
           <div className="flex items-center justify-center gap-3">

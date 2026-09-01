@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
-import { isFeatureEnabled } from '../featureFlags';
+import { speakText } from '../utils/speech';
 import {
   ArrowLeft,
   Globe,
@@ -134,18 +134,15 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
 
   const currentDialogue = OFFICIAL_ENGLISH_DIALOGUES.find((d) => d.id === selectedDialogueId) || OFFICIAL_ENGLISH_DIALOGUES[0];
 
+  // Routes through the shared speakText helper so this lab gets the same reliable native
+  // Android TTS (via Capacitor) as every other lab — calling window.speechSynthesis directly here
+  // used to silently fail in the Android app, since the WebView's own speech engine commonly reports
+  // zero installed voices (unlike a real Chrome install), unlike the native TTS plugin.
   const speakLine = (text: string, index?: number) => {
-    if (!isFeatureEnabled('voiceReading')) return;
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      if (typeof index === 'number') setActivePlayingIndex(index);
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = playbackSpeed;
-      utterance.onend = () => setActivePlayingIndex(null);
-      utterance.onerror = () => setActivePlayingIndex(null);
-      window.speechSynthesis.speak(utterance);
-    }
+    if (typeof index === 'number') setActivePlayingIndex(index);
+    speakText(text, 'en-US', playbackSpeed).then(() => {
+      setActivePlayingIndex(null);
+    });
   };
 
   const playEntireDialogue = () => {
@@ -167,7 +164,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
   };
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto">
+    <div data-lab-instrument className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-800 via-purple-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-700/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">

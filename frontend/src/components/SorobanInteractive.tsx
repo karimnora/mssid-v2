@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { SOROBAN_RULES, SOROBAN_PRACTICE_EXERCISES } from '../data/sorobanData';
-import { Play, RotateCcw, CheckCircle2, XCircle, Sparkles, HelpCircle, Zap, ShieldCheck, Timer, Shuffle } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle2, XCircle, Sparkles, HelpCircle, Zap, ShieldCheck, Timer, Shuffle, Volume2 } from 'lucide-react';
 import { SorobanExercise } from '../types';
+import { speakText } from '../utils/speech';
 
 interface SorobanInteractiveProps {
   grade?: string;
@@ -231,9 +232,16 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-200 gap-3">
             <div>
               <span className="text-[11px] uppercase font-bold text-slate-500 block">القيمة الممثلة حالياً:</span>
-              <div className="flex items-baseline gap-2">
+              <div className="flex items-center gap-2">
                 <span className="text-xl sm:text-2xl font-black text-indigo-700 font-mono tracking-wider">{currentValue.toLocaleString('ar-DZ')}</span>
                 <span className="text-xs text-slate-600 font-mono">({currentValue})</span>
+                <button
+                  onClick={() => speakText(`${currentValue}`, 'ar-SA', 0.9)}
+                  aria-label="استمع للعدد"
+                  className="w-7 h-7 shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                </button>
               </div>
             </div>
             <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto justify-end">
@@ -491,9 +499,24 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
           <div className="md:col-span-2 bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-extrabold text-sm text-indigo-900">
-                  {SOROBAN_RULES[selectedRuleIndex].titleAr}
-                </h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="font-extrabold text-sm text-indigo-900">
+                    {SOROBAN_RULES[selectedRuleIndex].titleAr}
+                  </h4>
+                  <button
+                    onClick={() =>
+                      speakText(
+                        `${SOROBAN_RULES[selectedRuleIndex].titleAr}. ${SOROBAN_RULES[selectedRuleIndex].descriptionAr}`,
+                        'ar-SA',
+                        0.85
+                      )
+                    }
+                    aria-label="استمع للقاعدة"
+                    className="w-8 h-8 shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
+                  >
+                    <Volume2 className="w-4 h-4" />
+                  </button>
+                </div>
                 <span className="bg-amber-100 text-amber-900 text-xs font-black font-mono px-2 py-0.5 rounded-lg border border-amber-300">
                   {SOROBAN_RULES[selectedRuleIndex].ruleFormulaAr}
                 </span>

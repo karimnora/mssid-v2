@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Badge, Button } from './ui';
-import { isFeatureEnabled } from '../featureFlags';
+import { speakText } from '../utils/speech';
 import {
   Languages,
   Sparkles,
@@ -277,15 +277,11 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
     }
   }, [grade, gradeProjects, selectedProjectId]);
 
+  // Routed through the shared speakText utility so this gets the same reliable native Android TTS
+  // (via Capacitor) as other labs, instead of the Android WebView's own window.speechSynthesis,
+  // which commonly reports zero installed voices there.
   const speakFrench = (text: string) => {
-    if (!isFeatureEnabled('voiceReading')) return;
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'fr-FR';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
-    }
+    speakText(text, 'fr-FR', 0.9);
   };
 
   const handleValidateWriting = () => {

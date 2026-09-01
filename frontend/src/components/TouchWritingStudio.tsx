@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { isFeatureEnabled } from '../featureFlags';
+import { speakText } from '../utils/speech';
 import {
   PenTool,
   RotateCcw,
@@ -616,27 +616,20 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
     }
   };
 
+  // Routed through the shared speakText utility so this gets the same reliable native Android TTS
+  // (via Capacitor) as other labs, instead of the Android WebView's own window.speechSynthesis,
+  // which commonly reports zero installed voices there.
   const speakItem = (item: LetterData) => {
-    if (!isFeatureEnabled('voiceReading')) return;
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      let textToSpeak = `${item.name}. ${item.phonics}. ${item.exampleWord}.`;
-      let voiceLang = 'ar-SA';
-      if (activeLang === 'fr') {
-        textToSpeak = `${item.name}. Son ${item.phonics}. Exemple : ${item.exampleWord}.`;
-        voiceLang = 'fr-FR';
-      } else if (activeLang === 'en') {
-        textToSpeak = `${item.name}. Sound ${item.phonics}. Like in ${item.exampleWord}.`;
-        voiceLang = 'en-US';
-      }
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.rate = 0.85;
-      utterance.lang = voiceLang;
-      window.speechSynthesis.speak(utterance);
-    } catch {
-      // Ignore speech error
+    let textToSpeak = `${item.name}. ${item.phonics}. ${item.exampleWord}.`;
+    let voiceLang: 'fr-FR' | 'en-US' | 'ar-SA' = 'ar-SA';
+    if (activeLang === 'fr') {
+      textToSpeak = `${item.name}. Son ${item.phonics}. Exemple : ${item.exampleWord}.`;
+      voiceLang = 'fr-FR';
+    } else if (activeLang === 'en') {
+      textToSpeak = `${item.name}. Sound ${item.phonics}. Like in ${item.exampleWord}.`;
+      voiceLang = 'en-US';
     }
+    speakText(textToSpeak, voiceLang, 0.85);
   };
 
   // -------------------------------------------------------------

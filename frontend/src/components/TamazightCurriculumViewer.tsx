@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { isFeatureEnabled } from '../featureFlags';
+import { speakText } from '../utils/speech';
 import {
   BookOpen,
   Printer,
@@ -66,19 +66,13 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
   const currentLesson =
     lessons.find((l) => l.id === selectedLessonId) || filteredLessons[0] || lessons[0];
 
-  // Sound pronunciation helper
+  // Sound pronunciation helper — routes through the shared speakText utility so this gets the same
+  // reliable native Android TTS (via Capacitor) as every other lab. Calling window.speechSynthesis
+  // directly here used to silently fail in the Android app, since the WebView's own speech engine
+  // commonly reports zero installed voices (unlike a real Chrome install). 'fr-FR' stays the closest
+  // available voice for latinized Tamazight — no platform ships an actual Tamazight/Tifinagh voice.
   const speakTamazight = (text: string) => {
-    if (!isFeatureEnabled('voiceReading')) return;
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.85;
-      utterance.lang = 'fr-FR'; // fallback for latinized tamazight
-      window.speechSynthesis.speak(utterance);
-    } catch {
-      // ignore
-    }
+    speakText(text, 'fr-FR', 0.85);
   };
 
   // Simple Latin to Tifinagh converter mapping
@@ -592,7 +586,13 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                         className="p-3 bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-900 rounded-2xl text-xs"
                       >
                         <div className="font-black text-indigo-900 dark:text-indigo-300 mb-1">{f.labelAr}</div>
-                        <div className="font-mono font-bold text-indigo-950 dark:text-indigo-100 text-xs sm:text-sm bg-white/70 dark:bg-slate-900/60 p-2 rounded-xl border border-indigo-100 dark:border-indigo-800">
+                        {/* These formulas mix Latin/Tifinagh words with Arabic glosses in parens
+                            (e.g. "Aqcic (ولد) ➔ Taqfict (بنت)") — under the page's ambient dir="rtl"
+                            the bidi algorithm reorders the separate Latin word-chunks relative to
+                            each other (the classic "car MEANS SIARA" mirroring), which is stable only
+                            under dir="ltr" (a single base direction with any number of embedded
+                            opposite-direction islands never reorders those islands' relative order). */}
+                        <div dir="ltr" className="font-mono font-bold text-indigo-950 dark:text-indigo-100 text-xs sm:text-sm bg-white/70 dark:bg-slate-900/60 p-2 rounded-xl border border-indigo-100 dark:border-indigo-800 text-right">
                           {f.formulaAr}
                         </div>
                       </div>

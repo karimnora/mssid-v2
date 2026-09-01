@@ -13,6 +13,7 @@ import {
   Search,
 } from 'lucide-react';
 import { AuthService } from '../services/authService';
+import { speakText } from '../utils/speech';
 
 interface TamazightLabProps {
   grade?: string;
@@ -241,14 +242,30 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
               <div className="w-24 h-24 mx-auto rounded-3xl bg-emerald-600 text-white flex items-center justify-center text-5xl font-black shadow-lg">
                 {selectedLetter.tifinagh}
               </div>
-              <div>
+              <div className="flex items-center justify-center gap-2">
                 <h3 className="text-xl font-black text-slate-800">حرف: {selectedLetter.name} ({selectedLetter.latin})</h3>
-                <p className="text-xs text-emerald-800 font-bold mt-1">المقابل بالعربية: {selectedLetter.arabicEquiv}</p>
+                <button
+                  onClick={() => speakText(selectedLetter.name, 'fr-FR', 0.8)}
+                  aria-label="استمع لنطق الحرف"
+                  className="w-8 h-8 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-4 h-4" />
+                </button>
               </div>
+              <p className="text-xs text-emerald-800 font-bold mt-1">المقابل بالعربية: {selectedLetter.arabicEquiv}</p>
             </div>
 
             <div className="bg-white/90 p-4 rounded-2xl border border-emerald-200 space-y-2 text-xs">
-              <div className="font-bold text-slate-700">مثال تطبيقي:</div>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-slate-700">مثال تطبيقي:</span>
+                <button
+                  onClick={() => speakText(selectedLetter.exampleTif.replace(/[^a-zA-Zḍẓ\s]/g, ''), 'fr-FR', 0.75)}
+                  aria-label="استمع للمثال"
+                  className="w-6 h-6 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                >
+                  <Volume2 className="w-3 h-3" />
+                </button>
+              </div>
               <div className="text-lg font-black text-emerald-700">{selectedLetter.exampleTif}</div>
               <div className="text-slate-600">المعنى بالعربية: <strong>{selectedLetter.exampleAr}</strong></div>
               <div className="text-slate-500 text-[11px]">Français: <em>{selectedLetter.exampleFr}</em></div>
@@ -284,9 +301,16 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                 {theme.words.map((w) => (
                   <div
                     key={w.lat}
-                    className="p-3 bg-[var(--app-card-subtle)] rounded-xl border border-[var(--app-card-border)] flex items-center justify-between"
+                    className="p-3 bg-[var(--app-card-subtle)] rounded-xl border border-[var(--app-card-border)] flex items-center justify-between gap-2"
                   >
-                    <div>
+                    <button
+                      onClick={() => speakText(w.lat, 'fr-FR', 0.8)}
+                      aria-label="استمع للكلمة"
+                      className="w-8 h-8 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                    >
+                      <Volume2 className="w-3.5 h-3.5" />
+                    </button>
+                    <div className="flex-1">
                       <div className="text-base font-black text-emerald-800">{w.tif}</div>
                       <div className="text-[10px] font-mono text-[var(--app-text-muted)]">{w.lat}</div>
                     </div>
