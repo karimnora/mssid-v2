@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
-import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap } from 'lucide-react';
+import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap, Lock } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
@@ -18,6 +18,10 @@ interface Props {
   onOpenPrivacyPolicy?: () => void;
   /** Opens TermsOfServiceModal (rendered at App.tsx level) — same rationale as onOpenPrivacyPolicy. */
   onOpenTermsOfService?: () => void;
+  /** Set only when this modal was opened automatically because a guest hit a login-gated action
+   * (locked lesson, exam/challenge, AI tutor...) — shown as a banner so the popup doesn't look like
+   * an unexplained interruption. Left unset for a deliberate "Se connecter" click. */
+  contextMessage?: string | null;
 }
 
 // Same 5 levels/labels as GradeSelector.tsx and Navbar.tsx's GRADES, kept in sync manually since
@@ -35,7 +39,7 @@ const GRADE_OPTION_KEYS: Record<PrimaryGrade, 'grade1APOption' | 'grade2APOption
 const GOOGLE_CLIENT_ID: string =
   (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID) || '';
 
-export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService }) => {
+export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService, contextMessage }) => {
   const t = useTranslation('auth');
   const { direction } = useLocaleContext();
   const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
@@ -279,6 +283,14 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Why-am-I-here banner — only set when a guest was redirected here by a locked action. */}
+        {contextMessage && (
+          <div className="flex items-start gap-2 p-3 bg-amber-50 border-b-2 border-amber-200 shrink-0">
+            <Lock className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+            <p className="text-xs font-bold text-amber-900 leading-relaxed">{contextMessage}</p>
+          </div>
+        )}
 
         {/* Auth Mode Tabs */}
         {authFlow === 'credentials' && (

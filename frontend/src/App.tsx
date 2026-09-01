@@ -178,7 +178,7 @@ export default function App() {
 
   const onLessonLocked = (lesson: CourseLesson) => {
     if (isGuest) {
-      modals.openAuth('login');
+      modals.openAuth('login', 'أنشئ حساباً مجانياً (يستغرق دقيقة واحدة فقط) لمتابعة هذا الدرس ومشاهدة كل الدروس الأخرى مجاناً. 🎁');
       return;
     }
     setLockedLesson(lesson);
@@ -190,7 +190,7 @@ export default function App() {
     onLessonLocked,
     isGuest,
     isLabFreeForGuest,
-    onGuestBlocked: () => modals.openAuth('login'),
+    onGuestBlocked: () => modals.openAuth('login', 'هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
   });
 
   // /admin is reachable by URL alone (see appLocation.ts's plain 'admin' route), so this must never
@@ -216,7 +216,7 @@ export default function App() {
 
   const openAiTutor = () => {
     if (!authUser) {
-      modals.openAuth('login');
+      modals.openAuth('login', 'المعلّم الذكي متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ معه! 🦊');
       return;
     }
     modals.setIsAiModalOpen(true);
@@ -442,6 +442,22 @@ export default function App() {
                 onFeed={handleFeedDidou}
                 isFloating={true}
               />
+            )}
+
+            {/* Desktop/web AI tutor entry point — the only other trigger is the fox button inside
+                MobileBottomNav, whose whole nav is `md:hidden`, so without this the AI tutor was
+                completely unreachable on a browser wide enough to hide that nav (any real desktop
+                visit, not just the Android app). Same exams/challenges exclusion as Didou above. */}
+            {nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
+              <button
+                type="button"
+                onClick={openAiTutor}
+                title={t('navigation', 'aiTutor')}
+                aria-label={t('navigation', 'aiTutor')}
+                className="hidden md:flex fixed bottom-6 end-6 z-40 w-16 h-16 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white items-center justify-center text-3xl shadow-xl border-4 border-[var(--app-footer-bg)] cursor-pointer hover:scale-105 transition-transform"
+              >
+                <span aria-hidden>🦊</span>
+              </button>
             )}
           </>
         )}

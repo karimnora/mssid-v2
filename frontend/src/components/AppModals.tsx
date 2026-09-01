@@ -179,6 +179,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
       isOpen={modals.isAuthModalOpen}
       onClose={() => modals.setIsAuthModalOpen(false)}
       initialMode={modals.authModalInitialMode}
+      contextMessage={modals.authModalReason}
       onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
       onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}
       onAuthSuccess={() => {

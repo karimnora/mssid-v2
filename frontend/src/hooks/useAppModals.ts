@@ -2,6 +2,10 @@ import { useState } from 'react';
 
 export function useAppModals() {
   const [authModalInitialMode, setAuthModalInitialMode] = useState<'login' | 'register'>('login');
+  // Shown as a banner inside AuthModal so a guest redirected here (locked lesson/lab/exam/AI tutor)
+  // understands WHY the login screen just appeared, instead of it looking like an unexplained
+  // interruption. null when the modal is opened as a deliberate "Se connecter" click.
+  const [authModalReason, setAuthModalReason] = useState<string | null>(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
@@ -17,13 +21,15 @@ export function useAppModals() {
   const [isHonorCertificatesOpen, setIsHonorCertificatesOpen] = useState(false);
   const [isOfflinePacksOpen, setIsOfflinePacksOpen] = useState(false);
 
-  const openAuth = (mode: 'login' | 'register' = 'login') => {
+  const openAuth = (mode: 'login' | 'register' = 'login', reason: string | null = null) => {
     setAuthModalInitialMode(mode);
+    setAuthModalReason(reason);
     setIsAuthModalOpen(true);
   };
 
   return {
     authModalInitialMode,
+    authModalReason,
     isAiModalOpen,
     setIsAiModalOpen,
     isProfileModalOpen,
