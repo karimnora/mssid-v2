@@ -15,6 +15,7 @@ import {
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech } from '../utils/speech';
 import { DidouVirtualCompanion } from './DidouVirtualCompanion';
+import { SubjectIllustratedCard } from './SubjectIllustratedCard';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -92,6 +93,32 @@ const GRADE_NAV_KEY: Record<PrimaryGrade, 'grade1APFull' | 'grade2APFull' | 'gra
 
 const spring = { type: 'spring' as const, stiffness: 400, damping: 22 };
 const VISIBLE_SUBJECTS = 4;
+
+const homeSubjectGridVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.055,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+const homeSubjectItemVariants = {
+  hidden: { opacity: 0, y: 22, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 340,
+      damping: 24,
+      mass: 0.8,
+    },
+  },
+};
 
 export const HomeView: React.FC<HomeViewProps> = ({
   grade,
@@ -316,26 +343,27 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+          variants={homeSubjectGridVariants}
+          initial="hidden"
+          animate="show"
+        >
           {visibleSubjects.map((subject) => (
-            <motion.button
-              key={subject.id}
-              type="button"
-              data-subject-card={subject.id}
-              whileTap={{ scale: 0.95 }}
-              transition={spring}
-              onClick={() => openSubject(subject.id)}
-              className={`kids-pop relative overflow-hidden rounded-3xl p-4 pt-16 text-white text-start min-h-[136px] flex flex-col justify-end ${SUBJECT_CARD[subject.id] ?? 'kids-card-arabe'}`}
-            >
-              <span className="absolute top-3.5 end-3.5 w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center text-[22px]">
-                {SUBJECT_EMOJI[subject.id] ?? '📘'}
-              </span>
-              <h3 className="text-[15.5px] font-extrabold leading-snug">
-                {locale === 'fr' ? subject.nameFr : subject.nameAr}
-              </h3>
-            </motion.button>
+            <motion.div key={subject.id} variants={homeSubjectItemVariants} className="h-full">
+              <SubjectIllustratedCard
+                id={subject.id}
+                nameAr={subject.nameAr}
+                nameFr={subject.nameFr}
+                data-subject-card={subject.id}
+                onClick={() => openSubject(subject.id)}
+                showAudio={showAudio}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       <section>

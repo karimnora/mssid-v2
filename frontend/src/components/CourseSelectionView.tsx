@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, Variants } from 'motion/react';
 import { PrimaryGrade, SubjectId, SubjectInfo, CourseLesson } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
@@ -10,6 +10,8 @@ import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
 import { useTranslation } from '../hooks/useTranslation';
 import { getOfficialAxisLabel } from '../utils/curriculumMeta';
+import { SubjectIllustratedCard, SubjectVectorIllustration } from './SubjectIllustratedCard';
+import { LessonIllustratedCard } from './LessonIllustratedCard';
 
 interface CourseSelectionViewProps {
   grade: PrimaryGrade;
@@ -71,6 +73,81 @@ function getDefaultTrimester(): 1 | 2 | 3 {
   return 1;
 }
 
+// Animation variants for the subject selection grid: cascading stagger with soft slide-up and spring bounce
+const subjectGridVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.055,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+const subjectCardItemVariants = {
+  hidden: { opacity: 0, y: 22, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 340,
+      damping: 24,
+      mass: 0.8,
+    },
+  },
+};
+
+// Animation variants for trimester switching and courses list with fluid directional movement & cascading stagger
+const trimesterLessonsContainerVariants: Variants = {
+  hidden: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? 38 : direction < 0 ? -38 : 0,
+    y: 16,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.32,
+      ease: [0.22, 1, 0.36, 1] as const,
+      staggerChildren: 0.055,
+      delayChildren: 0.03,
+    },
+  },
+  exit: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? -32 : direction < 0 ? 32 : 0,
+    y: -10,
+    transition: {
+      duration: 0.18,
+      ease: [0.4, 0, 1, 1] as const,
+    },
+  }),
+};
+
+const lessonCardItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 380,
+      damping: 24,
+      mass: 0.75,
+    },
+  },
+};
+
 // Guided 3-step browsing flow (Matière → Trimestre → Liste) replacing the old horizontally-
 // scrolling subject-tabs-bar + "all trimesters" grid. Grade/level selection stays outside this
 // component (Navbar's grade switcher) — this only owns what happens once "Réviser un cours" is
@@ -92,6 +169,13 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
       : null,
   );
   const [selectedTrimester, setSelectedTrimester] = useState<1 | 2 | 3>(() => getDefaultTrimester());
+  const [trimesterDirection, setTrimesterDirection] = useState<number>(0);
+
+  const handleSelectTrimester = (t: 1 | 2 | 3) => {
+    if (t === selectedTrimester) return;
+    setTrimesterDirection(t > selectedTrimester ? 1 : -1);
+    setSelectedTrimester(t);
+  };
 
   // Changing level restarts the Matière choice — a 1AP subject list may not even apply to 5AP.
   // Do not wipe on mount: that would cancel a subject picked from HomeView.
@@ -143,44 +227,48 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                 onSpeak={handleSpeak}
               />
             )}
-            <h2 className="text-lg font-black text-[var(--app-text)]">اختر المادة التي تريد مراجعتها — {grade}</h2>
+            <div>
+              <h2 className="text-lg font-black text-[var(--app-text)]">المواد الدراسية المقررة — {grade}</h2>
+              <p className="text-xs text-[var(--app-text-muted)] mt-0.5">
+                Matières du programme officiel algérien
+              </p>
+            </div>
           </div>
+          <Badge variant="info">{visibleSubjects.length} مواد</Badge>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+
+        {/* Schoolmouv-style illustrated banners: single column on mobile, 2 columns on tablet/desktop */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4"
+          variants={subjectGridVariants}
+          initial="hidden"
+          animate="show"
+        >
           {visibleSubjects.map((subj) => {
+            const subjectLessons = allCourseLessons.filter(
+              (l) => l.subject === subj.id && l.grade === grade,
+            );
+            const completedCount = subjectLessons.filter((l) =>
+              completedLessonIds.includes(l.id),
+            ).length;
+
             return (
-              <motion.div
-                key={subj.id}
-                role="button"
-                tabIndex={0}
-                onClick={() => setSelectedSubject(subj.id)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setSelectedSubject(subj.id);
-                  }
-                }}
-                whileTap={{ scale: 0.95 }}
-                className={`kids-pop relative overflow-hidden rounded-[22px] p-5 sm:p-6 min-h-36 text-white cursor-pointer flex flex-col items-center justify-center gap-2 text-center ${SUBJECT_CARD[subj.id] ?? 'kids-card-arabe'}`}
-              >
-                {showAudio && (
-                  <div className="absolute top-2 start-2">
-                    <TapSpeakButton
-                      snippetKey={`subject-${subj.id}`}
-                      text={subj.nameAr}
-                      speakingKey={speakingKey}
-                      onSpeak={handleSpeak}
-                    />
-                  </div>
-                )}
-                <span className="absolute top-3 end-3 w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center text-[22px]">
-                  {SUBJECT_EMOJI[subj.id] || '📘'}
-                </span>
-                <span className="font-extrabold text-sm sm:text-base leading-tight mt-8">{subj.nameAr}</span>
+              <motion.div key={subj.id} variants={subjectCardItemVariants} className="h-full">
+                <SubjectIllustratedCard
+                  id={subj.id}
+                  nameAr={subj.nameAr}
+                  nameFr={subj.nameFr}
+                  totalLessons={subjectLessons.length}
+                  completedLessons={completedCount}
+                  onClick={() => setSelectedSubject(subj.id)}
+                  showAudio={showAudio}
+                  speakingKey={speakingKey}
+                  onSpeak={handleSpeak}
+                />
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -202,10 +290,35 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
     return sample ? isLessonLocked(sample) : false;
   };
 
+  // Trimester stats
+  const trimesterStats = ([1, 2, 3] as const).map((t) => {
+    const lessons = allCourseLessons.filter(
+      (l) => l.subject === selectedSubject && l.grade === grade && l.trimester === t,
+    );
+    const completed = lessons.filter((l) => completedLessonIds.includes(l.id)).length;
+    return {
+      trimester: t,
+      total: lessons.length,
+      completed,
+      isFullyCompleted: lessons.length > 0 && completed === lessons.length,
+    };
+  });
+
+  const activeTermLessons = allCourseLessons.filter(
+    (l) => l.subject === selectedSubject && l.grade === grade && l.trimester === selectedTrimester,
+  );
+  const activeTermCompleted = activeTermLessons.filter((l) =>
+    completedLessonIds.includes(l.id),
+  ).length;
+  const activeTermPercent =
+    activeTermLessons.length > 0
+      ? Math.round((activeTermCompleted / activeTermLessons.length) * 100)
+      : 0;
+
   // STEP 2 (trimester tabs) + STEP 3 (that trimester's lessons only) — one screen, never all three
   // trimesters shown together, matching "ne jamais afficher les 3 trimestres en même temps".
   return (
-    <div className="space-y-4" dir="rtl">
+    <div className="space-y-4 sm:space-y-5" dir="rtl">
       <CourseBreadcrumb
         grade={grade}
         subjectId={selectedSubject}
@@ -214,141 +327,192 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
         onSubjectClick={() => setSelectedSubject(null)}
       />
 
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-2xl">{SUBJECT_EMOJI[selectedSubject] || '📘'}</span>
-        <h2 className="text-lg font-black text-[var(--app-text)]">{subjectInfo?.nameAr}</h2>
-        <Badge variant="info">{grade}</Badge>
-        {showAudio && subjectInfo && (
-          <TapSpeakButton
-            snippetKey="step2-subject"
-            text={subjectInfo.nameAr}
-            speakingKey={speakingKey}
-            onSpeak={handleSpeak}
+      {/* Header Banner for Selected Subject */}
+      <div className="kids-pop bg-white dark:bg-slate-900 border-2 border-[#E7E2D7] dark:border-slate-800 rounded-[28px] p-5 sm:p-6 relative overflow-hidden shadow-xs">
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-4 min-w-0">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-800 flex items-center justify-center relative shadow-xs">
+              <div className="w-24 h-24 absolute -bottom-2 -end-2">
+                <SubjectVectorIllustration id={selectedSubject} />
+              </div>
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] truncate">
+                  {subjectInfo?.nameAr}
+                </h1>
+                <Badge variant="success">{grade}</Badge>
+                {showAudio && subjectInfo && (
+                  <TapSpeakButton
+                    snippetKey="step2-subject"
+                    text={subjectInfo.nameAr}
+                    speakingKey={speakingKey}
+                    onSpeak={handleSpeak}
+                  />
+                )}
+              </div>
+              <p className="text-xs sm:text-sm text-[var(--app-text-muted)] font-semibold mt-0.5">
+                {subjectInfo?.nameFr} — المقرر الدراسي الجزائري الرسمي
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 self-end sm:self-center">
+            <div className="text-center bg-slate-50 dark:bg-slate-800/90 rounded-2xl px-5 py-2.5 border border-slate-100 dark:border-slate-700/60 shadow-xs">
+              <span className="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-tight">
+                {activeTermCompleted} / {activeTermLessons.length}
+              </span>
+              <span className="text-[11px] font-extrabold text-[var(--app-text-muted)]">
+                دروس مكتملة (الفصل {selectedTrimester})
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Trimester Progress Mini-bar */}
+        <div className="mt-4 w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5">
+          <div
+            className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500"
+            style={{ width: `${activeTermPercent}%` }}
           />
-        )}
+        </div>
       </div>
 
-      {/* STEP 2 — Trimestre: 3 grands onglets très visibles */}
-      <div className="grid grid-cols-3 gap-2.5">
+      {/* STEP 2 — 3 Grands onglets de Trimestre avec badges d'avancement intégrés */}
+      <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5">
         {([1, 2, 3] as const).map((t) => {
           const isActive = selectedTrimester === t;
+          const isLocked = isTrimesterLocked(t);
+          const stat = trimesterStats[t - 1];
+
           return (
             <motion.button
               key={t}
-              onClick={() => setSelectedTrimester(t)}
+              onClick={() => handleSelectTrimester(t)}
+              whileHover={{ y: -3, scale: 1.02 }}
               whileTap={{ scale: 0.96 }}
-                  className={`relative min-h-16 rounded-2xl font-extrabold text-xs sm:text-sm px-2 cursor-pointer ${
-                    isActive
-                      ? 'text-white kids-pop'
-                      : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="term-tab-active"
-                      className={`absolute inset-0 rounded-2xl ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-maths'}`}
-                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
-                    />
+              className={`relative rounded-2xl p-3 sm:p-4 font-black transition-all cursor-pointer flex flex-col items-center justify-center gap-1 min-h-[76px] sm:min-h-[84px] text-center ${
+                isActive
+                  ? 'text-white shadow-md'
+                  : 'bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-2 border-[#E7E2D7] dark:border-slate-700/80 hover:border-slate-300'
+              }`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="term-tab-active"
+                  className={`absolute inset-0 rounded-2xl ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-maths'}`}
+                  transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                />
+              )}
+
+              <div className="relative z-10 flex flex-col items-center justify-center w-full">
+                <div className="flex items-center gap-1.5 justify-center">
+                  {isLocked && <Lock className="w-3.5 h-3.5 shrink-0 text-amber-300" />}
+                  {grade === '1AP' || grade === '2AP' ? (
+                    <span className="text-base sm:text-lg font-black leading-tight">
+                      الفصل {t}
+                    </span>
+                  ) : (
+                    <span className="text-xs sm:text-sm font-black leading-tight">
+                      {isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}
+                    </span>
                   )}
-              <span className="relative flex flex-col items-center justify-center gap-0.5">
-                {isTrimesterLocked(t) && <Lock className="w-3 h-3 shrink-0" />}
-                {grade === '1AP' || grade === '2AP' ? (
-                  <>
-                    <span className="text-lg leading-none">{t}</span>
-                    <span className="text-[10px] font-bold">فصل</span>
-                  </>
-                ) : (
-                  <span>{isFrenchFreeGrade(grade) ? stripLatinGlosses(TRIMESTER_LABELS[t]) : TRIMESTER_LABELS[t]}</span>
-                )}
-              </span>
+                </div>
+
+                {/* Progress pill on each trimester tab */}
+                <div className="mt-1 flex items-center gap-1">
+                  {stat.isFullyCompleted ? (
+                    <span
+                      className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                        isActive
+                          ? 'bg-white/25 text-white'
+                          : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                      }`}
+                    >
+                      ✓ مكتمل
+                    </span>
+                  ) : (
+                    <span
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        isActive
+                          ? 'bg-white/20 text-white'
+                          : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'
+                      }`}
+                    >
+                      {stat.completed}/{stat.total} درس
+                    </span>
+                  )}
+                </div>
+              </div>
             </motion.button>
           );
         })}
       </div>
 
-      {/* STEP 3 — Liste épurée des cours du trimestre sélectionné */}
-      <AnimatePresence mode="wait">
+      {/* STEP 3 — Liste illustrée des cours du trimestre sélectionné avec animation et mouvement */}
+      <AnimatePresence mode="wait" custom={trimesterDirection}>
         <motion.div
           key={`${selectedSubject}-${selectedTrimester}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.22 }}
+          custom={trimesterDirection}
+          variants={trimesterLessonsContainerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="space-y-3.5"
         >
+          {/* Header indicator with subtle pulse and counter */}
+          <div className="flex items-center justify-between gap-2 px-1">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <h3 className="text-sm sm:text-base font-black text-slate-800 dark:text-slate-200">
+                دروس {TRIMESTER_LABELS[selectedTrimester].split(' (')[0]}
+              </h3>
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full">
+                {termLessons.length} {termLessons.length === 1 ? 'درس' : 'دروس'}
+              </span>
+            </div>
+            {activeTermPercent > 0 && (
+              <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800">
+                {activeTermPercent}% مكتمل
+              </span>
+            )}
+          </div>
+
           {termLessons.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {termLessons.map((lesson) => {
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              {termLessons.map((lesson, idx) => {
                 const isCompleted = completedLessonIds.includes(lesson.id);
                 const locked = isLessonLocked?.(lesson) ?? false;
                 return (
-                  <Card
+                  <motion.div
                     key={lesson.id}
-                    interactive
-                    padding="none"
-                    data-lesson-id={lesson.id}
-                    className={`h-full overflow-hidden light-surface !border-[#E7E2D7] rounded-[22px] ${locked ? 'relative' : ''}`}
-                    onClick={() => onSelectLesson(lesson)}
+                    variants={lessonCardItemVariants}
+                    className="h-full"
                   >
-                    <div className={`h-3.5 w-full ${SUBJECT_CARD[selectedSubject] ?? 'kids-card-arabe'}`} />
-                    <div className="p-5 space-y-3">
-                    <div className="flex items-center justify-between flex-wrap gap-1.5">
-                      <div className="flex flex-wrap items-center gap-1.5">
-                        <Badge variant="info">{lesson.categoryAr}</Badge>
-                        {getOfficialAxisLabel(lesson) && (
-                          <Badge variant="xp" className="!text-[10px] max-w-[11rem] truncate" title={getOfficialAxisLabel(lesson)}>
-                            📘 {getOfficialAxisLabel(lesson)}
-                          </Badge>
-                        )}
-                      </div>
-                      {locked ? (
-                        <span className="flex items-center gap-1 text-[10px] font-extrabold text-[#5A3B00] bg-[#FFF8E7] border-2 border-[#F5D98A] px-2 py-0.5 rounded-full">
-                          <Lock className="w-3 h-3" />
-                          <span>{t('premiumBadge')}</span>
-                        </span>
-                      ) : (
-                        isCompleted && <Badge variant="success">✓ مكتمل</Badge>
-                      )}
-                    </div>
-
-                    <div dir={isLtrSubject ? 'ltr' : 'rtl'} className="text-right flex items-center gap-2">
-                      {isSimpleCard && <span className="text-2xl shrink-0">{SUBJECT_EMOJI[selectedSubject] || '📘'}</span>}
-                      <div className="min-w-0">
-                        <h3 className={isSimpleCard ? 'text-base font-extrabold font-sans text-slate-900' : 'text-sm font-extrabold font-sans text-slate-900'}>
-                          {lesson.titleAr}
-                        </h3>
-                        {!isSimpleCard && (
-                          <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed">
-                            {lesson.summaryAr}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-2 border-t border-[#E7E2D7] text-[11px] font-bold text-slate-500">
-                      <div className="flex items-center gap-2">
-                        {lesson.difficultyTier && (
-                          <span className="flex items-center gap-0.5 text-[var(--kids-sun-2)]">
-                            {Array.from({ length: lesson.difficultyTier }).map((_, i) => (
-                              <Star key={i} className="w-3 h-3 fill-current" />
-                            ))}
-                          </span>
-                        )}
-                        {!isSimpleCard && lesson.quiz && lesson.quiz.length > 0 && (
-                          <span dir="ltr">{lesson.quiz.length} أسئلة</span>
-                        )}
-                      </div>
-                      <ChevronLeft className="w-4 h-4" />
-                    </div>
-                    </div>
-                  </Card>
+                    <LessonIllustratedCard
+                      lesson={lesson}
+                      index={idx}
+                      subjectId={selectedSubject}
+                      isCompleted={isCompleted}
+                      isLocked={locked}
+                      onClick={() => onSelectLesson(lesson)}
+                      showAudio={showAudio}
+                      speakingKey={speakingKey}
+                      onSpeak={handleSpeak}
+                    />
+                  </motion.div>
                 );
               })}
             </div>
           ) : (
-            <Card padding="none" className="p-10 text-center space-y-3">
-              <BookOpen className="w-10 h-10 opacity-40 mx-auto text-[var(--app-text-muted)]" />
-              <h3 className="text-sm font-extrabold text-[var(--app-text)]">لا توجد دروس بعد في هذا الفصل</h3>
-              <p className="text-xs text-[var(--app-text-muted)]">جرّب فصلاً دراسياً آخر لهذه المادة.</p>
+            <Card padding="none" className="p-12 text-center space-y-3 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800">
+              <BookOpen className="w-12 h-12 opacity-40 mx-auto text-[var(--app-text-muted)]" />
+              <h3 className="text-base font-black text-[var(--app-text)]">
+                لا توجد دروس بعد في هذا الفصل
+              </h3>
+              <p className="text-xs text-[var(--app-text-muted)]">
+                جرّب فصلاً دراسياً آخر لهذه المادة لتصفح المحتوى.
+              </p>
             </Card>
           )}
         </motion.div>
