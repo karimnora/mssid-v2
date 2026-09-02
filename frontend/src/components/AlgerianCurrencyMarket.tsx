@@ -56,10 +56,14 @@ const MARKET_PRODUCTS: MarketItem[] = [
 ];
 
 const CURRENCY_DENOMINATIONS = [
-  // Banknotes (الأوراق النقدية)
-  { value: 2000, type: 'bill', color: 'from-blue-700 to-indigo-900 border-blue-400 text-white', label: '2000 دج', sub: 'ورقة نقدية زرقاء' },
+  // Banknotes (الأوراق النقدية). The 2000/500 DA notes use an inline `swatchStyle` gradient
+  // instead of Tailwind's `from-indigo-*`/`from-purple-*` classes: those class names are matched
+  // (as substrings) by the global .lab-interior "force dark instrument panels to light" CSS rule
+  // in index.css, which was silently repainting these two real, content-accurate banknote colors
+  // to plain white — leaving the (also white) label text invisible on a blank swatch.
+  { value: 2000, type: 'bill', color: 'border-blue-400 text-white', swatchStyle: { background: 'linear-gradient(to bottom right, #1D4ED8, #312E81)' }, label: '2000 دج', sub: 'ورقة نقدية زرقاء' },
   { value: 1000, type: 'bill', color: 'from-emerald-700 to-teal-900 border-emerald-400 text-white', label: '1000 دج', sub: 'ورقة نقدية خضراء' },
-  { value: 500, type: 'bill', color: 'from-purple-600 to-purple-800 border-purple-400 text-white', label: '500 دج', sub: 'ورقة نقدية بنفسجية' },
+  { value: 500, type: 'bill', color: 'border-purple-400 text-white', swatchStyle: { background: 'linear-gradient(to bottom right, #9333EA, #6B21A8)' }, label: '500 دج', sub: 'ورقة نقدية بنفسجية' },
 
   // Coins (القطع النقدية)
   { value: 200, type: 'coin', color: 'from-amber-400 to-yellow-500 border-amber-600 text-amber-950 font-black', label: '200 دج', sub: 'قطعة ثنائية المعدن' },
@@ -571,6 +575,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                       key={cur.value}
                       onClick={() => setTenderedBills((prev) => [...prev, cur.value])}
                       className={`p-2 rounded-xl border text-center shadow-xs hover:scale-105 active:scale-95 transition-transform cursor-pointer bg-gradient-to-br ${cur.color}`}
+                      style={cur.swatchStyle}
                     >
                       <span className="block text-xs font-black">{cur.label}</span>
                     </button>
@@ -677,6 +682,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                     key={cur.value}
                     onClick={() => handleGameAddChange(cur.value)}
                     className={`py-3 px-2 rounded-2xl border text-center shadow-xs hover:scale-105 active:scale-95 transition-transform cursor-pointer bg-gradient-to-br ${cur.color}`}
+                    style={cur.swatchStyle}
                   >
                     <span className="block text-xs font-black">{cur.label}</span>
                   </button>
@@ -719,6 +725,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                         className={`px-3 py-1.5 rounded-xl text-xs font-black border shadow-xs flex items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity bg-gradient-to-br ${
                           match?.color || 'bg-slate-200'
                         }`}
+                        style={match?.swatchStyle}
                         title="انقر للحذف"
                       >
                         <span>{val} دج</span>
