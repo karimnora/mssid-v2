@@ -307,6 +307,7 @@ export default function App() {
       <Navbar
         currentGrade={nav.grade}
         onHomeClick={nav.goHome}
+        onBackClick={nav.isHomeActive ? undefined : nav.goBack}
         currentTheme={headerTheme}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
         onOpenSettingsModal={() => modals.setIsSettingsModalOpen(true)}

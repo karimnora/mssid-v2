@@ -16,6 +16,7 @@ import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech } from '../utils/speech';
 import { DidouVirtualCompanion } from './DidouVirtualCompanion';
 import { SubjectIllustratedCard } from './SubjectIllustratedCard';
+import { CardBlobBackdrop } from './CardBlobBackdrop';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -189,7 +190,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
       onClick={onOpenPreschool}
       className="kids-pop kids-card-presco w-full relative overflow-hidden rounded-[22px] p-4 text-white cursor-pointer text-start"
     >
-      <div className="flex items-center justify-between gap-3">
+      <CardBlobBackdrop />
+      <div className="relative z-10 flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="text-[11px] font-bold bg-white/25 inline-block px-2.5 py-0.5 rounded-full mb-1">
             {t('preschoolFeatureBadge')}
@@ -393,9 +395,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
           whileTap={{ scale: 0.95 }}
           transition={spring}
           onClick={() => onSelectPole(examsPoleTarget)}
-          className="kids-pop kids-card-examens relative w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
+          className="kids-pop kids-card-examens relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
         >
-          <div className="min-w-0">
+          <CardBlobBackdrop />
+          <div className="relative z-10 min-w-0">
             <h3 className="text-[15px] font-extrabold">
               {grade === '1AP' ? t('examPracticeTitle') : grade === '5AP' ? t('examBemTitle') : t('examTrimesterTitle')}
             </h3>
@@ -405,7 +408,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </p>
             )}
           </div>
-          <span data-pole-icon="exams" className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
+          <span data-pole-icon="exams" className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
             <ExamsPoleIcon className="w-8 h-8" />
           </span>
         </motion.button>
@@ -415,13 +418,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
           whileTap={{ scale: 0.95 }}
           transition={spring}
           onClick={() => onSelectPole('challenges')}
-          className="kids-pop kids-card-defis w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3"
+          className="kids-pop kids-card-defis relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3"
         >
-          <div className="min-w-0">
+          <CardBlobBackdrop />
+          <div className="relative z-10 min-w-0">
             <h3 className="text-[15px] font-extrabold">{t('poleChallengesTitle')}</h3>
             {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('poleChallengesDesc')}</p>}
           </div>
-          <span data-pole-icon="challenges" className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
+          <span data-pole-icon="challenges" className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
             <ChallengesPoleIcon className="w-8 h-8" />
           </span>
         </motion.button>
@@ -458,13 +462,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
             whileTap={{ scale: 0.95 }}
             transition={spring}
             onClick={onOpenWilayas}
-            className="kids-pop kids-card-wilayas w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
+            className="kids-pop kids-card-wilayas relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
           >
-            <div className="min-w-0">
+            <CardBlobBackdrop />
+            <div className="relative z-10 min-w-0">
               <h3 className="text-[15px] font-extrabold">{t('labWilayasTitle')}</h3>
               {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labWilayasDesc')}</p>}
             </div>
-            <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">🇩🇿</span>
+            <span className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">🇩🇿</span>
           </motion.button>
         )}
         {onOpenMathLab && (
@@ -473,13 +478,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
             whileTap={{ scale: 0.95 }}
             transition={spring}
             onClick={onOpenMathLab}
-            className="kids-pop kids-card-maths w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
+            className="kids-pop kids-card-maths relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
           >
-            <div className="min-w-0">
+            <CardBlobBackdrop />
+            <div className="relative z-10 min-w-0">
               <h3 className="text-[15px] font-extrabold">{t('labMathTitle')}</h3>
               {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labMathDesc')}</p>}
             </div>
-            <span className="w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">📐</span>
+            <span className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">📐</span>
           </motion.button>
         )}
         {onOpenHonorCertificates && (
@@ -488,9 +494,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
             whileTap={{ scale: 0.95 }}
             transition={spring}
             onClick={onOpenHonorCertificates}
-            className="kids-pop bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 w-full rounded-[22px] p-4 text-amber-950 text-start flex items-center justify-between gap-3 shadow-md border-2 border-amber-300"
+            className="kids-pop bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 relative overflow-hidden w-full rounded-[22px] p-4 text-amber-950 text-start flex items-center justify-between gap-3 shadow-md border-2 border-amber-300"
           >
-            <div className="min-w-0">
+            <CardBlobBackdrop />
+            <div className="relative z-10 min-w-0">
               <div className="flex items-center gap-1.5">
                 <h3 className="text-[15px] font-black">استوديو لوحات الشرف والشهادات الرسمية 📜</h3>
                 <span className="text-[10px] bg-amber-950 text-amber-200 px-2 py-0.5 rounded-full font-black">A4</span>
@@ -499,7 +506,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 توليد وطباعة شهادات التقدير، الامتياز وفارس الحساب بأسماء تلاميذك
               </p>
             </div>
-            <span className="w-[46px] h-[46px] rounded-2xl bg-amber-950/20 flex items-center justify-center text-[24px] shrink-0">
+            <span className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-amber-950/20 flex items-center justify-center text-[24px] shrink-0">
               🏆
             </span>
           </motion.button>

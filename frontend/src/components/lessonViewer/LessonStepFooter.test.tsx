@@ -44,7 +44,7 @@ describe('LessonStepFooter', () => {
     expect(screen.queryByText(/الدرس الموالي/)).not.toBeInTheDocument();
   });
 
-  it('does not unlock the next lesson until the quiz is passed', () => {
+  it('still offers the next-lesson CTA before the quiz is passed, alongside a gentle nudge', () => {
     render(
       <LessonStepFooter
         availableSteps={steps}
@@ -62,7 +62,7 @@ describe('LessonStepFooter', () => {
       />
     );
     expect(screen.getByText(/أجب عن الاختبار/)).toBeInTheDocument();
-    expect(document.querySelector('[data-primary-cta="finish-lesson"]')).toBeNull();
+    expect(document.querySelector('[data-primary-cta="finish-lesson"]')).not.toBeNull();
   });
 
   it('finishes the lesson after a successful quiz', async () => {
@@ -113,7 +113,7 @@ describe('LessonStepFooter', () => {
     expect(screen.queryByText(/الدرس الموالي/)).not.toBeInTheDocument();
   });
 
-  it('keeps 1AP waiting until every quiz question is answered', () => {
+  it('still lets a 1AP child continue before every quiz question is answered, alongside a gentle nudge', () => {
     render(
       <LessonStepFooter
         availableSteps={steps}
@@ -132,6 +132,6 @@ describe('LessonStepFooter', () => {
       />
     );
     expect(screen.getByText(/أَجِبْ ثُمَّ نَذْهَبُ/)).toBeInTheDocument();
-    expect(document.querySelector('[data-primary-cta="finish-lesson"]')).toBeNull();
+    expect(document.querySelector('[data-primary-cta="finish-lesson"]')).not.toBeNull();
   });
 });

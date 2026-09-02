@@ -35,7 +35,9 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
   onGoToStep,
   onFinishLesson,
 }) => {
-  const canFinish = !hasQuiz || quizPassed;
+  // Finishing/advancing is never gated by the quiz — `quizPassed` below only drives the
+  // informational nudge message, not whether the student can move on.
+  const canFinish = true;
 
   const handlePrev = () => {
     if (currentStepIndex > 0) onGoToStep(currentStepIndex - 1);

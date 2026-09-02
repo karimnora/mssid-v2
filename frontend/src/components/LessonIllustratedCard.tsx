@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CourseLesson, SubjectId } from '../types';
+import { CourseLesson, SubjectId, PrimaryGrade } from '../types';
 import { useLocaleContext } from '../context/LocaleContext';
 import {
   CheckCircle2,
@@ -27,6 +27,7 @@ interface LessonIllustratedCardProps {
   showAudio?: boolean;
   speakingKey?: string | null;
   onSpeak?: (key: string, text: string) => void;
+  grade?: PrimaryGrade;
 }
 
 const SUBJECT_STYLES: Record<
@@ -170,11 +171,13 @@ export const LessonIllustratedCard: React.FC<LessonIllustratedCardProps> = ({
   showAudio = false,
   speakingKey = null,
   onSpeak,
+  grade,
 }) => {
   const { direction, locale } = useLocaleContext();
   const isRtl = direction === 'rtl';
   const style = SUBJECT_STYLES[subjectId] || SUBJECT_STYLES.math;
-  const axisLabel = getOfficialAxisLabel(lesson);
+  const is1AP = grade === '1AP';
+  const axisLabel = is1AP ? null : getOfficialAxisLabel(lesson);
 
   return (
     <motion.div
@@ -249,7 +252,7 @@ export const LessonIllustratedCard: React.FC<LessonIllustratedCardProps> = ({
           {isCompleted ? (
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800">
               <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400 stroke-[3]" />
-              <span>مكتمل</span>
+              <span>{is1AP ? 'بَطَل! مُكْتَمَل 🌟' : 'مكتمل'}</span>
             </span>
           ) : isLocked ? (
             <span className="inline-flex items-center gap-1 text-[10px] font-black text-[#5A3B00] bg-[#FFF8E7] border border-[#F5D98A] px-2 py-0.5 rounded-full">
@@ -262,12 +265,12 @@ export const LessonIllustratedCard: React.FC<LessonIllustratedCardProps> = ({
 
       {/* Center content: Lesson title and brief summary */}
       <div className="space-y-1.5 min-w-0">
-        <h3 className="text-[15.5px] sm:text-[17px] font-black text-slate-800 dark:text-slate-100 leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
+        <h3 className={`${is1AP ? 'text-[17px] sm:text-[19px]' : 'text-[15.5px] sm:text-[17px]'} font-black text-slate-800 dark:text-slate-100 leading-snug group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors`}>
           {lesson.titleAr}
         </h3>
 
         {lesson.summaryAr && (
-          <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed font-normal">
+          <p className={`${is1AP ? 'text-xs sm:text-[13px]' : 'text-xs'} text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed font-normal`}>
             {lesson.summaryAr}
           </p>
         )}
@@ -285,12 +288,19 @@ export const LessonIllustratedCard: React.FC<LessonIllustratedCardProps> = ({
 
       {/* Bottom meta row: duration, difficulty stars, quizzes & open arrow */}
       <div className="flex items-center justify-between pt-2.5 border-t border-slate-100 dark:border-slate-800 text-[11px] font-bold text-slate-500 dark:text-slate-400">
-        <div className="flex items-center gap-3">
-          {/* Duration */}
-          <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400">
-            <Clock className="w-3.5 h-3.5" />
-            <span>{lesson.duration || '15 د'}</span>
-          </span>
+        <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+          {/* Duration or 1AP Playful Activity Pill */}
+          {is1AP ? (
+            <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-full text-[11px] font-black border border-amber-200/60 dark:border-amber-800">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>تعلّم ولعب</span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400">
+              <Clock className="w-3.5 h-3.5" />
+              <span>15 د</span>
+            </span>
+          )}
 
           {/* Difficulty Stars */}
           {lesson.difficultyTier && (
@@ -303,16 +313,16 @@ export const LessonIllustratedCard: React.FC<LessonIllustratedCardProps> = ({
 
           {/* Quiz count */}
           {lesson.quiz && lesson.quiz.length > 0 && (
-            <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400">
+            <span className={`inline-flex items-center gap-1 ${is1AP ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-full text-[11px] font-black' : 'text-slate-500 dark:text-slate-400'}`}>
               <Award className="w-3.5 h-3.5 text-amber-500" />
-              <span>{lesson.quiz.length} أسئلة</span>
+              <span>{is1AP ? `${lesson.quiz.length} تحديات ⭐` : `${lesson.quiz.length} أسئلة`}</span>
             </span>
           )}
         </div>
 
         {/* Action arrow button */}
         <div
-          className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 group-hover:scale-115 ${
+          className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 group-hover:scale-115 shrink-0 ${
             isCompleted
               ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300'
               : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 group-hover:bg-emerald-600 group-hover:text-white'

@@ -304,6 +304,12 @@ export function useAppNavigation(options: {
     setIsHomeActive(true);
   };
 
+  /** One real step back through the app's own navigation history (pushed above on every subject/
+   * lesson/pole change — see the pushState effect above), not a jump to a fixed list/home screen. */
+  const goBack = () => {
+    window.history.back();
+  };
+
   const openLab = (toolId: SubjectId) => {
     if (isGuest && !isLabFreeForGuest(toolId)) {
       onGuestBlocked?.();
@@ -358,6 +364,7 @@ export function useAppNavigation(options: {
     handleSelectPole,
     handleSelectLesson,
     goHome,
+    goBack,
     openLab,
     validGrades: VALID_GRADES,
   };

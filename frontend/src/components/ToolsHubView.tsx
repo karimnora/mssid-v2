@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { SubjectInfo, SubjectId, PrimaryGrade } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
 import { canShowFrenchInLab } from '../utils/labGradePolicy';
+import { CardBlobBackdrop } from './CardBlobBackdrop';
 import {
   Calculator,
   BookOpen,
@@ -318,7 +319,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                       onClick={() => { setMobileCatKey(cat.key); setMobileView('list'); }}
                       className={`kids-pop relative overflow-hidden rounded-[22px] ${cat.cardClass} px-5 py-4 text-right text-white cursor-pointer flex items-center gap-4 min-h-[88px]`}
                     >
-                      <div className="absolute inset-0 bg-white/5 rounded-3xl" />
+                      <CardBlobBackdrop />
                       <span className="text-3xl drop-shadow-sm shrink-0 relative z-10">{cat.emoji}</span>
                       <div className="flex-1 relative z-10 text-right">
                         <h3 className="text-sm font-black text-white">{cat.labelAr}</h3>
@@ -608,7 +609,9 @@ const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isA
         isActive ? 'ring-4 ring-[var(--kids-sun-1)] ring-offset-2' : ''
       }`}
     >
-      <div className="flex items-start justify-between w-full">
+      <CardBlobBackdrop />
+
+      <div className="relative z-10 flex items-start justify-between w-full">
         <div className="w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center shrink-0">
           <IconComp className="w-5 h-5 text-white" />
         </div>
@@ -627,7 +630,7 @@ const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isA
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="relative z-10 w-full">
         <h4 className="font-extrabold text-[15px] text-white mb-0.5 leading-snug">{tool.nameAr}</h4>
         {showFrenchLabel && tool.nameFr && (
           <p className="text-[10px] text-white/80 font-sans tracking-wide mb-1 line-clamp-1">{tool.nameFr}</p>

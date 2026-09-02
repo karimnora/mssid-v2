@@ -1,14 +1,16 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { SubjectId } from '../types';
+import { SubjectId, PrimaryGrade } from '../types';
 import { useLocaleContext } from '../context/LocaleContext';
 import { CheckCircle2, ChevronLeft, ChevronRight, Lock } from 'lucide-react';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { isFrenchFreeGrade } from './lessonViewer/youngLessonLayout';
 
 export interface SubjectIllustratedCardProps {
   id: SubjectId;
   nameAr: string;
   nameFr: string;
+  grade?: PrimaryGrade;
   totalLessons?: number;
   completedLessons?: number;
   isLocked?: boolean;
@@ -747,13 +749,21 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
   onSpeak,
   className = '',
   'data-subject-card': dataSubjectCard,
+  grade,
 }) => {
   const { direction, locale } = useLocaleContext();
   const theme = SUBJECT_THEMES[id] || SUBJECT_THEMES.french;
   const isRtl = direction === 'rtl';
 
-  const displayName = locale === 'fr' ? nameFr : nameAr;
-  const secondaryName = locale === 'fr' ? nameAr : nameFr;
+  const isFrenchFree = grade ? isFrenchFreeGrade(grade) : false;
+  const displayName = locale === 'fr' && !isFrenchFree ? nameFr : nameAr;
+  const secondaryName = isFrenchFree
+    ? grade === '1AP'
+      ? 'السنة الأولى ابتدائي 🌟'
+      : ''
+    : locale === 'fr'
+      ? nameAr
+      : nameFr;
 
   const progressPercent =
     totalLessons && totalLessons > 0 ? Math.min(100, Math.round((completedLessons / totalLessons) * 100)) : 0;
@@ -771,11 +781,16 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
           onClick();
         }
       }}
-      whileHover={{ y: -3 }}
+      whileHover={{ y: -3, transition: { duration: 0.18 } }}
       whileTap={{ scale: 0.98 }}
-      transition={{ type: 'spring', stiffness: 450, damping: 26 }}
-      className={`relative overflow-hidden rounded-[26px] bg-white dark:bg-[#1E293B] border-2 border-[#F0EBE1] dark:border-slate-700/80 shadow-[0_4px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] ${theme.hoverBorder} cursor-pointer transition-all duration-200 flex items-stretch min-h-[96px] sm:min-h-[110px] ${className}`}
+      className={`group relative overflow-hidden rounded-[22px] bg-white dark:bg-slate-900 border-2 border-[#EFE9DF] dark:border-slate-800 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md ${theme.hoverBorder} cursor-pointer transition-all duration-200 flex items-stretch min-h-[96px] sm:min-h-[110px] ${className}`}
     >
+      {/* Top accent line matching LessonIllustratedCard */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-1.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 z-20"
+        style={{ backgroundColor: theme.blobColor }}
+        aria-hidden="true"
+      />
       {/* TEXT SIDE */}
       <div className="flex-1 p-4 sm:p-5 flex flex-col justify-center gap-1.5 min-w-0 z-10">
         <div className="flex items-center gap-2 flex-wrap">

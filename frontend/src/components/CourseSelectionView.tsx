@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade, SubjectId, SubjectInfo, CourseLesson } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
@@ -100,54 +100,6 @@ const subjectCardItemVariants = {
   },
 };
 
-// Animation variants for trimester switching and courses list with fluid directional movement & cascading stagger
-const trimesterLessonsContainerVariants: Variants = {
-  hidden: (direction: number) => ({
-    opacity: 0,
-    x: direction > 0 ? 38 : direction < 0 ? -38 : 0,
-    y: 16,
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: {
-      duration: 0.32,
-      ease: [0.22, 1, 0.36, 1] as const,
-      staggerChildren: 0.055,
-      delayChildren: 0.03,
-    },
-  },
-  exit: (direction: number) => ({
-    opacity: 0,
-    x: direction > 0 ? -32 : direction < 0 ? 32 : 0,
-    y: -10,
-    transition: {
-      duration: 0.18,
-      ease: [0.4, 0, 1, 1] as const,
-    },
-  }),
-};
-
-const lessonCardItemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 22,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 380,
-      damping: 24,
-      mass: 0.75,
-    },
-  },
-};
-
 // Guided 3-step browsing flow (Matière → Trimestre → Liste) replacing the old horizontally-
 // scrolling subject-tabs-bar + "all trimesters" grid. Grade/level selection stays outside this
 // component (Navbar's grade switcher) — this only owns what happens once "Réviser un cours" is
@@ -169,13 +121,6 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
       : null,
   );
   const [selectedTrimester, setSelectedTrimester] = useState<1 | 2 | 3>(() => getDefaultTrimester());
-  const [trimesterDirection, setTrimesterDirection] = useState<number>(0);
-
-  const handleSelectTrimester = (t: 1 | 2 | 3) => {
-    if (t === selectedTrimester) return;
-    setTrimesterDirection(t > selectedTrimester ? 1 : -1);
-    setSelectedTrimester(t);
-  };
 
   // Changing level restarts the Matière choice — a 1AP subject list may not even apply to 5AP.
   // Do not wipe on mount: that would cancel a subject picked from HomeView.
@@ -222,15 +167,19 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
             {showAudio && (
               <TapSpeakButton
                 snippetKey="step1-heading"
-                text="اختر المادة التي تريد مراجعتها"
+                text={grade === '1AP' ? "اختر المادة التي تريد مراجعتها يا بطل" : "اختر المادة التي تريد مراجعتها"}
                 speakingKey={speakingKey}
                 onSpeak={handleSpeak}
               />
             )}
             <div>
-              <h2 className="text-lg font-black text-[var(--app-text)]">المواد الدراسية المقررة — {grade}</h2>
-              <p className="text-xs text-[var(--app-text-muted)] mt-0.5">
-                Matières du programme officiel algérien
+              <h2 className="text-lg font-black text-[var(--app-text)]">
+                {grade === '1AP' ? 'المواد الدراسية المقررة — السنة الأولى ابتدائي 🌟' : `المواد الدراسية المقررة — ${grade}`}
+              </h2>
+              <p className="text-xs text-[var(--app-text-muted)] mt-0.5 font-bold">
+                {isFrenchFreeGrade(grade)
+                  ? 'المقرر الدراسي الجزائري الرسمي — طور التعليم المبكر'
+                  : 'Matières du programme officiel algérien'}
               </p>
             </div>
           </div>
@@ -258,6 +207,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                   id={subj.id}
                   nameAr={subj.nameAr}
                   nameFr={subj.nameFr}
+                  grade={grade}
                   totalLessons={subjectLessons.length}
                   completedLessons={completedCount}
                   onClick={() => setSelectedSubject(subj.id)}
@@ -388,9 +338,9 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
           return (
             <motion.button
               key={t}
-              onClick={() => handleSelectTrimester(t)}
-              whileHover={{ y: -3, scale: 1.02 }}
-              whileTap={{ scale: 0.96 }}
+              onClick={() => setSelectedTrimester(t)}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
               className={`relative rounded-2xl p-3 sm:p-4 font-black transition-all cursor-pointer flex flex-col items-center justify-center gap-1 min-h-[76px] sm:min-h-[84px] text-center ${
                 isActive
                   ? 'text-white shadow-md'
@@ -449,58 +399,33 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
         })}
       </div>
 
-      {/* STEP 3 — Liste illustrée des cours du trimestre sélectionné avec animation et mouvement */}
-      <AnimatePresence mode="wait" custom={trimesterDirection}>
+      {/* STEP 3 — Liste illustrée des cours du trimestre sélectionné */}
+      <AnimatePresence mode="wait">
         <motion.div
           key={`${selectedSubject}-${selectedTrimester}`}
-          custom={trimesterDirection}
-          variants={trimesterLessonsContainerVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="space-y-3.5"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.2 }}
         >
-          {/* Header indicator with subtle pulse and counter */}
-          <div className="flex items-center justify-between gap-2 px-1">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <h3 className="text-sm sm:text-base font-black text-slate-800 dark:text-slate-200">
-                دروس {TRIMESTER_LABELS[selectedTrimester].split(' (')[0]}
-              </h3>
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full">
-                {termLessons.length} {termLessons.length === 1 ? 'درس' : 'دروس'}
-              </span>
-            </div>
-            {activeTermPercent > 0 && (
-              <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800">
-                {activeTermPercent}% مكتمل
-              </span>
-            )}
-          </div>
-
           {termLessons.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               {termLessons.map((lesson, idx) => {
                 const isCompleted = completedLessonIds.includes(lesson.id);
                 const locked = isLessonLocked?.(lesson) ?? false;
                 return (
-                  <motion.div
+                  <LessonIllustratedCard
                     key={lesson.id}
-                    variants={lessonCardItemVariants}
-                    className="h-full"
-                  >
-                    <LessonIllustratedCard
-                      lesson={lesson}
-                      index={idx}
-                      subjectId={selectedSubject}
-                      isCompleted={isCompleted}
-                      isLocked={locked}
-                      onClick={() => onSelectLesson(lesson)}
-                      showAudio={showAudio}
-                      speakingKey={speakingKey}
-                      onSpeak={handleSpeak}
-                    />
-                  </motion.div>
+                    lesson={lesson}
+                    index={idx}
+                    subjectId={selectedSubject}
+                    isCompleted={isCompleted}
+                    isLocked={locked}
+                    onClick={() => onSelectLesson(lesson)}
+                    showAudio={showAudio}
+                    speakingKey={speakingKey}
+                    onSpeak={handleSpeak}
+                  />
                 );
               })}
             </div>

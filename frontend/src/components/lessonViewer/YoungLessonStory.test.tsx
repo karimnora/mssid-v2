@@ -92,7 +92,7 @@ describe('1AP playful lesson layout', () => {
   it('turns a haraka name into a picture card', () => {
     const snippet = parsePlayfulSnippet('الفَتْحَةُ: خَطٌّ صَغِيرٌ فَوْقَ الحَرْفِ. نَقْرَأُ بَ.');
     expect(snippet.headline).toBe('الفَتْحَةُ');
-    expect(snippet.emoji).toBe('🍋');
+    expect(snippet.emoji).toBe('بَ → فتحة');
   });
 
   it('turns a long rule into a picture, a short word, and a dedicated audio line', () => {

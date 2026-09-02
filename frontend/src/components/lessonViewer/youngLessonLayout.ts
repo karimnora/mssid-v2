@@ -41,10 +41,10 @@ export function stripLatinGlosses(text: string): string {
 const EMOJI_RE = /\p{Extended_Pictographic}(?:\uFE0F)?(?:\u200D\p{Extended_Pictographic}(?:\uFE0F)?)*/u;
 
 const FALLBACK_EMOJI: Array<[RegExp, string]> = [
-  [/فَتْح|فتحة/, '🍋'],
-  [/ضَمّ|ضمة/, '🌙'],
-  [/كَسْر|كسرة/, '⬇️'],
-  [/سُكُون|سكون/, '⭕'],
+  [/فَتْح|فتحة/, 'بَ → فتحة'],
+  [/ضَمّ|ضمة/, 'بُ → ضمة'],
+  [/كَسْر|كسرة/, 'بِ → كسرة'],
+  [/سُكُون|سكون/, 'بْ → سكون'],
   [/فَوْق|فوق/, '☝️'],
   [/تَحْت|تحت/, '👇'],
   [/أَمَام|امام|أمام/, '👀'],

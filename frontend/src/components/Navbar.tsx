@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Settings } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Settings } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { MssidLogo } from './MssidLogo';
 import { useTranslation } from '../hooks/useTranslation';
@@ -24,6 +24,10 @@ export const THEME_OPTIONS: { id: HeaderTheme; labelKey: 'themeNeutreFull' | 'th
 interface NavbarProps {
   currentGrade: PrimaryGrade;
   onHomeClick: () => void;
+  /** Present only when there's somewhere to go back to (not on the home screen) — renders a
+   * dedicated back chevron that steps one entry back through the app's own history, as opposed
+   * to onHomeClick which always jumps straight to the home screen. */
+  onBackClick?: () => void;
   currentTheme?: HeaderTheme;
   onOpenProfileModal: () => void;
   onOpenSettingsModal: () => void;
@@ -39,6 +43,7 @@ const applyThemeToRoot = (selectedTheme: HeaderTheme) => {
 export const Navbar: React.FC<NavbarProps> = ({
   currentGrade,
   onHomeClick,
+  onBackClick,
   currentTheme = 'neutre',
   onOpenProfileModal,
   onOpenSettingsModal,
@@ -59,12 +64,26 @@ export const Navbar: React.FC<NavbarProps> = ({
       dir={direction}
       data-nav-child="true"
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center gap-2 sm:gap-3">
+        {onBackClick && (
+          <motion.button
+            type="button"
+            data-nav-back
+            whileTap={{ scale: 0.92 }}
+            onClick={onBackClick}
+            className="hit-target w-10 h-10 shrink-0 rounded-2xl bg-[#FFFBF0] border-2 border-[#E7E2D7] text-[var(--kids-muted,#64748b)] flex items-center justify-center cursor-pointer"
+            aria-label={t('backButtonFloatingLabel')}
+            title={t('backButtonFloatingLabel')}
+          >
+            {direction === 'rtl' ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+          </motion.button>
+        )}
+
         <motion.button
           type="button"
           whileTap={{ scale: 0.95 }}
           onClick={onHomeClick}
-          className="flex items-center gap-2 min-w-0 hit-target rounded-2xl px-1 cursor-pointer"
+          className="flex items-center gap-2 min-w-0 flex-1 hit-target rounded-2xl px-1 cursor-pointer"
           aria-label={t('home')}
           title={t('backToHomeTitle')}
         >

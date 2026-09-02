@@ -227,9 +227,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const hasQuiz = lesson.quiz.length > 0;
   const quizPassed = quizAlreadyValidated || quiz.quizFullyPassed;
   const quizAnswered = quizAlreadyValidated || quiz.quizAnswered;
-  // 1AP/2AP: answering the quiz is enough to move on — 2AP quizzes are mostly single-question,
-  // requiring a perfect pass would gate an entire term's progress on one QCM.
-  const canCompleteLesson = isCompactGrade ? !hasQuiz || quizAnswered : !hasQuiz || quizPassed;
+  // Moving to the next lesson is never gated by the quiz — quizPassed/quizAnswered still drive
+  // progress tracking (onQuizFullyValidated below) and badges, just not navigation.
+  const canCompleteLesson = true;
 
   const finishAndContinue = () => {
     if (!canCompleteLesson) return;
@@ -343,19 +343,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 </Button>
 
                 <Button
-                  variant={isLastStep && canCompleteLesson ? 'info' : 'outline'}
+                  variant={isLastStep ? 'info' : 'outline'}
                   size="md"
-                  icon={isLastStep && canCompleteLesson ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
+                  icon={isLastStep ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
                   iconPosition="end"
-                  disabled={!nextLesson || !isLastStep || !canCompleteLesson}
+                  disabled={!nextLesson || !isLastStep}
                   onClick={() => {
-                    if (!isLastStep || !canCompleteLesson || !nextLesson) return;
+                    if (!isLastStep || !nextLesson) return;
                     finishAndContinue();
                   }}
                   title={
-                    !canCompleteLesson
-                      ? 'أجب عن الاختبار بشكل صحيح للانتقال للدرس التالي 🔒'
-                      : !isLastStep
+                    !isLastStep
                       ? 'أكمل جميع مراحل هذا الدرس للتمكن من الانتقال للدرس التالي 🔒'
                       : nextLesson
                       ? `الدرس التالي: ${renderArabicText(nextLesson.titleAr)}`
@@ -730,7 +728,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         compact={isCompactGrade}
         playful={isPlayful1AP}
         hasQuiz={hasQuiz}
-        quizPassed={canCompleteLesson}
+        quizPassed={quizPassed}
         onGoToStep={goToStep}
         onFinishLesson={finishAndContinue}
       />
