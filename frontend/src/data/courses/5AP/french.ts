@@ -1119,7 +1119,7 @@ export const FRENCH_5AP: CourseLesson[] = [
     id: 'french-5ap-projet2-voix-passive',
     grade: '5AP',
     subject: 'french',
-    categoryAr: 'Projet 2 : Les catastrophes naturelles et les métiers de secours',
+    categoryAr: 'Complément grammatical (hors programme officiel) : La voix passive',
     unitAr: 'Projet 2 : Les catastrophes naturelles et les métiers de secours',
     trimester: 2,
     difficultyTier: 3,
@@ -1136,7 +1136,7 @@ export const FRENCH_5AP: CourseLesson[] = [
     ],
     missionTitleAr: '🎬 Mission : Journaliste des catastrophes',
     missionIntroAr: 'Tu es journaliste ! Pour rendre tes reportages plus percutants, apprends à transformer « Le pompier a sauvé l\'enfant » en « L\'enfant a été sauvé par le pompier » grâce à la voix passive.',
-    titleAr: 'Complément du Projet 2 : La voix passive simple',
+    titleAr: 'Complément grammatical (hors programme officiel) : La voix passive simple',
     summaryAr: `Dans cette leçon complémentaire du Projet 2, l'élève apprend à transformer une phrase active simple en phrase passive (et inversement), en utilisant l'auxiliaire être + participe passé et le complément d'agent introduit par « par ».`,
     detailedCourse: {
         introAr: 'Dans une phrase active, le sujet fait l\'action (Le pompier sauve l\'enfant). Dans une phrase passive, le sujet subit l\'action (L\'enfant est sauvé par le pompier). C\'est très utile pour raconter un événement en mettant l\'accent sur la victime ou le résultat plutôt que sur celui qui agit.',

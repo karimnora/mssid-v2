@@ -439,9 +439,9 @@ export const ENGLISH_5AP: CourseLesson[] = [
         {
             tier: 5,
             labelAr: 'Example 5 — Challenge',
-            problem: 'Correct this sentence: « A carpenter work at an bakery. »',
-            stepsAr: ['carpenter = he، فيأخذ الفعل works وليس work.', 'bakery تبدأ بصوت ساكن /b/، فتأخذ a وليس an.'],
-            solution: '« A carpenter works at a bakery. »',
+            problem: 'Correct this sentence: « A carpenter work at an workshop. »',
+            stepsAr: ['carpenter = he، فيأخذ الفعل works وليس work.', 'workshop تبدأ بصوت ساكن /w/، فتأخذ a وليس an.'],
+            solution: '« A carpenter works at a workshop. »',
         },
     ],
     rulesAr: [
@@ -1594,7 +1594,7 @@ export const ENGLISH_5AP: CourseLesson[] = [
     examplesAr: [
         {
             problem: 'Dialogue: Complete the conversation about a family trip.\nMother: "___ are we going to travel to Oran?"\nDaughter: "We ___ going to travel ___ car."\nFather: "Don\'t forget your ___ and your ___!"',
-            solution: 'Mother: "How are we going to travel to Oran?"\nDaughter: "We are going to travel by car."\nFather: "Don\'t forget your passport and your ticket!"',
+            solution: 'Mother: "How are we going to travel to Oran?"\nDaughter: "We are going to travel by car."\nFather: "Don\'t forget your suitcase and your map!"',
         },
     ],
     progressiveExercises: [
@@ -2089,7 +2089,7 @@ export const ENGLISH_5AP: CourseLesson[] = [
             level: 4,
             levelLabelAr: '🏆 Challenge: I correct',
             type: 'fill_blank',
-            problemAr: 'Correct this sentence: « This is the goodest book I have ever read. » (write only the corrected word)',
+            problemAr: 'Correct this sentence: « This is the goodest book I read this year. » (write only the corrected word)',
             hintsAr: ['«good» صفة غير منتظمة.'],
             progressiveHints: [
                 { labelAr: 'Petit indice', contentAr: '«good» لا تتبع القاعدة العادية.' },
@@ -2100,7 +2100,7 @@ export const ENGLISH_5AP: CourseLesson[] = [
             ],
             fillBlankAnswerAr: 'best',
             solutionAr: 'best',
-            detailedCorrectionAr: '« This is the best book I have ever read. » — good صفة غير منتظمة: good-better-the best.',
+            detailedCorrectionAr: '« This is the best book I read this year. » — good صفة غير منتظمة: good-better-the best.',
             xpReward: 25,
         },
     ],
@@ -2262,7 +2262,7 @@ export const ENGLISH_5AP: CourseLesson[] = [
             { mistakeAr: 'استعمال الفعل في صيغة الماضي بعد did في السؤال أو النفي.', correctionAr: 'بعد did/didn\'t نستعمل الفعل في صورته الأصلية: Did you go؟ (وليس Did you went؟), I didn\'t go (وليس I didn\'t went).' },
             { mistakeAr: 'نسيان -ed مع الأفعال المنتظمة.', correctionAr: 'الأفعال المنتظمة تحتاج دائماً -ed في الماضي: I played, وليس I play (بالنسبة لحدث ماضٍ).' },
         ],
-        takeawayAr: 'الأفعال المنتظمة: فعل + -ed (played, watched). الأفعال غير المنتظمة: تصريف خاص يُحفظ (went, had, saw, ate). السؤال: Did + sujet + fعل أصلي؟ النفي: sujet + didn\'t + فعل أصلي.',
+        takeawayAr: 'الأفعال المنتظمة: فعل + -ed (played, watched). الأفعال غير المنتظمة: تصريف خاص يُحفظ (went, had, saw, ate). السؤال: Did + sujet + فعل أصلي؟ النفي: sujet + didn\'t + فعل أصلي.',
     },
     progressiveWorkedExamples: [
         {

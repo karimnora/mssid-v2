@@ -132,7 +132,8 @@ export const TAMAZIGHT_5AP: CourseLesson[] = [
       introAr: 'تزخر الجزائر بثروة حيوانية ونباتية فريدة من جبال جرجرة والأوراس إلى رمال الأهقار والتاسيلي. الحفاظ على هذه الثروة واجب وطني وإنساني.',
       vocabulary: [
         { termAr: 'Izem (ⵉⵣⴻⵎ)', definitionAr: 'الأسد (رمز الشجاعة والقوة).' },
-        { termAr: 'Awrɣ / Aɣilas (ⴰⵡⵔⵖ / ⴰⵖⵉⵍⴰⵙ)', definitionAr: 'الفنك الصحراوي / الفهد الإفريقي.' },
+        { termAr: 'Awrɣ (ⴰⵡⵔⵖ)', definitionAr: 'الفنك الصحراوي.' },
+        { termAr: 'Aɣilas (ⴰⵖⵉⵍⴰⵙ)', definitionAr: 'الفهد.' },
         { termAr: 'Igider (ⵉⴳⵉⴷⴻⵔ)', definitionAr: 'النسر الحائم في قمم الجبال.' },
         { termAr: 'Tawennaḍt (ⵜⴰⵡⴻⵏⵏⴰⴹⵜ)', definitionAr: 'البيئة والطبيعة المحيطة بنا.' },
       ],

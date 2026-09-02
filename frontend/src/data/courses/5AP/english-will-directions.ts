@@ -47,10 +47,10 @@ export const ENGLISH_5AP_WILL_DIRECTIONS: CourseLesson[] = [
       takeawayAr: 'will + V | am/is/are going to + V. Holidays in Algeria: Tlemcen, Jijel, Ghardaïa…',
     },
     rulesAr: [
-      'Will + base verb: I/you/he/she/we/they will visit.',
-      'Going to: I am / he is / we are going to + verb.',
-      'Will: promise or instant decision. Going to: plan already made.',
-      'Time words: tomorrow, next Friday, next summer.',
+      'Will + base verb: I/you/he/she/we/they will visit. (will + الفعل الأصلي، بدون to)',
+      'Going to: I am / he is / we are going to + verb. (be + going to + الفعل، لخطة مُعدّة مسبقاً)',
+      'Will: promise or instant decision. Going to: plan already made. (will = وعد أو قرار فوري، going to = خطة جاهزة)',
+      'Time words: tomorrow, next Friday, next summer. (غداً، الجمعة القادمة، الصيف القادم)',
     ],
     interactiveTool: 'english_dialogue_lab',
     languageInteractive: {
@@ -228,10 +228,10 @@ export const ENGLISH_5AP_WILL_DIRECTIONS: CourseLesson[] = [
       takeawayAr: 'How do I get to…? Turn left / right. Go straight on. It is next to / opposite.',
     },
     rulesAr: [
-      'Ask: How do I get to the school? / Where is the mosque?',
-      'Move: turn left, turn right, go straight on, take the first street on the left.',
-      'Place: next to, opposite, between, on the corner.',
-      'Polite: Excuse me… Thank you.',
+      'Ask: How do I get to the school? / Where is the mosque? (كيف أصل إلى...؟ / أين يقع...؟)',
+      'Move: turn left, turn right, go straight on, take the first street on the left. (انعطف يساراً، انعطف يميناً، سِر مباشرة، خذ أول شارع على اليسار)',
+      'Place: next to, opposite, between, on the corner. (بجانب، مقابل، بين، عند الزاوية)',
+      'Polite: Excuse me… Thank you. (عفواً... شكراً)',
     ],
     interactiveTool: 'english_dialogue_lab',
     languageInteractive: {
