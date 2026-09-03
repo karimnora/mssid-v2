@@ -46,6 +46,28 @@ export const TAMAZIGHT_3AP: CourseLesson[] = [
         solution: 'الحرف هو ⴰ (A) ويعني الماء.',
       },
     ],
+    progressiveExercises: [
+      {
+        id: 'ex1-tz3ap-lettres-1',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — سهل',
+        problemAr: 'ما هو الحرف الذي ينطق مثل الباء (B) في كلمة « Baba » (أبي) ؟',
+        hintsAr: ['ابحث عن الحرف الثاني في قائمة الحروف الأساسية'],
+        solutionAr: 'ⴱ (B)',
+        detailedCorrectionAr: 'أحسنت! 👏 ⴱ ينطق مثل الباء، كما في كلمة Baba (أبي).',
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-tz3ap-lettres-2',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — متوسط',
+        problemAr: 'كلمة « Taddart » (قرية) تبدأ بأي حرف من حروف التيفيناغ ؟',
+        hintsAr: ['هو الحرف الذي ينطق مثل التاء (T)'],
+        solutionAr: 'ⵜ (T)',
+        detailedCorrectionAr: 'ممتاز! ✨ ⵜ ينطق مثل التاء، كما في Taddart (قرية).',
+        xpReward: 15,
+      },
+    ],
     interactiveTool: 'tamazight_lab',
     quiz: [
       {
@@ -114,6 +136,28 @@ export const TAMAZIGHT_3AP: CourseLesson[] = [
         solution: 'Amellal (أبيض ناصع).',
       },
     ],
+    progressiveExercises: [
+      {
+        id: 'ex1-tz3ap-couleurs-1',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — سهل',
+        problemAr: 'ما هو اللون « Aberkan » (ⴰⴱⴻⵔⴽⴰⵏ) ؟',
+        hintsAr: ['هو لون الليل'],
+        solutionAr: 'الأسود',
+        detailedCorrectionAr: 'أحسنت! 👏 Aberkan يعني الأسود، لون الليل.',
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-tz3ap-couleurs-2',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — متوسط',
+        problemAr: 'رتب ألوان العلم الوطني الجزائري بالأمازيغية كما تظهر عليه: الأخضر ثم الأبيض ثم الأحمر.',
+        hintsAr: ['الأخضر = Azegzaw، الأبيض = Amellal، الأحمر = Azeggaɣ'],
+        solutionAr: 'Azegzaw، Amellal، Azeggaɣ',
+        detailedCorrectionAr: 'ممتاز! ✨ العلم الجزائري: Azegzaw (أخضر) + Amellal (أبيض) + Azeggaɣ (أحمر، مع الهلال والنجمة).',
+        xpReward: 15,
+      },
+    ],
     interactiveTool: 'tamazight_lab',
     quiz: [
       {
@@ -178,6 +222,28 @@ export const TAMAZIGHT_3AP: CourseLesson[] = [
       {
         problem: 'ما معنى المثل الشعبي الأمازيغي: « Afus deg ufus » ؟',
         solution: 'معناه: يداً في يد للتعاون وبناء الوطن (التويزة الجزائرية).',
+      },
+    ],
+    progressiveExercises: [
+      {
+        id: 'ex1-tz3ap-corps-1',
+        level: 1,
+        levelLabelAr: '🟢 المستوى 1 — سهل',
+        problemAr: 'كيف تسمى « القدم » بالأمازيغية ؟',
+        hintsAr: ['لا تخلط بينها وبين Afus (اليد)'],
+        solutionAr: 'Aḍar',
+        detailedCorrectionAr: 'أحسنت! 👏 Aḍar تعني القدم/الرجل، بينما Afus تعني اليد.',
+        xpReward: 10,
+      },
+      {
+        id: 'ex2-tz3ap-corps-2',
+        level: 2,
+        levelLabelAr: '🟡 المستوى 2 — متوسط',
+        problemAr: 'ما اسم الحيوان الأليف « Amcic » بالعربية ؟',
+        hintsAr: ['حيوان أليف صغير يعيش في البيوت الجزائرية'],
+        solutionAr: 'القط',
+        detailedCorrectionAr: 'ممتاز! ✨ Amcic هو القط الأليف الجميل.',
+        xpReward: 15,
       },
     ],
     interactiveTool: 'tamazight_lab',

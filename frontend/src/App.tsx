@@ -135,6 +135,7 @@ export default function App() {
   const advancedLabsFlag = useFeatureFlag('advancedLabs');
   const enableTrimesterPaywall = useFeatureFlag('enableTrimesterPaywall');
   const enablePaymentsFlag = useFeatureFlag('enablePayments');
+  const curriculumReviewGate = useFeatureFlag('curriculumReviewGate');
 
   const isSubjectVisible = (s: SubjectInfo): boolean =>
     isSubjectFeatureEnabled(s, {
@@ -161,6 +162,12 @@ export default function App() {
     };
   }, []);
 
+  // Once enabled by an administrator, this release gate keeps unverified content out of the
+  // learner catalog. It is deliberately stricter than a visual warning.
+  const publishableCourses = (coursesData ?? []).filter(
+    (lesson) => !curriculumReviewGate || lesson.contentSource === 'official_verified'
+  );
+
   const isGuest = !authUser;
 
   // Guest gate: no account yet → only the first lesson of each subject is open (isLessonLocked),
@@ -168,7 +175,7 @@ export default function App() {
   // blocked here first anyway — onLessonLocked below always routes a guest to the login modal
   // rather than the payment paywall, since "create an account" is the actionable first step.
   const isLessonLocked = (lesson: CourseLesson): boolean => {
-    if (isGuest && !isLessonFreeForGuest(lesson, coursesData)) return true;
+    if (isGuest && !isLessonFreeForGuest(lesson, publishableCourses)) return true;
     return isLessonLockedCheck(lesson, {
       enablePayments: enablePaymentsFlag,
       enableTrimesterPaywall,
@@ -206,9 +213,13 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nav.isAdminConsoleActive, isAuthLoading, authUser?.role]);
 
-  const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter((s) => isToolAvailableForGrade(s, nav.grade) && isSubjectVisible(s));
+  const visibleCourseSubjects = COURSE_SUBJECTS_LIST.filter((s) =>
+    isToolAvailableForGrade(s, nav.grade) &&
+    isSubjectVisible(s) &&
+    publishableCourses.some((lesson) => lesson.grade === nav.grade && lesson.subject === s.id)
+  );
   const availableLabsForGrade = INTERACTIVE_LABS_LIST.filter((tool) => isToolAvailableForGrade(tool, nav.grade) && isSubjectVisible(tool));
-  const currentLessons = (coursesData ?? []).filter(
+  const currentLessons = publishableCourses.filter(
     (l) => l.subject === nav.selectedSubject &&
       (l.grade === nav.grade || nav.selectedSubject === 'soroban') &&
       (selectedTrimester === 'all' || l.trimester === selectedTrimester)
@@ -392,7 +403,7 @@ export default function App() {
               <CourseSelectionView
                 grade={nav.grade}
                 courseSubjects={visibleCourseSubjects}
-                allCourseLessons={coursesData ?? []}
+                allCourseLessons={publishableCourses}
                 completedLessonIds={progress.userProfile.completedLessonIds}
                 onSelectLesson={nav.handleSelectLesson}
                 isLessonLocked={isLessonLocked}

@@ -703,6 +703,24 @@ export type LanguageInteractiveConfig = LanguageVocabExplorer | LanguageDialogue
 // when rendering, not 'complementary' (we don't actually know their provenance either).
 export type ContentSource = 'official_verified' | 'corroborated' | 'complementary' | 'needs_verification';
 
+/** A media asset must be traceable and have a child-facing purpose before it is published. */
+export interface LessonMediaAsset {
+  id: string;
+  type: 'image' | 'illustration' | 'audio';
+  src: string;
+  /** Short Arabic alternative text; required for images and illustrations. */
+  altAr?: string;
+  /** What the child is meant to learn from this asset, not merely its visual description. */
+  pedagogicalPurposeAr: string;
+  /** Source, licence, or owning author. */
+  source: string;
+  /** ISO date of the last content/voice review. */
+  reviewedAt: string;
+  /** Required for audio: language and a human-approved transcript. */
+  language?: Language;
+  transcript?: string;
+}
+
 export type SourceType = 'ministry_official' | 'secondary_corroboration' | 'original_authoring';
 export type ConfidenceLevel = 'high' | 'medium' | 'low';
 
@@ -794,6 +812,8 @@ export interface CourseLesson {
   sourceType?: SourceType;
   sourceReference?: string; // e.g. a document name or the corroborating platform/URL — not a claim of official authority by itself
   confidenceLevel?: ConfidenceLevel;
+  /** Media contract used by editorial QA. Empty/absent means no asset has been approved for this lesson yet. */
+  mediaAssets?: LessonMediaAsset[];
 
   // --- Pedagogical depth expansion (consolidation round 2) ---
   objectivesAr?: string[]; // "À la fin de cette leçon, je sais : ..." — shown at the start AND revisited as a self-check after the evaluation

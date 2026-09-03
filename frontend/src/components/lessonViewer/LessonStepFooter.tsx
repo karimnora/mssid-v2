@@ -35,9 +35,9 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
   onGoToStep,
   onFinishLesson,
 }) => {
-  // Finishing/advancing is never gated by the quiz — `quizPassed` below only drives the
-  // informational nudge message, not whether the student can move on.
-  const canFinish = true;
+  // Browsing is free, but completion is reserved for a validated quiz so progress reflects
+  // understanding rather than only navigation.
+  const canFinish = !hasQuiz || quizPassed;
 
   const handlePrev = () => {
     if (currentStepIndex > 0) onGoToStep(currentStepIndex - 1);
@@ -169,10 +169,11 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
               type="button"
               data-primary-cta="finish-lesson"
               onClick={onFinishLesson}
+              disabled={!canFinish}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-              className={`bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer flex items-center gap-2 min-w-0 ${compact ? 'min-h-14' : ''}`}
+              className={`bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm px-8 py-3.5 rounded-3xl shadow-md cursor-pointer flex items-center gap-2 min-w-0 disabled:opacity-50 disabled:cursor-not-allowed ${compact ? 'min-h-14' : ''}`}
             >
               <span className="truncate">
                 {nextLesson ? `الدرس الموالي: ${renderArabicText(nextLesson.titleAr)}` : 'العودة لقائمة الدروس'}

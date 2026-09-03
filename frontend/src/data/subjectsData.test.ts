@@ -51,17 +51,24 @@ describe('isSubjectFeatureEnabled (flag-gated subject/tool visibility)', () => {
 // entirely (unlike tamazight, which already had one), so isToolAvailableForGrade treated them as
 // grade-agnostic and showed them everywhere.
 describe('course subjects that only exist from 3AP onward are hidden for 1AP/2AP', () => {
-  const gatedIds = ['french', 'english', 'history_geo'];
+  // French moved from minGrade 3AP to 4AP for the rentrée 2026-2027 (MEN announcement,
+  // 2026-07-30): English still starts 3AP, but French no longer does. See CLAUDE.md § 2.B.
+  const gatedFrom3Ap = ['english', 'history_geo'];
 
-  it('french, english and history_geo all declare minGrade: 3AP', () => {
-    gatedIds.forEach((id) => {
+  it('english and history_geo declare minGrade: 3AP', () => {
+    gatedFrom3Ap.forEach((id) => {
       const subject = COURSE_SUBJECTS_LIST.find((s) => s.id === id);
       expect(subject?.minGrade, `${id} should declare minGrade`).toBe('3AP');
     });
   });
 
-  it('are hidden for 1AP and 2AP, visible from 3AP onward', () => {
-    const subjects = gatedIds.map((id) => COURSE_SUBJECTS_LIST.find((s) => s.id === id)!);
+  it('french declares minGrade: 4AP (rentrée 2026-2027)', () => {
+    const french = COURSE_SUBJECTS_LIST.find((s) => s.id === 'french');
+    expect(french?.minGrade).toBe('4AP');
+  });
+
+  it('english and history_geo are hidden for 1AP/2AP, visible from 3AP onward', () => {
+    const subjects = gatedFrom3Ap.map((id) => COURSE_SUBJECTS_LIST.find((s) => s.id === id)!);
     subjects.forEach((s) => {
       expect(isToolAvailableForGrade(s, '1AP')).toBe(false);
       expect(isToolAvailableForGrade(s, '2AP')).toBe(false);
@@ -71,11 +78,27 @@ describe('course subjects that only exist from 3AP onward are hidden for 1AP/2AP
     });
   });
 
+  it('french is hidden for 1AP/2AP/3AP, visible from 4AP onward', () => {
+    const french = COURSE_SUBJECTS_LIST.find((s) => s.id === 'french')!;
+    expect(isToolAvailableForGrade(french, '1AP')).toBe(false);
+    expect(isToolAvailableForGrade(french, '2AP')).toBe(false);
+    expect(isToolAvailableForGrade(french, '3AP')).toBe(false);
+    expect(isToolAvailableForGrade(french, '4AP')).toBe(true);
+    expect(isToolAvailableForGrade(french, '5AP')).toBe(true);
+  });
+
   it('1AP/2AP see only the 5 official subjects: arabic, math, science, islamic, civics', () => {
     ['1AP', '2AP'].forEach((grade) => {
       const visible = COURSE_SUBJECTS_LIST.filter((s) => isToolAvailableForGrade(s, grade as any)).map((s) => s.id).sort();
       expect(visible).toEqual(['arabic', 'civics', 'islamic', 'math', 'science'].sort());
     });
+  });
+
+  it('3AP sees english and history_geo but not french', () => {
+    const visible = COURSE_SUBJECTS_LIST.filter((s) => isToolAvailableForGrade(s, '3AP')).map((s) => s.id);
+    expect(visible).toContain('english');
+    expect(visible).toContain('history_geo');
+    expect(visible).not.toContain('french');
   });
 });
 

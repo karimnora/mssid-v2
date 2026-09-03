@@ -7,7 +7,9 @@ export type FeatureFlagName =
   | 'educationalCalculator'
   | 'writingLab'
   | 'enablePrintablePDFs'
-  | 'enableTrimesterPaywall';
+  | 'enableTrimesterPaywall'
+  /** When enabled by an administrator, expose only lessons explicitly verified against the curriculum. */
+  | 'curriculumReviewGate';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Off at launch: ship a fully free app first, flip on (via the admin Feature Flags tab) once
@@ -26,6 +28,9 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Off by default: T2/T3 stay fully open during the content-review/testing phase before launch.
   // Flip to true (via the admin CMS Config tab) once the paid subscription is ready to enforce.
   enableTrimesterPaywall: false,
+  // Kept off while the catalog is reviewed. Before a production release an administrator can turn
+  // it on to prevent unverified or complementary content from being presented as school content.
+  curriculumReviewGate: false,
 };
 
 const OVERRIDES_STORAGE_KEY = 'mssid_feature_flag_overrides';

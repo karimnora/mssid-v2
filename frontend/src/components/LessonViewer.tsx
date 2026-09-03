@@ -201,22 +201,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       });
     }
 
-    if (grade === '3AP' && steps.length > 4) {
-      const preferred: TabId[] = ['explanation', 'content', 'practice', 'quiz'];
-      const picked = preferred
-        .map((id) => steps.find((s) => s.id === id))
-        .filter((s): s is LessonStep => Boolean(s));
-      if (picked.length < 4) {
-        for (const step of steps) {
-          if (picked.length >= 4) break;
-          if (!picked.some((s) => s.id === step.id) && step.id !== 'gameplay' && step.id !== 'interactive') {
-            picked.push(step);
-          }
-        }
-      }
-      return picked.slice(0, 4);
-    }
-
     return steps;
   }, [isPlayful1AP, showInteractive, lesson, practice.evaluationExercises.length, grade]);
 
@@ -227,9 +211,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const hasQuiz = lesson.quiz.length > 0;
   const quizPassed = quizAlreadyValidated || quiz.quizFullyPassed;
   const quizAnswered = quizAlreadyValidated || quiz.quizAnswered;
-  // Moving to the next lesson is never gated by the quiz — quizPassed/quizAnswered still drive
-  // progress tracking (onQuizFullyValidated below) and badges, just not navigation.
-  const canCompleteLesson = true;
+  // Browsing stays free, but a quiz-bearing lesson cannot be completed before the child has
+  // received feedback on each question and found every correct answer.
+  const canCompleteLesson = !hasQuiz || quizPassed;
 
   const finishAndContinue = () => {
     if (!canCompleteLesson) return;
@@ -347,9 +331,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   size="md"
                   icon={isLastStep ? <ChevronLeft className="w-4 h-4" /> : <Lock className="w-3.5 h-3.5" />}
                   iconPosition="end"
-                  disabled={!nextLesson || !isLastStep}
+                  disabled={!nextLesson || !isLastStep || !canCompleteLesson}
                   onClick={() => {
-                    if (!isLastStep || !nextLesson) return;
+                    if (!isLastStep || !nextLesson || !canCompleteLesson) return;
                     finishAndContinue();
                   }}
                   title={

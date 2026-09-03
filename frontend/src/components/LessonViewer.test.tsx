@@ -93,8 +93,8 @@ describe('LessonViewer — 1AP parent info panel', () => {
   });
 });
 
-describe('LessonViewer — 3AP max 4 steps', () => {
-  it('caps the 3AP step strip at four tabs even when the lesson has extra stages', () => {
+describe('LessonViewer — 3AP complete pedagogical path', () => {
+  it('keeps every available stage visible rather than hiding an interaction or evaluation', () => {
     const lesson3ap: CourseLesson = {
       ...lesson,
       id: 'math-3ap-sample',
@@ -135,6 +135,6 @@ describe('LessonViewer — 3AP max 4 steps', () => {
 
     const strip = container.querySelector('[data-lesson-step-count]');
     expect(strip).toBeTruthy();
-    expect(Number(strip?.getAttribute('data-lesson-step-count'))).toBeLessThanOrEqual(4);
+    expect(Number(strip?.getAttribute('data-lesson-step-count'))).toBe(5);
   });
 });
