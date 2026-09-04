@@ -910,14 +910,16 @@ export type BadgeCriteria =
   | { type: 'exam_completed_count'; count: number }
   | { type: 'challenge_completed_count'; count: number }
   | { type: 'game_completed_count'; count: number }
-  | { type: 'lab_visited'; labId: SubjectId };
+  | { type: 'lab_visited'; labId: SubjectId }
+  /** Every lesson of the given grade (all subjects, all trimesters) is in completedLessonIds — the "diploma" unlock condition. */
+  | { type: 'grade_completed'; grade: PrimaryGrade };
 
 export interface Badge {
   id: string;
   titleAr: string;
   descriptionAr: string;
   icon: string;
-  category: 'math' | 'soroban' | 'arabic' | 'tamazight' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'games' | 'general';
+  category: 'math' | 'soroban' | 'arabic' | 'tamazight' | 'exams' | 'streak' | 'french' | 'english' | 'history_geo' | 'science' | 'islamic' | 'civics' | 'challenges' | 'games' | 'general' | 'diploma';
   criteria: BadgeCriteria;
 }
 

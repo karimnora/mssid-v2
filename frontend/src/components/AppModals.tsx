@@ -47,6 +47,8 @@ interface AppModalsProps {
   onStartHomework: (subject: CourseLesson['subject']) => void;
   onGradeChange: (grade: PrimaryGrade) => void;
   onOpenAuthModal: () => void;
+  /** Routes into preschool mode right after a "préscolaire" registration (AuthModal's landOnPreschool flag). */
+  onEnterPreschool: () => void;
   onLogout: () => void;
   onOpenAdminConsole: () => void;
   onOpenContactModal: () => void;
@@ -78,6 +80,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onStartHomework,
   onGradeChange,
   onOpenAuthModal,
+  onEnterPreschool,
   onLogout,
   onOpenAdminConsole,
   onOpenContactModal,
@@ -182,10 +185,15 @@ export const AppModals: React.FC<AppModalsProps> = ({
       contextMessage={modals.authModalReason}
       onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
       onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}
-      onAuthSuccess={() => {
+      onAuthSuccess={(_user, opts) => {
         const freshUser = AuthService.getCurrentUser();
         if (freshUser && !freshUser.emailVerified) {
           modals.setIsEmailVerifyPopupOpen(true);
+        }
+
+        if (opts?.landOnPreschool) {
+          onEnterPreschool();
+          return;
         }
 
         const raw = sessionStorage.getItem('redirect_after_auth');

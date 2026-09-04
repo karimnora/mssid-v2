@@ -83,6 +83,40 @@ describe('AuthModal Integration Tests', () => {
     });
   });
 
+  it('offers a préscolaire option that registers as 1AP and flags landOnPreschool on success', async () => {
+    const handleAuthSuccess = vi.fn();
+    const mockFetch = vi.fn().mockResolvedValue({
+      status: 200,
+      ok: true,
+      headers: new Headers({ 'content-type': 'application/json' }),
+      json: async () => ({ nom: 'ياسمين', email: 'yasmine@mssid.dz', roleName: 'ROLE_FREE', user: { grade: '1AP' } }),
+    });
+    global.fetch = mockFetch;
+
+    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={handleAuthSuccess} />);
+    fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
+
+    fireEvent.change(screen.getByPlaceholderText('مثال: يونس الجزائري'), { target: { value: 'ياسمين' } });
+    fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'yasmine@mssid.dz' } });
+    fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'password123' } });
+    const gradeSelect = screen.getByText('المستوى الدراسي:').closest('div')!.querySelector('select')!;
+    fireEvent.change(gradeSelect, { target: { value: 'prescolaire' } });
+
+    const form = screen.getByPlaceholderText('example@mssid.dz').closest('form')!;
+    fireEvent.submit(form);
+
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/v1/auth/register'),
+        expect.objectContaining({ body: expect.stringContaining('"grade":"1AP"') })
+      );
+      expect(handleAuthSuccess).toHaveBeenCalledWith(
+        expect.objectContaining({ email: 'yasmine@mssid.dz' }),
+        { landOnPreschool: true }
+      );
+    });
+  });
+
   it('triggers onAuthSuccess and onClose upon submitting login credentials (Happy Path)', async () => {
     const handleAuthSuccess = vi.fn();
     const handleClose = vi.fn();

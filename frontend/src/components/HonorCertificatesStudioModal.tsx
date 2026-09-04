@@ -21,6 +21,7 @@ import {
   Heart,
   Feather,
   Smile,
+  Lock,
 } from 'lucide-react';
 import { PrimaryGrade, UserProfile } from '../types';
 import { WILAYAS_LIST } from '../data/wilayasData';
@@ -43,7 +44,20 @@ export type CertificateTemplateId =
   | 'daily_perseverance'
   | 'first_ap_graduate'
   | 'second_ap_graduate'
+  | 'third_ap_graduate'
+  | 'fourth_ap_graduate'
   | 'exam_acquis_5ap';
+
+/** The five grade-completion "graduate" diplomas, each locked behind the matching `diploma_XAP`
+ * badge (see data/badgesData.ts) until every lesson of that grade is completed — unlike the other
+ * templates above, which stay freely printable at any time as parent/teacher-awarded honors. */
+const GRADE_DIPLOMA_TEMPLATES: Partial<Record<CertificateTemplateId, { grade: PrimaryGrade; badgeId: string }>> = {
+  first_ap_graduate: { grade: '1AP', badgeId: 'diploma_1ap' },
+  second_ap_graduate: { grade: '2AP', badgeId: 'diploma_2ap' },
+  third_ap_graduate: { grade: '3AP', badgeId: 'diploma_3ap' },
+  fourth_ap_graduate: { grade: '4AP', badgeId: 'diploma_4ap' },
+  exam_acquis_5ap: { grade: '5AP', badgeId: 'diploma_5ap' },
+};
 
 interface CertificateTemplate {
   id: CertificateTemplateId;
@@ -168,6 +182,30 @@ const CERTIFICATE_TEMPLATES: CertificateTemplate[] = [
     defaultMotivation: 'تتويجاً لمساره المتميز في السنة الثانية: تجاوز عتبة المئات، أتقن الجمع بالاحتفاظ، وخطا خطوات واثقة في عالم الضرب والقراءة. ألف مبروك يا نجم السنة الثانية!',
   },
   {
+    id: 'third_ap_graduate',
+    titleAr: 'شَهَادَةُ فَاتِحِي الضَّرْبِ وَالهَنْدَسَةِ: نَجَاحُ السَّنَةِ الثَّالِثَة',
+    subtitleAr: 'DIPLÔME DE RÉUSSITE — FIN DE 3ÈME ANNÉE PRIMAIRE',
+    badgeEmoji: '📐',
+    primaryColor: 'from-sky-700 via-blue-600 to-teal-600',
+    borderClass: 'border-sky-600',
+    themeBg: 'bg-gradient-to-br from-sky-50/70 via-white to-teal-50/60',
+    sealDefault: 'didou_seal',
+    recommendedFor: 'إتقان الأعداد إلى 99999، جداول الضرب كاملة، والمستقيمات المتعامدة',
+    defaultMotivation: 'تتويجاً لمساره المتميز في السنة الثالثة: أتقن جداول الضرب، خطا خطواته الأولى في الإنجليزية، واكتشف عالم الهندسة والقياس بثقة. ألف مبروك يا بطل السنة الثالثة!',
+  },
+  {
+    id: 'fourth_ap_graduate',
+    titleAr: 'شَهَادَةُ سَادَةِ القِسْمَةِ وَالْجُغْرَافِيَا: نَجَاحُ السَّنَةِ الرَّابِعَة',
+    subtitleAr: 'DIPLÔME DE RÉUSSITE — FIN DE 4ÈME ANNÉE PRIMAIRE',
+    badgeEmoji: '🗺️',
+    primaryColor: 'from-indigo-600 via-purple-500 to-violet-600',
+    borderClass: 'border-indigo-500',
+    themeBg: 'bg-gradient-to-br from-indigo-50/70 via-white to-purple-50/60',
+    sealDefault: 'didou_seal',
+    recommendedFor: 'إتقان القسمة الإقليدية، الكسور، وخريطة الجزائر وتاريخ نوميديا',
+    defaultMotivation: 'تتويجاً لمساره المتميز في السنة الرابعة: أتقن القسمة والكسور، بدأ تعلّم الفرنسية، واكتشف تاريخ وجغرافية وطنه. ألف مبروك يا بطل السنة الرابعة!',
+  },
+  {
     id: 'exam_acquis_5ap',
     titleAr: 'شَهَادَةُ التَّفَوُّقِ فِي تَقْيِيمِ الْمُكْتَسَبَاتِ (5AP)',
     subtitleAr: 'ATTESTATION D\'ÉVALUATION DES ACQUIS DU PRIMAIRE',
@@ -180,6 +218,13 @@ const CERTIFICATE_TEMPLATES: CertificateTemplate[] = [
     defaultMotivation: 'تتويجاً لاجتيازه الموفق والمشرف لكافة ميادين امتحان تقييم مكتسبات مرحلة التعليم الابتدائي واستعداده للانتقال للطور المتوسط.',
   },
 ];
+
+/** Algerian school year runs September→June: before September, we're still in last year's. */
+function currentSchoolYearLabel(): string {
+  const now = new Date();
+  const startYear = now.getMonth() >= 8 ? now.getFullYear() : now.getFullYear() - 1;
+  return `${startYear} / ${startYear + 1}`;
+}
 
 const HONORS_APPRECIATIONS = [
   { id: 'excellence', labelAr: 'بامتياز وتكريم الطاقم التربوي 🌟', labelFr: 'Avec Félicitations du Jury' },
@@ -196,17 +241,17 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
   defaultGrade = '5AP',
 }) => {
   const [selectedTemplateId, setSelectedTemplateId] = useState<CertificateTemplateId>('honor_board');
-  const [studentName, setStudentName] = useState<string>(userProfile?.name || 'محمد أمين بن عيسى');
-  const [schoolName, setSchoolName] = useState<string>('المدرسة الابتدائية الأمير عبد القادر');
+  const [studentName, setStudentName] = useState<string>(userProfile?.name || '');
+  const [schoolName, setSchoolName] = useState<string>('');
   const [selectedWilayaCode, setSelectedWilayaCode] = useState<number>(16); // Alger
   const [grade, setGrade] = useState<PrimaryGrade>(defaultGrade);
-  const [schoolYear, setSchoolYear] = useState<string>('2025 / 2026');
+  const [schoolYear, setSchoolYear] = useState<string>(currentSchoolYearLabel());
   const [trimesterText, setTrimesterText] = useState<string>('الفصل الثاني');
   const [selectedHonor, setSelectedHonor] = useState<string>(HONORS_APPRECIATIONS[0].labelAr);
   const [sealType, setSealType] = useState<'republic_gold' | 'star_crescent' | 'didou_seal' | 'trophy_gold'>('republic_gold');
   const [customMotivation, setCustomMotivation] = useState<string>('');
-  const [teacherTitle, setTeacherTitle] = useState<string>('أستاذ(ة) القسم: ذ. بلقاسم');
-  const [directorTitle, setDirectorTitle] = useState<string>('مدير(ة) المؤسسة: ذ. حـ. سعيدي');
+  const [teacherTitle, setTeacherTitle] = useState<string>('');
+  const [directorTitle, setDirectorTitle] = useState<string>('');
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
   const printRef = useRef<HTMLDivElement>(null);
@@ -231,9 +276,35 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
     // worksheets. This certificate is laid out landscape (280mm wide), so without overriding
     // the page orientation just for this print, the right portion of the diploma gets cut off
     // on paper. Inject a scoped override, print, then remove it once the print dialog closes.
+    //
+    // This override also fixes a real bug: index.css's shared print rule only sets
+    // `visibility: hidden` on the rest of the page (it never removes it from layout), so the
+    // full app underneath the modal (header/main/footer — everything a student was doing before
+    // opening this studio) still occupies its normal document height during print. Combined with
+    // this modal's own `position: fixed` overlay (which Chrome repeats on every generated page,
+    // the same way it repeats a fixed header), that tall hidden content was pushing the print job
+    // to several extra pages, each showing a duplicate of the certificate. Hiding header/main/
+    // footer and neutralizing the overlay's `position: fixed` for the duration of this print job
+    // collapses the document back down to exactly the certificate's own single page.
     const landscapeOverride = document.createElement('style');
     landscapeOverride.setAttribute('data-certificate-print-override', 'true');
-    landscapeOverride.textContent = '@media print { @page { size: A4 landscape; margin: 10mm; } }';
+    landscapeOverride.textContent = `
+      @media print {
+        @page { size: A4 landscape; margin: 10mm; }
+        header, main, footer { display: none !important; }
+        #honor-certificate-studio-overlay {
+          position: static !important;
+          inset: auto !important;
+          padding: 0 !important;
+          background: none !important;
+          backdrop-filter: none !important;
+        }
+        .printable-certificate {
+          min-height: 0 !important;
+          height: auto !important;
+        }
+      }
+    `;
     document.head.appendChild(landscapeOverride);
 
     const cleanup = () => {
@@ -255,7 +326,9 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
       setIsSpeaking(false);
       return;
     }
-    const textToSpeak = `بكل فخر واعتزاز، تمنح مدرسة ${schoolName} بولاية ${selectedWilaya.nameAr}، ${currentTemplate.titleAr} للبطل المجتهد ${studentName}، بالمستوى ${grade}، ${selectedHonor}. ألف مبروك هذا النجاح المشرف!`;
+    const schoolPhrase = schoolName ? `مدرسة ${schoolName} بولاية ${selectedWilaya.nameAr}` : `ولاية ${selectedWilaya.nameAr}`;
+    const namePhrase = studentName || 'بطلنا المجتهد';
+    const textToSpeak = `بكل فخر واعتزاز، تمنح ${schoolPhrase}، ${currentTemplate.titleAr} لـ ${namePhrase}، بالمستوى ${grade}، ${selectedHonor}. ألف مبروك هذا النجاح المشرف!`;
     setIsSpeaking(true);
     speakTextShared(textToSpeak, 'ar-SA', 0.88);
     speechTimeoutRef.current = window.setTimeout(() => {
@@ -267,15 +340,15 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
   const effectiveMotivation = customMotivation.trim() || currentTemplate.defaultMotivation;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md dir-rtl" dir="rtl">
+    <div id="honor-certificate-studio-overlay" className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md dir-rtl" dir="rtl">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl max-w-6xl w-full p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[96vh] overflow-hidden text-right"
+        className="print:max-h-none print:overflow-visible print:p-0 print:shadow-none print:border-0 print:rounded-none bg-white rounded-3xl max-w-6xl w-full p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[96vh] overflow-hidden text-right"
       >
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">
+        <div className="print:hidden flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-amber-500 text-amber-950 border border-amber-300 flex items-center justify-center text-2xl shadow-inner shrink-0">
               📜
@@ -327,9 +400,9 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
         </div>
 
         {/* Studio Body: Left Configuration Panel, Right Live A4 Canvas */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 py-3 overflow-hidden flex-1">
+        <div className="print:block print:overflow-visible print:p-0 print:gap-0 grid grid-cols-1 lg:grid-cols-12 gap-5 py-3 overflow-hidden flex-1">
           {/* Controls Settings (5 Cols) */}
-          <div className="lg:col-span-4 space-y-4 overflow-y-auto pr-1 pl-1">
+          <div className="print:hidden lg:col-span-4 space-y-4 overflow-y-auto pr-1 pl-1">
             {/* 1. Template Choice */}
             <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
               <label className="font-black text-xs text-slate-800 flex items-center gap-1.5">
@@ -337,27 +410,39 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 <span>1. اختر نوع الشهادة والتكريم:</span>
               </label>
               <div className="grid grid-cols-1 gap-1.5 max-h-48 overflow-y-auto pr-1">
-                {CERTIFICATE_TEMPLATES.map((tmpl) => (
-                  <button
-                    key={tmpl.id}
-                    onClick={() => {
-                      setSelectedTemplateId(tmpl.id);
-                      setSealType(tmpl.sealDefault as typeof sealType);
-                      setCustomMotivation('');
-                    }}
-                    className={`p-2.5 rounded-xl border text-right transition-all flex items-center gap-2 cursor-pointer ${
-                      selectedTemplateId === tmpl.id
-                        ? 'bg-amber-50 border-amber-500 text-amber-950 font-black shadow-xs'
-                        : 'bg-white hover:bg-slate-100 border-slate-200 text-slate-700 text-xs font-bold'
-                    }`}
-                  >
-                    <span className="text-xl shrink-0">{tmpl.badgeEmoji}</span>
-                    <div className="overflow-hidden">
-                      <span className="block text-xs truncate font-black">{tmpl.titleAr}</span>
-                      <span className="block text-[10px] text-slate-500 truncate">{tmpl.subtitleAr}</span>
-                    </div>
-                  </button>
-                ))}
+                {CERTIFICATE_TEMPLATES.map((tmpl) => {
+                  const diplomaInfo = GRADE_DIPLOMA_TEMPLATES[tmpl.id];
+                  const isLocked = Boolean(diplomaInfo) && !(userProfile?.badges ?? []).includes(diplomaInfo!.badgeId);
+                  return (
+                    <button
+                      key={tmpl.id}
+                      disabled={isLocked}
+                      onClick={() => {
+                        if (isLocked) return;
+                        setSelectedTemplateId(tmpl.id);
+                        setSealType(tmpl.sealDefault as typeof sealType);
+                        setCustomMotivation('');
+                      }}
+                      title={isLocked ? `يُفتح بعد إكمال جميع دروس السنة ${diplomaInfo!.grade} في كل المواد` : undefined}
+                      className={`p-2.5 rounded-xl border text-right transition-all flex items-center gap-2 ${
+                        isLocked
+                          ? 'bg-slate-50 border-slate-200 text-slate-400 cursor-not-allowed opacity-70'
+                          : selectedTemplateId === tmpl.id
+                          ? 'bg-amber-50 border-amber-500 text-amber-950 font-black shadow-xs cursor-pointer'
+                          : 'bg-white hover:bg-slate-100 border-slate-200 text-slate-700 text-xs font-bold cursor-pointer'
+                      }`}
+                    >
+                      <span className="text-xl shrink-0">{isLocked ? '🔒' : tmpl.badgeEmoji}</span>
+                      <div className="overflow-hidden flex-1">
+                        <span className="block text-xs truncate font-black">{tmpl.titleAr}</span>
+                        <span className="block text-[10px] text-slate-500 truncate">
+                          {isLocked ? `مقفول — أكمل دروس السنة ${diplomaInfo!.grade} كاملة` : tmpl.subtitleAr}
+                        </span>
+                      </div>
+                      {isLocked && <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -500,11 +585,34 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                   className="w-full p-2 bg-white border border-slate-300 rounded-xl font-medium text-slate-800 text-[11px] focus:outline-emerald-500 resize-none"
                 />
               </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <span className="font-bold text-slate-600 block mb-1">توقيع الأستاذ(ة) (اختياري):</span>
+                  <input
+                    type="text"
+                    value={teacherTitle}
+                    onChange={(e) => setTeacherTitle(e.target.value)}
+                    placeholder="مثال: أستاذ(ة) القسم"
+                    className="w-full p-2 bg-white border border-slate-300 rounded-xl font-bold text-slate-800 text-[11px] focus:outline-emerald-500"
+                  />
+                </div>
+                <div>
+                  <span className="font-bold text-slate-600 block mb-1">توقيع إدارة المؤسسة (اختياري):</span>
+                  <input
+                    type="text"
+                    value={directorTitle}
+                    onChange={(e) => setDirectorTitle(e.target.value)}
+                    placeholder="مثال: مدير(ة) المؤسسة"
+                    className="w-full p-2 bg-white border border-slate-300 rounded-xl font-bold text-slate-800 text-[11px] focus:outline-emerald-500"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Live A4 Landscape Certificate Canvas (7 Cols) */}
-          <div className="lg:col-span-8 flex flex-col items-center justify-center p-2 sm:p-4 bg-slate-200/80 rounded-3xl overflow-y-auto border border-slate-300">
+          <div className="print:relative print:block print:p-0 print:bg-transparent print:rounded-none print:border-0 lg:col-span-8 flex flex-col items-center justify-center p-2 sm:p-4 bg-slate-200/80 rounded-3xl overflow-y-auto border border-slate-300">
             <div className="text-center pb-2 text-[11px] text-slate-600 font-bold print:hidden">
               معاينة حية بالحجم الطباعي القياسي (A4 Landscape) — جاهز للتأطير والتعليق
             </div>
@@ -529,20 +637,20 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 <span className="text-[180px] font-black">🇩🇿</span>
               </div>
 
-              {/* Top Header: Official Republic Algerian Header */}
+              {/* Top Header: app-issued framing — never an official Republic/Ministry document. */}
               <div className="text-center space-y-1 relative z-10">
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-xl">🇩🇿</span>
                   <h4 className="text-xs sm:text-sm font-black tracking-widest text-slate-800">
-                    الْجُمْهُورِيَّةُ الْجَزَائِرِيَّةُ الدِّيمُقْرَاطِيَّةُ الشَّعْبِيَّةُ
+                    مَنْصَّةُ مَسِيدْ DZ لِلتَّعْلِيمِ الاِبْتِدَائِيِّ
                   </h4>
                   <span className="text-xl">🇩🇿</span>
                 </div>
                 <h5 className="text-[11px] sm:text-xs font-bold text-slate-600">
-                  وِزَارَةُ التَّرْبِيَةِ الْوَطَنِيَّةِ — مُدِيرِيَّةُ التَّرْبِيَةِ لِوِلَايَةِ {selectedWilaya.nameAr} ({selectedWilaya.codeStr})
+                  شَهَادَةُ تَقْدِيرٍ صَادِرَةٌ عَبْرَ التَّطْبِيقِ — وِلَايَةُ {selectedWilaya.nameAr} ({selectedWilaya.codeStr})
                 </h5>
                 <p className="text-[10px] font-black text-slate-500">
-                  {schoolName} • السنة الدراسية: {schoolYear}
+                  {schoolName || 'اسم المدرسة'} • السنة الدراسية: {schoolYear}
                 </p>
                 <div className="w-36 h-0.5 bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mt-2" />
               </div>
@@ -600,7 +708,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                     توقيع وملاحظة الأستاذ(ة):
                   </span>
                   <div className="font-serif italic text-slate-500 text-[11px] pt-4">
-                    {teacherTitle}
+                    {teacherTitle || '..........................'}
                   </div>
                 </div>
 
@@ -637,7 +745,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                       </>
                     )}
                   </div>
-                  <span className="text-[9px] font-black text-amber-900 mt-1">SCEAU OFFICIEL</span>
+                  <span className="text-[9px] font-black text-amber-900 mt-1">شهادة مسيد DZ</span>
                 </div>
 
                 {/* Left: School Principal Stamp */}
@@ -646,7 +754,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                     ختم وتوقيع إدارة المؤسسة:
                   </span>
                   <div className="font-serif italic text-slate-500 text-[11px] pt-4">
-                    {directorTitle}
+                    {directorTitle || '..........................'}
                   </div>
                 </div>
               </div>
@@ -655,7 +763,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
         </div>
 
         {/* Modal Footer Quick Actions */}
-        <div className="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-2 text-xs">
+        <div className="print:hidden pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-2 text-xs">
           <div className="flex items-center gap-2 text-slate-500 font-bold">
             <Sparkles className="w-4 h-4 text-amber-500" />
             <span>نصيحة: يمكنك تأطير هذه الشهادة بعد طباعتها وتعليقها في غرفة التلميذ لتحفيزه المستمر!</span>

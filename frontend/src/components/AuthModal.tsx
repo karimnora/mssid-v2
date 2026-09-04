@@ -10,7 +10,10 @@ import { useLocaleContext } from '../context/LocaleContext';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  onAuthSuccess: (user: AuthUser) => void;
+  /** `landOnPreschool` is set only when the child picked "préscolaire" at registration — there's
+   * no such PrimaryGrade, so the account still gets a real default grade (1AP) and this flag is
+   * how the caller knows to route into preschool mode instead of the normal grade-based home. */
+  onAuthSuccess: (user: AuthUser, opts?: { landOnPreschool?: boolean }) => void;
   /** Which tab to land on when the modal opens (login vs register). */
   initialMode?: 'login' | 'register';
   /** Opens PrivacyPolicyModal (rendered at App.tsx level) — surfaced on the register form so a new
@@ -46,7 +49,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [nom, setNom] = useState<string>('');
-  const [grade, setGrade] = useState<PrimaryGrade | ''>('');
+  const [grade, setGrade] = useState<PrimaryGrade | 'prescolaire' | ''>('');
   // Minimal parental supervision (product decision, pre-launch audit): optional, no verification —
   // never blocks registration, just lets an admin reach a parent later if genuinely needed.
   const [parentEmail, setParentEmail] = useState<string>('');
@@ -221,8 +224,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         onAuthSuccess(result.user);
         onClose();
       } else {
-        const result = await AuthService.registerAsync(nom, email, password, grade || undefined, parentEmail.trim() || undefined);
-        
+        // No PrimaryGrade covers "préscolaire" — the account still needs a real grade to fall
+        // back to once the child grows into primary school, so it registers as 1AP and the caller
+        // routes into preschool mode via the landOnPreschool flag instead.
+        const isPreschoolChoice = grade === 'prescolaire';
+        const effectiveGrade: PrimaryGrade | undefined = isPreschoolChoice ? '1AP' : (grade || undefined);
+        const result = await AuthService.registerAsync(nom, email, password, effectiveGrade, parentEmail.trim() || undefined);
+
         if (result.error || !result.user) {
           setStatusMessage({
             type: 'error',
@@ -235,7 +243,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           type: 'success',
           text: t('registerSuccessWelcome', { name: result.user.nom })
         });
-        onAuthSuccess(result.user);
+        onAuthSuccess(result.user, isPreschoolChoice ? { landOnPreschool: true } : undefined);
         onClose();
       }
     } catch (err: any) {
@@ -483,10 +491,11 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               <select
                 required
                 value={grade}
-                onChange={(e) => setGrade(e.target.value as PrimaryGrade)}
+                onChange={(e) => setGrade(e.target.value as PrimaryGrade | 'prescolaire')}
                 className="kids-input"
               >
                 <option value="" disabled>{t('gradeChoosePlaceholder')}</option>
+                <option value="prescolaire">{t('gradePrescolaireOption')}</option>
                 {(Object.keys(GRADE_OPTION_KEYS) as PrimaryGrade[]).map((id) => (
                   <option key={id} value={id}>{t(GRADE_OPTION_KEYS[id])}</option>
                 ))}

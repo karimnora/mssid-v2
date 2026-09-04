@@ -47,4 +47,13 @@ export const BADGES_CATALOG: Badge[] = [
 
   { id: 'b_game_first', titleAr: 'لاعب مبتدئ', descriptionAr: 'إتمام أول لعبة ترويحية في نادي التحديات', icon: '🎮', category: 'games', criteria: { type: 'game_completed_count', count: 1 } },
   { id: 'b_arcade_master', titleAr: 'سيد الألعاب', descriptionAr: 'إتمام 3 ألعاب ترويحية مختلفة في نادي التحديات', icon: '🕹️', category: 'games', criteria: { type: 'game_completed_count', count: 3 } },
+
+  // Grade-completion diplomas — unlock only once every lesson of that grade (all subjects, all
+  // trimesters) is done. HonorCertificatesStudioModal.tsx maps each of these ids to the matching
+  // "graduate" certificate template and locks that template until the badge is earned.
+  { id: 'diploma_1ap', titleAr: 'دِبْلُومُ السَّنَةِ الأُولَى ابْتِدَائِيّ', descriptionAr: 'إكمال جميع دروس السنة الأولى ابتدائي في كل المواد', icon: '🔤', category: 'diploma', criteria: { type: 'grade_completed', grade: '1AP' } },
+  { id: 'diploma_2ap', titleAr: 'دِبْلُومُ السَّنَةِ الثَّانِيَة ابْتِدَائِيّ', descriptionAr: 'إكمال جميع دروس السنة الثانية ابتدائي في كل المواد', icon: '💯', category: 'diploma', criteria: { type: 'grade_completed', grade: '2AP' } },
+  { id: 'diploma_3ap', titleAr: 'دِبْلُومُ السَّنَةِ الثَّالِثَة ابْتِدَائِيّ', descriptionAr: 'إكمال جميع دروس السنة الثالثة ابتدائي في كل المواد', icon: '📚', category: 'diploma', criteria: { type: 'grade_completed', grade: '3AP' } },
+  { id: 'diploma_4ap', titleAr: 'دِبْلُومُ السَّنَةِ الرَّابِعَة ابْتِدَائِيّ', descriptionAr: 'إكمال جميع دروس السنة الرابعة ابتدائي في كل المواد', icon: '🗺️', category: 'diploma', criteria: { type: 'grade_completed', grade: '4AP' } },
+  { id: 'diploma_5ap', titleAr: 'دِبْلُومُ نِهَايَةِ التَّعْلِيمِ الاِبْتِدَائِيّ', descriptionAr: 'إكمال جميع دروس السنة الخامسة ابتدائي في كل المواد', icon: '🎓', category: 'diploma', criteria: { type: 'grade_completed', grade: '5AP' } },
 ];

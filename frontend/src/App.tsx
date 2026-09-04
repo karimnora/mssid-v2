@@ -552,6 +552,7 @@ export default function App() {
           if (authUser) AuthService.updateGrade(g);
         }}
         onOpenAuthModal={() => modals.openAuth('login')}
+        onEnterPreschool={() => nav.setIsPreschoolActive(true)}
         onLogout={() => {
           AuthService.logout();
           progress.handleLogoutProgressReset(nav.grade);

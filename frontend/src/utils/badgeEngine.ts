@@ -4,6 +4,16 @@ import { BADGES_CATALOG } from '../data/badgesData';
 
 const SUBJECT_BY_LESSON_ID = new Map(COURSES_DATA.map((lesson) => [lesson.id, lesson.subject]));
 
+// Every lesson id that belongs to a given grade, precomputed once — used by the 'grade_completed'
+// diploma criteria below so checking "is this whole year done?" is a Set membership pass, not a
+// re-filter of the ~390-lesson catalog on every evaluation.
+const LESSON_IDS_BY_GRADE = new Map<string, string[]>();
+for (const lesson of COURSES_DATA) {
+  const ids = LESSON_IDS_BY_GRADE.get(lesson.grade) ?? [];
+  ids.push(lesson.id);
+  LESSON_IDS_BY_GRADE.set(lesson.grade, ids);
+}
+
 export type BadgeEvalOptions = {
   /** Welcome (`first_login`) is for a real account, not a guest session after logout. */
   isAuthenticated?: boolean;
@@ -31,6 +41,12 @@ function isCriteriaMet(criteria: BadgeCriteria, profile: UserProfile, options?: 
       return (profile.completedGameIds || []).length >= criteria.count;
     case 'lab_visited':
       return (profile.completedLabIds || []).includes(criteria.labId);
+    case 'grade_completed': {
+      const gradeLessonIds = LESSON_IDS_BY_GRADE.get(criteria.grade) ?? [];
+      if (gradeLessonIds.length === 0) return false;
+      const completed = new Set(profile.completedLessonIds);
+      return gradeLessonIds.every((id) => completed.has(id));
+    }
     default:
       return false;
   }
@@ -95,6 +111,8 @@ export function describeCriteria(criteria: BadgeCriteria): string {
       return criteria.count === 1 ? 'أتمم لعبة ترويحية واحدة' : `أتمم ${criteria.count} ألعاب ترويحية`;
     case 'lab_visited':
       return 'افتح المختبر التفاعلي المطلوب مرة واحدة';
+    case 'grade_completed':
+      return `أكمل جميع دروس السنة ${criteria.grade} في كل المواد`;
     default:
       return '';
   }

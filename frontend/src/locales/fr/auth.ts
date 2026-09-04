@@ -44,6 +44,7 @@ export const auth: typeof authAr = {
   fullNamePlaceholder: 'Ex. : Younes El Djazairi',
   gradeLabel: 'Niveau scolaire :',
   gradeChoosePlaceholder: 'Choisis ton niveau scolaire...',
+  gradePrescolaireOption: '🧸 Préscolaire (avant l\'école primaire)',
   grade1APOption: '1ère année primaire (1AP)',
   grade2APOption: '2ème année primaire (2AP)',
   grade3APOption: '3ème année primaire (3AP)',

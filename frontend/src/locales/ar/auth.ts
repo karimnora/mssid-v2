@@ -42,6 +42,7 @@ export const auth = {
   fullNamePlaceholder: 'مثال: يونس الجزائري',
   gradeLabel: 'المستوى الدراسي:',
   gradeChoosePlaceholder: 'اختر مستواك الدراسي...',
+  gradePrescolaireOption: '🧸 التمهيدي (ما قبل المدرسة)',
   grade1APOption: 'السنة الأولى ابتدائي (1AP)',
   grade2APOption: 'السنة الثانية ابتدائي (2AP)',
   grade3APOption: 'السنة الثالثة ابتدائي (3AP)',
