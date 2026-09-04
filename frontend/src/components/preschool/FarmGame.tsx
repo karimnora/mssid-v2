@@ -1027,7 +1027,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setPhase('select')}
-        className="absolute top-4 left-4 z-10 bg-white hover:bg-amber-50 text-slate-800 font-black
+        className="absolute top-4 start-4 z-10 bg-white hover:bg-amber-50 text-slate-800 font-black
                    px-4 py-2 rounded-2xl shadow-md border-2 border-amber-200 cursor-pointer
                    flex items-center gap-2 text-sm"
       >
