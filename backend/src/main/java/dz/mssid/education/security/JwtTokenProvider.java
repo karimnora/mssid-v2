@@ -2,6 +2,8 @@ package dz.mssid.education.security;
 
 import io.jsonwebtoken.*;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -12,6 +14,8 @@ import java.util.Set;
 
 @Component
 public class JwtTokenProvider {
+
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
     @Value("${app.jwt.secret:MssidDzSuperSecretKeyForJWTAuthentication20261234567890}")
     private String jwtSecret;
@@ -97,15 +101,15 @@ public class JwtTokenProvider {
             return true;
 
         } catch (SignatureException ex) {
-            System.out.println("Signature JWT invalide");
+            logger.warn("Signature JWT invalide");
         } catch (MalformedJwtException ex) {
-            System.out.println("Token JWT invalide");
+            logger.warn("Token JWT invalide");
         } catch (ExpiredJwtException ex) {
-            System.out.println("Token JWT expiré");
+            logger.debug("Token JWT expiré");
         } catch (UnsupportedJwtException ex) {
-            System.out.println("Token JWT non supporté");
+            logger.warn("Token JWT non supporté");
         } catch (IllegalArgumentException ex) {
-            System.out.println("Chaîne claims JWT vide");
+            logger.debug("Chaîne claims JWT vide");
         }
         return false;
     }
