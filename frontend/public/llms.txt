@@ -1,6 +1,6 @@
 # Mssid DZ — منصة التعليم الابتدائي والتحضيري في الجزائر
 
-> Première plateforme éducative interactive pour le cycle primaire et préscolaire en Algérie (0AP à 5AP), strictement alignée sur le programme officiel de la Génération 2 (الجيل الثاني) du Ministère de l'Éducation Nationale algérien.
+> Première plateforme éducative interactive pour le cycle primaire et préscolaire en Algérie (préscolaire à 5AP), avec un contenu strictement aligné sur le programme officiel de la Génération 2 (الجيل الثاني). Plateforme indépendante, non affiliée officiellement au Ministère de l'Éducation Nationale.
 
 Mssid DZ est une application web progressive (PWA) gratuite, bilingue (Arabe / Français) et utilisable hors ligne. Elle offre un écosystème complet d'apprentissage sans publicité, conçu pour les enfants de 3 à 11 ans, les parents et les enseignants.
 
@@ -9,13 +9,13 @@ Mssid DZ est une application web progressive (PWA) gratuite, bilingue (Arabe / F
 - **Cours Interactifs** : Plus de 300 leçons structurées avec synthèses illustrées, quiz de validation et lecture vocale (TTS).
 - **Laboratoires Pédagogiques** : 29 laboratoires interactifs (boulier Soroban, monnaie en Dinars algériens, circuits électriques, fractions, conjugueur arabe).
 - **Arène des Défis (ساحة التحديات)** : 90 défis chronométrés et calcul mental avec classements.
-- **Cycle Préscolaire (وضع البراعم - 0AP)** : 19 modules thématiques, 182 activités interactives et 61 fiches de traçage et coloriage prêtes à imprimer.
+- **Cycle Préscolaire (وضع البراعم — mode "Éveil")** : 19 modules thématiques, 182 activités interactives et 61 fiches de traçage et coloriage prêtes à imprimer.
 - **Studio de Diplômes** : 12 modèles de tableaux d'honneur et diplômes scolaires officiels (format A4 paysage) personnalisables et imprimables.
 - **Didou le Fennec Virtuel** : Compagnon d'apprentissage évolutif (3 stades d'évolution, vestiaire culturel algérien, friandises du terroir).
 
 ## Matières Officielles Couvertes
 - **Tronc commun (1AP à 5AP)** : Langue arabe, Mathématiques, Éducation scientifique et technologique, Éducation islamique, Éducation civique.
-- **Langues et Découverte (3AP à 5AP)** : Français, Anglais, Histoire et Géographie d'Algérie, Langue Tamazight (avec caractères Tifinagh).
+- **Langues et Découverte (3AP à 5AP)** : Anglais (dès 3AP), Histoire et Géographie d'Algérie (dès 3AP), Langue Tamazight (avec caractères Tifinagh, dès 3AP), Français (dès 4AP).
 
 ## Accès et URLs Officielles
 - Site officiel : [https://mssid-dz.com/](https://mssid-dz.com/)

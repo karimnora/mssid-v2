@@ -5,11 +5,11 @@
 - **URL canonique** : https://mssid-dz.com/
 - **Pays cible** : Algérie (58 wilayas)
 - **Langues d'interface** : Arabe (العربية - par défaut), Français
-- **Cadre pédagogique** : Programme officiel de la Génération 2 (الجيل الثاني) du Ministère de l'Éducation Nationale de la République Algérienne Démocratique et Populaire.
+- **Cadre pédagogique** : Contenu aligné sur le programme officiel de la Génération 2 (الجيل الثاني) du cycle primaire algérien. Plateforme indépendante, non affiliée officiellement au Ministère de l'Éducation Nationale.
 - **Accès et Gratuité** : 100% gratuit, sans publicité commerciale, mode PWA installable sur smartphones, tablettes et ordinateurs.
 
 ## 2. Paliers Scolaires et Matières Enseignées
-### Préscolaire (0AP - قسم التربية التحضيرية / وضع البراعم)
+### Préscolaire (قسم التربية التحضيرية / وضع البراعم — mode "Éveil" dans l'application)
 - Âge : 3 à 5 ans.
 - Contenu : 19 modules progressifs (Alphabet arabe et latin, Chiffres et dénombrement, Couleurs, Formes géométriques, Corps humain, Animaux, Métiers, Famille, Saisons, Hygiène, Sécurité routière, Algérie mon pays).
 - 182 activités d'éveil sensoriel, traçage au doigt, reconnaissance auditive.
@@ -24,12 +24,12 @@
 - Focus : Lecture fluide, production d'écrits courts, soustraction posée, passage de la centaine, géométrie de base, règles de vie citoyenne.
 
 ### Troisième Année Primaire (3AP - السنة الثالثة ابتدائي)
-- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française (FLE), Langue tamazight.
-- Focus : Multiplication et tables, fractions intuitives, initiation à la langue française, histoire locale et repères géographiques nationaux.
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue anglaise (1re langue étrangère), Langue tamazight.
+- Focus : Multiplication et tables, fractions intuitives, initiation à la langue anglaise, histoire locale et repères géographiques nationaux.
 
 ### Quatrième Année Primaire (4AP - السنة الرابعة ابتدائي)
-- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française, Langue anglaise, Langue tamazight.
-- Focus : Division euclidienne, nombres décimaux, grammaire et conjugaison approfondies, anglais débutant, histoire antique et médiévale de l'Algérie.
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française (introduite en 4AP depuis la réforme 2026-2027), Langue anglaise, Langue tamazight.
+- Focus : Division euclidienne, nombres décimaux, grammaire et conjugaison approfondies, initiation à la langue française, anglais intermédiaire, histoire antique et médiévale de l'Algérie.
 
 ### Cinquième Année Primaire (5AP - السنة الخامسة ابتدائي)
 - Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française, Langue anglaise, Langue tamazight.

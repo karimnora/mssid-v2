@@ -152,7 +152,9 @@ describe('4AP French (Langue Française) Pedagogical Curriculum Tests', () => {
       expect(lesson.rulesAr.length).toBeGreaterThanOrEqual(3);
       expect(lesson.keyFormulas).toBeDefined();
       expect(lesson.keyFormulas!.length).toBeGreaterThanOrEqual(1);
-      expect(lesson.interactiveTool).toBe('french_lab');
+      // French 3AP→4AP migration: former-3AP "beginner" sequences keep 'french_dialogue_lab',
+      // the pre-existing grammar sequences use 'french_lab' (see project_men_2026_2027_curriculum_change).
+      expect(['french_lab', 'french_dialogue_lab']).toContain(lesson.interactiveTool);
     });
   });
 
@@ -484,8 +486,10 @@ describe('5AP Sciences et Technologie (التربية العلمية والتك�
     expect(historyGeoLessons.length).toBeGreaterThanOrEqual(7);
     expect(islamicLessons.length).toBeGreaterThanOrEqual(6);
 
-    // French/English 4AP lessons use the shared grade-wide conjugator ('french_lab'/'english_lab'),
-    // while 5AP lessons carry a per-lesson dedicated tool ('french_dialogue_lab'/'english_dialogue_lab').
+    // French/English grammar lessons use the shared grade-wide conjugator ('french_lab'/'english_lab'),
+    // while beginner/dialogue-driven lessons carry a per-lesson dedicated tool
+    // ('french_dialogue_lab'/'english_dialogue_lab') — this now includes the former-3AP French
+    // "beginner" sequences merged into 4AP (French 3AP→4AP migration), not just 5AP lessons.
     expect(frenchLessons.every((l) => l.interactiveTool === 'french_lab' || l.interactiveTool === 'french_dialogue_lab')).toBe(true);
     expect(englishLessons.every((l) => l.interactiveTool === 'english_lab' || l.interactiveTool === 'english_dialogue_lab')).toBe(true);
     // 2026 interactiveTool audit: history_geo_lab is no longer forced on every lesson — one 4AP

@@ -2,15 +2,17 @@ import { describe, expect, it } from 'vitest';
 import { frenchProjectsForGrade, isWritingRichEnough } from './FrenchProjectsLabInteractive';
 
 describe('frenchProjectsForGrade', () => {
-  it('shows 4 official 3AP projects for 3AP', () => {
-    const projects = frenchProjectsForGrade('3AP');
+  // French moved from 3AP to 4AP (MEN 2026-2027 curriculum change, CLAUDE.md § 2.B): these 4
+  // official projects are now the 4AP first-year program, not a 3AP-then-revised-in-4AP one.
+  it('shows 4 official projects for 4AP', () => {
+    const projects = frenchProjectsForGrade('4AP');
     expect(projects).toHaveLength(4);
-    expect(projects.every((p) => p.grade === '3AP')).toBe(true);
+    expect(projects.every((p) => p.grade === '4AP')).toBe(true);
     expect(projects.map((p) => p.projectNumber)).toEqual([1, 2, 3, 4]);
   });
 
-  it('never shows 5AP projects to 3AP', () => {
-    const projects = frenchProjectsForGrade('3AP');
+  it('never shows 5AP projects to 4AP', () => {
+    const projects = frenchProjectsForGrade('4AP');
     expect(projects.some((p) => p.grade === '5AP')).toBe(false);
   });
 
@@ -20,10 +22,8 @@ describe('frenchProjectsForGrade', () => {
     expect(projects.every((p) => p.grade === '5AP')).toBe(true);
   });
 
-  it('offers 3AP revision projects for 4AP', () => {
-    const projects = frenchProjectsForGrade('4AP');
-    expect(projects).toHaveLength(4);
-    expect(projects.every((p) => p.grade === '3AP')).toBe(true);
+  it('shows no projects for 3AP, which no longer teaches French', () => {
+    expect(frenchProjectsForGrade('3AP')).toHaveLength(0);
   });
 });
 

@@ -42,21 +42,18 @@ interface FrenchProject {
   }[];
 }
 
-/** Projets visibles pour le niveau — un 3AP ne voit jamais les textes 5AP. */
+/** Projets visibles pour le niveau — un 4AP ne voit jamais les textes 5AP. */
 export function frenchProjectsForGrade(grade: PrimaryGrade): FrenchProject[] {
-  const exact = OFFICIAL_FRENCH_PROJECTS.filter((p) => p.grade === grade);
-  if (exact.length > 0) return exact;
-  if (grade === '4AP') {
-    return OFFICIAL_FRENCH_PROJECTS.filter((p) => p.grade === '3AP');
-  }
-  return [];
+  return OFFICIAL_FRENCH_PROJECTS.filter((p) => p.grade === grade);
 }
 
+// MEN 2026-2027 curriculum change (CLAUDE.md § 2.B): French now starts in 4AP, not 3AP — these 4
+// projects are the 4AP first-year program, not a "3AP revision" fallback for 4AP anymore.
 const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
-  // ─── 3AP — 4 projets officiels (1re année de français) ───────────────────
+  // ─── 4AP — 4 projets officiels (1re année de français) ───────────────────
   {
-    id: 'fr-3ap-p1',
-    grade: '3AP',
+    id: 'fr-4ap-p1',
+    grade: '4AP',
     projectNumber: 1,
     titleFr: 'Projet 1 : Mon école',
     titleAr: 'المشروع 1 : مدرستي',
@@ -66,7 +63,7 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
       {
         number: 1,
         titleFr: 'Séquence 1 : Bienvenue à l’école !',
-        textSupportFr: 'Je m’appelle Amine. Je suis en classe de 3AP. Mon école est grande et propre. J’ai un cartable bleu, un cahier et un stylo. Ma maîtresse s’appelle Madame Salima.',
+        textSupportFr: 'Je m’appelle Amine. Je suis en classe de 4AP. Mon école est grande et propre. J’ai un cartable bleu, un cahier et un stylo. Ma maîtresse s’appelle Madame Salima.',
         vocabList: [
           { wordFr: 'L’école', meaningAr: 'المدرسة', audioText: 'L’école' },
           { wordFr: 'Le cartable', meaningAr: 'الحقيبة المدرسية', audioText: 'Le cartable' },
@@ -79,8 +76,8 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
     ],
   },
   {
-    id: 'fr-3ap-p2',
-    grade: '3AP',
+    id: 'fr-4ap-p2',
+    grade: '4AP',
     projectNumber: 2,
     titleFr: 'Projet 2 : Ma famille et ma maison',
     titleAr: 'المشروع 2 : عائلتي ومنزلي',
@@ -103,8 +100,8 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
     ],
   },
   {
-    id: 'fr-3ap-p3',
-    grade: '3AP',
+    id: 'fr-4ap-p3',
+    grade: '4AP',
     projectNumber: 3,
     titleFr: 'Projet 3 : Les animaux domestiques',
     titleAr: 'المشروع 3 : الحيوانات الأليفة',
@@ -127,8 +124,8 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
     ],
   },
   {
-    id: 'fr-3ap-p4',
-    grade: '3AP',
+    id: 'fr-4ap-p4',
+    grade: '4AP',
     projectNumber: 4,
     titleFr: 'Projet 4 : L’alimentation',
     titleAr: 'المشروع 4 : التغذية',
@@ -255,7 +252,7 @@ export function isWritingRichEnough(text: string): boolean {
 }
 
 export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractiveProps> = ({
-  grade = '3AP',
+  grade = '4AP',
   onReward,
   onBack,
 }) => {
@@ -321,20 +318,16 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
               <span>
                 {grade === '5AP'
                   ? 'Programme Officiel de Français — 5AP (3 Projets du Ministère)'
-                  : grade === '4AP'
-                  ? 'Révision — Projets officiels 3AP (en attendant le cycle 4AP)'
-                  : 'Programme Officiel de Français — 3AP (4 Projets du Ministère)'}
+                  : 'Programme Officiel de Français — 4AP (4 Projets du Ministère)'}
               </span>
             </div>
             <h1 className="text-xl sm:text-3xl font-black font-sans">
               Atelier des Projets Officiels de Français
             </h1>
             <p className="text-xs sm:text-sm text-sky-100 leading-relaxed max-w-3xl">
-              {grade === '3AP'
-                ? 'Les 4 projets de la 1re année de français : Mon école, Ma famille, Les animaux domestiques et L’alimentation.'
-                : grade === '4AP'
-                ? 'Révise les projets 3AP avant les contenus avancés de 5AP.'
-                : 'Les 3 projets officiels de 5AP : animaux sauvages, catastrophes naturelles et écologie.'}
+              {grade === '5AP'
+                ? 'Les 3 projets officiels de 5AP : animaux sauvages, catastrophes naturelles et écologie.'
+                : 'Les 4 projets de la 1re année de français : Mon école, Ma famille, Les animaux domestiques et L’alimentation.'}
             </p>
           </div>
         </div>

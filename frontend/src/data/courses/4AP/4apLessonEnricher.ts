@@ -97,6 +97,108 @@ const ENGLISH_PACKS: Record<string, PracticePack> = {
 };
 
 const FRENCH_PACKS: Record<string, PracticePack> = {
+  // Former-3AP "beginner" sequences, migrated to 4AP (French 3AP→4AP curriculum change,
+  // CLAUDE.md § 2.B / project_men_2026_2027_curriculum_change). These only had 2 authored tiers
+  // in 3AP/french.ts, so the enricher completes them to the standard 4AP 4-tier + 2-eval battery.
+  'french-3ap-p1-seq1-greetings-letters': build4ApPractice('french-3ap-p1-seq1-greetings-letters', [
+    { problemAr: 'Comment dit-on "مرحباً" en français ?', solutionAr: 'Salut', detailedCorrectionAr: 'Salut = مرحباً.', options: [{ id: 'a', textAr: 'Salut', isCorrect: true }, { id: 'b', textAr: 'Au revoir', isCorrect: false }] },
+    { problemAr: 'Complète : « Je ... Yassine. » (m\'appeler)', solutionAr: 'm\'appelle', detailedCorrectionAr: 'Je m\'appelle — formule de présentation.', type: 'fill_blank', fillBlankAnswerAr: 'm\'appelle' },
+    { problemAr: 'Assemble : N + A = ?', solutionAr: 'NA', detailedCorrectionAr: 'N + A forme la syllabe NA.', options: [{ id: 'a', textAr: 'NA', isCorrect: true }, { id: 'b', textAr: 'MA', isCorrect: false }] },
+    { problemAr: '« Au revoir » se dit en arrivant en classe. (vrai/faux)', solutionAr: 'faux', detailedCorrectionAr: '« Au revoir » se dit en partant, « Bonjour » se dit en arrivant.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: false }, { id: 'false', textAr: 'faux', isCorrect: true }] },
+  ], [
+    { problemAr: 'Quelle lettre fait le son /a/ dans "ami" ?', solutionAr: 'a', detailedCorrectionAr: 'La voyelle "a" fait le son /a/.', options: [{ id: 'a', textAr: 'a', isCorrect: true }, { id: 'b', textAr: 'i', isCorrect: false }] },
+    { problemAr: 'Assemble : N + I = ?', solutionAr: 'NI', detailedCorrectionAr: 'N + I forme la syllabe NI (comme dans "Nid").', options: [{ id: 'a', textAr: 'NI', isCorrect: true }, { id: 'b', textAr: 'MI', isCorrect: false }] },
+  ]),
+  'french-3ap-p1-seq2-class-letters': build4ApPractice('french-3ap-p1-seq2-class-letters', [
+    { problemAr: '« un stylo » est-il masculin ou féminin ?', solutionAr: 'masculin', detailedCorrectionAr: 'On dit "un stylo" ou "le stylo" : c\'est masculin.', options: [{ id: 'a', textAr: 'masculin', isCorrect: true }, { id: 'b', textAr: 'féminin', isCorrect: false }] },
+    { problemAr: 'Complète : « ... trousse » (article féminin)', solutionAr: 'la', detailedCorrectionAr: '"trousse" est féminin : "la trousse".', type: 'fill_blank', fillBlankAnswerAr: 'la' },
+    { problemAr: 'Assemble : T + U = ?', solutionAr: 'TU', detailedCorrectionAr: 'T + U forme la syllabe TU.', options: [{ id: 'a', textAr: 'TU', isCorrect: true }, { id: 'b', textAr: 'DO', isCorrect: false }] },
+    { problemAr: '« une gomme » utilise "une" car gomme est féminin. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'gomme est un nom féminin, donc "une gomme".', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ], [
+    { problemAr: 'Quel article pour "cartable" (masculin) ?', solutionAr: 'un / le', detailedCorrectionAr: 'cartable est masculin : "un cartable" ou "le cartable".', options: [{ id: 'a', textAr: 'un / le', isCorrect: true }, { id: 'b', textAr: 'une / la', isCorrect: false }] },
+    { problemAr: 'Assemble : D + O = ?', solutionAr: 'DO', detailedCorrectionAr: 'D + O forme la syllabe DO.', options: [{ id: 'a', textAr: 'DO', isCorrect: true }, { id: 'b', textAr: 'TO', isCorrect: false }] },
+  ]),
+  'french-3ap-p1-seq3-friend-letters': build4ApPractice('french-3ap-p1-seq3-friend-letters', [
+    { problemAr: 'Comment dit-on "أخضر" en français ?', solutionAr: 'Vert', detailedCorrectionAr: 'Vert = أخضر.', options: [{ id: 'a', textAr: 'Vert', isCorrect: true }, { id: 'b', textAr: 'Rouge', isCorrect: false }] },
+    { problemAr: 'Complète : « C\'est Sara, c\'est mon ... » (amie)', solutionAr: 'amie', detailedCorrectionAr: 'Sara est une fille : "mon amie" (féminin).', type: 'fill_blank', fillBlankAnswerAr: 'amie' },
+    { problemAr: '« un ami » est masculin, « une amie » est féminin. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'Le mot change au féminin par l\'ajout d\'un "e".', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Le son /b/ est un son sonore (avec vibration dans la gorge). (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: '/b/ vibre, /p/ ne vibre pas.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ], [
+    { problemAr: 'Comment dit-on "أصفر" en français ?', solutionAr: 'Jaune', detailedCorrectionAr: 'Jaune = أصفر.', options: [{ id: 'a', textAr: 'Jaune', isCorrect: true }, { id: 'b', textAr: 'Bleu', isCorrect: false }] },
+    { problemAr: '« papa » contient le son /p/, sourd. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: '/p/ est un son sourd, sans vibration.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ]),
+  'french-3ap-p2-seq1-family-letters': build4ApPractice('french-3ap-p2-seq1-family-letters', [
+    { problemAr: '« Mon père » se remplace par quel pronom ?', solutionAr: 'Il', detailedCorrectionAr: 'IL remplace un nom masculin singulier.', options: [{ id: 'a', textAr: 'Il', isCorrect: true }, { id: 'b', textAr: 'Elle', isCorrect: false }] },
+    { problemAr: 'Complète : « Ma mère ... dans la cuisine. » (Elle)', solutionAr: 'Elle', detailedCorrectionAr: 'ELLE remplace un nom féminin singulier.', type: 'fill_blank', fillBlankAnswerAr: 'Elle' },
+    { problemAr: 'Le pluriel de « un livre » utilise quel article ?', solutionAr: 'des', detailedCorrectionAr: 'des livres — article pluriel indéfini.', options: [{ id: 'a', textAr: 'des', isCorrect: true }, { id: 'b', textAr: 'un', isCorrect: false }] },
+    { problemAr: 'La lettre "r" se prononce comme dans "rue". (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: '"r" se prononce comme dans rue, radio.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ], [
+    { problemAr: 'Quel est le féminin de « le grand-père » ?', solutionAr: 'la grand-mère', detailedCorrectionAr: 'le grand-père ➔ la grand-mère.', options: [{ id: 'a', textAr: 'la grand-mère', isCorrect: true }, { id: 'b', textAr: 'la sœur', isCorrect: false }] },
+    { problemAr: '« Ma sœur » se remplace par quel pronom ?', solutionAr: 'Elle', detailedCorrectionAr: 'sœur est féminin singulier : ELLE.', options: [{ id: 'a', textAr: 'Elle', isCorrect: true }, { id: 'b', textAr: 'Il', isCorrect: false }] },
+  ]),
+  'french-3ap-p2-seq1b-jobs-seasons': build4ApPractice('french-3ap-p2-seq1b-jobs-seasons', [
+    { problemAr: 'Comment dit-on le métier de la personne qui soigne les malades ?', solutionAr: 'médecin', detailedCorrectionAr: 'médecin = طبيب.', options: [{ id: 'a', textAr: 'médecin', isCorrect: true }, { id: 'b', textAr: 'boulanger', isCorrect: false }] },
+    { problemAr: 'Complète : « Ma tante est ... » (enseignante, sans article)', solutionAr: 'enseignante', detailedCorrectionAr: 'On ne met pas d\'article devant le métier.', type: 'fill_blank', fillBlankAnswerAr: 'enseignante' },
+    { problemAr: 'Quelle saison vient après l\'automne ?', solutionAr: 'l\'hiver', detailedCorrectionAr: 'Ordre : printemps, été, automne, hiver.', options: [{ id: 'a', textAr: 'l\'hiver', isCorrect: true }, { id: 'b', textAr: 'le printemps', isCorrect: false }] },
+    { problemAr: 'On dit « Il est un médecin ». (vrai/faux)', solutionAr: 'faux', detailedCorrectionAr: 'On dit "Il est médecin", sans article.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: false }, { id: 'false', textAr: 'faux', isCorrect: true }] },
+  ], [
+    { problemAr: 'printemps ➔ été ➔ ... ➔ hiver : quelle saison manque ?', solutionAr: 'automne', detailedCorrectionAr: 'L\'automne se place entre l\'été et l\'hiver.', options: [{ id: 'a', textAr: 'automne', isCorrect: true }, { id: 'b', textAr: 'printemps', isCorrect: false }] },
+    { problemAr: '« Il fait froid » correspond à quelle saison ?', solutionAr: 'l\'hiver', detailedCorrectionAr: 'En hiver, il fait froid.', options: [{ id: 'a', textAr: 'l\'hiver', isCorrect: true }, { id: 'b', textAr: 'l\'été', isCorrect: false }] },
+  ]),
+  'french-3ap-p2-seq2-numbers-age': build4ApPractice('french-3ap-p2-seq2-numbers-age', [
+    { problemAr: 'Écris en chiffres le nombre français "SIX" :', solutionAr: '6', detailedCorrectionAr: 'Six = 6.', options: [{ id: 'a', textAr: '6', isCorrect: true }, { id: 'b', textAr: '7', isCorrect: false }] },
+    { problemAr: 'Complète : « J\'... 9 ans. » (avoir)', solutionAr: 'ai', detailedCorrectionAr: 'J\'ai — 1re personne du verbe avoir.', type: 'fill_blank', fillBlankAnswerAr: 'ai' },
+    { problemAr: 'La lettre C devant "e" se prononce comment ?', solutionAr: '/s/', detailedCorrectionAr: 'C devant e, i se prononce /s/ (cerise).', options: [{ id: 'a', textAr: '/s/', isCorrect: true }, { id: 'b', textAr: '/k/', isCorrect: false }] },
+    { problemAr: '« Je suis 8 ans » est correct. (vrai/faux)', solutionAr: 'faux', detailedCorrectionAr: 'On dit "J\'ai 8 ans", avec le verbe avoir.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: false }, { id: 'false', textAr: 'faux', isCorrect: true }] },
+  ], [
+    { problemAr: 'Comment dit-on "10" en français ?', solutionAr: 'dix', detailedCorrectionAr: '10 = dix.', options: [{ id: 'a', textAr: 'dix', isCorrect: true }, { id: 'b', textAr: 'neuf', isCorrect: false }] },
+    { problemAr: 'La lettre G devant "a" se prononce comment ?', solutionAr: '/g/', detailedCorrectionAr: 'G devant a, o, u se prononce /g/ (gâteau).', options: [{ id: 'a', textAr: '/g/', isCorrect: true }, { id: 'b', textAr: '/ʒ/', isCorrect: false }] },
+  ]),
+  'french-3ap-p2-seq3-home-sounds': build4ApPractice('french-3ap-p2-seq3-home-sounds', [
+    { problemAr: 'Où dort-on dans la maison ?', solutionAr: 'dans la chambre', detailedCorrectionAr: 'On dort dans la chambre.', options: [{ id: 'a', textAr: 'dans la chambre', isCorrect: true }, { id: 'b', textAr: 'dans la cuisine', isCorrect: false }] },
+    { problemAr: 'Complète : « Le chat est ... la chaise. » (sous)', solutionAr: 'sous', detailedCorrectionAr: '"sous" indique une position en dessous.', type: 'fill_blank', fillBlankAnswerAr: 'sous' },
+    { problemAr: '« ch » se prononce comme dans « chat ». (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'ch se prononce comme dans chat, chambre.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+    { problemAr: 'Quelle pièce sert à cuisiner ?', solutionAr: 'la cuisine', detailedCorrectionAr: 'On cuisine dans la cuisine.', options: [{ id: 'a', textAr: 'la cuisine', isCorrect: true }, { id: 'b', textAr: 'le salon', isCorrect: false }] },
+  ], [
+    { problemAr: '« sur » indique une position ...', solutionAr: 'au-dessus', detailedCorrectionAr: '"sur" = au-dessus (le livre est sur la table).', options: [{ id: 'a', textAr: 'au-dessus', isCorrect: true }, { id: 'b', textAr: 'en dessous', isCorrect: false }] },
+    { problemAr: 'Le son "on" se retrouve dans quel mot : "maison" ou "chat" ?', solutionAr: 'maison', detailedCorrectionAr: '"maison" contient le son "on".', options: [{ id: 'a', textAr: 'maison', isCorrect: true }, { id: 'b', textAr: 'chat', isCorrect: false }] },
+  ]),
+  'french-3ap-p3-seq1-animals-sounds': build4ApPractice('french-3ap-p3-seq1-animals-sounds', [
+    { problemAr: 'Comment dit-on "القط" en français ?', solutionAr: 'le chat', detailedCorrectionAr: 'le chat = القط.', options: [{ id: 'a', textAr: 'le chat', isCorrect: true }, { id: 'b', textAr: 'le chien', isCorrect: false }] },
+    { problemAr: 'Complète : « Le lapin ... petit. » (être)', solutionAr: 'est', detailedCorrectionAr: 'Il/Elle est — verbe être au présent.', type: 'fill_blank', fillBlankAnswerAr: 'est' },
+    { problemAr: '« grand » est le contraire de ...', solutionAr: 'petit', detailedCorrectionAr: 'grand ≠ petit.', options: [{ id: 'a', textAr: 'petit', isCorrect: true }, { id: 'b', textAr: 'beau', isCorrect: false }] },
+    { problemAr: 'Le son "an" se prononce comme dans « maman ». (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: '"an" se prononce comme dans maman, pantalon.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ], [
+    { problemAr: 'Comment dit-on "الأرنب" en français ?', solutionAr: 'le lapin', detailedCorrectionAr: 'le lapin = الأرنب.', options: [{ id: 'a', textAr: 'le lapin', isCorrect: true }, { id: 'b', textAr: 'l\'oiseau', isCorrect: false }] },
+    { problemAr: 'Le son "in" se retrouve dans quel mot : "lapin" ou "chat" ?', solutionAr: 'lapin', detailedCorrectionAr: '"lapin" contient le son "in".', options: [{ id: 'a', textAr: 'lapin', isCorrect: true }, { id: 'b', textAr: 'chat', isCorrect: false }] },
+  ]),
+  'french-3ap-p4-seq1-meals-verbs': build4ApPractice('french-3ap-p4-seq1-meals-verbs', [
+    { problemAr: 'Quel repas prend-on le soir ?', solutionAr: 'le dîner', detailedCorrectionAr: 'Le dîner se prend le soir.', options: [{ id: 'a', textAr: 'le dîner', isCorrect: true }, { id: 'b', textAr: 'le déjeuner', isCorrect: false }] },
+    { problemAr: 'Complète : « Tu ... du pain. » (manger)', solutionAr: 'manges', detailedCorrectionAr: 'Tu manges — terminaison -es au présent.', type: 'fill_blank', fillBlankAnswerAr: 'manges' },
+    { problemAr: 'Conjugue "boire" avec "Il" : Il ...', solutionAr: 'boit', detailedCorrectionAr: 'Il boit — verbe irrégulier.', options: [{ id: 'a', textAr: 'boit', isCorrect: true }, { id: 'b', textAr: 'bois', isCorrect: false }] },
+    { problemAr: '« eau » et « au » ne se lisent pas de la même façon. (vrai/faux)', solutionAr: 'faux', detailedCorrectionAr: 'Les deux se lisent /o/.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: false }, { id: 'false', textAr: 'faux', isCorrect: true }] },
+  ], [
+    { problemAr: 'Comment dit-on "الحليب" en français ?', solutionAr: 'le lait', detailedCorrectionAr: 'le lait = الحليب.', options: [{ id: 'a', textAr: 'le lait', isCorrect: true }, { id: 'b', textAr: 'le pain', isCorrect: false }] },
+    { problemAr: '« Je bois » est la conjugaison de quel verbe ?', solutionAr: 'boire', detailedCorrectionAr: 'Je bois vient de l\'infinitif "boire".', options: [{ id: 'a', textAr: 'boire', isCorrect: true }, { id: 'b', textAr: 'manger', isCorrect: false }] },
+  ]),
+  'french-3ap-p4-seq2-hunger-quantities': build4ApPractice('french-3ap-p4-seq2-hunger-quantities', [
+    { problemAr: 'Comment dit-on qu\'on veut manger ?', solutionAr: 'j\'ai faim', detailedCorrectionAr: '"j\'ai faim" exprime le besoin de manger.', options: [{ id: 'a', textAr: 'j\'ai faim', isCorrect: true }, { id: 'b', textAr: 'j\'ai soif', isCorrect: false }] },
+    { problemAr: 'Complète : « ... de sucre » (petite quantité)', solutionAr: 'un peu', detailedCorrectionAr: '"un peu de" = petite quantité.', type: 'fill_blank', fillBlankAnswerAr: 'un peu' },
+    { problemAr: 'Le son QU se prononce toujours ...', solutionAr: '/k/', detailedCorrectionAr: 'QU se lit toujours /k/, jamais /kw/.', options: [{ id: 'a', textAr: '/k/', isCorrect: true }, { id: 'b', textAr: '/g/', isCorrect: false }] },
+    { problemAr: '« beaucoup de » veut dire une grande quantité. (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'beaucoup de = كثير من.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ], [
+    { problemAr: 'Comment dit-on "الجزر" en français ?', solutionAr: 'la carotte', detailedCorrectionAr: 'la carotte = الجزر.', options: [{ id: 'a', textAr: 'la carotte', isCorrect: true }, { id: 'b', textAr: 'la pomme', isCorrect: false }] },
+    { problemAr: '« Il a soif » utilise quel verbe ?', solutionAr: 'avoir', detailedCorrectionAr: 'avoir faim/soif se construit avec le verbe avoir.', options: [{ id: 'a', textAr: 'avoir', isCorrect: true }, { id: 'b', textAr: 'être', isCorrect: false }] },
+  ]),
+  'french-3ap-p3-seq2-garden-reading': build4ApPractice('french-3ap-p3-seq2-garden-reading', [
+    { problemAr: 'Comment dit-on qu\'on aime quelque chose ?', solutionAr: 'j\'aime', detailedCorrectionAr: '"j\'aime" exprime un goût positif.', options: [{ id: 'a', textAr: 'j\'aime', isCorrect: true }, { id: 'b', textAr: 'je n\'aime pas', isCorrect: false }] },
+    { problemAr: 'Complète : « Je ... pas les oignons. » (n\'aime)', solutionAr: 'n\'aime', detailedCorrectionAr: 'Je n\'aime pas — négation complète.', type: 'fill_blank', fillBlankAnswerAr: 'n\'aime' },
+    { problemAr: 'Le son "oi" se lit ...', solutionAr: '/wa/', detailedCorrectionAr: '"oi" se lit /wa/ (oiseau, poisson).', options: [{ id: 'a', textAr: '/wa/', isCorrect: true }, { id: 'b', textAr: '/ɲ/', isCorrect: false }] },
+    { problemAr: '« gn » se prononce /ɲ/ comme dans « montagne ». (vrai/faux)', solutionAr: 'vrai', detailedCorrectionAr: 'gn se prononce /ɲ/ dans montagne, agneau.', type: 'true_false', options: [{ id: 'true', textAr: 'vrai', isCorrect: true }, { id: 'false', textAr: 'faux', isCorrect: false }] },
+  ], [
+    { problemAr: 'Comment dit-on "البرتقالة" en français ?', solutionAr: 'l\'orange', detailedCorrectionAr: 'l\'orange = البرتقالة.', options: [{ id: 'a', textAr: 'l\'orange', isCorrect: true }, { id: 'b', textAr: 'la pomme', isCorrect: false }] },
+    { problemAr: '« ill » se prononce /ij/ comme dans quel mot ?', solutionAr: 'papillon', detailedCorrectionAr: 'papillon contient le son ill /ij/.', options: [{ id: 'a', textAr: 'papillon', isCorrect: true }, { id: 'b', textAr: 'oiseau', isCorrect: false }] },
+  ]),
   'french-4ap-projet1-seq1-presentation-famille': build4ApPractice('french-4ap-projet1-seq1-presentation-famille', [
     { problemAr: 'Complète : Je ___ Yacine. (verbe Être)', solutionAr: 'suis', detailedCorrectionAr: 'Je suis — 1re personne du singulier du verbe Être.', options: [{ id: 'a', textAr: 'suis', isCorrect: true }, { id: 'b', textAr: 'as', isCorrect: false }] },
     { problemAr: 'Tu ___ dix ans. (verbe Avoir)', solutionAr: 'as', detailedCorrectionAr: 'Tu as — 2e personne du singulier du verbe Avoir.', type: 'fill_blank', fillBlankAnswerAr: 'as' },

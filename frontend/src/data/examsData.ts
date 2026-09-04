@@ -992,12 +992,14 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
   },
 
   // ==========================================
-  // 🥖 FRANÇAIS — Compositions trimestrielles 4AP - 2026
+  // 🥖 FRANÇAIS — Compositions trimestrielles 4AP - 2026 (grammaire)
+  // Trimester fields shifted up by 1 (T1→T2, T2→T3) to make room for the migrated "beginner"
+  // compositions above (French 3AP→4AP curriculum change, CLAUDE.md § 2.B).
   // ==========================================
   {
     id: 'exam-4ap-french-t1-2026',
     year: 2026,
-    trimester: 1,
+    trimester: 2,
     titleAr: 'Composition du 1er trimestre — Français — 4ème Année Primaire',
     sessionAr: 'Trimestre 1 - 2026',
     subject: 'french',
@@ -1048,7 +1050,7 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
   {
     id: 'exam-4ap-french-t2-2026',
     year: 2026,
-    trimester: 2,
+    trimester: 3,
     titleAr: 'Composition du 2ème trimestre — Français — 4ème Année Primaire',
     sessionAr: 'Trimestre 2 - 2026',
     subject: 'french',
@@ -1274,16 +1276,18 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
   },
 
   // ==========================================
-  // 🥖 FRANÇAIS — Compositions trimestrielles 3AP - 2026
+  // 🥖 FRANÇAIS — Compositions trimestrielles 4AP "débutant" (ex-3AP, migrées suite au changement
+  // de calendrier MEN 2026-2027 — voir project_men_2026_2027_curriculum_change). Les 2 premières
+  // tombent toutes deux en trimestre 1 (contenu regroupé là dans 4AP/french.ts).
   // ==========================================
   {
-    id: 'exam-3ap-french-t1-2026',
+    id: 'exam-4ap-french-beg1-2026',
     year: 2026,
     trimester: 1,
-    titleAr: 'Composition du 1er trimestre — Français — 3ème Année Primaire',
+    titleAr: 'Composition du 1er trimestre — Français — 4ème Année Primaire',
     sessionAr: 'Trimestre 1 - 2026',
     subject: 'french',
-    grade: '3AP',
+    grade: '4AP',
     durationMinutes: 45,
     totalPoints: 10,
     contentSource: 'complementary',
@@ -1296,13 +1300,13 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     problemExercise: { titleAr: "Situation simple : Expression orale (4 points)", points: 4, contentAr: "Présente-toi en une phrase (ton prénom).", solutionAr: "Exemple de réponse : « Bonjour ! Je m'appelle Amina. » (Évaluation selon la clarté de la présentation.)" },
   },
   {
-    id: 'exam-3ap-french-t2-2026',
+    id: 'exam-4ap-french-beg2-2026',
     year: 2026,
-    trimester: 2,
-    titleAr: 'Composition du 2ème trimestre — Français — 3ème Année Primaire',
+    trimester: 1,
+    titleAr: 'Composition du 2ème trimestre — Français — 4ème Année Primaire',
     sessionAr: 'Trimestre 2 - 2026',
     subject: 'french',
-    grade: '3AP',
+    grade: '4AP',
     durationMinutes: 45,
     totalPoints: 10,
     contentSource: 'complementary',
@@ -1315,13 +1319,13 @@ const CORE_EXAM_PAPERS: OfficialExam[] = [
     problemExercise: { titleAr: "Situation simple : Expression orale (4 points)", points: 4, contentAr: "Présente un membre de ta famille en une phrase.", solutionAr: "Exemple de réponse : « Voici mon père. Il est ingénieur. » (Évaluation selon la clarté et l'usage du bon pronom.)" },
   },
   {
-    id: 'exam-3ap-french-t3-2026',
+    id: 'exam-4ap-french-beg3-2026',
     year: 2026,
-    trimester: 3,
-    titleAr: 'Composition du 3ème trimestre — Français — 3ème Année Primaire',
+    trimester: 2,
+    titleAr: 'Composition du 3ème trimestre — Français — 4ème Année Primaire',
     sessionAr: 'Trimestre 3 - 2026',
     subject: 'french',
-    grade: '3AP',
+    grade: '4AP',
     durationMinutes: 45,
     totalPoints: 10,
     contentSource: 'complementary',

@@ -343,9 +343,11 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     icon: 'Languages',
     color: 'from-sky-600 to-blue-700',
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
-    description: '3AP : 4 projets officiels (Mon école, Ma famille, Animaux, Alimentation). 5AP : 3 projets avancés.',
+    description: '4AP : 4 projets officiels (Mon école, Ma famille, Animaux, Alimentation). 5AP : 3 projets avancés.',
     category: 'tool',
-    minGrade: '3AP',
+    // Kept in sync with 'french'/'french_lab': French now starts in 4AP (MEN 2026-2027 curriculum
+    // change, CLAUDE.md § 2.B), so these "3AP" official projects moved to 4AP as the first-year program.
+    minGrade: '4AP',
   },
   {
     id: 'english_audio_dialogues',

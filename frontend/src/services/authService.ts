@@ -6,15 +6,6 @@ const STORAGE_KEYS = {
   RECEIPTS: 'mssid_payment_receipts',
 };
 
-// TEMP DEV-ONLY DEMO ACCOUNT — DELETE THIS BLOCK (and its use in loginAsync below) BEFORE THE
-// PRODUCTION LAUNCH. Login "test" / "123" bypasses the backend entirely (front-end only) so the
-// diploma-unlock system can be tested without a running Spring Boot server: it logs in as a 1AP
-// account with every 1AP lesson already marked complete, so diploma_1ap unlocks immediately while
-// 2AP-5AP stay locked — both states visible in one account. `isDevBuild` makes Vite dead-code-
-// eliminate this in a real `npm run build` (import.meta.env.DEV becomes `false`), but that's a
-// safety net, not a substitute for actually removing it pre-launch.
-const isDevBuild: boolean = (typeof import.meta !== 'undefined' && (import.meta as any).env?.DEV) === true;
-
 // SEC-05: the authenticated profile (name, email, xp, badges...) now lives in memory only — never
 // localStorage. Session persistence across page reloads is the HttpOnly cookie's job (see SEC-01);
 // AuthContext re-hydrates this singleton from GET /api/v1/users/me on every app boot. Same
@@ -156,34 +147,6 @@ export class AuthService {
   }
 
 static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
-  // TEMP DEV-ONLY DEMO ACCOUNT — see the block comment near isDevBuild above. Remove before prod.
-  // Must be a real-shaped email ("test@mssid.dz", not bare "test") because the login form's email
-  // input is `type="email"` — the browser's own HTML5 validation rejects anything without an '@'
-  // before this code ever runs, which is exactly what silently blocked the first version of this.
-  if (isDevBuild && email.trim().toLowerCase() === 'test@mssid.dz' && pass === '123') {
-    const { COURSES_DATA } = await import('../data/coursesData');
-    const all1apLessonIds = COURSES_DATA.filter((l) => l.grade === '1AP').map((l) => l.id);
-    const demoUser: AuthUser = {
-      id: 999999,
-      nom: 'حساب الاختبار (Test)',
-      email: 'test@mssid.dz',
-      role: 'ROLE_FREE',
-      score: 0,
-      xp: 0,
-      level: 1,
-      grade: '1AP',
-      streakDays: 1,
-      quizzesCompleted: 0,
-      completedLessonIds: all1apLessonIds,
-      badges: [],
-      quizScores: {},
-      emailVerified: true,
-      goldCoins: 150,
-    };
-    this.setCurrentUser(demoUser);
-    return { user: demoUser };
-  }
-
   try {
     const response = await springBootApi.login({ email, password: pass });
 
