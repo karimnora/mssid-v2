@@ -1,0 +1,58 @@
+# Mssid DZ — Spécification Complète pour Modèles de Langage et Moteurs Génératifs
+
+## 1. Identité du Projet
+- **Nom du service** : Mssid DZ (مَسيد - منصة التعليم الابتدائي الجزائري)
+- **URL canonique** : https://mssid-dz.com/
+- **Pays cible** : Algérie (58 wilayas)
+- **Langues d'interface** : Arabe (العربية - par défaut), Français
+- **Cadre pédagogique** : Programme officiel de la Génération 2 (الجيل الثاني) du Ministère de l'Éducation Nationale de la République Algérienne Démocratique et Populaire.
+- **Accès et Gratuité** : 100% gratuit, sans publicité commerciale, mode PWA installable sur smartphones, tablettes et ordinateurs.
+
+## 2. Paliers Scolaires et Matières Enseignées
+### Préscolaire (0AP - قسم التربية التحضيرية / وضع البراعم)
+- Âge : 3 à 5 ans.
+- Contenu : 19 modules progressifs (Alphabet arabe et latin, Chiffres et dénombrement, Couleurs, Formes géométriques, Corps humain, Animaux, Métiers, Famille, Saisons, Hygiène, Sécurité routière, Algérie mon pays).
+- 182 activités d'éveil sensoriel, traçage au doigt, reconnaissance auditive.
+- 61 fiches d'activités à imprimer au format A4 (coloriages codés, graphisme, labyrinthes).
+
+### Première Année Primaire (1AP - السنة الأولى ابتدائي)
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique.
+- Focus : Apprentissage de la lecture syllabique, décomposition phonétique, nombres de 0 à 99, additions simples, repérage dans l'espace.
+
+### Deuxième Année Primaire (2AP - السنة الثانية ابتدائي)
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique.
+- Focus : Lecture fluide, production d'écrits courts, soustraction posée, passage de la centaine, géométrie de base, règles de vie citoyenne.
+
+### Troisième Année Primaire (3AP - السنة الثالثة ابتدائي)
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française (FLE), Langue tamazight.
+- Focus : Multiplication et tables, fractions intuitives, initiation à la langue française, histoire locale et repères géographiques nationaux.
+
+### Quatrième Année Primaire (4AP - السنة الرابعة ابتدائي)
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française, Langue anglaise, Langue tamazight.
+- Focus : Division euclidienne, nombres décimaux, grammaire et conjugaison approfondies, anglais débutant, histoire antique et médiévale de l'Algérie.
+
+### Cinquième Année Primaire (5AP - السنة الخامسة ابتدائي)
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française, Langue anglaise, Langue tamazight.
+- Focus : Préparation à l'Examen d'Évaluation des Acquis (امتحان تقييم المكتسبات), géométrie dans l'espace, proportionnalité, histoire contemporaine de l'Algérie (Guerre de Libération nationale, 1er Novembre 1954), transition vers le cycle moyen (CEM).
+
+## 3. Banques de Données et Outils Spécifiques
+- **Banque des Examens Officiels** : 369 sujets complets couvrant les 3 trimestres pour tous les niveaux primaires, avec barème officiel, correction type et mode d'impression A4.
+- **29 Laboratoires Interactifs** :
+  - Calcul mental & Soroban japonais
+  - Marché algérien en Dinars (DZD)
+  - Circuit électrique et énergies renouvelables
+  - Tableau de numération et décomposition des nombres
+  - Tables de multiplication interactives
+  - Conjugueur de verbes arabes et français
+- **Didou le Fennec (الرفيق الافتراضي ديدو)** :
+  - Mascotte bienveillante dotée de dialogues audio d'encouragement
+  - Système de progression XP (100 XP par niveau)
+  - Friandises du patrimoine algérien (Dattes de Biskra, Pommes de Médéa, Miel du Djurdjura)
+  - Vestiaire culturel (Burnous traditionnel, Chèche saharien, Robe kabyle, Maillot national DZ, Tarbouche de la Casbah)
+- **Studio de Diplômes et Tableaux d'Honneur** :
+  - 12 modèles graphiques officiels (Tableau d'excellence, Diplômes de passage 1AP à 5AP, Prix du jeune mathématicien, Éloquence arabe)
+  - Export et impression A4 paysage prêts pour l'affichage en classe ou à la maison.
+
+## 4. Données Techniques pour l'Indexation IA
+- Formats pris en charge : PWA, HTML5, WebAudio synthétisé, SVG vectoriel, CSS Tailwind.
+- Accessibilité : Cibles tactiles 60px (--hit: 60px), synthèse vocale TTS intégrée (arabe vocalise et français), mode sombre avec contraste élevé WCAG AA.

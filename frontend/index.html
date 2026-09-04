@@ -25,12 +25,101 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="مَسيد DZ" />
-    <!-- R2.3: manifest link is now injected automatically by vite-plugin-pwa (see vite.config.ts's
-         VitePWA({ manifest: {...} }) — no more static /manifest.json reference needed here. -->
+
+    <!-- R2.3: manifest link is injected automatically by vite-plugin-pwa (see vite.config.ts's
+         VitePWA({ manifest: {...} }) — no static /manifest.json reference needed here. These icon
+         links are separate from that and were dropped by mistake while adding the SEO block below;
+         the underlying files were never removed, only these tags referencing them. -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/pwa-icon-source.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
-    <title>مَسيد DZ - منصة التعليم الابتدائي الجزائري</title>
+
+    <!-- SEO Primary Meta Tags -->
+    <title>مَسيد DZ - منصة التعليم الابتدائي والتحضيري في الجزائر</title>
+    <meta name="title" content="مَسيد DZ - منصة التعليم الابتدائي والتحضيري في الجزائر" />
+    <meta name="description" content="المنصة التعليمية التفاعلية المجانية الأولى لتلاميذ الابتدائي والتحضيري في الجزائر: +369 امتحان رسمي مع الحلول، دروس الجيل الثاني من 1AP إلى 5AP، مختبرات حساب وعلوم تفاعلية، ألعاب تربوية، وشهادات شرفية مع الرفيق ديدو." />
+    <meta name="keywords" content="التعليم الابتدائي الجزائر, امتحانات ابتدائي الجيل الثاني, فروض واختبارات 5AP, تقييم المكتسبات, السنة الخامسة ابتدائي, السنة الرابعة ابتدائي, السنة الثالثة ابتدائي, السنة الثانية ابتدائي, السنة الأولى ابتدائي, التحضيري 0AP, بنك الامتحانات الجزائرية, ديدو الفنك, دروس تفاعلية, حساب ذهني سوروبان" />
+    <meta name="author" content="Mssid DZ Team" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://mssid-dz.com/" />
+    <link rel="alternate" hreflang="ar-DZ" href="https://mssid-dz.com/" />
+    <link rel="alternate" hreflang="fr-DZ" href="https://mssid-dz.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://mssid-dz.com/" />
+
+    <!-- GEO / Geotargeting Meta Tags (Algeria Focus) -->
+    <meta name="geo.region" content="DZ" />
+    <meta name="geo.placename" content="Algiers, Algeria" />
+    <meta name="geo.position" content="36.7538;3.0588" />
+    <meta name="ICBM" content="36.7538, 3.0588" />
+
+    <!-- Open Graph / Facebook / WhatsApp Social Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mssid-dz.com/" />
+    <meta property="og:site_name" content="مَسيد DZ - Mssid DZ" />
+    <meta property="og:title" content="مَسيد DZ - منصة التعليم الابتدائي والتحضيري في الجزائر" />
+    <meta property="og:description" content="منصة تعليمية تفاعلية مجانية 100%: أكثر من 369 امتحان رسمي مع التصحيح النموذجي، دروس تفاعلية وفق منهاج وزارة التربية الوطنية، ومختبرات علمية لأطفال الابتدائي." />
+    <!-- The 1200x675 launch banner this originally pointed to (public/images/...) was never
+         actually added to the repo — a broken og:image shows nothing on Facebook/WhatsApp/Twitter
+         previews. Using the real PWA icon (512x512, exists in public/) until a real banner ships. -->
+    <meta property="og:image" content="https://mssid-dz.com/pwa-512x512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="منصة مسيد DZ للتعليم الابتدائي والتحضيري في الجزائر" />
+    <meta property="og:locale" content="ar_DZ" />
+    <meta property="og:locale:alternate" content="fr_DZ" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://mssid-dz.com/" />
+    <meta name="twitter:title" content="مَسيد DZ - منصة التعليم الابتدائي الجزائري" />
+    <meta name="twitter:description" content="المنصة الأولى للابتدائي في الجزائر: بنك الامتحانات الرسمية، دروس تفاعلية، ومختبرات الحساب والعلوم مجانا 100%." />
+    <meta name="twitter:image" content="https://mssid-dz.com/pwa-512x512.png" />
+
+    <!-- JSON-LD Structured Data (Schema.org) for Google Rich Snippets & Generative AI Grounding -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mssid-dz.com/#webapp",
+          "name": "Mssid DZ - مَسيد",
+          "url": "https://mssid-dz.com/",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "All modern browsers (Web, iOS, Android PWA)",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "inLanguage": ["ar-DZ", "fr-DZ"],
+          "description": "Plateforme éducative interactive gratuite pour le cycle primaire et préscolaire en Algérie (0AP à 5AP) alignée sur le programme officiel de la Génération 2 du Ministère de l'Éducation Nationale.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "DZD",
+            "availability": "https://schema.org/InStock"
+          },
+          "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "student",
+            "audienceType": "Élèves du primaire et du préscolaire en Algérie (3 à 11 ans)"
+          }
+        },
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://mssid-dz.com/#organization",
+          "name": "Mssid DZ",
+          "url": "https://mssid-dz.com/",
+          "logo": "https://mssid-dz.com/pwa-512x512.png",
+          "sameAs": [
+            "https://www.facebook.com/mssid.dz",
+            "https://www.tiktok.com/@mssid.dz"
+          ],
+          "areaServed": {
+            "@type": "Country",
+            "name": "Algeria"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-500 selection:text-white">
     <div id="root"></div>
