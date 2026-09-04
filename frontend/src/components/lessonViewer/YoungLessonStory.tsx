@@ -36,8 +36,11 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
   const [showHomeActivity, setShowHomeActivity] = useState(false);
   // Nearly every 1AP title already carries a real emoji ("الأَشْكَالُ: ... 🔺"). Reusing it as the
   // last-resort fallback keeps any snippet without its own emoji on-topic instead of landing on an
-  // unrelated DEFAULT_TILES pick (a star for a bike wheel, a clover for "3 apples"...).
-  const themeEmoji = parsePlayfulSnippet(show(lesson.titleAr)).emoji;
+  // unrelated DEFAULT_TILES pick. However, for multi-item titles (e.g. letter groups "🍌🐝🍋"),
+  // a single emoji must not bleed across distinct concepts.
+  const titleEmojis = show(lesson.titleAr).match(/\p{Extended_Pictographic}/gu) || [];
+  const isMultiItemTitle = titleEmojis.length > 1;
+  const themeEmoji = isMultiItemTitle ? undefined : parsePlayfulSnippet(show(lesson.titleAr)).emoji;
 
   return (
     <div className="space-y-6" dir="rtl" data-lesson-story="1ap">
@@ -118,7 +121,8 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
 
       {example && (() => {
         const problemSnippet = parsePlayfulSnippet(show(example.problem), 6, themeEmoji);
-        const solutionSnippet = parsePlayfulSnippet(show(example.solution), 7, problemSnippet.emoji);
+        const siblingEmoji = problemSnippet.letterVisual ? undefined : problemSnippet.emoji;
+        const solutionSnippet = parsePlayfulSnippet(show(example.solution), 7, siblingEmoji);
         return (
           <div className="space-y-3">
             <PlayfulSpeakCard
@@ -244,7 +248,7 @@ const PlayfulSpeakCard: React.FC<{
           No onClick here: a duplicate tap zone doing the same thing as the button made a child
           reasonably wonder whether tapping the picture/text was a selectable answer. */}
       <div className="flex-1 flex flex-col items-center justify-center gap-1 text-center min-w-0">
-        <span className="text-4xl sm:text-5xl leading-none" aria-hidden="true">
+        <span className="text-4xl sm:text-5xl leading-tight font-black text-slate-800 dark:text-white inline-block py-0.5 select-none" aria-hidden="true">
           {visual}
         </span>
         <p className="text-xl sm:text-2xl font-black text-[#1E293B] leading-snug break-words">{headline}</p>
