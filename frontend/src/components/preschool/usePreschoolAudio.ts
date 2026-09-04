@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
+import { speakText, stopSpeech, useVoiceAvailable } from '../../utils/speech';
 
 // ─── Global mute (TTS + SFX + loops) ─────────────────────────────────────────
 const MUTE_STORAGE_KEY = 'mssid_preschool_muted';
@@ -24,9 +25,7 @@ function silenceAllPreschoolAudio() {
   stopRecordedClip();
   stopSoundBoxClip();
   stopMotionAudio();
-  if (typeof window !== 'undefined' && window.speechSynthesis) {
-    window.speechSynthesis.cancel();
-  }
+  stopSpeech();
   if (sharedAudioCtx && sharedAudioCtx.state === 'running') {
     void sharedAudioCtx.suspend();
   }
@@ -72,26 +71,19 @@ export function usePreschoolMute() {
   };
 }
 
-// Web Speech API TTS wrapper — MVP voice for "Amine le Fennec" and activity prompts. Browser Arabic
-// TTS quality is mediocre (see mssid UX audit notes), so this is explicitly a placeholder: swap for
-// pre-recorded professional voice-overs per language once produced, behind the same `speak()` call
-// signature so no calling component needs to change.
-const BCP47_BY_LANGUAGE: Record<PreschoolLanguage, string[]> = {
-  // Try Algerian/Arabic locales in order of preference; browsers rarely ship 'ar-DZ' voices, so we
-  // fall back through generic Arabic locales rather than failing silently.
-  ar: ['ar-DZ', 'ar-SA', 'ar'],
-  fr: ['fr-FR', 'fr'],
-  en: ['en-US', 'en-GB', 'en'],
+// TTS for "Amine le Fennec" and activity prompts — routed through the shared speakText()/
+// useVoiceAvailable() from utils/speech.ts instead of talking to window.speechSynthesis directly.
+// This used to have its own parallel implementation that always used window.speechSynthesis, even
+// on native Android — but that WebView API is unreliable there (often reports zero installed
+// voices), which is exactly the problem speakText() already solved for the rest of the app (native
+// builds go through the @capacitor-community/text-to-speech plugin instead). Result before this fix:
+// préscolaire prompts could be silent on the native app while working fine on web, or vice versa
+// depending on which items had a recordedSrc fallback and which fell through to raw TTS.
+const BCP47_BY_LANGUAGE: Record<PreschoolLanguage, 'ar-SA' | 'fr-FR' | 'en-US'> = {
+  ar: 'ar-SA',
+  fr: 'fr-FR',
+  en: 'en-US',
 };
-
-function pickVoice(voices: SpeechSynthesisVoice[], language: PreschoolLanguage): SpeechSynthesisVoice | undefined {
-  for (const locale of BCP47_BY_LANGUAGE[language]) {
-    const exact = voices.find((v) => v.lang.toLowerCase() === locale.toLowerCase());
-    if (exact) return exact;
-  }
-  const prefix = language;
-  return voices.find((v) => v.lang.toLowerCase().startsWith(prefix));
-}
 
 let recordedClip: HTMLAudioElement | null = null;
 
@@ -125,71 +117,21 @@ function playRecordedClip(src: string, onFail: () => void) {
 }
 
 export function usePreschoolSpeech(language: PreschoolLanguage) {
-  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
-  const [hasVoice, setHasVoice] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) return;
-    let cancelled = false;
-    let attempts = 0;
-
-    const loadVoices = () => {
-      const voices = window.speechSynthesis.getVoices();
-      if (voices.length) voicesRef.current = voices;
-      if (!cancelled) setHasVoice(Boolean(pickVoice(voicesRef.current, language)));
-      return voices.length > 0;
-    };
-
-    // Chrome commonly reports zero voices on the very first synchronous getVoices() call, and the
-    // Android WebView this app ships in (via Capacitor) doesn't reliably fire onvoiceschanged at
-    // all — so relying on that event alone silently leaves voicesRef empty forever on some devices.
-    // Poll for up to ~2s as a fallback so a slow-to-init voice list still gets picked up.
-    const poll = () => {
-      if (cancelled || loadVoices() || attempts >= 20) return;
-      attempts += 1;
-      setTimeout(poll, 100);
-    };
-    poll();
-
-    window.speechSynthesis.onvoiceschanged = loadVoices;
-    return () => {
-      cancelled = true;
-      window.speechSynthesis.onvoiceschanged = null;
-    };
-  }, [language]);
+  const lang = BCP47_BY_LANGUAGE[language];
+  // null while still checking (native: TextToSpeech.isLanguageSupported; web: polling getVoices())
+  // — treated as "has a voice" so the UI doesn't flash a "no voice" warning during that window.
+  const voiceAvailable = useVoiceAvailable(lang);
+  const hasVoice = voiceAvailable !== false;
 
   const speakTts = useCallback((text: string) => {
-    if (isPreschoolMuted()) return;
-    if (typeof window === 'undefined' || !window.speechSynthesis || !text) return;
-    window.speechSynthesis.cancel();
-
-    if (voicesRef.current.length === 0) {
-      voicesRef.current = window.speechSynthesis.getVoices();
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voice = pickVoice(voicesRef.current, language);
-    if (voice) {
-      utterance.voice = voice;
-    } else if (typeof import.meta !== 'undefined' && (import.meta as any).env?.DEV) {
-      console.warn(
-        `[mssid preschool] No TTS voice found for locale "${language}". ` +
-        `Available on this device: ${voicesRef.current.map((v) => v.lang).join(', ') || '(none loaded)'}. ` +
-        `On Android, install the Arabic voice pack via Settings > System > Languages > Text-to-speech output.`
-      );
-    }
-    utterance.lang = BCP47_BY_LANGUAGE[language][0];
-    utterance.rate = 0.9;
-    utterance.pitch = 1.1;
-    utterance.onerror = (event) => {
-      console.warn('[mssid preschool] Speech synthesis failed:', event.error);
-    };
-    window.speechSynthesis.speak(utterance);
-  }, [language]);
+    if (isPreschoolMuted() || !text) return;
+    // speakText() already swallows and logs its own errors on both the native and web paths.
+    void speakText(text, lang, 0.9, 1.1);
+  }, [lang]);
 
   const stop = useCallback(() => {
     stopRecordedClip();
-    if (typeof window !== 'undefined' && window.speechSynthesis) window.speechSynthesis.cancel();
+    stopSpeech();
   }, []);
 
   const speak = useCallback((text: string, recordedSrc?: string) => {
@@ -198,9 +140,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
       return;
     }
     stopRecordedClip();
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-    }
+    stopSpeech();
     if (recordedSrc) {
       playRecordedClip(recordedSrc, () => speakTts(text));
       return;

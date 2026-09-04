@@ -91,7 +91,7 @@ function stripNonSpokenSymbols(text: string): string {
   return text.replace(NON_SPOKEN_SYMBOLS_REGEX, ' ').replace(/\s+/g, ' ').trim();
 }
 
-export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9): Promise<void> => {
+export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9, pitch: number = 1): Promise<void> => {
   if (!isFeatureEnabled('voiceReading')) {
     return Promise.resolve();
   }
@@ -106,6 +106,7 @@ export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-
       text: spokenText,
       lang,
       rate,
+      pitch,
       category: 'playback',
       queueStrategy: 0, // Flush — a new tap should cut off whatever's still playing, not queue behind it.
     }).catch((err) => {
@@ -126,6 +127,7 @@ export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-
     const utterance = new SpeechSynthesisUtterance(spokenText);
     utterance.lang = lang;
     utterance.rate = rate; // slightly slower for educational clarity
+    utterance.pitch = pitch;
 
     // Select suitable voice if available
     const voices = synth.getVoices();
