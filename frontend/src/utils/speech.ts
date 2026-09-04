@@ -78,14 +78,32 @@ export function speechLangForSubject(subject: string): 'fr-FR' | 'en-US' | 'ar-S
   return 'ar-SA';
 }
 
+// UI copy (quiz feedback, playful snippets, badges) commonly mixes emoji into the text — but TTS
+// engines, especially Android's native voices, often vocalize them literally (announcing "emoji" or
+// the symbol's name) instead of skipping them. Replacing with a space (not '') avoids accidentally
+// merging two words that were only separated by an emoji, e.g. "Bravo !🎉Continue" -> "Bravo ! Continue".
+const NON_SPOKEN_SYMBOLS_REGEX = new RegExp(
+  '[\\p{Extended_Pictographic}\\u{1F1E6}-\\u{1F1FF}\\u200D\\uFE0F\\u20E3]',
+  'gu'
+);
+
+function stripNonSpokenSymbols(text: string): string {
+  return text.replace(NON_SPOKEN_SYMBOLS_REGEX, ' ').replace(/\s+/g, ' ').trim();
+}
+
 export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9): Promise<void> => {
   if (!isFeatureEnabled('voiceReading')) {
     return Promise.resolve();
   }
 
+  const spokenText = stripNonSpokenSymbols(text);
+  if (!spokenText) {
+    return Promise.resolve();
+  }
+
   if (isNative()) {
     return TextToSpeech.speak({
-      text,
+      text: spokenText,
       lang,
       rate,
       category: 'playback',
@@ -105,7 +123,7 @@ export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-
     // Cancel any ongoing speech
     synth.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
+    const utterance = new SpeechSynthesisUtterance(spokenText);
     utterance.lang = lang;
     utterance.rate = rate; // slightly slower for educational clarity
 
