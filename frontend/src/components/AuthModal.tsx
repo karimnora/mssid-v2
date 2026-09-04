@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { Capacitor } from '@capacitor/core';
+import { GoogleSignIn, ErrorCode as GoogleSignInErrorCode } from '@capawesome/capacitor-google-sign-in';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
@@ -41,6 +43,15 @@ const GRADE_OPTION_KEYS: Record<PrimaryGrade, 'grade1APOption' | 'grade2APOption
 // Empty/unset = the Google button below never renders, nothing else about the form changes.
 const GOOGLE_CLIENT_ID: string =
   (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID) || '';
+
+// Google's own web GSI library (loaded below) blocks itself inside an embedded WebView, which is
+// exactly what the Android/iOS app is — so native builds use @capawesome/capacitor-google-sign-in
+// (Android Credential Manager / iOS native sign-in) instead. Both paths end up calling the same
+// GOOGLE_CLIENT_ID: the plugin's initialize() always wants the *web* OAuth client, even on native —
+// see the plugin's README. A matching Android OAuth client (same SHA-1 as the signing cert) must
+// still exist in Google Cloud Console for the native flow to succeed, even though its ID is never
+// referenced here.
+const IS_NATIVE_PLATFORM = Capacitor.isNativePlatform();
 
 export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService, contextMessage }) => {
   const t = useTranslation('auth');
@@ -87,12 +98,27 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
   const googleButtonRef = useRef<HTMLDivElement>(null);
   const [googleReady, setGoogleReady] = useState<boolean>(false);
+  const [nativeGoogleReady, setNativeGoogleReady] = useState<boolean>(false);
+
+  // Native (Android/iOS): initialize the Credential Manager / native Google Sign-In plugin once,
+  // instead of loading Google's web GSI script below (which refuses to run in an embedded WebView).
+  useEffect(() => {
+    if (!IS_NATIVE_PLATFORM || !GOOGLE_CLIENT_ID) return;
+    let cancelled = false;
+    GoogleSignIn.initialize({ clientId: GOOGLE_CLIENT_ID }).then(() => {
+      if (!cancelled) setNativeGoogleReady(true);
+    }).catch(() => {
+      // Leaves nativeGoogleReady false — the button below simply won't render rather than crash.
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   // Loads Google Identity Services once, app-wide (checks for an already-injected/loaded script
-  // first) — a no-op entirely when VITE_GOOGLE_CLIENT_ID isn't set, so nothing else about the modal
-  // changes for a deployment that hasn't created a Google Cloud OAuth client yet.
+  // first) — a no-op entirely when VITE_GOOGLE_CLIENT_ID isn't set, or on native platforms (see
+  // IS_NATIVE_PLATFORM above), so nothing else about the modal changes for a deployment that hasn't
+  // created a Google Cloud OAuth client yet.
   useEffect(() => {
-    if (!GOOGLE_CLIENT_ID) return;
+    if (!GOOGLE_CLIENT_ID || IS_NATIVE_PLATFORM) return;
     if ((window as any).google?.accounts?.id) {
       setGoogleReady(true);
       return;
@@ -131,10 +157,35 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     }
   };
 
+  // Native counterpart of handleGoogleCredential: same backend call, same success/error handling,
+  // but the ID token comes from the native Credential Manager / Google Sign-In flow instead of the
+  // web GSI button's credential callback.
+  const handleNativeGoogleSignIn = async () => {
+    setStatusMessage(null);
+    try {
+      const result = await GoogleSignIn.signIn();
+      if (!result.idToken) {
+        setStatusMessage({ type: 'error', text: t('googleAuthErrorDefault') });
+        return;
+      }
+      await handleGoogleCredential({ credential: result.idToken });
+    } catch (error: any) {
+      if (error?.code === GoogleSignInErrorCode.SignInCanceled) {
+        return; // User closed the account picker — not an error worth showing.
+      }
+      if (error?.code === GoogleSignInErrorCode.NoCredentialAvailable) {
+        setStatusMessage({ type: 'error', text: t('googleSignInUnavailable') });
+        return;
+      }
+      setStatusMessage({ type: 'error', text: t('googleAuthErrorDefault') });
+    }
+  };
+
   // Re-initializes/re-renders Google's own button whenever the modal (re)opens on the credentials
   // step, or the login/register tab flips (its label switches between "Sign in" / "Sign up").
+  // Web-only — native builds render their own button (see nativeGoogleReady) instead of this one.
   useEffect(() => {
-    if (!googleReady || !GOOGLE_CLIENT_ID || authFlow !== 'credentials' || !isOpen) return;
+    if (IS_NATIVE_PLATFORM || !googleReady || !GOOGLE_CLIENT_ID || authFlow !== 'credentials' || !isOpen) return;
     const g = (window as any).google;
     if (!g?.accounts?.id || !googleButtonRef.current) return;
     g.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: handleGoogleCredential });
@@ -457,9 +508,26 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         {/* Form */}
         {authFlow === 'credentials' && (
         <>
-        {GOOGLE_CLIENT_ID && (
+        {GOOGLE_CLIENT_ID && (IS_NATIVE_PLATFORM ? nativeGoogleReady : true) && (
           <div className="px-5 pt-4 space-y-3 shrink-0">
-            <div ref={googleButtonRef} className="w-full flex justify-center min-h-[44px]" />
+            {IS_NATIVE_PLATFORM ? (
+              <button
+                type="button"
+                onClick={handleNativeGoogleSignIn}
+                disabled={loading}
+                className="w-full min-h-[44px] flex items-center justify-center gap-2.5 rounded-full border border-[#E7E2D7] bg-white text-sm font-bold text-[#3c4043] shadow-sm disabled:opacity-50 cursor-pointer"
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                  <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.71v2.26h2.9c1.7-1.57 2.68-3.88 2.68-6.61Z" />
+                  <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.95v2.33A9 9 0 0 0 9 18Z" />
+                  <path fill="#FBBC05" d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.16.28-1.7V4.97H.95A9 9 0 0 0 0 9c0 1.45.35 2.83.95 4.03l3-2.33Z" />
+                  <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .95 4.97l3 2.33C4.66 5.17 6.65 3.58 9 3.58Z" />
+                </svg>
+                {t('continueWithGoogle')}
+              </button>
+            ) : (
+              <div ref={googleButtonRef} className="w-full flex justify-center min-h-[44px]" />
+            )}
             <div className="flex items-center gap-3">
               <div className="h-px flex-1 bg-[#E7E2D7]" />
               <span className="text-xs font-extrabold text-[var(--kids-muted)]">{t('orDivider')}</span>

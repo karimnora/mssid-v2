@@ -12,6 +12,8 @@ export const auth = {
   registerSuccessWelcome: 'تم إنشاء حسابك بنجاح! أهلاً بك {name}',
   genericConnectionError: 'حدث خطأ في الاتصال. يرجى التأكد من شبكة الإنترنت والمحاولة لاحقاً.',
   googleAuthErrorDefault: 'تعذرت المصادقة عبر Google. يرجى المحاولة لاحقاً.',
+  continueWithGoogle: 'المتابعة عبر Google',
+  googleSignInUnavailable: 'لا يوجد حساب Google متاح على هذا الجهاز.',
   orDivider: 'أو',
 
   titleRecovery: 'استعادة كلمة المرور',
