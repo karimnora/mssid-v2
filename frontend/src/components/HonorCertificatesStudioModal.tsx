@@ -26,6 +26,7 @@ import {
 import { PrimaryGrade, UserProfile } from '../types';
 import { WILAYAS_LIST } from '../data/wilayasData';
 import { speakText as speakTextShared, stopSpeech } from '../utils/speech';
+import { currentSchoolYearLabel } from '../utils/schoolYear';
 
 export interface HonorCertificatesStudioModalProps {
   isOpen: boolean;
@@ -219,13 +220,6 @@ const CERTIFICATE_TEMPLATES: CertificateTemplate[] = [
   },
 ];
 
-/** Algerian school year runs September→June: before September, we're still in last year's. */
-function currentSchoolYearLabel(): string {
-  const now = new Date();
-  const startYear = now.getMonth() >= 8 ? now.getFullYear() : now.getFullYear() - 1;
-  return `${startYear} / ${startYear + 1}`;
-}
-
 const HONORS_APPRECIATIONS = [
   { id: 'excellence', labelAr: 'بامتياز وتكريم الطاقم التربوي 🌟', labelFr: 'Avec Félicitations du Jury' },
   { id: 'tres_bien', labelAr: 'بتقدير ممتاز جداً 🥇', labelFr: 'Mention Très Bien' },
@@ -286,6 +280,18 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
     // to several extra pages, each showing a duplicate of the certificate. Hiding header/main/
     // footer and neutralizing the overlay's `position: fixed` for the duration of this print job
     // collapses the document back down to exactly the certificate's own single page.
+    //
+    // A follow-up regression from that same fix: index.css's shared print rule also forces
+    // `.printable-certificate` to `position: absolute; inset: 0` so it fills the page regardless
+    // of where it sits in the DOM — that only works if some ANCESTOR still has a definite,
+    // full-page size to position against. Once the overlay above is forced to `position: static`,
+    // nothing in the ancestor chain has a real height any more (header/main/footer are gone, the
+    // overlay has no content-based height of its own), so the absolutely-positioned certificate's
+    // containing block collapses to 0 height, `height: auto` then shrinks it to a sliver of its
+    // top row, and its own `overflow-hidden` clips away everything else — an empty printed page.
+    // Reverting the certificate to normal flow (`position: static`) for this print job sidesteps
+    // the whole fragile containing-block chain: its own classes already size it correctly
+    // (max-w-[280mm] min-h-[195mm]), the same way it already renders correctly on screen.
     const landscapeOverride = document.createElement('style');
     landscapeOverride.setAttribute('data-certificate-print-override', 'true');
     landscapeOverride.textContent = `
@@ -300,8 +306,9 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
           backdrop-filter: none !important;
         }
         .printable-certificate {
-          min-height: 0 !important;
-          height: auto !important;
+          position: static !important;
+          inset: auto !important;
+          margin: 0 auto !important;
         }
       }
     `;
