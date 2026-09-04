@@ -25,7 +25,7 @@ export const exams = {
   allSolutionsFreeBannerSubtitle: 'تدرّب بمرونة، تحقق من خطوات الحل، واكسب نقاط الخبرة!',
   freeOpenBadge: 'نسخة مجانية ومفتوحة 🎓',
 
-  officialHeaderRepublic: 'الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية الوطنية',
+  officialHeaderRepublic: 'منصة مَسِيد DZ — محتوى متوافق مع منهاج الجيل الثاني الرسمي',
   subjectLabel: 'المادة:',
   durationLabel: 'المدة المحددة:',
   minutesUnit: 'دقيقة',

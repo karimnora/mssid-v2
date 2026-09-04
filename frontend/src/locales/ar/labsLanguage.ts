@@ -96,7 +96,7 @@ export const labsLanguage = {
   // --- TamazightCurriculumViewer.tsx ---
   tcvHeroBadge: 'المنهاج البيداغوجي للغة الأمازيغية (Aselmed n Tmaziɣt)',
   tcvHeroTitle: 'دروس وقواعد وخط التيفيناغ الرسمي (4AP & 5AP)',
-  tcvHeroSubtitle: 'تصفح الدروس المعتمدة من وزارة التربية الوطنية مع النطق الصوتي، البطاقات المعجمية، القواعد النحوية، ومولّد الفروض الرسمية A4.',
+  tcvHeroSubtitle: 'تصفح الدروس المتوافقة مع منهاج الجيل الثاني الرسمي مع النطق الصوتي، البطاقات المعجمية، القواعد النحوية، ومولّد الفروض الرسمية A4.',
   tcvPrintButtonTitle: 'طباعة فرض المراقبة المستمرة A4 بالتيفيناغ',
   tcvPrintButton: '🖨️ طباعة الفرض A4',
   tcvGamesLabButton: 'مختبر الألعاب ⵣ',

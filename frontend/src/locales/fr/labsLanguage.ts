@@ -98,7 +98,7 @@ export const labsLanguage: typeof labsLanguageAr = {
   // --- TamazightCurriculumViewer.tsx ---
   tcvHeroBadge: 'Programme pédagogique de la langue amazighe (Aselmed n Tmaziɣt)',
   tcvHeroTitle: 'Leçons, règles et écriture tifinagh officielle (4AP & 5AP)',
-  tcvHeroSubtitle: "Parcours les leçons approuvées par le ministère de l'Éducation nationale, avec prononciation audio, fiches de vocabulaire, règles de grammaire et générateur de devoirs officiels A4.",
+  tcvHeroSubtitle: "Parcours les leçons alignées sur le programme officiel (Génération 2), avec prononciation audio, fiches de vocabulaire, règles de grammaire et générateur de devoirs officiels A4.",
   tcvPrintButtonTitle: 'Imprimer le devoir de contrôle continu A4 en tifinagh',
   tcvPrintButton: '🖨️ Imprimer le devoir A4',
   tcvGamesLabButton: 'Laboratoire de jeux ⵣ',

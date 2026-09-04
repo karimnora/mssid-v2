@@ -109,7 +109,7 @@ export const navigation: typeof navigationAr = {
   chooseAnotherTool: '⬆️ Choisir un autre outil',
 
   footerBrandName: 'Mssid DZ',
-  footerCurriculumLine: '• Programme officiel du ministère de l’Éducation nationale algérien',
+  footerCurriculumLine: '• Contenu aligné sur le programme officiel (Génération 2)',
   footerAiTutorLink: 'Tuteur Mssid',
   footerCopyright: '© {year} Mssid DZ',
   footerWebVersionLink: 'Version web complète',

@@ -372,7 +372,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-xs font-black text-[var(--brand-blue-dark)] bg-sky-100 px-3 py-0.5 rounded-full border border-sky-200">
-                  الجمهورية الجزائرية الديمقراطية الشعبية — وزارة التربية الوطنية
+                  منصة مَسِيد DZ — محتوى متوافق مع منهاج الجيل الثاني الرسمي
                 </span>
                 <span className="text-xs font-bold text-[var(--brand-blue)] bg-[var(--brand-blue)]/10 px-2.5 py-0.5 rounded-full">
                   {selectedExam.year}

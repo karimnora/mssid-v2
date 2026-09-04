@@ -99,10 +99,10 @@ export const tools: typeof toolsAr = {
 
   // PrintableWorksheetsGeneratorModal.tsx (+ Props duplicate)
   worksheetToolTitle: 'Générateur de devoirs et fiches officielles à imprimer (A4)',
-  worksheetToolSubtitle: 'Avec en-tête du ministère de l’Éducation nationale, barème et corrigé type',
+  worksheetToolSubtitle: 'Avec en-tête Mssid DZ, barème et corrigé type',
   worksheetPrintButton: 'Imprimer la feuille A4 (Imprimer)',
   worksheetToolTitleV2: 'Générateur de devoirs et fiches de synthèse officielles (A4)',
-  worksheetToolSubtitleV2: 'Prêtes à imprimer à la maison ou à l’école selon les normes du ministère de l’Éducation nationale',
+  worksheetToolSubtitleV2: 'Prêtes à imprimer à la maison ou à l’école, alignées sur le programme officiel (Génération 2)',
   worksheetPrintButtonV2: 'Imprimer / Enregistrer en PDF',
   worksheetGradeLabel: 'Niveau :',
   worksheetGradeLabelV2: 'Niveau scolaire :',

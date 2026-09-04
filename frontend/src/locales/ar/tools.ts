@@ -98,10 +98,10 @@ export const tools = {
 
   // PrintableWorksheetsGeneratorModal.tsx (+ Props duplicate)
   worksheetToolTitle: 'مولّد الفروض والبطاقات الرسمية للطباعة A4',
-  worksheetToolSubtitle: 'بترويسة وزارة التربية الوطنية وسلم التنقيط مع الحل النموذجي',
+  worksheetToolSubtitle: 'بترويسة مَسِيد DZ وسلم التنقيط مع الحل النموذجي',
   worksheetPrintButton: 'طباعة الورقة A4 (Imprimer)',
   worksheetToolTitleV2: 'مولّد الفروض وبطاقات التلخيص الرسمية (A4)',
-  worksheetToolSubtitleV2: 'جاهزة للطباعة المنزلية أو المدرسية وفق معايير وزارة التربية الوطنية',
+  worksheetToolSubtitleV2: 'جاهزة للطباعة المنزلية أو المدرسية، متوافقة مع منهاج الجيل الثاني الرسمي',
   worksheetPrintButtonV2: 'طباعة / حفظ PDF',
   worksheetGradeLabel: 'المستوى:',
   worksheetGradeLabelV2: 'المستوى الدراسي:',

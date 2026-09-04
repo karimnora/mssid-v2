@@ -1417,10 +1417,10 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   <span className="text-4xl">🇩🇿</span>
                   <div className="space-y-0.5">
                     <h3 className="text-xs font-black tracking-widest text-emerald-800 dark:text-emerald-300">
-                      الجمهورية الجزائرية الديمقراطية الشعبية
+                      منصة مَسِيد DZ للتعليم الابتدائي
                     </h3>
                     <h4 className="text-[11px] font-bold text-slate-500">
-                      وزارة التربية والتعليم والرياضات المعرفية
+                      شهادة استكشاف التراث الجزائري
                     </h4>
                   </div>
                   <span className="text-4xl">🇩🇿</span>

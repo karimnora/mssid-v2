@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { speakText } from '../utils/speech';
+import { currentSchoolYearLabel } from '../utils/schoolYear';
 import {
   BookOpen,
   Printer,
@@ -128,7 +129,8 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
     return res;
   };
 
-  // Official Ministry A4 Printable Exam Generator
+  // A4 printable devoir generator — app-issued, never framed as an official Ministry document
+  // (see CLAUDE.md § 2/4 and PrintableWorksheetsGeneratorModal.tsx's own header for the same rule).
   const handlePrintMinistryExam = () => {
     if (typeof window === 'undefined') return;
     const printWindow = window.open('', '_blank');
@@ -138,7 +140,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
       <!DOCTYPE html>
       <html dir="rtl" lang="ar">
       <head>
-        <title>امتحان رسمي في اللغة الأمازيغية - ${selectedGrade}</title>
+        <title>فرض في اللغة الأمازيغية - ${selectedGrade}</title>
         <style>
           @page { size: A4 portrait; margin: 12mm; }
           body { font-family: system-ui, -apple-system, sans-serif; color: #0f172a; line-height: 1.5; font-size: 13px; }
@@ -155,12 +157,12 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
       </head>
       <body>
         <div class="header">
-          <div class="republic">الجمهورية الجزائرية الديمقراطية الشعبية</div>
-          <div class="ministry">وزارة التربية الوطنية — مديرية التعليم الابتدائي</div>
+          <div class="republic">منصة مَسِيد DZ للتعليم الابتدائي</div>
+          <div class="ministry">فرض متوافق مع منهاج الجيل الثاني الرسمي</div>
           <div class="meta-bar">
             <span>المدرسة الابتدائية: .......................................</span>
             <span>المستوى: ${selectedGrade} ابتدائي (اللغة الأمازيغية)</span>
-            <span>السنة الدراسية: 2025 / 2026</span>
+            <span>السنة الدراسية: ${currentSchoolYearLabel()}</span>
           </div>
         </div>
 
@@ -280,7 +282,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
               دروس وقواعد وخط التيفيناغ الرسمي (4AP & 5AP)
             </h1>
             <p className="text-xs sm:text-sm text-emerald-100 max-w-2xl leading-relaxed">
-              تصفح الدروس المعتمدة من وزارة التربية الوطنية مع النطق الصوتي، البطاقات المعجمية، القواعد النحوية، ومولّد الفروض الرسمية A4.
+              تصفح الدروس المتوافقة مع منهاج الجيل الثاني الرسمي مع النطق الصوتي، البطاقات المعجمية، القواعد النحوية، ومولّد الفروض الرسمية A4.
             </p>
           </div>
 

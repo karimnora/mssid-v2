@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { X, Printer, FileText, Download, CheckSquare, Sparkles, BookOpen, Layers } from 'lucide-react';
 import { PrimaryGrade, SubjectId } from '../types';
+import { currentSchoolYearLabel } from '../utils/schoolYear';
 
 interface PrintableWorksheetsGeneratorModalProps {
   isOpen: boolean;
@@ -45,7 +46,7 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
             </div>
             <div>
               <h2 className="text-base sm:text-lg font-black text-slate-900">مولّد الفروض وبطاقات التلخيص الرسمية (A4)</h2>
-              <p className="text-xs text-slate-500 font-bold">جاهزة للطباعة المنزلية أو المدرسية وفق معايير وزارة التربية الوطنية</p>
+              <p className="text-xs text-slate-500 font-bold">جاهزة للطباعة المنزلية أو المدرسية، متوافقة مع منهاج الجيل الثاني الرسمي</p>
             </div>
           </div>
 
@@ -142,14 +143,14 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
         {/* Live A4 Preview Container */}
         <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-slate-100 rounded-2xl mt-3">
           <div className="printable-sheet bg-white max-w-[210mm] mx-auto p-6 sm:p-8 border border-slate-300 shadow-lg rounded-xl text-slate-900 font-sans space-y-5">
-            {/* Republic & Ministry Official Header */}
+            {/* App-issued header — never an official Republic/Ministry document, see CLAUDE.md § 2/4. */}
             <div className="text-center border-b-2 border-slate-800 pb-3 space-y-1">
-              <h3 className="text-xs sm:text-sm font-black tracking-wide">الجمهورية الجزائرية الديمقراطية الشعبية</h3>
-              <h4 className="text-[11px] sm:text-xs font-bold text-slate-700">وزارة التربية الوطنية — مديرية التعليم الابتدائي</h4>
+              <h3 className="text-xs sm:text-sm font-black tracking-wide">منصة مَسِيد DZ للتعليم الابتدائي</h3>
+              <h4 className="text-[11px] sm:text-xs font-bold text-slate-700">ورقة عمل متوافقة مع منهاج الجيل الثاني الرسمي</h4>
               <div className="flex items-center justify-between text-[11px] font-black pt-2 px-2 text-slate-800 flex-wrap gap-1">
                 <span>المدرسة الابتدائية: .......................................</span>
                 <span>المستوى: {selectedGrade}</span>
-                <span>السنة الدراسية: 2025 / 2026</span>
+                <span>السنة الدراسية: {currentSchoolYearLabel()}</span>
               </div>
             </div>
 

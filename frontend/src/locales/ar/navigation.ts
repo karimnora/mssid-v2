@@ -107,7 +107,7 @@ export const navigation = {
   chooseAnotherTool: '⬆️ اختيار أداة أخرى',
 
   footerBrandName: 'مَسِيد Mssid DZ',
-  footerCurriculumLine: '• المنهاج الرسمي لوزارة التربية الوطنية الجزائرية',
+  footerCurriculumLine: '• محتوى متوافق مع منهاج الجيل الثاني الرسمي',
   footerAiTutorLink: 'المعلم مسيد',
   footerCopyright: '© {year} مَسِيد DZ',
   footerWebVersionLink: 'النسخة الكاملة على الويب',

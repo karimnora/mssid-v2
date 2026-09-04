@@ -29,7 +29,7 @@ export const exams: typeof examsAr = {
     'Entraîne-toi librement, vérifie les étapes de la solution et gagne des points d’expérience !',
   freeOpenBadge: 'Version gratuite et ouverte 🎓',
 
-  officialHeaderRepublic: 'République algérienne démocratique et populaire — Ministère de l’Éducation nationale',
+  officialHeaderRepublic: 'Plateforme Mssid DZ — Contenu aligné sur le programme officiel (Génération 2)',
   subjectLabel: 'Matière :',
   durationLabel: 'Durée prévue :',
   minutesUnit: 'minutes',
