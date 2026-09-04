@@ -27,8 +27,15 @@ export const TashkeelToggle: React.FC<TashkeelToggleProps> = ({ enabled, onToggl
           <div className="text-sm font-bold">{t('tashkeelLabel')}</div>
           <p className="text-[11px] opacity-80 mt-1">{t('tashkeelDescription')}</p>
         </div>
+        {/* The knob is a plain block child, not flex/absolute — in this app's RTL layout it rests
+            flush against the track's right edge at translate-x-0 (not the left, as it would in an
+            LTR mental model). `translate-x-8` (a further +32px to the right) was written assuming
+            an LTR "rests left, slides right to turn on" toggle, so in RTL it pushed the knob clean
+            off the track's right edge instead of onto it (remontée utilisateur, capture à l'appui).
+            `-translate-x-8` slides it left from its RTL rest position instead, landing flush
+            against the track's left edge — the mirror of the OFF position, fully inside the pill. */}
         <div className={`shrink-0 h-8 w-16 rounded-full p-1 transition ${enabled ? 'bg-slate-800' : 'bg-slate-300'}`}>
-          <div className={`h-6 w-6 rounded-full bg-white shadow transform transition ${enabled ? 'translate-x-8' : 'translate-x-0'}`} />
+          <div className={`h-6 w-6 rounded-full bg-white shadow transform transition ${enabled ? '-translate-x-8' : 'translate-x-0'}`} />
         </div>
       </div>
     </button>

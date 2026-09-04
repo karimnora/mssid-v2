@@ -7,12 +7,13 @@ import { LocaleProvider } from '../context/LocaleContext';
 const renderModal = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
 describe('SettingsModal', () => {
-  it('lets a parent change the school year', () => {
+  it('lets a parent change the school year, then closes so the change is visibly confirmed', () => {
     const onGradeChange = vi.fn();
+    const onClose = vi.fn();
     renderModal(
       <SettingsModal
         isOpen={true}
-        onClose={vi.fn()}
+        onClose={onClose}
         tashkeelEnabled={false}
         onToggleTashkeel={vi.fn()}
         currentGrade="1AP"
@@ -22,6 +23,7 @@ describe('SettingsModal', () => {
     const strip = document.querySelector('[data-profile-grade-strip]') as HTMLElement;
     fireEvent.click(within(strip).getByText('السنة الخامسة'));
     expect(onGradeChange).toHaveBeenCalledWith('5AP');
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it('shows admin console entry for ROLE_ADMIN users', () => {

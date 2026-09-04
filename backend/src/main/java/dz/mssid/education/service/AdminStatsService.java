@@ -9,7 +9,10 @@ import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -60,6 +63,44 @@ public class AdminStatsService {
         long newUsersLast7Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(sevenDaysAgo)).count();
         long newUsersLast30Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(thirtyDaysAgo)).count();
 
+        LocalDate today = LocalDate.now();
+        LocalDate sevenDaysAgoDate = today.minusDays(7);
+        LocalDate thirtyDaysAgoDate = today.minusDays(30);
+
+        long dailyActiveUsers = users.stream()
+                .filter(u -> today.equals(parseLastActiveDate(u.getLastActiveDate())))
+                .count();
+        long weeklyActiveUsers = users.stream()
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), sevenDaysAgoDate))
+                .count();
+        long monthlyActiveUsers = users.stream()
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate))
+                .count();
+
+        List<User> oldEnoughFor7DayWindow = users.stream()
+                .filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isBefore(sevenDaysAgo))
+                .collect(Collectors.toList());
+        long retained7 = oldEnoughFor7DayWindow.stream()
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), sevenDaysAgoDate))
+                .count();
+        double retentionRate7Days = oldEnoughFor7DayWindow.isEmpty() ? 0 : (double) retained7 / oldEnoughFor7DayWindow.size() * 100;
+
+        List<User> oldEnoughFor30DayWindow = users.stream()
+                .filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isBefore(thirtyDaysAgo))
+                .collect(Collectors.toList());
+        long retained30 = oldEnoughFor30DayWindow.stream()
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate))
+                .count();
+        double retentionRate30Days = oldEnoughFor30DayWindow.isEmpty() ? 0 : (double) retained30 / oldEnoughFor30DayWindow.size() * 100;
+
+        Map<String, Long> topCompletedLessons = users.stream()
+                .flatMap(u -> (u.getCompletedLessonIds() != null ? u.getCompletedLessonIds() : List.<String>of()).stream())
+                .collect(Collectors.groupingBy(id -> id, Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .limit(10)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
+
         Map<String, Long> receiptsByStatus = receipts.stream()
                 .collect(Collectors.groupingBy(r -> r.getStatus().name(), Collectors.counting()));
         Map<String, Long> receiptsByMethod = receipts.stream()
@@ -98,7 +139,29 @@ public class AdminStatsService {
                 .totalBadgesUnlocked(totalBadgesUnlocked)
                 .newUsersLast7Days(newUsersLast7Days)
                 .newUsersLast30Days(newUsersLast30Days)
+                .dailyActiveUsers(dailyActiveUsers)
+                .weeklyActiveUsers(weeklyActiveUsers)
+                .monthlyActiveUsers(monthlyActiveUsers)
+                .retentionRate7Days(retentionRate7Days)
+                .retentionRate30Days(retentionRate30Days)
+                .topCompletedLessons(topCompletedLessons)
                 .payments(payments)
                 .build();
+    }
+
+    /** {@code User.lastActiveDate} is stored as a plain "YYYY-MM-DD" string (see ProgressGuard),
+     * but stays null for an account that never synced progress once — never assume it's present. */
+    private static LocalDate parseLastActiveDate(String raw) {
+        if (raw == null || raw.isBlank()) return null;
+        try {
+            return LocalDate.parse(raw.length() > 10 ? raw.substring(0, 10) : raw);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    private static boolean wasActiveSince(String lastActiveDate, LocalDate cutoff) {
+        LocalDate parsed = parseLastActiveDate(lastActiveDate);
+        return parsed != null && !parsed.isBefore(cutoff);
     }
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw } from 'lucide-react';
+import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
 
 // Every field here maps 1:1 to GET /api/v1/admin/stats/overview (see backend
-// AdminStatsOverviewDto.java) — no DAU/session-time/top-lessons/preschool widgets exist because no
+// AdminStatsOverviewDto.java) — session-time/preschool-usage widgets still don't exist because no
 // real field backs them. Never add a placeholder card for a metric this endpoint doesn't return.
 interface AdminStatsOverview {
   totalUsers: number;
@@ -19,6 +19,13 @@ interface AdminStatsOverview {
   totalBadgesUnlocked: number;
   newUsersLast7Days: number;
   newUsersLast30Days: number;
+  dailyActiveUsers: number;
+  weeklyActiveUsers: number;
+  monthlyActiveUsers: number;
+  retentionRate7Days: number;
+  retentionRate30Days: number;
+  /** lessonId -> completion count, top 10, already sorted descending by the backend. */
+  topCompletedLessons: Record<string, number>;
   payments: {
     totalReceipts: number;
     receiptsByStatus: Record<string, number>;
@@ -73,6 +80,58 @@ const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data:
             );
           })}
         </div>
+      )}
+    </div>
+  );
+};
+
+// Resolves lessonId -> titleAr by dynamically importing the ~4.6MB lesson catalog only when this
+// card actually has entries to show — same lazy-import pattern already used by badgeEngine.ts, so
+// the admin console's initial bundle never pays for the full catalog just to render a few titles.
+const TopLessonsCard: React.FC<{ data: Record<string, number> }> = ({ data }) => {
+  const [titles, setTitles] = useState<Record<string, string>>({});
+  const entries = Object.entries(data || {});
+
+  useEffect(() => {
+    if (entries.length === 0) return;
+    let cancelled = false;
+    import('../../data/coursesData').then(({ COURSES_DATA }) => {
+      if (cancelled) return;
+      const map: Record<string, string> = {};
+      entries.forEach(([id]) => {
+        const lesson = COURSES_DATA.find((l) => l.id === id);
+        if (lesson) map[id] = lesson.titleAr;
+      });
+      setTitles(map);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(data)]);
+
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+      <div className="flex items-center gap-2 text-slate-300">
+        <Star className="w-4 h-4 text-amber-400" />
+        <h3 className="text-xs font-black">الدروس الأكثر إتماماً (أعلى 10)</h3>
+      </div>
+      {entries.length === 0 ? (
+        <div className="text-[11px] text-slate-500">لا توجد بيانات بعد.</div>
+      ) : (
+        <ol className="space-y-2">
+          {entries.map(([id, count], idx) => (
+            <li key={id} className="flex items-center justify-between gap-2 text-[11px]">
+              <span className="flex items-center gap-2 min-w-0 text-slate-300">
+                <span className="shrink-0 w-5 h-5 rounded-full bg-slate-800 text-amber-400 font-black flex items-center justify-center text-[10px]">
+                  {idx + 1}
+                </span>
+                <span className="truncate font-bold">{titles[id] || id}</span>
+              </span>
+              <span className="shrink-0 font-mono font-bold text-slate-200">{count}</span>
+            </li>
+          ))}
+        </ol>
       )}
     </div>
   );
@@ -146,6 +205,31 @@ export const AnalyticsModule: React.FC = () => {
             <StatCard icon={<Award className="w-5 h-5" />} labelAr="إجمالي الشارات المفتوحة" value={stats.totalBadgesUnlocked} accent="text-purple-400" />
           </div>
 
+          {/* Active users & retention — derived from lastActiveDate, which the frontend bumps to
+              today on every XP-earning action (quiz, lesson...), not a bare page load. So this reads
+              as "did real learning activity today/this week/this month", a stricter bar than a raw
+              app-open ping. Retention is a rolling window (old-enough accounts still active
+              recently), not per-cohort same-day-offset tracking — see AdminStatsOverviewDto's javadoc. */}
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون اليوم (DAU)" value={stats.dailyActiveUsers} accent="text-emerald-400" />
+            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون هذا الأسبوع" value={stats.weeklyActiveUsers} accent="text-emerald-400" />
+            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون هذا الشهر" value={stats.monthlyActiveUsers} accent="text-emerald-400" />
+            <StatCard
+              icon={<Repeat className="w-5 h-5" />}
+              labelAr="معدل العودة (7 أيام)"
+              value={`${stats.retentionRate7Days.toFixed(1)}%`}
+              sub="من الحسابات الأقدم من أسبوع، النشيطة خلال آخر 7 أيام"
+              accent="text-sky-400"
+            />
+            <StatCard
+              icon={<Repeat className="w-5 h-5" />}
+              labelAr="معدل العودة (30 يوم)"
+              value={`${stats.retentionRate30Days.toFixed(1)}%`}
+              sub="من الحسابات الأقدم من شهر، النشيطة خلال آخر 30 يوم"
+              accent="text-sky-400"
+            />
+          </div>
+
           {/* XP / level / streak aggregates */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <StatCard icon={<TrendingUp className="w-5 h-5" />} labelAr="إجمالي نقاط الخبرة XP" value={stats.totalXp} />
@@ -174,6 +258,8 @@ export const AnalyticsModule: React.FC = () => {
               value={stats.totalCompletedChallenges}
             />
           </div>
+
+          <TopLessonsCard data={stats.topCompletedLessons} />
 
           {/* Role / grade distribution */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

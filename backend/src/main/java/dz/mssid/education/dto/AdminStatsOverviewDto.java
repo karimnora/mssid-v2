@@ -9,8 +9,18 @@ import java.util.Map;
 
 /**
  * Every field here maps 1:1 to a real, persisted column already on {@code User}/{@code PaymentReceipt}
- * (see AdminStatsService) — deliberately excludes anything with no real backing data (DAU, average
- * session time, "top consulted lessons", preschool session counts): those would have to be fabricated.
+ * (see AdminStatsService) — deliberately excludes anything with no real backing data (average session
+ * time, per-lesson open/abandon events, preschool session counts): those would have to be fabricated.
+ *
+ * dailyActiveUsers/weeklyActiveUsers/monthlyActiveUsers and the retention rates are derived from
+ * {@code User.lastActiveDate}, which the frontend bumps to today on every XP-earning action (quiz,
+ * lesson completion...), not on a bare page load — so these read as "did real learning activity",
+ * a stricter (and arguably more meaningful) bar than a raw app-open ping, not a limitation to hide.
+ *
+ * retentionRate7Days/30Days: of accounts old enough to have had a full 7/30-day window (created before
+ * that cutoff), the percentage still active (lastActiveDate) within the last 7/30 days — a rolling
+ * "are old accounts still coming back" rate, not per-cohort same-day-offset retention (which needs
+ * more signup volume per day than an early-stage app has to be statistically meaningful).
  */
 @Data
 @Builder
@@ -30,5 +40,12 @@ public class AdminStatsOverviewDto {
     private long totalBadgesUnlocked;
     private long newUsersLast7Days;
     private long newUsersLast30Days;
+    private long dailyActiveUsers;
+    private long weeklyActiveUsers;
+    private long monthlyActiveUsers;
+    private double retentionRate7Days;
+    private double retentionRate30Days;
+    /** lessonId -> completion count across all users, top 10, already sorted descending. */
+    private Map<String, Long> topCompletedLessons;
     private PaymentsStatsDto payments;
 }

@@ -93,7 +93,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   <button
                     key={g.id}
                     type="button"
-                    onClick={() => onGradeChange(g.id)}
+                    onClick={() => { onGradeChange(g.id); onClose(); }}
                     className={`hit-target rounded-2xl px-3 py-3 text-sm font-extrabold cursor-pointer ${
                       currentGrade === g.id
                         ? 'kids-pop bg-[var(--kids-grass-2)] text-white'
