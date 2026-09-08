@@ -150,7 +150,7 @@ export const UsersRolesModule: React.FC = () => {
       </div>
 
       {/* Tab Switcher Bar */}
-      <div className="flex border-b border-slate-800 bg-slate-950 px-2 sm:px-4 pt-2 overflow-x-auto">
+      <div className="flex gap-1 border-b border-slate-800 bg-slate-950 px-2 sm:px-4 pt-2 overflow-x-auto">
         <button
           onClick={() => setActiveTab('RECEIPTS')}
           className={`px-4 sm:px-5 min-h-[var(--hit)] text-xs font-black transition-all cursor-pointer flex items-center gap-2 border-b-2 shrink-0 ${
