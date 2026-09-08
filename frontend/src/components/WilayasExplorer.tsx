@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
-import { printCertificate } from '../utils/certificatePrint';
 import {
   MapPin,
   Search,
@@ -1464,7 +1463,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
 
               <div className="flex items-center justify-center gap-3">
                 <button
-                  onClick={() => printCertificate('portrait')}
+                  onClick={() => window.print()}
                   className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md"
                 >
                   <Printer className="w-4 h-4" />

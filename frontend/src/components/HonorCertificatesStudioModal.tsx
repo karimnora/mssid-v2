@@ -27,7 +27,6 @@ import { PrimaryGrade, UserProfile } from '../types';
 import { WILAYAS_LIST } from '../data/wilayasData';
 import { speakText as speakTextShared, stopSpeech } from '../utils/speech';
 import { currentSchoolYearLabel } from '../utils/schoolYear';
-import { printCertificate } from '../utils/certificatePrint';
 
 export interface HonorCertificatesStudioModalProps {
   isOpen: boolean;
@@ -267,7 +266,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
   const currentDiplomaInfo = GRADE_DIPLOMA_TEMPLATES[currentTemplate.id];
   const selectedWilaya = WILAYAS_LIST.find((w) => w.code === selectedWilayaCode) || WILAYAS_LIST[15];
 
-  const handlePrint = () => printCertificate('landscape');
+  const handlePrint = () => window.print();
 
   const handleSpeakSpeech = () => {
     if (speechTimeoutRef.current) {
@@ -577,16 +576,16 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
           </div>
 
           {/* Live A4 Landscape Certificate Canvas (7 Cols) */}
-          <div className="print:relative print:block print:p-0 print:bg-transparent print:rounded-none print:border-0 lg:col-span-8 flex flex-col items-center justify-center p-2 sm:p-4 bg-slate-200/80 rounded-3xl overflow-y-auto border border-slate-300">
+          <div className="print:relative print:block print:p-0 print:bg-transparent print:rounded-none print:border-0 print:overflow-visible lg:col-span-8 flex flex-col items-center justify-center p-2 sm:p-4 bg-slate-200/80 rounded-3xl overflow-y-auto border border-slate-300">
             <div className="text-center pb-2 text-[11px] text-slate-600 font-bold print:hidden">
-              معاينة حية بالحجم الطباعي القياسي (A4 Landscape) — جاهز للتأطير والتعليق
+              معاينة حية للتصميم — تُطبع الشهادة على صفحة A4 عمودية واحدة
             </div>
 
             {/* PRINTABLE DIPLOMA CONTAINER */}
             <div
               ref={printRef}
               id="honor-certificate-print-stage"
-              className={`printable-certificate relative w-full max-w-[280mm] min-h-[195mm] p-6 sm:p-8 rounded-2xl shadow-2xl border-8 ${currentTemplate.borderClass} ${currentTemplate.themeBg} text-slate-900 flex flex-col justify-between overflow-hidden select-none bg-white`}
+              className={`printable-certificate relative w-full max-w-[280mm] min-h-[195mm] print:min-h-0 p-6 sm:p-8 rounded-2xl shadow-2xl border-8 ${currentTemplate.borderClass} ${currentTemplate.themeBg} text-slate-900 flex flex-col justify-between overflow-hidden select-none bg-white`}
               style={{
                 boxShadow: '0 20px 40px -15px rgba(0,0,0,0.15)',
               }}
@@ -603,7 +602,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
               </div>
 
               {/* Top Header: app-issued framing — never an official Republic/Ministry document. */}
-              <div className="text-center space-y-1 relative z-10">
+              <div className="text-center space-y-1 print:space-y-0.5 relative z-10">
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-xl">🇩🇿</span>
                   <h4 className="text-xs sm:text-sm font-black tracking-widest text-slate-800">
@@ -617,14 +616,14 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 <p className="text-[10px] font-black text-slate-500">
                   {schoolName || 'اسم المدرسة'} • السنة الدراسية: {schoolYear}
                 </p>
-                <div className="w-36 h-0.5 bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mt-2" />
+                <div className="w-36 h-0.5 bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mt-2 print:mt-1" />
               </div>
 
               {/* Title Section with Golden Ribbon Look */}
-              <div className="text-center my-3 relative z-10 space-y-1">
-                <div className="inline-flex items-center gap-2 px-6 py-2 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-amber-950 shadow-md border border-amber-300">
+              <div className="text-center my-3 print:my-1.5 relative z-10 space-y-1 print:space-y-0.5">
+                <div className="inline-flex items-center gap-2 px-6 py-2 print:py-1 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-amber-950 shadow-md border border-amber-300">
                   <span className="text-2xl">{currentTemplate.badgeEmoji}</span>
-                  <h1 className="text-lg sm:text-2xl font-black tracking-wide font-serif">
+                  <h1 className="text-lg sm:text-2xl print:text-lg font-black tracking-wide font-serif">
                     {currentTemplate.titleAr}
                   </h1>
                   <span className="text-2xl">{currentTemplate.badgeEmoji}</span>
@@ -640,19 +639,19 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
               </div>
 
               {/* Core Honoree Certificate Text */}
-              <div className="text-center space-y-3 px-4 sm:px-8 relative z-10">
+              <div className="text-center space-y-3 print:space-y-1.5 px-4 sm:px-8 print:px-2 relative z-10">
                 <p className="text-xs sm:text-sm text-slate-700 font-bold">
                   تَشْهَدُ إِدَارَةُ الْمَدْرَسَةِ وَالطَّاقَمُ التَّرْبَوِيُّ بِأَنَّ التِّلْمِيذَ(ة) الْمُتَمَيِّز(ة):
                 </p>
 
                 {/* Honoree Full Name with Calligraphic styling */}
-                <div className="my-2">
-                  <span className="inline-block px-8 py-2 text-xl sm:text-3xl font-black text-emerald-950 border-b-2 border-dashed border-amber-500 bg-amber-100/40 rounded-xl">
+                <div className="my-2 print:my-1">
+                  <span className="inline-block px-8 py-2 print:py-1 text-xl sm:text-3xl print:text-xl font-black text-emerald-950 border-b-2 border-dashed border-amber-500 bg-amber-100/40 rounded-xl">
                     {studentName || 'اسم ولقب التلميذ'}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-center gap-4 text-xs sm:text-sm font-bold text-slate-800 flex-wrap">
+                <div className="flex items-center justify-center gap-4 print:gap-2 text-xs sm:text-sm font-bold text-slate-800 flex-wrap">
                   <span className="bg-white/80 px-3 py-1 rounded-lg border border-slate-200">
                     المستوى: <strong className="text-emerald-800">{grade}</strong>
                   </span>
@@ -665,26 +664,26 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 </div>
 
                 {/* Motivation / Appreciation Paragraph */}
-                <p className="max-w-2xl mx-auto text-xs sm:text-sm leading-relaxed text-slate-700 font-medium italic pt-1">
+                <p className="max-w-2xl mx-auto text-xs sm:text-sm print:text-[10px] leading-relaxed print:leading-snug text-slate-700 font-medium italic pt-1">
                   « {effectiveMotivation} »
                 </p>
               </div>
 
               {/* Bottom Row: Golden Seal in Center, Signatures on Sides */}
-              <div className="grid grid-cols-3 items-end pt-4 border-t border-slate-200/80 relative z-10 text-xs">
+              <div className="grid grid-cols-3 items-end pt-4 print:pt-2 border-t border-slate-200/80 relative z-10 text-xs">
                 {/* Right: Teacher Signature */}
-                <div className="text-center space-y-6">
+                <div className="text-center space-y-6 print:space-y-2">
                   <span className="font-black text-slate-800 block text-[11px] sm:text-xs">
                     توقيع وملاحظة الأستاذ(ة):
                   </span>
-                  <div className="font-serif italic text-slate-500 text-[11px] pt-4">
+                  <div className="font-serif italic text-slate-500 text-[11px] pt-4 print:pt-2">
                     {teacherTitle || '..........................'}
                   </div>
                 </div>
 
                 {/* Center: Golden Metallic Seal */}
                 <div className="flex flex-col items-center justify-center">
-                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-400 to-amber-500 border-4 border-amber-200 shadow-xl flex flex-col items-center justify-center text-amber-950">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 print:w-16 print:h-16 rounded-full bg-gradient-to-tr from-amber-600 via-yellow-400 to-amber-500 border-4 border-amber-200 shadow-xl flex flex-col items-center justify-center text-amber-950">
                     {sealType === 'republic_gold' ? (
                       <>
                         <span className="text-2xl sm:text-3xl">🇩🇿</span>
@@ -719,11 +718,11 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 </div>
 
                 {/* Left: School Principal Stamp */}
-                <div className="text-center space-y-6">
+                <div className="text-center space-y-6 print:space-y-2">
                   <span className="font-black text-slate-800 block text-[11px] sm:text-xs">
                     ختم وتوقيع إدارة المؤسسة:
                   </span>
-                  <div className="font-serif italic text-slate-500 text-[11px] pt-4">
+                  <div className="font-serif italic text-slate-500 text-[11px] pt-4 print:pt-2">
                     {directorTitle || '..........................'}
                   </div>
                 </div>

@@ -545,8 +545,12 @@ body {
      `position: fixed` on the overlay makes Chrome repeat it on every generated page — combined,
      that inflates the print job to several extra blank/duplicate pages. Hiding the app shell and
      neutralizing any overlay marked `.certificate-print-modal` collapses the document back down
-     to exactly the certificate's own single page. See utils/certificatePrint.ts for the (much
-     smaller) per-certificate piece this doesn't cover: page orientation. */
+     to exactly the certificate's own single page.
+     All certificates print in portrait, matching the `@page` above: `@page { size: A4 landscape }`
+     was tried for the wider Honor Studio diplomas, but Android/mobile print pipelines routinely
+     ignore CSS page-orientation hints (confirmed on-device) and fall back to portrait anyway — so
+     rather than depend on that, the certificate itself reflows to fit a portrait page (see the
+     `print:` variants on HonorCertificatesStudioModal's certificate stage). */
   header,
   main,
   footer {
