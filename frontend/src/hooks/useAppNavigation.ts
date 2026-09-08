@@ -53,6 +53,7 @@ type HistoryNavState = {
   isPreschoolActive: boolean;
   isAdminConsoleActive: boolean;
   grade: PrimaryGrade;
+  labsCatalogOpen: boolean;
 };
 
 function readBootLocation(): { view: AppView; grade: PrimaryGrade } {
@@ -112,6 +113,12 @@ export function useAppNavigation(options: {
   const [isHomeActive, setIsHomeActive] = useState(boot.view.name === 'home');
   const [isAdminConsoleActive, setIsAdminConsoleActive] = useState(boot.view.name === 'admin');
   const [isPreschoolActive, setIsPreschoolActive] = useState(boot.view.name === 'eveil');
+  // P0 labs: catalog hidden as long as a lab is open (1 card = 1 screen). Tracked here (not as a
+  // plain App.tsx useState) and pushed/restored alongside the rest of HistoryNavState below — it
+  // used to live outside the history-tracked state entirely, so browser/hardware back navigation
+  // would restore selectedSubject correctly but leave this stuck on its last value, landing the
+  // user back inside some lab instead of the catalog they came from.
+  const [labsCatalogOpen, setLabsCatalogOpen] = useState(false);
 
   const skipNextPushRef = useRef(true);
   const lastPathRef = useRef(typeof window !== 'undefined' ? window.location.pathname : '/');
@@ -149,11 +156,13 @@ export function useAppNavigation(options: {
       setSelectedLesson(null);
       setIsPreschoolActive(false);
       setIsAdminConsoleActive(false);
+      setLabsCatalogOpen(false);
       return;
     }
     setIsPreschoolActive(Boolean(state.isPreschoolActive));
     setIsAdminConsoleActive(Boolean(state.isAdminConsoleActive));
     setIsHomeActive(state.isHomeActive !== undefined ? state.isHomeActive : true);
+    setLabsCatalogOpen(Boolean(state.labsCatalogOpen));
     if (state.mainCategory) setMainCategory(state.mainCategory);
     if (state.selectedSubject) setSelectedSubject(state.selectedSubject);
     if (state.grade && isValidGrade(state.grade)) setGrade(state.grade);
@@ -192,6 +201,7 @@ export function useAppNavigation(options: {
       isPreschoolActive,
       isAdminConsoleActive,
       grade,
+      labsCatalogOpen,
     };
 
     if (skipNextPushRef.current) {
@@ -217,6 +227,7 @@ export function useAppNavigation(options: {
     isPreschoolActive,
     isAdminConsoleActive,
     grade,
+    labsCatalogOpen,
   ]);
 
   const handleSelectSubject = (subject: SubjectId) => {
@@ -359,6 +370,8 @@ export function useAppNavigation(options: {
     setIsAdminConsoleActive,
     isPreschoolActive,
     setIsPreschoolActive,
+    labsCatalogOpen,
+    setLabsCatalogOpen,
     handleSelectSubject,
     handleMobileTab,
     handleSelectPole,

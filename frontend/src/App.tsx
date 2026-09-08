@@ -103,8 +103,6 @@ export default function App() {
     }
     return 'neutre';
   });
-  /** P0 labs : catalogue masqué tant qu'un lab est ouvert (1 carte = 1 écran). */
-  const [labsCatalogOpen, setLabsCatalogOpen] = useState(false);
   const [courseEntrySubject, setCourseEntrySubject] = useState<SubjectId | null>(null);
 
   useEffect(() => {
@@ -235,13 +233,13 @@ export default function App() {
 
   /** Ouvre un lab en plein écran (catalogue fermé). */
   const openLabFocused = (toolId: SubjectId) => {
-    setLabsCatalogOpen(false);
+    nav.setLabsCatalogOpen(false);
     nav.openLab(toolId);
   };
 
   /** Onglet / pôle « المختبرات » → liste des labs, pas un lab auto. */
   const openLabsCatalog = () => {
-    setLabsCatalogOpen(true);
+    nav.setLabsCatalogOpen(true);
   };
 
   const handleFeedDidou = (treatId: string, energyBonus: number, xpBonus: number, cost: number) => {
@@ -369,8 +367,8 @@ export default function App() {
                   grade={nav.grade}
                   tools={availableLabsForGrade}
                   selectedToolId={nav.selectedSubject}
-                  catalogOpen={labsCatalogOpen}
-                  onCatalogOpenChange={setLabsCatalogOpen}
+                  catalogOpen={nav.labsCatalogOpen}
+                  onCatalogOpenChange={nav.setLabsCatalogOpen}
                   onSelectTool={nav.handleSelectSubject}
                 />
               ) : nav.mainCategory !== 'courses' && (
@@ -410,7 +408,7 @@ export default function App() {
                 onGoHome={nav.goHome}
                 initialSubjectId={courseEntrySubject}
               />
-            ) : nav.mainCategory === 'labs' && (!isLabSubjectId(nav.selectedSubject) || labsCatalogOpen) ? null : (
+            ) : nav.mainCategory === 'labs' && (!isLabSubjectId(nav.selectedSubject) || nav.labsCatalogOpen) ? null : (
               <ActiveWorkspace
                 grade={nav.grade}
                 selectedSubject={nav.selectedSubject}

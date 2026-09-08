@@ -61,6 +61,42 @@ describe('guest boot grade', () => {
   });
 });
 
+// Regression test: labsCatalogOpen used to live as a plain useState in App.tsx, outside this
+// hook's history-tracked state entirely. Browser/hardware back navigation would correctly restore
+// selectedSubject via popstate, but leave labsCatalogOpen stuck on its last value — so going back
+// from an open lab could land the user on a *different* lab instead of the catalog they came from.
+describe('labs catalog state survives browser back navigation', () => {
+  beforeEach(() => {
+    window.localStorage.removeItem(GRADE_STORAGE_KEY);
+    window.history.replaceState(null, '', '/');
+  });
+
+  it('restores labsCatalogOpen when going back from an open lab to the catalog', async () => {
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+
+    act(() => {
+      result.current.handleSelectPole('labs');
+      result.current.setLabsCatalogOpen(true);
+    });
+    expect(result.current.labsCatalogOpen).toBe(true);
+
+    act(() => {
+      result.current.openLab('arabic_conjugator');
+      result.current.setLabsCatalogOpen(false);
+    });
+    expect(result.current.selectedSubject).toBe('arabic_conjugator');
+    expect(result.current.labsCatalogOpen).toBe(false);
+
+    // Simulate the browser/hardware back button — popstate fires asynchronously in jsdom.
+    await act(async () => {
+      window.history.back();
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    });
+
+    expect(result.current.labsCatalogOpen).toBe(true);
+  });
+});
+
 describe('mobile footer tab follows the open view', () => {
   it('leaves Accueil when opening courses, exams, labs, or challenges from home', () => {
     const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
