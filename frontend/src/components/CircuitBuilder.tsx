@@ -37,13 +37,16 @@ type Interaction =
   | { type: 'wiring';   fromId: string; fromT: 'A' | 'B'; px: number; py: number; snapping: boolean };
 
 // ─── Layout constants ──────────────────────────────────────────────────────
+// Rendered at a fixed 1 SVG-unit = 1 CSS-px (see the canvas container below), so these are real
+// on-screen sizes, not scaled-to-fit values — TH=30 means an actual 60px hit-area diameter, matching
+// this project's 60px minimum touch target (see --hit in index.css), instead of shrinking on phones.
 const SVG_W = 640;
 const SVG_H = 400;
-const HW = 44;   // component half-width
-const HH = 26;   // component half-height
-const TR = 11;   // terminal visible radius
-const TH = 22;   // terminal hit-area radius
-const SNAP = 42; // snap radius in SVG units
+const HW = 50;   // component half-width
+const HH = 32;   // component half-height
+const TR = 14;   // terminal visible radius
+const TH = 30;   // terminal hit-area radius (60px real diameter)
+const SNAP = 50; // snap radius in SVG units
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 function toSVG(e: { clientX: number; clientY: number }, svg: SVGSVGElement) {
@@ -396,12 +399,12 @@ export const CircuitBuilder: React.FC = () => {
 
         {/* Delete × — visible when hovered or selected on any device */}
         {(isHov || isSel) && !isBat && interaction.type === 'idle' && (
-          <g transform={`translate(${HW - 6},${-HH - 10})`}
+          <g transform={`translate(${HW + 4},${-HH - 16})`}
             onPointerDown={e => { (e as unknown as React.PointerEvent).stopPropagation(); }}
             onClick={e => { (e as unknown as React.MouseEvent).stopPropagation(); handleDeleteComp(c.id); }}
             style={{ cursor: 'pointer', pointerEvents: 'auto' }}>
-            <circle r={11} fill="#ef4444" stroke="#fecaca" strokeWidth="1.5" />
-            <text y="4.5" textAnchor="middle" fontSize="13" fill="white" fontWeight="900">×</text>
+            <circle r={20} fill="#ef4444" stroke="#fecaca" strokeWidth="2" />
+            <text y="7" textAnchor="middle" fontSize="20" fill="white" fontWeight="900">×</text>
           </g>
         )}
       </g>
@@ -443,7 +446,7 @@ export const CircuitBuilder: React.FC = () => {
             {PALETTE.map(p => (
               <motion.button key={p.type} whileTap={{ scale: 0.93 }} type="button"
                 onClick={() => handleAddComp(p.type)}
-                className={`flex items-center gap-1.5 px-2.5 py-2 rounded-xl border text-xs font-bold cursor-pointer transition-colors ${p.accent}
+                className={`hit-target flex items-center gap-1.5 px-2.5 py-2 rounded-xl border text-xs font-bold cursor-pointer transition-colors ${p.accent}
                             lg:w-full`}
               >
                 <span className="text-sm">{p.icon}</span>
@@ -454,36 +457,36 @@ export const CircuitBuilder: React.FC = () => {
           </div>
           <div className="pt-1 border-t border-slate-800 flex gap-1.5 lg:flex-col">
             <button type="button" onClick={handleReset}
-              className="flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold cursor-pointer transition-colors">
+              className="hit-target flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold cursor-pointer transition-colors">
               <RotateCcw className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">الافتراضي</span>
             </button>
             <button type="button" onClick={handleClear}
-              className="flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-rose-400 text-xs font-bold cursor-pointer transition-colors">
+              className="hit-target flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-rose-400 text-xs font-bold cursor-pointer transition-colors">
               <Trash2 className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">مسح الكل</span>
             </button>
           </div>
-          {/* Guide */}
-          <div className="hidden lg:block bg-slate-950 rounded-xl p-2.5 text-[9px] text-slate-400 space-y-1 border border-slate-800/80 leading-relaxed">
-            <p className="font-black text-slate-300 text-[10px] mb-1.5">📖 كيفية الاستخدام:</p>
-            <p>👆 <strong className="text-slate-300">اسحب</strong> الأطراف 🔴 لرسم سلك</p>
-            <p>📍 <strong className="text-slate-300">اقترب</strong> من طرف آخر للالتقاط التلقائي</p>
-            <p>✂️ <strong className="text-slate-300">انقر السلك</strong> لحذفه</p>
-            <p>👆 <strong className="text-slate-300">انقر العنصر</strong> للتحديد ثم ×</p>
-            <p>⚡ <strong className="text-slate-300">انقر القاطعة</strong> لفتح/إغلاق</p>
-            <p>🔺 <strong className="text-slate-300">انقر الصمام</strong> لعكس القطبية</p>
+          {/* Guide — trimmed to the 2 actions a child actually needs to start (wire, delete);
+              switch/diode toggling is discoverable by tapping, not worth reading upfront. */}
+          <div className="hidden lg:block bg-slate-950 rounded-xl p-2.5 text-[10px] text-slate-400 space-y-1.5 border border-slate-800/80 leading-relaxed">
+            <p>👆 <strong className="text-slate-300">اسحب</strong> النقطة 🔴 نحو نقطة أخرى لتوصيل سلك</p>
+            <p>✕ <strong className="text-slate-300">انقر عنصراً</strong> ثم اضغط × لحذفه</p>
           </div>
         </div>
 
         {/* ── Canvas ──────────────────────────── */}
         <div className="lg:col-span-9">
-          <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden"
-            style={{ aspectRatio: `${SVG_W} / ${SVG_H}` }}>
+          {/* Fixed 1-unit-=-1px size (not width:100%) so terminals/components never shrink below
+              their real touch-target size on a narrow phone — it scrolls instead, same pattern as
+              the Soroban abacus. */}
+          <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-x-auto">
             <svg
               ref={svgRef}
               viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-              style={{ width: '100%', height: '100%', touchAction: 'none', display: 'block' }}
+              width={SVG_W}
+              height={SVG_H}
+              style={{ touchAction: 'none', display: 'block' }}
               onPointerMove={handleSVGPointerMove}
               onPointerUp={handleSVGPointerUp}
               onPointerLeave={() => { if (interaction.type === 'dragging') setInteraction({ type: 'idle' }); }}
@@ -539,11 +542,11 @@ export const CircuitBuilder: React.FC = () => {
             </svg>
           </div>
 
-          {/* Hint */}
+          {/* Hint — one short line; secondary actions (select/delete a wire) are learned by doing. */}
           <div className="mt-1.5 text-center text-[10px] text-slate-500 font-bold">
             {interaction.type === 'wiring'
-              ? '🟢 اسحب نحو طرف آخر أو انقر عليه مباشرة — انقر خلفية فارغة للإلغاء'
-              : '👆 اسحب الأطراف الصفراء لتوصيل الأسلاك • انقر العنصر لتحديده • انقر السلك لحذفه'}
+              ? '🟢 اسحب نحو طرف آخر أو انقر عليه مباشرة'
+              : '👆 اسحب النقاط 🔴 لتوصيل الأسلاك'}
           </div>
         </div>
       </div>
