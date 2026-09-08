@@ -27,6 +27,7 @@ import { PrimaryGrade, UserProfile } from '../types';
 import { WILAYAS_LIST } from '../data/wilayasData';
 import { speakText as speakTextShared, stopSpeech } from '../utils/speech';
 import { currentSchoolYearLabel } from '../utils/schoolYear';
+import { printCertificate } from '../utils/certificatePrint';
 
 export interface HonorCertificatesStudioModalProps {
   isOpen: boolean;
@@ -263,65 +264,10 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
   if (!isOpen) return null;
 
   const currentTemplate = CERTIFICATE_TEMPLATES.find((t) => t.id === selectedTemplateId) || CERTIFICATE_TEMPLATES[0];
+  const currentDiplomaInfo = GRADE_DIPLOMA_TEMPLATES[currentTemplate.id];
   const selectedWilaya = WILAYAS_LIST.find((w) => w.code === selectedWilayaCode) || WILAYAS_LIST[15];
 
-  const handlePrint = () => {
-    // The shared print stylesheet (index.css) sets a portrait `@page` for the A4 revision
-    // worksheets. This certificate is laid out landscape (280mm wide), so without overriding
-    // the page orientation just for this print, the right portion of the diploma gets cut off
-    // on paper. Inject a scoped override, print, then remove it once the print dialog closes.
-    //
-    // This override also fixes a real bug: index.css's shared print rule only sets
-    // `visibility: hidden` on the rest of the page (it never removes it from layout), so the
-    // full app underneath the modal (header/main/footer — everything a student was doing before
-    // opening this studio) still occupies its normal document height during print. Combined with
-    // this modal's own `position: fixed` overlay (which Chrome repeats on every generated page,
-    // the same way it repeats a fixed header), that tall hidden content was pushing the print job
-    // to several extra pages, each showing a duplicate of the certificate. Hiding header/main/
-    // footer and neutralizing the overlay's `position: fixed` for the duration of this print job
-    // collapses the document back down to exactly the certificate's own single page.
-    //
-    // A follow-up regression from that same fix: index.css's shared print rule also forces
-    // `.printable-certificate` to `position: absolute; inset: 0` so it fills the page regardless
-    // of where it sits in the DOM — that only works if some ANCESTOR still has a definite,
-    // full-page size to position against. Once the overlay above is forced to `position: static`,
-    // nothing in the ancestor chain has a real height any more (header/main/footer are gone, the
-    // overlay has no content-based height of its own), so the absolutely-positioned certificate's
-    // containing block collapses to 0 height, `height: auto` then shrinks it to a sliver of its
-    // top row, and its own `overflow-hidden` clips away everything else — an empty printed page.
-    // Reverting the certificate to normal flow (`position: static`) for this print job sidesteps
-    // the whole fragile containing-block chain: its own classes already size it correctly
-    // (max-w-[280mm] min-h-[195mm]), the same way it already renders correctly on screen.
-    const landscapeOverride = document.createElement('style');
-    landscapeOverride.setAttribute('data-certificate-print-override', 'true');
-    landscapeOverride.textContent = `
-      @media print {
-        @page { size: A4 landscape; margin: 10mm; }
-        header, main, footer { display: none !important; }
-        #honor-certificate-studio-overlay {
-          position: static !important;
-          inset: auto !important;
-          padding: 0 !important;
-          background: none !important;
-          backdrop-filter: none !important;
-        }
-        .printable-certificate {
-          position: static !important;
-          inset: auto !important;
-          margin: 0 auto !important;
-        }
-      }
-    `;
-    document.head.appendChild(landscapeOverride);
-
-    const cleanup = () => {
-      landscapeOverride.remove();
-      window.removeEventListener('afterprint', cleanup);
-    };
-    window.addEventListener('afterprint', cleanup);
-
-    window.print();
-  };
+  const handlePrint = () => printCertificate('landscape');
 
   const handleSpeakSpeech = () => {
     if (speechTimeoutRef.current) {
@@ -347,7 +293,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
   const effectiveMotivation = customMotivation.trim() || currentTemplate.defaultMotivation;
 
   return (
-    <div id="honor-certificate-studio-overlay" className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md dir-rtl" dir="rtl">
+    <div id="honor-certificate-studio-overlay" className="certificate-print-modal fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md dir-rtl" dir="rtl">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -441,7 +387,19 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                     >
                       <span className="text-xl shrink-0">{isLocked ? '🔒' : tmpl.badgeEmoji}</span>
                       <div className="overflow-hidden flex-1">
-                        <span className="block text-xs truncate font-black">{tmpl.titleAr}</span>
+                        <span className="flex items-center gap-1.5">
+                          <span className="block text-xs truncate font-black">{tmpl.titleAr}</span>
+                          <span
+                            className={`shrink-0 text-[9px] font-black px-1.5 py-0.5 rounded-full border ${
+                              diplomaInfo
+                                ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                                : 'bg-slate-100 text-slate-500 border-slate-300'
+                            }`}
+                            title={diplomaInfo ? 'يُمنح تلقائياً بعد إتمام دروس السنة كاملة' : 'شهادة حرة يملأها الوالد/الأستاذ حسب تقديره'}
+                          >
+                            {diplomaInfo ? 'تلقائي' : 'حرّ'}
+                          </span>
+                        </span>
                         <span className="block text-[10px] text-slate-500 truncate">
                           {isLocked ? `مقفول — أكمل دروس السنة ${diplomaInfo!.grade} كاملة` : tmpl.subtitleAr}
                         </span>
@@ -673,6 +631,11 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                 </div>
                 <p className="text-[10px] sm:text-[11px] font-black tracking-wider text-amber-900/80">
                   {currentTemplate.subtitleAr}
+                </p>
+                <p className="text-[9px] font-bold text-slate-500">
+                  {currentDiplomaInfo
+                    ? '🔒 شهادة تلقائية — مُنحت بعد إتمام دروس السنة الدراسية كاملة'
+                    : '✍️ شهادة تكريمية حرة — يمنحها الوالد أو الأستاذ(ة) حسب تقديره الخاص'}
                 </p>
               </div>
 

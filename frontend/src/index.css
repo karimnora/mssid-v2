@@ -540,6 +540,38 @@ body {
     visibility: hidden !important;
   }
 
+  /* Certificates render inside a full-screen fixed modal overlay above the app shell. The
+     header/main/footer stay in the DOM (just visibility:hidden, not removed from layout), and
+     `position: fixed` on the overlay makes Chrome repeat it on every generated page — combined,
+     that inflates the print job to several extra blank/duplicate pages. Hiding the app shell and
+     neutralizing any overlay marked `.certificate-print-modal` collapses the document back down
+     to exactly the certificate's own single page. See utils/certificatePrint.ts for the (much
+     smaller) per-certificate piece this doesn't cover: page orientation. */
+  header,
+  main,
+  footer {
+    display: none !important;
+  }
+  .certificate-print-modal {
+    position: static !important;
+    inset: auto !important;
+    padding: 0 !important;
+    background: none !important;
+    backdrop-filter: none !important;
+  }
+  /* .printable-certificate is normally `position: absolute` (rule above) so it fills the page
+     regardless of where it sits in the DOM — that only works with a positioned ancestor to
+     anchor to. Once the overlay right above is forced to `position: static`, nothing up the
+     ancestor chain is positioned any more, so the absolutely-positioned certificate's containing
+     block collapses and its own overflow-hidden clips everything but a sliver. Reverting it to
+     normal flow here sidesteps that: its own sizing classes (max-w/min-h) already render it
+     correctly on screen, so they render it correctly on paper too. */
+  .certificate-print-modal .printable-certificate {
+    position: static !important;
+    inset: auto !important;
+    margin: 0 auto !important;
+  }
+
   .printable-sheet[data-print-mode="subject"] .print-corrige {
     display: none !important;
     visibility: hidden !important;

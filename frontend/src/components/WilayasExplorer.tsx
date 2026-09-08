@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
+import { printCertificate } from '../utils/certificatePrint';
 import {
   MapPin,
   Search,
@@ -1402,7 +1403,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
       {/* ======================================================== */}
       <AnimatePresence>
         {showCertificateModal && (
-          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="certificate-print-modal fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -1411,7 +1412,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
             >
               <div
                 ref={certificatePrintRef}
-                className="p-6 sm:p-8 rounded-2xl border-4 border-double border-amber-500 bg-gradient-to-b from-amber-50/70 via-white to-amber-50/50 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/20 space-y-5"
+                className="printable-certificate p-6 sm:p-8 rounded-2xl border-4 border-double border-amber-500 bg-gradient-to-b from-amber-50/70 via-white to-amber-50/50 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/20 space-y-5"
               >
                 <div className="flex items-center justify-center gap-3">
                   <span className="text-4xl">🇩🇿</span>
@@ -1451,6 +1452,10 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   </div>
                 </div>
 
+                <p className="text-[10px] font-bold text-slate-400">
+                  📊 شهادة تعكس التقدّم الفعلي — {discoveredCodes.length} من 58 ولاية مكتشفة حتى الآن
+                </p>
+
                 <div className="flex items-center justify-between pt-4 border-t border-amber-300 text-xs font-bold text-slate-500">
                   <span>ختم منصة مسيد الجزائر 🌟</span>
                   <span>ديدو الرحالة الفنك الذكي 🦊</span>
@@ -1459,7 +1464,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
 
               <div className="flex items-center justify-center gap-3">
                 <button
-                  onClick={() => window.print()}
+                  onClick={() => printCertificate('portrait')}
                   className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md"
                 >
                   <Printer className="w-4 h-4" />
