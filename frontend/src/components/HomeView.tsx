@@ -214,8 +214,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
     else onSelectPole('courses');
   };
 
-  const examsPoleTarget: HomePoleId = grade === '1AP' ? 'courses' : 'exams';
-
   return (
     <div className="space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
       <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white">
@@ -372,7 +370,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex items-center justify-between mb-3">
           <button
             type="button"
-            onClick={() => onSelectPole(examsPoleTarget)}
+            data-pole="exams"
+            onClick={() => onSelectPole('exams')}
             className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
           >
             {t('sectionViewAll')}
@@ -394,7 +393,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           data-pole="exams"
           whileTap={{ scale: 0.95 }}
           transition={spring}
-          onClick={() => onSelectPole(examsPoleTarget)}
+          onClick={() => onSelectPole('exams')}
           className="kids-pop kids-card-examens relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
         >
           <CardBlobBackdrop />

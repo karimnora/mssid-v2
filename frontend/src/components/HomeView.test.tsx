@@ -54,6 +54,22 @@ describe('HomeView', () => {
     expect(document.querySelector('[data-pole-icon="labs"]')).toBeTruthy();
   });
 
+  // Regression test: HomeView used to silently send 1AP's exam-bank "See all" link and card
+  // straight to the courses pole instead of the exams pole — bypassing ExamsViewer's own friendly
+  // empty state ("1AP : évaluation continue, pas d'examens officiels" + a button to open courses),
+  // which is exactly what should be shown instead of a confusing unexplained redirect.
+  it('opens the real exams pole for 1AP (not a silent courses redirect)', () => {
+    const onSelectPole = vi.fn();
+    renderHome('1AP', { onSelectPole });
+
+    const examsPoleTriggers = document.querySelectorAll('[data-pole="exams"]');
+    expect(examsPoleTriggers.length).toBeGreaterThanOrEqual(2); // the "See all" link + the card itself
+    examsPoleTriggers.forEach((el) => fireEvent.click(el));
+
+    expect(onSelectPole).not.toHaveBeenCalledWith('courses');
+    onSelectPole.mock.calls.forEach((call) => expect(call[0]).toBe('exams'));
+  });
+
   it('opens math lessons from the continue CTA', () => {
     const onSelectSubject = vi.fn();
     renderHome('5AP', { onSelectSubject });
