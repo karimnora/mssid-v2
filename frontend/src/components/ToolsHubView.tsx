@@ -3,7 +3,7 @@
  * ─ Mobile (< md) : navigation 3 vues  Hub → Liste → retour
  * ─ Desktop (≥ md): affichage original dense — INCHANGÉ
  */
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SubjectInfo, SubjectId, PrimaryGrade } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
@@ -158,6 +158,10 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   // — état mobile
   const [mobileView, setMobileView]         = useState<MobileView>(() => (selectedToolId && !catalogOpen ? 'active' : 'hub'));
   const [mobileCatKey, setMobileCatKey]     = useState<string>(MOBILE_CATS[0].key);
+  // Vue à restaurer quand on quitte 'active' via le bouton retour du labo lui-même (pas via
+  // « اختر مختبراً آخر », qui gère son propre retour) : 'list' si on venait de la liste d'une
+  // catégorie, 'hub' par défaut (ex. reprise de session avec un outil déjà sélectionné au montage).
+  const mobileReturnViewRef = useRef<'hub' | 'list'>('hub');
 
   // — état desktop (original)
   const [activeFilterCategory, setActiveFilterCategory] = useState<string>('all');
@@ -212,10 +216,14 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
       setMobileView('active');
       return;
     }
-    // Catalogue rouvert (ex. « اختيار أداة أخرى ») : revenir au hub mobile.
+    // Catalogue rouvert (ex. bouton retour propre au labo) : revenir à la vue quittée avant
+    // 'active' — 'list' si on venait de la liste d'une catégorie (mobileCatKey est déjà préservé),
+    // sinon 'hub' (ex. reprise de session avec un outil déjà sélectionné au montage). Le bouton
+    // explicite « اختر مختبراً آخر » gère lui-même son propre retour au hub (voir openCatalog),
+    // donc mobileView y vaut déjà 'hub' quand cet effet s'exécute et ce cas reste un no-op.
     // Sans ça, mobileView reste sur 'active' alors que hub/list seuls sont rendus → écran vide.
     if (catalogOpen || !selectedToolId) {
-      setMobileView((prev) => (prev === 'active' ? 'hub' : prev));
+      setMobileView((prev) => (prev === 'active' ? mobileReturnViewRef.current : prev));
     }
   }, [selectedToolId, catalogOpen, labFocused]);
 
@@ -237,6 +245,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   };
 
   const handleMobileSelect = (id: SubjectId) => {
+    mobileReturnViewRef.current = 'list';
     onSelectTool(id);
     onCatalogOpenChange(false);
     setMobileView('active');
