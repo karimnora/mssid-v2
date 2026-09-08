@@ -18,64 +18,6 @@ function notifyAuthListeners() {
   authListeners.forEach((listener) => listener());
 }
 
-// Pre-defined demo accounts used for local/offline testing when the backend is unavailable
-const DEMO_USERS: Record<string, AuthUser> = {
-  'free@mssid.dz': {
-    id: 101,
-    nom: 'أحمد التلميذ',
-    email: 'free@mssid.dz',
-    role: 'ROLE_FREE',
-    score: 140,
-    xp: 140,
-    level: 2,
-    grade: '5AP',
-    streakDays: 4,
-    quizzesCompleted: 3,
-    completedLessonIds: ['math-5ap-numbers'],
-    badges: [],
-    quizScores: {},
-  },
-  'premium@mssid.dz': {
-    id: 102,
-    nom: 'سارة المتفوقة',
-    email: 'premium@mssid.dz',
-    role: 'ROLE_PREMIUM',
-    score: 850,
-    xp: 850,
-    level: 9,
-    grade: '5AP',
-    streakDays: 12,
-    quizzesCompleted: 18,
-    completedLessonIds: [],
-    badges: ['b_math_star'],
-    quizScores: {},
-    subscription: {
-      id: 1,
-      userId: 102,
-      status: 'ACTIVE',
-      startDate: '2026-01-01',
-      endDate: '2027-01-01',
-      planName: 'اشتراك تفوق mssid dz السنوي',
-      amountDzd: 1500,
-    },
-  },
-  'admin@mssid.dz': {
-    id: 103,
-    nom: 'الأستاذ المدير',
-    email: 'admin@mssid.dz',
-    role: 'ROLE_ADMIN',
-    score: 2500,
-    xp: 2500,
-    level: 26,
-    grade: '5AP',
-    streakDays: 30,
-    quizzesCompleted: 50,
-    completedLessonIds: [],
-    badges: [],
-    quizScores: {},
-  },
-};
-
 // Default sample payment receipts
 const INITIAL_RECEIPTS: PaymentReceipt[] = [
   {
@@ -125,25 +67,6 @@ export class AuthService {
   static subscribe(listener: AuthListener): () => void {
     authListeners.add(listener);
     return () => authListeners.delete(listener);
-  }
-
-  static login(email: string, pass: string): AuthUser {
-    const normalized = email.trim().toLowerCase();
-    const demoUser = DEMO_USERS[normalized];
-
-    const user: AuthUser = demoUser
-      ? { ...demoUser, token: `jwt.token.${Date.now()}` }
-      : {
-          // Create dynamic free user if not pre-made
-          id: Math.floor(Math.random() * 9000) + 1000,
-          nom: email.split('@')[0],
-          email: email,
-          role: 'ROLE_FREE',
-          token: `jwt.token.${Date.now()}`,
-        };
-
-    this.setCurrentUser(user);
-    return user;
   }
 
 static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
@@ -198,26 +121,6 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
     };
   }
 }
-
-  static register(nom: string, email: string, pass: string): AuthUser {
-    const user: AuthUser = {
-      id: Math.floor(Math.random() * 9000) + 1000,
-      nom: nom.trim() || email.split('@')[0],
-      email: email.trim().toLowerCase(),
-      role: 'ROLE_FREE',
-      score: 0,
-      xp: 0,
-      level: 1,
-      grade: '5AP',
-      streakDays: 1,
-      quizzesCompleted: 0,
-      completedLessonIds: [],
-      token: `jwt.token.registered.${Date.now()}`,
-    };
-
-    this.setCurrentUser(user);
-    return user;
-  }
 
 static async registerAsync(nom: string, email: string, pass: string, grade?: string, parentEmail?: string, wilaya?: string): Promise<{ user: AuthUser | null; error?: string }> {
   try {
@@ -293,49 +196,6 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
   }
 }
-
-  static switchDemoRole(role: UserRole): AuthUser {
-    let email = 'free@mssid.dz';
-    if (role === 'ROLE_PREMIUM') email = 'premium@mssid.dz';
-    if (role === 'ROLE_ADMIN') email = 'admin@mssid.dz';
-
-    const demoUser = DEMO_USERS[email];
-    const user: AuthUser = demoUser
-      ? { ...demoUser, token: `mssid_jwt_token_${Date.now()}` }
-      : {
-          id: 101,
-          nom: role === 'ROLE_ADMIN' ? 'الأستاذ المدير' : role === 'ROLE_PREMIUM' ? 'سارة المتفوقة' : 'أحمد التلميذ',
-          email: email,
-          role: role,
-          score: role === 'ROLE_ADMIN' ? 2500 : role === 'ROLE_PREMIUM' ? 850 : 140,
-          xp: role === 'ROLE_ADMIN' ? 2500 : role === 'ROLE_PREMIUM' ? 850 : 140,
-          level: role === 'ROLE_ADMIN' ? 26 : role === 'ROLE_PREMIUM' ? 9 : 2,
-          token: `mssid_jwt_token_${Date.now()}`,
-        };
-    this.setCurrentUser(user);
-
-    // Call backend API login so request is registered on backend. SEC-01: success is now judged by
-    // the absence of an error (the JWT itself arrives as an HttpOnly cookie, not in res.data).
-    springBootApi.login({ email, password: 'password123' }).then((res) => {
-      if (res.data && !res.error) {
-        const u = res.data.user || {};
-        const scoreVal = u.score !== undefined ? u.score : user.score;
-        const levelVal = Math.floor((scoreVal || 0) / 100) + 1;
-        const backendUser: AuthUser = {
-          ...user,
-          id: u.id || user.id,
-          nom: res.data.nom || u.nom || user.nom,
-          role: (res.data.roleName || res.data.role || role) as UserRole,
-          score: scoreVal,
-          xp: scoreVal,
-          level: levelVal,
-        };
-        this.setCurrentUser(backendUser);
-      }
-    }).catch(() => {});
-
-    return user;
-  }
 
   static addScore(points: number): AuthUser | null {
     const user = this.getCurrentUser();
@@ -694,6 +554,12 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
     return currentUser;
   }
 
+  /**
+   * Real user-list read for the admin console (UsersRolesModule.tsx). Deliberately does NOT fall
+   * back to demo/mock accounts on failure — an admin seeing "أحمد التلميذ / سارة المتفوقة / الأستاذ
+   * المدير" after a real backend error would have no way to tell they're fabricated, not real
+   * students. Showing an empty list is more honest. Mirrors getAllReceiptsAsync below.
+   */
   static async getAllUsersAsync(): Promise<AuthUser[]> {
     try {
       const res = await springBootApi.getUsersAll();
@@ -716,18 +582,17 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           avatarConfig: u.avatarConfig,
         }));
       }
-    } catch {
-      // Fallback
+    } catch (e) {
+      console.error('Erreur de chargement des utilisateurs:', e);
     }
-    return Object.values(DEMO_USERS);
+    return [];
   }
 
   /**
    * Real payment-receipts read (replaces the localStorage-mock getReceipts() for admin views).
    * The backend entity may expose the submitting user as a nested `user` relation rather than flat
-   * `userEmail`/`userName` fields — map defensively so either shape works. Unlike getAllUsersAsync,
-   * this deliberately does NOT fall back to demo/mock data on failure: showing an empty list is more
-   * honest than showing stale fake receipts.
+   * `userEmail`/`userName` fields — map defensively so either shape works. Same honest-on-failure
+   * contract as getAllUsersAsync above: no fallback to demo/mock data.
    */
   static async getAllReceiptsAsync(): Promise<PaymentReceipt[]> {
     try {

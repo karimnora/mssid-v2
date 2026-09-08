@@ -10,58 +10,18 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
     AuthService.setCurrentUser(null);
   });
 
-  describe('Happy Path - User Retrieval & Login', () => {
+  describe('Happy Path - User Retrieval & Session', () => {
     it('returns null when local storage is empty', () => {
       const user = AuthService.getCurrentUser();
       expect(user).toBeNull();
     });
 
-    it('logs in pre-defined demo accounts successfully', () => {
-      const premiumUser = AuthService.login('premium@mssid.dz', '123456');
-      expect(premiumUser.role).toBe('ROLE_PREMIUM');
-      expect(premiumUser.subscription?.status).toBe('ACTIVE');
-
-      const currentUser = AuthService.getCurrentUser();
-      expect(currentUser?.email).toBe('premium@mssid.dz');
-    });
-
-    it('dynamically creates a new free account for non-demo email on login', () => {
-      const newEmail = 'student2026@mssid.dz';
-      const user = AuthService.login(newEmail, 'secretpass');
-
-      expect(user.email).toBe(newEmail);
-      expect(user.role).toBe('ROLE_FREE');
-      expect(user.nom).toBe('student2026');
-      expect(user.token).toBeDefined();
-    });
-
-    it('registers a new user with custom name and persists token', () => {
-      const user = AuthService.register('أمينة الجزائرية', 'amina@mssid.dz', 'password123');
-
-      expect(user.nom).toBe('أمينة الجزائرية');
-      expect(user.email).toBe('amina@mssid.dz');
-      expect(user.role).toBe('ROLE_FREE');
-
-      const savedUser = AuthService.getCurrentUser();
-      expect(savedUser?.nom).toBe('أمينة الجزائرية');
-    });
-
-    it('switches demo roles seamlessly for RBAC testing', () => {
-      const admin = AuthService.switchDemoRole('ROLE_ADMIN');
-      expect(admin.role).toBe('ROLE_ADMIN');
-      expect(admin.email).toBe('admin@mssid.dz');
-
-      const current = AuthService.getCurrentUser();
-      expect(current?.role).toBe('ROLE_ADMIN');
-    });
-
     it('clears session on logout', () => {
-      AuthService.login('admin@mssid.dz', '123456');
+      AuthService.setCurrentUser({ id: 103, nom: 'الأستاذ المدير', email: 'admin@mssid.dz', role: 'ROLE_ADMIN' });
       expect(AuthService.getCurrentUser()?.role).toBe('ROLE_ADMIN');
 
       AuthService.logout();
-      // After logout, getCurrentUser defaults back to free user or null when explicitly cleared
-      expect(localStorage.getItem('mssid_auth_user')).toBeNull();
+      expect(AuthService.getCurrentUser()).toBeNull();
     });
   });
 
@@ -116,6 +76,58 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
       expect(result.user?.streakDays).toBe(0);
       expect(result.user?.quizzesCompleted).toBe(0);
       expect(result.user?.completedLessonIds).toEqual([]);
+    });
+  });
+
+  describe('getAllUsersAsync - admin console user list (regression: no fake demo accounts on failure)', () => {
+    const originalFetch = global.fetch;
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    // The exact bug this fix targets: an admin whose real user-list request fails must see an
+    // empty list, never the three fabricated demo accounts (أحمد التلميذ / سارة المتفوقة / الأستاذ
+    // المدير) with no indication they aren't real students.
+    it('returns an empty list — not fabricated demo accounts — when the backend call throws', async () => {
+      vi.useFakeTimers();
+      try {
+        global.fetch = vi.fn().mockRejectedValue(new Error('network down'));
+
+        const usersPromise = AuthService.getAllUsersAsync();
+        await vi.advanceTimersByTimeAsync(20000); // fast-forward past the cold-start retry delay
+        const users = await usersPromise;
+
+        expect(users).toEqual([]);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it('returns an empty list when the backend responds with a non-array payload', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({ message: 'unexpected shape' }),
+      });
+
+      const users = await AuthService.getAllUsersAsync();
+
+      expect(users).toEqual([]);
+    });
+
+    it('maps real backend users normally when the call succeeds', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ([{ id: 7, nom: 'يونس', email: 'younes@mssid.dz', role: 'ROLE_FREE' }]),
+      });
+
+      const users = await AuthService.getAllUsersAsync();
+
+      expect(users).toEqual([expect.objectContaining({ id: 7, email: 'younes@mssid.dz', role: 'ROLE_FREE' })]);
     });
   });
 
@@ -318,7 +330,7 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
       });
       global.fetch = mockFetch;
 
-      AuthService.login('free@mssid.dz', '123456');
+      AuthService.setCurrentUser({ id: 101, nom: 'أحمد التلميذ', email: 'free@mssid.dz', role: 'ROLE_FREE' });
       const newConfig = { activeOutfit: 'burnous_traditionnel' as const, unlockedOutfits: ['default', 'burnous_traditionnel'] as const, mood: 'celebrating' as const };
 
       const updated = AuthService.syncGoldCoinsAndAvatar(85, newConfig as any);

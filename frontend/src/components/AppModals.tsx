@@ -7,7 +7,6 @@ import { BadgeUnlockToast } from './BadgeUnlockToast';
 import { CertificateModal } from './CertificateModal';
 import { AuthModal } from './AuthModal';
 import { EmailVerificationPopup } from './EmailVerificationPopup';
-import { MobileAppSimulator } from './MobileAppSimulator';
 import { PrivacyPolicyModal } from './PrivacyPolicyModal';
 import { TermsOfServiceModal } from './TermsOfServiceModal';
 import { SubscriptionPaywall } from './SubscriptionPaywall';
@@ -226,13 +225,6 @@ export const AppModals: React.FC<AppModalsProps> = ({
         email={authUser.email}
       />
     )}
-
-    <MobileAppSimulator
-      isOpen={modals.isMobileSimulatorOpen}
-      onClose={() => modals.setIsMobileSimulatorOpen(false)}
-      currentGrade={grade}
-      onGradeChange={onGradeChange}
-    />
 
     <PrivacyPolicyModal
       isOpen={modals.isPrivacyModalOpen}

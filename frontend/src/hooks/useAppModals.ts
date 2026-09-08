@@ -11,7 +11,6 @@ export function useAppModals() {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isEmailVerifyPopupOpen, setIsEmailVerifyPopupOpen] = useState(false);
-  const [isMobileSimulatorOpen, setIsMobileSimulatorOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -51,8 +50,6 @@ export function useAppModals() {
     setIsAuthModalOpen,
     isEmailVerifyPopupOpen,
     setIsEmailVerifyPopupOpen,
-    isMobileSimulatorOpen,
-    setIsMobileSimulatorOpen,
     isPrivacyModalOpen,
     setIsPrivacyModalOpen,
     isTermsModalOpen,
