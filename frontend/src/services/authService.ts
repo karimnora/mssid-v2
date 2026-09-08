@@ -178,6 +178,7 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       xp: scoreVal,
       level: levelVal,
       grade: u.grade ?? '5AP',
+      wilaya: u.wilaya,
       streakDays: u.streakDays ?? 0,
       quizzesCompleted: u.quizzesCompleted ?? 0,
       completedLessonIds: u.completedLessonIds ?? [],
@@ -192,8 +193,8 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
     return { user: authUser };
   } catch (err: any) {
     return {
-      user: null, 
-      error: 'Erreur réseau lors de la tentative de connexion.' 
+      user: null,
+      error: 'Erreur réseau lors de la tentative de connexion.'
     };
   }
 }
@@ -218,9 +219,9 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
     return user;
   }
 
-static async registerAsync(nom: string, email: string, pass: string, grade?: string, parentEmail?: string): Promise<{ user: AuthUser | null; error?: string }> {
+static async registerAsync(nom: string, email: string, pass: string, grade?: string, parentEmail?: string, wilaya?: string): Promise<{ user: AuthUser | null; error?: string }> {
   try {
-    const response = await springBootApi.register({ nom, email, password: pass, grade, parentEmail });
+    const response = await springBootApi.register({ nom, email, password: pass, grade, parentEmail, wilaya });
 
     if (response.error || !response.data) {
       return {
@@ -239,6 +240,7 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
       xp: u.xp ?? 0,
       level: u.level ?? 1,
       grade: u.grade || grade || '5AP',
+      wilaya: u.wilaya || wilaya,
       streakDays: u.streakDays || 1,
       quizzesCompleted: u.quizzesCompleted || 0,
       completedLessonIds: u.completedLessonIds || [],
@@ -256,7 +258,7 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
   }
 }
 
-static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | null; error?: string }> {
+static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | null; error?: string; profileIncomplete?: boolean }> {
   try {
     const response = await springBootApi.loginWithGoogle(idToken);
 
@@ -274,6 +276,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       xp: u.xp ?? u.score ?? 0,
       level: u.level ?? 1,
       grade: u.grade ?? '5AP',
+      wilaya: u.wilaya,
       streakDays: u.streakDays ?? 0,
       quizzesCompleted: u.quizzesCompleted ?? 0,
       completedLessonIds: u.completedLessonIds ?? [],
@@ -285,7 +288,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     };
 
     this.setCurrentUser(authUser);
-    return { user: authUser };
+    return { user: authUser, profileIncomplete: response.data.profileIncomplete === true };
   } catch (err: any) {
     return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
   }
@@ -431,6 +434,24 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       email: updatedUser.email,
       grade: newGrade,
     }).catch((err) => console.error('Erreur de synchronisation du niveau:', err));
+
+    return updatedUser;
+  }
+
+  /** Same pattern/rationale as updateGrade, for the wilaya (province) field — used by the settings
+   * screen and by the post-Google-login "complete your profile" step. */
+  static updateWilaya(newWilaya: string): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+    if (user.wilaya === newWilaya) return user;
+
+    const updatedUser: AuthUser = { ...user, wilaya: newWilaya };
+    this.setCurrentUser(updatedUser);
+
+    springBootApi.updateUserProgress({
+      email: updatedUser.email,
+      wilaya: newWilaya,
+    }).catch((err) => console.error('Erreur de synchronisation de la wilaya:', err));
 
     return updatedUser;
   }
@@ -655,6 +676,7 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           xp: rawScore,
           level: rawLevel,
           grade: res.data.grade || currentUser.grade || '5AP',
+          wilaya: res.data.wilaya || currentUser.wilaya,
           streakDays: res.data.streakDays || currentUser.streakDays || 1,
           quizzesCompleted: res.data.quizzesCompleted || currentUser.quizzesCompleted || 0,
           completedLessonIds: res.data.completedLessonIds || currentUser.completedLessonIds || [],
@@ -685,6 +707,7 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           xp: u.xp ?? u.score ?? 0,
           level: u.level ?? Math.floor((u.score || 0) / 100) + 1,
           grade: u.grade || '5AP',
+          wilaya: u.wilaya,
           streakDays: u.streakDays || 1,
           quizzesCompleted: u.quizzesCompleted || 0,
           createdAt: u.createdAt,

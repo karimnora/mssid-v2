@@ -47,6 +47,12 @@ public class AdminStatsService {
                         Collectors.counting()
                 ));
 
+        Map<String, Long> wilayaDistribution = users.stream()
+                .collect(Collectors.groupingBy(
+                        u -> u.getWilaya() != null && !u.getWilaya().isBlank() ? u.getWilaya() : "UNKNOWN",
+                        Collectors.counting()
+                ));
+
         long totalXp = users.stream().mapToLong(u -> u.getXp() != null ? u.getXp() : 0).sum();
         double averageXp = totalUsers == 0 ? 0 : (double) totalXp / totalUsers;
         double averageLevel = totalUsers == 0 ? 0 : users.stream().mapToInt(u -> u.getLevel() != null ? u.getLevel() : 1).average().orElse(0);
@@ -129,6 +135,7 @@ public class AdminStatsService {
                 .totalUsers(totalUsers)
                 .roleDistribution(roleDistribution)
                 .gradeDistribution(gradeDistribution)
+                .wilayaDistribution(wilayaDistribution)
                 .totalXp(totalXp)
                 .averageXp(averageXp)
                 .averageLevel(averageLevel)

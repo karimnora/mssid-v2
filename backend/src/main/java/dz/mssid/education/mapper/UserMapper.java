@@ -20,6 +20,7 @@ public class UserMapper {
                 .role(roleStr)
                 .score(user.getScore() != null ? user.getScore() : 0)
                 .grade(user.getGrade() != null ? user.getGrade() : "5AP")
+                .wilaya(user.getWilaya())
                 .avatar(user.getAvatar() != null ? user.getAvatar() : "default_avatar")
                 .xp(user.getXp() != null ? user.getXp() : 0)
                 .level(user.getLevel() != null ? user.getLevel() : 1)

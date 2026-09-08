@@ -23,6 +23,7 @@ public class UserProfileDto {
     private String role;
     private Integer score;
     private String grade; // "1AP" ... "5AP"
+    private String wilaya;
     private String avatar;
     private Integer xp;
     private Integer level;

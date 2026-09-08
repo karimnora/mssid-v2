@@ -30,6 +30,9 @@ public class AdminStatsOverviewDto {
     private long totalUsers;
     private Map<String, Long> roleDistribution;
     private Map<String, Long> gradeDistribution;
+    /** wilaya name -> account count, "UNKNOWN" for accounts that never set it (all accounts predating
+     * this field, plus any Google sign-up that hasn't completed its profile yet). */
+    private Map<String, Long> wilayaDistribution;
     private long totalXp;
     private double averageXp;
     private double averageLevel;

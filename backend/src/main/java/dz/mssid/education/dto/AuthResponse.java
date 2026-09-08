@@ -21,4 +21,11 @@ public class AuthResponse {
     private String roleName;
     private String role;
     private UserProfileDto user;
+
+    // Set only by loginWithGoogle(), for a brand-new account it just created (never by register()/
+    // login()). Google gives no grade/wilaya, and UserMapper always fills a "5AP" default in `user`
+    // for display purposes elsewhere — so this is the only signal the frontend has that those fields
+    // are genuinely unset in the DB and worth asking the user to confirm/complete once.
+    @Builder.Default
+    private boolean profileIncomplete = false;
 }

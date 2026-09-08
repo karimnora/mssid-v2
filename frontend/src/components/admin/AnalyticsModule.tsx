@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star } from 'lucide-react';
+import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star, MapPin, Download } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
+import { WILAYAS_LIST } from '../../data/wilayasData';
+import { generatePartnerCatalogHtml, downloadHtmlFile } from '../../utils/partnerCatalogExport';
+
+// wilayaDistribution groups by the wilaya's official code ("16"), see AuthModal.tsx — resolve it to
+// a readable "16 - الجزائر" label for the admin console rather than showing a bare number.
+const WILAYA_NAME_BY_CODE: Record<string, string> = Object.fromEntries(
+  WILAYAS_LIST.map((w) => [w.codeStr, w.nameAr])
+);
+const formatWilayaKey = (code: string): string =>
+  code === 'UNKNOWN' ? 'غير محدَّدة' : `${code} - ${WILAYA_NAME_BY_CODE[code] || code}`;
 
 // Every field here maps 1:1 to GET /api/v1/admin/stats/overview (see backend
 // AdminStatsOverviewDto.java) — session-time/preschool-usage widgets still don't exist because no
@@ -9,6 +19,7 @@ interface AdminStatsOverview {
   totalUsers: number;
   roleDistribution: Record<string, number>;
   gradeDistribution: Record<string, number>;
+  wilayaDistribution: Record<string, number>;
   totalXp: number;
   averageXp: number;
   averageLevel: number;
@@ -52,8 +63,8 @@ const StatCard: React.FC<{ icon: React.ReactNode; labelAr: string; value: React.
   </div>
 );
 
-const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data: Record<string, number> }> = ({ titleAr, icon, data }) => {
-  const entries: [string, number][] = Object.entries(data || {});
+const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data: Record<string, number>; formatKey?: (key: string) => string }> = ({ titleAr, icon, data, formatKey }) => {
+  const entries: [string, number][] = Object.entries(data || {}).sort((a, b) => b[1] - a[1]);
   const total = entries.reduce((sum: number, [, v]) => sum + v, 0);
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
@@ -70,7 +81,7 @@ const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data:
             return (
               <div key={key} className="space-y-1">
                 <div className="flex items-center justify-between text-[11px] text-slate-300">
-                  <span className="font-mono">{key}</span>
+                  <span className="font-mono">{formatKey ? formatKey(key) : key}</span>
                   <span className="font-bold text-slate-200">{value} ({pct}%)</span>
                 </div>
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
@@ -141,6 +152,19 @@ export const AnalyticsModule: React.FC = () => {
   const [stats, setStats] = useState<AdminStatsOverview | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExportPartnerCatalog = async () => {
+    if (!stats) return;
+    setIsExporting(true);
+    try {
+      const html = await generatePartnerCatalogHtml(stats);
+      const date = new Date().toISOString().slice(0, 10);
+      downloadHtmlFile(html, `mssid-catalogue-partenaire-${date}.html`);
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   const loadStats = async () => {
     setIsLoading(true);
@@ -177,14 +201,24 @@ export const AnalyticsModule: React.FC = () => {
             كل رقم هنا مصدره مباشرة قاعدة بيانات المستخدمين والمدفوعات — لا توجد أي بيانات وهمية أو تقديرية.
           </p>
         </div>
-        <button
-          onClick={loadStats}
-          disabled={isLoading}
-          className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 border border-slate-700 font-bold text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer shrink-0 w-full sm:w-auto"
-        >
-          <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-          <span>{isLoading ? 'جاري التحديث...' : 'تحديث البيانات'}</span>
-        </button>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          <button
+            onClick={loadStats}
+            disabled={isLoading}
+            className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-50 text-slate-200 border border-slate-700 font-bold text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer shrink-0 w-full sm:w-auto"
+          >
+            <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+            <span>{isLoading ? 'جاري التحديث...' : 'تحديث البيانات'}</span>
+          </button>
+          <button
+            onClick={handleExportPartnerCatalog}
+            disabled={!stats || isExporting}
+            className="flex items-center justify-center gap-2 bg-amber-500/20 hover:bg-amber-500/30 disabled:opacity-50 text-amber-300 border border-amber-500/40 font-bold text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer shrink-0 w-full sm:w-auto"
+          >
+            <Download className={`w-4 h-4 ${isExporting ? 'animate-pulse' : ''}`} />
+            <span>{isExporting ? 'Export en cours...' : 'Exporter le catalogue partenaire'}</span>
+          </button>
+        </div>
       </div>
 
       {error && (
@@ -261,11 +295,17 @@ export const AnalyticsModule: React.FC = () => {
 
           <TopLessonsCard data={stats.topCompletedLessons} />
 
-          {/* Role / grade distribution */}
+          {/* Role / grade / wilaya distribution */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <DistributionCard titleAr="توزيع المستخدمين حسب الصلاحية (Role)" icon={<Users className="w-4 h-4 text-purple-400" />} data={stats.roleDistribution} />
             <DistributionCard titleAr="توزيع المستخدمين حسب السنة الدراسية" icon={<BookOpenCheck className="w-4 h-4 text-blue-400" />} data={stats.gradeDistribution} />
           </div>
+
+          {/* B2B partner reporting: which wilayas the active accounts are actually in. "غير محدَّدة"
+              covers every account created before this field existed, plus any Google sign-up that
+              skipped the one-time "complete your profile" step — expect it to shrink over time, not
+              be zero right away. */}
+          <DistributionCard titleAr="توزيع المستخدمين حسب الولاية" icon={<MapPin className="w-4 h-4 text-rose-400" />} data={stats.wilayaDistribution} formatKey={formatWilayaKey} />
 
           {/* Payments block */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">

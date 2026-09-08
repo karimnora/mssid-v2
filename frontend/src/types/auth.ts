@@ -46,6 +46,7 @@ export interface AuthUser {
   quizzesCompleted?: number;
   streakDays?: number;
   grade?: string;
+  wilaya?: string;
   completedLessonIds?: string[];
   completedExamIds?: string[];
   completedChallengeIds?: string[];

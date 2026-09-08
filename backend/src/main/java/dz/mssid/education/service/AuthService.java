@@ -86,6 +86,7 @@ public class AuthService {
                 .role(defaultRole)
                 .grade(request.getGrade())
                 .parentEmail(request.getParentEmail())
+                .wilaya(request.getWilaya())
                 .createdAt(LocalDateTime.now())
                 .build();
 
@@ -255,6 +256,7 @@ public class AuthService {
                 .roleName(roleStr)
                 .role(roleStr)
                 .user(profileDto)
+                .profileIncomplete(isNewUser)
                 .build();
     }
 }

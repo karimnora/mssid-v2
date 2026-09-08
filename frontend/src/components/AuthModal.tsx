@@ -5,7 +5,8 @@ import { GoogleSignIn, ErrorCode as GoogleSignInErrorCode } from '@capawesome/ca
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
-import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap, Lock } from 'lucide-react';
+import { WILAYAS_LIST } from '../data/wilayasData';
+import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap, Lock, MapPin } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
@@ -64,16 +65,25 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   // Minimal parental supervision (product decision, pre-launch audit): optional, no verification —
   // never blocks registration, just lets an admin reach a parent later if genuinely needed.
   const [parentEmail, setParentEmail] = useState<string>('');
+  // Optional, for B2B partner reporting (regional breakdown) — stores the wilaya's official code
+  // ("16"), not its name, so it stays locale-independent and matches how Algerians already refer to
+  // wilayas (plates, postal codes). Never gates registration.
+  const [wilaya, setWilaya] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   // 'credentials' = the normal login/register form above. 'forgot'/'reset' replace it entirely with
   // the password-recovery steps (request a code, then use it) — see handleForgotSubmit/handleResetSubmit.
-  const [authFlow, setAuthFlow] = useState<'credentials' | 'forgot' | 'reset'>('credentials');
+  // 'completeProfile' replaces it once, right after a brand-new Google sign-up (see
+  // handleGoogleCredential): Google never gives us a grade/wilaya, so this is the only chance to ask.
+  const [authFlow, setAuthFlow] = useState<'credentials' | 'forgot' | 'reset' | 'completeProfile'>('credentials');
   const [resetCode, setResetCode] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [resendCooldown, setResendCooldown] = useState<number>(0);
+  const [pendingGoogleUser, setPendingGoogleUser] = useState<AuthUser | null>(null);
+  const [completeGrade, setCompleteGrade] = useState<PrimaryGrade | 'prescolaire' | ''>('');
+  const [completeWilaya, setCompleteWilaya] = useState<string>('');
 
   // The modal never unmounts (App.tsx toggles `isOpen`, not conditional rendering), so re-sync the
   // tab from initialMode every time it's (re)opened rather than only once at first mount.
@@ -83,9 +93,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
       setShowPassword(false);
       setGrade('');
       setParentEmail('');
+      setWilaya('');
       setAuthFlow('credentials');
       setResetCode('');
       setNewPassword('');
+      setPendingGoogleUser(null);
+      setCompleteGrade('');
+      setCompleteWilaya('');
       setStatusMessage(null);
     }
   }, [isOpen, initialMode]);
@@ -149,8 +163,38 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         setStatusMessage({ type: 'error', text: result.error || t('googleAuthErrorDefault') });
         return;
       }
+      if (result.profileIncomplete) {
+        // Brand-new Google account: grade/wilaya are genuinely unset in the DB (not just defaulted
+        // for display). Ask once now instead of leaving them silently blank forever.
+        setPendingGoogleUser(result.user);
+        setCompleteGrade('');
+        setCompleteWilaya('');
+        setStatusMessage(null);
+        setAuthFlow('completeProfile');
+        return;
+      }
       setStatusMessage({ type: 'success', text: t('loginSuccessWelcomeBack', { name: result.user.nom }) });
       onAuthSuccess(result.user);
+      onClose();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCompleteProfileSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pendingGoogleUser) return;
+    setLoading(true);
+    try {
+      const isPreschoolChoice = completeGrade === 'prescolaire';
+      const effectiveGrade = isPreschoolChoice ? '1AP' : completeGrade;
+      if (effectiveGrade) AuthService.updateGrade(effectiveGrade);
+      if (completeWilaya) AuthService.updateWilaya(completeWilaya);
+
+      const finalUser = AuthService.getCurrentUser() || pendingGoogleUser;
+      setPendingGoogleUser(null);
+      setAuthFlow('credentials');
+      onAuthSuccess(finalUser, isPreschoolChoice ? { landOnPreschool: true } : undefined);
       onClose();
     } finally {
       setLoading(false);
@@ -280,7 +324,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         // routes into preschool mode via the landOnPreschool flag instead.
         const isPreschoolChoice = grade === 'prescolaire';
         const effectiveGrade: PrimaryGrade | undefined = isPreschoolChoice ? '1AP' : (grade || undefined);
-        const result = await AuthService.registerAsync(nom, email, password, effectiveGrade, parentEmail.trim() || undefined);
+        const result = await AuthService.registerAsync(nom, email, password, effectiveGrade, parentEmail.trim() || undefined, wilaya || undefined);
 
         if (result.error || !result.user) {
           setStatusMessage({
@@ -329,6 +373,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
               <h2 className="text-base font-extrabold truncate">
                 {authFlow === 'forgot' || authFlow === 'reset'
                   ? t('titleRecovery')
+                  : authFlow === 'completeProfile'
+                  ? t('completeProfileTitle')
                   : isLogin ? t('login') : t('titleRegister')}
               </h2>
               <p className="text-[11px] text-white/90">{t('platformSubtitle')}</p>
@@ -505,6 +551,53 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           </form>
         )}
 
+        {/* Post-Google-signup, one-time: grade/wilaya are genuinely unset in the DB, ask once. */}
+        {authFlow === 'completeProfile' && (
+          <form onSubmit={handleCompleteProfileSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
+            <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
+              {t('completeProfileIntro')}
+            </p>
+            <div>
+              <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
+                <GraduationCap className="w-4 h-4 text-[var(--kids-grass-2)]" />
+                <span>{t('gradeLabel')}</span>
+              </label>
+              <select
+                value={completeGrade}
+                onChange={(e) => setCompleteGrade(e.target.value as PrimaryGrade | 'prescolaire')}
+                className="kids-input"
+              >
+                <option value="">{t('gradeChoosePlaceholder')}</option>
+                <option value="prescolaire">{t('gradePrescolaireOption')}</option>
+                {(Object.keys(GRADE_OPTION_KEYS) as PrimaryGrade[]).map((id) => (
+                  <option key={id} value={id}>{t(GRADE_OPTION_KEYS[id])}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
+                <MapPin className="w-4 h-4 text-[var(--kids-grass-2)]" />
+                <span>{t('wilayaLabel')}</span>
+              </label>
+              <select
+                value={completeWilaya}
+                onChange={(e) => setCompleteWilaya(e.target.value)}
+                className="kids-input"
+              >
+                <option value="">{t('wilayaChoosePlaceholder')}</option>
+                {WILAYAS_LIST.map((w) => (
+                  <option key={w.codeStr} value={w.codeStr}>
+                    {w.codeStr} - {direction === 'rtl' ? w.nameAr : w.nameFr}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button type="submit" disabled={loading} className="kids-cta cursor-pointer mt-2">
+              {loading ? t('submitLoading') : t('completeProfileSubmit')}
+            </button>
+          </form>
+        )}
+
         {/* Form */}
         {authFlow === 'credentials' && (
         <>
@@ -569,6 +662,28 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 ))}
               </select>
               <p className="text-xs text-[var(--kids-muted)] mt-1.5 font-bold">{t('gradeHint')}</p>
+            </div>
+          )}
+
+          {!isLogin && (
+            <div>
+              <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
+                <MapPin className="w-4 h-4 text-[var(--kids-grass-2)]" />
+                <span>{t('wilayaLabel')}</span>
+              </label>
+              <select
+                value={wilaya}
+                onChange={(e) => setWilaya(e.target.value)}
+                className="kids-input"
+              >
+                <option value="">{t('wilayaChoosePlaceholder')}</option>
+                {WILAYAS_LIST.map((w) => (
+                  <option key={w.codeStr} value={w.codeStr}>
+                    {w.codeStr} - {direction === 'rtl' ? w.nameAr : w.nameFr}
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-[var(--kids-muted)] mt-1.5 font-bold">{t('wilayaHint')}</p>
             </div>
           )}
 

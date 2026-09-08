@@ -83,6 +83,7 @@ public class UserService {
 
         user.setGrade(ProgressGuard.sanitizeGrade(user.getGrade(), progressData.getGrade()));
         if (progressData.getAvatar() != null) user.setAvatar(progressData.getAvatar());
+        if (progressData.getWilaya() != null) user.setWilaya(progressData.getWilaya());
 
         Integer requestedXp = progressData.getXp() != null ? progressData.getXp() : progressData.getScore();
         if (requestedXp != null) {

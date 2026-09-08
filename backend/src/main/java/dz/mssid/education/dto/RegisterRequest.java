@@ -27,4 +27,8 @@ public class RegisterRequest {
     // never blocks registration. @Email only validates the format when a value is actually supplied.
     @Email(message = "Le format de l'e-mail du parent est invalide")
     private String parentEmail;
+
+    // Optional: the Algerian wilaya (province) picked at registration — free-text on purpose, same
+    // rationale as grade (see WILAYAS_LIST on the frontend, no server-side enum to keep in sync).
+    private String wilaya;
 }

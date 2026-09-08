@@ -54,6 +54,14 @@ export const auth: typeof authAr = {
   grade5APOption: '5ème année primaire (5AP)',
   gradeHint: 'Ce sera ton niveau par défaut, tu pourras le changer plus tard en haut de la page.',
 
+  wilayaLabel: 'Wilaya (facultatif) :',
+  wilayaChoosePlaceholder: 'Choisis ta wilaya...',
+  wilayaHint: 'Tu pourras la renseigner ou la changer plus tard dans les réglages.',
+
+  completeProfileTitle: 'Encore une étape',
+  completeProfileIntro: "Ton compte Google est bien connecté ! Dis-nous juste ton niveau scolaire et ta wilaya (tu peux passer cette étape et les renseigner plus tard dans les réglages).",
+  completeProfileSubmit: 'Continuer',
+
   parentEmailLabel: "E-mail du parent (facultatif) :",
   parentEmailHint: "Nous aide à contacter le parent en cas de besoin (par exemple pour l'abonnement). Aucune activation ne sera demandée pour cet e-mail.",
 

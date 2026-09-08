@@ -79,6 +79,12 @@ public class User implements UserDetails {
     @Column(name = "parent_email")
     private String parentEmail;
 
+    // Algerian wilaya (province) the family is in — optional, free-text (same pattern as grade/
+    // parentEmail), collected at registration or later via settings. Powers regional breakdown for
+    // B2B partner reporting; never gates anything in the app itself.
+    @Column(name = "wilaya")
+    private String wilaya;
+
     // Soft verification only — per product decision, an unverified account is never blocked from
     // using the app (isEnabled() below stays true regardless). This just drives a discreet reminder
     // in the UI and, later, gates anything that genuinely needs a confirmed email (password reset).

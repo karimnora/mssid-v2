@@ -68,6 +68,9 @@ export interface SpringBootAuthResponse {
   roleName?: string;
   role?: UserRole;
   user?: any;
+  // Only ever true from /v1/auth/google, for a brand-new account it just created — see
+  // AuthResponse.java for why this is the only reliable "grade/wilaya are genuinely unset" signal.
+  profileIncomplete?: boolean;
 }
 
 // Endpoints that must never trigger a silent refresh-and-retry: retrying auth itself would either
@@ -349,7 +352,7 @@ public async request<T>(
     return res;
   }
 
-  public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string; parentEmail?: string }) {
+  public async register(userData: { nom: string; email: string; password?: string; passwordHash?: string; roleName?: string; grade?: string; parentEmail?: string; wilaya?: string }) {
     const payload = {
       nom: userData.nom,
       email: userData.email,
@@ -358,6 +361,7 @@ public async request<T>(
       roleName: userData.roleName || 'ROLE_FREE',
       grade: userData.grade,
       parentEmail: userData.parentEmail || undefined,
+      wilaya: userData.wilaya || undefined,
     };
 
     const res = await this.request<SpringBootAuthResponse>('/v1/auth/register', {

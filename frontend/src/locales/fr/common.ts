@@ -68,6 +68,8 @@ export const common: typeof commonAr = {
   profileMeTab: 'Moi',
   profileParentsTab: 'Parents',
   profileGradeLabel: 'Niveau scolaire',
+  profileWilayaLabel: 'Ma wilaya',
+  profileWilayaPlaceholder: 'Choisir une wilaya...',
   profileThemeLabel: "Apparence de l'application",
   settingsSectionLabel: 'Réglages',
   progressSectionLabel: 'Ma progression et mes badges',

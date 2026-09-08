@@ -64,6 +64,8 @@ export const common = {
   profileMeTab: 'أنا',
   profileParentsTab: 'الوالدان',
   profileGradeLabel: 'المستوى الدراسي',
+  profileWilayaLabel: 'ولايتي',
+  profileWilayaPlaceholder: 'اختر ولاية...',
   profileThemeLabel: 'مظهر التطبيق',
   settingsSectionLabel: 'الإعدادات',
   progressSectionLabel: 'تقدمي وأوسمتي',

@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PrimaryGrade } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Settings, KeyRound, LogOut, MessageSquare, FileText, ShieldCheck } from 'lucide-react';
+import { AuthService } from '../services/authService';
+import { WILAYAS_LIST } from '../data/wilayasData';
+import { X, Settings, KeyRound, LogOut, MessageSquare, FileText, ShieldCheck, MapPin } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
@@ -104,6 +106,27 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   </button>
                 ))}
               </div>
+            </Card>
+          )}
+
+          {authUser && (
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+              <p className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)]">
+                <MapPin className="w-4 h-4 text-[var(--kids-grass-2)]" />
+                <span>{t('profileWilayaLabel')}</span>
+              </p>
+              <select
+                value={authUser.wilaya || ''}
+                onChange={(e) => AuthService.updateWilaya(e.target.value)}
+                className="kids-input"
+              >
+                <option value="">{t('profileWilayaPlaceholder')}</option>
+                {WILAYAS_LIST.map((w) => (
+                  <option key={w.codeStr} value={w.codeStr}>
+                    {w.codeStr} - {direction === 'rtl' ? w.nameAr : w.nameFr}
+                  </option>
+                ))}
+              </select>
             </Card>
           )}
 
