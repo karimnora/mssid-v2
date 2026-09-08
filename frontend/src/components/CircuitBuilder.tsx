@@ -130,6 +130,12 @@ export const CircuitBuilder: React.FC = () => {
   const svgRef      = useRef<SVGSVGElement>(null);
   const idCounter   = useRef(100);
   const wireDragged = useRef(false);  // true once pointer moved > threshold during wiring
+  // Pointer capture is set on svgRef (not the component's own <g>) in handleCompPointerDown below,
+  // which some browsers use to retarget the synthetic `click` event away from the original element —
+  // so a genuine tap on a switch/diode/resistor could silently never reach a plain onClick handler.
+  // Detecting "was this actually dragged" ourselves (same pattern as wireDragged above) and firing
+  // the tap action from handleSVGPointerUp sidesteps that entirely.
+  const compDragged = useRef(false);
 
   const nextId = () => `e${idCounter.current++}`;
   const { powered, closed } = useMemo(() => simulate(comps, wires), [comps, wires]);
@@ -157,12 +163,31 @@ export const CircuitBuilder: React.FC = () => {
     if (!dup) setWires(prev => [...prev, { id: nextId(), from: fromId, fromT, to: toId, toT }]);
   }, [wires]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Component tap: select + toggle switch/diode/cycle resistor ─────────────
+  // Invoked from handleSVGPointerUp once we know the pointer never actually moved (see
+  // compDragged above) — not a plain onClick, since that can silently miss the retargeted click.
+  const handleCompTap = useCallback((id: string) => {
+    setSelected(prev => id === prev ? null : id);
+    const c = comps.find(c => c.id === id);
+    if (!c) return;
+    if (c.type === 'switch')
+      setComps(prev => prev.map(x => x.id === id ? { ...x, switchOpen: !x.switchOpen } : x));
+    else if (c.type === 'diode')
+      setComps(prev => prev.map(x => x.id === id ? { ...x, diodeReversed: !x.diodeReversed } : x));
+    else if (c.type === 'resistor') {
+      const vals: (10 | 100 | 1000)[] = [10, 100, 1000];
+      const next = vals[(vals.indexOf(c.resistorVal) + 1) % 3];
+      setComps(prev => prev.map(x => x.id === id ? { ...x, resistorVal: next } : x));
+    }
+  }, [comps]);
+
   // ── SVG pointer events ───────────────────────────────────────────────────
   const handleSVGPointerMove = useCallback((e: React.PointerEvent<SVGSVGElement>) => {
     if (!svgRef.current) return;
     const { x, y } = toSVG(e, svgRef.current);
 
     if (interaction.type === 'dragging') {
+      compDragged.current = true;
       setComps(prev => prev.map(c =>
         c.id === interaction.id
           ? { ...c,
@@ -186,6 +211,7 @@ export const CircuitBuilder: React.FC = () => {
 
   const handleSVGPointerUp = useCallback((e: React.PointerEvent<SVGSVGElement>) => {
     if (interaction.type === 'dragging') {
+      if (!compDragged.current) handleCompTap(interaction.id);
       setInteraction({ type: 'idle' });
       return;
     }
@@ -198,7 +224,7 @@ export const CircuitBuilder: React.FC = () => {
       setInteraction({ type: 'idle' });
     }
     // If not dragged (quick tap): keep wiring state active for click-to-connect
-  }, [interaction, snapTarget, addWire]);
+  }, [interaction, snapTarget, addWire, handleCompTap]);
 
   // ── Component drag start ─────────────────────────────────────────────────
   const handleCompPointerDown = useCallback((e: React.PointerEvent, id: string) => {
@@ -208,6 +234,7 @@ export const CircuitBuilder: React.FC = () => {
     const { x, y } = toSVG(e, svgRef.current);
     const c = comps.find(c => c.id === id);
     if (!c) return;
+    compDragged.current = false;
     setInteraction({ type: 'dragging', id, ox: x - c.x, oy: y - c.y });
     svgRef.current.setPointerCapture(e.pointerId);
   }, [interaction, comps]);
@@ -242,24 +269,6 @@ export const CircuitBuilder: React.FC = () => {
     if (interaction.type === 'wiring') { setInteraction({ type: 'idle' }); return; }
     setSelected(null);
   }, [interaction]);
-
-  // ── Component click: toggle + select ────────────────────────────────────
-  const handleCompClick = useCallback((e: React.MouseEvent, id: string) => {
-    if (interaction.type !== 'idle') return;
-    e.stopPropagation();
-    setSelected(id === selected ? null : id);
-    const c = comps.find(c => c.id === id);
-    if (!c) return;
-    if (c.type === 'switch')
-      setComps(prev => prev.map(x => x.id === id ? { ...x, switchOpen: !x.switchOpen } : x));
-    else if (c.type === 'diode')
-      setComps(prev => prev.map(x => x.id === id ? { ...x, diodeReversed: !x.diodeReversed } : x));
-    else if (c.type === 'resistor') {
-      const vals: (10 | 100 | 1000)[] = [10, 100, 1000];
-      const next = vals[(vals.indexOf(c.resistorVal) + 1) % 3];
-      setComps(prev => prev.map(x => x.id === id ? { ...x, resistorVal: next } : x));
-    }
-  }, [interaction, comps, selected]);
 
   // ── Add / Delete ─────────────────────────────────────────────────────────
   const handleAddComp = (type: CBType) => {
@@ -351,7 +360,6 @@ export const CircuitBuilder: React.FC = () => {
         key={c.id}
         transform={`translate(${c.x},${c.y})`}
         onPointerDown={e => handleCompPointerDown(e as unknown as React.PointerEvent, c.id)}
-        onClick={e => handleCompClick(e as unknown as React.MouseEvent, c.id)}
         onPointerEnter={() => !isWiring && setHovered(c.id)}
         onPointerLeave={() => setHovered(null)}
         style={{ cursor: isBat ? 'default' : isWiring ? 'crosshair' : 'grab', pointerEvents: 'auto' }}
