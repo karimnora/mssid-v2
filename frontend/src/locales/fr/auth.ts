@@ -131,19 +131,4 @@ export const auth: typeof authAr = {
   hwNewHomework: 'Générer un nouveau devoir ➕',
   hwShareTextCopy: 'Salut, voici le code du devoir sur la plateforme Mssid DZ :\n📌 Code : {pinCode}\n📖 Titre : {title} ({grade})\n👉 Connecte-toi à la plateforme et saisis le code pour commencer directement !',
   hwShareTextWhatsApp: 'Salut, voici le code du devoir sur la plateforme Mssid DZ :\n📌 Code : {pinCode}\n📖 Titre : {title} ({grade})\n👉 Ouvre la plateforme Mssid et saisis le code !',
-
-  // --- GradeSelector (banner) ---
-  bannerBadge: 'Programme éducatif officiel algérien',
-  bannerTitle: 'Apprends, entraîne-toi et excelle au primaire 🇩🇿',
-  bannerIntro: "Choisis ton année scolaire pour profiter des résumés illustrés, des exercices interactifs, du calcul mental japonais (soroban), des sujets du certificat d'études primaires, et du tuteur intelligent.",
-  bannerGrade1APTitle: '1ère année primaire',
-  bannerGrade1APDesc: 'Les lettres, les premiers nombres et des activités simples',
-  bannerGrade2APTitle: '2ème année primaire',
-  bannerGrade2APDesc: "L'addition, la soustraction, les tables de lecture et les compétences",
-  bannerGrade3APTitle: '3ème année primaire',
-  bannerGrade3APDesc: 'La multiplication, les figures géométriques et les règles d\'orthographe',
-  bannerGrade4APTitle: '4ème année primaire',
-  bannerGrade4APDesc: 'La division, les fractions, la proportionnalité et la géographie',
-  bannerGrade5APTitle: '5ème année primaire',
-  bannerGrade5APDesc: "Le programme complet du certificat d'études primaires et le soroban",
 };

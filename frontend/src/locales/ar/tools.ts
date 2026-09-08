@@ -131,13 +131,4 @@ export const tools = {
   didouEquipSuccessMsg: 'تم ارتداء {name} بنجاح! 🦊✨',
   didouInsufficientCoinsMsg: 'رصيدك غير كافٍ! تحتاج {amount} دينار ذهبي إضافي.',
   didouBuySuccessMsg: 'مبروك! لقد فتحت وارتديت {name}! 🎉',
-
-  // AuditModal.tsx
-  auditReportTitle: 'تقرير التدقيق الفني الشامل لمشروع Mssid DZ',
-  auditReportSubtitle: 'تحليل الأخطاء والهندسة المعمارية والأمان والأداء وخطة التوسع بدون تعديل كود',
-  auditStatusFixed: 'تم معالجته',
-  auditStatusPlanned: 'مخطط',
-  auditCodeDemoComment: '// نموذج إضافة درس جديد تلقائياً بدون تعديل كود: /src/data/coursesData.ts',
-  auditFooterVersion: 'نظام معمارية المنهاج الجزائري المكتمل v1.0.4',
-  auditCloseButton: 'إغلاق التقرير',
 };

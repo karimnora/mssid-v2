@@ -132,13 +132,4 @@ export const tools: typeof toolsAr = {
   didouEquipSuccessMsg: '{name} porté avec succès ! 🦊✨',
   didouInsufficientCoinsMsg: 'Solde insuffisant ! Il te manque {amount} pièces d’or.',
   didouBuySuccessMsg: 'Bravo ! Tu as débloqué et enfilé {name} ! 🎉',
-
-  // AuditModal.tsx
-  auditReportTitle: 'Rapport d’audit technique complet du projet Mssid DZ',
-  auditReportSubtitle: 'Analyse des bugs, de l’architecture, de la sécurité, des performances et du plan d’extension sans modification de code',
-  auditStatusFixed: 'Résolu',
-  auditStatusPlanned: 'Planifié',
-  auditCodeDemoComment: '// Exemple d’ajout automatique d’une nouvelle leçon sans modifier le code : /src/data/coursesData.ts',
-  auditFooterVersion: 'Système d’architecture du programme algérien complet v1.0.4',
-  auditCloseButton: 'Fermer le rapport',
 };
