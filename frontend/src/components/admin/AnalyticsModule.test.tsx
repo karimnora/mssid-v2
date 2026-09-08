@@ -10,6 +10,10 @@ const baseOverview = {
   totalUsers: 110,
   roleDistribution: { ROLE_FREE: 100, ROLE_PREMIUM: 10 },
   gradeDistribution: { '5AP': 110 },
+  // Non-empty on purpose: an absent/empty wilayaDistribution would make the wilaya DistributionCard
+  // fall into the same "لا توجد بيانات بعد." empty state as topCompletedLessons below, and the two
+  // identical strings would collide in the "nothing completed yet" test's findByText.
+  wilayaDistribution: { '16': 44, '31': 15, UNKNOWN: 5 },
   totalXp: 12000,
   averageXp: 1200,
   averageLevel: 220,
