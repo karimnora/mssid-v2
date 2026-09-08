@@ -182,6 +182,21 @@ public class UserService {
         String oldRoleName = user.getRole() != null && user.getRole().getName() != null
                 ? user.getRole().getName().name()
                 : "UNKNOWN";
+        boolean wasAdmin = Role.RoleName.ROLE_ADMIN.name().equals(oldRoleName);
+
+        // Self-demotion would let an admin lock themselves out of the console mid-session with no
+        // one else able to fix it from the UI. Demoting another admin is still allowed.
+        if (wasAdmin && roleEnum != Role.RoleName.ROLE_ADMIN
+                && user.getEmail() != null && user.getEmail().equalsIgnoreCase(actorEmail)) {
+            throw new RuntimeException("لا يمكنك تخفيض صلاحياتك الخاصة. اطلب من مشرف آخر تنفيذ هذا الإجراء.");
+        }
+
+        // Same guard against the app losing all admin access at once, this time regardless of who's
+        // making the change: refuse to demote the very last ROLE_ADMIN account.
+        if (wasAdmin && roleEnum != Role.RoleName.ROLE_ADMIN
+                && userRepository.countByRole_Name(Role.RoleName.ROLE_ADMIN) <= 1) {
+            throw new RuntimeException("لا يمكن تخفيض هذا الحساب لأنه المشرف (ADMIN) الوحيد المتبقي في النظام.");
+        }
 
         Role role = roleRepository.findByName(roleEnum)
                 .orElseGet(() -> {

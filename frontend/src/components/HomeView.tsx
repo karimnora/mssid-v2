@@ -370,7 +370,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex items-center justify-between mb-3">
           <button
             type="button"
-            data-pole="exams"
             onClick={() => onSelectPole('exams')}
             className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
           >

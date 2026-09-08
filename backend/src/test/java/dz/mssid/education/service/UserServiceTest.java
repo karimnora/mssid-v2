@@ -99,6 +99,48 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("updateUserRole - Rejects self-demotion of an admin's own account")
+    void updateUserRole_RejectsSelfDemotion() {
+        Role adminRole = new Role(3L, Role.RoleName.ROLE_ADMIN);
+        testUser.setRole(adminRole);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(testUser));
+
+        assertThrows(RuntimeException.class,
+                () -> userService.updateUserRole(1L, "ROLE_FREE", "kareem@mssid.dz"));
+
+        verify(userRepository, never()).save(any(User.class));
+    }
+
+    @Test
+    @DisplayName("updateUserRole - Rejects demoting the last remaining admin, even by another admin")
+    void updateUserRole_RejectsDemotingLastAdmin() {
+        Role adminRole = new Role(3L, Role.RoleName.ROLE_ADMIN);
+        testUser.setRole(adminRole);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(testUser));
+        when(userRepository.countByRole_Name(Role.RoleName.ROLE_ADMIN)).thenReturn(1L);
+
+        assertThrows(RuntimeException.class,
+                () -> userService.updateUserRole(1L, "ROLE_FREE", "another-admin@mssid.dz"));
+
+        verify(userRepository, never()).save(any(User.class));
+    }
+
+    @Test
+    @DisplayName("updateUserRole - Allows demoting an admin when another admin remains")
+    void updateUserRole_AllowsDemotingAdminWhenAnotherAdminRemains() {
+        Role adminRole = new Role(3L, Role.RoleName.ROLE_ADMIN);
+        testUser.setRole(adminRole);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(testUser));
+        when(userRepository.countByRole_Name(Role.RoleName.ROLE_ADMIN)).thenReturn(2L);
+        when(roleRepository.findByName(Role.RoleName.ROLE_FREE)).thenReturn(Optional.of(freeRole));
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        UserProfileDto result = userService.updateUserRole(1L, "ROLE_FREE", "another-admin@mssid.dz");
+
+        assertEquals("ROLE_FREE", result.getRole());
+    }
+
+    @Test
     @DisplayName("updateUserProgress - Merges badges/exams/challenges without dropping existing ones")
     void updateUserProgress_MergesNewFieldsAdditively() {
         testUser.setBadges(new java.util.ArrayList<>(List.of("b_welcome")));

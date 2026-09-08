@@ -24,6 +24,9 @@ const ACTION_LABELS_AR: Record<string, string> = {
   REGISTRATION_FAILED: 'فشل إنشاء حساب',
   LOGIN_FAILED: 'فشل تسجيل الدخول',
   AI_TUTOR_CALL_FAILED: 'فشل استدعاء المعلم الافتراضي',
+  GOOGLE_REGISTERED: 'إنشاء حساب عبر Google',
+  GOOGLE_LOGIN: 'تسجيل الدخول عبر Google',
+  GOOGLE_LINK_REJECTED: 'رفض ربط حساب Google بحساب موجود',
 };
 
 // Every actionType this codebase actually emits (see AdminAuditLogService.record call sites) — kept

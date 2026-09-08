@@ -62,12 +62,12 @@ describe('HomeView', () => {
     const onSelectPole = vi.fn();
     renderHome('1AP', { onSelectPole });
 
-    const examsPoleTriggers = document.querySelectorAll('[data-pole="exams"]');
-    expect(examsPoleTriggers.length).toBeGreaterThanOrEqual(2); // the "See all" link + the card itself
-    examsPoleTriggers.forEach((el) => fireEvent.click(el));
+    const examsPoleCard = document.querySelector('[data-pole="exams"]');
+    expect(examsPoleCard).toBeTruthy();
+    fireEvent.click(examsPoleCard as Element);
 
     expect(onSelectPole).not.toHaveBeenCalledWith('courses');
-    onSelectPole.mock.calls.forEach((call) => expect(call[0]).toBe('exams'));
+    expect(onSelectPole).toHaveBeenCalledWith('exams');
   });
 
   it('opens math lessons from the continue CTA', () => {

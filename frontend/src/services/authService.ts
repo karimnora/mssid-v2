@@ -731,28 +731,24 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
     return [];
   }
 
-  static async updateUserRoleAsync(userId: number, newRole: UserRole): Promise<boolean> {
-    try {
-      const res = await springBootApi.updateUserRole(userId, newRole);
-      if (res.data && res.data.success) {
-        const currentUser = this.getCurrentUser();
-        if (currentUser && currentUser.id === userId) {
-          currentUser.role = newRole;
-          this.setCurrentUser(currentUser);
-        }
-        return true;
-      }
-    } catch {
-      // Fallback locally
+  /**
+   * The real, backend-authoritative role-change call for the admin console. Previously this fell
+   * back to an unconditional local-only write whenever the edited row was the admin's own account
+   * (network error, or a non-throwing-but-unsuccessful response) — an admin editing their own role
+   * could be shown "success" for a change the server never actually persisted. Mirrors
+   * verifyReceiptAsync above: never assumes success, only reports it once the backend confirms.
+   */
+  static async updateUserRoleAsync(userId: number, newRole: UserRole): Promise<{ success: boolean; message?: string }> {
+    const res = await springBootApi.updateUserRole(userId, newRole);
+    if (res.error) {
+      return { success: false, message: res.error };
     }
-
     const currentUser = this.getCurrentUser();
     if (currentUser && currentUser.id === userId) {
       currentUser.role = newRole;
       this.setCurrentUser(currentUser);
-      return true;
     }
-    return false;
+    return { success: true };
   }
 
   static logout(): void {

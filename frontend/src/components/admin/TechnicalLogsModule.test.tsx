@@ -75,6 +75,31 @@ describe('TechnicalLogsModule — event log filtering', () => {
     expect(await screen.findByText('✅ نجاح')).toBeInTheDocument();
   });
 
+  // Regression: AuthService.java emits GOOGLE_LINK_REJECTED/GOOGLE_REGISTERED/GOOGLE_LOGIN
+  // (see the native Google Sign-In flow) but ACTION_LABELS_AR used to lack all three, so an admin
+  // would see the raw English action type instead of an Arabic label for any Google-auth event.
+  it('shows an Arabic label (not the raw action type) for Google-auth events', async () => {
+    vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({
+      data: [
+        { ...failedEmailEntry, id: 11, actionType: 'GOOGLE_REGISTERED', outcome: 'SUCCESS', details: 'provider=GOOGLE' },
+        { ...failedEmailEntry, id: 12, actionType: 'GOOGLE_LOGIN', outcome: 'SUCCESS', details: 'provider=GOOGLE' },
+        { ...failedEmailEntry, id: 13, actionType: 'GOOGLE_LINK_REJECTED', outcome: 'FAILURE', details: 'already linked' },
+      ],
+    } as any);
+
+    render(<TechnicalLogsModule />);
+
+    await screen.findByText('إنشاء حساب عبر Google');
+    // Each label also appears once in the filter <select>'s options, so at least 2 matches
+    // (table row + dropdown option) confirms the table itself rendered the Arabic label.
+    expect(screen.getAllByText('إنشاء حساب عبر Google').length).toBeGreaterThanOrEqual(2);
+    expect(screen.getAllByText('تسجيل الدخول عبر Google').length).toBeGreaterThanOrEqual(2);
+    expect(screen.getAllByText('رفض ربط حساب Google بحساب موجود').length).toBeGreaterThanOrEqual(2);
+    expect(screen.queryByText('GOOGLE_REGISTERED')).not.toBeInTheDocument();
+    expect(screen.queryByText('GOOGLE_LOGIN')).not.toBeInTheDocument();
+    expect(screen.queryByText('GOOGLE_LINK_REJECTED')).not.toBeInTheDocument();
+  });
+
   it('resetting filters clears them and reloads the unfiltered log', async () => {
     const auditSpy = vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({ data: [] } as any);
 

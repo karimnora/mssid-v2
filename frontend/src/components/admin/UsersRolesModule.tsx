@@ -21,7 +21,7 @@ export const UsersRolesModule: React.FC = () => {
   const [users, setUsers] = useState<AuthUser[]>([]);
   const [userSearchQuery, setUserSearchQuery] = useState<string>('');
   const [loadingUsers, setLoadingUsers] = useState<boolean>(false);
-  const [roleMessage, setRoleMessage] = useState<string | null>(null);
+  const [roleMessage, setRoleMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const loadReceipts = async () => {
     setLoadingReceipts(true);
@@ -86,19 +86,34 @@ export const UsersRolesModule: React.FC = () => {
     await loadReceipts();
   };
 
-  const handleApprove = (id: number) => handleVerify(id, true);
-  const handleReject = (id: number) => handleVerify(id, false, rejectionReason);
+  // Both actions are irreversible from the admin's side (approval instantly grants a paid
+  // subscription; rejection is final and shown to the payer) — a stray tap must not trigger either.
+  const handleApprove = (id: number) => {
+    if (!window.confirm('هل أنت متأكد من الموافقة على هذا الوصل وترقية حساب المستخدم إلى ROLE_PREMIUM؟')) return;
+    handleVerify(id, true);
+  };
+  const handleReject = (id: number) => {
+    if (!window.confirm('هل أنت متأكد من رفض هذا الوصل؟ سيتم إشعار المستخدم بالسبب المدخل.')) return;
+    handleVerify(id, false, rejectionReason);
+  };
 
+  // SEC/BUG FIX: previously called updateUserRoleAsync and trusted a boolean that could be `true`
+  // from a local-only fallback even when the backend never persisted the change (same bug class as
+  // receipts above, see handleVerify). Now awaits the real result and only reports success once the
+  // backend confirms, surfacing the actual error otherwise instead of a generic message.
   const handleRoleChange = async (userId: number, newRole: UserRole) => {
     setRoleMessage(null);
-    const ok = await AuthService.updateUserRoleAsync(userId, newRole);
-    if (ok) {
-      setRoleMessage(`تم تعديل الدور بنجاح إلى ${newRole}`);
-      setTimeout(() => setRoleMessage(null), 3000);
-      loadUsers();
-    } else {
-      setRoleMessage('حدث خطأ أثناء تعديل الدور');
+    const result = await AuthService.updateUserRoleAsync(userId, newRole);
+    if (!result.success) {
+      setRoleMessage({
+        type: 'error',
+        text: result.message || 'تعذر تسجيل التغيير على الخادم. لم يتم تعديل الدور فعلياً — أعد المحاولة.',
+      });
+      return;
     }
+    setRoleMessage({ type: 'success', text: `تم تعديل الدور بنجاح إلى ${newRole}` });
+    setTimeout(() => setRoleMessage(null), 3000);
+    loadUsers();
   };
 
   const filteredReceipts = receipts.filter((r) => {
@@ -354,8 +369,14 @@ export const UsersRolesModule: React.FC = () => {
             </div>
 
             {roleMessage && (
-              <div className="text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-3 py-1.5 rounded-xl">
-                {roleMessage}
+              <div
+                className={`text-xs font-bold px-3 py-1.5 rounded-xl border ${
+                  roleMessage.type === 'success'
+                    ? 'text-emerald-400 bg-emerald-950/60 border-emerald-800'
+                    : 'text-rose-400 bg-rose-950/60 border-rose-800'
+                }`}
+              >
+                {roleMessage.text}
               </div>
             )}
 
@@ -365,7 +386,7 @@ export const UsersRolesModule: React.FC = () => {
               className="px-4 py-2 bg-purple-700 hover:bg-purple-800 disabled:opacity-50 text-white text-xs font-bold rounded-xl cursor-pointer transition-all flex items-center gap-2"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>{loadingUsers ? 'جاري التحميل...' : 'تحديث قائمة القواعد البيانات'}</span>
+              <span>{loadingUsers ? 'جاري التحميل...' : 'تحديث قائمة المستخدمين'}</span>
             </button>
           </div>
 
@@ -412,7 +433,14 @@ export const UsersRolesModule: React.FC = () => {
                     <span className="text-xs text-slate-300 font-bold shrink-0">تعديل الصلاحيات:</span>
                     <select
                       value={u.role}
-                      onChange={(e) => handleRoleChange(u.id, e.target.value as UserRole)}
+                      onChange={(e) => {
+                        const newRole = e.target.value as UserRole;
+                        // The <select> is controlled by u.role (from server-loaded state, never
+                        // mutated locally on cancel), so declining here leaves it showing the
+                        // original role with no extra reset needed.
+                        if (!window.confirm(`هل أنت متأكد من تغيير دور "${u.nom}" إلى ${newRole}؟`)) return;
+                        handleRoleChange(u.id, newRole);
+                      }}
                       className="bg-slate-950 border border-slate-700 text-xs font-extrabold text-amber-300 rounded-xl px-3 min-h-[var(--hit)] focus:outline-none focus:border-purple-500 cursor-pointer min-w-0 max-w-full"
                     >
                       <option value="ROLE_FREE">👤 ROLE_FREE (تلميذ مجاني)</option>
