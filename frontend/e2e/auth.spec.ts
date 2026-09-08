@@ -65,8 +65,9 @@ test('a guest can register a new account with a chosen grade', async ({ page }) 
   await page.getByPlaceholder('مثال: يونس الجزائري').fill('يونس');
   await page.getByPlaceholder('example@mssid.dz').fill('younes@mssid.dz');
   await page.getByPlaceholder('••••••••').fill('password123');
-  // The grade dropdown is the only <select> in the registration form.
-  await page.locator('select').selectOption('3AP');
+  // The registration form now also has an optional wilaya <select> — the grade dropdown is the
+  // only one marked required, so target it by that instead of assuming it's the only <select>.
+  await page.locator('select[required]').selectOption('3AP');
 
   const [registerRequest] = await Promise.all([
     page.waitForRequest('**/v1/auth/register'),
