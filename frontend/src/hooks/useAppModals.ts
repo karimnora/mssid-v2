@@ -15,6 +15,10 @@ export function useAppModals() {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  // Set when the contact modal is opened via a discreet "report an error" trigger elsewhere in the
+  // app (an exam corrigé, a grammar rule) — pre-fills the message with exactly which content is
+  // being flagged, so ContactMessagesModule doesn't have to guess from a vague description.
+  const [contactPrefillMessage, setContactPrefillMessage] = useState<string | null>(null);
   const [isDressingRoomOpen, setIsDressingRoomOpen] = useState(false);
   const [isHomeworkPinOpen, setIsHomeworkPinOpen] = useState(false);
   const [isPrintablesOpen, setIsPrintablesOpen] = useState(false);
@@ -25,6 +29,13 @@ export function useAppModals() {
     setAuthModalInitialMode(mode);
     setAuthModalReason(reason);
     setIsAuthModalOpen(true);
+  };
+
+  /** Opens the contact form pre-filled to report an error on a specific piece of content
+   * (an exam corrigé, a grammar rule) — contextLabel identifies exactly what's being flagged. */
+  const openErrorReport = (contextLabel: string) => {
+    setContactPrefillMessage(`⚠️ خطأ في: ${contextLabel}\n\nوصف الخطأ:\n`);
+    setIsContactModalOpen(true);
   };
 
   return {
@@ -48,6 +59,9 @@ export function useAppModals() {
     setIsTermsModalOpen,
     isContactModalOpen,
     setIsContactModalOpen,
+    contactPrefillMessage,
+    setContactPrefillMessage,
+    openErrorReport,
     isDressingRoomOpen,
     setIsDressingRoomOpen,
     isHomeworkPinOpen,

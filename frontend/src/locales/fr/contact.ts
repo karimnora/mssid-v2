@@ -21,4 +21,6 @@ export const contact: typeof contactAr = {
 
   errorMessage: 'Impossible d’envoyer le message. Vérifie ta connexion Internet et réessaie.',
   sendButton: 'Envoyer le message',
+
+  reportErrorButton: 'Signaler une erreur',
 };

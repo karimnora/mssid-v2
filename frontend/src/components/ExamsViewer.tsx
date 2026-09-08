@@ -4,6 +4,7 @@ import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { CourseLesson, ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '../types';
 import { Card, Badge, Button } from './ui';
+import { ReportErrorButton } from './ReportErrorButton';
 import { getExamKind, examUsesTrimester, preferredExamKind, examKindOrder, examKindBadgeKey } from '../utils/examKind';
 import { useTranslation } from '../hooks/useTranslation';
 import {
@@ -37,6 +38,10 @@ interface ExamsViewerProps {
   onOpenCourses?: () => void;
   /** Open a catalog lesson from a corrigé (« réviser cette leçon ») */
   onOpenLesson?: (lesson: CourseLesson) => void;
+  /** Opens the contact form pre-filled to report an error on the exam's corrigé — see
+   * CLAUDE.md's content-credibility concern: a wrong solution here costs the app trust with
+   * parents/teachers more than almost anything else in the app. */
+  onReportError?: (contextLabel: string) => void;
 }
 
 const SUBJECT_EMOJI: Record<string, string> = {
@@ -91,6 +96,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   onExamComplete,
   onOpenCourses,
   onOpenLesson,
+  onReportError,
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
@@ -509,13 +515,19 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     )}
                   </div>
                   {showExamTools && isSolVisible && (
-                    <div className="no-print">
+                    <div className="no-print flex items-center justify-between flex-wrap gap-2">
                       <ReviseLessonButton
                         lessonId={ex.relatedLessonId}
                         label={t('reviseLessonCta')}
                         onOpenLesson={onOpenLesson}
                         allCourseLessons={allCourseLessons}
                       />
+                      {onReportError && (
+                        <ReportErrorButton
+                          contextLabel={`${selectedExam.titleAr} — ${ex.titleAr}`}
+                          onReport={onReportError}
+                        />
+                      )}
                     </div>
                   )}
                 </div>
@@ -589,13 +601,19 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                 </div>
               </div>
               {showExamTools && showSolutions['problem'] && (
-                <div className="no-print">
+                <div className="no-print flex items-center justify-between flex-wrap gap-2">
                   <ReviseLessonButton
                     lessonId={selectedExam.problemExercise.relatedLessonId}
                     label={t('reviseLessonCta')}
                     onOpenLesson={onOpenLesson}
                     allCourseLessons={allCourseLessons}
                   />
+                  {onReportError && (
+                    <ReportErrorButton
+                      contextLabel={`${selectedExam.titleAr} — ${selectedExam.problemExercise.titleAr}`}
+                      onReport={onReportError}
+                    />
+                  )}
                 </div>
               )}
             </div>

@@ -134,6 +134,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
     practiceAnswers,
     practiceChecked,
     practiceCorrect,
+    awardedExerciseIds,
     matchingRightOrder,
     matchingConnections,
     matchingSelectedLeft,

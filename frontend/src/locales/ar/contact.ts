@@ -19,4 +19,6 @@ export const contact = {
 
   errorMessage: 'تعذّر إرسال الرسالة. تحقق من اتصالك بالإنترنت وحاول مجدداً.',
   sendButton: 'إرسال الرسالة',
+
+  reportErrorButton: 'الإبلاغ عن خطأ',
 };

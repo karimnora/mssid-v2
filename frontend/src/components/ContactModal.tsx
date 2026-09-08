@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { X, Send, MessageSquare, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { springBootApi } from '../services/springBootApi';
@@ -11,6 +11,10 @@ interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
   authUser?: AuthUser | null;
+  /** Set when opened via a "report an error" trigger (an exam corrigé, a grammar rule) instead of
+   * the generic footer/menu contact link — pre-fills the message and forces type to 'bug' so the
+   * report lands with its content context intact instead of a vague free-text description. */
+  prefillMessage?: string | null;
 }
 
 type ContactType = 'suggestion' | 'bug' | 'concern';
@@ -23,7 +27,7 @@ const CONTACT_TYPE_KEYS: Record<ContactType, 'typeSuggestion' | 'typeBug' | 'typ
 
 // Simple "contact us / suggestions" form — posts to POST /api/v1/contact (persisted server-side, see
 // ContactController.java). Reachable from the app footer and the profile dropdown menu (Navbar.tsx).
-export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, authUser }) => {
+export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, authUser, prefillMessage }) => {
   const t = useTranslation('contact');
   const { direction } = useLocaleContext();
   const [name, setName] = useState(authUser?.nom || '');
@@ -32,6 +36,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitState, setSubmitState] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Only re-applies when the modal (re)opens with a prefill — otherwise every keystroke in the
+  // textarea below would re-trigger this and stomp on what the user just typed.
+  useEffect(() => {
+    if (isOpen && prefillMessage) {
+      setType('bug');
+      setMessage(prefillMessage);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, prefillMessage]);
 
   if (!isOpen) return null;
 

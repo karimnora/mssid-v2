@@ -59,6 +59,8 @@ interface ActiveWorkspaceProps {
   onVisitLab: (labId: string) => void;
   onLabReward: (coins: number, xp: number) => void;
   onEarnCoins: (amount: number) => void;
+  /** Opens the contact form pre-filled to report an error on an exam corrigé or a lesson. */
+  onReportError: (contextLabel: string) => void;
 }
 
 export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
@@ -82,6 +84,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onVisitLab,
   onLabReward,
   onEarnCoins,
+  onReportError,
 }) => {
   const t = useTranslation('navigation');
 
@@ -177,6 +180,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           onExamComplete={onExamComplete}
           onOpenCourses={onBackToCourses}
           onOpenLesson={onSelectLesson}
+          onReportError={onReportError}
         />
       ) : selectedSubject === 'challenges' ? (
         <ChallengesArena
@@ -199,6 +203,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           trimester={selectedTrimester}
           tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
           onHomeClick={onBackToCourses}
+          onReportError={onReportError}
         />
       ) : null}
       </div>

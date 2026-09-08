@@ -4,6 +4,7 @@ import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { LessonExplanationView } from './LessonExplanationView';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
+import { ReportErrorButton } from './ReportErrorButton';
 import { LoadingFallback } from './LoadingFallback';
 import { renderTextWithMath } from './MathExpression';
 import { Button, Card, Badge } from './ui';
@@ -59,6 +60,9 @@ interface LessonViewerProps {
   trimester?: number | 'all';
   onHomeClick?: () => void;
   tashkeelEnabled?: boolean;
+  /** Opens the contact form pre-filled to report an error on this lesson (a grammar rule, a
+   * mistake in the explanation...) — see CLAUDE.md's content-credibility concern. */
+  onReportError?: (contextLabel: string) => void;
 }
 
 export const LessonViewer: React.FC<LessonViewerProps> = ({
@@ -74,6 +78,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   trimester,
   onHomeClick,
   tashkeelEnabled = true,
+  onReportError,
 }) => {
   const t = useTranslation('courses');
   const { direction } = useLocaleContext();
@@ -90,8 +95,28 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [showRevisionSheet, setShowRevisionSheet] = useState(false);
   const [showParentInfo, setShowParentInfo] = useState(false);
+  const [pendingLeaveAction, setPendingLeaveAction] = useState<(() => void) | null>(null);
   const enablePrintablePDFs = useFeatureFlag('enablePrintablePDFs');
   const showInteractive = hasRenderableInteractiveTool(lesson);
+
+  // True once the child has correctly answered at least one quiz question but hasn't finished all
+  // of them — since quiz state is plain useState (never persisted), navigating away and back means
+  // re-answering questions already gotten right. Guards every exit path with one confirmation
+  // instead of letting a stray tap on the phone's hardware back button silently discard that.
+  const quizInProgress = quiz.awardedQuizIds.size > 0 && !quiz.quizFullyPassed;
+  // Same risk, same fix, for the progressive/evaluation exercises tabs — checkPracticeExercise()
+  // feeds the very same kind of in-memory-only awardedExerciseIds set as the quiz does.
+  const totalPracticeExercises = (lesson.progressiveExercises?.length || 0) + practice.evaluationExercises.length;
+  const practiceInProgress = practice.awardedExerciseIds.size > 0 && practice.awardedExerciseIds.size < totalPracticeExercises;
+  const hasUnsavedProgress = quizInProgress || practiceInProgress;
+
+  const guardLeave = (action: () => void) => {
+    if (hasUnsavedProgress) {
+      setPendingLeaveAction(() => action);
+      return;
+    }
+    action();
+  };
 
   useEffect(() => {
     setActiveTab('explanation');
@@ -228,9 +253,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       setActiveTab(availableSteps[clamped].id);
       setTimeout(() => {
         const topEl = document.getElementById('lesson-active-step-container');
-        if (topEl) {
-          topEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // Optional chaining: jsdom (unit tests) doesn't implement scrollIntoView at all — every
+        // real browser does, so this changes nothing for actual users.
+        topEl?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
       }, 50);
     }
   };
@@ -274,17 +299,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         subjectId={subjectId}
         trimester={trimester}
         currentLesson={lesson}
-        onHomeClick={() => {
+        onHomeClick={() => guardLeave(() => {
           if (onHomeClick) onHomeClick();
           else onBack();
-        }}
-        onSubjectClick={onBack}
+        })}
+        onSubjectClick={() => guardLeave(onBack)}
       />
       </div>
 
       <Card padding="none" className="flex items-center justify-between flex-wrap gap-3 p-3.5">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
+          <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={() => guardLeave(onBack)}>
             <span className={isPlayful1AP ? 'sm:hidden' : 'hidden'}>الدروس</span>
             <span className={isPlayful1AP ? 'hidden sm:inline' : undefined}>قائمة الدروس</span>
           </Button>
@@ -319,7 +344,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   size="md"
                   icon={<ChevronRight className="w-4 h-4" />}
                   disabled={!previousLesson}
-                  onClick={() => previousLesson && onSelectLesson?.(previousLesson)}
+                  onClick={() => previousLesson && guardLeave(() => onSelectLesson?.(previousLesson))}
                   title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
                 >
                   <span className="hidden sm:inline">الدرس السابق</span>
@@ -480,6 +505,14 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <p className="text-xs sm:text-sm leading-relaxed max-w-3xl text-[var(--kids-muted)]">
             {renderArabicMath(lesson.summaryAr)}
           </p>
+          {onReportError && (
+            <div className="mt-1.5">
+              <ReportErrorButton
+                contextLabel={`الدرس: ${lesson.titleAr} (${grade})`}
+                onReport={onReportError}
+              />
+            </div>
+          )}
           {lesson.sourceNoteAr && (
             <div className="mt-3 border-t pt-2 border-[var(--app-card-border)]">
               <button
@@ -716,6 +749,40 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         onGoToStep={goToStep}
         onFinishLesson={finishAndContinue}
       />
+
+      {pendingLeaveAction && (
+        <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4" dir="rtl">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 340, damping: 28 }}
+            className="kids-modal-panel w-full max-w-sm p-5 space-y-4 text-center"
+          >
+            <div className="text-4xl">🤔</div>
+            <h3 className="text-base font-black text-[var(--kids-ink)]">هل تريد الخروج من التمرين؟</h3>
+            <p className="text-sm text-[var(--kids-muted)] leading-relaxed">
+              لم تُكمل جميع الأسئلة بعد. إذا خرجت الآن، ستحتاج إلى الإجابة على الأسئلة الصحيحة من جديد عند عودتك.
+            </p>
+            <div className="flex items-center gap-2 pt-1">
+              <Button variant="ghost" size="sm" fullWidth onClick={() => setPendingLeaveAction(null)}>
+                البقاء في التمرين
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                fullWidth
+                onClick={() => {
+                  const action = pendingLeaveAction;
+                  setPendingLeaveAction(null);
+                  action();
+                }}
+              >
+                خروج على أي حال
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

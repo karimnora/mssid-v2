@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { CourseLesson } from '../types';
 import { LessonViewer } from './LessonViewer';
 import { LocaleProvider } from '../context/LocaleContext';
@@ -90,6 +90,133 @@ describe('LessonViewer — 1AP parent info panel', () => {
     const heroTitle = container.querySelector('[data-lesson-hero="1ap"] h1');
     expect(heroTitle).toBeTruthy();
     expect(heroTitle?.closest('button')).toBeNull();
+  });
+});
+
+describe('LessonViewer — quiz-in-progress exit guard', () => {
+  const quizLesson: CourseLesson = {
+    ...lesson,
+    id: 'math-3ap-quiz-guard',
+    grade: '3AP',
+    titleAr: 'الجمع',
+    quiz: [
+      { id: 'q1', questionAr: 'كم يساوي 2+2؟', options: [{ id: 'a', textAr: '4', isCorrect: true }, { id: 'b', textAr: '5', isCorrect: false }] },
+      { id: 'q2', questionAr: 'كم يساوي 3+3؟', options: [{ id: 'a', textAr: '6', isCorrect: true }, { id: 'b', textAr: '7', isCorrect: false }] },
+    ],
+  };
+
+  const renderQuizLesson = (onBack = vi.fn()) => {
+    render(
+      <LocaleProvider>
+        <LessonViewer lesson={quizLesson} grade="3AP" onBack={onBack} onCompleteQuiz={vi.fn()} />
+      </LocaleProvider>,
+    );
+    return onBack;
+  };
+
+  // The step strip's AnimatePresence (mode="wait") mounts the quiz panel asynchronously — reading
+  // the question/options right after the tab-switch click can miss it entirely.
+  const answerFirstQuestionCorrectly = async () => {
+    fireEvent.click(screen.getByText('الاختبار التفاعلي (2)'));
+    await waitFor(() => expect(screen.getByText('كم يساوي 2+2؟')).toBeInTheDocument());
+    fireEvent.click(screen.getByText('4'));
+  };
+
+  it('asks for confirmation before leaving once one (but not all) questions are answered correctly', async () => {
+    const onBack = renderQuizLesson();
+    await answerFirstQuestionCorrectly();
+
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+
+    expect(onBack).not.toHaveBeenCalled();
+    expect(screen.getByText('هل تريد الخروج من التمرين؟')).toBeInTheDocument();
+  });
+
+  it('actually leaves once the child confirms', async () => {
+    const onBack = renderQuizLesson();
+    await answerFirstQuestionCorrectly();
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+
+    fireEvent.click(screen.getByText('خروج على أي حال'));
+
+    expect(onBack).toHaveBeenCalledTimes(1);
+  });
+
+  it('stays on the lesson when the child chooses to keep going', async () => {
+    const onBack = renderQuizLesson();
+    await answerFirstQuestionCorrectly();
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+
+    fireEvent.click(screen.getByText('البقاء في التمرين'));
+
+    expect(onBack).not.toHaveBeenCalled();
+    expect(screen.queryByText('هل تريد الخروج من التمرين؟')).not.toBeInTheDocument();
+  });
+
+  it('never blocks leaving before any question has been answered', () => {
+    const onBack = renderQuizLesson();
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+    expect(onBack).toHaveBeenCalledTimes(1);
+  });
+});
+
+// Same guard, same underlying risk (in-memory-only progress), for the progressive exercises tab —
+// checkPracticeExercise() feeds the very same kind of awardedExerciseIds set as the quiz does.
+describe('LessonViewer — practice-exercise-in-progress exit guard', () => {
+  const practiceLesson: CourseLesson = {
+    ...lesson,
+    id: 'math-3ap-practice-guard',
+    grade: '3AP',
+    titleAr: 'الطرح',
+    quiz: [],
+    progressiveExercises: [
+      {
+        id: 'ex1', level: 1, levelLabelAr: 'أكتشف', type: 'qcm', problemAr: 'كم يساوي 5-2؟', hintsAr: [],
+        options: [{ id: 'a', textAr: 'ثلاثة', isCorrect: true }, { id: 'b', textAr: 'اثنان', isCorrect: false }],
+        solutionAr: 'ثلاثة', detailedCorrectionAr: '5-2=3', xpReward: 5,
+      },
+      {
+        id: 'ex2', level: 1, levelLabelAr: 'أكتشف', type: 'qcm', problemAr: 'كم يساوي 6-1؟', hintsAr: [],
+        options: [{ id: 'a', textAr: 'خمسة', isCorrect: true }, { id: 'b', textAr: 'أربعة', isCorrect: false }],
+        solutionAr: 'خمسة', detailedCorrectionAr: '6-1=5', xpReward: 5,
+      },
+    ],
+  };
+
+  const renderPracticeLesson = (onBack = vi.fn()) => {
+    render(
+      <LocaleProvider>
+        <LessonViewer lesson={practiceLesson} grade="3AP" onBack={onBack} onCompleteQuiz={vi.fn()} />
+      </LocaleProvider>,
+    );
+    return onBack;
+  };
+
+  const answerFirstExerciseCorrectly = async () => {
+    fireEvent.click(screen.getByText('أتدرب (2)'));
+    await waitFor(() => expect(screen.getByText('كم يساوي 5-2؟')).toBeInTheDocument());
+    fireEvent.click(screen.getByText('ثلاثة'));
+    fireEvent.click(screen.getAllByText('تحقق من الإجابة')[0]);
+  };
+
+  it('asks for confirmation before leaving once one (but not all) exercises are answered correctly', async () => {
+    const onBack = renderPracticeLesson();
+    await answerFirstExerciseCorrectly();
+
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+
+    expect(onBack).not.toHaveBeenCalled();
+    expect(screen.getByText('هل تريد الخروج من التمرين؟')).toBeInTheDocument();
+  });
+
+  it('actually leaves once the child confirms', async () => {
+    const onBack = renderPracticeLesson();
+    await answerFirstExerciseCorrectly();
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+
+    fireEvent.click(screen.getByText('خروج على أي حال'));
+
+    expect(onBack).toHaveBeenCalledTimes(1);
   });
 });
 

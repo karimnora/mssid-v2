@@ -169,8 +169,12 @@ export const AppModals: React.FC<AppModalsProps> = ({
 
     <ContactModal
       isOpen={modals.isContactModalOpen}
-      onClose={() => modals.setIsContactModalOpen(false)}
+      onClose={() => {
+        modals.setIsContactModalOpen(false);
+        modals.setContactPrefillMessage(null);
+      }}
       authUser={authUser}
+      prefillMessage={modals.contactPrefillMessage}
     />
 
     <AppRatingPrompt

@@ -433,6 +433,7 @@ export default function App() {
                 onVisitLab={progress.handleVisitLab}
                 onLabReward={progress.handleLabReward}
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
+                onReportError={modals.openErrorReport}
               />
             )}
 
