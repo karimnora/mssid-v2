@@ -138,7 +138,7 @@ const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ confi
                   <button
                     key={p.id}
                     onClick={() => setActiveIdx(idx)}
-                    className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border ${
+                    className={`hit-target px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border ${
                       activeIdx === idx
                         ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md scale-[1.02]'
                         : 'bg-emerald-900 text-emerald-200 border-emerald-800 hover:bg-emerald-850'
@@ -183,7 +183,7 @@ const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ confi
                 key={op.id}
                 type="button"
                 onClick={() => setActiveIdx(idx)}
-                className={`px-4 py-2.5 rounded-2xl border text-xs font-black cursor-pointer min-h-[44px] ${
+                className={`hit-target px-4 py-2.5 rounded-2xl border text-xs font-black cursor-pointer ${
                   activeIdx === idx
                     ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-xl'
                     : 'bg-emerald-900/80 border-emerald-800 text-emerald-100'
@@ -227,7 +227,7 @@ const VisualCountingView: React.FC<{ items: MathCountingItem[] }> = ({ items }) 
               key={it.id}
               type="button"
               onClick={() => setActiveIdx(idx)}
-              className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border min-h-[44px] ${
+              className={`hit-target px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border ${
                 activeIdx === idx
                   ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md scale-[1.02]'
                   : answers[it.id] !== undefined

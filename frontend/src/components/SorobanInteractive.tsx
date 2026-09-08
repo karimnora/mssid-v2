@@ -229,27 +229,27 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
           </div>
         </div>
 
-        <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold overflow-x-auto">
+        <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200 text-xs font-bold">
           <button
             onClick={() => setActiveToolTab('abacus')}
-            className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'abacus' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+            className={`hit-target px-3 py-1.5 rounded-lg transition-all whitespace-nowrap cursor-pointer ${
+              activeTab === 'abacus' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
             }`}
           >
             المعداد الحر
           </button>
           <button
             onClick={() => setActiveToolTab('anzan')}
-            className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'anzan' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+            className={`hit-target px-3 py-1.5 rounded-lg transition-all whitespace-nowrap cursor-pointer ${
+              activeTab === 'anzan' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
             }`}
           >
             تحدي الحساب الذهني السريع
           </button>
           <button
             onClick={() => setActiveToolTab('rules')}
-            className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap cursor-pointer ${
-              activeTab === 'rules' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+            className={`hit-target px-3 py-1.5 rounded-lg transition-all whitespace-nowrap cursor-pointer ${
+              activeTab === 'rules' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
             }`}
           >
             قواعد المكملات (5 & 10)
@@ -269,7 +269,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 <button
                   onClick={() => speakText(`${currentValue}`, 'ar-SA', 0.9)}
                   aria-label="استمع للعدد"
-                  className="w-7 h-7 shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
+                  className="hit-target shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
                 >
                   <Volume2 className="w-3.5 h-3.5" />
                 </button>
@@ -278,26 +278,26 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
             <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto justify-end">
               <button
                 onClick={() => setAbacusValue(2026)}
-                className="px-2.5 py-1.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-bold shadow-2xs cursor-pointer"
+                className="hit-target px-2.5 py-1.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-bold shadow-2xs cursor-pointer"
               >
                 مثل 2026
               </button>
               <button
                 onClick={() => setAbacusValue(74518)}
-                className="px-2.5 py-1.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-bold shadow-2xs cursor-pointer"
+                className="hit-target px-2.5 py-1.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-bold shadow-2xs cursor-pointer"
               >
                 مثل 74518
               </button>
               <button
                 onClick={handleResetAbacus}
-                className="flex items-center gap-1 px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 rounded-lg text-xs font-bold cursor-pointer"
+                className="hit-target flex items-center gap-1 px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 rounded-lg text-xs font-bold cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 تصفير المعداد
               </button>
               <button
                 onClick={startTutorial}
-                className="flex items-center gap-1 px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-xs font-bold cursor-pointer"
+                className="hit-target flex items-center gap-1 px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-xs font-bold cursor-pointer"
               >
                 🎓 دليل المبتدئين (3 خطوات)
               </button>
@@ -324,7 +324,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                     <button
                       onClick={() => speakText(TUTORIAL_STEPS[tutorialStep].bodyAr, 'ar-SA', 0.88)}
                       aria-label="استمع للشرح"
-                      className="w-6 h-6 shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
+                      className="hit-target shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
                     >
                       <Volume2 className="w-3 h-3" />
                     </button>
@@ -364,14 +364,14 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                     }`}
                   >
                     {/* Upper Rod Section (Value 5) */}
-                    <div className="w-9 sm:w-12 h-16 sm:h-20 bg-slate-800/80 rounded-t-xl border-x-2 border-slate-600 relative flex justify-center py-1 sm:py-2">
+                    <div className="w-16 sm:w-20 h-20 sm:h-24 bg-slate-800/80 rounded-t-xl border-x-2 border-slate-600 relative flex justify-center py-1 sm:py-2">
                       <div className="w-1 sm:w-1.5 h-full bg-amber-400/40 absolute top-0 rounded-full" />
-                      {/* Upper Bead */}
+                      {/* Upper Bead — sized to the project's 60px min touch target (see --hit in index.css) */}
                       <button
                         onClick={() => toggleUpperBead(idx)}
-                        className={`w-8 sm:w-10 h-6 sm:h-7 rounded-md transition-all duration-200 z-10 cursor-pointer shadow-md flex items-center justify-center text-[9px] sm:text-[10px] font-bold ${
+                        className={`hit-target w-14 sm:w-16 rounded-md transition-all duration-200 z-10 cursor-pointer shadow-md flex items-center justify-center text-[9px] sm:text-[10px] font-bold ${
                           rod.upper
-                            ? 'translate-y-7 sm:translate-y-9 bg-amber-500 text-slate-950 border border-amber-300 shadow-amber-500/50'
+                            ? 'translate-y-9 sm:translate-y-11 bg-amber-500 text-slate-950 border border-amber-300 shadow-amber-500/50'
                             : 'translate-y-0 bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500'
                         }`}
                         title="خرزة خماسية (تساوي 5)"
@@ -381,12 +381,12 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                     </div>
 
                     {/* Beam Separator */}
-                    <div className="w-12 sm:w-16 h-2.5 sm:h-3 bg-amber-800 border-y-2 border-amber-600 z-20 flex items-center justify-center relative shadow-sm">
+                    <div className="w-16 sm:w-20 h-2.5 sm:h-3 bg-amber-800 border-y-2 border-amber-600 z-20 flex items-center justify-center relative shadow-sm">
                       <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-white/80" />
                     </div>
 
                     {/* Lower Rod Section (4 Beads, 1 each) */}
-                    <div className="w-9 sm:w-12 h-28 sm:h-36 bg-slate-800/80 rounded-b-xl border-x-2 border-slate-600 relative flex flex-col justify-between items-center py-1 sm:py-2">
+                    <div className="w-16 sm:w-20 h-40 sm:h-48 bg-slate-800/80 rounded-b-xl border-x-2 border-slate-600 relative flex flex-col justify-between items-center py-1 sm:py-2">
                       <div className="w-1 sm:w-1.5 h-full bg-amber-400/40 absolute top-0 rounded-full" />
 
                       {[1, 2, 3, 4].map((beadNum) => {
@@ -395,10 +395,10 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                           <button
                             key={beadNum}
                             onClick={() => setLowerCount(idx, beadNum)}
-                            className={`w-8 sm:w-10 h-5 sm:h-6 rounded-md transition-all duration-200 z-10 cursor-pointer shadow-xs flex items-center justify-center text-[8px] sm:text-[9px] font-bold ${
+                            className={`hit-target w-14 sm:w-16 !min-h-[36px] sm:!min-h-[40px] rounded-md transition-all duration-200 z-10 cursor-pointer shadow-xs flex items-center justify-center text-[8px] sm:text-[9px] font-bold ${
                               isActivated
-                                ? '-translate-y-1.5 sm:-translate-y-2 bg-emerald-500 text-slate-950 border border-emerald-300'
-                                : 'translate-y-1.5 sm:translate-y-2 bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600'
+                                ? '-translate-y-2 sm:-translate-y-2.5 bg-emerald-500 text-slate-950 border border-emerald-300'
+                                : 'translate-y-2 sm:translate-y-2.5 bg-slate-700 text-slate-300 border border-slate-600 hover:bg-slate-600'
                             }`}
                           >
                             1
@@ -439,7 +439,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                   <button
                     key={i}
                     onClick={() => handleSelectStaticExercise(i)}
-                    className={`w-7 h-7 rounded-lg text-xs font-bold shrink-0 ${
+                    className={`hit-target rounded-lg text-xs font-bold shrink-0 ${
                       !generatedExercise && anzanExerciseIndex === i ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                     }`}
                   >
@@ -562,7 +562,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               <button
                 key={idx}
                 onClick={() => setSelectedRuleIndex(idx)}
-                className={`w-full text-right p-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                className={`hit-target w-full text-right p-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                   selectedRuleIndex === idx
                     ? 'bg-indigo-50 border-indigo-300 text-indigo-900 shadow-xs'
                     : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
@@ -594,7 +594,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                       )
                     }
                     aria-label="استمع للقاعدة"
-                    className="w-8 h-8 shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
+                    className="hit-target shrink-0 flex items-center justify-center bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-full transition-colors cursor-pointer"
                   >
                     <Volume2 className="w-4 h-4" />
                   </button>

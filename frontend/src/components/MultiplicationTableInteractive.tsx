@@ -48,7 +48,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
                 setSelectedDigit(digit);
                 handleReset();
               }}
-              className={`w-10 h-10 rounded-xl font-black text-sm transition-all cursor-pointer border ${
+              className={`hit-target flex items-center justify-center rounded-xl font-black text-sm transition-all cursor-pointer border ${
                 selectedDigit === digit
                   ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-lg scale-110'
                   : 'bg-slate-800 text-slate-200 border-slate-700 hover:bg-slate-700'
@@ -115,7 +115,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
         <div className="pt-2 text-center">
           <button
             onClick={() => setIsTested(true)}
-            className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs px-6 py-2.5 rounded-xl shadow-lg transition-all cursor-pointer"
+            className="hit-target bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs px-6 rounded-xl shadow-lg transition-all cursor-pointer"
           >
             تَأْكِيدُ وَتَصْحِيحُ الإِجَابَاتِ
           </button>

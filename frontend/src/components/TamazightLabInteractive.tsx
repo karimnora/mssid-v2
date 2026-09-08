@@ -182,7 +182,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
       <div className="flex gap-2 bg-[var(--app-card-bg)] p-2 rounded-2xl border border-[var(--app-card-border)] shadow-xs">
         <button
           onClick={() => setActiveTab('alphabet')}
-          className={`flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
+          className={`hit-target flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
             activeTab === 'alphabet'
               ? 'bg-emerald-600 text-white shadow-md'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
@@ -192,7 +192,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('vocabulary')}
-          className={`flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
+          className={`hit-target flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
             activeTab === 'vocabulary'
               ? 'bg-teal-600 text-white shadow-md'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
@@ -202,7 +202,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('quiz')}
-          className={`flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
+          className={`hit-target flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
             activeTab === 'quiz'
               ? 'bg-amber-600 text-white shadow-md'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
@@ -247,7 +247,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                 <button
                   onClick={() => speakText(selectedLetter.name, 'fr-FR', 0.8)}
                   aria-label="استمع لنطق الحرف"
-                  className="w-8 h-8 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                  className="hit-target shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
                 >
                   <Volume2 className="w-4 h-4" />
                 </button>
@@ -261,7 +261,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                 <button
                   onClick={() => speakText(selectedLetter.exampleTif.replace(/[^a-zA-Zḍẓ\s]/g, ''), 'fr-FR', 0.75)}
                   aria-label="استمع للمثال"
-                  className="w-6 h-6 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                  className="hit-target shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
                 >
                   <Volume2 className="w-3 h-3" />
                 </button>
@@ -277,7 +277,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                   AuthService.addScore(10);
                   if (onReward) onReward(5, 10);
                 }}
-                className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl text-xs shadow-sm transition-all cursor-pointer"
+                className="hit-target w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl text-xs shadow-sm transition-all cursor-pointer"
               >
                 تدربت على الحرف (+10 XP)
               </button>
@@ -306,7 +306,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                     <button
                       onClick={() => speakText(w.lat, 'fr-FR', 0.8)}
                       aria-label="استمع للكلمة"
-                      className="w-8 h-8 shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
+                      className="hit-target shrink-0 flex items-center justify-center bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-full transition-colors cursor-pointer"
                     >
                       <Volume2 className="w-3.5 h-3.5" />
                     </button>
@@ -343,7 +343,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
               <button
                 key={opt}
                 onClick={() => handleAnswerQuiz(opt)}
-                className={`p-4 rounded-2xl font-black text-base transition-all text-center cursor-pointer border-2 ${
+                className={`hit-target p-4 rounded-2xl font-black text-base transition-all text-center cursor-pointer border-2 ${
                   selectedAnswer === opt
                     ? opt === currentQuiz.correct
                       ? 'bg-emerald-50 border-emerald-500 text-emerald-900'
@@ -367,7 +367,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
               <p>{feedback.msg}</p>
               <button
                 onClick={handleNextQuiz}
-                className="px-4 py-2 bg-emerald-600 text-white rounded-xl font-black text-xs cursor-pointer hover:bg-emerald-700"
+                className="hit-target px-4 bg-emerald-600 text-white rounded-xl font-black text-xs cursor-pointer hover:bg-emerald-700"
               >
                 السؤال التالي ➔
               </button>

@@ -325,7 +325,7 @@ const QuizPanel: React.FC<{ theme: string; onClose: () => void; onShapeHighlight
                   whileHover={selected === null ? { scale: 1.02 } : {}}
                   whileTap={selected === null ? { scale: 0.97 } : {}}
                   onClick={() => handleAnswer(i)}
-                  className={`${btnStyle} text-xs font-bold rounded-xl p-2.5 text-right transition-all`}
+                  className={`${btnStyle} hit-target text-xs font-bold rounded-xl p-2.5 text-right transition-all`}
                 >
                   {isSelected && selected !== null && (isRight ? '✅ ' : '❌ ')}{opt}
                 </motion.button>
@@ -471,7 +471,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
               key={id}
               type="button"
               onClick={() => setAppMode(id)}
-              className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${appMode === id ? 'bg-amber-500 text-slate-950 font-black shadow-sm' : 'opacity-60 hover:opacity-90'}`}
+              className={`hit-target px-3 py-1.5 rounded-lg transition-all cursor-pointer ${appMode === id ? 'bg-amber-500 text-slate-950 font-black shadow-sm' : 'opacity-60 hover:opacity-90'}`}
             >
               {labelAr}
             </button>
@@ -509,7 +509,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                   <button
                     key={id} type="button"
                     onClick={() => { setActiveCategory(id); if (id !== 'all') { const first = shapeCatalog.find(s => s.category === id); if (first) setSelectedId(first.id); } }}
-                    className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${activeCategory === id ? 'bg-amber-500 text-slate-950 font-black' : 'opacity-60 hover:opacity-90'}`}
+                    className={`hit-target px-2.5 py-1 rounded-lg transition-all cursor-pointer ${activeCategory === id ? 'bg-amber-500 text-slate-950 font-black' : 'opacity-60 hover:opacity-90'}`}
                   >
                     {label}
                   </button>
@@ -524,7 +524,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                     type="button"
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                     onClick={() => { setSelectedId(s.id); setHighlightFeature(null); }}
-                    className={`px-2.5 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer ${selectedId === s.id ? 'bg-amber-500 text-slate-950 font-black shadow-sm' : 'opacity-60 hover:opacity-90'}`}
+                    className={`hit-target px-2.5 py-1 rounded-lg transition-all text-[11px] font-bold cursor-pointer ${selectedId === s.id ? 'bg-amber-500 text-slate-950 font-black shadow-sm' : 'opacity-60 hover:opacity-90'}`}
                   >
                     {s.nameAr}
                   </motion.button>

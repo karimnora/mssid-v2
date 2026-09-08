@@ -96,7 +96,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
             <button
               onClick={onBack}
               aria-label="العودة للأدوات"
-              className="shrink-0 w-11 h-11 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
+              className="hit-target shrink-0 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -117,7 +117,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
       <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
         <button
           onClick={() => setActiveTab('explore')}
-          className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+          className={`hit-target px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
             activeTab === 'explore' ? 'bg-[var(--brand-emerald)] text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
@@ -125,7 +125,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
         </button>
         <button
           onClick={() => setActiveTab('quiz')}
-          className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
+          className={`hit-target px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
             activeTab === 'quiz' ? 'bg-[var(--brand-emerald)] text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
@@ -178,7 +178,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
                 <button
                   key={opt.labelAr}
                   onClick={() => answered === null && handleQuizAnswer(opt.labelAr)}
-                  className={`p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                  className={`hit-target p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                     answered !== null
                       ? isCorrectOpt
                         ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
