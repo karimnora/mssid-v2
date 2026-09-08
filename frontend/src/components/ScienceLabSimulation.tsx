@@ -252,30 +252,47 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
           </span>
         </div>
 
-        {/* Real Interactive Circuit Graphic */}
+        {/* Real Interactive Circuit Graphic — a genuine closed loop (top + bottom wire rails
+            connecting all 3 components), not just 3 boxes floating in a row. The wire segments
+            above/below each component are flex-1 so they stretch to reach the rails regardless of
+            how tall a given component's box happens to be (switch vs. material slot vs. bulb),
+            with no manual measurement needed. */}
         <div className="w-full max-w-lg mt-6 flex flex-col items-center">
-          <div className="relative w-full h-44 border-4 border-slate-700 rounded-3xl p-4 flex items-center justify-between">
+          <div className="relative w-full h-56 border-4 border-slate-700 rounded-3xl p-4 flex items-stretch justify-between overflow-hidden">
+
+            {/* Top & bottom wire rails — amber and glowing when the circuit is closed, dull grey when open */}
+            <div className={`absolute top-4 inset-x-[14%] h-1.5 rounded-full transition-colors duration-500 ${
+              isLightOn ? 'bg-amber-400 shadow-[0_0_10px_2px_rgba(251,191,36,0.7)]' : 'bg-slate-700'
+            }`} />
+            <div className={`absolute bottom-4 inset-x-[14%] h-1.5 rounded-full transition-colors duration-500 ${
+              isLightOn ? 'bg-amber-400 shadow-[0_0_10px_2px_rgba(251,191,36,0.7)]' : 'bg-slate-700'
+            }`} />
 
             {isLightOn && (
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
-                <div className="w-2 h-2 bg-amber-400 rounded-full shadow-[0_0_8px_#fbbf24] absolute top-1 left-10 animate-ping" />
-                <div className="w-2 h-2 bg-amber-300 rounded-full shadow-[0_0_8px_#fbbf24] absolute bottom-1 right-10 animate-ping" />
+                <div className="w-2 h-2 bg-amber-300 rounded-full shadow-[0_0_8px_#fbbf24] absolute top-3.5 left-1/3 animate-ping" />
+                <div className="w-2 h-2 bg-amber-300 rounded-full shadow-[0_0_8px_#fbbf24] absolute bottom-3.5 right-1/3 animate-ping" />
               </div>
             )}
 
             {/* BATTERY */}
-            <div className="flex flex-col items-center bg-slate-900 border-2 border-amber-500 p-3 rounded-2xl shadow-xl z-10 hover:scale-105 transition-transform">
-              <div className="text-2xl mb-1">🔋</div>
-              <div className="text-amber-400 text-xs font-black">مولد (4.5V)</div>
-              {showFrench && <div className="text-[9px] text-slate-300">Pile / Générateur</div>}
-              <div className="flex gap-2 text-[10px] font-mono mt-1 font-extrabold text-amber-300">
-                <span>(+)</span>
-                <span>(-)</span>
+            <div className="relative z-10 flex flex-col items-center flex-1">
+              <div className={`w-1 flex-1 rounded-full transition-colors duration-500 ${isLightOn ? 'bg-amber-400' : 'bg-slate-700'}`} />
+              <div className="flex flex-col items-center bg-slate-900 border-2 border-amber-500 p-3 rounded-2xl shadow-xl hover:scale-105 transition-transform shrink-0">
+                <div className="text-2xl mb-1">🔋</div>
+                <div className="text-amber-400 text-xs font-black">مولد (4.5V)</div>
+                {showFrench && <div className="text-[9px] text-slate-300">Pile / Générateur</div>}
+                <div className="flex gap-2 text-[10px] font-mono mt-1 font-extrabold text-amber-300">
+                  <span>(+)</span>
+                  <span>(-)</span>
+                </div>
               </div>
+              <div className={`w-1 flex-1 rounded-full transition-colors duration-500 ${isLightOn ? 'bg-amber-400' : 'bg-slate-700'}`} />
             </div>
 
             {/* MIDDLE SLOT: SWITCH OR TEST MATERIAL */}
-            <div className="flex flex-col items-center z-10">
+            <div className="relative z-10 flex flex-col items-center flex-1">
+              <div className={`w-1 flex-1 rounded-full transition-colors duration-500 ${isLightOn ? 'bg-amber-400' : 'bg-slate-700'}`} />
               {middleComponent === 'switch' ? (
                 <button
                   onClick={() => {
@@ -325,16 +342,19 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
                   </div>
                 </div>
               )}
+              <div className={`w-1 flex-1 rounded-full transition-colors duration-500 ${isLightOn ? 'bg-amber-400' : 'bg-slate-700'}`} />
             </div>
 
             {/* LIGHT BULB */}
-            <div
-              className={`flex flex-col items-center p-3 rounded-2xl border-2 transition-all duration-500 z-10 ${
-                isLightOn
-                  ? 'bg-amber-400/30 border-amber-400 text-amber-200 shadow-[0_0_35px_rgba(251,191,36,0.8)] scale-110'
-                  : 'bg-slate-900 border-slate-700 text-slate-500'
-              }`}
-            >
+            <div className="relative z-10 flex flex-col items-center flex-1">
+              <div className={`w-1 flex-1 rounded-full transition-colors duration-500 ${isLightOn ? 'bg-amber-400' : 'bg-slate-700'}`} />
+              <div
+                className={`flex flex-col items-center p-3 rounded-2xl border-2 transition-all duration-500 shrink-0 ${
+                  isLightOn
+                    ? 'bg-amber-400/30 border-amber-400 text-amber-200 shadow-[0_0_35px_rgba(251,191,36,0.8)] scale-110'
+                    : 'bg-slate-900 border-slate-700 text-slate-500'
+                }`}
+              >
               <Lightbulb
                 className={`w-10 h-10 ${
                   isLightOn
@@ -346,6 +366,8 @@ const CircuitSimulationView: React.FC<{ gameplay: CircuitGameplay; showFrench: b
                 {isLightOn ? '💡 المصباح مشتعل !' : '⚪ المصباح مطفأ'}
               </span>
               {showFrench && <span className="text-[9px] text-slate-300">Ampoule</span>}
+              </div>
+              <div className={`w-1 flex-1 rounded-full transition-colors duration-500 ${isLightOn ? 'bg-amber-400' : 'bg-slate-700'}`} />
             </div>
 
           </div>
