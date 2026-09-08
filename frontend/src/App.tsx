@@ -309,7 +309,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
+    <div className="min-h-screen print:min-h-0 font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] print:pb-0 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
       <SeoHead />
       <PwaInstallBanner />
 
