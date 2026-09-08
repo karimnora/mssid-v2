@@ -107,6 +107,21 @@ describe('handleLabReward', () => {
 
     expect(result.current.userProfile.goldCoins).toBe(170);
   });
+
+  // Makes DIDOU_STAGES[1]'s "+10% de pièces d'or" perk real end-to-end, from the same entry point
+  // every lab reward goes through.
+  it('applies the Didou stage-2 +10% gold bonus once the student reaches level 4', () => {
+    const { result } = renderHook(() => useUserProgress({ authUser: null }));
+
+    act(() => {
+      result.current.setUserProfile((prev) => ({ ...prev, goldCoins: 0, level: 4 }));
+    });
+    act(() => {
+      result.current.handleLabReward(20, 0);
+    });
+
+    expect(result.current.userProfile.goldCoins).toBe(22);
+  });
 });
 
 // Regression test for the external review finding: on a family device shared between siblings, a

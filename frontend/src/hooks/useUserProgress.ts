@@ -3,6 +3,7 @@ import { Badge as BadgeInfo, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { incrementDailyObjective } from '../utils/dailyObjective';
+import { applyDidouGoldBonus } from '../utils/didouCompanion';
 import { getStoredLocale } from '../localePreference';
 import { locales } from '../locales';
 
@@ -233,7 +234,10 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   };
 
   const handleLabReward = (coins: number, xp: number) => {
-    const newCoins = (userProfile.goldCoins ?? 150) + coins;
+    // DIDOU_STAGES[1] ("Écolier Brillant", level 4+) advertises a +10% gold bonus as an unlocked
+    // perk — this is where it actually applies, on the one path that grants gold.
+    const bonusCoins = applyDidouGoldBonus(coins, userProfile.level);
+    const newCoins = (userProfile.goldCoins ?? 150) + bonusCoins;
     setUserProfile((prev) => ({
       ...prev,
       goldCoins: newCoins,

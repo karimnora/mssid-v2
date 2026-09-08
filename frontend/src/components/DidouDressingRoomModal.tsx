@@ -16,6 +16,7 @@ import {
   Info,
 } from 'lucide-react';
 import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
+import { getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 import { DidouOutfitItem, DidouOutfitId, DidouPetSpecies, DidouAvatarConfig } from '../types/ecosystem';
 import { useAuth } from '../context/AuthContext';
 import { AuthService } from '../services/authService';
@@ -70,8 +71,9 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
   const currentCoins = userProfile?.goldCoins ?? authUser?.goldCoins ?? 150;
   const currentXp = userProfile?.xp ?? authUser?.xp ?? 0;
   const userLevel = userProfile?.level ?? authUser?.level ?? Math.floor(currentXp / 100) + 1;
-  const currentEnergy = userProfile?.avatarConfig?.energy ?? authUser?.avatarConfig?.energy ?? 90;
-  const friendshipLevel = userProfile?.avatarConfig?.friendshipLevel ?? Math.min(10, Math.floor(currentXp / 80) + 1);
+  const activeAvatarConfig = userProfile?.avatarConfig || authUser?.avatarConfig;
+  const currentEnergy = getDidouEnergy(activeAvatarConfig);
+  const friendshipLevel = getDidouFriendshipLevel(activeAvatarConfig);
 
   const unlockedOutfits: DidouOutfitId[] =
     userProfile?.avatarConfig?.unlockedOutfits ||
@@ -84,7 +86,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
   const isUnlocked = unlockedOutfits.includes(selectedOutfit.id);
   const isEquipped = activeOutfitId === selectedOutfit.id;
 
-  const currentStage = userLevel >= 8 ? DIDOU_STAGES[2] : userLevel >= 4 ? DIDOU_STAGES[1] : DIDOU_STAGES[0];
+  const currentStage = getDidouStage(userLevel);
 
   const handleSpeciesChange = (species: DidouPetSpecies) => {
     setActiveSpecies(species);
@@ -213,8 +215,10 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
       unlockedOutfits: unlockedOutfits,
       energy: newEnergy,
       mood: 'celebrating',
-      fedCount: (prevConfig.fedCount || 0) + 1,
-      lastFedTimestamp: Date.now(),
+      // Same fields the home-card feeding path writes (App.tsx's handleFeedDidou) — both paths must
+      // agree on what "fed recently" means, since getDidouEnergy/getDidouFriendshipLevel read these.
+      totalTreatsGiven: (prevConfig.totalTreatsGiven || 0) + 1,
+      lastFedAt: new Date().toISOString(),
     };
 
     if (userProfile && onUpdateProfile) {

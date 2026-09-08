@@ -11,10 +11,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Sparkles, Utensils, MessageCircle, Shirt, Volume2, Award, Zap, Smile } from 'lucide-react';
 import { DidouAvatarConfig, DidouPetSpecies, DidouMood, DidouOutfitId } from '../types/ecosystem';
-import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
+import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
 import { speakText, stopSpeech } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
 import { Didou3DAvatar } from './Didou3DAvatar';
+import { getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 
 export interface DidouVirtualCompanionProps {
   avatarConfig?: DidouAvatarConfig;
@@ -46,8 +47,8 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
 
   const species: DidouPetSpecies = avatarConfig?.species || 'fennec';
   const activeOutfitId = avatarConfig?.activeOutfit || 'default';
-  const energy = avatarConfig?.energy ?? 90;
-  const friendshipLevel = avatarConfig?.friendshipLevel ?? Math.min(10, Math.floor((xp || 0) / 80) + 1);
+  const energy = getDidouEnergy(avatarConfig);
+  const friendshipLevel = getDidouFriendshipLevel(avatarConfig);
 
   const [currentMood, setCurrentMood] = useState<DidouMood>(
     energy < 30 ? 'hungry' : (avatarConfig?.mood || 'happy')
@@ -93,7 +94,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
 
   // Evolution Stage
   const userLevel = level || Math.floor(xp / 100) + 1;
-  const stageInfo = userLevel >= 8 ? DIDOU_STAGES[2] : userLevel >= 4 ? DIDOU_STAGES[1] : DIDOU_STAGES[0];
+  const stageInfo = getDidouStage(userLevel);
 
   // Sound Synth
   const playSound = (type: 'purr' | 'munch' | 'sparkle' | 'cheer') => {
