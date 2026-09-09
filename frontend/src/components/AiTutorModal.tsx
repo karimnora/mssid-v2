@@ -174,19 +174,19 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-base sm:text-lg font-extrabold">المعلّم الذكي "مسيد" 🇩🇿</h2>
+                <h2 className="text-base sm:text-lg font-extrabold truncate">المعلّم الذكي "مسيد" 🇩🇿</h2>
                 {!young && (
                   <>
-                    <span className="bg-gradient-to-r from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-[#5A3B00] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                    <span className="bg-gradient-to-r from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-[#5A3B00] text-[10px] font-extrabold px-2 py-0.5 rounded-full shrink-0">
                       Gemini AI
                     </span>
-                    <span className="bg-white/20 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full">
-                      {userRole}
+                    <span className="bg-white/20 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shrink-0">
+                      {userRole === 'ROLE_ADMIN' ? 'ADMIN' : userRole === 'ROLE_PREMIUM' ? 'PREMIUM' : 'FREE'}
                     </span>
                   </>
                 )}
               </div>
-              <p className="text-xs text-white/90 font-bold">
+              <p className="text-xs text-white/90 font-bold truncate">
                 مساعدك الشخصي للرياضيات واللغة العربية وفق المنهاج الجزائري ({grade})
               </p>
             </div>
@@ -202,11 +202,11 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
         </div>
 
         {!young && (
-          <div className="bg-[#FFF8E7] p-3 flex items-center gap-2 overflow-x-auto shrink-0">
+          <div className="bg-[#FFF8E7] p-3 flex items-center flex-wrap gap-2 shrink-0">
             <button
               type="button"
               onClick={() => setPromptType('explain')}
-              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer whitespace-nowrap ${
+              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer ${
                 promptType === 'explain'
                   ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
                   : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
@@ -217,7 +217,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             <button
               type="button"
               onClick={() => setPromptType('solve')}
-              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer whitespace-nowrap ${
+              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer ${
                 promptType === 'solve'
                   ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
                   : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
@@ -228,7 +228,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
             <button
               type="button"
               onClick={() => setPromptType('generate')}
-              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer whitespace-nowrap ${
+              className={`hit-target px-3 rounded-2xl text-sm font-extrabold cursor-pointer ${
                 promptType === 'generate'
                   ? 'bg-[var(--kids-grass-2)] text-white kids-pop'
                   : 'bg-white text-[var(--kids-muted)] border-2 border-[#E7E2D7]'

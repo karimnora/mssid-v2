@@ -234,10 +234,14 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     if (!g?.accounts?.id || !googleButtonRef.current) return;
     g.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: handleGoogleCredential });
     googleButtonRef.current.innerHTML = '';
+    // Google's button takes a fixed pixel width (no %/auto support), clamped to its own
+    // 200-400 range — a hardcoded 320 overflowed narrower phones. Measure the actual
+    // available width instead so the button never exceeds its container.
+    const availableWidth = googleButtonRef.current.clientWidth || 320;
     g.accounts.id.renderButton(googleButtonRef.current, {
       theme: 'outline',
       size: 'large',
-      width: 320,
+      width: Math.min(400, Math.max(200, Math.floor(availableWidth))),
       shape: 'pill',
       text: isLogin ? 'signin_with' : 'signup_with',
       locale: direction === 'rtl' ? 'ar' : 'fr',
