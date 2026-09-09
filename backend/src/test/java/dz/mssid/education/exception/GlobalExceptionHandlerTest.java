@@ -41,6 +41,31 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
+    @DisplayName("handleRuntimeException - masks the message for any subclass, not just bare RuntimeException")
+    void handleRuntimeException_masksSubclassMessage() {
+        NullPointerException npe = new NullPointerException("Cannot invoke \"User.getRole()\" because \"user\" is null");
+
+        ResponseEntity<Map<String, Object>> response = handler.handleRuntimeException(npe);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        String message = (String) response.getBody().get("message");
+        assertFalse(message.contains("User.getRole"), "internal class/method detail must never reach the client");
+        assertEquals("Une erreur interne est survenue. Veuillez réessayer plus tard.", message);
+    }
+
+    @Test
+    @DisplayName("handleRuntimeException - IllegalStateException also gets the safe generic message")
+    void handleRuntimeException_masksIllegalStateExceptionMessage() {
+        IllegalStateException ex = new IllegalStateException("connection pool exhausted: max=10 active=10");
+
+        ResponseEntity<Map<String, Object>> response = handler.handleRuntimeException(ex);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        String message = (String) response.getBody().get("message");
+        assertFalse(message.contains("connection pool"), "internal state detail must never reach the client");
+    }
+
+    @Test
     @DisplayName("handleAiQuotaExceeded - returns 429 with limit/remaining, not a generic 400")
     void handleAiQuotaExceeded_returns429() {
         AiQuotaExceededException ex = new AiQuotaExceededException(3, 0, 8);

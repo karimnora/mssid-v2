@@ -98,14 +98,29 @@ public class GlobalExceptionHandler {
      * tell them apart generically at this layer. Mute the specific issue in the Sentry dashboard
      * once you recognize a business-rule message repeating; missing an actual bug here would be the
      * worse failure mode.
+     * <p>
+     * Only a bare {@code new RuntimeException(msg)} — never a subclass — gets its message echoed to
+     * the client: every deliberate business-rule throw in this codebase uses exactly that (see
+     * {@code AuthService}/{@code UserService}/{@code PaymentServiceImpl}), all with messages already
+     * written to be user-facing. Any subclass (NPE, IllegalStateException, IllegalArgumentException,
+     * or anything else genuinely unanticipated) means this wasn't a deliberate business-rule reject —
+     * its message was written for a stack trace, not an end user, so it gets the same
+     * safe-generic-message treatment as {@link #handleDataAccessException}.
      */
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Map<String, Object>> handleRuntimeException(RuntimeException ex) {
         Sentry.captureException(ex);
+        boolean isDeliberateBusinessThrow = ex.getClass() == RuntimeException.class;
+        if (!isDeliberateBusinessThrow) {
+            log.error("Erreur inattendue non gérée explicitement", ex);
+        }
+        String clientMessage = isDeliberateBusinessThrow
+                ? ex.getMessage()
+                : "Une erreur interne est survenue. Veuillez réessayer plus tard.";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of(
                 "status", 400,
                 "error", "Bad Request",
-                "message", ex.getMessage()
+                "message", clientMessage
         ));
     }
 }
