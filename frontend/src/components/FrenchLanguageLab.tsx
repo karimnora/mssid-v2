@@ -396,7 +396,7 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <span className="bg-sky-500/20 text-sky-300 border border-sky-500/40 px-3 py-1 rounded-full text-xs font-extrabold flex items-center gap-1.5">
+          <span className="bg-sky-500/20 text-sky-800 border border-sky-500/40 px-3 py-1 rounded-full text-xs font-extrabold flex items-center gap-1.5">
             <Volume2 className="w-4 h-4 text-sky-400" />
             <span>خاصية النطق الصوتي (Audio Vocalisé)</span>
           </span>

@@ -147,7 +147,7 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
         <div className="flex items-center justify-center gap-3">
           <button
             onClick={checkChallenge}
-            className="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+            className="px-5 py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
           >
             تَحَقَّقْ مِنَ المِسَاحَةِ ✅
           </button>

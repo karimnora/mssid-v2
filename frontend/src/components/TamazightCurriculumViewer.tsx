@@ -330,7 +330,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                 onClick={() => setSelectedGrade('4AP')}
                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer ${
                   selectedGrade === '4AP'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-emerald-700 text-white shadow-sm'
                     : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                 }`}
               >
@@ -340,7 +340,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                 onClick={() => setSelectedGrade('5AP')}
                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer ${
                   selectedGrade === '5AP'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-emerald-700 text-white shadow-sm'
                     : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                 }`}
               >
@@ -418,7 +418,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                       الفصل {lesson.trimester || 1}
                     </span>
                     {lesson.categoryAr && (
-                      <span className="text-[10px] font-bold text-slate-400 truncate max-w-[140px]">
+                      <span className="text-[10px] font-bold text-slate-600 truncate max-w-[140px]">
                         {lesson.categoryAr}
                       </span>
                     )}
@@ -443,7 +443,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
               onClick={() => setActiveTab('lesson')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'lesson'
-                  ? 'bg-emerald-600 text-white shadow-sm'
+                  ? 'bg-emerald-700 text-white shadow-sm'
                   : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)]'
               }`}
             >
@@ -484,7 +484,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
               {/* Title & Speech */}
               <div className="flex items-start justify-between gap-4 pb-4 border-b border-[var(--app-card-border)]">
                 <div>
-                  <span className="text-[11px] font-black text-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-md mb-2 inline-block">
+                  <span className="text-[11px] font-black text-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-md mb-2 inline-block">
                     {currentLesson.categoryAr || 'الوحدة التعليمية'}
                   </span>
                   <h2 className="text-xl font-black text-[var(--app-text)] leading-snug">
@@ -693,7 +693,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                       className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3"
                     >
                       <div className="flex items-center gap-2 font-black text-xs text-[var(--app-text)]">
-                        <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px]">
+                        <span className="w-5 h-5 rounded-full bg-emerald-700 text-white flex items-center justify-center text-[10px]">
                           {qIdx + 1}
                         </span>
                         <span>{q.questionAr}</span>
@@ -740,7 +740,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
               {!submittedQuiz ? (
                 <button
                   onClick={handleGradeQuiz}
-                  className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-black text-xs transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>تأكيد الإجابات وتصحيح التمرين</span>

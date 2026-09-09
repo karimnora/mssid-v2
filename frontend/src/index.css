@@ -43,7 +43,13 @@
 :root, .theme-neutre, .theme-vibrant {
   --app-bg: #FFFBF0;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  /* slate-600, not slate-500 (#64748b): against --app-card-subtle (#FFF8E7) the old value measured
+     ~4.495:1, just under WCAG AA's 4.5:1 for normal text — this is the one color every unselected
+     tab/pill across the interactive labs is built on, so raising it here (and in every other block
+     below that also forces this light-context pairing: .exercise-surface/.light-surface, the
+     .theme-dark "forced light card" overrides, .kids-pole, .lab-interior, .kids-modal-panel) was the
+     single highest-leverage fix for the pre-launch a11y audit's color-contrast findings. */
+  --app-text-muted: #475569;
   --app-card-bg: #ffffff;
   --app-card-border: #E7E2D7;
   --app-card-subtle: #FFF8E7;
@@ -93,7 +99,7 @@ body {
 .theme-light {
   --app-bg: #FFFBF0;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #475569;
   --app-card-bg: #ffffff;
   --app-card-border: #E7E2D7;
   --app-card-subtle: #FFF8E7;
@@ -146,9 +152,9 @@ body {
   border-color: #e7e2d7;
   color: #0f172a;
   --kids-ink: #0f172a;
-  --kids-muted: #64748b;
+  --kids-muted: #475569;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #475569;
 }
 
 .exercise-surface .type-quiz,
@@ -203,9 +209,9 @@ body {
 .theme-dark [class*="FFF8E7"],
 .theme-midnight [class*="FFF8E7"] {
   --kids-ink: #0f172a;
-  --kids-muted: #64748b;
+  --kids-muted: #475569;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #475569;
 }
 
 .hit-target {
@@ -237,9 +243,9 @@ body {
   border: 2px solid #E7E2D7;
   color: #0f172a;
   --kids-ink: #0f172a;
-  --kids-muted: #64748b;
+  --kids-muted: #475569;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #475569;
   /* These two always read against a forced-light card, so any child using
      var(--app-card-bg)/var(--app-card-subtle) for its own background must get
      the light-theme values too — otherwise in dark mode the ink vars above stay
@@ -259,9 +265,9 @@ body {
   background: #ffffff;
   color: #0f172a;
   --kids-ink: #0f172a;
-  --kids-muted: #64748b;
+  --kids-muted: #475569;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #475569;
   /* Same reasoning as .kids-pole above. */
   --app-card-bg: #ffffff;
   --app-card-subtle: #FFF8E7;
@@ -354,9 +360,9 @@ body {
   box-shadow: var(--kids-pop-soft);
   color: #0f172a;
   --kids-ink: #0f172a;
-  --kids-muted: #64748b;
+  --kids-muted: #475569;
   --app-text: #0f172a;
-  --app-text-muted: #64748b;
+  --app-text-muted: #475569;
 }
 
 .kids-modal-header {

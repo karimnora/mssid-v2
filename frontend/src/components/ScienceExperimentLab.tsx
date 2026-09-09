@@ -291,7 +291,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           onClick={() => setActiveTab('density_chott')}
           className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'density_chott'
-              ? 'bg-sky-600 text-white shadow-md scale-[1.02]'
+              ? 'bg-sky-700 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
@@ -315,7 +315,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           onClick={() => setActiveTab('plant_growth')}
           className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'plant_growth'
-              ? 'bg-emerald-600 text-white shadow-md scale-[1.02]'
+              ? 'bg-emerald-700 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
@@ -339,7 +339,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           onClick={() => setActiveTab('quiz')}
           className={`py-3 px-2 rounded-xl font-black text-xs flex flex-col items-center justify-center gap-1 transition-all cursor-pointer ${
             activeTab === 'quiz'
-              ? 'bg-teal-600 text-white shadow-md scale-[1.02]'
+              ? 'bg-teal-700 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
@@ -659,7 +659,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
             <div className="space-y-3 pt-2">
               <button
                 onClick={handleAdvanceDay}
-                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
+                className="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
               >
                 <Play className="w-4 h-4" />
                 <span>مرور يوم جديد (اليوم {plantDay} من 5) 📅</span>
@@ -727,7 +727,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
                 {plantDay >= 5 && (
                   <div className="text-center space-y-1">
                     <span className="text-8xl block animate-bounce">🌻</span>
-                    <span className="text-xs font-black bg-emerald-600 text-white px-3 py-1 rounded-xl shadow-md">
+                    <span className="text-xs font-black bg-emerald-700 text-white px-3 py-1 rounded-xl shadow-md">
                       اليوم 5: نبتة كاملة مزهرة ومورقة! 🎉
                     </span>
                   </div>
@@ -821,7 +821,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
                 onClick={() => setMagnetPole('attract')}
                 className={`flex-1 py-3.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
                   magnetPole === 'attract'
-                    ? 'bg-emerald-600 text-white shadow-sm scale-[1.02]'
+                    ? 'bg-emerald-700 text-white shadow-sm scale-[1.02]'
                     : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)]'
                 }`}
               >
@@ -948,7 +948,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
 
               if (isAnswered) {
                 if (isCorrect) {
-                  btnClass = 'bg-teal-600 text-white border-teal-600 shadow-md scale-[1.02]';
+                  btnClass = 'bg-teal-700 text-white border-teal-600 shadow-md scale-[1.02]';
                 } else if (isSelected) {
                   btnClass = 'bg-rose-600 text-white border-rose-600 shadow-md';
                 }
@@ -983,7 +983,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
 
               <button
                 onClick={handleNextQuiz}
-                className="w-full py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-black rounded-2xl shadow-lg transition-all text-sm cursor-pointer"
+                className="w-full py-3.5 bg-teal-700 hover:bg-teal-800 text-white font-black rounded-2xl shadow-lg transition-all text-sm cursor-pointer"
               >
                 اللغز العلمي التالي ➡️
               </button>

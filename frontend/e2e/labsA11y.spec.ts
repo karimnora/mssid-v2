@@ -26,6 +26,11 @@ for (const lab of INTERACTIVE_LABS_LIST) {
 
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+      // AppRatingPrompt is global app chrome that can pop up over *any* screen at an arbitrary
+      // moment (not one of the 29 lab tools this suite audits) and flakily appears mid-animation
+      // depending on unrelated session state — scope this suite to the lab itself and cover the
+      // prompt's own accessibility in a dedicated, deterministic test instead.
+      .exclude('#app-rating-prompt')
       .analyze();
 
     const summary = results.violations.map((v) => ({

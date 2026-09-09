@@ -184,7 +184,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
           onClick={() => setActiveTab('alphabet')}
           className={`hit-target flex-1 py-2.5 rounded-xl font-black text-xs transition-all cursor-pointer ${
             activeTab === 'alphabet'
-              ? 'bg-emerald-600 text-white shadow-md'
+              ? 'bg-emerald-700 text-white shadow-md'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
@@ -226,7 +226,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                   onClick={() => setSelectedLetter(item)}
                   className={`p-3 rounded-2xl text-center transition-all cursor-pointer border ${
                     selectedLetter.tifinagh === item.tifinagh
-                      ? 'bg-emerald-600 text-white border-emerald-700 shadow-md scale-105'
+                      ? 'bg-emerald-700 text-white border-emerald-700 shadow-md scale-105'
                       : 'bg-[var(--app-card-subtle)] text-[var(--app-text)] border-[var(--app-card-border)] hover:bg-emerald-50'
                   }`}
                 >
@@ -239,7 +239,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
 
           <div className="lg:col-span-5 bg-gradient-to-br from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 border border-emerald-200 shadow-md flex flex-col justify-between space-y-4">
             <div className="text-center space-y-3">
-              <div className="w-24 h-24 mx-auto rounded-3xl bg-emerald-600 text-white flex items-center justify-center text-5xl font-black shadow-lg">
+              <div className="w-24 h-24 mx-auto rounded-3xl bg-emerald-700 text-white flex items-center justify-center text-5xl font-black shadow-lg">
                 {selectedLetter.tifinagh}
               </div>
               <div className="flex items-center justify-center gap-2">
@@ -277,7 +277,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
                   AuthService.addScore(10);
                   if (onReward) onReward(5, 10);
                 }}
-                className="hit-target w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-xl text-xs shadow-sm transition-all cursor-pointer"
+                className="hit-target w-full bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-xl text-xs shadow-sm transition-all cursor-pointer"
               >
                 تدربت على الحرف (+10 XP)
               </button>
@@ -367,7 +367,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
               <p>{feedback.msg}</p>
               <button
                 onClick={handleNextQuiz}
-                className="hit-target px-4 bg-emerald-600 text-white rounded-xl font-black text-xs cursor-pointer hover:bg-emerald-700"
+                className="hit-target px-4 bg-emerald-700 text-white rounded-xl font-black text-xs cursor-pointer hover:bg-emerald-800"
               >
                 السؤال التالي ➔
               </button>

@@ -187,7 +187,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center">
           {/* Input value & From unit */}
           <div className="md:col-span-2 space-y-1">
-            <label htmlFor="unit-converter-input-value" className="text-[10px] font-bold opacity-60 block uppercase">القيمة المراد تحويلها:</label>
+            <label htmlFor="unit-converter-input-value" className="text-[10px] font-bold text-[var(--app-text-muted)] block uppercase">القيمة المراد تحويلها:</label>
             <div className="flex gap-2">
               <input
                 id="unit-converter-input-value"

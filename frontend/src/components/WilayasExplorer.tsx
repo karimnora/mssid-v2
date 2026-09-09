@@ -166,7 +166,7 @@ const getAdventureRank = (count: number) => {
   return {
     titleAr: '🌱 مبتدئ في درب الاستكشاف',
     titleFr: 'Jeune Apprenti Explorateur',
-    color: 'text-slate-300 bg-slate-800 border-slate-600',
+    color: 'text-slate-300 bg-slate-950/60 border-slate-500',
     tier: 1,
   };
 };
@@ -521,7 +521,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
           onClick={() => setActiveTab('map_list')}
           className={`py-3 px-2.5 rounded-xl font-black text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
             activeTab === 'map_list'
-              ? 'bg-emerald-600 text-white shadow-md scale-[1.02]'
+              ? 'bg-emerald-700 text-white shadow-md scale-[1.02]'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
@@ -598,7 +598,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   onClick={() => setMapZoomLevel('national')}
                   className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
                     mapZoomLevel === 'national'
-                      ? 'bg-emerald-600 text-white'
+                      ? 'bg-emerald-700 text-white'
                       : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)]'
                   }`}
                 >
@@ -738,7 +738,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                     <span
                       className={`px-1.5 py-0.5 rounded-md text-[10px] font-black shadow-md border ${
                         isSelected
-                          ? 'bg-emerald-600 text-white border-white'
+                          ? 'bg-emerald-700 text-white border-white'
                           : isDiscovered
                           ? 'bg-amber-400 text-amber-950 border-amber-600'
                           : 'bg-white/90 text-slate-800 border-slate-300'
@@ -788,7 +788,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                       onClick={() => setSelectedRegion(reg.id)}
                       className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                         selectedRegion === reg.id
-                          ? 'bg-emerald-600 text-white shadow-xs scale-[1.02]'
+                          ? 'bg-emerald-700 text-white shadow-xs scale-[1.02]'
                           : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                       }`}
                     >
@@ -810,7 +810,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                       onClick={() => handleSelectWilaya(w)}
                       className={`p-3 rounded-2xl border text-right transition-all flex items-center gap-2.5 cursor-pointer relative overflow-hidden ${
                         isSelected
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-md scale-[1.02]'
+                          ? 'bg-emerald-700 text-white border-emerald-600 shadow-md scale-[1.02]'
                           : 'bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text)] shadow-xs'
                       }`}
                     >
@@ -836,7 +836,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                         </div>
                         <span
                           className={`block text-[10px] font-bold truncate ${
-                            isSelected ? 'text-emerald-100' : 'text-slate-400'
+                            isSelected ? 'text-white' : 'text-slate-600'
                           }`}
                         >
                           {w.capitalAr} • {w.nameFr}
@@ -871,7 +871,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                       </span>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="bg-emerald-600 text-white text-xs font-black px-2.5 py-0.5 rounded-lg shadow-xs">
+                          <span className="bg-emerald-700 text-white text-xs font-black px-2.5 py-0.5 rounded-lg shadow-xs">
                             الولاية رقم {selectedWilaya.codeStr}
                           </span>
                           <button
@@ -948,7 +948,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                           `ولاية ${selectedWilaya.nameAr} هي إحدى ولايات الجزائر الـ 58 الجميلة، عاصمتها ${selectedWilaya.capitalAr}.`
                         );
                       }}
-                      className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                      className="flex-1 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
                     >
                       <Volume2 className="w-4 h-4" />
                       <span>نطق صوتي للولاية 🇩🇿</span>
@@ -956,7 +956,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   </div>
                 </div>
               ) : (
-                <div className="bg-[var(--app-card-bg)] rounded-3xl p-8 text-center text-slate-400 border border-[var(--app-card-border)]">
+                <div className="bg-[var(--app-card-bg)] rounded-3xl p-8 text-center text-slate-600 border border-[var(--app-card-border)]">
                   اختر ولاية من القائمة لعرض تفاصيلها الكاملة
                 </div>
               )}
@@ -1055,7 +1055,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                             className={`px-2 py-1 rounded-lg text-[10px] font-black border transition-all cursor-pointer ${
                               isDiscovered
                                 ? 'bg-emerald-50 text-emerald-950 border-emerald-300 shadow-2xs'
-                                : 'bg-[var(--app-card-subtle)] text-slate-400 border-[var(--app-card-border)]'
+                                : 'bg-[var(--app-card-subtle)] text-slate-600 border-[var(--app-card-border)]'
                             }`}
                           >
                             {w.codeStr} {w.nameAr}
@@ -1121,7 +1121,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                     className={`p-3.5 rounded-2xl border text-xs sm:text-sm font-bold transition-all ${
                       isRevealed
                         ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-950 dark:text-emerald-200 border-emerald-300 dark:border-emerald-800'
-                        : 'bg-[var(--app-card-bg)] text-slate-400 border-dashed border-[var(--app-card-border)]'
+                        : 'bg-[var(--app-card-bg)] text-slate-600 border-dashed border-[var(--app-card-border)]'
                     }`}
                   >
                     {isRevealed ? (
@@ -1130,7 +1130,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                         <span>{clue}</span>
                       </span>
                     ) : (
-                      <span className="flex items-center justify-between text-slate-400">
+                      <span className="flex items-center justify-between text-slate-600">
                         <span>🔒 الدليل {idx + 1} مخفي</span>
                         <button
                           onClick={() => setRevealedCluesCount(idx + 1)}
@@ -1262,7 +1262,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
 
               if (isQuizAnswered) {
                 if (isCorrect) {
-                  btnClass = 'bg-emerald-600 text-white border-emerald-600 shadow-md scale-[1.02]';
+                  btnClass = 'bg-emerald-700 text-white border-emerald-600 shadow-md scale-[1.02]';
                 } else if (isSelected) {
                   btnClass = 'bg-rose-600 text-white border-rose-600 shadow-md';
                 }
@@ -1315,7 +1315,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
 
               <button
                 onClick={handleNextQuiz}
-                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-lg transition-all text-sm cursor-pointer"
+                className="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl shadow-lg transition-all text-sm cursor-pointer"
               >
                 السؤال التالي ➡️
               </button>
@@ -1379,7 +1379,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   className={`p-3 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-1 relative ${
                     isDiscovered
                       ? 'bg-emerald-50 border-emerald-400 text-emerald-950 shadow-xs hover:scale-105 ring-1 ring-emerald-300'
-                      : 'bg-[var(--app-card-subtle)] border-dashed border-[var(--app-card-border)] text-slate-400 opacity-60'
+                      : 'bg-[var(--app-card-subtle)] border-dashed border-[var(--app-card-border)] text-slate-600 opacity-60'
                   }`}
                 >
                   <span className="text-2xl">{isDiscovered ? w.icon : '🔒'}</span>
@@ -1442,16 +1442,16 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
 
                 <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200 text-sm font-black flex items-center justify-around">
                   <div>
-                    <span className="block text-xs text-slate-400 font-bold">الولايات المكتشفة:</span>
+                    <span className="block text-xs text-slate-600 font-bold">الولايات المكتشفة:</span>
                     <span className="text-xl">{discoveredCodes.length} / 58</span>
                   </div>
                   <div>
-                    <span className="block text-xs text-slate-400 font-bold">الرتبة الممنوحة:</span>
+                    <span className="block text-xs text-slate-600 font-bold">الرتبة الممنوحة:</span>
                     <span>{currentRank.titleAr}</span>
                   </div>
                 </div>
 
-                <p className="text-[10px] font-bold text-slate-400">
+                <p className="text-[10px] font-bold text-slate-600">
                   📊 شهادة تعكس التقدّم الفعلي — {discoveredCodes.length} من 58 ولاية مكتشفة حتى الآن
                 </p>
 
@@ -1464,7 +1464,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
               <div className="flex items-center justify-center gap-3">
                 <button
                   onClick={() => window.print()}
-                  className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md"
+                  className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md"
                 >
                   <Printer className="w-4 h-4" />
                   <span>طباعة الشهادة (Imprimer)</span>

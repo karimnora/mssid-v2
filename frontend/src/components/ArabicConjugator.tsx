@@ -289,7 +289,7 @@ export const ArabicConjugator: React.FC = () => {
               key={pronoun}
               className="bg-[var(--app-card-subtle)] p-3.5 rounded-2xl border border-[var(--app-card-border)] text-center space-y-1 hover:border-emerald-500/50 transition-colors"
             >
-              <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20 inline-block">
+              <span className="text-[10px] font-bold text-amber-800 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20 inline-block">
                 {pronoun}
               </span>
               <div className="text-base font-black text-[var(--app-text)] pt-1">{conjugatedForm}</div>

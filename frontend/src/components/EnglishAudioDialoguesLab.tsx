@@ -210,7 +210,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
               }`}
             >
               <div className="space-y-1">
-                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${isSelected ? 'bg-white/20 text-white' : 'bg-indigo-100 text-indigo-900'}`}>
+                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${isSelected ? 'bg-white/90 text-indigo-900' : 'bg-indigo-100 text-indigo-900'}`}>
                   {d.grade} • {d.titleEn.split(':')[0]}
                 </span>
                 <h3 className="font-black text-sm">{d.titleEn}</h3>

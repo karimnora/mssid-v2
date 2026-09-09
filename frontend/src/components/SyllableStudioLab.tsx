@@ -119,7 +119,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
         <button
           onClick={() => switchTab('arabic')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-            activeTab === 'arabic' ? 'bg-cyan-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+            activeTab === 'arabic' ? 'bg-cyan-700 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
           🇩🇿 كلمات عربية
@@ -128,7 +128,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
         <button
           onClick={() => switchTab('french')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-            activeTab === 'french' ? 'bg-sky-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+            activeTab === 'french' ? 'bg-sky-700 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
           🇫🇷 Mots français
@@ -149,7 +149,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
             onClick={playWord}
             aria-label="استمع للكلمة من جديد"
             className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center transition-all cursor-pointer ${
-              speaking ? 'bg-cyan-600 text-white animate-pulse' : 'bg-cyan-100 text-cyan-700 hover:bg-cyan-200'
+              speaking ? 'bg-cyan-700 text-white animate-pulse' : 'bg-cyan-100 text-cyan-700 hover:bg-cyan-200'
             }`}
           >
             <Volume2 className="w-6 h-6" />
@@ -162,7 +162,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
               <button
                 key={n}
                 onClick={() => handleGuess(n)}
-                className="w-14 h-14 rounded-2xl bg-cyan-600 hover:bg-cyan-700 text-white font-black text-xl shadow-md transition-all cursor-pointer"
+                className="w-14 h-14 rounded-2xl bg-cyan-700 hover:bg-cyan-800 text-white font-black text-xl shadow-md transition-all cursor-pointer"
               >
                 {n}
               </button>

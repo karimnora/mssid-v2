@@ -296,7 +296,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <span className="bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 px-3 py-1 rounded-full text-xs font-extrabold flex items-center gap-1.5">
+          <span className="bg-indigo-500/20 text-indigo-800 border border-indigo-500/40 px-3 py-1 rounded-full text-xs font-extrabold flex items-center gap-1.5">
             <Volume2 className="w-4 h-4 text-indigo-400" />
             <span>Audio Speech Synthesis (Clear English Voice)</span>
           </span>

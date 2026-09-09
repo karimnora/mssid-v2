@@ -89,7 +89,7 @@ export const FoggaraHydraulicLab: React.FC<Props> = ({ onReward }) => {
                   onClick={() => setChannelsCount(num)}
                   className={`py-2 rounded-xl font-black text-xs transition-all cursor-pointer ${
                     channelsCount === num
-                      ? 'bg-cyan-600 text-white shadow-sm'
+                      ? 'bg-cyan-700 text-white shadow-sm'
                       : 'bg-[var(--app-card-bg)] text-[var(--app-text-muted)] border border-[var(--app-card-border)]'
                   }`}
                 >
@@ -116,7 +116,7 @@ export const FoggaraHydraulicLab: React.FC<Props> = ({ onReward }) => {
             <span className="bg-white/90 font-bold px-3 py-1 rounded-full text-amber-950 border border-amber-300">
               🏞️ مدخل النفق الجوفي (المنبع)
             </span>
-            <span className="bg-cyan-600 text-white font-black px-3 py-1 rounded-full text-xs shadow-xs">
+            <span className="bg-cyan-700 text-white font-black px-3 py-1 rounded-full text-xs shadow-xs">
               مقسم القصرية الحجري
             </span>
           </div>

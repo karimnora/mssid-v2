@@ -195,7 +195,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
           onClick={() => setActiveTab('column_addition')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
             activeTab === 'column_addition'
-              ? 'bg-emerald-600 text-white shadow-md'
+              ? 'bg-emerald-700 text-white shadow-md'
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
@@ -249,7 +249,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                 </div>
                 <div className="w-px h-10 bg-[var(--app-card-border)]" />
                 <div className="text-center space-y-1">
-                  <span className="text-xs font-bold text-emerald-600 block">الوحدات (Unités)</span>
+                  <span className="text-xs font-bold text-emerald-700 block">الوحدات (Unités)</span>
                   <span className="text-2xl font-black text-emerald-700 font-mono">{unitsOfSelected}</span>
                   <span className="text-[10px] text-[var(--app-text-muted)]">({unitsOfSelected})</span>
                 </div>
@@ -320,7 +320,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               <button
                 onClick={() => setStripFilter('even')}
                 className={`px-3 py-1 rounded-xl text-xs font-black cursor-pointer ${
-                  stripFilter === 'even' ? 'bg-emerald-600 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
+                  stripFilter === 'even' ? 'bg-emerald-700 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
                 الأعداد الزوجية
@@ -421,7 +421,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
             {/* Row 2 with + sign */}
             <div className="flex items-center justify-center gap-6 text-3xl font-black font-mono text-[var(--app-text)] border-b-4 border-slate-900 pb-2">
-              <span className="w-8 text-emerald-600 text-4xl">+</span>
+              <span className="w-8 text-emerald-700 text-4xl">+</span>
               <span className="w-8">{Math.floor(addNum2 / 10)}</span>
               <span className="w-8">{addNum2 % 10}</span>
             </div>

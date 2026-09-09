@@ -905,7 +905,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
           }}
           className={`py-3 px-2 rounded-xl font-black text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
             activeLang === 'ar'
-              ? 'bg-emerald-600 text-white shadow-md'
+              ? 'bg-emerald-700 text-white shadow-md'
               : 'text-[var(--app-text-muted)] hover:bg-[var(--app-card-subtle)]'
           }`}
         >
@@ -994,7 +994,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
                 }}
                 className={`px-3 py-1.5 rounded-xl font-black text-xs transition-all flex items-center gap-1 cursor-pointer ${
                   pedagogicalStep === 'guide'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-emerald-700 text-white shadow-sm'
                     : 'text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                 }`}
               >
@@ -1254,7 +1254,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
               </div>
 
               {validationResult.passed && (
-                <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-[11px] font-black shrink-0">
+                <span className="px-3 py-1 rounded-full bg-emerald-700 text-white text-[11px] font-black shrink-0">
                   +15 دج 🪙
                 </span>
               )}
@@ -1350,7 +1350,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
                     }`}
                   >
                     <span className="text-xl font-black leading-none">{item.char}</span>
-                    <span className="text-[8px] font-bold opacity-80 truncate w-full">{item.name}</span>
+                    <span className={`text-[8px] font-bold truncate w-full ${isSelected ? '' : 'opacity-80'}`}>{item.name}</span>
                   </button>
                 );
               })}

@@ -348,12 +348,12 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
               }}
               className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 ${
                 isSelected
-                  ? 'bg-sky-600 text-white border-sky-500 shadow-md scale-[1.02]'
+                  ? 'bg-sky-700 text-white border-sky-500 shadow-md scale-[1.02]'
                   : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-sky-400'
               }`}
             >
               <div className="space-y-1">
-                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${isSelected ? 'bg-white/20 text-white' : 'bg-sky-100 text-sky-900'}`}>
+                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${isSelected ? 'bg-white/90 text-sky-900' : 'bg-sky-100 text-sky-900'}`}>
                   {proj.grade} • Projet {proj.projectNumber}
                 </span>
                 <h3 className="font-black text-sm">{proj.titleFr}</h3>
@@ -380,7 +380,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
               }}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 isCurrent
-                  ? 'bg-sky-600 text-white shadow-xs'
+                  ? 'bg-sky-700 text-white shadow-xs'
                   : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
               }`}
             >
@@ -401,7 +401,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
             </div>
             <button
               onClick={() => speakFrench(currentSequence.textSupportFr)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-700 hover:bg-sky-800 text-white text-xs font-bold transition-colors cursor-pointer shadow-xs"
             >
               <Volume2 className="w-4 h-4" />
               <span>Écouter le texte 🗣️</span>

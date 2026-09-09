@@ -932,8 +932,12 @@ export const ElectricityLabInteractive: React.FC = () => {
               </div>
             </div>
 
-            {/* Visual Multimeter Widget */}
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-4 space-y-3">
+            {/* Visual Multimeter Widget — data-lab-instrument: this panel is deliberately dark
+                (looks like a real multimeter), so it must opt out of .lab-interior's "force dark
+                panels to white" override — otherwise the bg goes white but the light-on-dark text
+                colors below (text-slate-300, text-emerald-400, text-cyan-400...) stay as designed,
+                pairing light text on a light background. */}
+            <div data-lab-instrument className="bg-slate-900 border border-slate-800 rounded-3xl p-4 space-y-3">
               <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
                 <Zap className="w-4 h-4 text-emerald-400" />
                 <span>مقياس متعدد (Multimètre):</span>
@@ -945,7 +949,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 </div>
                 <div className="text-center border-x border-slate-800">
                   <div className="text-[9px] text-slate-300 font-sans font-bold">التيار (mA)</div>
-                  <div className={`text-sm sm:text-base font-black ${currentStatus.isCurrentFlowing ? 'text-amber-400' : 'text-slate-600'}`} dir="ltr">
+                  <div className={`text-sm sm:text-base font-black ${currentStatus.isCurrentFlowing ? 'text-amber-400' : 'text-slate-500'}`} dir="ltr">
                     {multimeterReading.currentMa.toFixed(0)}
                   </div>
                 </div>
@@ -954,7 +958,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                   <div className="text-cyan-400 text-[11px] sm:text-xs font-black" dir="ltr">{multimeterReading.resistanceLabel}</div>
                 </div>
               </div>
-              <p className="text-[10px] text-slate-500 leading-relaxed">
+              <p className="text-[10px] text-slate-400 leading-relaxed">
                 📌 قراءة مبسّطة توضيحية: كلما زادت المقاومة، قلّت شدة التيار المار في الدارة.
               </p>
             </div>

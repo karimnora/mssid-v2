@@ -102,7 +102,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
         <button
           onClick={() => setActiveTab('visual')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer ${
-            activeTab === 'visual' ? 'bg-orange-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
+            activeTab === 'visual' ? 'bg-orange-700 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
           🍕 الكسور بالصور
@@ -148,7 +148,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
           <div className="flex items-center justify-center gap-3">
             <button
               onClick={checkAnswer}
-              className="px-5 py-3 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
+              className="px-5 py-3 rounded-2xl bg-orange-700 hover:bg-orange-800 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
             >
               تَحَقَّقْ مِنَ الإِجَابَةِ ✅
             </button>

@@ -449,13 +449,13 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
       {/* ── Header ── */}
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-700/25 flex-wrap gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg shadow-inner">
+          <div className={`w-9 h-9 rounded-xl bg-amber-500/20 flex items-center justify-center text-lg shadow-inner ${isDark ? 'text-amber-400' : 'text-amber-800'}`}>
             📐
           </div>
           <div>
             <h3 className="font-extrabold text-base flex items-center gap-2">
               المستكشف الهندسي التفاعلي
-              <span className="text-xs bg-amber-500/20 text-amber-400 font-bold px-2 py-0.5 rounded-md border border-amber-500/30">{grade}</span>
+              <span className={`text-xs bg-amber-500/20 font-bold px-2 py-0.5 rounded-md border border-amber-500/30 ${isDark ? 'text-amber-400' : 'text-amber-800'}`}>{grade}</span>
             </h3>
             <p className="text-xs opacity-60">الأشكال الهندسية ثنائية وثلاثية الأبعاد · محيط · مساحة · حجم</p>
           </div>
@@ -553,7 +553,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                     />
                   ) : (
                     <div className={`${subBg} rounded-2xl border p-6 flex flex-col items-center justify-center min-h-[220px] relative overflow-hidden`}>
-                      <div className="text-[10px] font-mono text-amber-400/70 absolute top-3 right-3 uppercase tracking-widest">
+                      <div className={`text-[10px] font-mono absolute top-3 right-3 uppercase tracking-widest ${isDark ? 'text-amber-400/70' : 'text-amber-800'}`}>
                         2D PLANE SHAPE
                       </div>
                       <motion.div
@@ -576,7 +576,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                       transition={{ repeat: Infinity, duration: 2 }}
                     />
                     <h4 className="font-extrabold text-base">{selectedShape.nameAr}</h4>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${selectedShape.category === '3d' ? 'bg-purple-500/20 text-purple-400' : 'bg-sky-500/20 text-sky-400'}`}>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${selectedShape.category === '3d' ? (isDark ? 'bg-purple-500/20 text-purple-400' : 'bg-purple-100 text-purple-700') : (isDark ? 'bg-sky-500/20 text-sky-400' : 'bg-sky-100 text-sky-700')}`}>
                       {selectedShape.category.toUpperCase()}
                     </span>
                   </div>

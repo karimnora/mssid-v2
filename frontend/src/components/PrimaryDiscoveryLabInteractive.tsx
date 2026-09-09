@@ -202,7 +202,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
           onClick={() => setActiveTab('five_senses')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
             activeTab === 'five_senses'
-              ? 'bg-teal-600 text-white shadow-md'
+              ? 'bg-teal-700 text-white shadow-md'
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
@@ -213,7 +213,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
           onClick={() => setActiveTab('plant_growth')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
             activeTab === 'plant_growth'
-              ? 'bg-emerald-600 text-white shadow-md'
+              ? 'bg-emerald-700 text-white shadow-md'
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
@@ -244,7 +244,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                   onClick={() => setSelectedSense(sense.id)}
                   className={`p-4 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-2 ${
                     isSelected
-                      ? 'bg-teal-600 text-white border-teal-500 shadow-md scale-105 ring-2 ring-teal-400'
+                      ? 'bg-teal-700 text-white border-teal-500 shadow-md scale-105 ring-2 ring-teal-400'
                       : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-teal-400/50'
                   }`}
                 >
@@ -252,7 +252,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                   <span className="font-black text-xs">{sense.nameAr}</span>
                   <span
                     className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      isSelected ? 'bg-white/20 text-white' : 'bg-teal-100 text-teal-900'
+                      isSelected ? 'bg-white/90 text-teal-900' : 'bg-teal-100 text-teal-900'
                     }`}
                   >
                     {sense.organAr}
@@ -273,7 +273,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                   </div>
                   <div className="space-y-1 flex-1">
                     <h3 className="text-lg font-black text-[var(--app-text)]">{cur.nameAr}</h3>
-                    <p className="text-xs font-bold text-teal-600">العضو المسؤول: {cur.organAr}</p>
+                    <p className="text-xs font-bold text-teal-700">العضو المسؤول: {cur.organAr}</p>
                   </div>
                   <button
                     onClick={() => speakText(`${cur.nameAr}. ${cur.organAr}. ${cur.roleAr}`, 'ar-SA', 0.85)}
@@ -459,7 +459,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                       className={`p-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                         userAns === 'right'
                           ? isCorrect
-                            ? 'bg-emerald-600 text-white shadow-xs'
+                            ? 'bg-emerald-700 text-white shadow-xs'
                             : 'bg-rose-600 text-white'
                           : 'bg-[var(--app-card-bg)] border border-[var(--app-card-border)] text-[var(--app-text)] hover:border-blue-400'
                       }`}
@@ -471,7 +471,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                       className={`p-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                         userAns === 'duty'
                           ? isCorrect
-                            ? 'bg-emerald-600 text-white shadow-xs'
+                            ? 'bg-emerald-700 text-white shadow-xs'
                             : 'bg-rose-600 text-white'
                           : 'bg-[var(--app-card-bg)] border border-[var(--app-card-border)] text-[var(--app-text)] hover:border-blue-400'
                       }`}

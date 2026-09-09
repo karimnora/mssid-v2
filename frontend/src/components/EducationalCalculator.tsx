@@ -104,7 +104,7 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
           <button
             type="button"
             onClick={handleCalculate}
-            className="rounded-3xl bg-emerald-600 text-white px-5 py-3 font-bold shadow-sm hover:bg-emerald-700 transition"
+            className="rounded-3xl bg-emerald-700 text-white px-5 py-3 font-bold shadow-sm hover:bg-emerald-800 transition"
           >
             {t('common', 'calculate')}
           </button>
