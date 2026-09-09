@@ -8,7 +8,7 @@ export const SOROBAN_5AP: CourseLesson[] = [
 {
     id: 'soroban-basics',
     grade: '5AP',
-    subject: 'soroban',
+    subject: 'math',
     categoryAr: 'السوروبان والحساب الذهني',
     titleAr: 'مكونات السوروبان وقواعد التفعيل والتعطيل',
     summaryAr: `السوروبان (Soroban) هو المعداد الياباني التقليدي المكون من إطار وعارضة وأعمدة.
