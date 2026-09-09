@@ -135,7 +135,7 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
     it('initializes default payment receipts when empty', () => {
       const receipts = AuthService.getReceipts();
       expect(receipts.length).toBeGreaterThan(0);
-      expect(receipts[0].userEmail).toBe('free@mssid.dz');
+      expect(receipts[0].userEmail).toBe('dev-free@example.test');
     });
 
     it('submits a new CCP/BaridiMob receipt successfully (Happy Path)', () => {
@@ -354,6 +354,78 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
 
       expect(result).toBeNull();
       expect(mockFetch).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Streak consistency across XP sources (addScore / addExamXp / addChallengeXp)', () => {
+    const originalFetch = global.fetch;
+
+    beforeEach(() => {
+      global.fetch = vi.fn().mockResolvedValue({
+        status: 200,
+        ok: true,
+        headers: new Headers({ 'content-type': 'application/json' }),
+        json: async () => ({}),
+      });
+    });
+
+    afterEach(() => {
+      global.fetch = originalFetch;
+    });
+
+    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    const twoDaysAgo = new Date(Date.now() - 2 * 86400000).toISOString().slice(0, 10);
+
+    // Regression: addExamXp/addChallengeXp used to never touch streakDays at all, so a student who
+    // only did an exam or a challenge that day saw their streak silently fail to advance.
+    it('addExamXp advances the streak by 1 when the last activity was exactly yesterday', () => {
+      AuthService.setCurrentUser({
+        id: 1, nom: 'ياسين', email: 'yassine@mssid.dz', role: 'ROLE_FREE',
+        streakDays: 3, lastActiveDate: yesterday, score: 0,
+      } as AuthUser);
+
+      const updated = AuthService.addExamXp('exam-1', 50);
+
+      expect(updated?.streakDays).toBe(4);
+      expect(updated?.lastActiveDate).toBe(new Date().toISOString().slice(0, 10));
+    });
+
+    it('addChallengeXp resets the streak to 1 after a gap of more than one day', () => {
+      AuthService.setCurrentUser({
+        id: 1, nom: 'ياسين', email: 'yassine@mssid.dz', role: 'ROLE_FREE',
+        streakDays: 7, lastActiveDate: twoDaysAgo, score: 0,
+      } as AuthUser);
+
+      const updated = AuthService.addChallengeXp('challenge-1', 30);
+
+      expect(updated?.streakDays).toBe(1);
+    });
+
+    it('addScore leaves the streak unchanged on a second activity the same day', () => {
+      const today = new Date().toISOString().slice(0, 10);
+      AuthService.setCurrentUser({
+        id: 1, nom: 'ياسين', email: 'yassine@mssid.dz', role: 'ROLE_FREE',
+        streakDays: 5, lastActiveDate: today, score: 0,
+      } as AuthUser);
+
+      const updated = AuthService.addScore(10);
+
+      expect(updated?.streakDays).toBe(5);
+    });
+
+    it('addExamXp and addChallengeXp agree with addScore on the same-day-then-next-day sequence', () => {
+      AuthService.setCurrentUser({
+        id: 1, nom: 'ياسين', email: 'yassine@mssid.dz', role: 'ROLE_FREE',
+        streakDays: 2, lastActiveDate: yesterday, score: 0,
+      } as AuthUser);
+
+      // Only a challenge is completed today (no quiz) — the streak must still advance.
+      const updated = AuthService.addChallengeXp('challenge-2', 20);
+      expect(updated?.streakDays).toBe(3);
+
+      // A second, same-day exam completion must not double-increment.
+      const again = AuthService.addExamXp('exam-2', 40);
+      expect(again?.streakDays).toBe(3);
     });
   });
 });

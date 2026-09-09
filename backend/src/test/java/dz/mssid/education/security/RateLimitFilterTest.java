@@ -29,6 +29,13 @@ class RateLimitFilterTest {
         return request;
     }
 
+    private MockHttpServletRequest putRequest(String path) {
+        MockHttpServletRequest request = new MockHttpServletRequest("PUT", path);
+        request.setServletPath(path);
+        request.setRemoteAddr("203.0.113.10");
+        return request;
+    }
+
     @Test
     @DisplayName("AI endpoints (/api/v1/ai/**, /api/gemini/**) are capped at 15 requests/minute per IP")
     void aiEndpoints_areLimitedTo15PerMinute() throws Exception {
@@ -73,6 +80,36 @@ class RateLimitFilterTest {
             MockHttpServletResponse response = new MockHttpServletResponse();
             filter.doFilterInternal(postRequest("/api/v1/courses"), response, chain);
             assertEquals(200, response.getStatus(), "request " + (i + 1) + " must not hit the tighter AI limit");
+        }
+    }
+
+    @Test
+    @DisplayName("PUT /api/v1/users/me/progress is capped at 20 requests/minute per IP")
+    void progressSync_isLimitedTo20PerMinute() throws Exception {
+        FilterChain chain = mock(FilterChain.class);
+
+        for (int i = 0; i < 20; i++) {
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            filter.doFilterInternal(putRequest("/api/v1/users/me/progress"), response, chain);
+            assertEquals(200, response.getStatus(), "request " + (i + 1) + " should pass through");
+        }
+        verify(chain, times(20)).doFilter(any(), any());
+
+        MockHttpServletResponse blocked = new MockHttpServletResponse();
+        filter.doFilterInternal(putRequest("/api/v1/users/me/progress"), blocked, chain);
+        assertEquals(429, blocked.getStatus());
+        verify(chain, times(20)).doFilter(any(), any());
+    }
+
+    @Test
+    @DisplayName("Other /api/v1/users/** paths still get the general 60/minute window, not the tighter progress one")
+    void otherUserPaths_useDefaultWindow() throws Exception {
+        FilterChain chain = mock(FilterChain.class);
+
+        for (int i = 0; i < 25; i++) {
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            filter.doFilterInternal(putRequest("/api/v1/users/me"), response, chain);
+            assertEquals(200, response.getStatus(), "request " + (i + 1) + " must not hit the tighter progress limit");
         }
     }
 }

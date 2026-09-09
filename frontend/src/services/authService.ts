@@ -18,12 +18,16 @@ function notifyAuthListeners() {
   authListeners.forEach((listener) => listener());
 }
 
-// Default sample payment receipts
-const INITIAL_RECEIPTS: PaymentReceipt[] = [
+// Seed data for the local-only payment-receipts mock (getReceipts/submitReceipt/verifyReceipt
+// below). That whole mock is dev/test fixture only — it backs the isDevBuild-gated "simulate
+// admin approval" button in SubscriptionPaywall and the unit tests in authService.test.ts, never
+// a real admin/prod flow (that's verifyReceiptAsync, backed by the actual API). Uses
+// non-'@mssid.dz' emails so it can't be mistaken for a real or demo account.
+const DEV_MOCK_RECEIPTS_SEED: PaymentReceipt[] = [
   {
     id: 1,
     userId: 101,
-    userEmail: 'free@mssid.dz',
+    userEmail: 'dev-free@example.test',
     userName: 'أحمد التلميذ',
     receiptImageUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80',
     paymentMethod: 'BARIDIMOB',
@@ -35,7 +39,7 @@ const INITIAL_RECEIPTS: PaymentReceipt[] = [
   {
     id: 2,
     userId: 102,
-    userEmail: 'premium@mssid.dz',
+    userEmail: 'dev-premium@example.test',
     userName: 'سارة المتفوقة',
     receiptImageUrl: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&q=80',
     paymentMethod: 'EDAHABIA',
@@ -197,6 +201,25 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
   }
 }
 
+  /**
+   * Day-based streak increment shared by every XP-granting action (addScore, addExamXp,
+   * addChallengeXp): same day as last activity -> unchanged, exactly one day later -> +1,
+   * any gap -> reset to 1. Mirrors normalizeUserProfile's logic for the local guest profile,
+   * kept in sync so a streak doesn't silently stall depending on which activity (quiz vs
+   * exam vs challenge) the student did that day.
+   */
+  private static computeStreak(user: AuthUser): { streakDays: number; lastActiveDate: string } {
+    const today = new Date().toISOString().slice(0, 10);
+    const lastActive = user.lastActiveDate ? user.lastActiveDate.slice(0, 10) : null;
+    if (lastActive === today) return { streakDays: Math.max(user.streakDays || 1, 1), lastActiveDate: today };
+
+    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    return {
+      streakDays: lastActive === yesterday ? (user.streakDays || 0) + 1 : 1,
+      lastActiveDate: today,
+    };
+  }
+
   static addScore(points: number): AuthUser | null {
     const user = this.getCurrentUser();
     if (!user) return null;
@@ -205,6 +228,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const newScore = currentScore + points;
     const newLevel = Math.floor(newScore / 100) + 1;
     const currentQuizzes = user.quizzesCompleted || 0;
+    const { streakDays, lastActiveDate } = this.computeStreak(user);
 
     const updatedUser: AuthUser = {
       ...user,
@@ -212,8 +236,8 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       xp: newScore,
       level: newLevel,
       quizzesCompleted: currentQuizzes + 1,
-      streakDays: Math.max(user.streakDays || 1, 1),
-      lastActiveDate: new Date().toISOString().slice(0, 10),
+      streakDays,
+      lastActiveDate,
     };
 
     this.setCurrentUser(updatedUser);
@@ -361,6 +385,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const currentExams = user.completedExamIds || [];
     const isFirstCompletion = !currentExams.includes(examId);
     const newExams = isFirstCompletion ? [...currentExams, examId] : currentExams;
+    const { streakDays, lastActiveDate } = this.computeStreak(user);
 
     const updatedUser: AuthUser = {
       ...user,
@@ -368,7 +393,8 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       xp: newScore,
       level: Math.floor(newScore / 100) + 1,
       completedExamIds: newExams,
-      lastActiveDate: new Date().toISOString().slice(0, 10),
+      streakDays,
+      lastActiveDate,
     };
 
     this.setCurrentUser(updatedUser);
@@ -380,6 +406,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       score: updatedUser.score,
       xp: updatedUser.xp,
       level: updatedUser.level,
+      streakDays: updatedUser.streakDays,
       lastActiveDate: updatedUser.lastActiveDate,
       completedExamIds: isFirstCompletion ? [examId] : undefined,
     }).catch((err) => console.error('Erreur de synchronisation examen:', err));
@@ -399,6 +426,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const currentScore = user.score !== undefined ? user.score : (user.xp || 0);
     const newScore = currentScore + points;
     const newChallenges = [...currentChallenges, challengeId];
+    const { streakDays, lastActiveDate } = this.computeStreak(user);
 
     const updatedUser: AuthUser = {
       ...user,
@@ -406,7 +434,8 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       xp: newScore,
       level: Math.floor(newScore / 100) + 1,
       completedChallengeIds: newChallenges,
-      lastActiveDate: new Date().toISOString().slice(0, 10),
+      streakDays,
+      lastActiveDate,
     };
 
     this.setCurrentUser(updatedUser);
@@ -418,6 +447,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       score: updatedUser.score,
       xp: updatedUser.xp,
       level: updatedUser.level,
+      streakDays: updatedUser.streakDays,
       lastActiveDate: updatedUser.lastActiveDate,
       completedChallengeIds: isFirstCompletion ? [challengeId] : undefined,
     }).catch((err) => console.error('Erreur de synchronisation défi:', err));
@@ -665,13 +695,13 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
   static getReceipts(): PaymentReceipt[] {
     const saved = localStorage.getItem(STORAGE_KEYS.RECEIPTS);
     if (!saved) {
-      localStorage.setItem(STORAGE_KEYS.RECEIPTS, JSON.stringify(INITIAL_RECEIPTS));
-      return INITIAL_RECEIPTS;
+      localStorage.setItem(STORAGE_KEYS.RECEIPTS, JSON.stringify(DEV_MOCK_RECEIPTS_SEED));
+      return DEV_MOCK_RECEIPTS_SEED;
     }
     try {
       return JSON.parse(saved);
     } catch {
-      return INITIAL_RECEIPTS;
+      return DEV_MOCK_RECEIPTS_SEED;
     }
   }
 

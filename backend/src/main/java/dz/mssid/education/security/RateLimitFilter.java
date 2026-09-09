@@ -33,6 +33,11 @@ import java.util.concurrent.atomic.AtomicInteger;
         *   burst guard in front of the per-account daily quota ({@code AiQuotaService}, SEC-10).
         *   Endpoints themselves now require a JWT; this IP window still stops a single address from
         *   hammering Gemini even with a valid cookie.
+ * - {@code PUT /api/v1/users/me/progress}: 20 requests / minute per IP — this is the main
+ *   scoring-integrity surface (ProgressGuard only clamps magnitude, it doesn't verify submitted
+ *   lesson/exam IDs against real content), so it gets a tighter window than the generic bucket to
+ *   slow down a client scripting repeated calls to accumulate XP/badges, without blocking a
+ *   student who legitimately finishes several short lessons in a row.
  * - Everything else under {@code /api/**}: 60 requests / minute — general abuse/scraping guard.
  * <p>
  * Known limitation: the per-IP counters are never evicted, so memory grows slowly with the number of
@@ -49,6 +54,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private static final Window FORGOT_PASSWORD_WINDOW = new Window(3, 15 * 60 * 1000L);
     private static final Window RESET_PASSWORD_WINDOW = new Window(10, 15 * 60 * 1000L);
     private static final Window AI_WINDOW = new Window(15, 60 * 1000L);
+    private static final Window PROGRESS_WINDOW = new Window(20, 60 * 1000L);
     private static final Window DEFAULT_WINDOW = new Window(60, 60 * 1000L);
 
     private static final class Counter {
@@ -60,6 +66,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private final ConcurrentHashMap<String, Counter> forgotPasswordCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> resetPasswordCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> aiCounters = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Counter> progressCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> apiCounters = new ConcurrentHashMap<>();
 
     @Override
@@ -77,6 +84,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
         boolean isForgotPassword = isPost && path.startsWith("/api/v1/auth/forgot-password");
         boolean isResetPassword = isPost && path.startsWith("/api/v1/auth/reset-password");
         boolean isAiEndpoint = isPost && (path.startsWith("/api/gemini/") || path.startsWith("/api/v1/ai/"));
+        boolean isProgressSync = "PUT".equalsIgnoreCase(request.getMethod()) && path.equals("/api/v1/users/me/progress");
 
         Window window;
         ConcurrentHashMap<String, Counter> bucket;
@@ -97,6 +105,10 @@ public class RateLimitFilter extends OncePerRequestFilter {
             window = AI_WINDOW;
             bucket = aiCounters;
             message = "Trop de demandes envoyées à l'assistant IA. Veuillez ralentir et réessayer dans un instant.";
+        } else if (isProgressSync) {
+            window = PROGRESS_WINDOW;
+            bucket = progressCounters;
+            message = "Trop de synchronisations de progression. Veuillez ralentir et réessayer dans un instant.";
         } else {
             window = DEFAULT_WINDOW;
             bucket = apiCounters;

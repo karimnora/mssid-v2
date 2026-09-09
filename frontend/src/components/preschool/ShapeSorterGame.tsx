@@ -448,7 +448,7 @@ const GameBoard: React.FC<{
         </div>
         {cfg.hasTimer ? (
           <div className={`flex items-center gap-1 px-3 py-1.5 rounded-2xl font-black text-sm border-2
-            ${timeLeft <= 10 ? 'bg-red-100 border-red-400 text-red-700 animate-pulse' : 'bg-white border-amber-300 text-amber-800'}`}>
+            ${timeLeft <= 10 ? 'bg-orange-100 border-orange-500 text-orange-800 animate-pulse' : 'bg-white border-amber-300 text-amber-800'}`}>
             ⏱️ {timeLeft}s
           </div>
         ) : (
