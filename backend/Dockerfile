@@ -21,4 +21,11 @@ COPY --from=build /app/target/*.jar app.jar
 # Render injects $PORT and expects the container to listen on it — application.properties already
 # reads server.port=${PORT:8080}, so no extra flag is needed here.
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Without -XX:MaxRAMPercentage, a container-aware JVM defaults to ~25% of the container's memory as
+# its heap ceiling — on Render's 512MB Starter plan that's ~128MB, tight enough to risk GC thrashing
+# under real traffic even though the container has far more memory available. 75% leaves ~128MB of
+# headroom for metaspace/thread stacks/native memory, which is what actually matters on a small
+# container. SerialGC over the JRE 21 default (G1) because G1's parallel collector threads compete
+# for the Starter plan's 0.5 CPU instead of helping — Serial's single-threaded, lower-overhead
+# collection is the better fit below ~1-2GB heaps on a CPU-constrained instance.
+ENTRYPOINT ["java", "-XX:+UseSerialGC", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]
