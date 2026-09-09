@@ -17,8 +17,15 @@
       - script-src/connect-src/frame-src allow accounts.google.com for Google Identity Services (the
         "Continuer avec Google" button, see AuthModal.tsx): the library's own <script> tag, its
         internal fetch calls, and the button/One Tap iframe it renders all come from that origin.
+      - script-src allows va.vercel-scripts.com for @vercel/analytics (an actual dependency, see
+        package.json) — without it the analytics script load is silently blocked, so Vercel Analytics
+        collects nothing in production despite being installed and wired up.
+      - worker-src 'self' blob: covers canvas-confetti's default worker-mode rendering (BadgeUnlockToast
+        and friends): with no worker-src directive it falls back to script-src, which has no `blob:`,
+        so every badge-unlock celebration tried and failed to spin up its render worker. It still
+        rendered (the library catches the failure and falls back to main-thread canvas), just noisily.
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: http://localhost:8080 http://localhost:3000; frame-src https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: http://localhost:8080 http://localhost:3000; frame-src https://accounts.google.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self';" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#008751" />
     <meta name="mobile-web-app-capable" content="yes" />

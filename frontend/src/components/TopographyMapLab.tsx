@@ -118,8 +118,8 @@ const AlgeriaReliefMap: React.FC<{
     <svg
       viewBox={ALGERIA_MAP_VIEWBOX}
       className="w-full max-w-[380px] h-auto"
-      role="img"
-      aria-label="خريطة تضاريس الجزائر"
+      role="group"
+      aria-label="خريطة تضاريس الجزائر — اختر منطقة"
     >
       <defs>
         <clipPath id="algeria-relief-clip">

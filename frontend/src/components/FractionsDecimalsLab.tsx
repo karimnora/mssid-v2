@@ -127,6 +127,8 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
               <button
                 key={i}
                 onClick={() => toggleSlice(i)}
+                aria-label={`الجزء رقم ${i + 1} من ${slices.length}${i < filled ? ' ممتلئ' : ' فارغ'}`}
+                aria-pressed={i < filled}
                 className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl border-2 transition-all cursor-pointer flex items-center justify-center text-xl font-black ${
                   i < filled ? 'bg-orange-500 border-orange-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text-muted)]'
                 }`}

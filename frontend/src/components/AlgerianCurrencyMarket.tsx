@@ -482,6 +482,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                         <div className="flex items-center gap-2 w-full justify-between">
                           <button
                             onClick={() => removeFromCart(prod.id)}
+                            aria-label={`إنقاص كمية ${prod.nameAr}`}
                             className="w-8 h-8 rounded-xl bg-rose-100 text-rose-700 hover:bg-rose-200 flex items-center justify-center font-black transition-colors cursor-pointer"
                           >
                             <Minus className="w-4 h-4" />
@@ -491,6 +492,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                           </span>
                           <button
                             onClick={() => addToCart(prod.id)}
+                            aria-label={`زيادة كمية ${prod.nameAr}`}
                             className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 hover:bg-emerald-200 flex items-center justify-center font-black transition-colors cursor-pointer"
                           >
                             <Plus className="w-4 h-4" />

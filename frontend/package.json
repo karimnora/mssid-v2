@@ -46,6 +46,7 @@
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@capacitor/assets": "^3.0.5",
     "@playwright/test": "^1.62.1",
     "@testing-library/jest-dom": "^7.0.0",

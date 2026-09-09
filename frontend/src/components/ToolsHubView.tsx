@@ -396,7 +396,14 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
       {/* ════════════════════════════════════════════════════════════════
           DESKTOP  (hidden md:block)
       ════════════════════════════════════════════════════════════════ */}
-      <div className={`hidden md:block space-y-4 ${labFocused ? 'hidden' : ''}`}>
+      {/* A plain runtime `hidden` can't override `md:block` here — Tailwind places every `md:`
+          rule after the whole unprefixed layer (including `.hidden`) in the generated stylesheet,
+          so `md:block` always won this tie at desktop widths regardless of labFocused, silently
+          keeping the full catalog/search header rendered above the open lab. `md:hidden` is itself
+          a media-scoped rule at the same breakpoint, ordered after `md:block` there for the same
+          reason `.hidden` already correctly wins over plain `.block` below 768px — see the mobile
+          wrapper's equivalent conditional a few dozen lines down. */}
+      <div className={`hidden md:block space-y-4 ${labFocused ? 'md:hidden' : ''}`}>
 
         {/* Top Header & Compact Navigation Banner */}
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-4 sm:p-5 shadow-sm space-y-4">

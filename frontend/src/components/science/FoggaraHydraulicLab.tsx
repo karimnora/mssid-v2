@@ -68,6 +68,7 @@ export const FoggaraHydraulicLab: React.FC<Props> = ({ onReward }) => {
               step="1"
               value={slope}
               onChange={(e) => setSlope(Number(e.target.value))}
+              aria-label="انحدار النفق الجوفي (الجاذبية)"
               className="w-full accent-amber-600"
             />
             <div className="flex justify-between text-[10px] text-[var(--app-text-muted)]">

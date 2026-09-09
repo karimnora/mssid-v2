@@ -543,6 +543,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                           </span>
                           <button
                             onClick={() => speakTamazight(voc.termAr)}
+                            aria-label={`استمع إلى نطق ${voc.termAr}`}
                             className="p-1 rounded-md text-amber-700 hover:bg-amber-200/50 cursor-pointer"
                           >
                             <Volume2 className="w-3.5 h-3.5" />

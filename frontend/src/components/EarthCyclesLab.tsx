@@ -132,6 +132,7 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
             max={23}
             value={hour}
             onChange={(e) => handleHourChange(Number(e.target.value))}
+            aria-label="ساعة اليوم"
             className="w-full max-w-md mx-auto cursor-pointer accent-indigo-600"
           />
           <div className="flex justify-center gap-1 flex-wrap max-w-md mx-auto">

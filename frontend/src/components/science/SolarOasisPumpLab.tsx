@@ -89,6 +89,7 @@ export const SolarOasisPumpLab: React.FC<Props> = ({ onReward }) => {
               max="18"
               value={sunlightHours}
               onChange={(e) => setSunlightHours(Number(e.target.value))}
+              aria-label="ساعة النهار (موقع الشمس)"
               className="w-full accent-amber-600"
             />
             <div className="flex justify-between text-[10px] text-[var(--app-text-muted)]">

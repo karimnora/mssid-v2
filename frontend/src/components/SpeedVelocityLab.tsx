@@ -721,6 +721,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     value={vehicleAId}
                     onChange={(e) => setVehicleAId(e.target.value)}
                     disabled={raceState === 'racing' || raceState === 'countdown'}
+                    aria-label={t('مركبة السباق الأولى', 'Véhicule de course 1')}
                     className="w-full appearance-none bg-slate-900 text-white font-bold text-sm rounded-xl px-3 py-2 border border-indigo-500/40 focus:outline-none"
                   >
                     {CITY_VEHICLES.map((v) => (
@@ -754,6 +755,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     value={distanceMeters}
                     onChange={(e) => setDistanceMeters(Number(e.target.value))}
                     disabled={raceState === 'racing' || raceState === 'countdown'}
+                    aria-label={t('مسافة السباق', 'Distance de la course')}
                     className="appearance-none bg-transparent text-amber-300 font-black focus:outline-none"
                   >
                     <option value={100}>100 m</option>
@@ -811,6 +813,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     value={vehicleBId}
                     onChange={(e) => setVehicleBId(e.target.value)}
                     disabled={raceState === 'racing' || raceState === 'countdown'}
+                    aria-label={t('مركبة السباق الثانية', 'Véhicule de course 2')}
                     className="w-full appearance-none bg-slate-900 text-white font-bold text-sm rounded-xl px-3 py-2 border border-rose-500/40 focus:outline-none"
                   >
                     {CITY_VEHICLES.map((v) => (

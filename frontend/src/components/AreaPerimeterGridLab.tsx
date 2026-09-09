@@ -125,6 +125,8 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
                 <button
                   key={key(r, c)}
                   onClick={() => toggleCell(r, c)}
+                  aria-label={`مربع الصف ${r + 1} العمود ${c + 1}${isFilled ? ' ممتلئ' : ' فارغ'}`}
+                  aria-pressed={isFilled}
                   className={`w-8 h-8 sm:w-9 sm:h-9 rounded-md border transition-all cursor-pointer ${
                     isFilled ? 'bg-emerald-500 border-emerald-600 shadow-xs' : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-emerald-100'
                   }`}

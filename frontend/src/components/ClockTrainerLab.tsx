@@ -148,6 +148,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
                 max={11}
                 value={hour % 12}
                 onChange={(e) => setHour(Number(e.target.value))}
+                aria-label="الساعات"
                 className="w-full cursor-pointer accent-[var(--brand-emerald)]"
               />
             </div>
@@ -160,6 +161,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
                 step={minuteStep}
                 value={minute}
                 onChange={(e) => setMinute(Number(e.target.value))}
+                aria-label="الدقائق"
                 className="w-full cursor-pointer accent-[var(--brand-emerald)]"
               />
             </div>
