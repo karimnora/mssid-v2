@@ -39,7 +39,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
 
       {/* Digit Selector 1 to 10 */}
       <div className="space-y-2">
-        <h3 className="text-xs font-extrabold text-slate-300">اخْتَر جَدْوَلَ الضَّرْبِ:</h3>
+        <h3 className="text-xs font-extrabold text-[var(--kids-muted)]">اخْتَر جَدْوَلَ الضَّرْبِ:</h3>
         <div className="flex flex-wrap gap-2">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((digit) => (
             <button
