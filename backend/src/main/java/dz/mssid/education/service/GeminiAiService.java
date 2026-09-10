@@ -50,6 +50,13 @@ public class GeminiAiService {
     @Value("${gemini.tts.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent}")
     private String ttsApiUrl;
 
+    // Reel scripts get their OWN model, deliberately NOT gemini-3.1-flash-lite (that one is tuned for
+    // the tutor's high call volume within a tight free-tier quota — see geminiApiUrl above). An ad
+    // script is generated rarely (one admin, occasional use) and its writing quality matters more
+    // than throughput, so it stays on the stronger general-purpose model.
+    @Value("${gemini.reels.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent}")
+    private String reelsScriptApiUrl;
+
     private final RestTemplate restTemplate = new RestTemplate();
     private final AdminAuditLogService adminAuditLogService;
     private final ObjectMapper objectMapper;
@@ -267,7 +274,7 @@ public class GeminiAiService {
                 + "الموضوع: " + topic;
 
         try {
-            String jsonText = callGeminiApiWithKey(reelsApiKey, prompt, REEL_SCRIPT_SCHEMA);
+            String jsonText = callGeminiApiWithKey(reelsApiKey, reelsScriptApiUrl, prompt, REEL_SCRIPT_SCHEMA);
             JsonNode parsed = objectMapper.readTree(jsonText);
 
             List<String> tags = Arrays.asList(objectMapper.convertValue(parsed.path("tags"), String[].class));
@@ -351,10 +358,10 @@ public class GeminiAiService {
         }
     }
 
-    // Like callGeminiApiStructured, but parameterized by which API key + schema to use, so the Reels
-    // Studio's independent key/schema never touches the shared tutor call path above.
-    private String callGeminiApiWithKey(String apiKeyToUse, String textPrompt, Map<String, Object> schema) {
-        String url = geminiApiUrl + "?key=" + apiKeyToUse;
+    // Like callGeminiApiStructured, but parameterized by which API key + URL (model) + schema to use,
+    // so the Reels Studio's independent key/model/schema never touches the shared tutor call path.
+    private String callGeminiApiWithKey(String apiKeyToUse, String apiUrl, String textPrompt, Map<String, Object> schema) {
+        String url = apiUrl + "?key=" + apiKeyToUse;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
