@@ -489,12 +489,12 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   </div>
 
                   <div className={`print-corrige ${isSolVisible && showExamTools ? '' : 'print-corrige--screen-hidden'}`}>
-                    {selectedExam.subject === 'math' ? (
+                    {selectedExam.subject === 'math' && ex.operationsAr ? (
                       <div className="print-corrige-box grid grid-cols-2 gap-2 p-3 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans border-2 border-[#E7E2D7]" dir="rtl">
                         <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1">
                           <p className="text-[11px] font-extrabold text-[var(--brand-blue)]">العمليات</p>
                           <div className="whitespace-pre-line leading-relaxed">
-                            {formatEducationalText(ex.operationsAr || '—')}
+                            {formatEducationalText(ex.operationsAr)}
                           </div>
                         </div>
                         <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1">
@@ -505,6 +505,10 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                         </div>
                       </div>
                     ) : (
+                      // No operationsAr authored for this exercise yet (see CLAUDE.md's two-column
+                      // mandate — most math exercises are still missing this field, tracked as a
+                      // content-authoring backlog) — degrade to the same single-column solution box
+                      // used for non-math subjects, instead of showing an empty "—" operations panel.
                     <div className="print-corrige-box p-4 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans leading-relaxed whitespace-pre-line border-2 border-[#E7E2D7]">
                       <div className="flex items-center gap-1.5 text-[11px] font-extrabold text-[var(--brand-emerald)] mb-2 border-b border-[#E7E2D7] pb-1">
                         <Check className="w-3.5 h-3.5" />
