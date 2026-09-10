@@ -351,8 +351,8 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-2ap-t2-addition-with-carry'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'احسب بالاحتفاظ: 38 + 27.', solutionAr: '8+7=15 اكتب 5 واحتفظ بـ1. 3+2+1=6. الناتج 65.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'فكّك 142 إلى مئات وعشرات ووحدات.', solutionAr: '1 مئة، 4 عشرات، 2 وحدات.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'احسب بالاحتفاظ: 38 + 27.', solutionAr: '8+7=15 اكتب 5 واحتفظ بـ1. 3+2+1=6. الناتج 65.', operationsAr: '  38\n+ 27\n----\n  65' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'فكّك 142 إلى مئات وعشرات ووحدات.', solutionAr: '1 مئة، 4 عشرات، 2 وحدات.', operationsAr: '142 = 100 + 40 + 2' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'جمع سامي 45 طابعاً ثم 19 طابعاً. كم صار عنده؟', solutionAr: '45+19=64 طابعاً.' },
   },
@@ -371,8 +371,8 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     relatedLessonIds: ['math-2ap-t3-double-half', 'math-2ap-t3-multiplication-concept'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: '3 × 2 = 3 + … = ؟', solutionAr: '3 + 3 = 6.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t3-double-half', contentAr: 'ما نصف 16؟', solutionAr: '8.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: '3 × 2 = 3 + … = ؟', solutionAr: '3 + 3 = 6.', operationsAr: '3 + 3 = 6' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t3-double-half', contentAr: 'ما نصف 16؟', solutionAr: '8.', operationsAr: '16 ÷ 2 = 8' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: 'في 3 أكياس 5 تفاحات. كم تفاحة؟ (اجمع أو استعمل ×)', solutionAr: '5 + 5 + 5 = 15 تفاحة (3 × 5 = 15).' },
   },
@@ -429,8 +429,8 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     contentSource: 'complementary',
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'احسب: 7 × 8.', solutionAr: '56.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'حوّل: 3 m إلى cm.', solutionAr: '300 cm.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'احسب: 7 × 8.', solutionAr: '56.', operationsAr: ' 7\n×8\n--\n56' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'حوّل: 3 m إلى cm.', solutionAr: '300 cm.', operationsAr: '3 × 100 = 300' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'ثمن الكرّاس 40 دج. كم ثمن 6 كراريس؟', solutionAr: '40 × 6 = 240 دج.' },
   },
@@ -448,8 +448,8 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
     contentSource: 'complementary',
     sourceNoteAr: DEVOIR_SOURCE_NOTE_AR,
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'قارن: 3/7 و 5/7.', solutionAr: '3/7 < 5/7 (نفس المقام).' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'أتمم: 29 = (4 × ...) + 1.', solutionAr: '29 = (4 × 7) + 1.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, contentAr: 'قارن: 3/7 و 5/7.', solutionAr: '3/7 < 5/7 (نفس المقام).', operationsAr: '3/7\n5/7\n(نفس المقام: قارن 3 و5)' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, contentAr: 'أتمم: 29 = (4 × ...) + 1.', solutionAr: '29 = (4 × 7) + 1.', operationsAr: ' 4\n×7\n--\n28\n\n28\n+1\n--\n29' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, contentAr: 'حديقة مستطيلة طولها 12m وعرضها 5m. ما محيطها؟', solutionAr: '(12+5)×2 = 34 m.' },
   },
@@ -493,6 +493,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-3ap-t3-division-remainder',
         contentAr: 'أنجز: 29 ÷ 4. اكتب الحاصل والباقي، وتحقق أن الباقي أصغر من القاسم.',
         solutionAr: '29 = (4 × 7) + 1. الحاصل 7 والباقي 1 و 1 < 4.',
+        operationsAr: ' 4\n×7\n--\n28\n\n28\n+1\n--\n29',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -500,6 +501,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-3ap-t2-units-length-mass',
         contentAr: 'حوّل: 2 m إلى cm، ثم 300 cm إلى m.',
         solutionAr: '2 m = 200 cm. 300 cm = 3 m.',
+        operationsAr: '2 × 100 = 200\n300 ÷ 100 = 3',
       },
     ],
     problemExercise: {
@@ -531,6 +533,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-perimeter-squares-rectangles',
         contentAr: 'مستطيل طوله 12m وعرضه 5m. احسب محيطه فقط.',
         solutionAr: 'المحيط = (12 + 5) × 2 = 34m.',
+        operationsAr: ' 12\n+ 5\n---\n 17\n\n 17\n× 2\n---\n 34',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -538,6 +541,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-4ap-proportionally-time-data',
         contentAr: 'انطلقت حافلة على 08h15min ووصلت على 10h00min. ما مدة الرحلة؟',
         solutionAr: 'من 08h15 إلى 10h00 = 1h45min.',
+        operationsAr: '10:00 − 08:15 = 1:45',
       },
     ],
     problemExercise: {
@@ -569,6 +573,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-decimals',
         contentAr: 'احسب مع محاذاة الفاصلة: 12.4 + 3.75. ثم رتّب: 4.08 — 4.8 — 4.18.',
         solutionAr: '12.40 + 3.75 = 16.15. الترتيب: 4.08 < 4.18 < 4.8.',
+        operationsAr: ' 12.40\n+ 3.75\n------\n 16.15\n\n4.08\n4.18\n4.80',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -576,6 +581,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-division',
         contentAr: 'أجرِ القسمة الإقليدية: 73 ÷ 9 واكتب المساواة.',
         solutionAr: '73 = (9 × 8) + 1. الحاصل 8 والباقي 1 و 1 < 9.',
+        operationsAr: ' 9\n×8\n--\n72\n\n72\n+1\n--\n73',
       },
     ],
     problemExercise: {
@@ -607,6 +613,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-percentage-scale',
         contentAr: 'احسب 20% من 2,500 دج. ثم الثمن بعد تخفيض 20%.',
         solutionAr: '20% = 500 دج. الثمن بعد التخفيض = 2,000 دج.',
+        operationsAr: '2500 × 20 ÷ 100 = 500\n\n 2500\n−  500\n------\n 2000',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -614,6 +621,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         relatedLessonId: 'math-5ap-proportionality-ruleofthree',
         contentAr: '6 دفاتر بـ 480 دج. ما ثمن 9 دفاتر مماثلة؟',
         solutionAr: '(9 × 480) ÷ 6 = 720 دج.',
+        operationsAr: ' 480\n×  9\n-----\n4320\n\n4320 ÷ 6 = 720',
       },
     ],
     problemExercise: {
