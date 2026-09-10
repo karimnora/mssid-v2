@@ -1,13 +1,26 @@
 import { AdReel } from '../types/reels';
-import { renderReelSlideCanvas, downloadBlob } from './reelSlideImage';
+import { renderReelSlideCanvas, shareOrDownloadReelFile } from './reelSlideImage';
 
 const FPS = 30;
 const WIDTH = 1080;
 const HEIGHT = 1920;
 
-// Records each slide's canvas onto one output canvas, held for its `durationSec`, captured via
-// MediaRecorder into a single .webm — no server involved, entirely in the admin's browser.
-async function recordSlidesToWebm(reel: AdReel, onProgress?: (fraction: number) => void): Promise<Blob> {
+/**
+ * Exports the whole reel as a single .webm, ready to post to Instagram/Facebook/TikTok (all accept
+ * WebM uploads) or convert locally if a platform insists on MP4. Records entirely client-side —
+ * each slide's canvas (with Didou composited in, see renderReelSlideCanvas) is held on one output
+ * canvas for its `durationSec`, captured via MediaRecorder — no server involved.
+ *
+ * An earlier version transcoded to .mp4 via ffmpeg.wasm (~25MB WASM payload, its own CSP/worker
+ * requirements). Dropped after it turned out unreliable on both mobile and desktop in practice —
+ * WebM via MediaRecorder alone is far more broadly and predictably supported, and needs no extra
+ * library or CSP allowance at all.
+ */
+export async function downloadReelAsVideo(reel: AdReel, onProgress?: (fraction: number) => void, mascotImageUrl?: string): Promise<void> {
+  if (typeof MediaRecorder === 'undefined') {
+    throw new Error('MediaRecorder is not supported in this browser.');
+  }
+
   const outputCanvas = document.createElement('canvas');
   outputCanvas.width = WIDTH;
   outputCanvas.height = HEIGHT;
@@ -17,14 +30,23 @@ async function recordSlidesToWebm(reel: AdReel, onProgress?: (fraction: number) 
   // Fixed frame rate mode: the stream emits frames continuously at FPS regardless of redraws, so a
   // single drawImage per slide (held via setTimeout) is enough — no manual re-draw loop needed.
   const stream = (outputCanvas as HTMLCanvasElement & { captureStream(fps?: number): MediaStream }).captureStream(FPS);
-  const mimeType = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+  const mimeType = MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
+    ? 'video/webm;codecs=vp9'
+    : MediaRecorder.isTypeSupported('video/webm;codecs=vp8')
+    ? 'video/webm;codecs=vp8'
+    : 'video/webm';
+  if (!MediaRecorder.isTypeSupported(mimeType)) {
+    throw new Error('No supported video/webm codec in this browser.');
+  }
+
   const recorder = new MediaRecorder(stream, { mimeType });
   const chunks: BlobPart[] = [];
   recorder.ondataavailable = (e) => {
     if (e.data.size > 0) chunks.push(e.data);
   };
-  const stopped = new Promise<Blob>((resolve) => {
+  const stopped = new Promise<Blob>((resolve, reject) => {
     recorder.onstop = () => resolve(new Blob(chunks, { type: 'video/webm' }));
+    recorder.onerror = () => reject(new Error('MediaRecorder failed while recording the reel.'));
   });
 
   recorder.start();
@@ -32,45 +54,18 @@ async function recordSlidesToWebm(reel: AdReel, onProgress?: (fraction: number) 
   const totalDuration = reel.slides.reduce((sum, s) => sum + s.durationSec, 0) || 1;
   let elapsed = 0;
   for (const slide of reel.slides) {
-    const slideCanvas = await renderReelSlideCanvas(slide, reel);
+    const slideCanvas = await renderReelSlideCanvas(slide, reel, mascotImageUrl);
     outCtx.clearRect(0, 0, WIDTH, HEIGHT);
     outCtx.drawImage(slideCanvas, 0, 0);
     await new Promise((r) => setTimeout(r, Math.max(500, slide.durationSec * 1000)));
     elapsed += slide.durationSec;
-    onProgress?.((elapsed / totalDuration) * 0.5); // recording = first half of the progress bar
+    onProgress?.(elapsed / totalDuration);
   }
 
   recorder.stop();
-  return stopped;
-}
+  const webmBlob = await stopped;
+  if (webmBlob.size === 0) throw new Error('Recorded video is empty.');
 
-/**
- * Exports the whole reel as a single MP4 for direct posting to Instagram/Facebook/TikTok. Records
- * a .webm client-side (recordSlidesToWebm above), then remuxes/encodes it to .mp4 via ffmpeg.wasm —
- * loaded lazily (dynamic import) only when this function actually runs, so its ~25MB WASM payload
- * never reaches students; only an admin clicking "Télécharger (vidéo MP4)" pays that cost.
- * See index.html's CSP comment for the 'wasm-unsafe-eval' allowance this requires.
- */
-export async function downloadReelAsVideo(reel: AdReel, onProgress?: (fraction: number) => void): Promise<void> {
-  const webmBlob = await recordSlidesToWebm(reel, onProgress);
-  onProgress?.(0.55);
-
-  const { FFmpeg } = await import('@ffmpeg/ffmpeg');
-  const { fetchFile, toBlobURL } = await import('@ffmpeg/util');
-
-  const ffmpeg = new FFmpeg();
-  const baseURL = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
-  await ffmpeg.load({
-    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-  });
-  ffmpeg.on('progress', ({ progress }) => onProgress?.(0.55 + Math.min(1, Math.max(0, progress)) * 0.45));
-
-  await ffmpeg.writeFile('input.webm', await fetchFile(webmBlob));
-  await ffmpeg.exec(['-i', 'input.webm', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', 'output.mp4']);
-  const data = await ffmpeg.readFile('output.mp4');
-  const mp4Blob = new Blob([data as Uint8Array], { type: 'video/mp4' });
-
-  downloadBlob(mp4Blob, `reel-${reel.id ?? 'draft'}.mp4`);
+  await shareOrDownloadReelFile(webmBlob, `reel-${reel.id ?? 'draft'}.webm`, 'video/webm', reel.title);
   onProgress?.(1);
 }

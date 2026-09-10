@@ -67,8 +67,14 @@ function wrapCenteredText(ctx: CanvasRenderingContext2D, text: string, cx: numbe
  * Renders one reel slide as a 1080×1920 (9:16) canvas — high-resolution enough for direct posting
  * to Instagram/Facebook/TikTok. Reuses the wrap/gradient-drawing approach from certificateImage.ts's
  * renderCertificateCanvas, adapted to a vertical social layout instead of a square diploma.
+ *
+ * `mascotImageUrl`: a data: URL of the live Didou3DAvatar SVG, serialized once by ReelsStudioModule
+ * from a hidden real instance of that component (see its getMascotSvgDataUrl) — Gemini only writes
+ * text, it has no access to the app's assets/components to draw Didou itself, so the actual mascot
+ * illustration is composited here in plain Canvas 2D instead. Falls back to the small brand logo
+ * alone when no mascot is available (e.g. the SVG couldn't be captured yet).
  */
-export async function renderReelSlideCanvas(slide: ReelSlide, reel: Pick<AdReel, 'title'>): Promise<HTMLCanvasElement> {
+export async function renderReelSlideCanvas(slide: ReelSlide, reel: Pick<AdReel, 'title'>, mascotImageUrl?: string): Promise<HTMLCanvasElement> {
   const canvas = document.createElement('canvas');
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
@@ -123,12 +129,23 @@ export async function renderReelSlideCanvas(slide: ReelSlide, reel: Pick<AdReel,
     }
   }
 
-  // Brand footer, same self-hosted logo as certificateImage.ts's certificates.
-  try {
-    const logo = await loadImage('/pwa-icon-source.svg');
-    ctx.drawImage(logo, WIDTH / 2 - 34, HEIGHT - 150, 68, 68);
-  } catch {
-    // Logo is a nice-to-have; a missing/blocked asset shouldn't stop the export.
+  // Didou "presenting" the slide — the live app mascot (captured from a real Didou3DAvatar instance,
+  // see ReelsStudioModule's getMascotSvgDataUrl), not a generic logo, when available.
+  if (mascotImageUrl) {
+    try {
+      const mascot = await loadImage(mascotImageUrl);
+      const mascotSize = 340;
+      ctx.drawImage(mascot, WIDTH / 2 - mascotSize / 2, HEIGHT - mascotSize - 110, mascotSize, mascotSize);
+    } catch {
+      // A capture failure shouldn't stop the export — falls through to the plain brand footer below.
+    }
+  } else {
+    try {
+      const logo = await loadImage('/pwa-icon-source.svg');
+      ctx.drawImage(logo, WIDTH / 2 - 34, HEIGHT - 150, 68, 68);
+    } catch {
+      // Logo is a nice-to-have; a missing/blocked asset shouldn't stop the export.
+    }
   }
   ctx.fillStyle = textColor;
   ctx.globalAlpha = 0.85;
@@ -145,7 +162,7 @@ export function canvasToPngBlob(canvas: HTMLCanvasElement): Promise<Blob> {
   });
 }
 
-export function downloadBlob(blob: Blob, filename: string) {
+function triggerDownloadLink(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
@@ -156,15 +173,37 @@ export function downloadBlob(blob: Blob, filename: string) {
   setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
-/** Renders every slide and triggers one PNG download per slide, named reel-{id}-slide-{n}.png. */
-export async function downloadReelAsImages(reel: AdReel): Promise<void> {
+/**
+ * A plain `<a download>` click reliably saves a file on desktop, but many mobile browsers/WebViews
+ * silently ignore it for blob: URLs (it just opens the file in a viewer tab instead of saving it) —
+ * exactly the "not downloadable on mobile" bug reported for this feature. Mirrors
+ * certificateImage.ts's shareOrDownloadCertificate: prefer the native share sheet (which mobile
+ * browsers DO support for blob files) and fall back to the plain link only when sharing isn't
+ * available (desktop browsers with no share target).
+ */
+export async function shareOrDownloadReelFile(blob: Blob, filename: string, mimeType: string, shareText: string): Promise<void> {
+  const file = new File([blob], filename, { type: mimeType });
+  if (typeof navigator !== 'undefined' && navigator.canShare?.({ files: [file] }) && navigator.share) {
+    try {
+      await navigator.share({ files: [file], title: 'مَسِيد DZ', text: shareText });
+      return;
+    } catch (e) {
+      if (e instanceof Error && e.name === 'AbortError') return; // user cancelled the share sheet
+      // Any other share failure falls through to the download link below.
+    }
+  }
+  triggerDownloadLink(blob, filename);
+}
+
+/** Renders every slide and triggers one PNG share/download per slide, named reel-{id}-slide-{n}.png. */
+export async function downloadReelAsImages(reel: AdReel, mascotImageUrl?: string): Promise<void> {
   const idPart = reel.id ?? 'draft';
   for (let i = 0; i < reel.slides.length; i++) {
-    const canvas = await renderReelSlideCanvas(reel.slides[i], reel);
+    const canvas = await renderReelSlideCanvas(reel.slides[i], reel, mascotImageUrl);
     const blob = await canvasToPngBlob(canvas);
-    downloadBlob(blob, `reel-${idPart}-slide-${i + 1}.png`);
-    // Stagger downloads slightly — triggering many `<a download>` clicks in the same tick makes some
-    // browsers silently drop all but the first.
+    await shareOrDownloadReelFile(blob, `reel-${idPart}-slide-${i + 1}.png`, 'image/png', reel.title);
+    // Stagger slightly — triggering several share-sheet/download prompts in the same tick confuses
+    // some mobile browsers into only honoring the first one.
     await new Promise((r) => setTimeout(r, 300));
   }
 }

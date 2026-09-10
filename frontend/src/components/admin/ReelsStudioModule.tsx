@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Clapperboard, RefreshCw, Sparkles, Save, Image as ImageIcon, Film, Trash2, Pencil, Plus, X, AlertTriangle } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
 import { AdReel, ReelCategory, ReelGenerateRequest, ReelSlide, draftToEditableReel } from '../../types/reels';
 import { downloadReelAsImages } from '../../utils/reelSlideImage';
 import { downloadReelAsVideo } from '../../utils/reelVideoExport';
+import { Didou3DAvatar } from '../Didou3DAvatar';
 
 const GRADE_OPTIONS = ['1AP', '2AP', '3AP', '4AP', '5AP', 'all'];
 const CATEGORY_OPTIONS: { id: ReelCategory; labelAr: string }[] = [
@@ -47,18 +48,34 @@ function emptyReel(): AdReel {
 }
 
 // Admin-only "usine de pub" — generates a 9:16 reel script via the independently-keyed Gemini call
-// (GeminiAiService.generateReelScript, never the student AI Tutor's key), lets the admin edit every
-// field, persists it server-side (shared across admins/devices, unlike the AI-Studio reference code's
-// localStorage-only approach), then exports client-side to high-resolution PNG slides and/or a single
-// MP4 (ffmpeg.wasm, lazy-loaded — see utils/reelVideoExport.ts) ready to post manually to real socials.
+// (GeminiAiService.generateReelScript, never the student AI Tutor's key — Gemini only ever writes
+// text, it has no access to the app's own components/assets to draw Didou itself), lets the admin
+// edit every field, persists it server-side (shared across admins/devices, unlike the AI-Studio
+// reference code's localStorage-only approach), then exports client-side to high-resolution PNG
+// slides and/or a WebM video — both with the real Didou mascot composited onto every slide (see
+// getMascotSvgDataUrl below), ready to post manually to TikTok/Instagram/Facebook.
 export const ReelsStudioModule: React.FC = () => {
   const [topic, setTopic] = useState('');
   const [gradeLevel, setGradeLevel] = useState('5AP');
   const [category, setCategory] = useState<ReelCategory>('general');
   const [language, setLanguage] = useState<ReelGenerateRequest['language']>('ar');
-  const [slideCount, setSlideCount] = useState(4);
+  // Kept as free text (not a controlled number) so a mobile keyboard can clear-then-retype a digit —
+  // a plain `type="number"` bound straight to a numeric state snapped back to the old value on every
+  // keystroke while the field was momentarily empty, which made it feel impossible to edit on mobile.
+  const [slideCountInput, setSlideCountInput] = useState('4');
+  const slideCount = Math.min(8, Math.max(2, parseInt(slideCountInput, 10) || 4));
   const [isGenerating, setIsGenerating] = useState(false);
   const [generateError, setGenerateError] = useState<string | null>(null);
+
+  // A hidden, real Didou3DAvatar instance (see below) whose live-rendered SVG we serialize into a
+  // data: URL once per export — the actual on-brand mascot, not a static/stale copy of its markup.
+  const didouRef = useRef<HTMLDivElement>(null);
+  const getMascotSvgDataUrl = (): string | undefined => {
+    const svg = didouRef.current?.querySelector('svg');
+    if (!svg) return undefined;
+    const markup = new XMLSerializer().serializeToString(svg);
+    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(markup)}`;
+  };
 
   const [draft, setDraft] = useState<AdReel | null>(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -160,7 +177,7 @@ export const ReelsStudioModule: React.FC = () => {
     setExportError(null);
     setIsExportingImages(true);
     try {
-      await downloadReelAsImages(draft);
+      await downloadReelAsImages(draft, getMascotSvgDataUrl());
     } catch {
       setExportError('تعذر إنشاء صور الـ Reel — أعد المحاولة.');
     } finally {
@@ -174,7 +191,7 @@ export const ReelsStudioModule: React.FC = () => {
     setIsExportingVideo(true);
     setVideoProgress(0);
     try {
-      await downloadReelAsVideo(draft, setVideoProgress);
+      await downloadReelAsVideo(draft, setVideoProgress, getMascotSvgDataUrl());
     } catch {
       setExportError('تعذر إنشاء فيديو الـ Reel — قد لا يدعم متصفحك هذه الميزة.');
     } finally {
@@ -192,9 +209,16 @@ export const ReelsStudioModule: React.FC = () => {
         <div>
           <h2 className="text-xl font-black tracking-tight text-white">استوديو الإعلانات (Reels)</h2>
           <p className="text-xs text-slate-300 mt-1">
-            وّلد سيناريو Reel تعليمي بالذكاء الاصطناعي، عدّله، ثم نزّله كصور عالية الجودة أو فيديو MP4 لنشره يدوياً على تيك توك، إنستغرام وفيسبوك.
+            وّلد سيناريو Reel تعليمي بالذكاء الاصطناعي، عدّله، ثم نزّله كصور عالية الجودة أو فيديو (يظهر فيه ديدو الفنك) لنشره يدوياً على تيك توك، إنستغرام وفيسبوك.
           </p>
         </div>
+      </div>
+
+      {/* Hidden, real Didou3DAvatar instance — captured into every exported slide/video (see
+          getMascotSvgDataUrl above). Kept in normal document flow (not display:none) so its SVG
+          renders properly, just moved off-screen. */}
+      <div ref={didouRef} className="fixed -top-[9999px] left-0 pointer-events-none" aria-hidden="true">
+        <Didou3DAvatar species="fennec" outfitId="default" mood="encouraging" size="xl" />
       </div>
 
       {/* Generation form */}
@@ -220,8 +244,10 @@ export const ReelsStudioModule: React.FC = () => {
             className="min-h-[var(--hit)] bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-200 px-2">
             {LANGUAGE_OPTIONS.map((l) => <option key={l.id} value={l.id}>{l.labelAr}</option>)}
           </select>
-          <input type="number" min={2} max={8} value={slideCount} onChange={(e) => setSlideCount(Number(e.target.value) || 4)}
-            aria-label="عدد الشرائح"
+          <input type="number" inputMode="numeric" min={2} max={8} value={slideCountInput}
+            onChange={(e) => setSlideCountInput(e.target.value)}
+            onBlur={() => setSlideCountInput(String(slideCount))}
+            aria-label="عدد الشرائح (من 2 إلى 8)"
             className="min-h-[var(--hit)] bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-200 px-2" />
         </div>
         {generateError && (
@@ -310,7 +336,7 @@ export const ReelsStudioModule: React.FC = () => {
             </button>
             <button onClick={handleDownloadVideo} disabled={isExportingVideo || draft.slides.length === 0}
               className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-extrabold text-xs min-h-[var(--hit)] px-4 rounded-xl cursor-pointer">
-              <Film className="w-4 h-4" /><span>{isExportingVideo ? `جاري الترميز... ${Math.round(videoProgress * 100)}%` : 'تنزيل (فيديو MP4)'}</span>
+              <Film className="w-4 h-4" /><span>{isExportingVideo ? `جاري التسجيل... ${Math.round(videoProgress * 100)}%` : 'تنزيل (فيديو WebM)'}</span>
             </button>
           </div>
         </div>
