@@ -21,6 +21,7 @@ function mapProfileDtoToAuthUser(dto: any): AuthUser {
     xp: dto.xp,
     level: dto.level,
     grade: dto.grade,
+    wilaya: dto.wilaya,
     avatar: dto.avatar,
     streakDays: dto.streakDays,
     quizzesCompleted: dto.quizzesCompleted,
