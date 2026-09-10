@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dz.mssid.education.dto.GeminiPromptRequest;
 import dz.mssid.education.dto.GeminiResponse;
 import dz.mssid.education.dto.QuickCheckDto;
+import dz.mssid.education.dto.NarrationDto;
 import dz.mssid.education.dto.ReelScriptDto;
 import dz.mssid.education.dto.ReelSlideDto;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,11 @@ public class GeminiAiService {
     // borrowing the tutor's budget.
     @Value("${gemini.reels.api.key:}")
     private String reelsApiKey;
+
+    // Separate model/endpoint for narration — text generation and speech generation are different
+    // Gemini models, but both bill against the same independent reelsApiKey above.
+    @Value("${gemini.tts.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent}")
+    private String ttsApiUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final AdminAuditLogService adminAuditLogService;
@@ -282,6 +288,66 @@ public class GeminiAiService {
                     e.getMessage(), "FAILURE");
             return ReelScriptDto.builder().status("error")
                     .errorMessage("تعذر توليد سيناريو الـ Reel، حاول مجدداً بعد قليل.").build();
+        }
+    }
+
+    // Gemini TTS prebuilt voice — "Kore" reads as warm/friendly, a reasonable default for a children's
+    // education brand. Not exposed as a setting yet; revisit if the admin ever needs a voice picker.
+    private static final String TTS_VOICE_NAME = "Kore";
+
+    /**
+     * Synthesizes a narration clip for one Reels Studio slide's text (title+content, admin-composed
+     * in ReelsStudioModule.tsx). Gemini TTS auto-detects the spoken language straight from the input
+     * text, no language parameter needed. Returns raw PCM audio; the frontend wraps it in a WAV
+     * header (see utils/reelAudio.ts) before it can be decoded/played in the browser.
+     */
+    public NarrationDto generateNarration(String text) {
+        if (reelsApiKey == null || reelsApiKey.isBlank()) {
+            return NarrationDto.builder().status("error")
+                    .errorMessage("clé Gemini Reels non configurée (GEMINI_REELS_API_KEY)").build();
+        }
+        if (text == null || text.isBlank()) {
+            return NarrationDto.builder().status("error").errorMessage("نص فارغ").build();
+        }
+
+        String url = ttsApiUrl + "?key=" + reelsApiKey;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> requestBody = Map.of(
+                "contents", List.of(Map.of("parts", List.of(Map.of("text", text)))),
+                "generationConfig", Map.of(
+                        "responseModalities", List.of("AUDIO"),
+                        "speechConfig", Map.of(
+                                "voiceConfig", Map.of(
+                                        "prebuiltVoiceConfig", Map.of("voiceName", TTS_VOICE_NAME)
+                                )
+                        )
+                )
+        );
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            Map<?, ?> response = restTemplate.postForObject(url, entity, Map.class);
+            List<?> candidates = (List<?>) response.get("candidates");
+            Map<?, ?> candidate = (Map<?, ?>) candidates.get(0);
+            Map<?, ?> content = (Map<?, ?>) candidate.get("content");
+            List<?> parts = (List<?>) content.get("parts");
+            Map<?, ?> part = (Map<?, ?>) parts.get(0);
+            Map<?, ?> inlineData = (Map<?, ?>) part.get("inlineData");
+
+            return NarrationDto.builder()
+                    .status("success")
+                    .audioBase64((String) inlineData.get("data"))
+                    .mimeType((String) inlineData.get("mimeType"))
+                    .build();
+        } catch (Exception e) {
+            // SEC: never echo e.getMessage() to the client — can carry the request URL/API key.
+            adminAuditLogService.record(currentActorEmail(), "AI_NARRATION_FAILED", "AI", null,
+                    e.getMessage(), "FAILURE");
+            return NarrationDto.builder().status("error")
+                    .errorMessage("تعذر توليد الصوت، حاول مجدداً بعد قليل.").build();
         }
     }
 

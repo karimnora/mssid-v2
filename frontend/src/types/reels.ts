@@ -52,6 +52,15 @@ export interface ReelScriptDraft {
   slides: Omit<ReelSlide, 'id'>[];
 }
 
+export interface NarrationDraft {
+  status: 'success' | 'error';
+  errorMessage?: string;
+  /** Raw PCM, base64-encoded — see utils/reelAudio.ts's pcmBase64ToWavBlob for how it's played/embedded. */
+  audioBase64?: string;
+  /** e.g. "audio/L16;codec=pcm;rate=24000" — carries the sample rate the WAV wrapper needs. */
+  mimeType?: string;
+}
+
 /** Assigns local ids to a freshly generated draft's slides so the editor can key/reorder them. */
 export function draftToEditableReel(draft: ReelScriptDraft, gradeLevel: string): AdReel {
   return {

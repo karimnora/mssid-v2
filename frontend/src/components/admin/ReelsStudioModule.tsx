@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Clapperboard, RefreshCw, Sparkles, Save, Image as ImageIcon, Film, Trash2, Pencil, Plus, X, AlertTriangle } from 'lucide-react';
+import { Clapperboard, RefreshCw, Sparkles, Save, Image as ImageIcon, Film, Trash2, Pencil, Plus, X, AlertTriangle, Volume2, Loader2 } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
 import { AdReel, ReelCategory, ReelGenerateRequest, ReelSlide, draftToEditableReel } from '../../types/reels';
 import { downloadReelAsImages } from '../../utils/reelSlideImage';
 import { downloadReelAsVideo } from '../../utils/reelVideoExport';
+import { pcmBase64ToWavBlob } from '../../utils/reelAudio';
 import { Didou3DAvatar } from '../Didou3DAvatar';
 import { REEL_SCREENSHOTS } from '../../data/reelScreenshots';
+
+type SlideNarrationState = 'idle' | 'loading' | 'ready' | 'error';
 
 const GRADE_OPTIONS = ['1AP', '2AP', '3AP', '4AP', '5AP', 'all'];
 const CATEGORY_OPTIONS: { id: ReelCategory; labelAr: string }[] = [
@@ -90,6 +93,54 @@ export const ReelsStudioModule: React.FC = () => {
   const [isExportingVideo, setIsExportingVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
   const [exportError, setExportError] = useState<string | null>(null);
+
+  // Per-slide-id narration clips (Gemini TTS via /v1/admin/reels/narrate, wrapped to WAV — see
+  // utils/reelAudio.ts). Keyed by slide.id, so switching drafts naturally invalidates stale entries
+  // instead of needing an explicit reset.
+  const [narrationState, setNarrationState] = useState<Record<string, SlideNarrationState>>({});
+  const narrationBlobsRef = useRef<Record<string, Blob>>({});
+  const narrationUrlsRef = useRef<Record<string, string>>({});
+  const [isGeneratingVoices, setIsGeneratingVoices] = useState(false);
+
+  const getNarrationUrl = (slideId: string): string | undefined => {
+    if (!narrationBlobsRef.current[slideId]) return undefined;
+    if (!narrationUrlsRef.current[slideId]) {
+      narrationUrlsRef.current[slideId] = URL.createObjectURL(narrationBlobsRef.current[slideId]);
+    }
+    return narrationUrlsRef.current[slideId];
+  };
+
+  const generateNarrationForSlide = async (slide: ReelSlide) => {
+    setNarrationState((s) => ({ ...s, [slide.id]: 'loading' }));
+    const text = [slide.title, slide.content].filter(Boolean).join('. ');
+    try {
+      const res = await springBootApi.generateReelNarration(text);
+      if (res.error || !res.data || res.data.status !== 'success' || !res.data.audioBase64) {
+        setNarrationState((s) => ({ ...s, [slide.id]: 'error' }));
+        return;
+      }
+      if (narrationUrlsRef.current[slide.id]) {
+        URL.revokeObjectURL(narrationUrlsRef.current[slide.id]);
+        delete narrationUrlsRef.current[slide.id];
+      }
+      narrationBlobsRef.current[slide.id] = pcmBase64ToWavBlob(res.data.audioBase64, res.data.mimeType);
+      setNarrationState((s) => ({ ...s, [slide.id]: 'ready' }));
+    } catch {
+      setNarrationState((s) => ({ ...s, [slide.id]: 'error' }));
+    }
+  };
+
+  const generateAllNarrations = async () => {
+    if (!draft) return;
+    setIsGeneratingVoices(true);
+    try {
+      for (const slide of draft.slides) {
+        await generateNarrationForSlide(slide);
+      }
+    } finally {
+      setIsGeneratingVoices(false);
+    }
+  };
 
   const loadReels = async () => {
     setIsLoadingList(true);
@@ -192,7 +243,7 @@ export const ReelsStudioModule: React.FC = () => {
     setIsExportingVideo(true);
     setVideoProgress(0);
     try {
-      await downloadReelAsVideo(draft, setVideoProgress, getMascotSvgDataUrl());
+      await downloadReelAsVideo(draft, setVideoProgress, getMascotSvgDataUrl(), narrationBlobsRef.current);
     } catch {
       setExportError('تعذر إنشاء فيديو الـ Reel — قد لا يدعم متصفحك هذه الميزة.');
     } finally {
@@ -327,6 +378,19 @@ export const ReelsStudioModule: React.FC = () => {
                       aria-label="المدة بالثواني (من 2 إلى 15)"
                       className="w-16 min-h-[var(--hit)] bg-slate-900 border border-slate-800 rounded-lg text-[10px] text-slate-200 px-2" />
                   </div>
+                  <div className="flex items-center gap-2 pt-1">
+                    <button onClick={() => generateNarrationForSlide(slide)} disabled={narrationState[slide.id] === 'loading'}
+                      className="flex items-center gap-1.5 text-[10px] font-bold text-sky-300 hover:text-sky-200 disabled:opacity-50 cursor-pointer">
+                      {narrationState[slide.id] === 'loading' ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Volume2 className="w-3.5 h-3.5" />}
+                      <span>
+                        {narrationState[slide.id] === 'loading' ? 'جاري توليد الصوت...' : narrationState[slide.id] === 'ready' ? 'إعادة توليد الصوت' : 'توليد الصوت (TTS)'}
+                      </span>
+                    </button>
+                    {narrationState[slide.id] === 'error' && <span className="text-[10px] font-bold text-rose-400">تعذر التوليد</span>}
+                  </div>
+                  {narrationState[slide.id] === 'ready' && getNarrationUrl(slide.id) && (
+                    <audio controls src={getNarrationUrl(slide.id)} className="w-full h-8" />
+                  )}
                 </div>
               </div>
             ))}
@@ -334,6 +398,12 @@ export const ReelsStudioModule: React.FC = () => {
               <Plus className="w-4 h-4" /><span>إضافة شريحة</span>
             </button>
           </div>
+
+          <button onClick={generateAllNarrations} disabled={isGeneratingVoices || draft.slides.length === 0}
+            className="flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-500 disabled:opacity-50 text-white font-extrabold text-xs min-h-[var(--hit)] px-4 rounded-xl cursor-pointer w-full sm:w-auto">
+            {isGeneratingVoices ? <Loader2 className="w-4 h-4 animate-spin" /> : <Volume2 className="w-4 h-4" />}
+            <span>{isGeneratingVoices ? 'جاري توليد كل الأصوات...' : 'توليد الصوت لكل الشرائح'}</span>
+          </button>
 
           {saveError && <p className="text-[11px] font-bold text-rose-300">{saveError}</p>}
           {exportError && <p className="text-[11px] font-bold text-rose-300">{exportError}</p>}

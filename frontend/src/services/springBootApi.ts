@@ -28,7 +28,7 @@ if (
 }
 
 import { UserRole } from '../types/auth';
-import { AdReel, ReelGenerateRequest, ReelScriptDraft } from '../types/reels';
+import { AdReel, NarrationDraft, ReelGenerateRequest, ReelScriptDraft } from '../types/reels';
 
 export interface ApiResponse<T> {
   data?: T;
@@ -579,6 +579,13 @@ public async request<T>(
   public async deleteReel(id: number) {
     return this.request<{ deleted: boolean }>(`/v1/admin/reels/${id}`, {
       method: 'DELETE',
+    });
+  }
+
+  public async generateReelNarration(text: string) {
+    return this.request<NarrationDraft>('/v1/admin/reels/narrate', {
+      method: 'POST',
+      body: JSON.stringify({ text }),
     });
   }
 

@@ -1,5 +1,6 @@
 package dz.mssid.education.controller;
 
+import dz.mssid.education.dto.NarrationDto;
 import dz.mssid.education.dto.ReelScriptDto;
 import dz.mssid.education.entity.AdReel;
 import dz.mssid.education.repository.AdReelRepository;
@@ -43,6 +44,16 @@ public class AdReelController {
         adminAuditLogService.record(currentActorEmail(), "AI_REEL_GENERATED", "AD_REEL", null,
                 request.topic(), "success".equals(draft.getStatus()) ? "SUCCESS" : "FAILURE");
         return ResponseEntity.ok(draft);
+    }
+
+    public record NarrateRequest(String text) {}
+
+    @PostMapping("/narrate")
+    public ResponseEntity<NarrationDto> narrate(@RequestBody NarrateRequest request) {
+        NarrationDto narration = geminiAiService.generateNarration(request.text());
+        adminAuditLogService.record(currentActorEmail(), "AI_NARRATION_GENERATED", "AD_REEL", null,
+                null, "success".equals(narration.getStatus()) ? "SUCCESS" : "FAILURE");
+        return ResponseEntity.ok(narration);
     }
 
     @GetMapping
