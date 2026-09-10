@@ -16,6 +16,9 @@ export interface ReelSlide {
   /** Tailwind gradient classes for the live editor preview, e.g. "from-blue-600 via-indigo-600 to-purple-700". */
   bgColor: string;
   textColor?: string;
+  /** Path into REEL_SCREENSHOTS (data/reelScreenshots.ts) — an admin-picked real app screenshot to
+   *  frame on this slide instead of (or alongside) plain text. Never set by Gemini (text-only). */
+  screenshotUrl?: string;
 }
 
 export interface AdReel {

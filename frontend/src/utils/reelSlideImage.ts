@@ -32,6 +32,24 @@ function resolveGradientStops(bgColor: string): [string, string] {
   return [from, to];
 }
 
+function roundRectPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+/** Contain-fits `img` inside a maxW×maxH box, centered horizontally at `cx`, top-aligned at `topY`. */
+function containFit(img: HTMLImageElement, cx: number, topY: number, maxW: number, maxH: number) {
+  const ratio = Math.min(maxW / img.naturalWidth, maxH / img.naturalHeight);
+  const w = img.naturalWidth * ratio;
+  const h = img.naturalHeight * ratio;
+  return { x: cx - w / 2, y: topY, w, h };
+}
+
 function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -109,33 +127,72 @@ export async function renderReelSlideCanvas(slide: ReelSlide, reel: Pick<AdReel,
 
   let y = 320;
   ctx.fillStyle = textColor;
-  ctx.font = '900 72px Cairo';
-  y = wrapCenteredText(ctx, slide.title, WIDTH / 2, y, WIDTH - 140, 84) + 40;
 
-  ctx.font = '700 46px Cairo';
-  y = wrapCenteredText(ctx, slide.content, WIDTH / 2, y, WIDTH - 160, 62) + 30;
+  // Screenshot mode: a shorter title, the real app screenshot framed like a device, Didou "presenting"
+  // it from the corner, then a short caption below — deliberately less text-heavy than the plain
+  // text-card layout, since the screenshot itself is now the main content.
+  let screenshotFrame: { x: number; y: number; w: number; h: number } | null = null;
+  if (slide.screenshotUrl) {
+    y = 220;
+    ctx.font = '900 64px Cairo';
+    y = wrapCenteredText(ctx, slide.title, WIDTH / 2, y, WIDTH - 160, 74) + 36;
 
-  if (slide.subtext) {
-    ctx.font = '600 36px Cairo';
-    ctx.globalAlpha = 0.88;
-    y = wrapCenteredText(ctx, slide.subtext, WIDTH / 2, y, WIDTH - 200, 48) + 20;
-    ctx.globalAlpha = 1;
-  }
+    try {
+      const shot = await loadImage(slide.screenshotUrl);
+      const frame = containFit(shot, WIDTH / 2, y, 760, 1180);
+      const pad = 18;
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      roundRectPath(ctx, frame.x - pad, frame.y - pad, frame.w + pad * 2, frame.h + pad * 2, 36);
+      ctx.fill();
+      ctx.save();
+      roundRectPath(ctx, frame.x, frame.y, frame.w, frame.h, 24);
+      ctx.clip();
+      ctx.drawImage(shot, frame.x, frame.y, frame.w, frame.h);
+      ctx.restore();
+      screenshotFrame = frame;
+      y = frame.y + frame.h + pad + 44;
+      ctx.fillStyle = textColor;
+    } catch {
+      // Screenshot failed to load (bad URL, blocked asset) — fall through to the plain text layout
+      // below using whatever vertical space is left, rather than losing the slide entirely.
+    }
 
-  if (slide.bulletPoints && slide.bulletPoints.length > 0) {
-    ctx.font = '600 34px Cairo';
-    for (const point of slide.bulletPoints) {
-      y = wrapCenteredText(ctx, `• ${point}`, WIDTH / 2, y, WIDTH - 220, 46) + 8;
+    if (slide.content) {
+      ctx.font = '600 38px Cairo';
+      y = wrapCenteredText(ctx, slide.content, WIDTH / 2, y, WIDTH - 200, 50) + 10;
+    }
+  } else {
+    ctx.font = '900 72px Cairo';
+    y = wrapCenteredText(ctx, slide.title, WIDTH / 2, y, WIDTH - 140, 84) + 40;
+
+    ctx.font = '700 46px Cairo';
+    y = wrapCenteredText(ctx, slide.content, WIDTH / 2, y, WIDTH - 160, 62) + 30;
+
+    if (slide.subtext) {
+      ctx.font = '600 36px Cairo';
+      ctx.globalAlpha = 0.88;
+      y = wrapCenteredText(ctx, slide.subtext, WIDTH / 2, y, WIDTH - 200, 48) + 20;
+      ctx.globalAlpha = 1;
+    }
+
+    if (slide.bulletPoints && slide.bulletPoints.length > 0) {
+      ctx.font = '600 34px Cairo';
+      for (const point of slide.bulletPoints) {
+        y = wrapCenteredText(ctx, `• ${point}`, WIDTH / 2, y, WIDTH - 220, 46) + 8;
+      }
     }
   }
 
   // Didou "presenting" the slide — the live app mascot (captured from a real Didou3DAvatar instance,
-  // see ReelsStudioModule's getMascotSvgDataUrl), not a generic logo, when available.
+  // see ReelsStudioModule's getMascotSvgDataUrl), not a generic logo, when available. In screenshot
+  // mode Didou overlaps the frame's bottom-right corner, as if pointing at the phone.
   if (mascotImageUrl) {
     try {
       const mascot = await loadImage(mascotImageUrl);
-      const mascotSize = 340;
-      ctx.drawImage(mascot, WIDTH / 2 - mascotSize / 2, HEIGHT - mascotSize - 110, mascotSize, mascotSize);
+      const mascotSize = screenshotFrame ? 240 : 340;
+      const mascotX = screenshotFrame ? screenshotFrame.x + screenshotFrame.w - mascotSize * 0.55 : WIDTH / 2 - mascotSize / 2;
+      const mascotY = screenshotFrame ? screenshotFrame.y + screenshotFrame.h - mascotSize * 0.65 : HEIGHT - mascotSize - 110;
+      ctx.drawImage(mascot, mascotX, mascotY, mascotSize, mascotSize);
     } catch {
       // A capture failure shouldn't stop the export — falls through to the plain brand footer below.
     }

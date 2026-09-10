@@ -5,6 +5,7 @@ import { AdReel, ReelCategory, ReelGenerateRequest, ReelSlide, draftToEditableRe
 import { downloadReelAsImages } from '../../utils/reelSlideImage';
 import { downloadReelAsVideo } from '../../utils/reelVideoExport';
 import { Didou3DAvatar } from '../Didou3DAvatar';
+import { REEL_SCREENSHOTS } from '../../data/reelScreenshots';
 
 const GRADE_OPTIONS = ['1AP', '2AP', '3AP', '4AP', '5AP', 'all'];
 const CATEGORY_OPTIONS: { id: ReelCategory; labelAr: string }[] = [
@@ -209,7 +210,7 @@ export const ReelsStudioModule: React.FC = () => {
         <div>
           <h2 className="text-xl font-black tracking-tight text-white">استوديو الإعلانات (Reels)</h2>
           <p className="text-xs text-slate-300 mt-1">
-            وّلد سيناريو Reel تعليمي بالذكاء الاصطناعي، عدّله، ثم نزّله كصور عالية الجودة أو فيديو (يظهر فيه ديدو الفنك) لنشره يدوياً على تيك توك، إنستغرام وفيسبوك.
+            وّلد سيناريو Reel تعليمي بالذكاء الاصطناعي، أضف لقطة شاشة حقيقية من التطبيق واختر ديدو الفنك ليقدّمها، ثم نزّله كصور عالية الجودة أو فيديو لنشره يدوياً على تيك توك، إنستغرام وفيسبوك.
           </p>
         </div>
       </div>
@@ -283,9 +284,12 @@ export const ReelsStudioModule: React.FC = () => {
           <div className="space-y-3">
             {draft.slides.map((slide, i) => (
               <div key={slide.id} className="grid sm:grid-cols-[160px_1fr] gap-3 p-3 bg-slate-950 border border-slate-800 rounded-xl">
-                <div className={`aspect-[9/16] w-full max-w-[140px] mx-auto rounded-lg bg-gradient-to-br ${slide.bgColor} p-2 flex flex-col items-center justify-center text-center overflow-hidden`}>
-                  <p className="text-white font-black text-[10px] leading-tight line-clamp-3">{slide.title || '...'}</p>
-                  <p className="text-white/80 text-[8px] mt-1 line-clamp-3">{slide.content}</p>
+                <div className={`relative aspect-[9/16] w-full max-w-[140px] mx-auto rounded-lg bg-gradient-to-br ${slide.bgColor} p-2 flex flex-col items-center justify-center text-center overflow-hidden`}>
+                  {slide.screenshotUrl && (
+                    <img src={slide.screenshotUrl} alt="" className="absolute inset-2 top-1/2 -translate-y-1/2 h-[70%] w-auto mx-auto rounded-md border-2 border-white/90 object-cover" />
+                  )}
+                  <p className="relative text-white font-black text-[10px] leading-tight line-clamp-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">{slide.title || '...'}</p>
+                  {!slide.screenshotUrl && <p className="relative text-white/80 text-[8px] mt-1 line-clamp-3">{slide.content}</p>}
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -300,13 +304,27 @@ export const ReelsStudioModule: React.FC = () => {
                     className="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 resize-none" />
                   <input value={slide.subtext || ''} onChange={(e) => updateSlide(i, { subtext: e.target.value })} placeholder="ملاحظة إضافية (اختياري)"
                     className="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200" />
+                  <select value={slide.screenshotUrl || ''} onChange={(e) => updateSlide(i, { screenshotUrl: e.target.value || undefined })}
+                    aria-label="لقطة شاشة من التطبيق (اختياري)"
+                    className="w-full min-h-[var(--hit)] bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 px-2">
+                    <option value="">بدون لقطة شاشة (نص فقط)</option>
+                    {REEL_SCREENSHOTS.map((s) => <option key={s.id} value={s.url}>📱 {s.labelAr}</option>)}
+                  </select>
                   <div className="flex items-center gap-2">
                     <select value={slide.bgColor} onChange={(e) => updateSlide(i, { bgColor: e.target.value })} aria-label="لون الخلفية"
                       className="flex-1 min-h-[var(--hit)] bg-slate-900 border border-slate-800 rounded-lg text-[10px] text-slate-200 px-2">
                       {BG_PRESETS.map((bg) => <option key={bg} value={bg}>{bg}</option>)}
                     </select>
-                    <input type="number" min={2} max={15} value={slide.durationSec} onChange={(e) => updateSlide(i, { durationSec: Number(e.target.value) || 6 })}
-                      aria-label="المدة بالثواني"
+                    <input type="number" inputMode="numeric" min={2} max={15}
+                      value={Number.isNaN(slide.durationSec) ? '' : slide.durationSec}
+                      onChange={(e) => {
+                        const raw = e.target.value;
+                        if (raw === '') { updateSlide(i, { durationSec: NaN }); return; }
+                        const n = Number(raw);
+                        if (!Number.isNaN(n)) updateSlide(i, { durationSec: n });
+                      }}
+                      onBlur={() => updateSlide(i, { durationSec: Math.min(15, Math.max(2, slide.durationSec || 6)) })}
+                      aria-label="المدة بالثواني (من 2 إلى 15)"
                       className="w-16 min-h-[var(--hit)] bg-slate-900 border border-slate-800 rounded-lg text-[10px] text-slate-200 px-2" />
                   </div>
                 </div>
