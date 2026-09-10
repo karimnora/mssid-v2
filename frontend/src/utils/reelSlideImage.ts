@@ -42,6 +42,26 @@ function roundRectPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: n
   ctx.closePath();
 }
 
+/** Draws `img` cover-fit into the dx/dy/dWidth/dHeight rect (like CSS object-fit:cover) — crops
+ *  whichever axis overflows instead of distorting the aspect ratio. */
+function drawCoverImage(ctx: CanvasRenderingContext2D, img: HTMLImageElement, dx: number, dy: number, dWidth: number, dHeight: number) {
+  const targetRatio = dWidth / dHeight;
+  const srcRatio = img.naturalWidth / img.naturalHeight;
+  let sx: number, sy: number, sWidth: number, sHeight: number;
+  if (srcRatio > targetRatio) {
+    sHeight = img.naturalHeight;
+    sWidth = sHeight * targetRatio;
+    sx = (img.naturalWidth - sWidth) / 2;
+    sy = 0;
+  } else {
+    sWidth = img.naturalWidth;
+    sHeight = sWidth / targetRatio;
+    sx = 0;
+    sy = (img.naturalHeight - sHeight) / 2;
+  }
+  ctx.drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+}
+
 /** Contain-fits `img` inside a maxW×maxH box, centered horizontally at `cx`, top-aligned at `topY`. */
 function containFit(img: HTMLImageElement, cx: number, topY: number, maxW: number, maxH: number) {
   const ratio = Math.min(maxW / img.naturalWidth, maxH / img.naturalHeight);
@@ -117,6 +137,19 @@ export async function renderReelSlideCanvas(slide: ReelSlide, reel: Pick<AdReel,
   grad.addColorStop(1, to);
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+  // AI-generated illustration (Imagen 3, see generateSlideImage): drawn full-bleed as the backdrop,
+  // cover-fit so it fills the 9:16 frame without distortion — the gradient above stays as a fallback
+  // color if the image fails to load. Mutually exclusive with screenshotUrl (device-frame layout,
+  // handled below); the editor UI clears one when the other is picked.
+  if (slide.aiImageUrl && !slide.screenshotUrl) {
+    try {
+      const aiImage = await loadImage(slide.aiImageUrl);
+      drawCoverImage(ctx, aiImage, 0, 0, WIDTH, HEIGHT);
+    } catch {
+      // Falls back to the plain gradient already painted above.
+    }
+  }
 
   // Subtle vignette so light-colored text stays legible regardless of the gradient's endpoints.
   const vignette = ctx.createRadialGradient(WIDTH / 2, HEIGHT / 2, HEIGHT * 0.25, WIDTH / 2, HEIGHT / 2, HEIGHT * 0.75);

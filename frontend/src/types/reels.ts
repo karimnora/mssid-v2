@@ -19,6 +19,10 @@ export interface ReelSlide {
   /** Path into REEL_SCREENSHOTS (data/reelScreenshots.ts) — an admin-picked real app screenshot to
    *  frame on this slide instead of (or alongside) plain text. Never set by Gemini (text-only). */
   screenshotUrl?: string;
+  /** data: URL of an Imagen-3-generated illustration (see generateSlideIllustration) — an
+   *  alternative to screenshotUrl, drawn full-bleed behind the text instead of framed like a device.
+   *  Mutually exclusive with screenshotUrl in the editor UI (picking one clears the other). */
+  aiImageUrl?: string;
 }
 
 export interface AdReel {
@@ -58,6 +62,14 @@ export interface NarrationDraft {
   /** Raw PCM, base64-encoded — see utils/reelAudio.ts's pcmBase64ToWavBlob for how it's played/embedded. */
   audioBase64?: string;
   /** e.g. "audio/L16;codec=pcm;rate=24000" — carries the sample rate the WAV wrapper needs. */
+  mimeType?: string;
+}
+
+export interface SlideImageDraft {
+  status: 'success' | 'error';
+  errorMessage?: string;
+  /** Ready-to-use encoded image (PNG), base64 — unlike NarrationDraft, no client-side wrapping needed. */
+  imageBase64?: string;
   mimeType?: string;
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Clapperboard, RefreshCw, Sparkles, Save, Image as ImageIcon, Film, Trash2, Pencil, Plus, X, AlertTriangle, Volume2, Loader2 } from 'lucide-react';
+import { Clapperboard, RefreshCw, Sparkles, Save, Image as ImageIcon, Film, Trash2, Pencil, Plus, X, AlertTriangle, Volume2, Loader2, Palette } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
 import { AdReel, ReelCategory, ReelGenerateRequest, ReelSlide, draftToEditableReel } from '../../types/reels';
 import { downloadReelAsImages } from '../../utils/reelSlideImage';
@@ -139,6 +139,36 @@ export const ReelsStudioModule: React.FC = () => {
       }
     } finally {
       setIsGeneratingVoices(false);
+    }
+  };
+
+  // AI illustration (Imagen 3) — an alternative to a real screenshot, see types/reels.ts's aiImageUrl
+  // doc. Mutually exclusive with screenshotUrl: picking one clears the other, so renderReelSlideCanvas
+  // never has to guess which the admin actually wants for this slide.
+  const [illustrationLoading, setIllustrationLoading] = useState<Record<string, boolean>>({});
+  const [illustrationError, setIllustrationError] = useState<Record<string, string>>({});
+  const generateIllustrationForSlide = async (slide: ReelSlide, index: number) => {
+    setIllustrationLoading((s) => ({ ...s, [slide.id]: true }));
+    setIllustrationError((s) => {
+      const next = { ...s };
+      delete next[slide.id];
+      return next;
+    });
+    const prompt = [slide.title, slide.content].filter(Boolean).join('. ');
+    try {
+      const res = await springBootApi.generateReelIllustration(prompt);
+      if (res.error || !res.data || res.data.status !== 'success' || !res.data.imageBase64) {
+        setIllustrationError((s) => ({ ...s, [slide.id]: res.data?.errorMessage || res.error || 'تعذر توليد الرسمة' }));
+        return;
+      }
+      updateSlide(index, {
+        aiImageUrl: `data:${res.data.mimeType || 'image/png'};base64,${res.data.imageBase64}`,
+        screenshotUrl: undefined,
+      });
+    } catch {
+      setIllustrationError((s) => ({ ...s, [slide.id]: 'تعذر الاتصال بالخادم' }));
+    } finally {
+      setIllustrationLoading((s) => ({ ...s, [slide.id]: false }));
     }
   };
 
@@ -336,11 +366,14 @@ export const ReelsStudioModule: React.FC = () => {
             {draft.slides.map((slide, i) => (
               <div key={slide.id} className="grid sm:grid-cols-[160px_1fr] gap-3 p-3 bg-slate-950 border border-slate-800 rounded-xl">
                 <div className={`relative aspect-[9/16] w-full max-w-[140px] mx-auto rounded-lg bg-gradient-to-br ${slide.bgColor} p-2 flex flex-col items-center justify-center text-center overflow-hidden`}>
+                  {slide.aiImageUrl && !slide.screenshotUrl && (
+                    <img src={slide.aiImageUrl} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                  )}
                   {slide.screenshotUrl && (
                     <img src={slide.screenshotUrl} alt="" className="absolute inset-2 top-1/2 -translate-y-1/2 h-[70%] w-auto mx-auto rounded-md border-2 border-white/90 object-cover" />
                   )}
                   <p className="relative text-white font-black text-[10px] leading-tight line-clamp-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">{slide.title || '...'}</p>
-                  {!slide.screenshotUrl && <p className="relative text-white/80 text-[8px] mt-1 line-clamp-3">{slide.content}</p>}
+                  {!slide.screenshotUrl && !slide.aiImageUrl && <p className="relative text-white/80 text-[8px] mt-1 line-clamp-3">{slide.content}</p>}
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
@@ -355,12 +388,25 @@ export const ReelsStudioModule: React.FC = () => {
                     className="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 resize-none" />
                   <input value={slide.subtext || ''} onChange={(e) => updateSlide(i, { subtext: e.target.value })} placeholder="ملاحظة إضافية (اختياري)"
                     className="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200" />
-                  <select value={slide.screenshotUrl || ''} onChange={(e) => updateSlide(i, { screenshotUrl: e.target.value || undefined })}
+                  <select value={slide.screenshotUrl || ''}
+                    onChange={(e) => updateSlide(i, { screenshotUrl: e.target.value || undefined, aiImageUrl: e.target.value ? undefined : slide.aiImageUrl })}
                     aria-label="لقطة شاشة من التطبيق (اختياري)"
                     className="w-full min-h-[var(--hit)] bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-200 px-2">
                     <option value="">بدون لقطة شاشة (نص فقط)</option>
                     {REEL_SCREENSHOTS.map((s) => <option key={s.id} value={s.url}>📱 {s.labelAr}</option>)}
                   </select>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <button onClick={() => generateIllustrationForSlide(slide, i)} disabled={illustrationLoading[slide.id] || !!slide.screenshotUrl}
+                      title={slide.screenshotUrl ? 'أزل لقطة الشاشة أولاً لاستعمال رسمة بالذكاء الاصطناعي' : undefined}
+                      className="flex items-center gap-1.5 text-[10px] font-bold text-amber-300 hover:text-amber-200 disabled:opacity-50 cursor-pointer">
+                      {illustrationLoading[slide.id] ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Palette className="w-3.5 h-3.5" />}
+                      <span>{illustrationLoading[slide.id] ? 'جاري التوليد...' : slide.aiImageUrl ? 'إعادة توليد الرسمة (AI)' : 'توليد رسمة بالذكاء الاصطناعي'}</span>
+                    </button>
+                    {slide.aiImageUrl && !slide.screenshotUrl && (
+                      <button onClick={() => updateSlide(i, { aiImageUrl: undefined })} className="text-[10px] font-bold text-slate-500 hover:text-slate-300 cursor-pointer">إزالة</button>
+                    )}
+                  </div>
+                  {illustrationError[slide.id] && <p className="text-[10px] font-bold text-rose-400">{illustrationError[slide.id]}</p>}
                   <div className="flex items-center gap-2">
                     <select value={slide.bgColor} onChange={(e) => updateSlide(i, { bgColor: e.target.value })} aria-label="لون الخلفية"
                       className="flex-1 min-h-[var(--hit)] bg-slate-900 border border-slate-800 rounded-lg text-[10px] text-slate-200 px-2">

@@ -28,7 +28,7 @@ if (
 }
 
 import { UserRole } from '../types/auth';
-import { AdReel, NarrationDraft, ReelGenerateRequest, ReelScriptDraft } from '../types/reels';
+import { AdReel, NarrationDraft, ReelGenerateRequest, ReelScriptDraft, SlideImageDraft } from '../types/reels';
 
 export interface ApiResponse<T> {
   data?: T;
@@ -586,6 +586,13 @@ public async request<T>(
     return this.request<NarrationDraft>('/v1/admin/reels/narrate', {
       method: 'POST',
       body: JSON.stringify({ text }),
+    });
+  }
+
+  public async generateReelIllustration(prompt: string) {
+    return this.request<SlideImageDraft>('/v1/admin/reels/illustrate', {
+      method: 'POST',
+      body: JSON.stringify({ prompt }),
     });
   }
 

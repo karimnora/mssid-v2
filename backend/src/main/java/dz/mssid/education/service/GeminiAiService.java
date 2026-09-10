@@ -8,6 +8,7 @@ import dz.mssid.education.dto.QuickCheckDto;
 import dz.mssid.education.dto.NarrationDto;
 import dz.mssid.education.dto.ReelScriptDto;
 import dz.mssid.education.dto.ReelSlideDto;
+import dz.mssid.education.dto.SlideImageDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -56,6 +57,13 @@ public class GeminiAiService {
     // than throughput, so it stays on the stronger general-purpose model.
     @Value("${gemini.reels.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent}")
     private String reelsScriptApiUrl;
+
+    // Imagen 3 — optional AI-generated illustration per slide (GeminiAiService.generateSlideImage),
+    // an alternative to picking a real app screenshot. Uses the Gemini API's :predict REST shape
+    // (instances/parameters/predictions), not :generateContent like every other model here — a
+    // genuinely different API surface for image-generation models. Same independent reelsApiKey.
+    @Value("${gemini.imagen.api.url:https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict}")
+    private String imagenApiUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final AdminAuditLogService adminAuditLogService;
@@ -355,6 +363,57 @@ public class GeminiAiService {
                     e.getMessage(), "FAILURE");
             return NarrationDto.builder().status("error")
                     .errorMessage("تعذر توليد الصوت، حاول مجدداً بعد قليل.").build();
+        }
+    }
+
+    /**
+     * Generates a 9:16 AI illustration for one Reels Studio slide via Imagen 3 — an alternative to
+     * attaching a real app screenshot (see frontend's REEL_SCREENSHOTS / ReelsStudioModule.tsx).
+     * The prompt is built by the caller from the slide's own title/content; this method explicitly
+     * appends an instruction against rendering any text in the image — image models render text
+     * poorly/garbled, and the app already draws its own real, crisp text on top in Canvas.
+     */
+    public SlideImageDto generateSlideImage(String prompt) {
+        if (reelsApiKey == null || reelsApiKey.isBlank()) {
+            return SlideImageDto.builder().status("error")
+                    .errorMessage("clé Gemini Reels non configurée (GEMINI_REELS_API_KEY)").build();
+        }
+        if (prompt == null || prompt.isBlank()) {
+            return SlideImageDto.builder().status("error").errorMessage("وصف فارغ").build();
+        }
+
+        String fullPrompt = prompt + ". Illustration éducative colorée et amicale pour enfants, style "
+                + "cohérent avec une application scolaire algérienne. Ne jamais inclure de texte, lettres "
+                + "ou chiffres lisibles dans l'image.";
+
+        String url = imagenApiUrl + "?key=" + reelsApiKey;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> requestBody = Map.of(
+                "instances", List.of(Map.of("prompt", fullPrompt)),
+                "parameters", Map.of("sampleCount", 1, "aspectRatio", "9:16")
+        );
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            Map<?, ?> response = restTemplate.postForObject(url, entity, Map.class);
+            List<?> predictions = (List<?>) response.get("predictions");
+            Map<?, ?> prediction = (Map<?, ?>) predictions.get(0);
+            Object mimeTypeValue = prediction.get("mimeType");
+
+            return SlideImageDto.builder()
+                    .status("success")
+                    .imageBase64((String) prediction.get("bytesBase64Encoded"))
+                    .mimeType(mimeTypeValue != null ? (String) mimeTypeValue : "image/png")
+                    .build();
+        } catch (Exception e) {
+            // SEC: never echo e.getMessage() to the client — can carry the request URL/API key.
+            adminAuditLogService.record(currentActorEmail(), "AI_ILLUSTRATION_FAILED", "AI", null,
+                    e.getMessage(), "FAILURE");
+            return SlideImageDto.builder().status("error")
+                    .errorMessage("تعذر توليد الرسمة، حاول مجدداً بعد قليل.").build();
         }
     }
 
