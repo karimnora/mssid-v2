@@ -201,15 +201,13 @@ export const SECONDARY_DEVOIR_PAPERS: OfficialExam[] = [
     problem: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'civics-3ap-t3-dialogue-respect-environment', contentAr: 'اختلفت مع زميلك على دور في مسرحية القسم. اقترح حلاً.', solutionAr: 'نتقاسم الأدوار أو نقترع ونقبل النتيجة.' },
   }),
 
-  // ——— 4AP FRENCH (débutant — ex-3AP, migré suite au changement de calendrier MEN 2026-2027) ———
-  // Ces 3 devoirs référencent les leçons "beginner" désormais en grade 4AP (voir 4AP/french.ts).
-  // Les 2 premières tombent toutes deux en trimestre 1 (les séquences correspondantes y sont regroupées).
+  // ——— 3AP FRENCH ———
   hw({
-    id: 'homework-4ap-french-beg1-2026',
+    id: 'homework-3ap-french-t1-2026',
     trimester: 1,
-    grade: '4AP',
+    grade: '3AP',
     subject: 'french',
-    titleAr: 'Devoir 1 — Salutations et lettres (4AP)',
+    titleAr: 'Devoir 1 — Salutations et lettres (3AP)',
     relatedLessonIds: ['french-3ap-p1-seq1-greetings-letters', 'french-3ap-p1-seq2-class-letters'],
     exercises: [
       { titleAr: 'Exercice 1 (3 pts)', points: 3, relatedLessonId: 'french-3ap-p1-seq1-greetings-letters', contentAr: 'Complète : Bon… Karim ! (matin)', solutionAr: 'Bonjour.' },
@@ -218,11 +216,11 @@ export const SECONDARY_DEVOIR_PAPERS: OfficialExam[] = [
     problem: { titleAr: 'Situation courte (4 pts)', points: 4, relatedLessonId: 'french-3ap-p1-seq1-greetings-letters', contentAr: 'Tu arrives en classe le matin. Écris une phrase pour saluer la maîtresse.', solutionAr: 'Exemple : Bonjour madame. / Bonjour maîtresse.' },
   }),
   hw({
-    id: 'homework-4ap-french-beg2-2026',
-    trimester: 1,
-    grade: '4AP',
+    id: 'homework-3ap-french-t2-2026',
+    trimester: 2,
+    grade: '3AP',
     subject: 'french',
-    titleAr: 'Devoir 2 — Famille et nombres (4AP)',
+    titleAr: 'Devoir 2 — Famille et nombres (3AP)',
     relatedLessonIds: ['french-3ap-p2-seq1-family-letters', 'french-3ap-p2-seq2-numbers-age'],
     exercises: [
       { titleAr: 'Exercice 1 (3 pts)', points: 3, relatedLessonId: 'french-3ap-p2-seq1-family-letters', contentAr: 'Qui est le père de ton père ? (un mot)', solutionAr: 'Le grand-père / papy.' },
@@ -231,11 +229,11 @@ export const SECONDARY_DEVOIR_PAPERS: OfficialExam[] = [
     problem: { titleAr: 'Situation courte (4 pts)', points: 4, relatedLessonId: 'french-3ap-p2-seq2-numbers-age', contentAr: 'Sara a 8 ans. Écris : « J’ai … ans. » comme si tu étais Sara.', solutionAr: 'J’ai huit ans.' },
   }),
   hw({
-    id: 'homework-4ap-french-beg3-2026',
-    trimester: 2,
-    grade: '4AP',
+    id: 'homework-3ap-french-t3-2026',
+    trimester: 3,
+    grade: '3AP',
     subject: 'french',
-    titleAr: 'Devoir 3 — Animaux et repas (4AP)',
+    titleAr: 'Devoir 3 — Animaux et repas (3AP)',
     relatedLessonIds: ['french-3ap-p3-seq1-animals-sounds', 'french-3ap-p4-seq1-meals-verbs'],
     exercises: [
       { titleAr: 'Exercice 1 (3 pts)', points: 3, relatedLessonId: 'french-3ap-p3-seq1-animals-sounds', contentAr: 'Le chat dit : miaou. Et le chien ?', solutionAr: 'Ouaf / wouah.' },
@@ -367,12 +365,10 @@ export const SECONDARY_DEVOIR_PAPERS: OfficialExam[] = [
     problem: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'civics-4ap-national-identity-symbols', contentAr: 'لماذا نحترم العلم في الملعب المدرسي؟', solutionAr: 'لأنه يرمز للوطن وللشهداء، واحترامه واجب مدني.' },
   }),
 
-  // ——— 4AP FRENCH (grammaire) ———
-  // Trimestre fields below shifted up by 1 (T1→T2, T2→T3) to make room for the migrated
-  // beginner sequences above (see project_men_2026_2027_curriculum_change memory); IDs kept as-is.
+  // ——— 4AP FRENCH ———
   hw({
     id: 'homework-4ap-french-t1-2026',
-    trimester: 2,
+    trimester: 1,
     grade: '4AP',
     subject: 'french',
     titleAr: 'Devoir 1 — Présentation et maison (4AP)',
@@ -385,7 +381,7 @@ export const SECONDARY_DEVOIR_PAPERS: OfficialExam[] = [
   }),
   hw({
     id: 'homework-4ap-french-t2-2026',
-    trimester: 3,
+    trimester: 2,
     grade: '4AP',
     subject: 'french',
     titleAr: 'Devoir 2 — Fêtes et possessifs (4AP)',

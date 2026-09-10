@@ -158,12 +158,10 @@ export const DEVOIR_EXTRA_4AP: OfficialExam[] = [
   },
 
   // ═══════════ FRENCH ═══════════
-  // Trimester fields shifted up by 1 (T1→T2, T2→T3) to match the 4AP/french.ts renumbering from
-  // the French 3AP→4AP curriculum migration (project_men_2026_2027_curriculum_change memory).
   {
     id: 'homework-4ap-french-t1b-2026',
     year: 2026,
-    trimester: 2,
+    trimester: 1,
     kind: 'devoir',
     titleAr: 'Devoir 2 — Prépositions de lieu (4AP)',
     sessionAr: 'فرض الفصل الأول 2026',
@@ -183,7 +181,7 @@ export const DEVOIR_EXTRA_4AP: OfficialExam[] = [
   {
     id: 'homework-4ap-french-t2b-2026',
     year: 2026,
-    trimester: 3,
+    trimester: 2,
     kind: 'devoir',
     titleAr: 'Devoir 2 — Les adjectifs qualificatifs (4AP)',
     sessionAr: 'فرض الفصل الثاني 2026',

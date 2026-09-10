@@ -110,9 +110,9 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     icon: 'Languages',
     color: 'from-blue-400 to-blue-700',
     bgLight: 'bg-blue-50 text-blue-900 border-blue-200',
-    description: 'Programme officiel 4AP–5AP : projets, grammaire, conjugaison, orthographe, production écrite et dialogues.',
+    description: 'Programme officiel 3AP–5AP : projets, grammaire, conjugaison, orthographe, production écrite et dialogues.',
     category: 'course',
-    minGrade: '4AP',
+    minGrade: '3AP',
   },
   {
     id: 'english',
@@ -230,9 +230,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
     description: 'تصريف تفاعلي ممتع للأفعال الفرنسية المقررة (Présent, Futur, Passé composé, Imparfait) مع النطق الصوتي والتمارين.',
     category: 'tool',
-    // Kept in sync with the 'french' course subject below: French now starts in 4AP (rentrée
-    // 2026-2027), so a conjugation drill tool has no place before the learner has had any French.
-    minGrade: '4AP',
+    minGrade: '3AP',
   },
   {
     id: 'english_lab',
@@ -343,11 +341,9 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     icon: 'Languages',
     color: 'from-sky-600 to-blue-700',
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
-    description: '4AP : 4 projets officiels (Mon école, Ma famille, Animaux, Alimentation). 5AP : 3 projets avancés.',
+    description: '3AP : 4 projets officiels (Mon école, Ma famille, Animaux, Alimentation). 5AP : 3 projets avancés.',
     category: 'tool',
-    // Kept in sync with 'french'/'french_lab': French now starts in 4AP (MEN 2026-2027 curriculum
-    // change, CLAUDE.md § 2.B), so these "3AP" official projects moved to 4AP as the first-year program.
-    minGrade: '4AP',
+    minGrade: '3AP',
   },
   {
     id: 'english_audio_dialogues',

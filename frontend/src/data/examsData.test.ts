@@ -14,11 +14,9 @@ describe('exam bank integrity', () => {
     expect(OFFICIAL_EXAMS_DATA.filter((exam) => exam.grade === '1AP')).toEqual([]);
   });
 
-  it('never puts English before 3AP, or French before 4AP', () => {
+  it('never puts French or English before 3AP', () => {
     const tooEarly = OFFICIAL_EXAMS_DATA.filter(
-      (exam) =>
-        ((exam.grade === '1AP' || exam.grade === '2AP') && exam.subject === 'english') ||
-        ((exam.grade === '1AP' || exam.grade === '2AP' || exam.grade === '3AP') && exam.subject === 'french')
+      (exam) => (exam.grade === '1AP' || exam.grade === '2AP') && (exam.subject === 'french' || exam.subject === 'english')
     );
     expect(tooEarly).toEqual([]);
   });
@@ -244,43 +242,21 @@ describe('exam bank integrity', () => {
     });
   });
 
-  it('ships english devoirs each term on 3AP-5AP', () => {
+  it('ships french and english devoirs each term on 3APâ5AP', () => {
     (['3AP', '4AP', '5AP'] as const).forEach((grade) => {
-      ([1, 2, 3] as const).forEach((trimester) => {
-        const n = OFFICIAL_EXAMS_DATA.filter(
-          (exam) =>
-            exam.grade === grade &&
-            exam.subject === 'english' &&
-            exam.trimester === trimester &&
-            getExamKind(exam) === 'devoir'
-        ).length;
-        expect(n, `${grade} english T${trimester}`).toBeGreaterThanOrEqual(1);
+      (['french', 'english'] as const).forEach((subject) => {
+        ([1, 2, 3] as const).forEach((trimester) => {
+          const n = OFFICIAL_EXAMS_DATA.filter(
+            (exam) =>
+              exam.grade === grade &&
+              exam.subject === subject &&
+              exam.trimester === trimester &&
+              getExamKind(exam) === 'devoir'
+          ).length;
+          expect(n, `${grade} ${subject} T${trimester}`).toBeGreaterThanOrEqual(1);
+        });
       });
     });
-  });
-
-  // French moved from 3AP to 4AP (MEN 2026-2027 curriculum change, CLAUDE.md section 2.B): 3AP no
-  // longer has French devoirs at all, so this is scoped to 4AP-5AP only.
-  it('ships french devoirs each term on 4AP-5AP', () => {
-    (['4AP', '5AP'] as const).forEach((grade) => {
-      ([1, 2, 3] as const).forEach((trimester) => {
-        const n = OFFICIAL_EXAMS_DATA.filter(
-          (exam) =>
-            exam.grade === grade &&
-            exam.subject === 'french' &&
-            exam.trimester === trimester &&
-            getExamKind(exam) === 'devoir'
-        ).length;
-        expect(n, `${grade} french T${trimester}`).toBeGreaterThanOrEqual(1);
-      });
-    });
-  });
-
-  it('never ships french devoirs for 3AP', () => {
-    const n = OFFICIAL_EXAMS_DATA.filter(
-      (exam) => exam.grade === '3AP' && exam.subject === 'french' && getExamKind(exam) === 'devoir'
-    ).length;
-    expect(n).toBe(0);
   });
 
   it('deepens lessons linked from the arabic/science homework pack', () => {

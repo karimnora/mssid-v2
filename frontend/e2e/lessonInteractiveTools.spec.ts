@@ -18,7 +18,7 @@ const CASES: { tool: string; id: string; grade: string }[] = [
   { tool: 'clock_trainer', id: 'math-3ap-t3-time-read', grade: '3AP' },
   { tool: 'tamazight_lab', id: 'tamazight-3ap-initiation-lettres-formes', grade: '3AP' },
   { tool: 'english_lab', id: 'english-4ap-unit1-family-friends', grade: '4AP' },
-  { tool: 'french_dialogue_lab', id: 'french-3ap-p1-seq1-greetings-letters', grade: '4AP' },
+  { tool: 'french_dialogue_lab', id: 'french-3ap-p1-seq1-greetings-letters', grade: '3AP' },
   { tool: 'french_lab', id: 'french-4ap-projet1-seq1-presentation-famille', grade: '4AP' },
   { tool: 'soroban', id: 'soroban-basics', grade: '5AP' },
   // Compact/playful layout (1AP/2AP) — different code path (buildPlayful1APSteps), no direct

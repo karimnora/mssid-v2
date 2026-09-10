@@ -15,7 +15,7 @@ Mssid DZ est une application web progressive (PWA) gratuite, bilingue (Arabe / F
 
 ## Matières Officielles Couvertes
 - **Tronc commun (1AP à 5AP)** : Langue arabe, Mathématiques, Éducation scientifique et technologique, Éducation islamique, Éducation civique.
-- **Langues et Découverte (3AP à 5AP)** : Anglais (dès 3AP), Histoire et Géographie d'Algérie (dès 3AP), Langue Tamazight (avec caractères Tifinagh, dès 3AP), Français (dès 4AP).
+- **Langues et Découverte (3AP à 5AP)** : Français, Anglais, Histoire et Géographie d'Algérie, Langue Tamazight (avec caractères Tifinagh).
 
 ## Accès et URLs Officielles
 - Site officiel : [https://mssid-dz.com/](https://mssid-dz.com/)

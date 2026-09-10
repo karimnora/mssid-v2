@@ -23,14 +23,9 @@ describe('P0 interactive lesson tools', () => {
     expect(screen.queryByText('العودة للأدوات')).not.toBeInTheDocument();
   });
 
-  it('does not open the 5AP conjugueur on 3AP English or 4AP-beginner French lessons', async () => {
-    // French moved from 3AP to 4AP (MEN 2026-2027 curriculum change); its "beginner" dialogue-lab
-    // lessons now live under grade 4AP alongside the pre-existing french_lab grammar lessons, so
-    // they're identified here by interactiveTool rather than by grade.
+  it('does not open the 5AP conjugueur on 3AP French or English lessons', async () => {
     const lang3ap = COURSES_DATA.filter(
-      (l) =>
-        (l.grade === '3AP' && l.subject === 'english') ||
-        (l.subject === 'french' && l.interactiveTool === 'french_dialogue_lab'),
+      (l) => l.grade === '3AP' && (l.subject === 'french' || l.subject === 'english'),
     );
     expect(lang3ap.length).toBeGreaterThanOrEqual(19);
     lang3ap.forEach((lesson) => {

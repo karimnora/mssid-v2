@@ -24,12 +24,12 @@
 - Focus : Lecture fluide, production d'écrits courts, soustraction posée, passage de la centaine, géométrie de base, règles de vie citoyenne.
 
 ### Troisième Année Primaire (3AP - السنة الثالثة ابتدائي)
-- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue anglaise (1re langue étrangère), Langue tamazight.
-- Focus : Multiplication et tables, fractions intuitives, initiation à la langue anglaise, histoire locale et repères géographiques nationaux.
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française (FLE), Langue tamazight.
+- Focus : Multiplication et tables, fractions intuitives, initiation à la langue française, histoire locale et repères géographiques nationaux.
 
 ### Quatrième Année Primaire (4AP - السنة الرابعة ابتدائي)
-- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française (introduite en 4AP depuis la réforme 2026-2027), Langue anglaise, Langue tamazight.
-- Focus : Division euclidienne, nombres décimaux, grammaire et conjugaison approfondies, initiation à la langue française, anglais intermédiaire, histoire antique et médiévale de l'Algérie.
+- Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française, Langue anglaise, Langue tamazight.
+- Focus : Division euclidienne, nombres décimaux, grammaire et conjugaison approfondies, anglais débutant, histoire antique et médiévale de l'Algérie.
 
 ### Cinquième Année Primaire (5AP - السنة الخامسة ابتدائي)
 - Matières : Langue arabe, Mathématiques, Éducation islamique, Éducation civique, Éducation scientifique, Histoire-Géographie, Langue française, Langue anglaise, Langue tamazight.
