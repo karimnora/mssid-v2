@@ -29,7 +29,10 @@ public class GeminiAiService {
     @Value("${gemini.api.key}")
     private String apiKey;
 
-    @Value("${gemini.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent}")
+    // gemini-3.1-flash-lite: higher token throughput than the previous 3.6-flash default, at a
+    // lower per-request cost — picked to stretch the free-tier project-wide cap referenced in
+    // ai.quota.free's comment (application.properties) further before it gets hit.
+    @Value("${gemini.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent}")
     private String geminiApiUrl;
 
     // Deliberately separate from `apiKey` above: the Reels Studio (admin-only ad/reel factory, see
