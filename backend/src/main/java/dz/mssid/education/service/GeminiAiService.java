@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dz.mssid.education.dto.GeminiPromptRequest;
 import dz.mssid.education.dto.GeminiResponse;
 import dz.mssid.education.dto.QuickCheckDto;
+import dz.mssid.education.dto.ReelScriptDto;
+import dz.mssid.education.dto.ReelSlideDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -15,6 +17,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.List;
 import java.util.Set;
@@ -28,6 +31,15 @@ public class GeminiAiService {
 
     @Value("${gemini.api.url:https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent}")
     private String geminiApiUrl;
+
+    // Deliberately separate from `apiKey` above: the Reels Studio (admin-only ad/reel factory, see
+    // AdReelController) must never draw from the same Gemini project as the student-facing AI Tutor
+    // — an admin batch-generating reel scripts must not be able to exhaust the quota real students
+    // depend on. Left blank on purpose if unset; generateReelScript refuses to silently fall back to
+    // `apiKey` (see below), so a missing key surfaces as a clear admin-facing error instead of quietly
+    // borrowing the tutor's budget.
+    @Value("${gemini.reels.api.key:}")
+    private String reelsApiKey;
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final AdminAuditLogService adminAuditLogService;
@@ -190,6 +202,106 @@ public class GeminiAiService {
             ),
             "required", List.of("exerciseText", "solutionText", "quickCheck")
     );
+
+    // Schema for the Reels Studio admin tool (AdReelController) — mirrors PRACTICE_EXERCISE_SCHEMA's
+    // approach of constraining Gemini's output via generationConfig.responseSchema rather than
+    // parsing free text, but shaped for a 9:16 social-reel script instead of a practice exercise.
+    private static final Map<String, Object> REEL_SCRIPT_SCHEMA = Map.of(
+            "type", "OBJECT",
+            "properties", Map.of(
+                    "title", Map.of("type", "STRING", "description", "عنوان جذاب مع إيموجي"),
+                    "description", Map.of("type", "STRING", "description", "وصف تربوي قصير"),
+                    "category", Map.of("type", "STRING"),
+                    "tags", Map.of("type", "ARRAY", "items", Map.of("type", "STRING")),
+                    "slides", Map.of(
+                            "type", "ARRAY",
+                            "items", Map.of(
+                                    "type", "OBJECT",
+                                    "properties", Map.of(
+                                            "title", Map.of("type", "STRING"),
+                                            "content", Map.of("type", "STRING"),
+                                            "subtext", Map.of("type", "STRING"),
+                                            "bulletPoints", Map.of("type", "ARRAY", "items", Map.of("type", "STRING")),
+                                            "durationSec", Map.of("type", "INTEGER"),
+                                            "bgColor", Map.of("type", "STRING", "description",
+                                                    "classes Tailwind du dégradé, ex: from-blue-600 via-indigo-600 to-purple-700")
+                                    ),
+                                    "required", List.of("title", "content", "durationSec", "bgColor")
+                            )
+                    )
+            ),
+            "required", List.of("title", "description", "category", "tags", "slides")
+    );
+
+    /**
+     * "Usine de pub" admin tool: generates a 9:16 reel script (title/slides/etc.) for the admin to
+     * edit and export as PNG/MP4 — not persisted here, see AdReelController.saveReel for that step.
+     * Uses `reelsApiKey`, never `apiKey`, so this can't burn through the student AI Tutor's quota
+     * (see the field's javadoc above). A blank reelsApiKey is a hard stop, not a fallback.
+     */
+    public ReelScriptDto generateReelScript(String topic, String gradeLevel, String language, int slideCount) {
+        if (reelsApiKey == null || reelsApiKey.isBlank()) {
+            return ReelScriptDto.builder().status("error")
+                    .errorMessage("clé Gemini Reels non configurée (GEMINI_REELS_API_KEY)").build();
+        }
+
+        String grade = (gradeLevel != null && !gradeLevel.isBlank()) ? gradeLevel : "5AP";
+        int count = slideCount > 0 ? slideCount : 4;
+        String lang = (language != null && !language.isBlank()) ? language : "ar";
+
+        String prompt = "أنت خبير في إنشاء محتوى تربوي جزائري لمنصات التواصل الاجتماعي (Reels عمودية 9:16).\n"
+                + "أنشئ سيناريو Reel تربوي حول الموضوع التالي، موجّه لتلاميذ مستوى " + grade
+                + " وفق المنهاج الرسمي الجزائري (" + curriculumDigest(grade) + ").\n"
+                + "اللغة: " + lang + " (عربية فصحى/دارجة، فرنسية، إنجليزية أو أمازيغية حسب الطلب).\n"
+                + "عدد الشرائح: " + count + ".\n"
+                + "كل شريحة يجب أن تكون قصيرة وجذابة، تصلح لفيديو قصير على تيك توك/إنستغرام/فيسبوك.\n\n"
+                + "الموضوع: " + topic;
+
+        try {
+            String jsonText = callGeminiApiWithKey(reelsApiKey, prompt, REEL_SCRIPT_SCHEMA);
+            JsonNode parsed = objectMapper.readTree(jsonText);
+
+            List<String> tags = Arrays.asList(objectMapper.convertValue(parsed.path("tags"), String[].class));
+            List<ReelSlideDto> slides = Arrays.asList(objectMapper.convertValue(parsed.path("slides"), ReelSlideDto[].class));
+
+            return ReelScriptDto.builder()
+                    .status("success")
+                    .title(parsed.path("title").asText(""))
+                    .description(parsed.path("description").asText(""))
+                    .category(parsed.path("category").asText("general"))
+                    .tags(tags)
+                    .slides(slides)
+                    .build();
+        } catch (Exception e) {
+            // SEC: same rule as callGeminiApi — never echo e.getMessage() to the client (can carry the
+            // request URL with the API key embedded). Detail stays in the admin audit log only.
+            adminAuditLogService.record(currentActorEmail(), "AI_REEL_GENERATION_FAILED", "AI", null,
+                    e.getMessage(), "FAILURE");
+            return ReelScriptDto.builder().status("error")
+                    .errorMessage("تعذر توليد سيناريو الـ Reel، حاول مجدداً بعد قليل.").build();
+        }
+    }
+
+    // Like callGeminiApiStructured, but parameterized by which API key + schema to use, so the Reels
+    // Studio's independent key/schema never touches the shared tutor call path above.
+    private String callGeminiApiWithKey(String apiKeyToUse, String textPrompt, Map<String, Object> schema) {
+        String url = geminiApiUrl + "?key=" + apiKeyToUse;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> requestBody = Map.of(
+                "contents", List.of(Map.of("parts", List.of(Map.of("text", textPrompt)))),
+                "generationConfig", Map.of(
+                        "responseMimeType", "application/json",
+                        "responseSchema", schema
+                )
+        );
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+        Map<?, ?> response = restTemplate.postForObject(url, entity, Map.class);
+        return extractTextFromGeminiResponse(response);
+    }
 
     private GeminiResponse callGeminiApiStructured(String textPrompt) {
         String url = geminiApiUrl + "?key=" + apiKey;

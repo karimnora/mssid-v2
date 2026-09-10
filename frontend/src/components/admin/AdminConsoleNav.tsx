@@ -1,8 +1,8 @@
 import React from 'react';
-import { BarChart3, Sliders, Users, ShieldCheck, BookOpen, Mail } from 'lucide-react';
+import { BarChart3, Sliders, Users, ShieldCheck, BookOpen, Mail, Clapperboard } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
-export type AdminConsoleTabId = 'analytics' | 'feature_flags' | 'users_roles' | 'technical_logs' | 'contact_messages';
+export type AdminConsoleTabId = 'analytics' | 'feature_flags' | 'users_roles' | 'technical_logs' | 'contact_messages' | 'reels_studio';
 
 interface AdminConsoleNavProps {
   activeTab: AdminConsoleTabId;
@@ -16,6 +16,7 @@ const TABS: { id: AdminConsoleTabId; labelAr: string; shortLabelAr: string; icon
   { id: 'users_roles', labelAr: 'المستخدمون والصلاحيات', shortLabelAr: 'مستخدمون', icon: Users },
   { id: 'technical_logs', labelAr: 'السجلات التقنية', shortLabelAr: 'سجلات', icon: ShieldCheck },
   { id: 'contact_messages', labelAr: 'رسائل التواصل', shortLabelAr: 'رسائل', icon: Mail },
+  { id: 'reels_studio', labelAr: 'استوديو الإعلانات', shortLabelAr: 'إعلانات', icon: Clapperboard },
 ];
 
 // Replaces the old CmsHeaderNav's fake CmsUser role-switcher <select> with the real logged-in

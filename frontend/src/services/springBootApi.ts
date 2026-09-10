@@ -28,6 +28,7 @@ if (
 }
 
 import { UserRole } from '../types/auth';
+import { AdReel, ReelGenerateRequest, ReelScriptDraft } from '../types/reels';
 
 export interface ApiResponse<T> {
   data?: T;
@@ -544,6 +545,40 @@ public async request<T>(
   public async getAdminInfraQuotas() {
     return this.request<InfraQuotasResponse>('/v1/admin/infra/quotas', {
       method: 'GET',
+    });
+  }
+
+  // --- Admin Console: Reels Studio (usine de pub) ---
+
+  public async generateReelScript(req: ReelGenerateRequest) {
+    return this.request<ReelScriptDraft>('/v1/admin/reels/generate', {
+      method: 'POST',
+      body: JSON.stringify(req),
+    });
+  }
+
+  public async listReels() {
+    return this.request<AdReel[]>('/v1/admin/reels', {
+      method: 'GET',
+    });
+  }
+
+  public async saveReel(reel: AdReel) {
+    if (reel.id != null) {
+      return this.request<AdReel>(`/v1/admin/reels/${reel.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(reel),
+      });
+    }
+    return this.request<AdReel>('/v1/admin/reels', {
+      method: 'POST',
+      body: JSON.stringify(reel),
+    });
+  }
+
+  public async deleteReel(id: number) {
+    return this.request<{ deleted: boolean }>(`/v1/admin/reels/${id}`, {
+      method: 'DELETE',
     });
   }
 
