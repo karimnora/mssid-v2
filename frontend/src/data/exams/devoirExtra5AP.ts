@@ -151,6 +151,7 @@ export const DEVOIR_EXTRA_5AP: OfficialExam[] = [
         relatedLessonId: 'math-5ap-lengths-masses-capacities',
         contentAr: 'حوّل: 4 km إلى m، ثم 250 cm إلى m.',
         solutionAr: '4 km = 4,000 m. 250 cm = 2.5 m.',
+        operationsAr: '4 × 1000 = 4000\n250 ÷ 100 = 2.5',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -181,6 +182,7 @@ export const DEVOIR_EXTRA_5AP: OfficialExam[] = [
         relatedLessonId: 'math-5ap-polygons-triangles',
         contentAr: 'مثلث أضلاعه الثلاثة متقايسة. ما نوعه؟ وكم قياس كل زاوية فيه؟',
         solutionAr: 'مثلث متقايس الأضلاع، وقياس كل زاوية فيه 60° (لأن 180° ÷ 3 = 60°).',
+        operationsAr: '180 ÷ 3 = 60',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -211,6 +213,7 @@ export const DEVOIR_EXTRA_5AP: OfficialExam[] = [
         relatedLessonId: 'math-5ap-symmetry-solides',
         contentAr: 'صندوق مكعب طول ضلعه 3 cm، مملوء بمكعبات وحدة (1 cm³ لكل واحدة). كل طبقة أفقية فيها 3×3 مكعباً، والصندوق فيه 3 طبقات. كم مكعب وحدة يملأ الصندوق كله؟ (احسب بالعدّ طبقة بطبقة)',
         solutionAr: 'عدد مكعبات الطبقة الواحدة = 3×3 = 9. عدد الطبقات = 3. المجموع = 9 × 3 = 27 مكعب وحدة، أي الحجم = 27 cm³.',
+        operationsAr: ' 3\n× 3\n---\n 9\n\n 9\n× 3\n---\n27',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -218,6 +221,7 @@ export const DEVOIR_EXTRA_5AP: OfficialExam[] = [
         relatedLessonId: 'math-5ap-circle-radius',
         contentAr: 'شعاع دائرة سلة كرة السلة يساوي 23 cm تقريباً. ما طول قطرها؟',
         solutionAr: 'القطر = 2 × الشعاع = 2 × 23 = 46 cm.',
+        operationsAr: ' 23\n×  2\n----\n 46',
       },
     ],
     problem: {

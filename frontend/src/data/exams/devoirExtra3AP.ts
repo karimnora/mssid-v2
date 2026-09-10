@@ -89,7 +89,7 @@ export const DEVOIR_EXTRA_3AP: OfficialExam[] = [
     relatedLessonIds: ['math-3ap-t1-geometry-lines', 'math-3ap-t1-multiplication-tables-6-9'],
     exercises: [
       { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-3ap-t1-geometry-lines', contentAr: 'ارسم بالمسطرة خطاً مستقيماً بين نقطتين A و B، ثم سمِّ القطعة الناتجة.', solutionAr: 'القطعة المستقيمة [AB]: خط مستقيم مرسوم بالمسطرة يصل بين A و B.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-3ap-t1-multiplication-tables-6-9', contentAr: 'احسب: 7 × 9 = ... ثم 6 × 8 = ...', solutionAr: '7 × 9 = 63. 6 × 8 = 48.' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-3ap-t1-multiplication-tables-6-9', contentAr: 'احسب: 7 × 9 = ... ثم 6 × 8 = ...', solutionAr: '7 × 9 = 63. 6 × 8 = 48.', operationsAr: ' 7\n×9\n--\n63\n\n 6\n×8\n--\n48' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-3ap-t1-multiplication-tables-6-9', contentAr: 'في مكتبة القسم 6 رفوف، وفي كل رف 9 كتب. كم كتاباً في المكتبة كلها؟', solutionAr: '9 × 6 = 54 كتاباً.' },
   },
@@ -129,7 +129,7 @@ export const DEVOIR_EXTRA_3AP: OfficialExam[] = [
     relatedLessonIds: ['math-3ap-t3-time-read', 'math-3ap-t3-division-fractions'],
     exercises: [
       { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-3ap-t3-time-read', contentAr: 'الساعة تشير إلى 3 و20 دقيقة. اكتب الوقت بصيغة رقمية.', solutionAr: '03:20 (أي 3 سا و20 د).' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-3ap-t3-division-fractions', contentAr: 'قسّمتَ فطيرة إلى 4 أجزاء متساوية وأكلتَ جزأين. أي كسر يمثل ما أكلتَه؟', solutionAr: '2/4 = 1/2 (النصف).' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-3ap-t3-division-fractions', contentAr: 'قسّمتَ فطيرة إلى 4 أجزاء متساوية وأكلتَ جزأين. أي كسر يمثل ما أكلتَه؟', solutionAr: '2/4 = 1/2 (النصف).', operationsAr: '2 ÷ 2 = 1\n4 ÷ 2 = 2\n⇐ 1/2' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-3ap-t3-division-fractions', contentAr: 'وزّع الأب 12 تفاحة بالتساوي على 4 أبناء. ما نصيب كل ابن؟', solutionAr: '12 ÷ 4 = 3 تفاحات لكل ابن.' },
   },

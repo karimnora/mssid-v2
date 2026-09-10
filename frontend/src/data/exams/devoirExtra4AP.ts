@@ -111,7 +111,7 @@ export const DEVOIR_EXTRA_4AP: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['math-4ap-compare-order-100k', 'math-4ap-geometry-lines-polygons'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'قارن باستعمال < أو > أو =: 58,340 ..... 58,430. ثم رتّب تصاعدياً: 12,600 — 21,600 — 12,060.', solutionAr: '58,340 < 58,430. الترتيب: 12,060 < 12,600 < 21,600.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'قارن باستعمال < أو > أو =: 58,340 ..... 58,430. ثم رتّب تصاعدياً: 12,600 — 21,600 — 12,060.', solutionAr: '58,340 < 58,430. الترتيب: 12,060 < 12,600 < 21,600.', operationsAr: '58,340\n58,430\n\n12,600\n21,600\n12,060' },
       { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-geometry-lines-polygons', contentAr: 'مستقيمان متقاطعان. كم زاوية ينتجان؟ وما نوع هذه الزوايا إذا كانا متعامدين؟', solutionAr: 'ينتجان 4 زوايا؛ إذا كانا متعامدين فكل الزوايا قائمة (90°).' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'احصر العدد 47,250 بين ألفين متتاليتين، ثم بين عشرتي آلاف متتاليتين.', solutionAr: '47,000 < 47,250 < 48,000. و 40,000 < 47,250 < 50,000.' },
@@ -131,8 +131,8 @@ export const DEVOIR_EXTRA_4AP: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['math-4ap-division-two-digit-divisor', 'math-4ap-fractions'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-division-two-digit-divisor', contentAr: 'أجرِ القسمة: 275 ÷ 25. اكتب الحاصل والباقي.', solutionAr: '275 = (25 × 11) + 0. الحاصل 11 والباقي 0.' },
-      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-fractions', contentAr: 'اكتب كسرين مختلفين يعادلان الكسر 2/3.', solutionAr: 'مثال: 4/6 و 6/9.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-division-two-digit-divisor', contentAr: 'أجرِ القسمة: 275 ÷ 25. اكتب الحاصل والباقي.', solutionAr: '275 = (25 × 11) + 0. الحاصل 11 والباقي 0.', operationsAr: '   25\n × 11\n -----\n   25\n  25\n -----\n  275' },
+      { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-fractions', contentAr: 'اكتب كسرين مختلفين يعادلان الكسر 2/3.', solutionAr: 'مثال: 4/6 و 6/9.', operationsAr: '2 × 2 = 4   و   3 × 2 = 6   ⇐ 4/6\n2 × 3 = 6   و   3 × 3 = 9   ⇐ 6/9' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-division-two-digit-divisor', contentAr: 'وزّعت جمعية 138 دفتراً على 15 تلميذاً بالتساوي. كم دفتراً يأخذ كل تلميذ؟ وكم يبقى؟', solutionAr: '138 = (15 × 9) + 3. كل تلميذ 9 دفاتر ويبقى 3.' },
   },
@@ -151,7 +151,7 @@ export const DEVOIR_EXTRA_4AP: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['math-4ap-composite-shapes-perimeter', 'math-4ap-pie-charts-histograms'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-composite-shapes-perimeter', contentAr: 'شكل على هيئة حرف L مكوّن من مستطيلين، أضلاعه الخارجية بالسنتيمتر: 8 — 3 — 5 — 4 — 3 — 7. احسب محيطه.', solutionAr: 'المحيط = مجموع الأضلاع الخارجية = 8+3+5+4+3+7 = 30 cm.' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-composite-shapes-perimeter', contentAr: 'شكل على هيئة حرف L مكوّن من مستطيلين، أضلاعه الخارجية بالسنتيمتر: 8 — 3 — 5 — 4 — 3 — 7. احسب محيطه.', solutionAr: 'المحيط = مجموع الأضلاع الخارجية = 8+3+5+4+3+7 = 30 cm.', operationsAr: '  8\n  3\n  5\n  4\n  3\n+ 7\n---\n 30' },
       { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-pie-charts-histograms', contentAr: 'في رسم بياني، يمثّل أحد الأشرطة الملوّنة بارتفاع 12 عدد التلاميذ الذين يفضلون الرياضيات. ماذا يعني هذا الارتفاع؟', solutionAr: 'يعني أن 12 تلميذاً يفضلون مادة الرياضيات.' },
     ],
     problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-pie-charts-histograms', contentAr: 'سجّل معلم عدد التلاميذ حسب النشاط المفضل: كرة القدم 15، الرسم 8، القراءة 7. صف مخططاً بالأعمدة يمثل هذه البيانات، ثم حدد النشاط الأكثر تفضيلاً.', solutionAr: 'عمود كرة القدم هو الأطول (15)، فهو النشاط الأكثر تفضيلاً.' },
