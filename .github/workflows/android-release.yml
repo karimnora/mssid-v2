@@ -17,8 +17,8 @@ name: Android Release Build
 #   VITE_SPRING_BOOT_URL     — production backend URL baked into this build (see .env.example —
 #                              without it the app falls back to localhost, which is unreachable from
 #                              a real device and breaks login/signup/AI tutor entirely).
-#   VITE_GOOGLE_CLIENT_ID    — Web OAuth client ID, same as GOOGLE_OAUTH_CLIENT_ID on the backend.
-#                              May also be stored as a repository variable (it is public).
+#   VITE_GOOGLE_CLIENT_ID    — optional repository variable/secret overriding the public Web OAuth
+#                              client ID below (same as GOOGLE_OAUTH_CLIENT_ID on the backend).
 on:
   workflow_dispatch: {}
   push:
@@ -46,7 +46,9 @@ jobs:
       - name: Build Android web assets with Google sign-in
         env:
           VITE_SPRING_BOOT_URL: ${{ secrets.VITE_SPRING_BOOT_URL }}
-          VITE_GOOGLE_CLIENT_ID: ${{ vars.VITE_GOOGLE_CLIENT_ID || secrets.VITE_GOOGLE_CLIENT_ID }}
+          # OAuth client IDs are public by design; keep a production fallback so manual builds work
+          # even when the optional Actions variable has not been configured.
+          VITE_GOOGLE_CLIENT_ID: ${{ vars.VITE_GOOGLE_CLIENT_ID || secrets.VITE_GOOGLE_CLIENT_ID || '1041400039423-i4imfk023ar0m9jcj6m2vbjebv760huk.apps.googleusercontent.com' }}
         run: |
           if [ -z "$VITE_GOOGLE_CLIENT_ID" ]; then
             echo "::error::Set VITE_GOOGLE_CLIENT_ID to the Web OAuth client ID in repository Actions variables or secrets."
