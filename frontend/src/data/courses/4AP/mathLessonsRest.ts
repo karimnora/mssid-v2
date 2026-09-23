@@ -127,7 +127,7 @@ export const MATH_4AP_REST: CourseLesson[] = [
         { problemAr: 'الباقي في القسمة يمكن أن يساوي المقسوم عليه. (صح/خطأ)', solutionAr: 'خطأ', detailedCorrectionAr: 'الباقي يجب أن يكون أصغر من المقسوم عليه.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: false }, { id: 'false', textAr: 'خطأ', isCorrect: true }] },
         { problemAr: '358 ÷ 7 = 51 والباقي 1. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '(51×7)+1=358.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
     ]),
-    quiz: [{ id: 'q1', questionAr: '187 ÷ 6 = ؟', options: [{ id: 'a', textAr: '31 والباقي 1', isCorrect: true, explanationAr: '(31×6)+1=187.' }, { id: 'b', textAr: '30 والباقي 7', isCorrect: false }] }],
+    quiz: [{ id: 'q1', questionAr: '187 ÷ 6 = ؟', options: [{ id: 'a', textAr: '31 والباقي 1', isCorrect: true, explanationAr: '(31×6)+1=187.' }, { id: 'b', textAr: '30 والباقي 7', isCorrect: false, explanationAr: 'الباقي 7 أكبر من المقسوم عليه 6، فلا تصح القسمة هكذا. نضيف مجموعة من 6: الحاصل 31 والباقي 1.' }] }],
     trimester: 2,
 },
 

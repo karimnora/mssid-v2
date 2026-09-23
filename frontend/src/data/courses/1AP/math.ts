@@ -316,7 +316,7 @@ export const MATH_1AP: CourseLesson[] = [
         questionAr: 'صندوق ليس فيه أي كرة، كم كرة فيه؟ 📭',
         options: [
           { id: 'a', textAr: '0 (صِفْر)', isCorrect: true, explanationAr: 'صحيح! الصفر يدل على الفراغ.' },
-          { id: 'b', textAr: '5', isCorrect: false },
+          { id: 'b', textAr: '5', isCorrect: false, explanationAr: 'الصندوق فارغ، فلا توجد فيه كرات. نكتب صفرًا: 0.' },
         ],
       },
     ],
@@ -405,7 +405,7 @@ export const MATH_1AP: CourseLesson[] = [
         questionAr: 'كم ضلعاً للمثلث؟ 🔺',
         options: [
           { id: 'a', textAr: '3 أَضْلاَع', isCorrect: true, explanationAr: 'صحيح! المثلث له 3 أضلاع.' },
-          { id: 'b', textAr: '4 أَضْلاَع', isCorrect: false },
+          { id: 'b', textAr: '4 أَضْلاَع', isCorrect: false, explanationAr: 'أربعة أضلاع للمربع، أمّا المثلث فله ثلاثة أضلاع. عُدَّ أضلاعه واحدًا واحدًا.' },
         ],
       },
     ],
@@ -620,7 +620,7 @@ export const MATH_1AP: CourseLesson[] = [
         questionAr: 'مع ليلى 3 أقلام واشترت 3 أقلام أخرى. كم قلماً صار معها؟ ✏️',
         options: [
           { id: 'a', textAr: '6 أَقْلاَم (3 + 3 = 6)', isCorrect: true, explanationAr: 'صحيح! 3 + 3 = 6.' },
-          { id: 'b', textAr: '3 أقلام', isCorrect: false },
+          { id: 'b', textAr: '3 أقلام', isCorrect: false, explanationAr: 'هذه الأقلام الثلاثة الأولى فقط. أضف إليها الأقلام الثلاثة الجديدة: 3 + 3 = 6.' },
         ],
       },
     ],

@@ -1399,11 +1399,13 @@ export const MATH_5AP: CourseLesson[] = [
                     id: 'b',
                     textAr: 'الحاصل 90 والباقي 7',
                     isCorrect: false,
+                    explanationAr: 'مع أن 90 × 5 + 7 = 457، فالباقي 7 لا يجوز لأنه أكبر من 5. أضف 1 إلى الحاصل واطرح 5 من الباقي: 91 والباقي 2.',
                 },
                 {
                     id: 'c',
                     textAr: 'الحاصل 91 والباقي 0',
                     isCorrect: false,
+                    explanationAr: '91 × 5 = 455، ويبقى من 457 عددان. لذلك الباقي 2 وليس صفرًا.',
                 }
             ],
         },
@@ -1421,11 +1423,13 @@ export const MATH_5AP: CourseLesson[] = [
                     id: 'b',
                     textAr: '96',
                     isCorrect: false,
+                    explanationAr: '96 هو ناتج 960 ÷ 10. عند القسمة على 100 نحرّك الفاصلة منزلتين نحو اليسار: 9.6.',
                 },
                 {
                     id: 'c',
                     textAr: '0.96',
                     isCorrect: false,
+                    explanationAr: '0.96 هو ناتج 960 ÷ 1000. القسمة على 100 تنقل الفاصلة منزلتين فقط: 9.6.',
                 }
             ],
         }
@@ -1791,9 +1795,9 @@ export const MATH_5AP: CourseLesson[] = [
             id: 'q2',
             questionAr: 'أي من الكسور التالية مكافئ للكسر 1/2؟',
             options: [
-                { id: 'a', textAr: '4/8', isCorrect: true, explanationAr: 'صحيح! 4/8 = 1/2 لأن 4×2=8 (ضربنا البسط والمقام في 2).' },
-                { id: 'b', textAr: '3/5', isCorrect: false },
-                { id: 'c', textAr: '2/5', isCorrect: false }
+                { id: 'a', textAr: '4/8', isCorrect: true, explanationAr: 'صحيح! ضربنا بسط 1/2 ومقامه في 4: 1×4=4 و2×4=8، فحصلنا على 4/8.' },
+                { id: 'b', textAr: '3/5', isCorrect: false, explanationAr: '3/5 يساوي 6/10، وهو أكبر من 5/10 أي النصف. الكسر 4/8 يساوي 1/2.' },
+                { id: 'c', textAr: '2/5', isCorrect: false, explanationAr: '2/5 يساوي 4/10، وهو أصغر من 5/10 أي النصف. الكسر 4/8 يساوي 1/2.' }
             ]
         }
     ]

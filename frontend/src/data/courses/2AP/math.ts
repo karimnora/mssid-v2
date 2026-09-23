@@ -106,8 +106,8 @@ export const MATH_2AP: CourseLesson[] = [
         questionAr: 'العدد 38 يتكون من:',
         options: [
           { id: 'a', textAr: '3 عشرات و 8 وحدات', isCorrect: true, explanationAr: 'صحيح! 38 = 30 + 8.' },
-          { id: 'b', textAr: '8 عشرات و 3 وحدات', isCorrect: false },
-          { id: 'c', textAr: '3 وحدات و 8 عشرات', isCorrect: false },
+          { id: 'b', textAr: '8 عشرات و 3 وحدات', isCorrect: false, explanationAr: '8 عشرات و3 وحدات تساوي 83، لا 38. في 38 توجد 3 عشرات و8 وحدات.' },
+          { id: 'c', textAr: '3 وحدات و 8 عشرات', isCorrect: false, explanationAr: 'هذا أيضًا يساوي 83. اقرأ الرقم من اليسار: 3 في منزلة العشرات و8 في منزلة الوحدات.' },
         ],
       },
     ],
@@ -645,7 +645,7 @@ export const MATH_2AP: CourseLesson[] = [
         questionAr: 'عند فوزية 35 دفتراً، أهدتها معلمتها 28 دفتراً إضافياً. كم دفتراً أصبح عندها؟',
         options: [
           { id: 'a', textAr: '63 دفتراً', isCorrect: true, explanationAr: 'الوحدات: 5+8=13 (احتفظ بـ1). العشرات: 3+2+1=6. الناتج 63.' },
-          { id: 'b', textAr: '53 دفتراً', isCorrect: false },
+          { id: 'b', textAr: '53 دفتراً', isCorrect: false, explanationAr: 'لا تنسَ الاحتفاظ بعشرة: 5 + 8 = 13، نكتب 3 وحدات ونضيف 1 إلى العشرات: 3 + 2 + 1 = 6. الناتج 63.' },
         ],
       },
     ],
@@ -757,7 +757,7 @@ export const MATH_2AP: CourseLesson[] = [
         questionAr: 'عند مريم 45 قلماً ملوناً، أعطت 12 قلماً لصديقتها. كم قلماً بقي عندها؟',
         options: [
           { id: 'a', textAr: '33 قلماً', isCorrect: true, explanationAr: '45 - 12 = 33 (كلمة "أعطت" تدل على الطرح).' },
-          { id: 'b', textAr: '57 قلماً', isCorrect: false },
+          { id: 'b', textAr: '57 قلماً', isCorrect: false, explanationAr: '57 هو ناتج الجمع 45 + 12. مريم أعطت 12 قلمًا، فنطرح: 45 - 12 = 33.' },
         ],
       },
     ],
