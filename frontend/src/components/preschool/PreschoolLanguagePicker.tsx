@@ -15,7 +15,7 @@ export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = (
   const languages: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-10 bg-gradient-to-b from-amber-100 via-orange-50 to-sky-100">
+    <div className="preschool-safe-top min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-10 bg-gradient-to-b from-amber-100 via-orange-50 to-sky-100">
       <PreschoolMascot mood="idle" />
 
       <div className="text-center space-y-1">

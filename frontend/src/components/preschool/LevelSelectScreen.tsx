@@ -53,7 +53,7 @@ export const LevelSelectScreen: React.FC<LevelSelectScreenProps> = ({
   return (
     <div
       dir={dir}
-      className="min-h-screen flex flex-col items-center py-6 px-4 gap-5"
+      className="preschool-safe-top min-h-screen flex flex-col items-center py-6 px-4 gap-5"
       style={{ backgroundImage: 'linear-gradient(to bottom, #0f172a, #1e1b4b, #0f172a)' }}
     >
       {/* Header */}

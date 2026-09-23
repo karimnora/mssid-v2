@@ -3,7 +3,7 @@ import { AnimatePresence } from 'motion/react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 import { PRESCHOOL_MODULES } from '../../data/preschool';
 import { PreschoolLanguagePicker } from './PreschoolLanguagePicker';
-import { PreschoolModulePicker } from './PreschoolModulePicker';
+import { PreschoolModulePicker, type PreschoolHubView, type PreschoolLearnGroupId } from './PreschoolModulePicker';
 import { PreschoolPathView } from './PreschoolPathView';
 import { PreschoolActivityPlayer } from './PreschoolActivityPlayer';
 import { PreschoolMagicBoard } from './PreschoolMagicBoard';
@@ -50,6 +50,8 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
   const [activeModuleId, setActiveModuleId]   = useState<string | null>(null);
   const [activeActivityId, setActiveActivityId] = useState<string | null>(null);
   const [activeSpecialTool, setActiveSpecialTool] = useState<PreschoolSpecialTool | null>(null);
+  const [pickerView, setPickerView] = useState<PreschoolHubView>('home');
+  const [learnGroup, setLearnGroup] = useState<PreschoolLearnGroupId | null>(null);
   const [moduleCompleteOverlay, setModuleCompleteOverlay] = useState<typeof PRESCHOOL_MODULES[number] | null>(null);
 
   // Derived completedByModule map — used by badges & module picker
@@ -199,6 +201,10 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
           streak: dailyChallenge.streak,
         }}
         onNavigateToActivity={handleNavigateToActivity}
+        view={pickerView}
+        onViewChange={setPickerView}
+        learnGroup={learnGroup}
+        onLearnGroupChange={setLearnGroup}
       />
 
       <PreschoolBadgeToast

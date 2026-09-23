@@ -428,7 +428,7 @@ const GameBoard: React.FC<{
         : 'grid-cols-2 sm:grid-cols-4';
 
   return (
-    <div dir={dir} className="min-h-screen bg-[#F8F9FA] flex flex-col items-center py-4 px-4 sm:px-6 gap-5">
+    <div dir={dir} className="preschool-safe-top min-h-screen bg-[#F8F9FA] flex flex-col items-center py-4 px-4 sm:px-6 gap-5">
       <div className="w-full max-w-3xl flex items-center justify-between gap-2">
         <motion.button
           whileHover={{ scale: 1.05 }}

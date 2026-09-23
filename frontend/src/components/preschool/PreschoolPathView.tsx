@@ -28,7 +28,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
     language === 'ar' ? ar : language === 'fr' ? fr : en;
 
   return (
-    <div dir={dir} className="min-h-screen bg-gradient-to-b from-sky-100 via-amber-50 to-orange-100 px-4 py-6">
+    <div dir={dir} className="preschool-safe-top min-h-screen bg-gradient-to-b from-sky-100 via-amber-50 to-orange-100 px-4 py-6">
       <div className="max-w-md mx-auto space-y-5">
         {/* Header */}
         <div className="flex items-center justify-between gap-2">
@@ -37,9 +37,9 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
               onClick={onExit}
               className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl
                          hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
-              aria-label={t('خروج', 'Quitter', 'Exit')}
+              aria-label={t('رُجُوع', 'Retour', 'Back')}
             >
-              🚪
+              {dir === 'rtl' ? '▶' : '◀'}
             </button>
             <PreschoolMuteButton language={language} />
           </div>

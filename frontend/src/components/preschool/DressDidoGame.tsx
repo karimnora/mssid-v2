@@ -285,7 +285,7 @@ const DressBoard: React.FC<{
   const tray = cfg.garments.filter((g) => !worn.includes(g.id));
 
   return (
-    <div dir={language === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#F8F9FA] flex flex-col items-center p-4 sm:p-6 gap-4">
+    <div dir={language === 'ar' ? 'rtl' : 'ltr'} className="preschool-safe-top min-h-screen bg-[#F8F9FA] flex flex-col items-center p-4 sm:p-6 gap-4">
       <div className="w-full max-w-3xl flex items-center justify-between">
         <motion.button
           whileHover={{ scale: 1.05 }}

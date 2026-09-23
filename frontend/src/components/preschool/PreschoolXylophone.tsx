@@ -255,7 +255,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
   return (
     <div
       dir={language === 'ar' ? 'rtl' : 'ltr'}
-      className="min-h-screen bg-gradient-to-b from-sky-100 via-purple-50 to-amber-100 p-3 sm:p-6 flex flex-col justify-between"
+      className="preschool-safe-top min-h-screen bg-gradient-to-b from-sky-100 via-purple-50 to-amber-100 p-3 sm:p-6 flex flex-col justify-between"
     >
       {/* Top Header */}
       <div className="max-w-5xl w-full mx-auto flex items-center justify-between gap-2 sm:gap-4 mb-3">
@@ -263,9 +263,9 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
           <button
             onClick={onExit}
             className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-            aria-label="خروج"
+            aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
-            🚪
+            {language === 'ar' ? '▶' : '◀'}
           </button>
           <PreschoolMuteButton language={language} className="border-purple-200 text-purple-800 hover:bg-purple-50" />
         </div>

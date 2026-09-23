@@ -9,6 +9,13 @@
 @import "@fontsource/readex-pro/latin-700.css";
 @import "tailwindcss";
 
+/* Preschool screens replace the app shell; leave room for the Android status bar. */
+@media (max-width: 639px) {
+  .preschool-safe-top {
+    padding-top: max(2.5rem, calc(env(safe-area-inset-top) + 0.75rem));
+  }
+}
+
 /* Color bible — one job per hue. Emerald = CTA/success. Amber = reward. Blue = info. Coral = stop. */
 :root {
   --brand-emerald: #008751;
@@ -620,5 +627,4 @@ body {
 .print-corrige--screen-hidden {
   display: none;
 }
-
 

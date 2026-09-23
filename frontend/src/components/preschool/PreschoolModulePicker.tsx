@@ -25,10 +25,15 @@ interface PreschoolModulePickerProps {
   onExit: () => void;
   dailyChallenge?: DailyChallengeData;
   onNavigateToActivity?: (moduleId: string, activityId: string) => void;
+  view: PreschoolHubView;
+  onViewChange: (view: PreschoolHubView) => void;
+  learnGroup: PreschoolLearnGroupId | null;
+  onLearnGroupChange: (group: PreschoolLearnGroupId | null) => void;
 }
 
-type HubView = 'home' | 'ateliers' | 'apprendre';
-type LearnGroupId = 'foundations' | 'science' | 'civics' | 'create';
+export type PreschoolHubView = 'home' | 'ateliers' | 'apprendre';
+export type PreschoolLearnGroupId = 'foundations' | 'science' | 'civics' | 'create';
+type LearnGroupId = PreschoolLearnGroupId;
 
 const spring = { type: 'spring' as const, stiffness: 280, damping: 22 };
 
@@ -67,11 +72,13 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
   onExit,
   dailyChallenge,
   onNavigateToActivity,
+  view,
+  onViewChange,
+  learnGroup,
+  onLearnGroupChange,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [showPrintables, setShowPrintables] = useState(false);
-  const [view, setView] = useState<HubView>('home');
-  const [learnGroup, setLearnGroup] = useState<LearnGroupId | null>(null);
 
   const t = (ar: string, fr: string, en: string) =>
     language === 'ar' ? ar : language === 'fr' ? fr : en;
@@ -165,12 +172,12 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
 
   const goBack = () => {
     if (view === 'apprendre' && learnGroup) {
-      setLearnGroup(null);
+      onLearnGroupChange(null);
       return;
     }
     if (view !== 'home') {
-      setView('home');
-      setLearnGroup(null);
+      onViewChange('home');
+      onLearnGroupChange(null);
       return;
     }
     onExit();
@@ -192,7 +199,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
     : [];
 
   return (
-    <div dir={dir} className="min-h-screen bg-[#F8F9FA] px-4 py-6 sm:py-8">
+    <div dir={dir} className="preschool-safe-top min-h-screen bg-[#F8F9FA] px-4 py-6 sm:py-8">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
@@ -275,14 +282,14 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
               title={labels.ateliers}
               desc={labels.ateliersDesc}
               gradient="from-amber-400 to-orange-500"
-              onClick={() => setView('ateliers')}
+              onClick={() => onViewChange('ateliers')}
             />
             <DoorCard
               icon="📚"
               title={labels.learn}
               desc={labels.learnDesc}
               gradient="from-sky-400 to-indigo-500"
-              onClick={() => setView('apprendre')}
+              onClick={() => onViewChange('apprendre')}
             />
             <DoorCard
               icon="🎮"
@@ -328,7 +335,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
               return (
                 <motion.button
                   key={group.id}
-                  onClick={() => setLearnGroup(group.id)}
+                  onClick={() => onLearnGroupChange(group.id)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={spring}

@@ -266,7 +266,7 @@ const PuzzleBoard: React.FC<{
 
   return (
     <div
-      className="min-h-screen bg-[#F8F9FA] flex flex-col items-center px-4 pb-8 gap-5"
+      className="preschool-safe-top min-h-screen bg-[#F8F9FA] flex flex-col items-center px-4 pb-8 gap-5"
       dir={language === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className="w-full max-w-2xl flex items-center justify-between pt-4 gap-2">

@@ -1,8 +1,11 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render as renderWithTestingLibrary, screen, fireEvent, waitFor } from '@testing-library/react';
 import { AiTutorModal } from './AiTutorModal';
 import { springBootApi } from '../services/springBootApi';
+import { LocaleProvider } from '../context/LocaleContext';
+
+const render = (ui: React.ReactElement) => renderWithTestingLibrary(ui, { wrapper: LocaleProvider });
 
 describe('AiTutorModal Integration Tests (Gemini AI Tutor)', () => {
   beforeEach(() => {

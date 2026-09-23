@@ -916,7 +916,7 @@ export const CarMazeGame: React.FC<CarMazeGameProps> = ({ onExit, language = 'fr
   }
 
   return (
-    <div className="relative flex flex-col items-center gap-5 bg-slate-950 p-4 sm:p-6 rounded-3xl min-h-screen justify-center">
+    <div className="preschool-safe-top relative flex flex-col items-center gap-5 bg-slate-950 p-4 sm:p-6 rounded-3xl min-h-screen justify-center">
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}

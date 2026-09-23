@@ -226,6 +226,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   const [isRainbow, setIsRainbow] = useState<boolean>(false);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [activeStamp, setActiveStamp] = useState<string | null>(null);
+  const [downloadFeedback, setDownloadFeedback] = useState<'started' | 'error' | null>(null);
 
   const [activeTraceCategory, setActiveTraceCategory] = useState<TraceCategory>('ar_letters');
   const [activeTrace, setActiveTrace] = useState<TraceTemplate>(TRACE_TEMPLATES[0]);
@@ -317,6 +318,12 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     clearCanvas(false);
   }, [mode]);
 
+  useEffect(() => {
+    if (!downloadFeedback) return;
+    const timer = window.setTimeout(() => setDownloadFeedback(null), 4500);
+    return () => window.clearTimeout(timer);
+  }, [downloadFeedback]);
+
   const getCoordinates = (
     e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
   ) => {
@@ -404,18 +411,17 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   const downloadDrawing = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    playSuccessChime();
-    const link = document.createElement('a');
-    link.download = `dessin-enfant-${Date.now()}.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-    speak(
-      language === 'ar'
-        ? 'رَسْمَتُكَ صَارَت مَحْفُوظَة!'
-        : language === 'fr'
-        ? 'Ton joli dessin a été enregistré !'
-        : 'Your nice drawing has been saved!'
-    );
+    try {
+      const link = document.createElement('a');
+      link.download = `dessin-enfant-${Date.now()}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      setDownloadFeedback('started');
+      playSuccessChime();
+      speak(language === 'ar' ? 'بَدَأَ تَنْزِيلُ الرَّسْمَةِ!' : language === 'fr' ? 'Le téléchargement du dessin a commencé !' : 'Your drawing download has started!');
+    } catch {
+      setDownloadFeedback('error');
+    }
   };
 
   const labels = {
@@ -437,34 +443,37 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     rainbow: language === 'ar' ? 'فُرْشَاة قَوْس قُزَح 🌈' : language === 'fr' ? 'Pinceau arc-en-ciel 🌈' : 'Rainbow brush 🌈',
     clear: language === 'ar' ? 'اِمْسَحِ اللَّوْحَة 🧽' : language === 'fr' ? 'Effacer 🧽' : 'Clear 🧽',
     save: language === 'ar' ? 'حِفْظ الرَّسْمَة 📥' : language === 'fr' ? 'Télécharger 📥' : 'Save image 📥',
+    downloadStarted: language === 'ar' ? 'بَدَأَ التَّنْزِيلُ. تَحَقَّقْ مِنَ الْمَلَفَّاتِ أَوِ الْمَعْرِضِ.' : language === 'fr' ? 'Téléchargement lancé. Vérifie tes fichiers ou ta galerie.' : 'Download started. Check your files or gallery.',
+    downloadError: language === 'ar' ? 'تَعَذَّرَ تَحْضِيرُ الصُّورَةِ. حَاوِلْ مَرَّةً أُخْرَى.' : language === 'fr' ? 'Impossible de préparer l’image. Réessaie.' : 'Could not prepare the image. Try again.',
     pickTrace: language === 'ar' ? 'اِخْتَرْ حَرْفاً أَوْ رَقْماً لِلتَّتَبُّع:' : language === 'fr' ? 'Choisis une lettre, un chiffre ou une forme :' : 'Choose a letter, number or shape:',
     pickColoring: language === 'ar' ? 'اِخْتَرْ رَسْمَةً جَزَائِرِيَّةً لِلتَّلْوِين:' : language === 'fr' ? 'Choisis un coloriage algérien :' : 'Choose an Algerian picture:',
+    scrollChoices: language === 'ar' ? 'حَرِّكِ الْقَائِمَةَ لِرُؤْيَةِ الْمَزِيدِ ↔' : language === 'fr' ? 'Fais glisser la liste pour voir la suite ↔' : 'Swipe the list to see more ↔',
   };
 
   return (
     <div
       dir={language === 'ar' ? 'rtl' : 'ltr'}
-      className="min-h-screen bg-gradient-to-b from-amber-100 via-rose-50 to-orange-100 p-2 sm:p-4 flex flex-col justify-between select-none"
+      className="preschool-safe-top min-h-screen bg-gradient-to-b from-amber-100 via-rose-50 to-orange-100 p-2 sm:p-4 flex flex-col justify-between select-none"
     >
       {/* Top Header */}
-      <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-2 mb-2">
-        <div className="flex items-center gap-2">
+      <div className="max-w-6xl w-full mx-auto flex flex-wrap items-center justify-between gap-2 mb-2">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={onExit}
             className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
-            aria-label="خروج"
+            aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
-            🚪
+            {language === 'ar' ? '▶' : '◀'}
           </button>
           <PreschoolMuteButton language={language} />
         </div>
 
-        <h1 className="text-base sm:text-2xl font-black text-orange-950 text-center flex-1 truncate px-2">
+        <h1 className="order-3 sm:order-none w-full sm:w-auto text-base sm:text-2xl font-black text-orange-950 text-center sm:flex-1 px-2">
           {labels.title}
         </h1>
 
         {/* Trilingual Quick Switcher */}
-        <div className="flex items-center gap-1 bg-white/90 p-1 rounded-2xl shadow-sm border border-orange-200">
+        <div className="flex items-center gap-1 bg-white/90 p-1 rounded-2xl shadow-sm border border-orange-200 shrink-0">
           {(['ar', 'fr', 'en'] as PreschoolLanguage[]).map((l) => (
             <button
               key={l}
@@ -485,12 +494,18 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
         {mode !== 'magic' && (
           <button
             onClick={downloadDrawing}
-            className="min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
+            className="order-4 sm:order-none w-full sm:w-auto min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
           >
             <span>{labels.save}</span>
           </button>
         )}
       </div>
+
+      {downloadFeedback && (
+        <div role="status" aria-live="polite" className={`max-w-4xl w-full mx-auto mb-2 rounded-2xl px-4 py-2 text-sm font-bold text-center shadow-sm ${downloadFeedback === 'error' ? 'bg-rose-100 text-rose-900' : 'bg-emerald-100 text-emerald-900'}`}>
+          {downloadFeedback === 'error' ? labels.downloadError : labels.downloadStarted}
+        </div>
+      )}
 
       {/* Mode Switcher Tabs */}
       <div className="max-w-4xl w-full mx-auto flex items-center justify-center gap-1.5 sm:gap-2 mb-2 flex-wrap">
@@ -569,32 +584,36 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
               </button>
             ))}
           </div>
+          <p className="sm:hidden text-center text-[11px] font-bold text-orange-900">{labels.scrollChoices}</p>
         </div>
       )}
 
       {/* Sub-bar for Coloring Mode */}
       {mode === 'coloring' && (
-        <div className="max-w-4xl w-full mx-auto mb-2 bg-white/90 rounded-2xl p-2 shadow-xs border border-orange-100 flex items-center gap-2 overflow-x-auto scrollbar-thin">
-          <span className="text-xs font-black text-orange-950 shrink-0">{labels.pickColoring}</span>
-          {COLORING_TEMPLATES.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => {
-                setActiveColoring(c);
-                clearCanvas(false);
-                const name = language === 'ar' ? c.nameAr : language === 'fr' ? c.nameFr : c.nameEn;
-                speak(name);
-              }}
-              className={`px-3 py-1.5 rounded-xl font-black text-xs shrink-0 flex items-center gap-1.5 cursor-pointer transition-all ${
-                activeColoring.id === c.id
-                  ? 'bg-orange-500 text-white shadow-md scale-105'
-                  : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
-              }`}
-            >
-              <span className="text-base">{c.icon}</span>
-              <span>{language === 'ar' ? c.nameAr : language === 'fr' ? c.nameFr : c.nameEn}</span>
-            </button>
-          ))}
+        <div className="max-w-4xl w-full mx-auto mb-2 space-y-1">
+          <div className="bg-white/90 rounded-2xl p-2 shadow-xs border border-orange-100 flex items-center gap-2 overflow-x-auto scrollbar-thin">
+            <span className="text-xs font-black text-orange-950 shrink-0">{labels.pickColoring}</span>
+            {COLORING_TEMPLATES.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => {
+                  setActiveColoring(c);
+                  clearCanvas(false);
+                  const name = language === 'ar' ? c.nameAr : language === 'fr' ? c.nameFr : c.nameEn;
+                  speak(name);
+                }}
+                className={`px-3 py-1.5 rounded-xl font-black text-xs shrink-0 flex items-center gap-1.5 cursor-pointer transition-all ${
+                  activeColoring.id === c.id
+                    ? 'bg-orange-500 text-white shadow-md scale-105'
+                    : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
+                }`}
+              >
+                <span className="text-base">{c.icon}</span>
+                <span>{language === 'ar' ? c.nameAr : language === 'fr' ? c.nameFr : c.nameEn}</span>
+              </button>
+            ))}
+          </div>
+          <p className="sm:hidden text-center text-[11px] font-bold text-orange-900">{labels.scrollChoices}</p>
         </div>
       )}
 

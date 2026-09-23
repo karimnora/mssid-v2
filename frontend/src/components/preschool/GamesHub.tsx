@@ -81,7 +81,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
           <motion.div key="hub"
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }} transition={{ type: 'spring', stiffness: 280, damping: 26 }}
-            className="min-h-screen bg-gradient-to-b from-indigo-100 via-sky-50 to-violet-100 px-4 py-6"
+            className="preschool-safe-top min-h-screen bg-gradient-to-b from-indigo-100 via-sky-50 to-violet-100 px-4 py-6"
           >
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Header */}
@@ -89,8 +89,9 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                 <div className="flex items-center gap-2">
                   {onExit && (
                     <button onClick={onExit}
+                      aria-label={t('العودة إلى الاستقبال', 'Retour à l’accueil', 'Back to home')}
                       className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-indigo-50 cursor-pointer border border-indigo-200 transition-all active:scale-95"
-                    >🚪</button>
+                    >{language === 'ar' ? '▶' : '◀'}</button>
                   )}
                   <PreschoolMuteButton language={language} className="border-indigo-200 text-indigo-800 hover:bg-indigo-50" />
                 </div>

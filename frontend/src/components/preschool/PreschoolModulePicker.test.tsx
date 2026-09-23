@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { PreschoolModulePicker } from './PreschoolModulePicker';
@@ -11,17 +11,25 @@ vi.mock('./usePreschoolAudio', () => ({
   playBubblePop: vi.fn(),
 }));
 
-const renderHub = (onSelectSpecialTool = vi.fn(), onSelectModule = vi.fn()) =>
-  render(
-    <PreschoolModulePicker
+const renderHub = (onSelectSpecialTool = vi.fn(), onSelectModule = vi.fn()) => {
+  const Hub = () => {
+    const [view, setView] = useState<'home' | 'ateliers' | 'apprendre'>('home');
+    const [learnGroup, setLearnGroup] = useState<'foundations' | 'science' | 'civics' | 'create' | null>(null);
+    return <PreschoolModulePicker
       modules={PRESCHOOL_MODULES}
       language="fr"
       completedByModule={{}}
       onSelectModule={onSelectModule}
       onSelectSpecialTool={onSelectSpecialTool}
       onExit={vi.fn()}
-    />,
-  );
+      view={view}
+      onViewChange={setView}
+      learnGroup={learnGroup}
+      onLearnGroupChange={setLearnGroup}
+    />;
+  };
+  return render(<Hub />);
+};
 
 describe('PreschoolModulePicker — 3-door hub', () => {
   it('home shows three doors and hides the learning paths', () => {

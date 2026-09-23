@@ -83,3 +83,24 @@ describe('PreschoolMagicBoard — Monde Magique tab', () => {
     expect(screen.queryByText('Télécharger 📥')).not.toBeInTheDocument();
   });
 });
+
+describe('PreschoolMagicBoard — download feedback', () => {
+  it('shows that the download started without claiming the file was saved', () => {
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    const toDataURL = vi.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockReturnValue('data:image/png;base64,abc');
+    render(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
+    fireEvent.click(screen.getByText('Télécharger 📥'));
+    expect(click).toHaveBeenCalledOnce();
+    expect(screen.getByRole('status')).toHaveTextContent('Téléchargement lancé. Vérifie tes fichiers ou ta galerie.');
+    click.mockRestore();
+    toDataURL.mockRestore();
+  });
+
+  it('shows an error when the canvas cannot be exported', () => {
+    const toDataURL = vi.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockImplementation(() => { throw new Error('canvas unavailable'); });
+    render(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
+    fireEvent.click(screen.getByText('Télécharger 📥'));
+    expect(screen.getByRole('status')).toHaveTextContent('Impossible de préparer l’image. Réessaie.');
+    toDataURL.mockRestore();
+  });
+});

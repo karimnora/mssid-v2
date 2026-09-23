@@ -334,7 +334,7 @@ export const BalloonPopGame: React.FC<BalloonPopGameProps> = ({ onExit, language
   return (
     <div
       dir={language === 'ar' ? 'rtl' : 'ltr'}
-      className="relative flex flex-col items-center gap-4 bg-[#F8F9FA] p-4 sm:p-6 rounded-3xl min-h-screen justify-center"
+      className="preschool-safe-top relative flex flex-col items-center gap-4 bg-[#F8F9FA] p-4 sm:p-6 rounded-3xl min-h-screen justify-center"
     >
       <motion.button
         whileHover={{ scale: 1.05 }}
