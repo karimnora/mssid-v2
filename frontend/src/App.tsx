@@ -534,6 +534,7 @@ export default function App() {
         newlyUnlockedBadges={progress.newlyUnlockedBadges}
         onDismissBadge={() => progress.setNewlyUnlockedBadges((prev) => prev.slice(1))}
         ratingPromptTrigger={progress.ratingPromptTrigger}
+        allowRatingPrompt={nav.isHomeActive}
         lockedLesson={lockedLesson}
         onCloseLockedLesson={() => setLockedLesson(null)}
         onSelectLesson={nav.handleSelectLesson}

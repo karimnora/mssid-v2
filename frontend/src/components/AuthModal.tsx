@@ -56,6 +56,7 @@ const IS_NATIVE_PLATFORM = Capacitor.isNativePlatform();
 
 export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, initialMode = 'login', onOpenPrivacyPolicy, onOpenTermsOfService, contextMessage }) => {
   const t = useTranslation('auth');
+  const tMeta = useTranslation('meta');
   const { direction } = useLocaleContext();
   const [isLogin, setIsLogin] = useState<boolean>(initialMode === 'login');
   const [email, setEmail] = useState<string>('');
@@ -70,6 +71,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   // wilayas (plates, postal codes). Never gates registration.
   const [wilaya, setWilaya] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [awaitingServer, setAwaitingServer] = useState(false);
+  const [slowNetwork, setSlowNetwork] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -84,6 +87,19 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const [pendingGoogleUser, setPendingGoogleUser] = useState<AuthUser | null>(null);
   const [completeGrade, setCompleteGrade] = useState<PrimaryGrade | 'prescolaire' | ''>('');
   const [completeWilaya, setCompleteWilaya] = useState<string>('');
+
+  useEffect(() => {
+    setSlowNetwork(false);
+    if (!awaitingServer || !isOpen) return;
+    const timer = setTimeout(() => setSlowNetwork(true), 8000);
+    return () => clearTimeout(timer);
+  }, [awaitingServer, isOpen]);
+
+  const requestAuth = async <T,>(request: () => Promise<T>): Promise<T> => {
+    setAwaitingServer(true);
+    try { return await request(); }
+    finally { setAwaitingServer(false); }
+  };
 
   // The modal never unmounts (App.tsx toggles `isOpen`, not conditional rendering), so re-sync the
   // tab from initialMode every time it's (re)opened rather than only once at first mount.
@@ -112,20 +128,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
   const googleButtonRef = useRef<HTMLDivElement>(null);
   const [googleReady, setGoogleReady] = useState<boolean>(false);
-  const [nativeGoogleReady, setNativeGoogleReady] = useState<boolean>(false);
-
-  // Native (Android/iOS): initialize the Credential Manager / native Google Sign-In plugin once,
-  // instead of loading Google's web GSI script below (which refuses to run in an embedded WebView).
-  useEffect(() => {
-    if (!IS_NATIVE_PLATFORM || !GOOGLE_CLIENT_ID) return;
-    let cancelled = false;
-    GoogleSignIn.initialize({ clientId: GOOGLE_CLIENT_ID }).then(() => {
-      if (!cancelled) setNativeGoogleReady(true);
-    }).catch(() => {
-      // Leaves nativeGoogleReady false — the button below simply won't render rather than crash.
-    });
-    return () => { cancelled = true; };
-  }, []);
+  const nativeGoogleReady = useRef(false);
+  const nativeGooglePending = useRef(false);
 
   // Loads Google Identity Services once, app-wide (checks for an already-injected/loaded script
   // first) — a no-op entirely when VITE_GOOGLE_CLIENT_ID isn't set, or on native platforms (see
@@ -158,7 +162,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     setLoading(true);
     setStatusMessage(null);
     try {
-      const result = await AuthService.loginWithGoogleAsync(response.credential);
+      const result = await requestAuth(() => AuthService.loginWithGoogleAsync(response.credential!));
       if (result.error || !result.user) {
         setStatusMessage({ type: 'error', text: result.error || t('googleAuthErrorDefault') });
         return;
@@ -205,8 +209,17 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   // but the ID token comes from the native Credential Manager / Google Sign-In flow instead of the
   // web GSI button's credential callback.
   const handleNativeGoogleSignIn = async () => {
+    if (nativeGooglePending.current) return;
+    nativeGooglePending.current = true;
+    setLoading(true);
     setStatusMessage(null);
     try {
+      // Initialize on demand so a plugin failure shows an error and can be retried,
+      // instead of silently removing the Google button for the whole app session.
+      if (!nativeGoogleReady.current) {
+        await GoogleSignIn.initialize({ clientId: GOOGLE_CLIENT_ID });
+        nativeGoogleReady.current = true;
+      }
       const result = await GoogleSignIn.signIn();
       if (!result.idToken) {
         setStatusMessage({ type: 'error', text: t('googleAuthErrorDefault') });
@@ -222,12 +235,15 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         return;
       }
       setStatusMessage({ type: 'error', text: t('googleAuthErrorDefault') });
+    } finally {
+      nativeGooglePending.current = false;
+      setLoading(false);
     }
   };
 
   // Re-initializes/re-renders Google's own button whenever the modal (re)opens on the credentials
   // step, or the login/register tab flips (its label switches between "Sign in" / "Sign up").
-  // Web-only — native builds render their own button (see nativeGoogleReady) instead of this one.
+  // Web-only — native builds render their own button instead of this one.
   useEffect(() => {
     if (IS_NATIVE_PLATFORM || !googleReady || !GOOGLE_CLIENT_ID || authFlow !== 'credentials' || !isOpen) return;
     const g = (window as any).google;
@@ -256,7 +272,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     setLoading(true);
     setStatusMessage(null);
 
-    const result = await AuthService.requestPasswordReset(email);
+    const result = await requestAuth(() => AuthService.requestPasswordReset(email));
     setLoading(false);
 
     if (!result.success) {
@@ -271,7 +287,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
   const handleResendResetCode = async () => {
     setResendCooldown(60);
-    const result = await AuthService.requestPasswordReset(email);
+    const result = await requestAuth(() => AuthService.requestPasswordReset(email));
     setStatusMessage({
       type: result.success ? 'success' : 'error',
       text: result.message || (result.success ? t('resendSuccessDefault') : t('resendErrorDefault')),
@@ -283,7 +299,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     setLoading(true);
     setStatusMessage(null);
 
-    const result = await AuthService.resetPasswordWithCode(email, resetCode, newPassword);
+    const result = await requestAuth(() => AuthService.resetPasswordWithCode(email, resetCode, newPassword));
     setLoading(false);
 
     if (!result.success) {
@@ -301,12 +317,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
     setStatusMessage(null);
 
     try {
       if (isLogin) {
-        const result = await AuthService.loginAsync(email, password);
+        const result = await requestAuth(() => AuthService.loginAsync(email, password));
         
         if (result.error || !result.user) {
           setStatusMessage({
@@ -328,7 +345,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         // routes into preschool mode via the landOnPreschool flag instead.
         const isPreschoolChoice = grade === 'prescolaire';
         const effectiveGrade: PrimaryGrade | undefined = isPreschoolChoice ? '1AP' : (grade || undefined);
-        const result = await AuthService.registerAsync(nom, email, password, effectiveGrade, parentEmail.trim() || undefined, wilaya || undefined);
+        const result = await requestAuth(() => AuthService.registerAsync(nom, email, password, effectiveGrade, parentEmail.trim() || undefined, wilaya || undefined));
 
         if (result.error || !result.user) {
           setStatusMessage({
@@ -392,6 +409,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        {slowNetwork && awaitingServer && <p role="status" className="p-3 text-sm font-bold bg-amber-50 text-amber-900">{tMeta('networkSlow')}</p>}
 
         {/* Why-am-I-here banner — only set when a guest was redirected here by a locked action. */}
         {contextMessage && (
@@ -607,7 +626,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         {/* Form */}
         {authFlow === 'credentials' && (
         <>
-        {GOOGLE_CLIENT_ID && (IS_NATIVE_PLATFORM ? nativeGoogleReady : true) && (
+        {GOOGLE_CLIENT_ID && (
           <div className="px-5 pt-4 space-y-3 shrink-0">
             {IS_NATIVE_PLATFORM ? (
               <button
@@ -813,6 +832,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             <span>
               {loading
                 ? t('submitLoading')
+                : statusMessage?.type === 'error'
+                ? tMeta('networkRetry')
                 : isLogin
                 ? t('login')
                 : t('registerSubmit')}

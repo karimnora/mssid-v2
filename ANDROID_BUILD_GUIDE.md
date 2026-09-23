@@ -71,6 +71,11 @@ npm run cap:sync
 
 *(Note : `npm run cap:sync` compile automatiquement React avec `vite build` puis copie les fichiers optimisés dans le sous-dossier `android/`)*.
 
+Le parcours de publication `npm run cap:sync` utilise désormais `build:android` : il refuse une
+adresse API absente, locale ou non HTTPS et un identifiant Google absent ou mal formé.
+Pour développer avec un backend local ou un émulateur, utiliser `npm run cap:sync:dev`.
+La version affichée dans les réglages est lue depuis `android/app/build.gradle` lors de la compilation.
+
 ---
 
 ## 📱 4. Tester l'Application en Local
@@ -101,7 +106,26 @@ Créez/modifiez `frontend/.env` (jamais commité, voir `.env.example`) :
 ```env
 VITE_SPRING_BOOT_URL=https://votre-backend-en-ligne.com/api
 ```
-Puis réexécutez `npm run cap:sync` depuis `frontend/`.
+Puis réexécutez `npm run cap:sync` pour la production, ou `npm run cap:sync:dev` avec un backend local, depuis `frontend/`.
+
+### Connexion Google sur Android
+
+Le bouton dépend de `VITE_GOOGLE_CLIENT_ID` au moment de la compilation. La configuration
+du site sur Vercel n'est pas transmise aux builds Android.
+
+- En local : définir `VITE_GOOGLE_CLIENT_ID` dans `frontend/.env` avec l'identifiant OAuth
+  de type **Application Web**, identique à `GOOGLE_OAUTH_CLIENT_ID` sur le backend.
+- Avec GitHub Actions : ajouter `VITE_GOOGLE_CLIENT_ID` dans **Settings → Secrets and
+  variables → Actions → Variables** (ou Secrets). Le workflow Android refuse désormais
+  de compiler sans cette valeur pour éviter de publier une application sans bouton Google.
+- Dans Google Cloud : le client **Android** doit utiliser le package `dz.mssid.app` et
+  l'empreinte SHA-1 du certificat qui signe l'application. Pour Google Play, utiliser le
+  certificat de **signature de l'application**, pas celui de la clé d'importation.
+  L'identifiant du client Android ne remplace pas l'identifiant Web dans `.env`.
+
+Après modification, lancer `npm run cap:sync`, augmenter `versionCode` pour la prochaine
+publication, puis générer et tester un nouvel AAB sur la piste de test interne Google Play.
+Une modification de Google Cloud ou du site web ne met pas à jour une application déjà installée.
 
 ---
 

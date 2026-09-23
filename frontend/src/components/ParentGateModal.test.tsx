@@ -1,7 +1,10 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render as renderWithTestingLibrary, screen, fireEvent } from '@testing-library/react';
 import { ParentGateModal } from './ParentGateModal';
+import { LocaleProvider } from '../context/LocaleContext';
+
+const render = (ui: React.ReactElement) => renderWithTestingLibrary(<LocaleProvider>{ui}</LocaleProvider>);
 
 describe('ParentGateModal', () => {
   it('does not render when isOpen is false', () => {

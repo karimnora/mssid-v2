@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { readAndroidVersion } from './scripts/android-release-config.mjs';
 
 export default defineConfig(() => {
   return {
+    define: readAndroidVersion(),
     plugins: [
       react(),
       tailwindcss(),

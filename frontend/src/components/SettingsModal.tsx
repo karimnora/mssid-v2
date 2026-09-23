@@ -11,6 +11,7 @@ import { TashkeelToggle } from './TashkeelToggle';
 import { Card } from './ui';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { HeaderTheme, NAV_GRADES, THEME_OPTIONS } from './Navbar';
+import { getAppPlatform } from '../utils/appPlatform';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -30,6 +31,7 @@ interface SettingsModalProps {
   onOpenPrivacyPolicy?: () => void;
   onOpenTermsOfService?: () => void;
   onOpenAdminConsole?: () => void;
+  onOpenRating?: () => void;
 }
 
 // Split out of ProfileModal (remonte utilisateur : "je veux désassocier le profile et Réglages
@@ -55,9 +57,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onOpenPrivacyPolicy,
   onOpenTermsOfService,
   onOpenAdminConsole,
+  onOpenRating,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
+  const tMeta = useTranslation('meta');
   const { direction } = useLocaleContext();
 
   if (!isOpen) return null;
@@ -203,6 +207,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           )}
 
           <div className="space-y-2 pt-2">
+            {getAppPlatform() === 'android' && onOpenRating && (
+              <button type="button" className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer" onClick={() => { onClose(); onOpenRating(); }}>
+                {tMeta('reviewGooglePlay')}
+              </button>
+            )}
             {onOpenContactModal && (
               <button
                 type="button"
@@ -210,7 +219,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
-                {tNav('contactUs')}
+                {tMeta('ratingSendFeedbackButton')}
               </button>
             )}
             {onOpenPrivacyPolicy && (
@@ -234,6 +243,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               </button>
             )}
           </div>
+          <p className="text-center text-xs text-[var(--kids-muted)]" dir="auto">
+            {tMeta('appVersion', { version: __APP_VERSION__, build: __APP_BUILD__ })}
+          </p>
         </div>
       </motion.div>
     </motion.div>

@@ -28,7 +28,13 @@ if (
 }
 
 import { UserRole } from '../types/auth';
-import { AdReel, NarrationDraft, ReelGenerateRequest, ReelScriptDraft, SlideImageDraft } from '../types/reels';
+import { getStoredLocale } from '../localePreference';
+import { meta as messagesAr } from '../locales/ar/meta';
+import { meta as messagesFr } from '../locales/fr/meta';
+
+function networkMessage(key: 'networkOffline' | 'networkTimeout' | 'networkUnavailable' | 'networkWriteUncertain') {
+  return (getStoredLocale() === 'fr' ? messagesFr : messagesAr)[key];
+}
 
 export interface ApiResponse<T> {
   data?: T;
@@ -198,6 +204,10 @@ public async request<T>(
   _isRetryAfterColdStart = false
 ): Promise<{ data?: T; error?: string; status: number; headers?: Headers }> {
   const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const mayRetryNetwork = ['GET', 'HEAD'].includes((options.method || 'GET').toUpperCase());
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+    return { error: networkMessage('networkOffline'), status: 0 };
+  }
   const baseUrl = SPRING_BOOT_BASE_URL.endsWith('/') 
     ? SPRING_BOOT_BASE_URL.slice(0, -1) 
     : SPRING_BOOT_BASE_URL;
@@ -211,7 +221,9 @@ public async request<T>(
   // timed out once, we have real reason to suspect a Render cold start in progress (container boot
   // can take up to ~30-50s) rather than a genuinely hung connection, and the first attempt's wait
   // already gave the container that much of a head start.
-  const timeoutMs = _isRetryAfterColdStart ? Math.max(this.requestTimeoutMs, 40000) : this.requestTimeoutMs;
+  // Writes get one longer attempt, never an automatic replay: the server may have
+  // committed a mutation even when its response was lost.
+  const timeoutMs = _isRetryAfterColdStart || !mayRetryNetwork ? Math.max(this.requestTimeoutMs, 40000) : this.requestTimeoutMs;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -290,6 +302,12 @@ public async request<T>(
     // abort on an already-settled fetch) but left dangling fake timers across tests that await a
     // retry wait, which is exactly what made two of the tests below flaky.
     clearTimeout(timeoutId);
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      return { error: networkMessage('networkOffline'), status: 0 };
+    }
+    if (!mayRetryNetwork) {
+      return { error: networkMessage('networkWriteUncertain'), status: 0 };
+    }
     if (err?.name === 'AbortError') {
       if (!_isRetryAfterColdStart) {
         console.warn(`[mssid dz] Timeout (${timeoutMs}ms) sur ${url}, nouvelle tentative avec un délai plus long (cold start possible)`);
@@ -297,7 +315,7 @@ public async request<T>(
       }
       console.warn(`[mssid dz] Délai d'attente dépassé (${timeoutMs}ms) pour ${url}`);
       return {
-        error: 'Le serveur met trop de temps à répondre. Vérifiez votre connexion et réessayez.',
+        error: networkMessage('networkTimeout'),
         status: 0,
       };
     }
@@ -317,7 +335,7 @@ public async request<T>(
 
     console.warn('Erreur de connexion au serveur mssid dz:', err.message);
     return {
-      error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.',
+      error: networkMessage('networkUnavailable'),
       status: 0,
     };
   } finally {
@@ -545,54 +563,6 @@ public async request<T>(
   public async getAdminInfraQuotas() {
     return this.request<InfraQuotasResponse>('/v1/admin/infra/quotas', {
       method: 'GET',
-    });
-  }
-
-  // --- Admin Console: Reels Studio (usine de pub) ---
-
-  public async generateReelScript(req: ReelGenerateRequest) {
-    return this.request<ReelScriptDraft>('/v1/admin/reels/generate', {
-      method: 'POST',
-      body: JSON.stringify(req),
-    });
-  }
-
-  public async listReels() {
-    return this.request<AdReel[]>('/v1/admin/reels', {
-      method: 'GET',
-    });
-  }
-
-  public async saveReel(reel: AdReel) {
-    if (reel.id != null) {
-      return this.request<AdReel>(`/v1/admin/reels/${reel.id}`, {
-        method: 'PUT',
-        body: JSON.stringify(reel),
-      });
-    }
-    return this.request<AdReel>('/v1/admin/reels', {
-      method: 'POST',
-      body: JSON.stringify(reel),
-    });
-  }
-
-  public async deleteReel(id: number) {
-    return this.request<{ deleted: boolean }>(`/v1/admin/reels/${id}`, {
-      method: 'DELETE',
-    });
-  }
-
-  public async generateReelNarration(text: string) {
-    return this.request<NarrationDraft>('/v1/admin/reels/narrate', {
-      method: 'POST',
-      body: JSON.stringify({ text }),
-    });
-  }
-
-  public async generateReelIllustration(prompt: string) {
-    return this.request<SlideImageDraft>('/v1/admin/reels/illustrate', {
-      method: 'POST',
-      body: JSON.stringify({ prompt }),
     });
   }
 

@@ -39,6 +39,7 @@ interface AppModalsProps {
   newlyUnlockedBadges: BadgeInfo[];
   onDismissBadge: () => void;
   ratingPromptTrigger: number;
+  allowRatingPrompt?: boolean;
   lockedLesson: CourseLesson | null;
   onCloseLockedLesson: () => void;
   onSelectLesson: (lesson: CourseLesson) => void;
@@ -72,6 +73,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   newlyUnlockedBadges,
   onDismissBadge,
   ratingPromptTrigger,
+  allowRatingPrompt = true,
   lockedLesson,
   onCloseLockedLesson,
   onSelectLesson,
@@ -96,6 +98,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
 }) => {
   const t = useTranslation('navigation');
   const [certificateBadge, setCertificateBadge] = useState<BadgeInfo | null>(null);
+  const [manualRatingTrigger, setManualRatingTrigger] = useState(0);
   return (
   <>
     <AiTutorModal
@@ -132,6 +135,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
 
     <Suspense fallback={null}>
       <SettingsModal
+        onOpenRating={() => setManualRatingTrigger((value) => value + 1)}
         isOpen={modals.isSettingsModalOpen}
         onClose={() => modals.setIsSettingsModalOpen(false)}
         authUser={authUser}
@@ -178,6 +182,9 @@ export const AppModals: React.FC<AppModalsProps> = ({
 
     <AppRatingPrompt
       trigger={ratingPromptTrigger}
+      allowAutomaticPrompt={allowRatingPrompt}
+      manualTrigger={manualRatingTrigger}
+      blocked={Object.entries(modals).some(([key, value]) => key.startsWith('is') && key.endsWith('Open') && value === true) || Boolean(certificateBadge) || Boolean(lockedLesson)}
       onOpenContact={() => modals.setIsContactModalOpen(true)}
     />
 

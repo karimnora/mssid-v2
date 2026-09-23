@@ -5,7 +5,6 @@ import { FeatureFlagsModule } from './FeatureFlagsModule';
 import { UsersRolesModule } from './UsersRolesModule';
 import { TechnicalLogsModule } from './TechnicalLogsModule';
 import { ContactMessagesModule } from './ContactMessagesModule';
-import { ReelsStudioModule } from './ReelsStudioModule';
 
 interface AdminConsoleViewProps {
   onExitAdminConsole: () => void;
@@ -31,7 +30,6 @@ export const AdminConsoleView: React.FC<AdminConsoleViewProps> = ({ onExitAdminC
         {activeTab === 'users_roles' && <UsersRolesModule />}
         {activeTab === 'technical_logs' && <TechnicalLogsModule />}
         {activeTab === 'contact_messages' && <ContactMessagesModule />}
-        {activeTab === 'reels_studio' && <ReelsStudioModule />}
       </main>
     </div>
   );

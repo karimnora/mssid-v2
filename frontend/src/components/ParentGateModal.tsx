@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface ParentGateModalProps {
   isOpen: boolean;
@@ -41,6 +42,8 @@ export const AskAdultScreen: React.FC<AskAdultScreenProps> = ({ onAskAdult, onCl
 
 // Friction step before sensitive actions (delete, store links). Not a legal parental-consent flow.
 export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClose, onVerified }) => {
+  const t = useTranslation('meta');
+  const { direction } = useLocaleContext();
   const [a, setA] = useState(0);
   const [b, setB] = useState(0);
   const [answer, setAnswer] = useState('');
@@ -68,18 +71,18 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
   };
 
   return (
-    <div className="fixed inset-0 z-[60] bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 font-sans dir-rtl" dir="rtl">
+    <div role="dialog" aria-modal="true" aria-label={t('parentGateTitle')} className="fixed inset-0 z-[60] bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 font-sans" dir={direction}>
       <div className="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden text-slate-100">
         <div className="bg-slate-950 px-5 py-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-emerald-500/20 rounded-xl border border-emerald-500/30 text-emerald-400">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h2 className="text-sm font-extrabold text-white">بوابة الوالدين</h2>
+            <h2 className="text-sm font-extrabold text-white">{t('parentGateTitle')}</h2>
           </div>
           <button
             onClick={onClose}
-            aria-label="إغلاق"
+            aria-label={t('pwaCloseAriaLabel')}
             className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl transition-all cursor-pointer"
           >
             <X className="w-4 h-4" />
@@ -88,7 +91,7 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
 
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
           <p className="text-xs text-slate-300 leading-relaxed">
-            هذا الإجراء مخصص لولي الأمر. للمتابعة، يرجى حل العملية الحسابية التالية:
+            {t('parentGateBody')}
           </p>
           <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 text-center">
             <span dir="ltr" className="text-2xl font-black text-white font-mono">
@@ -103,17 +106,18 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
               setAnswer(e.target.value);
               setError(false);
             }}
-            placeholder="اكتب الناتج هنا"
+            placeholder={t('parentGateAnswer')}
+            aria-label={t('parentGateAnswer')}
             dir="ltr"
             className="w-full text-center bg-slate-800 border border-slate-700 focus:border-emerald-500 focus:outline-none text-white text-lg font-bold rounded-xl px-3 py-2.5"
           />
-          {error && <p className="text-xs text-rose-400 text-center font-bold">إجابة غير صحيحة، حاول مجدداً.</p>}
+          {error && <p role="alert" className="text-xs text-rose-400 text-center font-bold">{t('parentGateError')}</p>}
           <button
             type="submit"
             disabled={!answer}
             className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm py-2.5 rounded-xl transition-all cursor-pointer"
           >
-            متابعة
+            {t('parentGateContinue')}
           </button>
         </form>
       </div>

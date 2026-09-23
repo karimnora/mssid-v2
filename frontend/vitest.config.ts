@@ -2,8 +2,14 @@ import { configDefaults, defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
+import { readAndroidVersion } from './scripts/android-release-config.mjs';
 
 export default defineConfig({
+  // Public OAuth fixture: auth tests must not depend on an ignored local .env file.
+  define: {
+    ...readAndroidVersion(),
+    'import.meta.env.VITE_GOOGLE_CLIENT_ID': JSON.stringify('test-web-client.apps.googleusercontent.com'),
+  },
   plugins: [
     react(),
     VitePWA({

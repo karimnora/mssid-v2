@@ -1,148 +1,72 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Star, X, MessageCircle } from 'lucide-react';
-import { Card, Button } from './ui';
+import React, { useEffect, useRef, useState } from 'react';
+import { X } from 'lucide-react';
 import { ParentGateModal } from './ParentGateModal';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
+import { getAppPlatform, openGooglePlay } from '../utils/appPlatform';
 
-const STORAGE_KEY = 'mssid_rating_prompt_status'; // undefined | 'rated' | 'dismissed'
-
-// Store URLs are intentionally NOT hardcoded — the app isn't published on either store yet. Once it
-// is, set VITE_PLAY_STORE_URL / VITE_APP_STORE_URL (see frontend/.env.example) and this component
-// picks them up automatically; until then, a 4-5 star tap just shows a thank-you instead of a dead link.
-const PLAY_STORE_URL: string | undefined =
-  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_PLAY_STORE_URL) || undefined;
-const APP_STORE_URL: string | undefined =
-  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_APP_STORE_URL) || undefined;
-
-function pickStoreUrl(): string | undefined {
-  if (typeof navigator === 'undefined') return PLAY_STORE_URL || APP_STORE_URL;
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  return isIOS ? (APP_STORE_URL || PLAY_STORE_URL) : (PLAY_STORE_URL || APP_STORE_URL);
-}
-
+const STORAGE_KEY = 'mssid_rating_prompt_status';
 interface AppRatingPromptProps {
-  /** Bump this (e.g. new value each time) after a quiz is fully validated or a badge is unlocked — a genuinely good moment to ask. The prompt only actually appears if the student hasn't rated/dismissed it before. */
   trigger: number;
-  /** Routes a low rating (1-3 stars) into the real feedback channel instead of a dead-end thank-you. */
+  manualTrigger?: number;
+  blocked?: boolean;
+  allowAutomaticPrompt?: boolean;
   onOpenContact?: () => void;
 }
-
-// Discreet rating nudge — appears once, low in the corner, after a genuine success moment (never on
-// app boot / never interrupting a task in progress). Never shown again once rated or dismissed.
-export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, onOpenContact }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [selectedStars, setSelectedStars] = useState(0);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, manualTrigger = 0, blocked = false, allowAutomaticPrompt = true, onOpenContact }) => {
+  const t = useTranslation('meta');
+  const { direction } = useLocaleContext();
+  const [visible, setVisible] = useState(false);
   const [showParentGate, setShowParentGate] = useState(false);
+  const [openError, setOpenError] = useState(false);
+  const [manualVisible, setManualVisible] = useState(false);
+  const manualSeen = useRef(0);
+  const handled = useRef(false);
+  const isAndroid = getAppPlatform() === 'android';
 
   useEffect(() => {
-    if (trigger <= 0) return;
-    if (typeof window === 'undefined') return;
-    const status = window.localStorage.getItem(STORAGE_KEY);
-    if (status) return; // already rated or dismissed — never ask again
-    setIsVisible(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trigger]);
-
-  const dismiss = () => {
-    window.localStorage.setItem(STORAGE_KEY, 'dismissed');
-    setIsVisible(false);
-  };
-
-  const handleStarClick = (stars: number) => {
-    setSelectedStars(stars);
-    setHasSubmitted(true);
-    window.localStorage.setItem(STORAGE_KEY, 'rated');
-    // A 4-5 star tap leaves the app for an external store page — this prompt is shown to the
-    // student directly (after a quiz success/badge unlock), so gate the actual navigation.
-    if (stars >= 4 && pickStoreUrl()) {
-      setShowParentGate(true);
+    if (blocked) return;
+    if (manualTrigger > manualSeen.current) {
+      manualSeen.current = manualTrigger;
+      setOpenError(false);
+      setManualVisible(true);
+      setVisible(true);
+      return;
     }
-  };
+    if (!allowAutomaticPrompt || trigger <= 0 || handled.current) return;
+    try {
+      // Legacy "rated" records a handled invitation, never proof of a published review.
+      if (localStorage.getItem(STORAGE_KEY)) return;
+    } catch { /* Limit invitations within this session even without storage. */ }
+    const timer = setTimeout(() => setVisible(true), 4000);
+    return () => clearTimeout(timer);
+  }, [trigger, manualTrigger, blocked, allowAutomaticPrompt]);
 
-  const openStoreAfterParentGate = () => {
+  const finish = (status: 'dismissed' | 'link_opened') => {
+    handled.current = true;
+    try { localStorage.setItem(STORAGE_KEY, status); } catch { /* Storage is optional. */ }
+    setVisible(false);
+    setManualVisible(false);
+  };
+  const openStore = () => {
     setShowParentGate(false);
-    const storeUrl = pickStoreUrl();
-    if (storeUrl) window.open(storeUrl, '_blank', 'noopener,noreferrer');
+    try { openGooglePlay(); finish('link_opened'); }
+    catch { setOpenError(true); }
   };
 
-  return (
-    <>
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 20, scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 26 }}
-          id="app-rating-prompt"
-          className="fixed bottom-28 md:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-80 z-30 dir-rtl"
-          dir="rtl"
-        >
-          <Card padding="md" className="shadow-2xl border-2 border-[var(--brand-amber)]/40 space-y-3 relative">
-            <button
-              onClick={dismiss}
-              aria-label="إغلاق"
-              className="absolute top-3 left-3 text-[var(--app-text-muted)] hover:text-[var(--app-text)] cursor-pointer"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            {!hasSubmitted ? (
-              <>
-                <h3 className="font-black text-sm text-[var(--app-text)] pl-5">هل يعجبك تطبيق مَسِيد؟ 🌟</h3>
-                <p className="text-xs text-[var(--app-text-muted)]">قيّم تجربتك معنا بنجمة واحدة إلى خمس نجوم</p>
-                <div className="flex items-center justify-center gap-1.5" dir="ltr">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <button
-                      key={n}
-                      onClick={() => handleStarClick(n)}
-                      aria-label={`${n} نجوم`}
-                      className="cursor-pointer active:scale-90 transition-transform"
-                    >
-                      <Star
-                        className={`w-8 h-8 ${
-                          n <= selectedStars ? 'fill-[var(--brand-amber)] text-[var(--brand-amber)]' : 'text-slate-300'
-                        }`}
-                      />
-                    </button>
-                  ))}
-                </div>
-              </>
-            ) : selectedStars >= 4 ? (
-              <div className="text-center space-y-1.5">
-                <p className="text-sm font-black text-[var(--app-text)]">شكراً جزيلاً! 🎉</p>
-                <p className="text-xs text-[var(--app-text-muted)]">
-                  نتمنى أن تترك لنا تقييماً على المتجر ليستفيد المزيد من التلاميذ.
-                </p>
-              </div>
-            ) : (
-              <div className="text-center space-y-2">
-                <p className="text-sm font-black text-[var(--app-text)]">شكراً على رأيك!</p>
-                <p className="text-xs text-[var(--app-text-muted)]">يسعدنا أن تخبرنا كيف يمكننا التحسين.</p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  fullWidth
-                  icon={<MessageCircle className="w-4 h-4" />}
-                  onClick={() => {
-                    setIsVisible(false);
-                    onOpenContact?.();
-                  }}
-                >
-                  أرسل ملاحظاتك
-                </Button>
-              </div>
-            )}
-          </Card>
-        </motion.div>
-      )}
-    </AnimatePresence>
-    <ParentGateModal
-      isOpen={showParentGate}
-      onClose={() => setShowParentGate(false)}
-      onVerified={openStoreAfterParentGate}
-    />
-    </>
-  );
+  return <>
+    {visible && !blocked && (manualVisible || allowAutomaticPrompt) && (
+      <aside id="app-rating-prompt" dir={direction} aria-label={t('reviewTitle')} className="fixed bottom-28 md:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-80 z-50 rounded-2xl border-2 border-amber-300 bg-white p-4 shadow-xl space-y-3 text-slate-900">
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="font-extrabold text-sm">{t('reviewTitle')}</h3>
+          <button type="button" aria-label={t('ratingCloseAriaLabel')} className="min-h-12 min-w-12 grid place-items-center" onClick={() => finish('dismissed')}><X className="w-5 h-5" /></button>
+        </div>
+        <p className="text-sm">{t(isAndroid ? 'reviewStoreDescription' : 'reviewContactDescription')}</p>
+        {isAndroid && <button type="button" className="kids-cta w-full" onClick={() => setShowParentGate(true)}>{t('reviewGooglePlay')}</button>}
+        {onOpenContact && <button type="button" className="w-full min-h-12 rounded-xl border-2 border-slate-200 font-bold text-sm" onClick={() => { finish('dismissed'); onOpenContact(); }}>{t(isAndroid ? 'reviewSuggestion' : 'ratingSendFeedbackButton')}</button>}
+        {openError && <p role="alert" className="text-sm text-red-700">{t('reviewOpenError')}</p>}
+      </aside>
+    )}
+    <ParentGateModal isOpen={showParentGate} onClose={() => setShowParentGate(false)} onVerified={openStore} />
+  </>;
 };

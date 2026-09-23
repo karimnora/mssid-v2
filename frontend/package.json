@@ -17,7 +17,9 @@
     "lint": "tsc --noEmit",
     "cap:init": "cap init \"Mssid DZ - مسيد\" dz.mssid.app --web-dir dist",
     "cap:add": "cap add android",
-    "cap:sync": "vite build && cap sync android",
+    "build:android": "node scripts/build-android.mjs",
+    "cap:sync": "npm run build:android && cap sync android",
+    "cap:sync:dev": "vite build --mode development && cap sync android",
     "cap:open": "cap open android"
   },
   "dependencies": {

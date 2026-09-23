@@ -1,16 +1,19 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { springBootApi } from './springBootApi';
+import { setStoredLocale } from '../localePreference';
 
 describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () => {
   const originalFetch = global.fetch;
 
   beforeEach(() => {
     localStorage.clear();
+    setStoredLocale('fr');
     vi.clearAllMocks();
   });
 
   afterEach(() => {
     global.fetch = originalFetch;
+    setStoredLocale('ar');
   });
 
   describe('SEC-01: HttpOnly cookie auth (no JS-readable token)', () => {
@@ -283,7 +286,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
 
         expect(mockFetch).toHaveBeenCalledTimes(2);
         expect(result.status).toBe(0);
-        expect(result.error).toContain('Impossible de contacter le serveur');
+        expect(result.error).toContain('Impossible de joindre le serveur');
       } finally {
         vi.useRealTimers();
       }
@@ -351,7 +354,7 @@ describe('SpringBootApiService - Spring Boot REST API Service Unit Tests', () =>
 
         expect(mockFetch).toHaveBeenCalledTimes(2);
         expect(result.status).toBe(0);
-        expect(result.error).toContain('trop de temps');
+        expect(result.error).toContain('pas répondu à temps');
       } finally {
         vi.useRealTimers();
       }

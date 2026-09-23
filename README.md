@@ -218,7 +218,7 @@ Neon ne se configure pas dans ce dépôt. À faire **une fois** dans [console.ne
 4. Après incident : restore PITR à l’horodatage voulu → mettre à jour `DATABASE_URL` Render vers la branche restaurée **ou** promouvoir la branche, puis redémarrer le service `mssid-backend`.
 5. Rollback appli : Render → service → **Rollback** vers l’image Docker précédente ; Vercel → Deployment → Promote previous.
 
-Le cron GitHub `keep-backend-awake.yml` ping `https://mssid-backend.onrender.com/api/health` pour limiter le sleep free-tier ; ce n’est pas une sauvegarde.
+L'endpoint `/api/health` vérifie la disponibilité du backend et de la base de données pour l'hébergeur.
 
 ---
 
