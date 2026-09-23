@@ -38,7 +38,7 @@ describe('HomeView', () => {
     expect(document.querySelector('[data-home-poles="kids"]')).toBeTruthy();
     expect(document.querySelector('[data-home-layout="young"]')).toBeNull();
     expect(screen.getByText(/مراجعة الدروس/)).toBeInTheDocument();
-    expect(screen.getByText(/دروس الرياضيات/)).toBeInTheDocument();
+    expect(screen.getByText(/استكشف الرياضيات/)).toBeInTheDocument();
     expect(screen.getByText(/اللغة العربية/)).toBeInTheDocument();
     expect(screen.getAllByText(/الرياضيات/).length).toBeGreaterThan(0);
     expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
@@ -70,11 +70,19 @@ describe('HomeView', () => {
     expect(onSelectPole).toHaveBeenCalledWith('exams');
   });
 
-  it('opens math lessons from the continue CTA', () => {
+  it('opens math lessons from the explicitly labeled math CTA', () => {
     const onSelectSubject = vi.fn();
     renderHome('5AP', { onSelectSubject });
-    fireEvent.click(screen.getByRole('button', { name: /دروس الرياضيات/ }));
+    fireEvent.click(screen.getByRole('button', { name: /استكشف الرياضيات/ }));
     expect(onSelectSubject).toHaveBeenCalledWith('math');
+  });
+
+  it('labels the welcome offer and currency accurately for guests', () => {
+    setStoredLocale('fr');
+    renderHome('5AP', { goldCoins: 42 });
+    expect(screen.getByText(/choisis une activité pour apprendre/)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /42 pièces/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Explorer les maths/ })).toBeInTheDocument();
   });
 
   it('shows the math lab shortcut instead of Tamazight', () => {

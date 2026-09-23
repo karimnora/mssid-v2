@@ -771,19 +771,9 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
 
   return (
     <motion.div
-      role="button"
-      tabIndex={0}
       data-subject-card={dataSubjectCard ?? id}
-      onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
-      }}
       whileHover={{ y: -3, transition: { duration: 0.18 } }}
-      whileTap={{ scale: 0.98 }}
-      className={`group relative overflow-hidden rounded-[22px] bg-white dark:bg-slate-900 border-2 border-[#EFE9DF] dark:border-slate-800 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md ${theme.hoverBorder} cursor-pointer transition-all duration-200 flex items-stretch min-h-[96px] sm:min-h-[110px] ${className}`}
+      className={`group relative overflow-hidden rounded-[22px] bg-white dark:bg-slate-900 border-2 border-[#EFE9DF] dark:border-slate-800 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md ${theme.hoverBorder} transition-all duration-200 flex items-stretch min-h-[96px] sm:min-h-[110px] ${className}`}
     >
       {/* Top accent line matching LessonIllustratedCard */}
       <div
@@ -791,20 +781,26 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
         style={{ backgroundColor: theme.blobColor }}
         aria-hidden="true"
       />
+      {showAudio && onSpeak && (
+        <div className="absolute top-1/2 -translate-y-1/2 start-4 z-20">
+          <TapSpeakButton
+            snippetKey={`subject-${id}`}
+            text={nameAr}
+            speakingKey={speakingKey}
+            onSpeak={onSpeak}
+            label={locale === 'fr' ? `Écouter ${displayName}` : `استمع إلى ${displayName}`}
+          />
+        </div>
+      )}
+      <motion.button
+        type="button"
+        onClick={onClick}
+        whileTap={{ scale: 0.98 }}
+        className="relative flex w-full items-stretch min-w-0 text-start cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-blue-600"
+      >
       {/* TEXT SIDE */}
-      <div className="flex-1 p-4 sm:p-5 flex flex-col justify-center gap-1.5 min-w-0 z-10">
+      <div className={`flex-1 p-4 sm:p-5 flex flex-col justify-center gap-1.5 min-w-0 z-10 ${showAudio && onSpeak ? 'ps-[76px]' : ''}`}>
         <div className="flex items-center gap-2 flex-wrap">
-          {showAudio && onSpeak && (
-            <div className="shrink-0" onClick={(e) => e.stopPropagation()}>
-              <TapSpeakButton
-                snippetKey={`subject-${id}`}
-                text={nameAr}
-                speakingKey={speakingKey}
-                onSpeak={onSpeak}
-              />
-            </div>
-          )}
-
           <h3 className="text-base sm:text-lg font-black text-slate-800 dark:text-slate-100 tracking-tight leading-snug truncate">
             {displayName}
           </h3>
@@ -868,6 +864,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
       <div className="absolute top-1/2 -translate-y-1/2 end-3 text-slate-400 dark:text-slate-500 opacity-40 group-hover:opacity-100 transition-opacity hidden sm:block">
         {isRtl ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
       </div>
+      </motion.button>
     </motion.div>
   );
 };

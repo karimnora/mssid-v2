@@ -216,7 +216,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   return (
     <div className="space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
-      <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white">
+      <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-x-8 lg:py-4">
+        <div className="min-w-0">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <p className="text-[12.5px] font-bold text-white/90">{t('systemBadge')}</p>
@@ -266,14 +267,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
             🪙 {goldCoins} {t('coinsLabel')}
           </button>
         </div>
+        </div>
 
+        <div className="min-w-0">
         <motion.button
           type="button"
           data-pole="courses"
           whileTap={{ scale: 0.95 }}
           transition={spring}
           onClick={() => openSubject('math')}
-          className="kids-pop hit-target mt-3.5 w-full rounded-[18px] bg-white text-[var(--kids-grass-2)] font-extrabold text-[14.5px] flex items-center justify-center gap-2"
+          className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-[var(--kids-grass-2)] font-extrabold text-[14.5px] flex items-center justify-center gap-2"
         >
           <span data-pole-icon="courses" hidden />
           {t('heroContinueCta')}
@@ -288,6 +291,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         {!isYoung && (
           <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
         )}
+        </div>
       </section>
 
       {/* VIRTUAL COMPANION EMBEDDED CARD */}
