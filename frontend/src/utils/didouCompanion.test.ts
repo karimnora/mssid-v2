@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyDidouGoldBonus, getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from './didouCompanion';
+import { applyDidouGoldBonus, getDidouEnergy, getDidouEnergyAfterTreat, getDidouFriendshipLevel, getDidouStage } from './didouCompanion';
 import { DIDOU_STAGES } from '../data/outfitsData';
 import { DidouAvatarConfig } from '../types/ecosystem';
 
@@ -44,6 +44,23 @@ describe('getDidouEnergy — real decay instead of a number that only ever goes 
       lastFedAt: new Date().toISOString(),
     };
     expect(getDidouEnergy(config)).toBe(100);
+  });
+});
+
+describe('getDidouEnergyAfterTreat', () => {
+  it('adds the treat to the energy displayed after five days, not to the stale stored value', () => {
+    const config: DidouAvatarConfig = {
+      activeOutfit: 'default',
+      unlockedOutfits: ['default'],
+      energy: 100,
+      lastFedAt: daysAgoIso(5),
+    };
+    expect(getDidouEnergyAfterTreat(config, 25)).toBe(85);
+  });
+
+  it('still caps energy at 100 when a treat fills the gauge', () => {
+    const config: DidouAvatarConfig = { activeOutfit: 'default', unlockedOutfits: ['default'], energy: 90 };
+    expect(getDidouEnergyAfterTreat(config, 20)).toBe(100);
   });
 });
 

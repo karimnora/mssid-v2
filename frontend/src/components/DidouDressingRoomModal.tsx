@@ -16,7 +16,7 @@ import {
   Info,
 } from 'lucide-react';
 import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_STAGES, DIDOU_DIALOGUES_AR, DIDOU_DIALOGUES_FR } from '../data/outfitsData';
-import { getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
+import { getDidouEnergy, getDidouEnergyAfterTreat, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 import { DidouOutfitItem, DidouOutfitId, DidouPetSpecies, DidouAvatarConfig } from '../types/ecosystem';
 import { useAuth } from '../context/AuthContext';
 import { AuthService } from '../services/authService';
@@ -205,7 +205,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
     setTimeout(() => setIsEatingAnim(false), 2200);
 
     const newCoins = currentCoins - treat.priceGoldCoins;
-    const newEnergy = Math.min(100, currentEnergy + treat.energyBonus);
+    const newEnergy = getDidouEnergyAfterTreat(activeAvatarConfig, treat.energyBonus);
     const newXp = currentXp + treat.xpBonus;
     const prevConfig = userProfile?.avatarConfig || authUser?.avatarConfig || {};
     const newConfig: DidouAvatarConfig = {

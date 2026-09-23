@@ -18,6 +18,10 @@ export function getDidouEnergy(avatarConfig?: DidouAvatarConfig): number {
   return Math.max(ENERGY_FLOOR, Math.min(100, Math.round(decayed)));
 }
 
+export function getDidouEnergyAfterTreat(avatarConfig: DidouAvatarConfig | undefined, bonus: number): number {
+  return Math.min(100, getDidouEnergy(avatarConfig) + bonus);
+}
+
 // Real friendship, not a relabeled XP counter: it only grows from the one companion interaction
 // that actually costs something and gets persisted — feeding Didou a treat — one point per treat,
 // up to 10/10. Petting/talking stay free, expressive interactions without inflating this number.

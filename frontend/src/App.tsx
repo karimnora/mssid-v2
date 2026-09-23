@@ -16,6 +16,7 @@ import {
 import { CourseSelectionView } from './components/CourseSelectionView';
 import { HomeView } from './components/HomeView';
 import { DidouVirtualCompanion } from './components/DidouVirtualCompanion';
+import { getDidouEnergyAfterTreat } from './utils/didouCompanion';
 import { Navbar, HeaderTheme } from './components/Navbar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
@@ -259,7 +260,7 @@ export default function App() {
       };
       // DidouVirtualCompanion / DidouDressingRoomModal both read `energy` (not `energyLevel`) for
       // the energy bar — keep writing the field they actually display.
-      const newEnergy = Math.min(100, (currentConfig.energy ?? 80) + energyBonus);
+      const newEnergy = getDidouEnergyAfterTreat(currentConfig, energyBonus);
       const newHappiness = Math.min(100, (currentConfig.happinessLevel ?? 80) + Math.round(energyBonus / 2));
       const newCoins = Math.max(0, currentCoins - cost);
       const newXp = prev.xp + xpBonus;

@@ -6,20 +6,20 @@ const metadata = {
   ar: {
     title: 'mssid dz | المنصة التعليمية الجزائرية للابتدائي',
     description:
-      'منصة مَسِيد الجزائر للتعليم الابتدائي: دروس، تمارين، امتحانات 5AP، دعم BaridiMob، Edahabia/CIB، وحلول رسمية.',
-    keywords: 'mssid, تعليم ابتدائي, الجزائر, BaridiMob, Edahabia, CIB, امتحانات 5AP, تمارين, دروس',
+      'مَسِيد DZ للتعليم التحضيري والابتدائي في الجزائر: دروس وتمارين وتقييمات وأنشطة تفاعلية من التحضيري إلى السنة الخامسة.',
+    keywords: 'mssid, تعليم تحضيري, تعليم ابتدائي, الجزائر, السنة الخامسة, تمارين, دروس, أنشطة تفاعلية',
   },
   fr: {
     title: 'mssid dz | Plateforme éducative algérienne primaire',
     description:
-      "mssid dz pour le primaire algérien : leçons, exercices, examens 5AP, BaridiMob, Edahabia/CIB et solutions officielles.",
-    keywords: 'mssid, éducation primaire, Algérie, BaridiMob, Edahabia, CIB, 5AP, exercices, leçons',
+      "Mssid DZ accompagne les enfants du préscolaire à la 5AP en Algérie avec des leçons, exercices, évaluations et activités interactives.",
+    keywords: 'mssid, préscolaire, primaire, Algérie, 5AP, exercices, leçons, activités interactives',
   },
   en: {
     title: 'mssid dz | Algerian primary learning platform',
     description:
-      'mssid dz for Algerian primary education: lessons, exercises, 5AP exams, BaridiMob, Edahabia/CIB and official solutions.',
-    keywords: 'mssid, primary education, Algeria, BaridiMob, Edahabia, CIB, 5AP, exercises, lessons',
+      'Mssid DZ helps children in Algeria learn from preschool to 5AP with lessons, exercises, assessments and interactive activities.',
+    keywords: 'mssid, preschool, primary education, Algeria, 5AP, exercises, lessons, interactive activities',
   },
 };
 
