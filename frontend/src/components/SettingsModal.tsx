@@ -244,7 +244,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             )}
           </div>
           <p className="text-center text-xs text-[var(--kids-muted)]" dir="auto">
-            {tMeta('appVersion', { version: __APP_VERSION__, build: __APP_BUILD__ })}
+            {tMeta('appVersion', { version: __APP_VERSION__ })}
           </p>
         </div>
       </motion.div>

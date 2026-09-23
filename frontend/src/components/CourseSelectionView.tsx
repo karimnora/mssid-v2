@@ -26,6 +26,8 @@ interface CourseSelectionViewProps {
   onGoHome: () => void;
   /** When the child picked a subject on HomeView, skip the matière step. */
   initialSubjectId?: SubjectId | null;
+  /** Lets the global header back button close the subject step before leaving courses. */
+  onSubjectStepBackChange?: (action: (() => void) | null) => void;
 }
 
 const SUBJECT_EMOJI: Record<string, string> = {
@@ -113,6 +115,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   isLessonLocked,
   onGoHome,
   initialSubjectId = null,
+  onSubjectStepBackChange,
 }) => {
   const t = useTranslation('courses');
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(() =>
@@ -125,6 +128,10 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   // Changing level restarts the Matière choice — a 1AP subject list may not even apply to 5AP.
   // Do not wipe on mount: that would cancel a subject picked from HomeView.
   const previousGradeRef = useRef(grade);
+  useEffect(() => {
+    onSubjectStepBackChange?.(selectedSubject ? () => setSelectedSubject(null) : null);
+    return () => onSubjectStepBackChange?.(null);
+  }, [selectedSubject, onSubjectStepBackChange]);
   useEffect(() => {
     if (previousGradeRef.current === grade) return;
     previousGradeRef.current = grade;

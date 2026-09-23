@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
 import { CourseLesson, SubjectId, SubjectInfo } from './types';
@@ -105,6 +105,7 @@ export default function App() {
     return 'neutre';
   });
   const [courseEntrySubject, setCourseEntrySubject] = useState<SubjectId | null>(null);
+  const courseStepBackRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     window.localStorage.setItem(THEME_STORAGE_KEY, headerTheme);
@@ -243,6 +244,15 @@ export default function App() {
     nav.setLabsCatalogOpen(true);
   };
 
+  const handlePrimaryBack = () => {
+    if (nav.mainCategory === 'courses' && !nav.selectedLesson && courseStepBackRef.current) {
+      courseStepBackRef.current();
+      return;
+    }
+    if (nav.selectedLesson) setCourseEntrySubject(nav.selectedLesson.subject);
+    nav.goBack();
+  };
+
   const handleFeedDidou = (treatId: string, energyBonus: number, xpBonus: number, cost: number) => {
     progress.setUserProfile((prev) => {
       const currentCoins = prev.goldCoins ?? 150;
@@ -317,7 +327,7 @@ export default function App() {
       <Navbar
         currentGrade={nav.grade}
         onHomeClick={nav.goHome}
-        onBackClick={nav.isHomeActive ? undefined : nav.goBack}
+        onBackClick={nav.isHomeActive ? undefined : handlePrimaryBack}
         currentTheme={headerTheme}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
         onOpenSettingsModal={() => modals.setIsSettingsModalOpen(true)}
@@ -404,10 +414,14 @@ export default function App() {
                 courseSubjects={visibleCourseSubjects}
                 allCourseLessons={publishableCourses}
                 completedLessonIds={progress.userProfile.completedLessonIds}
-                onSelectLesson={nav.handleSelectLesson}
+                onSelectLesson={(lesson) => {
+                  setCourseEntrySubject(lesson.subject);
+                  nav.handleSelectLesson(lesson);
+                }}
                 isLessonLocked={isLessonLocked}
                 onGoHome={nav.goHome}
                 initialSubjectId={courseEntrySubject}
+                onSubjectStepBackChange={(action) => { courseStepBackRef.current = action; }}
               />
             ) : nav.mainCategory === 'labs' && (!isLabSubjectId(nav.selectedSubject) || nav.labsCatalogOpen) ? null : (
               <ActiveWorkspace
@@ -420,12 +434,12 @@ export default function App() {
                 headerTheme={headerTheme}
                 userProfile={progress.userProfile}
                 onSelectLesson={nav.handleSelectLesson}
-                onClearLesson={() => nav.setSelectedLesson(null)}
+                onClearLesson={handlePrimaryBack}
                 onBackToCourses={() => {
                   nav.setSelectedLesson(null);
                   nav.setMainCategory('courses');
                 }}
-                onBackToLabsCatalog={openLabsCatalog}
+                onBackToLabsCatalog={handlePrimaryBack}
                 onOpenLab={openLabFocused}
                 onCompleteQuiz={progress.handleCompleteQuiz}
                 onQuizFullyValidated={progress.handleQuizFullyValidated}

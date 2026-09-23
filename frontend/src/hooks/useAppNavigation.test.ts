@@ -3,6 +3,7 @@ import { renderHook, act } from '@testing-library/react';
 import { isToolAvailableForGrade, INTERACTIVE_LABS_LIST } from '../data/subjectsData';
 import { defaultLabForGrade, labsEntrySubjectForGrade, useAppNavigation } from './useAppNavigation';
 import { GRADE_STORAGE_KEY } from '../navigation/appLocation';
+import { CourseLesson } from '../types';
 
 describe('defaultLabForGrade', () => {
   it('opens a 1AP-safe lab instead of the Arabic conjugator', () => {
@@ -129,5 +130,50 @@ describe('mobile footer tab follows the open view', () => {
       result.current.handleSelectPole('challenges');
     });
     expect(result.current.mobileTab).toBe('games');
+  });
+});
+
+describe('primary back button returns to the parent screen', () => {
+  beforeEach(() => {
+    window.history.replaceState(null, '', '/');
+  });
+
+  it('returns from a lesson to courses without putting that lesson back in the browser history', async () => {
+    const lesson: CourseLesson = {
+      id: 'back-test-lesson', grade: '1AP', subject: 'math', categoryAr: 'الحساب',
+      titleAr: 'درس', summaryAr: '', rulesAr: [], quiz: [],
+    };
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+    act(() => result.current.handleSelectPole('courses'));
+    act(() => result.current.handleSelectLesson(lesson));
+    expect(window.location.pathname).toBe('/lesson/back-test-lesson');
+
+    act(() => result.current.goBack());
+    expect(result.current.selectedLesson).toBeNull();
+    expect(result.current.mainCategory).toBe('courses');
+    expect(window.location.pathname).toBe('/courses');
+
+    await act(async () => {
+      window.history.back();
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    });
+    expect(result.current.selectedLesson).toBeNull();
+  });
+
+  it('returns from a lab to its catalogue, then to home', () => {
+    const { result } = renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+    act(() => {
+      result.current.handleSelectPole('labs');
+      result.current.setLabsCatalogOpen(true);
+    });
+    act(() => {
+      result.current.openLab('primary_math_ops');
+      result.current.setLabsCatalogOpen(false);
+    });
+    act(() => result.current.goBack());
+    expect(result.current.labsCatalogOpen).toBe(true);
+    expect(result.current.isHomeActive).toBe(false);
+    act(() => result.current.goBack());
+    expect(result.current.isHomeActive).toBe(true);
   });
 });

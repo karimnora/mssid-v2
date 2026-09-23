@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { CourseSelectionView } from './CourseSelectionView';
 import { LocaleProvider } from '../context/LocaleContext';
 import { CourseLesson, SubjectInfo } from '../types';
@@ -65,6 +65,28 @@ const mockLessons: CourseLesson[] = [
 ];
 
 describe('CourseSelectionView Trimester Animations & Display', () => {
+  it('lets the header back button return from a subject to the subject list', () => {
+    const backRef: { current: (() => void) | null } = { current: null };
+    render(
+      <LocaleProvider>
+        <CourseSelectionView
+          grade="5AP"
+          courseSubjects={mockSubjects}
+          allCourseLessons={mockLessons}
+          completedLessonIds={[]}
+          onSelectLesson={vi.fn()}
+          onGoHome={vi.fn()}
+          initialSubjectId="math"
+          onSubjectStepBackChange={(action) => { backRef.current = action; }}
+        />
+      </LocaleProvider>
+    );
+    expect(backRef.current).toBeTypeOf('function');
+    act(() => { backRef.current?.(); });
+    expect(screen.queryByText('الأعداد الطبيعية 1')).not.toBeInTheDocument();
+    expect(screen.getByText('الرياضيات')).toBeInTheDocument();
+  });
+
   it('renders trimester tabs (1, 2, 3) and switches courses with animation', async () => {
     const onSelectLesson = vi.fn();
     render(

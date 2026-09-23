@@ -14,7 +14,7 @@ export const meta = {
   reviewGooglePlay: 'التقييم على Google Play',
   reviewSuggestion: 'إرسال اقتراح',
   reviewOpenError: 'تعذر فتح Google Play. حاول بعد قليل.',
-  appVersion: 'الإصدار {version} · البناء {build}',
+  appVersion: 'الإصدار {version}',
   offlineTitle: 'التعلم دون اتصال',
   offlineOnline: 'الاتصال بالإنترنت متاح',
   offlineDisconnected: 'أنت غير متصل بالإنترنت',

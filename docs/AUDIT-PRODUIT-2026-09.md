@@ -39,6 +39,15 @@ Le nourrissage de Didou depuis l'accueil additionnait le bonus à l'énergie enr
 
 La console administrative expose déjà DAU/WAU/MAU et des taux de retour basés sur `lastActiveDate` après une action qui rapporte de l'XP. Ces taux ne sont pas une rétention par cohorte et ignorent les simples ouvertures ou abandons avant activité.
 
+## Vérification technique complémentaire
+
+- Primaire : le bouton Retour de l'en-tête pouvait remonter dans l'historique du navigateur au lieu de retrouver la liste attendue, surtout après une ouverture directe. Le trajet leçon → matière/liste, matière → choix des matières, laboratoire → catalogue, puis accueil a été corrigé. Un test sur un téléphone Android réel reste nécessaire pour la touche Retour du système.
+- Réglages : le libellé public montrait la version **et** le numéro interne de build. Il ne montre plus que la version ; aucun numéro Android n'a changé.
+- Web sur appareil partagé : l'ancien service worker pouvait conserver des réponses de compte ou d'administration indexées seulement par URL. Les anciens caches sont supprimés au démarrage ; seuls les examens et les réglages publics sont désormais admissibles au cache API. Vérifier la connexion de deux comptes successifs et le mode hors ligne sur un vrai appareil.
+- Chargement : le build produit encore un catalogue de cours d'environ 4 Mo (avant compression), un moteur de jeux d'environ 1,7 Mo et un bloc initial d'environ 1,8 Mo. C'est un risque de lenteur sur téléphone modeste, pas une preuve de lenteur vécue ; mesurer avant de découper davantage.
+- Données locales : plusieurs modules lisent des données sauvegardées avec `JSON.parse` et supposent ensuite leur forme correcte. Une sauvegarde interrompue ou ancienne peut provoquer une erreur d'affichage. Priorité à des validations ciblées et tests de récupération, sans effacer automatiquement la progression valide.
+- La description PWA affirmait un fonctionnement « sans Internet » sans distinguer les fonctions qui nécessitent le serveur. Elle a été reformulée pour décrire les contenus sans cette promesse globale.
+
 ## Sources de référence
 
 - Google Play — statistiques de fiche et d'acquisition : https://support.google.com/googleplay/android-developer/answer/9859173

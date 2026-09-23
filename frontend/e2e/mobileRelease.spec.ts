@@ -19,7 +19,7 @@ test('Android browser installation and voluntary review from settings', async ({
   await expect(install).toHaveAttribute('href', 'https://play.google.com/store/apps/details?id=dz.mssid.app');
   await page.getByRole('button', { name: 'Plus tard', exact: true }).click();
   await page.locator('[data-nav-settings]').click();
-  await expect(page.getByText(/Version \d+\.\d+\.\d+ · build \d+/)).toBeVisible();
+  await expect(page.getByText(/^Version \d+\.\d+\.\d+$/)).toBeVisible();
   await page.getByRole('button', { name: 'Noter sur Google Play', exact: true }).click();
   const prompt = page.locator('#app-rating-prompt');
   await expect(prompt).toBeVisible();

@@ -12,7 +12,7 @@ export const meta: typeof metaAr = {
   reviewGooglePlay: 'Noter sur Google Play',
   reviewSuggestion: 'Envoyer une suggestion',
   reviewOpenError: 'Impossible d’ouvrir Google Play. Réessaie dans un instant.',
-  appVersion: 'Version {version} · build {build}',
+  appVersion: 'Version {version}',
   offlineTitle: 'Apprendre hors connexion',
   offlineOnline: 'Connexion Internet disponible',
   offlineDisconnected: 'Tu es hors connexion',

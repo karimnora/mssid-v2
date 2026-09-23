@@ -4,6 +4,7 @@ import path from 'path';
 import {defineConfig} from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { readAndroidVersion } from './scripts/android-release-config.mjs';
+import { isPublicApiCacheUrl } from './src/utils/publicApiCache';
 
 export default defineConfig(() => {
   return {
@@ -20,7 +21,7 @@ export default defineConfig(() => {
         manifest: {
           short_name: 'مَسيد DZ',
           name: 'مَسيد DZ - منصة التعليم الابتدائي الجزائري',
-          description: 'تطبيق تعليمي تفاعلي وفق المنهاج الوزاري الجزائري مع معلم ذكي بالذكاء الاصطناعي وبدون إنترنت',
+          description: 'دروس وتمارين وأنشطة تفاعلية للأطفال من التحضيري إلى السنة الخامسة ابتدائي في الجزائر',
           start_url: '/',
           background_color: '#064e3b',
           theme_color: '#047857',
@@ -52,41 +53,13 @@ export default defineConfig(() => {
           navigateFallback: '/index.html',
           runtimeCaching: [
             {
-              // R2.3 — NetworkFirst for auth + progress-sync: always prefer a live/fresh answer
-              // (session validity, latest XP/badges), but degrade to the last-known cached
-              // response instead of a hard failure when offline.
-              urlPattern: ({ url }: { url: URL }) =>
-                url.pathname.includes('/api/v1/auth/') || url.pathname.includes('/api/v1/users/'),
-              handler: 'NetworkFirst',
-              options: {
-                cacheName: 'mssid-api-auth-progress',
-                networkTimeoutSeconds: 6,
-                cacheableResponse: { statuses: [0, 200] },
-                expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 },
-              },
-            },
-            {
-              // R2.3 — StaleWhileRevalidate for the rest of the Spring Boot REST API (public exam
-              // lists, CMS content, etc.): serve instantly from cache while revalidating in the
-              // background, so browsing stays fast and works offline once visited once.
-              //
-              // SEC: role-gated paywalled routes (premium lesson content, exam solutions) are
-              // explicitly excluded here rather than routed to their own NetworkOnly rule — Workbox
-              // caches are keyed purely by URL with no notion of cookies/session, so caching one of
-              // these at all would let any later visitor to the exact same URL receive the cached
-              // PREMIUM/ADMIN response instantly, bypassing the backend's @PreAuthorize check. A
-              // NetworkOnly rule was tried first, but Workbox's SW-side fetch proxying for it threw
-              // "no-response" in production (Vercel) despite the network tab showing a real 200 —
-              // matching *nothing* is the more robust fix: the service worker's fetch handler never
-              // calls event.respondWith() for an unmatched URL, so the browser's native fetch handles
-              // it directly, no Workbox layer involved at all.
-              urlPattern: ({ url }: { url: URL }) =>
-                url.pathname.startsWith('/api/v1/') &&
-                !url.pathname.startsWith('/api/v1/courses/premium-lessons/') &&
-                !/\/api\/v1\/exams\/\d+\/solutions$/.test(url.pathname),
+              // Only the endpoints explicitly marked permitAll in SecurityConfig belong in a
+              // URL-keyed cache. All account, admin, payment, AI and premium requests bypass the
+              // service worker so responses cannot cross accounts on a shared device.
+              urlPattern: ({ url }: { url: URL }) => isPublicApiCacheUrl(url),
               handler: 'StaleWhileRevalidate',
               options: {
-                cacheName: 'mssid-api-general',
+                cacheName: 'mssid-api-public-v2',
                 cacheableResponse: { statuses: [0, 200] },
                 expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 7 },
               },

@@ -121,6 +121,7 @@ export function useAppNavigation(options: {
   const [labsCatalogOpen, setLabsCatalogOpen] = useState(false);
 
   const skipNextPushRef = useRef(true);
+  const replaceNextNavigationRef = useRef(false);
   const lastPathRef = useRef(typeof window !== 'undefined' ? window.location.pathname : '/');
   const isLessonLockedRef = useRef(isLessonLocked);
   isLessonLockedRef.current = isLessonLocked;
@@ -214,7 +215,10 @@ export function useAppNavigation(options: {
     const nextPath = href.split('?')[0];
     const pathChanged = nextPath !== lastPathRef.current;
     lastPathRef.current = nextPath;
-    if (pathChanged) {
+    if (replaceNextNavigationRef.current) {
+      replaceNextNavigationRef.current = false;
+      window.history.replaceState(historyState, '', href);
+    } else if (pathChanged) {
       window.history.pushState(historyState, '', href);
     } else {
       window.history.replaceState(historyState, '', href);
@@ -315,10 +319,16 @@ export function useAppNavigation(options: {
     setIsHomeActive(true);
   };
 
-  /** One real step back through the app's own navigation history (pushed above on every subject/
-   * lesson/pole change — see the pushState effect above), not a jump to a fixed list/home screen. */
+  /** Return to the parent screen even when the app was opened directly on a lesson URL. */
   const goBack = () => {
-    window.history.back();
+    replaceNextNavigationRef.current = true;
+    if (selectedLesson) {
+      setSelectedLesson(null);
+    } else if (mainCategory === 'labs' && !labsCatalogOpen) {
+      setLabsCatalogOpen(true);
+    } else {
+      goHome();
+    }
   };
 
   const openLab = (toolId: SubjectId) => {

@@ -7,6 +7,19 @@ import { LocaleProvider } from '../context/LocaleContext';
 const renderModal = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
 describe('SettingsModal', () => {
+  it('shows the app version without the internal build number', () => {
+    renderModal(
+      <SettingsModal
+        isOpen={true}
+        onClose={vi.fn()}
+        tashkeelEnabled={false}
+        onToggleTashkeel={vi.fn()}
+      />
+    );
+    expect(screen.getByText(new RegExp(__APP_VERSION__.replaceAll('.', '\\.')))).toBeInTheDocument();
+    expect(screen.queryByText(/build|البناء/i)).not.toBeInTheDocument();
+  });
+
   it('lets a parent change the school year, then closes so the change is visibly confirmed', () => {
     const onGradeChange = vi.fn();
     const onClose = vi.fn();

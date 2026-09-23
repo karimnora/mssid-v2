@@ -28,7 +28,7 @@ if (sentryDsn) {
 
 const isShowcase = new URLSearchParams(window.location.search).has('ds-preview');
 
-createRoot(document.getElementById('root')!).render(
+const renderApp = () => createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <HelmetProvider>
@@ -45,3 +45,21 @@ createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </StrictMode>,
 );
+
+// Older service workers cached private API responses by URL, without partitioning by account.
+// Remove both legacy caches before AuthProvider asks who is signed in on shared devices.
+async function startApp() {
+  if ('caches' in window) {
+    try {
+      await Promise.all([
+        window.caches.delete('mssid-api-auth-progress'),
+        window.caches.delete('mssid-api-general'),
+      ]);
+    } catch {
+      // Cache storage can be unavailable in private mode; the app still starts normally.
+    }
+  }
+  renderApp();
+}
+
+void startApp();
