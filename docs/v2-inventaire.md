@@ -70,6 +70,20 @@ Correspondance exercice → compétence, profils enfant, évaluation d’orienta
   - erreurs affichées en rouge vif ;
   - réinitialisation de la progression sans Parent Gate ;
   - onglet actif « الدروس » sur la page des examens.
+- Prompt du tuteur IA (`GeminiAiService`, référentiel 1AP) : « الأعداد من 0 إلى 20 », alors que la borne officielle 1AP est 100 (`CLAUDE.md`).
+
+## 5. Vérifier le backend en local
+
+Pas de Maven ni de Java 21 sur la machine : les tests passent par Docker (Docker Desktop démarré).
+
+```powershell
+docker network create mssid-v2-test
+docker run -d --rm --name mssid-v2-pg --network mssid-v2-test -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=mssid_db postgres:16
+docker run --rm --network mssid-v2-test -e DATABASE_URL=jdbc:postgresql://mssid-v2-pg:5432/mssid_db -v "${PWD}\backend:/app" -v mssid-m2:/root/.m2 -w /app maven:3.9-eclipse-temurin-21 mvn -B test
+docker stop mssid-v2-pg; docker network rm mssid-v2-test
+```
+
+La base du conteneur est jetable : elle part vide à chaque lancement.
 
 ## 4. Séparation technique : constats et plan
 

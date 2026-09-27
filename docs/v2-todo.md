@@ -90,7 +90,9 @@ Référentiel dans `frontend/src/data/competences/`, sans modifier les fichiers 
 
 ### Progression
 
-- [ ] Modèle de profil enfant côté serveur (migration V100+), données minimales (L-03)
+- [x] Modèle de profil enfant côté serveur : migration `V100__add_child_profiles.sql`, API `/api/v1/children` (liste, création, modification, suppression), prénom ou pseudo + niveau (`PRESCHOOL`, 1AP–5AP) + avatar facultatif, 6 profils maximum, suppression avec le compte
+- [ ] Parent Gate côté frontend avant création, modification ou suppression d’un profil
+- [ ] Écran de choix du profil (prototype, écran 1) et rattachement de la progression locale au profil choisi
 - [ ] Enregistrement des séances et des résultats par profil et par compétence
 
 ## Phases suivantes (à détailler au démarrage de chacune)
