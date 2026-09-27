@@ -8,16 +8,22 @@ Règles : `main` est ramené dans `v2` chaque semaine ; les corrections de conte
 
 ### Inventaire et décisions
 
-- [ ] Inventaire de la V1 à partir du code : écrans, modules, labs, jeux, flags, services, problèmes connus (`docs/v2-inventaire.md`)
-- [ ] Classement de chaque élément : conserver, améliorer, remplacer, ajouter
+- [x] Inventaire de la V1 à partir du code : écrans, modules, labs, jeux, flags, services, problèmes connus (`docs/v2-inventaire.md`)
+- [ ] Classement de chaque élément : conserver, améliorer, remplacer, ajouter (proposition dans `docs/v2-inventaire.md` §2, à valider)
+- [ ] Corriger sur `main` les écarts V1 relevés (`docs/v2-inventaire.md` §3)
 - [ ] Relevé Play Console : fiche, installations, désinstallations, utilisateurs actifs, Android vitals (Karim)
 - [ ] Observation de quelques familles et d’au moins un enseignant sur trois tâches : choisir un niveau, finir une activité, reprendre le lendemain (Karim)
 - [ ] Périmètre V2 arrêté : liste des évolutions, contenus nouveaux candidats au premium
 
 ### Séparation technique
 
-- [ ] Plage de numéros Flyway réservée à la V2 et documentée
-- [ ] Base PostgreSQL de test indépendante, comptes fictifs uniquement
+Plan détaillé : `docs/v2-inventaire.md` §4. Ne pas pousser `v2` tant que les variables Preview de Vercel ne sont pas réglées. Ne jamais créer de tag `v*` (déclenche le build de release Android).
+
+- [ ] Vercel : Production Branch = `main`, `VITE_SPRING_BOOT_URL` limité à Production, protection des previews activée (Karim)
+- [ ] Render : auto-deploy du service actuel limité à `main` (Karim)
+- [ ] Plage de numéros Flyway réservée à la V2 (V100+) et `out-of-order` sur l’environnement V2 uniquement
+- [ ] Base PostgreSQL de test indépendante et vide (pas de branche Neon copiée depuis la production), comptes fictifs uniquement
+- [ ] Resend désactivé ou clé de test sur le backend V2
 - [ ] Backend de prévisualisation privé pointant sur la base de test
 - [ ] Preview Vercel privé de `v2` avec `VITE_SPRING_BOOT_URL` vers le backend de test
 - [ ] Identifiants OAuth Google, environnement Sentry et clé Gemini distincts pour la V2
