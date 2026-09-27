@@ -77,9 +77,23 @@ Référence : `docs/v2-design-brief.md`. Un seul agent ou une seule personne à 
 
 **Validation :** un utilisateur trouve une activité et reprend sa séance sans explication extérieure.
 
-## Phases suivantes (à détailler au démarrage de chacune)
+## Phase 3 — Socle pédagogique et progression
 
-- [ ] Phase 3 — Socle pédagogique et progression
+### Compétences
+
+Référentiel dans `frontend/src/data/competences/`, sans modifier les fichiers de leçons (PED-06). Une leçon liste ses compétences ; ses exercices en héritent tant qu’il n’existe pas de lien exercice par exercice. Le test `competences.test.ts` vérifie que chaque leçon couverte du catalogue est reliée et que tous les identifiants existent.
+
+- [x] Maths 1AP : 12 compétences, 15 leçons reliées (`math1ap.ts`)
+- [ ] Relecture pédagogique des compétences maths 1AP, en particulier les deux marquées `inReferentiel: false` (soustraction, résolution de problèmes) : à confirmer dans le programme officiel (Karim)
+- [ ] Lien exercice par exercice lorsque les exercices d’une leçon travaillent des compétences différentes
+- [ ] Étendre au périmètre choisi pour la première série complète (phase 3 de la roadmap)
+
+### Progression
+
+- [ ] Modèle de profil enfant côté serveur (migration V100+), données minimales (L-03)
+- [ ] Enregistrement des séances et des résultats par profil et par compétence
+
+## Phases suivantes (à détailler au démarrage de chacune)
 - [ ] Phase 4 — Accompagnement personnalisé
 - [ ] Phase 5 — Espace parent et fiches imprimables
 - [ ] Phase 6 — Enrichissement pédagogique
