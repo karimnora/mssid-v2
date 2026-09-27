@@ -62,6 +62,14 @@ Correspondance exercice → compétence, profils enfant, évaluation d’orienta
 
 - `enableAITutor` n’est lu nulle part hors du catalogue de flags : l’admin annonce que le bouton du tuteur se cache quand le flag est désactivé, ce qui est faux.
 - `authService.ts` lit des reçus avec `JSON.parse` sans `try`.
+- Relevés pendant la visite des écrans (détail et captures dans `docs/v2-captures/README.md`) :
+  - bouton « التالي » de la leçon recouvert par la barre du bas selon le défilement ;
+  - compteurs d’étapes et de questions inversés (« 4 / 2 » pour 2 / 4) ;
+  - colonne « الحل » des examens rendue fausse à la lecture par le sens d’écriture (« 3.8 < 3.18 < 3.08 »), opérations non posées ;
+  - explications génériques dans certains quiz ;
+  - erreurs affichées en rouge vif ;
+  - réinitialisation de la progression sans Parent Gate ;
+  - onglet actif « الدروس » sur la page des examens.
 
 ## 4. Séparation technique : constats et plan
 

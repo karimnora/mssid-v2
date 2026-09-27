@@ -45,7 +45,8 @@ Référence : `docs/v2-design-brief.md`. Un seul agent ou une seule personne à 
 - [x] Brief design et UX avec les contraintes existantes (`docs/v2-design-brief.md`)
 - [ ] Trancher la couleur de fond et de texte : `.cursorrules` (`#FFFBF0` / `#0f172a`) ou cahier des charges PED-05 (`#F8F9FA` / `#1E293B`) (Karim)
 - [ ] Désigner qui réalise le prototype (Codex, Cursor ou Karim)
-- [ ] Captures des écrans actuels correspondants aux six écrans du prototype, sur téléphone, pour la comparaison
+- [x] Captures des écrans actuels correspondants aux six écrans du prototype, en largeur téléphone (`docs/v2-captures/`)
+- [ ] Refaire ces captures sur un vrai téléphone Android (Karim)
 
 ### Exploration du style
 
