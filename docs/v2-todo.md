@@ -36,14 +36,48 @@ Plan détaillé : `docs/v2-inventaire.md` §4. Ne pas pousser `v2` tant que les 
 
 **Validation :** un essai sur la V2 (inscription, progression, reçu) ne laisse aucune trace dans la base ni dans les services de la V1.
 
-## Phase 2 — Préparation
+## Phase 2 — Chantier design et navigation
+
+Référence : `docs/v2-design-brief.md`. Un seul agent ou une seule personne à la fois sur les fichiers du prototype. La refonte d’un écran n’est décidée qu’après comparaison avec l’écran actuel.
+
+### Cadrage
 
 - [x] Brief design et UX avec les contraintes existantes (`docs/v2-design-brief.md`)
 - [ ] Trancher la couleur de fond et de texte : `.cursorrules` (`#FFFBF0` / `#0f172a`) ou cahier des charges PED-05 (`#F8F9FA` / `#1E293B`) (Karim)
+- [ ] Désigner qui réalise le prototype (Codex, Cursor ou Karim)
+- [ ] Captures des écrans actuels correspondants aux six écrans du prototype, sur téléphone, pour la comparaison
+
+### Exploration du style
+
+- [ ] Deux ou trois variantes de l’accueil primaire en maquette, sans code
+- [ ] Choix d’une variante (Karim)
+
+### Prototype (branche `v2`, route de prototype non visible dans la navigation)
+
+- [ ] 1. Choix du profil enfant (facultatif ; passage direct pour l’invité)
+- [ ] 2. Accueil préscolaire (cibles 60–72 px, audio sur chaque consigne)
+- [ ] 3. Accueil primaire (« Continuer » en action principale ; matières, examens, labs, défis visibles)
+- [ ] 4. Exercice avec consigne audio et correction (vrai exercice, dont un problème de maths en deux colonnes)
+- [ ] 5. Bilan de séance
+- [ ] 6. Tableau de bord parent
+- [ ] Parcours cliquable reliant les six écrans
+
+### Vérification
+
+- [ ] Test sur un Android milieu de gamme : lisibilité de l’arabe, texte et nombres mélangés, RTL, zoom non bloqué
+- [ ] Contrôle d’accessibilité (axe) sur les six écrans
+- [ ] Test avec quelques familles : trouver une activité et reprendre une séance sans aide (Karim)
+- [ ] Décision écran par écran : conserver, ajuster ou remplacer (Karim)
+
+### Bibliothèque de composants
+
+- [ ] Composants communs issus du prototype validé : boutons, cartes, consigne audio, feedback, progression, Didou
+- [ ] Application aux écrans retenus pour la refonte
+
+**Validation :** un utilisateur trouve une activité et reprend sa séance sans explication extérieure.
 
 ## Phases suivantes (à détailler au démarrage de chacune)
 
-- [ ] Phase 2 — Navigation et expérience utilisateur
 - [ ] Phase 3 — Socle pédagogique et progression
 - [ ] Phase 4 — Accompagnement personnalisé
 - [ ] Phase 5 — Espace parent et fiches imprimables
