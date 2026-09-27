@@ -44,6 +44,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig hasSigningConfig ? signingConfigs.release : null
         }
+        // Private V2 test build: installs next to the Play app instead of replacing it. Google
+        // Sign-In needs its own Android OAuth client for dz.mssid.app.beta + the debug SHA-1.
+        beta {
+            initWith release
+            applicationIdSuffix ".beta"
+            versionNameSuffix "-beta"
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['release']
+        }
     }
 }
 
