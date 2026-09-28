@@ -33,6 +33,7 @@ export const meta = {
   parentGateAnswer: 'اكتب الناتج هنا',
   parentGateError: 'إجابة غير صحيحة، حاول مجدداً.',
   parentGateContinue: 'متابعة',
+  voiceUnavailable: 'القراءة الصوتية غير متوفرة على هذا الجهاز حالياً.',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'لتثبيت التطبيق على جهازك: اضغط على زر المشاركة (Share) ثم اختر "إضافة إلى الشاشة الرئيسية" (Add to Home Screen) 📲',

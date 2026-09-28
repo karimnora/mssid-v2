@@ -56,9 +56,9 @@ export const AppRatingPrompt: React.FC<AppRatingPromptProps> = ({ trigger, manua
 
   return <>
     {visible && !blocked && (manualVisible || allowAutomaticPrompt) && (
-      <aside id="app-rating-prompt" dir={direction} aria-label={t('reviewTitle')} className="fixed bottom-28 md:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-80 z-50 rounded-2xl border-2 border-amber-300 bg-white p-4 shadow-xl space-y-3 text-slate-900">
-        <div className="flex items-center justify-between gap-2">
-          <h3 className="font-extrabold text-sm">{t('reviewTitle')}</h3>
+      <aside id="app-rating-prompt" dir={direction} aria-label={t('reviewTitle')} className="fixed bottom-28 md:bottom-6 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-80 z-50 rounded-2xl border-2 border-amber-300 bg-white p-4 shadow-xl space-y-3 text-slate-900 min-w-0 overflow-x-clip">
+        <div className="flex items-start justify-between gap-2 min-w-0">
+          <h3 className="font-extrabold text-sm leading-snug break-words min-w-0">{t('reviewTitle')}</h3>
           <button type="button" aria-label={t('ratingCloseAriaLabel')} className="min-h-12 min-w-12 grid place-items-center" onClick={() => finish('dismissed')}><X className="w-5 h-5" /></button>
         </div>
         <p className="text-sm">{t(isAndroid ? 'reviewStoreDescription' : 'reviewContactDescription')}</p>

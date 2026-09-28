@@ -377,13 +377,13 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-4"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden"
+        className="kids-modal-panel w-full max-w-md flex flex-col overflow-hidden"
         dir={direction}
       >
         {/* Modal Header */}
@@ -452,7 +452,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* "Mot de passe oublié" — step 1: enter the email to receive a reset code */}
         {authFlow === 'forgot' && (
-          <form onSubmit={handleForgotSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
+          <form onSubmit={handleForgotSubmit} className="kids-modal-body p-5 space-y-4">
             <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
               {t('forgotIntro')}
             </p>
@@ -498,7 +498,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* "Mot de passe oublié" — step 2: enter the code + a new password */}
         {authFlow === 'reset' && (
-          <form onSubmit={handleResetSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
+          <form onSubmit={handleResetSubmit} className="kids-modal-body p-5 space-y-4">
             <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
               {t('resetIntroPrefix')} <span className="font-extrabold dir-ltr inline-block">{email}</span>{t('resetIntroSuffix')}
             </p>
@@ -578,7 +578,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
 
         {/* Post-Google-signup, one-time: grade/wilaya are genuinely unset in the DB, ask once. */}
         {authFlow === 'completeProfile' && (
-          <form onSubmit={handleCompleteProfileSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
+          <form onSubmit={handleCompleteProfileSubmit} className="kids-modal-body p-5 space-y-4">
             <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
               {t('completeProfileIntro')}
             </p>
@@ -657,7 +657,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
             </div>
           </div>
         )}
-        <form onSubmit={handleSubmit} className="p-5 space-y-4 overflow-y-auto flex-1">
+        <form onSubmit={handleSubmit} className="kids-modal-body p-5 space-y-4">
           {!isLogin && (
             <div>
               <label className="block text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">{t('fullNameLabel')}</label>

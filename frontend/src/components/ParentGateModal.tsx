@@ -76,7 +76,7 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
       role="dialog"
       aria-modal="true"
       aria-label={t('parentGateTitle')}
-      className="fixed inset-0 z-[80] kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[80] kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-4"
       dir={direction}
     >
       <div className="kids-modal-panel w-full max-w-sm overflow-hidden">

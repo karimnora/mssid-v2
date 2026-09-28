@@ -21,8 +21,8 @@ export const OfflinePacksManagerModal: React.FC<OfflinePacksManagerModalProps> =
   }, []);
   if (!isOpen) return null;
   return (
-    <div dir={direction} className="fixed inset-0 z-50 kids-modal-overlay flex items-center justify-center p-4">
-      <section role="dialog" aria-modal="true" aria-labelledby="offline-title" className="kids-modal-panel w-full max-w-lg max-h-[90vh] overflow-y-auto p-5 space-y-4">
+    <div dir={direction} className="fixed inset-0 z-50 kids-modal-overlay flex items-start sm:items-center justify-center p-4">
+      <section role="dialog" aria-modal="true" aria-labelledby="offline-title" className="kids-modal-panel kids-modal-body w-full max-w-lg p-5 space-y-4">
         <div className="flex items-center justify-between gap-2">
           <h2 id="offline-title" className="font-extrabold text-lg">{t('offlineTitle')}</h2>
           <button type="button" onClick={onClose} className="kids-close" aria-label={t('pwaCloseAriaLabel')}><X className="w-5 h-5" /></button>

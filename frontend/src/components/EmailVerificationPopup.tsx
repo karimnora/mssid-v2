@@ -57,7 +57,7 @@ export const EmailVerificationPopup: React.FC<EmailVerificationPopupProps> = ({ 
 
   return (
     <div
-      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-4"
       dir={direction}
       onClick={onClose}
     >

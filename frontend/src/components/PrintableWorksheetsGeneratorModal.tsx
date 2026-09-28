@@ -31,12 +31,12 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm dir-rtl" dir="rtl">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm dir-rtl overflow-x-hidden overflow-y-auto" dir="rtl">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl max-w-4xl w-full p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[94vh] overflow-hidden"
+        className="bg-white rounded-3xl max-w-4xl w-full min-w-0 p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[min(94dvh,calc(100svh-1.5rem))] overflow-hidden"
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">

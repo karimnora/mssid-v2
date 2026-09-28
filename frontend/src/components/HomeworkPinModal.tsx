@@ -141,28 +141,28 @@ export const HomeworkPinModal: React.FC<HomeworkPinModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm dir-rtl" dir="rtl">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm dir-rtl overflow-x-hidden overflow-y-auto" dir="rtl">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 space-y-5"
+        className="bg-white rounded-3xl max-w-lg w-full min-w-0 max-h-[min(90dvh,calc(100svh-1.5rem))] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-5"
       >
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center text-2xl">
+        <div className="flex items-start justify-between gap-2 pb-3 border-b border-slate-100">
+          <div className="flex items-start gap-3 min-w-0">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center text-2xl shrink-0">
               🔑
             </div>
-            <div>
-              <h3 className="font-black text-slate-900 text-lg">الواجبات ورمز PIN السريع</h3>
-              <p className="text-xs text-slate-500 font-bold">انضم لواجب بدون كلمة سر أو شارك واجبك مع تلاميذك</p>
+            <div className="min-w-0">
+              <h3 className="font-black text-slate-900 text-base sm:text-lg leading-snug break-words">الواجبات ورمز PIN السريع</h3>
+              <p className="text-xs text-slate-500 font-bold leading-snug break-words">انضم لواجب بدون كلمة سر أو شارك واجبك مع تلاميذك</p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
+            className="hit-target w-12 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors shrink-0"
           >
             <X className="w-4 h-4" />
           </button>

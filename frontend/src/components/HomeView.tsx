@@ -13,7 +13,8 @@ import {
   LabsPoleIcon,
 } from './HomePoleIcons';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
-import { speakText, stopSpeech } from '../utils/speech';
+import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { DidouVirtualCompanion } from './DidouVirtualCompanion';
 import { SubjectIllustratedCard } from './SubjectIllustratedCard';
 import { CardBlobBackdrop } from './CardBlobBackdrop';
@@ -156,6 +157,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const showAudio = grade === '1AP' || grade === '2AP' || grade === '3AP';
   const [speakingKey, setSpeakingKey] = useState<string | null>(null);
   const speechLang = locale === 'fr' ? 'fr-FR' : 'ar-SA';
+  const voiceAvailable = useVoiceAvailable(speechLang);
   useEffect(() => stopSpeech, []);
   const handleSpeak = (key: string, text: string) => {
     if (speakingKey === key) {
@@ -216,6 +218,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   return (
     <div className="space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
+      <VoiceUnavailableBanner visible={showAudio && voiceAvailable === false} />
       <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-x-8 lg:py-4">
         <div className="min-w-0">
         <div className="flex items-start justify-between gap-3">

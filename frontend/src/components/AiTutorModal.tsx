@@ -159,12 +159,12 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
     : null;
 
   return (
-    <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
+    <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-3 sm:p-6 dir-rtl" dir="rtl">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden"
+        className="kids-modal-panel w-full max-w-2xl flex flex-col overflow-hidden"
       >
         {/* Header */}
         <div className="kids-modal-header p-4 sm:p-5 flex items-center justify-between shrink-0 gap-3">
@@ -240,7 +240,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
         )}
 
         {/* Body Content */}
-        <div className="p-4 sm:p-5 overflow-y-auto flex-1 space-y-4">
+        <div className="kids-modal-body p-4 sm:p-5 space-y-4">
           <div className="space-y-3 p-3.5 rounded-[22px] border-2 border-[#E7E2D7] bg-white">
             <div>
               <label className={`font-extrabold text-[var(--kids-ink)] block mb-2 ${young ? 'text-base' : 'text-sm'}`}>

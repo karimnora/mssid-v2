@@ -72,4 +72,18 @@ describe('SettingsModal', () => {
     );
     expect(screen.getByRole('button', { name: 'إغلاق' })).toBeInTheDocument();
   });
+
+  it('keeps the panel scrollable inside the viewport on mobile', () => {
+    renderModal(
+      <SettingsModal
+        isOpen={true}
+        onClose={vi.fn()}
+        tashkeelEnabled={false}
+        onToggleTashkeel={vi.fn()}
+      />
+    );
+    expect(document.querySelector('.kids-modal-panel')).toBeTruthy();
+    expect(document.querySelector('.kids-modal-body')).toBeTruthy();
+    expect(document.querySelector('.kids-modal-overlay')?.className).toContain('items-start');
+  });
 });

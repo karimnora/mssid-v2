@@ -5,6 +5,15 @@ import { HomeView } from './HomeView';
 import { LocaleProvider } from '../context/LocaleContext';
 import { setStoredLocale } from '../localePreference';
 
+const voiceAvailable = vi.hoisted(() => ({ value: true as boolean | null }));
+vi.mock('../utils/speech', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../utils/speech')>();
+  return {
+    ...actual,
+    useVoiceAvailable: () => voiceAvailable.value,
+  };
+});
+
 const renderHome = (
   grade: '1AP' | '2AP' | '5AP',
   extras?: Partial<React.ComponentProps<typeof HomeView>>,
@@ -26,6 +35,7 @@ const renderHome = (
 describe('HomeView', () => {
   beforeEach(() => {
     setStoredLocale('ar');
+    voiceAvailable.value = true;
   });
 
   afterEach(() => {
@@ -112,5 +122,14 @@ describe('HomeView', () => {
     expect(screen.getByText(/Le coin des petits avec Didou/)).toBeInTheDocument();
     expect(screen.getByText('Entrer')).toBeInTheDocument();
     expect(screen.queryByText(/Braem/)).toBeNull();
+  });
+
+  it('warns 1AP–3AP when no matching TTS voice is installed, not 5AP', () => {
+    voiceAvailable.value = false;
+    const young = renderHome('1AP');
+    expect(screen.getByText(/القراءة الصوتية غير متوفرة/)).toBeInTheDocument();
+    young.unmount();
+    renderHome('5AP');
+    expect(screen.queryByText(/القراءة الصوتية غير متوفرة/)).not.toBeInTheDocument();
   });
 });

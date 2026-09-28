@@ -31,6 +31,7 @@ export const meta: typeof metaAr = {
   parentGateAnswer: 'Saisissez le résultat',
   parentGateError: 'Réponse incorrecte. Réessayez.',
   parentGateContinue: 'Continuer',
+  voiceUnavailable: 'La lecture vocale n’est pas disponible sur cet appareil pour le moment.',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'Pour installer l\'application sur ton appareil : appuie sur le bouton Partager, puis choisis "Sur l\'écran d\'accueil" (Add to Home Screen) 📲',

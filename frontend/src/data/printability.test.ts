@@ -76,3 +76,12 @@ describe('Print CSS — exam and fiche jobs must not go blank', () => {
   });
 });
 
+describe('Print CSS — mobile dialog shell', () => {
+  const css = readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../index.css'), 'utf8');
+
+  it('caps kids dialogs to the visual viewport so they scroll instead of overflowing', () => {
+    expect(css).toContain('.kids-modal-body');
+    expect(css).toContain('max-height: min(90dvh, calc(100svh - 1.5rem))');
+  });
+});
+

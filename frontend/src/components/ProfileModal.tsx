@@ -165,14 +165,14 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
+      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-3 sm:p-6"
       dir={direction}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden"
+        className="kids-modal-panel w-full max-w-xl flex flex-col overflow-hidden"
       >
 
         {/* Header */}
@@ -238,7 +238,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-5 overflow-y-auto flex-1 space-y-6">
+        <div className="kids-modal-body p-5 space-y-6">
           {/* Identity Card */}
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
             <label className="text-sm font-extrabold text-[var(--kids-ink)] flex items-center gap-1.5">

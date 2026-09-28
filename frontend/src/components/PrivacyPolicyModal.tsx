@@ -10,29 +10,29 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto font-sans dir-rtl" dir="rtl">
-      <div className="bg-slate-900 border border-slate-800 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden flex flex-col text-slate-100 my-auto max-h-[90vh]">
+    <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-start sm:items-center justify-center p-4 overflow-x-hidden overflow-y-auto font-sans dir-rtl" dir="rtl">
+      <div className="bg-slate-900 border border-slate-800 w-full max-w-4xl min-w-0 rounded-3xl shadow-2xl overflow-hidden flex flex-col text-slate-100 my-auto max-h-[min(90dvh,calc(100svh-1.5rem))]">
 
-        <div className="bg-slate-950 px-6 py-4 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-emerald-500/20 rounded-xl border border-emerald-500/30 text-emerald-400">
+        <div className="bg-slate-950 px-4 sm:px-6 py-4 border-b border-slate-800 flex items-start sm:items-center justify-between gap-2">
+          <div className="flex items-start sm:items-center gap-3 min-w-0">
+            <div className="p-2.5 bg-emerald-500/20 rounded-xl border border-emerald-500/30 text-emerald-400 shrink-0">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <div>
-              <h2 className="text-lg font-extrabold text-white">سياسة الخصوصية • Privacy Policy</h2>
-              <p className="text-xs text-slate-300">تطبيق مَسيد DZ — التعليم التحضيري والابتدائي الجزائري</p>
+            <div className="min-w-0">
+              <h2 className="text-base sm:text-lg font-extrabold text-white leading-snug break-words">سياسة الخصوصية • Privacy Policy</h2>
+              <p className="text-xs text-slate-300 leading-snug break-words">تطبيق مَسيد DZ — التعليم التحضيري والابتدائي الجزائري</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl transition-all"
+            className="hit-target w-12 shrink-0 p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl transition-all"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6 overflow-y-auto space-y-6 text-sm text-slate-300 leading-relaxed scrollbar-thin">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 min-h-0 min-w-0 space-y-6 text-sm text-slate-300 leading-relaxed scrollbar-thin">
 
           <div className="p-4 bg-emerald-950/40 border border-emerald-800/60 rounded-2xl flex items-start gap-3">
             <Lock className="w-5 h-5 text-emerald-400 shrink-0 mt-1" />

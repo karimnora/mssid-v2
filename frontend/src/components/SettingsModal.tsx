@@ -71,26 +71,26 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
+      className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-3 sm:p-6"
       dir={direction}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel w-full max-w-xl max-h-[90vh] flex flex-col overflow-hidden"
+        className="kids-modal-panel w-full max-w-xl flex flex-col overflow-hidden"
       >
-        <div className="kids-modal-header p-4 sm:p-5 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-2">
-            <Settings className="w-5 h-5" />
-            <h2 className="text-base sm:text-lg font-extrabold">{t('settingsSectionLabel')}</h2>
+        <div className="kids-modal-header p-4 sm:p-5 flex items-center justify-between gap-2 shrink-0">
+          <div className="flex items-center gap-2 min-w-0">
+            <Settings className="w-5 h-5 shrink-0" />
+            <h2 className="text-base sm:text-lg font-extrabold truncate">{t('settingsSectionLabel')}</h2>
           </div>
           <button type="button" onClick={onClose} className="kids-close cursor-pointer" aria-label={t('close')}>
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-5 overflow-y-auto flex-1 space-y-4">
+        <div className="kids-modal-body p-5 space-y-4">
           {currentGrade && onGradeChange && (
             <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
               <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
@@ -136,17 +136,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
 
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
             <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
-            <LanguageSwitcher />
+            <LanguageSwitcher className="w-full" />
           </Card>
 
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
             <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
-            <div className="grid grid-cols-3 gap-1.5">
+            <div className="grid grid-cols-3 gap-1.5 min-w-0">
               {onThemeAuto && (
                 <button
                   type="button"
                   onClick={onThemeAuto}
-                  className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
+                  className={`hit-target rounded-2xl px-1 text-[11px] leading-tight text-center font-extrabold cursor-pointer ${
                     isThemeAuto ? 'bg-[var(--kids-grass-2)] text-white' : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
                   }`}
                 >
@@ -158,7 +158,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   key={opt.id}
                   type="button"
                   onClick={() => onThemeChange?.(opt.id)}
-                  className={`hit-target rounded-2xl text-[11px] font-extrabold cursor-pointer ${
+                  className={`hit-target rounded-2xl px-1 text-[11px] leading-tight text-center font-extrabold cursor-pointer ${
                     !isThemeAuto && currentTheme === opt.id
                       ? 'bg-[var(--kids-grass-2)] text-white'
                       : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'

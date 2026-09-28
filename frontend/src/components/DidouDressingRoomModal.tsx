@@ -257,7 +257,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 kids-modal-overlay backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-4 kids-modal-overlay backdrop-blur-md"
       dir={direction}
     >
       <motion.div
@@ -265,7 +265,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.94, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel max-w-4xl w-full overflow-hidden flex flex-col max-h-[92vh] bg-white dark:bg-slate-900 border-2 border-amber-400 rounded-3xl shadow-2xl"
+        className="kids-modal-panel max-w-4xl w-full overflow-hidden flex flex-col bg-white dark:bg-slate-900 border-2 border-amber-400 rounded-3xl shadow-2xl"
       >
         {/* HEADER */}
         <div className="kids-modal-header p-4 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white flex items-center justify-between shrink-0 gap-3">
@@ -359,7 +359,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         </div>
 
         {/* BODY CONTENT BY TAB */}
-        <div className="flex-1 p-4 sm:p-5 overflow-y-auto">
+        <div className="flex-1 min-h-0 p-4 sm:p-5 overflow-y-auto">
           {/* FEEDBACK TOAST */}
           <AnimatePresence>
             {feedbackMsg && (

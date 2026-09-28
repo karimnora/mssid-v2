@@ -43,6 +43,7 @@ import { LessonContentPanel } from './lessonViewer/LessonContentPanel';
 import { LessonStepFooter } from './lessonViewer/LessonStepFooter';
 import { YoungLessonStory } from './lessonViewer/YoungLessonStory';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { buildPlayful1APSteps, isPlayful1AP as isPlayful1APGrade, parsePlayfulSnippet } from './lessonViewer/youngLessonLayout';
 
 const ScienceLabSimulation = lazy(() => import('./ScienceLabSimulation').then((m) => ({ default: m.ScienceLabSimulation })));
@@ -381,12 +382,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <RevisionSheetViewer lesson={lesson} onClose={() => setShowRevisionSheet(false)} tashkeelEnabled={tashkeelEnabled} />
       )}
 
-      {speech.isYoungGrade && speech.voiceAvailable === false && (
-        <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold rounded-2xl px-4 py-2.5">
-          <span aria-hidden="true">🔇</span>
-          <span>القراءة الصوتية غير متوفرة على هذا الجهاز حالياً.</span>
-        </div>
-      )}
+      <VoiceUnavailableBanner visible={speech.isYoungGrade && speech.voiceAvailable === false} />
 
       {isPlayful1AP ? (
         <div className="rounded-3xl bg-emerald-50 border border-emerald-100 p-4 sm:p-8 space-y-3" data-lesson-hero="1ap">
@@ -751,7 +747,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       />
 
       {pendingLeaveAction && (
-        <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4" dir="rtl">
+        <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-4" dir="rtl">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

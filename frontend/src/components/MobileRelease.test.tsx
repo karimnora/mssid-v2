@@ -82,6 +82,14 @@ describe('Platform-specific installation', () => {
     setStoredLocale('ar'); device('Android'); show(<PwaInstallBanner />); await waitForPrompt();
     expect(screen.getByRole('link', { name: 'التحميل من Google Play' })).toHaveAttribute('href', PLAY_STORE_URL);
   });
+  it('stacks the Arabic install title instead of squeezing it beside the CTA', async () => {
+    setStoredLocale('ar'); device('Android'); show(<PwaInstallBanner />); await waitForPrompt();
+    const banner = screen.getByRole('complementary');
+    expect(banner.className).toContain('overflow-x-clip');
+    expect(banner.querySelector('.break-words')).toBeTruthy();
+    expect(banner.querySelector('.flex-col')).toBeTruthy();
+    expect(screen.getByText('ثبّت لعبة ودروس مَسيد على لوحتك أو هاتفك')).toBeInTheDocument();
+  });
 });
 
 describe('Reviews and feedback', () => {

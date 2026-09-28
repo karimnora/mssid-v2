@@ -358,6 +358,15 @@ body {
 
 .kids-modal-overlay {
   background: rgba(51, 38, 26, 0.42);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.kids-modal-overlay > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .kids-modal-panel {
@@ -370,11 +379,25 @@ body {
   --kids-muted: #475569;
   --app-text: #0f172a;
   --app-text-muted: #475569;
+  min-width: 0;
+  min-height: 0;
+  max-height: min(90dvh, calc(100svh - 1.5rem));
 }
 
 .kids-modal-header {
   background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-grass-2));
   color: #fff;
+  min-width: 0;
+}
+
+.kids-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .kids-input {

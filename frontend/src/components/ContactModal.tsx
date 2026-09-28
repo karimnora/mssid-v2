@@ -77,36 +77,36 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-start sm:items-center justify-center p-3 sm:p-6 overflow-x-hidden overflow-y-auto"
       dir={direction}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col overflow-hidden"
+        className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-lg min-w-0 max-h-[min(90dvh,calc(100svh-1.5rem))] flex flex-col overflow-hidden"
       >
         {/* Header */}
-        <div className="bg-slate-900 text-white p-5 flex items-center justify-between shrink-0 border-b border-slate-800">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-2xl">
+        <div className="bg-slate-900 text-white p-4 sm:p-5 flex items-center justify-between gap-2 shrink-0 border-b border-slate-800">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="p-2.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-2xl shrink-0">
               <MessageSquare className="w-5 h-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-extrabold font-sans">{t('modalTitle')}</h2>
-              <p className="text-xs text-slate-400 font-sans mt-0.5">{t('modalSubtitle')}</p>
+            <div className="min-w-0">
+              <h2 className="text-base sm:text-lg font-extrabold font-sans leading-snug break-words">{t('modalTitle')}</h2>
+              <p className="text-xs text-slate-400 font-sans mt-0.5 leading-snug break-words">{t('modalSubtitle')}</p>
             </div>
           </div>
           <button
             onClick={handleClose}
-            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+            className="hit-target w-12 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-colors cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Body */}
-        <div className="p-5 overflow-y-auto flex-1 space-y-4">
+        <div className="p-5 overflow-y-auto flex-1 min-h-0 min-w-0 space-y-4">
           {submitState === 'success' ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

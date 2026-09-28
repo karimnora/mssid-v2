@@ -306,11 +306,11 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
   const handlePrint = () => window.print();
 
   return createPortal(
-    <div dir={dir} className="sheet-print-modal fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm">
+    <div dir={dir} className="sheet-print-modal fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm overflow-x-hidden overflow-y-auto">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-white rounded-3xl max-w-5xl w-full shadow-2xl border border-orange-100 flex flex-col max-h-[94vh] overflow-hidden"
+        className="bg-white rounded-3xl max-w-5xl w-full min-w-0 shadow-2xl border border-orange-100 flex flex-col max-h-[min(94dvh,calc(100svh-1.5rem))] overflow-hidden"
       >
         {/* Header */}
         <div className="no-print flex items-center justify-between gap-2 flex-wrap p-4 sm:p-5 border-b border-orange-100 bg-gradient-to-r from-amber-50 to-orange-50">

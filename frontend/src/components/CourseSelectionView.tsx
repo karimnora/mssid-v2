@@ -8,6 +8,7 @@ import { BookOpen, ChevronLeft, Star, Lock } from 'lucide-react';
 import { isFrenchFreeGrade, stripLatinGlosses } from './lessonViewer/youngLessonLayout';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { useTranslation } from '../hooks/useTranslation';
 import { getOfficialAxisLabel } from '../utils/curriculumMeta';
 import { SubjectIllustratedCard, SubjectVectorIllustration } from './SubjectIllustratedCard';
@@ -163,12 +164,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   if (!selectedSubject) {
     return (
       <div className="space-y-4" dir="rtl">
-        {showAudio && voiceAvailable === false && (
-          <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold rounded-2xl px-4 py-2.5">
-            <span aria-hidden="true">🔇</span>
-            <span>القراءة الصوتية غير متوفرة على هذا الجهاز حالياً.</span>
-          </div>
-        )}
+        {showAudio && <VoiceUnavailableBanner visible={voiceAvailable === false} />}
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2 min-w-0">
             {showAudio && (
@@ -276,6 +272,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   // trimesters shown together, matching "ne jamais afficher les 3 trimestres en même temps".
   return (
     <div className="space-y-4 sm:space-y-5" dir="rtl">
+      {showAudio && <VoiceUnavailableBanner visible={voiceAvailable === false} />}
       <CourseBreadcrumb
         grade={grade}
         subjectId={selectedSubject}
