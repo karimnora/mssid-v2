@@ -70,6 +70,8 @@ Correspondance exercice → compétence, profils enfant, évaluation d’orienta
   - erreurs affichées en rouge vif ;
   - réinitialisation de la progression sans Parent Gate ;
   - onglet actif « الدروس » sur la page des examens.
+- Labo électricité, constructeur de circuit (`CircuitBuilder.tsx`), signalé par Karim sur téléphone : zone fixe de 640 × 400 px dans un conteneur à défilement horizontal, alors que le SVG a `touch-action: none` sur toute sa surface. Sur mobile, on ne voit qu’environ la moitié du circuit, on ne peut pas faire défiler au doigt (seulement par la barre), le défilement vertical de la page est bloqué sur 400 px, la vue démarre au bord droit en RTL (pile coupée), les nouveaux éléments apparaissent au hasard sur 640 px (souvent hors écran) et la palette n’affiche que des icônes. Piste : disposition portrait adaptée à la largeur (points ≥ 48 px), `touch-action: none` limité aux éléments et points, apparition dans la zone visible, libellés sous les icônes.
+- Bouton de fermeture de la fenêtre des réglages sans libellé accessible (lecteur d’écran : bouton sans nom).
 - Prompt du tuteur IA (`GeminiAiService`, référentiel 1AP) : « الأعداد من 0 إلى 20 », alors que la borne officielle 1AP est 100 (`CLAUDE.md`).
 
 ## 5. Vérifier le backend en local
