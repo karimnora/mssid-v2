@@ -1,6 +1,6 @@
 # TODO — prochaine version Android
 
-Mise à jour le 23 septembre 2026. Karim a autorisé le commit et le push du code. La nouvelle version Android et sa publication seront préparées seulement quand il le demandera. `frontend/android/app/build.gradle` reste à `versionCode 6` et `versionName 1.0.5`.
+Mise à jour le 28 septembre 2026. Version Play en cours de build : `versionCode 8` / `versionName 1.0.7` (tag `v1.0.7`). La précédente version taguée était `v1.0.6` (`versionCode` 7).
 
 ## Corrections réalisées dans le code
 
@@ -22,7 +22,7 @@ Mise à jour le 23 septembre 2026. Karim a autorisé le commit et le push du cod
 - [ ] Sur un téléphone Android, valider le client Web Google utilisé par le backend, le package `dz.mssid.app` et le SHA-1 de signature Google Play ; tester connexion, annulation, nouvelle tentative et reconnexion.
 - [ ] Tester les liens et textes FR/AR dans un navigateur Android, l'application Android native, Safari iPhone/iPad et une application web déjà installée.
 - [ ] Tester une mise à jour par-dessus la version Play actuelle : session, progression, leçons, connexion Google et mot de passe.
-- [ ] Quand Karim demandera la nouvelle version, choisir `versionName` et un `versionCode` supérieur au dernier code accepté par Play Console, puis synchroniser les ressources Capacitor et générer l'AAB.
+- [x] Quand Karim demandera la nouvelle version, choisir `versionName` et un `versionCode` supérieur au dernier code accepté par Play Console, puis synchroniser les ressources Capacitor et générer l'AAB. **1.0.7 / `versionCode` 8** : bump dans `build.gradle`, tag `v1.0.7` qui déclenche `Android Release Build`. L’AAB sort des artefacts du job.
 - [ ] Valider le nouvel AAB sur la piste interne Google Play avant une éventuelle diffusion publique.
 
 L'intégration native In-App Review reste un chantier ultérieur : le lien explicite vers la fiche Play permet à l'utilisateur de choisir lui-même sa note. Aucun clic dans l'application ne prouve qu'un avis a été publié.
