@@ -58,6 +58,20 @@ Rien d’identifié à ce stade.
 
 Correspondance exercice → compétence, profils enfant, évaluation d’orientation facultative, carnet d’erreurs par compétence, espace parent, contes, Cherche et trouve, Nature et découverte (à rapprocher de `primary_discovery` et des labs sciences), Défi famille à deux (vérifier ce que fait `SpeedMathDuelGame`), flag par module premium, verrou limité aux nouveaux modules avec son test, formules d’abonnement.
 
+### Idées de labos (Karim, 28 sept. 2026) — V2, pas V1
+
+Les 29 labos V1 sont des **outils pédagogiques utilisables**, pas un produit immersif. Le marché en dinars est un catalogue d’emoji + panier + pièces CSS. C’est ancré (dattes Deglet Nour, pain à 50 DA, billets 500/1000/2000) mais ce n’est pas un souk.
+
+Règle : **corriger et rendre lisible en V1** (circuit, calculatrice, Anzan, contrastes). **Ne pas livrer en V1 les nouvelles expériences** : une fois dans le cartable gratuit, elles ne se vendent plus (C-05 + L-05 + P-05).
+
+Candidats V2 (pack « labos nouveaux ») :
+
+| Idée | Ancrage programme | Niveau d’ambition réaliste |
+|---|---|---|
+| Souk immersif (rue, étals, payer, monnaie) | Maths argent 1AP–5AP ; labo `algerian_market` déjà là | Scène 2,5D illustrée (kiosques algériens, pain, lait en sachet, dattes). Photos réelles seulement si on en possède les droits. Pas un marché 3D type jeu AAA (téléphones milieu de gamme). La V1 garde le calcul des dinars actuel. |
+| Code de la route enfant | 2AP civile : feux, ممر الراجلين, trajet école. 5AP : قواعد المرور + bus/tram | Scènes tap : feu rouge/orange/vert, passage piéton, regarder droite/gauche, ne pas courir, céder le siège. Rue algérienne (trottoir, bus, tram si 5AP). |
+| Autres idées Karim | À lister une par une | Même règle : nouveau = V2 ; polish du labo existant = V1. |
+
 ## 3. Écarts V1 à corriger sur `main` (pas sur `v2`)
 
 - `enableAITutor` n’est lu nulle part hors du catalogue de flags : l’admin annonce que le bouton du tuteur se cache quand le flag est désactivé, ce qui est faux.

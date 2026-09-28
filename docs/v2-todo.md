@@ -13,7 +13,7 @@ Règles : `main` est ramené dans `v2` chaque semaine ; les corrections de conte
 - [ ] Corriger sur `main` les écarts V1 relevés (`docs/v2-inventaire.md` §3)
 - [ ] Relevé Play Console : fiche, installations, désinstallations, utilisateurs actifs, Android vitals (Karim)
 - [ ] Observation de quelques familles et d’au moins un enseignant sur trois tâches : choisir un niveau, finir une activité, reprendre le lendemain (Karim)
-- [ ] Périmètre V2 arrêté : liste des évolutions, contenus nouveaux candidats au premium
+- [ ] Périmètre V2 arrêté : liste des évolutions, contenus nouveaux candidats au premium (idées labos : souk immersif, code de la route enfant — `docs/v2-inventaire.md` §2)
 
 
 
