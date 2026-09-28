@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Server, CheckCircle2, XCircle, RefreshCw, ScrollText, Filter, RotateCcw, Mail, Database, Cloud } from 'lucide-react';
+import { Server, CheckCircle2, XCircle, RefreshCw, ScrollText, Filter, RotateCcw, Mail, Database, Cloud, Trash2 } from 'lucide-react';
 import { springBootApi, InfraProviderQuota, InfraQuotasResponse } from '../../services/springBootApi';
 
 interface AuditLogEntry {
@@ -35,6 +35,7 @@ const ACTION_LABELS_AR: Record<string, string> = {
   AI_REEL_GENERATION_FAILED: 'فشل توليد إعلان',
   AI_NARRATION_FAILED: 'فشل توليد التعليق الصوتي',
   AI_ILLUSTRATION_FAILED: 'فشل توليد الرسم',
+  AUDIT_LOG_PURGED: 'تنظيف السجل من الأحداث الثانوية',
 };
 
 // Every actionType this codebase actually emits (see AdminAuditLogService.record call sites) — kept
@@ -70,6 +71,10 @@ export const TechnicalLogsModule: React.FC = () => {
   const [infraQuotas, setInfraQuotas] = useState<InfraQuotasResponse | null>(null);
   const [infraQuotasError, setInfraQuotasError] = useState<string | null>(null);
   const [isLoadingQuotas, setIsLoadingQuotas] = useState(true);
+
+  const [ephemeralCount, setEphemeralCount] = useState<number | null>(null);
+  const [isPurging, setIsPurging] = useState(false);
+  const [purgeError, setPurgeError] = useState<string | null>(null);
 
   const checkServerReachability = async () => {
     setServerStatus('checking');
@@ -134,10 +139,22 @@ export const TechnicalLogsModule: React.FC = () => {
     }
   };
 
+  const loadEphemeralCount = async () => {
+    try {
+      const res = await springBootApi.getAdminAuditLogEphemeralCount();
+      if (!res.error && typeof res.data?.count === 'number') {
+        setEphemeralCount(res.data.count);
+      }
+    } catch {
+      setEphemeralCount(null);
+    }
+  };
+
   useEffect(() => {
     checkServerReachability();
     loadInfraQuotas();
     loadAuditLog(EMPTY_FILTERS);
+    loadEphemeralCount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -156,6 +173,32 @@ export const TechnicalLogsModule: React.FC = () => {
     checkServerReachability();
     loadInfraQuotas();
     loadAuditLog(appliedFilters);
+    loadEphemeralCount();
+  };
+
+  const handlePurgeEphemeral = async () => {
+    const count = ephemeralCount ?? 0;
+    if (count <= 0 || isPurging) return;
+    const confirmed = window.confirm(
+      `سيتم حذف ${count} حدثاً ثانوياً (تسجيلات Google، رسائل البريد، توليد الذكاء الاصطناعي).\nتبقى الأدوار والوصول والمدفوعات وإنشاء الحسابات.\nمتابعة؟`
+    );
+    if (!confirmed) return;
+
+    setIsPurging(true);
+    setPurgeError(null);
+    try {
+      const res = await springBootApi.purgeAdminAuditLogEphemeral();
+      if (res.error) {
+        setPurgeError(res.error);
+      } else {
+        await loadAuditLog(appliedFilters);
+        await loadEphemeralCount();
+      }
+    } catch {
+      setPurgeError('تعذر حذف الأحداث الثانوية.');
+    } finally {
+      setIsPurging(false);
+    }
   };
 
   const hasActiveFilters = Object.values(appliedFilters).some(Boolean);
@@ -257,12 +300,35 @@ export const TechnicalLogsModule: React.FC = () => {
 
       {/* Audit Log Table */}
       <div className="bg-slate-900 p-4 sm:p-6 rounded-2xl border border-slate-800 space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3 gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3">
           <h3 className="font-extrabold text-base text-white flex items-center gap-2">
             <ScrollText className="w-5 h-5 text-amber-400 shrink-0" />
             <span>سجل الأحداث</span>
           </h3>
+          <button
+            type="button"
+            onClick={handlePurgeEphemeral}
+            disabled={isPurging || !ephemeralCount}
+            className="flex items-center justify-center gap-2 bg-rose-700 hover:bg-rose-600 disabled:bg-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed text-white font-extrabold text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer shrink-0 w-full sm:w-auto"
+          >
+            <Trash2 className="w-4 h-4" />
+            <span>
+              {isPurging
+                ? 'جاري المسح...'
+                : ephemeralCount
+                  ? `مسح الأحداث الثانوية (${ephemeralCount})`
+                  : 'لا أحداث ثانوية للمسح'}
+            </span>
+          </button>
         </div>
+        {purgeError && (
+          <div className="bg-rose-950/40 border border-rose-800 text-rose-300 text-xs font-bold p-3 rounded-xl">
+            {purgeError}
+          </div>
+        )}
+        <p className="text-[11px] text-slate-500 -mt-1">
+          المسح يحذف تسجيلات Google ورسائل البريد وتوليد الذكاء الاصطناعي فقط — الأدوار والوصول والمدفوعات وإنشاء الحسابات تبقى.
+        </p>
 
         {/* Filter Bar */}
         <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 space-y-3">
@@ -522,6 +588,10 @@ function humanizeLogDetails(details: string | undefined | null): string {
   if (/enabled=false/i.test(d)) return 'الميزة معطّلة';
   if (/reset to code default/i.test(d)) return 'أُعيدت القيمة الافتراضية';
   if (/already linked/i.test(d)) return 'الحساب مرتبط مسبقاً بحساب Google آخر';
+  if (/^deleted=\d+/i.test(d)) {
+    const n = d.match(/deleted=(\d+)/i)?.[1];
+    return n ? `تم حذف ${n} حدثاً ثانوياً` : 'تم تنظيف السجل';
+  }
   if (looksTechnical(d) || d.length > 180) return 'حدث تقني — يمكن عرض التفاصيل عند الحاجة';
   return d;
 }

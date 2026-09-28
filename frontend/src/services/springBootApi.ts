@@ -556,6 +556,18 @@ public async request<T>(
     });
   }
 
+  public async getAdminAuditLogEphemeralCount() {
+    return this.request<{ count: number; actionTypes: string[] }>('/v1/admin/audit-log/ephemeral', {
+      method: 'GET',
+    });
+  }
+
+  public async purgeAdminAuditLogEphemeral() {
+    return this.request<{ count: number; actionTypes: string[] }>('/v1/admin/audit-log/ephemeral', {
+      method: 'DELETE',
+    });
+  }
+
   public async getContactMessages() {
     return this.request<any[]>('/v1/admin/contact-messages', {
       method: 'GET',

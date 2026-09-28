@@ -1,6 +1,7 @@
 package dz.mssid.education.service;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
+import dz.mssid.education.dto.AuditLogPurgeDto;
 import dz.mssid.education.entity.AdminAuditLog;
 import dz.mssid.education.repository.AdminAuditLogRepository;
 import jakarta.persistence.criteria.Predicate;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +21,23 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AdminAuditLogService {
+
+    /**
+     * High-volume telemetry that is safe to drop: routine Google logins, every email attempt, and
+     * AI generation traces. Never includes role changes, receipts, feature flags, registrations,
+     * login failures, or the purge record itself.
+     */
+    public static final List<String> EPHEMERAL_ACTION_TYPES = List.of(
+            "GOOGLE_LOGIN",
+            "EMAIL_SEND",
+            "AI_TUTOR_CALL_FAILED",
+            "AI_REEL_GENERATED",
+            "AI_NARRATION_GENERATED",
+            "AI_ILLUSTRATION_GENERATED",
+            "AI_REEL_GENERATION_FAILED",
+            "AI_NARRATION_FAILED",
+            "AI_ILLUSTRATION_FAILED"
+    );
 
     private final AdminAuditLogRepository auditLogRepository;
 
@@ -79,6 +98,26 @@ public class AdminAuditLogService {
                 .stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public AuditLogPurgeDto getEphemeralPreview() {
+        return AuditLogPurgeDto.builder()
+                .count(auditLogRepository.countByActionTypeIn(EPHEMERAL_ACTION_TYPES))
+                .actionTypes(EPHEMERAL_ACTION_TYPES)
+                .build();
+    }
+
+    @Transactional
+    public AuditLogPurgeDto purgeEphemeral(String actorEmail) {
+        long deleted = auditLogRepository.deleteByActionTypeIn(EPHEMERAL_ACTION_TYPES);
+        if (deleted > 0) {
+            record(actorEmail, "AUDIT_LOG_PURGED", "AUDIT_LOG", null,
+                    "deleted=" + deleted + " types=" + String.join(",", EPHEMERAL_ACTION_TYPES));
+        }
+        return AuditLogPurgeDto.builder()
+                .count(deleted)
+                .actionTypes(EPHEMERAL_ACTION_TYPES)
+                .build();
     }
 
     private String blankToNull(String value) {

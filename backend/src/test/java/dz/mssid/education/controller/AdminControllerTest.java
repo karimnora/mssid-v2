@@ -2,6 +2,7 @@ package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.dto.AdminStatsOverviewDto;
+import dz.mssid.education.dto.AuditLogPurgeDto;
 import dz.mssid.education.dto.InfraQuotasDto;
 import dz.mssid.education.dto.PaymentsStatsDto;
 import dz.mssid.education.entity.ContactMessage;
@@ -9,6 +10,7 @@ import dz.mssid.education.repository.ContactMessageRepository;
 import dz.mssid.education.service.AdminAuditLogService;
 import dz.mssid.education.service.AdminStatsService;
 import dz.mssid.education.service.InfraQuotaService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +18,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -24,7 +29,9 @@ import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -50,7 +57,21 @@ class AdminControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(adminController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(adminController)
+                .setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver())
+                .build();
+    }
+
+    @AfterEach
+    void tearDown() {
+        SecurityContextHolder.clearContext();
+    }
+
+    private void authenticateAs(String email) {
+        org.springframework.security.core.userdetails.User principal =
+                new org.springframework.security.core.userdetails.User(email, "N/A", List.of());
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(principal, null, List.of()));
     }
 
     @Test
@@ -151,5 +172,31 @@ class AdminControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.resend.status").value("ok"))
                 .andExpect(jsonPath("$.resend.meters[0].used").value(12));
+    }
+
+    @Test
+    @DisplayName("GET /api/v1/admin/audit-log/ephemeral - Returns the ephemeral row count")
+    void getEphemeralAuditLogCount_Success() throws Exception {
+        when(adminAuditLogService.getEphemeralPreview()).thenReturn(
+                AuditLogPurgeDto.builder().count(42).actionTypes(List.of("GOOGLE_LOGIN", "EMAIL_SEND")).build());
+
+        mockMvc.perform(get("/api/v1/admin/audit-log/ephemeral"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(42))
+                .andExpect(jsonPath("$.actionTypes[0]").value("GOOGLE_LOGIN"));
+    }
+
+    @Test
+    @DisplayName("DELETE /api/v1/admin/audit-log/ephemeral - Purges under the acting admin's email")
+    void purgeEphemeralAuditLog_Success() throws Exception {
+        authenticateAs("admin@mssid.dz");
+        when(adminAuditLogService.purgeEphemeral("admin@mssid.dz")).thenReturn(
+                AuditLogPurgeDto.builder().count(12).actionTypes(List.of("GOOGLE_LOGIN")).build());
+
+        mockMvc.perform(delete("/api/v1/admin/audit-log/ephemeral"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(12));
+
+        verify(adminAuditLogService).purgeEphemeral("admin@mssid.dz");
     }
 }

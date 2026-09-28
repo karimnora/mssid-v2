@@ -18,6 +18,9 @@ const failedEmailEntry = {
 describe('TechnicalLogsModule — event log filtering', () => {
   beforeEach(() => {
     vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: {} } as any);
+    vi.spyOn(springBootApi, 'getAdminAuditLogEphemeralCount').mockResolvedValue({
+      data: { count: 0, actionTypes: [] },
+    } as any);
     vi.spyOn(springBootApi, 'getAdminInfraQuotas').mockResolvedValue({
       data: {
         fetchedAt: '2026-08-28T08:00:00Z',
@@ -133,6 +136,9 @@ describe('TechnicalLogsModule — infra quotas', () => {
   beforeEach(() => {
     vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: {} } as any);
     vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({ data: [] } as any);
+    vi.spyOn(springBootApi, 'getAdminAuditLogEphemeralCount').mockResolvedValue({
+      data: { count: 0, actionTypes: [] },
+    } as any);
   });
 
   afterEach(() => {
@@ -163,5 +169,70 @@ describe('TechnicalLogsModule — infra quotas', () => {
     expect(await screen.findByText(/متبقي 88 \/ 100 emails/)).toBeInTheDocument();
     expect(screen.getByText(/متبقي 60 \/ 100 CU-h/)).toBeInTheDocument();
     expect(screen.getByText(/غير متاحة حالياً/)).toBeInTheDocument();
+  });
+});
+
+describe('TechnicalLogsModule — ephemeral purge', () => {
+  beforeEach(() => {
+    vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: {} } as any);
+    vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({ data: [] } as any);
+    vi.spyOn(springBootApi, 'getAdminInfraQuotas').mockResolvedValue({
+      data: {
+        fetchedAt: '2026-08-28T08:00:00Z',
+        resend: { provider: 'resend', status: 'not_configured', meters: [] },
+        neon: { provider: 'neon', status: 'not_configured', meters: [] },
+        render: { provider: 'render', status: 'not_configured', meters: [] },
+      },
+    } as any);
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('shows the purge button with the server-reported ephemeral count', async () => {
+    vi.spyOn(springBootApi, 'getAdminAuditLogEphemeralCount').mockResolvedValue({
+      data: { count: 42, actionTypes: ['GOOGLE_LOGIN', 'EMAIL_SEND'] },
+    } as any);
+
+    render(<TechnicalLogsModule />);
+
+    expect(await screen.findByRole('button', { name: /مسح الأحداث الثانوية \(42\)/ })).toBeInTheDocument();
+    expect(screen.getByText(/الأدوار والوصول والمدفوعات وإنشاء الحسابات تبقى/)).toBeInTheDocument();
+  });
+
+  it('does not call DELETE when the admin cancels the confirm dialog', async () => {
+    vi.spyOn(springBootApi, 'getAdminAuditLogEphemeralCount').mockResolvedValue({
+      data: { count: 12, actionTypes: ['GOOGLE_LOGIN'] },
+    } as any);
+    const purgeSpy = vi.spyOn(springBootApi, 'purgeAdminAuditLogEphemeral').mockResolvedValue({
+      data: { count: 12, actionTypes: ['GOOGLE_LOGIN'] },
+    } as any);
+    (window.confirm as ReturnType<typeof vi.fn>).mockReturnValue(false);
+
+    render(<TechnicalLogsModule />);
+    fireEvent.click(await screen.findByRole('button', { name: /مسح الأحداث الثانوية \(12\)/ }));
+
+    expect(purgeSpy).not.toHaveBeenCalled();
+  });
+
+  it('purges then reloads the log when the admin confirms', async () => {
+    vi.spyOn(springBootApi, 'getAdminAuditLogEphemeralCount')
+      .mockResolvedValueOnce({ data: { count: 7, actionTypes: ['GOOGLE_LOGIN'] } } as any)
+      .mockResolvedValue({ data: { count: 0, actionTypes: ['GOOGLE_LOGIN'] } } as any);
+    const auditSpy = vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({ data: [] } as any);
+    const purgeSpy = vi.spyOn(springBootApi, 'purgeAdminAuditLogEphemeral').mockResolvedValue({
+      data: { count: 7, actionTypes: ['GOOGLE_LOGIN'] },
+    } as any);
+
+    render(<TechnicalLogsModule />);
+    await waitFor(() => expect(auditSpy).toHaveBeenCalledTimes(1));
+
+    fireEvent.click(await screen.findByRole('button', { name: /مسح الأحداث الثانوية \(7\)/ }));
+
+    await waitFor(() => expect(purgeSpy).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(auditSpy).toHaveBeenCalledTimes(2));
+    expect(await screen.findByRole('button', { name: /لا أحداث ثانوية للمسح/ })).toBeDisabled();
   });
 });

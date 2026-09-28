@@ -1,6 +1,7 @@
 package dz.mssid.education.service;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
+import dz.mssid.education.dto.AuditLogPurgeDto;
 import dz.mssid.education.entity.AdminAuditLog;
 import dz.mssid.education.repository.AdminAuditLogRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -105,6 +106,59 @@ class AdminAuditLogServiceTest {
         assertEquals(1, result.size());
         assertEquals("FAILURE", result.get(0).getOutcome());
         assertEquals("EMAIL_SEND", result.get(0).getActionType());
+    }
+
+    @Test
+    @DisplayName("ephemeral whitelist never includes roles, receipts, flags, or account creation")
+    void ephemeralTypes_ExcludeEssentialAudit() {
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("ROLE_CHANGE"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("RECEIPT_APPROVED"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("RECEIPT_REJECTED"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("RECEIPT_SUBMITTED"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("FEATURE_FLAG_CHANGED"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("USER_REGISTERED"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("LOGIN_FAILED"));
+        assertFalse(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("AUDIT_LOG_PURGED"));
+        assertTrue(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("GOOGLE_LOGIN"));
+        assertTrue(AdminAuditLogService.EPHEMERAL_ACTION_TYPES.contains("EMAIL_SEND"));
+    }
+
+    @Test
+    @DisplayName("getEphemeralPreview - Returns the count of rows matching the ephemeral whitelist")
+    void getEphemeralPreview_ReturnsCount() {
+        when(auditLogRepository.countByActionTypeIn(AdminAuditLogService.EPHEMERAL_ACTION_TYPES)).thenReturn(42L);
+
+        AuditLogPurgeDto preview = adminAuditLogService.getEphemeralPreview();
+
+        assertEquals(42L, preview.getCount());
+        assertEquals(AdminAuditLogService.EPHEMERAL_ACTION_TYPES, preview.getActionTypes());
+    }
+
+    @Test
+    @DisplayName("purgeEphemeral - Deletes only ephemeral types then records AUDIT_LOG_PURGED")
+    void purgeEphemeral_DeletesThenRecords() {
+        when(auditLogRepository.deleteByActionTypeIn(AdminAuditLogService.EPHEMERAL_ACTION_TYPES)).thenReturn(12L);
+
+        AuditLogPurgeDto result = adminAuditLogService.purgeEphemeral("admin@mssid.dz");
+
+        assertEquals(12L, result.getCount());
+        ArgumentCaptor<AdminAuditLog> captor = ArgumentCaptor.forClass(AdminAuditLog.class);
+        verify(auditLogRepository).save(captor.capture());
+        AdminAuditLog recorded = captor.getValue();
+        assertEquals("AUDIT_LOG_PURGED", recorded.getActionType());
+        assertEquals("admin@mssid.dz", recorded.getActorEmail());
+        assertTrue(recorded.getDetails().contains("deleted=12"));
+    }
+
+    @Test
+    @DisplayName("purgeEphemeral - Zero rows: does not write a spurious AUDIT_LOG_PURGED entry")
+    void purgeEphemeral_ZeroRows_DoesNotRecord() {
+        when(auditLogRepository.deleteByActionTypeIn(AdminAuditLogService.EPHEMERAL_ACTION_TYPES)).thenReturn(0L);
+
+        AuditLogPurgeDto result = adminAuditLogService.purgeEphemeral("admin@mssid.dz");
+
+        assertEquals(0L, result.getCount());
+        verify(auditLogRepository, org.mockito.Mockito.never()).save(any());
     }
 
     private Page<AdminAuditLog> pageOf(AdminAuditLog... entries) {

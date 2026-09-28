@@ -2,6 +2,7 @@ package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.dto.AdminStatsOverviewDto;
+import dz.mssid.education.dto.AuditLogPurgeDto;
 import dz.mssid.education.dto.InfraQuotasDto;
 import dz.mssid.education.entity.ContactMessage;
 import dz.mssid.education.repository.ContactMessageRepository;
@@ -12,6 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +51,23 @@ public class AdminController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTo) {
         return ResponseEntity.ok(adminAuditLogService.getFiltered(
                 actionType, outcome, actorEmail, dateFrom, dateTo, excludeActionType, limit));
+    }
+
+    @GetMapping("/audit-log/ephemeral")
+    public ResponseEntity<AuditLogPurgeDto> getEphemeralAuditLogCount() {
+        return ResponseEntity.ok(adminAuditLogService.getEphemeralPreview());
+    }
+
+    /**
+     * Drops only high-volume telemetry (routine Google logins, email attempts, AI traces). Role
+     * changes, receipts, feature flags, registrations and login failures stay. The acting admin is
+     * written as an {@code AUDIT_LOG_PURGED} row so the wipe itself remains visible.
+     */
+    @DeleteMapping("/audit-log/ephemeral")
+    public ResponseEntity<AuditLogPurgeDto> purgeEphemeralAuditLog(
+            @AuthenticationPrincipal UserDetails principal) {
+        String actor = principal != null ? principal.getUsername() : "unknown";
+        return ResponseEntity.ok(adminAuditLogService.purgeEphemeral(actor));
     }
 
     /**
