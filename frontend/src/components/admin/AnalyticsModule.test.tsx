@@ -24,13 +24,24 @@ const baseOverview = {
   totalBadgesUnlocked: 770,
   newUsersLast7Days: 17,
   newUsersLast30Days: 37,
+  newUsersToday: 4,
   dailyActiveUsers: 71,
   weeklyActiveUsers: 81,
   monthlyActiveUsers: 91,
   retentionRate7Days: 33.33,
   retentionRate30Days: 66.67,
+  stickinessDauMau: 12.5,
+  activatedUsers: 88,
+  activationRate: 80,
+  neverActiveUsers: 19,
+  inactive30DaysUsers: 28,
+  emailVerifiedUsers: 95,
+  parentEmailSetUsers: 41,
+  providerDistribution: { LOCAL: 83, GOOGLE: 27 },
   // Counts deliberately outside 1-10 so they can never collide with the card's own 1-10 rank badges.
   topCompletedLessons: { 'math-5ap-numbers': 55, 'arabic-5ap-grammar': 22 },
+  topCompletedExams: { 'exam-math-t1': 14 },
+  topCompletedChallenges: { 'ch-speed': 18 },
   payments: {
     totalReceipts: 12,
     receiptsByStatus: { APPROVED: 1, PENDING_VERIFICATION: 1 },
@@ -45,7 +56,7 @@ describe('AnalyticsModule — active users, retention, and top lessons', () => {
     vi.restoreAllMocks();
   });
 
-  it('renders DAU/WAU/MAU and rolling retention rates from the overview payload', async () => {
+  it('renders DAU/WAU/MAU, stickiness and rolling retention rates from the overview payload', async () => {
     vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: baseOverview } as any);
 
     render(<AnalyticsModule />);
@@ -53,8 +64,10 @@ describe('AnalyticsModule — active users, retention, and top lessons', () => {
     expect(await screen.findByText('71')).toBeInTheDocument(); // dailyActiveUsers
     expect(screen.getByText('81')).toBeInTheDocument(); // weeklyActiveUsers
     expect(screen.getByText('91')).toBeInTheDocument(); // monthlyActiveUsers
+    expect(screen.getByText('12.5%')).toBeInTheDocument(); // stickinessDauMau
     expect(screen.getByText('33.3%')).toBeInTheDocument(); // retentionRate7Days
     expect(screen.getByText('66.7%')).toBeInTheDocument(); // retentionRate30Days
+    expect(screen.getByText('88')).toBeInTheDocument(); // activatedUsers
   });
 
   it('shows the top completed lessons ranked by count, falling back to the raw id when it matches no real lesson', async () => {
@@ -75,11 +88,11 @@ describe('AnalyticsModule — active users, retention, and top lessons', () => {
 
   it('shows an empty-state message instead of a blank list when nothing has been completed yet', async () => {
     vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({
-      data: { ...baseOverview, topCompletedLessons: {} },
+      data: { ...baseOverview, topCompletedLessons: {}, topCompletedExams: {}, topCompletedChallenges: {} },
     } as any);
 
     render(<AnalyticsModule />);
 
-    expect(await screen.findByText('لا توجد بيانات بعد.')).toBeInTheDocument();
+    expect((await screen.findAllByText('لا توجد بيانات بعد.')).length).toBeGreaterThanOrEqual(1);
   });
 });

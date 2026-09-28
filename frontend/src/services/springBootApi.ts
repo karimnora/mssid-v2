@@ -541,6 +541,7 @@ public async request<T>(
     actorEmail?: string;
     dateFrom?: string; // ISO local date-time, e.g. "2026-08-17T00:00:00"
     dateTo?: string;
+    excludeActionType?: string;
   } = {}) {
     const params = new URLSearchParams();
     params.set('limit', String(filters.limit ?? 50));
@@ -549,6 +550,7 @@ public async request<T>(
     if (filters.actorEmail) params.set('actorEmail', filters.actorEmail);
     if (filters.dateFrom) params.set('dateFrom', filters.dateFrom);
     if (filters.dateTo) params.set('dateTo', filters.dateTo);
+    if (filters.excludeActionType) params.set('excludeActionType', filters.excludeActionType);
     return this.request<any[]>(`/v1/admin/audit-log?${params.toString()}`, {
       method: 'GET',
     });

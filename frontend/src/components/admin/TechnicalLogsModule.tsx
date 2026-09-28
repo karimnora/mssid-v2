@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HardDrive, Server, CheckCircle2, XCircle, RefreshCw, ScrollText, Filter, RotateCcw, Mail, Database, Cloud } from 'lucide-react';
+import { Server, CheckCircle2, XCircle, RefreshCw, ScrollText, Filter, RotateCcw, Mail, Database, Cloud } from 'lucide-react';
 import { springBootApi, InfraProviderQuota, InfraQuotasResponse } from '../../services/springBootApi';
 
 interface AuditLogEntry {
@@ -27,6 +27,14 @@ const ACTION_LABELS_AR: Record<string, string> = {
   GOOGLE_REGISTERED: 'إنشاء حساب عبر Google',
   GOOGLE_LOGIN: 'تسجيل الدخول عبر Google',
   GOOGLE_LINK_REJECTED: 'رفض ربط حساب Google بحساب موجود',
+  AI_REEL_GENERATED: 'توليد إعلان بالذكاء الاصطناعي',
+  AI_NARRATION_GENERATED: 'توليد تعليق صوتي',
+  AI_ILLUSTRATION_GENERATED: 'توليد رسم توضيحي',
+  AD_REEL_SAVED: 'حفظ إعلان',
+  AD_REEL_DELETED: 'حذف إعلان',
+  AI_REEL_GENERATION_FAILED: 'فشل توليد إعلان',
+  AI_NARRATION_FAILED: 'فشل توليد التعليق الصوتي',
+  AI_ILLUSTRATION_FAILED: 'فشل توليد الرسم',
 };
 
 // Every actionType this codebase actually emits (see AdminAuditLogService.record call sites) — kept
@@ -44,25 +52,17 @@ interface Filters {
 
 const EMPTY_FILTERS: Filters = { actionType: '', outcome: '', actorEmail: '', dateFrom: '', dateTo: '' };
 
-// Rebuilt from the deleted components/cms/SystemAuditView.tsx: keeps the genuinely real bits (the
-// localStorage byte-counting loop, now scoped to the whole app instead of only CMS keys) and
-// replaces the fake bits — no more hardcoded "10 requests/min", no hardcoded Soroban "12" lesson
-// count, no /api/health ping (that route only exists on the legacy Express dev proxy, not the real
-// Spring Boot backend, and its catch block used to report "online" even on failure). Reachability is
-// now a real timed call to the admin stats endpoint, and the audit table reads real rows or honestly
-// says there are none yet — never a fabricated row.
-//
-// Broadened (see AdminAuditLog.java) from "admin actions only" to a general system event log —
-// email delivery, registration/login failures, receipt submissions, AI tutor failures — with real
-// server-side filtering (actionType/outcome/actorEmail/date range), not just a "last N rows" cap.
+// Supervision log: live server + provider quotas + business events. Reachability is a timed call
+// to the admin stats endpoint; the table reads real rows and never fabricates them.
 export const TechnicalLogsModule: React.FC = () => {
-  const [storageUsedKb, setStorageUsedKb] = useState<number>(0);
   const [serverStatus, setServerStatus] = useState<'checking' | 'online' | 'error'>('checking');
   const [serverPingMs, setServerPingMs] = useState<number | null>(null);
 
   const [auditLog, setAuditLog] = useState<AuditLogEntry[]>([]);
   const [isLoadingLog, setIsLoadingLog] = useState(true);
   const [logError, setLogError] = useState<string | null>(null);
+  const [hideRoutineLogins, setHideRoutineLogins] = useState(true);
+  const [expandedDetailId, setExpandedDetailId] = useState<number | null>(null);
 
   const [draftFilters, setDraftFilters] = useState<Filters>(EMPTY_FILTERS);
   const [appliedFilters, setAppliedFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -70,18 +70,6 @@ export const TechnicalLogsModule: React.FC = () => {
   const [infraQuotas, setInfraQuotas] = useState<InfraQuotasResponse | null>(null);
   const [infraQuotasError, setInfraQuotasError] = useState<string | null>(null);
   const [isLoadingQuotas, setIsLoadingQuotas] = useState(true);
-
-  const computeStorageUsage = () => {
-    let totalBytes = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key) {
-        const value = localStorage.getItem(key) || '';
-        totalBytes += key.length + value.length;
-      }
-    }
-    setStorageUsedKb(Math.round(totalBytes / 1024));
-  };
 
   const checkServerReachability = async () => {
     setServerStatus('checking');
@@ -114,14 +102,14 @@ export const TechnicalLogsModule: React.FC = () => {
         setInfraQuotas(res.data || null);
       }
     } catch {
-      setInfraQuotasError('تعذر الاتصال بالخادم لجلب حصص Resend / Neon / Render.');
+      setInfraQuotasError('تعذر جلب حصص الخدمات السحابية.');
       setInfraQuotas(null);
     } finally {
       setIsLoadingQuotas(false);
     }
   };
 
-  const loadAuditLog = async (filters: Filters) => {
+  const loadAuditLog = async (filters: Filters, hideLogins = hideRoutineLogins) => {
     setIsLoadingLog(true);
     setLogError(null);
     try {
@@ -132,6 +120,7 @@ export const TechnicalLogsModule: React.FC = () => {
         actorEmail: filters.actorEmail || undefined,
         dateFrom: filters.dateFrom ? `${filters.dateFrom}T00:00:00` : undefined,
         dateTo: filters.dateTo ? `${filters.dateTo}T23:59:59` : undefined,
+        excludeActionType: hideLogins && !filters.actionType ? 'GOOGLE_LOGIN' : undefined,
       });
       if (res.error) {
         setLogError(res.error);
@@ -146,7 +135,6 @@ export const TechnicalLogsModule: React.FC = () => {
   };
 
   useEffect(() => {
-    computeStorageUsage();
     checkServerReachability();
     loadInfraQuotas();
     loadAuditLog(EMPTY_FILTERS);
@@ -165,7 +153,6 @@ export const TechnicalLogsModule: React.FC = () => {
   };
 
   const handleRefreshAll = () => {
-    computeStorageUsage();
     checkServerReachability();
     loadInfraQuotas();
     loadAuditLog(appliedFilters);
@@ -182,9 +169,9 @@ export const TechnicalLogsModule: React.FC = () => {
             <ScrollText className="w-7 h-7" />
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-black tracking-tight text-white">السجلات التقنية (Technical Logs)</h2>
+            <h2 className="text-lg sm:text-xl font-black tracking-tight text-white">سجل الأحداث</h2>
             <p className="text-xs text-slate-300 mt-1">
-              حالة اتصال الخادم، حصص Resend / Neon / Render، سعة التخزين المحلية، وسجل أحداث حقيقي — كل رقم هنا مصدره فعلي، لا توجد أي قيم ثابتة.
+              حالة الخادم، حصص البريد وقاعدة البيانات والاستضافة، وأحداث الحسابات والمدفوعات — بلا تفاصيل تقنية خام.
             </p>
           </div>
         </div>
@@ -199,10 +186,10 @@ export const TechnicalLogsModule: React.FC = () => {
       </div>
 
       {/* Live Health Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4">
         <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
           <div className="flex items-center justify-between text-slate-500">
-            <span className="text-xs font-extrabold uppercase tracking-wider">اتصال خادم Spring Boot</span>
+            <span className="text-xs font-extrabold uppercase tracking-wider">الخادم</span>
             <Server className="w-5 h-5 text-purple-400" />
           </div>
           <div className="flex items-baseline gap-2">
@@ -228,35 +215,20 @@ export const TechnicalLogsModule: React.FC = () => {
             )}
             <span>
               {serverStatus === 'online'
-                ? `زمن الاستجابة الحقيقي: ${serverPingMs}ms (GET /v1/admin/stats/overview)`
+                ? `يرد خلال ${serverPingMs} ملّي ثانية`
                 : serverStatus === 'error'
-                ? 'فشل الاتصال بـ GET /v1/admin/stats/overview'
+                ? 'تعذر الاتصال بالخادم'
                 : 'قيد الفحص...'}
             </span>
           </div>
         </div>
 
-        <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
-          <div className="flex items-center justify-between text-slate-500">
-            <span className="text-xs font-extrabold uppercase tracking-wider">سعة التخزين المحلي (localStorage)</span>
-            <HardDrive className="w-5 h-5 text-blue-400" />
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-black text-white font-mono">{storageUsedKb} KB</span>
-            <span className="text-xs text-slate-500 font-mono">مستخدمة في هذا المتصفح</span>
-          </div>
-          <div className="flex items-center gap-2 text-xs font-bold text-blue-300 bg-blue-950/60 px-2.5 py-1 rounded-lg border border-blue-800">
-            <HardDrive className="w-4 h-4 shrink-0" />
-            <span>قياس فعلي لجميع مفاتيح localStorage الخاصة بهذا التطبيق</span>
-          </div>
-        </div>
       </div>
 
-      {/* Live provider quotas — GET /v1/admin/infra/quotas, never hardcoded leftover numbers */}
+      {/* Live provider quotas */}
       <div className="space-y-3">
         <div className="flex items-center justify-between px-1 gap-2">
-          <h3 className="font-extrabold text-sm text-white">حصص البنية التحتية</h3>
-          <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">GET /v1/admin/infra/quotas</span>
+          <h3 className="font-extrabold text-sm text-white">حصص الخدمات</h3>
         </div>
         {isLoadingQuotas ? (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-xs text-slate-500">جاري تحميل الحصص من المزودين...</div>
@@ -265,17 +237,17 @@ export const TechnicalLogsModule: React.FC = () => {
         ) : infraQuotas ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <ProviderQuotaCard
-              title="Resend — البريد"
+              title="البريد الإلكتروني"
               icon={<Mail className="w-5 h-5 text-amber-400" />}
               quota={infraQuotas.resend}
             />
             <ProviderQuotaCard
-              title="Neon — PostgreSQL"
+              title="قاعدة البيانات"
               icon={<Database className="w-5 h-5 text-emerald-400" />}
               quota={infraQuotas.neon}
             />
             <ProviderQuotaCard
-              title="Render — Java"
+              title="الاستضافة"
               icon={<Cloud className="w-5 h-5 text-sky-400" />}
               quota={infraQuotas.render}
             />
@@ -290,7 +262,6 @@ export const TechnicalLogsModule: React.FC = () => {
             <ScrollText className="w-5 h-5 text-amber-400 shrink-0" />
             <span>سجل الأحداث</span>
           </h3>
-          <span className="text-[11px] text-slate-500 font-mono hidden sm:inline">GET /v1/admin/audit-log</span>
         </div>
 
         {/* Filter Bar */}
@@ -346,7 +317,7 @@ export const TechnicalLogsModule: React.FC = () => {
               title="إلى تاريخ"
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={handleApplyFilters}
               className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs min-h-[var(--hit)] px-4 rounded-xl transition-all cursor-pointer"
@@ -363,6 +334,19 @@ export const TechnicalLogsModule: React.FC = () => {
                 <span>إلغاء الفلترة</span>
               </button>
             )}
+            <label className="flex items-center gap-2 text-xs font-bold text-slate-400 ms-auto cursor-pointer min-h-[var(--hit)]">
+              <input
+                type="checkbox"
+                checked={hideRoutineLogins}
+                onChange={(e) => {
+                  const next = e.target.checked;
+                  setHideRoutineLogins(next);
+                  loadAuditLog(appliedFilters, next);
+                }}
+                className="rounded border-slate-600"
+              />
+              <span>إخفاء تسجيلات الدخول عبر Google</span>
+            </label>
           </div>
         </div>
 
@@ -387,9 +371,12 @@ export const TechnicalLogsModule: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {auditLog.map((entry) => (
+                {auditLog.map((entry) => {
+                  const friendly = humanizeLogDetails(entry.details);
+                  const showRaw = expandedDetailId === entry.id && friendly !== entry.details;
+                  return (
                   <tr key={entry.id} className="border-b border-slate-800/60 hover:bg-slate-950/60">
-                    <td className="py-2.5 px-2 font-mono text-slate-300 whitespace-nowrap">{entry.createdAt}</td>
+                    <td className="py-2.5 px-2 text-slate-300 whitespace-nowrap">{formatLogTime(entry.createdAt)}</td>
                     <td className="py-2.5 px-2 font-mono text-purple-300">{entry.actorEmail}</td>
                     <td className="py-2.5 px-2">
                       <span className="px-2 py-0.5 rounded-md font-bold text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap">
@@ -407,9 +394,24 @@ export const TechnicalLogsModule: React.FC = () => {
                         {entry.outcome === 'FAILURE' ? '❌ فشل' : '✅ نجاح'}
                       </span>
                     </td>
-                    <td className="py-2.5 px-2 text-slate-300">{entry.details}</td>
+                    <td className="py-2.5 px-2 text-slate-300">
+                      <div className="space-y-1 max-w-md">
+                        <p className="leading-relaxed">{friendly}</p>
+                        {entry.details && friendly !== entry.details && (
+                          <button
+                            type="button"
+                            className="text-[10px] font-bold text-amber-400 hover:text-amber-300"
+                            onClick={() => setExpandedDetailId(showRaw ? null : entry.id)}
+                          >
+                            {showRaw ? 'إخفاء التفاصيل التقنية' : 'عرض التفاصيل التقنية'}
+                          </button>
+                        )}
+                        {showRaw && <p className="font-mono text-[10px] text-slate-500 break-all" dir="ltr">{entry.details}</p>}
+                      </div>
+                    </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -420,8 +422,8 @@ export const TechnicalLogsModule: React.FC = () => {
 };
 
 const PROVIDER_STATUS_AR: Record<string, string> = {
-  ok: 'مباشر من الـ API',
-  not_configured: 'غير مُعدّ — أضف المفتاح على Render',
+  ok: 'محدَّث',
+  not_configured: 'غير متاحة حالياً',
   error: 'تعذر الجلب',
 };
 
@@ -439,7 +441,9 @@ const ProviderQuotaCard: React.FC<{ title: string; icon: React.ReactNode; quota:
       </div>
       {meters.length === 0 ? (
         <p className="text-sm text-slate-300 font-bold leading-relaxed">
-          {quota.status === 'error' ? (quota.error || PROVIDER_STATUS_AR.error) : (quota.note || PROVIDER_STATUS_AR[quota.status] || PROVIDER_STATUS_AR.not_configured)}
+          {quota.status === 'error'
+            ? PROVIDER_STATUS_AR.error
+            : (quota.note && !looksTechnical(quota.note) ? quota.note : PROVIDER_STATUS_AR[quota.status] || PROVIDER_STATUS_AR.not_configured)}
         </p>
       ) : (
         meters.map((meter) => {
@@ -458,14 +462,14 @@ const ProviderQuotaCard: React.FC<{ title: string; icon: React.ReactNode; quota:
               <div className="h-2 rounded-full bg-slate-800 overflow-hidden">
                 <div className={`h-full rounded-full ${bar}`} style={{ width: `${pct}%` }} />
               </div>
-              <p className="text-[10px] text-slate-500 font-mono" dir="ltr">
-                used {formatQuotaNumber(meter.used)} · {Math.round(pct)}%
+              <p className="text-[10px] text-slate-500">
+                استُخدم {formatQuotaNumber(meter.used)} · {Math.round(pct)}٪
               </p>
             </div>
           );
         })
       )}
-      {quota.note && meters.length > 0 && (
+      {quota.note && meters.length > 0 && !looksTechnical(quota.note) && (
         <p className="text-[10px] text-slate-500 leading-relaxed">{quota.note}</p>
       )}
       {quota.dashboardUrl && (
@@ -475,7 +479,7 @@ const ProviderQuotaCard: React.FC<{ title: string; icon: React.ReactNode; quota:
           rel="noopener noreferrer"
           className="inline-flex items-center min-h-[var(--hit)] text-[11px] font-bold text-amber-400 hover:text-amber-300"
         >
-          فتح لوحة المزود ↗
+          فتح لوحة المتابعة ↗
         </a>
       )}
     </div>
@@ -486,4 +490,38 @@ function formatQuotaNumber(value: number): string {
   if (!Number.isFinite(value)) return '—';
   if (Number.isInteger(value) || Math.abs(value) >= 10) return String(Math.round(value * 10) / 10);
   return String(Math.round(value * 100) / 100);
+}
+
+function formatLogTime(iso: string | undefined): string {
+  if (!iso) return '—';
+  const [date, time] = iso.split('T');
+  if (!date) return iso;
+  const [year, month, day] = date.split('-');
+  const hm = (time || '').slice(0, 5);
+  return hm ? `${day}/${month}/${year} ${hm}` : `${day}/${month}/${year}`;
+}
+
+function looksTechnical(text: string): boolean {
+  return /api[-.]|exception|stack|sql|http|key|token|render\.com|neon\.tech/i.test(text);
+}
+
+function humanizeLogDetails(details: string | undefined | null): string {
+  if (!details || !details.trim()) return '—';
+  const d = details.trim();
+  if (/api-key.*pas configur|n'est pas configurée/i.test(d)) return 'تعذّر إرسال البريد: خدمة البريد غير معدّة';
+  if (/échec Resend|timeout/i.test(d)) return 'تعذّر إرسال البريد (انتهت المهلة أو الخدمة غير متاحة)';
+  if (/envoyé via Resend/i.test(d)) return 'أُرسل البريد بنجاح';
+  if (/^grade=/i.test(d)) return `المستوى ${d.replace(/^grade=/i, '')}`;
+  if (/provider=GOOGLE/i.test(d)) return 'عبر Google';
+  if (/user upgraded to ROLE_PREMIUM/i.test(d)) return 'ترقية الحساب إلى اشتراك مدفوع';
+  if (/ROLE_FREE\s*->\s*ROLE_PREMIUM/i.test(d)) return 'من حساب مجاني إلى اشتراك مدفوع';
+  if (/ROLE_FREE\s*->\s*ROLE_ADMIN/i.test(d)) return 'من حساب مجاني إلى مشرف';
+  if (/ROLE_PREMIUM\s*->\s*ROLE_FREE/i.test(d)) return 'من اشتراك مدفوع إلى حساب مجاني';
+  if (/rejected:\s*/i.test(d)) return `سبب الرفض: ${d.replace(/rejected:\s*/i, '')}`;
+  if (/enabled=true/i.test(d)) return 'الميزة مفعّلة';
+  if (/enabled=false/i.test(d)) return 'الميزة معطّلة';
+  if (/reset to code default/i.test(d)) return 'أُعيدت القيمة الافتراضية';
+  if (/already linked/i.test(d)) return 'الحساب مرتبط مسبقاً بحساب Google آخر';
+  if (looksTechnical(d) || d.length > 180) return 'حدث تقني — يمكن عرض التفاصيل عند الحاجة';
+  return d;
 }

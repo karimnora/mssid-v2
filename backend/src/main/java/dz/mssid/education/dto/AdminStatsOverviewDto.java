@@ -43,12 +43,26 @@ public class AdminStatsOverviewDto {
     private long totalBadgesUnlocked;
     private long newUsersLast7Days;
     private long newUsersLast30Days;
+    private long newUsersToday;
     private long dailyActiveUsers;
     private long weeklyActiveUsers;
     private long monthlyActiveUsers;
     private double retentionRate7Days;
     private double retentionRate30Days;
+    /** DAU / MAU × 100 — 0 when nobody was active this month. */
+    private double stickinessDauMau;
+    /** Accounts that completed at least one lesson. */
+    private long activatedUsers;
+    private double activationRate;
+    private long neverActiveUsers;
+    private long inactive30DaysUsers;
+    private long emailVerifiedUsers;
+    private long parentEmailSetUsers;
+    /** LOCAL / GOOGLE (User.provider). */
+    private Map<String, Long> providerDistribution;
     /** lessonId -> completion count across all users, top 10, already sorted descending. */
     private Map<String, Long> topCompletedLessons;
+    private Map<String, Long> topCompletedExams;
+    private Map<String, Long> topCompletedChallenges;
     private PaymentsStatsDto payments;
 }

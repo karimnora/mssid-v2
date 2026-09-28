@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star, MapPin, Download } from 'lucide-react';
+import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star, MapPin, Download, Mail, UserCheck, Moon, Percent } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
 import { WILAYAS_LIST } from '../../data/wilayasData';
 import { generatePartnerCatalogHtml, downloadHtmlFile } from '../../utils/partnerCatalogExport';
@@ -11,6 +11,16 @@ const WILAYA_NAME_BY_CODE: Record<string, string> = Object.fromEntries(
 );
 const formatWilayaKey = (code: string): string =>
   code === 'UNKNOWN' ? 'غير محدَّدة' : `${code} - ${WILAYA_NAME_BY_CODE[code] || code}`;
+const PROVIDER_LABEL: Record<string, string> = {
+  LOCAL: 'بريد إلكتروني',
+  GOOGLE: 'Google',
+  UNKNOWN: 'غير محدَّد',
+};
+const ROLE_LABEL: Record<string, string> = {
+  ROLE_FREE: 'حساب مجاني',
+  ROLE_PREMIUM: 'اشتراك مدفوع',
+  ROLE_ADMIN: 'مشرف',
+};
 
 // Every field here maps 1:1 to GET /api/v1/admin/stats/overview (see backend
 // AdminStatsOverviewDto.java) — session-time/preschool-usage widgets still don't exist because no
@@ -30,13 +40,24 @@ interface AdminStatsOverview {
   totalBadgesUnlocked: number;
   newUsersLast7Days: number;
   newUsersLast30Days: number;
+  newUsersToday: number;
   dailyActiveUsers: number;
   weeklyActiveUsers: number;
   monthlyActiveUsers: number;
   retentionRate7Days: number;
   retentionRate30Days: number;
+  stickinessDauMau: number;
+  activatedUsers: number;
+  activationRate: number;
+  neverActiveUsers: number;
+  inactive30DaysUsers: number;
+  emailVerifiedUsers: number;
+  parentEmailSetUsers: number;
+  providerDistribution: Record<string, number>;
   /** lessonId -> completion count, top 10, already sorted descending by the backend. */
   topCompletedLessons: Record<string, number>;
+  topCompletedExams: Record<string, number>;
+  topCompletedChallenges: Record<string, number>;
   payments: {
     totalReceipts: number;
     receiptsByStatus: Record<string, number>;
@@ -99,7 +120,7 @@ const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data:
 // Resolves lessonId -> titleAr by dynamically importing the ~4.6MB lesson catalog only when this
 // card actually has entries to show — same lazy-import pattern already used by badgeEngine.ts, so
 // the admin console's initial bundle never pays for the full catalog just to render a few titles.
-const TopLessonsCard: React.FC<{ data: Record<string, number> }> = ({ data }) => {
+const TopLessonsCard: React.FC<{ titleAr: string; data: Record<string, number> }> = ({ titleAr, data }) => {
   const [titles, setTitles] = useState<Record<string, string>>({});
   const entries = Object.entries(data || {});
 
@@ -125,7 +146,7 @@ const TopLessonsCard: React.FC<{ data: Record<string, number> }> = ({ data }) =>
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
       <div className="flex items-center gap-2 text-slate-300">
         <Star className="w-4 h-4 text-amber-400" />
-        <h3 className="text-xs font-black">الدروس الأكثر إتماماً (أعلى 10)</h3>
+        <h3 className="text-xs font-black">{titleAr}</h3>
       </div>
       {entries.length === 0 ? (
         <div className="text-[11px] text-slate-500">لا توجد بيانات بعد.</div>
@@ -198,7 +219,7 @@ export const AnalyticsModule: React.FC = () => {
             <h2 className="text-lg font-extrabold text-white">إحصائيات المنصة الحقيقية</h2>
           </div>
           <p className="text-xs text-slate-300 mt-1">
-            كل رقم هنا مصدره مباشرة قاعدة بيانات المستخدمين والمدفوعات — لا توجد أي بيانات وهمية أو تقديرية.
+            كل رقم هنا مصدره قاعدة المستخدمين والمدفوعات — بلا تقديرات.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
@@ -234,9 +255,9 @@ export const AnalyticsModule: React.FC = () => {
           {/* Core user metrics */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <StatCard icon={<Users className="w-5 h-5" />} labelAr="إجمالي المستخدمين" value={stats.totalUsers} />
+            <StatCard icon={<UserPlus className="w-5 h-5" />} labelAr="جدد اليوم" value={stats.newUsersToday} accent="text-emerald-400" />
             <StatCard icon={<UserPlus className="w-5 h-5" />} labelAr="مستخدمون جدد (7 أيام)" value={stats.newUsersLast7Days} accent="text-emerald-400" />
             <StatCard icon={<UserPlus className="w-5 h-5" />} labelAr="مستخدمون جدد (30 يوم)" value={stats.newUsersLast30Days} accent="text-emerald-400" />
-            <StatCard icon={<Award className="w-5 h-5" />} labelAr="إجمالي الشارات المفتوحة" value={stats.totalBadgesUnlocked} accent="text-purple-400" />
           </div>
 
           {/* Active users & retention — derived from lastActiveDate, which the frontend bumps to
@@ -244,10 +265,17 @@ export const AnalyticsModule: React.FC = () => {
               as "did real learning activity today/this week/this month", a stricter bar than a raw
               app-open ping. Retention is a rolling window (old-enough accounts still active
               recently), not per-cohort same-day-offset tracking — see AdminStatsOverviewDto's javadoc. */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون اليوم (DAU)" value={stats.dailyActiveUsers} accent="text-emerald-400" />
             <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون هذا الأسبوع" value={stats.weeklyActiveUsers} accent="text-emerald-400" />
             <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون هذا الشهر" value={stats.monthlyActiveUsers} accent="text-emerald-400" />
+            <StatCard
+              icon={<Percent className="w-5 h-5" />}
+              labelAr="الالتصاق اليومي (DAU/MAU)"
+              value={`${(stats.stickinessDauMau ?? 0).toFixed(1)}%`}
+              sub="نسبة النشيطين اليوم من نشيطي هذا الشهر"
+              accent="text-sky-400"
+            />
             <StatCard
               icon={<Repeat className="w-5 h-5" />}
               labelAr="معدل العودة (7 أيام)"
@@ -264,7 +292,40 @@ export const AnalyticsModule: React.FC = () => {
             />
           </div>
 
-          {/* XP / level / streak aggregates */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            <StatCard
+              icon={<UserCheck className="w-5 h-5" />}
+              labelAr="بدأوا درساً واحداً على الأقل"
+              value={stats.activatedUsers ?? 0}
+              sub={`${(stats.activationRate ?? 0).toFixed(1)}٪ من الحسابات`}
+              accent="text-emerald-400"
+            />
+            <StatCard
+              icon={<Moon className="w-5 h-5" />}
+              labelAr="لم يسجّلوا أي نشاط بعد"
+              value={stats.neverActiveUsers ?? 0}
+              sub="بدون تاريخ نشاط تعليمي"
+            />
+            <StatCard
+              icon={<Moon className="w-5 h-5" />}
+              labelAr="خاملون أكثر من 30 يوماً"
+              value={stats.inactive30DaysUsers ?? 0}
+              sub="حسابات أقدم من شهر بلا عودة"
+              accent="text-orange-400"
+            />
+            <StatCard
+              icon={<Mail className="w-5 h-5" />}
+              labelAr="بريد مؤكَّد"
+              value={stats.emailVerifiedUsers ?? 0}
+              sub={stats.totalUsers > 0 ? `${Math.round(((stats.emailVerifiedUsers ?? 0) / stats.totalUsers) * 100)}٪ من الحسابات` : undefined}
+            />
+            <StatCard
+              icon={<Mail className="w-5 h-5" />}
+              labelAr="بريد ولي الأمر"
+              value={stats.parentEmailSetUsers ?? 0}
+            />
+            <StatCard icon={<Award className="w-5 h-5" />} labelAr="إجمالي الشارات المفتوحة" value={stats.totalBadgesUnlocked} accent="text-purple-400" />
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <StatCard icon={<TrendingUp className="w-5 h-5" />} labelAr="إجمالي نقاط الخبرة XP" value={stats.totalXp} />
             <StatCard icon={<TrendingUp className="w-5 h-5" />} labelAr="متوسط نقاط الخبرة" value={stats.averageXp} />
@@ -293,12 +354,17 @@ export const AnalyticsModule: React.FC = () => {
             />
           </div>
 
-          <TopLessonsCard data={stats.topCompletedLessons} />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <TopLessonsCard titleAr="الدروس الأكثر إتماماً" data={stats.topCompletedLessons} />
+            <TopLessonsCard titleAr="الامتحانات الأكثر إتماماً" data={stats.topCompletedExams || {}} />
+            <TopLessonsCard titleAr="التحديات الأكثر إتماماً" data={stats.topCompletedChallenges || {}} />
+          </div>
 
-          {/* Role / grade / wilaya distribution */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <DistributionCard titleAr="توزيع المستخدمين حسب الصلاحية (Role)" icon={<Users className="w-4 h-4 text-purple-400" />} data={stats.roleDistribution} />
+          {/* Role / grade / signup */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <DistributionCard titleAr="توزيع المستخدمين حسب الصلاحية" icon={<Users className="w-4 h-4 text-purple-400" />} data={stats.roleDistribution} formatKey={(key) => ROLE_LABEL[key] || key} />
             <DistributionCard titleAr="توزيع المستخدمين حسب السنة الدراسية" icon={<BookOpenCheck className="w-4 h-4 text-blue-400" />} data={stats.gradeDistribution} />
+            <DistributionCard titleAr="طريقة إنشاء الحساب" icon={<UserPlus className="w-4 h-4 text-emerald-400" />} data={stats.providerDistribution || {}} formatKey={(key) => PROVIDER_LABEL[key] || key} />
           </div>
 
           {/* B2B partner reporting: which wilayas the active accounts are actually in. "غير محدَّدة"

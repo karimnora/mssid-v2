@@ -41,17 +41,17 @@ public class AdminAuditLogService {
     }
 
     public List<AdminAuditLogDto> getRecent(int limit) {
-        return getFiltered(null, null, null, null, null, limit);
+        return getFiltered(null, null, null, null, null, null, limit);
     }
 
-    // Built as a Specification (a predicate is only added to the query when its filter is actually
-    // present) rather than a single @Query with "(:param IS NULL OR ...)" branches — found live that
-    // Postgres's JDBC driver can't always infer the type of a bind parameter used in a bare
-    // "? IS NULL" check with no other type-establishing context (errored on both a null actorEmail
-    // pattern and a null date with two different error messages), which a Specification sidesteps
-    // entirely since the comparison simply isn't in the SQL when the filter is absent.
     public List<AdminAuditLogDto> getFiltered(
             String actionType, String outcome, String actorEmail, LocalDateTime dateFrom, LocalDateTime dateTo, int limit) {
+        return getFiltered(actionType, outcome, actorEmail, dateFrom, dateTo, null, limit);
+    }
+
+    public List<AdminAuditLogDto> getFiltered(
+            String actionType, String outcome, String actorEmail, LocalDateTime dateFrom, LocalDateTime dateTo,
+            String excludeActionType, int limit) {
         int cappedLimit = Math.min(Math.max(limit, 1), 200);
 
         Specification<AdminAuditLog> spec = (root, query, cb) -> {
@@ -61,6 +61,10 @@ public class AdminAuditLogService {
             String actorEmailValue = blankToNull(actorEmail);
 
             if (actionTypeValue != null) predicates.add(cb.equal(root.get("actionType"), actionTypeValue));
+            String excludeActionTypeValue = blankToNull(excludeActionType);
+            if (excludeActionTypeValue != null && actionTypeValue == null) {
+                predicates.add(cb.notEqual(root.get("actionType"), excludeActionTypeValue));
+            }
             if (outcomeValue != null) predicates.add(cb.equal(root.get("outcome"), outcomeValue));
             if (actorEmailValue != null) {
                 predicates.add(cb.like(cb.lower(root.get("actorEmail")), "%" + actorEmailValue.toLowerCase() + "%"));

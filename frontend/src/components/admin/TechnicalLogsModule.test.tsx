@@ -39,10 +39,11 @@ describe('TechnicalLogsModule — event log filtering', () => {
 
     await waitFor(() => {
       expect(auditSpy).toHaveBeenCalledWith(
-        expect.objectContaining({ limit: 100, actionType: undefined, outcome: undefined, actorEmail: undefined })
+        expect.objectContaining({ limit: 100, actionType: undefined, outcome: undefined, actorEmail: undefined, excludeActionType: 'GOOGLE_LOGIN' })
       );
     });
-    expect(await screen.findByText(/app.resend.api-key/)).toBeInTheDocument();
+    expect(await screen.findByText('تعذّر إرسال البريد: خدمة البريد غير معدّة')).toBeInTheDocument();
+    expect(screen.queryByText(/app.resend.api-key/)).not.toBeInTheDocument();
   });
 
   // Regression test for the exact scenario that prompted this feature: an admin needs to filter down
@@ -59,7 +60,7 @@ describe('TechnicalLogsModule — event log filtering', () => {
 
     await waitFor(() => {
       expect(auditSpy).toHaveBeenLastCalledWith(
-        expect.objectContaining({ actionType: 'EMAIL_SEND', outcome: 'FAILURE' })
+        expect.objectContaining({ actionType: 'EMAIL_SEND', outcome: 'FAILURE', excludeActionType: undefined })
       );
     });
   });
@@ -73,6 +74,14 @@ describe('TechnicalLogsModule — event log filtering', () => {
 
     expect(await screen.findByText('❌ فشل')).toBeInTheDocument();
     expect(await screen.findByText('✅ نجاح')).toBeInTheDocument();
+  });
+
+  it('lets the admin expand raw technical details when the friendly sentence replaced them', async () => {
+    vi.spyOn(springBootApi, 'getAdminAuditLog').mockResolvedValue({ data: [failedEmailEntry] } as any);
+    render(<TechnicalLogsModule />);
+    expect(await screen.findByText('تعذّر إرسال البريد: خدمة البريد غير معدّة')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'عرض التفاصيل التقنية' }));
+    expect(screen.getByText(/app.resend.api-key/)).toBeInTheDocument();
   });
 
   // Regression: AuthService.java emits GOOGLE_LINK_REJECTED/GOOGLE_REGISTERED/GOOGLE_LOGIN
@@ -114,7 +123,7 @@ describe('TechnicalLogsModule — event log filtering', () => {
 
     await waitFor(() => {
       expect(auditSpy).toHaveBeenLastCalledWith(
-        expect.objectContaining({ actionType: undefined, outcome: undefined, actorEmail: undefined })
+        expect.objectContaining({ actionType: undefined, outcome: undefined, actorEmail: undefined, excludeActionType: 'GOOGLE_LOGIN' })
       );
     });
   });
@@ -153,6 +162,6 @@ describe('TechnicalLogsModule — infra quotas', () => {
 
     expect(await screen.findByText(/متبقي 88 \/ 100 emails/)).toBeInTheDocument();
     expect(screen.getByText(/متبقي 60 \/ 100 CU-h/)).toBeInTheDocument();
-    expect(screen.getByText(/غير مُعدّ — أضف المفتاح على Render/)).toBeInTheDocument();
+    expect(screen.getByText(/غير متاحة حالياً/)).toBeInTheDocument();
   });
 });

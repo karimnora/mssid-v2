@@ -81,7 +81,7 @@ class AdminControllerTest {
                 .createdAt("2026-01-01T12:00:00")
                 .build();
 
-        when(adminAuditLogService.getFiltered(isNull(), isNull(), isNull(), isNull(), isNull(), eq(50)))
+        when(adminAuditLogService.getFiltered(isNull(), isNull(), isNull(), isNull(), isNull(), isNull(), eq(50)))
                 .thenReturn(List.of(entry));
 
         mockMvc.perform(get("/api/v1/admin/audit-log"))
@@ -103,7 +103,7 @@ class AdminControllerTest {
                 .createdAt("2026-08-17T10:00:00")
                 .build();
 
-        when(adminAuditLogService.getFiltered(eq("EMAIL_SEND"), eq("FAILURE"), isNull(), isNull(), isNull(), eq(50)))
+        when(adminAuditLogService.getFiltered(eq("EMAIL_SEND"), eq("FAILURE"), isNull(), isNull(), isNull(), isNull(), eq(50)))
                 .thenReturn(List.of(failedEmail));
 
         mockMvc.perform(get("/api/v1/admin/audit-log").param("actionType", "EMAIL_SEND").param("outcome", "FAILURE"))

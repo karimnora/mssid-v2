@@ -44,6 +44,7 @@ class AdminStatsServiceTest {
                 .id(1L).role(freeRole).grade("5AP").xp(100).level(2).streakDays(3)
                 .completedLessonIds(List.of("l1", "l2")).completedExamIds(List.of("e1"))
                 .completedChallengeIds(List.of()).badges(List.of("b1"))
+                .provider("GOOGLE").emailVerified(true).parentEmail("parent@mssid.dz")
                 .createdAt(LocalDateTime.now().minusDays(2))
                 .lastActiveDate(LocalDate.now().toString())
                 .build();
@@ -51,6 +52,7 @@ class AdminStatsServiceTest {
                 .id(2L).role(premiumRole).grade("5AP").xp(300).level(4).streakDays(10)
                 .completedLessonIds(List.of("l3")).completedExamIds(List.of())
                 .completedChallengeIds(List.of("c1", "c2")).badges(List.of("b1", "b2"))
+                .provider("LOCAL").emailVerified(false)
                 .createdAt(LocalDateTime.now().minusDays(20))
                 .lastActiveDate(LocalDate.now().toString())
                 .build();
@@ -80,6 +82,16 @@ class AdminStatsServiceTest {
         assertEquals(2, result.getNewUsersLast30Days());
         assertEquals(2, result.getDailyActiveUsers());
         assertEquals(Map.of("l1", 1L, "l2", 1L, "l3", 1L), result.getTopCompletedLessons());
+        assertEquals(Map.of("e1", 1L), result.getTopCompletedExams());
+        assertEquals(Map.of("c1", 1L, "c2", 1L), result.getTopCompletedChallenges());
+        assertEquals(2, result.getActivatedUsers());
+        assertEquals(100.0, result.getActivationRate(), 0.01);
+        assertEquals(0, result.getNeverActiveUsers());
+        assertEquals(1, result.getEmailVerifiedUsers());
+        assertEquals(1, result.getParentEmailSetUsers());
+        assertEquals(1L, result.getProviderDistribution().get("GOOGLE"));
+        assertEquals(1L, result.getProviderDistribution().get("LOCAL"));
+        assertEquals(100.0, result.getStickinessDauMau(), 0.01);
 
         assertEquals(2, result.getPayments().getTotalReceipts());
         assertEquals(1L, result.getPayments().getReceiptsByStatus().get("APPROVED"));

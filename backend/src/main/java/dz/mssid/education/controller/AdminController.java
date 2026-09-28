@@ -42,9 +42,11 @@ public class AdminController {
             @RequestParam(required = false) String actionType,
             @RequestParam(required = false) String outcome,
             @RequestParam(required = false) String actorEmail,
+            @RequestParam(required = false) String excludeActionType,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateFrom,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTo) {
-        return ResponseEntity.ok(adminAuditLogService.getFiltered(actionType, outcome, actorEmail, dateFrom, dateTo, limit));
+        return ResponseEntity.ok(adminAuditLogService.getFiltered(
+                actionType, outcome, actorEmail, dateFrom, dateTo, excludeActionType, limit));
     }
 
     /**

@@ -15,6 +15,7 @@ import java.time.format.DateTimeParseException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -63,15 +64,18 @@ public class AdminStatsService {
         long totalCompletedChallenges = users.stream().mapToLong(u -> u.getCompletedChallengeIds() != null ? u.getCompletedChallengeIds().size() : 0).sum();
         long totalBadgesUnlocked = users.stream().mapToLong(u -> u.getBadges() != null ? u.getBadges().size() : 0).sum();
 
+        LocalDate today = LocalDate.now();
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime sevenDaysAgo = now.minusDays(7);
         LocalDateTime thirtyDaysAgo = now.minusDays(30);
-        long newUsersLast7Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(sevenDaysAgo)).count();
-        long newUsersLast30Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(thirtyDaysAgo)).count();
-
-        LocalDate today = LocalDate.now();
+        LocalDateTime startOfToday = today.atStartOfDay();
         LocalDate sevenDaysAgoDate = today.minusDays(7);
         LocalDate thirtyDaysAgoDate = today.minusDays(30);
+
+        long newUsersLast7Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(sevenDaysAgo)).count();
+        long newUsersLast30Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(thirtyDaysAgo)).count();
+        long newUsersToday = users.stream().filter(u -> u.getCreatedAt() != null && !u.getCreatedAt().isBefore(startOfToday)).count();
+
 
         long dailyActiveUsers = users.stream()
                 .filter(u -> today.equals(parseLastActiveDate(u.getLastActiveDate())))
@@ -99,13 +103,33 @@ public class AdminStatsService {
                 .count();
         double retentionRate30Days = oldEnoughFor30DayWindow.isEmpty() ? 0 : (double) retained30 / oldEnoughFor30DayWindow.size() * 100;
 
-        Map<String, Long> topCompletedLessons = users.stream()
-                .flatMap(u -> (u.getCompletedLessonIds() != null ? u.getCompletedLessonIds() : List.<String>of()).stream())
-                .collect(Collectors.groupingBy(id -> id, Collectors.counting()))
-                .entrySet().stream()
-                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
-                .limit(10)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
+        double stickinessDauMau = monthlyActiveUsers == 0 ? 0 : (double) dailyActiveUsers / monthlyActiveUsers * 100;
+
+        long activatedUsers = users.stream()
+                .filter(u -> u.getCompletedLessonIds() != null && !u.getCompletedLessonIds().isEmpty())
+                .count();
+        double activationRate = totalUsers == 0 ? 0 : (double) activatedUsers / totalUsers * 100;
+
+        long neverActiveUsers = users.stream().filter(u -> parseLastActiveDate(u.getLastActiveDate()) == null).count();
+        long inactive30DaysUsers = users.stream()
+                .filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isBefore(thirtyDaysAgo))
+                .filter(u -> !wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate))
+                .count();
+
+        long emailVerifiedUsers = users.stream().filter(User::isEmailVerified).count();
+        long parentEmailSetUsers = users.stream()
+                .filter(u -> u.getParentEmail() != null && !u.getParentEmail().isBlank())
+                .count();
+
+        Map<String, Long> providerDistribution = users.stream()
+                .collect(Collectors.groupingBy(
+                        u -> u.getProvider() != null && !u.getProvider().isBlank() ? u.getProvider() : "UNKNOWN",
+                        Collectors.counting()
+                ));
+
+        Map<String, Long> topCompletedLessons = topIdCounts(users, User::getCompletedLessonIds, 10);
+        Map<String, Long> topCompletedExams = topIdCounts(users, User::getCompletedExamIds, 10);
+        Map<String, Long> topCompletedChallenges = topIdCounts(users, User::getCompletedChallengeIds, 10);
 
         Map<String, Long> receiptsByStatus = receipts.stream()
                 .collect(Collectors.groupingBy(r -> r.getStatus().name(), Collectors.counting()));
@@ -146,14 +170,35 @@ public class AdminStatsService {
                 .totalBadgesUnlocked(totalBadgesUnlocked)
                 .newUsersLast7Days(newUsersLast7Days)
                 .newUsersLast30Days(newUsersLast30Days)
+                .newUsersToday(newUsersToday)
                 .dailyActiveUsers(dailyActiveUsers)
                 .weeklyActiveUsers(weeklyActiveUsers)
                 .monthlyActiveUsers(monthlyActiveUsers)
                 .retentionRate7Days(retentionRate7Days)
                 .retentionRate30Days(retentionRate30Days)
+                .stickinessDauMau(stickinessDauMau)
+                .activatedUsers(activatedUsers)
+                .activationRate(activationRate)
+                .neverActiveUsers(neverActiveUsers)
+                .inactive30DaysUsers(inactive30DaysUsers)
+                .emailVerifiedUsers(emailVerifiedUsers)
+                .parentEmailSetUsers(parentEmailSetUsers)
+                .providerDistribution(providerDistribution)
                 .topCompletedLessons(topCompletedLessons)
+                .topCompletedExams(topCompletedExams)
+                .topCompletedChallenges(topCompletedChallenges)
                 .payments(payments)
                 .build();
+    }
+
+    private static Map<String, Long> topIdCounts(List<User> users, Function<User, List<String>> idsOf, int limit) {
+        return users.stream()
+                .flatMap(u -> (idsOf.apply(u) != null ? idsOf.apply(u) : List.<String>of()).stream())
+                .collect(Collectors.groupingBy(id -> id, Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .limit(limit)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
     }
 
     /** {@code User.lastActiveDate} is stored as a plain "YYYY-MM-DD" string (see ProgressGuard),
