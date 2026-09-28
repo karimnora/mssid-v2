@@ -88,7 +88,7 @@ describe('Platform-specific installation', () => {
     expect(banner.className).toContain('overflow-x-clip');
     expect(banner.querySelector('.break-words')).toBeTruthy();
     expect(banner.querySelector('.flex-col')).toBeTruthy();
-    expect(screen.getByText('ثبّت لعبة ودروس مَسيد على لوحتك أو هاتفك')).toBeInTheDocument();
+    expect(screen.getByText('ثبّت مَسيد على هاتفك')).toBeInTheDocument();
   });
 });
 

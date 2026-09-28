@@ -37,7 +37,7 @@ export const meta = {
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'لتثبيت التطبيق على جهازك: اضغط على زر المشاركة (Share) ثم اختر "إضافة إلى الشاشة الرئيسية" (Add to Home Screen) 📲',
-  pwaBannerTitle: 'ثبّت لعبة ودروس مَسيد على لوحتك أو هاتفك',
+  pwaBannerTitle: 'ثبّت مَسيد على هاتفك',
   pwaBannerBadge: 'سريع وخفيف 🚀',
   pwaBannerSubtitle: 'الوصول السريع بكبسة واحدة والتعلم بسهولة بدون انقطاع!',
   pwaInstallButton: 'تثبيت التطبيق الآن 🚀',

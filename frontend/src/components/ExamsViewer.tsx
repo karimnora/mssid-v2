@@ -25,6 +25,9 @@ import {
   Check,
 } from 'lucide-react';
 import { formatEducationalText, stripArabicTashkeel } from '../utils/textFormatter';
+import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 
 interface ExamsViewerProps {
   /** Grade selected from the top global navigation bar (1AP to 5AP) */
@@ -104,6 +107,21 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   /** Solutions + timer : 4AP/5AP. Impression du sujet : tous les niveaux qui ont des examens. */
   const showExamTools = currentGrade === '4AP' || currentGrade === '5AP';
   const showPrintButton = currentGrade !== '1AP';
+  const showAudio = currentGrade === '1AP' || currentGrade === '2AP' || currentGrade === '3AP';
+  const [speakingKey, setSpeakingKey] = useState<string | null>(null);
+  const voiceAvailable = useVoiceAvailable('ar-SA');
+  useEffect(() => stopSpeech, []);
+  const handleSpeak = (key: string, text: string) => {
+    if (speakingKey === key) {
+      stopSpeech();
+      setSpeakingKey(null);
+      return;
+    }
+    setSpeakingKey(key);
+    void speakText(text, 'ar-SA', 0.85).then(() => {
+      setSpeakingKey((prev) => (prev === key ? null : prev));
+    });
+  };
 
   const [kindFilter, setKindFilter] = useState<KindFilter>(preferredExamKind(grade));
   const [selectedSubject, setSelectedSubject] = useState<SubjectId | null>(null);
@@ -248,6 +266,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
     return (
       <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+        <VoiceUnavailableBanner visible={showAudio && voiceAvailable === false} />
         {/* Top Controls & Navigation Bar */}
         <div className="flex items-center justify-between flex-wrap gap-3 p-3 bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-2xl shadow-xs">
           <Button
@@ -390,9 +409,22 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   {t(examKindBadgeKey(getExamKind(selectedExam)))}
                 </span>
               </div>
-              <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] tracking-tight font-sans">
-                {renderArabicText(selectedExam.titleAr)}
-              </h1>
+              <div className="flex items-start gap-2 min-w-0">
+                {showAudio && (
+                  <span className="no-print">
+                    <TapSpeakButton
+                      snippetKey="exam-title"
+                      text={renderArabicText(selectedExam.titleAr)}
+                      speakingKey={speakingKey}
+                      onSpeak={handleSpeak}
+                      size="lg"
+                    />
+                  </span>
+                )}
+                <h1 className="text-xl sm:text-2xl font-black text-[var(--app-text)] tracking-tight font-sans">
+                  {renderArabicText(selectedExam.titleAr)}
+                </h1>
+              </div>
               {selectedExam.sourceNoteAr && (
                 <p className="text-xs text-[var(--app-text-muted)] max-w-2xl no-print">{selectedExam.sourceNoteAr}</p>
               )}
@@ -447,13 +479,37 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   className="p-4 sm:p-5 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3 transition-colors"
                 >
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    <h3 className="font-black text-sm text-[var(--brand-blue-dark)]">{ex.titleAr}</h3>
+                    <div className="flex items-center gap-2 min-w-0">
+                      {showAudio && (
+                        <span className="no-print">
+                          <TapSpeakButton
+                            snippetKey={`ex-${idx}-title`}
+                            text={renderArabicText(ex.titleAr)}
+                            speakingKey={speakingKey}
+                            onSpeak={handleSpeak}
+                          />
+                        </span>
+                      )}
+                      <h3 className="font-black text-sm text-[var(--brand-blue-dark)]">{ex.titleAr}</h3>
+                    </div>
                     <Badge variant="xp">{ex.points} نقاط</Badge>
                   </div>
 
                   {/* Exercise Subject Text */}
-                  <div className="text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line bg-[var(--app-card-bg)] p-4 rounded-xl border border-[var(--app-card-border)] shadow-2xs">
-                    {formatEducationalText(renderArabicText(ex.contentAr))}
+                  <div className="flex items-start gap-2 min-w-0">
+                    {showAudio && (
+                      <span className="no-print shrink-0">
+                        <TapSpeakButton
+                          snippetKey={`ex-${idx}-body`}
+                          text={renderArabicText(ex.contentAr)}
+                          speakingKey={speakingKey}
+                          onSpeak={handleSpeak}
+                        />
+                      </span>
+                    )}
+                    <div className="flex-1 text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line bg-[var(--app-card-bg)] p-4 rounded-xl border border-[var(--app-card-border)] shadow-2xs">
+                      {formatEducationalText(renderArabicText(ex.contentAr))}
+                    </div>
                   </div>
 
                   {showExamTools && (
@@ -554,15 +610,39 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
             <div className="p-5 rounded-2xl border border-amber-300/40 bg-amber-500/5 space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
-                <h3 className="font-black text-sm exam-amber-banner text-amber-950">{selectedExam.problemExercise.titleAr}</h3>
+                <div className="flex items-center gap-2 min-w-0">
+                  {showAudio && (
+                    <span className="no-print">
+                      <TapSpeakButton
+                        snippetKey="problem-title"
+                        text={renderArabicText(selectedExam.problemExercise.titleAr)}
+                        speakingKey={speakingKey}
+                        onSpeak={handleSpeak}
+                      />
+                    </span>
+                  )}
+                  <h3 className="font-black text-sm exam-amber-banner text-amber-950">{selectedExam.problemExercise.titleAr}</h3>
+                </div>
                 <span className="text-xs font-black bg-amber-500 text-slate-950 px-3 py-0.5 rounded-full">
                   {selectedExam.problemExercise.points} نقاط كاملة
                 </span>
               </div>
 
               {/* Problem Statement */}
-              <div className="text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line bg-[var(--app-card-bg)] p-4 rounded-xl border border-amber-200/60 shadow-2xs">
-                {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr))}
+              <div className="flex items-start gap-2 min-w-0">
+                {showAudio && (
+                  <span className="no-print shrink-0">
+                    <TapSpeakButton
+                      snippetKey="problem-body"
+                      text={renderArabicText(selectedExam.problemExercise.contentAr)}
+                      speakingKey={speakingKey}
+                      onSpeak={handleSpeak}
+                    />
+                  </span>
+                )}
+                <div className="flex-1 text-xs sm:text-sm text-[var(--app-text)] font-sans leading-relaxed whitespace-pre-line bg-[var(--app-card-bg)] p-4 rounded-xl border border-amber-200/60 shadow-2xs">
+                  {formatEducationalText(renderArabicText(selectedExam.problemExercise.contentAr))}
+                </div>
               </div>
 
               {showExamTools && (
@@ -652,6 +732,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   // ================= VIEW 1 & 2: Grade-driven View + Exam Cards =================
   return (
     <div className="space-y-6 dir-rtl" dir="rtl">
+      <VoiceUnavailableBanner visible={showAudio && voiceAvailable === false} />
       {/* Hero Header with Active Grade Indicator */}
       {/* Plain hex linear-gradient via inline style, not Tailwind's gradient utilities: Tailwind v4
           compiles its palette (and gradient color-interpolation) through oklch(), which silently
@@ -667,12 +748,33 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>{t('heroEyebrow', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}</span>
           </div>
-          <h1 className="text-xl sm:text-3xl font-black font-sans tracking-tight">
-            {t('heroTitle', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            {t('heroSubtitle')}
-          </p>
+          <div className="flex items-center gap-2 min-w-0">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="hero-title"
+                text={t('heroTitle', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+                size="lg"
+              />
+            )}
+            <h1 className="text-xl sm:text-3xl font-black font-sans tracking-tight">
+              {t('heroTitle', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
+            </h1>
+          </div>
+          <div className="flex items-start gap-2 min-w-0">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="hero-sub"
+                text={t('heroSubtitle')}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              {t('heroSubtitle')}
+            </p>
+          </div>
           {gradeExams.length > 0 && (
             <p className="text-xs font-black text-emerald-200 pt-1">
               {t('doneOfTotal', { done: completedCount, total: gradeExams.length })}
@@ -687,10 +789,30 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           data-exam-layout="empty"
         >
           <FileText className="w-12 h-12 mx-auto text-[var(--app-text-muted)] opacity-40" />
-          <h2 className="text-lg font-black text-[var(--app-text)]">{t('grade1apEmptyTitle')}</h2>
-          <p className="text-sm text-[var(--app-text-muted)] font-bold max-w-md mx-auto leading-relaxed">
-            {t('grade1apEmptyDesc')}
-          </p>
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="empty-title"
+                text={t('grade1apEmptyTitle')}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <h2 className="text-lg font-black text-[var(--app-text)]">{t('grade1apEmptyTitle')}</h2>
+          </div>
+          <div className="flex items-start justify-center gap-2 max-w-md mx-auto">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="empty-desc"
+                text={t('grade1apEmptyDesc')}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <p className="text-sm text-[var(--app-text-muted)] font-bold leading-relaxed">
+              {t('grade1apEmptyDesc')}
+            </p>
+          </div>
           {onOpenCourses && (
             <motion.button
               type="button"
@@ -775,9 +897,19 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
       {/* Step 1: Subject Selection Grid for Current Grade */}
       <div className="space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
-            {selectedSubject ? t('changeSubjectLabel') : t('subjectsOfGrade', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
-          </h2>
+          <div className="flex items-center gap-2 min-w-0">
+            {showAudio && (
+              <TapSpeakButton
+                snippetKey="subjects-heading"
+                text={selectedSubject ? t('changeSubjectLabel') : t('subjectsOfGrade', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
+                speakingKey={speakingKey}
+                onSpeak={handleSpeak}
+              />
+            )}
+            <h2 className="text-sm sm:text-base font-black text-[var(--app-text)]">
+              {selectedSubject ? t('changeSubjectLabel') : t('subjectsOfGrade', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
+            </h2>
+          </div>
           {selectedSubject && (
             <button
               onClick={() => setSelectedSubject(null)}
@@ -794,20 +926,31 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
             const isChosen = selectedSubject === subj.id;
 
             return (
-              <button
-                key={subj.id}
-                data-exam-subject={subj.id}
-                onClick={() => setSelectedSubject(isChosen ? null : subj.id)}
-                className={`rounded-2xl p-4 min-h-24 text-white shadow-xs cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
-                  isChosen ? 'ring-4 ring-[var(--brand-blue)] scale-[1.03] shadow-md' : 'hover:scale-[1.02] active:scale-[0.98]'
-                }`}
-              >
-                <span className="text-2xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
-                <span className="font-black text-xs leading-tight">{subj.nameAr}</span>
-                <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
-                  {count} مواضيع
-                </span>
-              </button>
+              <div key={subj.id} className="relative">
+                {showAudio && (
+                  <div className="absolute top-1 start-1 z-10">
+                    <TapSpeakButton
+                      snippetKey={`subj-${subj.id}`}
+                      text={subj.nameAr}
+                      speakingKey={speakingKey}
+                      onSpeak={handleSpeak}
+                    />
+                  </div>
+                )}
+                <button
+                  data-exam-subject={subj.id}
+                  onClick={() => setSelectedSubject(isChosen ? null : subj.id)}
+                  className={`w-full rounded-2xl p-4 min-h-24 text-white shadow-xs cursor-pointer bg-gradient-to-br ${subj.color} flex flex-col items-center justify-center gap-1.5 text-center transition-all ${
+                    isChosen ? 'ring-4 ring-[var(--brand-blue)] scale-[1.03] shadow-md' : 'hover:scale-[1.02] active:scale-[0.98]'
+                  }`}
+                >
+                  <span className="text-2xl leading-none">{SUBJECT_EMOJI[subj.id] || '📘'}</span>
+                  <span className="font-black text-xs leading-tight">{subj.nameAr}</span>
+                  <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
+                    {count} مواضيع
+                  </span>
+                </button>
+              </div>
             );
           })}
         </div>
@@ -878,9 +1021,19 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                     </div>
                   </div>
 
-                  <h3 className="font-black text-sm leading-relaxed text-[var(--app-text)]">
-                    {renderArabicText(exam.titleAr)}
-                  </h3>
+                  <div className="flex items-start gap-2 min-w-0">
+                    {showAudio && (
+                      <TapSpeakButton
+                        snippetKey={`card-${exam.id}`}
+                        text={renderArabicText(exam.titleAr)}
+                        speakingKey={speakingKey}
+                        onSpeak={handleSpeak}
+                      />
+                    )}
+                    <h3 className="flex-1 font-black text-sm leading-relaxed text-[var(--app-text)]">
+                      {renderArabicText(exam.titleAr)}
+                    </h3>
+                  </div>
 
                   <div className="flex items-center justify-between text-xs text-[var(--app-text-muted)]">
                     <span>{subj?.nameAr}</span>

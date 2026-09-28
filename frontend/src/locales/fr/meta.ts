@@ -35,7 +35,7 @@ export const meta: typeof metaAr = {
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'Pour installer l\'application sur ton appareil : appuie sur le bouton Partager, puis choisis "Sur l\'écran d\'accueil" (Add to Home Screen) 📲',
-  pwaBannerTitle: 'Installe les jeux et les cours Mssid sur ta tablette ou ton téléphone',
+  pwaBannerTitle: 'Installe Mssid sur ton téléphone',
   pwaBannerBadge: 'Rapide et léger 🚀',
   pwaBannerSubtitle: 'Accès rapide en un seul geste et apprentissage facile, sans interruption !',
   pwaInstallButton: "Installer l'application maintenant 🚀",

@@ -1,9 +1,19 @@
 import React from 'react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ExamsViewer } from './ExamsViewer';
 import { LocaleProvider } from '../context/LocaleContext';
+
+const voiceAvailable = vi.hoisted(() => ({ value: true as boolean | null }));
+vi.mock('../utils/speech', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../utils/speech')>();
+  return {
+    ...actual,
+    speakText: vi.fn().mockResolvedValue(undefined),
+    useVoiceAvailable: () => voiceAvailable.value,
+  };
+});
 
 const renderExams = (grade: '1AP' | '2AP' | '3AP' | '5AP', onOpenCourses = vi.fn()) =>
   render(
@@ -13,6 +23,9 @@ const renderExams = (grade: '1AP' | '2AP' | '3AP' | '5AP', onOpenCourses = vi.fn
   );
 
 describe('ExamsViewer bank', () => {
+  beforeEach(() => {
+    voiceAvailable.value = true;
+  });
   it('shows the subject bank on 2AP instead of a single next-exam CTA', async () => {
     renderExams('2AP');
     expect(document.querySelector('[data-exam-layout="grid"]')).toBeTruthy();
@@ -115,5 +128,36 @@ describe('ExamsViewer bank', () => {
     await userEvent.click(document.querySelector('[data-exam-trimester="2"]') as HTMLElement);
     expect(screen.getAllByText('فتح ورقة الامتحان').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText(/النبات وغذاء الحيوان/)).toBeInTheDocument();
+  });
+
+  it('gives 1AP–3AP listen buttons on the bank, not 5AP', () => {
+    const young = renderExams('2AP');
+    expect(screen.getAllByRole('button', { name: 'استمع' }).length).toBeGreaterThan(0);
+    young.unmount();
+    renderExams('5AP');
+    expect(screen.queryByRole('button', { name: 'استمع' })).not.toBeInTheDocument();
+  });
+
+  it('lets 1AP hear why the exam bank is empty', () => {
+    renderExams('1AP');
+    expect(screen.getAllByRole('button', { name: 'استمع' }).length).toBeGreaterThan(0);
+  });
+
+  it('reads the open 3AP paper title and exercise, without printing the speaker', async () => {
+    renderExams('3AP');
+    await userEvent.click(document.querySelector('[data-exam-subject="math"]') as HTMLElement);
+    await userEvent.click(screen.getAllByText('فتح ورقة الامتحان')[0]);
+    expect(document.querySelector('[data-tap-speak="exam-title"]')).toBeTruthy();
+    expect(document.querySelector('[data-tap-speak="exam-title"]')?.closest('.no-print')).toBeTruthy();
+    expect(document.querySelector('[data-tap-speak="ex-0-body"]')).toBeTruthy();
+  });
+
+  it('warns 2AP when no TTS voice is installed, not 5AP', () => {
+    voiceAvailable.value = false;
+    const young = renderExams('2AP');
+    expect(screen.getByText(/القراءة الصوتية غير متوفرة/)).toBeInTheDocument();
+    young.unmount();
+    renderExams('5AP');
+    expect(screen.queryByText(/القراءة الصوتية غير متوفرة/)).not.toBeInTheDocument();
   });
 });
