@@ -102,7 +102,7 @@ describe('mobileTabForView / isSafeLessonId', () => {
   it('maps views onto the four mobile tabs', () => {
     expect(mobileTabForView({ name: 'home' })).toBe('home');
     expect(mobileTabForView({ name: 'lesson', lessonId: 'x' })).toBe('courses');
-    expect(mobileTabForView({ name: 'exams' })).toBe('courses');
+    expect(mobileTabForView({ name: 'exams' })).toBe('exercises');
     expect(mobileTabForView({ name: 'labs', toolId: 'geometry' })).toBe('games');
     expect(mobileTabForView({ name: 'challenges' })).toBe('games');
   });

@@ -117,7 +117,7 @@ describe('mobile footer tab follows the open view', () => {
       result.current.goHome();
       result.current.handleSelectPole('exams');
     });
-    expect(result.current.mobileTab).toBe('courses');
+    expect(result.current.mobileTab).toBe('exercises');
 
     act(() => {
       result.current.goHome();

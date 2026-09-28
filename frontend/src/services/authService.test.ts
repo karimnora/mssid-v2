@@ -132,10 +132,13 @@ describe('AuthService - Authentication & RBAC Service Unit Tests', () => {
   });
 
   describe('Payment Receipts & Verification Logic', () => {
-    it('initializes default payment receipts when empty', () => {
-      const receipts = AuthService.getReceipts();
-      expect(receipts.length).toBeGreaterThan(0);
-      expect(receipts[0].userEmail).toBe('dev-free@example.test');
+    it('falls back to seed receipts when localStorage holds invalid JSON or a non-array', () => {
+      localStorage.setItem('mssid_payment_receipts', '{not-json');
+      expect(AuthService.getReceipts().length).toBeGreaterThan(0);
+
+      localStorage.setItem('mssid_payment_receipts', JSON.stringify({ broken: true }));
+      expect(Array.isArray(AuthService.getReceipts())).toBe(true);
+      expect(AuthService.getReceipts()[0].userEmail).toBe('dev-free@example.test');
     });
 
     it('submits a new CCP/BaridiMob receipt successfully (Happy Path)', () => {

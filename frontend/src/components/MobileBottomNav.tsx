@@ -11,6 +11,8 @@ interface MobileBottomNavProps {
   activeTab?: 'home' | 'courses' | 'exercises' | 'games';
   onSelectTab: (tab: 'home' | 'courses' | 'exercises' | 'games') => void;
   onOpenAiTutor: () => void;
+  /** When false (admin `enableAITutor` off), the fox entry is hidden. Defaults on. */
+  showAiTutor?: boolean;
   onOpenProfile: () => void;
   onClearSelectedLesson: () => void;
   profileOpen?: boolean;
@@ -23,6 +25,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   activeTab,
   onSelectTab,
   onOpenAiTutor,
+  showAiTutor = true,
   onOpenProfile,
   onClearSelectedLesson,
   profileOpen = false,
@@ -71,17 +74,20 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       {tabButton('home', <Home className="w-5 h-5" />, t('home'))}
       {tabButton('courses', <BookOpen className="w-5 h-5" />, t('courses'))}
 
+      {showAiTutor && (
       <div className="flex flex-col items-center flex-1">
         <button
           type="button"
           onClick={onOpenAiTutor}
           className={`kids-nav-ai kids-pop w-[60px] h-[60px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 border-[var(--app-footer-bg)] cursor-pointer`}
           title={t('aiTutor')}
+          aria-label={t('aiTutor')}
         >
           <span aria-hidden>🦊</span>
         </button>
         <span className="text-[11px] font-extrabold text-[var(--kids-coral-2)] mt-0.5">{t('aiTutorShort')}</span>
       </div>
+      )}
 
       {tabButton('games', <Gamepad2 className="w-5 h-5" />, t('playTab'))}
       <button

@@ -201,7 +201,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                 isAnswered
                   ? 'border-[var(--brand-emerald)]/40 bg-[var(--brand-emerald)]/5'
                   : hasAttempted
-                  ? 'border-[var(--brand-coral)]/40 bg-[var(--brand-coral)]/5'
+                  ? 'border-amber-300/70 bg-[#FFF8E7]'
                   : 'border-[var(--app-card-border)] bg-[var(--app-card-bg)]'
               }`}
             >
@@ -235,7 +235,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                       className={`text-[11px] font-black px-3 py-1 rounded-full border flex items-center gap-1 ${
                         isUserCorrect
                           ? 'bg-[var(--brand-emerald)]/15 text-[var(--brand-emerald-dark)] border-[var(--brand-emerald)]/40'
-                          : 'bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border-[var(--brand-coral)]/40'
+                          : 'bg-amber-50 text-amber-900 border-amber-200'
                       }`}
                     >
                       {isUserCorrect ? (
@@ -268,7 +268,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                   } else if (hasAttempted && isOptSelected) {
                     // Just picked wrong: flash only this option red — the other options stay live
                     // and unrevealed so the retry is a real retry, not a giveaway.
-                    btnStyle = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)] font-bold';
+                    btnStyle = 'bg-amber-50 border-amber-300 text-slate-800 font-bold';
                   }
 
                   return (
@@ -294,7 +294,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                             isAnswered && opt.isCorrect
                               ? 'bg-[var(--brand-emerald)] text-white border-[var(--brand-emerald-dark)]'
                               : hasAttempted && isOptSelected && !isAnswered
-                              ? 'bg-[var(--brand-coral)] text-white border-[var(--brand-coral-dark)]'
+                              ? 'bg-amber-400 text-slate-900 border-amber-500'
                               : isOptSelected
                               ? 'bg-[var(--brand-blue)] text-white border-[var(--brand-blue-dark)]'
                               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]'
@@ -309,7 +309,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                         <CheckCircle2 className="w-4 h-4 text-[var(--brand-emerald)] shrink-0" />
                       )}
                       {hasAttempted && isOptSelected && !isAnswered && (
-                        <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />
+                        <XCircle className="w-4 h-4 text-amber-800 shrink-0" />
                       )}
                     </button>
                     </div>
@@ -365,12 +365,18 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
 
       {!quizComplete ? (
         <div className="text-xs font-bold text-[var(--app-text-muted)] bg-[var(--app-card-subtle)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-center">
-          <span dir="ltr">{answeredCount} / {totalQuestions}</span>
-          {playful
-            ? totalQuestions <= 1
-              ? ' اِخْتَرْ جَوَاباً'
-              : ' أَسْئِلَة'
-            : ' أسئلة أُجيب عنها — تابع الإجابة لرؤية تقدمك مباشرة'}
+          {playful ? (
+            <>
+              أَجَبْتُ <span dir="ltr">{answeredCount}</span> مِن{' '}
+              <span dir="ltr">{totalQuestions}</span>
+              {totalQuestions <= 1 ? ' — اِخْتَرْ جَوَاباً' : ''}
+            </>
+          ) : (
+            <>
+              أُجيب عن <span dir="ltr">{answeredCount}</span> من{' '}
+              <span dir="ltr">{totalQuestions}</span> أسئلة — تابع الإجابة لرؤية تقدمك مباشرة
+            </>
+          )}
         </div>
       ) : playful ? null : (
         <div className="flex items-center gap-2 text-[var(--brand-emerald-dark)] font-bold text-xs bg-[var(--brand-emerald)]/10 p-3.5 rounded-xl border border-[var(--brand-emerald)]/30 w-full justify-between flex-wrap">

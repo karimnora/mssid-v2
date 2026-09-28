@@ -60,4 +60,16 @@ describe('SettingsModal', () => {
     fireEvent.click(screen.getByRole('button', { name: /لوحة تحكم الإدارة|Tableau de bord d'administration/i }));
     expect(onOpenAdminConsole).toHaveBeenCalledTimes(1);
   });
+
+  it('names the close button for screen readers', () => {
+    renderModal(
+      <SettingsModal
+        isOpen={true}
+        onClose={vi.fn()}
+        tashkeelEnabled={false}
+        onToggleTashkeel={vi.fn()}
+      />
+    );
+    expect(screen.getByRole('button', { name: 'إغلاق' })).toBeInTheDocument();
+  });
 });

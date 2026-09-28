@@ -46,6 +46,19 @@ describe('ExamsViewer bank', () => {
     expect(document.querySelector('[data-print-mode="subject"]')).toBeTruthy();
   });
 
+  it('sets print mode to corrige then calls window.print', async () => {
+    const printSpy = vi.spyOn(window, 'print').mockImplementation(() => {});
+    renderExams('5AP');
+    await userEvent.click(document.querySelector('[data-exam-subject="math"]') as HTMLElement);
+    await userEvent.click(screen.getAllByText('فتح ورقة الامتحان')[0]);
+    await userEvent.click(screen.getByText('طباعة التصحيح'));
+    await vi.waitFor(() => {
+      expect(document.querySelector('[data-print-mode="corrige"]')).toBeTruthy();
+      expect(printSpy).toHaveBeenCalled();
+    });
+    printSpy.mockRestore();
+  });
+
   it('marks the open 3AP paper as printable', async () => {
     renderExams('3AP');
     await userEvent.click(document.querySelector('[data-exam-subject="math"]') as HTMLElement);

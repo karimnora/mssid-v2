@@ -168,3 +168,22 @@ describe('ProfileModal email verification reminder', () => {
     expect(screen.getByRole('button', { name: /إعادة الإرسال بعد \d+ ثانية/ })).toBeDisabled();
   });
 });
+
+describe('ProfileModal progress reset', () => {
+  it('opens the parent gate before resetting progress', () => {
+    const onResetProgress = vi.fn();
+    renderModal(
+      <ProfileModal
+        isOpen={true}
+        onClose={vi.fn()}
+        userProfile={baseUserProfile}
+        authUser={baseAuthUser}
+        onResetProgress={onResetProgress}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'إعادة تعيين التقدم' }));
+    expect(onResetProgress).not.toHaveBeenCalled();
+    expect(screen.getByRole('dialog', { name: 'بوابة الوالدين' })).toBeInTheDocument();
+  });
+});

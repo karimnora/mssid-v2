@@ -444,7 +444,8 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
               <span>خطوات الفهم والمرحلية التفاعلية</span>
             </h3>
             <span className="text-xs font-bold text-slate-500">
-              الخطوة {activeStepIndex + 1} من {content.steps.length}
+              الخطوة <span dir="ltr">{activeStepIndex + 1}</span> من{' '}
+              <span dir="ltr">{content.steps.length}</span>
             </span>
           </div>
 

@@ -1,4 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { COURSES_DATA } from './coursesData';
 import { OFFICIAL_EXAMS_DATA } from './examsData';
 
@@ -52,3 +55,24 @@ describe('Printability — official exams', () => {
     }
   });
 });
+
+describe('Print CSS — exam and fiche jobs must not go blank', () => {
+  const css = readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../index.css'), 'utf8');
+
+  it('hides header/main/footer only when printing a certificate overlay', () => {
+    expect(css).toContain('body:has(.certificate-print-modal) main');
+    expect(css).not.toMatch(/\n  header,\n  main,\n  footer \{\n    display: none/);
+  });
+
+  it('keeps the math corrige two-column grid instead of forcing every child to block', () => {
+    expect(css).toContain('[data-exam-two-col]');
+    expect(css).not.toContain('[data-print-mode="corrige"] .print-corrige *');
+  });
+
+  it('flattens overlay worksheets so preschool print is not clipped or blank', () => {
+    expect(css).toContain('body:has(.sheet-print-modal) > :not(.sheet-print-modal)');
+    expect(css).toContain('.sheet-print-modal .printable-sheet');
+    expect(css).toMatch(/\.sheet-print-modal \.printable-sheet \{[\s\S]*position: static/);
+  });
+});
+

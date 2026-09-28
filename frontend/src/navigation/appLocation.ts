@@ -166,8 +166,11 @@ export function mobileTabForView(view: AppView): MobileTab {
       return 'home';
     case 'courses':
     case 'lesson':
-    case 'exams':
       return 'courses';
+    case 'exams':
+      // No exams tab in the 4-item bar — map to the unused 'exercises' slot so الدروس
+      // is not shown as the current page while the child is in examens.
+      return 'exercises';
     case 'challenges':
     case 'labs':
       return 'games';

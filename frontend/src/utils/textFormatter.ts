@@ -37,6 +37,11 @@ export function isolateMathRuns(text: string): string {
   return text.replace(MATH_RUN, (run) => (HAS_OPERATOR.test(run) ? `${LRI}${run}${PDI}` : run));
 }
 
+/** "2 / 4" that cannot visually reverse to "4 / 2" inside a surrounding RTL sentence. */
+export function formatProgressCount(current: number, total: number): string {
+  return `${LRI}${current} / ${total}${PDI}`;
+}
+
 export function formatEducationalText(text: string | undefined | null, options?: { hideTashkeel?: boolean }): string {
   if (!text) return '';
 

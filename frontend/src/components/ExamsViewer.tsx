@@ -490,17 +490,21 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
                   <div className={`print-corrige ${isSolVisible && showExamTools ? '' : 'print-corrige--screen-hidden'}`}>
                     {selectedExam.subject === 'math' && ex.operationsAr ? (
-                      <div className="print-corrige-box grid grid-cols-2 gap-2 p-3 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans border-2 border-[#E7E2D7]" dir="rtl">
-                        <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1">
-                          <p className="text-[11px] font-extrabold text-[var(--brand-blue)]">العمليات</p>
-                          <div className="whitespace-pre-line leading-relaxed">
-                            {formatEducationalText(ex.operationsAr)}
-                          </div>
-                        </div>
-                        <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1">
+                      <div
+                        className="print-corrige-box grid grid-cols-2 gap-2 p-3 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans border-2 border-[#E7E2D7]"
+                        style={{ direction: 'ltr' }}
+                        data-exam-two-col="true"
+                      >
+                        <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1" dir="rtl">
                           <p className="text-[11px] font-extrabold text-[var(--brand-emerald)]">الحل</p>
                           <div className="whitespace-pre-line leading-relaxed">
                             {formatEducationalText(ex.solutionAr)}
+                          </div>
+                        </div>
+                        <div className="border-2 border-[#E7E2D7] rounded-xl p-3 space-y-1" dir="rtl">
+                          <p className="text-[11px] font-extrabold text-[var(--brand-blue)]">العمليات</p>
+                          <div className="whitespace-pre-line leading-relaxed font-mono" dir="ltr">
+                            {formatEducationalText(ex.operationsAr)}
                           </div>
                         </div>
                       </div>

@@ -10,6 +10,20 @@ export interface QuizFeedback {
 }
 
 const FALLBACK_AR = 'الإجابة الصحيحة تم اختيارها استناداً لقاعدة الدرس الذهبية.';
+const GENERIC_EXPLANATION = /^(نعم|لا|صحيح!?|خطأ!?|أحسنت!?|هذا صحيح\.?|هذا خطأ\.?)$/;
+
+/** Skip one-word / placeholder explanations so the child sees a real reason, not «نعم». */
+export function isUsefulExplanation(text: string | undefined): text is string {
+  if (!text) return false;
+  const trimmed = text.trim();
+  if (trimmed.length < 12) return false;
+  if (trimmed === FALLBACK_AR) return false;
+  return !GENERIC_EXPLANATION.test(trimmed);
+}
+
+function pickExplanation(...candidates: Array<string | undefined>): string | undefined {
+  return candidates.find(isUsefulExplanation);
+}
 
 export function getQuizFeedback(
   question: QuizQuestion,
@@ -24,15 +38,23 @@ export function getQuizFeedback(
   if (selected.isCorrect) {
     return {
       isCorrect: true,
-      primaryAr: selected.explanationAr || correct?.explanationAr || FALLBACK_AR,
+      primaryAr:
+        pickExplanation(selected.explanationAr, correct?.explanationAr, question.hintAr) ||
+        (correct?.textAr
+          ? `الجواب الصحيح هو: ${correct.textAr}. راجِع قاعدة الدرس لتتأكد من السبب.`
+          : FALLBACK_AR),
       primaryLabelAr: 'التفسير والشرح العلمي للحل:',
     };
   }
 
   return {
     isCorrect: false,
-    primaryAr: selected.explanationAr || FALLBACK_AR,
-    correctAr: correct?.explanationAr,
+    primaryAr:
+      pickExplanation(selected.explanationAr, question.hintAr) ||
+      `هذا الخيار («${selected.textAr}») غير مناسب. حاول مرة أخرى اعتماداً على قاعدة الدرس.`,
+    correctAr:
+      pickExplanation(correct?.explanationAr, question.hintAr) ||
+      (correct?.textAr ? `الجواب الصحيح هو: ${correct.textAr}` : undefined),
     primaryLabelAr: 'لِمَاذَا هَذَا الجَوَابُ غَيْرُ مُنَاسِبٍ؟',
   };
 }

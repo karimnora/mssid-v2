@@ -316,7 +316,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
 
           <div className="flex items-center gap-3 self-end sm:self-center">
             <div className="text-center bg-slate-50 dark:bg-slate-800/90 rounded-2xl px-5 py-2.5 border border-slate-100 dark:border-slate-700/60 shadow-xs">
-              <span className="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-tight">
+              <span dir="ltr" className="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-tight">
                 {activeTermCompleted} / {activeTermLessons.length}
               </span>
               <span className="text-[11px] font-extrabold text-[var(--app-text-muted)]">

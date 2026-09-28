@@ -26,4 +26,27 @@ describe('getQuizFeedback', () => {
     expect(feedback?.primaryAr).toContain('النصف');
     expect(feedback?.correctAr).toBeUndefined();
   });
+
+  it('skips one-word explanations and names the chosen option instead', () => {
+    const thin: QuizQuestion = {
+      id: 'q-thin',
+      questionAr: 'هل 2 + 2 = 4؟',
+      hintAr: 'اجمع الوحدات: اثنان زائد اثنين يساوي أربعة.',
+      options: [
+        { id: 'a', textAr: 'نعم', isCorrect: true, explanationAr: 'نعم' },
+        { id: 'b', textAr: 'لا', isCorrect: false, explanationAr: 'لا' },
+      ],
+    };
+    const wrong = getQuizFeedback(thin, 'b');
+    expect(wrong?.primaryAr).not.toBe('لا');
+    expect(wrong?.primaryAr).toContain('اجمع الوحدات');
+
+    const right = getQuizFeedback(thin, 'a');
+    expect(right?.primaryAr).toContain('اجمع الوحدات');
+
+    const noHint: QuizQuestion = { ...thin, hintAr: undefined };
+    const wrongNoHint = getQuizFeedback(noHint, 'b');
+    expect(wrongNoHint?.primaryAr).toContain('غير مناسب');
+    expect(wrongNoHint?.primaryAr).toContain('لا');
+  });
 });

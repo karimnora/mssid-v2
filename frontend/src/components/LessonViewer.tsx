@@ -9,7 +9,7 @@ import { LoadingFallback } from './LoadingFallback';
 import { renderTextWithMath } from './MathExpression';
 import { Button, Card, Badge } from './ui';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
-import { stripArabicTashkeel } from '../utils/textFormatter';
+import { stripArabicTashkeel, formatProgressCount } from '../utils/textFormatter';
 import {
   BookOpen,
   ArrowRight,
@@ -292,7 +292,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   }
 
   return (
-    <div className="space-y-4 sm:space-y-6 dir-rtl overflow-x-hidden" dir="rtl">
+    <div className="space-y-4 sm:space-y-6 dir-rtl overflow-x-clip" dir="rtl">
       <div className={isPlayful1AP ? 'hidden sm:block' : undefined}>
       <CourseBreadcrumb
         grade={grade}
@@ -316,7 +316,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
           {allLessons.length > 0 && currentIndex >= 0 && (
             <Badge variant="info">
-              <span dir="ltr">{currentIndex + 1} / {allLessons.length}</span>
+              <span dir="ltr">{formatProgressCount(currentIndex + 1, allLessons.length)}</span>
               <span>{isPlayful1AP ? 'دَرْس' : 'الدرس'}</span>
             </Badge>
           )}
@@ -597,7 +597,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xs font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
-              الخطوة <span dir="ltr">{currentStepIndex + 1} / {availableSteps.length}</span>
+              الخطوة <span dir="ltr">{currentStepIndex + 1}</span> من <span dir="ltr">{availableSteps.length}</span>
             </span>
           </div>
         </div>
@@ -642,7 +642,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={tabTransition}
-          className={isCompactGrade ? 'pb-28 md:pb-8 min-w-0' : 'min-w-0'}
+          className="pb-32 md:pb-8 min-w-0"
         >
           {activeTab === 'explanation' && (
             isPlayful1AP ? (

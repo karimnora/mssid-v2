@@ -4,8 +4,6 @@ import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { incrementDailyObjective } from '../utils/dailyObjective';
 import { applyDidouGoldBonus } from '../utils/didouCompanion';
-import { getStoredLocale } from '../localePreference';
-import { locales } from '../locales';
 
 /** Back-fills fields added after a profile was first saved to localStorage, and updates the daily streak. */
 export function normalizeUserProfile(raw: UserProfile): UserProfile {
@@ -255,15 +253,12 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   }, []);
 
   const handleResetProgress = () => {
-    if (window.confirm(locales[getStoredLocale()].strings.navigation.confirmResetProgress)) {
-      setUserProfile({
-        ...createFreshGuestProfile(userProfile.grade),
-        name: userProfile.name,
-        tashkeelEnabled: userProfile.tashkeelEnabled ?? false,
-      });
-      return true;
-    }
-    return false;
+    setUserProfile({
+      ...createFreshGuestProfile(userProfile.grade),
+      name: userProfile.name,
+      tashkeelEnabled: userProfile.tashkeelEnabled ?? false,
+    });
+    return true;
   };
 
   const handleUpdateProfileName = (newName: string) => {

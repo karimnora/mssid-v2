@@ -136,6 +136,7 @@ export default function App() {
   const enableTrimesterPaywall = useFeatureFlag('enableTrimesterPaywall');
   const enablePaymentsFlag = useFeatureFlag('enablePayments');
   const curriculumReviewGate = useFeatureFlag('curriculumReviewGate');
+  const enableAITutor = useFeatureFlag('enableAITutor');
 
   const isSubjectVisible = (s: SubjectInfo): boolean =>
     isSubjectFeatureEnabled(s, {
@@ -226,6 +227,7 @@ export default function App() {
   );
 
   const openAiTutor = () => {
+    if (!enableAITutor) return;
     if (!authUser) {
       modals.openAuth('login', 'المعلّم الذكي متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ معه! 🦊');
       return;
@@ -475,7 +477,7 @@ export default function App() {
                 MobileBottomNav, whose whole nav is `md:hidden`, so without this the AI tutor was
                 completely unreachable on a browser wide enough to hide that nav (any real desktop
                 visit, not just the Android app). Same exams/challenges exclusion as Didou above. */}
-            {nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
+            {enableAITutor && nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
               <button
                 type="button"
                 onClick={openAiTutor}
@@ -600,6 +602,7 @@ export default function App() {
         }}
         onClearSelectedLesson={() => nav.setSelectedLesson(null)}
         onOpenAiTutor={openAiTutor}
+        showAiTutor={enableAITutor}
         onOpenProfile={() => modals.setIsProfileModalOpen(true)}
         profileOpen={modals.isProfileModalOpen}
         theme={headerTheme}

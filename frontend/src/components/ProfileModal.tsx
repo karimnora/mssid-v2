@@ -90,6 +90,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
   const [showDeleteParentGate, setShowDeleteParentGate] = useState(false);
+  const [showResetParentGate, setShowResetParentGate] = useState(false);
 
   // Parent Gate sits after the two-step confirm above, right before the actual DELETE call — the
   // last point before the action is irreversible.
@@ -426,7 +427,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         <div className="bg-[#FFF8E7] border-t-2 border-[#E7E2D7] p-4 shrink-0 space-y-2.5">
           <div className="flex items-center justify-between gap-3">
             <button
-              onClick={onResetProgress}
+              type="button"
+              onClick={() => setShowResetParentGate(true)}
               className="text-sm font-extrabold text-[var(--brand-coral)] flex items-center gap-1 cursor-pointer min-h-[var(--hit)]"
             >
               <RefreshCw className="w-4 h-4" />
@@ -473,6 +475,14 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       isOpen={showDeleteParentGate}
       onClose={() => setShowDeleteParentGate(false)}
       onVerified={performAccountDeletion}
+    />
+    <ParentGateModal
+      isOpen={showResetParentGate}
+      onClose={() => setShowResetParentGate(false)}
+      onVerified={() => {
+        setShowResetParentGate(false);
+        onResetProgress();
+      }}
     />
     </>
   );

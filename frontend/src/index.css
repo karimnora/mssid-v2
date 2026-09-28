@@ -553,21 +553,44 @@ body {
     visibility: hidden !important;
   }
 
-  /* Certificates render inside a full-screen fixed modal overlay above the app shell. The
-     header/main/footer stay in the DOM (just visibility:hidden, not removed from layout), and
-     `position: fixed` on the overlay makes Chrome repeat it on every generated page — combined,
-     that inflates the print job to several extra blank/duplicate pages. Hiding the app shell and
-     neutralizing any overlay marked `.certificate-print-modal` collapses the document back down
-     to exactly the certificate's own single page.
-     All certificates print in portrait, matching the `@page` above: `@page { size: A4 landscape }`
-     was tried for the wider Honor Studio diplomas, but Android/mobile print pipelines routinely
-     ignore CSS page-orientation hints (confirmed on-device) and fall back to portrait anyway — so
-     rather than depend on that, the certificate itself reflows to fit a portrait page (see the
-     `print:` variants on HonorCertificatesStudioModal's certificate stage). */
-  header,
-  main,
-  footer {
+  /* Certificates render inside a full-screen overlay *outside* `<main>`. Hiding the app shell
+     stops Chrome from repeating that fixed overlay on every generated page.
+     Do NOT hide `main` on every print: exam papers and revision fiches live *inside* `<main>`,
+     and `display: none` on an ancestor would blank the page even if `.printable-sheet` is
+     `visibility: visible`. Scope the hide to a certificate job only. */
+  body:has(.certificate-print-modal) header,
+  body:has(.certificate-print-modal) main,
+  body:has(.certificate-print-modal) footer {
     display: none !important;
+  }
+  /* Preschool (and other overlay) worksheets are portaled onto `body`. Hide the React root so
+     the hub behind the modal does not occupy blank A4 pages, then flatten the overlay itself
+     — same clip trap as certificates: `fixed` + `overflow-hidden` + `max-h-[94vh]` would
+     otherwise slice `.printable-sheet { position: absolute }` down to a sliver. */
+  body:has(.sheet-print-modal) > :not(.sheet-print-modal) {
+    display: none !important;
+  }
+  .sheet-print-modal {
+    position: static !important;
+    inset: auto !important;
+    padding: 0 !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    display: block !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    transform: none !important;
+  }
+  .sheet-print-modal .printable-sheet {
+    position: static !important;
+    inset: auto !important;
+    margin: 0 auto !important;
+  }
+  .sheet-print-modal * {
+    overflow: visible !important;
+    max-height: none !important;
+    transform: none !important;
   }
   .certificate-print-modal {
     position: static !important;
@@ -598,10 +621,15 @@ body {
     display: block !important;
     visibility: visible !important;
   }
-  .printable-sheet[data-print-mode="corrige"] .print-corrige,
-  .printable-sheet[data-print-mode="corrige"] .print-corrige * {
+  .printable-sheet[data-print-mode="corrige"] .print-corrige {
     display: block !important;
     visibility: visible !important;
+  }
+  /* Keep الحل | العمليات as a 2-col grid on paper. Forcing every corrige descendant to
+     `display: block` used to flatten that grid into a single column. */
+  .printable-sheet[data-print-mode="corrige"] [data-exam-two-col] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
   }
   .printable-sheet[data-print-mode="corrige"] .print-corrige-box {
     background: #ffffff !important;

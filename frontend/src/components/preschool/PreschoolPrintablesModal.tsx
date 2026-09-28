@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import {
   PRINTABLE_WORKSHEETS,
@@ -304,15 +305,15 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
 
   const handlePrint = () => window.print();
 
-  return (
-    <div dir={dir} className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm">
+  return createPortal(
+    <div dir={dir} className="sheet-print-modal fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm">
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         className="bg-white rounded-3xl max-w-5xl w-full shadow-2xl border border-orange-100 flex flex-col max-h-[94vh] overflow-hidden"
       >
         {/* Header */}
-        <div className="flex items-center justify-between gap-2 flex-wrap p-4 sm:p-5 border-b border-orange-100 bg-gradient-to-r from-amber-50 to-orange-50">
+        <div className="no-print flex items-center justify-between gap-2 flex-wrap p-4 sm:p-5 border-b border-orange-100 bg-gradient-to-r from-amber-50 to-orange-50">
           <div>
             <h2 className="text-base sm:text-lg font-black text-orange-950">{t.title}</h2>
             <p className="text-[11px] sm:text-xs font-bold text-orange-700/80">{t.subtitle}</p>
@@ -320,14 +321,14 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer"
+              className="hit-target px-4 bg-orange-500 hover:bg-orange-600 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer"
             >
               <span>🖨️</span>
               <span>{t.print}</span>
             </button>
             <button
               onClick={onExit}
-              className="w-9 h-9 rounded-xl bg-white hover:bg-orange-100 text-orange-700 border border-orange-200 flex items-center justify-center transition-colors cursor-pointer"
+              className="hit-target w-12 rounded-xl bg-white hover:bg-orange-100 text-orange-700 border border-orange-200 flex items-center justify-center transition-colors cursor-pointer"
               aria-label="خروج / Fermer / Close"
             >
               ✕
@@ -336,7 +337,7 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
         </div>
 
         {/* Category tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto p-3 border-b border-orange-100 bg-orange-50/40">
+        <div className="no-print flex items-center gap-1.5 overflow-x-auto p-3 border-b border-orange-100 bg-orange-50/40">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -354,7 +355,7 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
 
         <div className="flex-1 overflow-hidden flex flex-col sm:flex-row">
           {/* Sheet list within category */}
-          <div className="sm:w-56 shrink-0 border-b sm:border-b-0 sm:border-e border-orange-100 overflow-y-auto p-2.5 flex sm:flex-col gap-2">
+          <div className="no-print sm:w-56 shrink-0 border-b sm:border-b-0 sm:border-e border-orange-100 overflow-y-auto p-2.5 flex sm:flex-col gap-2">
             {sheetsInCategory.map((sheet) => (
               <button
                 key={sheet.id}
@@ -374,7 +375,10 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
           {/* A4 print preview */}
           <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-slate-100">
             {activeSheet && (
-              <div className="printable-sheet bg-white max-w-[210mm] mx-auto p-6 sm:p-8 border border-slate-300 shadow-lg rounded-xl text-slate-900 font-sans space-y-4">
+              <div
+                data-preschool-printable="true"
+                className="printable-sheet bg-white max-w-[210mm] mx-auto p-6 sm:p-8 border border-slate-300 shadow-lg rounded-xl text-slate-900 font-sans space-y-4"
+              >
                 <div className="text-center border-b-2 border-orange-300 pb-3 space-y-1">
                   <span className="text-3xl">{activeSheet.headerIcon}</span>
                   <h3 className="text-base sm:text-lg font-black text-orange-950">{activeSheet.titleI18n[language]}</h3>
@@ -394,6 +398,7 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
           </div>
         </div>
       </motion.div>
-    </div>
+    </div>,
+    document.body,
   );
 };

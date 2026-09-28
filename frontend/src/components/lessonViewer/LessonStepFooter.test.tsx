@@ -134,4 +134,24 @@ describe('LessonStepFooter', () => {
     expect(screen.getByText(/أَجِبْ ثُمَّ نَذْهَبُ/)).toBeInTheDocument();
     expect(document.querySelector('[data-primary-cta="finish-lesson"]')).toBeNull();
   });
+
+  it('keeps التالي above the mobile nav on 3AP–5AP as well as on 1AP', () => {
+    const { container } = render(
+      <LessonStepFooter
+        availableSteps={steps}
+        currentStepIndex={0}
+        isLastStep={false}
+        nextStep={steps[1]}
+        prevStep={null}
+        nextLesson={nextLesson}
+        renderArabicText={(t) => t || ''}
+        hasQuiz
+        quizPassed={false}
+        onGoToStep={vi.fn()}
+        onFinishLesson={vi.fn()}
+      />
+    );
+    expect(container.firstChild).toHaveClass('sticky');
+    expect(container.firstChild).toHaveClass('bottom-[calc(7.25rem+env(safe-area-inset-bottom))]');
+  });
 });

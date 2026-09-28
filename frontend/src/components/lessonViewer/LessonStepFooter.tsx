@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { CourseLesson } from '../../types';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { LessonStep } from './shared';
+import { formatProgressCount } from '../../utils/textFormatter';
 
 interface LessonStepFooterProps {
   availableSteps: LessonStep[];
@@ -38,6 +39,10 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
   // Browsing is free, but completion is reserved for a validated quiz so progress reflects
   // understanding rather than only navigation.
   const canFinish = !hasQuiz || quizPassed;
+  // Sit above the mobile tab bar + the fox that sticks 28px out of it (≈7.25rem), all grades —
+  // previously only 1AP/2AP were sticky, so التالي on 3–5AP sat under the nav.
+  const aboveMobileNav =
+    'sticky z-30 bottom-[calc(7.25rem+env(safe-area-inset-bottom))] md:bottom-3';
 
   const handlePrev = () => {
     if (currentStepIndex > 0) onGoToStep(currentStepIndex - 1);
@@ -47,27 +52,28 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
     <div
       className={
         playful
-          ? 'sticky z-30 bg-white/95 backdrop-blur-md border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-lg space-y-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:bottom-3'
+          ? `${aboveMobileNav} bg-white/95 backdrop-blur-md border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-lg space-y-3`
           : compact
-          ? 'sticky z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] md:bottom-3'
-          : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-sm space-y-4'
+          ? `${aboveMobileNav} bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4`
+          : `${aboveMobileNav} bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4`
       }
       data-lesson-footer={playful ? 'playful' : compact ? 'compact' : 'full'}
     >
       {!compact && (
         <div className="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
           <span className="text-[var(--app-text)] font-extrabold text-xs sm:text-sm">
-            المرحلة {currentStepIndex + 1} من {availableSteps.length}: {availableSteps[currentStepIndex]?.labelAr}
+            المرحلة <span dir="ltr">{currentStepIndex + 1}</span> من{' '}
+            <span dir="ltr">{availableSteps.length}</span>: {availableSteps[currentStepIndex]?.labelAr}
           </span>
           <span className="text-[10px] font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
-            <span dir="ltr">{currentStepIndex + 1} / {availableSteps.length}</span>
+            <span dir="ltr">{formatProgressCount(currentStepIndex + 1, availableSteps.length)}</span>
           </span>
         </div>
       )}
 
       {compact && (
         <p className="text-center text-xs font-bold text-[var(--app-text-muted)]">
-          <span dir="ltr">{currentStepIndex + 1} / {availableSteps.length}</span>
+          <span dir="ltr">{formatProgressCount(currentStepIndex + 1, availableSteps.length)}</span>
         </p>
       )}
 

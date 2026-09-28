@@ -74,4 +74,12 @@ describe('PreschoolModulePicker — 3-door hub', () => {
     fireEvent.click(screen.getByText('Jours et mois'));
     expect(onSelectModule).toHaveBeenCalledWith('preschool-calendar');
   });
+
+  it('opens the printable worksheets modal from the home banner', () => {
+    renderHub();
+    fireEvent.click(screen.getByText('Imprime des fiches d’exercices papier pour ton enfant'));
+    expect(document.querySelector('.sheet-print-modal')).toBeTruthy();
+    expect(document.querySelector('[data-preschool-printable="true"]')).toBeTruthy();
+  });
 });
+

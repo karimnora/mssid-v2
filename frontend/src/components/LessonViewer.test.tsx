@@ -51,9 +51,28 @@ describe('LessonViewer — 2AP sticky footer clearance', () => {
       </LocaleProvider>,
     );
 
-    const contentPanel = container.querySelector('.pb-28');
+    const contentPanel = container.querySelector('.pb-32');
     expect(contentPanel).toBeTruthy();
     expect(document.querySelector('[data-lesson-footer="compact"]')).toBeTruthy();
+  });
+
+  it('reserves the same clearance on 5AP where the footer used to sit under the nav', () => {
+    const lesson5ap: CourseLesson = {
+      ...lesson,
+      id: 'math-5ap-sample',
+      grade: '5AP',
+      titleAr: 'الأعداد العشرية',
+      quiz: [{ id: 'q1', questionAr: 'سؤال', options: [{ id: 'a', textAr: 'نعم', isCorrect: true }] }],
+    };
+
+    const { container } = render(
+      <LocaleProvider>
+        <LessonViewer lesson={lesson5ap} onBack={vi.fn()} onCompleteQuiz={vi.fn()} />
+      </LocaleProvider>,
+    );
+
+    expect(container.querySelector('.pb-32')).toBeTruthy();
+    expect(document.querySelector('[data-lesson-footer="full"]')).toBeTruthy();
   });
 });
 

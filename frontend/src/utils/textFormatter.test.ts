@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatEducationalText, isolateMathRuns, LRI, PDI } from './textFormatter';
+import { formatEducationalText, isolateMathRuns, formatProgressCount, LRI, PDI } from './textFormatter';
 
 describe('formatEducationalText - Educational Text Formatter Utility', () => {
   it('formats numbered items with newlines (1), 2), 3))', () => {
@@ -109,5 +109,11 @@ describe('isolateMathRuns', () => {
     expect(isolateMathRuns('15% = (6,000 × 15) ÷ 100 = 900.')).toBe(
       `${LRI}15% = (6,000 × 15) ÷ 100 = 900${PDI}.`
     );
+  });
+});
+
+describe('formatProgressCount', () => {
+  it('isolates the two numbers so RTL cannot swap 2 / 4 into 4 / 2', () => {
+    expect(formatProgressCount(2, 4)).toBe(`${LRI}2 / 4${PDI}`);
   });
 });

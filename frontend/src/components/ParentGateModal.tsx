@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, ShieldCheck } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
@@ -40,7 +41,7 @@ export const AskAdultScreen: React.FC<AskAdultScreenProps> = ({ onAskAdult, onCl
   );
 };
 
-// Friction step before sensitive actions (delete, store links). Not a legal parental-consent flow.
+// Friction step before sensitive actions (delete, store links, reset). Not a legal parental-consent flow.
 export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClose, onVerified }) => {
   const t = useTranslation('meta');
   const { direction } = useLocaleContext();
@@ -58,7 +59,7 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || typeof document === 'undefined') return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,31 +71,38 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
     }
   };
 
-  return (
-    <div role="dialog" aria-modal="true" aria-label={t('parentGateTitle')} className="fixed inset-0 z-[60] bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 font-sans" dir={direction}>
-      <div className="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden text-slate-100">
-        <div className="bg-slate-950 px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-emerald-500/20 rounded-xl border border-emerald-500/30 text-emerald-400">
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('parentGateTitle')}
+      className="fixed inset-0 z-[80] kids-modal-overlay backdrop-blur-sm flex items-center justify-center p-4"
+      dir={direction}
+    >
+      <div className="kids-modal-panel w-full max-w-sm overflow-hidden">
+        <div className="kids-modal-header p-4 flex items-center justify-between">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="p-2 bg-white/25 rounded-xl shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h2 className="text-sm font-extrabold text-white">{t('parentGateTitle')}</h2>
+            <h2 className="text-base font-extrabold truncate">{t('parentGateTitle')}</h2>
           </div>
           <button
+            type="button"
             onClick={onClose}
             aria-label={t('pwaCloseAriaLabel')}
-            className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded-xl transition-all cursor-pointer"
+            className="kids-close cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">
             {t('parentGateBody')}
           </p>
-          <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 text-center">
-            <span dir="ltr" className="text-2xl font-black text-white font-mono">
+          <div className="bg-[#FFF8E7] border-2 border-[#E7E2D7] rounded-2xl p-4 text-center">
+            <span dir="ltr" className="text-2xl font-black text-[var(--kids-ink)] font-mono">
               {a} + {b} = ?
             </span>
           </div>
@@ -109,18 +117,23 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
             placeholder={t('parentGateAnswer')}
             aria-label={t('parentGateAnswer')}
             dir="ltr"
-            className="w-full text-center bg-slate-800 border border-slate-700 focus:border-emerald-500 focus:outline-none text-white text-lg font-bold rounded-xl px-3 py-2.5"
+            className="kids-input text-center text-lg font-bold"
           />
-          {error && <p role="alert" className="text-xs text-rose-400 text-center font-bold">{t('parentGateError')}</p>}
+          {error && (
+            <p role="alert" className="text-xs font-bold text-center text-[var(--brand-coral)]">
+              {t('parentGateError')}
+            </p>
+          )}
           <button
             type="submit"
             disabled={!answer}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm py-2.5 rounded-xl transition-all cursor-pointer"
+            className="kids-cta cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {t('parentGateContinue')}
           </button>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };

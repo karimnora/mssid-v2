@@ -85,7 +85,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <Settings className="w-5 h-5" />
             <h2 className="text-base sm:text-lg font-extrabold">{t('settingsSectionLabel')}</h2>
           </div>
-          <button onClick={onClose} className="kids-close cursor-pointer">
+          <button type="button" onClick={onClose} className="kids-close cursor-pointer" aria-label={t('close')}>
             <X className="w-5 h-5" />
           </button>
         </div>

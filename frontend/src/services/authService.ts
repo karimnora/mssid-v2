@@ -699,7 +699,8 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
       return DEV_MOCK_RECEIPTS_SEED;
     }
     try {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : DEV_MOCK_RECEIPTS_SEED;
     } catch {
       return DEV_MOCK_RECEIPTS_SEED;
     }

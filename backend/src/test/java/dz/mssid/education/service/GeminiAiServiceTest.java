@@ -69,9 +69,13 @@ class GeminiAiServiceTest {
         @SuppressWarnings("unchecked")
         Map<String, String> digest = (Map<String, String>) field.get(null);
 
+        assertTrue(digest.get("1AP").contains("الأعداد الأصغر من 100"));
+        assertFalse(digest.get("1AP").contains("من 0 إلى 20"));
         assertTrue(digest.get("2AP").contains("اسم/فعل/حرف"));
         assertTrue(digest.get("3AP").contains("الجملة الاسمية والفعلية"));
         assertTrue(digest.get("3AP").contains("لا تشرح اسم/فعل"));
+        assertTrue(digest.get("3AP").contains("100 000"));
+        assertFalse(digest.get("3AP").contains("حتى 9999"));
         assertTrue(digest.get("4AP").contains("إنّ وأخواتها"));
         assertTrue(digest.get("5AP").contains("الحال"));
         assertTrue(digest.get("5AP").contains("الأعداد العشرية"));
