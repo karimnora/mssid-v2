@@ -72,6 +72,8 @@ Candidats V2 (pack « labos nouveaux ») :
 | Code de la route enfant | 2AP civile : feux, ممر الراجلين, trajet école. 5AP : قواعد المرور + bus/tram | Scènes tap : feu rouge/orange/vert, passage piéton, regarder droite/gauche, ne pas courir, céder le siège. Rue algérienne (trottoir, bus, tram si 5AP). |
 | Autres idées Karim | À lister une par une | Même règle : nouveau = V2 ; polish du labo existant = V1. |
 
+Todo labos V1 (priorités, 29 outils) : `docs/v1-labs-todo.md`.
+
 ## 3. Écarts V1 à corriger sur `main` (pas sur `v2`)
 
 - `enableAITutor` n’est lu nulle part hors du catalogue de flags : l’admin annonce que le bouton du tuteur se cache quand le flag est désactivé, ce qui est faux.

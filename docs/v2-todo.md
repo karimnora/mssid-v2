@@ -11,6 +11,7 @@ Règles : `main` est ramené dans `v2` chaque semaine ; les corrections de conte
 - [x] Inventaire de la V1 à partir du code : écrans, modules, labs, jeux, flags, services, problèmes connus (`docs/v2-inventaire.md`)
 - [ ] Classement de chaque élément : conserver, améliorer, remplacer, ajouter (proposition dans `docs/v2-inventaire.md` §2, à valider)
 - [ ] Corriger sur `main` les écarts V1 relevés (`docs/v2-inventaire.md` §3)
+- [ ] Labos V1 : Lots A–D de `docs/v1-labs-todo.md` (circuit, calculatrice, Anzan, TTS, chemin 1AP/2AP) — branche `fix/…`, pas `v2`
 - [ ] Relevé Play Console : fiche, installations, désinstallations, utilisateurs actifs, Android vitals (Karim)
 - [ ] Observation de quelques familles et d’au moins un enseignant sur trois tâches : choisir un niveau, finir une activité, reprendre le lendemain (Karim)
 - [ ] Périmètre V2 arrêté : liste des évolutions, contenus nouveaux candidats au premium (idées labos : souk immersif, code de la route enfant — `docs/v2-inventaire.md` §2)
