@@ -1,7 +1,8 @@
-import { UserProfile } from '../types';
-import { getLessonCompetences } from '../data/competences';
+import { PrimaryGrade, UserProfile } from '../types';
+import { COMPETENCES, getCompetence, getLessonCompetences, getLessonsForCompetence } from '../data/competences';
 
 export const MAX_LESSON_SESSIONS = 40;
+export const MAX_NOTEBOOK_RECENT = 8;
 
 export interface CompetenceStat {
   attempts: number;
@@ -37,4 +38,84 @@ export function recordLessonSuccess(prev: UserProfile, lessonId: string, at = ne
   const lessonSessions = [...(prev.lessonSessions ?? []), session].slice(-MAX_LESSON_SESSIONS);
 
   return { ...prev, competenceStats, lessonSessions };
+}
+
+export type NotebookRowStatus = 'worked' | 'todo';
+
+export interface ParentNotebookRow {
+  competenceId: string;
+  labelAr: string;
+  labelFr: string;
+  domainAr: string;
+  status: NotebookRowStatus;
+  successes: number;
+  lastAt?: string;
+  reviewLessonId?: string;
+}
+
+export interface ParentNotebookSession {
+  at: string;
+  lessonId: string;
+  competenceIds: string[];
+  labelsAr: string[];
+  labelsFr: string[];
+}
+
+export interface ParentNotebook {
+  childName: string;
+  grade: PrimaryGrade;
+  worked: ParentNotebookRow[];
+  todo: ParentNotebookRow[];
+  recentSessions: ParentNotebookSession[];
+}
+
+export function reviewLessonForCompetence(competenceId: string, lastLessonId?: string): string | undefined {
+  if (lastLessonId) return lastLessonId;
+  return getLessonsForCompetence(competenceId)[0];
+}
+
+/** Parent-facing snapshot of the child's competence stats. Unmapped grades show an empty catalogue. */
+export function buildParentNotebook(profile: UserProfile, viewingGrade: PrimaryGrade = profile.grade): ParentNotebook {
+  const stats = profile.competenceStats ?? {};
+  const catalogue = COMPETENCES.filter((competence) => competence.grade === viewingGrade);
+  const seen = new Set(catalogue.map((competence) => competence.id));
+  const extras = Object.keys(stats)
+    .map((id) => getCompetence(id))
+    .filter((competence): competence is NonNullable<typeof competence> => Boolean(competence) && !seen.has(competence.id));
+
+  const rows: ParentNotebookRow[] = [...catalogue, ...extras].map((competence) => {
+    const stat = stats[competence.id];
+    const worked = Boolean(stat && stat.successes > 0);
+    return {
+      competenceId: competence.id,
+      labelAr: competence.labelAr,
+      labelFr: competence.labelFr,
+      domainAr: competence.domainAr,
+      status: worked ? 'worked' : 'todo',
+      successes: stat?.successes ?? 0,
+      lastAt: stat?.lastAt,
+      reviewLessonId: reviewLessonForCompetence(competence.id, stat?.lastLessonId),
+    };
+  });
+
+  const recentSessions: ParentNotebookSession[] = [...(profile.lessonSessions ?? [])]
+    .reverse()
+    .slice(0, MAX_NOTEBOOK_RECENT)
+    .map((session) => ({
+      at: session.at,
+      lessonId: session.lessonId,
+      competenceIds: session.competenceIds,
+      labelsAr: session.competenceIds.map((id) => getCompetence(id)?.labelAr ?? id),
+      labelsFr: session.competenceIds.map((id) => getCompetence(id)?.labelFr ?? id),
+    }));
+
+  return {
+    childName: profile.name,
+    grade: viewingGrade,
+    worked: rows
+      .filter((row) => row.status === 'worked')
+      .sort((a, b) => (b.lastAt ?? '').localeCompare(a.lastAt ?? '')),
+    todo: rows.filter((row) => row.status === 'todo'),
+    recentSessions,
+  };
 }

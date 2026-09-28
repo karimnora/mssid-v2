@@ -23,6 +23,7 @@ export function useAppModals() {
   const [isPrintablesOpen, setIsPrintablesOpen] = useState(false);
   const [isHonorCertificatesOpen, setIsHonorCertificatesOpen] = useState(false);
   const [isOfflinePacksOpen, setIsOfflinePacksOpen] = useState(false);
+  const [isParentNotebookOpen, setIsParentNotebookOpen] = useState(false);
 
   const openAuth = (mode: 'login' | 'register' = 'login', reason: string | null = null) => {
     setAuthModalInitialMode(mode);
@@ -69,6 +70,8 @@ export function useAppModals() {
     setIsHonorCertificatesOpen,
     isOfflinePacksOpen,
     setIsOfflinePacksOpen,
+    isParentNotebookOpen,
+    setIsParentNotebookOpen,
     openAuth,
   };
 }

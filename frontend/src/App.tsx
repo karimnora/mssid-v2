@@ -777,6 +777,22 @@ function AppContent() {
         onUpdateAvatar={progress.handleUpdateProfileAvatar}
         onRefreshFromDb={progress.handleRefreshProfileFromDb}
         onSwitchChild={authUser ? () => setPickerOpen(true) : undefined}
+        onReviewLesson={(lessonId) => {
+          const open = (lesson: CourseLesson) => {
+            if (lesson.grade !== nav.grade) nav.handleGradeChange(lesson.grade);
+            nav.setIsPreschoolActive(false);
+            nav.handleSelectLesson(lesson);
+          };
+          const cached = (coursesData ?? []).find((item) => item.id === lessonId);
+          if (cached) {
+            open(cached);
+            return;
+          }
+          void import('./data/coursesData').then(({ COURSES_DATA }) => {
+            const lesson = COURSES_DATA.find((item) => item.id === lessonId);
+            if (lesson) open(lesson);
+          });
+        }}
       />
 
       <MobileBottomNav

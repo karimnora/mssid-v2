@@ -97,8 +97,15 @@ Référentiel dans `frontend/src/data/competences/`, sans modifier les fichiers 
 - [x] Enregistrement des séances et des résultats par profil et par compétence (local, lié au slot enfant : `competenceStats` + `lessonSessions`, maths 1AP via `getLessonCompetences`. Persistance serveur = phase suivante.)
 
 ## Phases suivantes (à détailler au démarrage de chacune)
-- [ ] Phase 4 — Accompagnement personnalisé
-- [ ] Phase 5 — Espace parent et fiches imprimables
+
+### Phase 4 — Accompagnement personnalisé
+- [x] Carnet parent local : compétences travaillées / pas commencées (maths 1AP), lecture de `competenceStats` + `lessonSessions`, bouton Réviser vers la leçon
+- [ ] Carnet d’erreurs et révisions adaptatives (échecs, pas seulement les succès)
+
+### Phase 5 — Espace parent et fiches imprimables
+- [x] Entrée carnet derrière Parent Gate depuis le profil et les réglages, sans changer l’accueil à 4 pôles
+- [ ] Fiches imprimables liées aux compétences
+
 - [ ] Phase 6 — Enrichissement pédagogique
 - [ ] Phase 7 — Contenus audio, récompenses et vidéos
 - [ ] Phase 8 — Abonnements et administration

@@ -187,3 +187,23 @@ describe('ProfileModal progress reset', () => {
     expect(screen.getByRole('dialog', { name: 'بوابة الوالدين' })).toBeInTheDocument();
   });
 });
+
+describe('ProfileModal parent notebook', () => {
+  it('opens the parent gate before the notebook', () => {
+    const onOpenParentNotebook = vi.fn();
+    renderModal(
+      <ProfileModal
+        isOpen={true}
+        onClose={vi.fn()}
+        userProfile={baseUserProfile}
+        authUser={baseAuthUser}
+        onResetProgress={vi.fn()}
+        onOpenParentNotebook={onOpenParentNotebook}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'دفتر المتابعة' }));
+    expect(onOpenParentNotebook).not.toHaveBeenCalled();
+    expect(screen.getByRole('dialog', { name: 'بوابة الوالدين' })).toBeInTheDocument();
+  });
+});

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
-import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail, Share2 } from 'lucide-react';
+import { X, Flame, Star, CheckCircle2, Lock, ShieldCheck, RefreshCw, Edit2, Database, Trophy, Sparkles, Mail, Share2, BookOpen } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { Card, XPProgressBar } from './ui';
@@ -26,6 +26,7 @@ interface ProfileModalProps {
   /** Opens the shareable-certificate modal for an already-unlocked badge (see CertificateModal). */
   onShareBadge?: (badge: BadgeInfo) => void;
   onSwitchChild?: () => void;
+  onOpenParentNotebook?: () => void;
 }
 
 const AVATAR_OPTIONS = [
@@ -46,6 +47,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onOpenAdminConsole,
   onShareBadge,
   onSwitchChild,
+  onOpenParentNotebook,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
@@ -96,6 +98,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
   const [showDeleteParentGate, setShowDeleteParentGate] = useState(false);
   const [showResetParentGate, setShowResetParentGate] = useState(false);
+  const [showNotebookParentGate, setShowNotebookParentGate] = useState(false);
 
   // Parent Gate sits after the two-step confirm above, right before the actual DELETE call — the
   // last point before the action is irreversible.
@@ -423,6 +426,16 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           </div>
 
+          {onOpenParentNotebook && (
+            <button
+              type="button"
+              onClick={() => setShowNotebookParentGate(true)}
+              className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+            >
+              <BookOpen className="w-4 h-4 text-[var(--kids-grass-2)]" />
+              {tMeta('parentNotebookOpen')}
+            </button>
+          )}
           {onSwitchChild && (
             <button
               type="button"
@@ -505,6 +518,17 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         onResetProgress();
       }}
     />
+    {onOpenParentNotebook && (
+      <ParentGateModal
+        isOpen={showNotebookParentGate}
+        onClose={() => setShowNotebookParentGate(false)}
+        onVerified={() => {
+          setShowNotebookParentGate(false);
+          onClose();
+          onOpenParentNotebook();
+        }}
+      />
+    )}
     </>
   );
 };

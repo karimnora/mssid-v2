@@ -27,6 +27,7 @@ const OfflinePacksManagerModal = lazy(() => import('./OfflinePacksManagerModal')
 // bundle before the user has even opened their profile.
 const ProfileModal = lazy(() => import('./ProfileModal').then((m) => ({ default: m.ProfileModal })));
 const SettingsModal = lazy(() => import('./SettingsModal').then((m) => ({ default: m.SettingsModal })));
+const ParentNotebookModal = lazy(() => import('./ParentNotebookModal').then((m) => ({ default: m.ParentNotebookModal })));
 
 type Modals = ReturnType<typeof useAppModals>;
 
@@ -63,6 +64,7 @@ interface AppModalsProps {
   onUpdateAvatar: (avatar: string) => void;
   onRefreshFromDb: () => Promise<void>;
   onSwitchChild?: () => void;
+  onReviewLesson: (lessonId: string) => void;
 }
 
 export const AppModals: React.FC<AppModalsProps> = ({
@@ -97,6 +99,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onUpdateAvatar,
   onRefreshFromDb,
   onSwitchChild,
+  onReviewLesson,
 }) => {
   const t = useTranslation('navigation');
   const [certificateBadge, setCertificateBadge] = useState<BadgeInfo | null>(null);
@@ -133,6 +136,10 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onOpenAdminConsole={onOpenAdminConsole}
         onShareBadge={setCertificateBadge}
         onSwitchChild={onSwitchChild}
+        onOpenParentNotebook={() => {
+          modals.setIsProfileModalOpen(false);
+          modals.setIsParentNotebookOpen(true);
+        }}
       />
     </Suspense>
 
@@ -169,6 +176,10 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onOpenAdminConsole={() => {
           modals.setIsSettingsModalOpen(false);
           onOpenAdminConsole();
+        }}
+        onOpenParentNotebook={() => {
+          modals.setIsSettingsModalOpen(false);
+          modals.setIsParentNotebookOpen(true);
         }}
       />
     </Suspense>
@@ -293,6 +304,19 @@ export const AppModals: React.FC<AppModalsProps> = ({
         <OfflinePacksManagerModal
           isOpen={modals.isOfflinePacksOpen}
           onClose={() => modals.setIsOfflinePacksOpen(false)}
+        />
+      )}
+
+      {modals.isParentNotebookOpen && (
+        <ParentNotebookModal
+          isOpen={modals.isParentNotebookOpen}
+          onClose={() => modals.setIsParentNotebookOpen(false)}
+          userProfile={userProfile}
+          viewingGrade={grade}
+          onReviewLesson={(lessonId) => {
+            modals.setIsParentNotebookOpen(false);
+            onReviewLesson(lessonId);
+          }}
         />
       )}
     </Suspense>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { PrimaryGrade } from '../types';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { WILAYAS_LIST } from '../data/wilayasData';
-import { X, Settings, KeyRound, LogOut, MessageSquare, FileText, ShieldCheck, MapPin } from 'lucide-react';
+import { X, Settings, KeyRound, LogOut, MessageSquare, FileText, ShieldCheck, MapPin, BookOpen } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { TashkeelToggle } from './TashkeelToggle';
@@ -12,6 +12,7 @@ import { Card } from './ui';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { HeaderTheme, NAV_GRADES, THEME_OPTIONS } from './Navbar';
 import { getAppPlatform } from '../utils/appPlatform';
+import { ParentGateModal } from './ParentGateModal';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -32,6 +33,7 @@ interface SettingsModalProps {
   onOpenTermsOfService?: () => void;
   onOpenAdminConsole?: () => void;
   onOpenRating?: () => void;
+  onOpenParentNotebook?: () => void;
 }
 
 // Split out of ProfileModal (remonte utilisateur : "je veux désassocier le profile et Réglages
@@ -58,15 +60,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onOpenTermsOfService,
   onOpenAdminConsole,
   onOpenRating,
+  onOpenParentNotebook,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
   const tMeta = useTranslation('meta');
   const { direction } = useLocaleContext();
+  const [showNotebookParentGate, setShowNotebookParentGate] = useState(false);
 
   if (!isOpen) return null;
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -175,6 +180,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
           </Card>
 
+          {onOpenParentNotebook && (
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{tNav('parentDrawerLabel')}</p>
+              <button
+                type="button"
+                onClick={() => setShowNotebookParentGate(true)}
+                className="w-full hit-target rounded-2xl bg-[#FFFBF0] border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+              >
+                <BookOpen className="w-4 h-4 text-[var(--kids-grass-2)]" />
+                {tMeta('parentNotebookOpen')}
+              </button>
+            </Card>
+          )}
+
           {!authUser && onOpenAuthModal && (
             <button
               type="button"
@@ -250,5 +269,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         </div>
       </motion.div>
     </motion.div>
+    {onOpenParentNotebook && (
+      <ParentGateModal
+        isOpen={showNotebookParentGate}
+        onClose={() => setShowNotebookParentGate(false)}
+        onVerified={() => {
+          setShowNotebookParentGate(false);
+          onClose();
+          onOpenParentNotebook();
+        }}
+      />
+    )}
+    </>
   );
 };

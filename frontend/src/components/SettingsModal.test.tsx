@@ -103,4 +103,12 @@ describe('SettingsModal', () => {
     expect(document.querySelector('[data-profile-grade-strip]')?.className).toContain('grid-cols-2');
     expect(document.querySelector('[data-profile-grade-strip]')?.className).toContain('md:grid-cols-5');
   });
+  it('opens the parent gate before the parent notebook', () => {
+    const onOpenParentNotebook = vi.fn();
+    renderModal(<SettingsModal isOpen={true} onClose={vi.fn()} tashkeelEnabled={false}
+      onToggleTashkeel={vi.fn()} onOpenParentNotebook={onOpenParentNotebook} />);
+    fireEvent.click(screen.getByRole('button', { name: 'دفتر المتابعة' }));
+    expect(onOpenParentNotebook).not.toHaveBeenCalled();
+    expect(screen.getByRole('dialog', { name: 'بوابة الوالدين' })).toBeInTheDocument();
+  });
 });

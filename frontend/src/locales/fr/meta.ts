@@ -56,6 +56,18 @@ export const meta: typeof metaAr = {
   childGrade3AP: '3e année',
   childGrade4AP: '4e année',
   childGrade5AP: '5e année',
+  parentNotebookOpen: 'Carnet de suivi',
+  parentNotebookTitle: 'Carnet de suivi',
+  parentNotebookSubtitle: 'Ce que {name} a travaillé',
+  parentNotebookWorked: 'Déjà travaillé',
+  parentNotebookWorkedEmpty: 'Aucun succès enregistré pour ce profil.',
+  parentNotebookTodo: 'Pas encore commencé',
+  parentNotebookTodoEmpty: 'Toutes les compétences affichées ici ont déjà été réussies au moins une fois.',
+  parentNotebookReview: 'Réviser',
+  parentNotebookStart: 'Commencer',
+  parentNotebookEmpty: 'Le carnet couvre pour l’instant les compétences de maths de 1re année. Change de niveau ou lance une leçon suivie pour voir la progression.',
+  parentNotebookRecent: 'Dernières séances',
+  parentNotebookSuccesses: '{count} réussite(s)',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'Pour installer l\'application sur ton appareil : appuie sur le bouton Partager, puis choisis "Sur l\'écran d\'accueil" (Add to Home Screen) 📲',

@@ -58,6 +58,18 @@ export const meta = {
   childGrade3AP: 'السنة 3',
   childGrade4AP: 'السنة 4',
   childGrade5AP: 'السنة 5',
+  parentNotebookOpen: 'دفتر المتابعة',
+  parentNotebookTitle: 'دفتر المتابعة',
+  parentNotebookSubtitle: 'ما درسه {name}',
+  parentNotebookWorked: 'تمّ العمل',
+  parentNotebookWorkedEmpty: 'لم يُسجَّل نجاح بعد على هذا الملف.',
+  parentNotebookTodo: 'لم يُبدأ بعد',
+  parentNotebookTodoEmpty: 'كل الكفاءات المعروضة هنا شُغلت مرة واحدة على الأقل.',
+  parentNotebookReview: 'مراجعة',
+  parentNotebookStart: 'ابدأ',
+  parentNotebookEmpty: 'دفتر المتابعة يغطي حالياً كفاءات رياضيات السنة الأولى. غيّر المستوى أو ابدأ درساً مسجّلاً لرؤية التقدّم.',
+  parentNotebookRecent: 'آخر الحصص',
+  parentNotebookSuccesses: '{count} نجاح',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'لتثبيت التطبيق على جهازك: اضغط على زر المشاركة (Share) ثم اختر "إضافة إلى الشاشة الرئيسية" (Add to Home Screen) 📲',
