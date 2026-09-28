@@ -508,6 +508,34 @@ public async request<T>(
     });
   }
 
+  public async getChildProfiles() {
+    return this.request<Array<{ id: number; displayName: string; grade: string; avatar?: string | null }>>(
+      '/v1/children',
+      { method: 'GET' },
+    );
+  }
+
+  public async createChildProfile(payload: { displayName: string; grade: string; avatar?: string }) {
+    return this.request<{ id: number; displayName: string; grade: string; avatar?: string | null }>(
+      '/v1/children',
+      { method: 'POST', body: JSON.stringify(payload) },
+    );
+  }
+
+  public async updateChildProfile(
+    id: number,
+    payload: { displayName: string; grade: string; avatar?: string },
+  ) {
+    return this.request<{ id: number; displayName: string; grade: string; avatar?: string | null }>(
+      `/v1/children/${id}`,
+      { method: 'PUT', body: JSON.stringify(payload) },
+    );
+  }
+
+  public async deleteChildProfile(id: number) {
+    return this.request<void>(`/v1/children/${id}`, { method: 'DELETE' });
+  }
+
   // --- Admin Console: Analytics, Feature Flags, Audit Log ---
 
   public async getAdminStatsOverview() {

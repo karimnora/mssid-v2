@@ -10,8 +10,8 @@ Règles : `main` est ramené dans `v2` chaque semaine ; les corrections de conte
 
 - [x] Inventaire de la V1 à partir du code : écrans, modules, labs, jeux, flags, services, problèmes connus (`docs/v2-inventaire.md`)
 - [ ] Classement de chaque élément : conserver, améliorer, remplacer, ajouter (proposition dans `docs/v2-inventaire.md` §2, à valider)
-- [ ] Corriger sur `main` les écarts V1 relevés (`docs/v2-inventaire.md` §3)
-- [ ] Labos V1 : Lots A–D de `docs/v1-labs-todo.md` (circuit, calculatrice, Anzan, TTS, chemin 1AP/2AP) — branche `fix/…`, pas `v2`
+- [x] Corriger sur `main` les écarts V1 relevés (`docs/v2-inventaire.md` §3)
+- [x] Labos V1 : Lots A–D de `docs/v1-labs-todo.md` (circuit, calculatrice, Anzan, TTS, chemin 1AP/2AP) — branche `fix/…`, pas `v2`
 - [ ] Relevé Play Console : fiche, installations, désinstallations, utilisateurs actifs, Android vitals (Karim)
 - [ ] Observation de quelques familles et d’au moins un enseignant sur trois tâches : choisir un niveau, finir une activité, reprendre le lendemain (Karim)
 - [ ] Périmètre V2 arrêté : liste des évolutions, contenus nouveaux candidats au premium (idées labos : souk immersif, code de la route enfant — `docs/v2-inventaire.md` §2)
@@ -56,7 +56,7 @@ Référence : `docs/v2-design-brief.md`. Un seul agent ou une seule personne à 
 
 ### Prototype (branche `v2`, route de prototype non visible dans la navigation)
 
-- [ ] 1. Choix du profil enfant (facultatif ; passage direct pour l’invité)
+- [x] 1. Choix du profil enfant (facultatif ; passage direct pour l’invité)
 - [ ] 2. Accueil préscolaire (cibles 60–72 px, audio sur chaque consigne)
 - [ ] 3. Accueil primaire (« Continuer » en action principale ; matières, examens, labs, défis visibles)
 - [ ] 4. Exercice avec consigne audio et correction (vrai exercice, dont un problème de maths en deux colonnes)
@@ -92,8 +92,8 @@ Référentiel dans `frontend/src/data/competences/`, sans modifier les fichiers 
 ### Progression
 
 - [x] Modèle de profil enfant côté serveur : migration `V100__add_child_profiles.sql`, API `/api/v1/children` (liste, création, modification, suppression), prénom ou pseudo + niveau (`PRESCHOOL`, 1AP–5AP) + avatar facultatif, 6 profils maximum, suppression avec le compte
-- [ ] Parent Gate côté frontend avant création, modification ou suppression d’un profil
-- [ ] Écran de choix du profil (prototype, écran 1) et rattachement de la progression locale au profil choisi
+- [x] Parent Gate côté frontend avant création, modification ou suppression d’un profil
+- [x] Écran de choix du profil (prototype, écran 1) et rattachement de la progression locale au profil choisi
 - [ ] Enregistrement des séances et des résultats par profil et par compétence
 
 ## Phases suivantes (à détailler au démarrage de chacune)

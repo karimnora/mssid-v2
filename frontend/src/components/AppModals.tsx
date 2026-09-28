@@ -62,6 +62,7 @@ interface AppModalsProps {
   onUpdateName: (name: string) => void;
   onUpdateAvatar: (avatar: string) => void;
   onRefreshFromDb: () => Promise<void>;
+  onSwitchChild?: () => void;
 }
 
 export const AppModals: React.FC<AppModalsProps> = ({
@@ -95,6 +96,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onUpdateName,
   onUpdateAvatar,
   onRefreshFromDb,
+  onSwitchChild,
 }) => {
   const t = useTranslation('navigation');
   const [certificateBadge, setCertificateBadge] = useState<BadgeInfo | null>(null);
@@ -130,6 +132,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
         onRefreshFromDb={onRefreshFromDb}
         onOpenAdminConsole={onOpenAdminConsole}
         onShareBadge={setCertificateBadge}
+        onSwitchChild={onSwitchChild}
       />
     </Suspense>
 

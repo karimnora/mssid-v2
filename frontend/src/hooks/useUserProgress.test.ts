@@ -227,6 +227,32 @@ describe('authUser merge does not leak local guest/sibling progress into a real 
     rerender({ authUser: { ...account, nom: 'Updated name' } });
     expect(result.current.userProfile.completedExamIds).toEqual(['exam-local']);
   });
+
+  it('does not overlay account XP onto a selected child slot', () => {
+    localStorage.setItem(
+      'mssid_user_profile_child_7',
+      JSON.stringify({
+        ...createFreshGuestProfile('1AP'),
+        name: 'Lina',
+        completedExamIds: ['exam-lina'],
+      }),
+    );
+
+    const realAccount: AuthUser = {
+      id: 1,
+      nom: 'Parent',
+      email: 'parent@example.com',
+      role: 'ROLE_FREE',
+      score: 400,
+      completedExamIds: [],
+    };
+
+    const { result } = renderHook(() => useUserProgress({ authUser: realAccount, activeChildId: 7 }));
+
+    expect(result.current.userProfile.name).toBe('Lina');
+    expect(result.current.userProfile.completedExamIds).toEqual(['exam-lina']);
+    expect(result.current.userProfile.xp).toBe(0);
+  });
 });
 
 describe('logout does not replay the welcome badge toast', () => {

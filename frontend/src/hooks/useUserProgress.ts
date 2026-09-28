@@ -12,6 +12,7 @@ import {
   migrateGuestQuizRewardsToUser,
 } from '../utils/quizRewards';
 import { clearGuestLastActivity, clearOwnerLastActivity, migrateGuestLastActivityToUser } from '../utils/lastActivity';
+import { clearChildSelection, profileStorageKey } from '../utils/childProfileStorage';
 
 function finiteNumber(value: unknown, fallback: number): number {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -181,13 +182,13 @@ export function markLessonQuizComplete(prev: UserProfile, lessonId: string): Use
   };
 }
 
-export function useUserProgress(options: { authUser: AuthUser | null }) {
-  const { authUser } = options;
+export function useUserProgress(options: { authUser: AuthUser | null; activeChildId?: number | null }) {
+  const { authUser, activeChildId = null } = options;
   const hydratedOwnerRef = useRef<number | null>(null);
   const [localActivityOwner, setLocalActivityOwner] = useState<number | null>(null);
 
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
-    const saved = localStorage.getItem('mssid_user_profile');
+    const saved = localStorage.getItem(profileStorageKey(activeChildId));
     if (saved) {
       try {
         return normalizeUserProfile(JSON.parse(saved));
@@ -245,7 +246,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     // shared between siblings in a family: falling back to `prev` on a merely-empty server value
     // used to let one child's local guest/leftover progress (exams, challenges, badges) bleed into
     // whichever real account next logs in on that same browser (revue externe #5).
-    if (authUser) {
+    if (authUser && activeChildId == null) {
       const sameOwner = hydratedOwnerRef.current === authUser.id;
       hydratedOwnerRef.current = authUser.id;
       const xp = authUser.score !== undefined ? authUser.score : (authUser.xp !== undefined ? authUser.xp : 0);
@@ -287,27 +288,45 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
       hydratedOwnerRef.current = null;
       setLocalActivityOwner(null);
     }
-  }, [authUser]);
+  }, [authUser, activeChildId]);
+
+  const previousChildId = useRef(activeChildId);
 
   useEffect(() => {
-    if (!authUser) return;
+    if (previousChildId.current === activeChildId) return;
+    previousChildId.current = activeChildId;
+    const key = profileStorageKey(activeChildId);
+    const saved = localStorage.getItem(key);
+    if (saved) {
+      try {
+        setUserProfile(normalizeUserProfile(JSON.parse(saved)));
+        return;
+      } catch (e) {
+        console.error('Failed to parse user profile:', e);
+      }
+    }
+    setUserProfile(createFreshGuestProfile('1AP'));
+  }, [activeChildId]);
+
+  useEffect(() => {
+    if (!authUser || activeChildId) return;
     migrateGuestQuizRewardsToUser(authUser.id);
     migrateGuestLastActivityToUser(authUser.id);
     setActiveProgressOwner(authUser.id);
-  }, [authUser?.id]);
+  }, [authUser?.id, activeChildId]);
 
   useEffect(() => {
-    localStorage.setItem('mssid_user_profile', JSON.stringify(userProfile));
-  }, [userProfile]);
+    localStorage.setItem(profileStorageKey(activeChildId), JSON.stringify(userProfile));
+  }, [userProfile, activeChildId]);
 
   useEffect(() => {
-    if (!authUser || localActivityOwner !== authUser.id) return;
+    if (!authUser || activeChildId != null || localActivityOwner !== authUser.id) return;
     try {
       localStorage.setItem(`mssid_local_activities_v1_${authUser.id}`, JSON.stringify({
         completedGameIds: userProfile.completedGameIds, completedLabIds: userProfile.completedLabIds,
       }));
     } catch { /* The current session remains usable when local storage is full. */ }
-  }, [authUser?.id, localActivityOwner, userProfile.completedGameIds, userProfile.completedLabIds]);
+  }, [authUser?.id, activeChildId, localActivityOwner, userProfile.completedGameIds, userProfile.completedLabIds]);
 
   const handleQuizFullyValidated = (lessonId: string) => {
     AuthService.markLessonCompleted(lessonId);
@@ -385,7 +404,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   const handleUpdateProfileName = (newName: string) => {
     setUserProfile((prev) => {
       const updated = { ...prev, name: newName };
-      localStorage.setItem('mssid_user_profile', JSON.stringify(updated));
+      localStorage.setItem(profileStorageKey(activeChildId), JSON.stringify(updated));
       return updated;
     });
 
@@ -398,7 +417,7 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   const handleUpdateProfileAvatar = (newAvatar: string) => {
     setUserProfile((prev) => {
       const updated = { ...prev, avatar: newAvatar };
-      localStorage.setItem('mssid_user_profile', JSON.stringify(updated));
+      localStorage.setItem(profileStorageKey(activeChildId), JSON.stringify(updated));
       return updated;
     });
     if (authUser) {
@@ -414,7 +433,8 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     setActiveProgressOwner(null);
     clearGuestQuizRewards();
     clearGuestLastActivity();
-    localStorage.removeItem('mssid_user_profile');
+    localStorage.removeItem(profileStorageKey(activeChildId));
+    clearChildSelection();
     setNewlyUnlockedBadges([]);
     setUserProfile(() => createFreshGuestProfile(currentGrade));
   };

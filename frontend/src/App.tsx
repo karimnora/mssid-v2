@@ -34,12 +34,23 @@ import { ToolsHubView } from './components/ToolsHubView';
 import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { useAppNavigation } from './hooks/useAppNavigation';
 import { ActivityExitProvider, useActivityExit } from './context/ActivityExitContext';
-import { useUserProgress } from './hooks/useUserProgress';
+import { useUserProgress, createFreshGuestProfile } from './hooks/useUserProgress';
 import { useAppModals } from './hooks/useAppModals';
 import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
 import { isLabFreeForGuest, isLessonFreeForGuest } from './utils/guestAccess';
-import { isLabSubjectId } from './navigation/appLocation';
 import { lastActivityTitle, readLastActivity, writeLastActivity } from './utils/lastActivity';
+import { isLabSubjectId, isValidGrade } from './navigation/appLocation';
+import { ChildProfilePicker } from './components/ChildProfilePicker';
+import {
+  ChildProfile,
+  clearChildSelection,
+  persistChildSelection,
+  primaryGradeForChild,
+  profileStorageKey,
+  readChildSelection,
+  isPreschoolGrade,
+  type ChildSelection,
+} from './utils/childProfileStorage';
 import {
   BookOpen,
   Calculator,
@@ -91,7 +102,10 @@ function AppContent() {
   const { authUser, isAuthLoading } = useAuth();
   const { direction, t, locale } = useLocaleContext();
   const modals = useAppModals();
-  const progress = useUserProgress({ authUser });
+  const [childSelection, setChildSelection] = useState<ChildSelection | null>(() => readChildSelection());
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const activeChildId = childSelection?.type === 'child' ? childSelection.id : null;
+  const progress = useUserProgress({ authUser, activeChildId });
 
   const selectedTrimester: number | 'all' = 'all';
   const [lockedLesson, setLockedLesson] = useState<CourseLesson | null>(null);
@@ -213,6 +227,54 @@ function AppContent() {
     isLabFreeForGuest,
     onGuestBlocked: () => modals.openAuth('login', 'هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
   });
+
+  useEffect(() => {
+    if (isAuthLoading) return;
+    if (!authUser) {
+      if (childSelection != null) {
+        clearChildSelection();
+        setChildSelection(null);
+      }
+      setPickerOpen(false);
+      return;
+    }
+    if (childSelection == null) setPickerOpen(true);
+  }, [authUser, isAuthLoading, childSelection]);
+
+  const handleSelectChild = (child: ChildProfile) => {
+    const key = profileStorageKey(child.id);
+    let next = createFreshGuestProfile(primaryGradeForChild(child.grade));
+    const raw = localStorage.getItem(key);
+    if (raw) {
+      try {
+        next = JSON.parse(raw);
+      } catch {
+        /* keep fresh */
+      }
+    }
+    next = {
+      ...next,
+      name: child.displayName,
+      avatar: child.avatar || next.avatar || '🎓',
+      grade: primaryGradeForChild(child.grade),
+    };
+    localStorage.setItem(key, JSON.stringify(next));
+    persistChildSelection({ type: 'child', id: child.id });
+    setChildSelection({ type: 'child', id: child.id });
+    setPickerOpen(false);
+    if (isPreschoolGrade(child.grade)) {
+      nav.setIsPreschoolActive(true);
+    } else {
+      nav.setIsPreschoolActive(false);
+      if (isValidGrade(child.grade)) nav.handleGradeChange(child.grade);
+    }
+  };
+
+  const handleSkipChild = () => {
+    persistChildSelection({ type: 'account' });
+    setChildSelection({ type: 'account' });
+    setPickerOpen(false);
+  };
 
   // /admin is reachable by URL alone (see appLocation.ts's plain 'admin' route), so this must never
   // assume a visitor who lands there is staff. The backend already refuses non-admin writes (see
@@ -345,11 +407,21 @@ function AppContent() {
         level: Math.floor(newXp / 100) + 1,
         avatarConfig: updatedConfig,
       };
-      localStorage.setItem('mssid_user_profile', JSON.stringify(updated));
+      localStorage.setItem(profileStorageKey(activeChildId), JSON.stringify(updated));
       void AuthService.syncGoldCoinsAndAvatar(newCoins, updatedConfig);
       return updated;
     });
   };
+
+  if (!isAuthLoading && pickerOpen && authUser) {
+    return (
+      <ChildProfilePicker
+        isOpen
+        onSelectChild={handleSelectChild}
+        onSkip={handleSkipChild}
+      />
+    );
+  }
 
   if (nav.isAdminConsoleActive) {
     if (isAuthLoading) {
@@ -684,6 +756,8 @@ function AppContent() {
         onEnterPreschool={() => nav.setIsPreschoolActive(true)}
         onLogout={() => {
           AuthService.logout();
+          clearChildSelection();
+          setChildSelection(null);
           progress.handleLogoutProgressReset(nav.grade);
         }}
         onOpenAdminConsole={() => nav.setIsAdminConsoleActive(true)}
@@ -702,6 +776,7 @@ function AppContent() {
         onUpdateName={progress.handleUpdateProfileName}
         onUpdateAvatar={progress.handleUpdateProfileAvatar}
         onRefreshFromDb={progress.handleRefreshProfileFromDb}
+        onSwitchChild={authUser ? () => setPickerOpen(true) : undefined}
       />
 
       <MobileBottomNav

@@ -25,6 +25,7 @@ interface ProfileModalProps {
   onOpenAdminConsole?: () => void;
   /** Opens the shareable-certificate modal for an already-unlocked badge (see CertificateModal). */
   onShareBadge?: (badge: BadgeInfo) => void;
+  onSwitchChild?: () => void;
 }
 
 const AVATAR_OPTIONS = [
@@ -44,9 +45,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   onRefreshFromDb,
   onOpenAdminConsole,
   onShareBadge,
+  onSwitchChild,
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
+  const tMeta = useTranslation('meta');
   const { direction } = useLocaleContext();
   const currentName = authUser?.nom || userProfile.name;
   const [editedName, setEditedName] = useState(currentName);
@@ -420,6 +423,15 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           </div>
 
+          {onSwitchChild && (
+            <button
+              type="button"
+              onClick={() => { onSwitchChild(); onClose(); }}
+              className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer"
+            >
+              {tMeta('childPickerSwitch')}
+            </button>
+          )}
           {authUser?.role === 'ROLE_ADMIN' && onOpenAdminConsole && (
             <button
               type="button"
