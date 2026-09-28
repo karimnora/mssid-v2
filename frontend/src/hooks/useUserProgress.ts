@@ -13,6 +13,7 @@ import {
 } from '../utils/quizRewards';
 import { clearGuestLastActivity, clearOwnerLastActivity, migrateGuestLastActivityToUser } from '../utils/lastActivity';
 import { clearChildSelection, profileStorageKey } from '../utils/childProfileStorage';
+import { recordLessonSuccess } from '../utils/competenceProgress';
 
 function finiteNumber(value: unknown, fallback: number): number {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -83,6 +84,8 @@ function salvageUserProfile(raw: unknown, fallbackGrade: PrimaryGrade): UserProf
     avatarConfig: o.avatarConfig && typeof o.avatarConfig === 'object' && !Array.isArray(o.avatarConfig)
       ? o.avatarConfig as UserProfile['avatarConfig']
       : base.avatarConfig,
+    competenceStats: o.competenceStats && typeof o.competenceStats === 'object' && !Array.isArray(o.competenceStats) ? o.competenceStats as UserProfile['competenceStats'] : {},
+    lessonSessions: Array.isArray(o.lessonSessions) ? o.lessonSessions as UserProfile['lessonSessions'] : [],
   };
 }
 
@@ -127,6 +130,8 @@ export function createFreshGuestProfile(currentGrade: PrimaryGrade): UserProfile
     badgeUnlockedAt: {},
     quizScores: {},
     tashkeelEnabled: false,
+    competenceStats: {},
+    lessonSessions: [],
   };
 }
 
@@ -171,7 +176,7 @@ export function applyGameXp(prev: UserProfile, gameId: string, earnedXp: number)
 
 /** A lesson is complete only after the interactive quiz is fully correct (or a no-quiz lesson is finished). */
 export function markLessonQuizComplete(prev: UserProfile, lessonId: string): UserProfile {
-  return {
+  const completed: UserProfile = {
     ...prev,
     quizFullyValidatedLessonIds: prev.quizFullyValidatedLessonIds.includes(lessonId)
       ? prev.quizFullyValidatedLessonIds
@@ -180,6 +185,7 @@ export function markLessonQuizComplete(prev: UserProfile, lessonId: string): Use
       ? prev.completedLessonIds
       : [...prev.completedLessonIds, lessonId],
   };
+  return recordLessonSuccess(completed, lessonId);
 }
 
 export function useUserProgress(options: { authUser: AuthUser | null; activeChildId?: number | null }) {

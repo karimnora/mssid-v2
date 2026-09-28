@@ -72,9 +72,10 @@ describe('lesson completion', () => {
 
   it('marks the lesson complete only after a full quiz', () => {
     const withXp = applyLessonXp(createFreshGuestProfile('1AP'), 'math-1ap-nombres', 15);
-    const done = markLessonQuizComplete(withXp, 'math-1ap-nombres');
-    expect(done.completedLessonIds).toEqual(['math-1ap-nombres']);
-    expect(done.quizFullyValidatedLessonIds).toEqual(['math-1ap-nombres']);
+    const done = markLessonQuizComplete(withXp, 'math-1ap-t1-spatial-relations');
+    expect(done.completedLessonIds).toEqual(['math-1ap-t1-spatial-relations']);
+    expect(done.quizFullyValidatedLessonIds).toEqual(['math-1ap-t1-spatial-relations']);
+    expect(done.competenceStats['math-1ap-c-spatial-position']?.successes).toBe(1);
   });
 });
 

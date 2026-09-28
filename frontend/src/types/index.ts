@@ -948,6 +948,10 @@ export interface UserProfile {
   tashkeelEnabled?: boolean;
   dailyScreenTimeLimitMinutes?: number;
   avatarConfig?: DidouAvatarConfig;
+  /** Per-competence tally for the active child slot (V2). Absent on older saves. */
+  competenceStats?: Record<string, { attempts: number; successes: number; lastAt: string; lastLessonId: string }>;
+  /** Recent lesson sessions for the active child slot, newest last, capped. */
+  lessonSessions?: Array<{ at: string; lessonId: string; competenceIds: string[]; outcome: 'success' }>;
 }
 
 export interface SorobanExercise {

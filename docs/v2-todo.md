@@ -94,7 +94,7 @@ Référentiel dans `frontend/src/data/competences/`, sans modifier les fichiers 
 - [x] Modèle de profil enfant côté serveur : migration `V100__add_child_profiles.sql`, API `/api/v1/children` (liste, création, modification, suppression), prénom ou pseudo + niveau (`PRESCHOOL`, 1AP–5AP) + avatar facultatif, 6 profils maximum, suppression avec le compte
 - [x] Parent Gate côté frontend avant création, modification ou suppression d’un profil
 - [x] Écran de choix du profil (prototype, écran 1) et rattachement de la progression locale au profil choisi
-- [ ] Enregistrement des séances et des résultats par profil et par compétence
+- [x] Enregistrement des séances et des résultats par profil et par compétence (local, lié au slot enfant : `competenceStats` + `lessonSessions`, maths 1AP via `getLessonCompetences`. Persistance serveur = phase suivante.)
 
 ## Phases suivantes (à détailler au démarrage de chacune)
 - [ ] Phase 4 — Accompagnement personnalisé
