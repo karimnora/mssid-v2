@@ -29,4 +29,15 @@ describe('TextToSpeechButton — hidden entirely when voiceReading is off', () =
     );
     expect(screen.getByRole('button', { name: 'تشغيل' })).toBeInTheDocument();
   });
+
+  it('keeps speed in one control and aligns the menu with end-0', () => {
+    setFeatureFlagOverride('voiceReading', true);
+    const { container } = render(
+      <LocaleProvider>
+        <TextToSpeechButton text="مرحبا" />
+      </LocaleProvider>
+    );
+    expect(screen.getByRole('button', { name: /السرعة/ })).toHaveTextContent('1x');
+    expect(container.querySelector('.absolute.right-0')).toBeNull();
+  });
 });

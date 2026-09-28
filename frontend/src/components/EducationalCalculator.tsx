@@ -61,8 +61,8 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
     // color) — everything else here already uses its own light theme regardless of this attribute.
     <div data-lab-instrument className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-md text-slate-900 max-w-4xl mx-auto">
       <div className="flex flex-col gap-4">
-        <div className="flex items-start gap-2">
-          <div className="flex-1">
+        <div className="flex flex-col gap-3">
+          <div>
             <h2 className="text-xl font-extrabold">{t('common', 'calculatorTitle')}</h2>
             <p className="text-sm opacity-70 mt-1">{t('common', 'calculatorHelp')}</p>
           </div>
@@ -87,7 +87,7 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
                 type="button"
                 disabled={disabled}
                 onClick={() => handleButton(buttonValue)}
-                className={`rounded-2xl py-3 text-lg font-bold shadow-sm transition ${
+                className={`hit-target rounded-2xl py-3 text-lg font-bold shadow-sm transition ${
                   disabled
                     ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
                     : 'bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer'
@@ -104,7 +104,7 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
           <button
             type="button"
             onClick={handleCalculate}
-            className="rounded-3xl bg-emerald-700 text-white px-5 py-3 font-bold shadow-sm hover:bg-emerald-800 transition"
+            className="hit-target rounded-3xl bg-emerald-700 text-white px-5 py-3 font-bold shadow-sm hover:bg-emerald-800 transition"
           >
             {t('common', 'calculate')}
           </button>
@@ -112,8 +112,8 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="rounded-3xl bg-slate-950/95 p-5 text-white shadow-sm">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-amber-300">{t('common', 'solution')}</h3>
+          <div className="rounded-3xl bg-slate-50 border border-slate-200 p-5 shadow-sm text-slate-900">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-800">{t('common', 'solution')}</h3>
             <div className="mt-3 min-h-[110px] text-sm leading-6">{result || t('common', 'noResultYet')}</div>
           </div>
 

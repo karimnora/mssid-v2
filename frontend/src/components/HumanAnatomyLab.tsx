@@ -83,7 +83,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
             <button
               onClick={onBack}
               aria-label="العودة للأدوات"
-              className="shrink-0 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
+              className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
               <ArrowRight className="w-5 h-5" />
             </button>

@@ -8,10 +8,10 @@
  * 4. Snap automatique dans un rayon de 42 SVG-units + anneaux animés sur les cibles
  * 5. Plus aucun window.addEventListener — tout via pointer capture sur le SVG
  * 6. Sélection au toucher : tapoter un composant → le sélectionner → bouton × visible
- * 7. Canvas 640×400, composants un peu plus grands (HW=44 HH=26)
+ * 7. Canvas = largeur du téléphone (viewBox mesuré), spawn dans la zone visible, labels palette toujours affichés.
  */
 
-import React, { useState, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useCallback, useMemo, useLayoutEffect, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RotateCcw, Trash2, CheckCircle2, XCircle } from 'lucide-react';
 
@@ -37,23 +37,55 @@ type Interaction =
   | { type: 'wiring';   fromId: string; fromT: 'A' | 'B'; px: number; py: number; snapping: boolean };
 
 // ─── Layout constants ──────────────────────────────────────────────────────
-// Rendered at a fixed 1 SVG-unit = 1 CSS-px (see the canvas container below), so these are real
-// on-screen sizes, not scaled-to-fit values — TH=30 means an actual 60px hit-area diameter, matching
-// this project's 60px minimum touch target (see --hit in index.css), instead of shrinking on phones.
-const SVG_W = 640;
-const SVG_H = 400;
-const HW = 50;   // component half-width
-const HH = 32;   // component half-height
-const TR = 14;   // terminal visible radius
-const TH = 30;   // terminal hit-area radius (60px real diameter)
-const SNAP = 50; // snap radius in SVG units
+// ViewBox tracks the container width so 1 SVG unit ≈ 1 CSS px (TH=30 → ~60 px, see --hit).
+// A fixed 640×400 canvas overflowed on phones and blocked vertical scroll (touch-action: none).
+const HW = 50;
+const HH = 32;
+const TR = 14;
+const TH = 30;
+const SNAP = 50;
+const MIN_CANVAS_W = 280;
+const MIN_CANVAS_H = 400;
+
+export function circuitViewSize(containerWidth: number): { w: number; h: number } {
+  const w = Math.max(MIN_CANVAS_W, Math.floor(containerWidth) || MIN_CANVAS_W);
+  const h = Math.min(560, Math.max(MIN_CANVAS_H, Math.round(w * 1.15)));
+  return { w, h };
+}
+
+export function defaultCircuitLayout(w: number, h: number): CBComp[] {
+  const mx = HW + 24;
+  const my = HH + 24;
+  return [
+    { id: 'bat0', type: 'battery', x: w / 2, y: h - my, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 },
+    { id: 'sw0', type: 'switch', x: mx, y: my, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 },
+    { id: 'bulb0', type: 'bulb', x: w - mx, y: my, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 },
+  ];
+}
+
+export function spawnInView(w: number, h: number, jitter = Math.random): { x: number; y: number } {
+  const mx = HW + 16;
+  const my = HH + 16;
+  const x = Math.max(mx, Math.min(w - mx, w / 2 + (jitter() - 0.5) * Math.min(120, w * 0.28)));
+  const y = Math.max(my, Math.min(h - my, h / 2 + (jitter() - 0.5) * Math.min(80, h * 0.2)));
+  return { x, y };
+}
+
+export function clampToCanvas(c: CBComp, w: number, h: number): CBComp {
+  return {
+    ...c,
+    x: Math.max(HW + 5, Math.min(w - HW - 5, c.x)),
+    y: Math.max(HH + 5, Math.min(h - HH - 5, c.y)),
+  };
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
 function toSVG(e: { clientX: number; clientY: number }, svg: SVGSVGElement) {
   const r = svg.getBoundingClientRect();
+  const vb = svg.viewBox.baseVal;
   return {
-    x: ((e.clientX - r.left) / r.width)  * SVG_W,
-    y: ((e.clientY - r.top)  / r.height) * SVG_H,
+    x: ((e.clientX - r.left) / r.width) * vb.width,
+    y: ((e.clientY - r.top) / r.height) * vb.height,
   };
 }
 function termPos(c: CBComp, t: 'A' | 'B') {
@@ -98,12 +130,6 @@ function simulate(comps: CBComp[], wires: CBWire[]) {
   return { powered, closed };
 }
 
-// ─── Defaults ─────────────────────────────────────────────────────────────
-const DEFAULT_COMPS: CBComp[] = [
-  { id: 'bat0',  type: 'battery', x: 320, y: 350, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 },
-  { id: 'sw0',   type: 'switch',  x: 110, y:  82, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 },
-  { id: 'bulb0', type: 'bulb',    x: 530, y:  82, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 },
-];
 const DEFAULT_WIRES: CBWire[] = [
   { id: 'w0', from: 'bat0',  fromT: 'B', to: 'bulb0', toT: 'B' },
   { id: 'w1', from: 'bulb0', fromT: 'A', to: 'sw0',   toT: 'B' },
@@ -121,13 +147,33 @@ const PALETTE: { type: CBType; labelAr: string; labelFr: string; icon: string; a
 
 // ─── Main component ────────────────────────────────────────────────────────
 export const CircuitBuilder: React.FC = () => {
-  const [comps,       setComps]       = useState<CBComp[]>(DEFAULT_COMPS);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [canvas, setCanvas] = useState({ w: 360, h: 420 });
+  const [comps, setComps] = useState<CBComp[]>(() => defaultCircuitLayout(360, 420));
   const [wires,       setWires]       = useState<CBWire[]>(DEFAULT_WIRES);
   const [interaction, setInteraction] = useState<Interaction>({ type: 'idle' });
   const [hovered,     setHovered]     = useState<string | null>(null);
   const [selected,    setSelected]    = useState<string | null>(null);
 
   const svgRef      = useRef<SVGSVGElement>(null);
+
+  useLayoutEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const apply = (width: number) => {
+      const next = circuitViewSize(width);
+      setCanvas((prev) => (prev.w === next.w && prev.h === next.h ? prev : next));
+    };
+    apply(el.clientWidth);
+    const ro = new ResizeObserver((entries) => apply(entries[0]?.contentRect.width ?? el.clientWidth));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    setComps((prev) => prev.map((c) => clampToCanvas(c, canvas.w, canvas.h)));
+  }, [canvas.w, canvas.h]);
+
   const idCounter   = useRef(100);
   const wireDragged = useRef(false);  // true once pointer moved > threshold during wiring
   // Pointer capture is set on svgRef (not the component's own <g>) in handleCompPointerDown below,
@@ -191,8 +237,8 @@ export const CircuitBuilder: React.FC = () => {
       setComps(prev => prev.map(c =>
         c.id === interaction.id
           ? { ...c,
-              x: Math.max(HW + 5, Math.min(SVG_W - HW - 5, x - interaction.ox)),
-              y: Math.max(HH + 5, Math.min(SVG_H - HH - 5, y - interaction.oy)) }
+              x: Math.max(HW + 5, Math.min(canvas.w - HW - 5, x - interaction.ox)),
+              y: Math.max(HH + 5, Math.min(canvas.h - HH - 5, y - interaction.oy)) }
           : c
       ));
       return;
@@ -207,7 +253,7 @@ export const CircuitBuilder: React.FC = () => {
         setInteraction(p => p.type === 'wiring' ? { ...p, px: x, py: y, snapping: false } : p);
       }
     }
-  }, [interaction, comps, snapTarget]);
+  }, [interaction, comps, snapTarget, canvas.w, canvas.h]);
 
   const handleSVGPointerUp = useCallback((e: React.PointerEvent<SVGSVGElement>) => {
     if (interaction.type === 'dragging') {
@@ -273,10 +319,11 @@ export const CircuitBuilder: React.FC = () => {
   // ── Add / Delete ─────────────────────────────────────────────────────────
   const handleAddComp = (type: CBType) => {
     const id = nextId();
+    const pos = spawnInView(canvas.w, canvas.h);
     setComps(prev => [...prev, {
       id, type,
-      x: 150 + Math.random() * 340,
-      y: 80  + Math.random() * 220,
+      x: pos.x,
+      y: pos.y,
       switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5,
     }]);
   };
@@ -288,9 +335,15 @@ export const CircuitBuilder: React.FC = () => {
   const handleDeleteWire = useCallback((id: string) => {
     setWires(prev => prev.filter(w => w.id !== id));
   }, []);
-  const handleReset = () => { setComps(DEFAULT_COMPS); setWires(DEFAULT_WIRES); setInteraction({ type: 'idle' }); setSelected(null); };
+  const handleReset = () => {
+    setComps(defaultCircuitLayout(canvas.w, canvas.h));
+    setWires(DEFAULT_WIRES);
+    setInteraction({ type: 'idle' });
+    setSelected(null);
+  };
   const handleClear = () => {
-    setComps([{ id: 'bat0', type: 'battery', x: 320, y: 350, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 }]);
+    const my = HH + 24;
+    setComps([{ id: 'bat0', type: 'battery', x: canvas.w / 2, y: canvas.h - my, switchOpen: false, diodeReversed: false, resistorVal: 100, voltage: 4.5 }]);
     setWires([]); setInteraction({ type: 'idle' }); setSelected(null);
   };
 
@@ -327,7 +380,7 @@ export const CircuitBuilder: React.FC = () => {
         <circle
           cx={tcx} cy={tcy} r={TH}
           fill="transparent"
-          style={{ cursor: 'crosshair', pointerEvents: 'all' }}
+          style={{ cursor: 'crosshair', pointerEvents: 'all', touchAction: 'none' }}
           onPointerDown={e => {
             handleTerminalPointerDown(e as unknown as React.PointerEvent, compId, t);
           }}
@@ -362,7 +415,7 @@ export const CircuitBuilder: React.FC = () => {
         onPointerDown={e => handleCompPointerDown(e as unknown as React.PointerEvent, c.id)}
         onPointerEnter={() => !isWiring && setHovered(c.id)}
         onPointerLeave={() => setHovered(null)}
-        style={{ cursor: isBat ? 'default' : isWiring ? 'crosshair' : 'grab', pointerEvents: 'auto' }}
+        style={{ cursor: isBat ? 'default' : isWiring ? 'crosshair' : 'grab', pointerEvents: 'auto', touchAction: 'none' }}
       >
         {/* Selection ring */}
         {isSel && <rect x={-HW - 8} y={-HH - 8} width={(HW + 8) * 2} height={(HH + 8) * 2} rx="18"
@@ -458,7 +511,7 @@ export const CircuitBuilder: React.FC = () => {
                             lg:w-full`}
               >
                 <span className="text-sm">{p.icon}</span>
-                <span className="hidden sm:inline lg:inline">{p.labelAr}</span>
+                <span>{p.labelAr}</span>
                 <span className="hidden lg:inline text-[9px] opacity-55 font-mono">{p.labelFr}</span>
               </motion.button>
             ))}
@@ -467,12 +520,12 @@ export const CircuitBuilder: React.FC = () => {
             <button type="button" onClick={handleReset}
               className="hit-target flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold cursor-pointer transition-colors">
               <RotateCcw className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">الافتراضي</span>
+              <span>الافتراضي</span>
             </button>
             <button type="button" onClick={handleClear}
               className="hit-target flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-rose-400 text-xs font-bold cursor-pointer transition-colors">
               <Trash2 className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">مسح الكل</span>
+              <span>مسح الكل</span>
             </button>
           </div>
           {/* Guide — trimmed to the 2 actions a child actually needs to start (wire, delete);
@@ -485,16 +538,17 @@ export const CircuitBuilder: React.FC = () => {
 
         {/* ── Canvas ──────────────────────────── */}
         <div className="lg:col-span-9">
-          {/* Fixed 1-unit-=-1px size (not width:100%) so terminals/components never shrink below
-              their real touch-target size on a narrow phone — it scrolls instead, same pattern as
-              the Soroban abacus. */}
-          <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-x-auto">
+          <div ref={wrapRef} className="bg-slate-950 rounded-2xl border border-slate-800 w-full" dir="ltr">
             <svg
               ref={svgRef}
-              viewBox={`0 0 ${SVG_W} ${SVG_H}`}
-              width={SVG_W}
-              height={SVG_H}
-              style={{ touchAction: 'none', display: 'block' }}
+              viewBox={`0 0 ${canvas.w} ${canvas.h}`}
+              width="100%"
+              height={canvas.h}
+              preserveAspectRatio="xMidYMid meet"
+              style={{
+                display: 'block',
+                touchAction: interaction.type === 'idle' ? 'pan-y' : 'none',
+              }}
               onPointerMove={handleSVGPointerMove}
               onPointerUp={handleSVGPointerUp}
               onPointerLeave={() => { if (interaction.type === 'dragging') setInteraction({ type: 'idle' }); }}
@@ -506,7 +560,7 @@ export const CircuitBuilder: React.FC = () => {
               </defs>
 
               {/* Background (handles bg taps) */}
-              <rect width={SVG_W} height={SVG_H} fill="url(#cb-grid)"
+              <rect width={canvas.w} height={canvas.h} fill="url(#cb-grid)"
                 style={{ pointerEvents: 'all' }}
                 onPointerDown={handleBgPointerDown as unknown as React.PointerEventHandler<SVGRectElement>} />
 

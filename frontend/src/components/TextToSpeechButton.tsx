@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Play, Pause, Square, Speaker, ChevronDown } from 'lucide-react';
+import { Play, Pause, Square, ChevronDown } from 'lucide-react';
 import { speakText, stopSpeech } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
 import { useFeatureFlag } from '../hooks/useFeatureFlag';
@@ -57,37 +57,34 @@ export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
   if (!voiceReadingEnabled) return null;
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-3xl bg-slate-100/90 border border-slate-300 p-2 shadow-sm text-slate-700 text-xs">
+    <div className="flex flex-wrap items-center gap-2 rounded-3xl bg-slate-100/90 border border-slate-300 p-2 shadow-sm text-slate-700 text-xs w-full sm:w-auto">
       <button
         type="button"
         onClick={isPlaying ? handlePause : handlePlay}
-        className="inline-flex items-center gap-1 rounded-2xl bg-indigo-600 text-white px-3 py-2 font-bold shadow-sm hover:bg-indigo-700 transition"
+        className="hit-target inline-flex items-center justify-center gap-1 rounded-2xl bg-indigo-600 text-white px-3 font-bold shadow-sm hover:bg-indigo-700 transition"
       >
-        {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />} 
+        {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
         {isPlaying ? t('common', 'pause') : t('common', 'play')}
       </button>
       <button
         type="button"
         onClick={handleStop}
-        className="inline-flex items-center gap-1 rounded-2xl bg-slate-200 px-3 py-2 text-slate-700 hover:bg-slate-300 transition"
+        className="hit-target inline-flex items-center justify-center gap-1 rounded-2xl bg-slate-200 px-3 text-slate-700 hover:bg-slate-300 transition"
       >
         <Square className="w-4 h-4" /> {t('common', 'stop')}
       </button>
-      <div className="flex items-center gap-1 text-[11px] text-slate-600">
-        <Speaker className="w-4 h-4" />
-        <span>{speed}x</span>
-      </div>
       <div className="relative">
         <button
           type="button"
           onClick={() => setIsSpeedMenuOpen((open) => !open)}
-          className="inline-flex items-center gap-1 rounded-2xl bg-white px-3 py-2 border border-slate-300 text-slate-600 hover:bg-slate-50 transition"
+          className="hit-target inline-flex items-center justify-center gap-1 rounded-2xl bg-white px-3 border border-slate-300 text-slate-600 hover:bg-slate-50 transition"
+          aria-expanded={isSpeedMenuOpen}
         >
-          {t('common', 'speed')}
+          {t('common', 'speed')} {speed}x
           <ChevronDown className="w-3.5 h-3.5" />
         </button>
         {isSpeedMenuOpen && (
-          <div className="absolute right-0 mt-2 w-32 rounded-2xl border border-slate-200 bg-white shadow-lg p-2 z-10">
+          <div className="absolute end-0 mt-2 w-32 rounded-2xl border border-slate-200 bg-white shadow-lg p-2 z-10">
             {SPEED_OPTIONS.map((option) => (
               <button
                 key={option}
@@ -96,7 +93,7 @@ export const TextToSpeechButton: React.FC<{ text: string }> = ({ text }) => {
                   setSpeed(option);
                   setIsSpeedMenuOpen(false);
                 }}
-                className={`w-full text-left px-2 py-1 rounded-xl text-xs ${speed === option ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'}`}
+                className={`hit-target w-full px-2 rounded-xl text-xs ${speed === option ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'}`}
               >
                 {option}x
               </button>

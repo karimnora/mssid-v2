@@ -254,7 +254,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           <button
             onClick={onBack}
             aria-label="العودة للأدوات"
-            className="z-10 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
+            className="z-10 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >
             <ArrowRight className="w-5 h-5" />
           </button>

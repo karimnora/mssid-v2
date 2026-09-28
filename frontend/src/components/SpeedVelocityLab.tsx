@@ -553,7 +553,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             <button
               onClick={onBack}
               aria-label={t('العودة للدروس والمختبرات', 'Retour')}
-              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-lg border border-slate-700 active:scale-95 transition-all"
+              className="hit-target flex items-center justify-center rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-lg border border-slate-700 active:scale-95 transition-all"
             >
               ⬅️
             </button>

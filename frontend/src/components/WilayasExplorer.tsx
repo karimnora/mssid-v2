@@ -504,7 +504,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
             <button
               onClick={onBack}
               aria-label="العودة للأدوات"
-              className="w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
+              className="hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
             >
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -631,7 +631,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   onClick={zoomOut}
                   disabled={mapScale <= MAP_ZOOM_MIN}
                   aria-label="تصغير الخريطة"
-                  className="min-w-[44px] min-h-[44px] rounded-lg font-black text-base flex items-center justify-center bg-[var(--app-card-subtle)] text-[var(--app-text)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-[var(--app-card-bg)] border border-[var(--app-card-border)]"
+                  className="hit-target rounded-lg font-black text-base flex items-center justify-center bg-[var(--app-card-subtle)] text-[var(--app-text)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-[var(--app-card-bg)] border border-[var(--app-card-border)]"
                 >
                   −
                 </button>
@@ -642,7 +642,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
                   onClick={zoomIn}
                   disabled={mapScale >= MAP_ZOOM_MAX}
                   aria-label="تكبير الخريطة"
-                  className="min-w-[44px] min-h-[44px] rounded-lg font-black text-base flex items-center justify-center bg-[var(--app-card-subtle)] text-[var(--app-text)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-[var(--app-card-bg)] border border-[var(--app-card-border)]"
+                  className="hit-target rounded-lg font-black text-base flex items-center justify-center bg-[var(--app-card-subtle)] text-[var(--app-text)] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer hover:bg-[var(--app-card-bg)] border border-[var(--app-card-border)]"
                 >
                   +
                 </button>

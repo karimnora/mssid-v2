@@ -212,7 +212,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-6 shadow-xs dir-rtl" dir="rtl">
+    <div data-lab-instrument className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-6 shadow-xs dir-rtl" dir="rtl">
       {/* Tab Navigation Header */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between border-b border-slate-200 pb-3 mb-4 gap-3">
         <div className="flex items-center gap-2">
@@ -344,7 +344,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
           )}
 
           {/* Abacus Graphics Container */}
-          <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 text-white shadow-inner relative border-4 border-amber-900/60 overflow-x-auto" data-lab-instrument="true">
+          <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 text-white shadow-inner relative border-4 border-amber-900/60 overflow-x-auto">
             {/* Wooden Frame Label */}
             <div className="text-center text-[9px] sm:text-[10px] font-mono text-amber-300 uppercase tracking-widest mb-2 sm:mb-3">
               SOROBAN ALGERIA // JAPANESE ABACUS SIMULATOR
@@ -423,24 +423,24 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
       {/* 2. ANZAN FLASH MATH TEST */}
       {activeTab === 'anzan' && (
         <div className="space-y-4">
-          <div className="bg-gradient-to-r from-indigo-900 to-slate-900 text-white rounded-2xl p-4 sm:p-5 border border-indigo-700/50">
+          <div className="bg-[#FFF8E7] text-slate-900 rounded-2xl p-4 sm:p-5 border border-[#E7E2D7]">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
               <div>
-                <span className="bg-indigo-500/30 text-indigo-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-indigo-400/20 inline-block">
+                <span className="bg-indigo-100 text-indigo-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-indigo-200 inline-block">
                   تدريب الحساب الذهني الخاطف (Anzan)
                 </span>
-                <h4 className="text-base sm:text-lg font-bold mt-1">
+                <h4 className="text-base sm:text-lg font-bold mt-1 text-slate-900">
                   {generatedExercise ? 'تمرين مولّد جديد 🎲' : `تمرين ${anzanExerciseIndex + 1} من ${SOROBAN_PRACTICE_EXERCISES.length}`}
                 </h4>
               </div>
               <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1">
-                <span className="text-[10px] text-slate-300 shrink-0 ml-1">التمارين الجاهزة:</span>
+                <span className="text-[10px] text-slate-600 shrink-0 ml-1">التمارين الجاهزة:</span>
                 {SOROBAN_PRACTICE_EXERCISES.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => handleSelectStaticExercise(i)}
                     className={`hit-target rounded-lg text-xs font-bold shrink-0 ${
-                      !generatedExercise && anzanExerciseIndex === i ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                      !generatedExercise && anzanExerciseIndex === i ? 'bg-amber-400 text-slate-950 font-black' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
                     }`}
                   >
                     {i + 1}
@@ -449,28 +449,27 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               </div>
             </div>
 
-            {/* Difficulty & Operation Mode Selectors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
-              <div className="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-slate-800">
+              <div className="flex items-center gap-1.5 bg-white p-1 rounded-xl border border-slate-200">
                 {(['easy', 'medium', 'hard'] as Difficulty[]).map((d) => (
                   <button
                     key={d}
                     onClick={() => setDifficulty(d)}
                     className={`flex-1 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer ${
-                      difficulty === d ? 'bg-indigo-500 text-white' : 'text-slate-300 hover:bg-slate-800'
+                      difficulty === d ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {d === 'easy' ? '⭐ سهل' : d === 'medium' ? '⭐⭐ متوسط' : '⭐⭐⭐ صعب'}
                   </button>
                 ))}
               </div>
-              <div className="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-slate-800">
+              <div className="flex items-center gap-1.5 bg-white p-1 rounded-xl border border-slate-200">
                 {(['add', 'subtract', 'mixed'] as OperationMode[]).map((m) => (
                   <button
                     key={m}
                     onClick={() => setOperationMode(m)}
                     className={`flex-1 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer ${
-                      operationMode === m ? 'bg-emerald-500 text-slate-950' : 'text-slate-300 hover:bg-slate-800'
+                      operationMode === m ? 'bg-emerald-600 text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {m === 'add' ? 'جمع (+)' : m === 'subtract' ? 'طرح (−)' : 'مختلط (+/−)'}
@@ -481,36 +480,34 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
 
             <button
               onClick={handleGenerateExercise}
-              className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 font-bold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer mb-1"
+              className="hit-target w-full flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-amber-800 font-bold text-xs px-4 rounded-xl transition-all cursor-pointer mb-1"
             >
               <Shuffle className="w-4 h-4" />
               <span>توليد تمرين جديد حسب المستوى المختار</span>
             </button>
 
-            {/* Flash Screen Box */}
-            <div className="h-32 sm:h-36 bg-slate-950 rounded-xl border border-indigo-500/30 flex items-center justify-center relative overflow-hidden my-4 p-3 text-center">
+            <div className="h-32 sm:h-36 bg-white rounded-xl border-2 border-indigo-200 flex items-center justify-center relative overflow-hidden my-4 p-3 text-center">
               {anzanRunning && currentFlashIndex >= 0 && currentFlashIndex < currentAnzanEx.numbers.length ? (
                 <div
                   key={currentFlashIndex}
                   className={`text-4xl sm:text-5xl font-black animate-pulse font-mono ${
-                    currentAnzanEx.numbers[currentFlashIndex] < 0 ? 'text-rose-400' : 'text-amber-400'
+                    currentAnzanEx.numbers[currentFlashIndex] < 0 ? 'text-rose-700' : 'text-amber-700'
                   }`}
                 >
                   {currentAnzanEx.numbers[currentFlashIndex] > 0 ? `+${currentAnzanEx.numbers[currentFlashIndex]}` : currentAnzanEx.numbers[currentFlashIndex]}
                 </div>
               ) : currentFlashIndex >= currentAnzanEx.numbers.length ? (
-                <div className="text-emerald-400 font-bold text-xs sm:text-sm">انتهى العرض الخاطف! أدخل المجموع النهائي أدناه</div>
+                <div className="text-emerald-800 font-bold text-xs sm:text-sm">انتهى العرض الخاطف! أدخل المجموع النهائي أدناه</div>
               ) : (
-                <div className="text-slate-300 text-xs leading-relaxed max-w-xs">اضغط على زر "ابدأ العرض الخاطف" لبدء ظهور الأعداد بسرعة</div>
+                <div className="text-slate-600 text-xs leading-relaxed max-w-xs">اضغط على زر "ابدأ العرض الخاطف" لبدء ظهور الأعداد بسرعة</div>
               )}
             </div>
 
-            {/* Controls */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <button
                 onClick={startAnzan}
                 disabled={anzanRunning}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-slate-950 font-bold text-xs px-4 py-3 rounded-xl transition-all cursor-pointer shadow-md"
+                className="hit-target w-full sm:w-auto flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-slate-950 font-bold text-xs px-4 rounded-xl transition-all cursor-pointer shadow-md"
               >
                 <Play className="w-4 h-4" />
                 <span>{anzanRunning ? 'جاري العرض الخاطف...' : 'ابدأ العرض الخاطف'}</span>
@@ -520,13 +517,14 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 <input
                   type="number"
                   placeholder="المجموع المتوقع..."
+                  aria-label="المجموع المتوقع"
                   value={userAnzanAnswer}
                   onChange={(e) => setUserAnzanAnswer(e.target.value)}
-                  className="flex-1 sm:w-36 bg-slate-800 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-2.5 focus:outline-none focus:border-amber-400"
+                  className="hit-target flex-1 sm:w-36 bg-white border-2 border-slate-300 text-slate-900 text-base font-bold rounded-xl px-3 focus:outline-none focus:border-amber-500"
                 />
                 <button
                   onClick={verifyAnzanAnswer}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer shrink-0"
+                  className="hit-target bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-4 rounded-xl transition-all cursor-pointer shrink-0"
                 >
                   تحقق
                 </button>
@@ -535,10 +533,10 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
 
             {anzanResult && (
               <div className={`mt-3 p-3 rounded-xl border text-xs font-bold flex items-center justify-between gap-2 flex-wrap ${
-                anzanResult.correct ? 'bg-emerald-500/20 text-emerald-200 border-emerald-500/40' : 'bg-rose-500/20 text-rose-200 border-rose-500/40'
+                anzanResult.correct ? 'bg-emerald-50 text-emerald-900 border-emerald-300' : 'bg-rose-50 text-rose-900 border-rose-300'
               }`}>
                 <div className="flex items-center gap-2">
-                  {anzanResult.correct ? <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" /> : <XCircle className="w-4 h-4 text-rose-400 shrink-0" />}
+                  {anzanResult.correct ? <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" /> : <XCircle className="w-4 h-4 text-rose-700 shrink-0" />}
                   <span>{anzanResult.msg}</span>
                 </div>
                 {elapsedAnswerSeconds !== null && !anzanResult.correct && (
