@@ -84,7 +84,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, aut
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-lg min-w-0 max-h-[min(90dvh,calc(100svh-1.5rem))] flex flex-col overflow-hidden"
+        className="web-dialog bg-white border border-slate-300 rounded-3xl shadow-2xl w-full max-w-lg min-w-0 max-h-[min(90dvh,calc(100svh-1.5rem))] flex flex-col overflow-hidden"
       >
         {/* Header */}
         <div className="bg-slate-900 text-white p-4 sm:p-5 flex items-center justify-between gap-2 shrink-0 border-b border-slate-800">

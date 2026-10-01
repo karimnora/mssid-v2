@@ -146,7 +146,7 @@ export const HomeworkPinModal: React.FC<HomeworkPinModalProps> = ({
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl max-w-lg w-full min-w-0 max-h-[min(90dvh,calc(100svh-1.5rem))] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-5"
+        className="web-dialog bg-white rounded-3xl max-w-lg w-full min-w-0 max-h-[min(90dvh,calc(100svh-1.5rem))] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-5"
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-2 pb-3 border-b border-slate-100">

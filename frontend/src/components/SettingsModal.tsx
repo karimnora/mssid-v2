@@ -80,33 +80,34 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
         className="kids-modal-panel w-full max-w-xl flex flex-col overflow-hidden"
       >
-        <div className="kids-modal-header p-4 sm:p-5 flex items-center justify-between gap-2 shrink-0">
+        <div className="kids-modal-header p-4 sm:p-5 md:p-4 flex items-center justify-between gap-2 shrink-0">
           <div className="flex items-center gap-2 min-w-0">
             <Settings className="w-5 h-5 shrink-0" />
-            <h2 className="text-base sm:text-lg font-extrabold truncate">{t('settingsSectionLabel')}</h2>
+            <h2 className="text-base sm:text-lg md:text-base font-extrabold truncate">{t('settingsSectionLabel')}</h2>
           </div>
           <button type="button" onClick={onClose} className="kids-close cursor-pointer" aria-label={t('close')}>
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="kids-modal-body p-5 space-y-4">
+        <div className="kids-modal-body p-5 space-y-4 md:p-4 md:space-y-3">
           {currentGrade && onGradeChange && (
-            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px] md:!p-3">
               <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileGradeLabel')}</p>
-              <div data-profile-grade-strip className="grid grid-cols-2 gap-2">
+              <div data-profile-grade-strip className="grid grid-cols-2 md:grid-cols-5 gap-2">
                 {NAV_GRADES.map((g) => (
                   <button
                     key={g.id}
                     type="button"
                     onClick={() => { onGradeChange(g.id); onClose(); }}
-                    className={`hit-target rounded-2xl px-3 py-3 text-sm font-extrabold cursor-pointer ${
+                    className={`hit-target rounded-2xl px-3 py-3 md:px-1 md:py-2 text-sm md:text-xs font-extrabold cursor-pointer ${
                       currentGrade === g.id
                         ? 'kids-pop bg-[var(--kids-grass-2)] text-white'
                         : 'bg-[#FFFBF0] text-[var(--kids-muted)] border-2 border-[#E7E2D7]'
                     }`}
                   >
-                    {tNav(g.labelKey)}
+                    <span className="md:hidden">{tNav(g.labelKey)}</span>
+                    <span className="hidden md:inline">{g.badge}</span>
                   </button>
                 ))}
               </div>
@@ -114,7 +115,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           )}
 
           {authUser && (
-            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+            <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px] md:!p-3">
               <p className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)]">
                 <MapPin className="w-4 h-4 text-[var(--kids-grass-2)]" />
                 <span>{t('profileWilayaLabel')}</span>
@@ -134,12 +135,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </Card>
           )}
 
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px] md:!p-3">
             <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('chooseLanguageLabel')}</p>
             <LanguageSwitcher className="w-full" />
           </Card>
 
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px]">
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-2 rounded-[22px] md:!p-3">
             <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('profileThemeLabel')}</p>
             <div className="grid grid-cols-3 gap-1.5 min-w-0">
               {onThemeAuto && (
@@ -170,7 +171,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </div>
           </Card>
 
-          <Card padding="md" className="!bg-white !border-[#E7E2D7] rounded-[22px]">
+          <Card padding="md" className="!bg-white !border-[#E7E2D7] rounded-[22px] md:!p-3">
             <TashkeelToggle enabled={tashkeelEnabled} onToggle={onToggleTashkeel} />
           </Card>
 
@@ -206,9 +207,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </button>
           )}
 
-          <div className="space-y-2 pt-2">
+          <div className="space-y-2 pt-2 md:flex md:flex-wrap md:gap-2 md:space-y-0 md:pt-1">
             {getAppPlatform() === 'android' && onOpenRating && (
-              <button type="button" className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer" onClick={() => { onClose(); onOpenRating(); }}>
+              <button type="button" className="w-full md:flex-1 hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer" onClick={() => { onClose(); onOpenRating(); }}>
                 {tMeta('reviewGooglePlay')}
               </button>
             )}
@@ -216,7 +217,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <button
                 type="button"
                 onClick={() => { onOpenContactModal(); onClose(); }}
-                className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+                className="w-full md:flex-1 hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm md:text-xs font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
                 {tMeta('ratingSendFeedbackButton')}
@@ -226,7 +227,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <button
                 type="button"
                 onClick={() => { onOpenPrivacyPolicy(); onClose(); }}
-                className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+                className="w-full md:flex-1 hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm md:text-xs font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
               >
                 <FileText className="w-4 h-4" />
                 {tNav('privacyPolicyMenuItem')}
@@ -236,7 +237,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               <button
                 type="button"
                 onClick={() => { onOpenTermsOfService(); onClose(); }}
-                className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
+                className="w-full md:flex-1 hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm md:text-xs font-extrabold text-[var(--kids-ink)] cursor-pointer flex items-center justify-center gap-2"
               >
                 <FileText className="w-4 h-4" />
                 {tNav('termsMenuItem')}

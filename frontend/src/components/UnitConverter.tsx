@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeftRight, Calculator, Scale, Clock, Ruler, Maximize2 } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 type UnitCategory = 'length' | 'area' | 'weight' | 'capacity' | 'time';
 
@@ -9,6 +11,8 @@ interface UnitConverterProps {
 }
 
 export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', theme = 'dark' }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
   const [category, setCategory] = useState<UnitCategory>('length');
   const [inputValue, setInputValue] = useState<number>(1);
   const [fromUnit, setFromUnit] = useState<string>('m');
@@ -139,7 +143,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
     // default. Without this opt-out, the lab-interior wrapper's force-light-card override still
     // neutralizes those exact classes to white while leaving their white/light text untouched,
     // making the reference table (and, in dark theme, the category-selector bar) unreadable.
-    <div data-lab-instrument className={`${cardStyle} border rounded-2xl p-4 sm:p-6 shadow-xs dir-rtl transition-colors duration-300`} dir="rtl">
+    <div data-lab-instrument className={`${cardStyle} border rounded-2xl p-4 sm:p-6 shadow-xs transition-colors duration-300`} dir={direction}>
       <div className="flex items-center justify-between mb-4 border-b border-slate-700/30 pb-3 flex-wrap gap-2">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold">
@@ -147,10 +151,10 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
           </div>
           <div>
             <h3 className="font-extrabold text-base font-sans">
-              محول القياسات والجداول الرسمية ({grade})
+              {t('unitConverterTitle', { grade })}
             </h3>
             <p className="text-xs opacity-70 font-sans">
-              تحويلات الأطوال، المساحات الفلاحية، الأوزان، السعات والمدد
+              {t('unitConverterSubtitle')}
             </p>
           </div>
         </div>
@@ -173,7 +177,17 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
                 }`}
               >
                 <IconComp className="w-3.5 h-3.5" />
-                <span>{catKey === 'length' ? 'أطوال' : catKey === 'area' ? 'مساحات' : catKey === 'weight' ? 'أوزان' : catKey === 'capacity' ? 'سعات' : 'مدد'}</span>
+                <span>
+                  {catKey === 'length'
+                    ? t('unitConverterCategoryLength')
+                    : catKey === 'area'
+                      ? t('unitConverterCategoryArea')
+                      : catKey === 'weight'
+                        ? t('unitConverterCategoryWeight')
+                        : catKey === 'capacity'
+                          ? t('unitConverterCategoryCapacity')
+                          : t('unitConverterCategoryTime')}
+                </span>
               </button>
             );
           })}
@@ -187,7 +201,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-center">
           {/* Input value & From unit */}
           <div className="md:col-span-2 space-y-1">
-            <label htmlFor="unit-converter-input-value" className="text-[10px] font-bold text-[var(--app-text-muted)] block uppercase">القيمة المراد تحويلها:</label>
+            <label htmlFor="unit-converter-input-value" className="text-[10px] font-bold text-[var(--app-text-muted)] block uppercase">{t('unitConverterInputLabel')}</label>
             <div className="flex gap-2">
               <input
                 id="unit-converter-input-value"
@@ -220,7 +234,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
                 setToUnit(temp);
               }}
               className={`p-2.5 border rounded-xl shadow-xs transition-transform active:scale-90 ${inputStyle}`}
-              title="عكس الوحدتين"
+              title={t('unitConverterSwapTitle')}
             >
               <ArrowLeftRight className="w-4 h-4 text-teal-400" />
             </button>
@@ -228,7 +242,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
 
           {/* Result value & To unit */}
           <div className="md:col-span-2 space-y-1">
-            <label className="text-[10px] font-bold opacity-60 block uppercase">النتيجة المحولة:</label>
+            <label className="text-[10px] font-bold opacity-60 block uppercase">{t('unitConverterResultLabel')}</label>
             <div className="flex gap-2">
               <div className={`w-full font-black text-sm rounded-xl px-3 py-2 flex items-center overflow-x-auto font-mono border ${
                 isBright
@@ -257,7 +271,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ grade = '4AP', the
       {/* Official Scale Reference Table */}
       <div className={`rounded-xl p-4 border ${isBright ? 'bg-slate-900 text-white border-slate-800' : 'bg-black/60 text-slate-200 border-slate-800'}`}>
         <span className="text-[10px] font-mono text-teal-300 block mb-2 uppercase tracking-wider">
-          جدول المهارات والنسب المرجعية للشهادة:
+          {t('unitConverterReferenceTableLabel')}
         </span>
         <div className="flex items-center justify-between text-xs font-bold flex-wrap gap-2">
           {category === 'area' && (

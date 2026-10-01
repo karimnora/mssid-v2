@@ -18,7 +18,7 @@ interface EducationalCalculatorProps {
 }
 
 export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ grade = '1AP' }) => {
-  const { t } = useLocaleContext();
+  const { t, direction } = useLocaleContext();
   const allowedKeys = useMemo(() => allowedCalculatorKeys(grade), [grade]);
   const [expression, setExpression] = useState('');
   const [result, setResult] = useState<string>('');
@@ -59,7 +59,7 @@ export const EducationalCalculator: React.FC<EducationalCalculatorProps> = ({ gr
     // data-lab-instrument: the keypad's bg-indigo-600 buttons otherwise get repainted green by the
     // lab-interior wrapper's force-light-card override (harmless to read, but not the intended
     // color) — everything else here already uses its own light theme regardless of this attribute.
-    <div data-lab-instrument className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-md text-slate-900 max-w-4xl mx-auto">
+    <div data-lab-instrument className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-md text-slate-900 max-w-4xl mx-auto" dir={direction}>
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-3">
           <div>

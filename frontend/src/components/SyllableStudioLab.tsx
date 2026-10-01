@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles, Volume2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, Volume2 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowFrenchInLab } from '../utils/labGradePolicy';
 import { speakText } from '../utils/speech';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface SyllableStudioLabProps {
   grade?: PrimaryGrade;
@@ -37,6 +39,9 @@ const FRENCH_WORDS: SyllableWord[] = [
 const SYLLABLE_COLORS = ['bg-sky-500', 'bg-amber-500', 'bg-emerald-500', 'bg-fuchsia-500'];
 
 export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2AP', onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsLanguage');
+  const tCommon = useTranslation('common');
   const showFrench = canShowFrenchInLab(grade);
   const [activeTab, setActiveTab] = useState<StudioTab>('arabic');
   const [wordIdx, setWordIdx] = useState<number>(0);
@@ -90,26 +95,26 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-4xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-cyan-700 via-sky-800 to-blue-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-cyan-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 w-14 h-14 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-6 h-6" />
+              {direction === 'rtl' ? <ArrowRight className="w-6 h-6" /> : <ArrowLeft className="w-6 h-6" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              <span>أستوديو المقاطع الصوتية (1AP - 3AP)</span>
+              <span>{t('syllStudioBadge')}</span>
             </div>
-            <h1 className="text-xl sm:text-3xl font-black font-sans">تَفْكِيكُ الكَلِمَاتِ إِلَى مَقَاطِعَ</h1>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">{t('syllStudioTitle')}</h1>
             <p className="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-3xl">
-              صفّق مع كل مقطع صوتي تسمعه، ثم شاهد الكلمة وهي تنقسم إلى مقاطعها الملونة.
+              {t('syllStudioIntro')}
             </p>
           </div>
         </div>
@@ -176,8 +181,8 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
               }`}
             >
               {guess === currentWord.syllables.length
-                ? 'إِجَابَةٌ صَحِيحَةٌ! أَحْسَنْتَ 🌟'
-                : `العَدَدُ الصَّحِيحُ هُوَ ${currentWord.syllables.length}`}
+                ? t('syllCorrectFeedback')
+                : t('syllWrongFeedback', { count: currentWord.syllables.length })}
             </div>
             <div className="flex items-center justify-center gap-2 flex-wrap">
               {currentWord.syllables.map((syl, i) => (
@@ -195,7 +200,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
               onClick={nextWord}
               className="px-5 py-3 rounded-2xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer"
             >
-              الكَلِمَةُ التَّالِيَةُ ⟵
+              {t('syllNextWordButton')}
             </button>
           </div>
         )}

@@ -297,7 +297,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="print:max-h-none print:overflow-visible print:p-0 print:shadow-none print:border-0 print:rounded-none bg-white rounded-3xl max-w-6xl w-full p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[96vh] overflow-hidden text-right"
+        className="web-dialog-studio print:max-h-none print:overflow-visible print:p-0 print:shadow-none print:border-0 print:rounded-none bg-white rounded-3xl max-w-6xl w-full p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[96vh] overflow-hidden text-right"
       >
         {/* Modal Top Bar */}
         <div className="print:hidden flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">

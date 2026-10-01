@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Sun, Zap, Droplets, Sparkles, Award, RotateCcw, AlertTriangle } from 'lucide-react';
 import { AuthService } from '../../services/authService';
+import { useTranslation } from '../../hooks/useTranslation';
 
 interface Props {
   onReward?: (coins: number, xp: number) => void;
 }
 
 export const SolarOasisPumpLab: React.FC<Props> = ({ onReward }) => {
+  const t = useTranslation('labsScience');
   const [solarAngle, setSolarAngle] = useState<number>(31); // optimal 31° for Algerian desert
   const [sunlightHours, setSunlightHours] = useState<number>(12); // 0 to 24 (noon is peak)
   const [batteryConnected, setBatteryConnected] = useState<boolean>(true);
@@ -29,15 +31,15 @@ export const SolarOasisPumpLab: React.FC<Props> = ({ onReward }) => {
         <div>
           <div className="flex items-center gap-2">
             <span className="bg-yellow-100 text-yellow-900 text-xs font-black px-3 py-1 rounded-full">
-              الطاقات المتجددة في الجزائر ☀️
+              {t('solarBadgeTopic')}
             </span>
-            <span className="text-xs font-bold text-amber-600">بسكرة • الوادي • ورقلة</span>
+            <span className="text-xs font-bold text-amber-600">{t('solarBadgeLocation')}</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-[var(--app-text)] mt-2">
-            محاكاة الضخ الفوتوفولطي للواحات الصحراوية بالطاقة الشمسية
+            {t('solarTitle')}
           </h2>
           <p className="text-xs sm:text-sm text-[var(--app-text-muted)] mt-1">
-            اضبط زاوية ميل اللوح الشمسي وساعات سطوع الشمس لدراسة استطاعة الضخ المائي لسقي نخيل دقلة نور.
+            {t('solarIntro')}
           </p>
         </div>
 

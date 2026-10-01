@@ -12,7 +12,7 @@ export const labsScience: typeof labsScienceAr = {
   densityVariablesHeader: 'Variables de l’expérience',
   densitySalinityLabel: 'Concentration en sel du bassin (g/L) :',
   densitySalinityFresh: 'Eau douce (0 g/L)',
-  densitySalinitySea: 'Mer méditerranée (38 g/L)',
+  densitySalinitySea: 'Mer Méditerranée (38 g/L)',
   densitySalinityChott: 'Chott Melghir (300+ g/L)',
   densityChooseObjectLabel: 'Choisis l’objet à tester :',
   densityWaterDensityLabel: 'Densité de la solution (ρ) :',
@@ -71,9 +71,12 @@ export const labsScience: typeof labsScienceAr = {
   inquiryTrySimulationButton: 'Essaie l’expérience toi-même dans le labo interactif ⬅',
 
   // --- HumanAnatomyLab.tsx ---
-  anatomyBadge: 'Labo du corps humain (5AP)',
+  anatomyBadge: 'Labo du corps humain (4e–5e AP)',
+  anatomyBadge4AP: 'Labo du système digestif (4e AP)',
   anatomyTitle: 'Le système digestif et le système respiratoire',
-  anatomyIntro: 'Découvre le trajet des aliments dans ton corps, et comment tu respires et échanges l’air dans tes poumons.',
+  anatomyTitleDigestive: 'Le système digestif',
+  anatomyIntro: 'Découvre le trajet des aliments dans ton corps et comment tu respires et échanges l’air dans tes poumons.',
+  anatomyIntroDigestive: 'Découvre le trajet des aliments, de la bouche à l’intestin — programme de 4e année.',
   anatomyTabDigestive: '🍽️ Système digestif',
   anatomyTabRespiratory: '🫁 Système respiratoire',
   anatomyBreathingTitle: 'Essaie de respirer : observe les poumons',
@@ -81,9 +84,9 @@ export const labsScience: typeof labsScienceAr = {
   testYourKnowledge: 'Teste tes connaissances :',
 
   // --- EarthCyclesLab.tsx ---
-  earthCyclesBadge: 'Labo des cycles de la Terre (3AP - 5AP)',
-  earthCyclesTitle: 'Le jour et la nuit, les saisons, et l’ombre',
-  earthCyclesIntro: 'Découvre comment le jour et la nuit se succèdent, connais les saisons de l’année en Algérie, et observe comment la longueur de l’ombre change au cours de la journée.',
+  earthCyclesBadge: 'Labo des cycles de la Terre (3e–5e AP)',
+  earthCyclesTitle: 'Le jour, la nuit, les saisons et l’ombre',
+  earthCyclesIntro: 'Découvre comment le jour et la nuit se succèdent, les saisons en Algérie et comment la longueur de l’ombre change au cours de la journée.',
   earthCyclesTabDayNight: '🌗 Jour et nuit',
   earthCyclesTabSeasons: '🍂 Saisons de l’année',
   earthCyclesTabShadow: '🕶️ Longueur de l’ombre',
@@ -94,8 +97,8 @@ export const labsScience: typeof labsScienceAr = {
   earthCyclesHourAbbrev: '{hour}h',
 
   // --- PrimaryDiscoveryLabInteractive.tsx ---
-  discoveryBadge: 'Labo d’éveil scientifique et d’éducation civique (1AP / 2AP)',
-  discoveryTitle: 'Les cinq sens, les étapes de croissance d’une plante, et les droits et devoirs de l’enfant',
+  discoveryBadge: 'Labo d’éveil scientifique et d’éducation civique (1re / 2e AP)',
+  discoveryTitle: 'Les cinq sens, les étapes de croissance d’une plante et les droits et devoirs de l’enfant',
   discoveryIntro: 'Découvre les organes des cinq sens et leurs fonctions, simule la croissance d’une plante avec l’eau et le soleil, et découvre tes droits et devoirs en tant que bon citoyen.',
   discoveryTabSenses: '👁️ Les cinq sens (organes et fonctions)',
   discoveryTabPlant: '🌱 Étapes de croissance de la plante et ses besoins',
@@ -126,7 +129,7 @@ export const labsScience: typeof labsScienceAr = {
   // --- ScienceExperimentLab.tsx ---
   expLabTitle: 'Labo d’expériences scientifiques et d’éveil scientifique',
   expLabSubjectBadge: 'Éducation scientifique et technologique',
-  expLabIntro: 'Simulation interactive des expériences du programme algérien : états de la matière et cycle de l’eau, germination et croissance de la plante verte, et l’aimant et la boussole ! 🧪🌱',
+  expLabIntro: 'Simulation interactive des expériences du programme algérien : états de la matière et cycle de l’eau, germination et croissance de la plante verte, aimant et boussole. 🧪🌱',
   expLabBackButton: 'Retour aux outils',
   expLabTabFoggara: 'Foggara d’Adrar et Timimoun',
   expLabTabSolarPump: 'Pompage de l’eau à l’énergie solaire',
@@ -215,14 +218,15 @@ export const labsScience: typeof labsScienceAr = {
   simExplanationLabel: 'Explication :',
 
   // --- ElectricityLabInteractive.tsx ---
-  elecTitle: 'Labo d’électricité et de la diode interactif (Diode & Circuits Lab)',
-  elecGradeBadge: 'Cycle primaire (4AP & 5AP)',
+  elecTitle: 'Labo interactif d’électricité et de la diode',
+  elecGradeBadge: 'Cycle primaire (4e et 5e AP)',
   elecSubtitle: 'Simulation réaliste et sûre des expériences électriques et de la diode selon le programme primaire algérien',
   elecSoundToggleTooltip: 'Activer/désactiver les effets sonores',
   elecSoundOn: 'Son activé',
   elecSoundOff: 'Son coupé',
   elecFrenchToggle: 'Français : {status}',
-  elecTabDiode: '1. La diode électroluminescente (Diode)',
+  elecTabBuilder: 'Construire un circuit 🔧',
+  elecTabDiode: '1. La diode électroluminescente',
   elecTabConductors: '2. Conducteurs et isolants',
   elecTabSeriesParallel: '3. Série et parallèle',
   elecTabMotorBuzzer: '4. Le moteur et le buzzer',

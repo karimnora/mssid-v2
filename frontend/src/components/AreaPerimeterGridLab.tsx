@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface AreaPerimeterGridLabProps {
   onReward?: (coins: number, xp: number) => void;
@@ -16,6 +18,9 @@ const CHALLENGES = [
 const key = (r: number, c: number) => `${r}-${c}`;
 
 export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
+  const tCommon = useTranslation('common');
   const [cells, setCells] = useState<Set<string>>(new Set());
   const [challengeIdx, setChallengeIdx] = useState<number>(0);
   const [achieved, setAchieved] = useState<boolean>(false);
@@ -68,26 +73,26 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-4xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-lime-700 via-emerald-800 to-teal-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-lime-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              <span>مختبر المساحة والمحيط (4AP - 5AP)</span>
+              <span>{t('areaPerimeterBadge')}</span>
             </div>
-            <h1 className="text-xl sm:text-3xl font-black font-sans">شَبَكَةُ المِسَاحَةِ وَالمُحِيطِ التَّفَاعُلِيَّةُ</h1>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">{t('areaPerimeterTitle')}</h1>
             <p className="text-xs sm:text-sm text-lime-100 leading-relaxed max-w-3xl">
-              انقر على المربعات لبناء شكل، وشاهد المساحة والمحيط يُحسبان تلقائياً أمامك.
+              {t('areaPerimeterSubtitle')}
             </p>
           </div>
         </div>
@@ -96,19 +101,19 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
       <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="p-3 rounded-2xl bg-emerald-100 border border-emerald-300 text-center min-w-[110px]">
-            <p className="text-[10px] font-black text-emerald-700">المِسَاحَةُ (Aire)</p>
+            <p className="text-[10px] font-black text-emerald-700">{t('areaPerimeterAreaStat')}</p>
             <p className="text-2xl font-black text-emerald-900 font-sans">{area}</p>
             <p className="text-[10px] font-black text-emerald-800">{area === 1 ? 'مربع' : 'مربعات'}</p>
           </div>
           <div className="p-3 rounded-2xl bg-teal-100 border border-teal-300 text-center min-w-[110px]">
-            <p className="text-[10px] font-black text-teal-700">المُحِيطُ (Périmètre)</p>
+            <p className="text-[10px] font-black text-teal-700">{t('areaPerimeterPerimeterStat')}</p>
             <p className="text-2xl font-black text-teal-900 font-sans">{perimeter}</p>
             <p className="text-[10px] font-black text-teal-800">{perimeter === 1 ? 'ضلع' : 'أضلاع'}</p>
           </div>
           <button
             onClick={resetGrid}
             className="p-3 rounded-2xl bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)] transition-colors cursor-pointer"
-            title="إعادة الشبكة"
+            title={t('areaPerimeterResetTitle')}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -138,10 +143,10 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
       </div>
 
       <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4 text-center">
-        <h3 className="text-sm font-black text-[var(--app-text)]">🎯 تَحَدٍّ: {challenge.labelAr}</h3>
+        <h3 className="text-sm font-black text-[var(--app-text)]">🎯 {t('areaPerimeterChallengePrefix')} {challenge.labelAr}</h3>
         {achieved && (
           <div className="text-sm font-black p-3 rounded-xl bg-emerald-100 text-emerald-900">
-            رَائِعٌ! بَنَيْتَ شَكْلاً مِسَاحَتُهُ {challenge.area} تَمَاماً 🌟
+            {t('areaPerimeterAchievedMessage', { area: challenge.area })}
           </div>
         )}
         <div className="flex items-center justify-center gap-3">
@@ -149,14 +154,14 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
             onClick={checkChallenge}
             className="px-5 py-3 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
           >
-            تَحَقَّقْ مِنَ المِسَاحَةِ ✅
+            {t('areaPerimeterCheckButton')}
           </button>
           {achieved && (
             <button
               onClick={nextChallenge}
               className="px-5 py-3 rounded-2xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer"
             >
-              التَّحَدِّي التَّالِي ⟵
+              {t('areaPerimeterNextChallengeButton')}
             </button>
           )}
         </div>

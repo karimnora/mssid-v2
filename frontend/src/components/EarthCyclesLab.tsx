@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
+import { labQuizIsLocked, labQuizOptionClass } from '../utils/labQuizChoice';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface EarthCyclesLabProps {
   onReward?: (coins: number, xp: number) => void;
@@ -32,11 +35,14 @@ const SEASON_QUESTIONS = [
 ];
 
 export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsScience');
+  const tCommon = useTranslation('common');
   const [activeTab, setActiveTab] = useState<CyclesTab>('day_night');
   const [hour, setHour] = useState<number>(12);
   const [selectedSeason, setSelectedSeason] = useState<string>('summer');
   const [selectedShadowIdx, setSelectedShadowIdx] = useState<number>(2);
-  const [seasonAnswers, setSeasonAnswers] = useState<Record<number, boolean>>({});
+  const [seasonAnswers, setSeasonAnswers] = useState<Record<number, string>>({});
   const [hourExplored, setHourExplored] = useState<Set<number>>(new Set([12]));
 
   const currentSeason = SEASONS.find((s) => s.id === selectedSeason) || SEASONS[0];
@@ -55,7 +61,8 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
   };
 
   const handleSeasonAnswer = (qId: number, optId: string, correct: string) => {
-    setSeasonAnswers((prev) => ({ ...prev, [qId]: true }));
+    if (labQuizIsLocked(seasonAnswers[qId], correct)) return;
+    setSeasonAnswers((prev) => ({ ...prev, [qId]: optId }));
     if (optId === correct) onReward?.(5, 15);
   };
 
@@ -63,26 +70,26 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
     // data-lab-instrument: the header's from-indigo gradient banner otherwise gets forced to a
     // white background by the lab-interior wrapper's override, while its text-indigo-100 subtitle
     // (untouched by that rule) stays light-on-white and becomes unreadable.
-    <div data-lab-instrument className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    <div data-lab-instrument className="space-y-6 max-w-5xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-indigo-700 via-blue-800 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              <span>مختبر دورات الأرض (3AP - 5AP)</span>
+              <span>{t('earthCyclesBadge')}</span>
             </div>
-            <h1 className="text-xl sm:text-3xl font-black font-sans">اللَّيْلُ وَالنَّهَارُ، الفُصُولُ، وَالظِّلُّ</h1>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">{t('earthCyclesTitle')}</h1>
             <p className="text-xs sm:text-sm text-indigo-100 leading-relaxed max-w-3xl">
-              اكتشف كيف يدور الليل والنهار، تعرّف على فصول السنة في الجزائر، وشاهد كيف يتغير طول الظل خلال اليوم.
+              {t('earthCyclesIntro')}
             </p>
           </div>
         </div>
@@ -91,10 +98,10 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
       <div className="flex items-center gap-2 border-b border-[var(--app-card-border)] pb-3 overflow-x-auto">
         {(
           [
-            { id: 'day_night', labelAr: '🌗 الليل والنهار', color: 'bg-indigo-600' },
-            { id: 'seasons', labelAr: '🍂 فصول السنة', color: 'bg-amber-600' },
-            { id: 'shadow', labelAr: '🕶️ طول الظل', color: 'bg-slate-700' },
-          ] as { id: CyclesTab; labelAr: string; color: string }[]
+            { id: 'day_night', label: t('earthCyclesTabDayNight'), color: 'bg-indigo-600' },
+            { id: 'seasons', label: t('earthCyclesTabSeasons'), color: 'bg-amber-600' },
+            { id: 'shadow', label: t('earthCyclesTabShadow'), color: 'bg-slate-700' },
+          ] as { id: CyclesTab; label: string; color: string }[]
         ).map((tab) => (
           <button
             key={tab.id}
@@ -103,7 +110,7 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
               activeTab === tab.id ? `${tab.color} text-white shadow-md` : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
             }`}
           >
-            {tab.labelAr}
+            {tab.label}
           </button>
         ))}
       </div>
@@ -123,7 +130,7 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
               {String(hour).padStart(2, '0')}:00
             </div>
             <p className={`text-xs font-black mt-1 ${isDaytime(hour) ? 'text-amber-800' : 'text-indigo-100'}`}>
-              {isDaytime(hour) ? 'نَهَارٌ: الشَّمْسُ مُشْرِقَةٌ ☀️' : 'لَيْلٌ: القَمَرُ وَالنُّجُومُ تُضِيءُ السَّمَاءَ 🌙'}
+              {isDaytime(hour) ? t('earthCyclesDaytimeStatus') : t('earthCyclesNighttimeStatus')}
             </p>
           </div>
           <input
@@ -183,27 +190,19 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
             </div>
           </div>
           <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4">
-            <h3 className="text-sm font-black text-[var(--app-text)]">اختبر معلوماتك:</h3>
-            {SEASON_QUESTIONS.map((q) => {
-              const isAnswered = !!seasonAnswers[q.id];
-              return (
+            <h3 className="text-sm font-black text-[var(--app-text)]">{t('testYourKnowledge')}</h3>
+            {SEASON_QUESTIONS.map((q) => (
                 <div key={q.id} className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3">
                   <p className="text-xs sm:text-sm font-black text-[var(--app-text)]">{q.qAr}</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {q.options.map((optId) => {
-                      const isCorrect = optId === q.correct;
                       const opt = SEASONS.find((s) => s.id === optId)!;
                       return (
                         <button
                           key={optId}
-                          onClick={() => !isAnswered && handleSeasonAnswer(q.id, optId, q.correct)}
-                          className={`p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                            isAnswered
-                              ? isCorrect
-                                ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
-                                : 'bg-slate-100 text-slate-400 border-slate-200'
-                              : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-amber-400'
-                          }`}
+                          type="button"
+                          onClick={() => handleSeasonAnswer(q.id, optId, q.correct)}
+                          className={labQuizOptionClass(seasonAnswers[q.id], optId, q.correct)}
                         >
                           {opt.icon} {opt.nameAr}
                         </button>
@@ -211,15 +210,14 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
                     })}
                   </div>
                 </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       )}
 
       {activeTab === 'shadow' && (
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
-          <h2 className="text-lg font-black text-[var(--app-text)]">كَيْفَ يَتَغَيَّرُ ظِلُّكَ خِلَالَ اليَوْمِ؟</h2>
+          <h2 className="text-lg font-black text-[var(--app-text)]">{t('earthCyclesShadowQuestion')}</h2>
           <div className="max-w-md mx-auto p-8 rounded-3xl bg-gradient-to-b from-sky-100 to-amber-50 border-2 border-amber-300 flex flex-col items-center gap-2">
             <span className="text-5xl">🧍</span>
             <div
@@ -227,12 +225,12 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
               style={{ width: `${currentShadow.pct}%`, height: '10px' }}
             />
             <p className="font-black text-sm text-amber-900 mt-2">{currentShadow.labelAr}</p>
-            <p className="text-xs font-bold text-slate-600">طُولُ الظِّلِّ: {currentShadow.length}</p>
+            <p className="text-xs font-bold text-slate-600">{t('earthCyclesShadowLengthLabel', { length: currentShadow.length })}</p>
           </div>
           <div className="flex justify-center gap-2 flex-wrap">
-            {SHADOW_TIMES.map((t, idx) => (
+            {SHADOW_TIMES.map((slot, idx) => (
               <button
-                key={t.hour}
+                key={slot.hour}
                 onClick={() => {
                   setSelectedShadowIdx(idx);
                   onReward?.(2, 5);
@@ -241,7 +239,7 @@ export const EarthCyclesLab: React.FC<EarthCyclesLabProps> = ({ onReward, onBack
                   idx === selectedShadowIdx ? 'bg-slate-700 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                 }`}
               >
-                {t.hour} سا
+                {t('earthCyclesHourAbbrev', { hour: slot.hour })}
               </button>
             ))}
           </div>

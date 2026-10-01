@@ -8,6 +8,8 @@ export const common: typeof commonAr = {
   cancel: 'Annuler',
   save: 'Enregistrer',
   close: 'Fermer',
+  backToTools: 'Retour aux outils',
+  tryAgain: 'Essaie encore',
   profile: 'Profil',
   settings: 'Paramètres',
   tashkeelLabel: 'Diacritiques (tachkil)',

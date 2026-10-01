@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 import {
   ALGERIA_MAP_BANDS,
   ALGERIA_MAP_CITIES,
@@ -9,6 +10,7 @@ import {
   ALGERIA_MAP_VIEWBOX,
   ALGERIA_OUTLINE_PATH,
 } from '../data/algeriaMapOutline';
+import { labQuizIsLocked, labQuizOptionClass } from '../utils/labQuizChoice';
 
 interface TopographyMapLabProps {
   onReward?: (coins: number, xp: number) => void;
@@ -242,28 +244,31 @@ const AlgeriaReliefMap: React.FC<{
 };
 
 export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward, onBack }) => {
+  const { direction } = useLocaleContext();
   const t = useTranslation('labsSocial');
+  const tCommon = useTranslation('common');
   const [selectedId, setSelectedId] = useState<string>('tell');
-  const [answers, setAnswers] = useState<Record<number, boolean>>({});
+  const [answers, setAnswers] = useState<Record<number, string>>({});
 
   const selected = REGIONS.find((r) => r.id === selectedId) || REGIONS[0];
 
   const handleAnswer = (qId: number, optId: string, correct: string) => {
-    setAnswers((prev) => ({ ...prev, [qId]: true }));
+    if (labQuizIsLocked(answers[qId], correct)) return;
+    setAnswers((prev) => ({ ...prev, [qId]: optId }));
     if (optId === correct) onReward?.(5, 15);
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-5xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-orange-700 via-red-800 to-rose-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
@@ -376,27 +381,18 @@ export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward, on
 
       <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4">
         <h3 className="text-sm font-black text-[var(--app-text)]">{t('topographyQuizHeading')}</h3>
-        {QUIZ_QUESTIONS.map((q) => {
-          const isAnswered = !!answers[q.id];
-          return (
+        {QUIZ_QUESTIONS.map((q) => (
             <div key={q.id} className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3">
               <p className="text-xs sm:text-sm font-black text-[var(--app-text)]">{q.qAr}</p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {q.options.map((optId) => {
-                  const isCorrect = optId === q.correct;
                   const opt = REGIONS.find((r) => r.id === optId)!;
                   return (
                     <button
                       key={optId}
                       type="button"
-                      onClick={() => !isAnswered && handleAnswer(q.id, optId, q.correct)}
-                      className={`p-2.5 min-h-[var(--hit)] rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                        isAnswered
-                          ? isCorrect
-                            ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
-                            : 'bg-slate-100 text-slate-400 border-slate-200'
-                          : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)]'
-                      }`}
+                      onClick={() => handleAnswer(q.id, optId, q.correct)}
+                      className={labQuizOptionClass(answers[q.id], optId, q.correct)}
                     >
                       {opt.icon} {opt.nameAr}
                     </button>
@@ -404,8 +400,7 @@ export const TopographyMapLab: React.FC<TopographyMapLabProps> = ({ onReward, on
                 })}
               </div>
             </div>
-          );
-        })}
+        ))}
       </div>
     </div>
   );

@@ -23,7 +23,6 @@ import {
   Magnet,
   Power,
   Gauge,
-  Languages,
   Workflow,
   Shuffle
 } from 'lucide-react';
@@ -34,49 +33,22 @@ interface ScienceLabSimulationProps {
 }
 
 export const ScienceLabSimulation: React.FC<ScienceLabSimulationProps> = ({ gameplay, grade = '4AP' }) => {
-  // Global state for optional French terminology display
-  const [showFrench, setShowFrench] = useState<boolean>(false);
-
-  // 1AP has zero French per the official programme — the movement lab skips the French toggle
-  // bar entirely rather than showing an always-empty/irrelevant control to a 6-7 year old.
   if (gameplay.type === 'movement_lab') {
     return <MovementLabView gameplay={gameplay} grade={grade} />;
   }
 
   return (
     <div className="space-y-4">
-      {/* Optional French Language Toggle Control Bar */}
-      <div className="bg-slate-900 border border-slate-800 p-3 rounded-2xl flex items-center justify-between flex-wrap gap-2 dir-rtl" dir="rtl">
-        <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
-          <Languages className="w-4 h-4 text-cyan-400" />
-          <span>لُغَةُ العَرْضِ: <span className="text-emerald-400 font-extrabold">العَرَبِيَّةُ (أَسَاسِيٌّ)</span></span>
-        </div>
-
-        <button
-          onClick={() => setShowFrench(!showFrench)}
-          className={`px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center gap-2 border ${
-            showFrench
-              ? 'bg-blue-600/30 text-blue-200 border-blue-400/60 shadow-md ring-2 ring-blue-500/30'
-              : 'bg-slate-800 text-slate-300 border-slate-700 hover:text-slate-200 hover:bg-slate-700'
-          }`}
-        >
-          <span>🌐 المصطلحات بالفرنسية (Optionnel):</span>
-          <span className={`px-2 py-0.5 rounded-md text-[10px] ${showFrench ? 'bg-emerald-500 text-slate-950 font-black' : 'bg-slate-950 text-slate-500'}`}>
-            {showFrench ? 'مُظْهَرَة' : 'مُخْفَيَة'}
-          </span>
-        </button>
-      </div>
-
       {gameplay.type === 'circuit_builder' && (
         <div className="space-y-6">
           <ElectricityLabInteractive />
-          <CircuitSimulationView gameplay={gameplay} showFrench={showFrench} />
+          <CircuitSimulationView gameplay={gameplay} showFrench={false} />
         </div>
       )}
-      {gameplay.type === 'safety_roleplay' && <SafetyRoleplayView gameplay={gameplay} showFrench={showFrench} />}
-      {gameplay.type === 'mixtures_lab' && <MixturesLabView gameplay={gameplay} showFrench={showFrench} />}
-      {gameplay.type === 'process_stages' && <ProcessStagesView gameplay={gameplay} showFrench={showFrench} />}
-      {gameplay.type === 'matching_lab' && <MatchingLabView gameplay={gameplay} showFrench={showFrench} />}
+      {gameplay.type === 'safety_roleplay' && <SafetyRoleplayView gameplay={gameplay} showFrench={false} />}
+      {gameplay.type === 'mixtures_lab' && <MixturesLabView gameplay={gameplay} showFrench={false} />}
+      {gameplay.type === 'process_stages' && <ProcessStagesView gameplay={gameplay} showFrench={false} />}
+      {gameplay.type === 'matching_lab' && <MatchingLabView gameplay={gameplay} showFrench={false} />}
     </div>
   );
 };

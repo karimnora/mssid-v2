@@ -164,7 +164,7 @@ export const AiTutorModal: React.FC<AiTutorModalProps> = ({ isOpen, onClose, gra
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel w-full max-w-2xl flex flex-col overflow-hidden"
+        className="kids-modal-panel kids-modal-wide w-full max-w-2xl flex flex-col overflow-hidden"
       >
         {/* Header */}
         <div className="kids-modal-header p-4 sm:p-5 flex items-center justify-between shrink-0 gap-3">

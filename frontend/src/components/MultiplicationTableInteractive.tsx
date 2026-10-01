@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Sparkles, CheckCircle2, RotateCcw, Trophy } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface MultiplicationTableInteractiveProps {
   grade?: string;
 }
 
 export const MultiplicationTableInteractive: React.FC<MultiplicationTableInteractiveProps> = ({ grade = '4AP' }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
   const [selectedDigit, setSelectedDigit] = useState<number>(5);
   const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
   const [isTested, setIsTested] = useState<boolean>(false);
@@ -20,7 +24,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
   };
 
   return (
-    <div data-lab-instrument className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div data-lab-instrument className="kids-pole rounded-[28px] p-5 sm:p-6 space-y-6" dir={direction}>
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -28,18 +32,18 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
             <Sparkles className="w-6 h-6 animate-pulse" />
           </div>
           <div>
-            <h2 className="text-lg font-black text-amber-300">جَدْوَلُ الضَّرْبِ التَّفَاعُلِيُّ</h2>
-            <p className="text-xs text-slate-300">تَدَرَّبْ عَلَى جَدْوَلِ الضَّرْبِ سَرِيعاً مَعَ التَّصْحِيحِ الفَوْرِيِّ</p>
+            <h2 className="text-lg font-black text-amber-300">{t('multTableTitle')}</h2>
+            <p className="text-xs text-slate-300">{t('multTableSubtitle')}</p>
           </div>
         </div>
         <span className="bg-amber-400/10 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold">
-          أَدَاةُ الرِّيَاضِيَّاتِ
+          {t('multTableBadge')}
         </span>
       </div>
 
       {/* Digit Selector 1 to 10 */}
       <div className="space-y-2">
-        <h3 className="text-xs font-extrabold text-[var(--kids-muted)]">اخْتَر جَدْوَلَ الضَّرْبِ:</h3>
+        <h3 className="text-xs font-extrabold text-[var(--kids-muted)]">{t('multTableChooseLabel')}</h3>
         <div className="flex flex-wrap gap-2">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((digit) => (
             <button
@@ -64,14 +68,14 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
       <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-black text-amber-300">
-            جَدْوَلُ الضَّرْبِ فِي {selectedDigit}:
+            {t('multTableHeading', { digit: selectedDigit })}
           </h3>
           <button
             onClick={handleReset}
             className="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>إِعَادَةُ المَسْحِ</span>
+            <span>{t('multTableResetButton')}</span>
           </button>
         </div>
 
@@ -104,7 +108,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
                 />
                 {isTested && (
                   <span className="text-[10px] font-mono font-bold">
-                    {isCorrect ? '✅ صح' : `❌ النتيجة: ${correctAnswer}`}
+                    {isCorrect ? t('multTableCorrect') : t('multTableIncorrect', { answer: correctAnswer })}
                   </span>
                 )}
               </div>
@@ -117,7 +121,7 @@ export const MultiplicationTableInteractive: React.FC<MultiplicationTableInterac
             onClick={() => setIsTested(true)}
             className="hit-target bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs px-6 rounded-xl shadow-lg transition-all cursor-pointer"
           >
-            تَأْكِيدُ وَتَصْحِيحُ الإِجَابَاتِ
+            {t('multTableCheckButton')}
           </button>
         </div>
       </div>

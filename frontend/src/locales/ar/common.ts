@@ -5,6 +5,8 @@ export const common = {
   cancel: 'إلغاء',
   save: 'حفظ',
   close: 'إغلاق',
+  backToTools: 'العودة للأدوات',
+  tryAgain: 'حاول مرة أخرى',
   profile: 'الملف الشخصي',
   settings: 'الإعدادات',
   tashkeelLabel: 'التشكيل',

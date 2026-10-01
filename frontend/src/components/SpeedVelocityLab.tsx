@@ -9,6 +9,8 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade } from '../types';
 import { Vehicle3DModel } from './Vehicle3DModel';
+import { useLocaleContext } from '../context/LocaleContext';
+import { labQuizIsLocked } from '../utils/labQuizChoice';
 
 export interface SpeedVelocityLabProps {
   grade: PrimaryGrade;
@@ -229,9 +231,9 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
   const isMiddleGrade = grade === '3AP' || grade === '4AP';
   const isUpperGrade = grade === '5AP';
 
+  const { locale, direction } = useLocaleContext();
   const [activeTab, setActiveTab] = useState<LabTab>('race');
   const [viewPerspective, setViewPerspective] = useState<ViewPerspective>('3d');
-  const [language, setLanguage] = useState<'ar' | 'fr'>('ar');
 
   // Race Simulation State
   const [vehicleAId, setVehicleAId] = useState<string>(isEarlyGrade ? 'bike' : 'city_bus');
@@ -286,7 +288,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
     };
   }, []);
 
-  const t = (ar: string, fr: string) => (language === 'ar' ? ar : fr);
+  const t = (ar: string, fr: string) => (locale === 'fr' ? fr : ar);
 
   const vehicleA = useMemo(() => CITY_VEHICLES.find((v) => v.id === vehicleAId) || CITY_VEHICLES[2], [vehicleAId]);
   const vehicleB = useMemo(() => CITY_VEHICLES.find((v) => v.id === vehicleBId) || CITY_VEHICLES[4], [vehicleBId]);
@@ -487,7 +489,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
   const currentQuiz = QUIZ_LIST[quizIndex % QUIZ_LIST.length];
 
   const handleAnswer = (idx: number) => {
-    if (selectedOption !== null) return;
+    if (labQuizIsLocked(selectedOption ?? undefined, currentQuiz.correctIndex)) return;
     setSelectedOption(idx);
     if (idx === currentQuiz.correctIndex) {
       setQuizFeedback('correct');
@@ -544,7 +546,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
     <div
       data-lab-instrument
       className="w-full bg-slate-950 text-slate-100 rounded-3xl p-4 sm:p-6 font-sans shadow-2xl border border-slate-800 flex flex-col items-center select-none"
-      dir={language === 'ar' ? 'rtl' : 'ltr'}
+      dir={direction}
     >
       {/* ── HEADER ── */}
       <div className="w-full flex flex-wrap items-center justify-between gap-3 mb-6 bg-slate-900/90 border border-slate-800 p-4 rounded-3xl shadow-xl">
@@ -552,7 +554,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           {onBack && (
             <button
               onClick={onBack}
-              aria-label={t('العودة للدروس والمختبرات', 'Retour')}
+              aria-label={t('العودة للدروس والمختبرات', 'Retour aux outils')}
               className="hit-target flex items-center justify-center rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-lg border border-slate-700 active:scale-95 transition-all"
             >
               ⬅️
@@ -563,7 +565,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-lg sm:text-2xl font-black bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  {t('مُخْتَبَرُ السُّرْعَة وَالحَرَكَة: «فِي المَدِينَة» 🏙️', 'Labo de Vitesse & Mouvement : « En Ville » 🏙️')}
+                  {t('مُخْتَبَرُ السُّرْعَة وَالحَرَكَة: «فِي المَدِينَة» 🏙️', 'Labo de vitesse et de mouvement : « En ville » 🏙️')}
                 </h1>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-500/40">
                   {grade}
@@ -580,7 +582,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           </div>
         </div>
 
-        {/* CONTROLS (2D/3D, Weather, Language) */}
+        {/* CONTROLS (2D/3D, Weather) */}
         <div className="flex items-center gap-2">
           {/* 2D vs 3D */}
           <div className="flex bg-slate-950 p-1 rounded-2xl border border-slate-800">
@@ -614,14 +616,6 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           >
             {weather === 'sunny' ? '☀️' : weather === 'rain' ? '🌧️' : '🌙'}
           </button>
-
-          {/* Language Switch */}
-          <button
-            onClick={() => setLanguage(language === 'ar' ? 'fr' : 'ar')}
-            className="px-3 py-1.5 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-300"
-          >
-            {language === 'ar' ? '🇫🇷 Français' : '🇩🇿 العربية'}
-          </button>
         </div>
       </div>
 
@@ -636,7 +630,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           }`}
         >
           <span>🏁</span>
-          <span>{t('سِبَاقُ المَدِينَة 2D/3D', 'Course Urbaine 2D/3D')}</span>
+          <span>{t('سِبَاقُ المَدِينَة 2D/3D', 'Course urbaine 2D/3D')}</span>
         </button>
 
         <button
@@ -675,7 +669,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             }`}
           >
             <span>🇩🇿</span>
-            <span>{t('رِحْلَاتُ مُدُنِ الجَزَائِر', 'Trajets Villes d’Algérie')}</span>
+            <span>{t('رِحْلَاتُ مُدُنِ الجَزَائِر', 'Trajets entre villes d’Algérie')}</span>
           </button>
         )}
 
@@ -688,7 +682,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           }`}
         >
           <span>🎯</span>
-          <span>{t('تَحَدِّي السُّرْعَة وَالأَوْسِمَة', 'Quiz & Défis')}</span>
+          <span>{t('تَحَدِّي السُّرْعَة وَالأَوْسِمَة', 'Quiz et défis')}</span>
         </button>
       </div>
 
@@ -726,7 +720,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   >
                     {CITY_VEHICLES.map((v) => (
                       <option key={v.id} value={v.id}>
-                        {v.emoji} {t(v.nameAr, v.nameFr)} ({v.speedKmh} km/h)
+                        {v.emoji} {v.nameAr} ({v.speedKmh} km/h)
                       </option>
                     ))}
                   </select>
@@ -783,7 +777,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 ) : (
                   <>
                     <span>🚀</span>
-                    <span>{t('انْطِلاَقُ السِّبَاق!', 'Lancer le Départ !')}</span>
+                    <span>{t('انْطِلاَقُ السِّبَاق!', 'Lancer le départ !')}</span>
                   </>
                 )}
               </button>
@@ -818,7 +812,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   >
                     {CITY_VEHICLES.map((v) => (
                       <option key={v.id} value={v.id}>
-                        {v.emoji} {t(v.nameAr, v.nameFr)} ({v.speedKmh} km/h)
+                        {v.emoji} {v.nameAr} ({v.speedKmh} km/h)
                       </option>
                     ))}
                   </select>
@@ -844,7 +838,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             {speedRadarFlashed && (
               <div className="absolute top-4 right-1/2 translate-x-1/2 z-30 bg-amber-400 text-slate-950 px-4 py-2 rounded-2xl font-black text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-bounce border-2 border-white">
                 <span>📸⚡</span>
-                <span>{t('فلاش رادار المدينة! تجاوز السرعة المحددة (50 كم/سا)', 'Flash Radar Urbain ! Dépassement de 50 km/h')}</span>
+                <span>فلاش رادار المدينة! تجاوز السرعة المحددة (50 كم/سا)</span>
               </div>
             )}
 
@@ -863,7 +857,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               <div className="relative flex flex-col gap-2">
                 <div className="flex items-center justify-between text-xs font-bold text-indigo-300 px-2">
                   <div className="flex items-center gap-2">
-                    <span className="p-1 rounded-md bg-indigo-900/60">🔵 {t(vehicleA.nameAr, vehicleA.nameFr)}</span>
+                    <span className="p-1 rounded-md bg-indigo-900/60">🔵 {vehicleA.nameAr}</span>
                     <span className="bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">⚡ {realSpeedA.toFixed(0)} km/h</span>
                   </div>
                   <div className="flex items-center gap-2 font-mono">
@@ -904,7 +898,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               <div className="relative flex flex-col gap-2">
                 <div className="flex items-center justify-between text-xs font-bold text-rose-300 px-2">
                   <div className="flex items-center gap-2">
-                    <span className="p-1 rounded-md bg-rose-900/60">🔴 {t(vehicleB.nameAr, vehicleB.nameFr)}</span>
+                    <span className="p-1 rounded-md bg-rose-900/60">🔴 {vehicleB.nameAr}</span>
                     <span className="bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">⚡ {realSpeedB.toFixed(0)} km/h</span>
                   </div>
                   <div className="flex items-center gap-2 font-mono">
@@ -955,29 +949,26 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     <span className="text-6xl animate-bounce">🏆</span>
                     <h2 className="text-2xl font-black text-amber-300">
                       {winner === 'A'
-                        ? t(`الفائز: ${vehicleA.emoji} ${vehicleA.nameAr}!`, `Victoire : ${vehicleA.emoji} ${vehicleA.nameFr} !`)
+                        ? `الفائز: ${vehicleA.emoji} ${vehicleA.nameAr}!`
                         : winner === 'B'
-                        ? t(`الفائز: ${vehicleB.emoji} ${vehicleB.nameAr}!`, `Victoire : ${vehicleB.emoji} ${vehicleB.nameFr} !`)
-                        : t('تعادل رائع وسرعة متكافئة!', 'Égalité parfaite !')}
+                        ? `الفائز: ${vehicleB.emoji} ${vehicleB.nameAr}!`
+                        : 'تعادل رائع وسرعة متكافئة!'}
                     </h2>
 
                     {/* Simple why-it-won sentence a young child can grasp without reading the numbers
                         below: speed = winning, in one plain phrase tied to the actual result. */}
                     <p className="text-sm font-bold text-slate-200 -mt-2">
                       {winner === 'TIE'
-                        ? t('السيارتان وصلتا معاً بنفس السرعة! 🤝', 'Les deux voitures sont arrivées ensemble, à la même vitesse ! 🤝')
-                        : t(
-                            `وصلت أولاً لأنها تسير بسرعة أكبر (${(winner === 'A' ? realSpeedA : realSpeedB).toFixed(0)} كم/سا)! 🚀`,
-                            `Arrivée première car elle roule plus vite (${(winner === 'A' ? realSpeedA : realSpeedB).toFixed(0)} km/h) ! 🚀`
-                          )}
+                        ? 'السيارتان وصلتا معاً بنفس السرعة! 🤝'
+                        : `وصلت أولاً لأنها تسير بسرعة أكبر (${(winner === 'A' ? realSpeedA : realSpeedB).toFixed(0)} كم/سا)! 🚀`}
                     </p>
 
                     <div className="w-full bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-4">
                       {/* Visual race-bar comparison — lets a child SEE who was faster at a glance,
                           without needing to read/compare decimal seconds. Bar width ∝ speed. */}
                       {[
-                        { label: t(vehicleA.nameAr, vehicleA.nameFr), emoji: vehicleA.emoji, time: timeA, speed: realSpeedA, color: 'cyan', isWinner: winner === 'A' },
-                        { label: t(vehicleB.nameAr, vehicleB.nameFr), emoji: vehicleB.emoji, time: timeB, speed: realSpeedB, color: 'rose', isWinner: winner === 'B' },
+                        { label: vehicleA.nameAr, emoji: vehicleA.emoji, time: timeA, speed: realSpeedA, color: 'cyan', isWinner: winner === 'A' },
+                        { label: vehicleB.nameAr, emoji: vehicleB.emoji, time: timeB, speed: realSpeedB, color: 'rose', isWinner: winner === 'B' },
                       ].map((row, idx) => (
                         <div key={idx} className="text-start space-y-1.5">
                           <div className="flex items-center justify-between text-sm font-black text-slate-200">
@@ -1004,10 +995,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
 
                       {winner !== 'TIE' && (
                         <div className="pt-1 text-amber-300 font-bold text-center text-sm border-t border-slate-800">
-                          ⏱️ {t(
-                            `الفارق بينهما: ${Math.abs(timeA - timeB).toFixed(1)} ثانية فقط!`,
-                            `Seulement ${Math.abs(timeA - timeB).toFixed(1)} secondes d'écart !`
-                          )}
+                          ⏱️ {`الفارق بينهما: ${Math.abs(timeA - timeB).toFixed(1)} ثانية فقط!`}
                         </div>
                       )}
                     </div>
@@ -1016,7 +1004,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                       onClick={startRace}
                       className="w-full py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black text-base shadow-lg active:scale-95"
                     >
-                      🔄 {t('إعادة السباق وتجربة مركبات أخرى', 'Rejouer / Changer de véhicules')}
+                      🔄 {t('إعادة السباق وتجربة مركبات أخرى', 'Rejouer / changer de véhicules')}
                     </button>
                   </div>
                 </motion.div>
@@ -1052,7 +1040,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                       className="bg-slate-950 p-4 rounded-2xl border-2 border-slate-800 hover:border-amber-400 flex flex-col items-center gap-2 shadow-lg transition-all"
                     >
                       <span className="text-5xl">{veh.emoji}</span>
-                      <span className="text-sm font-black text-slate-100 text-center">{t(veh.nameAr, veh.nameFr)}</span>
+                      <span className="text-sm font-black text-slate-100 text-center">{veh.nameAr}</span>
                       <span className="text-xs font-bold text-amber-400 font-mono">{veh.speedKmh} km/h</span>
                       <div className="flex gap-2 mt-2">
                         {idx > 0 && (
@@ -1081,8 +1069,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
 
               {sortSolved && (
                 <div className="p-4 rounded-2xl bg-emerald-950/80 border-2 border-emerald-500 text-center text-emerald-300 font-black text-base animate-bounce">
-                  🎉 {t('أحسنت يا بطل! الترتيب صحيح ومثالي: المشي 🚶 ⬅️ الدراجة 🚲 ⬅️ التاكسي 🚕 ⬅️ الطائرة ✈️',
-                         'Bravo champion ! Classement parfait : Marche 🚶 ⬅️ Vélo 🚲 ⬅️ Taxi 🚕 ⬅️ Avion ✈️')}
+                  🎉 أحسنت يا بطل! الترتيب صحيح ومثالي: المشي 🚶 ⬅️ الدراجة 🚲 ⬅️ التاكسي 🚕 ⬅️ الطائرة ✈️
                 </div>
               )}
             </div>
@@ -1092,7 +1079,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               <div>
                 <h2 className="text-xl font-black text-amber-400 flex items-center gap-2">
                   <span>📊</span>
-                  <span>{t('مُقَارَنَةُ سُرُعَاتِ وَسَائِلِ النَّقْلِ فِي المَدِينَةِ وَالطُّرُقَاتِ', 'Comparateur Graphique des Vitesses Urbaines & Interurbaines')}</span>
+                  <span>{t('مُقَارَنَةُ سُرُعَاتِ وَسَائِلِ النَّقْلِ فِي المَدِينَةِ وَالطُّرُقَاتِ', 'Comparateur de vitesses urbaines et interurbaines')}</span>
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-400">
                   {t('شاهد الفارق الزمني المذهل لقطع مسافة 100 كيلومتر بكل وسيلة نقل!', 'Visualise le temps nécessaire pour parcourir 100 km selon la vitesse !')}
@@ -1116,7 +1103,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                           {v.emoji}
                         </span>
                         <div>
-                          <div className="font-black text-sm text-slate-100">{t(v.nameAr, v.nameFr)}</div>
+                          <div className="font-black text-sm text-slate-100">{v.nameAr}</div>
                           <div className="text-xs text-amber-400 font-mono font-bold">{v.speedKmh} km/h</div>
                         </div>
                       </div>
@@ -1131,7 +1118,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                             style={{ backgroundColor: v.color }}
                           />
                         </div>
-                        <div className="text-[11px] text-slate-400 italic">💡 {t(v.factAr, v.factFr)}</div>
+                        <div className="text-[11px] text-slate-400 italic">💡 {v.factAr}</div>
                       </div>
 
                       <div className="text-xs font-mono bg-slate-900 px-3 py-2 rounded-xl border border-slate-800 text-end shrink-0">
@@ -1156,7 +1143,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             <div>
               <h2 className="text-xl font-black text-amber-400 flex items-center gap-2">
                 <span>🧪</span>
-                <span>{t('المُثَلَّثُ السِّحْرِيُّ لِقَانُونِ السُّرْعَة: v = d / t', 'Triangle Magique de la Vitesse : v = d / t')}</span>
+                <span>{t('المُثَلَّثُ السِّحْرِيُّ لِقَانُونِ السُّرْعَة: v = d / t', 'Triangle magique de la vitesse : v = d / t')}</span>
               </h2>
               <p className="text-xs sm:text-sm text-slate-400">
                 {t('اختر ما تريد حسابه (السرعة، المسافة، أو الزمن) واستخدم الآلة الحاسبة الذكية المفسرة بالخطوات!',
@@ -1200,14 +1187,14 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               {/* Dynamic Formula Display */}
               <div className="flex-1 bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3 text-sm">
                 <div className="font-black text-amber-400 text-base">
-                  {targetVariable === 'v' && t('📌 حساب السرعة: v = d ÷ t', '📌 Calcul de la Vitesse : v = d ÷ t')}
-                  {targetVariable === 'd' && t('📌 حساب المسافة: d = v × t', '📌 Calcul de la Distance : d = v × t')}
-                  {targetVariable === 't' && t('📌 حساب الزمن: t = d ÷ v', '📌 Calcul du Temps : t = d ÷ v')}
+                  {targetVariable === 'v' && '📌 حساب السرعة: v = d ÷ t'}
+                  {targetVariable === 'd' && '📌 حساب المسافة: d = v × t'}
+                  {targetVariable === 't' && '📌 حساب الزمن: t = d ÷ v'}
                 </div>
                 <p className="text-xs text-slate-300">
-                  {targetVariable === 'v' && t('لقياس السرعة المتوسطة، نقسم المسافة الإجمالية المقطوعة (بالكيلومتر) على المدة الزمنية (بالساعات).', 'On divise la distance (km) par le temps (h) pour obtenir des km/h.')}
-                  {targetVariable === 'd' && t('لمعرفة المسافة المقطوعة، نضرب السرعة المتوسطة في عدد الساعات.', 'On multiplie la vitesse par la durée du trajet.')}
-                  {targetVariable === 't' && t('لمعرفة المدة الزمنية للرحلة، نقسم المسافة على السرعة.', 'On divise la distance par la vitesse pour trouver le temps.')}
+                  {targetVariable === 'v' && 'لقياس السرعة المتوسطة، نقسم المسافة الإجمالية المقطوعة (بالكيلومتر) على المدة الزمنية (بالساعات).'}
+                  {targetVariable === 'd' && 'لمعرفة المسافة المقطوعة، نضرب السرعة المتوسطة في عدد الساعات.'}
+                  {targetVariable === 't' && 'لمعرفة المدة الزمنية للرحلة، نقسم المسافة على السرعة.'}
                 </p>
               </div>
             </div>
@@ -1317,7 +1304,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             {/* Step-by-Step Calculation Result Box */}
             <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 p-5 rounded-2xl border-2 border-indigo-500/50 shadow-xl space-y-2">
               <div className="text-xs font-black text-indigo-400 uppercase">
-                📝 {t('الشرح والحل بالخطوات النموذجية:', 'Résolution Détaillée Pas-à-Pas :')}
+                📝 {t('الشرح والحل بالخطوات النموذجية:', 'Résolution détaillée, pas à pas :')}
               </div>
               <div className="font-mono text-base sm:text-lg font-bold text-slate-100">
                 {targetVariable === 'v' && (
@@ -1359,7 +1346,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             <div>
               <h2 className="text-xl font-black text-amber-400 flex items-center gap-2">
                 <span>🇩🇿</span>
-                <span>{t('مُخَطَّطُ السَّفَرِ وَالرِّحْلَاتِ بَيْنَ وِلاَيَاتِ الجَزَائِر', 'Planificateur de Voyage & Vitesse en Algérie')}</span>
+                <span>{t('مُخَطَّطُ السَّفَرِ وَالرِّحْلَاتِ بَيْنَ وِلاَيَاتِ الجَزَائِر', 'Planificateur de voyage en Algérie')}</span>
               </h2>
               <p className="text-xs sm:text-sm text-slate-400">
                 {t('احسب وقت الوصول الفعلي والسرعة المطلوبة للتنقل بين المدن الجزائرية بالطائرة أو القطار أو السيارة!',
@@ -1378,7 +1365,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 >
                   {ALGERIAN_TRIPS.map((tr) => (
                     <option key={tr.id} value={tr.id}>
-                      {t(tr.fromAr, tr.fromFr)} ➡️ {t(tr.toAr, tr.toFr)} ({tr.distanceKm} km)
+                      {tr.fromAr} ➡️ {tr.toAr} ({tr.distanceKm} km)
                     </option>
                   ))}
                 </select>
@@ -1393,7 +1380,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 >
                   {CITY_VEHICLES.map((v) => (
                     <option key={v.id} value={v.id}>
-                      {v.emoji} {t(v.nameAr, v.nameFr)} ({v.speedKmh} km/h)
+                      {v.emoji} {v.nameAr} ({v.speedKmh} km/h)
                     </option>
                   ))}
                 </select>
@@ -1422,7 +1409,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   <span className="text-4xl p-3 bg-slate-900 rounded-2xl border border-slate-700">{tripVehicle.emoji}</span>
                   <div>
                     <h3 className="font-black text-base text-slate-100">
-                      {t(selectedTrip.fromAr, selectedTrip.fromFr)} ➡️ {t(selectedTrip.toAr, selectedTrip.toFr)}
+                      {selectedTrip.fromAr} ➡️ {selectedTrip.toAr}
                     </h3>
                     <p className="text-xs text-amber-400 font-bold">📏 {t('المسافة:', 'Distance :')} {selectedTrip.distanceKm} km</p>
                   </div>
@@ -1446,7 +1433,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 </div>
                 <div className="bg-slate-900 p-3 rounded-xl border border-slate-800">
                   <span className="text-slate-400 block mb-1">💡 {t('معلومات الرحلة الميدانية:', 'Infos pratiques :')}</span>
-                  <span className="text-slate-300">{t(selectedTrip.descAr, selectedTrip.descFr)}</span>
+                  <span className="text-slate-300">{selectedTrip.descAr}</span>
                 </div>
               </div>
             </div>
@@ -1462,7 +1449,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               <div>
                 <h2 className="text-lg font-black text-amber-400 flex items-center gap-2">
                   <span>🎯</span>
-                  <span>{t('تَحَدِّي السُّرْعَةِ وَالمَسَائِلِ الذَّكِيَّةِ', 'Quiz & Défis de Vitesse')}</span>
+                  <span>{t('تَحَدِّي السُّرْعَةِ وَالمَسَائِلِ الذَّكِيَّةِ', 'Quiz et défis de vitesse')}</span>
                 </h2>
                 <p className="text-xs text-slate-400">{t('أجب على الأسئلة لكسب نقاط الخبرة والأوسمة الذهبية!', 'Gagne des XP et des pièces d’or !')}</p>
               </div>
@@ -1478,7 +1465,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 {t(`السؤال ${quizIndex + 1} من ${QUIZ_LIST.length}`, `Question ${quizIndex + 1} / ${QUIZ_LIST.length}`)}
               </span>
               <h3 className="text-base sm:text-lg font-black text-slate-100 leading-relaxed">
-                {t(currentQuiz.questionAr, currentQuiz.questionFr)}
+                {currentQuiz.questionAr}
               </h3>
 
               {/* Options */}
@@ -1488,16 +1475,17 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   const isCorrect = oIdx === currentQuiz.correctIndex;
                   let btnClass = 'bg-slate-900 hover:bg-slate-800 text-slate-200 border-slate-800';
 
-                  if (selectedOption !== null) {
-                    if (isCorrect) btnClass = 'bg-emerald-950/80 text-emerald-300 border-emerald-500 shadow-lg';
-                    else if (isSelected) btnClass = 'bg-rose-950/80 text-rose-300 border-rose-500';
+                  if (isSelected && isCorrect) {
+                    btnClass = 'bg-emerald-950/80 text-emerald-300 border-emerald-500 shadow-lg';
+                  } else if (isSelected) {
+                    btnClass = 'bg-rose-950/80 text-rose-300 border-rose-500';
                   }
 
                   return (
                     <button
                       key={oIdx}
                       onClick={() => handleAnswer(oIdx)}
-                      disabled={selectedOption !== null}
+                      disabled={labQuizIsLocked(selectedOption ?? undefined, currentQuiz.correctIndex)}
                       className={`p-3.5 rounded-2xl font-bold text-sm text-start border transition-all ${btnClass}`}
                     >
                       {opt}
@@ -1506,19 +1494,22 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 })}
               </div>
 
-              {/* Explanation & Next */}
-              {selectedOption !== null && (
+              {/* Explanation & Next — only after a correct pick, so a miss never leaks the key */}
+              {quizFeedback === 'correct' && (
                 <div className="pt-4 border-t border-slate-800 space-y-3">
-                  <div className={`p-3 rounded-xl text-xs font-bold ${quizFeedback === 'correct' ? 'bg-emerald-950 text-emerald-300' : 'bg-rose-950 text-rose-300'}`}>
-                    💡 {t(currentQuiz.explanationAr, currentQuiz.explanationFr)}
+                  <div className="p-3 rounded-xl text-xs font-bold bg-emerald-950 text-emerald-300">
+                    💡 {currentQuiz.explanationAr}
                   </div>
                   <button
                     onClick={nextQuestion}
                     className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-black text-sm shadow-md"
                   >
-                    ➡️ {t('السؤال الموالي', 'Question Suivante')}
+                    ➡️ {t('السؤال الموالي', 'Question suivante')}
                   </button>
                 </div>
+              )}
+              {quizFeedback === 'wrong' && (
+                <p className="pt-2 text-xs font-bold text-slate-300">{t('حاول مرة أخرى', 'Essaie encore')}</p>
               )}
             </div>
           </div>

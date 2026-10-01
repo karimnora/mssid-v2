@@ -97,7 +97,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   return (
     <>
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-start sm:items-center justify-center p-4 overflow-x-hidden overflow-y-auto">
-      <div className="bg-white border-2 border-[#E7E2D7] w-full max-w-3xl min-w-0 rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[min(92dvh,calc(100svh-1.5rem))] overflow-y-auto" dir={direction}>
+      <div className="web-dialog web-dialog-wide bg-white border-2 border-[#E7E2D7] w-full max-w-3xl min-w-0 rounded-3xl shadow-2xl text-slate-800 flex flex-col max-h-[min(92dvh,calc(100svh-1.5rem))] overflow-y-auto" dir={direction}>
         {!parentReady ? (
           <>
             <div className="h-3.5 w-full bg-[var(--brand-coral)]" />

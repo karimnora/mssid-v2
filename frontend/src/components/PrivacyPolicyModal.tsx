@@ -11,7 +11,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-start sm:items-center justify-center p-4 overflow-x-hidden overflow-y-auto font-sans dir-rtl" dir="rtl">
-      <div className="bg-slate-900 border border-slate-800 w-full max-w-4xl min-w-0 rounded-3xl shadow-2xl overflow-hidden flex flex-col text-slate-100 my-auto max-h-[min(90dvh,calc(100svh-1.5rem))]">
+      <div className="web-dialog web-dialog-wide bg-slate-900 border border-slate-800 w-full max-w-4xl min-w-0 rounded-3xl shadow-2xl overflow-hidden flex flex-col text-slate-100 my-auto max-h-[min(90dvh,calc(100svh-1.5rem))]">
 
         <div className="bg-slate-950 px-4 sm:px-6 py-4 border-b border-slate-800 flex items-start sm:items-center justify-between gap-2">
           <div className="flex items-start sm:items-center gap-3 min-w-0">

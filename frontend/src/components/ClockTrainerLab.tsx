@@ -1,6 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
+import { labQuizIsLocked, labQuizOptionClass } from '../utils/labQuizChoice';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface ClockTrainerLabProps {
   grade?: PrimaryGrade;
@@ -63,12 +66,15 @@ const AnalogClock: React.FC<{ hour: number; minute: number }> = ({ hour, minute 
 };
 
 export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP', onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
+  const tCommon = useTranslation('common');
   const { minuteStep, quizTimes } = clockTrainerForGrade(grade);
   const [activeTab, setActiveTab] = useState<ClockTab>('explore');
   const [hour, setHour] = useState<number>(9);
   const [minute, setMinute] = useState<number>(0);
   const [qIdx, setQIdx] = useState<number>(0);
-  const [answered, setAnswered] = useState<boolean | null>(null);
+  const [selectedLabel, setSelectedLabel] = useState<string | undefined>(undefined);
 
   const currentQ = quizTimes[qIdx % quizTimes.length];
   const options = useMemo(() => {
@@ -78,37 +84,37 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
   }, [qIdx, currentQ, quizTimes]);
 
   const handleQuizAnswer = (labelAr: string) => {
-    const ok = labelAr === currentQ.labelAr;
-    setAnswered(ok);
-    if (ok) onReward?.(5, 15);
+    if (labQuizIsLocked(selectedLabel, currentQ.labelAr)) return;
+    setSelectedLabel(labelAr);
+    if (labelAr === currentQ.labelAr) onReward?.(5, 15);
   };
 
   const nextQuiz = () => {
     setQIdx((prev) => (prev + 1) % quizTimes.length);
-    setAnswered(null);
+    setSelectedLabel(undefined);
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-4xl mx-auto" dir={direction}>
       <div className="kids-pole rounded-[28px] p-6 sm:p-8 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="hit-target shrink-0 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
               <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
-              <span>مختبر قراءة السَّاعة (2AP - 5AP)</span>
+              <span>{t('clockBadge')}</span>
             </div>
-            <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">مُدَرِّبُ السَّاعَةِ التَّفَاعُلِيُّ</h1>
+            <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">{t('clockTitle')}</h1>
             <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
-              اضبط عقارب الساعة وشاهد الوقت الرقمي فوراً، ثم اختبر نفسك في قراءة الساعة.
+              {t('clockSubtitle')}
             </p>
           </div>
         </div>
@@ -121,7 +127,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
             activeTab === 'explore' ? 'bg-[var(--brand-emerald)] text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          🕐 اضبط الساعة
+          {t('clockTabExplore')}
         </button>
         <button
           onClick={() => setActiveTab('quiz')}
@@ -129,7 +135,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
             activeTab === 'quiz' ? 'bg-[var(--brand-emerald)] text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          🧠 اختبر معلوماتك
+          {t('clockTabQuiz')}
         </button>
       </div>
 
@@ -141,19 +147,19 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
             <div className="space-y-1.5">
-              <p className="text-xs font-black text-[var(--app-text-muted)]">السَّاعَاتُ</p>
+              <p className="text-xs font-black text-[var(--app-text-muted)]">{t('clockHoursLabel')}</p>
               <input
                 type="range"
                 min={0}
                 max={11}
                 value={hour % 12}
                 onChange={(e) => setHour(Number(e.target.value))}
-                aria-label="الساعات"
+                aria-label={t('clockHoursLabel')}
                 className="w-full cursor-pointer accent-[var(--brand-emerald)]"
               />
             </div>
             <div className="space-y-1.5">
-              <p className="text-xs font-black text-[var(--app-text-muted)]">الدَّقَائِقُ</p>
+              <p className="text-xs font-black text-[var(--app-text-muted)]">{t('clockMinutesLabel')}</p>
               <input
                 type="range"
                 min={0}
@@ -161,7 +167,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
                 step={minuteStep}
                 value={minute}
                 onChange={(e) => setMinute(Number(e.target.value))}
-                aria-label="الدقائق"
+                aria-label={t('clockMinutesLabel')}
                 className="w-full cursor-pointer accent-[var(--brand-emerald)]"
               />
             </div>
@@ -174,36 +180,33 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
           <h2 className="text-sm font-black text-[var(--app-text)]">مَا هُوَ الوَقْتُ المَعْرُوضُ عَلَى السَّاعَةِ؟</h2>
           <AnalogClock hour={currentQ.hour} minute={currentQ.minute} />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 max-w-lg mx-auto">
-            {options.map((opt) => {
-              const isCorrectOpt = opt.labelAr === currentQ.labelAr;
-              return (
+            {options.map((opt) => (
                 <button
                   key={opt.labelAr}
-                  onClick={() => answered === null && handleQuizAnswer(opt.labelAr)}
-                  className={`hit-target p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                    answered !== null
-                      ? isCorrectOpt
-                        ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
-                        : 'bg-slate-100 text-slate-400 border-slate-200'
-                      : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-[var(--brand-emerald)]'
-                  }`}
+                  type="button"
+                  onClick={() => handleQuizAnswer(opt.labelAr)}
+                  className={labQuizOptionClass(
+                    selectedLabel,
+                    opt.labelAr,
+                    currentQ.labelAr,
+                    'hit-target p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer',
+                  )}
                 >
                   {opt.labelAr}
                 </button>
-              );
-            })}
+            ))}
           </div>
-          {answered !== null && (
-            <div className={`text-sm font-black p-3 rounded-xl max-w-lg mx-auto ${answered ? 'bg-emerald-100 text-emerald-900' : 'bg-rose-100 text-rose-900'}`}>
-              {answered ? 'إِجَابَةٌ صَحِيحَةٌ! أَحْسَنْتَ 🌟' : `غَيْرُ صَحِيحٍ، الوَقْتُ الصَّحِيحُ هُوَ: ${currentQ.labelAr}`}
+          {selectedLabel !== undefined && (
+            <div className={`text-sm font-black p-3 rounded-xl max-w-lg mx-auto ${selectedLabel === currentQ.labelAr ? 'bg-emerald-100 text-emerald-900' : 'bg-[#FFF8E7] text-[var(--app-text)] border border-[var(--brand-coral)]'}`}>
+              {selectedLabel === currentQ.labelAr ? t('clockCorrectFeedback') : tCommon('tryAgain')}
             </div>
           )}
-          {answered !== null && (
+          {selectedLabel === currentQ.labelAr && (
             <button
               onClick={nextQuiz}
               className="hit-target px-5 py-3 rounded-2xl bg-[var(--brand-emerald)] text-white font-extrabold text-xs sm:text-sm cursor-pointer"
             >
-              السُّؤَالُ التَّالِي ⟵
+              {t('clockNextButton')}
             </button>
           )}
         </div>

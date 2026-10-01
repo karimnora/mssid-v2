@@ -30,7 +30,7 @@ export const labsSocial: typeof arLabsSocial = {
   islamicScenarioTab: 'Situation {number}',
 
   // AlgerianCurrencyMarket.tsx
-  currencyBannerTitle: 'Marché mSSID et calcul du dinar algérien (DA)',
+  currencyBannerTitle: 'Marché Mssid et calcul du dinar algérien (DA)',
   currencyBannerBadge: 'Simulateur de maths et de commerce',
   currencyBannerTagline:
     "Simulateur de l'épicerie algérienne : apprends à utiliser les billets et pièces officiels (5 DA à 2000 DA), additionne les factures et rends la monnaie avec précision !",
@@ -137,7 +137,7 @@ export const labsSocial: typeof arLabsSocial = {
   historyMuseumDetectiveQuestionLabel: "Question d'histoire n°{number}",
 
   // TopographyMapLab.tsx (relief/climate/vegetation facts untouched — chrome only)
-  topographyBadge: "Carte du relief et du climat de l'Algérie (4AP - 5AP)",
+  topographyBadge: "Carte du relief et du climat de l'Algérie (4e–5e AP)",
   topographyTitle: "Du littoral au Sahara : le relief de l'Algérie",
   topographyIntro:
     "Clique sur la carte de l'Algérie ou sur la coupe nord-sud, et découvre le climat, les précipitations et la végétation de chaque région.",

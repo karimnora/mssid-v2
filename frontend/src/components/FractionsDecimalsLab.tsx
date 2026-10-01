@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowDecimalsTab } from '../utils/labGradePolicy';
+import { labQuizIsLocked, labQuizOptionClass } from '../utils/labQuizChoice';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface FractionsDecimalsLabProps {
   grade?: PrimaryGrade;
@@ -33,13 +36,16 @@ const DECIMAL_QUESTIONS = [
 ];
 
 export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grade = '3AP', onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
+  const tCommon = useTranslation('common');
   const showDecimals = canShowDecimalsTab(grade);
   const [activeTab, setActiveTab] = useState<FractionsTab>('visual');
   const [qIdx, setQIdx] = useState<number>(0);
   const [filled, setFilled] = useState<number>(0);
   const [checked, setChecked] = useState<boolean | null>(null);
   const [decimalPoint, setDecimalPoint] = useState<number>(0.5);
-  const [decimalAnswers, setDecimalAnswers] = useState<Record<number, boolean>>({});
+  const [decimalAnswers, setDecimalAnswers] = useState<Record<number, number>>({});
 
   const currentQ = FRACTION_QUESTIONS[qIdx];
   const slices = useMemo(() => Array.from({ length: currentQ.denom }, (_, i) => i), [currentQ]);
@@ -62,7 +68,8 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
   };
 
   const handleDecimalAnswer = (qId: number, val: number, correct: number) => {
-    setDecimalAnswers((prev) => ({ ...prev, [qId]: true }));
+    if (labQuizIsLocked(decimalAnswers[qId], correct)) return;
+    setDecimalAnswers((prev) => ({ ...prev, [qId]: val }));
     if (val === correct) onReward?.(5, 15);
   };
 
@@ -73,26 +80,26 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
   }, [showDecimals, activeTab]);
 
   return (
-    <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-5xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-orange-600 via-amber-700 to-yellow-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-orange-500/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-200" />
-              <span>مختبر الكسور والأعداد العشرية (4AP - 5AP)</span>
+              <span>{t('fractionsBadge')}</span>
             </div>
-            <h1 className="text-xl sm:text-3xl font-black font-sans">الكُسُورُ وَالأَعْدَادُ العَشْرِيَّةُ</h1>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">{t('fractionsTitle')}</h1>
             <p className="text-xs sm:text-sm text-orange-100 leading-relaxed max-w-3xl">
-              لوّن أجزاء الشكل لتشكيل الكسر المطلوب، وتعرّف على العلاقة بين الكسور والأعداد العشرية.
+              {t('fractionsSubtitle')}
             </p>
           </div>
         </div>
@@ -105,7 +112,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
             activeTab === 'visual' ? 'bg-orange-700 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          🍕 الكسور بالصور
+          {t('fractionsTabVisual')}
         </button>
         {showDecimals && (
         <button
@@ -114,7 +121,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
             activeTab === 'decimals' ? 'bg-amber-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          🔢 الأعداد العشرية
+          {t('fractionsTabDecimals')}
         </button>
         )}
       </div>
@@ -142,7 +149,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
           </p>
           {checked !== null && (
             <div className={`text-sm font-black p-3 rounded-xl ${checked ? 'bg-emerald-100 text-emerald-900' : 'bg-rose-100 text-rose-900'}`}>
-              {checked ? 'إِجَابَةٌ صَحِيحَةٌ! أَحْسَنْتَ 🌟' : 'حَاوِلْ مِنْ جَدِيدٍ، عُدَّ الأَجْزَاءَ المَطْلُوبَةَ جَيِّداً.'}
+              {checked ? t('fractionsCorrectFeedback') : t('fractionsIncorrectFeedback')}
             </div>
           )}
           <div className="flex items-center justify-center gap-3">
@@ -150,14 +157,14 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
               onClick={checkAnswer}
               className="px-5 py-3 rounded-2xl bg-orange-700 hover:bg-orange-800 text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer"
             >
-              تَحَقَّقْ مِنَ الإِجَابَةِ ✅
+              {t('fractionsCheckButton')}
             </button>
             {checked && (
               <button
                 onClick={nextQuestion}
                 className="px-5 py-3 rounded-2xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-black text-xs sm:text-sm shadow-xs transition-all cursor-pointer"
               >
-                السُّؤَالُ التَّالِي ⟵
+                {t('fractionsNextButton')}
               </button>
             )}
           </div>
@@ -167,7 +174,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
       {activeTab === 'decimals' && (
         <div className="space-y-5">
           <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
-            <h2 className="text-lg font-black text-[var(--app-text)]">خَطُّ الأَعْدَادِ العَشْرِيَّةِ (0 إِلَى 1)</h2>
+            <h2 className="text-lg font-black text-[var(--app-text)]">{t('fractionsDecimalLineTitle')}</h2>
             <div className="relative max-w-lg mx-auto h-16 flex items-center">
               <div className="absolute inset-x-0 h-1.5 bg-amber-200 rounded-full" />
               {DECIMAL_POINTS.map((p) => (
@@ -185,40 +192,29 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
             </div>
             <p className="font-black text-2xl text-amber-700 font-sans">{decimalPoint}</p>
             <p className="text-xs font-bold text-[var(--app-text-muted)]">
-              اضغط على نقطة على الخط لتتعرف على قيمتها العشرية.
+              {t('fractionsDecimalLineHint')}
             </p>
           </div>
 
           <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4">
-            <h3 className="text-sm font-black text-[var(--app-text)]">اختبر معلوماتك:</h3>
-            {DECIMAL_QUESTIONS.map((q) => {
-              const isAnswered = !!decimalAnswers[q.id];
-              return (
+            <h3 className="text-sm font-black text-[var(--app-text)]">{t('fractionsTestKnowledgeLabel')}</h3>
+            {DECIMAL_QUESTIONS.map((q) => (
                 <div key={q.id} className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3">
                   <p className="text-xs sm:text-sm font-black text-[var(--app-text)]">{q.qAr}</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                    {q.options.map((val) => {
-                      const isCorrect = val === q.correct;
-                      return (
+                    {q.options.map((val) => (
                         <button
                           key={val}
-                          onClick={() => !isAnswered && handleDecimalAnswer(q.id, val, q.correct)}
-                          className={`p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer font-sans ${
-                            isAnswered
-                              ? isCorrect
-                                ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
-                                : 'bg-slate-100 text-slate-400 border-slate-200'
-                              : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-amber-400'
-                          }`}
+                          type="button"
+                          onClick={() => handleDecimalAnswer(q.id, val, q.correct)}
+                          className={`${labQuizOptionClass(decimalAnswers[q.id], val, q.correct)} font-sans`}
                         >
                           {val}
                         </button>
-                      );
-                    })}
+                    ))}
                   </div>
                 </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       )}

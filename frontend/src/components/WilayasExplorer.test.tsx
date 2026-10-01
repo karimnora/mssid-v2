@@ -1,6 +1,8 @@
 import React from 'react';
-import { describe, it, expect } from 'vitest';
+import { afterEach, describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { LocaleProvider } from '../context/LocaleContext';
+import { setStoredLocale } from '../localePreference';
 import { WilayasExplorer } from './WilayasExplorer';
 
 // jsdom doesn't implement SpeechSynthesisUtterance — answering a quiz question triggers a real
@@ -14,6 +16,19 @@ class MockSpeechSynthesisUtterance {
 }
 (globalThis as any).SpeechSynthesisUtterance = MockSpeechSynthesisUtterance;
 
+afterEach(() => {
+  setStoredLocale('ar');
+  localStorage.removeItem('mssid_locale_preference');
+  setStoredLocale('ar');
+});
+
+const renderLab = () =>
+  render(
+    <LocaleProvider>
+      <WilayasExplorer />
+    </LocaleProvider>,
+  );
+
 // Regression tests for the quiz-options display bug: showing the target wilaya's own name inside
 // the answer options let a child solve "what is wilaya X's number?" by pattern-matching text instead
 // of actually knowing the number, and showing nameAr + capitalAr together was pure redundant noise
@@ -26,8 +41,8 @@ describe('WilayasExplorer — quiz options only reveal what the question actuall
     Array.from(container.querySelectorAll<HTMLButtonElement>('button.p-4.rounded-2xl.border-2'));
 
   it('questionType 0 ("what is the wilaya\'s number?") never prints the wilaya name in the options', () => {
-    const { container } = render(<WilayasExplorer />);
-    fireEvent.click(screen.getByText('🏆 المسابقة الكبرى'));
+    const { container } = renderLab();
+    fireEvent.click(screen.getByText('🏆 مسابقة وألغاز الولايات'));
 
     // quizIndex starts at 0, so WILAYAS_LIST[0] (أدرار) is always the first target and
     // questionType = 0 % 4 = 0 deterministically.
@@ -44,8 +59,8 @@ describe('WilayasExplorer — quiz options only reveal what the question actuall
   });
 
   it('questionType 2 ("what is the capital?") shows only capital names — never the wilaya name a second time', () => {
-    const { container } = render(<WilayasExplorer />);
-    fireEvent.click(screen.getByText('🏆 المسابقة الكبرى'));
+    const { container } = renderLab();
+    fireEvent.click(screen.getByText('🏆 مسابقة وألغاز الولايات'));
 
     // Advance quizIndex from 0 to 2 (questionType 2 % 4 = 2) by answering + clicking "next" twice.
     for (let i = 0; i < 2; i++) {

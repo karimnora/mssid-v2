@@ -6,7 +6,7 @@ export const labsMath: typeof arLabsMath = {
   sorobanSubtitle: 'Technique de calcul mental rapide qui active l’hémisphère droit du cerveau',
   sorobanTabAbacus: 'Boulier libre',
   sorobanTabAnzan: 'Défi Anzan rapide',
-  sorobanTabRules: 'Règles des compléments (5 & 10)',
+  sorobanTabRules: 'Règles des compléments (5 et 10)',
   sorobanCurrentValueLabel: 'Valeur représentée actuellement :',
   sorobanExampleValue: 'Comme {value}',
   sorobanResetButton: 'Remettre le boulier à zéro',
@@ -61,7 +61,7 @@ export const labsMath: typeof arLabsMath = {
   mathInteractiveSituationTab: 'Situation {number}',
 
   // FractionsDecimalsLab.tsx
-  fractionsBadge: 'Labo des fractions et nombres décimaux (4AP - 5AP)',
+  fractionsBadge: 'Labo des fractions et des nombres décimaux (4e–5e AP)',
   fractionsTitle: 'Les fractions et les nombres décimaux',
   fractionsSubtitle: 'Colorie les parties de la figure pour former la fraction demandée, et découvre le lien entre fractions et nombres décimaux.',
   fractionsTabVisual: '🍕 Fractions en images',
@@ -75,7 +75,7 @@ export const labsMath: typeof arLabsMath = {
   fractionsTestKnowledgeLabel: 'Teste tes connaissances :',
 
   // AreaPerimeterGridLab.tsx
-  areaPerimeterBadge: 'Labo de l’aire et du périmètre (4AP - 5AP)',
+  areaPerimeterBadge: 'Labo de l’aire et du périmètre (4e–5e AP)',
   areaPerimeterTitle: 'Grille interactive d’aire et de périmètre',
   areaPerimeterSubtitle: 'Clique sur les cases pour construire une forme, et observe l’aire et le périmètre se calculer automatiquement.',
   areaPerimeterAreaStat: 'Aire',
@@ -87,8 +87,8 @@ export const labsMath: typeof arLabsMath = {
   areaPerimeterNextChallengeButton: 'Défi suivant ⟵',
 
   // ClockTrainerLab.tsx
-  clockBadge: 'Labo de lecture de l’heure (2AP - 5AP)',
-  clockTitle: 'Entraîneur d’horloge interactif',
+  clockBadge: 'Labo de lecture de l’heure (2e–5e AP)',
+  clockTitle: 'Entraîneur interactif de lecture de l’heure',
   clockSubtitle: 'Règle les aiguilles de l’horloge et vois l’heure numérique instantanément, puis teste-toi en lecture de l’heure.',
   clockTabExplore: '🕐 Régler l’horloge',
   clockTabQuiz: '🧠 Teste tes connaissances',
@@ -96,7 +96,7 @@ export const labsMath: typeof arLabsMath = {
   clockMinutesLabel: 'Minutes',
   clockQuizQuestion: 'Quelle heure indique l’horloge ?',
   clockCorrectFeedback: 'Bonne réponse ! Bravo 🌟',
-  clockIncorrectFeedback: 'Incorrect, l’heure exacte est : {answer}',
+  clockIncorrectFeedback: 'Essaie encore.',
   clockNextButton: 'Question suivante ⟵',
 
   // Shape3DViewer.tsx

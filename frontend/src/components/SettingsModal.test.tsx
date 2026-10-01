@@ -86,4 +86,21 @@ describe('SettingsModal', () => {
     expect(document.querySelector('.kids-modal-body')).toBeTruthy();
     expect(document.querySelector('.kids-modal-overlay')?.className).toContain('items-start');
   });
+
+  it('keeps the mobile sheet classes and adds a desktop-only compact panel', () => {
+    renderModal(
+      <SettingsModal
+        isOpen={true}
+        onClose={vi.fn()}
+        tashkeelEnabled={false}
+        onToggleTashkeel={vi.fn()}
+        currentGrade="1AP"
+        onGradeChange={vi.fn()}
+      />
+    );
+    const panel = document.querySelector('.kids-modal-panel') as HTMLElement;
+    expect(panel.className).toContain('max-w-xl');
+    expect(document.querySelector('[data-profile-grade-strip]')?.className).toContain('grid-cols-2');
+    expect(document.querySelector('[data-profile-grade-strip]')?.className).toContain('md:grid-cols-5');
+  });
 });

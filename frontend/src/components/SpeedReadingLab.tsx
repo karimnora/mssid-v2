@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight, Sparkles, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, Clock } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface SpeedReadingLabProps {
   onReward?: (coins: number, xp: number) => void;
@@ -47,6 +49,9 @@ const PASSAGES: Passage[] = [
 ];
 
 export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsLanguage');
+  const tCommon = useTranslation('common');
   const [passageIdx, setPassageIdx] = useState<number>(0);
   const [phase, setPhase] = useState<'ready' | 'reading' | 'quiz' | 'results'>('ready');
   const [elapsedSec, setElapsedSec] = useState<number>(0);
@@ -98,26 +103,26 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
   const score = passage.questions.filter((q) => answers[q.id] === q.correct).length;
 
   return (
-    <div className="space-y-6 dir-rtl max-w-4xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-4xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-blue-700 via-indigo-800 to-violet-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              <span>مُدَرِّبُ القِرَاءَةِ السَّرِيعَةِ وَالفَهْمِ (3AP - 5AP)</span>
+              <span>{t('speedReadBadge')}</span>
             </div>
-            <h1 className="text-xl sm:text-3xl font-black font-sans">القِرَاءَةُ السَّرِيعَةُ وَاختِبَارُ الفَهْمِ</h1>
+            <h1 className="text-xl sm:text-3xl font-black font-sans">{t('speedReadTitle')}</h1>
             <p className="text-xs sm:text-sm text-blue-100 leading-relaxed max-w-3xl">
-              اقرأ النص بسرعة وتركيز، ثم أجب عن أسئلة الفهم لترى كم فهمت مما قرأت.
+              {t('speedReadIntro')}
             </p>
           </div>
         </div>
@@ -128,13 +133,13 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
           <div className="text-center space-y-4">
             <h2 className="text-lg font-black text-[var(--app-text)]">{passage.titleAr}</h2>
             <p className="text-xs font-bold text-[var(--app-text-muted)]">
-              اضغط "ابدأ القراءة" عندما تكون مستعداً. سيتم قياس الوقت الذي تستغرقه، ثم ستُجيب عن أسئلة الفهم.
+              {t('speedReadReadyHint')}
             </p>
             <button
               onClick={startReading}
               className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-black text-sm shadow-md transition-all cursor-pointer"
             >
-              ابْدَأِ القِرَاءَةَ 📖
+              {t('speedReadStartButton')}
             </button>
           </div>
         )}
@@ -143,7 +148,7 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
           <div className="space-y-5 text-center">
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3 py-1.5 rounded-full text-xs font-black">
               <Clock className="w-3.5 h-3.5" />
-              <span className="font-sans tabular-nums">{elapsedSec} ثا</span>
+              <span className="font-sans tabular-nums">{t('speedReadElapsedTime', { seconds: elapsedSec })}</span>
             </div>
             <h2 className="text-base font-black text-[var(--app-text)]">{passage.titleAr}</h2>
             <p className="text-base sm:text-lg leading-loose font-bold text-[var(--app-text)] bg-[var(--app-card-subtle)] p-5 rounded-2xl border border-[var(--app-card-border)] text-right">
@@ -153,14 +158,14 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
               onClick={finishReading}
               className="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm shadow-md transition-all cursor-pointer"
             >
-              اِنْتَهَيْتُ مِنَ القِرَاءَةِ ✅
+              {t('speedReadFinishButton')}
             </button>
           </div>
         )}
 
         {phase === 'quiz' && (
           <div className="space-y-4">
-            <h2 className="text-sm font-black text-[var(--app-text)] text-center">أَجِبْ عَنِ الأَسْئِلَةِ دُونَ الرُّجُوعِ إِلَى النَّصِّ:</h2>
+            <h2 className="text-sm font-black text-[var(--app-text)] text-center">{t('speedReadQuizInstruction')}</h2>
             {passage.questions.map((q) => (
               <div key={q.id} className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3">
                 <p className="text-xs sm:text-sm font-black text-[var(--app-text)]">{q.qAr}</p>
@@ -187,7 +192,7 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
                 disabled={Object.keys(answers).length < passage.questions.length}
                 className="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-black text-sm shadow-md transition-all cursor-pointer"
               >
-                تَحَقَّقْ مِنَ النَّتِيجَةِ ✅
+                {t('speedReadCheckButton')}
               </button>
             </div>
           </div>
@@ -195,14 +200,14 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
 
         {phase === 'results' && (
           <div className="text-center space-y-4">
-            <h2 className="text-lg font-black text-[var(--app-text)]">النَّتِيجَةُ</h2>
+            <h2 className="text-lg font-black text-[var(--app-text)]">{t('speedReadResultTitle')}</h2>
             <div className="flex items-center justify-center gap-4 flex-wrap">
               <div className="p-4 rounded-2xl bg-blue-100 border border-blue-300 min-w-[120px]">
-                <p className="text-[10px] font-black text-blue-700">وَقْتُ القِرَاءَةِ</p>
-                <p className="text-2xl font-black text-blue-900 font-sans">{readingTime} ثا</p>
+                <p className="text-[10px] font-black text-blue-700">{t('speedReadTimeLabel')}</p>
+                <p className="text-2xl font-black text-blue-900 font-sans">{t('speedReadElapsedTime', { seconds: readingTime })}</p>
               </div>
               <div className="p-4 rounded-2xl bg-emerald-100 border border-emerald-300 min-w-[120px]">
-                <p className="text-[10px] font-black text-emerald-700">الإِجَابَاتُ الصَّحِيحَةُ</p>
+                <p className="text-[10px] font-black text-emerald-700">{t('speedReadCorrectLabel')}</p>
                 <p className="text-2xl font-black text-emerald-900 font-sans">
                   {score}/{passage.questions.length}
                 </p>
@@ -212,7 +217,7 @@ export const SpeedReadingLab: React.FC<SpeedReadingLabProps> = ({ onReward, onBa
               onClick={nextPassage}
               className="px-6 py-3 rounded-2xl bg-[var(--app-card-subtle)] text-[var(--app-text)] font-black text-sm shadow-xs transition-all cursor-pointer"
             >
-              نَصٌّ جَدِيدٌ ⟵
+              {t('speedReadNewTextButton')}
             </button>
           </div>
         )}

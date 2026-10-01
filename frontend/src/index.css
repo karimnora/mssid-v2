@@ -384,6 +384,39 @@ body {
   max-height: min(90dvh, calc(100svh - 1.5rem));
 }
 
+/* Phone sheets stay full-ish; on desktop every overlay was eating 90vh. Compact the
+   standard dialogs, keep studios/wide tools readable, never change the <768 layout. */
+@media (min-width: 768px) {
+  .kids-modal-panel:not(.kids-modal-wide) {
+    max-width: min(28rem, 100%);
+    max-height: min(75vh, 38rem);
+  }
+
+  .kids-modal-wide {
+    max-height: min(82vh, 46rem);
+  }
+
+  .web-dialog:not(.web-dialog-wide):not(.web-dialog-studio) {
+    max-width: min(28rem, 100%);
+    max-height: min(75vh, 38rem);
+  }
+
+  .web-dialog-wide {
+    max-width: min(42rem, 100%);
+    max-height: min(75vh, 38rem);
+  }
+
+  .web-dialog-studio {
+    max-height: min(82vh, 46rem);
+  }
+
+  .kids-modal-panel .hit-target,
+  .web-dialog .hit-target {
+    min-height: 3rem;
+    min-width: 0;
+  }
+}
+
 .kids-modal-header {
   background: linear-gradient(150deg, var(--kids-sky-1), var(--kids-grass-2));
   color: #fff;

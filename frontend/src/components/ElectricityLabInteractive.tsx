@@ -16,12 +16,13 @@ import {
   Flame,
   Award,
   HelpCircle,
-  Languages,
   Check,
   AlertTriangle,
   Cpu
 } from 'lucide-react';
 import { CircuitBuilder } from './CircuitBuilder';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 // Types for components in the circuit
 type VoltageLevel = 4.5 | 9.0;
@@ -48,9 +49,12 @@ const MATERIALS_LIST: MaterialInfo[] = [
 ];
 
 export const ElectricityLabInteractive: React.FC = () => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsScience');
+  // Pedagogical labels stay Arabic — never overlay French quiz/explanations.
+  const showFrench = false;
   // Global Interactive Settings
   const [activeTab, setActiveTab] = useState<'circuit_builder' | 'sandbox' | 'diode_exp' | 'conductors_exp' | 'series_parallel' | 'quiz'>('diode_exp');
-  const [showFrench, setShowFrench] = useState<boolean>(true);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
 
   // Circuit Core State
@@ -290,7 +294,7 @@ export const ElectricityLabInteractive: React.FC = () => {
   };
 
   return (
-    <div data-lab-instrument className="kids-pole rounded-[28px] p-4 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div data-lab-instrument className="kids-pole rounded-[28px] p-4 sm:p-6 space-y-6" dir={direction}>
       {/* Top Title Bar */}
       <div className="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -299,13 +303,13 @@ export const ElectricityLabInteractive: React.FC = () => {
           </div>
           <div>
             <h2 className="text-lg sm:text-xl font-black text-amber-300 flex items-center gap-2">
-              <span>مختبر الكهرباء والصمام التفاعلي (Diode & Circuits Lab)</span>
+              <span>{t('elecTitle')}</span>
               <span className="text-xs bg-amber-500/20 text-amber-300 font-bold px-2.5 py-0.5 rounded-full border border-amber-500/40">
-                المرحلة الابتدائية (4AP & 5AP)
+                {t('elecGradeBadge')}
               </span>
             </h2>
             <p className="text-xs text-slate-300 font-sans mt-0.5">
-              محاكاة واقعية آمنة للتجارب الكهربائية والصمام الثنائي وفق المنهاج الابتدائي الجزائري
+              {t('elecSubtitle')}
             </p>
           </div>
         </div>
@@ -319,22 +323,10 @@ export const ElectricityLabInteractive: React.FC = () => {
                 ? 'bg-emerald-950 text-emerald-300 border-emerald-700/60'
                 : 'bg-slate-900 text-slate-300 border-slate-800'
             }`}
-            title="تفعيل/تعطيل المؤثرات الصوتية"
+            title={t('elecSoundToggleTooltip')}
           >
             {soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4" />}
-            <span className="hidden sm:inline">{soundEnabled ? 'الصوت مفعّل' : 'الصوت صامت'}</span>
-          </button>
-
-          <button
-            onClick={() => setShowFrench(!showFrench)}
-            className={`px-3 py-2 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-              showFrench
-                ? 'bg-blue-950 text-blue-300 border-blue-700/60 shadow-xs'
-                : 'bg-slate-900 text-slate-300 border-slate-800'
-            }`}
-          >
-            <Languages className="w-4 h-4 text-cyan-400" />
-            <span>الفرنسية (Français): {showFrench ? 'مُظْهَرَة' : 'مُخْفَيَة'}</span>
+            <span className="hidden sm:inline">{soundEnabled ? t('elecSoundOn') : t('elecSoundOff')}</span>
           </button>
         </div>
       </div>
@@ -350,7 +342,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Cpu className="w-4 h-4" />
-          <span>بناء دارة 🔧</span>
+          <span>{t('elecTabBuilder')}</span>
         </button>
 
         <button
@@ -362,7 +354,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Zap className="w-4 h-4" />
-          <span>1. الصمام (Diode)</span>
+          <span>{t('elecTabDiode')}</span>
         </button>
 
         <button
@@ -374,7 +366,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Sparkles className="w-4 h-4" />
-          <span>2. النواقل والعوازل</span>
+          <span>{t('elecTabConductors')}</span>
         </button>
 
         <button
@@ -386,7 +378,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Lightbulb className="w-4 h-4" />
-          <span>3. التسلسل والتفرع</span>
+          <span>{t('elecTabSeriesParallel')}</span>
         </button>
 
         <button
@@ -398,7 +390,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Power className="w-4 h-4" />
-          <span>4. المحرك والجرس</span>
+          <span>{t('elecTabMotorBuzzer')}</span>
         </button>
 
         <button
@@ -410,7 +402,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           }`}
         >
           <Award className="w-4 h-4" />
-          <span>5. التحدي والاختبار</span>
+          <span>{t('elecTabQuiz')}</span>
         </button>
       </div>
 

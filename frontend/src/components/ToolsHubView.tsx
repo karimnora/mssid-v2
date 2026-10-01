@@ -7,8 +7,9 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SubjectInfo, SubjectId, PrimaryGrade } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
-import { canShowFrenchInLab } from '../utils/labGradePolicy';
 import { CardBlobBackdrop } from './CardBlobBackdrop';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 import {
   Calculator,
   BookOpen,
@@ -29,6 +30,7 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
+  ChevronLeft,
   ChevronRight,
   Search,
 } from 'lucide-react';
@@ -43,8 +45,8 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 interface MobileCat {
   key: string;
   emoji: string;
-  labelAr: string;
-  hintAr: string;
+  labelKey: 'categoryIdentityShort' | 'categoryMathShort' | 'categoryScienceShort' | 'categoryLangsShort';
+  hintKey: 'categoryIdentityHint' | 'categoryMathHint' | 'categoryScienceHint' | 'categoryLangsHint';
   cardClass: string;
   toolIds: SubjectId[];
 }
@@ -53,32 +55,32 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'identity_civics',
     emoji: '🇩🇿',
-    labelAr: 'الهوية والتراث',
-    hintAr: 'ولايات • تاريخ • خرائط',
+    labelKey: 'categoryIdentityShort',
+    hintKey: 'categoryIdentityHint',
     cardClass: 'kids-cat-identity',
     toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map'] as SubjectId[],
   },
   {
     key: 'math_logic',
     emoji: '📐',
-    labelAr: 'الرياضيات والحساب',
-    hintAr: 'عمليات • هندسة • أعداد',
+    labelKey: 'categoryMathShort',
+    hintKey: 'categoryMathHint',
     cardClass: 'kids-cat-math',
     toolIds: ['primary_math_ops', 'soroban', 'multiplication', 'educational_calculator', 'converter', 'geometry', 'fractions_lab', 'area_grid', 'clock_trainer'] as SubjectId[],
   },
   {
     key: 'science_discovery',
     emoji: '🧪',
-    labelAr: 'العلوم والإيقاظ',
-    hintAr: 'تجارب • سرعة وحركة • أرض',
+    labelKey: 'categoryScienceShort',
+    hintKey: 'categoryScienceHint',
     cardClass: 'kids-cat-science',
     toolIds: ['science_lab', 'speed_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
   },
   {
     key: 'languages_expression',
     emoji: '🗣️',
-    labelAr: 'اللغات والتعبير',
-    hintAr: 'عربي • فرنسي • أمازيغية',
+    labelKey: 'categoryLangsShort',
+    hintKey: 'categoryLangsHint',
     cardClass: 'kids-cat-langs',
     toolIds: ['french_projects', 'english_audio_dialogues', 'touch_writing', 'arabic_conjugator', 'french_lab', 'english_lab', 'tamazight_lab', 'tamazight_curriculum', 'syllable_studio', 'speed_reading'] as SubjectId[],
   },
@@ -87,40 +89,44 @@ const MOBILE_CATS: MobileCat[] = [
 // ─── Données Desktop — groupes originaux ─────────────────────────────────────
 const DESKTOP_GROUPS: {
   key: string;
-  labelAr: string;
+  labelKey: 'categoryIdentityCivics' | 'categoryMathLogic' | 'categoryScienceDiscovery' | 'categoryLanguagesExpression';
   badgeColor: string;
   icon: React.FC<{ className?: string }>;
   toolIds: SubjectId[];
 }[] = [
   {
     key: 'identity_civics',
-    labelAr: '🇩🇿 الهوية، التراث والتقييم الرسمي',
+    labelKey: 'categoryIdentityCivics',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300',
     icon: Shield,
     toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map'] as SubjectId[],
   },
   {
     key: 'math_logic',
-    labelAr: '📐 الرياضيات، الحساب الذهني والمقادير',
+    labelKey: 'categoryMathLogic',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     icon: Calculator,
     toolIds: ['primary_math_ops', 'soroban', 'multiplication', 'educational_calculator', 'converter', 'geometry', 'fractions_lab', 'area_grid', 'clock_trainer'] as SubjectId[],
   },
   {
     key: 'science_discovery',
-    labelAr: '🧪 العلوم، التجارب والإيقاظ العلمي',
+    labelKey: 'categoryScienceDiscovery',
     badgeColor: 'bg-teal-100 text-teal-900 border-teal-300',
     icon: FlaskConical,
     toolIds: ['science_lab', 'speed_lab', 'electricity', 'primary_discovery', 'human_anatomy', 'earth_cycles'] as SubjectId[],
   },
   {
     key: 'languages_expression',
-    labelAr: '🗣️ اللغات، المشاريع، الخط والتصريف',
+    labelKey: 'categoryLanguagesExpression',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     icon: Languages,
     toolIds: ['french_projects', 'english_audio_dialogues', 'touch_writing', 'arabic_conjugator', 'french_lab', 'english_lab', 'tamazight_lab', 'tamazight_curriculum', 'syllable_studio', 'speed_reading'] as SubjectId[],
   },
 ];
+
+function catalogToolTitle(tool: SubjectInfo, locale: 'ar' | 'fr'): string {
+  return locale === 'fr' ? tool.nameFr : tool.nameAr;
+}
 
 interface ToolsHubViewProps {
   grade: PrimaryGrade;
@@ -153,6 +159,9 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   onSelectTool,
   onClearTool,
 }) => {
+  const { locale, direction } = useLocaleContext();
+  const t = useTranslation('tools');
+  const toolTitle = (tool: SubjectInfo) => catalogToolTitle(tool, locale);
   const labFocused = Boolean(selectedToolId) && !catalogOpen;
 
   // — état mobile
@@ -264,7 +273,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
   };
 
   return (
-    <div id="tools-hub-container" dir="rtl" data-labs-layout="full" data-lab-focused={labFocused ? 'true' : 'false'}>
+    <div id="tools-hub-container" dir={direction} data-labs-layout="full" data-lab-focused={labFocused ? 'true' : 'false'}>
 
       {/* Bandeau compact — lab ouvert, catalogue masqué (P0) */}
       {labFocused && currentSelectedTool && (
@@ -274,8 +283,8 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
           <div className="flex items-center gap-3 min-w-0">
             <span className="text-2xl shrink-0">🔬</span>
             <div className="min-w-0">
-              <p className="text-xs text-[var(--app-text-muted)]">المختبر المفتوح</p>
-              <p className="text-sm font-black text-[var(--app-text)] truncate">{currentSelectedTool.nameAr}</p>
+              <p className="text-xs text-[var(--app-text-muted)]">{t('openLabLabel')}</p>
+              <p className="text-sm font-black text-[var(--app-text)] truncate">{toolTitle(currentSelectedTool)}</p>
             </div>
           </div>
           <motion.button
@@ -283,7 +292,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
             onClick={openCatalog}
             className="min-h-12 px-5 py-3 rounded-2xl bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white text-xs font-extrabold cursor-pointer shrink-0"
           >
-            اختر مختبراً آخر
+            {t('chooseAnotherLabButton')}
           </motion.button>
           </div>
         </div>
@@ -309,8 +318,8 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                   🔬
                 </div>
                 <div>
-                  <h2 className="text-base font-black text-[var(--app-text)]">المختبرات التفاعلية</h2>
-                  <p className="text-xs text-[var(--app-text-muted)] mt-0.5">{availableTools.length} أداة — اختر فئة</p>
+                  <h2 className="text-base font-black text-[var(--app-text)]">{t('interactiveLabsShortTitle')}</h2>
+                  <p className="text-xs text-[var(--app-text-muted)] mt-0.5">{t('toolsCountChooseCategory', { count: availableTools.length })}</p>
                 </div>
               </div>
 
@@ -331,8 +340,8 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                       <CardBlobBackdrop />
                       <span className="text-3xl drop-shadow-sm shrink-0 relative z-10">{cat.emoji}</span>
                       <div className="flex-1 relative z-10 text-right">
-                        <h3 className="text-sm font-black text-white">{cat.labelAr}</h3>
-                        <p className="text-xs text-white/70 mt-0.5">{cat.hintAr}</p>
+                        <h3 className="text-sm font-black text-white">{t(cat.labelKey)}</h3>
+                        <p className="text-xs text-white/70 mt-0.5">{t(cat.hintKey)}</p>
                       </div>
                       <span className="bg-black/20 text-white text-xs font-black px-2.5 py-1 rounded-full relative z-10 shrink-0">
                         {count}
@@ -359,14 +368,18 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                   onClick={() => setMobileView('hub')}
                   className="w-9 h-9 rounded-2xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] flex items-center justify-center cursor-pointer shrink-0"
                 >
-                  <ChevronRight className="w-4 h-4 text-[var(--app-text-muted)]" />
+                  {direction === 'rtl' ? (
+                    <ChevronRight className="w-4 h-4 text-[var(--app-text-muted)]" />
+                  ) : (
+                    <ChevronLeft className="w-4 h-4 text-[var(--app-text-muted)]" />
+                  )}
                 </motion.button>
                 <div className={`w-9 h-9 rounded-2xl ${activeMobileCat.cardClass} flex items-center justify-center text-base shrink-0`}>
                   {activeMobileCat.emoji}
                 </div>
                 <div>
-                  <h2 className="text-sm font-black text-[var(--app-text)]">{activeMobileCat.labelAr}</h2>
-                  <p className="text-xs text-[var(--app-text-muted)]">{mobileCatTools.length} أدوات متاحة</p>
+                  <h2 className="text-sm font-black text-[var(--app-text)]">{t(activeMobileCat.labelKey)}</h2>
+                  <p className="text-xs text-[var(--app-text-muted)]">{t('toolsAvailableInCategory', { count: mobileCatTools.length })}</p>
                 </div>
               </div>
 
@@ -417,20 +430,20 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <h2 className="text-base sm:text-lg font-black text-[var(--app-text)]">
-                    المختبرات والأدوات التفاعلية
+                    {t('hubTitle')}
                   </h2>
                   <span className="bg-amber-500/15 text-amber-700 text-xs font-black px-2.5 py-0.5 rounded-full border border-amber-300/50">
-                    {availableTools.length} أداة متاحة
+                    {t('toolsAvailableBadge', { count: availableTools.length })}
                   </span>
                 </div>
                 <p className="text-xs text-[var(--app-text-muted)] mt-0.5">
                   {currentSelectedTool ? (
                     <span className="inline-flex items-center gap-1.5 flex-wrap">
-                      <span>الأداة المفتوحة حالياً:</span>
-                      <strong className="text-[var(--app-text)] font-black">{currentSelectedTool.nameAr}</strong>
+                      <span>{t('currentlyOpenLabel')}</span>
+                      <strong className="text-[var(--app-text)] font-black">{toolTitle(currentSelectedTool)}</strong>
                     </span>
                   ) : (
-                    'استكشف الأدوات التفاعلية والمختبرات الميدانية لتعزيز الفهم والتحصيل'
+                    t('exploreDefaultDesc')
                   )}
                 </p>
               </div>
@@ -442,14 +455,14 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                   onClick={scrollToTool}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white transition-all cursor-pointer active:scale-95"
                 >
-                  انتقل للأداة المفتوحة 👇
+                  {t('goToOpenToolButton')}
                 </button>
               )}
               <button
                 onClick={() => setIsGridExpanded(!isGridExpanded)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[var(--app-card-subtle)] text-[var(--app-text)] hover:bg-slate-200/60 transition-colors cursor-pointer border border-[var(--app-card-border)]"
               >
-                <span>{isGridExpanded ? 'إخفاء الدليل' : 'عرض الدليل الكامل'}</span>
+                <span>{isGridExpanded ? t('hideGuideButton') : t('showFullGuideButton')}</span>
                 {isGridExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
               </button>
             </div>
@@ -466,7 +479,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                     : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)] hover:bg-slate-200/50'
                 }`}
               >
-                🌟 جميع الأدوات ({availableTools.length})
+                {t('allToolsButton', { count: availableTools.length })}
               </button>
 
               {DESKTOP_GROUPS.map(group => {
@@ -485,7 +498,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                         : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)] hover:bg-slate-200/50'
                     }`}
                   >
-                    <span>{group.labelAr.split(' ')[0]} {group.labelAr.split(' ')[1]}</span>
+                    <span>{t(group.labelKey)}</span>
                     <span className={`text-[10px] px-1.5 py-0.2 rounded-md ${isSelected ? 'bg-white/25 text-white' : 'bg-black/5 text-[var(--app-text-muted)]'}`}>
                       {count}
                     </span>
@@ -499,7 +512,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="ابحث عن أداة أو مختبر..."
+                placeholder={t('searchPlaceholder')}
                 className="w-full pl-3 pr-9 py-1.5 text-xs rounded-xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] text-[var(--app-text)] focus:ring-2 focus:ring-amber-400 focus:outline-hidden"
               />
               <Search className="w-3.5 h-3.5 text-[var(--app-text-muted)] absolute right-3 top-2.5" />
@@ -515,15 +528,15 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                 <div className="flex items-center justify-between">
                   <h3 className="text-xs font-black text-[var(--app-text)] flex items-center gap-2">
                     <Search className="w-4 h-4 text-amber-600" />
-                    <span>نتائج البحث عن: "{searchQuery}" ({filteredToolsBySearch.length})</span>
+                    <span>{t('searchResultsTitle', { query: searchQuery, count: filteredToolsBySearch.length })}</span>
                   </h3>
                   <button onClick={() => setSearchQuery('')} className="text-xs text-amber-600 font-bold hover:underline cursor-pointer">
-                    إلغاء البحث
+                    {t('cancelSearchButton')}
                   </button>
                 </div>
                 {filteredToolsBySearch.length === 0 ? (
                   <div className="text-center py-8 text-[var(--app-text-muted)] text-xs">
-                    لم يتم العثور على أداة مطابقة لبحثك.
+                    {t('noSearchResultsMsg')}
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -547,10 +560,10 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                         <div className="p-2 rounded-xl bg-amber-500/10 text-amber-700">
                           <GroupIcon className="w-4 h-4" />
                         </div>
-                        <h3 className="text-sm font-black text-[var(--app-text)]">{group.labelAr}</h3>
+                        <h3 className="text-sm font-black text-[var(--app-text)]">{t(group.labelKey)}</h3>
                       </div>
                       <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border border-[var(--app-card-border)]">
-                        {groupTools.length} أدوات
+                        {t('toolsCountBadge', { count: groupTools.length })}
                       </span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -610,10 +623,12 @@ interface ToolCardProps {
   onSelect: () => void;
 }
 
-const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isActive, onSelect, grade }) => {
+const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isActive, onSelect }) => {
+  const { locale } = useLocaleContext();
+  const t = useTranslation('tools');
   const IconComp = ICON_MAP[tool.icon] || Sparkles;
-  const showFrenchLabel = canShowFrenchInLab(grade);
   const cardClass = KIDS_LAB_CARD[tool.id] ?? 'kids-card-labs';
+  const title = catalogToolTitle(tool, locale);
 
   return (
     <motion.button
@@ -640,17 +655,14 @@ const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isA
           {isActive && (
             <span className="bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1">
               <CheckCircle2 className="w-3 h-3" />
-              <span>مفتوح</span>
+              <span>{t('toolOpenBadge')}</span>
             </span>
           )}
         </div>
       </div>
 
       <div className="relative z-10 w-full">
-        <h4 className="font-extrabold text-[15px] text-white mb-0.5 leading-snug">{tool.nameAr}</h4>
-        {showFrenchLabel && tool.nameFr && (
-          <p className="text-[10px] text-white/80 font-sans tracking-wide mb-1 line-clamp-1">{tool.nameFr}</p>
-        )}
+        <h4 className="font-extrabold text-[15px] text-white mb-0.5 leading-snug">{title}</h4>
         <p className="text-[11.5px] text-white/90 line-clamp-2 leading-relaxed">
           {tool.description}
         </p>

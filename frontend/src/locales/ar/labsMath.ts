@@ -94,7 +94,7 @@ export const labsMath = {
   clockMinutesLabel: 'الدَّقَائِقُ',
   clockQuizQuestion: 'مَا هُوَ الوَقْتُ المَعْرُوضُ عَلَى السَّاعَةِ؟',
   clockCorrectFeedback: 'إِجَابَةٌ صَحِيحَةٌ! أَحْسَنْتَ 🌟',
-  clockIncorrectFeedback: 'غَيْرُ صَحِيحٍ، الوَقْتُ الصَّحِيحُ هُوَ: {answer}',
+  clockIncorrectFeedback: 'حَاوِلْ مَرَّةً أُخْرَى',
   clockNextButton: 'السُّؤَالُ التَّالِي ⟵',
 
   // Shape3DViewer.tsx

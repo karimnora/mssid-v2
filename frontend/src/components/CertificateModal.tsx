@@ -72,7 +72,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
         initial={{ opacity: 0, scale: 0.95, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="bg-white border border-[#E7E2D7] rounded-3xl shadow-2xl w-full max-w-sm min-w-0 flex flex-col overflow-hidden max-h-[min(92dvh,calc(100svh-1.5rem))]"
+        className="web-dialog bg-white border border-[#E7E2D7] rounded-3xl shadow-2xl w-full max-w-sm min-w-0 flex flex-col overflow-hidden max-h-[min(92dvh,calc(100svh-1.5rem))]"
       >
         <div className="flex items-center justify-between p-4 border-b border-[#E7E2D7] shrink-0">
           <h2 className="text-base font-extrabold text-[#5A3B00]">شهادة قابلة للمشاركة 🎉</h2>

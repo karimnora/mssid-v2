@@ -4,6 +4,7 @@ import { speakText as speakTextShared } from '../utils/speech';
 import {
   ShoppingBag,
   Coins,
+  ArrowLeft,
   ArrowRight,
   RotateCcw,
   CheckCircle,
@@ -18,6 +19,8 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { AuthService } from '../services/authService';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface MarketItem {
   id: string;
@@ -167,6 +170,9 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   goldCoins = 150,
   onEarnCoins,
 }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsSocial');
+  const tCommon = useTranslation('common');
   const [activeTab, setActiveTab] = useState<'shop' | 'change_game' | 'speed_math'>('shop');
   const [selectedProductCategory, setSelectedProductCategory] = useState<string>('all');
 
@@ -337,7 +343,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div className="max-w-6xl mx-auto p-3 sm:p-6 space-y-6" dir={direction}>
       {/* Banner */}
       <div className="relative overflow-hidden bg-gradient-to-r from-amber-700 via-emerald-700 to-teal-800 rounded-3xl p-6 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-amber-500/30">
         <div className="flex items-center gap-4 z-10">
@@ -347,14 +353,14 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
-                سوق المسيد وحساب الدنانير الجزائرية (DA)
+                {t('currencyBannerTitle')}
               </h1>
               <span className="bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full shadow-xs">
-                محاكي الرياضيات والتجارة
+                {t('currencyBannerBadge')}
               </span>
             </div>
             <p className="text-amber-100 text-xs sm:text-sm mt-1.5 font-medium max-w-2xl leading-relaxed">
-              محاكي دكان الخيرات الجزائرية: تعلّم استعمال الأوراق والقطع النقدية الرسمية (5 دج إلى 2000 دج)، جمع الفواتير، وإرجاع الصرف بدقة!
+              {t('currencyBannerTagline')}
             </p>
           </div>
         </div>
@@ -362,10 +368,10 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
         {onBack && (
           <button
             onClick={onBack}
-            aria-label="العودة للأدوات"
+            aria-label={tCommon('backToTools')}
             className="z-10 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >
-            <ArrowRight className="w-5 h-5" />
+            {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
           </button>
         )}
       </div>
@@ -381,7 +387,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
           }`}
         >
           <ShoppingBag className="w-4 h-4" />
-          <span>🛒 عربة التسوق والدفع بالدنانير</span>
+          <span>{t('currencyTabShop')}</span>
         </button>
 
         <button
@@ -393,7 +399,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
           }`}
         >
           <Coins className="w-4 h-4" />
-          <span>🧮 لعبة التاجر وإرجاع الصرف ({gameScore} أرباح)</span>
+          <span>{t('currencyTabChangeGame', { score: gameScore })}</span>
         </button>
 
         <button
@@ -405,7 +411,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
           }`}
         >
           <Zap className="w-4 h-4" />
-          <span>⚡ تحدي الحساب السريع بالدنانير</span>
+          <span>{t('currencyTabSpeedMath')}</span>
         </button>
       </div>
 
@@ -419,17 +425,17 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <h2 className="text-base font-black text-[var(--app-text)] flex items-center gap-2">
                 <Store className="w-5 h-5 text-emerald-600" />
-                <span>دكان الخيرات الجزائرية (اختر المواد وضعها في السلة):</span>
+                <span>{t('currencyShopSectionHeader')}</span>
               </h2>
 
               {/* Category Pills */}
               <div className="flex flex-wrap gap-1.5">
                 {[
-                  { id: 'all', label: 'الكل' },
-                  { id: 'food', label: '🥣 غذائية' },
-                  { id: 'fruits', label: '🍊 فواكه وخضر' },
-                  { id: 'school', label: '📓 مدرسية' },
-                  { id: 'artisan', label: '🏺 تقليدية' },
+                  { id: 'all', label: t('currencyCatAll') },
+                  { id: 'food', label: t('currencyCatFood') },
+                  { id: 'fruits', label: t('currencyCatFruits') },
+                  { id: 'school', label: t('currencyCatSchool') },
+                  { id: 'artisan', label: t('currencyCatArtisan') },
                 ].map((cat) => (
                   <button
                     key={cat.id}
@@ -473,7 +479,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                         {prod.nameAr}
                       </h3>
                       <p className="text-[11px] text-[var(--app-text-muted)] font-medium mt-0.5">
-                        الوحدة: {prod.unitAr}
+                        {t('currencyUnitLabel', { unit: prod.unitAr })}
                       </p>
                     </div>
 
@@ -504,7 +510,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                           className="w-full py-2 bg-[var(--app-card-subtle)] hover:bg-emerald-700 hover:text-white rounded-xl text-xs font-black text-[var(--app-text)] transition-colors flex items-center justify-center gap-1 cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
-                          <span>إضافة للسلة</span>
+                          <span>{t('currencyAddToCart')}</span>
                         </button>
                       )}
                     </div>
@@ -520,7 +526,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-3">
                 <h3 className="font-black text-[var(--app-text)] flex items-center gap-2 text-sm sm:text-base">
                   <ShoppingBag className="w-5 h-5 text-amber-600" />
-                  <span>فاتورة المشتريات:</span>
+                  <span>{t('currencyInvoiceLabel')}</span>
                 </h3>
                 <span className="text-xl font-black text-emerald-700 bg-emerald-50 px-3 py-1 rounded-2xl border border-emerald-200">
                   {cartTotal} دج
@@ -531,7 +537,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               <div className="max-h-40 overflow-y-auto space-y-1.5 pr-1">
                 {Object.keys(cart).length === 0 ? (
                   <p className="text-xs text-slate-400 text-center py-4 font-medium">
-                    السلة فارغة، اضغط على المواد أعلاه لإضافتها
+                    {t('currencyEmptyCart')}
                   </p>
                 ) : (
                   (Object.entries(cart) as [string, number][]).map(([id, qty]) => {
@@ -558,14 +564,14 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               <div className="space-y-2.5 pt-2 border-t border-[var(--app-card-border)]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-black text-[var(--app-text-muted)]">
-                    اضغط على النقود لدفعها في الصندوق:
+                    {t('currencyPressMoneyInstruction')}
                   </span>
                   {tenderedBills.length > 0 && (
                     <button
                       onClick={() => setTenderedBills([])}
                       className="text-xs text-rose-500 font-bold hover:underline cursor-pointer"
                     >
-                      تفريغ الصندوق
+                      {t('currencyEmptyRegister')}
                     </button>
                   )}
                 </div>
@@ -588,7 +594,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                 <div className="bg-amber-50 dark:bg-amber-950/40 rounded-2xl p-3 border border-amber-200 dark:border-amber-900 flex items-center justify-between">
                   <div>
                     <span className="text-xs text-amber-900 dark:text-amber-300 font-bold block">
-                      المبلغ الذي وضعته في الصندوق:
+                      {t('currencyAmountInRegisterLabel')}
                     </span>
                     <span className="text-xl font-black text-amber-950 dark:text-amber-200">
                       {tenderedTotal} دج
@@ -602,7 +608,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                   className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black rounded-2xl shadow-lg hover:brightness-105 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
                 >
                   <CheckCircle className="w-5 h-5" />
-                  <span>تأكيد الدفع واستلام وصل الشراء</span>
+                  <span>{t('currencyConfirmPayment')}</span>
                 </button>
               </div>
 
@@ -638,12 +644,12 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="font-black text-[var(--app-text)] text-base">
-                      زبون جديد: {currentScenario.customer}
+                      {t('currencyNewCustomerLabel', { customer: currentScenario.customer })}
                     </h3>
                     <button
                       onClick={() => speakText(currentScenario.storyAr)}
                       className="p-1 rounded-lg bg-amber-200 text-amber-950 hover:bg-amber-300 cursor-pointer"
-                      title="استمع للطلب"
+                      title={t('currencyListenToRequestTooltip')}
                     >
                       <Volume2 className="w-3.5 h-3.5" />
                     </button>
@@ -657,7 +663,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               <div className="flex items-center gap-3 shrink-0">
                 <div className="bg-white dark:bg-slate-800 px-3.5 py-2 rounded-xl text-center border border-amber-300">
                   <span className="text-[10px] font-extrabold text-[var(--app-text-muted)] block">
-                    ثمن المشتريات
+                    {t('currencyTotalCostLabel')}
                   </span>
                   <span className="text-sm font-black text-slate-900 dark:text-white">
                     {currentScenario.totalCost} دج
@@ -665,7 +671,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                 </div>
                 <div className="bg-emerald-700 text-white px-3.5 py-2 rounded-xl text-center shadow-xs">
                   <span className="text-[10px] font-extrabold text-emerald-100 block">
-                    المبلغ المدفوع
+                    {t('currencyPaidAmountLabel')}
                   </span>
                   <span className="text-sm font-black">{currentScenario.paidAmount} دج</span>
                 </div>
@@ -675,7 +681,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
             {/* Currency selector */}
             <div className="space-y-3">
               <h4 className="text-xs sm:text-sm font-black text-[var(--app-text)]">
-                🧮 اضغط على القطع والأوراق النقدية لتجهيز الصرف الصحيح للزبون:
+                {t('currencyPressCoinsInstruction')}
               </h4>
 
               <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2">
@@ -696,7 +702,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
             <div className="bg-[var(--app-card-subtle)] rounded-2xl p-4 border border-[var(--app-card-border)] space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black text-[var(--app-text)]">
-                  صينية الصرف المجهزة (المجموع:{' '}
+                  {t('currencyTrayLabelPrefix')}{' '}
                   <span className="text-amber-600 font-extrabold text-sm">
                     {gameGivenTotal} دج
                   </span>
@@ -707,7 +713,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                     onClick={() => setGameGivenMoney([])}
                     className="text-xs text-rose-500 font-bold hover:underline cursor-pointer"
                   >
-                    إعادة البدء
+                    {t('currencyRestartButton')}
                   </button>
                 )}
               </div>
@@ -715,7 +721,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               <div className="min-h-16 bg-[var(--app-card-bg)] rounded-xl p-2.5 border border-dashed border-[var(--app-card-border)] flex flex-wrap items-center gap-2">
                 {gameGivenMoney.length === 0 ? (
                   <span className="text-xs text-slate-400 font-medium">
-                    انقر فوق فئات النقود أعلاه لإضافتها هنا للصرف...
+                    {t('currencyClickCoinsPlaceholder')}
                   </span>
                 ) : (
                   gameGivenMoney.map((val, idx) => {
@@ -728,7 +734,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                           match?.color || 'bg-slate-200'
                         }`}
                         style={match?.swatchStyle}
-                        title="انقر للحذف"
+                        title={t('currencyClickToRemoveTooltip')}
                       >
                         <span>{val} دج</span>
                         <span className="text-[10px] opacity-60">✕</span>
@@ -747,14 +753,14 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                 className="w-full sm:w-auto px-6 py-3 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white font-black rounded-2xl shadow-md transition-all cursor-pointer text-xs sm:text-sm flex items-center justify-center gap-2"
               >
                 <CheckCircle className="w-4 h-4" />
-                <span>تسليم الصرف للزبون وتأكيد العملية</span>
+                <span>{t('currencyDeliverChangeButton')}</span>
               </button>
 
               <button
                 onClick={nextScenario}
                 className="w-full sm:w-auto px-5 py-3 bg-[var(--app-card-subtle)] hover:bg-[var(--app-card-border)] text-[var(--app-text)] font-black rounded-2xl transition-all cursor-pointer text-xs sm:text-sm flex items-center justify-center gap-2"
               >
-                <span>الانتقال للزبون التالي</span>
+                <span>{t('currencyNextCustomerButton')}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -785,11 +791,11 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
               <div className="flex items-center gap-2">
                 <Zap className="w-6 h-6 text-teal-600" />
                 <h3 className="font-black text-[var(--app-text)] text-base sm:text-lg">
-                  تحدي الذكاء والحساب السريع بالدنانير
+                  {t('currencySpeedMathTitle')}
                 </h3>
               </div>
               <span className="bg-teal-100 text-teal-900 text-xs font-black px-3 py-1 rounded-full">
-                النتيجة: {mathScore} / {SPEED_MATH_CHALLENGES.length}
+                {t('currencyScoreLabel', { score: mathScore, total: SPEED_MATH_CHALLENGES.length })}
               </span>
             </div>
 
@@ -797,7 +803,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
             <div className="bg-teal-50 dark:bg-teal-950/30 p-5 rounded-2xl border border-teal-200 dark:border-teal-900 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black text-teal-800 dark:text-teal-300">
-                  السؤال الرقم #{mathIndex + 1}:
+                  {t('currencyQuestionNumberLabel', { number: mathIndex + 1 })}
                 </span>
                 <button
                   onClick={() => speakText(currentMath.question)}
@@ -860,7 +866,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
                   onClick={handleNextSpeedMath}
                   className="w-full py-3.5 bg-teal-700 hover:bg-teal-800 text-white font-black rounded-2xl shadow-md transition-all cursor-pointer text-xs sm:text-sm flex items-center justify-center gap-2"
                 >
-                  <span>التالي</span>
+                  <span>{t('currencyNextButton')}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

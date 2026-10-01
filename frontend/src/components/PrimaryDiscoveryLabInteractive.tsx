@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button } from './ui';
 import {
+  ArrowLeft,
   ArrowRight,
   Eye,
   Ear,
@@ -19,6 +20,9 @@ import {
   Volume2,
 } from 'lucide-react';
 import { speakText } from '../utils/speech';
+import { labQuizIsLocked, labQuizOptionClass } from '../utils/labQuizChoice';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface PrimaryDiscoveryLabInteractiveProps {
   onReward?: (coins: number, xp: number) => void;
@@ -31,12 +35,15 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
   onReward,
   onBack,
 }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsScience');
+  const tCommon = useTranslation('common');
   const [activeTab, setActiveTab] = useState<DiscoveryTab>('five_senses');
 
   // --- 1. Five Senses Game State ---
   const [selectedSense, setSelectedSense] = useState<string>('sight');
   const [sensesQuizScore, setSensesQuizScore] = useState<number>(0);
-  const [sensesAnswered, setSensesAnswered] = useState<Record<number, boolean>>({});
+  const [sensesAnswered, setSensesAnswered] = useState<Record<number, string>>({});
 
   // --- 2. Plant Growth Simulation State ---
   const [plantStage, setPlantStage] = useState<number>(1); // 1: Seed, 2: Germination, 3: Seedling, 4: Adult Plant with flower/fruit
@@ -160,6 +167,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
   ];
 
   const handleRightChoice = (cardId: number, choice: 'right' | 'duty', correctType: string) => {
+    if (labQuizIsLocked(rightsAnswers[cardId], correctType)) return;
     setRightsAnswers((prev) => ({ ...prev, [cardId]: choice }));
     if (choice === correctType) {
       setRightsScore((prev) => prev + 1);
@@ -168,29 +176,29 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-5xl mx-auto" dir={direction}>
       {/* Header */}
       <div className="bg-gradient-to-r from-teal-700 via-cyan-800 to-blue-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 w-14 h-14 flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-6 h-6" />
+              {direction === 'rtl' ? <ArrowRight className="w-6 h-6" /> : <ArrowLeft className="w-6 h-6" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              <span>مختبر الإيقاظ العلمي والتربية المدنية (1AP / 2AP)</span>
+              <span>{t('discoveryBadge')}</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-black font-sans">
-              الحواس الخمس، مراحل نمو النبات، وحقوق وواجبات الطفل
+              {t('discoveryTitle')}
             </h1>
             <p className="text-xs sm:text-sm text-cyan-100 leading-relaxed max-w-3xl">
-              اكتشف أعضاء الحواس الخمس ووظائفها، جرب محاكاة نمو النبتة بالماء والشمس، وتعرّف على حقوقك وواجباتك كمواطن صالح.
+              {t('discoveryIntro')}
             </p>
           </div>
         </div>
@@ -206,7 +214,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>👁️ الحواس الخمس (الأعضاء والوظائف)</span>
+          <span>{t('discoveryTabSenses')}</span>
         </button>
 
         <button
@@ -217,7 +225,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>🌱 مراحل نمو النبتة واحتياجاتها</span>
+          <span>{t('discoveryTabPlant')}</span>
         </button>
 
         <button
@@ -228,7 +236,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>⚖️ حقوق الطفل وواجباته في المدرسة والبيت</span>
+          <span>{t('discoveryTabRights')}</span>
         </button>
       </div>
 
@@ -293,47 +301,35 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
 
           {/* Senses Mini Quiz */}
           <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4">
-            <h3 className="text-sm font-black text-[var(--app-text)]">اختبر معلوماتك في الحواس:</h3>
+            <h3 className="text-sm font-black text-[var(--app-text)]">{t('discoveryTestYourKnowledgeSenses')}</h3>
             <div className="space-y-4">
-              {SENSES_QUESTIONS.map((q) => {
-                const isAnswered = !!sensesAnswered[q.id];
-                return (
+              {SENSES_QUESTIONS.map((q) => (
                   <div
                     key={q.id}
                     className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3"
                   >
                     <p className="text-xs sm:text-sm font-black text-[var(--app-text)]">{q.scenarioAr}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                      {q.options.map((opt) => {
-                        const isCorrect = opt.id === q.correctSense;
-                        return (
+                      {q.options.map((opt) => (
                           <button
                             key={opt.id}
+                            type="button"
                             onClick={() => {
-                              if (!isAnswered) {
-                                setSensesAnswered((prev) => ({ ...prev, [q.id]: true }));
-                                if (isCorrect) {
-                                  setSensesQuizScore((s) => s + 1);
-                                  onReward?.(5, 15);
-                                }
+                              if (labQuizIsLocked(sensesAnswered[q.id], q.correctSense)) return;
+                              setSensesAnswered((prev) => ({ ...prev, [q.id]: opt.id }));
+                              if (opt.id === q.correctSense) {
+                                setSensesQuizScore((s) => s + 1);
+                                onReward?.(5, 15);
                               }
                             }}
-                            className={`p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                              isAnswered
-                                ? isCorrect
-                                  ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
-                                  : 'bg-slate-100 text-slate-400 border-slate-200'
-                                : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-teal-400'
-                            }`}
+                            className={labQuizOptionClass(sensesAnswered[q.id], opt.id, q.correctSense)}
                           >
                             {opt.textAr}
                           </button>
-                        );
-                      })}
+                      ))}
                     </div>
                   </div>
-                );
-              })}
+              ))}
             </div>
           </div>
         </div>
@@ -455,26 +451,16 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
 
                   <div className="grid grid-cols-2 gap-2">
                     <button
+                      type="button"
                       onClick={() => handleRightChoice(card.id, 'right', card.type)}
-                      className={`p-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                        userAns === 'right'
-                          ? isCorrect
-                            ? 'bg-emerald-700 text-white shadow-xs'
-                            : 'bg-rose-600 text-white'
-                          : 'bg-[var(--app-card-bg)] border border-[var(--app-card-border)] text-[var(--app-text)] hover:border-blue-400'
-                      }`}
+                      className={labQuizOptionClass(userAns, 'right', card.type)}
                     >
                       حَقٌّ لِي 📜
                     </button>
                     <button
+                      type="button"
                       onClick={() => handleRightChoice(card.id, 'duty', card.type)}
-                      className={`p-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                        userAns === 'duty'
-                          ? isCorrect
-                            ? 'bg-emerald-700 text-white shadow-xs'
-                            : 'bg-rose-600 text-white'
-                          : 'bg-[var(--app-card-bg)] border border-[var(--app-card-border)] text-[var(--app-text)] hover:border-blue-400'
-                      }`}
+                      className={labQuizOptionClass(userAns, 'duty', card.type)}
                     >
                       وَاجِبٌ عَلَيَّ 🤝
                     </button>
@@ -486,7 +472,7 @@ export const PrimaryDiscoveryLabInteractive: React.FC<PrimaryDiscoveryLabInterac
                         isCorrect ? 'bg-emerald-100 text-emerald-900' : 'bg-rose-100 text-rose-900'
                       }`}
                     >
-                      {isCorrect ? 'إجابة صحيحة! أحسنت يا بطل 🌟' : `غير صحيح، هذا يمثل: ${card.labelAr}`}
+                      {isCorrect ? 'إجابة صحيحة! أحسنت يا بطل 🌟' : 'حَاوِلْ مَرَّةً أُخْرَى'}
                     </div>
                   )}
                 </div>

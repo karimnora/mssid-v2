@@ -130,7 +130,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'algerian_market',
     nameAr: 'سوق العملة والنقود الجزائرية التفاعلي',
-    nameFr: 'Marché Monétaire Algérien',
+    nameFr: 'Marché et calcul du dinar algérien',
     icon: 'Store',
     color: 'from-amber-600 to-yellow-700',
     bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
@@ -141,7 +141,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'wilayas_map',
     nameAr: 'خريطة ولايات الجزائر الـ 58 التفاعلية',
-    nameFr: 'Carte Interactive des 58 Wilayas',
+    nameFr: 'Carte interactive des 58 wilayas',
     icon: 'MapPin',
     color: 'from-emerald-600 to-teal-700',
     bgLight: 'bg-emerald-50 text-emerald-900 border-emerald-200',
@@ -152,7 +152,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'history_museum',
     nameAr: 'متحف التاريخ والشخصيات الوطنية الجزائرية',
-    nameFr: 'Musée d\'Histoire et Héros Algériens',
+    nameFr: 'Musée de l’histoire et des héros algériens',
     icon: 'Shield',
     color: 'from-rose-700 to-red-900',
     bgLight: 'bg-rose-50 text-rose-900 border-rose-200',
@@ -163,7 +163,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'tamazight_lab',
     nameAr: 'المختبر التفاعلي للغة الأمازيغية (تيفيناغ)',
-    nameFr: 'Laboratoire Interactif Tamazight',
+    nameFr: 'Laboratoire interactif de tamazight',
     icon: 'Sparkles',
     color: 'from-emerald-700 to-teal-900',
     bgLight: 'bg-emerald-50 text-emerald-900 border-emerald-200',
@@ -175,7 +175,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'tamazight_curriculum',
     nameAr: 'منهاج ومشاريع الأمازيغية الرسمية',
-    nameFr: 'Programme Officiel Tamazight',
+    nameFr: 'Programme officiel de tamazight',
     icon: 'BookOpen',
     color: 'from-teal-600 to-cyan-800',
     bgLight: 'bg-teal-50 text-teal-900 border-teal-200',
@@ -187,7 +187,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'touch_writing',
     nameAr: 'أستوديو الكتابة والخط وتتبع الحروف',
-    nameFr: 'Studio d\'Écriture et Tracé',
+    nameFr: 'Studio d’écriture et de tracé',
     icon: 'PenTool',
     color: 'from-blue-600 to-indigo-700',
     bgLight: 'bg-blue-50 text-blue-900 border-blue-200',
@@ -199,7 +199,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'science_lab',
     nameAr: 'المختبر العلمي الشامل ومحاكاة التجارب',
-    nameFr: 'Grand Laboratoire Scientifique',
+    nameFr: 'Grand laboratoire scientifique',
     icon: 'FlaskConical',
     color: 'from-cyan-600 to-blue-700',
     bgLight: 'bg-cyan-50 text-cyan-900 border-cyan-200',
@@ -213,7 +213,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'arabic_conjugator',
     nameAr: 'أَدَاةُ تَصْرِيفِ الأَفْعَالِ العَرَبِيَّةِ التَّفَاعُلِيَّةِ',
-    nameFr: 'Conjugueur d\'Arabe Interactif',
+    nameFr: 'Conjugueur interactif d’arabe',
     icon: 'Sparkles',
     color: 'from-emerald-600 to-teal-800',
     bgLight: 'bg-emerald-50 text-emerald-900 border-emerald-200',
@@ -224,7 +224,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'french_lab',
     nameAr: 'أَدَاةُ تَصْرِيفِ الأَفْعَالِ الفَرَنْسِيَّةِ التَّفَاعُلِيَّةِ',
-    nameFr: 'Conjugueur de Verbes Français',
+    nameFr: 'Conjugueur de verbes français',
     icon: 'Languages',
     color: 'from-sky-600 to-blue-800',
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
@@ -246,7 +246,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'soroban',
     nameAr: 'الحساب الذهني (السوروبان)',
-    nameFr: 'Soroban & Calcul Mental',
+    nameFr: 'Soroban et calcul mental',
     icon: 'Grid',
     color: 'from-blue-600 to-indigo-700',
     bgLight: 'bg-blue-50 text-blue-900 border-blue-200',
@@ -257,7 +257,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'electricity',
     nameAr: 'مختبر الكهرباء والصمام التفاعلي',
-    nameFr: 'Labo Électricité & Diode',
+    nameFr: 'Labo d’électricité et de la diode',
     icon: 'Zap',
     color: 'from-amber-500 to-yellow-600',
     bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
@@ -269,7 +269,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'geometry',
     nameAr: 'مختبر الهندسة والأشكال',
-    nameFr: 'Laboratoire de Géométrie',
+    nameFr: 'Laboratoire de géométrie',
     icon: 'Compass',
     color: 'from-teal-600 to-cyan-700',
     bgLight: 'bg-teal-50 text-teal-900 border-teal-200',
@@ -281,7 +281,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'converter',
     nameAr: 'محول الوحدات والمقادير',
-    nameFr: 'Convertisseur d\'Unités',
+    nameFr: 'Convertisseur d’unités',
     icon: 'Calculator',
     color: 'from-purple-600 to-fuchsia-700',
     bgLight: 'bg-purple-50 text-purple-900 border-purple-200',
@@ -304,7 +304,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'multiplication',
     nameAr: 'جدول الضرب والتحدي السريع',
-    nameFr: 'Tables de Multiplication',
+    nameFr: 'Tables de multiplication',
     icon: 'Calculator',
     color: 'from-rose-500 to-red-700',
     bgLight: 'bg-rose-50 text-rose-900 border-rose-200',
@@ -315,7 +315,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'primary_math_ops',
     nameAr: 'الشريط العددي حتى 99 والعمليات العمودية',
-    nameFr: 'Bande Numérique & Opérations Posées',
+    nameFr: 'Bande numérique et opérations posées',
     icon: 'Calculator',
     color: 'from-amber-700 to-emerald-700',
     bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
@@ -326,7 +326,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'primary_discovery',
     nameAr: 'مختبر الإيقاظ العلمي والمدني',
-    nameFr: 'Éveil Scientifique & Civique',
+    nameFr: 'Éveil scientifique et civique',
     icon: 'FlaskConical',
     color: 'from-teal-600 to-cyan-700',
     bgLight: 'bg-teal-50 text-teal-900 border-teal-200',
@@ -337,7 +337,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'french_projects',
     nameAr: 'مشاريع اللغة الفرنسية الرسمية (Projets)',
-    nameFr: 'Projets Officiels de Français',
+    nameFr: 'Projets officiels de français',
     icon: 'Languages',
     color: 'from-sky-600 to-blue-700',
     bgLight: 'bg-sky-50 text-sky-900 border-sky-200',
@@ -359,7 +359,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'human_anatomy',
     nameAr: 'مختبر الجهاز الهضمي والتنفسي',
-    nameFr: 'Labo Digestion & Respiration',
+    nameFr: 'Labo du système digestif et respiratoire',
     icon: 'FlaskConical',
     color: 'from-rose-600 to-fuchsia-800',
     bgLight: 'bg-rose-50 text-rose-900 border-rose-200',
@@ -371,7 +371,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'earth_cycles',
     nameAr: 'مختبر الليل والنهار وفصول السنة',
-    nameFr: 'Labo Jour/Nuit & Saisons',
+    nameFr: 'Labo du jour, de la nuit et des saisons',
     icon: 'FlaskConical',
     color: 'from-indigo-600 to-blue-900',
     bgLight: 'bg-indigo-50 text-indigo-900 border-indigo-200',
@@ -383,7 +383,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'fractions_lab',
     nameAr: 'مختبر الكسور والأعداد العشرية',
-    nameFr: 'Labo Fractions & Décimaux',
+    nameFr: 'Labo des fractions et des nombres décimaux',
     icon: 'Calculator',
     color: 'from-orange-500 to-amber-700',
     bgLight: 'bg-orange-50 text-orange-900 border-orange-200',
@@ -394,7 +394,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'area_grid',
     nameAr: 'شبكة المساحة والمحيط التفاعلية',
-    nameFr: 'Grille Aire & Périmètre',
+    nameFr: 'Grille d’aire et de périmètre',
     icon: 'Calculator',
     color: 'from-lime-600 to-emerald-700',
     bgLight: 'bg-lime-50 text-lime-900 border-lime-200',
@@ -405,7 +405,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'clock_trainer',
     nameAr: 'مدرب قراءة الساعة',
-    nameFr: 'Entraîneur d\'Horloge',
+    nameFr: 'Entraîneur de lecture de l’heure',
     icon: 'Calculator',
     color: 'from-violet-600 to-purple-800',
     bgLight: 'bg-violet-50 text-violet-900 border-violet-200',
@@ -416,7 +416,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'syllable_studio',
     nameAr: 'أستوديو المقاطع الصوتية',
-    nameFr: 'Studio de Syllabes',
+    nameFr: 'Studio des syllabes',
     icon: 'Languages',
     color: 'from-cyan-600 to-blue-800',
     bgLight: 'bg-cyan-50 text-cyan-900 border-cyan-200',
@@ -427,7 +427,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'speed_reading',
     nameAr: 'مدرب القراءة السريعة والفهم',
-    nameFr: 'Entraîneur de Lecture Rapide',
+    nameFr: 'Entraîneur de lecture rapide',
     icon: 'BookOpen',
     color: 'from-blue-600 to-violet-800',
     bgLight: 'bg-blue-50 text-blue-900 border-blue-200',
@@ -438,7 +438,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'topography_map',
     nameAr: 'خريطة تضاريس ومناخ الجزائر',
-    nameFr: 'Carte Topographique & Climatique',
+    nameFr: 'Carte du relief et du climat',
     icon: 'Compass',
     color: 'from-orange-700 to-rose-900',
     bgLight: 'bg-orange-50 text-orange-900 border-orange-200',
@@ -449,7 +449,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'speed_lab',
     nameAr: 'مختبر السرعة والحركة في المدينة',
-    nameFr: 'Laboratoire de Vitesse et Mouvement en Ville',
+    nameFr: 'Labo de vitesse et de mouvement en ville',
     icon: 'Zap',
     color: 'from-amber-500 via-orange-500 to-rose-600',
     bgLight: 'bg-amber-50 text-amber-900 border-amber-200',
@@ -461,7 +461,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'exams',
     nameAr: 'بنك مواضيع الامتحانات والاختبارات مع الحلول',
-    nameFr: 'Annales et Sujets d\'Examens',
+    nameFr: 'Annales et sujets d’examens',
     icon: 'Award',
     color: 'from-purple-600 to-violet-700',
     bgLight: 'bg-purple-50 text-purple-900 border-purple-200',
@@ -473,7 +473,7 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
   {
     id: 'challenges',
     nameAr: 'نادي التحديات والمسابقات',
-    nameFr: 'Arène de Défis et Compétitions',
+    nameFr: 'Arène de défis et de compétitions',
     icon: 'Trophy',
     color: 'from-rose-500 to-amber-600',
     bgLight: 'bg-rose-50 text-rose-900 border-rose-200',

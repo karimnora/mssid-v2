@@ -265,7 +265,7 @@ export const DidouDressingRoomModal: React.FC<DidouDressingRoomModalProps> = ({
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.94, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-        className="kids-modal-panel max-w-4xl w-full overflow-hidden flex flex-col bg-white dark:bg-slate-900 border-2 border-amber-400 rounded-3xl shadow-2xl"
+        className="kids-modal-panel kids-modal-wide max-w-4xl w-full overflow-hidden flex flex-col bg-white dark:bg-slate-900 border-2 border-amber-400 rounded-3xl shadow-2xl"
       >
         {/* HEADER */}
         <div className="kids-modal-header p-4 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white flex items-center justify-between shrink-0 gap-3">

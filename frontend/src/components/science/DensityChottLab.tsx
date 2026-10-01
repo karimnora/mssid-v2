@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Droplets, Award, Info, RotateCcw } from 'lucide-react';
 import { AuthService } from '../../services/authService';
+import { useTranslation } from '../../hooks/useTranslation';
 
 interface Props {
   onReward?: (coins: number, xp: number) => void;
 }
 
 export const DensityChottLab: React.FC<Props> = ({ onReward }) => {
+  const t = useTranslation('labsScience');
   const [salinityGramsPerLiter, setSalinityGramsPerLiter] = useState<number>(0); // 0 g/L (fresh water) to 350 g/L (Chott Melrhir extreme salt)
   const [testedObject, setTestedObject] = useState<'date' | 'olive' | 'wood' | 'rock'>('date');
 
@@ -35,15 +37,15 @@ export const DensityChottLab: React.FC<Props> = ({ onReward }) => {
         <div>
           <div className="flex items-center gap-2">
             <span className="bg-sky-100 text-sky-900 text-xs font-black px-3 py-1 rounded-full">
-              الكتلة الحجمية ودافعة أرخميدس 🔬
+              {t('densityBadgeTopic')}
             </span>
-            <span className="text-xs font-bold text-sky-600">شط ملغيغ • بسكرة • الوادي</span>
+            <span className="text-xs font-bold text-sky-600">{t('densityBadgeLocation')}</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-[var(--app-text)] mt-2">
-            مختبر الكثافة: طفو دقلة نور في مياه شط ملغيغ فائقة الملوحة
+            {t('densityTitle')}
           </h2>
           <p className="text-xs sm:text-sm text-[var(--app-text-muted)] mt-1">
-            شاهد كيف تتغير الكتلة الحجمية للمحلول المائي بزيادة تركيز الملح، مما يجعل الأجسام تطفو عندما تصبح كثافة الماء أكبر من كثافتها!
+            {t('densityIntro')}
           </p>
         </div>
 

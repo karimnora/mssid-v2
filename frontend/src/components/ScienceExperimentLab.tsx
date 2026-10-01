@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
 import {
+  ArrowLeft,
   ArrowRight,
   FlaskConical,
   Sun,
@@ -27,6 +28,8 @@ import { AuthService } from '../services/authService';
 import { FoggaraHydraulicLab } from './science/FoggaraHydraulicLab';
 import { SolarOasisPumpLab } from './science/SolarOasisPumpLab';
 import { DensityChottLab } from './science/DensityChottLab';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface ScienceExperimentLabProps {
   onBack?: () => void;
@@ -39,6 +42,9 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
   grade = '4AP',
   onReward,
 }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsScience');
+  const tCommon = useTranslation('common');
   const [activeTab, setActiveTab] = useState<
     'foggara' | 'solar_pump' | 'density_chott' | 'water_cycle' | 'plant_growth' | 'compass' | 'quiz'
   >('foggara');
@@ -228,7 +234,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div className="max-w-6xl mx-auto p-3 sm:p-6 space-y-6" dir={direction}>
       {/* Banner */}
       <div className="relative overflow-hidden bg-gradient-to-r from-teal-800 via-cyan-800 to-blue-900 rounded-3xl p-6 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-teal-500/30">
         <div className="flex items-center gap-4 z-10">
@@ -238,14 +244,14 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
-                مختبر التجارب العلمية والإيقاظ العلمي
+                {t('expLabTitle')}
               </h1>
               <span className="bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full shadow-xs">
-                التربية العلمية والتكنولوجية
+                {t('expLabSubjectBadge')}
               </span>
             </div>
             <p className="text-teal-100 text-sm mt-1.5 font-bold max-w-2xl leading-relaxed">
-              العب وجرّب بنفسك: الماء والحرارة، نمو النبات، والمغناطيس والبوصلة! 🧪🌱
+              {t('expLabIntro')}
             </p>
           </div>
         </div>
@@ -253,10 +259,10 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
         {onBack && (
           <button
             onClick={onBack}
-            aria-label="العودة للأدوات"
+            aria-label={tCommon('backToTools')}
             className="z-10 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >
-            <ArrowRight className="w-5 h-5" />
+            {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
           </button>
         )}
       </div>
@@ -272,7 +278,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <span className="text-xl">🏛️</span>
-          <span>الفقارة</span>
+          <span>{t('expLabTabFoggara')}</span>
         </button>
 
         <button
@@ -284,7 +290,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <Sun className="w-5 h-5" />
-          <span>الطاقة الشمسية</span>
+          <span>{t('expLabTabSolarPump')}</span>
         </button>
 
         <button
@@ -296,7 +302,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <span className="text-xl">🌴</span>
-          <span>هل يطفو أم يغرق؟</span>
+          <span>{t('expLabTabDensity')}</span>
         </button>
 
         <button
@@ -308,7 +314,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <Droplets className="w-5 h-5" />
-          <span>الماء والحرارة</span>
+          <span>{t('expLabTabWaterCycle')}</span>
         </button>
 
         <button
@@ -320,7 +326,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <Leaf className="w-5 h-5" />
-          <span>النبتة تكبر</span>
+          <span>{t('expLabTabPlantGrowth')}</span>
         </button>
 
         <button
@@ -332,7 +338,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <Compass className="w-5 h-5" />
-          <span>المغناطيس</span>
+          <span>{t('expLabTabCompass')}</span>
         </button>
 
         <button
@@ -344,7 +350,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
           }`}
         >
           <Award className="w-5 h-5" />
-          <span>تحدي العالِم</span>
+          <span>{t('expLabTabQuiz')}</span>
         </button>
       </div>
 

@@ -3,6 +3,8 @@ import { SOROBAN_RULES, SOROBAN_PRACTICE_EXERCISES } from '../data/sorobanData';
 import { Play, RotateCcw, CheckCircle2, XCircle, Sparkles, HelpCircle, Zap, ShieldCheck, Timer, Shuffle, Volume2 } from 'lucide-react';
 import { SorobanExercise } from '../types';
 import { speakText } from '../utils/speech';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface SorobanInteractiveProps {
   grade?: string;
@@ -49,6 +51,8 @@ const generateSorobanExercise = (difficulty: Difficulty, operationMode: Operatio
 };
 
 export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = '4AP', onCompleteExercise }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
   // 5 Rods for 0-99,999 representation
   // Each rod has upperBead (0 or 5) and lowerBeads (0 to 4)
   const [rods, setRods] = useState<{ upper: boolean; lowerCount: number }[]>([
@@ -200,19 +204,19 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
     setElapsedAnswerSeconds(elapsed);
 
     if (userVal === currentAnzanEx.expectedSum) {
-      const timeMsg = elapsed !== null ? ` (في ${elapsed.toFixed(1)} ثانية ⏱️)` : '';
-      setAnzanResult({ correct: true, msg: `إجابة صحيحة ممتعة! أحسنت يا بطل السوروبان 🎉${timeMsg}` });
+      const timeMsg = elapsed !== null ? t('sorobanTimeTakenSuffix', { seconds: elapsed.toFixed(1) }) : '';
+      setAnzanResult({ correct: true, msg: `${t('sorobanCorrectFeedback')}${timeMsg}` });
       if (onCompleteExercise) onCompleteExercise(20);
     } else {
       setAnzanResult({
         correct: false,
-        msg: `إجابة خاطئة. المجموع الصحيح هو ${currentAnzanEx.expectedSum}`,
+        msg: t('sorobanIncorrectFeedback', { sum: currentAnzanEx.expectedSum }),
       });
     }
   };
 
   return (
-    <div data-lab-instrument className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-6 shadow-xs dir-rtl" dir="rtl">
+    <div data-lab-instrument className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-6 shadow-xs" dir={direction}>
       {/* Tab Navigation Header */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between border-b border-slate-200 pb-3 mb-4 gap-3">
         <div className="flex items-center gap-2">
@@ -221,10 +225,10 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
           </div>
           <div>
             <h3 className="font-extrabold text-sm sm:text-base text-slate-900 font-sans">
-              المعداد الياباني التفاعلي (السوروبان - Soroban)
+              {t('sorobanTitle')}
             </h3>
             <p className="text-[11px] text-slate-500 font-sans">
-              تقنية الحساب الذهني السريع وتفعيل الفص الأيمن للدماغ
+              {t('sorobanSubtitle')}
             </p>
           </div>
         </div>
@@ -236,7 +240,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               activeTab === 'abacus' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
             }`}
           >
-            المعداد الحر
+            {t('sorobanTabAbacus')}
           </button>
           <button
             onClick={() => setActiveToolTab('anzan')}
@@ -244,7 +248,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               activeTab === 'anzan' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
             }`}
           >
-            تحدي الحساب الذهني السريع
+            {t('sorobanTabAnzan')}
           </button>
           <button
             onClick={() => setActiveToolTab('rules')}
@@ -252,7 +256,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               activeTab === 'rules' ? 'bg-indigo-600 text-white shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
             }`}
           >
-            قواعد المكملات (5 & 10)
+            {t('sorobanTabRules')}
           </button>
         </div>
       </div>
@@ -262,7 +266,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-200 gap-3">
             <div>
-              <span className="text-[11px] uppercase font-bold text-slate-500 block">القيمة الممثلة حالياً:</span>
+              <span className="text-[11px] uppercase font-bold text-slate-500 block">{t('sorobanCurrentValueLabel')}</span>
               <div className="flex items-center gap-2">
                 <span className="text-xl sm:text-2xl font-black text-indigo-700 font-mono tracking-wider">{currentValue.toLocaleString('ar-DZ')}</span>
                 <span className="text-xs text-slate-600 font-mono">({currentValue})</span>
@@ -280,20 +284,20 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 onClick={() => setAbacusValue(2026)}
                 className="hit-target px-2.5 py-1.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-bold shadow-2xs cursor-pointer"
               >
-                مثل 2026
+                {t('sorobanExampleValue', { value: 2026 })}
               </button>
               <button
                 onClick={() => setAbacusValue(74518)}
                 className="hit-target px-2.5 py-1.5 bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 rounded-lg text-xs font-bold shadow-2xs cursor-pointer"
               >
-                مثل 74518
+                {t('sorobanExampleValue', { value: 74518 })}
               </button>
               <button
                 onClick={handleResetAbacus}
                 className="hit-target flex items-center gap-1 px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 rounded-lg text-xs font-bold cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                تصفير المعداد
+                {t('sorobanResetButton')}
               </button>
               <button
                 onClick={startTutorial}
@@ -374,7 +378,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                             ? 'translate-y-9 sm:translate-y-11 bg-amber-500 text-slate-950 border border-amber-300 shadow-amber-500/50'
                             : 'translate-y-0 bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500'
                         }`}
-                        title="خرزة خماسية (تساوي 5)"
+                        title={t('sorobanUpperBeadTitle')}
                       >
                         5
                       </button>
@@ -427,14 +431,19 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
               <div>
                 <span className="bg-indigo-100 text-indigo-800 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-indigo-200 inline-block">
-                  تدريب الحساب الذهني الخاطف (Anzan)
+                  {t('sorobanAnzanBadge')}
                 </span>
                 <h4 className="text-base sm:text-lg font-bold mt-1 text-slate-900">
-                  {generatedExercise ? 'تمرين مولّد جديد 🎲' : `تمرين ${anzanExerciseIndex + 1} من ${SOROBAN_PRACTICE_EXERCISES.length}`}
+                  {generatedExercise
+                    ? t('sorobanGeneratedExerciseTitle')
+                    : t('sorobanExerciseCounter', {
+                        current: anzanExerciseIndex + 1,
+                        total: SOROBAN_PRACTICE_EXERCISES.length,
+                      })}
                 </h4>
               </div>
               <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1">
-                <span className="text-[10px] text-slate-600 shrink-0 ml-1">التمارين الجاهزة:</span>
+                <span className="text-[10px] text-slate-600 shrink-0 ml-1">{t('sorobanReadyExercisesLabel')}</span>
                 {SOROBAN_PRACTICE_EXERCISES.map((_, i) => (
                   <button
                     key={i}
@@ -459,7 +468,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                       difficulty === d ? 'bg-indigo-600 text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    {d === 'easy' ? '⭐ سهل' : d === 'medium' ? '⭐⭐ متوسط' : '⭐⭐⭐ صعب'}
+                    {d === 'easy' ? t('sorobanDifficultyEasy') : d === 'medium' ? t('sorobanDifficultyMedium') : t('sorobanDifficultyHard')}
                   </button>
                 ))}
               </div>
@@ -472,7 +481,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                       operationMode === m ? 'bg-emerald-600 text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    {m === 'add' ? 'جمع (+)' : m === 'subtract' ? 'طرح (−)' : 'مختلط (+/−)'}
+                    {m === 'add' ? t('sorobanOpAdd') : m === 'subtract' ? t('sorobanOpSubtract') : t('sorobanOpMixed')}
                   </button>
                 ))}
               </div>
@@ -483,7 +492,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               className="hit-target w-full flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-amber-800 font-bold text-xs px-4 rounded-xl transition-all cursor-pointer mb-1"
             >
               <Shuffle className="w-4 h-4" />
-              <span>توليد تمرين جديد حسب المستوى المختار</span>
+              <span>{t('sorobanGenerateButton')}</span>
             </button>
 
             <div className="h-32 sm:h-36 bg-white rounded-xl border-2 border-indigo-200 flex items-center justify-center relative overflow-hidden my-4 p-3 text-center">
@@ -497,9 +506,9 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                   {currentAnzanEx.numbers[currentFlashIndex] > 0 ? `+${currentAnzanEx.numbers[currentFlashIndex]}` : currentAnzanEx.numbers[currentFlashIndex]}
                 </div>
               ) : currentFlashIndex >= currentAnzanEx.numbers.length ? (
-                <div className="text-emerald-800 font-bold text-xs sm:text-sm">انتهى العرض الخاطف! أدخل المجموع النهائي أدناه</div>
+                <div className="text-emerald-800 font-bold text-xs sm:text-sm">{t('sorobanFlashDone')}</div>
               ) : (
-                <div className="text-slate-600 text-xs leading-relaxed max-w-xs">اضغط على زر "ابدأ العرض الخاطف" لبدء ظهور الأعداد بسرعة</div>
+                <div className="text-slate-600 text-xs leading-relaxed max-w-xs">{t('sorobanFlashIdle')}</div>
               )}
             </div>
 
@@ -510,14 +519,14 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 className="hit-target w-full sm:w-auto flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-slate-950 font-bold text-xs px-4 rounded-xl transition-all cursor-pointer shadow-md"
               >
                 <Play className="w-4 h-4" />
-                <span>{anzanRunning ? 'جاري العرض الخاطف...' : 'ابدأ العرض الخاطف'}</span>
+                <span>{anzanRunning ? t('sorobanStartFlashing') : t('sorobanStartButton')}</span>
               </button>
 
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <input
                   type="number"
-                  placeholder="المجموع المتوقع..."
-                  aria-label="المجموع المتوقع"
+                  placeholder={t('sorobanAnswerPlaceholder')}
+                  aria-label={t('sorobanAnswerPlaceholder')}
                   value={userAnzanAnswer}
                   onChange={(e) => setUserAnzanAnswer(e.target.value)}
                   className="hit-target flex-1 sm:w-36 bg-white border-2 border-slate-300 text-slate-900 text-base font-bold rounded-xl px-3 focus:outline-none focus:border-amber-500"
@@ -526,7 +535,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                   onClick={verifyAnzanAnswer}
                   className="hit-target bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-4 rounded-xl transition-all cursor-pointer shrink-0"
                 >
-                  تحقق
+                  {t('sorobanVerifyButton')}
                 </button>
               </div>
             </div>
@@ -542,7 +551,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
                 {elapsedAnswerSeconds !== null && !anzanResult.correct && (
                   <span className="flex items-center gap-1 text-[10px] opacity-80 shrink-0">
                     <Timer className="w-3.5 h-3.5" />
-                    {elapsedAnswerSeconds.toFixed(1)} ثانية
+                    {t('sorobanElapsedSeconds', { seconds: elapsedAnswerSeconds.toFixed(1) })}
                   </span>
                 )}
               </div>
@@ -555,7 +564,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
       {activeTab === 'rules' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <h4 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">قواعد أصدقاء 5 و 10:</h4>
+            <h4 className="text-xs font-extrabold uppercase text-slate-500 tracking-wider">{t('sorobanRulesHeading')}</h4>
             {SOROBAN_RULES.map((rule, idx) => (
               <button
                 key={idx}
@@ -606,7 +615,7 @@ export const SorobanInteractive: React.FC<SorobanInteractiveProps> = ({ grade = 
               </p>
 
               <div className="bg-white p-3 rounded-xl border border-slate-200 mb-4">
-                <span className="text-[10px] font-bold text-slate-600 block mb-1 uppercase">خطوات تحريك الخرزات:</span>
+                <span className="text-[10px] font-bold text-slate-600 block mb-1 uppercase">{t('sorobanBeadStepsLabel')}</span>
                 <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-800 font-medium">
                   {SOROBAN_RULES[selectedRuleIndex].beadStepsAr.map((step, sIdx) => (
                     <li key={sIdx}>{step}</li>

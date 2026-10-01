@@ -16,10 +16,13 @@ import {
   Star,
   Layers,
   Flame,
+  ArrowLeft,
   ArrowRight,
   RotateCcw,
 } from 'lucide-react';
 import { AuthService } from '../services/authService';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 export interface HeroProfile {
   id: string;
@@ -332,6 +335,9 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
   grade = '5AP',
   onReward,
 }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsSocial');
+  const tCommon = useTranslation('common');
   const [activeTab, setActiveTab] = useState<'heroes' | 'timeline' | 'symbols' | 'detective_quiz'>('heroes');
   const [selectedHeroCategory, setSelectedHeroCategory] = useState<string>('all');
   const [selectedHero, setSelectedHero] = useState<HeroProfile>(ALGERIAN_HEROES[0]);
@@ -442,7 +448,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-3 sm:p-6 space-y-6 dir-rtl" dir="rtl">
+    <div className="max-w-6xl mx-auto p-3 sm:p-6 space-y-6" dir={direction}>
       {/* Hero Banner */}
       <div className="relative overflow-hidden bg-gradient-to-r from-emerald-900 via-teal-900 to-amber-800 rounded-3xl p-6 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-emerald-500/30">
         <div className="flex items-center gap-4 z-10">
@@ -452,14 +458,14 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
-                متحف تاريخ وأبطال الجزائر الخالدين
+                {t('historyMuseumBannerTitle')}
               </h1>
               <span className="bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full shadow-xs">
-                منهاج التاريخ والتربية المدنية
+                {t('historyMuseumCurriculumBadge')}
               </span>
             </div>
             <p className="text-emerald-100 text-xs sm:text-sm mt-1.5 font-medium max-w-2xl leading-relaxed">
-              رحلة عبر التاريخ المجيد: تعرّف على قادة الثورة التحريرية، فرسان المقاومة، الخط الزمني للملاحم الوطنية، ورموز السيادة الجزائرية الخالدة! 🇩🇿
+              {t('historyMuseumBannerTagline')}
             </p>
           </div>
         </div>
@@ -467,10 +473,10 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
         {onBack && (
           <button
             onClick={onBack}
-            aria-label="العودة للأدوات"
+            aria-label={tCommon('backToTools')}
             className="z-10 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >
-            <ArrowRight className="w-5 h-5" />
+            {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
           </button>
         )}
       </div>
@@ -486,7 +492,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           }`}
         >
           <Shield className="w-4 h-4" />
-          <span>🎖️ أبطال وقادة الثورة</span>
+          <span>{t('historyMuseumTabHeroes')}</span>
         </button>
 
         <button
@@ -498,7 +504,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           }`}
         >
           <Clock className="w-4 h-4" />
-          <span>⏳ الخط الزمني للملاحم</span>
+          <span>{t('historyMuseumTabTimeline')}</span>
         </button>
 
         <button
@@ -510,7 +516,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           }`}
         >
           <Flag className="w-4 h-4" />
-          <span>🇩🇿 رموز السيادة والنشيد</span>
+          <span>{t('historyMuseumTabSymbols')}</span>
         </button>
 
         <button
@@ -522,7 +528,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
           }`}
         >
           <Award className="w-4 h-4" />
-          <span>🏆 مسابقة المحقق التاريخي</span>
+          <span>{t('historyMuseumTabDetectiveQuiz')}</span>
         </button>
       </div>
 
@@ -548,11 +554,11 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
 
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {[
-                  { id: 'all', label: 'جميع الأبطال' },
-                  { id: 'revolution', label: '🔥 الثورة التحريرية (1954)' },
-                  { id: 'resistance', label: '⚔️ المقاومة الشعبية' },
-                  { id: 'reform', label: '📖 الإصلاح والفكر' },
-                  { id: 'ancient', label: '👑 العصور النوميدية القديمة' },
+                  { id: 'all', label: t('historyMuseumCatAll') },
+                  { id: 'revolution', label: t('historyMuseumCatRevolution') },
+                  { id: 'resistance', label: t('historyMuseumCatResistance') },
+                  { id: 'reform', label: t('historyMuseumCatReform') },
+                  { id: 'ancient', label: t('historyMuseumCatAncient') },
                 ].map((cat) => (
                   <button
                     key={cat.id}
@@ -614,7 +620,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                     <div className="flex items-center justify-between text-[11px] pt-2 border-t border-[var(--app-card-border)] text-[var(--app-text-muted)]">
                       <span className="font-bold">{hero.birthDeathAr}</span>
                       <span className="font-black text-emerald-700 dark:text-emerald-400">
-                        عرض السيرة ⬅️
+                        {t('historyMuseumViewBiography')}
                       </span>
                     </div>
                   </motion.button>
@@ -650,7 +656,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                     )
                   }
                   className="p-2 bg-[var(--app-card-subtle)] hover:bg-emerald-100 rounded-xl text-slate-700 hover:text-emerald-800 transition-colors cursor-pointer"
-                  title="استمع للسيرة الصوتية"
+                  title={t('historyMuseumListenBiographyTooltip')}
                 >
                   <Volume2 className="w-5 h-5" />
                 </button>
@@ -659,11 +665,11 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
               <div className="space-y-3 text-xs sm:text-sm">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-[var(--app-card-subtle)] p-2.5 rounded-xl border border-[var(--app-card-border)]">
-                    <span className="text-[10px] text-[var(--app-text-muted)] font-bold block">مسقط الرأس:</span>
+                    <span className="text-[10px] text-[var(--app-text-muted)] font-bold block">{t('historyMuseumBirthplaceLabel')}</span>
                     <span className="font-black text-[var(--app-text)]">{selectedHero.hometownAr}</span>
                   </div>
                   <div className="bg-[var(--app-card-subtle)] p-2.5 rounded-xl border border-[var(--app-card-border)]">
-                    <span className="text-[10px] text-[var(--app-text-muted)] font-bold block">الفترة الزمنية:</span>
+                    <span className="text-[10px] text-[var(--app-text-muted)] font-bold block">{t('historyMuseumPeriodLabel')}</span>
                     <span className="font-black text-[var(--app-text)]">{selectedHero.birthDeathAr}</span>
                   </div>
                 </div>
@@ -672,7 +678,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                 {selectedHero.famousQuoteAr && (
                   <div className="bg-amber-50 dark:bg-amber-950/40 p-4 rounded-2xl border border-amber-300 dark:border-amber-900">
                     <span className="text-[11px] font-black text-amber-950 dark:text-amber-300 block mb-1">
-                      🗣️ من أقواله الخالدة المأثورة:
+                      {t('historyMuseumFamousQuoteLabel')}
                     </span>
                     <p className="font-black text-amber-900 dark:text-amber-200 text-xs sm:text-sm italic leading-relaxed">
                       "{selectedHero.famousQuoteAr}"
@@ -683,7 +689,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                 {/* Key Achievements */}
                 <div className="space-y-1.5">
                   <span className="text-xs font-black text-[var(--app-text)] block">
-                    🌟 أبرز الإنجازات والبطولات:
+                    {t('historyMuseumAchievementsLabel')}
                   </span>
                   <ul className="space-y-1">
                     {selectedHero.achievementsAr.map((ach, idx) => (
@@ -701,7 +707,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                 {/* Lesson learned */}
                 <div className="bg-emerald-50 dark:bg-emerald-950/30 p-3.5 rounded-2xl border border-emerald-200 dark:border-emerald-900">
                   <span className="text-[11px] font-black text-emerald-950 dark:text-emerald-300 block mb-0.5">
-                    💡 العبرة والقدوة لتلاميذ اليوم:
+                    {t('historyMuseumLessonLabel')}
                   </span>
                   <p className="text-xs font-bold text-emerald-900 dark:text-emerald-200 leading-relaxed">
                     {selectedHero.lessonLearnedAr}
@@ -720,13 +726,13 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
         <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-8 max-w-4xl mx-auto">
           <div className="text-center max-w-xl mx-auto space-y-2">
             <span className="bg-amber-100 text-amber-950 text-xs font-black px-3 py-1 rounded-full shadow-xs">
-              الخط الزمني التفاعلي ⏳
+              {t('historyMuseumTimelineBadge')}
             </span>
             <h2 className="text-2xl font-black text-[var(--app-text)]">
-              أعظم المحطات التاريخية في مسيرة الجزائر
+              {t('historyMuseumTimelineHeading')}
             </h2>
             <p className="text-xs text-[var(--app-text-muted)] font-medium">
-              تصفح التواريخ الحاسمة من العصور النوميدية إلى فجر الاستقلال والحرية سنة 1962م
+              {t('historyMuseumTimelineSubtext')}
             </p>
           </div>
 
@@ -770,12 +776,12 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                 </p>
 
                 <p className="text-xs text-[var(--app-text-muted)] font-medium leading-relaxed bg-[var(--app-card-bg)] p-3 rounded-2xl border border-[var(--app-card-border)]">
-                  📖 <span className="font-bold">التفاصيل:</span> {event.detailsAr}
+                  📖 <span className="font-bold">{t('historyMuseumDetailsLabel')}</span> {event.detailsAr}
                 </p>
 
                 <div className="bg-emerald-50 dark:bg-emerald-950/30 px-3 py-2 rounded-xl text-xs font-black text-emerald-900 dark:text-emerald-300 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-emerald-600" />
-                  <span>الأهمية التاريخية: {event.significanceAr}</span>
+                  <span>{t('historyMuseumSignificanceLabel', { significance: event.significanceAr })}</span>
                 </div>
               </motion.div>
             ))}
@@ -794,10 +800,10 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
               <span className="text-4xl">🇩🇿</span>
               <div>
                 <h2 className="text-xl font-black text-[var(--app-text)]">
-                  العلم الوطني الجزائري (راية الشهداء والسيادة)
+                  {t('historyMuseumFlagHeading')}
                 </h2>
                 <p className="text-xs text-[var(--app-text-muted)] font-medium">
-                  دلالات الألوان والأشكال الهندسية في الراية الوطنية الرسمية
+                  {t('historyMuseumFlagSubtext')}
                 </p>
               </div>
             </div>
@@ -846,7 +852,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                 className="px-5 py-2.5 bg-amber-400 text-amber-950 rounded-2xl font-black text-xs hover:bg-amber-300 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md self-start sm:self-auto"
               >
                 <Volume2 className="w-4 h-4" />
-                <span>استمع للمقطع الأول 🇩🇿</span>
+                <span>{t('historyMuseumListenFirstVerseButton')}</span>
               </button>
             </div>
 
@@ -862,7 +868,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
             </div>
 
             <div className="bg-white/10 p-4 rounded-2xl backdrop-blur-md text-xs text-emerald-100 font-medium leading-relaxed">
-              💡 <span className="font-bold">معلومة تاريخية:</span> كُتب النشيد الوطني الجزائري سنة 1955م بالزنزانة رقم 69 بسجن بربروس في العاصمة بعدما طلب قادة جبهة التحرير من مفدي زكريا نشيداً يعبر عن عظمة الثورة.
+              💡 <span className="font-bold">{t('historyMuseumHistoricalNoteLabel')}</span> كُتب النشيد الوطني الجزائري سنة 1955م بالزنزانة رقم 69 بسجن بربروس في العاصمة بعدما طلب قادة جبهة التحرير من مفدي زكريا نشيداً يعبر عن عظمة الثورة.
             </div>
           </div>
         </div>
@@ -875,10 +881,10 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
         <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
           <div className="flex items-center justify-between pb-4 border-b border-[var(--app-card-border)]">
             <span className="text-xs font-black text-[var(--app-text-muted)]">
-              السؤال التاريخي رقم {quizIndex + 1}
+              {t('historyMuseumDetectiveQuestionLabel', { number: quizIndex + 1 })}
             </span>
             <span className="bg-amber-100 text-amber-950 font-black text-xs px-3 py-1 rounded-full shadow-xs">
-              النقاط: {quizScore} 🏆
+              {t('scoreBadge', { score: quizScore })}
             </span>
           </div>
 
@@ -936,7 +942,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
                 onClick={handleNextQuiz}
                 className="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl shadow-lg transition-all text-sm cursor-pointer"
               >
-                السؤال التالي ➡️
+                {t('nextQuestionButton')}
               </button>
             </div>
           )}

@@ -36,7 +36,7 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl max-w-4xl w-full min-w-0 p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[min(94dvh,calc(100svh-1.5rem))] overflow-hidden"
+        className="web-dialog-studio bg-white rounded-3xl max-w-4xl w-full min-w-0 p-4 sm:p-6 shadow-2xl border border-slate-100 flex flex-col max-h-[min(94dvh,calc(100svh-1.5rem))] overflow-hidden"
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100 flex-wrap gap-2">

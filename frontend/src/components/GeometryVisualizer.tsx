@@ -2,6 +2,8 @@ import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Gamepad2, Compass, CheckCircle2, XCircle, Trophy, RotateCcw, Sparkles } from 'lucide-react';
 import { Shape3DViewer, Solid3DId, ShapeDimensions, HighlightFeature } from './Shape3DViewer';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 // ─────────────────────────────────────────────────────
 // Shape data
@@ -238,6 +240,7 @@ const DimSlider: React.FC<{ label: string; value: number; onChange: (v: number) 
 // Quiz panel
 // ─────────────────────────────────────────────────────
 const QuizPanel: React.FC<{ theme: string; onClose: () => void; onShapeHighlight: (id: string) => void }> = ({ theme, onClose, onShapeHighlight }) => {
+  const { direction } = useLocaleContext();
   const [qIdx, setQIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -277,7 +280,7 @@ const QuizPanel: React.FC<{ theme: string; onClose: () => void; onShapeHighlight
       initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 16 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       className={`${cardBg} border rounded-2xl p-4 space-y-4`}
-      dir="rtl"
+      dir={direction}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -391,6 +394,8 @@ interface GeometryVisualizerProps {
 }
 
 export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = '4AP', theme = 'dark' }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
   const allows3D = grade === '3AP' || grade === '4AP' || grade === '5AP';
   const shapeCatalog = useMemo(
     () => (allows3D ? SHAPES : SHAPES.filter((s) => s.category === '2d')),
@@ -445,7 +450,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
     // wrapper's force-light-card override still neutralizes its bg-slate-900/bg-slate-800/80 classes
     // to white whenever theme='dark', while every light-on-dark text color inside (text-emerald-300,
     // text-amber-300, text-red-300...) stays untouched, breaking the quiz tab's answer feedback.
-    <div data-lab-instrument className={`${cardBg} border rounded-2xl p-4 sm:p-5 shadow-sm transition-colors duration-300`} dir="rtl">
+    <div data-lab-instrument className={`${cardBg} border rounded-2xl p-4 sm:p-5 shadow-sm transition-colors duration-300`} dir={direction}>
       {/* ── Header ── */}
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-700/25 flex-wrap gap-3">
         <div className="flex items-center gap-2.5">
@@ -454,10 +459,10 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
           </div>
           <div>
             <h3 className="font-extrabold text-base flex items-center gap-2">
-              المستكشف الهندسي التفاعلي
+              {t('geometryTitle')}
               <span className={`text-xs bg-amber-500/20 font-bold px-2 py-0.5 rounded-md border border-amber-500/30 ${isDark ? 'text-amber-400' : 'text-amber-800'}`}>{grade}</span>
             </h3>
-            <p className="text-xs opacity-60">الأشكال الهندسية ثنائية وثلاثية الأبعاد · محيط · مساحة · حجم</p>
+            <p className="text-xs opacity-60">{t('geometrySubtitle')}</p>
           </div>
         </div>
 
@@ -584,7 +589,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                   {/* Dimension sliders (3D only) */}
                   {selectedShape.category === '3d' && (
                     <div className={`${subBg} p-3 rounded-xl border space-y-2`}>
-                      <span className="text-[10px] font-bold opacity-60 uppercase block">الأبعاد (بالسنتيمتر):</span>
+                      <span className="text-[10px] font-bold opacity-60 uppercase block">{t('geometryDimensionsLabel')}</span>
                       {selectedId === 'cube' && (
                         <DimSlider label="الحرف (a)" value={currentDims.a} onChange={v => updateDim('a', v)} />
                       )}
@@ -606,7 +611,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
 
                   {/* Properties (hoverable → highlights 3D shape) */}
                   <div className={`${subBg} p-3 rounded-xl border`}>
-                    <span className="text-[10px] font-bold opacity-60 uppercase block mb-2">الخصائص المميزة:</span>
+                    <span className="text-[10px] font-bold opacity-60 uppercase block mb-2">{t('geometryPropertiesLabel')}</span>
                     <ul className="space-y-1.5">
                       {selectedShape.properties.map((prop, i) => (
                         <motion.li
@@ -639,7 +644,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                           ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
                           : 'bg-emerald-50 border-emerald-200 text-emerald-950'
                       }`}>
-                        <span>قانون المحيط:</span>
+                        <span>{t('geometryPerimeterLawLabel')}</span>
                         <span className={`font-mono px-2 py-0.5 rounded ${isDark ? 'text-emerald-300 bg-emerald-500/20' : 'text-emerald-950 bg-emerald-100'}`}>
                           {selectedShape.perimeterFormulaAr}
                         </span>
@@ -651,7 +656,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                           ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
                           : 'bg-amber-50 border-amber-200 text-amber-950'
                       }`}>
-                        <span>قانون المساحة:</span>
+                        <span>{t('geometryAreaLawLabel')}</span>
                         <span className={`font-mono px-2 py-0.5 rounded ${isDark ? 'text-amber-300 bg-amber-500/20' : 'text-amber-950 bg-amber-100'}`}>
                           {selectedShape.areaFormulaAr}{' '}
                           {measurements.areaLabel && (
@@ -666,7 +671,7 @@ export const GeometryVisualizer: React.FC<GeometryVisualizerProps> = ({ grade = 
                           ? 'bg-purple-500/10 border-purple-500/30 text-purple-400'
                           : 'bg-purple-50 border-purple-200 text-purple-950'
                       }`}>
-                        <span>قانون الحجم:</span>
+                        <span>{t('geometryVolumeLawLabel')}</span>
                         <span className={`font-mono px-2 py-0.5 rounded ${isDark ? 'text-purple-300 bg-purple-500/20' : 'text-purple-950 bg-purple-100'}`}>
                           {selectedShape.volumeFormulaAr}{' '}
                           {measurements.volumeLabel && (

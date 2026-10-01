@@ -21,6 +21,8 @@ import {
   canShowColumnCarryOps,
   primaryMathNumberStripMax,
 } from '../utils/labGradePolicy';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface PrimaryMathLabInteractiveProps {
   grade?: PrimaryGrade;
@@ -35,6 +37,9 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   onReward,
   onBack,
 }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsMath');
+  const tCommon = useTranslation('common');
   const stripMax = primaryMathNumberStripMax(grade);
   const stripCount = stripMax + 1;
   const showColumnOps = canShowColumnCarryOps(grade);
@@ -78,11 +83,11 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
     if (userTotal === expectedSum) {
       setAddSuccess(true);
-      setAddFeedback('ممتاز يا بطل! الحساب صحيح 100% وتمت معالجة الاحتفاظ بنجاح 🌟');
+      setAddFeedback('ok');
       onReward?.(10, 30);
     } else {
       setAddSuccess(false);
-      setAddFeedback(`انتبه: ${addNum1 % 10} + ${addNum2 % 10} = ${(addNum1 % 10) + (addNum2 % 10)}. ضع رقم الوحدات في الأسفل وارفع الاحتفاظ فوق العشرات!`);
+      setAddFeedback('hint');
     }
   };
 
@@ -114,11 +119,11 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
     if (userTotal === expectedDiff) {
       setSubSuccess(true);
-      setSubFeedback('أحسنت صنعاً! عملية الطرح بالاستعارة صحيحة تماماً 🌟');
+      setSubFeedback('ok');
       onReward?.(10, 30);
     } else {
       setSubSuccess(false);
-      setSubFeedback(`تذكر: إذا كان رقم الوحدات العلوي أصغر، نستعير 10 من العشرات (أو نطبق طريقة الإضافة والإرجاع).`);
+      setSubFeedback('hint');
     }
   };
 
@@ -144,33 +149,29 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
   const unitsOfSelected = selectedNumber % 10;
 
   return (
-    <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-5xl mx-auto" dir={direction}>
       {/* Header */}
       <div className="kids-pole rounded-[28px] p-6 sm:p-8 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 w-14 h-14 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-6 h-6" />
+              {direction === 'rtl' ? <ArrowRight className="w-6 h-6" /> : <ArrowLeft className="w-6 h-6" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border-2 border-[#A7F3D0] text-[var(--brand-emerald-dark)] px-3 py-1 rounded-full text-xs font-extrabold">
               <Sparkles className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
-              <span>مختبر الرياضيات التفاعلي — {grade === '1AP' ? 'السنة الأولى (0–99)' : 'السنة الأولى والثانية (1AP / 2AP)'}</span>
+              <span>{t('pmlBadge')}</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-extrabold font-sans text-[var(--kids-ink)]">
-              {grade === '1AP'
-                ? 'الشريط العددي حتى 99'
-                : 'الشريط العددي حتى 99 والعمليات العمودية (الجمع والطرح)'}
+              {t('pmlTitle')}
             </h1>
             <p className="text-xs sm:text-sm text-[var(--kids-muted)] leading-relaxed max-w-3xl">
-              {grade === '1AP'
-                ? 'استكشف الأعداد من 0 إلى 99 وتعلّم تفكيك الوحدات والعشرات.'
-                : 'استكشف الشريط العددي من 0 إلى 99، وتعلّم تفكيك الوحدات والعشرات، وتدرّب خطوة بخطوة على وضع العمليات الحسابية بالاحتفاظ والاستعارة.'}
+              {t('pmlSubtitle')}
             </p>
           </div>
         </div>
@@ -186,7 +187,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>🔢 الشريط العددي (0 إلى {stripMax})</span>
+          <span>{t('pmlTabNumberStrip')}</span>
         </button>
 
         {showColumnOps && (
@@ -199,7 +200,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>➕ الجمع العمودي بالاحتفاظ</span>
+          <span>{t('pmlTabAddition')}</span>
         </button>
 
         <button
@@ -210,7 +211,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>➖ الطرح العمودي بالاستعارة</span>
+          <span>{t('pmlTabSubtraction')}</span>
         </button>
         </>
         )}
@@ -224,7 +225,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
             <div className="flex items-center justify-between flex-wrap gap-4 border-b border-[var(--app-card-border)] pb-4">
               <div>
                 <span className="text-xs font-black text-amber-700 bg-amber-100 px-3 py-0.5 rounded-full">
-                  تفكيك العدد المختار
+                  {t('pmlDecompositionLabel')}
                 </span>
                 <div className="flex items-center gap-3 mt-2">
                   <span className="text-4xl sm:text-5xl font-black text-amber-600 font-mono">
@@ -233,7 +234,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   <button
                     onClick={() => speakNumber(selectedNumber)}
                     className="p-2.5 rounded-xl bg-amber-500/10 text-amber-700 hover:bg-amber-500/20 transition-colors cursor-pointer"
-                    title="استمع لنطق العدد"
+                    title={t('pmlListenTitle')}
                   >
                     <Volume2 className="w-5 h-5" />
                   </button>
@@ -243,13 +244,13 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
               {/* Tens and Units blocks */}
               <div className="flex items-center gap-4 bg-[var(--app-card-subtle)] p-4 rounded-2xl border border-[var(--app-card-border)]">
                 <div className="text-center space-y-1">
-                  <span className="text-xs font-bold text-blue-600 block">العشرات (Dizaines)</span>
+                  <span className="text-xs font-bold text-blue-600 block">{t('pmlTensStat')}</span>
                   <span className="text-2xl font-black text-blue-700 font-mono">{tensOfSelected}</span>
                   <span className="text-[10px] text-[var(--app-text-muted)]">({tensOfSelected * 10})</span>
                 </div>
                 <div className="w-px h-10 bg-[var(--app-card-border)]" />
                 <div className="text-center space-y-1">
-                  <span className="text-xs font-bold text-emerald-700 block">الوحدات (Unités)</span>
+                  <span className="text-xs font-bold text-emerald-700 block">{t('pmlUnitsStat')}</span>
                   <span className="text-2xl font-black text-emerald-700 font-mono">{unitsOfSelected}</span>
                   <span className="text-[10px] text-[var(--app-text-muted)]">({unitsOfSelected})</span>
                 </div>
@@ -258,39 +259,39 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
             {/* Visual Blocks representation */}
             <div className="space-y-3">
-              <div className="text-xs font-black text-[var(--app-text)]">التمثيل بقطع وقضبان الحساب:</div>
+              <div className="text-xs font-black text-[var(--app-text)]">{t('pmlBlocksRepresentationLabel')}</div>
               <div className="p-4 rounded-2xl bg-[var(--app-card-subtle)] flex items-center gap-6 flex-wrap">
                 {/* Tens bars */}
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[var(--app-text-muted)] font-bold">العشرات:</span>
+                  <span className="text-xs text-[var(--app-text-muted)] font-bold">{t('pmlTensRodsLabel')}</span>
                   <div className="flex items-center gap-1.5">
                     {Array.from({ length: tensOfSelected }).map((_, i) => (
                       <div
                         key={i}
                         className="w-4 h-14 bg-gradient-to-t from-blue-600 to-blue-400 rounded-md shadow-2xs border border-blue-700 flex flex-col justify-between py-1 items-center"
-                        title="قضيب 10"
+                        title={t('pmlRodTitle')}
                       >
                         {Array.from({ length: 5 }).map((_, d) => (
                           <div key={d} className="w-2.5 h-1 bg-white/40 rounded-full" />
                         ))}
                       </div>
                     ))}
-                    {tensOfSelected === 0 && <span className="text-xs text-slate-400">لا توجد عشرات</span>}
+                    {tensOfSelected === 0 && <span className="text-xs text-slate-400">{t('pmlNoTens')}</span>}
                   </div>
                 </div>
 
                 {/* Units cubes */}
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[var(--app-text-muted)] font-bold">الوحدات:</span>
+                  <span className="text-xs text-[var(--app-text-muted)] font-bold">{t('pmlUnitsCubesLabel')}</span>
                   <div className="flex items-center gap-1 flex-wrap max-w-xs">
                     {Array.from({ length: unitsOfSelected }).map((_, i) => (
                       <div
                         key={i}
                         className="w-4 h-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-sm shadow-2xs border border-emerald-700"
-                        title="مربع وحدة"
+                        title={t('pmlUnitSquareTitle')}
                       />
                     ))}
-                    {unitsOfSelected === 0 && <span className="text-xs text-slate-400">0 وحدات</span>}
+                    {unitsOfSelected === 0 && <span className="text-xs text-slate-400">{t('pmlZeroUnits')}</span>}
                   </div>
                 </div>
               </div>
@@ -298,14 +299,14 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
 
             {/* Filter buttons */}
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-black text-[var(--app-text-muted)]">تصفية الشريط:</span>
+              <span className="text-xs font-black text-[var(--app-text-muted)]">{t('pmlFilterLabel')}</span>
               <button
                 onClick={() => setStripFilter('all')}
                 className={`px-3 py-1 rounded-xl text-xs font-black cursor-pointer ${
                   stripFilter === 'all' ? 'bg-amber-500 text-slate-950 font-sans' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
-                الكل (0-{stripMax})
+                {t('pmlFilterAll')}
               </button>
               {stripMax > 20 && (
               <button
@@ -314,7 +315,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   stripFilter === 'tens' ? 'bg-blue-600 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
-                العشرات الكاملة (10, 20...)
+                {t('pmlFilterTens')}
               </button>
               )}
               <button
@@ -323,7 +324,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   stripFilter === 'even' ? 'bg-emerald-700 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
-                الأعداد الزوجية
+                {t('pmlFilterEven')}
               </button>
               <button
                 onClick={() => setStripFilter('odd')}
@@ -331,7 +332,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   stripFilter === 'odd' ? 'bg-purple-600 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
                 }`}
               >
-                الأعداد الفردية
+                {t('pmlFilterOdd')}
               </button>
             </div>
 
@@ -377,14 +378,14 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
           <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4">
             <div>
               <span className="text-xs font-black text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
-                الجمع العمودي بالاحتفاظ
+                {t('pmlAdditionBadge')}
               </span>
               <h2 className="text-lg font-black text-[var(--app-text)] mt-1">
-                احسب العملية العمودية خطوة بخطوة
+                {t('pmlAdditionHeading')}
               </h2>
             </div>
             <Button variant="ghost" size="sm" onClick={newAdditionExercise} icon={<RotateCcw className="w-4 h-4" />}>
-              عملية جديدة
+              {t('pmlNewExerciseButton')}
             </Button>
           </div>
 
@@ -406,7 +407,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                   value={addCarryInput}
                   onChange={(e) => setAddCarryInput(e.target.value)}
                   className="w-full h-full text-center font-mono font-black text-amber-700 text-sm focus:outline-hidden"
-                  title="مكان الاحتفاظ"
+                  title={t('pmlCarryTitle')}
                 />
               </div>
               <span className="w-8" />
@@ -448,7 +449,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
             </div>
 
             <Button variant="primary" fullWidth onClick={checkAddition}>
-              تحقق من صحة العملية ✨
+              {t('pmlCheckAdditionButton')}
             </Button>
           </div>
 
@@ -458,7 +459,13 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                 addSuccess ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-rose-100 text-rose-900 border border-rose-300'
               }`}
             >
-              {addFeedback}
+              {addSuccess
+                ? t('pmlAdditionSuccess')
+                : t('pmlAdditionHint', {
+                    a: addNum1 % 10,
+                    b: addNum2 % 10,
+                    sum: (addNum1 % 10) + (addNum2 % 10),
+                  })}
             </div>
           )}
         </div>
@@ -470,14 +477,14 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
           <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4">
             <div>
               <span className="text-xs font-black text-blue-700 bg-blue-100 px-3 py-1 rounded-full border border-blue-200">
-                الطرح العمودي بالاستعارة
+                {t('pmlSubtractionBadge')}
               </span>
               <h2 className="text-lg font-black text-[var(--app-text)] mt-1">
-                احسب عملية الطرح بالاستعارة والإرجاع
+                {t('pmlSubtractionHeading')}
               </h2>
             </div>
             <Button variant="ghost" size="sm" onClick={newSubtractionExercise} icon={<RotateCcw className="w-4 h-4" />}>
-              عملية جديدة
+              {t('pmlNewExerciseButton')}
             </Button>
           </div>
 
@@ -523,7 +530,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
             </div>
 
             <Button variant="primary" fullWidth onClick={checkSubtraction}>
-              تحقق من صحة الطرح ✨
+              {t('pmlCheckSubtractionButton')}
             </Button>
           </div>
 
@@ -533,7 +540,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
                 subSuccess ? 'bg-emerald-100 text-emerald-900 border border-emerald-300' : 'bg-rose-100 text-rose-900 border border-rose-300'
               }`}
             >
-              {subFeedback}
+              {subSuccess ? t('pmlSubtractionSuccess') : t('pmlSubtractionHint')}
             </div>
           )}
         </div>

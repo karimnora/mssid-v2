@@ -73,7 +73,7 @@ export const labsLanguage: typeof labsLanguageAr = {
   llabExampleLabel: '✏️ Exemple :',
 
   // --- SpeedReadingLab.tsx ---
-  speedReadBadge: 'Entraîneur de lecture rapide et de compréhension (3AP - 5AP)',
+  speedReadBadge: 'Entraîneur de lecture rapide et de compréhension (3e–5e AP)',
   speedReadTitle: 'Lecture rapide et test de compréhension',
   speedReadIntro: "Lis le texte rapidement et avec attention, puis réponds aux questions de compréhension pour voir ce que tu as retenu.",
   speedReadReadyHint: "Appuie sur « Commencer la lecture » quand tu es prêt. Le temps que tu mets sera mesuré, puis tu répondras aux questions de compréhension.",
@@ -88,7 +88,7 @@ export const labsLanguage: typeof labsLanguageAr = {
   speedReadNewTextButton: 'Nouveau texte ⟵',
 
   // --- SyllableStudioLab.tsx ---
-  syllStudioBadge: 'Studio des syllabes (1AP - 3AP)',
+  syllStudioBadge: 'Studio des syllabes (1re–3e AP)',
   syllStudioTitle: 'Décomposer les mots en syllabes',
   syllStudioIntro: 'Frappe dans tes mains à chaque syllabe que tu entends, puis regarde le mot se diviser en syllabes colorées.',
   syllCorrectFeedback: 'Bonne réponse ! Bravo 🌟',
@@ -97,7 +97,7 @@ export const labsLanguage: typeof labsLanguageAr = {
 
   // --- TamazightCurriculumViewer.tsx ---
   tcvHeroBadge: 'Programme pédagogique de la langue amazighe (Aselmed n Tmaziɣt)',
-  tcvHeroTitle: 'Leçons, règles et écriture tifinagh officielle (4AP & 5AP)',
+  tcvHeroTitle: 'Leçons, règles et écriture tifinagh officielle (4e et 5e AP)',
   tcvHeroSubtitle: "Parcours les leçons alignées sur le programme officiel (Génération 2), avec prononciation audio, fiches de vocabulaire, règles de grammaire et générateur de devoirs officiels A4.",
   tcvPrintButtonTitle: 'Imprimer le devoir de contrôle continu A4 en tifinagh',
   tcvPrintButton: '🖨️ Imprimer le devoir A4',

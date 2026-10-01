@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { canShowRespiratoryAnatomyTab } from '../utils/labGradePolicy';
+import { labQuizIsLocked, labQuizOptionClass } from '../utils/labQuizChoice';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLocaleContext } from '../context/LocaleContext';
 
 interface HumanAnatomyLabProps {
   grade?: PrimaryGrade;
@@ -42,10 +45,13 @@ const ORGAN_LABEL: Record<string, string> = Object.fromEntries(
 );
 
 export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP', onReward, onBack }) => {
+  const { direction } = useLocaleContext();
+  const t = useTranslation('labsScience');
+  const tCommon = useTranslation('common');
   const showRespiratory = canShowRespiratoryAnatomyTab(grade);
   const [activeTab, setActiveTab] = useState<AnatomyTab>('digestive');
   const [selectedOrgan, setSelectedOrgan] = useState<string>('mouth');
-  const [answers, setAnswers] = useState<Record<string, Record<number, boolean>>>({ digestive: {}, respiratory: {} });
+  const [answers, setAnswers] = useState<Record<string, Record<number, string>>>({ digestive: {}, respiratory: {} });
   const [breathState, setBreathState] = useState<'idle' | 'inhale' | 'exhale'>('idle');
 
   const organs = activeTab === 'digestive' ? DIGESTIVE_ORGANS : RESPIRATORY_ORGANS;
@@ -66,7 +72,8 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
   }, [showRespiratory, activeTab]);
 
   const handleAnswer = (qId: number, optionId: string, correctId: string) => {
-    setAnswers((prev) => ({ ...prev, [activeTab]: { ...prev[activeTab], [qId]: true } }));
+    if (labQuizIsLocked(answers[activeTab]?.[qId], correctId)) return;
+    setAnswers((prev) => ({ ...prev, [activeTab]: { ...prev[activeTab], [qId]: optionId } }));
     if (optionId === correctId) onReward?.(5, 15);
   };
 
@@ -76,30 +83,28 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
   };
 
   return (
-    <div className="space-y-6 dir-rtl max-w-5xl mx-auto" dir="rtl">
+    <div className="space-y-6 max-w-5xl mx-auto" dir={direction}>
       <div className="bg-gradient-to-r from-rose-700 via-pink-800 to-fuchsia-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-rose-600/40 relative overflow-hidden">
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              aria-label="العودة للأدوات"
+              aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
-              <ArrowRight className="w-5 h-5" />
+              {direction === 'rtl' ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
             </button>
           )}
           <div className="space-y-2 flex-1 min-w-0">
             <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-3 py-1 rounded-full text-xs font-black">
               <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-              <span>{grade === '4AP' ? 'مختبر الجهاز الهضمي (4AP)' : 'مختبر جسم الإنسان (4AP–5AP)'}</span>
+              <span>{showRespiratory ? t('anatomyBadge') : t('anatomyBadge4AP')}</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-black font-sans">
-              {showRespiratory ? 'الجهاز الهضمي والجهاز التنفسي' : 'الجهاز الهضمي'}
+              {showRespiratory ? t('anatomyTitle') : t('anatomyTitleDigestive')}
             </h1>
             <p className="text-xs sm:text-sm text-rose-100 leading-relaxed max-w-3xl">
-              {showRespiratory
-                ? 'اكتشف مسار الطعام داخل جسمك، وتعرّف على كيفية تنفسك وتبادل الهواء في رئتيك.'
-                : 'اكتشف مسار الطعام خطوة بخطوة من الفم إلى الأمعاء — برنامج السنة الرابعة.'}
+              {showRespiratory ? t('anatomyIntro') : t('anatomyIntroDigestive')}
             </p>
           </div>
         </div>
@@ -112,7 +117,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
             activeTab === 'digestive' ? 'bg-rose-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>🍽️ الجهاز الهضمي</span>
+          <span>{t('anatomyTabDigestive')}</span>
         </button>
         {showRespiratory && (
         <button
@@ -121,7 +126,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
             activeTab === 'respiratory' ? 'bg-fuchsia-600 text-white shadow-md' : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
           }`}
         >
-          <span>🫁 الجهاز التنفسي</span>
+          <span>{t('anatomyTabRespiratory')}</span>
         </button>
         )}
       </div>
@@ -161,7 +166,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
 
       {activeTab === 'respiratory' && (
         <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-5 text-center">
-          <h2 className="text-lg font-black text-[var(--app-text)]">جَرِّبِ التَّنَفُّسَ: راقِبِ الرِّئَتَيْنِ</h2>
+          <h2 className="text-lg font-black text-[var(--app-text)]">{t('anatomyBreathingTitle')}</h2>
           <div className="max-w-xs mx-auto p-6 rounded-3xl bg-gradient-to-b from-sky-100 to-rose-100 border-2 border-fuchsia-300">
             <div
               className={`text-7xl transition-transform duration-700 ${
@@ -194,7 +199,7 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
             <button
               onClick={() => setBreathState('idle')}
               className="p-3 rounded-2xl bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:text-[var(--app-text)] transition-colors cursor-pointer"
-              title="إعادة"
+              title={t('anatomyResetTooltip')}
             >
               <RotateCcw className="w-4 h-4" />
             </button>
@@ -203,36 +208,25 @@ export const HumanAnatomyLab: React.FC<HumanAnatomyLabProps> = ({ grade = '4AP',
       )}
 
       <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4">
-        <h3 className="text-sm font-black text-[var(--app-text)]">اختبر معلوماتك:</h3>
+        <h3 className="text-sm font-black text-[var(--app-text)]">{t('testYourKnowledge')}</h3>
         <div className="space-y-4">
-          {questions.map((q) => {
-            const isAnswered = !!answers[activeTab]?.[q.id];
-            return (
+          {questions.map((q) => (
               <div key={q.id} className="p-4 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3">
                 <p className="text-xs sm:text-sm font-black text-[var(--app-text)]">{q.qAr}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  {q.options.map((optId) => {
-                    const isCorrect = optId === q.correct;
-                    return (
+                  {q.options.map((optId) => (
                       <button
                         key={optId}
-                        onClick={() => !isAnswered && handleAnswer(q.id, optId, q.correct)}
-                        className={`p-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                          isAnswered
-                            ? isCorrect
-                              ? 'bg-emerald-100 border-emerald-500 text-emerald-900 font-black'
-                              : 'bg-slate-100 text-slate-400 border-slate-200'
-                            : 'bg-[var(--app-card-bg)] text-[var(--app-text)] border-[var(--app-card-border)] hover:border-rose-400'
-                        }`}
+                        type="button"
+                        onClick={() => handleAnswer(q.id, optId, q.correct)}
+                        className={labQuizOptionClass(answers[activeTab]?.[q.id], optId, q.correct)}
                       >
                         {ORGAN_LABEL[optId]}
                       </button>
-                    );
-                  })}
+                  ))}
                 </div>
               </div>
-            );
-          })}
+          ))}
         </div>
       </div>
     </div>

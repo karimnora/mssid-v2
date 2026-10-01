@@ -69,9 +69,12 @@ export const labsScience = {
   inquiryTrySimulationButton: 'جرّب التجربة بنفسك في المختبر التفاعلي ⬅',
 
   // --- HumanAnatomyLab.tsx ---
-  anatomyBadge: 'مختبر جسم الإنسان (5AP)',
+  anatomyBadge: 'مختبر جسم الإنسان (4AP–5AP)',
+  anatomyBadge4AP: 'مختبر الجهاز الهضمي (4AP)',
   anatomyTitle: 'الجهاز الهضمي والجهاز التنفسي',
+  anatomyTitleDigestive: 'الجهاز الهضمي',
   anatomyIntro: 'اكتشف مسار الطعام داخل جسمك، وتعرّف على كيفية تنفسك وتبادل الهواء في رئتيك.',
+  anatomyIntroDigestive: 'اكتشف مسار الطعام خطوة بخطوة من الفم إلى الأمعاء — برنامج السنة الرابعة.',
   anatomyTabDigestive: '🍽️ الجهاز الهضمي',
   anatomyTabRespiratory: '🫁 الجهاز التنفسي',
   anatomyBreathingTitle: 'جَرِّبِ التَّنَفُّسَ: راقِبِ الرِّئَتَيْنِ',
@@ -220,6 +223,7 @@ export const labsScience = {
   elecSoundOn: 'الصوت مفعّل',
   elecSoundOff: 'الصوت صامت',
   elecFrenchToggle: 'الفرنسية (Français): {status}',
+  elecTabBuilder: 'بناء دارة 🔧',
   elecTabDiode: '1. الصمام الضوئي (Diode)',
   elecTabConductors: '2. النواقل والعوازل',
   elecTabSeriesParallel: '3. التسلسل والتفرع',

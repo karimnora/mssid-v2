@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Droplets, Sparkles, Volume2, Award, Info, RotateCcw } from 'lucide-react';
 import { AuthService } from '../../services/authService';
+import { useTranslation } from '../../hooks/useTranslation';
 
 interface Props {
   onReward?: (coins: number, xp: number) => void;
 }
 
 export const FoggaraHydraulicLab: React.FC<Props> = ({ onReward }) => {
+  const t = useTranslation('labsScience');
   const [slope, setSlope] = useState<number>(3); // 1 to 5 degrees
   const [channelsCount, setChannelsCount] = useState<number>(3); // 2 to 4 branches (قصريات)
   const [isWaterFlowing, setIsWaterFlowing] = useState<boolean>(true);
@@ -27,15 +29,15 @@ export const FoggaraHydraulicLab: React.FC<Props> = ({ onReward }) => {
         <div>
           <div className="flex items-center gap-2">
             <span className="bg-amber-100 text-amber-900 text-xs font-black px-3 py-1 rounded-full">
-              الهندسة المائية التراثية الجزائرية 🏛️
+              {t('foggaraBadgeTopic')}
             </span>
-            <span className="text-xs font-bold text-teal-600">أدرار • تيميمون • قورارة</span>
+            <span className="text-xs font-bold text-teal-600">{t('foggaraBadgeLocation')}</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-[var(--app-text)] mt-2">
-            مختبر محاكاة الفَقّارَة والقَصْرِيّة (توزيع المياه بالجاذبية)
+            {t('foggaraTitle')}
           </h2>
           <p className="text-xs sm:text-sm text-[var(--app-text-muted)] mt-1">
-            اكتشف العبقرية الهندسية للأجداد في جلب المياه الجوفية بدون مضخات وتوزيعها بعدالة تامة عبر مشط القصريّة الحجري.
+            {t('foggaraIntro')}
           </p>
         </div>
 
@@ -44,7 +46,7 @@ export const FoggaraHydraulicLab: React.FC<Props> = ({ onReward }) => {
           className="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-2xl font-black text-xs shadow-md flex items-center gap-1.5 cursor-pointer shrink-0 transition-all"
         >
           <Sparkles className="w-4 h-4" />
-          <span>إتمام التجربة (+25 XP)</span>
+          <span>{t('completeExperimentXp', { xp: 25 })}</span>
         </button>
       </div>
 
