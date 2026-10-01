@@ -78,6 +78,25 @@ describe('useLessonQuiz', () => {
     expect(result.current.quizFullyPassed).toBe(false);
   });
 
+  it('reports one miss per question, not on every extra wrong tap', () => {
+    const onQuizMiss = vi.fn();
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: false, onCompleteQuiz: vi.fn(), onQuizMiss })
+    );
+    act(() => {
+      result.current.handleSelectOption('q1', 'b');
+      result.current.handleSelectOption('q1', 'b');
+    });
+    expect(onQuizMiss).toHaveBeenCalledTimes(1);
+    expect(onQuizMiss).toHaveBeenCalledWith('math-1ap-nombres');
+
+    act(() => {
+      result.current.handleResetQuiz();
+      result.current.handleSelectOption('q1', 'b');
+    });
+    expect(onQuizMiss).toHaveBeenCalledTimes(2);
+  });
+
   // Regression test for a locked-forever question (review externe #2, principe "zero frustration") :
   // a wrong guess used to be a dead end (selectedAnswers[questionId] !== undefined blocked any
   // further click on that question). It must now be a real retry, not just a recorded miss.

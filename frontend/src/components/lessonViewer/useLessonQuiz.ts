@@ -15,11 +15,13 @@ export function useLessonQuiz(options: {
   quizAlreadyValidated: boolean;
   onCompleteQuiz: (lessonId: string, score: number) => void;
   onQuizFullyValidated?: (lessonId: string) => void;
+  onQuizMiss?: (lessonId: string) => void;
 }) {
-  const { lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated } = options;
+  const { lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated, onQuizMiss } = options;
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [shuffledQuiz, setShuffledQuiz] = useState<CourseLesson['quiz']>([]);
   const [awardedQuizIds, setAwardedQuizIds] = useState<Set<string>>(new Set());
+  const missedQuizIdsRef = useRef(new Set<string>());
   const [gameAnswers, setGameAnswers] = useState<Record<number, string>>({});
   const [gameXpAwarded, setGameXpAwarded] = useState(false);
   const [recentAnswerId, setRecentAnswerId] = useState<string | null>(null);
@@ -46,6 +48,7 @@ export function useLessonQuiz(options: {
     const storedAwards = new Set(loadAwardedQuestionIds(lesson.id));
     awardedQuizIdsRef.current = storedAwards;
     setAwardedQuizIds(storedAwards);
+    missedQuizIdsRef.current = new Set();
     setRecentAnswerId(null);
     setGameAnswers({});
     setGameXpAwarded(hasAwardedGameXp(lesson.id));
@@ -73,7 +76,13 @@ export function useLessonQuiz(options: {
     const isCorrect = !!correctOpt && correctOpt.id === optionId;
     setRecentAnswerId(questionId);
     if (isCorrect) playSuccessChime(); else playGentleNudge();
-    if (!isCorrect) return;
+    if (!isCorrect) {
+      if (!missedQuizIdsRef.current.has(questionId)) {
+        missedQuizIdsRef.current.add(questionId);
+        onQuizMiss?.(lesson.id);
+      }
+      return;
+    }
 
     if (quizAlreadyValidated) {
       if (claimDailyLessonRevisionBonus(lesson.id)) {
@@ -113,6 +122,7 @@ export function useLessonQuiz(options: {
     selectedAnswersRef.current = {};
     setSelectedAnswers({});
     setRecentAnswerId(null);
+    missedQuizIdsRef.current = new Set();
     initializeShuffledQuiz();
   };
 

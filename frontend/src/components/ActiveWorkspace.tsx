@@ -56,6 +56,7 @@ interface ActiveWorkspaceProps {
   onOpenLab: (toolId: SubjectId) => void;
   onCompleteQuiz: (lessonId: string, score: number) => void;
   onQuizFullyValidated: (lessonId: string) => void;
+  onQuizMiss?: (lessonId: string) => void;
   onExamComplete: (examId: string) => void;
   onChallengeComplete: (challengeId: string, earnedXp: number) => void;
   onVisitLab: (labId: string) => void;
@@ -81,6 +82,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onOpenLab,
   onCompleteQuiz,
   onQuizFullyValidated,
+  onQuizMiss,
   onExamComplete,
   onChallengeComplete,
   onVisitLab,
@@ -215,6 +217,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           onCompleteQuiz={onCompleteQuiz}
           quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(selectedLesson.id)}
           onQuizFullyValidated={onQuizFullyValidated}
+          onQuizMiss={onQuizMiss}
           grade={grade}
           subjectId={selectedSubject}
           trimester={selectedTrimester}

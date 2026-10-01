@@ -13,7 +13,7 @@ import {
 } from '../utils/quizRewards';
 import { clearGuestLastActivity, clearOwnerLastActivity, migrateGuestLastActivityToUser } from '../utils/lastActivity';
 import { clearChildSelection, profileStorageKey } from '../utils/childProfileStorage';
-import { recordLessonSuccess } from '../utils/competenceProgress';
+import { recordLessonFailure, recordLessonSuccess } from '../utils/competenceProgress';
 
 function finiteNumber(value: unknown, fallback: number): number {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -340,6 +340,10 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
     setRatingPromptTrigger((t) => t + 1);
   };
 
+  const handleQuizMiss = (lessonId: string) => {
+    setUserProfile((prev) => recordLessonFailure(prev, lessonId));
+  };
+
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
     AuthService.addScore(earnedXp, lessonId);
     incrementDailyObjective();
@@ -452,6 +456,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
     setNewlyUnlockedBadges,
     ratingPromptTrigger,
     handleQuizFullyValidated,
+    handleQuizMiss,
     handleCompleteQuiz,
     handleCompleteExam,
     handleCompleteChallenge,

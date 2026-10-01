@@ -57,6 +57,7 @@ interface LessonViewerProps {
   onCompleteQuiz: (lessonId: string, score: number) => void;
   quizAlreadyValidated?: boolean;
   onQuizFullyValidated?: (lessonId: string) => void;
+  onQuizMiss?: (lessonId: string) => void;
   grade?: PrimaryGrade;
   subjectId?: SubjectId;
   trimester?: number | 'all';
@@ -75,6 +76,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onCompleteQuiz,
   quizAlreadyValidated = false,
   onQuizFullyValidated,
+  onQuizMiss,
   grade = lessonProp.grade,
   subjectId = lessonProp.subject,
   trimester,
@@ -86,8 +88,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const { direction } = useLocaleContext();
   const { lesson, premiumFetchState } = usePremiumLessonContent(lessonProp);
   const speech = useLessonSpeech(lesson, grade);
-  const practice = useLessonPractice(lesson, onCompleteQuiz);
-  const quiz = useLessonQuiz({ lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated });
+  const practice = useLessonPractice(lesson, onCompleteQuiz, onQuizMiss);
+  const quiz = useLessonQuiz({ lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated, onQuizMiss });
 
   const currentIndex = allLessons.length > 0 ? allLessons.findIndex((l) => l.id === lesson.id) : -1;
   const previousLesson = currentIndex > 0 ? allLessons[currentIndex - 1] : null;

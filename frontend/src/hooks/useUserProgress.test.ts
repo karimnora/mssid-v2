@@ -76,6 +76,7 @@ describe('lesson completion', () => {
     expect(done.completedLessonIds).toEqual(['math-1ap-t1-spatial-relations']);
     expect(done.quizFullyValidatedLessonIds).toEqual(['math-1ap-t1-spatial-relations']);
     expect(done.competenceStats['math-1ap-c-spatial-position']?.successes).toBe(1);
+    expect(done.competenceStats['math-1ap-c-spatial-position']?.failures).toBe(0);
   });
 });
 
@@ -302,5 +303,23 @@ describe('logout does not replay the welcome badge toast', () => {
     expect(loadAwardedQuestionIds('math-1ap-nombres')).toEqual([]);
     setActiveProgressOwner(4);
     expect(loadAwardedQuestionIds('math-1ap-nombres')).toEqual(['user-q']);
+  });
+});
+
+describe('handleQuizMiss', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('records a mapped 1AP miss into competence stats for the parent notebook', () => {
+    const { result } = renderHook(() => useUserProgress({ authUser: null }));
+    act(() => {
+      result.current.setUserProfile(createFreshGuestProfile('1AP'));
+    });
+    act(() => {
+      result.current.handleQuizMiss('math-1ap-t1-spatial-relations');
+    });
+    expect(result.current.userProfile.competenceStats['math-1ap-c-spatial-position']?.lastOutcome).toBe('fail');
+    expect(result.current.userProfile.competenceStats['math-1ap-c-spatial-position']?.failures).toBe(1);
   });
 });

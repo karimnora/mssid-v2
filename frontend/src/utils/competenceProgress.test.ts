@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createFreshGuestProfile } from '../hooks/useUserProgress';
 import { MATH_1AP_COMPETENCES } from '../data/competences/math1ap';
-import { MAX_LESSON_SESSIONS, buildParentNotebook, recordLessonSuccess } from './competenceProgress';
+import { MAX_LESSON_SESSIONS, buildParentNotebook, recordLessonFailure, recordLessonSuccess } from './competenceProgress';
 
 describe('recordLessonSuccess', () => {
   it('credits every competence mapped to a 1AP math lesson', () => {
@@ -11,8 +11,10 @@ describe('recordLessonSuccess', () => {
     expect(next.competenceStats['math-1ap-c-spatial-position']).toEqual({
       attempts: 1,
       successes: 1,
+      failures: 0,
       lastAt: at,
       lastLessonId: 'math-1ap-t1-spatial-relations',
+      lastOutcome: 'success',
     });
     expect(next.lessonSessions).toEqual([
       {
@@ -44,6 +46,7 @@ describe('buildParentNotebook', () => {
     const notebook = buildParentNotebook(createFreshGuestProfile('1AP'));
     expect(notebook.worked).toHaveLength(0);
     expect(notebook.todo).toHaveLength(MATH_1AP_COMPETENCES.length);
+    expect(notebook.todo.every((row) => Boolean(row.reviewLessonId))).toBe(true);
     expect(notebook.todo[0].reviewLessonId).toBe('math-1ap-t1-spatial-relations');
   });
 
@@ -89,6 +92,39 @@ describe('buildParentNotebook', () => {
       grade: '5AP' as const,
     };
     const notebook = buildParentNotebook(profile, '5AP');
+    expect(notebook.worked.map((row) => row.competenceId)).toEqual(['math-1ap-c-spatial-position']);
+  });
+});
+
+describe('recordLessonFailure', () => {
+  it('puts a missed 1AP math lesson in the review list without counting a success', () => {
+    const at = '2026-09-28T22:00:00.000Z';
+    const next = recordLessonFailure(createFreshGuestProfile('1AP'), 'math-1ap-t1-spatial-relations', at);
+    expect(next.competenceStats['math-1ap-c-spatial-position']).toEqual({
+      attempts: 1,
+      successes: 0,
+      failures: 1,
+      lastAt: at,
+      lastLessonId: 'math-1ap-t1-spatial-relations',
+      lastOutcome: 'fail',
+    });
+    const notebook = buildParentNotebook(next);
+    expect(notebook.review.map((row) => row.competenceId)).toEqual(['math-1ap-c-spatial-position']);
+    expect(notebook.worked).toHaveLength(0);
+  });
+
+  it('keeps a single fail session when the child misses again on the same lesson', () => {
+    let profile = recordLessonFailure(createFreshGuestProfile('1AP'), 'math-1ap-t1-spatial-relations', '2026-09-28T22:00:00.000Z');
+    profile = recordLessonFailure(profile, 'math-1ap-t1-spatial-relations', '2026-09-28T22:01:00.000Z');
+    expect(profile.lessonSessions).toHaveLength(1);
+    expect(profile.competenceStats['math-1ap-c-spatial-position'].failures).toBe(2);
+  });
+
+  it('clears review after a later full success', () => {
+    const missed = recordLessonFailure(createFreshGuestProfile('1AP'), 'math-1ap-t1-spatial-relations', '2026-09-28T22:00:00.000Z');
+    const recovered = recordLessonSuccess(missed, 'math-1ap-t1-spatial-relations', '2026-09-28T22:10:00.000Z');
+    const notebook = buildParentNotebook(recovered);
+    expect(notebook.review).toHaveLength(0);
     expect(notebook.worked.map((row) => row.competenceId)).toEqual(['math-1ap-c-spatial-position']);
   });
 });

@@ -1,10 +1,10 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ParentNotebookModal } from './ParentNotebookModal';
 import { LocaleProvider } from '../context/LocaleContext';
 import { createFreshGuestProfile } from '../hooks/useUserProgress';
-import { recordLessonSuccess } from '../utils/competenceProgress';
+import { recordLessonFailure, recordLessonSuccess } from '../utils/competenceProgress';
 
 const renderNotebook = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
@@ -50,5 +50,36 @@ describe('ParentNotebookModal', () => {
 
     fireEvent.click(screen.getAllByRole('button', { name: 'ابدأ' })[0]);
     expect(onReviewLesson).toHaveBeenCalledWith('math-1ap-t1-spatial-relations');
+  });
+
+  it('lists a missed competence under review and launches that lesson', () => {
+    const onReviewLesson = vi.fn();
+    const userProfile = recordLessonFailure(
+      createFreshGuestProfile('1AP'),
+      'math-1ap-t1-spatial-relations',
+      '2026-09-28T22:00:00.000Z',
+    );
+    renderNotebook(
+      <ParentNotebookModal isOpen onClose={vi.fn()} userProfile={userProfile} onReviewLesson={onReviewLesson} />,
+    );
+
+    expect(screen.getByText('للمراجعة')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'مراجعة' }));
+    expect(onReviewLesson).toHaveBeenCalledWith('math-1ap-t1-spatial-relations');
+  });
+
+  it('opens the mapped lesson revision sheet from a competence print action', async () => {
+    const userProfile = recordLessonFailure(
+      createFreshGuestProfile('1AP'),
+      'math-1ap-t1-spatial-relations',
+      '2026-09-28T22:00:00.000Z',
+    );
+    renderNotebook(
+      <ParentNotebookModal isOpen onClose={vi.fn()} userProfile={userProfile} onReviewLesson={vi.fn()} />,
+    );
+
+    fireEvent.click(document.querySelector('[data-notebook-print="math-1ap-c-spatial-position"]') as HTMLElement);
+    await waitFor(() => expect(document.querySelector('.printable-sheet')).toBeTruthy());
+    expect(screen.getAllByText(/فيشة مراجعة/).length).toBeGreaterThan(0);
   });
 });

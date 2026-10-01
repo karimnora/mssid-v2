@@ -100,11 +100,11 @@ Référentiel dans `frontend/src/data/competences/`, sans modifier les fichiers 
 
 ### Phase 4 — Accompagnement personnalisé
 - [x] Carnet parent local : compétences travaillées / pas commencées (maths 1AP), lecture de `competenceStats` + `lessonSessions`, bouton Réviser vers la leçon
-- [ ] Carnet d’erreurs et révisions adaptatives (échecs, pas seulement les succès)
+- [x] Carnet d’erreurs et révisions adaptatives (échecs locaux, section « à revoir », relance de la leçon)
 
 ### Phase 5 — Espace parent et fiches imprimables
 - [x] Entrée carnet derrière Parent Gate depuis le profil et les réglages, sans changer l’accueil à 4 pôles
-- [ ] Fiches imprimables liées aux compétences
+- [x] Fiches imprimables liées aux compétences : bouton Imprimer du carnet → fiche de révision de la leçon mappée (même contenu que la leçon, pas de double rédaction)
 
 - [ ] Phase 6 — Enrichissement pédagogique
 - [ ] Phase 7 — Contenus audio, récompenses et vidéos

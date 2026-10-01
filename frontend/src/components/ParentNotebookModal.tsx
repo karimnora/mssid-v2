@@ -1,10 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { BookOpen, X } from 'lucide-react';
-import { UserProfile } from '../types';
+import { BookOpen, Printer, X } from 'lucide-react';
+import { CourseLesson, UserProfile } from '../types';
+import { COURSES_DATA } from '../data/coursesData';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { buildParentNotebook, ParentNotebookRow } from '../utils/competenceProgress';
+import { RevisionSheetViewer } from './RevisionSheetViewer';
 
 interface ParentNotebookModalProps {
   isOpen: boolean;
@@ -22,17 +24,25 @@ const CompetenceRow: React.FC<{
   row: ParentNotebookRow;
   locale: string;
   actionLabel: string;
+  printLabel: string;
+  printAria: string;
   meta: string;
+  tone?: 'review' | 'default';
   onReview: (lessonId: string) => void;
-}> = ({ row, locale, actionLabel, meta, onReview }) => {
+  onPrint: (lessonId: string, competenceLabelAr: string) => void;
+}> = ({ row, locale, actionLabel, printLabel, printAria, meta, tone = 'default', onReview, onPrint }) => {
   const label = locale === 'fr' ? row.labelFr : row.labelAr;
+  const shell =
+    tone === 'review'
+      ? 'rounded-2xl border-2 border-[var(--brand-amber)] bg-[#FFF8E7] p-3 space-y-2'
+      : 'rounded-2xl border-2 border-[#E7E2D7] bg-white p-3 space-y-2';
   return (
-    <div className="rounded-2xl border-2 border-[#E7E2D7] bg-white p-3 space-y-2">
+    <div className={shell}>
       <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{row.domainAr}</p>
       <p className="text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">{label}</p>
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-xs font-bold text-[var(--kids-muted)]">{meta}</p>
-        {row.reviewLessonId && (
+      {meta ? <p className="text-xs font-bold text-[var(--kids-muted)]">{meta}</p> : null}
+      {row.reviewLessonId && (
+        <div className="flex flex-wrap items-center gap-2">
           <motion.button
             type="button"
             whileTap={{ scale: 0.95 }}
@@ -41,8 +51,19 @@ const CompetenceRow: React.FC<{
           >
             {actionLabel}
           </motion.button>
-        )}
-      </div>
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            data-notebook-print={row.competenceId}
+            aria-label={printAria}
+            onClick={() => onPrint(row.reviewLessonId!, row.labelAr)}
+            className="hit-target rounded-2xl px-4 bg-white border-2 border-[#E7E2D7] text-[var(--kids-ink)] text-sm font-extrabold cursor-pointer inline-flex items-center gap-1.5"
+          >
+            <Printer className="w-4 h-4 shrink-0" aria-hidden="true" />
+            {printLabel}
+          </motion.button>
+        </div>
+      )}
     </div>
   );
 };
@@ -60,6 +81,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
     () => buildParentNotebook(userProfile, viewingGrade ?? userProfile.grade),
     [userProfile, viewingGrade],
   );
+  const [printable, setPrintable] = useState<{ lesson: CourseLesson; competenceLabelAr: string } | null>(null);
 
   if (!isOpen) return null;
 
@@ -67,9 +89,21 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
     onReviewLesson(lessonId);
   };
 
-  const empty = notebook.worked.length === 0 && notebook.todo.length === 0;
+  const handlePrint = (lessonId: string, competenceLabelAr: string) => {
+    const lesson = COURSES_DATA.find((item) => item.id === lessonId);
+    if (lesson) setPrintable({ lesson, competenceLabelAr });
+  };
+
+  const printProps = {
+    printLabel: t('parentNotebookPrint'),
+    printAria: t('parentNotebookPrintAria'),
+    onPrint: handlePrint,
+  };
+
+  const empty = notebook.review.length === 0 && notebook.worked.length === 0 && notebook.todo.length === 0;
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -111,6 +145,26 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
           ) : (
             <>
               <section className="space-y-2">
+                <h3 className="text-sm font-extrabold text-[var(--kids-ink)]">{t('parentNotebookNeedsReview')}</h3>
+                {notebook.review.length === 0 ? (
+                  <p className="text-sm font-bold text-[var(--kids-muted)]">{t('parentNotebookNeedsReviewEmpty')}</p>
+                ) : (
+                  notebook.review.map((row) => (
+                    <CompetenceRow
+                      key={row.competenceId}
+                      row={row}
+                      locale={locale}
+                      tone="review"
+                      actionLabel={t('parentNotebookReview')}
+                      meta={t('parentNotebookFailures', { count: row.failures })}
+                      onReview={handleReview}
+                      {...printProps}
+                    />
+                  ))
+                )}
+              </section>
+
+              <section className="space-y-2">
                 <h3 className="text-sm font-extrabold text-[var(--kids-ink)]">{t('parentNotebookWorked')}</h3>
                 {notebook.worked.length === 0 ? (
                   <p className="text-sm font-bold text-[var(--kids-muted)]">{t('parentNotebookWorkedEmpty')}</p>
@@ -123,6 +177,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                       actionLabel={t('parentNotebookReview')}
                       meta={t('parentNotebookSuccesses', { count: row.successes })}
                       onReview={handleReview}
+                      {...printProps}
                     />
                   ))
                 )}
@@ -141,6 +196,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                       actionLabel={t('parentNotebookStart')}
                       meta=""
                       onReview={handleReview}
+                      {...printProps}
                     />
                   ))
                 )}
@@ -160,7 +216,11 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                     onClick={() => handleReview(session.lessonId)}
                     className="w-full text-start rounded-2xl border-2 border-[#E7E2D7] bg-[#FFF8E7] p-3 cursor-pointer hit-target"
                   >
-                    <p className="text-xs font-extrabold text-[var(--kids-muted)]">{sessionDay(session.at)}</p>
+                    <p className="text-xs font-extrabold text-[var(--kids-muted)]">
+                      {sessionDay(session.at)}
+                      {' · '}
+                      {session.outcome === 'fail' ? t('parentNotebookSessionFail') : t('parentNotebookSessionOk')}
+                    </p>
                     <p className="text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">{labels[0]}</p>
                   </button>
                 );
@@ -170,5 +230,13 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
         </div>
       </motion.div>
     </motion.div>
+      {printable && (
+        <RevisionSheetViewer
+          lesson={printable.lesson}
+          competenceLabelAr={printable.competenceLabelAr}
+          onClose={() => setPrintable(null)}
+        />
+      )}
+    </>
   );
 };

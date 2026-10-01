@@ -68,6 +68,13 @@ export const meta: typeof metaAr = {
   parentNotebookEmpty: 'Le carnet couvre pour l’instant les compétences de maths de 1re année. Change de niveau ou lance une leçon suivie pour voir la progression.',
   parentNotebookRecent: 'Dernières séances',
   parentNotebookSuccesses: '{count} réussite(s)',
+  parentNotebookNeedsReview: 'À revoir',
+  parentNotebookNeedsReviewEmpty: 'Aucune compétence à revoir pour le moment.',
+  parentNotebookFailures: '{count} essai(s) incorrect(s)',
+  parentNotebookSessionFail: 'À revoir',
+  parentNotebookSessionOk: 'Réussi',
+  parentNotebookPrint: 'Imprimer',
+  parentNotebookPrintAria: 'Imprimer la fiche de cette compétence',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'Pour installer l\'application sur ton appareil : appuie sur le bouton Partager, puis choisis "Sur l\'écran d\'accueil" (Add to Home Screen) 📲',

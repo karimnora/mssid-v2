@@ -623,6 +623,7 @@ function AppContent() {
                 onOpenLab={openLabFocused}
                 onCompleteQuiz={progress.handleCompleteQuiz}
                 onQuizFullyValidated={progress.handleQuizFullyValidated}
+                onQuizMiss={progress.handleQuizMiss}
                 onExamComplete={progress.handleCompleteExam}
                 onChallengeComplete={progress.handleCompleteChallenge}
                 onVisitLab={progress.handleVisitLab}

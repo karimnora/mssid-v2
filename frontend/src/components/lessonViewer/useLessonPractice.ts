@@ -6,11 +6,16 @@ import { isGuidedPractice, isMatchingPairCorrect } from './practiceAssessment';
 
 type Exercise = NonNullable<CourseLesson['progressiveExercises']>[number];
 
-export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonId: string, score: number) => void) {
+export function useLessonPractice(
+  lesson: CourseLesson,
+  onCompleteQuiz: (lessonId: string, score: number) => void,
+  onPracticeMiss?: (lessonId: string) => void,
+) {
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
   const [practiceChecked, setPracticeChecked] = useState<Record<string, boolean>>({});
   const [practiceCorrect, setPracticeCorrect] = useState<Record<string, boolean>>({});
   const [awardedExerciseIds, setAwardedExerciseIds] = useState<Set<string>>(new Set());
+  const missedExerciseIdsRef = useRef(new Set<string>());
   const [matchingRightOrder, setMatchingRightOrder] = useState<Record<string, number[]>>({});
   const [matchingConnections, setMatchingConnections] = useState<Record<string, Record<number, number>>>({});
   const [matchingSelectedLeft, setMatchingSelectedLeft] = useState<Record<string, number | null>>({});
@@ -23,6 +28,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
     setPracticeChecked({});
     setPracticeCorrect({});
     setAwardedExerciseIds(new Set());
+    missedExerciseIdsRef.current = new Set();
     setMatchingConnections({});
     setMatchingSelectedLeft({});
     setOrderingSelections({});
@@ -97,8 +103,11 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
     if (isCorrect && !awarded.has(ex.id)) {
       onCompleteQuiz(lesson.id, ex.xpReward);
       setAwardedExerciseIds((prev) => new Set(prev).add(ex.id));
+    } else if (!isCorrect && !missedExerciseIdsRef.current.has(ex.id)) {
+      missedExerciseIdsRef.current.add(ex.id);
+      onPracticeMiss?.(lesson.id);
     }
-  }, [lesson.id, onCompleteQuiz]);
+  }, [lesson.id, onCompleteQuiz, onPracticeMiss]);
 
   const resetPracticeExercise = useCallback((ex: Exercise) => {
     setPracticeChecked((prev) => ({ ...prev, [ex.id]: false }));

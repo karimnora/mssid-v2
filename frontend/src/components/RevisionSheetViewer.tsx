@@ -11,6 +11,8 @@ interface RevisionSheetViewerProps {
   lesson: CourseLesson;
   onClose: () => void;
   tashkeelEnabled?: boolean;
+  /** Parent-notebook context: the competence this fiche was opened from. */
+  competenceLabelAr?: string;
 }
 
 /**
@@ -18,7 +20,7 @@ interface RevisionSheetViewerProps {
  * already-authored fields (summaryAr, rulesAr, keyFormulas, detailedCourse) —
  * no separate content to author/maintain, always in sync with the lesson.
  */
-export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson, onClose, tashkeelEnabled = true }) => {
+export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson, onClose, tashkeelEnabled = true, competenceLabelAr }) => {
   const subject = SUBJECTS_LIST.find((s) => s.id === lesson.subject);
   const detailed = lesson.detailedCourse;
 
@@ -32,7 +34,7 @@ export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] overflow-y-auto bg-black/60 backdrop-blur-sm"
     >
       {/* Screen-only toolbar — hidden entirely when printing */}
       <div className="revision-sheet-toolbar no-print sticky top-0 z-10 flex items-center justify-between gap-3 bg-[var(--app-card-bg)] border-b border-[var(--app-card-border)] px-4 py-3">
@@ -56,6 +58,9 @@ export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson
                 <span dir="ltr">MSSID DZ</span> — فيشة مراجعة
               </p>
               <h1 className="text-lg sm:text-xl font-black text-slate-900 mt-0.5">{t(lesson.titleAr)}</h1>
+              {competenceLabelAr && (
+                <p className="text-xs font-bold text-slate-500 mt-1">{t(competenceLabelAr)}</p>
+              )}
             </div>
             <div className="flex flex-col items-end gap-1 shrink-0">
               <Badge variant="info">

@@ -70,6 +70,13 @@ export const meta = {
   parentNotebookEmpty: 'دفتر المتابعة يغطي حالياً كفاءات رياضيات السنة الأولى. غيّر المستوى أو ابدأ درساً مسجّلاً لرؤية التقدّم.',
   parentNotebookRecent: 'آخر الحصص',
   parentNotebookSuccesses: '{count} نجاح',
+  parentNotebookNeedsReview: 'للمراجعة',
+  parentNotebookNeedsReviewEmpty: 'لا توجد كفاءة تحتاج مراجعة الآن.',
+  parentNotebookFailures: '{count} محاولة غير صحيحة',
+  parentNotebookSessionFail: 'يحتاج مراجعة',
+  parentNotebookSessionOk: 'نجاح',
+  parentNotebookPrint: 'طباعة',
+  parentNotebookPrintAria: 'طباعة فيشة هذه الكفاءة',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'لتثبيت التطبيق على جهازك: اضغط على زر المشاركة (Share) ثم اختر "إضافة إلى الشاشة الرئيسية" (Add to Home Screen) 📲',
