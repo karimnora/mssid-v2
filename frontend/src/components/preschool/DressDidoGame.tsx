@@ -13,6 +13,7 @@ import {
   resumeTownAudio,
   usePreschoolSpeech,
 } from './usePreschoolAudio';
+import { GarmentGlyph, type GarmentKind } from './preschoolGarments';
 
 export interface DressDidoGameProps { onExit?: () => void; language?: 'ar' | 'fr' | 'en'; }
 
@@ -20,9 +21,12 @@ type Slot = 'head' | 'face' | 'neck' | 'body' | 'feet' | 'hand';
 
 interface Garment {
   id: string;
-  emoji: string;
+  kind: GarmentKind;
   slot: Slot;
   correct: boolean;
+  labelAr: string;
+  labelFr: string;
+  labelEn: string;
 }
 
 interface LevelCfg {
@@ -33,81 +37,81 @@ interface LevelCfg {
   missionAr: string; missionFr: string; missionEn: string;
 }
 
-const LEVELS: LevelCfg[] = [
+export const DRESS_DIDO_LEVELS: LevelCfg[] = [
   {
     emoji: '☀️', weather: '☀️', bg: 'from-amber-100 via-yellow-50 to-sky-100',
-    missionAr: 'الْجَوُّ حَارّ! أَلْبِسْ دِيدُو الْقُبَّعَةَ وَالْقَمِيص',
+    missionAr: 'الْجَوُّ حَارّ! أَلْبِسْ دِيدُو الْقُبَّعَةَ وَالْقَمِيص',
     missionFr: 'Il fait chaud ! Mets la casquette et le t-shirt',
     missionEn: 'It’s hot! Put on the cap and the t-shirt',
     garments: [
-      { id: 'cap', emoji: '🧢', slot: 'head', correct: true },
-      { id: 'tee', emoji: '👕', slot: 'body', correct: true },
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: false },
-      { id: 'boots', emoji: '👢', slot: 'feet', correct: false },
+      { id: 'cap', kind: 'casquette', slot: 'head', correct: true, labelAr: 'قُبَّعَة', labelFr: 'casquette', labelEn: 'cap' },
+      { id: 'tee', kind: 'tee', slot: 'body', correct: true, labelAr: 'قَمِيص', labelFr: 't-shirt', labelEn: 't-shirt' },
+      { id: 'coat', kind: 'winterCoat', slot: 'body', correct: false, labelAr: 'مِعْطَف', labelFr: 'manteau', labelEn: 'coat' },
+      { id: 'boots', kind: 'boots', slot: 'feet', correct: false, labelAr: 'جَزْمَة', labelFr: 'bottes', labelEn: 'boots' },
     ],
   },
   {
     emoji: '🌧️', weather: '🌧️', bg: 'from-slate-200 via-sky-100 to-blue-100',
-    missionAr: 'تُمْطِر! أَلْبِسْ دِيدُو الْمِعْطَفَ وَالْحِذَاءَ وَالْمِظَلَّة',
-    missionFr: 'Il pleut ! Mets le manteau, les bottes et le parapluie !',
-    missionEn: 'It’s raining! Put on the coat, the boots and the umbrella!',
+    missionAr: 'تُمْطِر! أَلْبِسْ دِيدُو مِعْطَفَ المَطَرِ وَحِذَاءَ المَطَرِ وَالمِظَلَّة',
+    missionFr: 'Il pleut ! Mets l’imperméable, les bottes de pluie et le parapluie !',
+    missionEn: 'It’s raining! Put on the raincoat, the rain boots and the umbrella!',
     garments: [
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: true },
-      { id: 'boots', emoji: '👢', slot: 'feet', correct: true },
-      { id: 'umb', emoji: '☔', slot: 'hand', correct: true },
-      { id: 'shorts', emoji: '🩳', slot: 'body', correct: false },
-      { id: 'sun', emoji: '😎', slot: 'head', correct: false },
+      { id: 'raincoat', kind: 'raincoat', slot: 'body', correct: true, labelAr: 'مِعْطَفُ مَطَر', labelFr: 'imperméable', labelEn: 'raincoat' },
+      { id: 'rain-boots', kind: 'rainBoots', slot: 'feet', correct: true, labelAr: 'حِذَاءُ مَطَر', labelFr: 'bottes de pluie', labelEn: 'rain boots' },
+      { id: 'umb', kind: 'umbrella', slot: 'hand', correct: true, labelAr: 'مِظَلَّة', labelFr: 'parapluie', labelEn: 'umbrella' },
+      { id: 'shorts', kind: 'shorts', slot: 'body', correct: false, labelAr: 'شُورْت', labelFr: 'short', labelEn: 'shorts' },
+      { id: 'sun', kind: 'glasses', slot: 'head', correct: false, labelAr: 'نَظَّارَات', labelFr: 'lunettes', labelEn: 'sunglasses' },
     ],
   },
   {
     emoji: '❄️', weather: '❄️', bg: 'from-sky-100 via-slate-50 to-indigo-100',
-    missionAr: 'الثَّلْجُ فِي الْجِبَال! أَلْبِسْ دِيدُو الْمِعْطَفَ وَالْوِشَاحَ وَالْقُبَّعَة',
+    missionAr: 'الثَّلْجُ فِي الْجِبَال! أَلْبِسْ دِيدُو الْمِعْطَفَ وَالْوِشَاحَ وَالطَّاقِيَّة',
     missionFr: 'Il neige ! Mets le manteau, l’écharpe et le bonnet !',
-    missionEn: 'It is snowing! Put on the coat, the scarf and the hat!',
+    missionEn: 'It is snowing! Put on the coat, the scarf and the beanie!',
     garments: [
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: true },
-      { id: 'scarf', emoji: '🧣', slot: 'neck', correct: true },
-      { id: 'hat', emoji: '🧢', slot: 'head', correct: true },
-      { id: 'swim', emoji: '🩱', slot: 'body', correct: false },
-      { id: 'sandals', emoji: '🩴', slot: 'feet', correct: false },
+      { id: 'coat', kind: 'winterCoat', slot: 'body', correct: true, labelAr: 'مِعْطَف', labelFr: 'manteau', labelEn: 'coat' },
+      { id: 'scarf', kind: 'scarf', slot: 'neck', correct: true, labelAr: 'وِشَاح', labelFr: 'écharpe', labelEn: 'scarf' },
+      { id: 'bonnet', kind: 'bonnet', slot: 'head', correct: true, labelAr: 'طَاقِيَّة', labelFr: 'bonnet', labelEn: 'beanie' },
+      { id: 'swim', kind: 'swimsuit', slot: 'body', correct: false, labelAr: 'مَايُوه', labelFr: 'maillot', labelEn: 'swimsuit' },
+      { id: 'sandals', kind: 'sandals', slot: 'feet', correct: false, labelAr: 'صَنْدَل', labelFr: 'sandales', labelEn: 'sandals' },
     ],
   },
   {
     emoji: '🏖️', weather: '🏖️', bg: 'from-cyan-100 via-amber-50 to-sky-100',
-    missionAr: 'الشَّاطِئ! أَلْبِسْ دِيدُو الشُّورْت وَالْقُبَّعَةَ وَالنَّظَّارَات',
-    missionFr: 'La plage ! Mets le short, le chapeau et les lunettes !',
-    missionEn: 'The beach! Put on the shorts, the hat and the sunglasses!',
+    missionAr: 'الشَّاطِئ! أَلْبِسْ دِيدُو الشُّورْت وَقُبَّعَةَ القَشِّ وَالنَّظَّارَات',
+    missionFr: 'La plage ! Mets le short, le chapeau de paille et les lunettes !',
+    missionEn: 'The beach! Put on the shorts, the straw hat and the sunglasses!',
     garments: [
-      { id: 'shorts', emoji: '🩳', slot: 'body', correct: true },
-      { id: 'hat', emoji: '🧢', slot: 'head', correct: true },
-      { id: 'glasses', emoji: '😎', slot: 'face', correct: true },
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: false },
-      { id: 'boots', emoji: '👢', slot: 'feet', correct: false },
+      { id: 'shorts', kind: 'shorts', slot: 'body', correct: true, labelAr: 'شُورْت', labelFr: 'short', labelEn: 'shorts' },
+      { id: 'straw', kind: 'strawHat', slot: 'head', correct: true, labelAr: 'قُبَّعَةُ قَشّ', labelFr: 'chapeau de paille', labelEn: 'straw hat' },
+      { id: 'glasses', kind: 'glasses', slot: 'face', correct: true, labelAr: 'نَظَّارَات', labelFr: 'lunettes', labelEn: 'sunglasses' },
+      { id: 'coat', kind: 'winterCoat', slot: 'body', correct: false, labelAr: 'مِعْطَف', labelFr: 'manteau', labelEn: 'coat' },
+      { id: 'boots', kind: 'boots', slot: 'feet', correct: false, labelAr: 'جَزْمَة', labelFr: 'bottes', labelEn: 'boots' },
     ],
   },
   {
     emoji: '🏜️', weather: '🏜️', bg: 'from-orange-100 via-amber-50 to-yellow-100',
-    missionAr: 'الصَّحْرَاء حَارَّة! أَلْبِسْ دِيدُو قَمِيصاً خَفِيفاً وَقُبَّعَة، وَأَعْطِهِ مَاء',
-    missionFr: 'Le Sahara est chaud ! Mets le t-shirt, le chapeau, et donne-lui de l’eau !',
-    missionEn: 'The Sahara is hot! Put on the t-shirt and hat, and give him water!',
+    missionAr: 'الصَّحْرَاء حَارَّة! أَلْبِسْ دِيدُو قَمِيصاً خَفِيفاً وَقُبَّعَةَ قَشّ، وَأَعْطِهِ مَاء',
+    missionFr: 'Le Sahara est chaud ! Mets le t-shirt, le chapeau de paille, et donne-lui de l’eau !',
+    missionEn: 'The Sahara is hot! Put on the t-shirt and straw hat, and give him water!',
     garments: [
-      { id: 'tee', emoji: '👕', slot: 'body', correct: true },
-      { id: 'hat', emoji: '🧢', slot: 'head', correct: true },
-      { id: 'water', emoji: '💧', slot: 'hand', correct: true },
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: false },
-      { id: 'scarf', emoji: '🧣', slot: 'neck', correct: false },
+      { id: 'tee', kind: 'tee', slot: 'body', correct: true, labelAr: 'قَمِيص', labelFr: 't-shirt', labelEn: 't-shirt' },
+      { id: 'straw', kind: 'strawHat', slot: 'head', correct: true, labelAr: 'قُبَّعَةُ قَشّ', labelFr: 'chapeau de paille', labelEn: 'straw hat' },
+      { id: 'water', kind: 'water', slot: 'hand', correct: true, labelAr: 'مَاء', labelFr: 'eau', labelEn: 'water' },
+      { id: 'coat', kind: 'winterCoat', slot: 'body', correct: false, labelAr: 'مِعْطَف', labelFr: 'manteau', labelEn: 'coat' },
+      { id: 'scarf', kind: 'scarf', slot: 'neck', correct: false, labelAr: 'وِشَاح', labelFr: 'écharpe', labelEn: 'scarf' },
     ],
   },
   {
     emoji: '🌙', weather: '🌙', bg: 'from-indigo-200 via-violet-100 to-slate-100',
-    missionAr: 'وَقْتُ النَّوْم! أَلْبِسْ دِيدُو قَمِيصَ النَّوْمِ وَالْجَوْرَب',
+    missionAr: 'وَقْتُ النَّوْم! أَلْبِسْ دِيدُو البِيجَامَا وَالجَوْرَب',
     missionFr: 'L’heure du dodo ! Mets le pyjama et les chaussettes !',
     missionEn: 'Bedtime! Put on the pajamas and the socks!',
     garments: [
-      { id: 'pjs', emoji: '👕', slot: 'body', correct: true },
-      { id: 'slippers', emoji: '🧦', slot: 'feet', correct: true },
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: false },
-      { id: 'cap', emoji: '🧢', slot: 'head', correct: false },
+      { id: 'pjs', kind: 'pajama', slot: 'body', correct: true, labelAr: 'بِيجَامَا', labelFr: 'pyjama', labelEn: 'pajamas' },
+      { id: 'socks', kind: 'socks', slot: 'feet', correct: true, labelAr: 'جَوْرَب', labelFr: 'chaussettes', labelEn: 'socks' },
+      { id: 'coat', kind: 'winterCoat', slot: 'body', correct: false, labelAr: 'مِعْطَف', labelFr: 'manteau', labelEn: 'coat' },
+      { id: 'cap', kind: 'casquette', slot: 'head', correct: false, labelAr: 'قُبَّعَة', labelFr: 'casquette', labelEn: 'cap' },
     ],
   },
   {
@@ -116,10 +120,10 @@ const LEVELS: LevelCfg[] = [
     missionFr: 'Le vent est froid ! Mets le manteau et l’écharpe !',
     missionEn: 'The wind is cold! Put on the coat and the scarf!',
     garments: [
-      { id: 'coat', emoji: '🧥', slot: 'body', correct: true },
-      { id: 'scarf', emoji: '🧣', slot: 'neck', correct: true },
-      { id: 'shorts', emoji: '🩳', slot: 'body', correct: false },
-      { id: 'umb', emoji: '☔', slot: 'hand', correct: false },
+      { id: 'coat', kind: 'winterCoat', slot: 'body', correct: true, labelAr: 'مِعْطَف', labelFr: 'manteau', labelEn: 'coat' },
+      { id: 'scarf', kind: 'scarf', slot: 'neck', correct: true, labelAr: 'وِشَاح', labelFr: 'écharpe', labelEn: 'scarf' },
+      { id: 'shorts', kind: 'shorts', slot: 'body', correct: false, labelAr: 'شُورْت', labelFr: 'short', labelEn: 'shorts' },
+      { id: 'umb', kind: 'umbrella', slot: 'hand', correct: false, labelAr: 'مِظَلَّة', labelFr: 'parapluie', labelEn: 'umbrella' },
     ],
   },
   {
@@ -128,11 +132,11 @@ const LEVELS: LevelCfg[] = [
     missionFr: 'À l’école ! Mets le t-shirt, les chaussures, et donne-lui le cartable !',
     missionEn: 'Off to school! Put on the t-shirt and shoes, and give him the backpack!',
     garments: [
-      { id: 'tee', emoji: '👕', slot: 'body', correct: true },
-      { id: 'shoes', emoji: '👟', slot: 'feet', correct: true },
-      { id: 'bag', emoji: '🎒', slot: 'hand', correct: true },
-      { id: 'swim', emoji: '🩱', slot: 'body', correct: false },
-      { id: 'umb', emoji: '☔', slot: 'hand', correct: false },
+      { id: 'tee', kind: 'tee', slot: 'body', correct: true, labelAr: 'قَمِيص', labelFr: 't-shirt', labelEn: 't-shirt' },
+      { id: 'shoes', kind: 'sneakers', slot: 'feet', correct: true, labelAr: 'حِذَاء', labelFr: 'chaussures', labelEn: 'shoes' },
+      { id: 'bag', kind: 'bag', slot: 'hand', correct: true, labelAr: 'مِحْفَظَة', labelFr: 'cartable', labelEn: 'backpack' },
+      { id: 'swim', kind: 'swimsuit', slot: 'body', correct: false, labelAr: 'مَايُوه', labelFr: 'maillot', labelEn: 'swimsuit' },
+      { id: 'umb', kind: 'umbrella', slot: 'hand', correct: false, labelAr: 'مِظَلَّة', labelFr: 'parapluie', labelEn: 'umbrella' },
     ],
   },
 ];
@@ -140,19 +144,19 @@ const LEVELS: LevelCfg[] = [
 const LEVEL_DEFS: Omit<LevelDef, 'unlocked' | 'earnedStars'>[] = [
   { level: 1, emoji: '☀️', diffLabel: '⭐',
     titleAr: 'الجو حار', titleFr: 'Il fait chaud', titleEn: 'It’s hot',
-    descAr: 'قبعة وقميص', descFr: 'Casquette et t-shirt', descEn: 'Cap and t-shirt',
+    descAr: 'قُبَّعَةٌ وَقَمِيص', descFr: 'Casquette et t-shirt', descEn: 'Cap and t-shirt',
     gradient: 'from-amber-400 to-yellow-500' },
   { level: 2, emoji: '🌧️', diffLabel: '⭐',
     titleAr: 'المطر', titleFr: 'La pluie', titleEn: 'Rain',
-    descAr: 'معطف ومظلة', descFr: 'Manteau et parapluie', descEn: 'Coat and umbrella',
+    descAr: 'معطف مطر ومظلة', descFr: 'Imperméable et parapluie', descEn: 'Raincoat and umbrella',
     gradient: 'from-sky-400 to-slate-500' },
   { level: 3, emoji: '❄️', diffLabel: '⭐⭐',
     titleAr: 'ثلج الجبال', titleFr: 'Neige en Kabylie', titleEn: 'Mountain snow',
-    descAr: 'معطف ووشاح', descFr: 'Manteau et écharpe', descEn: 'Coat and scarf',
+    descAr: 'معطف وطاقية', descFr: 'Manteau et bonnet', descEn: 'Coat and beanie',
     gradient: 'from-sky-300 to-indigo-500' },
   { level: 4, emoji: '🏖️', diffLabel: '⭐⭐',
     titleAr: 'الشاطئ', titleFr: 'La plage', titleEn: 'The beach',
-    descAr: 'شورت ونظارات', descFr: 'Short et lunettes', descEn: 'Shorts and sunglasses',
+    descAr: 'شورت وقبعة قش', descFr: 'Short et chapeau de paille', descEn: 'Shorts and straw hat',
     gradient: 'from-cyan-400 to-amber-400' },
   { level: 5, emoji: '🏜️', diffLabel: '⭐⭐',
     titleAr: 'الصحراء', titleFr: 'Le Sahara', titleEn: 'The Sahara',
@@ -160,7 +164,7 @@ const LEVEL_DEFS: Omit<LevelDef, 'unlocked' | 'earnedStars'>[] = [
     gradient: 'from-orange-400 to-amber-600' },
   { level: 6, emoji: '🌙', diffLabel: '⭐⭐⭐',
     titleAr: 'النوم', titleFr: 'Dodo', titleEn: 'Bedtime',
-    descAr: 'قميص النوم', descFr: 'Le pyjama', descEn: 'Pajamas',
+    descAr: 'بيجاما وجورب', descFr: 'Pyjama et chaussettes', descEn: 'Pajamas and socks',
     gradient: 'from-indigo-500 to-violet-700' },
   { level: 7, emoji: '💨', diffLabel: '⭐⭐⭐',
     titleAr: 'الريح', titleFr: 'Le vent', titleEn: 'The wind',
@@ -209,7 +213,7 @@ export const DressDidoGame: React.FC<DressDidoGameProps> = ({ onExit, language =
   return (
     <DressBoard
       key={`dress-${activeLevel}`}
-      cfg={LEVELS[activeLevel - 1]}
+      cfg={DRESS_DIDO_LEVELS[activeLevel - 1]}
       language={language}
       onExit={() => setPhase('select')}
       onComplete={(s) => {
@@ -325,9 +329,9 @@ const DressBoard: React.FC<{
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 320, damping: 16 }}
-            className={`absolute text-5xl sm:text-6xl pointer-events-none ${SLOT_POS[g.slot]}`}
+            className={`absolute pointer-events-none ${SLOT_POS[g.slot]}`}
           >
-            {g.emoji}
+            <GarmentGlyph kind={g.kind} size={56} />
           </motion.span>
         ))}
       </div>
@@ -356,10 +360,16 @@ const DressBoard: React.FC<{
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             animate={wrongId === g.id ? { x: [0, -8, 8, -8, 0] } : { x: 0 }}
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#F8F9FA] border-2 border-orange-200
-                       shadow-md text-4xl cursor-grab active:cursor-grabbing select-none touch-none"
+            data-garment-kind={g.kind}
+            aria-label={t(g.labelAr, g.labelFr, g.labelEn)}
+            className="min-w-[72px] min-h-[72px] px-2 py-1.5 rounded-2xl bg-[#F8F9FA] border-2 border-orange-200
+                       shadow-md cursor-grab active:cursor-grabbing select-none touch-none
+                       flex flex-col items-center justify-center gap-0.5"
           >
-            {g.emoji}
+            <GarmentGlyph kind={g.kind} size={40} />
+            <span className="text-[10px] font-black text-slate-700 leading-tight text-center">
+              {t(g.labelAr, g.labelFr, g.labelEn)}
+            </span>
           </motion.button>
         ))}
       </div>

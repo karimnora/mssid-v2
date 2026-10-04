@@ -358,4 +358,20 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(weekend).toEqual(['Vendredi', 'Samedi']);
     expect(sort?.visualAssets.sortItems?.[0].label?.fr).toBe('Dimanche');
   });
+
+  it('seasons clothes keep casquette and straw hat as two different hats', () => {
+    const seasons = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-seasons');
+    const sorting = seasons?.activities.find((a) => a.id === 'seasons-clothes-sorting');
+    const items = sorting?.visualAssets.sortItems ?? [];
+    const cap = items.find((i) => i.id === 'cl-cap');
+    const straw = items.find((i) => i.id === 'cl-hat');
+    expect(cap?.asset).toBe('🧢');
+    expect(straw?.asset).toBe('👒');
+    expect(cap?.label?.fr).toBe('casquette');
+    expect(straw?.label?.fr).toBe('chapeau de paille');
+    expect(cap?.label?.ar).toBe('قُبَّعَة');
+    expect(straw?.label?.ar).toBe('قُبَّعَةُ قَشّ');
+    expect(cap?.correctBinId).toBe('summer-bin');
+    expect(straw?.correctBinId).toBe('spring-bin');
+  });
 });
