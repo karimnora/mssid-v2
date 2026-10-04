@@ -37,6 +37,8 @@ public class UserMapper {
                 .emailVerified(user.isEmailVerified())
                 .goldCoins(user.getGoldCoins() != null ? user.getGoldCoins() : 150)
                 .avatarConfig(user.getAvatarConfig())
+                .competenceStats(user.getCompetenceStats())
+                .lessonSessions(user.getLessonSessions())
                 .build();
     }
 }

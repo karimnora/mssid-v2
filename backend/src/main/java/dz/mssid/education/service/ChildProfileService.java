@@ -2,6 +2,7 @@ package dz.mssid.education.service;
 
 import dz.mssid.education.dto.ChildProfileDto;
 import dz.mssid.education.dto.ChildProfileRequest;
+import dz.mssid.education.dto.ChildProgressRequest;
 import dz.mssid.education.entity.ChildProfile;
 import dz.mssid.education.entity.User;
 import dz.mssid.education.repository.ChildProfileRepository;
@@ -68,6 +69,24 @@ public class ChildProfileService {
     @Transactional
     public void delete(String email, Long id) {
         childProfileRepository.delete(findOwned(email, id));
+    }
+
+    @Transactional(readOnly = true)
+    public ChildProfileDto getProgress(String email, Long id) {
+        return ChildProfileDto.from(findOwned(email, id));
+    }
+
+    @Transactional
+    public ChildProfileDto saveProgress(String email, Long id, ChildProgressRequest request) {
+        ChildProfile profile = findOwned(email, id);
+        if (request.getCompetenceStats() != null) {
+            profile.setCompetenceStats(ProgressGuard.mergeCompetenceStats(profile.getCompetenceStats(), request.getCompetenceStats()));
+        }
+        if (request.getLessonSessions() != null) {
+            profile.setLessonSessions(ProgressGuard.mergeLessonSessions(profile.getLessonSessions(), request.getLessonSessions()));
+        }
+        profile.setUpdatedAt(LocalDateTime.now());
+        return ChildProfileDto.from(childProfileRepository.save(profile));
     }
 
     private ChildProfile findOwned(String email, Long id) {

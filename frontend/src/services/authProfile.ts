@@ -33,6 +33,9 @@ export function mapAuthProfile(value: unknown, defaults: Partial<AuthUser> = {})
     avatarConfig: raw.avatarConfig && typeof raw.avatarConfig === 'object' && !Array.isArray(raw.avatarConfig)
       ? raw.avatarConfig as AuthUser['avatarConfig'] : defaults.avatarConfig,
     tashkeelEnabled: typeof raw.tashkeelEnabled === 'boolean' ? raw.tashkeelEnabled : defaults.tashkeelEnabled,
+    competenceStats: raw.competenceStats && typeof raw.competenceStats === 'object' && !Array.isArray(raw.competenceStats)
+      ? raw.competenceStats as AuthUser['competenceStats'] : defaults.competenceStats,
+    lessonSessions: Array.isArray(raw.lessonSessions) ? raw.lessonSessions as AuthUser['lessonSessions'] : defaults.lessonSessions,
     createdAt: text(raw.createdAt, defaults.createdAt),
   };
 }

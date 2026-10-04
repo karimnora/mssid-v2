@@ -48,6 +48,15 @@ describe('parseAppLocation', () => {
     expect(parseAppLocation('/labs').view).toEqual({ name: 'labs' });
   });
 
+  it('keeps the hidden prototype route off the main navigation', () => {
+    expect(parseAppLocation('/prototype/primary', '?g=5AP')).toEqual({
+      view: { name: 'prototype', screen: 'primary' },
+      grade: '5AP',
+    });
+    expect(isLabSubjectId('cem_prep_lab')).toBe(true);
+    expect(isLabSubjectId('cahiers_lab')).toBe(true);
+  });
+
   it('unknown paths fall back to home instead of a blank screen', () => {
     expect(parseAppLocation('/this-does-not-exist').view).toEqual({ name: 'home' });
   });
@@ -71,6 +80,7 @@ describe('serializeAppLocation / toAppHref', () => {
       { view: { name: 'labs' as const, toolId: 'soroban' as const }, href: '/labs/soroban?g=3AP' },
       { view: { name: 'exams' as const }, href: '/exams?g=4AP' },
       { view: { name: 'challenges' as const }, href: '/challenges?g=2AP' },
+      { view: { name: 'prototype' as const, screen: 'exercise' }, href: '/prototype/exercise?g=5AP' },
     ];
 
     for (const { view, href } of cases) {
@@ -124,6 +134,8 @@ describe('mobileTabForView / isSafeLessonId', () => {
 describe('isLabSubjectId', () => {
   it('includes the Algerian market and other tools missing from the old nav hardcode', () => {
     expect(isLabSubjectId('algerian_market')).toBe(true);
+    expect(isLabSubjectId('souk_lab')).toBe(true);
+    expect(isLabSubjectId('wudu_lab')).toBe(true);
     expect(isLabSubjectId('wilayas_map')).toBe(true);
     expect(isLabSubjectId('primary_math_ops')).toBe(true);
     expect(isLabSubjectId('math')).toBe(false);

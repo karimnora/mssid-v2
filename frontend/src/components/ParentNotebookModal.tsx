@@ -1,12 +1,15 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { BookOpen, Printer, X } from 'lucide-react';
 import { CourseLesson, UserProfile } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
-import { buildParentNotebook, ParentNotebookRow } from '../utils/competenceProgress';
+import { buildParentNotebook, buildWeeklyPlan, formatWeeklyRecap, ParentNotebookRow } from '../utils/competenceProgress';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
+import { getCahier } from '../data/cahiers/competenceCahiers';
+import { CompetenceCahierSheet } from './cahiers/CompetenceCahierSheet';
+import type { CompetenceCahier } from '../data/cahiers/competenceCahiers';
 
 interface ParentNotebookModalProps {
   isOpen: boolean;
@@ -29,7 +32,7 @@ const CompetenceRow: React.FC<{
   meta: string;
   tone?: 'review' | 'default';
   onReview: (lessonId: string) => void;
-  onPrint: (lessonId: string, competenceLabelAr: string) => void;
+  onPrint: (lessonId: string, competenceLabelAr: string, competenceId: string) => void;
 }> = ({ row, locale, actionLabel, printLabel, printAria, meta, tone = 'default', onReview, onPrint }) => {
   const label = locale === 'fr' ? row.labelFr : row.labelAr;
   const shell =
@@ -56,7 +59,7 @@ const CompetenceRow: React.FC<{
             whileTap={{ scale: 0.95 }}
             data-notebook-print={row.competenceId}
             aria-label={printAria}
-            onClick={() => onPrint(row.reviewLessonId!, row.labelAr)}
+            onClick={() => onPrint(row.reviewLessonId!, row.labelAr, row.competenceId)}
             className="hit-target rounded-2xl px-4 bg-white border-2 border-[#E7E2D7] text-[var(--kids-ink)] text-sm font-extrabold cursor-pointer inline-flex items-center gap-1.5"
           >
             <Printer className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -81,7 +84,14 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
     () => buildParentNotebook(userProfile, viewingGrade ?? userProfile.grade),
     [userProfile, viewingGrade],
   );
+  const plan = useMemo(() => buildWeeklyPlan(notebook), [notebook]);
   const [printable, setPrintable] = useState<{ lesson: CourseLesson; competenceLabelAr: string } | null>(null);
+  const [cahier, setCahier] = useState<CompetenceCahier | null>(null);
+  const [recapCopied, setRecapCopied] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) setRecapCopied(false);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -89,7 +99,12 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
     onReviewLesson(lessonId);
   };
 
-  const handlePrint = (lessonId: string, competenceLabelAr: string) => {
+  const handlePrint = (lessonId: string, competenceLabelAr: string, competenceId: string) => {
+    const nextCahier = getCahier(competenceId);
+    if (nextCahier) {
+      setCahier(nextCahier);
+      return;
+    }
     const lesson = COURSES_DATA.find((item) => item.id === lessonId);
     if (lesson) setPrintable({ lesson, competenceLabelAr });
   };
@@ -138,6 +153,53 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
         </div>
 
         <div className="kids-modal-body p-5 space-y-5">
+          <section className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-4 space-y-3">
+            <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{t('parentNotebookWeekTitle')}</p>
+            <p className="text-xs font-bold text-[var(--kids-muted)]">
+              {t('parentNotebookWeekMeta', { review: plan.reviewCount, ok: plan.weekSuccesses })}
+            </p>
+            {plan.next ? (
+              <>
+                <p className="text-xs font-extrabold text-[var(--brand-emerald)]">
+                  {t('parentNotebookTomorrow', { minutes: plan.minutes })}
+                </p>
+                <p className="text-base font-extrabold text-[var(--kids-ink)] leading-relaxed">
+                  {locale === 'fr' ? plan.next.labelFr : plan.next.labelAr}
+                </p>
+                {plan.next.reviewLessonId && (
+                  <motion.button
+                    type="button"
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleReview(plan.next!.reviewLessonId!)}
+                    className="hit-target w-full rounded-2xl px-4 bg-[var(--brand-emerald)] text-white text-sm font-extrabold cursor-pointer"
+                  >
+                    {t('parentNotebookStartTomorrow')}
+                  </motion.button>
+                )}
+              </>
+            ) : (
+              <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">
+                {t('parentNotebookTomorrowEmpty')}
+              </p>
+            )}
+            <motion.button
+              type="button"
+              whileTap={{ scale: 0.95 }}
+              onClick={async () => {
+                const text = formatWeeklyRecap(notebook, plan, locale);
+                try {
+                  await navigator.clipboard.writeText(text);
+                  setRecapCopied(true);
+                } catch {
+                  setRecapCopied(false);
+                }
+              }}
+              className="hit-target w-full rounded-2xl px-4 bg-[#FFF8E7] border-2 border-[#E7E2D7] text-[var(--kids-ink)] text-sm font-extrabold cursor-pointer"
+            >
+              {recapCopied ? t('parentNotebookCopied') : t('parentNotebookCopyRecap')}
+            </motion.button>
+          </section>
+
           {empty ? (
             <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed bg-[#FFF8E7] rounded-2xl p-4">
               {t('parentNotebookEmpty')}
@@ -237,6 +299,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
           onClose={() => setPrintable(null)}
         />
       )}
+      {cahier && <CompetenceCahierSheet cahier={cahier} onClose={() => setCahier(null)} />}
     </>
   );
 };

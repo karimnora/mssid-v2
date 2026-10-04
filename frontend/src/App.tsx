@@ -39,7 +39,7 @@ import { useAppModals } from './hooks/useAppModals';
 import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
 import { isLabFreeForGuest, isLessonFreeForGuest } from './utils/guestAccess';
 import { lastActivityTitle, readLastActivity, writeLastActivity } from './utils/lastActivity';
-import { isLabSubjectId, isValidGrade } from './navigation/appLocation';
+import { isLabSubjectId, isValidGrade, parseAppLocation } from './navigation/appLocation';
 import { ChildProfilePicker } from './components/ChildProfilePicker';
 import {
   ChildProfile,
@@ -71,6 +71,7 @@ import {
 
 const PreschoolApp = lazy(() => import('./components/preschool/PreschoolApp').then((m) => ({ default: m.PreschoolApp })));
 const AdminConsoleView = lazy(() => import('./components/admin/AdminConsoleView').then((m) => ({ default: m.AdminConsoleView })));
+const PrototypeFlow = lazy(() => import('./components/prototype/PrototypeFlow').then((m) => ({ default: m.PrototypeFlow })));
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Calculator,
@@ -362,6 +363,23 @@ function AppContent() {
     if (lesson) nav.handleSelectLesson(lesson);
   };
 
+  const handleReviewLesson = (lessonId: string) => {
+    const open = (lesson: CourseLesson) => {
+      if (lesson.grade !== nav.grade) nav.handleGradeChange(lesson.grade);
+      nav.setIsPreschoolActive(false);
+      nav.handleSelectLesson(lesson);
+    };
+    const cached = (coursesData ?? []).find((item) => item.id === lessonId);
+    if (cached) {
+      open(cached);
+      return;
+    }
+    void import('./data/coursesData').then(({ COURSES_DATA }) => {
+      const lesson = COURSES_DATA.find((item) => item.id === lessonId);
+      if (lesson) open(lesson);
+    });
+  };
+
   const handlePrimaryBack = () => {
     if (nav.mainCategory === 'courses' && !nav.selectedLesson && courseStepBackRef.current) {
       courseStepBackRef.current();
@@ -412,6 +430,26 @@ function AppContent() {
       return updated;
     });
   };
+
+  const protoView = parseAppLocation(
+    typeof window === 'undefined' ? '/' : window.location.pathname,
+    typeof window === 'undefined' ? '' : window.location.search,
+  ).view;
+  if (protoView.name === 'prototype') {
+    return (
+      <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingAdminConsole')} minHeight="100vh" />}>
+        <PrototypeFlow
+          screen={protoView.screen}
+          grade={nav.grade}
+          userProfile={progress.userProfile}
+          onExit={() => {
+            window.history.replaceState(null, '', `/?g=${nav.grade}`);
+            nav.goHome();
+          }}
+        />
+      </Suspense>
+    );
+  }
 
   if (!isAuthLoading && pickerOpen && authUser) {
     return (
@@ -630,6 +668,7 @@ function AppContent() {
                 onLabReward={progress.handleLabReward}
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
                 onReportError={modals.openErrorReport}
+                onReviewLesson={handleReviewLesson}
               />
             )}
 
@@ -778,22 +817,7 @@ function AppContent() {
         onUpdateAvatar={progress.handleUpdateProfileAvatar}
         onRefreshFromDb={progress.handleRefreshProfileFromDb}
         onSwitchChild={authUser ? () => setPickerOpen(true) : undefined}
-        onReviewLesson={(lessonId) => {
-          const open = (lesson: CourseLesson) => {
-            if (lesson.grade !== nav.grade) nav.handleGradeChange(lesson.grade);
-            nav.setIsPreschoolActive(false);
-            nav.handleSelectLesson(lesson);
-          };
-          const cached = (coursesData ?? []).find((item) => item.id === lessonId);
-          if (cached) {
-            open(cached);
-            return;
-          }
-          void import('./data/coursesData').then(({ COURSES_DATA }) => {
-            const lesson = COURSES_DATA.find((item) => item.id === lessonId);
-            if (lesson) open(lesson);
-          });
-        }}
+        onReviewLesson={handleReviewLesson}
       />
 
       <MobileBottomNav

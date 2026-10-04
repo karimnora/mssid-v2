@@ -2,6 +2,7 @@ package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.ChildProfileDto;
 import dz.mssid.education.dto.ChildProfileRequest;
+import dz.mssid.education.dto.ChildProgressRequest;
 import dz.mssid.education.service.ChildProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -59,5 +60,28 @@ public class ChildProfileController {
         }
         childProfileService.delete(userDetails.getUsername(), id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}/progress")
+    public ResponseEntity<ChildProfileDto> progress(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @PathVariable Long id
+    ) {
+        if (userDetails == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(childProfileService.getProgress(userDetails.getUsername(), id));
+    }
+
+    @PutMapping("/{id}/progress")
+    public ResponseEntity<ChildProfileDto> saveProgress(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @PathVariable Long id,
+            @RequestBody ChildProgressRequest request
+    ) {
+        if (userDetails == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(childProfileService.saveProgress(userDetails.getUsername(), id, request));
     }
 }

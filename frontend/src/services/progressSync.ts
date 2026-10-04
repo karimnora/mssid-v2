@@ -5,7 +5,7 @@ type Patch = Record<string, unknown>;
 export type ProgressSyncState = { status: 'local' | 'saving' | 'pending' | 'synced'; syncedAt?: string };
 const allowed = new Set(['score', 'xp', 'level', 'goldCoins', 'avatarConfig', 'avatar', 'grade', 'wilaya',
   'streakDays', 'quizzesCompleted', 'lastActiveDate', 'completedLessonIds', 'completedExamIds',
-  'completedChallengeIds', 'badges', 'badgeUnlockedAt', 'quizScores']);
+  'completedChallengeIds', 'badges', 'badgeUnlockedAt', 'quizScores', 'competenceStats', 'lessonSessions']);
 const numbers = new Set(['score', 'xp', 'level', 'goldCoins', 'streakDays', 'quizzesCompleted']);
 const ids = new Set(['completedLessonIds', 'completedExamIds', 'completedChallengeIds', 'badges']);
 const listeners = new Set<() => void>();
@@ -27,7 +27,9 @@ function cleanPatch(value: unknown): Patch {
       if (typeof entry === 'number' && Number.isFinite(entry) && entry >= 0) patch[field] = entry;
     } else if (ids.has(field)) {
       if (Array.isArray(entry)) patch[field] = entry.filter(item => typeof item === 'string');
-    } else if (['avatarConfig', 'badgeUnlockedAt', 'quizScores'].includes(field)) {
+    } else if (field === 'lessonSessions') {
+      if (Array.isArray(entry)) patch[field] = entry;
+    } else if (['avatarConfig', 'badgeUnlockedAt', 'quizScores', 'competenceStats'].includes(field)) {
       if (entry && typeof entry === 'object' && !Array.isArray(entry)) patch[field] = entry;
     } else if (typeof entry === 'string') patch[field] = entry;
   }

@@ -22,10 +22,14 @@ describe('competence map', () => {
     }
   });
 
-  it('maps every 1AP math lesson of the catalogue', () => {
-    const unmapped = COURSES_DATA.filter(
-      (l) => l.grade === '1AP' && l.subject === 'math' && getLessonCompetences(l.id).length === 0,
-    ).map((l) => l.id);
+  it('maps every 1AP math, 1AP arabic, 2AP math and 5AP math lesson', () => {
+    const needed = COURSES_DATA.filter(
+      (l) =>
+        (l.grade === '1AP' && (l.subject === 'math' || l.subject === 'arabic')) ||
+        (l.grade === '2AP' && l.subject === 'math') ||
+        (l.grade === '5AP' && l.subject === 'math'),
+    );
+    const unmapped = needed.filter((l) => getLessonCompetences(l.id).length === 0).map((l) => l.id);
     expect(unmapped).toEqual([]);
   });
 

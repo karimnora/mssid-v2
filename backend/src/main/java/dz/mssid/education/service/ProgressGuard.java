@@ -24,6 +24,8 @@ public final class ProgressGuard {
     public static final int MAX_NEW_IDS_PER_SYNC = 20;
     public static final int MAX_ID_LENGTH = 80;
     public static final int MAX_LESSON_QUIZ_XP = 500;
+    public static final int MAX_COMPETENCE_KEYS = 200;
+    public static final int MAX_LESSON_SESSIONS = 40;
 
     public static final Set<String> ALLOWED_GRADES = Set.of("1AP", "2AP", "3AP", "4AP", "5AP");
 
@@ -182,5 +184,136 @@ public final class ProgressGuard {
 
     static boolean isSafeId(String id) {
         return id != null && id.length() <= MAX_ID_LENGTH && SAFE_ID.matcher(id).matches();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static Map<String, Object> mergeCompetenceStats(Map<String, Object> existing, Map<String, Object> incoming) {
+        Map<String, Object> merged = new HashMap<>(existing != null ? existing : Map.of());
+        if (incoming == null) {
+            return merged;
+        }
+        incoming.forEach((id, raw) -> {
+            if (!isSafeId(id) || !(raw instanceof Map<?, ?> rawMap)) {
+                return;
+            }
+            if (!merged.containsKey(id) && merged.size() >= MAX_COMPETENCE_KEYS) {
+                return;
+            }
+            Map<String, Object> current = rawMapToObjectMap(merged.get(id));
+            Map<String, Object> next = rawMapToObjectMap(rawMap);
+            Map<String, Object> stat = new HashMap<>();
+            stat.put("attempts", Math.max(asInt(current.get("attempts")), asInt(next.get("attempts"))));
+            stat.put("successes", Math.max(asInt(current.get("successes")), asInt(next.get("successes"))));
+            stat.put("failures", Math.max(asInt(current.get("failures")), asInt(next.get("failures"))));
+            String lastAt = laterIso(asString(current.get("lastAt")), asString(next.get("lastAt")));
+            if (lastAt != null) {
+                stat.put("lastAt", lastAt);
+            }
+            String lessonId = asString(next.get("lastLessonId"));
+            if (!isSafeId(lessonId)) {
+                lessonId = asString(current.get("lastLessonId"));
+            }
+            if (isSafeId(lessonId)) {
+                stat.put("lastLessonId", lessonId);
+            }
+            String outcome = asString(next.get("lastOutcome"));
+            if (!"success".equals(outcome) && !"fail".equals(outcome)) {
+                outcome = asString(current.get("lastOutcome"));
+            }
+            if ("success".equals(outcome) || "fail".equals(outcome)) {
+                stat.put("lastOutcome", outcome);
+            }
+            merged.put(id, stat);
+        });
+        return merged;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static List<Map<String, Object>> mergeLessonSessions(
+            List<Map<String, Object>> existing,
+            List<Map<String, Object>> incoming
+    ) {
+        List<Map<String, Object>> merged = new ArrayList<>();
+        if (existing != null) {
+            existing.forEach(session -> {
+                Map<String, Object> clean = cleanSession(session);
+                if (clean != null) {
+                    merged.add(clean);
+                }
+            });
+        }
+        if (incoming != null) {
+            incoming.forEach(session -> {
+                Map<String, Object> clean = cleanSession(session);
+                if (clean != null) {
+                    merged.add(clean);
+                }
+            });
+        }
+        int extra = merged.size() - MAX_LESSON_SESSIONS;
+        if (extra > 0) {
+            return new ArrayList<>(merged.subList(extra, merged.size()));
+        }
+        return merged;
+    }
+
+    private static Map<String, Object> cleanSession(Map<String, Object> session) {
+        if (session == null) {
+            return null;
+        }
+        String lessonId = asString(session.get("lessonId"));
+        String outcome = asString(session.get("outcome"));
+        String at = asString(session.get("at"));
+        if (!isSafeId(lessonId) || (!"success".equals(outcome) && !"fail".equals(outcome))) {
+            return null;
+        }
+        List<String> competenceIds = new ArrayList<>();
+        Object rawIds = session.get("competenceIds");
+        if (rawIds instanceof List<?> list) {
+            for (Object item : list) {
+                if (item instanceof String id && isSafeId(id) && competenceIds.size() < 12) {
+                    competenceIds.add(id);
+                }
+            }
+        }
+        Map<String, Object> clean = new HashMap<>();
+        clean.put("at", at != null && at.length() <= 40 ? at : "");
+        clean.put("lessonId", lessonId);
+        clean.put("competenceIds", competenceIds);
+        clean.put("outcome", outcome);
+        return clean;
+    }
+
+    private static Map<String, Object> rawMapToObjectMap(Object raw) {
+        Map<String, Object> out = new HashMap<>();
+        if (raw instanceof Map<?, ?> map) {
+            map.forEach((key, value) -> {
+                if (key instanceof String name) {
+                    out.put(name, value);
+                }
+            });
+        }
+        return out;
+    }
+
+    private static int asInt(Object value) {
+        if (value instanceof Number number) {
+            return Math.max(0, Math.min(10_000, number.intValue()));
+        }
+        return 0;
+    }
+
+    private static String asString(Object value) {
+        return value instanceof String text ? text : null;
+    }
+
+    private static String laterIso(String left, String right) {
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+        return left.compareTo(right) >= 0 ? left : right;
     }
 }

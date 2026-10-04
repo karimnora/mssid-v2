@@ -141,6 +141,18 @@ describe('mobile footer tab follows the open view', () => {
   });
 });
 
+describe('hidden prototype route stays off the main stack', () => {
+  beforeEach(() => {
+    window.localStorage.removeItem(GRADE_STORAGE_KEY);
+    window.history.replaceState(null, '', '/prototype/preschool?g=1AP');
+  });
+
+  it('does not rewrite /prototype to /courses on boot', () => {
+    renderHook(() => useAppNavigation({ isLessonLocked: () => false }));
+    expect(window.location.pathname).toBe('/prototype/preschool');
+  });
+});
+
 describe('primary back button returns to the parent screen', () => {
   beforeEach(() => {
     window.history.replaceState(null, '', '/');

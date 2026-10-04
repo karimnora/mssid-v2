@@ -1,0 +1,29 @@
+import React from 'react';
+import { describe, expect, it } from 'vitest';
+import { render } from '@testing-library/react';
+import { CountryFlag } from './CountryFlag';
+
+describe('CountryFlag', () => {
+  it('draws the official Algerian green, white and red', () => {
+    const { container } = render(<CountryFlag countryId="dz" />);
+    const svg = container.querySelector('[data-country-flag="dz"] svg');
+    expect(svg?.innerHTML).toContain('#006233');
+    expect(svg?.innerHTML).toContain('#D21034');
+    expect(svg?.innerHTML).toContain('#FFFFFF');
+  });
+
+  it('keeps a pentagram on the Moroccan flag instead of a filled star', () => {
+    const { container } = render(<CountryFlag countryId="ma" />);
+    expect(container.querySelector('polygon')?.getAttribute('fill')).toBe('none');
+    expect(container.querySelector('polygon')?.getAttribute('stroke')).toBe('#006233');
+  });
+
+  it('draws the Sahrawi flag with a red crescent and star, not only Palestine bars', () => {
+    const { container } = render(<CountryFlag countryId="eh" />);
+    const svg = container.querySelector('[data-country-flag="eh"] svg');
+    expect(svg?.innerHTML).toContain('#CE1126');
+    expect(svg?.innerHTML).toContain('#007229');
+    expect(container.querySelector('polygon')?.getAttribute('fill')).toBe('#CE1126');
+    expect(container.querySelector('mask')).not.toBeNull();
+  });
+});

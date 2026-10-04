@@ -77,6 +77,13 @@ export const meta = {
   parentNotebookSessionOk: 'نجاح',
   parentNotebookPrint: 'طباعة',
   parentNotebookPrintAria: 'طباعة فيشة هذه الكفاءة',
+  parentNotebookWeekTitle: 'خطة هذا الأسبوع',
+  parentNotebookWeekMeta: '{review} للمراجعة · {ok} نجاح هذا الأسبوع',
+  parentNotebookTomorrow: 'غداً · {minutes} دقيقة',
+  parentNotebookTomorrowEmpty: 'لا توجد حصة مقترحة الآن. ابدأ درساً من الرياضيات لتظهر الخطة.',
+  parentNotebookStartTomorrow: 'ابدأ حصة الغد',
+  parentNotebookCopyRecap: 'نسخ الملخص للأب أو الأم',
+  parentNotebookCopied: 'تم نسخ الملخص',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'لتثبيت التطبيق على جهازك: اضغط على زر المشاركة (Share) ثم اختر "إضافة إلى الشاشة الرئيسية" (Add to Home Screen) 📲',

@@ -40,4 +40,6 @@ public class UserProfileDto {
     private Boolean emailVerified;
     private Integer goldCoins;
     private Map<String, Object> avatarConfig;
+    private Map<String, Object> competenceStats;
+    private List<Map<String, Object>> lessonSessions;
 }

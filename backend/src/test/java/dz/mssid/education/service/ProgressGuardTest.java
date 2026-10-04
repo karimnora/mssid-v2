@@ -69,6 +69,28 @@ class ProgressGuardTest {
     }
 
     @Test
+    @DisplayName("Competence stats keep the higher counts and drop unsafe ids")
+    void mergeCompetenceStats_keepsMaxAndDropsUnsafe() {
+        Map<String, Object> existing = Map.of(
+                "math-1ap-c-addition",
+                Map.of("attempts", 2, "successes", 1, "failures", 1, "lastAt", "2026-01-01T00:00:00Z", "lastLessonId", "math-1ap-t2-addition-concept", "lastOutcome", "fail")
+        );
+        Map<String, Object> incoming = Map.of(
+                "math-1ap-c-addition",
+                Map.of("attempts", 3, "successes", 2, "failures", 1, "lastAt", "2026-02-01T00:00:00Z", "lastLessonId", "math-1ap-t2-addition-concept", "lastOutcome", "success"),
+                "<script>",
+                Map.of("attempts", 9, "successes", 9, "failures", 0)
+        );
+        Map<String, Object> merged = ProgressGuard.mergeCompetenceStats(existing, incoming);
+        @SuppressWarnings("unchecked")
+        Map<String, Object> addition = (Map<String, Object>) merged.get("math-1ap-c-addition");
+        assertEquals(3, addition.get("attempts"));
+        assertEquals(2, addition.get("successes"));
+        assertEquals("success", addition.get("lastOutcome"));
+        assertFalse(merged.containsKey("<script>"));
+    }
+
+    @Test
     @DisplayName("Only official grades 1AP–5AP are accepted")
     void sanitizeGrade_rejectsUnknown() {
         assertEquals("3AP", ProgressGuard.sanitizeGrade("5AP", "3AP"));

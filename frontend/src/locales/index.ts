@@ -11,6 +11,7 @@ import { labsLanguage as labsLanguageAr } from './ar/labsLanguage';
 import { labsMath as labsMathAr } from './ar/labsMath';
 import { labsScience as labsScienceAr } from './ar/labsScience';
 import { labsSocial as labsSocialAr } from './ar/labsSocial';
+import { labsImmersive as labsImmersiveAr } from './ar/labsImmersive';
 import { meta as metaAr } from './ar/meta';
 import { subscription as subscriptionAr } from './ar/subscription';
 import { tools as toolsAr } from './ar/tools';
@@ -28,6 +29,7 @@ import { labsLanguage as labsLanguageFr } from './fr/labsLanguage';
 import { labsMath as labsMathFr } from './fr/labsMath';
 import { labsScience as labsScienceFr } from './fr/labsScience';
 import { labsSocial as labsSocialFr } from './fr/labsSocial';
+import { labsImmersive as labsImmersiveFr } from './fr/labsImmersive';
 import { meta as metaFr } from './fr/meta';
 import { subscription as subscriptionFr } from './fr/subscription';
 import { tools as toolsFr } from './fr/tools';
@@ -46,6 +48,7 @@ const arStrings = {
   labsMath: labsMathAr,
   labsScience: labsScienceAr,
   labsSocial: labsSocialAr,
+  labsImmersive: labsImmersiveAr,
   meta: metaAr,
   subscription: subscriptionAr,
   tools: toolsAr,
@@ -65,6 +68,7 @@ const frStrings: typeof arStrings = {
   labsMath: labsMathFr,
   labsScience: labsScienceFr,
   labsSocial: labsSocialFr,
+  labsImmersive: labsImmersiveFr,
   meta: metaFr,
   subscription: subscriptionFr,
   tools: toolsFr,

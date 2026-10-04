@@ -18,6 +18,27 @@ vi.mock('../utils/badgeEngine', () => ({
   applyBadgeEvaluation: (profile: UserProfile) => ({ profile, newlyUnlocked: [] }),
 }));
 
+vi.mock('../services/authService', () => ({
+  AuthService: {
+    markLessonCompleted: vi.fn(),
+    addScore: vi.fn(),
+    addExamXp: vi.fn(),
+    addChallengeXp: vi.fn(),
+    syncGoldCoinsAndAvatar: vi.fn(),
+    syncCompetenceProgress: vi.fn(),
+    setCurrentUser: vi.fn(),
+    updateProfileAsync: vi.fn(),
+    fetchProfileFromDbAsync: vi.fn(),
+  },
+}));
+
+vi.mock('../services/springBootApi', () => ({
+  springBootApi: {
+    getChildProgress: vi.fn().mockResolvedValue({ data: {}, status: 200 }),
+    saveChildProgress: vi.fn().mockResolvedValue({ status: 200 }),
+  },
+}));
+
 describe('createFreshGuestProfile', () => {
   it('starts at the requested grade with no XP, lessons, or fake 5AP seed', () => {
     const profile = createFreshGuestProfile('1AP');

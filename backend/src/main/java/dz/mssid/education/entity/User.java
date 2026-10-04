@@ -156,6 +156,16 @@ public class User implements UserDetails {
     @Column(name = "avatar_config", columnDefinition = "jsonb")
     private Map<String, Object> avatarConfig;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "competence_stats", columnDefinition = "jsonb")
+    @Builder.Default
+    private Map<String, Object> competenceStats = new HashMap<>();
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "lesson_sessions", columnDefinition = "jsonb")
+    @Builder.Default
+    private List<Map<String, Object>> lessonSessions = new ArrayList<>();
+
     // =========================================================================
     // Méthodes requises par UserDetails (Spring Security)
     // =========================================================================

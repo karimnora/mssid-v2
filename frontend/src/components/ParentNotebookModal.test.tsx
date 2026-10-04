@@ -14,7 +14,7 @@ describe('ParentNotebookModal', () => {
       <ParentNotebookModal
         isOpen
         onClose={vi.fn()}
-        userProfile={createFreshGuestProfile('5AP')}
+        userProfile={createFreshGuestProfile('3AP')}
         onReviewLesson={vi.fn()}
       />,
     );
@@ -80,6 +80,42 @@ describe('ParentNotebookModal', () => {
 
     fireEvent.click(document.querySelector('[data-notebook-print="math-1ap-c-spatial-position"]') as HTMLElement);
     await waitFor(() => expect(document.querySelector('.printable-sheet')).toBeTruthy());
-    expect(screen.getAllByText(/فيشة مراجعة/).length).toBeGreaterThan(0);
+    expect(screen.getByText(/كُرَّاسُ الكَفَاءَةِ/)).toBeInTheDocument();
+  });
+
+  it('starts tomorrow from the week plan with the missed lesson first', () => {
+    const onReviewLesson = vi.fn();
+    const userProfile = recordLessonFailure(
+      createFreshGuestProfile('1AP'),
+      'math-1ap-t1-spatial-relations',
+      '2026-09-28T22:00:00.000Z',
+    );
+    renderNotebook(
+      <ParentNotebookModal isOpen onClose={vi.fn()} userProfile={userProfile} onReviewLesson={onReviewLesson} />,
+    );
+
+    expect(screen.getByText('خطة هذا الأسبوع')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'ابدأ حصة الغد' }));
+    expect(onReviewLesson).toHaveBeenCalledWith('math-1ap-t1-spatial-relations');
+  });
+
+  it('copies the weekly recap for the other parent', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+
+    renderNotebook(
+      <ParentNotebookModal
+        isOpen
+        onClose={vi.fn()}
+        userProfile={createFreshGuestProfile('1AP')}
+        onReviewLesson={vi.fn()}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'نسخ الملخص للأب أو الأم' }));
+    await waitFor(() => expect(writeText).toHaveBeenCalled());
+    expect(writeText.mock.calls[0][0]).toContain('دفتر مسيد');
+    expect(writeText.mock.calls[0][0]).toContain('تلميذ مَسِيد');
+    expect(screen.getByText('تم نسخ الملخص')).toBeInTheDocument();
   });
 });

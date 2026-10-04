@@ -1,0 +1,103 @@
+import type { Competence, LessonCompetences } from './types';
+
+const NUMBERS = 'الأعداد والحساب';
+const SPACE = 'الفضاء والهندسة';
+const MEASURES = 'المقادير والقياس';
+
+export const MATH_2AP_COMPETENCES: Competence[] = [
+  {
+    id: 'math-2ap-c-numbers-999',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: NUMBERS,
+    labelAr: 'أَقْرَأُ وَأَكْتُبُ الأَعْدَادَ الأَصْغَرَ مِنْ 1000 وَأُفَكِّكُهَا إِلَى مِئَاتٍ وَعَشَرَاتٍ وَآحَادٍ',
+    labelFr: 'Lire, écrire et décomposer les nombres inférieurs à 1000',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-addition-carry',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: NUMBERS,
+    labelAr: 'أَجْمَعُ بِالاِحْتِفَاظِ',
+    labelFr: 'Additionner avec retenue',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-subtraction',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: NUMBERS,
+    labelAr: 'أَطْرَحُ دُونَ احْتِفَاظٍ وَبِالاِحْتِفَاظِ',
+    labelFr: 'Soustraire sans et avec retenue',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-multiplication',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: NUMBERS,
+    labelAr: 'أَفْهَمُ الضَّرْبَ كَجَمْعٍ مُكَرَّرٍ (جَدَاوِلُ 2 وَ3 وَ4 وَ5 وَ10)',
+    labelFr: 'Comprendre la multiplication comme addition répétée (tables 2, 3, 4, 5, 10)',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-right-angle',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: SPACE,
+    labelAr: 'أَتَعَرَّفُ عَلَى الزَّاوِيَةِ القَائِمَةِ بِالمِرْوَاةِ وَعَلَى الأَشْكَالِ',
+    labelFr: 'Reconnaître l’angle droit à l’équerre et les formes',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-units',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: MEASURES,
+    labelAr: 'أَسْتَعْمِلُ الوَحَدَاتِ: m وَcm وَg وَkg',
+    labelFr: 'Utiliser les unités m, cm, g et kg',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-clock',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: MEASURES,
+    labelAr: 'أَقْرَأُ السَّاعَةَ تَمَاماً وَعَلَى النِّصْفِ',
+    labelFr: 'Lire l’heure pile et la demie',
+    inReferentiel: true,
+  },
+  {
+    id: 'math-2ap-c-money',
+    grade: '2AP',
+    subject: 'math',
+    domainAr: MEASURES,
+    labelAr: 'أَحْسُبُ بِالدِّينَارِ الجَزَائِرِيِّ',
+    labelFr: 'Calculer en dinar algérien',
+    inReferentiel: true,
+  },
+];
+
+export const MATH_2AP_LESSON_COMPETENCES: LessonCompetences[] = [
+  { lessonId: 'math-2ap-t1-numbers-0-49', competenceIds: ['math-2ap-c-numbers-999'] },
+  { lessonId: 'math-2ap-t1-spatial-position', competenceIds: ['math-2ap-c-right-angle'] },
+  { lessonId: 'math-2ap-t1-addition-no-carry', competenceIds: ['math-2ap-c-addition-carry'] },
+  { lessonId: 'math-2ap-t2-numbers-50-99', competenceIds: ['math-2ap-c-numbers-999'] },
+  { lessonId: 'math-2ap-t2-numbers-100-999', competenceIds: ['math-2ap-c-numbers-999'] },
+  { lessonId: 'math-2ap-t2-addition-with-carry', competenceIds: ['math-2ap-c-addition-carry'] },
+  { lessonId: 'math-2ap-t2-subtraction-no-carry', competenceIds: ['math-2ap-c-subtraction'] },
+  { lessonId: 'math-2ap-t2-shapes', competenceIds: ['math-2ap-c-right-angle'] },
+  { lessonId: 'math-2ap-t3-double-half', competenceIds: ['math-2ap-c-multiplication'] },
+  { lessonId: 'math-2ap-t3-measures-length-mass', competenceIds: ['math-2ap-c-units'] },
+  { lessonId: 'math-2ap-t3-ruler-cm', competenceIds: ['math-2ap-c-units'] },
+  { lessonId: 'math-2ap-t3-clock-reading', competenceIds: ['math-2ap-c-clock'] },
+  { lessonId: 'math-2ap-t3-clock-half-hour', competenceIds: ['math-2ap-c-clock'] },
+  { lessonId: 'math-2ap-t3-currency-dzd', competenceIds: ['math-2ap-c-money'] },
+  { lessonId: 'math-2ap-t2-subtraction-with-carry', competenceIds: ['math-2ap-c-subtraction'] },
+  { lessonId: 'math-2ap-t2-number-framing', competenceIds: ['math-2ap-c-numbers-999'] },
+  { lessonId: 'math-2ap-t3-right-angle', competenceIds: ['math-2ap-c-right-angle'] },
+  { lessonId: 'math-2ap-t3-meter-cm', competenceIds: ['math-2ap-c-units'] },
+  { lessonId: 'math-2ap-t3-gram-kg', competenceIds: ['math-2ap-c-units'] },
+  { lessonId: 'math-2ap-t3-multiplication-concept', competenceIds: ['math-2ap-c-multiplication'] },
+];

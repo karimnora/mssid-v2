@@ -156,3 +156,53 @@ export function buildParentNotebook(profile: UserProfile, viewingGrade: PrimaryG
     recentSessions,
   };
 }
+
+export const WEEKLY_SESSION_MINUTES = 12;
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
+export interface WeeklyPlan {
+  next?: ParentNotebookRow;
+  minutes: number;
+  reviewCount: number;
+  weekSuccesses: number;
+  weekSessions: number;
+}
+
+/** One short session for tomorrow: review first, otherwise the next unstarted competence. */
+export function buildWeeklyPlan(notebook: ParentNotebook, now = new Date()): WeeklyPlan {
+  const weekAgo = new Date(now.getTime() - WEEK_MS).toISOString();
+  const weekSessions = notebook.recentSessions.filter((session) => session.at >= weekAgo);
+  return {
+    next: notebook.review[0] ?? notebook.todo[0],
+    minutes: WEEKLY_SESSION_MINUTES,
+    reviewCount: notebook.review.length,
+    weekSuccesses: weekSessions.filter((session) => session.outcome === 'success').length,
+    weekSessions: weekSessions.length,
+  };
+}
+
+export function formatWeeklyRecap(
+  notebook: ParentNotebook,
+  plan: WeeklyPlan,
+  locale: 'ar' | 'fr',
+): string {
+  const nextLabel = plan.next ? (locale === 'fr' ? plan.next.labelFr : plan.next.labelAr) : '';
+  if (locale === 'fr') {
+    const nextLine = plan.next
+      ? `Demain (${plan.minutes} min) : ${nextLabel}`
+      : 'Demain : aucune séance à lancer pour l’instant.';
+    return [
+      `Carnet Mssid — ${notebook.childName} (${notebook.grade})`,
+      `Cette semaine : ${plan.reviewCount} à revoir, ${plan.weekSuccesses} réussite(s).`,
+      nextLine,
+    ].join('\n');
+  }
+  const nextLine = plan.next
+    ? `غداً (${plan.minutes} دقيقة) : ${nextLabel}`
+    : 'غداً : لا توجد حصة للبدء الآن.';
+  return [
+    `دفتر مسيد — ${notebook.childName} (${notebook.grade})`,
+    `هذا الأسبوع: ${plan.reviewCount} للمراجعة، ${plan.weekSuccesses} نجاح.`,
+    nextLine,
+  ].join('\n');
+}

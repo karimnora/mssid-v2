@@ -536,6 +536,23 @@ public async request<T>(
     return this.request<void>(`/v1/children/${id}`, { method: 'DELETE' });
   }
 
+  public async getChildProgress(id: number) {
+    return this.request<{
+      competenceStats?: Record<string, unknown>;
+      lessonSessions?: Array<Record<string, unknown>>;
+    }>(`/v1/children/${id}/progress`, { method: 'GET' });
+  }
+
+  public async saveChildProgress(
+    id: number,
+    payload: { competenceStats?: Record<string, unknown>; lessonSessions?: Array<Record<string, unknown>> },
+  ) {
+    return this.request<void>(`/v1/children/${id}/progress`, {
+      method: 'PUT',
+      body: JSON.stringify(payload),
+    });
+  }
+
   // --- Admin Console: Analytics, Feature Flags, Audit Log ---
 
   public async getAdminStatsOverview() {

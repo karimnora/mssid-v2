@@ -47,7 +47,15 @@ export type SubjectId =
   | 'speed_reading'
   | 'topography_map'
   | 'speed_lab'
-  | 'quran_lab';
+  | 'quran_lab'
+  | 'wudu_lab'
+  | 'salat_lab'
+  | 'mosque_adab_lab'
+  | 'road_code_lab'
+  | 'souk_lab'
+  | 'world_flags_lab'
+  | 'cem_prep_lab'
+  | 'cahiers_lab';
 
 export interface SubjectInfo {
   id: SubjectId;

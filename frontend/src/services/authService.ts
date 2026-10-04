@@ -464,6 +464,25 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       streakDays: updatedUser.streakDays, lastActiveDate: updatedUser.lastActiveDate,
     });
     return updatedUser;
+
+  }
+
+  static syncCompetenceProgress(payload: {
+    competenceStats?: AuthUser['competenceStats'];
+    lessonSessions?: AuthUser['lessonSessions'];
+  }): void {
+    const user = this.getCurrentUser();
+    if (!user) return;
+    const updatedUser: AuthUser = {
+      ...user,
+      competenceStats: payload.competenceStats ?? user.competenceStats,
+      lessonSessions: payload.lessonSessions ?? user.lessonSessions,
+    };
+    this.setCurrentUser(updatedUser);
+    springBootApi.updateUserProgress({
+      competenceStats: updatedUser.competenceStats ?? {},
+      lessonSessions: updatedUser.lessonSessions ?? [],
+    }).catch((err) => console.error('Erreur de synchronisation du carnet:', err));
   }
 
 static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser | null> {

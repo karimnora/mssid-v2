@@ -75,6 +75,13 @@ export const meta: typeof metaAr = {
   parentNotebookSessionOk: 'Réussi',
   parentNotebookPrint: 'Imprimer',
   parentNotebookPrintAria: 'Imprimer la fiche de cette compétence',
+  parentNotebookWeekTitle: 'Le plan de la semaine',
+  parentNotebookWeekMeta: '{review} à revoir · {ok} réussite(s) cette semaine',
+  parentNotebookTomorrow: 'Demain · {minutes} min',
+  parentNotebookTomorrowEmpty: 'Aucune séance proposée pour l’instant. Lance une leçon de maths pour voir le plan.',
+  parentNotebookStartTomorrow: 'Lancer la séance de demain',
+  parentNotebookCopyRecap: 'Copier le récap pour l’autre parent',
+  parentNotebookCopied: 'Récap copié',
   // PwaInstallBanner.tsx
   pwaIosInstallHint:
     'Pour installer l\'application sur ton appareil : appuie sur le bouton Partager, puis choisis "Sur l\'écran d\'accueil" (Add to Home Screen) 📲',

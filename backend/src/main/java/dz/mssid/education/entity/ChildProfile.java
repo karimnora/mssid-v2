@@ -3,7 +3,14 @@ package dz.mssid.education.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "child_profiles")
@@ -39,4 +46,14 @@ public class ChildProfile {
     @Column(name = "updated_at", nullable = false)
     @Builder.Default
     private LocalDateTime updatedAt = LocalDateTime.now();
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "competence_stats", columnDefinition = "jsonb")
+    @Builder.Default
+    private Map<String, Object> competenceStats = new HashMap<>();
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "lesson_sessions", columnDefinition = "jsonb")
+    @Builder.Default
+    private List<Map<String, Object>> lessonSessions = new ArrayList<>();
 }

@@ -220,6 +220,13 @@ export function useAppNavigation(options: {
   }, [applyHistoryState, exitGuard]);
 
   useEffect(() => {
+    const liveView = parseAppLocation(window.location.pathname, window.location.search).view;
+    if (liveView.name === 'prototype') {
+      skipNextPushRef.current = false;
+      lastPathRef.current = window.location.pathname;
+      return;
+    }
+
     const view = viewFromNavState({
       isAdminConsoleActive,
       isPreschoolActive,

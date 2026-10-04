@@ -38,6 +38,14 @@ const SpeedReadingLab = lazy(() => import('./SpeedReadingLab').then((m) => ({ de
 const TopographyMapLab = lazy(() => import('./TopographyMapLab').then((m) => ({ default: m.TopographyMapLab })));
 const SpeedVelocityLab = lazy(() => import('./SpeedVelocityLab').then((m) => ({ default: m.SpeedVelocityLab })));
 const QuranLabInteractive = lazy(() => import('./QuranLabInteractive').then((m) => ({ default: m.QuranLabInteractive })));
+const WuduLab = lazy(() => import('./immersive/WuduLab').then((m) => ({ default: m.WuduLab })));
+const SalatLab = lazy(() => import('./immersive/SalatLab').then((m) => ({ default: m.SalatLab })));
+const MosqueAdabLab = lazy(() => import('./immersive/MosqueAdabLab').then((m) => ({ default: m.MosqueAdabLab })));
+const RoadCodeLab = lazy(() => import('./immersive/RoadCodeLab').then((m) => ({ default: m.RoadCodeLab })));
+const SoukLab = lazy(() => import('./immersive/SoukLab').then((m) => ({ default: m.SoukLab })));
+const WorldFlagsLab = lazy(() => import('./immersive/WorldFlagsLab').then((m) => ({ default: m.WorldFlagsLab })));
+const CemPrepLab = lazy(() => import('./immersive/CemPrepLab').then((m) => ({ default: m.CemPrepLab })));
+const CompetenceCahierLab = lazy(() => import('./cahiers/CompetenceCahierLab').then((m) => ({ default: m.CompetenceCahierLab })));
 const ChallengesArena = lazy(() => import('./ChallengesArena').then((m) => ({ default: m.ChallengesArena })));
 
 interface ActiveWorkspaceProps {
@@ -64,6 +72,7 @@ interface ActiveWorkspaceProps {
   onEarnCoins: (amount: number) => void;
   /** Opens the contact form pre-filled to report an error on an exam corrigé or a lesson. */
   onReportError: (contextLabel: string) => void;
+  onReviewLesson?: (lessonId: string) => void;
 }
 
 export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
@@ -89,6 +98,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onLabReward: publishLabReward,
   onEarnCoins,
   onReportError,
+  onReviewLesson,
 }) => {
   const t = useTranslation('navigation');
 
@@ -191,6 +201,27 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
         <SpeedVelocityLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'quran_lab' ? (
         <QuranLabInteractive />
+      ) : selectedSubject === 'wudu_lab' ? (
+        <WuduLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'salat_lab' ? (
+        <SalatLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'mosque_adab_lab' ? (
+        <MosqueAdabLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'road_code_lab' ? (
+        <RoadCodeLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'souk_lab' ? (
+        <SoukLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'world_flags_lab' ? (
+        <WorldFlagsLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'cem_prep_lab' ? (
+        <CemPrepLab
+          onBack={onBackToLabsCatalog}
+          onReward={onLabReward}
+          userProfile={userProfile}
+          onReviewLesson={onReviewLesson}
+        />
+      ) : selectedSubject === 'cahiers_lab' ? (
+        <CompetenceCahierLab grade={grade} onBack={onBackToLabsCatalog} />
       ) : selectedSubject === 'exams' ? (
         <ExamsViewer
           grade={grade}

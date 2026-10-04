@@ -287,6 +287,8 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
           tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
           goldCoins: authUser.goldCoins ?? prev.goldCoins,
           avatarConfig: authUser.avatarConfig ?? prev.avatarConfig,
+          competenceStats: authUser.competenceStats ?? prev.competenceStats,
+          lessonSessions: authUser.lessonSessions ?? prev.lessonSessions,
         };
       });
       setLocalActivityOwner(authUser.id);
@@ -333,6 +335,42 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
       }));
     } catch { /* The current session remains usable when local storage is full. */ }
   }, [authUser?.id, activeChildId, localActivityOwner, userProfile.completedGameIds, userProfile.completedLabIds]);
+
+  useEffect(() => {
+    if (!authUser || activeChildId == null) return;
+    let cancelled = false;
+    import('../services/springBootApi').then(({ springBootApi }) =>
+      springBootApi.getChildProgress(activeChildId).then((res) => {
+        if (cancelled || res.error || !res.data) return;
+        setUserProfile((prev) => ({
+          ...prev,
+          competenceStats: (res.data.competenceStats as UserProfile['competenceStats']) ?? prev.competenceStats,
+          lessonSessions: (res.data.lessonSessions as UserProfile['lessonSessions']) ?? prev.lessonSessions,
+        }));
+      }),
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [authUser, activeChildId]);
+
+  useEffect(() => {
+    if (!authUser) return;
+    const timer = window.setTimeout(() => {
+      const payload = {
+        competenceStats: userProfile.competenceStats ?? {},
+        lessonSessions: userProfile.lessonSessions ?? [],
+      };
+      if (activeChildId != null) {
+        void import('../services/springBootApi').then(({ springBootApi }) => {
+          springBootApi.saveChildProgress(activeChildId, payload).catch(() => {});
+        });
+        return;
+      }
+      AuthService.syncCompetenceProgress(payload);
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [authUser, activeChildId, userProfile.competenceStats, userProfile.lessonSessions]);
 
   const handleQuizFullyValidated = (lessonId: string) => {
     AuthService.markLessonCompleted(lessonId);

@@ -62,6 +62,8 @@ export interface AuthUser {
   // and AuthService.syncGoldCoinsAndAvatar). Not a second progression metric, just spendable currency.
   goldCoins?: number;
   avatarConfig?: DidouAvatarConfig;
+  competenceStats?: Record<string, { attempts: number; successes: number; failures?: number; lastAt: string; lastLessonId: string; lastOutcome?: 'success' | 'fail' }>;
+  lessonSessions?: Array<{ at: string; lessonId: string; competenceIds: string[]; outcome: 'success' | 'fail' }>;
 }
 
 export interface AuthState {

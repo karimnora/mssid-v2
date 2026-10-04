@@ -120,6 +120,12 @@ public class UserService {
         if (progressData.getQuizScores() != null) {
             user.setQuizScores(ProgressGuard.mergeQuizScores(user.getQuizScores(), progressData.getQuizScores()));
         }
+        if (progressData.getCompetenceStats() != null) {
+            user.setCompetenceStats(ProgressGuard.mergeCompetenceStats(user.getCompetenceStats(), progressData.getCompetenceStats()));
+        }
+        if (progressData.getLessonSessions() != null) {
+            user.setLessonSessions(ProgressGuard.mergeLessonSessions(user.getLessonSessions(), progressData.getLessonSessions()));
+        }
 
         List<String> completedLessons = user.getCompletedLessonIds() != null ? user.getCompletedLessonIds() : List.of();
         long mathLessons = completedLessons.stream()
