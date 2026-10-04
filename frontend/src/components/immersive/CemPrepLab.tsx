@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
-import { CEM_PAPERS, cemErrorRows, type CemPaper } from '../../data/immersive/cemPrep';
+import { CEM_PAPERS, cemErrorRows, markCemRewarded, type CemPaper, type CemPaperExercise } from '../../data/immersive/cemPrep';
 import { getCahier } from '../../data/cahiers/competenceCahiers';
 import { CompetenceCahierSheet } from '../cahiers/CompetenceCahierSheet';
 import { buildParentNotebook } from '../../utils/competenceProgress';
@@ -45,10 +45,100 @@ function TwoCol({
   );
 }
 
+function ExerciseBlock({
+  paper,
+  exercise,
+  index,
+  onReward,
+}: {
+  paper: CemPaper;
+  exercise: CemPaperExercise;
+  index: number;
+  onReward?: (coins: number, xp: number) => void;
+}) {
+  const t = useTranslation('labsImmersive');
+  const key = `${paper.id}-${index}`;
+  const [picked, setPicked] = useState<number | null>(null);
+  const [checked, setChecked] = useState(false);
+  const [reveal, setReveal] = useState(false);
+  const correct = picked === exercise.check.correctIndex;
+
+  const verify = () => {
+    if (picked === null) return;
+    setChecked(true);
+    if (picked === exercise.check.correctIndex && markCemRewarded(key)) {
+      onReward?.(4, 8);
+    }
+  };
+
+  return (
+    <section className="rounded-3xl border-2 border-[#E7E2D7] p-4 space-y-3">
+      <p className="text-sm font-extrabold">{exercise.titleAr}</p>
+      <TwoCol
+        contentAr={exercise.contentAr}
+        solutionAr={exercise.solutionAr}
+        operationsAr={exercise.operationsAr}
+        reveal={reveal}
+      />
+      <p className="text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">{exercise.check.promptAr}</p>
+      <div className="flex flex-wrap gap-2">
+        {exercise.check.choices.map((choice, choiceIndex) => (
+          <motion.button
+            key={choice}
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            data-cem-choice={`${key}-${choiceIndex}`}
+            onClick={() => {
+              setPicked(choiceIndex);
+              setChecked(false);
+              setReveal(false);
+            }}
+            className={`hit-target px-4 rounded-2xl border-2 text-sm font-extrabold cursor-pointer ${
+              picked === choiceIndex
+                ? checked && correct
+                  ? 'border-[#008751] bg-[#008751] text-white'
+                  : checked
+                    ? 'border-[#C42A23] bg-white'
+                    : 'border-[#008751] bg-[#FFF8E7]'
+                : 'border-[#E7E2D7] bg-white'
+            }`}
+          >
+            {choice}
+          </motion.button>
+        ))}
+      </div>
+      <motion.button
+        type="button"
+        whileTap={{ scale: 0.95 }}
+        data-cem-check={key}
+        onClick={verify}
+        disabled={picked === null}
+        className="hit-target px-4 rounded-2xl bg-[#008751] text-white text-sm font-extrabold cursor-pointer disabled:opacity-50"
+      >
+        {t('cemAnswer')}
+      </motion.button>
+      {checked && !correct && <p className="text-sm font-extrabold">{t('tryAgain')}</p>}
+      {checked && correct && (
+        <motion.button
+          type="button"
+          whileTap={{ scale: 0.95 }}
+          data-cem-reveal={key}
+          onClick={() => setReveal((open) => !open)}
+          className="hit-target px-4 rounded-2xl border-2 border-[#008751] bg-white text-[#008751] text-sm font-extrabold cursor-pointer"
+        >
+          {reveal ? t('cemHide') : t('cemReveal')}
+        </motion.button>
+      )}
+      {!checked && picked !== null && (
+        <p className="text-xs font-bold text-[var(--kids-muted)]">{t('cemNeedAnswer')}</p>
+      )}
+    </section>
+  );
+}
+
 export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userProfile, onReviewLesson }) => {
   const t = useTranslation('labsImmersive');
   const [tab, setTab] = useState(CEM_PAPERS[0].id);
-  const [revealed, setRevealed] = useState<Record<string, boolean>>({});
   const [cahierId, setCahierId] = useState<string | null>(null);
   const paper = CEM_PAPERS.find((item) => item.id === tab) ?? CEM_PAPERS[0];
   const notebook = useMemo(
@@ -57,8 +147,6 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
   );
   const errors = notebook ? cemErrorRows([...notebook.review]) : [];
   const openCahier = cahierId ? getCahier(cahierId) : undefined;
-
-  const revealKey = (item: CemPaper, index: number) => `${item.id}-${index}`;
 
   return (
     <ImmersiveLabShell
@@ -115,32 +203,9 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
             <p className="text-xs font-extrabold text-[#2563EB]">{paper.durationMinutes} د — {paper.totalPoints} ن</p>
             <h2 className="text-lg font-extrabold leading-tight">{paper.subjectAr}</h2>
           </header>
-          {[...paper.exercises, paper.problem].map((exercise, index) => {
-            const key = revealKey(paper, index);
-            const open = Boolean(revealed[key]);
-            return (
-              <section key={key} className="rounded-3xl border-2 border-[#E7E2D7] p-4 space-y-3">
-                <p className="text-sm font-extrabold">{exercise.titleAr}</p>
-                <TwoCol
-                  contentAr={exercise.contentAr}
-                  solutionAr={exercise.solutionAr}
-                  operationsAr={exercise.operationsAr}
-                  reveal={open}
-                />
-                <motion.button
-                  type="button"
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setRevealed((prev) => ({ ...prev, [key]: !open }));
-                    if (!open) onReward?.(4, 8);
-                  }}
-                  className="hit-target px-4 rounded-2xl bg-[#008751] text-white text-sm font-extrabold cursor-pointer"
-                >
-                  {open ? t('cemHide') : t('cemReveal')}
-                </motion.button>
-              </section>
-            );
-          })}
+          {[...paper.exercises, paper.problem].map((exercise, index) => (
+            <ExerciseBlock key={`${paper.id}-${index}`} paper={paper} exercise={exercise} index={index} onReward={onReward} />
+          ))}
         </article>
       )}
       {openCahier && <CompetenceCahierSheet cahier={openCahier} onClose={() => setCahierId(null)} />}

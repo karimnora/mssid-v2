@@ -17,8 +17,14 @@ describe('SoukLab', () => {
     fireEvent.click(document.querySelector('[data-souk-add="bread"]') as HTMLElement);
     fireEvent.click(document.querySelector('[data-souk-cash="100"]') as HTMLElement);
     fireEvent.click(document.querySelector('[data-souk-pay="true"]') as HTMLElement);
+    expect(onReward).not.toHaveBeenCalled();
+
+    fireEvent.click(document.querySelector('[data-souk-change="50"]') as HTMLElement);
 
     expect(screen.getByText(/البَاقِي: 50 دج/)).toBeInTheDocument();
-    expect(onReward).toHaveBeenCalled();
+    expect(onReward).toHaveBeenCalledTimes(1);
+
+    fireEvent.click(document.querySelector('[data-souk-change="50"]') as HTMLElement);
+    expect(onReward).toHaveBeenCalledTimes(1);
   });
 });

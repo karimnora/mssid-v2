@@ -115,7 +115,11 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
     onPrint: handlePrint,
   };
 
-  const empty = notebook.review.length === 0 && notebook.worked.length === 0 && notebook.todo.length === 0;
+  const empty =
+    notebook.review.length === 0 &&
+    notebook.observed.length === 0 &&
+    notebook.worked.length === 0 &&
+    notebook.todo.length === 0;
 
   return (
     <>
@@ -219,6 +223,25 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                       tone="review"
                       actionLabel={t('parentNotebookReview')}
                       meta={t('parentNotebookFailures', { count: row.failures })}
+                      onReview={handleReview}
+                      {...printProps}
+                    />
+                  ))
+                )}
+              </section>
+
+              <section className="space-y-2">
+                <h3 className="text-sm font-extrabold text-[var(--kids-ink)]">{t('parentNotebookObserved')}</h3>
+                {notebook.observed.length === 0 ? (
+                  <p className="text-sm font-bold text-[var(--kids-muted)]">{t('parentNotebookObservedEmpty')}</p>
+                ) : (
+                  notebook.observed.map((row) => (
+                    <CompetenceRow
+                      key={row.competenceId}
+                      row={row}
+                      locale={locale}
+                      actionLabel={t('parentNotebookReview')}
+                      meta={t('parentNotebookSuccesses', { count: row.successes })}
                       onReview={handleReview}
                       {...printProps}
                     />

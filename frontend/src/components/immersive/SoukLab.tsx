@@ -9,7 +9,8 @@ import {
   SOUK_CASH,
   SOUK_STALLS,
   soukChange,
-  soukMissionForGrade,
+  soukChangeChoices,
+  soukMissionsForGrade,
   stallById,
   tenderSum,
 } from '../../data/immersive/souk';
@@ -23,22 +24,35 @@ interface SoukLabProps {
 
 export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
-  const mission = useMemo(() => soukMissionForGrade(grade), [grade]);
+  const missions = useMemo(() => soukMissionsForGrade(grade), [grade]);
+  const [missionIndex, setMissionIndex] = useState(0);
   const [activeStall, setActiveStall] = useState<string | null>(null);
   const [basket, setBasket] = useState<string[]>([]);
   const [tender, setTender] = useState<number[]>([]);
   const [paid, setPaid] = useState(false);
+  const [pickedChange, setPickedChange] = useState<number | null>(null);
+  const [doneMissions, setDoneMissions] = useState<string[]>([]);
   const [stars, setStars] = useState(0);
 
+  const mission = missions[missionIndex] ?? missions[0];
   const total = basketTotal(basket);
   const given = tenderSum(tender);
   const change = soukChange(total, given);
   const stall = activeStall ? stallById(activeStall) : undefined;
+  const choices = change === null ? [] : soukChangeChoices(change);
+  const changeOk = pickedChange !== null && change !== null && pickedChange === change;
+  const missionOk = missionComplete(mission, basket);
+  const rewarded = doneMissions.includes(mission.id);
+
+  const resetPay = () => {
+    setPaid(false);
+    setPickedChange(null);
+  };
 
   const addItem = (id: string) => {
     if (basket.includes(id)) return;
     setBasket((prev) => [...prev, id]);
-    setPaid(false);
+    resetPay();
     setTender([]);
     playSoftSuccess();
     const item = stallById(id);
@@ -49,14 +63,33 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
     if (total === 0 || change === null) {
       playSoftMiss();
       setPaid(true);
+      setPickedChange(null);
       return;
     }
     setPaid(true);
-    playSoftSuccess();
-    if (missionComplete(mission, basket)) {
-      setStars((n) => n + 1);
-      onReward?.(8, 20);
+    setPickedChange(null);
+  };
+
+  const chooseChange = (amount: number) => {
+    if (change === null) return;
+    setPickedChange(amount);
+    if (amount !== change || !missionOk) {
+      playSoftMiss();
+      return;
     }
+    playSoftSuccess();
+    if (rewarded) return;
+    setDoneMissions((prev) => [...prev, mission.id]);
+    setStars((n) => n + 1);
+    onReward?.(8, 20);
+  };
+
+  const nextMission = () => {
+    setMissionIndex((index) => Math.min(index + 1, missions.length - 1));
+    setBasket([]);
+    setTender([]);
+    resetPay();
+    setActiveStall(null);
   };
 
   return (
@@ -71,7 +104,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
       onBack={onBack}
     >
       <p className="rounded-2xl bg-[#FFF8E7] border-2 border-[#E7E2D7] p-3 text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">
-        {mission.briefAr}
+        {t('soukMissionIndex', { current: missionIndex + 1, total: missions.length })} — {mission.briefAr}
       </p>
 
       <div className="relative rounded-[28px] border-2 border-[#E7E2D7] overflow-hidden bg-[linear-gradient(180deg,#7DD3FC_0%,#FDE68A_38%,#F59E0B_38%,#F59E0B_42%,#D6D3D1_42%,#D6D3D1_100%)] p-3 pt-8">
@@ -128,7 +161,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
               whileTap={{ scale: 0.95 }}
               data-souk-cash={value}
               onClick={() => {
-                setPaid(false);
+                resetPay();
                 setTender((prev) => [...prev, value]);
               }}
               className="hit-target min-w-[72px] rounded-2xl bg-[#FFF8E7] border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer"
@@ -148,13 +181,54 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
           {t('soukPay')}
         </motion.button>
         {paid && change !== null && (
-          <p className="text-sm font-extrabold text-[var(--brand-emerald)]">
-            {t('soukChange', { amount: change })}
-            {missionComplete(mission, basket) ? ` — ${t('soukMissionOk')}` : ''}
-          </p>
+          <div className="space-y-2">
+            <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('soukAskChange')}</p>
+            <div className="flex flex-wrap gap-2">
+              {choices.map((amount) => (
+                <motion.button
+                  key={amount}
+                  type="button"
+                  whileTap={{ scale: 0.95 }}
+                  data-souk-change={amount}
+                  onClick={() => chooseChange(amount)}
+                  className={`hit-target min-w-[72px] rounded-2xl border-2 text-sm font-extrabold cursor-pointer ${
+                    pickedChange === amount
+                      ? amount === change && missionOk
+                        ? 'border-[#008751] bg-[#008751] text-white'
+                        : 'border-[#C42A23] bg-white text-[var(--kids-ink)]'
+                      : 'border-[#E7E2D7] bg-[#FFF8E7] text-[var(--kids-ink)]'
+                  }`}
+                >
+                  {amount} دج
+                </motion.button>
+              ))}
+            </div>
+            {changeOk && missionOk && (
+              <p className="text-sm font-extrabold text-[var(--brand-emerald)]">
+                {t('soukChange', { amount: change })} — {t('soukMissionOk')}
+              </p>
+            )}
+            {pickedChange !== null && !changeOk && (
+              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('tryAgain')}</p>
+            )}
+            {pickedChange !== null && changeOk && !missionOk && (
+              <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('soukWrongBasket')}</p>
+            )}
+          </div>
         )}
         {paid && change === null && (
           <p className="text-sm font-extrabold text-[var(--kids-ink)]">{t('soukNotEnough')}</p>
+        )}
+        {changeOk && missionOk && missionIndex < missions.length - 1 && (
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.95 }}
+            data-souk-next="true"
+            onClick={nextMission}
+            className="hit-target w-full rounded-2xl border-2 border-[#008751] bg-white text-[#008751] text-sm font-extrabold cursor-pointer"
+          >
+            {t('soukNextMission')}
+          </motion.button>
         )}
       </section>
     </ImmersiveLabShell>

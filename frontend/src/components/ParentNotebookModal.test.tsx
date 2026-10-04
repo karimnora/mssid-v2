@@ -19,7 +19,7 @@ describe('ParentNotebookModal', () => {
       />,
     );
     expect(screen.getByRole('dialog', { name: 'دفتر المتابعة' })).toBeInTheDocument();
-    expect(screen.getByText(/يغطي حالياً كفاءات رياضيات السنة الأولى/)).toBeInTheDocument();
+    expect(screen.getByText(/رياضيات 1 و2 و5 وعربية 1 و5/)).toBeInTheDocument();
   });
 
   it('launches the last successful lesson when the parent taps review', () => {
@@ -63,7 +63,7 @@ describe('ParentNotebookModal', () => {
       <ParentNotebookModal isOpen onClose={vi.fn()} userProfile={userProfile} onReviewLesson={onReviewLesson} />,
     );
 
-    expect(screen.getByText('للمراجعة')).toBeInTheDocument();
+    expect(screen.getByText('للتأكيد')).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'مراجعة' }));
     expect(onReviewLesson).toHaveBeenCalledWith('math-1ap-t1-spatial-relations');
   });

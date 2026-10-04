@@ -50,7 +50,7 @@ export const admin: typeof adminAr = {
   featureFlagEnablePaymentsDescription: "Interrupteur principal de tout le système de paiement. ON : permet au verrou des trimestres (ci-dessous) de fonctionner s'il est également activé — aucun effet visible à lui seul. OFF : arrête immédiatement le système de paiement quel que soit l'état du verrou, et tous les cours deviennent gratuits.",
   featureFlagEnablePaymentsDependsOnLabel: 'Paiements et abonnements',
   featureFlagEnableTrimesterPaywallLabel: '🔒 Verrou des 2e et 3e trimestres',
-  featureFlagEnableTrimesterPaywallDescription: "ON (avec « Paiements » activé ci-dessus) : les cours des 2e et 3e trimestres nécessitent un abonnement ROLE_PREMIUM, le 1er trimestre reste toujours gratuit. OFF : les trois trimestres sont gratuits pour tous.",
+  featureFlagEnableTrimesterPaywallDescription: "Reste éteint en V2 : les trois trimestres déjà publiés restent gratuits. L’abonnement vend la profondeur (carnet, cahiers, sac collège), pas un verrou T2/T3.",
   featureFlagEnablePrintablePDFsLabel: '🖨️ Fiches de révision imprimables',
   featureFlagEnablePrintablePDFsDescription: "ON : le bouton d'impression/téléchargement de la fiche de révision est visible dans les cours. OFF : le bouton est entièrement masqué.",
   featureFlagEnableAITutorLabel: '🤖 Tuteur virtuel Amine le Fennec (Gemini)',

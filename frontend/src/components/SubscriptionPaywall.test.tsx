@@ -17,6 +17,23 @@ const testUser: AuthUser = {
 
 // Submitting the receipt form now opens a Parent Gate (see ParentGateModal.tsx) before the actual
 // AuthService call — solve it the same way a real parent would, reading the two numbers shown.
+class ImmediateFileReader {
+  result = 'data:image/png;base64,AAA';
+  onloadend: null | (() => void) = null;
+  readAsDataURL() {
+    queueMicrotask(() => this.onloadend?.());
+  }
+}
+
+const attachReceipt = async () => {
+  vi.stubGlobal('FileReader', ImmediateFileReader);
+  const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+  const file = new File(['receipt'], 'receipt.png', { type: 'image/png' });
+  Object.defineProperty(input, 'files', { configurable: true, value: [file] });
+  fireEvent.change(input);
+  await waitFor(() => expect(screen.getByText('معاينة الوصل المرفق')).toBeInTheDocument());
+};
+
 const solveParentGate = () => {
   const prompt = screen.getByText(/^\d+ \+ \d+ = \?$/);
   const [a, b] = prompt.textContent!.match(/\d+/g)!.map(Number);
@@ -50,14 +67,15 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
-    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
+    await attachReceipt();
+    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ }));
     solveParentGate();
 
     await waitFor(() => {
       expect(submitSpy).toHaveBeenCalledWith(
         expect.objectContaining({ paymentMethod: 'BARIDIMOB', amountDzd: 1500, transactionRef: 'BM-2026-987456123' })
       );
-      expect(screen.getByText('تم إرسال وصل الدفع بنجاح وهو قيد التحقق الإداري')).toBeInTheDocument();
+      expect(screen.getByText('تم إرسال وصل الدفع وهو بانتظار التحقق اليدوي')).toBeInTheDocument();
     });
   });
 
@@ -74,13 +92,14 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
-    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع وبدء التفعيل/ }));
+    await attachReceipt();
+    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ }));
     solveParentGate();
 
     await waitFor(() => {
       expect(screen.getByText("Le montant indiqué (1 DZD) ne correspond pas au tarif de l'abonnement (1500 DZD).")).toBeInTheDocument();
     });
-    expect(screen.queryByText('تم إرسال وصل الدفع بنجاح وهو قيد التحقق الإداري')).not.toBeInTheDocument();
+    expect(screen.queryByText('تم إرسال وصل الدفع وهو بانتظار التحقق اليدوي')).not.toBeInTheDocument();
   });
 
   it('displays the subscription price from the shared constant, not a separate hardcoded value', () => {

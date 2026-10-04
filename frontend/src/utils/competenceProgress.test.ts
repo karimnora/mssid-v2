@@ -64,20 +64,21 @@ describe('buildParentNotebook', () => {
     expect(notebook.todo[0].reviewLessonId).toBe('math-1ap-t1-spatial-relations');
   });
 
-  it('moves a mapped competence to worked and keeps the last lesson as the review target', () => {
+  it('moves a mapped competence to observed and keeps the last lesson as the review target', () => {
     const at = '2026-09-28T21:00:00.000Z';
     const profile = recordLessonSuccess(createFreshGuestProfile('1AP'), 'math-1ap-t1-spatial-relations', at);
     const notebook = buildParentNotebook(profile);
 
-    expect(notebook.worked).toEqual([
+    expect(notebook.observed).toEqual([
       expect.objectContaining({
         competenceId: 'math-1ap-c-spatial-position',
-        status: 'worked',
+        status: 'observed',
         successes: 1,
         lastAt: at,
         reviewLessonId: 'math-1ap-t1-spatial-relations',
       }),
     ]);
+    expect(notebook.worked).toHaveLength(0);
     expect(notebook.todo).toHaveLength(GRADE_1AP_COUNT - 1);
     expect(notebook.recentSessions[0]).toEqual(
       expect.objectContaining({
@@ -111,7 +112,7 @@ describe('buildParentNotebook', () => {
       grade: '5AP' as const,
     };
     const notebook = buildParentNotebook(profile, '5AP');
-    expect(notebook.worked.map((row) => row.competenceId)).toEqual(['math-1ap-c-spatial-position']);
+    expect(notebook.observed.map((row) => row.competenceId)).toEqual(['math-1ap-c-spatial-position']);
   });
 });
 
@@ -139,12 +140,31 @@ describe('recordLessonFailure', () => {
     expect(profile.competenceStats['math-1ap-c-spatial-position'].failures).toBe(2);
   });
 
-  it('clears review after a later full success', () => {
+  it('clears review after a later full success without treating it as mastery', () => {
     const missed = recordLessonFailure(createFreshGuestProfile('1AP'), 'math-1ap-t1-spatial-relations', '2026-09-28T22:00:00.000Z');
     const recovered = recordLessonSuccess(missed, 'math-1ap-t1-spatial-relations', '2026-09-28T22:10:00.000Z');
     const notebook = buildParentNotebook(recovered);
     expect(notebook.review).toHaveLength(0);
+    expect(notebook.observed).toHaveLength(0);
     expect(notebook.worked.map((row) => row.competenceId)).toEqual(['math-1ap-c-spatial-position']);
+  });
+
+  it('does not paint every competence of a multi-mapped lesson on a single miss', () => {
+    const next = recordLessonFailure(
+      createFreshGuestProfile('1AP'),
+      'math-1ap-t1-numbers-0-5',
+      '2026-09-28T22:00:00.000Z',
+    );
+    expect(next.competenceStats['math-1ap-c-count-quantities']?.failures).toBe(1);
+    expect(next.competenceStats['math-1ap-c-numbers-read-write']).toBeUndefined();
+    const targeted = recordLessonFailure(
+      createFreshGuestProfile('1AP'),
+      'math-1ap-t1-numbers-0-5',
+      '2026-09-28T22:00:00.000Z',
+      'math-1ap-c-numbers-read-write',
+    );
+    expect(targeted.competenceStats['math-1ap-c-numbers-read-write']?.failures).toBe(1);
+    expect(targeted.competenceStats['math-1ap-c-count-quantities']).toBeUndefined();
   });
 });
 
@@ -189,6 +209,21 @@ describe('buildWeeklyPlan', () => {
       '2026-09-20T21:00:00.000Z',
     );
     expect(buildWeeklyPlan(buildParentNotebook(older), now).weekSuccesses).toBe(0);
+  });
+
+  it('counts the week from the full history, not only the eight displayed sessions', () => {
+    let profile = createFreshGuestProfile('1AP');
+    for (let i = 0; i < 12; i += 1) {
+      profile = recordLessonSuccess(
+        profile,
+        'math-1ap-t1-spatial-relations',
+        `2026-09-28T21:00:${String(i).padStart(2, '0')}.000Z`,
+      );
+    }
+    const notebook = buildParentNotebook(profile);
+    expect(notebook.recentSessions).toHaveLength(8);
+    expect(notebook.historySessions).toHaveLength(12);
+    expect(buildWeeklyPlan(notebook, now).weekSuccesses).toBe(12);
   });
 });
 

@@ -64,7 +64,7 @@ interface ActiveWorkspaceProps {
   onOpenLab: (toolId: SubjectId) => void;
   onCompleteQuiz: (lessonId: string, score: number) => void;
   onQuizFullyValidated: (lessonId: string) => void;
-  onQuizMiss?: (lessonId: string) => void;
+  onQuizMiss?: (lessonId: string, competenceId?: string) => void;
   onExamComplete: (examId: string) => void;
   onChallengeComplete: (challengeId: string, earnedXp: number) => void;
   onVisitLab: (labId: string) => void;

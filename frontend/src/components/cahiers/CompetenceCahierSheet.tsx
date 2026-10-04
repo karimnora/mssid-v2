@@ -54,6 +54,7 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ ca
               <Printer className="w-4 h-4" aria-hidden />
               {t('cahierPrint')}
             </motion.button>
+            <p className="text-[11px] font-bold text-[var(--kids-muted)] max-w-[16rem]">{t('cahierPrintHint')}</p>
             <button type="button" onClick={onClose} className="kids-close cursor-pointer" aria-label={t('backAria')}>
               <X className="w-5 h-5" />
             </button>
@@ -77,6 +78,20 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ ca
               {cahier.exercises.map((exercise, index) => (
                 <li key={index} className="space-y-2">
                   <p className="text-[15px] font-bold leading-relaxed">{exercise.promptAr}</p>
+                  {exercise.figure === 'square-circle' && (
+                    <div data-cahier-figure="square-circle" className="w-28 h-28 border-2 border-[#0f172a] rounded-sm mx-auto" />
+                  )}
+                  {exercise.figure === 'two-dots' && (
+                    <div data-cahier-figure="two-dots" className="flex items-center justify-between px-8 py-4">
+                      <span className="w-3 h-3 rounded-full bg-[#0f172a]" />
+                      <span className="w-3 h-3 rounded-full bg-[#0f172a]" />
+                    </div>
+                  )}
+                  {exercise.figure === 'stars-5' && (
+                    <div data-cahier-figure="stars-5" className="flex gap-2 justify-center py-2 text-xl" aria-hidden>
+                      {'☆☆☆☆☆'}
+                    </div>
+                  )}
                   <div className="print-answer-lines space-y-2">
                     {Array.from({ length: exercise.lines }, (_, line) => (
                       <div key={line} className="border-b border-slate-300 h-7" />

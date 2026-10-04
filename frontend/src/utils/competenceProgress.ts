@@ -26,8 +26,31 @@ function emptyStat(at: string, lessonId: string, outcome: LessonOutcome): Compet
   return { attempts: 0, successes: 0, failures: 0, lastAt: at, lastLessonId: lessonId, lastOutcome: outcome };
 }
 
-function applyMappedOutcome(prev: UserProfile, lessonId: string, outcome: LessonOutcome, at: string): UserProfile {
-  const competenceIds = getLessonCompetences(lessonId).map((c) => c.id);
+function mappedIdsForLesson(lessonId: string): string[] {
+  return getLessonCompetences(lessonId).map((competence) => competence.id);
+}
+
+/** A miss updates only the named competence, or the first mapped one — never every competence of the lesson. */
+export function competenceIdsForOutcome(
+  lessonId: string,
+  outcome: LessonOutcome,
+  competenceId?: string,
+): string[] {
+  const mapped = mappedIdsForLesson(lessonId);
+  if (mapped.length === 0) return [];
+  if (competenceId && mapped.includes(competenceId)) return [competenceId];
+  if (outcome === 'fail') return [mapped[0]];
+  return mapped;
+}
+
+function applyMappedOutcome(
+  prev: UserProfile,
+  lessonId: string,
+  outcome: LessonOutcome,
+  at: string,
+  competenceId?: string,
+): UserProfile {
+  const competenceIds = competenceIdsForOutcome(lessonId, outcome, competenceId);
   if (competenceIds.length === 0) return prev;
 
   const competenceStats = { ...(prev.competenceStats ?? {}) };
@@ -45,7 +68,10 @@ function applyMappedOutcome(prev: UserProfile, lessonId: string, outcome: Lesson
 
   const sessions = [...(prev.lessonSessions ?? [])];
   const last = sessions[sessions.length - 1];
-  const collapseFail = outcome === 'fail' && last?.lessonId === lessonId && last.outcome === 'fail';
+  const sameTargets =
+    last?.competenceIds.length === competenceIds.length &&
+    last.competenceIds.every((id, index) => id === competenceIds[index]);
+  const collapseFail = outcome === 'fail' && last?.lessonId === lessonId && last.outcome === 'fail' && sameTargets;
   if (!collapseFail) {
     sessions.push({ at, lessonId, competenceIds, outcome });
   }
@@ -54,16 +80,26 @@ function applyMappedOutcome(prev: UserProfile, lessonId: string, outcome: Lesson
 }
 
 /** First full quiz success (or a replay) for a mapped lesson. Unmapped lessons are left unchanged. */
-export function recordLessonSuccess(prev: UserProfile, lessonId: string, at = new Date().toISOString()): UserProfile {
-  return applyMappedOutcome(prev, lessonId, 'success', at);
+export function recordLessonSuccess(
+  prev: UserProfile,
+  lessonId: string,
+  at = new Date().toISOString(),
+  competenceId?: string,
+): UserProfile {
+  return applyMappedOutcome(prev, lessonId, 'success', at, competenceId);
 }
 
-/** First miss on a mapped question/exercise. Extra misses in the same sitting still raise the failure count. */
-export function recordLessonFailure(prev: UserProfile, lessonId: string, at = new Date().toISOString()): UserProfile {
-  return applyMappedOutcome(prev, lessonId, 'fail', at);
+/** First miss on a mapped question. Extra misses in the same sitting still raise the failure count. */
+export function recordLessonFailure(
+  prev: UserProfile,
+  lessonId: string,
+  at = new Date().toISOString(),
+  competenceId?: string,
+): UserProfile {
+  return applyMappedOutcome(prev, lessonId, 'fail', at, competenceId);
 }
 
-export type NotebookRowStatus = 'review' | 'worked' | 'todo';
+export type NotebookRowStatus = 'review' | 'observed' | 'worked' | 'todo';
 
 export interface ParentNotebookRow {
   competenceId: string;
@@ -90,9 +126,11 @@ export interface ParentNotebook {
   childName: string;
   grade: PrimaryGrade;
   review: ParentNotebookRow[];
+  observed: ParentNotebookRow[];
   worked: ParentNotebookRow[];
   todo: ParentNotebookRow[];
   recentSessions: ParentNotebookSession[];
+  historySessions: ParentNotebookSession[];
 }
 
 export function reviewLessonForCompetence(competenceId: string, lastLessonId?: string): string | undefined {
@@ -100,14 +138,27 @@ export function reviewLessonForCompetence(competenceId: string, lastLessonId?: s
   return getLessonsForCompetence(competenceId)[0];
 }
 
+/** à confirmer / travaillé / réussite observée / pas commencé — a single success is never mastery. */
 export function notebookStatusForStat(stat?: CompetenceStat): NotebookRowStatus {
-  if (!stat) return 'todo';
+  if (!stat || stat.attempts === 0) return 'todo';
   if (stat.lastOutcome === 'fail' || ((stat.failures ?? 0) > 0 && stat.successes === 0)) return 'review';
+  if (stat.successes > 0 && (stat.failures ?? 0) === 0) return 'observed';
   if (stat.successes > 0) return 'worked';
   return 'todo';
 }
 
-/** Parent-facing snapshot of the child's competence stats. Unmapped grades show an empty catalogue. */
+function toNotebookSession(session: LessonSession): ParentNotebookSession {
+  return {
+    at: session.at,
+    lessonId: session.lessonId,
+    competenceIds: session.competenceIds,
+    labelsAr: session.competenceIds.map((id) => getCompetence(id)?.labelAr ?? id),
+    labelsFr: session.competenceIds.map((id) => getCompetence(id)?.labelFr ?? id),
+    outcome: session.outcome,
+  };
+}
+
+/** Parent-facing snapshot. Unmapped grades show an empty catalogue — not a full-subject tracker. */
 export function buildParentNotebook(profile: UserProfile, viewingGrade: PrimaryGrade = profile.grade): ParentNotebook {
   const stats = profile.competenceStats ?? {};
   const catalogue = COMPETENCES.filter((competence) => competence.grade === viewingGrade);
@@ -131,17 +182,7 @@ export function buildParentNotebook(profile: UserProfile, viewingGrade: PrimaryG
     };
   });
 
-  const recentSessions: ParentNotebookSession[] = [...(profile.lessonSessions ?? [])]
-    .reverse()
-    .slice(0, MAX_NOTEBOOK_RECENT)
-    .map((session) => ({
-      at: session.at,
-      lessonId: session.lessonId,
-      competenceIds: session.competenceIds,
-      labelsAr: session.competenceIds.map((id) => getCompetence(id)?.labelAr ?? id),
-      labelsFr: session.competenceIds.map((id) => getCompetence(id)?.labelFr ?? id),
-      outcome: session.outcome,
-    }));
+  const historySessions = [...(profile.lessonSessions ?? [])].reverse().map(toNotebookSession);
 
   return {
     childName: profile.name,
@@ -149,11 +190,15 @@ export function buildParentNotebook(profile: UserProfile, viewingGrade: PrimaryG
     review: rows
       .filter((row) => row.status === 'review')
       .sort((a, b) => (b.lastAt ?? '').localeCompare(a.lastAt ?? '')),
+    observed: rows
+      .filter((row) => row.status === 'observed')
+      .sort((a, b) => (b.lastAt ?? '').localeCompare(a.lastAt ?? '')),
     worked: rows
       .filter((row) => row.status === 'worked')
       .sort((a, b) => (b.lastAt ?? '').localeCompare(a.lastAt ?? '')),
     todo: rows.filter((row) => row.status === 'todo'),
-    recentSessions,
+    recentSessions: historySessions.slice(0, MAX_NOTEBOOK_RECENT),
+    historySessions,
   };
 }
 
@@ -168,10 +213,10 @@ export interface WeeklyPlan {
   weekSessions: number;
 }
 
-/** One short session for tomorrow: review first, otherwise the next unstarted competence. */
+/** Week counts use the full history. reviewCount is the current carnet state, not this week only. */
 export function buildWeeklyPlan(notebook: ParentNotebook, now = new Date()): WeeklyPlan {
   const weekAgo = new Date(now.getTime() - WEEK_MS).toISOString();
-  const weekSessions = notebook.recentSessions.filter((session) => session.at >= weekAgo);
+  const weekSessions = notebook.historySessions.filter((session) => session.at >= weekAgo);
   return {
     next: notebook.review[0] ?? notebook.todo[0],
     minutes: WEEKLY_SESSION_MINUTES,
@@ -193,7 +238,7 @@ export function formatWeeklyRecap(
       : 'Demain : aucune séance à lancer pour l’instant.';
     return [
       `Carnet Mssid — ${notebook.childName} (${notebook.grade})`,
-      `Cette semaine : ${plan.reviewCount} à revoir, ${plan.weekSuccesses} réussite(s).`,
+      `Cette semaine : ${plan.weekSuccesses} réussite(s) observée(s). À confirmer (carnet) : ${plan.reviewCount}.`,
       nextLine,
     ].join('\n');
   }
@@ -202,7 +247,7 @@ export function formatWeeklyRecap(
     : 'غداً : لا توجد حصة للبدء الآن.';
   return [
     `دفتر مسيد — ${notebook.childName} (${notebook.grade})`,
-    `هذا الأسبوع: ${plan.reviewCount} للمراجعة، ${plan.weekSuccesses} نجاح.`,
+    `هذا الأسبوع: ${plan.weekSuccesses} نجاح مُلاحَظ. للتأكيد (الدفتر): ${plan.reviewCount}.`,
     nextLine,
   ].join('\n');
 }

@@ -378,8 +378,8 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
     setRatingPromptTrigger((t) => t + 1);
   };
 
-  const handleQuizMiss = (lessonId: string) => {
-    setUserProfile((prev) => recordLessonFailure(prev, lessonId));
+  const handleQuizMiss = (lessonId: string, competenceId?: string) => {
+    setUserProfile((prev) => recordLessonFailure(prev, lessonId, new Date().toISOString(), competenceId));
   };
 
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {

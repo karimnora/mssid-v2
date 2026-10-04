@@ -48,7 +48,7 @@ export const admin = {
   featureFlagEnablePaymentsDescription: 'المفتاح الرئيسي لنظام الدفع بالكامل. ON: يسمح لقفل الفصلين (أدناه) بالعمل إن كان مفعّلاً هو أيضاً — لا أثر مرئي بمفرده. OFF: يوقف نظام الدفع فوراً مهما كانت حالة القفل، وتصبح كل الدروس مجانية.',
   featureFlagEnablePaymentsDependsOnLabel: 'المدفوعات والاشتراكات',
   featureFlagEnableTrimesterPaywallLabel: '🔒 قفل الفصلين الثاني والثالث',
-  featureFlagEnableTrimesterPaywallDescription: 'ON (مع تفعيل «المدفوعات» أعلاه): دروس الفصلين الثاني والثالث تتطلب اشتراك ROLE_PREMIUM، الفصل الأول يبقى مجانياً دائماً. OFF: الفصول الثلاثة مجانية للجميع.',
+  featureFlagEnableTrimesterPaywallDescription: 'يبقى مطفأ في V2: دروس الفصول الثلاثة المنشورة مجانية. الاشتراك يبيع العمق (دفتر، كراسات، حقيبة المتوسطة) لا قفل T2/T3.',
   featureFlagEnablePrintablePDFsLabel: '🖨️ فيشات المراجعة القابلة للطباعة',
   featureFlagEnablePrintablePDFsDescription: 'ON: زر طباعة/تحميل فيشة المراجعة ظاهر داخل الدروس. OFF: الزر مخفي تماماً.',
   featureFlagEnableAITutorLabel: '🤖 المعلم الافتراضي أمين الفنك (Gemini)',

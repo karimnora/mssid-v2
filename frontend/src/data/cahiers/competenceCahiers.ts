@@ -1,9 +1,12 @@
 import type { PrimaryGrade } from '../../types';
 import { COMPETENCES, getCompetence } from '../competences';
 
+export type CahierFigure = 'square-circle' | 'two-dots' | 'stars-5';
+
 export interface CahierExercise {
   promptAr: string;
   lines: number;
+  figure?: CahierFigure;
 }
 
 export interface CompetenceCahier {
@@ -40,7 +43,7 @@ export const COMPETENCE_CAHIERS: CompetenceCahier[] = [
     [
       { promptAr: 'القِطَّةُ فَوْقَ الطَّاوِلَةِ. أَيْنَ القِطَّةُ؟', lines: 2 },
       { promptAr: 'الكُرَةُ تَحْتَ الكُرْسِيِّ. أَيْنَ الكُرَةُ؟', lines: 2 },
-      { promptAr: 'ارْسُمْ دَائِرَةً دَاخِلَ المُرَبَّعِ.', lines: 3 },
+      { promptAr: 'ارْسُمْ دَائِرَةً دَاخِلَ المُرَبَّعِ.', lines: 1, figure: 'square-circle' },
     ],
     ['فَوْقَ الطَّاوِلَةِ.', 'تَحْتَ الكُرْسِيِّ.', 'دَائِرَةٌ دَاخِلَ المُرَبَّعِ.'],
   ),
@@ -56,7 +59,7 @@ export const COMPETENCE_CAHIERS: CompetenceCahier[] = [
   sheet(
     'math-1ap-c-ruler-lines',
     [
-      { promptAr: 'ارْبِطِ النِّقَاطَ بِالمِسْطَرَةِ لِتَرْسُمَ خَطّاً مُسْتَقِيماً.', lines: 3 },
+      { promptAr: 'ارْبِطِ النِّقَاطَ بِالمِسْطَرَةِ لِتَرْسُمَ خَطّاً مُسْتَقِيماً.', lines: 1, figure: 'two-dots' },
       { promptAr: 'هَلِ الخَطُّ المُنْحَنِي خَطٌّ مُسْتَقِيمٌ؟', lines: 2 },
       { promptAr: 'كَمْ نُقْطَةً تَكْفِي لِرَسْمِ مُسْتَقِيمٍ؟', lines: 2 },
     ],
@@ -75,7 +78,7 @@ export const COMPETENCE_CAHIERS: CompetenceCahier[] = [
     'math-1ap-c-count-quantities',
     [
       { promptAr: 'عِنْدَ فَاطِمَةَ 7 أَقْلَامٍ. كَمْ قَلَماً عِنْدَهَا؟', lines: 2 },
-      { promptAr: 'ارْسُمْ 5 نُجُومٍ وَاكْتُبِ العَدَدَ.', lines: 3 },
+      { promptAr: 'ارْسُمْ 5 نُجُومٍ وَاكْتُبِ العَدَدَ.', lines: 1, figure: 'stars-5' },
       { promptAr: 'عِنْدَكَ 4 كُرَاتٍ. أَضَفْتَ 1. كَمْ صَارَ؟', lines: 2 },
     ],
     ['7.', '5 نُجُومٍ.', '5.'],
@@ -353,7 +356,7 @@ export const COMPETENCE_CAHIERS: CompetenceCahier[] = [
       { promptAr: 'اكْتُبْ كَلِمَةً أَلِفُهَا مَقْصُورَةٌ وَأُخْرَى مَمْدُودَةٌ.', lines: 2 },
     ],
     [
-      'الهَمْزَةُ مَضْمُومَةٌ وَقَبْلَهَا سَاكِنٌ فَكُتِبَتْ عَلَى وَاوٍ.',
+      'الهَمْزَةُ مُتَوَسِّطَةٌ مَفْتُوحَةٌ وَقَبْلَهَا مَضْمُومٌ، وَالضَّمَّةُ أَقْوَى مِنَ الفَتْحَةِ فَكُتِبَتْ عَلَى وَاوٍ (سُؤَال).',
       'اسْمٌ مُفْرَدٌ مُؤَنَّثٌ.',
       'مَثَلاً: فَتَى / عَصَا.',
     ],

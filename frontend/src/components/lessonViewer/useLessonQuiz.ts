@@ -15,7 +15,7 @@ export function useLessonQuiz(options: {
   quizAlreadyValidated: boolean;
   onCompleteQuiz: (lessonId: string, score: number) => void;
   onQuizFullyValidated?: (lessonId: string) => void;
-  onQuizMiss?: (lessonId: string) => void;
+  onQuizMiss?: (lessonId: string, competenceId?: string) => void;
 }) {
   const { lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated, onQuizMiss } = options;
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
@@ -79,7 +79,7 @@ export function useLessonQuiz(options: {
     if (!isCorrect) {
       if (!missedQuizIdsRef.current.has(questionId)) {
         missedQuizIdsRef.current.add(questionId);
-        onQuizMiss?.(lesson.id);
+        onQuizMiss?.(lesson.id, question?.competenceId);
       }
       return;
     }

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { isLessonLocked } from './trimesterAccess';
+import { DEFAULT_FEATURE_FLAGS } from '../featureFlags';
+import { isLessonLocked, isPremiumModuleLocked, V2_ACCESS } from './trimesterAccess';
 
 const baseCtx = { enablePayments: true, enableTrimesterPaywall: true, userRole: undefined as any };
 
@@ -34,5 +35,21 @@ describe('isLessonLocked (trimester paywall)', () => {
   it('unlocks Trimester 2/3 for ROLE_PREMIUM and ROLE_ADMIN', () => {
     expect(isLessonLocked({ trimester: 2 }, { ...baseCtx, userRole: 'ROLE_PREMIUM' })).toBe(false);
     expect(isLessonLocked({ trimester: 2 }, { ...baseCtx, userRole: 'ROLE_ADMIN' })).toBe(false);
+  });
+
+  it('keeps shipped trimesters free under the V2 defaults', () => {
+    expect(DEFAULT_FEATURE_FLAGS.enablePayments).toBe(false);
+    expect(DEFAULT_FEATURE_FLAGS.enableTrimesterPaywall).toBe(false);
+    expect(V2_ACCESS.shippedLessonsT1T2T3).toBe('free');
+    const defaults = {
+      enablePayments: DEFAULT_FEATURE_FLAGS.enablePayments,
+      enableTrimesterPaywall: DEFAULT_FEATURE_FLAGS.enableTrimesterPaywall,
+      userRole: 'ROLE_FREE' as const,
+    };
+    expect(isLessonLocked({ trimester: 2 }, defaults)).toBe(false);
+    expect(isLessonLocked({ trimester: 3 }, defaults)).toBe(false);
+    expect(isPremiumModuleLocked('cahiers', defaults)).toBe(false);
+    expect(isPremiumModuleLocked('cem-prep', { ...defaults, enablePayments: true })).toBe(true);
+    expect(isPremiumModuleLocked('cem-prep', { ...defaults, enablePayments: true, userRole: 'ROLE_PREMIUM' })).toBe(false);
   });
 });

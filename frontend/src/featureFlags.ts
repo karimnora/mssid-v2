@@ -14,9 +14,8 @@ export type FeatureFlagName =
   | 'preschoolParentBilan';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
-  // Off at launch: ship a fully free app first, flip on (via the admin Feature Flags tab) once
-  // ready to introduce payments — this is the master kill-switch, enableTrimesterPaywall below is
-  // the specific T2/T3 lock and stays subordinate to this one either way (see trimesterAccess.ts).
+  // Off: payments are not collectable. V2 sells modules (carnet depth, cahiers, CEM), not T2/T3.
+  // See V2_ACCESS in trimesterAccess.ts. Do not flip enableTrimesterPaywall for the paid beta.
   enablePayments: false,
   // ON so the Amazigh course + tamazight_lab + tamazight_curriculum appear in the hub.
   // Admin can still hide them from the Feature Flags tab (override to false).
@@ -27,8 +26,7 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   educationalCalculator: true,
   writingLab: true,
   enablePrintablePDFs: true,
-  // Off by default: T2/T3 stay fully open during the content-review/testing phase before launch.
-  // Flip to true (via the admin CMS Config tab) once the paid subscription is ready to enforce.
+  // Must stay off for V2: shipped T2/T3 remain free. Premium is new modules, not a trimester lock.
   enableTrimesterPaywall: false,
   // Kept off while the catalog is reviewed. Before a production release an administrator can turn
   // it on to prevent unverified or complementary content from being presented as school content.

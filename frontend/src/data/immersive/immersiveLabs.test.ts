@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { isWuduTargetCorrect, WUDU_STEPS } from './wudu';
 import { rakahsFor, isSalatPostureCorrect, SALAT_POSTURES } from './salat';
 import { isRoadAnswerCorrect, nextCrossingStep, roadScenesForGrade } from './roadCode';
-import { basketTotal, missionComplete, soukChange, soukMissionForGrade } from './souk';
+import { basketTotal, missionComplete, soukChange, soukChangeChoices, soukMissionForGrade, soukMissionsForGrade } from './souk';
 import { MAGHREB_LAYOUT, maghrebIds, WORLD_COUNTRIES } from './worldFlags';
 import { isMosqueAnswerCorrect } from './mosqueAdab';
 
@@ -61,11 +61,15 @@ describe('souk money', () => {
     expect(basketTotal(['bread'])).toBe(50);
     expect(soukChange(50, 100)).toBe(50);
     expect(soukChange(50, 20)).toBeNull();
+    expect(soukChangeChoices(50)).toEqual([30, 50, 60]);
     expect(missionComplete(mission, ['bread'])).toBe(true);
+    expect(soukMissionsForGrade('1AP')).toHaveLength(2);
+    expect(soukMissionsForGrade('5AP').length).toBeGreaterThan(2);
   });
 
   it('asks 2AP for bread and milk under 100 DA', () => {
-    const mission = soukMissionForGrade('2AP');
+    const mission = soukMissionsForGrade('2AP')[1];
+    expect(mission.stallIds).toEqual(['bread', 'milk']);
     expect(basketTotal(mission.stallIds)).toBe(75);
   });
 });

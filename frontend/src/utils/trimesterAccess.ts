@@ -10,15 +10,37 @@ export interface TrimesterAccessContext {
 const PREMIUM_OR_STAFF_ROLES: UserRole[] = ['ROLE_PREMIUM', 'ROLE_ADMIN'];
 
 /**
+ * V2 access matrix — one rule, used by product copy and by the lock helpers.
+ * Shipped V1 lessons stay free. Premium, when payments are actually collectable,
+ * sells depth (carnet, cahiers, CEM pack, extra AI quota), not T2/T3.
+ */
+export const V2_ACCESS = {
+  shippedLessonsT1T2T3: 'free',
+  parentNotebookBasic: 'free',
+  competenceCahiers: 'premium-when-payments',
+  cemPrep: 'premium-when-payments',
+  immersiveLabs: 'premium-when-payments',
+  aiAssistant: 'daily-quota',
+} as const;
+
+export type PremiumModule = 'cahiers' | 'cem-prep' | 'immersive-labs';
+
+/**
  * Trimester 1 is always free. T2/T3 require ROLE_PREMIUM/ADMIN only once BOTH enablePayments
  * (master kill-switch) and enableTrimesterPaywall are on — same pair the backend reads in
- * PremiumContentController. Flags off = free-launch window (payments not collectable yet).
- * Lessons marked premiumContentPending fetch their body from GET /api/v1/courses/premium-lessons/{id};
- * fully bundled T2/T3 lessons (including math-5ap-division) skip that fetch. This helper is the
- * catalog/UX lock that opens the paywall modal before a fetch, once both payment flags are on.
+ * PremiumContentController.
+ *
+ * V2 product rule: do not flip enableTrimesterPaywall. The paid offer is modules, not a
+ * lock of already-promised trimesters. Defaults stay off so existing users keep T2/T3.
  */
 export function isLessonLocked(lesson: Pick<CourseLesson, 'trimester'>, ctx: TrimesterAccessContext): boolean {
   if (!ctx.enablePayments || !ctx.enableTrimesterPaywall) return false;
   if (!lesson.trimester || lesson.trimester === 1) return false;
+  return !ctx.userRole || !PREMIUM_OR_STAFF_ROLES.includes(ctx.userRole);
+}
+
+/** New V2 modules stay open while payments are off. When payments are on, they need premium. */
+export function isPremiumModuleLocked(_module: PremiumModule, ctx: TrimesterAccessContext): boolean {
+  if (!ctx.enablePayments) return false;
   return !ctx.userRole || !PREMIUM_OR_STAFF_ROLES.includes(ctx.userRole);
 }

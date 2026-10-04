@@ -88,7 +88,7 @@ describe('useLessonQuiz', () => {
       result.current.handleSelectOption('q1', 'b');
     });
     expect(onQuizMiss).toHaveBeenCalledTimes(1);
-    expect(onQuizMiss).toHaveBeenCalledWith('math-1ap-nombres');
+    expect(onQuizMiss).toHaveBeenCalledWith('math-1ap-nombres', undefined);
 
     act(() => {
       result.current.handleResetQuiz();

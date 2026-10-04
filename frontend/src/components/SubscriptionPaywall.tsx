@@ -27,7 +27,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   const modalTitle = title ?? t('defaultTitle');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('BARIDIMOB');
   const [transactionRef, setTransactionRef] = useState<string>('');
-  const [receiptImage, setReceiptImage] = useState<string>('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80');
+  const [receiptImage, setReceiptImage] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submittedReceipt, setSubmittedReceipt] = useState<PaymentReceipt | null>(null);
   const [customError, setCustomError] = useState<string | null>(null);
@@ -59,6 +59,10 @@ export const SubscriptionPaywall: React.FC<Props> = ({
     setShowParentGate(false);
     if (!currentUser) {
       setCustomError(t('loginRequiredError'));
+      return;
+    }
+    if (!receiptImage.startsWith('data:')) {
+      setCustomError(t('receiptRequiredError'));
       return;
     }
 
@@ -176,6 +180,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                 <p>
                   {t('verificationNotePrefix')} <strong>{t('verificationNoteBold')}</strong> {t('verificationNoteSuffix')}
                 </p>
+                <p>{t('supportNote')}</p>
                 {/* SEC-07: dev-only. The real approval path is PUT /api/v1/payments/admin/receipts/{id}/verify,
                     which requires ROLE_ADMIN server-side (@PreAuthorize). This button exists purely so a
                     developer can exercise the "approved" UI state locally without a second admin account —
@@ -246,15 +251,11 @@ export const SubscriptionPaywall: React.FC<Props> = ({
               <div className="p-4 bg-purple-900 text-white rounded-2xl text-xs space-y-1.5 shadow-inner">
                 <div className="flex justify-between items-center font-bold text-amber-300">
                   <span>{t('accountInfoLabel', { price: SUBSCRIPTION_PRICE_DZD })}</span>
-                  <span>mssid dz Education</span>
+                  <span>mssid dz</span>
                 </div>
-                <div className="font-mono text-sm tracking-wider font-extrabold bg-slate-950/60 p-2.5 rounded-xl border border-purple-700/50 flex justify-between items-center dir-ltr">
-                  <span>RIP: 00799999000123456789</span>
-                  <span className="text-xs font-sans text-purple-200">{t('baridimobTag')}</span>
-                </div>
-                <div className="text-[11px] text-purple-200">
-                  {t('ccpNotePrefix')} <strong className="text-white font-mono">1234567 Cle 89</strong> ({t('accountNameLabel')} مادة التعليم الابتدائي mssid dz)
-                </div>
+                <p className="text-[11px] text-purple-100 leading-relaxed">{t('accountPendingNote')}</p>
+                <p className="text-[11px] text-purple-200 leading-relaxed">{t('edahabiaMethodNote')}</p>
+                <p className="text-[11px] text-purple-200 leading-relaxed">{t('ccpNotePrefix')}</p>
               </div>
 
               {/* Inputs */}
@@ -291,8 +292,14 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
                   </label>
                   <div className="flex items-center gap-2">
-                    <img src={receiptImage} alt="Receipt preview" loading="lazy" className="w-12 h-12 object-cover rounded-lg border border-slate-300" />
-                    <span className="text-[11px] text-slate-500 font-bold">{t('receiptPreviewLabel')}</span>
+                    {receiptImage ? (
+                      <img src={receiptImage} alt="" loading="lazy" className="w-12 h-12 object-cover rounded-lg border border-slate-300" />
+                    ) : (
+                      <span className="w-12 h-12 rounded-lg border border-dashed border-slate-300 bg-white" />
+                    )}
+                    <span className="text-[11px] text-slate-500 font-bold">
+                      {receiptImage ? t('receiptPreviewLabel') : t('receiptEmptyLabel')}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -308,8 +315,8 @@ export const SubscriptionPaywall: React.FC<Props> = ({
               <div className="pt-2">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white font-extrabold rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm"
+                  disabled={isSubmitting || !receiptImage}
+                  className="w-full py-3.5 bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white font-extrabold rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm disabled:opacity-60"
                 >
                   <ShieldCheck className="w-5 h-5 text-amber-400" />
                   <span>{isSubmitting ? t('submittingButton') : t('submitButton')}</span>

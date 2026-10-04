@@ -57,7 +57,7 @@ interface LessonViewerProps {
   onCompleteQuiz: (lessonId: string, score: number) => void;
   quizAlreadyValidated?: boolean;
   onQuizFullyValidated?: (lessonId: string) => void;
-  onQuizMiss?: (lessonId: string) => void;
+  onQuizMiss?: (lessonId: string, competenceId?: string) => void;
   grade?: PrimaryGrade;
   subjectId?: SubjectId;
   trimester?: number | 'all';

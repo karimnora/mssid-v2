@@ -1,57 +1,65 @@
 import type { subscription as subscriptionAr } from '../ar/subscription';
 
 export const subscription: typeof subscriptionAr = {
-  defaultTitle: 'Débloquer la correction officielle et l’explication détaillée',
+  defaultTitle: 'Révisions guidées, carnet parent et fiches ciblées',
   loginRequiredError: 'Veuillez vous connecter d’abord pour envoyer le reçu de paiement',
   genericSubmitError: 'Impossible d’envoyer le reçu. Vérifiez votre connexion et réessayez.',
 
-  exclusiveBadge: 'Contenu exclusif aux abonnés (mssid dz Premium)',
+  exclusiveBadge: 'Profondeur supplémentaire pour les abonnés',
   headerSubtitle:
-    'Obtiens la correction type détaillée étape par étape pour tous les examens du certificat de fin d’études primaires en Algérie, ainsi que l’assistant pédagogique intelligent.',
+    'Révisions courtes à partir des difficultés observées, un carnet lisible pour le parent, et des fiches A4 ciblées. Durée : 12 mois à partir de la validation, pas « l’année scolaire ».',
 
-  freePlanTitle: 'Abonnement gratuit (ROLE_FREE)',
-  freePlanFeature1: '✓ Parcourir les cours et résumés gratuits',
-  freePlanFeature2: '✓ Faire les exercices et exercices interactifs',
-  freePlanFeature3: '✗ Corrections officielles et solutions types verrouillées',
-  freePlanFeature4: '✗ Fichiers PDF imprimables verrouillés',
+  freePlanTitle: 'Gratuit',
+  freePlanFeature1: '✓ Cours des trois trimestres déjà publiés et leurs exercices',
+  freePlanFeature2: '✓ Boucle complète : activité, retour utile, recommandation, puis révision',
+  freePlanFeature3: '✓ Carnet limité aux compétences enregistrées (maths 1, 2 et 5 ; arabe 1 et 5)',
+  freePlanFeature4: '✗ Suivi plus fin, cahiers A4 et sac de préparation au collège',
 
-  premiumPlanTitle: 'Abonnement annuel mssid dz (ROLE_PREMIUM)',
-  premiumPlanFeature1: '✓ Débloquer toutes les solutions et corrections officielles',
-  premiumPlanFeature2: '✓ Possibilité de télécharger et imprimer les sujets d’examen',
-  premiumPlanFeature3: '✓ Assistant pédagogique intelligent illimité',
-  premiumPlanPrice: '💰 Prix : {price} DA / pour l’année scolaire complète',
+  premiumPlanTitle: 'Abonnement annuel pour une famille',
+  premiumPlanFeature1: '✓ Carnet plus clair : travaillé, réussite observée, à confirmer',
+  premiumPlanFeature2: '✓ Cahiers de compétence A4 corrigés et préparation au passage au collège',
+  premiumPlanFeature3: '✓ Assistant pédagogique avec quota quotidien — pas illimité',
+  premiumPlanPrice: '💰 Prix : {price} DA pour 12 mois à partir de la validation',
 
-  receiptSubmittedTitle: 'Le reçu de paiement a été envoyé avec succès et est en cours de vérification',
+  receiptSubmittedTitle: 'Le reçu a été envoyé et attend une vérification manuelle',
   receiptNumberLabel: 'N° du reçu :',
   statusLabel: 'Statut :',
-  pendingStatus: 'PENDING_VERIFICATION (en attente)',
-  verificationNotePrefix: 'Les virements postaux via',
-  verificationNoteBold: 'BaridiMob / CCP',
-  verificationNoteSuffix: 'sont généralement vérifiés sous peu. Ton compte sera activé automatiquement après authentification.',
+  pendingStatus: 'En attente de vérification',
+  verificationNotePrefix: 'Vérification manuelle des reçus',
+  verificationNoteBold: 'BaridiMob / Edahabia / CCP',
+  verificationNoteSuffix:
+    'sous 24 à 48 heures. Un refus est expliqué. Écris au support si le délai dépasse. L’activation n’est pas automatique.',
 
-  devTestLabel: 'Test rapide développeur (DEV ONLY) :',
-  devApproveButton: 'Confirmer le reçu immédiatement et activer ROLE_PREMIUM',
+  devTestLabel: 'Test développeur (environnement de développement seulement) :',
+  devApproveButton: 'Confirmer le reçu tout de suite en développement',
 
-  formTitle: 'Envoyer le reçu de paiement via BaridiMob, la carte Edahabia ou CCP',
+  formTitle: 'Envoyer un reçu de virement — ce n’est pas un paiement carte dans l’application',
   paymentMethodBaridimob: '📱 BaridiMob',
-  paymentMethodEdahabia: '💳 Carte Edahabia',
-  paymentMethodCcp: '🏛️ Compte courant postal CCP',
+  paymentMethodEdahabia: '💳 Reçu Edahabia',
+  paymentMethodCcp: '🏛️ Reçu CCP',
 
-  accountInfoLabel: 'Informations du compte postal pour le virement ({price} DA) :',
-  baridimobTag: 'BaridiMob',
-  ccpNotePrefix: 'Ou le compte courant postal CCP :',
-  accountNameLabel: 'Nom du compte :',
+  accountInfoLabel: 'Montant demandé ({price} DA) — 12 mois à partir de la validation :',
+  baridimobTag: 'Reçu',
+  ccpNotePrefix: 'Le paiement n’est pas encore ouvert à la vente générale.',
+  accountNameLabel: 'Nom commercial :',
+  accountPendingNote:
+    'Les coordonnées postales seront communiquées à l’ouverture de la bêta payante. Aucun RIB d’essai n’est affiché ici.',
+  edahabiaMethodNote:
+    'Choisir « Edahabia » signifie joindre un reçu de virement, pas payer par carte dans l’application.',
+  receiptRequiredError: 'Joins d’abord la photo réelle du reçu depuis l’appareil.',
+  supportNote: 'Support : écran Contact de l’application après un refus ou un délai dépassé.',
 
   transactionRefLabel: 'Numéro de référence ou de transaction (reçu) :',
   transactionRefPlaceholder: 'Exemple : BM-2026-987456123',
 
   amountLabel: 'Montant transféré :',
-  amountValue: '{price} DZD (frais d’abonnement annuel)',
+  amountValue: '{price} DA (abonnement de 12 mois à partir de la validation)',
 
-  receiptImageLabel: 'Image du reçu de paiement (Reçu de Paiement) :',
+  receiptImageLabel: 'Photo du reçu depuis l’appareil :',
   uploadReceiptButton: 'Téléverser l’image du reçu depuis l’appareil',
   receiptPreviewLabel: 'Aperçu du reçu joint',
+  receiptEmptyLabel: 'Aucun reçu joint pour l’instant',
 
   submittingButton: 'Envoi du reçu en cours...',
-  submitButton: 'Envoyer le reçu de paiement et activer (ROLE_PREMIUM)',
+  submitButton: 'Envoyer le reçu de paiement',
 };

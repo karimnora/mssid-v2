@@ -84,6 +84,7 @@ export interface QuizQuestion {
   questionAr: string;
   options: QuizOption[];
   hintAr?: string;
+  competenceId?: string;
 }
 
 export interface KeyFormula {

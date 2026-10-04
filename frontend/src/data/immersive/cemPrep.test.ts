@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CEM_PAPERS, cemErrorRows, paperById } from './cemPrep';
+import { CEM_PAPERS, cemErrorRows, markCemRewarded, paperById } from './cemPrep';
 
 describe('CEM prep pack', () => {
   it('ships three original papers distinct from the acquis 2026 ids', () => {
@@ -31,5 +31,21 @@ describe('CEM prep pack', () => {
       },
     ]);
     expect(rows.map((row) => row.competenceId)).toEqual(['math-5ap-c-decimals']);
+  });
+
+  it('asks a checked answer on every paper exercise', () => {
+    for (const paper of CEM_PAPERS) {
+      for (const exercise of [...paper.exercises, paper.problem]) {
+        expect(exercise.check.choices.length).toBeGreaterThan(1);
+        expect(exercise.check.correctIndex).toBeGreaterThanOrEqual(0);
+        expect(exercise.check.correctIndex).toBeLessThan(exercise.check.choices.length);
+      }
+    }
+  });
+
+  it('rewards a verified exercise only once', () => {
+    localStorage.removeItem('mssid.cemRewarded');
+    expect(markCemRewarded('cem-math-2027-0')).toBe(true);
+    expect(markCemRewarded('cem-math-2027-0')).toBe(false);
   });
 });
