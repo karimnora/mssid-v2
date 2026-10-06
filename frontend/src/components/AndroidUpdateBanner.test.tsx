@@ -20,7 +20,7 @@ beforeEach(() => {
   capacitor.isNativePlatform.mockReturnValue(true);
   capacitor.getPlatform.mockReturnValue('android');
   vi.spyOn(springBootApi, 'getAndroidRelease').mockResolvedValue({
-    data: { latestVersionCode: 9, minVersionCode: 0 },
+    data: { latestVersionCode: __APP_BUILD__ + 1, minVersionCode: 0 },
     status: 200,
   });
 });
@@ -57,7 +57,7 @@ describe('AndroidUpdateBanner', () => {
 
   it('cannot be dismissed when minVersionCode is above the installed build', async () => {
     vi.mocked(springBootApi.getAndroidRelease).mockResolvedValue({
-      data: { latestVersionCode: 10, minVersionCode: 9 },
+      data: { latestVersionCode: __APP_BUILD__ + 1, minVersionCode: __APP_BUILD__ + 1 },
       status: 200,
     });
     show();
@@ -80,7 +80,7 @@ describe('AndroidUpdateBanner', () => {
 
   it('stays quiet when the installed build already matches Play', async () => {
     vi.mocked(springBootApi.getAndroidRelease).mockResolvedValue({
-      data: { latestVersionCode: 8, minVersionCode: 0 },
+      data: { latestVersionCode: __APP_BUILD__, minVersionCode: 0 },
       status: 200,
     });
     show();
