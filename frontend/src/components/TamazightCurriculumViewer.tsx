@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { speakText } from '../utils/speech';
 import { currentSchoolYearLabel } from '../utils/schoolYear';
+import { printHtmlDocument } from '../utils/printDocument';
 import {
   BookOpen,
   Printer,
@@ -133,8 +134,6 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
   // (see CLAUDE.md § 2/4 and PrintableWorksheetsGeneratorModal.tsx's own header for the same rule).
   const handlePrintMinistryExam = () => {
     if (typeof window === 'undefined') return;
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) return;
 
     const html = `
       <!DOCTYPE html>
@@ -235,12 +234,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
       </html>
     `;
 
-    printWindow.document.write(html);
-    printWindow.document.close();
-    printWindow.focus();
-    setTimeout(() => {
-      printWindow.print();
-    }, 300);
+    void printHtmlDocument(html, 'Mssid DZ — الأمازيغية');
   };
 
   const handleQuizOptionSelect = (qId: string, optId: string) => {

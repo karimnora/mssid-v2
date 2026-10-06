@@ -78,3 +78,13 @@ describe('WilayasExplorer — quiz options only reveal what the question actuall
     });
   });
 });
+
+describe('WilayasExplorer — next/prev by official number', () => {
+  it('steps from Alger 16 to 17 without using the list', () => {
+    renderLab();
+    expect(document.querySelector('[data-wilaya-step]')?.textContent).toContain('16');
+    fireEvent.click(document.querySelector('[data-wilaya-next]') as HTMLElement);
+    expect(document.querySelector('[data-wilaya-step]')?.textContent).toContain('17');
+    expect(document.querySelector('#wilaya-detail-panel h2')?.textContent).toContain('الجلفة');
+  });
+});

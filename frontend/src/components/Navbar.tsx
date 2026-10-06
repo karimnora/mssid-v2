@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, ChevronLeft, Settings } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Settings, ClipboardList, Trophy } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { MssidLogo } from './MssidLogo';
 import { useTranslation } from '../hooks/useTranslation';
@@ -31,6 +31,8 @@ interface NavbarProps {
   currentTheme?: HeaderTheme;
   onOpenProfileModal: () => void;
   onOpenSettingsModal: () => void;
+  onOpenExams: () => void;
+  onOpenChallenges: () => void;
   avatar?: string;
 }
 
@@ -47,6 +49,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentTheme = 'neutre',
   onOpenProfileModal,
   onOpenSettingsModal,
+  onOpenExams,
+  onOpenChallenges,
   avatar,
 }) => {
   const t = useTranslation('navigation');
@@ -93,7 +97,33 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </motion.button>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <motion.button
+            type="button"
+            data-nav-exams
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenExams}
+            className="hit-target px-2 sm:px-3 rounded-2xl bg-[#EFF6FF] border-2 border-[#BFDBFE] text-[#2563EB] flex items-center justify-center gap-1.5 cursor-pointer"
+            aria-label={t('navExamsShort')}
+            title={t('navExamsShort')}
+          >
+            <ClipboardList className="w-5 h-5 shrink-0" />
+            <span className="hidden sm:inline text-xs font-extrabold">{t('navExamsShort')}</span>
+          </motion.button>
+
+          <motion.button
+            type="button"
+            data-nav-challenges
+            whileTap={{ scale: 0.95 }}
+            onClick={onOpenChallenges}
+            className="hit-target px-2 sm:px-3 rounded-2xl bg-[#FFFBEB] border-2 border-[#FDE68A] text-[#D97706] flex items-center justify-center gap-1.5 cursor-pointer"
+            aria-label={t('navChallengesShort')}
+            title={t('navChallengesShort')}
+          >
+            <Trophy className="w-5 h-5 shrink-0" />
+            <span className="hidden sm:inline text-xs font-extrabold">{t('navChallengesShort')}</span>
+          </motion.button>
+
           {/* Read-only grade indicator, not a button — settings (including grade change) now
               live behind their own dedicated ⚙️ icon (remonte utilisateur : "je veux désassocier
               le profile et Réglages dans un nouveau icon ⚙️ dans le header"), so this badge no

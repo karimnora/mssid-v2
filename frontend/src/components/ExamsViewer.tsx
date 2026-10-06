@@ -6,6 +6,7 @@ import { CourseLesson, ExamKind, PrimaryGrade, SubjectId, OfficialExam } from '.
 import { Card, Badge, Button } from './ui';
 import { ReportErrorButton } from './ReportErrorButton';
 import { getExamKind, examUsesTrimester, preferredExamKind, examKindOrder, examKindBadgeKey } from '../utils/examKind';
+import { printDocument } from '../utils/printDocument';
 import { useTranslation } from '../hooks/useTranslation';
 import {
   Clock,
@@ -255,7 +256,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
   const handlePrint = (mode: 'subject' | 'corrige' = 'subject') => {
     setPrintMode(mode);
-    window.setTimeout(() => window.print(), 50);
+    window.setTimeout(() => { void printDocument('Mssid DZ — امتحان'); }, 50);
   };
 
   // ================= VIEW 3: Detailed Exam Sheet & Free Solutions =================

@@ -33,7 +33,7 @@ export interface CBWire {
 
 type Interaction =
   | { type: 'idle' }
-  | { type: 'dragging'; id: string; ox: number; oy: number }
+  | { type: 'dragging'; id: string; ox: number; oy: number; sx: number; sy: number }
   | { type: 'wiring';   fromId: string; fromT: 'A' | 'B'; px: number; py: number; snapping: boolean };
 
 // ─── Layout constants ──────────────────────────────────────────────────────
@@ -233,7 +233,10 @@ export const CircuitBuilder: React.FC = () => {
     const { x, y } = toSVG(e, svgRef.current);
 
     if (interaction.type === 'dragging') {
-      compDragged.current = true;
+      if (Math.hypot(x - interaction.sx, y - interaction.sy) > 12) {
+        compDragged.current = true;
+      }
+      if (!compDragged.current) return;
       setComps(prev => prev.map(c =>
         c.id === interaction.id
           ? { ...c,
@@ -281,7 +284,7 @@ export const CircuitBuilder: React.FC = () => {
     const c = comps.find(c => c.id === id);
     if (!c) return;
     compDragged.current = false;
-    setInteraction({ type: 'dragging', id, ox: x - c.x, oy: y - c.y });
+    setInteraction({ type: 'dragging', id, ox: x - c.x, oy: y - c.y, sx: x, sy: y });
     svgRef.current.setPointerCapture(e.pointerId);
   }, [interaction, comps]);
 
@@ -492,10 +495,24 @@ export const CircuitBuilder: React.FC = () => {
           <span>
             {closed
               ? <>✅ الدارة مغلقة — التيار يمر عبر: <strong>{poweredList.join(' ← ')}</strong></>
-              : <>⚠️ الدارة غير مكتملة — تحقق من الوصلات أو القاطعة</>}
+              : <>⚠️ الدارة غير مكتملة — تحقق من الوصلات أو افتح/أغلق القاطعة بالزر أسفله</>}
           </span>
         </motion.div>
       </AnimatePresence>
+
+      {comps.filter((c) => c.type === 'switch').map((c) => (
+        <button
+          key={c.id}
+          type="button"
+          data-cb-switch-toggle
+          onClick={() => setComps((prev) => prev.map((x) => x.id === c.id ? { ...x, switchOpen: !x.switchOpen } : x))}
+          className={`hit-target w-full px-4 rounded-2xl font-black text-xs cursor-pointer flex items-center justify-center gap-2 ${
+            c.switchOpen ? 'bg-emerald-700 text-white' : 'bg-rose-600 text-white'
+          }`}
+        >
+          {c.switchOpen ? 'إغلاق القاطعة — تشغيل الكهرباء' : 'فتح القاطعة — قطع الكهرباء'}
+        </button>
+      ))}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
 

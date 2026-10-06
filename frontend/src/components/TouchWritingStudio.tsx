@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { speakText } from '../utils/speech';
+import { printHtmlDocument } from '../utils/printDocument';
 import {
   PenTool,
   RotateCcw,
@@ -771,8 +772,6 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
   // Generate printable PDF/A4 worksheet for offline practice
   const handlePrintWorksheet = () => {
     if (typeof window === 'undefined') return;
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) return;
 
     const htmlContent = `
       <!DOCTYPE html>
@@ -833,12 +832,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
       </html>
     `;
 
-    printWindow.document.write(htmlContent);
-    printWindow.document.close();
-    printWindow.focus();
-    setTimeout(() => {
-      printWindow.print();
-    }, 300);
+    void printHtmlDocument(htmlContent, 'Mssid DZ — ورقة خط');
   };
 
   // INK PALETTE PRESETS

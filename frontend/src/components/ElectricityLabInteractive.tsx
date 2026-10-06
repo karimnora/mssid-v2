@@ -121,7 +121,8 @@ export const ElectricityLabInteractive: React.FC = () => {
       return {
         isClosed: false,
         isCurrentFlowing: false,
-        reasonAr: 'الدارة مفتوحة لأن القاطعة غير موصولة (مفتوحة).',
+        reasonAr: 'القاطعة مفتوحة — الدارة مقطوعة والتيار لا يمر.',
+        explainAr: 'فتح القاطعة يقطع الحلقة بين قطبي البطارية. لا يمكن للكهرباء أن تكمل المسار، لذلك ينطفئ المصباح أو الصمام فوراً — حتى لو كانت كل الأسلاك موصولة.',
         reasonFr: 'Le circuit est ouvert car l\'interrupteur est ouvert.',
         statusColor: 'text-amber-400 bg-amber-950/80 border-amber-700/60'
       };
@@ -134,6 +135,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           isClosed: true,
           isCurrentFlowing: true,
           reasonAr: `المادة المختارة (${mat.nameAr}) جسم ناقل للكهرباء تسمح بمرور التيار لإضاءة المصباح.`,
+          explainAr: `القاطعة مغلقة والحلقة مكتملة. ${mat.nameAr} يسمح بمرور الإلكترونات مثل سلك معدني، فيضيء المصباح.`,
           reasonFr: `Le matériau (${mat.nameFr}) est un conducteur électrique.`,
           statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
         };
@@ -142,6 +144,7 @@ export const ElectricityLabInteractive: React.FC = () => {
           isClosed: false,
           isCurrentFlowing: false,
           reasonAr: `المادة المختارة (${mat?.nameAr}) جسم عازل للكهرباء لا تسمح بمرور التيار.`,
+          explainAr: `القاطعة مغلقة لكن ${mat?.nameAr} يقطع المسار مثل فجوة في السلك. العازل يمنع التيار، لذلك يبقى المصباح مطفأ.`,
           reasonFr: `Le matériau (${mat?.nameFr}) est un isolant électrique.`,
           statusColor: 'text-rose-400 bg-rose-950/80 border-rose-700/60'
         };
@@ -159,7 +162,8 @@ export const ElectricityLabInteractive: React.FC = () => {
         return {
           isClosed: true,
           isCurrentFlowing: true,
-          reasonAr: 'الصمام الثنائي في انحياز أمامي (Direct) ➔ يمر التيار الكهربائي ويضيء الصمام!',
+          reasonAr: 'الصمام الثنائي في انحياز أمامي ➔ يمر التيار ويضيء الصمام!',
+          explainAr: 'القاطعة مغلقة والحلقة مكتملة. المصعد (+) مقابل القطب الموجب والمهبط (-) مقابل السالب، فيمر التيار في الاتجاه الوحيد الذي يسمح به الصمام.',
           reasonFr: 'La diode est polarisée en sens direct ➔ Le courant passe !',
           statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
         };
@@ -167,7 +171,8 @@ export const ElectricityLabInteractive: React.FC = () => {
         return {
           isClosed: true,
           isCurrentFlowing: false,
-          reasonAr: 'الصمام الثنائي في انحياز عكسي (Inverse) ➔ يمنع الصمام مرور التيار بالكامل!',
+          reasonAr: 'الصمام الثنائي في انحياز عكسي ➔ يمنع مرور التيار بالكامل!',
+          explainAr: 'القاطعة مغلقة لكن الصمام معكوس: هو صمام اتجاه واحد. رغم أن الأسلاك موصولة، الصمام يسد المسار كما تسد القاطعة المفتوحة.',
           reasonFr: 'La diode est polarisée en sens inverse ➔ Le courant n\'est pas autorisé !',
           statusColor: 'text-rose-400 bg-rose-950/80 border-rose-700/60'
         };
@@ -175,10 +180,12 @@ export const ElectricityLabInteractive: React.FC = () => {
     }
 
     if (activeLoad === 'bulb' || activeLoad === 'motor' || activeLoad === 'buzzer') {
+      const loadName = activeLoad === 'bulb' ? 'المصباح' : activeLoad === 'motor' ? 'المحرك' : 'الجرس';
       return {
         isClosed: true,
         isCurrentFlowing: true,
-        reasonAr: 'الدارة مغلقة والمولد يغذي العنصر بالكهرباء بنجاح!',
+        reasonAr: `الدارة مغلقة — ${loadName} يعمل لأن التيار يكمل الحلقة.`,
+        explainAr: `القاطعة مغلقة فالحلقة مكتملة من القطب الموجب إلى السالب عبر ${loadName}. الكهرباء تمر في مسار واحد مغلق؛ افتح القاطعة لترى الانطفاء فوراً.`,
         reasonFr: 'Le circuit est fermé et le courant circule normalement.',
         statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
       };
@@ -189,6 +196,7 @@ export const ElectricityLabInteractive: React.FC = () => {
         isClosed: true,
         isCurrentFlowing: true,
         reasonAr: `الدارة مغلقة والمقاومة (${resistorValue} Ω) تحدّ من شدة التيار الكهربائي المار في الدارة.`,
+        explainAr: `القاطعة مغلقة والتيار يمر، لكن المقاومة تعيق حركة الشحنات: كلما زادت قيمتها قلّت شدة التيار (قراءة المقياس أدناه).`,
         reasonFr: `Le circuit est fermé, la résistance (${resistorValue} Ω) limite l'intensité du courant.`,
         statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
       };
@@ -197,7 +205,8 @@ export const ElectricityLabInteractive: React.FC = () => {
     return {
       isClosed: true,
       isCurrentFlowing: true,
-      reasonAr: 'الدارة مغلقة.',
+      reasonAr: 'الدارة مغلقة والتيار يمر في حلقة مكتملة.',
+      explainAr: 'طالما القاطعة مغلقة وكل عنصر يوصل، تكمل الكهرباء المسار من (+) إلى (−).',
       reasonFr: 'Circuit fermé.',
       statusColor: 'text-emerald-400 bg-emerald-950/80 border-emerald-700/60'
     };
@@ -441,7 +450,10 @@ export const ElectricityLabInteractive: React.FC = () => {
           <div className="lg:col-span-8 bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-5 shadow-inner">
             
             {/* Live Circuit Banner Status */}
-            <div className={`p-3.5 rounded-2xl border flex items-center justify-between flex-wrap gap-2 text-xs font-bold transition-all ${currentStatus.statusColor}`}>
+            <div
+              data-elec-status
+              className={`p-3.5 rounded-2xl border flex flex-col gap-2 text-xs font-bold transition-all ${currentStatus.statusColor}`}
+            >
               <div className="flex items-center gap-2">
                 {currentStatus.isCurrentFlowing ? (
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -450,6 +462,9 @@ export const ElectricityLabInteractive: React.FC = () => {
                 )}
                 <span>{currentStatus.reasonAr}</span>
               </div>
+              <p data-elec-explain className="text-[11px] sm:text-xs font-semibold leading-relaxed opacity-95 pr-7">
+                {currentStatus.explainAr}
+              </p>
               {showFrench && <span className="text-[11px] opacity-80 font-mono dir-ltr" dir="ltr">{currentStatus.reasonFr}</span>}
             </div>
 
@@ -476,9 +491,17 @@ export const ElectricityLabInteractive: React.FC = () => {
                   </filter>
                 </defs>
 
-                {/* Main Wires Loop (Closed Rectangular Path) */}
+                {/* Main wires — left vertical is gapped at the switch so opening it really breaks the loop */}
                 <path
-                  d="M 120 220 L 50 220 L 50 80 L 250 80 M 250 80 L 450 80 L 450 220 L 380 220"
+                  d="M 120 220 L 50 220 L 50 170"
+                  fill="none"
+                  stroke={currentStatus.isCurrentFlowing ? '#eab308' : '#475569'}
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  className="transition-all duration-300"
+                />
+                <path
+                  d="M 50 130 L 50 80 L 450 80 L 450 220 L 380 220"
                   fill="none"
                   stroke={currentStatus.isCurrentFlowing ? '#eab308' : '#475569'}
                   strokeWidth="5"
@@ -489,7 +512,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                 {/* Animated Electric Current Flow Particles along the wires */}
                 {currentStatus.isCurrentFlowing && (
                   <path
-                    d="M 120 220 L 50 220 L 50 80 L 450 80 L 450 220 L 380 220"
+                    d="M 120 220 L 50 220 L 50 170 M 50 130 L 50 80 L 450 80 L 450 220 L 380 220"
                     fill="none"
                     stroke="#fef08a"
                     strokeWidth="4"
@@ -530,18 +553,27 @@ export const ElectricityLabInteractive: React.FC = () => {
                   )}
                 </g>
 
-                {/* --- 2. SWITCH (KATIA) AT LEFT WIRE --- */}
-                <g transform="translate(50, 150)" className="cursor-pointer" onClick={handleToggleSwitch}>
-                  <circle cx="0" cy="-20" r="6" fill="#fbbf24" />
-                  <circle cx="0" cy="20" r="6" fill="#fbbf24" />
+                {/* --- 2. SWITCH (KATIA) AT LEFT WIRE — large hit target for touch --- */}
+                <g
+                  transform="translate(50, 150)"
+                  className="cursor-pointer"
+                  data-elec-switch-svg
+                  onPointerUp={(e) => {
+                    e.stopPropagation();
+                    handleToggleSwitch();
+                  }}
+                >
+                  <rect x="-40" y="-48" width="80" height="96" rx="14" fill="transparent" />
+                  <circle cx="0" cy="-20" r="8" fill="#fbbf24" stroke="#fef08a" strokeWidth="1.5" />
+                  <circle cx="0" cy="20" r="8" fill="#fbbf24" stroke="#fef08a" strokeWidth="1.5" />
                   
-                  {/* Switch Blade */}
+                  {/* Switch Blade — fills the wire gap when closed, tilts away when open */}
                   {switchClosed ? (
-                    <line x1="0" y1="-20" x2="0" y2="20" stroke="#10b981" strokeWidth="5" strokeLinecap="round" />
+                    <line x1="0" y1="-20" x2="0" y2="20" stroke="#10b981" strokeWidth="6" strokeLinecap="round" />
                   ) : (
-                    <line x1="0" y1="-20" x2="-25" y2="10" stroke="#ef4444" strokeWidth="5" strokeLinecap="round" />
+                    <line x1="0" y1="-20" x2="-30" y2="10" stroke="#ef4444" strokeWidth="6" strokeLinecap="round" />
                   )}
-                  <text x="-35" y="5" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="end">
+                  <text x="-38" y="6" fill="#f8fafc" fontSize="12" fontWeight="bold" textAnchor="end">
                     قاطعة ({switchClosed ? 'مغلقة' : 'مفتوحة'})
                   </text>
                 </g>
@@ -680,15 +712,17 @@ export const ElectricityLabInteractive: React.FC = () => {
               {/* Action Buttons under workbench */}
               <div className="flex items-center justify-center gap-3 mt-4 flex-wrap z-20">
                 <button
+                  type="button"
+                  data-elec-switch
                   onClick={handleToggleSwitch}
-                  className={`px-5 py-2.5 rounded-2xl font-black text-xs transition-all cursor-pointer flex items-center gap-2 shadow-lg ${
+                  className={`hit-target px-5 rounded-2xl font-black text-xs transition-all cursor-pointer flex items-center gap-2 shadow-lg ${
                     switchClosed
                       ? 'bg-rose-600 hover:bg-rose-700 text-white'
                       : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                   }`}
                 >
                   <Power className="w-4 h-4" />
-                  <span>{switchClosed ? 'فتح القاطعة (قطع الكهرباء)' : 'إغلاق القاطعة (تشغيل الكهرباء)'}</span>
+                  <span>{switchClosed ? t('elecOpenSwitchButton') : t('elecCloseSwitchButton')}</span>
                 </button>
 
                 <button
@@ -1004,26 +1038,50 @@ export const ElectricityLabInteractive: React.FC = () => {
             {/* Visual Canvas */}
             <div className="bg-slate-950 rounded-2xl p-6 border border-slate-800 flex flex-col items-center justify-center min-h-[260px] relative">
               <svg className="w-full h-56" viewBox="0 0 400 240">
-                {/* Wires */}
+                {/* Wires — left vertical gapped at the switch */}
                 {circuitType === 'series' ? (
-                  /* Single Loop Series Circuit Wires */
-                  <path
-                    d="M 100 180 L 40 180 L 40 60 L 360 60 L 360 180 L 300 180"
-                    fill="none"
-                    stroke={(!bulb1Broken && !bulb2Broken && switchClosed) ? '#eab308' : '#475569'}
-                    strokeWidth="4"
-                  />
-                ) : (
-                  /* Double Loop Parallel Circuit Wires */
                   <g>
-                    {/* Main Battery Loop */}
-                    <path d="M 100 190 L 40 190 L 40 50 L 360 50 L 360 190 L 300 190" fill="none" stroke="#eab308" strokeWidth="4" />
-                    {/* Parallel Branch 1 */}
-                    <line x1="120" y1="50" x2="120" y2="120" stroke="#eab308" strokeWidth="3" />
-                    <line x1="280" y1="50" x2="280" y2="120" stroke="#eab308" strokeWidth="3" />
-                    <line x1="120" y1="120" x2="280" y2="120" stroke="#eab308" strokeWidth="3" />
+                    <path
+                      d="M 100 180 L 40 180 L 40 130"
+                      fill="none"
+                      stroke={(bulb1Lit && bulb2Lit) ? '#eab308' : '#475569'}
+                      strokeWidth="4"
+                    />
+                    <path
+                      d="M 40 90 L 40 60 L 360 60 L 360 180 L 300 180"
+                      fill="none"
+                      stroke={(bulb1Lit && bulb2Lit) ? '#eab308' : '#475569'}
+                      strokeWidth="4"
+                    />
+                  </g>
+                ) : (
+                  <g>
+                    <path d="M 100 190 L 40 190 L 40 130" fill="none" stroke={switchClosed ? '#eab308' : '#475569'} strokeWidth="4" />
+                    <path d="M 40 90 L 40 50 L 360 50 L 360 190 L 300 190" fill="none" stroke={switchClosed ? '#eab308' : '#475569'} strokeWidth="4" />
+                    <line x1="120" y1="50" x2="120" y2="120" stroke={bulb1Lit ? '#eab308' : '#475569'} strokeWidth="3" />
+                    <line x1="280" y1="50" x2="280" y2="120" stroke={bulb2Lit ? '#eab308' : '#475569'} strokeWidth="3" />
+                    <line x1="120" y1="120" x2="280" y2="120" stroke={(bulb1Lit || bulb2Lit) ? '#eab308' : '#475569'} strokeWidth="3" />
                   </g>
                 )}
+
+                {/* Switch on the left vertical wire */}
+                <g
+                  transform="translate(40, 110)"
+                  className="cursor-pointer"
+                  onPointerUp={(e) => {
+                    e.stopPropagation();
+                    handleToggleSwitch();
+                  }}
+                >
+                  <rect x="-28" y="-32" width="56" height="64" rx="10" fill="transparent" />
+                  <circle cx="0" cy="-20" r="6" fill="#fbbf24" />
+                  <circle cx="0" cy="20" r="6" fill="#fbbf24" />
+                  {switchClosed ? (
+                    <line x1="0" y1="-20" x2="0" y2="20" stroke="#10b981" strokeWidth="5" strokeLinecap="round" />
+                  ) : (
+                    <line x1="0" y1="-20" x2="-22" y2="8" stroke="#ef4444" strokeWidth="5" strokeLinecap="round" />
+                  )}
+                </g>
 
                 {/* Battery at Bottom */}
                 <rect x="100" y="165" width="200" height="35" rx="8" fill="#0284c7" stroke="#38bdf8" strokeWidth="1.5" />
@@ -1063,8 +1121,10 @@ export const ElectricityLabInteractive: React.FC = () => {
               </svg>
 
               {/* Status Banner — reflects the live experiment, not only the rule */}
-              <div className="text-xs text-center font-bold text-amber-300 mt-2">
-                {circuitType === 'series' ? (
+              <div className="text-xs text-center font-bold text-amber-300 mt-2 space-y-1">
+                {!switchClosed ? (
+                  <span>القاطعة مفتوحة: انقطعت الحلقة فانطفأ المصباحان. أغلق القاطعة ليعود التيار.</span>
+                ) : circuitType === 'series' ? (
                   <span>
                     {bulb1Broken || bulb2Broken
                       ? 'دارة مفتوحة: المصباح التالف قطع الحلقة، فانطفأ المصباح الآخر أيضاً!'
@@ -1082,6 +1142,18 @@ export const ElectricityLabInteractive: React.FC = () => {
 
             {/* Controls for Bulbs */}
             <div className="space-y-4">
+              <button
+                type="button"
+                data-elec-switch-series
+                onClick={handleToggleSwitch}
+                className={`hit-target w-full px-4 rounded-2xl font-black text-xs transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg ${
+                  switchClosed ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white'
+                }`}
+              >
+                <Power className="w-4 h-4" />
+                <span>{switchClosed ? t('elecOpenSwitchButton') : t('elecCloseSwitchButton')}</span>
+              </button>
+
               <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
                 <span className="text-xs font-bold text-slate-300 block">اختبار تفكيك وتلف المصباحين:</span>
                 

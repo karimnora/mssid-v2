@@ -333,6 +333,8 @@ export default function App() {
         currentTheme={headerTheme}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
         onOpenSettingsModal={() => modals.setIsSettingsModalOpen(true)}
+        onOpenExams={() => nav.handleSelectPole('exams')}
+        onOpenChallenges={() => nav.handleSelectPole('challenges')}
         avatar={progress.userProfile.avatar}
       />
 

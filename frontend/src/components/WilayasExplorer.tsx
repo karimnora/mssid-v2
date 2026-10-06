@@ -35,6 +35,7 @@ import { AuthService } from '../services/authService';
 import { ALGERIA_MAP_VIEWBOX, ALGERIA_OUTLINE_PATH, ALGERIA_MAP_SEA } from '../data/algeriaMapOutline';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
+import { printDocument } from '../utils/printDocument';
 
 // Same 3-way split as the region legend/dots below (blue=north, amber=high plateaus, emerald=sahara),
 // expressed as Y bands (percent of the outline's own viewBox height) so they can be clipped to the
@@ -221,15 +222,17 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   });
 
   // Mark wilaya as discovered
-  const handleSelectWilaya = (w: WilayaInfo) => {
+  const applyWilaya = (w: WilayaInfo, scrollToDetail: boolean) => {
     setSelectedWilaya(w);
-    // On mobile the detail panel sits below the map/list, not beside it like the desktop sticky
-    // sidebar — without this, tapping a wilaya silently updates state below the fold. The timeout
-    // lets the panel's content re-render with the new wilaya before we measure where to scroll
-    // (same pattern as AlgerianHistoryMuseum's hero-detail-panel).
-    setTimeout(() => {
-      document.getElementById('wilaya-detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 80);
+    if (scrollToDetail) {
+      // On mobile the detail panel sits below the map/list, not beside it like the desktop sticky
+      // sidebar — without this, tapping a wilaya silently updates state below the fold. The timeout
+      // lets the panel's content re-render with the new wilaya before we measure where to scroll
+      // (same pattern as AlgerianHistoryMuseum's hero-detail-panel).
+      setTimeout(() => {
+        document.getElementById('wilaya-detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
     if (!discoveredCodes.includes(w.code)) {
       const updated = [...discoveredCodes, w.code];
       setDiscoveredCodes(updated);
@@ -243,6 +246,15 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
       }
     }
   };
+
+  const handleSelectWilaya = (w: WilayaInfo) => applyWilaya(w, true);
+
+  const selectedWilayaIndex = WILAYAS_LIST.findIndex((w) => w.code === selectedWilaya.code);
+  const prevWilaya = selectedWilayaIndex > 0 ? WILAYAS_LIST[selectedWilayaIndex - 1] : null;
+  const nextWilaya =
+    selectedWilayaIndex >= 0 && selectedWilayaIndex < WILAYAS_LIST.length - 1
+      ? WILAYAS_LIST[selectedWilayaIndex + 1]
+      : null;
 
   // Text to Speech narration
   const speakText = (text: string) => {
@@ -869,6 +881,35 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
             <div id="wilaya-detail-panel" className="lg:col-span-5 space-y-4 lg:sticky lg:top-6 scroll-mt-20">
               {selectedWilaya ? (
                 <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border-2 border-emerald-500 shadow-xl space-y-5">
+                  <div className="flex items-center gap-2" dir={direction}>
+                    <button
+                      type="button"
+                      data-wilaya-prev
+                      disabled={!prevWilaya}
+                      onClick={() => prevWilaya && applyWilaya(prevWilaya, false)}
+                      className="hit-target flex-1 px-3 rounded-2xl bg-[#FFFBF0] border-2 border-[#E7E2D7] text-[var(--app-text)] font-extrabold text-xs flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      {direction === 'rtl' ? <ChevronRight className="w-5 h-5 shrink-0" /> : <ChevronLeft className="w-5 h-5 shrink-0" />}
+                      <span>{prevWilaya ? t('wilayasPrevButton', { code: prevWilaya.codeStr }) : t('wilayasPrevButton', { code: '—' })}</span>
+                    </button>
+                    <p
+                      data-wilaya-step
+                      className="hit-target px-3 rounded-2xl bg-emerald-700 text-white text-sm font-black flex items-center justify-center shrink-0"
+                    >
+                      {t('wilayasStepCounter', { code: selectedWilaya.codeStr })}
+                    </p>
+                    <button
+                      type="button"
+                      data-wilaya-next
+                      disabled={!nextWilaya}
+                      onClick={() => nextWilaya && applyWilaya(nextWilaya, false)}
+                      className="hit-target flex-1 px-3 rounded-2xl bg-[#FFFBF0] border-2 border-[#E7E2D7] text-[var(--app-text)] font-extrabold text-xs flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      <span>{nextWilaya ? t('wilayasNextButton', { code: nextWilaya.codeStr }) : t('wilayasNextButton', { code: '—' })}</span>
+                      {direction === 'rtl' ? <ChevronLeft className="w-5 h-5 shrink-0" /> : <ChevronRight className="w-5 h-5 shrink-0" />}
+                    </button>
+                  </div>
+
                   {/* Header of the card */}
                   <div className="flex items-center justify-between pb-4 border-b border-[var(--app-card-border)]">
                     <div className="flex items-center gap-3">
@@ -1468,7 +1509,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
 
               <div className="flex items-center justify-center gap-3">
                 <button
-                  onClick={() => window.print()}
+                  onClick={() => { void printDocument('Mssid DZ — شهادة الولايات'); }}
                   className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-2xl text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md"
                 >
                   <Printer className="w-4 h-4" />

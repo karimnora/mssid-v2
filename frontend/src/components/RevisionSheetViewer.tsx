@@ -5,6 +5,7 @@ import { SUBJECTS_LIST } from '../data/subjectsData';
 import { Button, Badge } from './ui';
 import { Printer, X, ListChecks, Sigma, BookMarked, Star, AlertTriangle } from 'lucide-react';
 import { stripArabicTashkeel } from '../utils/textFormatter';
+import { printDocument } from '../utils/printDocument';
 
 interface RevisionSheetViewerProps {
   lesson: CourseLesson;
@@ -38,7 +39,7 @@ export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson
         <Button variant="ghost" size="sm" icon={<X className="w-4 h-4" />} onClick={onClose}>
           إغلاق
         </Button>
-        <Button variant="primary" size="sm" icon={<Printer className="w-4 h-4" />} onClick={() => window.print()}>
+        <Button variant="primary" size="sm" icon={<Printer className="w-4 h-4" />} onClick={() => { void printDocument('Mssid DZ — فيشة مراجعة'); }}>
           🖨️ طباعة / تحميل PDF
         </Button>
       </div>

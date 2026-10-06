@@ -79,6 +79,8 @@ export const navigation: typeof navigationAr = {
   tabChallengesLabel: '🏆 Club des défis et concours',
   tabChallengesCount: '{count} défis',
   fallbackSubjectName: 'Matière',
+  navExamsShort: 'Examens',
+  navChallengesShort: 'Défis',
 
   backToStudentApp: "Application élève 🎓",
   backToPrimaryPlatform: 'Plateforme du primaire 🎒',

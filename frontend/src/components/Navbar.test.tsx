@@ -7,7 +7,9 @@ import { LocaleProvider } from '../context/LocaleContext';
 const renderNav = (
   grade: '1AP' | '2AP' | '5AP',
   onOpenProfileModal = vi.fn(),
-  onOpenSettingsModal = vi.fn()
+  onOpenSettingsModal = vi.fn(),
+  onOpenExams = vi.fn(),
+  onOpenChallenges = vi.fn(),
 ) =>
   render(
     <LocaleProvider>
@@ -16,6 +18,8 @@ const renderNav = (
         onHomeClick={vi.fn()}
         onOpenProfileModal={onOpenProfileModal}
         onOpenSettingsModal={onOpenSettingsModal}
+        onOpenExams={onOpenExams}
+        onOpenChallenges={onOpenChallenges}
       />
     </LocaleProvider>
   );
@@ -59,5 +63,15 @@ describe('Navbar', () => {
     renderNav('2AP', vi.fn(), onOpenSettingsModal);
     fireEvent.click(document.querySelector('[data-nav-settings]') as HTMLElement);
     expect(onOpenSettingsModal).toHaveBeenCalledTimes(1);
+  });
+
+  it('opens exams and challenges from the header shortcuts', () => {
+    const onOpenExams = vi.fn();
+    const onOpenChallenges = vi.fn();
+    renderNav('2AP', vi.fn(), vi.fn(), onOpenExams, onOpenChallenges);
+    fireEvent.click(document.querySelector('[data-nav-exams]') as HTMLElement);
+    fireEvent.click(document.querySelector('[data-nav-challenges]') as HTMLElement);
+    expect(onOpenExams).toHaveBeenCalledTimes(1);
+    expect(onOpenChallenges).toHaveBeenCalledTimes(1);
   });
 });

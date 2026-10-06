@@ -8,6 +8,7 @@ import {
   PrintableWorksheet,
 } from '../../data/preschool/printablesData';
 import { PreschoolLanguage } from '../../data/preschool/types';
+import { printDocument } from '../../utils/printDocument';
 
 interface PreschoolPrintablesModalProps {
   language: PreschoolLanguage;
@@ -303,7 +304,7 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
     setActiveSheetId(first?.id || null);
   };
 
-  const handlePrint = () => window.print();
+  const handlePrint = () => { void printDocument('Mssid DZ — التحضيري'); };
 
   return createPortal(
     <div dir={dir} className="sheet-print-modal fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm overflow-x-hidden overflow-y-auto">

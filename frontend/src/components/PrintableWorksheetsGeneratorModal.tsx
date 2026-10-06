@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { X, Printer, FileText, Download, CheckSquare, Sparkles, BookOpen, Layers } from 'lucide-react';
 import { PrimaryGrade, SubjectId } from '../types';
 import { currentSchoolYearLabel } from '../utils/schoolYear';
+import { printDocument } from '../utils/printDocument';
 
 interface PrintableWorksheetsGeneratorModalProps {
   isOpen: boolean;
@@ -27,7 +28,7 @@ export const PrintableWorksheetsGeneratorModal: React.FC<PrintableWorksheetsGene
   if (!isOpen) return null;
 
   const handlePrint = () => {
-    window.print();
+    void printDocument('Mssid DZ — ورقة عمل');
   };
 
   return (

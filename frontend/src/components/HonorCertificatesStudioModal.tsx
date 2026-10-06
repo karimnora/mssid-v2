@@ -27,6 +27,7 @@ import { PrimaryGrade, UserProfile } from '../types';
 import { WILAYAS_LIST } from '../data/wilayasData';
 import { speakText as speakTextShared, stopSpeech } from '../utils/speech';
 import { currentSchoolYearLabel } from '../utils/schoolYear';
+import { printDocument } from '../utils/printDocument';
 
 export interface HonorCertificatesStudioModalProps {
   isOpen: boolean;
@@ -266,7 +267,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
   const currentDiplomaInfo = GRADE_DIPLOMA_TEMPLATES[currentTemplate.id];
   const selectedWilaya = WILAYAS_LIST.find((w) => w.code === selectedWilayaCode) || WILAYAS_LIST[15];
 
-  const handlePrint = () => window.print();
+  const handlePrint = () => { void printDocument('Mssid DZ — شهادة تقدير'); };
 
   const handleSpeakSpeech = () => {
     if (speechTimeoutRef.current) {

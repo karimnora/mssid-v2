@@ -77,6 +77,8 @@ export const navigation = {
   tabChallengesLabel: '🏆 نادي التحديات والمسابقات',
   tabChallengesCount: '{count} تحدي',
   fallbackSubjectName: 'مادة',
+  navExamsShort: 'امتحانات',
+  navChallengesShort: 'تحديات',
 
   backToStudentApp: 'تطبيق التلميذ 🎓',
   backToPrimaryPlatform: 'منصة الابتدائي 🎒',
