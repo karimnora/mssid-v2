@@ -1,9 +1,11 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { lastActivityTitle, readLastActivity, writeLastActivity } from './lastActivity';
+import { setActiveProgressOwner } from './progressOwner';
 
 describe('lastActivity', () => {
   afterEach(() => {
     localStorage.clear();
+    setActiveProgressOwner(null);
   });
 
   it('stores and reads a lesson resume target', () => {
@@ -26,6 +28,18 @@ describe('lastActivity', () => {
     localStorage.setItem('mssid_last_activity', '{"kind":"lesson"}');
     expect(readLastActivity()).toBeNull();
     localStorage.setItem('mssid_last_activity', '{not json');
+    expect(readLastActivity()).toBeNull();
+  });
+
+  it('keeps a resume target on one profile from appearing after another person logs in', () => {
+    writeLastActivity({
+      kind: 'lesson',
+      lessonId: 'math-1ap-t1-spatial-relations',
+      subject: 'math',
+      grade: '1AP',
+      titleAr: 'الفضاء',
+    });
+    setActiveProgressOwner(42);
     expect(readLastActivity()).toBeNull();
   });
 });

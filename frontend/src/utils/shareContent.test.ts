@@ -72,6 +72,22 @@ describe('shareImageBlob', () => {
     expect(click).toHaveBeenCalledTimes(1);
     click.mockRestore();
   });
+
+  it('downloads the PNG and reports shared-text when only the caption can be shared', async () => {
+    const share = vi.fn().mockResolvedValue(undefined);
+    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+    vi.stubGlobal('navigator', {
+      ...navigator,
+      share,
+      canShare: (data: ShareData) => !data.files,
+    });
+    const blob = new Blob(['png'], { type: 'image/png' });
+    await expect(shareImageBlob(blob, 'badge.png', 'وسام')).resolves.toBe('shared-text');
+    expect(share).toHaveBeenCalledTimes(1);
+    expect(share.mock.calls[0][0].files).toBeUndefined();
+    expect(click).toHaveBeenCalledTimes(1);
+    click.mockRestore();
+  });
 });
 
 describe('sharePlainText / copyText', () => {

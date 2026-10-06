@@ -7,7 +7,7 @@ interface MssidSharePlugin {
 
 const MssidShare = registerPlugin<MssidSharePlugin>('MssidShare');
 
-export type ShareOutcome = 'shared' | 'downloaded' | 'cancelled';
+export type ShareOutcome = 'shared' | 'shared-text' | 'downloaded' | 'cancelled';
 
 function blobToBase64(blob: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -75,7 +75,11 @@ export async function shareImageBlob(blob: Blob, filename: string, shareText: st
   }
 
   const textResult = await tryNavigatorShare({ title, text: shareText });
-  if (textResult !== 'failed') return textResult;
+  if (textResult === 'cancelled') return 'cancelled';
+  if (textResult === 'shared') {
+    triggerDownload(blob, filename);
+    return 'shared-text';
+  }
 
   triggerDownload(blob, filename);
   return 'downloaded';

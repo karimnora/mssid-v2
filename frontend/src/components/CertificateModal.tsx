@@ -21,6 +21,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
   const [status, setStatus] = useState<GenerationStatus>('generating');
   const [isSharing, setIsSharing] = useState(false);
   const [shareError, setShareError] = useState(false);
+  const [shareHint, setShareHint] = useState<'text' | null>(null);
   const blobRef = useRef<Blob | null>(null);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
     setStatus('generating');
     setImageUrl(null);
     setShareError(false);
+    setShareHint(null);
     (async () => {
       try {
         const canvas = await renderCertificateCanvas({ childName: childName || 'بطل مَسِيد', grade, badge });
@@ -52,12 +54,14 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
     if (!blobRef.current) return;
     setIsSharing(true);
     setShareError(false);
+    setShareHint(null);
     try {
-      await shareOrDownloadCertificate(
+      const outcome = await shareOrDownloadCertificate(
         blobRef.current,
         `mssid-dz-${badge.id}.png`,
         `حصلت على وسام "${badge.titleAr}" في تطبيق مَسِيد DZ! 🎉`,
       );
+      if (outcome === 'shared-text') setShareHint('text');
     } catch {
       setShareError(true);
     } finally {
@@ -118,6 +122,11 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
             {isSharing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Share2 className="w-4 h-4" />}
             <span>مشاركة الشهادة</span>
           </button>
+          {shareHint === 'text' && (
+            <p role="status" className="text-xs font-bold text-center text-slate-700 mt-2">
+              تم مشاركة النص فقط. تم تنزيل صورة الشهادة على الجهاز.
+            </p>
+          )}
           {shareError && (
             <p role="alert" className="text-xs font-bold text-center text-[var(--brand-coral,#C42A23)] mt-2">
               تعذّر فتح المشاركة. حاول مرة أخرى.

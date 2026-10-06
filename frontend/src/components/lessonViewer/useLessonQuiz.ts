@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CourseLesson } from '../../types';
 import { playSuccessChime, playGentleNudge } from '../preschool/usePreschoolAudio';
 import {
@@ -24,6 +24,8 @@ export function useLessonQuiz(options: {
   const [gameXpAwarded, setGameXpAwarded] = useState(false);
   const [recentAnswerId, setRecentAnswerId] = useState<string | null>(null);
   const [visibleSolutions, setVisibleSolutions] = useState<Record<number, boolean>>({});
+  const selectedAnswersRef = useRef<Record<string, string>>({});
+  const awardedQuizIdsRef = useRef<Set<string>>(new Set());
 
   const initializeShuffledQuiz = () => {
     if (!lesson.quiz || lesson.quiz.length === 0) {
@@ -39,8 +41,11 @@ export function useLessonQuiz(options: {
 
   useEffect(() => {
     setVisibleSolutions({});
+    selectedAnswersRef.current = {};
     setSelectedAnswers({});
-    setAwardedQuizIds(new Set(loadAwardedQuestionIds(lesson.id)));
+    const storedAwards = new Set(loadAwardedQuestionIds(lesson.id));
+    awardedQuizIdsRef.current = storedAwards;
+    setAwardedQuizIds(storedAwards);
     setRecentAnswerId(null);
     setGameAnswers({});
     setGameXpAwarded(hasAwardedGameXp(lesson.id));
@@ -55,31 +60,36 @@ export function useLessonQuiz(options: {
   }, [recentAnswerId]);
 
   const handleSelectOption = (questionId: string, optionId: string) => {
-    // Locked only once answered CORRECTLY (XP already awarded) — a wrong guess must never be a
-    // dead end: the student can keep trying instead of the question freezing forever (remonte
-    // revue externe : principe "zero frustration" du cahier des charges pour les 6-11 ans).
-    if (awardedQuizIds.has(questionId)) return;
-    setSelectedAnswers((prev) => ({ ...prev, [questionId]: optionId }));
     const currentQuiz = shuffledQuiz.length > 0 ? shuffledQuiz : lesson.quiz;
     const question = currentQuiz.find((q) => q.id === questionId);
     const correctOpt = question?.options.find((o) => o.isCorrect);
+    const alreadyCorrectThisAttempt = !!correctOpt && selectedAnswersRef.current[questionId] === correctOpt.id;
+    // Lock the current attempt after a correct pick so the child cannot swap answers after
+    // seeing "الصواب". Rewards live in awardedQuizIds / localStorage and must not freeze a
+    // reset or a later revision — those start a new attempt with empty selectedAnswers.
+    if (alreadyCorrectThisAttempt) return;
+    selectedAnswersRef.current = { ...selectedAnswersRef.current, [questionId]: optionId };
+    setSelectedAnswers(selectedAnswersRef.current);
     const isCorrect = !!correctOpt && correctOpt.id === optionId;
     setRecentAnswerId(questionId);
     if (isCorrect) playSuccessChime(); else playGentleNudge();
-    if (isCorrect) {
-      if (quizAlreadyValidated) {
-        if (claimDailyLessonRevisionBonus(lesson.id)) {
-          onCompleteQuiz(lesson.id, 5);
-        }
-      } else {
-        onCompleteQuiz(lesson.id, 15);
-        persistAwardedQuestionId(lesson.id, questionId);
+    if (!isCorrect) return;
+
+    if (quizAlreadyValidated) {
+      if (claimDailyLessonRevisionBonus(lesson.id)) {
+        onCompleteQuiz(lesson.id, 5);
       }
-      const newAwarded = new Set(awardedQuizIds).add(questionId);
-      setAwardedQuizIds(newAwarded);
-      if (!quizAlreadyValidated && newAwarded.size === currentQuiz.length) {
-        onQuizFullyValidated?.(lesson.id);
-      }
+      return;
+    }
+
+    if (awardedQuizIdsRef.current.has(questionId)) return;
+    onCompleteQuiz(lesson.id, 15);
+    persistAwardedQuestionId(lesson.id, questionId);
+    const newAwarded = new Set(awardedQuizIdsRef.current).add(questionId);
+    awardedQuizIdsRef.current = newAwarded;
+    setAwardedQuizIds(newAwarded);
+    if (newAwarded.size === currentQuiz.length) {
+      onQuizFullyValidated?.(lesson.id);
     }
   };
 
@@ -100,6 +110,7 @@ export function useLessonQuiz(options: {
   };
 
   const handleResetQuiz = () => {
+    selectedAnswersRef.current = {};
     setSelectedAnswers({});
     setRecentAnswerId(null);
     initializeShuffledQuiz();
@@ -119,7 +130,12 @@ export function useLessonQuiz(options: {
     handleResetQuiz,
     initializeShuffledQuiz,
     quizFullyPassed:
-      lesson.quiz.length > 0 && awardedQuizIds.size === lesson.quiz.length,
+      lesson.quiz.length > 0 &&
+      lesson.quiz.every((q) => {
+        const selected = selectedAnswers[q.id];
+        const correct = q.options.find((o) => o.isCorrect);
+        return !!selected && !!correct && selected === correct.id;
+      }),
     quizAnswered:
       lesson.quiz.length > 0 &&
       Object.keys(selectedAnswers).length === lesson.quiz.length,

@@ -1,6 +1,7 @@
 import { AuthUser, PaymentReceipt, PaymentMethod, UserRole, Subscription } from '../types/auth';
 import { DidouAvatarConfig } from '../types/ecosystem';
 import { springBootApi } from './springBootApi';
+import { setActiveProgressOwner } from '../utils/progressOwner';
 
 const STORAGE_KEYS = {
   RECEIPTS: 'mssid_payment_receipts',
@@ -64,6 +65,7 @@ export class AuthService {
       }
     }
     currentUserState = user;
+    setActiveProgressOwner(user?.id ?? null);
     notifyAuthListeners();
   }
 

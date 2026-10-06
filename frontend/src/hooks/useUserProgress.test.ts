@@ -11,6 +11,8 @@ import {
 } from './useUserProgress';
 import { UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
+import { setActiveProgressOwner } from '../utils/progressOwner';
+import { loadAwardedQuestionIds, persistAwardedQuestionId } from '../utils/quizRewards';
 
 vi.mock('../utils/badgeEngine', () => ({
   applyBadgeEvaluation: (profile: UserProfile) => ({ profile, newlyUnlocked: [] }),
@@ -222,6 +224,7 @@ describe('authUser merge does not leak local guest/sibling progress into a real 
 describe('logout does not replay the welcome badge toast', () => {
   beforeEach(() => {
     localStorage.clear();
+    setActiveProgressOwner(null);
   });
 
   it('clears the unlock queue when resetting to a guest profile', () => {
@@ -248,5 +251,21 @@ describe('logout does not replay the welcome badge toast', () => {
     expect(result.current.newlyUnlockedBadges).toEqual([]);
     expect(result.current.userProfile.badges).toEqual([]);
     expect(result.current.userProfile.xp).toBe(0);
+  });
+
+  it('drops guest quiz awards on logout without touching another account on the same device', () => {
+    persistAwardedQuestionId('math-1ap-nombres', 'guest-q');
+    setActiveProgressOwner(4);
+    persistAwardedQuestionId('math-1ap-nombres', 'user-q');
+    const { result } = renderHook(() => useUserProgress({ authUser: null }));
+
+    act(() => {
+      result.current.handleLogoutProgressReset('1AP');
+    });
+
+    setActiveProgressOwner(null);
+    expect(loadAwardedQuestionIds('math-1ap-nombres')).toEqual([]);
+    setActiveProgressOwner(4);
+    expect(loadAwardedQuestionIds('math-1ap-nombres')).toEqual(['user-q']);
   });
 });

@@ -18,7 +18,7 @@ vi.mock('@capacitor/core', () => ({
   }),
 }));
 
-import { printDocument } from './printDocument';
+import { printDocument, printHtmlDocument } from './printDocument';
 
 describe('printDocument', () => {
   beforeEach(() => {
@@ -44,5 +44,43 @@ describe('printDocument', () => {
     expect(nativeState.print).toHaveBeenCalledWith({ jobName: 'امتحان' });
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
+  });
+});
+
+describe('printHtmlDocument', () => {
+  beforeEach(() => {
+    nativeState.isNative = false;
+    nativeState.platform = 'web';
+    nativeState.printHtml.mockClear();
+    document.getElementById('mssid-app-notice')?.remove();
+  });
+
+  it('prints in a new window when pop-ups are allowed', async () => {
+    const print = vi.fn();
+    const fakeWindow = {
+      document: { write: vi.fn(), close: vi.fn() },
+      focus: vi.fn(),
+      print,
+    };
+    const open = vi.spyOn(window, 'open').mockReturnValue(fakeWindow as unknown as Window);
+    await expect(printHtmlDocument('<p>امتحان</p>')).resolves.toBe('printed');
+    expect(fakeWindow.document.write).toHaveBeenCalled();
+    open.mockRestore();
+  });
+
+  it('explains the block when the pop-up and the iframe fallback both fail', async () => {
+    const open = vi.spyOn(window, 'open').mockReturnValue(null);
+    const createElement = document.createElement.bind(document);
+    vi.spyOn(document, 'createElement').mockImplementation((tag: string) => {
+      if (tag !== 'iframe') return createElement(tag);
+      const iframe = createElement('iframe') as HTMLIFrameElement;
+      Object.defineProperty(iframe, 'contentDocument', { configurable: true, value: null });
+      Object.defineProperty(iframe, 'contentWindow', { configurable: true, value: null });
+      return iframe;
+    });
+    await expect(printHtmlDocument('<p>امتحان</p>')).resolves.toBe('blocked');
+    expect(document.getElementById('mssid-app-notice')?.textContent).toMatch(/طباعة|pop-ups/i);
+    open.mockRestore();
+    vi.restoreAllMocks();
   });
 });

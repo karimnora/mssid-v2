@@ -5,6 +5,13 @@ import { AuthService } from '../services/authService';
 import { incrementDailyObjective } from '../utils/dailyObjective';
 import { applyDidouGoldBonus } from '../utils/didouCompanion';
 import { isValidGrade } from '../navigation/appLocation';
+import { getActiveProgressOwner, setActiveProgressOwner } from '../utils/progressOwner';
+import {
+  clearGuestQuizRewards,
+  clearOwnerQuizRewards,
+  migrateGuestQuizRewardsToUser,
+} from '../utils/quizRewards';
+import { clearGuestLastActivity, clearOwnerLastActivity, migrateGuestLastActivityToUser } from '../utils/lastActivity';
 
 function finiteNumber(value: unknown, fallback: number): number {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -45,7 +52,8 @@ function salvageUserProfile(raw: unknown, fallbackGrade: PrimaryGrade): UserProf
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return base;
   const o = raw as Record<string, unknown>;
   const xp = Math.max(0, finiteNumber(o.xp, base.xp));
-  const grade = isValidGrade(typeof o.grade === 'string' ? o.grade : null) ? o.grade : fallbackGrade;
+  const rawGrade = typeof o.grade === 'string' ? o.grade : null;
+  const grade: PrimaryGrade = isValidGrade(rawGrade) ? rawGrade : fallbackGrade;
   return {
     ...base,
     name: typeof o.name === 'string' && o.name.trim() ? o.name : base.name,
@@ -258,6 +266,13 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   }, [authUser]);
 
   useEffect(() => {
+    if (!authUser) return;
+    migrateGuestQuizRewardsToUser(authUser.id);
+    migrateGuestLastActivityToUser(authUser.id);
+    setActiveProgressOwner(authUser.id);
+  }, [authUser?.id]);
+
+  useEffect(() => {
     localStorage.setItem('mssid_user_profile', JSON.stringify(userProfile));
   }, [userProfile]);
 
@@ -322,6 +337,9 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   }, []);
 
   const handleResetProgress = () => {
+    const owner = getActiveProgressOwner();
+    clearOwnerQuizRewards(owner);
+    clearOwnerLastActivity(owner);
     setUserProfile({
       ...createFreshGuestProfile(userProfile.grade),
       name: userProfile.name,
@@ -359,6 +377,9 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   };
 
   const handleLogoutProgressReset = (currentGrade: PrimaryGrade) => {
+    setActiveProgressOwner(null);
+    clearGuestQuizRewards();
+    clearGuestLastActivity();
     localStorage.removeItem('mssid_user_profile');
     setNewlyUnlockedBadges([]);
     setUserProfile(() => createFreshGuestProfile(currentGrade));

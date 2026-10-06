@@ -32,5 +32,10 @@ describe('SubjectIllustratedCard', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /الرياضيات.*Mathématiques/ }));
     expect(onClick).toHaveBeenCalledOnce();
+
+    const textPad = document.querySelector('[data-subject-text]');
+    expect(textPad?.className).toContain('ps-[76px]');
+    expect(textPad?.className).not.toContain('sm:p-5');
+    expect(textPad?.className).not.toMatch(/(?:^|\s)p-4(?:\s|$)/);
   });
 });

@@ -799,7 +799,12 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
         className="relative flex w-full items-stretch min-w-0 text-start cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-blue-600"
       >
       {/* TEXT SIDE */}
-      <div className={`flex-1 p-4 sm:p-5 flex flex-col justify-center gap-1.5 min-w-0 z-10 ${showAudio && onSpeak ? 'ps-[76px]' : ''}`}>
+      <div
+        data-subject-text=""
+        className={`flex-1 pt-4 pb-4 pe-4 sm:pt-5 sm:pb-5 sm:pe-5 flex flex-col justify-center gap-1.5 min-w-0 z-10 ${
+          showAudio && onSpeak ? 'ps-[76px]' : 'ps-4 sm:ps-5'
+        }`}
+      >
         <div className="flex items-center gap-2 flex-wrap">
           <h3 className="text-base sm:text-lg font-black text-slate-800 dark:text-slate-100 tracking-tight leading-snug truncate">
             {displayName}

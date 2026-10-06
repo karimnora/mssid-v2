@@ -12,7 +12,6 @@ interface LessonQuizPanelProps {
   lesson: CourseLesson;
   shuffledQuiz: CourseLesson['quiz'];
   selectedAnswers: Record<string, string>;
-  awardedQuizIds: Set<string>;
   recentAnswerId: string | null;
   renderArabicText: (text: string | undefined | null) => string;
   onSelectOption: (questionId: string, optionId: string) => void;
@@ -29,7 +28,6 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
   lesson,
   shuffledQuiz,
   selectedAnswers,
-  awardedQuizIds,
   recentAnswerId,
   renderArabicText,
   onSelectOption,
@@ -190,7 +188,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
           // "Answered" now means "answered correctly" (locked, XP awarded) — a wrong guess is a
           // transient state (hasAttempted), not a dead end: the student keeps the other options
           // live and can try again. See useLessonQuiz.handleSelectOption.
-          const isAnswered = awardedQuizIds.has(q.id) || isUserCorrect;
+          const isAnswered = isUserCorrect;
           const hasAttempted = selected !== undefined;
           const feedback = getQuizFeedback(q, selected);
 

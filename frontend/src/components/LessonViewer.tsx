@@ -104,7 +104,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   // of them — since quiz state is plain useState (never persisted), navigating away and back means
   // re-answering questions already gotten right. Guards every exit path with one confirmation
   // instead of letting a stray tap on the phone's hardware back button silently discard that.
-  const quizInProgress = quiz.awardedQuizIds.size > 0 && !quiz.quizFullyPassed;
+  const quizInProgress = Object.keys(quiz.selectedAnswers).length > 0 && !quiz.quizFullyPassed;
   // Same risk, same fix, for the progressive/evaluation exercises tabs — checkPracticeExercise()
   // feeds the very same kind of in-memory-only awardedExerciseIds set as the quiz does.
   const totalPracticeExercises = (lesson.progressiveExercises?.length || 0) + practice.evaluationExercises.length;
@@ -714,7 +714,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               lesson={lesson}
               shuffledQuiz={quiz.shuffledQuiz}
               selectedAnswers={quiz.selectedAnswers}
-              awardedQuizIds={quiz.awardedQuizIds}
               recentAnswerId={quiz.recentAnswerId}
               renderArabicText={renderArabicText}
               onSelectOption={quiz.handleSelectOption}

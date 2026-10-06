@@ -2,6 +2,7 @@ import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useLessonQuiz } from './useLessonQuiz';
 import { CourseLesson } from '../../types';
+import { setActiveProgressOwner } from '../../utils/progressOwner';
 
 vi.mock('../preschool/usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
@@ -40,6 +41,7 @@ describe('useLessonQuiz', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     localStorage.clear();
+    setActiveProgressOwner(null);
   });
 
   it('awards XP per correct answer but validates the lesson only at 100%', () => {
@@ -130,9 +132,40 @@ describe('useLessonQuiz', () => {
 
     act(() => {
       result.current.handleResetQuiz();
+    });
+    expect(result.current.selectedAnswers).toEqual({});
+
+    act(() => {
       result.current.handleSelectOption('q1', 'a');
     });
     expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+    expect(result.current.selectedAnswers.q1).toBe('a');
+  });
+
+  it('lets the student replay after reopening a finished quiz, then pays the daily revision bonus', () => {
+    const onCompleteQuiz = vi.fn();
+    const first = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: false, onCompleteQuiz })
+    );
+
+    act(() => {
+      first.result.current.handleSelectOption('q1', 'a');
+      first.result.current.handleSelectOption('q2', 'c');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(2);
+    first.unmount();
+
+    const onRevision = vi.fn();
+    const remounted = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: true, onCompleteQuiz: onRevision })
+    );
+    expect(remounted.result.current.selectedAnswers).toEqual({});
+
+    act(() => {
+      remounted.result.current.handleSelectOption('q1', 'a');
+    });
+    expect(onRevision).toHaveBeenCalledWith('math-1ap-nombres', 5);
+    expect(remounted.result.current.selectedAnswers.q1).toBe('a');
   });
 
   it('awards a single daily revision bonus on a quiz that was already validated', () => {
