@@ -79,6 +79,7 @@ export const navigation = {
   fallbackSubjectName: 'مادة',
   navExamsShort: 'امتحانات',
   navChallengesShort: 'تحديات',
+  navAssessTab: 'أختبر',
 
   backToStudentApp: 'تطبيق التلميذ 🎓',
   backToPrimaryPlatform: 'منصة الابتدائي 🎒',

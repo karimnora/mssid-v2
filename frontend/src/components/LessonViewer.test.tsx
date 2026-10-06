@@ -86,6 +86,7 @@ describe('LessonViewer — printable revision sheet', () => {
     renderViewer();
     fireEvent.click(document.querySelector('[data-lesson-print="true"]') as HTMLElement);
     expect(document.querySelector('.printable-sheet')).toBeTruthy();
+    expect(document.querySelector('.revision-sheet-toolbar')).toBeTruthy();
     expect(screen.getAllByText(/فيشة مراجعة/).length).toBeGreaterThan(0);
   });
 });

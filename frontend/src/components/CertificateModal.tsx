@@ -20,6 +20,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [status, setStatus] = useState<GenerationStatus>('generating');
   const [isSharing, setIsSharing] = useState(false);
+  const [shareError, setShareError] = useState(false);
   const blobRef = useRef<Blob | null>(null);
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
     let cancelled = false;
     setStatus('generating');
     setImageUrl(null);
+    setShareError(false);
     (async () => {
       try {
         const canvas = await renderCertificateCanvas({ childName: childName || 'بطل مَسِيد', grade, badge });
@@ -49,12 +51,15 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
   const handleShare = async () => {
     if (!blobRef.current) return;
     setIsSharing(true);
+    setShareError(false);
     try {
       await shareOrDownloadCertificate(
         blobRef.current,
         `mssid-dz-${badge.id}.png`,
         `حصلت على وسام "${badge.titleAr}" في تطبيق مَسِيد DZ! 🎉`,
       );
+    } catch {
+      setShareError(true);
     } finally {
       setIsSharing(false);
     }
@@ -77,8 +82,9 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
         <div className="flex items-center justify-between p-4 border-b border-[#E7E2D7] shrink-0">
           <h2 className="text-base font-extrabold text-[#5A3B00]">شهادة قابلة للمشاركة 🎉</h2>
           <button
+            type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+            className="hit-target w-12 h-12 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors cursor-pointer shrink-0"
             aria-label="إغلاق"
           >
             <X className="w-5 h-5" />
@@ -104,6 +110,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
 
         <div className="p-4 border-t border-[#E7E2D7] shrink-0">
           <button
+            type="button"
             onClick={handleShare}
             disabled={status !== 'ready' || isSharing}
             className="w-full hit-target rounded-2xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-extrabold text-sm cursor-pointer flex items-center justify-center gap-2 py-3"
@@ -111,6 +118,11 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ badge, child
             {isSharing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Share2 className="w-4 h-4" />}
             <span>مشاركة الشهادة</span>
           </button>
+          {shareError && (
+            <p role="alert" className="text-xs font-bold text-center text-[var(--brand-coral,#C42A23)] mt-2">
+              تعذّر فتح المشاركة. حاول مرة أخرى.
+            </p>
+          )}
         </div>
       </motion.div>
     </motion.div>

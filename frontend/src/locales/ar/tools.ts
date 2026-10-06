@@ -35,10 +35,10 @@ export const tools = {
   cardExploreSubtitle: 'انقر لفتح واستكشاف الأداة',
 
   // OfflinePacksManagerModal.tsx
-  offlineModalTitle: 'إدارة حزم الدروس بدون إنترنت (PWA Offline)',
+  offlineModalTitle: 'ماذا يعمل بدون إنترنت',
   offlineOnlineStatus: 'متصل بالإنترنت',
   offlineOfflineStatus: 'وضع بدون اتصال',
-  offlineModalSubtitle: 'حمّل حزم الدروس مرة واحدة وتعلّم في أي مكان بدون استهلاك البيانات',
+  offlineModalSubtitle: 'هذه النافذة تشرح ما يبقى متاحاً على الجهاز. لا تحميل لحزم دروس.',
   offlineStorageLabel: 'المساحة المستهلكة من ذاكرة الهاتف:',
   offlineStorageValue: '{size} ميغابايت (MB) مُخزنة محلياً',
   offlineSyncButton: 'مزامنة النقاط مع السحابة',

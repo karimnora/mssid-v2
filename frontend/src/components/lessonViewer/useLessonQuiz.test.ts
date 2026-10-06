@@ -39,6 +39,7 @@ const lesson: CourseLesson = {
 describe('useLessonQuiz', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    localStorage.clear();
   });
 
   it('awards XP per correct answer but validates the lesson only at 100%', () => {
@@ -114,5 +115,88 @@ describe('useLessonQuiz', () => {
     });
     expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
     expect(result.current.selectedAnswers.q1).toBe('a');
+  });
+
+  it('does not farm XP again after a reset of an already answered question', () => {
+    const onCompleteQuiz = vi.fn();
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: false, onCompleteQuiz })
+    );
+
+    act(() => {
+      result.current.handleSelectOption('q1', 'a');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+
+    act(() => {
+      result.current.handleResetQuiz();
+      result.current.handleSelectOption('q1', 'a');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+  });
+
+  it('awards a single daily revision bonus on a quiz that was already validated', () => {
+    const onCompleteQuiz = vi.fn();
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson, quizAlreadyValidated: true, onCompleteQuiz })
+    );
+
+    act(() => {
+      result.current.handleSelectOption('q1', 'a');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledWith('math-1ap-nombres', 5);
+
+    act(() => {
+      result.current.handleSelectOption('q2', 'c');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('useLessonQuiz mini-game', () => {
+  const gameLesson: CourseLesson = {
+    ...lesson,
+    id: 'math-1ap-game',
+    educationalGame: {
+      id: 'g1',
+      type: 'quiz_flash',
+      titleAr: 'لعبة',
+      instructionsAr: 'اختر',
+      xpReward: 10,
+      items: [
+        {
+          questionOrPromptAr: '1+1',
+          optionsAr: ['2', '3'],
+          correctAnswerAr: '2',
+        },
+      ],
+    },
+  };
+
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('lets the student correct a wrong mini-game pick and awards XP once', () => {
+    const onCompleteQuiz = vi.fn();
+    const { result } = renderHook(() =>
+      useLessonQuiz({ lesson: gameLesson, quizAlreadyValidated: false, onCompleteQuiz })
+    );
+
+    act(() => {
+      result.current.handleSelectGameOption(0, '3');
+    });
+    expect(onCompleteQuiz).not.toHaveBeenCalled();
+
+    act(() => {
+      result.current.handleSelectGameOption(0, '2');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledWith('math-1ap-game', 10);
+
+    act(() => {
+      result.current.handleSelectGameOption(0, '3');
+    });
+    expect(onCompleteQuiz).toHaveBeenCalledTimes(1);
+    expect(result.current.gameAnswers[0]).toBe('2');
   });
 });

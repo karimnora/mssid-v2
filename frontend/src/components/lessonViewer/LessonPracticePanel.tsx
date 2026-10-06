@@ -122,18 +122,18 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                       let style = playful
                         ? 'bg-sky-50 text-[#1E293B] hover:bg-sky-100 cursor-pointer border border-sky-100'
                         : 'bg-white/10 text-purple-100 hover:bg-white/20 cursor-pointer';
-                      if (isAnswered) {
+                      if (isCorrect) {
                         style = isThisCorrect
                           ? playful
                             ? 'bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold'
                             : 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold'
-                          : isThisSelected
-                          ? playful
-                            ? 'bg-amber-100 text-amber-900 border border-amber-200'
-                            : 'bg-amber-500/25 text-amber-200 border border-amber-400/50'
                           : playful
                             ? 'bg-slate-50 text-slate-400'
                             : 'bg-white/5 text-purple-300/60';
+                      } else if (isThisSelected) {
+                        style = playful
+                          ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                          : 'bg-amber-500/25 text-amber-200 border border-amber-400/50';
                       }
                       return (
                         <div key={optAr} className="flex items-center gap-1 min-w-0">
@@ -147,7 +147,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                           )}
                         <button
                           type="button"
-                          disabled={isAnswered}
+                          disabled={isCorrect}
                           onClick={() => onSelectGameOption(i, optAr)}
                           className={`px-3 py-2 rounded-2xl transition-colors min-h-12 ${style}`}
                         >

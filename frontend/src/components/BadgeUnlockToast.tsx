@@ -67,8 +67,8 @@ export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDis
             <div className="flex items-center gap-1.5 shrink-0">
               {onShare && (
                 <button
-                  onClick={() => onShare(current)}
-                  className="w-6 h-6 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
+                    onClick={() => onShare(current)}
+                  className="hit-target w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
                   aria-label="مشاركة الشهادة"
                 >
                   <Share2 className="w-3.5 h-3.5" />
@@ -76,7 +76,7 @@ export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDis
               )}
               <button
                 onClick={onDismiss}
-                className="w-6 h-6 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
+                className="hit-target w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center cursor-pointer"
                 aria-label="إغلاق"
               >
                 <X className="w-3.5 h-3.5" />

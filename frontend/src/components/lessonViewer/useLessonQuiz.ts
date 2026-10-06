@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { CourseLesson } from '../../types';
 import { playSuccessChime, playGentleNudge } from '../preschool/usePreschoolAudio';
+import {
+  claimDailyLessonRevisionBonus,
+  hasAwardedGameXp,
+  loadAwardedQuestionIds,
+  persistAwardedQuestionId,
+  persistGameXpAwarded,
+} from '../../utils/quizRewards';
 import { shuffleOptions } from './shared';
 
 export function useLessonQuiz(options: {
@@ -33,10 +40,10 @@ export function useLessonQuiz(options: {
   useEffect(() => {
     setVisibleSolutions({});
     setSelectedAnswers({});
-    setAwardedQuizIds(new Set());
+    setAwardedQuizIds(new Set(loadAwardedQuestionIds(lesson.id)));
     setRecentAnswerId(null);
     setGameAnswers({});
-    setGameXpAwarded(false);
+    setGameXpAwarded(hasAwardedGameXp(lesson.id));
     initializeShuffledQuiz();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);
@@ -60,7 +67,14 @@ export function useLessonQuiz(options: {
     setRecentAnswerId(questionId);
     if (isCorrect) playSuccessChime(); else playGentleNudge();
     if (isCorrect) {
-      onCompleteQuiz(lesson.id, quizAlreadyValidated ? 5 : 15);
+      if (quizAlreadyValidated) {
+        if (claimDailyLessonRevisionBonus(lesson.id)) {
+          onCompleteQuiz(lesson.id, 5);
+        }
+      } else {
+        onCompleteQuiz(lesson.id, 15);
+        persistAwardedQuestionId(lesson.id, questionId);
+      }
       const newAwarded = new Set(awardedQuizIds).add(questionId);
       setAwardedQuizIds(newAwarded);
       if (!quizAlreadyValidated && newAwarded.size === currentQuiz.length) {
@@ -70,16 +84,16 @@ export function useLessonQuiz(options: {
   };
 
   const handleSelectGameOption = (itemIndex: number, optionAr: string) => {
-    if (gameAnswers[itemIndex] !== undefined) return;
+    const game = lesson.educationalGame;
+    if (!game) return;
+    const alreadyCorrect = gameAnswers[itemIndex] === game.items[itemIndex]?.correctAnswerAr;
+    if (alreadyCorrect) return;
     setGameAnswers((prev) => {
       const next = { ...prev, [itemIndex]: optionAr };
-      const game = lesson.educationalGame;
-      if (game && !gameXpAwarded && Object.keys(next).length === game.items.length) {
-        const allCorrect = game.items.every((item, i) => next[i] === item.correctAnswerAr);
-        if (allCorrect) {
-          setGameXpAwarded(true);
-          onCompleteQuiz(lesson.id, game.xpReward);
-        }
+      if (!gameXpAwarded && game.items.every((item, i) => next[i] === item.correctAnswerAr)) {
+        setGameXpAwarded(true);
+        persistGameXpAwarded(lesson.id);
+        onCompleteQuiz(lesson.id, game.xpReward);
       }
       return next;
     });
@@ -88,7 +102,6 @@ export function useLessonQuiz(options: {
   const handleResetQuiz = () => {
     setSelectedAnswers({});
     setRecentAnswerId(null);
-    setAwardedQuizIds(new Set());
     initializeShuffledQuiz();
   };
 

@@ -9,6 +9,7 @@ import {
   isFlagOverridden,
 } from '../../featureFlags';
 import { springBootApi } from '../../services/springBootApi';
+import { AndroidReleaseSettings } from './AndroidReleaseSettings';
 
 interface FlagMeta {
   labelAr: string;
@@ -205,6 +206,8 @@ export const FeatureFlagsModule: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <AndroidReleaseSettings />
     </div>
   );
 };

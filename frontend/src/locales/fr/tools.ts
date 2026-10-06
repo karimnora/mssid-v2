@@ -38,10 +38,10 @@ export const tools: typeof toolsAr = {
 
 
   // OfflinePacksManagerModal.tsx
-  offlineModalTitle: 'Gestion des packs de cours hors ligne (PWA Offline)',
+  offlineModalTitle: 'Ce qui marche sans Internet',
   offlineOnlineStatus: 'Connecté à Internet',
   offlineOfflineStatus: 'Mode hors ligne',
-  offlineModalSubtitle: 'Télécharge les packs de cours une fois et apprends partout sans consommer de données',
+  offlineModalSubtitle: 'Cet écran explique ce qui reste disponible sur l’appareil. Il ne télécharge pas de packs de cours.',
   offlineStorageLabel: 'Espace utilisé sur la mémoire du téléphone :',
   offlineStorageValue: '{size} mégaoctets (Mo) stockés localement',
   offlineSyncButton: 'Synchroniser les points avec le cloud',

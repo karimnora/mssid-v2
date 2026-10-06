@@ -35,7 +35,7 @@ export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson
       className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm"
     >
       {/* Screen-only toolbar — hidden entirely when printing */}
-      <div className="no-print sticky top-0 z-10 flex items-center justify-between gap-3 bg-[var(--app-card-bg)] border-b border-[var(--app-card-border)] px-4 py-3">
+      <div className="revision-sheet-toolbar no-print sticky top-0 z-10 flex items-center justify-between gap-3 bg-[var(--app-card-bg)] border-b border-[var(--app-card-border)] px-4 py-3">
         <Button variant="ghost" size="sm" icon={<X className="w-4 h-4" />} onClick={onClose}>
           إغلاق
         </Button>

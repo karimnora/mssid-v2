@@ -58,6 +58,7 @@ public class SecurityConfig {
                         // Admin Console: every visitor's client (not just admins) hydrates local
                         // feature-flag overrides from this at boot — see FeatureFlagController.
                         .requestMatchers(HttpMethod.GET, "/api/v1/feature-flags").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/android-release").permitAll()
                         // T2/T3 bodies live here (out of the JS bundle). The controller itself
                         // returns 403 when the trimester paywall flags are on; while they are off
                         // (free-launch window) guests must still be able to read the lesson.

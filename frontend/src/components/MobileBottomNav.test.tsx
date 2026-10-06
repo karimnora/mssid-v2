@@ -13,20 +13,20 @@ const renderNav = (grade: '1AP' | '5AP') =>
         activeTab="home"
         onSelectTab={vi.fn()}
         onOpenAiTutor={vi.fn()}
-        onOpenProfile={vi.fn()}
         onClearSelectedLesson={vi.fn()}
       />
     </LocaleProvider>
   );
 
 describe('MobileBottomNav', () => {
-  it('shows four tabs plus the AI tutor button on 1AP: home, courses, play, me', () => {
+  it('shows four tabs plus the AI tutor button on 1AP: home, courses, play, assess', () => {
     renderNav('1AP');
     expect(document.querySelector('[data-nav-compact="true"]')).toBeTruthy();
     expect(screen.getByText('الرئيسية')).toBeInTheDocument();
     expect(screen.getByText('الدروس')).toBeInTheDocument();
     expect(screen.getByText('أَلْعَبُ')).toBeInTheDocument();
-    expect(screen.getByText('أَنَا')).toBeInTheDocument();
+    expect(screen.getByText('أختبر')).toBeInTheDocument();
+    expect(screen.queryByText('أَنَا')).not.toBeInTheDocument();
     expect(screen.queryByText('التمارين')).not.toBeInTheDocument();
     expect(screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'المعلم الذكي بالذكاء الاصطناعي' })).toBeInTheDocument();
@@ -41,7 +41,6 @@ describe('MobileBottomNav', () => {
           activeTab="home"
           onSelectTab={vi.fn()}
           onOpenAiTutor={vi.fn()}
-          onOpenProfile={vi.fn()}
           onClearSelectedLesson={vi.fn()}
           showAiTutor={false}
         />
@@ -60,7 +59,6 @@ describe('MobileBottomNav', () => {
           activeTab="home"
           onSelectTab={vi.fn()}
           onOpenAiTutor={onOpenAiTutor}
-          onOpenProfile={vi.fn()}
           onClearSelectedLesson={vi.fn()}
         />
       </LocaleProvider>,
@@ -84,7 +82,6 @@ describe('MobileBottomNav', () => {
           activeTab="courses"
           onSelectTab={vi.fn()}
           onOpenAiTutor={vi.fn()}
-          onOpenProfile={vi.fn()}
           onClearSelectedLesson={vi.fn()}
         />
       </LocaleProvider>,
@@ -93,26 +90,7 @@ describe('MobileBottomNav', () => {
     expect(screen.getByRole('button', { name: 'الرئيسية' })).not.toHaveAttribute('aria-current');
   });
 
-  it('marks Moi as current when the profile is open', () => {
-    render(
-      <LocaleProvider>
-        <MobileBottomNav
-          grade="5AP"
-          selectedSubject="math"
-          activeTab="home"
-          onSelectTab={vi.fn()}
-          onOpenAiTutor={vi.fn()}
-          onOpenProfile={vi.fn()}
-          onClearSelectedLesson={vi.fn()}
-          profileOpen
-        />
-      </LocaleProvider>,
-    );
-    expect(screen.getByRole('button', { name: 'الملف' })).toHaveAttribute('aria-current', 'page');
-    expect(screen.getByRole('button', { name: 'الرئيسية' })).not.toHaveAttribute('aria-current');
-  });
-
-  it('does not mark الدروس as current on the exams view', () => {
+  it('marks أختبر as current on the exams screen', () => {
     render(
       <LocaleProvider>
         <MobileBottomNav
@@ -121,11 +99,11 @@ describe('MobileBottomNav', () => {
           activeTab="exercises"
           onSelectTab={vi.fn()}
           onOpenAiTutor={vi.fn()}
-          onOpenProfile={vi.fn()}
           onClearSelectedLesson={vi.fn()}
         />
       </LocaleProvider>,
     );
+    expect(screen.getByRole('button', { name: 'أختبر' })).toHaveAttribute('aria-current', 'page');
     expect(screen.getByRole('button', { name: 'الدروس' })).not.toHaveAttribute('aria-current');
     expect(screen.getByRole('button', { name: 'الرئيسية' })).not.toHaveAttribute('aria-current');
   });

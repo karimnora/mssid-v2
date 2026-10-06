@@ -38,6 +38,24 @@ describe('normalizeUserProfile', () => {
     const normalized = normalizeUserProfile(legacy as UserProfile);
     expect(normalized.completedLabIds).toEqual([]);
   });
+
+  it('keeps valid XP and lessons when other fields are the wrong type', () => {
+    const salvaged = normalizeUserProfile({
+      name: 'سارة',
+      grade: '3AP',
+      xp: '40',
+      completedLessonIds: ['math-3ap-ok', 12, null],
+      completedExamIds: 'not-an-array',
+      quizScores: { 'math-3ap-ok': 15, bad: 'nope' },
+      lastActiveDate: new Date().toISOString().slice(0, 10),
+    });
+    expect(salvaged.name).toBe('سارة');
+    expect(salvaged.grade).toBe('3AP');
+    expect(salvaged.xp).toBe(40);
+    expect(salvaged.completedLessonIds).toEqual(['math-3ap-ok']);
+    expect(salvaged.completedExamIds).toEqual([]);
+    expect(salvaged.quizScores).toEqual({ 'math-3ap-ok': 15 });
+  });
 });
 
 describe('lesson completion', () => {

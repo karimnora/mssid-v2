@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, ChevronLeft, Settings, ClipboardList, Trophy } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ClipboardList, Settings } from 'lucide-react';
 import { PrimaryGrade } from '../types';
 import { MssidLogo } from './MssidLogo';
 import { useTranslation } from '../hooks/useTranslation';
@@ -31,8 +31,7 @@ interface NavbarProps {
   currentTheme?: HeaderTheme;
   onOpenProfileModal: () => void;
   onOpenSettingsModal: () => void;
-  onOpenExams: () => void;
-  onOpenChallenges: () => void;
+  onOpenAssess?: () => void;
   avatar?: string;
 }
 
@@ -49,8 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentTheme = 'neutre',
   onOpenProfileModal,
   onOpenSettingsModal,
-  onOpenExams,
-  onOpenChallenges,
+  onOpenAssess,
   avatar,
 }) => {
   const t = useTranslation('navigation');
@@ -98,36 +96,21 @@ export const Navbar: React.FC<NavbarProps> = ({
         </motion.button>
 
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          <motion.button
-            type="button"
-            data-nav-exams
-            whileTap={{ scale: 0.95 }}
-            onClick={onOpenExams}
-            className="hit-target px-2 sm:px-3 rounded-2xl bg-[#EFF6FF] border-2 border-[#BFDBFE] text-[#2563EB] flex items-center justify-center gap-1.5 cursor-pointer"
-            aria-label={t('navExamsShort')}
-            title={t('navExamsShort')}
-          >
-            <ClipboardList className="w-5 h-5 shrink-0" />
-            <span className="hidden sm:inline text-xs font-extrabold">{t('navExamsShort')}</span>
-          </motion.button>
+          {onOpenAssess && (
+            <motion.button
+              type="button"
+              data-nav-assess
+              whileTap={{ scale: 0.95 }}
+              onClick={onOpenAssess}
+              className="hidden md:flex hit-target min-h-10 h-10 px-3 rounded-2xl bg-[#EFF6FF] border-2 border-[#BFDBFE] text-[var(--brand-blue)] items-center justify-center gap-1.5 cursor-pointer"
+              aria-label={t('navAssessTab')}
+              title={t('navAssessTab')}
+            >
+              <ClipboardList className="w-5 h-5" />
+              <span className="text-sm font-extrabold">{t('navAssessTab')}</span>
+            </motion.button>
+          )}
 
-          <motion.button
-            type="button"
-            data-nav-challenges
-            whileTap={{ scale: 0.95 }}
-            onClick={onOpenChallenges}
-            className="hit-target px-2 sm:px-3 rounded-2xl bg-[#FFFBEB] border-2 border-[#FDE68A] text-[#D97706] flex items-center justify-center gap-1.5 cursor-pointer"
-            aria-label={t('navChallengesShort')}
-            title={t('navChallengesShort')}
-          >
-            <Trophy className="w-5 h-5 shrink-0" />
-            <span className="hidden sm:inline text-xs font-extrabold">{t('navChallengesShort')}</span>
-          </motion.button>
-
-          {/* Read-only grade indicator, not a button — settings (including grade change) now
-              live behind their own dedicated ⚙️ icon (remonte utilisateur : "je veux désassocier
-              le profile et Réglages dans un nouveau icon ⚙️ dans le header"), so this badge no
-              longer needs to double as an entry point to anything. */}
           <p
             data-nav-grade-readout
             className="hit-target px-3 rounded-2xl bg-[#ECFDF5] border-2 border-[#A7F3D0] text-sm font-extrabold text-[var(--brand-emerald-dark)] flex items-center justify-center"
@@ -148,19 +131,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Settings className="w-5 h-5" />
           </motion.button>
 
-          {/* Desktop-only: MobileBottomNav (with its "Moi" tab, the sole profile entry point on
-              phones) is md:hidden, so without a header button desktop/tablet users would have no
-              way at all to reach the profile — a real gap found live, not a caching issue (the
-              earlier grade-badge/avatar removals only accounted for mobile). Hidden below md so
-              it doesn't reintroduce the redundancy "Moi" already covers on phones. */}
           <motion.button
             type="button"
-            data-nav-desktop-profile
+            data-nav-profile
             whileTap={{ scale: 0.95 }}
             onClick={onOpenProfileModal}
-            className="hidden md:flex hit-target w-10 h-10 rounded-2xl bg-[var(--brand-emerald)] text-white text-lg items-center justify-center cursor-pointer"
+            className="flex hit-target w-10 h-10 rounded-2xl bg-[var(--brand-emerald)] text-white text-lg items-center justify-center cursor-pointer"
             aria-label={t('profile')}
-            title={t('profile')}
+            title={t('meTab')}
           >
             <span aria-hidden>{avatar || '🎓'}</span>
           </motion.button>

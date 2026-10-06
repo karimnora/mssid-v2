@@ -5,6 +5,8 @@ import { PrimaryGrade, SubjectId } from '../types';
 import { HomeworkAssignment } from '../types/ecosystem';
 import { useAuth } from '../context/AuthContext';
 import { springBootApi } from '../services/springBootApi';
+import { openExternalUrl } from '../utils/appPlatform';
+import { copyText } from '../utils/shareContent';
 
 interface HomeworkPinModalProps {
   isOpen: boolean;
@@ -127,17 +129,18 @@ export const HomeworkPinModal: React.FC<HomeworkPinModalProps> = ({
   const handleCopyLink = () => {
     if (!createdHomework) return;
     const shareText = `السلام عليكم، هذا هو رمز الواجب المدرسي عبر منصة مسيد DZ:\n📌 الرمز: ${createdHomework.pinCode}\n📖 العنوان: ${createdHomework.title} (${createdHomework.targetGrade})\n👉 ادخل للمنصة واكتب الرمز لبدء الحل مباشرة!`;
-    navigator.clipboard.writeText(shareText);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
+    void copyText(shareText).then((ok) => {
+      if (ok) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      }
+    });
   };
 
   const handleShareWhatsApp = () => {
     if (!createdHomework) return;
-    const text = encodeURIComponent(
-      `السلام عليكم، هذا هو رمز الواجب المدرسي عبر منصة مسيد DZ:\n📌 الرمز: ${createdHomework.pinCode}\n📖 العنوان: ${createdHomework.title} (${createdHomework.targetGrade})\n👉 افتح منصة مسيد واكتب الرمز!`
-    );
-    window.open(`https://wa.me/?text=${text}`, '_blank');
+    const shareText = `السلام عليكم، هذا هو رمز الواجب المدرسي عبر منصة مسيد DZ:\n📌 الرمز: ${createdHomework.pinCode}\n📖 العنوان: ${createdHomework.title} (${createdHomework.targetGrade})\n👉 افتح منصة مسيد واكتب الرمز!`;
+    openExternalUrl(`https://wa.me/?text=${encodeURIComponent(shareText)}`);
   };
 
   return (

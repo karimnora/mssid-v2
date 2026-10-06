@@ -1,4 +1,5 @@
 import { Badge, PrimaryGrade } from '../types';
+import { shareImageBlob, type ShareOutcome } from './shareContent';
 
 const GRADE_LABEL_AR: Record<PrimaryGrade, string> = {
   '1AP': 'السنة الأولى ابتدائي',
@@ -163,7 +164,7 @@ export function canvasToPngBlob(canvas: HTMLCanvasElement): Promise<Blob> {
   });
 }
 
-export type ShareOutcome = 'shared' | 'downloaded' | 'cancelled';
+export type { ShareOutcome };
 
 /**
  * Shares the PNG through the device's native share sheet (WhatsApp/Facebook Stories included)
@@ -171,25 +172,5 @@ export type ShareOutcome = 'shared' | 'downloaded' | 'cancelled';
  * covers both mobile (share sheet) and desktop (no share target) usage.
  */
 export async function shareOrDownloadCertificate(blob: Blob, filename: string, shareText: string): Promise<ShareOutcome> {
-  const file = new File([blob], filename, { type: 'image/png' });
-
-  if (typeof navigator !== 'undefined' && navigator.canShare?.({ files: [file] }) && navigator.share) {
-    try {
-      await navigator.share({ files: [file], title: 'مَسِيد DZ', text: shareText });
-      return 'shared';
-    } catch (e) {
-      if (e instanceof Error && e.name === 'AbortError') return 'cancelled';
-      // Any other share failure falls through to the download fallback below.
-    }
-  }
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
-  return 'downloaded';
+  return shareImageBlob(blob, filename, shareText);
 }

@@ -9,10 +9,31 @@
 @import "@fontsource/readex-pro/latin-700.css";
 @import "tailwindcss";
 
-/* Preschool screens replace the app shell; leave room for the Android status bar. */
+/* Preschool screens replace the app shell; leave room for the Android status bar.
+   env(safe-area-inset-top) is often 0 in the Capacitor WebView, so keep a 2.5rem floor. */
 @media (max-width: 639px) {
   .preschool-safe-top {
     padding-top: max(2.5rem, calc(env(safe-area-inset-top) + 0.75rem));
+  }
+
+  .kids-modal-overlay,
+  .sheet-print-modal,
+  .certificate-print-modal {
+    padding-top: max(2.5rem, calc(env(safe-area-inset-top) + 0.75rem)) !important;
+    padding-bottom: max(0.75rem, calc(env(safe-area-inset-bottom) + 0.5rem)) !important;
+  }
+
+  /* Sticky print chrome sits at top: 0 of a full-screen overlay — pad the bar itself
+     so it stays below the status bar even after the sheet starts scrolling. */
+  .revision-sheet-toolbar {
+    padding-top: max(2.5rem, calc(env(safe-area-inset-top) + 0.75rem)) !important;
+  }
+
+  .sheet-print-modal .web-dialog-studio,
+  .certificate-print-modal .web-dialog-studio,
+  .certificate-print-modal .web-dialog,
+  .kids-modal-overlay > * {
+    max-height: calc(100svh - 4.75rem);
   }
 }
 

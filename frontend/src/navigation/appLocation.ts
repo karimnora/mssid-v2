@@ -78,7 +78,7 @@ export function parseAppLocation(pathname: string, search = ''): ParsedAppLocati
   }
   if (head === 'admin') return { view: { name: 'admin' }, grade };
   if (head === 'courses') return { view: { name: 'courses' }, grade };
-  if (head === 'exams') return { view: { name: 'exams' }, grade };
+  if (head === 'exams' || head === 'assess') return { view: { name: 'exams' }, grade };
   if (head === 'challenges') return { view: { name: 'challenges' }, grade };
 
   if (head === 'lesson') {
@@ -168,10 +168,8 @@ export function mobileTabForView(view: AppView): MobileTab {
     case 'lesson':
       return 'courses';
     case 'exams':
-      // No exams tab in the 4-item bar — map to the unused 'exercises' slot so الدروس
-      // is not shown as the current page while the child is in examens.
-      return 'exercises';
     case 'challenges':
+      return 'exercises';
     case 'labs':
       return 'games';
   }

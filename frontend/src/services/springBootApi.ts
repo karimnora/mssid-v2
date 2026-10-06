@@ -521,6 +521,19 @@ public async request<T>(
     });
   }
 
+  public async getAndroidRelease() {
+    return this.request<{ latestVersionCode: number; minVersionCode: number }>('/v1/android-release', {
+      method: 'GET',
+    });
+  }
+
+  public async updateAndroidRelease(body: { latestVersionCode?: number; minVersionCode?: number }) {
+    return this.request<{ latestVersionCode: number; minVersionCode: number }>('/v1/admin/android-release', {
+      method: 'PUT',
+      body: JSON.stringify(body),
+    });
+  }
+
   public async updateFeatureFlag(flagKey: string, enabled: boolean) {
     return this.request<any>(`/v1/admin/feature-flags/${flagKey}`, {
       method: 'PUT',

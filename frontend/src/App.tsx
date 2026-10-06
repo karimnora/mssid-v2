@@ -18,8 +18,10 @@ import { HomeView } from './components/HomeView';
 import { DidouVirtualCompanion } from './components/DidouVirtualCompanion';
 import { getDidouEnergyAfterTreat } from './utils/didouCompanion';
 import { Navbar, HeaderTheme } from './components/Navbar';
+import { AssessSwitcher } from './components/AssessSwitcher';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { PwaInstallBanner } from './components/PwaInstallBanner';
+import { AndroidUpdateBanner } from './components/AndroidUpdateBanner';
 import { SeoHead } from './components/SeoHead';
 import { LoadingFallback } from './components/LoadingFallback';
 import { ActiveWorkspace } from './components/ActiveWorkspace';
@@ -32,6 +34,7 @@ import { useAppModals } from './hooks/useAppModals';
 import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
 import { isLabFreeForGuest, isLessonFreeForGuest } from './utils/guestAccess';
 import { isLabSubjectId } from './navigation/appLocation';
+import { lastActivityTitle, readLastActivity, writeLastActivity } from './utils/lastActivity';
 import {
   BookOpen,
   Calculator,
@@ -76,7 +79,7 @@ const THEME_MANUAL_KEY = 'mssid_theme_manual';
 
 export default function App() {
   const { authUser, isAuthLoading } = useAuth();
-  const { direction, t } = useLocaleContext();
+  const { direction, t, locale } = useLocaleContext();
   const modals = useAppModals();
   const progress = useUserProgress({ authUser });
 
@@ -246,6 +249,45 @@ export default function App() {
     nav.setLabsCatalogOpen(true);
   };
 
+  useEffect(() => {
+    const lesson = nav.selectedLesson;
+    if (!lesson) return;
+    writeLastActivity({
+      kind: 'lesson',
+      lessonId: lesson.id,
+      subject: lesson.subject,
+      grade: lesson.grade,
+      titleAr: lesson.titleAr,
+    });
+  }, [nav.selectedLesson]);
+
+  useEffect(() => {
+    if (nav.isHomeActive || nav.mainCategory !== 'labs' || nav.labsCatalogOpen) return;
+    const tool = INTERACTIVE_LABS_LIST.find((item) => item.id === nav.selectedSubject);
+    if (!tool) return;
+    writeLastActivity({
+      kind: 'lab',
+      toolId: tool.id,
+      grade: nav.grade,
+      titleAr: tool.nameAr,
+      titleFr: tool.nameFr,
+    });
+  }, [nav.isHomeActive, nav.mainCategory, nav.labsCatalogOpen, nav.selectedSubject, nav.grade]);
+
+  const storedActivity = readLastActivity();
+  const resumeActivity = storedActivity && storedActivity.grade === nav.grade ? storedActivity : null;
+
+  const handleResumeActivity = () => {
+    const activity = readLastActivity();
+    if (!activity || activity.grade !== nav.grade) return;
+    if (activity.kind === 'lab') {
+      openLabFocused(activity.toolId);
+      return;
+    }
+    const lesson = (coursesData ?? []).find((item) => item.id === activity.lessonId);
+    if (lesson) nav.handleSelectLesson(lesson);
+  };
+
   const handlePrimaryBack = () => {
     if (nav.mainCategory === 'courses' && !nav.selectedLesson && courseStepBackRef.current) {
       courseStepBackRef.current();
@@ -315,9 +357,12 @@ export default function App() {
 
   if (nav.isPreschoolActive) {
     return (
-      <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingPreschool')} minHeight="100vh" />}>
-        <PreschoolApp onExit={() => { nav.setIsPreschoolActive(false); nav.goHome(); }} />
-      </Suspense>
+      <>
+        <AndroidUpdateBanner />
+        <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingPreschool')} minHeight="100vh" />}>
+          <PreschoolApp onExit={() => { nav.setIsPreschoolActive(false); nav.goHome(); }} />
+        </Suspense>
+      </>
     );
   }
 
@@ -325,6 +370,7 @@ export default function App() {
     <div className="min-h-screen print:min-h-0 font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] print:pb-0 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
       <SeoHead />
       <PwaInstallBanner />
+      <AndroidUpdateBanner />
 
       <Navbar
         currentGrade={nav.grade}
@@ -333,8 +379,7 @@ export default function App() {
         currentTheme={headerTheme}
         onOpenProfileModal={() => modals.setIsProfileModalOpen(true)}
         onOpenSettingsModal={() => modals.setIsSettingsModalOpen(true)}
-        onOpenExams={() => nav.handleSelectPole('exams')}
-        onOpenChallenges={() => nav.handleSelectPole('challenges')}
+        onOpenAssess={() => nav.handleSelectPole('exams')}
         avatar={progress.userProfile.avatar}
       />
 
@@ -373,6 +418,8 @@ export default function App() {
             onOpenHonorCertificates={() => modals.setIsHonorCertificatesOpen(true)}
             onOpenOfflinePacks={() => modals.setIsOfflinePacksOpen(true)}
             onFeedDidou={handleFeedDidou}
+            lastActivityTitle={resumeActivity ? lastActivityTitle(resumeActivity, locale) : null}
+            onResumeActivity={resumeActivity ? handleResumeActivity : undefined}
           />
         ) : (
           <>
@@ -387,6 +434,14 @@ export default function App() {
                   onSelectTool={nav.handleSelectSubject}
                 />
               ) : nav.mainCategory !== 'courses' && (
+                <>
+                {(nav.mainCategory === 'exams' || nav.mainCategory === 'challenges') && (
+                  <AssessSwitcher
+                    active={nav.mainCategory}
+                    onOpenExams={() => nav.handleSelectPole('exams')}
+                    onOpenChallenges={() => nav.handleSelectPole('challenges')}
+                  />
+                )}
                 <div className="border rounded-3xl p-3 shadow-xs flex items-center gap-2 overflow-x-auto transition-colors duration-300 bg-[var(--app-card-bg)] border-[var(--app-card-border)]">
                   {(nav.mainCategory === 'exams' ? OFFICIAL_EXAMS_LIST : CHALLENGES_TAB_LIST).map((subj) => {
                       const IconComp = ICON_MAP[subj.icon] || BookOpen;
@@ -407,6 +462,7 @@ export default function App() {
                       );
                     })}
                 </div>
+                </>
               )}
             </div>
 
@@ -605,10 +661,6 @@ export default function App() {
         onClearSelectedLesson={() => nav.setSelectedLesson(null)}
         onOpenAiTutor={openAiTutor}
         showAiTutor={enableAITutor}
-        onOpenProfile={() => modals.setIsProfileModalOpen(true)}
-        profileOpen={modals.isProfileModalOpen}
-        theme={headerTheme}
-        avatar={progress.userProfile.avatar}
       />
     </div>
   );

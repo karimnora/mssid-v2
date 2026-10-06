@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, BookOpen, Gamepad2 } from 'lucide-react';
+import { Home, BookOpen, Gamepad2, ClipboardList } from 'lucide-react';
 import { PrimaryGrade, SubjectId } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
@@ -13,11 +13,8 @@ interface MobileBottomNavProps {
   onOpenAiTutor: () => void;
   /** When false (admin `enableAITutor` off), the fox entry is hidden. Defaults on. */
   showAiTutor?: boolean;
-  onOpenProfile: () => void;
   onClearSelectedLesson: () => void;
-  profileOpen?: boolean;
   theme?: string;
-  avatar?: string;
 }
 
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
@@ -26,11 +23,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   onSelectTab,
   onOpenAiTutor,
   showAiTutor = true,
-  onOpenProfile,
   onClearSelectedLesson,
-  profileOpen = false,
-  theme = 'dark',
-  avatar,
 }) => {
   const t = useTranslation('navigation');
   const { direction } = useLocaleContext();
@@ -47,7 +40,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   const inactiveTabClass = 'text-[var(--app-text-muted)]';
 
   const tabButton = (
-    tab: 'home' | 'courses' | 'games',
+    tab: 'home' | 'courses' | 'exercises' | 'games',
     icon: React.ReactNode,
     label: string
   ) => (
@@ -55,9 +48,9 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       type="button"
       onClick={() => handleTab(tab)}
       className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-[60px] rounded-2xl transition-colors cursor-pointer ${
-        activeTab === tab && !profileOpen ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
+        activeTab === tab ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
       }`}
-      aria-current={activeTab === tab && !profileOpen ? 'page' : undefined}
+      aria-current={activeTab === tab ? 'page' : undefined}
     >
       {icon}
       <span className="text-[11px] font-extrabold">{label}</span>
@@ -90,18 +83,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       )}
 
       {tabButton('games', <Gamepad2 className="w-5 h-5" />, t('playTab'))}
-      <button
-        type="button"
-        onClick={onOpenProfile}
-        className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-[60px] rounded-2xl transition-colors cursor-pointer ${
-          profileOpen ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
-        }`}
-        aria-current={profileOpen ? 'page' : undefined}
-        aria-label={t('profile')}
-      >
-        <span className="text-[22px] leading-none" aria-hidden>{avatar || '🦊'}</span>
-        <span className="text-[11px] font-extrabold">{t('meTab')}</span>
-      </button>
+      {tabButton('exercises', <ClipboardList className="w-5 h-5" />, t('navAssessTab'))}
     </nav>
   );
 };

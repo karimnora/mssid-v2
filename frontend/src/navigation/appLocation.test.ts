@@ -51,6 +51,13 @@ describe('parseAppLocation', () => {
   it('unknown paths fall back to home instead of a blank screen', () => {
     expect(parseAppLocation('/this-does-not-exist').view).toEqual({ name: 'home' });
   });
+
+  it('maps a leftover /assess bookmark onto exams', () => {
+    expect(parseAppLocation('/assess', '?g=5AP')).toEqual({
+      view: { name: 'exams' },
+      grade: '5AP',
+    });
+  });
 });
 
 describe('serializeAppLocation / toAppHref', () => {
@@ -104,7 +111,7 @@ describe('mobileTabForView / isSafeLessonId', () => {
     expect(mobileTabForView({ name: 'lesson', lessonId: 'x' })).toBe('courses');
     expect(mobileTabForView({ name: 'exams' })).toBe('exercises');
     expect(mobileTabForView({ name: 'labs', toolId: 'geometry' })).toBe('games');
-    expect(mobileTabForView({ name: 'challenges' })).toBe('games');
+    expect(mobileTabForView({ name: 'challenges' })).toBe('exercises');
   });
 
   it('rejects empty or dotted lesson ids', () => {

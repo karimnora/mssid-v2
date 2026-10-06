@@ -83,5 +83,22 @@ describe('Print CSS — mobile dialog shell', () => {
     expect(css).toContain('.kids-modal-body');
     expect(css).toContain('max-height: min(90dvh, calc(100svh - 1.5rem))');
   });
+
+  it('keeps print overlays below the phone status bar when the WebView reports no inset', () => {
+    expect(css).toContain('.sheet-print-modal,');
+    expect(css).toContain('.certificate-print-modal {');
+    expect(css).toContain('.revision-sheet-toolbar {');
+    expect(css).toContain('padding-top: max(2.5rem, calc(env(safe-area-inset-top) + 0.75rem)) !important;');
+  });
+});
+
+describe('Print overlays — exam worksheets use the same sheet-print-modal shell', () => {
+  it('applies sheet-print-modal on the exam worksheet generator overlay', () => {
+    const src = readFileSync(
+      resolve(dirname(fileURLToPath(import.meta.url)), '../components/PrintableWorksheetsGeneratorModal.tsx'),
+      'utf8',
+    );
+    expect(src).toContain('sheet-print-modal');
+  });
 });
 

@@ -7,11 +7,7 @@ import { COURSE_SUBJECTS_LIST, isToolAvailableForGrade } from '../data/subjectsD
 import { DIDOU_OUTFITS_LIST } from '../data/outfitsData';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
-import {
-  ChallengesPoleIcon,
-  ExamsPoleIcon,
-  LabsPoleIcon,
-} from './HomePoleIcons';
+import { LabsPoleIcon } from './HomePoleIcons';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
 import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
@@ -50,6 +46,8 @@ interface HomeViewProps {
   onOpenHonorCertificates?: () => void;
   onOpenOfflinePacks?: () => void;
   onFeedDidou?: (treatId: string, energyBonus: number, xpBonus: number, cost: number) => void;
+  lastActivityTitle?: string | null;
+  onResumeActivity?: () => void;
 }
 
 const SUBJECT_ORDER: SubjectId[] = [
@@ -140,6 +138,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenDressingRoom,
   onOpenHonorCertificates,
   onFeedDidou,
+  lastActivityTitle,
+  onResumeActivity,
 }) => {
   const isGuest = !authUser;
   const isYoung = grade === '1AP' || grade === '2AP';
@@ -276,13 +276,19 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <motion.button
           type="button"
           data-pole="courses"
+          data-home-resume={lastActivityTitle && onResumeActivity ? 'true' : undefined}
           whileTap={{ scale: 0.95 }}
           transition={spring}
-          onClick={() => openSubject('math')}
+          onClick={() => {
+            if (lastActivityTitle && onResumeActivity) onResumeActivity();
+            else openSubject('math');
+          }}
           className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-[var(--kids-grass-2)] font-extrabold text-[14.5px] flex items-center justify-center gap-2"
         >
           <span data-pole-icon="courses" hidden />
-          {t('heroContinueCta')}
+          {lastActivityTitle && onResumeActivity
+            ? t('heroResumeCta', { title: lastActivityTitle })
+            : t('heroContinueCta')}
         </motion.button>
 
         <div className="mt-3.5 h-2 rounded-full bg-white/20 overflow-hidden">
@@ -291,9 +297,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        {!isYoung && (
-          <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
-        )}
+        <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
         </div>
       </section>
 
@@ -371,69 +375,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </motion.div>
           ))}
         </motion.div>
-      </section>
-
-      <section>
-        <div className="flex items-center justify-between mb-3">
-          <button
-            type="button"
-            onClick={() => onSelectPole('exams')}
-            className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
-          >
-            {t('sectionViewAll')}
-          </button>
-          <div className="flex items-center gap-1.5">
-            {showAudio && (
-              <TapSpeakButton
-                snippetKey="home-pole-exams"
-                text={t('poleExamsTitle')}
-                speakingKey={speakingKey}
-                onSpeak={handleSpeak}
-              />
-            )}
-            <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleExamsTitle')} 📝</h2>
-          </div>
-        </div>
-        <motion.button
-          type="button"
-          data-pole="exams"
-          whileTap={{ scale: 0.95 }}
-          transition={spring}
-          onClick={() => onSelectPole('exams')}
-          className="kids-pop kids-card-examens relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3 mb-3"
-        >
-          <CardBlobBackdrop />
-          <div className="relative z-10 min-w-0">
-            <h3 className="text-[15px] font-extrabold">
-              {grade === '1AP' ? t('examPracticeTitle') : grade === '5AP' ? t('examBemTitle') : t('examTrimesterTitle')}
-            </h3>
-            {!isYoung && (
-              <p className="text-[11.5px] text-white/90 mt-0.5">
-                {grade === '5AP' ? t('examBemDesc') : t('examTrimesterDesc')}
-              </p>
-            )}
-          </div>
-          <span data-pole-icon="exams" className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
-            <ExamsPoleIcon className="w-8 h-8" />
-          </span>
-        </motion.button>
-        <motion.button
-          type="button"
-          data-pole="challenges"
-          whileTap={{ scale: 0.95 }}
-          transition={spring}
-          onClick={() => onSelectPole('challenges')}
-          className="kids-pop kids-card-defis relative overflow-hidden w-full rounded-[22px] p-4 text-white text-start flex items-center justify-between gap-3"
-        >
-          <CardBlobBackdrop />
-          <div className="relative z-10 min-w-0">
-            <h3 className="text-[15px] font-extrabold">{t('poleChallengesTitle')}</h3>
-            {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('poleChallengesDesc')}</p>}
-          </div>
-          <span data-pole-icon="challenges" className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center shrink-0">
-            <ChallengesPoleIcon className="w-8 h-8" />
-          </span>
-        </motion.button>
       </section>
 
       <section>

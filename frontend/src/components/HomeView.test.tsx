@@ -42,7 +42,7 @@ describe('HomeView', () => {
     setStoredLocale('ar');
   });
 
-  it('shows the four poles on 1AP like 3AP–5AP', () => {
+  it('shows Didou, courses and labs on 1AP — exams live in the assess tab', () => {
     renderHome('1AP');
     expect(document.querySelector('[data-home-layout="full"]')).toBeTruthy();
     expect(document.querySelector('[data-home-poles="kids"]')).toBeTruthy();
@@ -51,33 +51,13 @@ describe('HomeView', () => {
     expect(screen.getByText(/استكشف الرياضيات/)).toBeInTheDocument();
     expect(screen.getByText(/اللغة العربية/)).toBeInTheDocument();
     expect(screen.getAllByText(/الرياضيات/).length).toBeGreaterThan(0);
-    expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
-    expect(screen.getByText(/بنك الامتحانات/)).toBeInTheDocument();
-    // 1AP has no formal trimester exams (see CLAUDE.md curriculum notes) — the card itself (not the
-    // section header, which stays generic) shows a lighter "in-lesson practice" framing instead of
-    // the exam-bank card used from 2AP up.
-    expect(screen.getByText(/تمارين صغيرة/)).toBeInTheDocument();
+    expect(screen.queryByText(/ساحة التحديات/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/بنك الامتحانات/)).not.toBeInTheDocument();
     expect(screen.getByText(/المختبرات والأدوات/)).toBeInTheDocument();
     expect(document.querySelector('[data-pole-icon="courses"]')).toBeTruthy();
-    expect(document.querySelector('[data-pole-icon="challenges"]')).toBeTruthy();
-    expect(document.querySelector('[data-pole-icon="exams"]')).toBeTruthy();
+    expect(document.querySelector('[data-pole="exams"]')).toBeNull();
+    expect(document.querySelector('[data-pole="challenges"]')).toBeNull();
     expect(document.querySelector('[data-pole-icon="labs"]')).toBeTruthy();
-  });
-
-  // Regression test: HomeView used to silently send 1AP's exam-bank "See all" link and card
-  // straight to the courses pole instead of the exams pole — bypassing ExamsViewer's own friendly
-  // empty state ("1AP : évaluation continue, pas d'examens officiels" + a button to open courses),
-  // which is exactly what should be shown instead of a confusing unexplained redirect.
-  it('opens the real exams pole for 1AP (not a silent courses redirect)', () => {
-    const onSelectPole = vi.fn();
-    renderHome('1AP', { onSelectPole });
-
-    const examsPoleCard = document.querySelector('[data-pole="exams"]');
-    expect(examsPoleCard).toBeTruthy();
-    fireEvent.click(examsPoleCard as Element);
-
-    expect(onSelectPole).not.toHaveBeenCalledWith('courses');
-    expect(onSelectPole).toHaveBeenCalledWith('exams');
   });
 
   it('opens math lessons from the explicitly labeled math CTA', () => {
@@ -102,18 +82,18 @@ describe('HomeView', () => {
     expect(screen.queryByText(/تيفيناغ/)).toBeNull();
   });
 
-  it('shows the four poles on 2AP', () => {
+  it('shows courses and labs on 2AP without exam cards', () => {
     renderHome('2AP');
     expect(document.querySelector('[data-home-layout="full"]')).toBeTruthy();
-    expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
+    expect(screen.queryByText(/ساحة التحديات/)).not.toBeInTheDocument();
     expect(screen.getByText(/المختبرات والأدوات/)).toBeInTheDocument();
   });
 
-  it('keeps the four poles on 5AP', () => {
+  it('keeps the home poles without exams on 5AP', () => {
     renderHome('5AP');
     expect(document.querySelector('[data-home-layout="full"]')).toBeTruthy();
-    expect(screen.getByText(/ساحة التحديات/)).toBeInTheDocument();
-    expect(screen.getByText(/بنك الامتحانات/)).toBeInTheDocument();
+    expect(screen.queryByText(/ساحة التحديات/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/بنك الامتحانات/)).not.toBeInTheDocument();
   });
 
   it('shows the preschool card fully in French without a crushed row', () => {
@@ -131,5 +111,25 @@ describe('HomeView', () => {
     young.unmount();
     renderHome('5AP');
     expect(screen.queryByText(/القراءة الصوتية غير متوفرة/)).not.toBeInTheDocument();
+  });
+
+  it('names the XP bar as progress toward the next level, not school mastery', () => {
+    renderHome('5AP', { xp: 99, level: 1 });
+    expect(screen.getByText('نحو المستوى التالي: 99٪')).toBeInTheDocument();
+  });
+
+  it('wraps the bar at 100 XP without sounding like school progress dropped', () => {
+    renderHome('5AP', { xp: 100, level: 2 });
+    expect(screen.getByText('نحو المستوى التالي: 0٪')).toBeInTheDocument();
+    expect(screen.getByText(/المستوى 2/)).toBeInTheDocument();
+  });
+
+  it('offers resume of the last activity without hiding subject cards', () => {
+    const onResumeActivity = vi.fn();
+    renderHome('5AP', { lastActivityTitle: 'الفضاء', onResumeActivity });
+    fireEvent.click(screen.getByRole('button', { name: /متابعة: الفضاء/ }));
+    expect(onResumeActivity).toHaveBeenCalledTimes(1);
+    expect(screen.getByText(/اللغة العربية/)).toBeInTheDocument();
+    expect(screen.getByText(/مراجعة الدروس/)).toBeInTheDocument();
   });
 });

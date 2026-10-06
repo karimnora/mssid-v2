@@ -13,6 +13,10 @@ describe('FeatureFlagsModule — enableTrimesterPaywall dependency on enablePaym
   beforeEach(() => {
     vi.spyOn(springBootApi, 'updateFeatureFlag').mockResolvedValue({ data: {} } as any);
     vi.spyOn(springBootApi, 'deleteFeatureFlagOverride').mockResolvedValue({ data: {} } as any);
+    vi.spyOn(springBootApi, 'getAndroidRelease').mockResolvedValue({
+      data: { latestVersionCode: 8, minVersionCode: 0 },
+      status: 200,
+    } as any);
   });
 
   afterEach(() => {
@@ -61,6 +65,13 @@ describe('FeatureFlagsModule — enableTrimesterPaywall dependency on enablePaym
 // never reverted, so the flag stayed silently flipped in that one browser forever. A failed sync
 // must instead roll back to the last server-confirmed state and say why (review externe #6).
 describe('FeatureFlagsModule — rollback on failed server sync', () => {
+  beforeEach(() => {
+    vi.spyOn(springBootApi, 'getAndroidRelease').mockResolvedValue({
+      data: { latestVersionCode: 8, minVersionCode: 0 },
+      status: 200,
+    } as any);
+  });
+
   afterEach(() => {
     resetFeatureFlagOverride('enablePrintablePDFs');
     vi.restoreAllMocks();

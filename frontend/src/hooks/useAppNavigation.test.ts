@@ -129,7 +129,15 @@ describe('mobile footer tab follows the open view', () => {
       result.current.goHome();
       result.current.handleSelectPole('challenges');
     });
-    expect(result.current.mobileTab).toBe('games');
+    expect(result.current.mobileTab).toBe('exercises');
+
+    act(() => {
+      result.current.goHome();
+      result.current.handleMobileTab('exercises');
+    });
+    expect(result.current.mainCategory).toBe('exams');
+    expect(result.current.mobileTab).toBe('exercises');
+    expect(result.current.isHomeActive).toBe(false);
   });
 });
 

@@ -8,8 +8,6 @@ const renderNav = (
   grade: '1AP' | '2AP' | '5AP',
   onOpenProfileModal = vi.fn(),
   onOpenSettingsModal = vi.fn(),
-  onOpenExams = vi.fn(),
-  onOpenChallenges = vi.fn(),
 ) =>
   render(
     <LocaleProvider>
@@ -18,28 +16,21 @@ const renderNav = (
         onHomeClick={vi.fn()}
         onOpenProfileModal={onOpenProfileModal}
         onOpenSettingsModal={onOpenSettingsModal}
-        onOpenExams={onOpenExams}
-        onOpenChallenges={onOpenChallenges}
       />
     </LocaleProvider>
   );
 
 describe('Navbar', () => {
-  it('shows the child chrome on 1AP: logo, a read-only grade indicator, a settings icon, and a desktop-only profile button', () => {
+  it('shows the child chrome on 1AP: logo, a read-only grade indicator, a settings icon, and the profile button', () => {
     renderNav('1AP');
     expect(document.querySelector('[data-nav-child="true"]')).toBeTruthy();
     expect(document.querySelector('[data-nav-grade-readout]')?.textContent).toContain('1AP');
-    // Grade/language/theme/tashkeel/connexion now live in their own SettingsModal, opened from a
-    // dedicated ⚙️ icon (remonte utilisateur : "je veux désassocier le profile et Réglages dans un
-    // nouveau icon ⚙️ dans le header") — the header badge stays purely informational.
     expect(document.querySelector('[data-nav-grade-readout]')?.tagName).toBe('P');
     expect(document.querySelector('[data-nav-avatar]')).toBeNull();
     expect(document.querySelector('[data-nav-settings]')).toBeTruthy();
-    // But MobileBottomNav (and its "Moi" tab) is md:hidden — without this button desktop/tablet
-    // users would have had no way at all to reach the profile (found live, not a caching issue).
-    // It's hidden via a CSS class (`hidden md:flex`), not absent from the DOM, so jsdom still sees
-    // it — real hiding is verified visually, not by this unit test.
-    expect(document.querySelector('[data-nav-desktop-profile]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-profile]')).toBeTruthy();
+    expect(document.querySelector('[data-nav-exams]')).toBeNull();
+    expect(document.querySelector('[data-nav-challenges]')).toBeNull();
     expect(document.querySelector('[data-profile-grade-strip]')).toBeNull();
     expect(document.querySelector('[data-parent-drawer-trigger]')).toBeNull();
     expect(screen.queryByText('تغيير المظهر والثيم')).not.toBeInTheDocument();
@@ -51,10 +42,10 @@ describe('Navbar', () => {
     expect(document.querySelector('[data-nav-grade-readout]')?.textContent).toContain('5AP');
   });
 
-  it('opens the profile from the desktop-only button', () => {
+  it('opens the profile from the header button', () => {
     const onOpenProfileModal = vi.fn();
     renderNav('2AP', onOpenProfileModal);
-    fireEvent.click(document.querySelector('[data-nav-desktop-profile]') as HTMLElement);
+    fireEvent.click(document.querySelector('[data-nav-profile]') as HTMLElement);
     expect(onOpenProfileModal).toHaveBeenCalledTimes(1);
   });
 
@@ -65,13 +56,20 @@ describe('Navbar', () => {
     expect(onOpenSettingsModal).toHaveBeenCalledTimes(1);
   });
 
-  it('opens exams and challenges from the header shortcuts', () => {
-    const onOpenExams = vi.fn();
-    const onOpenChallenges = vi.fn();
-    renderNav('2AP', vi.fn(), vi.fn(), onOpenExams, onOpenChallenges);
-    fireEvent.click(document.querySelector('[data-nav-exams]') as HTMLElement);
-    fireEvent.click(document.querySelector('[data-nav-challenges]') as HTMLElement);
-    expect(onOpenExams).toHaveBeenCalledTimes(1);
-    expect(onOpenChallenges).toHaveBeenCalledTimes(1);
+  it('opens the assess screen from the desktop header button', () => {
+    const onOpenAssess = vi.fn();
+    render(
+      <LocaleProvider>
+        <Navbar
+          currentGrade="5AP"
+          onHomeClick={vi.fn()}
+          onOpenProfileModal={vi.fn()}
+          onOpenSettingsModal={vi.fn()}
+          onOpenAssess={onOpenAssess}
+        />
+      </LocaleProvider>,
+    );
+    fireEvent.click(document.querySelector('[data-nav-assess]') as HTMLElement);
+    expect(onOpenAssess).toHaveBeenCalledTimes(1);
   });
 });

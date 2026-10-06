@@ -4,18 +4,82 @@ import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { incrementDailyObjective } from '../utils/dailyObjective';
 import { applyDidouGoldBonus } from '../utils/didouCompanion';
+import { isValidGrade } from '../navigation/appLocation';
+
+function finiteNumber(value: unknown, fallback: number): number {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (typeof value === 'string' && /^-?\d+(\.\d+)?$/.test(value.trim())) {
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return fallback;
+}
+
+function stringList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((item): item is string => typeof item === 'string' && item.length > 0);
+}
+
+function stringRecord(value: unknown): Record<string, string> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  const out: Record<string, string> = {};
+  for (const [key, entry] of Object.entries(value as Record<string, unknown>)) {
+    if (typeof entry === 'string') out[key] = entry;
+  }
+  return out;
+}
+
+function numberRecord(value: unknown): Record<string, number> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  const out: Record<string, number> = {};
+  for (const [key, entry] of Object.entries(value as Record<string, unknown>)) {
+    const n = finiteNumber(entry, Number.NaN);
+    if (Number.isFinite(n)) out[key] = n;
+  }
+  return out;
+}
+
+/** Keep whatever fields are still typed correctly; never wipe a whole save over one bad property. */
+function salvageUserProfile(raw: unknown, fallbackGrade: PrimaryGrade): UserProfile {
+  const base = createFreshGuestProfile(fallbackGrade);
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return base;
+  const o = raw as Record<string, unknown>;
+  const xp = Math.max(0, finiteNumber(o.xp, base.xp));
+  const grade = isValidGrade(typeof o.grade === 'string' ? o.grade : null) ? o.grade : fallbackGrade;
+  return {
+    ...base,
+    name: typeof o.name === 'string' && o.name.trim() ? o.name : base.name,
+    grade,
+    avatar: typeof o.avatar === 'string' && o.avatar ? o.avatar : base.avatar,
+    xp,
+    goldCoins: o.goldCoins === undefined ? base.goldCoins : Math.max(0, finiteNumber(o.goldCoins, 0)),
+    level: Math.max(1, finiteNumber(o.level, Math.floor(xp / 100) + 1)),
+    streakDays: Math.max(0, finiteNumber(o.streakDays, base.streakDays)),
+    lastActiveDate: typeof o.lastActiveDate === 'string' && o.lastActiveDate
+      ? o.lastActiveDate
+      : base.lastActiveDate,
+    completedLessonIds: stringList(o.completedLessonIds),
+    completedExamIds: stringList(o.completedExamIds),
+    completedChallengeIds: stringList(o.completedChallengeIds),
+    completedGameIds: stringList(o.completedGameIds),
+    completedLabIds: stringList(o.completedLabIds),
+    quizFullyValidatedLessonIds: stringList(o.quizFullyValidatedLessonIds),
+    badges: stringList(o.badges),
+    badgeUnlockedAt: stringRecord(o.badgeUnlockedAt),
+    quizScores: numberRecord(o.quizScores),
+    tashkeelEnabled: typeof o.tashkeelEnabled === 'boolean' ? o.tashkeelEnabled : base.tashkeelEnabled,
+    dailyScreenTimeLimitMinutes: o.dailyScreenTimeLimitMinutes === undefined
+      ? base.dailyScreenTimeLimitMinutes
+      : finiteNumber(o.dailyScreenTimeLimitMinutes, 0),
+    avatarConfig: o.avatarConfig && typeof o.avatarConfig === 'object' && !Array.isArray(o.avatarConfig)
+      ? o.avatarConfig as UserProfile['avatarConfig']
+      : base.avatarConfig,
+  };
+}
 
 /** Back-fills fields added after a profile was first saved to localStorage, and updates the daily streak. */
-export function normalizeUserProfile(raw: UserProfile): UserProfile {
-  const profile: UserProfile = {
-    ...raw,
-    completedExamIds: raw.completedExamIds || [],
-    completedChallengeIds: raw.completedChallengeIds || [],
-    completedGameIds: raw.completedGameIds || [],
-    completedLabIds: raw.completedLabIds || [],
-    quizFullyValidatedLessonIds: raw.quizFullyValidatedLessonIds || [],
-    badgeUnlockedAt: raw.badgeUnlockedAt || {},
-  };
+export function normalizeUserProfile(raw: UserProfile | unknown, fallbackGrade: PrimaryGrade = '1AP'): UserProfile {
+  const profile = salvageUserProfile(raw, fallbackGrade);
 
   const today = new Date().toISOString().slice(0, 10);
   const lastActive = profile.lastActiveDate ? profile.lastActiveDate.slice(0, 10) : null;
@@ -119,6 +183,11 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
         return normalizeUserProfile(JSON.parse(saved));
       } catch (e) {
         console.error('Failed to parse user profile:', e);
+        try {
+          window.localStorage.setItem('mssid_user_profile_backup', saved);
+        } catch {
+          // Ignore quota — a fresh guest profile is still preferable to a crash.
+        }
       }
     }
     return createFreshGuestProfile('1AP');

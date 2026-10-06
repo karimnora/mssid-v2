@@ -81,6 +81,7 @@ export const navigation: typeof navigationAr = {
   fallbackSubjectName: 'Matière',
   navExamsShort: 'Examens',
   navChallengesShort: 'Défis',
+  navAssessTab: "J'évalue",
 
   backToStudentApp: "Application élève 🎓",
   backToPrimaryPlatform: 'Plateforme du primaire 🎒',

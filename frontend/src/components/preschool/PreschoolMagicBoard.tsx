@@ -4,6 +4,7 @@ import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/prescho
 import { playSuccessChime, playBubblePop, usePreschoolSpeech } from './usePreschoolAudio';
 import { SensoryTapGame } from './SensoryTapGame';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { shareImageBlob } from '../../utils/shareContent';
 
 interface PreschoolMagicBoardProps {
   language: PreschoolLanguage;
@@ -411,14 +412,36 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   const downloadDrawing = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    const send = async (blob: Blob) => {
+      try {
+        await shareImageBlob(blob, `dessin-enfant-${Date.now()}.png`, 'رسمة من مَسِيد DZ 🎨');
+        setDownloadFeedback('started');
+        playSuccessChime();
+        speak(language === 'ar' ? 'بَدَأَ تَنْزِيلُ الرَّسْمَةِ!' : language === 'fr' ? 'Le téléchargement du dessin a commencé !' : 'Your drawing download has started!');
+      } catch {
+        setDownloadFeedback('error');
+      }
+    };
+
+    if (typeof canvas.toBlob === 'function') {
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          setDownloadFeedback('error');
+          return;
+        }
+        void send(blob);
+      }, 'image/png');
+      return;
+    }
+
     try {
-      const link = document.createElement('a');
-      link.download = `dessin-enfant-${Date.now()}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-      setDownloadFeedback('started');
-      playSuccessChime();
-      speak(language === 'ar' ? 'بَدَأَ تَنْزِيلُ الرَّسْمَةِ!' : language === 'fr' ? 'Le téléchargement du dessin a commencé !' : 'Your drawing download has started!');
+      const dataUrl = canvas.toDataURL('image/png');
+      const comma = dataUrl.indexOf(',');
+      const binary = atob(comma >= 0 ? dataUrl.slice(comma + 1) : '');
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+      void send(new Blob([bytes], { type: 'image/png' }));
     } catch {
       setDownloadFeedback('error');
     }

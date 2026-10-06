@@ -16,8 +16,11 @@ export function isInstalledWebApp(): boolean {
     (navigator as Navigator & { standalone?: boolean }).standalone === true;
 }
 
+export function openExternalUrl(url: string): void {
+  window.open(url, Capacitor.isNativePlatform() ? '_self' : '_blank', 'noopener,noreferrer');
+}
+
 export function openGooglePlay(): void {
   // Capacitor delegates external HTTPS navigation to Android's ACTION_VIEW.
-  // This URL also works in a browser when the Play Store cannot handle it.
-  window.open(PLAY_STORE_URL, Capacitor.isNativePlatform() ? '_self' : '_blank', 'noopener,noreferrer');
+  openExternalUrl(PLAY_STORE_URL);
 }

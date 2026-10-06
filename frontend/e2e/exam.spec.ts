@@ -22,7 +22,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('a student can open an exam and mark it complete', async ({ page }) => {
-  await page.locator('[data-pole="exams"]').click();
+  await page.locator('[data-nav-assess]').click();
   await page.getByRole('button', { name: 'الاختبارات الفصلية' }).click();
   await page.locator('[data-exam-subject="math"]').click();
 

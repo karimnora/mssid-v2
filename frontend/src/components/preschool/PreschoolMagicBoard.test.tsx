@@ -1,7 +1,10 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { PreschoolMagicBoard } from './PreschoolMagicBoard';
+
+const share = vi.hoisted(() => ({ shareImageBlob: vi.fn().mockResolvedValue('downloaded') }));
+vi.mock('../../utils/shareContent', () => share);
 
 vi.mock('./usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
@@ -85,22 +88,23 @@ describe('PreschoolMagicBoard — Monde Magique tab', () => {
 });
 
 describe('PreschoolMagicBoard — download feedback', () => {
-  it('shows that the download started without claiming the file was saved', () => {
-    const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
-    const toDataURL = vi.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockReturnValue('data:image/png;base64,abc');
+  it('shows that the download started without claiming the file was saved', async () => {
+    share.shareImageBlob.mockResolvedValue('downloaded');
+    vi.spyOn(HTMLCanvasElement.prototype, 'toBlob').mockImplementation(function (cb) {
+      cb?.(new Blob(['png'], { type: 'image/png' }));
+    } as typeof HTMLCanvasElement.prototype.toBlob);
     render(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
     fireEvent.click(screen.getByText('Télécharger 📥'));
-    expect(click).toHaveBeenCalledOnce();
+    await waitFor(() => expect(share.shareImageBlob).toHaveBeenCalledTimes(1));
     expect(screen.getByRole('status')).toHaveTextContent('Téléchargement lancé. Vérifie tes fichiers ou ta galerie.');
-    click.mockRestore();
-    toDataURL.mockRestore();
   });
 
   it('shows an error when the canvas cannot be exported', () => {
-    const toDataURL = vi.spyOn(HTMLCanvasElement.prototype, 'toDataURL').mockImplementation(() => { throw new Error('canvas unavailable'); });
+    vi.spyOn(HTMLCanvasElement.prototype, 'toBlob').mockImplementation(function (cb) {
+      cb?.(null);
+    } as typeof HTMLCanvasElement.prototype.toBlob);
     render(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
     fireEvent.click(screen.getByText('Télécharger 📥'));
     expect(screen.getByRole('status')).toHaveTextContent('Impossible de préparer l’image. Réessaie.');
-    toDataURL.mockRestore();
   });
 });

@@ -398,7 +398,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                         <button
                           type="button"
                           onClick={() => onShareBadge(b)}
-                          className="shrink-0 w-8 h-8 rounded-xl bg-white border-2 border-[#F5D98A] text-[#92400E] flex items-center justify-center cursor-pointer hover:bg-[#FFF3D6]"
+                          className="shrink-0 hit-target w-12 h-12 rounded-xl bg-white border-2 border-[#F5D98A] text-[#92400E] flex items-center justify-center cursor-pointer hover:bg-[#FFF3D6]"
                           aria-label={`مشاركة وسام ${b.titleAr}`}
                         >
                           <Share2 className="w-4 h-4" />
