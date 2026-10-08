@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { PreschoolActivityPlayer } from './PreschoolActivityPlayer';
 import { NUMBERS_MODULE_0_TO_10 } from '../../data/preschool/numbersModule';
+import { LETTERS_MODULE_START } from '../../data/preschool/lettersModule';
 
 const speak = vi.fn();
 
@@ -14,6 +15,13 @@ vi.mock('./usePreschoolAudio', () => ({
 }));
 
 const activity = NUMBERS_MODULE_0_TO_10.activities[0];
+const traceB = LETTERS_MODULE_START.activities.find((item) => item.id === 'letters-trace-baa')!;
+
+vi.mock('./PreschoolTrace', () => ({
+  PreschoolTrace: ({ onComplete }: { onComplete: (quality?: string) => void }) => (
+    <button type="button" onClick={() => onComplete('tried')}>J’ai essayé</button>
+  ),
+}));
 
 describe('PreschoolActivityPlayer — skip vs complete', () => {
   it('Passer advances without calling onComplete', () => {
@@ -52,6 +60,28 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     expect(speak).toHaveBeenCalledTimes(1);
     vi.advanceTimersByTime(8000);
     expect(speak).toHaveBeenCalledTimes(2);
+    vi.useRealTimers();
+  });
+
+  it('does not congratulate a failed try as if the letter was written', () => {
+    vi.useFakeTimers();
+    speak.mockClear();
+    const onComplete = vi.fn();
+    render(
+      <PreschoolActivityPlayer
+        activity={traceB}
+        language="fr"
+        hasNext
+        onComplete={onComplete}
+        onSkip={vi.fn()}
+        onExit={vi.fn()}
+      />,
+    );
+    fireEvent.click(screen.getByText('J’ai essayé'));
+    expect(speak).toHaveBeenCalledWith('Bravo d’avoir essayé. On peut recommencer.');
+    expect(speak.mock.calls.some((call) => String(call[0]).includes('Tu as écrit'))).toBe(false);
+    vi.advanceTimersByTime(1300);
+    expect(onComplete).toHaveBeenCalledWith('tried');
     vi.useRealTimers();
   });
 });

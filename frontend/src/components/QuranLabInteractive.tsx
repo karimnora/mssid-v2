@@ -3,7 +3,9 @@ import { BookOpen } from 'lucide-react';
 import { ALL_SHORT_SURAHS, type SurahBand } from '../data/quranShortSurahsCatalog';
 import { QuranMemorizePlayer } from './QuranMemorizePlayer';
 
-const BANDS: { id: SurahBand | 'all'; label: string }[] = [
+type BandFilter = SurahBand | 'all';
+
+const BANDS: { id: BandFilter; label: string }[] = [
   { id: 'all', label: 'الكل' },
   { id: 'preschool', label: 'التحضيري' },
   { id: '1AP', label: '1AP' },
@@ -13,12 +15,14 @@ const BANDS: { id: SurahBand | 'all'; label: string }[] = [
   { id: '5AP', label: '5AP' },
 ];
 
+function surahsForBand(id: BandFilter) {
+  if (id === 'all') return ALL_SHORT_SURAHS;
+  return ALL_SHORT_SURAHS.filter((s) => s.bands.includes(id));
+}
+
 export const QuranLabInteractive: React.FC = () => {
-  const [band, setBand] = useState<SurahBand | 'all'>('preschool');
-  const list = useMemo(
-    () => (band === 'all' ? ALL_SHORT_SURAHS : ALL_SHORT_SURAHS.filter((s) => s.bands.includes(band))),
-    [band],
-  );
+  const [band, setBand] = useState<BandFilter>('preschool');
+  const list = useMemo(() => surahsForBand(band), [band]);
   const [activeId, setActiveId] = useState(list[0]?.id ?? 'fatiha');
   const current = list.find((s) => s.id === activeId) ?? list[0];
 
@@ -41,7 +45,7 @@ export const QuranLabInteractive: React.FC = () => {
             type="button"
             onClick={() => {
               setBand(b.id);
-              const next = b.id === 'all' ? ALL_SHORT_SURAHS[0] : ALL_SHORT_SURAHS.find((s) => s.bands.includes(b.id));
+              const next = surahsForBand(b.id)[0];
               if (next) setActiveId(next.id);
             }}
             className={`px-4 min-h-12 rounded-2xl text-xs font-black cursor-pointer shrink-0 border ${

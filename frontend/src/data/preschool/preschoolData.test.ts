@@ -404,15 +404,17 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     const first = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
     const more = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters-2');
     expect(first?.totalSteps).toBe(14);
-    expect(more?.totalSteps).toBe(25);
+    expect(more?.totalSteps).toBe(28);
     expect(first?.activities.at(-1)?.id).toBe('letters-match-words');
-    expect(more?.activities[0]?.id).toBe('letters-raa-feather');
+    expect(more?.activities[0]?.id).toBe('letters-haa-milk');
     expect(more?.activities.some((a) => a.id === 'letters-listen-faa')).toBe(true);
 
     const n05 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-0-5');
     const n610 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-6-10');
     expect(n05?.activities.map((a) => a.id)).toEqual(['num-0', 'num-1', 'num-2', 'num-3', 'num-4', 'num-5']);
-    expect(n610?.activities.map((a) => a.id)).toEqual(['num-6', 'num-7', 'num-8', 'num-9', 'num-10']);
+    expect(n610?.activities.map((a) => a.id)).toEqual([
+      'num-6', 'num-7', 'num-8-count', 'num-8', 'num-9-count', 'num-9', 'num-10-count', 'num-10',
+    ]);
   });
 
   it('invites the child to say two words in letters, animals, family and Algeria', () => {
@@ -474,6 +476,12 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(alif?.i18n.fr.promptAudio).toMatch(/barre au milieu/i);
     expect(meem?.i18n.fr.promptAudio).toMatch(/montagnes/i);
     expect(more?.activities.find((a) => a.id === 'letters-trace-lam')?.i18n.fr.promptAudio).toMatch(/droite/i);
+    const eTrace = more?.activities.find((a) => a.id === 'letters-trace-faa');
+    expect(eTrace?.i18n.fr.promptAudio).toMatch(/vertical/i);
+    expect(eTrace?.i18n.en.promptAudio).toMatch(/tall line/i);
+    expect(more?.activities.some((a) => a.targetValue === 'ح')).toBe(true);
+    expect(more?.activities.some((a) => a.targetValue === 'خ')).toBe(true);
+    expect(more?.activities.some((a) => a.targetValue === 'ذ')).toBe(true);
   });
 
   it('asks for 3, 4 and 5 among extra objects, not an exact tray empty', () => {
@@ -488,6 +496,28 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(four?.visualAssets.dragItems?.length).toBe(6);
     expect(five?.visualAssets.dropZoneCount).toBe(5);
     expect(five?.visualAssets.dragItems?.length).toBe(7);
+
+    const n610 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-6-10');
+    const six = n610?.activities.find((a) => a.id === 'num-6');
+    const seven = n610?.activities.find((a) => a.id === 'num-7');
+    const eightCount = n610?.activities.find((a) => a.id === 'num-8-count');
+    const nineCount = n610?.activities.find((a) => a.id === 'num-9-count');
+    const tenCount = n610?.activities.find((a) => a.id === 'num-10-count');
+    expect(six?.interactionType).toBe('drag_drop');
+    expect(six?.visualAssets.dropZoneCount).toBe(6);
+    expect((six?.visualAssets.dragItems?.length ?? 0) > 6).toBe(true);
+    expect(seven?.visualAssets.dropZoneCount).toBe(7);
+    expect((seven?.visualAssets.dragItems?.length ?? 0) > 7).toBe(true);
+    expect(eightCount?.interactionType).toBe('drag_drop');
+    expect(eightCount?.visualAssets.dropZoneCount).toBe(8);
+    expect((eightCount?.visualAssets.dragItems?.length ?? 0) > 8).toBe(true);
+    expect(nineCount?.interactionType).toBe('drag_drop');
+    expect((nineCount?.visualAssets.dragItems?.length ?? 0) > 9).toBe(true);
+    expect(tenCount?.interactionType).toBe('drag_drop');
+    expect((tenCount?.visualAssets.dragItems?.length ?? 0) > 10).toBe(true);
+    expect(n610?.activities.find((a) => a.id === 'num-8')?.interactionType).toBe('trace');
+    expect(n610?.activities.find((a) => a.id === 'num-9')?.interactionType).toBe('trace');
+    expect(n610?.activities.find((a) => a.id === 'num-10')?.interactionType).toBe('trace');
   });
 
   it('places the same teddy in front of and behind a box', () => {
@@ -497,8 +527,17 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     const choices = spatial?.visualAssets.choices ?? [];
     expect(choices.map((c) => c.id).sort()).toEqual(['behind', 'front']);
     expect(choices.every((c) => c.asset === '🧸')).toBe(true);
-    expect(choices.find((c) => c.id === 'front')?.stack).toEqual(['📦', '🧸']);
-    expect(choices.find((c) => c.id === 'behind')?.stack).toEqual(['🧸', '📦']);
+    expect(choices.find((c) => c.id === 'front')?.scene).toEqual({ kind: 'front', object: '🧸', landmark: '📦' });
+    expect(choices.find((c) => c.id === 'behind')?.scene).toEqual({ kind: 'behind', object: '🧸', landmark: '📦' });
+
+    const inout = PRESCHOOL_MODULES
+      .find((m) => m.id === 'preschool-logic-spatial')
+      ?.activities.find((a) => a.id === 'logic-inside-outside');
+    expect(inout?.interactionType).toBe('tap_choice');
+    const ballPlaces = inout?.visualAssets.choices ?? [];
+    expect(ballPlaces.every((c) => c.asset === '⚽')).toBe(true);
+    expect(ballPlaces.find((c) => c.id === 'inside')?.scene?.kind).toBe('inside');
+    expect(ballPlaces.find((c) => c.id === 'outside')?.scene?.kind).toBe('outside');
   });
 
   it('has three 3-picture stories and does not claim the whole alphabet on match-words-2', () => {

@@ -43,6 +43,7 @@ const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
   { id: 'educationalCalculator', meta: { labelAr: 'الآلة الحاسبة التعليمية', descriptionAr: 'ON: أداة «الحاسبة التعليمية المفسرة» ظاهرة في قائمة الأدوات. OFF: مخفية تماماً.' } },
   { id: 'writingLab', meta: { labelAr: 'مخبر الكتابة', descriptionAr: 'ON: «أستوديو الكتابة والخط وتتبع الحروف» ظاهر في قائمة الأدوات. OFF: مخفي تماماً.' } },
   { id: 'tamazight', meta: { labelAr: 'اللغة الأمازيغية (تجريبي)', descriptionAr: 'ON: مادة الأمازيغية ودروسها، مختبرها التفاعلي، ومنهاجها الرسمي ظاهرة في الدروس والأدوات. OFF: الثلاثة مخفية تماماً من واجهة التلميذ.' } },
+  { id: 'preschoolParentBilan', meta: { labelAr: '👪 بيلان وليّ التحضيري', descriptionAr: 'ON: أيقونة الولي في ركن الإيقاظ تفتح بوابة حساب ثم بيلاناً لطفل واحد. OFF: الأيقونة والبيلان مخفيان، والطفل يلعب كالمعتاد.' } },
 ];
 
 // Toggle = instant local effect via setFeatureFlagOverride/resetFeatureFlagOverride (unchanged UX,

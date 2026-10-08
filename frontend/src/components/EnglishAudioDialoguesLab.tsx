@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-import { Card, Badge, Button } from './ui';
+import React, { useEffect, useState } from 'react';
+import { Button } from './ui';
 import { speakText } from '../utils/speech';
+import { VoiceEchoBar } from './VoiceEchoBar';
 import {
   ArrowLeft,
-  Globe,
-  Sparkles,
   Volume2,
-  CheckCircle2,
   Trophy,
-  Mic,
   Play,
-  RotateCcw,
-  Languages,
-  HelpCircle,
   Headphones,
 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
@@ -131,6 +125,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(0.9);
   const [activePlayingIndex, setActivePlayingIndex] = useState<number | null>(null);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
+  const [echoLine, setEchoLine] = useState<string>(OFFICIAL_ENGLISH_DIALOGUES[0].dialogue[0]?.textEn ?? '');
 
   const currentDialogue = OFFICIAL_ENGLISH_DIALOGUES.find((d) => d.id === selectedDialogueId) || OFFICIAL_ENGLISH_DIALOGUES[0];
 
@@ -138,8 +133,13 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
   // Android TTS (via Capacitor) as every other lab — calling window.speechSynthesis directly here
   // used to silently fail in the Android app, since the WebView's own speech engine commonly reports
   // zero installed voices (unlike a real Chrome install), unlike the native TTS plugin.
+  useEffect(() => {
+    setEchoLine(currentDialogue.dialogue[0]?.textEn ?? '');
+  }, [currentDialogue.id]);
+
   const speakLine = (text: string, index?: number) => {
     if (typeof index === 'number') setActivePlayingIndex(index);
+    setEchoLine(text);
     speakText(text, 'en-US', playbackSpeed).then(() => {
       setActivePlayingIndex(null);
     });
@@ -288,6 +288,8 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
             );
           })}
         </div>
+
+        <VoiceEchoBar modelText={echoLine} language="en" />
 
         {/* Listening Comprehension Quiz */}
         <div className="p-5 rounded-2xl bg-indigo-500/10 border border-indigo-400/30 space-y-4">

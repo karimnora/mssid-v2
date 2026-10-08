@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { Mic, Square, Volume2 } from 'lucide-react';
 import { PreschoolActivity, PreschoolLanguage, PreschoolStoryFrame } from '../../data/preschool/types';
-import { playGentleNudge, playSuccessChime } from './usePreschoolAudio';
+import { playGentleNudge, playSuccessChime, usePreschoolSpeech } from './usePreschoolAudio';
 import { PreschoolAsset } from './PreschoolAsset';
+import { useVoiceEcho } from '../../hooks/useVoiceEcho';
 
 interface PreschoolStoryOrderProps {
   activity: PreschoolActivity;
@@ -11,6 +13,7 @@ interface PreschoolStoryOrderProps {
 }
 
 const spring = { type: 'spring' as const, stiffness: 420, damping: 22 };
+const hit = 'w-full min-h-[72px] text-base font-black';
 
 function shuffleFrames(list: PreschoolStoryFrame[]): PreschoolStoryFrame[] {
   const copy = [...list];
@@ -29,15 +32,32 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
   const [picked, setPicked] = useState<string[]>([]);
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
+  const [retell, setRetell] = useState(false);
   const doneRef = useRef(false);
+  const echo = useVoiceEcho();
+  const { speak } = usePreschoolSpeech(language);
+
+  const t = (ar: string, fr: string, en: string) =>
+    language === 'ar' ? ar : language === 'fr' ? fr : en;
 
   useEffect(() => {
     setOrder(shuffleFrames(frames));
     setPicked([]);
     setWrongId(null);
     setSolved(false);
+    setRetell(false);
     doneRef.current = false;
+    echo.reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activity.id]);
+
+  useEffect(() => {
+    if (!retell) return;
+    const line = t('اِحْكِ القِصَّة!', 'Raconte l’histoire !', 'Tell the story!');
+    const timer = window.setTimeout(() => speak(line), 250);
+    return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [retell, language]);
 
   const handleTap = (frame: PreschoolStoryFrame) => {
     if (solved || picked.includes(frame.id)) return;
@@ -57,9 +77,90 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
       doneRef.current = true;
       setSolved(true);
       playSuccessChime();
-      setTimeout(onComplete, 700);
+      setTimeout(() => setRetell(true), 700);
     }
   };
+
+  const ordered = [...frames].sort((a, b) => a.order - b.order);
+
+  if (retell) {
+    const micOk = echo.phase !== 'unsupported' && echo.phase !== 'denied';
+    return (
+      <div
+        className="flex flex-col items-center gap-4 w-full max-w-sm rounded-3xl bg-[#FFFBF0] border-2 border-[#E7E2D7] p-4"
+        data-preschool-story="retell"
+      >
+        <p className="text-lg font-black text-center text-[#0f172a]">
+          {t('اِحْكِ القِصَّة', 'Raconte l’histoire', 'Tell the story')}
+        </p>
+        <div className="grid grid-cols-3 gap-2 w-full">
+          {ordered.map((frame) => (
+            <div
+              key={frame.id}
+              className="min-h-24 rounded-3xl bg-white border-4 border-emerald-200 flex flex-col items-center justify-center gap-1 px-1 py-2"
+            >
+              <PreschoolAsset asset={frame.asset} size={44} textClassName="text-3xl leading-none" />
+              <span className="text-[10px] font-black text-[#1E293B] text-center">
+                {frame.caption?.[language]}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {micOk && echo.phase !== 'recording' && (
+          <motion.button
+            type="button"
+            data-preschool-story="record"
+            aria-label={t('سَجِّلْ صَوْتَك', 'Enregistre ta voix', 'Record your voice')}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => void echo.start()}
+            className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
+          >
+            <Mic className="w-7 h-7 shrink-0 text-[#C42A23]" />
+            {t('🎤 أَنَا أَحْكِي', '🎤 Je raconte', '🎤 I tell it')}
+          </motion.button>
+        )}
+        {micOk && echo.phase === 'recording' && (
+          <motion.button
+            type="button"
+            data-preschool-story="stop"
+            aria-label={t('تَوَقَّفْ', 'Stop', 'Stop')}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => echo.stop()}
+            className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#C42A23] text-white`}
+          >
+            <Square className="w-6 h-6 shrink-0" />
+            {t('⏹ تَوَقَّفْ', '⏹ Stop', '⏹ Stop')}
+          </motion.button>
+        )}
+
+        {micOk && (echo.phase === 'ready' || echo.phase === 'playing') && (
+          <motion.button
+            type="button"
+            data-preschool-story="play"
+            aria-label={t('اِسْمَعْ صَوْتَك', 'Écoute ta voix', 'Hear your voice')}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => echo.play()}
+            className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white`}
+          >
+            <Volume2 className="w-7 h-7 shrink-0" />
+            {t('👂 صَوْتِي', '👂 Ma voix', '👂 My voice')}
+          </motion.button>
+        )}
+
+        <motion.button
+          type="button"
+          data-preschool-story="done"
+          aria-label={t('قُلْتُهَا', "C'est dit !", 'I told it')}
+          whileTap={{ scale: 0.95 }}
+          onClick={onComplete}
+          className={`${hit} rounded-3xl px-4 cursor-pointer bg-[#008751] text-white border-2 border-emerald-300`}
+        >
+          {t('قُلْتُهَا', "C'est dit !", 'I told it')}
+        </motion.button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-sm">

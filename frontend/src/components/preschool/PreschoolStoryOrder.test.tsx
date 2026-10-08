@@ -7,6 +7,19 @@ import { STORIES_MODULE } from '../../data/preschool/storiesModule';
 vi.mock('./usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
   playGentleNudge: vi.fn(),
+  usePreschoolSpeech: () => ({ speak: vi.fn(), stop: vi.fn(), hasVoice: true }),
+}));
+
+vi.mock('../../hooks/useVoiceEcho', () => ({
+  useVoiceEcho: () => ({
+    phase: 'unsupported',
+    failed: false,
+    start: vi.fn(),
+    stop: vi.fn(),
+    play: vi.fn(),
+    reset: vi.fn(),
+  }),
+  voiceEchoSupported: () => false,
 }));
 
 vi.mock('motion/react', () => {
@@ -43,6 +56,21 @@ describe('PreschoolStoryOrder', () => {
     fireEvent.click(screen.getByLabelText('Couscous'));
     fireEvent.click(screen.getByLabelText('Content'));
     act(() => { vi.advanceTimersByTime(800); });
+    expect(onComplete).not.toHaveBeenCalled();
+    expect(document.querySelector('[data-preschool-story="retell"]')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: "C'est dit !" }));
     expect(onComplete).toHaveBeenCalledTimes(1);
+  });
+
+  it('hides the mic when recording is unsupported', () => {
+    const activity = STORIES_MODULE.activities[0];
+    render(<PreschoolStoryOrder activity={activity} language="fr" onComplete={vi.fn()} />);
+    fireEvent.click(screen.getByLabelText('Faim'));
+    fireEvent.click(screen.getByLabelText('Couscous'));
+    fireEvent.click(screen.getByLabelText('Content'));
+    act(() => { vi.advanceTimersByTime(800); });
+    expect(document.querySelector('[data-preschool-story="record"]')).toBeNull();
+    expect(screen.getByRole('button', { name: "C'est dit !" })).toBeInTheDocument();
   });
 });

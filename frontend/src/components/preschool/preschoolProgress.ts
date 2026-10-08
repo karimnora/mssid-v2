@@ -1,5 +1,5 @@
 import { localDateKey } from './useDailyChallenge';
-import { PreschoolModule, PreschoolPlayQuality } from '../../data/preschool/types';
+import { isPlaySuccess, PreschoolModule, PreschoolPlayQuality } from '../../data/preschool/types';
 
 const LEGACY_PROGRESS_KEY = 'mssid_preschool_progress';
 const LEGACY_CHALLENGE_KEY = 'mssid_daily_challenge';
@@ -20,7 +20,11 @@ export interface PlayEvent {
   quality: PreschoolPlayQuality;
 }
 
-export type BilanStatus = 'discovered' | 'helped' | 'several';
+export const GUEST_OWNER_ID = 'child-1';
+export const LEGACY_BADGES_KEY = 'mssid_preschool_badges';
+const SINGLE_NAME_KEY = 'mssid_preschool_child_name';
+
+export type BilanStatus = 'discovered' | 'several' | 'tried' | 'skipped' | 'helped';
 
 export interface BilanRow {
   activityId: string;
@@ -60,6 +64,60 @@ function eventsKey(childId: string): string {
 
 export function challengeStorageKey(childId: string): string {
   return `${LEGACY_CHALLENGE_KEY}:${childId}`;
+}
+
+export function badgeStorageKey(ownerId: string): string {
+  return `${LEGACY_BADGES_KEY}:${ownerId}`;
+}
+
+export function progressOwnerId(userId?: number | null): string {
+  return typeof userId === 'number' ? `user-${userId}` : GUEST_OWNER_ID;
+}
+
+export function firstNameOf(nom?: string | null): string {
+  const token = nom?.trim().split(/\s+/)[0] ?? '';
+  return token.slice(0, 24);
+}
+
+function childNameKey(ownerId: string): string {
+  return `${SINGLE_NAME_KEY}:${ownerId}`;
+}
+
+export function loadSingleChildName(ownerId: string): string {
+  if (typeof window === 'undefined') return '';
+  return window.localStorage.getItem(childNameKey(ownerId))?.trim().slice(0, 24) ?? '';
+}
+
+export function saveSingleChildName(ownerId: string, name: string) {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(childNameKey(ownerId), name.trim().slice(0, 24));
+  } catch {
+    /* ignore */
+  }
+}
+
+export function adoptGuestProgressIfEmpty(userId: number) {
+  const dest = progressOwnerId(userId);
+  if (loadProgress(dest).length > 0 || loadEvents(dest).length > 0) return;
+  const guestProgress = loadProgress(GUEST_OWNER_ID);
+  const guestEvents = loadEvents(GUEST_OWNER_ID);
+  if (guestProgress.length) saveProgress(dest, guestProgress);
+  if (guestEvents.length) writeJson(eventsKey(dest), guestEvents);
+  const guestName = loadSingleChildName(GUEST_OWNER_ID);
+  if (guestName && !loadSingleChildName(dest)) saveSingleChildName(dest, guestName);
+  if (typeof window === 'undefined') return;
+  const destChallenge = window.localStorage.getItem(challengeStorageKey(dest));
+  const guestChallenge = window.localStorage.getItem(challengeStorageKey(GUEST_OWNER_ID));
+  if (!destChallenge && guestChallenge) {
+    window.localStorage.setItem(challengeStorageKey(dest), guestChallenge);
+  }
+  const destBadges = window.localStorage.getItem(badgeStorageKey(dest));
+  const guestBadges = window.localStorage.getItem(badgeStorageKey(GUEST_OWNER_ID))
+    ?? window.localStorage.getItem(LEGACY_BADGES_KEY);
+  if (!destBadges && guestBadges) {
+    window.localStorage.setItem(badgeStorageKey(dest), guestBadges);
+  }
 }
 
 function migrateLegacyIfNeeded(childId: string) {
@@ -128,7 +186,7 @@ export function appendEvent(childId: string, event: PlayEvent): PlayEvent[] {
 export function todayPlayIds(events: PlayEvent[], date: string = localDateKey()): string[] {
   const ids = new Set<string>();
   for (const event of events) {
-    if (event.date === date && event.quality !== 'helped') ids.add(event.activityId);
+    if (event.date === date && isPlaySuccess(event.quality)) ids.add(event.activityId);
   }
   return [...ids];
 }
@@ -166,24 +224,65 @@ export function summarizeBilan(
 
   const rows: BilanRow[] = [];
   for (const [activityId, list] of byActivity) {
-    const successes = list.filter((e) => e.quality !== 'helped');
-    const helped = list.some((e) => e.quality === 'helped' || e.quality === 'tried');
+    const successes = list.filter((e) => isPlaySuccess(e.quality));
+    const helped = list.some((e) => e.quality === 'helped');
+    const tried = list.some((e) => e.quality === 'tried');
+    const skipped = list.some((e) => e.quality === 'skipped');
     const last = list[list.length - 1];
     const { title, moduleId } = titleOf(activityId);
-    let status: BilanStatus = 'discovered';
+    let status: BilanStatus | null = null;
     if (successes.length >= 2) status = 'several';
+    else if (successes.length === 1) status = 'discovered';
     else if (helped) status = 'helped';
-    else if (successes.length === 0) continue;
+    else if (tried) status = 'tried';
+    else if (skipped) status = 'skipped';
+    if (!status) continue;
     rows.push({
       activityId,
       moduleId,
       title,
       status,
-      count: successes.length,
+      count: successes.length || list.length,
       lastAt: last.date,
     });
   }
 
   rows.sort((a, b) => b.lastAt.localeCompare(a.lastAt) || b.count - a.count);
   return rows;
+}
+
+export function suggestNextActivity(
+  modules: PreschoolModule[],
+  completedIds: string[],
+  lastActivityId?: string | null,
+): { moduleId: string; activityId: string } | null {
+  const completed = new Set(completedIds);
+  const lastModule = lastActivityId
+    ? modules.find((mod) => mod.activities.some((act) => act.id === lastActivityId))
+    : undefined;
+  const ordered = lastModule
+    ? [lastModule, ...modules.filter((mod) => mod.id !== lastModule.id)]
+    : modules;
+  for (const mod of ordered) {
+    const next = mod.activities.find((act) => !completed.has(act.id));
+    if (next) return { moduleId: mod.id, activityId: next.id };
+  }
+  return null;
+}
+
+export function moduleProgressRows(
+  modules: PreschoolModule[],
+  completedIds: string[],
+  language: 'ar' | 'fr' | 'en',
+): { moduleId: string; title: string; done: number; total: number }[] {
+  return modules
+    .map((mod) => ({
+      moduleId: mod.id,
+      title: mod.titleI18n[language],
+      done: mod.activities.filter((act) => completedIds.includes(act.id)).length,
+      total: mod.activities.length,
+    }))
+    .filter((row) => row.done > 0)
+    .sort((a, b) => b.done / Math.max(b.total, 1) - a.done / Math.max(a.total, 1))
+    .slice(0, 5);
 }

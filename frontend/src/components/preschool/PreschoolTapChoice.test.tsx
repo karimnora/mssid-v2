@@ -5,6 +5,7 @@ import { PreschoolTapChoice } from './PreschoolTapChoice';
 import { NUMBERS_MODULE_0_TO_10 } from '../../data/preschool/numbersModule';
 import { COLORS_MODULE } from '../../data/preschool/colorsModule';
 import { ALGERIA_MODULE } from '../../data/preschool/algeriaModule';
+import { LOGIC_SPATIAL_MODULE } from '../../data/preschool/logicSpatialModule';
 
 vi.mock('./usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
@@ -65,4 +66,26 @@ describe('PreschoolTapChoice', () => {
     expect(screen.queryByText('BR')).toBeNull();
   });
 
+  it('draws front/behind as a side-view scene, not a vertical emoji stack', () => {
+    const frontBehind = LOGIC_SPATIAL_MODULE.activities.find((a) => a.id === 'logic-front-behind')!;
+    const { container } = render(
+      <PreschoolTapChoice activity={frontBehind} language="fr" onComplete={vi.fn()} />,
+    );
+    expect(container.querySelector('[data-spatial-scene="front"]')).toBeTruthy();
+    expect(container.querySelector('[data-spatial-scene="behind"]')).toBeTruthy();
+    expect(container.querySelector('[data-spatial-scene="front"] .flex-col')).toBeNull();
+    expect(container.querySelector('[data-spatial-scene="behind"] .flex-col')).toBeNull();
+  });
+
+  it('shows the same ball inside an open box and beside it', () => {
+    const inout = LOGIC_SPATIAL_MODULE.activities.find((a) => a.id === 'logic-inside-outside')!;
+    const { container } = render(
+      <PreschoolTapChoice activity={inout} language="fr" onComplete={vi.fn()} />,
+    );
+    expect(inout.interactionType).toBe('tap_choice');
+    expect(container.querySelector('[data-spatial-scene="inside"]')).toBeTruthy();
+    expect(container.querySelector('[data-spatial-scene="outside"]')).toBeTruthy();
+    expect(screen.getByLabelText('Dedans')).toBeInTheDocument();
+    expect(screen.getByLabelText('Dehors')).toBeInTheDocument();
+  });
 });

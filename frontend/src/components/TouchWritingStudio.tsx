@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { speakText } from '../utils/speech';
 import { printHtmlDocument } from '../utils/printDocument';
+import { VoiceEchoBar } from './VoiceEchoBar';
 import {
   PenTool,
   RotateCcw,
@@ -1293,6 +1294,13 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
                 <Volume2 className="w-3.5 h-3.5" />
               </button>
             </div>
+            {activeLang !== 'ber' && (
+              <VoiceEchoBar
+                modelText={currentItem.exampleWord}
+                language={activeLang}
+                includeListen={false}
+              />
+            )}
 
             {/* Pedagogical Stroke Hint */}
             <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-right text-xs space-y-1">

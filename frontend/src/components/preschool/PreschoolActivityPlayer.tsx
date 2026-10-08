@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Info, RotateCcw } from 'lucide-react';
-import { PreschoolActivity, PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
+import { isPlaySuccess, PreschoolActivity, PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
 import { PreschoolMascot, MascotMood } from './PreschoolMascot';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
 import { PreschoolDragDrop } from './PreschoolDragDrop';
@@ -90,6 +90,17 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const handleInteractionComplete = (quality: PreschoolPlayQuality = 'done') => {
     interactedRef.current = true;
     qualityRef.current = quality;
+    if (!isPlaySuccess(quality)) {
+      setMood('idle');
+      setShowSuccess(false);
+      speak(t(
+        'أَحْسَنْتَ أَنَّكَ جَرَّبْتَ. نُعِيدُ مَرَّةً أُخْرَى؟',
+        'Bravo d’avoir essayé. On peut recommencer.',
+        'Nice try. We can do it again.',
+      ));
+      window.setTimeout(() => onComplete(qualityRef.current), 1200);
+      return;
+    }
     setMood('happy');
     setShowSuccess(true);
     if (content.successAudio) speak(content.successAudio, content.successAudioSrc);
@@ -194,7 +205,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
             <PreschoolTapChoice activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'drag_drop' && (
-            <PreschoolDragDrop activity={activity} onComplete={handleInteractionComplete} />
+            <PreschoolDragDrop activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
           {activity.interactionType === 'trace' && (
             <PreschoolTrace activity={activity} language={language} onComplete={handleInteractionComplete} />

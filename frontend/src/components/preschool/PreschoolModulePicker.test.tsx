@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { PreschoolModulePicker } from './PreschoolModulePicker';
 import { PRESCHOOL_MODULES } from '../../data/preschool';
+import { resetFeatureFlagOverride, setFeatureFlagOverride } from '../../featureFlags';
 
 vi.mock('./usePreschoolAudio', () => ({
   usePreschoolSpeech: () => ({ speak: vi.fn() }),
@@ -30,6 +31,23 @@ const renderHub = (onSelectSpecialTool = vi.fn(), onSelectModule = vi.fn()) => {
   };
   return render(<Hub />);
 };
+
+const renderPicker = (onOpenParentBilan?: () => void) =>
+  render(
+    <PreschoolModulePicker
+      modules={PRESCHOOL_MODULES}
+      language="fr"
+      completedByModule={{}}
+      onSelectModule={vi.fn()}
+      onSelectSpecialTool={vi.fn()}
+      onExit={vi.fn()}
+      view="home"
+      onViewChange={vi.fn()}
+      learnGroup={null}
+      onLearnGroupChange={vi.fn()}
+      onOpenParentBilan={onOpenParentBilan}
+    />,
+  );
 
 describe('PreschoolModulePicker — 3-door hub', () => {
   it('home shows three doors and hides the learning paths', () => {
@@ -75,6 +93,19 @@ describe('PreschoolModulePicker — 3-door hub', () => {
 
     fireEvent.click(screen.getByText('Jours et mois'));
     expect(onSelectModule).toHaveBeenCalledWith('preschool-calendar');
+  });
+
+  it('hides the parent icon when preschoolParentBilan is off', () => {
+    resetFeatureFlagOverride('preschoolParentBilan');
+    renderPicker(vi.fn());
+    expect(screen.queryByRole('button', { name: 'Espace parent' })).not.toBeInTheDocument();
+  });
+
+  it('shows the parent icon only when preschoolParentBilan is on', () => {
+    setFeatureFlagOverride('preschoolParentBilan', true);
+    renderPicker(vi.fn());
+    expect(screen.getByRole('button', { name: 'Espace parent' })).toBeInTheDocument();
+    resetFeatureFlagOverride('preschoolParentBilan');
   });
 
   it('opens the printable worksheets modal from the home banner', () => {

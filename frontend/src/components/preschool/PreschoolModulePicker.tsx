@@ -10,6 +10,7 @@ import { PreschoolMuteButton } from './PreschoolMuteButton';
 import { PreschoolAsset } from './PreschoolAsset';
 import { PreschoolFlagMark, isFlagEmoji } from './PreschoolFlagMark';
 import { ParentGateButton } from './PreschoolParentBilan';
+import { useFeatureFlag } from '../../hooks/useFeatureFlag';
 
 interface DailyChallengeData {
   items: ChallengeItem[];
@@ -92,6 +93,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [showPrintables, setShowPrintables] = useState(false);
+  const parentBilanEnabled = useFeatureFlag('preschoolParentBilan');
 
   const t = (ar: string, fr: string, en: string) =>
     language === 'ar' ? ar : language === 'fr' ? fr : en;
@@ -224,7 +226,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
               {view === 'home' ? '🚪' : dir === 'rtl' ? '▶' : '◀'}
             </button>
             <PreschoolMuteButton language={language} />
-            {onOpenParentBilan && (
+            {parentBilanEnabled && onOpenParentBilan && (
               <ParentGateButton language={language} onUnlock={onOpenParentBilan} />
             )}
           </div>

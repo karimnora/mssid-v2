@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Badge, Button } from './ui';
 import { speakText } from '../utils/speech';
+import { VoiceEchoBar } from './VoiceEchoBar';
 import {
   Languages,
   Sparkles,
@@ -264,6 +265,9 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
   const [selectedSeqNum, setSelectedSeqNum] = useState<number>(1);
   const [userWritingText, setUserWritingText] = useState<string>('');
   const [writingFeedback, setWritingFeedback] = useState<string | null>(null);
+  const [echoVocab, setEchoVocab] = useState<string>(
+    () => gradeProjects[0]?.sequences[0]?.vocabList[0]?.audioText ?? '',
+  );
 
   const currentProject = gradeProjects.find((p) => p.id === selectedProjectId) || gradeProjects[0];
   const currentSequence = currentProject?.sequences.find((s) => s.number === selectedSeqNum) || currentProject?.sequences[0];
@@ -280,6 +284,10 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
   // Routed through the shared speakText utility so this gets the same reliable native Android TTS
   // (via Capacitor) as other labs, instead of the Android WebView's own window.speechSynthesis,
   // which commonly reports zero installed voices there.
+  useEffect(() => {
+    setEchoVocab(currentSequence?.vocabList[0]?.audioText ?? '');
+  }, [currentProject?.id, currentSequence?.number]);
+
   const speakFrench = (text: string) => {
     speakText(text, 'fr-FR', 0.9);
   };
@@ -436,7 +444,10 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
                   <span className="text-[11px] text-[var(--app-text-muted)]">{item.meaningAr}</span>
                 </div>
                 <button
-                  onClick={() => speakFrench(item.audioText)}
+                  onClick={() => {
+                    setEchoVocab(item.audioText);
+                    speakFrench(item.audioText);
+                  }}
                   className="p-1.5 rounded-lg bg-sky-500/10 text-sky-600 hover:bg-sky-500/20 cursor-pointer"
                   title="Écouter la prononciation"
                 >
@@ -445,6 +456,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
               </div>
             ))}
           </div>
+          <VoiceEchoBar modelText={echoVocab} language="fr" />
         </div>
 
         {/* Grammar & Conjugation Rules */}

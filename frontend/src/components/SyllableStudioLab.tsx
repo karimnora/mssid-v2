@@ -5,6 +5,7 @@ import { canShowFrenchInLab } from '../utils/labGradePolicy';
 import { speakText } from '../utils/speech';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
+import { VoiceEchoBar } from './VoiceEchoBar';
 
 interface SyllableStudioLabProps {
   grade?: PrimaryGrade;
@@ -160,6 +161,11 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
             <Volume2 className="w-6 h-6" />
           </button>
         </div>
+        <VoiceEchoBar
+          modelText={currentWord.word}
+          language={activeTab === 'arabic' ? 'ar' : 'fr'}
+          includeListen={false}
+        />
 
         {!revealed ? (
           <div className="flex items-center justify-center gap-3">

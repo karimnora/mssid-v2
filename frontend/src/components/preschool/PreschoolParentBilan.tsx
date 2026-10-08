@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
-import {
-  BilanRow,
-  PreschoolChildId,
-  PreschoolChildSlot,
-  childDisplayName,
-  saveChildName,
-} from './preschoolProgress';
+import { BilanRow } from './preschoolProgress';
+
+interface ModuleProgressRow {
+  title: string;
+  done: number;
+  total: number;
+}
+
+interface NextStep {
+  title: string;
+  moduleTitle: string;
+}
 
 interface PreschoolParentBilanProps {
   language: PreschoolLanguage;
+  childName: string;
+  accountEmail?: string;
+  todayCount: number;
+  streak: number;
+  completedCount: number;
+  modules: ModuleProgressRow[];
+  nextStep: NextStep | null;
   rows: BilanRow[];
-  slots: PreschoolChildSlot[];
-  activeChildId: PreschoolChildId;
-  onSelectChild: (id: PreschoolChildId) => void;
+  onSaveName: (name: string) => void;
+  onPlayNext?: () => void;
   onClose: () => void;
-  onSlotsChanged: () => void;
 }
 
-const HOLD_MS = 2000;
+function newGateSum() {
+  return {
+    a: 10 + Math.floor(Math.random() * 40),
+    b: 10 + Math.floor(Math.random() * 40),
+  };
+}
 
 export function ParentGateButton({
   language,
@@ -27,62 +42,142 @@ export function ParentGateButton({
   language: PreschoolLanguage;
   onUnlock: () => void;
 }) {
-  const [holding, setHolding] = useState(false);
-  const timerRef = React.useRef<number | null>(null);
+  const [open, setOpen] = useState(false);
+  const [sum, setSum] = useState(newGateSum);
+  const [answer, setAnswer] = useState('');
+  const [error, setError] = useState(false);
 
   const t = (ar: string, fr: string, en: string) =>
     language === 'ar' ? ar : language === 'fr' ? fr : en;
 
-  const startHold = () => {
-    setHolding(true);
-    timerRef.current = window.setTimeout(() => {
-      setHolding(false);
-      onUnlock();
-    }, HOLD_MS);
+  const openGate = () => {
+    setSum(newGateSum());
+    setAnswer('');
+    setError(false);
+    setOpen(true);
   };
 
-  const stopHold = () => {
-    setHolding(false);
-    if (timerRef.current) window.clearTimeout(timerRef.current);
-    timerRef.current = null;
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (Number(answer) === sum.a + sum.b) {
+      setOpen(false);
+      onUnlock();
+    } else {
+      setError(true);
+      setAnswer('');
+    }
   };
 
   return (
-    <button
-      type="button"
-      onPointerDown={startHold}
-      onPointerUp={stopHold}
-      onPointerLeave={stopHold}
-      onPointerCancel={stopHold}
-      aria-label={t('لِلأَبِ وَالأُمّ — اِضْغَطْ مَعِي ثَانِيَتَيْن', 'Pour le parent — rester appuyé 2 secondes', 'For grown-ups — hold 2 seconds')}
-      className={`min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md
-                  text-2xl cursor-pointer border transition-all select-none
-                  ${holding ? 'border-emerald-500 bg-emerald-50 scale-95' : 'border-orange-200 hover:bg-orange-50'}`}
-    >
-      👨‍👩‍👧
-    </button>
+    <>
+      <button
+        type="button"
+        onClick={openGate}
+        aria-label={t('لِلأَبِ وَالأُمّ', 'Espace parent', 'For grown-ups')}
+        className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md
+                    text-2xl cursor-pointer border border-orange-200 hover:bg-orange-50 active:scale-95
+                    transition-all select-none"
+      >
+        👪
+      </button>
+      {open && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/40 flex items-end sm:items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('بَوَّابَةُ الوَلِيّ', 'Espace parent', 'Grown-up gate')}
+        >
+          <form
+            onSubmit={submit}
+            className="w-full max-w-sm rounded-[2rem] bg-[#FFFBF0] border-2 border-[#E7E2D7] shadow-xl p-5 space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="text-lg font-black text-[#0f172a]">
+                {t('بَوَّابَةُ الوَلِيّ', 'Espace parent', 'Grown-up gate')}
+              </h2>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="min-h-12 min-w-12 rounded-2xl bg-white border border-[#E7E2D7] text-xl cursor-pointer"
+                aria-label={t('إِغْلَاق', 'Fermer', 'Close')}
+              >
+                ✕
+              </button>
+            </div>
+            <p className="text-sm font-bold text-slate-600">
+              {t(
+                'هَذَا الْمَكَانُ لِلْكِبَارِ. اُكْتُبْ نَاتِجَ الْجَمْعِ لِلْمُتَابَعَةِ.',
+                'Cet espace est réservé à un adulte. Écrivez le résultat pour continuer.',
+                'This space is for grown-ups. Type the sum to continue.',
+              )}
+            </p>
+            <div className="rounded-2xl bg-[#FFF8E7] border-2 border-[#E7E2D7] p-4 text-center">
+              <span dir="ltr" className="text-2xl font-black text-[#0f172a] font-mono">
+                {sum.a} + {sum.b} = ?
+              </span>
+            </div>
+            <input
+              type="number"
+              inputMode="numeric"
+              autoFocus
+              value={answer}
+              onChange={(e) => {
+                setAnswer(e.target.value);
+                setError(false);
+              }}
+              placeholder={t('اُكْتُبِ النَّاتِج', 'Saisissez le résultat', 'Type the answer')}
+              aria-label={t('اُكْتُبِ النَّاتِج', 'Saisissez le résultat', 'Type the answer')}
+              dir="ltr"
+              className="w-full min-h-12 rounded-2xl border border-[#E7E2D7] px-3 text-center text-lg font-bold"
+            />
+            {error && (
+              <p role="alert" className="text-xs font-bold text-center text-[#C42A23]">
+                {t('إِجَابَةٌ غَيْرُ صَحِيحَةٍ.', 'Réponse incorrecte.', 'Incorrect answer.')}
+              </p>
+            )}
+            <button
+              type="submit"
+              disabled={!answer}
+              className="w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {t('مُتَابَعَة', 'Continuer', 'Continue')}
+            </button>
+          </form>
+        </div>
+      )}
+    </>
   );
 }
 
 export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
-  language, rows, slots, activeChildId, onSelectChild, onClose, onSlotsChanged,
+  language,
+  childName,
+  accountEmail,
+  todayCount,
+  streak,
+  completedCount,
+  modules,
+  nextStep,
+  rows,
+  onSaveName,
+  onPlayNext,
+  onClose,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const t = (ar: string, fr: string, en: string) =>
     language === 'ar' ? ar : language === 'fr' ? fr : en;
-  const [editingId, setEditingId] = useState<PreschoolChildId | null>(null);
-  const [draft, setDraft] = useState('');
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(childName);
+
+  const displayName = childName.trim() || t('طِفْلُكَ', 'Votre enfant', 'Your child');
 
   const statusLabel = (status: BilanRow['status']) => {
     if (status === 'several') return t('عِدَّةَ مَرَّات', 'Plusieurs fois', 'Several times');
     if (status === 'helped') return t('مَعَ مُسَاعَدَة', 'Avec de l’aide', 'With help');
+    if (status === 'tried') return t('مُحَاوَلَة', 'Essai', 'Tried');
+    if (status === 'skipped') return t('تَخَطَّى', 'Passé', 'Skipped');
     return t('اكْتَشَفَ', 'Découvert', 'Discovered');
-  };
-
-  const counts = {
-    discovered: rows.filter((r) => r.status === 'discovered').length,
-    helped: rows.filter((r) => r.status === 'helped').length,
-    several: rows.filter((r) => r.status === 'several').length,
   };
 
   return (
@@ -102,79 +197,71 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
           </button>
         </div>
 
-        <p className="text-sm font-bold text-slate-600">
-          {t(
-            'مَنْ يَلْعَبُ اليَوْم؟ اِضْغَطْ ثَانِيَتَيْنِ لِفَتْحِ هَذِهِ الشَّاشَة.',
-            'Qui joue aujourd’hui ? Cette page s’ouvre en restant appuyé 2 secondes.',
-            'Who is playing today? This page opens with a 2-second hold.',
+        <div className="rounded-2xl bg-white border border-[#E7E2D7] px-4 py-3 space-y-1">
+          <p className="text-lg font-black text-[#0f172a]">{displayName}</p>
+          {accountEmail && (
+            <p className="text-xs font-bold text-slate-500 truncate">{accountEmail}</p>
           )}
-        </p>
-
-        <div className="flex gap-2">
-          {slots.map((slot, index) => {
-            const active = slot.id === activeChildId;
-            return (
+          {editing ? (
+            <div className="flex items-center gap-2 pt-1">
+              <input
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                maxLength={24}
+                className="flex-1 min-h-12 rounded-2xl border border-[#E7E2D7] px-3 text-base"
+                aria-label={t('اسْمُ الطِّفْل', 'Prénom', 'Name')}
+              />
               <button
-                key={slot.id}
                 type="button"
-                onClick={() => onSelectChild(slot.id)}
-                className={`flex-1 min-h-14 rounded-2xl font-black text-sm cursor-pointer border-2 ${
-                  active
-                    ? 'bg-[#008751] text-white border-emerald-700'
-                    : 'bg-white text-[#0f172a] border-[#E7E2D7]'
-                }`}
+                className="min-h-12 px-4 rounded-2xl bg-[#008751] text-white font-black cursor-pointer"
+                onClick={() => {
+                  onSaveName(draft);
+                  setEditing(false);
+                }}
               >
-                {childDisplayName(slot, language, index)}
+                {t('حِفْظ', 'OK', 'Save')}
               </button>
-            );
-          })}
-        </div>
-
-        {slots.map((slot, index) => (
-          slot.id === activeChildId ? (
-            <div key={slot.id} className="flex items-center gap-2">
-              {editingId === slot.id ? (
-                <>
-                  <input
-                    value={draft}
-                    onChange={(e) => setDraft(e.target.value)}
-                    maxLength={24}
-                    className="flex-1 min-h-12 rounded-2xl border border-[#E7E2D7] px-3 text-base"
-                    aria-label={t('اسْمُ الطِّفْل', 'Prénom', 'Name')}
-                  />
-                  <button
-                    type="button"
-                    className="min-h-12 px-4 rounded-2xl bg-[#008751] text-white font-black cursor-pointer"
-                    onClick={() => {
-                      saveChildName(slot.id, draft);
-                      setEditingId(null);
-                      onSlotsChanged();
-                    }}
-                  >
-                    {t('حِفْظ', 'OK', 'Save')}
-                  </button>
-                </>
-              ) : (
-                <button
-                  type="button"
-                  className="text-sm font-bold text-[#2563EB] cursor-pointer"
-                  onClick={() => {
-                    setEditingId(slot.id);
-                    setDraft(slot.name || childDisplayName(slot, language, index));
-                  }}
-                >
-                  {t('تَغْيِيرُ الاِسْم', 'Renommer', 'Rename')}
-                </button>
-              )}
             </div>
-          ) : null
-        ))}
+          ) : (
+            <button
+              type="button"
+              className="text-sm font-bold text-[#2563EB] cursor-pointer"
+              onClick={() => {
+                setDraft(childName);
+                setEditing(true);
+              }}
+            >
+              {t('تَغْيِيرُ الاِسْم', 'Renommer', 'Rename')}
+            </button>
+          )}
+        </div>
 
         <div className="grid grid-cols-3 gap-2">
-          <Stat label={t('اكْتَشَفَ', 'Découvert', 'Discovered')} value={counts.discovered} />
-          <Stat label={t('مَعَ مُسَاعَدَة', 'Avec aide', 'With help')} value={counts.helped} />
-          <Stat label={t('عِدَّةَ مَرَّات', 'Plusieurs fois', 'Several times')} value={counts.several} />
+          <Stat label={t('اليَوْم', 'Aujourd’hui', 'Today')} value={todayCount} />
+          <Stat label={t('الأَيَّامُ تِبَاعًا', 'Série', 'Streak')} value={streak} />
+          <Stat label={t('أَنْجَزَ', 'Réussi', 'Done')} value={completedCount} />
         </div>
+
+        {modules.length > 0 && (
+          <ul className="space-y-2">
+            {modules.map((mod) => (
+              <li key={mod.title} className="rounded-2xl bg-white border border-[#E7E2D7] px-4 py-3">
+                <p className="font-black text-sm text-[#0f172a] truncate">{mod.title}</p>
+                <p className="text-xs font-bold text-slate-500">{mod.done} / {mod.total}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {nextStep && onPlayNext && (
+          <button
+            type="button"
+            onClick={onPlayNext}
+            className="w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer px-4"
+          >
+            {t('الْآتِي:', 'Ensuite :', 'Next:')} {nextStep.title}
+          </button>
+        )}
 
         {rows.length === 0 ? (
           <p className="text-center text-sm font-bold text-slate-500 py-6">

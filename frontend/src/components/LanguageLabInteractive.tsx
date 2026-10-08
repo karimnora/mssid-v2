@@ -5,6 +5,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import type { LanguageInteractiveConfig } from '../types';
+import { VoiceEchoBar } from './VoiceEchoBar';
 
 interface LanguageLabInteractiveProps {
   config: LanguageInteractiveConfig;
@@ -96,6 +97,10 @@ const ConfiguredLanguageTool: React.FC<{ config: LanguageInteractiveConfig; subj
           </div>
           <div className={`bg-slate-950 p-6 rounded-3xl border ${t.detailBorder} space-y-4`}>
             <div dir="ltr" className="text-sm font-mono font-bold text-amber-400 text-right">{config.terms[activeIdx].termAr}</div>
+            <VoiceEchoBar
+              modelText={config.terms[activeIdx].termAr}
+              language={subject === 'french' ? 'fr' : 'en'}
+            />
             <div className={`p-4 ${t.detailBg} rounded-2xl border ${t.detailBorder} space-y-2`}>
               <div className="text-xs font-black text-emerald-400 flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-amber-400" />
@@ -132,7 +137,7 @@ const ConfiguredLanguageTool: React.FC<{ config: LanguageInteractiveConfig; subj
                 ))}
               </div>
             )}
-            <DialogueTurnView turn={turn} theme={t} />
+            <DialogueTurnView turn={turn} theme={t} language={subject === 'french' ? 'fr' : 'en'} />
           </div>
         );
       })()}
@@ -146,7 +151,8 @@ const DialogueTurnView: React.FC<{
   // variant's string properties are distinct literal types (e.g. 'bg-sky-950' vs 'bg-indigo-950'),
   // so narrowing to a single variant here rejected the other at the call site.
   theme: typeof THEME[keyof typeof THEME];
-}> = ({ turn, theme: t }) => {
+  language: 'fr' | 'en';
+}> = ({ turn, theme: t, language }) => {
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 
   return (
@@ -155,6 +161,7 @@ const DialogueTurnView: React.FC<{
       <p dir="ltr" className={`text-sm font-bold text-slate-200 ${t.detailBg} p-4 rounded-2xl border ${t.detailBorder} leading-relaxed text-right`}>
         {turn.lineAr}
       </p>
+      <VoiceEchoBar modelText={turn.lineAr} language={language} />
       <div className="space-y-3">
         {turn.choices.map((choice, cIdx) => (
           <button

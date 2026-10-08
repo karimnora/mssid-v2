@@ -161,7 +161,8 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
   const wroteIt = coverage >= WROTE_COVERAGE;
 
   const finish = (quality: PreschoolPlayQuality) => {
-    playSuccessChime();
+    if (quality === 'tried') playGentleNudge();
+    else playSuccessChime();
     setTimeout(() => onComplete(quality), 700);
   };
 

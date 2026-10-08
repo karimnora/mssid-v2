@@ -9,7 +9,12 @@ export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'ani
 
 export type PreschoolLanguage = 'ar' | 'fr' | 'en';
 
-export type PreschoolPlayQuality = 'done' | 'tried' | 'wrote' | 'helped';
+export type PreschoolPlayQuality = 'done' | 'tried' | 'wrote' | 'helped' | 'skipped';
+
+/** Real mastery only — never a failed try, a skip, or adult help. */
+export function isPlaySuccess(quality: PreschoolPlayQuality): boolean {
+  return quality === 'done' || quality === 'wrote';
+}
 
 export type PreschoolInteractionType =
   | 'tap_choice'     // Tap the correct image / numeral among a few big choices
@@ -71,6 +76,14 @@ export interface PreschoolChoice {
   label?: { ar: string; fr: string; en: string };
   /** Optional stacked glyphs (top → bottom) for spatial scenes (front / behind). */
   stack?: string[];
+  /** Side-view scene: the same object in two real places (front/behind, in/out). */
+  scene?: PreschoolSpatialScene;
+}
+
+export interface PreschoolSpatialScene {
+  kind: 'front' | 'behind' | 'inside' | 'outside';
+  object: string;
+  landmark: string;
 }
 
 export interface PreschoolDragItem {

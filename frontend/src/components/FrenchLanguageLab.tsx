@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { speakText } from '../utils/speech';
+import { VoiceEchoBar } from './VoiceEchoBar';
 import { PrimaryGrade } from '../types';
 import { allowedFrenchTenses, FrenchTense } from '../utils/labGradePolicy';
 import {
@@ -317,6 +318,7 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
   const permittedTenses = allowedFrenchTenses(grade);
   const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production'>(initialTab);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
+  const [echoPhrase, setEchoPhrase] = useState<string>(FRENCH_VERBS_DATABASE[0].verb);
 
   // Conjugator State
   const [selectedVerb, setSelectedVerb] = useState<FrenchVerbData>(FRENCH_VERBS_DATABASE[0]);
@@ -359,11 +361,16 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
   ];
 
   const handleSpeak = (text: string) => {
+    setEchoPhrase(text);
     setSpeakingText(text);
     speakText(text, 'fr-FR', 0.85).then(() => {
       setSpeakingText(null);
     });
   };
+
+  useEffect(() => {
+    setEchoPhrase(selectedVerb.verb);
+  }, [selectedVerb.verb]);
 
   const tenseTitleMap = {
     presents: 'Présent de l\'indicatif (الحَاضِرُ)',
@@ -595,6 +602,8 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
                 })}
               </div>
             </div>
+
+            <VoiceEchoBar modelText={echoPhrase} language="fr" />
 
             {/* Interactive Conjugation Challenge Game */}
             <div className="pt-4 border-t border-slate-800 space-y-4">

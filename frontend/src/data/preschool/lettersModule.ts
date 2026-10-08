@@ -1,11 +1,10 @@
 import { PreschoolActivity, PreschoolModule } from './types';
 
 // "سَفِينَةُ الحُرُوفِ" — Letters and Vocabulary (Arabophone & Multi-language éveil).
-// Teaches 24 of the 28 letters of the Arabic alphabet individually via tap_choice (recognition) and
-// trace (finger-writing), each anchored to a concrete, familiar word/animal so a non-reading child
-// has a picture hook rather than an abstract glyph. ح خ ذ ه are never a target letter — they only
-// ever appear as distractors. Steps 1-14 cover أ ب ت ث ج د س م; steps 15-31 complete the taught set
-// (ر ز ش ص ض ط ظ ع غ ف ق ك ل ن و ي). Closes with a fruit-basket sort, a rhyme /
+// Teaches the 28 Arabic letters via tap_choice (recognition) and trace, each anchored to a
+// familiar picture. ح خ ذ are recognition targets (lookalikes of ج and د), not only distractors.
+// Steps 1-14 cover أ ب ت ث ج د س م; later steps complete the set including ح خ ذ ه ر ز ش ص ض ط ظ
+// ع غ ف ق ك ل ن و ي. Closes with a fruit-basket sort, a rhyme /
 // first-sound discrimination sort (ف vs ك), an expanded letter-to-picture matching game for the
 // second half of the alphabet, and a letter memory game — same depth pattern as the numbers module.
 const LETTERS_CATALOG: PreschoolModule = {
@@ -629,6 +628,147 @@ const LETTERS_CATALOG: PreschoolModule = {
       },
     },
     {
+      id: 'letters-haa-milk',
+      domain: 'letters',
+      targetValue: 'ح',
+      stepNumber: 15,
+      interactionType: 'tap_choice',
+      echoWord: { ar: 'حَلِيب', fr: 'Hibou', en: 'Horse' },
+      i18n: {
+        ar: {
+          title: 'صَيْدُ حَرْفِ الحَاءِ (ح)',
+          promptAudio: 'اِلْمِسْ حَرْفَ الحَاءِ! حَـ.. حَلِيب! بِلَا نُقْطَة، لَيْسَ جِيم وَلَا خَاء!',
+          promptText: 'الحاء بلا نقطة. الجيم نقطة تحت، الخاء نقطة فوق.',
+          successAudio: 'مُمْتَاز! حَـ.. حَلِيب!',
+          image: '🥛',
+          choices: [
+            { id: 'haa', asset: 'ح', isCorrect: true },
+            { id: 'jeem', asset: 'ج', isCorrect: false },
+            { id: 'khaa', asset: 'خ', isCorrect: false },
+          ],
+        },
+        fr: {
+          title: 'La Pêche à la Lettre H',
+          promptAudio: 'Touche la lettre H ! H comme Hibou !',
+          promptText: 'Aidez votre enfant à toucher la lettre H.',
+          successAudio: 'Bravo ! H comme Hibou !',
+          image: '🦉',
+          choices: [
+            { id: 'h', asset: 'H', isCorrect: true },
+            { id: 'h-w0', asset: 'K', isCorrect: false },
+            { id: 'h-w1', asset: 'N', isCorrect: false },
+          ],
+        },
+        en: {
+          title: 'Catch the Letter H',
+          promptAudio: 'Touch the letter H! H for Horse!',
+          promptText: 'Help your child tap the letter H.',
+          successAudio: 'Well done! H for Horse!',
+          image: '🐴',
+          choices: [
+            { id: 'h', asset: 'H', isCorrect: true },
+            { id: 'h-w0', asset: 'K', isCorrect: false },
+            { id: 'h-w1', asset: 'N', isCorrect: false },
+          ],
+        },
+      },
+      visualAssets: { mainSvgOrImage: '🥛' },
+    },
+    {
+      id: 'letters-khaa-bread',
+      domain: 'letters',
+      targetValue: 'خ',
+      stepNumber: 16,
+      interactionType: 'tap_choice',
+      echoWord: { ar: 'خُبْز', fr: 'Xylophone', en: 'Xylophone' },
+      i18n: {
+        ar: {
+          title: 'صَيْدُ حَرْفِ الخَاءِ (خ)',
+          promptAudio: 'اِلْمِسْ حَرْفَ الخَاءِ! خَـ.. خُبْز! نُقْطَةٌ فَوْق!',
+          promptText: 'الخاء نقطة فوق. الجيم نقطة تحت. الحاء بلا نقطة.',
+          successAudio: 'رَائِع! خَـ.. خُبْز!',
+          image: '🍞',
+          choices: [
+            { id: 'khaa', asset: 'خ', isCorrect: true },
+            { id: 'haa', asset: 'ح', isCorrect: false },
+            { id: 'jeem', asset: 'ج', isCorrect: false },
+          ],
+        },
+        fr: {
+          title: 'La Pêche à la Lettre X',
+          promptAudio: 'Touche la lettre X ! X comme Xylophone !',
+          promptText: 'Aidez votre enfant à toucher la lettre X.',
+          successAudio: 'Bravo ! X comme Xylophone !',
+          image: '🎹',
+          choices: [
+            { id: 'x', asset: 'X', isCorrect: true },
+            { id: 'x-w0', asset: 'K', isCorrect: false },
+            { id: 'x-w1', asset: 'Z', isCorrect: false },
+          ],
+        },
+        en: {
+          title: 'Catch the Letter X',
+          promptAudio: 'Touch the letter X! X for Xylophone!',
+          promptText: 'Help your child tap the letter X.',
+          successAudio: 'Well done! X for Xylophone!',
+          image: '🎹',
+          choices: [
+            { id: 'x', asset: 'X', isCorrect: true },
+            { id: 'x-w0', asset: 'K', isCorrect: false },
+            { id: 'x-w1', asset: 'Z', isCorrect: false },
+          ],
+        },
+      },
+      visualAssets: { mainSvgOrImage: '🍞' },
+    },
+    {
+      id: 'letters-thal-wolf',
+      domain: 'letters',
+      targetValue: 'ذ',
+      stepNumber: 17,
+      interactionType: 'tap_choice',
+      echoWord: { ar: 'ذِئْب', fr: 'Zèbre', en: 'Zip' },
+      i18n: {
+        ar: {
+          title: 'صَيْدُ حَرْفِ الذَّالِ (ذ)',
+          promptAudio: 'اِلْمِسْ حَرْفَ الذَّالِ! ذَـ.. ذِئْب! نُقْطَةٌ فَوْق، لَيْسَ دَال!',
+          promptText: 'الذال مثل الدال مع نقطة فوق.',
+          successAudio: 'مُمْتَاز! ذَـ.. ذِئْب!',
+          image: '🐺',
+          choices: [
+            { id: 'thal', asset: 'ذ', isCorrect: true },
+            { id: 'dal', asset: 'د', isCorrect: false },
+            { id: 'zay', asset: 'ز', isCorrect: false },
+          ],
+        },
+        fr: {
+          title: 'La Pêche à la Lettre Y',
+          promptAudio: 'Touche la lettre Y ! Y comme Yo-yo !',
+          promptText: 'Aidez votre enfant à toucher la lettre Y.',
+          successAudio: 'Bravo ! Y comme Yo-yo !',
+          image: '🪀',
+          choices: [
+            { id: 'y', asset: 'Y', isCorrect: true },
+            { id: 'y-w0', asset: 'V', isCorrect: false },
+            { id: 'y-w1', asset: 'W', isCorrect: false },
+          ],
+        },
+        en: {
+          title: 'Catch the Letter Y',
+          promptAudio: 'Touch the letter Y! Y for Yo-yo!',
+          promptText: 'Help your child tap the letter Y.',
+          successAudio: 'Well done! Y for Yo-yo!',
+          image: '🪀',
+          choices: [
+            { id: 'y', asset: 'Y', isCorrect: true },
+            { id: 'y-w0', asset: 'V', isCorrect: false },
+            { id: 'y-w1', asset: 'W', isCorrect: false },
+          ],
+        },
+      },
+      visualAssets: { mainSvgOrImage: '🐺' },
+    },
+    {
       id: 'letters-raa-feather',
       domain: 'letters',
       targetValue: 'ر',
@@ -1149,7 +1289,7 @@ const LETTERS_CATALOG: PreschoolModule = {
         fr: {
           title: 'La Pêche à la Lettre E',
           promptAudio: 'Touche la lettre E ! E comme Éléphant !',
-          promptText: 'Aidez votre enfant à toucher la lettre F.',
+          promptText: 'Aidez votre enfant à toucher la lettre E.',
           successAudio: 'Bravo ! E comme Éléphant !',
           image: '🐘',
           choices: [
@@ -1161,7 +1301,7 @@ const LETTERS_CATALOG: PreschoolModule = {
         en: {
           title: 'Catch the Letter E',
           promptAudio: 'Touch the letter E! E for Elephant!',
-          promptText: 'Help your child tap the letter F.',
+          promptText: 'Help your child tap the letter E.',
           successAudio: 'Well done! E for Elephant!',
           image: '🐘',
           choices: [
@@ -1191,14 +1331,14 @@ const LETTERS_CATALOG: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre E',
-          promptAudio: 'Trace la lettre E avec ton doigt ! Trois barres horizontales !',
+          promptAudio: 'Trace la lettre E avec ton doigt ! Un trait vertical, puis trois barres horizontales !',
           promptText: 'Encouragez l\'enfant à tracer la lettre E.',
           successAudio: 'Très beau tracé ! Tu as écrit E !',
           glyph: 'E',
         },
         en: {
           title: 'Trace the Letter E',
-          promptAudio: 'Trace the letter E with your finger! Three horizontal bars!',
+          promptAudio: 'Trace the letter E with your finger! One tall line, then three horizontal bars!',
           promptText: 'Encourage your child to trace the letter E.',
           successAudio: 'Great trace! You wrote E!',
           glyph: 'E',

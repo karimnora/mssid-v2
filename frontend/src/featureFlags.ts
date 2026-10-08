@@ -9,7 +9,9 @@ export type FeatureFlagName =
   | 'enablePrintablePDFs'
   | 'enableTrimesterPaywall'
   /** When enabled by an administrator, expose only lessons explicitly verified against the curriculum. */
-  | 'curriculumReviewGate';
+  | 'curriculumReviewGate'
+  /** Parent recap in Mode Éveil. Off in prod until the bilan is safe to ship. */
+  | 'preschoolParentBilan';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Off at launch: ship a fully free app first, flip on (via the admin Feature Flags tab) once
@@ -31,6 +33,8 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Kept off while the catalog is reviewed. Before a production release an administrator can turn
   // it on to prevent unverified or complementary content from being presented as school content.
   curriculumReviewGate: false,
+  // Off until the parent bilan (login + one-child recap) is ready for families.
+  preschoolParentBilan: false,
 };
 
 const OVERRIDES_STORAGE_KEY = 'mssid_feature_flag_overrides';

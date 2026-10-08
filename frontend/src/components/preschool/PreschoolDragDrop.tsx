@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { PreschoolActivity } from '../../data/preschool/types';
-import { playGentleNudge, playSuccessChime } from './usePreschoolAudio';
+import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
+import { playGentleNudge, playSuccessChime, usePreschoolSpeech } from './usePreschoolAudio';
 
 interface PreschoolDragDropProps {
   activity: PreschoolActivity;
+  language?: PreschoolLanguage;
   onComplete: () => void;
 }
 
@@ -15,11 +16,24 @@ interface ItemState {
   offset: { x: number; y: number };
 }
 
+const DONE: Record<PreschoolLanguage, string> = {
+  ar: 'أَنَا خَلَّصْت',
+  fr: "J'ai fini",
+  en: "I'm done",
+};
+
+const TOO_SOON: Record<PreschoolLanguage, string> = {
+  ar: 'لَيْسَ بَعْد! عُدَّ مَرَّةً أُخْرَى',
+  fr: 'Pas encore ! Compte encore',
+  en: 'Not yet! Count again',
+};
+
 // Counting via drag-and-drop, built on raw Pointer Events (not HTML5 native drag, which barely works
-// on touch/mobile Safari) so it behaves identically on a parent's or a child's finger, mouse or pen.
-// Success only requires dropping every item near the basket — generous hit-testing (a padded
-// bounding box), never precise pixel targeting, per the "wide tolerance" rule for this age band.
-export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, onComplete }) => {
+// on touch/mobile Safari). The child decides when the collection is complete — "I'm done" — instead
+// of auto-winning at the target count.
+export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
+  activity, language = 'ar', onComplete,
+}) => {
   const dropZoneRef = useRef<HTMLDivElement>(null);
   const dragItems = activity.visualAssets.dragItems || [];
   const [items, setItems] = useState<ItemState[]>(
@@ -28,12 +42,17 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, 
   const draggingId = useRef<string | null>(null);
   const startPos = useRef({ x: 0, y: 0 });
   const completedRef = useRef(false);
+  const [tooSoon, setTooSoon] = useState(false);
+  const { speak } = usePreschoolSpeech(language);
+
+  const target = activity.visualAssets.dropZoneCount || dragItems.length;
+  const hasExtras = dragItems.length > target;
 
   const isOverDropZone = (clientX: number, clientY: number): boolean => {
     const zone = dropZoneRef.current;
     if (!zone) return false;
     const rect = zone.getBoundingClientRect();
-    const padding = 40; // generous hit area — easier for a small, imprecise finger to succeed
+    const padding = 40;
     return (
       clientX >= rect.left - padding &&
       clientX <= rect.right + padding &&
@@ -62,8 +81,6 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, 
     if (!id) return;
 
     const dropped = isOverDropZone(e.clientX, e.clientY);
-    const target = activity.visualAssets.dropZoneCount || dragItems.length;
-    const hasExtras = dragItems.length > target;
     setItems((prev) => {
       if (dropped && hasExtras) {
         const already = prev.filter((it) => it.dropped).length;
@@ -72,34 +89,62 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, 
           return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
         }
       }
-      const next = prev.map((it) => (it.id === id ? { ...it, dropped: dropped ? true : it.dropped, offset: dropped ? it.offset : { x: 0, y: 0 } } : it));
-      const droppedCount = next.filter((it) => it.dropped).length;
-      const enough = hasExtras ? droppedCount === target : droppedCount >= target;
-      if (dropped && enough && !completedRef.current) {
-        completedRef.current = true;
-        playSuccessChime();
-        setTimeout(onComplete, 900);
-      }
-      return next;
+      return prev.map((it) => (
+        it.id === id
+          ? { ...it, dropped: dropped ? true : it.dropped, offset: dropped ? it.offset : { x: 0, y: 0 } }
+          : it
+      ));
     });
+  };
+
+  const returnToTray = (id: string) => {
+    if (completedRef.current) return;
+    setItems((prev) => prev.map((it) => (it.id === id ? { ...it, dropped: false, offset: { x: 0, y: 0 } } : it)));
+  };
+
+  const handleDone = () => {
+    if (completedRef.current) return;
+    const droppedCount = items.filter((it) => it.dropped).length;
+    const enough = hasExtras ? droppedCount === target : droppedCount >= target;
+    if (!enough) {
+      playGentleNudge();
+      speak(TOO_SOON[language]);
+      setTooSoon(true);
+      window.setTimeout(() => setTooSoon(false), 1800);
+      return;
+    }
+    completedRef.current = true;
+    playSuccessChime();
+    setTimeout(onComplete, 900);
   };
 
   const droppedCount = items.filter((it) => it.dropped).length;
 
   return (
-    <div className="flex flex-col items-center gap-8 w-full">
-      {/* Drop zone (basket) */}
+    <div className="flex flex-col items-center gap-6 w-full">
       <div
         ref={dropZoneRef}
-        className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-[2rem] border-4 border-dashed border-amber-400 bg-amber-50 flex items-center justify-center"
+        className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-[2rem] border-4 border-dashed border-amber-400 bg-amber-50 flex flex-col items-center justify-center p-2"
       >
-        <span className="text-7xl select-none" aria-hidden="true">{activity.visualAssets.mainSvgOrImage}</span>
+        <span className="text-6xl select-none" aria-hidden="true">{activity.visualAssets.mainSvgOrImage}</span>
+        <div className="flex flex-wrap items-center justify-center gap-1 min-h-8">
+          {items.filter((it) => it.dropped).map((it) => (
+            <button
+              key={it.id}
+              type="button"
+              onClick={() => returnToTray(it.id)}
+              aria-label={`${it.asset} basket`}
+              className="text-2xl leading-none cursor-pointer min-h-12 min-w-12"
+            >
+              {it.asset}
+            </button>
+          ))}
+        </div>
         <span className="absolute -bottom-3 bg-emerald-500 text-white text-sm font-black px-3 py-1 rounded-full shadow">
-          {droppedCount} / {activity.visualAssets.dropZoneCount || dragItems.length}
+          {droppedCount} / {target}
         </span>
       </div>
 
-      {/* Draggable tray */}
       <div className="flex flex-wrap items-center justify-center gap-4 max-w-sm touch-none">
         {items.filter((it) => !it.dropped).map((it) => (
           <motion.div
@@ -117,6 +162,28 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, 
           </motion.div>
         ))}
       </div>
+
+      {tooSoon && (
+        <p
+          data-preschool-count="nudge"
+          className="w-full max-w-sm text-center text-sm font-black text-[#0f172a]
+                     bg-[#FFF8E7] border-2 border-[#E7E2D7] rounded-2xl px-3 py-2"
+        >
+          {TOO_SOON[language]}
+        </p>
+      )}
+
+      <motion.button
+        type="button"
+        data-preschool-count="done"
+        aria-label={DONE[language]}
+        whileTap={{ scale: 0.95 }}
+        onClick={handleDone}
+        className="w-full max-w-sm min-h-[72px] rounded-3xl px-4 text-lg font-black cursor-pointer
+                   bg-[#008751] text-white border-2 border-emerald-300"
+      >
+        {DONE[language]}
+      </motion.button>
     </div>
   );
 };

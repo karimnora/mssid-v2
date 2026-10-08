@@ -23,6 +23,12 @@ describe('ArabicCanvasInteractive 1AP tashkil', () => {
     expect(screen.queryByText(/محلل الإعراب/)).not.toBeInTheDocument();
   });
 
+  it('offers a listen-then-repeat bar for the haraka sound', () => {
+    render(<ArabicCanvasInteractive lesson={harakatLesson} grade="1AP" />);
+    expect(document.querySelector('[data-voice-echo="bar"]')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'أسمع النموذج' })).toBeInTheDocument();
+  });
+
   it('places a fatha on bāʾ when the child taps the right mark', () => {
     render(<ArabicCanvasInteractive lesson={harakatLesson} grade="1AP" />);
     fireEvent.click(screen.getByRole('button', { name: /فَتْحَةٌ/ }));

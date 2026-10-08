@@ -10,10 +10,10 @@ import {
   Pencil,
   Tag,
   Palette,
-  Volume2,
   Zap,
   Award
 } from 'lucide-react';
+import { VoiceEchoBar } from './VoiceEchoBar';
 import {
   ARABIC_CANVAS_2AP_DEFAULT,
   ARABIC_CANVAS_BY_LESSON,
@@ -69,6 +69,7 @@ const TashkilPractice: React.FC = () => {
           {picked && correct ? item.shown : item.letter}
         </span>
       </div>
+      <VoiceEchoBar modelText={item.shown} language="ar" />
       <div className="grid grid-cols-2 gap-3">
         {HARAKA_CHOICES.map((h) => {
           const selected = picked === h.id;

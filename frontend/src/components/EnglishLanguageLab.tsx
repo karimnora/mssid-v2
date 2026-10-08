@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { speakText } from '../utils/speech';
+import { VoiceEchoBar } from './VoiceEchoBar';
 import { PrimaryGrade } from '../types';
 import { allowedEnglishTenses, EnglishTense } from '../utils/labGradePolicy';
 import {
@@ -217,6 +218,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
   const permittedTenses = allowedEnglishTenses(grade);
   const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'phonics' | 'grammar'>(initialTab);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
+  const [echoPhrase, setEchoPhrase] = useState<string>(ENGLISH_VERBS_DATABASE[0].verb);
 
   // Conjugator State
   const [selectedVerb, setSelectedVerb] = useState<EnglishVerbData>(ENGLISH_VERBS_DATABASE[0]);
@@ -259,11 +261,16 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
   ];
 
   const handleSpeak = (text: string) => {
+    setEchoPhrase(text);
     setSpeakingText(text);
     speakText(text, 'en-US', 0.85).then(() => {
       setSpeakingText(null);
     });
   };
+
+  useEffect(() => {
+    setEchoPhrase(selectedVerb.verb);
+  }, [selectedVerb.verb]);
 
   const tenseTitleMap = {
     presentSimple: 'Present Simple (الحاضر البسيط)',
@@ -495,6 +502,8 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
                 })}
               </div>
             </div>
+
+            <VoiceEchoBar modelText={echoPhrase} language="en" />
 
             {/* Interactive Quiz Game */}
             <div className="pt-4 border-t border-slate-800 space-y-4">

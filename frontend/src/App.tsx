@@ -26,6 +26,10 @@ import { SeoHead } from './components/SeoHead';
 import { LoadingFallback } from './components/LoadingFallback';
 import { ActiveWorkspace } from './components/ActiveWorkspace';
 import { AppModals } from './components/AppModals';
+import { AuthModal } from './components/AuthModal';
+import { EmailVerificationPopup } from './components/EmailVerificationPopup';
+import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
+import { TermsOfServiceModal } from './components/TermsOfServiceModal';
 import { ToolsHubView } from './components/ToolsHubView';
 import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { useAppNavigation } from './hooks/useAppNavigation';
@@ -360,8 +364,41 @@ export default function App() {
       <>
         <AndroidUpdateBanner />
         <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingPreschool')} minHeight="100vh" />}>
-          <PreschoolApp onExit={() => { nav.setIsPreschoolActive(false); nav.goHome(); }} />
+          <PreschoolApp
+            onExit={() => { nav.setIsPreschoolActive(false); nav.goHome(); }}
+            onOpenAuth={(mode, reason) => modals.openAuth(mode, reason)}
+            isAuthModalOpen={modals.isAuthModalOpen}
+          />
         </Suspense>
+        <AuthModal
+          isOpen={modals.isAuthModalOpen}
+          onClose={() => modals.setIsAuthModalOpen(false)}
+          initialMode={modals.authModalInitialMode}
+          contextMessage={modals.authModalReason}
+          onOpenPrivacyPolicy={() => modals.setIsPrivacyModalOpen(true)}
+          onOpenTermsOfService={() => modals.setIsTermsModalOpen(true)}
+          onAuthSuccess={() => {
+            const freshUser = AuthService.getCurrentUser();
+            if (freshUser && !freshUser.emailVerified) {
+              modals.setIsEmailVerifyPopupOpen(true);
+            }
+          }}
+        />
+        {authUser && (
+          <EmailVerificationPopup
+            isOpen={modals.isEmailVerifyPopupOpen}
+            onClose={() => modals.setIsEmailVerifyPopupOpen(false)}
+            email={authUser.email}
+          />
+        )}
+        <PrivacyPolicyModal
+          isOpen={modals.isPrivacyModalOpen}
+          onClose={() => modals.setIsPrivacyModalOpen(false)}
+        />
+        <TermsOfServiceModal
+          isOpen={modals.isTermsModalOpen}
+          onClose={() => modals.setIsTermsModalOpen(false)}
+        />
       </>
     );
   }
