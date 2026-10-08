@@ -36,6 +36,7 @@ const SyllableStudioLab = lazy(() => import('./SyllableStudioLab').then((m) => (
 const SpeedReadingLab = lazy(() => import('./SpeedReadingLab').then((m) => ({ default: m.SpeedReadingLab })));
 const TopographyMapLab = lazy(() => import('./TopographyMapLab').then((m) => ({ default: m.TopographyMapLab })));
 const SpeedVelocityLab = lazy(() => import('./SpeedVelocityLab').then((m) => ({ default: m.SpeedVelocityLab })));
+const QuranLabInteractive = lazy(() => import('./QuranLabInteractive').then((m) => ({ default: m.QuranLabInteractive })));
 const ChallengesArena = lazy(() => import('./ChallengesArena').then((m) => ({ default: m.ChallengesArena })));
 
 interface ActiveWorkspaceProps {
@@ -101,7 +102,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
       <Suspense fallback={<LoadingFallback label={t('loadingInteractiveTool')} />}>
       <div
         data-lab-shell={labOpen ? 'true' : undefined}
-        className={labOpen ? 'lab-interior kids-pole overflow-hidden rounded-[28px]' : undefined}
+        className={labOpen ? 'lab-interior kids-pole overflow-x-hidden overflow-y-visible rounded-[28px]' : undefined}
       >
       {labOpen && <div className="kids-hero-band" />}
       {selectedSubject === 'algerian_market' ? (
@@ -172,6 +173,8 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
         <TopographyMapLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'speed_lab' ? (
         <SpeedVelocityLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
+      ) : selectedSubject === 'quran_lab' ? (
+        <QuranLabInteractive />
       ) : selectedSubject === 'exams' ? (
         <ExamsViewer
           grade={grade}

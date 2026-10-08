@@ -20,6 +20,7 @@ export const ANIMALS_MODULE: PreschoolModule = {
       targetValue: 'cow',
       stepNumber: 1,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'بَقَرَة', fr: 'vache', en: 'cow' },
       i18n: {
         ar: { title: 'البَقَرَةُ الحَنُونَةُ', promptAudio: 'المِسِ البَقَرَةَ! هِيَ تُعْطِينَا الحَلِيبَ اللَّذِيذ!', successAudio: 'أَحْسَنْت! هَذِهِ بَقَرَة!' },
         fr: { title: 'La Vache Gentille', promptAudio: 'Touche la vache ! Elle nous donne du bon lait !', successAudio: 'Bravo ! Voici une vache !' },
@@ -80,6 +81,7 @@ export const ANIMALS_MODULE: PreschoolModule = {
       targetValue: 'cat',
       stepNumber: 4,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'قِطَّة', fr: 'chat', en: 'cat' },
       i18n: {
         ar: { title: 'القِطَّةُ اللَّطِيفَةُ', promptAudio: 'المِسِ القِطَّةَ! هِيَ تَقُولُ: نَاؤُو!', successAudio: 'أَحْسَنْت! هَذِهِ قِطَّة!' },
         fr: { title: 'Le Chat Mignon', promptAudio: 'Touche le chat ! Il dit : Miaou !', successAudio: 'Bravo ! Voici un chat !' },

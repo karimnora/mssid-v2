@@ -5,6 +5,7 @@ import { playSuccessChime, playBubblePop, usePreschoolSpeech } from './usePresch
 import { SensoryTapGame } from './SensoryTapGame';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
 import { shareImageBlob } from '../../utils/shareContent';
+import { PreschoolFlagMark } from './PreschoolFlagMark';
 
 interface PreschoolMagicBoardProps {
   language: PreschoolLanguage;
@@ -509,7 +510,10 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                   : 'text-orange-950 hover:bg-orange-100'
               }`}
             >
-              {PRESCHOOL_LANGUAGE_LABELS[l].flag} {l.toUpperCase()}
+              <span className="inline-flex items-center gap-1">
+                <PreschoolFlagMark asset={PRESCHOOL_LANGUAGE_LABELS[l].flag} size={16} />
+                {l.toUpperCase()}
+              </span>
             </button>
           ))}
         </div>

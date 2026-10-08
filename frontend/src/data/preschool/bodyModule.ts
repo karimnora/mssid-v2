@@ -3,13 +3,13 @@ import { PreschoolModule } from './types';
 /**
  * "جِسْمِي الرَّائِعُ" — Mon Corps (Éducation Scientifique 0AP).
  * Covers: face parts, limbs, five senses, hygiene habits.
- * Interaction mix: find_path, tap_choice ×4, connect_dots, sorting, memory_cards.
+ * Interaction mix: find_path ×2, tap_choice ×3, connect_dots, sorting, memory_cards.
  */
 export const BODY_MODULE: PreschoolModule = {
   id: 'preschool-body',
   domain: 'world',
   icon: '🧍',
-  totalSteps: 7,
+  totalSteps: 8,
   titleI18n: {
     ar: 'جِسْمِي الرَّائِعُ',
     fr: 'Mon Corps Merveilleux',
@@ -57,10 +57,48 @@ export const BODY_MODULE: PreschoolModule = {
       },
     },
     {
+      id: 'body-toothbrush',
+      domain: 'world',
+      targetValue: 'toothbrushing',
+      stepNumber: 2,
+      interactionType: 'find_path',
+      i18n: {
+        ar: {
+          title: 'الفَنَكُ يُفَرِّشُ أَسْنَانَهُ',
+          promptAudio: 'اِسْحَبِ الفَنَكَ: فُرْشَاة، مَعْجُون، أَسْنَان، ثُمَّ الكَأْس!',
+          promptText: 'رتّب خطوات تنظيف الأسنان: فرشاة ثم معجون ثم أسنان ثم كأس الماء.',
+          successAudio: 'أَسْنَانٌ نَظِيفَة! تَبَسَّمْ!',
+        },
+        fr: {
+          title: 'Le Fennec se brosse les dents',
+          promptAudio: 'Glisse le fennec : brosse, dentifrice, dents, puis le verre !',
+          promptText: 'L\'ordre : brosse, dentifrice, dents, verre d\'eau.',
+          successAudio: 'Des dents propres ! Souris !',
+        },
+        en: {
+          title: 'The Fennec Brushes His Teeth',
+          promptAudio: 'Drag the fennec: brush, toothpaste, teeth, then the glass !',
+          promptText: 'Order: brush, toothpaste, teeth, water glass.',
+          successAudio: 'Clean teeth! Smile!',
+        },
+      },
+      visualAssets: {
+        mainSvgOrImage: '🦊',
+        pathTheme: 'bath',
+        pathToken: { startAsset: '🪥', endAsset: '🥛', travelerAsset: '🦊' },
+        pathStops: [
+          { x: 16, y: 32, asset: '🪥', color: '#bae6fd' },
+          { x: 42, y: 18, asset: '🧴', color: '#e9d5ff' },
+          { x: 78, y: 36, asset: '😁', color: '#fef9c3' },
+          { x: 62, y: 72, asset: '🥛', color: '#e0f2fe' },
+        ],
+      },
+    },
+    {
       id: 'body-eyes',
       domain: 'world',
       targetValue: 'eyes',
-      stepNumber: 2,
+      stepNumber: 3,
       interactionType: 'tap_choice',
       i18n: {
         ar: {
@@ -95,7 +133,7 @@ export const BODY_MODULE: PreschoolModule = {
       id: 'body-ears',
       domain: 'world',
       targetValue: 'ears',
-      stepNumber: 3,
+      stepNumber: 4,
       interactionType: 'tap_choice',
       i18n: {
         ar: {
@@ -130,7 +168,7 @@ export const BODY_MODULE: PreschoolModule = {
       id: 'body-hands',
       domain: 'world',
       targetValue: 'hands',
-      stepNumber: 4,
+      stepNumber: 5,
       interactionType: 'tap_choice',
       i18n: {
         ar: {
@@ -165,7 +203,7 @@ export const BODY_MODULE: PreschoolModule = {
       id: 'body-senses',
       domain: 'world',
       targetValue: 'senses',
-      stepNumber: 5,
+      stepNumber: 6,
       interactionType: 'connect_dots',
       i18n: {
         ar: {
@@ -201,7 +239,7 @@ export const BODY_MODULE: PreschoolModule = {
       id: 'body-sorting',
       domain: 'world',
       targetValue: 'body-parts',
-      stepNumber: 6,
+      stepNumber: 7,
       interactionType: 'sorting',
       i18n: {
         ar: {
@@ -243,7 +281,7 @@ export const BODY_MODULE: PreschoolModule = {
       id: 'body-memory',
       domain: 'world',
       targetValue: 'body-memory',
-      stepNumber: 7,
+      stepNumber: 8,
       interactionType: 'memory_cards',
       i18n: {
         ar: {

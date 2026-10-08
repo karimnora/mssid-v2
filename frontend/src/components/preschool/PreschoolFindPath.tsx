@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolLanguage, PreschoolPathStop } from '../../data/preschool/types';
 import { playSuccessChime } from './usePreschoolAudio';
+import { PreschoolAsset } from './PreschoolAsset';
+import { PreschoolFlagMark } from './PreschoolFlagMark';
 
 interface PreschoolFindPathProps {
   activity: PreschoolActivity;
@@ -279,7 +281,9 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
         )}
         {theme === 'algeria' && (
           <>
-            <div className="absolute top-2 right-4 text-3xl select-none pointer-events-none" aria-hidden>🇩🇿</div>
+            <div className="absolute top-2 right-4 select-none pointer-events-none" aria-hidden>
+              <PreschoolFlagMark asset="🇩🇿" size={36} />
+            </div>
             <div className="absolute top-3 left-4 text-2xl select-none pointer-events-none" aria-hidden>☀️</div>
           </>
         )}
@@ -364,7 +368,7 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
                             border-4 shadow-md ${done ? 'border-emerald-400' : 'border-white/80'}`}
                 style={{ backgroundColor: stop.color }}
               >
-                {done && i > 0 ? '✨' : stop.asset}
+                {done && i > 0 ? '✨' : <PreschoolAsset asset={stop.asset} size={36} />}
               </div>
             </motion.div>
           );
@@ -388,7 +392,7 @@ export const PreschoolFindPath: React.FC<PreschoolFindPathProps> = ({
                         ${i <= reached ? 'border-emerald-400 bg-white' : 'border-amber-200 bg-amber-50 opacity-50'}`}
             style={{ backgroundColor: i <= reached ? stop.color : undefined }}
           >
-            {i === 0 ? token.travelerAsset : stop.asset}
+            {i === 0 ? token.travelerAsset : <PreschoolAsset asset={stop.asset} size={18} />}
           </span>
         ))}
       </div>

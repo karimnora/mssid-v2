@@ -46,6 +46,8 @@ const TH = 30;
 const SNAP = 50;
 const MIN_CANVAS_W = 280;
 const MIN_CANVAS_H = 400;
+const DRAG_TAP_SLOP = 24;
+const IDLE_TERM_HIT = TR + 6;
 
 export function circuitViewSize(containerWidth: number): { w: number; h: number } {
   const w = Math.max(MIN_CANVAS_W, Math.floor(containerWidth) || MIN_CANVAS_W);
@@ -96,8 +98,12 @@ function wirePath(p1: { x: number; y: number }, p2: { x: number; y: number }) {
   return `M ${p1.x} ${p1.y} H ${mx} V ${p2.y} H ${p2.x}`;
 }
 
+export function wireWouldShortComponent(fromId: string, toId: string) {
+  return fromId === toId;
+}
+
 // ─── Simulator ────────────────────────────────────────────────────────────
-function simulate(comps: CBComp[], wires: CBWire[]) {
+export function simulateCircuit(comps: CBComp[], wires: CBWire[]) {
   const adj = new Map<string, Set<string>>();
   const edge = (a: string, b: string) => {
     if (!adj.has(a)) adj.set(a, new Set());
@@ -130,7 +136,7 @@ function simulate(comps: CBComp[], wires: CBWire[]) {
   return { powered, closed };
 }
 
-const DEFAULT_WIRES: CBWire[] = [
+export const DEFAULT_WIRES: CBWire[] = [
   { id: 'w0', from: 'bat0',  fromT: 'B', to: 'bulb0', toT: 'B' },
   { id: 'w1', from: 'bulb0', fromT: 'A', to: 'sw0',   toT: 'B' },
   { id: 'w2', from: 'sw0',   fromT: 'A', to: 'bat0',  toT: 'A' },
@@ -184,7 +190,7 @@ export const CircuitBuilder: React.FC = () => {
   const compDragged = useRef(false);
 
   const nextId = () => `e${idCounter.current++}`;
-  const { powered, closed } = useMemo(() => simulate(comps, wires), [comps, wires]);
+  const { powered, closed } = useMemo(() => simulateCircuit(comps, wires), [comps, wires]);
 
   // ── Find closest terminal to a SVG-space point ──────────────────────────
   const snapTarget = useCallback((x: number, y: number, excludeId: string, excludeT: 'A' | 'B') => {
@@ -202,6 +208,7 @@ export const CircuitBuilder: React.FC = () => {
 
   // ── Wire helper ──────────────────────────────────────────────────────────
   const addWire = useCallback((fromId: string, fromT: 'A'|'B', toId: string, toT: 'A'|'B') => {
+    if (wireWouldShortComponent(fromId, toId)) return;
     const dup = wires.some(w =>
       (w.from === fromId && w.fromT === fromT && w.to === toId && w.toT === toT) ||
       (w.to === fromId && w.toT === fromT && w.from === toId && w.fromT === toT)
@@ -233,7 +240,7 @@ export const CircuitBuilder: React.FC = () => {
     const { x, y } = toSVG(e, svgRef.current);
 
     if (interaction.type === 'dragging') {
-      if (Math.hypot(x - interaction.sx, y - interaction.sy) > 12) {
+      if (Math.hypot(x - interaction.sx, y - interaction.sy) > DRAG_TAP_SLOP) {
         compDragged.current = true;
       }
       if (!compDragged.current) return;
@@ -277,8 +284,12 @@ export const CircuitBuilder: React.FC = () => {
 
   // ── Component drag start ─────────────────────────────────────────────────
   const handleCompPointerDown = useCallback((e: React.PointerEvent, id: string) => {
-    if (interaction.type === 'wiring') return;
     e.stopPropagation();
+    if (interaction.type === 'wiring') {
+      setInteraction({ type: 'idle' });
+      handleCompTap(id);
+      return;
+    }
     if (!svgRef.current) return;
     const { x, y } = toSVG(e, svgRef.current);
     const c = comps.find(c => c.id === id);
@@ -286,7 +297,7 @@ export const CircuitBuilder: React.FC = () => {
     compDragged.current = false;
     setInteraction({ type: 'dragging', id, ox: x - c.x, oy: y - c.y, sx: x, sy: y });
     svgRef.current.setPointerCapture(e.pointerId);
-  }, [interaction, comps]);
+  }, [interaction, comps, handleCompTap]);
 
   // ── Terminal interactions ────────────────────────────────────────────────
   const handleTerminalPointerDown = useCallback((e: React.PointerEvent, compId: string, t: 'A' | 'B') => {
@@ -379,9 +390,9 @@ export const CircuitBuilder: React.FC = () => {
           strokeWidth={isWiring ? 2.5 : 1.5}
           style={{ pointerEvents: 'none' }}
         />
-        {/* Large invisible hit area */}
+        {/* Idle: small dots so the switch body still receives the tap. Wiring: large snap targets. */}
         <circle
-          cx={tcx} cy={tcy} r={TH}
+          cx={tcx} cy={tcy} r={isWiring ? TH : IDLE_TERM_HIT}
           fill="transparent"
           style={{ cursor: 'crosshair', pointerEvents: 'all', touchAction: 'none' }}
           onPointerDown={e => {
@@ -414,6 +425,10 @@ export const CircuitBuilder: React.FC = () => {
     return (
       <g
         key={c.id}
+        data-cb-comp={c.id}
+        data-cb-type={c.type}
+        data-cb-switch={c.type === 'switch' ? (c.switchOpen ? 'open' : 'closed') : undefined}
+        data-cb-powered={c.type === 'bulb' ? (isPowered ? 'on' : 'off') : undefined}
         transform={`translate(${c.x},${c.y})`}
         onPointerDown={e => handleCompPointerDown(e as unknown as React.PointerEvent, c.id)}
         onPointerEnter={() => !isWiring && setHovered(c.id)}
@@ -461,6 +476,19 @@ export const CircuitBuilder: React.FC = () => {
         {renderTerminal(c.id, 'A')}
         {renderTerminal(c.id, 'B')}
 
+        {!isWiring && (c.type === 'switch' || c.type === 'diode' || c.type === 'resistor') && (
+          <rect
+            data-cb-toggle-hit={c.id}
+            x={-HW + IDLE_TERM_HIT + 2}
+            y={-HH}
+            width={(HW - IDLE_TERM_HIT - 2) * 2}
+            height={HH * 2}
+            rx="8"
+            fill="transparent"
+            style={{ cursor: 'pointer', pointerEvents: 'auto', touchAction: 'none' }}
+          />
+        )}
+
         {/* Delete × — visible when hovered or selected on any device */}
         {(isHov || isSel) && !isBat && interaction.type === 'idle' && (
           <g transform={`translate(${HW + 4},${-HH - 16})`}
@@ -483,6 +511,7 @@ export const CircuitBuilder: React.FC = () => {
       {/* Status banner */}
       <AnimatePresence mode="wait">
         <motion.div key={closed ? 'c' : 'o'}
+          data-cb-status={closed ? 'closed' : 'open'}
           initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 22 }}
           className={`p-3 rounded-2xl border text-xs font-bold flex items-start gap-2.5 ${
@@ -505,7 +534,10 @@ export const CircuitBuilder: React.FC = () => {
           key={c.id}
           type="button"
           data-cb-switch-toggle
-          onClick={() => setComps((prev) => prev.map((x) => x.id === c.id ? { ...x, switchOpen: !x.switchOpen } : x))}
+          onClick={() => {
+            setInteraction({ type: 'idle' });
+            setComps((prev) => prev.map((x) => x.id === c.id ? { ...x, switchOpen: !x.switchOpen } : x));
+          }}
           className={`hit-target w-full px-4 rounded-2xl font-black text-xs cursor-pointer flex items-center justify-center gap-2 ${
             c.switchOpen ? 'bg-emerald-700 text-white' : 'bg-rose-600 text-white'
           }`}
@@ -568,7 +600,7 @@ export const CircuitBuilder: React.FC = () => {
               }}
               onPointerMove={handleSVGPointerMove}
               onPointerUp={handleSVGPointerUp}
-              onPointerLeave={() => { if (interaction.type === 'dragging') setInteraction({ type: 'idle' }); }}
+              onPointerCancel={() => { setInteraction({ type: 'idle' }); }}
             >
               <defs>
                 <pattern id="cb-grid" width="40" height="40" patternUnits="userSpaceOnUse">

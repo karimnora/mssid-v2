@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolChoice, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
 import { localizeGlyph, activityPicture } from './preschoolGlyphs';
-import { PreschoolShapeMark, PreschoolColorDot, isGeometricShape, isColorDot } from './PreschoolShapeMark';
+import { PreschoolAsset } from './PreschoolAsset';
 
 interface PreschoolTapChoiceProps {
   activity: PreschoolActivity;
@@ -62,15 +62,19 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
         className="w-36 h-36 sm:w-40 sm:h-40 rounded-[2rem] bg-white shadow-md border-4 border-amber-100
                    flex items-center justify-center"
       >
-        <span className="text-7xl sm:text-8xl select-none" aria-hidden="true">{prompt}</span>
+        <span className="select-none" aria-hidden="true">
+          <PreschoolAsset
+            asset={prompt}
+            size={112}
+            textClassName="text-7xl sm:text-8xl leading-none"
+          />
+        </span>
       </motion.div>
 
       <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
         {choices.map((choice) => {
           const glyph = localizeGlyph(choice.asset, language);
           const caption = choice.label?.[language];
-          const showColor = isColorDot(choice.asset);
-          const showShape = !showColor && isGeometricShape(choice.asset);
           const isWin = solved && choice.isCorrect;
           const isWrong = wrongId === choice.id;
 
@@ -95,15 +99,24 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
                               ? 'bg-rose-100 border-rose-400'
                               : 'bg-white border-amber-200 hover:border-amber-400'}`}
             >
-              {showColor
-                ? <PreschoolColorDot asset={choice.asset} size={64} />
-                : showShape
-                  ? <PreschoolShapeMark asset={choice.asset} size={64} />
-                  : (
-                    <span className={`font-black text-orange-900 leading-none ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}>
-                      {glyph}
-                    </span>
-                  )}
+              {choice.stack && choice.stack.length > 0 ? (
+                <span className="flex flex-col items-center leading-none gap-0.5" aria-hidden="true">
+                  {choice.stack.map((piece, i) => (
+                    <PreschoolAsset
+                      key={`${choice.id}-${i}`}
+                      asset={piece}
+                      size={caption ? 36 : 44}
+                      textClassName="text-3xl sm:text-4xl leading-none"
+                    />
+                  ))}
+                </span>
+              ) : (
+              <PreschoolAsset
+                asset={glyph}
+                size={caption ? 48 : 64}
+                textClassName={`font-black text-orange-900 leading-none ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}
+              />
+              )}
               {caption && (
                 <span className="text-[10px] sm:text-[11px] font-black text-[#1E293B] leading-tight text-center px-1">
                   {caption}

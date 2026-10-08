@@ -58,7 +58,7 @@ const MOBILE_CATS: MobileCat[] = [
     labelKey: 'categoryIdentityShort',
     hintKey: 'categoryIdentityHint',
     cardClass: 'kids-cat-identity',
-    toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map'] as SubjectId[],
+    toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map', 'quran_lab'] as SubjectId[],
   },
   {
     key: 'math_logic',
@@ -99,7 +99,7 @@ const DESKTOP_GROUPS: {
     labelKey: 'categoryIdentityCivics',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300',
     icon: Shield,
-    toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map'] as SubjectId[],
+    toolIds: ['wilayas_map', 'history_museum', 'algerian_market', 'topography_map', 'quran_lab'] as SubjectId[],
   },
   {
     key: 'math_logic',
@@ -588,6 +588,7 @@ const KIDS_LAB_CARD: Partial<Record<SubjectId, string>> = {
   history_museum: 'kids-card-histoire',
   algerian_market: 'kids-card-defis',
   topography_map: 'kids-card-islamique',
+  quran_lab: 'kids-card-islamique',
   primary_math_ops: 'kids-card-maths',
   soroban: 'kids-card-maths-soft',
   multiplication: 'kids-card-maths-deep',

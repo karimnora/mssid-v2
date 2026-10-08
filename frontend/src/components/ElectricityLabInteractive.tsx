@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useId, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Zap,
@@ -51,6 +51,8 @@ const MATERIALS_LIST: MaterialInfo[] = [
 export const ElectricityLabInteractive: React.FC = () => {
   const { direction } = useLocaleContext();
   const t = useTranslation('labsScience');
+  const svgId = useId();
+  const lastSwitchToggleAt = useRef(0);
   // Pedagogical labels stay Arabic — never overlay French quiz/explanations.
   const showFrench = false;
   // Global Interactive Settings
@@ -108,8 +110,12 @@ export const ElectricityLabInteractive: React.FC = () => {
     }
   };
 
-  // Sound effect when switch toggled
+  // Sound effect when switch toggled. Ignore a second event in the same tap
+  // (SVG pointerup then the compatibility click, or overlapping hit targets).
   const handleToggleSwitch = () => {
+    const now = Date.now();
+    if (now - lastSwitchToggleAt.current < 280) return;
+    lastSwitchToggleAt.current = now;
     const newState = !switchClosed;
     setSwitchClosed(newState);
     playBeep(newState ? 1200 : 400, 0.1, 'triangle');
@@ -343,6 +349,7 @@ export const ElectricityLabInteractive: React.FC = () => {
       {/* Experiment Selector Navigation Tabs */}
       <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
         <button
+          data-elec-tab="circuit_builder"
           onClick={() => { setActiveTab('circuit_builder'); }}
           className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border col-span-2 sm:col-span-1 ${
             activeTab === 'circuit_builder'
@@ -379,6 +386,7 @@ export const ElectricityLabInteractive: React.FC = () => {
         </button>
 
         <button
+          data-elec-tab="series_parallel"
           onClick={() => { setActiveTab('series_parallel'); }}
           className={`p-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center justify-center gap-2 border ${
             activeTab === 'series_parallel'
@@ -452,6 +460,7 @@ export const ElectricityLabInteractive: React.FC = () => {
             {/* Live Circuit Banner Status */}
             <div
               data-elec-status
+              data-elec-flow={currentStatus.isCurrentFlowing ? 'on' : 'off'}
               className={`p-3.5 rounded-2xl border flex flex-col gap-2 text-xs font-bold transition-all ${currentStatus.statusColor}`}
             >
               <div className="flex items-center gap-2">
@@ -481,11 +490,11 @@ export const ElectricityLabInteractive: React.FC = () => {
               <svg className="w-full max-w-lg h-60 sm:h-72 z-10 overflow-visible" viewBox="0 0 500 300">
                 <defs>
                   {/* Glowing effects for current */}
-                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <filter id={`${svgId}-glow`} x="-20%" y="-20%" width="140%" height="140%">
                     <feGaussianBlur stdDeviation="4" result="blur" />
                     <feComposite in="SourceGraphic" in2="blur" operator="over" />
                   </filter>
-                  <filter id="bulb-glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <filter id={`${svgId}-bulb-glow`} x="-50%" y="-50%" width="200%" height="200%">
                     <feGaussianBlur stdDeviation="12" result="blur" />
                     <feComposite in="SourceGraphic" in2="blur" operator="over" />
                   </filter>
@@ -560,6 +569,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                   data-elec-switch-svg
                   onPointerUp={(e) => {
                     e.stopPropagation();
+                    e.preventDefault();
                     handleToggleSwitch();
                   }}
                 >
@@ -599,7 +609,7 @@ export const ElectricityLabInteractive: React.FC = () => {
 
                       {/* LED Glow Rays if current flows */}
                       {currentStatus.isCurrentFlowing && (
-                        <g filter="url(#glow)">
+                        <g filter={`url(#${svgId}-glow)`}>
                           <circle cx="0" cy="0" r="30" fill="#fbbf24" opacity="0.3" />
                           <line x1="10" y1="-25" x2="25" y2="-40" stroke="#fef08a" strokeWidth="2.5" />
                           <line x1="-5" y1="-28" x2="10" y2="-43" stroke="#fef08a" strokeWidth="2.5" />
@@ -623,7 +633,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                       {/* Glow if ON */}
                       {currentStatus.isCurrentFlowing && (
                         <g>
-                          <circle cx="0" cy="0" r="30" fill="#f59e0b" opacity="0.8" filter="url(#bulb-glow)" />
+                          <circle cx="0" cy="0" r="30" fill="#f59e0b" opacity="0.8" filter={`url(#${svgId}-bulb-glow)`} />
                           <circle cx="0" cy="0" r="28" fill="#fef08a" />
                           <text x="0" y="6" fill="#000000" fontSize="16" fontWeight="900" textAnchor="middle">💡</text>
                         </g>
@@ -696,7 +706,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                         strokeLinejoin="round"
                       />
                       {currentStatus.isCurrentFlowing && (
-                        <g filter="url(#glow)">
+                        <g filter={`url(#${svgId}-glow)`}>
                           <circle cx="0" cy="0" r="34" fill="#f59e0b" opacity="0.18" />
                         </g>
                       )}
@@ -1070,6 +1080,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                   className="cursor-pointer"
                   onPointerUp={(e) => {
                     e.stopPropagation();
+                    e.preventDefault();
                     handleToggleSwitch();
                   }}
                 >
@@ -1090,6 +1101,8 @@ export const ElectricityLabInteractive: React.FC = () => {
                 {/* Bulb 1 Top Left */}
                 <g transform={circuitType === 'series' ? 'translate(140, 60)' : 'translate(200, 50)'}>
                   <circle
+                    data-elec-bulb="1"
+                    data-elec-lit={bulb1Lit ? 'on' : 'off'}
                     cx="0"
                     cy="0"
                     r="22"
@@ -1106,6 +1119,8 @@ export const ElectricityLabInteractive: React.FC = () => {
                 {/* Bulb 2 Top Right / Parallel */}
                 <g transform={circuitType === 'series' ? 'translate(260, 60)' : 'translate(200, 120)'}>
                   <circle
+                    data-elec-bulb="2"
+                    data-elec-lit={bulb2Lit ? 'on' : 'off'}
                     cx="0"
                     cy="0"
                     r="22"

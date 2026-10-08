@@ -5,9 +5,9 @@ import { INTERACTIVE_LABS_LIST } from '../src/data/subjectsData';
 // throwing, (b) not print console errors, and (c) always leave the visitor an escape hatch back
 // to the catalog — ToolsHubView's "اختر مختبراً آخر" banner is rendered for every lab regardless
 // of whether that lab also has its own internal back button (several don't — see ActiveWorkspace.tsx),
-// so it's the one universal, scriptable "is the user ever trapped" check across all 29 tools.
+// so it's the one universal, scriptable "is the user ever trapped" check across all labs.
 test.beforeEach(async ({ page }) => {
-  // 5AP + ROLE_PREMIUM so no grade-gate or paywall blocks any of the 29 tools during this pass.
+  // 5AP + ROLE_PREMIUM so no grade-gate or paywall blocks any lab during this pass.
   await page.route('**/v1/users/me', (route) =>
     route.fulfill({
       status: 200,

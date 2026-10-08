@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Info, RotateCcw } from 'lucide-react';
-import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
+import { PreschoolActivity, PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
 import { PreschoolMascot, MascotMood } from './PreschoolMascot';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
 import { PreschoolDragDrop } from './PreschoolDragDrop';
@@ -16,15 +16,20 @@ import { PreschoolMaze } from './PreschoolMaze';
 import { PreschoolJigsaw } from './PreschoolJigsaw';
 import { PreschoolSequence } from './PreschoolSequence';
 import { PreschoolListenTap } from './PreschoolListenTap';
+import { PreschoolStoryOrder } from './PreschoolStoryOrder';
+import { PreschoolQuranListen } from './PreschoolQuranListen';
+import { PreschoolWordEcho } from './PreschoolWordEcho';
 import { usePreschoolSpeech } from './usePreschoolAudio';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { voiceEchoSupported } from '../../hooks/useVoiceEcho';
+import { activityPicture } from './preschoolGlyphs';
 
 interface PreschoolActivityPlayerProps {
   activity: PreschoolActivity;
   language: PreschoolLanguage;
   hasNext: boolean;
   /** Real success: marks the activity done (badges, daily challenge, path stars). */
-  onComplete: () => void;
+  onComplete: (quality?: PreschoolPlayQuality) => void;
   /** Advance without marking done — parent/child is never blocked, progress stays honest. */
   onSkip: () => void;
   onExit: () => void;
@@ -41,28 +46,61 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
     language === 'ar' ? ar : language === 'fr' ? fr : en;
   const [mood, setMood] = useState<MascotMood>('idle');
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showEcho, setShowEcho] = useState(false);
   const [showParentTip, setShowParentTip] = useState(false);
   const { speak, hasVoice } = usePreschoolSpeech(language);
   const content = activity.i18n[language];
+  const echoWord = activity.echoWord?.[language];
+  const wantsEcho = Boolean(echoWord) && voiceEchoSupported();
   // Previously gated on `language === 'ar'`, so a missing French/English TTS voice failed silently
   // — the child would get no audio at all and the parent had no idea why. Arabic voices are the
   // rarest on-device (hence the original focus), but the same device-settings fix applies to all 3.
   const missingVoice = !hasVoice && !content.promptAudioSrc;
+  const interactedRef = useRef(false);
+  const replayUsedRef = useRef(false);
+  const qualityRef = useRef<PreschoolPlayQuality>('done');
 
   useEffect(() => {
     setMood('idle');
     setShowSuccess(false);
+    setShowEcho(false);
     setShowParentTip(false);
-    const timer = setTimeout(() => speak(content.promptAudio, content.promptAudioSrc), 350);
-    return () => clearTimeout(timer);
+    interactedRef.current = false;
+    replayUsedRef.current = false;
+    const first = window.setTimeout(() => speak(content.promptAudio, content.promptAudioSrc), 350);
+    const skipReplay = activity.interactionType === 'quran_listen';
+    const replay = skipReplay
+      ? undefined
+      : window.setTimeout(() => {
+        if (interactedRef.current || replayUsedRef.current) return;
+        replayUsedRef.current = true;
+        speak(content.promptAudio, content.promptAudioSrc);
+      }, 8350);
+    return () => {
+      window.clearTimeout(first);
+      if (replay) window.clearTimeout(replay);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activity.id, language]);
 
-  const handleInteractionComplete = () => {
+  const markInteracted = () => {
+    interactedRef.current = true;
+  };
+
+  const handleInteractionComplete = (quality: PreschoolPlayQuality = 'done') => {
+    interactedRef.current = true;
+    qualityRef.current = quality;
     setMood('happy');
     setShowSuccess(true);
     if (content.successAudio) speak(content.successAudio, content.successAudioSrc);
-    setTimeout(onComplete, 1400);
+    if (wantsEcho && echoWord) {
+      window.setTimeout(() => {
+        setShowSuccess(false);
+        setShowEcho(true);
+      }, 900);
+      return;
+    }
+    window.setTimeout(() => onComplete(qualityRef.current), 1400);
   };
 
   const replayPrompt = () => speak(content.promptAudio, content.promptAudioSrc);
@@ -104,7 +142,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 max-w-lg w-full mx-auto flex-1 justify-center">
+      <div className="flex flex-col items-center gap-4 max-w-lg w-full mx-auto flex-1 justify-start">
         <PreschoolMascot mood={mood} />
 
         <h2 className="text-xl sm:text-2xl font-black text-orange-900 text-center">{content.title}</h2>
@@ -138,7 +176,20 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           </div>
         )}
 
-        <div key={activity.id} className="mt-4 w-full flex items-center justify-center">
+        <div
+          key={activity.id}
+          className="mt-4 w-full flex items-center justify-center"
+          onPointerDown={markInteracted}
+        >
+          {showEcho && echoWord ? (
+            <PreschoolWordEcho
+              picture={activityPicture(activity, language)}
+              word={echoWord}
+              language={language}
+              onDone={() => onComplete(qualityRef.current)}
+            />
+          ) : (
+            <>
           {activity.interactionType === 'tap_choice' && (
             <PreschoolTapChoice activity={activity} language={language} onComplete={handleInteractionComplete} />
           )}
@@ -185,6 +236,22 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
               language={language}
               onComplete={handleInteractionComplete}
             />
+          )}
+          {activity.interactionType === 'quran_listen' && (
+            <PreschoolQuranListen
+              activity={activity}
+              language={language}
+              onComplete={handleInteractionComplete}
+            />
+          )}
+          {activity.interactionType === 'story_order' && (
+            <PreschoolStoryOrder
+              activity={activity}
+              language={language}
+              onComplete={handleInteractionComplete}
+            />
+          )}
+            </>
           )}
         </div>
       </div>

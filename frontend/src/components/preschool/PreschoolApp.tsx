@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { PreschoolLanguage } from '../../data/preschool/types';
+import { PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
 import { PRESCHOOL_MODULES } from '../../data/preschool';
 import { PreschoolLanguagePicker } from './PreschoolLanguagePicker';
 import { PreschoolModulePicker, type PreschoolHubView, type PreschoolLearnGroupId } from './PreschoolModulePicker';
@@ -10,11 +10,25 @@ import { PreschoolMagicBoard } from './PreschoolMagicBoard';
 import { PreschoolXylophone } from './PreschoolXylophone';
 import { PreschoolSoundBox } from './PreschoolSoundBox';
 import { GamesHub } from './GamesHub';
-import { useDailyChallenge } from './useDailyChallenge';
+import { localDateKey, useDailyChallenge } from './useDailyChallenge';
 import { usePreschoolBadges } from './usePreschoolBadges';
 import { PreschoolBadgeToast } from './PreschoolBadgeToast';
 import { PreschoolModuleCompleteOverlay } from './PreschoolModuleCompleteOverlay';
 import { playModuleCompleteFanfare } from './usePreschoolAudio';
+import { PreschoolParentBilan } from './PreschoolParentBilan';
+import {
+  appendEvent,
+  challengeStorageKey,
+  loadActiveChildId,
+  loadChildSlots,
+  loadEvents,
+  loadProgress,
+  PreschoolChildId,
+  saveActiveChildId,
+  saveProgress,
+  summarizeBilan,
+  todayPlayIds,
+} from './preschoolProgress';
 
 interface PreschoolAppProps {
   onExit: () => void;
@@ -23,7 +37,6 @@ interface PreschoolAppProps {
 export type PreschoolSpecialTool = 'board' | 'xylophone' | 'soundbox' | 'games';
 
 const LANGUAGE_STORAGE_KEY = 'mssid_preschool_language';
-const PROGRESS_STORAGE_KEY  = 'mssid_preschool_progress';
 
 function loadStoredLanguage(): PreschoolLanguage | null {
   if (typeof window === 'undefined') return null;
@@ -31,22 +44,16 @@ function loadStoredLanguage(): PreschoolLanguage | null {
   return saved === 'ar' || saved === 'fr' || saved === 'en' ? saved : null;
 }
 
-function loadStoredProgress(): string[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    const saved = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
-    return saved ? (JSON.parse(saved) as string[]) : [];
-  } catch {
-    return [];
-  }
-}
-
 // Top-level shell for Mode Éveil (Preschool Hub).
 // Owns all navigation state and wires together: daily challenges, badge system,
 // module-complete overlay, and the main activity/path/picker flow.
 export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
   const [language, setLanguage]         = useState<PreschoolLanguage | null>(() => loadStoredLanguage());
-  const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadStoredProgress());
+  const [childId, setChildId] = useState<PreschoolChildId>(() => loadActiveChildId());
+  const [childSlots, setChildSlots] = useState(() => loadChildSlots());
+  const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(loadActiveChildId()));
+  const [playEvents, setPlayEvents] = useState(() => loadEvents(loadActiveChildId()));
+  const [showParentBilan, setShowParentBilan] = useState(false);
   const [activeModuleId, setActiveModuleId]   = useState<string | null>(null);
   const [activeActivityId, setActiveActivityId] = useState<string | null>(null);
   const [activeSpecialTool, setActiveSpecialTool] = useState<PreschoolSpecialTool | null>(null);
@@ -60,10 +67,13 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
     completedByModule[m.id] = m.activities.filter((a) => completedActivityIds.includes(a.id)).length;
   });
 
+  const todayIds = useMemo(() => todayPlayIds(playEvents), [playEvents]);
+
   const dailyChallenge = useDailyChallenge(
     PRESCHOOL_MODULES,
-    completedActivityIds,
+    todayIds,
     language ?? 'fr',
+    challengeStorageKey(childId),
   );
 
   const { queue: badgeQueue, dismissBadge } = usePreschoolBadges({
@@ -77,13 +87,21 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
     setActiveActivityId(activityId);
   }, []);
 
+  const switchChild = useCallback((id: PreschoolChildId) => {
+    saveActiveChildId(id);
+    setChildId(id);
+    setCompletedActivityIds(loadProgress(id));
+    setPlayEvents(loadEvents(id));
+    setShowParentBilan(false);
+  }, []);
+
   useEffect(() => {
     if (language) window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   }, [language]);
 
   useEffect(() => {
-    window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(completedActivityIds));
-  }, [completedActivityIds]);
+    saveProgress(childId, completedActivityIds);
+  }, [childId, completedActivityIds]);
 
   // ── Language picker (first launch) ───────────────────────────────────────
   if (!language) return <PreschoolLanguagePicker onSelect={setLanguage} />;
@@ -120,11 +138,22 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
           onSkip={() => {
             const idx = activeModule.activities.findIndex((a) => a.id === activeActivity.id);
             const nextActivity = activeModule.activities[idx + 1] ?? null;
+            setPlayEvents(appendEvent(childId, {
+              activityId: activeActivity.id,
+              date: localDateKey(),
+              quality: 'helped',
+            }));
             setActiveActivityId(nextActivity ? nextActivity.id : null);
           }}
-          onComplete={() => {
+          onComplete={(quality?: PreschoolPlayQuality) => {
             const idx = activeModule.activities.findIndex((a) => a.id === activeActivity.id);
             const nextActivity = activeModule.activities[idx + 1] ?? null;
+
+            setPlayEvents(appendEvent(childId, {
+              activityId: activeActivity.id,
+              date: localDateKey(),
+              quality: quality ?? 'done',
+            }));
 
             setCompletedActivityIds((prev) => {
               if (prev.includes(activeActivity.id)) return prev;
@@ -205,7 +234,20 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({ onExit }) => {
         onViewChange={setPickerView}
         learnGroup={learnGroup}
         onLearnGroupChange={setLearnGroup}
+        onOpenParentBilan={() => setShowParentBilan(true)}
       />
+
+      {showParentBilan && (
+        <PreschoolParentBilan
+          language={language}
+          rows={summarizeBilan(playEvents, PRESCHOOL_MODULES, language)}
+          slots={childSlots}
+          activeChildId={childId}
+          onSelectChild={switchChild}
+          onClose={() => setShowParentBilan(false)}
+          onSlotsChanged={() => setChildSlots(loadChildSlots())}
+        />
+      )}
 
       <PreschoolBadgeToast
         badge={badgeQueue[0] ?? null}

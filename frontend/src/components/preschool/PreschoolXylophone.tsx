@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { playMusicalNote, playSuccessChime, playExplorationSound, usePreschoolSpeech } from './usePreschoolAudio';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { PreschoolFlagMark } from './PreschoolFlagMark';
 
 interface PreschoolXylophoneProps {
   language: PreschoolLanguage;
@@ -288,7 +289,10 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                   : 'text-purple-900 hover:bg-purple-100'
               }`}
             >
-              {PRESCHOOL_LANGUAGE_LABELS[l].flag} {l.toUpperCase()}
+              <span className="inline-flex items-center gap-1">
+                <PreschoolFlagMark asset={PRESCHOOL_LANGUAGE_LABELS[l].flag} size={16} />
+                {l.toUpperCase()}
+              </span>
             </button>
           ))}
         </div>

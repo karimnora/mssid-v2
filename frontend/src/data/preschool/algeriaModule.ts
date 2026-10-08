@@ -131,6 +131,7 @@ export const ALGERIA_MODULE: PreschoolModule = {
       targetValue: 'couscous',
       stepNumber: 4,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'كُسْكُس', fr: 'couscous', en: 'couscous' },
       i18n: {
         ar: {
           title: 'الكُسْكُس',
@@ -166,6 +167,7 @@ export const ALGERIA_MODULE: PreschoolModule = {
       targetValue: 'fennec',
       stepNumber: 5,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'فَنَك', fr: 'fennec', en: 'fennec' },
       i18n: {
         ar: {
           title: 'فَنَكُ الجَزَائِر',

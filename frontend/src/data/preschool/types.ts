@@ -9,6 +9,8 @@ export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'ani
 
 export type PreschoolLanguage = 'ar' | 'fr' | 'en';
 
+export type PreschoolPlayQuality = 'done' | 'tried' | 'wrote' | 'helped';
+
 export type PreschoolInteractionType =
   | 'tap_choice'     // Tap the correct image / numeral among a few big choices
   | 'drag_drop'      // Drag objects into a drop zone (counting)
@@ -22,7 +24,9 @@ export type PreschoolInteractionType =
   | 'maze'           // Drag a traveler along a dashed waypoint path from start to goal (stricter than find_path: must pass near every waypoint, not just reach the end)
   | 'jigsaw'        // Drag each piece onto its matching ghost silhouette to reassemble a simple picture
   | 'sequence'      // Show a repeating pattern and ask "what comes next?" — pattern items shown as a visual row, choices below
-  | 'listen_tap';   // Tap each name card to hear it — no wrong answer, done when every card has been heard
+  | 'listen_tap'    // Tap each name card to hear it — no wrong answer, done when every card has been heard
+  | 'quran_listen'  // Professional Warsh recitation, big play/pause, optional mic echo
+  | 'story_order';  // Tap 3 pictures in story order, then tell a grown-up the story
 
 /**
  * "Child-first" voice rule: `promptAudio` (and `successAudio`) must always read as the mascot
@@ -65,6 +69,8 @@ export interface PreschoolChoice {
   isCorrect: boolean;
   /** Optional caption under the glyph (day name, month name, …). */
   label?: { ar: string; fr: string; en: string };
+  /** Optional stacked glyphs (top → bottom) for spatial scenes (front / behind). */
+  stack?: string[];
 }
 
 export interface PreschoolDragItem {
@@ -122,6 +128,14 @@ export interface PreschoolListenCard {
   id: string;
   asset: string;
   label: { ar: string; fr: string; en: string };
+}
+
+/** story_order: one picture in a 3-frame story. `order` is 1, 2 or 3. */
+export interface PreschoolStoryFrame {
+  id: string;
+  asset: string;
+  order: 1 | 2 | 3;
+  caption?: { ar: string; fr: string; en: string };
 }
 
 /** memory_cards: one pair — `asset` is rendered on two face-down cards, shuffled. */
@@ -206,6 +220,15 @@ export interface PreschoolVisualAssets {
   sequencePattern?: string[];
   /** listen_tap — name cards in display order (Sunday first for the Algerian week). */
   listenCards?: PreschoolListenCard[];
+  /**
+   * When set, listen_tap is a first-sound quiz: one correct picture among the cards.
+   * Omit it for the original “hear every name” calendar/family cards.
+   */
+  listenCorrectId?: string;
+  /** quran_listen — exact `surahAr` label from the short-surah catalog. */
+  quranSurahAr?: string;
+  /** story_order — three frames the child taps in `order` 1, 2, 3. */
+  storyFrames?: PreschoolStoryFrame[];
 }
 
 export interface PreschoolActivity {
@@ -219,6 +242,8 @@ export interface PreschoolActivity {
   /** Localized content per language — every activity must supply all 3. */
   i18n: Record<PreschoolLanguage, LocalizedContent>;
   visualAssets: PreschoolVisualAssets;
+  /** After a correct answer, invite the child to say this word into the mic. */
+  echoWord?: { ar: string; fr: string; en: string };
 }
 
 export interface PreschoolModule {

@@ -3,7 +3,10 @@ import {
   circuitViewSize,
   clampToCanvas,
   defaultCircuitLayout,
+  DEFAULT_WIRES,
+  simulateCircuit,
   spawnInView,
+  wireWouldShortComponent,
   type CBComp,
 } from './CircuitBuilder';
 
@@ -55,3 +58,34 @@ describe('CircuitBuilder layout', () => {
     expect(clamped.y).toBeGreaterThanOrEqual(37);
   });
 });
+
+describe('CircuitBuilder simulation', () => {
+  const layout = defaultCircuitLayout(360, 420);
+
+  it('powers the bulb when the default switch is closed', () => {
+    const result = simulateCircuit(layout, DEFAULT_WIRES);
+    expect(result.closed).toBe(true);
+    expect(result.powered.has('bulb0')).toBe(true);
+  });
+
+  it('turns the bulb off when the switch is opened', () => {
+    const open = layout.map((c) => c.id === 'sw0' ? { ...c, switchOpen: true } : c);
+    const result = simulateCircuit(open, DEFAULT_WIRES);
+    expect(result.closed).toBe(false);
+    expect(result.powered.has('bulb0')).toBe(false);
+  });
+
+  it('rejects a wire that would short a switch so the lamp cannot stay stuck on', () => {
+    expect(wireWouldShortComponent('sw0', 'sw0')).toBe(true);
+    expect(wireWouldShortComponent('sw0', 'bulb0')).toBe(false);
+  });
+
+  it('keeps the bulb on if a bypass wire really shorts around the open switch', () => {
+    const open = layout.map((c) => c.id === 'sw0' ? { ...c, switchOpen: true } : c);
+    const bypass = [...DEFAULT_WIRES, { id: 'short', from: 'sw0', fromT: 'A' as const, to: 'sw0', toT: 'B' as const }];
+    const result = simulateCircuit(open, bypass);
+    expect(result.closed).toBe(true);
+    expect(result.powered.has('bulb0')).toBe(true);
+  });
+});
+

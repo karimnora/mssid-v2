@@ -457,6 +457,17 @@ const RAW_SUBJECTS_LIST: SubjectInfo[] = [
     category: 'tool',
     minGrade: '3AP',
   },
+  {
+    id: 'quran_lab',
+    nameAr: 'مختبر السور القصيرة',
+    nameFr: 'Labo des sourates courtes',
+    icon: 'BookOpen',
+    color: 'from-amber-400 to-emerald-700',
+    bgLight: 'bg-green-50 text-green-900 border-green-200',
+    description: 'تلاوة ورش آيةً آيةً لكل السور القصيرة المقررة، مع بسملة قبل كل سورة وتدريب صوتي.',
+    category: 'tool',
+    minGrade: '1AP',
+  },
   // 3. OFFICIAL STANDALONE EXAMS
   {
     id: 'exams',

@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { PreschoolTapChoice } from './PreschoolTapChoice';
 import { NUMBERS_MODULE_0_TO_10 } from '../../data/preschool/numbersModule';
 import { COLORS_MODULE } from '../../data/preschool/colorsModule';
+import { ALGERIA_MODULE } from '../../data/preschool/algeriaModule';
 
 vi.mock('./usePreschoolAudio', () => ({
   playSuccessChime: vi.fn(),
@@ -51,6 +52,17 @@ describe('PreschoolTapChoice', () => {
     const blue = COLORS_MODULE.activities.find((a) => a.id === 'colors-blue-sea')!;
     render(<PreschoolTapChoice activity={blue} language="ar" onComplete={vi.fn()} />);
     expect(document.querySelector('svg[data-color-dot="blue"]')).toBeTruthy();
+  });
+
+  it('paints real flags in Le Drapeau Algérien, not ISO letters', () => {
+    const flag = ALGERIA_MODULE.activities.find((a) => a.id === 'algeria-flag-color')!;
+    render(<PreschoolTapChoice activity={flag} language="fr" onComplete={vi.fn()} />);
+    expect(document.querySelector('svg[data-flag="DZ"]')).toBeTruthy();
+    expect(document.querySelector('svg[data-flag="JP"]')).toBeTruthy();
+    expect(document.querySelector('svg[data-flag="BR"]')).toBeTruthy();
+    expect(screen.queryByText('DZ')).toBeNull();
+    expect(screen.queryByText('JP')).toBeNull();
+    expect(screen.queryByText('BR')).toBeNull();
   });
 
 });

@@ -1,8 +1,9 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { PreschoolListenTap } from './PreschoolListenTap';
 import { CALENDAR_MODULE } from '../../data/preschool/calendarModule';
+import { LETTERS_MODULE_MORE } from '../../data/preschool/lettersModule';
 
 const speak = vi.fn();
 
@@ -47,7 +48,21 @@ describe('PreschoolListenTap', () => {
     for (const name of ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']) {
       fireEvent.click(screen.getByLabelText(name));
     }
-    vi.advanceTimersByTime(900);
+    vi.advanceTimersByTime(2500);
+    expect(onComplete).toHaveBeenCalledTimes(1);
+  });
+
+  it('first-sound quiz completes only on the فَنَك picture', () => {
+    const onComplete = vi.fn();
+    const quiz = LETTERS_MODULE_MORE.activities.find((a) => a.id === 'letters-listen-faa')!;
+    render(<PreschoolListenTap activity={quiz} language="ar" onComplete={onComplete} />);
+
+    fireEvent.click(screen.getByLabelText('كَلْب'));
+    act(() => { vi.advanceTimersByTime(2500); });
+    expect(onComplete).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByLabelText('فَنَك'));
+    act(() => { vi.advanceTimersByTime(2500); });
     expect(onComplete).toHaveBeenCalledTimes(1);
   });
 });

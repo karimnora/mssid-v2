@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity } from '../../data/preschool/types';
-import { playSuccessChime } from './usePreschoolAudio';
+import { playGentleNudge, playSuccessChime } from './usePreschoolAudio';
 
 interface PreschoolDragDropProps {
   activity: PreschoolActivity;
@@ -43,7 +43,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, 
   };
 
   const handlePointerDown = (e: React.PointerEvent, id: string) => {
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
     draggingId.current = id;
     startPos.current = { x: e.clientX, y: e.clientY };
   };
@@ -62,10 +62,20 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({ activity, 
     if (!id) return;
 
     const dropped = isOverDropZone(e.clientX, e.clientY);
+    const target = activity.visualAssets.dropZoneCount || dragItems.length;
+    const hasExtras = dragItems.length > target;
     setItems((prev) => {
+      if (dropped && hasExtras) {
+        const already = prev.filter((it) => it.dropped).length;
+        if (already >= target) {
+          playGentleNudge();
+          return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
+        }
+      }
       const next = prev.map((it) => (it.id === id ? { ...it, dropped: dropped ? true : it.dropped, offset: dropped ? it.offset : { x: 0, y: 0 } } : it));
       const droppedCount = next.filter((it) => it.dropped).length;
-      if (dropped && droppedCount >= (activity.visualAssets.dropZoneCount || dragItems.length) && !completedRef.current) {
+      const enough = hasExtras ? droppedCount === target : droppedCount >= target;
+      if (dropped && enough && !completedRef.current) {
         completedRef.current = true;
         playSuccessChime();
         setTimeout(onComplete, 900);

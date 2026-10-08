@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
+import { PreschoolFlagMark } from './PreschoolFlagMark';
 
 interface PreschoolLanguagePickerProps {
   onSelect: (language: PreschoolLanguage) => void;
@@ -34,7 +35,7 @@ export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = (
               whileTap={{ scale: 0.95 }}
               className="min-h-32 rounded-[2rem] bg-white shadow-lg border-4 border-amber-200 hover:border-amber-400 flex flex-col items-center justify-center gap-2 py-6 cursor-pointer transition-colors"
             >
-              <span className="text-5xl">{info.flag}</span>
+              <PreschoolFlagMark asset={info.flag} size={64} />
               <span className="text-xl font-black text-orange-900" dir={info.dir}>{info.nativeLabel}</span>
             </motion.button>
           );

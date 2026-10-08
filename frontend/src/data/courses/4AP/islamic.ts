@@ -1,4 +1,5 @@
 import { CourseLesson } from '../../../types';
+import { SURAH_ALAQ, SURAH_BALAD, SURAH_DUHA, SURAH_GHASHIYA, SURAH_LAYL, SURAH_SHAMS } from './shortSurahs';
 
 // 10 leçon(s) — islamic / 4AP — الضحى والشمس، العلق والبلد، الغاشية والليل، المدينة وبدر (بدون الشرح والتين والفجر)
 export const ISLAMIC_4AP: CourseLesson[] = [
@@ -57,15 +58,9 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     interactiveTool: 'islamic_lab',
     islamicInteractive: {
         type: 'quran_explorer',
-        titleAr: 'استكشف آيات سورتي الضحى والشمس',
-        introAr: 'اختر آية للتدبر.',
-        verses: [
-            { surahAr: 'سورة الضحى', verseAr: 'مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ', meaningAr: 'طمأنة النبي ﷺ بأن الله لم يتركه ولم يبغضه.' },
-            { surahAr: 'سورة الضحى', verseAr: 'فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ ﴿٩﴾ وَأَمَّا السَّائِلَ فَلَا تَنْهَرْ ﴿١٠﴾', meaningAr: 'أمر بإكرام اليتيم ومساعدة السائل.' },
-            { surahAr: 'سورة الشمس', verseAr: 'وَالشَّمْسِ وَضُحَاهَا ﴿١﴾', meaningAr: 'قسم بالشمس وبضوئها في أول النهار.' },
-            { surahAr: 'سورة الشمس', verseAr: 'قَدْ أَفْلَحَ مَن زَكَّاهَا ﴿٩﴾ وَقَدْ خَابَ مَن دَسَّاهَا ﴿١٠﴾', meaningAr: 'الفلاح لتطهير النفس، والخيبة لمن لوّثها بالمعاصي.' },
-            { surahAr: 'سورة الشمس', verseAr: 'كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا ﴿١١﴾', meaningAr: 'ثمود كذّبوا وطغوا فنالوا العقاب.' },
-        ],
+        titleAr: 'اقرأ واحفظ سورتي الضحى والشمس كاملتين',
+        introAr: 'السورتان كاملتان للقراءة والحفظ. اضغط على آية لمعنى مبسّط.',
+        verses: [...SURAH_DUHA, ...SURAH_SHAMS],
     },
     progressiveExercises: [
         {
@@ -232,15 +227,9 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     interactiveTool: 'islamic_lab',
     islamicInteractive: {
         type: 'quran_explorer',
-        titleAr: 'استكشف آيات سورتي العلق والبلد',
-        introAr: 'اختر آية للتدبر.',
-        verses: [
-            { surahAr: 'سورة العلق', verseAr: 'اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ﴿١﴾', meaningAr: 'أول ما نزل: دعوة للعلم باسم الله.' },
-            { surahAr: 'سورة العلق', verseAr: 'خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ﴿٢﴾', meaningAr: 'بيان أصل خلق الإنسان.' },
-            { surahAr: 'سورة العلق', verseAr: 'الَّذِي عَلَّمَ بِالْقَلَمِ ﴿٤﴾', meaningAr: 'نعمة الكتابة والتعلم.' },
-            { surahAr: 'سورة البلد', verseAr: 'لَقَدْ خَلَقْنَا الْإِنسَانَ فِي كَبَدٍ ﴿٤﴾', meaningAr: 'حياة الإنسان فيها مشقة وجهد.' },
-            { surahAr: 'سورة البلد', verseAr: 'فَكُّ رَقَبَةٍ ﴿١٣﴾ أَوْ إِطْعَامٌ فِي يَوْمٍ ذِي مَسْغَبَةٍ ﴿١٤﴾', meaningAr: 'اقتحام العقبة بأعمال الخير.' },
-        ],
+        titleAr: 'اقرأ واحفظ سورتي العلق والبلد كاملتين',
+        introAr: 'السورتان كاملتان للقراءة والحفظ. اضغط على آية لمعنى مبسّط.',
+        verses: [...SURAH_ALAQ, ...SURAH_BALAD],
     },
     progressiveExercises: [
         {
@@ -407,14 +396,9 @@ export const ISLAMIC_4AP: CourseLesson[] = [
     interactiveTool: 'islamic_lab',
     islamicInteractive: {
         type: 'quran_explorer',
-        titleAr: 'استكشف آيات سورتي الغاشية والليل',
-        introAr: 'اختر آية للتدبر.',
-        verses: [
-            { surahAr: 'سورة الغاشية', verseAr: 'هَلْ أَتَاكَ حَدِيثُ الْغَاشِيَةِ ﴿١﴾', meaningAr: 'سؤال عن يوم القيامة الذي يغشى الناس.' },
-            { surahAr: 'سورة الغاشية', verseAr: 'وُجُوهٌ يَوْمَئِذٍ نَّاعِمَةٌ ﴿٨﴾ لِّسَعْيِهَا رَاضِيَةٌ ﴿٩﴾', meaningAr: 'وصف أهل الجنة الراضين بعملهم.' },
-            { surahAr: 'سورة الليل', verseAr: 'فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ ﴿٥﴾ وَصَدَّقَ بِالْحُسْنَىٰ ﴿٦﴾ فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ ﴿٧﴾', meaningAr: 'المعطي المتقي يُيسَّر لطريق الخير.' },
-            { surahAr: 'سورة الليل', verseAr: 'وَأَمَّا مَن بَخِلَ وَاسْتَغْنَىٰ ﴿٨﴾ وَكَذَّبَ بِالْحُسْنَىٰ ﴿٩﴾ فَسَنُيَسِّرُهُ لِلْعُسْرَىٰ ﴿١٠﴾', meaningAr: 'الباخل المكذّب يُيسَّر للعسرى.' },
-        ],
+        titleAr: 'اقرأ واحفظ سورتي الغاشية والليل كاملتين',
+        introAr: 'السورتان كاملتان للقراءة والحفظ. اضغط على آية لمعنى مبسّط.',
+        verses: [...SURAH_GHASHIYA, ...SURAH_LAYL],
     },
     progressiveExercises: [
         {

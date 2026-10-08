@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { playSoundBoxClip, stopSoundBoxClip, playSuccessChime, playGentleNudge, resumeTownAudio, usePreschoolSpeech } from './usePreschoolAudio';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { PreschoolFlagMark } from './PreschoolFlagMark';
 
 interface PreschoolSoundBoxProps {
   language: PreschoolLanguage;
@@ -339,7 +340,10 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
                   : 'text-amber-900 hover:bg-amber-100'
               }`}
             >
-              {PRESCHOOL_LANGUAGE_LABELS[l].flag} {l.toUpperCase()}
+              <span className="inline-flex items-center gap-1">
+                <PreschoolFlagMark asset={PRESCHOOL_LANGUAGE_LABELS[l].flag} size={16} />
+                {l.toUpperCase()}
+              </span>
             </button>
           ))}
         </div>

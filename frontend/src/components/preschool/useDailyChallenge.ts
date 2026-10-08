@@ -2,12 +2,12 @@
  * useDailyChallenge.ts
  * Sélectionne 3 activités-défi chaque jour de façon déterministe (hash de la date),
  * suit la progression + le streak en localStorage, et détecte automatiquement les
- * complétions en observant completedActivityIds.
+ * complétions réalisées AUJOURD'HUI (todayActivityIds), pas l'historique global.
  */
 import { useState, useEffect, useMemo } from 'react';
 import { PreschoolModule, PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 
-const STORAGE_KEY = 'mssid_daily_challenge';
+const DEFAULT_STORAGE_KEY = 'mssid_daily_challenge';
 
 export interface ChallengeItem {
   moduleId: string;
@@ -57,7 +57,9 @@ function hashDate(date: string): number {
 /** Exported so integrity tests can assert every id exists in PRESCHOOL_MODULES. */
 export const CHALLENGE_MODULE_IDS = [
   'preschool-letters',
-  'preschool-numbers-0-10',
+  'preschool-letters-2',
+  'preschool-numbers-0-5',
+  'preschool-numbers-6-10',
   'preschool-shapes',
   'preschool-colors',
   'preschool-animals',
@@ -69,16 +71,18 @@ export const CHALLENGE_MODULE_IDS = [
   'preschool-family',
   'preschool-algeria',
   'preschool-islamic-values',
+  'preschool-short-surahs',
   'preschool-emotions',
   'preschool-pre-writing',
   'preschool-logic-spatial',
   'preschool-sequences',
+  'preschool-stories',
 ];
 
 function pickActivity(mod: PreschoolModule, seed: number): PreschoolActivity {
   // Prefer recognition / sorting / matching over empty "drag to house" fillers.
   const preferred = mod.activities.filter((a) =>
-    ['tap_choice', 'sorting', 'connect_dots', 'sequence', 'trace', 'listen_tap'].includes(a.interactionType),
+    ['tap_choice', 'sorting', 'connect_dots', 'sequence', 'trace', 'listen_tap', 'quran_listen', 'story_order'].includes(a.interactionType),
   );
   const pool = preferred.length > 0 ? preferred : mod.activities;
   return pool[seed % pool.length];
@@ -104,9 +108,9 @@ function pickDailyChallenges(dateStr: string, allModules: PreschoolModule[]): Ch
   return result;
 }
 
-function loadStored(): StoredChallenge {
+function loadStored(storageKey: string): StoredChallenge {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(storageKey);
     if (raw) {
       const parsed = JSON.parse(raw) as StoredChallenge;
       // New day → reset completions but keep streak
@@ -119,17 +123,22 @@ function loadStored(): StoredChallenge {
   return { date: today(), completedIds: [], lastDoneDate: null, streak: 0 };
 }
 
-function saveStored(s: StoredChallenge) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch {}
+function saveStored(storageKey: string, s: StoredChallenge) {
+  try { localStorage.setItem(storageKey, JSON.stringify(s)); } catch {}
 }
 
 export function useDailyChallenge(
   allModules: PreschoolModule[],
-  completedActivityIds: string[],
+  todayActivityIds: string[],
   language: PreschoolLanguage,
+  storageKey: string = DEFAULT_STORAGE_KEY,
 ) {
-  const [stored, setStored] = useState<StoredChallenge>(loadStored);
+  const [stored, setStored] = useState<StoredChallenge>(() => loadStored(storageKey));
   const todayStr = today();
+
+  useEffect(() => {
+    setStored(loadStored(storageKey));
+  }, [storageKey]);
 
   const challengeItems = useMemo(
     () => pickDailyChallenges(todayStr, allModules),
@@ -143,7 +152,7 @@ export function useDailyChallenge(
 
     const newlyDone = challengeItems
       .map(i => i.activityId)
-      .filter(id => completedActivityIds.includes(id) && !stored.completedIds.includes(id));
+      .filter(id => todayActivityIds.includes(id) && !stored.completedIds.includes(id));
 
     if (newlyDone.length === 0) return;
 
@@ -158,9 +167,9 @@ export function useDailyChallenge(
     }
 
     setStored(next);
-    saveStored(next);
+    saveStored(storageKey, next);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [completedActivityIds]);
+  }, [todayActivityIds, storageKey]);
 
   const completedToday = challengeItems.filter(i => stored.completedIds.includes(i.activityId)).length;
 

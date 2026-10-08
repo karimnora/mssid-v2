@@ -7,6 +7,9 @@ import { PreschoolPrintablesModal } from './PreschoolPrintablesModal';
 import { DailyChallengeBanner } from './DailyChallengeBanner';
 import { ChallengeItem } from './useDailyChallenge';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { PreschoolAsset } from './PreschoolAsset';
+import { PreschoolFlagMark, isFlagEmoji } from './PreschoolFlagMark';
+import { ParentGateButton } from './PreschoolParentBilan';
 
 interface DailyChallengeData {
   items: ChallengeItem[];
@@ -29,6 +32,7 @@ interface PreschoolModulePickerProps {
   onViewChange: (view: PreschoolHubView) => void;
   learnGroup: PreschoolLearnGroupId | null;
   onLearnGroupChange: (group: PreschoolLearnGroupId | null) => void;
+  onOpenParentBilan?: () => void;
 }
 
 export type PreschoolHubView = 'home' | 'ateliers' | 'apprendre';
@@ -40,7 +44,14 @@ const spring = { type: 'spring' as const, stiffness: 280, damping: 22 };
 const LEARN_GROUPS: { id: LearnGroupId; moduleIds: string[] }[] = [
   {
     id: 'foundations',
-    moduleIds: ['preschool-letters', 'preschool-numbers-0-10', 'preschool-shapes', 'preschool-colors'],
+    moduleIds: [
+      'preschool-letters',
+      'preschool-letters-2',
+      'preschool-numbers-0-5',
+      'preschool-numbers-6-10',
+      'preschool-shapes',
+      'preschool-colors',
+    ],
   },
   {
     id: 'science',
@@ -48,7 +59,7 @@ const LEARN_GROUPS: { id: LearnGroupId; moduleIds: string[] }[] = [
   },
   {
     id: 'civics',
-    moduleIds: ['preschool-family', 'preschool-algeria', 'preschool-islamic-values', 'preschool-emotions'],
+    moduleIds: ['preschool-family', 'preschool-algeria', 'preschool-islamic-values', 'preschool-short-surahs', 'preschool-emotions'],
   },
   {
     id: 'create',
@@ -56,6 +67,7 @@ const LEARN_GROUPS: { id: LearnGroupId; moduleIds: string[] }[] = [
       'preschool-pre-writing',
       'preschool-logic-spatial',
       'preschool-sequences',
+      'preschool-stories',
       'preschool-art-drawing',
       'preschool-creative-games',
     ],
@@ -76,6 +88,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
   onViewChange,
   learnGroup,
   onLearnGroupChange,
+  onOpenParentBilan,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [showPrintables, setShowPrintables] = useState(false);
@@ -211,6 +224,9 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
               {view === 'home' ? '🚪' : dir === 'rtl' ? '▶' : '◀'}
             </button>
             <PreschoolMuteButton language={language} />
+            {onOpenParentBilan && (
+              <ParentGateButton language={language} onUnlock={onOpenParentBilan} />
+            )}
           </div>
 
           <div className="flex items-center gap-1 bg-white p-1 rounded-2xl shadow-sm border border-orange-200">
@@ -222,7 +238,10 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   language === l ? 'bg-orange-500 text-white' : 'text-[#1E293B] hover:bg-orange-100'
                 }`}
               >
-                {PRESCHOOL_LANGUAGE_LABELS[l].flag} {l.toUpperCase()}
+                <span className="inline-flex items-center gap-1">
+                  <PreschoolFlagMark asset={PRESCHOOL_LANGUAGE_LABELS[l].flag} size={18} />
+                  {l.toUpperCase()}
+                </span>
               </button>
             ))}
           </div>
@@ -342,7 +361,11 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   className={`min-h-36 rounded-3xl bg-gradient-to-br ${meta.gradient} p-6 text-white shadow-md
                               flex flex-col justify-between cursor-pointer text-start`}
                 >
-                  <span className="text-5xl">{meta.icon}</span>
+                  <span className="text-5xl">
+                    {isFlagEmoji(meta.icon)
+                      ? <PreschoolFlagMark asset={meta.icon} size={56} />
+                      : meta.icon}
+                  </span>
                   <div className="mt-4 space-y-1">
                     <p className="text-xl font-black">{meta.title}</p>
                     <p className="text-sm font-bold text-white/85">
@@ -372,7 +395,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                              flex items-center gap-4 px-5 py-4 cursor-pointer text-start"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0">
-                    {mod.icon}
+                    <PreschoolAsset asset={mod.icon} size={40} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-base font-black text-[#1E293B] truncate">{mod.titleI18n[language]}</p>

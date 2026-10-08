@@ -58,6 +58,7 @@ const SLUG_ICONS: Record<string, string> = {
   baby: '👶',
   'family-roles': '📖',
   'family-memory': '🃏',
+  'listen-faa': '👂',
   flag: '🇩🇿',
   'flag-colors': '🟩',
   'national-symbols': '⭐',
@@ -161,6 +162,13 @@ const SLUG_ICONS: Record<string, string> = {
   oasis: '🌴',
   'boat-tap': '⛵',
   vehicles: '🚦',
+  fatiha: '📖',
+  ikhlas: '💚',
+  falaq: '🌅',
+  nas: '👥',
+  kawthar: '🤲',
+  nasr: '🏳️',
+  asr: '⏳',
 };
 
 function isInternalSlug(value: string): boolean {

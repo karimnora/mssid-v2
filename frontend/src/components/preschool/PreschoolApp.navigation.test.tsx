@@ -29,9 +29,9 @@ describe('PreschoolApp navigation', () => {
     render(<PreschoolApp onExit={vi.fn()} />);
     fireEvent.click(screen.getByText('Apprendre'));
     fireEvent.click(screen.getByText('Lettres, chiffres et formes'));
-    fireEvent.click(screen.getByText('Le Bateau des Lettres'));
+    fireEvent.click(screen.getByText('Mes premières lettres'));
     fireEvent.click(screen.getByRole('button', { name: 'Retour' }));
-    expect(screen.getByText('Le Bateau des Lettres')).toBeInTheDocument();
-    expect(screen.getByText('Mes Premiers Nombres')).toBeInTheDocument();
+    expect(screen.getByText('Mes premières lettres')).toBeInTheDocument();
+    expect(screen.getByText('De 0 à 5')).toBeInTheDocument();
   });
 });

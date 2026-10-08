@@ -1,11 +1,11 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
 
 // "أرقامي الأولى" — My First Numbers (0 to 10). Pilot module for the Mode Éveil MVP.
 // Interaction types are deliberately spread across the path so the MVP exercises all three:
 // 0-4 → tap_choice (numeral recognition + simple counting)
 // 5-7 → drag_drop (counting objects into a basket)
 // 8-10 → trace (finger tracing of the numeral, wide tolerance)
-export const NUMBERS_MODULE_0_TO_10: PreschoolModule = {
+const NUMBERS_CATALOG: PreschoolModule = {
   id: 'preschool-numbers-0-10',
   domain: 'numbers',
   icon: '🔢',
@@ -81,18 +81,18 @@ export const NUMBERS_MODULE_0_TO_10: PreschoolModule = {
       domain: 'numbers',
       targetValue: 3,
       stepNumber: 4,
-      interactionType: 'tap_choice',
+      interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'الثَّلاَثَةُ', promptAudio: 'كَمْ تُفَّاحَةً تَرَى هَذِهِ المَرَّة؟', promptText: 'اطلبي من طفلك عدّ التفاحات الثلاث.', successAudio: 'أَحْسَنْت! ثَلَاثُ تُفَّاحَات!' },
-        fr: { title: 'Trois', promptAudio: 'Combien de pommes cette fois ? Compte avec moi !', promptText: 'Demandez à votre enfant de compter les 3 pommes.', successAudio: 'Bravo ! Trois pommes !' },
-        en: { title: 'Three', promptAudio: 'How many apples this time? Count with me!', promptText: 'Ask your child to count the 3 apples.', successAudio: 'Well done! Three apples!' },
+        ar: { title: 'الثَّلاَثَةُ', promptAudio: 'ضَعْ ثَلَاثَ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا!', promptText: 'خمس تفاحات في الصينية. ضع ثلاثاً فقط في السلة واترك الباقي.', successAudio: 'أَحْسَنْت! ثَلَاثُ تُفَّاحَات!' },
+        fr: { title: 'Trois', promptAudio: 'Mets trois pommes dans le panier ! Pas toutes !', promptText: 'Cinq pommes dans le plateau. Glisser seulement 3 dans le panier.', successAudio: 'Bravo ! Trois pommes !' },
+        en: { title: 'Three', promptAudio: 'Put three apples in the basket! Not all of them!', promptText: 'Five apples on the tray. Drop only 3 in the basket.', successAudio: 'Well done! Three apples!' },
       },
       visualAssets: {
-        mainSvgOrImage: '🍎🍎🍎',
-        choices: [
-          { id: 'c2', asset: '2', isCorrect: false },
-          { id: 'c3', asset: '3', isCorrect: true },
-          { id: 'c4', asset: '4', isCorrect: false },
+        mainSvgOrImage: '🧺',
+        dropZoneCount: 3,
+        dragItems: [
+          { id: 'd1', asset: '🍎' }, { id: 'd2', asset: '🍎' }, { id: 'd3', asset: '🍎' },
+          { id: 'd4', asset: '🍎' }, { id: 'd5', asset: '🍎' },
         ],
       },
     },
@@ -101,18 +101,18 @@ export const NUMBERS_MODULE_0_TO_10: PreschoolModule = {
       domain: 'numbers',
       targetValue: 4,
       stepNumber: 5,
-      interactionType: 'tap_choice',
+      interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'الأَرْبَعَةُ', promptAudio: 'كَمْ نَجْمَةً تَرَى؟ عُدَّ مَعِي!', promptText: 'اطلبي من طفلك عدّ النجمات الأربع ولمس الرقم الصحيح.', successAudio: 'رَائِع! أَرْبَعُ نَجْمَات!' },
-        fr: { title: 'Quatre', promptAudio: 'Combien vois-tu d\'étoiles ? Compte avec moi !', promptText: 'Demandez à votre enfant de compter les 4 étoiles.', successAudio: 'Super ! Exactement quatre !' },
-        en: { title: 'Four', promptAudio: 'How many stars do you see? Count with me!', promptText: 'Ask your child to count the 4 stars.', successAudio: 'Great! Exactly four!' },
+        ar: { title: 'الأَرْبَعَةُ', promptAudio: 'ضَعْ أَرْبَعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا!', promptText: 'ست نجمات في الصينية. ضع أربعاً فقط في السلة.', successAudio: 'رَائِع! أَرْبَعُ نَجْمَات!' },
+        fr: { title: 'Quatre', promptAudio: 'Mets quatre étoiles dans le panier ! Pas toutes !', promptText: 'Six étoiles dans le plateau. Glisser seulement 4 dans le panier.', successAudio: 'Super ! Exactement quatre !' },
+        en: { title: 'Four', promptAudio: 'Put four stars in the basket! Not all of them!', promptText: 'Six stars on the tray. Drop only 4 in the basket.', successAudio: 'Great! Exactly four!' },
       },
       visualAssets: {
-        mainSvgOrImage: '⭐⭐⭐⭐',
-        choices: [
-          { id: 'c4', asset: '4', isCorrect: true },
-          { id: 'c9', asset: '9', isCorrect: false },
-          { id: 'c1', asset: '1', isCorrect: false },
+        mainSvgOrImage: '🧺',
+        dropZoneCount: 4,
+        dragItems: [
+          { id: 'd1', asset: '⭐' }, { id: 'd2', asset: '⭐' }, { id: 'd3', asset: '⭐' },
+          { id: 'd4', asset: '⭐' }, { id: 'd5', asset: '⭐' }, { id: 'd6', asset: '⭐' },
         ],
       },
     },
@@ -123,16 +123,16 @@ export const NUMBERS_MODULE_0_TO_10: PreschoolModule = {
       stepNumber: 6,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'الخَمْسَةُ', promptAudio: 'ضَعْ خَمْسَ نَجْمَاتٍ فِي السَّلَة!', promptText: 'ساعدي طفلك على سحب النجمات الخمس إلى السلة.', successAudio: 'بَرَافُو! خَمْسُ نَجْمَاتٍ فِي السَّلَة!' },
-        fr: { title: 'Cinq', promptAudio: 'Mets cinq étoiles dans le panier !', promptText: 'Aidez votre enfant à glisser les 5 étoiles dans le panier.', successAudio: 'Bravo ! Cinq étoiles dans le panier !' },
-        en: { title: 'Five', promptAudio: 'Put five stars in the basket!', promptText: 'Help your child drag the 5 stars into the basket.', successAudio: 'Bravo! Five stars in the basket!' },
+        ar: { title: 'الخَمْسَةُ', promptAudio: 'ضَعْ خَمْسَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا!', promptText: 'سبع نجمات في الصينية. ضع خمساً فقط في السلة.', successAudio: 'بَرَافُو! خَمْسُ نَجْمَاتٍ فِي السَّلَة!' },
+        fr: { title: 'Cinq', promptAudio: 'Mets cinq étoiles dans le panier ! Pas toutes !', promptText: 'Sept étoiles dans le plateau. Glisser seulement 5 dans le panier.', successAudio: 'Bravo ! Cinq étoiles dans le panier !' },
+        en: { title: 'Five', promptAudio: 'Put five stars in the basket! Not all of them!', promptText: 'Seven stars on the tray. Drop only 5 in the basket.', successAudio: 'Bravo! Five stars in the basket!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
         dropZoneCount: 5,
         dragItems: [
           { id: 'd1', asset: '⭐' }, { id: 'd2', asset: '⭐' }, { id: 'd3', asset: '⭐' },
-          { id: 'd4', asset: '⭐' }, { id: 'd5', asset: '⭐' },
+          { id: 'd4', asset: '⭐' }, { id: 'd5', asset: '⭐' }, { id: 'd6', asset: '⭐' }, { id: 'd7', asset: '⭐' },
         ],
       },
     },
@@ -217,3 +217,36 @@ export const NUMBERS_MODULE_0_TO_10: PreschoolModule = {
     },
   ],
 };
+
+function renumberSteps(acts: PreschoolActivity[]): PreschoolActivity[] {
+  return acts.map((a, i) => ({ ...a, stepNumber: i + 1 }));
+}
+
+export const NUMBERS_MODULE_0_TO_5: PreschoolModule = {
+  ...NUMBERS_CATALOG,
+  id: 'preschool-numbers-0-5',
+  icon: '✋',
+  totalSteps: 6,
+  titleI18n: {
+    ar: 'مِنْ صِفْرٍ إِلَى خَمْسَة',
+    fr: 'De 0 à 5',
+    en: 'From 0 to 5',
+  },
+  activities: renumberSteps(NUMBERS_CATALOG.activities.slice(0, 6)),
+};
+
+export const NUMBERS_MODULE_6_TO_10: PreschoolModule = {
+  ...NUMBERS_CATALOG,
+  id: 'preschool-numbers-6-10',
+  icon: '🔟',
+  totalSteps: 5,
+  titleI18n: {
+    ar: 'مِنْ سِتَّةٍ إِلَى عَشَرَة',
+    fr: 'De 6 à 10',
+    en: 'From 6 to 10',
+  },
+  activities: renumberSteps(NUMBERS_CATALOG.activities.slice(6)),
+};
+
+/** First path — tests still import this name for activity[0]. */
+export const NUMBERS_MODULE_0_TO_10 = NUMBERS_MODULE_0_TO_5;

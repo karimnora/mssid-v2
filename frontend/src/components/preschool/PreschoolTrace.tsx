@@ -1,17 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
-import { playSuccessChime } from './usePreschoolAudio';
+import { PreschoolActivity, PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
+import { playGentleNudge, playSuccessChime } from './usePreschoolAudio';
 import { localizeGlyph } from './preschoolGlyphs';
 
 interface PreschoolTraceProps {
   activity: PreschoolActivity;
   language: PreschoolLanguage;
-  onComplete: () => void;
+  onComplete: (quality?: PreschoolPlayQuality) => void;
 }
 
 const CANVAS_SIZE = 260;
-const MIN_STROKE_LENGTH = 120;
 const HIT_RADIUS = 22;
+const TRY_MIN_LENGTH = 40;
+const WROTE_COVERAGE = 0.42;
+const SAMPLE_STRIDE = 8;
 const TRACE_FONT = `900 ${Math.round(CANVAS_SIZE * 0.65)}px system-ui, "Segoe UI", "Noto Naskh Arabic", "Noto Sans Arabic", Arial, sans-serif`;
 
 interface Pt { x: number; y: number }
@@ -61,6 +63,37 @@ function strokeLength(pts: Pt[]): number {
     const prev = pts[i - 1];
     return total + Math.hypot(p.x - prev.x, p.y - prev.y);
   }, 0);
+}
+
+export function sampleGlyphPoints(mask: ImageData, stride = SAMPLE_STRIDE): Pt[] {
+  const points: Pt[] = [];
+  const w = mask.width;
+  const h = mask.height;
+  for (let y = Math.floor(stride / 2); y < h; y += stride) {
+    for (let x = Math.floor(stride / 2); x < w; x += stride) {
+      if (mask.data[(y * w + x) * 4 + 3] > 12) points.push({ x, y });
+    }
+  }
+  return points;
+}
+
+export function glyphCoverage(mask: ImageData | null, strokes: Pt[][], hitRadius = HIT_RADIUS): number {
+  if (!mask) return 0;
+  const samples = sampleGlyphPoints(mask);
+  if (samples.length === 0) return 0;
+  const ink = strokes.flat();
+  if (ink.length === 0) return 0;
+  const reach = hitRadius + 6;
+  let hit = 0;
+  for (const sample of samples) {
+    const covered = ink.some((p) => {
+      const dx = p.x - sample.x;
+      const dy = p.y - sample.y;
+      return dx * dx + dy * dy <= reach * reach;
+    });
+    if (covered) hit += 1;
+  }
+  return hit / samples.length;
 }
 
 export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, language, onComplete }) => {
@@ -123,15 +156,33 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
   };
 
   const pathLength = strokes.reduce((sum, s) => sum + strokeLength(s), 0);
+  const coverage = glyphCoverage(maskRef.current, strokes);
+  const canTry = pathLength >= TRY_MIN_LENGTH;
+  const wroteIt = coverage >= WROTE_COVERAGE;
 
-  const handleValidate = () => {
-    if (pathLength >= MIN_STROKE_LENGTH) {
-      playSuccessChime();
-      setTimeout(onComplete, 900);
-    } else {
-      setNudge(true);
-      setTimeout(() => setNudge(false), 500);
+  const finish = (quality: PreschoolPlayQuality) => {
+    playSuccessChime();
+    setTimeout(() => onComplete(quality), 700);
+  };
+
+  const handleWrote = () => {
+    if (wroteIt) {
+      finish('wrote');
+      return;
     }
+    playGentleNudge();
+    setNudge(true);
+    setTimeout(() => setNudge(false), 500);
+  };
+
+  const handleTried = () => {
+    if (canTry) {
+      finish('tried');
+      return;
+    }
+    playGentleNudge();
+    setNudge(true);
+    setTimeout(() => setNudge(false), 500);
   };
 
   return (
@@ -175,20 +226,31 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
         )}
       </svg>
 
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <button
           onClick={() => setStrokes([])}
-          className="min-h-14 px-5 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-black text-sm cursor-pointer transition-colors"
+          className="min-h-14 min-w-14 px-4 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-black text-sm cursor-pointer transition-colors"
+          aria-label={language === 'ar' ? 'أَعِد' : language === 'fr' ? 'Recommencer' : 'Start over'}
         >
           🔄
         </button>
         <button
-          onClick={handleValidate}
-          className={`min-h-14 px-8 rounded-2xl font-black text-white text-lg shadow-lg cursor-pointer transition-transform ${
-            nudge ? 'bg-amber-500 animate-bounce' : 'bg-emerald-500 hover:bg-emerald-600'
-          }`}
+          onClick={handleTried}
+          className={`min-h-14 px-5 rounded-2xl font-black text-sm shadow-md cursor-pointer border-2 ${
+            canTry
+              ? 'bg-amber-100 text-amber-900 border-amber-400'
+              : 'bg-slate-100 text-slate-400 border-slate-200'
+          } ${nudge && !canTry ? 'animate-bounce' : ''}`}
         >
-          ✓
+          {language === 'ar' ? 'جَرَّبْتُ' : language === 'fr' ? 'J’ai essayé' : 'I tried'}
+        </button>
+        <button
+          onClick={handleWrote}
+          className={`min-h-14 px-5 rounded-2xl font-black text-sm shadow-lg cursor-pointer text-white ${
+            wroteIt ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-emerald-300'
+          } ${nudge && canTry && !wroteIt ? 'animate-bounce' : ''}`}
+        >
+          {language === 'ar' ? 'كَتَبْتُ' : language === 'fr' ? 'J’ai écrit' : 'I wrote it'}
         </button>
       </div>
     </div>

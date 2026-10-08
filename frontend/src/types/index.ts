@@ -46,7 +46,8 @@ export type SubjectId =
   | 'syllable_studio'
   | 'speed_reading'
   | 'topography_map'
-  | 'speed_lab';
+  | 'speed_lab'
+  | 'quran_lab';
 
 export interface SubjectInfo {
   id: SubjectId;

@@ -1,4 +1,5 @@
 import { CourseLesson } from '../../../types';
+import { SURAH_ADIAT, SURAH_BAYYINA, SURAH_SHARH, SURAH_TIN } from './shortSurahs';
 
 // 4 leçon(s) — islamic / 3AP
 export const ISLAMIC_3AP: CourseLesson[] = [
@@ -152,12 +153,9 @@ export const ISLAMIC_3AP: CourseLesson[] = [
     interactiveTool: 'islamic_lab',
     islamicInteractive: {
       type: 'quran_explorer',
-      titleAr: 'استكشف سورتي العاديات والشرح',
-      introAr: 'اختر سورة للتدبر وفهم معناها الإجمالي.',
-      verses: [
-        { surahAr: 'سورة العاديات', verseAr: 'وَالْعَادِيَاتِ ضَبْحاً', meaningAr: 'قسم بخيل الجهاد التي تعدو بسرعة وصوت أنفاسها يعلو من شدة الجري.' },
-        { surahAr: 'سورة الشرح', verseAr: 'أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ', meaningAr: 'تذكير للنبي ﷺ بنعمة شرح الله لصدره وتيسير أمره.' },
-      ],
+      titleAr: 'اقرأ واحفظ سورتي العاديات والشرح كاملتين',
+      introAr: 'السورتان كاملتان للقراءة والحفظ. اضغط على آية لمعنى مبسّط.',
+      verses: [...SURAH_ADIAT, ...SURAH_SHARH],
     },
     examplesAr: [
       {
@@ -254,12 +252,9 @@ export const ISLAMIC_3AP: CourseLesson[] = [
     interactiveTool: 'islamic_lab',
     islamicInteractive: {
       type: 'quran_explorer',
-      titleAr: 'استكشف سورتي التين والبينة',
-      introAr: 'اختر سورة للتدبر وفهم معناها الإجمالي.',
-      verses: [
-        { surahAr: 'سورة التين', verseAr: 'وَالتِّينِ وَالزَّيْتُونِ', meaningAr: 'يقسم الله بالتين والزيتون، رمزين لأرض مباركة، ليذكّرنا بتكريمه للإنسان.' },
-        { surahAr: 'سورة البينة', verseAr: 'لَمْ يَكُنِ الَّذِينَ كَفَرُوا... حَتَّىٰ تَأْتِيَهُمُ الْبَيِّنَةُ', meaningAr: 'تتحدث عن مجيء الدليل الواضح (الرسول ﷺ والقرآن) وأهمية اتباعه.' },
-      ],
+      titleAr: 'اقرأ واحفظ سورتي التين والبينة كاملتين',
+      introAr: 'السورتان كاملتان للقراءة والحفظ. اضغط على آية لمعنى مبسّط.',
+      verses: [...SURAH_TIN, ...SURAH_BAYYINA],
     },
     examplesAr: [
       {

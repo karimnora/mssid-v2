@@ -69,6 +69,7 @@ export const FAMILY_MODULE: PreschoolModule = {
       targetValue: 'mom',
       stepNumber: 2,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'أُمّ', fr: 'maman', en: 'mom' },
       i18n: {
         ar: {
           title: 'أُمِّي',
@@ -107,6 +108,7 @@ export const FAMILY_MODULE: PreschoolModule = {
       targetValue: 'dad',
       stepNumber: 3,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'أَب', fr: 'papa', en: 'dad' },
       i18n: {
         ar: {
           title: 'أَبِي',

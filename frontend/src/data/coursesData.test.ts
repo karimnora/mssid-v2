@@ -2,7 +2,19 @@ import { describe, it, expect } from 'vitest';
 import { COURSES_DATA } from './coursesData';
 import { OFFICIAL_EXAMS_DATA } from './examsData';
 import { PLAYFUL_PACKS } from './courses/1AP/playfulPacks';
+import { SHORT_SURAH_COUNTS } from './courses/1AP/shortSurahs';
 import { SURAH_2AP_COUNTS } from './courses/2AP/shortSurahs';
+import { SURAH_3AP_COUNTS } from './courses/3AP/shortSurahs';
+import { SURAH_4AP_COUNTS } from './courses/4AP/shortSurahs';
+import { SURAH_5AP_COUNTS } from './courses/5AP/shortSurahs';
+
+const CANONICAL_SURAH_AYAH_COUNTS: Record<string, number> = {
+  ...SHORT_SURAH_COUNTS,
+  ...SURAH_2AP_COUNTS,
+  ...SURAH_3AP_COUNTS,
+  ...SURAH_4AP_COUNTS,
+  ...SURAH_5AP_COUNTS,
+};
 import { AI_TUTOR_SUGGESTED_TOPICS } from './aiTutorSuggestedTopics';
 
 function countArabicWords(text: string): number {
@@ -798,6 +810,31 @@ describe('2AP Pedagogical Curriculum Tests (young-learner foundational content)'
       names.forEach((name) => {
         const ayahs = explorer.verses.filter((v) => v.surahAr === name);
         expect(ayahs.length, `${id} ${name}`).toBe(SURAH_2AP_COUNTS[name]);
+      });
+    });
+  });
+});
+
+describe('Quran explorers — full mushaf text for recitation and hifz', () => {
+  it('every quran_explorer ships the canonical ayah count of each surah, one ayah per verse', () => {
+    const explorers = COURSES_DATA.filter((l) => l.islamicInteractive?.type === 'quran_explorer');
+    expect(explorers.length).toBeGreaterThanOrEqual(15);
+
+    explorers.forEach((lesson) => {
+      const explorer = lesson.islamicInteractive;
+      if (explorer?.type !== 'quran_explorer') return;
+      const names = [...new Set(explorer.verses.map((v) => v.surahAr))];
+      expect(names.length, lesson.id).toBeGreaterThan(0);
+      names.forEach((name) => {
+        const expected = CANONICAL_SURAH_AYAH_COUNTS[name];
+        expect(expected, `${lesson.id} unknown surah name «${name}»`).toBeGreaterThan(0);
+        const ayahs = explorer.verses.filter((v) => v.surahAr === name);
+        expect(ayahs.length, `${lesson.id} ${name}`).toBe(expected);
+        ayahs.forEach((ayah) => {
+          expect(ayah.verseAr.length).toBeGreaterThan(1);
+          expect(ayah.meaningAr.length).toBeGreaterThan(4);
+          expect(ayah.verseAr).not.toMatch(/﴿/);
+        });
       });
     });
   });

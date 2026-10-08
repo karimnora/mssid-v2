@@ -4,6 +4,7 @@ import { PreschoolModule, PreschoolLanguage } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
 import { activityPathIcon } from './preschoolGlyphs';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { PreschoolAsset } from './PreschoolAsset';
 
 interface PreschoolPathViewProps {
   module: PreschoolModule;
@@ -45,8 +46,9 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
           </div>
 
           <div className="flex-1 text-center">
-            <h1 className="text-lg sm:text-xl font-black text-orange-900">
-              {module.icon} {module.titleI18n[language]}
+            <h1 className="text-lg sm:text-xl font-black text-orange-900 inline-flex items-center justify-center gap-2">
+              <PreschoolAsset asset={module.icon} size={28} />
+              {module.titleI18n[language]}
             </h1>
           </div>
           <div className="w-12" />

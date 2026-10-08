@@ -37,7 +37,10 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     for (const id of CHALLENGE_MODULE_IDS) {
       expect(ids.has(id), id).toBe(true);
     }
-    expect(CHALLENGE_MODULE_IDS).toContain('preschool-numbers-0-10');
+    expect(CHALLENGE_MODULE_IDS).toContain('preschool-numbers-0-5');
+    expect(CHALLENGE_MODULE_IDS).toContain('preschool-numbers-6-10');
+    expect(CHALLENGE_MODULE_IDS).toContain('preschool-letters-2');
+    expect(CHALLENGE_MODULE_IDS).not.toContain('preschool-numbers-0-10');
     expect(CHALLENGE_MODULE_IDS).not.toContain('preschool-numbers');
   });
 
@@ -83,7 +86,7 @@ describe('Preschool (Mode Éveil) data integrity', () => {
               }
               case 'drag_drop': {
                 expect(assets.dropZoneCount, activity.id).toBeGreaterThan(0);
-                expect(assets.dragItems?.length, activity.id).toBe(assets.dropZoneCount);
+                expect(assets.dragItems?.length, activity.id).toBeGreaterThanOrEqual(assets.dropZoneCount!);
                 break;
               }
               case 'find_path': {
@@ -175,6 +178,16 @@ describe('Preschool (Mode Éveil) data integrity', () => {
                 expect(new Set(ids).size, `${activity.id} listen card ids`).toBe(ids.length);
                 break;
               }
+              case 'quran_listen': {
+                expect(assets.quranSurahAr, activity.id).toBeTruthy();
+                break;
+              }
+              case 'story_order': {
+                const frames = assets.storyFrames ?? [];
+                expect(frames.length, activity.id).toBe(3);
+                expect(frames.map((f) => f.order).sort(), activity.id).toEqual([1, 2, 3]);
+                break;
+              }
             }
           });
         });
@@ -230,10 +243,10 @@ describe('Preschool (Mode Éveil) data integrity', () => {
   });
 
   it('letter FR/EN never expose Arabic glyphs in tap, trace, or connect', () => {
-    const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
-    expect(letters).toBeTruthy();
+    const letters = PRESCHOOL_MODULES.filter((m) => m.id.startsWith('preschool-letters'));
+    expect(letters.length).toBe(2);
     const arabicLetter = /[\u0600-\u06FF]/;
-    for (const activity of letters!.activities) {
+    for (const activity of letters.flatMap((m) => m.activities)) {
       for (const lang of ['fr', 'en'] as const) {
         const content = activity.i18n[lang];
         for (const choice of content.choices ?? []) {
@@ -271,11 +284,11 @@ describe('Preschool (Mode Éveil) data integrity', () => {
       return m ? m[1].toUpperCase() : null;
     };
 
-    const letters = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
-    expect(letters).toBeTruthy();
+    const letters = PRESCHOOL_MODULES.filter((m) => m.id.startsWith('preschool-letters'));
+    expect(letters.length).toBe(2);
 
     const issues: string[] = [];
-    for (const activity of letters!.activities) {
+    for (const activity of letters.flatMap((m) => m.activities)) {
       if (activity.interactionType !== 'tap_choice') continue;
       for (const [lang, word] of [['fr', 'lettre'], ['en', 'letter']] as const) {
         const content = activity.i18n[lang];
@@ -359,6 +372,18 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(sort?.visualAssets.sortItems?.[0].label?.fr).toBe('Dimanche');
   });
 
+  it('short surahs module lists the seven preschool surahs', () => {
+    const mod = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-short-surahs');
+    expect(mod).toBeTruthy();
+    expect(mod?.totalSteps).toBe(7);
+    expect(mod?.activities.map((a) => a.targetValue)).toEqual([
+      'fatiha', 'ikhlas', 'falaq', 'nas', 'kawthar', 'nasr', 'asr',
+    ]);
+    expect(mod?.activities.every((a) => a.interactionType === 'quran_listen')).toBe(true);
+    expect(activityPathIcon(mod!.activities[0]!, 'ar')).toBe('📖');
+    expect(activityPathIcon(mod!.activities.find((a) => a.id === 'surah-nasr')!, 'fr')).toBe('🏳️');
+  });
+
   it('seasons clothes keep casquette and straw hat as two different hats', () => {
     const seasons = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-seasons');
     const sorting = seasons?.activities.find((a) => a.id === 'seasons-clothes-sorting');
@@ -373,5 +398,118 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(straw?.label?.ar).toBe('قُبَّعَةُ قَشّ');
     expect(cap?.correctBinId).toBe('summer-bin');
     expect(straw?.correctBinId).toBe('spring-bin');
+  });
+
+  it('splits letters into two short paths and numbers into 0-5 then 6-10', () => {
+    const first = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
+    const more = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters-2');
+    expect(first?.totalSteps).toBe(14);
+    expect(more?.totalSteps).toBe(25);
+    expect(first?.activities.at(-1)?.id).toBe('letters-match-words');
+    expect(more?.activities[0]?.id).toBe('letters-raa-feather');
+    expect(more?.activities.some((a) => a.id === 'letters-listen-faa')).toBe(true);
+
+    const n05 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-0-5');
+    const n610 = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-6-10');
+    expect(n05?.activities.map((a) => a.id)).toEqual(['num-0', 'num-1', 'num-2', 'num-3', 'num-4', 'num-5']);
+    expect(n610?.activities.map((a) => a.id)).toEqual(['num-6', 'num-7', 'num-8', 'num-9', 'num-10']);
+  });
+
+  it('invites the child to say two words in letters, animals, family and Algeria', () => {
+    const echoIds = [
+      'letters-alif-rabbit', 'letters-meem-banana',
+      'letters-raa-feather', 'letters-noon-bee',
+      'animals-cow', 'animals-cat',
+      'family-mom', 'family-dad',
+      'algeria-couscous', 'algeria-fennec-tap',
+    ];
+    const byId = new Map(
+      PRESCHOOL_MODULES.flatMap((m) => m.activities).map((a) => [a.id, a]),
+    );
+    for (const id of echoIds) {
+      const word = byId.get(id)?.echoWord;
+      expect(word?.ar, id).toBeTruthy();
+      expect(word?.fr, id).toBeTruthy();
+      expect(word?.en, id).toBeTruthy();
+    }
+  });
+
+  it('adds a toothbrush path and a ف vs ك listen-tap', () => {
+    const brush = PRESCHOOL_MODULES
+      .find((m) => m.id === 'preschool-body')
+      ?.activities.find((a) => a.id === 'body-toothbrush');
+    expect(brush?.visualAssets.pathStops?.map((s) => s.asset)).toEqual(['🪥', '🧴', '😁', '🥛']);
+
+    const listen = PRESCHOOL_MODULES
+      .find((m) => m.id === 'preschool-letters-2')
+      ?.activities.find((a) => a.id === 'letters-listen-faa');
+    expect(listen?.interactionType).toBe('listen_tap');
+    expect(listen?.visualAssets.listenCorrectId).toBe('fennec');
+    expect(listen?.visualAssets.listenCards).toHaveLength(5);
+  });
+
+  it('sorts French and English first sounds on real phonemes, not copied Arabic pictures', () => {
+    const sort = PRESCHOOL_MODULES
+      .find((m) => m.id === 'preschool-letters-2')
+      ?.activities.find((a) => a.id === 'letters-rhyme-sort');
+    const frItems = sort?.i18n.fr.sortItems ?? [];
+    const enItems = sort?.i18n.en.sortItems ?? [];
+    expect(frItems.map((i) => i.asset).sort()).toEqual(['🍓', '🍃', '🦆', '🎁'].sort());
+    expect(enItems.map((i) => i.asset).sort()).toEqual(['🐟', '🔥', '🚗', '🧁'].sort());
+    expect(sort?.i18n.fr.promptText).toMatch(/fleur, fraise, feuille/);
+    expect(sort?.i18n.en.promptText).toMatch(/frog, fish, fire/);
+    expect(sort?.i18n.fr.promptAudio).not.toMatch(/éléphant/);
+    expect(sort?.i18n.en.promptAudio).not.toMatch(/strawberry/);
+  });
+
+  it('describes the Latin glyph actually shown on letter traces', () => {
+    const more = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters-2');
+    const start = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-letters');
+    const baa = start?.activities.find((a) => a.id === 'letters-trace-baa');
+    const alif = start?.activities.find((a) => a.id === 'letters-trace-alif');
+    const meem = start?.activities.find((a) => a.id === 'letters-trace-meem');
+    expect(baa?.i18n.fr.promptAudio).toMatch(/deux ronds/i);
+    expect(baa?.i18n.en.promptAudio).toMatch(/two bumps/i);
+    expect(baa?.i18n.fr.promptAudio).not.toMatch(/point/);
+    expect(alif?.i18n.fr.promptAudio).toMatch(/barre au milieu/i);
+    expect(meem?.i18n.fr.promptAudio).toMatch(/montagnes/i);
+    expect(more?.activities.find((a) => a.id === 'letters-trace-lam')?.i18n.fr.promptAudio).toMatch(/droite/i);
+  });
+
+  it('asks for 3, 4 and 5 among extra objects, not an exact tray empty', () => {
+    const nums = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-numbers-0-5');
+    const three = nums?.activities.find((a) => a.id === 'num-3');
+    const four = nums?.activities.find((a) => a.id === 'num-4');
+    const five = nums?.activities.find((a) => a.id === 'num-5');
+    expect(three?.interactionType).toBe('drag_drop');
+    expect(three?.visualAssets.dropZoneCount).toBe(3);
+    expect(three?.visualAssets.dragItems?.length).toBe(5);
+    expect(four?.visualAssets.dropZoneCount).toBe(4);
+    expect(four?.visualAssets.dragItems?.length).toBe(6);
+    expect(five?.visualAssets.dropZoneCount).toBe(5);
+    expect(five?.visualAssets.dragItems?.length).toBe(7);
+  });
+
+  it('places the same teddy in front of and behind a box', () => {
+    const spatial = PRESCHOOL_MODULES
+      .find((m) => m.id === 'preschool-logic-spatial')
+      ?.activities.find((a) => a.id === 'logic-front-behind');
+    const choices = spatial?.visualAssets.choices ?? [];
+    expect(choices.map((c) => c.id).sort()).toEqual(['behind', 'front']);
+    expect(choices.every((c) => c.asset === '🧸')).toBe(true);
+    expect(choices.find((c) => c.id === 'front')?.stack).toEqual(['📦', '🧸']);
+    expect(choices.find((c) => c.id === 'behind')?.stack).toEqual(['🧸', '📦']);
+  });
+
+  it('has three 3-picture stories and does not claim the whole alphabet on match-words-2', () => {
+    const stories = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-stories');
+    expect(stories?.totalSteps).toBe(3);
+    expect(stories?.activities.every((a) => a.interactionType === 'story_order')).toBe(true);
+    const match = PRESCHOOL_MODULES
+      .find((m) => m.id === 'preschool-letters-2')
+      ?.activities.find((a) => a.id === 'letters-match-words-2');
+    expect(match?.i18n.ar.successAudio).not.toMatch(/الأَبْجَدِيَّة/);
+    expect(match?.i18n.fr.successAudio).not.toMatch(/alphabet/i);
+    expect(match?.i18n.en.successAudio).not.toMatch(/whole alphabet/i);
   });
 });

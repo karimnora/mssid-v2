@@ -1,4 +1,4 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
 
 // "سَفِينَةُ الحُرُوفِ" — Letters and Vocabulary (Arabophone & Multi-language éveil).
 // Teaches 24 of the 28 letters of the Arabic alphabet individually via tap_choice (recognition) and
@@ -8,7 +8,7 @@ import { PreschoolModule } from './types';
 // (ر ز ش ص ض ط ظ ع غ ف ق ك ل ن و ي). Closes with a fruit-basket sort, a rhyme /
 // first-sound discrimination sort (ف vs ك), an expanded letter-to-picture matching game for the
 // second half of the alphabet, and a letter memory game — same depth pattern as the numbers module.
-export const LETTERS_MODULE: PreschoolModule = {
+const LETTERS_CATALOG: PreschoolModule = {
   id: 'preschool-letters',
   domain: 'letters',
   icon: '🔤',
@@ -25,6 +25,7 @@ export const LETTERS_MODULE: PreschoolModule = {
       targetValue: 'أ',
       stepNumber: 1,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'أَرْنَب', fr: 'Ananas', en: 'Apple' },
       i18n: {
         ar: {
           title: 'صَيْدُ حَرْفِ الأَلِفِ (أ)',
@@ -131,14 +132,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre A',
-          promptAudio: 'Trace la lettre A avec ton doigt ! Une ligne de haut en bas !',
+          promptAudio: 'Trace la lettre A avec ton doigt ! Deux traits qui se rejoignent, puis une barre au milieu !',
           promptText: 'Encouragez l\'enfant à tracer la lettre A.',
           successAudio: 'Très beau tracé ! Tu as écrit A !',
           glyph: 'A',
         },
         en: {
           title: 'Trace the Letter A',
-          promptAudio: 'Trace the letter A with your finger! A line from top to bottom!',
+          promptAudio: 'Trace the letter A with your finger! Two slants that meet, then a bar across!',
           promptText: 'Encourage your child to trace the letter A.',
           successAudio: 'Great trace! You wrote A!',
           glyph: 'A',
@@ -389,14 +390,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre B',
-          promptAudio: 'Trace la lettre B avec ton doigt ! Une ligne et un point !',
+          promptAudio: 'Trace la lettre B avec ton doigt ! Une grande ligne, puis deux ronds collés !',
           promptText: 'Encouragez l\'enfant à tracer la lettre B.',
           successAudio: 'Très beau tracé ! Tu as écrit B !',
           glyph: 'B',
         },
         en: {
           title: 'Trace the Letter B',
-          promptAudio: 'Trace the letter B with your finger! A line and a dot!',
+          promptAudio: 'Trace the letter B with your finger! A tall line, then two bumps!',
           promptText: 'Encourage your child to trace the letter B.',
           successAudio: 'Great trace! You wrote B!',
           glyph: 'B',
@@ -460,6 +461,7 @@ export const LETTERS_MODULE: PreschoolModule = {
       targetValue: 'م',
       stepNumber: 11,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'مَوْزَة', fr: 'Banane', en: 'Banana' },
       i18n: {
         ar: {
           title: 'صَيْدُ حَرْفِ المِيمِ (م)',
@@ -518,14 +520,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre M',
-          promptAudio: 'Trace la lettre M avec ton doigt ! Un petit rond et une queue !',
+          promptAudio: 'Trace la lettre M avec ton doigt ! Deux montagnes qui se touchent !',
           promptText: 'Encouragez l\'enfant à tracer la lettre M.',
           successAudio: 'Très beau tracé ! Tu as écrit M !',
           glyph: 'M',
         },
         en: {
           title: 'Trace the Letter M',
-          promptAudio: 'Trace the letter M with your finger! A small circle and a tail!',
+          promptAudio: 'Trace the letter M with your finger! Two mountains side by side!',
           promptText: 'Encourage your child to trace the letter M.',
           successAudio: 'Great trace! You wrote M!',
           glyph: 'M',
@@ -632,6 +634,7 @@ export const LETTERS_MODULE: PreschoolModule = {
       targetValue: 'ر',
       stepNumber: 15,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'رِيشَة', fr: 'Plume', en: 'Rose' },
       i18n: {
         ar: {
           title: 'صَيْدُ حَرْفِ الرَّاءِ (ر)',
@@ -738,14 +741,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre R',
-          promptAudio: 'Trace la lettre R avec ton doigt ! Une ligne qui courbe vers le bas !',
+          promptAudio: 'Trace la lettre R avec ton doigt ! Une ligne, un ventre, puis une jambe !',
           promptText: 'Encouragez l\'enfant à tracer la lettre R.',
           successAudio: 'Très beau tracé ! Tu as écrit R !',
           glyph: 'R',
         },
         en: {
           title: 'Trace the Letter R',
-          promptAudio: 'Trace the letter R with your finger! A line that curves down!',
+          promptAudio: 'Trace the letter R with your finger! A line, a bump, then a leg!',
           promptText: 'Encourage your child to trace the letter R.',
           successAudio: 'Great trace! You wrote R!',
           glyph: 'R',
@@ -915,14 +918,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre F',
-          promptAudio: 'Trace la lettre F avec ton doigt ! Une ligne et une barre !',
+          promptAudio: 'Trace la lettre F avec ton doigt ! Une ligne, une barre en haut, une barre au milieu !',
           promptText: 'Encouragez l\'enfant à tracer la lettre F.',
           successAudio: 'Très beau tracé ! Tu as écrit F !',
           glyph: 'F',
         },
         en: {
           title: 'Trace the Letter F',
-          promptAudio: 'Trace the letter F with your finger! A line and a bar!',
+          promptAudio: 'Trace the letter F with your finger! A line, a bar on top, a bar in the middle!',
           promptText: 'Encourage your child to trace the letter F.',
           successAudio: 'Great trace! You wrote F!',
           glyph: 'F',
@@ -1365,14 +1368,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre L',
-          promptAudio: 'Trace la lettre L avec ton doigt ! Une grande ligne vers le bas !',
+          promptAudio: 'Trace la lettre L avec ton doigt ! Descends, puis une barre vers la droite !',
           promptText: 'Encouragez l\'enfant à tracer la lettre L.',
           successAudio: 'Très beau tracé ! Tu as écrit L !',
           glyph: 'L',
         },
         en: {
           title: 'Trace the Letter L',
-          promptAudio: 'Trace the letter L with your finger! A tall line going down!',
+          promptAudio: 'Trace the letter L with your finger! Go down, then a bar to the right!',
           promptText: 'Encourage your child to trace the letter L.',
           successAudio: 'Great trace! You wrote L!',
           glyph: 'L',
@@ -1388,6 +1391,7 @@ export const LETTERS_MODULE: PreschoolModule = {
       targetValue: 'ن',
       stepNumber: 32,
       interactionType: 'tap_choice',
+      echoWord: { ar: 'نَحْلَة', fr: 'Abeille', en: 'Nest' },
       i18n: {
         ar: {
           title: 'صَيْدُ حَرْفِ النُّونِ (ن)',
@@ -1542,14 +1546,14 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Trace la Lettre R',
-          promptAudio: 'Trace la lettre R avec ton doigt ! Une ligne et une boucle !',
+          promptAudio: 'Trace la lettre R avec ton doigt ! Une ligne, un ventre, puis une jambe !',
           promptText: 'Encouragez l\'enfant à tracer la lettre R.',
           successAudio: 'Très beau tracé ! Tu as écrit R !',
           glyph: 'R',
         },
         en: {
           title: 'Trace the Letter R',
-          promptAudio: 'Trace the letter R with your finger! A line and a loop!',
+          promptAudio: 'Trace the letter R with your finger! A line, a bump, then a leg!',
           promptText: 'Encourage your child to trace the letter R.',
           successAudio: 'Great trace! You wrote R!',
           glyph: 'R',
@@ -1632,34 +1636,34 @@ export const LETTERS_MODULE: PreschoolModule = {
         },
         fr: {
           title: 'Ma Petite Oreille Écoute',
-          promptAudio: 'Écoute bien ! Mets la fleur et la fraise avec l\'éléphant, le gâteau et le croissant avec le chat !',
-          promptText: 'Aidez l\'enfant à trier selon le premier son français : F (fleur, fraise, éléphant) et C (gâteau, croissant, chat).',
+          promptAudio: 'Écoute bien ! Mets la fraise et la feuille avec la fleur, le canard et le cadeau avec la carotte !',
+          promptText: 'Trier selon le premier son : F (fleur, fraise, feuille) et C dur (carotte, canard, cadeau).',
           successAudio: 'Quelle bonne oreille ! Tu as reconnu tous les sons !',
           sortBins: [
-            { id: 'f-sound', labelAsset: '🐘' },
-            { id: 'c-sound', labelAsset: '🐱' },
+            { id: 'f-sound', labelAsset: '🌸', label: { ar: 'ف', fr: 'F', en: 'F' } },
+            { id: 'c-sound', labelAsset: '🥕', label: { ar: 'ك', fr: 'C', en: 'C' } },
           ],
           sortItems: [
-            { id: 'f-1', asset: '🌸', correctBinId: 'f-sound' },
-            { id: 'f-2', asset: '🍓', correctBinId: 'f-sound' },
-            { id: 'c-1', asset: '🍰', correctBinId: 'c-sound' },
-            { id: 'c-2', asset: '🥐', correctBinId: 'c-sound' },
+            { id: 'f-1', asset: '🍓', correctBinId: 'f-sound', label: { ar: 'فَرَاوِلَة', fr: 'fraise', en: 'strawberry' } },
+            { id: 'f-2', asset: '🍃', correctBinId: 'f-sound', label: { ar: 'وَرَقَة', fr: 'feuille', en: 'leaf' } },
+            { id: 'c-1', asset: '🦆', correctBinId: 'c-sound', label: { ar: 'بَطَّة', fr: 'canard', en: 'duck' } },
+            { id: 'c-2', asset: '🎁', correctBinId: 'c-sound', label: { ar: 'هَدِيَّة', fr: 'cadeau', en: 'gift' } },
           ],
         },
         en: {
           title: 'My Little Ear Listens',
-          promptAudio: 'Listen carefully! Put the fish and the strawberry with the frog, the car and the cupcake with the cat!',
-          promptText: 'Help your child sort by the English first sound: F (fish, strawberry, frog) and C (car, cupcake, cat).',
+          promptAudio: 'Listen carefully! Put the fish and the fire with the frog, the car and the cupcake with the cat!',
+          promptText: 'Sort by first sound: F (frog, fish, fire) and C (cat, car, cupcake).',
           successAudio: 'What a smart ear! You heard every sound correctly!',
           sortBins: [
-            { id: 'f-sound', labelAsset: '🐸' },
-            { id: 'c-sound', labelAsset: '🐱' },
+            { id: 'f-sound', labelAsset: '🐸', label: { ar: 'ف', fr: 'F', en: 'F' } },
+            { id: 'c-sound', labelAsset: '🐱', label: { ar: 'ك', fr: 'C', en: 'C' } },
           ],
           sortItems: [
-            { id: 'f-1', asset: '🐟', correctBinId: 'f-sound' },
-            { id: 'f-2', asset: '🍓', correctBinId: 'f-sound' },
-            { id: 'c-1', asset: '🚗', correctBinId: 'c-sound' },
-            { id: 'c-2', asset: '🧁', correctBinId: 'c-sound' },
+            { id: 'f-1', asset: '🐟', correctBinId: 'f-sound', label: { ar: 'سَمَكَة', fr: 'poisson', en: 'fish' } },
+            { id: 'f-2', asset: '🔥', correctBinId: 'f-sound', label: { ar: 'نَار', fr: 'feu', en: 'fire' } },
+            { id: 'c-1', asset: '🚗', correctBinId: 'c-sound', label: { ar: 'سَيَّارَة', fr: 'voiture', en: 'car' } },
+            { id: 'c-2', asset: '🧁', correctBinId: 'c-sound', label: { ar: 'كَعْكَة', fr: 'gâteau', en: 'cupcake' } },
           ],
         },
       },
@@ -1678,7 +1682,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           title: 'وَصِّلِ الحَرْفَ بِالصُّورَةِ (٢)',
           promptAudio: 'اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!',
           promptText: 'يمكن الربط بالنقر (حرف ثم صورة) أو بسحب خط من الحرف إلى الصورة (تكملة الأبجدية).',
-          successAudio: 'عَبْقَرِيٌّ صَغِير! رَبَطْتَ كُلَّ حُرُوفِ الأَبْجَدِيَّة!',
+          successAudio: 'عَبْقَرِيٌّ صَغِير! رَبَطْتَ هَذِهِ الحُرُوف!',
           connectPairs: [
             { id: 'feel-faa', leftAsset: '🐘', rightAsset: 'ف' },
             { id: 'qird-qaf', leftAsset: '🐒', rightAsset: 'ق' },
@@ -1691,7 +1695,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           title: 'Associe la Lettre et l\'Image (2)',
           promptAudio: 'Touche la lettre puis l’image, ou glisse un trait pour les relier !',
           promptText: 'On peut associer en tapant ou en traçant un lien (suite de l’alphabet).',
-          successAudio: 'Bravo ! Tu as associé tout l\'alphabet !',
+          successAudio: 'Bravo ! Tu as associé ces lettres !',
           connectPairs: [
             { id: 'e-elephant', leftAsset: '🐘', rightAsset: 'E' },
             { id: 'q-quatre', leftAsset: '4️⃣', rightAsset: 'Q' },
@@ -1704,7 +1708,7 @@ export const LETTERS_MODULE: PreschoolModule = {
           title: 'Match Letter and Picture (2)',
           promptAudio: 'Tap the letter then the picture, or drag a line to connect them!',
           promptText: 'Match by tapping or by drawing a link (rest of the alphabet).',
-          successAudio: 'Fantastic! You matched the whole alphabet!',
+          successAudio: 'Fantastic! You matched these letters!',
           connectPairs: [
             { id: 'e-elephant', leftAsset: '🐘', rightAsset: 'E' },
             { id: 'q-queen', leftAsset: '👸', rightAsset: 'Q' },
@@ -1720,3 +1724,74 @@ export const LETTERS_MODULE: PreschoolModule = {
     },
   ],
 };
+
+function renumberSteps(acts: PreschoolActivity[]): PreschoolActivity[] {
+  return acts.map((a, i) => ({ ...a, stepNumber: i + 1 }));
+}
+
+const LETTERS_LISTEN_FAA: PreschoolActivity = {
+  id: 'letters-listen-faa',
+  domain: 'letters',
+  targetValue: 'listen-faa',
+  stepNumber: 1,
+  interactionType: 'listen_tap',
+  i18n: {
+    ar: {
+      title: 'فَـ مِثْلَ فَنَك',
+      promptAudio: 'اِسْتَمِعْ: فَـ فَـ. اِلْمَسِ الصُّورَةَ الَّتِي تَبْدَأُ مِثْلَ فَنَك!',
+      promptText: 'التمييز السمعي: صوت الفاء مقابل الكاف والقاف. لا قراءة مطلوبة.',
+      successAudio: 'أُذُنٌ ذَكِيَّة! فَنَك يَبْدَأُ بِالفَاء!',
+    },
+    fr: {
+      title: 'F comme Fennec',
+      promptAudio: 'Écoute : Féé… Touche l\'image qui commence par F, comme fennec !',
+      promptText: 'Discrimination auditive : F contre C/G/L. Pas besoin de lire.',
+      successAudio: 'Quelle oreille ! Fennec commence par F !',
+    },
+    en: {
+      title: 'F like Fennec',
+      promptAudio: 'Listen: Fff… Touch the picture that starts like fennec !',
+      promptText: 'Auditory discrimination: F versus D/C/M/B. No reading needed.',
+      successAudio: 'What an ear! Fennec starts with F !',
+    },
+  },
+  visualAssets: {
+    mainSvgOrImage: '👂',
+    listenCorrectId: 'fennec',
+    listenCards: [
+      { id: 'fennec', asset: '🦊', label: { ar: 'فَنَك', fr: 'fennec', en: 'fennec' } },
+      { id: 'dog', asset: '🐶', label: { ar: 'كَلْب', fr: 'chien', en: 'dog' } },
+      { id: 'book', asset: '📖', label: { ar: 'كِتَاب', fr: 'livre', en: 'book' } },
+      { id: 'cake', asset: '🍰', label: { ar: 'كَعْك', fr: 'gâteau', en: 'cake' } },
+      { id: 'moon', asset: '🌙', label: { ar: 'قَمَر', fr: 'lune', en: 'moon' } },
+    ],
+  },
+};
+
+const LETTERS_CUT = 14;
+
+export const LETTERS_MODULE_START: PreschoolModule = {
+  ...LETTERS_CATALOG,
+  titleI18n: {
+    ar: 'حُرُوفِي الأُولَى',
+    fr: 'Mes premières lettres',
+    en: 'My First Letters',
+  },
+  totalSteps: LETTERS_CUT,
+  activities: renumberSteps(LETTERS_CATALOG.activities.slice(0, LETTERS_CUT)),
+};
+
+export const LETTERS_MODULE_MORE: PreschoolModule = {
+  id: 'preschool-letters-2',
+  domain: 'letters',
+  icon: '🔡',
+  titleI18n: {
+    ar: 'بَقِيَّةُ الحُرُوف',
+    fr: 'Encore des lettres',
+    en: 'More Letters',
+  },
+  totalSteps: LETTERS_CATALOG.activities.length - LETTERS_CUT + 1,
+  activities: renumberSteps([...LETTERS_CATALOG.activities.slice(LETTERS_CUT), LETTERS_LISTEN_FAA]),
+};
+
+export const LETTERS_MODULE = LETTERS_MODULE_START;
