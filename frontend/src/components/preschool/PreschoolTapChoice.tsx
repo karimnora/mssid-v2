@@ -23,13 +23,14 @@ function shuffleChoices(list: PreschoolChoice[]): PreschoolChoice[] {
 const spring = { type: 'spring' as const, stiffness: 420, damping: 22 };
 
 /** Open carton drawn from the side — not the 📦 emoji, which reads as a closed lid from above. */
-function SideBox({ className = '' }: { className?: string }) {
+function SideBox({ className = '', children }: { className?: string; children?: React.ReactNode }) {
   return (
     <span
       className={`relative block w-[2.6rem] h-[2.45rem] border-[3.5px] border-t-0 border-[#92400E] bg-amber-100 rounded-b-lg ${className}`}
     >
       <span className="absolute -top-[5px] -left-[3.5px] w-[5px] h-2 rounded-t-sm bg-[#92400E]" />
       <span className="absolute -top-[5px] -right-[3.5px] w-[5px] h-2 rounded-t-sm bg-[#92400E]" />
+      {children}
     </span>
   );
 }
