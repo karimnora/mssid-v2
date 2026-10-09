@@ -125,7 +125,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => onNavigateToActivity(nextItem.moduleId, nextItem.activityId)}
-              className="bg-white rounded-2xl px-3 py-1.5 text-orange-600 font-black text-xs shadow-sm cursor-pointer shrink-0"
+              className="bg-white rounded-2xl px-3 py-1.5 text-orange-800 font-black text-xs shadow-sm cursor-pointer shrink-0"
             >
               {L.go}
             </motion.button>

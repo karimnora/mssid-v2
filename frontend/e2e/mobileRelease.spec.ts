@@ -46,3 +46,26 @@ test('iPad desktop mode retains home-screen installation and contact feedback', 
   await expect(page.getByRole('textbox').first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
+
+test('installation invitation stays on home when a child opens a lesson', async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, 'userAgent', { get: () => 'Mozilla/5.0 (Linux; Android 14) Chrome/131.0 Mobile' }));
+  await page.goto('/');
+  const install = page.getByRole('link', { name: 'Télécharger sur Google Play', exact: true }).first();
+  await expect(install).toBeVisible({ timeout: 20000 });
+  await page.locator('[data-subject-card="math"]').click();
+  await expect(page.locator('[data-lesson-id]').first()).toBeVisible({ timeout: 20000 });
+  await expect(page.locator('aside').filter({ has: page.getByRole('link', { name: 'Télécharger sur Google Play', exact: true }) })).toHaveCount(0);
+  await page.locator('[data-lesson-id]').first().click();
+  await expect(page.locator('#lesson-active-step-container')).toBeVisible();
+  await expect(page.locator('aside').filter({ has: page.getByRole('link', { name: 'Télécharger sur Google Play', exact: true }) })).toHaveCount(0);
+});
+
+test('a logged-in child with zero coins sees zero on home and in the companion', async ({ page }) => {
+  await page.route('**/api/v1/users/me', route => route.fulfill({ json: {
+    id: 1, nom: 'Test', email: 'test@example.com', role: 'ROLE_USER', grade: '1AP', goldCoins: 0, xp: 0,
+  } }));
+  await page.goto('/');
+  await expect(page.getByText('🪙 0 pièces', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Nourrir (Dattes/Lait)', exact: true }).click();
+  await expect(page.getByText('🪙 0 pièces', { exact: true })).toHaveCount(2);
+});

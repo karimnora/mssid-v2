@@ -237,7 +237,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                 key={l}
                 onClick={() => onSelectLanguage?.(l)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  language === l ? 'bg-orange-500 text-white' : 'text-[#1E293B] hover:bg-orange-100'
+                  language === l ? 'bg-orange-700 text-white' : 'text-[#1E293B] hover:bg-orange-100'
                 }`}
               >
                 <span className="inline-flex items-center gap-1">

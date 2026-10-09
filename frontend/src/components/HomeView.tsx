@@ -283,7 +283,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             if (lastActivityTitle && onResumeActivity) onResumeActivity();
             else openSubject('math');
           }}
-          className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-[var(--kids-grass-2)] font-extrabold text-[14.5px] flex items-center justify-center gap-2"
+          className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-emerald-700 font-extrabold text-[14.5px] flex items-center justify-center gap-2"
         >
           <span data-pole-icon="courses" hidden />
           {lastActivityTitle && onResumeActivity
@@ -323,7 +323,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               whileTap={{ scale: 0.95 }}
               transition={spring}
               onClick={onOpenAuthModal}
-              className="hit-target shrink-0 bg-[var(--kids-grass-2)] text-white px-4 rounded-[14px] font-extrabold text-xs sm:text-sm"
+              className="hit-target shrink-0 bg-emerald-700 text-white px-4 rounded-[14px] font-extrabold text-xs sm:text-sm"
             >
               {t('guestSignupCta')}
             </motion.button>
@@ -338,7 +338,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             type="button"
             onClick={() => onSelectPole('courses')}
-            className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
+            className="hit-target text-[12.5px] font-bold text-[var(--app-text)]"
           >
             {t('sectionViewAll')}
           </button>
@@ -383,7 +383,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             type="button"
             data-pole="labs"
             onClick={() => onSelectPole('labs')}
-            className="hit-target text-[12.5px] font-bold text-[var(--kids-grass-2)]"
+            className="hit-target text-[12.5px] font-bold text-[var(--app-text)]"
           >
             <span data-pole-icon="labs" className="inline-flex align-middle me-1" aria-hidden>
               <LabsPoleIcon className="w-4 h-4" />

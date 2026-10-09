@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, expect, it } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { COURSES_DATA } from '../../data/coursesData';
 import { hasRenderableInteractiveTool, LessonInteractiveTools } from './LessonInteractiveTools';
 
@@ -16,9 +16,7 @@ describe('P0 interactive lesson tools', () => {
     expect(lesson).toBeDefined();
     render(<LessonInteractiveTools lesson={lesson!} />);
 
-    await waitFor(() => {
-      expect(screen.getByText(/المختبر التفاعلي للغة الأمازيغية/)).toBeInTheDocument();
-    });
+    await screen.findByText(/المختبر التفاعلي للغة الأمازيغية/, {}, { timeout: 5000 });
     expect(screen.getAllByText('ⵣ').length).toBeGreaterThan(0);
     expect(screen.queryByText('العودة للأدوات')).not.toBeInTheDocument();
   });
@@ -40,9 +38,8 @@ describe('P0 interactive lesson tools', () => {
     expect(greetings).toBeDefined();
     render(<LessonInteractiveTools lesson={greetings!} />);
 
-    await waitFor(() => {
-      expect(screen.getByText('Bonjour ! Je me présente')).toBeInTheDocument();
-    });
+    // Wait for the real lazy-loaded tool, including when the full suite is under load.
+    await screen.findByText('Bonjour ! Je me présente', {}, { timeout: 5000 });
     expect(screen.queryByText('Imparfait (5AP)')).not.toBeInTheDocument();
   });
 });

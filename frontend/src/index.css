@@ -110,6 +110,10 @@ body {
   font-family: 'Cairo', 'Readex Pro', system-ui, -apple-system, sans-serif;
 }
 
+.theme-dark .app-logo-dz {
+  color: #6ee7b7;
+}
+
 .theme-sepia {
   --app-bg: #fbf9f5;
   --app-text: #292524;

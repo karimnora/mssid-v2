@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <MssidLogo size="md" />
           <span className="font-extrabold text-lg tracking-tight truncate">
-            MSSID <span className="text-[var(--brand-emerald)] font-serif text-base">DZ</span>
+            MSSID <span className="app-logo-dz text-[var(--brand-emerald)] font-serif text-base">DZ</span>
           </span>
         </motion.button>
 

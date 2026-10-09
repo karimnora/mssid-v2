@@ -135,9 +135,10 @@ describe('LessonStepFooter', () => {
     expect(document.querySelector('[data-primary-cta="finish-lesson"]')).toBeNull();
   });
 
-  it('keeps التالي above the mobile nav on 3AP–5AP as well as on 1AP', () => {
+  it.each([{ compact: false, playful: false }, { compact: true, playful: false }, { compact: true, playful: true }])('keeps navigation in document flow for layout %o', layout => {
     const { container } = render(
       <LessonStepFooter
+        {...layout}
         availableSteps={steps}
         currentStepIndex={0}
         isLastStep={false}
@@ -151,7 +152,8 @@ describe('LessonStepFooter', () => {
         onFinishLesson={vi.fn()}
       />
     );
-    expect(container.firstChild).toHaveClass('sticky');
-    expect(container.firstChild).toHaveClass('bottom-[calc(7.25rem+env(safe-area-inset-bottom))]');
+    expect(container.firstChild).toHaveClass('static');
+    expect(container.firstChild).not.toHaveClass('sticky');
+    expect(container.firstChild).not.toHaveClass('fixed');
   });
 });

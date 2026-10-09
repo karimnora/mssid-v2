@@ -826,8 +826,8 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
         </div>
 
         {/* Secondary subtitle / lesson count */}
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 flex-wrap">
-          {secondaryName && <span className="opacity-80">{secondaryName}</span>}
+        <div className="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 flex-wrap">
+          {secondaryName && <span>{secondaryName}</span>}
           {totalLessons !== undefined && totalLessons > 0 && (
             <>
               <span className="text-slate-300 dark:text-slate-600">•</span>

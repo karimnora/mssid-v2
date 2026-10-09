@@ -39,10 +39,8 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
   // Browsing is free, but completion is reserved for a validated quiz so progress reflects
   // understanding rather than only navigation.
   const canFinish = !hasQuiz || quizPassed;
-  // Sit above the mobile tab bar + the fox that sticks 28px out of it (≈7.25rem), all grades —
-  // previously only 1AP/2AP were sticky, so التالي on 3–5AP sat under the nav.
-  const aboveMobileNav =
-    'sticky z-30 bottom-[calc(7.25rem+env(safe-area-inset-bottom))] md:bottom-3';
+  // Keep navigation after the activity in normal document flow so it never covers the lesson.
+  const footerPosition = 'static';
 
   const handlePrev = () => {
     if (currentStepIndex > 0) onGoToStep(currentStepIndex - 1);
@@ -52,10 +50,10 @@ export const LessonStepFooter: React.FC<LessonStepFooterProps> = ({
     <div
       className={
         playful
-          ? `${aboveMobileNav} bg-white/95 backdrop-blur-md border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-lg space-y-3`
+          ? `${footerPosition} bg-white/95 backdrop-blur-md border border-slate-200 rounded-3xl p-4 sm:p-5 shadow-lg space-y-3`
           : compact
-          ? `${aboveMobileNav} bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4`
-          : `${aboveMobileNav} bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4`
+          ? `${footerPosition} bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4`
+          : `${footerPosition} bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-lg space-y-4`
       }
       data-lesson-footer={playful ? 'playful' : compact ? 'compact' : 'full'}
     >

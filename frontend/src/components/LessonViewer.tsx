@@ -638,7 +638,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={tabTransition}
-          className="pb-32 md:pb-8 min-w-0"
+          className="min-w-0"
         >
           {activeTab === 'explanation' && (
             isPlayful1AP ? (

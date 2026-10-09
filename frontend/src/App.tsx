@@ -406,7 +406,7 @@ export default function App() {
   return (
     <div className="min-h-screen print:min-h-0 font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] print:pb-0 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
       <SeoHead />
-      <PwaInstallBanner />
+      <PwaInstallBanner enabled={nav.isHomeActive} />
       <AndroidUpdateBanner />
 
       <Navbar
@@ -426,7 +426,7 @@ export default function App() {
             grade={nav.grade}
             authUser={authUser}
             userName={progress.userProfile.name}
-            goldCoins={progress.userProfile.goldCoins || 150}
+            goldCoins={progress.userProfile.goldCoins ?? 150}
             xp={progress.userProfile.xp}
             level={progress.userProfile.level}
             avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
@@ -558,7 +558,7 @@ export default function App() {
             {nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
               <DidouVirtualCompanion
                 avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
-                goldCoins={progress.userProfile.goldCoins || 150}
+                goldCoins={progress.userProfile.goldCoins ?? 150}
                 xp={progress.userProfile.xp}
                 level={progress.userProfile.level}
                 userName={progress.userProfile.name}

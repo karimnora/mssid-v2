@@ -35,8 +35,8 @@ const renderViewer = () =>
     </LocaleProvider>,
   );
 
-describe('LessonViewer — 2AP sticky footer clearance', () => {
-  it('reserves bottom padding so the sticky next-step footer does not cover lesson content', () => {
+describe('LessonViewer — navigation after lesson content', () => {
+  it('places compact navigation after the active lesson content', () => {
     const lesson2ap: CourseLesson = {
       ...lesson,
       id: 'math-2ap-sample',
@@ -51,12 +51,13 @@ describe('LessonViewer — 2AP sticky footer clearance', () => {
       </LocaleProvider>,
     );
 
-    const contentPanel = container.querySelector('.pb-32');
-    expect(contentPanel).toBeTruthy();
-    expect(document.querySelector('[data-lesson-footer="compact"]')).toBeTruthy();
+    const contentPanel = container.querySelector('#lesson-active-step-container')!;
+    const footer = container.querySelector('[data-lesson-footer="compact"]')!;
+    expect(footer).toHaveClass('static');
+    expect(contentPanel.compareDocumentPosition(footer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it('reserves the same clearance on 5AP where the footer used to sit under the nav', () => {
+  it('places full navigation after the active lesson content on 5AP', () => {
     const lesson5ap: CourseLesson = {
       ...lesson,
       id: 'math-5ap-sample',
@@ -71,8 +72,10 @@ describe('LessonViewer — 2AP sticky footer clearance', () => {
       </LocaleProvider>,
     );
 
-    expect(container.querySelector('.pb-32')).toBeTruthy();
-    expect(document.querySelector('[data-lesson-footer="full"]')).toBeTruthy();
+    const contentPanel = container.querySelector('#lesson-active-step-container')!;
+    const footer = container.querySelector('[data-lesson-footer="full"]')!;
+    expect(footer).toHaveClass('static');
+    expect(contentPanel.compareDocumentPosition(footer) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 });
 

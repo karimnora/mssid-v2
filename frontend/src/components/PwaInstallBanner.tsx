@@ -12,7 +12,7 @@ interface InstallPrompt extends Event {
 const DISMISSED_KEY = 'mssid_pwa_dismissed_time';
 const COOLDOWN = 3 * 24 * 60 * 60 * 1000;
 
-export const PwaInstallBanner: React.FC = () => {
+export const PwaInstallBanner: React.FC<{ enabled?: boolean }> = ({ enabled = true }) => {
   const t = useTranslation('meta');
   const { direction } = useLocaleContext();
   const platform = getAppPlatform();
@@ -77,7 +77,7 @@ export const PwaInstallBanner: React.FC = () => {
     finally { setInstalling(false); }
   };
 
-  if (!visible || Capacitor.isNativePlatform() || isInstalledWebApp()) return null;
+  if (!enabled || !visible || Capacitor.isNativePlatform() || isInstalledWebApp()) return null;
   const ctaClass = 'hit-target inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-amber-300 px-4 text-sm font-extrabold text-slate-950 disabled:opacity-50';
   return (
     <aside dir={direction} aria-label={t('pwaBannerTitle')} className="sticky top-0 z-40 bg-emerald-800 px-3 py-3 text-white shadow-md overflow-x-clip">

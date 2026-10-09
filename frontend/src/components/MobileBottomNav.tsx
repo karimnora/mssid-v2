@@ -36,7 +36,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   const activeLabId = isLabSubjectId(selectedSubject) ? selectedSubject : undefined;
 
   const navBgClass = 'bg-[var(--app-footer-bg)] border-[var(--app-card-border)]';
-  const activeTabClass = 'text-[var(--brand-emerald)] font-extrabold';
+  const activeTabClass = 'text-[var(--app-text)] font-extrabold';
   const inactiveTabClass = 'text-[var(--app-text-muted)]';
 
   const tabButton = (
@@ -78,7 +78,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         >
           <span aria-hidden>🦊</span>
         </button>
-        <span className="text-[11px] font-extrabold text-[var(--kids-coral-2)] mt-0.5">{t('aiTutorShort')}</span>
+        <span className="text-[11px] font-extrabold text-[var(--app-text)] mt-0.5">{t('aiTutorShort')}</span>
       </div>
       )}
 
