@@ -513,6 +513,10 @@ public async request<T>(
     });
   }
 
+  public async getAdminStatsPeriod(from: string, to: string) {
+    return this.request<unknown>(`/v1/admin/stats/period?${new URLSearchParams({ from, to })}`, { method: 'GET' });
+  }
+
   // Public endpoint (no admin auth required) — every visitor's client hydrates flag overrides
   // from here at boot, see AuthContext.tsx.
   public async getFeatureFlagsPublic() {

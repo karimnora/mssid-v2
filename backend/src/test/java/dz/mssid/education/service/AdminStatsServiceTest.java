@@ -101,6 +101,54 @@ class AdminStatsServiceTest {
     }
 
     @Test
+    void calendarWindowsExcludeEighthAndThirtyFirstDayAndFutureActivity() {
+        var today = LocalDate.of(2026, 10, 9);
+        var users = java.util.stream.Stream.of(0, 6, 7, 29, 30, -1).map(offset -> User.builder()
+                .createdAt(today.minusDays(offset).atStartOfDay())
+                .lastActiveDate(today.minusDays(offset).toString()).build()).toList();
+        when(userRepository.findAll()).thenReturn(users);
+        when(paymentReceiptRepository.findAll()).thenReturn(List.of());
+        var result = adminStatsService.getOverview(today.atTime(12, 0), today);
+        assertEquals(1, result.getDailyActiveUsers());
+        assertEquals(2, result.getWeeklyActiveUsers());
+        assertEquals(4, result.getMonthlyActiveUsers());
+        assertEquals(1, result.getNewUsersToday());
+        assertEquals(2, result.getNewUsersLast7Days());
+        assertEquals(4, result.getNewUsersLast30Days());
+    }
+
+    @Test
+    void datedSeriesIncludesZeroDaysAndUsesSubmissionDateWithCurrentStatus() {
+        var from = LocalDate.of(2025, 1, 1);
+        var to = from.plusDays(2);
+        var start = from.atStartOfDay();
+        var until = to.plusDays(1).atStartOfDay();
+        when(userRepository.findByCreatedAtGreaterThanEqualAndCreatedAtLessThan(start, until))
+                .thenReturn(List.of(User.builder().createdAt(start).build(), User.builder().createdAt(until).build()));
+        when(paymentReceiptRepository.findBySubmittedAtGreaterThanEqualAndSubmittedAtLessThan(start, until))
+                .thenReturn(List.of(PaymentReceipt.builder().submittedAt(to.atTime(23, 59))
+                        .verifiedAt(until.plusDays(2)).status(PaymentReceipt.ReceiptStatus.APPROVED).amountDzd(1500.0).build(),
+                        PaymentReceipt.builder().submittedAt(start).status(null).amountDzd(null).build()));
+        var result = adminStatsService.getPeriod(from, to);
+        assertEquals(3, result.days().size());
+        assertEquals(1, result.days().getFirst().registrations());
+        assertEquals(0, result.days().get(1).registrations());
+        assertEquals(0, result.days().get(1).submittedReceipts());
+        assertEquals(1500, result.days().getLast().approvedSubmittedAmountDzd());
+        assertEquals(0, result.days().getFirst().approvedSubmittedAmountDzd());
+    }
+
+    @Test
+    void rejectsInvalidPeriodsBeforeQueryingRepositories() {
+        var from = LocalDate.of(2024, 1, 1);
+        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, from.minusDays(1)));
+        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, from.plusDays(366)));
+        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(null, from));
+        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, LocalDate.now().plusDays(1)));
+        org.mockito.Mockito.verifyNoInteractions(userRepository, paymentReceiptRepository);
+    }
+
+    @Test
     @DisplayName("getOverview - Handles zero users without dividing by zero")
     void getOverview_EmptyDataset() {
         when(userRepository.findAll()).thenReturn(List.of());

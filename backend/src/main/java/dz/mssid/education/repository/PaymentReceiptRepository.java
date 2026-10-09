@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 @Repository
 public interface PaymentReceiptRepository extends JpaRepository<PaymentReceipt, Long> {
@@ -17,4 +18,7 @@ public interface PaymentReceiptRepository extends JpaRepository<PaymentReceipt, 
     List<PaymentReceipt> findByUserId(Long userId);
 
     void deleteByUserId(Long userId);
+
+    List<PaymentReceipt> findBySubmittedAtGreaterThanEqualAndSubmittedAtLessThan(
+            LocalDateTime from, LocalDateTime until);
 }

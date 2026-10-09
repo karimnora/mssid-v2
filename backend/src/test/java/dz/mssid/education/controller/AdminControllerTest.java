@@ -93,6 +93,21 @@ class AdminControllerTest {
     }
 
     @Test
+    void getStatsPeriodBindsDatesAndReturnsDailyFacts() throws Exception {
+        var from = java.time.LocalDate.of(2025, 1, 1);
+        var result = new dz.mssid.education.dto.AdminStatsPeriodDto(from, from, "UTC", List.of(
+                new dz.mssid.education.dto.AdminStatsPeriodDto.Day(from, 2, 1, 1500, 0)));
+        when(adminStatsService.getPeriod(from, from)).thenReturn(result);
+        mockMvc.perform(get("/api/v1/admin/stats/period").param("from", "2025-01-01").param("to", "2025-01-01"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.days[0].registrations").value(2))
+                .andExpect(jsonPath("$.from").value("2025-01-01"));
+        verify(adminStatsService).getPeriod(from, from);
+        mockMvc.perform(get("/api/v1/admin/stats/period").param("from", "invalid").param("to", "2025-01-01"))
+                .andExpect(status().isBadRequest());
+        mockMvc.perform(get("/api/v1/admin/stats/period")).andExpect(status().isBadRequest());
+    }
+
+    @Test
     @DisplayName("GET /api/v1/admin/audit-log - No filters: returns recent audit entries, newest first")
     void getAuditLog_Success() throws Exception {
         AdminAuditLogDto entry = AdminAuditLogDto.builder()

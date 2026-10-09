@@ -1,6 +1,7 @@
 package dz.mssid.education.service;
 
 import dz.mssid.education.dto.AdminStatsOverviewDto;
+import dz.mssid.education.dto.AdminStatsPeriodDto;
 import dz.mssid.education.dto.PaymentsStatsDto;
 import dz.mssid.education.entity.PaymentReceipt;
 import dz.mssid.education.entity.User;
@@ -8,9 +9,14 @@ import dz.mssid.education.repository.PaymentReceiptRepository;
 import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeParseException;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -31,6 +37,12 @@ public class AdminStatsService {
     private final PaymentReceiptRepository paymentReceiptRepository;
 
     public AdminStatsOverviewDto getOverview() {
+        // Progress dates come from JavaScript toISOString() (UTC). Entity creation timestamps
+        // are LocalDateTime, so retain the server's calendar for registrations and receipts.
+        return getOverview(LocalDateTime.now(), LocalDate.now(ZoneOffset.UTC));
+    }
+
+    AdminStatsOverviewDto getOverview(LocalDateTime now, LocalDate today) {
         List<User> users = userRepository.findAll();
         List<PaymentReceipt> receipts = paymentReceiptRepository.findAll();
 
@@ -64,34 +76,35 @@ public class AdminStatsService {
         long totalCompletedChallenges = users.stream().mapToLong(u -> u.getCompletedChallengeIds() != null ? u.getCompletedChallengeIds().size() : 0).sum();
         long totalBadgesUnlocked = users.stream().mapToLong(u -> u.getBadges() != null ? u.getBadges().size() : 0).sum();
 
-        LocalDate today = LocalDate.now();
-        LocalDateTime now = LocalDateTime.now();
         LocalDateTime sevenDaysAgo = now.minusDays(7);
         LocalDateTime thirtyDaysAgo = now.minusDays(30);
-        LocalDateTime startOfToday = today.atStartOfDay();
-        LocalDate sevenDaysAgoDate = today.minusDays(7);
-        LocalDate thirtyDaysAgoDate = today.minusDays(30);
+        LocalDateTime startOfToday = now.toLocalDate().atStartOfDay();
+        LocalDateTime startOf7Days = startOfToday.minusDays(6);
+        LocalDateTime startOf30Days = startOfToday.minusDays(29);
+        LocalDateTime endOfToday = startOfToday.plusDays(1);
+        LocalDate sevenDaysAgoDate = today.minusDays(6);
+        LocalDate thirtyDaysAgoDate = today.minusDays(29);
 
-        long newUsersLast7Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(sevenDaysAgo)).count();
-        long newUsersLast30Days = users.stream().filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isAfter(thirtyDaysAgo)).count();
-        long newUsersToday = users.stream().filter(u -> u.getCreatedAt() != null && !u.getCreatedAt().isBefore(startOfToday)).count();
+        long newUsersLast7Days = users.stream().filter(u -> inPeriod(u.getCreatedAt(), startOf7Days, endOfToday)).count();
+        long newUsersLast30Days = users.stream().filter(u -> inPeriod(u.getCreatedAt(), startOf30Days, endOfToday)).count();
+        long newUsersToday = users.stream().filter(u -> inPeriod(u.getCreatedAt(), startOfToday, endOfToday)).count();
 
 
         long dailyActiveUsers = users.stream()
                 .filter(u -> today.equals(parseLastActiveDate(u.getLastActiveDate())))
                 .count();
         long weeklyActiveUsers = users.stream()
-                .filter(u -> wasActiveSince(u.getLastActiveDate(), sevenDaysAgoDate))
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), sevenDaysAgoDate, today))
                 .count();
         long monthlyActiveUsers = users.stream()
-                .filter(u -> wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate))
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate, today))
                 .count();
 
         List<User> oldEnoughFor7DayWindow = users.stream()
                 .filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isBefore(sevenDaysAgo))
                 .collect(Collectors.toList());
         long retained7 = oldEnoughFor7DayWindow.stream()
-                .filter(u -> wasActiveSince(u.getLastActiveDate(), sevenDaysAgoDate))
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), sevenDaysAgoDate, today))
                 .count();
         double retentionRate7Days = oldEnoughFor7DayWindow.isEmpty() ? 0 : (double) retained7 / oldEnoughFor7DayWindow.size() * 100;
 
@@ -99,7 +112,7 @@ public class AdminStatsService {
                 .filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isBefore(thirtyDaysAgo))
                 .collect(Collectors.toList());
         long retained30 = oldEnoughFor30DayWindow.stream()
-                .filter(u -> wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate))
+                .filter(u -> wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate, today))
                 .count();
         double retentionRate30Days = oldEnoughFor30DayWindow.isEmpty() ? 0 : (double) retained30 / oldEnoughFor30DayWindow.size() * 100;
 
@@ -113,7 +126,7 @@ public class AdminStatsService {
         long neverActiveUsers = users.stream().filter(u -> parseLastActiveDate(u.getLastActiveDate()) == null).count();
         long inactive30DaysUsers = users.stream()
                 .filter(u -> u.getCreatedAt() != null && u.getCreatedAt().isBefore(thirtyDaysAgo))
-                .filter(u -> !wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate))
+                .filter(u -> !wasActiveSince(u.getLastActiveDate(), thirtyDaysAgoDate, today))
                 .count();
 
         long emailVerifiedUsers = users.stream().filter(User::isEmailVerified).count();
@@ -132,7 +145,7 @@ public class AdminStatsService {
         Map<String, Long> topCompletedChallenges = topIdCounts(users, User::getCompletedChallengeIds, 10);
 
         Map<String, Long> receiptsByStatus = receipts.stream()
-                .collect(Collectors.groupingBy(r -> r.getStatus().name(), Collectors.counting()));
+                .collect(Collectors.groupingBy(r -> r.getStatus() == null ? "UNKNOWN" : r.getStatus().name(), Collectors.counting()));
         Map<String, Long> receiptsByMethod = receipts.stream()
                 .collect(Collectors.groupingBy(
                         r -> r.getPaymentMethod() != null ? r.getPaymentMethod() : "UNKNOWN",
@@ -212,8 +225,37 @@ public class AdminStatsService {
         }
     }
 
-    private static boolean wasActiveSince(String lastActiveDate, LocalDate cutoff) {
+    private static boolean wasActiveSince(String lastActiveDate, LocalDate cutoff, LocalDate today) {
         LocalDate parsed = parseLastActiveDate(lastActiveDate);
-        return parsed != null && !parsed.isBefore(cutoff);
+        return parsed != null && !parsed.isBefore(cutoff) && !parsed.isAfter(today);
+    }
+
+    private static boolean inPeriod(LocalDateTime date, LocalDateTime from, LocalDateTime until) {
+        return date != null && !date.isBefore(from) && date.isBefore(until);
+    }
+
+    public AdminStatsPeriodDto getPeriod(LocalDate from, LocalDate to) {
+        if (from == null || to == null || to.isBefore(from) || to.isAfter(LocalDate.now())
+                || ChronoUnit.DAYS.between(from, to) > 365) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Choose 1 to 366 days, ending no later than today");
+        }
+        LocalDateTime start = from.atStartOfDay();
+        LocalDateTime until = to.plusDays(1).atStartOfDay();
+        var registrations = userRepository.findByCreatedAtGreaterThanEqualAndCreatedAtLessThan(start, until)
+                .stream().filter(u -> inPeriod(u.getCreatedAt(), start, until))
+                .collect(Collectors.groupingBy(u -> u.getCreatedAt().toLocalDate(), Collectors.counting()));
+        var receipts = paymentReceiptRepository.findBySubmittedAtGreaterThanEqualAndSubmittedAtLessThan(start, until)
+                .stream().filter(r -> inPeriod(r.getSubmittedAt(), start, until))
+                .collect(Collectors.groupingBy(r -> r.getSubmittedAt().toLocalDate()));
+        var days = from.datesUntil(to.plusDays(1)).map(date -> {
+            var dailyReceipts = receipts.getOrDefault(date, List.of());
+            double approved = dailyReceipts.stream().filter(r -> r.getStatus() == PaymentReceipt.ReceiptStatus.APPROVED)
+                    .mapToDouble(r -> r.getAmountDzd() == null ? 0 : r.getAmountDzd()).sum();
+            double pending = dailyReceipts.stream().filter(r -> r.getStatus() == PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION)
+                    .mapToDouble(r -> r.getAmountDzd() == null ? 0 : r.getAmountDzd()).sum();
+            return new AdminStatsPeriodDto.Day(date,
+                    registrations.getOrDefault(date, 0L), dailyReceipts.size(), approved, pending);
+        }).toList();
+        return new AdminStatsPeriodDto(from, to, ZoneId.systemDefault().getId(), days);
     }
 }

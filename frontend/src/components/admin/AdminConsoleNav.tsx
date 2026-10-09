@@ -1,95 +1,53 @@
 import React from 'react';
-import { BarChart3, Sliders, Users, ShieldCheck, BookOpen, Mail } from 'lucide-react';
+import { BarChart3, Sliders, Users, ShieldCheck, BookOpen, Mail, ArrowUpRight } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { MssidLogo } from '../MssidLogo';
 
-export type AdminConsoleTabId = 'analytics' | 'feature_flags' | 'users_roles' | 'technical_logs' | 'contact_messages';
-
+export type AdminConsoleTabId = 'analytics' | 'content_review' | 'feature_flags' | 'users_roles' | 'technical_logs' | 'contact_messages';
 interface AdminConsoleNavProps {
   activeTab: AdminConsoleTabId;
   onSelectTab: (tab: AdminConsoleTabId) => void;
   onExitAdminConsole: () => void;
 }
-
 const TABS: { id: AdminConsoleTabId; labelAr: string; shortLabelAr: string; icon: React.FC<{ className?: string }> }[] = [
   { id: 'analytics', labelAr: 'الإحصائيات', shortLabelAr: 'إحصاء', icon: BarChart3 },
+  { id: 'content_review', labelAr: 'مراقبة المحتوى', shortLabelAr: 'المحتوى', icon: BookOpen },
   { id: 'feature_flags', labelAr: 'إدارة المزايا', shortLabelAr: 'مزايا', icon: Sliders },
   { id: 'users_roles', labelAr: 'المستخدمون والصلاحيات', shortLabelAr: 'مستخدمون', icon: Users },
   { id: 'technical_logs', labelAr: 'السجلات التقنية', shortLabelAr: 'سجلات', icon: ShieldCheck },
   { id: 'contact_messages', labelAr: 'رسائل التواصل', shortLabelAr: 'رسائل', icon: Mail },
 ];
-
-// Replaces the old CmsHeaderNav's fake CmsUser role-switcher <select> with the real logged-in
-// admin's identity (via useAuth()) — read-only, no impersonation of another role from here.
 export const AdminConsoleNav: React.FC<AdminConsoleNavProps> = ({ activeTab, onSelectTab, onExitAdminConsole }) => {
   const { authUser } = useAuth();
-
   return (
-    <header className="bg-slate-900 border-b border-slate-800 text-white sticky top-0 z-50 shadow-lg dir-rtl pt-[env(safe-area-inset-top)]" dir="rtl">
-      {/* Top Banner Bar — stacks identity under the title on a phone so nothing overflows. */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 min-h-[var(--hit)] py-2 flex items-center justify-between gap-2 border-b border-slate-800/80">
-        <div className="flex items-center gap-2 min-w-0">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-emerald-500 p-0.5 shadow-md shrink-0">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-black text-amber-400 font-mono text-sm">
-              ⚙️
-            </div>
-          </div>
-          <div className="min-w-0">
-            <h1 className="font-black text-sm tracking-tight font-sans text-white truncate">
-              <span className="sm:hidden">الإدارة</span>
-              <span className="hidden sm:inline">لوحة تحكم الإدارة (Admin Console)</span>
-            </h1>
-            <span className="hidden sm:inline-block bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-400/30">
-              Supervision Only
-            </span>
-          </div>
+    <header dir="rtl" className="sticky top-0 z-50 border-b border-slate-800 bg-slate-900 text-slate-100 pt-[env(safe-area-inset-top)] lg:fixed lg:start-0 lg:bottom-0 lg:w-64 lg:flex lg:flex-col lg:border-b-0 lg:border-e lg:overflow-y-auto">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 lg:px-5 lg:py-6">
+        <div className="flex items-center gap-3 min-w-0">
+          <MssidLogo size="sm" />
+          <div className="min-w-0"><h1 className="text-sm font-black">مسيد · الإدارة</h1><p className="text-xs text-slate-400 mt-0.5">متابعة المنصة والمحتوى</p></div>
         </div>
-
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="hidden sm:flex items-center gap-2 bg-slate-800/90 border border-slate-700/80 px-3 py-1.5 rounded-xl text-xs">
-            <div className="text-right leading-tight">
-              <div className="font-bold text-white">{authUser?.nom || '—'}</div>
-              <div className="text-[10px] text-slate-300 font-mono" dir="ltr">{authUser?.email || ''}</div>
-            </div>
-            <span className="text-[10px] font-mono font-black px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">
-              ROLE_ADMIN
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={onExitAdminConsole}
-            className="flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black text-xs min-h-[var(--hit)] min-w-[var(--hit)] sm:min-w-0 px-3 rounded-xl transition-all shadow-xs cursor-pointer"
-            aria-label="معاينة منصة التلميذ"
-          >
-            <BookOpen className="w-4 h-4 text-slate-950" />
-            <span className="hidden sm:inline">معاينة منصة التلميذ</span>
-          </button>
-        </div>
+        <button type="button" onClick={onExitAdminConsole} aria-label="معاينة منصة التلميذ" className="lg:hidden min-h-12 min-w-12 grid place-items-center rounded-xl border border-slate-700 text-emerald-200 hover:bg-slate-800"><ArrowUpRight className="w-5 h-5" /></button>
       </div>
-
-      {/* Tabs: swipe horizontally on a phone (48px hits), no forced 520px min-width. */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 overflow-x-auto overscroll-x-contain py-1.5 [-webkit-overflow-scrolling:touch]">
-        <div className="flex items-center gap-1 w-max sm:w-auto">
-          {TABS.map((tab) => {
-            const IconComponent = tab.icon;
-            const isActive = activeTab === tab.id;
+      <nav aria-label="أقسام الإدارة" className="px-3 pb-2 overflow-x-auto lg:overflow-x-visible lg:px-4 lg:pt-4">
+        <p className="hidden lg:block text-xs text-slate-400 px-3 pb-3">مساحة العمل</p>
+        <div className="flex gap-1 w-max lg:w-auto lg:flex-col lg:gap-2">
+          {TABS.map(tab => {
+            const Icon = tab.icon;
+            const active = activeTab === tab.id;
             return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => onSelectTab(tab.id)}
-                className={`flex items-center justify-center gap-1.5 px-3 rounded-xl text-xs font-extrabold transition-all cursor-pointer whitespace-nowrap min-h-[var(--hit)] ${
-                  isActive
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-black'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
-                }`}
-              >
-                <IconComponent className="w-4 h-4 shrink-0" />
-                <span className="sm:hidden">{tab.shortLabelAr}</span>
-                <span className="hidden sm:inline">{tab.labelAr}</span>
+              <button key={tab.id} type="button" onClick={() => onSelectTab(tab.id)} aria-current={active ? 'page' : undefined} className={`min-h-12 flex items-center gap-2 lg:gap-3 rounded-xl border px-3 text-xs lg:text-sm font-bold whitespace-nowrap transition-colors ${active ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-200' : 'border-transparent text-slate-300 hover:bg-slate-800 hover:text-white'}`}>
+                <Icon className="w-4 h-4 shrink-0" /><span className="lg:hidden">{tab.shortLabelAr}</span><span className="hidden lg:inline">{tab.labelAr}</span>
+                {active && <span aria-hidden className="hidden lg:block ms-auto h-1.5 w-1.5 rounded-full bg-emerald-300" />}
               </button>
             );
           })}
+        </div>
+      </nav>
+      <div className="hidden lg:block mt-auto px-4 pb-5 pt-8 space-y-4">
+        <button type="button" onClick={onExitAdminConsole} aria-label="معاينة منصة التلميذ" className="min-h-12 w-full flex items-center justify-center gap-2 rounded-xl border border-slate-700 text-sm text-slate-200 font-bold hover:bg-slate-800"><ArrowUpRight className="w-4 h-4" />معاينة منصة التلميذ</button>
+        <div className="border-t border-slate-800 pt-4 flex items-center gap-3">
+          <div aria-hidden className="w-10 h-10 rounded-full bg-slate-800 text-emerald-200 grid place-items-center font-black shrink-0">{authUser?.nom?.trim().charAt(0) || 'م'}</div>
+          <div className="min-w-0"><p className="text-sm font-bold truncate">{authUser?.nom || 'المسؤول'}</p><p className="text-xs text-slate-400 truncate" dir="ltr">{authUser?.email || ''}</p></div>
         </div>
       </div>
     </header>

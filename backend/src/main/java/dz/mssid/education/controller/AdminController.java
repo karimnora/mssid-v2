@@ -2,6 +2,7 @@ package dz.mssid.education.controller;
 
 import dz.mssid.education.dto.AdminAuditLogDto;
 import dz.mssid.education.dto.AdminStatsOverviewDto;
+import dz.mssid.education.dto.AdminStatsPeriodDto;
 import dz.mssid.education.dto.AuditLogPurgeDto;
 import dz.mssid.education.dto.InfraQuotasDto;
 import dz.mssid.education.entity.ContactMessage;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,6 +40,13 @@ public class AdminController {
     @GetMapping("/stats/overview")
     public ResponseEntity<AdminStatsOverviewDto> getStatsOverview() {
         return ResponseEntity.ok(adminStatsService.getOverview());
+    }
+
+    @GetMapping("/stats/period")
+    public ResponseEntity<AdminStatsPeriodDto> getStatsPeriod(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
+        return ResponseEntity.ok(adminStatsService.getPeriod(from, to));
     }
 
     @GetMapping("/audit-log")

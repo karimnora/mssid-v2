@@ -13,9 +13,9 @@ import java.util.Map;
  * time, per-lesson open/abandon events, preschool session counts): those would have to be fabricated.
  *
  * dailyActiveUsers/weeklyActiveUsers/monthlyActiveUsers and the retention rates are derived from
- * {@code User.lastActiveDate}, which the frontend bumps to today on every XP-earning action (quiz,
- * lesson completion...), not on a bare page load — so these read as "did real learning activity",
- * a stricter (and arguably more meaningful) bar than a raw app-open ping, not a limitation to hide.
+ * {@code User.lastActiveDate}, sent by the frontend when progress is synchronized. It is a UTC
+ * calendar date, not an app-open log or proof of learning. Guests and unsynchronized activity are
+ * absent. The 7/30-day windows include today and the preceding 6/29 dates, excluding future dates.
  *
  * retentionRate7Days/30Days: of accounts old enough to have had a full 7/30-day window (created before
  * that cutoff), the percentage still active (lastActiveDate) within the last 7/30 days — a rolling

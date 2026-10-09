@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star, MapPin, Download, Mail, UserCheck, Moon, Percent } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
 import { WILAYAS_LIST } from '../../data/wilayasData';
 import { generatePartnerCatalogHtml, downloadHtmlFile } from '../../utils/partnerCatalogExport';
+import { downloadCsv, isStatsOverview, overviewCsv } from './analyticsData';
+import { AnalyticsPeriod } from './AnalyticsPeriod';
 
 // wilayaDistribution groups by the wilaya's official code ("16"), see AuthModal.tsx — resolve it to
 // a readable "16 - الجزائر" label for the admin console rather than showing a bare number.
@@ -25,7 +27,7 @@ const ROLE_LABEL: Record<string, string> = {
 // Every field here maps 1:1 to GET /api/v1/admin/stats/overview (see backend
 // AdminStatsOverviewDto.java) — session-time/preschool-usage widgets still don't exist because no
 // real field backs them. Never add a placeholder card for a metric this endpoint doesn't return.
-interface AdminStatsOverview {
+export interface AdminStatsOverview {
   totalUsers: number;
   roleDistribution: Record<string, number>;
   gradeDistribution: Record<string, number>;
@@ -75,12 +77,12 @@ const StatCard: React.FC<{ icon: React.ReactNode; labelAr: string; value: React.
   accent = 'text-amber-400',
 }) => (
   <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 sm:p-5 space-y-2 min-w-0">
-    <div className="flex items-center justify-between text-slate-500">
+    <div className="flex items-center justify-between text-slate-300">
       <span className="text-[11px] font-extrabold uppercase tracking-wider">{labelAr}</span>
       <span className={accent}>{icon}</span>
     </div>
     <div className="text-xl sm:text-2xl font-black text-white font-mono break-all">{value}</div>
-    {sub && <div className="text-[11px] text-slate-500">{sub}</div>}
+    {sub && <div className="text-[11px] text-slate-300">{sub}</div>}
   </div>
 );
 
@@ -94,7 +96,7 @@ const DistributionCard: React.FC<{ titleAr: string; icon: React.ReactNode; data:
         <h3 className="text-xs font-black">{titleAr}</h3>
       </div>
       {entries.length === 0 ? (
-        <div className="text-[11px] text-slate-500">لا توجد بيانات بعد.</div>
+        <div className="text-[11px] text-slate-300">لا توجد بيانات بعد.</div>
       ) : (
         <div className="space-y-2">
           {entries.map(([key, value]) => {
@@ -149,7 +151,7 @@ const TopLessonsCard: React.FC<{ titleAr: string; data: Record<string, number> }
         <h3 className="text-xs font-black">{titleAr}</h3>
       </div>
       {entries.length === 0 ? (
-        <div className="text-[11px] text-slate-500">لا توجد بيانات بعد.</div>
+        <div className="text-[11px] text-slate-300">لا توجد بيانات بعد.</div>
       ) : (
         <ol className="space-y-2">
           {entries.map(([id, count], idx) => (
@@ -174,6 +176,7 @@ export const AnalyticsModule: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const requestGeneration = useRef(0);
 
   const handleExportPartnerCatalog = async () => {
     if (!stats) return;
@@ -182,30 +185,38 @@ export const AnalyticsModule: React.FC = () => {
       const html = await generatePartnerCatalogHtml(stats);
       const date = new Date().toISOString().slice(0, 10);
       downloadHtmlFile(html, `mssid-catalogue-partenaire-${date}.html`);
+    } catch {
+      setError('تعذر تصدير الكتالوج. أعد المحاولة.');
     } finally {
       setIsExporting(false);
     }
   };
 
   const loadStats = async () => {
+    const request = ++requestGeneration.current;
     setIsLoading(true);
     setError(null);
+    setStats(null);
     try {
       const res = await springBootApi.getAdminStatsOverview();
+      if (request !== requestGeneration.current) return;
       if (res.error || !res.data) {
         setError(res.error || 'تعذر تحميل الإحصائيات من الخادم.');
+      } else if (!isStatsOverview(res.data)) {
+        setError('بيانات الإحصائيات غير مكتملة. تحقق من تحديث الخادم ثم أعد المحاولة.');
       } else {
-        setStats(res.data as AdminStatsOverview);
+        setStats(res.data);
       }
     } catch (e: any) {
-      setError('تعذر الاتصال بالخادم لجلب الإحصائيات.');
+      if (request === requestGeneration.current) setError('تعذر الاتصال بالخادم لجلب الإحصائيات.');
     } finally {
-      setIsLoading(false);
+      if (request === requestGeneration.current) setIsLoading(false);
     }
   };
 
   useEffect(() => {
     loadStats();
+    return () => { ++requestGeneration.current; };
   }, []);
 
   return (
@@ -222,7 +233,8 @@ export const AnalyticsModule: React.FC = () => {
             كل رقم هنا مصدره قاعدة المستخدمين والمدفوعات — بلا تقديرات.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 w-full sm:w-auto">
+          <button type="button" disabled={!stats || isLoading} onClick={() => stats && downloadCsv(overviewCsv(stats), `mssid-statistiques-${new Date().toISOString().slice(0, 10)}.csv`)} className="min-h-11 px-4 rounded-xl border border-slate-600 text-slate-200 text-xs font-bold disabled:opacity-50">CSV الإجماليات / totaux</button>
           <button
             onClick={loadStats}
             disabled={isLoading}
@@ -242,14 +254,20 @@ export const AnalyticsModule: React.FC = () => {
         </div>
       </div>
 
+      <AnalyticsPeriod />
+      <div className="bg-slate-900 border border-slate-700 rounded-2xl p-4 text-xs text-slate-300 space-y-2">
+        <p>نطاق الإحصائيات: الحسابات والتقدم المحفوظ على الخادم. الزوار بدون حساب والنشاط غير المتزامن لا يدخلان في هذه الأرقام. النشاط التعليمي يعتمد على آخر تحديث للتقدم، وليس مجرد فتح التطبيق. أيام النشاط محسوبة بتوقيت UTC.</p>
+        <p>معدل العودة يقيس نشاط الحسابات القديمة خلال آخر 7 أو 30 يوماً، وليس الاحتفاظ الدقيق في اليوم السابع أو الثلاثين بعد التسجيل. فتح الدروس وتركها، استخدام التحضيري ومصدر الزيارات غير مسجّلة في هذا التقرير حالياً.</p>
+      </div>
+
       {error && (
-        <div className="bg-rose-950/40 border border-rose-800 text-rose-300 text-xs font-bold p-4 rounded-2xl">
+        <div role="alert" className="bg-rose-950/40 border border-rose-800 text-rose-300 text-xs font-bold p-4 rounded-2xl">
           {error}
         </div>
       )}
 
       {isLoading && !stats ? (
-        <div className="text-center py-16 text-slate-500 text-xs">جاري تحميل الإحصائيات...</div>
+        <div className="text-center py-16 text-slate-300 text-xs">جاري تحميل الإحصائيات...</div>
       ) : stats ? (
         <>
           {/* Core user metrics */}
@@ -267,8 +285,8 @@ export const AnalyticsModule: React.FC = () => {
               recently), not per-cohort same-day-offset tracking — see AdminStatsOverviewDto's javadoc. */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون اليوم (DAU)" value={stats.dailyActiveUsers} accent="text-emerald-400" />
-            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون هذا الأسبوع" value={stats.weeklyActiveUsers} accent="text-emerald-400" />
-            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون هذا الشهر" value={stats.monthlyActiveUsers} accent="text-emerald-400" />
+            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون آخر 7 أيام" value={stats.weeklyActiveUsers} accent="text-emerald-400" />
+            <StatCard icon={<Activity className="w-5 h-5" />} labelAr="نشيطون آخر 30 يوماً" value={stats.monthlyActiveUsers} accent="text-emerald-400" />
             <StatCard
               icon={<Percent className="w-5 h-5" />}
               labelAr="الالتصاق اليومي (DAU/MAU)"
@@ -295,20 +313,20 @@ export const AnalyticsModule: React.FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <StatCard
               icon={<UserCheck className="w-5 h-5" />}
-              labelAr="بدأوا درساً واحداً على الأقل"
+              labelAr="أكملوا درساً واحداً على الأقل"
               value={stats.activatedUsers ?? 0}
               sub={`${(stats.activationRate ?? 0).toFixed(1)}٪ من الحسابات`}
               accent="text-emerald-400"
             />
             <StatCard
               icon={<Moon className="w-5 h-5" />}
-              labelAr="لم يسجّلوا أي نشاط بعد"
+              labelAr="بلا تاريخ تقدم متزامن"
               value={stats.neverActiveUsers ?? 0}
               sub="بدون تاريخ نشاط تعليمي"
             />
             <StatCard
               icon={<Moon className="w-5 h-5" />}
-              labelAr="خاملون أكثر من 30 يوماً"
+              labelAr="بلا نشاط خلال آخر 30 يوماً"
               value={stats.inactive30DaysUsers ?? 0}
               sub="حسابات أقدم من شهر بلا عودة"
               accent="text-orange-400"
@@ -382,15 +400,15 @@ export const AnalyticsModule: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-slate-950 border border-slate-800 rounded-xl p-4">
-                <div className="text-[11px] text-slate-500 font-bold">إجمالي الوصولات</div>
+                <div className="text-[11px] text-slate-300 font-bold">إجمالي الوصولات</div>
                 <div className="text-xl font-black text-white font-mono">{stats.payments.totalReceipts}</div>
               </div>
               <div className="bg-slate-950 border border-emerald-900 rounded-xl p-4">
-                <div className="text-[11px] text-slate-500 font-bold">المبلغ المقبول (DZD)</div>
+                <div className="text-[11px] text-slate-300 font-bold">المبلغ المقبول (DZD)</div>
                 <div className="text-xl font-black text-emerald-400 font-mono">{stats.payments.totalAmountDzdApproved}</div>
               </div>
               <div className="bg-slate-950 border border-amber-900 rounded-xl p-4">
-                <div className="text-[11px] text-slate-500 font-bold">المبلغ قيد الانتظار (DZD)</div>
+                <div className="text-[11px] text-slate-300 font-bold">المبلغ قيد الانتظار (DZD)</div>
                 <div className="text-xl font-black text-amber-400 font-mono">{stats.payments.totalAmountDzdPending}</div>
               </div>
             </div>

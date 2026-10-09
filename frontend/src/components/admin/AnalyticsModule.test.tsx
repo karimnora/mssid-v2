@@ -1,5 +1,5 @@
 import React from 'react';
-import { describe, it, expect, vi, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { AnalyticsModule } from './AnalyticsModule';
 import { springBootApi } from '../../services/springBootApi';
@@ -52,6 +52,9 @@ const baseOverview = {
 };
 
 describe('AnalyticsModule — active users, retention, and top lessons', () => {
+  beforeEach(() => {
+    vi.spyOn(springBootApi, 'getAdminStatsPeriod').mockResolvedValue({ error: 'Period unavailable' } as any);
+  });
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -94,5 +97,13 @@ describe('AnalyticsModule — active users, retention, and top lessons', () => {
     render(<AnalyticsModule />);
 
     expect((await screen.findAllByText('لا توجد بيانات بعد.')).length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('rejects an incomplete server response without crashing or inventing zeroes', async () => {
+    vi.spyOn(springBootApi, 'getAdminStatsOverview').mockResolvedValue({ data: {} } as any);
+    render(<AnalyticsModule />);
+    expect(await screen.findByText(/بيانات الإحصائيات غير مكتملة/)).toBeInTheDocument();
+    expect(screen.queryByText('إجمالي المستخدمين')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'CSV الإجماليات / totaux' })).toBeDisabled();
   });
 });
