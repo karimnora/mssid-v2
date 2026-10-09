@@ -17,6 +17,7 @@ export const BoundPracticeCard: React.FC<{
     renderArabicText={renderArabicText}
     playful={playful}
     leadAudio={leadAudio}
+    optionOrder={practice.practiceOptionOrder[ex.id]}
     answer={practice.practiceAnswers[ex.id]}
     onAnswerChange={practice.handlePracticeAnswerChange}
     isChecked={!!practice.practiceChecked[ex.id]}

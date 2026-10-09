@@ -29,7 +29,7 @@ describe('PreschoolMagicBoard — trace mode categories', () => {
   it('never renders an Eastern Arabic-Indic digit (٠-٩) anywhere in trace mode', () => {
     openTraceMode();
     const easternDigits = /[٠١٢٣٤٥٦٧٨٩]/;
-    ['🔤 حروف عربية', '🔠 حروف لاتينية', '🔢 أرقام', '⬛ أشكال'].forEach((cat) => {
+    ['🔤 حروف عربية', '🔢 أرقام', '⬛ أشكال'].forEach((cat) => {
       fireEvent.click(screen.getByText(cat));
       expect(document.body.textContent).not.toMatch(easternDigits);
     });
@@ -54,8 +54,8 @@ describe('PreschoolMagicBoard — trace mode categories', () => {
   });
 
   it('the Latin letters category shows all 26 letters', () => {
-    openTraceMode();
-    fireEvent.click(screen.getByText('🔠 حروف لاتينية'));
+    render(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
+    fireEvent.click(screen.getByText('✏️ Traçage'));
     'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach((letter) => {
       expect(screen.getAllByText(letter).length).toBeGreaterThan(0);
     });
@@ -75,6 +75,26 @@ describe('PreschoolMagicBoard — trace mode categories', () => {
     fireEvent.click(screen.getByText('⬛ أشكال'));
     // 'أ' (an Arabic letter) must not still be selectable inside the shapes row.
     expect(screen.queryByText('أ')).not.toBeInTheDocument();
+  });
+
+  it.each(['fr', 'en'] as const)('starts with the Latin alphabet and no Arabic models in %s', language => {
+    render(<PreschoolMagicBoard language={language} onExit={vi.fn()} />);
+    fireEvent.click(screen.getByText(language === 'fr' ? '✏️ Traçage' : '✏️ Tracing'));
+    expect(screen.getAllByText('A').length).toBeGreaterThan(0);
+    expect(screen.queryByText('أ')).not.toBeInTheDocument();
+    expect(screen.queryByText(language === 'fr' ? '🔤 Lettres arabes' : '🔤 Arabic letters')).not.toBeInTheDocument();
+  });
+
+  it('changes the model to the selected language without retaining a foreign alphabet', () => {
+    const { rerender } = render(<PreschoolMagicBoard language="ar" onExit={vi.fn()} />);
+    fireEvent.click(screen.getByText('✏️ تتبع الحروف'));
+    expect(screen.getAllByText('أ').length).toBeGreaterThan(0);
+    rerender(<PreschoolMagicBoard language="fr" onExit={vi.fn()} />);
+    expect(screen.queryByText('أ')).not.toBeInTheDocument();
+    expect(screen.getAllByText('A').length).toBeGreaterThan(0);
+    rerender(<PreschoolMagicBoard language="ar" onExit={vi.fn()} />);
+    expect(screen.queryByText('A')).not.toBeInTheDocument();
+    expect(screen.getAllByText('أ').length).toBeGreaterThan(0);
   });
 });
 

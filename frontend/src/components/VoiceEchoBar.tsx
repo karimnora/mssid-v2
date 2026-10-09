@@ -101,7 +101,7 @@ export const VoiceEchoBar: React.FC<VoiceEchoBarProps> = ({
 
   return (
     <div
-      className={`w-full space-y-2 ${className}`}
+      className={`w-full space-y-2 rounded-2xl bg-[#FFFBF0] border-2 border-[#E7E2D7] p-3 ${className}`}
       dir={language === 'ar' ? 'rtl' : 'ltr'}
       data-voice-echo="bar"
     >

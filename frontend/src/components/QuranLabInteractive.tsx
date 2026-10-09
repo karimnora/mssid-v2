@@ -34,7 +34,7 @@ export const QuranLabInteractive: React.FC = () => {
         </div>
         <div>
           <h2 className="text-lg font-black text-amber-300">مختبر السور القصيرة</h2>
-          <p className="text-xs text-emerald-200 mt-0.5">تلاوة ورش، آيةً آيةً، مع بسملة قبل كل سورة</p>
+          <p className="text-xs font-bold text-emerald-800 mt-0.5">تلاوة ورش، آيةً آيةً، مع بسملة قبل كل سورة</p>
         </div>
       </div>
 

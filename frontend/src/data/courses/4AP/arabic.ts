@@ -1074,7 +1074,7 @@ export const ARABIC_4AP: CourseLesson[] = [
             level: 2,
             levelLabelAr: 'أتدرب',
             type: 'fill_blank',
-            problemAr: 'صَنِّفْ «وَعَدَ»: (اُكْتُبْ: مثال)',
+            problemAr: 'صَنِّفِ الفِعْلَ المُعْتَلَّ «وَعَدَ» حَسَبَ مَوْضِعِ حَرْفِ العِلَّةِ. (اُكْتُبْ نَوْعَهُ فَقَطْ)',
             hintsAr: ['العِلَّةُ فِي أَوَّلِهِ.'],
             fillBlankAnswerAr: 'مثال',
             solutionAr: 'مثال',

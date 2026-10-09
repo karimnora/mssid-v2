@@ -362,6 +362,7 @@ export interface IslamicRitualStep {
   descAr: string;
   tagAr: string;
   icon: string; // single emoji
+  illustration?: 'water_check' | 'intention' | 'earth_touch' | 'face_wipe' | 'hands_wipe';
 }
 export interface IslamicRitualSteps {
   type: 'ritual_steps';

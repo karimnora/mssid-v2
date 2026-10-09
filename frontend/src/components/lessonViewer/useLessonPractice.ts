@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { CourseLesson } from '../../types';
 import { shuffleOptions } from './shared';
 import { playGentleNudge, playSuccessChime } from '../preschool/usePreschoolAudio';
+import { isGuidedPractice, isMatchingPairCorrect } from './practiceAssessment';
 
 type Exercise = NonNullable<CourseLesson['progressiveExercises']>[number];
 
@@ -15,6 +16,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
   const [matchingSelectedLeft, setMatchingSelectedLeft] = useState<Record<string, number | null>>({});
   const [orderingShuffled, setOrderingShuffled] = useState<Record<string, number[]>>({});
   const [orderingSelections, setOrderingSelections] = useState<Record<string, number[]>>({});
+  const [practiceOptionOrder, setPracticeOptionOrder] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
     setPracticeAnswers({});
@@ -27,7 +29,11 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
 
     const newMatchingRightOrder: Record<string, number[]> = {};
     const newOrderingShuffled: Record<string, number[]> = {};
+    const newOptionOrder: Record<string, string[]> = {};
     [...(lesson.progressiveExercises || []), ...(lesson.evaluationExercises || [])].forEach((ex) => {
+      if (ex.type === 'qcm' && ex.options) {
+        newOptionOrder[ex.id] = shuffleOptions(ex.options.map((option) => option.id));
+      }
       if (ex.type === 'matching' && ex.matchingPairsAr) {
         newMatchingRightOrder[ex.id] = shuffleOptions(ex.matchingPairsAr.map((_, i) => i));
       }
@@ -37,6 +43,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
     });
     setMatchingRightOrder(newMatchingRightOrder);
     setOrderingShuffled(newOrderingShuffled);
+    setPracticeOptionOrder(newOptionOrder);
     // Same contract as before the split: reset only when the lesson changes, not when
     // premium content later merges onto the same id.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,7 +51,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
 
   const canCheckExercise = (ex: Exercise): boolean => {
     const answer = practiceAnswers[ex.id];
-    if (ex.type === 'qcm' || ex.type === 'true_false') return answer !== undefined;
+    if (ex.type === 'qcm' || ex.type === 'true_false') return !!ex.options?.some((option) => option.id === answer);
     if (ex.type === 'fill_blank') return !!String(answer ?? '').trim();
     if (ex.type === 'calculation') return answer !== undefined && answer !== '';
     if (ex.type === 'matching') return Object.keys(matchingConnections[ex.id] || {}).length === (ex.matchingPairsAr?.length || 0);
@@ -58,7 +65,12 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
   const checkPracticeExercise = useCallback((ex: Exercise) => {
     const { practiceAnswers: answers, matchingConnections: connsMap, orderingSelections: orderMap, awardedExerciseIds: awarded } = practiceStateRef.current;
     const answer = answers[ex.id];
-    let isCorrect = true;
+    if (isGuidedPractice(ex)) {
+      // Reading a model correction is useful practice, but does not demonstrate mastery.
+      setPracticeChecked((prev) => ({ ...prev, [ex.id]: true }));
+      return;
+    }
+    let isCorrect = false;
     if (ex.type === 'qcm' || ex.type === 'true_false') {
       const opt = ex.options?.find((o) => o.id === answer);
       isCorrect = !!opt?.isCorrect;
@@ -66,12 +78,13 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
       const expected = (ex.fillBlankAnswerAr || '').trim();
       isCorrect = String(answer ?? '').trim() === expected;
     } else if (ex.type === 'calculation') {
-      isCorrect = Number(answer) === ex.calculationAnswer;
+      isCorrect = answer !== undefined && answer !== '' && Number(answer) === ex.calculationAnswer;
     } else if (ex.type === 'matching' && ex.matchingPairsAr) {
       const conns = connsMap[ex.id] || {};
       isCorrect =
         Object.keys(conns).length === ex.matchingPairsAr.length &&
-        ex.matchingPairsAr.every((_, leftIdx) => conns[leftIdx] === leftIdx);
+        new Set(Object.values(conns)).size === ex.matchingPairsAr.length &&
+        ex.matchingPairsAr.every((_, leftIdx) => isMatchingPairCorrect(ex, leftIdx, conns[leftIdx]));
     } else if (ex.type === 'ordering' && ex.orderedItemsAr) {
       const seq = orderMap[ex.id] || [];
       isCorrect = seq.length === ex.orderedItemsAr.length && seq.every((originalIdx, position) => originalIdx === position);
@@ -125,10 +138,11 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
   }, []);
 
   const evaluationExercises = lesson.evaluationExercises || [];
-  const evaluationCheckedCount = evaluationExercises.filter((ex) => practiceChecked[ex.id]).length;
-  const evaluationCorrectCount = evaluationExercises.filter((ex) => practiceChecked[ex.id] && practiceCorrect[ex.id]).length;
-  const evaluationComplete = evaluationExercises.length > 0 && evaluationCheckedCount === evaluationExercises.length;
-  const evaluationScorePercent = evaluationExercises.length > 0 ? Math.round((evaluationCorrectCount / evaluationExercises.length) * 100) : 0;
+  const scoredEvaluationExercises = evaluationExercises.filter((ex) => !isGuidedPractice(ex));
+  const evaluationCheckedCount = scoredEvaluationExercises.filter((ex) => practiceChecked[ex.id]).length;
+  const evaluationCorrectCount = scoredEvaluationExercises.filter((ex) => practiceChecked[ex.id] && practiceCorrect[ex.id]).length;
+  const evaluationComplete = scoredEvaluationExercises.length > 0 && evaluationCheckedCount === scoredEvaluationExercises.length;
+  const evaluationScorePercent = scoredEvaluationExercises.length > 0 ? Math.round((evaluationCorrectCount / scoredEvaluationExercises.length) * 100) : 0;
 
   return {
     practiceAnswers,
@@ -140,6 +154,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
     matchingSelectedLeft,
     orderingShuffled,
     orderingSelections,
+    practiceOptionOrder,
     canCheckExercise,
     checkPracticeExercise,
     resetPracticeExercise,
@@ -149,6 +164,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
     handleDisconnectMatching,
     handleToggleOrderingItem,
     evaluationExercises,
+    scoredEvaluationExercises,
     evaluationCheckedCount,
     evaluationCorrectCount,
     evaluationComplete,

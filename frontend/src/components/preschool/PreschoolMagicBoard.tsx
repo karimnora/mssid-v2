@@ -220,10 +220,13 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   const [activeStamp, setActiveStamp] = useState<string | null>(null);
   const [downloadFeedback, setDownloadFeedback] = useState<'started' | 'error' | null>(null);
 
-  const [activeTraceCategory, setActiveTraceCategory] = useState<TraceCategory>('ar_letters');
-  const [activeTrace, setActiveTrace] = useState<TraceTemplate>(TRACE_TEMPLATES[0]);
+  const letterCategory: TraceCategory = language === 'ar' ? 'ar_letters' : 'latin_letters';
+  const [selectedTraceCategory, setActiveTraceCategory] = useState<TraceCategory>(letterCategory);
+  const activeTraceCategory = selectedTraceCategory === 'ar_letters' || selectedTraceCategory === 'latin_letters' ? letterCategory : selectedTraceCategory;
+  const [selectedTrace, setActiveTrace] = useState<TraceTemplate>(() => TRACE_TEMPLATES.find(t => t.category === letterCategory)!);
   const [activeColoring, setActiveColoring] = useState<ColoringTemplate>(COLORING_TEMPLATES[0]);
   const traceTemplatesInCategory = TRACE_TEMPLATES.filter((t) => t.category === activeTraceCategory);
+  const activeTrace = traceTemplatesInCategory.find(t => t.id === selectedTrace.id) ?? traceTemplatesInCategory[0];
   const [rainbowHue, setRainbowHue] = useState<number>(0);
 
   const { speak } = usePreschoolSpeech(language);
@@ -309,6 +312,12 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     if (mode === 'magic') return;
     clearCanvas(false);
   }, [mode]);
+
+  useEffect(() => {
+    if (mode === 'trace') clearCanvas(false);
+    // A drawing of the previous alphabet must not remain under the new language's model.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
 
   useEffect(() => {
     if (!downloadFeedback) return;
@@ -560,11 +569,9 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
       {/* Sub-bar for Trace Mode */}
       {mode === 'trace' && (
         <div className="max-w-4xl w-full mx-auto mb-2 space-y-2">
-          {/* Category selector — split into 4 groups instead of one long scroller now that each
-              letter/number/shape set is shown in full (28 Arabic letters + 26 Latin + 10 digits + 6
-              shapes would otherwise be ~70 tiny buttons in a single row). */}
+          {/* The selected language determines the alphabet; numbers and shapes are shared. */}
           <div className="bg-white/90 rounded-2xl p-2 shadow-xs border border-orange-100 flex items-center gap-1.5 overflow-x-auto scrollbar-thin">
-            {(Object.keys(TRACE_CATEGORY_LABELS) as TraceCategory[]).map((cat) => (
+            {([letterCategory, 'numbers', 'shapes'] as TraceCategory[]).map((cat) => (
               <button
                 key={cat}
                 onClick={() => {

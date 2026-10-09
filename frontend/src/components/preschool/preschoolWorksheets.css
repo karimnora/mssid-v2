@@ -11,6 +11,8 @@
 .worksheet-body { flex: 1; display: flex; flex-direction: column; gap: 5mm; min-height: 218mm; }
 .paper-step { margin: 0; font-size: 10pt; font-weight: 700; }
 .paper-footer { flex: 0 0 auto; font-size: 8pt; border-top: 1px solid #999; padding-top: 2mm; text-align: center; }
+.paper-footer strong,.paper-footer>span { display: block; }
+.paper-footer a { display: inline-block; font-weight: 800; color: inherit; text-decoration: none; }
 .paper-picture { display: inline-block; width: 14mm; height: 14mm; flex: 0 0 auto; color: #172033; }
 .paper-glyph { display: inline-flex; align-items: center; justify-content: center; font-size: 23pt; line-height: 1; }
 .paper-multiple { display: flex; align-items: center; gap: 1mm; width: 42mm !important; }
@@ -19,7 +21,9 @@
 .paper-large-glyph { font-size: 46pt; font-weight: 800; line-height: 1; }
 .paper-letter-intro .paper-picture { width: 24mm; height: 24mm; }
 .paper-word { margin: 0; font-size: 13pt; font-weight: 700; text-align: center; }
-.paper-tracing { gap: 3mm; }
+.paper-tracing { gap: 2mm; }
+.paper-tracing .paper-letter-intro { height: 18mm; flex: 0 0 auto; }
+.paper-tracing .paper-writing-row { height: auto; min-height: 18mm; flex: 1; }
 .paper-writing-row { display: flex; height: 23mm; flex: 0 0 auto; border-bottom: 1px solid #888; border-top: 1px dashed #b1b1b1; align-items: center; justify-content: space-around; }
 .paper-writing-cell { flex: 1; min-width: 0; text-align: center; line-height: 1; font-size: 40pt; font-weight: 800; }
 .paper-model { color: #172033; }

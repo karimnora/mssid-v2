@@ -1,5 +1,5 @@
 import React from 'react';
-import { PrintableWorksheet } from '../../data/preschool/printablesData';
+import { PrintableWorksheet, isWorksheetAvailableInLanguage } from '../../data/preschool/printablesData';
 import { PreschoolLanguage } from '../../data/preschool/types';
 import { PreschoolLineArt } from './PreschoolLineArt';
 import { PreschoolPaperPicture } from './PreschoolPaperPicture';
@@ -12,7 +12,7 @@ const words = {
 
 const GuideRow: React.FC<{ glyph:string; repeat:number; guided:boolean }> = ({ glyph, repeat, guided }) => (
   <div className="paper-writing-row" dir={/\p{Script=Arabic}/u.test(glyph) ? 'rtl' : 'ltr'}>
-    {Array.from({length:Math.min(repeat,6)},(_,i)=><div key={i} className="paper-writing-cell"><span className={guided ? (i===0?'paper-model':'paper-trace') : 'paper-empty'}>{guided ? glyph : '\u00a0'}</span></div>)}
+    {Array.from({length:Math.min(repeat,8)},(_,i)=><div key={i} className="paper-writing-cell"><span className={guided ? (i===0?'paper-model':'paper-trace') : 'paper-empty'}>{guided ? glyph : '\u00a0'}</span></div>)}
   </div>
 );
 
@@ -21,15 +21,17 @@ export const WorksheetBody: React.FC<{ sheet:PrintableWorksheet; language:Presch
   switch(sheet.kind) {
     case 'letter_trace': {
       const rows=sheet.traceRows ?? [];
-      const single=rows.length===1;
-      const exercises=single ? Array.from({length:5},(_,i)=>({row:rows[0],guided:i<3})) : rows.map(row=>({row,guided:true}));
+      if (!rows.length) return null;
+      const guidedCount = Math.max(5, rows.length);
+      const exercises = [
+        ...Array.from({length:guidedCount},(_,i)=>({row:rows[i%rows.length],guided:true})),
+        ...Array.from({length:3},(_,i)=>({row:rows[i%rows.length],guided:false})),
+      ];
       return <div className="worksheet-body paper-tracing">
         <div className="paper-letter-intro"><span className="paper-large-glyph">{rows.map(r=>r.glyph).join('  ')}</span>{(sheet.glyphPictureI18n?.[language] ?? sheet.glyphPicture) && <PreschoolPaperPicture asset={(sheet.glyphPictureI18n?.[language] ?? sheet.glyphPicture)!}/>}</div>
         {sheet.glyphWord && <p className="paper-word">{sheet.glyphWord[language]}</p>}
         <p className="paper-step">{t.guide}</p>
-        {exercises.map(({row,guided},i)=><React.Fragment key={i}>{single&&i===3&&<p className="paper-step">{t.try}</p>}<GuideRow glyph={row.glyph} repeat={row.repeatCount} guided={guided}/></React.Fragment>)}
-        {!single&&<><p className="paper-step">{t.try}</p><GuideRow glyph="" repeat={5} guided={false}/></>}
-        <div className="paper-draw-space"><span>{t.draw}</span></div>
+        {exercises.map(({row,guided},i)=><React.Fragment key={i}>{i===guidedCount&&<p className="paper-step">{t.try}</p>}<GuideRow glyph={row.glyph} repeat={8} guided={guided}/></React.Fragment>)}
       </div>;
     }
     case 'line_trace': {
@@ -58,10 +60,12 @@ export const WorksheetBody: React.FC<{ sheet:PrintableWorksheet; language:Presch
 
 export const PreschoolWorksheet: React.FC<{sheet:PrintableWorksheet;language:PreschoolLanguage}> = ({sheet,language}) => {
   const t=words[language];
-  return <article dir={language==='ar'?'rtl':'ltr'} data-preschool-printable="true" data-worksheet-id={sheet.id} className="printable-sheet preschool-worksheet">
+  if (!isWorksheetAvailableInLanguage(sheet, language)) return null;
+  const discover = {ar:'أنشطة أكثر على',fr:'Encore plus d’activités sur',en:'More activities at'}[language];
+  return <article lang={language} dir={language==='ar'?'rtl':'ltr'} data-preschool-printable="true" data-worksheet-id={sheet.id} className="printable-sheet preschool-worksheet">
     <header className="paper-header"><div className="paper-heading"><span>{t.school}</span><span>{t.parent}</span></div><h3>{sheet.titleI18n[language]}</h3><div className="paper-identity"><span>{t.name} : ....................................</span><span>{t.date} : ....................</span></div></header>
     <p className="paper-instruction">{sheet.instructionI18n[language]}</p>
     <WorksheetBody sheet={sheet} language={language}/>
-    <footer className="paper-footer">{t.school} · {sheet.id}</footer>
+    <footer className="paper-footer"><strong>{t.school}</strong><span>{discover} <a dir="ltr" href="https://mssid-dz.com">mssid-dz.com</a></span></footer>
   </article>;
 };

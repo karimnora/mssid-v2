@@ -18,6 +18,7 @@ export const LessonEvaluationPanel: React.FC<LessonEvaluationPanelProps> = ({
 }) => {
   const {
     evaluationExercises,
+    scoredEvaluationExercises,
     evaluationCheckedCount,
     evaluationCorrectCount,
     evaluationComplete,
@@ -32,20 +33,20 @@ export const LessonEvaluationPanel: React.FC<LessonEvaluationPanelProps> = ({
       >
         <h3 className="font-black text-sm flex items-center gap-2 mb-1">
           <ClipboardCheck className="w-5 h-5 text-rose-300" />
-          <span>التقييم النهائي للدرس</span>
+          <span>{scoredEvaluationExercises.length ? 'التقييم النهائي للدرس' : 'مراجعة موجهة للدرس'}</span>
         </h3>
-        <p className="text-xs text-rose-200">أجب عن كل الأسئلة للتحقق من إتقانك للدرس. لا بأس بالخطأ — المهم أن تتعلم من التصحيح!</p>
+        <p className="text-xs text-rose-200">{scoredEvaluationExercises.length ? 'أجب عن الأسئلة لتختبر فهمك. الأنشطة التي تعرض التصحيح فقط لا تدخل في النتيجة.' : 'فكّر في الحل ثم قارنه بالتصحيح. هذه المراجعة لا تمنح درجة أو نقاطاً.'}</p>
         {evaluationCheckedCount > 0 && (
           <div className="mt-3 flex items-center gap-3">
             <div className="flex-1 bg-white/10 h-2.5 rounded-full overflow-hidden">
               <motion.div
                 className="bg-emerald-400 h-full rounded-full"
                 initial={false}
-                animate={{ width: `${(evaluationCheckedCount / evaluationExercises.length) * 100}%` }}
+                animate={{ width: `${(evaluationCheckedCount / scoredEvaluationExercises.length) * 100}%` }}
                 transition={{ type: 'spring', stiffness: 120, damping: 20 }}
               />
             </div>
-            <span dir="ltr" className="text-[11px] font-bold text-rose-200 shrink-0">{evaluationCheckedCount}/{evaluationExercises.length}</span>
+            <span dir="ltr" className="text-[11px] font-bold text-rose-200 shrink-0">{evaluationCheckedCount}/{scoredEvaluationExercises.length}</span>
           </div>
         )}
       </div>
@@ -67,8 +68,8 @@ export const LessonEvaluationPanel: React.FC<LessonEvaluationPanelProps> = ({
             }`}
           >
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <h4 className="font-black text-sm text-[var(--app-text)]">📊 نتيجتك: <span dir="ltr">{evaluationCorrectCount}/{evaluationExercises.length} ({evaluationScorePercent}%)</span></h4>
-              <Badge variant="xp"><span dir="ltr">+{evaluationExercises.filter((ex) => practice.practiceCorrect[ex.id]).reduce((sum, ex) => sum + ex.xpReward, 0)} XP</span></Badge>
+              <h4 className="font-black text-sm text-[var(--app-text)]">📊 نتيجتك: <span dir="ltr">{evaluationCorrectCount}/{scoredEvaluationExercises.length} ({evaluationScorePercent}%)</span></h4>
+              <Badge variant="xp"><span dir="ltr">+{scoredEvaluationExercises.filter((ex) => practice.practiceCorrect[ex.id]).reduce((sum, ex) => sum + ex.xpReward, 0)} XP</span></Badge>
             </div>
             {lesson.objectivesAr && lesson.objectivesAr.length > 0 && (
               <div className="space-y-1.5">

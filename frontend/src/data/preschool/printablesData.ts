@@ -66,6 +66,19 @@ export interface PrintableWorksheet {
   storyFrames?: { asset: string; caption: Record<PreschoolLanguage, string> }[];
 }
 
+/** Letter worksheets teach the selected alphabet, not just translated instructions. */
+export function isWorksheetAvailableInLanguage(sheet: PrintableWorksheet, language: PreschoolLanguage): boolean {
+  if (sheet.category !== 'lettres') return true;
+  const glyphs = (sheet.traceRows ?? []).map(row => row.glyph).join('');
+  return language === 'ar'
+    ? /\p{Script=Arabic}/u.test(glyphs) && !/[A-Za-z]/.test(glyphs)
+    : /[A-Za-z]/.test(glyphs) && !/\p{Script=Arabic}/u.test(glyphs);
+}
+
+export function getPrintableWorksheets(language: PreschoolLanguage): PrintableWorksheet[] {
+  return PRINTABLE_WORKSHEETS.filter(sheet => isWorksheetAvailableInLanguage(sheet, language));
+}
+
 export const PRINTABLE_CATEGORY_LABELS: Record<PrintableCategory, Record<PreschoolLanguage, string>> = {
   graphisme: { ar: 'تَمَارِين الخَطّ وَالحَرَكَة', fr: 'Graphisme et pré-écriture', en: 'Pre-writing lines' },
   lettres: { ar: 'تَتَبُّع الحُرُوف', fr: 'Traçage des lettres', en: 'Letter tracing' },

@@ -49,4 +49,27 @@ describe('PreschoolPrintablesModal', () => {
     await userEvent.click(screen.getByLabelText('خروج / Fermer / Close'));
     expect(onExit).toHaveBeenCalledTimes(1);
   });
+
+  it('replaces an Arabic selection with a Latin worksheet when switching to French', async () => {
+    const { rerender } = render(<PreschoolPrintablesModal language="ar" onExit={vi.fn()} />);
+    await userEvent.click(screen.getByText('تَتَبُّع الحُرُوف'));
+    expect(document.querySelector('.paper-large-glyph')?.textContent).toContain('أ');
+    rerender(<PreschoolPrintablesModal language="fr" onExit={vi.fn()} />);
+    const paper = document.querySelector('.preschool-worksheet')!;
+    expect(paper.textContent).not.toMatch(/\p{Script=Arabic}/u);
+    expect(paper.querySelector('.paper-large-glyph')?.textContent).toContain('A');
+  });
+
+  it.each(['fr', 'en'] as const)('does not include Arabic letter sheets in the %s category print pack', async language => {
+    const printSpy = vi.spyOn(window, 'print').mockImplementation(() => {
+      const sheets = [...document.querySelectorAll('.preschool-worksheet')];
+      expect(sheets.length).toBeGreaterThanOrEqual(26);
+      sheets.forEach(sheet => expect(sheet.textContent).not.toMatch(/\p{Script=Arabic}/u));
+    });
+    render(<PreschoolPrintablesModal language={language} onExit={vi.fn()} />);
+    await userEvent.click(screen.getByText(language === 'fr' ? 'Traçage des lettres' : 'Letter tracing'));
+    await userEvent.click(screen.getByRole('button', { name: language === 'fr' ? /Imprimer le cahier/ : /Print booklet/ }));
+    await waitFor(() => expect(printSpy).toHaveBeenCalledTimes(1));
+    printSpy.mockRestore();
+  });
 });

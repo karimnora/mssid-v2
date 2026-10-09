@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import type { IslamicInteractiveConfig, IslamicQuranExplorer, IslamicQuranVerseItem } from '../types';
 import { QuranMemorizePlayer } from './QuranMemorizePlayer';
+import { TayammumStepIllustration } from './TayammumStepIllustration';
 
 interface IslamicInteractiveProps {
   config: IslamicInteractiveConfig;
@@ -75,6 +76,9 @@ const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({
     setActiveIdx(0);
   }, [config]);
 
+  const ritualIndex = config.type === 'ritual_steps' ? Math.min(activeIdx, Math.max(0, config.steps.length - 1)) : 0;
+  const ritualStep = config.type === 'ritual_steps' ? config.steps[ritualIndex] : undefined;
+
   const headerIcon =
     config.type === 'quran_explorer' ? <BookOpen className="w-6 h-6 text-amber-400" /> :
     config.type === 'ritual_steps' ? <Compass className="w-6 h-6 text-amber-400" /> :
@@ -98,16 +102,19 @@ const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({
 
       {config.type === 'quran_explorer' && <QuranExplorerView config={config} />}
 
-      {config.type === 'ritual_steps' && (
-        <div className="space-y-6">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+      {config.type === 'ritual_steps' && ritualStep && (
+        <div className="space-y-4" data-islamic-tool="ritual-steps">
+          <p role="status" className="text-sm font-bold text-emerald-100">الخطوة {ritualIndex + 1} من {config.steps.length}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {config.steps.map((s, idx) => (
               <button
                 key={s.step}
+                type="button"
+                aria-pressed={ritualIndex === idx}
                 onClick={() => setActiveIdx(idx)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border flex items-center gap-2 ${
-                  activeIdx === idx
-                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md scale-[1.02]'
+                className={`min-h-12 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border flex items-center gap-2 text-start ${
+                  ritualIndex === idx
+                    ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md'
                     : 'bg-emerald-900 text-emerald-200 border-emerald-800 hover:bg-emerald-850'
                 }`}
               >
@@ -118,18 +125,24 @@ const ConfiguredIslamicTool: React.FC<{ config: IslamicInteractiveConfig }> = ({
           </div>
           <div className="bg-slate-950 p-6 rounded-3xl border border-emerald-800 space-y-4">
             <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
-              <span className="text-4xl p-3 bg-emerald-950 rounded-2xl border border-emerald-800">{config.steps[activeIdx].icon}</span>
+              <span className="text-4xl p-3 bg-emerald-950 rounded-2xl border border-emerald-800" aria-hidden="true">{ritualStep.icon}</span>
               <div>
-                <h3 className="text-lg font-black text-amber-300">{config.steps[activeIdx].titleAr}</h3>
+                <h3 className="text-lg font-black text-amber-300">{ritualStep.titleAr}</h3>
                 <span className="px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-xs font-bold inline-block mt-1">
-                  {config.steps[activeIdx].tagAr}
+                  {ritualStep.tagAr}
                 </span>
               </div>
             </div>
+            {ritualStep.illustration && <TayammumStepIllustration kind={ritualStep.illustration}/>}
             <p className="text-sm font-bold text-slate-200 leading-relaxed bg-emerald-950 p-4 rounded-2xl border border-emerald-800">
-              {config.steps[activeIdx].descAr}
+              {ritualStep.descAr}
             </p>
           </div>
+          <div className="grid grid-cols-2 gap-3">
+            <button type="button" disabled={ritualIndex===0} onClick={()=>setActiveIdx(ritualIndex-1)} className="min-h-12 px-3 py-2 rounded-2xl bg-emerald-900 border border-emerald-700 text-sm font-bold disabled:opacity-40 cursor-pointer">الخطوة السابقة</button>
+            <button type="button" disabled={ritualIndex===config.steps.length-1} onClick={()=>setActiveIdx(ritualIndex+1)} className="min-h-12 px-3 py-2 rounded-2xl bg-amber-400 text-slate-950 text-sm font-bold disabled:opacity-40 cursor-pointer">الخطوة التالية</button>
+          </div>
+          {ritualIndex===config.steps.length-1 && <p className="text-sm font-bold text-emerald-100">اكتملت الخطوات. انتقل إلى «أتدرب» للتحقق من فهمك.</p>}
         </div>
       )}
 

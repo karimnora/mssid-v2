@@ -1,10 +1,21 @@
 import { describe, it, expect } from 'vitest';
-import { PRINTABLE_WORKSHEETS, PRINTABLE_CATEGORY_LABELS } from './printablesData';
+import { PRINTABLE_WORKSHEETS, PRINTABLE_CATEGORY_LABELS, getPrintableWorksheets } from './printablesData';
 import { PreschoolLanguage } from './types';
 
 const LANGUAGES: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
 describe('Preschool printable worksheets data integrity', () => {
+  it.each(LANGUAGES)('offers the complete selected alphabet without foreign letter worksheets in %s', language => {
+    const letters = getPrintableWorksheets(language).filter(sheet => sheet.category === 'lettres');
+    const glyphs = new Set(letters.flatMap(sheet => sheet.traceRows ?? []).map(row => row.glyph));
+    const alphabet = language === 'ar' ? [...'أبتثجحخدذرزسشصضطظعغفقكلمنهوي'] : [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+    alphabet.forEach(glyph => expect(glyphs.has(glyph), glyph).toBe(true));
+    for (const sheet of letters) {
+      const content = [sheet.titleI18n[language], sheet.instructionI18n[language], sheet.glyphWord?.[language] ?? '', ...(sheet.traceRows ?? []).map(row => row.glyph)].join(' ');
+      if (language === 'ar') expect(content).not.toMatch(/[A-Za-z]/);
+      else expect(content).not.toMatch(/\p{Script=Arabic}/u);
+    }
+  });
   it('has at least one worksheet and every id is unique', () => {
     expect(PRINTABLE_WORKSHEETS.length).toBeGreaterThanOrEqual(35);
     const ids = PRINTABLE_WORKSHEETS.map((w) => w.id);

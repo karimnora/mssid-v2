@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
 import {
-  PRINTABLE_WORKSHEETS,
+  getPrintableWorksheets,
   PRINTABLE_CATEGORY_LABELS,
   PrintableCategory,
   PrintableWorksheet,
@@ -46,20 +46,21 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
   const [printingPack, setPrintingPack] = useState(false);
   const [activeCategory, setActiveCategory] = useState<PrintableCategory>('graphisme');
   const [activeSheetId, setActiveSheetId] = useState<string | null>(null);
+  const availableSheets = useMemo(() => getPrintableWorksheets(language), [language]);
 
   const sheetsInCategory = useMemo(
-    () => PRINTABLE_WORKSHEETS.filter((s) => s.category === activeCategory),
-    [activeCategory]
+    () => availableSheets.filter((s) => s.category === activeCategory),
+    [activeCategory, availableSheets]
   );
 
   const activeSheet = useMemo(
-    () => PRINTABLE_WORKSHEETS.find((s) => s.id === activeSheetId) || sheetsInCategory[0] || null,
+    () => sheetsInCategory.find((s) => s.id === activeSheetId) || sheetsInCategory[0] || null,
     [activeSheetId, sheetsInCategory]
   );
 
   const handleSelectCategory = (cat: PrintableCategory) => {
     setActiveCategory(cat);
-    const first = PRINTABLE_WORKSHEETS.find((s) => s.category === cat);
+    const first = availableSheets.find((s) => s.category === cat);
     setActiveSheetId(first?.id || null);
   };
 

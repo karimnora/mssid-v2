@@ -140,7 +140,7 @@ export const QuranMemorizePlayer: React.FC<{
         </p>
       )}
 
-      <p className={`text-center font-bold ${kid ? 'text-sm text-emerald-800' : 'text-xs text-emerald-200'}`}>
+      <p className={`text-center font-bold text-emerald-800 ${kid ? 'text-sm' : 'text-xs'}`}>
         {QURAN_RECITER_RIWAYAH_AR} — {QURAN_RECITER_AR}
       </p>
       {recitation.failed && (

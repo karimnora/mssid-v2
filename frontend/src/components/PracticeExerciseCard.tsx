@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CheckCircle2, XCircle, HelpCircle } from 'lucide-react';
 import { ProgressiveExercise } from '../types';
 import { renderTextWithMath } from './MathExpression';
 import { IrabTable } from './lessonViewer/IrabTable';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
 import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
+import { shuffleOptions } from './lessonViewer/shared';
+import { isGuidedPractice, isMatchingPairCorrect } from './lessonViewer/practiceAssessment';
 
 interface PracticeExerciseCardProps {
   ex: ProgressiveExercise;
@@ -27,6 +29,7 @@ interface PracticeExerciseCardProps {
   onToggleOrderingItem: (exId: string, originalIdx: number) => void;
   playful?: boolean;
   leadAudio?: React.ReactNode;
+  optionOrder?: string[];
 }
 
 // A single practice/evaluation exercise, self-contained: renders the right interaction widget for
@@ -58,7 +61,18 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   onToggleOrderingItem,
   playful = false,
   leadAudio,
+  optionOrder,
 }) => {
+  const isGuided = isGuidedPractice(ex);
+  const displayOptions = useMemo(() => {
+    const options = ex.options || [];
+    if (ex.type !== 'qcm') return options;
+    if (optionOrder?.length === options.length) {
+      const ordered = optionOrder.map((id) => options.find((option) => option.id === id));
+      if (ordered.every((option) => option !== undefined)) return ordered;
+    }
+    return shuffleOptions(options);
+  }, [ex.options, ex.type, optionOrder]);
   const setAnswer = (value: string | number) => onAnswerChange(ex.id, value);
   const setMatchingSelectedLeft = (leftIdx: number | null) => onMatchingSelectLeft(ex.id, leftIdx);
   const connectMatching = (leftIdx: number, rightIdx: number) => onConnectMatching(ex.id, leftIdx, rightIdx);
@@ -85,7 +99,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
         <span className="text-sm font-extrabold text-[var(--brand-amber-dark)] bg-[var(--brand-amber)]/15 border border-[var(--brand-amber)]/30 px-3 py-1 rounded-full">
           {playful ? (ex.level === 1 ? 'أَلْعَبُ' : ex.level === 2 ? 'أُحَاوِلُ' : 'أَرْبِطُ') : ex.levelLabelAr}
         </span>
-        {!playful && <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>}
+        {!playful && !isGuided && <span className="text-[10px] font-bold text-slate-500">+{ex.xpReward} XP</span>}
       </div>
 
       <div className="flex items-start gap-2 type-quiz text-slate-900">
@@ -102,7 +116,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {/* QCM / True-False */}
       {(ex.type === 'qcm' || ex.type === 'true_false') && ex.options && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {ex.options.map((opt) => {
+          {displayOptions.map((opt) => {
             const isSelected = answer === opt.id;
             let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
             if (isChecked) {
@@ -162,8 +176,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
               {ex.matchingPairsAr.map((pair, leftIdx) => {
                 const isConnected = matchingConnections[leftIdx] !== undefined;
                 const isSelected = matchingSelectedLeft === leftIdx;
-                const isRight = isChecked && matchingConnections[leftIdx] === leftIdx;
-                const isWrong = isChecked && isConnected && matchingConnections[leftIdx] !== leftIdx;
+                const isRight = isChecked && isMatchingPairCorrect(ex, leftIdx, matchingConnections[leftIdx]);
+                const isWrong = isChecked && isConnected && !isRight;
                 let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
                 if (isChecked) style = isRight ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrong ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
                 else if (isSelected) style = 'bg-indigo-100 border-indigo-500 text-indigo-900 font-bold';
@@ -241,8 +255,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       )}
 
       {/* short_answer / untyped: simple reveal-based practice */}
-      {(!ex.type || ex.type === 'short_answer') && !isChecked && (
-        <p className="text-xs text-slate-500">فكّر في الحل، ثم اضغط "تحقق" لمشاهدة التصحيح المفصّل.</p>
+      {isGuided && !isChecked && (
+        <p className="text-xs text-slate-500">فكّر في الحل، ثم اضغط "أرى التصحيح" لتقارن حلك بالشرح.</p>
       )}
 
       {/* Progressive scaffolded help: one step revealed per click, never the full answer up front */}
@@ -268,11 +282,11 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {isChecked && (
         <div
           className={`text-sm p-3 rounded-xl border leading-relaxed ${
-            isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
+            isGuided ? 'bg-sky-50 border-sky-200 text-sky-900' : isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
           }`}
         >
           <span className="font-black block mb-1">
-            {isCorrect ? '✅ أحسنت! إجابة صحيحة.' : `💡 ليست هذه الإجابة، لا بأس! إليك الشرح لتتعلم منه:`}
+            {isGuided ? '📖 التصحيح للمراجعة: قارن حلك بالشرح.' : isCorrect ? '✅ أحسنت! إجابة صحيحة.' : `💡 ليست هذه الإجابة، لا بأس! إليك الشرح لتتعلم منه:`}
           </span>
           {ex.irabTableAr && ex.irabTableAr.length > 0 ? (
             <div className="space-y-2">
@@ -298,7 +312,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           disabled={!canCheck}
           className="hit-target w-full sm:w-auto bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] disabled:opacity-40 disabled:cursor-not-allowed text-white text-base font-extrabold px-5 rounded-2xl cursor-pointer"
         >
-          تحقق من الإجابة
+          {isGuided ? 'أرى التصحيح' : 'تحقق من الإجابة'}
         </button>
       ) : (
         <button
@@ -308,7 +322,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           }}
           className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
         >
-          حاول مرة أخرى
+          {isGuided ? 'أفكّر من جديد' : 'حاول مرة أخرى'}
         </button>
       )}
     </div>
