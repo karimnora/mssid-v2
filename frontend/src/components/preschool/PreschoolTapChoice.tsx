@@ -60,6 +60,12 @@ function SpatialSceneCard({ scene }: { scene: PreschoolSpatialScene }) {
       aria-hidden="true"
     >
       <span className="absolute bottom-[5px] left-1 right-1 h-[3px] rounded-full bg-amber-400" />
+      {(kind === 'above' || kind === 'below') && <>
+        <span className="absolute top-[38px] left-2 right-2 border-t-4 border-amber-600"/>
+        <span className={`absolute left-1/2 -translate-x-1/2 ${kind === 'above' ? 'top-0' : 'bottom-0'}`}>
+          <PreschoolAsset asset={object} size={30} textClassName="text-2xl leading-none"/>
+        </span>
+      </>}
       {kind === 'front' && (
         <>
           <span className="absolute bottom-[7px] left-[42%] z-10">

@@ -1,3 +1,4 @@
+import { ColoringArtId } from './coloringArt';
 import { PreschoolLanguage } from './types';
 
 // "أوراق للطباعة" — Printable take-home worksheets (Mode Éveil, 3-5 ans).
@@ -15,7 +16,8 @@ export type PrintableWorksheetKind =
   | 'match_pairs'
   | 'odd_one_out'
   | 'cut_along_lines'
-  | 'coloring_page';
+  | 'coloring_page'
+  | 'story_order';
 
 export interface TracePathRow {
   d: string;
@@ -57,7 +59,11 @@ export interface PrintableWorksheet {
   matchPairs?: MatchPair[];
   oddOneOutSets?: OddOneOutSet[];
   cutShapes?: string[];
-  coloringShapeId?: 'house' | 'star_crescent' | 'sun' | 'flower' | 'fish' | 'boat' | 'camel' | 'mosque' | 'olive';
+  coloringShapeId?: ColoringArtId;
+  glyphPicture?: string;
+  glyphPictureI18n?: Record<PreschoolLanguage, string>;
+  glyphWord?: Record<PreschoolLanguage, string>;
+  storyFrames?: { asset: string; caption: Record<PreschoolLanguage, string> }[];
 }
 
 export const PRINTABLE_CATEGORY_LABELS: Record<PrintableCategory, Record<PreschoolLanguage, string>> = {
@@ -813,8 +819,8 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     oddOneOutSets: [
       { items: ['🔵', '🔵', '🔵', '🔺', '🔵'], oddIndex: 3 },
       { items: ['⭐', '⭐', '❤️', '⭐', '⭐'], oddIndex: 2 },
-      { items: ['🟩', '🟩', '🟩', '🟩', '🟧'], oddIndex: 4 },
-      { items: ['🟡', '⬜', '🟡', '🟡', '🟡'], oddIndex: 1 },
+      { items: ['🟩', '🟩', '🟩', '🟩', '🔺'], oddIndex: 4 },
+      { items: ['⚪', '🟦', '⚪', '⚪', '⚪'], oddIndex: 1 },
     ],
   },
   {
@@ -993,4 +999,1656 @@ export const PRINTABLE_WORKSHEETS: PrintableWorksheet[] = [
     },
     coloringShapeId: 'olive',
   },
+{
+  "id": "letter-trace-haa",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "ح",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف ح",
+    "fr": "Je trace la lettre arabe ح",
+    "en": "I trace Arabic ح"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع النموذج، ثم أجرّب الكتابة وحدي.",
+    "fr": "Suis le modèle, puis essaie sur les lignes sans modèle.",
+    "en": "Follow the model, then try the empty lines."
+  },
+  "traceRows": [
+    {
+      "glyph": "ح",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPicture": "🥛",
+  "glyphWord": {
+    "ar": "حليب",
+    "fr": "حليب — lait",
+    "en": "حليب — milk"
+  }
+},
+{
+  "id": "letter-trace-khaa",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "خ",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف خ",
+    "fr": "Je trace la lettre arabe خ",
+    "en": "I trace Arabic خ"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع النموذج، ثم أجرّب الكتابة وحدي.",
+    "fr": "Suis le modèle, puis essaie sur les lignes sans modèle.",
+    "en": "Follow the model, then try the empty lines."
+  },
+  "traceRows": [
+    {
+      "glyph": "خ",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPicture": "🍞",
+  "glyphWord": {
+    "ar": "خبز",
+    "fr": "خبز — pain",
+    "en": "خبز — bread"
+  }
+},
+{
+  "id": "letter-trace-thal",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "ذ",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف ذ",
+    "fr": "Je trace la lettre arabe ذ",
+    "en": "I trace Arabic ذ"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع النموذج، ثم أجرّب الكتابة وحدي.",
+    "fr": "Suis le modèle, puis essaie sur les lignes sans modèle.",
+    "en": "Follow the model, then try the empty lines."
+  },
+  "traceRows": [
+    {
+      "glyph": "ذ",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPicture": "🌽",
+  "glyphWord": {
+    "ar": "ذرة",
+    "fr": "ذرة — maïs",
+    "en": "ذرة — corn"
+  }
+},
+{
+  "id": "letter-trace-haa-round",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "ه",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف ه",
+    "fr": "Je trace la lettre arabe ه",
+    "en": "I trace Arabic ه"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع النموذج، ثم أجرّب الكتابة وحدي.",
+    "fr": "Suis le modèle, puis essaie sur les lignes sans modèle.",
+    "en": "Follow the model, then try the empty lines."
+  },
+  "traceRows": [
+    {
+      "glyph": "ه",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPicture": "🌙",
+  "glyphWord": {
+    "ar": "هلال",
+    "fr": "هلال — croissant de lune",
+    "en": "هلال — crescent moon"
+  }
+},
+{
+  "id": "letter-latin-a",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "A",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني A",
+    "fr": "Je trace A — Ananas",
+    "en": "I trace A — Apple"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "A",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🍍",
+    "fr": "🍍",
+    "en": "🍎"
+  },
+  "glyphWord": {
+    "ar": "Ananas",
+    "fr": "Ananas",
+    "en": "Apple"
+  }
+},
+{
+  "id": "letter-latin-b",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "B",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني B",
+    "fr": "Je trace B — Ballon",
+    "en": "I trace B — Ball"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "B",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🎈",
+    "fr": "🎈",
+    "en": "⚽"
+  },
+  "glyphWord": {
+    "ar": "Ballon",
+    "fr": "Ballon",
+    "en": "Ball"
+  }
+},
+{
+  "id": "letter-latin-c",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "C",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني C",
+    "fr": "Je trace C — Chat",
+    "en": "I trace C — Cat"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "C",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🐱",
+    "fr": "🐱",
+    "en": "🐱"
+  },
+  "glyphWord": {
+    "ar": "Chat",
+    "fr": "Chat",
+    "en": "Cat"
+  }
+},
+{
+  "id": "letter-latin-d",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "D",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني D",
+    "fr": "Je trace D — Dinosaure",
+    "en": "I trace D — Dinosaur"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "D",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🦕",
+    "fr": "🦕",
+    "en": "🦕"
+  },
+  "glyphWord": {
+    "ar": "Dinosaure",
+    "fr": "Dinosaure",
+    "en": "Dinosaur"
+  }
+},
+{
+  "id": "letter-latin-e",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "E",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني E",
+    "fr": "Je trace E — Éléphant",
+    "en": "I trace E — Elephant"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "E",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🐘",
+    "fr": "🐘",
+    "en": "🐘"
+  },
+  "glyphWord": {
+    "ar": "Éléphant",
+    "fr": "Éléphant",
+    "en": "Elephant"
+  }
+},
+{
+  "id": "letter-latin-f",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "F",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني F",
+    "fr": "Je trace F — Fraise",
+    "en": "I trace F — Fish"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "F",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🍓",
+    "fr": "🍓",
+    "en": "🐟"
+  },
+  "glyphWord": {
+    "ar": "Fraise",
+    "fr": "Fraise",
+    "en": "Fish"
+  }
+},
+{
+  "id": "letter-latin-g",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "G",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني G",
+    "fr": "Je trace G — Grenouille",
+    "en": "I trace G — Goat"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "G",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🐸",
+    "fr": "🐸",
+    "en": "🐐"
+  },
+  "glyphWord": {
+    "ar": "Grenouille",
+    "fr": "Grenouille",
+    "en": "Goat"
+  }
+},
+{
+  "id": "letter-latin-h",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "H",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني H",
+    "fr": "Je trace H — Hibou",
+    "en": "I trace H — Horse"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "H",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🦉",
+    "fr": "🦉",
+    "en": "🐴"
+  },
+  "glyphWord": {
+    "ar": "Hibou",
+    "fr": "Hibou",
+    "en": "Horse"
+  }
+},
+{
+  "id": "letter-latin-i",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "I",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني I",
+    "fr": "Je trace I — Île",
+    "en": "I trace I — Island"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "I",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🏝️",
+    "fr": "🏝️",
+    "en": "🏝️"
+  },
+  "glyphWord": {
+    "ar": "Île",
+    "fr": "Île",
+    "en": "Island"
+  }
+},
+{
+  "id": "letter-latin-j",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "J",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني J",
+    "fr": "Je trace J — Jardin",
+    "en": "I trace J — Juice"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "J",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "art:garden",
+    "fr": "art:garden",
+    "en": "🧃"
+  },
+  "glyphWord": {
+    "ar": "Jardin",
+    "fr": "Jardin",
+    "en": "Juice"
+  }
+},
+{
+  "id": "letter-latin-k",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "K",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني K",
+    "fr": "Je trace K — Koala",
+    "en": "I trace K — Koala"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "K",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🐨",
+    "fr": "🐨",
+    "en": "🐨"
+  },
+  "glyphWord": {
+    "ar": "Koala",
+    "fr": "Koala",
+    "en": "Koala"
+  }
+},
+{
+  "id": "letter-latin-l",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "L",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني L",
+    "fr": "Je trace L — Lion",
+    "en": "I trace L — Lion"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "L",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🦁",
+    "fr": "🦁",
+    "en": "🦁"
+  },
+  "glyphWord": {
+    "ar": "Lion",
+    "fr": "Lion",
+    "en": "Lion"
+  }
+},
+{
+  "id": "letter-latin-m",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "M",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني M",
+    "fr": "Je trace M — Maison",
+    "en": "I trace M — Moon"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "M",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🏠",
+    "fr": "🏠",
+    "en": "🌙"
+  },
+  "glyphWord": {
+    "ar": "Maison",
+    "fr": "Maison",
+    "en": "Moon"
+  }
+},
+{
+  "id": "letter-latin-n",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "N",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني N",
+    "fr": "Je trace N — Nuage",
+    "en": "I trace N — Nest"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "N",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "☁️",
+    "fr": "☁️",
+    "en": "🪺"
+  },
+  "glyphWord": {
+    "ar": "Nuage",
+    "fr": "Nuage",
+    "en": "Nest"
+  }
+},
+{
+  "id": "letter-latin-o",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "O",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني O",
+    "fr": "Je trace O — Orange",
+    "en": "I trace O — Orange"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "O",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🍊",
+    "fr": "🍊",
+    "en": "🍊"
+  },
+  "glyphWord": {
+    "ar": "Orange",
+    "fr": "Orange",
+    "en": "Orange"
+  }
+},
+{
+  "id": "letter-latin-p",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "P",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني P",
+    "fr": "Je trace P — Poisson",
+    "en": "I trace P — Penguin"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "P",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🐟",
+    "fr": "🐟",
+    "en": "🐧"
+  },
+  "glyphWord": {
+    "ar": "Poisson",
+    "fr": "Poisson",
+    "en": "Penguin"
+  }
+},
+{
+  "id": "letter-latin-q",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "Q",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني Q",
+    "fr": "Je trace Q — Quatre",
+    "en": "I trace Q — Queen"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "Q",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "4️⃣",
+    "fr": "4️⃣",
+    "en": "👑"
+  },
+  "glyphWord": {
+    "ar": "Quatre",
+    "fr": "Quatre",
+    "en": "Queen"
+  }
+},
+{
+  "id": "letter-latin-r",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "R",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني R",
+    "fr": "Je trace R — Rose",
+    "en": "I trace R — Rose"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "R",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🌹",
+    "fr": "🌹",
+    "en": "🌹"
+  },
+  "glyphWord": {
+    "ar": "Rose",
+    "fr": "Rose",
+    "en": "Rose"
+  }
+},
+{
+  "id": "letter-latin-s",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "S",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني S",
+    "fr": "Je trace S — Soleil",
+    "en": "I trace S — Sun"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "S",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "☀️",
+    "fr": "☀️",
+    "en": "☀️"
+  },
+  "glyphWord": {
+    "ar": "Soleil",
+    "fr": "Soleil",
+    "en": "Sun"
+  }
+},
+{
+  "id": "letter-latin-t",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "T",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني T",
+    "fr": "Je trace T — Tortue",
+    "en": "I trace T — Turtle"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "T",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🐢",
+    "fr": "🐢",
+    "en": "🐢"
+  },
+  "glyphWord": {
+    "ar": "Tortue",
+    "fr": "Tortue",
+    "en": "Turtle"
+  }
+},
+{
+  "id": "letter-latin-u",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "U",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني U",
+    "fr": "Je trace U — Usine",
+    "en": "I trace U — Umbrella"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "U",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🏭",
+    "fr": "🏭",
+    "en": "☂️"
+  },
+  "glyphWord": {
+    "ar": "Usine",
+    "fr": "Usine",
+    "en": "Umbrella"
+  }
+},
+{
+  "id": "letter-latin-v",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "V",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني V",
+    "fr": "Je trace V — Voiture",
+    "en": "I trace V — Violin"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "V",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🚗",
+    "fr": "🚗",
+    "en": "🎻"
+  },
+  "glyphWord": {
+    "ar": "Voiture",
+    "fr": "Voiture",
+    "en": "Violin"
+  }
+},
+{
+  "id": "letter-latin-w",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "W",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني W",
+    "fr": "Je trace W — Wagon",
+    "en": "I trace W — Whale"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "W",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🚃",
+    "fr": "🚃",
+    "en": "🐳"
+  },
+  "glyphWord": {
+    "ar": "Wagon",
+    "fr": "Wagon",
+    "en": "Whale"
+  }
+},
+{
+  "id": "letter-latin-x",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "X",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني X",
+    "fr": "Je trace X — Xylophone",
+    "en": "I trace X — Xylophone"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "X",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "art:xylophone",
+    "fr": "art:xylophone",
+    "en": "art:xylophone"
+  },
+  "glyphWord": {
+    "ar": "Xylophone",
+    "fr": "Xylophone",
+    "en": "Xylophone"
+  }
+},
+{
+  "id": "letter-latin-y",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "Y",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني Y",
+    "fr": "Je trace Y — Yo-yo",
+    "en": "I trace Y — Yo-yo"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "Y",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🪀",
+    "fr": "🪀",
+    "en": "🪀"
+  },
+  "glyphWord": {
+    "ar": "Yo-yo",
+    "fr": "Yo-yo",
+    "en": "Yo-yo"
+  }
+},
+{
+  "id": "letter-latin-z",
+  "category": "lettres",
+  "kind": "letter_trace",
+  "headerIcon": "Z",
+  "titleI18n": {
+    "ar": "أتتبّع الحرف اللاتيني Z",
+    "fr": "Je trace Z — Zèbre",
+    "en": "I trace Z — Zebra"
+  },
+  "instructionI18n": {
+    "ar": "أتتبّع الحرف الكبير، ثم أجرّب وحدي.",
+    "fr": "Observe la lettre et l’image. Trace, puis essaie sans modèle.",
+    "en": "Look at the letter and picture. Trace, then try on your own."
+  },
+  "traceRows": [
+    {
+      "glyph": "Z",
+      "repeatCount": 6
+    }
+  ],
+  "glyphPictureI18n": {
+    "ar": "🦓",
+    "fr": "🦓",
+    "en": "🦓"
+  },
+  "glyphWord": {
+    "ar": "Zèbre",
+    "fr": "Zèbre",
+    "en": "Zebra"
+  }
+},
+{
+  "id": "quantity-0",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "0",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 0",
+    "fr": "Je compte et j’écris : 0",
+    "en": "I count and write: 0"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 0
+    },
+    {
+      "icon": "⭐",
+      "count": 0
+    },
+    {
+      "icon": "🐟",
+      "count": 1
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "0",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-1",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "1",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 1",
+    "fr": "Je compte et j’écris : 1",
+    "en": "I count and write: 1"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 1
+    },
+    {
+      "icon": "⭐",
+      "count": 0
+    },
+    {
+      "icon": "🐟",
+      "count": 2
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "1",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-2",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "2",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 2",
+    "fr": "Je compte et j’écris : 2",
+    "en": "I count and write: 2"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 2
+    },
+    {
+      "icon": "⭐",
+      "count": 1
+    },
+    {
+      "icon": "🐟",
+      "count": 3
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "2",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-3",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "3",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 3",
+    "fr": "Je compte et j’écris : 3",
+    "en": "I count and write: 3"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 3
+    },
+    {
+      "icon": "⭐",
+      "count": 2
+    },
+    {
+      "icon": "🐟",
+      "count": 4
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "3",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-4",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "4",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 4",
+    "fr": "Je compte et j’écris : 4",
+    "en": "I count and write: 4"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 4
+    },
+    {
+      "icon": "⭐",
+      "count": 3
+    },
+    {
+      "icon": "🐟",
+      "count": 5
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "4",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-5",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "5",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 5",
+    "fr": "Je compte et j’écris : 5",
+    "en": "I count and write: 5"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 5
+    },
+    {
+      "icon": "⭐",
+      "count": 4
+    },
+    {
+      "icon": "🐟",
+      "count": 6
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "5",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-6",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "6",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 6",
+    "fr": "Je compte et j’écris : 6",
+    "en": "I count and write: 6"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 6
+    },
+    {
+      "icon": "⭐",
+      "count": 5
+    },
+    {
+      "icon": "🐟",
+      "count": 7
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "6",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-7",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "7",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 7",
+    "fr": "Je compte et j’écris : 7",
+    "en": "I count and write: 7"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 7
+    },
+    {
+      "icon": "⭐",
+      "count": 6
+    },
+    {
+      "icon": "🐟",
+      "count": 8
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "7",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-8",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "8",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 8",
+    "fr": "Je compte et j’écris : 8",
+    "en": "I count and write: 8"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 8
+    },
+    {
+      "icon": "⭐",
+      "count": 7
+    },
+    {
+      "icon": "🐟",
+      "count": 9
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "8",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-9",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "9",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 9",
+    "fr": "Je compte et j’écris : 9",
+    "en": "I count and write: 9"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 9
+    },
+    {
+      "icon": "⭐",
+      "count": 8
+    },
+    {
+      "icon": "🐟",
+      "count": 10
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "9",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "quantity-10",
+  "category": "chiffres",
+  "kind": "count_and_color",
+  "headerIcon": "10",
+  "titleI18n": {
+    "ar": "أعدّ وأكتب: 10",
+    "fr": "Je compte et j’écris : 10",
+    "en": "I count and write: 10"
+  },
+  "instructionI18n": {
+    "ar": "أعدّ الأشكال واكتب العدد في المربع، ثم أتتبّع النموذج.",
+    "fr": "Compte chaque collection et écris le nombre dans la case. Termine par le tracé.",
+    "en": "Count each group and write its number. Then trace the model."
+  },
+  "countRows": [
+    {
+      "icon": "🍎",
+      "count": 10
+    },
+    {
+      "icon": "⭐",
+      "count": 9
+    },
+    {
+      "icon": "🐟",
+      "count": 10
+    }
+  ],
+  "traceRows": [
+    {
+      "glyph": "10",
+      "repeatCount": 5
+    }
+  ]
+},
+{
+  "id": "story-print-meal",
+  "category": "logique",
+  "kind": "story_order",
+  "headerIcon": "📖",
+  "titleI18n": {
+    "ar": "أرتّب وأحكي قصة",
+    "fr": "Je remets l’histoire dans l’ordre",
+    "en": "I put the story in order"
+  },
+  "instructionI18n": {
+    "ar": "أقصّ البطاقات مع شخص بالغ، ثم ألصقها بالترتيب وأحكي القصة.",
+    "fr": "Découpe avec un adulte. Colle les images dans l’ordre, puis raconte.",
+    "en": "Cut with a grown-up. Paste the pictures in order, then tell the story."
+  },
+  "storyFrames": [
+    {
+      "asset": "🍽️",
+      "caption": {
+        "fr": "Faim",
+        "ar": "جوع",
+        "en": "Hungry"
+      }
+    },
+    {
+      "asset": "🍲",
+      "caption": {
+        "fr": "Repas",
+        "ar": "وجبة",
+        "en": "Meal"
+      }
+    },
+    {
+      "asset": "face:happy",
+      "caption": {
+        "fr": "Content",
+        "ar": "سعيد",
+        "en": "Happy"
+      }
+    }
+  ]
+},
+{
+  "id": "story-print-hands",
+  "category": "logique",
+  "kind": "story_order",
+  "headerIcon": "📖",
+  "titleI18n": {
+    "ar": "أرتّب وأحكي قصة",
+    "fr": "Je remets l’histoire dans l’ordre",
+    "en": "I put the story in order"
+  },
+  "instructionI18n": {
+    "ar": "أقصّ البطاقات مع شخص بالغ، ثم ألصقها بالترتيب وأحكي القصة.",
+    "fr": "Découpe avec un adulte. Colle les images dans l’ordre, puis raconte.",
+    "en": "Cut with a grown-up. Paste the pictures in order, then tell the story."
+  },
+  "storyFrames": [
+    {
+      "asset": "art:hands_dirty",
+      "caption": {
+        "fr": "Mains sales",
+        "ar": "يدان متسختان",
+        "en": "Dirty hands"
+      }
+    },
+    {
+      "asset": "art:soap",
+      "caption": {
+        "fr": "Savon",
+        "ar": "صابون",
+        "en": "Soap"
+      }
+    },
+    {
+      "asset": "art:hands_clean",
+      "caption": {
+        "fr": "Mains propres",
+        "ar": "يدان نظيفتان",
+        "en": "Clean hands"
+      }
+    }
+  ]
+},
+{
+  "id": "story-print-day",
+  "category": "logique",
+  "kind": "story_order",
+  "headerIcon": "📖",
+  "titleI18n": {
+    "ar": "أرتّب وأحكي قصة",
+    "fr": "Je remets l’histoire dans l’ordre",
+    "en": "I put the story in order"
+  },
+  "instructionI18n": {
+    "ar": "أقصّ البطاقات مع شخص بالغ، ثم ألصقها بالترتيب وأحكي القصة.",
+    "fr": "Découpe avec un adulte. Colle les images dans l’ordre, puis raconte.",
+    "en": "Cut with a grown-up. Paste the pictures in order, then tell the story."
+  },
+  "storyFrames": [
+    {
+      "asset": "🌅",
+      "caption": {
+        "fr": "Réveil",
+        "ar": "أستيقظ",
+        "en": "Wake up"
+      }
+    },
+    {
+      "asset": "🏫",
+      "caption": {
+        "fr": "École",
+        "ar": "المدرسة",
+        "en": "School"
+      }
+    },
+    {
+      "asset": "🏠",
+      "caption": {
+        "fr": "Maison",
+        "ar": "البيت",
+        "en": "Home"
+      }
+    }
+  ]
+},
+{
+  "id": "logic-paper-positions",
+  "category": "logique",
+  "kind": "odd_one_out",
+  "headerIcon": "🔎",
+  "titleI18n": {
+    "fr": "Je reconnais les positions",
+    "ar": "ألاحظ المكان",
+    "en": "I notice positions"
+  },
+  "instructionI18n": {
+    "fr": "Entoure l’image différente. Explique ce qui change à un adulte.",
+    "ar": "أحيط الصورة المختلفة وأشرح الفرق لشخص بالغ.",
+    "en": "Circle the different picture and explain what changes."
+  },
+  "oddOneOutSets": [
+    {
+      "items": [
+        "scene:above",
+        "scene:above",
+        "scene:below",
+        "scene:above"
+      ],
+      "oddIndex": 2
+    },
+    {
+      "items": [
+        "scene:above",
+        "scene:below",
+        "scene:above",
+        "scene:above"
+      ],
+      "oddIndex": 1
+    },
+    {
+      "items": [
+        "scene:below",
+        "scene:above",
+        "scene:above",
+        "scene:above"
+      ],
+      "oddIndex": 0
+    }
+  ]
+},
+{
+  "id": "logic-paper-containers",
+  "category": "logique",
+  "kind": "odd_one_out",
+  "headerIcon": "🔎",
+  "titleI18n": {
+    "fr": "Dedans ou dehors ?",
+    "ar": "داخل أم خارج؟",
+    "en": "Inside or outside?"
+  },
+  "instructionI18n": {
+    "fr": "Entoure l’image différente. Explique ce qui change à un adulte.",
+    "ar": "أحيط الصورة المختلفة وأشرح الفرق لشخص بالغ.",
+    "en": "Circle the different picture and explain what changes."
+  },
+  "oddOneOutSets": [
+    {
+      "items": [
+        "scene:inside",
+        "scene:outside",
+        "scene:inside",
+        "scene:inside"
+      ],
+      "oddIndex": 1
+    },
+    {
+      "items": [
+        "scene:inside",
+        "scene:inside",
+        "scene:outside",
+        "scene:inside"
+      ],
+      "oddIndex": 2
+    },
+    {
+      "items": [
+        "scene:outside",
+        "scene:inside",
+        "scene:inside",
+        "scene:inside"
+      ],
+      "oddIndex": 0
+    }
+  ]
+},
+{
+  "id": "logic-paper-emotions",
+  "category": "logique",
+  "kind": "odd_one_out",
+  "headerIcon": "🔎",
+  "titleI18n": {
+    "fr": "Je reconnais les expressions",
+    "ar": "ألاحظ تعابير الوجه",
+    "en": "I notice expressions"
+  },
+  "instructionI18n": {
+    "fr": "Entoure l’image différente. Explique ce qui change à un adulte.",
+    "ar": "أحيط الصورة المختلفة وأشرح الفرق لشخص بالغ.",
+    "en": "Circle the different picture and explain what changes."
+  },
+  "oddOneOutSets": [
+    {
+      "items": [
+        "face:happy",
+        "face:happy",
+        "face:sad",
+        "face:happy"
+      ],
+      "oddIndex": 2
+    },
+    {
+      "items": [
+        "face:happy",
+        "face:sad",
+        "face:happy",
+        "face:happy"
+      ],
+      "oddIndex": 1
+    },
+    {
+      "items": [
+        "face:sad",
+        "face:happy",
+        "face:happy",
+        "face:happy"
+      ],
+      "oddIndex": 0
+    }
+  ]
+},
+{
+  "id": "coloring-fennec",
+  "category": "coloriage",
+  "kind": "coloring_page",
+  "headerIcon": "🖍️",
+  "titleI18n": {
+    "fr": "Le Fennec du Sahara",
+    "ar": "فنك الصحراء",
+    "en": "Sahara Fennec"
+  },
+  "instructionI18n": {
+    "fr": "Colorie les grandes zones et ajoute ton décor.",
+    "ar": "ألوّن المساحات وأضيف زينة من خيالي.",
+    "en": "Color the large areas and add your own scenery."
+  },
+  "coloringShapeId": "fennec"
+},
+{
+  "id": "coloring-flag_dz",
+  "category": "coloriage",
+  "kind": "coloring_page",
+  "headerIcon": "🖍️",
+  "titleI18n": {
+    "fr": "Le Drapeau algérien",
+    "ar": "العلم الجزائري",
+    "en": "Algerian Flag"
+  },
+  "instructionI18n": {
+    "fr": "Colorie la moitié gauche en vert, le croissant et l’étoile en rouge. Garde la moitié droite blanche.",
+    "ar": "ألوّن النصف الأيسر بالأخضر والهلال والنجمة بالأحمر، وأترك النصف الأيمن أبيض.",
+    "en": "Color the left half green and the crescent and star red. Leave the right half white."
+  },
+  "coloringShapeId": "flag_dz"
+},
+{
+  "id": "coloring-palm",
+  "category": "coloriage",
+  "kind": "coloring_page",
+  "headerIcon": "🖍️",
+  "titleI18n": {
+    "fr": "Le Palmier de l’oasis",
+    "ar": "نخلة الواحة",
+    "en": "Oasis Palm Tree"
+  },
+  "instructionI18n": {
+    "fr": "Colorie les grandes zones et ajoute ton décor.",
+    "ar": "ألوّن المساحات وأضيف زينة من خيالي.",
+    "en": "Color the large areas and add your own scenery."
+  },
+  "coloringShapeId": "palm"
+}
 ];

@@ -53,14 +53,14 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
   {
     id: 'pb_letters_done',
     icon: '🔤',
-    titleI18n: { ar: 'عَارِفُ الحُرُوف', fr: 'Maître des Lettres', en: 'Letter Master' },
+    titleI18n: { ar: 'حُرُوفِي الأُولَى', fr: 'Mes premières lettres', en: 'My first letters' },
     descI18n:  { ar: 'أَتْمَمْتَ حُرُوفَكَ الأُولَى!', fr: 'Tu as fini tes premières lettres !', en: 'You finished your first letters!' },
     criteria: { type: 'module_complete', moduleId: 'preschool-letters' },
   },
   {
     id: 'pb_letters_2_done',
     icon: '🔡',
-    titleI18n: { ar: 'بَطَلُ الحُرُوف', fr: 'Toutes les lettres', en: 'All the letters' },
+    titleI18n: { ar: 'حُرُوفٌ جَدِيدَة', fr: 'Encore des lettres', en: 'More letters' },
     descI18n:  { ar: 'أَكْمَلْتَ بَقِيَّةَ الحُرُوف!', fr: 'Tu as fini encore des lettres !', en: 'You finished more letters!' },
     criteria: { type: 'module_complete', moduleId: 'preschool-letters-2' },
   },
@@ -75,7 +75,7 @@ export const PRESCHOOL_BADGES: PreschoolBadge[] = [
     id: 'pb_numbers_done',
     icon: '🔢',
     titleI18n: { ar: 'مَاهِرُ الأَرْقَام', fr: 'Champion des chiffres', en: 'Number champion' },
-    descI18n:  { ar: 'تَعَلَّمْتَ الأَعْدَادَ مِنْ صِفْرٍ إِلَى عَشَرَة!', fr: 'Tu connais les chiffres de 0 à 10 !', en: 'You know the numbers from 0 to 10!' },
+    descI18n:  { ar: 'أَكْمَلْتَ أَنْشِطَةَ الأَعْدَادِ مِنْ سِتَّةٍ إِلَى عَشَرَة!', fr: 'Tu as terminé les activités de 6 à 10 !', en: 'You completed the activities from 6 to 10!' },
     criteria: { type: 'module_complete', moduleId: 'preschool-numbers-6-10' },
   },
   {

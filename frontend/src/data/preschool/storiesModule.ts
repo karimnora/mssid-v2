@@ -87,9 +87,9 @@ export const STORIES_MODULE: PreschoolModule = {
       visualAssets: {
         mainSvgOrImage: '🧼',
         storyFrames: frames(
-          { id: 'dirty', asset: '🖐️', caption: { ar: 'مُتَّسِخ', fr: 'Sales', en: 'Dirty' } },
-          { id: 'soap', asset: '🧼', caption: { ar: 'صَابُون', fr: 'Savon', en: 'Soap' } },
-          { id: 'clean', asset: '🙌', caption: { ar: 'نَظِيف', fr: 'Propres', en: 'Clean' } },
+          { id: 'dirty', asset: 'art:hands_dirty', caption: { ar: 'مُتَّسِخ', fr: 'Sales', en: 'Dirty' } },
+          { id: 'soap', asset: 'art:soap', caption: { ar: 'صَابُون', fr: 'Savon', en: 'Soap' } },
+          { id: 'clean', asset: 'art:hands_clean', caption: { ar: 'نَظِيف', fr: 'Propres', en: 'Clean' } },
         ),
       },
     },
@@ -103,7 +103,7 @@ export const STORIES_MODULE: PreschoolModule = {
         ar: {
           title: 'يَوْمٌ فِي المَدْرَسَة',
           promptAudio: 'رَتِّبِ الصُّوَرَ: نَسْتَيْقِظ، ثُمَّ المَدْرَسَة، ثُمَّ حَضْنُ بَابَا! بَعْدَهَا احْكِ القِصَّة!',
-          promptText: 'Début, milieu, fin. L’enfant raconte ensuite à l’adulte.',
+          promptText: 'بداية، وسط، نهاية. يحكي الطفل القصة بعد ذلك لشخص بالغ.',
           successAudio: 'قِصَّةٌ جَمِيلَة! احْكِهَا لِبَابَا!',
         },
         fr: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PreschoolPrintablesModal } from './PreschoolPrintablesModal';
 import { PRINTABLE_WORKSHEETS } from '../../data/preschool/printablesData';
@@ -16,7 +16,7 @@ describe('PreschoolPrintablesModal', () => {
     expect(document.querySelector('.printable-sheet')).toBeTruthy();
     expect(screen.getAllByText(firstGraphisme.titleI18n.ar).length).toBeGreaterThan(0);
     expect(screen.getByText(firstGraphisme.instructionI18n.ar, { exact: false })).toBeInTheDocument();
-    expect(screen.getByText('مَسِيد DZ — التحضيري 🦊')).toBeInTheDocument();
+    expect(screen.getAllByText('مَسِيد DZ — التحضيري').length).toBeGreaterThan(0);
   });
 
   it('hides chrome from paper with no-print on header, tabs and list', () => {
@@ -31,7 +31,7 @@ describe('PreschoolPrintablesModal', () => {
     const printSpy = vi.spyOn(window, 'print').mockImplementation(() => {});
     render(<PreschoolPrintablesModal language="fr" onExit={vi.fn()} />);
     await userEvent.click(screen.getByText('Imprimer / Enregistrer en PDF'));
-    expect(printSpy).toHaveBeenCalledTimes(1);
+    await waitFor(() => expect(printSpy).toHaveBeenCalledTimes(1));
     printSpy.mockRestore();
   });
 

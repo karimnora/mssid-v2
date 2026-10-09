@@ -1,0 +1,86 @@
+.preschool-worksheet {
+  box-sizing: border-box; width: 100%; max-width: 190mm; min-height: 277mm;
+  margin: 0 auto; padding: 8mm; background: white; color: #172033;
+  border: 1px solid #d4d4d4; display: flex; flex-direction: column; gap: 3mm;
+  font-family: 'Cairo', system-ui, sans-serif; font-size: 12pt; line-height: 1.45;
+}
+.paper-header { flex: 0 0 auto; border-bottom: 1.5px solid; padding-bottom: 3mm; }
+.paper-heading,.paper-identity { display: flex; justify-content: space-between; gap: 3mm; font-size: 9pt; }
+.paper-header h3 { font-weight: 800; font-size: 19pt; margin: 2mm 0; text-align: center; }
+.paper-instruction { font-size: 12pt; font-weight: 700; margin: 0; padding: 2mm 0; }
+.worksheet-body { flex: 1; display: flex; flex-direction: column; gap: 5mm; min-height: 218mm; }
+.paper-step { margin: 0; font-size: 10pt; font-weight: 700; }
+.paper-footer { flex: 0 0 auto; font-size: 8pt; border-top: 1px solid #999; padding-top: 2mm; text-align: center; }
+.paper-picture { display: inline-block; width: 14mm; height: 14mm; flex: 0 0 auto; color: #172033; }
+.paper-glyph { display: inline-flex; align-items: center; justify-content: center; font-size: 23pt; line-height: 1; }
+.paper-multiple { display: flex; align-items: center; gap: 1mm; width: 42mm !important; }
+.paper-multiple .paper-picture { width: 9mm !important; height: 9mm !important; }
+.paper-letter-intro { display: flex; align-items: center; justify-content: center; gap: 10mm; height: 24mm; }
+.paper-large-glyph { font-size: 46pt; font-weight: 800; line-height: 1; }
+.paper-letter-intro .paper-picture { width: 24mm; height: 24mm; }
+.paper-word { margin: 0; font-size: 13pt; font-weight: 700; text-align: center; }
+.paper-tracing { gap: 3mm; }
+.paper-writing-row { display: flex; height: 23mm; flex: 0 0 auto; border-bottom: 1px solid #888; border-top: 1px dashed #b1b1b1; align-items: center; justify-content: space-around; }
+.paper-writing-cell { flex: 1; min-width: 0; text-align: center; line-height: 1; font-size: 40pt; font-weight: 800; }
+.paper-model { color: #172033; }
+.paper-trace { -webkit-text-stroke: 0.65px #606060; color: transparent; }
+.paper-empty { color: transparent; }
+.paper-draw-space { position: relative; flex: 1; min-height: 25mm; border: 1px solid #aaa; border-radius: 3mm; }
+.paper-draw-space>span { position: absolute; top: 2mm; inset-inline-start: 3mm; font-size: 9pt; color: #555; }
+.paper-path-row { display: flex; align-items: center; gap: 3mm; flex: 1; min-height: 20mm; border-bottom: 1px solid #ccc; }
+.paper-path-row svg:not(.paper-picture) { flex: 1; min-width: 0; height: 17mm; }
+.paper-count-row { display: flex; align-items: center; gap: 3mm; min-height: 38mm; border-bottom: 1px solid #aaa; }
+.paper-collection { flex: 1; display: flex; flex-wrap: wrap; gap: 2mm; }
+.paper-counting .paper-picture { width: 14mm; height: 14mm; }
+.paper-answer-box { width: 20mm; height: 20mm; border: 1.5px solid; border-radius: 2mm; flex: 0 0 auto; }
+.paper-zero-tray { width: 32mm; height: 24mm; border: 1px dashed #666; border-radius: 5mm; }
+.paper-match-row { display: flex; justify-content: space-between; flex: 1; min-height: 26mm; }
+.paper-match-row>div { display: flex; align-items: center; gap: 4mm; }
+.paper-match-row .paper-picture { width: 20mm; height: 20mm; }
+.paper-odd-row { display: flex; align-items: center; justify-content: space-around; flex: 1; min-height: 30mm; }
+.paper-odd-row>div { border: 1px solid #aaa; border-radius: 3mm; padding: 2mm; }
+.paper-cut-items,.paper-paste-targets { display: grid; grid-template-columns: repeat(3,1fr); gap: 4mm; }
+.paper-cut-items>div { height: 36mm; display: flex; align-items: center; justify-content: center; border: 1.5px dashed; }
+.paper-cut-items .paper-picture { width: 27mm; height: 27mm; }
+.paper-paste-targets { flex: 1; }
+.paper-paste-targets>div { min-height: 40mm; border: 1px solid #aaa; }
+.paper-story-slots,.paper-story-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 4mm; }
+.paper-story-slots>div { height: 55mm; border: 1px solid #999; border-radius: 3mm; padding: 2mm; }
+.paper-story-cards>div { display: flex; height: 55mm; flex-direction: column; justify-content: center; align-items: center; border: 1.5px dashed; gap: 3mm; }
+.paper-story-cards .paper-picture { width: 32mm; height: 32mm; }
+.paper-story-cards span { font-size: 10pt; }
+.paper-coloring { align-items: center; justify-content: center; gap: 3mm; }
+.paper-coloring-art { width: 100%; flex: 1; min-height: 180mm; max-height: 220mm; }
+.paper-colors { display: flex; gap: 4mm; }
+.paper-colors span { width: 10mm; height: 10mm; border: 1px solid; border-radius: 50%; }
+@media screen and (max-width: 600px) {
+  .preschool-worksheet { padding: 3mm; }
+  .paper-heading,.paper-identity { flex-wrap: wrap; }
+  .paper-writing-cell { font-size: 27pt; }
+  .paper-large-glyph { font-size: 30pt; }
+  .paper-collection .paper-picture { width: 10mm; height: 10mm; }
+  .paper-count-row { gap: 1mm; }
+  .paper-odd-row .paper-picture { width: 9mm; height: 9mm; }
+}
+@media print {
+  @page preschool { size: A4 portrait; margin: 10mm; }
+  body:has(.preschool-worksheet) { background: white; }
+  .sheet-print-modal:has(.preschool-worksheet) { page: preschool; }
+  .preschool-paper-dialog, .preschool-paper-layout, .preschool-paper-preview {
+    display: block !important; padding: 0 !important; margin: 0 !important;
+    border: none !important; height: auto !important; min-height: 0 !important;
+    box-shadow: none !important; background: white !important;
+  }
+  .sheet-print-modal .printable-sheet.preschool-worksheet {
+    page: preschool; box-sizing: border-box; width: 190mm !important; max-width: none !important;
+    height: 276mm; min-height: 0; padding: 0 !important; margin: 0 !important;
+    display: flex !important; flex-direction: column; gap: 3mm;
+    break-after: page; break-inside: avoid; font-size: 12pt;
+  }
+  .preschool-worksheet:last-child { break-after: auto !important; }
+  .sheet-print-modal .preschool-worksheet .worksheet-body { min-height: 0; }
+  .sheet-print-modal .preschool-worksheet .paper-draw-space { min-height: 20mm; }
+  .preschool-worksheet .paper-trace { -webkit-text-stroke-color: #606060 !important; color: transparent !important; }
+  .preschool-worksheet .paper-empty { color: transparent !important; }
+  .preschool-worksheet .paper-header,.preschool-worksheet .paper-footer { display: block !important; }
+}

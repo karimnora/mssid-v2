@@ -68,6 +68,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
   const ownerId = progressOwnerId(authUser?.id);
   const skipSaveRef = useRef(true);
 
+  const [loadedOwnerId, setLoadedOwnerId] = useState(ownerId);
   const [language, setLanguage] = useState<PreschoolLanguage | null>(() => loadStoredLanguage());
   const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(ownerId));
   const [playEvents, setPlayEvents] = useState(() => loadEvents(ownerId));
@@ -86,7 +87,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
     completedByModule[m.id] = m.activities.filter((a) => completedActivityIds.includes(a.id)).length;
   });
 
-  const todayIds = useMemo(() => todayPlayIds(playEvents), [playEvents]);
+  const todayIds = useMemo(() => loadedOwnerId === ownerId ? todayPlayIds(playEvents) : [], [playEvents, loadedOwnerId, ownerId]);
 
   const dailyChallenge = useDailyChallenge(
     PRESCHOOL_MODULES,
@@ -116,6 +117,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
     skipSaveRef.current = true;
     setCompletedActivityIds(loadProgress(ownerId));
     setPlayEvents(loadEvents(ownerId));
+    setLoadedOwnerId(ownerId);
     setChildName(loadSingleChildName(ownerId) || firstNameOf(authUser?.nom));
   }, [ownerId, authUser?.id, authUser?.nom]);
 

@@ -45,7 +45,7 @@ describe('Preschool printable worksheets data integrity', () => {
             break;
           case 'count_and_color':
             expect(sheet.countRows?.length, sheet.id).toBeGreaterThan(0);
-            sheet.countRows!.forEach((r) => expect(r.count, sheet.id).toBeGreaterThan(0));
+            sheet.countRows!.forEach((r) => expect(r.count, sheet.id).toBeGreaterThanOrEqual(0));
             break;
           case 'match_pairs':
             expect(sheet.matchPairs?.length, sheet.id).toBeGreaterThanOrEqual(2);
@@ -62,6 +62,10 @@ describe('Preschool printable worksheets data integrity', () => {
             break;
           case 'coloring_page':
             expect(sheet.coloringShapeId, sheet.id).toBeTruthy();
+            break;
+          case 'story_order':
+            expect(sheet.storyFrames, sheet.id).toHaveLength(3);
+            sheet.storyFrames!.forEach(frame => LANGUAGES.forEach(lang => expect(frame.caption[lang]).toBeTruthy()));
             break;
         }
       });

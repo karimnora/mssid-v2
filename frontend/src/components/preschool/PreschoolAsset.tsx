@@ -2,6 +2,9 @@ import React from 'react';
 import { PreschoolColorDot, PreschoolShapeMark, isColorDot, isGeometricShape } from './PreschoolShapeMark';
 import { PreschoolFlagMark, isFlagEmoji } from './PreschoolFlagMark';
 
+import { COLORING_ART, ColoringArtId } from '../../data/preschool/coloringArt';
+import { PreschoolLineArt } from './PreschoolLineArt';
+
 interface PreschoolAssetProps {
   asset: string;
   size?: number;
@@ -16,6 +19,9 @@ export const PreschoolAsset: React.FC<PreschoolAssetProps> = ({
   className = '',
   textClassName,
 }) => {
+  if (asset.startsWith('art:') && asset.slice(4) in COLORING_ART) {
+    return <PreschoolLineArt id={asset.slice(4) as ColoringArtId} size={size} className={`shrink-0 ${className}`} />;
+  }
   if (isColorDot(asset)) return <PreschoolColorDot asset={asset} size={size} className={className} />;
   if (isGeometricShape(asset)) return <PreschoolShapeMark asset={asset} size={size} className={className} />;
   if (isFlagEmoji(asset)) return <PreschoolFlagMark asset={asset} size={size} className={className} />;

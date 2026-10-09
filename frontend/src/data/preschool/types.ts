@@ -81,7 +81,7 @@ export interface PreschoolChoice {
 }
 
 export interface PreschoolSpatialScene {
-  kind: 'front' | 'behind' | 'inside' | 'outside';
+  kind: 'front' | 'behind' | 'inside' | 'outside' | 'above' | 'below';
   object: string;
   landmark: string;
 }

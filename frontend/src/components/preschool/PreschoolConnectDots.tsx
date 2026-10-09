@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 're
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
 import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
+import { PreschoolAsset } from './PreschoolAsset';
 import { localizeGlyph, localizePicture } from './preschoolGlyphs';
 
 interface PreschoolConnectDotsProps {
@@ -292,7 +293,7 @@ const PairNode: React.FC<{
                       ? 'bg-amber-200 border-amber-500'
                       : `bg-white ${idleBorder}`}`}
     >
-      <span className="text-4xl leading-none">{glyph}</span>
+      <PreschoolAsset asset={glyph} size={52} textClassName="text-4xl leading-none"/>
       {caption && (
         <span className="text-[10px] font-black text-slate-700 leading-tight text-center">{caption}</span>
       )}

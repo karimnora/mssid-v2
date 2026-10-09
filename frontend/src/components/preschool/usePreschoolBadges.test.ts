@@ -20,4 +20,16 @@ describe('usePreschoolBadges owner key', () => {
     );
     expect(result.current.unlockedIds.has('first-star')).toBe(false);
   });
+
+  it('does not copy previous badges when a new owner earns their first star', () => {
+    localStorage.setItem(badgeStorageKey('user-1'), JSON.stringify(['pb_50_activities']));
+    const base = { completedActivityIds: [] as string[], completedByModule: {}, streak: 0 };
+    const { result, rerender } = renderHook((props) => usePreschoolBadges(props), {
+      initialProps: { ...base, ownerId: 'user-1' },
+    });
+    rerender({ ...base, ownerId: 'user-2', completedActivityIds: ['num-0'] });
+    expect(result.current.unlockedIds.has('pb_first_star')).toBe(true);
+    expect(result.current.unlockedIds.has('pb_50_activities')).toBe(false);
+    expect(JSON.parse(localStorage.getItem(badgeStorageKey('user-2'))!)).toEqual(['pb_first_star']);
+  });
 });

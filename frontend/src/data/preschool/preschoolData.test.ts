@@ -237,7 +237,7 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(activityPathIcon(traceAlif!, 'fr')).toBe('A');
     expect(activityPathIcon(traceAlif!, 'en')).toBe('A');
     expect(activityPathIcon(traceAlif!, 'ar')).toBe('أ');
-    expect(activityPathIcon(tapTaa!, 'fr')).toBe('🍎');
+    expect(activityPathIcon(tapTaa!, 'fr')).toBe('🍅');
     expect(activityPathIcon(tapTaa!, 'en')).toBe('🚂');
     expect(activityPathIcon(tapTaa!, 'ar')).toBe('🍎');
   });

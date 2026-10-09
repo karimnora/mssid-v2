@@ -7,6 +7,9 @@ import { PreschoolMuteButton } from './PreschoolMuteButton';
 import { shareImageBlob } from '../../utils/shareContent';
 import { PreschoolFlagMark } from './PreschoolFlagMark';
 
+import { COLORING_ART, ColoringArtId } from '../../data/preschool/coloringArt';
+import { composeBoardDrawing } from './preschoolDrawingExport';
+
 interface PreschoolMagicBoardProps {
   language: PreschoolLanguage;
   onSelectLanguage?: (lang: PreschoolLanguage) => void;
@@ -128,75 +131,62 @@ const TRACE_CATEGORY_LABELS: Record<TraceCategory, { ar: string; fr: string; en:
 
 const COLORING_TEMPLATES: ColoringTemplate[] = [
   {
-    id: 'fennec',
-    nameAr: 'ثعلب الفنك الجزائري 🦊',
-    nameFr: 'Le Fennec du Sahara 🦊',
-    nameEn: 'Sahara Fennec Fox 🦊',
-    icon: '🦊',
-    svgPaths: [
-      'M 120 180 C 120 120 180 80 200 80 C 220 80 280 120 280 180 C 280 240 220 270 200 270 C 180 270 120 240 120 180 Z',
-      'M 150 110 L 100 40 C 95 60 110 110 135 125 Z',
-      'M 250 110 L 300 40 C 305 60 290 110 265 125 Z',
-      'M 160 170 A 10 10 0 1 1 160 169',
-      'M 240 170 A 10 10 0 1 1 240 169',
-      'M 190 205 Q 200 215 210 205',
-    ],
+    "id": "fennec",
+    "nameAr": "الفنك الجزائري",
+    "nameFr": "Le Fennec du Sahara",
+    "nameEn": "Sahara Fennec",
+    "icon": "🦊"
   },
   {
-    id: 'flag_dz',
-    nameAr: 'العلم الجزائري والهلال 🇩🇿',
-    nameFr: 'Drapeau algérien 🇩🇿',
-    nameEn: 'Algerian flag 🇩🇿',
-    icon: '🇩🇿',
-    svgPaths: [
-      'M 70 80 L 330 80 L 330 280 L 70 280 Z',
-      'M 200 80 L 200 280',
-      'M 190 140 C 220 140 240 160 230 190 C 220 220 190 230 160 215 C 200 225 220 180 190 140 Z',
-      'M 215 165 L 220 175 L 232 176 L 223 184 L 226 195 L 215 189 L 204 195 L 207 184 L 198 176 L 210 175 Z',
-    ],
+    "id": "flag_dz",
+    "nameAr": "العلم الجزائري",
+    "nameFr": "Le Drapeau algérien",
+    "nameEn": "Algerian Flag",
+    "icon": "🇩🇿"
   },
   {
-    id: 'palm',
-    nameAr: 'نخلة الواحة الخضراء 🌴',
-    nameFr: 'Le Palmier de l\'Oasis 🌴',
-    nameEn: 'The Oasis Palm Tree 🌴',
-    icon: '🌴',
-    svgPaths: [
-      'M 190 160 Q 185 240 180 320 L 220 320 Q 215 240 210 160 Z',
-      'M 200 160 Q 140 110 80 140 Q 130 150 200 160',
-      'M 200 160 Q 140 80 120 30 Q 160 80 200 160',
-      'M 200 160 Q 200 50 200 20 Q 210 70 200 160',
-      'M 200 160 Q 260 80 280 30 Q 240 80 200 160',
-      'M 200 160 Q 260 110 320 140 Q 270 150 200 160',
-    ],
+    "id": "palm",
+    "nameAr": "نخلة الواحة",
+    "nameFr": "Le Palmier de l’oasis",
+    "nameEn": "Oasis Palm Tree",
+    "icon": "🌴"
   },
   {
-    id: 'camel',
-    nameAr: 'الجمل الصحراوي اللطيف 🐪',
-    nameFr: 'Le Dromadaire du Désert 🐪',
-    nameEn: 'The Desert Dromedary 🐪',
-    icon: '🐪',
-    svgPaths: [
-      'M 100 260 L 100 320 L 120 320 L 120 270 L 180 270 L 180 320 L 200 320 L 200 250',
-      'M 100 250 C 90 220 110 190 140 180 C 150 140 190 140 200 180 C 230 190 250 220 250 250',
-      'M 95 210 Q 70 180 60 140 Q 80 140 85 160 L 110 210',
-      'M 60 140 Q 50 130 40 140 Q 50 150 65 150',
-    ],
+    "id": "camel",
+    "nameAr": "الجمل الصحراوي",
+    "nameFr": "Le Dromadaire du désert",
+    "nameEn": "Desert Dromedary",
+    "icon": "🐪"
   },
   {
-    id: 'boat',
-    nameAr: 'قارب الصيد المتوسطي ⛵',
-    nameFr: 'Le Bateau de Pêche ⛵',
-    nameEn: 'Mediterranean Fishing Boat ⛵',
-    icon: '⛵',
-    svgPaths: [
-      'M 80 230 L 120 290 L 280 290 L 320 230 Z',
-      'M 195 230 L 195 80 L 205 80 L 205 230 Z',
-      'M 205 90 L 290 210 L 205 210 Z',
-      'M 195 110 L 130 210 L 195 210 Z',
-    ],
+    "id": "boat",
+    "nameAr": "قارب الصيد",
+    "nameFr": "Le Bateau de pêche",
+    "nameEn": "Fishing Boat",
+    "icon": "⛵"
   },
-];
+  {
+    "id": "mosque",
+    "nameAr": "المسجد",
+    "nameFr": "La Mosquée",
+    "nameEn": "The Mosque",
+    "icon": "🕌"
+  },
+  {
+    "id": "olive",
+    "nameAr": "شجرة الزيتون",
+    "nameFr": "L’Olivier",
+    "nameEn": "Olive Tree",
+    "icon": "🫒"
+  },
+  {
+    "id": "house",
+    "nameAr": "البيت",
+    "nameFr": "La Maison",
+    "nameEn": "The House",
+    "icon": "🏠"
+  }
+].map(model => ({ ...model, svgPaths: COLORING_ART[model.id as ColoringArtId] }));
 
 const COLOR_PALETTE = [
   { color: '#ef4444', labelAr: 'أحمر', labelFr: 'Rouge', labelEn: 'Red' },
@@ -414,6 +404,13 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    let exported: HTMLCanvasElement;
+    try {
+      exported = composeBoardDrawing(canvas, mode === 'coloring' ? activeColoring.svgPaths : undefined);
+    } catch {
+      setDownloadFeedback('error');
+      return;
+    }
     const send = async (blob: Blob) => {
       try {
         await shareImageBlob(blob, `dessin-enfant-${Date.now()}.png`, 'رسمة من مَسِيد DZ 🎨');
@@ -425,8 +422,8 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
       }
     };
 
-    if (typeof canvas.toBlob === 'function') {
-      canvas.toBlob((blob) => {
+    if (typeof exported.toBlob === 'function') {
+      exported.toBlob((blob) => {
         if (!blob) {
           setDownloadFeedback('error');
           return;
@@ -437,7 +434,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     }
 
     try {
-      const dataUrl = canvas.toDataURL('image/png');
+      const dataUrl = exported.toDataURL('image/png');
       const comma = dataUrl.indexOf(',');
       const binary = atob(comma >= 0 ? dataUrl.slice(comma + 1) : '');
       const bytes = new Uint8Array(binary.length);
@@ -676,18 +673,18 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
 
           {/* Overlay Template for Coloring Mode */}
           {mode === 'coloring' && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none p-4">
+            <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none p-4">
               <svg
                 viewBox="0 0 400 400"
-                className="w-full h-full max-w-[360px] max-h-[360px] opacity-25"
+                className="w-full h-full"
               >
                 {activeColoring.svgPaths.map((d, i) => (
                   <path
                     key={i}
                     d={d}
                     fill="none"
-                    stroke="#ea580c"
-                    strokeWidth="6"
+                    stroke="#172033"
+                    strokeWidth="4"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />

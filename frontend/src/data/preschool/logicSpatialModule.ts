@@ -127,41 +127,59 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
         ],
       },
     },
-    {
-      id: 'logic-above-below',
-      domain: 'shapes',
-      targetValue: 'above',
-      stepNumber: 4,
-      interactionType: 'tap_choice',
-      i18n: {
-        ar: {
-          title: 'العُصْفُورُ فَوْق',
-          promptAudio: 'اِلْمَسِ العُصْفُور! العُصْفُورُ يَطِيرُ فَوْقَ، الدُّودَةُ تَحْتَ فِي التُّرَاب!',
-          promptText: 'فوق = طائر في السماء. تحت = دودة في الأرض.',
-          successAudio: 'العُصْفُورُ فَوْق! أَحْسَنْت!',
-        },
-        fr: {
-          title: 'L\'Oiseau en Haut',
-          promptAudio: 'Touche l\'oiseau ! L\'oiseau vole en haut, le ver est en bas dans la terre !',
-          promptText: 'Haut = oiseau dans le ciel. Bas = ver dans la terre.',
-          successAudio: 'L\'oiseau est en haut ! Bravo !',
-        },
-        en: {
-          title: 'The Bird Up High',
-          promptAudio: 'Touch the bird! The bird flies up high, the worm is down in the dirt!',
-          promptText: 'Up = bird in the sky. Down = worm in the ground.',
-          successAudio: 'The bird is up high! Well done!',
-        },
-      },
-      visualAssets: {
-        mainSvgOrImage: '☁️',
-        choices: [
-          { id: 'bird', asset: '🐦', isCorrect: true },
-          { id: 'worm', asset: '🐛', isCorrect: false },
-          { id: 'fish', asset: '🐟', isCorrect: false },
-        ],
-      },
+{
+  "id": "logic-above-below",
+  "domain": "shapes",
+  "targetValue": "above",
+  "stepNumber": 4,
+  "interactionType": "tap_choice",
+  "i18n": {
+    "ar": {
+      "title": "الكرة فوق الخط",
+      "promptAudio": "اِلْمِسِ الكُرَةَ فَوْقَ الخَطّ! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان.",
+      "promptText": "يلاحظ الطفل الكرة نفسها فوق الخط وتحته.",
+      "successAudio": "أَحْسَنْت! الكُرَةُ فَوْقَ الخَطّ!"
     },
+    "fr": {
+      "title": "Le ballon au-dessus",
+      "promptAudio": "Touche le ballon au-dessus de la ligne ! C’est le même ballon à deux endroits.",
+      "promptText": "Observer la position, pas reconnaître un animal.",
+      "successAudio": "Oui ! Le ballon est au-dessus !"
+    },
+    "en": {
+      "title": "The ball above",
+      "promptAudio": "Touch the ball above the line! Same ball, two places.",
+      "promptText": "Notice the position of the same object.",
+      "successAudio": "Yes! The ball is above!"
+    }
+  },
+  "visualAssets": {
+    "mainSvgOrImage": "⚽",
+    "choices": [
+      {
+        "id": "above",
+        "asset": "⚽",
+        "scene": {
+          "kind": "above",
+          "object": "⚽",
+          "landmark": "line"
+        },
+        "isCorrect": true
+      },
+      {
+        "id": "below",
+        "asset": "⚽",
+        "scene": {
+          "kind": "below",
+          "object": "⚽",
+          "landmark": "line"
+        },
+        "isCorrect": false
+      }
+    ]
+  }
+},
+
     {
       id: 'logic-heavy-light',
       domain: 'shapes',

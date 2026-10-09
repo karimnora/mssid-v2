@@ -74,17 +74,19 @@ export function usePreschoolBadges(state: PreschoolBadgeState) {
   );
 
   useEffect(() => {
+    // Read this owner's snapshot, never the previous render's owner state.
+    const ownerUnlocked = loadUnlocked(state.ownerId);
     const newOnes: PreschoolBadge[] = [];
 
     for (const badge of PRESCHOOL_BADGES) {
-      if (unlocked.has(badge.id)) continue;
+      if (ownerUnlocked.has(badge.id)) continue;
       if (evaluate(badge.criteria, state)) {
         newOnes.push(badge);
       }
     }
 
     if (newOnes.length > 0) {
-      const next = new Set([...unlocked, ...newOnes.map(b => b.id)]);
+      const next = new Set([...ownerUnlocked, ...newOnes.map(b => b.id)]);
       setUnlocked(next);
       setQueue(prev => [...prev, ...newOnes]);
       saveUnlocked(state.ownerId, next);

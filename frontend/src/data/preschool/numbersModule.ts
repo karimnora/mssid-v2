@@ -86,9 +86,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 4,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'الثَّلاَثَةُ', promptAudio: 'ضَعْ ثَلَاثَ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'خمس تفاحات. ضع ثلاثاً فقط ثم «أنا خلّصت».', successAudio: 'أَحْسَنْت! ثَلَاثُ تُفَّاحَات!' },
-        fr: { title: 'Trois', promptAudio: 'Mets trois pommes dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Cinq pommes. Glisser seulement 3, puis « J’ai fini ».', successAudio: 'Bravo ! Trois pommes !' },
-        en: { title: 'Three', promptAudio: 'Put three apples in the basket! Not all of them! Then say: I’m done!', promptText: 'Five apples. Drop only 3, then tap I’m done.', successAudio: 'Well done! Three apples!' },
+        ar: { title: 'الثَّلاَثَةُ', promptAudio: 'ضَعْ ثَلَاثَ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'خمس تفاحات. ضع ثلاثاً فقط ثم «أنا خلّصت».', successAudio: 'أَحْسَنْت! ثَلَاثُ تُفَّاحَات!' },
+        fr: { title: 'Trois', promptAudio: 'Mets trois pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Cinq pommes. Glisser seulement 3, puis « J’ai fini ».', successAudio: 'Bravo ! Trois pommes !' },
+        en: { title: 'Three', promptAudio: 'Put three apples in the basket! Not all of them! Then tap: I’m done!', promptText: 'Five apples. Drop only 3, then tap I’m done.', successAudio: 'Well done! Three apples!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -106,9 +106,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 5,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'الأَرْبَعَةُ', promptAudio: 'ضَعْ أَرْبَعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'ست نجمات. ضع أربعاً فقط ثم «أنا خلّصت».', successAudio: 'رَائِع! أَرْبَعُ نَجْمَات!' },
-        fr: { title: 'Quatre', promptAudio: 'Mets quatre étoiles dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Six étoiles. Glisser seulement 4, puis « J’ai fini ».', successAudio: 'Super ! Exactement quatre !' },
-        en: { title: 'Four', promptAudio: 'Put four stars in the basket! Not all of them! Then say: I’m done!', promptText: 'Six stars. Drop only 4, then tap I’m done.', successAudio: 'Great! Exactly four!' },
+        ar: { title: 'الأَرْبَعَةُ', promptAudio: 'ضَعْ أَرْبَعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'ست نجمات. ضع أربعاً فقط ثم «أنا خلّصت».', successAudio: 'رَائِع! أَرْبَعُ نَجْمَات!' },
+        fr: { title: 'Quatre', promptAudio: 'Mets quatre étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Six étoiles. Glisser seulement 4, puis « J’ai fini ».', successAudio: 'Super ! Exactement quatre !' },
+        en: { title: 'Four', promptAudio: 'Put four stars in the basket! Not all of them! Then tap: I’m done!', promptText: 'Six stars. Drop only 4, then tap I’m done.', successAudio: 'Great! Exactly four!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -126,9 +126,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 6,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'الخَمْسَةُ', promptAudio: 'ضَعْ خَمْسَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'سبع نجمات. ضع خمساً فقط ثم «أنا خلّصت».', successAudio: 'بَرَافُو! خَمْسُ نَجْمَاتٍ فِي السَّلَة!' },
-        fr: { title: 'Cinq', promptAudio: 'Mets cinq étoiles dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Sept étoiles. Glisser seulement 5, puis « J’ai fini ».', successAudio: 'Bravo ! Cinq étoiles dans le panier !' },
-        en: { title: 'Five', promptAudio: 'Put five stars in the basket! Not all of them! Then say: I’m done!', promptText: 'Seven stars. Drop only 5, then tap I’m done.', successAudio: 'Bravo! Five stars in the basket!' },
+        ar: { title: 'الخَمْسَةُ', promptAudio: 'ضَعْ خَمْسَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'سبع نجمات. ضع خمساً فقط ثم «أنا خلّصت».', successAudio: 'بَرَافُو! خَمْسُ نَجْمَاتٍ فِي السَّلَة!' },
+        fr: { title: 'Cinq', promptAudio: 'Mets cinq étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Sept étoiles. Glisser seulement 5, puis « J’ai fini ».', successAudio: 'Bravo ! Cinq étoiles dans le panier !' },
+        en: { title: 'Five', promptAudio: 'Put five stars in the basket! Not all of them! Then tap: I’m done!', promptText: 'Seven stars. Drop only 5, then tap I’m done.', successAudio: 'Bravo! Five stars in the basket!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -146,9 +146,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 7,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'السِّتَّةُ', promptAudio: 'ضَعْ سِتَّ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'ثماني تفاحات. ضع ستاً فقط ثم «أنا خلّصت».', successAudio: 'مُمْتَاز! سِتُّ تُفَّاحَات!' },
-        fr: { title: 'Six', promptAudio: 'Mets six pommes dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Huit pommes. Glisser seulement 6, puis « J’ai fini ».', successAudio: 'Excellent ! Six pommes !' },
-        en: { title: 'Six', promptAudio: 'Put six apples in the basket! Not all of them! Then say: I’m done!', promptText: 'Eight apples. Drop only 6, then tap I’m done.', successAudio: 'Excellent! Six apples!' },
+        ar: { title: 'السِّتَّةُ', promptAudio: 'ضَعْ سِتَّ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'ثماني تفاحات. ضع ستاً فقط ثم «أنا خلّصت».', successAudio: 'مُمْتَاز! سِتُّ تُفَّاحَات!' },
+        fr: { title: 'Six', promptAudio: 'Mets six pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Huit pommes. Glisser seulement 6, puis « J’ai fini ».', successAudio: 'Excellent ! Six pommes !' },
+        en: { title: 'Six', promptAudio: 'Put six apples in the basket! Not all of them! Then tap: I’m done!', promptText: 'Eight apples. Drop only 6, then tap I’m done.', successAudio: 'Excellent! Six apples!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -163,9 +163,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 8,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'السَّبْعَةُ', promptAudio: 'ضَعْ سَبْعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'تسع نجمات. ضع سبعاً فقط ثم «أنا خلّصت».', successAudio: 'رَائِعٌ جِدّاً! سَبْعُ نَجْمَات!' },
-        fr: { title: 'Sept', promptAudio: 'Mets sept étoiles dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Neuf étoiles. Glisser seulement 7, puis « J’ai fini ».', successAudio: 'Formidable ! Sept étoiles !' },
-        en: { title: 'Seven', promptAudio: 'Put seven stars in the basket! Not all of them! Then say: I’m done!', promptText: 'Nine stars. Drop only 7, then tap I’m done.', successAudio: 'Wonderful! Seven stars!' },
+        ar: { title: 'السَّبْعَةُ', promptAudio: 'ضَعْ سَبْعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'تسع نجمات. ضع سبعاً فقط ثم «أنا خلّصت».', successAudio: 'رَائِعٌ جِدّاً! سَبْعُ نَجْمَات!' },
+        fr: { title: 'Sept', promptAudio: 'Mets sept étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Neuf étoiles. Glisser seulement 7, puis « J’ai fini ».', successAudio: 'Formidable ! Sept étoiles !' },
+        en: { title: 'Seven', promptAudio: 'Put seven stars in the basket! Not all of them! Then tap: I’m done!', promptText: 'Nine stars. Drop only 7, then tap I’m done.', successAudio: 'Wonderful! Seven stars!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -180,9 +180,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 9,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'ثَمَانِي تُفَّاحَات', promptAudio: 'ضَعْ ثَمَانِيَ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'عشر تفاحات. ضع ثمانياً فقط ثم «أنا خلّصت».', successAudio: 'أَحْسَنْت! ثَمَانِي تُفَّاحَات!' },
-        fr: { title: 'Huit pommes', promptAudio: 'Mets huit pommes dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Dix pommes. Glisser seulement 8, puis « J’ai fini ».', successAudio: 'Bravo ! Huit pommes !' },
-        en: { title: 'Eight apples', promptAudio: 'Put eight apples in the basket! Not all of them! Then say: I’m done!', promptText: 'Ten apples. Drop only 8, then tap I’m done.', successAudio: 'Well done! Eight apples!' },
+        ar: { title: 'ثَمَانِي تُفَّاحَات', promptAudio: 'ضَعْ ثَمَانِيَ تُفَّاحَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'عشر تفاحات. ضع ثمانياً فقط ثم «أنا خلّصت».', successAudio: 'أَحْسَنْت! ثَمَانِي تُفَّاحَات!' },
+        fr: { title: 'Huit pommes', promptAudio: 'Mets huit pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Dix pommes. Glisser seulement 8, puis « J’ai fini ».', successAudio: 'Bravo ! Huit pommes !' },
+        en: { title: 'Eight apples', promptAudio: 'Put eight apples in the basket! Not all of them! Then tap: I’m done!', promptText: 'Ten apples. Drop only 8, then tap I’m done.', successAudio: 'Well done! Eight apples!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -210,9 +210,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 11,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'تِسْعُ نَجْمَات', promptAudio: 'ضَعْ تِسْعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'إحدى عشرة نجمة. ضع تسعاً فقط ثم «أنا خلّصت».', successAudio: 'رَائِع! تِسْعُ نَجْمَات!' },
-        fr: { title: 'Neuf étoiles', promptAudio: 'Mets neuf étoiles dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Onze étoiles. Glisser seulement 9, puis « J’ai fini ».', successAudio: 'Super ! Neuf étoiles !' },
-        en: { title: 'Nine stars', promptAudio: 'Put nine stars in the basket! Not all of them! Then say: I’m done!', promptText: 'Eleven stars. Drop only 9, then tap I’m done.', successAudio: 'Great! Nine stars!' },
+        ar: { title: 'تِسْعُ نَجْمَات', promptAudio: 'ضَعْ تِسْعَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'إحدى عشرة نجمة. ضع تسعاً فقط ثم «أنا خلّصت».', successAudio: 'رَائِع! تِسْعُ نَجْمَات!' },
+        fr: { title: 'Neuf étoiles', promptAudio: 'Mets neuf étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Onze étoiles. Glisser seulement 9, puis « J’ai fini ».', successAudio: 'Super ! Neuf étoiles !' },
+        en: { title: 'Nine stars', promptAudio: 'Put nine stars in the basket! Not all of them! Then tap: I’m done!', promptText: 'Eleven stars. Drop only 9, then tap I’m done.', successAudio: 'Great! Nine stars!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
@@ -240,9 +240,9 @@ const NUMBERS_CATALOG: PreschoolModule = {
       stepNumber: 13,
       interactionType: 'drag_drop',
       i18n: {
-        ar: { title: 'عَشْرُ نَجْمَات', promptAudio: 'ضَعْ عَشْرَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ قُلْ: خَلَّصْت!', promptText: 'اثنتا عشرة نجمة. ضع عشراً فقط ثم «أنا خلّصت».', successAudio: 'مَبْرُوك! عَشْرُ نَجْمَات!' },
-        fr: { title: 'Dix étoiles', promptAudio: 'Mets dix étoiles dans le panier ! Pas toutes ! Puis dis : j’ai fini !', promptText: 'Douze étoiles. Glisser seulement 10, puis « J’ai fini ».', successAudio: 'Bravo ! Dix étoiles !' },
-        en: { title: 'Ten stars', promptAudio: 'Put ten stars in the basket! Not all of them! Then say: I’m done!', promptText: 'Twelve stars. Drop only 10, then tap I’m done.', successAudio: 'Well done! Ten stars!' },
+        ar: { title: 'عَشْرُ نَجْمَات', promptAudio: 'ضَعْ عَشْرَ نَجْمَاتٍ فِي السَّلَة! لَيْسَتْ كُلَّهَا! ثُمَّ اضْغَطْ: أَنَا خَلَّصْت!', promptText: 'اثنتا عشرة نجمة. ضع عشراً فقط ثم «أنا خلّصت».', successAudio: 'مَبْرُوك! عَشْرُ نَجْمَات!' },
+        fr: { title: 'Dix étoiles', promptAudio: 'Mets dix étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !', promptText: 'Douze étoiles. Glisser seulement 10, puis « J’ai fini ».', successAudio: 'Bravo ! Dix étoiles !' },
+        en: { title: 'Ten stars', promptAudio: 'Put ten stars in the basket! Not all of them! Then tap: I’m done!', promptText: 'Twelve stars. Drop only 10, then tap I’m done.', successAudio: 'Well done! Ten stars!' },
       },
       visualAssets: {
         mainSvgOrImage: '🧺',
