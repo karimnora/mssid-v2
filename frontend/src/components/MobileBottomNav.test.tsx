@@ -28,8 +28,8 @@ describe('MobileBottomNav', () => {
     expect(screen.getByText('أختبر')).toBeInTheDocument();
     expect(screen.queryByText('أَنَا')).not.toBeInTheDocument();
     expect(screen.queryByText('التمارين')).not.toBeInTheDocument();
-    expect(screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'المعلم الذكي بالذكاء الاصطناعي' })).toBeInTheDocument();
+    expect(screen.getByTitle('المرافقة الموجّهة')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'المرافقة الموجّهة' })).toBeInTheDocument();
   });
 
   it('hides the AI tutor fox when showAiTutor is false', () => {
@@ -46,7 +46,7 @@ describe('MobileBottomNav', () => {
         />
       </LocaleProvider>,
     );
-    expect(screen.queryByTitle('المعلم الذكي بالذكاء الاصطناعي')).not.toBeInTheDocument();
+    expect(screen.queryByTitle('المرافقة الموجّهة')).not.toBeInTheDocument();
   });
 
   it('calls onOpenAiTutor when the center fox button is tapped', () => {
@@ -63,7 +63,7 @@ describe('MobileBottomNav', () => {
         />
       </LocaleProvider>,
     );
-    screen.getByTitle('المعلم الذكي بالذكاء الاصطناعي').click();
+    screen.getByTitle('المرافقة الموجّهة').click();
     expect(onOpenAiTutor).toHaveBeenCalledTimes(1);
   });
 

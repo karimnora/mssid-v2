@@ -21,7 +21,10 @@
     "build:android": "node scripts/build-android.mjs",
     "cap:sync": "npm run build:android && cap sync android",
     "cap:sync:dev": "vite build --mode development && cap sync android",
-    "cap:open": "cap open android"
+    "cap:open": "cap open android",
+    "dev:v2": "node scripts/dev-v2.mjs",
+    "build:android:beta": "node scripts/build-android-beta.mjs",
+    "cap:sync:beta": "npm run build:android:beta && cap sync android"
   },
   "dependencies": {
     "@capacitor-community/text-to-speech": "^8.0.2",

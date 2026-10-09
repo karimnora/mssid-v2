@@ -79,3 +79,10 @@ Thumbs.db
 
 # Local Claude project instructions, not shared via the repo
 CLAUDE.md
+# Public template for the isolated V2 environment (no secrets).
+!.env.v2.example
+
+# Isolated test stack secrets
+.env.v2.local
+
+frontend/v2-tests.log

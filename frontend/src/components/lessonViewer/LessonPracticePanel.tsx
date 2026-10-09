@@ -46,6 +46,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
               <BoundPracticeCard
                 key={ex.id}
                 ex={ex}
+                lesson={lesson}
                 practice={practice}
                 renderArabicText={renderArabicText}
                 playful={playful}

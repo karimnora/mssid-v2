@@ -11,6 +11,9 @@ import { getCahier } from '../data/cahiers/competenceCahiers';
 import { CompetenceCahierSheet } from './cahiers/CompetenceCahierSheet';
 import type { CompetenceCahier } from '../data/cahiers/competenceCahiers';
 
+import { useAuth } from '../context/AuthContext';
+import { PremiumOffer, hasPremium } from './PremiumOffer';
+
 interface ParentNotebookModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -79,6 +82,9 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   onReviewLesson,
 }) => {
   const t = useTranslation('meta');
+  const offerT = useTranslation('subscription');
+  const { authUser } = useAuth();
+  const premium = hasPremium(authUser?.role);
   const { direction, locale } = useLocaleContext();
   const notebook = useMemo(
     () => buildParentNotebook(userProfile, viewingGrade ?? userProfile.grade),
@@ -158,10 +164,10 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
 
         <div className="kids-modal-body p-5 space-y-5">
           <section className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-4 space-y-3">
-            <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{t('parentNotebookWeekTitle')}</p>
-            <p className="text-xs font-bold text-[var(--kids-muted)]">
+            <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{premium ? t('parentNotebookWeekTitle') : offerT('nextFreeRevision')}</p>
+            {premium && <p className="text-xs font-bold text-[var(--kids-muted)]">
               {t('parentNotebookWeekMeta', { review: plan.reviewCount, ok: plan.weekSuccesses })}
-            </p>
+            </p>}
             {plan.next ? (
               <>
                 <p className="text-xs font-extrabold text-[var(--brand-emerald)]">
@@ -186,7 +192,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                 {t('parentNotebookTomorrowEmpty')}
               </p>
             )}
-            <motion.button
+            {premium && <motion.button
               type="button"
               whileTap={{ scale: 0.95 }}
               onClick={async () => {
@@ -201,14 +207,19 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
               className="hit-target w-full rounded-2xl px-4 bg-[#FFF8E7] border-2 border-[#E7E2D7] text-[var(--kids-ink)] text-sm font-extrabold cursor-pointer"
             >
               {recapCopied ? t('parentNotebookCopied') : t('parentNotebookCopyRecap')}
-            </motion.button>
+            </motion.button>}
           </section>
 
+          {!premium && <section className="rounded-2xl border-2 border-[#E7E2D7] p-4 space-y-3">
+            <p>{offerT('notebookSummary', { worked: notebook.worked.length + notebook.observed.length + notebook.review.length, review: notebook.review.length })}</p>
+            {plan.next?.reviewLessonId && <button type="button" className="hit-target font-bold" onClick={() => handlePrint(plan.next!.reviewLessonId!, plan.next!.labelAr, plan.next!.competenceId)}>{t('parentNotebookPrint')}</button>}
+            <p>{offerT('notebookPremium')}</p><PremiumOffer />
+          </section>}
           {empty ? (
             <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed bg-[#FFF8E7] rounded-2xl p-4">
               {t('parentNotebookEmpty')}
             </p>
-          ) : (
+          ) : premium ? (
             <>
               <section className="space-y-2">
                 <h3 className="text-sm font-extrabold text-[var(--kids-ink)]">{t('parentNotebookNeedsReview')}</h3>
@@ -287,9 +298,9 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                 )}
               </section>
             </>
-          )}
+          ) : null}
 
-          {notebook.recentSessions.length > 0 && (
+          {premium && notebook.recentSessions.length > 0 && (
             <section className="space-y-2">
               <h3 className="text-sm font-extrabold text-[var(--kids-ink)]">{t('parentNotebookRecent')}</h3>
               {notebook.recentSessions.map((session) => {

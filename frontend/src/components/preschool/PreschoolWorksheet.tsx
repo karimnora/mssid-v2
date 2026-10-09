@@ -1,3 +1,4 @@
+import { BrandWebsiteLink } from '../BrandWebsiteLink';
 import React from 'react';
 import { PrintableWorksheet, isWorksheetAvailableInLanguage } from '../../data/preschool/printablesData';
 import { PreschoolLanguage } from '../../data/preschool/types';
@@ -66,6 +67,6 @@ export const PreschoolWorksheet: React.FC<{sheet:PrintableWorksheet;language:Pre
     <header className="paper-header"><div className="paper-heading"><span>{t.school}</span><span>{t.parent}</span></div><h3>{sheet.titleI18n[language]}</h3><div className="paper-identity"><span>{t.name} : ....................................</span><span>{t.date} : ....................</span></div></header>
     <p className="paper-instruction">{sheet.instructionI18n[language]}</p>
     <WorksheetBody sheet={sheet} language={language}/>
-    <footer className="paper-footer"><strong>{t.school}</strong><span>{discover} <a dir="ltr" href="https://mssid-dz.com">mssid-dz.com</a></span></footer>
+    <footer className="paper-footer"><strong>{t.school}</strong><span>{discover} <BrandWebsiteLink/></span></footer>
   </article>;
 };

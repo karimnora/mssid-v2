@@ -6,6 +6,9 @@ import { LocaleProvider } from '../context/LocaleContext';
 import { createFreshGuestProfile } from '../hooks/useUserProgress';
 import { recordLessonFailure, recordLessonSuccess } from '../utils/competenceProgress';
 
+vi.mock('../context/AuthContext', () => ({ useAuth: () => ({ authUser: { id: 7, role: 'ROLE_PREMIUM' } }) }));
+vi.mock('../hooks/useCahierAccess', () => ({ useCahierAccess: () => ({ authUser: { id: 7 }, access: { premium: true, unlockedIds: [] }, refresh: vi.fn() }) }));
+
 const renderNotebook = (ui: React.ReactElement) => render(<LocaleProvider>{ui}</LocaleProvider>);
 
 describe('ParentNotebookModal', () => {

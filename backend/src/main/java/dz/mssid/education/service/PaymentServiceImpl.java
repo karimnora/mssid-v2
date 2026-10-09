@@ -11,7 +11,6 @@ import dz.mssid.education.repository.RoleRepository;
 import dz.mssid.education.repository.SubscriptionRepository;
 import dz.mssid.education.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,13 +28,6 @@ public class PaymentServiceImpl implements PaymentService {
     private final SubscriptionRepository subscriptionRepository;
     private final AdminAuditLogService adminAuditLogService;
 
-    // Single source of truth for the subscription price server-side — the frontend mirrors this same
-    // value (see frontend/src/constants/pricing.ts). A submitted amount that doesn't match this is
-    // rejected outright rather than silently accepted, closing the gap where a receipt could claim
-    // any amount with nothing to cross-check it against the real price before an admin approves it.
-    @Value("${app.payments.subscription-price-dzd:1500}")
-    private double subscriptionPriceDzd;
-
     @Override
     @Transactional
     public PaymentReceipt submitReceipt(String userEmail, ReceiptUploadRequest request) {
@@ -45,12 +37,16 @@ public class PaymentServiceImpl implements PaymentService {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la soumission du reçu: " + userEmail));
 
-        if (request.getAmountDzd() != null && Double.compare(request.getAmountDzd(), subscriptionPriceDzd) != 0) {
+        SubscriptionPlan plan = SubscriptionPlan.resolve(request.getPlanId());
+        if (request.getPlanId() != null && !request.getPlanId().isBlank() && request.getAmountDzd() == null) {
+            throw new IllegalArgumentException("Le montant de la formule choisie est obligatoire");
+        }
+        if (request.getAmountDzd() != null && Double.compare(request.getAmountDzd(), plan.priceDzd()) != 0) {
             adminAuditLogService.record(userEmail, "RECEIPT_SUBMITTED", "RECEIPT", null,
-                    "montant refusé: " + request.getAmountDzd() + " DZD (attendu " + subscriptionPriceDzd + " DZD)", "FAILURE");
+                    "montant refusé: " + request.getAmountDzd() + " DZD (attendu " + plan.priceDzd() + " DZD)", "FAILURE");
             throw new IllegalArgumentException(
                     "Le montant indiqué (" + request.getAmountDzd() + " DZD) ne correspond pas au tarif de l'abonnement ("
-                            + subscriptionPriceDzd + " DZD).");
+                            + plan.priceDzd() + " DZD).");
         }
 
         String imageUrl = request.getReceiptImageUrl() != null ? request.getReceiptImageUrl() : request.getReceiptImgUrl();
@@ -63,7 +59,9 @@ public class PaymentServiceImpl implements PaymentService {
                 .receiptImageUrl(imageUrl)
                 .paymentMethod(request.getPaymentMethod() != null ? request.getPaymentMethod() : "BARIDIMOB")
                 .transactionRef(request.getTransactionRef() != null ? request.getTransactionRef() : "BM-" + System.currentTimeMillis())
-                .amountDzd(subscriptionPriceDzd)
+                .amountDzd(plan.priceDzd())
+                .planId(plan.id())
+                .durationMonths(plan.months())
                 .status(PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION)
                 .submittedAt(LocalDateTime.now())
                 .build();
@@ -90,9 +88,12 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @Transactional
     public PaymentReceipt verifyReceipt(Long receiptId, VerifyReceiptRequest request, String actorEmail) {
-        PaymentReceipt receipt = receiptRepository.findById(receiptId)
+        PaymentReceipt receipt = receiptRepository.findForVerification(receiptId)
                 .orElseThrow(() -> new RuntimeException("Reçu introuvable avec ID: " + receiptId));
 
+        if (receipt.getStatus() != PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION) {
+            throw new IllegalArgumentException("Ce reçu a déjà été traité : aucun abonnement supplémentaire ne sera activé");
+        }
         boolean approved = Boolean.TRUE.equals(request.getApprove());
 
         if (approved) {
@@ -100,7 +101,8 @@ public class PaymentServiceImpl implements PaymentService {
             receipt.setVerifiedAt(LocalDateTime.now());
 
             // Upgrade User to ROLE_PREMIUM
-            User user = receipt.getUser();
+            User user = userRepository.findForPayment(receipt.getUser().getId())
+                    .orElseThrow(() -> new IllegalArgumentException("Compte introuvable"));
             Role premiumRole = roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)
                     .orElseGet(() -> {
                         Role r = new Role();
@@ -110,14 +112,20 @@ public class PaymentServiceImpl implements PaymentService {
             user.setRole(premiumRole);
             userRepository.save(user);
 
-            // The annual subscription record — this is what SubscriptionExpiryService's daily sweep
+            // The chosen-duration subscription record — this is what SubscriptionExpiryService's daily sweep
             // checks to eventually downgrade the user back to ROLE_FREE. Reuses an existing row if the
             // user already had one (e.g. renewing after a prior expiry) instead of accumulating duplicates.
             Subscription subscription = subscriptionRepository.findByUser(user).orElseGet(Subscription::new);
             subscription.setUser(user);
+            LocalDate today = LocalDate.now();
+            boolean renewing = subscription.getStatus() == Subscription.SubscriptionStatus.ACTIVE && subscription.getEndDate() != null && !subscription.getEndDate().isBefore(today)
+                    && subscription.getStartDate() != null;
+            LocalDate base = renewing ? subscription.getEndDate() : today;
+            if (!renewing) subscription.setStartDate(today);
+            subscription.setEndDate(base.plusMonths(receipt.getDurationMonths()));
             subscription.setStatus(Subscription.SubscriptionStatus.ACTIVE);
-            subscription.setStartDate(LocalDate.now());
-            subscription.setEndDate(LocalDate.now().plusYears(1));
+            subscription.setPlanId(receipt.getPlanId());
+            subscription.setDurationMonths(receipt.getDurationMonths());
             subscriptionRepository.save(subscription);
 
             adminAuditLogService.record(actorEmail, "RECEIPT_APPROVED", "RECEIPT", receiptId.toString(), "user upgraded to ROLE_PREMIUM");

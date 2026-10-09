@@ -1,3 +1,4 @@
+import { canUseWebCheckout } from '../utils/paymentPlatform';
 /**
  * Service API Client Spring Boot 3.x - Mssid DZ
  * Connecteur universel prêt à l'emploi pour le backend Java Spring Boot (JWT & REST)
@@ -34,6 +35,15 @@ import { meta as messagesFr } from '../locales/fr/meta';
 
 function networkMessage(key: 'networkOffline' | 'networkTimeout' | 'networkUnavailable' | 'networkWriteUncertain') {
   return (getStoredLocale() === 'fr' ? messagesFr : messagesAr)[key];
+}
+
+export interface CahierAccess {
+  premium: boolean;
+  limit: number;
+  remaining: number;
+  resetsAt: string;
+  unlockedIds: string[];
+  allowed: boolean;
 }
 
 export interface ApiResponse<T> {
@@ -433,6 +443,19 @@ public async request<T>(
     });
   }
 
+  public async getCahierAccess() {
+    return this.request<CahierAccess>('/v1/cahiers/access', { method: 'GET' });
+  }
+
+  public async unlockCahier(documentId: string) {
+    const result = await this.request<CahierAccess>(`/v1/cahiers/${encodeURIComponent(documentId)}/unlock`, { method: 'POST' });
+    if (result.status === 429) {
+      const current = await this.getCahierAccess();
+      return { ...current, data: current.data ? { ...current.data, allowed: false } : undefined, status: 429 };
+    }
+    return result;
+  }
+
   public async getAiQuota() {
     return this.request<{
       allowed?: boolean;
@@ -467,11 +490,16 @@ public async request<T>(
   }
 
   // --- Gestion des Reçus de Paiement ---
-  public async submitReceipt(payload: { paymentMethod: string; amountDzd: number; transactionRef: string; receiptImageUrl: string }) {
-    return this.request<{ id: number; status: string; transactionRef: string; amountDzd: number }>('/v1/payments/receipt/upload', {
+  public async submitReceipt(payload: { paymentMethod: string; amountDzd: number; planId?: string; transactionRef: string; receiptImageUrl: string }) {
+    if (!canUseWebCheckout()) throw new Error('Receipt submission is available only in the web application.');
+    return this.request<{ id: number; status: string; transactionRef: string; amountDzd: number; planId?: string; durationMonths?: number }>('/v1/payments/receipt/upload', {
       method: 'POST',
       body: JSON.stringify(payload),
     });
+  }
+
+  public async getSubscriptionStatus() {
+    return this.request<{ status: string; startDate: string | null; endDate: string | null }>('/v1/payments/subscription', { method: 'GET' });
   }
 
   public async getAllReceipts() {

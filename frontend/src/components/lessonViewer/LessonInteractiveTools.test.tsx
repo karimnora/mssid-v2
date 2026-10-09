@@ -1,4 +1,7 @@
 import React from 'react';
+// Load the real tools before timing assertions, so cold module transforms do not look like UI failures.
+import '../LanguageLabInteractive';
+import '../TamazightLabInteractive';
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { COURSES_DATA } from '../../data/coursesData';

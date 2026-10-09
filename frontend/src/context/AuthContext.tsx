@@ -13,6 +13,10 @@ export interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue>({ authUser: null, isAuthLoading: true });
 
+export function mapProfileDtoToAuthUser(dto: unknown): AuthUser {
+  return mapAuthProfile(dto);
+}
+
 // SEC-05: single source of truth for "who is logged in". No localStorage involved anywhere in this
 // file — identity lives in memory only (AuthService's pub/sub singleton, see authService.ts) and is
 // (re)hydrated from the HttpOnly-cookie-authenticated GET /api/v1/users/me on every app boot. A 401

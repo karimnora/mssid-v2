@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface PaymentReceiptRepository extends JpaRepository<PaymentReceipt, Long> {
+    @org.springframework.data.jpa.repository.Lock(jakarta.persistence.LockModeType.PESSIMISTIC_WRITE)
+    @org.springframework.data.jpa.repository.Query("select r from PaymentReceipt r where r.id = :id")
+    java.util.Optional<PaymentReceipt> findForVerification(@org.springframework.data.repository.query.Param("id") Long id);
+
 
     // Récupère la liste des reçus filtrés par leur statut (PENDING, APPROVED, REJECTED)
     List<PaymentReceipt> findByStatus(ReceiptStatus status);

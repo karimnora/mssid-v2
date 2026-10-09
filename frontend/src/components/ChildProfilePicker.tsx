@@ -44,7 +44,9 @@ export const ChildProfilePicker: React.FC<ChildProfilePickerProps> = ({ isOpen, 
     setLoadError(false);
     try {
       const res = await springBootApi.getChildProfiles();
-      if (res.error || !res.data) {
+      if (res.error || !Array.isArray(res.data) || !res.data.every(child => child
+          && Number.isInteger(child.id) && child.id > 0 && typeof child.displayName === 'string'
+          && GRADES.includes(child.grade as typeof GRADES[number]))) {
         setLoadError(true);
         setChildren([]);
       } else {
@@ -104,7 +106,8 @@ export const ChildProfilePicker: React.FC<ChildProfilePickerProps> = ({ isOpen, 
       const res = form.id
         ? await springBootApi.updateChildProfile(form.id, payload)
         : await springBootApi.createChildProfile(payload);
-      if (res.error || !res.data) {
+      if (res.error || !res.data || !Number.isInteger(res.data.id) || res.data.id <= 0
+          || typeof res.data.displayName !== 'string' || !GRADES.includes(res.data.grade as typeof GRADES[number])) {
         setFormError(res.error || t('childPickerUnavailable'));
       } else {
         setForm(null);

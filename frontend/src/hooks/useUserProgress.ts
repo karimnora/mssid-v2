@@ -317,10 +317,10 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
   }, [activeChildId]);
 
   useEffect(() => {
-    if (!authUser || activeChildId) return;
+    setActiveProgressOwner(authUser?.id, activeChildId);
+    if (!authUser || activeChildId != null) return;
     migrateGuestQuizRewardsToUser(authUser.id);
     migrateGuestLastActivityToUser(authUser.id);
-    setActiveProgressOwner(authUser.id);
   }, [authUser?.id, activeChildId]);
 
   useEffect(() => {

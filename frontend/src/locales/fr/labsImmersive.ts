@@ -80,12 +80,12 @@ export const labsImmersive: typeof arLabsImmersive = {
   cemErrorsEmpty: 'Aucune erreur enregistrée pour les compétences de 5e.',
   cemRevise: 'Revoir la leçon',
 
-  cahierBadge: 'Cahier de compétence — A4',
-  cahierTitle: 'Une feuille par compétence',
-  cahierIntro: 'Recto : exercices. Verso : corrigé. Le parent imprime le soir.',
+  cahierBadge: 'Parcours famille — 1AP à 5AP',
+  cahierTitle: 'Réviser, explorer et préparer la suite',
+  cahierIntro: 'Vacances, rentrée, semaine guidée, évaluations et laboratoires. Retrouvez aussi vos cahiers de compétences ci-dessous.',
   cahierFront: 'Recto',
   cahierVerso: 'Verso — corrigé',
   cahierPrint: 'Imprimer',
   cahierPrintHint: 'Ouvre l’impression du navigateur. Ce n’est pas un export PDF natif Android.',
-  cahierEmpty: 'Pas encore de cahier pour cette année.',
+  cahierEmpty: 'Les parcours ci-dessus couvrent ce niveau. Les fiches individuelles de compétences seront ajoutées progressivement.',
 };

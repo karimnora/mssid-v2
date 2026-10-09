@@ -18,7 +18,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -57,7 +56,6 @@ class PaymentServiceTest {
 
     @BeforeEach
     void setUp() {
-        ReflectionTestUtils.setField(paymentService, "subscriptionPriceDzd", 1500.0);
 
         freeRole = new Role(1L, Role.RoleName.ROLE_FREE);
         premiumRole = new Role(2L, Role.RoleName.ROLE_PREMIUM);
@@ -68,6 +66,7 @@ class PaymentServiceTest {
                 .email("yassine@mssid.dz")
                 .role(freeRole)
                 .build();
+        lenient().when(userRepository.findForPayment(10L)).thenReturn(Optional.of(student));
     }
 
     @Test
@@ -78,6 +77,7 @@ class PaymentServiceTest {
                 .paymentMethod("BARIDIMOB")
                 .transactionRef("BM-12345")
                 .amountDzd(1500.0)
+                .planId("P6M")
                 .receiptImageUrl("https://mssid.dz/proof.png")
                 .build();
 
@@ -95,20 +95,12 @@ class PaymentServiceTest {
     }
 
     @Test
-    @DisplayName("submitReceipt - Defaults to the canonical price when no amount is supplied")
-    void submitReceipt_NoAmount_DefaultsToCanonicalPrice() {
-        ReceiptUploadRequest request = ReceiptUploadRequest.builder()
-                .userEmail("yassine@mssid.dz")
-                .paymentMethod("CCP_OFFICE")
-                .receiptImageUrl("https://mssid.dz/proof.png")
-                .build();
-
-        when(userRepository.findByEmail("yassine@mssid.dz")).thenReturn(Optional.of(student));
-        when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
-
-        PaymentReceipt result = paymentService.submitReceipt("yassine@mssid.dz", request);
-
-        assertEquals(1500.0, result.getAmountDzd());
+    @DisplayName("New uploads must choose a plan; legacy receipts retain their stored annual duration")
+    void submitReceipt_MissingPlan_Rejected() {
+        when(userRepository.findByEmail(student.getEmail())).thenReturn(Optional.of(student));
+        assertThrows(IllegalArgumentException.class, () -> paymentService.submitReceipt(student.getEmail(),
+                ReceiptUploadRequest.builder().amountDzd(1500.0).receiptImageUrl("https://mssid.dz/proof.png").build()));
+        verify(receiptRepository, never()).save(any());
     }
 
     // Regression test for the gap flagged in the payment-system audit: nothing used to confront a
@@ -120,6 +112,7 @@ class PaymentServiceTest {
                 .userEmail("yassine@mssid.dz")
                 .paymentMethod("BARIDIMOB")
                 .amountDzd(1.0)
+                .planId("P3M")
                 .receiptImageUrl("https://mssid.dz/proof.png")
                 .build();
 
@@ -142,7 +135,7 @@ class PaymentServiceTest {
         VerifyReceiptRequest verifyReq = new VerifyReceiptRequest();
         verifyReq.setApprove(true);
 
-        when(receiptRepository.findById(50L)).thenReturn(Optional.of(pendingReceipt));
+        when(receiptRepository.findForVerification(50L)).thenReturn(Optional.of(pendingReceipt));
         when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
         when(subscriptionRepository.findByUser(student)).thenReturn(Optional.empty());
         when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
@@ -182,7 +175,7 @@ class PaymentServiceTest {
         VerifyReceiptRequest verifyReq = new VerifyReceiptRequest();
         verifyReq.setApprove(true);
 
-        when(receiptRepository.findById(51L)).thenReturn(Optional.of(pendingReceipt));
+        when(receiptRepository.findForVerification(51L)).thenReturn(Optional.of(pendingReceipt));
         when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
         when(subscriptionRepository.findByUser(student)).thenReturn(Optional.of(existing));
         when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
@@ -208,7 +201,7 @@ class PaymentServiceTest {
         verifyReq.setApprove(false);
         verifyReq.setRejectionReason("Image illisible");
 
-        when(receiptRepository.findById(50L)).thenReturn(Optional.of(pendingReceipt));
+        when(receiptRepository.findForVerification(50L)).thenReturn(Optional.of(pendingReceipt));
         when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
 
         PaymentReceipt updated = paymentService.verifyReceipt(50L, verifyReq, "admin@mssid.dz");
@@ -220,4 +213,55 @@ class PaymentServiceTest {
         verify(subscriptionRepository, never()).save(any());
         verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("RECEIPT_REJECTED"), eq("RECEIPT"), eq("50"), anyString());
     }
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.CsvSource({"P3M,3,900", "P6M,6,1500", "P12M,12,2400"})
+    void chosenPlanStoresPriceAndActivatesCorrectDuration(String id, int months, double price) {
+        when(userRepository.findByEmail(student.getEmail())).thenReturn(Optional.of(student));
+        when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
+        var uploaded = paymentService.submitReceipt(student.getEmail(), ReceiptUploadRequest.builder()
+                .planId(id).amountDzd(price).receiptImageUrl("data:image/png;base64,test").build());
+        assertEquals(price, uploaded.getAmountDzd());
+        assertEquals(months, uploaded.getDurationMonths());
+        assertEquals(id, uploaded.getPlanId());
+        uploaded.setId(70L);
+        when(receiptRepository.findForVerification(70L)).thenReturn(Optional.of(uploaded));
+        when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
+        when(subscriptionRepository.findByUser(student)).thenReturn(Optional.empty());
+        var approve = new VerifyReceiptRequest(); approve.setApprove(true);
+        paymentService.verifyReceipt(70L, approve, "admin@test.invalid");
+        var captor = ArgumentCaptor.forClass(Subscription.class);
+        verify(subscriptionRepository).save(captor.capture());
+        assertEquals(LocalDate.now().plusMonths(months), captor.getValue().getEndDate());
+        assertEquals(id, captor.getValue().getPlanId());
+    }
+
+    @Test void newPlanRejectsMissingOrWrongAmountAndUnknownIdentifier() {
+        when(userRepository.findByEmail(student.getEmail())).thenReturn(Optional.of(student));
+        assertThrows(IllegalArgumentException.class, () -> paymentService.submitReceipt(student.getEmail(), ReceiptUploadRequest.builder().planId("P12M").amountDzd(1500.0).build()));
+        assertThrows(IllegalArgumentException.class, () -> paymentService.submitReceipt(student.getEmail(), ReceiptUploadRequest.builder().planId("P3M").build()));
+        assertThrows(IllegalArgumentException.class, () -> paymentService.submitReceipt(student.getEmail(), ReceiptUploadRequest.builder().planId("P99M").amountDzd(900.0).build()));
+        verify(receiptRepository, never()).save(any());
+    }
+
+    @Test void approvingReceiptTwiceCannotExtendSubscriptionTwice() {
+        var receipt = PaymentReceipt.builder().id(71L).user(student).status(PaymentReceipt.ReceiptStatus.APPROVED).build();
+        when(receiptRepository.findForVerification(71L)).thenReturn(Optional.of(receipt));
+        var approve = new VerifyReceiptRequest(); approve.setApprove(true);
+        assertThrows(IllegalArgumentException.class, () -> paymentService.verifyReceipt(71L, approve, "admin@test.invalid"));
+        verifyNoInteractions(subscriptionRepository);
+    }
+
+    @Test void earlyRenewalPreservesPaidDaysAndOriginalStart() {
+        var receipt = PaymentReceipt.builder().id(72L).user(student).durationMonths(3).planId("P3M")
+                .status(PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION).build();
+        var start = LocalDate.now().minusMonths(2); var end = LocalDate.now().plusMonths(4);
+        var existing = Subscription.builder().id(9L).user(student).status(Subscription.SubscriptionStatus.ACTIVE).startDate(start).endDate(end).build();
+        when(receiptRepository.findForVerification(72L)).thenReturn(Optional.of(receipt));
+        when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
+        when(subscriptionRepository.findByUser(student)).thenReturn(Optional.of(existing));
+        var approve = new VerifyReceiptRequest(); approve.setApprove(true);
+        paymentService.verifyReceipt(72L, approve, "admin@test.invalid");
+        assertEquals(start, existing.getStartDate()); assertEquals(end.plusMonths(3), existing.getEndDate());
+    }
+
 }

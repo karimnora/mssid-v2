@@ -46,7 +46,7 @@ class AdminStatsServiceTest {
                 .completedChallengeIds(List.of()).badges(List.of("b1"))
                 .provider("GOOGLE").emailVerified(true).parentEmail("parent@mssid.dz")
                 .createdAt(LocalDateTime.now().minusDays(2))
-                .lastActiveDate(LocalDate.now().toString())
+                .lastActiveDate(LocalDate.now(java.time.ZoneOffset.UTC).toString())
                 .build();
         User u2 = User.builder()
                 .id(2L).role(premiumRole).grade("5AP").xp(300).level(4).streakDays(10)
@@ -54,7 +54,7 @@ class AdminStatsServiceTest {
                 .completedChallengeIds(List.of("c1", "c2")).badges(List.of("b1", "b2"))
                 .provider("LOCAL").emailVerified(false)
                 .createdAt(LocalDateTime.now().minusDays(20))
-                .lastActiveDate(LocalDate.now().toString())
+                .lastActiveDate(LocalDate.now(java.time.ZoneOffset.UTC).toString())
                 .build();
 
         when(userRepository.findAll()).thenReturn(List.of(u1, u2));
@@ -144,7 +144,7 @@ class AdminStatsServiceTest {
         assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, from.minusDays(1)));
         assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, from.plusDays(366)));
         assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(null, from));
-        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, LocalDate.now().plusDays(1)));
+        assertThrows(org.springframework.web.server.ResponseStatusException.class, () -> adminStatsService.getPeriod(from, LocalDate.now(java.time.ZoneOffset.UTC).plusDays(1)));
         org.mockito.Mockito.verifyNoInteractions(userRepository, paymentReceiptRepository);
     }
 
@@ -174,7 +174,7 @@ class AdminStatsServiceTest {
                 .id(1L).role(freeRole).grade("5AP")
                 .completedLessonIds(List.of()).completedExamIds(List.of()).completedChallengeIds(List.of()).badges(List.of())
                 .createdAt(LocalDateTime.now().minusDays(40))
-                .lastActiveDate(LocalDate.now().toString())
+                .lastActiveDate(LocalDate.now(java.time.ZoneOffset.UTC).toString())
                 .build();
         // Old account (40d), last seen 20d ago: inside the 30-day window but not the 7-day one —
         // counted in MAU and retained30, but not WAU/retained7.
@@ -182,7 +182,7 @@ class AdminStatsServiceTest {
                 .id(2L).role(freeRole).grade("5AP")
                 .completedLessonIds(List.of()).completedExamIds(List.of()).completedChallengeIds(List.of()).badges(List.of())
                 .createdAt(LocalDateTime.now().minusDays(40))
-                .lastActiveDate(LocalDate.now().minusDays(20).toString())
+                .lastActiveDate(LocalDate.now(java.time.ZoneOffset.UTC).minusDays(20).toString())
                 .build();
         // Young account (3d): too recent to belong to either retention cohort's denominator, but
         // still counts toward DAU/WAU/MAU since it was active today.
@@ -190,14 +190,14 @@ class AdminStatsServiceTest {
                 .id(3L).role(freeRole).grade("5AP")
                 .completedLessonIds(List.of()).completedExamIds(List.of()).completedChallengeIds(List.of()).badges(List.of())
                 .createdAt(LocalDateTime.now().minusDays(3))
-                .lastActiveDate(LocalDate.now().toString())
+                .lastActiveDate(LocalDate.now(java.time.ZoneOffset.UTC).toString())
                 .build();
         // Old account (40d), last seen 60d ago: outside every window, drags both retention rates down.
         User goneDark = User.builder()
                 .id(4L).role(freeRole).grade("5AP")
                 .completedLessonIds(List.of()).completedExamIds(List.of()).completedChallengeIds(List.of()).badges(List.of())
                 .createdAt(LocalDateTime.now().minusDays(40))
-                .lastActiveDate(LocalDate.now().minusDays(60).toString())
+                .lastActiveDate(LocalDate.now(java.time.ZoneOffset.UTC).minusDays(60).toString())
                 .build();
 
         when(userRepository.findAll()).thenReturn(List.of(stillActive, lapsedButRecent, newAndActive, goneDark));

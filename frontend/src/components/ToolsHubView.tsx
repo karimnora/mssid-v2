@@ -45,8 +45,8 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 interface MobileCat {
   key: string;
   emoji: string;
-  labelKey: 'categoryIdentityShort' | 'categoryMathShort' | 'categoryScienceShort' | 'categoryLangsShort';
-  hintKey: 'categoryIdentityHint' | 'categoryMathHint' | 'categoryScienceHint' | 'categoryLangsHint';
+  labelKey: 'categoryFaithStreetShort' | 'categoryIdentityShort' | 'categoryMathShort' | 'categoryScienceShort' | 'categoryLangsShort';
+  hintKey: 'categoryFaithStreetHint' | 'categoryIdentityHint' | 'categoryMathHint' | 'categoryScienceHint' | 'categoryLangsHint';
   cardClass: string;
   toolIds: SubjectId[];
 }
@@ -63,8 +63,8 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'faith_street',
     emoji: '🕌',
-    labelAr: 'العبادة والشارع',
-    hintAr: 'وضوء • صلاة • مرور',
+    labelKey: 'categoryFaithStreetShort',
+    hintKey: 'categoryFaithStreetHint',
     cardClass: 'kids-cat-identity',
     toolIds: ['quran_lab', 'wudu_lab', 'salat_lab', 'mosque_adab_lab', 'road_code_lab'] as SubjectId[],
   },
@@ -97,7 +97,7 @@ const MOBILE_CATS: MobileCat[] = [
 // ─── Données Desktop — groupes originaux ─────────────────────────────────────
 const DESKTOP_GROUPS: {
   key: string;
-  labelKey: 'categoryIdentityCivics' | 'categoryMathLogic' | 'categoryScienceDiscovery' | 'categoryLanguagesExpression';
+  labelKey: 'categoryFaithStreet' | 'categoryIdentityCivics' | 'categoryMathLogic' | 'categoryScienceDiscovery' | 'categoryLanguagesExpression';
   badgeColor: string;
   icon: React.FC<{ className?: string }>;
   toolIds: SubjectId[];
@@ -111,7 +111,7 @@ const DESKTOP_GROUPS: {
   },
   {
     key: 'faith_street',
-    labelAr: '🕌 العبادة، المسجد والشارع',
+    labelKey: 'categoryFaithStreet',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300',
     icon: Shield,
     toolIds: ['quran_lab', 'wudu_lab', 'salat_lab', 'mosque_adab_lab', 'road_code_lab'] as SubjectId[],

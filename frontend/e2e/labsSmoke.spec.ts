@@ -15,6 +15,7 @@ test.beforeEach(async ({ page }) => {
       body: JSON.stringify({ id: 1, nom: 'Auditeur Test', email: 'audit@mssid.dz', role: 'ROLE_PREMIUM', grade: '5AP' }),
     })
   );
+  await page.route('**/v1/cahiers/access', route => route.fulfill({ json: { premium: true, limit: 3, remaining: 3, resetsAt: '2030-01-06T23:00:00Z', unlockedIds: [], allowed: true } }));
   // Some labs read feature flags / progress on mount. Left unmocked, these hit the real Render
   // backend, which correctly CORS-rejects a plain localhost:3000 origin — a test artifact, not an
   // app bug, but it drowns out real console errors. Mock them like every other spec in this suite.

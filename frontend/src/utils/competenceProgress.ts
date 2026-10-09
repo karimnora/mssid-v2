@@ -139,7 +139,7 @@ export function reviewLessonForCompetence(competenceId: string, lastLessonId?: s
 }
 
 /** à confirmer / travaillé / réussite observée / pas commencé — a single success is never mastery. */
-export function notebookStatusForStat(stat?: CompetenceStat): NotebookRowStatus {
+export function notebookStatusForStat(stat?: NonNullable<UserProfile['competenceStats']>[string]): NotebookRowStatus {
   if (!stat || stat.attempts === 0) return 'todo';
   if (stat.lastOutcome === 'fail' || ((stat.failures ?? 0) > 0 && stat.successes === 0)) return 'review';
   if (stat.successes > 0 && (stat.failures ?? 0) === 0) return 'observed';

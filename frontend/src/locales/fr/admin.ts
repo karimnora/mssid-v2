@@ -53,7 +53,7 @@ export const admin: typeof adminAr = {
   featureFlagEnableTrimesterPaywallDescription: "Reste éteint en V2 : les trois trimestres déjà publiés restent gratuits. L’abonnement vend la profondeur (carnet, cahiers, sac collège), pas un verrou T2/T3.",
   featureFlagEnablePrintablePDFsLabel: '🖨️ Fiches de révision imprimables',
   featureFlagEnablePrintablePDFsDescription: "ON : le bouton d'impression/téléchargement de la fiche de révision est visible dans les cours. OFF : le bouton est entièrement masqué.",
-  featureFlagEnableAITutorLabel: '🤖 Tuteur virtuel Amine le Fennec (Gemini)',
+  featureFlagEnableAITutorLabel: '📚 Accompagnement guidé (sans API externe)',
   featureFlagEnableAITutorDescription: "ON : le bouton de l'assistant intelligent est visible dans la barre de navigation. OFF : le bouton est masqué, aucun accès au tuteur virtuel.",
   featureFlagEnableExamSectionLabel: '📜 Section des examens officiels (5AP)',
   featureFlagEnableExamSectionDescription: "ON : l'onglet des examens officiels est visible pour l'élève. OFF : l'onglet est entièrement masqué.",

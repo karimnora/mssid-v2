@@ -1,0 +1,1 @@
+org.springframework.boot.env.EnvironmentPostProcessor=dz.mssid.education.config.V2EnvironmentGuard

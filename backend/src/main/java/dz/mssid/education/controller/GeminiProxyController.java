@@ -6,11 +6,13 @@ import dz.mssid.education.service.AiQuotaService;
 import dz.mssid.education.service.GeminiAiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.function.Supplier;
 
 @RestController
+@Profile("!v2")
 @RequiredArgsConstructor
 public class GeminiProxyController {
 

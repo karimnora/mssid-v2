@@ -15,6 +15,8 @@ export interface Subscription {
   startDate: string;
   endDate: string;
   planName: string;
+  planId?: string;
+  durationMonths?: number;
   amountDzd: number;
 }
 
@@ -26,6 +28,8 @@ export interface PaymentReceipt {
   receiptImageUrl: string;
   paymentMethod: PaymentMethod;
   amountDzd: number;
+  planId?: string;
+  durationMonths?: number;
   transactionRef: string;
   status: ReceiptStatus;
   submittedAt: string;

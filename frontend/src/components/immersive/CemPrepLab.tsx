@@ -8,6 +8,9 @@ import { buildParentNotebook } from '../../utils/competenceProgress';
 import type { UserProfile } from '../../types';
 import { useTranslation } from '../../hooks/useTranslation';
 
+import { useAuth } from '../../context/AuthContext';
+import { PremiumOffer, hasPremium } from '../PremiumOffer';
+
 interface CemPrepLabProps {
   onBack?: () => void;
   onReward?: (coins: number, xp: number) => void;
@@ -138,6 +141,9 @@ function ExerciseBlock({
 
 export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userProfile, onReviewLesson }) => {
   const t = useTranslation('labsImmersive');
+  const offerT = useTranslation('subscription');
+  const { authUser } = useAuth();
+  const premium = hasPremium(authUser?.role);
   const [tab, setTab] = useState(CEM_PAPERS[0].id);
   const [cahierId, setCahierId] = useState<string | null>(null);
   const paper = CEM_PAPERS.find((item) => item.id === tab) ?? CEM_PAPERS[0];
@@ -161,7 +167,8 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
       onTab={setTab}
       onBack={onBack}
     >
-      {tab === 'errors' ? (
+      {!premium && <section className="rounded-2xl bg-white p-4 space-y-3"><p>{offerT('cemPreview')}</p><PremiumOffer /></section>}
+      {!premium && tab !== CEM_PAPERS[0].id ? null : tab === 'errors' ? (
         <section className="space-y-3">
           <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{t('cemErrorsIntro')}</p>
           {errors.length === 0 ? (
@@ -203,7 +210,7 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
             <p className="text-xs font-extrabold text-[#2563EB]">{paper.durationMinutes} د — {paper.totalPoints} ن</p>
             <h2 className="text-lg font-extrabold leading-tight">{paper.subjectAr}</h2>
           </header>
-          {[...paper.exercises, paper.problem].map((exercise, index) => (
+          {(premium ? [...paper.exercises, paper.problem] : paper.exercises.slice(0, 1)).map((exercise, index) => (
             <ExerciseBlock key={`${paper.id}-${index}`} paper={paper} exercise={exercise} index={index} onReward={onReward} />
           ))}
         </article>

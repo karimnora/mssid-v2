@@ -11,10 +11,10 @@ export function getActiveProgressOwner(): string {
 }
 
 /** Call on login/logout so quiz rewards and resume targets follow the person on the device. */
-export function setActiveProgressOwner(userId?: number | null): void {
-  activeOwnerId = progressOwnerId(userId);
+export function setActiveProgressOwner(userId?: number | null, childId?: number | null): void {
+  activeOwnerId = progressOwnerId(userId) + (childId == null ? '' : `:child:${childId}`);
 }
 
 export function isProgressOwnerKey(key: string): boolean {
-  return key === GUEST_PROGRESS_OWNER || key.startsWith('user:');
+  return key === GUEST_PROGRESS_OWNER || key.startsWith('guest:child:') || key.startsWith('user:');
 }

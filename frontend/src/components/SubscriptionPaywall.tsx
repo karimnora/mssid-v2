@@ -1,7 +1,9 @@
+import { canUseWebCheckout } from '../utils/paymentPlatform';
+import { SubscriptionStatusPanel } from './SubscriptionStatusPanel';
 import React, { useState } from 'react';
 import { AuthUser, PaymentReceipt, PaymentMethod } from '../types/auth';
 import { AuthService } from '../services/authService';
-import { SUBSCRIPTION_PRICE_DZD } from '../constants/pricing';
+import { SUBSCRIPTION_PLANS, DEFAULT_SUBSCRIPTION_PLAN, type SubscriptionPlanId } from '../constants/pricing';
 import { Lock, ShieldCheck, Upload, CheckCircle2, AlertCircle, Clock, FileText, Smartphone, CreditCard, Sparkles, X, Eye } from 'lucide-react';
 import { ParentGateModal, AskAdultScreen } from './ParentGateModal';
 import { useTranslation } from '../hooks/useTranslation';
@@ -12,15 +14,21 @@ interface Props {
   onClose: () => void;
   onSuccessUpgrade: (upgradedUser: AuthUser) => void;
   title?: string;
+  parentVerified?: boolean;
 }
 
 const isDevBuild = typeof import.meta !== 'undefined' && Boolean((import.meta as any).env?.DEV);
 
-export const SubscriptionPaywall: React.FC<Props> = ({
+export const SubscriptionPaywall: React.FC<Props> = props => canUseWebCheckout()
+  ? <WebSubscriptionPaywall {...props} />
+  : <SubscriptionStatusPanel user={props.user} onClose={props.onClose} />;
+
+const WebSubscriptionPaywall: React.FC<Props> = ({
   user,
   onClose,
   onSuccessUpgrade,
-  title
+  title,
+  parentVerified = false
 }) => {
   const t = useTranslation('subscription');
   const { direction } = useLocaleContext();
@@ -32,9 +40,11 @@ export const SubscriptionPaywall: React.FC<Props> = ({
   const [submittedReceipt, setSubmittedReceipt] = useState<PaymentReceipt | null>(null);
   const [customError, setCustomError] = useState<string | null>(null);
   const [showParentGate, setShowParentGate] = useState(false);
-  const [parentReady, setParentReady] = useState(false);
+  const [parentReady, setParentReady] = useState(parentVerified);
 
   const currentUser = user || AuthService.getCurrentUser();
+  const [planId, setPlanId] = useState<SubscriptionPlanId>(DEFAULT_SUBSCRIPTION_PLAN.id);
+  const selectedPlan = SUBSCRIPTION_PLANS.find(plan => plan.id === planId)!;
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -71,7 +81,8 @@ export const SubscriptionPaywall: React.FC<Props> = ({
 
     const result = await AuthService.submitReceiptAsync({
       paymentMethod,
-      amountDzd: SUBSCRIPTION_PRICE_DZD,
+      amountDzd: selectedPlan.priceDzd,
+      planId: selectedPlan.id,
       transactionRef,
       receiptImageUrl: receiptImage,
     });
@@ -141,8 +152,8 @@ export const SubscriptionPaywall: React.FC<Props> = ({
               <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
                 <li className="text-emerald-700 font-bold">{t('freePlanFeature1')}</li>
                 <li className="text-emerald-700 font-bold">{t('freePlanFeature2')}</li>
-                <li className="text-rose-600 font-bold">{t('freePlanFeature3')}</li>
-                <li className="text-rose-600 font-bold">{t('freePlanFeature4')}</li>
+                <li className="text-emerald-700 font-bold">{t('freePlanFeature3')}</li>
+                <li className="text-emerald-700 font-bold">{t('freePlanFeature4')}</li>
               </ul>
             </div>
 
@@ -155,10 +166,27 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                 <li className="font-extrabold">{t('premiumPlanFeature1')}</li>
                 <li className="font-extrabold">{t('premiumPlanFeature2')}</li>
                 <li className="font-extrabold">{t('premiumPlanFeature3')}</li>
-                <li className="font-extrabold text-amber-700">{t('premiumPlanPrice', { price: SUBSCRIPTION_PRICE_DZD })}</li>
+                  <li className="font-extrabold">{t('premiumPlanFeature4')}</li>
+                  <li className="font-extrabold">{t('premiumPlanFeature5')}</li>
+                <li className="font-extrabold text-amber-700">{t('premiumPlanPrice', { price: selectedPlan.priceDzd, months: selectedPlan.months })}</li>
               </ul>
             </div>
           </div>
+
+          {!submittedReceipt && <fieldset className="space-y-3" disabled={isSubmitting || showParentGate}>
+            <legend className="font-extrabold">{t('chooseDuration')}</legend>
+            <p className="text-sm text-slate-600">{t('sameServices')}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {SUBSCRIPTION_PLANS.map(plan => <label key={plan.id} className={`rounded-2xl p-4 border-2 cursor-pointer space-y-2 ${planId === plan.id ? 'border-[#008751] bg-emerald-50' : 'border-slate-200 bg-white'}`}>
+                <input type="radio" name="subscription-plan" value={plan.id} checked={planId === plan.id} onChange={() => setPlanId(plan.id)} className="accent-[#008751]" />
+                <span className="font-extrabold ms-2">{t('planMonths', { months: plan.months })}</span>
+                <p className="text-xl font-extrabold">{t('planTotal', { price: plan.priceDzd })}</p>
+                <p className="text-xs">{t('planMonthlyEquivalent', { price: plan.monthlyDzd })}</p>
+                {plan.months === 12 && <p className="text-xs font-bold text-emerald-800">{t('annualSaving')}</p>}
+              </label>)}
+            </div>
+            <p className="text-xs text-slate-600">{t('manualRenewal')}</p>
+          </fieldset>}
 
           {/* If already submitted receipt */}
           {submittedReceipt ? (
@@ -167,6 +195,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                 <Clock className="w-6 h-6 text-amber-600 shrink-0" />
                 <div>
                   <h4 className="font-extrabold text-sm">{t('receiptSubmittedTitle')}</h4>
+                  <p className="text-xs font-bold">{t('selectedReceiptPlan', { price: submittedReceipt.amountDzd, months: submittedReceipt.durationMonths ?? selectedPlan.months })}</p>
                   <p className="text-xs text-amber-700">
                     {t('receiptNumberLabel')} <span className="font-mono font-bold">{submittedReceipt.transactionRef}</span> | {t('statusLabel')}
                     <span className="font-extrabold text-amber-800 bg-amber-200 px-2 py-0.5 rounded-md mx-1">
@@ -250,7 +279,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
               {/* Account details info card */}
               <div className="p-4 bg-purple-900 text-white rounded-2xl text-xs space-y-1.5 shadow-inner">
                 <div className="flex justify-between items-center font-bold text-amber-300">
-                  <span>{t('accountInfoLabel', { price: SUBSCRIPTION_PRICE_DZD })}</span>
+                  <span>{t('accountInfoLabel', { price: selectedPlan.priceDzd, months: selectedPlan.months })}</span>
                   <span>mssid dz</span>
                 </div>
                 <p className="text-[11px] text-purple-100 leading-relaxed">{t('accountPendingNote')}</p>
@@ -276,7 +305,7 @@ export const SubscriptionPaywall: React.FC<Props> = ({
                   <input
                     type="text"
                     disabled
-                    value={t('amountValue', { price: SUBSCRIPTION_PRICE_DZD })}
+                    value={t('amountValue', { price: selectedPlan.priceDzd, months: selectedPlan.months })}
                     className="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-purple-900 cursor-not-allowed"
                   />
                 </div>

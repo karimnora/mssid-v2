@@ -91,4 +91,11 @@ describe('ChildProfilePicker', () => {
     fireEvent.click(await screen.findByRole('button', { name: /متابعة بدون ملف طفل/ }));
     expect(onSkip).toHaveBeenCalled();
   });
+  it('handles malformed profile lists without crashing and keeps the account fallback usable', async () => {
+    vi.spyOn(springBootApi, 'getChildProfiles').mockResolvedValue({ status: 200, data: {} } as any);
+    const { onSkip } = renderPicker();
+    expect(await screen.findByText('تعذر جلب الملفات من الخادم. يمكنك المتابعة بالحساب.')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /متابعة بدون ملف طفل/ }));
+    expect(onSkip).toHaveBeenCalled();
+  });
 });

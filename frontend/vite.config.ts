@@ -1,14 +1,22 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import {defineConfig, loadEnv} from 'vite';
+import { resolveV2ApiUrl } from './scripts/v2-environment.mjs';
 import { VitePWA } from 'vite-plugin-pwa';
 import { readAndroidVersion } from './scripts/android-release-config.mjs';
 import { isPublicApiCacheUrl } from './src/utils/publicApiCache';
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  const env = { ...loadEnv(mode, process.cwd(), 'VITE_'), ...process.env };
+  const v2ApiUrl = resolveV2ApiUrl(env);
   return {
-    define: readAndroidVersion(),
+    define: {
+      ...readAndroidVersion(),
+      'import.meta.env.VITE_SPRING_BOOT_URL': JSON.stringify(v2ApiUrl),
+      'import.meta.env.VITE_GOOGLE_CLIENT_ID': JSON.stringify(env.VITE_V2_GOOGLE_CLIENT_ID || ''),
+      'import.meta.env.VITE_SENTRY_DSN': JSON.stringify(env.VITE_V2_SENTRY_DSN || ''),
+    },
     plugins: [
       react(),
       tailwindcss(),

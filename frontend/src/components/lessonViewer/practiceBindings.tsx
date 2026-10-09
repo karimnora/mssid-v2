@@ -1,4 +1,5 @@
 import React from 'react';
+import { GuidedMathSupport } from '../GuidedMathSupport';
 import { CourseLesson } from '../../types';
 import { PracticeExerciseCard } from '../PracticeExerciseCard';
 import { useLessonPractice } from './useLessonPractice';
@@ -11,7 +12,9 @@ export const BoundPracticeCard: React.FC<{
   renderArabicText: (text: string | undefined | null) => string;
   playful?: boolean;
   leadAudio?: React.ReactNode;
-}> = ({ ex, practice, renderArabicText, playful = false, leadAudio }) => (
+  lesson?: CourseLesson;
+}> = ({ ex, practice, renderArabicText, playful = false, leadAudio, lesson }) => (
+  <>
   <PracticeExerciseCard
     ex={ex}
     renderArabicText={renderArabicText}
@@ -35,4 +38,6 @@ export const BoundPracticeCard: React.FC<{
     orderingSelection={practice.orderingSelections[ex.id] || []}
     onToggleOrderingItem={practice.handleToggleOrderingItem}
   />
+  {lesson && <GuidedMathSupport lesson={lesson} />}
+  </>
 );

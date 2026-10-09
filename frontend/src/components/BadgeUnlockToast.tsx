@@ -29,6 +29,7 @@ export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDis
   // toast itself. prefers-reduced-motion is respected since canvas-confetti already checks it.
   useEffect(() => {
     if (!current || typeof window === 'undefined') return;
+    if (document.querySelector('[data-learning-focus], [aria-modal="true"]')) return;
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
     confetti({
       particleCount: 90,
@@ -40,7 +41,7 @@ export const BadgeUnlockToast: React.FC<BadgeUnlockToastProps> = ({ queue, onDis
   }, [current]);
 
   return (
-    <div className="fixed top-4 inset-x-0 z-[100] flex justify-center px-3 pointer-events-none" dir="rtl">
+    <div data-nonessential-notification className="fixed top-4 inset-x-0 z-[100] flex justify-center px-3 pointer-events-none" dir="rtl">
       <AnimatePresence mode="wait">
         {current && (
           <motion.div

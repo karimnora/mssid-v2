@@ -1,3 +1,5 @@
+import { canUseWebCheckout } from '../utils/paymentPlatform';
+import { OPEN_SUBSCRIPTION_STATUS } from './NativeSubscriptionStatus';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { UserProfile } from '../types';
@@ -51,6 +53,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
 }) => {
   const t = useTranslation('common');
   const tNav = useTranslation('navigation');
+  const tSubscription = useTranslation('subscription');
   const tMeta = useTranslation('meta');
   const { direction } = useLocaleContext();
   const currentName = authUser?.nom || userProfile.name;
@@ -426,6 +429,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </Card>
           </div>
 
+          {!canUseWebCheckout() && authUser && <button type="button" onClick={()=>{onClose();window.dispatchEvent(new Event(OPEN_SUBSCRIPTION_STATUS));}} className="w-full hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold text-[var(--kids-ink)] cursor-pointer">
+            {tSubscription('mySubscription')}
+          </button>}
           {onOpenParentNotebook && (
             <button
               type="button"

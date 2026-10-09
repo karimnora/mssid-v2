@@ -40,6 +40,7 @@ import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
 import { isLabFreeForGuest, isLessonFreeForGuest } from './utils/guestAccess';
 import { lastActivityTitle, readLastActivity, writeLastActivity } from './utils/lastActivity';
 import { isLabSubjectId, isValidGrade, parseAppLocation } from './navigation/appLocation';
+import { setActiveProgressOwner } from './utils/progressOwner';
 import { ChildProfilePicker } from './components/ChildProfilePicker';
 import {
   ChildProfile,
@@ -239,6 +240,7 @@ function AppContent() {
       setPickerOpen(false);
       return;
     }
+    if (authUser.role === 'ROLE_ADMIN') { setPickerOpen(false); return; }
     if (childSelection == null) setPickerOpen(true);
   }, [authUser, isAuthLoading, childSelection]);
 
@@ -261,6 +263,7 @@ function AppContent() {
     };
     localStorage.setItem(key, JSON.stringify(next));
     persistChildSelection({ type: 'child', id: child.id });
+    setActiveProgressOwner(authUser?.id, child.id);
     setChildSelection({ type: 'child', id: child.id });
     setPickerOpen(false);
     if (isPreschoolGrade(child.grade)) {
@@ -273,6 +276,7 @@ function AppContent() {
 
   const handleSkipChild = () => {
     persistChildSelection({ type: 'account' });
+    setActiveProgressOwner(authUser?.id);
     setChildSelection({ type: 'account' });
     setPickerOpen(false);
   };
@@ -721,16 +725,10 @@ function AppContent() {
             <button onClick={() => modals.setIsContactModalOpen(true)} className="hover:text-[var(--brand-emerald)] cursor-pointer">
               {t('navigation', 'contactUs')}
             </button>
-            {/* Native app -> link back to the web version; web -> link to the Play Store listing. */}
-            {Capacitor.isNativePlatform() ? (
-              <a href="https://mssid-dz.com" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--brand-blue)] cursor-pointer">
-                {t('navigation', 'footerWebVersionLink')}
-              </a>
-            ) : (
+            {!Capacitor.isNativePlatform() && <>
               <a href="https://play.google.com/store/apps/details?id=dz.mssid.app" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--brand-blue)] cursor-pointer">
                 {t('navigation', 'footerPlayStoreLink')}
               </a>
-            )}
             <span className="w-px h-4 bg-[var(--app-card-border)]" aria-hidden="true" />
             <a
               href="https://www.facebook.com/mssid.dz"
@@ -756,11 +754,13 @@ function AppContent() {
                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/>
               </svg>
             </a>
+            </>}
           </div>
         </div>
       </footer>
 
       <AppModals
+        currentLesson={nav.selectedLesson}
         modals={modals}
         grade={nav.grade}
         userProfile={progress.userProfile}

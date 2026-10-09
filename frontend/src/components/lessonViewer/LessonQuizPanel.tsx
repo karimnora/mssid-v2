@@ -1,4 +1,5 @@
 import React from 'react';
+import { GuidedMathSupport } from '../GuidedMathSupport';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson } from '../../types';
 import { Button, Card, XPProgressBar } from '../ui';
@@ -253,6 +254,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                 )}
               </div>
 
+              <GuidedMathSupport lesson={lesson} question={q} />
               <div className="grid grid-cols-1 gap-2.5">
                 {q.options.map((opt, optIdx) => {
                   const isOptSelected = selected === opt.id;

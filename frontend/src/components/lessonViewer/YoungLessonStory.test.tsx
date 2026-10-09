@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render as baseRender, screen, fireEvent } from '@testing-library/react';
 import { CourseLesson } from '../../types';
 import { YoungLessonStory } from './YoungLessonStory';
 import { LessonQuizPanel } from './LessonQuizPanel';
@@ -14,6 +14,8 @@ import {
   stripLatinGlosses,
 } from './youngLessonLayout';
 import { MATH_1AP } from '../../data/courses/1AP/math';
+
+const render = (ui: React.ReactElement) => baseRender(ui, {wrapper: LocaleProvider});
 
 const spatial: CourseLesson = {
   id: 'math-1ap-t1-spatial-relations',

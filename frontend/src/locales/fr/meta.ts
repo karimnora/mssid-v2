@@ -22,7 +22,7 @@ export const meta: typeof metaAr = {
   offlineOnline: 'Connexion Internet disponible',
   offlineDisconnected: 'Tu es hors connexion',
   offlineContent: 'Les contenus déjà disponibles sur cet appareil peuvent rester accessibles sans Internet. Ouvre les leçons souhaitées avant de te déconnecter.',
-  offlineLimits: 'La connexion au compte, le professeur IA et les contenus qui doivent être récupérés sur le serveur nécessitent Internet.',
+  offlineLimits: 'La connexion au compte et les contenus à récupérer sur le serveur nécessitent Internet. L’aide guidée utilise les contenus intégrés à l’application.',
   offlineNoSync: 'Cet écran ne télécharge pas de packs et ne synchronise pas tes progrès. Tu peux le fermer pour retrouver tes leçons.',
   offlineBack: 'Revenir aux leçons',
   networkOffline: 'Aucune connexion Internet détectée. Reconnecte-toi, puis réessaie.',

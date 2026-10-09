@@ -58,6 +58,13 @@ jobs:
 
   backend:
     runs-on: ubuntu-latest
+    env:
+      SPRING_PROFILES_ACTIVE: v2
+      V2_DATABASE_URL: jdbc:postgresql://localhost:5432/mssid_v2
+      V2_DATABASE_USERNAME: postgres
+      V2_DATABASE_PASSWORD: postgres
+      V2_JWT_SECRET: EphemeralGithubV2TestKeyNotUsedByAnyDeployedService2026
+
     defaults:
       run:
         working-directory: backend
@@ -65,7 +72,7 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: mssid_db
+          POSTGRES_DB: mssid_v2
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
@@ -82,7 +89,11 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-      # No DATABASE_URL/USERNAME/PASSWORD env needed — application.properties' defaults
-      # (jdbc:postgresql://localhost:5432/mssid_db, postgres/postgres) already match the service
-      # container above, so Flyway runs the real migrations against a real, empty Postgres.
+      # Real V2 migrations run against a fresh disposable PostgreSQL, never production.
       - run: mvn -B test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: v2-backend-test-reports
+          path: backend/target/surefire-reports/
+          retention-days: 7

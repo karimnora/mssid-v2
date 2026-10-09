@@ -1,0 +1,46 @@
+name: mssid-v2-stack
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: mssid_v2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${V2_DATABASE_PASSWORD:?Configure .env.v2.local first}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - v2_stack_database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d mssid_v2"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  backend:
+    build: ./backend
+    environment:
+      SPRING_PROFILES_ACTIVE: v2
+      PORT: 8081
+      V2_DATABASE_URL: jdbc:postgresql://postgres:5432/mssid_v2
+      V2_DATABASE_USERNAME: postgres
+      V2_DATABASE_PASSWORD: ${V2_DATABASE_PASSWORD:?Configure .env.v2.local first}
+      V2_JWT_SECRET: ${V2_JWT_SECRET:?Configure .env.v2.local first}
+      V2_CORS_ALLOWED_ORIGINS: http://localhost:3002,http://127.0.0.1:3002,https://localhost
+      COOKIE_SECURE: "false"
+      COOKIE_SAME_SITE: Lax
+    ports:
+      - "127.0.0.1:8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.v2
+      args:
+        VITE_V2_SPRING_BOOT_URL: http://localhost:3002/api
+    ports:
+      - "127.0.0.1:3002:80"
+    depends_on:
+      - backend
+volumes:
+  v2_stack_database:

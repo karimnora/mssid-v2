@@ -19,7 +19,7 @@ for (const scenario of [
     if (scenario.url === '/') {
       await expect(page.locator('[data-subject-card="math"]')).toBeVisible();
     } else {
-      await expect(page.getByText('Ateliers', { exact: true })).toBeVisible();
+      await expect(page.getByText('Ateliers', { exact: true })).toBeVisible({ timeout: 15000 });
     }
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();

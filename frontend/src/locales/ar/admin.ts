@@ -51,7 +51,7 @@ export const admin = {
   featureFlagEnableTrimesterPaywallDescription: 'يبقى مطفأ في V2: دروس الفصول الثلاثة المنشورة مجانية. الاشتراك يبيع العمق (دفتر، كراسات، حقيبة المتوسطة) لا قفل T2/T3.',
   featureFlagEnablePrintablePDFsLabel: '🖨️ فيشات المراجعة القابلة للطباعة',
   featureFlagEnablePrintablePDFsDescription: 'ON: زر طباعة/تحميل فيشة المراجعة ظاهر داخل الدروس. OFF: الزر مخفي تماماً.',
-  featureFlagEnableAITutorLabel: '🤖 المعلم الافتراضي أمين الفنك (Gemini)',
+  featureFlagEnableAITutorLabel: '📚 المرافقة الموجّهة (دون API خارجي)',
   featureFlagEnableAITutorDescription: 'ON: زر المساعد الذكي ظاهر في شريط التنقل. OFF: الزر مخفي، ولا وصول للمعلم الافتراضي.',
   featureFlagEnableExamSectionLabel: '📜 قسم الامتحانات الرسمية (5AP)',
   featureFlagEnableExamSectionDescription: 'ON: تبويب الامتحانات الرسمية ظاهر لدى التلميذ. OFF: التبويب مخفي تماماً.',

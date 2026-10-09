@@ -30,6 +30,12 @@ public class Subscription {
     @Column(name = "end_date")
     private LocalDate endDate;
 
+    @Column(name = "plan_id")
+    private String planId;
+
+    @Column(name = "duration_months")
+    private Integer durationMonths;
+
     public enum SubscriptionStatus {
         ACTIVE,
         EXPIRED,

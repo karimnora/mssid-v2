@@ -27,6 +27,8 @@ on:
 
 jobs:
   build:
+    # V2 never produces a Play Store release with production credentials.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     defaults:
       run:

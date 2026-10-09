@@ -1,3 +1,4 @@
+import { NativeSubscriptionStatus } from './NativeSubscriptionStatus';
 import React, { Suspense, lazy, useState } from 'react';
 import { CourseLesson, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
@@ -34,6 +35,7 @@ type Modals = ReturnType<typeof useAppModals>;
 interface AppModalsProps {
   modals: Modals;
   grade: PrimaryGrade;
+  currentLesson?: CourseLesson | null;
   userProfile: UserProfile;
   setUserProfile: React.Dispatch<React.SetStateAction<UserProfile>>;
   authUser: AuthUser | null;
@@ -70,6 +72,7 @@ interface AppModalsProps {
 export const AppModals: React.FC<AppModalsProps> = ({
   modals,
   grade,
+  currentLesson,
   userProfile,
   setUserProfile,
   authUser,
@@ -106,10 +109,13 @@ export const AppModals: React.FC<AppModalsProps> = ({
   const [manualRatingTrigger, setManualRatingTrigger] = useState(0);
   return (
   <>
+    <NativeSubscriptionStatus/>
     <AiTutorModal
       isOpen={modals.isAiModalOpen}
       onClose={() => modals.setIsAiModalOpen(false)}
       grade={grade}
+      lesson={currentLesson}
+      onReviewLesson={onReviewLesson}
     />
 
     <BadgeUnlockToast queue={newlyUnlockedBadges} onDismiss={onDismissBadge} onShare={setCertificateBadge} />

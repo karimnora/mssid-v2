@@ -14,6 +14,7 @@ public class ReceiptUploadRequest {
     private String paymentMethod;
     private String transactionRef;
     private Double amountDzd;
+    private String planId;
     private String receiptImageUrl;
     private String receiptImgUrl;
     private String ripSender;

@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Printer, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { CompetenceCahier } from '../../data/cahiers/competenceCahiers';
 import { useTranslation } from '../../hooks/useTranslation';
 
+import { useCahierAccess } from '../../hooks/useCahierAccess';
+import { springBootApi } from '../../services/springBootApi';
+import { PremiumOffer } from '../PremiumOffer';
+import { CahierQuotaNotice } from './CahierQuotaNotice';
+
 interface CompetenceCahierSheetProps {
   cahier: CompetenceCahier;
   onClose: () => void;
 }
 
-export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ cahier, onClose }) => {
+const UnlockedCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ cahier, onClose }) => {
   const t = useTranslation('labsImmersive');
   const [side, setSide] = useState<'front' | 'verso'>('front');
 
@@ -117,4 +122,47 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ ca
     </div>,
     document.body,
   );
+};
+
+// One entry point for the lab, the parent notebook and the CEM parcours.
+export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = props => {
+  const t = useTranslation('subscription');
+  const { authUser, access, loading, error, refresh } = useCahierAccess();
+  const documentOwner = `${authUser?.id ?? 'guest'}:${props.cahier.competenceId}`;
+  const [unlockedOwner, setUnlockedOwner] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const inFlight = useRef(false);
+  const identity = useRef({ userId: authUser?.id, documentId: props.cahier.competenceId });
+  identity.current = { userId: authUser?.id, documentId: props.cahier.competenceId };
+  useEffect(() => { setUnlockedOwner(null); setFailed(false); }, [authUser?.id, authUser?.role, props.cahier.competenceId]);
+  const canRead = Boolean(authUser && (unlockedOwner === documentOwner || access?.premium || access?.unlockedIds.includes(props.cahier.competenceId)));
+  const unlock = async () => {
+    if (inFlight.current) return;
+    inFlight.current = true; setBusy(true); setFailed(false);
+    const requestIdentity = identity.current;
+    try {
+      const res = await springBootApi.unlockCahier(props.cahier.competenceId);
+      if (identity.current.userId !== requestIdentity.userId || identity.current.documentId !== requestIdentity.documentId) return;
+      if (res.data?.allowed && !res.error) setUnlockedOwner(documentOwner);
+      else if (res.status !== 429) setFailed(true);
+      refresh();
+    } catch { setFailed(true); }
+    finally { setBusy(false); inFlight.current = false; }
+  };
+  if (canRead) return <UnlockedCahierSheet {...props} />;
+  return createPortal(<div className="fixed inset-0 z-[70] bg-black/40 overflow-auto p-4 flex items-start justify-center">
+    <section role="dialog" aria-modal="true" aria-label={props.cahier.titleAr} className="bg-white rounded-3xl p-5 max-w-xl w-full space-y-4 text-[#0f172a]">
+      <h2 className="text-lg font-extrabold">{props.cahier.titleAr}</h2>
+      <p>{t('cahierPreview')}</p>
+      <p dir="rtl" className="rounded-2xl bg-[#FFF8E7] p-4 font-bold">{props.cahier.exercises[0]?.promptAr}</p>
+      {access && <CahierQuotaNotice access={access} />}
+      {!authUser ? <p>{t('cahierLogin')}</p> : loading ? <p>{t('cahierChecking')}</p> : (error || failed) ? <>
+        <p role="alert">{t('cahierUnavailable')}</p><button type="button" className="hit-target" onClick={refresh}>{t('cahierRetry')}</button>
+      </> : access && access.remaining > 0 ? <button type="button" disabled={busy} onClick={unlock} className="hit-target rounded-2xl bg-[#008751] text-white px-4 font-bold disabled:opacity-50">{busy ? t('cahierChecking') : t('cahierUnlock')}</button> : access ? <>
+        <p>{t('cahierLimit')}</p><PremiumOffer />
+      </> : null}
+      <button type="button" onClick={props.onClose} className="hit-target block font-bold">{t('continueFree')}</button>
+    </section>
+  </div>, document.body);
 };

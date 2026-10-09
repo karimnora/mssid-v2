@@ -260,6 +260,7 @@ export const UsersRolesModule: React.FC = () => {
                         <span className="font-mono font-bold text-amber-300">{item.amountDzd} DZD</span>
                       </div>
 
+                      <div className="text-[11px] text-slate-300">مدة الاشتراك: {item.durationMonths ?? 12} أشهر · {item.planId ?? 'LEGACY_12M'}</div>
                       <div className="text-[10px] text-slate-500 font-mono">المرجع: {item.transactionRef}</div>
                     </div>
                   );

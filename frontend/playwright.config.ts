@@ -16,6 +16,10 @@ export default defineConfig({
   reporter: process.env.CI ? 'line' : 'html',
   use: {
     baseURL: 'http://localhost:3000',
+    // Legacy V1 flows exercise a returning account. Fresh V2 child-picker tests override this.
+    storageState: { cookies: [], origins: [{ origin: 'http://localhost:3000', localStorage: [
+      { name: 'mssid_active_child_id', value: 'account' },
+    ] }] },
     trace: 'on-first-retry',
   },
   projects: [

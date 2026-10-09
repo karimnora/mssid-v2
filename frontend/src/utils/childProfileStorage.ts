@@ -1,4 +1,5 @@
-import { isValidGrade, type PrimaryGrade } from '../navigation/appLocation';
+import { isValidGrade } from '../navigation/appLocation';
+import type { PrimaryGrade } from '../types';
 
 export const GUEST_PROFILE_KEY = 'mssid_user_profile';
 export const ACTIVE_CHILD_KEY = 'mssid_active_child_id';

@@ -35,6 +35,14 @@ public class PaymentReceipt {
     @Column(name = "amount_dzd")
     private Double amountDzd = 1500.0;
 
+    @Column(name = "plan_id", nullable = false)
+    @Builder.Default
+    private String planId = "LEGACY_12M";
+
+    @Column(name = "duration_months", nullable = false)
+    @Builder.Default
+    private Integer durationMonths = 12;
+
     @Column(name = "submitted_at")
     private LocalDateTime submittedAt = LocalDateTime.now();
 

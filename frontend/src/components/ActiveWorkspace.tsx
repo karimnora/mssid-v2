@@ -221,7 +221,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           onReviewLesson={onReviewLesson}
         />
       ) : selectedSubject === 'cahiers_lab' ? (
-        <CompetenceCahierLab grade={grade} onBack={onBackToLabsCatalog} />
+        <CompetenceCahierLab grade={grade} profile={userProfile} onBack={onBackToLabsCatalog} />
       ) : selectedSubject === 'exams' ? (
         <ExamsViewer
           grade={grade}

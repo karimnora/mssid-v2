@@ -479,7 +479,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       lessonSessions: payload.lessonSessions ?? user.lessonSessions,
     };
     this.setCurrentUser(updatedUser);
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       competenceStats: updatedUser.competenceStats ?? {},
       lessonSessions: updatedUser.lessonSessions ?? [],
     }).catch((err) => console.error('Erreur de synchronisation du carnet:', err));
@@ -591,6 +591,8 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
           receiptImageUrl: r.receiptImageUrl ?? r.imageUrl ?? '',
           paymentMethod: r.paymentMethod,
           amountDzd: r.amountDzd,
+          planId: r.planId,
+          durationMonths: r.durationMonths,
           transactionRef: r.transactionRef,
           status: r.status,
           submittedAt: r.submittedAt ?? r.createdAt ?? '',
@@ -715,6 +717,7 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
   static async submitReceiptAsync(payload: {
     paymentMethod: PaymentMethod;
     amountDzd: number;
+    planId?: string;
     transactionRef: string;
     receiptImageUrl: string;
   }): Promise<{ success: boolean; receipt?: PaymentReceipt; message?: string }> {
@@ -731,6 +734,8 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
       userEmail: currentUser?.email || '',
       paymentMethod: payload.paymentMethod,
       amountDzd: res.data.amountDzd,
+      planId: res.data.planId,
+      durationMonths: res.data.durationMonths,
       transactionRef: res.data.transactionRef,
       receiptImageUrl: payload.receiptImageUrl,
       status: (res.data.status as PaymentReceipt['status']) || 'PENDING_VERIFICATION',

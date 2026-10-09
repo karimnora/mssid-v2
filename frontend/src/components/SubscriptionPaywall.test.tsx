@@ -73,7 +73,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
 
     await waitFor(() => {
       expect(submitSpy).toHaveBeenCalledWith(
-        expect.objectContaining({ paymentMethod: 'BARIDIMOB', amountDzd: 1500, transactionRef: 'BM-2026-987456123' })
+        expect.objectContaining({ paymentMethod: 'BARIDIMOB', amountDzd: 2400, planId: 'P12M', transactionRef: 'BM-2026-987456123' })
       );
       expect(screen.getByText('تم إرسال وصل الدفع وهو بانتظار التحقق اليدوي')).toBeInTheDocument();
     });
@@ -105,6 +105,16 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
   it('displays the subscription price from the shared constant, not a separate hardcoded value', () => {
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
-    expect(screen.getByText(/السعر: 1500 دج/)).toBeInTheDocument();
+    expect(screen.getByText(/السعر: 2400 دج/)).toBeInTheDocument();
   });
+  it.each([[3, 900, 'P3M'], [6, 1500, 'P6M'], [12, 2400, 'P12M']] as const)('sends the selected %s month plan and its canonical price', async (months, price, planId) => {
+    const submitSpy = vi.spyOn(AuthService, 'submitReceiptAsync').mockResolvedValue({ success: false, message: 'test stopped after upload' });
+    renderPaywall(<SubscriptionPaywall parentVerified user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    fireEvent.click(screen.getByRole('radio', { name: new RegExp(`^${months} أشهر`) }));
+    fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-plan-test' } });
+    await attachReceipt();
+    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ })); solveParentGate();
+    await waitFor(() => expect(submitSpy).toHaveBeenCalledWith(expect.objectContaining({ amountDzd: price, planId })));
+  });
+
 });
