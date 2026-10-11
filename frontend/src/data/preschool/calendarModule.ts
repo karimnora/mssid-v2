@@ -1,4 +1,5 @@
 import { PreschoolActivity, PreschoolListenCard, PreschoolModule, PreschoolSortItem } from './types';
+import { CALENDAR_AUDIO_CLIPS } from './calendarAudio';
 
 /**
  * Days and months for Mode Éveil (3–5): hear each name, then sort the Algerian week.
@@ -90,7 +91,7 @@ const sortItems: PreschoolSortItem[] = DAYS.map((day) => ({
   label: DAY_NAME[day.id],
 }));
 
-export const CALENDAR_MODULE: PreschoolModule = {
+const CALENDAR_CATALOG: PreschoolModule = {
   id: 'preschool-calendar',
   domain: 'world',
   icon: '📅',
@@ -226,4 +227,22 @@ export const CALENDAR_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const CALENDAR_MODULE: PreschoolModule = {
+  ...CALENDAR_CATALOG,
+  activities: CALENDAR_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = CALENDAR_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

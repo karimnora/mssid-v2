@@ -65,7 +65,7 @@
   {
     "ordre": 8,
     "fichier": "world-match-homes-success.mp3",
-    "texte": "عَادَتِ الحَيَوَانَاتُ إِلَى بُيُوتِهَا! بَرَافُو!",
+    "texte": "عَادَتِ الحَيَوَانَاتُ إِلَى بُيُوتِهَا! أَحْسَنْتَ!",
     "activite": "كُلُّ حَيَوَانٍ فِي بَيْتِهِ",
     "activiteId": "world-match-homes",
     "moduleId": "preschool-world",
@@ -119,7 +119,7 @@
   {
     "ordre": 14,
     "fichier": "world-memory-success.mp3",
-    "texte": "بَرَاوَ! هَذَا عَالَمُكَ!",
+    "texte": "أَحْسَنْتَ! هَذَا عَالَمُكَ!",
     "activite": "تَذَكَّرْ عَالَمِي",
     "activiteId": "world-memory",
     "moduleId": "preschool-world",

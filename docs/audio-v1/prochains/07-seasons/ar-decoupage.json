@@ -83,7 +83,7 @@
   {
     "ordre": 10,
     "fichier": "seasons-winter-success.mp3",
-    "texte": "بَرَاوَ! النُّدْفَةُ لِلشِّتَاء!",
+    "texte": "أَحْسَنْتَ! النُّدْفَةُ لِلشِّتَاء!",
     "activite": "ثَلْجُ الشِّتَاء",
     "activiteId": "seasons-winter",
     "moduleId": "preschool-seasons",
@@ -92,7 +92,7 @@
   {
     "ordre": 11,
     "fichier": "seasons-clothes-sorting-prompt.mp3",
-    "texte": "ضَعِ المَايُوهَ وَالقُبَّعَةَ مَعَ الشَّمْس، وَالمِعْطَفَ مَعَ الثَّلْج، وَالمِظَلَّةَ وَقُبَّعَةَ القَشِّ مَعَ الزَّهْرَة!",
+    "texte": "ضَعْ لِبَاسَ السِّبَاحَةِ وَالقُبَّعَةَ مَعَ الشَّمْس، وَالمِعْطَفَ مَعَ الثَّلْج، وَالمِظَلَّةَ وَقُبَّعَةَ القَشِّ مَعَ الزَّهْرَة!",
     "activite": "مَلَابِسُ كُلِّ فَصْل",
     "activiteId": "seasons-clothes-sorting",
     "moduleId": "preschool-seasons",

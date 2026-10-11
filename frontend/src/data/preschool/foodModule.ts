@@ -1,11 +1,12 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { FOOD_AUDIO_CLIPS } from './foodAudio';
 
 /**
  * "الأَطْعِمَةُ الصَّحِيَّة" — Les Aliments (Éducation Scientifique 0AP).
  * Concrete food first (pomme, carotte, lait) — never "touche le fruit" as an abstract label.
  * Algerian souk path, fruit/veg sort, then where food comes from (cow/hen/bee/wheat).
  */
-export const FOOD_MODULE: PreschoolModule = {
+const FOOD_CATALOG: PreschoolModule = {
   id: 'preschool-food',
   domain: 'world',
   icon: '🍎',
@@ -249,7 +250,7 @@ export const FOOD_MODULE: PreschoolModule = {
           title: 'تَذَكَّرِ الأَطْعِمَة',
           promptAudio: 'اِقْلِبِ البِطَاقَاتِ! قُلْ: تُفَّاحَة، جَزَرَة، حَلِيب!',
           promptText: 'ثلاث أزواج فقط — اللعبة لا تعرض أكثر.',
-          successAudio: 'بَرَاوَ! أَنْتَ تَعْرِفُ طَعَامَكَ!',
+          successAudio: 'أَحْسَنْتَ! أَنْتَ تَعْرِفُ طَعَامَكَ!',
         },
         fr: {
           title: 'Mémo des Aliments',
@@ -274,4 +275,22 @@ export const FOOD_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const FOOD_MODULE: PreschoolModule = {
+  ...FOOD_CATALOG,
+  activities: FOOD_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = FOOD_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

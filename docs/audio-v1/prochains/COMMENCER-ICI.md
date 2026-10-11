@@ -2,7 +2,7 @@
 
 Ces textes viennent du contenu actuel de l'application. Chaque dossier contient trois textes complets (fr, ar, en) et leurs plans de découpage JSON. Les rapports INTEGRATION dans le dossier parent indiquent quels lots ont déjà été enregistrés et intégrés.
 
-Lots enregistrés dans les trois langues : De 0 à 5, De 6 à 10. Prochain module : Mes Petites Formes.
+Lots enregistrés dans les trois langues : De 0 à 5, De 6 à 10, Mes Petites Formes, Mes couleurs, Mes Animaux, Mon Corps Merveilleux, Les Quatre Saisons, Jours et mois, Les aliments sains, Mon Petit Monde, Ma Chère Famille. Prochain module : Mon Algérie.
 
 ## Commencer par les quatre premiers lots
 

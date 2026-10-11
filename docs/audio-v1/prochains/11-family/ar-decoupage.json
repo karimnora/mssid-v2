@@ -38,7 +38,7 @@
   {
     "ordre": 5,
     "fichier": "family-dad-prompt.mp3",
-    "texte": "اِلْمَسِ الأَبّ! الأَبُ يُحِبُّ اللَّعِبَ مَعَ أَطْفَالِه!",
+    "texte": "اِلْمَسِ الأَبَ! الأَبُ يُحِبُّ اللَّعِبَ مَعَ أَطْفَالِه!",
     "activite": "أَبِي",
     "activiteId": "family-dad",
     "moduleId": "preschool-family",
@@ -47,7 +47,7 @@
   {
     "ordre": 6,
     "fichier": "family-dad-success.mp3",
-    "texte": "بَرَاوَ! هَذَا الأَبّ!",
+    "texte": "أَحْسَنْتَ! هَذَا الأَبُ!",
     "activite": "أَبِي",
     "activiteId": "family-dad",
     "moduleId": "preschool-family",

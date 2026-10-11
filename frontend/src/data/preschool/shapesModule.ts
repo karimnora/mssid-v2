@@ -1,9 +1,10 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
+import { SHAPE_AUDIO_CLIPS } from './shapeAudio';
 
 // "أَشْكَالِي الصَّغِيرَةُ" — My Little Shapes. Teaches 6 individual shapes (circle, square,
 // triangle, star, heart, diamond) via tap_choice, each anchored to a familiar object, plus a
 // circle trace, a triangle-vs-circle sort (real-world objects), a shape-matching game, and memory.
-export const SHAPES_MODULE: PreschoolModule = {
+const SHAPES_CATALOG: PreschoolModule = {
   id: 'preschool-shapes',
   domain: 'shapes',
   icon: '🔺',
@@ -233,4 +234,22 @@ export const SHAPES_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const SHAPES_MODULE: PreschoolModule = {
+  ...SHAPES_CATALOG,
+  activities: SHAPES_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = SHAPE_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

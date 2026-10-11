@@ -1,9 +1,10 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
+import { ANIMAL_AUDIO_CLIPS } from './animalAudio';
 
 // "حَيَوَانَاتِي" — My Animals. Teaches 6 individual farm/pet/wild animals (cow, sheep, chicken,
 // cat, dog, lion) via tap_choice, plus the original big/small sort and butterfly bubble_pop, an
 // animal-to-favorite-food matching game, and a 3-pair animal memory game.
-export const ANIMALS_MODULE: PreschoolModule = {
+const ANIMALS_CATALOG: PreschoolModule = {
   id: 'preschool-animals',
   domain: 'animals',
   icon: '🐾',
@@ -262,4 +263,22 @@ export const ANIMALS_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const ANIMALS_MODULE: PreschoolModule = {
+  ...ANIMALS_CATALOG,
+  activities: ANIMALS_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = ANIMAL_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

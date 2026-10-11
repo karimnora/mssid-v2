@@ -1,10 +1,11 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
+import { COLOR_AUDIO_CLIPS } from './colorAudio';
 
 // "أَلْوَانِي وَفُنُونِي" — Colors, Drawing & Graphism (Psychomotricity).
 // Teaches 6 individual colors (أحمر، برتقالي، أصفر، أخضر، أزرق، بنفسجي) via tap_choice, each
 // anchored to a familiar object, plus a Sahara color-trail for the fennec, a 3-color sort, magic-bubble
 // painting, and a 3-pair color memory game — same depth pattern as the numbers/letters modules.
-export const COLORS_MODULE: PreschoolModule = {
+const COLORS_CATALOG: PreschoolModule = {
   id: 'preschool-colors',
   domain: 'colors',
   icon: '🎨',
@@ -322,7 +323,7 @@ export const COLORS_MODULE: PreschoolModule = {
           title: 'فَقَاعَاتُ الأَلْوَانِ السِّحْرِيَّةِ',
           promptAudio: 'فَرْقِعْ فَقَاعَاتِ الأَلْوَانِ السِّحْرِيَّةِ لِتُلَوِّنَ الفَخَّار!',
           promptText: 'المسي الفقاعات لتفرقعها.',
-          successAudio: 'أَلْوَانٌ مُبْهِجَة! فَرَّقْتَ كُلَّ الفَقَاعَات!',
+          successAudio: 'أَلْوَانٌ مُبْهِجَة!',
         },
         fr: {
           title: 'Bulles Magiques de Peinture',
@@ -379,4 +380,22 @@ export const COLORS_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const COLORS_MODULE: PreschoolModule = {
+  ...COLORS_CATALOG,
+  activities: COLORS_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = COLOR_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

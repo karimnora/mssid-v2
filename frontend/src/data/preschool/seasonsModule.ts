@@ -1,11 +1,12 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { SEASON_AUDIO_CLIPS } from './seasonAudio';
 
 /**
  * "فُصُولُ السَّنَةِ الأَرْبَعَةُ" — Les Saisons (Éducation Scientifique 0AP).
  * Concrete objects first (fleur, soleil, feuille, flocon) — never "touche le printemps"
  * as an abstract label a 3-5 yo cannot read. Ends with clothes sorting and matching.
  */
-export const SEASONS_MODULE: PreschoolModule = {
+const SEASONS_CATALOG: PreschoolModule = {
   id: 'preschool-seasons',
   domain: 'world',
   icon: '🌸',
@@ -171,7 +172,7 @@ export const SEASONS_MODULE: PreschoolModule = {
           title: 'ثَلْجُ الشِّتَاء',
           promptAudio: 'نَلْبَسُ الوِشَاحَ! اِلْمَسِ النُّدْفَة! هَذَا الشِّتَاء!',
           promptText: 'في الشتاء البرد والمطر، والثلج في الجبال الجزائرية.',
-          successAudio: 'بَرَاوَ! النُّدْفَةُ لِلشِّتَاء!',
+          successAudio: 'أَحْسَنْتَ! النُّدْفَةُ لِلشِّتَاء!',
         },
         fr: {
           title: 'Le Flocon d\'Hiver',
@@ -204,7 +205,7 @@ export const SEASONS_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'مَلَابِسُ كُلِّ فَصْل',
-          promptAudio: 'ضَعِ المَايُوهَ وَالقُبَّعَةَ مَعَ الشَّمْس، وَالمِعْطَفَ مَعَ الثَّلْج، وَالمِظَلَّةَ وَقُبَّعَةَ القَشِّ مَعَ الزَّهْرَة!',
+          promptAudio: 'ضَعْ لِبَاسَ السِّبَاحَةِ وَالقُبَّعَةَ مَعَ الشَّمْس، وَالمِعْطَفَ مَعَ الثَّلْج، وَالمِظَلَّةَ وَقُبَّعَةَ القَشِّ مَعَ الزَّهْرَة!',
           promptText: 'صيف = سباحة وقبعة. شتاء = معطف. ربيع = مظلة وقبعة قش.',
           successAudio: 'مُمْتَاز! تَعْرِفُ مَلَابِسَ كُلِّ فَصْل!',
         },
@@ -304,4 +305,22 @@ export const SEASONS_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const SEASONS_MODULE: PreschoolModule = {
+  ...SEASONS_CATALOG,
+  activities: SEASONS_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = SEASON_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

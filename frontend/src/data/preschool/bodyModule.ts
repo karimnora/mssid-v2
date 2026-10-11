@@ -1,11 +1,12 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { BODY_AUDIO_CLIPS } from './bodyAudio';
 
 /**
  * "جِسْمِي الرَّائِعُ" — Mon Corps (Éducation Scientifique 0AP).
  * Covers: face parts, limbs, five senses, hygiene habits.
  * Interaction mix: find_path ×2, tap_choice ×3, connect_dots, sorting, memory_cards.
  */
-export const BODY_MODULE: PreschoolModule = {
+const BODY_CATALOG: PreschoolModule = {
   id: 'preschool-body',
   domain: 'world',
   icon: '🧍',
@@ -140,7 +141,7 @@ export const BODY_MODULE: PreschoolModule = {
           title: 'الأُذُنَانِ',
           promptAudio: 'اِلْمَسِ الأُذُنَيْنِ! نَسْمَعُ بِهِمَا الأَصْوَاتَ وَالمُوسِيقَى الجَمِيلَة!',
           promptText: 'اطلب من الطفل أن يشير إلى أذنيه.',
-          successAudio: 'بَرَاوَ! أُذُنَاكَ تَسْمَعَانِ كُلَّ الأَصْوَات!',
+          successAudio: 'أَحْسَنْتَ! أُذُنَاكَ تَسْمَعَانِ كُلَّ الأَصْوَات!',
         },
         fr: {
           title: 'Les Oreilles',
@@ -286,9 +287,9 @@ export const BODY_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'تَذَكَّرْ أَجْزَاءَ الجِسْم',
-          promptAudio: 'اِقْلِبِ البِطَاقَاتِ وَاجِدِ الأَزْوَاجَ المُتَشَابِهَة! قُلِ اسْمَ كُلِّ جُزْءٍ بِصَوْتٍ عَالٍ!',
+          promptAudio: 'اِقْلِبِ البِطَاقَاتِ وَابْحَثْ عَنِ الأَزْوَاجِ المُتَشَابِهَة! قُلِ اسْمَ كُلِّ جُزْءٍ بِصَوْتٍ عَالٍ!',
           promptText: 'شجّع طفلك على نطق اسم كل جزء يكتشفه.',
-          successAudio: 'بَرَاوَ بَطَل! ذَاكِرَتُكَ قَوِيَّةٌ وَرَائِعَة!',
+          successAudio: 'أَحْسَنْتَ يَا بَطَل! ذَاكِرَتُكَ قَوِيَّةٌ وَرَائِعَة!',
         },
         fr: {
           title: 'Mémo du Corps',
@@ -313,4 +314,22 @@ export const BODY_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const BODY_MODULE: PreschoolModule = {
+  ...BODY_CATALOG,
+  activities: BODY_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = BODY_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

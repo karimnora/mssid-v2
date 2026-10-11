@@ -1,10 +1,11 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { WORLD_AUDIO_CLIPS } from './worldAudio';
 
 /**
  * "عَالَمِي الصَّغِير" — Discovery of the child's day & Algerian living world (0AP).
  * Hygiene lives in Mon Corps — here: day cycle, Sahara animals, habitats, tidy-up, day vs night.
  */
-export const WORLD_MODULE: PreschoolModule = {
+const WORLD_CATALOG: PreschoolModule = {
   id: 'preschool-world',
   domain: 'world',
   icon: '🌍',
@@ -135,7 +136,7 @@ export const WORLD_MODULE: PreschoolModule = {
           title: 'كُلُّ حَيَوَانٍ فِي بَيْتِهِ',
           promptAudio: 'اِرْبِطِ الجَمَلَ بِالصَّحْرَاء، وَالسَّمَكَةَ بِالبَحْر!',
           promptText: 'جمل↔صحراء، طائر↔شجرة، سمكة↔بحر، خروف↔حقل.',
-          successAudio: 'عَادَتِ الحَيَوَانَاتُ إِلَى بُيُوتِهَا! بَرَافُو!',
+          successAudio: 'عَادَتِ الحَيَوَانَاتُ إِلَى بُيُوتِهَا! أَحْسَنْتَ!',
         },
         fr: {
           title: 'Chaque Animal dans sa Maison',
@@ -255,7 +256,7 @@ export const WORLD_MODULE: PreschoolModule = {
           title: 'تَذَكَّرْ عَالَمِي',
           promptAudio: 'اِقْلِبِ البِطَاقَاتِ! قُلْ: جَمَل، شَمْس، بَيْت!',
           promptText: 'ثلاث أزواج : جمل، شمس، بيت.',
-          successAudio: 'بَرَاوَ! هَذَا عَالَمُكَ!',
+          successAudio: 'أَحْسَنْتَ! هَذَا عَالَمُكَ!',
         },
         fr: {
           title: 'Mémo de Mon Monde',
@@ -280,4 +281,22 @@ export const WORLD_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const WORLD_MODULE: PreschoolModule = {
+  ...WORLD_CATALOG,
+  activities: WORLD_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = WORLD_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

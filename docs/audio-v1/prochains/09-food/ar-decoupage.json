@@ -119,7 +119,7 @@
   {
     "ordre": 14,
     "fichier": "food-memory-success.mp3",
-    "texte": "بَرَاوَ! أَنْتَ تَعْرِفُ طَعَامَكَ!",
+    "texte": "أَحْسَنْتَ! أَنْتَ تَعْرِفُ طَعَامَكَ!",
     "activite": "تَذَكَّرِ الأَطْعِمَة",
     "activiteId": "food-memory",
     "moduleId": "preschool-food",

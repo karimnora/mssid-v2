@@ -1,4 +1,5 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { FAMILY_AUDIO_CLIPS } from './familyAudio';
 
 /**
  * "عَائِلَتِي الحَبِيبَة" — Ma Famille (Éducation Civique 0AP).
@@ -10,7 +11,7 @@ import { PreschoolModule } from './types';
  * grandpa"). Not every child lives with grandparents or a baby sibling — this module teaches the
  * vocabulary and the values, not a claim about any specific child's family shape.
  */
-export const FAMILY_MODULE: PreschoolModule = {
+const FAMILY_CATALOG: PreschoolModule = {
   id: 'preschool-family',
   domain: 'values',
   // 👪 (single codepoint, Unicode 6.0) instead of a ZWJ family sequence: multi-person ZWJ emoji
@@ -114,9 +115,9 @@ export const FAMILY_MODULE: PreschoolModule = {
           title: 'أَبِي',
           // Same generalization as family-mom: "a dad plays with his children" rather than "MY dad
           // plays with ME".
-          promptAudio: 'اِلْمَسِ الأَبّ! الأَبُ يُحِبُّ اللَّعِبَ مَعَ أَطْفَالِه!',
+          promptAudio: 'اِلْمَسِ الأَبَ! الأَبُ يُحِبُّ اللَّعِبَ مَعَ أَطْفَالِه!',
           promptText: 'ساعد الطفل على تمييز صورة الأب.',
-          successAudio: 'بَرَاوَ! هَذَا الأَبّ!',
+          successAudio: 'أَحْسَنْتَ! هَذَا الأَبُ!',
         },
         fr: {
           title: 'Papa',
@@ -255,4 +256,22 @@ export const FAMILY_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const FAMILY_MODULE: PreschoolModule = {
+  ...FAMILY_CATALOG,
+  activities: FAMILY_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = FAMILY_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

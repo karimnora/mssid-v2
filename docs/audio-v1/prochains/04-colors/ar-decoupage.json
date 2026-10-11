@@ -155,7 +155,7 @@
   {
     "ordre": 18,
     "fichier": "colors-pottery-bubble-success.mp3",
-    "texte": "أَلْوَانٌ مُبْهِجَة! فَرَّقْتَ كُلَّ الفَقَاعَات!",
+    "texte": "أَلْوَانٌ مُبْهِجَة!",
     "activite": "فَقَاعَاتُ الأَلْوَانِ السِّحْرِيَّةِ",
     "activiteId": "colors-pottery-bubble",
     "moduleId": "preschool-colors",
