@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "values-mosque-path-prompt.mp3",
+    "texte": "اِسْحَبِ الفَنَكَ: بَيْت، تُفَّاحَة، سَلَام، هَدِيَّة، ثُمَّ المَسْجِد!",
+    "activite": "الطَّرِيقُ إِلَى المَسْجِد",
+    "activiteId": "values-mosque-path",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "values-mosque-path-success.mp3",
+    "texte": "وَصَلْنَا إِلَى المَسْجِد! أَحْسَنْت!",
+    "activite": "الطَّرِيقُ إِلَى المَسْجِد",
+    "activiteId": "values-mosque-path",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "values-bismillah-prompt.mp3",
+    "texte": "سَنَأْكُلُ! نَقُولُ بِسْمِ اللَّهِ. اِلْمَسِ التُّفَّاحَة!",
+    "activite": "بِسْمِ اللَّهِ",
+    "activiteId": "values-bismillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "values-bismillah-success.mp3",
+    "texte": "بِسْمِ اللَّهِ! أَحْسَنْت!",
+    "activite": "بِسْمِ اللَّهِ",
+    "activiteId": "values-bismillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "values-alhamdulillah-prompt.mp3",
+    "texte": "انْتَهَيْنَا مِنَ الأَكْل! نَقُولُ الحَمْدُ لِلَّهِ. اِلْمَسِ اليَدَيْن!",
+    "activite": "الحَمْدُ لِلَّهِ",
+    "activiteId": "values-alhamdulillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "values-alhamdulillah-success.mp3",
+    "texte": "الحَمْدُ لِلَّهِ! شُكْراً!",
+    "activite": "الحَمْدُ لِلَّهِ",
+    "activiteId": "values-alhamdulillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "values-salam-prompt.mp3",
+    "texte": "نَرَى صَدِيقاً! نَقُولُ السَّلَامُ عَلَيْكُمْ. اِلْمَسِ اليَدَيْن!",
+    "activite": "السَّلَامُ عَلَيْكُمْ",
+    "activiteId": "values-salam",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "values-salam-success.mp3",
+    "texte": "وَعَلَيْكُمُ السَّلَام! أَحْسَنْت!",
+    "activite": "السَّلَامُ عَلَيْكُمْ",
+    "activiteId": "values-salam",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "values-mosque-tap-prompt.mp3",
+    "texte": "اِلْمَسِ المَسْجِد! المَسْجِدُ بَيْتُ الصَّلَاة!",
+    "activite": "هَذَا المَسْجِد",
+    "activiteId": "values-mosque-tap",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "values-mosque-tap-success.mp3",
+    "texte": "رَائِع! هَذَا مَسْجِد!",
+    "activite": "هَذَا المَسْجِد",
+    "activiteId": "values-mosque-tap",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "values-good-manners-prompt.mp3",
+    "texte": "ضَعِ الهَدِيَّةَ وَالعِنَاقَ مَعَ الوَجْهِ الضَّاحِك، وَالصُّرَاخَ مَعَ الوَجْهِ الحَزِين!",
+    "activite": "أَخْلَاقِي الجَمِيلَة",
+    "activiteId": "values-good-manners",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "values-good-manners-success.mp3",
+    "texte": "أَخْلَاقُكَ جَمِيلَة! أَنْتَ طِفْلٌ طَيِّب!",
+    "activite": "أَخْلَاقِي الجَمِيلَة",
+    "activiteId": "values-good-manners",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "values-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: مَسْجِد، سَلَام، تُفَّاحَة!",
+    "activite": "تَذَكَّرْ قِيَمِي",
+    "activiteId": "values-memory",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "values-memory-success.mp3",
+    "texte": "بَرَاوَ! قِيَمُكَ جَمِيلَة!",
+    "activite": "تَذَكَّرْ قِيَمِي",
+    "activiteId": "values-memory",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  }
+]

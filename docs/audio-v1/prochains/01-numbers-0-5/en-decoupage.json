@@ -1,0 +1,110 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "num-0-prompt.mp3",
+    "texte": "Touch zero! The plate is empty — there is nothing on it!",
+    "activite": "Zero",
+    "activiteId": "num-0",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "num-0-success.mp3",
+    "texte": "Well done! That is zero!",
+    "activite": "Zero",
+    "activiteId": "num-0",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "num-1-prompt.mp3",
+    "texte": "Touch the number one!",
+    "activite": "One",
+    "activiteId": "num-1",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "num-1-success.mp3",
+    "texte": "Great! That is one!",
+    "activite": "One",
+    "activiteId": "num-1",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "num-2-prompt.mp3",
+    "texte": "How many apples do you see? Count with me!",
+    "activite": "Two",
+    "activiteId": "num-2",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "num-2-success.mp3",
+    "texte": "Perfect! Exactly two!",
+    "activite": "Two",
+    "activiteId": "num-2",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "num-3-prompt.mp3",
+    "texte": "Put three apples in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Three",
+    "activiteId": "num-3",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "num-3-success.mp3",
+    "texte": "Well done! Three apples!",
+    "activite": "Three",
+    "activiteId": "num-3",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "num-4-prompt.mp3",
+    "texte": "Put four stars in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Four",
+    "activiteId": "num-4",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "num-4-success.mp3",
+    "texte": "Great! Exactly four!",
+    "activite": "Four",
+    "activiteId": "num-4",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "num-5-prompt.mp3",
+    "texte": "Put five stars in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Five",
+    "activiteId": "num-5",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "num-5-success.mp3",
+    "texte": "Bravo! Five stars in the basket!",
+    "activite": "Five",
+    "activiteId": "num-5",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  }
+]

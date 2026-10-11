@@ -1,0 +1,267 @@
+{
+  "scope": "Consignes et félicitations des modules hors lettres ; cartes listen_tap et mots du micro en lot séparé.",
+  "modules": [
+    {
+      "dossier": "01-numbers-0-5",
+      "moduleId": "preschool-numbers-0-5",
+      "titre": "De 0 à 5",
+      "activites": 6,
+      "phrasesParLangue": 12,
+      "motsParLangue": {
+        "fr": 112,
+        "ar": 76,
+        "en": 92
+      }
+    },
+    {
+      "dossier": "02-numbers-6-10",
+      "moduleId": "preschool-numbers-6-10",
+      "titre": "De 6 à 10",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 168,
+        "ar": 109,
+        "en": 129
+      }
+    },
+    {
+      "dossier": "03-shapes",
+      "moduleId": "preschool-shapes",
+      "titre": "Mes Petites Formes",
+      "activites": 10,
+      "phrasesParLangue": 20,
+      "motsParLangue": {
+        "fr": 188,
+        "ar": 100,
+        "en": 158
+      }
+    },
+    {
+      "dossier": "04-colors",
+      "moduleId": "preschool-colors",
+      "titre": "Mes couleurs",
+      "activites": 10,
+      "phrasesParLangue": 20,
+      "motsParLangue": {
+        "fr": 193,
+        "ar": 120,
+        "en": 159
+      }
+    },
+    {
+      "dossier": "05-animals",
+      "moduleId": "preschool-animals",
+      "titre": "Mes Animaux",
+      "activites": 10,
+      "phrasesParLangue": 20,
+      "motsParLangue": {
+        "fr": 177,
+        "ar": 95,
+        "en": 142
+      }
+    },
+    {
+      "dossier": "06-body",
+      "moduleId": "preschool-body",
+      "titre": "Mon Corps Merveilleux",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 185,
+        "ar": 107,
+        "en": 152
+      }
+    },
+    {
+      "dossier": "07-seasons",
+      "moduleId": "preschool-seasons",
+      "titre": "Les Quatre Saisons",
+      "activites": 7,
+      "phrasesParLangue": 14,
+      "motsParLangue": {
+        "fr": 154,
+        "ar": 81,
+        "en": 132
+      }
+    },
+    {
+      "dossier": "08-calendar",
+      "moduleId": "preschool-calendar",
+      "titre": "Jours et mois",
+      "activites": 4,
+      "phrasesParLangue": 8,
+      "motsParLangue": {
+        "fr": 84,
+        "ar": 51,
+        "en": 68
+      }
+    },
+    {
+      "dossier": "09-food",
+      "moduleId": "preschool-food",
+      "titre": "Les aliments sains",
+      "activites": 7,
+      "phrasesParLangue": 14,
+      "motsParLangue": {
+        "fr": 146,
+        "ar": 75,
+        "en": 121
+      }
+    },
+    {
+      "dossier": "10-world",
+      "moduleId": "preschool-world",
+      "titre": "Mon Petit Monde",
+      "activites": 7,
+      "phrasesParLangue": 14,
+      "motsParLangue": {
+        "fr": 141,
+        "ar": 73,
+        "en": 123
+      }
+    },
+    {
+      "dossier": "11-family",
+      "moduleId": "preschool-family",
+      "titre": "Ma Chère Famille",
+      "activites": 6,
+      "phrasesParLangue": 12,
+      "motsParLangue": {
+        "fr": 109,
+        "ar": 60,
+        "en": 92
+      }
+    },
+    {
+      "dossier": "12-algeria",
+      "moduleId": "preschool-algeria",
+      "titre": "Mon Algérie",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 154,
+        "ar": 78,
+        "en": 131
+      }
+    },
+    {
+      "dossier": "13-islamic-values",
+      "moduleId": "preschool-islamic-values",
+      "titre": "Mes valeurs et ma foi",
+      "activites": 7,
+      "phrasesParLangue": 14,
+      "motsParLangue": {
+        "fr": 136,
+        "ar": 74,
+        "en": 111
+      }
+    },
+    {
+      "dossier": "14-short-surahs",
+      "moduleId": "preschool-short-surahs",
+      "titre": "Mes petites sourates",
+      "activites": 7,
+      "phrasesParLangue": 14,
+      "motsParLangue": {
+        "fr": 103,
+        "ar": 64,
+        "en": 96
+      }
+    },
+    {
+      "dossier": "15-emotions",
+      "moduleId": "preschool-emotions",
+      "titre": "Nos Émotions",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 148,
+        "ar": 78,
+        "en": 116
+      }
+    },
+    {
+      "dossier": "16-pre-writing",
+      "moduleId": "preschool-pre-writing",
+      "titre": "Mes Petits Tracés",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 153,
+        "ar": 89,
+        "en": 127
+      }
+    },
+    {
+      "dossier": "17-logic-spatial",
+      "moduleId": "preschool-logic-spatial",
+      "titre": "Logique et espace",
+      "activites": 10,
+      "phrasesParLangue": 20,
+      "motsParLangue": {
+        "fr": 210,
+        "ar": 114,
+        "en": 179
+      }
+    },
+    {
+      "dossier": "18-sequences",
+      "moduleId": "preschool-sequences",
+      "titre": "Qu’est-ce qui vient après ?",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 118,
+        "ar": 84,
+        "en": 110
+      }
+    },
+    {
+      "dossier": "19-stories",
+      "moduleId": "preschool-stories",
+      "titre": "Petites histoires",
+      "activites": 3,
+      "phrasesParLangue": 6,
+      "motsParLangue": {
+        "fr": 81,
+        "ar": 53,
+        "en": 78
+      }
+    },
+    {
+      "dossier": "20-art-drawing",
+      "moduleId": "preschool-art-drawing",
+      "titre": "Mes dessins",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 148,
+        "ar": 70,
+        "en": 122
+      }
+    },
+    {
+      "dossier": "21-creative-games",
+      "moduleId": "preschool-creative-games",
+      "titre": "Mes Jeux Créatifs",
+      "activites": 8,
+      "phrasesParLangue": 16,
+      "motsParLangue": {
+        "fr": 133,
+        "ar": 73,
+        "en": 116
+      }
+    }
+  ],
+  "totalPhrasesParLangue": {
+    "fr": 316,
+    "ar": 316,
+    "en": 316
+  },
+  "motsCartesEtMicroParLangue": {
+    "fr": 40,
+    "ar": 40,
+    "en": 40
+  }
+}

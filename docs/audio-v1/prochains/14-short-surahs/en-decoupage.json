@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "surah-fatiha-prompt.mp3",
+    "texte": "Listen to Al-Fatiha, then repeat with the reciter!",
+    "activite": "Al-Fatiha",
+    "activiteId": "surah-fatiha",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "surah-fatiha-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "Al-Fatiha",
+    "activiteId": "surah-fatiha",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "surah-ikhlas-prompt.mp3",
+    "texte": "Listen to Al-Ikhlas. Allah is One!",
+    "activite": "Al-Ikhlas",
+    "activiteId": "surah-ikhlas",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "surah-ikhlas-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "Al-Ikhlas",
+    "activiteId": "surah-ikhlas",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "surah-falaq-prompt.mp3",
+    "texte": "Listen to Al-Falaq. We ask Allah for protection.",
+    "activite": "Al-Falaq",
+    "activiteId": "surah-falaq",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "surah-falaq-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "Al-Falaq",
+    "activiteId": "surah-falaq",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "surah-nas-prompt.mp3",
+    "texte": "Listen to An-Nas. The Lord of people protects us.",
+    "activite": "An-Nas",
+    "activiteId": "surah-nas",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "surah-nas-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "An-Nas",
+    "activiteId": "surah-nas",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "surah-kawthar-prompt.mp3",
+    "texte": "Listen to Al-Kawthar. Allah’s gifts are many!",
+    "activite": "Al-Kawthar",
+    "activiteId": "surah-kawthar",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "surah-kawthar-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "Al-Kawthar",
+    "activiteId": "surah-kawthar",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "surah-nasr-prompt.mp3",
+    "texte": "Listen to An-Nasr with Didou. We repeat verse by verse!",
+    "activite": "An-Nasr",
+    "activiteId": "surah-nasr",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "surah-nasr-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "An-Nasr",
+    "activiteId": "surah-nasr",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "surah-asr-prompt.mp3",
+    "texte": "Listen to Al-Asr. Time is precious!",
+    "activite": "Al-Asr",
+    "activiteId": "surah-asr",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "surah-asr-success.mp3",
+    "texte": "Well done! A star for you!",
+    "activite": "Al-Asr",
+    "activiteId": "surah-asr",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  }
+]

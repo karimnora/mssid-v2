@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "num-6-prompt.mp3",
+    "texte": "ضَعْ سِتَّ تُفَّاحَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "السِّتَّةُ",
+    "activiteId": "num-6",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "num-6-success.mp3",
+    "texte": "مُمْتَاز! سِتُّ تُفَّاحَات!",
+    "activite": "السِّتَّةُ",
+    "activiteId": "num-6",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "num-7-prompt.mp3",
+    "texte": "ضَعْ سَبْعَ نَجْمَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "السَّبْعَةُ",
+    "activiteId": "num-7",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "num-7-success.mp3",
+    "texte": "رَائِعٌ جِدّاً! سَبْعُ نَجْمَات!",
+    "activite": "السَّبْعَةُ",
+    "activiteId": "num-7",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "num-8-count-prompt.mp3",
+    "texte": "ضَعْ ثَمَانِيَ تُفَّاحَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "ثَمَانِي تُفَّاحَات",
+    "activiteId": "num-8-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "num-8-count-success.mp3",
+    "texte": "أَحْسَنْت! ثَمَانِي تُفَّاحَات!",
+    "activite": "ثَمَانِي تُفَّاحَات",
+    "activiteId": "num-8-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "num-8-prompt.mp3",
+    "texte": "تَتَبَّعِ الرَّقْمَ ثَمَانِيَة بِإِصْبَعِكَ!",
+    "activite": "الثَّمَانِيَةُ",
+    "activiteId": "num-8",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "num-8-success.mp3",
+    "texte": "أَحْسَنْت! كَتَبْتَ الرَّقْمَ ثَمَانِيَة!",
+    "activite": "الثَّمَانِيَةُ",
+    "activiteId": "num-8",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "num-9-count-prompt.mp3",
+    "texte": "ضَعْ تِسْعَ نَجْمَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "تِسْعُ نَجْمَات",
+    "activiteId": "num-9-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "num-9-count-success.mp3",
+    "texte": "رَائِع! تِسْعُ نَجْمَات!",
+    "activite": "تِسْعُ نَجْمَات",
+    "activiteId": "num-9-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "num-9-prompt.mp3",
+    "texte": "تَتَبَّعِ الرَّقْمَ تِسْعَة بِإِصْبَعِكَ!",
+    "activite": "التِّسْعَةُ",
+    "activiteId": "num-9",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "num-9-success.mp3",
+    "texte": "رَائِع! كَتَبْتَ الرَّقْمَ تِسْعَة!",
+    "activite": "التِّسْعَةُ",
+    "activiteId": "num-9",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "num-10-count-prompt.mp3",
+    "texte": "ضَعْ عَشْرَ نَجْمَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "عَشْرُ نَجْمَات",
+    "activiteId": "num-10-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "num-10-count-success.mp3",
+    "texte": "مَبْرُوك! عَشْرُ نَجْمَات!",
+    "activite": "عَشْرُ نَجْمَات",
+    "activiteId": "num-10-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "num-10-prompt.mp3",
+    "texte": "تَتَبَّعِ الرَّقْمَ عَشَرَة بِإِصْبَعِكَ! أَنْتَ بَطَلُ الأَرْقَام!",
+    "activite": "العَشَرَةُ",
+    "activiteId": "num-10",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "num-10-success.mp3",
+    "texte": "مَبْرُوك! أَنْهَيْتَ رِحْلَةَ الأَرْقَامِ كُلَّهَا!",
+    "activite": "العَشَرَةُ",
+    "activiteId": "num-10",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  }
+]

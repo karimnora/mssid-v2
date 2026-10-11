@@ -1,0 +1,362 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "letters-alif-rabbit-echo.mp3",
+    "texte": "أَرْنَب",
+    "activite": "صَيْدُ حَرْفِ الأَلِفِ (أ)",
+    "activiteId": "letters-alif-rabbit",
+    "moduleId": "preschool-letters",
+    "type": "echo"
+  },
+  {
+    "ordre": 2,
+    "fichier": "letters-meem-banana-echo.mp3",
+    "texte": "مَوْزَة",
+    "activite": "صَيْدُ حَرْفِ المِيمِ (م)",
+    "activiteId": "letters-meem-banana",
+    "moduleId": "preschool-letters",
+    "type": "echo"
+  },
+  {
+    "ordre": 3,
+    "fichier": "letters-haa-milk-echo.mp3",
+    "texte": "حَلِيب",
+    "activite": "صَيْدُ حَرْفِ الحَاءِ (ح)",
+    "activiteId": "letters-haa-milk",
+    "moduleId": "preschool-letters-2",
+    "type": "echo"
+  },
+  {
+    "ordre": 4,
+    "fichier": "letters-khaa-bread-echo.mp3",
+    "texte": "خُبْز",
+    "activite": "صَيْدُ حَرْفِ الخَاءِ (خ)",
+    "activiteId": "letters-khaa-bread",
+    "moduleId": "preschool-letters-2",
+    "type": "echo"
+  },
+  {
+    "ordre": 5,
+    "fichier": "letters-thal-wolf-echo.mp3",
+    "texte": "ذِئْب",
+    "activite": "صَيْدُ حَرْفِ الذَّالِ (ذ)",
+    "activiteId": "letters-thal-wolf",
+    "moduleId": "preschool-letters-2",
+    "type": "echo"
+  },
+  {
+    "ordre": 6,
+    "fichier": "letters-raa-feather-echo.mp3",
+    "texte": "رِيشَة",
+    "activite": "صَيْدُ حَرْفِ الرَّاءِ (ر)",
+    "activiteId": "letters-raa-feather",
+    "moduleId": "preschool-letters-2",
+    "type": "echo"
+  },
+  {
+    "ordre": 7,
+    "fichier": "letters-noon-bee-echo.mp3",
+    "texte": "نَحْلَة",
+    "activite": "صَيْدُ حَرْفِ النُّونِ (ن)",
+    "activiteId": "letters-noon-bee",
+    "moduleId": "preschool-letters-2",
+    "type": "echo"
+  },
+  {
+    "ordre": 8,
+    "fichier": "letters-listen-faa-card-fennec.mp3",
+    "texte": "فَنَك",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card"
+  },
+  {
+    "ordre": 9,
+    "fichier": "letters-listen-faa-card-dog.mp3",
+    "texte": "كَلْب",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card"
+  },
+  {
+    "ordre": 10,
+    "fichier": "letters-listen-faa-card-book.mp3",
+    "texte": "كِتَاب",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card"
+  },
+  {
+    "ordre": 11,
+    "fichier": "letters-listen-faa-card-cake.mp3",
+    "texte": "كَعْك",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card"
+  },
+  {
+    "ordre": 12,
+    "fichier": "letters-listen-faa-card-moon.mp3",
+    "texte": "قَمَر",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card"
+  },
+  {
+    "ordre": 13,
+    "fichier": "animals-cow-echo.mp3",
+    "texte": "بَقَرَة",
+    "activite": "البَقَرَةُ الحَنُونَةُ",
+    "activiteId": "animals-cow",
+    "moduleId": "preschool-animals",
+    "type": "echo"
+  },
+  {
+    "ordre": 14,
+    "fichier": "animals-cat-echo.mp3",
+    "texte": "قِطَّة",
+    "activite": "القِطَّةُ اللَّطِيفَةُ",
+    "activiteId": "animals-cat",
+    "moduleId": "preschool-animals",
+    "type": "echo"
+  },
+  {
+    "ordre": 15,
+    "fichier": "calendar-days-card-sunday.mp3",
+    "texte": "الأَحَد",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 16,
+    "fichier": "calendar-days-card-monday.mp3",
+    "texte": "الإِثْنَيْن",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 17,
+    "fichier": "calendar-days-card-tuesday.mp3",
+    "texte": "الثُّلَاثَاء",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 18,
+    "fichier": "calendar-days-card-wednesday.mp3",
+    "texte": "الأَرْبِعَاء",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 19,
+    "fichier": "calendar-days-card-thursday.mp3",
+    "texte": "الخَمِيس",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 20,
+    "fichier": "calendar-days-card-friday.mp3",
+    "texte": "الجُمُعَة",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 21,
+    "fichier": "calendar-days-card-saturday.mp3",
+    "texte": "السَّبْت",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 22,
+    "fichier": "calendar-months-1-card-january.mp3",
+    "texte": "جَانْفِي",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 23,
+    "fichier": "calendar-months-1-card-february.mp3",
+    "texte": "فِيفْرِي",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 24,
+    "fichier": "calendar-months-1-card-march.mp3",
+    "texte": "مَارْس",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 25,
+    "fichier": "calendar-months-1-card-april.mp3",
+    "texte": "أَفْرِيل",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 26,
+    "fichier": "calendar-months-1-card-may.mp3",
+    "texte": "مَاي",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 27,
+    "fichier": "calendar-months-1-card-june.mp3",
+    "texte": "جُوَان",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 28,
+    "fichier": "calendar-months-2-card-july.mp3",
+    "texte": "جُوِيلِيَة",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 29,
+    "fichier": "calendar-months-2-card-august.mp3",
+    "texte": "أُوت",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 30,
+    "fichier": "calendar-months-2-card-september.mp3",
+    "texte": "سِبْتَمْبِر",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 31,
+    "fichier": "calendar-months-2-card-october.mp3",
+    "texte": "أُكْتُوبَر",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 32,
+    "fichier": "calendar-months-2-card-november.mp3",
+    "texte": "نُوفَمْبِر",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 33,
+    "fichier": "calendar-months-2-card-december.mp3",
+    "texte": "دِيسَمْبِر",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card"
+  },
+  {
+    "ordre": 34,
+    "fichier": "family-mom-echo.mp3",
+    "texte": "أُمّ",
+    "activite": "أُمِّي",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "echo"
+  },
+  {
+    "ordre": 35,
+    "fichier": "family-dad-echo.mp3",
+    "texte": "أَب",
+    "activite": "أَبِي",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "echo"
+  },
+  {
+    "ordre": 36,
+    "fichier": "family-elders-baby-card-grandpa.mp3",
+    "texte": "جَدِّي",
+    "activite": "مَنْ فِي العَائِلَة؟",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "card"
+  },
+  {
+    "ordre": 37,
+    "fichier": "family-elders-baby-card-granny.mp3",
+    "texte": "جَدَّتِي",
+    "activite": "مَنْ فِي العَائِلَة؟",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "card"
+  },
+  {
+    "ordre": 38,
+    "fichier": "family-elders-baby-card-baby.mp3",
+    "texte": "الرَّضِيع",
+    "activite": "مَنْ فِي العَائِلَة؟",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "card"
+  },
+  {
+    "ordre": 39,
+    "fichier": "algeria-couscous-echo.mp3",
+    "texte": "كُسْكُس",
+    "activite": "الكُسْكُس",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "echo"
+  },
+  {
+    "ordre": 40,
+    "fichier": "algeria-fennec-tap-echo.mp3",
+    "texte": "فَنَك",
+    "activite": "فَنَكُ الجَزَائِر",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "echo"
+  }
+]

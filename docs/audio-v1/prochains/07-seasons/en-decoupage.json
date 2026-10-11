@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "seasons-year-path-prompt.mp3",
+    "texte": "Drag the bird through the seasons: flower, sun, leaf, snow!",
+    "activite": "Around the Year",
+    "activiteId": "seasons-year-path",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "seasons-year-path-success.mp3",
+    "texte": "A whole year! Well done!",
+    "activite": "Around the Year",
+    "activiteId": "seasons-year-path",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "seasons-spring-prompt.mp3",
+    "texte": "The butterfly is here! Touch the flower! That is spring!",
+    "activite": "The Spring Flower",
+    "activiteId": "seasons-spring",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "seasons-spring-success.mp3",
+    "texte": "Well done! The flower is for spring!",
+    "activite": "The Spring Flower",
+    "activiteId": "seasons-spring",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "seasons-summer-prompt.mp3",
+    "texte": "We eat watermelon! Touch the sun! That is summer!",
+    "activite": "The Summer Sun",
+    "activiteId": "seasons-summer",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "seasons-summer-success.mp3",
+    "texte": "Well done! The sun is for summer!",
+    "activite": "The Summer Sun",
+    "activiteId": "seasons-summer",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "seasons-autumn-prompt.mp3",
+    "texte": "The apples are ripe! Touch the yellow leaf! That is autumn!",
+    "activite": "Autumn Leaves",
+    "activiteId": "seasons-autumn",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "seasons-autumn-success.mp3",
+    "texte": "Excellent! The leaf is for autumn!",
+    "activite": "Autumn Leaves",
+    "activiteId": "seasons-autumn",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "seasons-winter-prompt.mp3",
+    "texte": "We wear a scarf! Touch the snowflake! That is winter!",
+    "activite": "The Winter Snowflake",
+    "activiteId": "seasons-winter",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "seasons-winter-success.mp3",
+    "texte": "Bravo! The snowflake is for winter!",
+    "activite": "The Winter Snowflake",
+    "activiteId": "seasons-winter",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "seasons-clothes-sorting-prompt.mp3",
+    "texte": "Put the swimsuit and the cap with the sun, the coat with the snow, the umbrella and the straw hat with the flower!",
+    "activite": "Clothes for Each Season",
+    "activiteId": "seasons-clothes-sorting",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "seasons-clothes-sorting-success.mp3",
+    "texte": "Excellent! You know the clothes for every season!",
+    "activite": "Clothes for Each Season",
+    "activiteId": "seasons-clothes-sorting",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "seasons-connect-prompt.mp3",
+    "texte": "Seasons on the left, pictures on the right. Match each season to its picture!",
+    "activite": "Match the season to its picture",
+    "activiteId": "seasons-connect",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "seasons-connect-success.mp3",
+    "texte": "Wow! You know all the seasons!",
+    "activite": "Match the season to its picture",
+    "activiteId": "seasons-connect",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  }
+]

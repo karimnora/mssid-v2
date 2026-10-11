@@ -1,0 +1,110 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "family-fennec-home-prompt.mp3",
+    "texte": "اِسْحَبِ الفَنَكَ: بَاب، صَالُون، مَطْبَخ، غُرْفَة، ثُمَّ العَائِلَة!",
+    "activite": "الفَنَكُ يَعُودُ إِلَى البَيْت",
+    "activiteId": "family-fennec-home",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "family-fennec-home-success.mp3",
+    "texte": "أَهْلاً بِالعَائِلَة! البَيْتُ دَافِئ!",
+    "activite": "الفَنَكُ يَعُودُ إِلَى البَيْت",
+    "activiteId": "family-fennec-home",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "family-mom-prompt.mp3",
+    "texte": "اِلْمَسِ الأُمّ! الأُمُّ تَحْضُنُ أَطْفَالَهَا بِحُبّ!",
+    "activite": "أُمِّي",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "family-mom-success.mp3",
+    "texte": "أَحْسَنْت! هَذِهِ الأُمّ!",
+    "activite": "أُمِّي",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "family-dad-prompt.mp3",
+    "texte": "اِلْمَسِ الأَبّ! الأَبُ يُحِبُّ اللَّعِبَ مَعَ أَطْفَالِه!",
+    "activite": "أَبِي",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "family-dad-success.mp3",
+    "texte": "بَرَاوَ! هَذَا الأَبّ!",
+    "activite": "أَبِي",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "family-elders-baby-prompt.mp3",
+    "texte": "اِلْمَسْ كُلَّ بِطَاقَةٍ وَاسْتَمِعْ لِاسْمِهَا!",
+    "activite": "مَنْ فِي العَائِلَة؟",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "family-elders-baby-success.mp3",
+    "texte": "أَحْسَنْت! تَعْرِفُ كُلَّ العَائِلَة!",
+    "activite": "مَنْ فِي العَائِلَة؟",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "family-roles-prompt.mp3",
+    "texte": "اِرْبِطِ الجَدَّ بِالقِصَّة، وَالرَّضِيعَ بِالقَارُورَة!",
+    "activite": "مَنْ يُحِبُّ مَاذَا؟",
+    "activiteId": "family-roles",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "family-roles-success.mp3",
+    "texte": "كُلُّ وَاحِدٍ فِي العَائِلَةِ مَحْبُوب!",
+    "activite": "مَنْ يُحِبُّ مَاذَا؟",
+    "activiteId": "family-roles",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "family-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: أُمّ، أَب، رَضِيع!",
+    "activite": "تَذَكَّرْ أَفْرَادَ العَائِلَة",
+    "activiteId": "family-memory",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "family-memory-success.mp3",
+    "texte": "عَظِيم! أَنْتَ تَعْرِفُ عَائِلَتَك!",
+    "activite": "تَذَكَّرْ أَفْرَادَ العَائِلَة",
+    "activiteId": "family-memory",
+    "moduleId": "preschool-family",
+    "type": "success"
+  }
+]

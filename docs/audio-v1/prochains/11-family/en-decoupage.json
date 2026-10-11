@@ -1,0 +1,110 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "family-fennec-home-prompt.mp3",
+    "texte": "Drag the fennec: door, living room, kitchen, bedroom, then the family!",
+    "activite": "The Fennec Goes Home",
+    "activiteId": "family-fennec-home",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "family-fennec-home-success.mp3",
+    "texte": "Welcome home! Nothing is better than family!",
+    "activite": "The Fennec Goes Home",
+    "activiteId": "family-fennec-home",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "family-mom-prompt.mp3",
+    "texte": "Touch the mom! A mom loves hugging her children!",
+    "activite": "Mom",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "family-mom-success.mp3",
+    "texte": "Well done! That is a mom!",
+    "activite": "Mom",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "family-dad-prompt.mp3",
+    "texte": "Touch the dad! A dad loves playing with his children!",
+    "activite": "Dad",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "family-dad-success.mp3",
+    "texte": "Bravo! That is a dad!",
+    "activite": "Dad",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "family-elders-baby-prompt.mp3",
+    "texte": "Tap each card and listen to its name!",
+    "activite": "Who Is in the Family?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "family-elders-baby-success.mp3",
+    "texte": "Well done! You know the whole family!",
+    "activite": "Who Is in the Family?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "family-roles-prompt.mp3",
+    "texte": "Match grandpa to the book, and the baby to the bottle!",
+    "activite": "Who Loves What?",
+    "activiteId": "family-roles",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "family-roles-success.mp3",
+    "texte": "Everyone in the family is loved!",
+    "activite": "Who Loves What?",
+    "activiteId": "family-roles",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "family-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: mom, dad, baby!",
+    "activite": "Family Memory Game",
+    "activiteId": "family-memory",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "family-memory-success.mp3",
+    "texte": "Amazing! You know your family!",
+    "activite": "Family Memory Game",
+    "activiteId": "family-memory",
+    "moduleId": "preschool-family",
+    "type": "success"
+  }
+]

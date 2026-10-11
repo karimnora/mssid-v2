@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "animals-cow-prompt.mp3",
+    "texte": "المِسِ البَقَرَةَ! هِيَ تُعْطِينَا الحَلِيبَ اللَّذِيذ!",
+    "activite": "البَقَرَةُ الحَنُونَةُ",
+    "activiteId": "animals-cow",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "animals-cow-success.mp3",
+    "texte": "أَحْسَنْت! هَذِهِ بَقَرَة!",
+    "activite": "البَقَرَةُ الحَنُونَةُ",
+    "activiteId": "animals-cow",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "animals-sheep-prompt.mp3",
+    "texte": "المِسِ الخَرُوفَ! صُوفُهُ نَاعِمٌ وَدَافِئ!",
+    "activite": "الخَرُوفُ الصُّوفِيُّ",
+    "activiteId": "animals-sheep",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "animals-sheep-success.mp3",
+    "texte": "رَائِع! هَذَا خَرُوف!",
+    "activite": "الخَرُوفُ الصُّوفِيُّ",
+    "activiteId": "animals-sheep",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "animals-chicken-prompt.mp3",
+    "texte": "المِسِ الدَّجَاجَةَ! هِيَ تُعْطِينَا البَيْضَ!",
+    "activite": "الدَّجَاجَةُ المُنَقْنِقَةُ",
+    "activiteId": "animals-chicken",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "animals-chicken-success.mp3",
+    "texte": "مُمْتَاز! هَذِهِ دَجَاجَة!",
+    "activite": "الدَّجَاجَةُ المُنَقْنِقَةُ",
+    "activiteId": "animals-chicken",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "animals-cat-prompt.mp3",
+    "texte": "المِسِ القِطَّةَ! هِيَ تَقُولُ: نَاؤُو!",
+    "activite": "القِطَّةُ اللَّطِيفَةُ",
+    "activiteId": "animals-cat",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "animals-cat-success.mp3",
+    "texte": "أَحْسَنْت! هَذِهِ قِطَّة!",
+    "activite": "القِطَّةُ اللَّطِيفَةُ",
+    "activiteId": "animals-cat",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "animals-dog-prompt.mp3",
+    "texte": "المِسِ الكَلْبَ! هُوَ يَقُولُ: هَاو هَاو!",
+    "activite": "الكَلْبُ الوَفِيُّ",
+    "activiteId": "animals-dog",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "animals-dog-success.mp3",
+    "texte": "رَائِع! هَذَا كَلْب!",
+    "activite": "الكَلْبُ الوَفِيُّ",
+    "activiteId": "animals-dog",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "animals-lion-prompt.mp3",
+    "texte": "المِسِ الأَسَدَ! هُوَ مَلِكُ الغَابَة القَوِيّ!",
+    "activite": "الأَسَدُ المَلِكُ",
+    "activiteId": "animals-lion",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "animals-lion-success.mp3",
+    "texte": "مُمْتَاز! هَذَا أَسَد!",
+    "activite": "الأَسَدُ المَلِكُ",
+    "activiteId": "animals-lion",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "animals-sort-big-small-prompt.mp3",
+    "texte": "سَاعِدْنِي! ضَعِ الحَيَوَانَاتِ الكَبِيرَةَ مَعَ الفِيلِ، وَالحَيَوَانَاتِ الصَّغِيرَةَ مَعَ الفَأْرِ!",
+    "activite": "كَبِيرٌ أَمْ صَغِيرٌ؟",
+    "activiteId": "animals-sort-big-small",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "animals-sort-big-small-success.mp3",
+    "texte": "مُمْتَاز! رَتَّبْتَ كُلَّ الحَيَوَانَاتِ!",
+    "activite": "كَبِيرٌ أَمْ صَغِيرٌ؟",
+    "activiteId": "animals-sort-big-small",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "animals-favorite-food-prompt.mp3",
+    "texte": "وَصِّلْ كُلَّ حَيَوَانٍ مَعَ طَعَامِهِ المُفَضَّل!",
+    "activite": "مَاذَا يَأْكُلُ كُلُّ حَيَوَانٍ؟",
+    "activiteId": "animals-favorite-food",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "animals-favorite-food-success.mp3",
+    "texte": "رَائِع! أَطْعَمْتَ كُلَّ الحَيَوَانَات!",
+    "activite": "مَاذَا يَأْكُلُ كُلُّ حَيَوَانٍ؟",
+    "activiteId": "animals-favorite-food",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "animals-bubble-pop-prompt.mp3",
+    "texte": "فرقع كل الفراشات! هيا، بسرعة!",
+    "activite": "فَقَاعَاتُ الفَرَاشَاتِ",
+    "activiteId": "animals-bubble-pop",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "animals-bubble-pop-success.mp3",
+    "texte": "فرقعتها كلها! أنت بطل!",
+    "activite": "فَقَاعَاتُ الفَرَاشَاتِ",
+    "activiteId": "animals-bubble-pop",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "animals-memory-farm-prompt.mp3",
+    "texte": "اِفْتَحِ البِطَاقَاتِ وَابْحَثْ عَنِ الحَيَوَانَيْنِ المُتَشَابِهَيْن!",
+    "activite": "ذَاكِرَةُ حَيَوَانَاتِ المَزْرَعَةِ",
+    "activiteId": "animals-memory-farm",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "animals-memory-farm-success.mp3",
+    "texte": "ذَاكِرَةٌ رَائِعَة! أَحْسَنْتَ يَا بَطَل!",
+    "activite": "ذَاكِرَةُ حَيَوَانَاتِ المَزْرَعَةِ",
+    "activiteId": "animals-memory-farm",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  }
+]

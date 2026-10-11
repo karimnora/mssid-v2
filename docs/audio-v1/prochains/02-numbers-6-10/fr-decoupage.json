@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "num-6-prompt.mp3",
+    "texte": "Mets six pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Six",
+    "activiteId": "num-6",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "num-6-success.mp3",
+    "texte": "Excellent ! Six pommes !",
+    "activite": "Six",
+    "activiteId": "num-6",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "num-7-prompt.mp3",
+    "texte": "Mets sept étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Sept",
+    "activiteId": "num-7",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "num-7-success.mp3",
+    "texte": "Formidable ! Sept étoiles !",
+    "activite": "Sept",
+    "activiteId": "num-7",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "num-8-count-prompt.mp3",
+    "texte": "Mets huit pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Huit pommes",
+    "activiteId": "num-8-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "num-8-count-success.mp3",
+    "texte": "Bravo ! Huit pommes !",
+    "activite": "Huit pommes",
+    "activiteId": "num-8-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "num-8-prompt.mp3",
+    "texte": "Trace le chiffre huit avec ton doigt !",
+    "activite": "Huit",
+    "activiteId": "num-8",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "num-8-success.mp3",
+    "texte": "Bravo ! Tu as écrit le huit !",
+    "activite": "Huit",
+    "activiteId": "num-8",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "num-9-count-prompt.mp3",
+    "texte": "Mets neuf étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Neuf étoiles",
+    "activiteId": "num-9-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "num-9-count-success.mp3",
+    "texte": "Super ! Neuf étoiles !",
+    "activite": "Neuf étoiles",
+    "activiteId": "num-9-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "num-9-prompt.mp3",
+    "texte": "Trace le chiffre neuf avec ton doigt !",
+    "activite": "Neuf",
+    "activiteId": "num-9",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "num-9-success.mp3",
+    "texte": "Super ! Tu as écrit le neuf !",
+    "activite": "Neuf",
+    "activiteId": "num-9",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "num-10-count-prompt.mp3",
+    "texte": "Mets dix étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Dix étoiles",
+    "activiteId": "num-10-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "num-10-count-success.mp3",
+    "texte": "Bravo ! Dix étoiles !",
+    "activite": "Dix étoiles",
+    "activiteId": "num-10-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "num-10-prompt.mp3",
+    "texte": "Trace le nombre dix avec ton doigt ! Tu es un champion des nombres !",
+    "activite": "Dix",
+    "activiteId": "num-10",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "num-10-success.mp3",
+    "texte": "Félicitations ! Tu as fini tout le parcours des nombres !",
+    "activite": "Dix",
+    "activiteId": "num-10",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "family-fennec-home-prompt.mp3",
+    "texte": "Glisse le fennec : porte, salon, cuisine, chambre, puis la famille !",
+    "activite": "Le Fennec Rentre Chez Lui",
+    "activiteId": "family-fennec-home",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "family-fennec-home-success.mp3",
+    "texte": "Bienvenue à la maison ! Rien de mieux que sa famille !",
+    "activite": "Le Fennec Rentre Chez Lui",
+    "activiteId": "family-fennec-home",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "family-mom-prompt.mp3",
+    "texte": "Touche la maman ! Une maman aime câliner ses enfants !",
+    "activite": "Maman",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "family-mom-success.mp3",
+    "texte": "Bravo ! Voici une maman !",
+    "activite": "Maman",
+    "activiteId": "family-mom",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "family-dad-prompt.mp3",
+    "texte": "Touche le papa ! Un papa aime jouer avec ses enfants !",
+    "activite": "Papa",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "family-dad-success.mp3",
+    "texte": "Bravo ! Voici un papa !",
+    "activite": "Papa",
+    "activiteId": "family-dad",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "family-elders-baby-prompt.mp3",
+    "texte": "Touche chaque carte et écoute son nom !",
+    "activite": "Qui Est Dans La Famille ?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "family-elders-baby-success.mp3",
+    "texte": "Bravo ! Tu connais toute la famille !",
+    "activite": "Qui Est Dans La Famille ?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "family-roles-prompt.mp3",
+    "texte": "Relie papi au livre, et le bébé au biberon !",
+    "activite": "Qui Aime Quoi ?",
+    "activiteId": "family-roles",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "family-roles-success.mp3",
+    "texte": "Chacun dans la famille est aimé !",
+    "activite": "Qui Aime Quoi ?",
+    "activiteId": "family-roles",
+    "moduleId": "preschool-family",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "family-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : maman, papa, bébé !",
+    "activite": "Mémo de la Famille",
+    "activiteId": "family-memory",
+    "moduleId": "preschool-family",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "family-memory-success.mp3",
+    "texte": "Formidable ! Tu connais ta famille !",
+    "activite": "Mémo de la Famille",
+    "activiteId": "family-memory",
+    "moduleId": "preschool-family",
+    "type": "success"
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "world-day-path-prompt.mp3",
+    "texte": "اِسْحَبِ العُصْفُورَ: فَجْر، شَمْس، غُرُوب، قَمَر، ثُمَّ البَيْت!",
+    "activite": "يَوْمِي مِنَ الصَّبَاحِ إِلَى اللَّيْل",
+    "activiteId": "world-day-path",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "world-day-path-success.mp3",
+    "texte": "يَوْمٌ كَامِل! أَحْسَنْت!",
+    "activite": "يَوْمِي مِنَ الصَّبَاحِ إِلَى اللَّيْل",
+    "activiteId": "world-day-path",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "world-algerian-animals-prompt.mp3",
+    "texte": "اِلْمَسِ الجَمَل! الجَمَلُ يَعِيشُ فِي الصَّحْرَاء!",
+    "activite": "الجَمَلُ سَفِينَةُ الصَّحْرَاء",
+    "activiteId": "world-algerian-animals",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "world-algerian-animals-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا جَمَلٌ قَوِيّ!",
+    "activite": "الجَمَلُ سَفِينَةُ الصَّحْرَاء",
+    "activiteId": "world-algerian-animals",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "world-fennec-prompt.mp3",
+    "texte": "اِلْمَسِ الفَنَكَ! آذانُهُ كَبِيرَةٌ وَهُوَ ثَعْلَبُ الصَّحْرَاء!",
+    "activite": "الفَنَكُ صَدِيقُ الصَّحْرَاء",
+    "activiteId": "world-fennec",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "world-fennec-success.mp3",
+    "texte": "رَائِع! هَذَا فَنَك!",
+    "activite": "الفَنَكُ صَدِيقُ الصَّحْرَاء",
+    "activiteId": "world-fennec",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "world-match-homes-prompt.mp3",
+    "texte": "اِرْبِطِ الجَمَلَ بِالصَّحْرَاء، وَالسَّمَكَةَ بِالبَحْر!",
+    "activite": "كُلُّ حَيَوَانٍ فِي بَيْتِهِ",
+    "activiteId": "world-match-homes",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "world-match-homes-success.mp3",
+    "texte": "عَادَتِ الحَيَوَانَاتُ إِلَى بُيُوتِهَا! بَرَافُو!",
+    "activite": "كُلُّ حَيَوَانٍ فِي بَيْتِهِ",
+    "activiteId": "world-match-homes",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "world-morning-routine-prompt.mp3",
+    "texte": "ضَعِ الصَّابُونَ مَعَ الفُرْشَاة، وَالسَّيَّارَةَ مَعَ الدُّبّ!",
+    "activite": "أُرَتِّبُ غُرْفَتِي",
+    "activiteId": "world-morning-routine",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "world-morning-routine-success.mp3",
+    "texte": "غُرْفَةٌ مُرَتَّبَة! أَنْتَ بَطَل!",
+    "activite": "أُرَتِّبُ غُرْفَتِي",
+    "activiteId": "world-morning-routine",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "world-day-night-prompt.mp3",
+    "texte": "ضَعِ النَّظَّارَةَ وَالدِّيكَ مَعَ الشَّمْس، وَالبُومَةَ وَالسَّرِيرَ مَعَ القَمَر!",
+    "activite": "نَهَارٌ أَمْ لَيْل؟",
+    "activiteId": "world-day-night",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "world-day-night-success.mp3",
+    "texte": "تَعْرِفُ النَّهَارَ وَاللَّيْل!",
+    "activite": "نَهَارٌ أَمْ لَيْل؟",
+    "activiteId": "world-day-night",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "world-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: جَمَل، شَمْس، بَيْت!",
+    "activite": "تَذَكَّرْ عَالَمِي",
+    "activiteId": "world-memory",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "world-memory-success.mp3",
+    "texte": "بَرَاوَ! هَذَا عَالَمُكَ!",
+    "activite": "تَذَكَّرْ عَالَمِي",
+    "activiteId": "world-memory",
+    "moduleId": "preschool-world",
+    "type": "success"
+  }
+]

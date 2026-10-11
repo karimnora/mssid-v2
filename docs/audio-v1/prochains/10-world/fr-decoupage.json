@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "world-day-path-prompt.mp3",
+    "texte": "Glisse l'oiseau : aube, soleil, coucher, lune, puis la maison !",
+    "activite": "Ma Journée du Matin au Soir",
+    "activiteId": "world-day-path",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "world-day-path-success.mp3",
+    "texte": "Une journée complète ! Bravo !",
+    "activite": "Ma Journée du Matin au Soir",
+    "activiteId": "world-day-path",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "world-algerian-animals-prompt.mp3",
+    "texte": "Touche le dromadaire ! Le dromadaire vit dans le désert !",
+    "activite": "Le Dromadaire du Sahara",
+    "activiteId": "world-algerian-animals",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "world-algerian-animals-success.mp3",
+    "texte": "Super ! Voici le roi des dunes !",
+    "activite": "Le Dromadaire du Sahara",
+    "activiteId": "world-algerian-animals",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "world-fennec-prompt.mp3",
+    "texte": "Touche le fennec ! Il a de grandes oreilles, c'est le petit renard du Sahara !",
+    "activite": "Le Fennec du Désert",
+    "activiteId": "world-fennec",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "world-fennec-success.mp3",
+    "texte": "Bravo ! Voici un fennec !",
+    "activite": "Le Fennec du Désert",
+    "activiteId": "world-fennec",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "world-match-homes-prompt.mp3",
+    "texte": "Relie le dromadaire au désert, et le poisson à la mer !",
+    "activite": "Chaque Animal dans sa Maison",
+    "activiteId": "world-match-homes",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "world-match-homes-success.mp3",
+    "texte": "Tous les animaux sont rentrés ! Bravo !",
+    "activite": "Chaque Animal dans sa Maison",
+    "activiteId": "world-match-homes",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "world-morning-routine-prompt.mp3",
+    "texte": "Mets le savon avec la brosse, et la voiture avec l'ours !",
+    "activite": "Je Range Ma Chambre",
+    "activiteId": "world-morning-routine",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "world-morning-routine-success.mp3",
+    "texte": "Chambre rangée ! Tu es un champion !",
+    "activite": "Je Range Ma Chambre",
+    "activiteId": "world-morning-routine",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "world-day-night-prompt.mp3",
+    "texte": "Mets les lunettes et le coq avec le soleil, le hibou et le lit avec la lune !",
+    "activite": "Jour ou Nuit ?",
+    "activiteId": "world-day-night",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "world-day-night-success.mp3",
+    "texte": "Tu connais le jour et la nuit !",
+    "activite": "Jour ou Nuit ?",
+    "activiteId": "world-day-night",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "world-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : dromadaire, soleil, maison !",
+    "activite": "Mémo de Mon Monde",
+    "activiteId": "world-memory",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "world-memory-success.mp3",
+    "texte": "Bravo ! C'est ton petit monde !",
+    "activite": "Mémo de Mon Monde",
+    "activiteId": "world-memory",
+    "moduleId": "preschool-world",
+    "type": "success"
+  }
+]

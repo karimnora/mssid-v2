@@ -48,7 +48,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const [showSuccess, setShowSuccess] = useState(false);
   const [showEcho, setShowEcho] = useState(false);
   const [showParentTip, setShowParentTip] = useState(false);
-  const { speak, hasVoice } = usePreschoolSpeech(language);
+  const { speak, stop, hasVoice } = usePreschoolSpeech(language);
   const content = activity.i18n[language];
   const echoWord = activity.echoWord?.[language];
   const wantsEcho = Boolean(echoWord) && voiceEchoSupported();
@@ -59,6 +59,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const interactedRef = useRef(false);
   const replayUsedRef = useRef(false);
   const qualityRef = useRef<PreschoolPlayQuality>('done');
+  const completionTimerRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     setMood('idle');
@@ -79,6 +80,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
     return () => {
       window.clearTimeout(first);
       if (replay) window.clearTimeout(replay);
+      window.clearTimeout(completionTimerRef.current);
+      stop();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activity.id, language]);
@@ -98,20 +101,22 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         'Bravo d’avoir essayé. On peut recommencer.',
         'Nice try. We can do it again.',
       ));
-      window.setTimeout(() => onComplete(qualityRef.current), 1200);
+      completionTimerRef.current = window.setTimeout(() => onComplete(qualityRef.current), 1200);
       return;
     }
     setMood('happy');
     setShowSuccess(true);
     if (content.successAudio) speak(content.successAudio, content.successAudioSrc);
+    const recordedRewardDelay = content.successAudioSrc && content.successAudioDurationMs
+      ? content.successAudioDurationMs + 150 : 0;
     if (wantsEcho && echoWord) {
-      window.setTimeout(() => {
+      completionTimerRef.current = window.setTimeout(() => {
         setShowSuccess(false);
         setShowEcho(true);
-      }, 900);
+      }, Math.max(900, recordedRewardDelay));
       return;
     }
-    window.setTimeout(() => onComplete(qualityRef.current), 1400);
+    completionTimerRef.current = window.setTimeout(() => onComplete(qualityRef.current), Math.max(1400, recordedRewardDelay));
   };
 
   const replayPrompt = () => speak(content.promptAudio, content.promptAudioSrc);

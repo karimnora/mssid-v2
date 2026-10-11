@@ -54,6 +54,8 @@ export interface LocalizedContent {
   successAudio?: string;
   /** Optional recorded success line. TTS is the fallback. */
   successAudioSrc?: string;
+  /** Recorded reward duration: let the clip finish before the next activity or mic echo. */
+  successAudioDurationMs?: number;
   /** Optional hero image for tap_choice — when set per language, isolates AR/FR/EN visuals. */
   image?: string;
   /** Optional tap targets — when set per language, isolates letter glyphs (أ vs A). */

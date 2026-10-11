@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "surah-fatiha-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ الفَاتِحَةِ، ثُمَّ كَرِّرْ مَعَ الشَّيْخِ!",
+    "activite": "سُورَةُ الفَاتِحَةِ",
+    "activiteId": "surah-fatiha",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "surah-fatiha-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ الفَاتِحَةِ",
+    "activiteId": "surah-fatiha",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "surah-ikhlas-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ الإِخْلَاصِ. اللَّهُ وَاحِدٌ!",
+    "activite": "سُورَةُ الإِخْلَاصِ",
+    "activiteId": "surah-ikhlas",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "surah-ikhlas-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ الإِخْلَاصِ",
+    "activiteId": "surah-ikhlas",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "surah-falaq-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ الفَلَقِ. نَطْلُبُ حِمَايَةَ اللَّهِ.",
+    "activite": "سُورَةُ الفَلَقِ",
+    "activiteId": "surah-falaq",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "surah-falaq-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ الفَلَقِ",
+    "activiteId": "surah-falaq",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "surah-nas-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ النَّاسِ. رَبُّ النَّاسِ يَحْمِينَا.",
+    "activite": "سُورَةُ النَّاسِ",
+    "activiteId": "surah-nas",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "surah-nas-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ النَّاسِ",
+    "activiteId": "surah-nas",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "surah-kawthar-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ الكَوْثَرِ. نِعَمُ اللَّهِ كَثِيرَةٌ!",
+    "activite": "سُورَةُ الكَوْثَرِ",
+    "activiteId": "surah-kawthar",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "surah-kawthar-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ الكَوْثَرِ",
+    "activiteId": "surah-kawthar",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "surah-nasr-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ النَّصْرِ مَعَ دِيدُو. نُكَرِّرُ آيَةً آيَةً!",
+    "activite": "سُورَةُ النَّصْرِ",
+    "activiteId": "surah-nasr",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "surah-nasr-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ النَّصْرِ",
+    "activiteId": "surah-nasr",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "surah-asr-prompt.mp3",
+    "texte": "اِسْمَعْ سُورَةَ العَصْرِ. الوَقْتُ ثَمِينٌ!",
+    "activite": "سُورَةُ العَصْرِ",
+    "activiteId": "surah-asr",
+    "moduleId": "preschool-short-surahs",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "surah-asr-success.mp3",
+    "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+    "activite": "سُورَةُ العَصْرِ",
+    "activiteId": "surah-asr",
+    "moduleId": "preschool-short-surahs",
+    "type": "success"
+  }
+]

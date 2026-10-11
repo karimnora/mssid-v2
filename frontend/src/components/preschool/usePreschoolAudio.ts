@@ -89,6 +89,8 @@ let recordedClip: HTMLAudioElement | null = null;
 
 function stopRecordedClip() {
   if (!recordedClip) return;
+  recordedClip.onended = null;
+  recordedClip.onerror = null;
   recordedClip.pause();
   recordedClip.removeAttribute('src');
   recordedClip = null;
@@ -106,14 +108,14 @@ function playRecordedClip(src: string, onFail: () => void) {
   audio.onended = () => {
     if (recordedClip === audio) recordedClip = null;
   };
-  audio.onerror = () => {
-    if (recordedClip === audio) recordedClip = null;
+  const fallback = () => {
+    // A previous request may fail after another clip started or after the user stopped playback.
+    if (recordedClip !== audio || isPreschoolMuted()) return;
+    stopRecordedClip();
     onFail();
   };
-  audio.play().catch(() => {
-    if (recordedClip === audio) recordedClip = null;
-    onFail();
-  });
+  audio.onerror = fallback;
+  audio.play().catch(fallback);
 }
 
 export function usePreschoolSpeech(language: PreschoolLanguage) {

@@ -1,0 +1,590 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "letters-alif-rabbit-prompt.mp3",
+    "texte": "Touche la lettre A ! A comme Ananas !",
+    "activite": "La Pêche à la Lettre A",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "letters-alif-rabbit-success.mp3",
+    "texte": "Bravo ! A comme Ananas !",
+    "activite": "La Pêche à la Lettre A",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "letters-boat-alif-baa-prompt.mp3",
+    "texte": "Touche la lettre B ! B comme Ballon !",
+    "activite": "La Pêche à la Lettre B",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "letters-boat-alif-baa-success.mp3",
+    "texte": "Bravo ! B comme Ballon !",
+    "activite": "La Pêche à la Lettre B",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "letters-trace-alif-prompt.mp3",
+    "texte": "Trace la lettre A avec ton doigt ! Deux traits qui se rejoignent, puis une barre au milieu !",
+    "activite": "Trace la Lettre A",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "letters-trace-alif-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit A !",
+    "activite": "Trace la Lettre A",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "letters-taa-apple-prompt.mp3",
+    "texte": "Touche la lettre T ! T comme Tomate !",
+    "activite": "La Pêche à la Lettre T",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "letters-taa-apple-success.mp3",
+    "texte": "Bravo ! T comme Tomate !",
+    "activite": "La Pêche à la Lettre T",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "letters-thaa-fox-prompt.mp3",
+    "texte": "Touche la lettre R ! R comme Renard !",
+    "activite": "La Pêche à la Lettre R",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "letters-thaa-fox-success.mp3",
+    "texte": "Bravo ! R comme Renard !",
+    "activite": "La Pêche à la Lettre R",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "letters-jeem-camel-prompt.mp3",
+    "texte": "Touche la lettre J ! J comme Jardin !",
+    "activite": "La Pêche à la Lettre J",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "letters-jeem-camel-success.mp3",
+    "texte": "Bravo ! J comme Jardin !",
+    "activite": "La Pêche à la Lettre J",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "letters-trace-jeem-prompt.mp3",
+    "texte": "Trace la lettre J avec ton doigt ! Descends, puis tourne !",
+    "activite": "Trace la Lettre J",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "letters-trace-jeem-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit J !",
+    "activite": "Trace la Lettre J",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "letters-dal-bear-prompt.mp3",
+    "texte": "Touche la lettre D ! D comme Dinosaure !",
+    "activite": "La Pêche à la Lettre D",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "letters-dal-bear-success.mp3",
+    "texte": "Bravo ! D comme Dinosaure !",
+    "activite": "La Pêche à la Lettre D",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "letters-trace-baa-prompt.mp3",
+    "texte": "Trace la lettre B avec ton doigt ! Une grande ligne, puis deux ronds collés !",
+    "activite": "Trace la Lettre B",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "letters-trace-baa-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit B !",
+    "activite": "Trace la Lettre B",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "letters-seen-fish-prompt.mp3",
+    "texte": "Touche la lettre S ! S comme Soleil !",
+    "activite": "La Pêche à la Lettre S",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "letters-seen-fish-success.mp3",
+    "texte": "Bravo ! S comme Soleil !",
+    "activite": "La Pêche à la Lettre S",
+    "type": "success"
+  },
+  {
+    "ordre": 21,
+    "fichier": "letters-meem-banana-prompt.mp3",
+    "texte": "Touche la lettre M ! M comme Maison !",
+    "activite": "La Pêche à la Lettre M",
+    "type": "prompt"
+  },
+  {
+    "ordre": 22,
+    "fichier": "letters-meem-banana-success.mp3",
+    "texte": "Bravo ! M comme Maison !",
+    "activite": "La Pêche à la Lettre M",
+    "type": "success"
+  },
+  {
+    "ordre": 23,
+    "fichier": "letters-trace-meem-prompt.mp3",
+    "texte": "Trace la lettre M avec ton doigt ! Deux montagnes qui se touchent !",
+    "activite": "Trace la Lettre M",
+    "type": "prompt"
+  },
+  {
+    "ordre": 24,
+    "fichier": "letters-trace-meem-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit M !",
+    "activite": "Trace la Lettre M",
+    "type": "success"
+  },
+  {
+    "ordre": 25,
+    "fichier": "letters-fruit-basket-prompt.mp3",
+    "texte": "Mets les fruits dans le couffin et les bonbons dans l'assiette !",
+    "activite": "Le Couffin des Fruits",
+    "type": "prompt"
+  },
+  {
+    "ordre": 26,
+    "fichier": "letters-fruit-basket-success.mp3",
+    "texte": "Superbe ! Un délicieux panier de fruits !",
+    "activite": "Le Couffin des Fruits",
+    "type": "success"
+  },
+  {
+    "ordre": 27,
+    "fichier": "letters-match-words-prompt.mp3",
+    "texte": "Touche la lettre puis l’image, ou glisse un trait pour les relier !",
+    "activite": "Associe la Lettre et l'Image",
+    "type": "prompt"
+  },
+  {
+    "ordre": 28,
+    "fichier": "letters-match-words-success.mp3",
+    "texte": "Bravo ! Tu as associé toutes les lettres !",
+    "activite": "Associe la Lettre et l'Image",
+    "type": "success"
+  },
+  {
+    "ordre": 29,
+    "fichier": "letters-haa-milk-prompt.mp3",
+    "texte": "Touche la lettre H ! H comme Hibou !",
+    "activite": "La Pêche à la Lettre H",
+    "type": "prompt"
+  },
+  {
+    "ordre": 30,
+    "fichier": "letters-haa-milk-success.mp3",
+    "texte": "Bravo ! H comme Hibou !",
+    "activite": "La Pêche à la Lettre H",
+    "type": "success"
+  },
+  {
+    "ordre": 31,
+    "fichier": "letters-khaa-bread-prompt.mp3",
+    "texte": "Touche la lettre X ! X comme Xylophone !",
+    "activite": "La Pêche à la Lettre X",
+    "type": "prompt"
+  },
+  {
+    "ordre": 32,
+    "fichier": "letters-khaa-bread-success.mp3",
+    "texte": "Bravo ! X comme Xylophone !",
+    "activite": "La Pêche à la Lettre X",
+    "type": "success"
+  },
+  {
+    "ordre": 33,
+    "fichier": "letters-thal-wolf-prompt.mp3",
+    "texte": "Touche la lettre Y ! Y comme Yo-yo !",
+    "activite": "La Pêche à la Lettre Y",
+    "type": "prompt"
+  },
+  {
+    "ordre": 34,
+    "fichier": "letters-thal-wolf-success.mp3",
+    "texte": "Bravo ! Y comme Yo-yo !",
+    "activite": "La Pêche à la Lettre Y",
+    "type": "success"
+  },
+  {
+    "ordre": 35,
+    "fichier": "letters-raa-feather-prompt.mp3",
+    "texte": "Touche la lettre R ! R comme Robe !",
+    "activite": "La Pêche à la Lettre R",
+    "type": "prompt"
+  },
+  {
+    "ordre": 36,
+    "fichier": "letters-raa-feather-success.mp3",
+    "texte": "Bravo ! R comme Robe !",
+    "activite": "La Pêche à la Lettre R",
+    "type": "success"
+  },
+  {
+    "ordre": 37,
+    "fichier": "letters-zay-giraffe-prompt.mp3",
+    "texte": "Touche la lettre Z ! Z comme Zèbre !",
+    "activite": "La Pêche à la Lettre Z",
+    "type": "prompt"
+  },
+  {
+    "ordre": 38,
+    "fichier": "letters-zay-giraffe-success.mp3",
+    "texte": "Bravo ! Z comme Zèbre !",
+    "activite": "La Pêche à la Lettre Z",
+    "type": "success"
+  },
+  {
+    "ordre": 39,
+    "fichier": "letters-trace-raa-prompt.mp3",
+    "texte": "Trace la lettre R avec ton doigt ! Une ligne, un ventre, puis une jambe !",
+    "activite": "Trace la Lettre R",
+    "type": "prompt"
+  },
+  {
+    "ordre": 40,
+    "fichier": "letters-trace-raa-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit R !",
+    "activite": "Trace la Lettre R",
+    "type": "success"
+  },
+  {
+    "ordre": 41,
+    "fichier": "letters-sheen-sun-prompt.mp3",
+    "texte": "Touche la lettre S ! S comme Soleil !",
+    "activite": "La Pêche à la Lettre S",
+    "type": "prompt"
+  },
+  {
+    "ordre": 42,
+    "fichier": "letters-sheen-sun-success.mp3",
+    "texte": "Bravo ! S comme Soleil !",
+    "activite": "La Pêche à la Lettre S",
+    "type": "success"
+  },
+  {
+    "ordre": 43,
+    "fichier": "letters-sad-falcon-prompt.mp3",
+    "texte": "Touche la lettre F ! F comme Faucon !",
+    "activite": "La Pêche à la Lettre F",
+    "type": "prompt"
+  },
+  {
+    "ordre": 44,
+    "fichier": "letters-sad-falcon-success.mp3",
+    "texte": "Bravo ! F comme Faucon !",
+    "activite": "La Pêche à la Lettre F",
+    "type": "success"
+  },
+  {
+    "ordre": 45,
+    "fichier": "letters-dad-frog-prompt.mp3",
+    "texte": "Touche la lettre G ! G comme Grenouille !",
+    "activite": "La Pêche à la Lettre G",
+    "type": "prompt"
+  },
+  {
+    "ordre": 46,
+    "fichier": "letters-dad-frog-success.mp3",
+    "texte": "Bravo ! G comme Grenouille !",
+    "activite": "La Pêche à la Lettre G",
+    "type": "success"
+  },
+  {
+    "ordre": 47,
+    "fichier": "letters-trace-sad-prompt.mp3",
+    "texte": "Trace la lettre F avec ton doigt ! Une ligne, une barre en haut, une barre au milieu !",
+    "activite": "Trace la Lettre F",
+    "type": "prompt"
+  },
+  {
+    "ordre": 48,
+    "fichier": "letters-trace-sad-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit F !",
+    "activite": "Trace la Lettre F",
+    "type": "success"
+  },
+  {
+    "ordre": 49,
+    "fichier": "letters-taa2-peacock-prompt.mp3",
+    "texte": "Touche la lettre T ! T comme Tortue !",
+    "activite": "La Pêche à la Lettre T",
+    "type": "prompt"
+  },
+  {
+    "ordre": 50,
+    "fichier": "letters-taa2-peacock-success.mp3",
+    "texte": "Bravo ! T comme Tortue !",
+    "activite": "La Pêche à la Lettre T",
+    "type": "success"
+  },
+  {
+    "ordre": 51,
+    "fichier": "letters-za-gazelle-prompt.mp3",
+    "texte": "Touche la lettre G ! G comme Gazelle !",
+    "activite": "La Pêche à la Lettre G",
+    "type": "prompt"
+  },
+  {
+    "ordre": 52,
+    "fichier": "letters-za-gazelle-success.mp3",
+    "texte": "Bravo ! G comme Gazelle !",
+    "activite": "La Pêche à la Lettre G",
+    "type": "success"
+  },
+  {
+    "ordre": 53,
+    "fichier": "letters-ayn-bird-prompt.mp3",
+    "texte": "Touche la lettre O ! O comme Oiseau !",
+    "activite": "La Pêche à la Lettre O",
+    "type": "prompt"
+  },
+  {
+    "ordre": 54,
+    "fichier": "letters-ayn-bird-success.mp3",
+    "texte": "Bravo ! O comme Oiseau !",
+    "activite": "La Pêche à la Lettre O",
+    "type": "success"
+  },
+  {
+    "ordre": 55,
+    "fichier": "letters-ghayn-sheep-prompt.mp3",
+    "texte": "Touche la lettre M ! M comme Mouton !",
+    "activite": "La Pêche à la Lettre M",
+    "type": "prompt"
+  },
+  {
+    "ordre": 56,
+    "fichier": "letters-ghayn-sheep-success.mp3",
+    "texte": "Bravo ! M comme Mouton !",
+    "activite": "La Pêche à la Lettre M",
+    "type": "success"
+  },
+  {
+    "ordre": 57,
+    "fichier": "letters-faa-elephant-prompt.mp3",
+    "texte": "Touche la lettre E ! E comme Éléphant !",
+    "activite": "La Pêche à la Lettre E",
+    "type": "prompt"
+  },
+  {
+    "ordre": 58,
+    "fichier": "letters-faa-elephant-success.mp3",
+    "texte": "Bravo ! E comme Éléphant !",
+    "activite": "La Pêche à la Lettre E",
+    "type": "success"
+  },
+  {
+    "ordre": 59,
+    "fichier": "letters-trace-faa-prompt.mp3",
+    "texte": "Trace la lettre E avec ton doigt ! Un trait vertical, puis trois barres horizontales !",
+    "activite": "Trace la Lettre E",
+    "type": "prompt"
+  },
+  {
+    "ordre": 60,
+    "fichier": "letters-trace-faa-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit E !",
+    "activite": "Trace la Lettre E",
+    "type": "success"
+  },
+  {
+    "ordre": 61,
+    "fichier": "letters-qaf-monkey-prompt.mp3",
+    "texte": "Touche la lettre Q ! Q comme Quatre !",
+    "activite": "La Pêche à la Lettre Q",
+    "type": "prompt"
+  },
+  {
+    "ordre": 62,
+    "fichier": "letters-qaf-monkey-success.mp3",
+    "texte": "Bravo ! Q comme Quatre !",
+    "activite": "La Pêche à la Lettre Q",
+    "type": "success"
+  },
+  {
+    "ordre": 63,
+    "fichier": "letters-kaf-dog-prompt.mp3",
+    "texte": "Touche la lettre C ! C comme Chat !",
+    "activite": "La Pêche à la Lettre C",
+    "type": "prompt"
+  },
+  {
+    "ordre": 64,
+    "fichier": "letters-kaf-dog-success.mp3",
+    "texte": "Bravo ! C comme Chat !",
+    "activite": "La Pêche à la Lettre C",
+    "type": "success"
+  },
+  {
+    "ordre": 65,
+    "fichier": "letters-lam-lemon-prompt.mp3",
+    "texte": "Touche la lettre L ! L comme Limonade !",
+    "activite": "La Pêche à la Lettre L",
+    "type": "prompt"
+  },
+  {
+    "ordre": 66,
+    "fichier": "letters-lam-lemon-success.mp3",
+    "texte": "Bravo ! L comme Limonade !",
+    "activite": "La Pêche à la Lettre L",
+    "type": "success"
+  },
+  {
+    "ordre": 67,
+    "fichier": "letters-trace-lam-prompt.mp3",
+    "texte": "Trace la lettre L avec ton doigt ! Descends, puis une barre vers la droite !",
+    "activite": "Trace la Lettre L",
+    "type": "prompt"
+  },
+  {
+    "ordre": 68,
+    "fichier": "letters-trace-lam-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit L !",
+    "activite": "Trace la Lettre L",
+    "type": "success"
+  },
+  {
+    "ordre": 69,
+    "fichier": "letters-noon-bee-prompt.mp3",
+    "texte": "Touche la lettre N ! N comme Nuage !",
+    "activite": "La Pêche à la Lettre N",
+    "type": "prompt"
+  },
+  {
+    "ordre": 70,
+    "fichier": "letters-noon-bee-success.mp3",
+    "texte": "Bravo ! N comme Nuage !",
+    "activite": "La Pêche à la Lettre N",
+    "type": "success"
+  },
+  {
+    "ordre": 71,
+    "fichier": "letters-haa2-moon-prompt.mp3",
+    "texte": "Touche la lettre L ! L comme Lune !",
+    "activite": "La Pêche à la Lettre L",
+    "type": "prompt"
+  },
+  {
+    "ordre": 72,
+    "fichier": "letters-haa2-moon-success.mp3",
+    "texte": "Bravo ! L comme Lune !",
+    "activite": "La Pêche à la Lettre L",
+    "type": "success"
+  },
+  {
+    "ordre": 73,
+    "fichier": "letters-waw-rose-prompt.mp3",
+    "texte": "Touche la lettre R ! R comme Rose !",
+    "activite": "La Pêche à la Lettre R",
+    "type": "prompt"
+  },
+  {
+    "ordre": 74,
+    "fichier": "letters-waw-rose-success.mp3",
+    "texte": "Bravo ! R comme Rose !",
+    "activite": "La Pêche à la Lettre R",
+    "type": "success"
+  },
+  {
+    "ordre": 75,
+    "fichier": "letters-trace-waw-prompt.mp3",
+    "texte": "Trace la lettre R avec ton doigt ! Une ligne, un ventre, puis une jambe !",
+    "activite": "Trace la Lettre R",
+    "type": "prompt"
+  },
+  {
+    "ordre": 76,
+    "fichier": "letters-trace-waw-success.mp3",
+    "texte": "Très beau tracé ! Tu as écrit R !",
+    "activite": "Trace la Lettre R",
+    "type": "success"
+  },
+  {
+    "ordre": 77,
+    "fichier": "letters-yaa-hand-prompt.mp3",
+    "texte": "Touche la lettre M ! M comme Main !",
+    "activite": "La Pêche à la Lettre M",
+    "type": "prompt"
+  },
+  {
+    "ordre": 78,
+    "fichier": "letters-yaa-hand-success.mp3",
+    "texte": "Bravo ! M comme Main !",
+    "activite": "La Pêche à la Lettre M",
+    "type": "success"
+  },
+  {
+    "ordre": 79,
+    "fichier": "letters-rhyme-sort-prompt.mp3",
+    "texte": "Écoute bien ! Mets la fraise et la feuille avec la fleur, le canard et le cadeau avec la carotte !",
+    "activite": "Ma Petite Oreille Écoute",
+    "type": "prompt"
+  },
+  {
+    "ordre": 80,
+    "fichier": "letters-rhyme-sort-success.mp3",
+    "texte": "Quelle bonne oreille ! Tu as reconnu tous les sons !",
+    "activite": "Ma Petite Oreille Écoute",
+    "type": "success"
+  },
+  {
+    "ordre": 81,
+    "fichier": "letters-match-words-2-prompt.mp3",
+    "texte": "Touche la lettre puis l’image, ou glisse un trait pour les relier !",
+    "activite": "Associe la Lettre et l'Image (2)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 82,
+    "fichier": "letters-match-words-2-success.mp3",
+    "texte": "Bravo ! Tu as associé ces lettres !",
+    "activite": "Associe la Lettre et l'Image (2)",
+    "type": "success"
+  },
+  {
+    "ordre": 83,
+    "fichier": "letters-listen-faa-prompt.mp3",
+    "texte": "Écoute le son : fff… Touche l'image qui commence par F, comme fennec !",
+    "activite": "F comme Fennec",
+    "type": "prompt"
+  },
+  {
+    "ordre": 84,
+    "fichier": "letters-listen-faa-success.mp3",
+    "texte": "Quelle oreille ! Fennec commence par F !",
+    "activite": "F comme Fennec",
+    "type": "success"
+  }
+]

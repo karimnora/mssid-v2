@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "food-fennec-market-prompt.mp3",
+    "texte": "Glisse le fennec : tomate, pain, olives, raisin, puis le marché !",
+    "activite": "Le Fennec au Marché",
+    "activiteId": "food-fennec-market",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "food-fennec-market-success.mp3",
+    "texte": "On est arrivés ! On mange fruits et légumes pour être forts !",
+    "activite": "Le Fennec au Marché",
+    "activiteId": "food-fennec-market",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "food-fruits-tap-prompt.mp3",
+    "texte": "Touche la pomme ! La pomme est un fruit sucré !",
+    "activite": "La Pomme Rouge",
+    "activiteId": "food-fruits-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "food-fruits-tap-success.mp3",
+    "texte": "Bravo ! Voici une pomme !",
+    "activite": "La Pomme Rouge",
+    "activiteId": "food-fruits-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "food-vegetables-tap-prompt.mp3",
+    "texte": "Touche la carotte ! La carotte est un légume qui aide les yeux !",
+    "activite": "La Carotte Orange",
+    "activiteId": "food-vegetables-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "food-vegetables-tap-success.mp3",
+    "texte": "Super ! Voici une carotte !",
+    "activite": "La Carotte Orange",
+    "activiteId": "food-vegetables-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "food-milk-tap-prompt.mp3",
+    "texte": "Touche le lait ! On boit du lait pour grandir forts !",
+    "activite": "Le Lait Blanc",
+    "activiteId": "food-milk-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "food-milk-tap-success.mp3",
+    "texte": "Bravo ! Le lait fortifie les os !",
+    "activite": "Le Lait Blanc",
+    "activiteId": "food-milk-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "food-sorting-prompt.mp3",
+    "texte": "Mets la pomme et le raisin avec la fraise, la carotte et le poivron avec le brocoli !",
+    "activite": "Fruit ou Légume ?",
+    "activiteId": "food-sorting",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "food-sorting-success.mp3",
+    "texte": "Génial ! Tu distingues fruits et légumes !",
+    "activite": "Fruit ou Légume ?",
+    "activiteId": "food-sorting",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "food-from-connect-prompt.mp3",
+    "texte": "Relie le lait à la vache, et l'œuf à la poule !",
+    "activite": "D'où vient la Nourriture ?",
+    "activiteId": "food-from-connect",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "food-from-connect-success.mp3",
+    "texte": "Wow ! Tu sais d'où vient la nourriture !",
+    "activite": "D'où vient la Nourriture ?",
+    "activiteId": "food-from-connect",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "food-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : pomme, carotte, lait !",
+    "activite": "Mémo des Aliments",
+    "activiteId": "food-memory",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "food-memory-success.mp3",
+    "texte": "Bravo ! Tu connais tes aliments !",
+    "activite": "Mémo des Aliments",
+    "activiteId": "food-memory",
+    "moduleId": "preschool-food",
+    "type": "success"
+  }
+]

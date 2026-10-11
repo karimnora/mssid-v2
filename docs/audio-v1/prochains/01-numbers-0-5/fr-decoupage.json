@@ -1,0 +1,110 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "num-0-prompt.mp3",
+    "texte": "Touche le zéro ! L'assiette est vide, il n'y a rien !",
+    "activite": "Zéro",
+    "activiteId": "num-0",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "num-0-success.mp3",
+    "texte": "Bravo ! Voici le zéro !",
+    "activite": "Zéro",
+    "activiteId": "num-0",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "num-1-prompt.mp3",
+    "texte": "Touche le chiffre un !",
+    "activite": "Un",
+    "activiteId": "num-1",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "num-1-success.mp3",
+    "texte": "Super ! Voici le un !",
+    "activite": "Un",
+    "activiteId": "num-1",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "num-2-prompt.mp3",
+    "texte": "Combien vois-tu de pommes ? Compte avec moi !",
+    "activite": "Deux",
+    "activiteId": "num-2",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "num-2-success.mp3",
+    "texte": "Parfait ! Exactement deux !",
+    "activite": "Deux",
+    "activiteId": "num-2",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "num-3-prompt.mp3",
+    "texte": "Mets trois pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Trois",
+    "activiteId": "num-3",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "num-3-success.mp3",
+    "texte": "Bravo ! Trois pommes !",
+    "activite": "Trois",
+    "activiteId": "num-3",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "num-4-prompt.mp3",
+    "texte": "Mets quatre étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Quatre",
+    "activiteId": "num-4",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "num-4-success.mp3",
+    "texte": "Super ! Exactement quatre !",
+    "activite": "Quatre",
+    "activiteId": "num-4",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "num-5-prompt.mp3",
+    "texte": "Mets cinq étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !",
+    "activite": "Cinq",
+    "activiteId": "num-5",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "num-5-success.mp3",
+    "texte": "Bravo ! Cinq étoiles dans le panier !",
+    "activite": "Cinq",
+    "activiteId": "num-5",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  }
+]

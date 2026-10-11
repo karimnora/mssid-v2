@@ -1,0 +1,590 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "letters-alif-rabbit-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الأَلِفِ! أَ… أَرْنَب!",
+    "activite": "صَيْدُ حَرْفِ الأَلِفِ (أ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "letters-alif-rabbit-success.mp3",
+    "texte": "مُمْتَاز! أَ… أَرْنَبٌ لَطِيف!",
+    "activite": "صَيْدُ حَرْفِ الأَلِفِ (أ)",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "letters-boat-alif-baa-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ البَاءِ! بَ… بَطَّة!",
+    "activite": "صَيْدُ حَرْفِ البَاءِ (ب)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "letters-boat-alif-baa-success.mp3",
+    "texte": "مُمْتَاز! بَ… بَطَّة جَمِيلَة!",
+    "activite": "صَيْدُ حَرْفِ البَاءِ (ب)",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "letters-trace-alif-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ الأَلِفِ بِإِصْبَعِكَ الجَمِيل! مِنْ أَعْلَى إِلَى أَسْفَل!",
+    "activite": "تَتَبَّعْ حَرْفَ الأَلِفِ (أ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "letters-trace-alif-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الأَلِف!",
+    "activite": "تَتَبَّعْ حَرْفَ الأَلِفِ (أ)",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "letters-taa-apple-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ التَّاءِ! تُ… تُفَّاحَة!",
+    "activite": "صَيْدُ حَرْفِ التَّاءِ (ت)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "letters-taa-apple-success.mp3",
+    "texte": "رَائِع! تُ… تُفَّاحَةٌ حَمْرَاء!",
+    "activite": "صَيْدُ حَرْفِ التَّاءِ (ت)",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "letters-thaa-fox-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الثَّاءِ! ثَ… ثَعْلَب!",
+    "activite": "صَيْدُ حَرْفِ الثَّاءِ (ث)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "letters-thaa-fox-success.mp3",
+    "texte": "مُمْتَاز! ثَ… ثَعْلَبٌ مَاكِر!",
+    "activite": "صَيْدُ حَرْفِ الثَّاءِ (ث)",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "letters-jeem-camel-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الجِيمِ! جَ… جَمَل!",
+    "activite": "صَيْدُ حَرْفِ الجِيمِ (ج)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "letters-jeem-camel-success.mp3",
+    "texte": "رَائِع! جَ… جَمَلٌ قَوِيّ!",
+    "activite": "صَيْدُ حَرْفِ الجِيمِ (ج)",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "letters-trace-jeem-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ الجِيمِ بِإِصْبَعِكَ! اُنْزِلْ لِلْأَسْفَلِ ثُمَّ لُفَّ!",
+    "activite": "تَتَبَّعْ حَرْفَ الجِيمِ (ج)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "letters-trace-jeem-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الجِيم!",
+    "activite": "تَتَبَّعْ حَرْفَ الجِيمِ (ج)",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "letters-dal-bear-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الدَّالِ! دُبٌّ لَطِيف!",
+    "activite": "صَيْدُ حَرْفِ الدَّالِ (د)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "letters-dal-bear-success.mp3",
+    "texte": "مُمْتَاز! دُبٌّ صَغِيرٌ لَطِيف!",
+    "activite": "صَيْدُ حَرْفِ الدَّالِ (د)",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "letters-trace-baa-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ البَاءِ بِإِصْبَعِكَ! خَطٌّ مُسْتَقِيمٌ وَنُقْطَة!",
+    "activite": "تَتَبَّعْ حَرْفَ البَاءِ (ب)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "letters-trace-baa-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ البَاء!",
+    "activite": "تَتَبَّعْ حَرْفَ البَاءِ (ب)",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "letters-seen-fish-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ السِّينِ! سَ… سَمَكَة!",
+    "activite": "صَيْدُ حَرْفِ السِّينِ (س)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "letters-seen-fish-success.mp3",
+    "texte": "رَائِع! سَ… سَمَكَةٌ فِي المَاء!",
+    "activite": "صَيْدُ حَرْفِ السِّينِ (س)",
+    "type": "success"
+  },
+  {
+    "ordre": 21,
+    "fichier": "letters-meem-banana-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ المِيمِ! مَ… مَوْزَة!",
+    "activite": "صَيْدُ حَرْفِ المِيمِ (م)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 22,
+    "fichier": "letters-meem-banana-success.mp3",
+    "texte": "مُمْتَاز! مَ… مَوْزَةٌ صَفْرَاء!",
+    "activite": "صَيْدُ حَرْفِ المِيمِ (م)",
+    "type": "success"
+  },
+  {
+    "ordre": 23,
+    "fichier": "letters-trace-meem-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ المِيمِ بِإِصْبَعِكَ! دَائِرَةٌ صَغِيرَةٌ وَذَيْل!",
+    "activite": "تَتَبَّعْ حَرْفَ المِيمِ (م)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 24,
+    "fichier": "letters-trace-meem-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ المِيم!",
+    "activite": "تَتَبَّعْ حَرْفَ المِيمِ (م)",
+    "type": "success"
+  },
+  {
+    "ordre": 25,
+    "fichier": "letters-fruit-basket-prompt.mp3",
+    "texte": "ضَعِ التَّمْرَ وَالبُرْتُقَالَ فِي سَلَّةِ الفَوَاكِه، وَالحَلْوَى فِي صَحْنِ الحَلْوَى!",
+    "activite": "سَلَّةُ الفَوَاكِهِ اللَّذِيذَةِ",
+    "type": "prompt"
+  },
+  {
+    "ordre": 26,
+    "fichier": "letters-fruit-basket-success.mp3",
+    "texte": "يَا لَكَ مِنْ بَطَل! سَلَّةٌ صِحِّيَّةٌ وَلَذِيذَة!",
+    "activite": "سَلَّةُ الفَوَاكِهِ اللَّذِيذَةِ",
+    "type": "success"
+  },
+  {
+    "ordre": 27,
+    "fichier": "letters-match-words-prompt.mp3",
+    "texte": "اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!",
+    "activite": "وَصِّلِ الحَرْفَ بِالصُّورَةِ",
+    "type": "prompt"
+  },
+  {
+    "ordre": 28,
+    "fichier": "letters-match-words-success.mp3",
+    "texte": "عَبْقَرِيٌّ صَغِير! رَبَطْتَ كُلَّ الحُرُوف!",
+    "activite": "وَصِّلِ الحَرْفَ بِالصُّورَةِ",
+    "type": "success"
+  },
+  {
+    "ordre": 29,
+    "fichier": "letters-haa-milk-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الحَاءِ! حَ… حَلِيب! بِلَا نُقْطَة، لَيْسَ جِيم وَلَا خَاء!",
+    "activite": "صَيْدُ حَرْفِ الحَاءِ (ح)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 30,
+    "fichier": "letters-haa-milk-success.mp3",
+    "texte": "مُمْتَاز! حَ… حَلِيب!",
+    "activite": "صَيْدُ حَرْفِ الحَاءِ (ح)",
+    "type": "success"
+  },
+  {
+    "ordre": 31,
+    "fichier": "letters-khaa-bread-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الخَاءِ! خَ… خُبْز! نُقْطَةٌ فَوْق!",
+    "activite": "صَيْدُ حَرْفِ الخَاءِ (خ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 32,
+    "fichier": "letters-khaa-bread-success.mp3",
+    "texte": "رَائِع! خَ… خُبْز!",
+    "activite": "صَيْدُ حَرْفِ الخَاءِ (خ)",
+    "type": "success"
+  },
+  {
+    "ordre": 33,
+    "fichier": "letters-thal-wolf-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الذَّالِ! ذَ… ذِئْب! نُقْطَةٌ فَوْق، لَيْسَ دَال!",
+    "activite": "صَيْدُ حَرْفِ الذَّالِ (ذ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 34,
+    "fichier": "letters-thal-wolf-success.mp3",
+    "texte": "مُمْتَاز! ذَ… ذِئْب!",
+    "activite": "صَيْدُ حَرْفِ الذَّالِ (ذ)",
+    "type": "success"
+  },
+  {
+    "ordre": 35,
+    "fichier": "letters-raa-feather-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الرَّاءِ! رَ… رِيشَة!",
+    "activite": "صَيْدُ حَرْفِ الرَّاءِ (ر)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 36,
+    "fichier": "letters-raa-feather-success.mp3",
+    "texte": "رَائِع! رَ… رِيشَةٌ نَاعِمَة!",
+    "activite": "صَيْدُ حَرْفِ الرَّاءِ (ر)",
+    "type": "success"
+  },
+  {
+    "ordre": 37,
+    "fichier": "letters-zay-giraffe-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الزَّايِ! زَ… زَرَافَة!",
+    "activite": "صَيْدُ حَرْفِ الزَّايِ (ز)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 38,
+    "fichier": "letters-zay-giraffe-success.mp3",
+    "texte": "مُمْتَاز! زَ… زَرَافَةٌ طَوِيلَة!",
+    "activite": "صَيْدُ حَرْفِ الزَّايِ (ز)",
+    "type": "success"
+  },
+  {
+    "ordre": 39,
+    "fichier": "letters-trace-raa-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ الرَّاءِ بِإِصْبَعِكَ! خَطٌّ مُنْحَنٍ لِلْأَسْفَل!",
+    "activite": "تَتَبَّعْ حَرْفَ الرَّاءِ (ر)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 40,
+    "fichier": "letters-trace-raa-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الرَّاء!",
+    "activite": "تَتَبَّعْ حَرْفَ الرَّاءِ (ر)",
+    "type": "success"
+  },
+  {
+    "ordre": 41,
+    "fichier": "letters-sheen-sun-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الشِّينِ! شَ… شَمْس!",
+    "activite": "صَيْدُ حَرْفِ الشِّينِ (ش)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 42,
+    "fichier": "letters-sheen-sun-success.mp3",
+    "texte": "رَائِع! شَ… شَمْسٌ مُشْرِقَة!",
+    "activite": "صَيْدُ حَرْفِ الشِّينِ (ش)",
+    "type": "success"
+  },
+  {
+    "ordre": 43,
+    "fichier": "letters-sad-falcon-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الصَّادِ! صَ… صَقْر!",
+    "activite": "صَيْدُ حَرْفِ الصَّادِ (ص)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 44,
+    "fichier": "letters-sad-falcon-success.mp3",
+    "texte": "مُمْتَاز! صَ… صَقْرٌ شُجَاع!",
+    "activite": "صَيْدُ حَرْفِ الصَّادِ (ص)",
+    "type": "success"
+  },
+  {
+    "ordre": 45,
+    "fichier": "letters-dad-frog-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الضَّادِ! ضَ… ضِفْدَع!",
+    "activite": "صَيْدُ حَرْفِ الضَّادِ (ض)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 46,
+    "fichier": "letters-dad-frog-success.mp3",
+    "texte": "رَائِع! ضَ… ضِفْدَعٌ أَخْضَر!",
+    "activite": "صَيْدُ حَرْفِ الضَّادِ (ض)",
+    "type": "success"
+  },
+  {
+    "ordre": 47,
+    "fichier": "letters-trace-sad-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ الصَّادِ بِإِصْبَعِكَ! دَائِرَةٌ ثُمَّ خَطّ!",
+    "activite": "تَتَبَّعْ حَرْفَ الصَّادِ (ص)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 48,
+    "fichier": "letters-trace-sad-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الصَّاد!",
+    "activite": "تَتَبَّعْ حَرْفَ الصَّادِ (ص)",
+    "type": "success"
+  },
+  {
+    "ordre": 49,
+    "fichier": "letters-taa2-peacock-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الطَّاءِ! طَ… طَاوُوس!",
+    "activite": "صَيْدُ حَرْفِ الطَّاءِ (ط)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 50,
+    "fichier": "letters-taa2-peacock-success.mp3",
+    "texte": "مُمْتَاز! طَ… طَاوُوسٌ مُلَوَّن!",
+    "activite": "صَيْدُ حَرْفِ الطَّاءِ (ط)",
+    "type": "success"
+  },
+  {
+    "ordre": 51,
+    "fichier": "letters-za-gazelle-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الظَّاءِ! ظَ… ظَبْي!",
+    "activite": "صَيْدُ حَرْفِ الظَّاءِ (ظ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 52,
+    "fichier": "letters-za-gazelle-success.mp3",
+    "texte": "رَائِع! ظَ… ظَبْيٌ رَشِيق!",
+    "activite": "صَيْدُ حَرْفِ الظَّاءِ (ظ)",
+    "type": "success"
+  },
+  {
+    "ordre": 53,
+    "fichier": "letters-ayn-bird-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ العَيْنِ! عَ… عُصْفُور!",
+    "activite": "صَيْدُ حَرْفِ العَيْنِ (ع)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 54,
+    "fichier": "letters-ayn-bird-success.mp3",
+    "texte": "مُمْتَاز! عَ… عُصْفُورٌ مُغَرِّد!",
+    "activite": "صَيْدُ حَرْفِ العَيْنِ (ع)",
+    "type": "success"
+  },
+  {
+    "ordre": 55,
+    "fichier": "letters-ghayn-sheep-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الغَيْنِ! غَ… غَنَم!",
+    "activite": "صَيْدُ حَرْفِ الغَيْنِ (غ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 56,
+    "fichier": "letters-ghayn-sheep-success.mp3",
+    "texte": "رَائِع! غَ… غَنَمٌ صُوفِيّ!",
+    "activite": "صَيْدُ حَرْفِ الغَيْنِ (غ)",
+    "type": "success"
+  },
+  {
+    "ordre": 57,
+    "fichier": "letters-faa-elephant-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الفَاءِ! فَ… فِيل!",
+    "activite": "صَيْدُ حَرْفِ الفَاءِ (ف)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 58,
+    "fichier": "letters-faa-elephant-success.mp3",
+    "texte": "مُمْتَاز! فَ… فِيلٌ ضَخْم!",
+    "activite": "صَيْدُ حَرْفِ الفَاءِ (ف)",
+    "type": "success"
+  },
+  {
+    "ordre": 59,
+    "fichier": "letters-trace-faa-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ الفَاءِ بِإِصْبَعِكَ! دَائِرَةٌ صَغِيرَةٌ فَوْقَ خَطّ!",
+    "activite": "تَتَبَّعْ حَرْفَ الفَاءِ (ف)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 60,
+    "fichier": "letters-trace-faa-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الفَاء!",
+    "activite": "تَتَبَّعْ حَرْفَ الفَاءِ (ف)",
+    "type": "success"
+  },
+  {
+    "ordre": 61,
+    "fichier": "letters-qaf-monkey-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ القَافِ! قَ… قِرْد!",
+    "activite": "صَيْدُ حَرْفِ القَافِ (ق)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 62,
+    "fichier": "letters-qaf-monkey-success.mp3",
+    "texte": "رَائِع! قَ… قِرْدٌ مَرِح!",
+    "activite": "صَيْدُ حَرْفِ القَافِ (ق)",
+    "type": "success"
+  },
+  {
+    "ordre": 63,
+    "fichier": "letters-kaf-dog-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الكَافِ! كَ… كَلْب!",
+    "activite": "صَيْدُ حَرْفِ الكَافِ (ك)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 64,
+    "fichier": "letters-kaf-dog-success.mp3",
+    "texte": "مُمْتَاز! كَ… كَلْبٌ وَفِيّ!",
+    "activite": "صَيْدُ حَرْفِ الكَافِ (ك)",
+    "type": "success"
+  },
+  {
+    "ordre": 65,
+    "fichier": "letters-lam-lemon-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ اللَّامِ! لَ… لَيْمُون!",
+    "activite": "صَيْدُ حَرْفِ اللَّامِ (ل)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 66,
+    "fichier": "letters-lam-lemon-success.mp3",
+    "texte": "رَائِع! لَ… لَيْمُونٌ حَامِض!",
+    "activite": "صَيْدُ حَرْفِ اللَّامِ (ل)",
+    "type": "success"
+  },
+  {
+    "ordre": 67,
+    "fichier": "letters-trace-lam-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ اللَّامِ بِإِصْبَعِكَ! خَطٌّ طَوِيلٌ لِلْأَسْفَل!",
+    "activite": "تَتَبَّعْ حَرْفَ اللَّامِ (ل)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 68,
+    "fichier": "letters-trace-lam-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ اللَّام!",
+    "activite": "تَتَبَّعْ حَرْفَ اللَّامِ (ل)",
+    "type": "success"
+  },
+  {
+    "ordre": 69,
+    "fichier": "letters-noon-bee-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ النُّونِ! نَ… نَحْلَة!",
+    "activite": "صَيْدُ حَرْفِ النُّونِ (ن)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 70,
+    "fichier": "letters-noon-bee-success.mp3",
+    "texte": "مُمْتَاز! نَ… نَحْلَةٌ مُجْتَهِدَة!",
+    "activite": "صَيْدُ حَرْفِ النُّونِ (ن)",
+    "type": "success"
+  },
+  {
+    "ordre": 71,
+    "fichier": "letters-haa2-moon-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الهَاءِ! هَ… هِلَال!",
+    "activite": "صَيْدُ حَرْفِ الهَاءِ (هـ)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 72,
+    "fichier": "letters-haa2-moon-success.mp3",
+    "texte": "رَائِع! هَ… هِلَالٌ جَمِيل!",
+    "activite": "صَيْدُ حَرْفِ الهَاءِ (هـ)",
+    "type": "success"
+  },
+  {
+    "ordre": 73,
+    "fichier": "letters-waw-rose-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ الوَاوِ! وَ… وَرْدَة!",
+    "activite": "صَيْدُ حَرْفِ الوَاوِ (و)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 74,
+    "fichier": "letters-waw-rose-success.mp3",
+    "texte": "مُمْتَاز! وَ… وَرْدَةٌ حَمْرَاء!",
+    "activite": "صَيْدُ حَرْفِ الوَاوِ (و)",
+    "type": "success"
+  },
+  {
+    "ordre": 75,
+    "fichier": "letters-trace-waw-prompt.mp3",
+    "texte": "اِرْسُمْ حَرْفَ الوَاوِ بِإِصْبَعِكَ! دَائِرَةٌ وَذَيْلٌ مُنْحَنٍ!",
+    "activite": "تَتَبَّعْ حَرْفَ الوَاوِ (و)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 76,
+    "fichier": "letters-trace-waw-success.mp3",
+    "texte": "خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الوَاو!",
+    "activite": "تَتَبَّعْ حَرْفَ الوَاوِ (و)",
+    "type": "success"
+  },
+  {
+    "ordre": 77,
+    "fichier": "letters-yaa-hand-prompt.mp3",
+    "texte": "اِلْمِسْ حَرْفَ اليَاءِ! يَ… يَد!",
+    "activite": "صَيْدُ حَرْفِ اليَاءِ (ي)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 78,
+    "fichier": "letters-yaa-hand-success.mp3",
+    "texte": "رَائِع! يَ… يَدٌ صَغِيرَة!",
+    "activite": "صَيْدُ حَرْفِ اليَاءِ (ي)",
+    "type": "success"
+  },
+  {
+    "ordre": 79,
+    "fichier": "letters-rhyme-sort-prompt.mp3",
+    "texte": "اِسْتَمِعْ جَيِّداً! ضَعِ الصُّوَرَ الَّتِي تَبْدَأُ بِصَوْتِ الفَاءِ مَعَ الفِيل، وَالَّتِي تَبْدَأُ بِصَوْتِ الكَافِ مَعَ الكَلْب!",
+    "activite": "أُذُنِي الصَّغِيرَةُ تَسْمَعُ",
+    "type": "prompt"
+  },
+  {
+    "ordre": 80,
+    "fichier": "letters-rhyme-sort-success.mp3",
+    "texte": "أُذُنٌ ذَكِيَّة! سَمِعْتَ كُلَّ الأَصْوَاتِ بِشَكْلٍ صَحِيح!",
+    "activite": "أُذُنِي الصَّغِيرَةُ تَسْمَعُ",
+    "type": "success"
+  },
+  {
+    "ordre": 81,
+    "fichier": "letters-match-words-2-prompt.mp3",
+    "texte": "اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!",
+    "activite": "وَصِّلِ الحَرْفَ بِالصُّورَةِ (٢)",
+    "type": "prompt"
+  },
+  {
+    "ordre": 82,
+    "fichier": "letters-match-words-2-success.mp3",
+    "texte": "عَبْقَرِيٌّ صَغِير! رَبَطْتَ هَذِهِ الحُرُوف!",
+    "activite": "وَصِّلِ الحَرْفَ بِالصُّورَةِ (٢)",
+    "type": "success"
+  },
+  {
+    "ordre": 83,
+    "fichier": "letters-listen-faa-prompt.mp3",
+    "texte": "اِسْتَمِعْ: فَ فَ. اِلْمَسِ الصُّورَةَ الَّتِي تَبْدَأُ مِثْلَ فَنَك!",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "type": "prompt"
+  },
+  {
+    "ordre": 84,
+    "fichier": "letters-listen-faa-success.mp3",
+    "texte": "أُذُنٌ ذَكِيَّة! فَنَك يَبْدَأُ بِالفَاء!",
+    "activite": "فَـ مِثْلَ فَنَك",
+    "type": "success"
+  }
+]

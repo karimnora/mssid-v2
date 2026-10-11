@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "art-crayon-path-prompt.mp3",
+    "texte": "Glisse le crayon : visage, soleil, fleur, maison, fennec, puis le couscous !",
+    "activite": "Mon Crayon de Couleur",
+    "activiteId": "art-crayon-path",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "art-crayon-path-success.mp3",
+    "texte": "Le cahier de dessin est prêt ! Bravo !",
+    "activite": "Mon Crayon de Couleur",
+    "activiteId": "art-crayon-path",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "art-coloring-face-prompt.mp3",
+    "texte": "Choisis une couleur et touche le visage, les yeux et la bouche !",
+    "activite": "Colorie le Visage",
+    "activiteId": "art-coloring-face",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "art-coloring-face-success.mp3",
+    "texte": "Un beau visage ! Tu es un artiste !",
+    "activite": "Colorie le Visage",
+    "activiteId": "art-coloring-face",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "art-coloring-sun-prompt.mp3",
+    "texte": "Colorie le soleil ! Touche le rond et les rayons !",
+    "activite": "Colorie le Soleil",
+    "activiteId": "art-coloring-sun",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "art-coloring-sun-success.mp3",
+    "texte": "Ton soleil brille ! Bravo !",
+    "activite": "Colorie le Soleil",
+    "activiteId": "art-coloring-sun",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "art-coloring-flower-prompt.mp3",
+    "texte": "Colorie la fleur ! Les pétales, le cœur et la tige !",
+    "activite": "Colorie la Fleur",
+    "activiteId": "art-coloring-flower",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "art-coloring-flower-success.mp3",
+    "texte": "Quelle belle fleur !",
+    "activite": "Colorie la Fleur",
+    "activiteId": "art-coloring-flower",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "art-coloring-house-prompt.mp3",
+    "texte": "Colorie la maison ! Le toit, le mur, la porte et la fenêtre !",
+    "activite": "Colorie la Maison",
+    "activiteId": "art-coloring-house",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "art-coloring-house-success.mp3",
+    "texte": "Une belle maison !",
+    "activite": "Colorie la Maison",
+    "activiteId": "art-coloring-house",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "art-coloring-fennec-prompt.mp3",
+    "texte": "Colorie le fennec ! Grandes oreilles, le petit renard du Sahara !",
+    "activite": "Colorie le Fennec",
+    "activiteId": "art-coloring-fennec",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "art-coloring-fennec-success.mp3",
+    "texte": "Un superbe fennec !",
+    "activite": "Colorie le Fennec",
+    "activiteId": "art-coloring-fennec",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "art-coloring-camel-prompt.mp3",
+    "texte": "Colorie le dromadaire ! Le vaisseau du désert et sa bosse !",
+    "activite": "Colorie le Dromadaire",
+    "activiteId": "art-coloring-camel",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "art-coloring-camel-success.mp3",
+    "texte": "Un dromadaire fort !",
+    "activite": "Colorie le Dromadaire",
+    "activiteId": "art-coloring-camel",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "art-coloring-couscous-prompt.mp3",
+    "texte": "Colorie le plat de couscous ! La marmite, le couvercle et le plat !",
+    "activite": "Colorie le Couscous",
+    "activiteId": "art-coloring-couscous",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "art-coloring-couscous-success.mp3",
+    "texte": "Miam ! Ton plat est prêt !",
+    "activite": "Colorie le Couscous",
+    "activiteId": "art-coloring-couscous",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  }
+]

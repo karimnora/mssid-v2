@@ -1,0 +1,56 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "story-couscous-prompt.mp3",
+    "texte": "Range les images : Dido a faim, puis le couscous, puis il sourit ! Ensuite raconte l’histoire à papa ou maman !",
+    "activite": "Dido mange le couscous",
+    "activiteId": "story-couscous",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "story-couscous-success.mp3",
+    "texte": "Bravo ! Maintenant raconte l’histoire à papa ou maman !",
+    "activite": "Dido mange le couscous",
+    "activiteId": "story-couscous",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "story-wash-hands-prompt.mp3",
+    "texte": "Range les images : mains sales, puis le savon, puis mains propres ! Ensuite raconte l’histoire !",
+    "activite": "On se lave les mains",
+    "activiteId": "story-wash-hands",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "story-wash-hands-success.mp3",
+    "texte": "Mains propres ! Raconte l’histoire à maman !",
+    "activite": "On se lave les mains",
+    "activiteId": "story-wash-hands",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "story-school-day-prompt.mp3",
+    "texte": "Range les images : on se réveille, puis l’école, puis un câlin ! Ensuite raconte l’histoire !",
+    "activite": "Une journée d’école",
+    "activiteId": "story-school-day",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "story-school-day-success.mp3",
+    "texte": "Belle histoire ! Raconte-la à papa !",
+    "activite": "Une journée d’école",
+    "activiteId": "story-school-day",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  }
+]

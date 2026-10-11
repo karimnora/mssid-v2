@@ -1,0 +1,251 @@
+letters-alif-rabbit-prompt.mp3
+Touch the letter A! A for Apple!
+
+letters-alif-rabbit-success.mp3
+Well done! A for Apple!
+
+letters-boat-alif-baa-prompt.mp3
+Touch the letter B! B for Bear!
+
+letters-boat-alif-baa-success.mp3
+Well done! B for Bear!
+
+letters-trace-alif-prompt.mp3
+Trace the letter A with your finger! Two slants that meet, then a bar across!
+
+letters-trace-alif-success.mp3
+Great trace! You wrote A!
+
+letters-taa-apple-prompt.mp3
+Touch the letter T! T for Train!
+
+letters-taa-apple-success.mp3
+Well done! T for Train!
+
+letters-thaa-fox-prompt.mp3
+Touch the letter F! F for Fox!
+
+letters-thaa-fox-success.mp3
+Well done! F for Fox!
+
+letters-jeem-camel-prompt.mp3
+Touch the letter J! J for Juice!
+
+letters-jeem-camel-success.mp3
+Well done! J for Juice!
+
+letters-trace-jeem-prompt.mp3
+Trace the letter J with your finger! Go down, then curve!
+
+letters-trace-jeem-success.mp3
+Great trace! You wrote J!
+
+letters-dal-bear-prompt.mp3
+Touch the letter D! D for Dog!
+
+letters-dal-bear-success.mp3
+Well done! D for Dog!
+
+letters-trace-baa-prompt.mp3
+Trace the letter B with your finger! A tall line, then two bumps!
+
+letters-trace-baa-success.mp3
+Great trace! You wrote B!
+
+letters-seen-fish-prompt.mp3
+Touch the letter S! S for Snake!
+
+letters-seen-fish-success.mp3
+Well done! S for Snake!
+
+letters-meem-banana-prompt.mp3
+Touch the letter M! M for Monkey!
+
+letters-meem-banana-success.mp3
+Well done! M for Monkey!
+
+letters-trace-meem-prompt.mp3
+Trace the letter M with your finger! Two mountains side by side!
+
+letters-trace-meem-success.mp3
+Great trace! You wrote M!
+
+letters-fruit-basket-prompt.mp3
+Put the fruits in the basket and candies on the plate!
+
+letters-fruit-basket-success.mp3
+Awesome! A wonderful fruit basket!
+
+letters-match-words-prompt.mp3
+Tap the letter then the picture, or drag a line to connect them!
+
+letters-match-words-success.mp3
+Fantastic! All letters are matched!
+
+letters-haa-milk-prompt.mp3
+Touch the letter H! H for Horse!
+
+letters-haa-milk-success.mp3
+Well done! H for Horse!
+
+letters-khaa-bread-prompt.mp3
+Touch the letter X! X for Xylophone!
+
+letters-khaa-bread-success.mp3
+Well done! X for Xylophone!
+
+letters-thal-wolf-prompt.mp3
+Touch the letter Y! Y for Yo-yo!
+
+letters-thal-wolf-success.mp3
+Well done! Y for Yo-yo!
+
+letters-raa-feather-prompt.mp3
+Touch the letter R! R for Rose!
+
+letters-raa-feather-success.mp3
+Well done! R for Rose!
+
+letters-zay-giraffe-prompt.mp3
+Touch the letter Z! Z for Zebra!
+
+letters-zay-giraffe-success.mp3
+Well done! Z for Zebra!
+
+letters-trace-raa-prompt.mp3
+Trace the letter R with your finger! A line, a bump, then a leg!
+
+letters-trace-raa-success.mp3
+Great trace! You wrote R!
+
+letters-sheen-sun-prompt.mp3
+Touch the letter S! S for Sun!
+
+letters-sheen-sun-success.mp3
+Well done! S for Sun!
+
+letters-sad-falcon-prompt.mp3
+Touch the letter F! F for Falcon!
+
+letters-sad-falcon-success.mp3
+Well done! F for Falcon!
+
+letters-dad-frog-prompt.mp3
+Touch the letter F! F for Frog!
+
+letters-dad-frog-success.mp3
+Well done! F for Frog!
+
+letters-trace-sad-prompt.mp3
+Trace the letter F with your finger! A line, a bar on top, a bar in the middle!
+
+letters-trace-sad-success.mp3
+Great trace! You wrote F!
+
+letters-taa2-peacock-prompt.mp3
+Touch the letter T! T for Turtle!
+
+letters-taa2-peacock-success.mp3
+Well done! T for Turtle!
+
+letters-za-gazelle-prompt.mp3
+Touch the letter G! G for Gazelle!
+
+letters-za-gazelle-success.mp3
+Well done! G for Gazelle!
+
+letters-ayn-bird-prompt.mp3
+Touch the letter B! B for Bird!
+
+letters-ayn-bird-success.mp3
+Well done! B for Bird!
+
+letters-ghayn-sheep-prompt.mp3
+Touch the letter S! S for Sheep!
+
+letters-ghayn-sheep-success.mp3
+Well done! S for Sheep!
+
+letters-faa-elephant-prompt.mp3
+Touch the letter E! E for Elephant!
+
+letters-faa-elephant-success.mp3
+Well done! E for Elephant!
+
+letters-trace-faa-prompt.mp3
+Trace the letter E with your finger! One tall line, then three horizontal bars!
+
+letters-trace-faa-success.mp3
+Great trace! You wrote E!
+
+letters-qaf-monkey-prompt.mp3
+Touch the letter Q! Q for Queen!
+
+letters-qaf-monkey-success.mp3
+Well done! Q for Queen!
+
+letters-kaf-dog-prompt.mp3
+Touch the letter K! K for Kite!
+
+letters-kaf-dog-success.mp3
+Well done! K for Kite!
+
+letters-lam-lemon-prompt.mp3
+Touch the letter L! L for Lion!
+
+letters-lam-lemon-success.mp3
+Well done! L for Lion!
+
+letters-trace-lam-prompt.mp3
+Trace the letter L with your finger! Go down, then a bar to the right!
+
+letters-trace-lam-success.mp3
+Great trace! You wrote L!
+
+letters-noon-bee-prompt.mp3
+Touch the letter N! N for Nest!
+
+letters-noon-bee-success.mp3
+Well done! N for Nest!
+
+letters-haa2-moon-prompt.mp3
+Touch the letter H! H for House!
+
+letters-haa2-moon-success.mp3
+Well done! H for House!
+
+letters-waw-rose-prompt.mp3
+Touch the letter R! R for Rose!
+
+letters-waw-rose-success.mp3
+Well done! R for Rose!
+
+letters-trace-waw-prompt.mp3
+Trace the letter R with your finger! A line, a bump, then a leg!
+
+letters-trace-waw-success.mp3
+Great trace! You wrote R!
+
+letters-yaa-hand-prompt.mp3
+Touch the letter H! H for Hand!
+
+letters-yaa-hand-success.mp3
+Well done! H for Hand!
+
+letters-rhyme-sort-prompt.mp3
+Listen carefully! Put the fish and the fire with the frog, the car and the cupcake with the cat!
+
+letters-rhyme-sort-success.mp3
+What a smart ear! You heard every sound correctly!
+
+letters-match-words-2-prompt.mp3
+Tap the letter then the picture, or drag a line to connect them!
+
+letters-match-words-2-success.mp3
+Fantastic! You matched these letters!
+
+letters-listen-faa-prompt.mp3
+Listen: Fff… Touch the picture that starts like fennec !
+
+letters-listen-faa-success.mp3
+What an ear! Fennec starts with F !

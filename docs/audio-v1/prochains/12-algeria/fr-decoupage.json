@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "algeria-fennec-flag-prompt.mp3",
+    "texte": "Glisse le fennec : désert, palmeraie, montagne, mer, puis le drapeau !",
+    "activite": "Un Voyage en Algérie",
+    "activiteId": "algeria-fennec-flag",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "algeria-fennec-flag-success.mp3",
+    "texte": "Vive l'Algérie ! Notre pays est beau !",
+    "activite": "Un Voyage en Algérie",
+    "activiteId": "algeria-fennec-flag",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "algeria-flag-color-prompt.mp3",
+    "texte": "Touche le drapeau de l'Algérie ! Vert, blanc et croissant !",
+    "activite": "Le Drapeau Algérien",
+    "activiteId": "algeria-flag-color",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "algeria-flag-color-success.mp3",
+    "texte": "Bravo ! Voici notre drapeau !",
+    "activite": "Le Drapeau Algérien",
+    "activiteId": "algeria-flag-color",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "algeria-mosque-prompt.mp3",
+    "texte": "Touche la mosquée ! La mosquée est belle dans notre pays !",
+    "activite": "La Mosquée",
+    "activiteId": "algeria-mosque",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "algeria-mosque-success.mp3",
+    "texte": "Bravo ! Voici une mosquée !",
+    "activite": "La Mosquée",
+    "activiteId": "algeria-mosque",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "algeria-couscous-prompt.mp3",
+    "texte": "Touche le couscous ! On mange le couscous en Algérie !",
+    "activite": "Le Couscous",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "algeria-couscous-success.mp3",
+    "texte": "Miam ! Voici le couscous !",
+    "activite": "Le Couscous",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "algeria-fennec-tap-prompt.mp3",
+    "texte": "Touche le fennec ! Le fennec est le petit renard de notre Sahara !",
+    "activite": "Le Fennec d'Algérie",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "algeria-fennec-tap-success.mp3",
+    "texte": "Bravo ! Voici notre fennec !",
+    "activite": "Le Fennec d'Algérie",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "algeria-connect-prompt.mp3",
+    "texte": "Relie le désert au dromadaire, et la mer au poisson !",
+    "activite": "Relie les Régions de Notre Pays",
+    "activiteId": "algeria-connect",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "algeria-connect-success.mp3",
+    "texte": "L'Algérie a un désert, des montagnes et la mer !",
+    "activite": "Relie les Régions de Notre Pays",
+    "activiteId": "algeria-connect",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "algeria-habitat-sort-prompt.mp3",
+    "texte": "Mets le dromadaire et le fennec avec le sable, le poisson et le crabe avec les vagues !",
+    "activite": "Désert ou Mer ?",
+    "activiteId": "algeria-habitat-sort",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "algeria-habitat-sort-success.mp3",
+    "texte": "Tu connais notre désert et notre mer !",
+    "activite": "Désert ou Mer ?",
+    "activiteId": "algeria-habitat-sort",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "algeria-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : drapeau, dromadaire, mosquée !",
+    "activite": "Mémo de Mon Algérie",
+    "activiteId": "algeria-memory",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "algeria-memory-success.mp3",
+    "texte": "Bravo ! Voici l'Algérie !",
+    "activite": "Mémo de Mon Algérie",
+    "activiteId": "algeria-memory",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  }
+]

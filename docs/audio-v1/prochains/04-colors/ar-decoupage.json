@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "colors-fennec-path-prompt.mp3",
+    "texte": "اِسْحَبِ الفَنَكَ عَلَى الأَلْوَانِ! أَحْمَر، بُرْتُقَالِي، أَصْفَر، أَخْضَر، ثُمَّ البَيْت!",
+    "activite": "طَرِيقُ الفَنَكِ إِلَى بَيْتِهِ",
+    "activiteId": "colors-fennec-path",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "colors-fennec-path-success.mp3",
+    "texte": "وَصَلَ الفَنَكُ إِلَى بَيْتِهِ بِأَمَان! أَحْسَنْت!",
+    "activite": "طَرِيقُ الفَنَكِ إِلَى بَيْتِهِ",
+    "activiteId": "colors-fennec-path",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "colors-red-strawberry-prompt.mp3",
+    "texte": "المِسِ اللَّوْنَ الأَحْمَرَ! مِثْلُ الفَرَاوْلَة!",
+    "activite": "اللَّوْنُ الأَحْمَرُ",
+    "activiteId": "colors-red-strawberry",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "colors-red-strawberry-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا هُوَ اللَّوْنُ الأَحْمَرُ!",
+    "activite": "اللَّوْنُ الأَحْمَرُ",
+    "activiteId": "colors-red-strawberry",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "colors-orange-fruit-prompt.mp3",
+    "texte": "المِسِ اللَّوْنَ البُرْتُقَالِيَّ! مِثْلُ البُرْتُقَالَة!",
+    "activite": "اللَّوْنُ البُرْتُقَالِيُّ",
+    "activiteId": "colors-orange-fruit",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "colors-orange-fruit-success.mp3",
+    "texte": "رَائِع! هَذَا هُوَ اللَّوْنُ البُرْتُقَالِيّ!",
+    "activite": "اللَّوْنُ البُرْتُقَالِيُّ",
+    "activiteId": "colors-orange-fruit",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "colors-yellow-sun-prompt.mp3",
+    "texte": "المِسِ اللَّوْنَ الأَصْفَرَ! مِثْلُ الشَّمْسِ المُشْرِقَة!",
+    "activite": "اللَّوْنُ الأَصْفَرُ",
+    "activiteId": "colors-yellow-sun",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "colors-yellow-sun-success.mp3",
+    "texte": "مُمْتَاز! هَذَا هُوَ اللَّوْنُ الأَصْفَرُ!",
+    "activite": "اللَّوْنُ الأَصْفَرُ",
+    "activiteId": "colors-yellow-sun",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "colors-green-frog-prompt.mp3",
+    "texte": "المِسِ اللَّوْنَ الأَخْضَرَ! مِثْلُ الضِّفْدَعِ الصَّغِير!",
+    "activite": "اللَّوْنُ الأَخْضَرُ",
+    "activiteId": "colors-green-frog",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "colors-green-frog-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا هُوَ اللَّوْنُ الأَخْضَرُ!",
+    "activite": "اللَّوْنُ الأَخْضَرُ",
+    "activiteId": "colors-green-frog",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "colors-blue-sea-prompt.mp3",
+    "texte": "المِسِ اللَّوْنَ الأَزْرَقَ! مِثْلُ البَحْرِ الوَاسِع!",
+    "activite": "اللَّوْنُ الأَزْرَقُ",
+    "activiteId": "colors-blue-sea",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "colors-blue-sea-success.mp3",
+    "texte": "رَائِع! هَذَا هُوَ اللَّوْنُ الأَزْرَقُ!",
+    "activite": "اللَّوْنُ الأَزْرَقُ",
+    "activiteId": "colors-blue-sea",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "colors-purple-grapes-prompt.mp3",
+    "texte": "المِسِ اللَّوْنَ البَنَفْسَجِيَّ! مِثْلُ عُنْقُودِ العِنَبِ!",
+    "activite": "اللَّوْنُ البَنَفْسَجِيُّ",
+    "activiteId": "colors-purple-grapes",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "colors-purple-grapes-success.mp3",
+    "texte": "مُمْتَاز! هَذَا هُوَ اللَّوْنُ البَنَفْسَجِيّ!",
+    "activite": "اللَّوْنُ البَنَفْسَجِيُّ",
+    "activiteId": "colors-purple-grapes",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "colors-sort-red-green-blue-prompt.mp3",
+    "texte": "ضَعِ الأَشْيَاءَ الحَمْرَاءَ فِي الصُّنْدُوقِ الأَحْمَر، وَالخَضْرَاءَ فِي الأَخْضَر، وَالزَّرْقَاءَ فِي الأَزْرَق!",
+    "activite": "فَرْزُ الأَلْوَانِ الزَّاهِيَةِ",
+    "activiteId": "colors-sort-red-green-blue",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "colors-sort-red-green-blue-success.mp3",
+    "texte": "يَا سَلَام! رَتَّبْتَ كُلَّ الأَلْوَانِ بِدِقَّة!",
+    "activite": "فَرْزُ الأَلْوَانِ الزَّاهِيَةِ",
+    "activiteId": "colors-sort-red-green-blue",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "colors-pottery-bubble-prompt.mp3",
+    "texte": "فَرْقِعْ فَقَاعَاتِ الأَلْوَانِ السِّحْرِيَّةِ لِتُلَوِّنَ الفَخَّار!",
+    "activite": "فَقَاعَاتُ الأَلْوَانِ السِّحْرِيَّةِ",
+    "activiteId": "colors-pottery-bubble",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "colors-pottery-bubble-success.mp3",
+    "texte": "أَلْوَانٌ مُبْهِجَة! فَرَّقْتَ كُلَّ الفَقَاعَات!",
+    "activite": "فَقَاعَاتُ الأَلْوَانِ السِّحْرِيَّةِ",
+    "activiteId": "colors-pottery-bubble",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "colors-memory-gems-prompt.mp3",
+    "texte": "اِفْتَحِ البِطَاقَاتِ وَابْحَثْ عَنِ اللَّوْنَيْنِ المُتَشَابِهَيْن!",
+    "activite": "ذَاكِرَةُ الأَلْوَانِ وَالأَشْكَالِ",
+    "activiteId": "colors-memory-gems",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "colors-memory-gems-success.mp3",
+    "texte": "ذَاكِرَةٌ ذَهَبِيَّة! أَحْسَنْتَ يَا بَطَل!",
+    "activite": "ذَاكِرَةُ الأَلْوَانِ وَالأَشْكَالِ",
+    "activiteId": "colors-memory-gems",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  }
+]

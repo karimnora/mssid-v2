@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "emotion-feelings-path-prompt.mp3",
+    "texte": "اِسْحَبِ الفَنَكَ: فَرَح، بَالُون، حُزْن، لَصْقَة، ثُمَّ عِنَاق!",
+    "activite": "طَرِيقُ المَشَاعِر",
+    "activiteId": "emotion-feelings-path",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "emotion-feelings-path-success.mp3",
+    "texte": "كُلُّ المَشَاعِرِ مَقْبُولَة! أَحْسَنْت!",
+    "activite": "طَرِيقُ المَشَاعِر",
+    "activiteId": "emotion-feelings-path",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "emotion-happy-prompt.mp3",
+    "texte": "عِنْدَنَا بَالُون! اِلْمَسِ الوَجْهَ الفَرِح!",
+    "activite": "بَالُونُ الفَرَح",
+    "activiteId": "emotion-happy",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "emotion-happy-success.mp3",
+    "texte": "نَعَم! هَذَا الفَرَح!",
+    "activite": "بَالُونُ الفَرَح",
+    "activiteId": "emotion-happy",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "emotion-sad-prompt.mp3",
+    "texte": "سَقَطَتِ الآيْس كْرِيم! اِلْمَسِ الوَجْهَ الحَزِين!",
+    "activite": "سَقَطَتِ الآيْس كْرِيم",
+    "activiteId": "emotion-sad",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "emotion-sad-success.mp3",
+    "texte": "نَعَم، هَذَا الحُزْن. نُعَانِقُكَ!",
+    "activite": "سَقَطَتِ الآيْس كْرِيم",
+    "activiteId": "emotion-sad",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "emotion-angry-prompt.mp3",
+    "texte": "سَقَطَ بُرْجُ المُكَعَّبَات! اِلْمَسِ الوَجْهَ الغَاضِب!",
+    "activite": "سَقَطَ البُرْج",
+    "activiteId": "emotion-angry",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "emotion-angry-success.mp3",
+    "texte": "الغَضَبُ يَمُرّ! نَبْنِي مَرَّةً أُخْرَى!",
+    "activite": "سَقَطَ البُرْج",
+    "activiteId": "emotion-angry",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "emotion-sort-context-prompt.mp3",
+    "texte": "ضَعِ البَالُونَ وَالهَدِيَّةَ مَعَ الضِّحْكَة، وَاللَّصْقَةَ مَعَ الدَّمْعَة!",
+    "activite": "فَرَحٌ أَمْ حُزْن؟",
+    "activiteId": "emotion-sort-context",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "emotion-sort-context-success.mp3",
+    "texte": "تَعْرِفُ الفَرَحَ وَالحُزْن!",
+    "activite": "فَرَحٌ أَمْ حُزْن؟",
+    "activiteId": "emotion-sort-context",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "emotion-connect-prompt.mp3",
+    "texte": "اِرْبِطِ الفَرَحَ بِالبَالُون، وَالحُزْنَ بِاللَّصْقَة!",
+    "activite": "اِرْبِطِ الشُّعُورَ بِالصُّورَة",
+    "activiteId": "emotion-connect",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "emotion-connect-success.mp3",
+    "texte": "كُلُّ شُعُورٍ لَهُ صُورَة!",
+    "activite": "اِرْبِطِ الشُّعُورَ بِالصُّورَة",
+    "activiteId": "emotion-connect",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "emotion-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: فَرِح، حَزِين، غَاضِب!",
+    "activite": "تَذَكَّرِ المَشَاعِر",
+    "activiteId": "emotion-memory",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "emotion-memory-success.mp3",
+    "texte": "ذَاكِرَتُكَ قَوِيَّة!",
+    "activite": "تَذَكَّرِ المَشَاعِر",
+    "activiteId": "emotion-memory",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "emotion-hug-prompt.mp3",
+    "texte": "الصَّدِيقُ حَزِين! مَاذَا نَفْعَل؟ اِلْمَسِ العِنَاق!",
+    "activite": "صَدِيقِي يَبْكِي",
+    "activiteId": "emotion-hug",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "emotion-hug-success.mp3",
+    "texte": "نَعَمْ! العِنَاقُ يُسَاعِد!",
+    "activite": "صَدِيقِي يَبْكِي",
+    "activiteId": "emotion-hug",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  }
+]

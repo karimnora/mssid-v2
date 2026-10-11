@@ -1,4 +1,5 @@
 import { PreschoolActivity, PreschoolModule } from './types';
+import { LETTER_AUDIO_CLIPS } from './letterAudio';
 
 // "سَفِينَةُ الحُرُوفِ" — Letters and Vocabulary (Arabophone & Multi-language éveil).
 // Teaches the 28 Arabic letters via tap_choice (recognition) and trace, each anchored to a
@@ -1866,7 +1867,17 @@ const LETTERS_CATALOG: PreschoolModule = {
 };
 
 function renumberSteps(acts: PreschoolActivity[]): PreschoolActivity[] {
-  return acts.map((a, i) => ({ ...a, stepNumber: i + 1 }));
+  return acts.map((a, i) => ({
+    ...a,
+    stepNumber: i + 1,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = LETTER_AUDIO_CLIPS[language]?.[a.id];
+      return [language, {
+        ...a.i18n[language],
+        ...(audio ? { promptAudioSrc: audio.prompt, successAudioSrc: audio.success, successAudioDurationMs: audio.successDurationMs } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  }));
 }
 
 const LETTERS_LISTEN_FAA: PreschoolActivity = {

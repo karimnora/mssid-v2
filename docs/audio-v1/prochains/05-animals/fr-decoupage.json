@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "animals-cow-prompt.mp3",
+    "texte": "Touche la vache ! Elle nous donne du bon lait !",
+    "activite": "La Vache Gentille",
+    "activiteId": "animals-cow",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "animals-cow-success.mp3",
+    "texte": "Bravo ! Voici une vache !",
+    "activite": "La Vache Gentille",
+    "activiteId": "animals-cow",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "animals-sheep-prompt.mp3",
+    "texte": "Touche le mouton ! Sa laine est douce et chaude !",
+    "activite": "Le Mouton Laineux",
+    "activiteId": "animals-sheep",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "animals-sheep-success.mp3",
+    "texte": "Super ! Voici un mouton !",
+    "activite": "Le Mouton Laineux",
+    "activiteId": "animals-sheep",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "animals-chicken-prompt.mp3",
+    "texte": "Touche la poule ! Elle nous donne des œufs !",
+    "activite": "La Poule Caquetante",
+    "activiteId": "animals-chicken",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "animals-chicken-success.mp3",
+    "texte": "Bravo ! Voici une poule !",
+    "activite": "La Poule Caquetante",
+    "activiteId": "animals-chicken",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "animals-cat-prompt.mp3",
+    "texte": "Touche le chat ! Il dit : Miaou !",
+    "activite": "Le Chat Mignon",
+    "activiteId": "animals-cat",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "animals-cat-success.mp3",
+    "texte": "Bravo ! Voici un chat !",
+    "activite": "Le Chat Mignon",
+    "activiteId": "animals-cat",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "animals-dog-prompt.mp3",
+    "texte": "Touche le chien ! Il dit : Ouaf ouaf !",
+    "activite": "Le Chien Fidèle",
+    "activiteId": "animals-dog",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "animals-dog-success.mp3",
+    "texte": "Super ! Voici un chien !",
+    "activite": "Le Chien Fidèle",
+    "activiteId": "animals-dog",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "animals-lion-prompt.mp3",
+    "texte": "Touche le lion ! C'est le roi puissant de la jungle !",
+    "activite": "Le Lion Roi",
+    "activiteId": "animals-lion",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "animals-lion-success.mp3",
+    "texte": "Bravo ! Voici un lion !",
+    "activite": "Le Lion Roi",
+    "activiteId": "animals-lion",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "animals-sort-big-small-prompt.mp3",
+    "texte": "Aide-moi ! Mets les grands animaux avec l'éléphant, et les petits avec la souris !",
+    "activite": "Grand ou petit ?",
+    "activiteId": "animals-sort-big-small",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "animals-sort-big-small-success.mp3",
+    "texte": "Parfait ! Tu as bien trié tous les animaux !",
+    "activite": "Grand ou petit ?",
+    "activiteId": "animals-sort-big-small",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "animals-favorite-food-prompt.mp3",
+    "texte": "Relie chaque animal à son aliment préféré !",
+    "activite": "Que mange chaque animal ?",
+    "activiteId": "animals-favorite-food",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "animals-favorite-food-success.mp3",
+    "texte": "Bravo ! Tu as nourri tous les animaux !",
+    "activite": "Que mange chaque animal ?",
+    "activiteId": "animals-favorite-food",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "animals-bubble-pop-prompt.mp3",
+    "texte": "Fais éclater tous les papillons ! Vas-y, vite !",
+    "activite": "Bulles de papillons",
+    "activiteId": "animals-bubble-pop",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "animals-bubble-pop-success.mp3",
+    "texte": "Tu les as tous éclatés ! Tu es un champion !",
+    "activite": "Bulles de papillons",
+    "activiteId": "animals-bubble-pop",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "animals-memory-farm-prompt.mp3",
+    "texte": "Retourne les cartes et trouve les paires d'animaux pareils !",
+    "activite": "Mémoire des Animaux",
+    "activiteId": "animals-memory-farm",
+    "moduleId": "preschool-animals",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "animals-memory-farm-success.mp3",
+    "texte": "Quelle mémoire formidable ! Félicitations !",
+    "activite": "Mémoire des Animaux",
+    "activiteId": "animals-memory-farm",
+    "moduleId": "preschool-animals",
+    "type": "success"
+  }
+]

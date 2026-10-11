@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "num-6-prompt.mp3",
+    "texte": "Put six apples in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Six",
+    "activiteId": "num-6",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "num-6-success.mp3",
+    "texte": "Excellent! Six apples!",
+    "activite": "Six",
+    "activiteId": "num-6",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "num-7-prompt.mp3",
+    "texte": "Put seven stars in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Seven",
+    "activiteId": "num-7",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "num-7-success.mp3",
+    "texte": "Wonderful! Seven stars!",
+    "activite": "Seven",
+    "activiteId": "num-7",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "num-8-count-prompt.mp3",
+    "texte": "Put eight apples in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Eight apples",
+    "activiteId": "num-8-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "num-8-count-success.mp3",
+    "texte": "Well done! Eight apples!",
+    "activite": "Eight apples",
+    "activiteId": "num-8-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "num-8-prompt.mp3",
+    "texte": "Trace the number eight with your finger!",
+    "activite": "Eight",
+    "activiteId": "num-8",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "num-8-success.mp3",
+    "texte": "Well done! You wrote eight!",
+    "activite": "Eight",
+    "activiteId": "num-8",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "num-9-count-prompt.mp3",
+    "texte": "Put nine stars in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Nine stars",
+    "activiteId": "num-9-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "num-9-count-success.mp3",
+    "texte": "Great! Nine stars!",
+    "activite": "Nine stars",
+    "activiteId": "num-9-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "num-9-prompt.mp3",
+    "texte": "Trace the number nine with your finger!",
+    "activite": "Nine",
+    "activiteId": "num-9",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "num-9-success.mp3",
+    "texte": "Great! You wrote nine!",
+    "activite": "Nine",
+    "activiteId": "num-9",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "num-10-count-prompt.mp3",
+    "texte": "Put ten stars in the basket! Not all of them! Then tap: I’m done!",
+    "activite": "Ten stars",
+    "activiteId": "num-10-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "num-10-count-success.mp3",
+    "texte": "Well done! Ten stars!",
+    "activite": "Ten stars",
+    "activiteId": "num-10-count",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "num-10-prompt.mp3",
+    "texte": "Trace the number ten with your finger! You are a numbers champion!",
+    "activite": "Ten",
+    "activiteId": "num-10",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "num-10-success.mp3",
+    "texte": "Congratulations! You finished the whole numbers path!",
+    "activite": "Ten",
+    "activiteId": "num-10",
+    "moduleId": "preschool-numbers-6-10",
+    "type": "success"
+  }
+]

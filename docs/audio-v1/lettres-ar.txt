@@ -1,0 +1,251 @@
+letters-alif-rabbit-prompt.mp3
+اِلْمِسْ حَرْفَ الأَلِفِ! أَـ.. أَرْنَب!
+
+letters-alif-rabbit-success.mp3
+مُمْتَاز! أَـ.. أَرْنَبٌ لَطِيف!
+
+letters-boat-alif-baa-prompt.mp3
+اِلْمِسْ حَرْفَ البَاءِ! بَـ.. بَطَّة!
+
+letters-boat-alif-baa-success.mp3
+مُمْتَاز! بَـ.. بَطَّة جَمِيلَة!
+
+letters-trace-alif-prompt.mp3
+اِرْسُمْ حَرْفَ الأَلِفِ بِإِصْبَعِكَ الجَمِيل! مِنْ أَعْلَى إِلَى أَسْفَل!
+
+letters-trace-alif-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الأَلِف!
+
+letters-taa-apple-prompt.mp3
+اِلْمِسْ حَرْفَ التَّاءِ! تُـ.. تُفَّاحَة!
+
+letters-taa-apple-success.mp3
+رَائِع! تُـ.. تُفَّاحَةٌ حَمْرَاء!
+
+letters-thaa-fox-prompt.mp3
+اِلْمِسْ حَرْفَ الثَّاءِ! ثَـ.. ثَعْلَب!
+
+letters-thaa-fox-success.mp3
+مُمْتَاز! ثَـ.. ثَعْلَبٌ مَاكِر!
+
+letters-jeem-camel-prompt.mp3
+اِلْمِسْ حَرْفَ الجِيمِ! جَـ.. جَمَل!
+
+letters-jeem-camel-success.mp3
+رَائِع! جَـ.. جَمَلٌ قَوِيّ!
+
+letters-trace-jeem-prompt.mp3
+اِرْسُمْ حَرْفَ الجِيمِ بِإِصْبَعِكَ! اُنْزِلْ لِلْأَسْفَلِ ثُمَّ لُفَّ!
+
+letters-trace-jeem-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الجِيم!
+
+letters-dal-bear-prompt.mp3
+اِلْمِسْ حَرْفَ الدَّالِ! دُبٌّ لَطِيف!
+
+letters-dal-bear-success.mp3
+مُمْتَاز! دُبٌّ صَغِيرٌ لَطِيف!
+
+letters-trace-baa-prompt.mp3
+اِرْسُمْ حَرْفَ البَاءِ بِإِصْبَعِكَ! خَطٌّ مُسْتَقِيمٌ وَنُقْطَة!
+
+letters-trace-baa-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ البَاء!
+
+letters-seen-fish-prompt.mp3
+اِلْمِسْ حَرْفَ السِّينِ! سَـ.. سَمَكَة!
+
+letters-seen-fish-success.mp3
+رَائِع! سَـ.. سَمَكَةٌ فِي المَاء!
+
+letters-meem-banana-prompt.mp3
+اِلْمِسْ حَرْفَ المِيمِ! مَـ.. مَوْزَة!
+
+letters-meem-banana-success.mp3
+مُمْتَاز! مَـ.. مَوْزَةٌ صَفْرَاء!
+
+letters-trace-meem-prompt.mp3
+اِرْسُمْ حَرْفَ المِيمِ بِإِصْبَعِكَ! دَائِرَةٌ صَغِيرَةٌ وَذَيْل!
+
+letters-trace-meem-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ المِيم!
+
+letters-fruit-basket-prompt.mp3
+ضَعِ التَّمْرَ وَالبُرْتُقَالَ فِي سَلَّةِ الفَوَاكِه، وَالحَلْوَى فِي صَحْنِ الحَلْوَى!
+
+letters-fruit-basket-success.mp3
+يَا لَكَ مِنْ بَطَل! سَلَّةٌ صِحِّيَّةٌ وَلَذِيذَة!
+
+letters-match-words-prompt.mp3
+اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!
+
+letters-match-words-success.mp3
+عَبْقَرِيٌّ صَغِير! رَبَطْتَ كُلَّ الحُرُوف!
+
+letters-haa-milk-prompt.mp3
+اِلْمِسْ حَرْفَ الحَاءِ! حَـ.. حَلِيب! بِلَا نُقْطَة، لَيْسَ جِيم وَلَا خَاء!
+
+letters-haa-milk-success.mp3
+مُمْتَاز! حَـ.. حَلِيب!
+
+letters-khaa-bread-prompt.mp3
+اِلْمِسْ حَرْفَ الخَاءِ! خَـ.. خُبْز! نُقْطَةٌ فَوْق!
+
+letters-khaa-bread-success.mp3
+رَائِع! خَـ.. خُبْز!
+
+letters-thal-wolf-prompt.mp3
+اِلْمِسْ حَرْفَ الذَّالِ! ذَـ.. ذِئْب! نُقْطَةٌ فَوْق، لَيْسَ دَال!
+
+letters-thal-wolf-success.mp3
+مُمْتَاز! ذَـ.. ذِئْب!
+
+letters-raa-feather-prompt.mp3
+اِلْمِسْ حَرْفَ الرَّاءِ! رَـ.. رِيشَة!
+
+letters-raa-feather-success.mp3
+رَائِع! رَـ.. رِيشَةٌ نَاعِمَة!
+
+letters-zay-giraffe-prompt.mp3
+اِلْمِسْ حَرْفَ الزَّايِ! زَـ.. زَرَافَة!
+
+letters-zay-giraffe-success.mp3
+مُمْتَاز! زَـ.. زَرَافَةٌ طَوِيلَة!
+
+letters-trace-raa-prompt.mp3
+اِرْسُمْ حَرْفَ الرَّاءِ بِإِصْبَعِكَ! خَطٌّ مُنْحَنٍ لِلْأَسْفَل!
+
+letters-trace-raa-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الرَّاء!
+
+letters-sheen-sun-prompt.mp3
+اِلْمِسْ حَرْفَ الشِّينِ! شَـ.. شَمْس!
+
+letters-sheen-sun-success.mp3
+رَائِع! شَـ.. شَمْسٌ مُشْرِقَة!
+
+letters-sad-falcon-prompt.mp3
+اِلْمِسْ حَرْفَ الصَّادِ! صَـ.. صَقْر!
+
+letters-sad-falcon-success.mp3
+مُمْتَاز! صَـ.. صَقْرٌ شُجَاع!
+
+letters-dad-frog-prompt.mp3
+اِلْمِسْ حَرْفَ الضَّادِ! ضَـ.. ضِفْدَع!
+
+letters-dad-frog-success.mp3
+رَائِع! ضَـ.. ضِفْدَعٌ أَخْضَر!
+
+letters-trace-sad-prompt.mp3
+اِرْسُمْ حَرْفَ الصَّادِ بِإِصْبَعِكَ! دَائِرَةٌ ثُمَّ خَطّ!
+
+letters-trace-sad-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الصَّاد!
+
+letters-taa2-peacock-prompt.mp3
+اِلْمِسْ حَرْفَ الطَّاءِ! طَـ.. طَاوُوس!
+
+letters-taa2-peacock-success.mp3
+مُمْتَاز! طَـ.. طَاوُوسٌ مُلَوَّن!
+
+letters-za-gazelle-prompt.mp3
+اِلْمِسْ حَرْفَ الظَّاءِ! ظَـ.. ظَبْي!
+
+letters-za-gazelle-success.mp3
+رَائِع! ظَـ.. ظَبْيٌ رَشِيق!
+
+letters-ayn-bird-prompt.mp3
+اِلْمِسْ حَرْفَ العَيْنِ! عَـ.. عُصْفُور!
+
+letters-ayn-bird-success.mp3
+مُمْتَاز! عَـ.. عُصْفُورٌ مُغَرِّد!
+
+letters-ghayn-sheep-prompt.mp3
+اِلْمِسْ حَرْفَ الغَيْنِ! غَـ.. غَنَم!
+
+letters-ghayn-sheep-success.mp3
+رَائِع! غَـ.. غَنَمٌ صُوفِيّ!
+
+letters-faa-elephant-prompt.mp3
+اِلْمِسْ حَرْفَ الفَاءِ! فَـ.. فِيل!
+
+letters-faa-elephant-success.mp3
+مُمْتَاز! فَـ.. فِيلٌ ضَخْم!
+
+letters-trace-faa-prompt.mp3
+اِرْسُمْ حَرْفَ الفَاءِ بِإِصْبَعِكَ! دَائِرَةٌ صَغِيرَةٌ فَوْقَ خَطّ!
+
+letters-trace-faa-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الفَاء!
+
+letters-qaf-monkey-prompt.mp3
+اِلْمِسْ حَرْفَ القَافِ! قَـ.. قِرْد!
+
+letters-qaf-monkey-success.mp3
+رَائِع! قَـ.. قِرْدٌ مَرِح!
+
+letters-kaf-dog-prompt.mp3
+اِلْمِسْ حَرْفَ الكَافِ! كَـ.. كَلْب!
+
+letters-kaf-dog-success.mp3
+مُمْتَاز! كَـ.. كَلْبٌ وَفِيّ!
+
+letters-lam-lemon-prompt.mp3
+اِلْمِسْ حَرْفَ اللَّامِ! لَـ.. لَيْمُون!
+
+letters-lam-lemon-success.mp3
+رَائِع! لَـ.. لَيْمُونٌ حَامِض!
+
+letters-trace-lam-prompt.mp3
+اِرْسُمْ حَرْفَ اللَّامِ بِإِصْبَعِكَ! خَطٌّ طَوِيلٌ لِلْأَسْفَل!
+
+letters-trace-lam-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ اللَّام!
+
+letters-noon-bee-prompt.mp3
+اِلْمِسْ حَرْفَ النُّونِ! نَـ.. نَحْلَة!
+
+letters-noon-bee-success.mp3
+مُمْتَاز! نَـ.. نَحْلَةٌ مُجْتَهِدَة!
+
+letters-haa2-moon-prompt.mp3
+اِلْمِسْ حَرْفَ الهَاءِ! هَـ.. هِلَال!
+
+letters-haa2-moon-success.mp3
+رَائِع! هَـ.. هِلَالٌ جَمِيل!
+
+letters-waw-rose-prompt.mp3
+اِلْمِسْ حَرْفَ الوَاوِ! وَـ.. وَرْدَة!
+
+letters-waw-rose-success.mp3
+مُمْتَاز! وَـ.. وَرْدَةٌ حَمْرَاء!
+
+letters-trace-waw-prompt.mp3
+اِرْسُمْ حَرْفَ الوَاوِ بِإِصْبَعِكَ! دَائِرَةٌ وَذَيْلٌ مُنْحَنٍ!
+
+letters-trace-waw-success.mp3
+خَطٌّ رَائِع! كَتَبْتَ حَرْفَ الوَاو!
+
+letters-yaa-hand-prompt.mp3
+اِلْمِسْ حَرْفَ اليَاءِ! يَـ.. يَد!
+
+letters-yaa-hand-success.mp3
+رَائِع! يَـ.. يَدٌ صَغِيرَة!
+
+letters-rhyme-sort-prompt.mp3
+اِسْتَمِعْ جَيِّداً! ضَعِ الصُّوَرَ الَّتِي تَبْدَأُ بِصَوْتِ الفَاءِ مَعَ الفِيل، وَالَّتِي تَبْدَأُ بِصَوْتِ الكَافِ مَعَ الكَلْب!
+
+letters-rhyme-sort-success.mp3
+أُذُنٌ ذَكِيَّة! سَمِعْتَ كُلَّ الأَصْوَاتِ بِشَكْلٍ صَحِيح!
+
+letters-match-words-2-prompt.mp3
+اِلْمِسِ الحَرْفَ ثُمَّ الصُّورَة، أَوِ اسْحَبْ خَطًّا بَيْنَهُمَا!
+
+letters-match-words-2-success.mp3
+عَبْقَرِيٌّ صَغِير! رَبَطْتَ هَذِهِ الحُرُوف!
+
+letters-listen-faa-prompt.mp3
+اِسْتَمِعْ: فَـ فَـ. اِلْمَسِ الصُّورَةَ الَّتِي تَبْدَأُ مِثْلَ فَنَك!
+
+letters-listen-faa-success.mp3
+أُذُنٌ ذَكِيَّة! فَنَك يَبْدَأُ بِالفَاء!

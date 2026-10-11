@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "food-fennec-market-prompt.mp3",
+    "texte": "اِسْحَبِ الفَنَكَ: طَمَاطِم، خُبْز، زَيْتُون، عِنَب، ثُمَّ السُّوق!",
+    "activite": "الفَنَكُ فِي السُّوق",
+    "activiteId": "food-fennec-market",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "food-fennec-market-success.mp3",
+    "texte": "وَصَلْنَا! نَأْكُلُ الفَاكِهَةَ وَالخُضَارَ لِنَقْوَى!",
+    "activite": "الفَنَكُ فِي السُّوق",
+    "activiteId": "food-fennec-market",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "food-fruits-tap-prompt.mp3",
+    "texte": "اِلْمَسِ التُّفَّاحَة! التُّفَّاحُ فَاكِهَةٌ حُلْوَة!",
+    "activite": "التُّفَّاحَةُ الحَمْرَاء",
+    "activiteId": "food-fruits-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "food-fruits-tap-success.mp3",
+    "texte": "أَحْسَنْت! هَذِهِ تُفَّاحَة!",
+    "activite": "التُّفَّاحَةُ الحَمْرَاء",
+    "activiteId": "food-fruits-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "food-vegetables-tap-prompt.mp3",
+    "texte": "اِلْمَسِ الجَزَرَة! الجَزَرُ خُضَارٌ يُقَوِّي العَيْنَيْن!",
+    "activite": "الجَزَرَةُ البُرْتُقَالِيَّة",
+    "activiteId": "food-vegetables-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "food-vegetables-tap-success.mp3",
+    "texte": "مُمْتَاز! هَذِهِ جَزَرَة!",
+    "activite": "الجَزَرَةُ البُرْتُقَالِيَّة",
+    "activiteId": "food-vegetables-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "food-milk-tap-prompt.mp3",
+    "texte": "اِلْمَسِ الحَلِيب! نَشْرَبُ الحَلِيبَ لِنَكْبَرَ أَقْوِيَاء!",
+    "activite": "الحَلِيبُ الأَبْيَض",
+    "activiteId": "food-milk-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "food-milk-tap-success.mp3",
+    "texte": "رَائِع! الحَلِيبُ يُقَوِّي العِظَام!",
+    "activite": "الحَلِيبُ الأَبْيَض",
+    "activiteId": "food-milk-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "food-sorting-prompt.mp3",
+    "texte": "ضَعِ التُّفَّاحَ وَالعِنَبَ مَعَ الفَرَاوِلَة، وَالجَزَرَ وَالفُلْفُلَ مَعَ البُرُوكْلِي!",
+    "activite": "فَاكِهَةٌ أَمْ خُضَار؟",
+    "activiteId": "food-sorting",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "food-sorting-success.mp3",
+    "texte": "عَظِيم! أَنْتَ تُمَيِّزُ الفَاكِهَةَ وَالخُضَار!",
+    "activite": "فَاكِهَةٌ أَمْ خُضَار؟",
+    "activiteId": "food-sorting",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "food-from-connect-prompt.mp3",
+    "texte": "اِرْبِطِ الحَلِيبَ بِالبَقَرَة، وَالبَيْضَ بِالدَّجَاجَة!",
+    "activite": "مِنْ أَيْنَ يَأْتِي الطَّعَام؟",
+    "activiteId": "food-from-connect",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "food-from-connect-success.mp3",
+    "texte": "وَاوَ! تَعْرِفُ مِنْ أَيْنَ يَأْتِي الطَّعَام!",
+    "activite": "مِنْ أَيْنَ يَأْتِي الطَّعَام؟",
+    "activiteId": "food-from-connect",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "food-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: تُفَّاحَة، جَزَرَة، حَلِيب!",
+    "activite": "تَذَكَّرِ الأَطْعِمَة",
+    "activiteId": "food-memory",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "food-memory-success.mp3",
+    "texte": "بَرَاوَ! أَنْتَ تَعْرِفُ طَعَامَكَ!",
+    "activite": "تَذَكَّرِ الأَطْعِمَة",
+    "activiteId": "food-memory",
+    "moduleId": "preschool-food",
+    "type": "success"
+  }
+]

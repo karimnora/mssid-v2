@@ -25,6 +25,7 @@ describe('usePreschoolSpeech', () => {
     speakTextMock.mockClear();
     stopSpeechMock.mockClear();
     voiceAvailableMock = true;
+    vi.unstubAllGlobals();
   });
 
   it('routes speak() through the shared speakText() instead of window.speechSynthesis directly', () => {
@@ -60,6 +61,41 @@ describe('usePreschoolSpeech', () => {
       result.current.stop();
     });
     expect(stopSpeechMock).toHaveBeenCalled();
+  });
+
+
+  it('plays a recorded clip without using the device voice', async () => {
+    const play = vi.fn().mockResolvedValue(undefined);
+    const audio = { play, pause: vi.fn(), removeAttribute: vi.fn(), onended: null, onerror: null };
+    const AudioMock = vi.fn(function () { return audio; });
+    vi.stubGlobal('Audio', AudioMock);
+    const { result } = renderHook(() => usePreschoolSpeech('fr'));
+    act(() => result.current.speak('Touche la lettre A !', '/sounds/preschool/fr/letters-alif-rabbit-prompt.mp3'));
+    expect(AudioMock).toHaveBeenCalledWith('/sounds/preschool/fr/letters-alif-rabbit-prompt.mp3');
+    expect(play).toHaveBeenCalledOnce();
+    expect(speakTextMock).not.toHaveBeenCalled();
+    act(() => result.current.stop());
+  });
+
+  it('falls back to the correct language when a recorded clip fails', async () => {
+    const audio = { play: vi.fn().mockRejectedValue(new Error('missing clip')), pause: vi.fn(), removeAttribute: vi.fn(), onended: null, onerror: null };
+    vi.stubGlobal('Audio', vi.fn(function () { return audio; }));
+    const { result } = renderHook(() => usePreschoolSpeech('ar'));
+    await act(async () => result.current.speak('أَرْنَب', '/sounds/preschool/ar/letters-alif-rabbit-prompt.mp3'));
+    expect(speakTextMock).toHaveBeenCalledWith('أَرْنَب', 'ar-SA', 0.9, 1.1);
+  });
+
+  it('does not resume a stopped clip through TTS after a late playback failure', async () => {
+    let reject!: (reason: Error) => void;
+    const pending = new Promise<void>((_, failure) => { reject = failure; });
+    const audio = { play: vi.fn().mockReturnValue(pending), pause: vi.fn(), removeAttribute: vi.fn(), onended: null, onerror: null };
+    vi.stubGlobal('Audio', vi.fn(function () { return audio; }));
+    const { result } = renderHook(() => usePreschoolSpeech('fr'));
+    act(() => result.current.speak('Touche la lettre A !', '/sounds/preschool/fr/clip.mp3'));
+    act(() => result.current.stop());
+    await act(async () => reject(new Error('cancelled playback')));
+    expect(speakTextMock).not.toHaveBeenCalled();
+    expect(audio.pause).toHaveBeenCalled();
   });
 
   it('reports hasVoice=true while useVoiceAvailable is still checking (null), not just when confirmed', () => {

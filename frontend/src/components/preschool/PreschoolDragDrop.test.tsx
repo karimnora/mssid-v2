@@ -106,6 +106,6 @@ describe('PreschoolDragDrop give-among extras', () => {
   it('shows the Arabic done label when language is ar', () => {
     const activity = NUMBERS_MODULE_0_TO_5.activities.find((a) => a.id === 'num-3')!;
     render(<PreschoolDragDrop activity={activity} language="ar" onComplete={vi.fn()} />);
-    expect(screen.getByRole('button', { name: 'أَنَا خَلَّصْت' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'أَنْهَيْتُ' })).toBeInTheDocument();
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { PreschoolActivityPlayer } from './PreschoolActivityPlayer';
 import { NUMBERS_MODULE_0_TO_10 } from '../../data/preschool/numbersModule';
 import { LETTERS_MODULE_START } from '../../data/preschool/lettersModule';
@@ -60,6 +60,27 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     expect(speak).toHaveBeenCalledTimes(1);
     vi.advanceTimersByTime(8000);
     expect(speak).toHaveBeenCalledTimes(2);
+    vi.useRealTimers();
+  });
+
+  it('lets the recorded reward finish before advancing', () => {
+    vi.useFakeTimers();
+    const onComplete = vi.fn();
+    const recordedActivity = {
+      ...LETTERS_MODULE_START.activities[0],
+      echoWord: undefined,
+      i18n: {
+        ...LETTERS_MODULE_START.activities[0].i18n,
+        fr: { ...LETTERS_MODULE_START.activities[0].i18n.fr, successAudioDurationMs: 4000 },
+      },
+    };
+    render(<PreschoolActivityPlayer activity={recordedActivity} language="fr" hasNext
+      onComplete={onComplete} onSkip={vi.fn()} onExit={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'A' }));
+    act(() => vi.advanceTimersByTime(2000));
+    expect(onComplete).not.toHaveBeenCalled();
+    act(() => vi.advanceTimersByTime(2600));
+    expect(onComplete).toHaveBeenCalledWith('done');
     vi.useRealTimers();
   });
 

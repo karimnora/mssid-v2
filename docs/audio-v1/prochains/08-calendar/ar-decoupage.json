@@ -1,0 +1,74 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "calendar-days-prompt.mp3",
+    "texte": "اِلْمَسْ كُلَّ يَوْمٍ لِتَسْمَعَ اسْمَه! نَبْدَأُ مِنَ الأَحَد!",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "calendar-days-success.mp3",
+    "texte": "أَحْسَنْت! سَمِعْتَ أَسْمَاءَ الأَيَّام!",
+    "activite": "أَيَّامُ الأُسْبُوع",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "calendar-months-1-prompt.mp3",
+    "texte": "اِلْمَسْ كُلَّ شَهْرٍ: جَانْفِي، فِيفْرِي، مَارْس، أَفْرِيل، مَاي، جُوَان!",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "calendar-months-1-success.mp3",
+    "texte": "مُمْتَاز! سَمِعْتَ أَوَّلَ سِتَّةِ أَشْهُر!",
+    "activite": "الشُّهُورُ ١",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "calendar-months-2-prompt.mp3",
+    "texte": "اِلْمَسْ كُلَّ شَهْرٍ: جُوِيلِيَة، أُوت، سِبْتَمْبِر، أُكْتُوبَر، نُوفَمْبِر، دِيسَمْبِر!",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "calendar-months-2-success.mp3",
+    "texte": "رَائِع! سَمِعْتَ كُلَّ الشُّهُور!",
+    "activite": "الشُّهُورُ ٢",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "calendar-school-weekend-prompt.mp3",
+    "texte": "الأَحَدُ إِلَى الخَمِيسِ مَعَ المَدْرَسَة. الجُمُعَةُ وَالسَّبْتُ عُطْلَة!",
+    "activite": "مَدْرَسَة أَمْ عُطْلَة؟",
+    "activiteId": "calendar-school-weekend",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "calendar-school-weekend-success.mp3",
+    "texte": "مُمْتَاز! تَعْرِفُ أُسْبُوعَ الجَزَائِر!",
+    "activite": "مَدْرَسَة أَمْ عُطْلَة؟",
+    "activiteId": "calendar-school-weekend",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  }
+]

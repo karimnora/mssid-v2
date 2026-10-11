@@ -1,0 +1,56 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "story-couscous-prompt.mp3",
+    "texte": "Put the pictures in order: Dido is hungry, then couscous, then he smiles! Then tell the story to a grown-up!",
+    "activite": "Dido eats couscous",
+    "activiteId": "story-couscous",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "story-couscous-success.mp3",
+    "texte": "Well done! Now tell the story to a grown-up!",
+    "activite": "Dido eats couscous",
+    "activiteId": "story-couscous",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "story-wash-hands-prompt.mp3",
+    "texte": "Put the pictures in order: dirty hands, then soap, then clean hands! Then tell the story!",
+    "activite": "We wash our hands",
+    "activiteId": "story-wash-hands",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "story-wash-hands-success.mp3",
+    "texte": "Clean hands! Tell the story to a grown-up!",
+    "activite": "We wash our hands",
+    "activiteId": "story-wash-hands",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "story-school-day-prompt.mp3",
+    "texte": "Put the pictures in order: we wake up, then school, then a hug! Then tell the story!",
+    "activite": "A school day",
+    "activiteId": "story-school-day",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "story-school-day-success.mp3",
+    "texte": "A lovely story! Tell it to a grown-up!",
+    "activite": "A school day",
+    "activiteId": "story-school-day",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  }
+]

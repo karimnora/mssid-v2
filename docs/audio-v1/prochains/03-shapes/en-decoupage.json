@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "shape-circle-cookie-prompt.mp3",
+    "texte": "Touch the circle! Like the round cookie!",
+    "activite": "The Circle",
+    "activiteId": "shape-circle-cookie",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "shape-circle-cookie-success.mp3",
+    "texte": "Well done! That is a circle!",
+    "activite": "The Circle",
+    "activiteId": "shape-circle-cookie",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "shape-square-gift-prompt.mp3",
+    "texte": "Touch the square! Like the gift box!",
+    "activite": "The Square",
+    "activiteId": "shape-square-gift",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "shape-square-gift-success.mp3",
+    "texte": "Great! That is a square!",
+    "activite": "The Square",
+    "activiteId": "shape-square-gift",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "shape-triangle-pizza-prompt.mp3",
+    "texte": "Touch the triangle! Like the pizza slice!",
+    "activite": "The Triangle",
+    "activiteId": "shape-triangle-pizza",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "shape-triangle-pizza-success.mp3",
+    "texte": "Well done! That is a triangle!",
+    "activite": "The Triangle",
+    "activiteId": "shape-triangle-pizza",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "shape-star-night-prompt.mp3",
+    "texte": "Touch the star! Like the stars in the sky!",
+    "activite": "The Star",
+    "activiteId": "shape-star-night",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "shape-star-night-success.mp3",
+    "texte": "Great! That is a star!",
+    "activite": "The Star",
+    "activiteId": "shape-star-night",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "shape-heart-love-prompt.mp3",
+    "texte": "Touch the heart! Like mum and dad's love!",
+    "activite": "The Heart",
+    "activiteId": "shape-heart-love",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "shape-heart-love-success.mp3",
+    "texte": "Well done! That is a heart!",
+    "activite": "The Heart",
+    "activiteId": "shape-heart-love",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "shape-diamond-ring-prompt.mp3",
+    "texte": "Touch the diamond! Like the kite!",
+    "activite": "The Diamond",
+    "activiteId": "shape-diamond-ring",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "shape-diamond-ring-success.mp3",
+    "texte": "Well done! That is a diamond!",
+    "activite": "The Diamond",
+    "activiteId": "shape-diamond-ring",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "shape-trace-circle-prompt.mp3",
+    "texte": "Trace the circle with your finger! Go round and round gently!",
+    "activite": "Trace the Circle",
+    "activiteId": "shape-trace-circle",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "shape-trace-circle-success.mp3",
+    "texte": "Great trace! You drew a perfect circle!",
+    "activite": "Trace the Circle",
+    "activiteId": "shape-trace-circle",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "shape-sort-triangles-prompt.mp3",
+    "texte": "Put the pizza, the tent and the triangle ruler in the triangle house! And the cookie and the ball in the circle house!",
+    "activite": "Triangle house",
+    "activiteId": "shape-sort-triangles",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "shape-sort-triangles-success.mp3",
+    "texte": "You did it! Every triangle is home!",
+    "activite": "Triangle house",
+    "activiteId": "shape-sort-triangles",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "shape-connect-twins-prompt.mp3",
+    "texte": "Find the twin of each shape! Tap it, then tap its match!",
+    "activite": "Match the twins",
+    "activiteId": "shape-connect-twins",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "shape-connect-twins-success.mp3",
+    "texte": "Bravo! You matched every shape!",
+    "activite": "Match the twins",
+    "activiteId": "shape-connect-twins",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "shape-memory-pairs-prompt.mp3",
+    "texte": "Flip two cards and find the two matching shapes!",
+    "activite": "Memory game",
+    "activiteId": "shape-memory-pairs",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "shape-memory-pairs-success.mp3",
+    "texte": "What a great memory! Well done!",
+    "activite": "Memory game",
+    "activiteId": "shape-memory-pairs",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  }
+]

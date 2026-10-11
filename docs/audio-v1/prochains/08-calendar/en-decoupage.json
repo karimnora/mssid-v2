@@ -1,0 +1,74 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "calendar-days-prompt.mp3",
+    "texte": "Touch each day to hear its name! We start with Sunday!",
+    "activite": "Days of the week",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "calendar-days-success.mp3",
+    "texte": "Well done! You heard the names of the days!",
+    "activite": "Days of the week",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "calendar-months-1-prompt.mp3",
+    "texte": "Touch each month: January, February, March, April, May, June!",
+    "activite": "The months 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "calendar-months-1-success.mp3",
+    "texte": "Great! You heard the first six months!",
+    "activite": "The months 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "calendar-months-2-prompt.mp3",
+    "texte": "Touch each month: July, August, September, October, November, December!",
+    "activite": "The months 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "calendar-months-2-success.mp3",
+    "texte": "Wonderful! You heard all the months!",
+    "activite": "The months 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "calendar-school-weekend-prompt.mp3",
+    "texte": "Sunday to Thursday with school. Friday and Saturday are the weekend!",
+    "activite": "School or weekend?",
+    "activiteId": "calendar-school-weekend",
+    "moduleId": "preschool-calendar",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "calendar-school-weekend-success.mp3",
+    "texte": "Excellent! You know the Algerian week!",
+    "activite": "School or weekend?",
+    "activiteId": "calendar-school-weekend",
+    "moduleId": "preschool-calendar",
+    "type": "success"
+  }
+]

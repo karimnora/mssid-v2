@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "food-fennec-market-prompt.mp3",
+    "texte": "Drag the fennec: tomato, bread, olives, grapes, then the market!",
+    "activite": "The Fennec at the Market",
+    "activiteId": "food-fennec-market",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "food-fennec-market-success.mp3",
+    "texte": "We made it! We eat fruit and vegetables to grow strong!",
+    "activite": "The Fennec at the Market",
+    "activiteId": "food-fennec-market",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "food-fruits-tap-prompt.mp3",
+    "texte": "Touch the apple! The apple is a sweet fruit!",
+    "activite": "The Red Apple",
+    "activiteId": "food-fruits-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "food-fruits-tap-success.mp3",
+    "texte": "Well done! That is an apple!",
+    "activite": "The Red Apple",
+    "activiteId": "food-fruits-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "food-vegetables-tap-prompt.mp3",
+    "texte": "Touch the carrot! The carrot is a vegetable that helps our eyes!",
+    "activite": "The Orange Carrot",
+    "activiteId": "food-vegetables-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "food-vegetables-tap-success.mp3",
+    "texte": "Excellent! That is a carrot!",
+    "activite": "The Orange Carrot",
+    "activiteId": "food-vegetables-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "food-milk-tap-prompt.mp3",
+    "texte": "Touch the milk! We drink milk to grow strong!",
+    "activite": "The White Milk",
+    "activiteId": "food-milk-tap",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "food-milk-tap-success.mp3",
+    "texte": "Great! Milk makes bones strong!",
+    "activite": "The White Milk",
+    "activiteId": "food-milk-tap",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "food-sorting-prompt.mp3",
+    "texte": "Put the apple and grapes with the strawberry, the carrot and pepper with the broccoli!",
+    "activite": "Fruit or Vegetable?",
+    "activiteId": "food-sorting",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "food-sorting-success.mp3",
+    "texte": "Amazing! You can tell fruits and vegetables apart!",
+    "activite": "Fruit or Vegetable?",
+    "activiteId": "food-sorting",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "food-from-connect-prompt.mp3",
+    "texte": "Match the milk to the cow, and the egg to the hen!",
+    "activite": "Where Does Food Come From?",
+    "activiteId": "food-from-connect",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "food-from-connect-success.mp3",
+    "texte": "Wow! You know where food comes from!",
+    "activite": "Where Does Food Come From?",
+    "activiteId": "food-from-connect",
+    "moduleId": "preschool-food",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "food-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: apple, carrot, milk!",
+    "activite": "Food Memory Game",
+    "activiteId": "food-memory",
+    "moduleId": "preschool-food",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "food-memory-success.mp3",
+    "texte": "Bravo! You know your foods!",
+    "activite": "Food Memory Game",
+    "activiteId": "food-memory",
+    "moduleId": "preschool-food",
+    "type": "success"
+  }
+]

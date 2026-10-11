@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "values-mosque-path-prompt.mp3",
+    "texte": "Drag the fennec: house, apple, salam, gift, then the mosque!",
+    "activite": "The Path to the Mosque",
+    "activiteId": "values-mosque-path",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "values-mosque-path-success.mp3",
+    "texte": "We reached the mosque! Well done!",
+    "activite": "The Path to the Mosque",
+    "activiteId": "values-mosque-path",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "values-bismillah-prompt.mp3",
+    "texte": "We are going to eat! We say Bismillah. Touch the apple!",
+    "activite": "Bismillah",
+    "activiteId": "values-bismillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "values-bismillah-success.mp3",
+    "texte": "Bismillah! Well done!",
+    "activite": "Bismillah",
+    "activiteId": "values-bismillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "values-alhamdulillah-prompt.mp3",
+    "texte": "We finished eating! We say Alhamdulillah. Touch the two hands!",
+    "activite": "Alhamdulillah",
+    "activiteId": "values-alhamdulillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "values-alhamdulillah-success.mp3",
+    "texte": "Alhamdulillah! Thank you!",
+    "activite": "Alhamdulillah",
+    "activiteId": "values-alhamdulillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "values-salam-prompt.mp3",
+    "texte": "We see a friend! We say As-salamu alaykum. Touch the hands!",
+    "activite": "As-salamu alaykum",
+    "activiteId": "values-salam",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "values-salam-success.mp3",
+    "texte": "Wa alaykum as-salam! Well done!",
+    "activite": "As-salamu alaykum",
+    "activiteId": "values-salam",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "values-mosque-tap-prompt.mp3",
+    "texte": "Touch the mosque! The mosque is the house of prayer!",
+    "activite": "This is the Mosque",
+    "activiteId": "values-mosque-tap",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "values-mosque-tap-success.mp3",
+    "texte": "Great! That is a mosque!",
+    "activite": "This is the Mosque",
+    "activiteId": "values-mosque-tap",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "values-good-manners-prompt.mp3",
+    "texte": "Put the gift and the hug with the happy face, the shout with the sad face!",
+    "activite": "My Good Manners",
+    "activiteId": "values-good-manners",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "values-good-manners-success.mp3",
+    "texte": "Your manners are beautiful! You are a kind child!",
+    "activite": "My Good Manners",
+    "activiteId": "values-good-manners",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "values-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: mosque, salam, apple!",
+    "activite": "My Little Faith Memory",
+    "activiteId": "values-memory",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "values-memory-success.mp3",
+    "texte": "Bravo! Your values are beautiful!",
+    "activite": "My Little Faith Memory",
+    "activiteId": "values-memory",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  }
+]

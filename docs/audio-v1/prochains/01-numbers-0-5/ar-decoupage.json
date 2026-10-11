@@ -1,0 +1,110 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "num-0-prompt.mp3",
+    "texte": "اِلْمَسِ الصِّفْر! الصَّحْنُ فَارِغ، لَيْسَ فِيهِ شَيْء!",
+    "activite": "الصِّفْرُ",
+    "activiteId": "num-0",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "num-0-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا هُوَ الصِّفْر!",
+    "activite": "الصِّفْرُ",
+    "activiteId": "num-0",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "num-1-prompt.mp3",
+    "texte": "اِلْمَسِ الرَّقْمَ وَاحِد!",
+    "activite": "الوَاحِدُ",
+    "activiteId": "num-1",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "num-1-success.mp3",
+    "texte": "رَائِع! هَذَا هُوَ الوَاحِد!",
+    "activite": "الوَاحِدُ",
+    "activiteId": "num-1",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "num-2-prompt.mp3",
+    "texte": "كَمْ تُفَّاحَةً تَرَى؟ عُدَّ مَعِي!",
+    "activite": "الاِثْنَانِ",
+    "activiteId": "num-2",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "num-2-success.mp3",
+    "texte": "مُمْتَاز! اثْنَتَانِ بِالضَّبْط!",
+    "activite": "الاِثْنَانِ",
+    "activiteId": "num-2",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "num-3-prompt.mp3",
+    "texte": "ضَعْ ثَلَاثَ تُفَّاحَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "الثَّلاَثَةُ",
+    "activiteId": "num-3",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "num-3-success.mp3",
+    "texte": "أَحْسَنْت! ثَلَاثُ تُفَّاحَات!",
+    "activite": "الثَّلاَثَةُ",
+    "activiteId": "num-3",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "num-4-prompt.mp3",
+    "texte": "ضَعْ أَرْبَعَ نَجْمَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "الأَرْبَعَةُ",
+    "activiteId": "num-4",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "num-4-success.mp3",
+    "texte": "رَائِع! أَرْبَعُ نَجْمَات!",
+    "activite": "الأَرْبَعَةُ",
+    "activiteId": "num-4",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "num-5-prompt.mp3",
+    "texte": "ضَعْ خَمْسَ نَجْمَاتٍ فِي السَّلَّةِ! لَا تَضَعْهَا كُلَّهَا! ثُمَّ اضْغَطْ عَلَى زِرِّ «أَنْهَيْتُ».",
+    "activite": "الخَمْسَةُ",
+    "activiteId": "num-5",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "num-5-success.mp3",
+    "texte": "بَرَافُو! خَمْسُ نَجْمَاتٍ فِي السَّلَة!",
+    "activite": "الخَمْسَةُ",
+    "activiteId": "num-5",
+    "moduleId": "preschool-numbers-0-5",
+    "type": "success"
+  }
+]

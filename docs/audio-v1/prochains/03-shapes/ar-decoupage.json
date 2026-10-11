@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "shape-circle-cookie-prompt.mp3",
+    "texte": "المِسِ الدَّائِرَةَ! مِثْلُ الكَعْكَةِ المُسْتَدِيرَة!",
+    "activite": "الشَّكْلُ الدَّائِرِيُّ",
+    "activiteId": "shape-circle-cookie",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "shape-circle-cookie-success.mp3",
+    "texte": "أَحْسَنْت! هَذِهِ دَائِرَة!",
+    "activite": "الشَّكْلُ الدَّائِرِيُّ",
+    "activiteId": "shape-circle-cookie",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "shape-square-gift-prompt.mp3",
+    "texte": "المِسِ المُرَبَّعَ! مِثْلُ عُلْبَةِ الهَدِيَّة!",
+    "activite": "الشَّكْلُ المُرَبَّعُ",
+    "activiteId": "shape-square-gift",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "shape-square-gift-success.mp3",
+    "texte": "رَائِع! هَذَا مُرَبَّع!",
+    "activite": "الشَّكْلُ المُرَبَّعُ",
+    "activiteId": "shape-square-gift",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "shape-triangle-pizza-prompt.mp3",
+    "texte": "المِسِ المُثَلَّثَ! مِثْلُ قِطْعَةِ البِيتْزَا!",
+    "activite": "الشَّكْلُ المُثَلَّثُ",
+    "activiteId": "shape-triangle-pizza",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "shape-triangle-pizza-success.mp3",
+    "texte": "مُمْتَاز! هَذَا مُثَلَّث!",
+    "activite": "الشَّكْلُ المُثَلَّثُ",
+    "activiteId": "shape-triangle-pizza",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "shape-star-night-prompt.mp3",
+    "texte": "المِسِ النَّجْمَةَ! مِثْلُ نُجُومِ السَّمَاءِ!",
+    "activite": "الشَّكْلُ النَّجْمِيُّ",
+    "activiteId": "shape-star-night",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "shape-star-night-success.mp3",
+    "texte": "رَائِع! هَذِهِ نَجْمَة!",
+    "activite": "الشَّكْلُ النَّجْمِيُّ",
+    "activiteId": "shape-star-night",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "shape-heart-love-prompt.mp3",
+    "texte": "المِسِ القَلْبَ! مِثْلُ حُبِّ مَامَا وَبَابَا!",
+    "activite": "شَكْلُ القَلْبِ",
+    "activiteId": "shape-heart-love",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "shape-heart-love-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا قَلْب!",
+    "activite": "شَكْلُ القَلْبِ",
+    "activiteId": "shape-heart-love",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "shape-diamond-ring-prompt.mp3",
+    "texte": "المِسِ المُعَيَّنَ! مِثْلُ الطَّائِرَةِ الوَرَقِيَّة!",
+    "activite": "الشَّكْلُ المُعَيَّنُ",
+    "activiteId": "shape-diamond-ring",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "shape-diamond-ring-success.mp3",
+    "texte": "مُمْتَاز! هَذَا مُعَيَّن!",
+    "activite": "الشَّكْلُ المُعَيَّنُ",
+    "activiteId": "shape-diamond-ring",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "shape-trace-circle-prompt.mp3",
+    "texte": "اِرْسُمِ الدَّائِرَةَ بِإِصْبَعِكَ الجَمِيل! دُرْ حَوْلَهَا بِهُدُوء!",
+    "activite": "تَتَبَّعِ الدَّائِرَةَ بِإِصْبَعِكَ",
+    "activiteId": "shape-trace-circle",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "shape-trace-circle-success.mp3",
+    "texte": "خَطٌّ رَائِع! رَسَمْتَ دَائِرَةً كَامِلَة!",
+    "activite": "تَتَبَّعِ الدَّائِرَةَ بِإِصْبَعِكَ",
+    "activiteId": "shape-trace-circle",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "shape-sort-triangles-prompt.mp3",
+    "texte": "ضَعِ البِيتْزَا وَالخَيْمَةَ وَالمِسْطَرَةَ فِي بَيْتِ المُثَلَّث! وَالكَعْكَةَ وَالكُرَةَ فِي بَيْتِ الدَّائِرَة!",
+    "activite": "بَيْتُ المُثَلَّثَاتِ",
+    "activiteId": "shape-sort-triangles",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "shape-sort-triangles-success.mp3",
+    "texte": "بَطَل! كُلُّ المُثَلَّثَاتِ فِي بَيْتِهَا!",
+    "activite": "بَيْتُ المُثَلَّثَاتِ",
+    "activiteId": "shape-sort-triangles",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "shape-connect-twins-prompt.mp3",
+    "texte": "اعثر على توأم كل شكل! المسه ثم المس شبيهه!",
+    "activite": "وَصِّلِ التَّوَائِمَ",
+    "activiteId": "shape-connect-twins",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "shape-connect-twins-success.mp3",
+    "texte": "برافو! وصّلت كل الأشكال!",
+    "activite": "وَصِّلِ التَّوَائِمَ",
+    "activiteId": "shape-connect-twins",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "shape-memory-pairs-prompt.mp3",
+    "texte": "اقلب بطاقتين وابحث عن الشكلين المتشابهين!",
+    "activite": "لُعْبَةُ الذَّاكِرَةِ",
+    "activiteId": "shape-memory-pairs",
+    "moduleId": "preschool-shapes",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "shape-memory-pairs-success.mp3",
+    "texte": "ذاكرة قوية! أحسنت!",
+    "activite": "لُعْبَةُ الذَّاكِرَةِ",
+    "activiteId": "shape-memory-pairs",
+    "moduleId": "preschool-shapes",
+    "type": "success"
+  }
+]

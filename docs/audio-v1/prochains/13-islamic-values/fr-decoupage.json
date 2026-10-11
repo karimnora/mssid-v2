@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "values-mosque-path-prompt.mp3",
+    "texte": "Glisse le fennec : maison, pomme, salam, cadeau, puis la mosquée !",
+    "activite": "Le Chemin vers la Mosquée",
+    "activiteId": "values-mosque-path",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "values-mosque-path-success.mp3",
+    "texte": "Nous voilà à la mosquée ! Bravo !",
+    "activite": "Le Chemin vers la Mosquée",
+    "activiteId": "values-mosque-path",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "values-bismillah-prompt.mp3",
+    "texte": "On va manger ! On dit Bismillah. Touche la pomme !",
+    "activite": "Bismillah",
+    "activiteId": "values-bismillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "values-bismillah-success.mp3",
+    "texte": "Bismillah ! Bravo !",
+    "activite": "Bismillah",
+    "activiteId": "values-bismillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "values-alhamdulillah-prompt.mp3",
+    "texte": "On a fini de manger ! On dit Alhamdulillah. Touche les deux mains !",
+    "activite": "Alhamdulillah",
+    "activiteId": "values-alhamdulillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "values-alhamdulillah-success.mp3",
+    "texte": "Alhamdulillah ! Merci !",
+    "activite": "Alhamdulillah",
+    "activiteId": "values-alhamdulillah",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "values-salam-prompt.mp3",
+    "texte": "On voit un ami ! On dit As-salamu alaykum. Touche les mains !",
+    "activite": "As-salamu alaykum",
+    "activiteId": "values-salam",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "values-salam-success.mp3",
+    "texte": "Wa alaykum as-salam ! Bravo !",
+    "activite": "As-salamu alaykum",
+    "activiteId": "values-salam",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "values-mosque-tap-prompt.mp3",
+    "texte": "Touche la mosquée ! La mosquée est la maison de la prière !",
+    "activite": "Voici la Mosquée",
+    "activiteId": "values-mosque-tap",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "values-mosque-tap-success.mp3",
+    "texte": "Bravo ! Voici une mosquée !",
+    "activite": "Voici la Mosquée",
+    "activiteId": "values-mosque-tap",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "values-good-manners-prompt.mp3",
+    "texte": "Mets le cadeau et le câlin avec le visage joyeux, le cri avec le visage triste !",
+    "activite": "Mes Bonnes Manières",
+    "activiteId": "values-good-manners",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "values-good-manners-success.mp3",
+    "texte": "Tes manières sont belles ! Tu es un enfant gentil !",
+    "activite": "Mes Bonnes Manières",
+    "activiteId": "values-good-manners",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "values-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : mosquée, salam, pomme !",
+    "activite": "Mémo de Ma Petite Foi",
+    "activiteId": "values-memory",
+    "moduleId": "preschool-islamic-values",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "values-memory-success.mp3",
+    "texte": "Bravo ! Tes valeurs sont belles !",
+    "activite": "Mémo de Ma Petite Foi",
+    "activiteId": "values-memory",
+    "moduleId": "preschool-islamic-values",
+    "type": "success"
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "seasons-year-path-prompt.mp3",
+    "texte": "اِسْحَبِ العُصْفُورَ عَبْرَ الفُصُول: زَهْرَة، شَمْس، وَرَقَة، ثَلْج!",
+    "activite": "دَوْرَةُ السَّنَة",
+    "activiteId": "seasons-year-path",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "seasons-year-path-success.mp3",
+    "texte": "عَامٌ كَامِل! أَحْسَنْت!",
+    "activite": "دَوْرَةُ السَّنَة",
+    "activiteId": "seasons-year-path",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "seasons-spring-prompt.mp3",
+    "texte": "الفَرَاشَةُ هُنَا! اِلْمَسِ الزَّهْرَة! هَذَا الرَّبِيع!",
+    "activite": "زَهْرَةُ الرَّبِيع",
+    "activiteId": "seasons-spring",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "seasons-spring-success.mp3",
+    "texte": "رَائِع! الزَّهْرَةُ لِلرَّبِيع!",
+    "activite": "زَهْرَةُ الرَّبِيع",
+    "activiteId": "seasons-spring",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "seasons-summer-prompt.mp3",
+    "texte": "نَأْكُلُ البَطِّيخَ! اِلْمَسِ الشَّمْسَ! هَذَا الصَّيْف!",
+    "activite": "شَمْسُ الصَّيْف",
+    "activiteId": "seasons-summer",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "seasons-summer-success.mp3",
+    "texte": "أَحْسَنْت! الشَّمْسُ لِلصَّيْف!",
+    "activite": "شَمْسُ الصَّيْف",
+    "activiteId": "seasons-summer",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "seasons-autumn-prompt.mp3",
+    "texte": "التُّفَّاحُ نَاضِج! اِلْمَسِ الوَرَقَةَ الصَّفْرَاء! هَذَا الخَرِيف!",
+    "activite": "أَوْرَاقُ الخَرِيف",
+    "activiteId": "seasons-autumn",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "seasons-autumn-success.mp3",
+    "texte": "مُمْتَاز! الوَرَقَةُ لِلخَرِيف!",
+    "activite": "أَوْرَاقُ الخَرِيف",
+    "activiteId": "seasons-autumn",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "seasons-winter-prompt.mp3",
+    "texte": "نَلْبَسُ الوِشَاحَ! اِلْمَسِ النُّدْفَة! هَذَا الشِّتَاء!",
+    "activite": "ثَلْجُ الشِّتَاء",
+    "activiteId": "seasons-winter",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "seasons-winter-success.mp3",
+    "texte": "بَرَاوَ! النُّدْفَةُ لِلشِّتَاء!",
+    "activite": "ثَلْجُ الشِّتَاء",
+    "activiteId": "seasons-winter",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "seasons-clothes-sorting-prompt.mp3",
+    "texte": "ضَعِ المَايُوهَ وَالقُبَّعَةَ مَعَ الشَّمْس، وَالمِعْطَفَ مَعَ الثَّلْج، وَالمِظَلَّةَ وَقُبَّعَةَ القَشِّ مَعَ الزَّهْرَة!",
+    "activite": "مَلَابِسُ كُلِّ فَصْل",
+    "activiteId": "seasons-clothes-sorting",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "seasons-clothes-sorting-success.mp3",
+    "texte": "مُمْتَاز! تَعْرِفُ مَلَابِسَ كُلِّ فَصْل!",
+    "activite": "مَلَابِسُ كُلِّ فَصْل",
+    "activiteId": "seasons-clothes-sorting",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "seasons-connect-prompt.mp3",
+    "texte": "عَلَى اليَسَارِ الفُصُول. عَلَى اليَمِينِ الصُّوَر. اِرْبِطْ كُلَّ فَصْلٍ بِصُورَتِه!",
+    "activite": "اِرْبِطِ الفَصْلَ بِصُورَتِه",
+    "activiteId": "seasons-connect",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "seasons-connect-success.mp3",
+    "texte": "وَاوَ! تَعْرِفُ كُلَّ فُصُولِ السَّنَة!",
+    "activite": "اِرْبِطِ الفَصْلَ بِصُورَتِه",
+    "activiteId": "seasons-connect",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  }
+]

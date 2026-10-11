@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "algeria-fennec-flag-prompt.mp3",
+    "texte": "اِسْحَبِ الفَنَكَ: صَحْرَاء، نَخْلَة، جَبَل، بَحْر، ثُمَّ العَلَم!",
+    "activite": "رِحْلَةٌ عَبْرَ الجَزَائِر",
+    "activiteId": "algeria-fennec-flag",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "algeria-fennec-flag-success.mp3",
+    "texte": "عَاشَتِ الجَزَائِر! بِلَادُنَا جَمِيلَة!",
+    "activite": "رِحْلَةٌ عَبْرَ الجَزَائِر",
+    "activiteId": "algeria-fennec-flag",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "algeria-flag-color-prompt.mp3",
+    "texte": "اِلْمَسِ عَلَمَ الجَزَائِر! أَخْضَرُ وَأَبْيَضُ وَهِلَال!",
+    "activite": "عَلَمُ الجَزَائِر",
+    "activiteId": "algeria-flag-color",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "algeria-flag-color-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا عَلَمُنَا!",
+    "activite": "عَلَمُ الجَزَائِر",
+    "activiteId": "algeria-flag-color",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "algeria-mosque-prompt.mp3",
+    "texte": "اِلْمَسِ المَسْجِد! المَسْجِدُ جَمِيلٌ فِي بِلَادِنَا!",
+    "activite": "المَسْجِد",
+    "activiteId": "algeria-mosque",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "algeria-mosque-success.mp3",
+    "texte": "رَائِع! هَذَا مَسْجِد!",
+    "activite": "المَسْجِد",
+    "activiteId": "algeria-mosque",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "algeria-couscous-prompt.mp3",
+    "texte": "اِلْمَسِ الكُسْكُس! نَأْكُلُ الكُسْكُسَ فِي الجَزَائِر!",
+    "activite": "الكُسْكُس",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "algeria-couscous-success.mp3",
+    "texte": "شَهِيّ! هَذَا كُسْكُس!",
+    "activite": "الكُسْكُس",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "algeria-fennec-tap-prompt.mp3",
+    "texte": "اِلْمَسِ الفَنَكَ! الفَنَكُ ثَعْلَبُ صَحْرَائِنَا!",
+    "activite": "فَنَكُ الجَزَائِر",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "algeria-fennec-tap-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا فَنَكُنَا!",
+    "activite": "فَنَكُ الجَزَائِر",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "algeria-connect-prompt.mp3",
+    "texte": "اِرْبِطِ الصَّحْرَاءَ بِالجَمَل، وَالبَحْرَ بِالسَّمَكَة!",
+    "activite": "اِرْبِطْ مَنَاطِقَ بِلَادِنَا",
+    "activiteId": "algeria-connect",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "algeria-connect-success.mp3",
+    "texte": "الجَزَائِرُ فِيهَا صَحْرَاءُ وَجِبَالٌ وَبَحْر!",
+    "activite": "اِرْبِطْ مَنَاطِقَ بِلَادِنَا",
+    "activiteId": "algeria-connect",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "algeria-habitat-sort-prompt.mp3",
+    "texte": "ضَعِ الجَمَلَ وَالفَنَكَ مَعَ الرَّمْل، وَالسَّمَكَةَ وَالسَّرَطَانَ مَعَ المَوْج!",
+    "activite": "صَحْرَاءُ أَمْ بَحْر؟",
+    "activiteId": "algeria-habitat-sort",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "algeria-habitat-sort-success.mp3",
+    "texte": "تَعْرِفُ صَحْرَاءَنَا وَبَحْرَنَا!",
+    "activite": "صَحْرَاءُ أَمْ بَحْر؟",
+    "activiteId": "algeria-habitat-sort",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "algeria-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: عَلَم، جَمَل، مَسْجِد!",
+    "activite": "تَذَكَّرْ بِلَادِي",
+    "activiteId": "algeria-memory",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "algeria-memory-success.mp3",
+    "texte": "بَرَاوَ! هَذِهِ الجَزَائِر!",
+    "activite": "تَذَكَّرْ بِلَادِي",
+    "activiteId": "algeria-memory",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  }
+]

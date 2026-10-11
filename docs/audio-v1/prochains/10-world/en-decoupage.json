@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "world-day-path-prompt.mp3",
+    "texte": "Drag the bird: dawn, sun, sunset, moon, then home!",
+    "activite": "My Day from Morning to Night",
+    "activiteId": "world-day-path",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "world-day-path-success.mp3",
+    "texte": "A whole day! Well done!",
+    "activite": "My Day from Morning to Night",
+    "activiteId": "world-day-path",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "world-algerian-animals-prompt.mp3",
+    "texte": "Touch the camel! The camel lives in the desert!",
+    "activite": "The Desert Camel",
+    "activiteId": "world-algerian-animals",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "world-algerian-animals-success.mp3",
+    "texte": "Well done! That is a strong camel!",
+    "activite": "The Desert Camel",
+    "activiteId": "world-algerian-animals",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "world-fennec-prompt.mp3",
+    "texte": "Touch the fennec! He has big ears — he is the little desert fox!",
+    "activite": "The Desert Fennec",
+    "activiteId": "world-fennec",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "world-fennec-success.mp3",
+    "texte": "Great! That is a fennec!",
+    "activite": "The Desert Fennec",
+    "activiteId": "world-fennec",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "world-match-homes-prompt.mp3",
+    "texte": "Match the camel to the desert, and the fish to the sea!",
+    "activite": "Each Animal at Home",
+    "activiteId": "world-match-homes",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "world-match-homes-success.mp3",
+    "texte": "All the animals are home! Well done!",
+    "activite": "Each Animal at Home",
+    "activiteId": "world-match-homes",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "world-morning-routine-prompt.mp3",
+    "texte": "Put the soap with the brush, and the car with the teddy !",
+    "activite": "I Tidy My Room",
+    "activiteId": "world-morning-routine",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "world-morning-routine-success.mp3",
+    "texte": "A tidy room! You are a champion!",
+    "activite": "I Tidy My Room",
+    "activiteId": "world-morning-routine",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "world-day-night-prompt.mp3",
+    "texte": "Put the sunglasses and the rooster with the sun, the owl and the bed with the moon!",
+    "activite": "Day or Night?",
+    "activiteId": "world-day-night",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "world-day-night-success.mp3",
+    "texte": "You know day and night!",
+    "activite": "Day or Night?",
+    "activiteId": "world-day-night",
+    "moduleId": "preschool-world",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "world-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: camel, sun, house!",
+    "activite": "My World Memory",
+    "activiteId": "world-memory",
+    "moduleId": "preschool-world",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "world-memory-success.mp3",
+    "texte": "Bravo! That is your little world!",
+    "activite": "My World Memory",
+    "activiteId": "world-memory",
+    "moduleId": "preschool-world",
+    "type": "success"
+  }
+]

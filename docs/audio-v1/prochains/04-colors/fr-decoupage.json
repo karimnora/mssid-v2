@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "colors-fennec-path-prompt.mp3",
+    "texte": "Glisse le petit fennec de couleur en couleur : rouge, orange, jaune, vert, jusqu'à sa maison !",
+    "activite": "Le Chemin du Fennec",
+    "activiteId": "colors-fennec-path",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "colors-fennec-path-success.mp3",
+    "texte": "Le petit fennec est rentré bien au chaud ! Bravo !",
+    "activite": "Le Chemin du Fennec",
+    "activiteId": "colors-fennec-path",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "colors-red-strawberry-prompt.mp3",
+    "texte": "Touche la couleur rouge ! Comme la fraise !",
+    "activite": "La Couleur Rouge",
+    "activiteId": "colors-red-strawberry",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "colors-red-strawberry-success.mp3",
+    "texte": "Bravo ! Voici la couleur rouge !",
+    "activite": "La Couleur Rouge",
+    "activiteId": "colors-red-strawberry",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "colors-orange-fruit-prompt.mp3",
+    "texte": "Touche la couleur orange ! Comme l'orange !",
+    "activite": "La Couleur Orange",
+    "activiteId": "colors-orange-fruit",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "colors-orange-fruit-success.mp3",
+    "texte": "Super ! Voici la couleur orange !",
+    "activite": "La Couleur Orange",
+    "activiteId": "colors-orange-fruit",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "colors-yellow-sun-prompt.mp3",
+    "texte": "Touche la couleur jaune ! Comme le soleil brillant !",
+    "activite": "La Couleur Jaune",
+    "activiteId": "colors-yellow-sun",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "colors-yellow-sun-success.mp3",
+    "texte": "Parfait ! Voici la couleur jaune !",
+    "activite": "La Couleur Jaune",
+    "activiteId": "colors-yellow-sun",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "colors-green-frog-prompt.mp3",
+    "texte": "Touche la couleur verte ! Comme la petite grenouille !",
+    "activite": "La Couleur Verte",
+    "activiteId": "colors-green-frog",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "colors-green-frog-success.mp3",
+    "texte": "Bravo ! Voici la couleur verte !",
+    "activite": "La Couleur Verte",
+    "activiteId": "colors-green-frog",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "colors-blue-sea-prompt.mp3",
+    "texte": "Touche la couleur bleue ! Comme la grande mer !",
+    "activite": "La Couleur Bleue",
+    "activiteId": "colors-blue-sea",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "colors-blue-sea-success.mp3",
+    "texte": "Super ! Voici la couleur bleue !",
+    "activite": "La Couleur Bleue",
+    "activiteId": "colors-blue-sea",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "colors-purple-grapes-prompt.mp3",
+    "texte": "Touche la couleur violette ! Comme la grappe de raisin !",
+    "activite": "La Couleur Violette",
+    "activiteId": "colors-purple-grapes",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "colors-purple-grapes-success.mp3",
+    "texte": "Parfait ! Voici la couleur violette !",
+    "activite": "La Couleur Violette",
+    "activiteId": "colors-purple-grapes",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "colors-sort-red-green-blue-prompt.mp3",
+    "texte": "Mets les objets rouges dans la boîte rouge, les verts dans la verte, et les bleus dans la bleue !",
+    "activite": "Le Tri des Couleurs",
+    "activiteId": "colors-sort-red-green-blue",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "colors-sort-red-green-blue-success.mp3",
+    "texte": "Magnifique ! Toutes les couleurs sont bien rangées !",
+    "activite": "Le Tri des Couleurs",
+    "activiteId": "colors-sort-red-green-blue",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "colors-pottery-bubble-prompt.mp3",
+    "texte": "Éclate les bulles magiques pour peindre la poterie !",
+    "activite": "Bulles Magiques de Peinture",
+    "activiteId": "colors-pottery-bubble",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "colors-pottery-bubble-success.mp3",
+    "texte": "C'est magique ! Tu as éclaté toutes les bulles !",
+    "activite": "Bulles Magiques de Peinture",
+    "activiteId": "colors-pottery-bubble",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "colors-memory-gems-prompt.mp3",
+    "texte": "Retourne les cartes et trouve les paires de même couleur !",
+    "activite": "Mémoire des Couleurs",
+    "activiteId": "colors-memory-gems",
+    "moduleId": "preschool-colors",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "colors-memory-gems-success.mp3",
+    "texte": "Quelle mémoire formidable ! Félicitations !",
+    "activite": "Mémoire des Couleurs",
+    "activiteId": "colors-memory-gems",
+    "moduleId": "preschool-colors",
+    "type": "success"
+  }
+]

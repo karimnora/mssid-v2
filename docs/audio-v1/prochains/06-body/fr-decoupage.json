@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "body-fennec-wash-prompt.mp3",
+    "texte": "Glisse le fennec : mains, savon, eau, bulles, puis la serviette !",
+    "activite": "Le Fennec se lave les mains",
+    "activiteId": "body-fennec-wash",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "body-fennec-wash-success.mp3",
+    "texte": "Bravo ! Des mains propres éloignent les microbes !",
+    "activite": "Le Fennec se lave les mains",
+    "activiteId": "body-fennec-wash",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "body-toothbrush-prompt.mp3",
+    "texte": "Glisse le fennec : brosse, dentifrice, dents, puis le verre !",
+    "activite": "Le Fennec se brosse les dents",
+    "activiteId": "body-toothbrush",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "body-toothbrush-success.mp3",
+    "texte": "Des dents propres ! Souris !",
+    "activite": "Le Fennec se brosse les dents",
+    "activiteId": "body-toothbrush",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "body-eyes-prompt.mp3",
+    "texte": "Touche les yeux ! On voit toutes les couleurs et toutes les formes avec eux !",
+    "activite": "Les Yeux",
+    "activiteId": "body-eyes",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "body-eyes-success.mp3",
+    "texte": "Excellent ! Tes yeux sont magnifiques et voient tout !",
+    "activite": "Les Yeux",
+    "activiteId": "body-eyes",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "body-ears-prompt.mp3",
+    "texte": "Touche les oreilles ! On entend les sons et la belle musique avec elles !",
+    "activite": "Les Oreilles",
+    "activiteId": "body-ears",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "body-ears-success.mp3",
+    "texte": "Bravo ! Tes oreilles entendent tous les sons !",
+    "activite": "Les Oreilles",
+    "activiteId": "body-ears",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "body-hands-prompt.mp3",
+    "texte": "Touche les mains ! On touche, dessine, construit et mange avec elles !",
+    "activite": "Les Mains",
+    "activiteId": "body-hands",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "body-hands-success.mp3",
+    "texte": "Super ! Tes mains sont formidables et font tout !",
+    "activite": "Les Mains",
+    "activiteId": "body-hands",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "body-senses-prompt.mp3",
+    "texte": "Relie : le nez sent, l'oreille entend, l'œil voit !",
+    "activite": "Les Cinq Sens",
+    "activiteId": "body-senses",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "body-senses-success.mp3",
+    "texte": "Magnifique ! Tes cinq sens sont un cadeau extraordinaire !",
+    "activite": "Les Cinq Sens",
+    "activiteId": "body-senses",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "body-sorting-prompt.mp3",
+    "texte": "Classe les images ! Les parties du visage dans le visage et les membres dans le corps !",
+    "activite": "Visage ou Main/Pied ?",
+    "activiteId": "body-sorting",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "body-sorting-success.mp3",
+    "texte": "Super ! Tu connais très bien ton corps !",
+    "activite": "Visage ou Main/Pied ?",
+    "activiteId": "body-sorting",
+    "moduleId": "preschool-body",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "body-memory-prompt.mp3",
+    "texte": "Retourne les cartes et trouve les paires ! Dis le nom de chaque partie à voix haute !",
+    "activite": "Mémo du Corps",
+    "activiteId": "body-memory",
+    "moduleId": "preschool-body",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "body-memory-success.mp3",
+    "texte": "Bravo champion ! Ta mémoire est incroyablement forte !",
+    "activite": "Mémo du Corps",
+    "activiteId": "body-memory",
+    "moduleId": "preschool-body",
+    "type": "success"
+  }
+]

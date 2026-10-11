@@ -1,0 +1,23 @@
+Touche le zéro ! L'assiette est vide, il n'y a rien !
+
+Bravo ! Voici le zéro !
+
+Touche le chiffre un !
+
+Super ! Voici le un !
+
+Combien vois-tu de pommes ? Compte avec moi !
+
+Parfait ! Exactement deux !
+
+Mets trois pommes dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !
+
+Bravo ! Trois pommes !
+
+Mets quatre étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !
+
+Super ! Exactement quatre !
+
+Mets cinq étoiles dans le panier ! Pas toutes ! Puis appuie sur : j’ai fini !
+
+Bravo ! Cinq étoiles dans le panier !

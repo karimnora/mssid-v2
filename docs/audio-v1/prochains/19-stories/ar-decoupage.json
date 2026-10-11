@@ -1,0 +1,56 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "story-couscous-prompt.mp3",
+    "texte": "رَتِّبِ الصُّوَرَ: دِيدُو جَائِع، ثُمَّ الكُسْكُس، ثُمَّ يَبْتَسِم! بَعْدَهَا احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!",
+    "activite": "دِيدُو يَأْكُلُ الكُسْكُس",
+    "activiteId": "story-couscous",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "story-couscous-success.mp3",
+    "texte": "أَحْسَنْت! الآنْ احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!",
+    "activite": "دِيدُو يَأْكُلُ الكُسْكُس",
+    "activiteId": "story-couscous",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "story-wash-hands-prompt.mp3",
+    "texte": "رَتِّبِ الصُّوَرَ: يَدَانِ مُتَّسِخَتَان، ثُمَّ الصَّابُون، ثُمَّ يَدَانِ نَظِيفَتَان! بَعْدَهَا احْكِ القِصَّة!",
+    "activite": "نَغْسِلُ اليَدَيْن",
+    "activiteId": "story-wash-hands",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "story-wash-hands-success.mp3",
+    "texte": "يَدَانِ نَظِيفَتَان! احْكِ القِصَّةَ لِمَامَا!",
+    "activite": "نَغْسِلُ اليَدَيْن",
+    "activiteId": "story-wash-hands",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "story-school-day-prompt.mp3",
+    "texte": "رَتِّبِ الصُّوَرَ: نَسْتَيْقِظ، ثُمَّ المَدْرَسَة، ثُمَّ حَضْنُ بَابَا! بَعْدَهَا احْكِ القِصَّة!",
+    "activite": "يَوْمٌ فِي المَدْرَسَة",
+    "activiteId": "story-school-day",
+    "moduleId": "preschool-stories",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "story-school-day-success.mp3",
+    "texte": "قِصَّةٌ جَمِيلَة! احْكِهَا لِبَابَا!",
+    "activite": "يَوْمٌ فِي المَدْرَسَة",
+    "activiteId": "story-school-day",
+    "moduleId": "preschool-stories",
+    "type": "success"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "logic-think-path-prompt.mp3",
+    "texte": "Drag: long train, heavy stone, bird up high, house, light balloon, then the brain!",
+    "activite": "My Mind Takes a Walk",
+    "activiteId": "logic-think-path",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "logic-think-path-success.mp3",
+    "texte": "Your little mind is thinking! Bravo!",
+    "activite": "My Mind Takes a Walk",
+    "activiteId": "logic-think-path",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "logic-long-short-prompt.mp3",
+    "texte": "Touch the train! The train is long, the car is short!",
+    "activite": "The Long Train",
+    "activiteId": "logic-long-short",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "logic-long-short-success.mp3",
+    "texte": "Well done! That is a long train!",
+    "activite": "The Long Train",
+    "activiteId": "logic-long-short",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "logic-heavy-tap-prompt.mp3",
+    "texte": "Touch the stone! The stone is heavy, the balloon is light!",
+    "activite": "The Heavy Stone",
+    "activiteId": "logic-heavy-tap",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "logic-heavy-tap-success.mp3",
+    "texte": "Yes! The stone is heavy!",
+    "activite": "The Heavy Stone",
+    "activiteId": "logic-heavy-tap",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "logic-above-below-prompt.mp3",
+    "texte": "Touch the ball above the line! Same ball, two places.",
+    "activite": "The ball above",
+    "activiteId": "logic-above-below",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "logic-above-below-success.mp3",
+    "texte": "Yes! The ball is above!",
+    "activite": "The ball above",
+    "activiteId": "logic-above-below",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "logic-heavy-light-prompt.mp3",
+    "texte": "Put the stone and the car with the elephant, the balloon and the leaf with the feather!",
+    "activite": "Heavy or Light?",
+    "activiteId": "logic-heavy-light",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "logic-heavy-light-success.mp3",
+    "texte": "You know heavy and light!",
+    "activite": "Heavy or Light?",
+    "activiteId": "logic-heavy-light",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "logic-inside-outside-prompt.mp3",
+    "texte": "Touch the ball that is INSIDE the box! Same ball, two places!",
+    "activite": "The ball inside the box",
+    "activiteId": "logic-inside-outside",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "logic-inside-outside-success.mp3",
+    "texte": "Yes! The ball is inside the box!",
+    "activite": "The ball inside the box",
+    "activiteId": "logic-inside-outside",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "logic-front-behind-prompt.mp3",
+    "texte": "Touch the bear that is IN FRONT of the box! Same bear, two different places!",
+    "activite": "The bear in front of the box",
+    "activiteId": "logic-front-behind",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "logic-front-behind-success.mp3",
+    "texte": "Yes! The bear is in front of the box!",
+    "activite": "The bear in front of the box",
+    "activiteId": "logic-front-behind",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "logic-right-left-prompt.mp3",
+    "texte": "Touch the right hand! We eat and shake hands with it!",
+    "activite": "The Right Hand",
+    "activiteId": "logic-right-left",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "logic-right-left-success.mp3",
+    "texte": "That is the right hand! Well done!",
+    "activite": "The Right Hand",
+    "activiteId": "logic-right-left",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "logic-pattern-colors-prompt.mp3",
+    "texte": "Train, car, train, car, train… what is next?",
+    "activite": "What Comes Next?",
+    "activiteId": "logic-pattern-colors",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "logic-pattern-colors-success.mp3",
+    "texte": "The car comes after the train! Well done!",
+    "activite": "What Comes Next?",
+    "activiteId": "logic-pattern-colors",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "logic-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: train, elephant, bird!",
+    "activite": "Thinking Memory",
+    "activiteId": "logic-memory",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "logic-memory-success.mp3",
+    "texte": "Your mind is strong!",
+    "activite": "Thinking Memory",
+    "activiteId": "logic-memory",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  }
+]

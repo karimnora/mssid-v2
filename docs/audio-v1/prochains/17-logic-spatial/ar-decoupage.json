@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "logic-think-path-prompt.mp3",
+    "texte": "اِسْحَبْ: قِطَار طَوِيل، حَجَر ثَقِيل، عُصْفُور فَوْق، بَيْت، بَالُون خَفِيف، ثُمَّ الدِّمَاغ!",
+    "activite": "عَقْلِي يَتَمَشَّى",
+    "activiteId": "logic-think-path",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "logic-think-path-success.mp3",
+    "texte": "عَقْلُكَ الصَّغِيرُ يُفَكِّر! بَرَاوَ!",
+    "activite": "عَقْلِي يَتَمَشَّى",
+    "activiteId": "logic-think-path",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "logic-long-short-prompt.mp3",
+    "texte": "اِلْمَسِ القِطَار! القِطَارُ طَوِيل، السَّيَّارَةُ قَصِيرَة!",
+    "activite": "القِطَارُ الطَّوِيل",
+    "activiteId": "logic-long-short",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "logic-long-short-success.mp3",
+    "texte": "أَحْسَنْت! هَذَا قِطَارٌ طَوِيل!",
+    "activite": "القِطَارُ الطَّوِيل",
+    "activiteId": "logic-long-short",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "logic-heavy-tap-prompt.mp3",
+    "texte": "اِلْمَسِ الحَجَر! الحَجَرُ ثَقِيل، البَالُونُ خَفِيف!",
+    "activite": "الحَجَرُ الثَّقِيل",
+    "activiteId": "logic-heavy-tap",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "logic-heavy-tap-success.mp3",
+    "texte": "نَعَم! الحَجَرُ ثَقِيل!",
+    "activite": "الحَجَرُ الثَّقِيل",
+    "activiteId": "logic-heavy-tap",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "logic-above-below-prompt.mp3",
+    "texte": "اِلْمِسِ الكُرَةَ فَوْقَ الخَطّ! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان.",
+    "activite": "الكرة فوق الخط",
+    "activiteId": "logic-above-below",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "logic-above-below-success.mp3",
+    "texte": "أَحْسَنْت! الكُرَةُ فَوْقَ الخَطّ!",
+    "activite": "الكرة فوق الخط",
+    "activiteId": "logic-above-below",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "logic-heavy-light-prompt.mp3",
+    "texte": "ضَعِ الحَجَرَ وَالسَّيَّارَةَ مَعَ الفِيل، وَالبَالُونَ وَالوَرَقَةَ مَعَ الرِّيشَة!",
+    "activite": "ثَقِيلٌ أَمْ خَفِيف؟",
+    "activiteId": "logic-heavy-light",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "logic-heavy-light-success.mp3",
+    "texte": "مَيَّزْتَ الثَّقِيلَ وَالخَفِيف!",
+    "activite": "ثَقِيلٌ أَمْ خَفِيف؟",
+    "activiteId": "logic-heavy-light",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "logic-inside-outside-prompt.mp3",
+    "texte": "اِلْمَسِ الكُرَةَ الَّتِي دَاخِلَ الصُّنْدُوق! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان!",
+    "activite": "الكُرَةُ دَاخِلَ الصُّنْدُوق",
+    "activiteId": "logic-inside-outside",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "logic-inside-outside-success.mp3",
+    "texte": "نَعَم! الكُرَةُ دَاخِلَ الصُّنْدُوق!",
+    "activite": "الكُرَةُ دَاخِلَ الصُّنْدُوق",
+    "activiteId": "logic-inside-outside",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "logic-front-behind-prompt.mp3",
+    "texte": "اِلْمَسِ الدُّبَّ الَّذِي أَمَامَ الصُّنْدُوق! نَفْسُ الدُّبّ، مَكَانَانِ مُخْتَلِفَان!",
+    "activite": "الدُّبُّ أَمَامَ الصُّنْدُوق",
+    "activiteId": "logic-front-behind",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "logic-front-behind-success.mp3",
+    "texte": "نَعَم! الدُّبُّ أَمَامَ الصُّنْدُوق!",
+    "activite": "الدُّبُّ أَمَامَ الصُّنْدُوق",
+    "activiteId": "logic-front-behind",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "logic-right-left-prompt.mp3",
+    "texte": "اِلْمَسِ اليَدَ اليُمْنَى! بِهَا نَأْكُلُ وَنُصَافِح!",
+    "activite": "اليَدُ اليُمْنَى",
+    "activiteId": "logic-right-left",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "logic-right-left-success.mp3",
+    "texte": "هَذِهِ اليَدُ اليُمْنَى! أَحْسَنْت!",
+    "activite": "اليَدُ اليُمْنَى",
+    "activiteId": "logic-right-left",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "logic-pattern-colors-prompt.mp3",
+    "texte": "قِطَار، سَيَّارَة، قِطَار، سَيَّارَة، قِطَار… مَاذَا بَعْد؟",
+    "activite": "مَاذَا يَأْتِي بَعْد؟",
+    "activiteId": "logic-pattern-colors",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "logic-pattern-colors-success.mp3",
+    "texte": "السَّيَّارَةُ بَعْدَ القِطَار! أَحْسَنْت!",
+    "activite": "مَاذَا يَأْتِي بَعْد؟",
+    "activiteId": "logic-pattern-colors",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "logic-memory-prompt.mp3",
+    "texte": "اِقْلِبِ البِطَاقَاتِ! قُلْ: قِطَار، فِيل، عُصْفُور!",
+    "activite": "تَذَكَّرْ وَفَكِّر",
+    "activiteId": "logic-memory",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "logic-memory-success.mp3",
+    "texte": "عَقْلُكَ قَوِيّ!",
+    "activite": "تَذَكَّرْ وَفَكِّر",
+    "activiteId": "logic-memory",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  }
+]

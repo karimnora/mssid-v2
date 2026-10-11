@@ -17,7 +17,7 @@ interface ItemState {
 }
 
 const DONE: Record<PreschoolLanguage, string> = {
-  ar: 'أَنَا خَلَّصْت',
+  ar: 'أَنْهَيْتُ',
   fr: "J'ai fini",
   en: "I'm done",
 };

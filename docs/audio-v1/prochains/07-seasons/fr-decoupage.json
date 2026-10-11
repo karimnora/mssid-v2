@@ -1,0 +1,128 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "seasons-year-path-prompt.mp3",
+    "texte": "Glisse l'oiseau à travers les saisons : fleur, soleil, feuille, neige !",
+    "activite": "Le Tour de l'Année",
+    "activiteId": "seasons-year-path",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "seasons-year-path-success.mp3",
+    "texte": "Une année complète ! Bravo !",
+    "activite": "Le Tour de l'Année",
+    "activiteId": "seasons-year-path",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "seasons-spring-prompt.mp3",
+    "texte": "Le papillon est là ! Touche la fleur ! C'est le printemps !",
+    "activite": "La Fleur du Printemps",
+    "activiteId": "seasons-spring",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "seasons-spring-success.mp3",
+    "texte": "Bravo ! La fleur, c'est le printemps !",
+    "activite": "La Fleur du Printemps",
+    "activiteId": "seasons-spring",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "seasons-summer-prompt.mp3",
+    "texte": "On mange la pastèque ! Touche le soleil ! C'est l'été !",
+    "activite": "Le Soleil de l'Été",
+    "activiteId": "seasons-summer",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "seasons-summer-success.mp3",
+    "texte": "Bravo ! Le soleil, c'est l'été !",
+    "activite": "Le Soleil de l'Été",
+    "activiteId": "seasons-summer",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "seasons-autumn-prompt.mp3",
+    "texte": "Les pommes sont mûres ! Touche la feuille jaune ! C'est l'automne !",
+    "activite": "Les Feuilles d'Automne",
+    "activiteId": "seasons-autumn",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "seasons-autumn-success.mp3",
+    "texte": "Super ! La feuille, c'est l'automne !",
+    "activite": "Les Feuilles d'Automne",
+    "activiteId": "seasons-autumn",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "seasons-winter-prompt.mp3",
+    "texte": "On met l'écharpe ! Touche le flocon ! C'est l'hiver !",
+    "activite": "Le Flocon d'Hiver",
+    "activiteId": "seasons-winter",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "seasons-winter-success.mp3",
+    "texte": "Bravo ! Le flocon, c'est l'hiver !",
+    "activite": "Le Flocon d'Hiver",
+    "activiteId": "seasons-winter",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "seasons-clothes-sorting-prompt.mp3",
+    "texte": "Mets le maillot et la casquette avec le soleil, le manteau avec la neige, le parapluie et le chapeau de paille avec la fleur !",
+    "activite": "Les Vêtements de Chaque Saison",
+    "activiteId": "seasons-clothes-sorting",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "seasons-clothes-sorting-success.mp3",
+    "texte": "Super ! Tu connais les vêtements de chaque saison !",
+    "activite": "Les Vêtements de Chaque Saison",
+    "activiteId": "seasons-clothes-sorting",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "seasons-connect-prompt.mp3",
+    "texte": "À gauche les saisons, à droite les images. Relie chaque saison à son image !",
+    "activite": "Relie la saison à son image",
+    "activiteId": "seasons-connect",
+    "moduleId": "preschool-seasons",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "seasons-connect-success.mp3",
+    "texte": "Wow ! Tu connais toutes les saisons !",
+    "activite": "Relie la saison à son image",
+    "activiteId": "seasons-connect",
+    "moduleId": "preschool-seasons",
+    "type": "success"
+  }
+]

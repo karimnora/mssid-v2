@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "algeria-fennec-flag-prompt.mp3",
+    "texte": "Drag the fennec: desert, palm, mountain, sea, then the flag!",
+    "activite": "A Trip Across Algeria",
+    "activiteId": "algeria-fennec-flag",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "algeria-fennec-flag-success.mp3",
+    "texte": "Long live Algeria! Our country is beautiful!",
+    "activite": "A Trip Across Algeria",
+    "activiteId": "algeria-fennec-flag",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "algeria-flag-color-prompt.mp3",
+    "texte": "Touch the flag of Algeria! Green, white and a crescent!",
+    "activite": "The Algerian Flag",
+    "activiteId": "algeria-flag-color",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "algeria-flag-color-success.mp3",
+    "texte": "Well done! That is our flag!",
+    "activite": "The Algerian Flag",
+    "activiteId": "algeria-flag-color",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "algeria-mosque-prompt.mp3",
+    "texte": "Touch the mosque! The mosque is beautiful in our country!",
+    "activite": "The Mosque",
+    "activiteId": "algeria-mosque",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "algeria-mosque-success.mp3",
+    "texte": "Great! That is a mosque!",
+    "activite": "The Mosque",
+    "activiteId": "algeria-mosque",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "algeria-couscous-prompt.mp3",
+    "texte": "Touch the couscous! We eat couscous in Algeria!",
+    "activite": "Couscous",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "algeria-couscous-success.mp3",
+    "texte": "Yum! That is couscous!",
+    "activite": "Couscous",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "algeria-fennec-tap-prompt.mp3",
+    "texte": "Touch the fennec! The fennec is the little fox of our Sahara!",
+    "activite": "The Algerian Fennec",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "algeria-fennec-tap-success.mp3",
+    "texte": "Well done! That is our fennec!",
+    "activite": "The Algerian Fennec",
+    "activiteId": "algeria-fennec-tap",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "algeria-connect-prompt.mp3",
+    "texte": "Match the desert to the camel, and the sea to the fish!",
+    "activite": "Match Our Country's Places",
+    "activiteId": "algeria-connect",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "algeria-connect-success.mp3",
+    "texte": "Algeria has desert, mountains and sea!",
+    "activite": "Match Our Country's Places",
+    "activiteId": "algeria-connect",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "algeria-habitat-sort-prompt.mp3",
+    "texte": "Put the camel and the fennec with the sand, the fish and the crab with the waves!",
+    "activite": "Desert or Sea?",
+    "activiteId": "algeria-habitat-sort",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "algeria-habitat-sort-success.mp3",
+    "texte": "You know our desert and our sea!",
+    "activite": "Desert or Sea?",
+    "activiteId": "algeria-habitat-sort",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "algeria-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: flag, camel, mosque!",
+    "activite": "My Algeria Memory",
+    "activiteId": "algeria-memory",
+    "moduleId": "preschool-algeria",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "algeria-memory-success.mp3",
+    "texte": "Bravo! This is Algeria!",
+    "activite": "My Algeria Memory",
+    "activiteId": "algeria-memory",
+    "moduleId": "preschool-algeria",
+    "type": "success"
+  }
+]

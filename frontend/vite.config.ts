@@ -40,7 +40,7 @@ export default defineConfig(() => {
           // Precaches every built JS/CSS/HTML/image asset (the app-shell + all lazy chunks —
           // course content is bundled into JS, not fetched as separate JSON at runtime, so this
           // alone is what makes "review a lesson offline" work).
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}'],
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}', 'sounds/preschool/{ar,fr,en}/*.mp3'],
           // Without this, every previous deploy's precache stays in storage forever once a new SW
           // activates — pure waste, and one more place a stale asset could theoretically still be
           // served from if a runtime-caching rule ever matched it by accident.
