@@ -59,7 +59,7 @@ export const auth: typeof authAr = {
   wilayaHint: 'Tu pourras la renseigner ou la changer plus tard dans les réglages.',
 
   completeProfileTitle: 'Encore une étape',
-  completeProfileIntro: "Ton compte Google est bien connecté ! Dis-nous juste ton niveau scolaire et ta wilaya (tu peux passer cette étape et les renseigner plus tard dans les réglages).",
+  completeProfileIntro: 'Ton compte Google est connecté ! Tu peux indiquer ta wilaya ou continuer. Le niveau scolaire se choisit dans le profil de chaque enfant.',
   completeProfileSubmit: 'Continuer',
 
   parentEmailLabel: "E-mail du parent (facultatif) :",

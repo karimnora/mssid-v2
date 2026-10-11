@@ -3,19 +3,15 @@ import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
 import { GoogleSignIn, ErrorCode as GoogleSignInErrorCode } from '@capawesome/capacitor-google-sign-in';
 import { AuthUser } from '../types/auth';
-import { PrimaryGrade } from '../types';
 import { AuthService } from '../services/authService';
 import { WILAYAS_LIST } from '../data/wilayasData';
-import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, GraduationCap, Lock, MapPin, Loader2 } from 'lucide-react';
+import { X, LogIn, UserPlus, KeyRound, Eye, EyeOff, Lock, MapPin, Loader2 } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  /** `landOnPreschool` is set only when the child picked "préscolaire" at registration — there's
-   * no such PrimaryGrade, so the account still gets a real default grade (1AP) and this flag is
-   * how the caller knows to route into preschool mode instead of the normal grade-based home. */
   onAuthSuccess: (user: AuthUser, opts?: { landOnPreschool?: boolean }) => void;
   /** Which tab to land on when the modal opens (login vs register). */
   initialMode?: 'login' | 'register';
@@ -29,16 +25,6 @@ interface Props {
    * an unexplained interruption. Left unset for a deliberate "Se connecter" click. */
   contextMessage?: string | null;
 }
-
-// Same 5 levels/labels as GradeSelector.tsx and Navbar.tsx's GRADES, kept in sync manually since
-// each lives in its own component-scoped list rather than a shared constant.
-const GRADE_OPTION_KEYS: Record<PrimaryGrade, 'grade1APOption' | 'grade2APOption' | 'grade3APOption' | 'grade4APOption' | 'grade5APOption'> = {
-  '1AP': 'grade1APOption',
-  '2AP': 'grade2APOption',
-  '3AP': 'grade3APOption',
-  '4AP': 'grade4APOption',
-  '5AP': 'grade5APOption',
-};
 
 // Public value, not a secret — same env-var pattern as springBootApi.ts's VITE_SPRING_BOOT_URL.
 // Empty/unset = the Google button below never renders, nothing else about the form changes.
@@ -62,7 +48,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [nom, setNom] = useState<string>('');
-  const [grade, setGrade] = useState<PrimaryGrade | 'prescolaire' | ''>('');
   // Minimal parental supervision (product decision, pre-launch audit): optional, no verification —
   // never blocks registration, just lets an admin reach a parent later if genuinely needed.
   const [parentEmail, setParentEmail] = useState<string>('');
@@ -79,13 +64,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
   // 'credentials' = the normal login/register form above. 'forgot'/'reset' replace it entirely with
   // the password-recovery steps (request a code, then use it) — see handleForgotSubmit/handleResetSubmit.
   // 'completeProfile' replaces it once, right after a brand-new Google sign-up (see
-  // handleGoogleCredential): Google never gives us a grade/wilaya, so this is the only chance to ask.
+  // handleGoogleCredential): Google does not provide the optional account wilaya. Child levels belong to child profiles.
   const [authFlow, setAuthFlow] = useState<'credentials' | 'forgot' | 'reset' | 'completeProfile'>('credentials');
   const [resetCode, setResetCode] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [resendCooldown, setResendCooldown] = useState<number>(0);
   const [pendingGoogleUser, setPendingGoogleUser] = useState<AuthUser | null>(null);
-  const [completeGrade, setCompleteGrade] = useState<PrimaryGrade | 'prescolaire' | ''>('');
   const [completeWilaya, setCompleteWilaya] = useState<string>('');
 
   useEffect(() => {
@@ -107,14 +91,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     if (isOpen) {
       setIsLogin(initialMode === 'login');
       setShowPassword(false);
-      setGrade('');
       setParentEmail('');
       setWilaya('');
       setAuthFlow('credentials');
       setResetCode('');
       setNewPassword('');
       setPendingGoogleUser(null);
-      setCompleteGrade('');
       setCompleteWilaya('');
       setStatusMessage(null);
     }
@@ -168,10 +150,8 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         return;
       }
       if (result.profileIncomplete) {
-        // Brand-new Google account: grade/wilaya are genuinely unset in the DB (not just defaulted
-        // for display). Ask once now instead of leaving them silently blank forever.
+        // Ask only for optional account details; each child has their own level.
         setPendingGoogleUser(result.user);
-        setCompleteGrade('');
         setCompleteWilaya('');
         setStatusMessage(null);
         setAuthFlow('completeProfile');
@@ -190,15 +170,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
     if (!pendingGoogleUser) return;
     setLoading(true);
     try {
-      const isPreschoolChoice = completeGrade === 'prescolaire';
-      const effectiveGrade = isPreschoolChoice ? '1AP' : completeGrade;
-      if (effectiveGrade) AuthService.updateGrade(effectiveGrade);
       if (completeWilaya) AuthService.updateWilaya(completeWilaya);
 
       const finalUser = AuthService.getCurrentUser() || pendingGoogleUser;
       setPendingGoogleUser(null);
       setAuthFlow('credentials');
-      onAuthSuccess(finalUser, isPreschoolChoice ? { landOnPreschool: true } : undefined);
+      onAuthSuccess(finalUser);
       onClose();
     } finally {
       setLoading(false);
@@ -340,12 +317,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
         onAuthSuccess(result.user);
         onClose();
       } else {
-        // No PrimaryGrade covers "préscolaire" — the account still needs a real grade to fall
-        // back to once the child grows into primary school, so it registers as 1AP and the caller
-        // routes into preschool mode via the landOnPreschool flag instead.
-        const isPreschoolChoice = grade === 'prescolaire';
-        const effectiveGrade: PrimaryGrade | undefined = isPreschoolChoice ? '1AP' : (grade || undefined);
-        const result = await requestAuth(() => AuthService.registerAsync(nom, email, password, effectiveGrade, parentEmail.trim() || undefined, wilaya || undefined));
+        const result = await requestAuth(() => AuthService.registerAsync(nom, email, password, undefined, parentEmail.trim() || undefined, wilaya || undefined));
 
         if (result.error || !result.user) {
           setStatusMessage({
@@ -359,7 +331,7 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           type: 'success',
           text: t('registerSuccessWelcome', { name: result.user.nom })
         });
-        onAuthSuccess(result.user, isPreschoolChoice ? { landOnPreschool: true } : undefined);
+        onAuthSuccess(result.user);
         onClose();
       }
     } catch (err: any) {
@@ -576,29 +548,12 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
           </form>
         )}
 
-        {/* Post-Google-signup, one-time: grade/wilaya are genuinely unset in the DB, ask once. */}
+        {/* Post-Google-signup: optional account wilaya, without asking for a child level. */}
         {authFlow === 'completeProfile' && (
           <form onSubmit={handleCompleteProfileSubmit} className="kids-modal-body p-5 space-y-4">
             <p className="text-sm text-[var(--kids-muted)] leading-relaxed font-bold">
               {t('completeProfileIntro')}
             </p>
-            <div>
-              <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
-                <GraduationCap className="w-4 h-4 text-[var(--kids-grass-2)]" />
-                <span>{t('gradeLabel')}</span>
-              </label>
-              <select
-                value={completeGrade}
-                onChange={(e) => setCompleteGrade(e.target.value as PrimaryGrade | 'prescolaire')}
-                className="kids-input"
-              >
-                <option value="">{t('gradeChoosePlaceholder')}</option>
-                <option value="prescolaire">{t('gradePrescolaireOption')}</option>
-                {(Object.keys(GRADE_OPTION_KEYS) as PrimaryGrade[]).map((id) => (
-                  <option key={id} value={id}>{t(GRADE_OPTION_KEYS[id])}</option>
-                ))}
-              </select>
-            </div>
             <div>
               <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
                 <MapPin className="w-4 h-4 text-[var(--kids-grass-2)]" />
@@ -669,28 +624,6 @@ export const AuthModal: React.FC<Props> = ({ isOpen, onClose, onAuthSuccess, ini
                 autoComplete="name"
                 className="kids-input"
               />
-            </div>
-          )}
-
-          {!isLogin && (
-            <div>
-              <label className="flex items-center gap-1.5 text-sm font-extrabold text-[var(--kids-ink)] mb-1.5">
-                <GraduationCap className="w-4 h-4 text-[var(--kids-grass-2)]" />
-                <span>{t('gradeLabel')}</span>
-              </label>
-              <select
-                required
-                value={grade}
-                onChange={(e) => setGrade(e.target.value as PrimaryGrade | 'prescolaire')}
-                className="kids-input"
-              >
-                <option value="" disabled>{t('gradeChoosePlaceholder')}</option>
-                <option value="prescolaire">{t('gradePrescolaireOption')}</option>
-                {(Object.keys(GRADE_OPTION_KEYS) as PrimaryGrade[]).map((id) => (
-                  <option key={id} value={id}>{t(GRADE_OPTION_KEYS[id])}</option>
-                ))}
-              </select>
-              <p className="text-xs text-[var(--kids-muted)] mt-1.5 font-bold">{t('gradeHint')}</p>
             </div>
           )}
 

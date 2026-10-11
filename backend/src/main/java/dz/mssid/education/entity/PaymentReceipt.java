@@ -19,7 +19,7 @@ public class PaymentReceipt {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "receipt_image_url", nullable = false)
+    @Column(name = "receipt_image_url", nullable = false, columnDefinition = "text")
     private String receiptImageUrl;
 
     @Enumerated(EnumType.STRING)

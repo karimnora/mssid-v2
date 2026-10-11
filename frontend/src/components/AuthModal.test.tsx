@@ -40,21 +40,13 @@ describe('AuthModal Integration Tests', () => {
     expect(screen.getByPlaceholderText('مثال: يونس الجزائري')).toBeInTheDocument();
   });
 
-  it('shows a required grade selector only in registration mode, defaulting to no selection', () => {
-    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
-
-    // Login mode: no grade selector
+  it('leaves the child level to the child profile instead of asking at registration', () => {
+    renderAuth(<AuthModal isOpen initialMode="register" onClose={vi.fn()} onAuthSuccess={vi.fn()} />);
     expect(screen.queryByText('المستوى الدراسي:')).not.toBeInTheDocument();
-
-    fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
-
-    const gradeSelect = screen.getByText('المستوى الدراسي:').closest('div')!.querySelector('select')!;
-    expect(gradeSelect).toBeInTheDocument();
-    expect(gradeSelect).toBeRequired();
-    expect(gradeSelect).toHaveValue('');
+    expect(screen.queryByText('السنة الثالثة ابتدائي')).not.toBeInTheDocument();
   });
 
-  it('sends the chosen grade to the backend on registration', async () => {
+  it('registers the parent account without a child grade', async () => {
     const mockFetch = vi.fn().mockResolvedValue({
       status: 200,
       ok: true,
@@ -69,8 +61,7 @@ describe('AuthModal Integration Tests', () => {
     fireEvent.change(screen.getByPlaceholderText('مثال: يونس الجزائري'), { target: { value: 'يونس' } });
     fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'younes@mssid.dz' } });
     fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'password123' } });
-    const gradeSelect = screen.getByText('المستوى الدراسي:').closest('div')!.querySelector('select')!;
-    fireEvent.change(gradeSelect, { target: { value: '3AP' } });
+
 
     const form = screen.getByPlaceholderText('example@mssid.dz').closest('form')!;
     fireEvent.submit(form);
@@ -78,41 +69,7 @@ describe('AuthModal Integration Tests', () => {
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/v1/auth/register'),
-        expect.objectContaining({ body: expect.stringContaining('"grade":"3AP"') })
-      );
-    });
-  });
-
-  it('offers a préscolaire option that registers as 1AP and flags landOnPreschool on success', async () => {
-    const handleAuthSuccess = vi.fn();
-    const mockFetch = vi.fn().mockResolvedValue({
-      status: 200,
-      ok: true,
-      headers: new Headers({ 'content-type': 'application/json' }),
-      json: async () => ({ nom: 'ياسمين', email: 'yasmine@mssid.dz', roleName: 'ROLE_FREE', user: { grade: '1AP' } }),
-    });
-    global.fetch = mockFetch;
-
-    renderAuth(<AuthModal isOpen={true} onClose={vi.fn()} onAuthSuccess={handleAuthSuccess} />);
-    fireEvent.click(screen.getAllByRole('button', { name: /إنشاء حساب/i })[0]);
-
-    fireEvent.change(screen.getByPlaceholderText('مثال: يونس الجزائري'), { target: { value: 'ياسمين' } });
-    fireEvent.change(screen.getByPlaceholderText('example@mssid.dz'), { target: { value: 'yasmine@mssid.dz' } });
-    fireEvent.change(screen.getByPlaceholderText('••••••••'), { target: { value: 'password123' } });
-    const gradeSelect = screen.getByText('المستوى الدراسي:').closest('div')!.querySelector('select')!;
-    fireEvent.change(gradeSelect, { target: { value: 'prescolaire' } });
-
-    const form = screen.getByPlaceholderText('example@mssid.dz').closest('form')!;
-    fireEvent.submit(form);
-
-    await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith(
-        expect.stringContaining('/v1/auth/register'),
-        expect.objectContaining({ body: expect.stringContaining('"grade":"1AP"') })
-      );
-      expect(handleAuthSuccess).toHaveBeenCalledWith(
-        expect.objectContaining({ email: 'yasmine@mssid.dz' }),
-        { landOnPreschool: true }
+        expect.objectContaining({ body: expect.not.stringContaining('"grade"') })
       );
     });
   });
