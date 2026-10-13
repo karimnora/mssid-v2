@@ -1,4 +1,5 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { SURAH_AUDIO_CLIPS } from './surahAudio';
 import { preschoolSurahs } from '../quranShortSurahsCatalog';
 
 const PROMPTS: Record<string, { ar: string; fr: string; en: string; titleFr: string; titleEn: string }> = {
@@ -59,7 +60,7 @@ const SUCCESS = {
   en: 'Well done! A star for you!',
 };
 
-export const SHORT_SURAHS_MODULE: PreschoolModule = {
+const SHORT_SURAHS_CATALOG: PreschoolModule = {
   id: 'preschool-short-surahs',
   domain: 'values',
   icon: '📖',
@@ -103,4 +104,22 @@ export const SHORT_SURAHS_MODULE: PreschoolModule = {
       },
     };
   }),
+};
+
+export const SHORT_SURAHS_MODULE: PreschoolModule = {
+  ...SHORT_SURAHS_CATALOG,
+  activities: SHORT_SURAHS_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = SURAH_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

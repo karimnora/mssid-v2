@@ -1,0 +1,41 @@
+export type PronunciationLanguage = 'fr' | 'en';
+export interface PronunciationModel { id: string; text: string; focus: string }
+
+export const PRONUNCIATION_MODELS: Record<PronunciationLanguage, PronunciationModel[]> = {
+  fr: [
+    { id: 'chat', text: 'chat', focus: 'ch' },
+    { id: 'chapeau', text: 'chapeau', focus: 'ch' },
+    { id: 'chien', text: 'chien', focus: 'ch' },
+    { id: 'champ', text: 'champ', focus: 'ch' },
+    { id: 'roue', text: 'roue', focus: 'roue / rue' },
+    { id: 'rue', text: 'rue', focus: 'roue / rue' },
+    { id: 'poisson', text: 'poisson', focus: 'poisson / poison' },
+    { id: 'poison', text: 'poison', focus: 'poisson / poison' },
+    { id: 'ecole', text: 'école', focus: 'Mots du quotidien' },
+    { id: 'banane', text: 'banane', focus: 'Mots du quotidien' },
+    { id: 'papa', text: 'papa', focus: 'Mots du quotidien' },
+    { id: 'maman', text: 'maman', focus: 'Mots du quotidien' },
+    { id: 'sentence-chat', text: 'Le chat est sur le tapis.', focus: 'Une phrase courte' },
+    { id: 'sentence-ecole', text: 'Je vais à l’école.', focus: 'Une phrase courte' },
+    { id: 'sentence-banane', text: 'Je mange une banane.', focus: 'Une phrase courte' },
+    { id: 'sentence-bonjour', text: 'Bonjour ! Comment vas-tu ?', focus: 'Une phrase courte' },
+  ],
+  en: [
+    { id: 'ship', text: 'ship', focus: 'ship / sheep' },
+    { id: 'sheep', text: 'sheep', focus: 'ship / sheep' },
+    { id: 'thin', text: 'thin', focus: 'thin / tin' },
+    { id: 'tin', text: 'tin', focus: 'thin / tin' },
+    { id: 'three', text: 'three', focus: 'three / tree' },
+    { id: 'tree', text: 'tree', focus: 'three / tree' },
+    { id: 'cat', text: 'cat', focus: 'cat / cap' },
+    { id: 'cap', text: 'cap', focus: 'cat / cap' },
+    { id: 'pen', text: 'pen', focus: 'pen / pan' },
+    { id: 'pan', text: 'pan', focus: 'pen / pan' },
+    { id: 'book', text: 'book', focus: 'Everyday words' },
+    { id: 'school', text: 'school', focus: 'Everyday words' },
+    { id: 'sentence-cat', text: 'The cat is on the mat.', focus: 'A short sentence' },
+    { id: 'sentence-school', text: 'I go to school.', focus: 'A short sentence' },
+    { id: 'sentence-book', text: 'This is my book.', focus: 'A short sentence' },
+    { id: 'sentence-hello', text: 'Hello! How are you?', focus: 'A short sentence' },
+  ],
+};

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { speakText } from '../utils/speech';
 import { VoiceEchoBar } from './VoiceEchoBar';
+import { PronunciationPractice } from './PronunciationPractice';
 import { PrimaryGrade } from '../types';
 import { allowedEnglishTenses, EnglishTense } from '../utils/labGradePolicy';
 import {
@@ -599,12 +600,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
 
       {/* TAB 4: PHONICS */}
       {activeTab === 'phonics' && (
-        <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-black text-purple-300">🎧 English Phonics & Pronunciation</h3>
-          <p className="text-xs text-slate-300">
-            Learn letter sounds, silent letters, and clear English pronunciation rules.
-          </p>
-        </div>
+        <PronunciationPractice language="en" />
       )}
     </div>
   );

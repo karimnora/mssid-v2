@@ -33,17 +33,17 @@ describe('usePreschoolSpeech', () => {
     act(() => {
       result.current.speak('Bonjour !');
     });
-    expect(speakTextMock).toHaveBeenCalledWith('Bonjour !', 'fr-FR', 0.9, 1.1);
+    expect(speakTextMock).toHaveBeenCalledWith('Bonjour !', 'fr-FR', 0.9, 1.1, { skipRecordedLookup: true });
   });
 
   it('maps each préscolaire language to the matching speakText locale', () => {
     const { result: ar } = renderHook(() => usePreschoolSpeech('ar'));
     act(() => ar.current.speak('مرحباً'));
-    expect(speakTextMock).toHaveBeenLastCalledWith('مرحباً', 'ar-SA', 0.9, 1.1);
+    expect(speakTextMock).toHaveBeenLastCalledWith('مرحباً', 'ar-SA', 0.9, 1.1, { skipRecordedLookup: true });
 
     const { result: en } = renderHook(() => usePreschoolSpeech('en'));
     act(() => en.current.speak('Hello'));
-    expect(speakTextMock).toHaveBeenLastCalledWith('Hello', 'en-US', 0.9, 1.1);
+    expect(speakTextMock).toHaveBeenLastCalledWith('Hello', 'en-US', 0.9, 1.1, { skipRecordedLookup: true });
   });
 
   it('never calls speakText while muted', () => {
@@ -82,7 +82,7 @@ describe('usePreschoolSpeech', () => {
     vi.stubGlobal('Audio', vi.fn(function () { return audio; }));
     const { result } = renderHook(() => usePreschoolSpeech('ar'));
     await act(async () => result.current.speak('أَرْنَب', '/sounds/preschool/ar/letters-alif-rabbit-prompt.mp3'));
-    expect(speakTextMock).toHaveBeenCalledWith('أَرْنَب', 'ar-SA', 0.9, 1.1);
+    expect(speakTextMock).toHaveBeenCalledWith('أَرْنَب', 'ar-SA', 0.9, 1.1, { skipRecordedLookup: true });
   });
 
   it('does not resume a stopped clip through TTS after a late playback failure', async () => {

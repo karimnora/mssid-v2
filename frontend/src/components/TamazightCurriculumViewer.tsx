@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { speakText } from '../utils/speech';
 import { currentSchoolYearLabel } from '../utils/schoolYear';
 import { printHtmlDocument } from '../utils/printDocument';
 import {
   BookOpen,
   Printer,
   Sparkles,
-  Volume2,
   CheckCircle2,
   ArrowRight,
   ArrowLeft,
@@ -67,15 +65,6 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
 
   const currentLesson =
     lessons.find((l) => l.id === selectedLessonId) || filteredLessons[0] || lessons[0];
-
-  // Sound pronunciation helper — routes through the shared speakText utility so this gets the same
-  // reliable native Android TTS (via Capacitor) as every other lab. Calling window.speechSynthesis
-  // directly here used to silently fail in the Android app, since the WebView's own speech engine
-  // commonly reports zero installed voices (unlike a real Chrome install). 'fr-FR' stays the closest
-  // available voice for latinized Tamazight — no platform ships an actual Tamazight/Tifinagh voice.
-  const speakTamazight = (text: string) => {
-    speakText(text, 'fr-FR', 0.85);
-  };
 
   // Simple Latin to Tifinagh converter mapping
   const latinToTifinaghMap: Record<string, string> = {
@@ -485,14 +474,11 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                     {currentLesson.titleAr}
                   </h2>
                 </div>
-                <button
-                  onClick={() => speakTamazight(currentLesson.titleAr)}
-                  className="p-2.5 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 hover:scale-105 transition-transform cursor-pointer"
-                  title="استمع لنطق العنوان"
-                >
-                  <Volume2 className="w-5 h-5" />
-                </button>
               </div>
+
+              <p className="text-xs font-bold text-[var(--app-text-muted)]">
+                الاستماع للأمازيغية غير متاح حاليًا. يمكنك متابعة الدرس والأنشطة.
+              </p>
 
               {/* Lesson Objectives */}
               {currentLesson.objectivesAr && (
@@ -535,13 +521,6 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                           <span className="font-black text-sm text-amber-900 dark:text-amber-200">
                             {voc.termAr}
                           </span>
-                          <button
-                            onClick={() => speakTamazight(voc.termAr)}
-                            aria-label={`استمع إلى نطق ${voc.termAr}`}
-                            className="p-1 rounded-md text-amber-700 hover:bg-amber-200/50 cursor-pointer"
-                          >
-                            <Volume2 className="w-3.5 h-3.5" />
-                          </button>
                         </div>
                         <span className="text-xs font-bold text-amber-950/80 dark:text-amber-100">
                           {voc.definitionAr}
@@ -630,13 +609,9 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                   <span className="text-xs font-black text-amber-900 dark:text-amber-200">
                     النتيجة بالخط التيفيناغي المعتمد (Tifinaɣ) :
                   </span>
-                  <button
-                    onClick={() => speakTamazight(transliterationInput)}
-                    className="p-2 rounded-xl bg-amber-200 text-amber-950 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                    <span>نطق</span>
-                  </button>
+                  <span className="text-xs text-amber-900 dark:text-amber-200">
+                    الاستماع متاح عند توفير تسجيل أمازيغي معتمد
+                  </span>
                 </div>
 
                 <div className="text-3xl sm:text-4xl md:text-5xl font-black text-amber-900 dark:text-amber-100 tracking-wider text-center py-4 select-all">

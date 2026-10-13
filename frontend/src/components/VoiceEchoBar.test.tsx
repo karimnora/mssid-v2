@@ -10,6 +10,7 @@ const echo = {
   stop: vi.fn(),
   play: vi.fn(),
   reset: vi.fn(),
+  pausePlayback: vi.fn(),
 };
 
 vi.mock('../hooks/useVoiceEcho', () => ({
@@ -60,5 +61,16 @@ describe('VoiceEchoBar', () => {
   it('renders nothing when the model is empty', () => {
     const { container } = render(<VoiceEchoBar modelText="   " language="en" />);
     expect(container.querySelector('[data-voice-echo="bar"]')).toBeNull();
+  });
+
+  it('cancels the parent sequence before listening, recording and replaying', () => {
+    echo.phase = 'ready';
+    const cancelParent = vi.fn();
+    render(<VoiceEchoBar modelText="ship" language="en" onBeforeAction={cancelParent} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Listen' }));
+    fireEvent.click(screen.getByRole('button', { name: 'I speak' }));
+    fireEvent.click(screen.getByRole('button', { name: 'My voice' }));
+    expect(cancelParent).toHaveBeenCalledTimes(3);
+    expect(cancelParent.mock.invocationCallOrder[2]).toBeLessThan(echo.play.mock.invocationCallOrder[0]);
   });
 });

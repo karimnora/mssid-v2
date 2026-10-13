@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "pronunciation-en-ship.mp3",
+    "texte": "ship",
+    "activiteId": "ship",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 2,
+    "fichier": "pronunciation-en-sheep.mp3",
+    "texte": "sheep",
+    "activiteId": "sheep",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 3,
+    "fichier": "pronunciation-en-thin.mp3",
+    "texte": "thin",
+    "activiteId": "thin",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 4,
+    "fichier": "pronunciation-en-tin.mp3",
+    "texte": "tin",
+    "activiteId": "tin",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 5,
+    "fichier": "pronunciation-en-three.mp3",
+    "texte": "three",
+    "activiteId": "three",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 6,
+    "fichier": "pronunciation-en-tree.mp3",
+    "texte": "tree",
+    "activiteId": "tree",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 7,
+    "fichier": "pronunciation-en-cat.mp3",
+    "texte": "cat",
+    "activiteId": "cat",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 8,
+    "fichier": "pronunciation-en-cap.mp3",
+    "texte": "cap",
+    "activiteId": "cap",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 9,
+    "fichier": "pronunciation-en-pen.mp3",
+    "texte": "pen",
+    "activiteId": "pen",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 10,
+    "fichier": "pronunciation-en-pan.mp3",
+    "texte": "pan",
+    "activiteId": "pan",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 11,
+    "fichier": "pronunciation-en-book.mp3",
+    "texte": "book",
+    "activiteId": "book",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 12,
+    "fichier": "pronunciation-en-school.mp3",
+    "texte": "school",
+    "activiteId": "school",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 13,
+    "fichier": "pronunciation-en-sentence-cat.mp3",
+    "texte": "The cat is on the mat.",
+    "activiteId": "sentence-cat",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 14,
+    "fichier": "pronunciation-en-sentence-school.mp3",
+    "texte": "I go to school.",
+    "activiteId": "sentence-school",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 15,
+    "fichier": "pronunciation-en-sentence-book.mp3",
+    "texte": "This is my book.",
+    "activiteId": "sentence-book",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 16,
+    "fichier": "pronunciation-en-sentence-hello.mp3",
+    "texte": "Hello! How are you?",
+    "activiteId": "sentence-hello",
+    "moduleId": "lab-pronunciation-en",
+    "grade": "3AP-5AP",
+    "type": "model"
+  }
+]

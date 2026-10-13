@@ -12,6 +12,7 @@
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "test": "vitest run",
+    "audio:index": "tsx scripts/index-recorded-speech.ts",
     "test:e2e": "playwright test",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",

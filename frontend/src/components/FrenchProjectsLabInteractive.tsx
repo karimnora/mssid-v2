@@ -67,7 +67,7 @@ const OFFICIAL_FRENCH_PROJECTS: FrenchProject[] = [
       {
         number: 1,
         titleFr: 'Séquence 1 : Bienvenue à l’école !',
-        textSupportFr: 'Je m’appelle Amine. Je suis en classe de 3AP. Mon école est grande et propre. J’ai un cartable bleu, un cahier et un stylo. Ma maîtresse s’appelle Madame Salima.',
+        textSupportFr: 'Je m’appelle Amine. Je suis en troisième année primaire. Mon école est grande et propre. J’ai un cartable bleu, un cahier et un stylo. Ma maîtresse s’appelle Madame Salima.',
         vocabList: [
           { wordFr: 'L’école', meaningAr: 'المدرسة', audioText: 'L’école' },
           { wordFr: 'Le cartable', meaningAr: 'الحقيبة المدرسية', audioText: 'Le cartable' },

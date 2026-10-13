@@ -1,4 +1,5 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { VALUES_AUDIO_CLIPS } from './valuesAudio';
 
 /**
  * "قِيَمِي وَإِيمَانِي الصَّغِيرُ" — Éveil islamique & valeurs (3-5 ans).
@@ -6,7 +7,7 @@ import { PreschoolModule } from './types';
  * No Quran recitation (TTS would distort verses). Concrete gestures:
  * Bismillah before food, Alhamdulillah after, Salam, mosque, sharing.
  */
-export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
+const ISLAMIC_VALUES_CATALOG: PreschoolModule = {
   id: 'preschool-islamic-values',
   domain: 'values',
   icon: '🕌',
@@ -274,4 +275,22 @@ export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const ISLAMIC_VALUES_MODULE: PreschoolModule = {
+  ...ISLAMIC_VALUES_CATALOG,
+  activities: ISLAMIC_VALUES_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = VALUES_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

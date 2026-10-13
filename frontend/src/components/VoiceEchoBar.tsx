@@ -30,7 +30,7 @@ const COPY: Record<VoiceEchoLang, {
     play: 'صوتي',
     unsupported: 'قُل بصوت عالٍ — الميكروفون غير متاح هنا.',
     denied: 'لم يُسمح بالميكروفون. قُل بصوت عالٍ!',
-    failed: 'لم يُحفظ التسجيل. جرّب مرة أخرى.',
+    failed: 'تعذّر تسجيل الصوت أو تشغيله. جرّب مرة أخرى.',
   },
   fr: {
     hint: 'Écoute, puis répète le modèle',
@@ -40,7 +40,7 @@ const COPY: Record<VoiceEchoLang, {
     play: 'Ma voix',
     unsupported: 'Dis-le à voix haute — micro indisponible ici.',
     denied: 'Micro refusé. Dis-le à voix haute !',
-    failed: 'Enregistrement vide. Réessaie.',
+    failed: 'Impossible d’enregistrer ou de lire ta voix. Réessaie.',
   },
   en: {
     hint: 'Listen, then say it like the model',
@@ -50,7 +50,7 @@ const COPY: Record<VoiceEchoLang, {
     play: 'My voice',
     unsupported: 'Say it out loud — mic unavailable here.',
     denied: 'Mic denied. Say it out loud!',
-    failed: 'Nothing recorded. Try again.',
+    failed: 'Unable to record or play your voice. Try again.',
   },
 };
 
@@ -61,6 +61,8 @@ export interface VoiceEchoBarProps {
   resetKey?: string;
   /** Parent already has a listen button next to the word. */
   includeListen?: boolean;
+  /** Cancel a parent audio sequence before listening, recording or replaying. */
+  onBeforeAction?: () => void;
   className?: string;
 }
 
@@ -72,6 +74,7 @@ export const VoiceEchoBar: React.FC<VoiceEchoBarProps> = ({
   language,
   resetKey,
   includeListen = true,
+  onBeforeAction,
   className = '',
 }) => {
   const echo = useVoiceEcho();
@@ -87,12 +90,15 @@ export const VoiceEchoBar: React.FC<VoiceEchoBarProps> = ({
   if (!text) return null;
 
   const playModel = () => {
+    onBeforeAction?.();
+    echo.pausePlayback();
     if (echo.phase === 'recording') echo.stop();
     stopSpeech();
     void speakText(text, BCP[language], 0.85);
   };
 
   const startRecord = () => {
+    onBeforeAction?.();
     stopSpeech();
     void echo.start();
   };
@@ -157,7 +163,7 @@ export const VoiceEchoBar: React.FC<VoiceEchoBarProps> = ({
             data-voice-echo="play"
             aria-label={copy.play}
             whileTap={{ scale: 0.95 }}
-            onClick={() => echo.play()}
+            onClick={() => { onBeforeAction?.(); stopSpeech(); echo.play(); }}
             className={`${hit} bg-[#2563EB] text-white`}
           >
             <Volume2 className="w-5 h-5 shrink-0" />

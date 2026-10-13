@@ -20,11 +20,11 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
   picture, word, language, onDone,
 }) => {
   const echo = useVoiceEcho();
-  const { speak } = usePreschoolSpeech(language);
+  const { speak, stop } = usePreschoolSpeech(language);
 
   useEffect(() => {
     const t = window.setTimeout(() => speak(word), 250);
-    return () => window.clearTimeout(t);
+    return () => { window.clearTimeout(t); stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [word, language]);
 
@@ -48,7 +48,7 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
           data-preschool-echo="record"
           aria-label={t('سَجِّلْ صَوْتَك', 'Enregistre ta voix', 'Record your voice')}
           whileTap={{ scale: 0.95 }}
-          onClick={() => void echo.start()}
+          onClick={() => { stop(); void echo.start(); }}
           className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
         >
           <Mic className="w-7 h-7 shrink-0 text-[#C42A23]" />
@@ -74,12 +74,18 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
           data-preschool-echo="play"
           aria-label={t('اِسْمَعْ صَوْتَك', 'Écoute ta voix', 'Hear your voice')}
           whileTap={{ scale: 0.95 }}
-          onClick={() => echo.play()}
+          onClick={() => { stop(); echo.play(); }}
           className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white`}
         >
           <Volume2 className="w-7 h-7 shrink-0" />
           {t('👂 صَوْتِي', '👂 Ma voix', '👂 My voice')}
         </motion.button>
+      )}
+
+      {echo.failed && (
+        <p role="status" className="text-sm font-bold text-center text-[#C42A23]">
+          {t('تَعَذَّرَ تَسْجِيلُ صَوْتِكَ أَوْ تَشْغِيلُهُ. حَاوِلْ مَرَّةً أُخْرَى.', 'Impossible d’enregistrer ou de lire ta voix. Réessaie.', 'Unable to record or play your voice. Try again.')}
+        </p>
       )}
 
       <motion.button

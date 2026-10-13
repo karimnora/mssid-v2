@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "pronunciation-fr-chat.mp3",
+    "texte": "chat",
+    "activiteId": "chat",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 2,
+    "fichier": "pronunciation-fr-chapeau.mp3",
+    "texte": "chapeau",
+    "activiteId": "chapeau",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 3,
+    "fichier": "pronunciation-fr-chien.mp3",
+    "texte": "chien",
+    "activiteId": "chien",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 4,
+    "fichier": "pronunciation-fr-champ.mp3",
+    "texte": "champ",
+    "activiteId": "champ",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 5,
+    "fichier": "pronunciation-fr-roue.mp3",
+    "texte": "roue",
+    "activiteId": "roue",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 6,
+    "fichier": "pronunciation-fr-rue.mp3",
+    "texte": "rue",
+    "activiteId": "rue",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 7,
+    "fichier": "pronunciation-fr-poisson.mp3",
+    "texte": "poisson",
+    "activiteId": "poisson",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 8,
+    "fichier": "pronunciation-fr-poison.mp3",
+    "texte": "poison",
+    "activiteId": "poison",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 9,
+    "fichier": "pronunciation-fr-ecole.mp3",
+    "texte": "école",
+    "activiteId": "ecole",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 10,
+    "fichier": "pronunciation-fr-banane.mp3",
+    "texte": "banane",
+    "activiteId": "banane",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 11,
+    "fichier": "pronunciation-fr-papa.mp3",
+    "texte": "papa",
+    "activiteId": "papa",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 12,
+    "fichier": "pronunciation-fr-maman.mp3",
+    "texte": "maman",
+    "activiteId": "maman",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 13,
+    "fichier": "pronunciation-fr-sentence-chat.mp3",
+    "texte": "Le chat est sur le tapis.",
+    "activiteId": "sentence-chat",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 14,
+    "fichier": "pronunciation-fr-sentence-ecole.mp3",
+    "texte": "Je vais à l’école.",
+    "activiteId": "sentence-ecole",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 15,
+    "fichier": "pronunciation-fr-sentence-banane.mp3",
+    "texte": "Je mange une banane.",
+    "activiteId": "sentence-banane",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  },
+  {
+    "ordre": 16,
+    "fichier": "pronunciation-fr-sentence-bonjour.mp3",
+    "texte": "Bonjour ! Comment vas-tu ?",
+    "activiteId": "sentence-bonjour",
+    "moduleId": "lab-pronunciation-fr",
+    "grade": "3AP-5AP",
+    "type": "model"
+  }
+]

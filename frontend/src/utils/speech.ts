@@ -10,10 +10,15 @@ import { useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { isFeatureEnabled } from '../featureFlags';
+import { findRecordedSpeech, playRecordedSpeech, stopRecordedSpeech,
+  pauseRecordedSpeech, resumeRecordedSpeech } from './recordedSpeech';
 
 const isNative = () => Capacitor.isNativePlatform();
 
 let synth: SpeechSynthesis | null = typeof window !== 'undefined' ? window.speechSynthesis : null;
+let speechRequest = 0;
+let finishSpeech: (() => void) | null = null;
+let nativeStop: Promise<unknown> = Promise.resolve();
 
 /**
  * Whether a voice matching `lang`'s prefix (e.g. "ar" for "ar-SA") is installed on this device.
@@ -91,7 +96,8 @@ function stripNonSpokenSymbols(text: string): string {
   return text.replace(NON_SPOKEN_SYMBOLS_REGEX, ' ').replace(/\s+/g, ' ').trim();
 }
 
-export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9, pitch: number = 1): Promise<void> => {
+export const speakText = async (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9, pitch: number = 1,
+  options: { skipRecordedLookup?: boolean; recordedRate?: number } = {}): Promise<void> => {
   if (!isFeatureEnabled('voiceReading')) {
     return Promise.resolve();
   }
@@ -101,16 +107,33 @@ export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-
     return Promise.resolve();
   }
 
+  stopSpeech();
+  const request = speechRequest;
+  const recording = options.skipRecordedLookup ? undefined : findRecordedSpeech(spokenText, lang);
+  if (recording) {
+    const result = await playRecordedSpeech(recording.src, options.recordedRate ?? 1);
+    if (result !== 'failed' || request !== speechRequest) return;
+  }
+
   if (isNative()) {
-    return TextToSpeech.speak({
-      text: spokenText,
-      lang,
-      rate,
-      pitch,
-      category: 'playback',
-      queueStrategy: 0, // Flush — a new tap should cut off whatever's still playing, not queue behind it.
-    }).catch((err) => {
-      console.warn('Native text-to-speech failed.', err);
+    await nativeStop;
+    if (request !== speechRequest) return;
+    return new Promise<void>(resolve => {
+      const finish = () => {
+        if (finishSpeech === finish) finishSpeech = null;
+        resolve();
+      };
+      finishSpeech = finish;
+      void TextToSpeech.speak({
+        text: spokenText,
+        lang,
+        rate,
+        pitch,
+        category: 'playback',
+        queueStrategy: 0, // A new tap replaces the previous reading.
+      }).catch((err) => {
+        console.warn('Native text-to-speech failed.', err);
+      }).then(finish);
     });
   }
 
@@ -121,8 +144,11 @@ export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-
       return;
     }
 
-    // Cancel any ongoing speech
-    synth.cancel();
+    const finish = () => {
+      if (finishSpeech === finish) finishSpeech = null;
+      resolve();
+    };
+    finishSpeech = finish;
 
     const utterance = new SpeechSynthesisUtterance(spokenText);
     utterance.lang = lang;
@@ -138,16 +164,24 @@ export const speakText = (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-
       }
     }
 
-    utterance.onend = () => resolve();
-    utterance.onerror = () => resolve();
+    utterance.onend = finish;
+    utterance.onerror = finish;
 
-    synth.speak(utterance);
+    try {
+      synth.speak(utterance);
+    } catch {
+      finish();
+    }
   });
 };
 
 export const stopSpeech = () => {
+  speechRequest++;
+  stopRecordedSpeech();
+  finishSpeech?.();
+  finishSpeech = null;
   if (isNative()) {
-    TextToSpeech.stop().catch(() => {
+    nativeStop = TextToSpeech.stop().catch(() => {
       // Nothing playing / already stopped — not worth surfacing.
     });
     return;
@@ -156,3 +190,15 @@ export const stopSpeech = () => {
     synth.cancel();
   }
 };
+
+export function pauseSpeech(): boolean {
+  if (pauseRecordedSpeech()) return true;
+  if (!isNative() && synth?.speaking) { synth.pause(); return true; }
+  return false;
+}
+
+export function resumeSpeech(): boolean {
+  if (resumeRecordedSpeech()) return true;
+  if (!isNative() && synth?.paused) { synth.resume(); return true; }
+  return false;
+}

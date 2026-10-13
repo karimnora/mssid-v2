@@ -63,7 +63,7 @@ export const ArabicReadingStoryPanel: React.FC<ArabicReadingStoryPanelProps> = (
           {onSpeak ? (
             <TapSpeakButton
               snippetKey={`scene-${scene.id}`}
-              text={renderArabicText(scene.textAr)}
+              text={scene.textAr}
               speakingKey={speakingKey}
               onSpeak={onSpeak}
               size="md"

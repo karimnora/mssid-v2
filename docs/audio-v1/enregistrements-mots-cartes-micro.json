@@ -1,0 +1,2278 @@
+{
+  "fr": {
+    "source": "ElevenLabs_2026-10-13T21_49_36_Léa  - Calm and pedagogical approach._pvc_sp104_s65_sb86_v4.mp3",
+    "sourceSha256": "21314fd35006c8e1c0f97ab60334def4fcc2b19f3d81fd3471ebb047a5bddc50",
+    "clips": [
+      {
+        "ordre": 1,
+        "fichier": "letters-alif-rabbit-echo.mp3",
+        "texte": "Ananas",
+        "activite": "La Pêche à la Lettre A",
+        "activiteId": "letters-alif-rabbit",
+        "moduleId": "preschool-letters",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-alif-rabbit-echo.mp3"
+        ],
+        "start": 0,
+        "end": 1.0787075000000002,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 0,
+        "cutEnd": 1.0787,
+        "duration": 1.0787,
+        "sha256": "67eb9184b5f48cc61b694ef51769d8103902640018161f9891943a64d1cb8a79"
+      },
+      {
+        "ordre": 2,
+        "fichier": "letters-meem-banana-echo.mp3",
+        "texte": "Maison",
+        "activite": "La Pêche à la Lettre M",
+        "activiteId": "letters-meem-banana",
+        "moduleId": "preschool-letters",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-meem-banana-echo.mp3"
+        ],
+        "start": 1.0787075000000002,
+        "end": 2.0945805,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 1.0787,
+        "cutEnd": 2.0946,
+        "duration": 1.0159,
+        "sha256": "f91cefe1dcb6f20b25dbaf0649c8fc2d228d8d2d258ce27bc4abf07c9e2a5a14"
+      },
+      {
+        "ordre": 3,
+        "fichier": "letters-haa-milk-echo.mp3",
+        "texte": "Hibou",
+        "activite": "La Pêche à la Lettre H",
+        "activiteId": "letters-haa-milk",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-haa-milk-echo.mp3"
+        ],
+        "start": 2.0945805,
+        "end": 2.9653515,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 2.0946,
+        "cutEnd": 2.9654,
+        "duration": 0.8708,
+        "sha256": "1a9467758c69011e31ead057c772e6e4ba38ec238936038f156f2343563aae29"
+      },
+      {
+        "ordre": 4,
+        "fichier": "letters-khaa-bread-echo.mp3",
+        "texte": "Xylophone",
+        "activite": "La Pêche à la Lettre X",
+        "activiteId": "letters-khaa-bread",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-khaa-bread-echo.mp3"
+        ],
+        "start": 2.9653515,
+        "end": 4.2492295,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 2.9654,
+        "cutEnd": 4.2492,
+        "duration": 1.2839,
+        "sha256": "a6e66f021111375e91c60a1d241739b03620c84217119991840c3e50b3133534"
+      },
+      {
+        "ordre": 5,
+        "fichier": "letters-thal-wolf-echo.mp3",
+        "texte": "Yo-yo",
+        "activite": "La Pêche à la Lettre Y",
+        "activiteId": "letters-thal-wolf",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-thal-wolf-echo.mp3"
+        ],
+        "start": 4.2492295,
+        "end": 5.159921,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 4.2492,
+        "cutEnd": 5.1599,
+        "duration": 0.9107,
+        "sha256": "7f0353a2ea7b4b4f59e213112b2673ff983784e5c104bdf10a457866785a1522"
+      },
+      {
+        "ordre": 6,
+        "fichier": "letters-raa-feather-echo.mp3",
+        "texte": "Robe",
+        "activite": "La Pêche à la Lettre R",
+        "activiteId": "letters-raa-feather",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-raa-feather-echo.mp3"
+        ],
+        "start": 5.159921,
+        "end": 6.121134,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 5.1599,
+        "cutEnd": 6.1211,
+        "duration": 0.9612,
+        "sha256": "bc9be8aef1aa565765fcf6180c23f4a0fd9d8ad9f1708da9cbbb463a13ac7d60"
+      },
+      {
+        "ordre": 7,
+        "fichier": "letters-noon-bee-echo.mp3",
+        "texte": "Nuage",
+        "activite": "La Pêche à la Lettre N",
+        "activiteId": "letters-noon-bee",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-noon-bee-echo.mp3"
+        ],
+        "start": 6.121134,
+        "end": 7.1622785,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 6.1211,
+        "cutEnd": 7.1623,
+        "duration": 1.0411,
+        "sha256": "86ae5e08bc1b8ff41b77755c30931878a354920cebe23e4ef190a91a1fa2dcd4"
+      },
+      {
+        "ordre": 8,
+        "fichier": "letters-listen-faa-card-fennec.mp3",
+        "texte": "fennec",
+        "activite": "F comme Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-fennec.mp3",
+          "algeria-fennec-tap-echo.mp3"
+        ],
+        "start": 7.1622785,
+        "end": 8.149115499999999,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 7.1623,
+        "cutEnd": 8.1491,
+        "duration": 0.9868,
+        "sha256": "cbc8ce75fbb9bcac537332dab6233fc9dc1281fff51ca861684b48f3724685fe"
+      },
+      {
+        "ordre": 10,
+        "fichier": "letters-listen-faa-card-book.mp3",
+        "texte": "livre",
+        "activite": "F comme Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-book.mp3"
+        ],
+        "start": 8.149115499999999,
+        "end": 9.095317999999999,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 8.1491,
+        "cutEnd": 9.0953,
+        "duration": 0.9462,
+        "sha256": "fb3d4d1152244e28f14886130528d05a06d3c0e074efc7020a4d9073ca88e329"
+      },
+      {
+        "ordre": 11,
+        "fichier": "letters-listen-faa-card-cake.mp3",
+        "texte": "gâteau",
+        "activite": "F comme Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-cake.mp3"
+        ],
+        "start": 9.095317999999999,
+        "end": 9.971292499999999,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 9.0953,
+        "cutEnd": 9.9713,
+        "duration": 0.876,
+        "sha256": "82b0ac15fbccabfcf90b7cb230972da06352d59113e535bb5c3a181e20701f1c"
+      },
+      {
+        "ordre": 12,
+        "fichier": "letters-listen-faa-card-moon.mp3",
+        "texte": "lune",
+        "activite": "F comme Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-moon.mp3"
+        ],
+        "start": 9.971292499999999,
+        "end": 10.8951135,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 9.9713,
+        "cutEnd": 10.8951,
+        "duration": 0.9238,
+        "sha256": "e1c90b3575253f7b98babe6d1f8c2f05954612fd8a48a8cd8c8287f502196f1f"
+      },
+      {
+        "ordre": 13,
+        "fichier": "animals-cow-echo.mp3",
+        "texte": "vache",
+        "activite": "La Vache Gentille",
+        "activiteId": "animals-cow",
+        "moduleId": "preschool-animals",
+        "type": "echo",
+        "fichiersCibles": [
+          "animals-cow-echo.mp3"
+        ],
+        "start": 10.8951135,
+        "end": 11.848186,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 10.8951,
+        "cutEnd": 11.8482,
+        "duration": 0.9531,
+        "sha256": "30ffc4b9b7f687e3b4d17d6f176dbaa8c452c80666749e601d3539e5b7b15183"
+      },
+      {
+        "ordre": 15,
+        "fichier": "calendar-days-card-sunday.mp3",
+        "texte": "Dimanche",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-sunday.mp3"
+        ],
+        "start": 11.848186,
+        "end": 12.9381745,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 11.8482,
+        "cutEnd": 12.9382,
+        "duration": 1.09,
+        "sha256": "4366f111751779031b6cb00afee06db294fa6ef92e0c70a7f8311c10697d67cd"
+      },
+      {
+        "ordre": 16,
+        "fichier": "calendar-days-card-monday.mp3",
+        "texte": "Lundi",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-monday.mp3"
+        ],
+        "start": 12.9381745,
+        "end": 13.8173695,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 12.9382,
+        "cutEnd": 13.8174,
+        "duration": 0.8792,
+        "sha256": "eeb3a735e9df1284eae3ba55f9ff9f724091b32789850599d65fed0f9698fedb"
+      },
+      {
+        "ordre": 17,
+        "fichier": "calendar-days-card-tuesday.mp3",
+        "texte": "Mardi",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-tuesday.mp3"
+        ],
+        "start": 13.8173695,
+        "end": 14.783457499999999,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 13.8174,
+        "cutEnd": 14.7835,
+        "duration": 0.9661,
+        "sha256": "ba5397e3f478f714df85d8bbdaf091293366ede46c150b1af19324acd7c363a7"
+      },
+      {
+        "ordre": 18,
+        "fichier": "calendar-days-card-wednesday.mp3",
+        "texte": "Mercredi",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-wednesday.mp3"
+        ],
+        "start": 14.783457499999999,
+        "end": 15.846814000000002,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 14.7835,
+        "cutEnd": 15.8468,
+        "duration": 1.0634,
+        "sha256": "ca5820184585b0fe2f292541e5b40ecfa9c513a1b105fc90950c811eee0784fc"
+      },
+      {
+        "ordre": 19,
+        "fichier": "calendar-days-card-thursday.mp3",
+        "texte": "Jeudi",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-thursday.mp3"
+        ],
+        "start": 15.846814000000002,
+        "end": 16.7332885,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 15.8468,
+        "cutEnd": 16.7333,
+        "duration": 0.8865,
+        "sha256": "604e9743f00945f2a7807eb7366c32664a39be318dedd1928333a127fc40c450"
+      },
+      {
+        "ordre": 20,
+        "fichier": "calendar-days-card-friday.mp3",
+        "texte": "Vendredi",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-friday.mp3"
+        ],
+        "start": 16.7332885,
+        "end": 17.711723,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 16.7333,
+        "cutEnd": 17.7117,
+        "duration": 0.9784,
+        "sha256": "e17e448bd710cc4ff1055056c56c98525a14ee9245749a20f5e3aa861b982130"
+      },
+      {
+        "ordre": 21,
+        "fichier": "calendar-days-card-saturday.mp3",
+        "texte": "Samedi",
+        "activite": "Les jours de la semaine",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-saturday.mp3"
+        ],
+        "start": 17.711723,
+        "end": 18.6361905,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 17.7117,
+        "cutEnd": 18.6362,
+        "duration": 0.9245,
+        "sha256": "c146ced97e16a6f9aa83cc53aa8edc3ef00c6534fb71b440f85887e6d3dc9562"
+      },
+      {
+        "ordre": 22,
+        "fichier": "calendar-months-1-card-january.mp3",
+        "texte": "Janvier",
+        "activite": "Les mois 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-january.mp3"
+        ],
+        "start": 18.6361905,
+        "end": 19.5538775,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 18.6362,
+        "cutEnd": 19.5539,
+        "duration": 0.9177,
+        "sha256": "6f56d531f24304379b7452075888b4b252cc9302f88552770122c5e068f2b99f"
+      },
+      {
+        "ordre": 23,
+        "fichier": "calendar-months-1-card-february.mp3",
+        "texte": "Février",
+        "activite": "Les mois 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-february.mp3"
+        ],
+        "start": 19.5538775,
+        "end": 20.499887,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 19.5539,
+        "cutEnd": 20.4999,
+        "duration": 0.946,
+        "sha256": "ed03f5ece4a162032bc46fbe192908c2fed00c95f89d51498ae1f5826683b59b"
+      },
+      {
+        "ordre": 24,
+        "fichier": "calendar-months-1-card-march.mp3",
+        "texte": "Mars",
+        "activite": "Les mois 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-march.mp3"
+        ],
+        "start": 20.499887,
+        "end": 21.378242500000002,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 20.4999,
+        "cutEnd": 21.3782,
+        "duration": 0.8784,
+        "sha256": "1cfe0847e8d39043ca96429b12677b779475cf4d21c05832eb64e7d24fdb9455"
+      },
+      {
+        "ordre": 25,
+        "fichier": "calendar-months-1-card-april.mp3",
+        "texte": "Avril",
+        "activite": "Les mois 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-april.mp3"
+        ],
+        "start": 21.378242500000002,
+        "end": 22.234500999999998,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 21.3782,
+        "cutEnd": 22.2345,
+        "duration": 0.8563,
+        "sha256": "ea426c95703f81eca0ca95f8b01f6072d4c7196788300b4023fcf97d0292acc3"
+      },
+      {
+        "ordre": 26,
+        "fichier": "calendar-months-1-card-may.mp3",
+        "texte": "Mai",
+        "activite": "Les mois 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-may.mp3"
+        ],
+        "start": 22.234500999999998,
+        "end": 22.863457999999998,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 22.2345,
+        "cutEnd": 22.8635,
+        "duration": 0.629,
+        "sha256": "ded0d8a7c42f8469871dcd9d9d5d03d6fc363c5e82327d85c0604f9454cbd42e"
+      },
+      {
+        "ordre": 27,
+        "fichier": "calendar-months-1-card-june.mp3",
+        "texte": "Juin",
+        "activite": "Les mois 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-june.mp3"
+        ],
+        "start": 22.863457999999998,
+        "end": 23.5970065,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 22.8635,
+        "cutEnd": 23.597,
+        "duration": 0.7335,
+        "sha256": "1c6218be16fd12ce79b882c21e1b390242d7687cd94daaec82d7ff84cdf89f65"
+      },
+      {
+        "ordre": 28,
+        "fichier": "calendar-months-2-card-july.mp3",
+        "texte": "Juillet",
+        "activite": "Les mois 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-july.mp3"
+        ],
+        "start": 23.5970065,
+        "end": 24.432018,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 23.597,
+        "cutEnd": 24.432,
+        "duration": 0.835,
+        "sha256": "4288db2d008ae9a0341786368b3d7e788ca23e84b467c710ee0623a150cb93b2"
+      },
+      {
+        "ordre": 29,
+        "fichier": "calendar-months-2-card-august.mp3",
+        "texte": "Août",
+        "activite": "Les mois 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-august.mp3"
+        ],
+        "start": 24.432018,
+        "end": 25.098514499999997,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 24.432,
+        "cutEnd": 25.0985,
+        "duration": 0.6665,
+        "sha256": "4001c2ce8da0b48f37ada04b614edd5039ec88877b6822b6e75c51b68a0f5ec5"
+      },
+      {
+        "ordre": 30,
+        "fichier": "calendar-months-2-card-september.mp3",
+        "texte": "Septembre",
+        "activite": "Les mois 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-september.mp3"
+        ],
+        "start": 25.098514499999997,
+        "end": 26.072778000000003,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 25.0985,
+        "cutEnd": 26.0728,
+        "duration": 0.9743,
+        "sha256": "784f66b79b08e448c304a65d6cfde6bab6049c4286b6fa3a3b7d903eadb83608"
+      },
+      {
+        "ordre": 31,
+        "fichier": "calendar-months-2-card-october.mp3",
+        "texte": "Octobre",
+        "activite": "Les mois 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-october.mp3"
+        ],
+        "start": 26.072778000000003,
+        "end": 26.9461,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 26.0728,
+        "cutEnd": 26.9461,
+        "duration": 0.8733,
+        "sha256": "58741dff739ff3c86d6bf6b7fbb2d37c80768583942c18220d05c533eb3a4356"
+      },
+      {
+        "ordre": 32,
+        "fichier": "calendar-months-2-card-november.mp3",
+        "texte": "Novembre",
+        "activite": "Les mois 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-november.mp3"
+        ],
+        "start": 26.9461,
+        "end": 27.8150115,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 26.9461,
+        "cutEnd": 27.815,
+        "duration": 0.8689,
+        "sha256": "5c77e625d8a04b35106644f7e7cb68990b9b5c107703fd8c9b04f9726d3b4d98"
+      },
+      {
+        "ordre": 33,
+        "fichier": "calendar-months-2-card-december.mp3",
+        "texte": "Décembre",
+        "activite": "Les mois 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-december.mp3"
+        ],
+        "start": 27.8150115,
+        "end": 28.731803,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "userConfirmed": true,
+        "cutStart": 27.815,
+        "cutEnd": 28.7318,
+        "duration": 0.9168,
+        "sha256": "c7ff91c1c56dc8704f099f89f1683649c579d8835a5f7d6a073a6ec7411669a4"
+      },
+      {
+        "ordre": 36,
+        "fichier": "family-elders-baby-card-grandpa.mp3",
+        "texte": "Papi",
+        "activite": "Qui Est Dans La Famille ?",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-grandpa.mp3"
+        ],
+        "start": 28.731803,
+        "end": 29.483628500000002,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "userConfirmed": true,
+        "cutStart": 28.7318,
+        "cutEnd": 29.4836,
+        "duration": 0.7518,
+        "sha256": "454343f39f699a5c67f7b3e0bf09c7b37757aff5c295d1d4381d56dedae2dfc0"
+      },
+      {
+        "ordre": 37,
+        "fichier": "family-elders-baby-card-granny.mp3",
+        "texte": "Mamie",
+        "activite": "Qui Est Dans La Famille ?",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-granny.mp3"
+        ],
+        "start": 29.483628500000002,
+        "end": 30.2054765,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 29.4836,
+        "cutEnd": 30.2055,
+        "duration": 0.7218,
+        "sha256": "d2751e0e5c34ce2713d49f32ac3af517a503dbf986ae1ae40bf6d20934f784f3"
+      },
+      {
+        "ordre": 38,
+        "fichier": "family-elders-baby-card-baby.mp3",
+        "texte": "Le Bébé",
+        "activite": "Qui Est Dans La Famille ?",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-baby.mp3"
+        ],
+        "start": 30.2054765,
+        "end": 31.0728915,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 30.2055,
+        "cutEnd": 31.0729,
+        "duration": 0.8674,
+        "sha256": "d8bca8119af93babb0047fc62b31f5d931434f0e43a78e57bfd624ae32eae18d"
+      },
+      {
+        "ordre": 39,
+        "fichier": "algeria-couscous-echo.mp3",
+        "texte": "couscous",
+        "activite": "Le Couscous",
+        "activiteId": "algeria-couscous",
+        "moduleId": "preschool-algeria",
+        "type": "echo",
+        "fichiersCibles": [
+          "algeria-couscous-echo.mp3"
+        ],
+        "start": 31.0728915,
+        "end": 32.130625,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 31.0729,
+        "cutEnd": 32.1306,
+        "duration": 1.0577,
+        "sha256": "a45414025cb88c2ef4769bfc1f572aebcb9a9e9a9eac05bcd2b54dab52c0f848"
+      }
+    ]
+  },
+  "en": {
+    "source": "ElevenLabs_2026-10-13T21_50_23_Quentin - Narrator and Educator_pvc_sp108_s100_sb100_v4.mp3",
+    "sourceSha256": "64faa66dca746508d16c58464e19ca16d3a4a46303c628ce73b2441093790bc3",
+    "clips": [
+      {
+        "ordre": 1,
+        "fichier": "letters-alif-rabbit-echo.mp3",
+        "texte": "Apple",
+        "activite": "Catch the Letter A",
+        "activiteId": "letters-alif-rabbit",
+        "moduleId": "preschool-letters",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-alif-rabbit-echo.mp3"
+        ],
+        "start": 0,
+        "end": 0.7754650000000001,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 0,
+        "cutEnd": 0.7755,
+        "duration": 0.7755,
+        "sha256": "a57ba031d3b3783b7353e99d598712becf1dea7964c9cf1fd4ea685144dc3bd7"
+      },
+      {
+        "ordre": 2,
+        "fichier": "letters-meem-banana-echo.mp3",
+        "texte": "Monkey",
+        "activite": "Catch the Letter M",
+        "activiteId": "letters-meem-banana",
+        "moduleId": "preschool-letters",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-meem-banana-echo.mp3"
+        ],
+        "start": 0.7754650000000001,
+        "end": 1.7680609999999999,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 0.7755,
+        "cutEnd": 1.7681,
+        "duration": 0.9926,
+        "sha256": "99217265535ba9cdbc974c5f862741054efb2339084b9f75545c5259142b649b"
+      },
+      {
+        "ordre": 3,
+        "fichier": "letters-haa-milk-echo.mp3",
+        "texte": "Horse",
+        "activite": "Catch the Letter H",
+        "activiteId": "letters-haa-milk",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-haa-milk-echo.mp3"
+        ],
+        "start": 1.7680609999999999,
+        "end": 2.8097055,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 1.7681,
+        "cutEnd": 2.8097,
+        "duration": 1.0416,
+        "sha256": "8a719cd02a481ef9841ddbd4b3e247c67e74c6de9b7b9690297f4ae77a3b3600"
+      },
+      {
+        "ordre": 4,
+        "fichier": "letters-khaa-bread-echo.mp3",
+        "texte": "Xylophone",
+        "activite": "Catch the Letter X",
+        "activiteId": "letters-khaa-bread",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-khaa-bread-echo.mp3"
+        ],
+        "start": 2.8097055,
+        "end": 4.0162365,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 2.8097,
+        "cutEnd": 4.0162,
+        "duration": 1.2065,
+        "sha256": "2d45c9fd28e102413431a23d6356f6668e2eb9fe5d93b891f91986ffa2316861"
+      },
+      {
+        "ordre": 5,
+        "fichier": "letters-thal-wolf-echo.mp3",
+        "texte": "Yo-yo",
+        "activite": "Catch the Letter Y",
+        "activiteId": "letters-thal-wolf",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-thal-wolf-echo.mp3"
+        ],
+        "start": 4.0162365,
+        "end": 5.0061335,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 4.0162,
+        "cutEnd": 5.0061,
+        "duration": 0.9899,
+        "sha256": "44212c9db58b409d37bdd7e90f0d20f82e30ebc902776454f73799ad0aaec926"
+      },
+      {
+        "ordre": 6,
+        "fichier": "letters-raa-feather-echo.mp3",
+        "texte": "Rose",
+        "activite": "Catch the Letter R",
+        "activiteId": "letters-raa-feather",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-raa-feather-echo.mp3"
+        ],
+        "start": 5.0061335,
+        "end": 6.0747395,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 5.0061,
+        "cutEnd": 6.0747,
+        "duration": 1.0686,
+        "sha256": "f0992ad6c72c76388df76f660a8be83f027bd042850ae26392071d2248e2f918"
+      },
+      {
+        "ordre": 7,
+        "fichier": "letters-noon-bee-echo.mp3",
+        "texte": "Nest",
+        "activite": "Catch the Letter N",
+        "activiteId": "letters-noon-bee",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-noon-bee-echo.mp3"
+        ],
+        "start": 6.0747395,
+        "end": 7.0092175,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 6.0747,
+        "cutEnd": 7.0092,
+        "duration": 0.9345,
+        "sha256": "e8863b363b45b1e119efb134acb99b68d916376c6227de62b35dbc317a4ef0e8"
+      },
+      {
+        "ordre": 8,
+        "fichier": "letters-listen-faa-card-fennec.mp3",
+        "texte": "fennec",
+        "activite": "F like Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-fennec.mp3",
+          "algeria-fennec-tap-echo.mp3"
+        ],
+        "start": 7.0092175,
+        "end": 7.923378999999999,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 7.0092,
+        "cutEnd": 7.9234,
+        "duration": 0.9142,
+        "sha256": "b8ca6360fcf38e823ae43cdd53f3aa4922f93f489ebd44213123b0304150952f"
+      },
+      {
+        "ordre": 9,
+        "fichier": "letters-listen-faa-card-dog.mp3",
+        "texte": "dog",
+        "activite": "F like Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-dog.mp3"
+        ],
+        "start": 7.923378999999999,
+        "end": 8.861916,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 7.9234,
+        "cutEnd": 8.8619,
+        "duration": 0.9385,
+        "sha256": "f8bb5f34dca6f335b0e0bbd10d589837440a07d1376b83e71e6f45ef35f1e08a"
+      },
+      {
+        "ordre": 11,
+        "fichier": "letters-listen-faa-card-cake.mp3",
+        "texte": "cake",
+        "activite": "F like Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-cake.mp3"
+        ],
+        "start": 8.861916,
+        "end": 9.6733105,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 8.8619,
+        "cutEnd": 9.6733,
+        "duration": 0.8114,
+        "sha256": "5bb25dc9d4eb78c2c0ab973cf91c5b94c9ee4a058fd626b8bcbac03b1f2dbc93"
+      },
+      {
+        "ordre": 12,
+        "fichier": "letters-listen-faa-card-moon.mp3",
+        "texte": "moon",
+        "activite": "F like Fennec",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-moon.mp3"
+        ],
+        "start": 9.6733105,
+        "end": 10.623413,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 9.6733,
+        "cutEnd": 10.6234,
+        "duration": 0.9501,
+        "sha256": "f3081b49bc017f210b1a67ee1ba6ffce35484ccd1a3ed9955edd0cc96a77bb56"
+      },
+      {
+        "ordre": 13,
+        "fichier": "animals-cow-echo.mp3",
+        "texte": "cow",
+        "activite": "The Gentle Cow",
+        "activiteId": "animals-cow",
+        "moduleId": "preschool-animals",
+        "type": "echo",
+        "fichiersCibles": [
+          "animals-cow-echo.mp3"
+        ],
+        "start": 10.623413,
+        "end": 11.510193,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 10.6234,
+        "cutEnd": 11.5102,
+        "duration": 0.8868,
+        "sha256": "783e230a1d669f5532ec8498cc2c6ad799410560fcb722f5022c82d16c0fe188"
+      },
+      {
+        "ordre": 15,
+        "fichier": "calendar-days-card-sunday.mp3",
+        "texte": "Sunday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-sunday.mp3"
+        ],
+        "start": 11.510193,
+        "end": 12.571553,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 11.5102,
+        "cutEnd": 12.5716,
+        "duration": 1.0614,
+        "sha256": "833f83ba00c2c8d2a3cbc34c2cfd0536ae9c4ef23f23c99c0969a18bf6f5d23d"
+      },
+      {
+        "ordre": 16,
+        "fichier": "calendar-days-card-monday.mp3",
+        "texte": "Monday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-monday.mp3"
+        ],
+        "start": 12.571553,
+        "end": 13.552109,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 12.5716,
+        "cutEnd": 13.5521,
+        "duration": 0.9806,
+        "sha256": "f28320c08898d5ce4b9172e93df0ab0cf8741b69441295ecbde8bb2911586f03"
+      },
+      {
+        "ordre": 17,
+        "fichier": "calendar-days-card-tuesday.mp3",
+        "texte": "Tuesday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-tuesday.mp3"
+        ],
+        "start": 13.552109,
+        "end": 14.4861675,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 13.5521,
+        "cutEnd": 14.4862,
+        "duration": 0.9341,
+        "sha256": "bd1fcd67a8559a7217b1bb1fb9ddbdcb0748ecd062562f7554a928d74bc3388e"
+      },
+      {
+        "ordre": 18,
+        "fichier": "calendar-days-card-wednesday.mp3",
+        "texte": "Wednesday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-wednesday.mp3"
+        ],
+        "start": 14.4861675,
+        "end": 15.4558385,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 14.4862,
+        "cutEnd": 15.4558,
+        "duration": 0.9697,
+        "sha256": "22a6e19de4aa1b896ba4313fa24417f3101fed3dfe039d0f2ca49cce4e8b4363"
+      },
+      {
+        "ordre": 19,
+        "fichier": "calendar-days-card-thursday.mp3",
+        "texte": "Thursday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-thursday.mp3"
+        ],
+        "start": 15.4558385,
+        "end": 16.383968499999998,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 15.4558,
+        "cutEnd": 16.384,
+        "duration": 0.9281,
+        "sha256": "5c477f70b9fb12b6a53137339d475161db3a68d1aba5116c46f071b477c2b5e2"
+      },
+      {
+        "ordre": 20,
+        "fichier": "calendar-days-card-friday.mp3",
+        "texte": "Friday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-friday.mp3"
+        ],
+        "start": 16.383968499999998,
+        "end": 17.2797165,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 16.384,
+        "cutEnd": 17.2797,
+        "duration": 0.8957,
+        "sha256": "91d7571ca16a2fbb1ba928e7678d39420568e02aa82ad1765d688158454b51be"
+      },
+      {
+        "ordre": 21,
+        "fichier": "calendar-days-card-saturday.mp3",
+        "texte": "Saturday",
+        "activite": "Days of the week",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-saturday.mp3"
+        ],
+        "start": 17.2797165,
+        "end": 18.245181499999997,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 17.2797,
+        "cutEnd": 18.2452,
+        "duration": 0.9655,
+        "sha256": "2b503c3da85e8b442023d8a3e03c00222ebc41fcc8d57d3c96cb85cbe0dc75d8"
+      },
+      {
+        "ordre": 22,
+        "fichier": "calendar-months-1-card-january.mp3",
+        "texte": "January",
+        "activite": "The months 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-january.mp3"
+        ],
+        "start": 18.245181499999997,
+        "end": 19.272143000000003,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 18.2452,
+        "cutEnd": 19.2721,
+        "duration": 1.027,
+        "sha256": "9f6af6213f9b64e91290d7edce56f9509b8711547e5b338ce926ec02ce83b653"
+      },
+      {
+        "ordre": 23,
+        "fichier": "calendar-months-1-card-february.mp3",
+        "texte": "February",
+        "activite": "The months 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-february.mp3"
+        ],
+        "start": 19.272143000000003,
+        "end": 20.260941000000003,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 19.2721,
+        "cutEnd": 20.2609,
+        "duration": 0.9888,
+        "sha256": "002cb6e8b487423603de1931e20269d75041b24575b31367df946940e7a418c6"
+      },
+      {
+        "ordre": 24,
+        "fichier": "calendar-months-1-card-march.mp3",
+        "texte": "March",
+        "activite": "The months 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-march.mp3"
+        ],
+        "start": 20.260941000000003,
+        "end": 21.140748,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 20.2609,
+        "cutEnd": 21.1407,
+        "duration": 0.8798,
+        "sha256": "7d72b5f6859e89c9fa1419d29630ee0bfc3f2ff6674ef90f9d28f6a0e6ef6629"
+      },
+      {
+        "ordre": 25,
+        "fichier": "calendar-months-1-card-april.mp3",
+        "texte": "April",
+        "activite": "The months 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-april.mp3"
+        ],
+        "start": 21.140748,
+        "end": 21.8948975,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 21.1407,
+        "cutEnd": 21.8949,
+        "duration": 0.7541,
+        "sha256": "26ef851499155d7ff5e2b99e0f4a990653e2a2715b2e219576bf36a912a5a360"
+      },
+      {
+        "ordre": 26,
+        "fichier": "calendar-months-1-card-may.mp3",
+        "texte": "May",
+        "activite": "The months 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-may.mp3"
+        ],
+        "start": 21.8948975,
+        "end": 22.657414499999998,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 21.8949,
+        "cutEnd": 22.6574,
+        "duration": 0.7625,
+        "sha256": "5d5149e56047c5c8321e933f036a97fc3a96509a5fb103fc8ad31af11305f573"
+      },
+      {
+        "ordre": 27,
+        "fichier": "calendar-months-1-card-june.mp3",
+        "texte": "June",
+        "activite": "The months 1",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-june.mp3"
+        ],
+        "start": 22.657414499999998,
+        "end": 23.5100905,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 22.6574,
+        "cutEnd": 23.5101,
+        "duration": 0.8527,
+        "sha256": "6964a31e8e036e270c57b63ee7c7c39beaa3b4b9c276eb85110ff170fc7027e3"
+      },
+      {
+        "ordre": 28,
+        "fichier": "calendar-months-2-card-july.mp3",
+        "texte": "July",
+        "activite": "The months 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-july.mp3"
+        ],
+        "start": 23.5100905,
+        "end": 24.3906465,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 23.5101,
+        "cutEnd": 24.3906,
+        "duration": 0.8806,
+        "sha256": "157da1588d77b882b57fd4bb6688ff0cd00a13d3524dfe4866a6bad54ded6f59"
+      },
+      {
+        "ordre": 29,
+        "fichier": "calendar-months-2-card-august.mp3",
+        "texte": "August",
+        "activite": "The months 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-august.mp3"
+        ],
+        "start": 24.3906465,
+        "end": 25.216507999999997,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 24.3906,
+        "cutEnd": 25.2165,
+        "duration": 0.8259,
+        "sha256": "e7bce0090671c3cd0342a08e40c09800c823a2fe742a48c1b156c5bad1de0097"
+      },
+      {
+        "ordre": 30,
+        "fichier": "calendar-months-2-card-september.mp3",
+        "texte": "September",
+        "activite": "The months 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-september.mp3"
+        ],
+        "start": 25.216507999999997,
+        "end": 26.15415,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 25.2165,
+        "cutEnd": 26.1542,
+        "duration": 0.9376,
+        "sha256": "db03c56695228b731b5b995939ecffa1d4390b25c47659b2c0291a7bf14b6acf"
+      },
+      {
+        "ordre": 31,
+        "fichier": "calendar-months-2-card-october.mp3",
+        "texte": "October",
+        "activite": "The months 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-october.mp3"
+        ],
+        "start": 26.15415,
+        "end": 27.056462,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 26.1542,
+        "cutEnd": 27.0565,
+        "duration": 0.9023,
+        "sha256": "3938591d12c7a2153a857c3c94c16b5437daeeb04ae35123cd84113fc7675e23"
+      },
+      {
+        "ordre": 32,
+        "fichier": "calendar-months-2-card-november.mp3",
+        "texte": "November",
+        "activite": "The months 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-november.mp3"
+        ],
+        "start": 27.056462,
+        "end": 27.96517,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 27.0565,
+        "cutEnd": 27.9652,
+        "duration": 0.9087,
+        "sha256": "3f765bae79c7f08bc6e9870353fd9c47a920b2c385eaac091aa67229fad137da"
+      },
+      {
+        "ordre": 33,
+        "fichier": "calendar-months-2-card-december.mp3",
+        "texte": "December",
+        "activite": "The months 2",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-december.mp3"
+        ],
+        "start": 27.96517,
+        "end": 28.9067345,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 27.9652,
+        "cutEnd": 28.9067,
+        "duration": 0.9416,
+        "sha256": "d898aadce8fcace323472da45682054c6fb91ccec5680683b68d6ff3264a35a4"
+      },
+      {
+        "ordre": 34,
+        "fichier": "family-mom-echo.mp3",
+        "texte": "mom",
+        "activite": "Mom",
+        "activiteId": "family-mom",
+        "moduleId": "preschool-family",
+        "type": "echo",
+        "fichiersCibles": [
+          "family-mom-echo.mp3"
+        ],
+        "start": 28.9067345,
+        "end": 29.827789000000003,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 28.9067,
+        "cutEnd": 29.8278,
+        "duration": 0.9211,
+        "sha256": "b46af5fc6ca94165908df0d32fd8b543754889c058fcfc74fced97e94d32e379"
+      },
+      {
+        "ordre": 35,
+        "fichier": "family-dad-echo.mp3",
+        "texte": "dad",
+        "activite": "Dad",
+        "activiteId": "family-dad",
+        "moduleId": "preschool-family",
+        "type": "echo",
+        "fichiersCibles": [
+          "family-dad-echo.mp3"
+        ],
+        "start": 29.827789000000003,
+        "end": 30.6480155,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 29.8278,
+        "cutEnd": 30.648,
+        "duration": 0.8202,
+        "sha256": "f7fe05d9debf57257908eb94bba5897d7a27272970315f39a71d64ebc876e3dd"
+      },
+      {
+        "ordre": 36,
+        "fichier": "family-elders-baby-card-grandpa.mp3",
+        "texte": "Grandpa",
+        "activite": "Who Is in the Family?",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-grandpa.mp3"
+        ],
+        "start": 30.6480155,
+        "end": 31.518628500000002,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 30.648,
+        "cutEnd": 31.5186,
+        "duration": 0.8706,
+        "sha256": "f9c0c62adcd6874e1f2ff975619ee192d8248f9400b3f56afad358dafc54aace"
+      },
+      {
+        "ordre": 37,
+        "fichier": "family-elders-baby-card-granny.mp3",
+        "texte": "Grandma",
+        "activite": "Who Is in the Family?",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-granny.mp3"
+        ],
+        "start": 31.518628500000002,
+        "end": 32.359308,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 31.5186,
+        "cutEnd": 32.3593,
+        "duration": 0.8407,
+        "sha256": "2be4b615701c871d4e16fea583d913a8e71b9b096a39fcdf9ef16b652d75b174"
+      },
+      {
+        "ordre": 38,
+        "fichier": "family-elders-baby-card-baby.mp3",
+        "texte": "The Baby",
+        "activite": "Who Is in the Family?",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-baby.mp3"
+        ],
+        "start": 32.359308,
+        "end": 33.353333500000005,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 32.3593,
+        "cutEnd": 33.3533,
+        "duration": 0.994,
+        "sha256": "a90eaa4191f167aac2522b5c3c3665947c74e17381e1a0b88d19ef3b439fecb6"
+      },
+      {
+        "ordre": 39,
+        "fichier": "algeria-couscous-echo.mp3",
+        "texte": "couscous",
+        "activite": "Couscous",
+        "activiteId": "algeria-couscous",
+        "moduleId": "preschool-algeria",
+        "type": "echo",
+        "fichiersCibles": [
+          "algeria-couscous-echo.mp3"
+        ],
+        "start": 33.353333500000005,
+        "end": 34.429375,
+        "recognized": null,
+        "coverage": null,
+        "alignmentMethod": "ordered word list and acoustic pauses; trailing silence excluded",
+        "cutStart": 33.3533,
+        "cutEnd": 34.4294,
+        "duration": 1.076,
+        "sha256": "c201a238d0666dcbc722f82c5043cf5fb59e4b2989783fedc6edf456bb52ef36"
+      }
+    ]
+  },
+  "ar": {
+    "source": "ElevenLabs_2026-10-13T21_48_51_Asmaa - Calm, Encouraging and Clear_pvc_sp107_s61_sb43_v4.mp3",
+    "sourceSha256": "156ab80e9903501823048cbe4f9847941800a089c38046889432d671d855099c",
+    "clips": [
+      {
+        "ordre": 1,
+        "fichier": "letters-alif-rabbit-echo.mp3",
+        "texte": "أَرْنَب",
+        "activite": "صَيْدُ حَرْفِ الأَلِفِ (أ)",
+        "activiteId": "letters-alif-rabbit",
+        "moduleId": "preschool-letters",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-alif-rabbit-echo.mp3"
+        ],
+        "start": 0,
+        "end": 0.7847,
+        "cutStart": 0,
+        "cutEnd": 0.7847,
+        "duration": 0.7847,
+        "sha256": "c2fd948363ac6d22a74c17c17692d85c2b696a2cda9be503eb6f2253f0f18a7f",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 2,
+        "fichier": "letters-meem-banana-echo.mp3",
+        "texte": "مَوْزَة",
+        "activite": "صَيْدُ حَرْفِ المِيمِ (م)",
+        "activiteId": "letters-meem-banana",
+        "moduleId": "preschool-letters",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-meem-banana-echo.mp3"
+        ],
+        "start": 0.7847,
+        "end": 1.7399,
+        "cutStart": 0.7847,
+        "cutEnd": 1.7399,
+        "duration": 0.9552,
+        "sha256": "14f26fa2d4d05b1cedf039850622a209c3c89a6de697e64b4bda2620c1cf5cec",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 3,
+        "fichier": "letters-haa-milk-echo.mp3",
+        "texte": "حَلِيب",
+        "activite": "صَيْدُ حَرْفِ الحَاءِ (ح)",
+        "activiteId": "letters-haa-milk",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-haa-milk-echo.mp3"
+        ],
+        "start": 1.7399,
+        "end": 2.7315,
+        "cutStart": 1.7399,
+        "cutEnd": 2.7315,
+        "duration": 0.9916,
+        "sha256": "c6b3a83cc490fabe7a38faefff571f698f1f03e0cf0feacc01e9ea84738c8ac3",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 4,
+        "fichier": "letters-khaa-bread-echo.mp3",
+        "texte": "خُبْز",
+        "activite": "صَيْدُ حَرْفِ الخَاءِ (خ)",
+        "activiteId": "letters-khaa-bread",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-khaa-bread-echo.mp3"
+        ],
+        "start": 2.7315,
+        "end": 3.6003,
+        "cutStart": 2.7315,
+        "cutEnd": 3.6003,
+        "duration": 0.8687,
+        "sha256": "ed76db4319cbbaa3b562e981d25973d7490705d579b1f98164f2d9290335a805",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 5,
+        "fichier": "letters-thal-wolf-echo.mp3",
+        "texte": "ذِئْب",
+        "activite": "صَيْدُ حَرْفِ الذَّالِ (ذ)",
+        "activiteId": "letters-thal-wolf",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-thal-wolf-echo.mp3"
+        ],
+        "start": 3.6003,
+        "end": 4.4451,
+        "cutStart": 3.6003,
+        "cutEnd": 4.4451,
+        "duration": 0.8449,
+        "sha256": "d98e1f58a21c1f0478fa097e5c2f714cbd2bf42241f420f8a6d4748a3884918b",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 6,
+        "fichier": "letters-raa-feather-echo.mp3",
+        "texte": "رِيشَة",
+        "activite": "صَيْدُ حَرْفِ الرَّاءِ (ر)",
+        "activiteId": "letters-raa-feather",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-raa-feather-echo.mp3"
+        ],
+        "start": 4.4451,
+        "end": 5.277,
+        "cutStart": 4.4451,
+        "cutEnd": 5.277,
+        "duration": 0.8319,
+        "sha256": "a7c4615c248cb0fc0081c8e6787b547d5b0c257140ff13c50c75ffb3920b7901",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 7,
+        "fichier": "letters-noon-bee-echo.mp3",
+        "texte": "نَحْلَة",
+        "activite": "صَيْدُ حَرْفِ النُّونِ (ن)",
+        "activiteId": "letters-noon-bee",
+        "moduleId": "preschool-letters-2",
+        "type": "echo",
+        "fichiersCibles": [
+          "letters-noon-bee-echo.mp3"
+        ],
+        "start": 5.277,
+        "end": 6.1067,
+        "cutStart": 5.277,
+        "cutEnd": 6.1067,
+        "duration": 0.8297,
+        "sha256": "00f6dfb6a919c637941075caaac223fa40e9f0dc6e406960a7ffd730e3a7c0e4",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 8,
+        "fichier": "letters-listen-faa-card-fennec.mp3",
+        "texte": "فَنَك",
+        "activite": "فَـ مِثْلَ فَنَك",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-fennec.mp3",
+          "algeria-fennec-tap-echo.mp3"
+        ],
+        "start": 6.1067,
+        "end": 6.9505,
+        "cutStart": 6.1067,
+        "cutEnd": 6.9505,
+        "duration": 0.8438,
+        "sha256": "3f5796f73ecfb2f0908c217eb6f9f4f277f1c8a49d214c2d678b383300583b39",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 9,
+        "fichier": "letters-listen-faa-card-dog.mp3",
+        "texte": "كَلْب",
+        "activite": "فَـ مِثْلَ فَنَك",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-dog.mp3"
+        ],
+        "start": 6.9505,
+        "end": 7.7664,
+        "cutStart": 6.9505,
+        "cutEnd": 7.7664,
+        "duration": 0.8159,
+        "sha256": "52b6253d0e5064347010a2463ba5b2422e7d2d5df6d1c1378899dee569ec9982",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 10,
+        "fichier": "letters-listen-faa-card-book.mp3",
+        "texte": "كِتَاب",
+        "activite": "فَـ مِثْلَ فَنَك",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-book.mp3"
+        ],
+        "start": 7.7664,
+        "end": 8.7636,
+        "cutStart": 7.7664,
+        "cutEnd": 8.7636,
+        "duration": 0.9972,
+        "sha256": "428c4654aa74547e3a301c25ccc17763f256a0d8d627027828550265144f805b",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 11,
+        "fichier": "letters-listen-faa-card-cake.mp3",
+        "texte": "كَعْك",
+        "activite": "فَـ مِثْلَ فَنَك",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-cake.mp3"
+        ],
+        "start": 8.7636,
+        "end": 9.5296,
+        "cutStart": 8.7636,
+        "cutEnd": 9.5296,
+        "duration": 0.766,
+        "sha256": "8f8d2faa254c0e0720699c6ca064ab1ef4073a2a1f345a761f3e7ea8e6735604",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 12,
+        "fichier": "letters-listen-faa-card-moon.mp3",
+        "texte": "قَمَر",
+        "activite": "فَـ مِثْلَ فَنَك",
+        "activiteId": "letters-listen-faa",
+        "moduleId": "preschool-letters-2",
+        "type": "card",
+        "fichiersCibles": [
+          "letters-listen-faa-card-moon.mp3"
+        ],
+        "start": 9.5296,
+        "end": 10.2798,
+        "cutStart": 9.5296,
+        "cutEnd": 10.2798,
+        "duration": 0.7502,
+        "sha256": "8e91d7c6aea80cf18bf229196e7d0c187a6efe79837dc37b2e14375b9c5e341e",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 13,
+        "fichier": "animals-cow-echo.mp3",
+        "texte": "بَقَرَة",
+        "activite": "البَقَرَةُ الحَنُونَةُ",
+        "activiteId": "animals-cow",
+        "moduleId": "preschool-animals",
+        "type": "echo",
+        "fichiersCibles": [
+          "animals-cow-echo.mp3"
+        ],
+        "start": 10.2798,
+        "end": 11.1504,
+        "cutStart": 10.2798,
+        "cutEnd": 11.1504,
+        "duration": 0.8706,
+        "sha256": "cf767f092a17290ac1778b4354dd4253526e80f68d3fe7e47964e78dd581943c",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 14,
+        "fichier": "animals-cat-echo.mp3",
+        "texte": "قِطَّة",
+        "activite": "القِطَّةُ اللَّطِيفَةُ",
+        "activiteId": "animals-cat",
+        "moduleId": "preschool-animals",
+        "type": "echo",
+        "fichiersCibles": [
+          "animals-cat-echo.mp3"
+        ],
+        "start": 11.1504,
+        "end": 11.9079,
+        "cutStart": 11.1504,
+        "cutEnd": 11.9079,
+        "duration": 0.7576,
+        "sha256": "05c7d36de666d753f31735637c7b54354356ef52063488087a10e1f6f54b2c46",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 15,
+        "fichier": "calendar-days-card-sunday.mp3",
+        "texte": "الأَحَد",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-sunday.mp3"
+        ],
+        "start": 11.9079,
+        "end": 12.9029,
+        "cutStart": 11.9079,
+        "cutEnd": 12.9029,
+        "duration": 0.995,
+        "sha256": "324ad7ced8f64e7bdda1c2d3c11ffecc301df7f87a68f4549544be283931685c",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 16,
+        "fichier": "calendar-days-card-monday.mp3",
+        "texte": "الإِثْنَيْن",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-monday.mp3"
+        ],
+        "start": 12.9029,
+        "end": 13.893,
+        "cutStart": 12.9029,
+        "cutEnd": 13.893,
+        "duration": 0.99,
+        "sha256": "c72abc202677f217e3a98446b7795cf80bb41c95f41b6c3eb2985469558d8b9f",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 17,
+        "fichier": "calendar-days-card-tuesday.mp3",
+        "texte": "الثُّلَاثَاء",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-tuesday.mp3"
+        ],
+        "start": 13.893,
+        "end": 14.9916,
+        "cutStart": 13.893,
+        "cutEnd": 14.9916,
+        "duration": 1.0987,
+        "sha256": "ce8f1294031ea630d84971b60ead865740619a5025f728ea42bcd387d1efa59c",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 18,
+        "fichier": "calendar-days-card-wednesday.mp3",
+        "texte": "الأَرْبِعَاء",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-wednesday.mp3"
+        ],
+        "start": 14.9916,
+        "end": 16.0962,
+        "cutStart": 14.9916,
+        "cutEnd": 16.0962,
+        "duration": 1.1046,
+        "sha256": "5ec2159e597aff8043eacb83124c5429edeb3f4e16ca92b025b672f140f3075e",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 19,
+        "fichier": "calendar-days-card-thursday.mp3",
+        "texte": "الخَمِيس",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-thursday.mp3"
+        ],
+        "start": 16.0962,
+        "end": 17.1767,
+        "cutStart": 16.0962,
+        "cutEnd": 17.1767,
+        "duration": 1.0805,
+        "sha256": "b82db98bafb664d4a7fffa321bae18e945ee6d48c10e6a6a7177f3c05a79d97a",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 20,
+        "fichier": "calendar-days-card-friday.mp3",
+        "texte": "الجُمُعَة",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-friday.mp3"
+        ],
+        "start": 17.1767,
+        "end": 18.1196,
+        "cutStart": 17.1767,
+        "cutEnd": 18.1196,
+        "duration": 0.9429,
+        "sha256": "9a7e784ccd88f3f56d4ed98d5fa0ac41cf891d5d739900fb45df8af0166881c4",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 21,
+        "fichier": "calendar-days-card-saturday.mp3",
+        "texte": "السَّبْت",
+        "activite": "أَيَّامُ الأُسْبُوع",
+        "activiteId": "calendar-days",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-days-card-saturday.mp3"
+        ],
+        "start": 18.1196,
+        "end": 19.0918,
+        "cutStart": 18.1196,
+        "cutEnd": 19.0918,
+        "duration": 0.9722,
+        "sha256": "80d552a086fb0742f6a39a658291bf68756dbecd28c6a0ac0bcc8f16c6a24c46",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 22,
+        "fichier": "calendar-months-1-card-january.mp3",
+        "texte": "جَانْفِي",
+        "activite": "الشُّهُورُ ١",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-january.mp3"
+        ],
+        "start": 19.0918,
+        "end": 19.9735,
+        "cutStart": 19.0918,
+        "cutEnd": 19.9735,
+        "duration": 0.8818,
+        "sha256": "a872e92c527434baee1de548f7e125938a1b5af1152a36d32f61ec0b9346f024",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 23,
+        "fichier": "calendar-months-1-card-february.mp3",
+        "texte": "فِيفْرِي",
+        "activite": "الشُّهُورُ ١",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-february.mp3"
+        ],
+        "start": 19.9735,
+        "end": 20.6861,
+        "cutStart": 19.9735,
+        "cutEnd": 20.6861,
+        "duration": 0.7126,
+        "sha256": "befd18d8000a64a8575d4b95f4894f7b81b1de8488519dab4148263f5812fb75",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 24,
+        "fichier": "calendar-months-1-card-march.mp3",
+        "texte": "مَارْس",
+        "activite": "الشُّهُورُ ١",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-march.mp3"
+        ],
+        "start": 20.6861,
+        "end": 21.4884,
+        "cutStart": 20.6861,
+        "cutEnd": 21.4884,
+        "duration": 0.8023,
+        "sha256": "28cb5d44051eac7b981916f9c58500ad33b77ca30d658d9cb9983dde1700ce00",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 25,
+        "fichier": "calendar-months-1-card-april.mp3",
+        "texte": "أَفْرِيل",
+        "activite": "الشُّهُورُ ١",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-april.mp3"
+        ],
+        "start": 21.4884,
+        "end": 22.2792,
+        "cutStart": 21.4884,
+        "cutEnd": 22.2792,
+        "duration": 0.7908,
+        "sha256": "d05350c02f1b57d6312ec536717a8272e4f2fb517c70099299a05ae456f2c6c5",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 26,
+        "fichier": "calendar-months-1-card-may.mp3",
+        "texte": "مَاي",
+        "activite": "الشُّهُورُ ١",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-may.mp3"
+        ],
+        "start": 22.2792,
+        "end": 22.8217,
+        "cutStart": 22.2792,
+        "cutEnd": 22.8217,
+        "duration": 0.5425,
+        "sha256": "9838261f11853232c19c158e0dae335fd4d30ec0aae670372f46def3b9f59340",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 27,
+        "fichier": "calendar-months-1-card-june.mp3",
+        "texte": "جُوَان",
+        "activite": "الشُّهُورُ ١",
+        "activiteId": "calendar-months-1",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-1-card-june.mp3"
+        ],
+        "start": 22.8217,
+        "end": 23.4476,
+        "cutStart": 22.8217,
+        "cutEnd": 23.4476,
+        "duration": 0.6258,
+        "sha256": "fa39e3ad9df938021ce2bd428228937901dbde1c08a01af54c871550b3235e57",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 28,
+        "fichier": "calendar-months-2-card-july.mp3",
+        "texte": "جُوِيلِيَة",
+        "activite": "الشُّهُورُ ٢",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-july.mp3"
+        ],
+        "start": 23.4476,
+        "end": 24.2191,
+        "cutStart": 23.4476,
+        "cutEnd": 24.2191,
+        "duration": 0.7715,
+        "sha256": "dbf73e49d620bb55735b5b354584d9434bddf5ea31d4b9f603db1fac195a214e",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 29,
+        "fichier": "calendar-months-2-card-august.mp3",
+        "texte": "أُوت",
+        "activite": "الشُّهُورُ ٢",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-august.mp3"
+        ],
+        "start": 24.2191,
+        "end": 24.8285,
+        "cutStart": 24.2191,
+        "cutEnd": 24.8285,
+        "duration": 0.6095,
+        "sha256": "ca7da0e14ef42182f1dd95e8db7d134a5da27eff40288bf397ebca575ae4c044",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 30,
+        "fichier": "calendar-months-2-card-september.mp3",
+        "texte": "سِبْتَمْبِر",
+        "activite": "الشُّهُورُ ٢",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-september.mp3"
+        ],
+        "start": 24.8285,
+        "end": 25.7166,
+        "cutStart": 24.8285,
+        "cutEnd": 25.7166,
+        "duration": 0.8881,
+        "sha256": "9db2c3f5d075957a516818d90ab2517a758c383a2a0ac61f49a2457f82b49a11",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 31,
+        "fichier": "calendar-months-2-card-october.mp3",
+        "texte": "أُكْتُوبَر",
+        "activite": "الشُّهُورُ ٢",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-october.mp3"
+        ],
+        "start": 25.7166,
+        "end": 26.4965,
+        "cutStart": 25.7166,
+        "cutEnd": 26.4965,
+        "duration": 0.7799,
+        "sha256": "6b86177c77ad278d8695feed47c7aa767fbf58b6c5cc69623a520b9497fdd9fd",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 32,
+        "fichier": "calendar-months-2-card-november.mp3",
+        "texte": "نُوفَمْبِر",
+        "activite": "الشُّهُورُ ٢",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-november.mp3"
+        ],
+        "start": 26.4965,
+        "end": 27.3849,
+        "cutStart": 26.4965,
+        "cutEnd": 27.3849,
+        "duration": 0.8884,
+        "sha256": "bccf8cf78cecf297fb29817eaca098cd44fe006439876a2d9d5295c2ede9e4a6",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 33,
+        "fichier": "calendar-months-2-card-december.mp3",
+        "texte": "دِيسَمْبِر",
+        "activite": "الشُّهُورُ ٢",
+        "activiteId": "calendar-months-2",
+        "moduleId": "preschool-calendar",
+        "type": "card",
+        "fichiersCibles": [
+          "calendar-months-2-card-december.mp3"
+        ],
+        "start": 27.3849,
+        "end": 28.2423,
+        "cutStart": 27.3849,
+        "cutEnd": 28.2423,
+        "duration": 0.8574,
+        "sha256": "c0228c18a560e1bff332b4495ab79761683c802707830077a75b720d9ff58592",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 34,
+        "fichier": "family-mom-echo.mp3",
+        "texte": "أُمّ",
+        "activite": "أُمِّي",
+        "activiteId": "family-mom",
+        "moduleId": "preschool-family",
+        "type": "echo",
+        "fichiersCibles": [
+          "family-mom-echo.mp3"
+        ],
+        "start": 28.2423,
+        "end": 28.8926,
+        "cutStart": 28.2423,
+        "cutEnd": 28.8926,
+        "duration": 0.6503,
+        "sha256": "cd305ad3e024db2b857cf50d1c115d0059314413dd18c9cc81fafb16fb005867",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 35,
+        "fichier": "family-dad-echo.mp3",
+        "texte": "أَب",
+        "activite": "أَبِي",
+        "activiteId": "family-dad",
+        "moduleId": "preschool-family",
+        "type": "echo",
+        "fichiersCibles": [
+          "family-dad-echo.mp3"
+        ],
+        "start": 28.8926,
+        "end": 29.4898,
+        "cutStart": 28.8926,
+        "cutEnd": 29.4898,
+        "duration": 0.5972,
+        "sha256": "5fb2aa4ecb761d37698518e9adb60b2eee0a16d14865d36fb8c9542a201cea25",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 36,
+        "fichier": "family-elders-baby-card-grandpa.mp3",
+        "texte": "جَدِّي",
+        "activite": "مَنْ فِي العَائِلَة؟",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-grandpa.mp3"
+        ],
+        "start": 29.4898,
+        "end": 30.2607,
+        "cutStart": 29.4898,
+        "cutEnd": 30.2607,
+        "duration": 0.7709,
+        "sha256": "c9df367ccd1958e38159b1dcfd9fed8ba7b0ddcc2c56a29d8bae3d4e3102e131",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 37,
+        "fichier": "family-elders-baby-card-granny.mp3",
+        "texte": "جَدَّتِي",
+        "activite": "مَنْ فِي العَائِلَة؟",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-granny.mp3"
+        ],
+        "start": 30.2607,
+        "end": 31.1045,
+        "cutStart": 30.2607,
+        "cutEnd": 31.1045,
+        "duration": 0.8438,
+        "sha256": "01a954fcdb8c1e5508cc128c8fae9bebc826e77abe1273cc699b607e97b0b612",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 38,
+        "fichier": "family-elders-baby-card-baby.mp3",
+        "texte": "الرَّضِيع",
+        "activite": "مَنْ فِي العَائِلَة؟",
+        "activiteId": "family-elders-baby",
+        "moduleId": "preschool-family",
+        "type": "card",
+        "fichiersCibles": [
+          "family-elders-baby-card-baby.mp3"
+        ],
+        "start": 31.1045,
+        "end": 32.0638,
+        "cutStart": 31.1045,
+        "cutEnd": 32.0638,
+        "duration": 0.9594,
+        "sha256": "591f408b38c823d5422144faffd3744bf001f5c452642fe99824ce0a22c87330",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      },
+      {
+        "ordre": 39,
+        "fichier": "algeria-couscous-echo.mp3",
+        "texte": "كُسْكُس",
+        "activite": "الكُسْكُس",
+        "activiteId": "algeria-couscous",
+        "moduleId": "preschool-algeria",
+        "type": "echo",
+        "fichiersCibles": [
+          "algeria-couscous-echo.mp3"
+        ],
+        "start": 32.0638,
+        "end": 33.071,
+        "cutStart": 32.0638,
+        "cutEnd": 33.071,
+        "duration": 1.0072,
+        "sha256": "796b49c444944a50d9f27780a61453c157440b8957c2a6c96127b02eef5170fa",
+        "alignmentMethod": "ordered word list, ASR guide and reviewed acoustic pauses; consonant closures excluded"
+      }
+    ]
+  }
+}

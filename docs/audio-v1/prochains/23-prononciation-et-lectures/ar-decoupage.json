@@ -1,0 +1,137 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "reading-first-school-book.mp3",
+    "texte": "هَذَا كِتَابٌ.",
+    "activiteId": "first-school-book",
+    "moduleId": "arabic-1ap-t1-school-axis",
+    "grade": "1AP",
+    "type": "model"
+  },
+  {
+    "ordre": 2,
+    "fichier": "reading-first-school-pen.mp3",
+    "texte": "هَذَا قَلَمٌ.",
+    "activiteId": "first-school-pen",
+    "moduleId": "arabic-1ap-t1-school-axis",
+    "grade": "1AP",
+    "type": "model"
+  },
+  {
+    "ordre": 3,
+    "fichier": "reading-first-family-mom.mp3",
+    "texte": "هَذِهِ أُمٌّ.",
+    "activiteId": "first-family-mom",
+    "moduleId": "arabic-1ap-t1-family-axis",
+    "grade": "1AP",
+    "type": "model"
+  },
+  {
+    "ordre": 4,
+    "fichier": "reading-first-family-dad.mp3",
+    "texte": "هَذَا أَبٌ.",
+    "activiteId": "first-family-dad",
+    "moduleId": "arabic-1ap-t1-family-axis",
+    "grade": "1AP",
+    "type": "model"
+  },
+  {
+    "ordre": 5,
+    "fichier": "reading-school-1.mp3",
+    "texte": "ذَهَبَ سَامِي إِلَى المَدْرَسَةِ صَبَاحاً.",
+    "activiteId": "school-1",
+    "moduleId": "arabic-2ap-t1-reading-school",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 6,
+    "fichier": "reading-school-2.mp3",
+    "texte": "حَمَلَ مِحْفَظَتَهُ الزَّرْقَاءَ.",
+    "activiteId": "school-2",
+    "moduleId": "arabic-2ap-t1-reading-school",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 7,
+    "fichier": "reading-school-3.mp3",
+    "texte": "سَلَّمَ عَلَى المُعَلِّمَةِ وَجَلَسَ فِي القِسْمِ.",
+    "activiteId": "school-3",
+    "moduleId": "arabic-2ap-t1-reading-school",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 8,
+    "fichier": "reading-school-4.mp3",
+    "texte": "قَرَأَ دَرْسَ الحُرُوفِ ثُمَّ لَعِبَ فِي السَّاحَةِ مَعَ رِفَاقِهِ.",
+    "activiteId": "school-4",
+    "moduleId": "arabic-2ap-t1-reading-school",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 9,
+    "fichier": "reading-school-5.mp3",
+    "texte": "عَادَ إِلَى البَيْتِ فَرِحاً وَحَكَى لأُمِّهِ يَوْمَهُ.",
+    "activiteId": "school-5",
+    "moduleId": "arabic-2ap-t1-reading-school",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 10,
+    "fichier": "reading-hood-1.mp3",
+    "texte": "فِي حَيِّنَا حَدِيقَةٌ صَغِيرَةٌ وَنَظِيفَةٌ.",
+    "activiteId": "hood-1",
+    "moduleId": "arabic-2ap-t2-reading-neighborhood",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 11,
+    "fichier": "reading-hood-2.mp3",
+    "texte": "يَلْعَبُ الأَطْفَالُ بِالكُرَةِ تَحْتَ الأَشْجَارِ الكَبِيرَةِ.",
+    "activiteId": "hood-2",
+    "moduleId": "arabic-2ap-t2-reading-neighborhood",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 12,
+    "fichier": "reading-hood-3.mp3",
+    "texte": "تَجْلِسُ لَيْلَى مَعَ جَدَّتِهَا عَلَى مَقْعَدٍ خَشَبِيٍّ.",
+    "activiteId": "hood-3",
+    "moduleId": "arabic-2ap-t2-reading-neighborhood",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 13,
+    "fichier": "reading-hood-4.mp3",
+    "texte": "يَجْرِي أَخُوهَا عُمَرُ فِي المَمَرِّ بِسُرْعَةٍ.",
+    "activiteId": "hood-4",
+    "moduleId": "arabic-2ap-t2-reading-neighborhood",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 14,
+    "fichier": "reading-hood-5.mp3",
+    "texte": "يَشْرَبُونَ المَاءَ البَارِدَ بَعْدَ اللَّعِبِ الطَّوِيلِ.",
+    "activiteId": "hood-5",
+    "moduleId": "arabic-2ap-t2-reading-neighborhood",
+    "grade": "2AP",
+    "type": "model"
+  },
+  {
+    "ordre": 15,
+    "fichier": "reading-hood-6.mp3",
+    "texte": "يَقُولُ الأَبُ: نُحَافِظُ عَلَى النَّظَافَةِ وَلا نَرْمِي الأَوْرَاقَ. تَغْرُبُ الشَّمْسُ وَيَعُودُ الجَمِيعُ إِلَى البَيْتِ قَبْلَ المَغْرِبِ مَسْرُورِينَ.",
+    "activiteId": "hood-6",
+    "moduleId": "arabic-2ap-t2-reading-neighborhood",
+    "grade": "2AP",
+    "type": "model"
+  }
+]

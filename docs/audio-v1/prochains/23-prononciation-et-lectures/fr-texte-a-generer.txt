@@ -1,0 +1,31 @@
+chat.
+
+chapeau.
+
+chien.
+
+champ.
+
+roue.
+
+rue.
+
+poisson.
+
+poison.
+
+école.
+
+banane.
+
+papa.
+
+maman.
+
+Le chat est sur le tapis.
+
+Je vais à l’école.
+
+Je mange une banane.
+
+Bonjour ! Comment vas-tu ?

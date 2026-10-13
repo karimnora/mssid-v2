@@ -136,7 +136,7 @@ export const QuranMemorizePlayer: React.FC<{
       )}
       {echo.failed && echo.phase !== 'denied' && (
         <p className="text-xs font-bold text-center text-[#C42A23] bg-white rounded-2xl px-3 py-2">
-          تعذّر سماع صوتك. أعد التسجيل ثم اضغط «استمع لصوتك».
+          تعذّر تسجيل صوتك أو تشغيله. أعد المحاولة. يمكنك الاستماع للشيخ دون تسجيل.
         </p>
       )}
 

@@ -40,6 +40,8 @@ export function useVoiceEcho() {
   const urlRef = useRef<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const timerRef = useRef<number | null>(null);
+  const sessionRef = useRef(0);
+  const playbackRef = useRef(0);
   const [phase, setPhase] = useState<VoiceEchoPhase>(() => (voiceEchoSupported() ? 'idle' : 'unsupported'));
   const [failed, setFailed] = useState(false);
 
@@ -69,15 +71,36 @@ export function useVoiceEcho() {
     rec.stop();
   }, []);
 
+  const pausePlayback = useCallback(() => {
+    playbackRef.current++;
+    const audio = audioRef.current;
+    if (audio) {
+      audio.onended = null;
+      audio.onerror = null;
+      audio.pause();
+    }
+    if (urlRef.current) setPhase('ready');
+  }, []);
+
   const start = useCallback(async () => {
     if (!voiceEchoSupported()) {
       setPhase('unsupported');
       return;
     }
+    const session = ++sessionRef.current;
+    pausePlayback();
+    stop();
+    setFailed(false);
+    let openedStream: MediaStream | undefined;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
       });
+      openedStream = stream;
+      if (session !== sessionRef.current) {
+        stream.getTracks().forEach(track => track.stop());
+        return;
+      }
       chunksRef.current = [];
       clearUrl();
       setFailed(false);
@@ -85,10 +108,11 @@ export function useVoiceEcho() {
       const rec = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream);
       recorderRef.current = rec;
       rec.ondataavailable = (ev) => {
-        if (ev.data.size > 0) chunksRef.current.push(ev.data);
+        if (session === sessionRef.current && ev.data.size > 0) chunksRef.current.push(ev.data);
       };
       rec.onstop = () => {
         stream.getTracks().forEach((t) => t.stop());
+        if (session !== sessionRef.current) return;
         const type = rec.mimeType || mime || 'audio/webm';
         const blob = new Blob(chunksRef.current, { type });
         clearUrl();
@@ -104,10 +128,16 @@ export function useVoiceEcho() {
       setPhase('recording');
       stopTimer();
       timerRef.current = window.setTimeout(() => stop(), MAX_MS);
-    } catch {
-      setPhase('denied');
+    } catch (error) {
+      openedStream?.getTracks().forEach(track => track.stop());
+      if (session === sessionRef.current) {
+        const permissionDenied = typeof error === 'object' && error !== null && 'name' in error
+          && (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError');
+        setPhase(permissionDenied ? 'denied' : 'idle');
+        setFailed(!permissionDenied);
+      }
     }
-  }, [stop]);
+  }, [stop, pausePlayback]);
 
   const play = useCallback(() => {
     if (!urlRef.current) return;
@@ -118,28 +148,34 @@ export function useVoiceEcho() {
     audio.volume = 1;
     audio.muted = false;
     audio.src = urlRef.current;
+    const playback = ++playbackRef.current;
     setFailed(false);
     setPhase('playing');
-    audio.onended = () => setPhase('ready');
+    audio.onended = () => { if (playback === playbackRef.current) setPhase('ready'); };
     audio.onerror = () => {
+      if (playback !== playbackRef.current) return;
       setFailed(true);
       setPhase('ready');
     };
     void audio.play().catch(() => {
+      if (playback !== playbackRef.current) return;
       setFailed(true);
       setPhase('ready');
     });
   }, []);
 
   const reset = useCallback(() => {
+    sessionRef.current++;
     stop();
-    audioRef.current?.pause();
+    pausePlayback();
     clearUrl();
     setFailed(false);
     setPhase(voiceEchoSupported() ? 'idle' : 'unsupported');
-  }, [stop]);
+  }, [stop, pausePlayback]);
 
   useEffect(() => () => {
+    sessionRef.current++;
+    playbackRef.current++;
     stop();
     const audio = audioRef.current;
     if (audio) {
@@ -151,5 +187,5 @@ export function useVoiceEcho() {
     clearUrl();
   }, [stop]);
 
-  return { phase, failed, start, stop, play, reset };
+  return { phase, failed, start, stop, play, reset, pausePlayback };
 }

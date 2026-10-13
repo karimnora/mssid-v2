@@ -1,0 +1,58 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "language-next-ar-1.mp3",
+    "texte": "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.",
+    "moduleId": "arabic-1ap-t1-school-axis",
+    "activiteId": "language-next-ar-1",
+    "type": "model"
+  },
+  {
+    "ordre": 2,
+    "fichier": "language-next-ar-2.mp3",
+    "texte": "سَمِّ أَفْرَادَ عَائِلَتِي: أَبِي، أُمِّي، أَخِي.",
+    "moduleId": "arabic-1ap-t1-family-axis",
+    "activiteId": "language-next-ar-2",
+    "type": "model"
+  },
+  {
+    "ordre": 3,
+    "fichier": "language-next-ar-3.mp3",
+    "texte": "سَمِّ الأَشْيَاءَ فِي الحَيِّ: بَيْتٌ، شَارِعٌ، جَارٌ.",
+    "moduleId": "arabic-1ap-t2-neighborhood-home",
+    "activiteId": "language-next-ar-3",
+    "type": "model"
+  },
+  {
+    "ordre": 4,
+    "fichier": "language-next-ar-4.mp3",
+    "texte": "تَعَلَّمْ كَلِمَاتِ الصِّحَّةِ وَالرِّيَاضَةِ.",
+    "moduleId": "arabic-1ap-t2-health-sports",
+    "activiteId": "language-next-ar-4",
+    "type": "model"
+  },
+  {
+    "ordre": 5,
+    "fichier": "language-next-ar-5.mp3",
+    "texte": "سَمِّ أَشْيَاءَ الطَّبِيعَةِ: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ.",
+    "moduleId": "arabic-1ap-t2-nature-axis",
+    "activiteId": "language-next-ar-5",
+    "type": "model"
+  },
+  {
+    "ordre": 6,
+    "fichier": "language-next-ar-6.mp3",
+    "texte": "تَعَلَّمْ كَلِمَاتِ اللَّعِبِ وَالتَّسْلِيَةِ.",
+    "moduleId": "arabic-1ap-t3-play-entertainment",
+    "activiteId": "language-next-ar-6",
+    "type": "model"
+  },
+  {
+    "ordre": 7,
+    "fichier": "language-next-ar-7.mp3",
+    "texte": "تَعَلَّمْ كَلِمَاتِ العِيدِ وَالطُّفُولَةِ.",
+    "moduleId": "arabic-1ap-t3-childhood-holidays",
+    "activiteId": "language-next-ar-7",
+    "type": "model"
+  }
+]

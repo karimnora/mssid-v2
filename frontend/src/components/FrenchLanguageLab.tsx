@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { speakText } from '../utils/speech';
 import { VoiceEchoBar } from './VoiceEchoBar';
+import { PronunciationPractice } from './PronunciationPractice';
 import { PrimaryGrade } from '../types';
 import { allowedFrenchTenses, FrenchTense } from '../utils/labGradePolicy';
 import {
@@ -310,13 +311,13 @@ const FRENCH_VERBS_DATABASE: FrenchVerbData[] = [
 ];
 
 interface FrenchLabProps {
-  initialTab?: 'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production';
+  initialTab?: 'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production' | 'pronunciation';
   grade?: PrimaryGrade;
 }
 
 export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conjugator', grade = '3AP' }) => {
   const permittedTenses = allowedFrenchTenses(grade);
-  const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production'>(initialTab);
+  const [activeTab, setActiveTab] = useState<'conjugator' | 'vocab' | 'dialogue' | 'grammar_fix' | 'production' | 'pronunciation'>(initialTab);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
   const [echoPhrase, setEchoPhrase] = useState<string>(FRENCH_VERBS_DATABASE[0].verb);
 
@@ -412,6 +413,9 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
 
       {/* Navigation Tabs */}
       <div className="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
+        <button type="button" onClick={() => setActiveTab('pronunciation')} aria-pressed={activeTab === 'pronunciation'} className={`min-h-12 px-4 py-2.5 rounded-2xl text-xs font-black border ${activeTab === 'pronunciation' ? 'bg-emerald-600 text-white border-emerald-500' : 'bg-slate-800 text-slate-300 border-slate-700'}`}>
+          Écoute et répète
+        </button>
         <button
           onClick={() => setActiveTab('conjugator')}
           className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-2 border ${
@@ -462,6 +466,7 @@ export const FrenchLanguageLab: React.FC<FrenchLabProps> = ({ initialTab = 'conj
       </div>
 
       {/* TAB 1: INTERACTIVE CONJUGATOR ENGINE */}
+      {activeTab === 'pronunciation' && <PronunciationPractice language="fr" />}
       {activeTab === 'conjugator' && (
         <div className="space-y-6">
           {/* Verb Selection & Search Bar */}

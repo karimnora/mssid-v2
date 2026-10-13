@@ -15,6 +15,12 @@ const story = {
 };
 
 describe('ArabicReadingStoryPanel', () => {
+  it('keeps vocalized audio text when the display hides vowel marks', () => {
+    const onSpeak = vi.fn();
+    render(<ArabicReadingStoryPanel story={story} renderArabicText={text => (text ?? '').replace(/[\u064B-\u065F]/g, '')} onSpeak={onSpeak} />);
+    fireEvent.click(document.querySelector('[data-tap-speak="scene-s1"]')!);
+    expect(onSpeak).toHaveBeenCalledWith('scene-s1', story.scenes[0].textAr);
+  });
   it('shows character roster and scene cards with speakers', () => {
     const onSpeak = vi.fn();
     render(

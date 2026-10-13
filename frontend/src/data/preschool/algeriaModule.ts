@@ -1,11 +1,12 @@
-import { PreschoolModule } from './types';
+import { PreschoolModule, PreschoolActivity } from './types';
+import { ALGERIA_AUDIO_CLIPS } from './algeriaAudio';
 
 /**
  * "وَطَنِي الجَزَائِر" — Mon Algérie (Éducation Civique 0AP).
  * Concrete places and objects (flag, mosque, couscous, fennec) — never "touch the symbol".
  * No comparative religion (no cross vs crescent). One memory of 3 pairs only.
  */
-export const ALGERIA_MODULE: PreschoolModule = {
+const ALGERIA_CATALOG: PreschoolModule = {
   id: 'preschool-algeria',
   domain: 'values',
   icon: '🇩🇿',
@@ -311,4 +312,22 @@ export const ALGERIA_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const ALGERIA_MODULE: PreschoolModule = {
+  ...ALGERIA_CATALOG,
+  activities: ALGERIA_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = ALGERIA_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

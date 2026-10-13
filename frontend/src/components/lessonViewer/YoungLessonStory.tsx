@@ -5,6 +5,7 @@ import { CourseLesson } from '../../types';
 import { stripArabicTashkeel } from '../../utils/textFormatter';
 import { parsePlayfulSnippet, splitPlayfulLines, stripLatinGlosses } from './youngLessonLayout';
 import { TapSpeakButton } from './TapSpeakButton';
+import { ArabicReadingStoryPanel } from './ArabicReadingStoryPanel';
 
 interface YoungLessonStoryProps {
   lesson: CourseLesson;
@@ -44,6 +45,9 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
 
   return (
     <div className="space-y-6" dir="rtl" data-lesson-story="1ap">
+      {lesson.readingStory && (
+        <ArabicReadingStoryPanel story={lesson.readingStory} renderArabicText={text => show(text ?? '')} speakingKey={speakingKey} onSpeak={onSpeak} />
+      )}
       {discoveryLines.map((line, i) => {
         const snippet = parsePlayfulSnippet(line, i, themeEmoji);
         const key = `discovery-${i}`;

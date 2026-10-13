@@ -1,0 +1,31 @@
+ship.
+
+sheep.
+
+thin.
+
+tin.
+
+three.
+
+tree.
+
+cat.
+
+cap.
+
+pen.
+
+pan.
+
+book.
+
+school.
+
+The cat is on the mat.
+
+I go to school.
+
+This is my book.
+
+Hello! How are you?

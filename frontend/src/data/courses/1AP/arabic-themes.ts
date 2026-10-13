@@ -1,9 +1,10 @@
 import { CourseLesson } from '../../../types';
+import { FIRST_READINGS } from '../../primaryShortReadings';
 
 const SOURCE_NOTE =
   'محتوى بيداغوجي أصلي أعدّته مَسِيد DZ لسنة أولى: المحاور الثمانية للمنهاج (المدرسة، العائلة، الحي، الصحة، التسلية، الطبيعة، الطفولة، الأعياد) — مفردات مشكولة وجمل قصيرة.';
 
-export const ARABIC_1AP_THEMES: CourseLesson[] = [
+const ARABIC_1AP_THEMES_BASE: CourseLesson[] = [
   {
     id: 'arabic-1ap-t1-school-axis',
     grade: '1AP',
@@ -13,7 +14,7 @@ export const ARABIC_1AP_THEMES: CourseLesson[] = [
     sequenceAr: 'المحور 1: المدرسة',
     officialAxisAr: 'المحور 1: المدرسة',
     curriculumAlignment: { program: 'algeria_gen2', axisId: 'axis-school', axisNumber: 1, trimester: 1 },
-    instructionAudioAr: 'اسْمِ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.',
+    instructionAudioAr: 'سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.',
     categoryAr: 'اللغة العربية - المحاور',
     titleAr: 'مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ 🏫📚',
     summaryAr: 'يتعرّف الطفل على كلمات المدرسة: معلم، قسم، كتاب، قلم، ساحة — بجمل قصيرة مشكولة.',
@@ -108,7 +109,7 @@ export const ARABIC_1AP_THEMES: CourseLesson[] = [
     sequenceAr: 'المحور 2: العائلة',
     officialAxisAr: 'المحور 2: العائلة',
     curriculumAlignment: { program: 'algeria_gen2', axisId: 'axis-family', axisNumber: 2, trimester: 1 },
-    instructionAudioAr: 'اسْمِ أَفْرَادَ عَائِلَتِي: أَبِي، أُمِّي، أَخِي.',
+    instructionAudioAr: 'سَمِّ أَفْرَادَ عَائِلَتِي: أَبِي، أُمِّي، أَخِي.',
     categoryAr: 'اللغة العربية - المحاور',
     titleAr: 'عَائِلَتِي: أَبِي، أُمِّي، أَخِي 👨‍👩‍👧‍👦',
     summaryAr: 'يتعرّف الطفل على كلمات العائلة: أب، أم، أخ، أخت، جد، جدة — بجمل قصيرة مشكولة.',
@@ -202,7 +203,7 @@ export const ARABIC_1AP_THEMES: CourseLesson[] = [
     sequenceAr: 'المحور 3: الحي والمنزل',
     officialAxisAr: 'المحور 3: الحي والمنزل',
     curriculumAlignment: { program: 'algeria_gen2', axisId: 'axis-neighborhood-home', axisNumber: 3, trimester: 2 },
-    instructionAudioAr: 'اسْمِ الأَشْيَاءَ فِي الحَيِّ: بَيْتٌ، شَارِعٌ، جَارٌ.',
+    instructionAudioAr: 'سَمِّ الأَشْيَاءَ فِي الحَيِّ: بَيْتٌ، شَارِعٌ، جَارٌ.',
     categoryAr: 'اللغة العربية - المحاور',
     titleAr: 'حَيِّي وَبَيْتِي: بَيْتٌ، شَارِعٌ، جَارٌ 🏘️',
     summaryAr: 'يتعرّف الطفل على كلمات الحي والمنزل: بيت، شارع، جار، حديقة، سوق — بجمل قصيرة مشكولة.',
@@ -391,7 +392,7 @@ export const ARABIC_1AP_THEMES: CourseLesson[] = [
     sequenceAr: 'المحور 6: الطبيعة',
     officialAxisAr: 'المحور 6: الطبيعة',
     curriculumAlignment: { program: 'algeria_gen2', axisId: 'axis-nature', axisNumber: 6, trimester: 2 },
-    instructionAudioAr: 'اسْمِ أَشْيَاءَ الطَّبِيعَةِ: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ.',
+    instructionAudioAr: 'سَمِّ أَشْيَاءَ الطَّبِيعَةِ: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ.',
     categoryAr: 'اللغة العربية - المحاور',
     titleAr: 'الطَّبِيعَةُ مِنْ حَوْلِي: شَجَرَةٌ، وَرْدَةٌ، سَمَاءٌ 🌳🌸',
     summaryAr: 'يتعرّف الطفل على كلمات الطبيعة: شجرة، وردة، سماء، شمس، ماء — بجمل قصيرة مشكولة.',
@@ -666,3 +667,8 @@ export const ARABIC_1AP_THEMES: CourseLesson[] = [
     sourceNoteAr: SOURCE_NOTE,
   },
 ];
+
+export const ARABIC_1AP_THEMES: CourseLesson[] = ARABIC_1AP_THEMES_BASE.map(lesson => ({
+  ...lesson,
+  ...(FIRST_READINGS[lesson.id] ? { readingStory: FIRST_READINGS[lesson.id] } : {}),
+}));

@@ -1,0 +1,423 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "letters-alif-rabbit-echo.mp3",
+    "texte": "Ananas",
+    "activite": "La Pêche à la Lettre A",
+    "activiteId": "letters-alif-rabbit",
+    "moduleId": "preschool-letters",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-alif-rabbit-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 2,
+    "fichier": "letters-meem-banana-echo.mp3",
+    "texte": "Maison",
+    "activite": "La Pêche à la Lettre M",
+    "activiteId": "letters-meem-banana",
+    "moduleId": "preschool-letters",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-meem-banana-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 3,
+    "fichier": "letters-haa-milk-echo.mp3",
+    "texte": "Hibou",
+    "activite": "La Pêche à la Lettre H",
+    "activiteId": "letters-haa-milk",
+    "moduleId": "preschool-letters-2",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-haa-milk-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 4,
+    "fichier": "letters-khaa-bread-echo.mp3",
+    "texte": "Xylophone",
+    "activite": "La Pêche à la Lettre X",
+    "activiteId": "letters-khaa-bread",
+    "moduleId": "preschool-letters-2",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-khaa-bread-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 5,
+    "fichier": "letters-thal-wolf-echo.mp3",
+    "texte": "Yo-yo",
+    "activite": "La Pêche à la Lettre Y",
+    "activiteId": "letters-thal-wolf",
+    "moduleId": "preschool-letters-2",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-thal-wolf-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 6,
+    "fichier": "letters-raa-feather-echo.mp3",
+    "texte": "Robe",
+    "activite": "La Pêche à la Lettre R",
+    "activiteId": "letters-raa-feather",
+    "moduleId": "preschool-letters-2",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-raa-feather-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 7,
+    "fichier": "letters-noon-bee-echo.mp3",
+    "texte": "Nuage",
+    "activite": "La Pêche à la Lettre N",
+    "activiteId": "letters-noon-bee",
+    "moduleId": "preschool-letters-2",
+    "type": "echo",
+    "fichiersCibles": [
+      "letters-noon-bee-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 8,
+    "fichier": "letters-listen-faa-card-fennec.mp3",
+    "texte": "fennec",
+    "activite": "F comme Fennec",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card",
+    "fichiersCibles": [
+      "letters-listen-faa-card-fennec.mp3",
+      "algeria-fennec-tap-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 10,
+    "fichier": "letters-listen-faa-card-book.mp3",
+    "texte": "livre",
+    "activite": "F comme Fennec",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card",
+    "fichiersCibles": [
+      "letters-listen-faa-card-book.mp3"
+    ]
+  },
+  {
+    "ordre": 11,
+    "fichier": "letters-listen-faa-card-cake.mp3",
+    "texte": "gâteau",
+    "activite": "F comme Fennec",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card",
+    "fichiersCibles": [
+      "letters-listen-faa-card-cake.mp3"
+    ]
+  },
+  {
+    "ordre": 12,
+    "fichier": "letters-listen-faa-card-moon.mp3",
+    "texte": "lune",
+    "activite": "F comme Fennec",
+    "activiteId": "letters-listen-faa",
+    "moduleId": "preschool-letters-2",
+    "type": "card",
+    "fichiersCibles": [
+      "letters-listen-faa-card-moon.mp3"
+    ]
+  },
+  {
+    "ordre": 13,
+    "fichier": "animals-cow-echo.mp3",
+    "texte": "vache",
+    "activite": "La Vache Gentille",
+    "activiteId": "animals-cow",
+    "moduleId": "preschool-animals",
+    "type": "echo",
+    "fichiersCibles": [
+      "animals-cow-echo.mp3"
+    ]
+  },
+  {
+    "ordre": 15,
+    "fichier": "calendar-days-card-sunday.mp3",
+    "texte": "Dimanche",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-sunday.mp3"
+    ]
+  },
+  {
+    "ordre": 16,
+    "fichier": "calendar-days-card-monday.mp3",
+    "texte": "Lundi",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-monday.mp3"
+    ]
+  },
+  {
+    "ordre": 17,
+    "fichier": "calendar-days-card-tuesday.mp3",
+    "texte": "Mardi",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-tuesday.mp3"
+    ]
+  },
+  {
+    "ordre": 18,
+    "fichier": "calendar-days-card-wednesday.mp3",
+    "texte": "Mercredi",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-wednesday.mp3"
+    ]
+  },
+  {
+    "ordre": 19,
+    "fichier": "calendar-days-card-thursday.mp3",
+    "texte": "Jeudi",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-thursday.mp3"
+    ]
+  },
+  {
+    "ordre": 20,
+    "fichier": "calendar-days-card-friday.mp3",
+    "texte": "Vendredi",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-friday.mp3"
+    ]
+  },
+  {
+    "ordre": 21,
+    "fichier": "calendar-days-card-saturday.mp3",
+    "texte": "Samedi",
+    "activite": "Les jours de la semaine",
+    "activiteId": "calendar-days",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-days-card-saturday.mp3"
+    ]
+  },
+  {
+    "ordre": 22,
+    "fichier": "calendar-months-1-card-january.mp3",
+    "texte": "Janvier",
+    "activite": "Les mois 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-1-card-january.mp3"
+    ]
+  },
+  {
+    "ordre": 23,
+    "fichier": "calendar-months-1-card-february.mp3",
+    "texte": "Février",
+    "activite": "Les mois 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-1-card-february.mp3"
+    ]
+  },
+  {
+    "ordre": 24,
+    "fichier": "calendar-months-1-card-march.mp3",
+    "texte": "Mars",
+    "activite": "Les mois 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-1-card-march.mp3"
+    ]
+  },
+  {
+    "ordre": 25,
+    "fichier": "calendar-months-1-card-april.mp3",
+    "texte": "Avril",
+    "activite": "Les mois 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-1-card-april.mp3"
+    ]
+  },
+  {
+    "ordre": 26,
+    "fichier": "calendar-months-1-card-may.mp3",
+    "texte": "Mai",
+    "activite": "Les mois 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-1-card-may.mp3"
+    ]
+  },
+  {
+    "ordre": 27,
+    "fichier": "calendar-months-1-card-june.mp3",
+    "texte": "Juin",
+    "activite": "Les mois 1",
+    "activiteId": "calendar-months-1",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-1-card-june.mp3"
+    ]
+  },
+  {
+    "ordre": 28,
+    "fichier": "calendar-months-2-card-july.mp3",
+    "texte": "Juillet",
+    "activite": "Les mois 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-2-card-july.mp3"
+    ]
+  },
+  {
+    "ordre": 29,
+    "fichier": "calendar-months-2-card-august.mp3",
+    "texte": "Août",
+    "activite": "Les mois 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-2-card-august.mp3"
+    ]
+  },
+  {
+    "ordre": 30,
+    "fichier": "calendar-months-2-card-september.mp3",
+    "texte": "Septembre",
+    "activite": "Les mois 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-2-card-september.mp3"
+    ]
+  },
+  {
+    "ordre": 31,
+    "fichier": "calendar-months-2-card-october.mp3",
+    "texte": "Octobre",
+    "activite": "Les mois 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-2-card-october.mp3"
+    ]
+  },
+  {
+    "ordre": 32,
+    "fichier": "calendar-months-2-card-november.mp3",
+    "texte": "Novembre",
+    "activite": "Les mois 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-2-card-november.mp3"
+    ]
+  },
+  {
+    "ordre": 33,
+    "fichier": "calendar-months-2-card-december.mp3",
+    "texte": "Décembre",
+    "activite": "Les mois 2",
+    "activiteId": "calendar-months-2",
+    "moduleId": "preschool-calendar",
+    "type": "card",
+    "fichiersCibles": [
+      "calendar-months-2-card-december.mp3"
+    ]
+  },
+  {
+    "ordre": 36,
+    "fichier": "family-elders-baby-card-grandpa.mp3",
+    "texte": "Papi",
+    "activite": "Qui Est Dans La Famille ?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "card",
+    "fichiersCibles": [
+      "family-elders-baby-card-grandpa.mp3"
+    ]
+  },
+  {
+    "ordre": 37,
+    "fichier": "family-elders-baby-card-granny.mp3",
+    "texte": "Mamie",
+    "activite": "Qui Est Dans La Famille ?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "card",
+    "fichiersCibles": [
+      "family-elders-baby-card-granny.mp3"
+    ]
+  },
+  {
+    "ordre": 38,
+    "fichier": "family-elders-baby-card-baby.mp3",
+    "texte": "Le Bébé",
+    "activite": "Qui Est Dans La Famille ?",
+    "activiteId": "family-elders-baby",
+    "moduleId": "preschool-family",
+    "type": "card",
+    "fichiersCibles": [
+      "family-elders-baby-card-baby.mp3"
+    ]
+  },
+  {
+    "ordre": 39,
+    "fichier": "algeria-couscous-echo.mp3",
+    "texte": "couscous",
+    "activite": "Le Couscous",
+    "activiteId": "algeria-couscous",
+    "moduleId": "preschool-algeria",
+    "type": "echo",
+    "fichiersCibles": [
+      "algeria-couscous-echo.mp3"
+    ]
+  }
+]

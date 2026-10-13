@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Button } from './ui';
-import { speakText } from '../utils/speech';
+import { speakText, stopSpeech } from '../utils/speech';
 import { VoiceEchoBar } from './VoiceEchoBar';
 import {
   ArrowLeft,
   Volume2,
   Trophy,
   Play,
+  Square,
   Headphones,
 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
@@ -122,38 +123,62 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
   onBack,
 }) => {
   const [selectedDialogueId, setSelectedDialogueId] = useState<string>(OFFICIAL_ENGLISH_DIALOGUES[0].id);
-  const [playbackSpeed, setPlaybackSpeed] = useState<number>(0.9);
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
+  const [playingAll, setPlayingAll] = useState(false);
+  const playbackEpoch = useRef(0);
   const [activePlayingIndex, setActivePlayingIndex] = useState<number | null>(null);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
   const [echoLine, setEchoLine] = useState<string>(OFFICIAL_ENGLISH_DIALOGUES[0].dialogue[0]?.textEn ?? '');
 
   const currentDialogue = OFFICIAL_ENGLISH_DIALOGUES.find((d) => d.id === selectedDialogueId) || OFFICIAL_ENGLISH_DIALOGUES[0];
 
+  const stopPlayback = useCallback(() => {
+    playbackEpoch.current++;
+    stopSpeech();
+    setActivePlayingIndex(null);
+    setPlayingAll(false);
+  }, []);
+
   // Routes through the shared speakText helper so this lab gets the same reliable native
   // Android TTS (via Capacitor) as every other lab — calling window.speechSynthesis directly here
   // used to silently fail in the Android app, since the WebView's own speech engine commonly reports
   // zero installed voices (unlike a real Chrome install), unlike the native TTS plugin.
   useEffect(() => {
+    stopPlayback();
     setEchoLine(currentDialogue.dialogue[0]?.textEn ?? '');
-  }, [currentDialogue.id]);
+    return () => { playbackEpoch.current++; stopSpeech(); };
+  }, [currentDialogue.id, playbackSpeed, stopPlayback]);
 
-  const speakLine = (text: string, index?: number) => {
+  const speakLine = async (text: string, index?: number) => {
+    stopPlayback();
+    const run = playbackEpoch.current;
     if (typeof index === 'number') setActivePlayingIndex(index);
     setEchoLine(text);
-    speakText(text, 'en-US', playbackSpeed).then(() => {
-      setActivePlayingIndex(null);
-    });
+    try {
+      await speakText(text, 'en-US', playbackSpeed, 1, { recordedRate: playbackSpeed });
+    } catch {
+      if (run === playbackEpoch.current) stopPlayback();
+    } finally {
+      if (run === playbackEpoch.current) setActivePlayingIndex(null);
+    }
   };
 
-  const playEntireDialogue = () => {
-    let delay = 0;
-    currentDialogue.dialogue.forEach((line, idx) => {
-      setTimeout(() => {
-        speakLine(line.textEn, idx);
-      }, delay);
-      // Rough estimate for delay
-      delay += line.textEn.length * 90 + 800;
-    });
+  const playEntireDialogue = async () => {
+    stopPlayback();
+    const run = playbackEpoch.current;
+    setPlayingAll(true);
+    try {
+      for (const [index, line] of currentDialogue.dialogue.entries()) {
+        if (run !== playbackEpoch.current) return;
+        setActivePlayingIndex(index);
+        setEchoLine(line.textEn);
+        await speakText(line.textEn, 'en-US', playbackSpeed, 1, { recordedRate: playbackSpeed });
+      }
+    } catch {
+      if (run === playbackEpoch.current) stopPlayback();
+    } finally {
+      if (run === playbackEpoch.current) { setActivePlayingIndex(null); setPlayingAll(false); }
+    }
   };
 
   const handleQuizAnswer = (qIndex: number, optId: string, isCorrect: boolean) => {
@@ -170,7 +195,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              onClick={() => { stopPlayback(); onBack(); }}
               aria-label="Back"
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
@@ -200,6 +225,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
             <button
               key={d.id}
               onClick={() => {
+                stopPlayback();
                 setSelectedDialogueId(d.id);
                 setQuizAnswers({});
               }}
@@ -228,8 +254,8 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
         {/* Controls bar */}
         <div className="flex items-center justify-between flex-wrap gap-3 border-b border-[var(--app-card-border)] pb-4">
           <div className="flex items-center gap-2">
-            <Button variant="primary" size="sm" onClick={playEntireDialogue} icon={<Play className="w-4 h-4" />}>
-              Play Full Dialogue 🎧
+            <Button variant="primary" size="sm" onClick={() => { if (playingAll) stopPlayback(); else void playEntireDialogue(); }} icon={playingAll ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}>
+              {playingAll ? 'Stop Dialogue' : 'Play Full Dialogue 🎧'}
             </Button>
           </div>
 
@@ -237,7 +263,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-[var(--app-text-muted)]">Speed:</span>
             <button
-              onClick={() => setPlaybackSpeed(0.7)}
+              onClick={() => { stopPlayback(); setPlaybackSpeed(0.7); }}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
                 playbackSpeed === 0.7 ? 'bg-indigo-600 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
               }`}
@@ -245,9 +271,9 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
               0.7x (Slow)
             </button>
             <button
-              onClick={() => setPlaybackSpeed(0.9)}
+              onClick={() => { stopPlayback(); setPlaybackSpeed(1); }}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
-                playbackSpeed === 0.9 ? 'bg-indigo-600 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
+                playbackSpeed === 1 ? 'bg-indigo-600 text-white' : 'bg-[var(--app-card-subtle)] text-[var(--app-text)]'
               }`}
             >
               1.0x (Normal)
@@ -289,7 +315,7 @@ export const EnglishAudioDialoguesLab: React.FC<EnglishAudioDialoguesLabProps> =
           })}
         </div>
 
-        <VoiceEchoBar modelText={echoLine} language="en" />
+        <VoiceEchoBar modelText={echoLine} language="en" onBeforeAction={stopPlayback} />
 
         {/* Listening Comprehension Quiz */}
         <div className="p-5 rounded-2xl bg-indigo-500/10 border border-indigo-400/30 space-y-4">

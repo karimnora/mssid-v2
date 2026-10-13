@@ -1,0 +1,518 @@
+{
+  "ar": {
+    "source": "ElevenLabs_2026-10-13T20_39_50_Asmaa - Calm, Encouraging and Clear_pvc_sp107_s61_sb43_v4.mp3",
+    "sourceSha256": "f39b24c2e7f55973151f68748dd45dbc6fa7e7b2851165f11456f15aee9e0744",
+    "clips": [
+      {
+        "ordre": 1,
+        "fichier": "surah-fatiha-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ الفَاتِحَةِ، ثُمَّ كَرِّرْ مَعَ الشَّيْخِ!",
+        "activite": "سُورَةُ الفَاتِحَةِ",
+        "activiteId": "surah-fatiha",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-fatiha-prompt.mp3"
+        ],
+        "start": 0.06,
+        "end": 3.72,
+        "recognized": "اسم عصورة الفاتها ثم كرر مع الشيخ",
+        "coverage": 1.0,
+        "cutStart": 0.0,
+        "cutEnd": 3.6469,
+        "duration": 3.6469,
+        "sha256": "a3bf91f1a7a647a97f82a4be2f022d09c870395d4912616eea0487fec06457fd"
+      },
+      {
+        "ordre": 3,
+        "fichier": "surah-ikhlas-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ الإِخْلَاصِ. اللَّهُ وَاحِدٌ!",
+        "activite": "سُورَةُ الإِخْلَاصِ",
+        "activiteId": "surah-ikhlas",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-ikhlas-prompt.mp3"
+        ],
+        "start": 3.72,
+        "end": 7.64,
+        "recognized": "اسم عصورة الإخلاص الله واحد",
+        "coverage": 1.0,
+        "cutStart": 3.6469,
+        "cutEnd": 7.5868,
+        "duration": 3.9399,
+        "sha256": "0b8ae3effe0aea6e8d073b8f4da4ec4fb0bf81d33f1b15aebc1bf51e431a9abe"
+      },
+      {
+        "ordre": 5,
+        "fichier": "surah-falaq-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ الفَلَقِ. نَطْلُبُ حِمَايَةَ اللَّهِ.",
+        "activite": "سُورَةُ الفَلَقِ",
+        "activiteId": "surah-falaq",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-falaq-prompt.mp3"
+        ],
+        "start": 7.64,
+        "end": 11.64,
+        "recognized": "اسم عصورة الفلق نطلب حماية الله",
+        "coverage": 1.0,
+        "cutStart": 7.5868,
+        "cutEnd": 11.611,
+        "duration": 4.0242,
+        "sha256": "3c179db5aa595739b2bf5b592f2c9190e936527626879a44cb4082bb58fa18e9"
+      },
+      {
+        "ordre": 7,
+        "fichier": "surah-nas-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ النَّاسِ. رَبُّ النَّاسِ يَحْمِينَا.",
+        "activite": "سُورَةُ النَّاسِ",
+        "activiteId": "surah-nas",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-nas-prompt.mp3"
+        ],
+        "start": 11.64,
+        "end": 15.72,
+        "recognized": "اسم عصورة الناس رب الناس يحمينا",
+        "coverage": 1.0,
+        "cutStart": 11.611,
+        "cutEnd": 15.6343,
+        "duration": 4.0233,
+        "sha256": "22de63bb5e228715ce1c0dc6c283698a33ae4cebbd3b87ed204ba948dbc513ca"
+      },
+      {
+        "ordre": 9,
+        "fichier": "surah-kawthar-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ الكَوْثَرِ. نِعَمُ اللَّهِ كَثِيرَةٌ!",
+        "activite": "سُورَةُ الكَوْثَرِ",
+        "activiteId": "surah-kawthar",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-kawthar-prompt.mp3"
+        ],
+        "start": 15.72,
+        "end": 19.64,
+        "recognized": "اسم عصورة الكوثر نعم الله كثيرة",
+        "coverage": 1.0,
+        "cutStart": 15.6343,
+        "cutEnd": 19.5722,
+        "duration": 3.9379,
+        "sha256": "b4497ed605706c02d27464a7e90d0658fd4c7ec5af7c97b4666d1f33ce924788"
+      },
+      {
+        "ordre": 11,
+        "fichier": "surah-nasr-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ النَّصْرِ مَعَ دِيدُو. نُكَرِّرُ آيَةً آيَةً!",
+        "activite": "سُورَةُ النَّصْرِ",
+        "activiteId": "surah-nasr",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-nasr-prompt.mp3"
+        ],
+        "start": 19.64,
+        "end": 24.6,
+        "recognized": "اسم عصورة النصر معديد نكرر آية آية",
+        "coverage": 0.875,
+        "cutStart": 19.5722,
+        "cutEnd": 24.5162,
+        "duration": 4.944,
+        "sha256": "1593d229f36a20af19d5540776d3c2d9f28306c32caf04679a75e2c86c269d72"
+      },
+      {
+        "ordre": 13,
+        "fichier": "surah-asr-prompt.mp3",
+        "texte": "اِسْمَعْ سُورَةَ العَصْرِ. الوَقْتُ ثَمِينٌ!",
+        "activite": "سُورَةُ العَصْرِ",
+        "activiteId": "surah-asr",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-asr-prompt.mp3"
+        ],
+        "start": 24.6,
+        "end": 27.8,
+        "recognized": "اسم عصورة العصر الوقت ثمين",
+        "coverage": 1.0,
+        "cutStart": 24.5162,
+        "cutEnd": 27.8277,
+        "duration": 3.3115,
+        "sha256": "da492728c39c5084d6677a6665fbef49615f6b6b3bc0743336df42b5ddcc150c"
+      },
+      {
+        "ordre": 2,
+        "fichier": "surah-fatiha-success.mp3",
+        "texte": "أَحْسَنْت! نَجْمَةٌ لَكَ!",
+        "activite": "سُورَةُ الفَاتِحَةِ",
+        "activiteId": "surah-fatiha",
+        "moduleId": "preschool-short-surahs",
+        "type": "success",
+        "fichiersCibles": [
+          "surah-fatiha-success.mp3",
+          "surah-ikhlas-success.mp3",
+          "surah-falaq-success.mp3",
+          "surah-nas-success.mp3",
+          "surah-kawthar-success.mp3",
+          "surah-nasr-success.mp3",
+          "surah-asr-success.mp3"
+        ],
+        "start": 27.8,
+        "end": 30.0,
+        "recognized": "أحسنت نجمتون لك",
+        "coverage": 0.667,
+        "cutStart": 27.8277,
+        "cutEnd": 30.1191875,
+        "duration": 2.2915,
+        "sha256": "fbf434abe353ecc1d4084cd9f3f1de1957e9309fbe3e4f4fb3fb7ba0659930fe"
+      }
+    ]
+  },
+  "fr": {
+    "source": "ElevenLabs_2026-10-13T20_39_18_Léa  - Calm and pedagogical approach._pvc_sp104_s65_sb86_v4.mp3",
+    "sourceSha256": "bbfc851bb36b2d5a4293690d2fcf6f77b400580f4481aab3353bd0a1d7fc1e0a",
+    "clips": [
+      {
+        "ordre": 1,
+        "fichier": "surah-fatiha-prompt.mp3",
+        "texte": "Écoute Al-Fatiha, puis répète avec le cheikh !",
+        "activite": "Al-Fatiha",
+        "activiteId": "surah-fatiha",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-fatiha-prompt.mp3"
+        ],
+        "start": 0.06,
+        "end": 3.46,
+        "recognized": "Écoute Al-Faithia, puis répète avec le cheikh.",
+        "coverage": 1.0,
+        "cutStart": 0.0,
+        "cutEnd": 3.4241,
+        "duration": 3.4241,
+        "sha256": "5430e78ee9efedc16759d7ecfc839498dbdc7685fdea191e7b400b033676b615"
+      },
+      {
+        "ordre": 3,
+        "fichier": "surah-ikhlas-prompt.mp3",
+        "texte": "Écoute Al-Ikhlas. Allah est Un !",
+        "activite": "Al-Ikhlas",
+        "activiteId": "surah-ikhlas",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-ikhlas-prompt.mp3"
+        ],
+        "start": 3.46,
+        "end": 6.88,
+        "recognized": "Écoute Al-Échlasse, Al-A-Étain,",
+        "coverage": 0.333,
+        "cutStart": 3.4241,
+        "cutEnd": 6.7687,
+        "duration": 3.3446,
+        "sha256": "b4f8bcad270c17bfcb0c269f80efcf66cb67bb032d2903e8d5c9c13df749b89e"
+      },
+      {
+        "ordre": 5,
+        "fichier": "surah-falaq-prompt.mp3",
+        "texte": "Écoute Al-Falaq. On demande la protection d’Allah.",
+        "activite": "Al-Falaq",
+        "activiteId": "surah-falaq",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-falaq-prompt.mp3"
+        ],
+        "start": 6.88,
+        "end": 10.42,
+        "recognized": "Écoute Al-Faithia, on demande la protection d'Allah.",
+        "coverage": 0.889,
+        "cutStart": 6.7687,
+        "cutEnd": 10.4498,
+        "duration": 3.6811,
+        "sha256": "0635f526de43cab48affd12701faf856af3e3013c0bc4ee744f08f31bdc66ad0"
+      },
+      {
+        "ordre": 7,
+        "fichier": "surah-nas-prompt.mp3",
+        "texte": "Écoute An-Nas. Le Seigneur des gens nous protège.",
+        "activite": "An-Nas",
+        "activiteId": "surah-nas",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-nas-prompt.mp3"
+        ],
+        "start": 10.42,
+        "end": 14.26,
+        "recognized": "Écoute un nas, le Seigneur des gens nous protège.",
+        "coverage": 0.889,
+        "cutStart": 10.4498,
+        "cutEnd": 14.2396,
+        "duration": 3.7898,
+        "sha256": "2cf82cef58b1510fe73de5ee769b24a5b5492949f304c8c863ecfe6f74831a67"
+      },
+      {
+        "ordre": 9,
+        "fichier": "surah-kawthar-prompt.mp3",
+        "texte": "Écoute Al-Kawthar. Les bienfaits d’Allah sont nombreux !",
+        "activite": "Al-Kawthar",
+        "activiteId": "surah-kawthar",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-kawthar-prompt.mp3"
+        ],
+        "start": 14.26,
+        "end": 18.08,
+        "recognized": "Écoute Al-Kaouffer, les bienfaits d'Allah sont nombreux.",
+        "coverage": 0.889,
+        "cutStart": 14.2396,
+        "cutEnd": 18.0185,
+        "duration": 3.7789,
+        "sha256": "db163fa206024f259711bfb890241e5f4d01e88bf651bbe8835d93fef1e0892a"
+      },
+      {
+        "ordre": 11,
+        "fichier": "surah-nasr-prompt.mp3",
+        "texte": "Écoute An-Nasr avec Didou. On répète verset par verset !",
+        "activite": "An-Nasr",
+        "activiteId": "surah-nasr",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-nasr-prompt.mp3"
+        ],
+        "start": 18.08,
+        "end": 22.22,
+        "recognized": "Écoute un insor avec d'idou, on répète versé par versé.",
+        "coverage": 0.9,
+        "cutStart": 18.0185,
+        "cutEnd": 22.1589,
+        "duration": 4.1404,
+        "sha256": "9f0394ff27aa846c0a3e1849f0047eaf309231d78de9737540578ff420e9595a"
+      },
+      {
+        "ordre": 13,
+        "fichier": "surah-asr-prompt.mp3",
+        "texte": "Écoute Al-Asr. Le temps est précieux !",
+        "activite": "Al-Asr",
+        "activiteId": "surah-asr",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-asr-prompt.mp3"
+        ],
+        "start": 22.22,
+        "end": 25.38,
+        "recognized": "Écoute Al-Asr, le temps est précieux.",
+        "coverage": 1.0,
+        "cutStart": 22.1589,
+        "cutEnd": 25.2939,
+        "duration": 3.135,
+        "sha256": "2402125eb65a43f43baa5e1daccb218b35329222b33823c402ca76658cb3799f"
+      },
+      {
+        "ordre": 2,
+        "fichier": "surah-fatiha-success.mp3",
+        "texte": "Bravo ! Une étoile pour toi !",
+        "activite": "Al-Fatiha",
+        "activiteId": "surah-fatiha",
+        "moduleId": "preschool-short-surahs",
+        "type": "success",
+        "fichiersCibles": [
+          "surah-fatiha-success.mp3",
+          "surah-ikhlas-success.mp3",
+          "surah-falaq-success.mp3",
+          "surah-nas-success.mp3",
+          "surah-kawthar-success.mp3",
+          "surah-nasr-success.mp3",
+          "surah-asr-success.mp3"
+        ],
+        "start": 25.38,
+        "end": 27.43,
+        "recognized": "Bravo ! Une étoile pour toi",
+        "coverage": 1.0,
+        "cutStart": 25.2939,
+        "cutEnd": 27.4808125,
+        "duration": 2.1869,
+        "sha256": "0519a653a3a8e5aa7da61ccf9459112e427178485e9b69eeda9c8ad5f12e854a"
+      }
+    ]
+  },
+  "en": {
+    "source": "ElevenLabs_2026-10-13T20_38_36_Quentin - Narrator and Educator_pvc_sp108_s100_sb100_v4 (1).mp3",
+    "sourceSha256": "db6adada7784de26699f7c5f1effbcea9c083942b2721e454aececede86746d0",
+    "clips": [
+      {
+        "ordre": 1,
+        "fichier": "surah-fatiha-prompt.mp3",
+        "texte": "Listen to Al-Fatiha, then repeat with the reciter!",
+        "activite": "Al-Fatiha",
+        "activiteId": "surah-fatiha",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-fatiha-prompt.mp3"
+        ],
+        "start": 0.05,
+        "end": 4.03,
+        "recognized": "Listen to al-Fatihah, then repeat with the reciter,",
+        "coverage": 1.0,
+        "cutStart": 0.0,
+        "cutEnd": 3.622,
+        "duration": 3.622,
+        "sha256": "2a90739da8b7e6cf09c3a201cce2f96fe7900e276922e842e9dbc944c54ae4d7"
+      },
+      {
+        "ordre": 3,
+        "fichier": "surah-ikhlas-prompt.mp3",
+        "texte": "Listen to Al-Ikhlas. Allah is One!",
+        "activite": "Al-Ikhlas",
+        "activiteId": "surah-ikhlas",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-ikhlas-prompt.mp3"
+        ],
+        "start": 4.03,
+        "end": 7.62,
+        "recognized": "listen to al-Ikhleas, Allah is one.",
+        "coverage": 1.0,
+        "cutStart": 3.622,
+        "cutEnd": 7.4879,
+        "duration": 3.8659,
+        "sha256": "9deb82a98f54c1c0b154dc97db81917d5a9e47e2be359409fadbfd698d0ddb37"
+      },
+      {
+        "ordre": 5,
+        "fichier": "surah-falaq-prompt.mp3",
+        "texte": "Listen to Al-Falaq. We ask Allah for protection.",
+        "activite": "Al-Falaq",
+        "activiteId": "surah-falaq",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-falaq-prompt.mp3"
+        ],
+        "start": 7.62,
+        "end": 11.62,
+        "recognized": "Listen to al-Falakh, we ask Allah for protection.",
+        "coverage": 1.0,
+        "cutStart": 7.4879,
+        "cutEnd": 11.4203,
+        "duration": 3.9324,
+        "sha256": "d452667a41f36f37167947564f3941872920bf2793c1c1e0fbfe1afebc099d8e"
+      },
+      {
+        "ordre": 7,
+        "fichier": "surah-nas-prompt.mp3",
+        "texte": "Listen to An-Nas. The Lord of people protects us.",
+        "activite": "An-Nas",
+        "activiteId": "surah-nas",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-nas-prompt.mp3"
+        ],
+        "start": 11.62,
+        "end": 15.76,
+        "recognized": "Listen to annaz, the Lord of people protects us.",
+        "coverage": 0.8,
+        "cutStart": 11.4203,
+        "cutEnd": 15.5834,
+        "duration": 4.1631,
+        "sha256": "83e63740496a637b2bb5738bf415841d720aaa83e62393ffd0834aaa45f11c7b"
+      },
+      {
+        "ordre": 9,
+        "fichier": "surah-kawthar-prompt.mp3",
+        "texte": "Listen to Al-Kawthar. Allah’s gifts are many!",
+        "activite": "Al-Kawthar",
+        "activiteId": "surah-kawthar",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-kawthar-prompt.mp3"
+        ],
+        "start": 15.76,
+        "end": 19.62,
+        "recognized": "Listen to al-Kawhther, Allah's gifts are many.",
+        "coverage": 1.0,
+        "cutStart": 15.5834,
+        "cutEnd": 19.3971,
+        "duration": 3.8137,
+        "sha256": "44d1d4ac45c0e323684af9851778be7e88fc8ed627559118ab17b4a44f8692c7"
+      },
+      {
+        "ordre": 11,
+        "fichier": "surah-nasr-prompt.mp3",
+        "texte": "Listen to An-Nasr with Didou. We repeat verse by verse!",
+        "activite": "An-Nasr",
+        "activiteId": "surah-nasr",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-nasr-prompt.mp3"
+        ],
+        "start": 19.62,
+        "end": 23.98,
+        "recognized": "Listen to annazr with Didu, we repeat verse by verse.",
+        "coverage": 0.818,
+        "cutStart": 19.3971,
+        "cutEnd": 23.8074,
+        "duration": 4.4103,
+        "sha256": "980e9aa588fff360817f3515eb3546b99cd67e69975dff572af9b01fdd134969"
+      },
+      {
+        "ordre": 13,
+        "fichier": "surah-asr-prompt.mp3",
+        "texte": "Listen to Al-Asr. Time is precious!",
+        "activite": "Al-Asr",
+        "activiteId": "surah-asr",
+        "moduleId": "preschool-short-surahs",
+        "type": "prompt",
+        "fichiersCibles": [
+          "surah-asr-prompt.mp3"
+        ],
+        "start": 23.98,
+        "end": 27.0,
+        "recognized": "Listen to al-Azr, time is precious.",
+        "coverage": 1.0,
+        "cutStart": 23.8074,
+        "cutEnd": 26.9281,
+        "duration": 3.1207,
+        "sha256": "08f989bf17560afeb04b2e0cd6e321fcb0c3bdb15c787ed74228407e636af43e"
+      },
+      {
+        "ordre": 2,
+        "fichier": "surah-fatiha-success.mp3",
+        "texte": "Well done! A star for you!",
+        "activite": "Al-Fatiha",
+        "activiteId": "surah-fatiha",
+        "moduleId": "preschool-short-surahs",
+        "type": "success",
+        "fichiersCibles": [
+          "surah-fatiha-success.mp3",
+          "surah-ikhlas-success.mp3",
+          "surah-falaq-success.mp3",
+          "surah-nas-success.mp3",
+          "surah-kawthar-success.mp3",
+          "surah-nasr-success.mp3",
+          "surah-asr-success.mp3"
+        ],
+        "start": 27.05,
+        "end": 29.16,
+        "recognized": "Well done, a star for you!",
+        "coverage": 1.0,
+        "cutStart": 26.9281,
+        "cutEnd": 29.231,
+        "duration": 2.3029,
+        "sha256": "c8d5b802eee88840f74c9ab6b2a39fc920d22b09180f967a28da5cb95d34cd14"
+      }
+    ]
+  }
+}

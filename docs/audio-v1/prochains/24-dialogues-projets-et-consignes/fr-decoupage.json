@@ -1,0 +1,66 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "language-next-fr-1.mp3",
+    "texte": "L’école",
+    "moduleId": "fr-3ap-p1",
+    "activiteId": "language-next-fr-1",
+    "type": "model"
+  },
+  {
+    "ordre": 2,
+    "fichier": "language-next-fr-2.mp3",
+    "texte": "Le cartable",
+    "moduleId": "fr-3ap-p1",
+    "activiteId": "language-next-fr-2",
+    "type": "model"
+  },
+  {
+    "ordre": 3,
+    "fichier": "language-next-fr-3.mp3",
+    "texte": "La maîtresse",
+    "moduleId": "fr-3ap-p1",
+    "activiteId": "language-next-fr-3",
+    "type": "model"
+  },
+  {
+    "ordre": 4,
+    "fichier": "language-next-fr-4.mp3",
+    "texte": "Je m’appelle Amine. Je suis en troisième année primaire. Mon école est grande et propre. J’ai un cartable bleu, un cahier et un stylo. Ma maîtresse s’appelle Madame Salima.",
+    "moduleId": "fr-3ap-p1",
+    "activiteId": "language-next-fr-4",
+    "type": "model"
+  },
+  {
+    "ordre": 5,
+    "fichier": "language-next-fr-5.mp3",
+    "texte": "Le père",
+    "moduleId": "fr-3ap-p2",
+    "activiteId": "language-next-fr-5",
+    "type": "model"
+  },
+  {
+    "ordre": 6,
+    "fichier": "language-next-fr-6.mp3",
+    "texte": "La cuisine",
+    "moduleId": "fr-3ap-p2",
+    "activiteId": "language-next-fr-6",
+    "type": "model"
+  },
+  {
+    "ordre": 7,
+    "fichier": "language-next-fr-7.mp3",
+    "texte": "La chambre",
+    "moduleId": "fr-3ap-p2",
+    "activiteId": "language-next-fr-7",
+    "type": "model"
+  },
+  {
+    "ordre": 8,
+    "fichier": "language-next-fr-8.mp3",
+    "texte": "Voici ma famille. Mon père travaille. Ma mère cuisine dans la cuisine. J’ai un frère et une sœur. Notre salon est grand. Ma chambre est petite mais jolie.",
+    "moduleId": "fr-3ap-p2",
+    "activiteId": "language-next-fr-8",
+    "type": "model"
+  }
+]

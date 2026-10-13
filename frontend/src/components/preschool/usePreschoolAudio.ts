@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 import { speakText, stopSpeech, useVoiceAvailable } from '../../utils/speech';
+import { findRecordedSpeech } from '../../utils/recordedSpeech';
 
 // ─── Global mute (TTS + SFX + loops) ─────────────────────────────────────────
 const MUTE_STORAGE_KEY = 'mssid_preschool_muted';
@@ -128,7 +129,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
   const speakTts = useCallback((text: string) => {
     if (isPreschoolMuted() || !text) return;
     // speakText() already swallows and logs its own errors on both the native and web paths.
-    void speakText(text, lang, 0.9, 1.1);
+    void speakText(text, lang, 0.9, 1.1, { skipRecordedLookup: true });
   }, [lang]);
 
   const stop = useCallback(() => {
@@ -143,12 +144,13 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
     }
     stopRecordedClip();
     stopSpeech();
-    if (recordedSrc) {
-      playRecordedClip(recordedSrc, () => speakTts(text));
+    const source = recordedSrc ?? findRecordedSpeech(text, lang)?.src;
+    if (source) {
+      playRecordedClip(source, () => speakTts(text));
       return;
     }
     speakTts(text);
-  }, [speakTts, stop]);
+  }, [speakTts, stop, lang]);
 
   return { speak, stop, hasVoice };
 }
@@ -224,6 +226,7 @@ export function stopSoundBoxClip() {
   }
   if (boxAudio) {
     boxAudio.onended = null;
+    boxAudio.onplaying = null;
     boxAudio.onerror = null;
     boxAudio.pause();
     boxAudio.removeAttribute('src');
@@ -242,19 +245,23 @@ export function playSoundBoxClip(soundKey: string, maxMs = 4000) {
   audio.volume = 0.95;
   const mp3 = `/sounds/box/${soundKey}.mp3`;
   const ogg = `/sounds/box/${soundKey}.ogg`;
-  audio.addEventListener('error', () => {
-    if (audio.src.endsWith('.mp3')) {
-      audio.src = ogg;
-      void audio.play().catch(() => {});
-    }
-  }, { once: true });
-  audio.onended = () => stopSoundBoxClip();
-  boxTimer = setTimeout(() => stopSoundBoxClip(), maxMs);
-  audio.src = mp3;
-  void audio.play().catch(() => {
+  let fallbackStarted = false;
+  const tryFallback = () => {
+    if (boxAudio !== audio || isPreschoolMuted() || fallbackStarted) return;
+    fallbackStarted = true;
     audio.src = ogg;
-    void audio.play().catch(() => {});
-  });
+    void audio.play().catch(() => { if (boxAudio === audio) stopSoundBoxClip(); });
+  };
+  audio.addEventListener('error', () => {
+    tryFallback();
+  }, { once: true });
+  audio.onended = () => { if (boxAudio === audio) stopSoundBoxClip(); };
+  audio.onplaying = () => {
+    if (boxAudio !== audio || boxTimer) return;
+    boxTimer = setTimeout(() => { if (boxAudio === audio) stopSoundBoxClip(); }, maxMs);
+  };
+  audio.src = mp3;
+  void audio.play().catch(tryFallback);
 }
 
 function playSoft(frequencies: number[], durationMs: number, type: OscillatorType, peak = 0.12) {

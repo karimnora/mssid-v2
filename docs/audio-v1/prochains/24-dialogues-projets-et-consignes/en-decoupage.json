@@ -1,0 +1,66 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "language-next-en-1.mp3",
+    "texte": "Hello! My name is Amine. What is your name?",
+    "moduleId": "en-3ap-u1",
+    "activiteId": "language-next-en-1",
+    "type": "model"
+  },
+  {
+    "ordre": 2,
+    "fichier": "language-next-en-2.mp3",
+    "texte": "Hi Amine! I am Lina. Nice to meet you.",
+    "moduleId": "en-3ap-u1",
+    "activiteId": "language-next-en-2",
+    "type": "model"
+  },
+  {
+    "ordre": 3,
+    "fichier": "language-next-en-3.mp3",
+    "texte": "How old are you, Lina?",
+    "moduleId": "en-3ap-u1",
+    "activiteId": "language-next-en-3",
+    "type": "model"
+  },
+  {
+    "ordre": 4,
+    "fichier": "language-next-en-4.mp3",
+    "texte": "I am eight years old. I live in Algiers.",
+    "moduleId": "en-3ap-u1",
+    "activiteId": "language-next-en-4",
+    "type": "model"
+  },
+  {
+    "ordre": 5,
+    "fichier": "language-next-en-5.mp3",
+    "texte": "Good morning, Father! What time is it?",
+    "moduleId": "en-4ap-u2",
+    "activiteId": "language-next-en-5",
+    "type": "model"
+  },
+  {
+    "ordre": 6,
+    "fichier": "language-next-en-6.mp3",
+    "texte": "Good morning, Yacine! It is seven o’clock. Time for breakfast!",
+    "moduleId": "en-4ap-u2",
+    "activiteId": "language-next-en-6",
+    "type": "model"
+  },
+  {
+    "ordre": 7,
+    "fichier": "language-next-en-7.mp3",
+    "texte": "Great! I love milk and dates for breakfast.",
+    "moduleId": "en-4ap-u2",
+    "activiteId": "language-next-en-7",
+    "type": "model"
+  },
+  {
+    "ordre": 8,
+    "fichier": "language-next-en-8.mp3",
+    "texte": "Eat well, then we will walk to school together.",
+    "moduleId": "en-4ap-u2",
+    "activiteId": "language-next-en-8",
+    "type": "model"
+  }
+]
