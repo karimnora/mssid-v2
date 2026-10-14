@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -61,6 +62,7 @@ export const SpellingChampGame: React.FC<SpellingChampGameProps> = ({ onExit, on
   const [score, setScore] = useState(0);
   const [totalXp, setTotalXp] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const requestLeave = useActivityExitGuard(!gameOver);
 
   const handleChoose = (option: string) => {
     if (chosen !== null) return;
@@ -115,7 +117,7 @@ export const SpellingChampGame: React.FC<SpellingChampGameProps> = ({ onExit, on
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <button
-          onClick={onExit}
+          onClick={() => { if (onExit) requestLeave(onExit); }}
           className="bg-white/80 rounded-2xl px-4 py-2 text-slate-600 font-bold shadow text-sm"
         >
           ← خروج

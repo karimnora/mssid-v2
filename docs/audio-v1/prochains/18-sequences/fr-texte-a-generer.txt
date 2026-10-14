@@ -1,0 +1,31 @@
+Rouge, bleu, rouge, bleu, rouge… ensuite ?
+
+Le bleu vient après le rouge ! Bravo !
+
+Chat, chien, chat, chien, chat… ensuite ?
+
+Le chien vient après le chat ! Bravo !
+
+Soleil, lune, soleil, lune, soleil… ensuite ?
+
+La lune vient après le soleil ! Super !
+
+Pomme, banane, pomme, banane, pomme… ensuite ?
+
+La banane vient après la pomme !
+
+Éléphant, souris, éléphant, souris, éléphant… ensuite ?
+
+La petite souris vient après l'éléphant !
+
+Voiture, bus, bus, voiture, bus… ensuite ?
+
+Un deuxième bus ! Bravo !
+
+Soleil, nuage, pluie, soleil, nuage… ensuite ?
+
+La pluie vient après le nuage ! Génie !
+
+Un, deux, trois… quel chiffre ensuite ?
+
+Quatre ! Champion des chiffres !

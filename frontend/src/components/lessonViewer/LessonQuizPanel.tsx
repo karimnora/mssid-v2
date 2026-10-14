@@ -7,6 +7,7 @@ import { ConfettiBurst } from './ConfettiBurst';
 import { tabTransition } from './shared';
 import { TapSpeakButton } from './TapSpeakButton';
 import { getQuizFeedback, quizFeedbackSpeakText } from './quizFeedback';
+import { formatEducationalText } from '../../utils/textFormatter';
 
 interface LessonQuizPanelProps {
   lesson: CourseLesson;
@@ -342,7 +343,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                       <span>{playful ? 'لِمَاذَا؟' : feedback.primaryLabelAr}</span>
                     </span>
                     <p className="text-[var(--app-text)] font-medium">
-                      {renderArabicText(feedback.primaryAr)}
+                      {formatEducationalText(renderArabicText(feedback.primaryAr))}
                     </p>
                     {/* Deliberately gated on isAnswered (correct), not just feedback.correctAr being
                         present: revealing the right answer on a wrong guess would defeat the retry
@@ -350,7 +351,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     {isAnswered && feedback.correctAr && (
                       <p className="text-[var(--brand-emerald-dark)] font-semibold bg-[var(--brand-emerald)]/10 p-3 rounded-xl border border-[var(--brand-emerald)]/25">
                         <span className="font-extrabold block mb-1">الصواب:</span>
-                        {renderArabicText(feedback.correctAr)}
+                        {formatEducationalText(renderArabicText(feedback.correctAr))}
                       </p>
                     )}
                   </motion.div>

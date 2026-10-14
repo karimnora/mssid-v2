@@ -1,9 +1,11 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * PuzzleGame.tsx — « Le Puzzle de Dido »
  * Puzzle à fantômes (comme un trieur en bois) : chaque case montre
  * en transparence la pièce qui y va. Pièces toutes différentes.
  * Glisser (PanInfo) ou toucher-puis-poser. 4 tableaux.
  */
+import { useDelayedCompletion } from '../../hooks/useDelayedCompletion';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'motion/react';
 import { LevelSelectScreen, LevelDef } from './LevelSelectScreen';
@@ -197,9 +199,11 @@ const PuzzleBoard: React.FC<{
   const [selected, setSelected] = useState<string | null>(null);
   const [shakingSlot, setShakingSlot] = useState<string | null>(null);
   const [won, setWon] = useState(false);
+  const requestLeave = useActivityExitGuard(!won, language);
   const [earnedStars, setEarnedStars] = useState(3);
   const [mistakes, setMistakes] = useState(0);
   const draggedRef = useRef(false);
+  const completeLater = useDelayedCompletion();
   const slotRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const placedCount = Object.keys(placed).length;
@@ -237,7 +241,7 @@ const PuzzleBoard: React.FC<{
         setEarnedStars(stars);
         setWon(true);
         playModuleCompleteFanfare();
-        setTimeout(() => onComplete(stars), 1800);
+        completeLater(() => onComplete(stars), 1800);
       }
     } else {
       playGentleNudge();
@@ -246,7 +250,7 @@ const PuzzleBoard: React.FC<{
       setTimeout(() => setShakingSlot(null), 500);
       setSelected(null);
     }
-  }, [won, placed, level.pieces, totalPieces, mistakes, onComplete]);
+  }, [won, placed, level.pieces, totalPieces, mistakes, onComplete, completeLater]);
 
   const handleDragEnd = (pieceId: string, info: PanInfo) => {
     const { x, y } = info.point;
@@ -273,7 +277,7 @@ const PuzzleBoard: React.FC<{
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onExit}
+          onClick={() => requestLeave(onExit)}
           className="min-w-12 min-h-12 flex items-center justify-center rounded-2xl
                      bg-white shadow-md text-2xl border-2 border-amber-200 cursor-pointer"
         >

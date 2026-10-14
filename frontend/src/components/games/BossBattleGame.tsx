@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade } from '../../types';
@@ -230,6 +231,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
   const [hiddenOptions, setHiddenOptions] = useState<string[]>([]);
   const [isWon, setIsWon] = useState(false);
   const [isLost, setIsLost] = useState(false);
+  const requestLeave = useActivityExitGuard(!isWon && !isLost);
   const [animatingAttack, setAnimatingAttack] = useState<'player' | 'boss' | null>(null);
   const pendingTimeoutsRef = useRef<number[]>([]);
 
@@ -352,7 +354,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
 
         {onExit && (
           <button
-            onClick={onExit}
+            onClick={() => { if (onExit) requestLeave(onExit); }}
             className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
           >
             <span>خروج</span>
@@ -542,7 +544,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
 
             {onExit && (
               <button
-                onClick={onExit}
+                onClick={() => { if (onExit) requestLeave(onExit); }}
                 className="px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-sm transition-all cursor-pointer"
               >
                 العودة للساحة
@@ -577,7 +579,7 @@ export const BossBattleGame: React.FC<BossBattleGameProps> = ({
 
             {onExit && (
               <button
-                onClick={onExit}
+                onClick={() => { if (onExit) requestLeave(onExit); }}
                 className="px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-sm transition-all cursor-pointer"
               >
                 العودة للساحة

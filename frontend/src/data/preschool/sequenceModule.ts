@@ -1,3 +1,4 @@
+import { withRecordedAudio } from './withRecordedAudio';
 import { PreschoolModule } from './types';
 
 /**
@@ -5,7 +6,7 @@ import { PreschoolModule } from './types';
  * `sequencePattern` = what is SHOWN (incomplete). The missing next item is the
  * one correct choice. AB/ABB never end on a full period (that made "next" look wrong).
  */
-export const SEQUENCE_MODULE: PreschoolModule = {
+const SEQUENCE_CATALOG: PreschoolModule = {
   id: 'preschool-sequences',
   domain: 'creative',
   icon: '🔁',
@@ -25,19 +26,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'أَحْمَر ثُمَّ أَزْرَق',
-          promptAudio: 'أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر... مَاذَا بَعْد؟',
+          promptAudio: 'أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر… مَاذَا بَعْد؟',
           promptText: 'نمط AB. المعروض ينتهي بالأحمر → الجواب الأزرق.',
           successAudio: 'الأَزْرَقُ بَعْدَ الأَحْمَر! أَحْسَنْت!',
         },
         fr: {
           title: 'Rouge puis Bleu',
-          promptAudio: 'Rouge, bleu, rouge, bleu, rouge... ensuite ?',
+          promptAudio: 'Rouge, bleu, rouge, bleu, rouge… ensuite ?',
           promptText: 'Motif AB. La rangée finit sur rouge → réponse bleu.',
           successAudio: 'Le bleu vient après le rouge ! Bravo !',
         },
         en: {
           title: 'Red then Blue',
-          promptAudio: 'Red, blue, red, blue, red... what is next?',
+          promptAudio: 'Red, blue, red, blue, red… what is next?',
           promptText: 'AB pattern. The row ends on red → answer is blue.',
           successAudio: 'Blue comes after red! Well done!',
         },
@@ -61,19 +62,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'قِطَّة ثُمَّ كَلْب',
-          promptAudio: 'قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة... مَاذَا بَعْد؟',
+          promptAudio: 'قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة… مَاذَا بَعْد؟',
           promptText: 'ينتهي بالقطة → الجواب الكلب.',
           successAudio: 'الكَلْبُ بَعْدَ القِطَّة! أَحْسَنْت!',
         },
         fr: {
           title: 'Chat puis Chien',
-          promptAudio: 'Chat, chien, chat, chien, chat... ensuite ?',
+          promptAudio: 'Chat, chien, chat, chien, chat… ensuite ?',
           promptText: 'La rangée finit sur le chat → réponse chien.',
           successAudio: 'Le chien vient après le chat ! Bravo !',
         },
         en: {
           title: 'Cat then Dog',
-          promptAudio: 'Cat, dog, cat, dog, cat... what is next?',
+          promptAudio: 'Cat, dog, cat, dog, cat… what is next?',
           promptText: 'The row ends on the cat → answer is dog.',
           successAudio: 'The dog comes after the cat! Well done!',
         },
@@ -97,19 +98,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'شَمْس ثُمَّ قَمَر',
-          promptAudio: 'شَمْس، قَمَر، شَمْس، قَمَر، شَمْس... مَاذَا بَعْد؟',
+          promptAudio: 'شَمْس، قَمَر، شَمْس، قَمَر، شَمْس… مَاذَا بَعْد؟',
           promptText: 'ينتهي بالشمس → الجواب القمر.',
           successAudio: 'القَمَرُ بَعْدَ الشَّمْس! مُمْتَاز!',
         },
         fr: {
           title: 'Soleil puis Lune',
-          promptAudio: 'Soleil, lune, soleil, lune, soleil... ensuite ?',
+          promptAudio: 'Soleil, lune, soleil, lune, soleil… ensuite ?',
           promptText: 'La rangée finit sur le soleil → réponse lune.',
           successAudio: 'La lune vient après le soleil ! Super !',
         },
         en: {
           title: 'Sun then Moon',
-          promptAudio: 'Sun, moon, sun, moon, sun... what is next?',
+          promptAudio: 'Sun, moon, sun, moon, sun… what is next?',
           promptText: 'The row ends on the sun → answer is moon.',
           successAudio: 'The moon comes after the sun! Great!',
         },
@@ -133,19 +134,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'تُفَّاحَة ثُمَّ مَوْزَة',
-          promptAudio: 'تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة... مَاذَا بَعْد؟',
+          promptAudio: 'تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة… مَاذَا بَعْد؟',
           promptText: 'ينتهي بالتفاحة → الجواب الموزة.',
           successAudio: 'المَوْزَةُ بَعْدَ التُّفَّاحَة!',
         },
         fr: {
           title: 'Pomme puis Banane',
-          promptAudio: 'Pomme, banane, pomme, banane, pomme... ensuite ?',
+          promptAudio: 'Pomme, banane, pomme, banane, pomme… ensuite ?',
           promptText: 'La rangée finit sur la pomme → réponse banane.',
           successAudio: 'La banane vient après la pomme !',
         },
         en: {
           title: 'Apple then Banana',
-          promptAudio: 'Apple, banana, apple, banana, apple... what is next?',
+          promptAudio: 'Apple, banana, apple, banana, apple… what is next?',
           promptText: 'The row ends on the apple → answer is banana.',
           successAudio: 'Banana comes after the apple!',
         },
@@ -169,19 +170,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'فِيل ثُمَّ فَأْر',
-          promptAudio: 'فِيل، فَأْر، فِيل، فَأْر، فِيل... مَاذَا بَعْد؟',
+          promptAudio: 'فِيل، فَأْر، فِيل، فَأْر، فِيل… مَاذَا بَعْد؟',
           promptText: 'ينتهي بالفيل → الجواب الفأر.',
           successAudio: 'الفَأْرُ الصَّغِيرُ بَعْدَ الفِيل!',
         },
         fr: {
           title: 'Éléphant puis Souris',
-          promptAudio: 'Éléphant, souris, éléphant, souris, éléphant... ensuite ?',
+          promptAudio: 'Éléphant, souris, éléphant, souris, éléphant… ensuite ?',
           promptText: 'La rangée finit sur l\'éléphant → réponse souris.',
           successAudio: 'La petite souris vient après l\'éléphant !',
         },
         en: {
           title: 'Elephant then Mouse',
-          promptAudio: 'Elephant, mouse, elephant, mouse, elephant... what is next?',
+          promptAudio: 'Elephant, mouse, elephant, mouse, elephant… what is next?',
           promptText: 'The row ends on the elephant → answer is mouse.',
           successAudio: 'The small mouse comes after the elephant!',
         },
@@ -205,19 +206,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'سَيَّارَة ثُمَّ حَافِلَتَان',
-          promptAudio: 'سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة... مَاذَا بَعْد؟',
+          promptAudio: 'سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة… مَاذَا بَعْد؟',
           promptText: 'نمط ABB. بعد سيارة+حافلة يبقى حافلة.',
           successAudio: 'حَافِلَةٌ ثَانِيَة! أَحْسَنْت!',
         },
         fr: {
           title: 'Voiture puis deux Bus',
-          promptAudio: 'Voiture, bus, bus, voiture, bus... ensuite ?',
+          promptAudio: 'Voiture, bus, bus, voiture, bus… ensuite ?',
           promptText: 'Motif ABB. Après voiture+bus, il manque le 2e bus.',
           successAudio: 'Un deuxième bus ! Bravo !',
         },
         en: {
           title: 'Car then Two Buses',
-          promptAudio: 'Car, bus, bus, car, bus... what is next?',
+          promptAudio: 'Car, bus, bus, car, bus… what is next?',
           promptText: 'ABB pattern. After car+bus, the 2nd bus is missing.',
           successAudio: 'A second bus! Well done!',
         },
@@ -241,19 +242,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'شَمْس، غَيْم، مَطَر',
-          promptAudio: 'شَمْس، غَيْم، مَطَر، شَمْس، غَيْم... مَاذَا بَعْد؟',
+          promptAudio: 'شَمْس، غَيْم، مَطَر، شَمْس، غَيْم… مَاذَا بَعْد؟',
           promptText: 'نمط ABC. بعد شمس+غيم يأتي المطر.',
           successAudio: 'المَطَرُ بَعْدَ الغَيْم! عَبْقَرِي!',
         },
         fr: {
           title: 'Soleil, Nuage, Pluie',
-          promptAudio: 'Soleil, nuage, pluie, soleil, nuage... ensuite ?',
+          promptAudio: 'Soleil, nuage, pluie, soleil, nuage… ensuite ?',
           promptText: 'Motif ABC. Après soleil+nuage vient la pluie.',
           successAudio: 'La pluie vient après le nuage ! Génie !',
         },
         en: {
           title: 'Sun, Cloud, Rain',
-          promptAudio: 'Sun, cloud, rain, sun, cloud... what is next?',
+          promptAudio: 'Sun, cloud, rain, sun, cloud… what is next?',
           promptText: 'ABC pattern. After sun+cloud comes rain.',
           successAudio: 'Rain comes after the cloud! Genius!',
         },
@@ -277,19 +278,19 @@ export const SEQUENCE_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'نَعُدُّ مَعاً',
-          promptAudio: 'وَاحِد، اثْنَان، ثَلَاثَة... مَا العَدَدُ التَّالِي؟',
+          promptAudio: 'وَاحِد، اثْنَان، ثَلَاثَة… مَا العَدَدُ التَّالِي؟',
           promptText: 'عدّ +1 : بعد 3 يأتي 4.',
           successAudio: 'أَرْبَعَة! بَطَلُ الأَعْدَاد!',
         },
         fr: {
           title: 'On Compte Ensemble',
-          promptAudio: 'Un, deux, trois... quel chiffre ensuite ?',
+          promptAudio: 'Un, deux, trois… quel chiffre ensuite ?',
           promptText: 'Compter +1 : après 3 vient 4.',
           successAudio: 'Quatre ! Champion des chiffres !',
         },
         en: {
           title: 'We Count Together',
-          promptAudio: 'One, two, three... which number is next?',
+          promptAudio: 'One, two, three… which number is next?',
           promptText: 'Count +1: after 3 comes 4.',
           successAudio: 'Four! Numbers champion!',
         },
@@ -306,3 +307,5 @@ export const SEQUENCE_MODULE: PreschoolModule = {
     },
   ],
 };
+
+export const SEQUENCE_MODULE: PreschoolModule = withRecordedAudio(SEQUENCE_CATALOG);

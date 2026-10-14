@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "emotion-feelings-path-prompt.mp3",
+    "texte": "Glisse le fennec : joie, ballon, tristesse, pansement, puis un câlin !",
+    "activite": "Le Chemin des Émotions",
+    "activiteId": "emotion-feelings-path",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "emotion-feelings-path-success.mp3",
+    "texte": "Toutes les émotions sont OK ! Bravo !",
+    "activite": "Le Chemin des Émotions",
+    "activiteId": "emotion-feelings-path",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "emotion-happy-prompt.mp3",
+    "texte": "On a un ballon ! Touche le visage joyeux !",
+    "activite": "Le Ballon de la Joie",
+    "activiteId": "emotion-happy",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "emotion-happy-success.mp3",
+    "texte": "Oui ! C'est la joie !",
+    "activite": "Le Ballon de la Joie",
+    "activiteId": "emotion-happy",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "emotion-sad-prompt.mp3",
+    "texte": "La glace est tombée ! Touche le visage triste !",
+    "activite": "La Glace est Tombée",
+    "activiteId": "emotion-sad",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "emotion-sad-success.mp3",
+    "texte": "Oui, c'est la tristesse. On te fait un câlin !",
+    "activite": "La Glace est Tombée",
+    "activiteId": "emotion-sad",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "emotion-angry-prompt.mp3",
+    "texte": "La tour de cubes est tombée ! Touche le visage fâché !",
+    "activite": "La Tour est Tombée",
+    "activiteId": "emotion-angry",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "emotion-angry-success.mp3",
+    "texte": "La colère passe ! On reconstruit !",
+    "activite": "La Tour est Tombée",
+    "activiteId": "emotion-angry",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "emotion-sort-context-prompt.mp3",
+    "texte": "Mets le ballon et le cadeau avec le sourire, le pansement avec la larme !",
+    "activite": "Joie ou Tristesse ?",
+    "activiteId": "emotion-sort-context",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "emotion-sort-context-success.mp3",
+    "texte": "Tu connais la joie et la tristesse !",
+    "activite": "Joie ou Tristesse ?",
+    "activiteId": "emotion-sort-context",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "emotion-connect-prompt.mp3",
+    "texte": "Relie la joie au ballon, et la tristesse au pansement !",
+    "activite": "Relie le Sentiment à l'Image",
+    "activiteId": "emotion-connect",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "emotion-connect-success.mp3",
+    "texte": "Chaque sentiment a son image !",
+    "activite": "Relie le Sentiment à l'Image",
+    "activiteId": "emotion-connect",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "emotion-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : joyeux, triste, fâché !",
+    "activite": "Mémo des Émotions",
+    "activiteId": "emotion-memory",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "emotion-memory-success.mp3",
+    "texte": "Tu as une super mémoire !",
+    "activite": "Mémo des Émotions",
+    "activiteId": "emotion-memory",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "emotion-hug-prompt.mp3",
+    "texte": "L'ami est triste ! Que fait-on ? Touche le câlin !",
+    "activite": "Mon Ami Pleure",
+    "activiteId": "emotion-hug",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "emotion-hug-success.mp3",
+    "texte": "Oui ! Le câlin aide !",
+    "activite": "Mon Ami Pleure",
+    "activiteId": "emotion-hug",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  }
+]

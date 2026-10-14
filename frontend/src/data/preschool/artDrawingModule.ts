@@ -1,3 +1,4 @@
+import { withRecordedAudio } from './withRecordedAudio';
 import { PreschoolModule } from './types';
 
 /**
@@ -5,7 +6,7 @@ import { PreschoolModule } from './types';
  * Coloring book: tap a region, any color is OK. Pictures a 3-5 yo can recognise
  * (visage, soleil, fleur, maison, fennec, chameau, couscous) — no tiny un-tappable bits.
  */
-export const ART_DRAWING_MODULE: PreschoolModule = {
+const ART_DRAWING_CATALOG: PreschoolModule = {
   id: 'preschool-art-drawing',
   domain: 'creative',
   icon: '🖍️',
@@ -317,3 +318,5 @@ export const ART_DRAWING_MODULE: PreschoolModule = {
     },
   ],
 };
+
+export const ART_DRAWING_MODULE: PreschoolModule = withRecordedAudio(ART_DRAWING_CATALOG);

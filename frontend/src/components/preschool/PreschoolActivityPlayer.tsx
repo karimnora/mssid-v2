@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { Info, RotateCcw } from 'lucide-react';
 import { isPlaySuccess, PreschoolActivity, PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
@@ -30,6 +31,8 @@ interface PreschoolActivityPlayerProps {
   hasNext: boolean;
   /** Real success: marks the activity done (badges, daily challenge, path stars). */
   onComplete: (quality?: PreschoolPlayQuality) => void;
+  /** Record an attempt without leaving the current activity or awarding completion. */
+  onAttempt?: (quality: PreschoolPlayQuality) => void;
   /** Advance without marking done — parent/child is never blocked, progress stays honest. */
   onSkip: () => void;
   onExit: () => void;
@@ -39,7 +42,7 @@ interface PreschoolActivityPlayerProps {
 // activity.interactionType, and reacts (mascot + voice) on success before handing control back to
 // the path view. Session length stays short by construction — one activity, one clear finish line.
 export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = ({
-  activity, language, hasNext, onComplete, onSkip, onExit,
+  activity, language, hasNext, onComplete, onAttempt, onSkip, onExit,
 }) => {
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const t = (ar: string, fr: string, en: string) =>
@@ -48,6 +51,9 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const [showSuccess, setShowSuccess] = useState(false);
   const [showEcho, setShowEcho] = useState(false);
   const [showParentTip, setShowParentTip] = useState(false);
+  const [showAttemptNotice, setShowAttemptNotice] = useState(false);
+  const [hasWork, setHasWork] = useState(false);
+  const requestLeave = useActivityExitGuard(hasWork && !showSuccess && !showEcho, language);
   const { speak, stop, hasVoice } = usePreschoolSpeech(language);
   const content = activity.i18n[language];
   const echoWord = activity.echoWord?.[language];
@@ -60,12 +66,31 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const replayUsedRef = useRef(false);
   const qualityRef = useRef<PreschoolPlayQuality>('done');
   const completionTimerRef = useRef<number | undefined>(undefined);
+  const mountedRef = useRef(true);
+  const completionRequestedRef = useRef(false);
+  const completionPublishedRef = useRef(false);
+  const activityKey = `${activity.id}:${language}`;
+  const currentActivityRef = useRef(activityKey);
+  currentActivityRef.current = activityKey;
+
+  const isCurrentActivity = () => mountedRef.current && currentActivityRef.current === activityKey;
+  const finishActivity = (quality: PreschoolPlayQuality) => {
+    if (!isCurrentActivity() || completionPublishedRef.current) return;
+    completionPublishedRef.current = true;
+    onComplete(quality);
+  };
 
   useEffect(() => {
+    mountedRef.current = true;
+    completionRequestedRef.current = false;
+    completionPublishedRef.current = false;
+    qualityRef.current = 'done';
     setMood('idle');
     setShowSuccess(false);
     setShowEcho(false);
     setShowParentTip(false);
+    setShowAttemptNotice(false);
+    setHasWork(false);
     interactedRef.current = false;
     replayUsedRef.current = false;
     const first = window.setTimeout(() => speak(content.promptAudio, content.promptAudioSrc), 350);
@@ -78,6 +103,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         speak(content.promptAudio, content.promptAudioSrc);
       }, 8350);
     return () => {
+      mountedRef.current = false;
       window.clearTimeout(first);
       if (replay) window.clearTimeout(replay);
       window.clearTimeout(completionTimerRef.current);
@@ -91,19 +117,23 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   };
 
   const handleInteractionComplete = (quality: PreschoolPlayQuality = 'done') => {
+    if (!isCurrentActivity() || completionRequestedRef.current) return;
     interactedRef.current = true;
     qualityRef.current = quality;
     if (!isPlaySuccess(quality)) {
       setMood('idle');
       setShowSuccess(false);
+      setShowAttemptNotice(true);
       speak(t(
         'أَحْسَنْتَ أَنَّكَ جَرَّبْتَ. نُعِيدُ مَرَّةً أُخْرَى؟',
         'Bravo d’avoir essayé. On peut recommencer.',
         'Nice try. We can do it again.',
       ));
-      completionTimerRef.current = window.setTimeout(() => onComplete(qualityRef.current), 1200);
+      onAttempt?.(quality);
       return;
     }
+    completionRequestedRef.current = true;
+    setShowAttemptNotice(false);
     setMood('happy');
     setShowSuccess(true);
     if (content.successAudio) speak(content.successAudio, content.successAudioSrc);
@@ -111,12 +141,13 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
       ? content.successAudioDurationMs + 150 : 0;
     if (wantsEcho && echoWord) {
       completionTimerRef.current = window.setTimeout(() => {
+        if (!isCurrentActivity()) return;
         setShowSuccess(false);
         setShowEcho(true);
       }, Math.max(900, recordedRewardDelay));
       return;
     }
-    completionTimerRef.current = window.setTimeout(() => onComplete(qualityRef.current), Math.max(1400, recordedRewardDelay));
+    completionTimerRef.current = window.setTimeout(() => finishActivity(quality), Math.max(1400, recordedRewardDelay));
   };
 
   const replayPrompt = () => speak(content.promptAudio, content.promptAudioSrc);
@@ -126,7 +157,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
       <div className="flex items-center justify-between max-w-lg w-full mx-auto mb-4">
         <div className="flex items-center gap-2">
           <button
-            onClick={onExit}
+            onClick={() => requestLeave(onExit)}
             className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
             aria-label={t('رُجُوع', 'Retour', 'Back')}
             title={t('رُجُوع', 'Retour', 'Back')}
@@ -148,7 +179,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
 
           {/* Skip never blocks — but it must not count as a success (badges / défi / path stars). */}
           <button
-            onClick={onSkip}
+            onClick={() => hasNext ? onSkip() : requestLeave(onSkip)}
             className="px-4 py-2.5 rounded-2xl bg-white hover:bg-orange-50 active:scale-95 text-orange-800 shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-orange-200"
             title={hasNext ? t('تخطي', 'Passer', 'Skip') : t('خروج', 'Quitter', 'Leave')}
           >
@@ -194,6 +225,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
 
         <div
           key={activity.id}
+          onPointerDownCapture={() => setHasWork(true)}
+          onClickCapture={() => setHasWork(true)}
           className="mt-4 w-full flex items-center justify-center"
           onPointerDown={markInteracted}
         >
@@ -202,7 +235,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
               picture={activityPicture(activity, language)}
               word={echoWord}
               language={language}
-              onDone={() => onComplete(qualityRef.current)}
+              onDone={() => finishActivity(qualityRef.current)}
             />
           ) : (
             <>
@@ -270,6 +303,13 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
             </>
           )}
         </div>
+        {showAttemptNotice && (
+          <p role="status" className="mt-4 text-center font-bold text-orange-900">
+            {t('يُمْكِنُكَ مُوَاصَلَةُ الرَّسْمِ أَوِ المُحَاوَلَةُ مِنْ جَدِيد.',
+              'Tu peux continuer à tracer ou recommencer.',
+              'You can keep tracing or try again.')}
+          </p>
+        )}
       </div>
 
       <AnimatePresence>

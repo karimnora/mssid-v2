@@ -20,6 +20,7 @@ const COPY: Record<VoiceEchoLang, {
   play: string;
   unsupported: string;
   denied: string;
+  retry: string;
   failed: string;
 }> = {
   ar: {
@@ -30,6 +31,7 @@ const COPY: Record<VoiceEchoLang, {
     play: 'صوتي',
     unsupported: 'قُل بصوت عالٍ — الميكروفون غير متاح هنا.',
     denied: 'لم يُسمح بالميكروفون. قُل بصوت عالٍ!',
+    retry: 'أعد محاولة الميكروفون',
     failed: 'تعذّر تسجيل الصوت أو تشغيله. جرّب مرة أخرى.',
   },
   fr: {
@@ -40,6 +42,7 @@ const COPY: Record<VoiceEchoLang, {
     play: 'Ma voix',
     unsupported: 'Dis-le à voix haute — micro indisponible ici.',
     denied: 'Micro refusé. Dis-le à voix haute !',
+    retry: 'Réessayer le micro',
     failed: 'Impossible d’enregistrer ou de lire ta voix. Réessaie.',
   },
   en: {
@@ -50,6 +53,7 @@ const COPY: Record<VoiceEchoLang, {
     play: 'My voice',
     unsupported: 'Say it out loud — mic unavailable here.',
     denied: 'Mic denied. Say it out loud!',
+    retry: 'Retry microphone',
     failed: 'Unable to record or play your voice. Try again.',
   },
 };
@@ -128,9 +132,15 @@ export const VoiceEchoBar: React.FC<VoiceEchoBarProps> = ({
         )}
 
         {micBlocked ? (
+          <>
           <p className="flex-1 min-w-[12rem] text-xs font-bold text-center text-orange-900 bg-white rounded-2xl px-3 py-3 border-2 border-amber-200">
             {echo.phase === 'denied' ? copy.denied : copy.unsupported}
           </p>
+          {echo.phase === 'denied' && <button type="button" onClick={startRecord}
+            className={`${hit} bg-white text-[#0f172a] border-2 border-amber-300`}>
+            <Mic className="w-5 h-5" />{copy.retry}
+          </button>}
+          </>
         ) : echo.phase !== 'recording' ? (
           <motion.button
             type="button"

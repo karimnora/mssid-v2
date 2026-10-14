@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { PrimaryGrade } from '../../types';
@@ -109,6 +110,7 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
   const [moves, setMoves] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isWon, setIsWon] = useState(false);
+  const requestLeave = useActivityExitGuard(!isWon);
   const [speakingKey, setSpeakingKey] = useState<string | null>(null);
   const speakSnippet = (key: string, text: string) => {
     if (speakingKey === key) {
@@ -238,7 +240,7 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
 
         {onExit && (
           <button
-            onClick={onExit}
+            onClick={() => { if (onExit) requestLeave(onExit); }}
             className={`rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold transition-all cursor-pointer flex items-center gap-1 ${
               isYoung ? 'min-w-[60px] min-h-[60px] px-4 text-sm' : 'px-3 py-1.5 text-xs'
             }`}
@@ -376,7 +378,7 @@ export const MemoryMatrixGame: React.FC<MemoryMatrixGameProps> = ({
 
             {onExit && (
               <button
-                onClick={onExit}
+                onClick={() => { if (onExit) requestLeave(onExit); }}
                 className="px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-sm transition-all cursor-pointer"
               >
                 العودة للساحة

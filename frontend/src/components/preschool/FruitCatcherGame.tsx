@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * FruitCatcherGame.tsx — « Le Panier Gourmand »
  * 8 niveaux : fruits du Maghreb, souk, cailloux à éviter (pas de bombes).
@@ -97,6 +98,7 @@ export const FruitCatcherGame: React.FC<FruitCatcherGameProps> = ({ onExit, lang
   const unlockedCap = (stars[4] ?? 0) > 0 ? Math.max(maxUnlocked, 5) : maxUnlocked;
   const [phase, setPhase] = useState<'select' | 'play'>('select');
   const [activeLevel, setLevel] = useState(1);
+  const requestLeave = useActivityExitGuard(phase === 'play', language);
   const containerRef = useRef<HTMLDivElement>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const ctrlRef = useRef({ left: false, right: false });
@@ -378,7 +380,7 @@ export const FruitCatcherGame: React.FC<FruitCatcherGameProps> = ({ onExit, lang
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setPhase('select')}
+        onClick={() => requestLeave(() => setPhase('select'))}
         className="absolute top-4 start-4 z-10 bg-white hover:bg-lime-50 text-slate-800 font-black
                    px-4 py-2 rounded-2xl shadow-md border-2 border-lime-200 cursor-pointer
                    flex items-center gap-2 text-sm"

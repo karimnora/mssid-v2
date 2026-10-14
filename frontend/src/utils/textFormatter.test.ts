@@ -75,6 +75,19 @@ describe('formatEducationalText - Educational Text Formatter Utility', () => {
 // terms visually scrambled/reordered inside the RTL solution box — unreadable for a child checking
 // their answer. Root cause: no bidi isolation around the embedded LTR math runs.
 describe('isolateMathRuns', () => {
+  it('keeps the opening parenthesis inside the reported fraction calculation', () => {
+    expect(formatEducationalText('1) عدد الكراريس الموزّعة = (120 × 3) ÷ 4 = 90 كراساً.'))
+      .toBe(`1) عدد الكراريس الموزّعة = ${LRI}(120 × 3) ÷ 4 = 90${PDI} كراساً.`);
+  });
+  it('isolates mathematical minus and nested parentheses without reversing subtraction', () => {
+    expect(isolateMathRuns('الباقي = 40 000 − 33 750 = 6 250.'))
+      .toBe(`الباقي = ${LRI}40 000 − 33 750 = 6 250${PDI}.`);
+    expect(isolateMathRuns('((25 + 14) × 2) = 78')).toBe(`${LRI}((25 + 14) × 2) = 78${PDI}`);
+  });
+  it('keeps numbered answers and Arabic explanatory parentheses outside the math island', () => {
+    expect(isolateMathRuns('1) 48 − 23 = 25.')).toBe(`1) ${LRI}48 − 23 = 25${PDI}.`);
+    expect(isolateMathRuns('(أي 48 − 23 = 25).')).toBe(`(أي ${LRI}48 − 23 = 25${PDI}).`);
+  });
   it('wraps the exact reported case: a number decomposed by multiplication and addition', () => {
     const input = 'ب) 45,618 = (4 × 10,000) + (5 × 1,000) + (6 × 100) + (1 × 10) + 8.';
     const output = isolateMathRuns(input);

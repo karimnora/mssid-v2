@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body><div id="root"></div><script type="module">
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { ActivityExitProvider, useActivityExit } from '/src/context/ActivityExitContext.tsx';
+import { useAppNavigation } from '/src/hooks/useAppNavigation.ts';
+import { PreschoolActivityPlayer } from '/src/components/preschool/PreschoolActivityPlayer.tsx';
+import { PuzzleGame } from '/src/components/preschool/PuzzleGame.tsx';
+import { ActiveWorkspace } from '/src/components/ActiveWorkspace.tsx';
+import { LocaleProvider } from '/src/context/LocaleContext.tsx';
+import { LETTERS_MODULE_START } from '/src/data/preschool/lettersModule.ts';
+import '/src/index.css';
+const language = new URLSearchParams(location.search).get('lang') || 'fr';
+const activity = LETTERS_MODULE_START.activities.find(item => item.id === 'letters-trace-baa');
+function Harness() {
+  const nav = useAppNavigation({ isLessonLocked: () => false });
+  const { requestLeave } = useActivityExit();
+  const [game, setGame] = React.useState(false);
+  const home = () => requestLeave(() => { nav.setIsPreschoolActive(false); nav.goHome(); setGame(false); });
+  return React.createElement(React.Fragment, null,
+    React.createElement('nav', null,
+      React.createElement('button', { onClick: home }, 'Home tab'),
+      React.createElement('button', { onClick: () => nav.handleGradeChange('2AP') }, 'Change grade'),
+      React.createElement('output', null, nav.grade)),
+    !nav.isHomeActive && nav.mainCategory === 'labs'
+      ? React.createElement(ActiveWorkspace, {
+          key: `${nav.selectedSubject}:${nav.grade}`, grade: nav.grade, selectedSubject: nav.selectedSubject,
+          selectedLesson:null, currentLessons:[], selectedTrimester:'all', mainCategory:'labs', headerTheme:'default',
+          userProfile:{ completedLessonIds:[], quizFullyValidatedLessonIds:[] }, onBackToLabsCatalog:home,
+          onSelectLesson:nav.handleSelectLesson, onClearLesson:home, onBackToCourses:home, onOpenLab:nav.openLab,
+          onCompleteQuiz:()=>{}, onQuizFullyValidated:()=>{}, onExamComplete:()=>{}, onChallengeComplete:()=>{},
+          onVisitLab:()=>{}, onLabReward:()=>{}, onEarnCoins:()=>{}, onReportError:()=>{},
+        })
+      : nav.isPreschoolActive
+      ? game
+        ? React.createElement(PuzzleGame, { language, onExit: home })
+        : React.createElement(PreschoolActivityPlayer, { activity, language, hasNext:false, onExit:home, onSkip:home, onComplete:home })
+      : React.createElement('main', null,
+          React.createElement('h1', null, 'Activity catalogue'),
+          React.createElement('button', { onClick: () => { setGame(false); nav.setIsPreschoolActive(true); } }, 'Open tracing'),
+          React.createElement('button', { onClick: () => { setGame(true); nav.setIsPreschoolActive(true); } }, 'Open puzzle'),
+          React.createElement('button', { onClick: () => nav.openLab('primary_math_ops') }, 'Open lab')));
+}
+createRoot(document.getElementById('root')).render(React.createElement(LocaleProvider, null, React.createElement(ActivityExitProvider, null, React.createElement(Harness))));
+</script></body></html>

@@ -16,10 +16,10 @@ export interface BadgeProps {
 }
 
 const VARIANT_STYLES: Record<BadgeVariant, string> = {
-  xp: 'bg-[var(--brand-amber)]/15 text-[var(--brand-amber-dark)] border-[var(--brand-amber)]/40',
-  success: 'bg-[var(--brand-emerald)]/15 text-[var(--brand-emerald-dark)] border-[var(--brand-emerald)]/40',
-  info: 'bg-[var(--brand-blue)]/15 text-[var(--brand-blue-dark)] border-[var(--brand-blue)]/40',
-  danger: 'bg-[var(--brand-coral)]/15 text-[var(--brand-coral-dark)] border-[var(--brand-coral)]/40',
+  xp: 'bg-amber-100 text-amber-900 border-amber-300',
+  success: 'bg-emerald-100 text-emerald-900 border-emerald-300',
+  info: 'bg-blue-100 text-blue-900 border-blue-300',
+  danger: 'bg-rose-100 text-rose-900 border-rose-300',
   neutral: 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] border-[var(--app-card-border)]',
 };
 

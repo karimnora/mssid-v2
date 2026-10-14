@@ -12,6 +12,7 @@ import {
 import type { MathInteractiveConfig, MathCountingItem, MathPlaceValueItem } from '../types';
 import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
+import { formatEducationalText } from '../utils/textFormatter';
 
 interface MathInteractiveProps {
   config: MathInteractiveConfig;
@@ -84,7 +85,7 @@ const ConfiguredMathTool: React.FC<{ config: MathInteractiveConfig }> = ({ confi
               <MultiplicationGroupsVisual {...config.cards[activeIdx].multiplicationVisual!} compact />
             )}
             <p className="text-sm font-bold text-slate-200 leading-relaxed bg-emerald-950 p-4 rounded-2xl border border-emerald-800">
-              {config.cards[activeIdx].explanationAr}
+              {formatEducationalText(config.cards[activeIdx].explanationAr)}
             </p>
           </div>
         </div>

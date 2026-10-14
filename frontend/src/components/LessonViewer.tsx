@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
+import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
@@ -96,7 +97,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedExampleTier, setSelectedExampleTier] = useState<1 | 2 | 3 | 4 | 5>(1);
   const [showRevisionSheet, setShowRevisionSheet] = useState(false);
   const [showParentInfo, setShowParentInfo] = useState(false);
-  const [pendingLeaveAction, setPendingLeaveAction] = useState<(() => void) | null>(null);
   const enablePrintablePDFs = useFeatureFlag('enablePrintablePDFs');
   const showInteractive = hasRenderableInteractiveTool(lesson);
 
@@ -105,19 +105,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   // re-answering questions already gotten right. Guards every exit path with one confirmation
   // instead of letting a stray tap on the phone's hardware back button silently discard that.
   const quizInProgress = Object.keys(quiz.selectedAnswers).length > 0 && !quiz.quizFullyPassed;
-  // Same risk, same fix, for the progressive/evaluation exercises tabs — checkPracticeExercise()
-  // feeds the very same kind of in-memory-only awardedExerciseIds set as the quiz does.
+  // Protect answers and partial connections too, before the child checks their answer.
   const totalPracticeExercises = (lesson.progressiveExercises?.length || 0) + practice.evaluationExercises.length;
-  const practiceInProgress = practice.awardedExerciseIds.size > 0 && practice.awardedExerciseIds.size < totalPracticeExercises;
+  const practiceStarted = Object.values(practice.practiceAnswers).some(answer => String(answer).trim().length > 0)
+    || Object.values(practice.matchingConnections).some(connections => Object.keys(connections).length > 0)
+    || Object.values(practice.orderingSelections).some(selection => selection.length > 0)
+    || Object.values(practice.matchingSelectedLeft).some(selection => selection !== null)
+    || practice.awardedExerciseIds.size > 0;
+  const practiceInProgress = practiceStarted && practice.awardedExerciseIds.size < totalPracticeExercises;
   const hasUnsavedProgress = quizInProgress || practiceInProgress;
 
-  const guardLeave = (action: () => void) => {
-    if (hasUnsavedProgress) {
-      setPendingLeaveAction(() => action);
-      return;
-    }
-    action();
-  };
+  const guardLeave = useActivityExitGuard(hasUnsavedProgress);
 
   useEffect(() => {
     setActiveTab('explanation');
@@ -264,7 +262,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   if (lessonProp.premiumContentPending && premiumFetchState !== 'done') {
     return (
       <div className="space-y-6" dir={direction}>
-        <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={onBack}>
+        <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} data-activity-navigation="true" onClick={onBack}>
           {t('lessonsListButton')}
         </Button>
         {premiumFetchState === 'loading' && <LoadingFallback label={t('loadingLessonContent')} />}
@@ -275,7 +273,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <p className="text-sm text-[var(--app-text-muted)] max-w-md mx-auto">
               {t('premiumForbiddenText')}
             </p>
-            <Button variant="ghost" size="sm" onClick={onBack}>
+            <Button variant="ghost" size="sm" data-activity-navigation="true" onClick={onBack}>
               {t('backToLessonsListButton')}
             </Button>
           </Card>
@@ -283,7 +281,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         {premiumFetchState === 'error' && (
           <Card padding="lg" className="text-center space-y-4">
             <p className="text-sm text-[var(--app-text-muted)]">{t('loadFailedText')}</p>
-            <Button variant="outline" size="sm" onClick={onBack}>
+            <Button variant="outline" size="sm" data-activity-navigation="true" onClick={onBack}>
               {t('backToLessonsListButton')}
             </Button>
           </Card>
@@ -745,39 +743,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         onFinishLesson={finishAndContinue}
       />
 
-      {pendingLeaveAction && (
-        <div className="fixed inset-0 z-50 kids-modal-overlay backdrop-blur-sm flex items-start sm:items-center justify-center p-4" dir="rtl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 12 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 340, damping: 28 }}
-            className="kids-modal-panel w-full max-w-sm p-5 space-y-4 text-center"
-          >
-            <div className="text-4xl">🤔</div>
-            <h3 className="text-base font-black text-[var(--kids-ink)]">هل تريد الخروج من التمرين؟</h3>
-            <p className="text-sm text-[var(--kids-muted)] leading-relaxed">
-              لم تُكمل جميع الأسئلة بعد. إذا خرجت الآن، ستحتاج إلى الإجابة على الأسئلة الصحيحة من جديد عند عودتك.
-            </p>
-            <div className="flex items-center gap-2 pt-1">
-              <Button variant="ghost" size="sm" fullWidth onClick={() => setPendingLeaveAction(null)}>
-                البقاء في التمرين
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                fullWidth
-                onClick={() => {
-                  const action = pendingLeaveAction;
-                  setPendingLeaveAction(null);
-                  action();
-                }}
-              >
-                خروج على أي حال
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      )}
+
     </div>
   );
 };

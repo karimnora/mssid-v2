@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "writing-pencil-path-prompt.mp3",
+    "texte": "اِسْحَبِ القَلَمَ: شَجَرَة، ثُعْبَان، طَائِرَةٌ وَرَقِيَّة، بَرْق، مَوْج، ثُمَّ الشَّمْس!",
+    "activite": "قَلَمِي يَتَمَرَّن",
+    "activiteId": "writing-pencil-path",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "writing-pencil-path-success.mp3",
+    "texte": "يَدُكَ جَاهِزَة! أَحْسَنْت!",
+    "activite": "قَلَمِي يَتَمَرَّن",
+    "activiteId": "writing-pencil-path",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "writing-vertical-line-prompt.mp3",
+    "texte": "اِرْسُمِ الشَّجَرَة! مِنَ الأَعْلَى إِلَى الأَسْفَل، مِثْلَ الجِذْع!",
+    "activite": "أَرْسُمُ الشَّجَرَة",
+    "activiteId": "writing-vertical-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "writing-vertical-line-success.mp3",
+    "texte": "شَجَرَةٌ قَوِيَّة! يَدُكَ ثَابِتَة!",
+    "activite": "أَرْسُمُ الشَّجَرَة",
+    "activiteId": "writing-vertical-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "writing-horizontal-line-prompt.mp3",
+    "texte": "اِرْسُمِ الثُّعْبَان! مِنَ اليَمِينِ إِلَى اليَسَار، يَزْحَفُ عَلَى الأَرْض!",
+    "activite": "أَرْسُمُ الثُّعْبَان",
+    "activiteId": "writing-horizontal-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "writing-horizontal-line-success.mp3",
+    "texte": "ثُعْبَانٌ طَوِيل! أَحْسَنْت!",
+    "activite": "أَرْسُمُ الثُّعْبَان",
+    "activiteId": "writing-horizontal-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "writing-oblique-line-prompt.mp3",
+    "texte": "اِرْسُمِ الطَّائِرَةَ الوَرَقِيَّة! تَصْعَدُ فِي الهَوَاءِ بِخَطٍّ مَائِل!",
+    "activite": "أَرْسُمُ الطَّائِرَةَ الوَرَقِيَّة",
+    "activiteId": "writing-oblique-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "writing-oblique-line-success.mp3",
+    "texte": "طَارَتْ فِي السَّمَاء! أَنْتَ فَنَّان!",
+    "activite": "أَرْسُمُ الطَّائِرَةَ الوَرَقِيَّة",
+    "activiteId": "writing-oblique-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "writing-zigzag-line-prompt.mp3",
+    "texte": "اِرْسُمِ البَرْق! فَوْقَ وَتَحْت، فَوْقَ وَتَحْت، زِكْزَاك!",
+    "activite": "أَرْسُمُ البَرْق",
+    "activiteId": "writing-zigzag-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "writing-zigzag-line-success.mp3",
+    "texte": "بَرْقٌ سَرِيع! وَاوَ!",
+    "activite": "أَرْسُمُ البَرْق",
+    "activiteId": "writing-zigzag-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "writing-wavy-line-prompt.mp3",
+    "texte": "اِرْسُمِ المَوْج! نَاعِمٌ مِثْلَ بَحْرِ الجَزَائِر!",
+    "activite": "أَرْسُمُ المَوْج",
+    "activiteId": "writing-wavy-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "writing-wavy-line-success.mp3",
+    "texte": "مَوْجَةٌ جَمِيلَة! بَحْرُنَا!",
+    "activite": "أَرْسُمُ المَوْج",
+    "activiteId": "writing-wavy-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "writing-loop-line-prompt.mp3",
+    "texte": "اِرْسُمِ الشَّمْسَ! دُرْ دُرْ دُرْ، دَائِرَةٌ كَبِيرَة!",
+    "activite": "أَرْسُمُ الشَّمْس",
+    "activiteId": "writing-loop-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "writing-loop-line-success.mp3",
+    "texte": "شَمْسٌ مُشْرِقَة! دَائِرَةٌ رَائِعَة!",
+    "activite": "أَرْسُمُ الشَّمْس",
+    "activiteId": "writing-loop-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "writing-pencil-maze-prompt.mp3",
+    "texte": "اِسْحَبِ القَلَمَ عَلَى الخَطِّ حَتَّى الكُرَّاس!",
+    "activite": "القَلَمُ إِلَى الكُرَّاس",
+    "activiteId": "writing-pencil-maze",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "writing-pencil-maze-success.mp3",
+    "texte": "وَصَلَ القَلَمُ! نَكْتُب!",
+    "activite": "القَلَمُ إِلَى الكُرَّاس",
+    "activiteId": "writing-pencil-maze",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  }
+]

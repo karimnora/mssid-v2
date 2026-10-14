@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "seq-colors-ab-prompt.mp3",
+    "texte": "Rouge, bleu, rouge, bleu, rouge… ensuite ?",
+    "activite": "Rouge puis Bleu",
+    "activiteId": "seq-colors-ab",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "seq-colors-ab-success.mp3",
+    "texte": "Le bleu vient après le rouge ! Bravo !",
+    "activite": "Rouge puis Bleu",
+    "activiteId": "seq-colors-ab",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "seq-animals-ab-prompt.mp3",
+    "texte": "Chat, chien, chat, chien, chat… ensuite ?",
+    "activite": "Chat puis Chien",
+    "activiteId": "seq-animals-ab",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "seq-animals-ab-success.mp3",
+    "texte": "Le chien vient après le chat ! Bravo !",
+    "activite": "Chat puis Chien",
+    "activiteId": "seq-animals-ab",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "seq-day-night-prompt.mp3",
+    "texte": "Soleil, lune, soleil, lune, soleil… ensuite ?",
+    "activite": "Soleil puis Lune",
+    "activiteId": "seq-day-night",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "seq-day-night-success.mp3",
+    "texte": "La lune vient après le soleil ! Super !",
+    "activite": "Soleil puis Lune",
+    "activiteId": "seq-day-night",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "seq-fruits-ab-prompt.mp3",
+    "texte": "Pomme, banane, pomme, banane, pomme… ensuite ?",
+    "activite": "Pomme puis Banane",
+    "activiteId": "seq-fruits-ab",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "seq-fruits-ab-success.mp3",
+    "texte": "La banane vient après la pomme !",
+    "activite": "Pomme puis Banane",
+    "activiteId": "seq-fruits-ab",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "seq-big-small-prompt.mp3",
+    "texte": "Éléphant, souris, éléphant, souris, éléphant… ensuite ?",
+    "activite": "Éléphant puis Souris",
+    "activiteId": "seq-big-small",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "seq-big-small-success.mp3",
+    "texte": "La petite souris vient après l'éléphant !",
+    "activite": "Éléphant puis Souris",
+    "activiteId": "seq-big-small",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "seq-transport-abb-prompt.mp3",
+    "texte": "Voiture, bus, bus, voiture, bus… ensuite ?",
+    "activite": "Voiture puis deux Bus",
+    "activiteId": "seq-transport-abb",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "seq-transport-abb-success.mp3",
+    "texte": "Un deuxième bus ! Bravo !",
+    "activite": "Voiture puis deux Bus",
+    "activiteId": "seq-transport-abb",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "seq-weather-abc-prompt.mp3",
+    "texte": "Soleil, nuage, pluie, soleil, nuage… ensuite ?",
+    "activite": "Soleil, Nuage, Pluie",
+    "activiteId": "seq-weather-abc",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "seq-weather-abc-success.mp3",
+    "texte": "La pluie vient après le nuage ! Génie !",
+    "activite": "Soleil, Nuage, Pluie",
+    "activiteId": "seq-weather-abc",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "seq-numbers-inc-prompt.mp3",
+    "texte": "Un, deux, trois… quel chiffre ensuite ?",
+    "activite": "On Compte Ensemble",
+    "activiteId": "seq-numbers-inc",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "seq-numbers-inc-success.mp3",
+    "texte": "Quatre ! Champion des chiffres !",
+    "activite": "On Compte Ensemble",
+    "activiteId": "seq-numbers-inc",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  }
+]

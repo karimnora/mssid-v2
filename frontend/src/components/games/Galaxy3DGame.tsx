@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * Galaxy3DGame.tsx — مجرة النجوم 3D
  * Beautiful 3D space scene using @react-three/fiber + @react-three/drei.
@@ -213,6 +214,7 @@ const GalaxyScene: React.FC<{
 export const Galaxy3DGame: React.FC<Galaxy3DGameProps> = ({ onExit, onComplete, language = 'ar' }) => {
   const [levelIdx, setLevelIdx] = useState(0);
   const [phase, setPhase] = useState<'select' | 'play' | 'win' | 'lose'>('select');
+  const requestLeave = useActivityExitGuard(phase === 'play', language);
   const [stars, setStars] = useState<StarData[]>([]);
   const [timeLeft, setTimeLeft] = useState(0);
   const [collected, setCollected] = useState(0);
@@ -271,7 +273,7 @@ export const Galaxy3DGame: React.FC<Galaxy3DGameProps> = ({ onExit, onComplete, 
         dir="rtl"
       >
         <div className="w-full flex items-center justify-between mb-6">
-          <button onClick={onExit} className="bg-white/10 rounded-2xl px-4 py-2 text-white/80 font-bold text-sm">
+          <button onClick={() => { if (onExit) requestLeave(onExit); }} className="bg-white/10 rounded-2xl px-4 py-2 text-white/80 font-bold text-sm">
             ← خروج
           </button>
           <h1 className="text-xl font-extrabold text-white">🌌 مجرة النجوم 3D</h1>
@@ -338,7 +340,7 @@ export const Galaxy3DGame: React.FC<Galaxy3DGameProps> = ({ onExit, onComplete, 
             <button onClick={() => startLevel(levelIdx)} className="bg-slate-100 text-slate-700 rounded-2xl px-5 py-2 font-bold text-sm">
               إعادة
             </button>
-            <button onClick={() => setPhase('select')} className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl px-5 py-2 font-bold text-sm shadow">
+            <button onClick={() => requestLeave(() => setPhase('select'))} className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl px-5 py-2 font-bold text-sm shadow">
               اختيار المستوى
             </button>
             {phase === 'win' && (
@@ -359,7 +361,7 @@ export const Galaxy3DGame: React.FC<Galaxy3DGameProps> = ({ onExit, onComplete, 
     <div className="flex flex-col items-center min-h-screen bg-slate-950 pb-4" dir="rtl">
       {/* HUD */}
       <div className="w-full flex items-center justify-between px-4 pt-3 pb-2 bg-black/40 backdrop-blur">
-        <button onClick={onExit} className="bg-white/10 rounded-xl px-3 py-1.5 text-white/80 font-bold text-sm">
+        <button onClick={() => { if (onExit) requestLeave(onExit); }} className="bg-white/10 rounded-xl px-3 py-1.5 text-white/80 font-bold text-sm">
           ← خروج
         </button>
         <div className="text-center">

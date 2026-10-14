@@ -1,4 +1,5 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { CourseLesson, PrimaryGrade, SubjectId, UserProfile } from '../types';
 import { LessonViewer } from './LessonViewer';
 import { ExamsViewer } from './ExamsViewer';
@@ -83,7 +84,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onExamComplete,
   onChallengeComplete,
   onVisitLab,
-  onLabReward,
+  onLabReward: publishLabReward,
   onEarnCoins,
   onReportError,
 }) => {
@@ -96,12 +97,25 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   }, [selectedSubject, onVisitLab]);
 
   const labOpen = isLabSubjectId(selectedSubject);
+  const [workingLab, setWorkingLab] = useState<string | null>(null);
+  useActivityExitGuard(labOpen && workingLab === `${selectedSubject}:${grade}`);
+  const onLabReward = (coins: number, xp: number) => {
+    setWorkingLab(null);
+    publishLabReward(coins, xp);
+  };
 
   return (
   <div id="active-interactive-tool-section" className="scroll-mt-24 transition-all duration-300 relative">
       <Suspense fallback={<LoadingFallback label={t('loadingInteractiveTool')} />}>
       <div
         data-lab-shell={labOpen ? 'true' : undefined}
+        onClickCapture={event => {
+          if (labOpen && event.target instanceof Element && !event.target.closest('[data-activity-navigation]') && event.target.closest('button, input, select, canvas, [role="button"]')) setWorkingLab(`${selectedSubject}:${grade}`);
+        }}
+        onChange={() => { if (labOpen) setWorkingLab(`${selectedSubject}:${grade}`); }}
+        onPointerDown={event => {
+          if (labOpen && event.target instanceof Element && !event.target.closest('[data-activity-navigation]') && event.target.closest('canvas, svg:not(.lucide)')) setWorkingLab(`${selectedSubject}:${grade}`);
+        }}
         className={labOpen ? 'lab-interior kids-pole overflow-x-hidden overflow-y-visible rounded-[28px]' : undefined}
       >
       {labOpen && <div className="kids-hero-band" />}

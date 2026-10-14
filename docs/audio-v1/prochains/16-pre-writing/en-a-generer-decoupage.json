@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "writing-pencil-path-prompt.mp3",
+    "texte": "Drag the pencil: tree, snake, kite, lightning, wave, then the sun!",
+    "activite": "My Pencil Warms Up",
+    "activiteId": "writing-pencil-path",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "writing-pencil-path-success.mp3",
+    "texte": "Your hand is ready! Well done!",
+    "activite": "My Pencil Warms Up",
+    "activiteId": "writing-pencil-path",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "writing-vertical-line-prompt.mp3",
+    "texte": "Trace the tree! From top to bottom, like the trunk!",
+    "activite": "I Trace the Tree",
+    "activiteId": "writing-vertical-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "writing-vertical-line-success.mp3",
+    "texte": "A strong tree! Your hand is steady!",
+    "activite": "I Trace the Tree",
+    "activiteId": "writing-vertical-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "writing-horizontal-line-prompt.mp3",
+    "texte": "Trace the snake! From left to right, it crawls on the ground!",
+    "activite": "I Trace the Snake",
+    "activiteId": "writing-horizontal-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "writing-horizontal-line-success.mp3",
+    "texte": "A long snake! Well done!",
+    "activite": "I Trace the Snake",
+    "activiteId": "writing-horizontal-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "writing-oblique-line-prompt.mp3",
+    "texte": "Trace the kite! It goes up in the sky on a slant!",
+    "activite": "I Trace the Kite",
+    "activiteId": "writing-oblique-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "writing-oblique-line-success.mp3",
+    "texte": "It flies in the sky! Little artist!",
+    "activite": "I Trace the Kite",
+    "activiteId": "writing-oblique-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "writing-zigzag-line-prompt.mp3",
+    "texte": "Trace the lightning! Up, down, up, down, zigzag!",
+    "activite": "I Trace the Lightning",
+    "activiteId": "writing-zigzag-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "writing-zigzag-line-success.mp3",
+    "texte": "Fast lightning! Wow!",
+    "activite": "I Trace the Lightning",
+    "activiteId": "writing-zigzag-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "writing-wavy-line-prompt.mp3",
+    "texte": "Trace the wave! Soft like the sea of Algeria!",
+    "activite": "I Trace the Wave",
+    "activiteId": "writing-wavy-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "writing-wavy-line-success.mp3",
+    "texte": "A beautiful wave! Our sea!",
+    "activite": "I Trace the Wave",
+    "activiteId": "writing-wavy-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "writing-loop-line-prompt.mp3",
+    "texte": "Trace the sun! Round, round, round, a big circle!",
+    "activite": "I Trace the Sun",
+    "activiteId": "writing-loop-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "writing-loop-line-success.mp3",
+    "texte": "A bright sun! A wonderful circle!",
+    "activite": "I Trace the Sun",
+    "activiteId": "writing-loop-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "writing-pencil-maze-prompt.mp3",
+    "texte": "Drag the pencil along the line all the way to the notebook!",
+    "activite": "Pencil to the Notebook",
+    "activiteId": "writing-pencil-maze",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "writing-pencil-maze-success.mp3",
+    "texte": "The pencil arrived! We write!",
+    "activite": "Pencil to the Notebook",
+    "activiteId": "writing-pencil-maze",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  }
+]

@@ -369,6 +369,7 @@ export const HonorCertificatesStudioModal: React.FC<HonorCertificatesStudioModal
                   return (
                     <button
                       key={tmpl.id}
+                      data-certificate-template={tmpl.id}
                       disabled={isLocked}
                       onClick={() => {
                         if (isLocked) return;

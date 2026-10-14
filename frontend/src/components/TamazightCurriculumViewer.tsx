@@ -291,7 +291,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
 
             {onBack && (
               <button
-                onClick={onBack}
+                data-activity-navigation="true" onClick={onBack}
                 aria-label="العودة"
                 className="hit-target flex items-center justify-center rounded-2xl bg-white/20 hover:bg-white/30 text-white transition-all cursor-pointer"
               >
@@ -346,7 +346,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                 onClick={() => setSelectedTrimester(trim.id as any)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                   selectedTrimester === trim.id
-                    ? 'bg-amber-600 text-white shadow-xs'
+                    ? 'bg-amber-700 text-white shadow-xs'
                     : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)] hover:bg-slate-200/50'
                 }`}
               >
@@ -438,7 +438,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
               onClick={() => setActiveTab('tifinagh_keyboard')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
                 activeTab === 'tifinagh_keyboard'
-                  ? 'bg-amber-600 text-white shadow-sm'
+                  ? 'bg-amber-700 text-white shadow-sm'
                   : 'bg-[var(--app-card-subtle)] text-[var(--app-text-muted)]'
               }`}
             >
@@ -559,7 +559,7 @@ export const TamazightCurriculumViewer: React.FC<TamazightCurriculumViewerProps>
                     {currentLesson.keyFormulas.map((f, i) => (
                       <div
                         key={i}
-                        className="p-3 bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-200 dark:border-indigo-900 rounded-2xl text-xs"
+                        className="p-3 bg-slate-50 dark:bg-slate-950/20 border border-indigo-200 dark:border-indigo-900 rounded-2xl text-xs"
                       >
                         <div className="font-black text-indigo-900 dark:text-indigo-300 mb-1">{f.labelAr}</div>
                         {/* These formulas mix Latin/Tifinagh words with Arabic glosses in parens

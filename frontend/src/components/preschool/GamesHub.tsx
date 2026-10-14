@@ -111,6 +111,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                   return (
                     <motion.button
                       key={g.id}
+                      data-preschool-game={g.id}
                       initial={{ opacity: 0, y: 24 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.08, type: 'spring', stiffness: 260, damping: 22 }}

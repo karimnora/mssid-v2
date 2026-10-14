@@ -103,6 +103,7 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
   const drawing = useRef(false);
   const liveStroke = useRef<Pt[]>([]);
   const maskRef = useRef<ImageData | null>(null);
+  const feedbackTimerRef = useRef<number | undefined>(undefined);
 
   const glyph = localizeGlyph(
     activity.i18n[language].glyph ?? activity.visualAssets.mainSvgOrImage,
@@ -114,6 +115,7 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
     setStrokes([]);
     liveStroke.current = [];
     drawing.current = false;
+    return () => window.clearTimeout(feedbackTimerRef.current);
   }, [glyph, activity.id]);
 
   const toLocalPoint = (clientX: number, clientY: number): Pt => {
@@ -161,9 +163,10 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
   const wroteIt = coverage >= WROTE_COVERAGE;
 
   const finish = (quality: PreschoolPlayQuality) => {
+    window.clearTimeout(feedbackTimerRef.current);
     if (quality === 'tried') playGentleNudge();
     else playSuccessChime();
-    setTimeout(() => onComplete(quality), 700);
+    feedbackTimerRef.current = window.setTimeout(() => onComplete(quality), 700);
   };
 
   const handleWrote = () => {

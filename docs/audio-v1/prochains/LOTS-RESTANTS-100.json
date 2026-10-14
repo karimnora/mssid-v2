@@ -1,0 +1,170 @@
+[
+  {
+    "lot": "15-emotions",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "15-emotions",
+    "langue": "fr",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "15-emotions",
+    "langue": "en",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "16-pre-writing",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "16-pre-writing",
+    "langue": "fr",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "16-pre-writing",
+    "langue": "en",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "17-logic-spatial",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "17-logic-spatial",
+    "langue": "fr",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "17-logic-spatial",
+    "langue": "en",
+    "phrases": 20,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/en-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/en-decoupage-restant.json"
+  },
+  {
+    "lot": "18-sequences",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "18-sequences",
+    "langue": "fr",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "18-sequences",
+    "langue": "en",
+    "phrases": 16,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/en-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/en-decoupage-restant.json"
+  },
+  {
+    "lot": "19-stories",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "19-stories",
+    "langue": "fr",
+    "phrases": 3,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/fr-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/fr-decoupage-restant.json"
+  },
+  {
+    "lot": "19-stories",
+    "langue": "en",
+    "phrases": 6,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/en-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/en-decoupage-restant.json"
+  },
+  {
+    "lot": "20-art-drawing",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "20-art-drawing",
+    "langue": "fr",
+    "phrases": 16,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/fr-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/fr-decoupage-restant.json"
+  },
+  {
+    "lot": "20-art-drawing",
+    "langue": "en",
+    "phrases": 16,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/en-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/en-decoupage-restant.json"
+  },
+  {
+    "lot": "21-creative-games",
+    "langue": "ar",
+    "phrases": 0,
+    "etat": "integre",
+    "texte": null,
+    "plan": null
+  },
+  {
+    "lot": "21-creative-games",
+    "langue": "fr",
+    "phrases": 16,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/fr-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/fr-decoupage-restant.json"
+  },
+  {
+    "lot": "21-creative-games",
+    "langue": "en",
+    "phrases": 16,
+    "etat": "reporte-a-plus-tard",
+    "texte": "a-reprendre-plus-tard/en-texte-restant.txt",
+    "plan": "a-reprendre-plus-tard/en-decoupage-restant.json"
+  }
+]

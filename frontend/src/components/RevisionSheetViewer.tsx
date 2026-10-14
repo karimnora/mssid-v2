@@ -4,7 +4,7 @@ import { CourseLesson } from '../types';
 import { SUBJECTS_LIST } from '../data/subjectsData';
 import { Button, Badge } from './ui';
 import { Printer, X, ListChecks, Sigma, BookMarked, Star, AlertTriangle } from 'lucide-react';
-import { stripArabicTashkeel } from '../utils/textFormatter';
+import { stripArabicTashkeel, formatEducationalText } from '../utils/textFormatter';
 import { printDocument } from '../utils/printDocument';
 
 interface RevisionSheetViewerProps {
@@ -24,7 +24,7 @@ export const RevisionSheetViewer: React.FC<RevisionSheetViewerProps> = ({ lesson
 
   const t = (text: string | undefined | null): string => {
     if (!text) return '';
-    return tashkeelEnabled ? text : stripArabicTashkeel(text);
+    return formatEducationalText(tashkeelEnabled ? text : stripArabicTashkeel(text));
   };
 
   return (

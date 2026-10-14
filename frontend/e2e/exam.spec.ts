@@ -22,7 +22,9 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('a student can open an exam and mark it complete', async ({ page }) => {
-  await page.locator('[data-nav-assess]').click();
+  await expect(page.locator('[data-home-layout]')).toContainText('Élève Test');
+  // The same accessible label addresses the mobile footer and the desktop header.
+  await page.getByRole('button', { name: 'أختبر', exact: true }).click();
   await page.getByRole('button', { name: 'الاختبارات الفصلية' }).click();
   await page.locator('[data-exam-subject="math"]').click();
 

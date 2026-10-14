@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "creative-play-path-prompt.mp3",
+    "texte": "Drag: apple, ant, fish, farm, then bee!",
+    "activite": "The Play Book",
+    "activiteId": "creative-play-path",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "creative-play-path-success.mp3",
+    "texte": "Let's play! Well done!",
+    "activite": "The Play Book",
+    "activiteId": "creative-play-path",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "creative-color-apple-prompt.mp3",
+    "texte": "Pick a color and color the apple! The fruit, the stem and the leaf!",
+    "activite": "Color the Apple",
+    "activiteId": "creative-color-apple",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "creative-color-apple-success.mp3",
+    "texte": "A beautiful apple!",
+    "activite": "Color the Apple",
+    "activiteId": "creative-color-apple",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "creative-maze-ant-prompt.mp3",
+    "texte": "Drag the ant all the way to the green leaf!",
+    "activite": "Ant to the Leaf",
+    "activiteId": "creative-maze-ant",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "creative-maze-ant-success.mp3",
+    "texte": "The ant arrived!",
+    "activite": "Ant to the Leaf",
+    "activiteId": "creative-maze-ant",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "creative-maze-fish-prompt.mp3",
+    "texte": "Drag the fish through the sea to the shell!",
+    "activite": "Fish to the Shell",
+    "activiteId": "creative-maze-fish",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "creative-maze-fish-success.mp3",
+    "texte": "The fish found its shell!",
+    "activite": "Fish to the Shell",
+    "activiteId": "creative-maze-fish",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "creative-jigsaw-farm-prompt.mp3",
+    "texte": "Put the sun, the tree and the house in their place!",
+    "activite": "Build the Farm",
+    "activiteId": "creative-jigsaw-farm",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "creative-jigsaw-farm-success.mp3",
+    "texte": "The farm is complete!",
+    "activite": "Build the Farm",
+    "activiteId": "creative-jigsaw-farm",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "creative-jigsaw-oasis-prompt.mp3",
+    "texte": "Put the sun, the camel, the fennec and the palm in their place!",
+    "activite": "Build the Oasis",
+    "activiteId": "creative-jigsaw-oasis",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "creative-jigsaw-oasis-success.mp3",
+    "texte": "A beautiful oasis!",
+    "activite": "Build the Oasis",
+    "activiteId": "creative-jigsaw-oasis",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "creative-maze-car-prompt.mp3",
+    "texte": "Drag the car along the road all the way home!",
+    "activite": "Car to the House",
+    "activiteId": "creative-maze-car",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "creative-maze-car-success.mp3",
+    "texte": "The car arrived home!",
+    "activite": "Car to the House",
+    "activiteId": "creative-maze-car",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "creative-bees-flowers-prompt.mp3",
+    "texte": "Put the bees with the honey, and the butterflies with the flower!",
+    "activite": "Bee or Butterfly?",
+    "activiteId": "creative-bees-flowers",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "creative-bees-flowers-success.mp3",
+    "texte": "Everyone in their place!",
+    "activite": "Bee or Butterfly?",
+    "activiteId": "creative-bees-flowers",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  }
+]

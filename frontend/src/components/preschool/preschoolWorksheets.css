@@ -77,7 +77,7 @@
   }
   .sheet-print-modal .printable-sheet.preschool-worksheet {
     page: preschool; box-sizing: border-box; width: 190mm !important; max-width: none !important;
-    height: 276mm; min-height: 0; padding: 0 !important; margin: 0 !important;
+    height: 276mm !important; min-height: 0; padding: 0 !important; margin: 0 !important;
     display: flex !important; flex-direction: column; gap: 3mm;
     break-after: page; break-inside: avoid; font-size: 12pt;
   }

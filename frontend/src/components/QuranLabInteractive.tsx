@@ -29,11 +29,11 @@ export const QuranLabInteractive: React.FC = () => {
   return (
     <div className="kids-pole rounded-[28px] p-4 sm:p-6 space-y-5" dir="rtl" data-lab-instrument>
       <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-        <div className="p-3 bg-amber-500/20 text-amber-300 rounded-2xl">
+        <div className="p-3 bg-amber-100 text-amber-800 rounded-2xl">
           <BookOpen className="w-7 h-7" />
         </div>
         <div>
-          <h2 className="text-lg font-black text-amber-300">مختبر السور القصيرة</h2>
+          <h2 className="text-lg font-black text-amber-900">مختبر السور القصيرة</h2>
           <p className="text-xs font-bold text-emerald-800 mt-0.5">تلاوة ورش، آيةً آيةً، مع بسملة قبل كل سورة</p>
         </div>
       </div>

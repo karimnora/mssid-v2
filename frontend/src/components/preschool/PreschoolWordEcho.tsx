@@ -37,11 +37,17 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
       <p className="text-2xl sm:text-3xl font-black text-[#0f172a] text-center">{word}</p>
 
       {echo.phase === 'unsupported' || echo.phase === 'denied' ? (
+        <>
         <p className="text-sm font-bold text-center text-orange-800 bg-white rounded-2xl px-3 py-2 border-2 border-amber-200">
           {echo.phase === 'denied'
             ? t('لَمْ يُسْمَحْ بِالمِيكْرُوفُون. قُلِ الكَلِمَةَ بِصَوْتٍ عَالٍ!', 'Micro refusé. Dis le mot tout fort !', 'Mic denied. Say the word out loud!')
             : t('قُلِ الكَلِمَةَ بِصَوْتٍ عَالٍ!', 'Dis le mot tout fort !', 'Say the word out loud!')}
         </p>
+        {echo.phase === 'denied' && <button type="button" onClick={() => { stop(); void echo.start(); }}
+          className={`${hit} rounded-3xl px-4 cursor-pointer bg-white text-[#0f172a] border-2 border-amber-300`}>
+          {t('أَعِدْ مُحَاوَلَةَ المِيكْرُوفُون', 'Réessayer le micro', 'Retry microphone')}
+        </button>}
+        </>
       ) : echo.phase !== 'recording' ? (
         <motion.button
           type="button"

@@ -472,7 +472,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
 
         {onBack && (
           <button
-            onClick={onBack}
+            data-activity-navigation="true" onClick={onBack}
             aria-label={tCommon('backToTools')}
             className="z-10 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >

@@ -19,6 +19,7 @@ public class PrintPlugin extends Plugin {
     @PluginMethod
     public void print(PluginCall call) {
         final String jobName = call.getString("jobName", "Mssid DZ");
+        final boolean landscape = Boolean.TRUE.equals(call.getBoolean("landscape", false));
         getActivity().runOnUiThread(() -> {
             try {
                 PrintManager printManager = (PrintManager) getContext().getSystemService(Context.PRINT_SERVICE);
@@ -28,7 +29,13 @@ public class PrintPlugin extends Plugin {
                 }
                 WebView webView = getBridge().getWebView();
                 PrintDocumentAdapter adapter = webView.createPrintDocumentAdapter(jobName);
-                printManager.print(jobName, adapter, defaultPrintAttributes());
+                // Match the app's 10 mm paper margin even on WebViews that ignore @page.
+                printManager.print(jobName, adapter, new PrintAttributes.Builder()
+                        .setMediaSize(landscape
+                                ? PrintAttributes.MediaSize.ISO_A4.asLandscape()
+                                : PrintAttributes.MediaSize.ISO_A4)
+                        .setMinMargins(new PrintAttributes.Margins(394, 394, 394, 394))
+                        .build());
                 call.resolve();
             } catch (Exception e) {
                 call.reject("Print failed: " + e.getMessage());

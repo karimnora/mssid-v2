@@ -1,3 +1,6 @@
+import { mapAuthProfile, mapAuthResponse } from './authProfile';
+import { queueProgressUpdate, setProgressSyncOwner, restorePendingProgress, retryPendingProgress, progressSync, clearPendingProgress } from './progressSync';
+import { applyDidouGoldBonus } from '../utils/didouCompanion';
 import { AuthUser, PaymentReceipt, PaymentMethod, UserRole, Subscription } from '../types/auth';
 import { DidouAvatarConfig } from '../types/ecosystem';
 import { springBootApi } from './springBootApi';
@@ -65,6 +68,7 @@ export class AuthService {
       }
     }
     currentUserState = user;
+    setProgressSyncOwner(user?.id ?? null);
     setActiveProgressOwner(user?.id ?? null);
     notifyAuthListeners();
   }
@@ -73,6 +77,13 @@ export class AuthService {
   static subscribe(listener: AuthListener): () => void {
     authListeners.add(listener);
     return () => authListeners.delete(listener);
+  }
+
+  static hydrateCurrentUser(user: AuthUser): AuthUser {
+    const restored = restorePendingProgress(user);
+    this.setCurrentUser(restored);
+    void retryPendingProgress();
+    return restored;
   }
 
 static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser | null; error?: string }> {
@@ -89,36 +100,9 @@ static async loginAsync(email: string, pass: string): Promise<{ user: AuthUser |
       };
     }
 
-    const u = response.data.user || {};
-    // SEC/DATA-01: `||` treats a genuine 0 (or empty array) as "missing" and falls through to these
-    // defaults — a real student back at day 0 of their streak, or with zero quizzes/lessons done,
-    // was getting shown fabricated demo progress (4-day streak, 3 quizzes, a 5AP lesson they never
-    // opened) instead of their real, honest state. `??` only falls back on null/undefined, and the
-    // fallback values themselves are now honest "no data yet" values, not invented demo numbers.
-    const scoreVal = u.score !== undefined ? u.score : (response.data as any).score ?? 0;
-    const levelVal = u.level !== undefined ? u.level : Math.floor(scoreVal / 100) + 1;
+    const authUser = mapAuthResponse(response.data, { nom: email.split('@')[0], email });
 
-    const authUser: AuthUser = {
-      id: u.id || Math.floor(Math.random() * 9000) + 1000,
-      nom: response.data.nom || u.nom || email.split('@')[0],
-      email: response.data.email || u.email || email,
-      role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-      score: scoreVal,
-      xp: scoreVal,
-      level: levelVal,
-      grade: u.grade ?? '5AP',
-      wilaya: u.wilaya,
-      streakDays: u.streakDays ?? 0,
-      quizzesCompleted: u.quizzesCompleted ?? 0,
-      completedLessonIds: u.completedLessonIds ?? [],
-      badges: u.badges || [],
-      quizScores: u.quizScores || {},
-      emailVerified: u.emailVerified ?? false,
-      goldCoins: u.goldCoins ?? 150,
-      avatarConfig: u.avatarConfig,
-    };
-
-    this.setCurrentUser(authUser);
+    this.hydrateCurrentUser(authUser);
     return { user: authUser };
   } catch (err: any) {
     return {
@@ -139,28 +123,9 @@ static async registerAsync(nom: string, email: string, pass: string, grade?: str
       };
     }
 
-    const u = response.data.user || {};
-    const authUser: AuthUser = {
-      id: u.id || Math.floor(Math.random() * 9000) + 1000,
-      nom: response.data.nom || u.nom || nom || email.split('@')[0],
-      email: response.data.email || u.email || email,
-      role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-      score: u.score ?? 0,
-      xp: u.xp ?? 0,
-      level: u.level ?? 1,
-      grade: u.grade || grade || '5AP',
-      wilaya: u.wilaya || wilaya,
-      streakDays: u.streakDays || 1,
-      quizzesCompleted: u.quizzesCompleted || 0,
-      completedLessonIds: u.completedLessonIds || [],
-      badges: u.badges || [],
-      quizScores: u.quizScores || {},
-      emailVerified: u.emailVerified ?? false,
-      goldCoins: u.goldCoins ?? 150,
-      avatarConfig: u.avatarConfig,
-    };
+    const authUser = mapAuthResponse(response.data, { nom: nom || email.split('@')[0], email, grade, wilaya });
 
-    this.setCurrentUser(authUser);
+    this.hydrateCurrentUser(authUser);
     return { user: authUser };
   } catch (err: any) {
     return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
@@ -175,28 +140,9 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       return { user: null, error: response.error || 'Échec de la connexion avec Google.' };
     }
 
-    const u = response.data.user || {};
-    const authUser: AuthUser = {
-      id: u.id || Math.floor(Math.random() * 9000) + 1000,
-      nom: response.data.nom || u.nom || '',
-      email: response.data.email || u.email || '',
-      role: (response.data.roleName || response.data.role || u.role || 'ROLE_FREE') as UserRole,
-      score: u.score ?? 0,
-      xp: u.xp ?? u.score ?? 0,
-      level: u.level ?? 1,
-      grade: u.grade ?? '5AP',
-      wilaya: u.wilaya,
-      streakDays: u.streakDays ?? 0,
-      quizzesCompleted: u.quizzesCompleted ?? 0,
-      completedLessonIds: u.completedLessonIds ?? [],
-      badges: u.badges || [],
-      quizScores: u.quizScores || {},
-      emailVerified: u.emailVerified ?? false,
-      goldCoins: u.goldCoins ?? 150,
-      avatarConfig: u.avatarConfig,
-    };
+    const authUser = mapAuthResponse(response.data);
 
-    this.setCurrentUser(authUser);
+    this.hydrateCurrentUser(authUser);
     return { user: authUser, profileIncomplete: response.data.profileIncomplete === true };
   } catch (err: any) {
     return { user: null, error: 'Impossible de contacter le serveur. Veuillez réessayer plus tard.' };
@@ -222,7 +168,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     };
   }
 
-  static addScore(points: number): AuthUser | null {
+  static addScore(points: number, lessonId?: string): AuthUser | null {
     const user = this.getCurrentUser();
     if (!user) return null;
 
@@ -238,6 +184,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       xp: newScore,
       level: newLevel,
       quizzesCompleted: currentQuizzes + 1,
+      quizScores: lessonId ? { ...user.quizScores, [lessonId]: (user.quizScores?.[lessonId] ?? 0) + points } : user.quizScores,
       streakDays,
       lastActiveDate,
     };
@@ -246,7 +193,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
 
     // Persist the earned XP/progress to the backend (best-effort, fire-and-forget —
     // addScore stays synchronous since callers don't await it).
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -282,7 +229,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
 
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -316,7 +263,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const updatedUser: AuthUser = { ...user, grade: newGrade };
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       grade: newGrade,
     }).catch((err) => console.error('Erreur de synchronisation du niveau:', err));
@@ -334,7 +281,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const updatedUser: AuthUser = { ...user, wilaya: newWilaya };
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       wilaya: newWilaya,
     }).catch((err) => console.error('Erreur de synchronisation de la wilaya:', err));
@@ -386,6 +333,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const newScore = currentScore + points;
     const currentExams = user.completedExamIds || [];
     const isFirstCompletion = !currentExams.includes(examId);
+    if (!examId || !isFirstCompletion) return user;
     const newExams = isFirstCompletion ? [...currentExams, examId] : currentExams;
     const { streakDays, lastActiveDate } = this.computeStreak(user);
 
@@ -401,7 +349,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
 
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -442,7 +390,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
 
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -469,7 +417,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const updatedUser: AuthUser = { ...user, badges, badgeUnlockedAt };
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -490,7 +438,7 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
     const updatedUser: AuthUser = { ...user, goldCoins, avatarConfig };
     this.setCurrentUser(updatedUser);
 
-    springBootApi.updateUserProgress({
+    queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -498,6 +446,23 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
       avatarConfig,
     }).catch((err) => console.error('Erreur de synchronisation des pièces/tenue Didou:', err));
 
+    return updatedUser;
+  }
+
+  static addLabReward(coins: number, xp: number): AuthUser | null {
+    const user = this.getCurrentUser();
+    if (!user) return null;
+    const currentXp = user.score ?? user.xp ?? 0;
+    const total = currentXp + Math.max(0, xp);
+    const updatedUser: AuthUser = { ...user, score: total, xp: total, level: Math.floor(total / 100) + 1,
+      goldCoins: (user.goldCoins ?? 150) + applyDidouGoldBonus(coins, user.level ?? Math.floor(currentXp / 100) + 1),
+      ...this.computeStreak(user),
+    };
+    this.setCurrentUser(updatedUser);
+    void queueProgressUpdate(updatedUser.id, { score: total, xp: total, level: updatedUser.level,
+      goldCoins: updatedUser.goldCoins, avatarConfig: updatedUser.avatarConfig,
+      streakDays: updatedUser.streakDays, lastActiveDate: updatedUser.lastActiveDate,
+    });
     return updatedUser;
   }
 
@@ -514,7 +479,7 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
   this.setCurrentUser(updatedUser);
 
   try {
-    await springBootApi.updateUserProgress({
+    await queueProgressUpdate(updatedUser.id, {
       email: updatedUser.email,
       nom: updatedUser.nom,
       name: updatedUser.nom,
@@ -542,50 +507,19 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
 
   static async fetchProfileFromDbAsync(): Promise<AuthUser | null> {
     const currentUser = this.getCurrentUser();
-    if (!currentUser || !currentUser.email) {
-      return null;
-    }
-
-    try {
-      const userEmail = currentUser.email;
-      const res = await springBootApi.request<any>(`/v1/users/me?email=${encodeURIComponent(userEmail)}`, {
-        method: 'GET',
-        headers: {
-          'x-user-id': userEmail,
-        },
-      });
-      if (res.data) {
-        const rawScore = res.data.score !== undefined ? res.data.score : (res.data.xp !== undefined ? res.data.xp : currentUser.score || 0);
-        const rawLevel = res.data.level !== undefined ? res.data.level : Math.floor(rawScore / 100) + 1;
-
-        const updatedUser: AuthUser = {
-          ...currentUser,
-          id: res.data.id || currentUser.id,
-          nom: res.data.nom || currentUser.nom,
-          email: res.data.email || currentUser.email,
-          role: (res.data.roleName || res.data.role || currentUser.role) as UserRole,
-          score: rawScore,
-          xp: rawScore,
-          level: rawLevel,
-          grade: res.data.grade || currentUser.grade || '5AP',
-          wilaya: res.data.wilaya || currentUser.wilaya,
-          streakDays: res.data.streakDays || currentUser.streakDays || 1,
-          quizzesCompleted: res.data.quizzesCompleted || currentUser.quizzesCompleted || 0,
-          completedLessonIds: res.data.completedLessonIds || currentUser.completedLessonIds || [],
-          badges: res.data.badges && res.data.badges.length > 0 ? res.data.badges : currentUser.badges || [],
-          badgeUnlockedAt: res.data.badgeUnlockedAt || currentUser.badgeUnlockedAt || {},
-          completedExamIds: res.data.completedExamIds || currentUser.completedExamIds || [],
-          completedChallengeIds: res.data.completedChallengeIds || currentUser.completedChallengeIds || [],
-        };
-        this.setCurrentUser(updatedUser);
-        return updatedUser;
-      }
-    } catch {
-      // Fallback
-    }
-    return currentUser;
+    if (!currentUser) return null;
+    await retryPendingProgress();
+    const latest = this.getCurrentUser();
+    if (!latest || latest.id !== currentUser.id) return latest;
+    // Never replace local gains with an older server snapshot while saving is pending.
+    if (progressSync.getSnapshot().status === 'pending') return latest;
+    const res = await springBootApi.fetchCurrentUser();
+    if (res.error || !res.data) throw new Error(res.error || 'Impossible de récupérer le profil.');
+    if (this.getCurrentUser() !== latest) return this.getCurrentUser();
+    const updated = restorePendingProgress(mapAuthProfile(res.data, latest));
+    this.setCurrentUser(updated);
+    return updated;
   }
-
   /**
    * Real user-list read for the admin console (UsersRolesModule.tsx). Deliberately does NOT fall
    * back to demo/mock accounts on failure — an admin seeing "أحمد التلميذ / سارة المتفوقة / الأستاذ
@@ -685,7 +619,13 @@ static async updateProfileAsync(nom: string, grade?: string): Promise<AuthUser |
    */
   static async deleteAccountAsync(): Promise<{ success: boolean; error?: string }> {
     try {
+      const user = this.getCurrentUser();
       await springBootApi.deleteAccount();
+      if (user) {
+        clearPendingProgress(user.id);
+        try { localStorage.removeItem(`mssid_local_activities_v1_${user.id}`); } catch { /* unavailable storage */ }
+      }
+      if (this.getCurrentUser()?.id !== user?.id) return { success: false, error: 'La session a changé. Veuillez réessayer.' };
       this.setCurrentUser(null);
       return { success: true };
     } catch (err: any) {

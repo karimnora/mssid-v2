@@ -1,4 +1,5 @@
 import React from 'react';
+import { isolateMathRuns } from '../utils/textFormatter';
 
 // Arabic (and most RTL scripts) reorder text visually by the Unicode Bidi Algorithm. Digits stay
 // LTR on their own, but once an expression mixes digits with parentheses/operators inside an RTL
@@ -17,56 +18,12 @@ export const MathExpression: React.FC<MathExpressionProps> = ({ children, classN
   </span>
 );
 
-// A token counts as "math" only if it contains a digit AND at least one operator/paren/equals sign —
-// bare words never match, and a lone number ("التمرين 3") is left inline since a single number is
-// never visually reordered by the bidi algorithm on its own.
-const MATH_TOKEN = /^[0-9٠-٩()×x*÷/+\-=.,%]+$/;
-
-function isMathToken(token: string): boolean {
-  if (!MATH_TOKEN.test(token)) return false;
-  const hasDigit = /[0-9٠-٩]/.test(token);
-  const hasSymbol = /[()×x*÷/+\-=]/.test(token);
-  return hasDigit && hasSymbol;
-}
-
 /**
- * Splits `text` on whitespace and wraps consecutive runs of math-like tokens in an isolated
- * <MathExpression>, leaving surrounding Arabic/French/English words untouched. Safe to use as
- * React children anywhere `text` used to be rendered directly (no dangerouslySetInnerHTML).
+ * Use the same complete-expression isolation as exam solutions. Splitting on whitespace used
+ * to isolate only "+"/"(3" fragments and leave operands in the surrounding RTL paragraph.
+ * Unicode isolates also allow long expressions to wrap naturally on a narrow screen.
  */
 export function renderTextWithMath(text: string | undefined | null): React.ReactNode {
   if (!text) return null;
-
-  const parts = text.split(/(\s+)/);
-  const nodes: React.ReactNode[] = [];
-  let buffer: string[] = [];
-  let key = 0;
-
-  const flushBuffer = () => {
-    if (buffer.length === 0) return;
-    nodes.push(
-      <MathExpression key={`math-${key++}`}>{buffer.join('')}</MathExpression>
-    );
-    buffer = [];
-  };
-
-  for (const part of parts) {
-    if (/^\s+$/.test(part)) {
-      if (buffer.length > 0) {
-        buffer.push(part);
-      } else {
-        nodes.push(part);
-      }
-      continue;
-    }
-    if (isMathToken(part)) {
-      buffer.push(part);
-    } else {
-      flushBuffer();
-      nodes.push(part);
-    }
-  }
-  flushBuffer();
-
-  return nodes;
+  return isolateMathRuns(text);
 }

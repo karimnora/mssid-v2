@@ -285,12 +285,12 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
             transition={{ type: 'spring', stiffness: 200, damping: 24 }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full rounded-3xl shadow-md border border-sky-300 bg-gradient-to-r from-sky-400 to-cyan-400 px-4 py-3.5 flex items-center gap-3 cursor-pointer text-start mx-1"
+            className="w-full rounded-3xl shadow-md border border-sky-300 bg-gradient-to-r from-sky-700 to-cyan-800 px-4 py-3.5 flex items-center gap-3 cursor-pointer text-start"
           >
             <span className="text-3xl shrink-0">🖨️</span>
             <div className="flex-1 min-w-0">
               <p className="text-white font-black text-base">{labels.printables}</p>
-              <p className="text-white/90 text-xs font-bold leading-snug">{labels.printablesDesc}</p>
+              <p className="text-white text-xs font-bold leading-snug">{labels.printablesDesc}</p>
             </div>
             <span className="text-white text-xl shrink-0">{dir === 'rtl' ? '◀' : '▶'}</span>
           </motion.button>
@@ -302,21 +302,21 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
               icon="🎨"
               title={labels.ateliers}
               desc={labels.ateliersDesc}
-              gradient="from-amber-400 to-orange-500"
+              gradient="from-amber-700 to-orange-800"
               onClick={() => onViewChange('ateliers')}
             />
             <DoorCard
               icon="📚"
               title={labels.learn}
               desc={labels.learnDesc}
-              gradient="from-sky-400 to-indigo-500"
+              gradient="from-sky-700 to-indigo-800"
               onClick={() => onViewChange('apprendre')}
             />
             <DoorCard
               icon="🎮"
               title={labels.play}
               desc={labels.playDesc}
-              gradient="from-violet-400 to-fuchsia-500"
+              gradient="from-violet-700 to-fuchsia-800"
               onClick={() => onSelectSpecialTool('games')}
             />
           </div>
@@ -453,7 +453,7 @@ const DoorCard: React.FC<{
     <span className="text-5xl">{icon}</span>
     <div className="mt-6 space-y-1">
       <p className="text-2xl font-black">{title}</p>
-      <p className="text-sm font-medium text-white/90 leading-snug">{desc}</p>
+      <p className="text-sm font-medium text-white leading-snug">{desc}</p>
     </div>
   </motion.button>
 );

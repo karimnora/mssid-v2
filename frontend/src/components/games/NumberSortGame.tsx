@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade } from '../../types';
@@ -59,6 +60,7 @@ export const NumberSortGame: React.FC<NumberSortGameProps> = ({ grade, onExit, o
   const [numbers, setNumbers] = useState<number[]>([...LEVELS[0].numbers]);
   const [selected, setSelected] = useState<number | null>(null);
   const [won, setWon] = useState(false);
+  const requestLeave = useActivityExitGuard(!won);
   const [totalXp, setTotalXp] = useState(0);
   const [showLevelComplete, setShowLevelComplete] = useState(false);
 
@@ -109,7 +111,7 @@ export const NumberSortGame: React.FC<NumberSortGameProps> = ({ grade, onExit, o
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-6">
         <button
-          onClick={onExit}
+          onClick={() => { if (onExit) requestLeave(onExit); }}
           className="bg-white/80 rounded-2xl px-4 py-2 text-slate-600 font-bold shadow text-sm"
         >
           ← خروج

@@ -100,7 +100,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              data-activity-navigation="true" onClick={onBack}
               aria-label={tCommon('backToTools')}
               className="hit-target shrink-0 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
             >

@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * MathStarsGame.tsx
  * حرب النجوم — Falling asteroid math challenge.
@@ -128,6 +129,7 @@ const QUESTION_COLOR = '#fff';
 export const MathStarsGame: React.FC<MathStarsGameProps> = ({ onExit, onComplete, language = 'ar' }) => {
   const { maxUnlocked, stars, completeLevel } = useLevelProgress('math_stars', 4);
   const [phase, setPhase] = useState<'select' | 'play' | 'win' | 'lose'>('select');
+  const requestLeave = useActivityExitGuard(phase === 'play', language);
   const [levelIdx, setLevelIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
@@ -371,7 +373,7 @@ export const MathStarsGame: React.FC<MathStarsGameProps> = ({ onExit, onComplete
               إعادة
             </button>
             <button
-              onClick={() => setPhase('select')}
+              onClick={() => requestLeave(() => setPhase('select'))}
               className="bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-2xl px-5 py-2 font-bold text-sm shadow"
             >
               اختيار المستوى
@@ -397,7 +399,7 @@ export const MathStarsGame: React.FC<MathStarsGameProps> = ({ onExit, onComplete
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-2">
         <button
-          onClick={onExit}
+          onClick={() => { if (onExit) requestLeave(onExit); }}
           className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 font-bold shadow text-sm"
         >
           ← خروج
@@ -406,7 +408,7 @@ export const MathStarsGame: React.FC<MathStarsGameProps> = ({ onExit, onComplete
           <h1 className="text-base font-extrabold text-white">⭐ حرب النجوم</h1>
         </div>
         <button
-          onClick={() => setPhase('select')}
+          onClick={() => requestLeave(() => setPhase('select'))}
           className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 text-sm font-bold"
         >
           المستويات

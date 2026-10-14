@@ -316,7 +316,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              data-activity-navigation="true" onClick={onBack}
               aria-label="Retour"
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
@@ -373,7 +373,7 @@ export const FrenchProjectsLabInteractive: React.FC<FrenchProjectsLabInteractive
                 </span>
                 <h3 className="font-black text-sm">{proj.titleFr}</h3>
               </div>
-              <p className={`text-xs ${isSelected ? 'text-white/80' : 'text-[var(--app-text-muted)]'}`}>
+              <p className={`text-xs ${isSelected ? 'text-white' : 'text-[var(--app-text-muted)]'}`}>
                 {proj.titleAr}
               </p>
             </button>

@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../context/ActivityExitContext';
 import React, { useState, useEffect, useMemo, useRef, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getArenaChallenges } from '../data/challengesData';
@@ -17,7 +18,7 @@ import {
   Flame,
   Gamepad2,
 } from 'lucide-react';
-import { stripArabicTashkeel } from '../utils/textFormatter';
+import { stripArabicTashkeel, formatEducationalText } from '../utils/textFormatter';
 import { playGentleNudge, playSuccessChime, playModuleCompleteFanfare } from './preschool/usePreschoolAudio';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { isFeatureEnabled } from '../featureFlags';
@@ -145,6 +146,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   const [hiddenOptions, setHiddenOptions] = useState<string[]>([]);
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
   const [isFinished, setIsFinished] = useState(false);
+  const requestLeave = useActivityExitGuard(Boolean(activeChallenge) && !isFinished);
   const [runXp, setRunXp] = useState(0);
   const finishedRef = useRef(false);
 
@@ -220,10 +222,10 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
     setTimeLeft(grade === '1AP' ? null : (challenge.timeLimitSeconds ?? null));
   };
 
-  const exitChallenge = () => {
+  const exitChallenge = () => requestLeave(() => {
     setActiveChallenge(null);
     setTimeLeft(null);
-  };
+  });
 
   const currentItem = activeChallenge?.items[itemIndex];
 
@@ -331,7 +333,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               <p className="text-xs text-[var(--app-text-muted)]">العب واكسب نقاط XP لفتح ألعاب جديدة</p>
             </div>
           </div>
-          <Button variant="outline" size="sm" onClick={() => setActiveTab('curriculum')} icon={<ChevronLeft className="w-4 h-4" />}>
+          <Button variant="outline" size="sm" onClick={() => requestLeave(() => setActiveTab('curriculum'))} icon={<ChevronLeft className="w-4 h-4" />}>
             العودة للمسابقات
           </Button>
         </div>
@@ -369,7 +371,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
                 <Trophy className="w-3.5 h-3.5 text-amber-700" />
                 <span>ساحة التحديات والمسابقات الكبرى{grade ? ` (${grade})` : ''}</span>
               </div>
-              <div className="flex items-center gap-1 text-xs font-black text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+              <div className="flex items-center gap-1 text-xs font-black text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
                 <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                 <span>تحديات تفاعلية متجددة</span>
               </div>
@@ -378,7 +380,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             <h1 className="text-xl sm:text-2xl font-black font-sans text-[var(--kids-ink)]">
               {isYoung ? 'تحديات قصيرة لمستواك' : 'تحديات مؤقتة لكسب نقاط الخبرة'}
             </h1>
-            <p className="text-xs sm:text-sm text-[var(--kids-muted)] mt-1 max-w-2xl">
+            <p className="text-xs sm:text-sm text-[var(--app-text-muted)] mt-1 max-w-2xl">
               {isYoung
                 ? 'سؤال أو اثنان، ثم أحسنت — مثل اللعب بعد الدرس.'
                 : 'اختر مادة ومستوى صعوبة، وابدأ التحدي لتختبر معلوماتك بسرعة وتربح XP.'}
@@ -390,7 +392,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => setActiveTab('curriculum')}
+            onClick={() => requestLeave(() => setActiveTab('curriculum'))}
             className={`p-3.5 rounded-2xl border-2 text-right transition-all flex items-center gap-3 cursor-pointer ${
               activeTab === 'curriculum'
                 ? 'bg-amber-50 border-amber-400 text-amber-950 shadow-md ring-2 ring-amber-400/40'
@@ -400,7 +402,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             <div className="p-2.5 rounded-xl bg-amber-500 text-white shadow-sm text-lg">⚡</div>
             <div>
               <span className="text-xs sm:text-sm font-black block">المسابقات المنهجية</span>
-              <span className="text-[10px] text-[var(--app-text-muted)] font-bold">المنهاج والدروس</span>
+              <span className="text-[10px] text-slate-600 font-bold">المنهاج والدروس</span>
             </div>
           </motion.button>
 
@@ -418,7 +420,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               <div className="p-2.5 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow-sm text-lg">🧮</div>
               <div>
                 <span className="text-xs sm:text-sm font-black block">سباق الحساب الخاطف</span>
-                <span className="text-[10px] text-emerald-600 font-bold">سرعة + حماس x3</span>
+                <span className="text-[10px] text-[var(--app-text-muted)] font-bold">سرعة + حماس x3</span>
               </div>
             </motion.button>
           )}
@@ -431,7 +433,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-700 text-white shadow-sm text-lg">🧠</div>
             <div>
               <span className="text-xs sm:text-sm font-black block">بطاقات الذاكرة</span>
-              <span className="text-[10px] text-indigo-600 font-bold">علوم، لغة، ومعالم</span>
+              <span className="text-[10px] text-[var(--app-text-muted)] font-bold">علوم، لغة، ومعالم</span>
             </div>
           </motion.button>
 
@@ -444,7 +446,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               <div className="p-2.5 rounded-xl bg-gradient-to-br from-rose-500 to-amber-600 text-white shadow-sm text-lg">👑</div>
               <div>
                 <span className="text-xs sm:text-sm font-black block">معركة الزعيم</span>
-                <span className="text-[10px] text-rose-600 font-bold">اهزم وحش الكسل</span>
+                <span className="text-[10px] text-[var(--app-text-muted)] font-bold">اهزم وحش الكسل</span>
               </div>
             </motion.button>
           )}
@@ -493,7 +495,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
 
                       <div className="space-y-1">
                         <span className="font-black text-base block text-[var(--kids-ink)]">{mode.titleAr}</span>
-                        <span className="text-xs text-[var(--kids-muted)] leading-snug block">{mode.descAr}</span>
+                        <span className="text-xs text-[var(--app-text-muted)] leading-snug block">{mode.descAr}</span>
                       </div>
 
                       <div className="pt-2 border-t border-[var(--app-card-border)]">
@@ -830,7 +832,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
               exit={{ opacity: 0, height: 0 }}
               className="p-3.5 rounded-xl bg-[var(--app-card-subtle)] border border-[var(--app-card-border)] text-xs leading-relaxed overflow-hidden"
             >
-              {renderArabicText(currentItem.explanationAr)}
+              {formatEducationalText(renderArabicText(currentItem.explanationAr))}
             </motion.div>
           )}
         </AnimatePresence>

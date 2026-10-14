@@ -192,7 +192,7 @@ describe('authUser merge does not leak local guest/sibling progress into a real 
     expect(result.current.userProfile.streakDays).toBe(0);
   });
 
-  it('still keeps local progress when the server genuinely has not sent that field at all', () => {
+  it('does not adopt guest history into a different account even if its server fields are absent', () => {
     const { result, rerender } = renderHook(
       ({ authUser }: { authUser: AuthUser | null }) => useUserProgress({ authUser }),
       { initialProps: { authUser: null as AuthUser | null } }
@@ -217,6 +217,14 @@ describe('authUser merge does not leak local guest/sibling progress into a real 
       rerender({ authUser: realAccount });
     });
 
+    expect(result.current.userProfile.completedExamIds).toEqual([]);
+  });
+
+  it('preserves local fields on a partial update of the same account', () => {
+    const account: AuthUser = { id: 2, nom: 'Kid A', email: 'kida@example.test', role: 'ROLE_FREE', score: 5 };
+    const { result, rerender } = renderHook(({ authUser }) => useUserProgress({ authUser }), { initialProps: { authUser: account } });
+    act(() => result.current.setUserProfile(prev => ({ ...prev, completedExamIds: ['exam-local'] })));
+    rerender({ authUser: { ...account, nom: 'Updated name' } });
     expect(result.current.userProfile.completedExamIds).toEqual(['exam-local']);
   });
 });

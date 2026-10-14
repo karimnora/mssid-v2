@@ -285,7 +285,7 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'قارن: 54,070 ..... 54,007. رتّب تنازلياً: 8,905 — 80,950 — 89,050.', solutionAr: '54,070 > 54,007. الترتيب: 89,050 > 80,950 > 8,905.', operationsAr: '54,070\n54,007\n\n89,050\n80,950\n 8,905' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-geometry-lines-polygons', contentAr: 'ما مجموع الزوايا في المثلث؟', solutionAr: '180 درجة.' },
     ],
-    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'اشترت جمعية 12 كرة بـ 750 دج و 6 صفارات بـ 200 دج.\n1) ثمن الكرات؟\n2) ثمن الصفارات؟\n3) الإجمالي؟', solutionAr: '1) 12 × 750 = 11,400 دج.\n2) 6 × 200 = 1,200 دج.\n3) 12,600 دج.' },
+    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-operations-addition-multiplication', contentAr: 'اشترت جمعية 12 كرة بسعر 750 دج للكرة الواحدة و 6 صفارات بسعر 200 دج للصفارة الواحدة.\n1) ثمن الكرات؟\n2) ثمن الصفارات؟\n3) الإجمالي؟', solutionAr: '1) ثمن الكرات = 12 × 750 = 9,000 دج.\n2) ثمن الصفارات = 6 × 200 = 1,200 دج.\n3) الإجمالي = 9,000 + 1,200 = 10,200 دج.' },
   },
   {
     id: 'exam-4ap-math-t1-c-2026',
@@ -373,7 +373,7 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-proportionally-time-data', contentAr: '5 أقلام بـ 200 دج. ثمن 8 أقلام؟', solutionAr: 'ثمن القلم = 40 دج. 8 × 40 = 320 دج.', operationsAr: '200 ÷ 5 = 40\n\n 40\n× 8\n---\n320' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-4ap-geometry-lines-polygons', contentAr: 'مستقيمان متوازيان. ماذا نقول عن البعد بينهما؟', solutionAr: 'البعد ثابت في كل موضع.' },
     ],
-    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-perimeter-squares-rectangles', contentAr: 'ساحة مربعة ضلعها 20 m. احسب محيطها. إذا غُرس وتد كل 5 m على المحيط دون الباب (باب 5 m)، كم وتداً؟', solutionAr: 'المحيط = 80 m. السياج = 80 − 5 = 75 m. عدد الأوتاد = 75 ÷ 5 = 15.' },
+    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-perimeter-squares-rectangles', contentAr: 'ساحة مربعة ضلعها 20 m، فيها باب عرضه 5 m. احسب محيطها وطول السياج دون الباب. نغرس وتداً كل 5 m على طول السياج، مع وتد عند كل طرف من طرفي الباب. كم وتداً نحتاج؟', solutionAr: 'المحيط = 20 × 4 = 80 m. طول السياج = 80 − 5 = 75 m. عدد الفواصل بين الأوتاد = 75 ÷ 5 = 15. السياج مفتوح عند الباب وله طرفان، لذلك عدد الأوتاد = 15 + 1 = 16 وتداً.' },
   },
   {
     id: 'exam-4ap-math-t3-c-2026',
@@ -686,7 +686,7 @@ export const VARIANT_EXAM_PAPERS: OfficialExam[] = [
       { titleAr: 'التمرين الثالث (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-5ap-lines-angles', contentAr: 'عموديان على مستقيم واحد. ماذا عنهما؟', solutionAr: 'متوازيان.' },
       { titleAr: 'التمرين الرابع (1.5 نقطة)', points: 1.5, relatedLessonId: 'math-5ap-perimeters-areas', contentAr: 'حوّل 45 cm إلى m.', solutionAr: '0.45 m.', operationsAr: '45 ÷ 100 = 0.45' },
     ],
-    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-5ap-percentage-scale', contentAr: 'حقيبة 6,000 دج عليها تخفيض 25% ثم دفع 2% رسوم.\n1) مبلغ التخفيض؟\n2) الثمن بعد التخفيض؟\n3) الرسوم ثم المبلغ النهائي؟', solutionAr: '1) 1,500 دج.\n2) 4,500 دج.\n3) الرسوم = 90 دج. النهائي = 4,590 دج.' },
+    problemExercise: { titleAr: 'الوضعية الإدماجية (4 نقاط)', points: 4, relatedLessonId: 'math-5ap-percentage-scale', contentAr: 'حقيبة ثمنها 6,000 دج عليها تخفيض 25%، ثم تُضاف رسوم قدرها 2% من الثمن بعد التخفيض.\n1) مبلغ التخفيض؟\n2) الثمن بعد التخفيض؟\n3) الرسوم ثم المبلغ النهائي؟', solutionAr: '1) التخفيض = (6,000 × 25) ÷ 100 = 1,500 دج.\n2) الثمن بعد التخفيض = 6,000 − 1,500 = 4,500 دج.\n3) الرسوم = (4,500 × 2) ÷ 100 = 90 دج. المبلغ النهائي = 4,500 + 90 = 4,590 دج.' },
   },
 
   // ——— 5AP ARABIC ———

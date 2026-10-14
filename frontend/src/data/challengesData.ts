@@ -59,7 +59,7 @@ export const CHALLENGES_DATA: Challenge[] = [
       { questionOrPromptAr: 'أيّ كسر أكبر: 5/8 أم 3/8؟', correctAnswerAr: '5/8', optionsAr: ['5/8', '3/8'], explanationAr: 'عندما يتساوى المقام، الكسر الأكبر هو الذي له بسط أكبر: 5 أكبر من 3.' },
       { questionOrPromptAr: 'الكسر 8/5 بالنسبة للواحد الصحيح هو:', correctAnswerAr: 'أكبر من 1', optionsAr: ['أكبر من 1', 'أصغر من 1', 'يساوي 1'], explanationAr: 'عندما يكون البسط أكبر من المقام (8>5)، يكون الكسر أكبر من الواحد الصحيح.' },
       { questionOrPromptAr: 'كسر مكافئ لـ 1/2 هو:', correctAnswerAr: '5/10', optionsAr: ['5/10', '2/5', '1/5', '10/2'], explanationAr: 'نضرب البسط والمقام في نفس العدد: 1×5=5 و2×5=10، فنحصل على 5/10.' },
-      { questionOrPromptAr: 'احصر الكسر 17/5 بين عددين متتاليين:', correctAnswerAr: '3 و4', optionsAr: ['3 و4', '2 و3', '4 و5'], explanationAr: '17 ÷ 5 = 3 والباقي 2، إذن الكسر يقع بين 3 و4.' },
+      { questionOrPromptAr: 'احصر الكسر 17/5 بين عددين متتاليين:', correctAnswerAr: '3 و4', optionsAr: ['3 و4', '2 و3', '4 و5'], explanationAr: '17 = (5 × 3) + 2، إذن 17/5 = 3 + 2/5، والكسر يقع بين 3 و4.' },
       { questionOrPromptAr: '2/5 من 750 m² تساوي:', correctAnswerAr: '300 m²', optionsAr: ['300 m²', '250 m²', '350 m²'], explanationAr: '750 ÷ 5 = 150، ثم 150 × 2 = 300 m².' },
     ],
   },

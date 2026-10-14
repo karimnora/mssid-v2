@@ -155,7 +155,7 @@ export const PrimaryMathLabInteractive: React.FC<PrimaryMathLabInteractiveProps>
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              data-activity-navigation="true" onClick={onBack}
               aria-label={tCommon('backToTools')}
               className="shrink-0 w-14 h-14 flex items-center justify-center bg-[var(--app-card-bg)] hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] rounded-2xl border border-[var(--app-card-border)] shadow-sm cursor-pointer"
             >

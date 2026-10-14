@@ -374,7 +374,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
       { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: '3 × 2 = 3 + … = ؟', solutionAr: '3 + 3 = 6.', operationsAr: '3 + 3 = 6' },
       { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-2ap-t3-double-half', contentAr: 'ما نصف 16؟', solutionAr: '8.', operationsAr: '16 ÷ 2 = 8' },
     ],
-    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: 'في 3 أكياس 5 تفاحات. كم تفاحة؟ (اجمع أو استعمل ×)', solutionAr: '5 + 5 + 5 = 15 تفاحة (3 × 5 = 15).' },
+    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-2ap-t3-multiplication-concept', contentAr: 'لدينا 3 أكياس، في كل كيس 5 تفاحات. كم تفاحة في الأكياس كلها؟ (اجمع أو استعمل ×)', solutionAr: '5 + 5 + 5 = 15 تفاحة (3 × 5 = 15).' },
   },
   {
     id: 'homework-2ap-science-t1-2026',
@@ -612,7 +612,7 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         points: 3,
         relatedLessonId: 'math-5ap-percentage-scale',
         contentAr: 'احسب 20% من 2,500 دج. ثم الثمن بعد تخفيض 20%.',
-        solutionAr: '20% = 500 دج. الثمن بعد التخفيض = 2,000 دج.',
+        solutionAr: 'مبلغ التخفيض = (2,500 × 20) ÷ 100 = 500 دج. الثمن بعد التخفيض = 2,500 − 500 = 2,000 دج.',
         operationsAr: '2500 × 20 ÷ 100 = 500\n\n 2500\n−  500\n------\n 2000',
       },
       {

@@ -1,7 +1,9 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * DressDidoGame.tsx — « Habille Dido »
  * Selon le temps (soleil, pluie, neige, désert…), on pose les bons vêtements.
  */
+import { useDelayedCompletion } from '../../hooks/useDelayedCompletion';
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'motion/react';
 import { LevelSelectScreen, LevelDef } from './LevelSelectScreen';
@@ -240,8 +242,10 @@ const DressBoard: React.FC<{
   const [misses, setMisses] = useState(0);
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [won, setWon] = useState(false);
+  const requestLeave = useActivityExitGuard(!won, language);
   const didoRef = React.useRef<HTMLDivElement>(null);
   const draggedRef = React.useRef(false);
+  const completeLater = useDelayedCompletion();
   const [trayTick, setTrayTick] = useState(0);
 
   useEffect(() => {
@@ -262,7 +266,7 @@ const DressBoard: React.FC<{
         setWon(true);
         playModuleCompleteFanfare();
         const stars = misses <= 0 ? 3 : misses <= 2 ? 2 : 1;
-        setTimeout(() => onComplete(stars), 1400);
+        completeLater(() => onComplete(stars), 1400);
       }
     } else {
       playGentleNudge();
@@ -294,7 +298,7 @@ const DressBoard: React.FC<{
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onExit}
+          onClick={() => requestLeave(onExit)}
           className="bg-white shadow-md border-2 border-orange-200 text-slate-800 text-sm px-4 py-2 rounded-2xl font-black cursor-pointer"
         >
           🚪 {t('خروج', 'Retour', 'Back')}

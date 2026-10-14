@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "emotion-feelings-path-prompt.mp3",
+    "texte": "Drag the fennec: joy, balloon, sadness, bandage, then a hug!",
+    "activite": "The Feelings Path",
+    "activiteId": "emotion-feelings-path",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "emotion-feelings-path-success.mp3",
+    "texte": "Every feeling is OK! Well done!",
+    "activite": "The Feelings Path",
+    "activiteId": "emotion-feelings-path",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "emotion-happy-prompt.mp3",
+    "texte": "We have a balloon! Touch the happy face!",
+    "activite": "The Joy Balloon",
+    "activiteId": "emotion-happy",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "emotion-happy-success.mp3",
+    "texte": "Yes! That is joy!",
+    "activite": "The Joy Balloon",
+    "activiteId": "emotion-happy",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "emotion-sad-prompt.mp3",
+    "texte": "The ice cream fell! Touch the sad face!",
+    "activite": "The Ice Cream Fell",
+    "activiteId": "emotion-sad",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "emotion-sad-success.mp3",
+    "texte": "Yes, that is sadness. We hug you!",
+    "activite": "The Ice Cream Fell",
+    "activiteId": "emotion-sad",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "emotion-angry-prompt.mp3",
+    "texte": "The block tower fell! Touch the angry face!",
+    "activite": "The Tower Fell",
+    "activiteId": "emotion-angry",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "emotion-angry-success.mp3",
+    "texte": "Anger passes! We build again!",
+    "activite": "The Tower Fell",
+    "activiteId": "emotion-angry",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "emotion-sort-context-prompt.mp3",
+    "texte": "Put the balloon and the gift with the smile, the bandage with the tear!",
+    "activite": "Joy or Sadness?",
+    "activiteId": "emotion-sort-context",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "emotion-sort-context-success.mp3",
+    "texte": "You know joy and sadness!",
+    "activite": "Joy or Sadness?",
+    "activiteId": "emotion-sort-context",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "emotion-connect-prompt.mp3",
+    "texte": "Match joy to the balloon, and sadness to the bandage!",
+    "activite": "Match the Feeling to the Picture",
+    "activiteId": "emotion-connect",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "emotion-connect-success.mp3",
+    "texte": "Every feeling has a picture!",
+    "activite": "Match the Feeling to the Picture",
+    "activiteId": "emotion-connect",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "emotion-memory-prompt.mp3",
+    "texte": "Flip the cards! Say: happy, sad, angry!",
+    "activite": "Feelings Memory",
+    "activiteId": "emotion-memory",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "emotion-memory-success.mp3",
+    "texte": "Your memory is super!",
+    "activite": "Feelings Memory",
+    "activiteId": "emotion-memory",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "emotion-hug-prompt.mp3",
+    "texte": "The friend is sad! What do we do? Touch the hug!",
+    "activite": "My Friend is Crying",
+    "activiteId": "emotion-hug",
+    "moduleId": "preschool-emotions",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "emotion-hug-success.mp3",
+    "texte": "Yes! A hug helps!",
+    "activite": "My Friend is Crying",
+    "activiteId": "emotion-hug",
+    "moduleId": "preschool-emotions",
+    "type": "success"
+  }
+]

@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * DiduRunner.tsx — ديدو العدّاء
  * 2D side-scrolling endless runner using Phaser.js.
@@ -63,6 +64,7 @@ const DIDU_EAR     = 0xfed7aa;
 export const DiduRunner: React.FC<DiduRunnerProps> = ({ onExit, onComplete, language = 'ar' }) => {
   const { maxUnlocked, stars, completeLevel } = useLevelProgress('dido_runner', 4);
   const [phase, setPhase] = useState<'select' | 'play' | 'win' | 'lose'>('select');
+  const requestLeave = useActivityExitGuard(phase === 'play', language);
   const [levelIdx, setLevelIdx] = useState(0);
   const [score, setScore] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -384,7 +386,7 @@ export const DiduRunner: React.FC<DiduRunnerProps> = ({ onExit, onComplete, lang
               إعادة
             </button>
             <button
-              onClick={() => setPhase('select')}
+              onClick={() => requestLeave(() => setPhase('select'))}
               className="bg-gradient-to-br from-orange-400 to-rose-500 text-white rounded-2xl px-5 py-2 font-bold text-sm shadow"
             >
               المستويات
@@ -408,11 +410,11 @@ export const DiduRunner: React.FC<DiduRunnerProps> = ({ onExit, onComplete, lang
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-orange-900 to-amber-800 p-3 pb-6" dir="rtl">
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-2">
-        <button onClick={onExit} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 font-bold text-sm">
+        <button onClick={() => { if (onExit) requestLeave(onExit); }} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 font-bold text-sm">
           ← خروج
         </button>
         <h1 className="text-base font-extrabold text-white">🦊 ديدو العدّاء</h1>
-        <button onClick={() => setPhase('select')} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 text-sm font-bold">
+        <button onClick={() => requestLeave(() => setPhase('select'))} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 text-sm font-bold">
           المستويات
         </button>
       </div>

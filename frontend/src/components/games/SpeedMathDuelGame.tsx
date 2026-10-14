@@ -1,4 +1,6 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useDelayedCompletion } from '../../hooks/useDelayedCompletion';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade } from '../../types';
 import { playSuccessChime, playGentleNudge, playModuleCompleteFanfare } from '../preschool/usePreschoolAudio';
@@ -139,14 +141,19 @@ export const SpeedMathDuelGame: React.FC<SpeedMathDuelGameProps> = ({
   const [bestStreak, setBestStreak] = useState(0);
   const [lives, setLives] = useState(3);
   const [isGameOver, setIsGameOver] = useState(false);
+  const requestLeave = useActivityExitGuard(!isGameOver);
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [powerFreezeUsed, setPowerFreezeUsed] = useState(false);
   const [powerFiftyUsed, setPowerFiftyUsed] = useState(false);
   const [hiddenOptions, setHiddenOptions] = useState<number[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const completeLater = useDelayedCompletion(String(isGameOver));
+  const resultPublishedRef = useRef(false);
 
   const handleFinish = useCallback(() => {
+    if (resultPublishedRef.current) return;
+    resultPublishedRef.current = true;
     setIsGameOver(true);
     playModuleCompleteFanfare();
     const earnedXp = Math.max(15, score * 5 + bestStreak * 3);
@@ -210,8 +217,8 @@ export const SpeedMathDuelGame: React.FC<SpeedMathDuelGameProps> = ({
       setLives(newLives);
 
       if (newLives <= 0) {
-        setTimeout(() => {
-          handleFinish();
+        completeLater(() => {
+          handleFinishRef.current();
         }, 800);
       } else {
         setTimeout(() => {
@@ -237,6 +244,7 @@ export const SpeedMathDuelGame: React.FC<SpeedMathDuelGameProps> = ({
   };
 
   const handleRestart = () => {
+    resultPublishedRef.current = false;
     setTimeLeft(TOTAL_TIME);
     setScore(0);
     setStreak(0);
@@ -271,7 +279,7 @@ export const SpeedMathDuelGame: React.FC<SpeedMathDuelGameProps> = ({
 
         {onExit && (
           <button
-            onClick={onExit}
+            onClick={() => { if (onExit) requestLeave(onExit); }}
             className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
           >
             <span>خروج</span>
@@ -463,7 +471,7 @@ export const SpeedMathDuelGame: React.FC<SpeedMathDuelGameProps> = ({
 
             {onExit && (
               <button
-                onClick={onExit}
+                onClick={() => { if (onExit) requestLeave(onExit); }}
                 className="px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-sm transition-all cursor-pointer"
               >
                 العودة للساحة

@@ -1,10 +1,10 @@
 {
   "summary": {
-    "sourceRecordings": 1042,
-    "uniqueRecordedPhrases": 1029,
-    "reusablePlanEntries": 820,
-    "pendingPlanEntries": 318,
-    "uniquePendingGenerations": 318,
+    "sourceRecordings": 1251,
+    "uniqueRecordedPhrases": 1238,
+    "reusablePlanEntries": 1029,
+    "pendingPlanEntries": 109,
+    "uniquePendingGenerations": 109,
     "duplicateGenerationsAvoided": 0
   },
   "available": [
@@ -4419,6 +4419,1469 @@
       "durationMs": 2303
     },
     {
+      "target": "15-emotions/ar/emotion-feelings-path-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ الفَنَكَ: فَرَح، بَالُون، حُزْن، لَصْقَة، ثُمَّ عِنَاق!",
+      "src": "/sounds/preschool/ar/emotion-feelings-path-prompt.mp3",
+      "durationMs": 5778
+    },
+    {
+      "target": "15-emotions/ar/emotion-feelings-path-success.mp3",
+      "language": "ar",
+      "text": "كُلُّ المَشَاعِرِ مَقْبُولَة! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/emotion-feelings-path-success.mp3",
+      "durationMs": 2788
+    },
+    {
+      "target": "15-emotions/ar/emotion-happy-prompt.mp3",
+      "language": "ar",
+      "text": "عِنْدَنَا بَالُون! اِلْمَسِ الوَجْهَ الفَرِح!",
+      "src": "/sounds/preschool/ar/emotion-happy-prompt.mp3",
+      "durationMs": 3108
+    },
+    {
+      "target": "15-emotions/ar/emotion-happy-success.mp3",
+      "language": "ar",
+      "text": "نَعَم! هَذَا الفَرَح!",
+      "src": "/sounds/preschool/ar/emotion-happy-success.mp3",
+      "durationMs": 2107
+    },
+    {
+      "target": "15-emotions/ar/emotion-sad-prompt.mp3",
+      "language": "ar",
+      "text": "سَقَطَتِ الآيْس كْرِيم! اِلْمَسِ الوَجْهَ الحَزِين!",
+      "src": "/sounds/preschool/ar/emotion-sad-prompt.mp3",
+      "durationMs": 3291
+    },
+    {
+      "target": "15-emotions/ar/emotion-sad-success.mp3",
+      "language": "ar",
+      "text": "نَعَم، هَذَا الحُزْن. نُعَانِقُكَ!",
+      "src": "/sounds/preschool/ar/emotion-sad-success.mp3",
+      "durationMs": 3022
+    },
+    {
+      "target": "15-emotions/ar/emotion-angry-prompt.mp3",
+      "language": "ar",
+      "text": "سَقَطَ بُرْجُ المُكَعَّبَات! اِلْمَسِ الوَجْهَ الغَاضِب!",
+      "src": "/sounds/preschool/ar/emotion-angry-prompt.mp3",
+      "durationMs": 3572
+    },
+    {
+      "target": "15-emotions/ar/emotion-angry-success.mp3",
+      "language": "ar",
+      "text": "الغَضَبُ يَمُرّ! نَبْنِي مَرَّةً أُخْرَى!",
+      "src": "/sounds/preschool/ar/emotion-angry-success.mp3",
+      "durationMs": 2962
+    },
+    {
+      "target": "15-emotions/ar/emotion-sort-context-prompt.mp3",
+      "language": "ar",
+      "text": "ضَعِ البَالُونَ وَالهَدِيَّةَ مَعَ الضِّحْكَة، وَاللَّصْقَةَ مَعَ الدَّمْعَة!",
+      "src": "/sounds/preschool/ar/emotion-sort-context-prompt.mp3",
+      "durationMs": 4454
+    },
+    {
+      "target": "15-emotions/ar/emotion-sort-context-success.mp3",
+      "language": "ar",
+      "text": "تَعْرِفُ الفَرَحَ وَالحُزْن!",
+      "src": "/sounds/preschool/ar/emotion-sort-context-success.mp3",
+      "durationMs": 1950
+    },
+    {
+      "target": "15-emotions/ar/emotion-connect-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْبِطِ الفَرَحَ بِالبَالُون، وَالحُزْنَ بِاللَّصْقَة!",
+      "src": "/sounds/preschool/ar/emotion-connect-prompt.mp3",
+      "durationMs": 3219
+    },
+    {
+      "target": "15-emotions/ar/emotion-connect-success.mp3",
+      "language": "ar",
+      "text": "كُلُّ شُعُورٍ لَهُ صُورَة!",
+      "src": "/sounds/preschool/ar/emotion-connect-success.mp3",
+      "durationMs": 2034
+    },
+    {
+      "target": "15-emotions/ar/emotion-memory-prompt.mp3",
+      "language": "ar",
+      "text": "اِقْلِبِ البِطَاقَاتِ! قُلْ: فَرِح، حَزِين، غَاضِب!",
+      "src": "/sounds/preschool/ar/emotion-memory-prompt.mp3",
+      "durationMs": 4582
+    },
+    {
+      "target": "15-emotions/ar/emotion-memory-success.mp3",
+      "language": "ar",
+      "text": "ذَاكِرَتُكَ قَوِيَّة!",
+      "src": "/sounds/preschool/ar/emotion-memory-success.mp3",
+      "durationMs": 1673
+    },
+    {
+      "target": "15-emotions/ar/emotion-hug-prompt.mp3",
+      "language": "ar",
+      "text": "الصَّدِيقُ حَزِين! مَاذَا نَفْعَل؟ اِلْمَسِ العِنَاق!",
+      "src": "/sounds/preschool/ar/emotion-hug-prompt.mp3",
+      "durationMs": 3724
+    },
+    {
+      "target": "15-emotions/ar/emotion-hug-success.mp3",
+      "language": "ar",
+      "text": "نَعَمْ! العِنَاقُ يُسَاعِد!",
+      "src": "/sounds/preschool/ar/emotion-hug-success.mp3",
+      "durationMs": 2339
+    },
+    {
+      "target": "15-emotions/fr/emotion-feelings-path-prompt.mp3",
+      "language": "fr",
+      "text": "Glisse le fennec : joie, ballon, tristesse, pansement, puis un câlin !",
+      "src": "/sounds/preschool/fr/emotion-feelings-path-prompt.mp3",
+      "durationMs": 6202
+    },
+    {
+      "target": "15-emotions/fr/emotion-feelings-path-success.mp3",
+      "language": "fr",
+      "text": "Toutes les émotions sont OK ! Bravo !",
+      "src": "/sounds/preschool/fr/emotion-feelings-path-success.mp3",
+      "durationMs": 2800
+    },
+    {
+      "target": "15-emotions/fr/emotion-happy-prompt.mp3",
+      "language": "fr",
+      "text": "On a un ballon ! Touche le visage joyeux !",
+      "src": "/sounds/preschool/fr/emotion-happy-prompt.mp3",
+      "durationMs": 2739
+    },
+    {
+      "target": "15-emotions/fr/emotion-happy-success.mp3",
+      "language": "fr",
+      "text": "Oui ! C'est la joie !",
+      "src": "/sounds/preschool/fr/emotion-happy-success.mp3",
+      "durationMs": 1681
+    },
+    {
+      "target": "15-emotions/fr/emotion-sad-prompt.mp3",
+      "language": "fr",
+      "text": "La glace est tombée ! Touche le visage triste !",
+      "src": "/sounds/preschool/fr/emotion-sad-prompt.mp3",
+      "durationMs": 3117
+    },
+    {
+      "target": "15-emotions/fr/emotion-sad-success.mp3",
+      "language": "fr",
+      "text": "Oui, c'est la tristesse. On te fait un câlin !",
+      "src": "/sounds/preschool/fr/emotion-sad-success.mp3",
+      "durationMs": 3240
+    },
+    {
+      "target": "15-emotions/fr/emotion-angry-prompt.mp3",
+      "language": "fr",
+      "text": "La tour de cubes est tombée ! Touche le visage fâché !",
+      "src": "/sounds/preschool/fr/emotion-angry-prompt.mp3",
+      "durationMs": 3249
+    },
+    {
+      "target": "15-emotions/fr/emotion-angry-success.mp3",
+      "language": "fr",
+      "text": "La colère passe ! On reconstruit !",
+      "src": "/sounds/preschool/fr/emotion-angry-success.mp3",
+      "durationMs": 2412
+    },
+    {
+      "target": "15-emotions/fr/emotion-sort-context-prompt.mp3",
+      "language": "fr",
+      "text": "Mets le ballon et le cadeau avec le sourire, le pansement avec la larme !",
+      "src": "/sounds/preschool/fr/emotion-sort-context-prompt.mp3",
+      "durationMs": 4604
+    },
+    {
+      "target": "15-emotions/fr/emotion-sort-context-success.mp3",
+      "language": "fr",
+      "text": "Tu connais la joie et la tristesse !",
+      "src": "/sounds/preschool/fr/emotion-sort-context-success.mp3",
+      "durationMs": 2274
+    },
+    {
+      "target": "15-emotions/fr/emotion-connect-prompt.mp3",
+      "language": "fr",
+      "text": "Relie la joie au ballon, et la tristesse au pansement !",
+      "src": "/sounds/preschool/fr/emotion-connect-prompt.mp3",
+      "durationMs": 3493
+    },
+    {
+      "target": "15-emotions/fr/emotion-connect-success.mp3",
+      "language": "fr",
+      "text": "Chaque sentiment a son image !",
+      "src": "/sounds/preschool/fr/emotion-connect-success.mp3",
+      "durationMs": 1997
+    },
+    {
+      "target": "15-emotions/fr/emotion-memory-prompt.mp3",
+      "language": "fr",
+      "text": "Retourne les cartes ! Dis : joyeux, triste, fâché !",
+      "src": "/sounds/preschool/fr/emotion-memory-prompt.mp3",
+      "durationMs": 4456
+    },
+    {
+      "target": "15-emotions/fr/emotion-memory-success.mp3",
+      "language": "fr",
+      "text": "Tu as une super mémoire !",
+      "src": "/sounds/preschool/fr/emotion-memory-success.mp3",
+      "durationMs": 1865
+    },
+    {
+      "target": "15-emotions/fr/emotion-hug-prompt.mp3",
+      "language": "fr",
+      "text": "L'ami est triste ! Que fait-on ? Touche le câlin !",
+      "src": "/sounds/preschool/fr/emotion-hug-prompt.mp3",
+      "durationMs": 3199
+    },
+    {
+      "target": "15-emotions/fr/emotion-hug-success.mp3",
+      "language": "fr",
+      "text": "Oui ! Le câlin aide !",
+      "src": "/sounds/preschool/fr/emotion-hug-success.mp3",
+      "durationMs": 1992
+    },
+    {
+      "target": "15-emotions/en/emotion-feelings-path-prompt.mp3",
+      "language": "en",
+      "text": "Drag the fennec: joy, balloon, sadness, bandage, then a hug!",
+      "src": "/sounds/preschool/en/emotion-feelings-path-prompt.mp3",
+      "durationMs": 6821
+    },
+    {
+      "target": "15-emotions/en/emotion-feelings-path-success.mp3",
+      "language": "en",
+      "text": "Every feeling is OK! Well done!",
+      "src": "/sounds/preschool/en/emotion-feelings-path-success.mp3",
+      "durationMs": 3353
+    },
+    {
+      "target": "15-emotions/en/emotion-happy-prompt.mp3",
+      "language": "en",
+      "text": "We have a balloon! Touch the happy face!",
+      "src": "/sounds/preschool/en/emotion-happy-prompt.mp3",
+      "durationMs": 3105
+    },
+    {
+      "target": "15-emotions/en/emotion-happy-success.mp3",
+      "language": "en",
+      "text": "Yes! That is joy!",
+      "src": "/sounds/preschool/en/emotion-happy-success.mp3",
+      "durationMs": 2356
+    },
+    {
+      "target": "15-emotions/en/emotion-sad-prompt.mp3",
+      "language": "en",
+      "text": "The ice cream fell! Touch the sad face!",
+      "src": "/sounds/preschool/en/emotion-sad-prompt.mp3",
+      "durationMs": 3470
+    },
+    {
+      "target": "15-emotions/en/emotion-sad-success.mp3",
+      "language": "en",
+      "text": "Yes, that is sadness. We hug you!",
+      "src": "/sounds/preschool/en/emotion-sad-success.mp3",
+      "durationMs": 3526
+    },
+    {
+      "target": "15-emotions/en/emotion-angry-prompt.mp3",
+      "language": "en",
+      "text": "The block tower fell! Touch the angry face!",
+      "src": "/sounds/preschool/en/emotion-angry-prompt.mp3",
+      "durationMs": 3658
+    },
+    {
+      "target": "15-emotions/en/emotion-angry-success.mp3",
+      "language": "en",
+      "text": "Anger passes! We build again!",
+      "src": "/sounds/preschool/en/emotion-angry-success.mp3",
+      "durationMs": 2878
+    },
+    {
+      "target": "15-emotions/en/emotion-sort-context-prompt.mp3",
+      "language": "en",
+      "text": "Put the balloon and the gift with the smile, the bandage with the tear!",
+      "src": "/sounds/preschool/en/emotion-sort-context-prompt.mp3",
+      "durationMs": 4309
+    },
+    {
+      "target": "15-emotions/en/emotion-sort-context-success.mp3",
+      "language": "en",
+      "text": "You know joy and sadness!",
+      "src": "/sounds/preschool/en/emotion-sort-context-success.mp3",
+      "durationMs": 2490
+    },
+    {
+      "target": "15-emotions/en/emotion-connect-prompt.mp3",
+      "language": "en",
+      "text": "Match joy to the balloon, and sadness to the bandage!",
+      "src": "/sounds/preschool/en/emotion-connect-prompt.mp3",
+      "durationMs": 3529
+    },
+    {
+      "target": "15-emotions/en/emotion-connect-success.mp3",
+      "language": "en",
+      "text": "Every feeling has a picture!",
+      "src": "/sounds/preschool/en/emotion-connect-success.mp3",
+      "durationMs": 2089
+    },
+    {
+      "target": "15-emotions/en/emotion-memory-prompt.mp3",
+      "language": "en",
+      "text": "Flip the cards! Say: happy, sad, angry!",
+      "src": "/sounds/preschool/en/emotion-memory-prompt.mp3",
+      "durationMs": 4055
+    },
+    {
+      "target": "15-emotions/en/emotion-memory-success.mp3",
+      "language": "en",
+      "text": "Your memory is super!",
+      "src": "/sounds/preschool/en/emotion-memory-success.mp3",
+      "durationMs": 2110
+    },
+    {
+      "target": "15-emotions/en/emotion-hug-prompt.mp3",
+      "language": "en",
+      "text": "The friend is sad! What do we do? Touch the hug!",
+      "src": "/sounds/preschool/en/emotion-hug-prompt.mp3",
+      "durationMs": 4724
+    },
+    {
+      "target": "15-emotions/en/emotion-hug-success.mp3",
+      "language": "en",
+      "text": "Yes! A hug helps!",
+      "src": "/sounds/preschool/en/emotion-hug-success.mp3",
+      "durationMs": 1235
+    },
+    {
+      "target": "16-pre-writing/ar/writing-pencil-path-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ القَلَمَ: شَجَرَة، ثُعْبَان، طَائِرَةٌ وَرَقِيَّة، بَرْق، مَوْج، ثُمَّ الشَّمْس!",
+      "src": "/sounds/preschool/ar/writing-pencil-path-prompt.mp3",
+      "durationMs": 8048
+    },
+    {
+      "target": "16-pre-writing/ar/writing-pencil-path-success.mp3",
+      "language": "ar",
+      "text": "يَدُكَ جَاهِزَة! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/writing-pencil-path-success.mp3",
+      "durationMs": 2269
+    },
+    {
+      "target": "16-pre-writing/ar/writing-vertical-line-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْسُمِ الشَّجَرَة! مِنَ الأَعْلَى إِلَى الأَسْفَل، مِثْلَ الجِذْع!",
+      "src": "/sounds/preschool/ar/writing-vertical-line-prompt.mp3",
+      "durationMs": 4268
+    },
+    {
+      "target": "16-pre-writing/ar/writing-vertical-line-success.mp3",
+      "language": "ar",
+      "text": "شَجَرَةٌ قَوِيَّة! يَدُكَ ثَابِتَة!",
+      "src": "/sounds/preschool/ar/writing-vertical-line-success.mp3",
+      "durationMs": 3012
+    },
+    {
+      "target": "16-pre-writing/ar/writing-horizontal-line-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْسُمِ الثُّعْبَان! مِنَ اليَمِينِ إِلَى اليَسَار، يَزْحَفُ عَلَى الأَرْض!",
+      "src": "/sounds/preschool/ar/writing-horizontal-line-prompt.mp3",
+      "durationMs": 4898
+    },
+    {
+      "target": "16-pre-writing/ar/writing-horizontal-line-success.mp3",
+      "language": "ar",
+      "text": "ثُعْبَانٌ طَوِيل! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/writing-horizontal-line-success.mp3",
+      "durationMs": 2710
+    },
+    {
+      "target": "16-pre-writing/ar/writing-oblique-line-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْسُمِ الطَّائِرَةَ الوَرَقِيَّة! تَصْعَدُ فِي الهَوَاءِ بِخَطٍّ مَائِل!",
+      "src": "/sounds/preschool/ar/writing-oblique-line-prompt.mp3",
+      "durationMs": 4701
+    },
+    {
+      "target": "16-pre-writing/ar/writing-oblique-line-success.mp3",
+      "language": "ar",
+      "text": "طَارَتْ فِي السَّمَاء! أَنْتَ فَنَّان!",
+      "src": "/sounds/preschool/ar/writing-oblique-line-success.mp3",
+      "durationMs": 2895
+    },
+    {
+      "target": "16-pre-writing/ar/writing-zigzag-line-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْسُمِ البَرْق! فَوْقَ وَتَحْت، فَوْقَ وَتَحْت، زِكْزَاك!",
+      "src": "/sounds/preschool/ar/writing-zigzag-line-prompt.mp3",
+      "durationMs": 4781
+    },
+    {
+      "target": "16-pre-writing/ar/writing-zigzag-line-success.mp3",
+      "language": "ar",
+      "text": "بَرْقٌ سَرِيع! وَاوَ!",
+      "src": "/sounds/preschool/ar/writing-zigzag-line-success.mp3",
+      "durationMs": 2283
+    },
+    {
+      "target": "16-pre-writing/ar/writing-wavy-line-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْسُمِ المَوْج! نَاعِمٌ مِثْلَ بَحْرِ الجَزَائِر!",
+      "src": "/sounds/preschool/ar/writing-wavy-line-prompt.mp3",
+      "durationMs": 3489
+    },
+    {
+      "target": "16-pre-writing/ar/writing-wavy-line-success.mp3",
+      "language": "ar",
+      "text": "مَوْجَةٌ جَمِيلَة! بَحْرُنَا!",
+      "src": "/sounds/preschool/ar/writing-wavy-line-success.mp3",
+      "durationMs": 2476
+    },
+    {
+      "target": "16-pre-writing/ar/writing-loop-line-prompt.mp3",
+      "language": "ar",
+      "text": "اِرْسُمِ الشَّمْسَ! دُرْ دُرْ دُرْ، دَائِرَةٌ كَبِيرَة!",
+      "src": "/sounds/preschool/ar/writing-loop-line-prompt.mp3",
+      "durationMs": 4072
+    },
+    {
+      "target": "16-pre-writing/ar/writing-loop-line-success.mp3",
+      "language": "ar",
+      "text": "شَمْسٌ مُشْرِقَة! دَائِرَةٌ رَائِعَة!",
+      "src": "/sounds/preschool/ar/writing-loop-line-success.mp3",
+      "durationMs": 3168
+    },
+    {
+      "target": "16-pre-writing/ar/writing-pencil-maze-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ القَلَمَ عَلَى الخَطِّ حَتَّى الكُرَّاس!",
+      "src": "/sounds/preschool/ar/writing-pencil-maze-prompt.mp3",
+      "durationMs": 2863
+    },
+    {
+      "target": "16-pre-writing/ar/writing-pencil-maze-success.mp3",
+      "language": "ar",
+      "text": "وَصَلَ القَلَمُ! نَكْتُب!",
+      "src": "/sounds/preschool/ar/writing-pencil-maze-success.mp3",
+      "durationMs": 2110
+    },
+    {
+      "target": "16-pre-writing/fr/writing-pencil-path-prompt.mp3",
+      "language": "fr",
+      "text": "Glisse le crayon : arbre, serpent, cerf-volant, éclair, vague, puis le soleil !",
+      "src": "/sounds/preschool/fr/writing-pencil-path-prompt.mp3",
+      "durationMs": 7020
+    },
+    {
+      "target": "16-pre-writing/fr/writing-pencil-path-success.mp3",
+      "language": "fr",
+      "text": "Ta main est prête ! Bravo !",
+      "src": "/sounds/preschool/fr/writing-pencil-path-success.mp3",
+      "durationMs": 1996
+    },
+    {
+      "target": "16-pre-writing/fr/writing-vertical-line-prompt.mp3",
+      "language": "fr",
+      "text": "Trace l'arbre ! Du haut vers le bas, comme le tronc !",
+      "src": "/sounds/preschool/fr/writing-vertical-line-prompt.mp3",
+      "durationMs": 3386
+    },
+    {
+      "target": "16-pre-writing/fr/writing-vertical-line-success.mp3",
+      "language": "fr",
+      "text": "Un bel arbre ! Ta main est ferme !",
+      "src": "/sounds/preschool/fr/writing-vertical-line-success.mp3",
+      "durationMs": 2658
+    },
+    {
+      "target": "16-pre-writing/fr/writing-horizontal-line-prompt.mp3",
+      "language": "fr",
+      "text": "Trace le serpent ! De gauche à droite, il rampe sur le sol !",
+      "src": "/sounds/preschool/fr/writing-horizontal-line-prompt.mp3",
+      "durationMs": 4055
+    },
+    {
+      "target": "16-pre-writing/fr/writing-horizontal-line-success.mp3",
+      "language": "fr",
+      "text": "Un long serpent ! Bravo !",
+      "src": "/sounds/preschool/fr/writing-horizontal-line-success.mp3",
+      "durationMs": 2508
+    },
+    {
+      "target": "16-pre-writing/fr/writing-oblique-line-prompt.mp3",
+      "language": "fr",
+      "text": "Trace le cerf-volant ! Il monte dans le ciel en diagonale !",
+      "src": "/sounds/preschool/fr/writing-oblique-line-prompt.mp3",
+      "durationMs": 3709
+    },
+    {
+      "target": "16-pre-writing/fr/writing-oblique-line-success.mp3",
+      "language": "fr",
+      "text": "Il vole dans le ciel ! Petit artiste !",
+      "src": "/sounds/preschool/fr/writing-oblique-line-success.mp3",
+      "durationMs": 2967
+    },
+    {
+      "target": "16-pre-writing/fr/writing-zigzag-line-prompt.mp3",
+      "language": "fr",
+      "text": "Trace l'éclair ! En haut, en bas, en haut, en bas, zigzag !",
+      "src": "/sounds/preschool/fr/writing-zigzag-line-prompt.mp3",
+      "durationMs": 5245
+    },
+    {
+      "target": "16-pre-writing/fr/writing-zigzag-line-success.mp3",
+      "language": "fr",
+      "text": "Un éclair rapide ! Wow !",
+      "src": "/sounds/preschool/fr/writing-zigzag-line-success.mp3",
+      "durationMs": 2205
+    },
+    {
+      "target": "16-pre-writing/fr/writing-wavy-line-prompt.mp3",
+      "language": "fr",
+      "text": "Trace la vague ! Douce comme la mer d'Algérie !",
+      "src": "/sounds/preschool/fr/writing-wavy-line-prompt.mp3",
+      "durationMs": 3437
+    },
+    {
+      "target": "16-pre-writing/fr/writing-wavy-line-success.mp3",
+      "language": "fr",
+      "text": "Une belle vague ! Notre mer !",
+      "src": "/sounds/preschool/fr/writing-wavy-line-success.mp3",
+      "durationMs": 2644
+    },
+    {
+      "target": "16-pre-writing/fr/writing-loop-line-prompt.mp3",
+      "language": "fr",
+      "text": "Trace le soleil ! Tourne, tourne, tourne, un grand rond !",
+      "src": "/sounds/preschool/fr/writing-loop-line-prompt.mp3",
+      "durationMs": 4336
+    },
+    {
+      "target": "16-pre-writing/fr/writing-loop-line-success.mp3",
+      "language": "fr",
+      "text": "Un soleil brillant ! Superbe rond !",
+      "src": "/sounds/preschool/fr/writing-loop-line-success.mp3",
+      "durationMs": 2807
+    },
+    {
+      "target": "16-pre-writing/fr/writing-pencil-maze-prompt.mp3",
+      "language": "fr",
+      "text": "Glisse le crayon sur la ligne jusqu'au cahier !",
+      "src": "/sounds/preschool/fr/writing-pencil-maze-prompt.mp3",
+      "durationMs": 2785
+    },
+    {
+      "target": "16-pre-writing/fr/writing-pencil-maze-success.mp3",
+      "language": "fr",
+      "text": "Le crayon est arrivé ! On écrit !",
+      "src": "/sounds/preschool/fr/writing-pencil-maze-success.mp3",
+      "durationMs": 2289
+    },
+    {
+      "target": "16-pre-writing/en/writing-pencil-path-prompt.mp3",
+      "language": "en",
+      "text": "Drag the pencil: tree, snake, kite, lightning, wave, then the sun!",
+      "src": "/sounds/preschool/en/writing-pencil-path-prompt.mp3",
+      "durationMs": 7218
+    },
+    {
+      "target": "16-pre-writing/en/writing-pencil-path-success.mp3",
+      "language": "en",
+      "text": "Your hand is ready! Well done!",
+      "src": "/sounds/preschool/en/writing-pencil-path-success.mp3",
+      "durationMs": 2648
+    },
+    {
+      "target": "16-pre-writing/en/writing-vertical-line-prompt.mp3",
+      "language": "en",
+      "text": "Trace the tree! From top to bottom, like the trunk!",
+      "src": "/sounds/preschool/en/writing-vertical-line-prompt.mp3",
+      "durationMs": 3808
+    },
+    {
+      "target": "16-pre-writing/en/writing-vertical-line-success.mp3",
+      "language": "en",
+      "text": "A strong tree! Your hand is steady!",
+      "src": "/sounds/preschool/en/writing-vertical-line-success.mp3",
+      "durationMs": 3235
+    },
+    {
+      "target": "16-pre-writing/en/writing-horizontal-line-prompt.mp3",
+      "language": "en",
+      "text": "Trace the snake! From left to right, it crawls on the ground!",
+      "src": "/sounds/preschool/en/writing-horizontal-line-prompt.mp3",
+      "durationMs": 4279
+    },
+    {
+      "target": "16-pre-writing/en/writing-horizontal-line-success.mp3",
+      "language": "en",
+      "text": "A long snake! Well done!",
+      "src": "/sounds/preschool/en/writing-horizontal-line-success.mp3",
+      "durationMs": 2670
+    },
+    {
+      "target": "16-pre-writing/en/writing-oblique-line-prompt.mp3",
+      "language": "en",
+      "text": "Trace the kite! It goes up in the sky on a slant!",
+      "src": "/sounds/preschool/en/writing-oblique-line-prompt.mp3",
+      "durationMs": 3695
+    },
+    {
+      "target": "16-pre-writing/en/writing-oblique-line-success.mp3",
+      "language": "en",
+      "text": "It flies in the sky! Little artist!",
+      "src": "/sounds/preschool/en/writing-oblique-line-success.mp3",
+      "durationMs": 3032
+    },
+    {
+      "target": "16-pre-writing/en/writing-zigzag-line-prompt.mp3",
+      "language": "en",
+      "text": "Trace the lightning! Up, down, up, down, zigzag!",
+      "src": "/sounds/preschool/en/writing-zigzag-line-prompt.mp3",
+      "durationMs": 4758
+    },
+    {
+      "target": "16-pre-writing/en/writing-zigzag-line-success.mp3",
+      "language": "en",
+      "text": "Fast lightning! Wow!",
+      "src": "/sounds/preschool/en/writing-zigzag-line-success.mp3",
+      "durationMs": 2069
+    },
+    {
+      "target": "16-pre-writing/en/writing-wavy-line-prompt.mp3",
+      "language": "en",
+      "text": "Trace the wave! Soft like the sea of Algeria!",
+      "src": "/sounds/preschool/en/writing-wavy-line-prompt.mp3",
+      "durationMs": 3920
+    },
+    {
+      "target": "16-pre-writing/en/writing-wavy-line-success.mp3",
+      "language": "en",
+      "text": "A beautiful wave! Our sea!",
+      "src": "/sounds/preschool/en/writing-wavy-line-success.mp3",
+      "durationMs": 2925
+    },
+    {
+      "target": "16-pre-writing/en/writing-loop-line-prompt.mp3",
+      "language": "en",
+      "text": "Trace the sun! Round, round, round, a big circle!",
+      "src": "/sounds/preschool/en/writing-loop-line-prompt.mp3",
+      "durationMs": 4753
+    },
+    {
+      "target": "16-pre-writing/en/writing-loop-line-success.mp3",
+      "language": "en",
+      "text": "A bright sun! A wonderful circle!",
+      "src": "/sounds/preschool/en/writing-loop-line-success.mp3",
+      "durationMs": 2878
+    },
+    {
+      "target": "16-pre-writing/en/writing-pencil-maze-prompt.mp3",
+      "language": "en",
+      "text": "Drag the pencil along the line all the way to the notebook!",
+      "src": "/sounds/preschool/en/writing-pencil-maze-prompt.mp3",
+      "durationMs": 3584
+    },
+    {
+      "target": "16-pre-writing/en/writing-pencil-maze-success.mp3",
+      "language": "en",
+      "text": "The pencil arrived! We write!",
+      "src": "/sounds/preschool/en/writing-pencil-maze-success.mp3",
+      "durationMs": 2495
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-think-path-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبْ: قِطَار طَوِيل، حَجَر ثَقِيل، عُصْفُور فَوْق، بَيْت، بَالُون خَفِيف، ثُمَّ الدِّمَاغ!",
+      "src": "/sounds/preschool/ar/logic-think-path-prompt.mp3",
+      "durationMs": 8796
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-think-path-success.mp3",
+      "language": "ar",
+      "text": "عَقْلُكَ الصَّغِيرُ يُفَكِّر! بَرَاوَ!",
+      "src": "/sounds/preschool/ar/logic-think-path-success.mp3",
+      "durationMs": 2729
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-long-short-prompt.mp3",
+      "language": "ar",
+      "text": "اِلْمَسِ القِطَار! القِطَارُ طَوِيل، السَّيَّارَةُ قَصِيرَة!",
+      "src": "/sounds/preschool/ar/logic-long-short-prompt.mp3",
+      "durationMs": 4283
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-long-short-success.mp3",
+      "language": "ar",
+      "text": "أَحْسَنْت! هَذَا قِطَارٌ طَوِيل!",
+      "src": "/sounds/preschool/ar/logic-long-short-success.mp3",
+      "durationMs": 2765
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-heavy-tap-prompt.mp3",
+      "language": "ar",
+      "text": "اِلْمَسِ الحَجَر! الحَجَرُ ثَقِيل، البَالُونُ خَفِيف!",
+      "src": "/sounds/preschool/ar/logic-heavy-tap-prompt.mp3",
+      "durationMs": 4025
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-heavy-tap-success.mp3",
+      "language": "ar",
+      "text": "نَعَم! الحَجَرُ ثَقِيل!",
+      "src": "/sounds/preschool/ar/logic-heavy-tap-success.mp3",
+      "durationMs": 2127
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-above-below-prompt.mp3",
+      "language": "ar",
+      "text": "اِلْمِسِ الكُرَةَ فَوْقَ الخَطّ! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان.",
+      "src": "/sounds/preschool/ar/logic-above-below-prompt.mp3",
+      "durationMs": 4701
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-above-below-success.mp3",
+      "language": "ar",
+      "text": "أَحْسَنْت! الكُرَةُ فَوْقَ الخَطّ!",
+      "src": "/sounds/preschool/ar/logic-above-below-success.mp3",
+      "durationMs": 2654
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-heavy-light-prompt.mp3",
+      "language": "ar",
+      "text": "ضَعِ الحَجَرَ وَالسَّيَّارَةَ مَعَ الفِيل، وَالبَالُونَ وَالوَرَقَةَ مَعَ الرِّيشَة!",
+      "src": "/sounds/preschool/ar/logic-heavy-light-prompt.mp3",
+      "durationMs": 4968
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-heavy-light-success.mp3",
+      "language": "ar",
+      "text": "مَيَّزْتَ الثَّقِيلَ وَالخَفِيف!",
+      "src": "/sounds/preschool/ar/logic-heavy-light-success.mp3",
+      "durationMs": 2150
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-inside-outside-prompt.mp3",
+      "language": "ar",
+      "text": "اِلْمَسِ الكُرَةَ الَّتِي دَاخِلَ الصُّنْدُوق! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان!",
+      "src": "/sounds/preschool/ar/logic-inside-outside-prompt.mp3",
+      "durationMs": 5340
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-inside-outside-success.mp3",
+      "language": "ar",
+      "text": "نَعَم! الكُرَةُ دَاخِلَ الصُّنْدُوق!",
+      "src": "/sounds/preschool/ar/logic-inside-outside-success.mp3",
+      "durationMs": 2672
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-front-behind-prompt.mp3",
+      "language": "ar",
+      "text": "اِلْمَسِ الدُّبَّ الَّذِي أَمَامَ الصُّنْدُوق! نَفْسُ الدُّبّ، مَكَانَانِ مُخْتَلِفَان!",
+      "src": "/sounds/preschool/ar/logic-front-behind-prompt.mp3",
+      "durationMs": 5333
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-front-behind-success.mp3",
+      "language": "ar",
+      "text": "نَعَم! الدُّبُّ أَمَامَ الصُّنْدُوق!",
+      "src": "/sounds/preschool/ar/logic-front-behind-success.mp3",
+      "durationMs": 2587
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-right-left-prompt.mp3",
+      "language": "ar",
+      "text": "اِلْمَسِ اليَدَ اليُمْنَى! بِهَا نَأْكُلُ وَنُصَافِح!",
+      "src": "/sounds/preschool/ar/logic-right-left-prompt.mp3",
+      "durationMs": 3492
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-right-left-success.mp3",
+      "language": "ar",
+      "text": "هَذِهِ اليَدُ اليُمْنَى! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/logic-right-left-success.mp3",
+      "durationMs": 2546
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-pattern-colors-prompt.mp3",
+      "language": "ar",
+      "text": "قِطَار، سَيَّارَة، قِطَار، سَيَّارَة، قِطَار… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/logic-pattern-colors-prompt.mp3",
+      "durationMs": 5465
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-pattern-colors-success.mp3",
+      "language": "ar",
+      "text": "السَّيَّارَةُ بَعْدَ القِطَار! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/logic-pattern-colors-success.mp3",
+      "durationMs": 3009
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-memory-prompt.mp3",
+      "language": "ar",
+      "text": "اِقْلِبِ البِطَاقَاتِ! قُلْ: قِطَار، فِيل، عُصْفُور!",
+      "src": "/sounds/preschool/ar/logic-memory-prompt.mp3",
+      "durationMs": 4431
+    },
+    {
+      "target": "17-logic-spatial/ar/logic-memory-success.mp3",
+      "language": "ar",
+      "text": "عَقْلُكَ قَوِيّ!",
+      "src": "/sounds/preschool/ar/logic-memory-success.mp3",
+      "durationMs": 1355
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-think-path-prompt.mp3",
+      "language": "fr",
+      "text": "Glisse : train long, pierre lourde, oiseau en haut, maison, ballon léger, puis le cerveau !",
+      "src": "/sounds/preschool/fr/logic-think-path-prompt.mp3",
+      "durationMs": 6946
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-think-path-success.mp3",
+      "language": "fr",
+      "text": "Ton petit esprit réfléchit ! Bravo !",
+      "src": "/sounds/preschool/fr/logic-think-path-success.mp3",
+      "durationMs": 2776
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-long-short-prompt.mp3",
+      "language": "fr",
+      "text": "Touche le train ! Le train est long, la voiture est courte !",
+      "src": "/sounds/preschool/fr/logic-long-short-prompt.mp3",
+      "durationMs": 3814
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-long-short-success.mp3",
+      "language": "fr",
+      "text": "Bravo ! Voici un long train !",
+      "src": "/sounds/preschool/fr/logic-long-short-success.mp3",
+      "durationMs": 2573
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-heavy-tap-prompt.mp3",
+      "language": "fr",
+      "text": "Touche la pierre ! La pierre est lourde, le ballon est léger !",
+      "src": "/sounds/preschool/fr/logic-heavy-tap-prompt.mp3",
+      "durationMs": 3800
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-heavy-tap-success.mp3",
+      "language": "fr",
+      "text": "Oui ! La pierre est lourde !",
+      "src": "/sounds/preschool/fr/logic-heavy-tap-success.mp3",
+      "durationMs": 2025
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-above-below-prompt.mp3",
+      "language": "fr",
+      "text": "Touche le ballon au-dessus de la ligne ! C’est le même ballon à deux endroits.",
+      "src": "/sounds/preschool/fr/logic-above-below-prompt.mp3",
+      "durationMs": 4425
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-above-below-success.mp3",
+      "language": "fr",
+      "text": "Oui ! Le ballon est au-dessus !",
+      "src": "/sounds/preschool/fr/logic-above-below-success.mp3",
+      "durationMs": 2058
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-heavy-light-prompt.mp3",
+      "language": "fr",
+      "text": "Mets la pierre et la voiture avec l'éléphant, le ballon et la feuille avec la plume !",
+      "src": "/sounds/preschool/fr/logic-heavy-light-prompt.mp3",
+      "durationMs": 5180
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-heavy-light-success.mp3",
+      "language": "fr",
+      "text": "Tu connais le lourd et le léger !",
+      "src": "/sounds/preschool/fr/logic-heavy-light-success.mp3",
+      "durationMs": 2115
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-inside-outside-prompt.mp3",
+      "language": "fr",
+      "text": "Touche le ballon qui est DANS la boîte ! C’est le même ballon, deux places !",
+      "src": "/sounds/preschool/fr/logic-inside-outside-prompt.mp3",
+      "durationMs": 4254
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-inside-outside-success.mp3",
+      "language": "fr",
+      "text": "Oui ! Le ballon est dans la boîte !",
+      "src": "/sounds/preschool/fr/logic-inside-outside-success.mp3",
+      "durationMs": 2225
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-front-behind-prompt.mp3",
+      "language": "fr",
+      "text": "Touche l’ours qui est DEVANT la boîte ! C’est le même ours, deux places différentes !",
+      "src": "/sounds/preschool/fr/logic-front-behind-prompt.mp3",
+      "durationMs": 4771
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-front-behind-success.mp3",
+      "language": "fr",
+      "text": "Oui ! L’ours est devant la boîte !",
+      "src": "/sounds/preschool/fr/logic-front-behind-success.mp3",
+      "durationMs": 2329
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-right-left-prompt.mp3",
+      "language": "fr",
+      "text": "Touche la main droite ! Avec elle on mange et on salue !",
+      "src": "/sounds/preschool/fr/logic-right-left-prompt.mp3",
+      "durationMs": 3462
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-right-left-success.mp3",
+      "language": "fr",
+      "text": "Voici la main droite ! Bravo !",
+      "src": "/sounds/preschool/fr/logic-right-left-success.mp3",
+      "durationMs": 2219
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-pattern-colors-prompt.mp3",
+      "language": "fr",
+      "text": "Train, voiture, train, voiture, train… ensuite ?",
+      "src": "/sounds/preschool/fr/logic-pattern-colors-prompt.mp3",
+      "durationMs": 3862
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-pattern-colors-success.mp3",
+      "language": "fr",
+      "text": "La voiture vient après le train ! Bravo !",
+      "src": "/sounds/preschool/fr/logic-pattern-colors-success.mp3",
+      "durationMs": 2854
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-memory-prompt.mp3",
+      "language": "fr",
+      "text": "Retourne les cartes ! Dis : train, éléphant, oiseau !",
+      "src": "/sounds/preschool/fr/logic-memory-prompt.mp3",
+      "durationMs": 4937
+    },
+    {
+      "target": "17-logic-spatial/fr/logic-memory-success.mp3",
+      "language": "fr",
+      "text": "Ton esprit est fort !",
+      "src": "/sounds/preschool/fr/logic-memory-success.mp3",
+      "durationMs": 1497
+    },
+    {
+      "target": "18-sequences/ar/seq-colors-ab-prompt.mp3",
+      "language": "ar",
+      "text": "أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-colors-ab-prompt.mp3",
+      "durationMs": 4805
+    },
+    {
+      "target": "18-sequences/ar/seq-colors-ab-success.mp3",
+      "language": "ar",
+      "text": "الأَزْرَقُ بَعْدَ الأَحْمَر! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/seq-colors-ab-success.mp3",
+      "durationMs": 2806
+    },
+    {
+      "target": "18-sequences/ar/seq-animals-ab-prompt.mp3",
+      "language": "ar",
+      "text": "قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-animals-ab-prompt.mp3",
+      "durationMs": 4531
+    },
+    {
+      "target": "18-sequences/ar/seq-animals-ab-success.mp3",
+      "language": "ar",
+      "text": "الكَلْبُ بَعْدَ القِطَّة! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/seq-animals-ab-success.mp3",
+      "durationMs": 2668
+    },
+    {
+      "target": "18-sequences/ar/seq-day-night-prompt.mp3",
+      "language": "ar",
+      "text": "شَمْس، قَمَر، شَمْس، قَمَر، شَمْس… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-day-night-prompt.mp3",
+      "durationMs": 4757
+    },
+    {
+      "target": "18-sequences/ar/seq-day-night-success.mp3",
+      "language": "ar",
+      "text": "القَمَرُ بَعْدَ الشَّمْس! مُمْتَاز!",
+      "src": "/sounds/preschool/ar/seq-day-night-success.mp3",
+      "durationMs": 2793
+    },
+    {
+      "target": "18-sequences/ar/seq-fruits-ab-prompt.mp3",
+      "language": "ar",
+      "text": "تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-fruits-ab-prompt.mp3",
+      "durationMs": 5078
+    },
+    {
+      "target": "18-sequences/ar/seq-fruits-ab-success.mp3",
+      "language": "ar",
+      "text": "المَوْزَةُ بَعْدَ التُّفَّاحَة!",
+      "src": "/sounds/preschool/ar/seq-fruits-ab-success.mp3",
+      "durationMs": 1965
+    },
+    {
+      "target": "18-sequences/ar/seq-big-small-prompt.mp3",
+      "language": "ar",
+      "text": "فِيل، فَأْر، فِيل، فَأْر، فِيل… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-big-small-prompt.mp3",
+      "durationMs": 4559
+    },
+    {
+      "target": "18-sequences/ar/seq-big-small-success.mp3",
+      "language": "ar",
+      "text": "الفَأْرُ الصَّغِيرُ بَعْدَ الفِيل!",
+      "src": "/sounds/preschool/ar/seq-big-small-success.mp3",
+      "durationMs": 3938
+    },
+    {
+      "target": "18-sequences/ar/seq-transport-abb-prompt.mp3",
+      "language": "ar",
+      "text": "سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-transport-abb-prompt.mp3",
+      "durationMs": 3455
+    },
+    {
+      "target": "18-sequences/ar/seq-transport-abb-success.mp3",
+      "language": "ar",
+      "text": "حَافِلَةٌ ثَانِيَة! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/seq-transport-abb-success.mp3",
+      "durationMs": 2435
+    },
+    {
+      "target": "18-sequences/ar/seq-weather-abc-prompt.mp3",
+      "language": "ar",
+      "text": "شَمْس، غَيْم، مَطَر، شَمْس، غَيْم… مَاذَا بَعْد؟",
+      "src": "/sounds/preschool/ar/seq-weather-abc-prompt.mp3",
+      "durationMs": 4565
+    },
+    {
+      "target": "18-sequences/ar/seq-weather-abc-success.mp3",
+      "language": "ar",
+      "text": "المَطَرُ بَعْدَ الغَيْم! عَبْقَرِي!",
+      "src": "/sounds/preschool/ar/seq-weather-abc-success.mp3",
+      "durationMs": 2581
+    },
+    {
+      "target": "18-sequences/ar/seq-numbers-inc-prompt.mp3",
+      "language": "ar",
+      "text": "وَاحِد، اثْنَان، ثَلَاثَة… مَا العَدَدُ التَّالِي؟",
+      "src": "/sounds/preschool/ar/seq-numbers-inc-prompt.mp3",
+      "durationMs": 3617
+    },
+    {
+      "target": "18-sequences/ar/seq-numbers-inc-success.mp3",
+      "language": "ar",
+      "text": "أَرْبَعَة! بَطَلُ الأَعْدَاد!",
+      "src": "/sounds/preschool/ar/seq-numbers-inc-success.mp3",
+      "durationMs": 2148
+    },
+    {
+      "target": "18-sequences/fr/seq-colors-ab-prompt.mp3",
+      "language": "fr",
+      "text": "Rouge, bleu, rouge, bleu, rouge… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-colors-ab-prompt.mp3",
+      "durationMs": 4244
+    },
+    {
+      "target": "18-sequences/fr/seq-colors-ab-success.mp3",
+      "language": "fr",
+      "text": "Le bleu vient après le rouge ! Bravo !",
+      "src": "/sounds/preschool/fr/seq-colors-ab-success.mp3",
+      "durationMs": 2832
+    },
+    {
+      "target": "18-sequences/fr/seq-animals-ab-prompt.mp3",
+      "language": "fr",
+      "text": "Chat, chien, chat, chien, chat… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-animals-ab-prompt.mp3",
+      "durationMs": 3338
+    },
+    {
+      "target": "18-sequences/fr/seq-animals-ab-success.mp3",
+      "language": "fr",
+      "text": "Le chien vient après le chat ! Bravo !",
+      "src": "/sounds/preschool/fr/seq-animals-ab-success.mp3",
+      "durationMs": 3511
+    },
+    {
+      "target": "18-sequences/fr/seq-day-night-prompt.mp3",
+      "language": "fr",
+      "text": "Soleil, lune, soleil, lune, soleil… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-day-night-prompt.mp3",
+      "durationMs": 3806
+    },
+    {
+      "target": "18-sequences/fr/seq-day-night-success.mp3",
+      "language": "fr",
+      "text": "La lune vient après le soleil ! Super !",
+      "src": "/sounds/preschool/fr/seq-day-night-success.mp3",
+      "durationMs": 3734
+    },
+    {
+      "target": "18-sequences/fr/seq-fruits-ab-prompt.mp3",
+      "language": "fr",
+      "text": "Pomme, banane, pomme, banane, pomme… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-fruits-ab-prompt.mp3",
+      "durationMs": 3525
+    },
+    {
+      "target": "18-sequences/fr/seq-fruits-ab-success.mp3",
+      "language": "fr",
+      "text": "La banane vient après la pomme !",
+      "src": "/sounds/preschool/fr/seq-fruits-ab-success.mp3",
+      "durationMs": 2910
+    },
+    {
+      "target": "18-sequences/fr/seq-big-small-prompt.mp3",
+      "language": "fr",
+      "text": "Éléphant, souris, éléphant, souris, éléphant… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-big-small-prompt.mp3",
+      "durationMs": 3955
+    },
+    {
+      "target": "18-sequences/fr/seq-big-small-success.mp3",
+      "language": "fr",
+      "text": "La petite souris vient après l'éléphant !",
+      "src": "/sounds/preschool/fr/seq-big-small-success.mp3",
+      "durationMs": 3171
+    },
+    {
+      "target": "18-sequences/fr/seq-transport-abb-prompt.mp3",
+      "language": "fr",
+      "text": "Voiture, bus, bus, voiture, bus… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-transport-abb-prompt.mp3",
+      "durationMs": 3905
+    },
+    {
+      "target": "18-sequences/fr/seq-transport-abb-success.mp3",
+      "language": "fr",
+      "text": "Un deuxième bus ! Bravo !",
+      "src": "/sounds/preschool/fr/seq-transport-abb-success.mp3",
+      "durationMs": 2119
+    },
+    {
+      "target": "18-sequences/fr/seq-weather-abc-prompt.mp3",
+      "language": "fr",
+      "text": "Soleil, nuage, pluie, soleil, nuage… ensuite ?",
+      "src": "/sounds/preschool/fr/seq-weather-abc-prompt.mp3",
+      "durationMs": 5460
+    },
+    {
+      "target": "18-sequences/fr/seq-weather-abc-success.mp3",
+      "language": "fr",
+      "text": "La pluie vient après le nuage ! Génie !",
+      "src": "/sounds/preschool/fr/seq-weather-abc-success.mp3",
+      "durationMs": 3149
+    },
+    {
+      "target": "18-sequences/fr/seq-numbers-inc-prompt.mp3",
+      "language": "fr",
+      "text": "Un, deux, trois… quel chiffre ensuite ?",
+      "src": "/sounds/preschool/fr/seq-numbers-inc-prompt.mp3",
+      "durationMs": 3185
+    },
+    {
+      "target": "18-sequences/fr/seq-numbers-inc-success.mp3",
+      "language": "fr",
+      "text": "Quatre ! Champion des chiffres !",
+      "src": "/sounds/preschool/fr/seq-numbers-inc-success.mp3",
+      "durationMs": 2126
+    },
+    {
+      "target": "19-stories/ar/story-couscous-prompt.mp3",
+      "language": "ar",
+      "text": "رَتِّبِ الصُّوَرَ: دِيدُو جَائِع، ثُمَّ الكُسْكُس، ثُمَّ يَبْتَسِم! بَعْدَهَا احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!",
+      "src": "/sounds/preschool/ar/story-couscous-prompt.mp3",
+      "durationMs": 7781
+    },
+    {
+      "target": "19-stories/ar/story-couscous-success.mp3",
+      "language": "ar",
+      "text": "أَحْسَنْت! الآنْ احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!",
+      "src": "/sounds/preschool/ar/story-couscous-success.mp3",
+      "durationMs": 3745
+    },
+    {
+      "target": "19-stories/ar/story-wash-hands-prompt.mp3",
+      "language": "ar",
+      "text": "رَتِّبِ الصُّوَرَ: يَدَانِ مُتَّسِخَتَان، ثُمَّ الصَّابُون، ثُمَّ يَدَانِ نَظِيفَتَان! بَعْدَهَا احْكِ القِصَّة!",
+      "src": "/sounds/preschool/ar/story-wash-hands-prompt.mp3",
+      "durationMs": 7725
+    },
+    {
+      "target": "19-stories/ar/story-wash-hands-success.mp3",
+      "language": "ar",
+      "text": "يَدَانِ نَظِيفَتَان! احْكِ القِصَّةَ لِمَامَا!",
+      "src": "/sounds/preschool/ar/story-wash-hands-success.mp3",
+      "durationMs": 3302
+    },
+    {
+      "target": "19-stories/ar/story-school-day-prompt.mp3",
+      "language": "ar",
+      "text": "رَتِّبِ الصُّوَرَ: نَسْتَيْقِظ، ثُمَّ المَدْرَسَة، ثُمَّ حَضْنُ بَابَا! بَعْدَهَا احْكِ القِصَّة!",
+      "src": "/sounds/preschool/ar/story-school-day-prompt.mp3",
+      "durationMs": 6377
+    },
+    {
+      "target": "19-stories/ar/story-school-day-success.mp3",
+      "language": "ar",
+      "text": "قِصَّةٌ جَمِيلَة! احْكِهَا لِبَابَا!",
+      "src": "/sounds/preschool/ar/story-school-day-success.mp3",
+      "durationMs": 2529
+    },
+    {
+      "target": "19-stories/fr/story-couscous-prompt.mp3",
+      "language": "fr",
+      "text": "Range les images : Dido a faim, puis le couscous, puis il sourit ! Ensuite raconte l’histoire à papa ou maman !",
+      "src": "/sounds/preschool/fr/story-couscous-prompt.mp3",
+      "durationMs": 7605
+    },
+    {
+      "target": "19-stories/fr/story-couscous-success.mp3",
+      "language": "fr",
+      "text": "Bravo ! Maintenant raconte l’histoire à papa ou maman !",
+      "src": "/sounds/preschool/fr/story-couscous-success.mp3",
+      "durationMs": 3574
+    },
+    {
+      "target": "19-stories/fr/story-wash-hands-prompt.mp3",
+      "language": "fr",
+      "text": "Range les images : mains sales, puis le savon, puis mains propres ! Ensuite raconte l’histoire !",
+      "src": "/sounds/preschool/fr/story-wash-hands-prompt.mp3",
+      "durationMs": 6321
+    },
+    {
+      "target": "20-art-drawing/ar/art-crayon-path-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ القَلَمَ: وَجْه، شَمْس، زَهْرَة، بَيْت، فَنَك، ثُمَّ الكُسْكُس!",
+      "src": "/sounds/preschool/ar/art-crayon-path-prompt.mp3",
+      "durationMs": 5860
+    },
+    {
+      "target": "20-art-drawing/ar/art-crayon-path-success.mp3",
+      "language": "ar",
+      "text": "دَفْتَرُ الرَّسْمِ جَاهِز! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/art-crayon-path-success.mp3",
+      "durationMs": 2725
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-face-prompt.mp3",
+      "language": "ar",
+      "text": "اِخْتَرْ لَوْناً وَالمِسِ الوَجْهَ وَالعَيْنَيْنِ وَالفَم!",
+      "src": "/sounds/preschool/ar/art-coloring-face-prompt.mp3",
+      "durationMs": 3572
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-face-success.mp3",
+      "language": "ar",
+      "text": "وَجْهٌ جَمِيل! أَنْتَ فَنَّان!",
+      "src": "/sounds/preschool/ar/art-coloring-face-success.mp3",
+      "durationMs": 2547
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-sun-prompt.mp3",
+      "language": "ar",
+      "text": "لَوِّنِ الشَّمْسَ! المِسِ الدَّائِرَةَ وَالأَشِعَّة!",
+      "src": "/sounds/preschool/ar/art-coloring-sun-prompt.mp3",
+      "durationMs": 3283
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-sun-success.mp3",
+      "language": "ar",
+      "text": "شَمْسُكَ تُضِيء! رَائِع!",
+      "src": "/sounds/preschool/ar/art-coloring-sun-success.mp3",
+      "durationMs": 2381
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-flower-prompt.mp3",
+      "language": "ar",
+      "text": "لَوِّنِ الزَّهْرَة! البَتَلَاتُ وَالوَسَطُ وَالسَّاق!",
+      "src": "/sounds/preschool/ar/art-coloring-flower-prompt.mp3",
+      "durationMs": 3987
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-flower-success.mp3",
+      "language": "ar",
+      "text": "زَهْرَةٌ رَائِعَة!",
+      "src": "/sounds/preschool/ar/art-coloring-flower-success.mp3",
+      "durationMs": 1665
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-house-prompt.mp3",
+      "language": "ar",
+      "text": "لَوِّنِ البَيْت! السَّقْفُ وَالجِدَارُ وَالبَابُ وَالنَّافِذَة!",
+      "src": "/sounds/preschool/ar/art-coloring-house-prompt.mp3",
+      "durationMs": 4697
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-house-success.mp3",
+      "language": "ar",
+      "text": "بَيْتٌ جَمِيل!",
+      "src": "/sounds/preschool/ar/art-coloring-house-success.mp3",
+      "durationMs": 1447
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-fennec-prompt.mp3",
+      "language": "ar",
+      "text": "لَوِّنِ الفَنَكَ! آذانٌ كَبِيرَةٌ، ثَعْلَبُ صَحْرَائِنَا!",
+      "src": "/sounds/preschool/ar/art-coloring-fennec-prompt.mp3",
+      "durationMs": 4240
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-fennec-success.mp3",
+      "language": "ar",
+      "text": "فَنَكٌ رَائِع!",
+      "src": "/sounds/preschool/ar/art-coloring-fennec-success.mp3",
+      "durationMs": 1511
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-camel-prompt.mp3",
+      "language": "ar",
+      "text": "لَوِّنِ الجَمَل! سَفِينَةُ الصَّحْرَاءِ وَسَنَامُهُ!",
+      "src": "/sounds/preschool/ar/art-coloring-camel-prompt.mp3",
+      "durationMs": 3556
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-camel-success.mp3",
+      "language": "ar",
+      "text": "جَمَلٌ قَوِي!",
+      "src": "/sounds/preschool/ar/art-coloring-camel-success.mp3",
+      "durationMs": 1498
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-couscous-prompt.mp3",
+      "language": "ar",
+      "text": "لَوِّنِ طَبَقَ الكُسْكُس! القِدْرُ وَالغِطَاءُ وَالطَّعَام!",
+      "src": "/sounds/preschool/ar/art-coloring-couscous-prompt.mp3",
+      "durationMs": 4362
+    },
+    {
+      "target": "20-art-drawing/ar/art-coloring-couscous-success.mp3",
+      "language": "ar",
+      "text": "شَهِيّ! طَبَقُكَ جَاهِز!",
+      "src": "/sounds/preschool/ar/art-coloring-couscous-success.mp3",
+      "durationMs": 2385
+    },
+    {
+      "target": "21-creative-games/ar/creative-play-path-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبْ: تُفَّاحَة، نَمْلَة، سَمَكَة، مَزْرَعَة، ثُمَّ نَحْلَة!",
+      "src": "/sounds/preschool/ar/creative-play-path-prompt.mp3",
+      "durationMs": 5160
+    },
+    {
+      "target": "21-creative-games/ar/creative-play-path-success.mp3",
+      "language": "ar",
+      "text": "هَيَّا نَلْعَب! أَحْسَنْت!",
+      "src": "/sounds/preschool/ar/creative-play-path-success.mp3",
+      "durationMs": 2171
+    },
+    {
+      "target": "21-creative-games/ar/creative-color-apple-prompt.mp3",
+      "language": "ar",
+      "text": "اِخْتَرْ لَوْناً وَلَوِّنِ التُّفَّاحَة! الجِسْمُ وَالعُنُقُ وَالوَرَقَة!",
+      "src": "/sounds/preschool/ar/creative-color-apple-prompt.mp3",
+      "durationMs": 4829
+    },
+    {
+      "target": "21-creative-games/ar/creative-color-apple-success.mp3",
+      "language": "ar",
+      "text": "تُفَّاحَةٌ جَمِيلَة!",
+      "src": "/sounds/preschool/ar/creative-color-apple-success.mp3",
+      "durationMs": 1646
+    },
+    {
+      "target": "21-creative-games/ar/creative-maze-ant-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ النَّمْلَةَ حَتَّى الوَرَقَةِ الخَضْرَاء!",
+      "src": "/sounds/preschool/ar/creative-maze-ant-prompt.mp3",
+      "durationMs": 2810
+    },
+    {
+      "target": "21-creative-games/ar/creative-maze-ant-success.mp3",
+      "language": "ar",
+      "text": "وَصَلَتِ النَّمْلَة!",
+      "src": "/sounds/preschool/ar/creative-maze-ant-success.mp3",
+      "durationMs": 1294
+    },
+    {
+      "target": "21-creative-games/ar/creative-maze-fish-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ السَّمَكَةَ فِي البَحْرِ حَتَّى الصَّدَفَة!",
+      "src": "/sounds/preschool/ar/creative-maze-fish-prompt.mp3",
+      "durationMs": 2842
+    },
+    {
+      "target": "21-creative-games/ar/creative-maze-fish-success.mp3",
+      "language": "ar",
+      "text": "وَجَدَتِ السَّمَكَةُ صَدَفَتَهَا!",
+      "src": "/sounds/preschool/ar/creative-maze-fish-success.mp3",
+      "durationMs": 2199
+    },
+    {
+      "target": "21-creative-games/ar/creative-jigsaw-farm-prompt.mp3",
+      "language": "ar",
+      "text": "ضَعِ الشَّمْسَ وَالشَّجَرَةَ وَالبَيْتَ فِي مَكَانِهَا!",
+      "src": "/sounds/preschool/ar/creative-jigsaw-farm-prompt.mp3",
+      "durationMs": 3609
+    },
+    {
+      "target": "21-creative-games/ar/creative-jigsaw-farm-success.mp3",
+      "language": "ar",
+      "text": "المَزْرَعَةُ كَامِلَة!",
+      "src": "/sounds/preschool/ar/creative-jigsaw-farm-success.mp3",
+      "durationMs": 1669
+    },
+    {
+      "target": "21-creative-games/ar/creative-jigsaw-oasis-prompt.mp3",
+      "language": "ar",
+      "text": "ضَعِ الشَّمْسَ وَالجَمَلَ وَالفَنَكَ وَالنَّخْلَةَ فِي مَكَانِهَا!",
+      "src": "/sounds/preschool/ar/creative-jigsaw-oasis-prompt.mp3",
+      "durationMs": 4366
+    },
+    {
+      "target": "21-creative-games/ar/creative-jigsaw-oasis-success.mp3",
+      "language": "ar",
+      "text": "وَاحَةٌ جَمِيلَة!",
+      "src": "/sounds/preschool/ar/creative-jigsaw-oasis-success.mp3",
+      "durationMs": 1525
+    },
+    {
+      "target": "21-creative-games/ar/creative-maze-car-prompt.mp3",
+      "language": "ar",
+      "text": "اِسْحَبِ السَّيَّارَةَ عَلَى الطَّرِيقِ حَتَّى البَيْت!",
+      "src": "/sounds/preschool/ar/creative-maze-car-prompt.mp3",
+      "durationMs": 3164
+    },
+    {
+      "target": "21-creative-games/ar/creative-maze-car-success.mp3",
+      "language": "ar",
+      "text": "وَصَلَتِ السَّيَّارَةُ إِلَى البَيْت!",
+      "src": "/sounds/preschool/ar/creative-maze-car-success.mp3",
+      "durationMs": 2310
+    },
+    {
+      "target": "21-creative-games/ar/creative-bees-flowers-prompt.mp3",
+      "language": "ar",
+      "text": "ضَعِ النَّحْلَ مَعَ العَسَل، وَالفَرَاشَاتِ مَعَ الزَّهْرَة!",
+      "src": "/sounds/preschool/ar/creative-bees-flowers-prompt.mp3",
+      "durationMs": 3517
+    },
+    {
+      "target": "21-creative-games/ar/creative-bees-flowers-success.mp3",
+      "language": "ar",
+      "text": "كُلُّ وَاحِدٍ فِي مَكَانِهِ!",
+      "src": "/sounds/preschool/ar/creative-bees-flowers-success.mp3",
+      "durationMs": 2019
+    },
+    {
       "target": "22-mots-cartes-et-micro/ar/letters-alif-rabbit-echo.mp3",
       "language": "ar",
       "text": "أَرْنَب",
@@ -5751,958 +7214,6 @@
   ],
   "pending": [
     {
-      "language": "ar",
-      "text": "اِسْحَبِ الفَنَكَ: فَرَح، بَالُون، حُزْن، لَصْقَة، ثُمَّ عِنَاق!",
-      "targets": [
-        "15-emotions/ar/emotion-feelings-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "كُلُّ المَشَاعِرِ مَقْبُولَة! أَحْسَنْت!",
-      "targets": [
-        "15-emotions/ar/emotion-feelings-path-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "عِنْدَنَا بَالُون! اِلْمَسِ الوَجْهَ الفَرِح!",
-      "targets": [
-        "15-emotions/ar/emotion-happy-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "نَعَم! هَذَا الفَرَح!",
-      "targets": [
-        "15-emotions/ar/emotion-happy-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "سَقَطَتِ الآيْس كْرِيم! اِلْمَسِ الوَجْهَ الحَزِين!",
-      "targets": [
-        "15-emotions/ar/emotion-sad-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "نَعَم، هَذَا الحُزْن. نُعَانِقُكَ!",
-      "targets": [
-        "15-emotions/ar/emotion-sad-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "سَقَطَ بُرْجُ المُكَعَّبَات! اِلْمَسِ الوَجْهَ الغَاضِب!",
-      "targets": [
-        "15-emotions/ar/emotion-angry-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "الغَضَبُ يَمُرّ! نَبْنِي مَرَّةً أُخْرَى!",
-      "targets": [
-        "15-emotions/ar/emotion-angry-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ضَعِ البَالُونَ وَالهَدِيَّةَ مَعَ الضِّحْكَة، وَاللَّصْقَةَ مَعَ الدَّمْعَة!",
-      "targets": [
-        "15-emotions/ar/emotion-sort-context-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "تَعْرِفُ الفَرَحَ وَالحُزْن!",
-      "targets": [
-        "15-emotions/ar/emotion-sort-context-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْبِطِ الفَرَحَ بِالبَالُون، وَالحُزْنَ بِاللَّصْقَة!",
-      "targets": [
-        "15-emotions/ar/emotion-connect-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "كُلُّ شُعُورٍ لَهُ صُورَة!",
-      "targets": [
-        "15-emotions/ar/emotion-connect-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِقْلِبِ البِطَاقَاتِ! قُلْ: فَرِح، حَزِين، غَاضِب!",
-      "targets": [
-        "15-emotions/ar/emotion-memory-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ذَاكِرَتُكَ قَوِيَّة!",
-      "targets": [
-        "15-emotions/ar/emotion-memory-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "الصَّدِيقُ حَزِين! مَاذَا نَفْعَل؟ اِلْمَسِ العِنَاق!",
-      "targets": [
-        "15-emotions/ar/emotion-hug-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "نَعَمْ! العِنَاقُ يُسَاعِد!",
-      "targets": [
-        "15-emotions/ar/emotion-hug-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Glisse le fennec : joie, ballon, tristesse, pansement, puis un câlin !",
-      "targets": [
-        "15-emotions/fr/emotion-feelings-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Toutes les émotions sont OK ! Bravo !",
-      "targets": [
-        "15-emotions/fr/emotion-feelings-path-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "On a un ballon ! Touche le visage joyeux !",
-      "targets": [
-        "15-emotions/fr/emotion-happy-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui ! C'est la joie !",
-      "targets": [
-        "15-emotions/fr/emotion-happy-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La glace est tombée ! Touche le visage triste !",
-      "targets": [
-        "15-emotions/fr/emotion-sad-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui, c'est la tristesse. On te fait un câlin !",
-      "targets": [
-        "15-emotions/fr/emotion-sad-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La tour de cubes est tombée ! Touche le visage fâché !",
-      "targets": [
-        "15-emotions/fr/emotion-angry-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La colère passe ! On reconstruit !",
-      "targets": [
-        "15-emotions/fr/emotion-angry-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Mets le ballon et le cadeau avec le sourire, le pansement avec la larme !",
-      "targets": [
-        "15-emotions/fr/emotion-sort-context-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Tu connais la joie et la tristesse !",
-      "targets": [
-        "15-emotions/fr/emotion-sort-context-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Relie la joie au ballon, et la tristesse au pansement !",
-      "targets": [
-        "15-emotions/fr/emotion-connect-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Chaque sentiment a son image !",
-      "targets": [
-        "15-emotions/fr/emotion-connect-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Retourne les cartes ! Dis : joyeux, triste, fâché !",
-      "targets": [
-        "15-emotions/fr/emotion-memory-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Tu as une super mémoire !",
-      "targets": [
-        "15-emotions/fr/emotion-memory-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "L'ami est triste ! Que fait-on ? Touche le câlin !",
-      "targets": [
-        "15-emotions/fr/emotion-hug-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui ! Le câlin aide !",
-      "targets": [
-        "15-emotions/fr/emotion-hug-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Drag the fennec: joy, balloon, sadness, bandage, then a hug!",
-      "targets": [
-        "15-emotions/en/emotion-feelings-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Every feeling is OK! Well done!",
-      "targets": [
-        "15-emotions/en/emotion-feelings-path-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "We have a balloon! Touch the happy face!",
-      "targets": [
-        "15-emotions/en/emotion-happy-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Yes! That is joy!",
-      "targets": [
-        "15-emotions/en/emotion-happy-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "The ice cream fell! Touch the sad face!",
-      "targets": [
-        "15-emotions/en/emotion-sad-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Yes, that is sadness. We hug you!",
-      "targets": [
-        "15-emotions/en/emotion-sad-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "The block tower fell! Touch the angry face!",
-      "targets": [
-        "15-emotions/en/emotion-angry-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Anger passes! We build again!",
-      "targets": [
-        "15-emotions/en/emotion-angry-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Put the balloon and the gift with the smile, the bandage with the tear!",
-      "targets": [
-        "15-emotions/en/emotion-sort-context-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "You know joy and sadness!",
-      "targets": [
-        "15-emotions/en/emotion-sort-context-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Match joy to the balloon, and sadness to the bandage!",
-      "targets": [
-        "15-emotions/en/emotion-connect-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Every feeling has a picture!",
-      "targets": [
-        "15-emotions/en/emotion-connect-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Flip the cards! Say: happy, sad, angry!",
-      "targets": [
-        "15-emotions/en/emotion-memory-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Your memory is super!",
-      "targets": [
-        "15-emotions/en/emotion-memory-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "The friend is sad! What do we do? Touch the hug!",
-      "targets": [
-        "15-emotions/en/emotion-hug-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Yes! A hug helps!",
-      "targets": [
-        "15-emotions/en/emotion-hug-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبِ القَلَمَ: شَجَرَة، ثُعْبَان، طَائِرَةٌ وَرَقِيَّة، بَرْق، مَوْج، ثُمَّ الشَّمْس!",
-      "targets": [
-        "16-pre-writing/ar/writing-pencil-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "يَدُكَ جَاهِزَة! أَحْسَنْت!",
-      "targets": [
-        "16-pre-writing/ar/writing-pencil-path-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْسُمِ الشَّجَرَة! مِنَ الأَعْلَى إِلَى الأَسْفَل، مِثْلَ الجِذْع!",
-      "targets": [
-        "16-pre-writing/ar/writing-vertical-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "شَجَرَةٌ قَوِيَّة! يَدُكَ ثَابِتَة!",
-      "targets": [
-        "16-pre-writing/ar/writing-vertical-line-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْسُمِ الثُّعْبَان! مِنَ اليَمِينِ إِلَى اليَسَار، يَزْحَفُ عَلَى الأَرْض!",
-      "targets": [
-        "16-pre-writing/ar/writing-horizontal-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ثُعْبَانٌ طَوِيل! أَحْسَنْت!",
-      "targets": [
-        "16-pre-writing/ar/writing-horizontal-line-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْسُمِ الطَّائِرَةَ الوَرَقِيَّة! تَصْعَدُ فِي الهَوَاءِ بِخَطٍّ مَائِل!",
-      "targets": [
-        "16-pre-writing/ar/writing-oblique-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "طَارَتْ فِي السَّمَاء! أَنْتَ فَنَّان!",
-      "targets": [
-        "16-pre-writing/ar/writing-oblique-line-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْسُمِ البَرْق! فَوْقَ وَتَحْت، فَوْقَ وَتَحْت، زِكْزَاك!",
-      "targets": [
-        "16-pre-writing/ar/writing-zigzag-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "بَرْقٌ سَرِيع! وَاوَ!",
-      "targets": [
-        "16-pre-writing/ar/writing-zigzag-line-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْسُمِ المَوْج! نَاعِمٌ مِثْلَ بَحْرِ الجَزَائِر!",
-      "targets": [
-        "16-pre-writing/ar/writing-wavy-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "مَوْجَةٌ جَمِيلَة! بَحْرُنَا!",
-      "targets": [
-        "16-pre-writing/ar/writing-wavy-line-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِرْسُمِ الشَّمْسَ! دُرْ دُرْ دُرْ، دَائِرَةٌ كَبِيرَة!",
-      "targets": [
-        "16-pre-writing/ar/writing-loop-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "شَمْسٌ مُشْرِقَة! دَائِرَةٌ رَائِعَة!",
-      "targets": [
-        "16-pre-writing/ar/writing-loop-line-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبِ القَلَمَ عَلَى الخَطِّ حَتَّى الكُرَّاس!",
-      "targets": [
-        "16-pre-writing/ar/writing-pencil-maze-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَصَلَ القَلَمُ! نَكْتُب!",
-      "targets": [
-        "16-pre-writing/ar/writing-pencil-maze-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Glisse le crayon : arbre, serpent, cerf-volant, éclair, vague, puis le soleil !",
-      "targets": [
-        "16-pre-writing/fr/writing-pencil-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Ta main est prête ! Bravo !",
-      "targets": [
-        "16-pre-writing/fr/writing-pencil-path-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Trace l'arbre ! Du haut vers le bas, comme le tronc !",
-      "targets": [
-        "16-pre-writing/fr/writing-vertical-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Un bel arbre ! Ta main est ferme !",
-      "targets": [
-        "16-pre-writing/fr/writing-vertical-line-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Trace le serpent ! De gauche à droite, il rampe sur le sol !",
-      "targets": [
-        "16-pre-writing/fr/writing-horizontal-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Un long serpent ! Bravo !",
-      "targets": [
-        "16-pre-writing/fr/writing-horizontal-line-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Trace le cerf-volant ! Il monte dans le ciel en diagonale !",
-      "targets": [
-        "16-pre-writing/fr/writing-oblique-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Il vole dans le ciel ! Petit artiste !",
-      "targets": [
-        "16-pre-writing/fr/writing-oblique-line-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Trace l'éclair ! En haut, en bas, en haut, en bas, zigzag !",
-      "targets": [
-        "16-pre-writing/fr/writing-zigzag-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Un éclair rapide ! Wow !",
-      "targets": [
-        "16-pre-writing/fr/writing-zigzag-line-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Trace la vague ! Douce comme la mer d'Algérie !",
-      "targets": [
-        "16-pre-writing/fr/writing-wavy-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Une belle vague ! Notre mer !",
-      "targets": [
-        "16-pre-writing/fr/writing-wavy-line-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Trace le soleil ! Tourne, tourne, tourne, un grand rond !",
-      "targets": [
-        "16-pre-writing/fr/writing-loop-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Un soleil brillant ! Superbe rond !",
-      "targets": [
-        "16-pre-writing/fr/writing-loop-line-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Glisse le crayon sur la ligne jusqu'au cahier !",
-      "targets": [
-        "16-pre-writing/fr/writing-pencil-maze-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Le crayon est arrivé ! On écrit !",
-      "targets": [
-        "16-pre-writing/fr/writing-pencil-maze-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Drag the pencil: tree, snake, kite, lightning, wave, then the sun!",
-      "targets": [
-        "16-pre-writing/en/writing-pencil-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Your hand is ready! Well done!",
-      "targets": [
-        "16-pre-writing/en/writing-pencil-path-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Trace the tree! From top to bottom, like the trunk!",
-      "targets": [
-        "16-pre-writing/en/writing-vertical-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "A strong tree! Your hand is steady!",
-      "targets": [
-        "16-pre-writing/en/writing-vertical-line-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Trace the snake! From left to right, it crawls on the ground!",
-      "targets": [
-        "16-pre-writing/en/writing-horizontal-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "A long snake! Well done!",
-      "targets": [
-        "16-pre-writing/en/writing-horizontal-line-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Trace the kite! It goes up in the sky on a slant!",
-      "targets": [
-        "16-pre-writing/en/writing-oblique-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "It flies in the sky! Little artist!",
-      "targets": [
-        "16-pre-writing/en/writing-oblique-line-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Trace the lightning! Up, down, up, down, zigzag!",
-      "targets": [
-        "16-pre-writing/en/writing-zigzag-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Fast lightning! Wow!",
-      "targets": [
-        "16-pre-writing/en/writing-zigzag-line-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Trace the wave! Soft like the sea of Algeria!",
-      "targets": [
-        "16-pre-writing/en/writing-wavy-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "A beautiful wave! Our sea!",
-      "targets": [
-        "16-pre-writing/en/writing-wavy-line-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Trace the sun! Round, round, round, a big circle!",
-      "targets": [
-        "16-pre-writing/en/writing-loop-line-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "A bright sun! A wonderful circle!",
-      "targets": [
-        "16-pre-writing/en/writing-loop-line-success.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "Drag the pencil along the line all the way to the notebook!",
-      "targets": [
-        "16-pre-writing/en/writing-pencil-maze-prompt.mp3"
-      ]
-    },
-    {
-      "language": "en",
-      "text": "The pencil arrived! We write!",
-      "targets": [
-        "16-pre-writing/en/writing-pencil-maze-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبْ: قِطَار طَوِيل، حَجَر ثَقِيل، عُصْفُور فَوْق، بَيْت، بَالُون خَفِيف، ثُمَّ الدِّمَاغ!",
-      "targets": [
-        "17-logic-spatial/ar/logic-think-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "عَقْلُكَ الصَّغِيرُ يُفَكِّر! بَرَاوَ!",
-      "targets": [
-        "17-logic-spatial/ar/logic-think-path-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِلْمَسِ القِطَار! القِطَارُ طَوِيل، السَّيَّارَةُ قَصِيرَة!",
-      "targets": [
-        "17-logic-spatial/ar/logic-long-short-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "أَحْسَنْت! هَذَا قِطَارٌ طَوِيل!",
-      "targets": [
-        "17-logic-spatial/ar/logic-long-short-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِلْمَسِ الحَجَر! الحَجَرُ ثَقِيل، البَالُونُ خَفِيف!",
-      "targets": [
-        "17-logic-spatial/ar/logic-heavy-tap-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "نَعَم! الحَجَرُ ثَقِيل!",
-      "targets": [
-        "17-logic-spatial/ar/logic-heavy-tap-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِلْمِسِ الكُرَةَ فَوْقَ الخَطّ! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان.",
-      "targets": [
-        "17-logic-spatial/ar/logic-above-below-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "أَحْسَنْت! الكُرَةُ فَوْقَ الخَطّ!",
-      "targets": [
-        "17-logic-spatial/ar/logic-above-below-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ضَعِ الحَجَرَ وَالسَّيَّارَةَ مَعَ الفِيل، وَالبَالُونَ وَالوَرَقَةَ مَعَ الرِّيشَة!",
-      "targets": [
-        "17-logic-spatial/ar/logic-heavy-light-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "مَيَّزْتَ الثَّقِيلَ وَالخَفِيف!",
-      "targets": [
-        "17-logic-spatial/ar/logic-heavy-light-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِلْمَسِ الكُرَةَ الَّتِي دَاخِلَ الصُّنْدُوق! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان!",
-      "targets": [
-        "17-logic-spatial/ar/logic-inside-outside-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "نَعَم! الكُرَةُ دَاخِلَ الصُّنْدُوق!",
-      "targets": [
-        "17-logic-spatial/ar/logic-inside-outside-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِلْمَسِ الدُّبَّ الَّذِي أَمَامَ الصُّنْدُوق! نَفْسُ الدُّبّ، مَكَانَانِ مُخْتَلِفَان!",
-      "targets": [
-        "17-logic-spatial/ar/logic-front-behind-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "نَعَم! الدُّبُّ أَمَامَ الصُّنْدُوق!",
-      "targets": [
-        "17-logic-spatial/ar/logic-front-behind-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِلْمَسِ اليَدَ اليُمْنَى! بِهَا نَأْكُلُ وَنُصَافِح!",
-      "targets": [
-        "17-logic-spatial/ar/logic-right-left-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "هَذِهِ اليَدُ اليُمْنَى! أَحْسَنْت!",
-      "targets": [
-        "17-logic-spatial/ar/logic-right-left-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "قِطَار، سَيَّارَة، قِطَار، سَيَّارَة، قِطَار… مَاذَا بَعْد؟",
-      "targets": [
-        "17-logic-spatial/ar/logic-pattern-colors-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "السَّيَّارَةُ بَعْدَ القِطَار! أَحْسَنْت!",
-      "targets": [
-        "17-logic-spatial/ar/logic-pattern-colors-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِقْلِبِ البِطَاقَاتِ! قُلْ: قِطَار، فِيل، عُصْفُور!",
-      "targets": [
-        "17-logic-spatial/ar/logic-memory-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "عَقْلُكَ قَوِيّ!",
-      "targets": [
-        "17-logic-spatial/ar/logic-memory-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Glisse : train long, pierre lourde, oiseau en haut, maison, ballon léger, puis le cerveau !",
-      "targets": [
-        "17-logic-spatial/fr/logic-think-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Ton petit esprit réfléchit ! Bravo !",
-      "targets": [
-        "17-logic-spatial/fr/logic-think-path-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Touche le train ! Le train est long, la voiture est courte !",
-      "targets": [
-        "17-logic-spatial/fr/logic-long-short-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Bravo ! Voici un long train !",
-      "targets": [
-        "17-logic-spatial/fr/logic-long-short-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Touche la pierre ! La pierre est lourde, le ballon est léger !",
-      "targets": [
-        "17-logic-spatial/fr/logic-heavy-tap-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui ! La pierre est lourde !",
-      "targets": [
-        "17-logic-spatial/fr/logic-heavy-tap-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Touche le ballon au-dessus de la ligne ! C’est le même ballon à deux endroits.",
-      "targets": [
-        "17-logic-spatial/fr/logic-above-below-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui ! Le ballon est au-dessus !",
-      "targets": [
-        "17-logic-spatial/fr/logic-above-below-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Mets la pierre et la voiture avec l'éléphant, le ballon et la feuille avec la plume !",
-      "targets": [
-        "17-logic-spatial/fr/logic-heavy-light-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Tu connais le lourd et le léger !",
-      "targets": [
-        "17-logic-spatial/fr/logic-heavy-light-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Touche le ballon qui est DANS la boîte ! C’est le même ballon, deux places !",
-      "targets": [
-        "17-logic-spatial/fr/logic-inside-outside-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui ! Le ballon est dans la boîte !",
-      "targets": [
-        "17-logic-spatial/fr/logic-inside-outside-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Touche l’ours qui est DEVANT la boîte ! C’est le même ours, deux places différentes !",
-      "targets": [
-        "17-logic-spatial/fr/logic-front-behind-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Oui ! L’ours est devant la boîte !",
-      "targets": [
-        "17-logic-spatial/fr/logic-front-behind-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Touche la main droite ! Avec elle on mange et on salue !",
-      "targets": [
-        "17-logic-spatial/fr/logic-right-left-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Voici la main droite ! Bravo !",
-      "targets": [
-        "17-logic-spatial/fr/logic-right-left-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Train, voiture, train, voiture, train… ensuite ?",
-      "targets": [
-        "17-logic-spatial/fr/logic-pattern-colors-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La voiture vient après le train ! Bravo !",
-      "targets": [
-        "17-logic-spatial/fr/logic-pattern-colors-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Retourne les cartes ! Dis : train, éléphant, oiseau !",
-      "targets": [
-        "17-logic-spatial/fr/logic-memory-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Ton esprit est fort !",
-      "targets": [
-        "17-logic-spatial/fr/logic-memory-success.mp3"
-      ]
-    },
-    {
       "language": "en",
       "text": "Drag: long train, heavy stone, bird up high, house, light balloon, then the brain!",
       "targets": [
@@ -6843,230 +7354,6 @@
       ]
     },
     {
-      "language": "ar",
-      "text": "أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-colors-ab-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "الأَزْرَقُ بَعْدَ الأَحْمَر! أَحْسَنْت!",
-      "targets": [
-        "18-sequences/ar/seq-colors-ab-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-animals-ab-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "الكَلْبُ بَعْدَ القِطَّة! أَحْسَنْت!",
-      "targets": [
-        "18-sequences/ar/seq-animals-ab-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "شَمْس، قَمَر، شَمْس، قَمَر، شَمْس… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-day-night-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "القَمَرُ بَعْدَ الشَّمْس! مُمْتَاز!",
-      "targets": [
-        "18-sequences/ar/seq-day-night-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-fruits-ab-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "المَوْزَةُ بَعْدَ التُّفَّاحَة!",
-      "targets": [
-        "18-sequences/ar/seq-fruits-ab-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "فِيل، فَأْر، فِيل، فَأْر، فِيل… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-big-small-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "الفَأْرُ الصَّغِيرُ بَعْدَ الفِيل!",
-      "targets": [
-        "18-sequences/ar/seq-big-small-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-transport-abb-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "حَافِلَةٌ ثَانِيَة! أَحْسَنْت!",
-      "targets": [
-        "18-sequences/ar/seq-transport-abb-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "شَمْس، غَيْم، مَطَر، شَمْس، غَيْم… مَاذَا بَعْد؟",
-      "targets": [
-        "18-sequences/ar/seq-weather-abc-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "المَطَرُ بَعْدَ الغَيْم! عَبْقَرِي!",
-      "targets": [
-        "18-sequences/ar/seq-weather-abc-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَاحِد، اثْنَان، ثَلَاثَة… مَا العَدَدُ التَّالِي؟",
-      "targets": [
-        "18-sequences/ar/seq-numbers-inc-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "أَرْبَعَة! بَطَلُ الأَعْدَاد!",
-      "targets": [
-        "18-sequences/ar/seq-numbers-inc-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Rouge, bleu, rouge, bleu, rouge… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-colors-ab-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Le bleu vient après le rouge ! Bravo !",
-      "targets": [
-        "18-sequences/fr/seq-colors-ab-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Chat, chien, chat, chien, chat… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-animals-ab-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Le chien vient après le chat ! Bravo !",
-      "targets": [
-        "18-sequences/fr/seq-animals-ab-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Soleil, lune, soleil, lune, soleil… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-day-night-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La lune vient après le soleil ! Super !",
-      "targets": [
-        "18-sequences/fr/seq-day-night-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Pomme, banane, pomme, banane, pomme… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-fruits-ab-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La banane vient après la pomme !",
-      "targets": [
-        "18-sequences/fr/seq-fruits-ab-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Éléphant, souris, éléphant, souris, éléphant… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-big-small-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La petite souris vient après l'éléphant !",
-      "targets": [
-        "18-sequences/fr/seq-big-small-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Voiture, bus, bus, voiture, bus… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-transport-abb-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Un deuxième bus ! Bravo !",
-      "targets": [
-        "18-sequences/fr/seq-transport-abb-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Soleil, nuage, pluie, soleil, nuage… ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-weather-abc-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "La pluie vient après le nuage ! Génie !",
-      "targets": [
-        "18-sequences/fr/seq-weather-abc-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Un, deux, trois… quel chiffre ensuite ?",
-      "targets": [
-        "18-sequences/fr/seq-numbers-inc-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Quatre ! Champion des chiffres !",
-      "targets": [
-        "18-sequences/fr/seq-numbers-inc-success.mp3"
-      ]
-    },
-    {
       "language": "en",
       "text": "Red, blue, red, blue, red… what is next?",
       "targets": [
@@ -7179,69 +7466,6 @@
       ]
     },
     {
-      "language": "ar",
-      "text": "رَتِّبِ الصُّوَرَ: دِيدُو جَائِع، ثُمَّ الكُسْكُس، ثُمَّ يَبْتَسِم! بَعْدَهَا احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!",
-      "targets": [
-        "19-stories/ar/story-couscous-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "أَحْسَنْت! الآنْ احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!",
-      "targets": [
-        "19-stories/ar/story-couscous-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "رَتِّبِ الصُّوَرَ: يَدَانِ مُتَّسِخَتَان، ثُمَّ الصَّابُون، ثُمَّ يَدَانِ نَظِيفَتَان! بَعْدَهَا احْكِ القِصَّة!",
-      "targets": [
-        "19-stories/ar/story-wash-hands-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "يَدَانِ نَظِيفَتَان! احْكِ القِصَّةَ لِمَامَا!",
-      "targets": [
-        "19-stories/ar/story-wash-hands-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "رَتِّبِ الصُّوَرَ: نَسْتَيْقِظ، ثُمَّ المَدْرَسَة، ثُمَّ حَضْنُ بَابَا! بَعْدَهَا احْكِ القِصَّة!",
-      "targets": [
-        "19-stories/ar/story-school-day-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "قِصَّةٌ جَمِيلَة! احْكِهَا لِبَابَا!",
-      "targets": [
-        "19-stories/ar/story-school-day-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Range les images : Dido a faim, puis le couscous, puis il sourit ! Ensuite raconte l’histoire à papa ou maman !",
-      "targets": [
-        "19-stories/fr/story-couscous-prompt.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Bravo ! Maintenant raconte l’histoire à papa ou maman !",
-      "targets": [
-        "19-stories/fr/story-couscous-success.mp3"
-      ]
-    },
-    {
-      "language": "fr",
-      "text": "Range les images : mains sales, puis le savon, puis mains propres ! Ensuite raconte l’histoire !",
-      "targets": [
-        "19-stories/fr/story-wash-hands-prompt.mp3"
-      ]
-    },
-    {
       "language": "fr",
       "text": "Mains propres ! Raconte l’histoire à maman !",
       "targets": [
@@ -7302,118 +7526,6 @@
       "text": "A lovely story! Tell it to a grown-up!",
       "targets": [
         "19-stories/en/story-school-day-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبِ القَلَمَ: وَجْه، شَمْس، زَهْرَة، بَيْت، فَنَك، ثُمَّ الكُسْكُس!",
-      "targets": [
-        "20-art-drawing/ar/art-crayon-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "دَفْتَرُ الرَّسْمِ جَاهِز! أَحْسَنْت!",
-      "targets": [
-        "20-art-drawing/ar/art-crayon-path-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِخْتَرْ لَوْناً وَالمِسِ الوَجْهَ وَالعَيْنَيْنِ وَالفَم!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-face-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَجْهٌ جَمِيل! أَنْتَ فَنَّان!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-face-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "لَوِّنِ الشَّمْسَ! المِسِ الدَّائِرَةَ وَالأَشِعَّة!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-sun-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "شَمْسُكَ تُضِيء! رَائِع!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-sun-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "لَوِّنِ الزَّهْرَة! البَتَلَاتُ وَالوَسَطُ وَالسَّاق!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-flower-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "زَهْرَةٌ رَائِعَة!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-flower-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "لَوِّنِ البَيْت! السَّقْفُ وَالجِدَارُ وَالبَابُ وَالنَّافِذَة!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-house-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "بَيْتٌ جَمِيل!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-house-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "لَوِّنِ الفَنَكَ! آذانٌ كَبِيرَةٌ، ثَعْلَبُ صَحْرَائِنَا!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-fennec-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "فَنَكٌ رَائِع!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-fennec-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "لَوِّنِ الجَمَل! سَفِينَةُ الصَّحْرَاءِ وَسَنَامُهُ!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-camel-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "جَمَلٌ قَوِي!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-camel-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "لَوِّنِ طَبَقَ الكُسْكُس! القِدْرُ وَالغِطَاءُ وَالطَّعَام!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-couscous-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "شَهِيّ! طَبَقُكَ جَاهِز!",
-      "targets": [
-        "20-art-drawing/ar/art-coloring-couscous-success.mp3"
       ]
     },
     {
@@ -7638,118 +7750,6 @@
       "text": "Yum! Your dish is ready!",
       "targets": [
         "20-art-drawing/en/art-coloring-couscous-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبْ: تُفَّاحَة، نَمْلَة، سَمَكَة، مَزْرَعَة، ثُمَّ نَحْلَة!",
-      "targets": [
-        "21-creative-games/ar/creative-play-path-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "هَيَّا نَلْعَب! أَحْسَنْت!",
-      "targets": [
-        "21-creative-games/ar/creative-play-path-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِخْتَرْ لَوْناً وَلَوِّنِ التُّفَّاحَة! الجِسْمُ وَالعُنُقُ وَالوَرَقَة!",
-      "targets": [
-        "21-creative-games/ar/creative-color-apple-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "تُفَّاحَةٌ جَمِيلَة!",
-      "targets": [
-        "21-creative-games/ar/creative-color-apple-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبِ النَّمْلَةَ حَتَّى الوَرَقَةِ الخَضْرَاء!",
-      "targets": [
-        "21-creative-games/ar/creative-maze-ant-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَصَلَتِ النَّمْلَة!",
-      "targets": [
-        "21-creative-games/ar/creative-maze-ant-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبِ السَّمَكَةَ فِي البَحْرِ حَتَّى الصَّدَفَة!",
-      "targets": [
-        "21-creative-games/ar/creative-maze-fish-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَجَدَتِ السَّمَكَةُ صَدَفَتَهَا!",
-      "targets": [
-        "21-creative-games/ar/creative-maze-fish-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ضَعِ الشَّمْسَ وَالشَّجَرَةَ وَالبَيْتَ فِي مَكَانِهَا!",
-      "targets": [
-        "21-creative-games/ar/creative-jigsaw-farm-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "المَزْرَعَةُ كَامِلَة!",
-      "targets": [
-        "21-creative-games/ar/creative-jigsaw-farm-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ضَعِ الشَّمْسَ وَالجَمَلَ وَالفَنَكَ وَالنَّخْلَةَ فِي مَكَانِهَا!",
-      "targets": [
-        "21-creative-games/ar/creative-jigsaw-oasis-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَاحَةٌ جَمِيلَة!",
-      "targets": [
-        "21-creative-games/ar/creative-jigsaw-oasis-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "اِسْحَبِ السَّيَّارَةَ عَلَى الطَّرِيقِ حَتَّى البَيْت!",
-      "targets": [
-        "21-creative-games/ar/creative-maze-car-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "وَصَلَتِ السَّيَّارَةُ إِلَى البَيْت!",
-      "targets": [
-        "21-creative-games/ar/creative-maze-car-success.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "ضَعِ النَّحْلَ مَعَ العَسَل، وَالفَرَاشَاتِ مَعَ الزَّهْرَة!",
-      "targets": [
-        "21-creative-games/ar/creative-bees-flowers-prompt.mp3"
-      ]
-    },
-    {
-      "language": "ar",
-      "text": "كُلُّ وَاحِدٍ فِي مَكَانِهِ!",
-      "targets": [
-        "21-creative-games/ar/creative-bees-flowers-success.mp3"
       ]
     },
     {

@@ -50,6 +50,8 @@ const QuranExplorerView: React.FC<{ config: IslamicQuranExplorer }> = ({ config 
             <button
               key={s.nameAr}
               type="button"
+              data-quran-course-surah={s.nameAr}
+              aria-pressed={surahIdx === idx}
               onClick={() => setSurahIdx(idx)}
               className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer shrink-0 border min-h-12 ${
                 surahIdx === idx

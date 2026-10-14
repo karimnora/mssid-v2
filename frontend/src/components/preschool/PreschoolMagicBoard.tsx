@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
@@ -213,6 +214,8 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [mode, setMode] = useState<BoardMode>('free');
+  const [drawingLanguage, setDrawingLanguage] = useState<string | null>(null);
+  const requestLeave = useActivityExitGuard(drawingLanguage === language, language);
   const [selectedColor, setSelectedColor] = useState<string>('#ef4444');
   const [brushSize, setBrushSize] = useState<number>(14);
   const [isRainbow, setIsRainbow] = useState<boolean>(false);
@@ -266,6 +269,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
   }, [mode]);
 
   const clearCanvas = (withChime = true) => {
+    setDrawingLanguage(null);
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -354,6 +358,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     if (!ctx) return;
 
     const { x, y } = getCoordinates(e);
+    setDrawingLanguage(language);
 
     // If stamp is active, place stamp
     if (activeStamp) {
@@ -390,6 +395,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
     if (!ctx) return;
 
     const { x, y } = getCoordinates(e);
+    setDrawingLanguage(language);
 
     if (isRainbow) {
       ctx.strokeStyle = `hsl(${rainbowHue}, 100%, 50%)`;
@@ -489,7 +495,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
       <div className="max-w-6xl w-full mx-auto flex flex-wrap items-center justify-between gap-2 mb-2">
         <div className="flex items-center gap-2 shrink-0">
           <button
-            onClick={onExit}
+            onClick={() => requestLeave(onExit)}
             className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
             aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
@@ -508,7 +514,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
             <button
               key={l}
               onClick={() => {
-                if (onSelectLanguage) onSelectLanguage(l);
+                if (onSelectLanguage && l !== language) requestLeave(() => onSelectLanguage(l));
               }}
               className={`px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 language === l

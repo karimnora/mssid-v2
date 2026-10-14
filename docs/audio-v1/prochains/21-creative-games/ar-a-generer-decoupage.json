@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "creative-play-path-prompt.mp3",
+    "texte": "اِسْحَبْ: تُفَّاحَة، نَمْلَة، سَمَكَة، مَزْرَعَة، ثُمَّ نَحْلَة!",
+    "activite": "دَفْتَرُ الأَلْعَاب",
+    "activiteId": "creative-play-path",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "creative-play-path-success.mp3",
+    "texte": "هَيَّا نَلْعَب! أَحْسَنْت!",
+    "activite": "دَفْتَرُ الأَلْعَاب",
+    "activiteId": "creative-play-path",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "creative-color-apple-prompt.mp3",
+    "texte": "اِخْتَرْ لَوْناً وَلَوِّنِ التُّفَّاحَة! الجِسْمُ وَالعُنُقُ وَالوَرَقَة!",
+    "activite": "لَوِّنِ التُّفَّاحَة",
+    "activiteId": "creative-color-apple",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "creative-color-apple-success.mp3",
+    "texte": "تُفَّاحَةٌ جَمِيلَة!",
+    "activite": "لَوِّنِ التُّفَّاحَة",
+    "activiteId": "creative-color-apple",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "creative-maze-ant-prompt.mp3",
+    "texte": "اِسْحَبِ النَّمْلَةَ حَتَّى الوَرَقَةِ الخَضْرَاء!",
+    "activite": "النَّمْلَةُ إِلَى الوَرَقَة",
+    "activiteId": "creative-maze-ant",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "creative-maze-ant-success.mp3",
+    "texte": "وَصَلَتِ النَّمْلَة!",
+    "activite": "النَّمْلَةُ إِلَى الوَرَقَة",
+    "activiteId": "creative-maze-ant",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "creative-maze-fish-prompt.mp3",
+    "texte": "اِسْحَبِ السَّمَكَةَ فِي البَحْرِ حَتَّى الصَّدَفَة!",
+    "activite": "السَّمَكَةُ إِلَى الصَّدَفَة",
+    "activiteId": "creative-maze-fish",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "creative-maze-fish-success.mp3",
+    "texte": "وَجَدَتِ السَّمَكَةُ صَدَفَتَهَا!",
+    "activite": "السَّمَكَةُ إِلَى الصَّدَفَة",
+    "activiteId": "creative-maze-fish",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "creative-jigsaw-farm-prompt.mp3",
+    "texte": "ضَعِ الشَّمْسَ وَالشَّجَرَةَ وَالبَيْتَ فِي مَكَانِهَا!",
+    "activite": "رَكِّبِ المَزْرَعَة",
+    "activiteId": "creative-jigsaw-farm",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "creative-jigsaw-farm-success.mp3",
+    "texte": "المَزْرَعَةُ كَامِلَة!",
+    "activite": "رَكِّبِ المَزْرَعَة",
+    "activiteId": "creative-jigsaw-farm",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "creative-jigsaw-oasis-prompt.mp3",
+    "texte": "ضَعِ الشَّمْسَ وَالجَمَلَ وَالفَنَكَ وَالنَّخْلَةَ فِي مَكَانِهَا!",
+    "activite": "رَكِّبِ الوَاحَة",
+    "activiteId": "creative-jigsaw-oasis",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "creative-jigsaw-oasis-success.mp3",
+    "texte": "وَاحَةٌ جَمِيلَة!",
+    "activite": "رَكِّبِ الوَاحَة",
+    "activiteId": "creative-jigsaw-oasis",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "creative-maze-car-prompt.mp3",
+    "texte": "اِسْحَبِ السَّيَّارَةَ عَلَى الطَّرِيقِ حَتَّى البَيْت!",
+    "activite": "السَّيَّارَةُ إِلَى البَيْت",
+    "activiteId": "creative-maze-car",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "creative-maze-car-success.mp3",
+    "texte": "وَصَلَتِ السَّيَّارَةُ إِلَى البَيْت!",
+    "activite": "السَّيَّارَةُ إِلَى البَيْت",
+    "activiteId": "creative-maze-car",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "creative-bees-flowers-prompt.mp3",
+    "texte": "ضَعِ النَّحْلَ مَعَ العَسَل، وَالفَرَاشَاتِ مَعَ الزَّهْرَة!",
+    "activite": "نَحْلٌ أَمْ فَرَاش؟",
+    "activiteId": "creative-bees-flowers",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "creative-bees-flowers-success.mp3",
+    "texte": "كُلُّ وَاحِدٍ فِي مَكَانِهِ!",
+    "activite": "نَحْلٌ أَمْ فَرَاش؟",
+    "activiteId": "creative-bees-flowers",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  }
+]

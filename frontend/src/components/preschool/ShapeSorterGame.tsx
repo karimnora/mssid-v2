@@ -1,8 +1,10 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * ShapeSorterGame.tsx — « Range les formes »
  * 8 niveaux : couleurs, formes (cœur, losange), tailles, défi chronométré.
  * Glisser-déposer souris + tactile (framer-motion).
  */
+import { useDelayedCompletion } from '../../hooks/useDelayedCompletion';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'motion/react';
 import { LevelSelectScreen, LevelDef } from './LevelSelectScreen';
@@ -353,10 +355,12 @@ const GameBoard: React.FC<{
   const [pieces, setPieces] = useState<Piece[]>(() => [...cfg.pieces].sort(() => Math.random() - 0.5));
   const [shaking, setShaking] = useState<string | null>(null);
   const [won, setWon] = useState(false);
+  const requestLeave = useActivityExitGuard(!won, language);
   const [mistakes, setMistakes] = useState(0);
   const [timeLeft, setTimeLeft] = useState(cfg.timerSecs);
   const [timerActive, setTimerActive] = useState(cfg.hasTimer);
   const binRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const completeLater = useDelayedCompletion();
   const dir = language === 'ar' ? 'rtl' : 'ltr';
 
   useEffect(() => {
@@ -410,7 +414,7 @@ const GameBoard: React.FC<{
         setTimerActive(false);
         playModuleCompleteFanfare();
         const earned = starsFrom(mistakes, cfg.hasTimer, timeLeft, cfg.timerSecs);
-        setTimeout(() => onComplete(earned), 1500);
+        completeLater(() => onComplete(earned), 1500);
       }
     } else {
       playGentleNudge();
@@ -418,7 +422,7 @@ const GameBoard: React.FC<{
       setShaking(pieceId);
       setTimeout(() => setShaking(null), 600);
     }
-  }, [pieces, cfg, timeLeft, mistakes, onComplete, speak, language]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [pieces, cfg, timeLeft, mistakes, onComplete, speak, language, completeLater]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const unsorted = pieces.filter((x) => !x.sorted);
   const doneCount = pieces.length - unsorted.length;
@@ -433,7 +437,7 @@ const GameBoard: React.FC<{
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onExit}
+          onClick={() => requestLeave(onExit)}
           className="bg-white shadow-md border-2 border-violet-200 text-slate-800 text-sm px-4 py-2 rounded-2xl font-black cursor-pointer"
         >
           🚪 {t('خروج', 'Retour', 'Back')}

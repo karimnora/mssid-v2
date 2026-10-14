@@ -94,7 +94,7 @@ export const MATH_4AP_REST: CourseLesson[] = [
     examplesAr: [
         {
             problem: 'وزّع 245 كراساً بالتساوي على 8 أقسام. ما حصة كل قسم والباقي؟',
-            solution: '245 ÷ 8 = 30 والباقي 5. التحقق: (30 × 8) + 5 = 245.',
+            solution: 'الحاصل 30 والباقي 5. التحقق: 245 = (8 × 30) + 5، والباقي 5 < 8.',
             operationsAr: '245 ÷ 8\n24 ÷ 8 = 3 (الباقي 0)\n5 ÷ 8 = 0 (الباقي 5)\nالحاصل = 30، الباقي = 5\n(30 × 8) + 5 = 245 ✓',
         },
     ],
@@ -108,20 +108,20 @@ export const MATH_4AP_REST: CourseLesson[] = [
           id: 'div1',
           labelAr: '245 ÷ 8',
           operationsAr: '245 ÷ 8\n24 ÷ 8 = 3 (الباقي 0)\n5 ÷ 8 = 0 (الباقي 5)\nالحاصل = 30، الباقي = 5\n(30 × 8) + 5 = 245 ✓',
-          solutionAr: '245 ÷ 8 = 30 والباقي 5.',
+          solutionAr: '245 = (8 × 30) + 5. الحاصل 30 والباقي 5.',
         },
         {
           id: 'div2',
           labelAr: '187 ÷ 6',
           operationsAr: '187 ÷ 6\n18 ÷ 6 = 3 (الباقي 0)\n7 ÷ 6 = 1 (الباقي 1)\nالحاصل = 31، الباقي = 1\n(31 × 6) + 1 = 187 ✓',
-          solutionAr: '187 ÷ 6 = 31 والباقي 1.',
+          solutionAr: '187 = (6 × 31) + 1. الحاصل 31 والباقي 1.',
         },
       ],
     },
     ...build4ApPractice('math-4ap-division-euclidean', [
         { problemAr: 'في القسمة الإقليدية، ماذا يمثل الباقي؟', solutionAr: 'ما تبقى بعد التوزيع', detailedCorrectionAr: 'الباقي هو الكمية غير الموزّعة.', options: [{ id: 'a', textAr: 'ما تبقى بعد التوزيع', isCorrect: true }, { id: 'b', textAr: 'عدد الحصص', isCorrect: false }] },
         { problemAr: '187 ÷ 6: ما الحاصل والباقي؟', solutionAr: '31 والباقي 1', detailedCorrectionAr: '(31×6)+1=187.', type: 'qcm', options: [{ id: 'a', textAr: '31 والباقي 1', isCorrect: true }, { id: 'b', textAr: '30 والباقي 7', isCorrect: false }] },
-        { problemAr: '245 ÷ 8 = 30 والباقي 5. تحقق: (30×8)+5 = ؟', solutionAr: '245', detailedCorrectionAr: '240+5=245.', type: 'calculation', calculationAnswer: 245, operationsAr: '(30 × 8) + 5\n= 240 + 5\n= 245' },
+        { problemAr: 'عند قسمة 245 على 8، الحاصل 30 والباقي 5. تحقق: (30×8)+5 = ؟', solutionAr: '245', detailedCorrectionAr: '240+5=245.', type: 'calculation', calculationAnswer: 245, operationsAr: '(30 × 8) + 5\n= 240 + 5\n= 245' },
         { problemAr: '144 ÷ 12 = ؟', solutionAr: '12', detailedCorrectionAr: '144÷12=12 والباقي 0.', type: 'calculation', calculationAnswer: 12, operationsAr: '144 ÷ 12 = 12\n(12 × 12) = 144' },
     ], [
         { problemAr: 'الباقي في القسمة يمكن أن يساوي المقسوم عليه. (صح/خطأ)', solutionAr: 'خطأ', detailedCorrectionAr: 'الباقي يجب أن يكون أصغر من المقسوم عليه.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: false }, { id: 'false', textAr: 'خطأ', isCorrect: true }] },
@@ -164,7 +164,7 @@ export const MATH_4AP_REST: CourseLesson[] = [
         },
         {
             problem: '758 ÷ 32 = ؟',
-            solution: '758 ÷ 32 = 23 والباقي 22. التحقق: (32×23)+22=758.',
+            solution: 'الحاصل 23 والباقي 22. التحقق: 758 = (32 × 23) + 22، والباقي 22 < 32.',
             operationsAr: '758 ÷ 32\n64 ÷ 32 = 2\n118 ÷ 32 = 3 (الباقي 22)\n(32 × 23) + 22 = 758 ✓',
         },
     ],
@@ -191,7 +191,7 @@ export const MATH_4AP_REST: CourseLesson[] = [
     ...build4ApPractice('math-4ap-division-two-digit-divisor', [
         { problemAr: '850 ÷ 25 = ؟', solutionAr: '34', detailedCorrectionAr: '850÷25=34 والباقي 0.', type: 'calculation', calculationAnswer: 34 },
         { problemAr: '936 ÷ 24: الباقي يساوي 0. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: '24×39=936.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
-        { problemAr: '758 ÷ 32 = 23 والباقي ؟', solutionAr: '22', detailedCorrectionAr: 'الباقي 22 < 32.', type: 'fill_blank', fillBlankAnswerAr: '22' },
+        { problemAr: 'عند قسمة 758 على 32، الحاصل 23. ما الباقي؟', solutionAr: '22', detailedCorrectionAr: '758 = (32 × 23) + 22. الباقي 22 < 32.', type: 'fill_blank', fillBlankAnswerAr: '22' },
         { problemAr: '672 ÷ 28 = ؟', solutionAr: '24', detailedCorrectionAr: '672÷28=24.', type: 'calculation', calculationAnswer: 24, operationsAr: '672 ÷ 28 = 24\n28 × 24 = 672' },
     ], [
         { problemAr: 'عند القسمة على رقمين نقدّر الحاصل أولاً. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'التقدير يساعد على اختيار الرقم الصحيح.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },

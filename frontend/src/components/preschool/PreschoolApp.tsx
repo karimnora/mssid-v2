@@ -200,6 +200,13 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
         <PreschoolActivityPlayer
           activity={activeActivity}
           language={language}
+          onAttempt={quality => {
+            setPlayEvents(appendEvent(ownerId, {
+              activityId: activeActivity.id,
+              date: localDateKey(),
+              quality,
+            }));
+          }}
           onExit={() => setActiveActivityId(null)}
           hasNext={
             activeModule.activities.findIndex((a) => a.id === activeActivity.id)
@@ -224,7 +231,6 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
             }));
 
             if (!isPlaySuccess(resolved)) {
-              setActiveActivityId(null);
               return;
             }
 

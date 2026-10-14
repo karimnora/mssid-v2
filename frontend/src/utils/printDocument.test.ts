@@ -45,6 +45,21 @@ describe('printDocument', () => {
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
   });
+
+  it('requests landscape only for the active certificate and keeps exams in portrait', async () => {
+    nativeState.isNative = true;
+    nativeState.platform = 'android';
+    const modal = document.createElement('div');
+    modal.className = 'certificate-print-modal';
+    modal.innerHTML = '<article class="printable-certificate"></article>';
+    document.body.appendChild(modal);
+    try {
+      await printDocument('Certificat');
+      expect(nativeState.print).toHaveBeenLastCalledWith({ jobName: 'Certificat', landscape: true });
+    } finally { modal.remove(); }
+    await printDocument('Examen');
+    expect(nativeState.print).toHaveBeenLastCalledWith({ jobName: 'Examen' });
+  });
 });
 
 describe('printHtmlDocument', () => {

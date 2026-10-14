@@ -59,6 +59,7 @@ for (const c of CASES) {
     await page.waitForTimeout(1500);
 
     await expect(page.locator('#lesson-active-step-container'), `left the lesson after opening the interactive step for ${c.id}`).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `horizontal overflow in ${c.id}`).toBe(true);
 
     // Generic interaction: click the first clickable control found anywhere in the lesson's
     // current step content, then re-check we're still on the lesson.
@@ -70,5 +71,6 @@ for (const c of CASES) {
     }
 
     expect(pageErrors, `uncaught errors on "${c.id}":\n${pageErrors.join('\n')}`).toEqual([]);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `horizontal overflow after interaction in ${c.id}`).toBe(true);
   });
 }

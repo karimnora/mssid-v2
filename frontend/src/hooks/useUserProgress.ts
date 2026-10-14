@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Badge as BadgeInfo, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
 import { AuthService } from '../services/authService';
@@ -183,6 +183,8 @@ export function markLessonQuizComplete(prev: UserProfile, lessonId: string): Use
 
 export function useUserProgress(options: { authUser: AuthUser | null }) {
   const { authUser } = options;
+  const hydratedOwnerRef = useRef<number | null>(null);
+  const [localActivityOwner, setLocalActivityOwner] = useState<number | null>(null);
 
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
     const saved = localStorage.getItem('mssid_user_profile');
@@ -244,24 +246,46 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     // used to let one child's local guest/leftover progress (exams, challenges, badges) bleed into
     // whichever real account next logs in on that same browser (revue externe #5).
     if (authUser) {
+      const sameOwner = hydratedOwnerRef.current === authUser.id;
+      hydratedOwnerRef.current = authUser.id;
       const xp = authUser.score !== undefined ? authUser.score : (authUser.xp !== undefined ? authUser.xp : 0);
       const level = authUser.level !== undefined ? authUser.level : Math.floor(xp / 100) + 1;
-      setUserProfile((prev) => ({
-        ...prev,
-        name: authUser.nom || prev.name,
-        xp: xp,
-        level: level,
-        streakDays: authUser.streakDays ?? prev.streakDays,
-        completedLessonIds: authUser.completedLessonIds || prev.completedLessonIds,
-        completedExamIds: authUser.completedExamIds ?? prev.completedExamIds,
-        completedChallengeIds: authUser.completedChallengeIds ?? prev.completedChallengeIds,
-        badges: authUser.badges ?? prev.badges,
-        badgeUnlockedAt: authUser.badgeUnlockedAt ?? prev.badgeUnlockedAt,
-        quizScores: authUser.quizScores || prev.quizScores,
-        tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
-        goldCoins: authUser.goldCoins ?? prev.goldCoins,
-        avatarConfig: authUser.avatarConfig ?? prev.avatarConfig,
-      }));
+      let localActivities: Pick<UserProfile, 'completedGameIds' | 'completedLabIds'> = { completedGameIds: [], completedLabIds: [] };
+      if (!sameOwner) {
+        // Games/lab visits have no server fields. Restore only a cache explicitly belonging to
+        // this authenticated account; the legacy unscoped guest save cannot establish ownership.
+        try {
+          const saved = JSON.parse(localStorage.getItem(`mssid_local_activities_v1_${authUser.id}`) ?? 'null');
+          localActivities = { completedGameIds: stringList(saved?.completedGameIds), completedLabIds: stringList(saved?.completedLabIds) };
+        } catch { /* Invalid local activity data must not block the server profile. */ }
+      }
+      setUserProfile((existing) => {
+        const prev = sameOwner ? existing : { ...createFreshGuestProfile(isValidGrade(authUser.grade) ? authUser.grade : existing.grade), ...localActivities };
+        return {
+          ...prev,
+          name: authUser.nom || prev.name,
+          grade: isValidGrade(authUser.grade) ? authUser.grade : prev.grade,
+          avatar: authUser.avatar || prev.avatar,
+          xp,
+          level,
+          streakDays: authUser.streakDays ?? prev.streakDays,
+          lastActiveDate: authUser.lastActiveDate || prev.lastActiveDate,
+          completedLessonIds: authUser.completedLessonIds ?? prev.completedLessonIds,
+          quizFullyValidatedLessonIds: authUser.completedLessonIds ?? prev.quizFullyValidatedLessonIds,
+          completedExamIds: authUser.completedExamIds ?? prev.completedExamIds,
+          completedChallengeIds: authUser.completedChallengeIds ?? prev.completedChallengeIds,
+          badges: authUser.badges ?? prev.badges,
+          badgeUnlockedAt: authUser.badgeUnlockedAt ?? prev.badgeUnlockedAt,
+          quizScores: authUser.quizScores ?? prev.quizScores,
+          tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
+          goldCoins: authUser.goldCoins ?? prev.goldCoins,
+          avatarConfig: authUser.avatarConfig ?? prev.avatarConfig,
+        };
+      });
+      setLocalActivityOwner(authUser.id);
+    } else {
+      hydratedOwnerRef.current = null;
+      setLocalActivityOwner(null);
     }
   }, [authUser]);
 
@@ -276,6 +300,15 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
     localStorage.setItem('mssid_user_profile', JSON.stringify(userProfile));
   }, [userProfile]);
 
+  useEffect(() => {
+    if (!authUser || localActivityOwner !== authUser.id) return;
+    try {
+      localStorage.setItem(`mssid_local_activities_v1_${authUser.id}`, JSON.stringify({
+        completedGameIds: userProfile.completedGameIds, completedLabIds: userProfile.completedLabIds,
+      }));
+    } catch { /* The current session remains usable when local storage is full. */ }
+  }, [authUser?.id, localActivityOwner, userProfile.completedGameIds, userProfile.completedLabIds]);
+
   const handleQuizFullyValidated = (lessonId: string) => {
     AuthService.markLessonCompleted(lessonId);
     setUserProfile((prev) => markLessonQuizComplete(prev, lessonId));
@@ -283,12 +316,13 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   };
 
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
-    AuthService.addScore(earnedXp);
+    AuthService.addScore(earnedXp, lessonId);
     incrementDailyObjective();
     setUserProfile((prev) => applyLessonXp(prev, lessonId, earnedXp));
   };
 
   const handleCompleteExam = (examId: string) => {
+    if (AuthService.getCurrentUser()?.completedExamIds?.includes(examId)) return;
     AuthService.addExamXp(examId, 50);
     incrementDailyObjective();
 
@@ -318,14 +352,14 @@ export function useUserProgress(options: { authUser: AuthUser | null }) {
   const handleLabReward = (coins: number, xp: number) => {
     // DIDOU_STAGES[1] ("Écolier Brillant", level 4+) advertises a +10% gold bonus as an unlocked
     // perk — this is where it actually applies, on the one path that grants gold.
-    const bonusCoins = applyDidouGoldBonus(coins, userProfile.level);
-    const newCoins = (userProfile.goldCoins ?? 150) + bonusCoins;
-    setUserProfile((prev) => ({
-      ...prev,
-      goldCoins: newCoins,
-      xp: prev.xp + xp,
-    }));
-    if (authUser) AuthService.syncGoldCoinsAndAvatar(newCoins, userProfile.avatarConfig);
+    const accountReward = authUser ? AuthService.addLabReward(coins, xp) : null;
+    setUserProfile((prev) => {
+      const total = accountReward?.xp ?? prev.xp + Math.max(0, xp);
+      return { ...prev,
+        goldCoins: accountReward?.goldCoins ?? (prev.goldCoins ?? 150) + applyDidouGoldBonus(coins, prev.level),
+        xp: total, level: Math.floor(total / 100) + 1,
+      };
+    });
   };
 
   const handleVisitLab = useCallback((labId: string) => {

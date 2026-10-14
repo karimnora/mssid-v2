@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { motion } from 'motion/react';
 import { OFFICIAL_EXAMS_DATA } from '../data/examsData';
 import { SUBJECTS_LIST } from '../data/subjectsData';
@@ -199,6 +200,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   // Interactive timer
   const [timerSeconds, setTimerSeconds] = useState<number>(5400);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
+  const requestLeave = useActivityExitGuard(Boolean(selectedExam) && (isTimerRunning || timerSeconds < 5400) && !completedExamIds.includes(selectedExamId ?? ''));
   const [printMode, setPrintMode] = useState<'subject' | 'corrige'>('subject');
 
   const renderArabicText = (text: string | undefined | null): string => {
@@ -273,7 +275,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => setSelectedExamId(null)}
+            onClick={() => requestLeave(() => setSelectedExamId(null))}
             icon={<ChevronLeft className="w-4 h-4" />}
           >
             {t('backToExamsOf', { gradeTitle: t(GRADE_TITLE_KEY[currentGrade]) })}
@@ -477,6 +479,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               return (
                 <div
                   key={idx}
+                  data-exam-exercise="true"
                   className="p-4 sm:p-5 rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] space-y-3 transition-colors"
                 >
                   <div className="flex items-center justify-between flex-wrap gap-2">
@@ -548,7 +551,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   <div className={`print-corrige ${isSolVisible && showExamTools ? '' : 'print-corrige--screen-hidden'}`}>
                     {selectedExam.subject === 'math' && ex.operationsAr ? (
                       <div
-                        className="print-corrige-box grid grid-cols-2 gap-2 p-3 rounded-xl bg-white text-[var(--kids-ink)] text-xs sm:text-sm font-sans border-2 border-[#E7E2D7]"
+                        className="print-corrige-box grid grid-cols-1 min-[480px]:grid-cols-2 print:grid-cols-2 gap-2 p-3 rounded-xl bg-white text-[var(--kids-ink)] text-sm font-sans border-2 border-[#E7E2D7]"
                         style={{ direction: 'ltr' }}
                         data-exam-two-col="true"
                       >
@@ -609,7 +612,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
               <span className="text-[11px] exam-amber-banner-sub text-amber-900 font-bold">الإنتاج والحل المركب</span>
             </div>
 
-            <div className="p-5 rounded-2xl border border-amber-300/40 bg-amber-500/5 space-y-3">
+            <div data-exam-exercise="true" className="p-5 rounded-2xl border border-amber-300/40 bg-amber-500/5 space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2 min-w-0">
                   {showAudio && (
@@ -836,10 +839,10 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
           gradeExams.some((e) => getExamKind(e) === kind)
         );
         const meta: Record<ExamKind, { title: string; active: string; idle: string }> = {
-          acquis: { title: t('kindAcquisTitle'), active: 'bg-teal-600 text-white border-teal-500', idle: 'hover:border-teal-400/50' },
+          acquis: { title: t('kindAcquisTitle'), active: 'bg-teal-700 text-white border-teal-500', idle: 'hover:border-teal-400/50' },
           bep: { title: t('kindBepTitle'), active: 'bg-blue-600 text-white border-blue-500', idle: 'hover:border-blue-400/50' },
-          composition: { title: t('kindCompositionsTitle'), active: 'bg-emerald-600 text-white border-emerald-500', idle: 'hover:border-emerald-400/50' },
-          devoir: { title: t('kindDevoirsTitle'), active: 'bg-amber-500 text-white border-amber-400', idle: 'hover:border-amber-400/50' },
+          composition: { title: t('kindCompositionsTitle'), active: 'bg-emerald-700 text-white border-emerald-400', idle: 'hover:border-emerald-400/50' },
+          devoir: { title: t('kindDevoirsTitle'), active: 'bg-amber-700 text-white border-amber-400', idle: 'hover:border-amber-400/50' },
         };
         const cols =
           kinds.length >= 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : kinds.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
@@ -863,7 +866,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
                   }`}
                 >
                   <h2 className="font-black text-sm sm:text-base">{styles.title}</h2>
-                  <p className={`text-[10px] font-black ${selected ? 'text-white/90' : 'text-[var(--app-text-muted)]'}`}>
+                  <p className={`text-[10px] font-black ${selected ? 'text-white' : 'text-[var(--app-text-muted)]'}`}>
                     {t('examsCountLabel', {
                       count: OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade && getExamKind(e) === kind).length,
                     })}

@@ -3,7 +3,7 @@ import { getStoredLocale } from '../localePreference';
 import { showAppNotice } from './appNotice';
 
 interface MssidPrintPlugin {
-  print(options?: { jobName?: string }): Promise<void>;
+  print(options?: { jobName?: string; landscape?: boolean }): Promise<void>;
   printHtml(options: { html: string; jobName?: string }): Promise<void>;
 }
 
@@ -64,7 +64,8 @@ function openHtmlPrintWindow(html: string): PrintOutcome {
 /** Android WebView ignores window.print(); native PrintManager is used instead. */
 export async function printDocument(jobName = 'Mssid DZ'): Promise<void> {
   if (Capacitor.isNativePlatform() && Capacitor.getPlatform() === 'android') {
-    await MssidPrint.print({ jobName });
+    const landscape = Boolean(document.querySelector('.certificate-print-modal .printable-certificate'));
+    await MssidPrint.print({ jobName, ...(landscape ? { landscape: true } : {}) });
     return;
   }
   window.print();

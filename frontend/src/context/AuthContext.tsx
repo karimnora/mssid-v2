@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, useSyncExternalStore } from 'react';
-import { AuthUser, UserRole } from '../types/auth';
+import { AuthUser } from '../types/auth';
+import { mapAuthProfile } from '../services/authProfile';
+import { retryPendingProgress } from '../services/progressSync';
 import { AuthService } from '../services/authService';
 import { springBootApi } from '../services/springBootApi';
 import { hydrateFromServerOverrides, FeatureFlagName } from '../featureFlags';
@@ -10,34 +12,6 @@ export interface AuthContextValue {
 }
 
 const AuthContext = createContext<AuthContextValue>({ authUser: null, isAuthLoading: true });
-
-function mapProfileDtoToAuthUser(dto: any): AuthUser {
-  return {
-    id: dto.id,
-    nom: dto.nom || dto.name || '',
-    email: dto.email || '',
-    role: (dto.role || 'ROLE_FREE') as UserRole,
-    score: dto.score,
-    xp: dto.xp,
-    level: dto.level,
-    grade: dto.grade,
-    wilaya: dto.wilaya,
-    avatar: dto.avatar,
-    streakDays: dto.streakDays,
-    quizzesCompleted: dto.quizzesCompleted,
-    lastActiveDate: dto.lastActiveDate,
-    completedLessonIds: dto.completedLessonIds,
-    completedExamIds: dto.completedExamIds,
-    completedChallengeIds: dto.completedChallengeIds,
-    badges: dto.badges,
-    badgeUnlockedAt: dto.badgeUnlockedAt,
-    quizScores: dto.quizScores,
-    createdAt: dto.createdAt,
-    emailVerified: dto.emailVerified ?? false,
-    goldCoins: dto.goldCoins ?? 150,
-    avatarConfig: dto.avatarConfig,
-  };
-}
 
 // SEC-05: single source of truth for "who is logged in". No localStorage involved anywhere in this
 // file — identity lives in memory only (AuthService's pub/sub singleton, see authService.ts) and is
@@ -54,7 +28,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       .then((res) => {
         if (cancelled) return;
         if (res.data && !res.error) {
-          AuthService.setCurrentUser(mapProfileDtoToAuthUser(res.data));
+          AuthService.hydrateCurrentUser(mapAuthProfile(res.data));
         }
       })
       .catch(() => {})
@@ -64,6 +38,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  useEffect(() => {
+    const retry = () => { void retryPendingProgress(); };
+    window.addEventListener('online', retry);
+    return () => window.removeEventListener('online', retry);
   }, []);
 
   // Feature-flag hydration: runs once for EVERY visitor (not just admins) so an admin's toggle

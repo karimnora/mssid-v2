@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "creative-play-path-prompt.mp3",
+    "texte": "Glisse : pomme, fourmi, poisson, ferme, puis abeille !",
+    "activite": "Le Cahier de Jeux",
+    "activiteId": "creative-play-path",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "creative-play-path-success.mp3",
+    "texte": "On joue ! Bravo !",
+    "activite": "Le Cahier de Jeux",
+    "activiteId": "creative-play-path",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "creative-color-apple-prompt.mp3",
+    "texte": "Choisis une couleur et colorie la pomme ! Le fruit, la tige et la feuille !",
+    "activite": "Colorie la Pomme",
+    "activiteId": "creative-color-apple",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "creative-color-apple-success.mp3",
+    "texte": "Une belle pomme !",
+    "activite": "Colorie la Pomme",
+    "activiteId": "creative-color-apple",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "creative-maze-ant-prompt.mp3",
+    "texte": "Glisse la fourmi jusqu'à la feuille verte !",
+    "activite": "La Fourmi vers la Feuille",
+    "activiteId": "creative-maze-ant",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "creative-maze-ant-success.mp3",
+    "texte": "La fourmi est arrivée !",
+    "activite": "La Fourmi vers la Feuille",
+    "activiteId": "creative-maze-ant",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "creative-maze-fish-prompt.mp3",
+    "texte": "Glisse le poisson dans la mer jusqu'au coquillage !",
+    "activite": "Le Poisson vers le Coquillage",
+    "activiteId": "creative-maze-fish",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "creative-maze-fish-success.mp3",
+    "texte": "Le poisson a trouvé son coquillage !",
+    "activite": "Le Poisson vers le Coquillage",
+    "activiteId": "creative-maze-fish",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "creative-jigsaw-farm-prompt.mp3",
+    "texte": "Mets le soleil, l'arbre et la maison à leur place !",
+    "activite": "Reconstitue la Ferme",
+    "activiteId": "creative-jigsaw-farm",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "creative-jigsaw-farm-success.mp3",
+    "texte": "La ferme est complète !",
+    "activite": "Reconstitue la Ferme",
+    "activiteId": "creative-jigsaw-farm",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "creative-jigsaw-oasis-prompt.mp3",
+    "texte": "Mets le soleil, le dromadaire, le fennec et le palmier à leur place !",
+    "activite": "Reconstitue l'Oasis",
+    "activiteId": "creative-jigsaw-oasis",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "creative-jigsaw-oasis-success.mp3",
+    "texte": "Une belle oasis !",
+    "activite": "Reconstitue l'Oasis",
+    "activiteId": "creative-jigsaw-oasis",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "creative-maze-car-prompt.mp3",
+    "texte": "Glisse la voiture sur la route jusqu'à la maison !",
+    "activite": "La Voiture vers la Maison",
+    "activiteId": "creative-maze-car",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "creative-maze-car-success.mp3",
+    "texte": "La voiture est arrivée à la maison !",
+    "activite": "La Voiture vers la Maison",
+    "activiteId": "creative-maze-car",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "creative-bees-flowers-prompt.mp3",
+    "texte": "Mets les abeilles avec le miel, et les papillons avec la fleur !",
+    "activite": "Abeille ou Papillon ?",
+    "activiteId": "creative-bees-flowers",
+    "moduleId": "preschool-creative-games",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "creative-bees-flowers-success.mp3",
+    "texte": "Chacun à sa place !",
+    "activite": "Abeille ou Papillon ?",
+    "activiteId": "creative-bees-flowers",
+    "moduleId": "preschool-creative-games",
+    "type": "success"
+  }
+]

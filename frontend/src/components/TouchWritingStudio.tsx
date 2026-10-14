@@ -880,7 +880,7 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
 
             {onBack && (
               <button
-                onClick={onBack}
+                data-activity-navigation="true" onClick={onBack}
                 aria-label="العودة"
                 className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/20 hover:bg-white/30 text-white transition-all cursor-pointer"
               >
@@ -1339,9 +1339,13 @@ export const TouchWritingStudio: React.FC<TouchWritingStudioProps> = ({
                 return (
                   <button
                     key={item.id}
+                    data-writing-item={item.id}
+                    aria-pressed={isSelected}
                     onClick={() => {
-                      setSelectedItemId(item.id);
-                      clearCanvas();
+                      if (!isSelected) {
+                        setSelectedItemId(item.id);
+                        clearCanvas();
+                      }
                       playSoundEffect('click');
                       speakItem(item);
                     }}

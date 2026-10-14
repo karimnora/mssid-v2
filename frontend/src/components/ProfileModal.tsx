@@ -9,6 +9,7 @@ import { Card, XPProgressBar } from './ui';
 import { BADGES_CATALOG } from '../data/badgesData';
 import { describeCriteria } from '../utils/badgeEngine';
 import { AuthService } from '../services/authService';
+import { ProgressSyncStatus } from './ProgressSyncStatus';
 import { ParentGateModal } from './ParentGateModal';
 import { Badge as BadgeInfo } from '../types';
 
@@ -50,6 +51,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const currentName = authUser?.nom || userProfile.name;
   const [editedName, setEditedName] = useState(currentName);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [refreshError, setRefreshError] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(userProfile.avatar || '🎓');
 
   // SEC-08: soft email verification widget state — the card itself only renders while
@@ -141,8 +143,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const handleRefreshClick = async () => {
     if (onRefreshFromDb) {
       setIsRefreshing(true);
-      await onRefreshFromDb();
-      setIsRefreshing(false);
+      setRefreshError(false);
+      try { await onRefreshFromDb(); }
+      catch { setRefreshError(true); }
+      finally { setIsRefreshing(false); }
     }
   };
 
@@ -230,6 +234,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             )}
             <button
               onClick={onClose}
+              aria-label={t('close')}
               className="kids-close cursor-pointer"
             >
               <X className="w-5 h-5" />
@@ -308,6 +313,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           </div>
 
           {/* Avatar Picker Card */}
+          <ProgressSyncStatus authenticated={Boolean(authUser)} />
+          {refreshError && <p role="alert" className="text-xs font-bold text-red-800">
+            {direction === 'rtl' ? 'تعذر تحديث الملف. تقدمك المحلي محفوظ، حاول لاحقاً.' : 'Impossible d’actualiser le profil. Tes progrès locaux sont conservés ; réessaie plus tard.'}
+          </p>}
           <Card padding="md" className="!bg-white !border-[#E7E2D7] space-y-3 rounded-[22px]">
             <label className="text-sm font-extrabold text-[var(--kids-ink)] flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-[var(--kids-sun-2)]" />

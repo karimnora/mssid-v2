@@ -1,11 +1,12 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
+import { EMOTIONS_AUDIO_CLIPS } from './emotionsAudio';
 
 /**
  * "مَشَاعِرُنَا" — Nos Émotions (3-5 ans).
  * Each feeling is tied to a concrete situation (ballon, glace tombée, tour cassée)
  * — never four "find the face" in a row with no story.
  */
-export const EMOTIONS_MODULE: PreschoolModule = {
+const EMOTIONS_CATALOG: PreschoolModule = {
   id: 'preschool-emotions',
   domain: 'values',
   icon: '😊',
@@ -309,4 +310,22 @@ export const EMOTIONS_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const EMOTIONS_MODULE: PreschoolModule = {
+  ...EMOTIONS_CATALOG,
+  activities: EMOTIONS_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = EMOTIONS_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

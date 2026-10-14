@@ -1,3 +1,4 @@
+import { withRecordedAudio } from './withRecordedAudio';
 import { PreschoolModule } from './types';
 
 /**
@@ -6,7 +7,7 @@ import { PreschoolModule } from './types';
  * (same emoji size). Patterns use the real `sequence` widget, not a tap
  * on a blob of "🔴🔵🔴🔵❓".
  */
-export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
+const LOGIC_SPATIAL_CATALOG: PreschoolModule = {
   id: 'preschool-logic-spatial',
   domain: 'shapes',
   icon: '🧠',
@@ -364,19 +365,19 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
       i18n: {
         ar: {
           title: 'مَاذَا يَأْتِي بَعْد؟',
-          promptAudio: 'قِطَار، سَيَّارَة، قِطَار، سَيَّارَة، قِطَار... مَاذَا بَعْد؟',
+          promptAudio: 'قِطَار، سَيَّارَة، قِطَار، سَيَّارَة، قِطَار… مَاذَا بَعْد؟',
           promptText: 'نمط AB. ينتهي بالقطار → الجواب السيارة.',
           successAudio: 'السَّيَّارَةُ بَعْدَ القِطَار! أَحْسَنْت!',
         },
         fr: {
           title: 'Qu\'est-ce qui Vient Ensuite ?',
-          promptAudio: 'Train, voiture, train, voiture, train... ensuite ?',
+          promptAudio: 'Train, voiture, train, voiture, train… ensuite ?',
           promptText: 'Motif AB. La rangée finit sur le train → réponse voiture.',
           successAudio: 'La voiture vient après le train ! Bravo !',
         },
         en: {
           title: 'What Comes Next?',
-          promptAudio: 'Train, car, train, car, train... what is next?',
+          promptAudio: 'Train, car, train, car, train… what is next?',
           promptText: 'AB pattern. The row ends on the train → answer is car.',
           successAudio: 'The car comes after the train! Well done!',
         },
@@ -428,3 +429,5 @@ export const LOGIC_SPATIAL_MODULE: PreschoolModule = {
     },
   ],
 };
+
+export const LOGIC_SPATIAL_MODULE: PreschoolModule = withRecordedAudio(LOGIC_SPATIAL_CATALOG);

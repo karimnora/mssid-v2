@@ -1,3 +1,4 @@
+import { withRecordedAudio } from './withRecordedAudio';
 import { PreschoolModule } from './types';
 
 /**
@@ -5,7 +6,7 @@ import { PreschoolModule } from './types';
  * No second flower coloring (that's in Mon Art). Mazes show the real goal
  * (leaf, shell, house) instead of a generic flag.
  */
-export const CREATIVE_GAMES_MODULE: PreschoolModule = {
+const CREATIVE_GAMES_CATALOG: PreschoolModule = {
   id: 'preschool-creative-games',
   domain: 'creative',
   icon: '🎨',
@@ -338,3 +339,5 @@ export const CREATIVE_GAMES_MODULE: PreschoolModule = {
     },
   ],
 };
+
+export const CREATIVE_GAMES_MODULE: PreschoolModule = withRecordedAudio(CREATIVE_GAMES_CATALOG);

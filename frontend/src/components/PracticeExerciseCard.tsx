@@ -4,6 +4,7 @@ import { ProgressiveExercise } from '../types';
 import { renderTextWithMath } from './MathExpression';
 import { IrabTable } from './lessonViewer/IrabTable';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
+import { formatEducationalText } from '../utils/textFormatter';
 import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 import { shuffleOptions } from './lessonViewer/shared';
 import { isGuidedPractice, isMatchingPairCorrect } from './lessonViewer/practiceAssessment';
@@ -301,7 +302,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
               tone="light"
             />
           ) : (
-            <span className="whitespace-pre-line">{renderArabicText(ex.detailedCorrectionAr)}</span>
+            <span className="whitespace-pre-line">{formatEducationalText(renderArabicText(ex.detailedCorrectionAr))}</span>
           )}
         </div>
       )}

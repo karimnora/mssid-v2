@@ -5,6 +5,7 @@ import { Sparkles } from 'lucide-react';
 import { PRACTICE_TIERS } from './shared';
 import { BoundPracticeCard, PracticeBindings } from './practiceBindings';
 import { TapSpeakButton } from './TapSpeakButton';
+import { formatEducationalText } from '../../utils/textFormatter';
 
 interface LessonPracticePanelProps {
   lesson: CourseLesson;
@@ -160,7 +161,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                 )}
                 {isAnswered && item.explanationAr && (
                   <p className={`text-sm ${isCorrect ? (playful ? 'text-emerald-700' : 'text-emerald-300') : (playful ? 'text-amber-800' : 'text-amber-300')}`}>
-                    {isCorrect ? '✅ ' : '💡 '}{renderArabicText(item.explanationAr)}
+                    {isCorrect ? '✅ ' : '💡 '}{formatEducationalText(renderArabicText(item.explanationAr))}
                   </p>
                 )}
               </div>

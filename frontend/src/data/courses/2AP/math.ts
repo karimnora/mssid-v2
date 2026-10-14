@@ -879,7 +879,7 @@ export const MATH_2AP: CourseLesson[] = [
     ],
     discoveryAr: 'عند نور 4 حلويات، وأعطتها أمها 4 حلويات أخرى مماثلة. كم أصبح عندها؟ (هذا هو "ضِعْفُ" 4).',
     rulesAr: [
-      'ضِعْفُ عَدَدٍ = العَدَدُ + نَفْسُ العَدَدِ (مثال: ضعف 5 = 5 + 5 = 10).',
+      'ضِعْفُ عَدَدٍ = العَدَدُ + نَفْسُ العَدَدِ (مثال: ضعف 5 نحسبه هكذا: 5 + 5 = 10).',
       'نِصْفُ عَدَدٍ = تقسيمه إلى جزأين متساويين تماماً (مثال: نصف 8 = 4، لأن 4+4=8).',
       'الضعف والنصف عمليتان متعاكستان: إذا كان ضعف 6 هو 12، فإن نصف 12 هو 6.',
     ],
@@ -889,7 +889,7 @@ export const MATH_2AP: CourseLesson[] = [
       titleAr: 'ضعف ونصف — بلا جداول ضرب',
       introAr: 'الضعف = العدد + نفسه، وهو أيضاً جدول الضرب في 2. النصف = قسمان متساويان. نتعلم في هذه السنة جداول 2 و3 و4 و5 و10، وبقية الجداول في السنة الثالثة ابتدائي.',
       cards: [
-        { labelAr: 'ضعف 5', valueDisplay: '5 + 5', explanationAr: 'ضعف 5 = 5 + 5 = 10. وهذا هو أيضاً جدول الضرب في 2: 5 × 2 = 10.' },
+        { labelAr: 'ضعف 5', valueDisplay: '5 + 5', explanationAr: 'لحساب ضعف 5: 5 + 5 = 10. وهذا هو أيضاً جدول الضرب في 2: 5 × 2 = 10.' },
         { labelAr: 'نصف 8', valueDisplay: '4 + 4', explanationAr: 'نصف 8 = 4 لأن 4 + 4 = 8.' },
         { labelAr: 'ضعف 6', valueDisplay: '12', explanationAr: '6 + 6 = 12، إذن نصف 12 = 6.' },
         { labelAr: 'نصف 20', valueDisplay: '10', explanationAr: '10 + 10 = 20.' },
@@ -954,7 +954,7 @@ export const MATH_2AP: CourseLesson[] = [
         id: 'q1-math2ap-doublehalf',
         questionAr: 'عند سامي 5 كرات، وعند أخيه ضعف هذا العدد. كم كرة عند أخيه؟',
         options: [
-          { id: 'a', textAr: '10 كرات', isCorrect: true, explanationAr: 'ضعف 5 = 5 + 5 = 10.' },
+          { id: 'a', textAr: '10 كرات', isCorrect: true, explanationAr: 'لحساب ضعف 5: 5 + 5 = 10.' },
           { id: 'b', textAr: '6 كرات', isCorrect: false },
         ],
       },

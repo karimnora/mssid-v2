@@ -63,6 +63,15 @@ describe('VoiceEchoBar', () => {
     expect(container.querySelector('[data-voice-echo="bar"]')).toBeNull();
   });
 
+  it.each([['fr', 'Réessayer le micro'], ['en', 'Retry microphone'], ['ar', 'أعد محاولة الميكروفون']] as const)('allows an explicit retry after denial in %s', (language, label) => {
+    echo.phase = 'denied';
+    render(<VoiceEchoBar modelText="test" language={language} />);
+    expect(echo.start).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole('button', { name: label }));
+    expect(echo.start).toHaveBeenCalledTimes(1);
+    expect(stopSpeech).toHaveBeenCalled();
+  });
+
   it('cancels the parent sequence before listening, recording and replaying', () => {
     echo.phase = 'ready';
     const cancelParent = vi.fn();

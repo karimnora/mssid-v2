@@ -437,6 +437,70 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/language-next-ar-7.mp3",
       "durationMs": 2730
     },
+    "اِسْحَبِ الفَنَكَ: فَرَح، بَالُون، حُزْن، لَصْقَة، ثُمَّ عِنَاق!": {
+      "src": "/sounds/preschool/ar/emotion-feelings-path-prompt.mp3",
+      "durationMs": 5778
+    },
+    "كُلُّ المَشَاعِرِ مَقْبُولَة! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/emotion-feelings-path-success.mp3",
+      "durationMs": 2788
+    },
+    "عِنْدَنَا بَالُون! اِلْمَسِ الوَجْهَ الفَرِح!": {
+      "src": "/sounds/preschool/ar/emotion-happy-prompt.mp3",
+      "durationMs": 3108
+    },
+    "نَعَم! هَذَا الفَرَح!": {
+      "src": "/sounds/preschool/ar/emotion-happy-success.mp3",
+      "durationMs": 2107
+    },
+    "سَقَطَتِ الآيْس كْرِيم! اِلْمَسِ الوَجْهَ الحَزِين!": {
+      "src": "/sounds/preschool/ar/emotion-sad-prompt.mp3",
+      "durationMs": 3291
+    },
+    "نَعَم، هَذَا الحُزْن. نُعَانِقُكَ!": {
+      "src": "/sounds/preschool/ar/emotion-sad-success.mp3",
+      "durationMs": 3022
+    },
+    "سَقَطَ بُرْجُ المُكَعَّبَات! اِلْمَسِ الوَجْهَ الغَاضِب!": {
+      "src": "/sounds/preschool/ar/emotion-angry-prompt.mp3",
+      "durationMs": 3572
+    },
+    "الغَضَبُ يَمُرّ! نَبْنِي مَرَّةً أُخْرَى!": {
+      "src": "/sounds/preschool/ar/emotion-angry-success.mp3",
+      "durationMs": 2962
+    },
+    "ضَعِ البَالُونَ وَالهَدِيَّةَ مَعَ الضِّحْكَة، وَاللَّصْقَةَ مَعَ الدَّمْعَة!": {
+      "src": "/sounds/preschool/ar/emotion-sort-context-prompt.mp3",
+      "durationMs": 4454
+    },
+    "تَعْرِفُ الفَرَحَ وَالحُزْن!": {
+      "src": "/sounds/preschool/ar/emotion-sort-context-success.mp3",
+      "durationMs": 1950
+    },
+    "اِرْبِطِ الفَرَحَ بِالبَالُون، وَالحُزْنَ بِاللَّصْقَة!": {
+      "src": "/sounds/preschool/ar/emotion-connect-prompt.mp3",
+      "durationMs": 3219
+    },
+    "كُلُّ شُعُورٍ لَهُ صُورَة!": {
+      "src": "/sounds/preschool/ar/emotion-connect-success.mp3",
+      "durationMs": 2034
+    },
+    "اِقْلِبِ البِطَاقَاتِ! قُلْ: فَرِح، حَزِين، غَاضِب!": {
+      "src": "/sounds/preschool/ar/emotion-memory-prompt.mp3",
+      "durationMs": 4582
+    },
+    "ذَاكِرَتُكَ قَوِيَّة!": {
+      "src": "/sounds/preschool/ar/emotion-memory-success.mp3",
+      "durationMs": 1673
+    },
+    "الصَّدِيقُ حَزِين! مَاذَا نَفْعَل؟ اِلْمَسِ العِنَاق!": {
+      "src": "/sounds/preschool/ar/emotion-hug-prompt.mp3",
+      "durationMs": 3724
+    },
+    "نَعَمْ! العِنَاقُ يُسَاعِد!": {
+      "src": "/sounds/preschool/ar/emotion-hug-success.mp3",
+      "durationMs": 2339
+    },
     "اِسْحَبِ الفَنَكَ: بَاب، صَالُون، مَطْبَخ، غُرْفَة، ثُمَّ العَائِلَة!": {
       "src": "/sounds/preschool/ar/family-fennec-home-prompt.mp3",
       "durationMs": 6255
@@ -484,6 +548,302 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "عَظِيم! أَنْتَ تَعْرِفُ عَائِلَتَك!": {
       "src": "/sounds/preschool/ar/family-memory-success.mp3",
       "durationMs": 2772
+    },
+    "اِسْحَبْ: قِطَار طَوِيل، حَجَر ثَقِيل، عُصْفُور فَوْق، بَيْت، بَالُون خَفِيف، ثُمَّ الدِّمَاغ!": {
+      "src": "/sounds/preschool/ar/logic-think-path-prompt.mp3",
+      "durationMs": 8796
+    },
+    "عَقْلُكَ الصَّغِيرُ يُفَكِّر! بَرَاوَ!": {
+      "src": "/sounds/preschool/ar/logic-think-path-success.mp3",
+      "durationMs": 2729
+    },
+    "اِلْمَسِ القِطَار! القِطَارُ طَوِيل، السَّيَّارَةُ قَصِيرَة!": {
+      "src": "/sounds/preschool/ar/logic-long-short-prompt.mp3",
+      "durationMs": 4283
+    },
+    "أَحْسَنْت! هَذَا قِطَارٌ طَوِيل!": {
+      "src": "/sounds/preschool/ar/logic-long-short-success.mp3",
+      "durationMs": 2765
+    },
+    "اِلْمَسِ الحَجَر! الحَجَرُ ثَقِيل، البَالُونُ خَفِيف!": {
+      "src": "/sounds/preschool/ar/logic-heavy-tap-prompt.mp3",
+      "durationMs": 4025
+    },
+    "نَعَم! الحَجَرُ ثَقِيل!": {
+      "src": "/sounds/preschool/ar/logic-heavy-tap-success.mp3",
+      "durationMs": 2127
+    },
+    "اِلْمِسِ الكُرَةَ فَوْقَ الخَطّ! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان.": {
+      "src": "/sounds/preschool/ar/logic-above-below-prompt.mp3",
+      "durationMs": 4701
+    },
+    "أَحْسَنْت! الكُرَةُ فَوْقَ الخَطّ!": {
+      "src": "/sounds/preschool/ar/logic-above-below-success.mp3",
+      "durationMs": 2654
+    },
+    "ضَعِ الحَجَرَ وَالسَّيَّارَةَ مَعَ الفِيل، وَالبَالُونَ وَالوَرَقَةَ مَعَ الرِّيشَة!": {
+      "src": "/sounds/preschool/ar/logic-heavy-light-prompt.mp3",
+      "durationMs": 4968
+    },
+    "مَيَّزْتَ الثَّقِيلَ وَالخَفِيف!": {
+      "src": "/sounds/preschool/ar/logic-heavy-light-success.mp3",
+      "durationMs": 2150
+    },
+    "اِلْمَسِ الكُرَةَ الَّتِي دَاخِلَ الصُّنْدُوق! نَفْسُ الكُرَة، مَكَانَانِ مُخْتَلِفَان!": {
+      "src": "/sounds/preschool/ar/logic-inside-outside-prompt.mp3",
+      "durationMs": 5340
+    },
+    "نَعَم! الكُرَةُ دَاخِلَ الصُّنْدُوق!": {
+      "src": "/sounds/preschool/ar/logic-inside-outside-success.mp3",
+      "durationMs": 2672
+    },
+    "اِلْمَسِ الدُّبَّ الَّذِي أَمَامَ الصُّنْدُوق! نَفْسُ الدُّبّ، مَكَانَانِ مُخْتَلِفَان!": {
+      "src": "/sounds/preschool/ar/logic-front-behind-prompt.mp3",
+      "durationMs": 5333
+    },
+    "نَعَم! الدُّبُّ أَمَامَ الصُّنْدُوق!": {
+      "src": "/sounds/preschool/ar/logic-front-behind-success.mp3",
+      "durationMs": 2587
+    },
+    "اِلْمَسِ اليَدَ اليُمْنَى! بِهَا نَأْكُلُ وَنُصَافِح!": {
+      "src": "/sounds/preschool/ar/logic-right-left-prompt.mp3",
+      "durationMs": 3492
+    },
+    "هَذِهِ اليَدُ اليُمْنَى! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/logic-right-left-success.mp3",
+      "durationMs": 2546
+    },
+    "قِطَار، سَيَّارَة، قِطَار، سَيَّارَة، قِطَار… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/logic-pattern-colors-prompt.mp3",
+      "durationMs": 5465
+    },
+    "السَّيَّارَةُ بَعْدَ القِطَار! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/logic-pattern-colors-success.mp3",
+      "durationMs": 3009
+    },
+    "اِقْلِبِ البِطَاقَاتِ! قُلْ: قِطَار، فِيل، عُصْفُور!": {
+      "src": "/sounds/preschool/ar/logic-memory-prompt.mp3",
+      "durationMs": 4431
+    },
+    "عَقْلُكَ قَوِيّ!": {
+      "src": "/sounds/preschool/ar/logic-memory-success.mp3",
+      "durationMs": 1355
+    },
+    "أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-colors-ab-prompt.mp3",
+      "durationMs": 4805
+    },
+    "الأَزْرَقُ بَعْدَ الأَحْمَر! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/seq-colors-ab-success.mp3",
+      "durationMs": 2806
+    },
+    "قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-animals-ab-prompt.mp3",
+      "durationMs": 4531
+    },
+    "الكَلْبُ بَعْدَ القِطَّة! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/seq-animals-ab-success.mp3",
+      "durationMs": 2668
+    },
+    "شَمْس، قَمَر، شَمْس، قَمَر، شَمْس… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-day-night-prompt.mp3",
+      "durationMs": 4757
+    },
+    "القَمَرُ بَعْدَ الشَّمْس! مُمْتَاز!": {
+      "src": "/sounds/preschool/ar/seq-day-night-success.mp3",
+      "durationMs": 2793
+    },
+    "تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-fruits-ab-prompt.mp3",
+      "durationMs": 5078
+    },
+    "المَوْزَةُ بَعْدَ التُّفَّاحَة!": {
+      "src": "/sounds/preschool/ar/seq-fruits-ab-success.mp3",
+      "durationMs": 1965
+    },
+    "فِيل، فَأْر، فِيل، فَأْر، فِيل… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-big-small-prompt.mp3",
+      "durationMs": 4559
+    },
+    "الفَأْرُ الصَّغِيرُ بَعْدَ الفِيل!": {
+      "src": "/sounds/preschool/ar/seq-big-small-success.mp3",
+      "durationMs": 3938
+    },
+    "سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-transport-abb-prompt.mp3",
+      "durationMs": 3455
+    },
+    "حَافِلَةٌ ثَانِيَة! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/seq-transport-abb-success.mp3",
+      "durationMs": 2435
+    },
+    "شَمْس، غَيْم، مَطَر، شَمْس، غَيْم… مَاذَا بَعْد؟": {
+      "src": "/sounds/preschool/ar/seq-weather-abc-prompt.mp3",
+      "durationMs": 4565
+    },
+    "المَطَرُ بَعْدَ الغَيْم! عَبْقَرِي!": {
+      "src": "/sounds/preschool/ar/seq-weather-abc-success.mp3",
+      "durationMs": 2581
+    },
+    "وَاحِد، اثْنَان، ثَلَاثَة… مَا العَدَدُ التَّالِي؟": {
+      "src": "/sounds/preschool/ar/seq-numbers-inc-prompt.mp3",
+      "durationMs": 3617
+    },
+    "أَرْبَعَة! بَطَلُ الأَعْدَاد!": {
+      "src": "/sounds/preschool/ar/seq-numbers-inc-success.mp3",
+      "durationMs": 2148
+    },
+    "رَتِّبِ الصُّوَرَ: دِيدُو جَائِع، ثُمَّ الكُسْكُس، ثُمَّ يَبْتَسِم! بَعْدَهَا احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!": {
+      "src": "/sounds/preschool/ar/story-couscous-prompt.mp3",
+      "durationMs": 7781
+    },
+    "أَحْسَنْت! الآنْ احْكِ القِصَّةَ لِبَابَا أَوْ مَامَا!": {
+      "src": "/sounds/preschool/ar/story-couscous-success.mp3",
+      "durationMs": 3745
+    },
+    "رَتِّبِ الصُّوَرَ: يَدَانِ مُتَّسِخَتَان، ثُمَّ الصَّابُون، ثُمَّ يَدَانِ نَظِيفَتَان! بَعْدَهَا احْكِ القِصَّة!": {
+      "src": "/sounds/preschool/ar/story-wash-hands-prompt.mp3",
+      "durationMs": 7725
+    },
+    "يَدَانِ نَظِيفَتَان! احْكِ القِصَّةَ لِمَامَا!": {
+      "src": "/sounds/preschool/ar/story-wash-hands-success.mp3",
+      "durationMs": 3302
+    },
+    "رَتِّبِ الصُّوَرَ: نَسْتَيْقِظ، ثُمَّ المَدْرَسَة، ثُمَّ حَضْنُ بَابَا! بَعْدَهَا احْكِ القِصَّة!": {
+      "src": "/sounds/preschool/ar/story-school-day-prompt.mp3",
+      "durationMs": 6377
+    },
+    "قِصَّةٌ جَمِيلَة! احْكِهَا لِبَابَا!": {
+      "src": "/sounds/preschool/ar/story-school-day-success.mp3",
+      "durationMs": 2529
+    },
+    "اِسْحَبِ القَلَمَ: وَجْه، شَمْس، زَهْرَة، بَيْت، فَنَك، ثُمَّ الكُسْكُس!": {
+      "src": "/sounds/preschool/ar/art-crayon-path-prompt.mp3",
+      "durationMs": 5860
+    },
+    "دَفْتَرُ الرَّسْمِ جَاهِز! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/art-crayon-path-success.mp3",
+      "durationMs": 2725
+    },
+    "اِخْتَرْ لَوْناً وَالمِسِ الوَجْهَ وَالعَيْنَيْنِ وَالفَم!": {
+      "src": "/sounds/preschool/ar/art-coloring-face-prompt.mp3",
+      "durationMs": 3572
+    },
+    "وَجْهٌ جَمِيل! أَنْتَ فَنَّان!": {
+      "src": "/sounds/preschool/ar/art-coloring-face-success.mp3",
+      "durationMs": 2547
+    },
+    "لَوِّنِ الشَّمْسَ! المِسِ الدَّائِرَةَ وَالأَشِعَّة!": {
+      "src": "/sounds/preschool/ar/art-coloring-sun-prompt.mp3",
+      "durationMs": 3283
+    },
+    "شَمْسُكَ تُضِيء! رَائِع!": {
+      "src": "/sounds/preschool/ar/art-coloring-sun-success.mp3",
+      "durationMs": 2381
+    },
+    "لَوِّنِ الزَّهْرَة! البَتَلَاتُ وَالوَسَطُ وَالسَّاق!": {
+      "src": "/sounds/preschool/ar/art-coloring-flower-prompt.mp3",
+      "durationMs": 3987
+    },
+    "زَهْرَةٌ رَائِعَة!": {
+      "src": "/sounds/preschool/ar/art-coloring-flower-success.mp3",
+      "durationMs": 1665
+    },
+    "لَوِّنِ البَيْت! السَّقْفُ وَالجِدَارُ وَالبَابُ وَالنَّافِذَة!": {
+      "src": "/sounds/preschool/ar/art-coloring-house-prompt.mp3",
+      "durationMs": 4697
+    },
+    "بَيْتٌ جَمِيل!": {
+      "src": "/sounds/preschool/ar/art-coloring-house-success.mp3",
+      "durationMs": 1447
+    },
+    "لَوِّنِ الفَنَكَ! آذانٌ كَبِيرَةٌ، ثَعْلَبُ صَحْرَائِنَا!": {
+      "src": "/sounds/preschool/ar/art-coloring-fennec-prompt.mp3",
+      "durationMs": 4240
+    },
+    "فَنَكٌ رَائِع!": {
+      "src": "/sounds/preschool/ar/art-coloring-fennec-success.mp3",
+      "durationMs": 1511
+    },
+    "لَوِّنِ الجَمَل! سَفِينَةُ الصَّحْرَاءِ وَسَنَامُهُ!": {
+      "src": "/sounds/preschool/ar/art-coloring-camel-prompt.mp3",
+      "durationMs": 3556
+    },
+    "جَمَلٌ قَوِي!": {
+      "src": "/sounds/preschool/ar/art-coloring-camel-success.mp3",
+      "durationMs": 1498
+    },
+    "لَوِّنِ طَبَقَ الكُسْكُس! القِدْرُ وَالغِطَاءُ وَالطَّعَام!": {
+      "src": "/sounds/preschool/ar/art-coloring-couscous-prompt.mp3",
+      "durationMs": 4362
+    },
+    "شَهِيّ! طَبَقُكَ جَاهِز!": {
+      "src": "/sounds/preschool/ar/art-coloring-couscous-success.mp3",
+      "durationMs": 2385
+    },
+    "اِسْحَبْ: تُفَّاحَة، نَمْلَة، سَمَكَة، مَزْرَعَة، ثُمَّ نَحْلَة!": {
+      "src": "/sounds/preschool/ar/creative-play-path-prompt.mp3",
+      "durationMs": 5160
+    },
+    "هَيَّا نَلْعَب! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/creative-play-path-success.mp3",
+      "durationMs": 2171
+    },
+    "اِخْتَرْ لَوْناً وَلَوِّنِ التُّفَّاحَة! الجِسْمُ وَالعُنُقُ وَالوَرَقَة!": {
+      "src": "/sounds/preschool/ar/creative-color-apple-prompt.mp3",
+      "durationMs": 4829
+    },
+    "تُفَّاحَةٌ جَمِيلَة!": {
+      "src": "/sounds/preschool/ar/creative-color-apple-success.mp3",
+      "durationMs": 1646
+    },
+    "اِسْحَبِ النَّمْلَةَ حَتَّى الوَرَقَةِ الخَضْرَاء!": {
+      "src": "/sounds/preschool/ar/creative-maze-ant-prompt.mp3",
+      "durationMs": 2810
+    },
+    "وَصَلَتِ النَّمْلَة!": {
+      "src": "/sounds/preschool/ar/creative-maze-ant-success.mp3",
+      "durationMs": 1294
+    },
+    "اِسْحَبِ السَّمَكَةَ فِي البَحْرِ حَتَّى الصَّدَفَة!": {
+      "src": "/sounds/preschool/ar/creative-maze-fish-prompt.mp3",
+      "durationMs": 2842
+    },
+    "وَجَدَتِ السَّمَكَةُ صَدَفَتَهَا!": {
+      "src": "/sounds/preschool/ar/creative-maze-fish-success.mp3",
+      "durationMs": 2199
+    },
+    "ضَعِ الشَّمْسَ وَالشَّجَرَةَ وَالبَيْتَ فِي مَكَانِهَا!": {
+      "src": "/sounds/preschool/ar/creative-jigsaw-farm-prompt.mp3",
+      "durationMs": 3609
+    },
+    "المَزْرَعَةُ كَامِلَة!": {
+      "src": "/sounds/preschool/ar/creative-jigsaw-farm-success.mp3",
+      "durationMs": 1669
+    },
+    "ضَعِ الشَّمْسَ وَالجَمَلَ وَالفَنَكَ وَالنَّخْلَةَ فِي مَكَانِهَا!": {
+      "src": "/sounds/preschool/ar/creative-jigsaw-oasis-prompt.mp3",
+      "durationMs": 4366
+    },
+    "وَاحَةٌ جَمِيلَة!": {
+      "src": "/sounds/preschool/ar/creative-jigsaw-oasis-success.mp3",
+      "durationMs": 1525
+    },
+    "اِسْحَبِ السَّيَّارَةَ عَلَى الطَّرِيقِ حَتَّى البَيْت!": {
+      "src": "/sounds/preschool/ar/creative-maze-car-prompt.mp3",
+      "durationMs": 3164
+    },
+    "وَصَلَتِ السَّيَّارَةُ إِلَى البَيْت!": {
+      "src": "/sounds/preschool/ar/creative-maze-car-success.mp3",
+      "durationMs": 2310
+    },
+    "ضَعِ النَّحْلَ مَعَ العَسَل، وَالفَرَاشَاتِ مَعَ الزَّهْرَة!": {
+      "src": "/sounds/preschool/ar/creative-bees-flowers-prompt.mp3",
+      "durationMs": 3517
+    },
+    "كُلُّ وَاحِدٍ فِي مَكَانِهِ!": {
+      "src": "/sounds/preschool/ar/creative-bees-flowers-success.mp3",
+      "durationMs": 2019
     },
     "المِسِ الدَّائِرَةَ! مِثْلُ الكَعْكَةِ المُسْتَدِيرَة!": {
       "src": "/sounds/preschool/ar/shape-circle-cookie-prompt.mp3",
@@ -1221,6 +1581,70 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/num-9-success.mp3",
       "durationMs": 2540
     },
+    "اِسْحَبِ القَلَمَ: شَجَرَة، ثُعْبَان، طَائِرَةٌ وَرَقِيَّة، بَرْق، مَوْج، ثُمَّ الشَّمْس!": {
+      "src": "/sounds/preschool/ar/writing-pencil-path-prompt.mp3",
+      "durationMs": 8048
+    },
+    "يَدُكَ جَاهِزَة! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/writing-pencil-path-success.mp3",
+      "durationMs": 2269
+    },
+    "اِرْسُمِ الشَّجَرَة! مِنَ الأَعْلَى إِلَى الأَسْفَل، مِثْلَ الجِذْع!": {
+      "src": "/sounds/preschool/ar/writing-vertical-line-prompt.mp3",
+      "durationMs": 4268
+    },
+    "شَجَرَةٌ قَوِيَّة! يَدُكَ ثَابِتَة!": {
+      "src": "/sounds/preschool/ar/writing-vertical-line-success.mp3",
+      "durationMs": 3012
+    },
+    "اِرْسُمِ الثُّعْبَان! مِنَ اليَمِينِ إِلَى اليَسَار، يَزْحَفُ عَلَى الأَرْض!": {
+      "src": "/sounds/preschool/ar/writing-horizontal-line-prompt.mp3",
+      "durationMs": 4898
+    },
+    "ثُعْبَانٌ طَوِيل! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/writing-horizontal-line-success.mp3",
+      "durationMs": 2710
+    },
+    "اِرْسُمِ الطَّائِرَةَ الوَرَقِيَّة! تَصْعَدُ فِي الهَوَاءِ بِخَطٍّ مَائِل!": {
+      "src": "/sounds/preschool/ar/writing-oblique-line-prompt.mp3",
+      "durationMs": 4701
+    },
+    "طَارَتْ فِي السَّمَاء! أَنْتَ فَنَّان!": {
+      "src": "/sounds/preschool/ar/writing-oblique-line-success.mp3",
+      "durationMs": 2895
+    },
+    "اِرْسُمِ البَرْق! فَوْقَ وَتَحْت، فَوْقَ وَتَحْت، زِكْزَاك!": {
+      "src": "/sounds/preschool/ar/writing-zigzag-line-prompt.mp3",
+      "durationMs": 4781
+    },
+    "بَرْقٌ سَرِيع! وَاوَ!": {
+      "src": "/sounds/preschool/ar/writing-zigzag-line-success.mp3",
+      "durationMs": 2283
+    },
+    "اِرْسُمِ المَوْج! نَاعِمٌ مِثْلَ بَحْرِ الجَزَائِر!": {
+      "src": "/sounds/preschool/ar/writing-wavy-line-prompt.mp3",
+      "durationMs": 3489
+    },
+    "مَوْجَةٌ جَمِيلَة! بَحْرُنَا!": {
+      "src": "/sounds/preschool/ar/writing-wavy-line-success.mp3",
+      "durationMs": 2476
+    },
+    "اِرْسُمِ الشَّمْسَ! دُرْ دُرْ دُرْ، دَائِرَةٌ كَبِيرَة!": {
+      "src": "/sounds/preschool/ar/writing-loop-line-prompt.mp3",
+      "durationMs": 4072
+    },
+    "شَمْسٌ مُشْرِقَة! دَائِرَةٌ رَائِعَة!": {
+      "src": "/sounds/preschool/ar/writing-loop-line-success.mp3",
+      "durationMs": 3168
+    },
+    "اِسْحَبِ القَلَمَ عَلَى الخَطِّ حَتَّى الكُرَّاس!": {
+      "src": "/sounds/preschool/ar/writing-pencil-maze-prompt.mp3",
+      "durationMs": 2863
+    },
+    "وَصَلَ القَلَمُ! نَكْتُب!": {
+      "src": "/sounds/preschool/ar/writing-pencil-maze-success.mp3",
+      "durationMs": 2110
+    },
     "هَذَا كِتَابٌ.": {
       "src": "/sounds/preschool/ar/reading-first-school-book.mp3",
       "durationMs": 1642
@@ -1827,6 +2251,70 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/language-next-fr-8.mp3",
       "durationMs": 10701
     },
+    "Glisse le fennec : joie, ballon, tristesse, pansement, puis un câlin !": {
+      "src": "/sounds/preschool/fr/emotion-feelings-path-prompt.mp3",
+      "durationMs": 6202
+    },
+    "Toutes les émotions sont OK ! Bravo !": {
+      "src": "/sounds/preschool/fr/emotion-feelings-path-success.mp3",
+      "durationMs": 2800
+    },
+    "On a un ballon ! Touche le visage joyeux !": {
+      "src": "/sounds/preschool/fr/emotion-happy-prompt.mp3",
+      "durationMs": 2739
+    },
+    "Oui ! C'est la joie !": {
+      "src": "/sounds/preschool/fr/emotion-happy-success.mp3",
+      "durationMs": 1681
+    },
+    "La glace est tombée ! Touche le visage triste !": {
+      "src": "/sounds/preschool/fr/emotion-sad-prompt.mp3",
+      "durationMs": 3117
+    },
+    "Oui, c'est la tristesse. On te fait un câlin !": {
+      "src": "/sounds/preschool/fr/emotion-sad-success.mp3",
+      "durationMs": 3240
+    },
+    "La tour de cubes est tombée ! Touche le visage fâché !": {
+      "src": "/sounds/preschool/fr/emotion-angry-prompt.mp3",
+      "durationMs": 3249
+    },
+    "La colère passe ! On reconstruit !": {
+      "src": "/sounds/preschool/fr/emotion-angry-success.mp3",
+      "durationMs": 2412
+    },
+    "Mets le ballon et le cadeau avec le sourire, le pansement avec la larme !": {
+      "src": "/sounds/preschool/fr/emotion-sort-context-prompt.mp3",
+      "durationMs": 4604
+    },
+    "Tu connais la joie et la tristesse !": {
+      "src": "/sounds/preschool/fr/emotion-sort-context-success.mp3",
+      "durationMs": 2274
+    },
+    "Relie la joie au ballon, et la tristesse au pansement !": {
+      "src": "/sounds/preschool/fr/emotion-connect-prompt.mp3",
+      "durationMs": 3493
+    },
+    "Chaque sentiment a son image !": {
+      "src": "/sounds/preschool/fr/emotion-connect-success.mp3",
+      "durationMs": 1997
+    },
+    "Retourne les cartes ! Dis : joyeux, triste, fâché !": {
+      "src": "/sounds/preschool/fr/emotion-memory-prompt.mp3",
+      "durationMs": 4456
+    },
+    "Tu as une super mémoire !": {
+      "src": "/sounds/preschool/fr/emotion-memory-success.mp3",
+      "durationMs": 1865
+    },
+    "L'ami est triste ! Que fait-on ? Touche le câlin !": {
+      "src": "/sounds/preschool/fr/emotion-hug-prompt.mp3",
+      "durationMs": 3199
+    },
+    "Oui ! Le câlin aide !": {
+      "src": "/sounds/preschool/fr/emotion-hug-success.mp3",
+      "durationMs": 1992
+    },
     "Glisse le fennec : porte, salon, cuisine, chambre, puis la famille !": {
       "src": "/sounds/preschool/fr/family-fennec-home-prompt.mp3",
       "durationMs": 5688
@@ -1874,6 +2362,162 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Formidable ! Tu connais ta famille !": {
       "src": "/sounds/preschool/fr/family-memory-success.mp3",
       "durationMs": 2575
+    },
+    "Glisse : train long, pierre lourde, oiseau en haut, maison, ballon léger, puis le cerveau !": {
+      "src": "/sounds/preschool/fr/logic-think-path-prompt.mp3",
+      "durationMs": 6946
+    },
+    "Ton petit esprit réfléchit ! Bravo !": {
+      "src": "/sounds/preschool/fr/logic-think-path-success.mp3",
+      "durationMs": 2776
+    },
+    "Touche le train ! Le train est long, la voiture est courte !": {
+      "src": "/sounds/preschool/fr/logic-long-short-prompt.mp3",
+      "durationMs": 3814
+    },
+    "Bravo ! Voici un long train !": {
+      "src": "/sounds/preschool/fr/logic-long-short-success.mp3",
+      "durationMs": 2573
+    },
+    "Touche la pierre ! La pierre est lourde, le ballon est léger !": {
+      "src": "/sounds/preschool/fr/logic-heavy-tap-prompt.mp3",
+      "durationMs": 3800
+    },
+    "Oui ! La pierre est lourde !": {
+      "src": "/sounds/preschool/fr/logic-heavy-tap-success.mp3",
+      "durationMs": 2025
+    },
+    "Touche le ballon au-dessus de la ligne ! C’est le même ballon à deux endroits.": {
+      "src": "/sounds/preschool/fr/logic-above-below-prompt.mp3",
+      "durationMs": 4425
+    },
+    "Oui ! Le ballon est au-dessus !": {
+      "src": "/sounds/preschool/fr/logic-above-below-success.mp3",
+      "durationMs": 2058
+    },
+    "Mets la pierre et la voiture avec l'éléphant, le ballon et la feuille avec la plume !": {
+      "src": "/sounds/preschool/fr/logic-heavy-light-prompt.mp3",
+      "durationMs": 5180
+    },
+    "Tu connais le lourd et le léger !": {
+      "src": "/sounds/preschool/fr/logic-heavy-light-success.mp3",
+      "durationMs": 2115
+    },
+    "Touche le ballon qui est DANS la boîte ! C’est le même ballon, deux places !": {
+      "src": "/sounds/preschool/fr/logic-inside-outside-prompt.mp3",
+      "durationMs": 4254
+    },
+    "Oui ! Le ballon est dans la boîte !": {
+      "src": "/sounds/preschool/fr/logic-inside-outside-success.mp3",
+      "durationMs": 2225
+    },
+    "Touche l’ours qui est DEVANT la boîte ! C’est le même ours, deux places différentes !": {
+      "src": "/sounds/preschool/fr/logic-front-behind-prompt.mp3",
+      "durationMs": 4771
+    },
+    "Oui ! L’ours est devant la boîte !": {
+      "src": "/sounds/preschool/fr/logic-front-behind-success.mp3",
+      "durationMs": 2329
+    },
+    "Touche la main droite ! Avec elle on mange et on salue !": {
+      "src": "/sounds/preschool/fr/logic-right-left-prompt.mp3",
+      "durationMs": 3462
+    },
+    "Voici la main droite ! Bravo !": {
+      "src": "/sounds/preschool/fr/logic-right-left-success.mp3",
+      "durationMs": 2219
+    },
+    "Train, voiture, train, voiture, train… ensuite ?": {
+      "src": "/sounds/preschool/fr/logic-pattern-colors-prompt.mp3",
+      "durationMs": 3862
+    },
+    "La voiture vient après le train ! Bravo !": {
+      "src": "/sounds/preschool/fr/logic-pattern-colors-success.mp3",
+      "durationMs": 2854
+    },
+    "Retourne les cartes ! Dis : train, éléphant, oiseau !": {
+      "src": "/sounds/preschool/fr/logic-memory-prompt.mp3",
+      "durationMs": 4937
+    },
+    "Ton esprit est fort !": {
+      "src": "/sounds/preschool/fr/logic-memory-success.mp3",
+      "durationMs": 1497
+    },
+    "Rouge, bleu, rouge, bleu, rouge… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-colors-ab-prompt.mp3",
+      "durationMs": 4244
+    },
+    "Le bleu vient après le rouge ! Bravo !": {
+      "src": "/sounds/preschool/fr/seq-colors-ab-success.mp3",
+      "durationMs": 2832
+    },
+    "Chat, chien, chat, chien, chat… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-animals-ab-prompt.mp3",
+      "durationMs": 3338
+    },
+    "Le chien vient après le chat ! Bravo !": {
+      "src": "/sounds/preschool/fr/seq-animals-ab-success.mp3",
+      "durationMs": 3511
+    },
+    "Soleil, lune, soleil, lune, soleil… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-day-night-prompt.mp3",
+      "durationMs": 3806
+    },
+    "La lune vient après le soleil ! Super !": {
+      "src": "/sounds/preschool/fr/seq-day-night-success.mp3",
+      "durationMs": 3734
+    },
+    "Pomme, banane, pomme, banane, pomme… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-fruits-ab-prompt.mp3",
+      "durationMs": 3525
+    },
+    "La banane vient après la pomme !": {
+      "src": "/sounds/preschool/fr/seq-fruits-ab-success.mp3",
+      "durationMs": 2910
+    },
+    "Éléphant, souris, éléphant, souris, éléphant… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-big-small-prompt.mp3",
+      "durationMs": 3955
+    },
+    "La petite souris vient après l'éléphant !": {
+      "src": "/sounds/preschool/fr/seq-big-small-success.mp3",
+      "durationMs": 3171
+    },
+    "Voiture, bus, bus, voiture, bus… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-transport-abb-prompt.mp3",
+      "durationMs": 3905
+    },
+    "Un deuxième bus ! Bravo !": {
+      "src": "/sounds/preschool/fr/seq-transport-abb-success.mp3",
+      "durationMs": 2119
+    },
+    "Soleil, nuage, pluie, soleil, nuage… ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-weather-abc-prompt.mp3",
+      "durationMs": 5460
+    },
+    "La pluie vient après le nuage ! Génie !": {
+      "src": "/sounds/preschool/fr/seq-weather-abc-success.mp3",
+      "durationMs": 3149
+    },
+    "Un, deux, trois… quel chiffre ensuite ?": {
+      "src": "/sounds/preschool/fr/seq-numbers-inc-prompt.mp3",
+      "durationMs": 3185
+    },
+    "Quatre ! Champion des chiffres !": {
+      "src": "/sounds/preschool/fr/seq-numbers-inc-success.mp3",
+      "durationMs": 2126
+    },
+    "Range les images : Dido a faim, puis le couscous, puis il sourit ! Ensuite raconte l’histoire à papa ou maman !": {
+      "src": "/sounds/preschool/fr/story-couscous-prompt.mp3",
+      "durationMs": 7605
+    },
+    "Bravo ! Maintenant raconte l’histoire à papa ou maman !": {
+      "src": "/sounds/preschool/fr/story-couscous-success.mp3",
+      "durationMs": 3574
+    },
+    "Range les images : mains sales, puis le savon, puis mains propres ! Ensuite raconte l’histoire !": {
+      "src": "/sounds/preschool/fr/story-wash-hands-prompt.mp3",
+      "durationMs": 6321
     },
     "Touche le cercle ! Comme le biscuit rond !": {
       "src": "/sounds/preschool/fr/shape-circle-cookie-prompt.mp3",
@@ -2579,6 +3223,70 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/num-9-success.mp3",
       "durationMs": 2520
     },
+    "Glisse le crayon : arbre, serpent, cerf-volant, éclair, vague, puis le soleil !": {
+      "src": "/sounds/preschool/fr/writing-pencil-path-prompt.mp3",
+      "durationMs": 7020
+    },
+    "Ta main est prête ! Bravo !": {
+      "src": "/sounds/preschool/fr/writing-pencil-path-success.mp3",
+      "durationMs": 1996
+    },
+    "Trace l'arbre ! Du haut vers le bas, comme le tronc !": {
+      "src": "/sounds/preschool/fr/writing-vertical-line-prompt.mp3",
+      "durationMs": 3386
+    },
+    "Un bel arbre ! Ta main est ferme !": {
+      "src": "/sounds/preschool/fr/writing-vertical-line-success.mp3",
+      "durationMs": 2658
+    },
+    "Trace le serpent ! De gauche à droite, il rampe sur le sol !": {
+      "src": "/sounds/preschool/fr/writing-horizontal-line-prompt.mp3",
+      "durationMs": 4055
+    },
+    "Un long serpent ! Bravo !": {
+      "src": "/sounds/preschool/fr/writing-horizontal-line-success.mp3",
+      "durationMs": 2508
+    },
+    "Trace le cerf-volant ! Il monte dans le ciel en diagonale !": {
+      "src": "/sounds/preschool/fr/writing-oblique-line-prompt.mp3",
+      "durationMs": 3709
+    },
+    "Il vole dans le ciel ! Petit artiste !": {
+      "src": "/sounds/preschool/fr/writing-oblique-line-success.mp3",
+      "durationMs": 2967
+    },
+    "Trace l'éclair ! En haut, en bas, en haut, en bas, zigzag !": {
+      "src": "/sounds/preschool/fr/writing-zigzag-line-prompt.mp3",
+      "durationMs": 5245
+    },
+    "Un éclair rapide ! Wow !": {
+      "src": "/sounds/preschool/fr/writing-zigzag-line-success.mp3",
+      "durationMs": 2205
+    },
+    "Trace la vague ! Douce comme la mer d'Algérie !": {
+      "src": "/sounds/preschool/fr/writing-wavy-line-prompt.mp3",
+      "durationMs": 3437
+    },
+    "Une belle vague ! Notre mer !": {
+      "src": "/sounds/preschool/fr/writing-wavy-line-success.mp3",
+      "durationMs": 2644
+    },
+    "Trace le soleil ! Tourne, tourne, tourne, un grand rond !": {
+      "src": "/sounds/preschool/fr/writing-loop-line-prompt.mp3",
+      "durationMs": 4336
+    },
+    "Un soleil brillant ! Superbe rond !": {
+      "src": "/sounds/preschool/fr/writing-loop-line-success.mp3",
+      "durationMs": 2807
+    },
+    "Glisse le crayon sur la ligne jusqu'au cahier !": {
+      "src": "/sounds/preschool/fr/writing-pencil-maze-prompt.mp3",
+      "durationMs": 2785
+    },
+    "Le crayon est arrivé ! On écrit !": {
+      "src": "/sounds/preschool/fr/writing-pencil-maze-success.mp3",
+      "durationMs": 2289
+    },
     "chat": {
       "src": "/sounds/preschool/fr/pronunciation-fr-chat.mp3",
       "durationMs": 681
@@ -3188,6 +3896,70 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Eat well, then we will walk to school together.": {
       "src": "/sounds/preschool/en/language-next-en-8.mp3",
       "durationMs": 2840
+    },
+    "Drag the fennec: joy, balloon, sadness, bandage, then a hug!": {
+      "src": "/sounds/preschool/en/emotion-feelings-path-prompt.mp3",
+      "durationMs": 6821
+    },
+    "Every feeling is OK! Well done!": {
+      "src": "/sounds/preschool/en/emotion-feelings-path-success.mp3",
+      "durationMs": 3353
+    },
+    "We have a balloon! Touch the happy face!": {
+      "src": "/sounds/preschool/en/emotion-happy-prompt.mp3",
+      "durationMs": 3105
+    },
+    "Yes! That is joy!": {
+      "src": "/sounds/preschool/en/emotion-happy-success.mp3",
+      "durationMs": 2356
+    },
+    "The ice cream fell! Touch the sad face!": {
+      "src": "/sounds/preschool/en/emotion-sad-prompt.mp3",
+      "durationMs": 3470
+    },
+    "Yes, that is sadness. We hug you!": {
+      "src": "/sounds/preschool/en/emotion-sad-success.mp3",
+      "durationMs": 3526
+    },
+    "The block tower fell! Touch the angry face!": {
+      "src": "/sounds/preschool/en/emotion-angry-prompt.mp3",
+      "durationMs": 3658
+    },
+    "Anger passes! We build again!": {
+      "src": "/sounds/preschool/en/emotion-angry-success.mp3",
+      "durationMs": 2878
+    },
+    "Put the balloon and the gift with the smile, the bandage with the tear!": {
+      "src": "/sounds/preschool/en/emotion-sort-context-prompt.mp3",
+      "durationMs": 4309
+    },
+    "You know joy and sadness!": {
+      "src": "/sounds/preschool/en/emotion-sort-context-success.mp3",
+      "durationMs": 2490
+    },
+    "Match joy to the balloon, and sadness to the bandage!": {
+      "src": "/sounds/preschool/en/emotion-connect-prompt.mp3",
+      "durationMs": 3529
+    },
+    "Every feeling has a picture!": {
+      "src": "/sounds/preschool/en/emotion-connect-success.mp3",
+      "durationMs": 2089
+    },
+    "Flip the cards! Say: happy, sad, angry!": {
+      "src": "/sounds/preschool/en/emotion-memory-prompt.mp3",
+      "durationMs": 4055
+    },
+    "Your memory is super!": {
+      "src": "/sounds/preschool/en/emotion-memory-success.mp3",
+      "durationMs": 2110
+    },
+    "The friend is sad! What do we do? Touch the hug!": {
+      "src": "/sounds/preschool/en/emotion-hug-prompt.mp3",
+      "durationMs": 4724
+    },
+    "Yes! A hug helps!": {
+      "src": "/sounds/preschool/en/emotion-hug-success.mp3",
+      "durationMs": 1235
     },
     "Drag the fennec: door, living room, kitchen, bedroom, then the family!": {
       "src": "/sounds/preschool/en/family-fennec-home-prompt.mp3",
@@ -3948,6 +4720,70 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Great! You wrote nine!": {
       "src": "/sounds/preschool/en/num-9-success.mp3",
       "durationMs": 2281
+    },
+    "Drag the pencil: tree, snake, kite, lightning, wave, then the sun!": {
+      "src": "/sounds/preschool/en/writing-pencil-path-prompt.mp3",
+      "durationMs": 7218
+    },
+    "Your hand is ready! Well done!": {
+      "src": "/sounds/preschool/en/writing-pencil-path-success.mp3",
+      "durationMs": 2648
+    },
+    "Trace the tree! From top to bottom, like the trunk!": {
+      "src": "/sounds/preschool/en/writing-vertical-line-prompt.mp3",
+      "durationMs": 3808
+    },
+    "A strong tree! Your hand is steady!": {
+      "src": "/sounds/preschool/en/writing-vertical-line-success.mp3",
+      "durationMs": 3235
+    },
+    "Trace the snake! From left to right, it crawls on the ground!": {
+      "src": "/sounds/preschool/en/writing-horizontal-line-prompt.mp3",
+      "durationMs": 4279
+    },
+    "A long snake! Well done!": {
+      "src": "/sounds/preschool/en/writing-horizontal-line-success.mp3",
+      "durationMs": 2670
+    },
+    "Trace the kite! It goes up in the sky on a slant!": {
+      "src": "/sounds/preschool/en/writing-oblique-line-prompt.mp3",
+      "durationMs": 3695
+    },
+    "It flies in the sky! Little artist!": {
+      "src": "/sounds/preschool/en/writing-oblique-line-success.mp3",
+      "durationMs": 3032
+    },
+    "Trace the lightning! Up, down, up, down, zigzag!": {
+      "src": "/sounds/preschool/en/writing-zigzag-line-prompt.mp3",
+      "durationMs": 4758
+    },
+    "Fast lightning! Wow!": {
+      "src": "/sounds/preschool/en/writing-zigzag-line-success.mp3",
+      "durationMs": 2069
+    },
+    "Trace the wave! Soft like the sea of Algeria!": {
+      "src": "/sounds/preschool/en/writing-wavy-line-prompt.mp3",
+      "durationMs": 3920
+    },
+    "A beautiful wave! Our sea!": {
+      "src": "/sounds/preschool/en/writing-wavy-line-success.mp3",
+      "durationMs": 2925
+    },
+    "Trace the sun! Round, round, round, a big circle!": {
+      "src": "/sounds/preschool/en/writing-loop-line-prompt.mp3",
+      "durationMs": 4753
+    },
+    "A bright sun! A wonderful circle!": {
+      "src": "/sounds/preschool/en/writing-loop-line-success.mp3",
+      "durationMs": 2878
+    },
+    "Drag the pencil along the line all the way to the notebook!": {
+      "src": "/sounds/preschool/en/writing-pencil-maze-prompt.mp3",
+      "durationMs": 3584
+    },
+    "The pencil arrived! We write!": {
+      "src": "/sounds/preschool/en/writing-pencil-maze-success.mp3",
+      "durationMs": 2495
     },
     "ship": {
       "src": "/sounds/preschool/en/pronunciation-en-ship.mp3",

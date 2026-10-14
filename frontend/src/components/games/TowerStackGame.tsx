@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * TowerStackGame.tsx — بناء البرج
  * Classic block-stacking game using Phaser.
@@ -56,6 +57,7 @@ const BLOCK_COLORS = [
 export const TowerStackGame: React.FC<TowerStackGameProps> = ({ onExit, onComplete, language = 'ar' }) => {
   const { maxUnlocked, stars, completeLevel } = useLevelProgress('tower_stack', 4);
   const [phase, setPhase] = useState<'select' | 'play' | 'win' | 'lose'>('select');
+  const requestLeave = useActivityExitGuard(phase === 'play', language);
   const [levelIdx, setLevelIdx] = useState(0);
   const [stackCount, setStackCount] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -300,7 +302,7 @@ export const TowerStackGame: React.FC<TowerStackGameProps> = ({ onExit, onComple
             <button onClick={() => setPhase('play')} className="bg-slate-100 text-slate-700 rounded-2xl px-5 py-2 font-bold text-sm">
               إعادة
             </button>
-            <button onClick={() => setPhase('select')} className="bg-gradient-to-br from-teal-400 to-emerald-600 text-white rounded-2xl px-5 py-2 font-bold text-sm shadow">
+            <button onClick={() => requestLeave(() => setPhase('select'))} className="bg-gradient-to-br from-teal-400 to-emerald-600 text-white rounded-2xl px-5 py-2 font-bold text-sm shadow">
               المستويات
             </button>
             {phase === 'win' && (
@@ -318,11 +320,11 @@ export const TowerStackGame: React.FC<TowerStackGameProps> = ({ onExit, onComple
   return (
     <div className="flex flex-col items-center min-h-screen bg-gradient-to-br from-slate-900 to-teal-900 p-3 pb-6" dir="rtl">
       <div className="w-full flex items-center justify-between mb-2">
-        <button onClick={onExit} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 font-bold text-sm">
+        <button onClick={() => { if (onExit) requestLeave(onExit); }} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 font-bold text-sm">
           ← خروج
         </button>
         <h1 className="text-base font-extrabold text-white">🏗️ بناء البرج</h1>
-        <button onClick={() => setPhase('select')} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 text-sm font-bold">
+        <button onClick={() => requestLeave(() => setPhase('select'))} className="bg-white/10 rounded-2xl px-3 py-1.5 text-white/80 text-sm font-bold">
           المستويات
         </button>
       </div>

@@ -1,3 +1,4 @@
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
 /**
  * CarMazeGame.tsx — « En Ville » pour 3-5 ans.
  * Un seul jeu, 10 parcours : vélo, taxi, moto, train — chemins et sons différents.
@@ -538,6 +539,7 @@ export const CarMazeGame: React.FC<CarMazeGameProps> = ({ onExit, language = 'fr
   const unlocked = Math.min(10, Math.max(maxUnlocked, stars[3] ? 4 : 1, stars[6] ? 7 : 1));
   const [phase, setPhase]       = useState<'select' | 'play'>('select');
   const [activeLevel, setLevel] = useState(1);
+  const requestLeave = useActivityExitGuard(phase === 'play', language);
   const containerRef = useRef<HTMLDivElement>(null);
   const gameRef      = useRef<Phaser.Game | null>(null);
   const ctrl         = useRef<Record<Dir, boolean>>({ up: false, down: false, left: false, right: false });
@@ -920,7 +922,7 @@ export const CarMazeGame: React.FC<CarMazeGameProps> = ({ onExit, language = 'fr
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setPhase('select')}
+        onClick={() => requestLeave(() => setPhase('select'))}
         className="absolute top-4 start-4 z-10 bg-white/90 hover:bg-white text-slate-900 font-black
                    px-4 py-2 rounded-2xl shadow-lg border-2 border-amber-300 cursor-pointer
                    flex items-center gap-2 text-sm"

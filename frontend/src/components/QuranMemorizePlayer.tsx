@@ -52,7 +52,7 @@ export const QuranMemorizePlayer: React.FC<{
 
   return (
     <div className="space-y-4 min-w-0" dir="rtl" data-quran-player={variant}>
-      <div className={`sticky top-0 z-20 -mx-1 px-1 pt-1 pb-3 space-y-2 ${barBg}`}>
+      <div className={`sm:sticky ${kid ? 'sm:top-0' : 'sm:top-[calc(4rem+env(safe-area-inset-top))]'} z-20 -mx-1 px-1 pt-1 pb-3 grid grid-cols-1 gap-2 ${kid ? '' : 'min-[360px]:grid-cols-2'} ${barBg}`}>
         <motion.button
           type="button"
           data-quran-recite="surah"
@@ -90,7 +90,7 @@ export const QuranMemorizePlayer: React.FC<{
           <motion.button
             type="button"
             data-quran-mic="record"
-            aria-label="سجّل صوتك"
+            aria-label={echo.phase === 'denied' ? 'أعد محاولة الميكروفون' : 'سجّل صوتك'}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
               recitation.stop();
@@ -99,7 +99,7 @@ export const QuranMemorizePlayer: React.FC<{
             className={`${hit} rounded-3xl px-4 font-black cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
           >
             <Mic className="w-7 h-7 shrink-0 text-[#C42A23]" />
-            {kid ? '🎤 أنا أقرأ' : 'سجّل صوتك'}
+            {echo.phase === 'denied' ? 'أعد محاولة الميكروفون' : kid ? '🎤 أنا أقرأ' : 'سجّل صوتك'}
           </motion.button>
         ) : (
           <motion.button
@@ -140,7 +140,7 @@ export const QuranMemorizePlayer: React.FC<{
         </p>
       )}
 
-      <p className={`text-center font-bold text-emerald-800 ${kid ? 'text-sm' : 'text-xs'}`}>
+      <p className={`text-center font-bold text-emerald-800 bg-white rounded-2xl px-3 py-2 ${kid ? 'text-sm' : 'text-xs'}`}>
         {QURAN_RECITER_RIWAYAH_AR} — {QURAN_RECITER_AR}
       </p>
       {recitation.failed && (

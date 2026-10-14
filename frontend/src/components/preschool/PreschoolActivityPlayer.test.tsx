@@ -19,7 +19,8 @@ const traceB = LETTERS_MODULE_START.activities.find((item) => item.id === 'lette
 
 vi.mock('./PreschoolTrace', () => ({
   PreschoolTrace: ({ onComplete }: { onComplete: (quality?: string) => void }) => (
-    <button type="button" onClick={() => onComplete('tried')}>J’ai essayé</button>
+    <><button type="button" onClick={() => onComplete('tried')}>J’ai essayé</button>
+      <button type="button" onClick={() => onComplete('wrote')}>J’ai écrit</button></>
   ),
 }));
 
@@ -88,12 +89,14 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     vi.useFakeTimers();
     speak.mockClear();
     const onComplete = vi.fn();
+    const onAttempt = vi.fn();
     render(
       <PreschoolActivityPlayer
         activity={traceB}
         language="fr"
         hasNext
         onComplete={onComplete}
+        onAttempt={onAttempt}
         onSkip={vi.fn()}
         onExit={vi.fn()}
       />,
@@ -102,7 +105,30 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     expect(speak).toHaveBeenCalledWith('Bravo d’avoir essayé. On peut recommencer.');
     expect(speak.mock.calls.some((call) => String(call[0]).includes('Tu as écrit'))).toBe(false);
     vi.advanceTimersByTime(1300);
-    expect(onComplete).toHaveBeenCalledWith('tried');
+    expect(onAttempt).toHaveBeenCalledWith('tried');
+    expect(onComplete).not.toHaveBeenCalled();
+    expect(screen.getByRole('status')).toHaveTextContent('Tu peux continuer à tracer ou recommencer.');
+    fireEvent.click(screen.getByText('J’ai écrit'));
+    fireEvent.click(screen.getByText('J’ai écrit'));
+    act(() => vi.advanceTimersByTime(10_000));
+    expect(onComplete).toHaveBeenCalledTimes(1);
+    expect(onComplete).toHaveBeenCalledWith('wrote');
+    vi.useRealTimers();
+  });
+
+  it('ignores the previous activity widget after navigating to a new one', () => {
+    vi.useFakeTimers();
+    const onComplete = vi.fn();
+    const props = { language: 'fr' as const, hasNext: true, onComplete, onSkip: vi.fn(), onExit: vi.fn() };
+    const { rerender, unmount } = render(<PreschoolActivityPlayer activity={traceB} {...props} />);
+    const retiredButton = screen.getByText('J’ai écrit');
+    fireEvent.click(retiredButton);
+    rerender(<PreschoolActivityPlayer activity={activity} {...props} />);
+    act(() => vi.advanceTimersByTime(10_000));
+    expect(onComplete).not.toHaveBeenCalled();
+    unmount();
+    act(() => vi.advanceTimersByTime(10_000));
+    expect(onComplete).not.toHaveBeenCalled();
     vi.useRealTimers();
   });
 });

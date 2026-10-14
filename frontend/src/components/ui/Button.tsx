@@ -27,7 +27,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
 
 const VARIANT_STYLES: Record<ButtonVariant, string> = {
   primary: 'bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white border-[var(--brand-emerald-dark)]',
-  accent: 'bg-[var(--brand-amber)] hover:bg-[var(--brand-amber-dark)] text-white border-[var(--brand-amber-dark)]',
+  accent: 'bg-[var(--brand-amber)] hover:bg-amber-400 text-amber-950 border-[var(--brand-amber-dark)]',
   info: 'bg-[var(--brand-blue)] hover:bg-[var(--brand-blue-dark)] text-white border-[var(--brand-blue-dark)]',
   danger: 'bg-[var(--brand-coral)] hover:bg-[var(--brand-coral-dark)] text-white border-[var(--brand-coral-dark)]',
   ghost: 'bg-transparent hover:bg-[var(--app-card-subtle)] text-[var(--app-text)] border-transparent',

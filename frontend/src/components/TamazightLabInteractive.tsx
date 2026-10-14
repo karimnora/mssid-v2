@@ -169,7 +169,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
 
         {onBack && (
           <button
-            onClick={onBack}
+            data-activity-navigation="true" onClick={onBack}
             aria-label="العودة للأدوات"
             className="hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl transition-all border border-white/30 shadow-sm cursor-pointer"
           >

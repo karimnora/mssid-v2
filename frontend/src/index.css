@@ -94,6 +94,13 @@ body {
   margin: 0;
 }
 
+/* Keep the five header controls reachable on small phones without shrinking their height. */
+@media (max-width: 359px) {
+  [data-nav-child] .hit-target { min-width: 48px; }
+  [data-nav-child] > div { padding-inline: 8px; column-gap: 4px; }
+  [data-nav-child] [data-nav-grade-readout] { padding-inline: 8px; }
+}
+
 .theme-dark, .theme-midnight {
   --app-bg: #0f172a;
   --app-text: #f8fafc;
@@ -112,6 +119,16 @@ body {
 
 .theme-dark .app-logo-dz {
   color: #6ee7b7;
+}
+
+/* The app's manual theme can differ from the OS prefers-color-scheme used by dark: utilities. */
+.theme-dark [data-companion-info] :is(.text-amber-900, .text-amber-800),
+.theme-midnight [data-companion-info] :is(.text-amber-900, .text-amber-800) {
+  color: #fcd34d;
+}
+.theme-dark [data-companion-info] :is(.text-slate-600, .text-slate-700),
+.theme-midnight [data-companion-info] :is(.text-slate-600, .text-slate-700) {
+  color: #cbd5e1;
 }
 
 .theme-sepia {
@@ -589,7 +606,46 @@ body {
 @media print {
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 10mm;
+  }
+  @page certificate {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+  body:has(.certificate-print-modal),
+  .certificate-print-modal {
+    page: certificate;
+  }
+  /* Hidden screen chrome must not reserve space in the printed document. Flatten
+     the entire ancestor chain: mobile headers, modal padding and motion transforms
+     otherwise move the first printed paragraph far below the top of the page. */
+  body:has(.printable-sheet, .printable-certificate) {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+  body *:has(.printable-sheet, .printable-certificate) {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+    contain: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    gap: 0 !important;
+  }
+  body:has(.printable-sheet, .printable-certificate)
+    *:not(.printable-sheet, .printable-sheet *, .printable-certificate, .printable-certificate *):not(:has(.printable-sheet, .printable-certificate)) {
+    display: none !important;
   }
   body * {
     visibility: hidden;
@@ -602,20 +658,28 @@ body {
   }
   .printable-sheet,
   .printable-certificate {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    margin: 0;
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    box-sizing: border-box;
+    margin: 0 !important;
+    opacity: 1 !important;
     box-shadow: none !important;
     color: #0f172a !important;
   }
   .printable-sheet {
-    padding: 12mm !important;
+    padding: 0 !important;
     background: #ffffff !important;
     border: none !important;
     border-radius: 0 !important;
   }
   .printable-certificate {
+    position: relative !important;
+    min-height: 185mm !important;
+    overflow: hidden !important;
     padding: 10mm !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -648,7 +712,11 @@ body {
      the hub behind the modal does not occupy blank A4 pages, then flatten the overlay itself
      — same clip trap as certificates: `fixed` + `overflow-hidden` + `max-h-[94vh]` would
      otherwise slice `.printable-sheet { position: absolute }` down to a sliver. */
-  body:has(.sheet-print-modal) > :not(.sheet-print-modal) {
+  body:has(.sheet-print-modal) > :not(.sheet-print-modal):not(:has(.sheet-print-modal)) {
+    display: none !important;
+  }
+  body:has(.sheet-print-modal) .printable-sheet:not(.sheet-print-modal .printable-sheet),
+  body:has(.certificate-print-modal) .printable-sheet {
     display: none !important;
   }
   .sheet-print-modal {
@@ -680,15 +748,10 @@ body {
     background: none !important;
     backdrop-filter: none !important;
   }
-  /* .printable-certificate is normally `position: absolute` (rule above) so it fills the page
-     regardless of where it sits in the DOM — that only works with a positioned ancestor to
-     anchor to. Once the overlay right above is forced to `position: static`, nothing up the
-     ancestor chain is positioned any more, so the absolutely-positioned certificate's containing
-     block collapses and its own overflow-hidden clips everything but a sliver. Reverting it to
-     normal flow here sidesteps that: its own sizing classes (max-w/min-h) already render it
-     correctly on screen, so they render it correctly on paper too. */
+  /* Keep the certificate in normal flow while anchoring its absolute corner decorations
+     and watermark to the certificate itself rather than the entire printed page. */
   .certificate-print-modal .printable-certificate {
-    position: static !important;
+    position: relative !important;
     inset: auto !important;
     margin: 0 auto !important;
   }
@@ -696,6 +759,26 @@ body {
   .printable-sheet[data-print-mode="subject"] .print-corrige {
     display: none !important;
     visibility: hidden !important;
+  }
+  .printable-sheet[data-print-mode] * {
+    background: transparent !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+  }
+  .printable-sheet[data-print-mode] [data-exam-exercise] > :first-child {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .printable-sheet[data-print-mode] [data-exam-exercise] {
+    orphans: 3;
+    widows: 3;
+    padding: 3mm !important;
+  }
+  .printable-sheet h1,
+  .printable-sheet h2,
+  .printable-sheet h3 {
+    break-after: avoid;
+    page-break-after: avoid;
   }
   .printable-sheet[data-print-mode="subject"] .print-answer-lines,
   .printable-sheet[data-print-mode="subject"] .print-answer-lines * {

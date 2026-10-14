@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "seq-colors-ab-prompt.mp3",
+    "texte": "أَحْمَر، أَزْرَق، أَحْمَر، أَزْرَق، أَحْمَر… مَاذَا بَعْد؟",
+    "activite": "أَحْمَر ثُمَّ أَزْرَق",
+    "activiteId": "seq-colors-ab",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "seq-colors-ab-success.mp3",
+    "texte": "الأَزْرَقُ بَعْدَ الأَحْمَر! أَحْسَنْت!",
+    "activite": "أَحْمَر ثُمَّ أَزْرَق",
+    "activiteId": "seq-colors-ab",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "seq-animals-ab-prompt.mp3",
+    "texte": "قِطَّة، كَلْب، قِطَّة، كَلْب، قِطَّة… مَاذَا بَعْد؟",
+    "activite": "قِطَّة ثُمَّ كَلْب",
+    "activiteId": "seq-animals-ab",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "seq-animals-ab-success.mp3",
+    "texte": "الكَلْبُ بَعْدَ القِطَّة! أَحْسَنْت!",
+    "activite": "قِطَّة ثُمَّ كَلْب",
+    "activiteId": "seq-animals-ab",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "seq-day-night-prompt.mp3",
+    "texte": "شَمْس، قَمَر، شَمْس، قَمَر، شَمْس… مَاذَا بَعْد؟",
+    "activite": "شَمْس ثُمَّ قَمَر",
+    "activiteId": "seq-day-night",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "seq-day-night-success.mp3",
+    "texte": "القَمَرُ بَعْدَ الشَّمْس! مُمْتَاز!",
+    "activite": "شَمْس ثُمَّ قَمَر",
+    "activiteId": "seq-day-night",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "seq-fruits-ab-prompt.mp3",
+    "texte": "تُفَّاحَة، مَوْزَة، تُفَّاحَة، مَوْزَة، تُفَّاحَة… مَاذَا بَعْد؟",
+    "activite": "تُفَّاحَة ثُمَّ مَوْزَة",
+    "activiteId": "seq-fruits-ab",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "seq-fruits-ab-success.mp3",
+    "texte": "المَوْزَةُ بَعْدَ التُّفَّاحَة!",
+    "activite": "تُفَّاحَة ثُمَّ مَوْزَة",
+    "activiteId": "seq-fruits-ab",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "seq-big-small-prompt.mp3",
+    "texte": "فِيل، فَأْر، فِيل، فَأْر، فِيل… مَاذَا بَعْد؟",
+    "activite": "فِيل ثُمَّ فَأْر",
+    "activiteId": "seq-big-small",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "seq-big-small-success.mp3",
+    "texte": "الفَأْرُ الصَّغِيرُ بَعْدَ الفِيل!",
+    "activite": "فِيل ثُمَّ فَأْر",
+    "activiteId": "seq-big-small",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "seq-transport-abb-prompt.mp3",
+    "texte": "سَيَّارَة، حَافِلَة، حَافِلَة، سَيَّارَة، حَافِلَة… مَاذَا بَعْد؟",
+    "activite": "سَيَّارَة ثُمَّ حَافِلَتَان",
+    "activiteId": "seq-transport-abb",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "seq-transport-abb-success.mp3",
+    "texte": "حَافِلَةٌ ثَانِيَة! أَحْسَنْت!",
+    "activite": "سَيَّارَة ثُمَّ حَافِلَتَان",
+    "activiteId": "seq-transport-abb",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "seq-weather-abc-prompt.mp3",
+    "texte": "شَمْس، غَيْم، مَطَر، شَمْس، غَيْم… مَاذَا بَعْد؟",
+    "activite": "شَمْس، غَيْم، مَطَر",
+    "activiteId": "seq-weather-abc",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "seq-weather-abc-success.mp3",
+    "texte": "المَطَرُ بَعْدَ الغَيْم! عَبْقَرِي!",
+    "activite": "شَمْس، غَيْم، مَطَر",
+    "activiteId": "seq-weather-abc",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "seq-numbers-inc-prompt.mp3",
+    "texte": "وَاحِد، اثْنَان، ثَلَاثَة… مَا العَدَدُ التَّالِي؟",
+    "activite": "نَعُدُّ مَعاً",
+    "activiteId": "seq-numbers-inc",
+    "moduleId": "preschool-sequences",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "seq-numbers-inc-success.mp3",
+    "texte": "أَرْبَعَة! بَطَلُ الأَعْدَاد!",
+    "activite": "نَعُدُّ مَعاً",
+    "activiteId": "seq-numbers-inc",
+    "moduleId": "preschool-sequences",
+    "type": "success"
+  }
+]

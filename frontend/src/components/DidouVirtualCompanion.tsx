@@ -374,6 +374,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
   // EMBEDDED DASHBOARD COMPACT & RICH HERO CARD
   return (
     <div
+      data-companion-card
       className="w-full bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-rose-500/10 border-2 border-amber-400/40 rounded-3xl p-4 sm:p-5 text-slate-900 dark:text-slate-100 shadow-xl relative overflow-hidden backdrop-blur-sm"
       dir={direction}
     >
@@ -407,7 +408,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* LEFT / AVATAR WITH STAGES & MOOD */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 min-w-0 w-full">
           <div className="relative">
             {/* FLOATING HEARTS ON CLICK */}
             {floatingHearts.map((h) => (
@@ -440,8 +441,8 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
           </div>
 
           {/* PET INFO & ENERGY GAUGE */}
-          <div className="space-y-1 text-start">
-            <div className="flex items-center gap-2">
+          <div data-companion-info className="space-y-1 text-start min-w-0 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-base sm:text-lg font-black text-amber-900 dark:text-amber-300">
                 {isFrench ? `Didou (${species === 'eagle' ? 'Aiglon' : 'Fennec'})` : `صديقك ديدو (${species === 'eagle' ? 'عقاب الأطلس' : 'الفنك الذكي'})`}
               </h2>

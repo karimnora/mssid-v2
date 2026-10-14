@@ -33,7 +33,7 @@ export const AssessSwitcher: React.FC<AssessSwitcherProps> = ({
         onClick={onClick}
         aria-current={isOn ? 'page' : undefined}
         className={`hit-target min-h-12 flex-1 rounded-2xl text-sm font-extrabold px-3 cursor-pointer ${
-          isOn ? `${activeClass} text-white shadow-md` : 'text-[var(--app-text-muted)]'
+          isOn ? `${activeClass} shadow-md` : 'text-[var(--app-text-muted)]'
         }`}
       >
         {label}
@@ -47,8 +47,8 @@ export const AssessSwitcher: React.FC<AssessSwitcherProps> = ({
       data-assess-switcher="true"
     >
       <div className="flex gap-1.5 rounded-3xl border-2 border-[#E7E2D7] bg-white p-1.5">
-        {pill('exams', t('navExamsShort'), onOpenExams, 'bg-[var(--brand-blue)]')}
-        {pill('challenges', t('navChallengesShort'), onOpenChallenges, 'bg-[var(--brand-amber)]')}
+        {pill('exams', t('navExamsShort'), onOpenExams, 'bg-[var(--brand-blue)] text-white')}
+        {pill('challenges', t('navChallengesShort'), onOpenChallenges, 'bg-[var(--brand-amber)] text-amber-950')}
       </div>
     </div>
   );

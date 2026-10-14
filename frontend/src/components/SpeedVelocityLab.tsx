@@ -553,7 +553,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
         <div className="flex items-center gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              data-activity-navigation="true" onClick={onBack}
               aria-label={t('العودة للدروس والمختبرات', 'Retour aux outils')}
               className="hit-target flex items-center justify-center rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-lg border border-slate-700 active:scale-95 transition-all"
             >
@@ -588,7 +588,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
           <div className="flex bg-slate-950 p-1 rounded-2xl border border-slate-800">
             <button
               onClick={() => { setViewPerspective('2d'); playTone(450); }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all ${
+              className={`min-h-12 min-w-12 px-3 py-1.5 rounded-xl text-xs font-black transition-all ${
                 viewPerspective === '2d' ? 'bg-amber-500 text-slate-950 shadow-md' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -596,7 +596,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             </button>
             <button
               onClick={() => { setViewPerspective('3d'); playTone(600); }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all ${
+              className={`min-h-12 min-w-12 px-3 py-1.5 rounded-xl text-xs font-black transition-all ${
                 viewPerspective === '3d' ? 'bg-amber-500 text-slate-950 shadow-md' : 'text-slate-400 hover:text-slate-200'
               }`}
             >

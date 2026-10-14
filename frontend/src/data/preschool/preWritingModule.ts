@@ -1,11 +1,12 @@
-import { PreschoolModule } from './types';
+import { PreschoolActivity, PreschoolModule } from './types';
+import { PRE_WRITING_AUDIO_CLIPS } from './preWritingAudio';
 
 /**
  * "خُطُوطِي التَّحْضِيرِيَّةُ" — Graphisme préparatoire (3-5 ans).
  * Trace a concrete object (arbre, serpent, cerf-volant…) — never "ligne verticale"
  * as an abstract label a preschooler cannot picture.
  */
-export const PRE_WRITING_MODULE: PreschoolModule = {
+const PRE_WRITING_CATALOG: PreschoolModule = {
   id: 'preschool-pre-writing',
   domain: 'writing',
   icon: '✏️',
@@ -264,4 +265,22 @@ export const PRE_WRITING_MODULE: PreschoolModule = {
       },
     },
   ],
+};
+
+export const PRE_WRITING_MODULE: PreschoolModule = {
+  ...PRE_WRITING_CATALOG,
+  activities: PRE_WRITING_CATALOG.activities.map(activity => ({
+    ...activity,
+    i18n: Object.fromEntries((['ar', 'fr', 'en'] as const).map(language => {
+      const audio = PRE_WRITING_AUDIO_CLIPS[language]?.[activity.id];
+      return [language, {
+        ...activity.i18n[language],
+        ...(audio ? {
+          promptAudioSrc: audio.prompt,
+          successAudioSrc: audio.success,
+          successAudioDurationMs: audio.successDurationMs,
+        } : {}),
+      }];
+    })) as PreschoolActivity['i18n'],
+  })),
 };

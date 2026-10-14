@@ -33,6 +33,7 @@ import { TermsOfServiceModal } from './components/TermsOfServiceModal';
 import { ToolsHubView } from './components/ToolsHubView';
 import { useFeatureFlag } from './hooks/useFeatureFlag';
 import { useAppNavigation } from './hooks/useAppNavigation';
+import { ActivityExitProvider, useActivityExit } from './context/ActivityExitContext';
 import { useUserProgress } from './hooks/useUserProgress';
 import { useAppModals } from './hooks/useAppModals';
 import { isLessonLocked as isLessonLockedCheck } from './utils/trimesterAccess';
@@ -82,6 +83,11 @@ const THEME_STORAGE_KEY = 'mssid_theme';
 const THEME_MANUAL_KEY = 'mssid_theme_manual';
 
 export default function App() {
+  return <ActivityExitProvider><AppContent /></ActivityExitProvider>;
+}
+
+function AppContent() {
+  const { requestLeave } = useActivityExit();
   const { authUser, isAuthLoading } = useAuth();
   const { direction, t, locale } = useLocaleContext();
   const modals = useAppModals();
@@ -244,8 +250,10 @@ export default function App() {
 
   /** Ouvre un lab en plein écran (catalogue fermé). */
   const openLabFocused = (toolId: SubjectId) => {
-    nav.setLabsCatalogOpen(false);
-    nav.openLab(toolId);
+    requestLeave(() => {
+      nav.setLabsCatalogOpen(false);
+      nav.openLab(toolId);
+    });
   };
 
   /** Onglet / pôle « المختبرات » → liste des labs, pas un lab auto. */
@@ -365,7 +373,7 @@ export default function App() {
         <AndroidUpdateBanner />
         <Suspense fallback={<LoadingFallback label={t('navigation', 'loadingPreschool')} minHeight="100vh" />}>
           <PreschoolApp
-            onExit={() => { nav.setIsPreschoolActive(false); nav.goHome(); }}
+            onExit={() => requestLeave(() => { nav.setIsPreschoolActive(false); nav.goHome(); })}
             onOpenAuth={(mode, reason) => modals.openAuth(mode, reason)}
             isAuthModalOpen={modals.isAuthModalOpen}
           />
@@ -483,7 +491,7 @@ export default function App() {
                   {(nav.mainCategory === 'exams' ? OFFICIAL_EXAMS_LIST : CHALLENGES_TAB_LIST).map((subj) => {
                       const IconComp = ICON_MAP[subj.icon] || BookOpen;
                       const isSelected = nav.selectedSubject === subj.id;
-                      const activeClass = nav.mainCategory === 'exams' ? 'bg-[var(--brand-blue)] text-white' : 'bg-[var(--brand-amber)] text-white';
+                      const activeClass = nav.mainCategory === 'exams' ? 'bg-[var(--brand-blue)] text-white' : 'bg-[var(--brand-amber)] text-amber-950';
                       return (
                         <motion.button
                           key={subj.id}
@@ -522,6 +530,7 @@ export default function App() {
               />
             ) : nav.mainCategory === 'labs' && (!isLabSubjectId(nav.selectedSubject) || nav.labsCatalogOpen) ? null : (
               <ActiveWorkspace
+                key={`${nav.selectedSubject}:${nav.grade}:${nav.selectedLesson?.id ?? ''}`}
                 grade={nav.grade}
                 selectedSubject={nav.selectedSubject}
                 selectedLesson={nav.selectedLesson}
@@ -533,8 +542,10 @@ export default function App() {
                 onSelectLesson={nav.handleSelectLesson}
                 onClearLesson={handlePrimaryBack}
                 onBackToCourses={() => {
-                  nav.setSelectedLesson(null);
-                  nav.setMainCategory('courses');
+                  requestLeave(() => {
+                    nav.setSelectedLesson(null);
+                    nav.setMainCategory('courses');
+                  });
                 }}
                 onBackToLabsCatalog={handlePrimaryBack}
                 onOpenLab={openLabFocused}
@@ -651,17 +662,23 @@ export default function App() {
         onCloseLockedLesson={() => setLockedLesson(null)}
         onSelectLesson={nav.handleSelectLesson}
         onRestoreLesson={(lesson) => {
-          nav.setGrade(lesson.grade);
-          nav.handleSelectLesson(lesson);
+          requestLeave(() => {
+            nav.setGrade(lesson.grade);
+            nav.handleSelectLesson(lesson);
+          });
         }}
         onStartHomework={(subject) => {
-          nav.setMainCategory('courses');
-          nav.setSelectedSubject(subject);
-          nav.setIsHomeActive(false);
+          requestLeave(() => {
+            nav.setMainCategory('courses');
+            nav.setSelectedSubject(subject);
+            nav.setIsHomeActive(false);
+          });
         }}
         onGradeChange={(g) => {
-          nav.handleGradeChange(g);
-          if (authUser) AuthService.updateGrade(g);
+          requestLeave(() => {
+            nav.handleGradeChange(g);
+            if (authUser) AuthService.updateGrade(g);
+          });
         }}
         onOpenAuthModal={() => modals.openAuth('login')}
         onEnterPreschool={() => nav.setIsPreschoolActive(true)}
@@ -692,8 +709,10 @@ export default function App() {
         selectedSubject={nav.selectedSubject}
         activeTab={nav.mobileTab}
         onSelectTab={(tab) => {
-          nav.handleMobileTab(tab);
-          if (tab === 'games') openLabsCatalog();
+          requestLeave(() => {
+            nav.handleMobileTab(tab);
+            if (tab === 'games') openLabsCatalog();
+          });
         }}
         onClearSelectedLesson={() => nav.setSelectedLesson(null)}
         onOpenAiTutor={openAiTutor}

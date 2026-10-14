@@ -4,6 +4,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { CourseLesson } from '../types';
 import { LessonViewer } from './LessonViewer';
 import { LocaleProvider } from '../context/LocaleContext';
+import { ActivityExitProvider } from '../context/ActivityExitContext';
 
 const lesson: CourseLesson = {
   id: 'math-1ap-t1-spatial-relations',
@@ -26,13 +27,13 @@ const lesson: CourseLesson = {
 
 const renderViewer = () =>
   render(
-    <LocaleProvider>
+    <LocaleProvider><ActivityExitProvider>
       <LessonViewer
         lesson={lesson}
         onBack={vi.fn()}
         onCompleteQuiz={vi.fn()}
       />
-    </LocaleProvider>,
+    </ActivityExitProvider></LocaleProvider>,
   );
 
 describe('LessonViewer — navigation after lesson content', () => {
@@ -46,9 +47,9 @@ describe('LessonViewer — navigation after lesson content', () => {
     };
 
     const { container } = render(
-      <LocaleProvider>
+      <LocaleProvider><ActivityExitProvider>
         <LessonViewer lesson={lesson2ap} onBack={vi.fn()} onCompleteQuiz={vi.fn()} />
-      </LocaleProvider>,
+      </ActivityExitProvider></LocaleProvider>,
     );
 
     const contentPanel = container.querySelector('#lesson-active-step-container')!;
@@ -67,9 +68,9 @@ describe('LessonViewer — navigation after lesson content', () => {
     };
 
     const { container } = render(
-      <LocaleProvider>
+      <LocaleProvider><ActivityExitProvider>
         <LessonViewer lesson={lesson5ap} onBack={vi.fn()} onCompleteQuiz={vi.fn()} />
-      </LocaleProvider>,
+      </ActivityExitProvider></LocaleProvider>,
     );
 
     const contentPanel = container.querySelector('#lesson-active-step-container')!;
@@ -130,9 +131,9 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
 
   const renderQuizLesson = (onBack = vi.fn()) => {
     render(
-      <LocaleProvider>
+      <LocaleProvider><ActivityExitProvider>
         <LessonViewer lesson={quizLesson} grade="3AP" onBack={onBack} onCompleteQuiz={vi.fn()} />
-      </LocaleProvider>,
+      </ActivityExitProvider></LocaleProvider>,
     );
     return onBack;
   };
@@ -152,7 +153,7 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
     fireEvent.click(screen.getByText('قائمة الدروس'));
 
     expect(onBack).not.toHaveBeenCalled();
-    expect(screen.getByText('هل تريد الخروج من التمرين؟')).toBeInTheDocument();
+    expect(screen.getByText('هل تريد الخروج؟')).toBeInTheDocument();
   });
 
   it('actually leaves once the child confirms', async () => {
@@ -160,7 +161,7 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
     await answerFirstQuestionCorrectly();
     fireEvent.click(screen.getByText('قائمة الدروس'));
 
-    fireEvent.click(screen.getByText('خروج على أي حال'));
+    fireEvent.click(screen.getByText('خروج'));
 
     expect(onBack).toHaveBeenCalledTimes(1);
   });
@@ -170,10 +171,10 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
     await answerFirstQuestionCorrectly();
     fireEvent.click(screen.getByText('قائمة الدروس'));
 
-    fireEvent.click(screen.getByText('البقاء في التمرين'));
+    fireEvent.click(screen.getByText('متابعة'));
 
     expect(onBack).not.toHaveBeenCalled();
-    expect(screen.queryByText('هل تريد الخروج من التمرين؟')).not.toBeInTheDocument();
+    expect(screen.queryByText('هل تريد الخروج؟')).not.toBeInTheDocument();
   });
 
   it('never blocks leaving before any question has been answered', () => {
@@ -208,19 +209,31 @@ describe('LessonViewer — practice-exercise-in-progress exit guard', () => {
 
   const renderPracticeLesson = (onBack = vi.fn()) => {
     render(
-      <LocaleProvider>
+      <LocaleProvider><ActivityExitProvider>
         <LessonViewer lesson={practiceLesson} grade="3AP" onBack={onBack} onCompleteQuiz={vi.fn()} />
-      </LocaleProvider>,
+      </ActivityExitProvider></LocaleProvider>,
     );
     return onBack;
   };
 
   const answerFirstExerciseCorrectly = async () => {
     fireEvent.click(screen.getByText('أتدرب (2)'));
-    await waitFor(() => expect(screen.getByText('كم يساوي 5-2؟')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(/كم يساوي .*5-2.*؟/)).toBeInTheDocument());
     fireEvent.click(screen.getByText('ثلاثة'));
     fireEvent.click(screen.getAllByText('تحقق من الإجابة')[0]);
   };
+
+  it('protects an answer before it has been checked', async () => {
+    const onBack = renderPracticeLesson();
+    fireEvent.click(screen.getByText('أتدرب (2)'));
+    await waitFor(() => expect(screen.getByText(/كم يساوي .*5-2.*؟/)).toBeInTheDocument());
+    fireEvent.click(screen.getByText('ثلاثة'));
+    fireEvent.click(screen.getByText('قائمة الدروس'));
+    expect(onBack).not.toHaveBeenCalled();
+    expect(screen.getByRole('dialog')).toBeVisible();
+    fireEvent.click(screen.getByText('متابعة'));
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
 
   it('asks for confirmation before leaving once one (but not all) exercises are answered correctly', async () => {
     const onBack = renderPracticeLesson();
@@ -229,7 +242,7 @@ describe('LessonViewer — practice-exercise-in-progress exit guard', () => {
     fireEvent.click(screen.getByText('قائمة الدروس'));
 
     expect(onBack).not.toHaveBeenCalled();
-    expect(screen.getByText('هل تريد الخروج من التمرين؟')).toBeInTheDocument();
+    expect(screen.getByText('هل تريد الخروج؟')).toBeInTheDocument();
   });
 
   it('actually leaves once the child confirms', async () => {
@@ -237,7 +250,7 @@ describe('LessonViewer — practice-exercise-in-progress exit guard', () => {
     await answerFirstExerciseCorrectly();
     fireEvent.click(screen.getByText('قائمة الدروس'));
 
-    fireEvent.click(screen.getByText('خروج على أي حال'));
+    fireEvent.click(screen.getByText('خروج'));
 
     expect(onBack).toHaveBeenCalledTimes(1);
   });
@@ -278,9 +291,9 @@ describe('LessonViewer — 3AP complete pedagogical path', () => {
     };
 
     const { container } = render(
-      <LocaleProvider>
+      <LocaleProvider><ActivityExitProvider>
         <LessonViewer lesson={lesson3ap} grade="3AP" onBack={vi.fn()} onCompleteQuiz={vi.fn()} />
-      </LocaleProvider>,
+      </ActivityExitProvider></LocaleProvider>,
     );
 
     const strip = container.querySelector('[data-lesson-step-count]');

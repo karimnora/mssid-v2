@@ -20,10 +20,10 @@ export const PDI = '\u2069';
 // \n): this runs after the newline-insertion passes above, and a run must never bridge across an
 // already-inserted line break \u2014 otherwise an unrelated genuine list marker on the next line (e.g.
 // "2)") gets swallowed into the previous line's math isolate.
-const MATH_RUN = /[0-9][0-9.,%\u00B0+\-\u00D7\u00F7/=<>() \t]*[0-9%\u00B0)]/g;
+const MATH_RUN = /(?:\([ \t]*)*[0-9٠-٩][0-9٠-٩.,٫٬%\u00B0+x*\-\u2212\u00D7\u00F7/=<>≤≥() \t]*[0-9٠-٩%\u00B0)]/g;
 // A lone number ("142,800") has no bidi-reordering risk by itself \u2014 only wrap runs that actually
 // combine multiple terms with an operator/comparison symbol.
-const HAS_OPERATOR = /[+\-\u00D7\u00F7/=<>]/;
+const HAS_OPERATOR = /[+x*\-\u2212\u00D7\u00F7/=<>≤≥]/;
 
 /**
  * Wraps embedded math expressions (e.g. "45,618 = (4 \u00D7 10,000) + (5 \u00D7 1,000) + ...") in bidi
@@ -34,7 +34,18 @@ const HAS_OPERATOR = /[+\-\u00D7\u00F7/=<>]/;
  * checking their answer (revue utilisateur : r\u00E9ponses des examens mal affich\u00E9es).
  */
 export function isolateMathRuns(text: string): string {
-  return text.replace(MATH_RUN, (run) => (HAS_OPERATOR.test(run) ? `${LRI}${run}${PDI}` : run));
+  return text.replace(MATH_RUN, (run) => {
+    if (!HAS_OPERATOR.test(run)) return run;
+    // A numbered answer is Arabic page structure, not an operand in its equation.
+    const marker = run.match(/^[0-9٠-٩]{1,2}\)[ \t]+/)?.[0] ?? '';
+    let expression = run.slice(marker.length);
+    let suffix = '';
+    // Keep the enclosing Arabic sentence's closing parenthesis outside the LTR island.
+    while (expression.endsWith(')') && (expression.match(/\)/g)?.length ?? 0) > (expression.match(/\(/g)?.length ?? 0)) {
+      expression = expression.slice(0, -1); suffix = `)${suffix}`;
+    }
+    return `${marker}${LRI}${expression}${PDI}${suffix}`;
+  });
 }
 
 /** "2 / 4" that cannot visually reverse to "4 / 2" inside a surrounding RTL sentence. */

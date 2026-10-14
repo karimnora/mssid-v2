@@ -126,7 +126,10 @@ class SpringBootApiService {
 
   /** Permanent account deletion — see UserService.deleteAccount for what gets cleaned up server-side. */
   public async deleteAccount(): Promise<void> {
-    await this.request('/v1/users/me', { method: 'DELETE' });
+    const result = await this.request('/v1/users/me', { method: 'DELETE' });
+    if (result.error || (result.status !== undefined && result.status >= 400)) {
+      throw new Error(result.error || 'Impossible de supprimer le compte. Veuillez réessayer.');
+    }
   }
 
   // SEC-08: soft email verification — never blocks app usage, just a discreet reminder + the code

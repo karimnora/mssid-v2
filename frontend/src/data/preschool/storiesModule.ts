@@ -1,3 +1,4 @@
+import { withRecordedAudio } from './withRecordedAudio';
 import { PreschoolModule, PreschoolStoryFrame } from './types';
 
 function frames(
@@ -12,7 +13,7 @@ function frames(
   ];
 }
 
-export const STORIES_MODULE: PreschoolModule = {
+const STORIES_CATALOG: PreschoolModule = {
   id: 'preschool-stories',
   domain: 'creative',
   icon: '📖',
@@ -130,3 +131,5 @@ export const STORIES_MODULE: PreschoolModule = {
     },
   ],
 };
+
+export const STORIES_MODULE: PreschoolModule = withRecordedAudio(STORIES_CATALOG);

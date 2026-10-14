@@ -47,7 +47,8 @@ export default defineConfig({
     // Playwright's E2E specs (e2e/*.spec.ts) match vitest's default *.spec.ts glob but use
     // @playwright/test's own test()/expect() runtime — must stay excluded, run separately via
     // `npm run test:e2e`.
-    exclude: [...configDefaults.exclude, 'e2e/**'],
+    // Generated audit reproductions in build assert historical bugs, not release behavior.
+    exclude: [...configDefaults.exclude, 'e2e/**', 'build/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],

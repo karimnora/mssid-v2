@@ -64,7 +64,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-2xl">{allDone ? '✅' : '⚡'}</span>
-            <span className="text-white font-black text-base">{L.title}</span>
+            <span className="text-slate-900 font-black text-base">{L.title}</span>
           </div>
 
           <AnimatePresence mode="wait">
@@ -75,7 +75,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
                 className="flex items-center gap-1 bg-white/25 rounded-2xl px-3 py-1"
               >
                 <span className="text-lg">🔥</span>
-                <span className="text-white font-black text-sm">{streak}{L.days}</span>
+                <span className="text-slate-900 font-black text-sm">{streak}{L.days}</span>
               </motion.div>
             )}
           </AnimatePresence>
@@ -98,7 +98,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
                     : 'bg-white/20 hover:bg-white/30 active:bg-white/40'}`}
               >
                 <span className="text-2xl">{isDone ? '✅' : activityPathIcon(item.activity, language)}</span>
-                <span className="text-[10px] font-bold text-white/90 text-center leading-tight line-clamp-2">
+                <span className="text-[10px] font-bold text-slate-900 text-center leading-tight line-clamp-2">
                   {title}
                 </span>
               </motion.button>
@@ -118,7 +118,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
             />
           </div>
 
-          <span className="text-white font-black text-sm shrink-0">{done}/{total}</span>
+          <span className="text-slate-900 font-black text-sm shrink-0" dir="ltr">{done}/{total}</span>
 
           {!allDone && nextItem && (
             <motion.button
@@ -132,7 +132,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
           )}
 
           {allDone && (
-            <span className="text-white font-black text-xs shrink-0">🌟 +{streak > 1 ? streak : '1'}</span>
+            <span className="text-slate-900 font-black text-xs shrink-0">🌟 +{streak > 1 ? streak : '1'}</span>
           )}
         </div>
       </div>

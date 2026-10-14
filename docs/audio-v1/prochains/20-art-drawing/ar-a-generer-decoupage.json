@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "art-crayon-path-prompt.mp3",
+    "texte": "اِسْحَبِ القَلَمَ: وَجْه، شَمْس، زَهْرَة، بَيْت، فَنَك، ثُمَّ الكُسْكُس!",
+    "activite": "قَلَمِي المُلَوِّن",
+    "activiteId": "art-crayon-path",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "art-crayon-path-success.mp3",
+    "texte": "دَفْتَرُ الرَّسْمِ جَاهِز! أَحْسَنْت!",
+    "activite": "قَلَمِي المُلَوِّن",
+    "activiteId": "art-crayon-path",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "art-coloring-face-prompt.mp3",
+    "texte": "اِخْتَرْ لَوْناً وَالمِسِ الوَجْهَ وَالعَيْنَيْنِ وَالفَم!",
+    "activite": "لَوِّنِ الوَجْه",
+    "activiteId": "art-coloring-face",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "art-coloring-face-success.mp3",
+    "texte": "وَجْهٌ جَمِيل! أَنْتَ فَنَّان!",
+    "activite": "لَوِّنِ الوَجْه",
+    "activiteId": "art-coloring-face",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "art-coloring-sun-prompt.mp3",
+    "texte": "لَوِّنِ الشَّمْسَ! المِسِ الدَّائِرَةَ وَالأَشِعَّة!",
+    "activite": "لَوِّنِ الشَّمْس",
+    "activiteId": "art-coloring-sun",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "art-coloring-sun-success.mp3",
+    "texte": "شَمْسُكَ تُضِيء! رَائِع!",
+    "activite": "لَوِّنِ الشَّمْس",
+    "activiteId": "art-coloring-sun",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "art-coloring-flower-prompt.mp3",
+    "texte": "لَوِّنِ الزَّهْرَة! البَتَلَاتُ وَالوَسَطُ وَالسَّاق!",
+    "activite": "لَوِّنِ الزَّهْرَة",
+    "activiteId": "art-coloring-flower",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "art-coloring-flower-success.mp3",
+    "texte": "زَهْرَةٌ رَائِعَة!",
+    "activite": "لَوِّنِ الزَّهْرَة",
+    "activiteId": "art-coloring-flower",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "art-coloring-house-prompt.mp3",
+    "texte": "لَوِّنِ البَيْت! السَّقْفُ وَالجِدَارُ وَالبَابُ وَالنَّافِذَة!",
+    "activite": "لَوِّنِ البَيْت",
+    "activiteId": "art-coloring-house",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "art-coloring-house-success.mp3",
+    "texte": "بَيْتٌ جَمِيل!",
+    "activite": "لَوِّنِ البَيْت",
+    "activiteId": "art-coloring-house",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "art-coloring-fennec-prompt.mp3",
+    "texte": "لَوِّنِ الفَنَكَ! آذانٌ كَبِيرَةٌ، ثَعْلَبُ صَحْرَائِنَا!",
+    "activite": "لَوِّنِ الفَنَك",
+    "activiteId": "art-coloring-fennec",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "art-coloring-fennec-success.mp3",
+    "texte": "فَنَكٌ رَائِع!",
+    "activite": "لَوِّنِ الفَنَك",
+    "activiteId": "art-coloring-fennec",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "art-coloring-camel-prompt.mp3",
+    "texte": "لَوِّنِ الجَمَل! سَفِينَةُ الصَّحْرَاءِ وَسَنَامُهُ!",
+    "activite": "لَوِّنِ الجَمَل",
+    "activiteId": "art-coloring-camel",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "art-coloring-camel-success.mp3",
+    "texte": "جَمَلٌ قَوِي!",
+    "activite": "لَوِّنِ الجَمَل",
+    "activiteId": "art-coloring-camel",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "art-coloring-couscous-prompt.mp3",
+    "texte": "لَوِّنِ طَبَقَ الكُسْكُس! القِدْرُ وَالغِطَاءُ وَالطَّعَام!",
+    "activite": "لَوِّنِ الكُسْكُس",
+    "activiteId": "art-coloring-couscous",
+    "moduleId": "preschool-art-drawing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "art-coloring-couscous-success.mp3",
+    "texte": "شَهِيّ! طَبَقُكَ جَاهِز!",
+    "activite": "لَوِّنِ الكُسْكُس",
+    "activiteId": "art-coloring-couscous",
+    "moduleId": "preschool-art-drawing",
+    "type": "success"
+  }
+]

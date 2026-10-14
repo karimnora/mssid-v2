@@ -78,7 +78,7 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              data-activity-navigation="true" onClick={onBack}
               aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >
@@ -119,9 +119,10 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
           </button>
         </div>
 
+        <div className="overflow-x-auto pb-2" tabIndex={0} aria-label="شبكة المساحة والمحيط">
         <div
-          className="grid gap-1 mx-auto w-fit"
-          style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, minmax(0, 1fr))` }}
+          className="grid gap-1 mx-auto w-max"
+          style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 2rem)` }}
         >
           {Array.from({ length: GRID_SIZE }, (_, r) =>
             Array.from({ length: GRID_SIZE }, (_, c) => {
@@ -132,13 +133,14 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
                   onClick={() => toggleCell(r, c)}
                   aria-label={`مربع الصف ${r + 1} العمود ${c + 1}${isFilled ? ' ممتلئ' : ' فارغ'}`}
                   aria-pressed={isFilled}
-                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-md border transition-all cursor-pointer ${
+                  className={`w-8 h-8 rounded-md border transition-all cursor-pointer ${
                     isFilled ? 'bg-emerald-500 border-emerald-600 shadow-xs' : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] hover:bg-emerald-100'
                   }`}
                 />
               );
             })
           )}
+        </div>
         </div>
       </div>
 

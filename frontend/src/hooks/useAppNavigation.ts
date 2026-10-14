@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useActivityExit } from '../context/ActivityExitContext';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import {
   CHALLENGES_TAB_LIST,
@@ -46,6 +47,7 @@ function labOrFallback(toolId: SubjectId | undefined, grade: PrimaryGrade): Subj
 }
 
 type HistoryNavState = {
+  mssidHistoryIndex?: number;
   isHomeActive: boolean;
   mainCategory: MainCategory;
   selectedSubject: SubjectId;
@@ -83,6 +85,12 @@ export function useAppNavigation(options: {
   isLabFreeForGuest?: (toolId: SubjectId) => boolean;
   onGuestBlocked?: () => void;
 }) {
+  const exitGuard = useActivityExit();
+  const guarded = <Args extends unknown[]>(action: (...args: Args) => void) =>
+    (...args: Args) => exitGuard.requestLeave(() => action(...args));
+  const historyIndexRef = useRef<number>(window.history.state?.mssidHistoryIndex ?? 0);
+  const restoringHistoryRef = useRef<(() => void) | null>(null);
+  const approvedHistoryRef = useRef(false);
   const {
     isLessonLocked,
     accountGrade,
@@ -178,11 +186,38 @@ export function useAppNavigation(options: {
 
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
-      applyHistoryState((event.state as HistoryNavState | null) ?? null);
+      if (restoringHistoryRef.current) {
+        const afterRestore = restoringHistoryRef.current;
+        restoringHistoryRef.current = null;
+        afterRestore();
+        return;
+      }
+      const state = (event.state as HistoryNavState | null) ?? null;
+      const nextIndex = state?.mssidHistoryIndex ?? historyIndexRef.current - 1;
+      if (!approvedHistoryRef.current && exitGuard.hasPendingWork()) {
+        const delta = historyIndexRef.current - nextIndex;
+        if (delta !== 0) {
+          // Restore the current entry before asking, so Continue preserves both screen and URL.
+          restoringHistoryRef.current = () => exitGuard.requestLeave(() => {
+            approvedHistoryRef.current = true;
+            window.history.go(-delta);
+          });
+          window.history.go(delta);
+          return;
+        }
+      }
+      approvedHistoryRef.current = false;
+      historyIndexRef.current = nextIndex;
+      applyHistoryState(state);
     };
+    const allowNativeHistory = () => { approvedHistoryRef.current = true; };
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, [applyHistoryState]);
+    window.addEventListener('mssid:allow-history-once', allowNativeHistory);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('mssid:allow-history-once', allowNativeHistory);
+    };
+  }, [applyHistoryState, exitGuard]);
 
   useEffect(() => {
     const view = viewFromNavState({
@@ -195,6 +230,7 @@ export function useAppNavigation(options: {
     });
     const href = toAppHref(view, grade);
     const historyState: HistoryNavState = {
+      mssidHistoryIndex: historyIndexRef.current,
       isHomeActive,
       mainCategory,
       selectedSubject,
@@ -219,6 +255,8 @@ export function useAppNavigation(options: {
       replaceNextNavigationRef.current = false;
       window.history.replaceState(historyState, '', href);
     } else if (pathChanged) {
+      historyIndexRef.current += 1;
+      historyState.mssidHistoryIndex = historyIndexRef.current;
       window.history.pushState(historyState, '', href);
     } else {
       window.history.replaceState(historyState, '', href);
@@ -365,30 +403,30 @@ export function useAppNavigation(options: {
 
   return {
     grade,
-    setGrade,
-    handleGradeChange,
+    setGrade: guarded(setGrade),
+    handleGradeChange: guarded(handleGradeChange),
     selectedSubject,
-    setSelectedSubject,
+    setSelectedSubject: guarded(setSelectedSubject),
     selectedLesson,
-    setSelectedLesson,
+    setSelectedLesson: guarded(setSelectedLesson),
     mainCategory,
-    setMainCategory,
+    setMainCategory: guarded(setMainCategory),
     mobileTab,
     isHomeActive,
-    setIsHomeActive,
+    setIsHomeActive: guarded(setIsHomeActive),
     isAdminConsoleActive,
-    setIsAdminConsoleActive,
+    setIsAdminConsoleActive: guarded(setIsAdminConsoleActive),
     isPreschoolActive,
-    setIsPreschoolActive,
+    setIsPreschoolActive: guarded(setIsPreschoolActive),
     labsCatalogOpen,
-    setLabsCatalogOpen,
-    handleSelectSubject,
-    handleMobileTab,
-    handleSelectPole,
-    handleSelectLesson,
-    goHome,
-    goBack,
-    openLab,
+    setLabsCatalogOpen: guarded(setLabsCatalogOpen),
+    handleSelectSubject: guarded(handleSelectSubject),
+    handleMobileTab: guarded(handleMobileTab),
+    handleSelectPole: guarded(handleSelectPole),
+    handleSelectLesson: guarded(handleSelectLesson),
+    goHome: guarded(goHome),
+    goBack: guarded(goBack),
+    openLab: guarded(openLab),
     validGrades: VALID_GRADES,
   };
 }

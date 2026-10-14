@@ -85,7 +85,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
-              onClick={onBack}
+              data-activity-navigation="true" onClick={onBack}
               aria-label={tCommon('backToTools')}
               className="shrink-0 hit-target flex items-center justify-center bg-white/15 hover:bg-white/25 text-white rounded-2xl border border-white/30 shadow-sm cursor-pointer"
             >

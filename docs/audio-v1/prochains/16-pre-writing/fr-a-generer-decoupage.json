@@ -1,0 +1,146 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "writing-pencil-path-prompt.mp3",
+    "texte": "Glisse le crayon : arbre, serpent, cerf-volant, éclair, vague, puis le soleil !",
+    "activite": "Mon Crayon s'échauffe",
+    "activiteId": "writing-pencil-path",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "writing-pencil-path-success.mp3",
+    "texte": "Ta main est prête ! Bravo !",
+    "activite": "Mon Crayon s'échauffe",
+    "activiteId": "writing-pencil-path",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "writing-vertical-line-prompt.mp3",
+    "texte": "Trace l'arbre ! Du haut vers le bas, comme le tronc !",
+    "activite": "Je Trace l'Arbre",
+    "activiteId": "writing-vertical-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "writing-vertical-line-success.mp3",
+    "texte": "Un bel arbre ! Ta main est ferme !",
+    "activite": "Je Trace l'Arbre",
+    "activiteId": "writing-vertical-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "writing-horizontal-line-prompt.mp3",
+    "texte": "Trace le serpent ! De gauche à droite, il rampe sur le sol !",
+    "activite": "Je Trace le Serpent",
+    "activiteId": "writing-horizontal-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "writing-horizontal-line-success.mp3",
+    "texte": "Un long serpent ! Bravo !",
+    "activite": "Je Trace le Serpent",
+    "activiteId": "writing-horizontal-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "writing-oblique-line-prompt.mp3",
+    "texte": "Trace le cerf-volant ! Il monte dans le ciel en diagonale !",
+    "activite": "Je Trace le Cerf-volant",
+    "activiteId": "writing-oblique-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "writing-oblique-line-success.mp3",
+    "texte": "Il vole dans le ciel ! Petit artiste !",
+    "activite": "Je Trace le Cerf-volant",
+    "activiteId": "writing-oblique-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "writing-zigzag-line-prompt.mp3",
+    "texte": "Trace l'éclair ! En haut, en bas, en haut, en bas, zigzag !",
+    "activite": "Je Trace l'Éclair",
+    "activiteId": "writing-zigzag-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "writing-zigzag-line-success.mp3",
+    "texte": "Un éclair rapide ! Wow !",
+    "activite": "Je Trace l'Éclair",
+    "activiteId": "writing-zigzag-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "writing-wavy-line-prompt.mp3",
+    "texte": "Trace la vague ! Douce comme la mer d'Algérie !",
+    "activite": "Je Trace la Vague",
+    "activiteId": "writing-wavy-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "writing-wavy-line-success.mp3",
+    "texte": "Une belle vague ! Notre mer !",
+    "activite": "Je Trace la Vague",
+    "activiteId": "writing-wavy-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "writing-loop-line-prompt.mp3",
+    "texte": "Trace le soleil ! Tourne, tourne, tourne, un grand rond !",
+    "activite": "Je Trace le Soleil",
+    "activiteId": "writing-loop-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "writing-loop-line-success.mp3",
+    "texte": "Un soleil brillant ! Superbe rond !",
+    "activite": "Je Trace le Soleil",
+    "activiteId": "writing-loop-line",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "writing-pencil-maze-prompt.mp3",
+    "texte": "Glisse le crayon sur la ligne jusqu'au cahier !",
+    "activite": "Le Crayon vers le Cahier",
+    "activiteId": "writing-pencil-maze",
+    "moduleId": "preschool-pre-writing",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "writing-pencil-maze-success.mp3",
+    "texte": "Le crayon est arrivé ! On écrit !",
+    "activite": "Le Crayon vers le Cahier",
+    "activiteId": "writing-pencil-maze",
+    "moduleId": "preschool-pre-writing",
+    "type": "success"
+  }
+]

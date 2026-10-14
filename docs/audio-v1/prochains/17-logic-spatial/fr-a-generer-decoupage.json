@@ -1,0 +1,182 @@
+[
+  {
+    "ordre": 1,
+    "fichier": "logic-think-path-prompt.mp3",
+    "texte": "Glisse : train long, pierre lourde, oiseau en haut, maison, ballon léger, puis le cerveau !",
+    "activite": "Mon Esprit se Promène",
+    "activiteId": "logic-think-path",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 2,
+    "fichier": "logic-think-path-success.mp3",
+    "texte": "Ton petit esprit réfléchit ! Bravo !",
+    "activite": "Mon Esprit se Promène",
+    "activiteId": "logic-think-path",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 3,
+    "fichier": "logic-long-short-prompt.mp3",
+    "texte": "Touche le train ! Le train est long, la voiture est courte !",
+    "activite": "Le Long Train",
+    "activiteId": "logic-long-short",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 4,
+    "fichier": "logic-long-short-success.mp3",
+    "texte": "Bravo ! Voici un long train !",
+    "activite": "Le Long Train",
+    "activiteId": "logic-long-short",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 5,
+    "fichier": "logic-heavy-tap-prompt.mp3",
+    "texte": "Touche la pierre ! La pierre est lourde, le ballon est léger !",
+    "activite": "La Pierre Lourde",
+    "activiteId": "logic-heavy-tap",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 6,
+    "fichier": "logic-heavy-tap-success.mp3",
+    "texte": "Oui ! La pierre est lourde !",
+    "activite": "La Pierre Lourde",
+    "activiteId": "logic-heavy-tap",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 7,
+    "fichier": "logic-above-below-prompt.mp3",
+    "texte": "Touche le ballon au-dessus de la ligne ! C’est le même ballon à deux endroits.",
+    "activite": "Le ballon au-dessus",
+    "activiteId": "logic-above-below",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 8,
+    "fichier": "logic-above-below-success.mp3",
+    "texte": "Oui ! Le ballon est au-dessus !",
+    "activite": "Le ballon au-dessus",
+    "activiteId": "logic-above-below",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 9,
+    "fichier": "logic-heavy-light-prompt.mp3",
+    "texte": "Mets la pierre et la voiture avec l'éléphant, le ballon et la feuille avec la plume !",
+    "activite": "Lourd ou Léger ?",
+    "activiteId": "logic-heavy-light",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 10,
+    "fichier": "logic-heavy-light-success.mp3",
+    "texte": "Tu connais le lourd et le léger !",
+    "activite": "Lourd ou Léger ?",
+    "activiteId": "logic-heavy-light",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 11,
+    "fichier": "logic-inside-outside-prompt.mp3",
+    "texte": "Touche le ballon qui est DANS la boîte ! C’est le même ballon, deux places !",
+    "activite": "Le ballon dans la boîte",
+    "activiteId": "logic-inside-outside",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 12,
+    "fichier": "logic-inside-outside-success.mp3",
+    "texte": "Oui ! Le ballon est dans la boîte !",
+    "activite": "Le ballon dans la boîte",
+    "activiteId": "logic-inside-outside",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 13,
+    "fichier": "logic-front-behind-prompt.mp3",
+    "texte": "Touche l’ours qui est DEVANT la boîte ! C’est le même ours, deux places différentes !",
+    "activite": "L’ours devant la boîte",
+    "activiteId": "logic-front-behind",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 14,
+    "fichier": "logic-front-behind-success.mp3",
+    "texte": "Oui ! L’ours est devant la boîte !",
+    "activite": "L’ours devant la boîte",
+    "activiteId": "logic-front-behind",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 15,
+    "fichier": "logic-right-left-prompt.mp3",
+    "texte": "Touche la main droite ! Avec elle on mange et on salue !",
+    "activite": "La Main Droite",
+    "activiteId": "logic-right-left",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 16,
+    "fichier": "logic-right-left-success.mp3",
+    "texte": "Voici la main droite ! Bravo !",
+    "activite": "La Main Droite",
+    "activiteId": "logic-right-left",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 17,
+    "fichier": "logic-pattern-colors-prompt.mp3",
+    "texte": "Train, voiture, train, voiture, train… ensuite ?",
+    "activite": "Qu'est-ce qui Vient Ensuite ?",
+    "activiteId": "logic-pattern-colors",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 18,
+    "fichier": "logic-pattern-colors-success.mp3",
+    "texte": "La voiture vient après le train ! Bravo !",
+    "activite": "Qu'est-ce qui Vient Ensuite ?",
+    "activiteId": "logic-pattern-colors",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  },
+  {
+    "ordre": 19,
+    "fichier": "logic-memory-prompt.mp3",
+    "texte": "Retourne les cartes ! Dis : train, éléphant, oiseau !",
+    "activite": "Mémo de Mon Esprit",
+    "activiteId": "logic-memory",
+    "moduleId": "preschool-logic-spatial",
+    "type": "prompt"
+  },
+  {
+    "ordre": 20,
+    "fichier": "logic-memory-success.mp3",
+    "texte": "Ton esprit est fort !",
+    "activite": "Mémo de Mon Esprit",
+    "activiteId": "logic-memory",
+    "moduleId": "preschool-logic-spatial",
+    "type": "success"
+  }
+]

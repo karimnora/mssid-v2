@@ -14,6 +14,7 @@ export function useQuranRecitation(options: {
   const modeRef = useRef<RecitationMode>('idle');
   const ayahRef = useRef(0);
   const usingFallbackRef = useRef(false);
+  const playbackSessionRef = useRef(0);
   const surahRef = useRef(surahNumber);
   const countRef = useRef(ayahCount);
   const onAyahIndexRef = useRef(onAyahIndex);
@@ -28,6 +29,7 @@ export function useQuranRecitation(options: {
   const [failed, setFailed] = useState(false);
 
   const stop = useCallback(() => {
+    playbackSessionRef.current += 1;
     modeRef.current = 'idle';
     setMode('idle');
     setPlayingAyah(null);
@@ -41,13 +43,17 @@ export function useQuranRecitation(options: {
   const playUrl = useCallback((url: string, fallbackUrl: string) => {
     const audio = audioRef.current;
     if (!audio) return;
+    const session = ++playbackSessionRef.current;
+    const isCurrent = () => playbackSessionRef.current === session && audioRef.current === audio && modeRef.current !== 'idle';
     const chosen = usingFallbackRef.current ? fallbackUrl : url;
     audio.src = chosen;
     void audio.play().catch(() => {
+      if (!isCurrent()) return;
       if (!usingFallbackRef.current) {
         usingFallbackRef.current = true;
         audio.src = fallbackUrl;
         void audio.play().catch(() => {
+          if (!isCurrent()) return;
           setFailed(true);
           stop();
         });
@@ -90,6 +96,7 @@ export function useQuranRecitation(options: {
     audioRef.current = audio;
 
     const onEnded = () => {
+      if (modeRef.current === 'idle' || audioRef.current !== audio) return;
       const surah = surahRef.current;
       if (modeRef.current !== 'surah' || !surah) {
         modeRef.current = 'idle';
@@ -107,7 +114,7 @@ export function useQuranRecitation(options: {
     };
 
     const onError = () => {
-      if (modeRef.current === 'idle') return;
+      if (modeRef.current === 'idle' || audioRef.current !== audio) return;
       const surah = surahRef.current;
       if (!usingFallbackRef.current) {
         usingFallbackRef.current = true;
@@ -123,6 +130,8 @@ export function useQuranRecitation(options: {
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('error', onError);
     return () => {
+      playbackSessionRef.current += 1;
+      modeRef.current = 'idle';
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('error', onError);
       audio.pause();
