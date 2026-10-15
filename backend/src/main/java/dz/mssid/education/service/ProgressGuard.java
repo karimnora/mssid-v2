@@ -209,14 +209,15 @@ public final class ProgressGuard {
             if (lastAt != null) {
                 stat.put("lastAt", lastAt);
             }
-            String lessonId = asString(next.get("lastLessonId"));
+            Map<String,Object> latest = java.util.Objects.equals(lastAt,asString(next.get("lastAt"))) ? next : current;
+            String lessonId = asString(latest.get("lastLessonId"));
             if (!isSafeId(lessonId)) {
                 lessonId = asString(current.get("lastLessonId"));
             }
             if (isSafeId(lessonId)) {
                 stat.put("lastLessonId", lessonId);
             }
-            String outcome = asString(next.get("lastOutcome"));
+            String outcome = asString(latest.get("lastOutcome"));
             if (!"success".equals(outcome) && !"fail".equals(outcome)) {
                 outcome = asString(current.get("lastOutcome"));
             }
@@ -250,6 +251,12 @@ public final class ProgressGuard {
                 }
             });
         }
+        // Replaying an absolute snapshot is idempotent: do not duplicate the same session.
+        java.util.Map<String,Map<String,Object>> unique=new java.util.LinkedHashMap<>();
+        for(var session:merged)unique.put(session.get("lessonId")+"|"+session.get("at")+"|"+session.get("outcome"),session);
+        merged.clear();
+        merged.addAll(unique.values());
+        merged.sort(java.util.Comparator.comparing(v -> String.valueOf(v.get("at"))));
         int extra = merged.size() - MAX_LESSON_SESSIONS;
         if (extra > 0) {
             return new ArrayList<>(merged.subList(extra, merged.size()));

@@ -51,7 +51,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         String imageUrl = request.getReceiptImageUrl() != null ? request.getReceiptImageUrl() : request.getReceiptImgUrl();
         if (imageUrl == null || imageUrl.isBlank()) {
-            imageUrl = "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400";
+            throw new IllegalArgumentException("Une image du reçu est obligatoire");
         }
 
         PaymentReceipt receipt = PaymentReceipt.builder()

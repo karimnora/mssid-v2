@@ -12,6 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CahierAccessController {
     private final CahierAccessService access;
+    private final dz.mssid.education.service.CahierContentService content;
+    @GetMapping("/papers/{paperId}")
+    public ResponseEntity<com.fasterxml.jackson.databind.JsonNode> paper(@AuthenticationPrincipal UserDetails principal,@PathVariable String paperId) {
+        if(principal==null)return ResponseEntity.status(401).build();
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(content.paper(principal.getUsername(),paperId));
+    }
+    @GetMapping("/{documentId}/content")
+    public ResponseEntity<com.fasterxml.jackson.databind.JsonNode> content(@AuthenticationPrincipal UserDetails principal,@PathVariable String documentId) {
+        if(principal==null)return ResponseEntity.status(401).build();
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(content.content(principal.getUsername(),documentId));
+    }
     @GetMapping("/access")
     public ResponseEntity<CahierAccessService.Access> status(@AuthenticationPrincipal UserDetails principal) {
         if (principal == null) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

@@ -24,7 +24,7 @@ describe('preschool garden ownership', () => {
     it('rejects an active profile belonging to another account', () => {
         state.owner = 'user:44:child:1';
         render(<PreschoolGardenMission language="fr" onExit={vi.fn()}/>);
-        expect(localStorage.getItem(gardenStorageKey('user:9', 'preschool', 'fr'))).toBe('{}');
+        expect(readGardenResults(gardenStorageKey('user:9', 'preschool', 'fr'), 'preschool')).toEqual({});
         expect(localStorage.getItem(gardenStorageKey(state.owner, 'preschool', 'fr'))).toBeNull();
     });
 });

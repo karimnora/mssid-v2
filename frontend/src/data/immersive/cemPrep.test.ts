@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CEM_PAPERS, cemErrorRows, markCemRewarded, paperById } from './cemPrep';
+import { CEM_PAPERS, cemErrorRows, markCemRewarded, paperById } from '../../../content-authoring/cemPrep';
 
 describe('CEM prep pack', () => {
   it('ships three original papers distinct from the acquis 2026 ids', () => {

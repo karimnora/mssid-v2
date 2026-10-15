@@ -4,7 +4,7 @@ import { applyDidouGoldBonus } from '../utils/didouCompanion';
 import { AuthUser, PaymentReceipt, PaymentMethod, UserRole, Subscription } from '../types/auth';
 import { DidouAvatarConfig } from '../types/ecosystem';
 import { springBootApi } from './springBootApi';
-import { setActiveProgressOwner } from '../utils/progressOwner';
+import { getActiveProgressOwner, setActiveProgressOwner } from '../utils/progressOwner';
 
 const STORAGE_KEYS = {
   RECEIPTS: 'mssid_payment_receipts',
@@ -67,9 +67,11 @@ export class AuthService {
         user = { ...user, nom: cleanedNom };
       }
     }
+    const previousOwner=getActiveProgressOwner();
+    const preserveChild=Boolean(user && currentUserState?.id===user.id && previousOwner.startsWith('user:'+user.id+':child:'));
     currentUserState = user;
     setProgressSyncOwner(user?.id ?? null);
-    setActiveProgressOwner(user?.id ?? null);
+    if(!preserveChild)setActiveProgressOwner(user?.id ?? null);
     notifyAuthListeners();
   }
 

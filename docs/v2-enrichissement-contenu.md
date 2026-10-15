@@ -1,5 +1,8 @@
 # Enrichissement pédagogique V2
 
+> Mise à jour du 16 octobre 2026 : la synchronisation des nouvelles observations, le bilan parent et la distribution serveur des cahiers/sujets CEM sont implémentés dans le lot décrit dans [Validation avant vente](v2-validation-avant-vente.md). Leur mise en service exige le backend V2 et la migration V105. Les autres ateliers interactifs restent distribués dans le frontend. Les mentions de stockage seulement local ci-dessous décrivent les étapes antérieures.
+
+
 ## Lot ajouté
 
 168 défis supplémentaires : 132 défis primaires dans 33 ateliers de quatre défis, et 36 activités préscolaires dans six thèmes de six étapes. Ces nombres décrivent des exercices et adaptations, pas 168 compétences distinctes. Aucun ancien cours ni atelier supprimé.

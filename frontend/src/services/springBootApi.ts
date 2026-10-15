@@ -443,6 +443,12 @@ public async request<T>(
     });
   }
 
+  public async getCemPaper(paperId: string) {
+    return this.request<import('../data/immersive/cemPrep').CemPaper>('/v1/cahiers/papers/'+encodeURIComponent(paperId),{method:'GET'});
+  }
+  public async getCahierContent(documentId: string) {
+    return this.request<import('../data/cahiers/competenceCahiers').CompetenceCahier>('/v1/cahiers/'+encodeURIComponent(documentId)+'/content',{method:'GET'});
+  }
   public async getCahierAccess() {
     return this.request<CahierAccess>('/v1/cahiers/access', { method: 'GET' });
   }
@@ -534,6 +540,16 @@ public async request<T>(
       method: 'PUT',
       body: JSON.stringify({ role }),
     });
+  }
+
+  public async getReceiptStatus() {
+    return this.request<{ status: 'NONE'|'PENDING_VERIFICATION'|'APPROVED'|'REJECTED'; planId: string|null; durationMonths: number|null; submittedAt: string|null; rejectionReason: string|null }>('/v1/payments/receipt/status', { method: 'GET' });
+  }
+  public async getLearningSnapshot(scope: string, childId?: number) {
+    return this.request<Record<string, { outcome: 'independent' | 'helped' | 'review'; at: string; completedAt?: string }>>('/v1/learning/' + encodeURIComponent(scope) + (childId == null ? '' : '?childId=' + childId), { method: 'GET' });
+  }
+  public async saveLearningSnapshot(scope: string, childId: number | undefined, results: Record<string, { outcome: 'independent' | 'helped' | 'review'; at: string; completedAt?: string }>) {
+    return this.request<Record<string, { outcome: 'independent' | 'helped' | 'review'; at: string; completedAt?: string }>>('/v1/learning/' + encodeURIComponent(scope) + (childId == null ? '' : '?childId=' + childId), { method: 'PUT', body: JSON.stringify(results) });
   }
 
   public async getChildProfiles() {

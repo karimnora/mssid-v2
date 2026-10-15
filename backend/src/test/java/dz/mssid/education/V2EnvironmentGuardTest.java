@@ -15,6 +15,10 @@ class V2EnvironmentGuardTest {
         env.setActiveProfiles("prod", "v2");
         assertThrows(IllegalStateException.class, () -> new V2EnvironmentGuard().postProcessEnvironment(env, new SpringApplication(Object.class)));
     }
+    @Test void rejectsSameDatabaseWithDifferentCredentialsAndJdbcSyntax() {
+        var env=new MockEnvironment().withProperty("DATABASE_URL","postgresql://other:password@PROD:5432/main?sslmode=require").withProperty("spring.datasource.url","jdbc:postgresql://prod/main");
+        env.setActiveProfiles("prod","v2");assertThrows(IllegalStateException.class,()->new V2EnvironmentGuard().postProcessEnvironment(env,new SpringApplication(Object.class)));
+    }
     @Test void acceptsIsolatedV2AndLocalUnitTests() {
         var env = new MockEnvironment().withProperty("spring.datasource.url", "jdbc:postgresql://localhost:5433/mssid_v2");
         env.setActiveProfiles("prod", "v2");

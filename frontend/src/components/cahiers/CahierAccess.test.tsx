@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { CompetenceCahierSheet } from './CompetenceCahierSheet';
-import { COMPETENCE_CAHIERS } from '../../data/cahiers/competenceCahiers';
+import { COMPETENCE_CAHIERS } from '../../../content-authoring/competenceCahiers';
 import { setStoredLocale } from '../../localePreference';
 import { LocaleProvider } from '../../context/LocaleContext';
 import { springBootApi, type CahierAccess } from '../../services/springBootApi';
@@ -13,6 +13,7 @@ const snapshot: CahierAccess = { premium: false, limit: 3, remaining: 3, resetsA
 function show() { return render(<LocaleProvider><CompetenceCahierSheet cahier={document} onClose={vi.fn()} /></LocaleProvider>); }
 beforeEach(() => {
   vi.restoreAllMocks(); state.user = { id: 7, role: 'ROLE_FREE' };
+  vi.spyOn(springBootApi,'getCahierContent').mockResolvedValue({status:200,data:document});
   setStoredLocale('fr');
   vi.spyOn(springBootApi, 'getCahierAccess').mockResolvedValue({ status: 200, data: snapshot });
   vi.spyOn(springBootApi, 'unlockCahier').mockResolvedValue({ status: 200, data: { ...snapshot, remaining: 2, unlockedIds: [document.competenceId] } });
@@ -56,6 +57,13 @@ describe('family cahier access', () => {
     show(); await screen.findByRole('alert');
     expect(springBootApi.unlockCahier).not.toHaveBeenCalled();
     expect(screen.getByText(document.exercises[0].promptAr)).toBeInTheDocument();
+  });
+  it('can retry a failed unlock without closing the sheet', async () => {
+    vi.mocked(springBootApi.unlockCahier).mockResolvedValueOnce({status:500,error:'offline'}).mockResolvedValueOnce({status:200,data:{...snapshot,allowed:true,remaining:2,unlockedIds:[document.competenceId]}});
+    show();fireEvent.click(await screen.findByRole('button',{name:'Débloquer ce cahier — 1 crédit'}));
+    await screen.findByRole('alert');fireEvent.click(screen.getByRole('button',{name:'Réessayer'}));
+    fireEvent.click(await screen.findByRole('button',{name:'Débloquer ce cahier — 1 crédit'}));
+    await screen.findByText(document.exercises[1].promptAr);expect(springBootApi.unlockCahier).toHaveBeenCalledTimes(2);
   });
   it('a concurrent quota denial never displays the full document', async () => {
     vi.mocked(springBootApi.unlockCahier).mockResolvedValue({ status: 429, data: { ...snapshot, remaining: 0, allowed: false } });

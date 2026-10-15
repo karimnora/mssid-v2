@@ -1,0 +1,56 @@
+[
+  {
+    "id": "cem-math-2027",
+    "subjectAr": "الرِّيَاضِيَّاتُ — نُسْخَةُ التَّحْضِيرِ لِلمُتَوَسِّطَةِ",
+    "durationMinutes": 90,
+    "totalPoints": 10,
+    "competenceIds": [
+      "math-5ap-c-decimals",
+      "math-5ap-c-operations",
+      "math-5ap-c-areas",
+      "math-5ap-c-proportion"
+    ],
+    "exercises": [
+      {
+        "titleAr": "التَّمْرِينُ 1 — الأَعْدَادُ العَشْرِيَّةُ (1.5 ن)",
+        "points": 1.5,
+        "contentAr": "أ) أَنْجِزْ مَعَ مُحَاذَاةِ الفَاصِلَةِ: 27.8 + 6.45 − 9.3\nب) رَتِّبْ تَنَازُلِيّاً: 5.09 — 5.9 — 5.19\nجـ) اكْتُبِ المُسَاوَاةَ الإِقْلِيدِيَّةَ لِـ 625 ÷ 8.",
+        "solutionAr": "أ) 27.80 + 6.45 = 34.25 ثُمَّ 34.25 − 9.30 = 24.95.\nب) 5.9 > 5.19 > 5.09.\nجـ) 625 = (8 × 78) + 1 لِأَنَّ 8 × 78 = 624 وَالبَاقِي 1 < 8.",
+        "operationsAr": "أ)  27.80\n   +  6.45\n   -------\n    34.25\n\n    34.25\n   −  9.30\n   -------\n    24.95\n\nب) 5.90\n   5.19\n   5.09\n\nجـ)    78\n     ×  8\n    ----\n     624\n\n     624\n    +   1\n    ----\n     625",
+        "check": {
+          "promptAr": "27.8 + 6.45 − 9.3 = ؟",
+          "choices": [
+            "24.95",
+            "25.95",
+            "23.95"
+          ],
+          "correctIndex": 0,
+          "competenceId": "math-5ap-c-decimals"
+        }
+      }
+    ],
+    "problem": null
+  },
+  {
+    "id": "cem-arabic-2027",
+    "subjectAr": "اللُّغَةُ العَرَبِيَّةُ — نُسْخَةُ التَّحْضِيرِ لِلمُتَوَسِّطَةِ",
+    "durationMinutes": 90,
+    "totalPoints": 10,
+    "competenceIds": [
+      "ar-5ap-c-irab",
+      "ar-5ap-c-spelling",
+      "ar-5ap-c-writing"
+    ],
+    "exercises": [],
+    "problem": null
+  },
+  {
+    "id": "cem-science-2027",
+    "subjectAr": "التَّرْبِيَةُ العِلْمِيَّةُ — نُسْخَةُ التَّحْضِيرِ لِلمُتَوَسِّطَةِ",
+    "durationMinutes": 60,
+    "totalPoints": 10,
+    "competenceIds": [],
+    "exercises": [],
+    "problem": null
+  }
+]

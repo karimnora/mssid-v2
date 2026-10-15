@@ -1,3 +1,4 @@
+import {mergeNotebookProgress} from '../utils/mergeNotebookProgress';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Badge as BadgeInfo, PrimaryGrade, UserProfile } from '../types';
 import { AuthUser } from '../types/auth';
@@ -344,8 +345,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
         if (cancelled || res.error || !res.data) return;
         setUserProfile((prev) => ({
           ...prev,
-          competenceStats: (res.data.competenceStats as UserProfile['competenceStats']) ?? prev.competenceStats,
-          lessonSessions: (res.data.lessonSessions as UserProfile['lessonSessions']) ?? prev.lessonSessions,
+          ...mergeNotebookProgress(prev,{competenceStats:res.data.competenceStats as UserProfile['competenceStats'],lessonSessions:res.data.lessonSessions as UserProfile['lessonSessions']}),
         }));
       }),
     );

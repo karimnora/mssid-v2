@@ -150,7 +150,7 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = props
     } catch { setFailed(true); }
     finally { setBusy(false); inFlight.current = false; }
   };
-  if (canRead) return <UnlockedCahierSheet {...props} />;
+  if (canRead) return <RemoteCahierSheet key={documentOwner} {...props}/>;
   return createPortal(<div className="fixed inset-0 z-[70] bg-black/40 overflow-auto p-4 flex items-start justify-center">
     <section role="dialog" aria-modal="true" aria-label={props.cahier.titleAr} className="bg-white rounded-3xl p-5 max-w-xl w-full space-y-4 text-[#0f172a]">
       <h2 className="text-lg font-extrabold">{props.cahier.titleAr}</h2>
@@ -158,7 +158,7 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = props
       <p dir="rtl" className="rounded-2xl bg-[#FFF8E7] p-4 font-bold">{props.cahier.exercises[0]?.promptAr}</p>
       {access && <CahierQuotaNotice access={access} />}
       {!authUser ? <p>{t('cahierLogin')}</p> : loading ? <p>{t('cahierChecking')}</p> : (error || failed) ? <>
-        <p role="alert">{t('cahierUnavailable')}</p><button type="button" className="hit-target" onClick={refresh}>{t('cahierRetry')}</button>
+        <p role="alert">{t('cahierUnavailable')}</p><button type="button" className="hit-target" onClick={()=>{setFailed(false);refresh();}}>{t('cahierRetry')}</button>
       </> : access && access.remaining > 0 ? <button type="button" disabled={busy} onClick={unlock} className="hit-target rounded-2xl bg-[#008751] text-white px-4 font-bold disabled:opacity-50">{busy ? t('cahierChecking') : t('cahierUnlock')}</button> : access ? <>
         <p>{t('cahierLimit')}</p><PremiumOffer />
       </> : null}
@@ -166,3 +166,11 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = props
     </section>
   </div>, document.body);
 };
+
+function RemoteCahierSheet(props:CompetenceCahierSheetProps) {
+ const t=useTranslation('subscription');const {authUser}=useCahierAccess();
+ const [document,setDocument]=useState<CompetenceCahier|null>(null),[error,setError]=useState(false),[retry,setRetry]=useState(0);
+ useEffect(()=>{let alive=true;setDocument(null);setError(false);void springBootApi.getCahierContent(props.cahier.competenceId).then(res=>{if(!alive)return;const d=res.data;if(res.error||!d||d.competenceId!==props.cahier.competenceId||!Array.isArray(d.exercises)||d.exercises.length<2||!Array.isArray(d.versoAr))setError(true);else setDocument(d);}).catch(()=>{if(alive)setError(true);});return()=>{alive=false;};},[authUser?.id,props.cahier.competenceId,retry]);
+ if(document)return <UnlockedCahierSheet cahier={document} onClose={props.onClose}/>;
+ return createPortal(<div className="fixed inset-0 z-[70] bg-black/40 p-4 overflow-auto"><section role="dialog" aria-modal="true" aria-label={props.cahier.titleAr} className="bg-white text-slate-900 p-5 rounded-2xl max-w-xl mx-auto space-y-3"><p role={error?'alert':'status'}>{error?t('cahierUnavailable'):t('cahierChecking')}</p>{error&&<button className="hit-target px-4" onClick={()=>setRetry(n=>n+1)}>{t('cahierRetry')}</button>}<button className="hit-target px-4" onClick={props.onClose}>{t('continueFree')}</button></section></div>,window.document.body);
+}

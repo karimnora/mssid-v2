@@ -1,9 +1,10 @@
+import {springBootApi} from '../services/springBootApi';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ParentNotebookModal } from './ParentNotebookModal';
 import { CemPrepLab } from './immersive/CemPrepLab';
-import { CEM_PAPERS } from '../data/immersive/cemPrep';
+import { CEM_PAPERS } from '../../content-authoring/cemPrep';
 import { setStoredLocale } from '../localePreference';
 import { LocaleProvider } from '../context/LocaleContext';
 import { createFreshGuestProfile } from '../hooks/useUserProgress';
@@ -23,9 +24,10 @@ describe('free family accompaniment', () => {
     expect(screen.getByText(CEM_PAPERS[0].exercises[0].titleAr)).toBeInTheDocument();
     expect(screen.queryByText(CEM_PAPERS[0].exercises[1].titleAr)).not.toBeInTheDocument();
   });
-  it('Premium sees the complete CEM paper', () => {
+  it('Premium sees the complete CEM paper', async () => {
+    vi.spyOn(springBootApi,'getCemPaper').mockResolvedValue({status:200,data:CEM_PAPERS[0]});
     state.role = 'ROLE_PREMIUM';
     render(<LocaleProvider><CemPrepLab /></LocaleProvider>);
-    expect(screen.getByText(CEM_PAPERS[0].exercises[1].titleAr)).toBeInTheDocument();
+    expect(await screen.findByText(CEM_PAPERS[0].exercises[1].titleAr)).toBeInTheDocument();
   });
 });

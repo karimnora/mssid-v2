@@ -49,6 +49,11 @@ class CahierAccessServiceTest {
         assertThat(access.allowed()).isTrue(); assertThat(access.premium()).isTrue();
         verify(jdbc, never()).update(anyString(), any(), any(), any());
     }
+    @Test void expiredSubscriptionCannotKeepPremiumThroughStaleRole() {
+        user.setRole(new Role(2L,Role.RoleName.ROLE_PREMIUM));
+        when(jdbc.queryForList(eq("SELECT status FROM subscriptions WHERE user_id=? AND (status<>'ACTIVE' OR end_date IS NULL OR end_date<? OR start_date>?)"),eq(String.class),eq(7L),any(java.sql.Date.class),any(java.sql.Date.class))).thenReturn(List.of("EXPIRED"));
+        assertThat(service.status("parent@test.invalid").premium()).isFalse();
+    }
     @Test void unknownDocumentCannotSpendCredits() {
         assertThatThrownBy(() -> service.unlock("parent@test.invalid", "forged")).isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
         verifyNoInteractions(jdbc);

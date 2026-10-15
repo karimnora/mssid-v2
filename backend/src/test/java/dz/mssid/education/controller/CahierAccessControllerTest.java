@@ -14,7 +14,7 @@ class CahierAccessControllerTest {
     CahierAccessService service; MockMvc mvc;
     @BeforeEach void setup() {
         service = mock(CahierAccessService.class);
-        mvc = MockMvcBuilders.standaloneSetup(new CahierAccessController(service)).setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver()).build();
+        mvc = MockMvcBuilders.standaloneSetup(new CahierAccessController(service, mock(dz.mssid.education.service.CahierContentService.class))).setCustomArgumentResolvers(new AuthenticationPrincipalArgumentResolver()).build();
     }
     @AfterEach void cleanup() { SecurityContextHolder.clearContext(); }
     void login() {

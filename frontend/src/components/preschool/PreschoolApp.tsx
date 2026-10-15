@@ -1,3 +1,8 @@
+import {useLearningSnapshot} from '../../hooks/useLearningSnapshot';
+import {LearningSyncNotice} from '../LearningSyncNotice';
+import {getActiveProgressOwner} from '../../utils/progressOwner';
+import {cleanLearningResults} from '../../utils/learningSnapshot';
+import {recordGardenResult} from '../../utils/gardenMissionProgress';
 import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { isPlaySuccess, PreschoolLanguage, PreschoolPlayQuality } from '../../data/preschool/types';
@@ -67,11 +72,18 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
 }) => {
   const { authUser } = useAuth();
   const parentBilanEnabled = useFeatureFlag('preschoolParentBilan');
-  const ownerId = progressOwnerId(authUser?.id);
+  const accountOwner=authUser?'user:'+authUser.id:'guest';
+  const selectedOwner=getActiveProgressOwner();
+  const cloudOwner=selectedOwner.startsWith(accountOwner+':child:')?selectedOwner:accountOwner;
+  const ownerId = cloudOwner.includes(':child:') ? cloudOwner : progressOwnerId(authUser?.id);
   const skipSaveRef = useRef(true);
 
   const [loadedOwnerId, setLoadedOwnerId] = useState(ownerId);
   const [language, setLanguage] = useState<PreschoolLanguage | null>(() => loadStoredLanguage());
+  const snapshotKey='mssid_preschool_observations:'+cloudOwner+':'+(language??'fr');
+  const cloud=useLearningSnapshot(cloudOwner,'preschool-'+(language??'fr'),snapshotKey,()=>{
+    try{return cleanLearningResults(JSON.parse(localStorage.getItem(snapshotKey)??'{}'));}catch{return {};}
+  });
   const [completedActivityIds, setCompletedActivityIds] = useState<string[]>(() => loadProgress(ownerId));
   const [playEvents, setPlayEvents] = useState(() => loadEvents(ownerId));
   const [childName, setChildName] = useState(() => loadSingleChildName(ownerId) || firstNameOf(authUser?.nom));
@@ -84,6 +96,10 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
   const [learnGroup, setLearnGroup] = useState<PreschoolLearnGroupId | null>(null);
   const [moduleCompleteOverlay, setModuleCompleteOverlay] = useState<typeof PRESCHOOL_MODULES[number] | null>(null);
 
+  useEffect(()=>{
+    const successful=Object.entries(cloud.results).filter(([,r])=>r.completedAt).map(([id])=>id);
+    if(successful.length)setCompletedActivityIds(previous=>{const next=[...new Set([...previous,...successful])];return next.length===previous.length?previous:next;});
+  },[cloud.results]);
   const completedByModule: Record<string, number> = {};
   PRESCHOOL_MODULES.forEach((m) => {
     completedByModule[m.id] = m.activities.filter((a) => completedActivityIds.includes(a.id)).length;
@@ -115,7 +131,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
   }, [language]);
 
   useEffect(() => {
-    if (authUser?.id) adoptGuestProgressIfEmpty(authUser.id);
+    if (authUser?.id && !cloudOwner.includes(':child:')) adoptGuestProgressIfEmpty(authUser.id);
     skipSaveRef.current = true;
     setCompletedActivityIds(loadProgress(ownerId));
     setPlayEvents(loadEvents(ownerId));
@@ -232,6 +248,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
           }}
           onComplete={(quality?: PreschoolPlayQuality) => {
             const resolved = quality ?? 'done';
+            cloud.save(recordGardenResult(cloud.results,activeActivity.id,resolved==='helped'?'helped':isPlaySuccess(resolved)?'independent':'review'));
             setPlayEvents(appendEvent(ownerId, {
               activityId: activeActivity.id,
               date: localDateKey(),
@@ -330,6 +347,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
           language={language}
           childName={childName}
           accountEmail={authUser?.email}
+          syncNotice={<LearningSyncNotice language={language??undefined} status={cloud.status} onRetry={cloud.refresh}/>}
           todayCount={todayIds.length}
           streak={dailyChallenge.streak}
           completedCount={completedActivityIds.length}

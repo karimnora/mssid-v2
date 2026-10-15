@@ -64,7 +64,7 @@ describe("preschool market ownership", () => {
     state.owner = "user:44:child:1";
     render(<PreschoolMarketMission language="fr" onExit={vi.fn()} />);
     expect(
-      localStorage.getItem(marketStorageKey("user:9", "preschool", "fr"))
+      localStorage.getItem(marketStorageKey("user:9", "preschool", "fr")) ?? "{}"
     ).toBe("{}");
     expect(
       localStorage.getItem(marketStorageKey(state.owner, "preschool", "fr"))

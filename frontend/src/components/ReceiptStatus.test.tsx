@@ -1,0 +1,11 @@
+import React from 'react';
+import {it,expect,vi,beforeEach,afterEach} from 'vitest';
+import {render,screen,cleanup} from '@testing-library/react';
+import {ReceiptStatus} from './ReceiptStatus';
+import {LocaleProvider} from '../context/LocaleContext';
+import {setStoredLocale} from '../localePreference';
+import {springBootApi} from '../services/springBootApi';
+vi.mock('../context/AuthContext',()=>({useAuth:()=>({authUser:{id:7}})}));
+beforeEach(()=>setStoredLocale('fr'));afterEach(()=>{cleanup();vi.restoreAllMocks();});
+it('shows a pending receipt without claiming activation',async()=>{vi.spyOn(springBootApi,'getReceiptStatus').mockResolvedValue({status:200,data:{status:'PENDING_VERIFICATION',planId:'P3M',durationMonths:3,submittedAt:null,rejectionReason:null}});render(<LocaleProvider><ReceiptStatus/></LocaleProvider>);expect(await screen.findByText(/vérification manuelle en attente/)).toBeInTheDocument();expect(screen.queryByText(/abonnement activé/i)).not.toBeInTheDocument();});
+it('never interprets a malformed server response as no receipt',async()=>{vi.spyOn(springBootApi,'getReceiptStatus').mockResolvedValue({status:200,data:{} as never});render(<LocaleProvider><ReceiptStatus/></LocaleProvider>);expect(await screen.findByText(/Impossible de vérifier/)).toBeInTheDocument();expect(screen.queryByText('Aucun reçu enregistré.')).not.toBeInTheDocument();});

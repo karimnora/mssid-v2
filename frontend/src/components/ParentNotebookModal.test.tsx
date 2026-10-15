@@ -1,3 +1,5 @@
+import { springBootApi } from '../services/springBootApi';
+import { COMPETENCE_CAHIERS } from '../../content-authoring/competenceCahiers';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
@@ -81,6 +83,7 @@ describe('ParentNotebookModal', () => {
       <ParentNotebookModal isOpen onClose={vi.fn()} userProfile={userProfile} onReviewLesson={vi.fn()} />,
     );
 
+    vi.spyOn(springBootApi,'getCahierContent').mockResolvedValue({status:200,data:COMPETENCE_CAHIERS[0]});
     fireEvent.click(document.querySelector('[data-notebook-print="math-1ap-c-spatial-position"]') as HTMLElement);
     await waitFor(() => expect(document.querySelector('.printable-sheet')).toBeTruthy());
     expect(screen.getByText(/كُرَّاسُ الكَفَاءَةِ/)).toBeInTheDocument();

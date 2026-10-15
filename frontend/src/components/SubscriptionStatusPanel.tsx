@@ -1,3 +1,4 @@
+import { ReceiptStatus } from './ReceiptStatus';
 import React, {useEffect,useRef,useState} from 'react';
 import {useTranslation} from '../hooks/useTranslation';
 import {useLocaleContext} from '../context/LocaleContext';
@@ -37,6 +38,7 @@ export function SubscriptionStatusPanel({user,onClose}:{user:AuthUser|null;onClo
    {!user?<p>{t('subscriptionSignInInfo')}</p>:<>
     <p role="status" aria-live="polite" className="rounded-xl bg-emerald-50 p-3 font-bold">{busy?t('subscriptionLoading'):label}</p>
     {formatted&&<p>{t('subscriptionEndDate')} <strong>{formatted}</strong></p>}
+    <ReceiptStatus/>
     {error&&<p role="alert">{t('subscriptionRefreshError')}</p>}
     <button type="button" disabled={busy} onClick={()=>void refresh()} className="min-h-12 px-4 rounded-xl bg-emerald-800 text-white font-bold">{t('subscriptionRefresh')}</button>
    </>}

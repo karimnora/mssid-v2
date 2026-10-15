@@ -21,6 +21,8 @@ public interface PaymentReceiptRepository extends JpaRepository<PaymentReceipt, 
     // Récupère tous les reçus de paiement soumis par un utilisateur spécifique
     List<PaymentReceipt> findByUserId(Long userId);
 
+    java.util.Optional<PaymentReceipt> findFirstByUserIdOrderBySubmittedAtDescIdDesc(Long userId);
+
     void deleteByUserId(Long userId);
 
     List<PaymentReceipt> findBySubmittedAtGreaterThanEqualAndSubmittedAtLessThan(

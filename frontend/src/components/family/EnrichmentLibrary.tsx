@@ -44,7 +44,7 @@ export function EnrichmentLibrary(props: Props) {
   const { grade, fr, results } = props,
     t = (a: string, b: string) => (fr ? a : b);
   const [domain, setDomain] = useState<FamilyDomain | "all">("all"),
-    [selected, setSelected] = useState<string | null>(null);
+    [selected, setSelected] = useState<string | null>(()=>new URLSearchParams(window.location.search).get("workshop"));
   const all = ENRICHMENT_MODULES.filter((m) => m.grade === grade),
     available = all.filter((m) => domain === "all" || m.domain === domain);
   const current = all.find((m) => m.id === selected);

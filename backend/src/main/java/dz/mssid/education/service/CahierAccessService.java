@@ -64,12 +64,20 @@ public class CahierAccessService {
             user.getId(), documentId, java.sql.Date.valueOf(weekStart()));
         return snapshot(user, true);
     }
+    private boolean currentPremium(User user) {
+        if (!premium(user)) return false;
+        if (user.getRole().getName() == Role.RoleName.ROLE_ADMIN) return true;
+        // Preserve legacy manual grants without a subscription; an existing expired/cancelled
+        // subscription must never keep access until the next scheduled role update.
+        var today=java.sql.Date.valueOf(LocalDate.now(clock.withZone(ZONE)));
+        return jdbc.queryForList("SELECT status FROM subscriptions WHERE user_id=? AND (status<>'ACTIVE' OR end_date IS NULL OR end_date<? OR start_date>?)", String.class,user.getId(),today,today).isEmpty();
+    }
     private Access snapshot(User user, boolean allowed) {
         LocalDate monday = weekStart();
         List<String> unlocked = jdbc.queryForList("SELECT document_id FROM family_cahier_unlocks WHERE user_id = ? ORDER BY document_id", String.class, user.getId());
         Integer used = jdbc.queryForObject("SELECT count(*) FROM family_cahier_unlocks WHERE user_id = ? AND week_start = ?", Integer.class,
             user.getId(), java.sql.Date.valueOf(monday));
-        return new Access(premium(user), WEEKLY_LIMIT, Math.max(0, WEEKLY_LIMIT - (used == null ? 0 : used)),
+        return new Access(currentPremium(user), WEEKLY_LIMIT, Math.max(0, WEEKLY_LIMIT - (used == null ? 0 : used)),
             monday.plusWeeks(1).atStartOfDay(ZONE).toInstant().toString(), unlocked, allowed);
     }
 }

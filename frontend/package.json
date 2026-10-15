@@ -24,7 +24,8 @@
     "cap:open": "cap open android",
     "dev:v2": "node scripts/dev-v2.mjs",
     "build:android:beta": "node scripts/build-android-beta.mjs",
-    "cap:sync:beta": "npm run build:android:beta && cap sync android"
+    "cap:sync:beta": "npm run build:android:beta && cap sync android",
+    "content:export": "tsx scripts/export-cahiers.ts"
   },
   "dependencies": {
     "@capacitor-community/text-to-speech": "^8.0.2",

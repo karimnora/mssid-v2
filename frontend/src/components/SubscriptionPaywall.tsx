@@ -1,3 +1,4 @@
+import { ReceiptStatus } from './ReceiptStatus';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
 import { SubscriptionStatusPanel } from './SubscriptionStatusPanel';
 import React, { useState } from 'react';
@@ -188,7 +189,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
             <p className="text-xs text-slate-600">{t('manualRenewal')}</p>
           </fieldset>}
 
-          {/* If already submitted receipt */}
+          <ReceiptStatus key={submittedReceipt?.id ?? "receipt"}/>{/* If already submitted receipt */}
           {submittedReceipt ? (
             <div className="p-6 bg-amber-50 border border-amber-200 rounded-3xl space-y-4">
               <div className="flex items-center gap-3 text-amber-800">

@@ -1,5 +1,8 @@
 # V2 — Suivi des tâches
 
+> Mise à jour du 16 octobre 2026 : la synchronisation des nouvelles observations, le bilan parent et la distribution serveur des cahiers/sujets CEM sont implémentés dans le lot décrit dans [Validation avant vente](v2-validation-avant-vente.md). Leur mise en service exige le backend V2 et la migration V105. Les autres ateliers interactifs restent distribués dans le frontend. Les mentions de stockage seulement local ci-dessous décrivent les étapes antérieures.
+
+
 Branche : `v2`. Référence : `docs/roadmap-v2.md`.
 
 Règles : `main` est ramené dans `v2` chaque semaine ; les corrections de contenu V1 se font sur `main`. Une case ne se coche qu’une fois le point de validation atteint.

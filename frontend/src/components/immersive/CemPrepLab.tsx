@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import {springBootApi} from '../../services/springBootApi';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { CEM_PAPERS, cemErrorRows, markCemRewarded, type CemPaper, type CemPaperExercise } from '../../data/immersive/cemPrep';
@@ -54,7 +55,7 @@ function ExerciseBlock({
   index,
   onReward,
 }: {
-  paper: CemPaper;
+  paper: Pick<CemPaper,'id'>;
   exercise: CemPaperExercise;
   index: number;
   onReward?: (coins: number, xp: number) => void;
@@ -146,7 +147,11 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
   const premium = hasPremium(authUser?.role);
   const [tab, setTab] = useState(CEM_PAPERS[0].id);
   const [cahierId, setCahierId] = useState<string | null>(null);
-  const paper = CEM_PAPERS.find((item) => item.id === tab) ?? CEM_PAPERS[0];
+  const [remote,setRemote]=useState<{owner:number;id:string;paper:CemPaper}|null>(null),[loadError,setLoadError]=useState(false),[retry,setRetry]=useState(0);
+  useEffect(()=>{let alive=true;setRemote(null);setLoadError(false);if(!premium||!authUser||tab==='errors')return;
+    void springBootApi.getCemPaper(tab).then(res=>{if(!alive)return;if(res.error||!res.data||res.data.id!==tab||!res.data.problem||!Array.isArray(res.data.exercises))setLoadError(true);else setRemote({owner:authUser.id,id:tab,paper:res.data});}).catch(()=>{if(alive)setLoadError(true);});return()=>{alive=false;};
+  },[tab,premium,authUser?.id,retry]);
+  const paper = remote?.owner===authUser?.id && remote?.id===tab ? remote.paper : CEM_PAPERS.find((item) => item.id === tab) ?? CEM_PAPERS[0];
   const notebook = useMemo(
     () => (userProfile ? buildParentNotebook(userProfile, '5AP') : null),
     [userProfile],
@@ -167,6 +172,7 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
       onTab={setTab}
       onBack={onBack}
     >
+      {premium&&tab!=="errors"&&!remote&&<p role="status">{loadError?<button className="hit-target px-4" onClick={()=>setRetry(n=>n+1)}>{offerT("cahierUnavailable")} · {offerT("cahierRetry")}</button>:offerT("cahierChecking")}</p>}
       {!premium && <section className="rounded-2xl bg-white p-4 space-y-3"><p>{offerT('cemPreview')}</p><PremiumOffer /></section>}
       {!premium && tab !== CEM_PAPERS[0].id ? null : tab === 'errors' ? (
         <section className="space-y-3">
@@ -210,7 +216,7 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
             <p className="text-xs font-extrabold text-[#2563EB]">{paper.durationMinutes} د — {paper.totalPoints} ن</p>
             <h2 className="text-lg font-extrabold leading-tight">{paper.subjectAr}</h2>
           </header>
-          {(premium ? [...paper.exercises, paper.problem] : paper.exercises.slice(0, 1)).map((exercise, index) => (
+          {(premium && remote?.id===tab && remote.owner===authUser?.id ? [...remote.paper.exercises, remote.paper.problem] : paper.exercises.slice(0, 1)).map((exercise, index) => (
             <ExerciseBlock key={`${paper.id}-${index}`} paper={paper} exercise={exercise} index={index} onReward={onReward} />
           ))}
         </article>

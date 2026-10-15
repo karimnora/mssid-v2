@@ -1,3 +1,5 @@
+import { useLearningSnapshot } from '../../hooks/useLearningSnapshot';
+import { LearningSyncNotice } from '../LearningSyncNotice';
 import React, { useEffect, useState } from "react";
 import type { PreschoolLanguage } from "../../data/preschool/types";
 import { useCahierAccess } from "../../hooks/useCahierAccess";
@@ -51,24 +53,16 @@ function Session({
   onExit: () => void;
 }) {
   const key = marketStorageKey(owner, "preschool", language);
-  const [results, setResults] = useState(() =>
-    readMarketResults(key, "preschool")
-  );
-  const [saveError, setSaveError] = useState(false);
-  useEffect(() => {
-    try {
-      localStorage.setItem(key, JSON.stringify(results));
-      setSaveError(false);
-    } catch {
-      setSaveError(true);
-    }
-  }, [key, results]);
+  const snapshot = useLearningSnapshot(owner, 'market-preschool-'+language, key, () => readMarketResults(key, 'preschool'));
+ const {results}=snapshot;
+ const setResults=(update:(previous:typeof results)=>typeof results)=>snapshot.save(update(results));
+  const saveError=snapshot.storageError;
   const t = (fr: string, ar: string, en: string) =>
     language === "fr" ? fr : language === "ar" ? ar : en;
   const record = (id: string, outcome: TaskOutcome) =>
     setResults((previous) => recordMarketResult(previous, id, outcome));
   return (
-    <div className="p-3 sm:p-6 bg-[#fffaf0] min-h-screen pb-24">
+    <div className="p-3 sm:p-6 bg-[#fffaf0] min-h-screen pb-24"><LearningSyncNotice language={language??undefined} status={snapshot.status} onRetry={snapshot.refresh}/>
       {loading && (
         <p role="status">
           {t(

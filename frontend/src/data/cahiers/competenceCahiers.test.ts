@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { COMPETENCES } from '../competences';
-import { assertCahierCoverage, cahiersForGrade, getCahier } from './competenceCahiers';
+import { assertCahierCoverage, cahiersForGrade, getCahier } from '../../../content-authoring/competenceCahiers';
 
 describe('competence cahiers', () => {
   it('covers every mapped competence with a front sheet and a verso', () => {

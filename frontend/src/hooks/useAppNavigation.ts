@@ -235,7 +235,15 @@ export function useAppNavigation(options: {
       mainCategory,
       selectedSubject,
     });
-    const href = toAppHref(view, grade);
+    let href = toAppHref(view, grade);
+    // Preserve explicit parent recommendations while normalizing this same studio URL.
+    if(view.name==='labs' && view.toolId==='cahiers_lab' && window.location.pathname==='/labs/cahiers_lab') {
+      const incoming=new URLSearchParams(window.location.search),target=new URLSearchParams(href.split('?')[1]);
+      if(incoming.get('g')===grade)for(const key of ['workshop','familyModule','familyService']) {
+        const value=incoming.get(key);if(value && /^[A-Za-z0-9:_-]{1,160}$/.test(value))target.set(key,value);
+      }
+      href=href.split('?')[0]+'?'+target.toString();
+    }
     const historyState: HistoryNavState = {
       mssidHistoryIndex: historyIndexRef.current,
       isHomeActive,

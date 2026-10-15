@@ -14,6 +14,7 @@ interface NextStep {
 }
 
 interface PreschoolParentBilanProps {
+  syncNotice?: React.ReactNode;
   language: PreschoolLanguage;
   childName: string;
   accountEmail?: string;
@@ -154,6 +155,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
   language,
   childName,
   accountEmail,
+  syncNotice,
   todayCount,
   streak,
   completedCount,
@@ -197,6 +199,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
           </button>
         </div>
 
+        {syncNotice}
         <div className="rounded-2xl bg-white border border-[#E7E2D7] px-4 py-3 space-y-1">
           <p className="text-lg font-black text-[#0f172a]">{displayName}</p>
           {accountEmail && (
