@@ -8,7 +8,7 @@ import type { PrimaryGrade } from '../../types';
 import type { FamilyResults } from '../../utils/familyLearning';
 import './premiumAdventures.css';
 
-export function DidouGuide({ text, fr, success = false, lang }: { text: string; fr: boolean; success?: boolean; lang?: 'ar-SA' | 'fr-FR' }) {
+export function DidouGuide({ text, fr, success = false, lang, uiLanguage }: { text: string; fr: boolean; success?: boolean; lang?: 'ar-SA' | 'fr-FR' | 'en-US'; uiLanguage?: 'ar' | 'fr' | 'en' }) {
   const [enabled, setEnabled] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const token = useRef(0);
@@ -37,11 +37,11 @@ export function DidouGuide({ text, fr, success = false, lang }: { text: string; 
       <path d="M33 90L24 96M78 90L88 96" stroke="#e4a75e" strokeWidth="10" strokeLinecap="round"/>
     </svg>
     <div className="adventure-bubble">
-      <span className="adventure-eyebrow">{fr ? 'Didou, ton compagnon' : 'ديدو، رفيقك'}</span>
+      <span className="adventure-eyebrow">{uiLanguage === 'en' ? 'Didou, your companion' : fr ? 'Didou, ton compagnon' : 'ديدو، رفيقك'}</span>
       <p dir={lang === 'ar-SA' ? 'rtl' : undefined} lang={lang?.slice(0, 2)}>{isolateMathRuns(text)}</p>
       <button type="button" className="adventure-audio" aria-pressed={enabled} onClick={() => { if (enabled) { token.current++; stopSpeech(); setSpeaking(false); } setEnabled(!enabled); }}>
         {enabled ? <Square size={15} aria-hidden/> : <Volume2 size={18} aria-hidden/>}
-        {enabled ? (fr ? 'Couper la voix' : 'أوقف الصوت') : (fr ? 'Écouter Didou' : 'أستمع إلى ديدو')}
+        {enabled ? (uiLanguage === 'en' ? 'Stop voice' : fr ? 'Couper la voix' : 'أوقف الصوت') : (uiLanguage === 'en' ? 'Listen to Didou' : fr ? 'Écouter Didou' : 'أستمع إلى ديدو')}
       </button>
     </div>
   </div>;

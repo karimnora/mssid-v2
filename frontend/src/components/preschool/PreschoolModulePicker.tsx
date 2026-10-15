@@ -156,6 +156,12 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
     border: string;
   }[] = [
     {
+      id: 'garden',
+      title: t('مهمة حديقة ديدو', 'La mission du jardin de Didou', 'Didou’s garden mission'),
+      desc: t('ثلاث جلسات: أزرع وأسقي وأقاسم. جلسة الاكتشاف مجانية.', 'Trois séances : semer, arroser, partager. Une séance découverte gratuite.', 'Three sessions: plant, water and share. One free discovery session.'),
+      icon: '🌱', gradient: 'from-emerald-400 to-lime-500', border: 'border-emerald-300',
+    },
+    {
       id: 'board',
       title: labels.magicBoard,
       desc: labels.magicBoardDesc,

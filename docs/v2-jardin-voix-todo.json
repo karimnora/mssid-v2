@@ -1,0 +1,924 @@
+{
+  "note": "TODO uniquement : aucune génération ElevenLabs effectuée. Textes dédupliqués des langues proposées dans l’interface.",
+  "uniqueUtterances": 79,
+  "alreadyRecorded": 0,
+  "toRecord": [
+    {
+      "language": "ar",
+      "text": "اِلْمَسْ ثَلَاثَ خَانَاتٍ لِتَزْرَعَ ثَلَاثَ بَذَرَاتٍ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "لِدِيدُو ثَلَاثُ بَذَرَاتٍ. أَضَافَ بَذْرَةً. كَمْ بَذْرَةً أَصْبَحَتْ لَدَيْهِ؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "ضَعْ قِطْعَةَ مَاءٍ وَاحِدَةً فِي كُلِّ أَصِيصٍ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَاذَا يَرَى دِيدُو بَعْدَ أَيَّامٍ؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَزْرَعُ دِيدُو بَذْرَةً وَيَسْقِيهَا. بَعْدَ أَيَّامٍ، تَظْهَرُ نَبْتَةٌ صَغِيرَةٌ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 3 حبات طماطم بالتساوي بين 3 سلال.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "احكِ لشخص بالغ كيف ساعدت ديدو. ثم جرّب بأشياء حقيقية.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:1AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:2AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:3AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:4AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:5AP:5",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche trois emplacements pour planter trois graines.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Didou a trois graines. Il en ajoute une. Combien de graines a-t-il maintenant ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Donne un jeton d’eau à chaque pot.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Que voit Didou après plusieurs jours ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Didou plante une graine. Il l’arrose. Après plusieurs jours, une petite plante apparaît.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Partage 3 tomates également entre 3 paniers.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Raconte à un adulte comment tu as aidé Didou. Puis essaie avec de vrais objets.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:1AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:2AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:3AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:4AP:5",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:5AP:5",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch three spaces to plant three seeds.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Didou has three seeds. He adds one. How many seeds does he have now?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Give each pot one water counter.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "What does Didou see after several days?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Didou plants a seed and waters it. After several days, a little plant appears.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Share 3 tomatoes equally between 3 baskets.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Tell a grown-up how you helped Didou. Then try with real objects.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:preschool:5",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "حَضِّرْ سِتَّ خَانَاتٍ فِي حَدِيقَةِ دِيدُو.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "نحتاج إلى ست بذرات. في كل كيس ثلاث بذرات. كم كيساً نحتاج؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "ضَعْ قِطْعَتَيْ مَاءٍ فِي كُلِّ أَصِيصٍ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَنْ يُحْضِرُ الْمَاءَ؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تَزْرَعُ لِينَا الْبُذُورَ. يُحْضِرُ سَامِي الْمَاءَ. يَسْقِيَانِ الْأَصَائِصَ مَعاً.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 6 حبات طماطم بالتساوي بين 2 سلال.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Prépare six emplacements dans le potager de Didou.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Il faut six graines. Un sachet contient trois graines. Combien de sachets faut-il ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Donne deux jetons d’eau à chaque pot.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Qui apporte l’eau ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Lina sème les graines. Sami apporte l’eau. Ensemble, ils arrosent les pots.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Partage 6 tomates également entre 2 paniers.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:1AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "ازرع أربع بذرات في كل صف من الصفوف الثلاثة.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "في كل كيس أربع بذرات. كم كيساً نحتاج للحصول على اثنتي عشرة بذرة؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "ضَعْ ثَلَاثَ قِطَعِ مَاءٍ فِي كُلِّ أَصِيصٍ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "لِمَاذَا تَضَعُ لِينَا الْبِطَاقَاتِ؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "زَرَعَتْ لِينَا الْعَدَسَ وَالْمَعْدَنُوسَ فِي أَصَائِصَ. وَضَعَتْ بِطَاقَةً بِاسْمِ كُلِّ نَبْتَةٍ. بَعْدَ ذَلِكَ وَجَدَتْ أَصِيصَ الْمَعْدَنُوسِ بِسُهُولَةٍ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 12 حبات طماطم بالتساوي بين 3 سلال.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Plante quatre graines dans chacune des trois rangées.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Un sachet contient quatre graines. Combien de sachets faut-il pour douze graines ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Donne trois jetons d’eau à chaque pot.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Pourquoi Lina met-elle des étiquettes ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Lina sème des lentilles et du persil dans des pots. Elle place une étiquette avec le nom de chaque plante. Plus tard, elle retrouve facilement le pot de persil.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Partage 12 tomates également entre 3 paniers.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:2AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "كوّن حوضاً مستطيلاً من 12 خانة متصلة بلا فراغات. كل خانة تمثل وحدة مساحة.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "ثمن كل كيس 25 دج. ما ثمن ثلاثة أكياس؟ الأسعار افتراضية للعبة.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تمثل كل جرعة 250 mL. حضّر 500 mL لكل أصيص. هذه كميات افتراضية للحساب.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:2",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:4AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا الْعَامِلُ الَّذِي يُغَيِّرُهُ سَامِي؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يُرَاقِبُ سَامِي أَصِيصَيْ عَدَسٍ تَحْتَ الضَّوْءِ نَفْسِهِ وَبِالتُّرْبَةِ نَفْسِهَا. كُلَّ يَوْمٍ يُعْطِي الأَصِيصَ الثَّانِي مَاءً أَقَلَّ وَيُسَجِّلُ مُلَاحَظَاتِهِ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 18 حبات طماطم بالتساوي بين 3 سلال.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Dessine un potager rectangulaire de 12 cases, sans trou. Chaque case représente une unité d’aire.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Trois sachets coûtent 25 DA chacun. Quel est leur prix total ? Prix fictifs pour ce jeu.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Chaque dose représente 250 mL. Prépare 500 mL par pot. Ce sont des quantités fictives pour calculer.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:2",
+          "purpose": "prompt"
+        },
+        {
+          "task": "garden-mission:4AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quel facteur Sami change-t-il ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Sami observe deux pots de lentilles, placés sous la même lumière. Les pots contiennent la même terre. Chaque jour, il donne moins d’eau au deuxième pot et note ses observations.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Partage 18 tomates également entre 3 paniers.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:3AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "خصّص نصف الخانات الاثنتي عشرة المتساوية لبذور ديدو.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يشتري ديدو ثلاثة أكياس بثمن 40 دج للكيس ويدفع 200 دج. كم يسترجع؟ الأسعار افتراضية.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَاذَا نَفْعَلُ قَبْلَ اسْتِنْتَاجِ فَرْقٍ فِي النُّمُوِّ؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تَزْرَعُ مَجْمُوعَتَانِ النَّوْعَ نَفْسَهُ فِي أَصَائِصَ مُتَمَاثِلَةٍ وَتَحْتَ الضَّوْءِ نَفْسِهِ. تَتَغَيَّرُ كَمِّيَّةُ الْمَاءِ فَقَطْ. فِي الْيَوْمِ الأَوَّلِ لَا يَظْهَرُ فَرْقٌ فِي النُّمُوِّ، فَيُوَاصِلُ التَّلَامِيذُ الْمُلَاحَظَةَ أَيَّاماً.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "من أصل 12 حبة طماطم، أعطِ النصف للمدرسة والربع للبيت والربع للأصدقاء.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Réserve la moitié des 12 cases égales aux graines de Didou.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Didou achète trois sachets à 40 DA chacun et donne 200 DA. Combien reçoit-il de monnaie ? Prix fictifs.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Que faire avant de conclure sur la croissance ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Deux groupes cultivent la même espèce, dans des pots identiques et sous la même lumière. Seule la quantité d’eau change. Le premier jour, rien ne permet de distinguer leur croissance. Les élèves poursuivent les observations pendant plusieurs jours.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Sur 12 tomates, donne la moitié à l’école, un quart à la maison et un quart aux amis.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:4AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "خصّص 3/4 من هذا الحوض ذي 20 خانة متساوية للخضروات.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تشغل الخضروات 15 m². تكلفة البذور 12 دج لكل m². ما التكلفة الإجمالية؟ الأسعار افتراضية.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تمثل كل جرعة 250 mL. حضّر 750 mL لكل أصيص. هذه كميات افتراضية للحساب.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَيُّ اسْتِنْتَاجٍ يَحْتَرِمُ الْمُلَاحَظَاتِ؟",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يُقَارِنُ التَّلَامِيذُ أَرْبَعَةَ أَصَائِصِ عَدَسٍ بِالْحَجْمِ وَالتُّرْبَةِ وَالضَّوْءِ نَفْسِهَا. يَتَلَقَّى أَصِيصَانِ جُرْعَةَ مَاءٍ وَيَتَلَقَّى الآخَرَانِ جُرْعَتَيْنِ. بَعْدَ أَيَّامٍ، كَانَ نُمُوُّ الأَصِيصَيْنِ الأَكْثَرِ سَقْياً أَكْبَرَ فِي هَذِهِ التَّجْرِبَةِ. يَحْتَفِظُونَ بِالْقِيَاسَاتِ وَيَقْتَرِحُونَ إِعَادَةَ الْمُقَارَنَةِ.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "من أصل 20 حبة طماطم، أعطِ 25 % للمدرسة. وزّع الباقي بالتساوي بين ثلاث عائلات.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Réserve 3/4 de ce potager de 20 cases égales aux légumes.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:0",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Les légumes occupent 15 m². Les graines coûtent 12 DA par m². Quel est le coût total ? Prix fictifs.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:1",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Chaque dose représente 250 mL. Prépare 750 mL par pot. Ce sont des quantités fictives pour calculer.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:2",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quelle conclusion respecte les observations ?",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:3",
+          "purpose": "prompt"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Les élèves comparent quatre pots de lentilles de même taille, avec la même terre et la même lumière. Deux pots reçoivent une dose d’eau et deux autres en reçoivent deux. Après plusieurs jours, les pots les plus arrosés ont davantage poussé dans cet essai. Ils gardent leurs mesures et proposent de répéter la comparaison.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:3",
+          "purpose": "story"
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Sur 20 tomates, donne 25 % à l’école. Partage le reste également entre trois familles.",
+      "existingAudio": null,
+      "uses": [
+        {
+          "task": "garden-mission:5AP:4",
+          "purpose": "prompt"
+        }
+      ]
+    }
+  ]
+}

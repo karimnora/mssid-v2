@@ -1,3 +1,4 @@
+import { GARDEN_PLANS } from '../data/garden/gardenMission';
 import { MOSAIC_TASKS } from '../data/family/mosaicWorkshop';
 import { ADVENTURE_THEMES } from '../data/family/themedAdventures';
 import { premiumLabResultId, premiumLabResultIds } from '../data/family/premiumLabJourneys';
@@ -13,7 +14,7 @@ export function readFamilyResults(key: string): FamilyResults {
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(key) ?? '{}');
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
-    const known = new Set([...FAMILY_MODULES.flatMap(m => m.tasks.map(t => t.id)), 'readiness-count','readiness-oral','readiness-draw', ...FAMILY_GRADES.flatMap(g => MOSAIC_TASKS[g].map(t => t.id)), ...FAMILY_GRADES.flatMap(premiumLabResultIds), ...FAMILY_GRADES.flatMap(g => [`lab:${g}:operations`,`lab:${g}:measures`])]);
+    const known = new Set([...FAMILY_MODULES.flatMap(m => m.tasks.map(t => t.id)), 'readiness-count','readiness-oral','readiness-draw', ...FAMILY_GRADES.flatMap(g => GARDEN_PLANS[g].tasks.map(t => t.id)), ...FAMILY_GRADES.flatMap(g => MOSAIC_TASKS[g].map(t => t.id)), ...FAMILY_GRADES.flatMap(premiumLabResultIds), ...FAMILY_GRADES.flatMap(g => [`lab:${g}:operations`,`lab:${g}:measures`])]);
     return Object.fromEntries(Object.entries(parsed).filter(([id, v]) => known.has(id) && v && typeof v === 'object' && ['independent','helped','review'].includes(v.outcome) && typeof v.at === 'string' && Number.isFinite(Date.parse(v.at))).map(([id, value]) => {
       const completedAt = typeof value.completedAt === 'string' && Number.isFinite(Date.parse(value.completedAt)) ? value.completedAt : value.outcome !== 'review' ? value.at : undefined;
       return [id, { outcome: value.outcome, at: value.at, ...(completedAt ? { completedAt } : {}) }];

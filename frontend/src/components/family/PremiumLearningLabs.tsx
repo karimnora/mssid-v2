@@ -1,3 +1,5 @@
+import { GardenMission } from '../garden/GardenMission';
+import { GardenObject } from '../garden/GardenArt';
 import { MosaicWorkshop } from './MosaicWorkshop';
 import { ADVENTURE_THEMES, THEMED_READING, type AdventureTheme } from '../../data/family/themedAdventures';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -13,7 +15,7 @@ import { AdventureBackdrop, AdventureStage, DidouGuide, LabParentSummary } from 
 type LabProps = { grade: PrimaryGrade; fr: boolean; premium: boolean; story: boolean; onResult: (id: string, outcome: TaskOutcome) => void; pending: React.MutableRefObject<boolean>; theme: AdventureTheme };
 export function PremiumLearningLabs({ grade, fr, premium, onResult, results = {} }: Omit<LabProps, 'story' | 'pending' | 'theme'> & { results?: FamilyResults }) {
   const say = (a: string, b: string) => fr ? a : b;
-  const [lab, setLab] = useState<PremiumLab | 'mosaic'>('market');
+  const [lab, setLab] = useState<PremiumLab | 'mosaic' | 'garden-mission'>('market');
   const [theme, setTheme] = useState<AdventureTheme>('oasis');
   const [mode, setMode] = useState<'interactive' | 'story'>('interactive');
   const exit = useActivityExit();
@@ -24,8 +26,10 @@ export function PremiumLearningLabs({ grade, fr, premium, onResult, results = {}
   const completedTotal = (['market', 'story', 'science'] as PremiumLab[]).reduce((sum, id) => sum + completedFor(id), 0);
   useEffect(() => () => stopSpeech(), [lab, grade, theme]);
   const props = { grade, fr, premium, pending, theme, story: mode === 'story', onResult };
+  if (lab === 'garden-mission') return <GardenMission key={grade} band={grade} language={fr ? 'fr' : 'ar'} premium={premium} results={results} onResult={onResult} onPending={onMosaicPending} onExit={() => setLab('market')}/>;
   return <section className="premium-adventures space-y-5" aria-label={say('Laboratoires Premium', 'مختبرات Premium')}>
     <div className="adventure-introduction"><span className="adventure-eyebrow">{say('LES AVENTURES DE DIDOU', 'مغامرات ديدو')}</span><h3>{say('Une découverte à chaque geste.', 'أكتشف مع كل حركة.')}</h3><p>{say('Trois univers, trois défis chacun. Écoute, essaie, puis explique ce que tu as découvert. Une première mission est offerte dans chaque laboratoire.', 'ثلاثة عوالم وثلاثة تحديات في كل عالم. استمع وجرّب ثم اشرح ما اكتشفت. المهمة الأولى مجانية في كل مختبر.')}</p></div>
+    <button type="button" className="garden-entry" onClick={() => { const change=()=>setLab('garden-mission'); if(pending.current)exit.requestLeave(change);else change(); }}><GardenObject kind="plant" size={58}/><span><strong>{say('La mission du jardin de Didou', 'مهمة حديقة ديدو')}</strong><small>{say('3 séances : semer, arroser, partager. Une séance découverte gratuite.', 'ثلاث جلسات: أزرع وأسقي وأقاسم. جلسة الاكتشاف مجانية.')}</small></span></button>
     {lab !== 'mosaic' && <>
     <details className="adventure-collection"><summary><span>{say('Choisir mon aventure', 'أختار مغامرتي')}</span><strong>{fr ? ADVENTURE_THEMES.find(item=>item.id===theme)!.title.fr : ADVENTURE_THEMES.find(item=>item.id===theme)!.title.ar}</strong></summary><fieldset className="adventure-themes"><legend className="sr-only">{say('Aventures disponibles', 'المغامرات المتاحة')}</legend>{ADVENTURE_THEMES.map(item => <button type="button" key={item.id} aria-pressed={theme === item.id} disabled={!premium && item.id !== 'oasis'} onClick={() => { if(item.id === theme) return; const change = () => {setTheme(item.id);setLab('market');}; if(pending.current) exit.requestLeave(change); else change(); }}><span>{fr ? item.title.fr : item.title.ar}</span>{!premium && item.id !== 'oasis' && <small>Premium</small>}</button>)}</fieldset></details>
     <p className="adventure-theme-intro">{fr ? ADVENTURE_THEMES.find(item=>item.id===theme)!.intro.fr : ADVENTURE_THEMES.find(item=>item.id===theme)!.intro.ar}</p>
