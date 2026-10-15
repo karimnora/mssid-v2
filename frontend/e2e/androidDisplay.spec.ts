@@ -104,7 +104,20 @@ for (const scenario of cases) {
       const tutor = page.locator('[data-nav-compact] button.kids-nav-ai');
       if (scenario.width < 768) {
         await tutor.click();
-        await checkModal(page, page.locator('.kids-modal-panel'));
+        const panel = page.getByRole('dialog', { name: /Mon accompagnement MSSID|مرافقتي مع مسيد/ });
+        await expect(panel).toBeVisible();
+        await checkWidth(page);
+        expect(await panel.evaluate(element => element.scrollWidth <= element.clientWidth + 1)).toBe(true);
+        // Guided support uses a scrolling overlay, not a kids-modal-body sheet.
+        const lastControl = panel.getByRole('button').last();
+        await lastControl.scrollIntoViewIfNeeded();
+        await expect(lastControl).toBeInViewport();
+        const close = panel.getByRole('button', { name: /^(Fermer|أغلق)$/ });
+        await close.scrollIntoViewIfNeeded();
+        await expect(close).toBeInViewport();
+        await close.click();
+        await expect(panel).not.toBeVisible();
+        await checkWidth(page);
       }
     });
 
@@ -117,7 +130,10 @@ for (const scenario of cases) {
       // Guest profile entry opens authentication directly.
       await expect(panel.locator('input[type="email"]')).toBeVisible();
       await panel.getByRole('button', { name: /إنشاء حساب|Créer un compte/ }).first().click();
-      await expect(panel.locator('select[required]')).toBeVisible();
+      await expect(panel.locator('input[autocomplete="name"]')).toBeVisible();
+      await expect(panel.locator('input[required]')).toHaveCount(2);
+      await expect(panel.locator('select[required]')).toHaveCount(0);
+      await expect(panel.locator('select')).toBeVisible();
       await page.setViewportSize({ width: scenario.width, height: Math.min(scenario.height, 480) });
       await checkModal(page, panel);
     });

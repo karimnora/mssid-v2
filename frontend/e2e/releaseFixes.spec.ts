@@ -7,10 +7,10 @@ test.beforeEach(async ({ page }) => {
 
 test('real settings keep the account and grade unchanged until confirmation', async ({ page }) => {
   const account = { id: 123, nom: 'Test', email: 'test@example.test', role: 'ROLE_FREE', grade: '1AP', score: 0, badges: ['b_welcome'] };
-  const updates: unknown[] = [];
+  const gradeUpdates: unknown[] = [];
   await page.route('**/api/**', route => {
     if (route.request().method() === 'PUT') {
-      const patch = route.request().postDataJSON(); updates.push(patch); Object.assign(account, patch);
+      const patch = route.request().postDataJSON(); if (Object.prototype.hasOwnProperty.call(patch, 'grade')) gradeUpdates.push(patch); Object.assign(account, patch);
       return route.fulfill({ json: account });
     }
     return route.fulfill({ json: route.request().url().includes('/users/me') ? account : {} });
@@ -20,13 +20,15 @@ test('real settings keep the account and grade unchanged until confirmation', as
   await page.locator('[data-nav-settings]').click();
   await page.getByRole('button', { name: /2ème année/ }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
-  await expect(page).toHaveURL(/g=1AP$/); expect(account.grade).toBe('1AP'); expect(updates).toHaveLength(0);
+  await expect(page).toHaveURL(/g=1AP$/); expect(account.grade).toBe('1AP'); expect(gradeUpdates).toHaveLength(0);
   await page.getByRole('button', { name: 'Continuer', exact: true }).click();
-  await expect(page).toHaveURL(/g=1AP$/); expect(account.grade).toBe('1AP');
+  await expect(page).toHaveURL(/g=1AP$/); expect(account.grade).toBe('1AP'); expect(gradeUpdates).toHaveLength(0);
   await page.locator('[data-nav-settings]').click(); await page.getByRole('button', { name: /2ème année/ }).click();
   await page.getByRole('button', { name: 'Quitter', exact: true }).click();
   await expect(page).toHaveURL(/g=2AP$/);
   await expect.poll(() => account.grade).toBe('2AP');
+  expect(gradeUpdates).toHaveLength(1);
+  expect(gradeUpdates[0]).toMatchObject({ grade: '2AP' });
 });
 
 test('real mobile Games tab opens the catalogue after leaving a used lab', async ({ page }) => {

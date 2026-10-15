@@ -42,7 +42,7 @@ test('a guest can log in with valid credentials', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'تسجيل الدخول' })).not.toBeVisible();
 });
 
-test('a guest can register a new account with a chosen grade', async ({ page }) => {
+test('a parent can register without duplicating the child grade', async ({ page }) => {
   await page.route('**/v1/auth/register', (route) =>
     route.fulfill({
       status: 200,
@@ -51,7 +51,7 @@ test('a guest can register a new account with a chosen grade', async ({ page }) 
         nom: 'يونس',
         email: 'younes@mssid.dz',
         roleName: 'ROLE_FREE',
-        user: { grade: '3AP' },
+        user: { id: 2, nom: 'يونس', email: 'younes@mssid.dz', role: 'ROLE_FREE' },
       }),
     })
   );
@@ -65,13 +65,14 @@ test('a guest can register a new account with a chosen grade', async ({ page }) 
   await page.getByPlaceholder('مثال: يونس الجزائري').fill('يونس');
   await page.getByPlaceholder('example@mssid.dz').fill('younes@mssid.dz');
   await page.getByPlaceholder('••••••••').fill('password123');
-  // The registration form now also has an optional wilaya <select> — the grade dropdown is the
-  // only one marked required, so target it by that instead of assuming it's the only <select>.
-  await page.locator('select[required]').selectOption('3AP');
+  // School level is selected later in each child's profile.
+  await expect(modal.locator('select[required]')).toHaveCount(0);
 
   const [registerRequest] = await Promise.all([
     page.waitForRequest('**/v1/auth/register'),
     page.getByRole('button', { name: 'إنشاء الحساب' }).click(),
   ]);
-  expect(registerRequest.postDataJSON()).toMatchObject({ email: 'younes@mssid.dz', grade: '3AP' });
+  expect(registerRequest.postDataJSON()).toMatchObject({ nom: 'يونس', email: 'younes@mssid.dz', password: 'password123' });
+  expect(registerRequest.postDataJSON()).not.toHaveProperty('grade');
+  await expect(modal).not.toBeVisible();
 });
