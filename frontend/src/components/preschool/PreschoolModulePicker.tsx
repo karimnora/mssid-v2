@@ -156,6 +156,12 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
     border: string;
   }[] = [
     {
+      id: 'market',
+      title: t('مهمة سوق ديدو', 'La mission du marché de Didou', 'Didou’s market mission'),
+      desc: t('أحضّر وأقارن وأقاسم. جلسة الاكتشاف مجانية.', 'Préparer, comparer et partager. Une séance découverte gratuite.', 'Pack, compare and share. One free discovery session.'),
+      icon: '🧺', gradient: 'from-teal-400 to-cyan-600', border: 'border-teal-300',
+    },
+    {
       id: 'garden',
       title: t('مهمة حديقة ديدو', 'La mission du jardin de Didou', 'Didou’s garden mission'),
       desc: t('ثلاث جلسات: أزرع وأسقي وأقاسم. جلسة الاكتشاف مجانية.', 'Trois séances : semer, arroser, partager. Une séance découverte gratuite.', 'Three sessions: plant, water and share. One free discovery session.'),

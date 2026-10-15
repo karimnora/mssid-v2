@@ -1,0 +1,666 @@
+{
+  "note": "Ne générer que les phrases sans existingAudio. Prompts et récits réellement exposés ; textes dédupliqués par langue. Synthèse vocale utilisable en attendant. Comparer aussi au TODO jardin avant génération.",
+  "uniquePhrases": 81,
+  "existingRecordings": 0,
+  "phrases": [
+    {
+      "language": "fr",
+      "text": "Prépare 3 pommes et 2 carottes. Touche + pour ajouter, − pour retirer.",
+      "references": [
+        "market-mission:preschool:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "حضّر 3 تفاحات وجزرتين. المس + للإضافة و− للحذف.",
+      "references": [
+        "market-mission:preschool:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "Pack 3 apples and 2 carrots. Touch + to add and − to remove.",
+      "references": [
+        "market-mission:preschool:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Quel panier contient le plus de pommes ?",
+      "references": [
+        "market-mission:preschool:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "أيّ سلة تحتوي على تفاح أكثر؟",
+      "references": [
+        "market-mission:preschool:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "Which basket has more apples?",
+      "references": [
+        "market-mission:preschool:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Dans notre jeu de marchand, la commande coûte 4 jetons. Pose exactement 4 jetons.",
+      "references": [
+        "market-mission:preschool:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "في لعبة السوق، ثمن الطلب 4 رموز. ضع 4 رموز بالضبط.",
+      "references": [
+        "market-mission:preschool:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "In our pretend shop, the order costs 4 tokens. Put down exactly 4 tokens.",
+      "references": [
+        "market-mission:preschool:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Que cherche Lina ?",
+      "references": [
+        "market-mission:preschool:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Lina apporte une liste. Elle cherche des pommes. Elle garde son panier pour les porter.",
+      "references": [
+        "market-mission:preschool:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "عَمَّ تَبْحَثُ لِينَا؟",
+      "references": [
+        "market-mission:preschool:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "تُحْضِرُ لِينَا قَائِمَةً. تَبْحَثُ عَنِ التُّفَّاحِ. تَحْمِلُهُ فِي سَلَّتِهَا.",
+      "references": [
+        "market-mission:preschool:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "What is Lina looking for?",
+      "references": [
+        "market-mission:preschool:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "Lina brings a list. She looks for apples. She keeps her basket to carry them.",
+      "references": [
+        "market-mission:preschool:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Partage 4 pommes entre 2 paniers : chacun doit en avoir autant.",
+      "references": [
+        "market-mission:preschool:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 4 تفاحات على سلتين بالتساوي.",
+      "references": [
+        "market-mission:preschool:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "Share 4 apples equally between 2 baskets.",
+      "references": [
+        "market-mission:preschool:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Explique une de tes décisions à un adulte.",
+      "references": [
+        "market-mission:preschool:5:prompt",
+        "market-mission:1AP:5:prompt",
+        "market-mission:2AP:5:prompt",
+        "market-mission:3AP:5:prompt",
+        "market-mission:4AP:5:prompt",
+        "market-mission:5AP:5:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "اشرح أحد اختياراتك لشخص بالغ.",
+      "references": [
+        "market-mission:preschool:5:prompt",
+        "market-mission:1AP:5:prompt",
+        "market-mission:2AP:5:prompt",
+        "market-mission:3AP:5:prompt",
+        "market-mission:4AP:5:prompt",
+        "market-mission:5AP:5:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "en",
+      "text": "Explain one of your choices to a grown-up.",
+      "references": [
+        "market-mission:preschool:5:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "La commande demande 4 pommes et 2 carottes.",
+      "references": [
+        "market-mission:1AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "يحتاج الطلب إلى 4 تفاحات وجزرتين.",
+      "references": [
+        "market-mission:1AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Quel lot contient le plus de carottes ?",
+      "references": [
+        "market-mission:1AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "أيّ مجموعة تحتوي على جزر أكثر؟",
+      "references": [
+        "market-mission:1AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Le panier coûte 20 DA. Compose le montant exact avec les pièces du jeu.",
+      "references": [
+        "market-mission:1AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "ثمن السلة 20 دج. كوّن المبلغ بالضبط بقطع اللعبة.",
+      "references": [
+        "market-mission:1AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Que manque-t-il dans son panier ?",
+      "references": [
+        "market-mission:1AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Sami a du pain et des pommes. Sa liste demande aussi des carottes. Il regarde son panier avant de payer.",
+      "references": [
+        "market-mission:1AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "مَاذَا يَنْقُصُ سَلَّتَهُ؟",
+      "references": [
+        "market-mission:1AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "عِنْدَ سَامِي خُبْزٌ وَتُفَّاحٌ. فِي قَائِمَتِهِ جَزَرٌ أَيْضاً. يَنْظُرُ فِي سَلَّتِهِ قَبْلَ الدَّفْعِ.",
+      "references": [
+        "market-mission:1AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Partage 6 pommes entre 2 paniers, en parts égales.",
+      "references": [
+        "market-mission:1AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 6 تفاحات على سلتين بالتساوي.",
+      "references": [
+        "market-mission:1AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Chaque panier contient 3 pommes. Pour 2 paniers, prépare les pommes, puis ajoute 3 carottes.",
+      "references": [
+        "market-mission:2AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "في كل سلة 3 تفاحات. حضّر التفاح لسلتين ثم أضف 3 جزرات.",
+      "references": [
+        "market-mission:2AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Deux lots identiques coûtent 12 DA ou 15 DA. Lequel coûte moins cher ?",
+      "references": [
+        "market-mission:2AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "مجموعتان متماثلتان بسعر 12 دج و15 دج. أيهما أقل ثمناً؟",
+      "references": [
+        "market-mission:2AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "La commande coûte 35 DA. Compose le montant exact.",
+      "references": [
+        "market-mission:2AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "ثمن الطلب 35 دج. كوّن المبلغ بالضبط.",
+      "references": [
+        "market-mission:2AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Combien de pommes doit-elle ajouter ?",
+      "references": [
+        "market-mission:2AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Nour prépare le goûter pour six enfants. Elle choisit une pomme par enfant. Deux pommes sont déjà dans le panier. Elle ajoute les pommes manquantes.",
+      "references": [
+        "market-mission:2AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "كَمْ تُفَّاحَةً تُضِيفُ؟",
+      "references": [
+        "market-mission:2AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "تُحَضِّرُ نُورُ وَجْبَةً لِسِتَّةِ أَطْفَالٍ. تَخْتَارُ تُفَّاحَةً لِكُلِّ طِفْلٍ. فِي السَّلَّةِ تُفَّاحَتَانِ. تُضِيفُ مَا يَنْقُصُ.",
+      "references": [
+        "market-mission:2AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Partage 12 pommes entre 3 familles, en parts égales.",
+      "references": [
+        "market-mission:2AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 12 تفاحة على 3 عائلات بالتساوي.",
+      "references": [
+        "market-mission:2AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Prépare 3 lots de 4 pommes et 2 lots de 3 carottes.",
+      "references": [
+        "market-mission:3AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "حضّر 3 مجموعات من 4 تفاحات ومجموعتين من 3 جزرات.",
+      "references": [
+        "market-mission:3AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Chaque offre donne 6 pommes de même qualité. Quelle offre a le plus petit prix total ?",
+      "references": [
+        "market-mission:3AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "كل عرض يعطي 6 تفاحات بالجودة نفسها. أيهما أقل سعراً إجمالياً؟",
+      "references": [
+        "market-mission:3AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Deux lots coûtent 30 DA chacun et un sac coûte 15 DA. Compose le montant total.",
+      "references": [
+        "market-mission:3AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "ثمن كل مجموعة من مجموعتين 30 دج وثمن كيس 15 دج. كوّن المبلغ الإجمالي.",
+      "references": [
+        "market-mission:3AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Quel total correspond au reçu ?",
+      "references": [
+        "market-mission:3AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Le reçu indique deux lots à 30 DA et un sac à 15 DA. Le vendeur demande 85 DA. Lina recalcule avant de payer.",
+      "references": [
+        "market-mission:3AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "أيّ مجموع يطابق الوصل؟",
+      "references": [
+        "market-mission:3AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "في الوصل مجموعتان بسعر 30 دج لكل مجموعة وكيس بـ15 دج. يطلب البائع 85 دج. تعيد لينا الحساب قبل الدفع.",
+      "references": [
+        "market-mission:3AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Partage 18 pommes entre 3 familles, en parts égales.",
+      "references": [
+        "market-mission:3AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 18 تفاحة على 3 عائلات بالتساوي.",
+      "references": [
+        "market-mission:3AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Prends la moitié de 18 pommes et le quart de 12 carottes.",
+      "references": [
+        "market-mission:4AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "خذ نصف 18 تفاحة وربع 12 جزرة.",
+      "references": [
+        "market-mission:4AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Pour acheter 1 kg de pommes de même qualité, quelle offre coûte moins cher ?",
+      "references": [
+        "market-mission:4AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "لشراء 1 كغ من التفاح بالجودة نفسها، أيّ عرض أقل سعراً؟",
+      "references": [
+        "market-mission:4AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Trois lots coûtent 40 DA chacun et un sac coûte 25 DA. Compose le total.",
+      "references": [
+        "market-mission:4AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "ثمن كل مجموعة من ثلاث مجموعات 40 دج وثمن كيس 25 دج. كوّن المجموع.",
+      "references": [
+        "market-mission:4AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Quelle monnaie doit-il recevoir ?",
+      "references": [
+        "market-mission:4AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "La commande de Didou coûte 145 DA. Il donne 200 DA. Le vendeur prépare la monnaie. Didou vérifie en additionnant le prix et la monnaie.",
+      "references": [
+        "market-mission:4AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "كم يجب أن يسترجع؟",
+      "references": [
+        "market-mission:4AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "ثمن طلب ديدو 145 دج. يدفع 200 دج. يحضّر البائع الباقي. يتحقق ديدو بجمع الثمن والباقي.",
+      "references": [
+        "market-mission:4AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Partage 24 pommes entre 4 familles, en parts égales.",
+      "references": [
+        "market-mission:4AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "وزّع 24 تفاحة على 4 عائلات بالتساوي.",
+      "references": [
+        "market-mission:4AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Prends les trois quarts de 20 pommes et 25 % de 12 carottes.",
+      "references": [
+        "market-mission:5AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "خذ ثلاثة أرباع 20 تفاحة و25 % من 12 جزرة.",
+      "references": [
+        "market-mission:5AP:0:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "On peut acheter au poids au même tarif. Quelle offre a le plus petit prix par kilogramme ?",
+      "references": [
+        "market-mission:5AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "يمكن الشراء بالوزن بالتعريفة نفسها. أيّ عرض أقل سعراً لكل كيلوغرام؟",
+      "references": [
+        "market-mission:5AP:1:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Le prix de 240 DA baisse de 25 %. Compose le nouveau prix, pas la réduction.",
+      "references": [
+        "market-mission:5AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "ينخفض سعر 240 دج بنسبة 25 %. كوّن السعر الجديد لا قيمة التخفيض.",
+      "references": [
+        "market-mission:5AP:2:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Quel prix correspond à cette masse ?",
+      "references": [
+        "market-mission:5AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Les pommes coûtent 200 DA par kilogramme. Amine achète 750 g. La balance affiche 0,75 kg. Il veut vérifier le prix avant de payer.",
+      "references": [
+        "market-mission:5AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "أيّ ثمن يطابق هذه الكتلة؟",
+      "references": [
+        "market-mission:5AP:3:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "سعر التفاح 200 دج للكيلوغرام. يشتري أمين 750 غ. يعرض الميزان 0.75 كغ. يريد التحقق من الثمن قبل الدفع.",
+      "references": [
+        "market-mission:5AP:3:passage"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "fr",
+      "text": "Sur 20 pommes, 25 % ont déjà été donnés. Il reste 15 pommes : répartis-les également entre 3 familles.",
+      "references": [
+        "market-mission:5AP:4:prompt"
+      ],
+      "existingAudio": null
+    },
+    {
+      "language": "ar",
+      "text": "من 20 تفاحة تم التبرع بـ25 %. بقيت 15 تفاحة: وزّعها على 3 عائلات بالتساوي.",
+      "references": [
+        "market-mission:5AP:4:prompt"
+      ],
+      "existingAudio": null
+    }
+  ],
+  "newGenerationNeeded": 81
+}

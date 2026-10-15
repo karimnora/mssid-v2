@@ -42,7 +42,8 @@ interface PreschoolAppProps {
 }
 
 const PreschoolGardenMission = React.lazy(() => import('./PreschoolGardenMission').then(module => ({ default: module.PreschoolGardenMission })));
-export type PreschoolSpecialTool = 'board' | 'xylophone' | 'soundbox' | 'games' | 'garden';
+const PreschoolMarketMission = React.lazy(() => import('./PreschoolMarketMission').then(module => ({ default: module.PreschoolMarketMission })));
+export type PreschoolSpecialTool = 'board' | 'xylophone' | 'soundbox' | 'games' | 'garden' | 'market';
 
 const LANGUAGE_STORAGE_KEY = 'mssid_preschool_language';
 
@@ -179,6 +180,9 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
 
   if (!language) return <PreschoolLanguagePicker onSelect={setLanguage} />;
 
+  if (activeSpecialTool === 'market') {
+    return <React.Suspense fallback={<p role="status">{language === 'ar' ? 'نفتح السوق…' : language === 'en' ? 'Opening the market…' : 'Ouverture du marché…'}</p>}><PreschoolMarketMission language={language} onExit={() => setActiveSpecialTool(null)}/></React.Suspense>;
+  }
   if (activeSpecialTool === 'garden') {
     return <React.Suspense fallback={<p role="status">{language === 'ar' ? 'نفتح الحديقة…' : language === 'en' ? 'Opening the garden…' : 'Ouverture du jardin…'}</p>}><PreschoolGardenMission language={language} onExit={() => setActiveSpecialTool(null)}/></React.Suspense>;
   }
