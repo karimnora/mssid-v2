@@ -1,17 +1,22 @@
+import { ADVENTURE_THEMES } from '../data/family/themedAdventures';
+import { premiumLabResultId, premiumLabResultIds } from '../data/family/premiumLabJourneys';
 import type { PrimaryGrade, UserProfile } from '../types';
 import { FAMILY_MODULES, type FamilyDomain, type FamilyModule, type FamilyTask } from '../data/family/familyContent';
 export const FAMILY_GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 export type FamilyService = 'holiday' | 'entry' | 'weekly' | 'evaluation';
 export type TaskOutcome = 'independent' | 'helped' | 'review';
-export type FamilyResults = Record<string, { outcome: TaskOutcome; at: string }>;
+export type FamilyResults = Record<string, { outcome: TaskOutcome; at: string; completedAt?: string }>;
 export interface FamilySession { id: string; module: FamilyModule; taskIds: string[]; phase: 'discover' | 'practice' | 'recall' | 'transfer'; }
 export function familyStorageKey(owner: string, grade: PrimaryGrade) { return `mssid_family_learning_v1:${owner}:${grade}`; }
 export function readFamilyResults(key: string): FamilyResults {
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(key) ?? '{}');
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
-    const known = new Set([...FAMILY_MODULES.flatMap(m => m.tasks.map(t => t.id)), 'readiness-count','readiness-oral','readiness-draw', ...FAMILY_GRADES.flatMap(g => [`lab:${g}:operations`,`lab:${g}:measures`])]);
-    return Object.fromEntries(Object.entries(parsed).filter(([id, v]) => known.has(id) && v && typeof v === 'object' && ['independent','helped','review'].includes(v.outcome) && typeof v.at === 'string' && Number.isFinite(Date.parse(v.at))));
+    const known = new Set([...FAMILY_MODULES.flatMap(m => m.tasks.map(t => t.id)), 'readiness-count','readiness-oral','readiness-draw', ...FAMILY_GRADES.flatMap(premiumLabResultIds), ...FAMILY_GRADES.flatMap(g => [`lab:${g}:operations`,`lab:${g}:measures`])]);
+    return Object.fromEntries(Object.entries(parsed).filter(([id, v]) => known.has(id) && v && typeof v === 'object' && ['independent','helped','review'].includes(v.outcome) && typeof v.at === 'string' && Number.isFinite(Date.parse(v.at))).map(([id, value]) => {
+      const completedAt = typeof value.completedAt === 'string' && Number.isFinite(Date.parse(value.completedAt)) ? value.completedAt : value.outcome !== 'review' ? value.at : undefined;
+      return [id, { outcome: value.outcome, at: value.at, ...(completedAt ? { completedAt } : {}) }];
+    }));
   } catch { return {}; }
 }
 export function normalizeFamilyAnswer(value: string): string {
@@ -24,7 +29,9 @@ export function checkFamilyAnswer(task: FamilyTask, answer: string): boolean | n
 export function prioritizedModules(grade: PrimaryGrade, results: FamilyResults, profile?: UserProfile): FamilyModule[] {
   const modules = FAMILY_MODULES.filter(m => m.grade === grade);
   const priority = (m: FamilyModule) => {
-    const outcomes = [...m.tasks.map(t => results[t.id]?.outcome), results[`lab:${grade}:${m.domain}`]?.outcome];
+    const labIds = ADVENTURE_THEMES.flatMap(theme => m.domain === 'reading' ? [0, 1, 2].map(step => premiumLabResultId(grade, 'story', step, theme.id))
+      : ['numbers', 'operations', 'measures'].includes(m.domain) ? [premiumLabResultId(grade, 'market', ['numbers', 'operations', 'measures'].indexOf(m.domain), theme.id)] : []);
+    const outcomes = [...m.tasks.map(t => results[t.id]?.outcome), ...labIds.flatMap(id => results[id] ? [results[id].outcome] : []), results[`lab:${grade}:${m.domain}`]?.outcome];
     const misses = outcomes.filter(o => o === 'review').length;
     const help = outcomes.filter(o => o === 'helped').length;
     const profileMiss = profile?.grade === grade && m.competenceIds.some(id => profile.competenceStats?.[id]?.lastOutcome === 'fail');

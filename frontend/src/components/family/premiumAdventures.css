@@ -1,0 +1,836 @@
+/* Lightweight illustrated worlds;
+scoped to the paid/discovery journeys. */
+.premium-adventures{
+  --adventure-ink:#183d37;
+  --adventure-green:#146858;
+  --adventure-cream:#fffaf0;
+  --adventure-line:#d5dfce;
+  color:var(--adventure-ink)}
+  .adventure-introduction h3{
+    font-size:clamp(1.45rem,3vw,2rem);
+    line-height:1.3;
+    font-weight:900;
+    margin:6px 0 10px;
+    letter-spacing:-.025em}
+    .adventure-introduction p{
+      font-size:.94rem;
+      line-height:1.75;
+      max-width:65ch;
+      color:#486158}
+      .adventure-eyebrow{
+        display:block;
+        font-size:.69rem;
+        font-weight:850;
+        letter-spacing:.08em;
+        color:#426254}
+        .adventure-worlds{
+          display:grid;
+          grid-template-columns:repeat(3,minmax(0,1fr));
+          gap:10px}
+          .adventure-worlds button{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            background:#fffaf0;
+            border:1px solid #d5dfce;
+            border-bottom:4px solid #c8d8c9;
+            padding:16px;
+            border-radius:18px;
+            text-align:start;
+            color:#24463c;
+            font-weight:850;
+            transition:transform .18s,background .18s}
+            .adventure-worlds button>svg{
+              flex-shrink:0}
+              .adventure-worlds small{
+                display:block;
+                font-weight:500;
+                font-size:.73rem;
+                line-height:1.5;
+                margin-top:4px}
+                .adventure-worlds button[aria-pressed=true]{
+                  background:#175f51;
+                  color:#fffaf0;
+                  border-color:#175f51;
+                  border-bottom-color:#0b4137}
+                  .adventure-worlds button[data-world=science]:not([aria-pressed=true]){
+                    background:#eaf0e9}
+                    .adventure-worlds button[data-world=story]:not([aria-pressed=true]){
+                      background:#fff0db}
+                      .adventure-worlds button:active{
+                        transform:translateY(2px)}
+                        .adventure-modes{
+                          display:flex;
+                          gap:4px;
+                          max-width:360px;
+                          background:#dfe9e0;
+                          border-radius:999px;
+                          padding:4px}
+                          .adventure-modes button{
+                            flex:1;
+                            padding:8px 12px;
+                            border-radius:999px;
+                            color:#24463c;
+                            min-height:44px!important;
+                            font-size:.86rem;
+                            font-weight:750}
+                            .adventure-modes button[aria-pressed=true]{
+                              background:#fffef9;
+                              box-shadow:0 2px 5px #28472c14}
+                              .premium-adventures .adventure.studio-stage{
+                                animation:adventure-appear .23s ease-out;
+                                padding:0;
+                                border:1px solid #c8d8c9;
+                                border-radius:26px;
+                                overflow:hidden;
+                                background:var(--adventure-cream);
+                                box-shadow:0 7px 0 #254a3510,0 16px 30px #254a3508;
+                                isolation:isolate}
+                                .adventure-heading{
+                                  display:flex;
+                                  align-items:flex-start;
+                                  justify-content:space-between;
+                                  gap:16px;
+                                  padding:22px 24px 16px}
+                                  .adventure-heading h4{
+                                    font-size:clamp(1.2rem,2.5vw,1.6rem);
+                                    line-height:1.35;
+                                    font-weight:900;
+                                    margin:5px 0}
+                                    .adventure-heading p{
+                                      font-size:.85rem;
+                                      color:#486158}
+                                      .adventure-stamp{
+                                        display:flex;
+                                        align-items:center;
+                                        gap:4px;
+                                        white-space:nowrap;
+                                        border:1px solid #c7dac6;
+                                        border-radius:999px;
+                                        padding:8px 12px;
+                                        color:#285d43;
+                                        background:#ecf3e4;
+                                        font-weight:850;
+                                        font-size:.84rem}
+                                        .adventure-path{
+                                          list-style:none;
+                                          display:flex;
+                                          gap:0;
+                                          padding:0 24px 18px;
+                                          margin:0}
+                                          .adventure-path li{
+                                            flex:1;
+                                            min-width:0;
+                                            display:flex;
+                                            align-items:center;
+                                            gap:6px;
+                                            font-size:.78rem;
+                                            color:#526658;
+                                            position:relative}
+                                            .adventure-path li:not(:last-child):after{
+                                              content:'';
+                                              width:12px;
+                                              height:2px;
+                                              background:#ccd8c5;
+                                              margin-inline:5px}
+                                              .adventure-path li>span{
+                                                display:flex;
+                                                align-items:center;
+                                                justify-content:center;
+                                                min-width:27px;
+                                                height:27px;
+                                                background:#e6ebdc;
+                                                border-radius:50%;
+                                                font-weight:850}
+                                                .adventure-path li[aria-current=step]{
+                                                  color:#175d4d;
+                                                  font-weight:900}
+                                                  .adventure-path li[aria-current=step]>span{
+                                                    outline:2px solid #b2c9a6;
+                                                    outline-offset:3px;
+                                                    background:#175f51;
+                                                    color:white}
+                                                    .adventure-path li[data-complete=true]>span{
+                                                      background:#d3e9c3;
+                                                      color:#255534}
+                                                      .adventure-path small{
+                                                        font-size:.74rem;
+                                                        line-height:1.35}
+                                                        .adventure-scene{
+                                                          position:relative;
+                                                          width:100%;
+                                                          min-height:0;
+                                                          aspect-ratio:640/260;
+                                                          overflow:hidden;
+                                                          background:#d8eee6;
+                                                          border-block:1px solid #d0d9bd}
+                                                          .premium-adventures .adventure-scene>svg{
+                                                            position:absolute;
+                                                            inset:0;
+                                                            width:100%;
+                                                            height:100%;
+                                                            max-height:none}
+                                                            .adventure-location{
+                                                              position:absolute;
+                                                              inset-inline-start:16px;
+                                                              bottom:10px;
+                                                              font-size:.69rem;
+                                                              font-weight:800;
+                                                              border-radius:6px;
+                                                              padding:4px 8px;
+                                                              background:#fffaf0e8;
+                                                              color:#3b5847}
+                                                              .adventure-scene-note{
+                                                                position:absolute;
+                                                                top:18px;
+                                                                inset-inline-start:18px;
+                                                                display:block;
+                                                                background:#fffaf0ed;
+                                                                padding:10px 13px;
+                                                                border:1px solid #d6c69c;
+                                                                transform:rotate(-2deg);
+                                                                border-radius:5px;
+                                                                box-shadow:0 4px 0 #5b60450b;
+                                                                font-size:.76rem;
+                                                                max-width:36%;
+                                                                line-height:1.55;
+                                                                color:#3d5549}
+                                                                .adventure-scene-note strong{
+                                                                  display:block;
+                                                                  font-size:.91rem}
+                                                                  .adventure-date-pile{
+                                                                    position:absolute;
+                                                                    left:31%;
+                                                                    top:29%;
+                                                                    width:46%;
+                                                                    height:47%;
+                                                                    display:flex;
+                                                                    align-items:center;
+                                                                    justify-content:center;
+                                                                    border-radius:12px;
+                                                                    gap:0;
+                                                                    transition:transform .16s;
+                                                                    cursor:pointer}
+                                                                    .premium-adventures .adventure-date-pile svg{
+                                                                      width:25%;
+                                                                      height:74%;
+                                                                      max-height:90px;
+                                                                      filter:drop-shadow(0 5px 2px #5c3a2426)}
+                                                                      .adventure-date-pile>span{
+                                                                        position:absolute;
+                                                                        bottom:0;
+                                                                        background:#fff6da;
+                                                                        border-radius:5px;
+                                                                        padding:3px 7px;
+                                                                        font-size:.75rem;
+                                                                        font-weight:800;
+                                                                        color:#4a4e34}
+                                                                        .adventure-date-pile:not(:disabled):hover{
+                                                                          transform:translateY(-3px)}
+                                                                          .adventure-date-pile:not(:disabled):active{
+                                                                            transform:translateY(3px) scale(.96)}
+                                                                            .adventure-workspace{
+                                                                              padding:22px 24px;
+                                                                              display:flex;
+                                                                              flex-direction:column;
+                                                                              gap:17px}
+                                                                              .adventure-story{
+                                                                                font-size:.89rem;
+                                                                                line-height:1.8;
+                                                                                color:#54634c;
+                                                                                border-inline-start:3px solid #d8aa5f;
+                                                                                padding-inline-start:12px}
+                                                                                .adventure-guide{
+                                                                                  display:flex;
+                                                                                  align-items:center;
+                                                                                  gap:12px}
+                                                                                  .premium-adventures .adventure-guide>svg.adventure-didou{
+                                                                                    width:86px;
+                                                                                    min-width:86px;
+                                                                                    height:108px;
+                                                                                    max-height:none;
+                                                                                    align-self:flex-end}
+                                                                                    .adventure-bubble{
+                                                                                      flex:1;
+                                                                                      min-width:0;
+                                                                                      background:white;
+                                                                                      border:1px solid #d8e1cf;
+                                                                                      border-radius:18px 18px 18px 6px;
+                                                                                      padding:13px 16px;
+                                                                                      box-shadow:0 3px 0 #d7e2d736}
+                                                                                      .adventure-bubble p{
+                                                                                        font-size:1.125rem;
+                                                                                        line-height:1.75;
+                                                                                        margin:3px 0 7px;
+                                                                                        font-weight:650}
+                                                                                        .adventure-audio{
+                                                                                          display:inline-flex;
+                                                                                          align-items:center;
+                                                                                          justify-content:center;
+                                                                                          gap:7px;
+                                                                                          font-size:.78rem;
+                                                                                          font-weight:850;
+                                                                                          color:#1a6353;
+                                                                                          border-radius:10px;
+                                                                                          min-height:44px;
+                                                                                          padding:5px 10px;
+                                                                                          background:#edf4e7;
+                                                                                          border:1px solid #d2dfc7}
+                                                                                          .adventure-guide[data-speaking=true] .adventure-mouth{
+                                                                                            animation:didou-talk .3s ease-in-out infinite;
+                                                                                            transform-origin:55px 77px}
+                                                                                            .adventure-prompt{
+                                                                                              font-size:1.05rem;
+                                                                                              font-weight:850;
+                                                                                              line-height:1.85}
+                                                                                              .adventure-basket{
+                                                                                                display:flex;
+                                                                                                align-items:center;
+                                                                                                gap:12px;
+                                                                                                border:1px dashed #adc39f;
+                                                                                                border-radius:15px;
+                                                                                                padding:12px 16px;
+                                                                                                background:#f0f3e4;
+                                                                                                min-height:72px}
+                                                                                                .adventure-basket>svg{
+                                                                                                  width:25px!important;
+                                                                                                  height:25px;
+                                                                                                  flex-shrink:0}
+                                                                                                  .adventure-basket>div{
+                                                                                                    display:flex;
+                                                                                                    flex-wrap:wrap;
+                                                                                                    align-items:center;
+                                                                                                    flex:1;
+                                                                                                    gap:3px;
+                                                                                                    min-width:0;
+                                                                                                    font-size:.82rem;
+                                                                                                    color:#4d6456}
+                                                                                                    .premium-adventures .adventure-mini-bag>svg{
+                                                                                                      height:47px;
+                                                                                                      width:34px;
+                                                                                                      max-height:none}
+                                                                                                      .adventure-mini-bag{
+                                                                                                        animation:adventure-appear .2s ease-out}
+                                                                                                        .adventure-basket output{
+                                                                                                          min-width:36px;
+                                                                                                          height:36px;
+                                                                                                          display:grid;
+                                                                                                          place-items:center;
+                                                                                                          background:white;
+                                                                                                          border:1px solid #ccd8be;
+                                                                                                          border-radius:50%;
+                                                                                                          font-size:1.2rem;
+                                                                                                          font-weight:900}
+                                                                                                          .adventure-counter{
+                                                                                                            display:flex;
+                                                                                                            align-items:center;
+                                                                                                            justify-content:center;
+                                                                                                            gap:16px;
+                                                                                                            font-size:.8rem;
+                                                                                                            color:#486158}
+                                                                                                            .adventure-counter button{
+                                                                                                              display:grid;
+                                                                                                              place-items:center;
+                                                                                                              min-width:54px;
+                                                                                                              min-height:54px!important;
+                                                                                                              border-bottom-width:3px}
+                                                                                                              .adventure-counter button>svg{
+                                                                                                                width:22px!important;
+                                                                                                                height:22px}
+                                                                                                                .adventure-actions{
+                                                                                                                  display:flex;
+                                                                                                                  flex-wrap:wrap;
+                                                                                                                  gap:10px}
+                                                                                                                  .premium-adventures .studio-action{
+                                                                                                                    background:#176352;
+                                                                                                                    color:#fffdf3;
+                                                                                                                    min-height:54px;
+                                                                                                                    border:1px solid #176352;
+                                                                                                                    border-bottom:4px solid #0c4136;
+                                                                                                                    display:inline-flex;
+                                                                                                                    gap:8px;
+                                                                                                                    align-items:center;
+                                                                                                                    justify-content:center;
+                                                                                                                    transition:transform .14s}
+                                                                                                                    .premium-adventures .studio-action:active:not(:disabled){
+                                                                                                                      transform:translateY(2px)}
+                                                                                                                      .premium-adventures .studio-action:disabled{
+                                                                                                                        background:#dce3d6;
+                                                                                                                        border-color:#c4cfbb;
+                                                                                                                        color:#61725f;
+                                                                                                                        cursor:default}
+                                                                                                                        .premium-adventures .studio-outline{
+                                                                                                                          background:#fffef8;
+                                                                                                                          border-color:#b9cbb1;
+                                                                                                                          min-height:50px;
+                                                                                                                          color:#295344;
+                                                                                                                          display:inline-flex;
+                                                                                                                          align-items:center;
+                                                                                                                          justify-content:center;
+                                                                                                                          gap:7px}
+                                                                                                                          .premium-adventures button:disabled{
+                                                                                                                            cursor:default}
+                                                                                                                            .premium-adventures button:focus-visible,.premium-adventures input:focus-visible,.adventure-parent summary:focus-visible{
+                                                                                                                              outline:3px solid #a3561e;
+                                                                                                                              outline-offset:4px}
+                                                                                                                              .premium-adventures .studio-feedback{
+                                                                                                                                background:#e9f2e1;
+                                                                                                                                line-height:1.85;
+                                                                                                                                border-color:#27764d}
+                                                                                                                                .premium-adventures .studio-feedback[data-retry=true]{
+                                                                                                                                  background:#fff0dc;
+                                                                                                                                  border-color:#ae722a}
+                                                                                                                                  .adventure-hint{
+                                                                                                                                    padding:12px 16px;
+                                                                                                                                    background:#fff0d5;
+                                                                                                                                    border-inline-start:3px solid #b87830;
+                                                                                                                                    border-radius:12px;
+                                                                                                                                    font-size:.9rem;
+                                                                                                                                    line-height:1.8;
+                                                                                                                                    color:#5e4c2d}
+                                                                                                                                    .adventure-receipt{
+                                                                                                                                      display:flex;
+                                                                                                                                      align-items:center;
+                                                                                                                                      justify-content:space-between;
+                                                                                                                                      gap:12px;
+                                                                                                                                      background:#fff;
+                                                                                                                                      border-block:1px dashed #c9d0bb;
+                                                                                                                                      padding:14px 12px;
+                                                                                                                                      direction:ltr;
+                                                                                                                                      font-size:.9rem}
+                                                                                                                                      .adventure-answer{
+                                                                                                                                        font-size:.84rem;
+                                                                                                                                        font-weight:750}
+                                                                                                                                        .adventure-answer input{
+                                                                                                                                          margin-top:6px;
+                                                                                                                                          max-width:340px;
+                                                                                                                                          font-size:1.4rem;
+                                                                                                                                          font-weight:800}
+                                                                                                                                          .adventure-finish{
+                                                                                                                                            display:flex;
+                                                                                                                                            gap:13px;
+                                                                                                                                            background:#e8f1dd;
+                                                                                                                                            border:1px solid #bfd4ad;
+                                                                                                                                            border-radius:18px;
+                                                                                                                                            padding:18px;
+                                                                                                                                            line-height:1.8}
+                                                                                                                                            .adventure-finish>svg{
+                                                                                                                                              width:25px!important;
+                                                                                                                                              height:25px;
+                                                                                                                                              flex-shrink:0}
+                                                                                                                                              .adventure-finish p{
+                                                                                                                                                font-weight:850}
+                                                                                                                                                .adventure-finish small{
+                                                                                                                                                  display:block;
+                                                                                                                                                  font-size:.86rem;
+                                                                                                                                                  margin-top:5px}
+                                                                                                                                                  .adventure-caption{
+                                                                                                                                                    font-size:.75rem;
+                                                                                                                                                    color:#50634f;
+                                                                                                                                                    line-height:1.7}
+                                                                                                                                                    .adventure-book{
+                                                                                                                                                      background:#fffefa;
+                                                                                                                                                      border:1px solid #e0d6b9;
+                                                                                                                                                      border-radius:9px 18px 18px 9px;
+                                                                                                                                                      border-inline-start:6px solid #bd8960;
+                                                                                                                                                      box-shadow:0 5px 0 #e9e1cd;
+                                                                                                                                                      padding:20px 22px}
+                                                                                                                                                      .adventure-book>p{
+                                                                                                                                                        font-size:1.2rem;
+                                                                                                                                                        line-height:2.3;
+                                                                                                                                                        margin:10px 0 15px}
+                                                                                                                                                        .adventure-options{
+                                                                                                                                                          display:grid;
+                                                                                                                                                          gap:10px}
+                                                                                                                                                          .adventure-options button{
+                                                                                                                                                            display:flex;
+                                                                                                                                                            align-items:center;
+                                                                                                                                                            gap:12px;
+                                                                                                                                                            border:1px solid #c8d5be;
+                                                                                                                                                            border-bottom:3px solid #b8cbb0;
+                                                                                                                                                            border-radius:15px;
+                                                                                                                                                            padding:13px 16px;
+                                                                                                                                                            min-height:58px!important;
+                                                                                                                                                            background:#fffdf8;
+                                                                                                                                                            color:#2a4439;
+                                                                                                                                                            font-size:1rem;
+                                                                                                                                                            font-weight:750;
+                                                                                                                                                            text-align:start;
+                                                                                                                                                            line-height:1.8;
+                                                                                                                                                            transition:background .16s,transform .16s}
+                                                                                                                                                            .adventure-options button[data-selected=true],.adventure-options button[aria-pressed=true]{
+                                                                                                                                                              background:#e0edcf;
+                                                                                                                                                              border-color:#5d8953;
+                                                                                                                                                              color:#234c32}
+                                                                                                                                                              .adventure-options button:active:not(:disabled){
+                                                                                                                                                                transform:scale(.985)}
+                                                                                                                                                                .adventure-options button>span:not(.shadow-sample){
+                                                                                                                                                                  display:grid;
+                                                                                                                                                                  place-items:center;
+                                                                                                                                                                  min-width:27px;
+                                                                                                                                                                  height:27px;
+                                                                                                                                                                  border-radius:50%;
+                                                                                                                                                                  background:#edf0e2;
+                                                                                                                                                                  font-size:.8rem}
+                                                                                                                                                                  .adventure-measures{
+                                                                                                                                                                    display:grid;
+                                                                                                                                                                    grid-template-columns:repeat(3,minmax(0,1fr));
+                                                                                                                                                                    gap:8px}
+                                                                                                                                                                    .adventure-measures>span{
+                                                                                                                                                                      display:flex;
+                                                                                                                                                                      flex-direction:column;
+                                                                                                                                                                      gap:5px;
+                                                                                                                                                                      align-items:center;
+                                                                                                                                                                      padding:10px 4px;
+                                                                                                                                                                      background:#edf2e5;
+                                                                                                                                                                      border-radius:12px;
+                                                                                                                                                                      font-size:.77rem;
+                                                                                                                                                                      color:#426254}
+                                                                                                                                                                      .adventure-measures strong{
+                                                                                                                                                                        color:#254c3d;
+                                                                                                                                                                        direction:ltr;
+                                                                                                                                                                        font-size:1.1rem}
+                                                                                                                                                                        .adventure-shadow{
+                                                                                                                                                                          transition:d .45s ease}
+                                                                                                                                                                          .adventure-comparison{
+                                                                                                                                                                            direction:ltr;
+                                                                                                                                                                            font-size:1.2rem;
+                                                                                                                                                                            font-weight:850;
+                                                                                                                                                                            text-align:center}
+                                                                                                                                                                            .adventure-predictions{
+                                                                                                                                                                              grid-template-columns:repeat(3,minmax(0,1fr))}
+                                                                                                                                                                              .adventure-predictions button{
+                                                                                                                                                                                flex-direction:column;
+                                                                                                                                                                                padding:12px 7px;
+                                                                                                                                                                                font-size:.85rem;
+                                                                                                                                                                                gap:10px;
+                                                                                                                                                                                text-align:center}
+                                                                                                                                                                                .shadow-sample{
+                                                                                                                                                                                  display:block;
+                                                                                                                                                                                  height:7px;
+                                                                                                                                                                                  background:#567366;
+                                                                                                                                                                                  border-radius:8px;
+                                                                                                                                                                                  margin:6px 0;
+                                                                                                                                                                                  max-width:100%}
+                                                                                                                                                                                  .shadow-shorter{
+                                                                                                                                                                                    width:20px}
+                                                                                                                                                                                    .shadow-longer{
+                                                                                                                                                                                      width:52px}
+                                                                                                                                                                                      .shadow-same{
+                                                                                                                                                                                        width:34px}
+                                                                                                                                                                                        .adventure-parent{
+                                                                                                                                                                                          background:#f8faf2;
+                                                                                                                                                                                          border:1px solid #d3ddca;
+                                                                                                                                                                                          border-radius:18px;
+                                                                                                                                                                                          padding:18px;
+                                                                                                                                                                                          color:#345447;
+                                                                                                                                                                                          line-height:1.7}
+                                                                                                                                                                                          .adventure-parent summary{
+                                                                                                                                                                                            font-weight:850;
+                                                                                                                                                                                            cursor:pointer;
+                                                                                                                                                                                            min-height:44px;
+                                                                                                                                                                                            align-content:center}
+                                                                                                                                                                                            .adventure-parent>p{
+                                                                                                                                                                                              font-size:.84rem;
+                                                                                                                                                                                              margin:10px 0 18px}
+                                                                                                                                                                                              .adventure-parent section+section{
+                                                                                                                                                                                                border-top:1px solid #d8e0cc;
+                                                                                                                                                                                                padding-top:16px;
+                                                                                                                                                                                                margin-top:16px}
+                                                                                                                                                                                                .adventure-parent h5{
+                                                                                                                                                                                                  font-weight:850}
+                                                                                                                                                                                                  .adventure-parent ul{
+                                                                                                                                                                                                    list-style:none;
+                                                                                                                                                                                                    padding:0;
+                                                                                                                                                                                                    margin:9px 0}
+                                                                                                                                                                                                    .adventure-parent li{
+                                                                                                                                                                                                      display:flex;
+                                                                                                                                                                                                      justify-content:space-between;
+                                                                                                                                                                                                      gap:12px;
+                                                                                                                                                                                                      padding:7px 0;
+                                                                                                                                                                                                      font-size:.8rem}
+                                                                                                                                                                                                      .adventure-parent strong{
+                                                                                                                                                                                                        font-size:.78rem;
+                                                                                                                                                                                                        white-space:nowrap}
+                                                                                                                                                                                                        .adventure-parent strong[data-outcome=review]{
+                                                                                                                                                                                                          color:#945619}
+                                                                                                                                                                                                          .adventure-parent section>p{
+                                                                                                                                                                                                            font-size:.81rem;
+                                                                                                                                                                                                            color:#51664d}
+                                                                                                                                                                                                            @keyframes didou-talk{
+                                                                                                                                                                                                              50%{
+                                                                                                                                                                                                                transform:scaleY(2.4)}
+                                                                                                                                                                                                              }
+                                                                                                                                                                                                              @keyframes adventure-appear{
+                                                                                                                                                                                                                from{
+                                                                                                                                                                                                                  opacity:0;
+                                                                                                                                                                                                                  transform:translateY(-7px)}
+                                                                                                                                                                                                                  to{
+                                                                                                                                                                                                                    opacity:1;
+                                                                                                                                                                                                                    transform:translateY(0)}
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                  @media(min-width:850px){
+                                                                                                                                                                                                                    .adventure-workspace{
+                                                                                                                                                                                                                      padding:24px 34px}
+                                                                                                                                                                                                                      .adventure-scene{
+                                                                                                                                                                                                                        max-height:none}
+                                                                                                                                                                                                                        .adventure-guide{
+                                                                                                                                                                                                                          gap:20px}
+                                                                                                                                                                                                                          .adventure-bubble{
+                                                                                                                                                                                                                            padding:17px 20px}
+                                                                                                                                                                                                                            .adventure-guide>svg.adventure-didou{
+                                                                                                                                                                                                                              width:100px;
+                                                                                                                                                                                                                              min-width:100px;
+                                                                                                                                                                                                                              height:118px}
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                            @media(max-width:540px){
+                                                                                                                                                                                                                              .adventure-worlds{
+                                                                                                                                                                                                                                gap:6px}
+                                                                                                                                                                                                                                .adventure-worlds button{
+                                                                                                                                                                                                                                  flex-direction:column;
+                                                                                                                                                                                                                                  align-items:flex-start;
+                                                                                                                                                                                                                                  padding:12px 9px;
+                                                                                                                                                                                                                                  border-radius:14px;
+                                                                                                                                                                                                                                  font-size:.78rem;
+                                                                                                                                                                                                                                  line-height:1.5;
+                                                                                                                                                                                                                                  gap:8px}
+                                                                                                                                                                                                                                  .adventure-worlds small{
+                                                                                                                                                                                                                                    display:none}
+                                                                                                                                                                                                                                    .adventure-heading{
+                                                                                                                                                                                                                                      padding:18px 16px 14px}
+                                                                                                                                                                                                                                      .adventure-heading h4{
+                                                                                                                                                                                                                                        font-size:1.15rem}
+                                                                                                                                                                                                                                        .adventure-path{
+                                                                                                                                                                                                                                          padding:0 16px 17px;
+                                                                                                                                                                                                                                          gap:8px}
+                                                                                                                                                                                                                                          .adventure-path li{
+                                                                                                                                                                                                                                            flex-direction:column;
+                                                                                                                                                                                                                                            gap:8px;
+                                                                                                                                                                                                                                            align-items:flex-start}
+                                                                                                                                                                                                                                            .adventure-path li:after{
+                                                                                                                                                                                                                                              display:none}
+                                                                                                                                                                                                                                              .adventure-path small{
+                                                                                                                                                                                                                                                font-size:.66rem}
+                                                                                                                                                                                                                                                .adventure-workspace{
+                                                                                                                                                                                                                                                  padding:18px 14px;
+                                                                                                                                                                                                                                                  gap:15px}
+                                                                                                                                                                                                                                                  .adventure-guide{
+                                                                                                                                                                                                                                                    gap:7px}
+                                                                                                                                                                                                                                                    .premium-adventures .adventure-guide>svg.adventure-didou{
+                                                                                                                                                                                                                                                      width:61px;
+                                                                                                                                                                                                                                                      min-width:61px;
+                                                                                                                                                                                                                                                      height:86px}
+                                                                                                                                                                                                                                                      .adventure-bubble{
+                                                                                                                                                                                                                                                        padding:10px 12px}
+                                                                                                                                                                                                                                                        .adventure-bubble p{
+                                                                                                                                                                                                                                                          font-size:1.06rem}
+                                                                                                                                                                                                                                                          .adventure-bubble .adventure-eyebrow{
+                                                                                                                                                                                                                                                            font-size:.61rem;
+                                                                                                                                                                                                                                                            letter-spacing:.025em}
+                                                                                                                                                                                                                                                            .adventure-scene-note{
+                                                                                                                                                                                                                                                              top:10px;
+                                                                                                                                                                                                                                                              inset-inline-start:10px;
+                                                                                                                                                                                                                                                              padding:7px 9px;
+                                                                                                                                                                                                                                                              font-size:.62rem;
+                                                                                                                                                                                                                                                              max-width:37%}
+                                                                                                                                                                                                                                                              .adventure-scene-note strong{
+                                                                                                                                                                                                                                                                font-size:.71rem}
+                                                                                                                                                                                                                                                                .adventure-date-pile>span{
+                                                                                                                                                                                                                                                                  font-size:.66rem}
+                                                                                                                                                                                                                                                                  .adventure-location{
+                                                                                                                                                                                                                                                                    font-size:.6rem;
+                                                                                                                                                                                                                                                                    bottom:8px;
+                                                                                                                                                                                                                                                                    inset-inline-start:10px}
+                                                                                                                                                                                                                                                                    .adventure-book{
+                                                                                                                                                                                                                                                                      padding:15px}
+                                                                                                                                                                                                                                                                      .adventure-book>p{
+                                                                                                                                                                                                                                                                        font-size:1.12rem}
+                                                                                                                                                                                                                                                                        .adventure-actions>.studio-action{
+                                                                                                                                                                                                                                                                          flex:1}
+                                                                                                                                                                                                                                                                          .adventure-counter{
+                                                                                                                                                                                                                                                                            gap:10px}
+                                                                                                                                                                                                                                                                            .adventure-parent li{
+                                                                                                                                                                                                                                                                              flex-wrap:wrap;
+                                                                                                                                                                                                                                                                              gap:3px}
+                                                                                                                                                                                                                                                                              .adventure-parent li>span{
+                                                                                                                                                                                                                                                                                flex:1;
+                                                                                                                                                                                                                                                                                min-width:140px}
+                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                              @media(prefers-reduced-motion:reduce){
+                                                                                                                                                                                                                                                                                .premium-adventures *, .premium-adventures *:before,.premium-adventures *:after{
+                                                                                                                                                                                                                                                                                  animation:none!important;
+                                                                                                                                                                                                                                                                                  transition:none!important;
+                                                                                                                                                                                                                                                                                  scroll-behavior:auto!important}
+                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                .premium-adventures .adventure svg.lucide{
+                                                                                                                                                                                                                                                                                  width:20px;
+                                                                                                                                                                                                                                                                                  min-width:20px;
+                                                                                                                                                                                                                                                                                  height:20px;
+                                                                                                                                                                                                                                                                                  max-height:none;
+                                                                                                                                                                                                                                                                                  flex-shrink:0}
+                                                                                                                                                                                                                                                                                  .adventure-audio{
+                                                                                                                                                                                                                                                                                    white-space:normal;
+                                                                                                                                                                                                                                                                                    word-break:normal;
+                                                                                                                                                                                                                                                                                    overflow-wrap:normal}
+                                                                                                                                                                                                                                                                                    .family-studio[data-family-mode=labs]>nav.studio-nav{
+                                                                                                                                                                                                                                                                                      display:flex;
+                                                                                                                                                                                                                                                                                      gap:7px;
+                                                                                                                                                                                                                                                                                      overflow-x:auto;
+                                                                                                                                                                                                                                                                                      padding-bottom:6px}
+                                                                                                                                                                                                                                                                                      .family-studio[data-family-mode=labs]>nav.studio-nav>button{
+                                                                                                                                                                                                                                                                                        flex:0 0 auto;
+                                                                                                                                                                                                                                                                                        display:flex;
+                                                                                                                                                                                                                                                                                        align-items:center;
+                                                                                                                                                                                                                                                                                        gap:7px;
+                                                                                                                                                                                                                                                                                        min-height:44px;
+                                                                                                                                                                                                                                                                                        padding:8px 12px;
+                                                                                                                                                                                                                                                                                        font-size:.77rem;
+                                                                                                                                                                                                                                                                                        border-radius:12px}
+                                                                                                                                                                                                                                                                                        .family-studio[data-family-mode=labs]>nav.studio-nav>button>svg{
+                                                                                                                                                                                                                                                                                          width:17px;
+                                                                                                                                                                                                                                                                                          height:17px;
+                                                                                                                                                                                                                                                                                          margin:0}
+                                                                                                                                                                                                                                                                                          .family-studio[data-family-mode=labs]>nav.studio-nav>button>span:last-child{
+                                                                                                                                                                                                                                                                                            display:none}
+                                                                                                                                                                                                                                                                                            @media(max-width:540px){
+                                                                                                                                                                                                                                                                                              .family-studio[data-family-mode=labs]{
+                                                                                                                                                                                                                                                                                                padding-inline:10px}
+                                                                                                                                                                                                                                                                                                .adventure-guide .adventure-audio{
+                                                                                                                                                                                                                                                                                                  padding:6px 8px;
+                                                                                                                                                                                                                                                                                                  font-size:.72rem}
+                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                .adventure-passport{
+                                                                                                                                                                                                                                                                                                  display:flex;
+                                                                                                                                                                                                                                                                                                  align-items:center;
+                                                                                                                                                                                                                                                                                                  justify-content:space-between;
+                                                                                                                                                                                                                                                                                                  gap:12px;
+                                                                                                                                                                                                                                                                                                  font-size:.82rem;
+                                                                                                                                                                                                                                                                                                  color:#45604e}
+                                                                                                                                                                                                                                                                                                  .adventure-passport>span{
+                                                                                                                                                                                                                                                                                                    font-weight:750}
+                                                                                                                                                                                                                                                                                                    .adventure-passport>strong{
+                                                                                                                                                                                                                                                                                                      border-radius:999px;
+                                                                                                                                                                                                                                                                                                      padding:6px 10px;
+                                                                                                                                                                                                                                                                                                      background:#e4edda;
+                                                                                                                                                                                                                                                                                                      font-size:.75rem;
+                                                                                                                                                                                                                                                                                                      color:#36583d}
+                                                                                                                                                                                                                                                                                                      .adventure-world-count{
+                                                                                                                                                                                                                                                                                                        display:inline-flex;
+                                                                                                                                                                                                                                                                                                        align-items:center;
+                                                                                                                                                                                                                                                                                                        justify-content:center;
+                                                                                                                                                                                                                                                                                                        min-width:33px;
+                                                                                                                                                                                                                                                                                                        min-height:28px;
+                                                                                                                                                                                                                                                                                                        border-radius:8px;
+                                                                                                                                                                                                                                                                                                        padding:2px 6px;
+                                                                                                                                                                                                                                                                                                        border:1px solid currentColor;
+                                                                                                                                                                                                                                                                                                        font-size:.72rem;
+                                                                                                                                                                                                                                                                                                        margin-inline-start:auto}
+                                                                                                                                                                                                                                                                                                        .adventure-worlds button>span:not(.adventure-world-count){
+                                                                                                                                                                                                                                                                                                          flex:1}
+                                                                                                                                                                                                                                                                                                          @media(max-width:540px){
+                                                                                                                                                                                                                                                                                                            .adventure-world-count{
+                                                                                                                                                                                                                                                                                                              margin-inline-start:0}
+                                                                                                                                                                                                                                                                                                              .adventure-worlds button{
+                                                                                                                                                                                                                                                                                                                position:relative}
+                                                                                                                                                                                                                                                                                                                .adventure-worlds button>svg{
+                                                                                                                                                                                                                                                                                                                  margin-bottom:3px}
+                                                                                                                                                                                                                                                                                                                  .adventure-world-count{
+                                                                                                                                                                                                                                                                                                                    position:absolute;
+                                                                                                                                                                                                                                                                                                                    top:10px;
+                                                                                                                                                                                                                                                                                                                    inset-inline-end:8px;
+                                                                                                                                                                                                                                                                                                                    min-width:27px;
+                                                                                                                                                                                                                                                                                                                    font-size:.65rem;
+                                                                                                                                                                                                                                                                                                                    padding:1px 4px}
+                                                                                                                                                                                                                                                                                                                    .adventure-worlds button>span:not(.adventure-world-count){
+                                                                                                                                                                                                                                                                                                                      flex:initial}
+                                                                                                                                                                                                                                                                                                                      .adventure-passport{
+                                                                                                                                                                                                                                                                                                                        font-size:.76rem}
+                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                      .adventure-collection{
+                                                                                                                                                                                                                                                                                                                        border:1px solid #cbdac5;
+                                                                                                                                                                                                                                                                                                                        background:#fbfcf4;
+                                                                                                                                                                                                                                                                                                                        border-radius:16px;
+                                                                                                                                                                                                                                                                                                                        padding:12px 16px}
+                                                                                                                                                                                                                                                                                                                        .adventure-collection>summary{
+                                                                                                                                                                                                                                                                                                                          cursor:pointer;
+                                                                                                                                                                                                                                                                                                                          min-height:44px;
+                                                                                                                                                                                                                                                                                                                          line-height:1.7;
+                                                                                                                                                                                                                                                                                                                          color:#315440}
+                                                                                                                                                                                                                                                                                                                          .adventure-collection>summary>span{
+                                                                                                                                                                                                                                                                                                                            font-size:.74rem;
+                                                                                                                                                                                                                                                                                                                            margin-inline-end:12px}
+                                                                                                                                                                                                                                                                                                                            .adventure-collection>summary>strong{
+                                                                                                                                                                                                                                                                                                                              font-size:.88rem}
+                                                                                                                                                                                                                                                                                                                              .adventure-themes{
+                                                                                                                                                                                                                                                                                                                                display:grid;
+                                                                                                                                                                                                                                                                                                                                grid-template-columns:repeat(3,minmax(0,1fr));
+                                                                                                                                                                                                                                                                                                                                gap:9px;
+                                                                                                                                                                                                                                                                                                                                margin-top:14px;
+                                                                                                                                                                                                                                                                                                                                min-width:0}
+                                                                                                                                                                                                                                                                                                                                .adventure-themes button{
+                                                                                                                                                                                                                                                                                                                                  display:flex;
+                                                                                                                                                                                                                                                                                                                                  flex-direction:column;
+                                                                                                                                                                                                                                                                                                                                  justify-content:center;
+                                                                                                                                                                                                                                                                                                                                  gap:7px;
+                                                                                                                                                                                                                                                                                                                                  min-width:0;
+                                                                                                                                                                                                                                                                                                                                  border:1px solid #c4d4b9;
+                                                                                                                                                                                                                                                                                                                                  border-bottom:3px solid #aabe9e;
+                                                                                                                                                                                                                                                                                                                                  background:#edf3e3;
+                                                                                                                                                                                                                                                                                                                                  border-radius:14px;
+                                                                                                                                                                                                                                                                                                                                  padding:14px 10px;
+                                                                                                                                                                                                                                                                                                                                  text-align:start;
+                                                                                                                                                                                                                                                                                                                                  font-size:.84rem;
+                                                                                                                                                                                                                                                                                                                                  font-weight:800;
+                                                                                                                                                                                                                                                                                                                                  line-height:1.65;
+                                                                                                                                                                                                                                                                                                                                  color:#2c513c}
+                                                                                                                                                                                                                                                                                                                                  .adventure-themes button[aria-pressed=true]{
+                                                                                                                                                                                                                                                                                                                                    background:#176352;
+                                                                                                                                                                                                                                                                                                                                    border-color:#176352;
+                                                                                                                                                                                                                                                                                                                                    color:#fffdf1}
+                                                                                                                                                                                                                                                                                                                                    .adventure-themes button:disabled{
+                                                                                                                                                                                                                                                                                                                                      background:#f3f1e8;
+                                                                                                                                                                                                                                                                                                                                      border-color:#d3d0bf;
+                                                                                                                                                                                                                                                                                                                                      color:#62664f}
+                                                                                                                                                                                                                                                                                                                                      .adventure-themes small{
+                                                                                                                                                                                                                                                                                                                                        display:block;
+                                                                                                                                                                                                                                                                                                                                        font-size:.67rem;
+                                                                                                                                                                                                                                                                                                                                        letter-spacing:.02em}
+                                                                                                                                                                                                                                                                                                                                        .adventure-theme-intro{
+                                                                                                                                                                                                                                                                                                                                          font-size:.86rem;
+                                                                                                                                                                                                                                                                                                                                          line-height:1.8;
+                                                                                                                                                                                                                                                                                                                                          color:#46634f}
+                                                                                                                                                                                                                                                                                                                                          .adventure-collection>summary:focus-visible{
+                                                                                                                                                                                                                                                                                                                                            outline:3px solid #a3561e;
+                                                                                                                                                                                                                                                                                                                                            outline-offset:3px}
+                                                                                                                                                                                                                                                                                                                                            @media(max-width:540px){
+                                                                                                                                                                                                                                                                                                                                              .adventure-themes{
+                                                                                                                                                                                                                                                                                                                                                grid-template-columns:1fr}
+                                                                                                                                                                                                                                                                                                                                                .adventure-themes button{
+                                                                                                                                                                                                                                                                                                                                                  flex-direction:row;
+                                                                                                                                                                                                                                                                                                                                                  align-items:center;
+                                                                                                                                                                                                                                                                                                                                                  justify-content:space-between;
+                                                                                                                                                                                                                                                                                                                                                  padding:11px 12px;
+                                                                                                                                                                                                                                                                                                                                                  min-height:54px}
+                                                                                                                                                                                                                                                                                                                                                  .adventure-collection{
+                                                                                                                                                                                                                                                                                                                                                    padding:10px 12px}
+                                                                                                                                                                                                                                                                                                                                                    .adventure-collection>summary>span{
+                                                                                                                                                                                                                                                                                                                                                      display:block}
+                                                                                                                                                                                                                                                                                                                                                      .adventure-theme-intro{
+                                                                                                                                                                                                                                                                                                                                                        font-size:.79rem}
+                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                      .adventure-theme-complete{
+                                                                                                                                                                                                                                                                                                                                                        display:flex;
+                                                                                                                                                                                                                                                                                                                                                        align-items:center;
+                                                                                                                                                                                                                                                                                                                                                        gap:10px;
+                                                                                                                                                                                                                                                                                                                                                        padding:14px 16px;
+                                                                                                                                                                                                                                                                                                                                                        border:1px solid #a9c594;
+                                                                                                                                                                                                                                                                                                                                                        background:#e6f0d6;
+                                                                                                                                                                                                                                                                                                                                                        color:#285334;
+                                                                                                                                                                                                                                                                                                                                                        border-radius:15px;
+                                                                                                                                                                                                                                                                                                                                                        line-height:1.7;
+                                                                                                                                                                                                                                                                                                                                                        font-size:.9rem;
+                                                                                                                                                                                                                                                                                                                                                        font-weight:750}
+                                                                                                                                                                                                                                                                                                                                                        .adventure-theme-complete>svg{
+                                                                                                                                                                                                                                                                                                                                                          width:22px;
+                                                                                                                                                                                                                                                                                                                                                          min-width:22px;
+                                                                                                                                                                                                                                                                                                                                                          height:22px}
