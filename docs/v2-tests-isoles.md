@@ -1,6 +1,6 @@
 # Tester la V2 sans modifier la V1
 
-La branche `v2` est rebasée sur `main` (`305bda5`). Le checkout principal reste sur `main`. Le travail V2 se fait dans le worktree `v2-testing`. Les essais locaux restent indépendants des déploiements et de main.
+La branche `v2` est rebasée sur `main` (`d57f7a0`, version Android V1 1.0.11). Le checkout principal reste sur `main`. Le travail V2 se fait dans le worktree `v2-testing`. Les essais locaux restent indépendants des déploiements et de main.
 
 ## En local
 

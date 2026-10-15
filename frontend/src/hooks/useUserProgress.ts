@@ -389,8 +389,11 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
   };
 
   const handleCompleteExam = (examId: string) => {
-    if (AuthService.getCurrentUser()?.completedExamIds?.includes(examId)) return;
-    AuthService.addExamXp(examId, 50);
+    if (userProfile.completedExamIds.includes(examId)) return;
+    if (activeChildId == null) {
+      if (AuthService.getCurrentUser()?.completedExamIds?.includes(examId)) return;
+      AuthService.addExamXp(examId, 50);
+    }
     incrementDailyObjective();
 
     setUserProfile((prev) => {
@@ -419,7 +422,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
   const handleLabReward = (coins: number, xp: number) => {
     // DIDOU_STAGES[1] ("Écolier Brillant", level 4+) advertises a +10% gold bonus as an unlocked
     // perk — this is where it actually applies, on the one path that grants gold.
-    const accountReward = authUser ? AuthService.addLabReward(coins, xp) : null;
+    const accountReward = authUser && activeChildId == null ? AuthService.addLabReward(coins, xp) : null;
     setUserProfile((prev) => {
       const total = accountReward?.xp ?? prev.xp + Math.max(0, xp);
       return { ...prev,

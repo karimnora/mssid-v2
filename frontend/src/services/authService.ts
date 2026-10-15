@@ -473,6 +473,8 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
   }): void {
     const user = this.getCurrentUser();
     if (!user) return;
+    if ((payload.competenceStats ?? user.competenceStats) === user.competenceStats
+      && (payload.lessonSessions ?? user.lessonSessions) === user.lessonSessions) return;
     const updatedUser: AuthUser = {
       ...user,
       competenceStats: payload.competenceStats ?? user.competenceStats,

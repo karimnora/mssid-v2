@@ -160,3 +160,31 @@ describe('account and progress release fixes', () => {
     expect(restorePendingProgress(account).completedExamIds).toEqual(['exam-a']);
   });
 });
+
+
+describe('V2 rebase child reward isolation', () => {
+  it('keeps lab totals and exam completion separate from the parent', async () => {
+    const parent = { ...account, completedExamIds: ['shared-exam'] };
+    AuthService.setCurrentUser(parent);
+    vi.spyOn(springBootApi, 'getChildProgress').mockResolvedValue({ data: {}, status: 200 });
+    const { result } = renderHook(() => useUserProgress({ authUser: parent, activeChildId: 7 }));
+    await act(async () => { await tick(); });
+    act(() => result.current.handleLabReward(20, 30));
+    expect(result.current.userProfile).toMatchObject({ xp: 30, goldCoins: 170 });
+    act(() => { result.current.handleCompleteExam('shared-exam'); result.current.handleCompleteExam('shared-exam'); });
+    expect(result.current.userProfile.xp).toBe(80);
+    expect(result.current.userProfile.completedExamIds).toEqual(['shared-exam']);
+    expect(AuthService.getCurrentUser()).toEqual(parent);
+    expect(springBootApi.updateUserProgress).not.toHaveBeenCalled();
+  });
+  it('does not repeatedly queue the same notebook snapshot', async () => {
+    const competenceStats = {}; const lessonSessions = [];
+    AuthService.setCurrentUser({ ...account, competenceStats, lessonSessions });
+    const notify = vi.fn(); const unsubscribe = AuthService.subscribe(notify);
+    AuthService.syncCompetenceProgress({ competenceStats, lessonSessions });
+    await retryPendingProgress();
+    unsubscribe();
+    expect(notify).not.toHaveBeenCalled();
+    expect(springBootApi.updateUserProgress).not.toHaveBeenCalled();
+  });
+});
