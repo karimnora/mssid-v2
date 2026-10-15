@@ -1,3 +1,4 @@
+import { isolateMathRuns } from '../../utils/textFormatter';
 import { ADVENTURE_THEMES, type AdventureTheme } from '../../data/family/themedAdventures';
 import React, { useEffect, useRef, useState } from 'react';
 import { Check, Square, Volume2 } from 'lucide-react';
@@ -37,7 +38,7 @@ export function DidouGuide({ text, fr, success = false, lang }: { text: string; 
     </svg>
     <div className="adventure-bubble">
       <span className="adventure-eyebrow">{fr ? 'Didou, ton compagnon' : 'ديدو، رفيقك'}</span>
-      <p dir={lang === 'ar-SA' ? 'rtl' : undefined} lang={lang?.slice(0, 2)}>{text}</p>
+      <p dir={lang === 'ar-SA' ? 'rtl' : undefined} lang={lang?.slice(0, 2)}>{isolateMathRuns(text)}</p>
       <button type="button" className="adventure-audio" aria-pressed={enabled} onClick={() => { if (enabled) { token.current++; stopSpeech(); setSpeaking(false); } setEnabled(!enabled); }}>
         {enabled ? <Square size={15} aria-hidden/> : <Volume2 size={18} aria-hidden/>}
         {enabled ? (fr ? 'Couper la voix' : 'أوقف الصوت') : (fr ? 'Écouter Didou' : 'أستمع إلى ديدو')}

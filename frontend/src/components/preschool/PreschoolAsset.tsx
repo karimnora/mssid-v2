@@ -1,3 +1,4 @@
+import { PreschoolDiscoveryArt } from './PreschoolDiscoveryArt';
 import React from 'react';
 import { PreschoolColorDot, PreschoolShapeMark, isColorDot, isGeometricShape } from './PreschoolShapeMark';
 import { PreschoolFlagMark, isFlagEmoji } from './PreschoolFlagMark';
@@ -19,6 +20,7 @@ export const PreschoolAsset: React.FC<PreschoolAssetProps> = ({
   className = '',
   textClassName,
 }) => {
+  if (asset.startsWith('discovery:')) return <PreschoolDiscoveryArt asset={asset} size={size} className={className}/>;
   if (asset.startsWith('art:') && asset.slice(4) in COLORING_ART) {
     return <PreschoolLineArt id={asset.slice(4) as ColoringArtId} size={size} className={`shrink-0 ${className}`} />;
   }

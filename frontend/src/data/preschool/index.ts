@@ -1,3 +1,4 @@
+import { DISCOVERY_MODULES } from './discoveryModules';
 import { PreschoolModule } from './types';
 import { NUMBERS_MODULE_0_TO_5, NUMBERS_MODULE_6_TO_10 } from './numbersModule';
 import { SHAPES_MODULE } from './shapesModule';
@@ -55,4 +56,5 @@ export const PRESCHOOL_MODULES: PreschoolModule[] = [
   STORIES_MODULE,
   ART_DRAWING_MODULE,
   CREATIVE_GAMES_MODULE,
+  ...DISCOVERY_MODULES,
 ];

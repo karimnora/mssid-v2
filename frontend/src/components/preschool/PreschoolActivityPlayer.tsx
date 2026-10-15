@@ -1,3 +1,4 @@
+import { PreschoolDiscoveryScene } from './PreschoolDiscoveryArt';
 import React, { useEffect, useRef, useState } from 'react';
 import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -190,6 +191,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
       </div>
 
       <div className="flex flex-col items-center gap-4 max-w-lg w-full mx-auto flex-1 justify-start">
+        <PreschoolDiscoveryScene activityId={activity.id}/>
         <PreschoolMascot mood={mood} />
 
         <h2 className="text-xl sm:text-2xl font-black text-orange-900 text-center">{content.title}</h2>

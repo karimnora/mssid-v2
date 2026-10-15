@@ -71,6 +71,9 @@ const LEARN_GROUPS: { id: LearnGroupId; moduleIds: string[] }[] = [
       'preschool-stories',
       'preschool-art-drawing',
       'preschool-creative-games',
+      'preschool-discovery-garden',
+      'preschool-discovery-picnic',
+      'preschool-discovery-tiles',
     ],
   },
 ];

@@ -1,3 +1,4 @@
+import { MosaicWorkshop } from './MosaicWorkshop';
 import { ADVENTURE_THEMES, THEMED_READING, type AdventureTheme } from '../../data/family/themedAdventures';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { BookOpen, Check, FlaskConical, Minus, Plus, RotateCcw, ShoppingBasket } from 'lucide-react';
@@ -12,11 +13,12 @@ import { AdventureBackdrop, AdventureStage, DidouGuide, LabParentSummary } from 
 type LabProps = { grade: PrimaryGrade; fr: boolean; premium: boolean; story: boolean; onResult: (id: string, outcome: TaskOutcome) => void; pending: React.MutableRefObject<boolean>; theme: AdventureTheme };
 export function PremiumLearningLabs({ grade, fr, premium, onResult, results = {} }: Omit<LabProps, 'story' | 'pending' | 'theme'> & { results?: FamilyResults }) {
   const say = (a: string, b: string) => fr ? a : b;
-  const [lab, setLab] = useState<PremiumLab>('market');
+  const [lab, setLab] = useState<PremiumLab | 'mosaic'>('market');
   const [theme, setTheme] = useState<AdventureTheme>('oasis');
   const [mode, setMode] = useState<'interactive' | 'story'>('interactive');
   const exit = useActivityExit();
   const pending = useRef(false);
+  const onMosaicPending = React.useCallback((active: boolean) => { pending.current = active; }, []);
   const icons = { market: ShoppingBasket, story: BookOpen, science: FlaskConical };
   const completedFor = (id: PremiumLab) => [0, 1, 2].filter(step => { const result = results[premiumLabResultId(grade, id, step, theme)]; return Boolean(result?.completedAt) || result?.outcome === 'independent' || result?.outcome === 'helped'; }).length;
   const completedTotal = (['market', 'story', 'science'] as PremiumLab[]).reduce((sum, id) => sum + completedFor(id), 0);
@@ -24,17 +26,20 @@ export function PremiumLearningLabs({ grade, fr, premium, onResult, results = {}
   const props = { grade, fr, premium, pending, theme, story: mode === 'story', onResult };
   return <section className="premium-adventures space-y-5" aria-label={say('Laboratoires Premium', 'مختبرات Premium')}>
     <div className="adventure-introduction"><span className="adventure-eyebrow">{say('LES AVENTURES DE DIDOU', 'مغامرات ديدو')}</span><h3>{say('Une découverte à chaque geste.', 'أكتشف مع كل حركة.')}</h3><p>{say('Trois univers, trois défis chacun. Écoute, essaie, puis explique ce que tu as découvert. Une première mission est offerte dans chaque laboratoire.', 'ثلاثة عوالم وثلاثة تحديات في كل عالم. استمع وجرّب ثم اشرح ما اكتشفت. المهمة الأولى مجانية في كل مختبر.')}</p></div>
+    {lab !== 'mosaic' && <>
     <details className="adventure-collection"><summary><span>{say('Choisir mon aventure', 'أختار مغامرتي')}</span><strong>{fr ? ADVENTURE_THEMES.find(item=>item.id===theme)!.title.fr : ADVENTURE_THEMES.find(item=>item.id===theme)!.title.ar}</strong></summary><fieldset className="adventure-themes"><legend className="sr-only">{say('Aventures disponibles', 'المغامرات المتاحة')}</legend>{ADVENTURE_THEMES.map(item => <button type="button" key={item.id} aria-pressed={theme === item.id} disabled={!premium && item.id !== 'oasis'} onClick={() => { if(item.id === theme) return; const change = () => {setTheme(item.id);setLab('market');}; if(pending.current) exit.requestLeave(change); else change(); }}><span>{fr ? item.title.fr : item.title.ar}</span>{!premium && item.id !== 'oasis' && <small>Premium</small>}</button>)}</fieldset></details>
     <p className="adventure-theme-intro">{fr ? ADVENTURE_THEMES.find(item=>item.id===theme)!.intro.fr : ADVENTURE_THEMES.find(item=>item.id===theme)!.intro.ar}</p>
     <div className="adventure-passport"><span>{say('Mon carnet d’aventures', 'دفتر مغامراتي')}</span><strong aria-live="polite">{completedTotal}/9 {say('défis réussis', 'تحديات ناجحة')}</strong></div>
     {completedTotal === 9 && <p className="adventure-theme-complete"><Check size={20} aria-hidden/>{say('Aventure explorée ! Raconte une de tes découvertes à un proche.', 'استكملت المغامرة! احكِ أحد اكتشافاتك لقريب.')}</p>}
+    </>}
     <nav className="adventure-worlds" aria-label={say('Choisir mon univers', 'أختار عالمي')}>{(Object.keys(icons) as PremiumLab[]).map(id => {
       const Icon = icons[id]; const journey = PREMIUM_LAB_JOURNEYS[id];
       return <button type="button" key={id} data-world={id} aria-pressed={lab === id} onClick={() => { if (id !== lab) { if (pending.current) exit.requestLeave(() => setLab(id)); else setLab(id); } }}><Icon size={23} aria-hidden/><span>{fr ? journey.title.fr : journey.title.ar}<small>{fr ? journey.goal.fr : journey.goal.ar}</small></span><span className="adventure-world-count" aria-label={completedFor(id) + say(' défis réussis sur 3', ' تحديات ناجحة من 3')}>{completedFor(id) === 3 ? <Check size={17} aria-hidden/> : completedFor(id) + '/3'}</span></button>;
     })}</nav>
-    <div className="adventure-modes" aria-label={say('Façon de jouer', 'طريقة اللعب')}>{(['interactive', 'story'] as const).map(id => <button type="button" key={id} aria-pressed={mode === id} onClick={() => setMode(id)}>{id === 'interactive' ? say('Mode interactif', 'الوضع التفاعلي') : say('Mode histoire', 'وضع القصة')}</button>)}</div>
-    <div key={grade + ':' + theme + ':' + lab}>{lab === 'market' ? <Market {...props}/> : lab === 'story' ? <Reading {...props}/> : <Shadows {...props}/>}</div>
-    <LabParentSummary fr={fr} grade={grade} results={results} theme={theme}/>
+    <button type="button" className="mosaic-entry" aria-pressed={lab === 'mosaic'} onClick={() => { if(lab === 'mosaic') return; if(pending.current) exit.requestLeave(() => setLab('mosaic')); else setLab('mosaic'); }}><span aria-hidden>✦</span><span>{say('Les mosaïques de Didou', 'فسيفساء ديدو')}<small>{say('Un nouvel atelier : quantités, rectangles et fractions selon le niveau', 'ورشة جديدة: كميات ومستطيلات وكسور حسب المستوى')}</small></span></button>
+    {lab !== 'mosaic' && <div className="adventure-modes" aria-label={say('Façon de jouer', 'طريقة اللعب')}>{(['interactive', 'story'] as const).map(id => <button type="button" key={id} aria-pressed={mode === id} onClick={() => setMode(id)}>{id === 'interactive' ? say('Mode interactif', 'الوضع التفاعلي') : say('Mode histoire', 'وضع القصة')}</button>)}</div>}
+    <div key={grade + ':' + theme + ':' + lab}>{lab === 'mosaic' ? <MosaicWorkshop grade={grade} fr={fr} premium={premium} results={results} onResult={onResult} onPending={onMosaicPending}/> : lab === 'market' ? <Market {...props}/> : lab === 'story' ? <Reading {...props}/> : <Shadows {...props}/>}</div>
+    {lab !== 'mosaic' && <LabParentSummary fr={fr} grade={grade} results={results} theme={theme}/>}
   </section>;
 }
 function useAdventureExit(active: boolean, fr: boolean, pending: React.MutableRefObject<boolean>) {
