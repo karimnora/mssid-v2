@@ -1,7 +1,7 @@
 import type { PrimaryGrade } from '../../types';
 export type Bilingual = { fr: string; ar: string };
-export type FamilyDomain = 'numbers' | 'operations' | 'measures' | 'reading' | 'writing' | 'french' | 'english' | 'decimals' | 'proportion';
-export interface FamilyTask { id: string; prompt: Bilingual; answer: Bilingual; hint: Bilingual; method: Bilingual; accepted?: string[]; language?: 'ar' | 'fr' | 'en'; }
+export type FamilyDomain = 'numbers' | 'operations' | 'measures' | 'reading' | 'writing' | 'french' | 'english' | 'decimals' | 'proportion' | 'logic' | 'science';
+export interface FamilyTask { id: string; prompt: Bilingual; answer: Bilingual; hint: Bilingual; method: Bilingual; accepted?: string[]; language?: 'ar' | 'fr' | 'en'; options?: {id:string;label:Bilingual}[]; }
 export interface FamilyModule { id: string; grade: PrimaryGrade; domain: FamilyDomain; title: Bilingual; objective: Bilingual; tasks: FamilyTask[]; competenceIds: string[]; text?: Bilingual; language?: 'ar' | 'fr' | 'en'; }
 export const FAMILY_MODULES: FamilyModule[] = [
   {

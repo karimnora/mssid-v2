@@ -50,17 +50,18 @@ const LEARN_GROUPS: { id: LearnGroupId; moduleIds: string[] }[] = [
       'preschool-letters-2',
       'preschool-numbers-0-5',
       'preschool-numbers-6-10',
+      'preschool-explore-shapes',
       'preschool-shapes',
       'preschool-colors',
     ],
   },
   {
     id: 'science',
-    moduleIds: ['preschool-animals', 'preschool-body', 'preschool-seasons', 'preschool-calendar', 'preschool-food', 'preschool-world'],
+    moduleIds: ['preschool-explore-nature', 'preschool-explore-transport', 'preschool-animals', 'preschool-body', 'preschool-seasons', 'preschool-calendar', 'preschool-food', 'preschool-world'],
   },
   {
     id: 'civics',
-    moduleIds: ['preschool-family', 'preschool-algeria', 'preschool-islamic-values', 'preschool-short-surahs', 'preschool-emotions'],
+    moduleIds: ['preschool-explore-school', 'preschool-explore-home', 'preschool-explore-feelings', 'preschool-family', 'preschool-algeria', 'preschool-islamic-values', 'preschool-short-surahs', 'preschool-emotions'],
   },
   {
     id: 'create',

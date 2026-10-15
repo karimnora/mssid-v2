@@ -1,0 +1,2556 @@
+{
+  "note": "TODO uniquement. Aucune génération ElevenLabs effectuée. Phrases effectivement utilisées, dédupliquées par langue et comparées au catalogue existant ainsi qu’aux TODO jardin/marché. Conserver les signes et diacritiques.",
+  "uniquePhrases": 265,
+  "recordingsReused": 4,
+  "reusePending": 0,
+  "newPhrasesToRecord": 261,
+  "phrases": [
+    {
+      "language": "ar",
+      "text": "فِي الصَّبَاحِ، حَمَلَتْ لِينَا كِتَابًا أَزْرَقَ. جَلَسَتْ قُرْبَ نُورٍ. قَرَأَتْ لَهَا قِصَّةً عَنِ الْقِطَّةِ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:arabic-reading:story"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَنْ حَمَلَ الْكِتَابَ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:arabic-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا لَوْنُ الْكِتَابِ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:arabic-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَتَى حَمَلَتْهُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:arabic-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "عَنْ أَيِّ حَيَوَانٍ تَتَحَدَّثُ الْقِصَّةُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:arabic-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "زَرَعَ سَامِي بَذْرَةً فِي أَصِيصٍ. وَضَعَ الأَصِيصَ قُرْبَ النَّافِذَةِ. كُلَّ صَبَاحٍ، يَنْظُرُ إِلَى التُّرْبَةِ. بَعْدَ أَيَّامٍ، ظَهَرَتْ نَبْتَةٌ صَغِيرَةٌ. رَسَمَهَا فِي دَفْتَرِهِ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:arabic-reading:story"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَيْنَ زَرَعَ سَامِي الْبَذْرَةَ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:arabic-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَتَى يُرَاقِبُ سَامِي التُّرْبَةَ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:arabic-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "هَلْ ظَهَرَتِ النَّبْتَةُ فَوْرًا؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:arabic-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَاذَا فَعَلَ سَامِي فِي النِّهَايَةِ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:arabic-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "زَارَ تَلَامِيذُ الْقِسْمِ مَتْحَفًا. تَوَقَّفُوا أَمَامَ إِنَاءٍ فَخَّارِيٍّ قَدِيمٍ. قَرَأَتْ هُدَى الْبِطَاقَةَ الْمَوْضُوعَةَ قُرْبَهُ، ثُمَّ رَسَمَتْ شَكْلَهُ فِي دَفْتَرِهَا. شَرَحَ الدَّلِيلُ أَنَّ الْبِطَاقَةَ تُعَرِّفُ الزَّائِرَ بِالْقِطْعَةِ الْمَعْرُوضَةِ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:arabic-reading:story"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "إِلَى أَيْنَ ذَهَبَ التَّلَامِيذُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:arabic-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا الْقِطْعَةُ الَّتِي تَوَقَّفُوا أَمَامَهَا؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:arabic-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَاذَا فَعَلَتْ هُدَى بَعْدَ قِرَاءَةِ الْبِطَاقَةِ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:arabic-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا فَائِدَةُ الْبِطَاقَةِ حَسَبَ الدَّلِيلِ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:arabic-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَعَدَّ فَرِيقُ الإِذَاعَةِ الْمَدْرَسِيَّةِ خَبَرًا عَنْ رِحْلَةٍ. وَجَدَ أَمِينُ مُلْصَقًا قَدِيمًا يَذْكُرُ مَوْعِدًا مُخْتَلِفًا. قَبْلَ بَثِّ الْخَبَرِ، رَاجَعَتِ الْمُعَلِّمَةُ بَرْنَامَجَ الأُسْبُوعِ الْحَالِيِّ مَعَ الإِدَارَةِ. صَحَّحَ التَّلَامِيذُ الْمَوْعِدَ وَذَكَرُوا تَارِيخَ الْبَرْنَامَجِ فِي خَبَرِهِمْ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:arabic-reading:story"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا الَّذِي أَثَارَ الشَّكَّ فِي الْمَوْعِدِ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:arabic-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَتَى رَاجَعُوا الْمَعْلُومَةَ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:arabic-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَيُّ مَصْدَرٍ رَاجَعَتِ الْمُعَلِّمَةُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:arabic-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "لِمَاذَا يَهُمُّ ذِكْرُ تَارِيخِ الْبَرْنَامَجِ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:arabic-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَحْصَى التَّلَامِيذُ الأَوْرَاقَ الْمُبَعْثَرَةَ فِي السَّاحَةِ ثَلَاثَةَ أَيَّامٍ. ثُمَّ وَضَعُوا سَلَّةً قُرْبَ رُكْنِ الْقِرَاءَةِ وَأَعَادُوا الإِحْصَاءَ ثَلَاثَةَ أَيَّامٍ أُخْرَى. انْخَفَضَ الْعَدَدُ، لَكِنَّ عَدَدَ الْحَاضِرِينَ كَانَ أَقَلَّ أَيْضًا. سَجَّلُوا الْمُلَاحَظَتَيْنِ، وَقَرَّرُوا تَكْرَارَ الْمُقَارَنَةِ فِي أَيَّامٍ يَتَقَارَبُ فِيهَا عَدَدُ الْحَاضِرِينَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:arabic-reading:story"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَاذَا أَحْصَى التَّلَامِيذُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:arabic-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا التَّغْيِيرُ الَّذِي أَجْرَوْهُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:arabic-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "لِمَاذَا لَا يَكْفِي انْخِفَاضُ الأَوْرَاقِ لِنَنْسُبَهُ إِلَى السَّلَّةِ وَحْدَهَا؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:arabic-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مَا الْخُطْوَةُ التَّالِيَةُ الْمُقْتَرَحَةُ؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:arabic-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Lina a un sac bleu. Dans le sac, il y a un livre et un crayon. Lina prête le livre à Sami.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:french-reading:story"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Qui a le sac ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:french-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "De quelle couleur est le sac ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:french-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quel objet Lina prête-t-elle ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:french-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Qui reçoit le livre ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:french-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Sami cherche son crayon jaune. Il regarde sous la table, mais le crayon n’y est pas. Lina le trouve dans la boîte verte. Elle rend le crayon à Sami, qui la remercie.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:french-reading:story"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Que cherche Sami ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:french-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Où le crayon est-il trouvé ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:french-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Qui trouve le crayon ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:french-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Pourquoi Sami remercie-t-il Lina ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:french-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "La classe prépare une exposition de dessins. Amine écrit les titres sur des cartes. Nour range les dessins par thème : animaux, maisons et jardins. Les visiteurs utilisent les cartes pour retrouver les dessins qu’ils cherchent.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:french-reading:story"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Que prépare la classe ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:french-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quel est le rôle d’Amine ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:french-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Comment Nour range-t-elle les dessins ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:french-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "À quoi servent les cartes ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:french-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "La bibliothèque reçoit douze livres. Quatre titres sont déjà présents. Les élèves proposent de prêter les exemplaires en double à une autre classe. Ils établissent une liste avant le prêt. Un mois plus tard, les livres reviennent et les deux classes échangent leurs avis de lecture.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:french-reading:story"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Pourquoi certains exemplaires peuvent-ils être prêtés ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:french-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Que font les élèves avant le prêt ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:french-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Que se passe-t-il un mois plus tard ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:french-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quel bénéfice est explicitement mentionné ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:french-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Pour choisir un coin lecture, les élèves observent deux emplacements pendant trois matinées. Le premier est calme mais en plein soleil. Le second reste à l’ombre, près d’un passage bruyant. Ils proposent un troisième emplacement et prévoient de l’observer aussi. Ils n’ont donc pas encore choisi de lieu définitif.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:french-reading:story"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Qu’ont-ils observé ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:french-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quel est l’inconvénient du second emplacement ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:french-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Pourquoi observer le troisième lieu ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:french-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Quelle conclusion respecte le texte ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:french-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "انْسَخْ كَلِمَةَ «بَابٌ».",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:writing-workshop:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكْتُبِ اسْمًا تَخْتَارُهُ، حَقِيقِيًّا أَوْ خَيَالِيًّا.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:writing-workshop:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَكْمِلْ بِكَلِمَةٍ: هَذَا …",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:writing-workshop:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "ارْسُمْ شَيْئًا وَاكْتُبْ اسْمَهُ بِمُسَاعَدَةِ نَمُوذَجٍ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:1AP:writing-workshop:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب جملة تصف حقيبة باستعمال لون.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:writing-workshop:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "رتب هذه الكلمات في جملة: سامي / كتاباً / يقرأ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:writing-workshop:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب جملة تبدأ بـ«في الصباح».",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:writing-workshop:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب طلباً لطيفاً لاستعارة قلم.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:2AP:writing-workshop:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب جملتين تدعو فيهما صديقاً إلى ركن القراءة، مع ذكر وقت ومكان.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:writing-workshop:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "صف طريقة ترتيب كتابين باستعمال «أولاً» و«ثم».",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:writing-workshop:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب سؤالاً يساعدك على فهم قصة.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:writing-workshop:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "راجع جملة كتبتها: أضف علامة نهاية مناسبة.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:writing-workshop:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب رأياً عن تنظيم الكتب وأضف سبباً.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:writing-workshop:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "حوّل ملاحظة «الماء خارج الأصيص» إلى سؤال يمكن بحثه.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:writing-workshop:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب رسالة قصيرة لاستعارة كتاب، تتضمن عنوانه وموعد إرجاعه.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:writing-workshop:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب جملة تلخص نتيجة تجربة محدودة دون تعميم.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:writing-workshop:3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب رأياً ودليلاً ومثالاً عن تبادل الكتب.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:writing-workshop:0:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "راجع العبارة «تجربتنا تثبت أن كل النباتات تحتاج الكمية نفسها من الماء». اكتب صياغة أدق.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:writing-workshop:1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب تعليمات من ثلاث خطوات للتحقق من وصل شراء.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:writing-workshop:2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اكتب ملخصاً من جملتين لموقف قرأته، مع فصل المشكلة عن الحل.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:writing-workshop:3:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Hello! My name is Nour. I have a red pencil and a blue bag. My friend Sami has a green book. We go to school together.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:english-reading:story"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "What is her name?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:english-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "What colour is the pencil?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:english-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Who has a green book?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:english-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Where do the friends go together?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:3AP:english-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Our library is next to the school. The park is behind the library. On Tuesday, Lina walks to the library with her brother. They borrow two books and return home before lunch.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:english-reading:story"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Where is the library?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:english-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Where is the park?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:english-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Who walks with Lina?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:english-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "When do they return home?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:4AP:english-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Our class wants more books for its reading corner. We already have two copies of the same story. Instead of buying everything new, we exchange one copy with another class. We write down the titles before the exchange. Afterwards, both classes have a wider choice of books.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:english-reading:story"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Why can the class exchange one copy?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:english-reading:0:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "What do the pupils do before the exchange?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:english-reading:1:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "What is the result of the exchange?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:english-reading:2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Which statement is supported by the text?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore:5AP:english-reading:3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche chaque image pour écouter son nom.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:prompt",
+        "explore-home-1:prompt",
+        "explore-transport-1:prompt",
+        "explore-nature-1:prompt",
+        "explore-shapes-1:prompt",
+        "explore-feelings-1:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Bravo !",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:success",
+        "explore-school-2:success",
+        "explore-school-3:success",
+        "explore-school-4:success",
+        "explore-school-5:success",
+        "explore-school-6:success",
+        "explore-home-1:success",
+        "explore-home-2:success",
+        "explore-home-3:success",
+        "explore-home-4:success",
+        "explore-home-5:success",
+        "explore-home-6:success",
+        "explore-transport-1:success",
+        "explore-transport-2:success",
+        "explore-transport-3:success",
+        "explore-transport-4:success",
+        "explore-transport-5:success",
+        "explore-transport-6:success",
+        "explore-nature-1:success",
+        "explore-nature-2:success",
+        "explore-nature-3:success",
+        "explore-nature-4:success",
+        "explore-nature-5:success",
+        "explore-nature-6:success",
+        "explore-shapes-1:success",
+        "explore-shapes-2:success",
+        "explore-shapes-3:success",
+        "explore-shapes-4:success",
+        "explore-shapes-5:success",
+        "explore-shapes-6:success",
+        "explore-feelings-1:success",
+        "explore-feelings-2:success",
+        "explore-feelings-3:success",
+        "explore-feelings-4:success",
+        "explore-feelings-5:success",
+        "explore-feelings-6:success"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "livre",
+      "existingAudio": "/sounds/preschool/fr/letters-listen-faa-card-book.mp3",
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Crayon",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Cartable",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Règle",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-3"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسْ كُلَّ صُورَةٍ لِتَسْمَعَ اسْمَهَا.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:prompt",
+        "explore-home-1:prompt",
+        "explore-transport-1:prompt",
+        "explore-nature-1:prompt",
+        "explore-shapes-1:prompt",
+        "explore-feelings-1:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَحْسَنْتَ!",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:success",
+        "explore-school-2:success",
+        "explore-school-3:success",
+        "explore-school-4:success",
+        "explore-school-5:success",
+        "explore-school-6:success",
+        "explore-home-1:success",
+        "explore-home-2:success",
+        "explore-home-3:success",
+        "explore-home-4:success",
+        "explore-home-5:success",
+        "explore-home-6:success",
+        "explore-transport-1:success",
+        "explore-transport-2:success",
+        "explore-transport-3:success",
+        "explore-transport-4:success",
+        "explore-transport-5:success",
+        "explore-transport-6:success",
+        "explore-nature-1:success",
+        "explore-nature-2:success",
+        "explore-nature-3:success",
+        "explore-nature-4:success",
+        "explore-nature-5:success",
+        "explore-nature-6:success",
+        "explore-shapes-1:success",
+        "explore-shapes-2:success",
+        "explore-shapes-3:success",
+        "explore-shapes-4:success",
+        "explore-shapes-5:success",
+        "explore-shapes-6:success",
+        "explore-feelings-1:success",
+        "explore-feelings-2:success",
+        "explore-feelings-3:success",
+        "explore-feelings-4:success",
+        "explore-feelings-5:success",
+        "explore-feelings-6:success"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "كِتَاب",
+      "existingAudio": "/sounds/preschool/ar/letters-listen-faa-card-book.mp3",
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "قَلَم",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "حَقِيبَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مِسْطَرَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-3"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch each picture to hear its name.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:prompt",
+        "explore-home-1:prompt",
+        "explore-transport-1:prompt",
+        "explore-nature-1:prompt",
+        "explore-shapes-1:prompt",
+        "explore-feelings-1:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Well done!",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:success",
+        "explore-school-2:success",
+        "explore-school-3:success",
+        "explore-school-4:success",
+        "explore-school-5:success",
+        "explore-school-6:success",
+        "explore-home-1:success",
+        "explore-home-2:success",
+        "explore-home-3:success",
+        "explore-home-4:success",
+        "explore-home-5:success",
+        "explore-home-6:success",
+        "explore-transport-1:success",
+        "explore-transport-2:success",
+        "explore-transport-3:success",
+        "explore-transport-4:success",
+        "explore-transport-5:success",
+        "explore-transport-6:success",
+        "explore-nature-1:success",
+        "explore-nature-2:success",
+        "explore-nature-3:success",
+        "explore-nature-4:success",
+        "explore-nature-5:success",
+        "explore-nature-6:success",
+        "explore-shapes-1:success",
+        "explore-shapes-2:success",
+        "explore-shapes-3:success",
+        "explore-shapes-4:success",
+        "explore-shapes-5:success",
+        "explore-shapes-6:success",
+        "explore-feelings-1:success",
+        "explore-feelings-2:success",
+        "explore-feelings-3:success",
+        "explore-feelings-4:success",
+        "explore-feelings-5:success",
+        "explore-feelings-6:success"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "book",
+      "existingAudio": "/sounds/preschool/en/pronunciation-en-book.mp3",
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Pencil",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "School bag",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Ruler",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-1:card:school-word-3"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche l’image : Cartable.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسِ الصُّورَةَ: حَقِيبَة.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch the picture: School bag.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Relie chaque image à la même image.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-3:prompt",
+        "explore-transport-3:prompt",
+        "explore-shapes-3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "صِلْ كُلَّ صُورَةٍ بِالصُّورَةِ الْمُمَاثِلَةِ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-3:prompt",
+        "explore-transport-3:prompt",
+        "explore-shapes-3:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Match each picture to the same picture.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-3:prompt",
+        "explore-transport-3:prompt",
+        "explore-shapes-3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Fais glisser chaque image dans la boîte de sa famille.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-4:prompt",
+        "explore-home-4:prompt",
+        "explore-transport-4:prompt",
+        "explore-nature-4:prompt",
+        "explore-shapes-4:prompt",
+        "explore-feelings-4:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِسْحَبْ كُلَّ صُورَةٍ إِلَى صُنْدُوقِ مَجْمُوعَتِهَا.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-4:prompt",
+        "explore-home-4:prompt",
+        "explore-transport-4:prompt",
+        "explore-nature-4:prompt",
+        "explore-shapes-4:prompt",
+        "explore-feelings-4:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Drag each picture into the box for its group.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-4:prompt",
+        "explore-home-4:prompt",
+        "explore-transport-4:prompt",
+        "explore-nature-4:prompt",
+        "explore-shapes-4:prompt",
+        "explore-feelings-4:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Regarde le groupe qui se répète. Quelle image vient ensuite ?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-5:prompt",
+        "explore-home-5:prompt",
+        "explore-transport-5:prompt",
+        "explore-nature-5:prompt",
+        "explore-shapes-5:prompt",
+        "explore-feelings-5:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اُنْظُرْ إِلَى الْمَجْمُوعَةِ الْمُتَكَرِّرَةِ. أَيُّ صُورَةٍ تَأْتِي بَعْدَهَا؟",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-5:prompt",
+        "explore-home-5:prompt",
+        "explore-transport-5:prompt",
+        "explore-nature-5:prompt",
+        "explore-shapes-5:prompt",
+        "explore-feelings-5:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Look at the repeating group. Which picture comes next?",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-5:prompt",
+        "explore-home-5:prompt",
+        "explore-transport-5:prompt",
+        "explore-nature-5:prompt",
+        "explore-shapes-5:prompt",
+        "explore-feelings-5:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Remets notre histoire dans l’ordre : prends une feuille, dessine dessus, puis affiche ton dessin.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Je prends une feuille.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Je dessine sur la feuille.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "J’affiche mon dessin.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "رَتِّبْ قِصَّتَنَا: خُذْ وَرَقَةً ثُمَّ ارْسُمْ عَلَيْهَا ثُمَّ اعْرِضْ رَسْمَكَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "آخُذُ وَرَقَةً.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَرْسُمُ عَلَى الْوَرَقَةِ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَعْرِضُ رَسْمِي.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Put our story in order: take some paper, draw on it, then display your drawing.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "I take a sheet of paper.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "I draw on the paper.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "I display my drawing.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-school-6:frame:school-frame-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Lit",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Chaise",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Porte",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Clé",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-3"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "سَرِير",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "كُرْسِيّ",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "بَاب",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مِفْتَاح",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-3"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Bed",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Chair",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Door",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Key",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-1:card:home-word-3"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche l’image : Clé.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسِ الصُّورَةَ: مِفْتَاح.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch the picture: Key.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Retourne les cartes et retrouve les paires.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-3:prompt",
+        "explore-nature-3:prompt",
+        "explore-feelings-3:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِقْلِبِ الْبِطَاقَاتِ وَاجْمَعِ الْأَزْوَاجَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-3:prompt",
+        "explore-nature-3:prompt",
+        "explore-feelings-3:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Turn the cards over and find the pairs.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-3:prompt",
+        "explore-nature-3:prompt",
+        "explore-feelings-3:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Dans notre histoire, l’adulte prend la clé, ouvre la porte, puis nous entrons. Remets les images dans cet ordre.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "L’adulte prend la clé.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "L’adulte ouvre la porte.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Nous entrons dans la maison.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "فِي قِصَّتِنَا يَأْخُذُ الْبَالِغُ الْمِفْتَاحَ وَيَفْتَحُ الْبَابَ ثُمَّ نَدْخُلُ. رَتِّبِ الصُّوَرَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَأْخُذُ الْبَالِغُ الْمِفْتَاحَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَفْتَحُ الْبَالِغُ الْبَابَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "نَدْخُلُ الْبَيْتَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "In our story, the grown-up takes the key, opens the door, then we enter. Put the pictures in that order.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The grown-up takes the key.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The grown-up opens the door.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "We enter the house.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-home-6:frame:home-frame-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Avion",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Hélicoptère",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Vélo",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Voilier",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-3"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "طَائِرَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مِرْوَحِيَّة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "دَرَّاجَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "قَارِبٌ شِرَاعِيّ",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-3"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Plane",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Helicopter",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Bicycle",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Sailboat",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-1:card:transport-word-3"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche l’image : Avion.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسِ الصُّورَةَ: طَائِرَة.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch the picture: Plane.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Le train arrive, Didou monte avec un adulte, puis le train part. Retrouve cet ordre.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Le train arrive en gare.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Didou monte avec un adulte.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Le train part.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَصِلُ الْقِطَارُ ثُمَّ يَرْكَبُ دِيدُو مَعَ بَالِغٍ ثُمَّ يَنْطَلِقُ الْقِطَارُ. رَتِّبِ الصُّوَرَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَصِلُ الْقِطَارُ إِلَى الْمَحَطَّةِ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَرْكَبُ دِيدُو مَعَ بَالِغٍ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَنْطَلِقُ الْقِطَارُ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The train arrives, Didou gets on with a grown-up, then the train leaves. Find this order.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The train arrives at the station.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Didou gets on with a grown-up.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The train leaves.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-transport-6:frame:transport-frame-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Feuille",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Fleur",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Arbre",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Pierre",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-3"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "وَرَقَةُ شَجَر",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "زَهْرَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "شَجَرَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "حَجَر",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-3"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Leaf",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Flower",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "tree",
+      "existingAudio": "/sounds/preschool/en/pronunciation-en-tree.mp3",
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Stone",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-1:card:nature-word-3"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche l’image : Fleur.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسِ الصُّورَةَ: زَهْرَة.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch the picture: Flower.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Dans cette histoire, la pluie tombe, une flaque se forme, puis la pluie cesse et le soleil revient.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "La pluie tombe.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Une flaque se forme.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "La pluie cesse et le soleil revient.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "فِي هَذِهِ الْقِصَّةِ يَنْزِلُ الْمَطَرُ وَتَتَكَوَّنُ بِرْكَةٌ صَغِيرَةٌ ثُمَّ يَتَوَقَّفُ الْمَطَرُ وَتَعُودُ الشَّمْسُ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَنْزِلُ الْمَطَرُ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تَتَكَوَّنُ بِرْكَةٌ صَغِيرَةٌ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَتَوَقَّفُ الْمَطَرُ وَتَعُودُ الشَّمْسُ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "In this story, rain falls, a puddle forms, then the rain stops and the sun returns.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The rain falls.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "A puddle forms.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "The rain stops and the sun returns.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-nature-6:frame:nature-frame-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Rond",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Carré",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Triangle",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Carré jaune",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-3"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "دَائِرَة",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مُرَبَّع",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مُثَلَّث",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مُرَبَّعٌ أَصْفَر",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-3"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Circle",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Square",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Triangle",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Yellow square",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-1:card:shapes-word-3"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche l’image : Triangle.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسِ الصُّورَةَ: مُثَلَّث.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch the picture: Triangle.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Trace un rond, colorie-le, puis affiche ton dessin. Dans notre histoire, c’est cet ordre.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Je trace un rond.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Je colorie le rond.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "J’affiche le dessin terminé.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اُرْسُمْ دَائِرَةً ثُمَّ لَوِّنْهَا ثُمَّ اعْرِضْ رَسْمَكَ. هَذَا تَرْتِيبُ قِصَّتِنَا.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَرْسُمُ دَائِرَةً.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أُلَوِّنُ الدَّائِرَةَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "أَعْرِضُ الرَّسْمَ الْمُكْتَمِلَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Draw a circle, colour it, then display your drawing. That is the order in our story.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "I draw a circle.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "I colour the circle.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "I display the finished drawing.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-shapes-6:frame:shapes-frame-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Content",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Triste",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "En colère",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-2"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Surpris",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-3"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "فَرِح",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "حَزِين",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "غَاضِب",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "مُتَفَاجِئ",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-3"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Happy",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Sad",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Angry",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Surprised",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-1:card:feelings-word-3"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Touche l’image : Content.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-2:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِلْمَسِ الصُّورَةَ: فَرِح.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-2:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Touch the picture: Happy.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-2:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Écoute cette histoire : Nour est triste, Sami l’écoute, puis Nour décide de rejouer. Retrouve les images.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:prompt"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Dans l’histoire, Nour est triste.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-0"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Sami l’écoute.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-1"
+      ]
+    },
+    {
+      "language": "fr",
+      "text": "Nour décide de rejouer.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-2"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "اِسْتَمِعْ لِلْقِصَّةِ: نُورٌ حَزِينَةٌ وَسَامِي يَسْتَمِعُ إِلَيْهَا ثُمَّ تُقَرِّرُ نُورٌ أَنْ تَلْعَبَ مُجَدَّدًا. رَتِّبِ الصُّوَرَ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:prompt"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "فِي الْقِصَّةِ نُورٌ حَزِينَةٌ.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-0"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "يَسْتَمِعُ إِلَيْهَا سَامِي.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-1"
+      ]
+    },
+    {
+      "language": "ar",
+      "text": "تُقَرِّرُ نُورٌ أَنْ تَلْعَبَ مُجَدَّدًا.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-2"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Listen to this story: Nour is sad, Sami listens, then Nour decides to play again. Find the pictures in order.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:prompt"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "In the story, Nour is sad.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-0"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Sami listens to her.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-1"
+      ]
+    },
+    {
+      "language": "en",
+      "text": "Nour decides to play again.",
+      "existingAudio": null,
+      "reusePending": null,
+      "uses": [
+        "explore-feelings-6:frame:feelings-frame-2"
+      ]
+    }
+  ]
+}

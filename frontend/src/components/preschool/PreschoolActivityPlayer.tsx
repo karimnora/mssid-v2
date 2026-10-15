@@ -195,6 +195,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         <PreschoolMascot mood={mood} />
 
         <h2 className="text-xl sm:text-2xl font-black text-orange-900 text-center">{content.title}</h2>
+        {content.instructionText && <p className="text-base font-bold leading-relaxed text-orange-900 text-center max-w-md" data-preschool-instruction>{content.instructionText}</p>}
 
         {/* promptText is a caption for the accompanying adult, never required reading for the
             child (see types.ts) — kept collapsed by default so the child's screen only ever shows

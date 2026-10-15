@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
-import { PreschoolActivity, PreschoolChoice, PreschoolLanguage, PreschoolSpatialScene } from '../../data/preschool/types';
-import { playSuccessChime, playGentleNudge } from './usePreschoolAudio';
-import { localizeGlyph, activityPicture } from './preschoolGlyphs';
-import { PreschoolAsset } from './PreschoolAsset';
+import React, { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import {
+  PreschoolActivity,
+  PreschoolChoice,
+  PreschoolLanguage,
+  PreschoolSpatialScene,
+} from "../../data/preschool/types";
+import { playSuccessChime, playGentleNudge } from "./usePreschoolAudio";
+import { localizeGlyph, activityPicture } from "./preschoolGlyphs";
+import { PreschoolAsset } from "./PreschoolAsset";
 
 interface PreschoolTapChoiceProps {
   activity: PreschoolActivity;
@@ -20,10 +25,16 @@ function shuffleChoices(list: PreschoolChoice[]): PreschoolChoice[] {
   return copy;
 }
 
-const spring = { type: 'spring' as const, stiffness: 420, damping: 22 };
+const spring = { type: "spring" as const, stiffness: 420, damping: 22 };
 
 /** Open carton drawn from the side — not the 📦 emoji, which reads as a closed lid from above. */
-function SideBox({ className = '', children }: { className?: string; children?: React.ReactNode }) {
+function SideBox({
+  className = "",
+  children,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+}) {
   return (
     <span
       className={`relative block w-[2.6rem] h-[2.45rem] border-[3.5px] border-t-0 border-[#92400E] bg-amber-100 rounded-b-lg ${className}`}
@@ -36,9 +47,11 @@ function SideBox({ className = '', children }: { className?: string; children?: 
 }
 
 /** Side-view wall/crate sitting on the ground (depth = left/right, never up/down). */
-function SideWall({ className = '' }: { className?: string }) {
+function SideWall({ className = "" }: { className?: string }) {
   return (
-    <span className={`relative block w-[2.2rem] h-[2.55rem] rounded-sm border-[3px] border-[#78350F] bg-[#D97706] ${className}`}>
+    <span
+      className={`relative block w-[2.2rem] h-[2.55rem] rounded-sm border-[3px] border-[#78350F] bg-[#D97706] ${className}`}
+    >
       <span className="absolute inset-y-0 right-0 w-[7px] bg-[#B45309]" />
       <span className="absolute -top-[5px] -left-[3px] -right-[3px] h-[7px] rounded-sm bg-[#B45309] border-[3px] border-[#78350F]" />
     </span>
@@ -60,48 +73,74 @@ function SpatialSceneCard({ scene }: { scene: PreschoolSpatialScene }) {
       aria-hidden="true"
     >
       <span className="absolute bottom-[5px] left-1 right-1 h-[3px] rounded-full bg-amber-400" />
-      {(kind === 'above' || kind === 'below') && <>
-        <span className="absolute top-[38px] left-2 right-2 border-t-4 border-amber-600"/>
-        <span className={`absolute left-1/2 -translate-x-1/2 ${kind === 'above' ? 'top-0' : 'bottom-0'}`}>
-          <PreschoolAsset asset={object} size={30} textClassName="text-2xl leading-none"/>
-        </span>
-      </>}
-      {kind === 'front' && (
+      {(kind === "above" || kind === "below") && (
+        <>
+          <span className="absolute top-[38px] left-2 right-2 border-t-4 border-amber-600" />
+          <span
+            className={`absolute left-1/2 -translate-x-1/2 ${
+              kind === "above" ? "top-0" : "bottom-0"
+            }`}
+          >
+            <PreschoolAsset
+              asset={object}
+              size={30}
+              textClassName="text-2xl leading-none"
+            />
+          </span>
+        </>
+      )}
+      {kind === "front" && (
         <>
           <span className="absolute bottom-[7px] left-[42%] z-10">
             <SideWall />
           </span>
           <span className="absolute bottom-[6px] left-[8%] z-20 leading-none">
-            <PreschoolAsset asset={object} size={36} textClassName="text-[2rem] leading-none" />
+            <PreschoolAsset
+              asset={object}
+              size={36}
+              textClassName="text-[2rem] leading-none"
+            />
           </span>
         </>
       )}
-      {kind === 'behind' && (
+      {kind === "behind" && (
         <>
           <span className="absolute bottom-[6px] left-[44%] z-10 leading-none">
-            <PreschoolAsset asset={object} size={32} textClassName="text-[1.7rem] leading-none" />
+            <PreschoolAsset
+              asset={object}
+              size={32}
+              textClassName="text-[1.7rem] leading-none"
+            />
           </span>
           <span className="absolute bottom-[7px] left-[22%] z-20">
             <SideWall />
           </span>
         </>
       )}
-      {kind === 'inside' && (
+      {kind === "inside" && (
         <span className="absolute bottom-[7px] left-1/2 -translate-x-1/2">
           <SideBox className="overflow-hidden">
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2 leading-none">
-              <PreschoolAsset asset={object} size={22} textClassName="text-xl leading-none" />
+              <PreschoolAsset
+                asset={object}
+                size={22}
+                textClassName="text-xl leading-none"
+              />
             </span>
           </SideBox>
         </span>
       )}
-      {kind === 'outside' && (
+      {kind === "outside" && (
         <>
           <span className="absolute bottom-[7px] left-[12%]">
             <SideBox />
           </span>
           <span className="absolute bottom-[6px] right-[8%] leading-none">
-            <PreschoolAsset asset={object} size={28} textClassName="text-[1.65rem] leading-none" />
+            <PreschoolAsset
+              asset={object}
+              size={28}
+              textClassName="text-[1.65rem] leading-none"
+            />
           </span>
         </>
       )}
@@ -109,11 +148,16 @@ function SpatialSceneCard({ scene }: { scene: PreschoolSpatialScene }) {
   );
 }
 
-export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity, language, onComplete }) => {
+export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({
+  activity,
+  language,
+  onComplete,
+}) => {
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
   const [choices, setChoices] = useState<PreschoolChoice[]>([]);
-  const localizedChoices = activity.i18n[language].choices ?? activity.visualAssets.choices ?? [];
+  const localizedChoices =
+    activity.i18n[language].choices ?? activity.visualAssets.choices ?? [];
 
   useEffect(() => {
     setSolved(false);
@@ -141,22 +185,24 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
 
   return (
     <div className="flex flex-col items-center gap-10 px-2">
-      <motion.div
-        key={activity.id}
-        initial={{ scale: 0.7, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={spring}
-        className="w-36 h-36 sm:w-40 sm:h-40 rounded-[2rem] bg-white shadow-md border-4 border-amber-100
+      {prompt && (
+        <motion.div
+          key={activity.id}
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={spring}
+          className="w-36 h-36 sm:w-40 sm:h-40 rounded-[2rem] bg-white shadow-md border-4 border-amber-100
                    flex items-center justify-center"
-      >
-        <span className="select-none" aria-hidden="true">
-          <PreschoolAsset
-            asset={prompt}
-            size={112}
-            textClassName="text-7xl sm:text-8xl leading-none"
-          />
-        </span>
-      </motion.div>
+        >
+          <span className="select-none" aria-hidden="true">
+            <PreschoolAsset
+              asset={prompt}
+              size={112}
+              textClassName="text-7xl sm:text-8xl leading-none"
+            />
+          </span>
+        </motion.div>
+      )}
 
       <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
         {choices.map((choice) => {
@@ -169,29 +215,42 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
             <motion.button
               key={choice.id}
               onClick={() => handleTap(choice.id, choice.isCorrect)}
-              animate={isWrong ? { x: [0, -10, 10, -10, 0] } : isWin ? { scale: [1, 1.18, 1] } : { scale: 1 }}
+              animate={
+                isWrong
+                  ? { x: [0, -10, 10, -10, 0] }
+                  : isWin
+                  ? { scale: [1, 1.18, 1] }
+                  : { scale: 1 }
+              }
               transition={isWrong ? { duration: 0.4 } : spring}
               whileHover={solved ? undefined : { scale: 1.05 }}
               whileTap={solved ? undefined : { scale: 0.95 }}
               disabled={solved}
               aria-label={caption ?? glyph}
-              className={`${choice.scene
-                ? 'min-h-[8.5rem] min-w-[9.5rem] w-[9.5rem] py-2 flex-col gap-0.5'
-                : caption
-                ? 'min-h-28 min-w-28 w-28 sm:min-h-32 sm:w-32 py-2 flex-col gap-0.5'
-                : 'min-h-24 min-w-24 w-24 h-24 sm:w-28 sm:h-28'}
+              className={`${
+                choice.scene
+                  ? "min-h-[8.5rem] min-w-[9.5rem] w-[9.5rem] py-2 flex-col gap-0.5"
+                  : caption
+                  ? "min-h-28 min-w-28 w-28 sm:min-h-32 sm:w-32 py-2 flex-col gap-0.5"
+                  : "min-h-24 min-w-24 w-24 h-24 sm:w-28 sm:h-28"
+              }
                           rounded-3xl flex items-center justify-center
                           shadow-lg border-4 cursor-pointer select-none
-                          ${isWin
-                            ? 'bg-emerald-400 border-emerald-600'
-                            : isWrong
-                              ? 'bg-rose-100 border-rose-400'
-                              : 'bg-white border-amber-200 hover:border-amber-400'}`}
+                          ${
+                            isWin
+                              ? "bg-emerald-400 border-emerald-600"
+                              : isWrong
+                              ? "bg-rose-100 border-rose-400"
+                              : "bg-white border-amber-200 hover:border-amber-400"
+                          }`}
             >
               {choice.scene ? (
                 <SpatialSceneCard scene={choice.scene} />
               ) : choice.stack && choice.stack.length > 0 ? (
-                <span className="flex flex-col items-center leading-none gap-0.5" aria-hidden="true">
+                <span
+                  className="flex flex-col items-center leading-none gap-0.5"
+                  aria-hidden="true"
+                >
                   {choice.stack.map((piece, i) => (
                     <PreschoolAsset
                       key={`${choice.id}-${i}`}
@@ -202,11 +261,15 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({ activity
                   ))}
                 </span>
               ) : (
-              <PreschoolAsset
-                asset={glyph}
-                size={caption ? 48 : 64}
-                textClassName={`font-black text-orange-900 leading-none ${glyph.length > 1 ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`}
-              />
+                <PreschoolAsset
+                  asset={glyph}
+                  size={caption ? 48 : 64}
+                  textClassName={`font-black text-orange-900 leading-none ${
+                    glyph.length > 1
+                      ? "text-3xl sm:text-4xl"
+                      : "text-4xl sm:text-5xl"
+                  }`}
+                />
               )}
               {caption && (
                 <span className="text-[10px] sm:text-[11px] font-black text-[#1E293B] leading-tight text-center px-1">

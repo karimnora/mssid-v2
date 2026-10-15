@@ -46,6 +46,8 @@ export interface LocalizedContent {
    * otherwise synthesized via the Web Speech API (quality varies by device, especially Arabic).
    */
   promptAudio: string;
+  /** Optional child-facing instruction shown as a readable fallback alongside voice. */
+  instructionText?: string;
   /** Optional recorded prompt, e.g. `/sounds/preschool/ar/num-0-prompt.mp3`. TTS is the fallback. */
   promptAudioSrc?: string;
   /** Optional caption shown to the accompanying parent/adult — never required reading for the child. */
