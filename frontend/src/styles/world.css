@@ -168,3 +168,75 @@ html[data-world] .bg-emerald-500\/15:not([data-lesson-footer] *) {
   background: rgba(16, 185, 129, 0.22);
   border-color: rgba(167, 243, 196, 0.5);
 }
+
+/* Elements that only exist in the « monde de jeu » design. */
+.world-only { display: none; }
+html[data-world] .world-only { display: block; }
+
+/* Quiz: answers become candy buttons; a wrong pick is soft lavender, never red. */
+html[data-world] [data-quiz-option] {
+  position: relative;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 999px !important;
+  min-height: 60px;
+  padding-inline: 14px !important;
+  color: #fff !important;
+  font-family: var(--world-display);
+  font-size: 22px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.28);
+  transition: transform 0.08s ease;
+}
+html[data-world] [data-quiz-option]::before {
+  content: '';
+  position: absolute;
+  inset: 5px 12% auto 12%;
+  height: 38%;
+  border-radius: 999px;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+html[data-world] [data-quiz-option='idle'] {
+  background: linear-gradient(#62c1ff, #1a6fd1) !important;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.16), 0 6px 0 #0f4a8f, 0 12px 18px rgba(5, 10, 40, 0.35) !important;
+}
+html[data-world] [data-quiz-option='idle']:active { transform: translateY(4px); }
+html[data-world] [data-quiz-option='correct'] {
+  background: linear-gradient(#5fe08a, #1e9b4c) !important;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.16), 0 6px 0 #11693a, 0 0 0 4px rgba(255, 210, 63, 0.7) !important;
+  opacity: 1 !important;
+}
+html[data-world] [data-quiz-option='retry'] {
+  background: linear-gradient(#8e98d6, #5d67ad) !important;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.16), 0 6px 0 #3b437f !important;
+}
+html[data-world] [data-quiz-option='muted'] {
+  background: linear-gradient(#5560a8, #3c4590) !important;
+  box-shadow: 0 4px 0 #262d6b !important;
+  opacity: 0.55 !important;
+}
+html[data-world] [data-quiz-option] svg { color: #fff !important; }
+html[data-world] [data-quiz-option] > div > span:first-child {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+  border-radius: 999px;
+}
+
+/* Didou reacts in the feedback box. */
+html[data-world] [data-quiz-feedback] {
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px !important;
+  border: 0 !important;
+  color: #fff !important;
+  background: linear-gradient(#a84cf0, #7d2ad6) !important;
+  box-shadow: 0 6px 0 #4f1593;
+  font-size: 15px;
+}
+html[data-world] [data-quiz-feedback='correct'] {
+  background: linear-gradient(#36c46f, #178a48) !important;
+  box-shadow: 0 6px 0 #0f6334;
+}
+html[data-world] [data-quiz-feedback] * { color: #fff !important; }
+html[data-world] .world-quiz-didou { align-self: flex-start; margin-bottom: -4px; }

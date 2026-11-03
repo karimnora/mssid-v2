@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { ModalCloseButton } from '../ui/ModalCloseButton';
 import { DidouHead, MedalArt, StarIcon } from './DidouJourneyArt';
 
 export type RibbonTone = 'blue' | 'green' | 'orange' | 'coral' | 'purple';
@@ -36,6 +37,9 @@ export function JourneyRibbon({ text, buttons, stars, medalColor, extra, onListe
           <DidouHead className="j-rib-head" />
         </div>
         <div className="j-rib-card">
+          {buttons.length > 0 && (
+            <ModalCloseButton onClose={buttons[0].onClick} className="j-rib-close" />
+          )}
           <p>{text}</p>
           {onListen && (
             <button type="button" className="j-listen" onClick={onListen} aria-label={listenLabel}>

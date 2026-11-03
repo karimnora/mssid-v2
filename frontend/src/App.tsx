@@ -832,6 +832,7 @@ function AppContent() {
           needGrade={firstStepsSession.grade}
           needParent={firstStepsSession.parent}
           journeyAvailable={journeyAvailable}
+          onClose={() => setFirstStepsSession((prev) => (prev ? { ...prev, done: true } : prev))}
           onChooseGrade={(g) => {
             nav.handleGradeChange(g);
             AuthService.updateGrade(g);

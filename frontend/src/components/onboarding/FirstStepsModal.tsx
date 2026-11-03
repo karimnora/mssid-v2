@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { ModalCloseButton } from '../ui/ModalCloseButton';
 import { createPortal } from 'react-dom';
 import type { PrimaryGrade } from '../../types';
 import type { AuthUser } from '../../types/auth';
@@ -60,11 +61,13 @@ export interface FirstStepsModalProps {
   /** journey=true: open the Kawkab Didou map (1AP), otherwise go to the courses. */
   onDone: (opts: { journey: boolean; grade: PrimaryGrade | null }) => void;
   journeyAvailable: boolean;
+  /** Close without finishing: the screen comes back at the next session. */
+  onClose?: () => void;
 }
 
 type Step = 'grade' | 'parent' | 'go';
 
-export function FirstStepsModal({ user, needGrade, needParent, onChooseGrade, onDone, journeyAvailable }: FirstStepsModalProps) {
+export function FirstStepsModal({ user, needGrade, needParent, onChooseGrade, onDone, journeyAvailable, onClose }: FirstStepsModalProps) {
   const { locale, direction } = useLocaleContext();
   const fr = locale === 'fr';
   const say = (a: string, b: string) => (fr ? a : b);
@@ -127,9 +130,10 @@ export function FirstStepsModal({ user, needGrade, needParent, onChooseGrade, on
   return createPortal(
     <div className="fixed inset-0 z-[70] bg-slate-950/70 p-3 sm:p-6 flex items-center justify-center overflow-auto">
       <div ref={dialog} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="first-steps-title" dir={direction} data-first-steps className="bg-[#FFFBF2] text-slate-900 rounded-3xl p-5 sm:p-7 w-full max-w-lg space-y-5 shadow-xl outline-none">
-        {step !== 'go' && total > 1 && (
-          <p className="text-sm font-bold text-emerald-800">{say(`Étape ${index} sur ${total}`, `الخطوة ${index} من ${total}`)}</p>
-        )}
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm font-bold text-emerald-800">{step !== 'go' && total > 1 ? say(`Étape ${index} sur ${total}`, `الخطوة ${index} من ${total}`) : ''}</p>
+          {onClose && <ModalCloseButton onClose={onClose} />}
+        </div>
 
         {step === 'grade' && (
           <>

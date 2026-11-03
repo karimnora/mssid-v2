@@ -270,6 +270,7 @@
 .j-rib-top .j-band { position: absolute; top: 45%; left: 4%; width: 92%; height: max(40px, 7cqmin); }
 .j-rib-top .j-rib-head { position: absolute; left: 50%; top: max(-28px, -5cqmin); width: max(90px, 17cqmin); transform: translateX(-50%); }
 .j-rib-card {
+  position: relative;
   width: 100%;
   border-radius: 3cqmin;
   padding: max(46px, 9cqmin) 5cqmin 5cqmin;
@@ -303,4 +304,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .journey-root *, .journey-root *::before, .journey-root *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+.journey-root .j-rib-close {
+  position: absolute;
+  top: 10px;
+  inset-inline-end: 10px;
+  z-index: 2;
 }

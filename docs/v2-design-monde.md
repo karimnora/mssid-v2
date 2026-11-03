@@ -21,8 +21,21 @@
 - [x] Accueil (3 novembre 2026). Vérifié dans Edge en 390 × 844 et 1280 × 800, sans erreur JavaScript.
 - [x] Choix des matières et lecteur de leçon (3 novembre 2026) : ciel de nuit autour des cartes blanches, comme sur la maquette. Les étiquettes d'étape et le titre « كلمات جديدة » sont rendus lisibles. Vérifié dans Edge en 390 × 844, sans erreur JavaScript.
 - [ ] Lecteur de leçon : étapes reliées comme sur la carte, gros bouton « التالي » bonbon.
-- [ ] Quiz : réponses en boutons bonbons, Didou qui réagit, étoiles.
+- [x] Quiz (3 novembre 2026) : réponses en boutons bonbons. Une bonne réponse devient verte avec un anneau doré ; une erreur devient lavande douce, jamais rouge. Didou apparaît dans la correction. Vérifié dans Edge.
+- [ ] Étoiles animées à la fin du quiz.
 - [ ] « مساعدي », laboratoires, examens.
 - [ ] Barre du haut et barre du bas dans le même style.
 - [ ] Remplacer l'ancien compagnon (`DidouVirtualCompanion`) par le nouveau dessin de Didou.
 - [ ] Essai sur un vrai téléphone Android.
+
+## Fenêtres : toujours un bouton fermer
+
+- Chaque fenêtre affiche en haut le même bouton rond ✕ (`components/ui/ModalCloseButton.tsx`) : 48 px, libellé « أغلق » ou « Fermer » pour le lecteur d'écran.
+- Ajouté le 3 novembre 2026 sur :
+  - les rubans de Didou de la carte et de la planète, où la croix déclenche le premier choix (« لا » ou le bouton unique) pour que le voyage ne reste jamais bloqué ;
+  - « خطوتان للبدء », qui revient à la session suivante ;
+  - le choix de l'enfant, où la croix vaut « passer » ;
+  - le menu « nourrir Didou » ;
+  - le certificat des wilayas.
+- Les fenêtres « Bravo » des jeux préscolaires se ferment seules au bout de 1,4 à 1,8 seconde.
+- Tests : `components/ui/ModalCloseButton.test.tsx`.

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ModalCloseButton } from './ui/ModalCloseButton';
 import { Pencil, Plus, Trash2, Users } from 'lucide-react';
 import { ParentGateModal } from './ParentGateModal';
 import { springBootApi } from '../services/springBootApi';
@@ -138,6 +139,7 @@ export const ChildProfilePicker: React.FC<ChildProfilePickerProps> = ({ isOpen, 
             <h1 className="text-xl font-black">{t('childPickerTitle')}</h1>
             <p className="text-sm font-bold text-slate-600 mt-1 leading-relaxed">{t('childPickerSubtitle')}</p>
           </div>
+          <ModalCloseButton onClose={onSkip} className="ms-auto" />
         </div>
 
         {isLoading ? (

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react';
+import { ModalCloseButton } from './ui/ModalCloseButton';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
 import {
@@ -1455,6 +1456,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
               exit={{ scale: 0.9, opacity: 0 }}
               className="web-dialog web-dialog-wide bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 max-w-2xl w-full border-2 border-amber-500 shadow-2xl space-y-6 text-center relative"
             >
+              <ModalCloseButton onClose={() => setShowCertificateModal(false)} className="absolute top-3 end-3 z-10 print:hidden" />
               <div
                 ref={certificatePrintRef}
                 className="printable-certificate p-6 sm:p-8 rounded-2xl border-4 border-double border-amber-500 bg-gradient-to-b from-amber-50/70 via-white to-amber-50/50 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/20 space-y-5"

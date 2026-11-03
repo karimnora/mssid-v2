@@ -1,4 +1,5 @@
 import React from 'react';
+import { DidouPortrait } from '../world/DidouPortrait';
 import { GuidedMathSupport } from '../GuidedMathSupport';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson } from '../../types';
@@ -285,6 +286,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     <button
                       onClick={() => onSelectOption(q.id, opt.id)}
                       disabled={isAnswered}
+                      data-quiz-option={isAnswered ? (opt.isCorrect ? 'correct' : 'muted') : hasAttempted && isOptSelected ? 'retry' : 'idle'}
                       className={`flex-1 min-w-0 min-h-12 text-right p-3 sm:p-3.5 rounded-xl border type-quiz transition-all flex items-center justify-between gap-2 ${
                         isAnswered ? 'cursor-default' : 'cursor-pointer active:scale-[0.99]'
                       } ${btnStyle}`}
@@ -328,6 +330,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-xs text-[var(--app-text)] space-y-2 font-sans leading-relaxed overflow-hidden"
                     data-quiz-feedback={feedback.isCorrect ? 'correct' : 'wrong'}
                   >
+                    <DidouPortrait size={64} className="world-only world-quiz-didou" />
                     <span className="font-extrabold text-[var(--brand-blue-dark)] flex items-center gap-1.5">
                       <Lightbulb className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
                       {onSpeak && (

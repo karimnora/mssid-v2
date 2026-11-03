@@ -7,6 +7,7 @@
  * - Dialogues motivants vocaux (Arabe / Français) avec synthèse sonore WebAudio
  * - Réactions interactives aux caresses et clics (Sauts, cœurs flottants, ronronnement)
  */
+import { ModalCloseButton } from './ui/ModalCloseButton';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Heart, Sparkles, Utensils, MessageCircle, Shirt, Volume2, Award, Zap, Smile } from 'lucide-react';
@@ -340,7 +341,8 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
               exit={{ opacity: 0, scale: 0.85, y: 10 }}
               className="absolute bottom-full mb-2 start-0 bg-slate-900 border-2 border-amber-400 rounded-2xl p-3 shadow-2xl z-50 w-72"
             >
-              <div className="flex items-center justify-between pb-2 border-b border-slate-800 mb-2">
+              <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-800 mb-2">
+                <ModalCloseButton onClose={() => setShowTreatsMenu(false)} tone="dark" className="order-last" />
                 <span className="text-xs font-black text-amber-300">
                   {isFrench ? 'Nourrir Didou (Énergie)' : 'أطعم ديدو (طاقة + XP)'}
                 </span>
