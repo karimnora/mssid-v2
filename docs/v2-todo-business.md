@@ -13,7 +13,8 @@ Ces décisions tranchent les contradictions relevées entre les documents. Elles
 | Carte de Didou | **Mondes 1 et 2 (الصحراء, القصبة) gratuits** ; mondes 3 à 8 réservés au Premium. Les leçons de ces mondes restent gratuites dans « دروسي ». Seuls le parcours sur la carte, les trésors et les médailles sont Premium. | Ajouter le verrou Premium à partir du monde 3, avec un message neutre sur Android. Ce verrou reste une barrière d'interface : progression et médailles sont stockées sur l'appareil. |
 | Couleur de fond | **`#FFFBF0`** (crème) pour les cours, exercices, « مساعدي » et le carnet parent. La planète et la carte gardent leur style « monde de jeu ». | Aucune : c'est déjà la valeur de `.cursorrules`. |
 | Niveau prioritaire | **5AP d'abord** : étendre le référentiel de compétences et le carnet d'erreurs aux maths 5AP, puis à l'arabe 5AP, avant la 2AP et la 3AP. | Nouveau fichier de compétences 5AP et liens leçon → compétences. |
-| Nombre d'enfants par abonnement | **À trancher (Karim)** : la page de vente dit 4 enfants, le compte accepte 6 profils. | Aligner la page de vente ou la limite du serveur. |
+| Nombre d'enfants par abonnement | **Jusqu'à 6 enfants**, toute la fratrie, préscolaire compris. | Aucune côté serveur (V100 accepte déjà 6 profils). Mettre à jour le texte de la page de vente. |
+| Accueil selon le niveau | **Proposition à valider pendant le test avec les familles (étape 5)** : la 1AP ouvre sur la carte de Didou, avec un bouton audio « واصل رحلتك مع ديدو » et un accès aux cours « دروسي » toujours visible (un compte gratuit est bloqué au monde 3). La 2AP à la 5AP ouvrent sur « مهمتي اليومية » sur fond crème. Cet écran montre une leçon à revoir tirée du carnet d'erreurs (à défaut, la prochaine leçon non terminée), un raccourci vers « مساعدي » et le carnet parent derrière le Parent Gate. Le préscolaire garde son espace « Éveil ». La 2AP passera sur la carte quand sa carte existera. | À coder après la décision. |
 
 ### Ordre retenu pour atteindre les premiers abonnements
 
@@ -25,7 +26,13 @@ Ces décisions tranchent les contradictions relevées entre les documents. Elles
 6. En parallèle : les codes d'activation (environ 2 à 3 jours une fois Maven réparé) et les compétences 5AP.
 7. Ensuite : le bilan hebdomadaire par e-mail ou WhatsApp, puis le paiement CIB/Edahabia.
 
-Avant de vendre, même par code ou BaridiMob, il faut un statut juridique (registre de commerce ou auto-entrepreneur) et des conditions de vente. La recette exigée par `docs/v2-validation-avant-vente.md` doit aussi être faite.
+Avant de vendre, même par code ou BaridiMob, il faut aussi faire la recette exigée par `docs/v2-validation-avant-vente.md`, et régler les points suivants (Karim, en parallèle des étapes 1 à 5) :
+
+- **Statut juridique :** registre de commerce ou statut d'auto-entrepreneur (ANAE). Le statut d'auto-entrepreneur ne couvre qu'une liste fermée d'activités. Vérifier auprès de l'ANAE que les services éducatifs en ligne y figurent, et auprès de Chargily (ou de l'autre passerelle) que ce statut est accepté.
+- **Données personnelles (loi 18-07) :** faire la déclaration ou la demande d'autorisation auprès de l'ANPDP. Les données d'enfants demandent des précautions particulières. Cela vaut dès le test avec les familles, même gratuit ; les pseudos du protocole de recette réduisent le risque sans l'enlever.
+- **Conditions de vente et mentions légales sur le site :** durée des offres (3 et 12 mois), renouvellement, remboursement, données des enfants.
+
+Le test gratuit avec les familles peut avoir lieu pendant ces démarches, puisqu'il n'y a pas de vente.
 
 ## Objectif réaliste
 
@@ -39,7 +46,7 @@ Avant de vendre, même par code ou BaridiMob, il faut un statut juridique (regis
 | Canal | Ce qu'on y fait | Paiement |
 |---|---|---|
 | App Android (Google Play) | Téléchargement et contenu gratuits ; un compte Premium acheté ailleurs se débloque automatiquement | **Aucun.** Ni prix, ni bouton d'achat, ni lien ou texte qui oriente vers le site pour payer |
-| Site web mssid | Souscription « Premium Famille » (jusqu'à 4 enfants) | CIB/Edahabia via une passerelle algérienne, cartes prépayées à code, reçu en secours |
+| Site web mssid | Souscription « Premium Famille » (jusqu'à 6 enfants) | CIB/Edahabia via une passerelle algérienne, cartes prépayées à code, reçu en secours |
 | Écoles (privées, soutien) | Licence par classe et tableau de bord enseignant | Facture et virement |
 
 - **Gratuit :** tous les cours, quiz et exercices ; les mondes 1 et 2 de la carte de Didou ; le bilan simple ; les cahiers de la V1.

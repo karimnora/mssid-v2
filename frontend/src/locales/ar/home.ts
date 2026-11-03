@@ -29,6 +29,8 @@ export const home = {
   poleLabsDesc: 'سوق الدنانير، الـ 58 ولاية، متحف التاريخ، والتجارب العلمية',
   heroGradeLine: '{grade} — اختر نشاطًا لتتعلم اليوم',
   heroContinueCta: '▶️ استكشف الرياضيات',
+  worldDidouHome: 'اختر عالماً، وهيا نتعلّم معاً!',
+  worldDidouListen: 'استمع إلى ديدو',
   journeyCardTitle: 'كوكب ديدو 🪐',
   journeyCardSubtitle: 'سافر مع ديدو من الصحراء إلى الفضاء، وكل محطة درس من دروسك',
   heroResumeCta: '▶️ متابعة: {title}',

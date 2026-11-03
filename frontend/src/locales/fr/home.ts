@@ -31,6 +31,8 @@ export const home: typeof homeAr = {
   poleLabsDesc: "Le marché des dinars, les 58 wilayas, le musée de l'histoire, et les expériences scientifiques",
   heroGradeLine: '{grade} — choisis une activité pour apprendre',
   heroContinueCta: '▶️ Explorer les maths',
+  worldDidouHome: 'Choisis un monde, et apprenons ensemble !',
+  worldDidouListen: 'Écouter Didou',
   journeyCardTitle: 'La planète de Didou 🪐',
   journeyCardSubtitle: "Voyage avec Didou du Sahara jusqu'à l'espace : chaque étape est une de tes leçons",
   heroResumeCta: '▶️ Reprendre : {title}',

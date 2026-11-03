@@ -54,7 +54,7 @@ Référence : `docs/v2-design-brief.md`. Un seul agent ou une seule personne à 
 
 ### Exploration du style
 
-- [ ] Deux ou trois variantes de l’accueil primaire en maquette, sans code
+- [ ] Deux ou trois variantes de l’accueil primaire en maquette, sans code. Proposition du 3 novembre 2026 à tester avec les familles : carte de Didou en 1AP, « مهمتي اليومية » de la 2AP à la 5AP (détail dans `v2-todo-business.md`).
 - [ ] Choix d’une variante (Karim)
 
 ### Prototype (branche `v2`, route de prototype non visible dans la navigation)

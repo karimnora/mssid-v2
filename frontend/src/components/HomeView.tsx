@@ -14,6 +14,7 @@ import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { DidouVirtualCompanion } from './DidouVirtualCompanion';
 import { SubjectIllustratedCard } from './SubjectIllustratedCard';
 import { CardBlobBackdrop } from './CardBlobBackdrop';
+import { DidouRibbon } from './world/DidouRibbon';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -50,6 +51,8 @@ interface HomeViewProps {
   onResumeActivity?: () => void;
   /** V2 « Kawkab Didou » entry; omitted when the didouJourney flag is off. */
   onOpenJourney?: () => void;
+  /** V2 « monde de jeu » design: Didou's ribbon on top of the home screen. */
+  worldDesign?: boolean;
 }
 
 const SUBJECT_ORDER: SubjectId[] = [
@@ -143,6 +146,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   lastActivityTitle,
   onResumeActivity,
   onOpenJourney,
+  worldDesign = false,
 }) => {
   const isGuest = !authUser;
   const isYoung = grade === '1AP' || grade === '2AP';
@@ -222,6 +226,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   return (
     <div className="space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
       <VoiceUnavailableBanner visible={showAudio && voiceAvailable === false} />
+      {worldDesign && <DidouRibbon text={t('worldDidouHome')} lang={locale === 'fr' ? 'fr' : 'ar'} listenLabel={t('worldDidouListen')} />}
       <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-x-8 lg:py-4">
         <div className="min-w-0">
         <div className="flex items-start justify-between gap-3">

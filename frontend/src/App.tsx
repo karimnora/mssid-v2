@@ -75,6 +75,7 @@ const AdminConsoleView = lazy(() => import('./components/admin/AdminConsoleView'
 const PrototypeFlow = lazy(() => import('./components/prototype/PrototypeFlow').then((m) => ({ default: m.PrototypeFlow })));
 const JourneyScreen = lazy(() => import('./components/journey/JourneyScreen').then((m) => ({ default: m.JourneyScreen })));
 import { FirstStepsModal, pendingFirstSteps } from './components/onboarding/FirstStepsModal';
+import './styles/world.css';
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Calculator,
@@ -170,6 +171,7 @@ function AppContent() {
   const enableAITutor = useFeatureFlag('enableAITutor');
   const didouJourneyFlag = useFeatureFlag('didouJourney');
   const firstStepsFlag = useFeatureFlag('firstSteps');
+  const worldDesignFlag = useFeatureFlag('worldDesign');
 
   const isSubjectVisible = (s: SubjectInfo): boolean =>
     isSubjectFeatureEnabled(s, {
@@ -378,6 +380,14 @@ function AppContent() {
     if (pending.grade || pending.parent) setFirstStepsSession({ userId: authUser.id, ...pending, done: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstStepsFlag, authUser?.id, authUser?.gradeSet, authUser?.parentEmailSet, activeChildId]);
+  // « monde de jeu » design: child screens only (home for now); parent screens keep the cream charter.
+  const worldScreen = worldDesignFlag && nav.isHomeActive && !nav.isPreschoolActive && !journeyOpen;
+  useEffect(() => {
+    const root = document.documentElement;
+    if (worldScreen) root.setAttribute('data-world', '');
+    else root.removeAttribute('data-world');
+    return () => root.removeAttribute('data-world');
+  }, [worldScreen]);
   const showFirstSteps =
     !!authUser && !!firstStepsSession && !firstStepsSession.done && firstStepsSession.userId === authUser.id &&
     !modals.isAuthModalOpen && !journeyOpen && !nav.isPreschoolActive;
@@ -580,7 +590,7 @@ function AppContent() {
   }
 
   return (
-    <div className="min-h-screen print:min-h-0 font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] print:pb-0 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
+    <div data-app-root className="min-h-screen print:min-h-0 font-sans antialiased selection:bg-[var(--brand-emerald)] selection:text-white pb-[calc(5rem+env(safe-area-inset-bottom))] print:pb-0 md:pb-8 transition-colors duration-300 bg-[var(--app-bg)] text-[var(--app-text)]" dir={direction}>
       <SeoHead />
       <PwaInstallBanner enabled={nav.isHomeActive} />
       <AndroidUpdateBanner />
@@ -634,6 +644,7 @@ function AppContent() {
             lastActivityTitle={resumeActivity ? lastActivityTitle(resumeActivity, locale) : null}
             onResumeActivity={resumeActivity ? handleResumeActivity : undefined}
             onOpenJourney={journeyAvailable ? openJourney : undefined}
+            worldDesign={worldScreen}
           />
         ) : (
           <>

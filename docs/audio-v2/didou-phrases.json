@@ -1,0 +1,41 @@
+{
+  "note": "Phrases fixes de Didou pour la V2, à générer avec ElevenLabs (scripts/elevenlabs-generate.ts). voice = didou (arabe littéral ou français). La darija est reportée à plus tard (décision du 3 novembre 2026) ; le script sait déjà la générer avec voice = didou-darija. Les messages d'accueil des 8 mondes de la carte sont ajoutés automatiquement depuis data/journey/journeyWorlds.ts. Le texte doit être identique au caractère près à celui que l'app prononce (harakat comprises), sinon l'enregistrement n'est pas retrouvé.",
+  "phrases": [
+    {
+      "language": "ar",
+      "voice": "didou",
+      "text": "اختر قسمك في المدرسة",
+      "use": "first-steps:grade"
+    },
+    {
+      "language": "ar",
+      "voice": "didou",
+      "text": "بقية رحلة ديدو متاحة لحسابات العائلة المميزة. اسأل أهلك!",
+      "use": "journey:premium"
+    },
+    {
+      "language": "fr",
+      "voice": "didou",
+      "text": "La suite du voyage de Didou est disponible pour les comptes Famille Premium. Demande à tes parents !",
+      "use": "journey:premium"
+    },
+    {
+      "language": "ar",
+      "voice": "didou",
+      "text": "اختر عالماً، وهيا نتعلّم معاً!",
+      "use": "home:ribbon"
+    },
+    {
+      "language": "ar",
+      "voice": "didou",
+      "text": "أحسنت!",
+      "use": "quiz:success"
+    },
+    {
+      "language": "ar",
+      "voice": "didou",
+      "text": "قريب! حاول مرة أخرى.",
+      "use": "quiz:retry"
+    }
+  ]
+}

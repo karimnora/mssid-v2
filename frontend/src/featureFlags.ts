@@ -15,7 +15,9 @@ export type FeatureFlagName =
   /** V2 « Kawkab Didou » planet hub + journey map (docs/v2-carte-didou.md). */
   | 'didouJourney'
   /** V2 « خطوتان للبدء » first-steps screen: grade + parent e-mail (docs/v2-todo-business.md, plan d'activation). */
-  | 'firstSteps';
+  | 'firstSteps'
+  /** V2 « monde de jeu » design on child screens (night sky, glossy buttons, Didou ribbon). */
+  | 'worldDesign';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Off: payments are not collectable. V2 sells modules (carnet depth, cahiers, CEM), not T2/T3.
@@ -40,6 +42,7 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // V2 only (this branch never ships to the V1 prod app). Admin can hide it from the Feature Flags tab.
   didouJourney: true,
   firstSteps: true,
+  worldDesign: true,
 };
 
 const OVERRIDES_STORAGE_KEY = 'mssid_feature_flag_overrides';
