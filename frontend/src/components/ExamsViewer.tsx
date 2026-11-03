@@ -355,7 +355,7 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
 
         {/* Free Educational Banner */}
         {showExamTools && (
-        <div className="p-3.5 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs text-emerald-950">
+        <div data-exam-banner className="p-3.5 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between flex-wrap gap-2 text-xs text-emerald-950">
           <div className="flex items-center gap-2">
             <span className="w-7 h-7 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shadow-xs">
               ✨

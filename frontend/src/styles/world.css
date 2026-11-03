@@ -147,7 +147,7 @@ html[data-world] [data-companion-info] h2 { font-family: var(--world-display); f
 html[data-world] [data-companion-info] h2 + span { color: #ffd23f; border-color: rgba(255, 210, 63, 0.55); }
 
 /* Parent and exercise surfaces keep the cream charter even on a child screen. */
-html[data-world] :is(.kids-modal-panel, .light-surface, .exercise-surface, .lab-interior, [data-lesson-footer]) {
+html[data-world] :is(.kids-modal-panel, .light-surface, .exercise-surface, .lab-interior, [data-lesson-footer], .printable-sheet) {
   --app-bg: #FFFBF0;
   --app-text: #0f172a;
   --app-text-muted: #475569;
@@ -451,3 +451,32 @@ html[data-world] [data-musaidi-reveal] {
   box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16), 0 4px 0 #11693a;
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
 }
+
+/* Exams / challenges switcher: night track, the open pole is a candy (blue exams, gold challenges). */
+html[data-world] [data-assess-switcher] { background: transparent !important; }
+html[data-world] [data-assess-switcher] > div {
+  background: rgba(8, 12, 52, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+html[data-world] [data-assess-tab] {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px !important;
+  color: #e6ebff !important;
+  font-family: var(--world-display);
+  font-weight: 400 !important;
+  font-size: 18px !important;
+}
+html[data-world] [data-assess-tab][aria-current='page'] { text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); }
+html[data-world] [data-assess-tab='exams'][aria-current='page'] {
+  background: linear-gradient(#62c1ff, #1a6fd1) !important;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16), 0 4px 0 #0f4a8f !important;
+  color: #fff !important;
+}
+html[data-world] [data-assess-tab='challenges'][aria-current='page'] {
+  background: linear-gradient(#ffe27a, #f5b301) !important;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.12), 0 4px 0 #a36b00 !important;
+  color: #3b2400 !important;
+  text-shadow: none;
+}
+html[data-world] [data-exam-banner] { background: #ecfdf5 !important; border-color: #6ee7b7 !important; }

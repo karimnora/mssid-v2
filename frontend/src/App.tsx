@@ -382,7 +382,7 @@ function AppContent() {
   }, [firstStepsFlag, authUser?.id, authUser?.gradeSet, authUser?.parentEmailSet, activeChildId]);
   // « monde de jeu » design: child screens only (home, subjects, lessons); parent screens keep the cream charter.
   const worldScreen =
-    worldDesignFlag && !nav.isPreschoolActive && !journeyOpen && (nav.isHomeActive || nav.mainCategory === 'courses');
+    worldDesignFlag && !nav.isPreschoolActive && !journeyOpen && (nav.isHomeActive || nav.mainCategory === 'courses' || nav.mainCategory === 'exams' || nav.mainCategory === 'challenges');
   useEffect(() => {
     const root = document.documentElement;
     if (worldScreen) root.setAttribute('data-world', '');
