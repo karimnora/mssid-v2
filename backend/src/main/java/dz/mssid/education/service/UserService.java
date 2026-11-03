@@ -66,6 +66,16 @@ public class UserService {
     /**
      * Récupère le profil adapté au DTO UserProfileDto pour le frontend.
      */
+    /**
+     * Enregistre l'e-mail du parent (écran de démarrage V2). Normalisé en minuscules.
+     */
+    public UserProfileDto updateParentEmail(String email, String parentEmail) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé avec l'email : " + email));
+        user.setParentEmail(parentEmail.trim().toLowerCase(java.util.Locale.ROOT));
+        return UserMapper.toUserProfileDto(userRepository.save(user));
+    }
+
     public UserProfileDto getUserProfileByEmail(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé avec l'email : " + email));

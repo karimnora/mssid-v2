@@ -73,6 +73,8 @@ import {
 const PreschoolApp = lazy(() => import('./components/preschool/PreschoolApp').then((m) => ({ default: m.PreschoolApp })));
 const AdminConsoleView = lazy(() => import('./components/admin/AdminConsoleView').then((m) => ({ default: m.AdminConsoleView })));
 const PrototypeFlow = lazy(() => import('./components/prototype/PrototypeFlow').then((m) => ({ default: m.PrototypeFlow })));
+const JourneyScreen = lazy(() => import('./components/journey/JourneyScreen').then((m) => ({ default: m.JourneyScreen })));
+import { FirstStepsModal, pendingFirstSteps } from './components/onboarding/FirstStepsModal';
 
 const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
   Calculator,
@@ -166,6 +168,8 @@ function AppContent() {
   const enablePaymentsFlag = useFeatureFlag('enablePayments');
   const curriculumReviewGate = useFeatureFlag('curriculumReviewGate');
   const enableAITutor = useFeatureFlag('enableAITutor');
+  const didouJourneyFlag = useFeatureFlag('didouJourney');
+  const firstStepsFlag = useFeatureFlag('firstSteps');
 
   const isSubjectVisible = (s: SubjectInfo): boolean =>
     isSubjectFeatureEnabled(s, {
@@ -327,6 +331,56 @@ function AppContent() {
   const openLabsCatalog = () => {
     nav.setLabsCatalogOpen(true);
   };
+
+  // « Kawkab Didou » (V2): a full-screen layer drawn above the app (z-45) but below its modals, so
+  // the auth and parent-notebook modals it opens still show on top. It owns the /journey URL; the
+  // nav hook leaves that URL alone (see useAppNavigation).
+  const [journeyOpen, setJourneyOpen] = useState(
+    () => typeof window !== 'undefined' && parseAppLocation(window.location.pathname, window.location.search).view.name === 'journey',
+  );
+  const journeyAvailable = didouJourneyFlag && !nav.isPreschoolActive;
+  useEffect(() => {
+    const onPop = () => setJourneyOpen(parseAppLocation(window.location.pathname, window.location.search).view.name === 'journey');
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+  useEffect(() => {
+    if (!journeyOpen) return;
+    const root = document.documentElement;
+    const previous = root.style.overflow;
+    root.style.overflow = 'hidden';
+    return () => {
+      root.style.overflow = previous;
+    };
+  }, [journeyOpen]);
+  const openJourney = () => {
+    window.history.pushState({ ...(window.history.state ?? {}), mssidJourney: true }, '', `/journey?g=${nav.grade}`);
+    setJourneyOpen(true);
+  };
+  /** Replace (never pop) the /journey entry so a follow-up nav action is not undone by a late popstate. */
+  const closeJourney = (after?: () => void) => {
+    setJourneyOpen(false);
+    window.history.replaceState(window.history.state, '', `/?g=${nav.grade}`);
+    if (after) after();
+    else nav.goHome();
+  };
+  useEffect(() => {
+    if (journeyOpen && !journeyAvailable) closeJourney();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [journeyOpen, journeyAvailable]);
+
+  // « خطوتان للبدء » (activation plan): grade if never chosen, parent e-mail if missing. The needed
+  // steps are frozen when the screen opens so it stays up through its final "start" step.
+  const [firstStepsSession, setFirstStepsSession] = useState<{ userId: number; grade: boolean; parent: boolean; done: boolean } | null>(null);
+  useEffect(() => {
+    if (!firstStepsFlag || !authUser || firstStepsSession?.userId === authUser.id) return;
+    const pending = pendingFirstSteps(authUser, Boolean(activeChildId));
+    if (pending.grade || pending.parent) setFirstStepsSession({ userId: authUser.id, ...pending, done: false });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstStepsFlag, authUser?.id, authUser?.gradeSet, authUser?.parentEmailSet, activeChildId]);
+  const showFirstSteps =
+    !!authUser && !!firstStepsSession && !firstStepsSession.done && firstStepsSession.userId === authUser.id &&
+    !modals.isAuthModalOpen && !journeyOpen && !nav.isPreschoolActive;
 
   useEffect(() => {
     const lesson = nav.selectedLesson;
@@ -579,6 +633,7 @@ function AppContent() {
             onFeedDidou={handleFeedDidou}
             lastActivityTitle={resumeActivity ? lastActivityTitle(resumeActivity, locale) : null}
             onResumeActivity={resumeActivity ? handleResumeActivity : undefined}
+            onOpenJourney={journeyAvailable ? openJourney : undefined}
           />
         ) : (
           <>
@@ -759,8 +814,58 @@ function AppContent() {
         </div>
       </footer>
 
+      {showFirstSteps && authUser && firstStepsSession && (
+        <FirstStepsModal
+          user={authUser}
+          needGrade={firstStepsSession.grade}
+          needParent={firstStepsSession.parent}
+          journeyAvailable={journeyAvailable}
+          onChooseGrade={(g) => {
+            nav.handleGradeChange(g);
+            AuthService.updateGrade(g);
+            const current = AuthService.getCurrentUser();
+            if (current) AuthService.setCurrentUser({ ...current, gradeSet: true });
+          }}
+          onDone={({ journey }) => {
+            setFirstStepsSession((prev) => (prev ? { ...prev, done: true } : prev));
+            if (journey) openJourney();
+            else {
+              nav.setMainCategory('courses');
+              nav.setIsHomeActive(false);
+            }
+          }}
+        />
+      )}
+
+      {journeyOpen && journeyAvailable && (
+        <Suspense fallback={<LoadingFallback label={locale === 'ar' ? 'ديدو يحضّر الكوكب…' : 'Didou prépare la planète…'} minHeight="100vh" />}>
+          <JourneyScreen
+            grade={nav.grade}
+            courses={coursesData ? publishableCourses : null}
+            userProfile={progress.userProfile}
+            onExit={() => closeJourney()}
+            onOpenCourses={() => closeJourney(() => {
+              setCourseEntrySubject(null);
+              nav.handleSelectPole('courses');
+            })}
+            onOpenLabs={() => closeJourney(() => {
+              nav.handleSelectPole('labs');
+              openLabsCatalog();
+            })}
+            onOpenParents={() => modals.setIsParentNotebookOpen(true)}
+            isLessonLocked={isLessonLocked}
+            onLessonLocked={onLessonLocked}
+            onCompleteQuiz={progress.handleCompleteQuiz}
+            onQuizFullyValidated={progress.handleQuizFullyValidated}
+            onQuizMiss={progress.handleQuizMiss}
+            onReportError={modals.openErrorReport}
+          />
+        </Suspense>
+      )}
+
       <AppModals
         currentLesson={nav.selectedLesson}
+        courses={coursesData ? publishableCourses : null}
         modals={modals}
         grade={nav.grade}
         userProfile={progress.userProfile}

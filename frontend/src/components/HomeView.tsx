@@ -48,6 +48,8 @@ interface HomeViewProps {
   onFeedDidou?: (treatId: string, energyBonus: number, xpBonus: number, cost: number) => void;
   lastActivityTitle?: string | null;
   onResumeActivity?: () => void;
+  /** V2 « Kawkab Didou » entry; omitted when the didouJourney flag is off. */
+  onOpenJourney?: () => void;
 }
 
 const SUBJECT_ORDER: SubjectId[] = [
@@ -140,6 +142,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onFeedDidou,
   lastActivityTitle,
   onResumeActivity,
+  onOpenJourney,
 }) => {
   const isGuest = !authUser;
   const isYoung = grade === '1AP' || grade === '2AP';
@@ -300,6 +303,26 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <p className="text-[11.5px] text-white/85 mt-1.5">{t('heroProgressLabel', { percent: progressPercent })}</p>
         </div>
       </section>
+
+      {onOpenJourney && (
+        <motion.button
+          type="button"
+          data-home-journey="true"
+          whileTap={{ scale: 0.95 }}
+          transition={spring}
+          onClick={onOpenJourney}
+          className="kids-pop hit-target w-full rounded-[22px] p-4 flex items-center gap-4 text-start text-white overflow-hidden"
+          style={{ background: 'radial-gradient(ellipse 90% 140% at 20% 50%, #1d5bd8 0%, #0c2a8c 55%, #081a5c 100%)', minHeight: 88 }}
+        >
+          <span aria-hidden="true" className="shrink-0 grid place-items-center rounded-full" style={{ width: 64, height: 64, background: 'radial-gradient(circle at 38% 32%, #bfeaff 0%, #4fb0ff 30%, #1d6fe8 70%)', boxShadow: '0 0 18px rgba(110,190,255,.7)' }}>
+            <svg viewBox="0 0 24 24" width="30" height="30"><path d="M7 4.5l13 7.5-13 7.5z" fill="#fff" /></svg>
+          </span>
+          <span className="min-w-0">
+            <span className="block text-lg font-black leading-tight">{t('journeyCardTitle')}</span>
+            <span className="block text-[13px] font-bold text-white/85 leading-snug">{t('journeyCardSubtitle')}</span>
+          </span>
+        </motion.button>
+      )}
 
       {/* VIRTUAL COMPANION EMBEDDED CARD */}
       <DidouVirtualCompanion

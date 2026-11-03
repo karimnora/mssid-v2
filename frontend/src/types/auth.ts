@@ -50,6 +50,10 @@ export interface AuthUser {
   quizzesCompleted?: number;
   streakDays?: number;
   grade?: string;
+  /** Server: false when no grade was ever chosen (V2 first-steps screen). Undefined = unknown. */
+  gradeSet?: boolean;
+  /** Server: whether a parent e-mail is on file (the address itself is never sent back). */
+  parentEmailSet?: boolean;
   wilaya?: string;
   completedLessonIds?: string[];
   completedExamIds?: string[];

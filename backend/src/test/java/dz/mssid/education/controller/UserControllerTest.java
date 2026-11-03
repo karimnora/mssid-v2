@@ -121,4 +121,32 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.user.role").value("ROLE_PREMIUM"));
     }
+
+    @Test
+    @DisplayName("PUT /api/v1/users/me/parent-email - Saves the parent e-mail of the signed-in account")
+    void updateParentEmail_Success() throws Exception {
+        UserProfileDto updated = UserProfileDto.builder().id(1L).email("eleve@mssid.dz").parentEmailSet(true).build();
+        when(userService.updateParentEmail("eleve@mssid.dz", "parent@example.dz")).thenReturn(updated);
+        authenticateAs("eleve@mssid.dz");
+
+        mockMvc.perform(put("/api/v1/users/me/parent-email")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(Map.of("parentEmail", "parent@example.dz"))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.parentEmailSet").value(true));
+        verify(userService).updateParentEmail("eleve@mssid.dz", "parent@example.dz");
+    }
+
+    @Test
+    @DisplayName("PUT /api/v1/users/me/parent-email - Rejects an invalid or empty e-mail")
+    void updateParentEmail_Invalid() throws Exception {
+        authenticateAs("eleve@mssid.dz");
+        for (String bad : List.of("pas-un-email", "")) {
+            mockMvc.perform(put("/api/v1/users/me/parent-email")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(Map.of("parentEmail", bad))))
+                    .andExpect(status().isBadRequest());
+        }
+        verify(userService, never()).updateParentEmail(any(), any());
+    }
 }

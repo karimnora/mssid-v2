@@ -20,6 +20,8 @@ public class UserMapper {
                 .role(roleStr)
                 .score(user.getScore() != null ? user.getScore() : 0)
                 .grade(user.getGrade() != null ? user.getGrade() : "5AP")
+                .gradeSet(user.getGrade() != null && !user.getGrade().isBlank())
+                .parentEmailSet(user.getParentEmail() != null && !user.getParentEmail().isBlank())
                 .wilaya(user.getWilaya())
                 .avatar(user.getAvatar() != null ? user.getAvatar() : "default_avatar")
                 .xp(user.getXp() != null ? user.getXp() : 0)

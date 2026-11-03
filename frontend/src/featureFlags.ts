@@ -11,7 +11,11 @@ export type FeatureFlagName =
   /** When enabled by an administrator, expose only lessons explicitly verified against the curriculum. */
   | 'curriculumReviewGate'
   /** Parent recap in Mode Éveil. Off in prod until the bilan is safe to ship. */
-  | 'preschoolParentBilan';
+  | 'preschoolParentBilan'
+  /** V2 « Kawkab Didou » planet hub + journey map (docs/v2-carte-didou.md). */
+  | 'didouJourney'
+  /** V2 « خطوتان للبدء » first-steps screen: grade + parent e-mail (docs/v2-todo-business.md, plan d'activation). */
+  | 'firstSteps';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Off: payments are not collectable. V2 sells modules (carnet depth, cahiers, CEM), not T2/T3.
@@ -33,6 +37,9 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   curriculumReviewGate: false,
   // Off until the parent bilan (login + one-child recap) is ready for families.
   preschoolParentBilan: false,
+  // V2 only (this branch never ships to the V1 prod app). Admin can hide it from the Feature Flags tab.
+  didouJourney: true,
+  firstSteps: true,
 };
 
 const OVERRIDES_STORAGE_KEY = 'mssid_feature_flag_overrides';

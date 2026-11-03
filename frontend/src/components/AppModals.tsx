@@ -36,6 +36,8 @@ interface AppModalsProps {
   modals: Modals;
   grade: PrimaryGrade;
   currentLesson?: CourseLesson | null;
+  /** Published catalog for the « مساعدي » question bank; null while it loads. */
+  courses?: CourseLesson[] | null;
   userProfile: UserProfile;
   setUserProfile: React.Dispatch<React.SetStateAction<UserProfile>>;
   authUser: AuthUser | null;
@@ -73,6 +75,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   modals,
   grade,
   currentLesson,
+  courses = null,
   userProfile,
   setUserProfile,
   authUser,
@@ -115,6 +118,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
       onClose={() => modals.setIsAiModalOpen(false)}
       grade={grade}
       lesson={currentLesson}
+      courses={courses}
       onReviewLesson={onReviewLesson}
     />
 

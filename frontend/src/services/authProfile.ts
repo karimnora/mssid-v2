@@ -18,6 +18,8 @@ export function mapAuthProfile(value: unknown, defaults: Partial<AuthUser> = {})
     role: text(raw.roleName ?? raw.role, defaults.role ?? 'ROLE_FREE') as UserRole,
     score, xp: score, level: number(raw.level, Math.floor(score / 100) + 1),
     grade: text(raw.grade, defaults.grade ?? '1AP'), wilaya: text(raw.wilaya, defaults.wilaya),
+    gradeSet: typeof raw.gradeSet === 'boolean' ? raw.gradeSet : defaults.gradeSet,
+    parentEmailSet: typeof raw.parentEmailSet === 'boolean' ? raw.parentEmailSet : defaults.parentEmailSet,
     avatar: text(raw.avatar, defaults.avatar),
     streakDays: number(raw.streakDays, defaults.streakDays ?? 0),
     quizzesCompleted: number(raw.quizzesCompleted, defaults.quizzesCompleted ?? 0),

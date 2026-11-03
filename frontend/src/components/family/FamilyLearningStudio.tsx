@@ -12,6 +12,8 @@ import { useLocaleContext } from '../../context/LocaleContext';
 import { useCahierAccess } from '../../hooks/useCahierAccess';
 import { getActiveProgressOwner } from '../../utils/progressOwner';
 import { PremiumOffer } from '../PremiumOffer';
+import { canUseWebCheckout } from '../../utils/paymentPlatform';
+import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
 import { FAMILY_MODULES, type Bilingual, type FamilyDomain } from '../../data/family/familyContent';
 import { buildFamilySessions, diagnosticTasks, familyStorageKey, readFamilyResults, type FamilyService, type FamilyResults, type FamilySession, type TaskOutcome } from '../../utils/familyLearning';
 import { PremiumLearningLabs } from './PremiumLearningLabs';
@@ -68,7 +70,7 @@ function Studio({grade,profile,owner,premium,error,loading,refresh}:{grade:Prima
      {current.module.text&&<p className="studio-story" dir={current.module.language==='ar'?'rtl':'ltr'} lang={current.module.language}>{text(current.module.text)}</p>}
      <p className="studio-muted">{say('1. Essayer sans corrigé · 2. Expliquer la méthode · 3. Vérifier · 4. Refaire un exercice dans deux jours.','1. أحاول دون تصحيح · 2. أشرح الطريقة · 3. أتحقق · 4. أعيد تمريناً بعد يومين.')}</p>
      {current.taskIds.slice(0,premium?undefined:1).map(id=>{const task=current.module.tasks.find(t=>t.id===id)!;return <TaskCard key={id} task={task} fr={fr} result={results[id]?.outcome} onResult={record}/>})}
-     {!premium&&<div className="studio-feedback"><p>{say('Un exercice offert par séance. Premium ouvre les séances complètes, les corrigés et les impressions du programme. Les fiches gratuites de la V1 et vos cahiers débloqués restent disponibles.','تمرين مجاني في كل جلسة. يفتح Premium الجلسات الكاملة والتصحيح وطباعة البرنامج. تبقى مطبوعات V1 وكراساتك المفتوحة متاحة.')}</p><PremiumOffer/></div>}
+     {!premium&&<div className="studio-feedback"><p>{canUseWebCheckout()?say('Un exercice offert par séance. Premium ouvre les séances complètes, les corrigés et les impressions du programme. Les fiches gratuites de la V1 et vos cahiers débloqués restent disponibles.','تمرين مجاني في كل جلسة. يفتح Premium الجلسات الكاملة والتصحيح وطباعة البرنامج. تبقى مطبوعات V1 وكراساتك المفتوحة متاحة.'):say(NATIVE_OFFER_COPY.studio.fr,NATIVE_OFFER_COPY.studio.ar)}</p><PremiumOffer/></div>}
      {premium&&<div className="studio-pills"><button className="studio-outline" onClick={()=>setPrint({sessions:[current],corrected:false})}><Printer size={16} className="inline" aria-hidden/> {say('Imprimer la séance','أطبع الجلسة')}</button><button className="studio-outline" onClick={()=>setPrint({sessions,corrected:false})}>{say('Imprimer le programme','أطبع البرنامج')}</button></div>}
      <div className="studio-feedback"><strong>{say('Défi sans écran','تحدٍّ دون شاشة')}</strong><p>{current.module.domain==='numbers'||current.module.domain==='operations'||current.module.domain==='measures'?say('Utilise des bouchons, une règle ou des pièces factices pour représenter une situation. Explique ton choix d’opération à un adulte.','استعمل أغطية أو مسطرة أو نقوداً وهمية لتمثيل الوضعية واشرح اختيار العملية لشخص بالغ.'):say('Raconte ce que tu as appris à un proche, puis écris une phrase ou dessine une scène.','احكِ ما تعلّمته لقريب ثم اكتب جملة أو ارسم مشهداً.')}</p></div>
     </article>

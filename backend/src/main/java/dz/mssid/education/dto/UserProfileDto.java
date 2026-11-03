@@ -23,6 +23,10 @@ public class UserProfileDto {
     private String role;
     private Integer score;
     private String grade; // "1AP" ... "5AP"
+    /** False when no grade was ever chosen (grade above then shows the legacy "5AP" fallback). Read-only. */
+    private Boolean gradeSet;
+    /** Whether a parent e-mail is on file; the address itself is never sent back. Read-only. */
+    private Boolean parentEmailSet;
     private String wilaya;
     private String avatar;
     private Integer xp;

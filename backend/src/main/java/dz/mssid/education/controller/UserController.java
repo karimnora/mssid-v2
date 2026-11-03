@@ -1,5 +1,6 @@
 package dz.mssid.education.controller;
 
+import dz.mssid.education.dto.ParentEmailRequest;
 import dz.mssid.education.dto.UpdateProfileRequest;
 import dz.mssid.education.dto.UserDto;
 import dz.mssid.education.dto.UserProfileDto;
@@ -57,6 +58,18 @@ public class UserController {
     ) {
         UserDto updatedUser = userService.updateNom(userDetails.getUsername(), request.getNom());
         return ResponseEntity.ok(updatedUser);
+    }
+
+    /**
+     * E-mail du parent, demandé à l'écran de démarrage V2 (bilan hebdomadaire).
+     * PUT /api/v1/users/me/parent-email
+     */
+    @PutMapping("/me/parent-email")
+    public ResponseEntity<UserProfileDto> updateParentEmail(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @Valid @RequestBody ParentEmailRequest request
+    ) {
+        return ResponseEntity.ok(userService.updateParentEmail(userDetails.getUsername(), request.getParentEmail()));
     }
 
     /**

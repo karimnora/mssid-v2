@@ -39,7 +39,9 @@ export type AppView =
   | { name: 'labs'; toolId?: SubjectId }
   | { name: 'exams' }
   | { name: 'challenges' }
-  | { name: 'prototype'; screen?: string };
+  | { name: 'prototype'; screen?: string }
+  /** « Kawkab Didou » planet hub and journey map (V2), rendered as a full-screen layer by App. */
+  | { name: 'journey' };
 
 export type MainCategory = 'courses' | 'labs' | 'exams' | 'challenges';
 export type MobileTab = 'home' | 'courses' | 'exercises' | 'games';
@@ -98,6 +100,10 @@ export function parseAppLocation(pathname: string, search = ''): ParsedAppLocati
     return { view: { name: 'labs' }, grade };
   }
 
+  if (head === 'journey') {
+    return { view: { name: 'journey' }, grade };
+  }
+
   if (head === 'prototype') {
     return { view: { name: 'prototype', screen: parts[1] }, grade };
   }
@@ -135,6 +141,9 @@ export function serializeAppLocation(view: AppView, grade: PrimaryGrade): { path
     case 'prototype':
       pathname = view.screen ? `/prototype/${view.screen}` : '/prototype';
       break;
+    case 'journey':
+      pathname = '/journey';
+      break;
   }
   return { pathname, search: `?g=${grade}` };
 }
@@ -171,6 +180,7 @@ export function mobileTabForView(view: AppView): MobileTab {
     case 'home':
     case 'eveil':
     case 'admin':
+    case 'journey':
       return 'home';
     case 'courses':
     case 'lesson':

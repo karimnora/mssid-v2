@@ -57,6 +57,11 @@ describe('parseAppLocation', () => {
     expect(isLabSubjectId('cahiers_lab')).toBe(true);
   });
 
+  it('maps /journey to the Kawkab Didou layer, counted under the home tab', () => {
+    expect(parseAppLocation('/journey', '?g=1AP')).toEqual({ view: { name: 'journey' }, grade: '1AP' });
+    expect(mobileTabForView({ name: 'journey' })).toBe('home');
+  });
+
   it('unknown paths fall back to home instead of a blank screen', () => {
     expect(parseAppLocation('/this-does-not-exist').view).toEqual({ name: 'home' });
   });
@@ -81,6 +86,7 @@ describe('serializeAppLocation / toAppHref', () => {
       { view: { name: 'exams' as const }, href: '/exams?g=4AP' },
       { view: { name: 'challenges' as const }, href: '/challenges?g=2AP' },
       { view: { name: 'prototype' as const, screen: 'exercise' }, href: '/prototype/exercise?g=5AP' },
+      { view: { name: 'journey' as const }, href: '/journey?g=1AP' },
     ];
 
     for (const { view, href } of cases) {

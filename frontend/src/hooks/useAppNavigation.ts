@@ -221,7 +221,8 @@ export function useAppNavigation(options: {
 
   useEffect(() => {
     const liveView = parseAppLocation(window.location.pathname, window.location.search).view;
-    if (liveView.name === 'prototype') {
+    // Both full-screen layers own their URL: never rewrite it from the nav state underneath.
+    if (liveView.name === 'prototype' || liveView.name === 'journey') {
       skipNextPushRef.current = false;
       lastPathRef.current = window.location.pathname;
       return;

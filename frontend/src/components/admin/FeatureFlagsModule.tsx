@@ -44,6 +44,8 @@ const OTHER_FLAGS: { id: FeatureFlagName; meta: FlagMeta }[] = [
   { id: 'writingLab', meta: { labelAr: 'مخبر الكتابة', descriptionAr: 'ON: «أستوديو الكتابة والخط وتتبع الحروف» ظاهر في قائمة الأدوات. OFF: مخفي تماماً.' } },
   { id: 'tamazight', meta: { labelAr: 'اللغة الأمازيغية (تجريبي)', descriptionAr: 'ON: مادة الأمازيغية ودروسها، مختبرها التفاعلي، ومنهاجها الرسمي ظاهرة في الدروس والأدوات. OFF: الثلاثة مخفية تماماً من واجهة التلميذ.' } },
   { id: 'preschoolParentBilan', meta: { labelAr: '👪 بيلان وليّ التحضيري', descriptionAr: 'ON: أيقونة الولي في ركن الإيقاظ تفتح بوابة حساب ثم بيلاناً لطفل واحد. OFF: الأيقونة والبيلان مخفيان، والطفل يلعب كالمعتاد.' } },
+  { id: 'didouJourney', meta: { labelAr: '🪐 كوكب ديدو ورحلته', descriptionAr: 'ON: بطاقة «كوكب ديدو» في الصفحة الرئيسية تفتح الكوكب وخريطة الرحلة، ومحطاتها دروس حقيقية من الكتالوج. OFF: البطاقة مخفية والمسار /journey يعود إلى الرئيسية.' } },
+  { id: 'firstSteps', meta: { labelAr: '👣 خطوتان للبدء', descriptionAr: 'ON: بعد تسجيل الدخول يُطلب المستوى الدراسي (إن لم يُختر) وبريد ولي الأمر (إن كان ناقصاً)، ثم يبدأ الطفل مباشرة. OFF: لا تظهر هذه الشاشة.' } },
 ];
 
 // Toggle = instant local effect via setFeatureFlagOverride/resetFeatureFlagOverride (unchanged UX,

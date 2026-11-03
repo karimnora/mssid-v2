@@ -5,6 +5,9 @@ import { BookOpen, Printer, X } from 'lucide-react';
 import { CourseLesson, UserProfile } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { useTranslation } from '../hooks/useTranslation';
+import { canUseWebCheckout } from '../utils/paymentPlatform';
+import { buildWeeklyReport, drawWeeklyReportCard, formatWeeklyReportText } from '../utils/weeklyReport';
+import { shareImageBlob, sharePlainText } from '../utils/shareContent';
 import { useLocaleContext } from '../context/LocaleContext';
 import { buildParentNotebook, buildWeeklyPlan, formatWeeklyRecap, ParentNotebookRow } from '../utils/competenceProgress';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
@@ -95,9 +98,13 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   const [printable, setPrintable] = useState<{ lesson: CourseLesson; competenceLabelAr: string } | null>(null);
   const [cahier, setCahier] = useState<CompetenceCahier | null>(null);
   const [recapCopied, setRecapCopied] = useState(false);
+  const [reportState, setReportState] = useState<'idle' | 'busy' | 'shared' | 'error'>('idle');
 
   useEffect(() => {
-    if (!isOpen) setRecapCopied(false);
+    if (!isOpen) {
+      setRecapCopied(false);
+      setReportState('idle');
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -210,12 +217,40 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
             >
               {recapCopied ? t('parentNotebookCopied') : t('parentNotebookCopyRecap')}
             </motion.button>}
+            {premium && <motion.button
+              type="button"
+              whileTap={{ scale: 0.95 }}
+              disabled={reportState === 'busy'}
+              data-share-weekly-report
+              onClick={async () => {
+                setReportState('busy');
+                const report = buildWeeklyReport(notebook, plan);
+                const text = formatWeeklyReportText(report, locale);
+                try {
+                  const blob = await drawWeeklyReportCard(report, locale);
+                  const outcome = blob
+                    ? await shareImageBlob(blob, `bilan-${report.toDate}.png`, text)
+                    : await sharePlainText(text);
+                  setReportState(outcome === 'cancelled' ? 'idle' : 'shared');
+                } catch {
+                  setReportState('error');
+                }
+              }}
+              className="hit-target w-full rounded-2xl px-4 bg-[#25D366] text-[#073B1F] text-sm font-extrabold cursor-pointer disabled:opacity-60"
+            >
+              {reportState === 'busy'
+                ? (locale === 'fr' ? 'Préparation du bilan…' : 'جارٍ تحضير الحصيلة…')
+                : reportState === 'shared'
+                  ? (locale === 'fr' ? 'Bilan partagé ✓' : 'تمت مشاركة الحصيلة ✓')
+                  : (locale === 'fr' ? 'Partager le bilan de la semaine (WhatsApp)' : 'شارك حصيلة الأسبوع (واتساب)')}
+            </motion.button>}
+            {reportState === 'error' && <p role="alert" className="text-sm font-bold text-[var(--kids-ink)]">{locale === 'fr' ? 'Partage impossible pour le moment. Utilisez « copier » ci-dessus.' : 'تعذّرت المشاركة الآن. استعمل زر النسخ أعلاه.'}</p>}
           </section>
 
           {!premium && <section className="rounded-2xl border-2 border-[#E7E2D7] p-4 space-y-3">
             <p>{offerT('notebookSummary', { worked: notebook.worked.length + notebook.observed.length + notebook.review.length, review: notebook.review.length })}</p>
             {plan.next?.reviewLessonId && <button type="button" className="hit-target font-bold" onClick={() => handlePrint(plan.next!.reviewLessonId!, plan.next!.labelAr, plan.next!.competenceId)}>{t('parentNotebookPrint')}</button>}
-            <p>{offerT('notebookPremium')}</p><PremiumOffer />
+            <p>{offerT(canUseWebCheckout() ? 'notebookPremium' : 'notebookPremiumNative')}</p><PremiumOffer />
           </section>}
           {empty ? (
             <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed bg-[#FFF8E7] rounded-2xl p-4">

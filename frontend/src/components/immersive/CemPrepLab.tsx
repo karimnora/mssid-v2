@@ -8,6 +8,7 @@ import { CompetenceCahierSheet } from '../cahiers/CompetenceCahierSheet';
 import { buildParentNotebook } from '../../utils/competenceProgress';
 import type { UserProfile } from '../../types';
 import { useTranslation } from '../../hooks/useTranslation';
+import { canUseWebCheckout } from '../../utils/paymentPlatform';
 
 import { useAuth } from '../../context/AuthContext';
 import { PremiumOffer, hasPremium } from '../PremiumOffer';
@@ -173,7 +174,7 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
       onBack={onBack}
     >
       {premium&&tab!=="errors"&&!remote&&<p role="status">{loadError?<button className="hit-target px-4" onClick={()=>setRetry(n=>n+1)}>{offerT("cahierUnavailable")} · {offerT("cahierRetry")}</button>:offerT("cahierChecking")}</p>}
-      {!premium && <section className="rounded-2xl bg-white p-4 space-y-3"><p>{offerT('cemPreview')}</p><PremiumOffer /></section>}
+      {!premium && <section className="rounded-2xl bg-white p-4 space-y-3"><p>{offerT(canUseWebCheckout() ? 'cemPreview' : 'cemPreviewNative')}</p><PremiumOffer /></section>}
       {!premium && tab !== CEM_PAPERS[0].id ? null : tab === 'errors' ? (
         <section className="space-y-3">
           <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{t('cemErrorsIntro')}</p>

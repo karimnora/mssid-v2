@@ -2,6 +2,19 @@
 
 L’aide enfant est préparée dans MSSID, gratuite et sans appel à une IA externe. Elle remplace la conversation Gemini dans le parcours V2. Les routes enfant Gemini et leur quota ne sont pas enregistrés lorsque le backend utilise le profil `v2`. Les profils historiques conservent leur comportement.
 
+**« مساعدي » (3 novembre 2026).** L'aide comporte deux onglets :
+
+- **« أسئلة السنة » :** toutes les questions corrigées du catalogue publié, filtrées par niveau, matière, trimestre et leçon, avec une recherche par mot-clé.
+- **« طريقة موجّهة » :** les méthodes guidées de mathématiques de 1AP et 2AP, inchangées.
+
+Pour chaque question :
+
+- l'indice et la règle de la leçon sont gratuits sans limite ;
+- la correction détaillée est limitée à 3 par jour pour un compte gratuit, et illimitée en Premium ;
+- rouvrir une correction déjà vue le jour même ne compte pas.
+
+Cette règle remplace l'ancienne « aide gratuite sans restriction » pour les corrections détaillées.
+
 ## Contenu livré
 
 20 compétences : 12 en 1AP et 8 en 2AP. Chaque fiche contient trois indices progressifs, une méthode en trois étapes et un exemple interactif corrigé, en français et en arabe. Les exemples des premières leçons de 1AP restent dans leur plage de nombres. La lecture vocale utilise le mécanisme de synthèse existant, selon les voix disponibles sur l’appareil.

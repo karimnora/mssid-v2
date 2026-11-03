@@ -17,6 +17,8 @@ import type { FamilyResults, TaskOutcome } from "../../utils/familyLearning";
 import { useActivityExit } from "../../context/ActivityExitContext";
 import { speakText, stopSpeech } from "../../utils/speech";
 import { FamilyTaskCard } from "./FamilyTaskCard";
+import { canUseWebCheckout } from "../../utils/paymentPlatform";
+import { NATIVE_OFFER_COPY } from "../../constants/nativeOfferCopy";
 import "./enrichmentLibrary.css";
 interface Props {
   grade: PrimaryGrade;
@@ -252,10 +254,12 @@ function ModuleReader({
           </button>
         ) : (
           <p className="studio-feedback">
-            {t(
-              "Tu peux rejouer ce défi. Premium ouvre les trois défis suivants de cet atelier.",
-              "يمكنك إعادة هذا التحدي. يفتح Premium التحديات الثلاثة التالية في الورشة."
-            )}
+            {canUseWebCheckout()
+              ? t(
+                  "Tu peux rejouer ce défi. Premium ouvre les trois défis suivants de cet atelier.",
+                  "يمكنك إعادة هذا التحدي. يفتح Premium التحديات الثلاثة التالية في الورشة."
+                )
+              : t(NATIVE_OFFER_COPY.enrichment.fr, NATIVE_OFFER_COPY.enrichment.ar)}
           </p>
         ))}
       {done === 4 && (

@@ -4,6 +4,7 @@ import { Printer, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { CompetenceCahier } from '../../data/cahiers/competenceCahiers';
 import { useTranslation } from '../../hooks/useTranslation';
+import { canUseWebCheckout } from '../../utils/paymentPlatform';
 
 import { useCahierAccess } from '../../hooks/useCahierAccess';
 import { springBootApi } from '../../services/springBootApi';
@@ -160,7 +161,7 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = props
       {!authUser ? <p>{t('cahierLogin')}</p> : loading ? <p>{t('cahierChecking')}</p> : (error || failed) ? <>
         <p role="alert">{t('cahierUnavailable')}</p><button type="button" className="hit-target" onClick={()=>{setFailed(false);refresh();}}>{t('cahierRetry')}</button>
       </> : access && access.remaining > 0 ? <button type="button" disabled={busy} onClick={unlock} className="hit-target rounded-2xl bg-[#008751] text-white px-4 font-bold disabled:opacity-50">{busy ? t('cahierChecking') : t('cahierUnlock')}</button> : access ? <>
-        <p>{t('cahierLimit')}</p><PremiumOffer />
+        <p>{t(canUseWebCheckout() ? 'cahierLimit' : 'cahierLimitNative')}</p><PremiumOffer />
       </> : null}
       <button type="button" onClick={props.onClose} className="hit-target block font-bold">{t('continueFree')}</button>
     </section>

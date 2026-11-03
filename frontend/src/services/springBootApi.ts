@@ -528,6 +528,14 @@ public async request<T>(
     });
   }
 
+  /** V2 first-steps screen: stores the parent e-mail used for the weekly report. */
+  public async updateParentEmail(parentEmail: string) {
+    return this.request<any>('/v1/users/me/parent-email', {
+      method: 'PUT',
+      body: JSON.stringify({ parentEmail }),
+    });
+  }
+
   public async updateUserProgress(progressData: any) {
     return this.request<any>('/v1/users/me/progress', {
       method: 'PUT',
