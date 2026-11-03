@@ -262,6 +262,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     {isUserCorrect && recentAnswerId === q.id && <ConfettiBurst />}
                     <motion.span
                       key={`badge-${q.id}`}
+                      data-quiz-badge={isUserCorrect ? 'correct' : 'retry'}
                       initial={isUserCorrect ? { scale: 0, rotate: -10, opacity: 0 } : { x: 0 }}
                       animate={isUserCorrect ? { scale: 1, rotate: 0, opacity: 1 } : { x: [0, -8, 8, -6, 6, -3, 3, 0] }}
                       transition={isUserCorrect ? { type: 'spring', stiffness: 500, damping: 15 } : { duration: 0.5 }}

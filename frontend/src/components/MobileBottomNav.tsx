@@ -4,6 +4,7 @@ import { PrimaryGrade, SubjectId } from '../types';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 import { isLabSubjectId } from '../navigation/appLocation';
+import { DidouPortrait } from './world/DidouPortrait';
 
 interface MobileBottomNavProps {
   grade?: PrimaryGrade;
@@ -47,6 +48,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     <button
       type="button"
       onClick={() => handleTab(tab)}
+      data-nav-tab={tab}
       className={`flex flex-col items-center justify-center gap-0.5 flex-1 min-h-[60px] rounded-2xl transition-colors cursor-pointer ${
         activeTab === tab ? `${activeTabClass} bg-[var(--kids-grass-1)]/20` : inactiveTabClass
       }`}
@@ -63,6 +65,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       dir={direction}
       data-lab-open={activeLabId}
       data-nav-compact="true"
+      data-bottom-nav
     >
       {tabButton('home', <Home className="w-5 h-5" />, t('home'))}
       {tabButton('courses', <BookOpen className="w-5 h-5" />, t('courses'))}
@@ -72,11 +75,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
         <button
           type="button"
           onClick={onOpenAiTutor}
-          className={`kids-nav-ai kids-pop w-[60px] h-[60px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center text-[26px] border-4 border-[var(--app-footer-bg)] cursor-pointer`}
+          className={`kids-nav-ai kids-pop w-[60px] h-[60px] -mt-7 rounded-full bg-gradient-to-br from-[var(--kids-sun-1)] to-[var(--kids-coral-2)] text-white flex items-center justify-center overflow-hidden border-4 border-[var(--app-footer-bg)] cursor-pointer`}
+          data-nav-ai
           title={t('aiTutor')}
           aria-label={t('aiTutor')}
         >
-          <span aria-hidden>🦊</span>
+          <DidouPortrait size={50} className="mt-2" />
         </button>
         <span className="text-[11px] font-extrabold text-[var(--app-text)] mt-0.5">{t('aiTutorShort')}</span>
       </div>

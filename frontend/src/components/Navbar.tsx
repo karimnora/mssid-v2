@@ -65,6 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       className="sticky top-0 z-40 pt-[env(safe-area-inset-top)] bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md"
       dir={direction}
       data-nav-child="true"
+      data-app-header
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center gap-2 sm:gap-3">
         {onBackClick && (
@@ -85,6 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           type="button"
           whileTap={{ scale: 0.95 }}
           onClick={onHomeClick}
+          data-nav-home
           className="flex items-center gap-2 min-w-0 flex-1 hit-target rounded-2xl px-1 cursor-pointer"
           aria-label={t('home')}
           title={t('backToHomeTitle')}
