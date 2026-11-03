@@ -11,7 +11,7 @@
 ## Fonctionnement
 
 - Flag `worldDesign`, activé par défaut sur `v2` et réglable dans l'onglet admin.
-- `App.tsx` pose `<html data-world>` uniquement sur les écrans enfant. Ce n'est le cas aujourd'hui que pour l'accueil, hors préscolaire et hors carte.
+- `App.tsx` pose `<html data-world>` uniquement sur les écrans enfant : aujourd'hui l'accueil, les matières et les leçons, hors préscolaire et hors carte. Les fenêtres parents, les surfaces d'exercice, les laboratoires et le pied de leçon gardent les couleurs crème : c'est la règle « Parent and exercise surfaces » de `world.css`.
 - `styles/world.css` redéfinit les couleurs de l'app (`--app-*`, `--kids-*`) et ajoute le ciel, les tuiles brillantes, les titres et le ruban. Les composants ne changent pas : avec le flag coupé, l'app retrouve exactement l'ancien rendu.
 - La police Lalezar est hébergée par l'app (`@fontsource/lalezar`), car la politique de sécurité n'autorise que les polices locales.
 - `components/world/DidouRibbon.tsx` affiche Didou, sa phrase et un bouton d'écoute qui passe par `speakText`. Les clips ElevenLabs sont utilisés quand ils existent.
@@ -19,8 +19,8 @@
 ## Étapes
 
 - [x] Accueil (3 novembre 2026). Vérifié dans Edge en 390 × 844 et 1280 × 800, sans erreur JavaScript.
-- [ ] Choix des matières et liste des leçons.
-- [ ] Lecteur de leçon : étapes reliées comme sur la carte, gros bouton « التالي ».
+- [x] Choix des matières et lecteur de leçon (3 novembre 2026) : ciel de nuit autour des cartes blanches, comme sur la maquette. Les étiquettes d'étape et le titre « كلمات جديدة » sont rendus lisibles. Vérifié dans Edge en 390 × 844, sans erreur JavaScript.
+- [ ] Lecteur de leçon : étapes reliées comme sur la carte, gros bouton « التالي » bonbon.
 - [ ] Quiz : réponses en boutons bonbons, Didou qui réagit, étoiles.
 - [ ] « مساعدي », laboratoires, examens.
 - [ ] Barre du haut et barre du bas dans le même style.

@@ -145,3 +145,26 @@ html[data-world] [data-companion-card] {
 html[data-world] [data-companion-info] :is(h2, p, span) { color: #fff; }
 html[data-world] [data-companion-info] h2 { font-family: var(--world-display); font-weight: 400; }
 html[data-world] [data-companion-info] h2 + span { color: #ffd23f; border-color: rgba(255, 210, 63, 0.55); }
+
+/* Parent and exercise surfaces keep the cream charter even on a child screen. */
+html[data-world] :is(.kids-modal-panel, .light-surface, .exercise-surface, .lab-interior, [data-lesson-footer]) {
+  --app-bg: #FFFBF0;
+  --app-text: #0f172a;
+  --app-text-muted: #475569;
+  --app-card-bg: #ffffff;
+  --app-card-border: #E7E2D7;
+  --app-card-subtle: #FFF8E7;
+  --app-input-bg: #ffffff;
+  --app-input-border: #cbd5e1;
+  --kids-ink: #0f172a;
+  --kids-muted: #475569;
+  color-scheme: light;
+}
+
+/* Lesson screen: labels drawn straight on the sky. */
+html[data-world] [data-lesson-vocab] > h3 { color: #fff; font-family: var(--world-display); font-weight: 400; font-size: 20px; }
+html[data-world] .bg-emerald-500\/15:not([data-lesson-footer] *) {
+  color: #a7f3c4;
+  background: rgba(16, 185, 129, 0.22);
+  border-color: rgba(167, 243, 196, 0.5);
+}

@@ -380,8 +380,9 @@ function AppContent() {
     if (pending.grade || pending.parent) setFirstStepsSession({ userId: authUser.id, ...pending, done: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstStepsFlag, authUser?.id, authUser?.gradeSet, authUser?.parentEmailSet, activeChildId]);
-  // « monde de jeu » design: child screens only (home for now); parent screens keep the cream charter.
-  const worldScreen = worldDesignFlag && nav.isHomeActive && !nav.isPreschoolActive && !journeyOpen;
+  // « monde de jeu » design: child screens only (home, subjects, lessons); parent screens keep the cream charter.
+  const worldScreen =
+    worldDesignFlag && !nav.isPreschoolActive && !journeyOpen && (nav.isHomeActive || nav.mainCategory === 'courses');
   useEffect(() => {
     const root = document.documentElement;
     if (worldScreen) root.setAttribute('data-world', '');
