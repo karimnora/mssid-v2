@@ -13,7 +13,7 @@ function starPoints(cx: number, cy: number, outer: number, inner: number, rotati
   }).join(' ');
 }
 
-const DZ_STAR = starPoints(508, 300, 38, 16);
+const DZ_STAR = starPoints(510, 300, 75, 28.6, 0);
 const TN_STAR = starPoints(470, 300, 42, 17);
 const LY_STAR = starPoints(490, 300, 28, 12);
 const MR_STAR = starPoints(450, 248, 34, 14);
@@ -57,7 +57,8 @@ function FlagSvg({ countryId, uid }: { countryId: string; uid: string }) {
         <>
           <rect width="450" height="600" fill="#006233" />
           <rect x="450" width="450" height="600" fill="#FFFFFF" />
-          <Crescent maskId={`${uid}-c`} cx={428} cy={300} outer={108} inner={86} shiftX={34} fill="#D21034" />
+          {/* Official construction: crescent r = H/4 and H/5 (shifted H/16), star r = H/8 pointing to the fly. */}
+          <path fill="#D21034" d="M579.904 225.27a150 150 0 1 0 0 149.46 120 120 0 1 1 0-149.46" />
           <polygon points={DZ_STAR} fill="#D21034" />
         </>
       );
@@ -120,8 +121,18 @@ function FlagSvg({ countryId, uid }: { countryId: string; uid: string }) {
           <rect width="900" height="200" fill="#CE1126" />
           <rect y="200" width="900" height="200" fill="#FFFFFF" />
           <rect y="400" width="900" height="200" fill="#000000" />
-          <path fill="#C09300" d="M450 232 390 318l32 10-18 40h92l-18-40 32-10Z" />
-          <path fill="#C09300" d="M338 300c46 8 78 18 112 18s66-10 112-18l-18 46c-30 8-62 12-94 12s-64-4-94-12Z" />
+          {/* Eagle of Saladin, simplified: spread wings, head turned to the hoist, shield, cartouche. */}
+          <g fill="#C09300">
+            <path d="M436 262C396 248 356 258 334 294c20-6 34-4 44 4-14 4-26 14-32 30 22-12 44-12 62-4l58 4Z" />
+            <path d="M464 262c40-14 80-4 102 32-20-6-34-4-44 4 14 4 26 14 32 30-22-12-44-12-62-4l-58 4Z" />
+            <path d="M426 262h48l-6 78-18 14-18-14Z" />
+            <circle cx="450" cy="246" r="17" />
+            <path d="M435 243l-19 7 19 5Z" />
+            <path d="M434 350l16 22 16-22Z" />
+            <rect x="406" y="372" width="88" height="18" rx="5" />
+          </g>
+          <path d="M437 276h26v32c0 10-13 16-13 16s-13-6-13-16Z" fill="#FFFFFF" stroke="#C09300" strokeWidth="4" />
+          <circle cx="447" cy="243" r="3.5" fill="#000000" />
         </>
       );
     case 'eh':
@@ -150,30 +161,33 @@ function FlagSvg({ countryId, uid }: { countryId: string; uid: string }) {
           <rect width="900" height="600" fill="#006C35" />
           <text
             x="450"
-            y="268"
+            y="262"
             textAnchor="middle"
             fill="#FFFFFF"
             fontFamily="Cairo, 'Noto Naskh Arabic', sans-serif"
-            fontSize="54"
+            fontSize="92"
             fontWeight="800"
           >
             لا إله إلا الله
           </text>
           <text
             x="450"
-            y="332"
+            y="362"
             textAnchor="middle"
             fill="#FFFFFF"
             fontFamily="Cairo, 'Noto Naskh Arabic', sans-serif"
-            fontSize="40"
+            fontSize="70"
             fontWeight="800"
           >
             محمد رسول الله
           </text>
-          <path
-            fill="#FFFFFF"
-            d="M210 430h420c18 0 28 14 18 26L610 502H250c-22 0-28-16-18-28l-22-44Zm430 8 78 22-90 28v-28Z"
-          />
+          {/* Sword under the Shahada: point toward the hoist, hilt toward the fly. */}
+          <g fill="#FFFFFF">
+            <path d="M228 458l34-14h356v26H262Z" />
+            <rect x="618" y="432" width="14" height="52" rx="5" />
+            <rect x="632" y="449" width="46" height="18" rx="7" />
+            <circle cx="684" cy="458" r="11" />
+          </g>
         </>
       );
     default:
@@ -182,7 +196,8 @@ function FlagSvg({ countryId, uid }: { countryId: string; uid: string }) {
 }
 
 export const CountryFlag: React.FC<CountryFlagProps> = ({ countryId, className }) => {
-  const uid = useId().replace(/:/g, '');
+  // React 19 ids contain « » or ':' — invalid inside url(#…) on some Android WebViews (masks vanish).
+  const uid = `flag${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   return (
     <div className={className} dir="ltr" data-country-flag={countryId}>
       <svg viewBox="0 0 900 600" className="h-full w-full block" aria-hidden="true">

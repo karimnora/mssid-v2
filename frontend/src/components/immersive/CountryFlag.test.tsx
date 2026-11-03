@@ -26,4 +26,11 @@ describe('CountryFlag', () => {
     expect(container.querySelector('polygon')?.getAttribute('fill')).toBe('#CE1126');
     expect(container.querySelector('mask')).not.toBeNull();
   });
+
+  it('uses mask and clip ids that every Android WebView can resolve (React 19 ids are sanitized)', () => {
+    const { container } = render(<CountryFlag countryId="dz" />);
+    const ids = [...container.querySelectorAll('[id]')].map((node) => node.id);
+    expect(ids.length).toBeGreaterThan(0);
+    ids.forEach((id) => expect(id).toMatch(/^[A-Za-z0-9_-]+$/));
+  });
 });

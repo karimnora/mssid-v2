@@ -1,0 +1,139 @@
+/* « سوق الحي » scene (SoukLab.tsx). Readable in both the cream and the « monde de jeu » design. */
+.souk-pay .lab-guide { margin-bottom: 12px; }
+
+.souk-list {
+  border-radius: 22px;
+  background: #fffbf2;
+  border: 3px dashed #e7c98b;
+  padding: 10px 14px;
+  color: #0f172a;
+}
+.souk-list-title { margin: 0 0 6px; font-weight: 800; font-size: 14px; color: #92400e; }
+.souk-list ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.souk-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 6px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid #e7e2d7;
+  font-weight: 800;
+  font-size: 14px;
+}
+.souk-list li[data-got='true'] { background: #dcfce7; border-color: #22c55e; }
+.souk-check { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: #16a34a; color: #fff; font-size: 14px; }
+.souk-list li[data-got='false'] .souk-check { background: #e2e8f0; }
+
+.souk-street {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 18px 12px 12px;
+  background: linear-gradient(180deg, #7dd3fc 0%, #bae6fd 28%, #fde68a 28%, #fcd34d 31%, #e7d3b5 31%, #d6c3a3 100%);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+.souk-sun { position: absolute; top: 10px; inset-inline-end: 16px; width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(#fff7ae, #facc15); box-shadow: 0 0 24px #fde047; }
+.souk-stalls { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.souk-stall {
+  position: relative;
+  min-height: 176px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 26px 8px 10px;
+  border: 0;
+  border-radius: 18px;
+  background: var(--cloth);
+  box-shadow: 0 6px 0 rgba(120, 80, 30, 0.35);
+  color: #0f172a;
+  cursor: pointer;
+  overflow: hidden;
+}
+.souk-stall:disabled { cursor: default; }
+.souk-awning {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 20px;
+  background: repeating-linear-gradient(90deg, var(--awning) 0 18px, #fff 18px 36px);
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+}
+.souk-stall-name { font-weight: 800; font-size: 14px; }
+.souk-goods { display: block; filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.18)); }
+.souk-price {
+  font-weight: 900;
+  font-size: 17px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--awning);
+}
+.souk-seller { font-size: 12px; font-weight: 700; color: #475569; }
+
+.souk-basket {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  min-height: 64px;
+}
+.souk-basket-icon { font-size: 34px; }
+.souk-basket-items { display: flex; gap: 4px; flex: 1; min-width: 0; flex-wrap: wrap; }
+.souk-total { font-weight: 900; font-size: 16px; color: #065f46; white-space: nowrap; }
+
+.souk-pay {
+  border-radius: 26px;
+  background: #fffbf2;
+  border: 3px solid #e7e2d7;
+  padding: 14px;
+  color: #0f172a;
+  scroll-margin-top: 12rem;
+}
+.souk-pay-title { margin: 6px 0; font-weight: 800; font-size: 15px; }
+.souk-money, .souk-counter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.souk-counter {
+  min-height: 84px;
+  padding: 10px;
+  border-radius: 18px;
+  background: repeating-linear-gradient(90deg, #a16207 0 22px, #b45309 22px 44px);
+  box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+.souk-given { margin-inline-start: auto; padding: 4px 12px; border-radius: 999px; background: #fff; font-weight: 900; }
+.souk-piece { border: 0; background: transparent; padding: 0; cursor: pointer; min-width: 60px; min-height: 60px; }
+.souk-piece:disabled { cursor: default; }
+.souk-cta {
+  margin-top: 12px;
+  width: 100%;
+  min-height: 64px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  font-family: 'Lalezar', 'Cairo', system-ui, sans-serif;
+  font-size: 24px;
+  cursor: pointer;
+  background: linear-gradient(#5fe08a, #1e9b4c);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.16), 0 6px 0 #11693a;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+.souk-change-choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.souk-change-choice {
+  min-height: 64px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(#62c1ff, #1a6fd1);
+  box-shadow: 0 5px 0 #0f4a8f;
+}
+.souk-change-choice[data-quiz-option='retry'] { background: linear-gradient(#8e98d6, #5d67ad); box-shadow: 0 5px 0 #3b437f; }
+.souk-change-choice[data-quiz-option='correct'] { background: linear-gradient(#5fe08a, #1e9b4c); box-shadow: 0 5px 0 #11693a, 0 0 0 4px rgba(255, 210, 63, 0.7); }
+.souk-change-choice[data-quiz-option='muted'] { opacity: 0.45; }
+.souk-win { margin: 10px 0 0; font-weight: 900; color: #065f46; }

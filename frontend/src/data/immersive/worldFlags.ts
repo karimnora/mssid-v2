@@ -130,3 +130,24 @@ export const FLAG_QUIZ = [
     correctAr: 'سَبْعُ دُوَلٍ',
   },
 ] as const;
+
+/** « أين العلم؟ » round: the country to find and 4 flags to choose from (the right one included). */
+export function flagRound(targetId: string, random: () => number = Math.random): { target: WorldCountry; options: WorldCountry[] } {
+  const target = countryById(targetId) ?? WORLD_COUNTRIES[0];
+  const others = shuffled(WORLD_COUNTRIES.filter((c) => c.id !== target.id), random).slice(0, 3);
+  return { target, options: shuffled([target, ...others], random) };
+}
+
+/** Order in which the countries are asked: Algeria first, then the others shuffled. */
+export function flagRoundOrder(random: () => number = Math.random): string[] {
+  return ['dz', ...shuffled(WORLD_COUNTRIES.filter((c) => c.id !== 'dz'), random).map((c) => c.id)];
+}
+
+function shuffled<T>(list: T[], random: () => number): T[] {
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}

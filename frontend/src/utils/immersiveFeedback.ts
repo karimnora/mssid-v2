@@ -45,3 +45,18 @@ export function playSoftSuccess() {
 export function playSoftMiss() {
   tone([349.23, 329.63], 140);
 }
+
+/** Item dropping into the basket. */
+export function playPop() {
+  tone([880, 1174.66], 90, 'triangle');
+}
+
+/** A coin or a note put on the counter. */
+export function playCoin() {
+  tone([1975.53, 2637.02], 120, 'triangle');
+}
+
+/** Cash register when the change is right. */
+export function playRegister() {
+  tone([1046.5, 1318.51, 1567.98, 2093], 260, 'square');
+}

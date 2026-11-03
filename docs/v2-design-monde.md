@@ -33,6 +33,17 @@
   - les réponses des quiz (prière, drapeaux, ablutions, mosquée) sont des bonbons, avec Didou dans la correction ;
   - les scènes et cartes de contenu restent claires pour la lecture.
   Vérifié dans Edge : mosquée (bonne réponse, puis étoile et fête de Didou), prière, souk. Tests : `ImmersiveLabShell.test.tsx`.
+- [x] Souk du quartier, refait en scène guidée (4 novembre 2026) :
+  - Didou lit à voix haute la liste des courses, chaque achat, le total, ce qui manque, puis la monnaie à rendre ; sa bulle suit l'étape en cours ;
+  - on touche un étal (auvents rayés, articles dessinés) et l'article saute dans le panier ; un article hors liste n'est pas une faute : Didou explique ;
+  - pièces et billets en dinars à poser sur le comptoir (on peut les reprendre), puis choix de la monnaie ; une erreur donne l'indice « احسب: 100 ناقص 50 » ;
+  - sons « pop », pièce et caisse (`utils/immersiveFeedback.ts`), et une étoile par mission ;
+  - fichiers : `immersive/SoukLab.tsx`, `SoukArt.tsx`, `souk.css`, `DidouGuide.tsx`.
+- [x] Carte des pays et drapeaux (4 novembre 2026) :
+  - Didou lit le nom, la capitale et une phrase sur chaque pays ; le drapeau choisi flotte sur son mât ;
+  - le quiz devient « أين علم … ؟ » : 4 drapeaux, l'Algérie en premier ; une étoile seulement au premier essai ; une erreur montre le nom du pays touché et Didou aide ;
+  - drapeaux corrigés : l'Algérie suit la construction officielle (croissant de rayons H/4 et H/5, étoile de rayon H/8) ; l'aigle de Saladin d'Égypte est redessiné ; l'épée saoudienne a sa pointe vers la hampe et la chahada est agrandie ;
+  - les identifiants des masques sont nettoyés : avec React 19, certains navigateurs Android ne trouvaient plus le croissant ou les coins arrondis.
 - [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.
