@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useLocaleContext } from '../../context/LocaleContext';
+import { DidouPortrait } from '../world/DidouPortrait';
+import { DidouRibbon } from '../world/DidouRibbon';
+import { ConfettiBurst } from '../lessonViewer/ConfettiBurst';
 
 export interface ImmersiveTab {
   id: string;
@@ -33,15 +36,29 @@ export const ImmersiveLabShell: React.FC<ImmersiveLabShellProps> = ({
   children,
 }) => {
   const t = useTranslation('labsImmersive');
-  const { direction } = useLocaleContext();
+  const { direction, locale } = useLocaleContext();
+
+  // Didou cheers every time a new star is earned (« monde de jeu » design, docs/v2-design-monde.md).
+  const previousStars = useRef(stars);
+  const [cheer, setCheer] = useState(0);
+  useEffect(() => {
+    if (stars > previousStars.current) setCheer((n) => n + 1);
+    previousStars.current = stars;
+  }, [stars]);
+  useEffect(() => {
+    if (!cheer) return;
+    const timer = window.setTimeout(() => setCheer(0), 2200);
+    return () => window.clearTimeout(timer);
+  }, [cheer]);
 
   return (
-    <div className="space-y-5 max-w-5xl mx-auto" dir={direction}>
-      <div className="kids-pole rounded-[28px] p-5 sm:p-7 relative overflow-hidden">
+    <div className="space-y-5 max-w-5xl mx-auto" dir={direction} data-world-lab>
+      <div className="kids-pole rounded-[28px] p-5 sm:p-7 relative overflow-hidden" data-world-lab-hero>
         <div className="relative z-10 flex items-start gap-3">
           {onBack && (
             <button
               type="button"
+              data-world-lab-back
               onClick={onBack}
               aria-label={t('backAria')}
               className="hit-target shrink-0 flex items-center justify-center bg-white border-2 border-[#E7E2D7] text-[var(--kids-ink)] rounded-2xl cursor-pointer"
@@ -55,20 +72,43 @@ export const ImmersiveLabShell: React.FC<ImmersiveLabShellProps> = ({
               <span>{badge}</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-extrabold text-[var(--kids-ink)] leading-tight">{title}</h1>
-            <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{intro}</p>
+            <p className="world-hide text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{intro}</p>
             {stars > 0 && (
-              <p className="text-xs font-extrabold text-[var(--brand-amber)]">{t('stars', { count: stars })}</p>
+              <p className="world-hide text-xs font-extrabold text-[var(--brand-amber)]">{t('stars', { count: stars })}</p>
             )}
           </div>
+          <div className="world-only world-lab-stars" data-lab-stars={stars} role="img" aria-label={t('stars', { count: stars })}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" key={stars} className={stars > 0 ? 'is-on' : ''}>
+              <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+            </svg>
+            <span dir="ltr">×{stars}</span>
+          </div>
+        </div>
+        <div className="world-only relative z-10 mt-4">
+          <DidouRibbon text={intro} lang={locale === 'fr' ? 'fr' : 'ar'} listenLabel={t('listenDidou')} />
         </div>
       </div>
 
-      <div className="flex items-center gap-2 overflow-x-auto pb-1">
+      {cheer > 0 && (
+        <div className="world-only world-lab-cheer" role="status" key={cheer}>
+          <div className="world-lab-cheer-card">
+            <span className="relative inline-block">
+              <DidouPortrait size={64} />
+              <ConfettiBurst />
+            </span>
+            <span>{t('starWon')} ⭐</span>
+          </div>
+        </div>
+      )}
+
+      <div className="flex items-center gap-2 overflow-x-auto pb-1" data-lab-tabs={tabs.length}>
         {tabs.map((tab) => (
           <motion.button
             key={tab.id}
             type="button"
             whileTap={{ scale: 0.95 }}
+            data-lab-tab
+            aria-current={activeTab === tab.id ? 'step' : undefined}
             onClick={() => onTab(tab.id)}
             className={`hit-target px-4 rounded-2xl text-sm font-extrabold cursor-pointer shrink-0 ${
               activeTab === tab.id
@@ -101,7 +141,7 @@ export function QuizBlock({
 }) {
   const t = useTranslation('labsImmersive');
   return (
-    <div className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-5 space-y-3">
+    <div className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-5 space-y-3" data-lab-quiz>
       <p className="text-base font-extrabold text-[var(--kids-ink)] leading-relaxed">{questionAr}</p>
       <div className="grid gap-2">
         {optionsAr.map((option) => {
@@ -120,6 +160,7 @@ export function QuizBlock({
               type="button"
               whileTap={{ scale: 0.95 }}
               disabled={!!picked}
+              data-quiz-option={!picked ? 'idle' : ok ? 'correct' : chosen ? 'retry' : 'muted'}
               onClick={() => onPick(option, ok)}
               className={`hit-target w-full rounded-2xl border-2 px-4 text-sm font-extrabold cursor-pointer ${tone}`}
             >
@@ -129,9 +170,10 @@ export function QuizBlock({
         })}
       </div>
       {picked && (
-        <p className="text-sm font-extrabold text-[var(--kids-ink)]">
-          {picked === correctAr ? t('wellDone') : t('tryAgain')}
-        </p>
+        <div data-quiz-feedback={picked === correctAr ? 'correct' : 'retry'} className="rounded-2xl p-3 text-sm font-extrabold text-[var(--kids-ink)]">
+          <DidouPortrait size={56} className="world-only world-quiz-didou" />
+          <p>{picked === correctAr ? t('wellDone') : t('tryAgain')}</p>
+        </div>
       )}
     </div>
   );

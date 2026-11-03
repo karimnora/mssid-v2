@@ -11,7 +11,7 @@
 ## Fonctionnement
 
 - Flag `worldDesign`, activé par défaut sur `v2` et réglable dans l'onglet admin.
-- `App.tsx` pose `<html data-world>` uniquement sur les écrans enfant : aujourd'hui l'accueil, les matières, les leçons, les examens et les défis, hors préscolaire et hors carte. Les fenêtres parents, les surfaces d'exercice, les laboratoires et le pied de leçon gardent les couleurs crème : c'est la règle « Parent and exercise surfaces » de `world.css`.
+- `App.tsx` pose `<html data-world>` uniquement sur les écrans enfant : aujourd'hui l'accueil, les matières, les leçons, les examens, les défis et les labos, hors préscolaire et hors carte. Les fenêtres parents, les surfaces d'exercice, les laboratoires et le pied de leçon gardent les couleurs crème : c'est la règle « Parent and exercise surfaces » de `world.css`.
 - `styles/world.css` redéfinit les couleurs de l'app (`--app-*`, `--kids-*`) et ajoute le ciel, les tuiles brillantes, les titres et le ruban. Les composants ne changent pas : avec le flag coupé, l'app retrouve exactement l'ancien rendu.
 - La police Lalezar est hébergée par l'app (`@fontsource/lalezar`), car la politique de sécurité n'autorise que les polices locales.
 - `components/world/DidouRibbon.tsx` affiche Didou, sa phrase et un bouton d'écoute qui passe par `speakText`. Les clips ElevenLabs sont utilisés quand ils existent.
@@ -26,7 +26,14 @@
 - [x] Badge « إجابة صحيحة » plein et lisible (vert ou lavande, texte blanc).
 - [x] « مساعدي » (3 novembre 2026) : panneau violet de nuit avec un bord doré et Didou dans l'en-tête. Les onglets et les années sont des bonbons, doré pour le choix actif. Les questions sont des tuiles brillantes. La correction et la méthode guidée restent sur une feuille crème pour la lecture, et « التصحيح المفصّل » est un bonbon vert. Le bouton fermer est désormais le bouton rond commun. Vérifié dans Edge avec un compte gratuit : liste, correction (le compteur passe de 3 à 2), méthode guidée, fermeture.
 - [x] Examens et défis (3 novembre 2026) : le ciel de nuit s'étend à l'onglet « اختبر ». Le sélecteur « امتحانات / تحديات » devient une piste de nuit, avec un bonbon bleu pour les examens et doré pour les défis. La feuille d'examen garde le papier crème, ce qui permet aussi de l'imprimer, et le bandeau « حلول مجانية » est lisible. Vérifié dans Edge : liste des examens 5AP, examen ouvert, liste des défis, défi en cours.
-- [ ] Laboratoires.
+- [x] Nouveaux labos immersifs (3 novembre 2026) : ablutions, prière, adab de la mosquée, code de la route, souk, drapeaux, préparation BEM, cahiers. Tous passent par `immersive/ImmersiveLabShell.tsx` :
+  - une scène de nuit étoilée avec un bord doré ; Didou présente le labo sur son ruban violet, avec un bouton d'écoute ;
+  - un compteur d'étoiles doré ; à chaque nouvelle étoile, Didou apparaît au-dessus de la barre du bas avec « نجمة جديدة! » et des confettis ;
+  - les onglets sont des stations-bonbons reliées, dorée pour l'onglet ouvert ;
+  - les réponses des quiz (prière, drapeaux, ablutions, mosquée) sont des bonbons, avec Didou dans la correction ;
+  - les scènes et cartes de contenu restent claires pour la lecture.
+  Vérifié dans Edge : mosquée (bonne réponse, puis étoile et fête de Didou), prière, souk. Tests : `ImmersiveLabShell.test.tsx`.
+- [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.
 - [ ] Essai sur un vrai téléphone Android.

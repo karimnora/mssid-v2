@@ -480,3 +480,129 @@ html[data-world] [data-assess-tab='challenges'][aria-current='page'] {
   text-shadow: none;
 }
 html[data-world] [data-exam-banner] { background: #ecfdf5 !important; border-color: #6ee7b7 !important; }
+
+/* ---------- Immersive labs (ImmersiveLabShell) ---------- */
+html[data-world] .world-hide { display: none !important; }
+/* The lab floats on the night sky instead of a white board. */
+html[data-world] .lab-interior:has([data-world-lab]) { background: transparent !important; border: 0 !important; }
+html[data-world] .lab-interior:has([data-world-lab]) > .kids-hero-band { display: none; }
+
+html[data-world] [data-world-lab-hero] {
+  background:
+    radial-gradient(1.4px 1.4px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 70% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 88% 40%, #fff 50%, transparent 51%),
+    linear-gradient(160deg, #3b2ab8, #1c2a8f) !important;
+  border: 3px solid rgba(255, 210, 63, 0.55) !important;
+  box-shadow: 0 10px 24px rgba(5, 10, 40, 0.45);
+  overflow: visible !important;
+}
+html[data-world] [data-world-lab-hero] h1 {
+  color: #fff !important;
+  font-family: var(--world-display);
+  font-weight: 400 !important;
+  font-size: 30px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+html[data-world] [data-world-lab-hero] .inline-flex:has(> svg + span) {
+  background: rgba(255, 210, 63, 0.18) !important;
+  border-color: rgba(255, 210, 63, 0.6) !important;
+  color: #ffe27a !important;
+}
+html[data-world] [data-world-lab-back] {
+  position: relative;
+  overflow: hidden;
+  width: 52px;
+  height: 52px;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(#62c1ff, #1a6fd1) !important;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16), 0 4px 0 #0f4a8f;
+  color: #fff !important;
+}
+.world-lab-stars {
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  background: rgba(8, 12, 52, 0.55);
+  border: 2px solid rgba(255, 210, 63, 0.6);
+  color: #ffe27a;
+  font-family: var(--world-display);
+  font-size: 20px;
+}
+html[data-world] .world-lab-stars { display: inline-flex; }
+.world-lab-stars svg { width: 30px; height: 30px; fill: rgba(255, 255, 255, 0.25); }
+.world-lab-stars svg.is-on { fill: #ffc21a; filter: drop-shadow(0 2px 0 #b77d00); }
+@media (prefers-reduced-motion: no-preference) {
+  .world-lab-stars svg.is-on { animation: world-star-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+}
+
+/* Lab tabs: linked candy stations. */
+html[data-world] [data-lab-tabs] { gap: 20px; padding: 6px 4px 12px; }
+html[data-world] [data-lab-tab] {
+  position: relative;
+  overflow: visible;
+  min-height: 52px;
+  border: 3px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(160deg, #34409e, #222d86) !important;
+  box-shadow: 0 5px 0 #141c5c;
+  color: #e6ebff !important;
+  font-family: var(--world-display);
+  font-weight: 400 !important;
+  font-size: 17px !important;
+}
+html[data-world] [data-lab-tab][aria-current='step'] {
+  background: linear-gradient(#ffe27a, #f5b301) !important;
+  border-color: #fff !important;
+  box-shadow: 0 5px 0 #a36b00, 0 0 0 4px rgba(255, 210, 63, 0.45);
+  color: #3b2400 !important;
+}
+html[data-world] [data-lab-tab]:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 100%;
+  width: 20px;
+  border-top: 5px dashed rgba(255, 255, 255, 0.45);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Lab quiz: the generic candy answers apply; the feedback box gets Didou. */
+html[data-world] [data-lab-quiz] { border: 0 !important; border-radius: 26px !important; box-shadow: 0 8px 0 rgba(8, 12, 52, 0.6); }
+
+/* Didou's cheer when a star is earned. */
+.world-lab-cheer {
+  position: fixed;
+  inset-inline: 0;
+  bottom: calc(110px + env(safe-area-inset-bottom));
+  z-index: 60;
+  justify-content: center;
+  pointer-events: none;
+}
+html[data-world] .world-lab-cheer { display: flex; }
+.world-lab-cheer-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px 8px 10px;
+  border-radius: 999px;
+  background: linear-gradient(#a84cf0, #7d2ad6);
+  box-shadow: 0 6px 0 #4f1593, 0 14px 26px rgba(5, 10, 40, 0.45);
+  color: #fff;
+  font-family: var(--world-display);
+  font-size: 24px;
+  text-shadow: 0 2px 0 rgba(60, 0, 110, 0.6);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .world-lab-cheer-card { animation: world-cheer 2.2s ease both; }
+}
+@keyframes world-cheer {
+  0% { transform: translateY(40px) scale(0.6); opacity: 0; }
+  12% { transform: translateY(0) scale(1.08); opacity: 1; }
+  20%, 82% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(20px) scale(0.9); opacity: 0; }
+}

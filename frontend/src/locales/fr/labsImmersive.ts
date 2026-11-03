@@ -7,6 +7,8 @@ export const labsImmersive: typeof arLabsImmersive = {
   wellDone: 'Bravo !',
   tryAgain: 'Essaie encore, tout doucement.',
   stars: '{count} étoile(s)',
+  listenDidou: 'Écouter Didou',
+  starWon: 'Nouvelle étoile !',
 
   wuduBadge: 'Éducation islamique — 2e année',
   wuduTitle: 'Le lavabo du wudu',

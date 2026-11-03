@@ -5,6 +5,8 @@ export const labsImmersive = {
   wellDone: 'أَحْسَنْتَ!',
   tryAgain: 'حَاوِلْ مَرَّةً أُخْرَى بِهُدُوءٍ.',
   stars: '{count} نَجْمَة',
+  listenDidou: 'اِسْتَمِعْ إِلَى دِيدُو',
+  starWon: 'نَجْمَةٌ جَدِيدَةٌ!',
 
   wuduBadge: 'التَّرْبِيَةُ الإِسْلَامِيَّةُ — 2AP',
   wuduTitle: 'مَغْسَلَةُ الوُضُوءِ',

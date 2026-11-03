@@ -67,6 +67,7 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ onBack, onReward }
                   type="button"
                   whileTap={{ scale: 0.95 }}
                   data-mosque-option={option.id}
+                  data-quiz-option={!picked ? 'idle' : ok ? 'correct' : chosen ? 'retry' : 'muted'}
                   disabled={!!picked}
                   onClick={() => choose(option.id)}
                   className={`hit-target w-full rounded-2xl border-2 px-4 text-sm font-extrabold cursor-pointer text-[var(--kids-ink)] ${tone}`}
@@ -80,6 +81,7 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ onBack, onReward }
             <motion.button
               type="button"
               whileTap={{ scale: 0.95 }}
+              data-primary-cta="lab-next"
               onClick={() => {
                 setPicked(null);
                 setIndex((n) => (n + 1) % MOSQUE_SCENES.length);
