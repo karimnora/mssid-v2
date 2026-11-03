@@ -315,7 +315,7 @@ function AppContent() {
   const openAiTutor = () => {
     if (!enableAITutor) return;
     if (!authUser) {
-      modals.openAuth('login', 'المعلّم الذكي متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ معه! 🦊');
+      modals.openAuth('login', '«مساعدي» متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ مع ديدو! 🦊');
       return;
     }
     modals.setIsAiModalOpen(true);

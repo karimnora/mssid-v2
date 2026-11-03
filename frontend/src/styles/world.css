@@ -393,3 +393,61 @@ html[data-world] [data-nav-ai] + span { color: #fff !important; font-family: var
 html[data-world] [data-quiz-badge] { font-size: 13px !important; border: 0 !important; padding: 5px 12px !important; }
 html[data-world] [data-quiz-badge='correct'] { background: #15803d !important; color: #fff !important; box-shadow: 0 3px 0 #0f5a2b; }
 html[data-world] [data-quiz-badge='retry'] { background: #5d67ad !important; color: #fff !important; box-shadow: 0 3px 0 #3b437f; }
+
+/* « مساعدي »: a violet night panel with Didou; questions are glossy tiles, the worked correction
+   sits on a cream sheet so long texts stay easy to read. */
+html[data-world] [data-musaidi-modal] {
+  background: linear-gradient(170deg, #3b2ab8 0%, #1c2a8f 55%, #141c5c 100%) !important;
+  border: 3px solid rgba(255, 210, 63, 0.55) !important;
+  box-shadow: 0 16px 40px rgba(5, 10, 40, 0.55);
+  color: #fff !important;
+}
+html[data-world] [data-musaidi-modal] > header { align-items: center; }
+html[data-world] [data-musaidi-modal] > header h2 { font-family: var(--world-display); font-weight: 400; font-size: 30px; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.3); }
+html[data-world] [data-musaidi-modal] > header p { color: #ffd23f !important; }
+html[data-world] .musaidi-didou { margin-block: -10px -6px; filter: drop-shadow(0 4px 6px rgba(20, 0, 60, 0.45)); }
+html[data-world] [data-musaidi-modal] :is(label, [data-musaidi-count]) { color: #e6ebff !important; }
+html[data-world] [data-musaidi-modal] > p:not([class*="bg-"]) { color: #e6ebff; }
+html[data-world] [data-musaidi-modal] :is(select, input) { color: #0f172a; }
+html[data-world] [data-musaidi-modal] [aria-pressed]:not(.musaidi-sheet *) {
+  position: relative;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  background: linear-gradient(160deg, #34409e, #222d86) !important;
+  box-shadow: 0 4px 0 #141c5c !important;
+}
+html[data-world] [data-musaidi-modal] [aria-pressed='true']:not(.musaidi-sheet *) {
+  background: linear-gradient(#ffe27a, #f5b301) !important;
+  box-shadow: 0 4px 0 #a36b00, 0 0 0 3px rgba(255, 255, 255, 0.5) !important;
+  color: #3b2400 !important;
+}
+html[data-world] [data-musaidi-question] {
+  border: 0 !important;
+  border-radius: 18px !important;
+  background: linear-gradient(160deg, #34409e, #222d86) !important;
+  box-shadow: 0 4px 0 #141c5c;
+  color: #fff !important;
+  font-weight: 700;
+  padding-block: 12px !important;
+}
+html[data-world] [data-musaidi-question] svg { color: #5fe08a !important; }
+html[data-world] .musaidi-sheet {
+  --app-text: #0f172a;
+  --app-text-muted: #475569;
+  background: #fffbf2 !important;
+  color: #0f172a !important;
+  border-radius: 20px;
+  padding: 14px;
+  color-scheme: light;
+}
+html[data-world] .musaidi-sheet label { color: #0f172a !important; }
+html[data-world] [data-musaidi-reveal] {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px !important;
+  background: linear-gradient(#5fe08a, #1e9b4c) !important;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.16), 0 4px 0 #11693a;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}

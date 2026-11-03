@@ -108,7 +108,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
   const listen = (text: string) => void speakText(text, 'ar-SA').catch(() => {});
 
   if (!courses) {
-    return <p role="status" className="rounded-xl bg-emerald-50 p-3">{say('Préparation des questions…', 'جارٍ تحضير الأسئلة…')}</p>;
+    return <p role="status" className="rounded-xl bg-emerald-50 text-slate-900 p-3">{say('Préparation des questions…', 'جارٍ تحضير الأسئلة…')}</p>;
   }
 
   const selectClass = 'block w-full min-h-12 rounded-xl border border-emerald-300 bg-white px-3 mt-1';
@@ -136,7 +136,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
       </div>
 
       {subjects.length === 0 ? (
-        <p className="rounded-xl bg-amber-50 p-3 text-sm">{say('Aucune question publiée pour ce niveau pour le moment.', 'لا توجد أسئلة منشورة لهذا الصف حالياً.')}</p>
+        <p className="rounded-xl bg-amber-50 text-slate-900 p-3 text-sm">{say('Aucune question publiée pour ce niveau pour le moment.', 'لا توجد أسئلة منشورة لهذا الصف حالياً.')}</p>
       ) : (
         <>
           <div className="grid gap-3 sm:grid-cols-3">
@@ -176,11 +176,11 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
               value={query}
               onChange={(e) => { setQuery(e.target.value); setLimit(PAGE); }}
               placeholder="مثال: الجمع بالاحتفاظ"
-              className="block w-full min-h-12 rounded-xl border border-emerald-300 px-3 mt-1"
+              className="block w-full min-h-12 rounded-xl border border-emerald-300 bg-white text-slate-900 px-3 mt-1"
             />
           </label>
 
-          <p className="text-sm text-slate-600" role="status">
+          <p className="text-sm text-slate-600" role="status" data-musaidi-count>
             {say(`${filtered.length} question(s)`, `${filtered.length} سؤال`)}
             {remaining != null && ` · ${say(`${remaining} correction(s) détaillée(s) restante(s) aujourd’hui`, `بقي لك ${remaining} من التصحيحات المفصّلة اليوم`)}`}
           </p>
@@ -189,7 +189,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
             <ul className="space-y-2" aria-label={say('Questions', 'الأسئلة')}>
               {filtered.slice(0, limit).map((i) => (
                 <li key={i.id}>
-                  <button type="button" dir="rtl" onClick={() => choose(i.id)} className="w-full min-h-12 text-right rounded-xl border border-slate-200 bg-white px-3 py-2 hover:border-emerald-400">
+                  <button type="button" dir="rtl" data-musaidi-question onClick={() => choose(i.id)} className="w-full min-h-12 text-right rounded-xl border border-slate-200 bg-white px-3 py-2 hover:border-emerald-400">
                     {opened.includes(i.id) && <CheckCircle2 size={16} className="inline text-emerald-700 ml-1" aria-label={say('Correction vue', 'تمت مشاهدة التصحيح')} />}
                     {i.questionAr}
                   </button>
@@ -206,7 +206,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
           )}
 
           {item && (
-            <article className="rounded-2xl border border-emerald-200 bg-emerald-50/40 p-4 space-y-3" data-musaidi-item>
+            <article className="musaidi-sheet rounded-2xl border border-emerald-200 bg-emerald-50/40 p-4 space-y-3" data-musaidi-item>
               <button type="button" onClick={resetItem} className="min-h-12 px-3 rounded-xl border border-slate-300 font-bold text-sm">
                 {say('← Autres questions', 'أسئلة أخرى')}
               </button>
@@ -229,7 +229,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
                   </button>
                 ) : null}
                 {!revealed && (
-                  <button type="button" onClick={reveal} className="min-h-12 px-4 rounded-xl bg-emerald-800 text-white font-bold">
+                  <button type="button" onClick={reveal} data-musaidi-reveal className="min-h-12 px-4 rounded-xl bg-emerald-800 text-white font-bold">
                     {say('Voir la correction détaillée', 'التصحيح المفصّل')}
                   </button>
                 )}
