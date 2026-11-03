@@ -528,6 +528,19 @@ public async request<T>(
     });
   }
 
+  /** « مساعدي »: today's detailed corrections for this account (server is the quota authority). */
+  public async getMusaidiToday() {
+    return this.request<import('../utils/musaidiQuota').MusaidiServerStatus>('/v1/musaidi/today', { method: 'GET' });
+  }
+
+  /** « مساعدي »: asks the server to open one detailed correction; `allowed: false` once the free quota is used. */
+  public async openMusaidi(itemId: string) {
+    return this.request<import('../utils/musaidiQuota').MusaidiServerStatus>('/v1/musaidi/open', {
+      method: 'POST',
+      body: JSON.stringify({ itemId }),
+    });
+  }
+
   /** V2 first-steps screen: stores the parent e-mail used for the weekly report. */
   public async updateParentEmail(parentEmail: string) {
     return this.request<any>('/v1/users/me/parent-email', {

@@ -4,7 +4,8 @@ import type { CourseLesson, PrimaryGrade } from '../../types';
 import { useLocaleContext } from '../../context/LocaleContext';
 import { useAuth } from '../../context/AuthContext';
 import { buildMusaidiBank, searchMusaidi, type MusaidiItem } from '../../data/musaidiBank';
-import { openCorrection, readOpenedToday, remainingCorrections } from '../../utils/musaidiQuota';
+import { openCorrectionSynced, readOpenedToday, remainingCorrections, syncOpenedToday } from '../../utils/musaidiQuota';
+import { springBootApi } from '../../services/springBootApi';
 import { canUseWebCheckout } from '../../utils/paymentPlatform';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
 import { PremiumOffer } from '../PremiumOffer';
@@ -57,8 +58,20 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
   const [revealed, setRevealed] = useState(false);
   const [opened, setOpened] = useState<string[]>(() => readOpenedToday(account));
   const [blocked, setBlocked] = useState(false);
+  const [opening, setOpening] = useState(false);
 
-  useEffect(() => setOpened(readOpenedToday(account)), [account]);
+  const signedIn = !!authUser;
+  useEffect(() => {
+    setOpened(readOpenedToday(account));
+    if (!signedIn || premium) return;
+    let alive = true;
+    void syncOpenedToday(account, springBootApi).then((ids) => {
+      if (alive) setOpened(ids);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [account, signedIn, premium]);
 
   const gradeLessons = useMemo(() => (courses ?? []).filter((l) => l.grade === viewGrade), [courses, viewGrade]);
   const bank = useMemo(() => buildMusaidiBank(gradeLessons), [gradeLessons]);
@@ -95,15 +108,20 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
     setItemId(id);
     if (opened.includes(id)) setRevealed(true);
   };
-  const reveal = () => {
-    if (!item) return;
-    const next = openCorrection(account, premium, item.id);
-    if (!next) {
-      setBlocked(true);
-      return;
+  const reveal = async () => {
+    if (!item || opening) return;
+    setOpening(true);
+    try {
+      const next = await openCorrectionSynced(account, premium, item.id, signedIn ? springBootApi : null);
+      if (!next) {
+        setBlocked(true);
+        return;
+      }
+      setOpened(next);
+      setRevealed(true);
+    } finally {
+      setOpening(false);
     }
-    setOpened(next);
-    setRevealed(true);
   };
   const listen = (text: string) => void speakText(text, 'ar-SA').catch(() => {});
 
@@ -229,7 +247,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
                   </button>
                 ) : null}
                 {!revealed && (
-                  <button type="button" onClick={reveal} data-musaidi-reveal className="min-h-12 px-4 rounded-xl bg-emerald-800 text-white font-bold">
+                  <button type="button" onClick={() => void reveal()} disabled={opening} aria-busy={opening} data-musaidi-reveal className="min-h-12 px-4 rounded-xl bg-emerald-800 text-white font-bold">
                     {say('Voir la correction détaillée', 'التصحيح المفصّل')}
                   </button>
                 )}

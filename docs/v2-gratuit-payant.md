@@ -14,7 +14,7 @@ Ce tableau est **généré** depuis `frontend/src/access/entitlements.ts`, la se
 | Méthode guidée (maths 1AP–2AP) | Gratuit | sans limite | app | `guidedMethod` |
 | Carnet parent : résumé et prochaine révision | Gratuit | sans limite | app | `parentNotebookBasic` |
 | Démarrage guidé et e-mail du parent | Gratuit | sans limite | app | `firstSteps` |
-| « مساعدي » : corrections détaillées pas à pas | Gratuit avec limite | 3 par jour et par compte | app | `musaidiCorrections` |
+| « مساعدي » : corrections détaillées pas à pas | Gratuit avec limite | 3 par jour et par compte | app + serveur | `musaidiCorrections` |
 | Cahiers de compétence V2 (recto, corrigé) | Gratuit avec limite | 3 nouveaux cahiers par semaine pour la famille ; aperçu d’un exercice | app + serveur | `competenceCahiers` |
 | Carte de Didou : mondes 3 à 8 et leurs médailles | Premium Famille | — | app | `journeyAllWorlds` |
 | Carnet parent détaillé : compétences, historique, plan de la semaine | Premium Famille | résumé et prochaine révision | app | `parentNotebookDetail` |

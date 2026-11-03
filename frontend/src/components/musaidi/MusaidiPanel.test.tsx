@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, cleanup, within } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup, within, act, waitFor } from '@testing-library/react';
 import { Capacitor } from '@capacitor/core';
 import { MusaidiPanel } from './MusaidiPanel';
 import { LocaleProvider } from '../../context/LocaleContext';
@@ -11,6 +11,19 @@ vi.mock('../../utils/speech', () => ({ speakText: vi.fn(() => Promise.resolve())
 let role: string | undefined;
 vi.mock('../../context/AuthContext', () => ({
   useAuth: () => ({ authUser: role ? { id: 5, nom: 'P', email: 'p@test.invalid', role } : null, isAuthLoading: false }),
+}));
+// Server quota (MusaidiQuotaService): null = unreachable, so the device counter is used.
+let server: { opened: string[] } | null = null;
+vi.mock('../../services/springBootApi', () => ({
+  springBootApi: {
+    getMusaidiToday: vi.fn(async () => (server ? { status: 200, data: { allowed: true, premium: false, limit: 3, remaining: 3 - server.opened.length, opened: server.opened, day: 'd' } } : { status: 0 })),
+    openMusaidi: vi.fn(async (id: string) => {
+      if (!server) return { status: 0 };
+      const allowed = server.opened.includes(id) || server.opened.length < 3;
+      if (allowed && !server.opened.includes(id)) server.opened = [...server.opened, id];
+      return { status: 200, data: { allowed, premium: false, limit: 3, remaining: 3 - server.opened.length, opened: server.opened, day: 'd' } };
+    }),
+  },
 }));
 
 const q = (n: number) => ({
@@ -32,13 +45,14 @@ const courses = [
 const show = (props: Partial<React.ComponentProps<typeof MusaidiPanel>> = {}) =>
   render(<MusaidiPanel grade="1AP" courses={courses} onClose={vi.fn()} {...props} />, { wrapper: LocaleProvider });
 const openQuestion = (text: RegExp) => fireEvent.click(screen.getByRole('button', { name: text }));
-const reveal = () => fireEvent.click(screen.getByRole('button', { name: 'Voir la correction détaillée' }));
+const reveal = () => act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Voir la correction détaillée' })); });
 const back = () => fireEvent.click(screen.getByRole('button', { name: /Autres questions/ }));
 
 beforeEach(() => {
   localStorage.clear();
   setStoredLocale('fr');
   role = undefined;
+  server = null;
 });
 afterEach(() => {
   cleanup();
@@ -57,7 +71,7 @@ describe('« مساعدي » panel', () => {
     expect(screen.getByRole('button', { name: /الحرف الأول/ })).toBeInTheDocument();
   });
 
-  it('gives hint and rule for free, then counts 3 detailed corrections per day', () => {
+  it('gives hint and rule for free, then counts 3 detailed corrections per day', async () => {
     show();
     openQuestion(/كم يساوي 1 \+/);
     fireEvent.click(screen.getByRole('button', { name: 'Un indice' }));
@@ -65,13 +79,13 @@ describe('« مساعدي » panel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'La règle' }));
     expect(screen.getByText(/العدد الموالي/)).toBeInTheDocument();
     expect(screen.queryByText(/Réponse/)).not.toBeInTheDocument();
-    reveal();
+    await reveal();
     expect(within(screen.getByRole('region', { name: 'Correction' })).getByText('1 + 1 = 2')).toBeInTheDocument();
     back();
-    openQuestion(/كم يساوي 2 \+/); reveal(); back();
-    openQuestion(/كم يساوي 3 \+/); reveal(); back();
+    openQuestion(/كم يساوي 2 \+/); await reveal(); back();
+    openQuestion(/كم يساوي 3 \+/); await reveal(); back();
     expect(screen.getByText(/0 correction\(s\) détaillée\(s\) restante\(s\)/)).toBeInTheDocument();
-    openQuestion(/كم يساوي 4 \+/); reveal();
+    openQuestion(/كم يساوي 4 \+/); await reveal();
     expect(screen.getByRole('alert')).toHaveTextContent('reviennent demain');
     expect(screen.queryByRole('region', { name: 'Correction' })).not.toBeInTheDocument();
     back();
@@ -79,21 +93,34 @@ describe('« مساعدي » panel', () => {
     expect(screen.getByRole('region', { name: 'Correction' })).toBeInTheDocument();
   });
 
-  it('keeps the limit message neutral in the native app', () => {
+  it('keeps the limit message neutral in the native app', async () => {
     vi.spyOn(Capacitor, 'isNativePlatform').mockReturnValue(true);
     show();
-    for (const n of [1, 2, 3]) { openQuestion(new RegExp(`كم يساوي ${n} \\+`)); reveal(); back(); }
-    openQuestion(/كم يساوي 4 \+/); reveal();
+    for (const n of [1, 2, 3]) { openQuestion(new RegExp(`كم يساوي ${n} \\+`)); await reveal(); back(); }
+    openQuestion(/كم يساوي 4 \+/); await reveal();
     const alert = screen.getByRole('alert');
     expect(alert).toHaveTextContent('Famille Premium n’ont pas de limite');
     expect(alert.textContent).not.toMatch(/ouvre|DA|دج|payer|abonnez/i);
   });
 
-  it('never limits a Premium family', () => {
+  it('never limits a Premium family', async () => {
     role = 'ROLE_PREMIUM';
     show();
-    for (const n of [1, 2, 3, 4, 5]) { openQuestion(new RegExp(`كم يساوي ${n} \\+`)); reveal(); expect(screen.getByRole('region', { name: 'Correction' })).toBeInTheDocument(); back(); }
+    for (const n of [1, 2, 3, 4, 5]) { openQuestion(new RegExp(`كم يساوي ${n} \\+`)); await reveal(); expect(screen.getByRole('region', { name: 'Correction' })).toBeInTheDocument(); back(); }
     expect(screen.queryByText(/restante/)).not.toBeInTheDocument();
+  });
+
+  it('a signed-in free account follows the server count, even on a freshly reset phone', async () => {
+    role = 'ROLE_FREE';
+    server = { opened: ['m1:quiz:q1', 'm1:quiz:q2', 'm1:quiz:q3'] };
+    show();
+    await waitFor(() => expect(screen.getByText(/0 correction\(s\) détaillée\(s\) restante\(s\)/)).toBeInTheDocument());
+    openQuestion(/كم يساوي 4 \+/); await reveal();
+    expect(screen.getByRole('alert')).toHaveTextContent('reviennent demain');
+    back();
+    // Already opened today (on another device): shown again for free, no button to press.
+    openQuestion(/كم يساوي 2 \+/);
+    expect(screen.getByRole('region', { name: 'Correction' })).toBeInTheDocument();
   });
 
   it('opens on the current lesson and links back to it', () => {

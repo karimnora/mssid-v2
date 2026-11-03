@@ -47,7 +47,7 @@ export const ENTITLEMENTS = {
   firstSteps: { tier: 'free', labelFr: 'Démarrage guidé et e-mail du parent', labelAr: 'خطوتان للبدء', enforcedBy: 'client', gates: [] },
 
   // ——— Free with a limit ———
-  musaidiCorrections: { tier: 'quota', labelFr: '« مساعدي » : corrections détaillées pas à pas', labelAr: 'مساعدي: التصحيح المفصّل', freeAllowance: '3 par jour et par compte', enforcedBy: 'client', gates: ['components/musaidi/MusaidiPanel.tsx', 'utils/musaidiQuota.ts'] },
+  musaidiCorrections: { tier: 'quota', labelFr: '« مساعدي » : corrections détaillées pas à pas', labelAr: 'مساعدي: التصحيح المفصّل', freeAllowance: '3 par jour et par compte', enforcedBy: 'client+server', gates: ['components/musaidi/MusaidiPanel.tsx', 'utils/musaidiQuota.ts', 'backend MusaidiQuotaService'] },
   competenceCahiers: { tier: 'quota', labelFr: 'Cahiers de compétence V2 (recto, corrigé)', labelAr: 'كراسات الكفاءات V2', freeAllowance: '3 nouveaux cahiers par semaine pour la famille ; aperçu d’un exercice', enforcedBy: 'client+server', gates: ['components/cahiers/CompetenceCahierSheet.tsx', 'backend CahierAccessService'] },
 
   // ——— Family Premium ———
