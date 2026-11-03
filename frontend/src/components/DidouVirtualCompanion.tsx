@@ -16,6 +16,7 @@ import { DIDOU_OUTFITS_LIST, DIDOU_TREATS_LIST, DIDOU_DIALOGUES_AR, DIDOU_DIALOG
 import { speakText, stopSpeech } from '../utils/speech';
 import { useLocaleContext } from '../context/LocaleContext';
 import { Didou3DAvatar } from './Didou3DAvatar';
+import { DidouPortrait } from './world/DidouPortrait';
 import { getDidouEnergy, getDidouFriendshipLevel, getDidouStage } from '../utils/didouCompanion';
 
 export interface DidouVirtualCompanionProps {
@@ -431,14 +432,29 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
               onClick={handlePet}
               className="cursor-pointer"
             >
-              <Didou3DAvatar
-                species={species}
-                outfitId={activeOutfitId}
-                mood={isPettingAnimation ? 'celebrating' : isEatingAnim ? 'celebrating' : currentMood}
-                isEating={isEatingAnim}
-                eatingFoodIcon={eatingFoodIcon}
-                size="md"
-              />
+              {species === 'fennec' && activeOutfitId === 'default' ? (
+                // V2: the same Didou as the home ribbon and the journey (docs/v2-design-monde.md).
+                // Dressed-up outfits keep the wardrobe drawing until they are redrawn.
+                <motion.div
+                  animate={isPettingAnimation || isEatingAnim ? { y: [0, -10, 0], rotate: [0, -4, 4, 0] } : { y: 0, rotate: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="relative"
+                >
+                  <DidouPortrait size={96} className="world-didou-blink" />
+                  {isEatingAnim && (
+                    <span aria-hidden className="absolute -top-1 -end-1 text-2xl">{eatingFoodIcon}</span>
+                  )}
+                </motion.div>
+              ) : (
+                <Didou3DAvatar
+                  species={species}
+                  outfitId={activeOutfitId}
+                  mood={isPettingAnimation ? 'celebrating' : isEatingAnim ? 'celebrating' : currentMood}
+                  isEating={isEatingAnim}
+                  eatingFoodIcon={eatingFoodIcon}
+                  size="md"
+                />
+              )}
             </motion.div>
           </div>
 

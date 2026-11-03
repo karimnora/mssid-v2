@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
+import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
@@ -138,6 +138,16 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
   const isPlayful1AP = isPlayful1APGrade(grade);
   const isCompactGrade = grade === '1AP' || grade === '2AP';
+  // Keep the current step visible when the step row scrolls sideways (« monde de jeu » design).
+  const stepRowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const row = stepRowRef.current;
+    const current = row?.querySelector<HTMLElement>('[aria-current="step"]');
+    if (!row || !current || row.scrollWidth <= row.clientWidth) return;
+    const rowBox = row.getBoundingClientRect();
+    const box = current.getBoundingClientRect();
+    row.scrollBy?.({ left: box.left + box.width / 2 - (rowBox.left + rowBox.width / 2), behavior: 'smooth' });
+  }, [activeTab]);
   const titleSnippet = isPlayful1AP ? parsePlayfulSnippet(renderArabicText(lesson.titleAr), 0) : null;
 
   const availableSteps = React.useMemo(() => {
@@ -599,13 +609,16 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </div>
 
         {!isCompactGrade && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1" data-lesson-step-count={availableSteps.length}>
+        <div ref={stepRowRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1" data-lesson-steps data-lesson-step-count={availableSteps.length}>
           {availableSteps.map((step, idx) => {
             const isActive = step.id === activeTab;
             const isCompleted = idx < currentStepIndex;
             return (
               <button
                 key={step.id}
+                type="button"
+                data-step-state={isActive ? 'active' : isCompleted ? 'done' : 'todo'}
+                aria-current={isActive ? 'step' : undefined}
                 onClick={() => goToStep(idx)}
                 className={`flex items-center justify-between gap-2 min-h-12 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
                   isActive

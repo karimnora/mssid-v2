@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DidouPortrait } from '../world/DidouPortrait';
 import { GuidedMathSupport } from '../GuidedMathSupport';
 import { motion, AnimatePresence } from 'motion/react';
@@ -10,6 +10,7 @@ import { tabTransition } from './shared';
 import { TapSpeakButton } from './TapSpeakButton';
 import { getQuizFeedback, quizFeedbackSpeakText } from './quizFeedback';
 import { formatEducationalText } from '../../utils/textFormatter';
+import { quizStars } from './quizStars';
 
 interface LessonQuizPanelProps {
   lesson: CourseLesson;
@@ -61,6 +62,28 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
   const answeredCount = correctCount;
 
   const quizComplete = totalQuestions > 0 && correctCount === totalQuestions;
+
+  // Questions the child got wrong at least once (retries are allowed), for the end stars.
+  const [missed, setMissed] = useState<Set<string>>(() => new Set());
+  useEffect(() => {
+    if (Object.keys(selectedAnswers).length === 0) {
+      setMissed((prev) => (prev.size === 0 ? prev : new Set()));
+      return;
+    }
+    setMissed((prev) => {
+      let next: Set<string> | null = null;
+      activeQuiz.forEach((q) => {
+        const selected = selectedAnswers[q.id];
+        if (!selected || prev.has(q.id)) return;
+        if (q.options.find((o) => o.id === selected)?.isCorrect === false) {
+          next = next ?? new Set(prev);
+          next.add(q.id);
+        }
+      });
+      return next ?? prev;
+    });
+  }, [selectedAnswers, activeQuiz]);
+  const stars = quizStars(totalQuestions, missed.size);
   const scorePercentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
 
   return (
@@ -103,6 +126,15 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
             // WebViews.
             style={playful ? undefined : { backgroundImage: 'linear-gradient(to right, #0f172a, #1e1b4b, #0f172a)' }}
           >
+            <div className="world-only" data-quiz-stars={stars} role="img" aria-label={`${stars} / 3 ★`}>
+              <div className="world-quiz-stars">
+                {[1, 2, 3].map((n) => (
+                  <svg key={n} viewBox="0 0 24 24" className={`world-quiz-star ${n <= stars ? 'is-on' : ''}`} style={{ animationDelay: `${(n - 1) * 0.25}s` }} aria-hidden="true">
+                    <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div className="flex items-center gap-3 min-w-0">
                 <div className={playful

@@ -129,7 +129,7 @@ html[data-world] [data-subject-card] :is(.text-slate-500, .text-slate-600, .text
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .world-ribbon-didou .world-didou-eyes { animation: world-blink 5s infinite; transform-origin: 100px 82px; }
+  :is(.world-ribbon-didou, .world-didou-blink) .world-didou-eyes { animation: world-blink 5s infinite; transform-origin: 100px 82px; }
 }
 @keyframes world-blink {
   0%, 94%, 100% { transform: scaleY(1); }
@@ -240,3 +240,92 @@ html[data-world] [data-quiz-feedback='correct'] {
 }
 html[data-world] [data-quiz-feedback] * { color: #fff !important; }
 html[data-world] .world-quiz-didou { align-self: flex-start; margin-bottom: -4px; }
+
+/* Lesson steps: a row of stations linked like the journey map (gold line = road already walked). */
+html[data-world] [data-lesson-steps] {
+  display: flex !important;
+  flex-wrap: nowrap;
+  gap: 22px;
+  overflow-x: auto;
+  padding: 6px 4px 12px;
+  scrollbar-width: none;
+}
+html[data-world] [data-step-state] {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: visible;
+  min-height: 56px;
+  border-radius: 999px !important;
+  border: 3px solid rgba(255, 255, 255, 0.25) !important;
+  background: linear-gradient(160deg, #34409e, #222d86) !important;
+  color: #cfd8ff !important;
+  box-shadow: 0 5px 0 #141c5c !important;
+  transform: none !important;
+}
+html[data-world] [data-step-state] > span:last-child { background: rgba(255, 255, 255, 0.15) !important; color: #fff !important; }
+html[data-world] [data-step-state='done'] {
+  background: linear-gradient(#5fe08a, #1e9b4c) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+  box-shadow: 0 5px 0 #11693a !important;
+}
+html[data-world] [data-step-state='active'] {
+  background: linear-gradient(#ffe27a, #f5b301) !important;
+  border-color: #fff !important;
+  color: #3b2400 !important;
+  box-shadow: 0 5px 0 #a36b00, 0 0 0 4px rgba(255, 210, 63, 0.45) !important;
+}
+html[data-world] [data-step-state='active'] > span:last-child { background: rgba(59, 36, 0, 0.15) !important; color: #3b2400 !important; }
+html[data-world] [data-step-state]:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 100%;
+  width: 22px;
+  border-top: 5px dashed rgba(255, 255, 255, 0.45);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+html[data-world] :is([data-step-state='done'], [data-step-state='active']):not(:first-child)::before {
+  border-top-style: solid;
+  border-top-color: #ffd23f;
+}
+
+/* The big « التالي » / « الدرس التالي » button is a glossy candy. */
+html[data-world] [data-primary-cta] {
+  position: relative;
+  overflow: hidden;
+  min-height: 64px !important;
+  border-radius: 999px !important;
+  border: 0;
+  background: linear-gradient(#5fe08a, #1e9b4c) !important;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.16), 0 6px 0 #11693a, 0 12px 18px rgba(5, 10, 40, 0.25) !important;
+  color: #fff !important;
+  font-family: var(--world-display);
+  font-weight: 400 !important;
+  font-size: 24px !important;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.28);
+}
+html[data-world] [data-primary-cta]::before {
+  content: '';
+  position: absolute;
+  inset: 5px 12% auto 12%;
+  height: 38%;
+  border-radius: 999px;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+html[data-world] [data-primary-cta] svg { width: 26px; height: 26px; }
+
+/* End of quiz: three stars pop in one after the other. */
+.world-quiz-stars { display: flex; justify-content: center; gap: 10px; }
+.world-quiz-star { width: 56px; height: 56px; fill: rgba(15, 23, 42, 0.15); }
+.world-quiz-star:nth-child(2) { width: 72px; height: 72px; margin-top: -12px; }
+.world-quiz-star.is-on { fill: #ffc21a; filter: drop-shadow(0 3px 0 #b77d00); }
+@media (prefers-reduced-motion: no-preference) {
+  .world-quiz-star.is-on { animation: world-star-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+}
+@keyframes world-star-pop {
+  from { transform: scale(0) rotate(-40deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}

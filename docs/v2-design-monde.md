@@ -20,12 +20,13 @@
 
 - [x] Accueil (3 novembre 2026). Vérifié dans Edge en 390 × 844 et 1280 × 800, sans erreur JavaScript.
 - [x] Choix des matières et lecteur de leçon (3 novembre 2026) : ciel de nuit autour des cartes blanches, comme sur la maquette. Les étiquettes d'étape et le titre « كلمات جديدة » sont rendus lisibles. Vérifié dans Edge en 390 × 844, sans erreur JavaScript.
-- [ ] Lecteur de leçon : étapes reliées comme sur la carte, gros bouton « التالي » bonbon.
+- [x] Lecteur de leçon (3 novembre 2026) : gros bouton « التالي » bonbon vert. À partir de la 3AP, les étapes forment une rangée de stations : vertes si faites, dorées pour l'étape en cours, reliées par une ligne dorée (déjà parcourue) ou pointillée (à venir). La rangée défile pour garder l'étape en cours visible. En 1AP et 2AP, les étapes restent masquées comme avant. Vérifié dans Edge.
 - [x] Quiz (3 novembre 2026) : réponses en boutons bonbons. Une bonne réponse devient verte avec un anneau doré ; une erreur devient lavande douce, jamais rouge. Didou apparaît dans la correction. Vérifié dans Edge.
-- [ ] Étoiles animées à la fin du quiz.
+- [x] Étoiles animées à la fin du quiz (3 novembre 2026) : 3 étoiles si tout est juste du premier coup, 2 à partir de 60 %, 1 sinon, jamais 0 (`lessonViewer/quizStars.ts`). Vérifié dans Edge : une erreur donne 2 étoiles.
 - [ ] « مساعدي », laboratoires, examens.
 - [ ] Barre du haut et barre du bas dans le même style.
-- [ ] Remplacer l'ancien compagnon (`DidouVirtualCompanion`) par le nouveau dessin de Didou.
+- [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.
+- [ ] Bouton « مساعدة » de la barre du bas : encore l'ancienne image de Didou.
 - [ ] Essai sur un vrai téléphone Android.
 
 ## Fenêtres : toujours un bouton fermer

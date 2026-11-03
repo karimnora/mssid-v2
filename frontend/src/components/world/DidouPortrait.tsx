@@ -5,7 +5,14 @@ import React, { useId } from 'react';
  * shaded fur, amber eyes with highlights, green scarf with a red star. Decorative unless a label
  * is given.
  */
-export function DidouPortrait({ size = 120, label, className }: { size?: number; label?: string; className?: string }) {
+type PortraitProps = Omit<React.SVGProps<SVGSVGElement>, 'viewBox' | 'ref'> & {
+  size?: number;
+  label?: string;
+  /** Class of the eyes group (blink animation hook). */
+  eyesClassName?: string;
+};
+
+export function DidouPortrait({ size = 120, label, className, eyesClassName = 'world-didou-eyes', ...rest }: PortraitProps) {
   const raw = useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const id = (name: string) => `dd${raw}-${name}`;
   const url = (name: string) => `url(#${id(name)})`;
@@ -19,6 +26,7 @@ export function DidouPortrait({ size = 120, label, className }: { size?: number;
       aria-label={label}
       aria-hidden={label ? undefined : true}
       data-didou-portrait
+      {...rest}
     >
       <defs>
         <radialGradient id={id('fur')} cx="45%" cy="35%" r="70%"><stop offset="0" stopColor="#ffbe6e" /><stop offset=".55" stopColor="#f0801f" /><stop offset="1" stopColor="#b9520f" /></radialGradient>
@@ -43,7 +51,7 @@ export function DidouPortrait({ size = 120, label, className }: { size?: number;
       <path d="M100 36 C146 36 168 66 166 98 C164 112 156 120 150 126 L160 128 L144 136 L148 144 C132 150 116 152 100 152 C84 152 68 150 52 144 L56 136 L40 128 L50 126 C44 120 36 112 34 98 C32 66 54 36 100 36Z" fill={url('fur')} />
       <path d="M100 82 C82 82 70 96 62 112 C56 124 60 142 76 148 C86 152 94 152 100 152 C106 152 114 152 124 148 C140 142 144 124 138 112 C130 96 118 82 100 82Z" fill={url('muzzle')} />
       <path d="M70 58 C76 52 84 52 90 56 M130 58 C124 52 116 52 110 56" stroke="#7a3608" strokeWidth="4" fill="none" strokeLinecap="round" />
-      <g className="world-didou-eyes">
+      <g className={eyesClassName}>
         <ellipse cx="78" cy="80" rx="15" ry="17" fill="#fff" />
         <ellipse cx="122" cy="80" rx="15" ry="17" fill="#fff" />
         <circle cx="80" cy="82" r="11" fill={url('iris')} />
