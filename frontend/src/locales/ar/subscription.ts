@@ -34,7 +34,7 @@ export const subscription = {
   notebookSummary: "ملخص: {worked} كفاءات تم العمل عليها، و{review} للمراجعة. التغطية: رياضيات 1AP و2AP و5AP، وعربية 1AP و5AP.",
   cemPreview: "جلسة اكتشاف مجانية: التمرين الأول. يفتح Premium مسار التحضير للمتوسطة كاملاً. امتحانات V1 تبقى مجانية.",
   chooseDuration: "اختر مدة الاشتراك لأسرتك",
-  sameServices: "نفس خدمات Premium في المدد الثلاث. يتغير السعر والمدة فقط.",
+  sameServices: "نفس خدمات Premium في المدتين. يتغير السعر والمدة فقط.",
   planMonths: "{months} أشهر",
   planTotal: "المبلغ المطلوب: {price} دج",
   planMonthlyEquivalent: "ما يعادل {price} دج شهرياً — دفعة واحدة",

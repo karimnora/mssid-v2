@@ -2,6 +2,31 @@
 
 Établi le 3 novembre 2026, à partir de l'état de la branche `v2` (commit `a8133a5`) et des décisions de Karim du même jour.
 
+## Décisions du 3 novembre 2026 (après l'état des lieux V2)
+
+Ces décisions tranchent les contradictions relevées entre les documents. Elles remplacent les règles contraires des autres fichiers `docs/v2-*.md`.
+
+| Sujet | Décision | Conséquence dans le code (à faire) |
+|---|---|---|
+| Prix | **Deux offres seulement** : 900 DA pour 3 mois, 2 400 DA pour 12 mois (mise en avant). L'offre de 6 mois à 1 500 DA est abandonnée. | Retirer P6M des offres affichées et du dépôt de reçu ; garder la lecture des reçus P6M ou LEGACY_12M déjà enregistrés. |
+| « مساعدي » | Question, indice et règle gratuits sans limite ; **3 corrections détaillées par jour** en gratuit, illimitées en Premium. | Rien pour le lancement : le compteur reste sur l'appareil. Le compteur serveur passe en P2. |
+| Carte de Didou | **Mondes 1 et 2 (الصحراء, القصبة) gratuits** ; mondes 3 à 8 réservés au Premium. Les leçons de ces mondes restent gratuites dans « دروسي ». Seuls le parcours sur la carte, les trésors et les médailles sont Premium. | Ajouter le verrou Premium à partir du monde 3, avec un message neutre sur Android. Ce verrou reste une barrière d'interface : progression et médailles sont stockées sur l'appareil. |
+| Couleur de fond | **`#FFFBF0`** (crème) pour les cours, exercices, « مساعدي » et le carnet parent. La planète et la carte gardent leur style « monde de jeu ». | Aucune : c'est déjà la valeur de `.cursorrules`. |
+| Niveau prioritaire | **5AP d'abord** : étendre le référentiel de compétences et le carnet d'erreurs aux maths 5AP, puis à l'arabe 5AP, avant la 2AP et la 3AP. | Nouveau fichier de compétences 5AP et liens leçon → compétences. |
+| Nombre d'enfants par abonnement | **À trancher (Karim)** : la page de vente dit 4 enfants, le compte accepte 6 profils. | Aligner la page de vente ou la limite du serveur. |
+
+### Ordre retenu pour atteindre les premiers abonnements
+
+1. Commiter le travail du 3 novembre sur `v2`.
+2. Réparer le wrapper Maven, puis compiler et tester `PUT /api/v1/users/me/parent-email` (`UserControllerTest`).
+3. Héberger le backend V2 avec V105 sur sa propre base, puis le site V2. Créer le client Google OAuth de l'APK `dz.mssid.app.beta`.
+4. Faire la revue Google Play sur un vrai téléphone, notamment `MosaicWorkshop`, `PremiumLearningLabs` et `GardenMission`.
+5. Faire tester par 5 à 10 familles, surtout en 4AP et 5AP (`docs/v2-recette-familles.md`).
+6. En parallèle : les codes d'activation (environ 2 à 3 jours une fois Maven réparé) et les compétences 5AP.
+7. Ensuite : le bilan hebdomadaire par e-mail ou WhatsApp, puis le paiement CIB/Edahabia.
+
+Avant de vendre, même par code ou BaridiMob, il faut un statut juridique (registre de commerce ou auto-entrepreneur) et des conditions de vente. La recette exigée par `docs/v2-validation-avant-vente.md` doit aussi être faite.
+
 ## Objectif réaliste
 
 40 % de toutes les familles actives qui paient n'est pas un objectif réaliste pour une application grand public : les meilleures applications éducatives freemium convertissent environ 5 à 10 % de leurs utilisateurs actifs (ordre de grandeur public, pas une étude du marché algérien). L'objectif de 40 % est retenu pour deux groupes précis :
@@ -17,7 +42,7 @@
 | Site web mssid | Souscription « Premium Famille » (jusqu'à 4 enfants) | CIB/Edahabia via une passerelle algérienne, cartes prépayées à code, reçu en secours |
 | Écoles (privées, soutien) | Licence par classe et tableau de bord enseignant | Facture et virement |
 
-- **Gratuit :** tous les cours, quiz et exercices ; la carte de Didou (au moins le premier monde) ; le bilan simple ; les cahiers de la V1.
+- **Gratuit :** tous les cours, quiz et exercices ; les mondes 1 et 2 de la carte de Didou ; le bilan simple ; les cahiers de la V1.
 - **Premium :** bilan hebdomadaire détaillé, plans de révision avant les compositions, examens blancs corrigés, cahiers illimités, préparation CEM, carte de Didou complète.
 - **Passage de l'app au site :** jamais depuis l'app. Le lien vers l'offre web passe par l'e-mail du bilan hebdomadaire envoyé au parent, hors de l'application (à revérifier dans la politique Paiements de Google Play au moment de la soumission). L'e-mail du parent est demandé à l'activation du carnet, sans être obligatoire pour que l'enfant joue. WhatsApp automatique seulement plus tard : l'API WhatsApp Business est payante et ses modèles de messages doivent être approuvés.
 - **Prix :** deux offres, 900 DA le trimestre et 2 400 DA l'année (mise en avant). Écoles : environ 1 000 DA par élève et par an, à tester.

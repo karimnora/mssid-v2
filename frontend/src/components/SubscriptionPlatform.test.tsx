@@ -15,7 +15,7 @@ beforeEach(()=>{setStoredLocale('fr');AuthService.setCurrentUser(user);});
 afterEach(()=>{cleanup();vi.restoreAllMocks();AuthService.setCurrentUser(null);});
 describe('Web checkout and native consumption',()=>{
  it('retains checkout in a mobile Android browser',()=>{
-  vi.spyOn(navigator,'userAgent','get').mockReturnValue('Android');vi.spyOn(Capacitor,'isNativePlatform').mockReturnValue(false);expect(canUseWebCheckout()).toBe(true);show();expect(document.querySelector('input[type=file]')).not.toBeNull();expect(screen.getAllByRole('radio')).toHaveLength(3);
+  vi.spyOn(navigator,'userAgent','get').mockReturnValue('Android');vi.spyOn(Capacitor,'isNativePlatform').mockReturnValue(false);expect(canUseWebCheckout()).toBe(true);show();expect(document.querySelector('input[type=file]')).not.toBeNull();expect(screen.getAllByRole('radio')).toHaveLength(2);
  });
  it('never renders prices, receipt form or purchase links in a native direct entry',async()=>{
   vi.spyOn(Capacitor,'isNativePlatform').mockReturnValue(true);

@@ -14,6 +14,9 @@ import { LessonViewer } from '../LessonViewer';
 import { JourneyMap, type JourneyMemoryState } from './JourneyMap';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
+import { useAuth } from '../../context/AuthContext';
+import { canAccess, FREE_JOURNEY_WORLDS } from '../../access/entitlements';
+import { PremiumOffer } from '../PremiumOffer';
 import './journey.css';
 
 export interface JourneyScreenProps {
@@ -49,6 +52,8 @@ const BACKGROUND_STARS = (() => {
 export function JourneyScreen(props: JourneyScreenProps) {
   const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onReportError } = props;
   const { locale } = useLocaleContext();
+  const { authUser } = useAuth();
+  const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
   const worlds = journeyForGrade(grade);
   const [screen, setScreen] = useState<'hub' | 'map' | 'lesson'>('hub');
   const [lessonId, setLessonId] = useState<string | null>(null);
@@ -121,8 +126,9 @@ export function JourneyScreen(props: JourneyScreenProps) {
       new Set(userProfile.quizFullyValidatedLessonIds),
       new Set(memory.claimed),
       new Set(lessonsById.keys()),
+      allWorlds ? null : FREE_JOURNEY_WORLDS,
     );
-  }, [worlds, stations, userProfile.quizFullyValidatedLessonIds, memory.claimed, lessonsById]);
+  }, [worlds, stations, userProfile.quizFullyValidatedLessonIds, memory.claimed, lessonsById, allWorlds]);
   const stars = useMemo(
     () => stations.map((s, i) => (states[i] !== 'done' ? 0 : s.kind === 'treasure' ? 3 : starsForLesson(userProfile.lessonSessions, s.lessonId!))),
     [stations, states, userProfile.lessonSessions],
@@ -207,6 +213,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
             sfx={sfx}
             totalStars={totalStars}
             coins={userProfile.goldCoins ?? 0}
+            premiumExtra={<PremiumOffer />}
           />
         ) : (
           <div className="journey-loading" role="status">{locale === 'ar' ? 'ديدو يحضّر الخريطة…' : 'Didou prépare la carte…'}</div>

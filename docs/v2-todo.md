@@ -47,7 +47,7 @@ Référence : `docs/v2-design-brief.md`. Un seul agent ou une seule personne à 
 ### Cadrage
 
 - [x] Brief design et UX avec les contraintes existantes (`docs/v2-design-brief.md`)
-- [ ] Trancher la couleur de fond et de texte : `.cursorrules` (`#FFFBF0` / `#0f172a`) ou cahier des charges PED-05 (`#F8F9FA` / `#1E293B`) (Karim)
+- [x] Trancher la couleur de fond et de texte : **`#FFFBF0` / `#0f172a`** retenus le 3 novembre 2026 (`.cursorrules`). La planète et la carte de Didou gardent leur style « monde de jeu ».
 - [ ] Désigner qui réalise le prototype (Codex, Cursor ou Karim)
 - [x] Captures des écrans actuels correspondants aux six écrans du prototype, en largeur téléphone (`docs/v2-captures/`)
 - [ ] Refaire ces captures sur un vrai téléphone Android (Karim)

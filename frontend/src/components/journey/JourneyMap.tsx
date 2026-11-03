@@ -11,6 +11,7 @@ import { currentStationIndex, type JourneyStation, type StationState } from '../
 import { DidouFull, DidouHead, StarIcon } from './DidouJourneyArt';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 import { JourneySceneryDefs, WORLD_SKY, WorldBackdrop } from './JourneyScenery';
+import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
 
 export interface JourneyMemoryState {
   claimed: string[];
@@ -34,6 +35,8 @@ interface JourneyMapProps {
   sfx: JourneySfx;
   totalStars: number;
   coins: number;
+  /** Parent-facing Premium entry (PremiumOffer) shown when a Premium world is tapped. */
+  premiumExtra?: React.ReactNode;
 }
 
 const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
@@ -52,7 +55,7 @@ function trailPath(points: ReadonlyArray<readonly [number, number]>): string {
 }
 
 export function JourneyMap(props: JourneyMapProps) {
-  const { worlds, stations, states, stars, lessonTitles, locale, memory, onMemoryChange, onStartLesson, onClaimTreasure, onBack, say, sfx, totalStars, coins } = props;
+  const { worlds, stations, states, stars, lessonTitles, locale, memory, onMemoryChange, onStartLesson, onClaimTreasure, onBack, say, sfx, totalStars, coins, premiumExtra } = props;
   const ar = locale === 'ar';
   const T = (arText: string, frText: string) => (ar ? arText : frText);
   const totalW = journeyWidth(worlds);
@@ -255,6 +258,15 @@ export function JourneyMap(props: JourneyMapProps) {
     if (busyRef.current || ribbon) return;
     const station = stations[i];
     const state = states[i];
+    if (state === 'premium') {
+      setShaking(i);
+      window.setTimeout(() => setShaking(null), 450);
+      sfx.soft();
+      const text = ar ? NATIVE_OFFER_COPY.journeyPremium.ar : NATIVE_OFFER_COPY.journeyPremium.fr;
+      say(text);
+      setRibbon({ text, extra: premiumExtra, buttons: [{ label: T('حسناً', "D'accord"), onClick: () => setRibbon(null) }] });
+      return;
+    }
     if (state === 'locked' || state === 'missing') {
       setShaking(i);
       window.setTimeout(() => setShaking(null), 450);
@@ -430,7 +442,7 @@ export function JourneyMap(props: JourneyMapProps) {
                 data-shake={shaking === i}
                 tabIndex={0}
                 role="button"
-                aria-label={`${title}${state === 'locked' ? T('، مقفلة', ', fermée') : state === 'done' ? T('، مكتملة', ', terminée') : ''}`}
+                aria-label={`${title}${state === 'locked' ? T('، مقفلة', ', fermée') : state === 'premium' ? T('، للحسابات المميزة', ', Premium') : state === 'done' ? T('، مكتملة', ', terminée') : ''}`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -457,7 +469,7 @@ export function JourneyMap(props: JourneyMapProps) {
                       <path d="M-32 -14 Q0 -46 32 -14Z" fill="#c98a4b" stroke="#13206b" strokeWidth="4" />
                       <rect x="-7" y="-8" width="14" height="16" rx="3" fill="#ffd23f" stroke="#13206b" strokeWidth="3" />
                     </g>
-                  ) : state === 'locked' || state === 'missing' ? (
+                  ) : state === 'locked' || state === 'missing' || state === 'premium' ? (
                     <g transform={`translate(${s.x} ${s.y})`}>
                       <rect x="-16" y="-4" width="32" height="26" rx="5" fill="#fff" />
                       <path d="M-10 -4 V-14 A10 10 0 0 1 10 -14 V-4" stroke="#fff" strokeWidth="6" fill="none" />

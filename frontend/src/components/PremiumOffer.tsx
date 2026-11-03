@@ -22,4 +22,3 @@ export function PremiumOffer() {
   </>;
 }
 
-export function hasPremium(role?: string) { return role === 'ROLE_PREMIUM' || role === 'ROLE_ADMIN'; }

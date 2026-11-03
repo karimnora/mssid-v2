@@ -13,6 +13,10 @@ export const NATIVE_OFFER_COPY = {
     fr: 'Tu as utilisé tes 3 corrections détaillées d’aujourd’hui. Elles reviennent demain. Les indices et la règle restent libres. Les comptes Famille Premium n’ont pas de limite.',
     ar: 'استعملت تصحيحاتك المفصّلة الثلاثة لهذا اليوم، وتعود غداً. تبقى التلميحات وقاعدة الدرس متاحة. حسابات العائلة المميزة بلا حد.',
   },
+  journeyPremium: {
+    fr: 'La suite du voyage de Didou est disponible pour les comptes Famille Premium. Demande à tes parents !',
+    ar: 'بقية رحلة ديدو متاحة لحسابات العائلة المميزة. اسأل أهلك!',
+  },
   enrichment: {
     fr: 'Tu peux rejouer ce défi. Les trois défis suivants de cet atelier sont réservés aux comptes Famille Premium.',
     ar: 'يمكنك إعادة هذا التحدي. التحديات الثلاثة التالية في الورشة متاحة لحسابات العائلة المميزة.',

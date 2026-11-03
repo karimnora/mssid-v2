@@ -1,5 +1,6 @@
 import { CourseLesson } from '../types';
 import { UserRole } from '../types/auth';
+import { isPremiumRole } from '../access/entitlements';
 
 export interface TrimesterAccessContext {
   enablePayments: boolean;
@@ -7,7 +8,6 @@ export interface TrimesterAccessContext {
   userRole: UserRole | null | undefined;
 }
 
-const PREMIUM_OR_STAFF_ROLES: UserRole[] = ['ROLE_PREMIUM', 'ROLE_ADMIN'];
 
 /**
  * V2 access matrix — one rule, used by product copy and by the lock helpers.
@@ -36,11 +36,11 @@ export type PremiumModule = 'cahiers' | 'cem-prep' | 'immersive-labs';
 export function isLessonLocked(lesson: Pick<CourseLesson, 'trimester'>, ctx: TrimesterAccessContext): boolean {
   if (!ctx.enablePayments || !ctx.enableTrimesterPaywall) return false;
   if (!lesson.trimester || lesson.trimester === 1) return false;
-  return !ctx.userRole || !PREMIUM_OR_STAFF_ROLES.includes(ctx.userRole);
+  return !isPremiumRole(ctx.userRole);
 }
 
 /** New V2 modules stay open while payments are off. When payments are on, they need premium. */
 export function isPremiumModuleLocked(_module: PremiumModule, ctx: TrimesterAccessContext): boolean {
   if (!ctx.enablePayments) return false;
-  return !ctx.userRole || !PREMIUM_OR_STAFF_ROLES.includes(ctx.userRole);
+  return !isPremiumRole(ctx.userRole);
 }

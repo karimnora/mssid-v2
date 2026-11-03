@@ -36,7 +36,7 @@ export const subscription: typeof subscriptionAr = {
   notebookSummary: "Bilan simple : {worked} compétences travaillées · {review} à revoir. Couverture : maths 1AP, 2AP, 5AP et arabe 1AP, 5AP.",
   cemPreview: "Séance découverte gratuite : le premier exercice. Premium ouvre le parcours complet de préparation au collège. Les examens V1 restent gratuits.",
   chooseDuration: "Choisissez la durée pour votre famille",
-  sameServices: "Les mêmes services Premium pour les trois durées. Seuls le prix et la durée changent.",
+  sameServices: "Les mêmes services Premium pour les deux durées. Seuls le prix et la durée changent.",
   planMonths: "{months} mois",
   planTotal: "{price} DA à payer",
   planMonthlyEquivalent: "Équivalent à {price} DA/mois — paiement en une fois",

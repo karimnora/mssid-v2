@@ -7,7 +7,8 @@ import { buildMusaidiBank, searchMusaidi, type MusaidiItem } from '../../data/mu
 import { openCorrection, readOpenedToday, remainingCorrections } from '../../utils/musaidiQuota';
 import { canUseWebCheckout } from '../../utils/paymentPlatform';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
-import { PremiumOffer, hasPremium } from '../PremiumOffer';
+import { PremiumOffer } from '../PremiumOffer';
+import { canAccess } from '../../access/entitlements';
 import { speakText, stopSpeech } from '../../utils/speech';
 
 const GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
@@ -40,7 +41,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
   const fr = locale === 'fr';
   const say = (a: string, b: string) => (fr ? a : b);
   const { authUser } = useAuth();
-  const premium = hasPremium(authUser?.role);
+  const premium = canAccess('musaidiCorrections', authUser?.role);
   const account = authUser ? `user:${authUser.id}` : 'guest';
 
   const startGrade: PrimaryGrade = lesson?.grade && GRADES.includes(lesson.grade) ? lesson.grade : GRADES.includes(grade) ? grade : '1AP';

@@ -29,7 +29,7 @@ Chaque monde se termine par un trésor qui donne une médaille.
 - **Leçon absente du catalogue publié** (par exemple avec `curriculumReviewGate`) : la station est grisée et sautée, elle ne bloque jamais le voyage.
 - **Étoiles :** 3 sans échec récent sur la leçon (`lessonSessions`), 2 après un ou deux échecs, 1 au-delà. Elles reflètent le « réussi seul / avec aide » du carnet, pas l'XP.
 - **Médailles et position de Didou :** stockées sur l'appareil par enfant et par niveau (`mssid_journey_v1:<propriétaire>:<niveau>`). Elles ne sont pas encore synchronisées avec le serveur. Les leçons, l'XP et le carnet passent par les mêmes fonctions que la section cours.
-- **Accès :** gratuit pour l'instant. Un invité garde la même limite de leçons que partout ailleurs (`isLessonLocked`, puis la fenêtre de connexion). Aucun prix ni paiement n'apparaît sur la carte.
+- **Accès :** les mondes 1 et 2 (Sahara, Casbah) sont gratuits, les mondes 3 à 8 sont Premium Famille. Ces règles viennent de `access/entitlements.ts`, voir `docs/v2-gratuit-payant.md`. Une station Premium affiche un cadenas et un message neutre (« متاحة لحسابات العائلة المميزة »), avec le bouton parent habituel. Une leçon déjà validée ailleurs dans l'app reste marquée comme faite. Les leçons de ces mondes restent gratuites dans « دروسي » : seul le parcours de jeu est Premium. Un invité garde la même limite de leçons que partout ailleurs (`isLessonLocked`, puis la fenêtre de connexion).
 - **Flag :** `didouJourney` (activé par défaut sur `v2`, réglable dans l'onglet admin). Désactivé, la carte d'accueil disparaît et `/journey` renvoie à l'accueil.
 
 ## Technique

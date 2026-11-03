@@ -16,7 +16,8 @@ import { CompetenceCahierSheet } from './cahiers/CompetenceCahierSheet';
 import type { CompetenceCahier } from '../data/cahiers/competenceCahiers';
 
 import { useAuth } from '../context/AuthContext';
-import { PremiumOffer, hasPremium } from './PremiumOffer';
+import { PremiumOffer } from './PremiumOffer';
+import { canAccess } from '../access/entitlements';
 
 interface ParentNotebookModalProps {
   isOpen: boolean;
@@ -88,7 +89,8 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   const t = useTranslation('meta');
   const offerT = useTranslation('subscription');
   const { authUser } = useAuth();
-  const premium = hasPremium(authUser?.role);
+  const premium = canAccess('parentNotebookDetail', authUser?.role);
+  const canShareReport = canAccess('weeklyReportShare', authUser?.role);
   const { direction, locale } = useLocaleContext();
   const notebook = useMemo(
     () => buildParentNotebook(userProfile, viewingGrade ?? userProfile.grade),
@@ -217,7 +219,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
             >
               {recapCopied ? t('parentNotebookCopied') : t('parentNotebookCopyRecap')}
             </motion.button>}
-            {premium && <motion.button
+            {canShareReport && <motion.button
               type="button"
               whileTap={{ scale: 0.95 }}
               disabled={reportState === 'busy'}

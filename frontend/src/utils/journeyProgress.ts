@@ -23,8 +23,10 @@ export interface JourneyStation {
  * locked: further along the path.
  * missing: the lesson is not in the published catalog (e.g. curriculumReviewGate) — shown greyed
  *          and skipped, so a hidden lesson never blocks the rest of the journey.
+ * premium: in a Premium world (access/entitlements.ts → journeyAllWorlds) for a free account. A
+ *          lesson already validated elsewhere in the app still shows as done.
  */
-export type StationState = 'done' | 'open' | 'locked' | 'missing';
+export type StationState = 'done' | 'open' | 'locked' | 'missing' | 'premium';
 
 export function buildStations(worlds: readonly JourneyWorld[]): JourneyStation[] {
   const stations: JourneyStation[] = [];
@@ -48,6 +50,8 @@ export function stationStates(
   validatedLessonIds: ReadonlySet<string>,
   claimedWorldIds: ReadonlySet<string>,
   availableLessonIds: ReadonlySet<string>,
+  /** First world index reserved to Premium; null when the account has full access. */
+  premiumFromWorld: number | null = null,
 ): StationState[] {
   let openGiven = false;
   return stations.map((station) => {
@@ -57,16 +61,20 @@ export function stationStates(
     } else if (claimedWorldIds.has(worlds[station.worldIndex].id)) {
       return 'done';
     }
+    if (premiumFromWorld != null && station.worldIndex >= premiumFromWorld) return 'premium';
     if (openGiven) return 'locked';
     openGiven = true;
     return 'open';
   });
 }
 
-/** Where Didou should stand: the open station, or the last one when the whole journey is done. */
+/** Where Didou should stand: the open station, the last free one before a Premium world, or the end. */
 export function currentStationIndex(states: readonly StationState[]): number {
   const open = states.indexOf('open');
-  return open === -1 ? Math.max(0, states.length - 1) : open;
+  if (open !== -1) return open;
+  const premium = states.indexOf('premium');
+  if (premium > 0) return premium - 1;
+  return Math.max(0, states.length - 1);
 }
 
 /**

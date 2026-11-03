@@ -11,7 +11,8 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { canUseWebCheckout } from '../../utils/paymentPlatform';
 
 import { useAuth } from '../../context/AuthContext';
-import { PremiumOffer, hasPremium } from '../PremiumOffer';
+import { PremiumOffer } from '../PremiumOffer';
+import { canAccess } from '../../access/entitlements';
 
 interface CemPrepLabProps {
   onBack?: () => void;
@@ -145,7 +146,7 @@ export const CemPrepLab: React.FC<CemPrepLabProps> = ({ onBack, onReward, userPr
   const t = useTranslation('labsImmersive');
   const offerT = useTranslation('subscription');
   const { authUser } = useAuth();
-  const premium = hasPremium(authUser?.role);
+  const premium = canAccess('cemPrep', authUser?.role);
   const [tab, setTab] = useState(CEM_PAPERS[0].id);
   const [cahierId, setCahierId] = useState<string | null>(null);
   const [remote,setRemote]=useState<{owner:number;id:string;paper:CemPaper}|null>(null),[loadError,setLoadError]=useState(false),[retry,setRetry]=useState(0);
