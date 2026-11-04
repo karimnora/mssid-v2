@@ -18,6 +18,7 @@ import { PlanetHub } from './PlanetHub';
 import { useAuth } from '../../context/AuthContext';
 import { canAccess, FREE_JOURNEY_WORLDS } from '../../access/entitlements';
 import { PremiumOffer } from '../PremiumOffer';
+import type { PlanetShelfGroup } from './PlanetShelf';
 import './journey.css';
 
 export interface JourneyScreenProps {
@@ -28,6 +29,9 @@ export interface JourneyScreenProps {
   startOn?: 'hub' | 'map';
   userProfile: UserProfile;
   onExit: () => void;
+  /** Premium planet home: the classic home's entries, shown on the planet as « كل الأنشطة ». */
+  shelfGroups?: PlanetShelfGroup[];
+  exitLabel?: string;
   onOpenCourses: () => void;
   onOpenLabs: () => void;
   onOpenParents: () => void;
@@ -54,7 +58,7 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, startOn = 'hub' } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, startOn = 'hub', shelfGroups, exitLabel } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
@@ -196,6 +200,8 @@ export function JourneyScreen(props: JourneyScreenProps) {
           onExit={onExit}
           say={say}
           sfx={sfx}
+          shelfGroups={shelfGroups}
+          exitLabel={exitLabel}
         />
       )}
 

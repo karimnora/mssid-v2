@@ -208,8 +208,8 @@
 }
 .j-listen:focus-visible { outline: 3px solid var(--j-gold); outline-offset: 2px; }
 .j-listen svg { width: 24px; height: 24px; }
-.j-hub-say { position: absolute; inset-inline-end: calc(5cqmin + max(60px, 9cqmin)); bottom: 3cqmin; }
-.j-hub-say .j-say-text { max-width: min(28cqw, 380px); margin-bottom: 0; }
+.j-hub-say { position: absolute; inset-inline-end: calc(5cqmin + max(60px, 9cqmin)); bottom: calc(6cqmin + max(60px, 9cqmin)); }
+.j-hub-say .j-say-text { max-width: min(max(210px, 28cqw), 380px); margin-bottom: 0; }
 .j-map-say { position: absolute; bottom: 3cqmin; left: 50%; transform: translateX(-50%); }
 @keyframes j-pop { from { transform: scale(.6); opacity: 0; } }
 
@@ -329,3 +329,31 @@
   [data-grade-decor] .jgd-float, [data-grade-decor] .jgd-sway, [data-grade-decor] .jgd-wave, [data-grade-decor] .jgd-rise,
   [data-grade-decor] .jgd-flame, [data-grade-decor] .jgd-glow { animation: none; }
 }
+/* 3D district art on the planet home (planetDistrictArt). */
+.j-district .j-art-flame { animation: j-art-flame .5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: top center; }
+.j-district .j-art-bubbles { animation: j-art-bob 2.4s ease-in-out infinite; }
+.j-district .j-art-rise { animation: j-art-rise 2.8s ease-in infinite; }
+.j-district .j-art-sparkle { animation: j-art-twinkle 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.j-district .j-art-beat { animation: j-art-beat 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes j-art-flame { to { transform: scaleY(1.22) scaleX(.9); } }
+@keyframes j-art-bob { 50% { transform: translateY(-3px); } }
+@keyframes j-art-rise { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-26px); opacity: 0; } }
+@keyframes j-art-twinkle { 50% { transform: scale(.4) rotate(45deg); opacity: .4; } }
+@keyframes j-art-beat { 15% { transform: scale(1.08); } 30% { transform: scale(1); } }
+/* « كل الأنشطة » on the Premium planet home (PlanetShelf). */
+.j-shelf-open { position: absolute; left: 50%; bottom: 3cqmin; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: max(60px, 9cqmin); padding: 6px 20px 6px 12px; border-radius: 999px; font-size: max(18px, 3.4cqmin); white-space: nowrap; }
+.j-shelf-open:active { transform: translateX(-50%) translateY(.22em); }
+.j-shelf-open svg { width: max(44px, 7cqmin); height: max(44px, 7cqmin); filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .3)); }
+.j-shelf { position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column; background: radial-gradient(ellipse at 50% 0%, #1d4fd8 0%, #0b1f73 45%, #040c33 100%); animation: j-shelf-in .28s cubic-bezier(.2, .8, .3, 1); }
+.j-shelf-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 16px 8px; }
+.j-shelf-head h2 { margin: 0; font-family: var(--j-font-display); font-size: max(26px, 5cqmin); color: #fff; }
+.j-shelf-body { flex: 1; overflow-y: auto; padding: 4px 16px 32px; overscroll-behavior: contain; }
+.j-shelf-group h3 { margin: 18px 4px 10px; font-family: var(--j-font-display); font-size: max(19px, 3.2cqmin); color: var(--j-gold); text-shadow: 0 2px 0 rgba(0, 0, 0, .3); }
+.j-shelf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 12px; }
+.j-shelf-tile { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; min-height: 124px; padding: 10px 6px 12px; border: 0; border-radius: 22px; cursor: pointer; color: #fff; background: linear-gradient(180deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .07)); box-shadow: inset 0 2px 0 rgba(255, 255, 255, .3), inset 0 -4px 0 rgba(0, 0, 0, .2), 0 6px 14px rgba(0, 0, 0, .3); transition: transform .08s; }
+.j-shelf-tile:active { transform: translateY(3px) scale(.97); }
+.j-shelf-tile:focus-visible { outline: 4px solid var(--j-gold); outline-offset: 3px; }
+.j-shelf-icon { width: 68px; height: 68px; display: grid; place-items: center; filter: drop-shadow(0 6px 6px rgba(4, 10, 50, .45)); }
+.j-shelf-icon > svg, .j-shelf-icon > * { width: 100%; height: 100%; }
+.j-shelf-label { font-size: 15px; font-weight: 800; line-height: 1.2; text-align: center; text-shadow: 0 1px 0 rgba(0, 0, 0, .35); }
+@keyframes j-shelf-in { from { opacity: 0; transform: translateY(24px); } }

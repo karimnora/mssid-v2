@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { journeyForGrade } from './data/journey/journeyWorlds';
 import { JourneyMapShortcut } from './components/journey/JourneyMapShortcut';
+import { buildPlanetShelfGroups } from './components/journey/planetShelfGroups';
 import { isPremiumRole } from './access/entitlements';
 import { EmailDeepLink } from './components/EmailDeepLink';
 import { motion } from 'motion/react';
@@ -107,7 +108,8 @@ export default function App() {
 }
 
 /** sessionStorage: Premium families see the planet first, once per visit. */
-const PLANET_HOME_KEY = 'mssid_planet_home_shown';
+/** Set for the visit when a Premium child picks « الواجهة الكلاسيكية » on the planet. */
+const PLANET_CLASSIC_KEY = 'mssid_planet_classic_home';
 
 function AppContent() {
   const { requestLeave } = useActivityExit();
@@ -368,17 +370,28 @@ function AppContent() {
     setJourneyStart(start);
     setJourneyOpen(true);
   };
-  // Family Premium: the app opens on « كوكب ديدو » (once per visit — leaving it lands on the usual
-  // home). Free accounts keep the home, with the map shortcut in the corner (JourneyMapShortcut).
+  // Family Premium: « كوكب ديدو » IS the home — every return to the home lands on the planet, which
+  // carries the whole classic home in its « كل الأنشطة » sheet. The planet's back button switches to
+  // the classic home for the rest of the visit. Free accounts keep the classic home, with the map
+  // shortcut in the corner (JourneyMapShortcut).
   const premiumPlanetHome = journeyAvailable && isPremiumRole(authUser?.role);
+  const classicHomeChosen = () => {
+    try {
+      return window.sessionStorage.getItem(PLANET_CLASSIC_KEY) === '1';
+    } catch {
+      return false;
+    }
+  };
+  const chooseClassicHome = () => {
+    try {
+      window.sessionStorage.setItem(PLANET_CLASSIC_KEY, '1');
+    } catch {
+      /* private mode: the planet comes back on the next return home */
+    }
+  };
   useEffect(() => {
     if (!premiumPlanetHome || journeyOpen || !nav.isHomeActive || window.location.pathname !== '/') return;
-    try {
-      if (window.sessionStorage.getItem(PLANET_HOME_KEY)) return;
-      window.sessionStorage.setItem(PLANET_HOME_KEY, '1');
-    } catch {
-      /* private mode: open it anyway */
-    }
+    if (classicHomeChosen()) return;
     openJourney('hub');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [premiumPlanetHome, nav.isHomeActive]);
@@ -454,6 +467,36 @@ function AppContent() {
     const lesson = (coursesData ?? []).find((item) => item.id === activity.lessonId);
     if (lesson) nav.handleSelectLesson(lesson);
   };
+
+  const planetShelfGroups = buildPlanetShelfGroups({
+    locale,
+    subjects: visibleCourseSubjects,
+    availableLabIds: availableLabsForGrade.map((tool) => tool.id),
+    resumeTitle: resumeActivity ? lastActivityTitle(resumeActivity, locale) : null,
+    onResume: resumeActivity ? () => closeJourney(handleResumeActivity) : undefined,
+    onOpenSubject: (id) => closeJourney(() => {
+      setCourseEntrySubject(id as SubjectId);
+      nav.handleSelectSubject(id as SubjectId);
+    }),
+    onOpenAllCourses: () => closeJourney(() => {
+      setCourseEntrySubject(null);
+      nav.handleSelectPole('courses');
+    }),
+    onOpenExams: () => closeJourney(() => nav.handleSelectPole('exams')),
+    onOpenChallenges: () => closeJourney(() => nav.handleSelectPole('challenges')),
+    onOpenLabsCatalog: () => closeJourney(() => {
+      nav.handleSelectPole('labs');
+      openLabsCatalog();
+    }),
+    onOpenLab: (id) => closeJourney(() => openLabFocused(id as SubjectId)),
+    // Modals draw above the planet (z-50 over z-45): the child comes back to it when they close.
+    onOpenDressingRoom: () => modals.setIsDressingRoomOpen(true),
+    onOpenHonorCertificates: () => modals.setIsHonorCertificatesOpen(true),
+    onOpenParents: () => modals.setIsParentNotebookOpen(true),
+    onOpenSettings: () => modals.setIsSettingsModalOpen(true),
+    onOpenProfile: () => modals.setIsProfileModalOpen(true),
+    onOpenPreschool: () => closeJourney(() => nav.setIsPreschoolActive(true)),
+  });
 
   const [pendingExamId, setPendingExamId] = useState<string | null>(null);
   /** Plan « avant la composition »: open a mock paper of the bank, switching grade if needed. */
@@ -897,7 +940,12 @@ function AppContent() {
             courses={coursesData ? publishableCourses : null}
             userProfile={progress.userProfile}
             startOn={journeyStart}
-            onExit={() => closeJourney()}
+            onExit={() => {
+              if (premiumPlanetHome && journeyStart === 'hub') chooseClassicHome();
+              closeJourney();
+            }}
+            exitLabel={premiumPlanetHome ? (locale === 'ar' ? 'الواجهة الكلاسيكية' : 'Accueil classique') : undefined}
+            shelfGroups={premiumPlanetHome ? planetShelfGroups : undefined}
             onOpenCourses={() => closeJourney(() => {
               setCourseEntrySubject(null);
               nav.handleSelectPole('courses');

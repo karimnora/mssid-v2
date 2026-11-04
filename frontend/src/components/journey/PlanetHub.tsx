@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { pickText, type JourneyWorld } from '../../data/journey/journeyWorlds';
 import { DidouFull, MedalArt, StarIcon } from './DidouJourneyArt';
 import { ArrowIcon, CoinIcon } from './JourneyMap';
+import { PlanetDistrictArt, PlanetSurface } from './planetDistrictArt';
+import { PlanetShelf, ShelfButtonArt, type PlanetShelfGroup } from './PlanetShelf';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 
 export type DistrictId = 'journey' | 'courses' | 'labs' | 'medals' | 'parents';
@@ -22,74 +24,16 @@ interface PlanetHubProps {
   onExit: () => void;
   say: (text: string) => void;
   sfx: JourneySfx;
+  /** Premium planet home: the whole classic home as a « كل الأنشطة » sheet. */
+  shelfGroups?: PlanetShelfGroup[];
+  /** Label of the top back button (Premium: « الواجهة الكلاسيكية »). */
+  exitLabel?: string;
 }
-
-const flag = (
-  <g transform="translate(86 6)">
-    <path d="M0 0V40" stroke="#6b4a2a" strokeWidth="2.5" />
-    <rect x="1" y="2" width="13" height="18" fill="#0f8a4b" />
-    <rect x="14" y="2" width="13" height="18" fill="#fff" />
-    <circle cx="14" cy="11" r="5.2" fill="#d6283b" />
-    <circle cx="15.8" cy="11" r="4.2" fill="#fff" />
-  </g>
-);
-
-const DISTRICT_ART: Record<DistrictId, React.ReactNode> = {
-  journey: (
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M10 108 Q40 84 60 96 T110 72" stroke="#fff" strokeWidth="4" strokeDasharray="2 9" strokeLinecap="round" fill="none" />
-      <circle cx="20" cy="28" r="13" fill="#ffd23f" />
-      <g transform="translate(66 60) rotate(32)">
-        <path d="M0 -46 C15 -32 16 -8 14 12 H-14 C-16 -8 -15 -32 0 -46Z" fill="#fff8ec" stroke="#13206b" strokeWidth="2.5" />
-        <path d="M0 -46 C8 -38 12 -30 13 -24 H-13 C-12 -30 -8 -38 0 -46Z" fill="#d6283b" />
-        <circle cy="-10" r="7" fill="#62d2ff" stroke="#13206b" strokeWidth="2.5" />
-        <path d="M-14 4 L-26 18 L-14 14Z M14 4 L26 18 L14 14Z" fill="#d6283b" />
-        <path d="M-8 14 Q0 36 8 14Z" fill="#ffb800" />
-      </g>
-    </svg>
-  ),
-  courses: (
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      {flag}
-      <path d="M14 112 V60 L60 34 L106 60 V112Z" fill="#fff8ec" />
-      <path d="M8 62 L60 30 L112 62 L106 66 L60 40 L14 66Z" fill="#1f8a5c" />
-      <path d="M48 112 V88 A12 12 0 0 1 72 88 V112Z" fill="#2f6fe0" />
-      <rect x="24" y="74" width="14" height="16" rx="7" fill="#2f6fe0" />
-      <rect x="82" y="74" width="14" height="16" rx="7" fill="#2f6fe0" />
-      <rect x="14" y="98" width="92" height="8" fill="#0e7a5a" />
-    </svg>
-  ),
-  labs: (
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M44 14 H76 V44 L104 100 Q108 112 94 112 H26 Q12 112 16 100 L44 44Z" fill="#e8f7ff" stroke="#13206b" strokeWidth="3" />
-      <path d="M30 78 H90 L104 100 Q108 112 94 112 H26 Q12 112 16 100Z" fill="#a6e85f" />
-      <circle cx="50" cy="92" r="6" fill="#fff" />
-      <circle cx="70" cy="98" r="4" fill="#fff" />
-      <rect x="40" y="8" width="40" height="10" rx="4" fill="#8b22e0" />
-    </svg>
-  ),
-  medals: (
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M36 6 L60 50 L84 6Z" fill="#d6283b" />
-      <path d="M48 6 L60 30 L72 6Z" fill="#0f8a4b" />
-      <circle cx="60" cy="78" r="36" fill="#ffc21a" stroke="#fff" strokeWidth="6" />
-      <path d="M60 54l7 15 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="#fff" />
-    </svg>
-  ),
-  parents: (
-    <svg viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M18 112 V58 L60 26 L102 58 V112Z" fill="#ffe1ef" />
-      <path d="M10 60 L60 22 L110 60 L102 64 L60 32 L18 64Z" fill="#c2186b" />
-      <path d="M60 98 C30 78 40 56 60 70 C80 56 90 78 60 98Z" fill="#ec2e86" />
-      <rect x="78" y="80" width="26" height="22" rx="4" fill="#ffd23f" stroke="#b77900" strokeWidth="2" />
-      <path d="M84 80 V72 A7 7 0 0 1 98 72 V80" stroke="#b77900" strokeWidth="3.5" fill="none" />
-    </svg>
-  ),
-};
 
 /** The Wiloki-like home of the journey: districts orbit a planet, the front one opens with the big play button. */
 export function PlanetHub(props: PlanetHubProps) {
-  const { locale, userName, totalStars, coins, worlds, claimedWorldIds, sound, onToggleSound, onOpenMap, onOpenCourses, onOpenLabs, onOpenParents, onExit, say, sfx } = props;
+  const { locale, userName, totalStars, coins, worlds, claimedWorldIds, sound, onToggleSound, onOpenMap, onOpenCourses, onOpenLabs, onOpenParents, onExit, say, sfx, shelfGroups, exitLabel } = props;
+  const [shelfOpen, setShelfOpen] = useState(false);
   const ar = locale === 'ar';
   const T = (arText: string, frText: string) => (ar ? arText : frText);
   const districts: Array<{ id: DistrictId; label: string; hint: string }> = [
@@ -172,7 +116,7 @@ export function PlanetHub(props: PlanetHubProps) {
     <>
       <div className="j-hub-top">
         <div className="j-hub-actions">
-          <button type="button" className="j-gloss j-round j-flip" onClick={onExit} aria-label={T('العودة إلى التطبيق', "Retour à l'application")}>
+          <button type="button" className="j-gloss j-round j-flip" onClick={onExit} aria-label={exitLabel ?? T('العودة إلى التطبيق', "Retour à l'application")}>
             <ArrowIcon to="left" />
           </button>
           <button type="button" className="j-gloss j-round" onClick={onToggleSound} aria-pressed={sound} aria-label={T('الصوت', 'Son')}>
@@ -203,11 +147,7 @@ export function PlanetHub(props: PlanetHubProps) {
 
       <div className="j-planet" style={{ ['--rot' as string]: `${rot}deg` }}>
         <div className="j-sphere">
-          <svg viewBox="0 0 200 200" aria-hidden="true">
-            <path d="M30 70 Q55 40 90 52 Q110 60 104 82 Q96 104 70 100 Q40 98 30 70Z" fill="#59c26a" opacity=".85" />
-            <path d="M120 120 Q150 100 176 124 Q186 150 160 164 Q132 172 122 150Z" fill="#e8c27a" opacity=".85" />
-            <path d="M50 140 Q66 130 80 142 Q84 158 66 162 Q50 160 50 140Z" fill="#59c26a" opacity=".8" />
-          </svg>
+          <PlanetSurface />
         </div>
         {districts.map((d, i) => (
           <button
@@ -219,7 +159,7 @@ export function PlanetHub(props: PlanetHubProps) {
             onClick={() => onDistrict(i)}
             aria-label={d.label}
           >
-            {DISTRICT_ART[d.id]}
+            <PlanetDistrictArt id={d.id} />
             <span className="j-lbl journey-outline">{d.label}</span>
           </button>
         ))}
@@ -249,6 +189,34 @@ export function PlanetHub(props: PlanetHubProps) {
         <ArrowIcon to="left" />
       </button>
 
+      {shelfGroups && shelfGroups.length > 0 && (
+        <button
+          type="button"
+          className="j-gloss j-shelf-open"
+          data-tone="orange"
+          data-planet-shelf-open=""
+          onClick={() => {
+            sfx.pop();
+            say(T('كل الأنشطة: الدروس، الامتحانات، التحديات، الألعاب والمختبرات', 'Toutes les activités : cours, examens, défis, jeux et ateliers'));
+            setShelfOpen(true);
+          }}
+        >
+          <ShelfButtonArt />
+          <span>{T('كل الأنشطة', 'Toutes les activités')}</span>
+        </button>
+      )}
+      {shelfOpen && shelfGroups && (
+        <PlanetShelf
+          title={T('كل الأنشطة', 'Toutes les activités')}
+          closeLabel={T('أغلق', 'Fermer')}
+          groups={shelfGroups}
+          onClose={() => setShelfOpen(false)}
+          onPick={() => {
+            sfx.pop();
+            setShelfOpen(false);
+          }}
+        />
+      )}
       {ribbon && <JourneyRibbon {...ribbon} onListen={() => say(ribbon.text)} listenLabel={T('استمع إلى ديدو', 'Écouter Didou')} />}
     </>
   );
