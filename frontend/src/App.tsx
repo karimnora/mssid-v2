@@ -643,7 +643,8 @@ function AppContent() {
         avatar={progress.userProfile.avatar}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-28 md:pb-6 space-y-6">
+      {/* The free map shortcut floats above the bottom bar: keep the last home tile clear of it. */}
+      <main className={`max-w-7xl mx-auto px-4 sm:px-6 pt-6 ${journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? 'pb-56 md:pb-40' : 'pb-28 md:pb-6'} space-y-6`} data-map-shortcut-space={journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? '' : undefined}>
         {nav.isHomeActive ? (
           <HomeView
             grade={nav.grade}
