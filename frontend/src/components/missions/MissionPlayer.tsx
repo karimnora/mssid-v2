@@ -352,6 +352,7 @@ function SortWidget({ item, onReport }: { item: SortItem; onReport: (r: Report) 
             animate={shake === card.id ? { x: [0, -8, 8, -4, 0] } : picked === card.id ? { y: -6 } : { y: 0 }}
             onAnimationComplete={() => shake === card.id && setShake(null)}
             onClick={() => setPicked(card.id)}
+            dir="auto"
             className={`mission-chip ${picked === card.id ? 'picked' : ''}`}
           >
             {card.textAr}
@@ -362,7 +363,7 @@ function SortWidget({ item, onReport }: { item: SortItem; onReport: (r: Report) 
         {item.bins.map((bin) => (
           <button key={bin.id} type="button" data-mission-bin={bin.id} onClick={() => drop(bin.id)} disabled={!picked} className="mission-bin">
             <span className="mission-bin-label">{bin.labelAr}</span>
-            {item.cards.filter((c) => placed[c.id] === bin.id).map((c) => <span key={c.id} className="mission-chip placed">{c.textAr}</span>)}
+            {item.cards.filter((c) => placed[c.id] === bin.id).map((c) => <span key={c.id} dir="auto" className="mission-chip placed">{c.textAr}</span>)}
           </button>
         ))}
       </div>
