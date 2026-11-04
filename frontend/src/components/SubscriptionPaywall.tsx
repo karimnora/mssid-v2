@@ -175,8 +175,6 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
             </div>
           </div>
 
-          {!submittedReceipt && <ActivationCodeForm onRedeemed={onSuccessUpgrade} />}
-
           {!submittedReceipt && <fieldset className="space-y-3" disabled={isSubmitting || showParentGate}>
             <legend className="font-extrabold">{t('chooseDuration')}</legend>
             <p className="text-sm text-slate-600">{t('sameServices')}</p>
@@ -191,6 +189,8 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
             </div>
             <p className="text-xs text-slate-600">{t('manualRenewal')}</p>
           </fieldset>}
+
+          {!submittedReceipt && <ActivationCodeForm onRedeemed={onSuccessUpgrade} />}
 
           <ReceiptStatus key={submittedReceipt?.id ?? "receipt"}/>{/* If already submitted receipt */}
           {submittedReceipt ? (

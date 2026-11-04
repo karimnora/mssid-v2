@@ -36,6 +36,7 @@ describe('ActivationCodeForm', () => {
     api.fetchCurrentUser.mockResolvedValue({ data: { id: 1, role: 'ROLE_PREMIUM' }, status: 200 });
     const onRedeemed = vi.fn();
     render(<ActivationCodeForm onRedeemed={onRedeemed} />);
+    fireEvent.click(screen.getByRole('button', { name: /عِنْدِي كُودُ تَفْعِيلٍ/ }));
     fireEvent.change(screen.getByPlaceholderText('MSD-XXXX-XXXX'), { target: { value: 'msd-4k7p-9xq2' } });
     fireEvent.click(screen.getByRole('button', { name: 'فعّل' }));
     expect(await screen.findByRole('status')).toHaveTextContent('مفعّل حتى');
@@ -46,6 +47,7 @@ describe('ActivationCodeForm', () => {
   it('shows the server message when the code is refused, and the wait after too many tries', async () => {
     api.redeemActivationCode.mockResolvedValueOnce({ error: 'هذا الكود استُعمل بالكامل.', status: 400 });
     render(<ActivationCodeForm />);
+    fireEvent.click(screen.getByRole('button', { name: /عِنْدِي كُودُ تَفْعِيلٍ/ }));
     fireEvent.change(screen.getByPlaceholderText('MSD-XXXX-XXXX'), { target: { value: 'MSD-AAAA-BBBB' } });
     fireEvent.click(screen.getByRole('button', { name: 'فعّل' }));
     expect(await screen.findByRole('alert')).toHaveTextContent('استُعمل بالكامل');

@@ -16,6 +16,7 @@ export const ActivationCodeForm: React.FC<{ onRedeemed?: (user: AuthUser) => voi
   const fr = locale === 'fr';
   const [code, setCode] = useState('');
   const [state, setState] = useState<{ kind: 'idle' | 'busy' | 'done' | 'error'; message?: string }>({ kind: 'idle' });
+  const [open, setOpen] = useState(false);
 
   if (!canUseWebCheckout()) return null;
 
@@ -38,6 +39,15 @@ export const ActivationCodeForm: React.FC<{ onRedeemed?: (user: AuthUser) => voi
       onRedeemed?.(user);
     }
   };
+
+  // One payment method among the others (receipt, card payment): a discreet line under the plans.
+  if (!open) {
+    return (
+      <button type="button" data-activation-code-toggle onClick={() => setOpen(true)} className="hit-target w-full rounded-2xl border-2 border-dashed border-slate-300 bg-white px-4 text-sm font-extrabold text-slate-700">
+        {fr ? '🎟️ Autre moyen : j’ai un code d’activation' : '🎟️ طَرِيقَةٌ أُخْرَى: عِنْدِي كُودُ تَفْعِيلٍ'}
+      </button>
+    );
+  }
 
   return (
     <form onSubmit={submit} data-activation-code-form className="rounded-2xl border-2 border-[#008751]/40 bg-emerald-50 p-4 space-y-2">
