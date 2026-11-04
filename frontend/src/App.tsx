@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import { journeyForGrade } from './data/journey/journeyWorlds';
+import { JourneyMapShortcut } from './components/journey/JourneyMapShortcut';
+import { isPremiumRole } from './access/entitlements';
 import { EmailDeepLink } from './components/EmailDeepLink';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
@@ -102,6 +105,9 @@ const THEME_MANUAL_KEY = 'mssid_theme_manual';
 export default function App() {
   return <ActivityExitProvider><AppContent /></ActivityExitProvider>;
 }
+
+/** sessionStorage: Premium families see the planet first, once per visit. */
+const PLANET_HOME_KEY = 'mssid_planet_home_shown';
 
 function AppContent() {
   const { requestLeave } = useActivityExit();
@@ -356,10 +362,26 @@ function AppContent() {
       root.style.overflow = previous;
     };
   }, [journeyOpen]);
-  const openJourney = () => {
+  const [journeyStart, setJourneyStart] = useState<'hub' | 'map'>('hub');
+  const openJourney = (start: 'hub' | 'map' = 'hub') => {
     window.history.pushState({ ...(window.history.state ?? {}), mssidJourney: true }, '', `/journey?g=${nav.grade}`);
+    setJourneyStart(start);
     setJourneyOpen(true);
   };
+  // Family Premium: the app opens on « كوكب ديدو » (once per visit — leaving it lands on the usual
+  // home). Free accounts keep the home, with the map shortcut in the corner (JourneyMapShortcut).
+  const premiumPlanetHome = journeyAvailable && isPremiumRole(authUser?.role);
+  useEffect(() => {
+    if (!premiumPlanetHome || journeyOpen || !nav.isHomeActive || window.location.pathname !== '/') return;
+    try {
+      if (window.sessionStorage.getItem(PLANET_HOME_KEY)) return;
+      window.sessionStorage.setItem(PLANET_HOME_KEY, '1');
+    } catch {
+      /* private mode: open it anyway */
+    }
+    openJourney('hub');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [premiumPlanetHome, nav.isHomeActive]);
   /** Replace (never pop) the /journey entry so a follow-up nav action is not undone by a late popstate. */
   const closeJourney = (after?: () => void) => {
     setJourneyOpen(false);
@@ -658,7 +680,7 @@ function AppContent() {
             onFeedDidou={handleFeedDidou}
             lastActivityTitle={resumeActivity ? lastActivityTitle(resumeActivity, locale) : null}
             onResumeActivity={resumeActivity ? handleResumeActivity : undefined}
-            onOpenJourney={journeyAvailable ? openJourney : undefined}
+            onOpenJourney={journeyAvailable ? () => openJourney('hub') : undefined}
             worldDesign={worldScreen}
           />
         ) : (
@@ -873,6 +895,7 @@ function AppContent() {
             grade={nav.grade}
             courses={coursesData ? publishableCourses : null}
             userProfile={progress.userProfile}
+            startOn={journeyStart}
             onExit={() => closeJourney()}
             onOpenCourses={() => closeJourney(() => {
               setCourseEntrySubject(null);
@@ -894,6 +917,9 @@ function AppContent() {
         </Suspense>
       )}
 
+      {journeyAvailable && !premiumPlanetHome && nav.isHomeActive && !journeyOpen && (
+        <JourneyMapShortcut hasMap={journeyForGrade(nav.grade) !== null} onOpen={() => openJourney(journeyForGrade(nav.grade) ? 'map' : 'hub')} />
+      )}
       <EmailDeepLink onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} />
       <AppModals
         currentLesson={nav.selectedLesson}

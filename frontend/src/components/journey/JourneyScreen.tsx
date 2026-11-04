@@ -24,6 +24,8 @@ export interface JourneyScreenProps {
   grade: PrimaryGrade;
   /** Published catalog (already filtered by curriculumReviewGate); null while it loads. */
   courses: CourseLesson[] | null;
+  /** Open straight on the map (free home shortcut): « back » then returns to the app. */
+  startOn?: 'hub' | 'map';
   userProfile: UserProfile;
   onExit: () => void;
   onOpenCourses: () => void;
@@ -52,12 +54,12 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, startOn = 'hub' } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
   const worlds = journeyForGrade(grade);
-  const [screen, setScreen] = useState<'hub' | 'map' | 'lesson'>('hub');
+  const [screen, setScreen] = useState<'hub' | 'map' | 'lesson'>(startOn);
   const [lessonId, setLessonId] = useState<string | null>(null);
   const [memory, setMemory] = useState<JourneyMemoryState>(() => loadJourneyMemory(grade));
   const [sound, setSound] = useState<boolean>(() => {
@@ -210,7 +212,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
             onMemoryChange={changeMemory}
             onStartLesson={startLesson}
             onClaimTreasure={claimTreasure}
-            onBack={() => setScreen('hub')}
+            onBack={() => (startOn === 'map' ? onExit() : setScreen('hub'))}
             say={say}
             sfx={sfx}
             totalStars={totalStars}

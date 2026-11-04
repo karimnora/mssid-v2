@@ -5,6 +5,7 @@ import { useLocaleContext } from '../context/LocaleContext';
 import { CheckCircle2, ChevronLeft, ChevronRight, Lock } from 'lucide-react';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { isFrenchFreeGrade } from './lessonViewer/youngLessonLayout';
+import { SubjectArt3d, SUBJECT_ART_IDS } from './subjectArt3d';
 
 export interface SubjectIllustratedCardProps {
   id: SubjectId;
@@ -483,6 +484,12 @@ const SUBJECT_THEMES: Record<string, SubjectVisualTheme> = {
  * Designed with curved organic blobs, vivid accent layers, and iconic subject artifacts.
  */
 export const SubjectVectorIllustration: React.FC<{ id: string }> = ({ id }) => {
+  // V2: soft 3D drawings (subjectArt3d.tsx); the flat ones below stay as fallback.
+  if (SUBJECT_ART_IDS.includes(id)) return <SubjectArt3d id={id} />;
+  return <FlatSubjectIllustration id={id} />;
+};
+
+const FlatSubjectIllustration: React.FC<{ id: string }> = ({ id }) => {
   switch (id) {
     case 'french':
       return (

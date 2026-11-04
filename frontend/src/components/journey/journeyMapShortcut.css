@@ -1,0 +1,8 @@
+/* Free home: map shortcut in the corner — the route draws itself, the flag waves. */
+.journey-map-shortcut .jms-route { animation: jms-route 2.4s linear infinite; }
+@keyframes jms-route { to { stroke-dashoffset: -12; } }
+.journey-map-shortcut .jms-flag { transform-box: fill-box; transform-origin: left center; animation: jms-flag 1.6s ease-in-out infinite; }
+@keyframes jms-flag { 50% { transform: skewY(-12deg) scaleX(0.9); } }
+@media (prefers-reduced-motion: reduce) {
+  .journey-map-shortcut .jms-route, .journey-map-shortcut .jms-flag { animation: none; }
+}
