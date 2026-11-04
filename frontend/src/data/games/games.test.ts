@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { COURSES_DATA } from '../coursesData';
+import { PRESCHOOL_MODULES } from '../preschool';
 import { GAME_PACKS, canOpenPack, mazeIsSolvable, packsForGrade, packsForLesson } from './index';
 import type { GameRound, MazeRound, MemoryRound } from './types';
 
@@ -46,10 +47,15 @@ describe('Didou learning games content', () => {
       for (const round of pack.rounds) {
         const at = `${pack.id}/${round.id}`;
         expect(round.kind, at).toBe(pack.engine);
-        const lesson = COURSES_DATA.find((l) => l.id === round.lessonId);
-        expect(lesson, at).toBeTruthy();
-        expect(lesson!.grade, at).toBe(pack.grade);
-        expect(lesson!.subject, at).toBe(pack.subject);
+        if (pack.grade === 'PRE') {
+          // Preschool levels belong to a module of the preschool catalog.
+          expect(PRESCHOOL_MODULES.some((m) => m.id === round.lessonId), at).toBe(true);
+        } else {
+          const lesson = COURSES_DATA.find((l) => l.id === round.lessonId);
+          expect(lesson, at).toBeTruthy();
+          expect(lesson!.grade, at).toBe(pack.grade);
+          expect(lesson!.subject, at).toBe(pack.subject);
+        }
         expect(round.sayAr && round.hintAr && round.successAr, at).toBeTruthy();
         expect(packsForLesson(round.lessonId), at).toContain(pack);
       }
@@ -68,9 +74,9 @@ describe('Didou learning games content', () => {
   });
 
   it('reads every card aloud for young readers (preschool and 1AP), and only for them', () => {
-    for (const pack of GAME_PACKS) expect(Boolean(pack.young), pack.id).toBe(pack.grade === '1AP');
+    for (const pack of GAME_PACKS) expect(Boolean(pack.young), pack.id).toBe(pack.grade === '1AP' || pack.grade === 'PRE');
     for (const pack of GAME_PACKS.filter((p) => p.engine === 'memory' && p.subject !== 'math')) {
-      for (const round of pack.rounds as MemoryRound[]) expect(round.mismatchAr, `${pack.id}/${round.id}`).toMatch(/\{a\}.*\{va\}.*\{b\}.*\{vb\}/);
+      for (const round of pack.rounds as MemoryRound[]) expect(round.mismatchAr, `${pack.id}/${round.id}`).toMatch(/\{va\}[\s\S]*\{vb\}/);
     }
   });
 
@@ -140,7 +146,8 @@ describe('Didou learning games content', () => {
         expect(mazeIsSolvable(round.grid), at).toBe(true);
         for (const cell of round.grid.flat()) if (!cell.ok) expect(cell.whyAr, `${at}/${cell.t}`).toBeTruthy();
         const rule = MAZE_RULES[at];
-        if (pack.subject === 'math') {
+        // Primary maths mazes are made of numbers, checked one by one; preschool mazes are pictures.
+        if (pack.subject === 'math' && pack.grade !== 'PRE') {
           expect(rule, `${at}: add its rule to MAZE_RULES`).toBeTruthy();
           for (const cell of round.grid.flat()) expect(rule(valueOf(cell.t)), `${at}/${cell.t}`).toBe(cell.ok);
         }

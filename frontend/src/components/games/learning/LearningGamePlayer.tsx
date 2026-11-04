@@ -12,9 +12,14 @@ import { MazeBoard, MemoryBoard, OrderBoard, SortBoard, type BoardMove } from '.
 import '../../missions/mission.css';
 import './learningGames.css';
 
+const PICTURES = /[\p{Extended_Pictographic}\u200d\uFE0F]/gu;
+
+/** Didou's voice: pictures are shown, never spelled out by the speech engine. */
 function say(text: string) {
+  const words = text.replace(PICTURES, '').replace(/«\s*»/g, '').trim();
+  if (!words) return;
   try {
-    void speakText(text, 'ar-SA').catch(() => undefined);
+    void speakText(words, 'ar-SA').catch(() => undefined);
   } catch {
     /* no speech engine (jsdom, some WebViews) */
   }
@@ -210,7 +215,7 @@ export const LearningGamePlayer: React.FC<{
 
   return createPortal(
     <div
-      className={`mission-player lg-player ${pack.young ? 'lg-young' : ''} fixed inset-0 z-[65] overflow-y-auto overflow-x-hidden`}
+      className={`mission-player lg-player ${pack.young ? 'lg-young' : ''} ${pack.grade === 'PRE' ? 'lg-pre' : ''} fixed inset-0 z-[65] overflow-y-auto overflow-x-hidden`}
       dir="rtl"
       style={{ background: pack.theme.sky }}
       role="dialog"

@@ -10,6 +10,7 @@ import { LearningGamePlayer, starsForMisses, suggestedLevel, tierIndex } from '.
 import { recordLevel } from './LearningGameEntry';
 import { PEEK_MS } from './boards';
 import { GAME_PACKS_5AP } from '../../../data/games/packs5ap';
+import { GAME_PACKS_PRE } from '../../../data/games/packsPre';
 import type { MazeRound, MemoryRound, OrderRound, SortRound } from '../../../data/games/types';
 
 const pack = (id: string) => GAME_PACKS_5AP.find((p) => p.id === id)!;
@@ -157,6 +158,19 @@ describe('LearningGamePlayer', () => {
     click('[data-lg-cell="1,0"]'); // 4/5: right stone, its neighbours come out of the fog
     expect(document.querySelector('[data-lg-cell="2,0"]')!.getAttribute('data-state')).not.toBe('fog');
     expect(document.querySelector(`[data-lg-cell="${round.grid.length - 1},${round.grid[0].length - 1}"]`)!.getAttribute('data-state')).not.toBe('fog');
+  });
+
+  it('preschool: every tapped picture is read aloud by its name, and no emoji ever reaches the voice', async () => {
+    const speech = await import('../../../utils/speech');
+    const farm = GAME_PACKS_PRE.find((p) => p.id === 'game-pre-memory-farm')!;
+    const level = farm.rounds.findIndex((r) => r.id === 'three-animals');
+    render(<LearningGamePlayer pack={farm} onExit={vi.fn()} startLevel={level} />);
+    await step('memory');
+    expect(document.querySelector('.lg-player')!.classList.contains('lg-pre')).toBe(true);
+    vi.mocked(speech.speakText).mockClear();
+    click('[data-lg-card="goat-a"]');
+    expect(speech.speakText).toHaveBeenCalledWith('المَاعِزُ', 'ar-SA');
+    for (const [text] of vi.mocked(speech.speakText).mock.calls) expect(text).not.toMatch(/\p{Extended_Pictographic}/u);
   });
 
   it('spreads ten levels over the five difficulty tiers, two levels each', () => {

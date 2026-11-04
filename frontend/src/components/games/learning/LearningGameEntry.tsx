@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import type { GamePack, GameEngine } from '../../../data/games/types';
+import type { GamePack, GameEngine, GameGrade } from '../../../data/games/types';
 import { canOpenPack, packsForGrade } from '../../../data/games';
-import type { PrimaryGrade } from '../../../types';
 import type { PracticeResult } from '../../../utils/competenceProgress';
 import { useAuth } from '../../../context/AuthContext';
 import { canAccess } from '../../../access/entitlements';
@@ -141,7 +140,7 @@ export const LearningGameEntry: React.FC<EntryProps> = ({ pack, onPracticeResult
 };
 
 /** « ألعاب ديدو التعليمية » shelf for a grade (Challenges space). Renders nothing for a grade without packs yet. */
-export const LearningGamesShelf: React.FC<{ grade: PrimaryGrade } & Omit<EntryProps, 'pack' | 'focusLessonId'>> = ({ grade, ...entryProps }) => {
+export const LearningGamesShelf: React.FC<{ grade: GameGrade } & Omit<EntryProps, 'pack' | 'focusLessonId'>> = ({ grade, ...entryProps }) => {
   const packs = packsForGrade(grade);
   if (!packs.length) return null;
   return (

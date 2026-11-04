@@ -9,9 +9,12 @@ import type { PrimaryGrade, SubjectId } from '../../types';
  */
 export type GameEngine = 'memory' | 'sort' | 'order' | 'maze';
 
+/** Primary grades, plus `PRE` for preschool (3-5 years, shown in the preschool games hub). */
+export type GameGrade = PrimaryGrade | 'PRE';
+
 interface RoundBase {
   id: string;
-  /** Catalog lesson this round practises (parent notebook + competence stats). */
+  /** Catalog lesson this round practises (parent notebook + competence stats). Preschool: a `PRESCHOOL_MODULES` id. */
   lessonId: string;
   titleAr: string;
   /** What Didou says when the round opens. */
@@ -85,7 +88,7 @@ export type GameRound = MemoryRound | SortRound | OrderRound | MazeRound;
 export interface GamePack {
   /** Exact id, e.g. `game-5ap-memory-fractions`. */
   id: string;
-  grade: PrimaryGrade;
+  grade: GameGrade;
   subject: SubjectId;
   engine: GameEngine;
   titleAr: string;

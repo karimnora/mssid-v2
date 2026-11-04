@@ -16,6 +16,7 @@ import { DressDidoGame }    from './DressDidoGame';
 import { useLevelProgress } from './useLevelProgress';
 import { GAMES, GameId }    from './gamesHubCatalog';
 import { PreschoolMuteButton } from './PreschoolMuteButton';
+import { LearningGamesShelf } from '../games/learning/LearningGameEntry';
 
 export type { GameId } from './gamesHubCatalog';
 export { GAMES } from './gamesHubCatalog';
@@ -101,6 +102,13 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                 </div>
                 <div className="min-w-12" />
               </div>
+
+              {/* « ألعاب ديدو التعليمية »: the 3D adventures of the preschool level (Arabic, read aloud by Didou). */}
+              {language === 'ar' && (
+                <div className="rounded-3xl bg-white/70 border-2 border-indigo-200 p-4 shadow-md text-indigo-950" data-preschool-learning-games>
+                  <LearningGamesShelf grade="PRE" />
+                </div>
+              )}
 
               {/* Games grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

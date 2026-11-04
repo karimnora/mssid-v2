@@ -7,6 +7,14 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **Lot 1 — préscolaire, codé le 4 novembre 2026 (`data/games/packsPre.ts`, 4 packs × 10 niveaux, niveau `PRE`) :**
+> - `game-pre-memory-farm` (gratuit) : ذاكرة مزرعة جدي. On commence par retrouver la même image, puis on relie deux choses qui vont ensemble : l'animal et ce qu'il mange, la couleur et un objet, le chiffre et la quantité, le sens et ce qu'il perçoit, la météo et ce dont on a besoin. Le niveau final a 16 cartes.
+> - `game-pre-sort-baskets` : سلال روضة ديدو. Niveaux : grand ou petit, rouge ou jaune, jour ou nuit, formes, été ou hiver, ferme ou mer, sain ou sucré, sens, ciel / mer / terre, et les 4 saisons.
+> - `game-pre-order-train` : قطار ديدو الصغير. Niveaux : compter de 1 à 5, se laver les mains, la pousse d'une plante, la journée, les chiffres de 6 à 10, du plus grand au plus petit, puis un train de 8 wagons.
+> - `game-pre-maze-road` : طريق ديدو إلى الروضة. On suit les pommes, les étoiles, le rouge, les animaux, les objets ronds, le 3, les animaux marins, l'hiver, les groupes de 3 objets, puis le jaune dans le brouillard.
+> - Aucun texte à lire : Didou dit chaque règle et lit chaque image touchée. Sa voix retire les emoji (`say`), pour que le moteur de synthèse vocale ne les épelle pas. Les cibles font 72 px (`lg-pre`).
+> - Chaque niveau est relié à un module du préscolaire (`PRESCHOOL_MODULES`). Les aventures apparaissent dans l'espace jeux du préscolaire quand la langue choisie est l'arabe.
+>
 > **10 niveaux par jeu (demande de Karim du 4 novembre 2026 : plus de 8 niveaux, en 3D, immersifs et interactifs) :**
 > - Les 8 aventures (1AP et 5AP) ont maintenant 10 niveaux, répartis sur 5 paliers de 2 niveaux : سهل، متوسط، صعب، خبير، بطل. Le niveau 10 est le niveau final : plateforme dorée avec une couronne 👑.
 > - Nouveaux contenus de 5AP :

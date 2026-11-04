@@ -360,6 +360,24 @@
 .lg-young .lg-stone-text.long { font-size: 22px; }
 .lg-young .lg-stone-text.long .lg-pic-word { font-size: 11px; }
 
+/* ——— Preschool (3-5 years): 72 px targets, round toy-like 3D tiles ——— */
+.lg-pre .lg-mcard { min-height: 92px; }
+.lg-pre .lg-mcard-front { font-size: 40px; border-radius: 22px; }
+.lg-pre .lg-mcard-back { border-radius: 22px; }
+.lg-pre .lg-mcard-seal { width: 52px; height: 52px; font-size: 28px; }
+.lg-pre .lg-chip { min-height: 76px; min-width: 76px; border-radius: 24px; font-size: 22px; }
+.lg-pre .lg-chip .lg-pic-emoji { font-size: 40px; }
+.lg-pre .lg-shelf { min-height: 170px; border-radius: 26px 26px 12px 12px; }
+.lg-pre .lg-shelf-label { font-size: 20px; }
+.lg-pre .lg-event { min-height: 80px; border-radius: 22px; font-size: 22px; }
+.lg-pre .lg-event-emoji { font-size: 38px; }
+.lg-pre .lg-stone { min-height: 72px; border-radius: 20px; }
+.lg-pre .lg-stone-text { font-size: 34px; }
+.lg-pre .lg-stone-text.long { font-size: 26px; }
+.lg-pre .lg-stone-text.long .lg-pic-word { display: none; }
+.lg-pre .lg-board-tip, .lg-pre .lg-direction { font-size: 15px; }
+.lg-pre .lg-mcard-front .lg-pic-word { font-size: 12px; }
+
 @media (max-width: 380px) {
   .lg-path-row .lg-node-info, .lg-path-row.alt .lg-node-info { font-size: 12px; }
   .lg-node { width: 66px; height: 60px; }

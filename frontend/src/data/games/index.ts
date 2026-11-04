@@ -1,14 +1,14 @@
-import type { PrimaryGrade } from '../../types';
-import type { GamePack, MazeCell } from './types';
+import type { GameGrade, GamePack, MazeCell } from './types';
+import { GAME_PACKS_PRE } from './packsPre';
 import { GAME_PACKS_1AP } from './packs1ap';
 import { GAME_PACKS_5AP } from './packs5ap';
 
-export type { GamePack, GameRound, GameEngine, MazeCell } from './types';
+export type { GamePack, GameRound, GameEngine, GameGrade, MazeCell } from './types';
 
 /** Every learning-game pack, in the order they are shown. */
-export const GAME_PACKS: GamePack[] = [...GAME_PACKS_1AP, ...GAME_PACKS_5AP];
+export const GAME_PACKS: GamePack[] = [...GAME_PACKS_PRE, ...GAME_PACKS_1AP, ...GAME_PACKS_5AP];
 
-export function packsForGrade(grade: PrimaryGrade): GamePack[] {
+export function packsForGrade(grade: GameGrade): GamePack[] {
   return GAME_PACKS.filter((pack) => pack.grade === grade);
 }
 
