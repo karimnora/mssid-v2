@@ -6,7 +6,7 @@ vi.mock('../../../utils/speech', () => ({ speakText: vi.fn(() => Promise.resolve
 vi.mock('../../../utils/immersiveFeedback', () => ({ playPop: vi.fn(), playSoftMiss: vi.fn(), playSoftSuccess: vi.fn() }));
 vi.mock('../../../context/LocaleContext', () => ({ useLocaleContext: () => ({ locale: 'ar', direction: 'rtl' }) }));
 
-import { LearningGamePlayer, starsForMisses, suggestedLevel } from './LearningGamePlayer';
+import { LearningGamePlayer, starsForMisses, suggestedLevel, tierIndex } from './LearningGamePlayer';
 import { recordLevel } from './LearningGameEntry';
 import { PEEK_MS } from './boards';
 import { GAME_PACKS_5AP } from '../../../data/games/packs5ap';
@@ -23,12 +23,15 @@ describe('LearningGamePlayer', () => {
     const plurals = pack('game-5ap-sort-plurals');
     render(<LearningGamePlayer pack={plurals} onExit={vi.fn()} />);
     await step('map');
-    expect(document.querySelectorAll('[data-lg-level]')).toHaveLength(5);
+    expect(document.querySelectorAll('[data-lg-level]')).toHaveLength(plurals.rounds.length);
+    expect(plurals.rounds.length).toBeGreaterThan(8);
+    expect(document.querySelector(`[data-lg-level="${plurals.rounds.length - 1}"]`)!.hasAttribute('data-boss')).toBe(true);
     expect(document.querySelector('[data-lg-level="0"]')!.getAttribute('data-state')).toBe('now');
 
-    click('[data-lg-level="4"]'); // straight to the expert level
+    const last = plurals.rounds.length - 1;
+    click(`[data-lg-level="${last}"]`); // straight to the final level
     await step('sort');
-    expect(screen.getByText(plurals.rounds[4].titleAr)).toBeTruthy();
+    expect(screen.getByText(plurals.rounds[last].titleAr)).toBeTruthy();
   });
 
   it('sort: explains a wrong shelf, reports it once, then gives the stars of the level', async () => {
@@ -63,18 +66,19 @@ describe('LearningGamePlayer', () => {
   it('skips an unfinished level without reporting anything, up to the memo card', async () => {
     const history = pack('game-5ap-order-history');
     const onResult = vi.fn();
-    render(<LearningGamePlayer pack={history} onExit={vi.fn()} onResult={onResult} startLevel={3} />);
+    const beforeLast = history.rounds.length - 2;
+    render(<LearningGamePlayer pack={history} onExit={vi.fn()} onResult={onResult} startLevel={beforeLast} />);
     await step('order');
-    expect(screen.getByText(history.rounds[3].titleAr)).toBeTruthy();
+    expect(screen.getByText(history.rounds[beforeLast].titleAr)).toBeTruthy();
 
-    fireEvent.click(nextButton()); // skip level 4
-    await waitFor(() => expect(screen.getByText(history.rounds[4].titleAr)).toBeTruthy());
+    fireEvent.click(nextButton()); // skip the level before last
+    await waitFor(() => expect(screen.getByText(history.rounds[beforeLast + 1].titleAr)).toBeTruthy());
     expect(screen.getByText(/تَخَطَّيْنَا المُسْتَوَى/)).toBeTruthy();
 
     fireEvent.click(nextButton()); // skip the last level
     await step('recap');
     expect(onResult).not.toHaveBeenCalled();
-    expect(document.querySelectorAll('[data-lg-recap-level]')).toHaveLength(5);
+    expect(document.querySelectorAll('[data-lg-recap-level]')).toHaveLength(history.rounds.length);
   });
 
   it('order: the warm-up shows the dates, a card tapped too early is explained, the right order fills the line', async () => {
@@ -141,6 +145,25 @@ describe('LearningGamePlayer', () => {
     }
   });
 
+  it('maze fog: far stones are clouds, and they clear as Didou walks', async () => {
+    const timgad = pack('game-5ap-maze-timgad');
+    const level = timgad.rounds.length - 1;
+    const round = timgad.rounds[level] as MazeRound;
+    expect(round.fog).toBe(true);
+    render(<LearningGamePlayer pack={timgad} onExit={vi.fn()} startLevel={level} />);
+    await step('maze');
+    expect(document.querySelector('[data-lg-cell="1,0"]')!.getAttribute('data-state')).toBe('reachable');
+    expect(document.querySelector('[data-lg-cell="2,0"]')!.getAttribute('data-state')).toBe('fog');
+    click('[data-lg-cell="1,0"]'); // 4/5: right stone, its neighbours come out of the fog
+    expect(document.querySelector('[data-lg-cell="2,0"]')!.getAttribute('data-state')).not.toBe('fog');
+    expect(document.querySelector(`[data-lg-cell="${round.grid.length - 1},${round.grid[0].length - 1}"]`)!.getAttribute('data-state')).not.toBe('fog');
+  });
+
+  it('spreads ten levels over the five difficulty tiers, two levels each', () => {
+    expect(Array.from({ length: 10 }, (_, i) => tierIndex(i, 10))).toEqual([0, 0, 1, 1, 2, 2, 3, 3, 4, 4]);
+    expect(Array.from({ length: 5 }, (_, i) => tierIndex(i, 5))).toEqual([0, 1, 2, 3, 4]);
+  });
+
   it('gives a level 3 stars up to 1 mistake, 2 up to 3, then 1', () => {
     expect([0, 1, 2, 3, 4, 20].map(starsForMisses)).toEqual([3, 3, 2, 2, 1, 1]);
   });
@@ -162,7 +185,7 @@ describe('LearningGamePlayer', () => {
       progress = out.progress;
       paid.push(out.giveXp);
     }
-    expect(paid).toEqual([false, false, false, false, true]);
+    expect(paid).toEqual(market.rounds.map((_, i) => i === market.rounds.length - 1));
     expect(recordLevel(market, progress, market.rounds[0].id, 3)).toMatchObject({ giveXp: false, progress: { levels: { [market.rounds[0].id]: 3 } } });
 
     const legacy = { stars: 3, xpGiven: true };

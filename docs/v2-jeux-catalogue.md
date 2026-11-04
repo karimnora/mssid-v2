@@ -7,6 +7,17 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **10 niveaux par jeu (demande de Karim du 4 novembre 2026 : plus de 8 niveaux, en 3D, immersifs et interactifs) :**
+> - Les 8 aventures (1AP et 5AP) ont maintenant 10 niveaux, répartis sur 5 paliers de 2 niveaux : سهل، متوسط، صعب، خبير، بطل. Le niveau 10 est le niveau final : plateforme dorée avec une couronne 👑.
+> - Nouveaux contenus de 5AP :
+>   - Memory : dixièmes, centièmes et millièmes, pourcentages simplifiés, pourcentages au-delà de 100 %, fractions équivalentes, puis un niveau final de 20 cartes.
+>   - Classer : الأسماء الخمسة، الأفعال الخمسة، الألف اللينة، الهمزة المتوسطة، puis الهمزة المتطرفة sur 4 étagères.
+>   - Frise : le relief du nord au sud, l'époque ottomane (1516, 1827), le mouvement national (1919, 1926, 1931), de 1926 à 1962, puis 13 siècles en 10 tableaux.
+>   - Labyrinthe : < 0,6 ; = 2/5 ; entre 1 et 2 ; = 1,5 ; entre 3/4 et 1, dans le brouillard.
+> - Nouveaux contenus de 1AP : les lettres ج ح خ ز, les lettres « lourdes » (ص ض ط ظ), les مدود, les formes de milieu de mot, le corps, vivant ou non vivant, les besoins d'une plante, bouger ou se reposer, l'ordre décroissant, et des labyrinthes sur ت ذ غ, les formes de ج et la lettre م dans le brouillard.
+> - **Nouvelle mécanique : le brouillard** (`fog`, dernier labyrinthe de chaque pack). Les pierres restent cachées dans des nuages jusqu'à ce que Didou s'en approche. Seul le trésor reste visible.
+> - Dans les labyrinthes de maths, l'explication de chaque pierre fausse est calculée à partir de sa valeur (`ruleMaze`), ce qui évite toute erreur de saisie.
+>
 > **Lot 1 — 1AP, codé le 4 novembre 2026 (`data/games/packs1ap.ts`, 4 packs × 5 niveaux) :**
 > - `game-1ap-memory-letters` (gratuit) : ذاكرة حديقة الحامة. Une lettre et l'image d'un mot qui commence par elle, en suivant l'ordre des leçons (أ ب ت ث → م ن ل ر → د ذ س ش → ع ق ك ه و ي).
 > - `game-1ap-sort-explorer` : حقيبة مستكشف الشريعة. Les niveaux portent sur l'alimentation, les sens, le déplacement des animaux, les 4 saisons et l'hygiène.

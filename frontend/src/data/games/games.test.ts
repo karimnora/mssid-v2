@@ -20,6 +20,11 @@ const MAZE_RULES: Record<string, (v: number) => boolean> = {
   'game-5ap-maze-timgad/greater': (v) => v > 2.5,
   'game-5ap-maze-timgad/quarter': (v) => same(v, 0.25),
   'game-5ap-maze-timgad/three-quarters': (v) => same(v, 0.75),
+  'game-5ap-maze-timgad/less-than': (v) => v < 0.6,
+  'game-5ap-maze-timgad/two-fifths': (v) => same(v, 0.4),
+  'game-5ap-maze-timgad/between-one-two': (v) => v > 1 && v < 2,
+  'game-5ap-maze-timgad/one-and-half': (v) => same(v, 1.5),
+  'game-5ap-maze-timgad/fog-final': (v) => v > 0.75 && v < 1,
 };
 
 /** How big a level's board is: pairs, cards to order, stones. */
@@ -31,12 +36,12 @@ function boardSize(round: GameRound): number {
 }
 
 describe('Didou learning games content', () => {
-  it('has unique ids, five levels of the pack engine, and levels on real lessons of the grade', () => {
+  it('has unique ids, ten levels of the pack engine, and levels on real lessons of the grade', () => {
     expect(new Set(GAME_PACKS.map((p) => p.id)).size).toBe(GAME_PACKS.length);
     for (const pack of GAME_PACKS) {
       expect(pack.id, pack.id).toMatch(new RegExp(`^game-${pack.grade.toLowerCase()}-${pack.engine}-`));
-      expect(pack.rounds, pack.id).toHaveLength(5);
-      expect(new Set(pack.rounds.map((r) => r.id)).size, pack.id).toBe(5);
+      expect(pack.rounds, pack.id).toHaveLength(10);
+      expect(new Set(pack.rounds.map((r) => r.id)).size, pack.id).toBe(10);
       expect(pack.recapAr.length, pack.id).toBeGreaterThan(0);
       for (const round of pack.rounds) {
         const at = `${pack.id}/${round.id}`;
@@ -51,12 +56,13 @@ describe('Didou learning games content', () => {
     }
   });
 
-  it('climbs in difficulty: only the first level is a warm-up, and memory, order and maze boards never shrink', () => {
+  it('climbs in difficulty: only the first level is a warm-up, no board is smaller than it, the last one is the biggest', () => {
     for (const pack of GAME_PACKS) {
       expect(pack.rounds.map((r) => Boolean(r.easy)), pack.id).toEqual(pack.rounds.map((_, i) => i === 0));
       if (pack.engine === 'sort') continue; // sort grows by trickier words, not by more cards
       const sizes = pack.rounds.map(boardSize);
-      for (let i = 1; i < sizes.length; i++) expect(sizes[i], `${pack.id} level ${i + 1}`).toBeGreaterThanOrEqual(sizes[i - 1]);
+      for (let i = 1; i < sizes.length; i++) expect(sizes[i], `${pack.id} level ${i + 1}`).toBeGreaterThanOrEqual(sizes[0]);
+      expect(sizes[sizes.length - 1], pack.id).toBe(Math.max(...sizes));
       expect(sizes[sizes.length - 1], pack.id).toBeGreaterThan(sizes[0]);
     }
   });
@@ -139,6 +145,12 @@ describe('Didou learning games content', () => {
           for (const cell of round.grid.flat()) expect(rule(valueOf(cell.t)), `${at}/${cell.t}`).toBe(cell.ok);
         }
       }
+    }
+  });
+
+  it('hides only expert mazes in fog: the last level of each maze pack', () => {
+    for (const pack of GAME_PACKS.filter((p) => p.engine === 'maze')) {
+      expect((pack.rounds as MazeRound[]).map((r) => Boolean(r.fog)), pack.id).toEqual(pack.rounds.map((_, i) => i === pack.rounds.length - 1));
     }
   });
 

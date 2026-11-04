@@ -76,6 +76,8 @@ export interface MazeRound extends RoundBase {
   ruleAr: string;
   /** Rows in reading order (RTL: the first cell is on the right). Start = [0][0], treasure = last cell. */
   grid: MazeCell[][];
+  /** Expert level: stones stay hidden in fog until Didou stands next to them. */
+  fog?: boolean;
 }
 
 export type GameRound = MemoryRound | SortRound | OrderRound | MazeRound;

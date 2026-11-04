@@ -386,6 +386,9 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
   const [r0, c0] = trail[trail.length - 1].split(',').map(Number);
   const reachable = new Set(mazeNeighbours(grid, r0, c0).map(([y, x]) => cellKey(y, x)));
   const cols = grid[0].length;
+  // Expert mazes: every stone stays hidden in fog until Didou has stood next to it (the treasure shines through).
+  const [revealed, setRevealed] = useState<Set<string>>(() => new Set([cellKey(0, 0), ...mazeNeighbours(grid, 0, 0).map(([y, x]) => cellKey(y, x))]));
+  const hidden = (r: number, c: number) => Boolean(round.fog) && !revealed.has(cellKey(r, c)) && !(r === goal[0] && c === goal[1]);
 
   const tap = (r: number, c: number) => {
     if (done) return;
@@ -396,7 +399,12 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
       return;
     }
     if (!reachable.has(key)) {
-      onMove({ kind: 'nudge', sayAr: 'اُنْقُرْ حَجَراً مُلَاصِقاً لِدِيدُو: أَمَامَهُ أَوْ خَلْفَهُ أَوْ عَلَى جَانِبَيْهِ.' });
+      onMove({
+        kind: 'nudge',
+        sayAr: hidden(r, c)
+          ? 'الضَّبَابُ يُغَطِّي هَذَا الحَجَرَ! تَقَدَّمْ لِتَكْشِفَ الحِجَارَةَ القَرِيبَةَ مِنْ دِيدُو.'
+          : 'اُنْقُرْ حَجَراً مُلَاصِقاً لِدِيدُو: أَمَامَهُ أَوْ خَلْفَهُ أَوْ عَلَى جَانِبَيْهِ.',
+      });
       return;
     }
     const cell = grid[r][c];
@@ -409,6 +417,7 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
     playPop();
     if (young) readCard(cell.t);
     setTrail([...trail, key]);
+    if (round.fog) setRevealed((prev) => new Set([...prev, ...mazeNeighbours(grid, r, c).map(([y, x]) => cellKey(y, x))]));
     onMove({ kind: 'hit' });
     if (r === goal[0] && c === goal[1]) {
       setDone(true);
@@ -427,7 +436,8 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
               const here = key === trail[trail.length - 1];
               const onTrail = trail.includes(key);
               const isGoal = r === goal[0] && c === goal[1];
-              const state = here ? 'here' : onTrail ? 'trail' : wrong.includes(key) ? 'cracked' : reachable.has(key) && !done ? 'reachable' : 'idle';
+              const fogged = hidden(r, c);
+              const state = here ? 'here' : onTrail ? 'trail' : fogged ? 'fog' : wrong.includes(key) ? 'cracked' : reachable.has(key) && !done ? 'reachable' : 'idle';
               return (
                 <motion.button
                   key={key}
@@ -441,7 +451,7 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
                   onAnimationComplete={() => shaking === key && setShaking(null)}
                   whileTap={{ scale: 0.9 }}
                   className="lg-stone"
-                  aria-label={`${cell.t}${here ? ' — دِيدُو هُنَا' : ''}${isGoal ? ' — الكَنْزُ' : ''}`}
+                  aria-label={fogged ? 'حَجَرٌ تَحْتَ الضَّبَابِ' : `${cell.t}${here ? ' — دِيدُو هُنَا' : ''}${isGoal ? ' — الكَنْزُ' : ''}`}
                 >
                   {here ? (
                     <motion.span layoutId={`didou-${round.id}`} transition={{ type: 'spring', stiffness: 420, damping: 24 }} className="lg-stone-didou">
@@ -449,8 +459,12 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
                         <DidouPortrait size={cols > 5 ? 34 : 40} />
                       </motion.span>
                     </motion.span>
+                  ) : fogged ? (
+                    <span className="lg-stone-fog" aria-hidden="true">☁️</span>
                   ) : (
-                    <span className={`lg-stone-text ${cell.t.length > 3 ? 'long' : ''}`}><GameText text={cell.t} /></span>
+                    <motion.span key="shown" initial={round.fog ? { rotateY: 90, opacity: 0 } : false} animate={{ rotateY: 0, opacity: 1 }} className={`lg-stone-text ${cell.t.length > 3 ? 'long' : ''}`}>
+                      <GameText text={cell.t} />
+                    </motion.span>
                   )}
                   {isGoal && !here && <span className="lg-stone-goal" aria-hidden="true">💎</span>}
                   {state === 'cracked' && <span className="lg-stone-crack" aria-hidden="true" />}

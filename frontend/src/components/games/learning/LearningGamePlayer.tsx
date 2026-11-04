@@ -44,7 +44,10 @@ export function starsForMisses(misses: number): number {
 
 /** Difficulty label of each level, in order. */
 export const LEVEL_TIER_AR = ['سَهْلٌ', 'مُتَوَسِّطٌ', 'صَعْبٌ', 'خَبِيرٌ', 'بَطَلٌ'];
-const tierOf = (i: number) => LEVEL_TIER_AR[Math.min(i, LEVEL_TIER_AR.length - 1)];
+/** Ten levels share five difficulty tiers (2 levels each); a shorter pack gets one tier per level. */
+export function tierIndex(i: number, total: number): number {
+  return Math.min(LEVEL_TIER_AR.length - 1, Math.floor((i * LEVEL_TIER_AR.length) / Math.max(total, LEVEL_TIER_AR.length)));
+}
 
 /** The level to suggest: the first one never solved, else the first one without 3 stars. */
 export function suggestedLevel(pack: GamePack, best: Record<string, number>): number {
@@ -261,7 +264,9 @@ export const LearningGamePlayer: React.FC<{
                 {round ? (
                   <div className="space-y-3">
                     <div className="lg-round-head">
-                      <span className="lg-round-n" data-tier={levelIndex}>المُسْتَوَى {levelIndex + 1} / {pack.rounds.length} · {tierOf(levelIndex)}</span>
+                      <span className="lg-round-n" data-tier={tierIndex(levelIndex, pack.rounds.length)}>
+                        {isLast ? '👑 ' : ''}المُسْتَوَى {levelIndex + 1} / {pack.rounds.length} · {LEVEL_TIER_AR[tierIndex(levelIndex, pack.rounds.length)]}
+                      </span>
                       <h2 className="lg-round-title">{round.titleAr}</h2>
                       {stars[round.id] ? <p className="lg-round-best" aria-label={`أَفْضَلُ نَتِيجَةٍ ${stars[round.id]} / 3`}>{'⭐'.repeat(stars[round.id])}</p> : null}
                     </div>
@@ -396,7 +401,7 @@ function LevelMap({ pack, stars, suggested, onOpen }: { pack: GamePack; stars: R
         <motion.span className="lg-story-emoji" animate={{ y: [0, -12, 0], rotateY: [0, 20, -20, 0] }} transition={{ repeat: Infinity, duration: 3.2 }} aria-hidden="true">
           {pack.theme.emoji}
         </motion.span>
-        <p className="lg-map-sub">خَمْسَةُ مُسْتَوَيَاتٍ مِنَ السَّهْلِ إِلَى البَطَلِ · كُلُّهَا مَفْتُوحَةٌ</p>
+        <p className="lg-map-sub"><span dir="ltr">{pack.rounds.length}</span> مُسْتَوَيَاتٍ مِنَ السَّهْلِ إِلَى البَطَلِ · كُلُّهَا مَفْتُوحَةٌ · 👑 فِي النِّهَايَةِ</p>
       </div>
       <ol className="lg-path">
         {pack.rounds.map((r, i) => {
@@ -413,14 +418,16 @@ function LevelMap({ pack, stars, suggested, onOpen }: { pack: GamePack; stars: R
                 type="button"
                 data-lg-level={i}
                 data-state={got ? 'done' : i === suggested ? 'now' : 'todo'}
-                data-tier={i}
+                data-tier={tierIndex(i, pack.rounds.length)}
+                data-boss={i === pack.rounds.length - 1 ? '' : undefined}
                 onClick={() => onOpen(i)}
                 whileHover={{ y: -6, rotateX: 12 }}
                 whileTap={{ scale: 0.9, y: 4 }}
                 className="lg-node"
-                aria-label={`المُسْتَوَى ${i + 1}: ${r.titleAr} — ${tierOf(i)}${got ? ` — ${got} / 3` : ''}`}
+                aria-label={`المُسْتَوَى ${i + 1}: ${r.titleAr} — ${LEVEL_TIER_AR[tierIndex(i, pack.rounds.length)]}${got ? ` — ${got} / 3` : ''}`}
               >
                 <span className="lg-node-num">{i + 1}</span>
+                {i === pack.rounds.length - 1 && <span className="lg-node-crown" aria-hidden="true">👑</span>}
                 {i === suggested && (
                   <motion.span layoutId={`lg-map-didou-${pack.id}`} className="lg-node-didou" animate={{ y: [0, -6, 0] }} transition={{ y: { repeat: Infinity, duration: 1.6 } }}>
                     <DidouPortrait size={40} />
@@ -428,7 +435,7 @@ function LevelMap({ pack, stars, suggested, onOpen }: { pack: GamePack; stars: R
                 )}
               </motion.button>
               <div className="lg-node-info">
-                <span className="lg-node-tier" data-tier={i}>{tierOf(i)}</span>
+                <span className="lg-node-tier" data-tier={tierIndex(i, pack.rounds.length)}>{LEVEL_TIER_AR[tierIndex(i, pack.rounds.length)]}</span>
                 <p className="lg-node-title">{r.titleAr}</p>
                 <p className="lg-node-stars" aria-hidden="true">
                   {[0, 1, 2].map((s) => <span key={s} className={s < got ? '' : 'off'}>⭐</span>)}
