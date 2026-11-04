@@ -4,6 +4,7 @@
  * ─ Desktop (≥ md): affichage original dense — INCHANGÉ
  */
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { Icon3d, LAB_ICON3D, type Icon3dName } from './art3d/Icon3d';
 import { motion, AnimatePresence } from 'motion/react';
 import { SubjectInfo, SubjectId, PrimaryGrade } from '../types';
 import { isToolAvailableForGrade } from '../data/subjectsData';
@@ -45,6 +46,8 @@ const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
 interface MobileCat {
   key: string;
   emoji: string;
+  /** 3D icon shown in place of the emoji (art3d/Icon3d). */
+  icon3d: Icon3dName;
   labelKey: 'categoryFaithStreetShort' | 'categoryIdentityShort' | 'categoryMathShort' | 'categoryScienceShort' | 'categoryLangsShort';
   hintKey: 'categoryFaithStreetHint' | 'categoryIdentityHint' | 'categoryMathHint' | 'categoryScienceHint' | 'categoryLangsHint';
   cardClass: string;
@@ -55,6 +58,7 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'identity_civics',
     emoji: '🇩🇿',
+    icon3d: 'algeria',
     labelKey: 'categoryIdentityShort',
     hintKey: 'categoryIdentityHint',
     cardClass: 'kids-cat-identity',
@@ -63,6 +67,7 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'faith_street',
     emoji: '🕌',
+    icon3d: 'mosque',
     labelKey: 'categoryFaithStreetShort',
     hintKey: 'categoryFaithStreetHint',
     cardClass: 'kids-cat-identity',
@@ -71,6 +76,7 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'math_logic',
     emoji: '📐',
+    icon3d: 'geometry',
     labelKey: 'categoryMathShort',
     hintKey: 'categoryMathHint',
     cardClass: 'kids-cat-math',
@@ -79,6 +85,7 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'science_discovery',
     emoji: '🧪',
+    icon3d: 'flask',
     labelKey: 'categoryScienceShort',
     hintKey: 'categoryScienceHint',
     cardClass: 'kids-cat-science',
@@ -87,6 +94,7 @@ const MOBILE_CATS: MobileCat[] = [
   {
     key: 'languages_expression',
     emoji: '🗣️',
+    icon3d: 'speech',
     labelKey: 'categoryLangsShort',
     hintKey: 'categoryLangsHint',
     cardClass: 'kids-cat-langs',
@@ -353,7 +361,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                       className={`kids-pop relative overflow-hidden rounded-[22px] ${cat.cardClass} px-5 py-4 text-right text-white cursor-pointer flex items-center gap-4 min-h-[88px]`}
                     >
                       <CardBlobBackdrop />
-                      <span className="text-3xl drop-shadow-sm shrink-0 relative z-10">{cat.emoji}</span>
+                      <span className="icon3d-float shrink-0 relative z-10 w-[60px] h-[60px]"><Icon3d name={cat.icon3d} className="w-[60px] h-[60px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" /></span>
                       <div className="flex-1 relative z-10 text-right">
                         <h3 className="text-sm font-black text-white">{t(cat.labelKey)}</h3>
                         <p className="text-xs text-white/70 mt-0.5">{t(cat.hintKey)}</p>
@@ -390,7 +398,7 @@ export const ToolsHubView: React.FC<ToolsHubViewProps> = ({
                   )}
                 </motion.button>
                 <div className={`w-9 h-9 rounded-2xl ${activeMobileCat.cardClass} flex items-center justify-center text-base shrink-0`}>
-                  {activeMobileCat.emoji}
+                  <Icon3d name={activeMobileCat.icon3d} className="w-8 h-8" />
                 </div>
                 <div>
                   <h2 className="text-sm font-black text-[var(--app-text)]">{t(activeMobileCat.labelKey)}</h2>
@@ -667,8 +675,10 @@ const ToolCard: React.FC<ToolCardProps & { grade: PrimaryGrade }> = ({ tool, isA
       <CardBlobBackdrop />
 
       <div className="relative z-10 flex items-start justify-between w-full">
-        <div className="w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center shrink-0">
-          <IconComp className="w-5 h-5 text-white" />
+        <div className="w-[56px] h-[56px] flex items-center justify-center shrink-0">
+          {LAB_ICON3D[tool.id]
+            ? <Icon3d name={LAB_ICON3D[tool.id]} className="w-[56px] h-[56px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" />
+            : <span className="w-[42px] h-[42px] rounded-[14px] bg-white/25 flex items-center justify-center"><IconComp className="w-5 h-5 text-white" /></span>}
         </div>
         <div className="flex items-center gap-1.5">
           {tool.minGrade && (

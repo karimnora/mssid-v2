@@ -820,3 +820,10 @@ body {
   display: none;
 }
 
+
+/* V2 3D icons (components/art3d/Icon3d.tsx): a slow float, staggered so a list never moves in step. */
+.icon3d-float { animation: icon3d-float 3.6s ease-in-out infinite; }
+.kids-pop:nth-child(2n) .icon3d-float, div:nth-child(2n) > * > .icon3d-float { animation-delay: -1.2s; }
+.kids-pop:nth-child(3n) .icon3d-float, div:nth-child(3n) > * > .icon3d-float { animation-delay: -2.4s; }
+@keyframes icon3d-float { 50% { transform: translateY(-4px) rotate(-2deg); } }
+@media (prefers-reduced-motion: reduce) { .icon3d-float { animation: none; } }

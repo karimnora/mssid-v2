@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Icon3d } from './art3d/Icon3d';
 import { motion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade, SubjectId, SubjectInfo } from '../types';
@@ -211,9 +212,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {t('preschoolFeatureCta')}
           </span>
         </div>
-        <div className="w-[46px] h-[46px] rounded-2xl bg-white/25 text-[23px] flex items-center justify-center shrink-0">
-          🎈
-        </div>
+        <span className="icon3d-float relative z-10 w-[64px] h-[64px] shrink-0 grid place-items-center"><Icon3d name="balloons" className="w-[60px] h-[60px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" /></span>
       </div>
     </motion.button>
   ) : null;
@@ -319,8 +318,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
           className="kids-pop hit-target w-full rounded-[22px] p-4 flex items-center gap-4 text-start text-white overflow-hidden"
           style={{ background: 'radial-gradient(ellipse 90% 140% at 20% 50%, #1d5bd8 0%, #0c2a8c 55%, #081a5c 100%)', minHeight: 88 }}
         >
-          <span aria-hidden="true" className="shrink-0 grid place-items-center rounded-full" style={{ width: 64, height: 64, background: 'radial-gradient(circle at 38% 32%, #bfeaff 0%, #4fb0ff 30%, #1d6fe8 70%)', boxShadow: '0 0 18px rgba(110,190,255,.7)' }}>
-            <svg viewBox="0 0 24 24" width="30" height="30"><path d="M7 4.5l13 7.5-13 7.5z" fill="#fff" /></svg>
+          <span aria-hidden="true" className="icon3d-float shrink-0 relative grid place-items-center" style={{ width: 72, height: 72 }}>
+            <Icon3d name="planet" className="w-[72px] h-[72px] drop-shadow-[0_0_14px_rgba(129,140,248,0.75)]" />
+            <span className="absolute -bottom-1 -end-1 grid place-items-center w-7 h-7 rounded-full bg-[#ffd23f] shadow-[0_3px_0_#b77900]"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 4.5l13 7.5-13 7.5z" fill="#13206b" /></svg></span>
           </span>
           <span className="min-w-0">
             <span className="block text-lg font-black leading-tight">{t('journeyCardTitle')}</span>
@@ -443,7 +443,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <h3 className="text-[15px] font-extrabold">{t('labWilayasTitle')}</h3>
               {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labWilayasDesc')}</p>}
             </div>
-            <span className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">🇩🇿</span>
+            <span className="icon3d-float relative z-10 w-[64px] h-[64px] shrink-0 grid place-items-center"><Icon3d name="algeria" className="w-[60px] h-[60px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" /></span>
           </motion.button>
         )}
         {onOpenMathLab && (
@@ -459,7 +459,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <h3 className="text-[15px] font-extrabold">{t('labMathTitle')}</h3>
               {!isYoung && <p className="text-[11.5px] text-white/90 mt-0.5">{t('labMathDesc')}</p>}
             </div>
-            <span className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-white/25 flex items-center justify-center text-[22px] shrink-0">📐</span>
+            <span className="icon3d-float relative z-10 w-[64px] h-[64px] shrink-0 grid place-items-center"><Icon3d name="geometry" className="w-[60px] h-[60px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" /></span>
           </motion.button>
         )}
         {onOpenHonorCertificates && (
@@ -480,9 +480,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 توليد وطباعة شهادات التقدير، الامتياز وفارس الحساب بأسماء تلاميذك
               </p>
             </div>
-            <span className="relative z-10 w-[46px] h-[46px] rounded-2xl bg-amber-950/20 flex items-center justify-center text-[24px] shrink-0">
-              🏆
-            </span>
+            <span className="icon3d-float relative z-10 w-[64px] h-[64px] shrink-0 grid place-items-center"><Icon3d name="trophy" className="w-[60px] h-[60px] drop-shadow-[0_6px_6px_rgba(8,12,52,0.35)]" /></span>
           </motion.button>
         )}
       </section>
