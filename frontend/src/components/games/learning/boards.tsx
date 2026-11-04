@@ -65,7 +65,8 @@ export function GameText({ text }: { text: string }) {
       </span>
     );
   }
-  if (/^[\d\s,.%]+$/.test(text)) return <span dir="ltr" className="lg-num">{text}</span>;
+  // Numbers and little sums (« 3 × 4 », « 38 + 12 ») stay left-to-right inside Arabic text.
+  if (/^[\d\s,.%×+\-−=÷]+$/.test(text)) return <span dir="ltr" className="lg-num">{text}</span>;
   // « 🦆 بَطَّةٌ »: the picture drawn big, above its word.
   const picture = /^([\p{Extended_Pictographic}\u200d\uFE0F]+)\s+(.+)$/u.exec(text.trim());
   if (picture) {

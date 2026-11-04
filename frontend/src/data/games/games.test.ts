@@ -4,9 +4,24 @@ import { PRESCHOOL_MODULES } from '../preschool';
 import { GAME_PACKS, canOpenPack, mazeIsSolvable, packsForGrade, packsForLesson } from './index';
 import type { GameRound, MazeRound, MemoryRound } from './types';
 
-/** « 3/4 », « 0,75 », « 75% » → 0.75 (Algerian decimal comma). */
+/** « 3 × 4 », « 38 + 12 », « 60 − 10 », « 4 + 4 + 4 » → their result (× before + and −). */
+function evaluate(t: string): number | null {
+  if (!/^\d+(\s*[×+−-]\s*\d+)+$/.test(t)) return null;
+  return t
+    .replace(/\s/g, '')
+    .split(/(?=[+−-])/)
+    .reduce((total, part) => {
+      const sign = part.startsWith('−') || part.startsWith('-') ? -1 : 1;
+      const product = part.replace(/^[+−-]/, '').split('×').reduce((p, f) => p * Number(f), 1);
+      return total + sign * product;
+    }, 0);
+}
+
+/** « 3/4 », « 0,75 », « 75% », « 3 × 4 » → their value (Algerian decimal comma). */
 function valueOf(text: string): number {
   const t = text.trim();
+  const sum = evaluate(t);
+  if (sum !== null) return sum;
   const fraction = /^(\d+)\/(\d+)$/.exec(t);
   if (fraction) return Number(fraction[1]) / Number(fraction[2]);
   if (t.endsWith('%')) return Number(t.slice(0, -1).replace(',', '.')) / 100;
@@ -16,6 +31,16 @@ const same = (a: number, b: number) => Math.abs(a - b) < 1e-9;
 
 /** The rule of each maths maze, checked against every stone. */
 const MAZE_RULES: Record<string, (v: number) => boolean> = {
+  'game-2ap-maze-hammadid/even': (v) => v % 2 === 0,
+  'game-2ap-maze-hammadid/tens': (v) => v % 10 === 0,
+  'game-2ap-maze-hammadid/fives': (v) => v % 5 === 0,
+  'game-2ap-maze-hammadid/more-than-60': (v) => v > 60,
+  'game-2ap-maze-hammadid/equals-12': (v) => v === 12,
+  'game-2ap-maze-hammadid/three-hundreds': (v) => v >= 300 && v < 400,
+  'game-2ap-maze-hammadid/makes-50': (v) => v === 50,
+  'game-2ap-maze-hammadid/even-big': (v) => v % 2 === 0,
+  'game-2ap-maze-hammadid/between-400-500': (v) => v > 400 && v < 500,
+  'game-2ap-maze-hammadid/table-4-fog': (v) => v % 4 === 0 && v <= 40,
   'game-5ap-maze-timgad/greater-one': (v) => v > 1,
   'game-5ap-maze-timgad/half': (v) => same(v, 0.5),
   'game-5ap-maze-timgad/greater': (v) => v > 2.5,

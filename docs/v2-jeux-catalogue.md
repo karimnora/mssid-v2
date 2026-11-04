@@ -7,6 +7,13 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **Lot 1 — 2AP, codé le 4 novembre 2026 (`data/games/packs2ap.ts`, 4 packs × 10 niveaux) :**
+> - `game-2ap-memory-tables` (gratuit) : ذاكرة حديقة بن عكنون. Niveaux : tables de 2, 3, 4, 5 et 10 seulement (conforme à la 2AP), addition répétée ↔ multiplication, doubles, soustractions et additions avec retenue, décomposition en centaines, dizaines et unités, puis un final mixte.
+> - `game-2ap-sort-mailboxes` : صناديق بريد تلمسان. Niveaux : لام شمسية/قمرية، مذكر/مؤنث، مفرد/جمع، اسم/فعل/حرف، تاء مربوطة/مفتوحة، الشدة، ضمائر المتكلم/المخاطب، التنوين، الاستفهام/العطف, puis un final sur 4 boîtes.
+> - `game-2ap-order-mosque` (islamique) : يوم في جامع كتشاوة. Niveaux : les 5 prières avec leurs heures et leurs rakaat, les 7 étapes du وضوء exactement comme dans la leçon, se préparer à la prière, les 5 piliers, les règles de politesse à table, la journée de l'enfant, et les 7 sourates de 2AP dans l'ordre du Coran (101 → 107).
+> - `game-2ap-maze-hammadid` : كنز قلعة بني حماد. Niveaux : tables de 2, 10, 5 et 4 (ce dernier dans le brouillard), > 60, des calculs égaux à 12 puis à 50, les nombres de 300 à 399, les nombres pairs à 3 chiffres, et l'encadrement entre 400 et 500. Les explications sont calculées (`ruleMaze`).
+> - Les calculs (« 3 × 4 », « 38 + 12 ») s'affichent de gauche à droite dans le texte arabe, et le test les évalue.
+>
 > **Lot 1 — préscolaire, codé le 4 novembre 2026 (`data/games/packsPre.ts`, 4 packs × 10 niveaux, niveau `PRE`) :**
 > - `game-pre-memory-farm` (gratuit) : ذاكرة مزرعة جدي. On commence par retrouver la même image, puis on relie deux choses qui vont ensemble : l'animal et ce qu'il mange, la couleur et un objet, le chiffre et la quantité, le sens et ce qu'il perçoit, la météo et ce dont on a besoin. Le niveau final a 16 cartes.
 > - `game-pre-sort-baskets` : سلال روضة ديدو. Niveaux : grand ou petit, rouge ou jaune, jour ou nuit, formes, été ou hiver, ferme ou mer, sain ou sucré, sens, ciel / mer / terre, et les 4 saisons.
