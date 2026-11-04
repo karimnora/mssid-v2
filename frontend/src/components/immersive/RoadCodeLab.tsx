@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
+import { useLabTrace } from '../../utils/labTrace';
 import {
   isRoadAnswerCorrect,
   nextCrossingStep,
@@ -26,6 +27,7 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
   const [picked, setPicked] = useState<RoadAction | null>(null);
   const [crossing, setCrossing] = useState<CrossingStep[]>([]);
   const [stars, setStars] = useState(0);
+  const trace = useLabTrace('road_code_lab', grade);
   const scene = scenes[index] ?? scenes[0];
 
   const reward = () => {
@@ -39,21 +41,29 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
     const ok = isRoadAnswerCorrect(scene.id, action);
     setPicked(action);
     if (ok) {
+      trace.success('scenes');
       speakArSafe(scene.options.find((option) => option.id === action)?.labelAr ?? '');
       reward();
-    } else playSoftMiss();
+    } else {
+      trace.miss('scenes');
+      playSoftMiss();
+    }
   };
 
   const tapCross = (step: CrossingStep) => {
     const expected = nextCrossingStep(crossing);
     if (expected !== step) {
       playSoftMiss();
+      trace.miss('cross');
       setCrossing([]);
       return;
     }
     const next = [...crossing, step];
     setCrossing(next);
-    if (nextCrossingStep(next) === 'done') reward();
+    if (nextCrossingStep(next) === 'done') {
+      trace.success('cross');
+      reward();
+    }
     else playSoftSuccess();
   };
 

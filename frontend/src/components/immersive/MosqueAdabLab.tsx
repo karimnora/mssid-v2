@@ -3,18 +3,23 @@ import { motion } from 'motion/react';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
+import { useLabTrace } from '../../utils/labTrace';
+import type { PrimaryGrade } from '../../types';
 import { isMosqueAnswerCorrect, MOSQUE_SCENES, type MosqueChoice } from '../../data/immersive/mosqueAdab';
 
 interface MosqueAdabLabProps {
+  /** The child's grade: the notebook keeps the observation in that year's summary. */
+  grade?: PrimaryGrade;
   onBack?: () => void;
   onReward?: (coins: number, xp: number) => void;
 }
 
-export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ onBack, onReward }) => {
+export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<MosqueChoice | null>(null);
   const [stars, setStars] = useState(0);
+  const trace = useLabTrace('mosque_adab_lab', grade);
   const scene = MOSQUE_SCENES[index];
 
   const choose = (choice: MosqueChoice) => {
@@ -22,11 +27,15 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ onBack, onReward }
     const ok = isMosqueAnswerCorrect(scene.id, choice);
     setPicked(choice);
     if (ok) {
+      trace.success('adab');
       playSoftSuccess();
       setStars((n) => n + 1);
       onReward?.(5, 12);
       speakArSafe(scene.options.find((option) => option.id === choice)?.labelAr ?? '');
-    } else playSoftMiss();
+    } else {
+      trace.miss('adab');
+      playSoftMiss();
+    }
   };
 
   return (

@@ -164,12 +164,15 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                 <Sparkles className="w-4 h-4 text-amber-500" />
                 <span>{t('premiumPlanTitle')}</span>
               </span>
-              <ul className="text-xs text-purple-900 space-y-1.5 list-disc list-inside">
-                <li className="font-extrabold">{t('premiumPlanFeature1')}</li>
-                <li className="font-extrabold">{t('premiumPlanFeature2')}</li>
-                <li className="font-extrabold">{t('premiumPlanFeature3')}</li>
-                  <li className="font-extrabold">{t('premiumPlanFeature4')}</li>
-                  <li className="font-extrabold">{t('premiumPlanFeature5')}</li>
+              {/* What the parent gets comes first; Didou's worlds and games are the child's bonus. */}
+              <ul className="text-sm text-purple-950 space-y-2" data-premium-promise="parent">
+                <li className="font-extrabold leading-snug">{t('premiumPlanFeature1')}</li>
+                <li className="font-extrabold leading-snug">{t('premiumPlanFeature2')}</li>
+                <li className="font-extrabold leading-snug">{t('premiumPlanFeature3')}</li>
+              </ul>
+              <ul className="text-xs text-purple-900 space-y-1.5 pt-2 border-t border-purple-200" data-premium-promise="child">
+                <li className="font-bold">{t('premiumPlanFeature4')}</li>
+                <li className="font-bold">{t('premiumPlanFeature5')}</li>
                 <li className="font-extrabold text-amber-700">{t('premiumPlanPrice', { price: selectedPlan.priceDzd, months: selectedPlan.months })}</li>
               </ul>
             </div>

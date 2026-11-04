@@ -7,6 +7,8 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { useLocaleContext } from '../../context/LocaleContext';
 import { speakText } from '../../utils/speech';
 import { playPop, playRegister, playSoftMiss } from '../../utils/immersiveFeedback';
+import { useLabTrace } from '../../utils/labTrace';
+import type { PrimaryGrade } from '../../types';
 import {
   countriesByRegion,
   countryById,
@@ -19,6 +21,8 @@ import {
 import './worldFlags.css';
 
 interface WorldFlagsLabProps {
+  /** The child's grade: the notebook keeps the observation in that year's summary. */
+  grade?: PrimaryGrade;
   onBack?: () => void;
   onReward?: (coins: number, xp: number) => void;
 }
@@ -43,13 +47,14 @@ function CountryTile({ country, selected, featured, onSelect }: { country: World
  * « خريطة البلدان والأعلام »: Didou tells the story of each country aloud (name, capital, a fact),
  * the chosen flag waves, and « أين العلم؟ » asks the child to find a flag among four.
  */
-export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ onBack, onReward }) => {
+export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ grade = '5AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
   const { locale } = useLocaleContext();
   const lang = locale === 'fr' ? 'fr' : 'ar';
   const [tab, setTab] = useState('map');
   const [selected, setSelected] = useState(WORLD_COUNTRIES[0]);
   const [stars, setStars] = useState(0);
+  const trace = useLabTrace('world_flags_lab', grade);
   const [line, setLine] = useState('');
   const [mood, setMood] = useState<DidouMood>('talk');
 
@@ -89,12 +94,14 @@ export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ onBack, onReward }
     if (found) return;
     if (country.id !== round.target.id) {
       playSoftMiss();
+      trace.miss('quiz');
       setMissed((prev) => (prev.includes(country.id) ? prev : [...prev, country.id]));
       say(t('flagsDidouWrong', { name: country.nameAr }), 'think', 'ar');
       return;
     }
     playRegister();
     setFound(true);
+    trace.success('quiz');
     say(t('flagsDidouRight', { name: country.nameAr }), 'happy', 'ar');
     // A star only for a flag found at the first try: guessing all four earns nothing.
     if (missed.length === 0) {

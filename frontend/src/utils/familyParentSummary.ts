@@ -7,12 +7,15 @@ import { GARDEN_PLANS } from '../data/garden/gardenMission';
 import { MARKET_PLANS } from '../data/market/marketMission';
 import type { PrimaryGrade } from '../types';
 import type { FamilyResults } from './familyLearning';
+import { immersiveResultLabels } from '../data/immersive/labTraceCatalog';
 export function familyParentSummary(grade:PrimaryGrade,results:FamilyResults,now=Date.now()) {
  const modules=[...FAMILY_MODULES,...ENRICHMENT_MODULES].filter(m=>m.grade===grade);
  const labels=new Map(modules.flatMap(m=>m.tasks.map(t=>[t.id,{title:m.title,moduleId:m.id}] as const)));
  for(const plan of [GARDEN_PLANS[grade],MARKET_PLANS[grade]])for(const task of plan.tasks)labels.set(task.id,{title:task.title,moduleId:''});
  for(const task of MOSAIC_TASKS[grade])labels.set(task.id,{title:{fr:'Atelier mosaïque',ar:'ورشة الفسيفساء'},moduleId:'mosaic'});
  for(const theme of ADVENTURE_THEMES)for(const lab of Object.keys(PREMIUM_LAB_JOURNEYS) as PremiumLab[])PREMIUM_LAB_JOURNEYS[lab].steps.forEach((title,i)=>labels.set(premiumLabResultId(grade,lab,i,theme.id),{title,moduleId:'lab:'+theme.id+':'+lab}));
+ // Immersive labs (souk, flags, wudu, prayer, mosque, road): one row per activity, see utils/labTrace.ts.
+ for(const [id,label] of immersiveResultLabels())labels.set(id,label);
  if(grade==='1AP')for(const [id,title] of [['readiness-count',{fr:'Compter avec des objets',ar:'العدّ باستعمال الأشياء'}],['readiness-oral',{fr:'Raconter dans l’ordre',ar:'أحكي بالترتيب'}],['readiness-draw',{fr:'Tracer et se repérer',ar:'أرسم وأحدّد المكان'}]] as const)labels.set(id,{title,moduleId:'readiness-1AP'});
  const rows=Object.entries(results).filter(([id])=>labels.has(id)).map(([id,r])=>({id,...r,...labels.get(id)!}));
  const week=rows.filter(r=>Date.parse(r.at)>=now-7*86400000 && Date.parse(r.at)<=now);

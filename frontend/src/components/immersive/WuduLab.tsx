@@ -3,9 +3,13 @@ import { motion } from 'motion/react';
 import { ImmersiveLabShell, QuizBlock } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
+import { useLabTrace } from '../../utils/labTrace';
+import type { PrimaryGrade } from '../../types';
 import { isWuduTargetCorrect, WUDU_QUIZ, WUDU_STEPS, wuduStepAt, type WuduStep } from '../../data/immersive/wudu';
 
 interface WuduLabProps {
+  /** The child's grade: the notebook keeps the observation in that year's summary. */
+  grade?: PrimaryGrade;
   onBack?: () => void;
   onReward?: (coins: number, xp: number) => void;
 }
@@ -20,7 +24,7 @@ const TARGETS: { id: WuduStep['target']; cx: string; cy: string; label: string }
   { id: 'feet', cx: '50%', cy: '88%', label: 'القَدَمَانِ' },
 ];
 
-export const WuduLab: React.FC<WuduLabProps> = ({ onBack, onReward }) => {
+export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
   const [tab, setTab] = useState('wash');
   const [done, setDone] = useState(0);
@@ -29,6 +33,7 @@ export const WuduLab: React.FC<WuduLabProps> = ({ onBack, onReward }) => {
   const [quiz, setQuiz] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
   const [stars, setStars] = useState(0);
+  const trace = useLabTrace('wudu_lab', grade);
 
   const current = wuduStepAt(done);
   const shuffled = useMemo(
@@ -46,6 +51,7 @@ export const WuduLab: React.FC<WuduLabProps> = ({ onBack, onReward }) => {
     if (!current) return;
     if (!isWuduTargetCorrect(done, target)) {
       playSoftMiss();
+      trace.miss('wash');
       setMiss(true);
       return;
     }
@@ -53,7 +59,10 @@ export const WuduLab: React.FC<WuduLabProps> = ({ onBack, onReward }) => {
     speakArSafe(current.descAr);
     const next = done + 1;
     setDone(next);
-    if (next >= WUDU_STEPS.length) reward();
+    if (next >= WUDU_STEPS.length) {
+      trace.success('wash');
+      reward();
+    }
   };
 
   const tapOrder = (id: string) => {
@@ -61,12 +70,16 @@ export const WuduLab: React.FC<WuduLabProps> = ({ onBack, onReward }) => {
     const expected = WUDU_STEPS[orderPick.length]?.id;
     if (id !== expected) {
       playSoftMiss();
+      trace.miss('order');
       setOrderPick([]);
       return;
     }
     const next = [...orderPick, id];
     setOrderPick(next);
-    if (next.length === WUDU_STEPS.length) reward();
+    if (next.length === WUDU_STEPS.length) {
+      trace.success('order');
+      reward();
+    }
     else playSoftSuccess();
   };
 
@@ -177,6 +190,8 @@ export const WuduLab: React.FC<WuduLabProps> = ({ onBack, onReward }) => {
           picked={picked}
           onPick={(option, ok) => {
             setPicked(option);
+            if (ok) trace.success('quiz');
+            else trace.miss('quiz');
             if (ok) {
               reward();
               window.setTimeout(() => {

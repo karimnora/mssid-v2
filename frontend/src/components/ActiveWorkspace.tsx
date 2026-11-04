@@ -209,17 +209,17 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
       ) : selectedSubject === 'quran_lab' ? (
         <QuranLabInteractive />
       ) : selectedSubject === 'wudu_lab' ? (
-        <WuduLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <WuduLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'salat_lab' ? (
-        <SalatLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <SalatLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'mosque_adab_lab' ? (
-        <MosqueAdabLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <MosqueAdabLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'road_code_lab' ? (
         <RoadCodeLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'souk_lab' ? (
         <SoukLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'world_flags_lab' ? (
-        <WorldFlagsLab onBack={onBackToLabsCatalog} onReward={onLabReward} />
+        <WorldFlagsLab grade={grade} onBack={onBackToLabsCatalog} onReward={onLabReward} />
       ) : selectedSubject === 'cem_prep_lab' ? (
         <CemPrepLab
           onBack={onBackToLabsCatalog}

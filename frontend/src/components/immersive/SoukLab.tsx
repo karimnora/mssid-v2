@@ -7,6 +7,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { useLocaleContext } from '../../context/LocaleContext';
 import { speakText } from '../../utils/speech';
 import { playCoin, playPop, playRegister, playSoftMiss } from '../../utils/immersiveFeedback';
+import { useLabTrace } from '../../utils/labTrace';
 import {
   basketTotal,
   SOUK_STALLS,
@@ -51,6 +52,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
   const [pickedChange, setPickedChange] = useState<number | null>(null);
   const [doneMissions, setDoneMissions] = useState<string[]>([]);
   const [stars, setStars] = useState(0);
+  const trace = useLabTrace('souk_lab', grade);
   const [line, setLine] = useState('');
   const [mood, setMood] = useState<Mood>('talk');
   const [shake, setShake] = useState<string | null>(null);
@@ -89,6 +91,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
     if (!item) return;
     if (!mission.stallIds.includes(id)) {
       playSoftMiss();
+      trace.miss('street');
       setShake(id);
       window.setTimeout(() => setShake(null), 500);
       say(t('soukDidouNotOnList'), 'think');
@@ -126,6 +129,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
     if (step !== 'pay') return;
     if (change === null) {
       playSoftMiss();
+      trace.miss('street');
       say(t('soukDidouMissing', { amount: total - given }), 'think');
       return;
     }
@@ -139,11 +143,13 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
     setPickedChange(amount);
     if (amount !== change) {
       playSoftMiss();
+      trace.miss('street');
       say(t('soukDidouHint', { given, total }), 'think');
       return;
     }
     playRegister();
     setStep('done');
+    trace.success('street');
     const win = t('soukDidouWin', { change });
     say(lastMission ? `${win} ${t('soukDidouAllDone')}` : win, 'happy');
     if (doneMissions.includes(mission.id)) return;

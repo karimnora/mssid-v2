@@ -4,6 +4,7 @@ import { GARDEN_PLANS } from '../data/garden/gardenMission';
 import { MOSAIC_TASKS } from '../data/family/mosaicWorkshop';
 import { ADVENTURE_THEMES } from '../data/family/themedAdventures';
 import { premiumLabResultId, premiumLabResultIds } from '../data/family/premiumLabJourneys';
+import { immersiveResultIds } from '../data/immersive/labTraceCatalog';
 import type { PrimaryGrade, UserProfile } from '../types';
 import { FAMILY_MODULES, type FamilyDomain, type FamilyModule, type FamilyTask } from '../data/family/familyContent';
 export const FAMILY_GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
@@ -16,7 +17,7 @@ export function readFamilyResults(key: string): FamilyResults {
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(key) ?? '{}');
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
-    const known = new Set([...ENRICHMENT_MODULES.flatMap(m => m.tasks.map(t => t.id)), ...FAMILY_GRADES.flatMap(g => MARKET_PLANS[g].tasks.map(t => t.id)), ...FAMILY_MODULES.flatMap(m => m.tasks.map(t => t.id)), 'readiness-count','readiness-oral','readiness-draw', ...FAMILY_GRADES.flatMap(g => GARDEN_PLANS[g].tasks.map(t => t.id)), ...FAMILY_GRADES.flatMap(g => MOSAIC_TASKS[g].map(t => t.id)), ...FAMILY_GRADES.flatMap(premiumLabResultIds), ...FAMILY_GRADES.flatMap(g => [`lab:${g}:operations`,`lab:${g}:measures`])]);
+    const known = new Set([...ENRICHMENT_MODULES.flatMap(m => m.tasks.map(t => t.id)), ...FAMILY_GRADES.flatMap(g => MARKET_PLANS[g].tasks.map(t => t.id)), ...FAMILY_MODULES.flatMap(m => m.tasks.map(t => t.id)), 'readiness-count','readiness-oral','readiness-draw', ...FAMILY_GRADES.flatMap(g => GARDEN_PLANS[g].tasks.map(t => t.id)), ...FAMILY_GRADES.flatMap(g => MOSAIC_TASKS[g].map(t => t.id)), ...FAMILY_GRADES.flatMap(premiumLabResultIds), ...FAMILY_GRADES.flatMap(g => [`lab:${g}:operations`,`lab:${g}:measures`]), ...immersiveResultIds()]);
     return Object.fromEntries(Object.entries(parsed).filter(([id, v]) => known.has(id) && v && typeof v === 'object' && ['independent','helped','review'].includes(v.outcome) && typeof v.at === 'string' && Number.isFinite(Date.parse(v.at))).map(([id, value]) => {
       const completedAt = typeof value.completedAt === 'string' && Number.isFinite(Date.parse(value.completedAt)) ? value.completedAt : value.outcome !== 'review' ? value.at : undefined;
       return [id, { outcome: value.outcome, at: value.at, ...(completedAt ? { completedAt } : {}) }];

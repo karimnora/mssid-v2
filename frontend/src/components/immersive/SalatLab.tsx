@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { ImmersiveLabShell, QuizBlock } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
+import { useLabTrace } from '../../utils/labTrace';
+import type { PrimaryGrade } from '../../types';
 import {
   isSalatPostureCorrect,
   SALAT_POSTURES,
@@ -12,11 +14,13 @@ import {
 } from '../../data/immersive/salat';
 
 interface SalatLabProps {
+  /** The child's grade: the notebook keeps the observation in that year's summary. */
+  grade?: PrimaryGrade;
   onBack?: () => void;
   onReward?: (coins: number, xp: number) => void;
 }
 
-export const SalatLab: React.FC<SalatLabProps> = ({ onBack, onReward }) => {
+export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
   const [tab, setTab] = useState('day');
   const [selected, setSelected] = useState<SalatPrayer>(SALAT_PRAYERS[0]);
@@ -24,6 +28,7 @@ export const SalatLab: React.FC<SalatLabProps> = ({ onBack, onReward }) => {
   const [quiz, setQuiz] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
   const [stars, setStars] = useState(0);
+  const trace = useLabTrace('salat_lab', grade);
 
   const reward = () => {
     playSoftSuccess();
@@ -34,13 +39,17 @@ export const SalatLab: React.FC<SalatLabProps> = ({ onBack, onReward }) => {
   const tapPosture = (id: string) => {
     if (!isSalatPostureCorrect(posture, id)) {
       playSoftMiss();
+      trace.miss('rakah');
       return;
     }
     const step = SALAT_POSTURES[posture];
     speakArSafe(step.descAr);
     const next = posture + 1;
     setPosture(next);
-    if (next >= SALAT_POSTURES.length) reward();
+    if (next >= SALAT_POSTURES.length) {
+      trace.success('rakah');
+      reward();
+    }
     else playSoftSuccess();
   };
 
@@ -141,6 +150,8 @@ export const SalatLab: React.FC<SalatLabProps> = ({ onBack, onReward }) => {
           picked={picked}
           onPick={(option, ok) => {
             setPicked(option);
+            if (ok) trace.success('quiz');
+            else trace.miss('quiz');
             if (ok) {
               reward();
               window.setTimeout(() => {
