@@ -4,43 +4,7 @@ import React from 'react';
  * Drawings made for each 5AP math lesson (V2 « contenu enrichi », docs/v2-design-monde.md).
  * Original SVG, Algerian conventions: decimal comma, division « en potence », Arabic units.
  */
-const FONT = "Cairo, 'Noto Naskh Arabic', Tahoma, sans-serif";
-const INK = '#0f172a';
-const MUTED = '#475569';
-const GREEN = '#15803d';
-const BLUE = '#1d4ed8';
-const GOLD = '#f5b301';
-const ORANGE = '#c2410c';
-
-type TextProps = { x: number; y: number; size?: number; fill?: string; weight?: number; anchor?: 'start' | 'middle' | 'end'; children: React.ReactNode };
-
-/** Arabic label (right-to-left shaping and number order). */
-function Ar({ x, y, size = 14, fill = INK, weight = 700, anchor = 'middle', children }: TextProps) {
-  return (
-    <text x={x} y={y} fontSize={size} fill={fill} fontWeight={weight} textAnchor={anchor} direction="rtl" fontFamily={FONT}>
-      {children}
-    </text>
-  );
-}
-
-/** Numbers and formulas, left to right. */
-function Num({ x, y, size = 16, fill = INK, weight = 800, anchor = 'middle', children }: TextProps) {
-  return (
-    <text x={x} y={y} fontSize={size} fill={fill} fontWeight={weight} textAnchor={anchor} direction="ltr" fontFamily="'Segoe UI', Roboto, Arial, sans-serif">
-      {children}
-    </text>
-  );
-}
-
-function Frame({ label, children, height = 220 }: { label: string; children: React.ReactNode; height?: number }) {
-  return (
-    // The page is right-to-left: the drawing itself is laid out left to right, Arabic labels opt into RTL.
-    <svg viewBox={`0 0 380 ${height}`} role="img" aria-label={label} className="w-full h-auto" direction="ltr" style={{ maxWidth: 520, direction: 'ltr' }}>
-      <rect x="1" y="1" width="378" height={height - 2} rx="18" fill="#fffbf2" stroke="#e7e2d7" strokeWidth="2" />
-      {children}
-    </svg>
-  );
-}
+import { Ar, Frame, Num, BLUE, GOLD, GREEN, INK, MUTED, ORANGE } from './svgKit';
 
 // 1. Large numbers: the periods are wagons of a train.
 function LargeNumbers() {

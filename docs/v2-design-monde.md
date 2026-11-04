@@ -50,6 +50,18 @@
   - nombres écrits à l'algérienne (virgule décimale, milliers séparés par une espace fine insécable U+202F) dans les maths 3AP, 4AP et 5AP, les défis et les examens de maths ; le vérificateur automatique des calculs suit cette écriture (`src/test/mathAssertions.ts`) ;
   - les réponses tapées acceptent la virgule, le point, « ٫ » et les chiffres arabes (`utils/childNumber.ts`) ;
   - corrigé : la consigne d'encadrement entre deux multiples consécutifs de 100 000 (leçon des grands nombres 5AP).
+- [x] Contenu 5AP de qualité supérieure, lot 2 : arabe (4 novembre 2026) :
+  - 17 dessins, un par leçon d'arabe 5AP (`lessonViewer/illustrations/arabic5ap.tsx`) : la phrase est dessinée en blocs de couleur, un rôle sous chaque mot, une couleur par cas partout (bleu = مرفوع, vert = منصوب, orange = مجرور). Il y a aussi l'échelle de la hamza, les deux paniers de la تاء, le test « أنا » de la ألف لينة, le plan du texte de 8 à 12 lignes et la grille d'évaluation ;
+  - les pièces communes aux dessins sont dans `illustrations/svgKit.tsx` ; un test vérifie que chaque leçon d'arabe 5AP a son dessin et que chaque dessin s'affiche (`illustrations.test.tsx`) ;
+  - relecture des règles, exemples et tableaux de إعراب des 17 leçons, avec ces corrections :
+    - « 4 أَعْيُنٍ » devient « 4 أَسْطُرٍ » et « أُنْتِجْ » devient « أَنْتِجْ » ;
+    - « اُدْعُ (مِنْ يَدْعُو) » ;
+    - مقدمة, بيتٍ شعريٍّ et مبنيٌّ corrigés ;
+    - la règle de جمع التكسير ne dit plus que le cas de جمع المؤنث السالم est marqué par des lettres ;
+    - « خَمْسَةٌ وَثَلَاثُونَ » est séparé en مبتدأ et معطوف, ce dernier marqué par la واو ;
+    - « امتلأ الكوب ماءً », qui est un تمييز نسبة, n'est plus noté تمييز ذات : il est remplacé par « وزن البائع كيلوغراماً عسلاً » ;
+    - les exemples d'تمييز نسبة et du passif sont clarifiés ;
+  - contrôle automatique sur les 107 leçons de 5AP : chaque QCM a une seule bonne réponse, et la solution affichée est cette réponse (0 écart).
 - [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.
