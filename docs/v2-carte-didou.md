@@ -48,3 +48,19 @@ Chaque monde se termine par un trésor qui donne une médaille.
 - [ ] Synchroniser médailles et position avec le serveur, et les montrer dans le carnet parent.
 - [ ] Cartes 2AP à 5AP avec les mêmes mondes et d'autres leçons.
 - [ ] Remplacer les illustrations vectorielles provisoires par celles d'un illustrateur, puis animer Didou (Rive).
+
+## Cartes de la 2AP à la 5AP (4 novembre 2026)
+
+- **Une carte par niveau, pour toute l'année scolaire.** L'enfant reste un an dans un même niveau, donc on ne voyage pas d'une année à l'autre. Chaque niveau garde sa propre progression (`mssid_journey_v1:<enfant>:<niveau>`).
+- Les 8 lieux algériens, leurs décors, véhicules et médailles sont les mêmes qu'en 1AP. Ce qui change par niveau :
+  - le thème de chaque monde ;
+  - l'accueil de Didou ;
+  - les 3 vraies leçons de ce niveau.
+- Les mondes suivent les trimestres : mondes 1 à 3 = 1er trimestre, mondes 4 à 6 = 2e trimestre, mondes 7 et 8 = 3e trimestre. Un test le vérifie leçon par leçon (`data/journey/journeyWorlds.test.ts`).
+- Exemples en 5AP :
+  - Constantine, « les ponts de la division, des fractions et des durées » ;
+  - Timgad, « l'analyse avancée » (nawasikh, compléments, tamyiz) ;
+  - le Tassili, « la mémoire de la résistance et de la Révolution ».
+- Plusieurs étapes de 5AP ont leur mission de Didou (division, fractions, phrase, tamyiz).
+- Les mondes 1 et 2 restent gratuits, les mondes 3 à 8 Premium, comme en 1AP. Sur l'accueil gratuit, le bouton « خريطة ديدو » ouvre maintenant la carte à tous les niveaux.
+- Fichier : `data/journey/journeyWorldsByGrade.ts`.

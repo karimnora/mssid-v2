@@ -1,4 +1,5 @@
 import type { PrimaryGrade } from '../../types';
+import { gradeWorlds, PLAN_2AP, PLAN_3AP, PLAN_4AP, PLAN_5AP } from './journeyWorldsByGrade';
 
 /**
  * « Kawkab Didou » journey map (V2). Each world groups three real catalog lessons followed by a
@@ -139,6 +140,11 @@ const WORLDS_1AP: readonly JourneyWorld[] = [
 
 export const JOURNEYS: Partial<Record<PrimaryGrade, readonly JourneyWorld[]>> = {
   '1AP': WORLDS_1AP,
+  // Each grade keeps its own map for the whole school year (no travel between years).
+  '2AP': gradeWorlds(WORLDS_1AP, PLAN_2AP),
+  '3AP': gradeWorlds(WORLDS_1AP, PLAN_3AP),
+  '4AP': gradeWorlds(WORLDS_1AP, PLAN_4AP),
+  '5AP': gradeWorlds(WORLDS_1AP, PLAN_5AP),
 };
 
 export function journeyForGrade(grade: PrimaryGrade): readonly JourneyWorld[] | null {

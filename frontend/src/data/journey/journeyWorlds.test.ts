@@ -38,3 +38,34 @@ describe('journey worlds', () => {
     expect(worldLeft(worlds, worlds.length - 1)).toBe(0);
   });
 });
+
+describe('one map per grade, for the whole school year', () => {
+  const catalog = new Map(COURSES_DATA.map((l) => [l.id, l]));
+  for (const grade of ['2AP', '3AP', '4AP', '5AP'] as const) {
+    it(`${grade}: eight worlds of real ${grade} lessons, used once, following the trimesters`, () => {
+      const worlds = JOURNEYS[grade]!;
+      expect(worlds).toHaveLength(8);
+      expect(worlds.map((w) => w.id)).toEqual(JOURNEYS['1AP']!.map((w) => w.id));
+      const ids = worlds.flatMap((w) => [...w.lessonIds]);
+      expect(new Set(ids).size).toBe(ids.length);
+      worlds.forEach((w, k) => {
+        const expected = k < 3 ? 1 : k < 6 ? 2 : 3;
+        for (const id of w.lessonIds) {
+          const lesson = catalog.get(id);
+          expect(lesson, `${grade} ${w.id} ${id}`).toBeDefined();
+          expect(lesson!.grade, id).toBe(grade);
+          expect(lesson!.trimester, `${grade} ${w.id} ${id}`).toBe(expected);
+        }
+        for (const text of [w.subtitle, w.welcome]) {
+          expect(text.ar.trim()).not.toBe('');
+          expect(text.fr.trim()).not.toBe('');
+        }
+      });
+    });
+  }
+
+  it('never shares a theme between grades: each year has its own map', () => {
+    const subtitles = (['1AP', '2AP', '3AP', '4AP', '5AP'] as const).map((g) => JOURNEYS[g]![3].subtitle.ar);
+    expect(new Set(subtitles).size).toBe(subtitles.length);
+  });
+});
