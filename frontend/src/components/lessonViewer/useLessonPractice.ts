@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { parseChildNumber, sameAnswer } from '../../utils/childNumber';
 import { CourseLesson } from '../../types';
+import type { PracticeResult } from '../../utils/competenceProgress';
 import { shuffleOptions } from './shared';
 import { playGentleNudge, playSuccessChime } from '../preschool/usePreschoolAudio';
 import { isGuidedPractice, isMatchingPairCorrect } from './practiceAssessment';
@@ -11,6 +12,8 @@ export function useLessonPractice(
   lesson: CourseLesson,
   onCompleteQuiz: (lessonId: string, score: number) => void,
   onPracticeMiss?: (lessonId: string) => void,
+  /** Richer report for the parent notebook (alone / with help, missed exercise). Replaces onPracticeMiss when given. */
+  onPracticeResult?: (lessonId: string, result: PracticeResult) => void,
 ) {
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string | number>>({});
   const [practiceChecked, setPracticeChecked] = useState<Record<string, boolean>>({});
@@ -69,7 +72,7 @@ export function useLessonPractice(
   const practiceStateRef = useRef({ practiceAnswers, matchingConnections, orderingSelections, awardedExerciseIds });
   practiceStateRef.current = { practiceAnswers, matchingConnections, orderingSelections, awardedExerciseIds };
 
-  const checkPracticeExercise = useCallback((ex: Exercise) => {
+  const checkPracticeExercise = useCallback((ex: Exercise, meta?: { hintsUsed?: number }) => {
     const { practiceAnswers: answers, matchingConnections: connsMap, orderingSelections: orderMap, awardedExerciseIds: awarded } = practiceStateRef.current;
     const answer = answers[ex.id];
     if (isGuidedPractice(ex)) {
@@ -105,11 +108,15 @@ export function useLessonPractice(
     if (isCorrect && !awarded.has(ex.id)) {
       onCompleteQuiz(lesson.id, ex.xpReward);
       setAwardedExerciseIds((prev) => new Set(prev).add(ex.id));
+      // « Seul » means right on the first try with no hint opened; anything else is « avec aide ».
+      const helped = (meta?.hintsUsed ?? 0) > 0 || missedExerciseIdsRef.current.has(ex.id);
+      onPracticeResult?.(lesson.id, { outcome: 'success', helped, exerciseId: ex.id });
     } else if (!isCorrect && !missedExerciseIdsRef.current.has(ex.id)) {
       missedExerciseIdsRef.current.add(ex.id);
-      onPracticeMiss?.(lesson.id);
+      if (onPracticeResult) onPracticeResult(lesson.id, { outcome: 'fail', exerciseId: ex.id });
+      else onPracticeMiss?.(lesson.id);
     }
-  }, [lesson.id, onCompleteQuiz, onPracticeMiss]);
+  }, [lesson.id, onCompleteQuiz, onPracticeMiss, onPracticeResult]);
 
   const resetPracticeExercise = useCallback((ex: Exercise) => {
     setPracticeChecked((prev) => ({ ...prev, [ex.id]: false }));

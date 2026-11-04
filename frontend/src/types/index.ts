@@ -958,9 +958,9 @@ export interface UserProfile {
   dailyScreenTimeLimitMinutes?: number;
   avatarConfig?: DidouAvatarConfig;
   /** Per-competence tally for the active child slot (V2). Absent on older saves. */
-  competenceStats?: Record<string, { attempts: number; successes: number; failures?: number; lastAt: string; lastLessonId: string; lastOutcome?: 'success' | 'fail' }>;
+  competenceStats?: Record<string, { attempts: number; successes: number; failures?: number; lastAt: string; lastLessonId: string; lastOutcome?: 'success' | 'fail'; alone?: number; helped?: number; missedExerciseIds?: string[] }>;
   /** Recent lesson sessions for the active child slot, newest last, capped. */
-  lessonSessions?: Array<{ at: string; lessonId: string; competenceIds: string[]; outcome: 'success' | 'fail' }>;
+  lessonSessions?: Array<{ at: string; lessonId: string; competenceIds: string[]; outcome: 'success' | 'fail'; helped?: boolean; count?: number }>;
 }
 
 export interface SorobanExercise {

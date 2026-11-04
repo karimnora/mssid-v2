@@ -10,13 +10,16 @@ import { useCahierAccess } from '../../hooks/useCahierAccess';
 import { springBootApi } from '../../services/springBootApi';
 import { PremiumOffer } from '../PremiumOffer';
 import { CahierQuotaNotice } from './CahierQuotaNotice';
+import type { CatchUpExercise } from '../../utils/catchUpExercises';
 
 interface CompetenceCahierSheetProps {
   cahier: CompetenceCahier;
   onClose: () => void;
+  /** Opened from the parent notebook: the exercises this child missed, printed first, corrected on the back. */
+  catchUp?: CatchUpExercise[];
 }
 
-const UnlockedCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ cahier, onClose }) => {
+const UnlockedCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ cahier, onClose, catchUp = [] }) => {
   const t = useTranslation('labsImmersive');
   const [side, setSide] = useState<'front' | 'verso'>('front');
 
@@ -79,6 +82,35 @@ const UnlockedCahierSheet: React.FC<CompetenceCahierSheetProps> = ({ cahier, onC
             <p className="text-xs font-bold">الاسم: …………………… الأَبُ / الأُمُّ: …………………… التاريخ: …… / …… / ……</p>
           </header>
 
+          {side === 'front' && catchUp.length > 0 && (
+            <section data-cahier-catch-up className="rounded-2xl border-2 border-[#f5b301] bg-[#FFF8E7] p-4 space-y-4 break-inside-avoid">
+              <p className="text-sm font-extrabold text-[#92400e]">📌 أُعِيدُ حَلَّ مَا أَخْطَأْتُ فِيهِ</p>
+              <ol className="space-y-4 list-decimal pr-5">
+                {catchUp.map((exercise) => (
+                  <li key={exercise.exerciseId} className="space-y-2">
+                    <p className="text-[15px] font-bold leading-relaxed whitespace-pre-line">{exercise.promptAr}</p>
+                    <div className="print-answer-lines space-y-2">
+                      {Array.from({ length: exercise.lines }, (_, line) => (
+                        <div key={line} className="border-b border-slate-300 h-7" />
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+          {side === 'verso' && catchUp.length > 0 && (
+            <section className="print-corrige space-y-3">
+              <p className="text-xs font-extrabold text-[#92400e]">📌 تَصْحِيحُ تَمَارِينِ الاسْتِدْرَاكِ</p>
+              <ol className="space-y-3 list-decimal pr-5">
+                {catchUp.map((exercise) => (
+                  <li key={exercise.exerciseId} className="print-corrige-box text-[15px] font-bold leading-relaxed bg-[#FFF8E7] rounded-2xl p-3 whitespace-pre-line">
+                    {exercise.answerAr}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
           {side === 'front' ? (
             <ol className="space-y-5 list-decimal pr-5">
               {cahier.exercises.map((exercise, index) => (
@@ -157,6 +189,7 @@ export const CompetenceCahierSheet: React.FC<CompetenceCahierSheetProps> = props
       <h2 className="text-lg font-extrabold">{props.cahier.titleAr}</h2>
       <p>{t('cahierPreview')}</p>
       <p dir="rtl" className="rounded-2xl bg-[#FFF8E7] p-4 font-bold">{props.cahier.exercises[0]?.promptAr}</p>
+      {(props.catchUp?.length ?? 0) > 0 && <p data-cahier-catch-up-count className="font-bold">{t('cahierCatchUpCount', { count: props.catchUp!.length })}</p>}
       {access && <CahierQuotaNotice access={access} />}
       {!authUser ? <p>{t('cahierLogin')}</p> : loading ? <p>{t('cahierChecking')}</p> : (error || failed) ? <>
         <p role="alert">{t('cahierUnavailable')}</p><button type="button" className="hit-target" onClick={()=>{setFailed(false);refresh();}}>{t('cahierRetry')}</button>
@@ -172,6 +205,6 @@ function RemoteCahierSheet(props:CompetenceCahierSheetProps) {
  const t=useTranslation('subscription');const {authUser}=useCahierAccess();
  const [document,setDocument]=useState<CompetenceCahier|null>(null),[error,setError]=useState(false),[retry,setRetry]=useState(0);
  useEffect(()=>{let alive=true;setDocument(null);setError(false);void springBootApi.getCahierContent(props.cahier.competenceId).then(res=>{if(!alive)return;const d=res.data;if(res.error||!d||d.competenceId!==props.cahier.competenceId||!Array.isArray(d.exercises)||d.exercises.length<2||!Array.isArray(d.versoAr))setError(true);else setDocument(d);}).catch(()=>{if(alive)setError(true);});return()=>{alive=false;};},[authUser?.id,props.cahier.competenceId,retry]);
- if(document)return <UnlockedCahierSheet cahier={document} onClose={props.onClose}/>;
+ if(document)return <UnlockedCahierSheet cahier={document} onClose={props.onClose} catchUp={props.catchUp}/>;
  return createPortal(<div className="fixed inset-0 z-[70] bg-black/40 p-4 overflow-auto"><section role="dialog" aria-modal="true" aria-label={props.cahier.titleAr} className="bg-white text-slate-900 p-5 rounded-2xl max-w-xl mx-auto space-y-3"><p role={error?'alert':'status'}>{error?t('cahierUnavailable'):t('cahierChecking')}</p>{error&&<button className="hit-target px-4" onClick={()=>setRetry(n=>n+1)}>{t('cahierRetry')}</button>}<button className="hit-target px-4" onClick={props.onClose}>{t('continueFree')}</button></section></div>,window.document.body);
 }

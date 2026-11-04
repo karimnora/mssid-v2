@@ -14,6 +14,9 @@ export interface WeeklyReport {
   toDate: string;
   weekSessions: number;
   weekSuccesses: number;
+  /** Exercise successes alone / with a hint this week (« réussi seul » vs « avec aide »). */
+  weekAlone: number;
+  weekHelped: number;
   /** Competences succeeded this week (newest first, unique). */
   successes: { ar: string; fr: string }[];
   /** Competences to review (carnet state). */
@@ -48,6 +51,8 @@ export function buildWeeklyReport(notebook: ParentNotebook, plan: WeeklyPlan, no
     toDate: now.toISOString().slice(0, 10),
     weekSessions: plan.weekSessions,
     weekSuccesses: plan.weekSuccesses,
+    weekAlone: plan.weekAlone ?? 0,
+    weekHelped: plan.weekHelped ?? 0,
     successes,
     toReview: notebook.review.slice(0, MAX_ITEMS).map((r) => ({ ar: r.labelAr, fr: r.labelFr })),
     reviewCount: plan.reviewCount,
@@ -66,6 +71,7 @@ export function formatWeeklyReportText(report: WeeklyReport, locale: 'ar' | 'fr'
   if (fr) {
     lines.push(`📒 Bilan de la semaine — ${report.childName} (${report.grade})`, period, '');
     lines.push(`✅ ${report.weekSessions} séance(s), ${report.weekSuccesses} réussie(s).`);
+    if (report.weekAlone + report.weekHelped > 0) lines.push(`💪 Exercices : ${report.weekAlone} réussi(s) seul, ${report.weekHelped} avec un indice.`);
     if (report.successes.length) lines.push(`Réussi : ${report.successes.map((s) => s.fr).join(' · ')}`);
     lines.push(report.toReview.length ? `🔁 À revoir : ${report.toReview.map((s) => s.fr).join(' · ')}` : '🔁 Rien à revoir pour le moment.');
     if (report.next) lines.push(`👉 Conseil : ${report.next.minutes} min sur « ${report.next.fr} »${report.next.cahierTitleAr ? ` (cahier : ${report.next.cahierTitleAr})` : ''}.`);
@@ -73,6 +79,7 @@ export function formatWeeklyReportText(report: WeeklyReport, locale: 'ar' | 'fr'
   } else {
     lines.push(`📒 حصيلة الأسبوع — ${report.childName} (${report.grade})`, period, '');
     lines.push(`✅ ${report.weekSessions} حصة، منها ${report.weekSuccesses} ناجحة.`);
+    if (report.weekAlone + report.weekHelped > 0) lines.push(`💪 التمارين: ${report.weekAlone} بمفرده، ${report.weekHelped} بمساعدة تلميح.`);
     if (report.successes.length) lines.push(`نجح في: ${report.successes.map((s) => s.ar).join(' · ')}`);
     lines.push(report.toReview.length ? `🔁 للمراجعة: ${report.toReview.map((s) => s.ar).join(' · ')}` : '🔁 لا شيء للمراجعة حالياً.');
     if (report.next) lines.push(`👉 نصيحة: ${report.next.minutes} دقيقة حول «${report.next.ar}»${report.next.cahierTitleAr ? ` (كراس: ${report.next.cahierTitleAr})` : ''}.`);
@@ -149,7 +156,10 @@ export async function drawWeeklyReportCard(report: WeeklyReport, locale: 'ar' | 
   block(
     fr ? `✅ ${report.weekSessions} séance(s), ${report.weekSuccesses} réussie(s)` : `✅ ${report.weekSessions} حصة، ${report.weekSuccesses} ناجحة`,
     '#0B6B4F',
-    report.successes.map((s) => (fr ? s.fr : s.ar)),
+    [
+      ...(report.weekAlone + report.weekHelped > 0 ? [fr ? `💪 ${report.weekAlone} seul · ${report.weekHelped} avec un indice` : `💪 ${report.weekAlone} بمفرده · ${report.weekHelped} بمساعدة تلميح`] : []),
+      ...report.successes.map((s) => (fr ? s.fr : s.ar)),
+    ],
     fr ? 'Pas encore de réussite cette semaine.' : 'لا نجاح مسجّل هذا الأسبوع بعد.',
   );
   block(fr ? '🔁 À revoir' : '🔁 للمراجعة', '#A86B00', report.toReview.map((s) => (fr ? s.fr : s.ar)), fr ? 'Rien à revoir pour le moment.' : 'لا شيء للمراجعة حالياً.');

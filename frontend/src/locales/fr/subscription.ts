@@ -23,6 +23,7 @@ export const subscription: typeof subscriptionAr = {
   cahierUnlock: "Débloquer ce cahier — 1 crédit",
   cahierLimit: "Les 3 nouveaux cahiers gratuits de cette semaine sont débloqués. Retrouvez-les sans limite, attendez le renouvellement ou découvrez Premium.",
   cahierPreview: "Aperçu gratuit : un exercice. Débloquez le cahier pour accéder à tous les exercices et au corrigé.",
+  cahierCatchUpCount: 'Le cahier contiendra aussi {count} exercice(s) raté(s) par votre enfant, avec leur corrigé.',
   cahierLogin: "Connectez-vous depuis l’accueil pour partager les 3 cahiers gratuits entre vos appareils et vos enfants. Aucun abonnement nécessaire.",
   cahierUnavailable: "Impossible de vérifier vos crédits. Réessayez : aucun crédit ne sera dépensé deux fois pour ce cahier.",
   cahierChecking: "Vérification des accès…",

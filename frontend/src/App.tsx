@@ -733,6 +733,7 @@ function AppContent() {
                 onCompleteQuiz={progress.handleCompleteQuiz}
                 onQuizFullyValidated={progress.handleQuizFullyValidated}
                 onQuizMiss={progress.handleQuizMiss}
+            onPracticeResult={progress.handlePracticeResult}
                 onExamComplete={progress.handleCompleteExam}
                 onChallengeComplete={progress.handleCompleteChallenge}
                 onVisitLab={progress.handleVisitLab}
@@ -871,6 +872,7 @@ function AppContent() {
             onCompleteQuiz={progress.handleCompleteQuiz}
             onQuizFullyValidated={progress.handleQuizFullyValidated}
             onQuizMiss={progress.handleQuizMiss}
+            onPracticeResult={progress.handlePracticeResult}
             onReportError={modals.openErrorReport}
           />
         </Suspense>

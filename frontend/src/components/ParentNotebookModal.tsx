@@ -14,6 +14,7 @@ import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { getCahier } from '../data/cahiers/competenceCahiers';
 import { CompetenceCahierSheet } from './cahiers/CompetenceCahierSheet';
 import type { CompetenceCahier } from '../data/cahiers/competenceCahiers';
+import { catchUpExercises, type CatchUpExercise } from '../utils/catchUpExercises';
 
 import { useAuth } from '../context/AuthContext';
 import { PremiumOffer } from './PremiumOffer';
@@ -41,7 +42,9 @@ const CompetenceRow: React.FC<{
   tone?: 'review' | 'default';
   onReview: (lessonId: string) => void;
   onPrint: (lessonId: string, competenceLabelAr: string, competenceId: string) => void;
-}> = ({ row, locale, actionLabel, printLabel, printAria, meta, tone = 'default', onReview, onPrint }) => {
+  aloneHelpedLabel: (alone: number, helped: number) => string;
+  missedLabel: (count: number) => string;
+}> = ({ row, locale, actionLabel, printLabel, printAria, meta, tone = 'default', onReview, onPrint, aloneHelpedLabel, missedLabel }) => {
   const label = locale === 'fr' ? row.labelFr : row.labelAr;
   const shell =
     tone === 'review'
@@ -52,6 +55,16 @@ const CompetenceRow: React.FC<{
       <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{row.domainAr}</p>
       <p className="text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">{label}</p>
       {meta ? <p className="text-xs font-bold text-[var(--kids-muted)]">{meta}</p> : null}
+      {(row.alone ?? 0) + (row.helped ?? 0) > 0 && (
+        <p data-notebook-alone-helped={row.competenceId} className="text-xs font-bold text-[var(--kids-ink)]">
+          {aloneHelpedLabel(row.alone ?? 0, row.helped ?? 0)}
+        </p>
+      )}
+      {(row.missedExerciseIds?.length ?? 0) > 0 && (
+        <p data-notebook-missed={row.competenceId} className="text-xs font-extrabold text-[#92400e]">
+          {missedLabel(row.missedExerciseIds!.length)}
+        </p>
+      )}
       {row.reviewLessonId && (
         <div className="flex flex-wrap items-center gap-2">
           <motion.button
@@ -98,7 +111,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   );
   const plan = useMemo(() => buildWeeklyPlan(notebook), [notebook]);
   const [printable, setPrintable] = useState<{ lesson: CourseLesson; competenceLabelAr: string } | null>(null);
-  const [cahier, setCahier] = useState<CompetenceCahier | null>(null);
+  const [cahier, setCahier] = useState<{ cahier: CompetenceCahier; catchUp: CatchUpExercise[] } | null>(null);
   const [recapCopied, setRecapCopied] = useState(false);
   const [reportState, setReportState] = useState<'idle' | 'busy' | 'shared' | 'error'>('idle');
 
@@ -118,7 +131,8 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   const handlePrint = (lessonId: string, competenceLabelAr: string, competenceId: string) => {
     const nextCahier = getCahier(competenceId);
     if (nextCahier) {
-      setCahier(nextCahier);
+      const row = [...notebook.review, ...notebook.worked, ...notebook.observed].find((item) => item.competenceId === competenceId);
+      setCahier({ cahier: nextCahier, catchUp: catchUpExercises(competenceId, row?.missedExerciseIds) });
       return;
     }
     const lesson = COURSES_DATA.find((item) => item.id === lessonId);
@@ -129,6 +143,8 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
     printLabel: t('parentNotebookPrint'),
     printAria: t('parentNotebookPrintAria'),
     onPrint: handlePrint,
+    aloneHelpedLabel: (alone: number, helped: number) => t('parentNotebookAloneHelped', { alone, helped }),
+    missedLabel: (count: number) => t('parentNotebookMissedReady', { count }),
   };
 
   const empty =
@@ -178,6 +194,9 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
             <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{premium ? t('parentNotebookWeekTitle') : offerT('nextFreeRevision')}</p>
             {premium && <p className="text-xs font-bold text-[var(--kids-muted)]">
               {t('parentNotebookWeekMeta', { review: plan.reviewCount, ok: plan.weekSuccesses })}
+            </p>}
+            {premium && plan.weekAlone + plan.weekHelped > 0 && <p data-notebook-week-alone className="text-xs font-extrabold text-[var(--kids-ink)]">
+              {t('parentNotebookWeekAloneHelped', { alone: plan.weekAlone, helped: plan.weekHelped })}
             </p>}
             {plan.next ? (
               <>
@@ -372,7 +391,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
           onClose={() => setPrintable(null)}
         />
       )}
-      {cahier && <CompetenceCahierSheet cahier={cahier} onClose={() => setCahier(null)} />}
+      {cahier && <CompetenceCahierSheet cahier={cahier.cahier} catchUp={cahier.catchUp} onClose={() => setCahier(null)} />}
     </>
   );
 };

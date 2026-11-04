@@ -17,7 +17,8 @@ interface PracticeExerciseCardProps {
   isChecked: boolean;
   isCorrect: boolean;
   canCheck: boolean;
-  onCheck: (ex: ProgressiveExercise) => void;
+  /** `hintsUsed` lets the parent notebook tell « réussi seul » from « réussi avec aide ». */
+  onCheck: (ex: ProgressiveExercise, meta?: { hintsUsed: number }) => void;
   onReset: (ex: ProgressiveExercise) => void;
   matchingRightOrder: number[];
   matchingConnections: Record<number, number>;
@@ -309,7 +310,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
 
       {!isChecked ? (
         <button
-          onClick={() => onCheck(ex)}
+          onClick={() => onCheck(ex, { hintsUsed: hintsRevealed })}
           disabled={!canCheck}
           className="hit-target w-full sm:w-auto bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] disabled:opacity-40 disabled:cursor-not-allowed text-white text-base font-extrabold px-5 rounded-2xl cursor-pointer"
         >

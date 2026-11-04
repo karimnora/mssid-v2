@@ -43,7 +43,7 @@ describe('PracticeExerciseCard official layouts', () => {
     const onCheck = vi.fn();
     const { rerender } = render(<PracticeExerciseCard {...cardProps} ex={ex} isChecked={false} onCheck={onCheck} canCheck />);
     fireEvent.click(screen.getByRole('button', { name: 'أرى التصحيح' }));
-    expect(onCheck).toHaveBeenCalledWith(ex);
+    expect(onCheck).toHaveBeenCalledWith(ex, { hintsUsed: 0 });
     expect(screen.queryByText(/XP/)).not.toBeInTheDocument();
     rerender(<PracticeExerciseCard {...cardProps} ex={ex} isCorrect={false} />);
     expect(screen.getByText('📖 التصحيح للمراجعة: قارن حلك بالشرح.')).toBeInTheDocument();

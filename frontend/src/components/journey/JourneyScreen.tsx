@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { PracticeResult } from '../../utils/competenceProgress';
 import { journeyForGrade } from '../../data/journey/journeyWorlds';
 import { useLocaleContext } from '../../context/LocaleContext';
 import type { CourseLesson, PrimaryGrade, UserProfile } from '../../types';
@@ -33,6 +34,7 @@ export interface JourneyScreenProps {
   onCompleteQuiz: (lessonId: string, earnedXp: number) => void;
   onQuizFullyValidated: (lessonId: string) => void;
   onQuizMiss: (lessonId: string, competenceId?: string) => void;
+  onPracticeResult?: (lessonId: string, result: PracticeResult) => void;
   onReportError?: (contextLabel: string) => void;
 }
 
@@ -50,7 +52,7 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onReportError } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
@@ -231,6 +233,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
               quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(lesson.id)}
               onQuizFullyValidated={onQuizFullyValidated}
               onQuizMiss={onQuizMiss}
+              onPracticeResult={onPracticeResult}
               grade={grade}
               subjectId={lesson.subject}
               tashkeelEnabled={userProfile.tashkeelEnabled ?? false}

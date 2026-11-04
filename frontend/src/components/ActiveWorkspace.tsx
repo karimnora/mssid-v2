@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
+import type { PracticeResult } from '../utils/competenceProgress';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { CourseLesson, PrimaryGrade, SubjectId, UserProfile } from '../types';
 import { LessonViewer } from './LessonViewer';
@@ -65,6 +66,7 @@ interface ActiveWorkspaceProps {
   onCompleteQuiz: (lessonId: string, score: number) => void;
   onQuizFullyValidated: (lessonId: string) => void;
   onQuizMiss?: (lessonId: string, competenceId?: string) => void;
+  onPracticeResult?: (lessonId: string, result: PracticeResult) => void;
   onExamComplete: (examId: string) => void;
   onChallengeComplete: (challengeId: string, earnedXp: number) => void;
   onVisitLab: (labId: string) => void;
@@ -92,6 +94,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onCompleteQuiz,
   onQuizFullyValidated,
   onQuizMiss,
+  onPracticeResult,
   onExamComplete,
   onChallengeComplete,
   onVisitLab,
@@ -249,6 +252,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(selectedLesson.id)}
           onQuizFullyValidated={onQuizFullyValidated}
           onQuizMiss={onQuizMiss}
+          onPracticeResult={onPracticeResult}
           grade={grade}
           subjectId={selectedSubject}
           trimester={selectedTrimester}

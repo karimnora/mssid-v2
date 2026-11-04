@@ -14,7 +14,7 @@ import {
 } from '../utils/quizRewards';
 import { clearGuestLastActivity, clearOwnerLastActivity, migrateGuestLastActivityToUser } from '../utils/lastActivity';
 import { clearChildSelection, profileStorageKey } from '../utils/childProfileStorage';
-import { recordLessonFailure, recordLessonSuccess } from '../utils/competenceProgress';
+import { recordLessonFailure, recordLessonSuccess, recordPracticeResult, type PracticeResult } from '../utils/competenceProgress';
 
 function finiteNumber(value: unknown, fallback: number): number {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -382,6 +382,11 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
     setUserProfile((prev) => recordLessonFailure(prev, lessonId, new Date().toISOString(), competenceId));
   };
 
+  /** An exercise was checked: alone / with help / missed, for the parent notebook and the catch-up sheet. */
+  const handlePracticeResult = (lessonId: string, result: PracticeResult) => {
+    setUserProfile((prev) => recordPracticeResult(prev, lessonId, result));
+  };
+
   const handleCompleteQuiz = (lessonId: string, earnedXp: number) => {
     AuthService.addScore(earnedXp, lessonId);
     incrementDailyObjective();
@@ -498,6 +503,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
     ratingPromptTrigger,
     handleQuizFullyValidated,
     handleQuizMiss,
+    handlePracticeResult,
     handleCompleteQuiz,
     handleCompleteExam,
     handleCompleteChallenge,

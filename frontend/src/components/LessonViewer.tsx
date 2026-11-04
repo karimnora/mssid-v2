@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import type { PracticeResult } from '../utils/competenceProgress';
 import { LessonDidou } from './lessonViewer/LessonDidou';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -59,6 +60,7 @@ interface LessonViewerProps {
   quizAlreadyValidated?: boolean;
   onQuizFullyValidated?: (lessonId: string) => void;
   onQuizMiss?: (lessonId: string, competenceId?: string) => void;
+  onPracticeResult?: (lessonId: string, result: PracticeResult) => void;
   grade?: PrimaryGrade;
   subjectId?: SubjectId;
   trimester?: number | 'all';
@@ -78,6 +80,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   quizAlreadyValidated = false,
   onQuizFullyValidated,
   onQuizMiss,
+  onPracticeResult,
   grade = lessonProp.grade,
   subjectId = lessonProp.subject,
   trimester,
@@ -89,7 +92,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const { direction } = useLocaleContext();
   const { lesson, premiumFetchState } = usePremiumLessonContent(lessonProp);
   const speech = useLessonSpeech(lesson, grade);
-  const practice = useLessonPractice(lesson, onCompleteQuiz, onQuizMiss);
+  const practice = useLessonPractice(lesson, onCompleteQuiz, onQuizMiss, onPracticeResult);
   const quiz = useLessonQuiz({ lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated, onQuizMiss });
 
   const currentIndex = allLessons.length > 0 ? allLessons.findIndex((l) => l.id === lesson.id) : -1;
