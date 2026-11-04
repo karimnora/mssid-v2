@@ -6,3 +6,4 @@
 @media (prefers-reduced-motion: reduce) {
   .journey-map-shortcut .jms-route, .journey-map-shortcut .jms-flag { animation: none; }
 }
+

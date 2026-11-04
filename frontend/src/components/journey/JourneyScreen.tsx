@@ -202,6 +202,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
       {screen === 'map' && worlds && (
         courses ? (
           <JourneyMap
+            grade={grade}
             worlds={worlds}
             stations={stations}
             states={states}

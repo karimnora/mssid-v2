@@ -312,4 +312,20 @@
   inset-inline-end: 10px;
   z-index: 2;
 }
-
+/* Grade landmarks on Didou's maps (JourneyGradeDecor). */
+[data-grade-decor] .jgd-float { animation: jgd-float 5s ease-in-out infinite; transform-box: fill-box; }
+[data-grade-decor] .jgd-sway { animation: jgd-sway 6s ease-in-out infinite; transform-box: fill-box; transform-origin: top center; }
+[data-grade-decor] .jgd-wave { animation: jgd-wave 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: left center; }
+[data-grade-decor] .jgd-rise { animation: jgd-rise 7s ease-in-out infinite; }
+[data-grade-decor] .jgd-flame { animation: jgd-flame 1.2s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom center; }
+[data-grade-decor] .jgd-glow { animation: jgd-glow 2.4s ease-in-out infinite; }
+@keyframes jgd-float { 50% { transform: translateY(-14px); } }
+@keyframes jgd-sway { 50% { transform: rotate(4deg) translateX(10px); } }
+@keyframes jgd-wave { 50% { transform: skewY(-6deg) scaleX(0.94); } }
+@keyframes jgd-rise { 50% { transform: translateY(-30px); opacity: 0.7; } }
+@keyframes jgd-flame { 50% { transform: scaleY(1.25); } }
+@keyframes jgd-glow { 50% { opacity: 0.5; } }
+@media (prefers-reduced-motion: reduce) {
+  [data-grade-decor] .jgd-float, [data-grade-decor] .jgd-sway, [data-grade-decor] .jgd-wave, [data-grade-decor] .jgd-rise,
+  [data-grade-decor] .jgd-flame, [data-grade-decor] .jgd-glow { animation: none; }
+}

@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import type { PrimaryGrade } from '../../types';
+import { GradeDecor } from './JourneyGradeDecor';
 import {
   JOURNEY_HEIGHT,
   JOURNEY_WORLD_WIDTH,
@@ -20,6 +22,8 @@ export interface JourneyMemoryState {
 }
 
 interface JourneyMapProps {
+  /** Grade of the map: its own light and landmarks (JourneyGradeDecor). */
+  grade?: PrimaryGrade;
   worlds: readonly JourneyWorld[];
   stations: readonly JourneyStation[];
   states: readonly StationState[];
@@ -55,7 +59,7 @@ function trailPath(points: ReadonlyArray<readonly [number, number]>): string {
 }
 
 export function JourneyMap(props: JourneyMapProps) {
-  const { worlds, stations, states, stars, lessonTitles, locale, memory, onMemoryChange, onStartLesson, onClaimTreasure, onBack, say, sfx, totalStars, coins, premiumExtra } = props;
+  const { grade, worlds, stations, states, stars, lessonTitles, locale, memory, onMemoryChange, onStartLesson, onClaimTreasure, onBack, say, sfx, totalStars, coins, premiumExtra } = props;
   const ar = locale === 'ar';
   const T = (arText: string, frText: string) => (ar ? arText : frText);
   const totalW = journeyWidth(worlds);
@@ -400,6 +404,7 @@ export function JourneyMap(props: JourneyMapProps) {
             // 1-unit overlap on each side hides the anti-aliasing hairline between two edge-to-edge worlds.
             <g key={w.id} transform={`translate(${worldLeft(worlds, k) - 1} 0) scale(${(JOURNEY_WORLD_WIDTH + 2) / JOURNEY_WORLD_WIDTH} 1)`}>
               <WorldBackdrop id={w.id} />
+              {grade && <GradeDecor grade={grade} world={w.id} />}
             </g>
           ))}
           {/* Soften each border: the next world's sky fades over the start of the previous one. */}
