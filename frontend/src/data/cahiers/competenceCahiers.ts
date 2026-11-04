@@ -1,6 +1,6 @@
 import type { PrimaryGrade } from '../../types';
 import { COMPETENCES } from '../competences';
-import previews from './cahierPreviews.json';
+import previews from './cahierPreviews.json' with { type: 'json' };
 
 export type CahierFigure = 'square-circle' | 'two-dots' | 'stars-5';
 

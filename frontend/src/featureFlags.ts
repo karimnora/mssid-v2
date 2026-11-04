@@ -17,7 +17,9 @@ export type FeatureFlagName =
   /** V2 « خطوتان للبدء » first-steps screen: grade + parent e-mail (docs/v2-todo-business.md, plan d'activation). */
   | 'firstSteps'
   /** V2 « monde de jeu » design on child screens (night sky, glossy buttons, Didou ribbon). */
-  | 'worldDesign';
+  | 'worldDesign'
+  /** V2 J-15 banner before the trimester compositions, opening the 10-day plan. Admin turns it on. */
+  | 'examCountdown';
 
 const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   // Off: payments are not collectable. V2 sells modules (carnet depth, cahiers, CEM), not T2/T3.
@@ -43,6 +45,8 @@ const DEFAULT_FLAGS: Record<FeatureFlagName, boolean> = {
   didouJourney: true,
   firstSteps: true,
   worldDesign: true,
+  // Off by default: the admin turns it on from the Feature Flags tab for the composition season.
+  examCountdown: false,
 };
 
 const OVERRIDES_STORAGE_KEY = 'mssid_feature_flag_overrides';

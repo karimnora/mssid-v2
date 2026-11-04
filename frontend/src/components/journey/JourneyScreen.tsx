@@ -32,6 +32,9 @@ export interface JourneyScreenProps {
   /** Premium planet home: the classic home's entries, shown on the planet as « كل الأنشطة ». */
   shelfGroups?: PlanetShelfGroup[];
   exitLabel?: string;
+  /** « مهمة اليوم » and the J-15 plan button, shown under Didou's bubble on the planet. */
+  mission?: { say: string; cta: string | null; onStart: () => void } | null;
+  examPlanCta?: { label: string; daysLeft: number; onOpen: () => void } | null;
   onOpenCourses: () => void;
   onOpenLabs: () => void;
   onOpenParents: () => void;
@@ -58,7 +61,7 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, startOn = 'hub', shelfGroups, exitLabel } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
@@ -202,6 +205,8 @@ export function JourneyScreen(props: JourneyScreenProps) {
           sfx={sfx}
           shelfGroups={shelfGroups}
           exitLabel={exitLabel}
+          mission={mission}
+          examPlanCta={examPlanCta}
         />
       )}
 

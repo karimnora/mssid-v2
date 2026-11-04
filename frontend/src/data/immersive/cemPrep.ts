@@ -26,7 +26,7 @@ export interface CemPaper {
   problem: CemPaperExercise;
 }
 
-import previews from './cemPreviews.json';
+import previews from './cemPreviews.json' with { type: 'json' };
 export type CemPaperPreview=Omit<CemPaper,'problem'> & {problem:null};
 export const CEM_PAPERS=previews as CemPaperPreview[];
 

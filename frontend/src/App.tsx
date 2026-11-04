@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { journeyForGrade } from './data/journey/journeyWorlds';
 import { JourneyMapShortcut } from './components/journey/JourneyMapShortcut';
 import { buildPlanetShelfGroups } from './components/journey/planetShelfGroups';
+import { ExamCountdownBanner } from './components/examPlan/ExamCountdownBanner';
+import { countdownDismissKey, examCountdown, inDaysAr, inDaysFr } from './utils/examCountdown';
+import { dailyMissionCopy, dailyMissionKey, resolveDailyMission } from './utils/dailyMission';
 import { isPremiumRole } from './access/entitlements';
 import { EmailDeepLink } from './components/EmailDeepLink';
 import { motion } from 'motion/react';
@@ -179,6 +182,7 @@ function AppContent() {
   const curriculumReviewGate = useFeatureFlag('curriculumReviewGate');
   const enableAITutor = useFeatureFlag('enableAITutor');
   const didouJourneyFlag = useFeatureFlag('didouJourney');
+  const examCountdownFlag = useFeatureFlag('examCountdown');
   const firstStepsFlag = useFeatureFlag('firstSteps');
   const worldDesignFlag = useFeatureFlag('worldDesign');
 
@@ -498,6 +502,65 @@ function AppContent() {
     onOpenPreschool: () => closeJourney(() => nav.setIsPreschoolActive(true)),
   });
 
+  // J-15 before the compositions (admin flag examCountdown): banner on the classic home, button on
+  // the planet. Both open the parent notebook, scrolled to the 10-day plan.
+  const countdown = examCountdownFlag ? examCountdown() : null;
+  const [countdownDismissed, setCountdownDismissed] = useState(() => {
+    try {
+      return window.localStorage.getItem(countdownDismissKey()) === '1';
+    } catch {
+      return false;
+    }
+  });
+  const dismissCountdown = () => {
+    setCountdownDismissed(true);
+    try {
+      window.localStorage.setItem(countdownDismissKey(), '1');
+    } catch {
+      /* private mode: hidden for this visit only */
+    }
+  };
+  const openExamPlan = () => {
+    modals.setIsParentNotebookOpen(true);
+    // The plan panel mounts after the notebook's opening animation and its lazy data: try a few times.
+    let tries = 0;
+    const scrollToPlan = () => {
+      const plan = document.querySelector('[data-exam-plan]');
+      if (plan) plan.scrollIntoView({ block: 'start' });
+      else if (++tries < 12) window.setTimeout(scrollToPlan, 250);
+    };
+    window.setTimeout(scrollToPlan, 500);
+  };
+
+  // « مهمة اليوم » on the planet: one mission for the day, picked from the child's own progress.
+  const subjectName = (id: string) => {
+    const subject = COURSE_SUBJECTS_LIST.find((s) => s.id === id);
+    return subject ? (locale === 'ar' ? subject.nameAr : subject.nameFr) : id;
+  };
+  const missionCopy = journeyOpen && coursesData
+    ? dailyMissionCopy(
+        resolveDailyMission({
+          grade: nav.grade,
+          profile: progress.userProfile,
+          lessons: publishableCourses,
+          resume: resumeActivity,
+          storageKey: dailyMissionKey(`${authUser?.id ?? 'guest'}:${progress.userProfile.name}`, nav.grade),
+        }),
+        locale,
+        subjectName,
+      )
+    : null;
+  const planetMission = missionCopy
+    ? {
+        say: missionCopy.say,
+        cta: missionCopy.cta,
+        onStart: () => {
+          const target = missionCopy.target;
+          if (target) closeJourney(() => nav.handleSelectLesson(target.lesson));
+        },
+      }
+    : null;
+
   const [pendingExamId, setPendingExamId] = useState<string | null>(null);
   /** Plan « avant la composition »: open a mock paper of the bank, switching grade if needed. */
   const handleOpenExam = (examId: string) => {
@@ -689,6 +752,10 @@ function AppContent() {
       {/* The free map shortcut floats above the bottom bar: keep the last home tile clear of it. */}
       <main className={`max-w-7xl mx-auto px-4 sm:px-6 pt-6 ${journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? 'pb-56 md:pb-40' : 'pb-28 md:pb-6'} space-y-6`} data-map-shortcut-space={journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? '' : undefined}>
         {nav.isHomeActive ? (
+          <>
+          {countdown && !countdownDismissed && (
+            <ExamCountdownBanner countdown={countdown} locale={locale} onOpenPlan={openExamPlan} onDismiss={dismissCountdown} />
+          )}
           <HomeView
             grade={nav.grade}
             authUser={authUser}
@@ -727,6 +794,7 @@ function AppContent() {
             onOpenJourney={journeyAvailable ? () => openJourney('hub') : undefined}
             worldDesign={worldScreen}
           />
+          </>
         ) : (
           <>
             <div className="space-y-4">
@@ -946,6 +1014,8 @@ function AppContent() {
             }}
             exitLabel={premiumPlanetHome ? (locale === 'ar' ? 'الواجهة الكلاسيكية' : 'Accueil classique') : undefined}
             shelfGroups={premiumPlanetHome ? planetShelfGroups : undefined}
+            mission={planetMission}
+            examPlanCta={countdown ? { label: locale === 'ar' ? `الاختبارات ${inDaysAr(countdown.daysLeft)}: خطة المراجعة` : `Compositions ${inDaysFr(countdown.daysLeft)} : plan de révision`, daysLeft: countdown.daysLeft, onOpen: openExamPlan } : null}
             onOpenCourses={() => closeJourney(() => {
               setCourseEntrySubject(null);
               nav.handleSelectPole('courses');

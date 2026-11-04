@@ -28,11 +28,15 @@ interface PlanetHubProps {
   shelfGroups?: PlanetShelfGroup[];
   /** Label of the top back button (Premium: « الواجهة الكلاسيكية »). */
   exitLabel?: string;
+  /** « مهمة اليوم »: Didou's first sentence and the one big button under his bubble. */
+  mission?: { say: string; cta: string | null; onStart: () => void } | null;
+  /** J-15 before the compositions (admin flag examCountdown): opens the 10-day plan. */
+  examPlanCta?: { label: string; daysLeft: number; onOpen: () => void } | null;
 }
 
 /** The Wiloki-like home of the journey: districts orbit a planet, the front one opens with the big play button. */
 export function PlanetHub(props: PlanetHubProps) {
-  const { locale, userName, totalStars, coins, worlds, claimedWorldIds, sound, onToggleSound, onOpenMap, onOpenCourses, onOpenLabs, onOpenParents, onExit, say, sfx, shelfGroups, exitLabel } = props;
+  const { locale, userName, totalStars, coins, worlds, claimedWorldIds, sound, onToggleSound, onOpenMap, onOpenCourses, onOpenLabs, onOpenParents, onExit, say, sfx, shelfGroups, exitLabel, mission, examPlanCta } = props;
   const [shelfOpen, setShelfOpen] = useState(false);
   const ar = locale === 'ar';
   const T = (arText: string, frText: string) => (ar ? arText : frText);
@@ -51,7 +55,11 @@ export function PlanetHub(props: PlanetHubProps) {
   const [ribbon, setRibbon] = useState<RibbonContent | null>(null);
   const front = ((Math.round(-rot / step) % n) + n) % n;
 
+  // Until the child turns the planet or pokes Didou, the bubble tells today's mission.
+  const [missionInBubble, setMissionInBubble] = useState(true);
+  const bubbleText = missionInBubble && mission ? mission.say : bubble;
   const talk = (text: string) => {
+    setMissionInBubble(false);
     setBubble(text);
     say(text);
   };
@@ -108,6 +116,12 @@ export function PlanetHub(props: PlanetHubProps) {
     setHop(false);
     window.requestAnimationFrame(() => setHop(true));
     sfx.boing();
+    // Tapping Didou brings today's mission back when the bubble shows something else.
+    if (mission && !missionInBubble) {
+      setMissionInBubble(true);
+      say(mission.say);
+      return;
+    }
     talk(lines[lineIndex % lines.length]);
     setLineIndex(lineIndex + 1);
   };
@@ -129,6 +143,26 @@ export function PlanetHub(props: PlanetHubProps) {
               </svg>
             )}
           </button>
+          {examPlanCta && (
+            <button
+              type="button"
+              className="j-gloss j-round j-exam-round"
+              data-tone="purple"
+              data-exam-plan-cta=""
+              onClick={() => {
+                sfx.pop();
+                say(examPlanCta.label);
+                examPlanCta.onOpen();
+              }}
+              aria-label={examPlanCta.label}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9" stroke="#fff" strokeWidth="2" strokeLinecap="round" fill="none" />
+                <path d="M9.5 19.5c1-2 4-2 5 0z" fill="#ffd23f" />
+              </svg>
+              <span className="j-exam-days">{examPlanCta.daysLeft}</span>
+            </button>
+          )}
         </div>
         <div className="j-counters">
           <div className="j-counter" style={{ justifyContent: 'center' }}>
@@ -172,11 +206,35 @@ export function PlanetHub(props: PlanetHubProps) {
 
       <div className="j-say j-hub-say">
         <div className="j-say-text">
-          <span>{bubble}</span>
-          <button type="button" className="j-listen" onClick={() => say(bubble)} aria-label={T('استمع', 'Écouter')}>
+          <span>{bubbleText}</span>
+          <button type="button" className="j-listen" onClick={() => say(bubbleText)} aria-label={T('استمع', 'Écouter')}>
             <SpeakerIcon />
           </button>
         </div>
+        {mission?.cta && (
+          <div className="j-mission-row">
+            {mission?.cta && (
+              <button
+                type="button"
+                className="j-gloss j-mission-go"
+                data-tone="green"
+                data-daily-mission=""
+                onClick={() => {
+                  sfx.pop();
+                  mission.onStart();
+                }}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" fill="#fff" />
+                  <circle cx="12" cy="12" r="6.6" fill="#e0603f" />
+                  <circle cx="12" cy="12" r="3.4" fill="#fff" />
+                  <circle cx="12" cy="12" r="1.4" fill="#e0603f" />
+                </svg>
+                <span>{mission.cta}</span>
+              </button>
+            )}
+          </div>
+        )}
       </div>
       <button type="button" className="j-hub-didou" data-hop={hop} onClick={poke} onAnimationEnd={() => setHop(false)} aria-label={T('ديدو', 'Didou')}>
         <DidouFull />
