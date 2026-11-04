@@ -69,6 +69,7 @@ interface AppModalsProps {
   onRefreshFromDb: () => Promise<void>;
   onSwitchChild?: () => void;
   onReviewLesson: (lessonId: string) => void;
+  onOpenExam?: (examId: string) => void;
 }
 
 export const AppModals: React.FC<AppModalsProps> = ({
@@ -106,6 +107,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
   onRefreshFromDb,
   onSwitchChild,
   onReviewLesson,
+  onOpenExam,
 }) => {
   const t = useTranslation('navigation');
   const [certificateBadge, setCertificateBadge] = useState<BadgeInfo | null>(null);
@@ -327,6 +329,10 @@ export const AppModals: React.FC<AppModalsProps> = ({
             modals.setIsParentNotebookOpen(false);
             onReviewLesson(lessonId);
           }}
+          onOpenExam={onOpenExam ? (examId) => {
+            modals.setIsParentNotebookOpen(false);
+            onOpenExam(examId);
+          } : undefined}
         />
       )}
     </Suspense>

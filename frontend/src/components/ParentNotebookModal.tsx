@@ -19,6 +19,7 @@ import { catchUpExercises, type CatchUpExercise } from '../utils/catchUpExercise
 import { useAuth } from '../context/AuthContext';
 import { PremiumOffer } from './PremiumOffer';
 import { canAccess } from '../access/entitlements';
+import { ExamPlanPanel } from './examPlan/ExamPlanPanel';
 
 interface ParentNotebookModalProps {
   isOpen: boolean;
@@ -26,6 +27,8 @@ interface ParentNotebookModalProps {
   userProfile: UserProfile;
   viewingGrade?: UserProfile['grade'];
   onReviewLesson: (lessonId: string) => void;
+  /** Opens a mock paper of the exam bank (plan « avant la composition »). */
+  onOpenExam?: (examId: string) => void;
 }
 
 function sessionDay(iso: string): string {
@@ -98,6 +101,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   userProfile,
   viewingGrade,
   onReviewLesson,
+  onOpenExam,
 }) => {
   const t = useTranslation('meta');
   const offerT = useTranslation('subscription');
@@ -267,6 +271,16 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
             </motion.button>}
             {reportState === 'error' && <p role="alert" className="text-sm font-bold text-[var(--kids-ink)]">{locale === 'fr' ? 'Partage impossible pour le moment. Utilisez « copier » ci-dessus.' : 'تعذّرت المشاركة الآن. استعمل زر النسخ أعلاه.'}</p>}
           </section>
+
+          <ExamPlanPanel
+            notebook={notebook}
+            storageKey={`mssid_exam_plan_v1:${authUser?.id ?? 'guest'}:${notebook.childName}:${notebook.grade}`}
+            locale={locale === 'fr' ? 'fr' : 'ar'}
+            premium={canAccess('examPlan', authUser?.role)}
+            onReviewLesson={handleReview}
+            onPrint={handlePrint}
+            onOpenExam={onOpenExam}
+          />
 
           {!premium && <section className="rounded-2xl border-2 border-[#E7E2D7] p-4 space-y-3">
             <p>{offerT('notebookSummary', { worked: notebook.worked.length + notebook.observed.length + notebook.review.length, review: notebook.review.length })}</p>

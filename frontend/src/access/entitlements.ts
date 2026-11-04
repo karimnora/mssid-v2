@@ -58,6 +58,7 @@ export const ENTITLEMENTS = {
   familyStudio: { tier: 'premium', labelFr: 'Studio famille : vacances, rentrée, révisions avant évaluation', labelAr: 'استوديو العائلة', freeAllowance: 'un exercice par séance', enforcedBy: 'client', gates: ['components/family/FamilyLearningStudio.tsx (droit Premium lu sur le serveur, contenu livré dans l’app)'] },
   familyWorkshops: { tier: 'premium', labelFr: 'Ateliers et laboratoires Premium (mosaïque, aventures, labos)', labelAr: 'ورشات ومختبرات Premium', freeAllowance: 'première mission de chaque atelier', enforcedBy: 'client', gates: ['components/family/*', 'components/garden/GardenMission.tsx', 'components/market/MarketMission.tsx'] },
   preschoolMissions: { tier: 'premium', labelFr: 'Missions jardin et marché du préscolaire', labelAr: 'مهمتا الحديقة والسوق (التحضيري)', freeAllowance: 'séance découverte', enforcedBy: 'client', gates: ['components/preschool/PreschoolGardenMission.tsx', 'components/preschool/PreschoolMarketMission.tsx'] },
+  examPlan: { tier: 'premium', labelFr: 'Plan « 10 jours avant la composition » construit sur les erreurs de l’enfant', labelAr: 'خطة المراجعة قبل الاختبار', freeAllowance: 'les 2 premiers jours du plan', enforcedBy: 'client', gates: ['components/examPlan/ExamPlanPanel.tsx'] },
   examPapers: { tier: 'premium', labelFr: 'Sujets d’examen protégés (PDF)', labelAr: 'مواضيع الامتحانات المحمية', enforcedBy: 'server', gates: ['backend ExamController @PreAuthorize PREMIUM/ADMIN'] },
 } as const satisfies Record<string, Entitlement>;
 

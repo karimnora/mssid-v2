@@ -47,6 +47,9 @@ interface ExamsViewerProps {
    * CLAUDE.md's content-credibility concern: a wrong solution here costs the app trust with
    * parents/teachers more than almost anything else in the app. */
   onReportError?: (contextLabel: string) => void;
+  /** Open this paper directly (plan « avant la composition » in the parent notebook). */
+  initialExamId?: string;
+  onInitialExamOpened?: () => void;
 }
 
 const SUBJECT_EMOJI: Record<string, string> = {
@@ -102,6 +105,8 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
   onOpenCourses,
   onOpenLesson,
   onReportError,
+  initialExamId,
+  onInitialExamOpened,
 }) => {
   const t = useTranslation('exams');
   const currentGrade: PrimaryGrade = (grade as PrimaryGrade) || '5AP';
@@ -156,6 +161,18 @@ export const ExamsViewer: React.FC<ExamsViewerProps> = ({
     const first = OFFICIAL_EXAMS_DATA.find((e) => e.grade === grade);
     if (first) setKindFilter(getExamKind(first));
   }, [grade]);
+
+  // Declared after the grade reset so that a paper opened from the revision plan wins on mount.
+  useEffect(() => {
+    if (!initialExamId) return;
+    const exam = OFFICIAL_EXAMS_DATA.find((e) => e.id === initialExamId);
+    if (exam) {
+      setSelectedSubject(exam.subject);
+      setSelectedExamId(exam.id);
+    }
+    onInitialExamOpened?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialExamId]);
 
   const gradeExams = useMemo(
     () => OFFICIAL_EXAMS_DATA.filter((e) => e.grade === currentGrade),

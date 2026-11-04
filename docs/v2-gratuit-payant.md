@@ -23,6 +23,7 @@ Ce tableau est **généré** depuis `frontend/src/access/entitlements.ts`, la se
 | Studio famille : vacances, rentrée, révisions avant évaluation | Premium Famille | un exercice par séance | app | `familyStudio` |
 | Ateliers et laboratoires Premium (mosaïque, aventures, labos) | Premium Famille | première mission de chaque atelier | app | `familyWorkshops` |
 | Missions jardin et marché du préscolaire | Premium Famille | séance découverte | app | `preschoolMissions` |
+| Plan « 10 jours avant la composition » construit sur les erreurs de l’enfant | Premium Famille | les 2 premiers jours du plan | app | `examPlan` |
 | Sujets d’examen protégés (PDF) | Premium Famille | — | serveur | `examPapers` |
 
 ## Les trois accès

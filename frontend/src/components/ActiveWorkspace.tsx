@@ -75,6 +75,8 @@ interface ActiveWorkspaceProps {
   /** Opens the contact form pre-filled to report an error on an exam corrigé or a lesson. */
   onReportError: (contextLabel: string) => void;
   onReviewLesson?: (lessonId: string) => void;
+  initialExamId?: string;
+  onInitialExamOpened?: () => void;
 }
 
 export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
@@ -102,6 +104,8 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
   onEarnCoins,
   onReportError,
   onReviewLesson,
+  initialExamId,
+  onInitialExamOpened,
 }) => {
   const t = useTranslation('navigation');
 
@@ -234,6 +238,8 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           onOpenCourses={onBackToCourses}
           onOpenLesson={onSelectLesson}
           onReportError={onReportError}
+          initialExamId={initialExamId}
+          onInitialExamOpened={onInitialExamOpened}
         />
       ) : selectedSubject === 'challenges' ? (
         <ChallengesArena

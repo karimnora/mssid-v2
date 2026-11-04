@@ -432,6 +432,19 @@ function AppContent() {
     if (lesson) nav.handleSelectLesson(lesson);
   };
 
+  const [pendingExamId, setPendingExamId] = useState<string | null>(null);
+  /** Plan « avant la composition »: open a mock paper of the bank, switching grade if needed. */
+  const handleOpenExam = (examId: string) => {
+    void import('./data/examsData').then(({ OFFICIAL_EXAMS_DATA }) => {
+      const exam = OFFICIAL_EXAMS_DATA.find((item) => item.id === examId);
+      if (!exam) return;
+      if (exam.grade !== nav.grade) nav.handleGradeChange(exam.grade);
+      nav.setIsPreschoolActive(false);
+      setPendingExamId(examId);
+      nav.handleSelectPole('exams');
+    });
+  };
+
   const handleReviewLesson = (lessonId: string) => {
     const open = (lesson: CourseLesson) => {
       if (lesson.grade !== nav.grade) nav.handleGradeChange(lesson.grade);
@@ -741,6 +754,8 @@ function AppContent() {
                 onEarnCoins={(amount) => progress.handleLabReward(amount, 0)}
                 onReportError={modals.openErrorReport}
                 onReviewLesson={handleReviewLesson}
+                initialExamId={pendingExamId ?? undefined}
+                onInitialExamOpened={() => setPendingExamId(null)}
               />
             )}
 
@@ -938,6 +953,7 @@ function AppContent() {
         onRefreshFromDb={progress.handleRefreshProfileFromDb}
         onSwitchChild={authUser ? () => setPickerOpen(true) : undefined}
         onReviewLesson={handleReviewLesson}
+        onOpenExam={handleOpenExam}
       />
 
       <MobileBottomNav
