@@ -23,18 +23,24 @@ export interface BoardProps<R> {
   /** Warm-up level, or from the second miss of the level on: boards show extra help (dates…). */
   assist: boolean;
   onMove: (move: BoardMove) => void;
-  /** Young readers: every card or stone is read aloud when tapped (see `GamePack.young`). */
-  young?: boolean;
+  /**
+   * Every card or stone is read aloud when tapped, in this language: Arabic for young readers
+   * (`GamePack.young`), English or French for the language packs (`GamePack.cardLang`).
+   */
+  voice?: CardVoice;
 }
 
 const PICTURES = /[\p{Extended_Pictographic}\u200d\uFE0F]/gu;
 
+export type CardVoice = 'ar' | 'fr' | 'en';
+const SPEECH_LANG = { ar: 'ar-SA', fr: 'fr-FR', en: 'en-US' } as const;
+
 /** Reads a card aloud without its pictures (speech engines would spell the emoji names). */
-export function readCard(text: string) {
+export function readCard(text: string, voice: CardVoice = 'ar') {
   const words = text.replace(PICTURES, '').trim();
   if (!words) return;
   try {
-    void speakText(words, 'ar-SA').catch(() => undefined);
+    void speakText(words, SPEECH_LANG[voice]).catch(() => undefined);
   } catch {
     /* no speech engine */
   }
@@ -66,17 +72,19 @@ export function GameText({ text }: { text: string }) {
     );
   }
   // Numbers and little sums (« 3 × 4 », « 38 + 12 ») stay left-to-right inside Arabic text.
-  if (/^[\d\s,.%×+\-−=÷]+$/.test(text)) return <span dir="ltr" className="lg-num">{text}</span>;
+  if (/^[\d\s,.:%×+\-−=÷]+$/.test(text)) return <span dir="ltr" className="lg-num">{text}</span>;
   // « 🦆 بَطَّةٌ »: the picture drawn big, above its word.
   const picture = /^([\p{Extended_Pictographic}\u200d\uFE0F]+)\s+(.+)$/u.exec(text.trim());
   if (picture) {
     return (
       <span className="lg-pic">
         <span className="lg-pic-emoji" aria-hidden="true">{picture[1]}</span>
-        <span className="lg-pic-word">{picture[2]}</span>
+        <span className="lg-pic-word" dir="auto">{picture[2]}</span>
       </span>
     );
   }
+  // Latin words (English, French) are drawn left-to-right inside the Arabic page.
+  if (/[A-Za-zÀ-ÿœŒ]/.test(text)) return <span dir="ltr" className="lg-latin">{text}</span>;
   return <>{text}</>;
 }
 
@@ -96,7 +104,7 @@ interface MemoryCard { key: string; pair: string; text: string }
 
 export const PEEK_MS = 3000;
 
-export function MemoryBoard({ round, onMove, young }: BoardProps<MemoryRound>) {
+export function MemoryBoard({ round, onMove, voice }: BoardProps<MemoryRound>) {
   const cards = useMemo<MemoryCard[]>(
     () => shuffle(round.pairs.flatMap((p) => [{ key: `${p.id}-a`, pair: p.id, text: p.a }, { key: `${p.id}-b`, pair: p.id, text: p.b }])),
     [round],
@@ -119,7 +127,7 @@ export function MemoryBoard({ round, onMove, young }: BoardProps<MemoryRound>) {
   const flip = (card: MemoryCard) => {
     if (peek || busy.current || up.includes(card.key) || matched.includes(card.pair)) return;
     playPop();
-    if (young) readCard(card.text);
+    if (voice) readCard(card.text, voice);
     const next = [...up, card.key];
     setUp(next);
     if (next.length < 2) return;
@@ -213,7 +221,7 @@ export function MemoryBoard({ round, onMove, young }: BoardProps<MemoryRound>) {
 
 // ——————————————————— Sort ———————————————————
 
-export function SortBoard({ round, onMove, young }: BoardProps<SortRound>) {
+export function SortBoard({ round, onMove, voice }: BoardProps<SortRound>) {
   const cards = useMemo(() => shuffle(round.cards), [round]);
   const [picked, setPicked] = useState<string | null>(null);
   const [placed, setPlaced] = useState<Record<string, string>>({});
@@ -251,7 +259,7 @@ export function SortBoard({ round, onMove, young }: BoardProps<SortRound>) {
             layoutId={flyId(card.id)}
             type="button"
             data-lg-sort-card={card.id}
-            onClick={() => { playPop(); if (young) readCard(card.textAr); setPicked(card.id); }}
+            onClick={() => { playPop(); if (voice) readCard(card.textAr, voice); setPicked(card.id); }}
             initial={{ opacity: 0, y: 30, rotateX: -50 }}
             animate={
               shaking === card.id
@@ -301,7 +309,7 @@ export function SortBoard({ round, onMove, young }: BoardProps<SortRound>) {
 
 // ——————————————————— Order ———————————————————
 
-export function OrderBoard({ round, assist, onMove, young }: BoardProps<OrderRound>) {
+export function OrderBoard({ round, assist, onMove, voice }: BoardProps<OrderRound>) {
   const pool = useMemo(() => shuffle(round.cards), [round]);
   const sorted = useMemo(() => [...round.cards].sort((a, b) => a.rank - b.rank), [round]);
   const [placed, setPlaced] = useState<string[]>([]);
@@ -317,7 +325,7 @@ export function OrderBoard({ round, assist, onMove, young }: BoardProps<OrderRou
       return;
     }
     playPop();
-    if (young) readCard(card.keyAr);
+    if (voice) readCard(voice === 'ar' ? card.keyAr : card.textAr, voice);
     const next = [...placed, card.id];
     setPlaced(next);
     onMove({ kind: 'hit' });
@@ -337,7 +345,7 @@ export function OrderBoard({ round, assist, onMove, young }: BoardProps<OrderRou
               {card ? (
                 <motion.span layoutId={flyId(card.id)} transition={flight} className="lg-slot-card">
                   <span className="text-2xl" aria-hidden="true">{card.emoji}</span>
-                  <span className="lg-slot-text">{card.textAr}</span>
+                  <span className="lg-slot-text"><GameText text={card.textAr} /></span>
                   <motion.span initial={{ rotateX: 90, opacity: 0 }} animate={{ rotateX: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="lg-date">{card.keyAr}</motion.span>
                 </motion.span>
               ) : (
@@ -364,7 +372,7 @@ export function OrderBoard({ round, assist, onMove, young }: BoardProps<OrderRou
             className="lg-event"
           >
             <span className="lg-event-emoji" aria-hidden="true">{card.emoji}</span>
-            <span className="flex-1 text-start">{card.textAr}</span>
+            <span className="flex-1 text-start"><GameText text={card.textAr} /></span>
             {assist && <span className="lg-date small">{card.keyAr}</span>}
           </motion.button>
         ))}
@@ -377,7 +385,7 @@ export function OrderBoard({ round, assist, onMove, young }: BoardProps<OrderRou
 
 const cellKey = (r: number, c: number) => `${r},${c}`;
 
-export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
+export function MazeBoard({ round, onMove, voice }: BoardProps<MazeRound>) {
   const grid = round.grid;
   const goal: [number, number] = [grid.length - 1, grid[grid.length - 1].length - 1];
   const [trail, setTrail] = useState<string[]>([cellKey(0, 0)]);
@@ -416,7 +424,7 @@ export function MazeBoard({ round, onMove, young }: BoardProps<MazeRound>) {
       return;
     }
     playPop();
-    if (young) readCard(cell.t);
+    if (voice) readCard(cell.t, voice);
     setTrail([...trail, key]);
     if (round.fog) setRevealed((prev) => new Set([...prev, ...mazeNeighbours(grid, r, c).map(([y, x]) => cellKey(y, x))]));
     onMove({ kind: 'hit' });

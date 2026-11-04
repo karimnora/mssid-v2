@@ -11,6 +11,7 @@ import { recordLevel } from './LearningGameEntry';
 import { PEEK_MS } from './boards';
 import { GAME_PACKS_5AP } from '../../../data/games/packs5ap';
 import { GAME_PACKS_PRE } from '../../../data/games/packsPre';
+import { GAME_PACKS_3AP } from '../../../data/games/packs3ap';
 import type { MazeRound, MemoryRound, OrderRound, SortRound } from '../../../data/games/types';
 
 const pack = (id: string) => GAME_PACKS_5AP.find((p) => p.id === id)!;
@@ -171,6 +172,18 @@ describe('LearningGamePlayer', () => {
     click('[data-lg-card="goat-a"]');
     expect(speech.speakText).toHaveBeenCalledWith('المَاعِزُ', 'ar-SA');
     for (const [text] of vi.mocked(speech.speakText).mock.calls) expect(text).not.toMatch(/\p{Extended_Pictographic}/u);
+  });
+
+  it('language packs: a tapped English word is read with the English voice and drawn left-to-right', async () => {
+    const speech = await import('../../../utils/speech');
+    const english = GAME_PACKS_3AP.find((p) => p.id === 'game-3ap-memory-english')!;
+    const level = english.rounds.findIndex((r) => r.id === 'school');
+    render(<LearningGamePlayer pack={english} onExit={vi.fn()} startLevel={level} />);
+    await step('memory');
+    vi.mocked(speech.speakText).mockClear();
+    click('[data-lg-card="pen-a"]');
+    expect(speech.speakText).toHaveBeenCalledWith('pen', 'en-US');
+    expect(document.querySelector('[data-lg-card="pen-a"] .lg-latin')!.getAttribute('dir')).toBe('ltr');
   });
 
   it('spreads ten levels over the five difficulty tiers, two levels each', () => {

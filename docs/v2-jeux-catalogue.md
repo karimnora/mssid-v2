@@ -7,6 +7,13 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **Lot 1 — 3AP, codé le 4 novembre 2026 (`data/games/packs3ap.ts`, 4 packs × 10 niveaux), avec les premières langues étrangères :**
+> - `game-3ap-memory-english` (gratuit, anglais) : ذاكرة مطار هواري بومدين. Niveaux : couleurs, objets de l'école, famille, nombres de 1 à 10 puis de 11 à 20, nourriture, animaux et jouets, corps, formes, puis un final de 16 cartes.
+> - `game-3ap-sort-oran` : رفوف مكتبة وهران. Niveaux : جملة اسمية/فعلية، ماضٍ/مضارع، تاء، مفرد/مثنى/جمع، ماضٍ/مضارع/أمر، همزة الوصل/القطع، أسماء الإشارة، الفاعل/المفعول به، أدوات الاستفهام, puis un final sur 4 étagères de familles de mots (المشتقات).
+> - `game-3ap-order-stadium` : تذاكر ملعب 5 جويلية. Niveaux : nombres jusqu'à 99 999, pièges des zéros et des 4, prix en dinars du plus cher au moins cher, longueurs (m/cm), masses (kg/g), horaires d'une journée de match, puis un final de 8 nombres.
+> - `game-3ap-maze-tipaza` (français) : متاهة آثار تيبازة. Niveaux : la lettre a, les voyelles, Mon école, Ma famille, les animaux, À table, les nombres pairs écrits en lettres, le son « ou », les métiers, puis le son « on » dans le brouillard.
+> - Nouveau `cardLang` (`en` / `fr`) : les cartes sont lues avec la voix anglaise ou française et affichées de gauche à droite (`lg-latin`) ; Didou explique toujours en arabe. Les nombres et les heures de la frise (« 12 500 », « 07:30 ») restent de gauche à droite.
+>
 > **Lot 1 — 2AP, codé le 4 novembre 2026 (`data/games/packs2ap.ts`, 4 packs × 10 niveaux) :**
 > - `game-2ap-memory-tables` (gratuit) : ذاكرة حديقة بن عكنون. Niveaux : tables de 2, 3, 4, 5 et 10 seulement (conforme à la 2AP), addition répétée ↔ multiplication, doubles, soustractions et additions avec retenue, décomposition en centaines, dizaines et unités, puis un final mixte.
 > - `game-2ap-sort-mailboxes` : صناديق بريد تلمسان. Niveaux : لام شمسية/قمرية، مذكر/مؤنث، مفرد/جمع، اسم/فعل/حرف، تاء مربوطة/مفتوحة، الشدة، ضمائر المتكلم/المخاطب، التنوين، الاستفهام/العطف, puis un final sur 4 boîtes.

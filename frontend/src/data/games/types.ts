@@ -101,6 +101,11 @@ export interface GamePack {
    * tapped. Cards written « emoji word » are drawn as a picture above its word.
    */
   young?: boolean;
+  /**
+   * Foreign-language packs (3AP → 5AP English and French): the cards are read aloud in this
+   * language when tapped and drawn left-to-right; Didou keeps explaining in Arabic.
+   */
+  cardLang?: 'fr' | 'en';
   /** XP given once, the first time every level of the pack has been solved. */
   xp: number;
   theme: {

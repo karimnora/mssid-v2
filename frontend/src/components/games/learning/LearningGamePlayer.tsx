@@ -8,7 +8,7 @@ import { DidouPortrait } from '../../world/DidouPortrait';
 import { ModalCloseButton } from '../../ui/ModalCloseButton';
 import { speakText, stopSpeech } from '../../../utils/speech';
 import { playPop, playSoftMiss, playSoftSuccess } from '../../../utils/immersiveFeedback';
-import { MazeBoard, MemoryBoard, OrderBoard, SortBoard, type BoardMove } from './boards';
+import { MazeBoard, MemoryBoard, OrderBoard, SortBoard, type BoardMove, type CardVoice } from './boards';
 import '../../missions/mission.css';
 import './learningGames.css';
 
@@ -275,7 +275,7 @@ export const LearningGamePlayer: React.FC<{
                       <h2 className="lg-round-title">{round.titleAr}</h2>
                       {stars[round.id] ? <p className="lg-round-best" aria-label={`أَفْضَلُ نَتِيجَةٍ ${stars[round.id]} / 3`}>{'⭐'.repeat(stars[round.id])}</p> : null}
                     </div>
-                    <RoundBoard key={`${round.id}-${play}`} round={round} assist={Boolean(round.easy) || levelMisses >= 2} onMove={onMove} young={pack.young} />
+                    <RoundBoard key={`${round.id}-${play}`} round={round} assist={Boolean(round.easy) || levelMisses >= 2} onMove={onMove} voice={pack.cardLang ?? (pack.young ? 'ar' : undefined)} />
                     <AnimatePresence>{solved && <LevelClear key={`clear-${play}`} stars={solvedStars} last={isLast} />}</AnimatePresence>
                   </div>
                 ) : screen.kind === 'recap' ? (
@@ -331,7 +331,7 @@ export const LearningGamePlayer: React.FC<{
   );
 };
 
-function RoundBoard({ round, ...props }: { round: GameRound; assist: boolean; onMove: (m: BoardMove) => void; young?: boolean }) {
+function RoundBoard({ round, ...props }: { round: GameRound; assist: boolean; onMove: (m: BoardMove) => void; voice?: CardVoice }) {
   switch (round.kind) {
     case 'memory':
       return <MemoryBoard round={round} {...props} />;
