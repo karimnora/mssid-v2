@@ -36,4 +36,54 @@
 /* Inside a lesson the sentences are longer: a quieter reading face. */
 .lesson-didou .lab-guide-bubble { font-family: 'Cairo', 'Noto Naskh Arabic', system-ui, sans-serif; font-weight: 800; font-size: 16px; line-height: 1.6; text-shadow: none; }
 .lesson-illustration { margin: 0; display: flex; justify-content: center; }
-.lesson-illustration svg { filter: drop-shadow(0 6px 0 rgba(8, 12, 52, 0.12)); }
+.lesson-illustration > svg { filter: drop-shadow(0 6px 0 rgba(8, 12, 52, 0.12)); }
+
+/* Animated lesson drawings (history-geo 5AP…): each .ill-step appears in turn, LessonDidou plays a soft sound for each. */
+.lesson-illustration .ill-step {
+  opacity: 0;
+  animation: ill-in 0.55s ease-out forwards;
+  animation-delay: calc(var(--i, 0) * 0.5s + 0.15s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes ill-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.85); }
+  to { opacity: 1; transform: none; }
+}
+.lesson-illustration .ill-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ill-pulse 1.8s ease-in-out 1.5s infinite;
+}
+@keyframes ill-pulse { 50% { transform: scale(1.3); } }
+.lesson-illustration .ill-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ill-draw 1.8s ease-in-out 0.2s forwards;
+}
+@keyframes ill-draw { to { stroke-dashoffset: 0; } }
+.lesson-illustration .ill-wave {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: ill-wave 2.2s ease-in-out infinite;
+}
+@keyframes ill-wave { 50% { transform: skewY(-6deg) scaleX(0.94); } }
+.lesson-illustration .ill-sail { animation: ill-sail 5s ease-in-out infinite; }
+@keyframes ill-sail { 50% { transform: translateX(26px); } }
+.lesson-illustration-replay {
+  align-self: center;
+  min-height: 44px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 2px solid #c7d2fe;
+  background: #eef2ff;
+  color: #3730a3;
+  font: 700 14px Cairo, Tahoma, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lesson-illustration .ill-step { opacity: 1; animation: none; }
+  .lesson-illustration .ill-pulse,
+  .lesson-illustration .ill-wave,
+  .lesson-illustration .ill-sail { animation: none; }
+  .lesson-illustration .ill-draw { stroke-dashoffset: 0; animation: none; }
+}

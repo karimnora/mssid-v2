@@ -71,6 +71,17 @@
     - « الاستهلاك المفرط » et « الدارة القصيرة » remplacent des formulations fautives ; « القاطع العام » remplace « القاطع المأخذي » ;
     - les mouchoirs sont « des mouchoirs en papier jetés après usage » ;
     - le rôle de la zone pilifère et de la transpiration est reformulé.
+- [x] Contenu 5AP de qualité supérieure, lot 4 : histoire-géographie animée (4 novembre 2026) :
+  - 10 dessins animés (`lessonViewer/illustrations/historyGeo5ap.tsx`). Chaque morceau apparaît à son tour avec un petit son. Les repères pulsent, la route du الفتح se trace, les drapeaux flottent et le bateau navigue. Un bouton « 🔁 شاهد الرسم من جديد » rejoue le dessin. Tout s'arrête si l'appareil demande moins d'animations ;
+  - les cartes utilisent le vrai contour de l'Algérie (Natural Earth, `data/algeriaMapOutline.ts`) : les lieux sont placés par leur longitude et leur latitude (les 4 بايلكات, les résistances, Greenwich, le tropique du Cancer, les 3 régions, السد الأخضر) ;
+  - relecture, avec ces corrections :
+    - « ظهور المحطة التاريخية » devient « ظهور الممالك الأمازيغية » ; « Zianides », resté en français, devient « الزيانية » ;
+    - la période moderne distingue 1789 (histoire générale) et 1830 (histoire de l'Algérie) ;
+    - le consul « بوالفال » devient « دوفال », et « الثراتي » devient « الاستراتيجي » ;
+    - le congrès de la Soummam n'a pas « créé le FLN et l'ALN », qui existaient déjà en 1954 : il a organisé l'ALN et créé le CNRA et le CCE ;
+    - « جولية » devient « جويلية » (20 fois), « 1,5 مليون » devient « مليون ونصف مليون شهيد », et les nombres sont écrits à l'algérienne ;
+    - fautes corrigées : المشاريوع, الرئيسييين, لملائمة, انزال, دشت.
+  - correction d'affichage : l'ombre des dessins ne s'applique plus qu'au cadre, sinon les cartes zoomées débordaient.
 - [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.

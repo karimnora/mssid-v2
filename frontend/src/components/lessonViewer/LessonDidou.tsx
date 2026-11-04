@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { playPop } from '../../utils/immersiveFeedback';
 import type { CourseLesson } from '../../types';
 import type { TabId } from './shared';
 import { DidouGuide, type DidouMood } from '../immersive/DidouGuide';
@@ -37,6 +38,20 @@ export function LessonDidou({ lesson, tab }: { lesson: CourseLesson; tab: TabId 
   const line = didouLineForStep(lesson, tab);
   const [mood, setMood] = useState<DidouMood>('talk');
   const Illustration = tab === 'explanation' ? LESSON_ILLUSTRATIONS[lesson.id] : undefined;
+  const figureRef = useRef<HTMLElement>(null);
+  const [replay, setReplay] = useState(0);
+  const [animated, setAnimated] = useState(false);
+
+  // Animated drawings: a soft sound each time a piece appears (timing matches .ill-step in didouGuide.css).
+  useEffect(() => {
+    const figure = figureRef.current;
+    if (!figure) return;
+    const steps = new Set(Array.from(figure.querySelectorAll<SVGElement>('.ill-step')).map(el => el.style.getPropertyValue('--i')));
+    setAnimated(steps.size > 0);
+    if (!steps.size || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    const timers = Array.from(steps).slice(0, 10).map(i => window.setTimeout(() => playPop(), Number(i || 0) * 500 + 200));
+    return () => timers.forEach(t => window.clearTimeout(t));
+  }, [lesson.id, tab, replay]);
 
   const read = () => {
     if (!line) return;
@@ -63,9 +78,16 @@ export function LessonDidou({ lesson, tab }: { lesson: CourseLesson; tab: TabId 
         <DidouGuide line={line} mood={mood} lang={hasArabic(line) ? 'ar' : 'fr'} listenLabel="اِسْتَمِعْ إِلَى دِيدُو" onReplay={read} />
       )}
       {Illustration && (
-        <figure className="lesson-illustration" data-lesson-illustration={lesson.id}>
+        <figure key={replay} ref={figureRef} className="lesson-illustration" data-lesson-illustration={lesson.id}>
           <Illustration />
         </figure>
+      )}
+      {Illustration && animated && (
+        <div className="flex justify-center">
+          <button type="button" className="lesson-illustration-replay" onClick={() => setReplay(n => n + 1)} data-illustration-replay>
+            🔁 شَاهِدِ الرَّسْمَ مِنْ جَدِيدٍ
+          </button>
+        </div>
       )}
     </div>
   );
