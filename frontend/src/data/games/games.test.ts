@@ -4,15 +4,18 @@ import { PRESCHOOL_MODULES } from '../preschool';
 import { GAME_PACKS, canOpenPack, mazeIsSolvable, packsForGrade, packsForLesson } from './index';
 import type { GameRound, MazeRound, MemoryRound } from './types';
 
-/** « 3 × 4 », « 38 + 12 », « 60 − 10 », « 4 + 4 + 4 » → their result (× before + and −). */
+/** « 3 × 4 », « 42 ÷ 7 », « 38 + 12 », « 5 × 3 + 2 » → their result (× and ÷ before + and −). */
 function evaluate(t: string): number | null {
-  if (!/^\d+(\s*[×+−-]\s*\d+)+$/.test(t)) return null;
+  if (!/^\d+(\s*[×÷+−-]\s*\d+)+$/.test(t)) return null;
   return t
     .replace(/\s/g, '')
     .split(/(?=[+−-])/)
     .reduce((total, part) => {
       const sign = part.startsWith('−') || part.startsWith('-') ? -1 : 1;
-      const product = part.replace(/^[+−-]/, '').split('×').reduce((p, f) => p * Number(f), 1);
+      const product = part
+        .replace(/^[+−-]/, '')
+        .split(/(?=[×÷])/)
+        .reduce((p, f) => (f.startsWith('÷') ? p / Number(f.slice(1)) : p * Number(f.replace('×', ''))), 1);
       return total + sign * product;
     }, 0);
 }

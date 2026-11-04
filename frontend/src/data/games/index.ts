@@ -3,12 +3,13 @@ import { GAME_PACKS_PRE } from './packsPre';
 import { GAME_PACKS_1AP } from './packs1ap';
 import { GAME_PACKS_2AP } from './packs2ap';
 import { GAME_PACKS_3AP } from './packs3ap';
+import { GAME_PACKS_4AP } from './packs4ap';
 import { GAME_PACKS_5AP } from './packs5ap';
 
 export type { GamePack, GameRound, GameEngine, GameGrade, MazeCell } from './types';
 
 /** Every learning-game pack, in the order they are shown. */
-export const GAME_PACKS: GamePack[] = [...GAME_PACKS_PRE, ...GAME_PACKS_1AP, ...GAME_PACKS_2AP, ...GAME_PACKS_3AP, ...GAME_PACKS_5AP];
+export const GAME_PACKS: GamePack[] = [...GAME_PACKS_PRE, ...GAME_PACKS_1AP, ...GAME_PACKS_2AP, ...GAME_PACKS_3AP, ...GAME_PACKS_4AP, ...GAME_PACKS_5AP];
 
 export function packsForGrade(grade: GameGrade): GamePack[] {
   return GAME_PACKS.filter((pack) => pack.grade === grade);

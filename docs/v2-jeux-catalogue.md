@@ -7,6 +7,13 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **Lot 1 — 4AP, codé le 4 novembre 2026 (`data/games/packs4ap.ts`, 4 packs × 10 niveaux). Avec ce lot, tous les niveaux du préscolaire à la 5AP ont leurs 4 aventures :**
+> - `game-4ap-memory-tables` (gratuit) : ذاكرة مصنع حلوى البليدة. Niveaux : tables de 6 à 9, les produits difficiles, la division liée à la multiplication, × 10 et × 100, les fractions équivalentes, la division euclidienne (17 = 5 × 3 + 2), puis un final mixte.
+> - `game-4ap-sort-cirta` : خزانة مخطوطات سيرتا. Niveaux : كان/إن وأخواتهما، صحيح/معتل، الأسماء الموصولة، الهمزة المتوسطة، الفاعل/المفعول به، الصفة/الموصوف، حروف العطف/الجر، أقسام الكلام المتنكرة، اسم وخبر كان وإن, puis un final sur les 4 cas (مرفوع / منصوب / مجرور / مجزوم).
+> - `game-4ap-order-science` : مختبر تمنراست. Les suites suivent mot pour mot les leçons de sciences de 4AP : la journée, la mastication, l'expérience de la bougie, les états de l'eau, le cycle de l'eau, la digestion, les saisons, la bouchée jusqu'aux intestins, puis le voyage d'une goutte d'eau en 8 étapes. La 5AP couvrant déjà l'histoire, les leçons d'histoire de 4AP ne donnaient que deux dates.
+> - `game-4ap-maze-english` : متاهة قصر الرياس. Niveaux : couleurs, nombres, famille, classe, pièces de la maison, nourriture, animaux de compagnie ou sauvages, loisirs, verbes de la routine, puis l'heure (« o'clock » ou « half past ») dans le brouillard.
+> - Le test de contenu calcule maintenant aussi les divisions (« 42 ÷ 7 »).
+>
 > **Lot 1 — 3AP, codé le 4 novembre 2026 (`data/games/packs3ap.ts`, 4 packs × 10 niveaux), avec les premières langues étrangères :**
 > - `game-3ap-memory-english` (gratuit, anglais) : ذاكرة مطار هواري بومدين. Niveaux : couleurs, objets de l'école, famille, nombres de 1 à 10 puis de 11 à 20, nourriture, animaux et jouets, corps, formes, puis un final de 16 cartes.
 > - `game-3ap-sort-oran` : رفوف مكتبة وهران. Niveaux : جملة اسمية/فعلية، ماضٍ/مضارع، تاء، مفرد/مثنى/جمع، ماضٍ/مضارع/أمر، همزة الوصل/القطع، أسماء الإشارة، الفاعل/المفعول به، أدوات الاستفهام, puis un final sur 4 étagères de familles de mots (المشتقات).
