@@ -10,6 +10,7 @@ import { speakText, stopSpeech } from '../../utils/speech';
 import { playPop, playSoftMiss, playSoftSuccess } from '../../utils/immersiveFeedback';
 import { parseChildNumber } from '../../utils/childNumber';
 import type { PracticeResult } from '../../utils/competenceProgress';
+import { Box3d, CoachStrip, Date3d, HintLadder, MissionIsland, StarBurst, TreasureEnd, type IslandStop } from './MissionQuest';
 import './mission.css';
 
 /** What a widget reports: a miss (first one only goes to the notebook) or the solution. */
@@ -47,6 +48,11 @@ export const MissionPlayer: React.FC<{
   const misses = useRef<Record<string, number>>({});
   const [firstTry, setFirstTry] = useState<Record<string, boolean>>({});
   const [finished, setFinished] = useState(false);
+  // Coach (maquette C): right answers in a row, help ladder rungs opened, a burst on each success.
+  const [streak, setStreak] = useState(0);
+  const [rungs, setRungs] = useState(0);
+  const hinted = useRef<Record<string, boolean>>({});
+  const [burst, setBurst] = useState(0);
   const scene = mission.scenes[index];
   const challengeIds = useMemo(() => mission.scenes.filter((s) => isItem(s) && s.challenge).map((s) => s.id), [mission]);
   const stars = Math.min(3, challengeIds.filter((id) => firstTry[id]).length);
@@ -58,6 +64,7 @@ export const MissionPlayer: React.FC<{
 
   useEffect(() => {
     setSolved(false);
+    setRungs(0);
     setRevealed(1);
     setMood('talk');
     setLine(scene.kind === 'explain' ? `${scene.sayAr} ${scene.steps[0].sayAr}` : scene.sayAr);
@@ -71,10 +78,14 @@ export const MissionPlayer: React.FC<{
       playSoftMiss();
       setMood('think');
       setLine(n >= 2 ? `${r.whyAr} ${item.hintAr}` : r.whyAr);
+      if (n >= 2) setRungs((open) => Math.max(open, 1));
+      setStreak(0);
       if (n === 1) onResult?.({ outcome: 'fail', exerciseId });
       return;
     }
-    const clean = !misses.current[item.id];
+    const clean = !misses.current[item.id] && !hinted.current[item.id];
+    setStreak((s) => (clean ? s + 1 : 0));
+    setBurst((b) => b + 1);
     setFirstTry((prev) => ({ ...prev, [item.id]: clean }));
     playSoftSuccess();
     setMood('happy');
@@ -101,6 +112,13 @@ export const MissionPlayer: React.FC<{
     }
   };
 
+  const stops: IslandStop[] = mission.scenes.map((s, i) => ({
+    id: s.id,
+    state: finished || i < index ? 'done' : i === index ? 'now' : 'todo',
+    challenge: isItem(s) && Boolean(s.challenge),
+    clean: isItem(s) && s.id in firstTry ? firstTry[s.id] : undefined,
+  }));
+
   const Art = scene.kind === 'story' && scene.artLessonId ? LESSON_ILLUSTRATIONS[scene.artLessonId] : undefined;
 
   return createPortal(
@@ -115,11 +133,8 @@ export const MissionPlayer: React.FC<{
           </div>
           <span className="w-12" />
         </header>
-        <ol className="mission-beads" aria-label="تقدّم المهمة">
-          {mission.scenes.map((s, i) => (
-            <li key={s.id} data-state={i < index || finished ? 'done' : i === index ? 'now' : 'todo'} data-challenge={isItem(s) && s.challenge ? '' : undefined} />
-          ))}
-        </ol>
+        <MissionIsland stops={stops} finished={finished} didouMood={mood === 'think' ? 'think' : 'happy'} />
+        <CoachStrip streak={streak} stars={stars} />
 
         <DidouGuide line={line} mood={mood} lang="ar" listenLabel="اسْتَمِعْ إِلَى دِيدُو" onReplay={() => say(line)} />
 
@@ -133,8 +148,9 @@ export const MissionPlayer: React.FC<{
             className="mission-card"
             data-scene={finished ? 'end' : scene.kind}
           >
+            <StarBurst burst={burst} />
             {finished ? (
-              <EndCard stars={stars} xp={mission.xp} onReplay={() => { misses.current = {}; setFirstTry({}); setFinished(false); setIndex(0); setLine(mission.scenes[0].sayAr); }} onExit={onExit} />
+              <EndCard stars={stars} xp={mission.xp} onReplay={() => { misses.current = {}; hinted.current = {}; setFirstTry({}); setStreak(0); setFinished(false); setIndex(0); setLine(mission.scenes[0].sayAr); }} onExit={onExit} />
             ) : scene.kind === 'story' ? (
               Art ? <figure className="lesson-illustration"><Art /></figure> : <p className="text-6xl text-center">{scene.emoji ?? '🦊'}</p>
             ) : scene.kind === 'explain' ? (
@@ -151,7 +167,22 @@ export const MissionPlayer: React.FC<{
                 {scene.pointsAr.map((p) => <p key={p} className="mission-recap-point">✓ {p}</p>)}
               </div>
             ) : (
-              <ItemWidget key={scene.id} item={scene} onReport={(r) => report(scene, r)} />
+              <>
+                <ItemWidget key={scene.id} item={scene} onReport={(r) => report(scene, r)} />
+                {!solved && (
+                  <HintLadder
+                    rungs={ladderFor(scene)}
+                    opened={rungs}
+                    onOpen={(n) => {
+                      playPop();
+                      hinted.current[scene.id] = true;
+                      setRungs(n);
+                      setMood('think');
+                      setLine(ladderFor(scene)[n - 1].text);
+                    }}
+                  />
+                )}
+              </>
             )}
           </motion.section>
         </AnimatePresence>
@@ -181,18 +212,21 @@ export const MissionPlayer: React.FC<{
 function EndCard({ stars, xp, onReplay, onExit }: { stars: number; xp: number; onReplay: () => void; onExit: () => void }) {
   return (
     <div className="text-center space-y-4" data-mission-end={stars}>
-      <div className="flex justify-center gap-2 text-5xl" aria-label={`${stars} / 3`}>
-        {[0, 1, 2].map((i) => (
-          <motion.span key={i} initial={{ scale: 0, rotate: -40 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3 + i * 0.25, type: 'spring' }} className={i < stars ? '' : 'opacity-25 grayscale'}>⭐</motion.span>
-        ))}
-      </div>
-      <p className="text-lg font-black text-slate-900">+{xp} XP</p>
+      <TreasureEnd stars={stars} xp={xp} />
       <div className="grid grid-cols-2 gap-3">
         <button type="button" onClick={onReplay} className="mission-secondary">🔁 أَعِدِ المُهِمَّةَ</button>
         <button type="button" onClick={onExit} className="mission-next">✓ أَنْهَيْتُ</button>
       </div>
     </div>
   );
+}
+
+/** The help ladder of an item: the hint, then the worked example and the steps when the mission has them. */
+function ladderFor(item: MissionItem): { label: string; text: string }[] {
+  const rungs = [{ label: 'فِكْرَةٌ', text: item.hintAr }];
+  if (item.exampleAr) rungs.push({ label: 'مِثَالٌ', text: item.exampleAr });
+  if (item.stepsAr?.length) rungs.push({ label: 'خُطْوَةً بِخُطْوَةٍ', text: item.stepsAr.join(' ← ') });
+  return rungs;
 }
 
 function ItemWidget({ item, onReport }: { item: MissionItem; onReport: (r: Report) => void }) {
@@ -407,13 +441,13 @@ function GroupWidget({ item, onReport }: { item: GroupItem; onReport: (r: Report
       <div className="mission-heap" aria-label={`${left}`}>
         <span className="mission-heap-count">{left}</span>
         <div className="flex flex-wrap gap-0.5 justify-center">
-          {Array.from({ length: shown }, (_, i) => <span key={i} className="text-lg leading-none">{item.unitEmoji}</span>)}
+          {Array.from({ length: shown }, (_, i) => (item.unitArt === 'date' ? <Date3d key={i} /> : <span key={i} className="text-lg leading-none">{item.unitEmoji}</span>))}
           {left > shown && <span className="text-sm font-black text-slate-500">+{left - shown}</span>}
         </div>
       </div>
       <div className="flex flex-wrap gap-1.5 justify-center min-h-[40px]">
         {Array.from({ length: boxes }, (_, i) => (
-          <motion.span key={i} initial={{ scale: 0, y: -20 }} animate={{ scale: 1, y: 0 }} className="mission-box">{item.size}</motion.span>
+          <motion.span key={i} initial={{ scale: 0, y: -30, rotate: -20 }} animate={{ scale: 1, y: 0, rotate: 0 }} transition={{ type: 'spring', stiffness: 320, damping: 14 }} className="mission-box3d"><Box3d label={item.size} /></motion.span>
         ))}
       </div>
       {!full ? (

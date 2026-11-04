@@ -93,3 +93,44 @@
 @media (prefers-reduced-motion: reduce) {
   .mission-beads li { transition: none; }
 }
+
+/* Quest look (maquette B + C): the island, the coach, the help ladder, 3D boxes, the burst, the chest. */
+.mission-island { border-radius: 26px; overflow: hidden; box-shadow: 0 8px 0 rgba(8, 12, 52, 0.35), 0 18px 30px rgba(8, 12, 52, 0.3); border: 3px solid rgba(255, 255, 255, 0.55); }
+.mission-island svg { display: block; }
+.mission-waves { animation: mission-waves 4s ease-in-out infinite; }
+.mission-stop-glow { animation: mission-glow 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.mission-didou-token { animation: mission-bob 1.6s ease-in-out infinite; }
+.mission-chest-sparkles { animation: mission-twinkle 1.2s ease-in-out infinite; }
+@keyframes mission-waves { 50% { transform: translateX(6px); } }
+@keyframes mission-glow { 50% { transform: scale(1.18); opacity: 0.65; } }
+@keyframes mission-bob { 50% { transform: translateY(-4px); } }
+@keyframes mission-twinkle { 50% { opacity: 0.3; } }
+
+.mission-coach { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mission-streak {
+  display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92); color: #9a4a00; font-weight: 900; font-size: 15px; box-shadow: 0 3px 0 rgba(8, 12, 52, 0.3);
+}
+.mission-coach-stars { display: inline-flex; gap: 2px; }
+
+.mission-card { position: relative; }
+.mission-burst { position: absolute; inset: 0; pointer-events: none; display: grid; place-items: center; overflow: visible; z-index: 2; }
+.mission-burst-piece { position: absolute; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2)); }
+
+.mission-ladder { margin-top: 14px; border-radius: 20px; background: #eef6ff; border: 2px solid #bfdbfe; padding: 10px 12px; }
+.mission-ladder-title { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 900; color: #1e3a8a; margin: 0 0 8px; }
+.mission-ladder-rungs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mission-rung {
+  min-height: 48px; border-radius: 14px; border: 2px solid #bfdbfe; background: #ffffff; color: #1e3a8a;
+  font-family: inherit; font-weight: 900; font-size: 13px; cursor: pointer; box-shadow: 0 3px 0 #bfdbfe;
+}
+.mission-rung.open { background: #dbeafe; border-color: #3b82f6; box-shadow: 0 3px 0 #3b82f6; }
+.mission-rung:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
+.mission-ladder-text { margin: 10px 0 0; font-size: 15px; font-weight: 800; line-height: 1.7; color: #0f172a; }
+
+.mission-box3d { display: inline-grid; filter: drop-shadow(0 4px 3px rgba(80, 40, 0, 0.25)); }
+.mission-treasure { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-waves, .mission-stop-glow, .mission-didou-token, .mission-chest-sparkles { animation: none; }
+}

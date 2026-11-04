@@ -25,6 +25,7 @@ export const MATH_5AP_MISSIONS: Mission[] = [
         total: 157,
         size: 12,
         unitEmoji: '🌴',
+        unitArt: 'date',
         boxLabelAr: 'امْلَأْ عُلْبَةً',
         boxesAnswer: 13,
         restAnswer: 1,

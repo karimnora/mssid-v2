@@ -63,13 +63,26 @@ describe('Didou missions content', () => {
     }
   });
 
+  it('writes big numbers with the Algerian thin space, never the source underscore', () => {
+    for (const mission of MISSIONS) expect(JSON.stringify(mission), mission.id).not.toMatch(/d_d/);
+  });
+
+  it('covers several trimester 1 lessons of 5AP with the help ladder', () => {
+    const t1 = MISSIONS.filter((m) => COURSES_DATA.find((l) => l.id === m.lessonId)?.trimester === 1);
+    expect(t1.map((m) => m.lessonId)).toEqual(expect.arrayContaining(['math-5ap-large-numbers', 'arabic-5ap-passive-voice', 'arabic-5ap-sentence-components']));
+    for (const mission of t1.filter((m) => m.id !== 'mission-arabic-5ap-sentence')) {
+      const items = mission.scenes.filter(isItem);
+      expect(items.some((s) => s.exampleAr || s.stepsAr?.length), mission.id).toBe(true);
+    }
+  });
+
   it('keeps every written calculation of the maths missions true', () => {
     let checked = 0;
     for (const mission of MISSIONS.filter((m) => m.subject === 'math')) {
       const texts = mission.scenes.flatMap((s) => [
         s.sayAr,
         ...(s.kind === 'explain' ? s.steps.flatMap((step) => [step.showAr, step.sayAr]) : []),
-        ...(isItem(s) ? [s.successAr, s.hintAr] : []),
+        ...(isItem(s) ? [s.successAr, s.hintAr, s.exampleAr ?? '', ...(s.stepsAr ?? [])] : []),
         ...(s.kind === 'choose' ? s.options.map((o) => o.whyAr ?? '') : []),
         ...(s.kind === 'numeric' ? (s.mistakes ?? []).map((m) => m.whyAr) : []),
       ]);

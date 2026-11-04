@@ -30,8 +30,12 @@ interface ItemBase {
   sayAr: string;
   /** Short written task under Didou. */
   promptAr: string;
-  /** Second wrong try: a nudge towards the method, not the answer. */
+  /** Second wrong try: a nudge towards the method, not the answer. Rung 1 of the help ladder. */
   hintAr: string;
+  /** Rung 2 of the help ladder: a worked example with other numbers or words. */
+  exampleAr?: string;
+  /** Rung 3 of the help ladder: the method step by step (still lets the child conclude). */
+  stepsAr?: string[];
   /** Said when it is right. */
   successAr: string;
   /** Counts towards the stars of the final challenge. */
@@ -72,6 +76,8 @@ export interface GroupItem extends ItemBase {
   total: number;
   size: number;
   unitEmoji: string;
+  /** Drawn in 3D instead of the emoji (heap of the group widget). */
+  unitArt?: 'date';
   boxLabelAr: string;
   /** Then the child types how many boxes and how many left over. */
   boxesAnswer: number;
