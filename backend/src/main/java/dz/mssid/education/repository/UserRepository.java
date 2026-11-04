@@ -25,4 +25,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     long countByRole_Name(Role.RoleName roleName);
 
     List<User> findByCreatedAtGreaterThanEqualAndCreatedAtLessThan(LocalDateTime from, LocalDateTime until);
+
+    /** Families that receive the weekly report: a parent e-mail, not opted out, not already sent since {@code sentBefore}. */
+    @org.springframework.data.jpa.repository.Query("select u from User u where u.parentEmail is not null and u.parentEmail <> '' and u.weeklyReportOptOut = false and (u.weeklyReportLastSentAt is null or u.weeklyReportLastSentAt < :sentBefore) order by u.id")
+    List<User> findWeeklyReportRecipients(@org.springframework.data.repository.query.Param("sentBefore") LocalDateTime sentBefore);
 }

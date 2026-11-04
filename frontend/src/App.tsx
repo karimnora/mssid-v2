@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import { EmailDeepLink } from './components/EmailDeepLink';
 import { motion } from 'motion/react';
 import { Capacitor } from '@capacitor/core';
 import { CourseLesson, SubjectId, SubjectInfo } from './types';
@@ -893,6 +894,7 @@ function AppContent() {
         </Suspense>
       )}
 
+      <EmailDeepLink onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} />
       <AppModals
         currentLesson={nav.selectedLesson}
         courses={coursesData ? publishableCourses : null}

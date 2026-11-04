@@ -1,0 +1,380 @@
+[
+  {
+    "id": "math-1ap-c-spatial-position",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أُحَدِّدُ مَوْقِعَ شَيْءٍ: فَوْقَ، تَحْتَ، أَمَامَ، وَرَاءَ، بَيْنَ، يَمِينٌ، يَسَارٌ، دَاخِلٌ، خَارِجٌ",
+    "labelFr": "Situer un objet : dessus, dessous, devant, derrière, entre, droite, gauche, dedans, dehors"
+  },
+  {
+    "id": "math-1ap-c-shapes",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أَتَعَرَّفُ عَلَى الأَشْكَالِ: مُرَبَّعٌ، مُسْتَطِيلٌ، مُثَلَّثٌ، دَائِرَةٌ",
+    "labelFr": "Reconnaître le carré, le rectangle, le triangle et le cercle"
+  },
+  {
+    "id": "math-1ap-c-ruler-lines",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أُحَاذِي نِقَاطًا وَأَرْسُمُ خَطًّا مُسْتَقِيمًا بِالمِسْطَرَةِ",
+    "labelFr": "Aligner des points et tracer une ligne droite à la règle"
+  },
+  {
+    "id": "math-1ap-c-compare-magnitudes",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أُقَارِنُ الأَطْوَالَ وَالكُتَلَ: أَطْوَلُ، أَقْصَرُ، أَثْقَلُ، أَخَفُّ",
+    "labelFr": "Comparer des longueurs et des masses"
+  },
+  {
+    "id": "math-1ap-c-count-quantities",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أَعُدُّ كَمِّيَّةً وَأَرْبِطُهَا بِعَدَدِهَا",
+    "labelFr": "Dénombrer une collection et lui associer son nombre"
+  },
+  {
+    "id": "math-1ap-c-numbers-read-write",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أَقْرَأُ وَأَكْتُبُ الأَعْدَادَ الأَصْغَرَ مِنْ 100 بِالأَرْقَامِ وَبِالحُرُوفِ",
+    "labelFr": "Lire et écrire les nombres inférieurs à 100, en chiffres et en lettres"
+  },
+  {
+    "id": "math-1ap-c-place-value",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أُفَكِّكُ عَدَدًا إِلَى عَشَرَاتٍ وَوَحَدَاتٍ",
+    "labelFr": "Décomposer un nombre en dizaines et unités"
+  },
+  {
+    "id": "math-1ap-c-number-order",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أُرَتِّبُ الأَعْدَادَ وَأَجِدُ مَا قَبْلَ وَمَا بَعْدَ",
+    "labelFr": "Ranger des nombres, trouver le précédent et le suivant"
+  },
+  {
+    "id": "math-1ap-c-compare-numbers",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أُقَارِنُ عَدَدَيْنِ أَوْ كَمِّيَّتَيْنِ بِـ > وَ < وَ =",
+    "labelFr": "Comparer deux nombres ou deux quantités avec >, < et ="
+  },
+  {
+    "id": "math-1ap-c-addition",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أَجْمَعُ دُونَ احْتِفَاظٍ",
+    "labelFr": "Additionner sans retenue"
+  },
+  {
+    "id": "math-1ap-c-subtraction",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أَطْرَحُ: أُنْقِصُ، أُخْرِجُ، أَرْجِعُ",
+    "labelFr": "Soustraire : retirer, enlever, reculer"
+  },
+  {
+    "id": "math-1ap-c-problem-solving",
+    "grade": "1AP",
+    "subject": "math",
+    "labelAr": "أَحُلُّ مَسْأَلَةً بَسِيطَةً وَأَخْتَارُ الجَمْعَ أَوِ الطَّرْحَ",
+    "labelFr": "Résoudre un problème simple en choisissant l’addition ou la soustraction"
+  },
+  {
+    "id": "math-2ap-c-numbers-999",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَقْرَأُ وَأَكْتُبُ الأَعْدَادَ الأَصْغَرَ مِنْ 1000 وَأُفَكِّكُهَا إِلَى مِئَاتٍ وَعَشَرَاتٍ وَآحَادٍ",
+    "labelFr": "Lire, écrire et décomposer les nombres inférieurs à 1000"
+  },
+  {
+    "id": "math-2ap-c-addition-carry",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَجْمَعُ بِالاِحْتِفَاظِ",
+    "labelFr": "Additionner avec retenue"
+  },
+  {
+    "id": "math-2ap-c-subtraction",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَطْرَحُ دُونَ احْتِفَاظٍ وَبِالاِحْتِفَاظِ",
+    "labelFr": "Soustraire sans et avec retenue"
+  },
+  {
+    "id": "math-2ap-c-multiplication",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَفْهَمُ الضَّرْبَ كَجَمْعٍ مُكَرَّرٍ (جَدَاوِلُ 2 وَ3 وَ4 وَ5 وَ10)",
+    "labelFr": "Comprendre la multiplication comme addition répétée (tables 2, 3, 4, 5, 10)"
+  },
+  {
+    "id": "math-2ap-c-right-angle",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَتَعَرَّفُ عَلَى الزَّاوِيَةِ القَائِمَةِ بِالمِرْوَاةِ وَعَلَى الأَشْكَالِ",
+    "labelFr": "Reconnaître l’angle droit à l’équerre et les formes"
+  },
+  {
+    "id": "math-2ap-c-units",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَسْتَعْمِلُ الوَحَدَاتِ: m وَcm وَg وَkg",
+    "labelFr": "Utiliser les unités m, cm, g et kg"
+  },
+  {
+    "id": "math-2ap-c-clock",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَقْرَأُ السَّاعَةَ تَمَاماً وَعَلَى النِّصْفِ",
+    "labelFr": "Lire l’heure pile et la demie"
+  },
+  {
+    "id": "math-2ap-c-money",
+    "grade": "2AP",
+    "subject": "math",
+    "labelAr": "أَحْسُبُ بِالدِّينَارِ الجَزَائِرِيِّ",
+    "labelFr": "Calculer en dinar algérien"
+  },
+  {
+    "id": "math-5ap-c-large-numbers",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَقْرَأُ وَأَكْتُبُ الأَعْدَادَ الطَّبِيعِيَّةَ إِلَى المِلْيَارِ",
+    "labelFr": "Lire et écrire les nombres naturels jusqu’au milliard"
+  },
+  {
+    "id": "math-5ap-c-operations",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُنْجِزُ الجَمْعَ وَالطَّرْحَ وَالضَّرْبَ عَلَى الأَعْدَادِ الطَّبِيعِيَّةِ",
+    "labelFr": "Poser addition, soustraction et multiplication des nombres naturels"
+  },
+  {
+    "id": "math-5ap-c-division",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُنْجِزُ القِسْمَةَ الإِقْلِيدِيَّةَ وَأَتَحَقَّقُ مِنْ نَتِيجَتِهَا",
+    "labelFr": "Poser la division euclidienne et la vérifier"
+  },
+  {
+    "id": "math-5ap-c-fractions",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَقْرَأُ الكُسُورَ وَأُقَارِنُهَا وَأَحْسُبُ بِهَا",
+    "labelFr": "Lire, comparer et calculer avec les fractions"
+  },
+  {
+    "id": "math-5ap-c-decimals",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُنْجِزُ العَمَلِيَّاتِ عَلَى الأَعْدَادِ العَشْرِيَّةِ",
+    "labelFr": "Calculer avec les nombres décimaux"
+  },
+  {
+    "id": "math-5ap-c-proportion",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَحُلُّ وَضْعِيَّاتِ التَّنَاسُبِيَّةِ (الرُّجُوعُ إِلَى الوَحْدَةِ)",
+    "labelFr": "Résoudre une situation de proportionnalité (règle de trois)"
+  },
+  {
+    "id": "math-5ap-c-percentage",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَحْسُبُ النِّسْبَةَ المِئَوِيَّةَ وَأَسْتَعْمِلُ المِقْيَاسَ",
+    "labelFr": "Calculer un pourcentage et utiliser une échelle"
+  },
+  {
+    "id": "math-5ap-c-data",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُنَظِّمُ مُعْطَيَاتٍ فِي جَدْوَلٍ أَوْ مُخَطَّطٍ",
+    "labelFr": "Organiser des données dans un tableau ou un diagramme"
+  },
+  {
+    "id": "math-5ap-c-measures",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُحَوِّلُ وَحَدَاتِ الطُّولِ وَالكُتْلَةِ وَالسِّعَةِ",
+    "labelFr": "Convertir longueurs, masses et capacités"
+  },
+  {
+    "id": "math-5ap-c-durations",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَحْسُبُ المُدَدَ وَأُحَوِّلُ وَحَدَاتِ الزَّمَنِ",
+    "labelFr": "Calculer des durées et convertir les unités de temps"
+  },
+  {
+    "id": "math-5ap-c-areas",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَحْسُبُ مُحِيطَ وَمِسَاحَةَ المُرَبَّعِ وَالمُسْتَطِيلِ",
+    "labelFr": "Calculer périmètre et aire du carré et du rectangle"
+  },
+  {
+    "id": "math-5ap-c-circle",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أَرْسُمُ الدَّائِرَةَ وَأُمَيِّزُ مَرْكَزَهَا وَنِصْفَ قُطْرِهَا وَقُطْرَهَا",
+    "labelFr": "Tracer un cercle, connaître centre, rayon et diamètre"
+  },
+  {
+    "id": "math-5ap-c-geometry",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُمَيِّزُ المُسْتَقِيمَاتِ المُتَعَامِدَةَ وَالمُتَوَازِيَةَ وَالزَّوَايَا",
+    "labelFr": "Reconnaître droites perpendiculaires, parallèles et angles"
+  },
+  {
+    "id": "math-5ap-c-polygons",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُمَيِّزُ المُضَلَّعَاتِ وَأَنْوَاعَ المُثَلَّثَاتِ",
+    "labelFr": "Reconnaître les polygones et les sortes de triangles"
+  },
+  {
+    "id": "math-5ap-c-symmetry",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُكْمِلُ شَكْلاً بِالتَّنَاظُرِ وَأَتَعَرَّفُ عَلَى المُجَسَّمَاتِ",
+    "labelFr": "Compléter une figure par symétrie, reconnaître les solides"
+  },
+  {
+    "id": "math-5ap-c-volumes",
+    "grade": "5AP",
+    "subject": "math",
+    "labelAr": "أُقَدِّرُ الحَجْمَ بِعَدِّ مُكَعَّبَاتِ الوَحْدَةِ (دُونَ قَانُونٍ جَاهِزٍ)",
+    "labelFr": "Estimer un volume en comptant des cubes-unités, sans formule"
+  },
+  {
+    "id": "ar-1ap-c-letters",
+    "grade": "1AP",
+    "subject": "arabic",
+    "labelAr": "أَتَعَرَّفُ عَلَى الحُرُوفِ وَأَصْوَاتِهَا وَأَشْكَالِهَا فِي بِدَايَةِ الكَلِمَةِ وَوَسَطِهَا وَآخِرِهَا",
+    "labelFr": "Reconnaître les lettres, leurs sons et leurs formes en début, milieu et fin de mot"
+  },
+  {
+    "id": "ar-1ap-c-harakat",
+    "grade": "1AP",
+    "subject": "arabic",
+    "labelAr": "أَقْرَأُ بِالحَرَكَاتِ القَصِيرَةِ: فَتْحَة، ضَمَّة، كَسْرَة، سُكُون",
+    "labelFr": "Lire avec les voyelles brèves : fatha, damma, kasra, soukoun"
+  },
+  {
+    "id": "ar-1ap-c-madd",
+    "grade": "1AP",
+    "subject": "arabic",
+    "labelAr": "أَقْرَأُ المُدُودَ: بِالأَلِفِ وَالوَاوِ وَاليَاءِ، وَالتَّنْوِينَ",
+    "labelFr": "Lire les voyelles longues et le tanwîn"
+  },
+  {
+    "id": "ar-1ap-c-themes",
+    "grade": "1AP",
+    "subject": "arabic",
+    "labelAr": "أُعَبِّرُ شَفَوِيّاً حَوْلَ المَدْرَسَةِ وَالعَائِلَةِ وَالحَيِّ وَالصِّحَّةِ وَالطَّبِيعَةِ وَالأَعْيَادِ",
+    "labelFr": "S’exprimer à l’oral sur l’école, la famille, le quartier, la santé, la nature et les fêtes"
+  },
+  {
+    "id": "ar-5ap-c-irab",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُمَيِّزُ الجُمْلَةَ الفِعْلِيَّةَ وَالاسْمِيَّةَ وَأُعْرِبُ عَنَاصِرَهُمَا",
+    "labelFr": "Distinguer phrase verbale et nominale, analyser leurs éléments"
+  },
+  {
+    "id": "ar-5ap-c-nawasikh",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُعْرِبُ الجُمْلَةَ بَعْدَ كَانَ وَأَخَوَاتِهَا وَإِنَّ وَأَخَوَاتِهَا",
+    "labelFr": "Analyser la phrase après كان et إنّ et leurs sœurs"
+  },
+  {
+    "id": "ar-5ap-c-passive",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أَصُوغُ المَبْنِيَّ لِلْمَجْهُولِ وَأُعْرِبُ نَائِبَ الفَاعِلِ",
+    "labelFr": "Former le passif et analyser نائب الفاعل"
+  },
+  {
+    "id": "ar-5ap-c-annex-adjective",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُعْرِبُ المُضَافَ إِلَيْهِ وَالصِّفَةَ",
+    "labelFr": "Analyser le complément de nom et l’adjectif"
+  },
+  {
+    "id": "ar-5ap-c-hal-five",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُعْرِبُ الحَالَ وَالأَسْمَاءَ الخَمْسَةَ وَالأَفْعَالَ الخَمْسَةَ",
+    "labelFr": "Analyser الحال, les cinq noms et les cinq verbes"
+  },
+  {
+    "id": "ar-5ap-c-mafaeel",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُمَيِّزُ المَفْعُولَ المُطْلَقَ وَالمَفْعُولَ لِأَجْلِهِ وَالمَفْعُولَ فِيهِ",
+    "labelFr": "Distinguer les trois compléments (مطلق، لأجله، فيه)"
+  },
+  {
+    "id": "ar-5ap-c-tamyiz",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُمَيِّزُ التَّمْيِيزَ وَأُعْرِبُهُ",
+    "labelFr": "Reconnaître et analyser التمييز"
+  },
+  {
+    "id": "ar-5ap-c-number-plural",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُعْرِبُ المُثَنَّى وَالجُمُوعَ وَأُمَيِّزُ جَمْعَ التَّكْسِيرِ",
+    "labelFr": "Analyser le duel et les pluriels, reconnaître le pluriel brisé"
+  },
+  {
+    "id": "ar-5ap-c-verb-conjugation",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُصَرِّفُ الفِعْلَ الصَّحِيحَ وَالمُعْتَلَّ وَأَجْزِمُهُ",
+    "labelFr": "Conjuguer verbes sains et faibles, et les mettre au جزم"
+  },
+  {
+    "id": "ar-5ap-c-derivation",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أُمَيِّزُ المُجَرَّدَ وَالمَزِيدَ وَأَصُوغُ اسْمَ الفَاعِلِ وَاسْمَ المَفْعُولِ",
+    "labelFr": "Verbe nu et augmenté, participes actif et passif"
+  },
+  {
+    "id": "ar-5ap-c-taa",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أَكْتُبُ التَّاءَ المَفْتُوحَةَ وَالمَرْبُوطَةَ وَأُعَلِّلُ",
+    "labelFr": "Écrire le تاء ouvert ou lié et le justifier"
+  },
+  {
+    "id": "ar-5ap-c-spelling",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أَكْتُبُ هَمْزَةَ الوَصْلِ وَالقَطْعِ وَالهَمْزَةَ المُتَوَسِّطَةَ وَالمُتَطَرِّفَةَ",
+    "labelFr": "Écrire la hamza (وصل/قطع, médiane, finale)"
+  },
+  {
+    "id": "ar-5ap-c-alif",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أَكْتُبُ الأَلِفَ اللَّيِّنَةَ مَمْدُودَةً أَوْ مَقْصُورَةً",
+    "labelFr": "Écrire l’alif layyina longue ou courte"
+  },
+  {
+    "id": "ar-5ap-c-writing",
+    "grade": "5AP",
+    "subject": "arabic",
+    "labelAr": "أَكْتُبُ نَصّاً مِنْ 8 إِلَى 12 سَطْراً وَأُرَاجِعُهُ بِالشَّبَكَةِ",
+    "labelFr": "Rédiger un texte de 8 à 12 lignes et le relire avec la grille"
+  }
+]

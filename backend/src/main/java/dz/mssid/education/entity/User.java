@@ -79,6 +79,15 @@ public class User implements UserDetails {
     @Column(name = "parent_email")
     private String parentEmail;
 
+    // Weekly report e-mail to parentEmail (V2, WeeklyReportService): one-click opt-out, and the last
+    // send so that a family is never e-mailed twice in the same week.
+    @Column(name = "weekly_report_opt_out", nullable = false)
+    @Builder.Default
+    private boolean weeklyReportOptOut = false;
+
+    @Column(name = "weekly_report_last_sent_at")
+    private LocalDateTime weeklyReportLastSentAt;
+
     // Algerian wilaya (province) the family is in — optional, free-text (same pattern as grade/
     // parentEmail), collected at registration or later via settings. Powers regional breakdown for
     // B2B partner reporting; never gates anything in the app itself.
