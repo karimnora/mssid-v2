@@ -39,6 +39,11 @@ export interface MemoryRound extends RoundBase {
     /** Said when the twins are found: why they are equal. */
     linkAr: string;
   }[];
+  /**
+   * Said when two different cards are flipped. `{a}`/`{b}` are the cards, `{va}`/`{vb}` their
+   * `valueAr`. Default: « «a» تساوي va، و«b» تساوي vb » (numbers).
+   */
+  mismatchAr?: string;
 }
 
 /** Tap a card, then the right basket. */
@@ -86,6 +91,11 @@ export interface GamePack {
   taglineAr: string;
   /** The first pack of each grade is open to free accounts (checked by a test). */
   free?: boolean;
+  /**
+   * Young readers (preschool, 1AP): bigger targets, and every card or stone is read aloud when
+   * tapped. Cards written « emoji word » are drawn as a picture above its word.
+   */
+  young?: boolean;
   /** XP given once, the first time every level of the pack has been solved. */
   xp: number;
   theme: {

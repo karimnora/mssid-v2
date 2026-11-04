@@ -207,7 +207,7 @@ export const LearningGamePlayer: React.FC<{
 
   return createPortal(
     <div
-      className="mission-player lg-player fixed inset-0 z-[65] overflow-y-auto overflow-x-hidden"
+      className={`mission-player lg-player ${pack.young ? 'lg-young' : ''} fixed inset-0 z-[65] overflow-y-auto overflow-x-hidden`}
       dir="rtl"
       style={{ background: pack.theme.sky }}
       role="dialog"
@@ -265,7 +265,7 @@ export const LearningGamePlayer: React.FC<{
                       <h2 className="lg-round-title">{round.titleAr}</h2>
                       {stars[round.id] ? <p className="lg-round-best" aria-label={`أَفْضَلُ نَتِيجَةٍ ${stars[round.id]} / 3`}>{'⭐'.repeat(stars[round.id])}</p> : null}
                     </div>
-                    <RoundBoard key={`${round.id}-${play}`} round={round} assist={Boolean(round.easy) || levelMisses >= 2} onMove={onMove} />
+                    <RoundBoard key={`${round.id}-${play}`} round={round} assist={Boolean(round.easy) || levelMisses >= 2} onMove={onMove} young={pack.young} />
                     <AnimatePresence>{solved && <LevelClear key={`clear-${play}`} stars={solvedStars} last={isLast} />}</AnimatePresence>
                   </div>
                 ) : screen.kind === 'recap' ? (
@@ -321,16 +321,16 @@ export const LearningGamePlayer: React.FC<{
   );
 };
 
-function RoundBoard({ round, assist, onMove }: { round: GameRound; assist: boolean; onMove: (m: BoardMove) => void }) {
+function RoundBoard({ round, ...props }: { round: GameRound; assist: boolean; onMove: (m: BoardMove) => void; young?: boolean }) {
   switch (round.kind) {
     case 'memory':
-      return <MemoryBoard round={round} assist={assist} onMove={onMove} />;
+      return <MemoryBoard round={round} {...props} />;
     case 'sort':
-      return <SortBoard round={round} assist={assist} onMove={onMove} />;
+      return <SortBoard round={round} {...props} />;
     case 'order':
-      return <OrderBoard round={round} assist={assist} onMove={onMove} />;
+      return <OrderBoard round={round} {...props} />;
     case 'maze':
-      return <MazeBoard round={round} assist={assist} onMove={onMove} />;
+      return <MazeBoard round={round} {...props} />;
   }
 }
 

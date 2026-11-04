@@ -334,6 +334,22 @@
 }
 .lg-entry-play:active { transform: translateY(3px); box-shadow: 0 2px 0 #b77900; }
 
+/* ——— Young readers (1AP, preschool): pictures above words, bigger letters and targets ——— */
+.lg-pic { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.2; }
+.lg-pic-emoji { font-size: 1.6em; line-height: 1; filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.2)); }
+.lg-pic-word { font-size: 0.72em; }
+.lg-young .lg-mcard-front { font-size: 34px; }
+.lg-young .lg-memory.cols-4 .lg-mcard-front { font-size: 28px; }
+.lg-young .lg-mcard { min-height: 84px; }
+.lg-young .lg-chip { min-height: 72px; font-size: 20px; }
+.lg-young .lg-chip .lg-pic-word { font-size: 15px; }
+.lg-young .lg-shelf-label { font-size: 16px; }
+.lg-young .lg-event { min-height: 72px; font-size: 26px; }
+.lg-young .lg-stone { min-height: 64px; }
+.lg-young .lg-stone-text { font-size: 28px; }
+.lg-young .lg-stone-text.long { font-size: 22px; }
+.lg-young .lg-stone-text.long .lg-pic-word { font-size: 11px; }
+
 @media (max-width: 380px) {
   .lg-path-row .lg-node-info, .lg-path-row.alt .lg-node-info { font-size: 12px; }
   .lg-node { width: 66px; height: 60px; }

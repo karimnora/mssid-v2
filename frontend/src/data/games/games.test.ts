@@ -61,6 +61,13 @@ describe('Didou learning games content', () => {
     }
   });
 
+  it('reads every card aloud for young readers (preschool and 1AP), and only for them', () => {
+    for (const pack of GAME_PACKS) expect(Boolean(pack.young), pack.id).toBe(pack.grade === '1AP');
+    for (const pack of GAME_PACKS.filter((p) => p.engine === 'memory' && p.subject !== 'math')) {
+      for (const round of pack.rounds as MemoryRound[]) expect(round.mismatchAr, `${pack.id}/${round.id}`).toMatch(/\{a\}.*\{va\}.*\{b\}.*\{vb\}/);
+    }
+  });
+
   it('opens exactly the first pack of each grade to free accounts', () => {
     const grades = new Set(GAME_PACKS.map((p) => p.grade));
     for (const grade of grades) {

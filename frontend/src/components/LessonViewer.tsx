@@ -664,7 +664,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           {!isPlayful1AP && activeTab === 'explanation' && missionForLesson(lesson.id) && (
             <MissionBanner mission={missionForLesson(lesson.id)!} onPracticeResult={onPracticeResult} onCompleteQuiz={onCompleteQuiz} />
           )}
-          {!isPlayful1AP && activeTab === 'explanation' && packsForLesson(lesson.id).map((pack) => (
+          {/* Learning games are shown to every grade, 1AP included (young-reader packs read every card aloud). */}
+          {activeTab === 'explanation' && packsForLesson(lesson.id).map((pack) => (
             <div key={pack.id} className="mb-4">
               <LearningGameEntry pack={pack} focusLessonId={lesson.id} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)} />
             </div>

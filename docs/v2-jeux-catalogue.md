@@ -7,6 +7,13 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **Lot 1 — 1AP, codé le 4 novembre 2026 (`data/games/packs1ap.ts`, 4 packs × 5 niveaux) :**
+> - `game-1ap-memory-letters` (gratuit) : ذاكرة حديقة الحامة. Une lettre et l'image d'un mot qui commence par elle, en suivant l'ordre des leçons (أ ب ت ث → م ن ل ر → د ذ س ش → ع ق ك ه و ي).
+> - `game-1ap-sort-explorer` : حقيبة مستكشف الشريعة. Les niveaux portent sur l'alimentation, les sens, le déplacement des animaux, les 4 saisons et l'hygiène.
+> - `game-1ap-order-numbers` : قطار الأعداد في محطة آغا. Les nombres vont de 1-5 jusqu'à 50-99, avec le piège 56 / 65.
+> - `game-1ap-maze-casbah` : متاهة حروف القصبة. Les niveaux portent sur ب, ج, س, les formes de ب (début, milieu, fin) et les mots qui commencent par ش. Didou explique chaque erreur par les points de la lettre.
+> - Mode « jeunes lecteurs » (`young`) : chaque carte est lue à voix haute quand on la touche, les cartes « emoji + mot » montrent l'image au-dessus du mot, et les cibles sont plus grandes. La bannière de jeu s'affiche aussi dans les leçons de 1AP.
+>
 > **Refonte du 4 novembre 2026 (demande de Karim : plus de 3D, plusieurs niveaux, pouvoir sauter un défi) :**
 > - **5 niveaux par jeu**, du plus facile au plus difficile. Le niveau 1 est un échauffement (`easy`) : aperçu de 3 s au Memory, dates visibles sur la frise. Un test vérifie que les plateaux ne rétrécissent jamais (paires, cartes, pierres).
 > - **Carte des niveaux** en 3D : tous les niveaux sont ouverts. Le bouton « تخطَّ » passe au niveau suivant même si le niveau en cours n'est pas fini, et un niveau sauté n'envoie rien au carnet du parent.
