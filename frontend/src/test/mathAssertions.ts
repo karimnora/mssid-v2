@@ -1,5 +1,8 @@
 function evaluate(text: string): number {
-  const normalized = text.replace(/,/g, '').replace(/(?<=\d)[ \t]+(?=\d{3}(?:\D|$))/g, '');
+  // Algerian convention (as in the lessons): thousands separated by U+202F or a space, decimal comma.
+  const normalized = text
+    .replace(/(?<=\d)[  \t]+(?=\d{3}(?:\D|$))/g, '')
+    .replace(/(?<=\d),(?=\d)/g, '.');
   const tokens = normalized.match(/\d+(?:\.\d+)?|[()+×÷−\-/]/g) ?? [];
   if (tokens.join('') !== normalized.replace(/\s/g, '')) throw new Error('Not a complete numeric expression');
   let cursor = 0;
@@ -31,8 +34,8 @@ function evaluate(text: string): number {
 }
 export function numericAssertions(text: string) {
   const assertions: { expression: string; valid: boolean }[] = [];
-  for (let candidate of text.split(/[^0-9.,()+×÷−\-/=<>≤≥ \t]+/).flatMap(part => part.split(/\.(?!\d)/))) {
-    candidate = candidate.trim().replace(/^\d{1,2}\)[ \t]+/, '').replace(/^[=<>≤≥]+\s*/, '').replace(/[, ]+$/, '');
+  for (let candidate of text.split(/[^0-9.,()+×÷−\-/=<>≤≥ \t ]+/).flatMap(part => part.split(/\.(?!\d)/))) {
+    candidate = candidate.trim().replace(/^\d{1,2}\)[ \t]+/, '').replace(/^[=<>≤≥]+\s*/, '').replace(/[,  ]+$/, '');
     while (candidate.endsWith(')') && (candidate.match(/\)/g)?.length ?? 0) > (candidate.match(/\(/g)?.length ?? 0)) candidate = candidate.slice(0, -1);
     const operands = candidate.split(/[=<>≤≥]/); const comparisons = candidate.match(/[=<>≤≥]/g) ?? [];
     if (!comparisons.length) continue;

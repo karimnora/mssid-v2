@@ -32,3 +32,8 @@
 }
 .lab-guide-listen:active { transform: translateY(3px); }
 
+
+/* Inside a lesson the sentences are longer: a quieter reading face. */
+.lesson-didou .lab-guide-bubble { font-family: 'Cairo', 'Noto Naskh Arabic', system-ui, sans-serif; font-weight: 800; font-size: 16px; line-height: 1.6; text-shadow: none; }
+.lesson-illustration { margin: 0; display: flex; justify-content: center; }
+.lesson-illustration svg { filter: drop-shadow(0 6px 0 rgba(8, 12, 52, 0.12)); }

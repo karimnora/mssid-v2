@@ -217,27 +217,27 @@ export const MATH_4AP_REST: CourseLesson[] = [
         introAr: 'لكل قياس وحدة أساسية وجدول تحويل: نضرب للانتقال إلى وحدة أصغر ونقسم للوحدة الأكبر.',
         vocabulary: [
             { termAr: 'المتر', definitionAr: 'الوحدة الأساسية للأطوال.' },
-            { termAr: 'الكيلوغرام', definitionAr: 'وحدة الكتلة الشائعة: 1 kg = 1,000 g.' },
+            { termAr: 'الكيلوغرام', definitionAr: 'وحدة الكتلة الشائعة: 1 kg = 1 000 g.' },
         ],
         visualizationHintAr: 'ارسم جدول km → m → cm من اليسار لليمين.',
         commonMistakes: [{ mistakeAr: 'الخلط بين الضرب والقسمة.', correctionAr: 'كبير → صغير = ضرب، صغير → كبير = قسم.' }],
-        takeawayAr: '1 m = 100 cm، 1 kg = 1,000 g، 1 t = 1,000 kg.',
+        takeawayAr: '1 m = 100 cm، 1 kg = 1 000 g، 1 t = 1 000 kg.',
     },
     rulesAr: [
         'جدول الأطوال: km, hm, dam, m, dm, cm, mm.',
-        '1 m = 10 dm = 100 cm = 1,000 mm.',
-        '1 t = 1,000 kg، 1 q = 100 kg.',
+        '1 m = 10 dm = 100 cm = 1 000 mm.',
+        '1 t = 1 000 kg، 1 q = 100 kg.',
         'جدول السعات: hL, daL, L, dL, cL, mL.',
     ],
     keyFormulas: [
         { labelAr: 'تحويل الأطوال', formulaAr: '1 m = 100 cm' },
-        { labelAr: 'تحويل الكتل', formulaAr: '1 kg = 1,000 g' },
+        { labelAr: 'تحويل الكتل', formulaAr: '1 kg = 1 000 g' },
     ],
     examplesAr: [
         {
             problem: 'شاحنة تحمل 3t و 500kg. ما الحمولة بالكيلوغرام؟',
-            solution: '3t = 3,000kg. المجموع 3,500kg.',
-            operationsAr: '3 t = 3 × 1,000 = 3,000 kg\n3,000 + 500 = 3,500 kg',
+            solution: '3t = 3 000kg. المجموع 3 500kg.',
+            operationsAr: '3 t = 3 × 1 000 = 3 000 kg\n3 000 + 500 = 3 500 kg',
         },
     ],
     interactiveTool: 'unit_converter',
@@ -247,10 +247,10 @@ export const MATH_4AP_REST: CourseLesson[] = [
         { problemAr: '300 cm = ؟ m', solutionAr: '3', detailedCorrectionAr: '300÷100=3m.', type: 'fill_blank', fillBlankAnswerAr: '3' },
         { problemAr: '4 kg 200 g = ؟ g', solutionAr: '4200', detailedCorrectionAr: '4kg=4000g، 4000+200=4200g.', type: 'calculation', calculationAnswer: 4200 },
     ], [
-        { problemAr: '1 t = 1,000 kg. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'الطن = ألف كيلوغرام.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
+        { problemAr: '1 t = 1 000 kg. (صح/خطأ)', solutionAr: 'صحيح', detailedCorrectionAr: 'الطن = ألف كيلوغرام.', type: 'true_false', options: [{ id: 'true', textAr: 'صحيح', isCorrect: true }, { id: 'false', textAr: 'خطأ', isCorrect: false }] },
         { problemAr: '5 m = ؟ cm', solutionAr: '500', detailedCorrectionAr: '5×100=500cm.', type: 'calculation', calculationAnswer: 500 },
     ]),
-    quiz: [{ id: 'q1', questionAr: '2 kg 500 g = ؟ g', options: [{ id: 'a', textAr: '2,500 g', isCorrect: true, explanationAr: '2000+500=2500g.' }, { id: 'b', textAr: '250 g', isCorrect: false }] }],
+    quiz: [{ id: 'q1', questionAr: '2 kg 500 g = ؟ g', options: [{ id: 'a', textAr: '2 500 g', isCorrect: true, explanationAr: '2000+500=2500g.' }, { id: 'b', textAr: '250 g', isCorrect: false }] }],
     trimester: 2,
 },
 

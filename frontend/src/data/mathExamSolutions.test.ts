@@ -8,7 +8,7 @@ import { numericAssertions } from '../test/mathAssertions';
 
 describe('math exam corrections', () => {
   it('detects wrong totals independently, without dropping terms from chained calculations', () => {
-    expect(numericAssertions('12 × 750 = 11,400.')[0].valid).toBe(false);
+    expect(numericAssertions('12 × 750 = 11 400.')[0].valid).toBe(false);
     expect(numericAssertions('58.35 − 12.40 = 46.95.')[0].valid).toBe(false);
     expect(numericAssertions('1) (120 × 3) ÷ 4 = 90.')[0].valid).toBe(true);
     expect(numericAssertions('5 + 5 + 5 = 15.')[0].valid).toBe(true);
@@ -33,6 +33,6 @@ describe('math exam corrections', () => {
     const fence = OFFICIAL_EXAMS_DATA.find(exam => exam.id === 'exam-4ap-math-t3-b-2026')!;
     expect(fence.problemExercise.solutionAr).toContain('15 + 1 = 16');
     const purchase = OFFICIAL_EXAMS_DATA.find(exam => exam.id === 'exam-4ap-math-t1-b-2026')!;
-    expect(purchase.problemExercise.solutionAr).toContain('9,000 + 1,200 = 10,200');
+    expect(purchase.problemExercise.solutionAr).toContain('9 000 + 1 200 = 10 200');
   });
 });

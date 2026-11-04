@@ -44,6 +44,12 @@
   - le quiz devient « أين علم … ؟ » : 4 drapeaux, l'Algérie en premier ; une étoile seulement au premier essai ; une erreur montre le nom du pays touché et Didou aide ;
   - drapeaux corrigés : l'Algérie suit la construction officielle (croissant de rayons H/4 et H/5, étoile de rayon H/8) ; l'aigle de Saladin d'Égypte est redessiné ; l'épée saoudienne a sa pointe vers la hampe et la chahada est agrandie ;
   - les identifiants des masques sont nettoyés : avec React 19, certains navigateurs Android ne trouvaient plus le croissant ou les coins arrondis.
+- [x] Contenu 5AP de qualité supérieure, lot 1 : maths (4 novembre 2026) :
+  - Didou ouvre chaque étape de leçon de la 2AP à la 5AP : il lit à voix haute la phrase clé de l'étape (intro de mission, règle à retenir, consigne) et on peut la réécouter (`lessonViewer/LessonDidou.tsx`) ;
+  - 15 dessins pour les leçons de maths 5AP, montrés à la première étape (`lessonViewer/illustrations/math5ap.tsx`) ; les formules restent de gauche à droite dans la page arabe ;
+  - nombres écrits à l'algérienne (virgule décimale, milliers séparés par une espace fine insécable U+202F) dans les maths 3AP, 4AP et 5AP, les défis et les examens de maths ; le vérificateur automatique des calculs suit cette écriture (`src/test/mathAssertions.ts`) ;
+  - les réponses tapées acceptent la virgule, le point, « ٫ » et les chiffres arabes (`utils/childNumber.ts`) ;
+  - corrigé : la consigne d'encadrement entre deux multiples consécutifs de 100 000 (leçon des grands nombres 5AP).
 - [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.

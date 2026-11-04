@@ -132,7 +132,7 @@ export const MATH_5AP_CIRCLE: CourseLesson[] = [
         options: [
           { id: 'a', textAr: '18 cm', isCorrect: true, explanationAr: 'القطر = 2 × 9 = 18 cm.' },
           { id: 'b', textAr: '9 cm', isCorrect: false },
-          { id: 'c', textAr: '4.5 cm', isCorrect: false },
+          { id: 'c', textAr: '4,5 cm', isCorrect: false },
         ],
       },
       {

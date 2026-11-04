@@ -571,9 +571,9 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الأول (3 نقاط)',
         points: 3,
         relatedLessonId: 'math-5ap-decimals',
-        contentAr: 'احسب مع محاذاة الفاصلة: 12.4 + 3.75. ثم رتّب: 4.08 — 4.8 — 4.18.',
-        solutionAr: '12.40 + 3.75 = 16.15. الترتيب: 4.08 < 4.18 < 4.8.',
-        operationsAr: ' 12.40\n+ 3.75\n------\n 16.15\n\n4.08\n4.18\n4.80',
+        contentAr: 'احسب مع محاذاة الفاصلة: 12,4 + 3,75. ثم رتّب: 4,08 — 4,8 — 4,18.',
+        solutionAr: '12,40 + 3,75 = 16,15. الترتيب: 4,08 < 4,18 < 4,8.',
+        operationsAr: ' 12,40\n+ 3,75\n------\n 16,15\n\n4,08\n4,18\n4,80',
       },
       {
         titleAr: 'التمرين الثاني (3 نقاط)',
@@ -611,8 +611,8 @@ export const EXTRA_EXAM_PAPERS: OfficialExam[] = [
         titleAr: 'التمرين الأول (3 نقاط)',
         points: 3,
         relatedLessonId: 'math-5ap-percentage-scale',
-        contentAr: 'احسب 20% من 2,500 دج. ثم الثمن بعد تخفيض 20%.',
-        solutionAr: 'مبلغ التخفيض = (2,500 × 20) ÷ 100 = 500 دج. الثمن بعد التخفيض = 2,500 − 500 = 2,000 دج.',
+        contentAr: 'احسب 20% من 2 500 دج. ثم الثمن بعد تخفيض 20%.',
+        solutionAr: 'مبلغ التخفيض = (2 500 × 20) ÷ 100 = 500 دج. الثمن بعد التخفيض = 2 500 − 500 = 2 000 دج.',
         operationsAr: '2500 × 20 ÷ 100 = 500\n\n 2500\n−  500\n------\n 2000',
       },
       {

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { parseChildNumber, sameAnswer } from '../../utils/childNumber';
 import { CourseLesson } from '../../types';
 import { shuffleOptions } from './shared';
 import { playGentleNudge, playSuccessChime } from '../preschool/usePreschoolAudio';
@@ -81,10 +82,11 @@ export function useLessonPractice(
       const opt = ex.options?.find((o) => o.id === answer);
       isCorrect = !!opt?.isCorrect;
     } else if (ex.type === 'fill_blank') {
-      const expected = (ex.fillBlankAnswerAr || '').trim();
-      isCorrect = String(answer ?? '').trim() === expected;
+      // Numbers compare by value: « 5,40 », « 5.4 » and « ٥٫٤ » are the same answer.
+      isCorrect = sameAnswer(answer, ex.fillBlankAnswerAr || '');
     } else if (ex.type === 'calculation') {
-      isCorrect = answer !== undefined && answer !== '' && Number(answer) === ex.calculationAnswer;
+      const value = parseChildNumber(answer);
+      isCorrect = value !== null && ex.calculationAnswer !== undefined && Math.abs(value - ex.calculationAnswer) < 1e-9;
     } else if (ex.type === 'matching' && ex.matchingPairsAr) {
       const conns = connsMap[ex.id] || {};
       isCorrect =

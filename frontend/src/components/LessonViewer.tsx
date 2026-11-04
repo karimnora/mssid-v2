@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import { LessonDidou } from './lessonViewer/LessonDidou';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
@@ -653,6 +654,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           transition={tabTransition}
           className="min-w-0"
         >
+          {!isPlayful1AP && <LessonDidou lesson={lesson} tab={activeTab} />}
           {activeTab === 'explanation' && (
             isPlayful1AP ? (
               <YoungLessonStory
