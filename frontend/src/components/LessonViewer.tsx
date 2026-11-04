@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import { MissionBanner } from './missions/MissionBanner';
+import { missionForLesson } from '../data/missions';
 import type { PracticeResult } from '../utils/competenceProgress';
 import { LessonDidou } from './lessonViewer/LessonDidou';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
@@ -657,6 +659,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           transition={tabTransition}
           className="min-w-0"
         >
+          {!isPlayful1AP && activeTab === 'explanation' && missionForLesson(lesson.id) && (
+            <MissionBanner mission={missionForLesson(lesson.id)!} onPracticeResult={onPracticeResult} onCompleteQuiz={onCompleteQuiz} />
+          )}
           {!isPlayful1AP && <LessonDidou lesson={lesson} tab={activeTab} />}
           {activeTab === 'explanation' && (
             isPlayful1AP ? (

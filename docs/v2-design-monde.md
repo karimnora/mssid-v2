@@ -82,6 +82,14 @@
     - « جولية » devient « جويلية » (20 fois), « 1,5 مليون » devient « مليون ونصف مليون شهيد », et les nombres sont écrits à l'algérienne ;
     - fautes corrigées : المشاريوع, الرئيسييين, لملائمة, انزال, دشت.
   - correction d'affichage : l'ombre des dessins ne s'applique plus qu'au cadre, sinon les cartes zoomées débordaient.
+- [x] Missions de Didou : cours immersifs écrits à la main (4 novembre 2026), dans `data/missions/`, `components/missions/MissionPlayer.tsx` :
+  - une mission se joue scène par scène, en plein écran : une histoire algérienne, la règle construite étape par étape, des manipulations, un défi final de 3 questions noté en étoiles, puis une carte-mémo ;
+  - les manipulations : remplir des boîtes (la division rendue concrète), toucher chaque mot d'une phrase pour donner son rôle (الإعراب), trier des cartes dans des paniers, choisir, taper un nombre (virgule acceptée) ;
+  - Didou dit chaque phrase à voix haute. **Chaque mauvaise réponse a sa propre explication** (par exemple « 6 × 73 = 438, c'est plus que 437 »), puis un indice au deuxième essai ;
+  - les résultats vont dans le carnet parent (« seul » / « avec aide ») ; les XP ne sont donnés qu'une fois ; les meilleures étoiles sont gardées ;
+  - accès : Premium, avec la première mission de chaque matière gratuite (`immersiveMissions` dans le registre des droits). L'entrée se fait par un bandeau « 🦊 مهمة ديدو » dans l'étape « اكتشف » de la leçon ;
+  - 4 missions 5AP pour commencer : division (gratuite) et fractions en maths ; phrase verbale et nominale (gratuite) et tamyiz en arabe ;
+  - des tests vérifient chaque mission : une seule bonne réponse par question, une explication pour chaque erreur, des boîtes qui tombent juste, et chaque calcul écrit recalculé automatiquement. Ce contrôle a relevé deux indices faux (« 43 ÷ 6 = 7 »), réécrits sous la forme 43 = (6 × 7) + 1.
 - [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.

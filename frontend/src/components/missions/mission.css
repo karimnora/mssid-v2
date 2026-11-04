@@ -1,0 +1,95 @@
+/* « مهمة ديدو » — immersive mission player. Big targets (≥ 56 px), soft feedback, never red text. */
+.mission-player { font-family: Cairo, Tahoma, sans-serif; color: #0f172a; }
+.mission-stars-bg {
+  position: fixed; inset: 0; pointer-events: none; opacity: 0.55;
+  background-image: radial-gradient(1.5px 1.5px at 20% 30%, #fff, transparent), radial-gradient(1.5px 1.5px at 70% 12%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 70%, #fff, transparent), radial-gradient(1.5px 1.5px at 85% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 85%, #fff, transparent), radial-gradient(1px 1px at 55% 45%, #fff, transparent);
+}
+.mission-player .lab-guide-bubble { font-size: 16px; line-height: 1.7; }
+
+.mission-beads { display: flex; gap: 6px; justify-content: center; list-style: none; padding: 0; margin: 0; }
+.mission-beads li { width: 22px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.25); transition: all 0.3s; }
+.mission-beads li[data-challenge] { background: rgba(255, 210, 63, 0.35); }
+.mission-beads li[data-state='done'] { background: #4ade80; }
+.mission-beads li[data-state='now'] { width: 34px; background: #ffd23f; box-shadow: 0 0 10px rgba(255, 210, 63, 0.8); }
+
+.mission-card {
+  background: linear-gradient(180deg, #fffdf7, #fff7e6);
+  border-radius: 28px; padding: 18px; border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 0 rgba(8, 12, 52, 0.35), 0 22px 40px rgba(8, 12, 52, 0.35);
+}
+.mission-prompt { text-align: center; font-weight: 900; font-size: 19px; color: #13206b; line-height: 1.6; }
+
+.mission-step { border-radius: 18px; padding: 12px 14px; font-weight: 900; font-size: 17px; text-align: center; border: 2px solid; }
+.mission-step.tone-blue { background: #dbeafe; border-color: #1d4ed8; color: #1e3a8a; }
+.mission-step.tone-green { background: #dcfce7; border-color: #15803d; color: #14532d; }
+.mission-step.tone-orange { background: #ffedd5; border-color: #c2410c; color: #7c2d12; }
+.mission-step.tone-violet { background: #ede9fe; border-color: #7c3aed; color: #4c1d95; }
+
+.mission-option, .mission-chip, .mission-role, .mission-word, .mission-bin, .mission-check, .mission-next, .mission-secondary, .mission-input {
+  font-family: inherit; cursor: pointer; transition: transform 0.12s, box-shadow 0.12s, background 0.2s;
+}
+.mission-option {
+  min-height: 58px; border-radius: 18px; font-weight: 900; font-size: 18px; background: #fff; color: #13206b;
+  border: 3px solid #c7d2fe; box-shadow: 0 5px 0 #a5b4fc;
+}
+.mission-option:active { transform: translateY(3px); box-shadow: 0 2px 0 #a5b4fc; }
+.mission-option.right { background: #dcfce7; border-color: #16a34a; box-shadow: 0 5px 0 #15803d; color: #14532d; }
+.mission-option.wrong { background: #f1f5f9; border-color: #cbd5e1; box-shadow: none; color: #64748b; text-decoration: line-through; opacity: 0.75; }
+
+.mission-input {
+  width: 100%; min-height: 58px; border-radius: 18px; border: 3px solid #c7d2fe; text-align: center;
+  font-size: 24px; font-weight: 900; color: #13206b; background: #fff; cursor: text;
+}
+.mission-input.right { border-color: #16a34a; background: #dcfce7; }
+.mission-check, .mission-next {
+  min-height: 60px; border-radius: 20px; border: 0; font-size: 18px; font-weight: 900; color: #fff; width: 100%;
+  background: linear-gradient(180deg, #22c55e, #15803d); box-shadow: 0 6px 0 #14532d;
+}
+.mission-next { background: linear-gradient(180deg, #ffd23f, #f5a300); color: #3b2300; box-shadow: 0 6px 0 #b77900; }
+.mission-check:disabled, .mission-next:disabled { filter: grayscale(0.6); opacity: 0.55; cursor: default; }
+.mission-check:active:not(:disabled), .mission-next:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 2px 0 #14532d; }
+.mission-secondary { min-height: 60px; border-radius: 20px; border: 3px solid #c7d2fe; background: #fff; font-weight: 900; color: #13206b; }
+
+.mission-chip {
+  min-height: 52px; padding: 8px 14px; border-radius: 16px; font-weight: 900; font-size: 16px; background: #fff;
+  border: 3px solid #fcd34d; box-shadow: 0 4px 0 #f59e0b; color: #3b2300;
+}
+.mission-chip.picked { background: #fef3c7; box-shadow: 0 8px 0 #f59e0b, 0 0 0 4px rgba(245, 158, 11, 0.3); }
+.mission-chip.placed { min-height: 0; padding: 4px 8px; font-size: 13px; box-shadow: none; border-width: 2px; background: #ecfdf5; border-color: #86efac; }
+.mission-bin {
+  min-height: 110px; border-radius: 20px; border: 3px dashed #93c5fd; background: #eff6ff; padding: 8px;
+  display: flex; flex-direction: column; gap: 6px; align-items: center;
+}
+.mission-bin:disabled { cursor: default; }
+.mission-bin-label { font-weight: 900; font-size: 15px; color: #1e3a8a; }
+
+.mission-word {
+  min-width: 84px; min-height: 76px; border-radius: 18px; background: #fff; border: 3px solid #e2e8f0;
+  box-shadow: 0 5px 0 #cbd5e1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6px 12px;
+}
+.mission-word.active { border-color: #f59e0b; box-shadow: 0 5px 0 #f59e0b, 0 0 0 4px rgba(245, 158, 11, 0.25); }
+.mission-word-text { font-size: 22px; font-weight: 900; color: #0f172a; }
+.mission-word-role { font-size: 12px; font-weight: 900; color: #94a3b8; }
+.mission-word.tone-blue, .mission-role.tone-blue { background: #dbeafe; border-color: #1d4ed8; box-shadow: 0 5px 0 #1e40af; }
+.mission-word.tone-green, .mission-role.tone-green { background: #dcfce7; border-color: #15803d; box-shadow: 0 5px 0 #166534; }
+.mission-word.tone-orange, .mission-role.tone-orange { background: #ffedd5; border-color: #c2410c; box-shadow: 0 5px 0 #9a3412; }
+.mission-word.tone-violet, .mission-role.tone-violet { background: #ede9fe; border-color: #7c3aed; box-shadow: 0 5px 0 #5b21b6; }
+.mission-word[class*='tone-'] .mission-word-role { color: #0f172a; }
+.mission-role { min-height: 56px; padding: 6px 18px; border-radius: 16px; border: 3px solid; font-weight: 900; font-size: 16px; color: #0f172a; }
+
+.mission-heap { position: relative; border-radius: 20px; background: #fef3c7; border: 2px solid #fcd34d; padding: 14px 10px 10px; }
+.mission-heap-count {
+  position: absolute; top: -14px; inset-inline-start: 12px; background: #f59e0b; color: #fff; font-weight: 900;
+  border-radius: 999px; padding: 2px 12px; font-size: 15px;
+}
+.mission-box {
+  width: 44px; height: 40px; border-radius: 8px; display: grid; place-items: center; font-weight: 900; color: #fff;
+  background: linear-gradient(180deg, #c08443, #8a5a1f); box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.3), 0 3px 0 #5b3a13;
+}
+.mission-recap-point { background: #fff; border: 2px solid #fcd34d; border-radius: 14px; padding: 10px 12px; font-weight: 800; color: #3b2300; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-beads li { transition: none; }
+}
