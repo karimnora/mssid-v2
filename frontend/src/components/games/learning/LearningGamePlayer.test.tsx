@@ -1,30 +1,46 @@
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 vi.mock('../../../utils/speech', () => ({ speakText: vi.fn(() => Promise.resolve()), stopSpeech: vi.fn() }));
 vi.mock('../../../utils/immersiveFeedback', () => ({ playPop: vi.fn(), playSoftMiss: vi.fn(), playSoftSuccess: vi.fn() }));
 vi.mock('../../../context/LocaleContext', () => ({ useLocaleContext: () => ({ locale: 'ar', direction: 'rtl' }) }));
 
-import { LearningGamePlayer, starsForMisses } from './LearningGamePlayer';
+import { LearningGamePlayer, starsForMisses, suggestedLevel } from './LearningGamePlayer';
+import { recordLevel } from './LearningGameEntry';
+import { PEEK_MS } from './boards';
 import { GAME_PACKS_5AP } from '../../../data/games/packs5ap';
-import type { MazeRound, OrderRound, SortRound } from '../../../data/games/types';
+import type { MazeRound, MemoryRound, OrderRound, SortRound } from '../../../data/games/types';
 
 const pack = (id: string) => GAME_PACKS_5AP.find((p) => p.id === id)!;
+const levelOf = (packId: string, roundId: string) => pack(packId).rounds.findIndex((r) => r.id === roundId);
 const nextButton = () => document.querySelector('[data-lg-next]') as HTMLButtonElement;
 const step = (kind: string) => waitFor(() => expect(document.querySelector(`[data-lg-step="${kind}"]`)).toBeTruthy());
 const click = (selector: string) => fireEvent.click(document.querySelector(selector)!);
 
 describe('LearningGamePlayer', () => {
-  it('sort: explains a wrong shelf, reports it once, then opens the next round when every card is placed', async () => {
+  it('opens on the map of five open levels and starts any level, not only the first', async () => {
     const plurals = pack('game-5ap-sort-plurals');
-    const round = plurals.rounds[0] as SortRound;
-    const onResult = vi.fn();
-    render(<LearningGamePlayer pack={plurals} onExit={vi.fn()} onResult={onResult} />);
+    render(<LearningGamePlayer pack={plurals} onExit={vi.fn()} />);
+    await step('map');
+    expect(document.querySelectorAll('[data-lg-level]')).toHaveLength(5);
+    expect(document.querySelector('[data-lg-level="0"]')!.getAttribute('data-state')).toBe('now');
 
-    fireEvent.click(nextButton()); // story → round 1
+    click('[data-lg-level="4"]'); // straight to the expert level
     await step('sort');
-    expect(nextButton().disabled).toBe(true);
+    expect(screen.getByText(plurals.rounds[4].titleAr)).toBeTruthy();
+  });
+
+  it('sort: explains a wrong shelf, reports it once, then gives the stars of the level', async () => {
+    const plurals = pack('game-5ap-sort-plurals');
+    const level = levelOf(plurals.id, 'three-plurals');
+    const round = plurals.rounds[level] as SortRound;
+    const onResult = vi.fn();
+    const onLevelSolved = vi.fn();
+    render(<LearningGamePlayer pack={plurals} onExit={vi.fn()} onResult={onResult} onLevelSolved={onLevelSolved} />);
+    click(`[data-lg-level="${level}"]`);
+    await step('sort');
+    expect(nextButton().hasAttribute('data-lg-skip')).toBe(true);
 
     const kutub = round.cards.find((c) => c.id === 'kutub')!;
     click('[data-lg-sort-card="kutub"]');
@@ -36,32 +52,54 @@ describe('LearningGamePlayer', () => {
       click(`[data-lg-sort-card="${card.id}"]`);
       click(`[data-lg-bin="${card.bin}"]`);
     }
-    await waitFor(() => expect(nextButton().disabled).toBe(false));
+    await waitFor(() => expect(document.querySelector('[data-lg-clear]')).toBeTruthy());
+    expect(document.querySelector('[data-lg-clear]')!.getAttribute('data-lg-clear')).toBe('3'); // one slip still earns 3 stars
+    expect(nextButton().hasAttribute('data-lg-skip')).toBe(false);
     expect(onResult).toHaveBeenLastCalledWith('arabic-5ap-jam-taksir', { outcome: 'success', helped: true, exerciseId: 'game-5ap-sort-plurals:three-plurals' });
     expect(onResult).toHaveBeenCalledTimes(2);
+    expect(onLevelSolved).toHaveBeenCalledWith('three-plurals', 3);
   });
 
-  it('order: a card tapped too early is explained with its date, the right order fills the timeline', async () => {
+  it('skips an unfinished level without reporting anything, up to the memo card', async () => {
+    const history = pack('game-5ap-order-history');
+    const onResult = vi.fn();
+    render(<LearningGamePlayer pack={history} onExit={vi.fn()} onResult={onResult} startLevel={3} />);
+    await step('order');
+    expect(screen.getByText(history.rounds[3].titleAr)).toBeTruthy();
+
+    fireEvent.click(nextButton()); // skip level 4
+    await waitFor(() => expect(screen.getByText(history.rounds[4].titleAr)).toBeTruthy());
+    expect(screen.getByText(/تَخَطَّيْنَا المُسْتَوَى/)).toBeTruthy();
+
+    fireEvent.click(nextButton()); // skip the last level
+    await step('recap');
+    expect(onResult).not.toHaveBeenCalled();
+    expect(document.querySelectorAll('[data-lg-recap-level]')).toHaveLength(5);
+  });
+
+  it('order: the warm-up shows the dates, a card tapped too early is explained, the right order fills the line', async () => {
     const history = pack('game-5ap-order-history');
     const round = history.rounds[0] as OrderRound;
     render(<LearningGamePlayer pack={history} onExit={vi.fn()} />);
-    fireEvent.click(nextButton());
+    fireEvent.click(nextButton()); // map → suggested level 1
     await step('order');
+    expect(document.querySelectorAll('.lg-event .lg-date')).toHaveLength(round.cards.length);
 
     click('[data-lg-order-card="independence"]');
     expect(screen.getByText(/فِي 5 جُويْلِيَةَ 1962، وَمَا زَالَ هُنَاكَ حَدَثٌ أَقْدَمُ/)).toBeTruthy();
 
     for (const card of [...round.cards].sort((a, b) => a.rank - b.rank)) click(`[data-lg-order-card="${card.id}"]`);
     expect(document.querySelectorAll('.lg-slot.filled')).toHaveLength(round.cards.length);
-    await waitFor(() => expect(nextButton().disabled).toBe(false));
+    await waitFor(() => expect(document.querySelector('[data-lg-clear]')).toBeTruthy());
   });
 
   it('maze: a wrong stone is explained, a stone too far is only a nudge, the path reaches the treasure', async () => {
     const timgad = pack('game-5ap-maze-timgad');
-    const round = timgad.rounds[0] as MazeRound;
+    const level = levelOf(timgad.id, 'half');
+    const round = timgad.rounds[level] as MazeRound;
     const onResult = vi.fn();
     render(<LearningGamePlayer pack={timgad} onExit={vi.fn()} onResult={onResult} />);
-    fireEvent.click(nextButton());
+    click(`[data-lg-level="${level}"]`);
     await step('maze');
 
     click('[data-lg-cell="4,0"]'); // far away: nudge, not a mistake
@@ -74,23 +112,65 @@ describe('LearningGamePlayer', () => {
     expect(onResult).toHaveBeenCalledWith('math-5ap-fractions', { outcome: 'fail', exerciseId: 'game-5ap-maze-timgad:half' });
 
     for (const key of ['0,1', '1,1', '2,1', '2,2', '2,3', '3,3', '4,3', '4,4']) click(`[data-lg-cell="${key}"]`);
-    await waitFor(() => expect(nextButton().disabled).toBe(false));
+    await waitFor(() => expect(document.querySelector('[data-lg-clear]')).toBeTruthy());
     expect(onResult).toHaveBeenLastCalledWith('math-5ap-fractions', { outcome: 'success', helped: true, exerciseId: 'game-5ap-maze-timgad:half' });
   });
 
-  it('memory: twins stay face up with their explanation', async () => {
-    const market = pack('game-5ap-memory-fractions');
-    render(<LearningGamePlayer pack={market} onExit={vi.fn()} />);
-    fireEvent.click(nextButton());
-    await step('memory');
+  it('memory: the warm-up shows every card first, then twins stay face up with their explanation', async () => {
+    vi.useFakeTimers();
+    try {
+      const market = pack('game-5ap-memory-fractions');
+      const round = market.rounds[0] as MemoryRound;
+      render(<LearningGamePlayer pack={market} onExit={vi.fn()} startLevel={0} />); // no map → level transition under fake timers
+      expect(document.querySelector('[data-lg-peek]')).toBeTruthy();
+      expect(document.querySelectorAll('[data-lg-card][data-state="up"]')).toHaveLength(round.pairs.length * 2);
 
-    click('[data-lg-card="half-a"]');
-    click('[data-lg-card="half-b"]');
-    await waitFor(() => expect(document.querySelector('[data-lg-card="half-a"]')!.getAttribute('data-state')).toBe('matched'));
-    expect(screen.getByText(/1\/2 يَعْنِي 1 ÷ 2/)).toBeTruthy();
+      click('[data-lg-card="half-a"]'); // ignored while peeking
+      expect(document.querySelector('[data-lg-card="half-a"]')!.getAttribute('data-state')).toBe('up');
+
+      await act(async () => { vi.advanceTimersByTime(PEEK_MS + 50); });
+      expect(document.querySelectorAll('[data-lg-card][data-state="down"]')).toHaveLength(round.pairs.length * 2);
+
+      click('[data-lg-card="half-a"]');
+      click('[data-lg-card="half-b"]');
+      await act(async () => { vi.advanceTimersByTime(500); });
+      expect(document.querySelector('[data-lg-card="half-a"]')!.getAttribute('data-state')).toBe('matched');
+      expect(screen.getByText(/1\/2 يَعْنِي 1 ÷ 2/)).toBeTruthy();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
-  it('gives 3 stars up to 2 mistakes, 2 up to 6, then 1', () => {
-    expect([0, 2, 3, 6, 7, 20].map(starsForMisses)).toEqual([3, 3, 2, 2, 1, 1]);
+  it('gives a level 3 stars up to 1 mistake, 2 up to 3, then 1', () => {
+    expect([0, 1, 2, 3, 4, 20].map(starsForMisses)).toEqual([3, 3, 2, 2, 1, 1]);
+  });
+
+  it('suggests the first unsolved level, then the first one without 3 stars', () => {
+    const market = pack('game-5ap-memory-fractions');
+    const ids = market.rounds.map((r) => r.id);
+    expect(suggestedLevel(market, {})).toBe(0);
+    expect(suggestedLevel(market, { [ids[0]]: 3, [ids[2]]: 1 })).toBe(1);
+    expect(suggestedLevel(market, Object.fromEntries(ids.map((id, i) => [id, i === 3 ? 2 : 3])))).toBe(3);
+  });
+
+  it('gives the pack XP once, when every level has been solved (old lot-1 progress never pays twice)', () => {
+    const market = pack('game-5ap-memory-fractions');
+    let progress = undefined as Parameters<typeof recordLevel>[1];
+    const paid: boolean[] = [];
+    for (const r of market.rounds) {
+      const out = recordLevel(market, progress, r.id, 2);
+      progress = out.progress;
+      paid.push(out.giveXp);
+    }
+    expect(paid).toEqual([false, false, false, false, true]);
+    expect(recordLevel(market, progress, market.rounds[0].id, 3)).toMatchObject({ giveXp: false, progress: { levels: { [market.rounds[0].id]: 3 } } });
+
+    const legacy = { stars: 3, xpGiven: true };
+    let again = legacy as Parameters<typeof recordLevel>[1];
+    for (const r of market.rounds) {
+      const out = recordLevel(market, again, r.id, 3);
+      expect(out.giveXp).toBe(false);
+      again = out.progress;
+    }
   });
 });

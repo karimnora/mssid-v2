@@ -666,7 +666,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
           {!isPlayful1AP && activeTab === 'explanation' && packsForLesson(lesson.id).map((pack) => (
             <div key={pack.id} className="mb-4">
-              <LearningGameEntry pack={pack} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)} />
+              <LearningGameEntry pack={pack} focusLessonId={lesson.id} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)} />
             </div>
           ))}
           {!isPlayful1AP && <LessonDidou lesson={lesson} tab={activeTab} />}

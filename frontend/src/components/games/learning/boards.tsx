@@ -1,5 +1,5 @@
-import React, { useMemo, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import type { MazeRound, MemoryRound, OrderRound, SortRound } from '../../../data/games/types';
 import { mazeNeighbours } from '../../../data/games';
 import { DidouPortrait } from '../../world/DidouPortrait';
@@ -9,14 +9,17 @@ import { playPop } from '../../../utils/immersiveFeedback';
  * What a board tells the player:
  * - hit: a right move (optional line for Didou),
  * - nudge: a hint that is not a mistake (memory: two unknown cards; maze: a stone too far),
- * - miss: a real mistake, with its own explanation (first one of the round goes to the notebook),
- * - solved: the round is finished.
+ * - miss: a real mistake, with its own explanation (first one of the level goes to the notebook),
+ * - solved: the level is finished.
+ *
+ * Every board is drawn in 3D (perspective, thick tiles with a lit top and a dark edge) and pieces
+ * fly to where they belong (shared `layoutId`), so each right move is seen, not only heard.
  */
 export type BoardMove = { kind: 'hit'; sayAr?: string } | { kind: 'nudge'; sayAr: string } | { kind: 'miss'; whyAr: string } | { kind: 'solved' };
 
 export interface BoardProps<R> {
   round: R;
-  /** From the second miss of the round on: boards may show extra help (dates on the timeline…). */
+  /** Warm-up level, or from the second miss of the level on: boards show extra help (dates…). */
   assist: boolean;
   onMove: (move: BoardMove) => void;
 }
@@ -30,7 +33,9 @@ function shuffle<T>(list: T[]): T[] {
   return copy;
 }
 
-const shake = { x: [0, -9, 9, -5, 0] };
+const SHAKE = [0, -10, 10, -6, 6, 0];
+const springy = { type: 'spring' as const, stiffness: 320, damping: 22 };
+const flight = { type: 'spring' as const, stiffness: 260, damping: 24 };
 
 /** « 3/4 » drawn as a stacked fraction, numbers kept left-to-right inside Arabic text. */
 export function GameText({ text }: { text: string }) {
@@ -48,9 +53,21 @@ export function GameText({ text }: { text: string }) {
   return <>{text}</>;
 }
 
+/** « 4 / 9 » under a board: how much of the level is done. */
+function BoardProgress({ done, total }: { done: number; total: number }) {
+  return (
+    <div className="lg-progress" aria-label={`${done} / ${total}`}>
+      <motion.span className="lg-progress-fill" initial={false} animate={{ width: `${(done / total) * 100}%` }} transition={springy} />
+      <span className="lg-progress-text" dir="ltr">{done} / {total}</span>
+    </div>
+  );
+}
+
 // ——————————————————— Memory ———————————————————
 
 interface MemoryCard { key: string; pair: string; text: string }
+
+export const PEEK_MS = 3000;
 
 export function MemoryBoard({ round, onMove }: BoardProps<MemoryRound>) {
   const cards = useMemo<MemoryCard[]>(
@@ -60,12 +77,20 @@ export function MemoryBoard({ round, onMove }: BoardProps<MemoryRound>) {
   const [up, setUp] = useState<string[]>([]);
   const [matched, setMatched] = useState<string[]>([]);
   const [wrongPair, setWrongPair] = useState<string[]>([]);
+  // Warm-up level: every card is shown face up for a few seconds first.
+  const [peek, setPeek] = useState(Boolean(round.easy));
   const seen = useRef(new Set<string>());
   const matchedCount = useRef(0);
   const busy = useRef(false);
 
+  useEffect(() => {
+    if (!round.easy) return undefined;
+    const timer = window.setTimeout(() => setPeek(false), PEEK_MS);
+    return () => window.clearTimeout(timer);
+  }, [round]);
+
   const flip = (card: MemoryCard) => {
-    if (busy.current || up.includes(card.key) || matched.includes(card.pair)) return;
+    if (peek || busy.current || up.includes(card.key) || matched.includes(card.pair)) return;
     playPop();
     const next = [...up, card.key];
     setUp(next);
@@ -84,7 +109,7 @@ export function MemoryBoard({ round, onMove }: BoardProps<MemoryRound>) {
         matchedCount.current += 1;
         onMove({ kind: 'hit', sayAr: pair.linkAr });
         if (matchedCount.current === round.pairs.length) window.setTimeout(() => onMove({ kind: 'solved' }), 900);
-      }, 450);
+      }, 420);
       return;
     }
     const pa = round.pairs.find((p) => p.id === a.pair)!;
@@ -96,35 +121,60 @@ export function MemoryBoard({ round, onMove }: BoardProps<MemoryRound>) {
       setWrongPair([]);
       busy.current = false;
       onMove(knew ? { kind: 'miss', whyAr: why } : { kind: 'nudge', sayAr: `${why} تَذَكَّرْ مَكَانَهُمَا!` });
-    }, 1100);
+    }, 1050);
   };
 
+  const cols = cards.length === 12 ? 'cols-3' : 'cols-4';
+
   return (
-    <div className={`lg-memory ${cards.length > 12 ? 'cols-4' : 'cols-3'}`} data-lg-board="memory">
-      {cards.map((card, i) => {
-        const isMatched = matched.includes(card.pair);
-        const faceUp = isMatched || up.includes(card.key);
-        return (
-          <motion.button
-            key={card.key}
-            type="button"
-            data-lg-card={card.key}
-            data-pair={card.pair}
-            data-state={isMatched ? 'matched' : faceUp ? 'up' : 'down'}
-            onClick={() => flip(card)}
-            animate={wrongPair.includes(card.key) ? shake : isMatched ? { scale: [1, 1.12, 1] } : {}}
-            transition={{ duration: 0.4 }}
-            className="lg-mcard"
-            aria-label={faceUp ? card.text : `بِطَاقَةٌ مَقْلُوبَةٌ ${i + 1}`}
-            disabled={isMatched}
-          >
-            <span className={`lg-mcard-inner ${faceUp ? 'is-up' : ''}`}>
-              <span className="lg-mcard-back" aria-hidden="true">🦊</span>
-              <span className={`lg-mcard-front ${isMatched ? 'is-matched' : ''}`}><GameText text={card.text} /></span>
-            </span>
-          </motion.button>
-        );
-      })}
+    <div className="space-y-3" data-lg-board="memory">
+      <AnimatePresence>
+        {peek && (
+          <motion.p key="peek" className="lg-peek" data-lg-peek initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9 }}>
+            👀 اِحْفَظْ أَمَاكِنَ البِطَاقَاتِ…
+            <span className="lg-peek-bar" style={{ animationDuration: `${PEEK_MS}ms` }} aria-hidden="true" />
+          </motion.p>
+        )}
+      </AnimatePresence>
+      <div className={`lg-memory lg-3d ${cols}`}>
+        {cards.map((card, i) => {
+          const isMatched = matched.includes(card.pair);
+          const faceUp = peek || isMatched || up.includes(card.key);
+          const isWrong = wrongPair.includes(card.key);
+          return (
+            <motion.button
+              key={card.key}
+              type="button"
+              data-lg-card={card.key}
+              data-pair={card.pair}
+              data-state={isMatched ? 'matched' : faceUp ? 'up' : 'down'}
+              onClick={() => flip(card)}
+              initial={{ opacity: 0, y: -60, rotateX: 70, scale: 0.7 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0, scale: isMatched ? [1, 1.14, 1] : 1, x: isWrong ? SHAKE : 0 }}
+              transition={{ default: { ...springy, delay: i * 0.035 }, x: { duration: 0.45 }, scale: { duration: 0.45 } }}
+              whileHover={faceUp ? undefined : { y: -6, rotateX: 10 }}
+              whileTap={{ scale: 0.92 }}
+              className="lg-mcard"
+              aria-label={faceUp ? card.text : `بِطَاقَةٌ مَقْلُوبَةٌ ${i + 1}`}
+              disabled={isMatched}
+            >
+              <motion.span
+                className="lg-mcard-inner"
+                initial={false}
+                animate={{ rotateY: faceUp ? 180 : 0, z: up.includes(card.key) ? 24 : 0 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+              >
+                <span className="lg-mcard-back" aria-hidden="true"><span className="lg-mcard-seal">🦊</span></span>
+                <span className={`lg-mcard-front ${isMatched ? 'is-matched' : ''} ${isWrong ? 'is-wrong' : ''}`}>
+                  <GameText text={card.text} />
+                  {isMatched && <motion.span className="lg-mcard-check" initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }} aria-hidden="true">✓</motion.span>}
+                </span>
+              </motion.span>
+            </motion.button>
+          );
+        })}
+      </div>
+      <BoardProgress done={matched.length} total={round.pairs.length} />
     </div>
   );
 }
@@ -137,12 +187,17 @@ export function SortBoard({ round, onMove }: BoardProps<SortRound>) {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [shaking, setShaking] = useState<string | null>(null);
   const [glowBin, setGlowBin] = useState<string | null>(null);
+  const [wobbleBin, setWobbleBin] = useState<string | null>(null);
+  const flyId = (cardId: string) => `lg-sort-${round.id}-${cardId}`;
+  const placedCount = Object.keys(placed).length;
 
   const drop = (binId: string) => {
     const card = round.cards.find((c) => c.id === picked);
     if (!card) return;
     if (card.bin !== binId) {
       setShaking(card.id);
+      setWobbleBin(binId);
+      window.setTimeout(() => setWobbleBin(null), 450);
       onMove({ kind: 'miss', whyAr: card.whyAr });
       return;
     }
@@ -150,22 +205,32 @@ export function SortBoard({ round, onMove }: BoardProps<SortRound>) {
     setPlaced(next);
     setPicked(null);
     setGlowBin(binId);
-    window.setTimeout(() => setGlowBin(null), 500);
+    window.setTimeout(() => setGlowBin(null), 600);
     onMove({ kind: 'hit' });
-    if (Object.keys(next).length === round.cards.length) window.setTimeout(() => onMove({ kind: 'solved' }), 500);
+    if (Object.keys(next).length === round.cards.length) window.setTimeout(() => onMove({ kind: 'solved' }), 600);
   };
 
   return (
     <div className="space-y-4" data-lg-board="sort">
-      <div className="flex flex-wrap gap-2 justify-center min-h-[60px]">
-        {cards.filter((c) => !placed[c.id]).map((card) => (
+      <div className="lg-tray lg-3d">
+        {cards.filter((c) => !placed[c.id]).map((card, i) => (
           <motion.button
             key={card.id}
+            layoutId={flyId(card.id)}
             type="button"
             data-lg-sort-card={card.id}
             onClick={() => { playPop(); setPicked(card.id); }}
-            animate={shaking === card.id ? shake : picked === card.id ? { y: -8, scale: 1.06 } : { y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 30, rotateX: -50 }}
+            animate={
+              shaking === card.id
+                ? { opacity: 1, x: SHAKE, rotate: [0, -5, 5, -3, 0], y: 0, scale: 1, rotateX: 0 }
+                : picked === card.id
+                  ? { opacity: 1, x: 0, rotate: 0, y: -12, scale: 1.1, rotateX: 14 }
+                  : { opacity: 1, x: 0, rotate: 0, y: 0, scale: 1, rotateX: 0 }
+            }
+            transition={{ default: { ...springy, delay: placedCount ? 0 : i * 0.04 }, x: { duration: 0.45 }, rotate: { duration: 0.45 }, layout: flight }}
             onAnimationComplete={() => shaking === card.id && setShaking(null)}
+            whileTap={{ scale: 0.94 }}
             className={`lg-chip ${picked === card.id ? 'picked' : ''}`}
             aria-pressed={picked === card.id}
           >
@@ -181,21 +246,23 @@ export function SortBoard({ round, onMove }: BoardProps<SortRound>) {
             data-lg-bin={bin.id}
             onClick={() => drop(bin.id)}
             disabled={!picked}
-            animate={glowBin === bin.id ? { scale: [1, 1.06, 1] } : {}}
-            className={`lg-shelf ${picked ? 'ready' : ''}`}
+            animate={glowBin === bin.id ? { scale: [1, 1.07, 1], y: [0, -6, 0], rotate: 0 } : wobbleBin === bin.id ? { rotate: [0, -3, 3, -2, 0], scale: 1, y: 0 } : { scale: 1, y: 0, rotate: 0 }}
+            transition={{ duration: 0.45 }}
+            whileTap={picked ? { scale: 0.96 } : undefined}
+            className={`lg-shelf ${picked ? 'ready' : ''} ${glowBin === bin.id ? 'glow' : ''}`}
           >
             <span className="lg-shelf-label">{bin.labelAr}</span>
             <span className="lg-shelf-books">
               {round.cards.filter((c) => placed[c.id] === bin.id).map((c) => (
-                <motion.span key={c.id} initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="lg-book">{c.textAr}</motion.span>
+                <motion.span key={c.id} layoutId={flyId(c.id)} transition={flight} className="lg-book">{c.textAr}</motion.span>
               ))}
             </span>
+            <span className="lg-shelf-plank" aria-hidden="true" />
           </motion.button>
         ))}
       </div>
-      <p className="text-xs font-extrabold text-center text-slate-600 min-h-[18px]">
-        {picked ? 'اُنْقُرِ الرَّفَّ المُنَاسِبَ' : 'اُنْقُرْ بِطَاقَةً'}
-      </p>
+      <p className="lg-board-tip">{picked ? '👆 اُنْقُرِ الرَّفَّ المُنَاسِبَ' : '👆 اُنْقُرْ بِطَاقَةً'}</p>
+      <BoardProgress done={placedCount} total={round.cards.length} />
     </div>
   );
 }
@@ -207,6 +274,7 @@ export function OrderBoard({ round, assist, onMove }: BoardProps<OrderRound>) {
   const sorted = useMemo(() => [...round.cards].sort((a, b) => a.rank - b.rank), [round]);
   const [placed, setPlaced] = useState<string[]>([]);
   const [shaking, setShaking] = useState<string | null>(null);
+  const flyId = (cardId: string) => `lg-order-${round.id}-${cardId}`;
 
   const tap = (cardId: string) => {
     const card = round.cards.find((c) => c.id === cardId)!;
@@ -216,44 +284,53 @@ export function OrderBoard({ round, assist, onMove }: BoardProps<OrderRound>) {
       onMove({ kind: 'miss', whyAr: round.wrongAr.replace('{card}', card.textAr).replace('{key}', card.keyAr) });
       return;
     }
+    playPop();
     const next = [...placed, card.id];
     setPlaced(next);
     onMove({ kind: 'hit' });
-    if (next.length === round.cards.length) window.setTimeout(() => onMove({ kind: 'solved' }), 600);
+    if (next.length === round.cards.length) window.setTimeout(() => onMove({ kind: 'solved' }), 700);
   };
 
   return (
     <div className="space-y-4" data-lg-board="order">
       <p className="lg-direction">⟵ {round.directionAr}</p>
       <ol className="lg-timeline" aria-label={round.directionAr}>
+        <motion.span className="lg-timeline-glow" aria-hidden="true" initial={false} animate={{ height: `${(placed.length / sorted.length) * 100}%` }} transition={springy} />
         {sorted.map((_, i) => {
           const card = placed[i] ? round.cards.find((c) => c.id === placed[i]) : undefined;
           return (
             <li key={i} className={`lg-slot ${card ? 'filled' : i === placed.length ? 'next' : ''}`} data-lg-slot={i}>
               <span className="lg-slot-n">{i + 1}</span>
-              {card && (
-                <motion.span initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="lg-slot-card">
+              {card ? (
+                <motion.span layoutId={flyId(card.id)} transition={flight} className="lg-slot-card">
                   <span className="text-2xl" aria-hidden="true">{card.emoji}</span>
                   <span className="lg-slot-text">{card.textAr}</span>
-                  <motion.span initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.25 }} className="lg-date">{card.keyAr}</motion.span>
+                  <motion.span initial={{ rotateX: 90, opacity: 0 }} animate={{ rotateX: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="lg-date">{card.keyAr}</motion.span>
                 </motion.span>
+              ) : (
+                <span className="lg-slot-empty" aria-hidden="true" />
               )}
             </li>
           );
         })}
       </ol>
-      <div className="grid gap-2 sm:grid-cols-2">
-        {pool.filter((c) => !placed.includes(c.id)).map((card) => (
+      <div className="grid gap-2 sm:grid-cols-2 lg-3d">
+        {pool.filter((c) => !placed.includes(c.id)).map((card, i) => (
           <motion.button
             key={card.id}
+            layoutId={flyId(card.id)}
             type="button"
             data-lg-order-card={card.id}
             onClick={() => tap(card.id)}
-            animate={shaking === card.id ? shake : {}}
+            initial={{ opacity: 0, rotateY: i % 2 ? 40 : -40, y: 20 }}
+            animate={shaking === card.id ? { opacity: 1, x: SHAKE, rotateY: 0, y: 0 } : { opacity: 1, x: 0, rotateY: 0, y: 0 }}
+            transition={{ default: { ...springy, delay: placed.length ? 0 : i * 0.05 }, x: { duration: 0.45 }, layout: flight }}
             onAnimationComplete={() => shaking === card.id && setShaking(null)}
+            whileHover={{ y: -4, rotateX: 6 }}
+            whileTap={{ scale: 0.95 }}
             className="lg-event"
           >
-            <span className="text-3xl" aria-hidden="true">{card.emoji}</span>
+            <span className="lg-event-emoji" aria-hidden="true">{card.emoji}</span>
             <span className="flex-1 text-start">{card.textAr}</span>
             {assist && <span className="lg-date small">{card.keyAr}</span>}
           </motion.button>
@@ -276,6 +353,7 @@ export function MazeBoard({ round, onMove }: BoardProps<MazeRound>) {
   const [done, setDone] = useState(false);
   const [r0, c0] = trail[trail.length - 1].split(',').map(Number);
   const reachable = new Set(mazeNeighbours(grid, r0, c0).map(([y, x]) => cellKey(y, x)));
+  const cols = grid[0].length;
 
   const tap = (r: number, c: number) => {
     if (done) return;
@@ -296,48 +374,60 @@ export function MazeBoard({ round, onMove }: BoardProps<MazeRound>) {
       onMove({ kind: 'miss', whyAr: cell.whyAr ?? round.hintAr });
       return;
     }
+    playPop();
     setTrail([...trail, key]);
     onMove({ kind: 'hit' });
     if (r === goal[0] && c === goal[1]) {
       setDone(true);
-      window.setTimeout(() => onMove({ kind: 'solved' }), 700);
+      window.setTimeout(() => onMove({ kind: 'solved' }), 800);
     }
   };
 
   return (
     <div className="space-y-3" data-lg-board="maze">
       <p className="lg-rule">📜 {round.ruleAr}</p>
-      <div className="lg-maze" style={{ gridTemplateColumns: `repeat(${grid[0].length}, minmax(0, 1fr))` }}>
-        {grid.map((row, r) =>
-          row.map((cell, c) => {
-            const key = cellKey(r, c);
-            const here = key === trail[trail.length - 1];
-            const onTrail = trail.includes(key);
-            const isGoal = r === goal[0] && c === goal[1];
-            const state = here ? 'here' : onTrail ? 'trail' : wrong.includes(key) ? 'cracked' : reachable.has(key) && !done ? 'reachable' : 'idle';
-            return (
-              <motion.button
-                key={key}
-                type="button"
-                data-lg-cell={key}
-                data-state={state}
-                onClick={() => tap(r, c)}
-                animate={shaking === key ? shake : here ? { scale: [1, 1.08, 1] } : {}}
-                onAnimationComplete={() => shaking === key && setShaking(null)}
-                className="lg-stone"
-                aria-label={`${cell.t}${here ? ' — دِيدُو هُنَا' : ''}${isGoal ? ' — الكَنْزُ' : ''}`}
-              >
-                {here ? (
-                  <motion.span layoutId={`didou-${round.id}`} className="lg-stone-didou"><DidouPortrait size={40} /></motion.span>
-                ) : (
-                  <span className="lg-stone-text"><GameText text={cell.t} /></span>
-                )}
-                {isGoal && !here && <span className="lg-stone-goal" aria-hidden="true">💎</span>}
-              </motion.button>
-            );
-          }),
-        )}
+      <div className="lg-maze-stage">
+        <div className={`lg-maze ${cols > 5 ? 'dense' : ''} ${done ? 'won' : ''}`} style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
+          {grid.map((row, r) =>
+            row.map((cell, c) => {
+              const key = cellKey(r, c);
+              const here = key === trail[trail.length - 1];
+              const onTrail = trail.includes(key);
+              const isGoal = r === goal[0] && c === goal[1];
+              const state = here ? 'here' : onTrail ? 'trail' : wrong.includes(key) ? 'cracked' : reachable.has(key) && !done ? 'reachable' : 'idle';
+              return (
+                <motion.button
+                  key={key}
+                  type="button"
+                  data-lg-cell={key}
+                  data-state={state}
+                  onClick={() => tap(r, c)}
+                  initial={{ opacity: 0, y: -30, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1, x: shaking === key ? SHAKE : 0, y: state === 'reachable' ? -5 : state === 'cracked' ? 6 : 0 }}
+                  transition={{ default: { ...springy, delay: (r + c) * 0.025 }, x: { duration: 0.45 } }}
+                  onAnimationComplete={() => shaking === key && setShaking(null)}
+                  whileTap={{ scale: 0.9 }}
+                  className="lg-stone"
+                  aria-label={`${cell.t}${here ? ' — دِيدُو هُنَا' : ''}${isGoal ? ' — الكَنْزُ' : ''}`}
+                >
+                  {here ? (
+                    <motion.span layoutId={`didou-${round.id}`} transition={{ type: 'spring', stiffness: 420, damping: 24 }} className="lg-stone-didou">
+                      <motion.span key={trail.length} initial={{ y: -22, scaleY: 0.85 }} animate={{ y: 0, scaleY: 1 }} transition={{ type: 'spring', stiffness: 500, damping: 14 }} className="block">
+                        <DidouPortrait size={cols > 5 ? 34 : 40} />
+                      </motion.span>
+                    </motion.span>
+                  ) : (
+                    <span className="lg-stone-text"><GameText text={cell.t} /></span>
+                  )}
+                  {isGoal && !here && <span className="lg-stone-goal" aria-hidden="true">💎</span>}
+                  {state === 'cracked' && <span className="lg-stone-crack" aria-hidden="true" />}
+                </motion.button>
+              );
+            }),
+          )}
+        </div>
       </div>
+      <p className="lg-board-tip">👆 اُنْقُرْ حَجَراً مُجَاوِراً لِدِيدُو · اُنْقُرْ حَجَراً مِنْ مَسَارِكَ لِلرُّجُوعِ</p>
     </div>
   );
 }

@@ -7,7 +7,14 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
-> **Lot 1, codé le 4 novembre 2026, sans commit :**
+> **Refonte du 4 novembre 2026 (demande de Karim : plus de 3D, plusieurs niveaux, pouvoir sauter un défi) :**
+> - **5 niveaux par jeu**, du plus facile au plus difficile. Le niveau 1 est un échauffement (`easy`) : aperçu de 3 s au Memory, dates visibles sur la frise. Un test vérifie que les plateaux ne rétrécissent jamais (paires, cartes, pierres).
+> - **Carte des niveaux** en 3D : tous les niveaux sont ouverts. Le bouton « تخطَّ » passe au niveau suivant même si le niveau en cours n'est pas fini, et un niveau sauté n'envoie rien au carnet du parent.
+> - **Étoiles par niveau**, 15 au total par jeu : 3 étoiles jusqu'à 1 erreur, 2 jusqu'à 3 erreurs, sinon 1. Les XP du jeu sont donnés une seule fois, quand tous les niveaux sont réussis. La progression du lot 1 est conservée, et ses XP ne sont jamais redonnés.
+> - **3D et mouvement** : scène en perspective (sol, nuages, décor sur trois profondeurs), carte qui s'incline vers la souris, cartes épaisses, pièces qui volent jusqu'à leur place, Didou qui saute sur le labyrinthe incliné, confettis, vibration sur Android. Tout s'arrête si l'appareil demande moins d'animations (`prefers-reduced-motion`).
+> - **Depuis une leçon**, le jeu s'ouvre directement au niveau de cette leçon.
+>
+> **Lot 1, codé le 4 novembre 2026, poussé sur v2 (45238c5) :**
 > - **Packs 5AP**, dans `data/games/packs5ap.ts` :
 >   - `game-5ap-memory-fractions` (gratuit) : ذاكرة سوق بلكور ;
 >   - `game-5ap-sort-plurals` : رفوف مكتبة قسنطينة ;

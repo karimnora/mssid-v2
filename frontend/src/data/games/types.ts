@@ -2,9 +2,10 @@ import type { PrimaryGrade, SubjectId } from '../../types';
 
 /**
  * « ألعاب ديدو التعليمية » — V2 learning games (docs/v2-jeux-catalogue.md).
- * A pack is a short adventure in an Algerian place: a story, three rounds played with one engine,
- * and a memo card. Didou speaks every line and explains every wrong move (« whyAr »), never a bare
- * « faux ». Each round belongs to a real catalog lesson so results reach the parent notebook.
+ * A pack is a short adventure in an Algerian place: a story, five levels played with one engine
+ * (easy → expert, every level open: the child may skip ahead), and a memo card. Didou speaks every
+ * line and explains every wrong move (« whyAr »), never a bare « faux ». Each level (« round » in
+ * the code) belongs to a real catalog lesson so results reach the parent notebook.
  */
 export type GameEngine = 'memory' | 'sort' | 'order' | 'maze';
 
@@ -19,6 +20,11 @@ interface RoundBase {
   hintAr: string;
   /** Said when the round is solved. */
   successAr: string;
+  /**
+   * Warm-up level: the help is there from the start (a short peek at the memory cards, the dates on
+   * the timeline). Only the first level of a pack uses it.
+   */
+  easy?: boolean;
 }
 
 /** Flip two cards, find the twins: two ways of writing the same value. */
@@ -80,7 +86,7 @@ export interface GamePack {
   taglineAr: string;
   /** The first pack of each grade is open to free accounts (checked by a test). */
   free?: boolean;
-  /** XP given once, the first time the pack is finished. */
+  /** XP given once, the first time every level of the pack has been solved. */
   xp: number;
   theme: {
     /** Background of the full-screen game. */
@@ -91,6 +97,7 @@ export interface GamePack {
   };
   /** Didou opens the adventure. */
   storyAr: string;
+  /** The levels, from the easiest to the hardest (checked by a test: boards only grow). */
   rounds: GameRound[];
   /** Memo card at the end. */
   recapAr: string[];
