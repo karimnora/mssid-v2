@@ -1,0 +1,97 @@
+import type { PrimaryGrade, SubjectId } from '../../types';
+
+/**
+ * « ألعاب ديدو التعليمية » — V2 learning games (docs/v2-jeux-catalogue.md).
+ * A pack is a short adventure in an Algerian place: a story, three rounds played with one engine,
+ * and a memo card. Didou speaks every line and explains every wrong move (« whyAr »), never a bare
+ * « faux ». Each round belongs to a real catalog lesson so results reach the parent notebook.
+ */
+export type GameEngine = 'memory' | 'sort' | 'order' | 'maze';
+
+interface RoundBase {
+  id: string;
+  /** Catalog lesson this round practises (parent notebook + competence stats). */
+  lessonId: string;
+  titleAr: string;
+  /** What Didou says when the round opens. */
+  sayAr: string;
+  /** Said with the explanation from the second miss of the round on. */
+  hintAr: string;
+  /** Said when the round is solved. */
+  successAr: string;
+}
+
+/** Flip two cards, find the twins: two ways of writing the same value. */
+export interface MemoryRound extends RoundBase {
+  kind: 'memory';
+  pairs: {
+    id: string;
+    a: string;
+    b: string;
+    /** The common value, said when two different cards are flipped (« ½ = 0,5 and … »). */
+    valueAr: string;
+    /** Said when the twins are found: why they are equal. */
+    linkAr: string;
+  }[];
+}
+
+/** Tap a card, then the right basket. */
+export interface SortRound extends RoundBase {
+  kind: 'sort';
+  bins: { id: string; labelAr: string }[];
+  cards: { id: string; textAr: string; bin: string; whyAr: string }[];
+}
+
+/** Tap the cards in order to fill the line (timeline, smallest → largest…). */
+export interface OrderRound extends RoundBase {
+  kind: 'order';
+  /** Shown above the line, e.g. « من الأقدم إلى الأحدث ». */
+  directionAr: string;
+  /** Said for a card tapped too early. `{card}` and `{key}` are replaced. */
+  wrongAr: string;
+  cards: { id: string; textAr: string; emoji: string; keyAr: string; rank: number }[];
+}
+
+/** A stone of the maze. Wrong stones (`ok: false`) always carry their explanation (checked by a test). */
+export interface MazeCell {
+  t: string;
+  ok: boolean;
+  whyAr?: string;
+}
+
+/** Walk Didou from the first stone to the treasure, only on the stones that follow the rule. */
+export interface MazeRound extends RoundBase {
+  kind: 'maze';
+  ruleAr: string;
+  /** Rows in reading order (RTL: the first cell is on the right). Start = [0][0], treasure = last cell. */
+  grid: MazeCell[][];
+}
+
+export type GameRound = MemoryRound | SortRound | OrderRound | MazeRound;
+
+export interface GamePack {
+  /** Exact id, e.g. `game-5ap-memory-fractions`. */
+  id: string;
+  grade: PrimaryGrade;
+  subject: SubjectId;
+  engine: GameEngine;
+  titleAr: string;
+  /** One line on the card. */
+  taglineAr: string;
+  /** The first pack of each grade is open to free accounts (checked by a test). */
+  free?: boolean;
+  /** XP given once, the first time the pack is finished. */
+  xp: number;
+  theme: {
+    /** Background of the full-screen game. */
+    sky: string;
+    /** Decorative skyline (emoji), drawn at the bottom of the scene. */
+    scenery: string[];
+    emoji: string;
+  };
+  /** Didou opens the adventure. */
+  storyAr: string;
+  rounds: GameRound[];
+  /** Memo card at the end. */
+  recapAr: string[];
+}

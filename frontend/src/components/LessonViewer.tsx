@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import { MissionBanner } from './missions/MissionBanner';
 import { missionForLesson } from '../data/missions';
+import { LearningGameEntry } from './games/learning/LearningGameEntry';
+import { packsForLesson } from '../data/games';
 import type { PracticeResult } from '../utils/competenceProgress';
 import { LessonDidou } from './lessonViewer/LessonDidou';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
@@ -662,6 +664,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           {!isPlayful1AP && activeTab === 'explanation' && missionForLesson(lesson.id) && (
             <MissionBanner mission={missionForLesson(lesson.id)!} onPracticeResult={onPracticeResult} onCompleteQuiz={onCompleteQuiz} />
           )}
+          {!isPlayful1AP && activeTab === 'explanation' && packsForLesson(lesson.id).map((pack) => (
+            <div key={pack.id} className="mb-4">
+              <LearningGameEntry pack={pack} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)} />
+            </div>
+          ))}
           {!isPlayful1AP && <LessonDidou lesson={lesson} tab={activeTab} />}
           {activeTab === 'explanation' && (
             isPlayful1AP ? (

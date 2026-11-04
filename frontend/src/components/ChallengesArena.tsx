@@ -26,6 +26,8 @@ import { speakText, speechLangForSubject, stopSpeech as stopSynth } from '../uti
 import { SpeedMathDuelGame } from './games/SpeedMathDuelGame';
 import { MemoryMatrixGame } from './games/MemoryMatrixGame';
 import { BossBattleGame } from './games/BossBattleGame';
+import { LearningGamesShelf } from './games/learning/LearningGameEntry';
+import type { PracticeResult } from '../utils/competenceProgress';
 // Lazy: this section pulls in the Phaser engine (via NumberSortGame/MathStarsGame/DiduRunner/
 // TowerStackGame/Galaxy3DGame) — several hundred KB that only the "ألعاب الترويح" tab actually
 // needs, and eagerly importing it here would load Phaser for every visitor of the Challenges
@@ -43,6 +45,8 @@ interface ChallengesArenaProps {
   userXp?: number;
   userBadges?: string[];
   onEarnCoins?: (amount: number) => void;
+  /** Learning games: each round reports to the parent notebook through its catalog lesson. */
+  onPracticeResult?: (lessonId: string, result: PracticeResult) => void;
 }
 
 const DIFFICULTY_LABEL: Record<Challenge['difficulty'], string> = {
@@ -82,6 +86,7 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
   userXp = 150,
   userBadges = [],
   onEarnCoins,
+  onPracticeResult,
 }) => {
   const renderArabicText = (text: string | undefined | null): string => {
     if (!text) return '';
@@ -387,6 +392,15 @@ export const ChallengesArena: React.FC<ChallengesArenaProps> = ({
             </p>
           </div>
         </div>
+
+        {/* « ألعاب ديدو التعليمية » — immersive learning games of the grade (renders nothing without packs) */}
+        {grade && (
+          <LearningGamesShelf
+            grade={grade}
+            onPracticeResult={onPracticeResult}
+            onEarnXp={(pack, xp) => onChallengeComplete?.(pack.id, xp)}
+          />
+        )}
 
         {/* Top Game Mode Quick Launcher */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

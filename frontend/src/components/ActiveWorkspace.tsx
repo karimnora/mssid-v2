@@ -247,6 +247,7 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
           tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
           onChallengeComplete={onChallengeComplete}
           completedChallengeIds={userProfile.completedChallengeIds ?? []}
+          onPracticeResult={onPracticeResult}
         />
       ) : selectedLesson ? (
         <LessonViewer

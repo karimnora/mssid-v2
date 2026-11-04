@@ -24,6 +24,7 @@ Ce tableau est **généré** depuis `frontend/src/access/entitlements.ts`, la se
 | Ateliers et laboratoires Premium (mosaïque, aventures, labos) | Premium Famille | première mission de chaque atelier | app | `familyWorkshops` |
 | Missions jardin et marché du préscolaire | Premium Famille | séance découverte | app | `preschoolMissions` |
 | Missions de Didou : cours immersifs et interactifs, Didou explique chaque erreur | Premium Famille | la première mission de chaque matière | app | `immersiveMissions` |
+| Jeux éducatifs de Didou (memory, classer, ordonner, labyrinthe) | Premium Famille | le premier jeu de chaque niveau | app | `learningGames` |
 | Plan « 10 jours avant la composition » construit sur les erreurs de l’enfant | Premium Famille | les 2 premiers jours du plan | app | `examPlan` |
 | Sujets d’examen protégés (PDF) | Premium Famille | — | serveur | `examPapers` |
 
