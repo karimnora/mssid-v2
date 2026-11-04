@@ -541,6 +541,27 @@ public async request<T>(
     });
   }
 
+  /** كود التفعيل: prepaid card, BaridiMob code or school licence. Web only (never offered in the Android app). */
+  public async redeemActivationCode(code: string) {
+    return this.request<{ planId: string; months: number; endDate: string }>('/v1/activation-codes/redeem', {
+      method: 'POST',
+      body: JSON.stringify({ code }),
+    });
+  }
+
+  /** Admin: generate a batch; the plain codes are returned once and never stored. */
+  public async generateActivationCodes(input: { planId: string; count: number; seats: number; kind: 'CARD' | 'RECEIPT' | 'SCHOOL'; label: string; validUntil?: string | null }) {
+    return this.request<{ codes: string[] }>('/v1/admin/activation-codes', { method: 'POST', body: JSON.stringify(input) });
+  }
+
+  public async getActivationBatches() {
+    return this.request<{ label: string; kind: string; planId: string; codes: number; seats: number; used: number; validUntil: string | null; revoked: number }[]>('/v1/admin/activation-codes/batches', { method: 'GET' });
+  }
+
+  public async revokeActivationBatch(label: string) {
+    return this.request<{ revoked: number }>('/v1/admin/activation-codes/revoke', { method: 'POST', body: JSON.stringify({ label }) });
+  }
+
   /** V2 first-steps screen: stores the parent e-mail used for the weekly report. */
   public async updateParentEmail(parentEmail: string) {
     return this.request<any>('/v1/users/me/parent-email', {

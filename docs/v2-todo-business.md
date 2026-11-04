@@ -91,9 +91,19 @@ Le test gratuit avec les familles peut avoir lieu pendant ces démarches, puisqu
   - 3 novembre 2026 : bouton « شارك حصيلة الأسبوع (واتساب) » dans le carnet parent (Premium), `utils/weeklyReport.ts`.
   - Le partage envoie une carte de 1080 × 1350 et le texte avec le lien Google Play ; si l'image ne peut pas être créée, il envoie le texte seul.
   - Rendu de la carte à vérifier sur un téléphone.
-- [ ] Envoi automatique du bilan par e-mail au parent, chaque semaine (tâche planifiée côté serveur, avec l'adresse recueillie par « خطوتان للبدء »).
-- [ ] Plan « avant composition » aux dates des trimestres : deux semaines de révision ciblée, puis un examen blanc corrigé.
-- [ ] Alertes parent : « Amine bloque sur l'addition avec retenue, voici le cahier ».
+- [x] Envoi automatique du bilan par e-mail au parent, chaque semaine (tâche planifiée côté serveur, avec l'adresse recueillie par « خطوتان للبدء »). Fait le 4 novembre 2026 (`WeeklyReportService`, migration V107) :
+  - le jeudi à 19 h (heure d'Alger), un e-mail par famille, avec un bloc par enfant actif dans la semaine : séances, « seul / avec indice », réussites, points à revoir, exercices ratés prêts dans le cahier, conseil de 12 minutes pour le lendemain ;
+  - une famille sans activité ne reçoit rien, ce qui ménage le quota Resend ; au plus 80 envois par passage ; un envoi est noté pour ne jamais partir deux fois dans la semaine ;
+  - lien d'arrêt signé en un clic ; lien « ouvrir le carnet parent » (`/?open=parent-notebook`, derrière le Parent Gate) ; lien vers l'offre web (`/?open=offer`) pour les comptes gratuits seulement ;
+  - envoi manuel pour l'admin : `POST /api/v1/admin/weekly-reports/run` ;
+  - **à configurer sur Render V2** : `V2_RESEND_API_KEY`, `V2_PUBLIC_API_URL` (adresse publique du backend V2, pour le lien d'arrêt) et `V2_WEB_URL` si le site n'est pas `https://mssid-v2-test.vercel.app`. `V2_WEEKLY_REPORT_ENABLED=false` coupe l'envoi.
+- [x] Plan « avant composition » aux dates des trimestres : deux semaines de révision ciblée, puis un examen blanc corrigé. Fait le 4 novembre 2026, en 10 jours (`utils/examPlan.ts`, `components/examPlan/ExamPlanPanel.tsx`, dans le carnet parent) :
+  - le parent saisit la date donnée par l'école (une date est proposée : début décembre, début mars, mi-mai) ;
+  - chaque jour dure 20 minutes et porte sur la compétence la plus ratée en premier, en alternant maths et arabe ; les compétences « avec aide » et celles pas encore travaillées du trimestre suivent ;
+  - un devoir blanc tous les 3 jours, une composition blanche complète la veille (banque d'examens du bon niveau et du bon trimestre) ;
+  - boutons : revoir la leçon, imprimer le cahier de rattrapage, ouvrir le sujet blanc ; jours cochés « fait » ;
+  - Premium, avec les 2 premiers jours gratuits (`examPlan` dans le registre des droits).
+- [ ] Alertes parent : « Amine bloque sur l'addition avec retenue, voici le cahier ». En partie le 4 novembre 2026 : le carnet et le bilan e-mail affichent la compétence où l'enfant bloque, le nombre d'exercices ratés et le cahier de rattrapage qui les contient. Reste une alerte immédiate (notification) au moment du blocage.
 - [ ] Plusieurs enfants, un seul abonnement familial.
 
 ### P1 — Ce qui fait revenir l'enfant
@@ -113,7 +123,12 @@ Le test gratuit avec les familles peut avoir lieu pendant ces démarches, puisqu
 - [ ] Page « Premium Famille » centrée sur le résultat pour le parent.
 - [ ] Essai Premium gratuit de 7 jours, déclenché depuis le site, **une seule fois par compte**, avec au plus 2 examens blancs en PDF pendant l'essai (pour qu'un essai pris juste avant les compositions ne remplace pas l'abonnement). Pas d'essai de 48 h : trop court pour recevoir le premier bilan hebdomadaire.
 - [ ] Paiement CIB/Edahabia via une passerelle algérienne (Chargily ou équivalent : vérifier le statut juridique demandé, registre de commerce ou auto-entrepreneur).
-- [ ] **Code d'activation (كود التفعيل) au même niveau que la carte** : un seul système pour les cartes prépayées (librairies, écoles de soutien), les parents qui paient par BaridiMob et envoient le reçu, et les licences d'école (un code de classe pour 30 élèves). Le reçu manuel existant devient une façon d'obtenir un code.
+- [x] **Code d'activation (كود التفعيل) au même niveau que la carte** : un seul système pour les cartes prépayées (librairies, écoles de soutien), les parents qui paient par BaridiMob et envoient le reçu, et les licences d'école (un code de classe pour 30 élèves). Le reçu manuel existant devient une façon d'obtenir un code. Fait le 4 novembre 2026 (`ActivationCodeService`, migration V108, onglet « أكواد التفعيل » de la console d'administration) :
+  - codes `MSD-XXXX-XXXX` sans caractères ambigus ; seule une empreinte SHA-256 est gardée, les codes s'affichent une fois à la génération (copie, CSV, planche de cartes à imprimer) ;
+  - trois sortes : carte prépayée, code après un paiement BaridiMob, licence de classe (jusqu'à 60 comptes par code) ; formule de 3 ou 12 mois, date limite facultative, révocation d'un lot entier ;
+  - le code ajoute ses mois à un abonnement en cours ; le passage en Premium et l'expiration suivent les mêmes règles qu'un reçu ;
+  - le code se saisit **sur le site seulement** (fenêtre de l'offre, « عندي كود تفعيل ») : l'app Android n'en parle pas, et le compte débloqué l'est aussi dans l'app ;
+  - 10 essais par 15 minutes et par adresse IP ; chaque essai est journalisé.
 - [ ] Campagnes : rentrée, avant les compositions (décembre, mars, mai), Ramadan.
 - [ ] Parrainage : un mois offert au parrain et au filleul.
 

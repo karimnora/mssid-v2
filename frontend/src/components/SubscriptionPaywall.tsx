@@ -1,4 +1,5 @@
 import { ReceiptStatus } from './ReceiptStatus';
+import { ActivationCodeForm } from './ActivationCodeForm';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
 import { SubscriptionStatusPanel } from './SubscriptionStatusPanel';
 import React, { useState } from 'react';
@@ -173,6 +174,8 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
               </ul>
             </div>
           </div>
+
+          {!submittedReceipt && <ActivationCodeForm onRedeemed={onSuccessUpgrade} />}
 
           {!submittedReceipt && <fieldset className="space-y-3" disabled={isSubmitting || showParentGate}>
             <legend className="font-extrabold">{t('chooseDuration')}</legend>

@@ -55,6 +55,8 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private static final Window RESET_PASSWORD_WINDOW = new Window(10, 15 * 60 * 1000L);
     private static final Window AI_WINDOW = new Window(15, 60 * 1000L);
     private static final Window PROGRESS_WINDOW = new Window(20, 60 * 1000L);
+    // Activation codes: 10 tries / 15 min per IP — with 31^8 possible codes, guessing is hopeless.
+    private static final Window REDEEM_WINDOW = new Window(10, 15 * 60 * 1000L);
     private static final Window DEFAULT_WINDOW = new Window(60, 60 * 1000L);
 
     private static final class Counter {
@@ -67,6 +69,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
     private final ConcurrentHashMap<String, Counter> resetPasswordCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> aiCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> progressCounters = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Counter> redeemCounters = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Counter> apiCounters = new ConcurrentHashMap<>();
 
     @Override
@@ -85,6 +88,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
         boolean isResetPassword = isPost && path.startsWith("/api/v1/auth/reset-password");
         boolean isAiEndpoint = isPost && (path.startsWith("/api/gemini/") || path.startsWith("/api/v1/ai/"));
         boolean isProgressSync = "PUT".equalsIgnoreCase(request.getMethod()) && path.equals("/api/v1/users/me/progress");
+        boolean isRedeem = isPost && path.equals("/api/v1/activation-codes/redeem");
 
         Window window;
         ConcurrentHashMap<String, Counter> bucket;
@@ -105,6 +109,10 @@ public class RateLimitFilter extends OncePerRequestFilter {
             window = AI_WINDOW;
             bucket = aiCounters;
             message = "Trop de demandes envoyées à l'assistant IA. Veuillez ralentir et réessayer dans un instant.";
+        } else if (isRedeem) {
+            window = REDEEM_WINDOW;
+            bucket = redeemCounters;
+            message = "Trop d'essais de code. Veuillez réessayer dans 15 minutes.";
         } else if (isProgressSync) {
             window = PROGRESS_WINDOW;
             bucket = progressCounters;

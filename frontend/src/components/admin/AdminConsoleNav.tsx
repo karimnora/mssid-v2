@@ -1,9 +1,9 @@
 import React from 'react';
-import { BarChart3, Sliders, Users, ShieldCheck, BookOpen, Mail, ArrowUpRight } from 'lucide-react';
+import { BarChart3, Sliders, Users, ShieldCheck, BookOpen, Mail, ArrowUpRight, Ticket } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { MssidLogo } from '../MssidLogo';
 
-export type AdminConsoleTabId = 'analytics' | 'content_review' | 'feature_flags' | 'users_roles' | 'technical_logs' | 'contact_messages';
+export type AdminConsoleTabId = 'analytics' | 'content_review' | 'feature_flags' | 'users_roles' | 'technical_logs' | 'contact_messages' | 'activation_codes';
 interface AdminConsoleNavProps {
   activeTab: AdminConsoleTabId;
   onSelectTab: (tab: AdminConsoleTabId) => void;
@@ -16,6 +16,7 @@ const TABS: { id: AdminConsoleTabId; labelAr: string; shortLabelAr: string; icon
   { id: 'users_roles', labelAr: 'المستخدمون والصلاحيات', shortLabelAr: 'مستخدمون', icon: Users },
   { id: 'technical_logs', labelAr: 'السجلات التقنية', shortLabelAr: 'سجلات', icon: ShieldCheck },
   { id: 'contact_messages', labelAr: 'رسائل التواصل', shortLabelAr: 'رسائل', icon: Mail },
+  { id: 'activation_codes', labelAr: 'أكواد التفعيل', shortLabelAr: 'أكواد', icon: Ticket },
 ];
 export const AdminConsoleNav: React.FC<AdminConsoleNavProps> = ({ activeTab, onSelectTab, onExitAdminConsole }) => {
   const { authUser } = useAuth();

@@ -5,6 +5,7 @@ import { FeatureFlagsModule } from './FeatureFlagsModule';
 import { UsersRolesModule } from './UsersRolesModule';
 import { TechnicalLogsModule } from './TechnicalLogsModule';
 import { ContactMessagesModule } from './ContactMessagesModule';
+import { ActivationCodesModule } from './ActivationCodesModule';
 
 const ContentReviewModule = lazy(() => import('./ContentReviewModule').then(module => ({ default: module.ContentReviewModule })));
 
@@ -31,6 +32,7 @@ export const AdminConsoleView: React.FC<AdminConsoleViewProps> = ({ onExitAdminC
         {activeTab === 'users_roles' && <UsersRolesModule />}
         {activeTab === 'technical_logs' && <TechnicalLogsModule />}
         {activeTab === 'contact_messages' && <ContactMessagesModule />}
+        {activeTab === 'activation_codes' && <ActivationCodesModule />}
       </div></main>
     </div>
   );
