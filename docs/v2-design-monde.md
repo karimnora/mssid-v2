@@ -62,6 +62,15 @@
     - « امتلأ الكوب ماءً », qui est un تمييز نسبة, n'est plus noté تمييز ذات : il est remplacé par « وزن البائع كيلوغراماً عسلاً » ;
     - les exemples d'تمييز نسبة et du passif sont clarifiés ;
   - contrôle automatique sur les 107 leçons de 5AP : chaque QCM a une seule bonne réponse, et la solution affichée est cette réponse (0 écart).
+- [x] Contenu 5AP de qualité supérieure, lot 3 : sciences (4 novembre 2026) :
+  - 15 dessins, un par leçon de sciences 5AP (`lessonViewer/illustrations/science5ap.tsx`) : poumons et danger du CO, circuit du sang, assiette équilibrée, besoins de la plante et poils absorbants, plantes du désert, circuit électrique et test des conducteurs, sécurité électrique, énergies, filtration et évaporation, reproduction des plantes, greffe et tubercule, ovipares et vivipares, air et combustion, cycle de l'eau, tri des déchets ;
+  - relecture des règles et exemples, avec ces corrections :
+    - voyelles et orthographe : مُكَوِّنَات, تَرْبِطُ, المُحَمَّل, قِطْعَة, نَقْدِيَّة, مُقَطَّر, أَرَادَتْ ;
+    - la solution de Knop n'est plus présentée comme « NPK », qui est un engrais ;
+    - les racines du désert s'étendent « أفقياً » et non « طولياً », comme le dit le résumé de la leçon ;
+    - « الاستهلاك المفرط » et « الدارة القصيرة » remplacent des formulations fautives ; « القاطع العام » remplace « القاطع المأخذي » ;
+    - les mouchoirs sont « des mouchoirs en papier jetés après usage » ;
+    - le rôle de la zone pilifère et de la transpiration est reformulé.
 - [ ] Anciens labos : tableau crème posé sur le ciel, sans changement à l'intérieur. À reprendre un par un si l'on veut les rendre immersifs.
 - [x] Barre du haut et barre du bas (3 novembre 2026) : bandeau de nuit avec un liseré doré. En haut, des boutons bonbons : retour bleu, réglages lavande, année dorée, profil vert. En bas, l'onglet actif est un bonbon bleu, et le bouton « مساعدة » est violet avec le nouveau Didou à la place de l'emoji 🦊. Vérifié dans Edge en 390 × 844 et 1280 × 800.
 - [x] Nouveau Didou partout (3 novembre 2026) : la carte et la planète (Didou debout, dans le bateau et dans la fusée), leurs rubans, et la carte « صديقك ديدو ». Didou garde l'ancien dessin seulement quand l'enfant lui met une tenue de la garde-robe, en attendant que les tenues soient redessinées.
