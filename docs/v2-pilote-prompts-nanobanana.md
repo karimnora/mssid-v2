@@ -189,9 +189,101 @@ Les 13 images ont été générées et intégrées. Elles sont détourées, en W
 - **Étoile** : l'étoile rendue remplace l'étoile vectorielle partout sur la carte et l'accueil.
 
 À régénérer :
-- [ ] **06 planète** : Timgad apparaît deux fois (9 dioramas au lieu de 8). Il faut ajouter au prompt « exactly eight dioramas, each place only once ».
-- [ ] **13 objets, gâteau** : 6 parts inégales au lieu de 4 égales. Il est écarté, faux pour une leçon de fractions. À refaire seul, avec « exactly 4 equal quarter slices, cut by two perpendicular lines through the centre ».
-- [ ] Médaille, coffre, cadenas et montre sont prêts dans `assets/world/objects/`, mais pas encore placés dans l'interface.
+- [ ] **06 planète** : Timgad apparaît deux fois (9 dioramas au lieu de 8). Retouche demandée au lot 2 (image 14).
+- [ ] **13 objets, gâteau** : 6 parts inégales au lieu de 4 égales. Il est écarté, faux pour une leçon de fractions. À refaire seul au lot 2 (image 15).
+- [x] Coffre et cadenas placés sur la carte (5 novembre) : le coffre marque les trésors, grisé tant que le monde n'est pas ouvert ; le cadenas marque les stations fermées et Premium.
+- [ ] La médaille attend les 7 autres mondes, pour que les 8 forment une série. La montre attend une leçon de durées où la placer.
+
+## Lot 2 : corrections, puis Sahara et Casbah (5 novembre 2026)
+
+Le Sahara et la Casbah sont les deux mondes gratuits. Ce sont eux que tous les enfants voient en premier.
+
+Déposer les fichiers dans `C:\Users\Karim\Downloads\didou-lot2\`, avec les mêmes règles que plus haut : bloc STYLE en tête de chaque prompt, fiche de Didou jointe s'il apparaît, fond vert pur pour les éléments détourés, aucun texte, aucun drapeau.
+
+### Règle des décors de monde (lire avant 16 à 21)
+
+Sur la carte, le décor fait 1600 × 900 et les stations sont posées sur le **tiers bas** (y entre 560 et 720), réparties sur toute la largeur. Le décor doit donc avoir :
+- un **sol praticable et assez calme sur toute la largeur du tiers bas** : sable, pavés, terrasse. Pas de ravin, d'eau ou d'objet important à cet endroit ;
+- les éléments marquants (ksar, palmiers, maisons, mosquée) **dans le tiers du milieu et le ciel** ;
+- **les bords gauche et droit au même niveau de sol**, car le décor se raccorde aux mondes voisins.
+
+### 14 — `14-planete-corrigee.png` · ratio 1:1 · fond vert
+
+C'est une **retouche** : joindre `06-planete-didou.png`, ne pas régénérer depuis zéro.
+
+```
+Edit the attached image. Remove the Roman temple diorama with columns and a triangular pediment at the lower left of the planet (keep the Roman triumphal arch on the left side). Then space the remaining eight dioramas evenly around the planet, one every 45 degrees, in this clockwise order starting at the top: Sahara (top), Casbah, Mediterranean sea with lighthouse, Constantine bridge, Djurdjura snowy mountains (bottom), Timgad triumphal arch, Tassili red rock arches, rocket and observatory. Keep everything else identical: same planet, same style, same lighting, same plain flat pure green #00FF00 background. Exactly eight dioramas, each place only once.
+```
+
+L'ordre compte : il correspond à l'ordre des mondes dans l'app, donc les flèches de l'accueil tomberont juste.
+
+### 15 — `15-gateau-quarts.png` · ratio 1:1 · fond vert
+
+Sert d'illustration aux fractions (5AP) : le dessin doit être exact.
+
+```
+[STYLE]
+A single isolated 3D object, seen from a three-quarter top view: a round traditional Algerian copper tray holding a round golden cake cut into exactly 4 equal quarter slices by two perpendicular straight cuts through the exact centre. One quarter slice is pulled slightly outward from the others so the four equal parts are clearly visible. No other slices, no crumbs, no decoration on the cake. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+Vérifier avant de m'envoyer l'image : **4 parts, toutes de même taille**.
+
+### 16 — `16-ilot-sahara.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island of the Algerian Sahara, seen in three-quarter top view: a chunk of golden sand floating in the air with ochre rock underneath, soft sculpted dunes, a small green palm oasis with a round blue pool, and a red-ochre earthen ksar (old fortified village with crenellated walls and small square windows, inspired by Timimoun and Taghit). A tiny camel resting near the palms. Small golden glowing path dots crossing the sand. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+### 17 — `17-sahara-decor-paysage.png` · ratio 16:9
+
+```
+[STYLE]
+Wide painted background for a children's game world, the Algerian Sahara at late afternoon: in the middle distance, a red-ochre earthen ksar with crenellated walls on a low rocky hill, a palm oasis with a small blue pool, tall golden dunes rolling behind under a warm sky shifting from soft blue at the top to apricot near the horizon, a few soft clouds. The whole lower third of the image is a wide, gently undulating, calm sandy ground running across the full width, at the same height on the left and right edges, with no objects on it. Atmospheric perspective, slightly softened, calm. No characters, no text.
+```
+
+### 18 — `18-sahara-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 17.
+
+```
+[STYLE]
+Same artwork as the attached image (Algerian Sahara, red-ochre ksar, palm oasis, golden dunes at late afternoon), recomposed for a vertical phone screen: the ksar and palms in the middle third, the sky in the upper third, a calm empty sandy ground in the lower third. Same colors and lighting. No characters, no text.
+```
+
+### 19 — `19-ilot-casbah.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island of the Casbah of Algiers, seen in three-quarter top view: a chunk of land floating in the air with rocky edges underneath, white cubic houses stacked on a hillside with flat roof terraces, small blue wooden doors and shutters, narrow stepped alleys between them, a small white Ottoman-style mosque with a square minaret, a few green plants in pots, and a glimpse of turquoise Mediterranean sea on one side. Small golden glowing path dots climbing the alley steps. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+### 20 — `20-casbah-decor-paysage.png` · ratio 16:9
+
+```
+[STYLE]
+Wide painted background for a children's game world, the Casbah of Algiers on a sunny morning: in the middle distance, white cubic houses stacked up the hill with flat roof terraces, blue doors and shutters, a white Ottoman-style mosque with a square minaret, laundry lines and potted plants on the terraces, the turquoise Mediterranean bay far behind under a clear soft blue sky with a few soft clouds. The whole lower third of the image is a wide, calm, light stone-paved square running across the full width, at the same height on the left and right edges, with no objects on it. Atmospheric perspective, slightly softened, calm. No characters, no text, no flags.
+```
+
+### 21 — `21-casbah-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 20.
+
+```
+[STYLE]
+Same artwork as the attached image (Casbah of Algiers, white stacked houses, square minaret, sea behind, sunny morning), recomposed for a vertical phone screen: the houses and minaret in the middle third, sky and sea in the upper third, a calm empty stone-paved square in the lower third. Same colors and lighting. No characters, no text, no flags.
+```
+
+### 22 — `22-premiers-plans.png` · ratio 16:9 · fond vert
+
+Une planche avec les deux premiers plans pour la parallaxe des leçons. Je la découpe.
+
+```
+[STYLE]
+Foreground framing elements only, for parallax layers, two separate sets side by side with a wide empty gap between them. Left set (Sahara): on the far left and far right of its half, a sand dune crest with a few dry desert grasses and a palm frond, slightly out of focus, very close to the camera. Right set (Casbah): on the far left and far right of its half, the edge of a white wall with a blue wooden shutter, a terracotta pot with a green plant and a jasmine branch, slightly out of focus, very close to the camera. The middle of each half is completely empty. Plain flat pure green #00FF00 background everywhere else, no shadow on the background.
+```
+
+Si la planche mélange les deux mondes, faire deux images séparées (`22a-premier-plan-sahara.png`, `22b-premier-plan-casbah.png`), sur le modèle du prompt 12.
 
 ## Ce que je fais une fois les images reçues
 

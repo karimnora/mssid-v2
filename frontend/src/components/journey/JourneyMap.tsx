@@ -12,6 +12,7 @@ import {
 } from '../../data/journey/journeyWorlds';
 import { currentStationIndex, type JourneyStation, type StationState } from '../../utils/journeyProgress';
 import { DidouFull, DidouHead, StarIcon } from './DidouJourneyArt';
+import { OBJECT_ART } from '../world/worldArt';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 import { JourneySceneryDefs, WORLD_SKY, WorldBackdrop } from './JourneyScenery';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
@@ -548,16 +549,10 @@ export function JourneyMap(props: JourneyMapProps) {
                 <g className="j-nb">
                   <circle cx={s.x} cy={s.y} r={s.kind === 'treasure' ? 56 : 48} fill={fill} stroke="#fff" strokeWidth="7" opacity={state === 'missing' ? 0.5 : 1} />
                   {s.kind === 'treasure' ? (
-                    <g transform={`translate(${s.x} ${s.y})`}>
-                      <rect x="-32" y="-14" width="64" height="38" rx="6" fill="#a0522d" stroke="#13206b" strokeWidth="4" />
-                      <path d="M-32 -14 Q0 -46 32 -14Z" fill="#c98a4b" stroke="#13206b" strokeWidth="4" />
-                      <rect x="-7" y="-8" width="14" height="16" rx="3" fill="#ffd23f" stroke="#13206b" strokeWidth="3" />
-                    </g>
+                    // Rendered chest (components/world/worldArt.ts), greyed until the world's lessons are done.
+                    <image href={OBJECT_ART.chest} x={s.x - 42} y={s.y - 42} width="84" height="84" style={state === 'locked' || state === 'premium' ? { filter: 'grayscale(.85) brightness(1.1)' } : undefined} />
                   ) : state === 'locked' || state === 'missing' || state === 'premium' ? (
-                    <g transform={`translate(${s.x} ${s.y})`}>
-                      <rect x="-16" y="-4" width="32" height="26" rx="5" fill="#fff" />
-                      <path d="M-10 -4 V-14 A10 10 0 0 1 10 -14 V-4" stroke="#fff" strokeWidth="6" fill="none" />
-                    </g>
+                    <image href={OBJECT_ART.lock} x={s.x - 22} y={s.y - 30} width="44" height="60" />
                   ) : (
                     <text x={s.x} y={s.y + 17} textAnchor="middle" fontFamily="Lalezar, Cairo, sans-serif" fontSize="50" fill="#fff" stroke="#13206b" strokeWidth="5" paintOrder="stroke">
                       {s.number}
