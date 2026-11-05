@@ -114,6 +114,8 @@ export interface GamePack {
     /** Decorative skyline (emoji), drawn at the bottom of the scene. */
     scenery: string[];
     emoji: string;
+    /** Painted decor (rendered art) shown behind the board instead of the sky and emoji skyline. */
+    backdrop?: string;
   };
   /** Didou opens the adventure. */
   storyAr: string;

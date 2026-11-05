@@ -431,3 +431,20 @@
   .lg-stone[data-state='reachable']::after, .lg-stone[data-goal]::before { animation: none; }
   .lg-maze, .lg-memory { transform: none; }
 }
+
+/* Painted game decors (pack.theme.backdrop): the emoji skyline, clouds and floor give way to the art. */
+.lg-player[data-painted] :is(.lg-cloud, .lg-floor, .lg-scenery) { display: none; }
+
+/* Rendered maze stones (docs/v2-labos-prompts-nanobanana.md, M01), for every maze. */
+.lg-maze .lg-stone { background: url('../../../assets/games/stone-idle.webp') center / contain no-repeat; box-shadow: none; border-radius: 42%; }
+.lg-maze .lg-stone-text { color: #fff; text-shadow: 0 1px 0 #1e293b, 0 0 4px rgba(15, 23, 42, 0.9), 0 2px 6px rgba(15, 23, 42, 0.7); }
+.lg-maze .lg-stone[data-state='reachable'] { background-image: url('../../../assets/games/stone-reach.webp'); box-shadow: none; }
+.lg-maze .lg-stone[data-state='cracked'] { background-image: url('../../../assets/games/stone-cracked.webp'); box-shadow: none; opacity: 1; }
+.lg-maze .lg-stone[data-state='cracked'] .lg-stone-text { color: #fff; }
+.lg-maze .lg-stone[data-state='fog'] { background: url('../../../assets/games/stone-fog.webp') center / contain no-repeat; box-shadow: none; }
+.lg-maze .lg-stone[data-state='trail'] { background-image: url('../../../assets/games/stone-idle.webp'); box-shadow: none; filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.95)); }
+.lg-maze .lg-stone[data-state='trail'] .lg-stone-text { color: #fff; }
+.lg-maze .lg-stone[data-state='here'] { background-image: url('../../../assets/games/stone-idle.webp'); box-shadow: none; filter: drop-shadow(0 0 10px rgba(255, 214, 80, 1)); }
+.lg-maze .lg-stone[data-goal]:not([data-state='here']) { background-image: url('../../../assets/games/stone-goal.webp'); }
+.lg-maze :is(.lg-stone-crack, .lg-stone-fog) { display: none; }
+.lg-maze .lg-stone[data-goal]::before { border-radius: 50%; inset: 2px; }

@@ -1,4 +1,7 @@
 import type { GamePack, MazeCell, MemoryRound, OrderRound } from './types';
+import mazeGarden from '../../assets/games/maze-garden.webp';
+import mazeTrain from '../../assets/games/maze-train.webp';
+import mazeRoad from '../../assets/games/maze-road.webp';
 
 /**
  * Preschool learning games (3-5 years, docs/v2-jeux-catalogue.md). « Zero text »: every card is a
@@ -176,7 +179,7 @@ export const GAME_PACKS_PRE: GamePack[] = [
     xp: 40,
     titleAr: 'سِلَالُ رَوْضَةِ دِيدُو',
     taglineAr: 'ضَعْ كُلَّ صُورَةٍ فِي سَلَّتِهَا!',
-    theme: { sky: 'linear-gradient(160deg, #f9a8d4 0%, #a855f7 50%, #4c1d95 100%)', scenery: ['🎈', '🧸', '🎨', '🎈', '🪀', '🧸'], emoji: '🧺' },
+    theme: { sky: 'linear-gradient(160deg, #f9a8d4 0%, #a855f7 50%, #4c1d95 100%)', scenery: ['🎈', '🧸', '🎨', '🎈', '🪀', '🧸'], emoji: '🧺', backdrop: mazeGarden },
     storyAr: 'أَهْلاً بِكَ فِي رَوْضَتِي! الصُّوَرُ اخْتَلَطَتْ فِي الصُّنْدُوقِ. اُنْقُرْ صُورَةً لِتَسْمَعَهَا، ثُمَّ اُنْقُرِ السَّلَّةَ الَّتِي تُنَاسِبُهَا.',
     rounds: [
       {
@@ -359,7 +362,7 @@ export const GAME_PACKS_PRE: GamePack[] = [
     xp: 40,
     titleAr: 'قِطَارُ دِيدُو الصَّغِيرُ',
     taglineAr: 'عُدَّ وَرَتِّبِ العَرَبَاتِ!',
-    theme: { sky: 'linear-gradient(160deg, #7dd3fc 0%, #3b82f6 50%, #1e3a8a 100%)', scenery: ['🚂', '🌳', '🏡', '🚃', '🌳', '🏡'], emoji: '🚂' },
+    theme: { sky: 'linear-gradient(160deg, #7dd3fc 0%, #3b82f6 50%, #1e3a8a 100%)', scenery: ['🚂', '🌳', '🏡', '🚃', '🌳', '🏡'], emoji: '🚂', backdrop: mazeTrain },
     storyAr: 'تُوتْ تُوتْ! أَنَا سَائِقُ القِطَارِ الصَّغِيرِ. العَرَبَاتُ اخْتَلَطَتْ! اُنْقُرِ العَرَبَةَ الأُولَى، ثُمَّ الَّتِي بَعْدَهَا، لِيَنْطَلِقَ القِطَارُ.',
     rounds: [
       {
@@ -494,7 +497,7 @@ export const GAME_PACKS_PRE: GamePack[] = [
     xp: 40,
     titleAr: 'طَرِيقُ دِيدُو إِلَى الرَّوْضَةِ',
     taglineAr: 'اِتْبَعِ الصُّوَرَ الصَّحِيحَةَ!',
-    theme: { sky: 'linear-gradient(160deg, #fdba74 0%, #f472b6 50%, #7e22ce 100%)', scenery: ['🏫', '🌳', '🚸', '🏡', '🌳', '🏫'], emoji: '🏫' },
+    theme: { sky: 'linear-gradient(160deg, #fdba74 0%, #f472b6 50%, #7e22ce 100%)', scenery: ['🏫', '🌳', '🚸', '🏡', '🌳', '🏫'], emoji: '🏫', backdrop: mazeRoad },
     storyAr: 'هَيَّا نَذْهَبُ إِلَى الرَّوْضَةِ! أَقْفِزُ عَلَى البَلَاطَاتِ، لَكِنْ فَقَطْ عَلَى الصُّوَرِ الَّتِي أَطْلُبُهَا. اُنْقُرْ بَلَاطَةً بِجَانِبِي.',
     rounds: [
       {

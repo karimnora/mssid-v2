@@ -235,7 +235,8 @@ export const LearningGamePlayer: React.FC<{
     <div
       className={`mission-player lg-player ${pack.young ? 'lg-young' : ''} ${pack.grade === 'PRE' ? 'lg-pre' : ''} fixed inset-0 z-[65] flex flex-col overflow-hidden`}
       dir="rtl"
-      style={{ background: pack.theme.sky }}
+      style={{ background: pack.theme.backdrop ? `center / cover no-repeat url(${pack.theme.backdrop}), ${pack.theme.sky}` : pack.theme.sky }}
+      data-painted={pack.theme.backdrop ? '' : undefined}
       role="dialog"
       aria-modal="true"
       aria-label={pack.titleAr}
