@@ -257,7 +257,8 @@ type Decor = Partial<Record<JourneyWorldId, React.ReactNode>>;
 const DECOR: Partial<Record<PrimaryGrade, Decor>> = {
   '2AP': {
     sahara: <><Balloon x={700} y={200} color="#f472b6" label="12" /><Balloon x={860} y={150} color="#60a5fa" label="27" /><Balloon x={1020} y={220} color="#34d399" label="49" /></>,
-    casbah: <School x={1000} y={240} />,
+    // Over the sea, clear of the painted decor's minaret.
+    casbah: <School x={420} y={200} />,
     sea: <><Bubbles x={760} y={330} /><Bubbles x={1180} y={300} /></>,
     constantine: <><Kite x={760} y={80} color="#d6283b" label="50" /><Kite x={1120} y={60} color="#2f6fe0" label="99" /></>,
     djurdjura: <><Sheep x={1470} y={830} /><Sheep x={1330} y={850} dark /><Birds x={760} y={180} /></>,

@@ -15,11 +15,16 @@ import constantineLandscape from '../../assets/world/constantine/constantine-lan
 import constantinePortrait from '../../assets/world/constantine/constantine-portrait.webp';
 import constantineForeground from '../../assets/world/constantine/constantine-foreground.webp';
 import constantineIsland from '../../assets/world/constantine/island-constantine.webp';
+import saharaLandscape from '../../assets/world/sahara/sahara-landscape.webp';
+import saharaPortrait from '../../assets/world/sahara/sahara-portrait.webp';
+import saharaIsland from '../../assets/world/sahara/island-sahara.webp';
+import casbahLandscape from '../../assets/world/casbah/casbah-landscape.webp';
+import casbahPortrait from '../../assets/world/casbah/casbah-portrait.webp';
+import casbahIsland from '../../assets/world/casbah/island-casbah.webp';
 import star from '../../assets/world/objects/obj-star.webp';
 import lock from '../../assets/world/objects/obj-lock.webp';
 import chest from '../../assets/world/objects/obj-chest.webp';
-import medalConstantine from '../../assets/world/objects/obj-medal-constantine.webp';
-import watch from '../../assets/world/objects/obj-watch.webp';
+// obj-medal-constantine.webp and obj-watch.webp wait in assets/world/objects/ until they have a place.
 import type { JourneyWorldId } from '../../data/journey/journeyWorlds';
 
 export type DidouPose = 'talk' | 'cheer' | 'think' | 'point';
@@ -38,7 +43,7 @@ export const DIDOU_STAND = { src: didouStand, w: 395, h: 640 };
 
 export const SPACE_ART = { planet, landscape: spaceLandscape, portrait: spacePortrait };
 
-export const OBJECT_ART = { star, lock, chest, medalConstantine, watch };
+export const OBJECT_ART = { star, lock, chest };
 
 export interface WorldDecor {
   landscape: string;
@@ -46,9 +51,19 @@ export interface WorldDecor {
   /** Parallax layer: framing elements on the left and right edges only. */
   foreground?: string;
   island?: string;
+  /**
+   * The landscape image (1376 × 768) is drawn 1600 wide on the journey map, so 893 units tall;
+   * this moves it down to line a landmark up with the stations (Constantine: the bridge deck).
+   */
+  mapOffsetY?: number;
 }
 
-/** Painted decors; the worlds without one keep their vector backdrop. */
+/**
+ * Painted decors (docs/v2-pilote-prompts-nanobanana.md); the worlds without one keep their vector
+ * backdrop. Their stations (journeyWorlds.ts, `ys`) stand on the decor's calm lower ground.
+ */
 export const WORLD_DECOR: Partial<Record<JourneyWorldId, WorldDecor>> = {
-  constantine: { landscape: constantineLandscape, portrait: constantinePortrait, foreground: constantineForeground, island: constantineIsland },
+  sahara: { landscape: saharaLandscape, portrait: saharaPortrait, island: saharaIsland },
+  casbah: { landscape: casbahLandscape, portrait: casbahPortrait, island: casbahIsland },
+  constantine: { landscape: constantineLandscape, portrait: constantinePortrait, foreground: constantineForeground, island: constantineIsland, mapOffsetY: 44 },
 };

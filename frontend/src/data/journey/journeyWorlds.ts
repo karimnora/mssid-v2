@@ -57,7 +57,8 @@ const WORLDS_1AP: readonly JourneyWorld[] = [
     badge: { ar: 'وسام الصحراء', fr: 'Médaille du Sahara' },
     medalColor: '#f2a33d',
     lessonIds: ['math-1ap-t1-spatial-relations', 'math-1ap-t1-right-left-inside-outside', 'math-1ap-t1-numbers-0-5'],
-    ys: [700, 560, 720, 560],
+    // On the painted decor's sand, below the oasis pool and the ksar's rock (components/world/worldArt.ts).
+    ys: [700, 680, 720, 640],
   },
   {
     id: 'casbah',
@@ -68,7 +69,8 @@ const WORLDS_1AP: readonly JourneyWorld[] = [
     badge: { ar: 'وسام القصبة', fr: 'Médaille de la Casbah' },
     medalColor: '#2f6fe0',
     lessonIds: ['arabic-1ap-t1-school-axis', 'arabic-1ap-t1-letters-group1', 'civics-1ap-t1-greetings-respect'],
-    ys: [720, 600, 700, 560],
+    // On the painted decor's paved square, below the parapet (y ≈ 680).
+    ys: [750, 730, 770, 740],
   },
   {
     id: 'sea',

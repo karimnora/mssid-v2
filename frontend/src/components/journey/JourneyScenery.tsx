@@ -5,7 +5,7 @@ import { WORLD_DECOR } from '../world/worldArt';
 /*
  * Vector backdrops of the journey worlds. Each world is drawn in its own 1600 × 900 box; the map
  * translates it into place. Everything is original artwork, kept flat and light so a mid-range
- * Android phone can scroll the whole map; Constantine uses the pilot's painted decor.
+ * Android phone can scroll the whole map; the worlds listed in WORLD_DECOR use their painted decor.
  */
 
 function seeded(seed: number) {
@@ -72,26 +72,6 @@ function Clouds({ items }: { items: Array<[number, number, number]> }) {
 
 /* ---------- pre-computed scenery (deterministic, module-level) ---------- */
 
-const CASBAH_HOUSES = (() => {
-  const rnd = seeded(17);
-  const hill = (x: number) => 250 + Math.abs(x - 820) * 0.22;
-  const out: Array<{ x: number; y: number; w: number; h: number; tone: string; door: boolean; arch: boolean }> = [];
-  for (let i = 0; i < 64; i++) {
-    const x = 380 + rnd() * 1180;
-    const top = hill(x);
-    out.push({
-      x,
-      y: top + rnd() * (580 - top - 40),
-      w: 46 + rnd() * 40,
-      h: 34 + rnd() * 30,
-      tone: ['#fbf6ee', '#f4ede0', '#fffdf8', '#eef3f8'][Math.floor(rnd() * 4)],
-      door: rnd() > 0.4,
-      arch: rnd() > 0.75,
-    });
-  }
-  return out.sort((a, b) => a.y - b.y);
-})();
-
 const SPACE_STARS = (() => {
   const rnd = seeded(5);
   return Array.from({ length: 130 }, () => ({ x: rnd() * 1600, y: rnd() * 900, r: 1.5 + rnd() * 3, warm: rnd() < 0.2 }));
@@ -130,8 +110,8 @@ function vGrad(id: string, stops: Array<[number, string]>) {
 export function JourneySceneryDefs() {
   return (
     <>
-      {vGrad('jw-sky-sahara', [[0, '#ffb85c'], [0.6, '#ffe7b0']])}
-      {vGrad('jw-sky-casbah', [[0, '#62b8f0'], [1, '#e3f4ff']])}
+      {vGrad('jw-sky-sahara', [[0, '#9fbde0'], [0.6, '#f6d2a6']])}
+      {vGrad('jw-sky-casbah', [[0, '#5fa9f0'], [1, '#d6ebfd']])}
       {vGrad('jw-sky-sea', [[0, '#6cc4f0'], [1, '#d9f3ff']])}
       {vGrad('jw-water', [[0, '#38b3e8'], [1, '#0b5da8']])}
       {vGrad('jw-sky-constantine', [[0, '#7fc4f0'], [1, '#f3fbff']])}
@@ -143,6 +123,16 @@ export function JourneySceneryDefs() {
         <stop offset="0" stopColor="#fff" stopOpacity="0" />
         <stop offset="1" stopColor="#fff" />
       </linearGradient>
+      {/* Painted decors fade out on their left and right edges, so two worlds never meet on a hard line. */}
+      <linearGradient id="jw-paint-edge" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#000" />
+        <stop offset=".1" stopColor="#fff" />
+        <stop offset=".9" stopColor="#fff" />
+        <stop offset="1" stopColor="#000" />
+      </linearGradient>
+      <mask id="jw-paint-fade" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="url(#jw-paint-edge)" />
+      </mask>
       <linearGradient id="jw-hfade" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0" stopColor="#fff" />
         <stop offset="1" stopColor="#000" />
@@ -152,106 +142,6 @@ export function JourneySceneryDefs() {
 }
 
 /* ---------- worlds ---------- */
-
-function Sahara() {
-  return (
-    <g>
-      <rect width="1600" height="900" fill="url(#jw-sky-sahara)" />
-      <circle cx="1250" cy="170" r="140" fill="#fff6c8" opacity=".35" />
-      <circle cx="1250" cy="170" r="90" fill="#fff6c8" />
-      <g fill="#dc9a66">
-        <path d="M0 500 V430 Q40 380 90 400 Q130 330 190 380 Q240 360 280 430 L300 500Z" />
-        <path d="M700 500 L716 390 Q690 350 740 344 Q796 340 772 390 L790 500Z" />
-        <path d="M1000 500 Q1040 410 1100 430 Q1150 360 1220 420 Q1280 410 1330 500Z" />
-      </g>
-      <g transform="translate(380 0)">
-        <rect x="0" y="420" width="70" height="80" fill="#f6e3c1" />
-        <rect x="60" y="400" width="80" height="100" fill="#cfe4f7" />
-        <rect x="130" y="430" width="70" height="70" fill="#f8d9e6" />
-        <rect x="190" y="410" width="70" height="90" fill="#f3e2b8" />
-        <path d="M112 300 L130 300 L142 420 L100 420Z" fill="#f3e2b8" />
-        <path d="M106 300 L112 286 L118 300 L124 286 L130 300 L136 286 L136 300Z" fill="#f3e2b8" />
-        <g fill="#3b6ea8">
-          <rect x="20" y="450" width="12" height="18" rx="6" />
-          <rect x="88" y="440" width="12" height="18" rx="6" />
-          <rect x="156" y="455" width="12" height="18" rx="6" />
-          <rect x="215" y="440" width="12" height="18" rx="6" />
-        </g>
-      </g>
-      <path d="M0 540 Q200 460 420 530 T860 520 T1300 510 T1600 530 V900 H0Z" fill="#f6c46c" />
-      <g fill="#b5702e" transform="translate(1090 520)">
-        <ellipse cx="0" cy="0" rx="56" ry="26" />
-        <ellipse cx="-6" cy="-24" rx="24" ry="20" />
-        <path d="M44 -6 Q70 -30 74 -64 L90 -66 Q94 -20 56 10Z" />
-        <ellipse cx="88" cy="-66" rx="16" ry="9" />
-        <path d="M-40 14 V64 M-24 18 V64 M30 18 V64 M44 14 V64" stroke="#b5702e" strokeWidth="9" strokeLinecap="round" />
-      </g>
-      <path d="M0 660 Q260 580 560 650 T1160 640 T1600 660 V900 H0Z" fill="#eeac55" />
-      <ellipse cx="760" cy="790" rx="160" ry="34" fill="#4fc3e8" />
-      <ellipse cx="740" cy="784" rx="100" ry="14" fill="#9fe3ff" />
-      <Palm x={630} y={790} h={170} />
-      <Palm x={900} y={780} h={140} />
-      <Palm x={1480} y={720} h={150} />
-      <path d="M0 830 Q300 790 640 830 T1300 820 T1600 830 V900 H0Z" fill="#e39a45" />
-    </g>
-  );
-}
-
-function Casbah() {
-  return (
-    <g>
-      <rect width="1600" height="900" fill="url(#jw-sky-casbah)" />
-      <Clouds items={[[300, 120, 90], [1000, 90, 70]]} />
-      <Gull x={560} y={170} />
-      <Gull x={620} y={200} />
-      <rect y="470" width="560" height="120" fill="#3a9fd8" />
-      <rect y="470" width="560" height="6" fill="#8fd0f0" />
-      <path d="M300 590 Q520 300 820 240 Q1120 300 1600 420 V620 H300Z" fill="#e6dccb" />
-      {CASBAH_HOUSES.map((h, i) => (
-        <g key={i}>
-          <rect x={h.x} y={h.y} width={h.w} height={h.h} fill={h.tone} stroke="#d8cbb4" strokeWidth="1.5" />
-          {h.door && <rect x={h.x + h.w / 2 - 5} y={h.y + h.h / 2 - 6} width="10" height="13" rx="5" fill={i % 3 ? '#2f6fe0' : '#0f8a4b'} />}
-          {h.arch && <path d={`M${h.x + 6} ${h.y} q${h.w / 2 - 6} -18 ${h.w - 12} 0`} fill="none" stroke="#d8cbb4" strokeWidth="3" />}
-        </g>
-      ))}
-      <g transform="translate(1180 0)">
-        <rect x="-60" y="300" width="120" height="120" fill="#fffdf8" stroke="#d8cbb4" strokeWidth="2" />
-        <path d="M-50 300 Q0 210 50 300Z" fill="#fffdf8" stroke="#d8cbb4" strokeWidth="2" />
-        <rect x="-96" y="230" width="32" height="190" fill="#fffdf8" stroke="#d8cbb4" strokeWidth="2" />
-        <rect x="64" y="230" width="32" height="190" fill="#fffdf8" stroke="#d8cbb4" strokeWidth="2" />
-        <rect x="-100" y="222" width="40" height="12" fill="#0f8a4b" />
-        <rect x="60" y="222" width="40" height="12" fill="#0f8a4b" />
-        <path d="M-20 420 V370 A20 20 0 0 1 20 370 V420Z" fill="#2f6fe0" />
-      </g>
-      <path d="M900 330 L1010 330" stroke="#8a6232" strokeWidth="2" />
-      <g fill="#ec2e86" opacity=".8">
-        <rect x="920" y="330" width="14" height="18" />
-        <rect x="950" y="330" width="14" height="22" fill="#ffd23f" />
-        <rect x="980" y="330" width="14" height="16" fill="#2f8cff" />
-      </g>
-      <path d="M0 600 H1600 V900 H0Z" fill="#d9cbb0" />
-      <g stroke="#bfae8e" strokeWidth="4">
-        {[640, 690, 740, 790, 840].map((y) => (
-          <path key={y} d={`M0 ${y} H1600`} />
-        ))}
-      </g>
-      <g transform="translate(1440 0)">
-        <path d="M-70 780 V640 A70 76 0 1 1 70 640 V780Z" fill="#fffdf8" stroke="#d8cbb4" strokeWidth="4" />
-        <path d="M-50 780 V650 A50 56 0 1 1 50 650 V780Z" fill="#1f5fa8" />
-        <g fill="#f2b33d">
-          {[0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => <circle key={`${r}${c}`} cx={-28 + c * 28} cy={660 + r * 30} r="4" />))}
-        </g>
-      </g>
-      <g transform="translate(140 760)">
-        <path d="M-30 0 L-22 -40 H22 L30 0Z" fill="#c8693f" />
-        <circle cx="-14" cy="-56" r="18" fill="#3db23a" />
-        <circle cx="12" cy="-60" r="20" fill="#2f9a4e" />
-        <circle cx="-2" cy="-74" r="6" fill="#ec2e86" />
-        <circle cx="16" cy="-66" r="5" fill="#ec2e86" />
-      </g>
-    </g>
-  );
-}
 
 function Sea() {
   return (
@@ -297,21 +187,6 @@ function Sea() {
         <path d="M22 0 L42 -12 L42 12Z" fill="#ffd23f" />
         <circle cx="-14" cy="-3" r="3" fill="#13206b" />
       </g>
-    </g>
-  );
-}
-
-/**
- * Constantine is the pilot world with a painted decor (components/world/worldArt.ts). The image is
- * 1376 × 768; drawn 1600 wide, its bridge deck sits at y ≈ 448, so it is moved down 44 units to put
- * the deck under the two stations that stand on the bridge (y = 492, x = 560 and 950).
- */
-function Constantine() {
-  const decor = WORLD_DECOR.constantine!;
-  return (
-    <g>
-      <rect width="1600" height="900" fill="url(#jw-sky-constantine)" />
-      <image href={decor.landscape} x="0" y="44" width="1600" height="893" preserveAspectRatio="none" />
     </g>
   );
 }
@@ -465,18 +340,28 @@ function Space() {
   );
 }
 
-const BACKDROPS: Record<JourneyWorldId, () => React.ReactElement> = {
-  sahara: Sahara,
-  casbah: Casbah,
+/** Vector backdrops of the worlds without a painted decor yet. */
+const BACKDROPS: Partial<Record<JourneyWorldId, () => React.ReactElement>> = {
   sea: Sea,
-  constantine: Constantine,
   djurdjura: Djurdjura,
   timgad: Timgad,
   tassili: Tassili,
   space: Space,
 };
 
+/** A painted world (components/world/worldArt.ts), over its sky gradient so the seams still blend. */
+function PaintedBackdrop({ id }: { id: JourneyWorldId }) {
+  const decor = WORLD_DECOR[id]!;
+  return (
+    <g>
+      <rect width="1600" height="900" fill={`url(#${WORLD_SKY[id].id})`} />
+      <image href={decor.landscape} x="0" y={decor.mapOffsetY ?? 0} width="1600" height="893" preserveAspectRatio="none" mask="url(#jw-paint-fade)" />
+    </g>
+  );
+}
+
 export const WorldBackdrop = React.memo(function WorldBackdrop({ id }: { id: JourneyWorldId }) {
-  const Backdrop = BACKDROPS[id];
+  if (WORLD_DECOR[id]) return <PaintedBackdrop id={id} />;
+  const Backdrop = BACKDROPS[id]!;
   return <Backdrop />;
 });

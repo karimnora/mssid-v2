@@ -285,6 +285,17 @@ Foreground framing elements only, for parallax layers, two separate sets side by
 
 Si la planche mélange les deux mondes, faire deux images séparées (`22a-premier-plan-sahara.png`, `22b-premier-plan-casbah.png`), sur le modèle du prompt 12.
 
+### Résultat du lot 2 (5 novembre 2026)
+
+- **Planète (14)** : la retouche a réussi. Elle montre 8 mondes, chacun une seule fois, dans l'ordre de l'app, et elle remplace l'ancienne planète. Pour la détourer, le masque ne retire que le halo vert et turquoise : la mer et la neige du Djurdjura restent intactes.
+- **Gâteau (15)** : 4 quarts égaux, c'est juste. Il est détouré et prêt, mais pas encore placé. Il reste hors de `worldArt.ts` tant qu'aucun écran ne l'utilise.
+- **Sahara et Casbah (16 à 21)** : ils sont intégrés comme Constantine. Le décor peint apparaît sur la carte et derrière leurs leçons, et l'îlot dans l'accueil de Didou. Un seul composant (`PaintedBackdrop`) dessine maintenant tous les mondes peints.
+  - Les stations sont descendues sur le sol calme : sable du Sahara `ys` [700, 680, 720, 640], place de la Casbah [750, 730, 770, 740]. Ces hauteurs valent pour tous les niveaux.
+  - L'école de la 2AP est déplacée au-dessus de la mer, pour ne plus cacher le minaret.
+  - Les bords des décors peints s'effacent en fondu, et la brume des raccords cache le sol. Il reste une légère démarcation dans le ciel entre deux mondes. Le raccord avec la Mer reste net tant que la Mer garde son décor vectoriel.
+- **Premiers plans (22)** : refusés. La moitié Casbah remplit tout l'écran au lieu d'encadrer seulement les bords. Les leçons du Sahara et de la Casbah s'affichent sans premier plan. À refaire si besoin en deux images séparées (`22a`, `22b`) sur le modèle du prompt 12.
+- **Style de la Casbah** : volets bleus et dômes blancs, elle évoque plus Sidi Bou Saïd ou Santorin que la Casbah d'Alger. Pour une version plus fidèle, ajouter aux prompts 19 à 21 : « narrow covered alleys, houses with small windows and carved wooden doors, ochre and white walls, no blue domes, Ketchaoua-style mosque ».
+
 ## Ce que je fais une fois les images reçues
 
 - Détourage, conversion en WebP et déclinaisons en plusieurs tailles (téléphone, tablette).
