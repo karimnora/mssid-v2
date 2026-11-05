@@ -1,6 +1,6 @@
 # TODO — prochaine version Android
 
-Mise à jour le 15 octobre 2026. Version Android préparée : `versionCode 12` / `versionName 1.0.11` (tag `v1.0.11`). La précédente version taguée était `v1.0.10` (`versionCode` 11). Le tag déclenche le workflow **Android Release Build**, qui génère l’APK et l’AAB signés ; cela ne publie pas l’application sur Google Play.
+Mise à jour le 6 novembre 2026. Version Android préparée : `versionCode 13` / `versionName 1.0.12` (tag `v1.0.12`). La précédente version taguée était `v1.0.11` (`versionCode` 12). Le tag déclenche le workflow **Android Release Build**, qui génère l’APK et l’AAB signés ; cela ne publie pas l’application sur Google Play.
 
 ## Corrections réalisées dans le code
 
@@ -22,8 +22,8 @@ Mise à jour le 15 octobre 2026. Version Android préparée : `versionCode 12` /
 - [ ] Sur un téléphone Android, valider le client Web Google utilisé par le backend, le package `dz.mssid.app` et le SHA-1 de signature Google Play ; tester connexion, annulation, nouvelle tentative et reconnexion.
 - [ ] Tester les liens et textes FR/AR dans un navigateur Android, l'application Android native, Safari iPhone/iPad et une application web déjà installée.
 - [ ] Tester une mise à jour par-dessus la version Play actuelle : session, progression, leçons, connexion Google et mot de passe.
-- [x] Augmenter la version dans `build.gradle` : **1.0.11 / `versionCode` 12**. Le tag `v1.0.11` déclenche `Android Release Build` ; la synchronisation Capacitor et la génération des fichiers signés sont effectuées par le workflow.
-- [ ] Récupérer l’APK et l’AAB 1.0.11 dans les artefacts du job, puis valider sur téléphone le micro, les confirmations de sortie, les impressions, les corrigés et la conservation des progrès après mise à jour.
+- [x] Augmenter la version dans `build.gradle` : **1.0.12 / `versionCode` 13**. Le tag `v1.0.12` déclenche `Android Release Build` ; la synchronisation Capacitor et la génération des fichiers signés sont effectuées par le workflow.
+- [ ] Récupérer l’APK et l’AAB 1.0.12 dans les artefacts du job, puis valider sur téléphone : leçon verrouillée en invité → onglet Inscription, échec de connexion → bouton « أنشئ حساباً مجانياً », conservation des progrès après mise à jour.
 - [ ] Valider le nouvel AAB sur la piste interne Google Play avant une éventuelle diffusion publique.
 
 L'intégration native In-App Review reste un chantier ultérieur : le lien explicite vers la fiche Play permet à l'utilisateur de choisir lui-même sa note. Aucun clic dans l'application ne prouve qu'un avis a été publié.
