@@ -142,12 +142,23 @@ export const LearningGamePlayer: React.FC<{
       speak(MAP_LINE, 'talk');
     }
     firstMap.current = false;
-    // A new level starts at the top, with its board in view.
+    // A new level starts at the top; once its board has landed, the page glides just enough for the
+    // whole board to be on screen (nothing moves when it already fits).
+    const el = scrollRef.current;
     try {
-      scrollRef.current?.scrollTo({ top: 0 });
+      el?.scrollTo({ top: 0 });
     } catch {
       /* jsdom */
     }
+    if (screen.kind !== 'level' || !el) return undefined;
+    const timer = window.setTimeout(() => {
+      const board = el.querySelector('[data-lg-board]');
+      if (!board || typeof el.scrollTo !== 'function') return;
+      const top = board.getBoundingClientRect().top - el.getBoundingClientRect().top + el.scrollTop;
+      const target = Math.min(el.scrollHeight - el.clientHeight, Math.max(0, top - 12));
+      if (target > 0) el.scrollTo({ top: target, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    }, 650);
+    return () => window.clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen, play]);
 
@@ -234,7 +245,7 @@ export const LearningGamePlayer: React.FC<{
 
       {/* Only the game scrolls; the action bar below is its own band and never covers the board. */}
       <div ref={scrollRef} className="lg-scroll relative flex-1 min-h-0 overflow-y-auto overflow-x-hidden" data-lg-scroll>
-      <div className="relative max-w-xl mx-auto px-4 pt-4 pb-6 space-y-4">
+      <div className="relative max-w-xl mx-auto px-4 pt-3 pb-6 space-y-3">
         <header className="flex items-center justify-between gap-3">
           <ModalCloseButton onClose={onExit} tone="dark" />
           <div className="min-w-0 text-center">

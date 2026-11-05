@@ -280,7 +280,7 @@ export function SortBoard({ round, onMove, voice }: BoardProps<SortRound>) {
           </motion.button>
         ))}
       </div>
-      <div className={`grid gap-2 ${round.bins.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+      <div className={`grid gap-2 ${round.bins.length === 4 ? 'grid-cols-4 lg-bins-4' : round.bins.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
         {round.bins.map((bin) => (
           <motion.button
             key={bin.id}
@@ -334,30 +334,14 @@ export function OrderBoard({ round, assist, onMove, voice }: BoardProps<OrderRou
     if (next.length === round.cards.length) window.setTimeout(() => onMove({ kind: 'solved' }), 700);
   };
 
+  const left = sorted.length - placed.length;
+
+  // The cards to tap come first (two columns), so they are on screen without scrolling; the rail
+  // below shows the filled slots, the next one and how many are still to come.
   return (
-    <div className="space-y-4" data-lg-board="order">
+    <div className="space-y-3" data-lg-board="order">
       <p className="lg-direction">⟵ {round.directionAr}</p>
-      <ol className="lg-timeline" aria-label={round.directionAr}>
-        <motion.span className="lg-timeline-glow" aria-hidden="true" initial={false} animate={{ height: `${(placed.length / sorted.length) * 100}%` }} transition={springy} />
-        {sorted.map((_, i) => {
-          const card = placed[i] ? round.cards.find((c) => c.id === placed[i]) : undefined;
-          return (
-            <li key={i} className={`lg-slot ${card ? 'filled' : i === placed.length ? 'next' : ''}`} data-lg-slot={i}>
-              <span className="lg-slot-n">{i + 1}</span>
-              {card ? (
-                <motion.span layoutId={flyId(card.id)} transition={flight} className="lg-slot-card">
-                  <span className="text-2xl" aria-hidden="true">{card.emoji}</span>
-                  <span className="lg-slot-text"><GameText text={card.textAr} /></span>
-                  <motion.span initial={{ rotateX: 90, opacity: 0 }} animate={{ rotateX: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="lg-date">{card.keyAr}</motion.span>
-                </motion.span>
-              ) : (
-                <span className="lg-slot-empty" aria-hidden="true" />
-              )}
-            </li>
-          );
-        })}
-      </ol>
-      <div className="grid gap-2 sm:grid-cols-2 lg-3d">
+      <div className="lg-order-pool lg-3d">
         {pool.filter((c) => !placed.includes(c.id)).map((card, i) => (
           <motion.button
             key={card.id}
@@ -379,6 +363,29 @@ export function OrderBoard({ round, assist, onMove, voice }: BoardProps<OrderRou
           </motion.button>
         ))}
       </div>
+      <ol className="lg-timeline" aria-label={round.directionAr}>
+        <motion.span className="lg-timeline-glow" aria-hidden="true" initial={false} animate={{ height: `${(placed.length / Math.max(1, placed.length + (left > 0 ? 1 : 0))) * 100}%` }} transition={springy} />
+        {placed.map((id, i) => {
+          const card = round.cards.find((c) => c.id === id)!;
+          return (
+            <li key={id} className="lg-slot filled" data-lg-slot={i}>
+              <span className="lg-slot-n">{i + 1}</span>
+              <motion.span layoutId={flyId(card.id)} transition={flight} className="lg-slot-card">
+                <span className="text-2xl" aria-hidden="true">{card.emoji}</span>
+                <span className="lg-slot-text"><GameText text={card.textAr} /></span>
+                <motion.span initial={{ rotateX: 90, opacity: 0 }} animate={{ rotateX: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="lg-date">{card.keyAr}</motion.span>
+              </motion.span>
+            </li>
+          );
+        })}
+        {left > 0 && (
+          <li className="lg-slot next" data-lg-slot={placed.length}>
+            <span className="lg-slot-n">{placed.length + 1}</span>
+            <span className="lg-slot-empty" aria-hidden="true" />
+            {left > 1 && <span className="lg-slot-more" aria-label={`${left - 1}`} dir="ltr">+{left - 1}</span>}
+          </li>
+        )}
+      </ol>
     </div>
   );
 }

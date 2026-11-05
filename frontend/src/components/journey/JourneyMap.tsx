@@ -62,7 +62,8 @@ export interface JourneyGameStation {
 export function gameStationPoint(world: JourneyWorld, left: number): { x: number; y: number; trailY: number } {
   const x = left + (JOURNEY_STATION_XS[1] + JOURNEY_STATION_XS[2]) / 2;
   const trailY = (world.ys[1] + world.ys[2]) / 2;
-  return { x, y: Math.min(world.ys[1], world.ys[2]) - 200, trailY };
+  // Never higher than 340: above that it would touch the world banner of the map HUD.
+  return { x, y: Math.max(340, Math.min(world.ys[1], world.ys[2]) - 200), trailY };
 }
 
 const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));

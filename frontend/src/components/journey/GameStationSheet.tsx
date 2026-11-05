@@ -9,6 +9,7 @@ import { PremiumOffer } from '../PremiumOffer';
 import '../games/learning/learningGames.css';
 import './gameStation.css';
 
+const PICTURES = /[\p{Extended_Pictographic}\u200d\uFE0F]/gu;
 const GRADES_WITH_GAMES = new Set(GAME_PACKS.map((p) => p.grade)).size;
 const LEVELS_IN_ALL = GAME_PACKS.reduce((sum, p) => sum + p.rounds.length, 0);
 
@@ -36,7 +37,8 @@ export function GameStationSheet({ pack, open, lessonTitles, onClose, onPlayFree
   const [playing, setPlaying] = useState<number | null>(null);
   const suggested = suggestedLevel(pack, levels);
   const got = pack.rounds.reduce((sum, r) => sum + (levels[r.id] ?? 0), 0);
-  const reviewed = [...new Set(pack.rounds.map((r) => r.lessonId))].map((id) => lessonTitles[id]).filter(Boolean).slice(0, 4);
+  // Catalog titles often carry pictures (« أ ب ت ث 🍍… »): the sheet keeps only their words.
+  const reviewed = [...new Set(pack.rounds.map((r) => lessonTitles[r.lessonId]?.replace(PICTURES, '').replace(/\s+/g, ' ').trim()))].filter(Boolean).slice(0, 3);
   const pick = pack.rounds[suggested];
 
   useEffect(() => {
