@@ -363,7 +363,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                     className="bg-[var(--app-card-bg)] p-3.5 rounded-xl border border-[var(--app-card-border)] text-xs text-[var(--app-text)] space-y-2 font-sans leading-relaxed overflow-hidden"
                     data-quiz-feedback={feedback.isCorrect ? 'correct' : 'wrong'}
                   >
-                    <DidouPortrait size={64} className="world-only world-quiz-didou" />
+                    <DidouPortrait size={64} pose={feedback.isCorrect ? 'cheer' : 'think'} className="world-only world-quiz-didou" />
                     <span className="font-extrabold text-[var(--brand-blue-dark)] flex items-center gap-1.5">
                       <Lightbulb className="w-3.5 h-3.5 text-[var(--brand-amber)]" />
                       {onSpeak && (

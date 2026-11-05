@@ -171,7 +171,7 @@ export function QuizBlock({
       </div>
       {picked && (
         <div data-quiz-feedback={picked === correctAr ? 'correct' : 'retry'} className="rounded-2xl p-3 text-sm font-extrabold text-[var(--kids-ink)]">
-          <DidouPortrait size={56} className="world-only world-quiz-didou" />
+          <DidouPortrait size={56} pose={picked === correctAr ? 'cheer' : 'think'} className="world-only world-quiz-didou" />
           <p>{picked === correctAr ? t('wellDone') : t('tryAgain')}</p>
         </div>
       )}

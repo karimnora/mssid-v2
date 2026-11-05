@@ -115,17 +115,24 @@
   height: var(--P);
   transform: translate(-50%, -50%);
 }
-.j-sphere {
+/* Rendered planet of the eight worlds (pilot): turns with the arrows, floats, glows. */
+.j-planet-float { position: absolute; inset: 0; animation: j-planet-float 6s ease-in-out infinite; }
+.j-planet-img {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 32%, #bfeaff 0%, #4fb0ff 22%, #1d6fe8 52%, #0c3bb0 78%, #0a2a86 100%);
-  box-shadow: 0 0 6cqmin 2cqmin rgba(110, 190, 255, .55), 0 0 14cqmin 4cqmin rgba(60, 120, 255, .35), inset -2cqmin -2cqmin 4cqmin rgba(5, 20, 80, .45);
-  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--P) * 1.24);
+  height: auto;
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  transition: transform .8s cubic-bezier(.45, 0, .2, 1);
+  filter: drop-shadow(0 0 3cqmin rgba(120, 200, 255, .55)) drop-shadow(0 0 9cqmin rgba(60, 120, 255, .35));
+  pointer-events: none;
 }
-.j-sphere svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+@keyframes j-planet-float { 50% { transform: translateY(-1.2cqmin); } }
 .j-play {
   position: absolute;
+  z-index: 1;
   left: 50%;
   top: 50%;
   width: calc(var(--P) * .34);
@@ -141,30 +148,38 @@
 .j-play:active { transform: translate(-50%, -48%); }
 .j-play svg { width: 46%; height: 46%; }
 [dir='rtl'] .j-play svg { transform: scaleX(-1); }
-.j-district {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: calc(var(--P) * .36);
-  min-width: 72px;
-  border: 0;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translate(-50%, -50%) rotate(calc(var(--a) + var(--rot))) translateY(calc(var(--R) * -1.02)) rotate(calc(-1 * (var(--a) + var(--rot)))) scale(var(--s, 1));
-  transition: transform .8s cubic-bezier(.45, 0, .2, 1);
-}
-.j-district svg { width: 100%; height: auto; filter: drop-shadow(0 .8cqmin 1cqmin rgba(0, 0, 0, .35)); }
-.j-district .j-lbl { margin-top: -1.6cqmin; font-size: max(15px, 3cqmin); line-height: 1.1; white-space: nowrap; }
-.j-district[data-front='true'] { --s: 1.22; }
-.j-district[data-front='true'] .j-lbl { font-size: max(22px, 5cqmin); }
-.j-district:focus-visible { outline: 4px solid var(--j-gold); outline-offset: 4px; border-radius: 12px; }
-.j-hub-didou { position: absolute; inset-inline-end: 3cqmin; bottom: calc(4cqmin + max(60px, 9cqmin)); width: max(90px, 18cqmin); cursor: pointer; border: 0; background: none; padding: 0; animation: j-float 3.2s ease-in-out infinite; }
+.j-planet-title { position: absolute; z-index: 1; left: 50%; bottom: calc(100% + var(--P) * .15); transform: translateX(-50%); font-size: max(26px, 6.4cqmin); line-height: 1; white-space: nowrap; pointer-events: none; }
+.j-hub-didou { position: absolute; inset-inline-end: 2cqmin; bottom: calc(4cqmin + max(60px, 9cqmin)); width: max(104px, 20cqmin); cursor: pointer; border: 0; background: none; padding: 0; animation: j-float 3.2s ease-in-out infinite; }
 .j-hub-didou[data-hop='true'] { animation: j-hop .7s cubic-bezier(.3, .7, .4, 1); }
+.j-hub-didou img { display: block; width: 100%; height: auto; filter: drop-shadow(0 1.2cqmin 1.4cqmin rgba(0, 0, 30, .45)); }
+[dir='rtl'] .j-hub-didou img { transform: scaleX(-1); }
+.j-dock { position: absolute; left: 50%; bottom: 3cqmin; transform: translateX(-50%); display: flex; justify-content: center; gap: 1.4cqmin; }
+.j-dock-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3cqmin; min-width: max(76px, 12cqmin); min-height: max(64px, 10cqmin); padding: .6cqmin 1cqmin; border-radius: 2.6cqmin; font-size: max(14px, 2.3cqmin); line-height: 1.1; }
+.j-dock-icon { display: grid; place-items: center; width: max(34px, 6cqmin); height: max(34px, 6cqmin); }
+.j-dock-icon svg { width: 100%; height: 100%; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .3)); }
+.j-dock-lbl { white-space: nowrap; }
+.j-gloss[data-tone='blue'] { --c1: #62d2ff; --c2: #0a87ef; --c3: #0660b8; }
+/* Painted space behind the planet; the vector stars stay on top, softer. */
+.journey-space { position: absolute; inset: 0; background: var(--space-l) center / cover no-repeat; pointer-events: none; }
+.journey-space ~ .journey-stars { opacity: .45; }
+/*
+ * Landscape: Didou and his bubble live on the inline-end side, so the planet moves 10cqw toward
+ * the inline-start side and the bubble only takes the room left between Didou and the planet.
+ */
+.journey-root[dir='ltr'] .j-planet { left: calc(50% - 10cqw); }
+.journey-root[dir='rtl'] .j-planet { left: calc(50% + 10cqw); }
+.journey-root .j-hub-say .j-say-text { width: min(380px, max(220px, calc(60cqw - min(56cqmin, 60cqw) * .62 - 6cqmin - max(96px, 18cqmin)))); }
+@container (max-aspect-ratio: 1 / 1) {
+  .journey-root[dir] .j-planet { left: 50%; }
+  .journey-root .j-hub-say .j-say-text { width: min(380px, calc(100cqw - 9cqmin - max(96px, 18cqmin))); }
+  .journey-root .journey-space { background-image: var(--space-p); }
+  /* Phone held upright: the dock gets its own row above the arrows, Didou and his bubble move up. */
+  .journey-root .j-dock { bottom: calc(5cqmin + max(60px, 9cqmin)); width: calc(100% - 4cqmin); flex-wrap: wrap; gap: 8px; }
+  .journey-root .j-dock-btn { min-width: 64px; flex: 1 1 0; max-width: 96px; padding-inline: 4px; font-size: 13px; }
+  .journey-root .j-hub-didou { bottom: calc(7cqmin + max(60px, 9cqmin) + 72px); }
+  .journey-root .j-hub-say { bottom: calc(9cqmin + max(60px, 9cqmin) + 72px); }
+  .journey-root .j-planet { top: 40%; }
+}
 .j-nav { position: absolute; bottom: 3cqmin; }
 .j-nav[data-side='right'] { right: 3cqmin; }
 .j-nav[data-side='left'] { left: 3cqmin; }
@@ -208,7 +223,7 @@
 }
 .j-listen:focus-visible { outline: 3px solid var(--j-gold); outline-offset: 2px; }
 .j-listen svg { width: 24px; height: 24px; }
-.j-hub-say { position: absolute; inset-inline-end: calc(5cqmin + max(60px, 9cqmin)); bottom: calc(6cqmin + max(60px, 9cqmin)); }
+.j-hub-say { position: absolute; inset-inline-end: calc(4cqmin + max(96px, 18cqmin)); bottom: calc(6cqmin + max(60px, 9cqmin)); }
 .j-hub-say .j-say-text { max-width: min(max(210px, 28cqw), 380px); margin-bottom: 0; }
 .j-map-say { position: absolute; bottom: 3cqmin; left: 50%; transform: translateX(-50%); }
 @keyframes j-pop { from { transform: scale(.6); opacity: 0; } }
@@ -256,9 +271,6 @@
 @keyframes j-tw { 50% { opacity: .25; } }
 
 /* ---------- Didou life ---------- */
-.journey-eye { transform-box: fill-box; transform-origin: center; }
-.journey-root[data-blink='true'] .journey-eye { animation: j-blink .2s; }
-@keyframes j-blink { 50% { transform: scaleY(.08); } }
 .journey-tail { transform-box: fill-box; transform-origin: 0% 100%; animation: j-wag 1.5s ease-in-out infinite; }
 @keyframes j-wag { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(11deg); } }
 
@@ -300,6 +312,39 @@
 /* ---------- embedded lesson ---------- */
 .journey-lesson { position: absolute; inset: 0; overflow-y: auto; background: var(--app-bg, #fffbf0); color: var(--app-text, #0f172a); font-family: inherit; user-select: text; -webkit-user-select: text; }
 .journey-lesson-inner { max-width: 80rem; margin: 0 auto; padding: 24px 16px 48px; }
+/* Painted world decor around the lesson (JourneyLessonStage, pilot: Constantine). */
+.journey-lesson[data-decor] { overflow: hidden; background: #f3c9a0; }
+.jl-decor { position: absolute; inset: -3%; background: var(--decor-l) center / cover no-repeat; transform: translateY(calc(var(--sy, 0) * -0.04px)); }
+.jl-fore { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transform: translateY(calc(min(var(--sy, 0), 600) * -0.25px)); }
+.jl-scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; }
+.journey-lesson[data-decor] .journey-lesson-inner {
+  margin: max(64px, 16cqh) auto 64px;
+  width: min(80rem, calc(100% - 24px));
+  border-radius: 28px;
+  background: var(--app-bg, #fffbf0);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .55), 0 18px 40px rgba(40, 20, 0, .35);
+}
+.jl-intro { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2cqmin; padding: 4cqmin; background: rgba(20, 12, 40, .28); }
+.jl-island { position: absolute; top: 4cqmin; inset-inline-start: 4cqmin; width: max(120px, 22cqmin); filter: drop-shadow(0 2cqmin 2cqmin rgba(30, 10, 0, .4)); animation: j-planet-float 5s ease-in-out infinite; }
+.jl-coach { width: max(130px, 26cqmin); height: auto; filter: drop-shadow(0 1.4cqmin 1.6cqmin rgba(20, 10, 0, .45)); animation: j-pop .45s cubic-bezier(.3, 1.6, .5, 1); }
+.jl-bubble { display: flex; align-items: center; gap: .8em; max-width: min(620px, 92cqw); margin-top: -3cqmin; padding: 1em 1.2em; border-radius: 24px; background: #fff; color: var(--j-ink); box-shadow: 0 6px 0 rgba(0, 0, 0, .16), 0 14px 30px rgba(0, 0, 0, .25); font: 700 max(17px, 3cqmin)/1.5 var(--j-font-body); text-align: center; animation: j-pop .45s cubic-bezier(.3, 1.6, .5, 1) .08s both; }
+.jl-bubble p { margin: 0; flex: 1; text-wrap: balance; }
+.jl-ok { font-size: max(22px, 3.6cqmin); }
+.jl-talk { display: flex; flex-direction: column; align-items: center; gap: 2.4cqmin; }
+/* Phone on its side: Didou stands beside his bubble instead of above it. */
+@container (max-height: 480px) {
+  .journey-root .jl-intro { flex-direction: row; gap: 3cqmin; }
+  .journey-root .jl-coach { width: max(120px, 30cqh); }
+  .journey-root .jl-bubble { margin-top: 0; max-width: min(460px, 60cqw); }
+  .journey-root .jl-island { width: max(96px, 26cqh); }
+}
+@container (max-aspect-ratio: 1 / 1) {
+  .journey-root .jl-decor { background-image: var(--decor-p); }
+  .journey-root .jl-fore { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jl-decor, .jl-fore { transform: none; }
+}
 .journey-loading { position: absolute; inset: 0; display: grid; place-items: center; font: 700 20px var(--j-font-body); }
 
 @media (prefers-reduced-motion: reduce) {
@@ -329,21 +374,18 @@
   [data-grade-decor] .jgd-float, [data-grade-decor] .jgd-sway, [data-grade-decor] .jgd-wave, [data-grade-decor] .jgd-rise,
   [data-grade-decor] .jgd-flame, [data-grade-decor] .jgd-glow { animation: none; }
 }
-/* 3D district art on the planet home (planetDistrictArt). */
-.j-district .j-art-flame { animation: j-art-flame .5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: top center; }
-.j-district .j-art-bubbles { animation: j-art-bob 2.4s ease-in-out infinite; }
-.j-district .j-art-rise { animation: j-art-rise 2.8s ease-in infinite; }
-.j-district .j-art-sparkle { animation: j-art-twinkle 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.j-district .j-art-beat { animation: j-art-beat 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+/* 3D district art in the planet home's dock (planetDistrictArt). */
+.j-dock-icon .j-art-flame { animation: j-art-flame .5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: top center; }
+.j-dock-icon .j-art-bubbles { animation: j-art-bob 2.4s ease-in-out infinite; }
+.j-dock-icon .j-art-rise { animation: j-art-rise 2.8s ease-in infinite; }
+.j-dock-icon .j-art-sparkle { animation: j-art-twinkle 2.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.j-dock-icon .j-art-beat { animation: j-art-beat 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes j-art-flame { to { transform: scaleY(1.22) scaleX(.9); } }
 @keyframes j-art-bob { 50% { transform: translateY(-3px); } }
 @keyframes j-art-rise { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-26px); opacity: 0; } }
 @keyframes j-art-twinkle { 50% { transform: scale(.4) rotate(45deg); opacity: .4; } }
 @keyframes j-art-beat { 15% { transform: scale(1.08); } 30% { transform: scale(1); } }
 /* « كل الأنشطة » on the Premium planet home (PlanetShelf). */
-.j-shelf-open { position: absolute; left: 50%; bottom: 3cqmin; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: max(60px, 9cqmin); padding: 6px 20px 6px 12px; border-radius: 999px; font-size: max(18px, 3.4cqmin); white-space: nowrap; }
-.j-shelf-open:active { transform: translateX(-50%) translateY(.22em); }
-.j-shelf-open svg { width: max(44px, 7cqmin); height: max(44px, 7cqmin); filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .3)); }
 .j-shelf { position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column; background: radial-gradient(ellipse at 50% 0%, #1d4fd8 0%, #0b1f73 45%, #040c33 100%); animation: j-shelf-in .28s cubic-bezier(.2, .8, .3, 1); }
 .j-shelf-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 16px 8px; }
 .j-shelf-head h2 { margin: 0; font-family: var(--j-font-display); font-size: max(26px, 5cqmin); color: #fff; }

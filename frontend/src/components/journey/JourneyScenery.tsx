@@ -1,10 +1,11 @@
 import React from 'react';
 import type { JourneyWorldId } from '../../data/journey/journeyWorlds';
+import { WORLD_DECOR } from '../world/worldArt';
 
 /*
  * Vector backdrops of the journey worlds. Each world is drawn in its own 1600 × 900 box; the map
- * translates it into place. Everything is original artwork (no external assets), kept flat and
- * light so a mid-range Android phone can scroll the whole map.
+ * translates it into place. Everything is original artwork, kept flat and light so a mid-range
+ * Android phone can scroll the whole map; Constantine uses the pilot's painted decor.
  */
 
 function seeded(seed: number) {
@@ -134,7 +135,6 @@ export function JourneySceneryDefs() {
       {vGrad('jw-sky-sea', [[0, '#6cc4f0'], [1, '#d9f3ff']])}
       {vGrad('jw-water', [[0, '#38b3e8'], [1, '#0b5da8']])}
       {vGrad('jw-sky-constantine', [[0, '#7fc4f0'], [1, '#f3fbff']])}
-      {vGrad('jw-gorge', [[0, '#7a6552'], [1, '#3e3128']])}
       {vGrad('jw-sky-djurdjura', [[0, '#7cc6f5'], [0.6, '#e6f6ff']])}
       {vGrad('jw-sky-timgad', [[0, '#f6b979'], [0.7, '#fff0d6']])}
       {vGrad('jw-sky-tassili', [[0, '#26236e'], [0.55, '#8b4f8e'], [1, '#f0955e']])}
@@ -301,45 +301,17 @@ function Sea() {
   );
 }
 
+/**
+ * Constantine is the pilot world with a painted decor (components/world/worldArt.ts). The image is
+ * 1376 × 768; drawn 1600 wide, its bridge deck sits at y ≈ 448, so it is moved down 44 units to put
+ * the deck under the two stations that stand on the bridge (y = 492, x = 560 and 950).
+ */
 function Constantine() {
-  const towns: Array<[number, number, number, string]> = [
-    [1080, 470, 60, '#e8c39a'], [1150, 450, 70, '#d9a873'], [1230, 470, 56, '#f0d2a8'], [1300, 440, 80, '#e8c39a'], [1400, 460, 64, '#d9a873'], [1490, 450, 70, '#f0d2a8'],
-    [30, 460, 70, '#e8c39a'], [110, 440, 64, '#d9a873'], [190, 470, 60, '#f0d2a8'], [270, 450, 76, '#e8c39a'], [360, 470, 60, '#d9a873'], [430, 455, 66, '#f0d2a8'],
-  ];
+  const decor = WORLD_DECOR.constantine!;
   return (
     <g>
       <rect width="1600" height="900" fill="url(#jw-sky-constantine)" />
-      <Clouds items={[[260, 110, 80], [1300, 140, 100]]} />
-      <path d="M0 470 Q300 360 620 430 T1240 400 T1600 450 V560 H0Z" fill="#c9b597" />
-      <path d="M520 520 L560 600 L590 700 L620 800 L660 900 H940 L980 800 L1010 700 L1030 600 L1060 520Z" fill="url(#jw-gorge)" />
-      <path d="M660 900 Q800 860 940 900Z" fill="#4fbde8" />
-      <path d="M0 520 H530 L560 600 L590 700 L620 800 L650 900 H0Z" fill="#b5916a" />
-      <path d="M1050 520 H1600 V900 H950 L980 800 L1010 700 L1035 600Z" fill="#b5916a" />
-      <path d="M0 520 H530 L545 560 H0Z M1050 520 H1600 V560 H1036Z" fill="#9fbf6a" />
-      {towns.map(([x, y, w, c], i) => (
-        <g key={i}>
-          <rect x={x} y={y} width={w} height={520 - y} fill={c} stroke="#b98a5e" strokeWidth="1.5" />
-          <path d={`M${x - 4} ${y} L${x + w / 2} ${y - 22} L${x + w + 4} ${y}Z`} fill="#c94a2c" />
-          <rect x={x + w / 2 - 6} y={y + 14} width="12" height="16" rx="6" fill="#5a6f7f" />
-        </g>
-      ))}
-      <g>
-        <path d="M560 500 V300 M1000 500 V300" stroke="#e9e1d1" strokeWidth="26" />
-        <path d="M545 300 Q560 270 575 300Z M985 300 Q1000 270 1015 300Z" fill="#e9e1d1" />
-        <path d="M560 304 Q780 470 1000 304" stroke="#5b4b3a" strokeWidth="7" fill="none" />
-        <path d="M480 520 Q520 360 560 304 M1000 304 Q1040 360 1080 520" stroke="#5b4b3a" strokeWidth="6" fill="none" />
-        <g stroke="#5b4b3a" strokeWidth="3">
-          {Array.from({ length: 19 }, (_, i) => {
-            const x = 582 + i * 22;
-            const t = (x - 560) / 440;
-            // The main cable is the quadratic curve 560,304 → (780,470) → 1000,304: x is linear in t.
-            const yc = 304 + 332 * t * (1 - t);
-            return <path key={i} d={`M${x} ${yc} V500`} />;
-          })}
-        </g>
-        <rect x="500" y="500" width="580" height="16" rx="4" fill="#8a6c4f" />
-        <path d="M500 500 H1080" stroke="#f2b33d" strokeWidth="4" />
-      </g>
+      <image href={decor.landscape} x="0" y="44" width="1600" height="893" preserveAspectRatio="none" />
     </g>
   );
 }

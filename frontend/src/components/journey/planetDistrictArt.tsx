@@ -262,28 +262,3 @@ export function PlanetDistrictArt({ id }: { id: PlanetDistrict }) {
   return <ParentsArt />;
 }
 
-/** Relief for the planet itself: shaded continents, a cloud belt, night side and a specular glint. */
-export function PlanetSurface() {
-  const { lin, ball, Defs } = useDefs();
-  const land = lin([[0, '#8be07a'], [0.6, '#3fae5a'], [1, '#1f6e3a']]);
-  const sand = lin([[0, '#ffe3a3'], [0.6, '#e0b060'], [1, '#a8742f']]);
-  const night = ball([[0, '#000', 0], [0.55, '#000', 0], [1, '#020a3a', 0.6]], 0.3, 0.28, 0.85);
-  const glint = ball([[0, '#fff', 0.85], [1, '#fff', 0]], 0.5, 0.5, 0.5);
-  return (
-    <svg viewBox="0 0 200 200" aria-hidden="true">
-      <Defs />
-      <path d="M30 70 Q55 40 90 52 Q110 60 104 82 Q96 104 70 100 Q40 98 30 70Z" fill={land} />
-      <path d="M44 70 Q60 58 78 66 Q84 76 70 82 Q52 84 44 70Z" fill="#2f8f4a" opacity=".55" />
-      <path d="M60 60 l6 -8 6 8z M70 64 l5 -6 5 6z" fill="#e9f5e1" opacity=".8" />
-      <path d="M120 120 Q150 100 176 124 Q186 150 160 164 Q132 172 122 150Z" fill={sand} />
-      <path d="M132 136 Q146 128 160 138 Q150 150 136 146Z" fill="#c98f45" opacity=".55" />
-      <path d="M50 140 Q66 130 80 142 Q84 158 66 162 Q50 160 50 140Z" fill={land} />
-      <g fill="#fff" opacity=".3">
-        <path d="M10 112 Q50 100 90 112 T170 108 Q150 118 110 120 T20 122Z" />
-        <path d="M112 44 Q136 34 162 46 Q140 52 116 50Z" opacity=".8" />
-      </g>
-      <circle cx="100" cy="100" r="100" fill={night} />
-      <ellipse cx="66" cy="54" rx="30" ry="18" fill={glint} transform="rotate(-30 66 54)" />
-    </svg>
-  );
-}

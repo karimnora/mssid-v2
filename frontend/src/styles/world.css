@@ -128,12 +128,12 @@ html[data-world] [data-subject-card] :is(.text-slate-500, .text-slate-600, .text
   place-items: center;
 }
 
+/* Didou is rendered art now: he breathes gently instead of blinking. */
 @media (prefers-reduced-motion: no-preference) {
-  :is(.world-ribbon-didou, .world-didou-blink) .world-didou-eyes { animation: world-blink 5s infinite; transform-origin: 100px 82px; }
+  :is(.world-ribbon-didou, .world-didou-blink) { animation: world-breathe 3.6s ease-in-out infinite; transform-origin: 50% 100%; }
 }
-@keyframes world-blink {
-  0%, 94%, 100% { transform: scaleY(1); }
-  96% { transform: scaleY(0.1); }
+@keyframes world-breathe {
+  50% { transform: translateY(-2px) scale(1.02); }
 }
 
 /* Didou companion card: readable on the night sky. */

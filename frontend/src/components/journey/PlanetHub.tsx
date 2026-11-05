@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { pickText, type JourneyWorld } from '../../data/journey/journeyWorlds';
-import { DidouFull, MedalArt, StarIcon } from './DidouJourneyArt';
+import { MedalArt, StarIcon } from './DidouJourneyArt';
 import { ArrowIcon, CoinIcon } from './JourneyMap';
-import { PlanetDistrictArt, PlanetSurface } from './planetDistrictArt';
+import { PlanetDistrictArt } from './planetDistrictArt';
+import { DIDOU_POSES, SPACE_ART } from '../world/worldArt';
 import { PlanetShelf, ShelfButtonArt, type PlanetShelfGroup } from './PlanetShelf';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 
@@ -34,26 +35,30 @@ interface PlanetHubProps {
   examPlanCta?: { label: string; daysLeft: number; onOpen: () => void } | null;
 }
 
-/** The Wiloki-like home of the journey: districts orbit a planet, the front one opens with the big play button. */
+/** Turning the planet with the arrows moves it by one of its eight worlds. */
+const WORLD_STEP = 360 / 8;
+
+/**
+ * The home of the journey (pilot, docs/v2-pilote-prompts-nanobanana.md): the rendered planet of
+ * the eight Algerian worlds turns with the arrows while Didou names each world; the big play
+ * button in its centre opens the journey map. Courses, labs, medals and parents are candy buttons
+ * in the dock under the planet.
+ */
 export function PlanetHub(props: PlanetHubProps) {
   const { locale, userName, totalStars, coins, worlds, claimedWorldIds, sound, onToggleSound, onOpenMap, onOpenCourses, onOpenLabs, onOpenParents, onExit, say, sfx, shelfGroups, exitLabel, mission, examPlanCta } = props;
   const [shelfOpen, setShelfOpen] = useState(false);
   const ar = locale === 'ar';
   const T = (arText: string, frText: string) => (ar ? arText : frText);
-  const districts: Array<{ id: DistrictId; label: string; hint: string }> = [
-    { id: 'journey', label: T('رحلتي', 'Mon voyage'), hint: T('رحلتي: من الصحراء إلى الفضاء!', "Mon voyage : du Sahara jusqu'à l'espace !") },
-    { id: 'courses', label: T('دروسي', 'Mes cours'), hint: T('كل الدروس مرتّبة حسب المواد', 'Tous les cours, rangés par matière') },
-    { id: 'labs', label: T('المختبرات', 'Ateliers'), hint: T('مختبرات وألعاب تربوية', 'Ateliers et jeux éducatifs') },
-    { id: 'medals', label: T('أوسمتي', 'Médailles'), hint: T('هنا أوسمة كل عالم أكملته', 'Ici, les médailles de chaque monde terminé') },
-    { id: 'parents', label: T('الأولياء', 'Parents'), hint: T('ركن الأولياء لمتابعة التقدّم', 'Le coin des parents pour suivre les progrès') },
+  const dock: Array<{ id: Exclude<DistrictId, 'journey'>; label: string; tone: string }> = [
+    { id: 'courses', label: T('دروسي', 'Mes cours'), tone: 'blue' },
+    { id: 'labs', label: T('المختبرات', 'Ateliers'), tone: 'purple' },
+    { id: 'medals', label: T('أوسمتي', 'Médailles'), tone: 'orange' },
+    { id: 'parents', label: T('الأولياء', 'Parents'), tone: 'green' },
   ];
-  const n = districts.length;
-  const step = 360 / n;
   const [rot, setRot] = useState(0);
   const [bubble, setBubble] = useState(T('مرحبا! أنا ديدو. اضغط الزر الأزرق لنسافر معاً', 'Salut ! Je suis Didou. Appuie sur le bouton bleu pour partir avec moi.'));
   const [hop, setHop] = useState(false);
   const [ribbon, setRibbon] = useState<RibbonContent | null>(null);
-  const front = ((Math.round(-rot / step) % n) + n) % n;
 
   // Until the child turns the planet or pokes Didou, the bubble tells today's mission.
   const [missionInBubble, setMissionInBubble] = useState(true);
@@ -64,10 +69,13 @@ export function PlanetHub(props: PlanetHubProps) {
     say(text);
   };
   const spin = (dir: 1 | -1) => {
-    const next = rot + dir * step;
+    const next = rot + dir * WORLD_STEP;
     setRot(next);
     sfx.whoosh();
-    talk(districts[((Math.round(-next / step) % n) + n) % n].hint);
+    if (!worlds || worlds.length === 0) return;
+    const n = worlds.length;
+    const w = worlds[((Math.round(-next / WORLD_STEP) % n) + n) % n];
+    talk(`${pickText(w.name, locale)}: ${pickText(w.subtitle, locale)}`);
   };
   const enter = (id: DistrictId) => {
     sfx.pop();
@@ -97,14 +105,6 @@ export function PlanetHub(props: PlanetHubProps) {
         buttons: [{ label: T('حسناً', "D'accord"), onClick: () => setRibbon(null) }],
       });
     }
-  };
-  const onDistrict = (i: number) => {
-    if (i === front) return enter(districts[i].id);
-    let delta = (((i - front) % n) + n) % n;
-    if (delta > n / 2) delta -= n;
-    setRot(rot - delta * step);
-    sfx.whoosh();
-    talk(districts[i].hint);
   };
   const lines = [
     T('مرحبا! أنا ديدو، فنك من الصحراء الجزائرية', "Salut ! Je suis Didou, un fennec du Sahara algérien."),
@@ -180,29 +180,45 @@ export function PlanetHub(props: PlanetHubProps) {
       </div>
 
       <div className="j-planet" style={{ ['--rot' as string]: `${rot}deg` }}>
-        <div className="j-sphere">
-          <PlanetSurface />
+        <div className="j-planet-float">
+          <img className="j-planet-img" src={SPACE_ART.planet} alt="" draggable={false} />
         </div>
-        {districts.map((d, i) => (
-          <button
-            key={d.id}
-            type="button"
-            className="j-district"
-            data-front={i === front}
-            style={{ ['--a' as string]: `${i * step}deg` }}
-            onClick={() => onDistrict(i)}
-            aria-label={d.label}
-          >
-            <PlanetDistrictArt id={d.id} />
-            <span className="j-lbl journey-outline">{d.label}</span>
-          </button>
-        ))}
-        <button type="button" className="j-gloss j-play" onClick={() => enter(districts[front].id)} aria-label={`${T('ادخل', 'Entrer')} : ${districts[front].label}`}>
+        <span className="j-planet-title journey-outline" aria-hidden="true">{T('رحلتي', 'Mon voyage')}</span>
+        <button type="button" className="j-gloss j-play" onClick={() => enter('journey')} aria-label={`${T('ادخل', 'Entrer')} : ${T('رحلتي', 'Mon voyage')}`}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M7 4.5l13 7.5-13 7.5z" fill="#fff" />
           </svg>
         </button>
       </div>
+
+      <nav className="j-dock" aria-label={T('أركان الكوكب', 'Coins de la planète')}>
+        {dock.map((d) => (
+          <button key={d.id} type="button" className="j-gloss j-dock-btn" data-tone={d.tone} data-dock={d.id} onClick={() => enter(d.id)}>
+            <span className="j-dock-icon">
+              <PlanetDistrictArt id={d.id} />
+            </span>
+            <span className="j-dock-lbl">{d.label}</span>
+          </button>
+        ))}
+        {shelfGroups && shelfGroups.length > 0 && (
+          <button
+            type="button"
+            className="j-gloss j-dock-btn"
+            data-tone="coral"
+            data-planet-shelf-open=""
+            onClick={() => {
+              sfx.pop();
+              say(T('كل الأنشطة: الدروس، الامتحانات، التحديات، الألعاب والمختبرات', 'Toutes les activités : cours, examens, défis, jeux et ateliers'));
+              setShelfOpen(true);
+            }}
+          >
+            <span className="j-dock-icon">
+              <ShelfButtonArt />
+            </span>
+            <span className="j-dock-lbl">{T('كل الأنشطة', 'Toutes les activités')}</span>
+          </button>
+        )}
+      </nav>
 
       <div className="j-say j-hub-say">
         <div className="j-say-text">
@@ -237,7 +253,8 @@ export function PlanetHub(props: PlanetHubProps) {
         )}
       </div>
       <button type="button" className="j-hub-didou" data-hop={hop} onClick={poke} onAnimationEnd={() => setHop(false)} aria-label={T('ديدو', 'Didou')}>
-        <DidouFull />
+        {/* The pose points to the left of the image, i.e. toward the planet; mirrored in RTL. */}
+        <img src={DIDOU_POSES.point.src} alt="" draggable={false} />
       </button>
 
       <button type="button" className="j-gloss j-round j-nav" data-side="right" onClick={() => spin(1)} aria-label={T('أدر الكوكب', 'Tourner la planète')}>
@@ -246,23 +263,6 @@ export function PlanetHub(props: PlanetHubProps) {
       <button type="button" className="j-gloss j-round j-nav" data-side="left" onClick={() => spin(-1)} aria-label={T('أدر الكوكب', 'Tourner la planète')}>
         <ArrowIcon to="left" />
       </button>
-
-      {shelfGroups && shelfGroups.length > 0 && (
-        <button
-          type="button"
-          className="j-gloss j-shelf-open"
-          data-tone="orange"
-          data-planet-shelf-open=""
-          onClick={() => {
-            sfx.pop();
-            say(T('كل الأنشطة: الدروس، الامتحانات، التحديات، الألعاب والمختبرات', 'Toutes les activités : cours, examens, défis, jeux et ateliers'));
-            setShelfOpen(true);
-          }}
-        >
-          <ShelfButtonArt />
-          <span>{T('كل الأنشطة', 'Toutes les activités')}</span>
-        </button>
-      )}
       {shelfOpen && shelfGroups && (
         <PlanetShelf
           title={T('كل الأنشطة', 'Toutes les activités')}

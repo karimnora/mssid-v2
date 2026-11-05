@@ -22,6 +22,8 @@ import { useAuth } from '../../context/AuthContext';
 import { canAccess, FREE_JOURNEY_WORLDS } from '../../access/entitlements';
 import { PremiumOffer } from '../PremiumOffer';
 import type { PlanetShelfGroup } from './PlanetShelf';
+import { JourneyLessonStage } from './JourneyLessonStage';
+import { SPACE_ART, WORLD_DECOR } from '../world/worldArt';
 import './journey.css';
 
 export interface JourneyScreenProps {
@@ -84,24 +86,10 @@ export function JourneyScreen(props: JourneyScreenProps) {
   const soundRef = useRef(sound);
   soundRef.current = sound;
   const sfx = useMemo(() => createJourneySfx(() => soundRef.current), []);
-  const [blink, setBlink] = useState(false);
 
   useEffect(() => {
     setMemory(loadJourneyMemory(grade));
   }, [grade]);
-
-  useEffect(() => {
-    let timer: number;
-    const loop = () => {
-      timer = window.setTimeout(() => {
-        setBlink(true);
-        window.setTimeout(() => setBlink(false), 220);
-        loop();
-      }, 2600 + Math.random() * 2600);
-    };
-    loop();
-    return () => window.clearTimeout(timer);
-  }, []);
 
   useEffect(() => () => stopSpeech(), []);
 
@@ -217,10 +205,19 @@ export function JourneyScreen(props: JourneyScreenProps) {
   };
 
   const lesson = lessonId ? lessonsById.get(lessonId) : undefined;
+  const lessonWorld = lesson && worlds ? worlds.find((w) => w.lessonIds.includes(lesson.id)) : undefined;
+  const lessonDecor = lessonWorld ? WORLD_DECOR[lessonWorld.id] : undefined;
   const userName = userProfile.name || (locale === 'ar' ? 'بطل' : 'Champion');
 
   return (
-    <div className="journey-root" data-blink={blink} dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
+    <div className="journey-root" dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
+      {screen === 'hub' && (
+        <div
+          className="journey-space"
+          aria-hidden="true"
+          style={{ ['--space-l' as string]: `url(${SPACE_ART.landscape})`, ['--space-p' as string]: `url(${SPACE_ART.portrait})` }}
+        />
+      )}
       {screen !== 'lesson' && (
         <svg className="journey-stars" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           {BACKGROUND_STARS.map((s, i) => (
@@ -296,26 +293,34 @@ export function JourneyScreen(props: JourneyScreenProps) {
         />
       )}
 
-      {screen === 'lesson' && lesson && (
-        <div className="journey-lesson">
-          <div className="journey-lesson-inner">
-            <LessonViewer
-              lesson={lesson}
-              onBack={() => setScreen('map')}
-              onHomeClick={() => setScreen('map')}
-              onCompleteQuiz={onCompleteQuiz}
-              quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(lesson.id)}
-              onQuizFullyValidated={onQuizFullyValidated}
-              onQuizMiss={onQuizMiss}
-              onPracticeResult={onPracticeResult}
-              grade={grade}
-              subjectId={lesson.subject}
-              tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
-              onReportError={onReportError}
-            />
+      {screen === 'lesson' && lesson && (() => {
+        const viewer = (
+          <LessonViewer
+            lesson={lesson}
+            onBack={() => setScreen('map')}
+            onHomeClick={() => setScreen('map')}
+            onCompleteQuiz={onCompleteQuiz}
+            quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(lesson.id)}
+            onQuizFullyValidated={onQuizFullyValidated}
+            onQuizMiss={onQuizMiss}
+            onPracticeResult={onPracticeResult}
+            grade={grade}
+            subjectId={lesson.subject}
+            tashkeelEnabled={userProfile.tashkeelEnabled ?? false}
+            onReportError={onReportError}
+          />
+        );
+        // Worlds with a painted decor (pilot: Constantine) frame the lesson; the others keep the cream page.
+        return lessonDecor ? (
+          <JourneyLessonStage key={lesson.id} decor={lessonDecor} locale={locale} lessonTitle={lesson.titleAr} say={say}>
+            {viewer}
+          </JourneyLessonStage>
+        ) : (
+          <div className="journey-lesson">
+            <div className="journey-lesson-inner">{viewer}</div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
