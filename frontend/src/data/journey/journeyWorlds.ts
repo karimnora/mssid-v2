@@ -103,7 +103,8 @@ const WORLDS_1AP: readonly JourneyWorld[] = [
     badge: { ar: 'وسام الجبال', fr: 'Médaille des montagnes' },
     medalColor: '#3db23a',
     lessonIds: ['science-1ap-t1-five-senses-hygiene', 'science-1ap-t2-plant-growth', 'science-1ap-t3-seasons-weather'],
-    ys: [700, 560, 690, 540],
+    // On the painted decor's meadow, below the village and the cedars.
+    ys: [700, 650, 690, 640],
   },
   {
     id: 'timgad',
@@ -114,7 +115,8 @@ const WORLDS_1AP: readonly JourneyWorld[] = [
     badge: { ar: 'وسام تيمقاد', fr: 'Médaille de Timgad' },
     medalColor: '#b98a4e',
     lessonIds: ['math-1ap-t1-shapes-colors', 'math-1ap-t2-numbers-11-20', 'civics-1ap-t2-flag-anthem'],
-    ys: [720, 600, 720, 590],
+    // On the painted decor's paved Roman street, in front of the columns.
+    ys: [740, 720, 750, 730],
   },
   {
     id: 'tassili',
@@ -125,7 +127,8 @@ const WORLDS_1AP: readonly JourneyWorld[] = [
     badge: { ar: 'وسام الطاسيلي', fr: 'Médaille du Tassili' },
     medalColor: '#a0522d',
     lessonIds: ['arabic-1ap-t2-letters-group3', 'arabic-1ap-t2-madd', 'arabic-1ap-t2-nature-axis'],
-    ys: [700, 580, 700, 540],
+    // On the painted decor's sand, below the sandstone towers.
+    ys: [700, 650, 710, 640],
   },
   {
     id: 'space',

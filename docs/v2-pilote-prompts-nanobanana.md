@@ -454,6 +454,33 @@ Top row, left to right: 1. a desert ksar with palm trees, orange ribbon. 2. a sq
 Bottom row, left to right: 5. a cedar tree before mountain peaks, dark green ribbon. 6. a Roman triumphal arch with three arches, purple ribbon. 7. a natural rock arch, terracotta ribbon. 8. a rocket with a star, navy ribbon.
 ```
 
+### Résultat du lot 3 (5 novembre 2026)
+
+Images reçues sans les noms prévus, avec plusieurs variantes, triées à la main. Retenues :
+
+| Monde | Îlot | Décor paysage |
+|---|---|---|
+| Mer | `…hexsq0…jpg` | `…q8zeyu….jpg` (phare, cap vert, ville côtière) |
+| Djurdjura | `…q8zeyu… (2).jpg` | `…5fuwks… (3).jpg` (village aux toits rouges, prairie) |
+| Timgad | `…gu41ot….jpg` | `…5fuwks… (2).jpg` (arc de Trajan, voie pavée) |
+| Tassili | `…oyxlug… (3).jpg` (peintures de girafes, même rendu que les autres îlots) | `…5fuwks… (1).jpg` (forêt de grès au coucher du soleil) |
+
+Ces 4 mondes sont intégrés comme le Sahara et la Casbah. Les stations sont posées sur le sol calme de chaque décor, sauf celles de la Mer, déjà sur l'eau : Djurdjura `ys` [700, 650, 690, 640], Timgad [740, 720, 750, 730], Tassili [700, 650, 710, 640]. Entre deux mondes peints, la brume des raccords est atténuée. Les décors vectoriels de ces 4 mondes sont supprimés.
+
+**Manque :**
+- [ ] **Les 5 décors en portrait** (25, 28, 31, 34, 37) n'ont pas été générés. En attendant, les téléphones tenus droit affichent le centre du décor paysage (Mer, Djurdjura, Timgad, Tassili).
+- [ ] **Espace (35 à 37)** : tout est à refaire, le monde garde son décor vectoriel.
+  - L'îlot `…gu41ot… (2).jpg` porte un **drapeau américain** sur le pas de tir, et son rendu « photo » ne va pas avec les autres îlots. Ajouter au prompt : « no flags, no country symbols, no text on the rocket ».
+  - Le décor `…5fuwks….jpg` a une bande sombre aux bords nets au milieu, et il est trop large (2,36:1 au lieu de 16:9). Remplacer dans le prompt la phrase sur la bande du milieu par : « the stars and nebula continue smoothly through the middle, just fewer and fainter there, no visible band ».
+- [ ] **Médailles (38)** : la planche est belle, mais la médaille 4 (Constantine) montre le **Golden Gate de San Francisco**. À retoucher : « Edit the attached image: replace the bridge on the top-right medal by a single-span suspension bridge between two stone pylons over a deep rocky gorge (Sidi M'Cid bridge, Constantine) ». La 7 (arche rocheuse) rappelle Delicate Arch aux États-Unis : à corriger dans la même retouche si possible, avec « a wide low rock arch over orange sand with small acacia trees ».
+- Écartées : `…oyxlug… (1).jpg`, dont le prompt STYLE est imprimé sur l'image, et le GIF animé de l'îlot de la Mer (non utilisé pour l'instant).
+
+**Bonus reçus**, non intégrés et à garder pour la suite :
+- deux planches de poses et d'expressions de Didou (il lit, cherche à la loupe, montre le globe…) ;
+- trois planches d'objets éducatifs (camemberts de fractions, horloge, calendrier, livres, trophées, sac, boutons de lecture).
+
+À découper le jour où un écran en a besoin.
+
 ## Ce que je fais une fois les images reçues
 
 - Détourage, conversion en WebP et déclinaisons en plusieurs tailles (téléphone, tablette).

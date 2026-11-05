@@ -21,6 +21,14 @@ import saharaIsland from '../../assets/world/sahara/island-sahara.webp';
 import casbahLandscape from '../../assets/world/casbah/casbah-landscape.webp';
 import casbahPortrait from '../../assets/world/casbah/casbah-portrait.webp';
 import casbahIsland from '../../assets/world/casbah/island-casbah.webp';
+import seaLandscape from '../../assets/world/sea/sea-landscape.webp';
+import seaIsland from '../../assets/world/sea/island-sea.webp';
+import djurdjuraLandscape from '../../assets/world/djurdjura/djurdjura-landscape.webp';
+import djurdjuraIsland from '../../assets/world/djurdjura/island-djurdjura.webp';
+import timgadLandscape from '../../assets/world/timgad/timgad-landscape.webp';
+import timgadIsland from '../../assets/world/timgad/island-timgad.webp';
+import tassiliLandscape from '../../assets/world/tassili/tassili-landscape.webp';
+import tassiliIsland from '../../assets/world/tassili/island-tassili.webp';
 import star from '../../assets/world/objects/obj-star.webp';
 import lock from '../../assets/world/objects/obj-lock.webp';
 import chest from '../../assets/world/objects/obj-chest.webp';
@@ -47,6 +55,7 @@ export const OBJECT_ART = { star, lock, chest };
 
 export interface WorldDecor {
   landscape: string;
+  /** Upright phones; until a world has its own portrait image, its landscape is centre-cropped. */
   portrait: string;
   /** Parallax layer: framing elements on the left and right edges only. */
   foreground?: string;
@@ -65,5 +74,10 @@ export interface WorldDecor {
 export const WORLD_DECOR: Partial<Record<JourneyWorldId, WorldDecor>> = {
   sahara: { landscape: saharaLandscape, portrait: saharaPortrait, island: saharaIsland },
   casbah: { landscape: casbahLandscape, portrait: casbahPortrait, island: casbahIsland },
+  sea: { landscape: seaLandscape, portrait: seaLandscape, island: seaIsland },
   constantine: { landscape: constantineLandscape, portrait: constantinePortrait, foreground: constantineForeground, island: constantineIsland, mapOffsetY: 44 },
+  djurdjura: { landscape: djurdjuraLandscape, portrait: djurdjuraLandscape, island: djurdjuraIsland },
+  timgad: { landscape: timgadLandscape, portrait: timgadLandscape, island: timgadIsland },
+  tassili: { landscape: tassiliLandscape, portrait: tassiliLandscape, island: tassiliIsland },
+  // Space keeps its vector backdrop until lot 3's space images are redone (docs/v2-pilote-prompts-nanobanana.md).
 };

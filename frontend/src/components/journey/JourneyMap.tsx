@@ -12,7 +12,7 @@ import {
 } from '../../data/journey/journeyWorlds';
 import { currentStationIndex, type JourneyStation, type StationState } from '../../utils/journeyProgress';
 import { DidouFull, DidouHead, StarIcon } from './DidouJourneyArt';
-import { OBJECT_ART } from '../world/worldArt';
+import { OBJECT_ART, WORLD_DECOR } from '../world/worldArt';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 import { JourneySceneryDefs, WORLD_SKY, WorldBackdrop } from './JourneyScenery';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
@@ -407,7 +407,8 @@ export function JourneyMap(props: JourneyMapProps) {
             <JourneySceneryDefs />
             {worlds.slice(1).map((next, k) => {
               const seam = worldLeft(worlds, k);
-              const h = WORLD_SKY[next.id].height;
+              // A painted world's image already fills its whole height: its borrowed sky needs no bottom fade.
+              const h = WORLD_DECOR[next.id] ? JOURNEY_HEIGHT : WORLD_SKY[next.id].height;
               return (
                 <mask key={k} id={`jw-seam-${k}`} maskUnits="userSpaceOnUse" x={seam} y="0" width="420" height={JOURNEY_HEIGHT}>
                   <rect x={seam} y="0" width="420" height={JOURNEY_HEIGHT} fill="url(#jw-hfade)" />
@@ -445,9 +446,12 @@ export function JourneyMap(props: JourneyMapProps) {
             return (
               <g key={next.id}>
                 {/* Same height as the next world's own sky rect, so the gradient colours match exactly at the seam. */}
-                <rect x={seam} y="0" width="420" height={next.id === 'sea' ? 470 : JOURNEY_HEIGHT} fill={`url(#${sky.id})`} mask={`url(#jw-seam-${k})`} />
+                <rect x={seam} y="0" width="420" height={next.id === 'sea' && !WORLD_DECOR.sea ? 470 : JOURNEY_HEIGHT} fill={`url(#${sky.id})`} mask={`url(#jw-seam-${k})`} />
                 {/* A soft band of mist hides where one ground ends and the next begins (night already blends into space). */}
-                {next.id !== 'space' && <ellipse cx={seam} cy="700" rx="260" ry="360" fill="url(#jw-mist)" />}
+                {/* Between two painted decors their faded edges already blend: the cream mist stays faint. */}
+                {next.id !== 'space' && (
+                  <ellipse cx={seam} cy="700" rx="260" ry="360" fill="url(#jw-mist)" opacity={WORLD_DECOR[next.id] && WORLD_DECOR[worlds[k].id] ? 0.4 : 1} />
+                )}
               </g>
             );
           })}
