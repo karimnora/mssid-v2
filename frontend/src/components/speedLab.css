@@ -1,0 +1,39 @@
+/* Speed lab (SpeedVelocityLab + Vehicle3DModel): rendered vehicles on the painted highway. */
+
+/* The sprites face right; in Arabic the race runs right to left. */
+[dir='rtl'] .speed-flip { transform: scaleX(-1); }
+
+.speed-vehicle { filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.35)); transition: filter 0.2s; }
+.speed-vehicle[data-turbo] { filter: drop-shadow(0 0 10px rgba(255, 170, 40, 0.95)) drop-shadow(0 6px 6px rgba(0, 0, 0, 0.35)); }
+
+.speed-lines { position: absolute; inset-inline-end: 100%; top: 20%; bottom: 20%; width: 54px; display: flex; flex-direction: column; justify-content: space-around; pointer-events: none; }
+.speed-lines i { display: block; height: 3px; border-radius: 3px; background: linear-gradient(to left, var(--lane-color, #fff), transparent); opacity: 0.8; animation: speed-line 0.45s linear infinite; }
+[dir='rtl'] .speed-lines i { background: linear-gradient(to right, var(--lane-color, #fff), transparent); }
+.speed-lines i:nth-child(2) { animation-delay: -0.15s; width: 80%; }
+.speed-lines i:nth-child(3) { animation-delay: -0.3s; width: 60%; }
+.speed-lines[data-turbo] i { height: 4px; background: linear-gradient(to left, #ffb020, transparent); }
+[dir='rtl'] .speed-lines[data-turbo] i { background: linear-gradient(to right, #ffb020, transparent); }
+@keyframes speed-line { from { transform: translateX(10px); opacity: 0.9; } to { transform: translateX(-18px); opacity: 0; } }
+[dir='rtl'] .speed-lines i { animation-name: speed-line-rtl; }
+@keyframes speed-line-rtl { from { transform: translateX(-10px); opacity: 0.9; } to { transform: translateX(18px); opacity: 0; } }
+
+/* Race arena: the painted highway (landscape, or portrait in a narrow arena). */
+.speed-arena { container-type: inline-size; background: #8cc6ea; }
+@container (max-width: 520px) { .speed-arena-bg { background-image: var(--speed-p) !important; } }
+.speed-arena-bg { position: absolute; inset: 0; background: var(--speed-l) center / cover no-repeat; pointer-events: none; }
+.speed-arena-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10, 20, 60, 0) 35%, rgba(10, 20, 60, 0.35) 100%); }
+.speed-lane { background: linear-gradient(to bottom, rgba(42, 47, 60, 0.88), rgba(30, 34, 46, 0.92)); box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.3), 0 8px 18px rgba(8, 12, 40, 0.35); backdrop-filter: blur(2px); }
+.speed-finish { position: absolute; inset-inline-end: 6px; bottom: 4px; height: 92%; width: auto; pointer-events: none; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.35)); }
+
+/* Weather over the decor. */
+.speed-weather { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+.speed-weather[data-weather='night'] { background: radial-gradient(ellipse at 50% 0%, rgba(20, 30, 90, 0.45), rgba(4, 8, 40, 0.72)); }
+.speed-weather[data-weather='night']::before { content: ''; position: absolute; inset: 0 0 55% 0; background-image: radial-gradient(1.6px 1.6px at 12% 20%, #fff, transparent), radial-gradient(1.4px 1.4px at 30% 40%, #fff, transparent), radial-gradient(1.8px 1.8px at 55% 15%, #fff, transparent), radial-gradient(1.3px 1.3px at 72% 35%, #fff, transparent), radial-gradient(1.6px 1.6px at 88% 18%, #fff, transparent), radial-gradient(1.2px 1.2px at 44% 60%, #fff, transparent); animation: speed-twinkle 3s ease-in-out infinite alternate; }
+.speed-weather[data-weather='rain'] { background: linear-gradient(rgba(60, 80, 110, 0.35), rgba(40, 55, 80, 0.45)); }
+.speed-weather[data-weather='rain']::before { content: ''; position: absolute; inset: -20% 0 0 0; background-image: repeating-linear-gradient(105deg, rgba(220, 235, 255, 0.55) 0 1.5px, transparent 1.5px 14px); background-size: 140px 140px; animation: speed-rain 0.5s linear infinite; }
+@keyframes speed-rain { to { background-position: -40px 140px; } }
+@keyframes speed-twinkle { to { opacity: 0.45; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .speed-lines i, .speed-weather::before { animation: none !important; }
+}

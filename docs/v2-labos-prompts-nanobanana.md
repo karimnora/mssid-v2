@@ -67,6 +67,18 @@ A clean sheet of six separate isolated 3D game objects, evenly spaced on a 3 x 2
 
 ---
 
+### Résultat (5 novembre 2026)
+
+Reçus et intégrés : L01 à L04. Écartée : une variante du décor où des véhicules étaient déjà dessinés.
+- `Vehicle3DModel` n'affiche plus de véhicules dessinés en SVG, mais les 9 véhicules rendus (`assets/labs/speed/`). En arabe, ils sont retournés pour rouler de droite à gauche. Animations :
+  - léger rebond pendant la course, plus doux pour l'avion ;
+  - poussière au départ et traînées de vitesse à la couleur du couloir ;
+  - lueur orange en turbo.
+- L'arène de course passe sur le décor peint de l'autoroute (le portrait dans une arène étroite). Les deux couloirs deviennent des bandes d'asphalte avec l'arche d'arrivée au bout. La pluie tombe et la nuit est étoilée sur le décor. Le chronomètre et la distance sont dans une pastille sombre, lisible sur le ciel.
+- Les vignettes de véhicules remplacent les emojis : choix des véhicules, résultats, comparateur, classement, trajets en Algérie.
+- La fenêtre d'arrivée montre la coupe 3D et le véhicule gagnant. Elle défile si elle dépasse l'arène.
+- Inchangé : la mécanique (vitesses, turbo, météo, radar) et le contenu des onglets. Les onglets autres que la course gardent leur fond sombre, avec les nouvelles vignettes. Le taxi porte l'inscription « TAXI », comme les vrais taxis : c'est accepté.
+
 ## 2. Labo des ablutions (`wudu_lab`) et 3. Labo de la prière (`salat_lab`)
 
 Les gestes sont faits par **un enfant** (et une fillette, en option), pas par Didou, par respect pour les gestes religieux. Didou reste le guide qui parle.

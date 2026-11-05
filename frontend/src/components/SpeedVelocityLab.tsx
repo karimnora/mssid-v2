@@ -8,7 +8,11 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PrimaryGrade } from '../types';
-import { Vehicle3DModel } from './Vehicle3DModel';
+import { Vehicle3DModel, VehicleIcon } from './Vehicle3DModel';
+import speedLandscape from '../assets/labs/speed/speed-landscape.webp';
+import speedPortrait from '../assets/labs/speed/speed-portrait.webp';
+import finishArch from '../assets/labs/speed/o-finish.webp';
+import trophy from '../assets/labs/speed/o-trophy.webp';
 import { useLocaleContext } from '../context/LocaleContext';
 import { labQuizIsLocked } from '../utils/labQuizChoice';
 
@@ -707,8 +711,8 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="text-4xl p-2 rounded-2xl bg-indigo-950/80 border border-indigo-700/50">
-                  {vehicleA.emoji}
+                <span className="p-1.5 rounded-2xl bg-indigo-950/80 border border-indigo-700/50">
+                  <VehicleIcon vehicleId={vehicleA.id} size={52} />
                 </span>
                 <div className="flex-1">
                   <select
@@ -799,8 +803,8 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="text-4xl p-2 rounded-2xl bg-rose-950/80 border border-rose-700/50">
-                  {vehicleB.emoji}
+                <span className="p-1.5 rounded-2xl bg-rose-950/80 border border-rose-700/50">
+                  <VehicleIcon vehicleId={vehicleB.id} size={52} />
                 </span>
                 <div className="flex-1">
                   <select
@@ -825,15 +829,15 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             </div>
           </div>
 
-          {/* ── 2D / 3D CITY TRACK ARENA ── */}
+          {/* ── 2D / 3D CITY TRACK ARENA: the painted Algerian highway (L01/L02) ── */}
           <div
-            className={`relative w-full rounded-3xl overflow-hidden border-4 border-amber-400/40 shadow-2xl transition-all duration-700 ${
-              viewPerspective === '3d'
-                ? 'bg-gradient-to-b from-sky-900 via-slate-900 to-slate-950 [perspective:1000px]'
-                : 'bg-slate-900'
+            className={`speed-arena relative w-full rounded-3xl overflow-hidden border-4 border-amber-400/40 shadow-2xl transition-all duration-700 ${
+              viewPerspective === '3d' ? '[perspective:1000px]' : ''
             }`}
-            style={{ minHeight: '360px' }}
+            style={{ minHeight: '360px', ['--speed-l' as string]: `url(${speedLandscape})`, ['--speed-p' as string]: `url(${speedPortrait})` }}
           >
+            <div className="speed-arena-bg" aria-hidden="true" />
+            {weather !== 'sunny' && <div className="speed-weather" data-weather={weather} aria-hidden="true" />}
             {/* Speed Radar Flash Overlay */}
             {speedRadarFlashed && (
               <div className="absolute top-4 right-1/2 translate-x-1/2 z-30 bg-amber-400 text-slate-950 px-4 py-2 rounded-2xl font-black text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-bounce border-2 border-white">
@@ -841,11 +845,6 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                 <span>فلاش رادار المدينة! تجاوز السرعة المحددة (50 كم/سا)</span>
               </div>
             )}
-
-            {/* City Skyline */}
-            <div className="absolute top-0 inset-x-0 h-20 flex items-end justify-between px-6 opacity-30 pointer-events-none text-2xl sm:text-4xl border-b border-slate-700/50 select-none">
-              <span>🏢</span><span>🏬</span><span>🏨</span><span>🌴</span><span>🏫</span><span>🏥</span><span>🌳</span><span>🏛️</span>
-            </div>
 
             {/* Track Isometric Container */}
             <div
@@ -860,22 +859,19 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     <span className="p-1 rounded-md bg-indigo-900/60">🔵 {vehicleA.nameAr}</span>
                     <span className="bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">⚡ {realSpeedA.toFixed(0)} km/h</span>
                   </div>
-                  <div className="flex items-center gap-2 font-mono">
+                  <div className="flex items-center gap-2 font-mono rounded-full bg-slate-950/75 px-2.5 py-0.5 text-white">
                     <span>⏱️ {(progressA * timeA).toFixed(1)} s / {timeA.toFixed(1)} s</span>
                     <span>📍 {(progressA * distanceMeters).toFixed(0)} m</span>
                   </div>
                 </div>
 
-                <div className="relative h-20 sm:h-24 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl border-2 border-indigo-500/40 shadow-inner flex items-center px-4 overflow-hidden">
+                <div className="speed-lane relative z-10 h-20 sm:h-24 rounded-2xl border-2 border-indigo-400/60 flex items-center px-4 overflow-hidden">
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 border-t-2 border-dashed border-yellow-400/40 pointer-events-none" />
                   <div className="absolute start-3 top-0 bottom-0 flex flex-col items-center justify-center border-e-2 border-dashed border-emerald-400/60 pe-2 pointer-events-none">
                     <span className="text-xs font-black text-emerald-400">START</span>
                     <span className="text-sm">🚦</span>
                   </div>
-                  <div className="absolute end-3 top-0 bottom-0 flex flex-col items-center justify-center border-s-2 border-dashed border-amber-400/80 ps-2 pointer-events-none bg-amber-400/10">
-                    <span className="text-xs font-black text-amber-300">GOAL</span>
-                    <span className="text-sm">🏁</span>
-                  </div>
+                  <img src={finishArch} alt="" aria-hidden="true" draggable={false} className="speed-finish speed-flip" />
 
                   {/* Vehicle A */}
                   <div
@@ -884,7 +880,6 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   >
                     <Vehicle3DModel
                       vehicleId={vehicleA.id}
-                      emoji={vehicleA.emoji}
                       color={vehicleA.color}
                       isRacing={raceState === 'racing'}
                       turbo={turboA}
@@ -901,22 +896,19 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                     <span className="p-1 rounded-md bg-rose-900/60">🔴 {vehicleB.nameAr}</span>
                     <span className="bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">⚡ {realSpeedB.toFixed(0)} km/h</span>
                   </div>
-                  <div className="flex items-center gap-2 font-mono">
+                  <div className="flex items-center gap-2 font-mono rounded-full bg-slate-950/75 px-2.5 py-0.5 text-white">
                     <span>⏱️ {(progressB * timeB).toFixed(1)} s / {timeB.toFixed(1)} s</span>
                     <span>📍 {(progressB * distanceMeters).toFixed(0)} m</span>
                   </div>
                 </div>
 
-                <div className="relative h-20 sm:h-24 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl border-2 border-rose-500/40 shadow-inner flex items-center px-4 overflow-hidden">
+                <div className="speed-lane relative z-10 h-20 sm:h-24 rounded-2xl border-2 border-rose-400/60 flex items-center px-4 overflow-hidden">
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1 border-t-2 border-dashed border-yellow-400/40 pointer-events-none" />
                   <div className="absolute start-3 top-0 bottom-0 flex flex-col items-center justify-center border-e-2 border-dashed border-emerald-400/60 pe-2 pointer-events-none">
                     <span className="text-xs font-black text-emerald-400">START</span>
                     <span className="text-sm">🚦</span>
                   </div>
-                  <div className="absolute end-3 top-0 bottom-0 flex flex-col items-center justify-center border-s-2 border-dashed border-amber-400/80 ps-2 pointer-events-none bg-amber-400/10">
-                    <span className="text-xs font-black text-amber-300">GOAL</span>
-                    <span className="text-sm">🏁</span>
-                  </div>
+                  <img src={finishArch} alt="" aria-hidden="true" draggable={false} className="speed-finish speed-flip" />
 
                   {/* Vehicle B */}
                   <div
@@ -925,7 +917,6 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   >
                     <Vehicle3DModel
                       vehicleId={vehicleB.id}
-                      emoji={vehicleB.emoji}
                       color={vehicleB.color}
                       isRacing={raceState === 'racing'}
                       turbo={turboB}
@@ -943,15 +934,18 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-slate-950/85 backdrop-blur-md flex flex-col items-center justify-center p-6 z-20"
+                  className="absolute inset-0 bg-slate-950/85 backdrop-blur-md flex flex-col items-center overflow-y-auto p-4 z-20"
                 >
-                  <div className="max-w-md w-full bg-slate-900 border-2 border-amber-400 rounded-3xl p-6 shadow-2xl text-center flex flex-col items-center gap-4">
-                    <span className="text-6xl animate-bounce">🏆</span>
+                  <div className="my-auto max-w-md w-full bg-slate-900 border-2 border-amber-400 rounded-3xl p-5 shadow-2xl text-center flex flex-col items-center gap-3">
+                    <div className="flex items-end gap-3">
+                      <img src={trophy} alt="" aria-hidden="true" draggable={false} className="w-16 h-16 object-contain animate-bounce" />
+                      {winner !== 'TIE' && winner && <VehicleIcon vehicleId={(winner === 'A' ? vehicleA : vehicleB).id} size={84} />}
+                    </div>
                     <h2 className="text-2xl font-black text-amber-300">
                       {winner === 'A'
-                        ? `الفائز: ${vehicleA.emoji} ${vehicleA.nameAr}!`
+                        ? `الفائز: ${vehicleA.nameAr}!`
                         : winner === 'B'
-                        ? `الفائز: ${vehicleB.emoji} ${vehicleB.nameAr}!`
+                        ? `الفائز: ${vehicleB.nameAr}!`
                         : 'تعادل رائع وسرعة متكافئة!'}
                     </h2>
 
@@ -967,13 +961,13 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                       {/* Visual race-bar comparison — lets a child SEE who was faster at a glance,
                           without needing to read/compare decimal seconds. Bar width ∝ speed. */}
                       {[
-                        { label: vehicleA.nameAr, emoji: vehicleA.emoji, time: timeA, speed: realSpeedA, color: 'cyan', isWinner: winner === 'A' },
-                        { label: vehicleB.nameAr, emoji: vehicleB.emoji, time: timeB, speed: realSpeedB, color: 'rose', isWinner: winner === 'B' },
+                        { label: vehicleA.nameAr, id: vehicleA.id, time: timeA, speed: realSpeedA, color: 'cyan', isWinner: winner === 'A' },
+                        { label: vehicleB.nameAr, id: vehicleB.id, time: timeB, speed: realSpeedB, color: 'rose', isWinner: winner === 'B' },
                       ].map((row, idx) => (
                         <div key={idx} className="text-start space-y-1.5">
                           <div className="flex items-center justify-between text-sm font-black text-slate-200">
                             <span className="flex items-center gap-1.5">
-                              <span className="text-xl">{row.emoji}</span>
+                              <VehicleIcon vehicleId={row.id} size={30} />
                               <span>{row.label}</span>
                               {winner !== 'TIE' && <span className="text-lg">{row.isWinner ? '🥇' : '🥈'}</span>}
                             </span>
@@ -1039,7 +1033,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                       key={id}
                       className="bg-slate-950 p-4 rounded-2xl border-2 border-slate-800 hover:border-amber-400 flex flex-col items-center gap-2 shadow-lg transition-all"
                     >
-                      <span className="text-5xl">{veh.emoji}</span>
+                      <VehicleIcon vehicleId={veh.id} size={72} />
                       <span className="text-sm font-black text-slate-100 text-center">{veh.nameAr}</span>
                       <span className="text-xs font-bold text-amber-400 font-mono">{veh.speedKmh} km/h</span>
                       <div className="flex gap-2 mt-2">
@@ -1099,8 +1093,8 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
                       className="p-3 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800/80 hover:border-amber-400/50 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                     >
                       <div className="flex items-center gap-3 w-48 shrink-0">
-                        <span className="text-3xl p-2 rounded-xl bg-slate-900 border border-slate-700">
-                          {v.emoji}
+                        <span className="p-1 rounded-xl bg-slate-900 border border-slate-700">
+                          <VehicleIcon vehicleId={v.id} size={44} />
                         </span>
                         <div>
                           <div className="font-black text-sm text-slate-100">{v.nameAr}</div>
@@ -1406,7 +1400,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-800 pb-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-4xl p-3 bg-slate-900 rounded-2xl border border-slate-700">{tripVehicle.emoji}</span>
+                  <span className="p-2 bg-slate-900 rounded-2xl border border-slate-700"><VehicleIcon vehicleId={tripVehicle.id} size={56} /></span>
                   <div>
                     <h3 className="font-black text-base text-slate-100">
                       {selectedTrip.fromAr} ➡️ {selectedTrip.toAr}
