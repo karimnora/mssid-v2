@@ -23,6 +23,43 @@ if (sentryDsn) {
     dsn: sentryDsn,
     environment: Capacitor.isNativePlatform() ? 'android' : 'web',
     tracesSampleRate: 0,
+    // Noise from scripts other apps inject into our page, not from our code: Facebook/Instagram's
+    // in-app browser (iabjs://, window._META), Googlebot's renderer (wrsParams), and the browser
+    // refusing service-worker registration (private mode/full storage — the app works without it).
+    ignoreErrors: [
+      'Java object is gone',
+      /_META\.IAB/,
+      /wrsParams/,
+      /Failed to register a ServiceWorker/,
+    ],
+    denyUrls: [/^iabjs:\/\//],
+    beforeSend(event) {
+      const frames = (event.exception?.values ?? []).flatMap((v) => v.stacktrace?.frames ?? []);
+      const isInjected = frames.some(
+        (f) => (f.filename ?? '').startsWith('iabjs://') || (f.function ?? '').includes('wrsParams'),
+      );
+      return isInjected ? null : event;
+    },
+  });
+}
+
+// After a deploy, a tab still open on the previous version asks for lazy chunks whose hashed
+// filenames no longer exist ("Failed to fetch dynamically imported module"). Vite fires
+// vite:preloadError for that — reload once to pick up the new build. The timestamp guard stops a
+// reload loop if the chunk is genuinely unreachable (offline, real outage). Web only: the native
+// app bundles its chunks locally, so this situation can't arise there.
+const CHUNK_RELOAD_KEY = 'mssid-chunk-reload-at';
+if (!Capacitor.isNativePlatform()) {
+  window.addEventListener('vite:preloadError', (event) => {
+    try {
+      const last = Number(window.sessionStorage.getItem(CHUNK_RELOAD_KEY) || 0);
+      if (Date.now() - last < 30_000) return; // already reloaded recently: let the error surface
+      window.sessionStorage.setItem(CHUNK_RELOAD_KEY, String(Date.now()));
+    } catch {
+      return; // no sessionStorage → can't guard against a loop, so don't auto-reload
+    }
+    event.preventDefault();
+    window.location.reload();
   });
 }
 

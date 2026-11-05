@@ -78,6 +78,9 @@ export const auth: typeof authAr = {
   registerSubmit: 'Créer le compte',
   toggleToRegister: "Tu n'as pas de compte ? Crée un nouveau compte",
   toggleToLogin: 'Tu as déjà un compte ? Connexion',
+  loginFailedNoAccountHint: "Première fois sur MSSID ? Il faut d'abord créer un compte.",
+  loginFailedCreateAccountCta: 'Créer un compte gratuit',
+  loginFirstTimeHint: 'Première fois ici ? Appuie sur « Créer un compte » en haut.',
 
   // --- AuthWallModal ---
   wallTitle: 'Bravo champion ! 🌟',

@@ -199,7 +199,7 @@ function AppContent() {
 
   const onLessonLocked = (lesson: CourseLesson) => {
     if (isGuest) {
-      modals.openAuth('login', 'أنشئ حساباً مجانياً (يستغرق دقيقة واحدة فقط) لمتابعة هذا الدرس ومشاهدة كل الدروس الأخرى مجاناً. 🎁');
+      modals.openAuth('register', 'أنشئ حساباً مجانياً (يستغرق دقيقة واحدة فقط) لمتابعة هذا الدرس ومشاهدة كل الدروس الأخرى مجاناً. 🎁');
       return;
     }
     setLockedLesson(lesson);
@@ -211,7 +211,7 @@ function AppContent() {
     onLessonLocked,
     isGuest,
     isLabFreeForGuest,
-    onGuestBlocked: () => modals.openAuth('login', 'هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
+    onGuestBlocked: () => modals.openAuth('register','هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
   });
 
   // /admin is reachable by URL alone (see appLocation.ts's plain 'admin' route), so this must never
@@ -242,7 +242,7 @@ function AppContent() {
   const openAiTutor = () => {
     if (!enableAITutor) return;
     if (!authUser) {
-      modals.openAuth('login', 'المعلّم الذكي متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ معه! 🦊');
+      modals.openAuth('register', 'المعلّم الذكي متاح للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لتبدأ معه! 🦊');
       return;
     }
     modals.setIsAiModalOpen(true);
