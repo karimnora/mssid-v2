@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { DidouPortrait } from '../world/DidouPortrait';
 import './didouGuide.css';
 
@@ -7,15 +7,16 @@ export type DidouMood = 'talk' | 'happy' | 'think';
 
 /** Didou's speech bubble used inside the immersive labs: what to do next, with a replay button. */
 export function DidouGuide({ line, mood, lang, listenLabel, onReplay }: { line: string; mood: DidouMood; lang: 'ar' | 'fr'; listenLabel: string; onReplay: () => void }) {
+  const reduceMotion = useReducedMotion();
   return (
     <section className="lab-guide" data-didou-guide={mood} aria-live="polite">
       <motion.div
         key={`${line}-${mood}`}
-        animate={mood === 'happy' ? { y: [0, -12, 0], rotate: [0, -4, 4, 0] } : mood === 'think' ? { rotate: [0, -6, 0] } : { y: [0, -4, 0] }}
+        animate={reduceMotion ? undefined : mood === 'happy' ? { y: [0, -12, 0], rotate: [0, -4, 4, 0] } : mood === 'think' ? { rotate: [0, -6, 0] } : { y: [0, -4, 0] }}
         transition={{ duration: 0.6 }}
         className="shrink-0"
       >
-        <DidouPortrait size={84} />
+        <DidouPortrait size={84} pose={mood === 'happy' ? 'cheer' : mood === 'think' ? 'think' : 'talk'} />
       </motion.div>
       <p className="lab-guide-bubble" lang={lang}>{line}</p>
       <button type="button" className="lab-guide-listen" aria-label={listenLabel} onClick={onReplay}>

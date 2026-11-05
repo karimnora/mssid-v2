@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import basketEmpty from '../../assets/labs/souk/basket-empty.webp';
+import basketFull from '../../assets/labs/souk/basket-full.webp';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { SoukItemArt, DinarPiece } from './SoukArt';
 import { DidouGuide, type DidouMood } from './DidouGuide';
@@ -43,6 +45,7 @@ const AWNINGS: Record<string, [string, string]> = {
  */
 export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   const { locale } = useLocaleContext();
   const missions = useMemo(() => soukMissionsForGrade(grade), [grade]);
   const [missionIndex, setMissionIndex] = useState(0);
@@ -82,8 +85,8 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
   }, [mission.id]);
 
   useEffect(() => {
-    if (step === 'pay' || step === 'change') payRef.current?.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
-  }, [step]);
+    if (step === 'pay' || step === 'change') payRef.current?.scrollIntoView?.({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  }, [step, reduceMotion]);
 
   const buy = (id: string) => {
     if (step !== 'shop') return;
@@ -176,6 +179,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
       badge={t('soukBadge')}
       title={t('soukTitle')}
       intro={t('soukIntro')}
+      showGuide={false}
       tabs={[{ id: 'street', label: t('soukMissionIndex', { current: missionIndex + 1, total: missions.length }) }]}
       activeTab="street"
       onTab={() => undefined}
@@ -215,9 +219,9 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
                 type="button"
                 data-souk-stall={item.id}
                 onClick={() => buy(item.id)}
-                whileTap={{ scale: 0.94 }}
-                animate={shake === item.id ? { x: [0, -8, 8, -5, 5, 0] } : { x: 0 }}
-                transition={{ duration: 0.45 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.94 }}
+                animate={!reduceMotion && shake === item.id ? { x: [0, -8, 8, -5, 5, 0] } : { x: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.45 }}
                 disabled={step !== 'shop'}
                 className="souk-stall"
                 style={{ ['--awning' as string]: awning, ['--cloth' as string]: cloth } as React.CSSProperties}
@@ -227,8 +231,8 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
                 <span className="souk-stall-name">{item.nameAr}</span>
                 <motion.span
                   className="souk-goods"
-                  animate={inBasket ? { scale: [1, 1.25, 0.9], opacity: 0.35 } : { scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4 }}
+                  animate={inBasket ? { scale: reduceMotion ? 1 : [1, 1.25, 0.9], opacity: 0.35 } : { scale: 1, opacity: 1 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.4 }}
                 >
                   <SoukItemArt id={item.id} size={64} />
                 </motion.span>
@@ -239,11 +243,11 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
           })}
         </div>
         <div className="souk-basket" aria-label={t('soukBasket')}>
-          <span className="souk-basket-icon" aria-hidden="true">🧺</span>
+          <img src={basket.length ? basketFull : basketEmpty} alt="" className="souk-basket-icon" aria-hidden="true" width={64} height={56} />
           <div className="souk-basket-items">
             <AnimatePresence>
               {basket.map((id) => (
-                <motion.span key={id} initial={{ y: -60, scale: 0.4, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 380, damping: 16 }}>
+                <motion.span key={id} initial={reduceMotion ? false : { y: -60, scale: 0.4, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 380, damping: 16 }}>
                   <SoukItemArt id={id} size={40} />
                 </motion.span>
               ))}
@@ -264,7 +268,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
                 key={`w${index}`}
                 type="button"
                 data-souk-cash={value}
-                whileTap={{ scale: 0.9 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.9 }}
                 disabled={step !== 'pay' || tender.includes(index)}
                 onClick={() => putMoney(index)}
                 className="souk-piece"
@@ -283,7 +287,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
                 <motion.button
                   key={`t${index}`}
                   type="button"
-                  initial={{ y: -50, opacity: 0, rotate: -20 }}
+                  initial={reduceMotion ? false : { y: -50, opacity: 0, rotate: -20 }}
                   animate={{ y: 0, opacity: 1, rotate: 0 }}
                   exit={{ y: -30, opacity: 0 }}
                   onClick={() => takeBack(index)}
@@ -314,7 +318,7 @@ export const SoukLab: React.FC<SoukLabProps> = ({ grade = '1AP', onBack, onRewar
                     type="button"
                     data-souk-change={amount}
                     data-quiz-option={step === 'done' ? (amount === change ? 'correct' : 'muted') : pickedChange === amount ? 'retry' : 'idle'}
-                    whileTap={{ scale: 0.94 }}
+                    whileTap={reduceMotion ? undefined : { scale: 0.94 }}
                     onClick={() => chooseChange(amount)}
                     disabled={step === 'done'}
                     className="souk-change-choice"

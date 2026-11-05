@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useState, useMemo, useRef } from 'react';
 import { ModalCloseButton } from './ui/ModalCloseButton';
 import { motion, AnimatePresence } from 'motion/react';
@@ -430,6 +431,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   const [quizFeedback, setQuizFeedback] = useState<{ isCorrect: boolean; text: string } | null>(null);
 
   // Question Type: 0 = Number, 1 = Monument, 2 = Capital, 3 = Specialty
+  const quizLength = Math.min(10, WILAYAS_LIST.length);
   const questionType = quizIndex % 4;
   const currentQuizTarget = WILAYAS_LIST[quizIndex % WILAYAS_LIST.length];
 
@@ -469,7 +471,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   };
 
   const handleNextQuiz = () => {
-    setQuizIndex((prev) => prev + 1);
+    setQuizIndex((prev) => Math.min(prev + 1, quizLength));
     setSelectedQuizOption(null);
     setIsQuizAnswered(false);
     setQuizFeedback(null);
@@ -1236,7 +1238,8 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
       {/* TAB 4: GRAND QUIZ 58 WILAYAS                             */}
       {/* ======================================================== */}
       {activeTab === 'quiz' && (
-        <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
+        <LabQuizSession complete={quizIndex >= quizLength} score={quizScore} total={quizLength} onRestart={() => { setQuizIndex(0); setQuizScore(0); setQuizStreak(0); setSelectedQuizOption(null); setIsQuizAnswered(false); setQuizFeedback(null); }}>
+<div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
           {/* Header Score & Streak */}
           <div className="flex items-center justify-between pb-4 border-b border-[var(--app-card-border)]">
             <div className="flex items-center gap-2">
@@ -1367,6 +1370,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
             </div>
           )}
         </div>
+</LabQuizSession>
       )}
 
       {/* ======================================================== */}

@@ -1,6 +1,7 @@
+import { FiniteLabQuiz } from '../FiniteLabQuiz';
 import React, { useMemo, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ImmersiveLabShell, QuizBlock } from './ImmersiveLabShell';
+import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
 import { useLabTrace } from '../../utils/labTrace';
@@ -46,8 +47,7 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
   const [done, setDone] = useState(0);
   const [miss, setMiss] = useState(false);
   const [orderPick, setOrderPick] = useState<string[]>([]);
-  const [quiz, setQuiz] = useState(0);
-  const [picked, setPicked] = useState<string | null>(null);
+  const [orderMiss, setOrderMiss] = useState(false);
   const [stars, setStars] = useState(0);
   const trace = useLabTrace('wudu_lab', grade);
 
@@ -87,9 +87,10 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
     if (id !== expected) {
       playSoftMiss();
       trace.miss('order');
-      setOrderPick([]);
+      setOrderMiss(true);
       return;
     }
+    setOrderMiss(false);
     const next = [...orderPick, id];
     setOrderPick(next);
     if (next.length === WUDU_STEPS.length) {
@@ -105,6 +106,7 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
       badge={t('wuduBadge')}
       title={t('wuduTitle')}
       intro={t('wuduIntro')}
+      guideText={tab === 'order' ? (WUDU_STEPS[orderPick.length]?.descAr ?? t('wuduDone')) : current ? current.descAr : t('wuduDone')}
       tabs={[
         { id: 'wash', label: t('wuduTabWash') },
         { id: 'order', label: t('wuduTabOrder') },
@@ -180,6 +182,7 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
           <p className="text-sm font-bold text-[var(--kids-muted)]">
             {orderPick.length}/{WUDU_STEPS.length}
           </p>
+          {orderMiss && <p role="status" className="rounded-2xl bg-amber-50 p-3 font-bold text-slate-800">{t('keepProgressRetry')}</p>}
           <div className="grid gap-2">
             {shuffled.map((step) => (
               <motion.button
@@ -202,24 +205,11 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
       )}
 
       {tab === 'quiz' && (
-        <QuizBlock
-          questionAr={WUDU_QUIZ[quiz].questionAr}
-          optionsAr={WUDU_QUIZ[quiz].optionsAr}
-          correctAr={WUDU_QUIZ[quiz].correctAr}
-          picked={picked}
-          onPick={(option, ok) => {
-            setPicked(option);
-            if (ok) trace.success('quiz');
-            else trace.miss('quiz');
-            if (ok) {
-              reward();
-              window.setTimeout(() => {
-                setQuiz((n) => (n + 1) % WUDU_QUIZ.length);
-                setPicked(null);
-              }, 700);
-            }
-          }}
-        />
+        <FiniteLabQuiz questions={WUDU_QUIZ} onAnswer={(correct, firstCorrect) => {
+          if (correct) trace.success('quiz');
+          else trace.miss('quiz');
+          if (firstCorrect) reward();
+        }} />
       )}
     </ImmersiveLabShell>
     </div>

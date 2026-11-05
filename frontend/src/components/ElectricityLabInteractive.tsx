@@ -21,6 +21,7 @@ import {
   Cpu
 } from 'lucide-react';
 import { CircuitBuilder } from './CircuitBuilder';
+import { ElectricDeviceArt, MATERIAL_ART } from './ElectricDeviceArt';
 import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
@@ -309,7 +310,7 @@ export const ElectricityLabInteractive: React.FC = () => {
   };
 
   return (
-    <div data-lab-instrument className="kids-pole rounded-[28px] p-4 sm:p-6 space-y-6" dir={direction}>
+    <div data-lab-instrument className="electricity-lab kids-pole rounded-[28px] p-4 sm:p-6 space-y-6" dir={direction}>
       {/* Top Title Bar */}
       <div className="flex items-center justify-between flex-wrap gap-4 border-b border-slate-800 pb-4">
         <div className="flex items-center gap-3">
@@ -479,13 +480,14 @@ export const ElectricityLabInteractive: React.FC = () => {
 
             {/* VISUAL SVG CIRCUIT BENCHMARK CANOPY */}
             <div
-              className="rounded-2xl border border-slate-800/80 p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]"
+              className="electric-rendered-bench rounded-2xl border border-slate-800/80 p-4 sm:p-6 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]"
               style={{ backgroundImage: 'linear-gradient(to bottom, #020617, #0f172a, #020617)' }}
             >
               
               {/* Background Voltage Grid Lines */}
               <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
 
+              <ElectricDeviceArt kind={activeLoad} powered={currentStatus.isCurrentFlowing} material={selectedMaterial} />
               {/* Interactive SVG Diagram */}
               <svg className="w-full max-w-lg h-60 sm:h-72 z-10 overflow-visible" viewBox="0 0 500 300">
                 <defs>
@@ -526,7 +528,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                     stroke="#fef08a"
                     strokeWidth="4"
                     strokeDasharray="8 12"
-                    className="animate-[dash_1s_linear_infinite]"
+                    className="opacity-80"
                   />
                 )}
 
@@ -925,7 +927,7 @@ export const ElectricityLabInteractive: React.FC = () => {
                       }`}
                     >
                       <div className="flex items-center gap-2">
-                        <span>{mat.icon}</span>
+                        <img src={MATERIAL_ART[mat.id]} alt="" className="electric-material-thumbnail" aria-hidden="true" />
                         <span>{mat.nameAr}</span>
                       </div>
 
@@ -1047,6 +1049,7 @@ export const ElectricityLabInteractive: React.FC = () => {
             
             {/* Visual Canvas */}
             <div className="bg-slate-950 rounded-2xl p-6 border border-slate-800 flex flex-col items-center justify-center min-h-[260px] relative">
+              <div className="flex w-full justify-center"><ElectricDeviceArt kind="bulb" powered={bulb1Lit} /><ElectricDeviceArt kind="bulb" powered={bulb2Lit} /></div>
               <svg className="w-full h-56" viewBox="0 0 400 240">
                 {/* Wires — left vertical gapped at the switch */}
                 {circuitType === 'series' ? (

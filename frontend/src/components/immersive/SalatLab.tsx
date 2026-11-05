@@ -1,6 +1,8 @@
+import { salatPrayerNarration } from '../../data/immersive/salat';
+import { FiniteLabQuiz } from '../FiniteLabQuiz';
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { ImmersiveLabShell, QuizBlock } from './ImmersiveLabShell';
+import { motion, useReducedMotion } from 'motion/react';
+import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
 import { useLabTrace } from '../../utils/labTrace';
@@ -13,6 +15,16 @@ import {
   type SalatPrayer,
 } from '../../data/immersive/salat';
 
+import takbirArt from '../../assets/labs/salat/takbir.webp';
+import qiyamArt from '../../assets/labs/salat/qiyam.webp';
+import rukuArt from '../../assets/labs/salat/ruku.webp';
+import raiseArt from '../../assets/labs/salat/raise.webp';
+import sujudArt from '../../assets/labs/salat/sujud.webp';
+import jalsaArt from '../../assets/labs/salat/jalsa.webp';
+import sujud2Art from '../../assets/labs/salat/sujud2.webp';
+import './salatLab.css';
+const POSTURE_ART: Record<string, string> = { takbir: takbirArt, qiyam: qiyamArt, ruku: rukuArt, raise: raiseArt, sujud: sujudArt, jalsa: jalsaArt, sujud2: sujud2Art };
+
 interface SalatLabProps {
   /** The child's grade: the notebook keeps the observation in that year's summary. */
   grade?: PrimaryGrade;
@@ -22,13 +34,13 @@ interface SalatLabProps {
 
 export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   const [tab, setTab] = useState('day');
   const [selected, setSelected] = useState<SalatPrayer>(SALAT_PRAYERS[0]);
   const [posture, setPosture] = useState(0);
-  const [quiz, setQuiz] = useState(0);
-  const [picked, setPicked] = useState<string | null>(null);
   const [stars, setStars] = useState(0);
   const trace = useLabTrace('salat_lab', grade);
+  const shownPosture = SALAT_POSTURES[Math.min(posture, SALAT_POSTURES.length - 1)];
 
   const reward = () => {
     playSoftSuccess();
@@ -54,10 +66,12 @@ export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onRew
   };
 
   return (
+    <div className="salat-lab">
     <ImmersiveLabShell
       badge={t('salatBadge')}
       title={t('salatTitle')}
       intro={t('salatIntro')}
+      guideText={tab === 'rakah' ? (posture < SALAT_POSTURES.length ? shownPosture.descAr : t('salatRakahDone')) : tab === 'day' ? salatPrayerNarration(selected) : t('salatIntro')}
       tabs={[
         { id: 'day', label: t('salatTabDay') },
         { id: 'rakah', label: t('salatTabRakah') },
@@ -71,10 +85,11 @@ export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onRew
       {tab === 'day' && (
         <section className="space-y-3">
           <div
-            className="rounded-[28px] border-2 border-[#E7E2D7] p-5 min-h-[160px] text-white"
-            style={{ background: selected.sky }}
+            className="salat-day rounded-[28px] border-2 border-[#E7E2D7] p-5 text-white"
+            data-salat-time={selected.id}
           >
-            <p className="text-3xl" aria-hidden>{selected.icon}</p>
+            <span key={selected.id} className="salat-day-light" style={{ background: selected.sky }} aria-hidden="true" />
+            <span className="salat-orb" aria-hidden="true" />
             <h2 className="text-2xl font-extrabold mt-2 drop-shadow-sm">{selected.nameAr}</h2>
             <p className="text-sm font-bold mt-1 drop-shadow-sm">{selected.timeAr}</p>
             <p className="text-sm font-extrabold mt-3">{t('salatRakahs', { count: selected.rakahs })}</p>
@@ -89,11 +104,11 @@ export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onRew
               <motion.button
                 key={prayer.id}
                 type="button"
-                whileTap={{ scale: 0.95 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                 data-salat-prayer={prayer.id}
                 onClick={() => {
                   setSelected(prayer);
-                  speakArSafe(`${prayer.nameAr}. ${prayer.timeAr}. ${prayer.rakahs} ركعات.`);
+                  speakArSafe(salatPrayerNarration(prayer));
                 }}
                 className={`hit-target rounded-2xl border-2 px-2 text-xs font-extrabold cursor-pointer ${
                   selected.id === prayer.id
@@ -118,16 +133,19 @@ export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onRew
               <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{SALAT_POSTURES[posture].descAr}</p>
             </div>
           )}
-          <div className="grid gap-2">
+          <div className="salat-stage" data-salat-scene={shownPosture.id} aria-hidden="true">
+            <img key={shownPosture.id} src={POSTURE_ART[shownPosture.id]} alt="" className="salat-figure" draggable={false} />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {SALAT_POSTURES.map((step, index) => (
               <motion.button
                 key={step.id}
                 type="button"
-                whileTap={{ scale: 0.95 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                 data-salat-posture={step.id}
                 disabled={index < posture}
                 onClick={() => tapPosture(step.id)}
-                className={`hit-target w-full rounded-2xl border-2 px-4 text-sm font-extrabold cursor-pointer ${
+                className={`hit-target w-full flex items-center gap-2 rounded-2xl border-2 px-3 py-2 text-sm font-extrabold cursor-pointer ${
                   index < posture
                     ? 'bg-[#ECFDF5] border-[#008751] text-[#065F46]'
                     : index === posture
@@ -135,7 +153,8 @@ export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onRew
                       : 'bg-[#FFFBF0] border-[#E7E2D7] text-[var(--kids-ink)]'
                 }`}
               >
-                {step.titleAr}
+                <img src={POSTURE_ART[step.id]} alt="" aria-hidden="true" className="salat-choice-art" loading="lazy" draggable={false} />
+                <span>{step.titleAr}</span>
               </motion.button>
             ))}
           </div>
@@ -143,25 +162,13 @@ export const SalatLab: React.FC<SalatLabProps> = ({ grade = '2AP', onBack, onRew
       )}
 
       {tab === 'quiz' && (
-        <QuizBlock
-          questionAr={SALAT_QUIZ[quiz].questionAr}
-          optionsAr={SALAT_QUIZ[quiz].optionsAr}
-          correctAr={SALAT_QUIZ[quiz].correctAr}
-          picked={picked}
-          onPick={(option, ok) => {
-            setPicked(option);
-            if (ok) trace.success('quiz');
-            else trace.miss('quiz');
-            if (ok) {
-              reward();
-              window.setTimeout(() => {
-                setQuiz((n) => (n + 1) % SALAT_QUIZ.length);
-                setPicked(null);
-              }, 700);
-            }
-          }}
-        />
+        <FiniteLabQuiz questions={SALAT_QUIZ} onAnswer={(correct, firstCorrect) => {
+          if (correct) trace.success('quiz');
+          else trace.miss('quiz');
+          if (firstCorrect) reward();
+        }} />
       )}
     </ImmersiveLabShell>
+    </div>
   );
 };

@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useState, useMemo } from 'react';
 import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
@@ -76,9 +77,10 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
   const [qIdx, setQIdx] = useState<number>(0);
   const [selectedLabel, setSelectedLabel] = useState<string | undefined>(undefined);
 
-  const currentQ = quizTimes[qIdx % quizTimes.length];
+  const [sessionScore, setSessionScore] = useState(0);
+  const currentQ = quizTimes[Math.min(qIdx, quizTimes.length - 1)];
   const options = useMemo(() => {
-    const wrongPool = quizTimes.filter((_, i) => i !== qIdx % quizTimes.length);
+    const wrongPool = quizTimes.filter((_, i) => i !== Math.min(qIdx, quizTimes.length - 1));
     const shuffled = [...wrongPool].sort(() => Math.random() - 0.5).slice(0, 2);
     return [...shuffled, currentQ].sort(() => Math.random() - 0.5);
   }, [qIdx, currentQ, quizTimes]);
@@ -86,11 +88,11 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
   const handleQuizAnswer = (labelAr: string) => {
     if (labQuizIsLocked(selectedLabel, currentQ.labelAr)) return;
     setSelectedLabel(labelAr);
-    if (labelAr === currentQ.labelAr) onReward?.(5, 15);
+    if (labelAr === currentQ.labelAr) { setSessionScore(value => value + 1); onReward?.(5, 15); }
   };
 
   const nextQuiz = () => {
-    setQIdx((prev) => (prev + 1) % quizTimes.length);
+    setQIdx((prev) => Math.min(prev + 1, quizTimes.length));
     setSelectedLabel(undefined);
   };
 
@@ -176,7 +178,8 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
       )}
 
       {activeTab === 'quiz' && (
-        <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
+        <LabQuizSession complete={qIdx >= quizTimes.length} score={sessionScore} total={quizTimes.length} onRestart={() => { setQIdx(0); setSessionScore(0); setSelectedLabel(undefined); }}>
+<div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
           <h2 className="text-sm font-black text-[var(--app-text)]">مَا هُوَ الوَقْتُ المَعْرُوضُ عَلَى السَّاعَةِ؟</h2>
           <AnalogClock hour={currentQ.hour} minute={currentQ.minute} />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 max-w-lg mx-auto">
@@ -210,6 +213,7 @@ export const ClockTrainerLab: React.FC<ClockTrainerLabProps> = ({ grade = '2AP',
             </button>
           )}
         </div>
+</LabQuizSession>
       )}
     </div>
   );

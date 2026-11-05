@@ -137,3 +137,18 @@
 .souk-change-choice[data-quiz-option='correct'] { background: linear-gradient(#5fe08a, #1e9b4c); box-shadow: 0 5px 0 #11693a, 0 0 0 4px rgba(255, 210, 63, 0.7); }
 .souk-change-choice[data-quiz-option='muted'] { opacity: 0.45; }
 .souk-win { margin: 10px 0 0; font-weight: 900; color: #065f46; }
+
+/* Rendered scenery and goods; prices and dinars remain exact app-rendered text. */
+.souk-street { background:#e7d3b5 url('../../assets/labs/souk/backdrop-landscape.webp') center/cover; }
+.souk-sun,.souk-awning { display:none; }
+.souk-stall { min-height:250px;padding:105px 8px 12px;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:100% 100%;box-shadow:none;overflow:visible; }
+.souk-stall[data-souk-stall='veg'] { background-image:url('../../assets/labs/souk/stall-produce.webp'); }
+.souk-stall[data-souk-stall='bread'] { background-image:url('../../assets/labs/souk/stall-bakery.webp'); }
+.souk-stall[data-souk-stall='milk'] { background-image:url('../../assets/labs/souk/stall-grocery.webp'); }
+.souk-stall[data-souk-stall='dates'] { background-image:url('../../assets/labs/souk/stall-spices.webp'); }
+.souk-stall-name { position:absolute;top:12px;inset-inline:6px;border-radius:10px;padding:4px;background:#fffbf0;color:#172433; }
+.souk-seller { border-radius:8px;background:#fffbf0;padding:2px 5px; }
+.souk-basket-icon { width:64px;height:56px;object-fit:contain; }
+.souk-goods img { object-fit:contain; }
+@media(max-width:639px) { .souk-street { background-image:url('../../assets/labs/souk/backdrop-portrait.webp'); }.souk-stall { min-height:240px; } }
+@media(prefers-reduced-motion:reduce) { .souk-goods { transition:none; } }

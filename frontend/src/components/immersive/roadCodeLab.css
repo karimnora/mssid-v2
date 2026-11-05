@@ -1,0 +1,12 @@
+.road-art-scene { position:relative;isolation:isolate;aspect-ratio:16/9;min-height:220px;overflow:hidden;background:#c7e5f0 url('../../assets/labs/road/backdrop-landscape.webp') center/cover; }
+.road-child { position:absolute;left:22%;bottom:2%;width:18%;height:48%;object-fit:contain; }
+.road-light { position:absolute;right:12%;bottom:12%;height:65%;width:13%; }
+.road-light img { position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .3s; }
+.road-light img.is-on { opacity:1; }
+.road-bus { position:absolute;right:6%;bottom:22%;width:42%;height:32%;object-fit:contain; }
+.road-guard { position:absolute;left:48%;bottom:4%;height:45%;width:18%;object-fit:contain; }
+.road-cross-child { position:absolute;left:45%;bottom:2%;width:19%;height:44%; }
+.road-cross-child img { width:100%;height:100%;object-fit:contain; }
+/* Physical left/right and traffic direction never mirror with UI language. */
+@media(max-width:639px) { .road-art-scene { aspect-ratio:4/3;background-image:url('../../assets/labs/road/backdrop-portrait.webp'); }.road-light { right:8%; } }
+@media(prefers-reduced-motion:reduce) { .road-light img { transition:none; } }

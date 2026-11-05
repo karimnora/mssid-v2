@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useEffect, useState } from 'react';
 import { speakText } from '../utils/speech';
 import { VoiceEchoBar } from './VoiceEchoBar';
@@ -518,26 +519,29 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
                 </span>
               </div>
 
-              <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+              <LabQuizSession complete={currentQuizIdx >= QUIZ_QUESTIONS.length} score={quizScore} total={QUIZ_QUESTIONS.length * 10} onRestart={() => { setCurrentQuizIdx(0); setQuizScore(0); setUserAnswer(null); }}>
+<div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
                 <p className="text-xs text-slate-300 font-bold">
                   Question {currentQuizIdx + 1} / {QUIZ_QUESTIONS.length}: Choose the correct conjugated verb:
                 </p>
 
                 <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-sans text-sm font-black text-indigo-300 dir-ltr text-left">
-                  {QUIZ_QUESTIONS[currentQuizIdx].sentenceEn}
+                  {QUIZ_QUESTIONS[Math.min(currentQuizIdx, QUIZ_QUESTIONS.length - 1)].sentenceEn}
                   <span className="text-xs text-slate-300 block mt-1 font-mono">
-                    [{QUIZ_QUESTIONS[currentQuizIdx].verbName}]
+                    [{QUIZ_QUESTIONS[Math.min(currentQuizIdx, QUIZ_QUESTIONS.length - 1)].verbName}]
                   </span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 dir-ltr">
-                  {QUIZ_QUESTIONS[currentQuizIdx].options.map((opt) => {
+                  {QUIZ_QUESTIONS[Math.min(currentQuizIdx, QUIZ_QUESTIONS.length - 1)].options.map((opt) => {
                     const isSelected = userAnswer === opt;
-                    const isCorrect = opt === QUIZ_QUESTIONS[currentQuizIdx].correct;
+                    const isCorrect = opt === QUIZ_QUESTIONS[Math.min(currentQuizIdx, QUIZ_QUESTIONS.length - 1)].correct;
                     return (
                       <button
                         key={opt}
+                        disabled={userAnswer !== null}
                         onClick={() => {
+                          if (userAnswer !== null) return;
                           setUserAnswer(opt);
                           if (isCorrect) {
                             setQuizScore((s) => s + 10);
@@ -560,11 +564,11 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
 
                 {userAnswer !== null && (
                   <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs space-y-2">
-                    <p className="text-slate-200 font-bold font-sans">{QUIZ_QUESTIONS[currentQuizIdx].explanation}</p>
+                    <p className="text-slate-200 font-bold font-sans">{QUIZ_QUESTIONS[Math.min(currentQuizIdx, QUIZ_QUESTIONS.length - 1)].explanation}</p>
                     <button
                       onClick={() => {
                         setUserAnswer(null);
-                        setCurrentQuizIdx((prev) => (prev + 1) % QUIZ_QUESTIONS.length);
+                        setCurrentQuizIdx((prev) => Math.min(prev + 1, QUIZ_QUESTIONS.length));
                       }}
                       className="px-4 py-1.5 bg-amber-500 text-slate-950 font-black rounded-lg text-xs cursor-pointer"
                     >
@@ -573,6 +577,7 @@ export const EnglishLanguageLab: React.FC<EnglishLabProps> = ({ initialTab = 'co
                   </div>
                 )}
               </div>
+</LabQuizSession>
             </div>
           </div>
         </div>

@@ -108,4 +108,9 @@ export const labsImmersive: typeof arLabsImmersive = {
   cahierPrint: 'Imprimer',
   cahierPrintHint: 'Ouvre l’impression du navigateur. Ce n’est pas un export PDF natif Android.',
   cahierEmpty: 'Les parcours ci-dessus couvrent ce niveau. Les fiches individuelles de compétences seront ajoutées progressivement.',
+  quizProgress: 'Question {current} sur {total}',
+  quizFinished: 'Quiz terminé',
+  quizResult: 'Ton résultat : {score} / {total}',
+  quizRestart: 'Recommencer le quiz',
+  keepProgressRetry: 'Tes bonnes étapes sont conservées. Réessaie la prochaine étape tranquillement.',
 };

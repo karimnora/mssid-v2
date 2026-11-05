@@ -1761,6 +1761,830 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/seasons-connect-success.mp3",
       "durationMs": 2931
     },
+    "أَنْوِي التَّوَضُّؤَ بِقَلْبِي وَأَقُولُ «بِسْمِ اللهِ».": {
+      "src": "/sounds/preschool/ar/openai-v2-1111b5a0a72a793b.mp3",
+      "durationMs": 4500
+    },
+    "أَغْسِلُ كَفَّيَّ إِلَى الرُّسْغَيْنِ ثَلَاثَ مَرَّاتٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-5f1f30704d757b39.mp3",
+      "durationMs": 5450
+    },
+    "أُدْخِلُ المَاءَ إِلَى فَمِي وَأَنْفِي ثُمَّ أُخْرِجُهُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-48dfe162da278643.mp3",
+      "durationMs": 5900
+    },
+    "أَغْسِلُ وَجْهِي كَامِلاً مِنْ مَنْبَتِ الشَّعْرِ إِلَى الذَّقَنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-6d81379c64943612.mp3",
+      "durationMs": 9700
+    },
+    "أَغْسِلُ اليَدَيْنِ إِلَى المِرْفَقَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-b999a0dabca64268.mp3",
+      "durationMs": 3350
+    },
+    "أَمْسَحُ رَأْسِي بِيَدَيَّ المُبَلَّلَتَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-4ce3a384b65700e6.mp3",
+      "durationMs": 4100
+    },
+    "أَغْسِلُ قَدَمَيَّ إِلَى الكَعْبَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-f4251dd5d6922ee2.mp3",
+      "durationMs": 3450
+    },
+    "أَقِفُ مُسْتَقْبِلَ القِبْلَةِ وَأَقُولُ «اللهُ أَكْبَرُ».": {
+      "src": "/sounds/preschool/ar/openai-v2-b83214f88f8fd5c7.mp3",
+      "durationMs": 5650
+    },
+    "أَقْرَأُ سُورَةَ الفَاتِحَةِ وَأَنَا وَاقِفٌ.": {
+      "src": "/sounds/preschool/ar/openai-v2-1c445f31996b64af.mp3",
+      "durationMs": 3900
+    },
+    "أَحْنِي ظَهْرِي وَأَضَعُ يَدَيَّ عَلَى رُكْبَتَيَّ.": {
+      "src": "/sounds/preschool/ar/openai-v2-93033027adf126e1.mp3",
+      "durationMs": 4250
+    },
+    "أَعُودُ وَاقِفاً وَأَقُولُ «سَمِعَ اللهُ لِمَنْ حَمِدَهُ».": {
+      "src": "/sounds/preschool/ar/openai-v2-8dc18ee7ebe330b1.mp3",
+      "durationMs": 6250
+    },
+    "أَضَعُ جَبْهَتِي وَأَنْفِي وَكَفَّيَّ عَلَى الأَرْضِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-76c4a6f6a7462d91.mp3",
+      "durationMs": 4100
+    },
+    "أَجْلِسُ قَلِيلاً بَيْنَ السَّجْدَتَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-fdbd4415d0a674df.mp3",
+      "durationMs": 3900
+    },
+    "أَسْجُدُ مَرَّةً ثَانِيَةً لِتَتِمَّ الرَّكْعَةُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-d73b250ed936138b.mp3",
+      "durationMs": 3950
+    },
+    "قَبْلَ شُرُوقِ الشَّمْسِ": {
+      "src": "/sounds/preschool/ar/openai-v2-4e9081d7ac656c99.mp3",
+      "durationMs": 2500
+    },
+    "بَعْدَ زَوَالِ الشَّمْسِ": {
+      "src": "/sounds/preschool/ar/openai-v2-bb4a0c9e3e0c2e0a.mp3",
+      "durationMs": 2500
+    },
+    "فِي العَصْرِ قَبْلَ الغُرُوبِ": {
+      "src": "/sounds/preschool/ar/openai-v2-8b2ce08585cc9462.mp3",
+      "durationMs": 2850
+    },
+    "بَعْدَ غُرُوبِ الشَّمْسِ مُبَاشَرَةً": {
+      "src": "/sounds/preschool/ar/openai-v2-3a0c18ebeec7975c.mp3",
+      "durationMs": 3150
+    },
+    "بَعْدَ دُخُولِ اللَّيْلِ": {
+      "src": "/sounds/preschool/ar/openai-v2-b72d2553072f2623.mp3",
+      "durationMs": 2400
+    },
+    "اِخْتَرْ مُشْتَرَيَاتِكَ، ثُمَّ اُنْظُرْ إِلَى الثَّمَنِ وَالنُّقُودِ الَّتِي تَحْتَاجُهَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-6badb9c9f8645ebd.mp3",
+      "durationMs": 6450
+    },
+    "اِضْغَطْ عَلَى وِلَايَةٍ فِي الخَرِيطَةِ لِنَكْتَشِفَهَا مَعاً.": {
+      "src": "/sounds/preschool/ar/openai-v2-b2d93c2e65f53ab8.mp3",
+      "durationMs": 5450
+    },
+    "اِخْتَرْ حِقْبَةً تَارِيخِيَّةً، ثُمَّ اِكْتَشِفْ مَعَالِمَهَا وَشَخْصِيَّاتِهَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-7481442f1f928fde.mp3",
+      "durationMs": 6100
+    },
+    "اِخْتَرْ حَرْفاً وَاسْتَمِعْ إِلَيْهِ، ثُمَّ جَرِّبِ التَّمْرِينَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-0f3f7f422b935e19.mp3",
+      "durationMs": 5300
+    },
+    "اِخْتَرْ نَشَاطاً وَاسْتَمِعْ إِلَى التَّعْلِيمَةِ قَبْلَ البِدَايَةِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-0d13fff3ed397871.mp3",
+      "durationMs": 4550
+    },
+    "اِخْتَرْ حَرْفاً أَوْ شَكْلاً، ثُمَّ تَتَبَّعِ المَسَارَ بِهُدُوءٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-4f7cb205a301fcce.mp3",
+      "durationMs": 6600
+    },
+    "اِخْتَرْ تَجْرِبَةً، غَيِّرْ شَيْئاً وَاحِداً، ثُمَّ لَاحِظْ مَا يَحْدُثُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-e8e06fd785cdc262.mp3",
+      "durationMs": 7450
+    },
+    "اِخْتَرْ فِعْلاً، ثُمَّ لَاحِظْ كَيْفَ يَتَغَيَّرُ مَعَ الضَّمِيرِ وَالزَّمَنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-c7b1a891de687048.mp3",
+      "durationMs": 6100
+    },
+    "اِخْتَرْ نَشَاطاً، وَاسْتَمِعْ إِلَى المِثَالِ قَبْلَ أَنْ تُجِيبَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-68462a46737db009.mp3",
+      "durationMs": 5500
+    },
+    "حَرِّكْ خَرَزَاتِ المِعْدَادِ، وَرَاقِبِ العَدَدَ الَّذِي تُمَثِّلُهُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-da0b3364bff78ca1.mp3",
+      "durationMs": 4700
+    },
+    "غَيِّرْ وَضْعَ القَاطِعَةِ، ثُمَّ رَاقِبْ هَلْ يَمُرُّ التَّيَّارُ وَهَلْ يَعْمَلُ العُنْصُرُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-8ce5f785150a396e.mp3",
+      "durationMs": 6600
+    },
+    "اِخْتَرْ شَكْلاً، ثُمَّ لَاحِظْ أَضْلَاعَهُ وَرُؤُوسَهُ وَقِيَاسَاتِهِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-099dfcf2d5760edf.mp3",
+      "durationMs": 5650
+    },
+    "اِخْتَرِ الوَحْدَةَ وَأَدْخِلِ القِيمَةَ، ثُمَّ قَارِنِ النَّتِيجَةَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-3f4d156fa63d1f64.mp3",
+      "durationMs": 5400
+    },
+    "أَدْخِلِ العَمَلِيَّةَ وَتَأَمَّلْ خُطُوَاتِ حَلِّهَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-2a25e0614e4b4c58.mp3",
+      "durationMs": 4300
+    },
+    "اِخْتَرْ جَدْوَلَ الضَّرْبِ، ثُمَّ جَرِّبْ عَمَلِيَّةً وَاحِدَةً.": {
+      "src": "/sounds/preschool/ar/openai-v2-243d29581212bca4.mp3",
+      "durationMs": 5200
+    },
+    "اِخْتَرْ عَمَلِيَّةً، وَاتْبَعِ الخُطُوَاتِ وَاحِدَةً بَعْدَ أُخْرَى.": {
+      "src": "/sounds/preschool/ar/openai-v2-5ccf128ea9fe0c97.mp3",
+      "durationMs": 6300
+    },
+    "اِخْتَرْ نَشَاطاً، لَاحِظِ الصُّوَرَ، ثُمَّ جَرِّبْ بِنَفْسِكَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-82409d3794c00a1f.mp3",
+      "durationMs": 5300
+    },
+    "اِخْتَرْ مَشْرُوعاً وَاسْتَمِعْ إِلَى الكَلِمَاتِ قَبْلَ التَّمْرِينِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-3f9c872f49b781be.mp3",
+      "durationMs": 4850
+    },
+    "اسْتَمِعْ إِلَى الحِوَارِ، ثُمَّ أَعِدِ الجُمْلَةَ عَلَى مَهْلِكَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-43945711f2932c79.mp3",
+      "durationMs": 5000
+    },
+    "اِخْتَرْ جُزْءاً مِنَ الجِسْمِ لِنَكْتَشِفَ اسْمَهُ وَوَظِيفَتَهُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-25b23a09118d4946.mp3",
+      "durationMs": 4950
+    },
+    "اِخْتَرِ الظَّاهِرَةَ، ثُمَّ رَاقِبْ تَغَيُّرَهَا خُطْوَةً بِخُطْوَةٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-9f4d4601c4b2b1a8.mp3",
+      "durationMs": 6750
+    },
+    "قَارِنْ بَيْنَ الأَجْزَاءِ المُتَسَاوِيَةِ، ثُمَّ جَرِّبِ الكَسْرَ المَطْلُوبَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-e336b5b163509f90.mp3",
+      "durationMs": 6300
+    },
+    "اِخْتَرْ مُرَبَّعَاتِ الشَّبَكَةِ، ثُمَّ قَارِنِ المِسَاحَةَ وَالمُحِيطَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-6a9618cb214a29de.mp3",
+      "durationMs": 6150
+    },
+    "رَاقِبْ عَقْرَبَيِ السَّاعَةِ، ثُمَّ جَرِّبْ قِرَاءَةَ الوَقْتِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-5d392bd26bd2c7ec.mp3",
+      "durationMs": 5700
+    },
+    "اسْتَمِعْ إِلَى المَقْطَعِ، ثُمَّ رَكِّبِ الكَلِمَةَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-a7be375989de8d58.mp3",
+      "durationMs": 4650
+    },
+    "اِقْرَأْ بِهُدُوءٍ أَوَّلاً؛ الفَهْمُ أَهَمُّ مِنَ السُّرْعَةِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-c02c8214409a00cb.mp3",
+      "durationMs": 4850
+    },
+    "لَاحِظِ الخَرِيطَةَ وَاخْتَرْ عُنْصُراً لِنَكْتَشِفَ التَّضَارِيسَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-fc309a533ef7ec68.mp3",
+      "durationMs": 4800
+    },
+    "اِخْتَرِ المَرْكَبَتَيْنِ، ثُمَّ قَارِنْ حَرَكَتَهُمَا وَالمَسَافَةَ الَّتِي تَقْطَعُهَا كُلُّ وَاحِدَةٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-7c4f5612ed66896a.mp3",
+      "durationMs": 7800
+    },
+    "اِخْتَرِ السُّورَةَ، وَاسْتَمِعْ إِلَى التِّلَاوَةِ، ثُمَّ رَدِّدْ عَلَى مَهْلِكَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-dec351f4b311b330.mp3",
+      "durationMs": 5800
+    },
+    "مَاذَا أَقُولُ قَبْلَ أَنْ أَبْدَأَ الوُضُوءَ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-a67f1a86273d28e3.mp3",
+      "durationMs": 4200
+    },
+    "مَا آخِرُ عُضْوٍ نَغْسِلُهُ فِي الوُضُوءِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-36a7d8c2240935a3.mp3",
+      "durationMs": 3800
+    },
+    "يَنْتَهِي تَرْتِيبُ الخُطُوَاتِ فِي هَذَا الدَّرْسِ بِغَسْلِ القَدَمَيْنِ إِلَى الكَعْبَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-98370fff6e94104c.mp3",
+      "durationMs": 7200
+    },
+    "لِمَاذَا نَتَوَضَّأُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-4ed28289dff6d7b7.mp3",
+      "durationMs": 1950
+    },
+    "الوُضُوءُ طَهَارَةٌ نَسْتَعِدُّ بِهَا لِلصَّلَاةِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-fe9ecee40b1772a4.mp3",
+      "durationMs": 5300
+    },
+    "أَيْنَ تَكُونُ نِيَّةُ الوُضُوءِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-f3d710d635b943c0.mp3",
+      "durationMs": 2650
+    },
+    "أَنْوِي التَّوَضُّؤَ بِقَلْبِي، كَمَا تَعَلَّمْنَا فِي الخُطْوَةِ الأُولَى.": {
+      "src": "/sounds/preschool/ar/openai-v2-579036540f0e94e1.mp3",
+      "durationMs": 6250
+    },
+    "إِلَى أَيْنَ نَغْسِلُ الكَفَّيْنِ فِي البِدَايَةِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-34d38634eb7bcda9.mp3",
+      "durationMs": 4400
+    },
+    "غَسْلُ الكَفَّيْنِ فِي البِدَايَةِ يَكُونُ إِلَى الرُّسْغَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-cbf7a3b1efa5a5eb.mp3",
+      "durationMs": 4900
+    },
+    "كَمْ مَرَّةً نَغْسِلُ الكَفَّيْنِ فِي هَذَا الدَّرْسِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-e6e82ac419ffbc22.mp3",
+      "durationMs": 4400
+    },
+    "تَقُولُ تَعْلِيمَةُ الخُطْوَةِ: أَغْسِلُ كَفَّيَّ إِلَى الرُّسْغَيْنِ ثَلَاثَ مَرَّاتٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-19a3c668c1e1b475.mp3",
+      "durationMs": 7000
+    },
+    "مَاذَا نُنَظِّفُ بِالمَضْمَضَةِ وَالاسْتِنْشَاقِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-e514e4c72cc5597f.mp3",
+      "durationMs": 4400
+    },
+    "كَيْفَ نَغْسِلُ الوَجْهَ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-dde1fb70be472e34.mp3",
+      "durationMs": 4000
+    },
+    "إِلَى أَيْنَ نَغْسِلُ الذِّرَاعَيْنِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-f4ddf820ae6e055f.mp3",
+      "durationMs": 3400
+    },
+    "مَاذَا نَفْعَلُ عِنْدَ مَسْحِ الرَّأْسِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-139e96ff2249df4c.mp3",
+      "durationMs": 4750
+    },
+    "مَسْحُ الرَّأْسِ يَكُونُ بِاليَدَيْنِ المُبَلَّلَتَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-dfe8ba604fadfc40.mp3",
+      "durationMs": 4150
+    },
+    "مَا الخُطْوَةُ الَّتِي تَأْتِي بَعْدَ غَسْلِ الذِّرَاعَيْنِ فِي هَذَا الدَّرْسِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-b2098030e6525a22.mp3",
+      "durationMs": 5400
+    },
+    "نَتَّبِعُ التَّرْتِيبَ: غَسْلُ الذِّرَاعَيْنِ، ثُمَّ مَسْحُ الرَّأْسِ، ثُمَّ غَسْلُ القَدَمَيْنِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-f1af8353435ec676.mp3",
+      "durationMs": 7800
+    },
+    "إِلَى أَيْنَ نَغْسِلُ القَدَمَيْنِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-b8f17e2bb611a9f6.mp3",
+      "durationMs": 3050
+    },
+    "أَغْسِلُ قَدَمَيَّ إِلَى الكَعْبَيْنِ، كَمَا فِي آخِرِ خُطْوَةٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-4ce8513196261784.mp3",
+      "durationMs": 5150
+    },
+    "كَمْ رَكْعَةً فِي صَلَاةِ المَغْرِبِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-23c7fdac27111e88.mp3",
+      "durationMs": 2700
+    },
+    "صَلَاةُ المَغْرِبِ ثَلَاثُ رَكَعَاتٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-d5dead2110bc14de.mp3",
+      "durationMs": 3350
+    },
+    "أَيُّ صَلَاةٍ تُؤَدَّى قَبْلَ شُرُوقِ الشَّمْسِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-9d518c43c3b49eca.mp3",
+      "durationMs": 4300
+    },
+    "وَقْتُ الفَجْرِ قَبْلَ شُرُوقِ الشَّمْسِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-4648ffabb72d3243.mp3",
+      "durationMs": 3250
+    },
+    "كَمْ رَكْعَةً فِي صَلَاةِ الفَجْرِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-29c506a7f3f3e3d0.mp3",
+      "durationMs": 3150
+    },
+    "صَلَاةُ الفَجْرِ رَكْعَتَانِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-1985278d71a7e70c.mp3",
+      "durationMs": 2750
+    },
+    "كَمْ عَدَدُ الصَّلَوَاتِ المَفْرُوضَةِ فِي اليَوْمِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-ee09b9a3f2a16da6.mp3",
+      "durationMs": 3900
+    },
+    "الفَجْرُ، الظُّهْرُ، العَصْرُ، المَغْرِبُ، العِشَاءُ: خَمْسُ صَلَوَاتٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-9338dc87f1ec3b30.mp3",
+      "durationMs": 6550
+    },
+    "كَمْ رَكْعَةً فِي صَلَاةِ الظُّهْرِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-f54a668911795b81.mp3",
+      "durationMs": 5050
+    },
+    "صَلَاةُ الظُّهْرِ أَرْبَعُ رَكَعَاتٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-b3c26e096a00302f.mp3",
+      "durationMs": 3850
+    },
+    "كَمْ رَكْعَةً فِي صَلَاةِ العَصْرِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-395887c19cb8007e.mp3",
+      "durationMs": 3650
+    },
+    "صَلَاةُ العَصْرِ أَرْبَعُ رَكَعَاتٍ وَوَقْتُهَا قَبْلَ الغُرُوبِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-3bb281235b6e9a62.mp3",
+      "durationMs": 6300
+    },
+    "كَمْ رَكْعَةً فِي صَلَاةِ العِشَاءِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-195b7ab2fa296da9.mp3",
+      "durationMs": 3250
+    },
+    "صَلَاةُ العِشَاءِ أَرْبَعُ رَكَعَاتٍ بَعْدَ دُخُولِ اللَّيْلِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-84cc4afddfa84019.mp3",
+      "durationMs": 5000
+    },
+    "مَاذَا نَقْرَأُ أَثْنَاءَ القِيَامِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-eee6d59a4dc63fc5.mp3",
+      "durationMs": 2700
+    },
+    "أَيْنَ نَضَعُ اليَدَيْنِ فِي الرُّكُوعِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-ee06b11b54a62e2d.mp3",
+      "durationMs": 3800
+    },
+    "مَاذَا يَلْمَسُ الأَرْضَ فِي السُّجُودِ كَمَا تَعَلَّمْنَا؟": {
+      "src": "/sounds/preschool/ar/openai-v2-2604034845a48f0c.mp3",
+      "durationMs": 4400
+    },
+    "مَاذَا نَفْعَلُ بَيْنَ السَّجْدَتَيْنِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-b670065549a1285f.mp3",
+      "durationMs": 3050
+    },
+    "نَجْلِسُ قَلِيلاً بَيْنَ السَّجْدَتَيْنِ، ثُمَّ نَسْجُدُ مَرَّةً ثَانِيَةً.": {
+      "src": "/sounds/preschool/ar/openai-v2-de661d6fa6c2451b.mp3",
+      "durationMs": 7300
+    },
+    "مَاذَا يَأْتِي بَعْدَ الجُلُوسِ بَيْنَ السَّجْدَتَيْنِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-7a0d77556cc8dd91.mp3",
+      "durationMs": 3850
+    },
+    "اِلْمَسْ ثَلَاثَ خَانَاتٍ لِتَزْرَعَ ثَلَاثَ بَذَرَاتٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-d792d1f445017797.mp3",
+      "durationMs": 4800
+    },
+    "لِدِيدُو ثَلَاثُ بَذَرَاتٍ. أَضَافَ بَذْرَةً. كَمْ بَذْرَةً أَصْبَحَتْ لَدَيْهِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-1ddb8a9457b64385.mp3",
+      "durationMs": 8350
+    },
+    "ضَعْ قِطْعَةَ مَاءٍ وَاحِدَةً فِي كُلِّ أَصِيصٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-7e7dbae1ad66488b.mp3",
+      "durationMs": 5100
+    },
+    "مَاذَا يَرَى دِيدُو بَعْدَ أَيَّامٍ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-221af47f98383b3e.mp3",
+      "durationMs": 3200
+    },
+    "يَزْرَعُ دِيدُو بَذْرَةً وَيَسْقِيهَا. بَعْدَ أَيَّامٍ، تَظْهَرُ نَبْتَةٌ صَغِيرَةٌ.": {
+      "src": "/sounds/preschool/ar/openai-v2-0065e2a6a9790415.mp3",
+      "durationMs": 7800
+    },
+    "وزّع 3 حبات طماطم بالتساوي بين 3 سلال.": {
+      "src": "/sounds/preschool/ar/openai-v2-5519d43772db1721.mp3",
+      "durationMs": 5350
+    },
+    "احكِ لشخص بالغ كيف ساعدت ديدو. ثم جرّب بأشياء حقيقية.": {
+      "src": "/sounds/preschool/ar/openai-v2-1fbdbf647d6927e0.mp3",
+      "durationMs": 7000
+    },
+    "حَضِّرْ سِتَّ خَانَاتٍ فِي حَدِيقَةِ دِيدُو.": {
+      "src": "/sounds/preschool/ar/openai-v2-c2547215a84a1a01.mp3",
+      "durationMs": 3650
+    },
+    "نحتاج إلى ست بذرات. في كل كيس ثلاث بذرات. كم كيساً نحتاج؟": {
+      "src": "/sounds/preschool/ar/openai-v2-d0ecee956a593a5b.mp3",
+      "durationMs": 6400
+    },
+    "ضَعْ قِطْعَتَيْ مَاءٍ فِي كُلِّ أَصِيصٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-9294360296e69ff5.mp3",
+      "durationMs": 3750
+    },
+    "مَنْ يُحْضِرُ الْمَاءَ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-efb7074805616232.mp3",
+      "durationMs": 2650
+    },
+    "تَزْرَعُ لِينَا الْبُذُورَ. يُحْضِرُ سَامِي الْمَاءَ. يَسْقِيَانِ الْأَصَائِصَ مَعاً.": {
+      "src": "/sounds/preschool/ar/openai-v2-f3e41d63453c0f3e.mp3",
+      "durationMs": 7050
+    },
+    "وزّع 6 حبات طماطم بالتساوي بين 2 سلال.": {
+      "src": "/sounds/preschool/ar/openai-v2-294e97a656420530.mp3",
+      "durationMs": 5200
+    },
+    "ازرع أربع بذرات في كل صف من الصفوف الثلاثة.": {
+      "src": "/sounds/preschool/ar/openai-v2-8217957fe5ecd114.mp3",
+      "durationMs": 5550
+    },
+    "في كل كيس أربع بذرات. كم كيساً نحتاج للحصول على اثنتي عشرة بذرة؟": {
+      "src": "/sounds/preschool/ar/openai-v2-1742689be5d5b599.mp3",
+      "durationMs": 7550
+    },
+    "ضَعْ ثَلَاثَ قِطَعِ مَاءٍ فِي كُلِّ أَصِيصٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-b2db7cf809ec193b.mp3",
+      "durationMs": 4800
+    },
+    "لِمَاذَا تَضَعُ لِينَا الْبِطَاقَاتِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-22cea804ef0376be.mp3",
+      "durationMs": 3100
+    },
+    "زَرَعَتْ لِينَا الْعَدَسَ وَالْمَعْدَنُوسَ فِي أَصَائِصَ. وَضَعَتْ بِطَاقَةً بِاسْمِ كُلِّ نَبْتَةٍ. بَعْدَ ذَلِكَ وَجَدَتْ أَصِيصَ الْمَعْدَنُوسِ بِسُهُولَةٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-acaa75e623e1f3de.mp3",
+      "durationMs": 14050
+    },
+    "وزّع 12 حبات طماطم بالتساوي بين 3 سلال.": {
+      "src": "/sounds/preschool/ar/openai-v2-849775769dda4e49.mp3",
+      "durationMs": 5650
+    },
+    "كوّن حوضاً مستطيلاً من 12 خانة متصلة بلا فراغات. كل خانة تمثل وحدة مساحة.": {
+      "src": "/sounds/preschool/ar/openai-v2-1ad2577d678ffb59.mp3",
+      "durationMs": 9850
+    },
+    "ثمن كل كيس 25 دج. ما ثمن ثلاثة أكياس؟ الأسعار افتراضية للعبة.": {
+      "src": "/sounds/preschool/ar/openai-v2-892a2c31e77b3790.mp3",
+      "durationMs": 8350
+    },
+    "تمثل كل جرعة 250 mL. حضّر 500 mL لكل أصيص. هذه كميات افتراضية للحساب.": {
+      "src": "/sounds/preschool/ar/openai-v2-601c434c5c0c6b5d.mp3",
+      "durationMs": 9750
+    },
+    "مَا الْعَامِلُ الَّذِي يُغَيِّرُهُ سَامِي؟": {
+      "src": "/sounds/preschool/ar/openai-v2-a902357cfc30e694.mp3",
+      "durationMs": 4550
+    },
+    "يُرَاقِبُ سَامِي أَصِيصَيْ عَدَسٍ تَحْتَ الضَّوْءِ نَفْسِهِ وَبِالتُّرْبَةِ نَفْسِهَا. كُلَّ يَوْمٍ يُعْطِي الأَصِيصَ الثَّانِي مَاءً أَقَلَّ وَيُسَجِّلُ مُلَاحَظَاتِهِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-36323d3a479abcb1.mp3",
+      "durationMs": 12900
+    },
+    "وزّع 18 حبات طماطم بالتساوي بين 3 سلال.": {
+      "src": "/sounds/preschool/ar/openai-v2-9de3126110f86229.mp3",
+      "durationMs": 5350
+    },
+    "خصّص نصف الخانات الاثنتي عشرة المتساوية لبذور ديدو.": {
+      "src": "/sounds/preschool/ar/openai-v2-c87b38709f5f795f.mp3",
+      "durationMs": 5500
+    },
+    "يشتري ديدو ثلاثة أكياس بثمن 40 دج للكيس ويدفع 200 دج. كم يسترجع؟ الأسعار افتراضية.": {
+      "src": "/sounds/preschool/ar/openai-v2-aa3f36e2df127927.mp3",
+      "durationMs": 12450
+    },
+    "مَاذَا نَفْعَلُ قَبْلَ اسْتِنْتَاجِ فَرْقٍ فِي النُّمُوِّ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-5c778782d729f279.mp3",
+      "durationMs": 4100
+    },
+    "تَزْرَعُ مَجْمُوعَتَانِ النَّوْعَ نَفْسَهُ فِي أَصَائِصَ مُتَمَاثِلَةٍ وَتَحْتَ الضَّوْءِ نَفْسِهِ. تَتَغَيَّرُ كَمِّيَّةُ الْمَاءِ فَقَطْ. فِي الْيَوْمِ الأَوَّلِ لَا يَظْهَرُ فَرْقٌ فِي النُّمُوِّ، فَيُوَاصِلُ التَّلَامِيذُ الْمُلَاحَظَةَ أَيَّاماً.": {
+      "src": "/sounds/preschool/ar/openai-v2-a63b4b1b74a0e886.mp3",
+      "durationMs": 19350
+    },
+    "من أصل 12 حبة طماطم، أعطِ النصف للمدرسة والربع للبيت والربع للأصدقاء.": {
+      "src": "/sounds/preschool/ar/openai-v2-fc3553e34e5106bb.mp3",
+      "durationMs": 7800
+    },
+    "خصّص 3/4 من هذا الحوض ذي 20 خانة متساوية للخضروات.": {
+      "src": "/sounds/preschool/ar/openai-v2-96e53eaa162cf5db.mp3",
+      "durationMs": 6150
+    },
+    "تشغل الخضروات 15 m². تكلفة البذور 12 دج لكل m². ما التكلفة الإجمالية؟ الأسعار افتراضية.": {
+      "src": "/sounds/preschool/ar/openai-v2-e8386fccf170747c.mp3",
+      "durationMs": 11700
+    },
+    "تمثل كل جرعة 250 mL. حضّر 750 mL لكل أصيص. هذه كميات افتراضية للحساب.": {
+      "src": "/sounds/preschool/ar/openai-v2-2ac820ee7e5fe3e9.mp3",
+      "durationMs": 11250
+    },
+    "أَيُّ اسْتِنْتَاجٍ يَحْتَرِمُ الْمُلَاحَظَاتِ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-c7bd78f736a28934.mp3",
+      "durationMs": 4400
+    },
+    "يُقَارِنُ التَّلَامِيذُ أَرْبَعَةَ أَصَائِصِ عَدَسٍ بِالْحَجْمِ وَالتُّرْبَةِ وَالضَّوْءِ نَفْسِهَا. يَتَلَقَّى أَصِيصَانِ جُرْعَةَ مَاءٍ وَيَتَلَقَّى الآخَرَانِ جُرْعَتَيْنِ. بَعْدَ أَيَّامٍ، كَانَ نُمُوُّ الأَصِيصَيْنِ الأَكْثَرِ سَقْياً أَكْبَرَ فِي هَذِهِ التَّجْرِبَةِ. يَحْتَفِظُونَ بِالْقِيَاسَاتِ وَيَقْتَرِحُونَ إِعَادَةَ الْمُقَارَنَةِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-dfddc5768d4372a6.mp3",
+      "durationMs": 28550
+    },
+    "من أصل 20 حبة طماطم، أعطِ 25 % للمدرسة. وزّع الباقي بالتساوي بين ثلاث عائلات.": {
+      "src": "/sounds/preschool/ar/openai-v2-66f65ebf50daee1f.mp3",
+      "durationMs": 9750
+    },
+    "اختر قسمك في المدرسة": {
+      "src": "/sounds/preschool/ar/openai-v2-03e4992689c29240.mp3",
+      "durationMs": 2550
+    },
+    "بقية رحلة ديدو متاحة لحسابات العائلة المميزة. اسأل أهلك!": {
+      "src": "/sounds/preschool/ar/openai-v2-dba5c01b290d87d1.mp3",
+      "durationMs": 7350
+    },
+    "اختر عالماً، وهيا نتعلّم معاً!": {
+      "src": "/sounds/preschool/ar/openai-v2-8c6fb5b0096b1024.mp3",
+      "durationMs": 3050
+    },
+    "أحسنت!": {
+      "src": "/sounds/preschool/ar/openai-v2-633752e4d565f10e.mp3",
+      "durationMs": 900
+    },
+    "قريب! حاول مرة أخرى.": {
+      "src": "/sounds/preschool/ar/openai-v2-26531dbd4cd2e33b.mp3",
+      "durationMs": 2850
+    },
+    "مرحباً بك في الصحراء، بيتي! هنا نتعلّم المكان والأعداد الأولى": {
+      "src": "/sounds/preschool/ar/openai-v2-6ea06433c222ef7d.mp3",
+      "durationMs": 8000
+    },
+    "وصلنا إلى قصبة الجزائر! في أزقّتها نتعلّم الحروف وآداب التحية": {
+      "src": "/sounds/preschool/ar/openai-v2-2f750dead151657a.mp3",
+      "durationMs": 7350
+    },
+    "هيا نركب القارب! في البحر نتعلّم الحركات ونكتشف كيف تتنقّل الحيوانات": {
+      "src": "/sounds/preschool/ar/openai-v2-622d4d750f436dd3.mp3",
+      "durationMs": 7550
+    },
+    "هذه قسنطينة، مدينة الجسور! فوق الجسر نقارن الأطوال والكميات": {
+      "src": "/sounds/preschool/ar/openai-v2-b9594d4b891d4f09.mp3",
+      "durationMs": 7250
+    },
+    "وصلنا إلى جبال جرجرة! هنا نكتشف حواسّنا والنباتات وفصول السنة": {
+      "src": "/sounds/preschool/ar/openai-v2-48aa7d0fa08d6be1.mp3",
+      "durationMs": 7100
+    },
+    "هذه آثار تيمقاد في الأوراس! بين الأعمدة نتعلّم الأشكال والأعداد ورموز وطننا": {
+      "src": "/sounds/preschool/ar/openai-v2-73647cd9c6da7ca5.mp3",
+      "durationMs": 8250
+    },
+    "وصلنا إلى الطاسيلي! على صخوره رسوم عمرها آلاف السنين، وهنا نتعلّم حروفاً جديدة والمدّ": {
+      "src": "/sounds/preschool/ar/openai-v2-a211f2e798aabe49.mp3",
+      "durationMs": 9850
+    },
+    "انطلق الصاروخ! في الفضاء نتعلّم الأعداد حتى 99 والمقارنة والنقود": {
+      "src": "/sounds/preschool/ar/openai-v2-ed9828954986481e.mp3",
+      "durationMs": 8600
+    },
+    "مرحباً بك في الصحراء يا بطل! في السنة الثانية نعدّ حتى 49، ونجمع الأعداد عمودياً": {
+      "src": "/sounds/preschool/ar/openai-v2-572650c05165eac4.mp3",
+      "durationMs": 9900
+    },
+    "في أزقّة القصبة نقرأ نصوصاً عن المدرسة، ونتعلّم الشدّة ورموز وطننا": {
+      "src": "/sounds/preschool/ar/openai-v2-b684a2acd35c3003.mp3",
+      "durationMs": 9850
+    },
+    "هيا إلى البحر! بالماء نتوضأ ونحافظ على نظافة أجسامنا، ونتعلّم المدّ والتنوين": {
+      "src": "/sounds/preschool/ar/openai-v2-fd90888e5b8a84f4.mp3",
+      "durationMs": 9200
+    },
+    "على جسور قسنطينة نعبر إلى الأعداد حتى 99، ونجمع بالاحتفاظ": {
+      "src": "/sounds/preschool/ar/openai-v2-6775de846aa76eb0.mp3",
+      "durationMs": 7700
+    },
+    "في جبال جرجرة نكتشف النباتات من حولنا والحيوانات الأليفة والبرية": {
+      "src": "/sounds/preschool/ar/openai-v2-3b321831b3cb8af1.mp3",
+      "durationMs": 7200
+    },
+    "بين أعمدة تيمقاد نتعرّف على الأشكال، ونصل إلى المئات، ونميّز اللام الشمسية والقمرية": {
+      "src": "/sounds/preschool/ar/openai-v2-8086018f0bac498a.mp3",
+      "durationMs": 9600
+    },
+    "على صخور الطاسيلي نقرأ الكلمات: نميّز الاسم والفعل والحرف، والمذكّر والمؤنّث": {
+      "src": "/sounds/preschool/ar/openai-v2-f7b8bb083df765f0.mp3",
+      "durationMs": 8350
+    },
+    "انطلق الصاروخ! في الفضاء نتعلّم الضرب، ونقرأ الساعة، ونشتري بالدينار": {
+      "src": "/sounds/preschool/ar/openai-v2-2f442f516e3eb647.mp3",
+      "durationMs": 7800
+    },
+    "مرحباً بك في الصحراء! في السنة الثالثة نجمع ونطرح بالاحتفاظ، ونبدأ جداول الضرب": {
+      "src": "/sounds/preschool/ar/openai-v2-34ef02cbbf26ba5a.mp3",
+      "durationMs": 9000
+    },
+    "في القصبة نبني الجملة الاسمية والفعلية، ونصرّف الأفعال، ونزور معالم وطننا": {
+      "src": "/sounds/preschool/ar/openai-v2-a96dbbb4b0a4e211.mp3",
+      "durationMs": 7650
+    },
+    "على القارب نتنفّس هواء البحر: نكتشف التنفس ونبض القلب، والطهارة، وخطّ الزمن": {
+      "src": "/sounds/preschool/ar/openai-v2-9b6794361befe6b9.mp3",
+      "durationMs": 9650
+    },
+    "على جسور قسنطينة نصل إلى الآلاف، ونقيس الأطوال والكتل، ونرسم المستقيمات المتعامدة": {
+      "src": "/sounds/preschool/ar/openai-v2-9a411d48ad3531a0.mp3",
+      "durationMs": 8750
+    },
+    "في جرجرة نزرع البذور ونتابع نموّها، ونكتشف كيف يتغذّى كلّ حيوان": {
+      "src": "/sounds/preschool/ar/openai-v2-55f9f1eac31ce47c.mp3",
+      "durationMs": 7400
+    },
+    "بين أعمدة تيمقاد نكتشف الزاوية القائمة، والأعداد الكبيرة، والمركّب الإضافي": {
+      "src": "/sounds/preschool/ar/openai-v2-4216005d42592137.mp3",
+      "durationMs": 8300
+    },
+    "على صخور الطاسيلي نبحث عمّن قام بالفعل، ونطرح الأسئلة، ونتعرّف على سيرة نبيّنا ﷺ": {
+      "src": "/sounds/preschool/ar/openai-v2-f0b745139b49e206.mp3",
+      "durationMs": 11450
+    },
+    "من الصاروخ نرى الجزائر من فوق! نتعلّم القسمة بباقٍ، والمجسّمات، والتضاريس": {
+      "src": "/sounds/preschool/ar/openai-v2-5a8b2135c9171a18.mp3",
+      "durationMs": 9400
+    },
+    "الصحراء واسعة كالأعداد الكبيرة! نقرأ الأعداد حتى 100 000 ونقارنها ونحسب بها": {
+      "src": "/sounds/preschool/ar/openai-v2-3d9912b4d6ab4f8d.mp3",
+      "durationMs": 9200
+    },
+    "في القصبة نُعرب الفاعل والمفعول به، ونعود إلى زمن مملكتي نوميديا": {
+      "src": "/sounds/preschool/ar/openai-v2-b3c0ac9bf524236f.mp3",
+      "durationMs": 7650
+    },
+    "في رحلة القارب نتتبّع طريق الطعام في جسمنا، ونعرف حاجتنا إلى الماء، ونحفظ سورتي الضحى والشمس": {
+      "src": "/sounds/preschool/ar/openai-v2-c46e754443e05de0.mp3",
+      "durationMs": 11250
+    },
+    "على جسور قسنطينة نقسم بالعدل، ونحوّل القياسات، ونكتشف الكسور": {
+      "src": "/sounds/preschool/ar/openai-v2-19a11b125712a238.mp3",
+      "durationMs": 7500
+    },
+    "من قمم جرجرة نتابع دورة الماء، والأودية، وتضاريس الجزائر ومناخها": {
+      "src": "/sounds/preschool/ar/openai-v2-90fe050c6a38b372.mp3",
+      "durationMs": 8700
+    },
+    "في تيمقاد نصف ما نراه بالصفة، ونستعمل الأسماء الموصولة، ونقرأ الخريطة ومفتاحها": {
+      "src": "/sounds/preschool/ar/openai-v2-6a647c775ccdd5a6.mp3",
+      "durationMs": 8200
+    },
+    "على صخور الطاسيلي نكتب الهمزة صحيحة، وننتج فقرتنا، ونكتشف الحياة اليومية في نوميديا": {
+      "src": "/sounds/preschool/ar/openai-v2-e58fd81f5e633d5f.mp3",
+      "durationMs": 10100
+    },
+    "من الفضاء نرى الأرض تدور فيتعاقب الليل والنهار! ونحسب المحيط ونحلّ مسائل التناسب": {
+      "src": "/sounds/preschool/ar/openai-v2-680be3df8fd73d3e.mp3",
+      "durationMs": 10450
+    },
+    "سنتك الأخيرة في الابتدائي تبدأ هنا! نقرأ الأعداد حتى المليار، ونحدّد موقع الجزائر أكبر بلد في إفريقيا": {
+      "src": "/sounds/preschool/ar/openai-v2-ee0f00f5e37f5809.mp3",
+      "durationMs": 12550
+    },
+    "في القصبة نكشف أسرار الجملة والمبني للمجهول، ونرتّب مراحل تاريخنا الأربع": {
+      "src": "/sounds/preschool/ar/openai-v2-4557d47e3bb718c1.mp3",
+      "durationMs": 8350
+    },
+    "نبحر على خطى الفاتحين نحو القيروان، ونكتشف في الطريق التنفّس وخصائص الهواء": {
+      "src": "/sounds/preschool/ar/openai-v2-6eda89772650523b.mp3",
+      "durationMs": 9250
+    },
+    "على جسور قسنطينة نقسم قسمة إقليدية، ونفهم الكسور، ونحسب مدّة الرحلة": {
+      "src": "/sounds/preschool/ar/openai-v2-a059b466b9946a8e.mp3",
+      "durationMs": 8650
+    },
+    "في جرجرة نركّب دارة كهربائية، ونكتشف تكاثر النباتات، والتضاريس والمناخ": {
+      "src": "/sounds/preschool/ar/openai-v2-95decb87c15b31cf.mp3",
+      "durationMs": 9050
+    },
+    "بين أعمدة تيمقاد نُعرب النواسخ والمفاعيل والتمييز: نحو قويّ لامتحان نهاية الابتدائي": {
+      "src": "/sounds/preschool/ar/openai-v2-e0e257e5b042bd21.mp3",
+      "durationMs": 9400
+    },
+    "على صخور الطاسيلي نحفظ ذاكرة شعبنا: المقاومات الشعبية وثورة نوفمبر المجيدة، ونتعلّم الحال": {
+      "src": "/sounds/preschool/ar/openai-v2-7244f2dcddcca715.mp3",
+      "durationMs": 10400
+    },
+    "الصاروخ الأخير قبل المتوسّطة! نحسب بالأعداد العشرية والنسب المئوية والمساحات": {
+      "src": "/sounds/preschool/ar/openai-v2-a2c404da59438687.mp3",
+      "durationMs": 9500
+    },
+    "صَلَاةُ الفَجْرِ. قَبْلَ شُرُوقِ الشَّمْسِ. عَدَدُ الرَّكَعَاتِ: 2.": {
+      "src": "/sounds/preschool/ar/openai-v2-f484df6007d0ae9f.mp3",
+      "durationMs": 6350
+    },
+    "صَلَاةُ الظُّهْرِ. بَعْدَ زَوَالِ الشَّمْسِ. عَدَدُ الرَّكَعَاتِ: 4.": {
+      "src": "/sounds/preschool/ar/openai-v2-4586c943620461a4.mp3",
+      "durationMs": 7000
+    },
+    "صَلَاةُ العَصْرِ. فِي العَصْرِ قَبْلَ الغُرُوبِ. عَدَدُ الرَّكَعَاتِ: 4.": {
+      "src": "/sounds/preschool/ar/openai-v2-57e0fceb6330539f.mp3",
+      "durationMs": 7150
+    },
+    "صَلَاةُ المَغْرِبِ. بَعْدَ غُرُوبِ الشَّمْسِ مُبَاشَرَةً. عَدَدُ الرَّكَعَاتِ: 3.": {
+      "src": "/sounds/preschool/ar/openai-v2-bfe6976f160e6ecf.mp3",
+      "durationMs": 7850
+    },
+    "صَلَاةُ العِشَاءِ. بَعْدَ دُخُولِ اللَّيْلِ. عَدَدُ الرَّكَعَاتِ: 4.": {
+      "src": "/sounds/preschool/ar/openai-v2-2fab6f94b7652854.mp3",
+      "durationMs": 7000
+    },
+    "الضَّوْءُ أَحْمَرُ فِي مَمَرِّ الرَّاجِلِينَ. مَاذَا أَفْعَلُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-14fde94f79aa30dd.mp3",
+      "durationMs": 4800
+    },
+    "أَتَوَقَّفُ عَلَى الرَّصِيفِ": {
+      "src": "/sounds/preschool/ar/openai-v2-f3f90fa6d855af1f.mp3",
+      "durationMs": 2500
+    },
+    "الضَّوْءُ أَخْضَرُ وَنَظَرْتُ يَسَاراً ثُمَّ يَمِيناً. مَاذَا أَفْعَلُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-10b0d5320ae1889d.mp3",
+      "durationMs": 5900
+    },
+    "أَعْبُرُ فِي المَمَرِّ بِهُدُوءٍ": {
+      "src": "/sounds/preschool/ar/openai-v2-0f8bb6f1fc6400ec.mp3",
+      "durationMs": 3750
+    },
+    "فِي الجَزَائِرِ السَّيَّارَاتُ تَأْتِي أَوَّلاً مِنَ اليَسَارِ. أَيْنَ أَنْظُرُ أَوَّلاً؟": {
+      "src": "/sounds/preschool/ar/openai-v2-d0e2901aa78853cc.mp3",
+      "durationMs": 6300
+    },
+    "أَنْظُرُ يَسَاراً أَوَّلاً": {
+      "src": "/sounds/preschool/ar/openai-v2-a69596ef0f554533.mp3",
+      "durationMs": 2500
+    },
+    "وَصَلْتُ أَمَامَ المَدْرَسَةِ وَالحَافِلَةُ وَاقِفَةٌ. مَاذَا أَفْعَلُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-a431cecb2fc3ae99.mp3",
+      "durationMs": 7000
+    },
+    "أَنْتَظِرُ خَلْفَ الخَطِّ وَأَعْبُرُ مَعَ الرَّشِيدِ": {
+      "src": "/sounds/preschool/ar/openai-v2-31241bb169fffe08.mp3",
+      "durationMs": 3800
+    },
+    "رَكِبْتُ الحَافِلَةَ وَرَأَيْتُ شَخْصاً أَكْبَرَ مِنِّي وَاقِفاً. مَاذَا أَفْعَلُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-bcaa8f63580d78f9.mp3",
+      "durationMs": 6400
+    },
+    "أَتْرُكُ لَهُ مَكَانِي": {
+      "src": "/sounds/preschool/ar/openai-v2-e9e608cb7b1b2457.mp3",
+      "durationMs": 2300
+    },
+    "أَصِلُ إِلَى بَابِ المَسْجِدِ. بِأَيِّ قَدَمٍ أَدْخُلُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-ebe24ed44d70348a.mp3",
+      "durationMs": 5850
+    },
+    "أَدْخُلُ بِالقَدَمِ اليُمْنَى": {
+      "src": "/sounds/preschool/ar/openai-v2-a6e272e0027d760a.mp3",
+      "durationMs": 1950
+    },
+    "دَخَلْتُ. كَيْفَ أَتَصَرَّفُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-4b4185928d4daa08.mp3",
+      "durationMs": 3250
+    },
+    "أَمْشِي بِهُدُوءٍ وَلَا أَرْفَعُ صَوْتِي": {
+      "src": "/sounds/preschool/ar/openai-v2-2ee3b1e38555c024.mp3",
+      "durationMs": 4300
+    },
+    "سَمِعْتُ الأَذَانَ وَأَنَا فِي السَّاحَةِ. مَاذَا أَفْعَلُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-df8ff9a382e3f69a.mp3",
+      "durationMs": 5600
+    },
+    "أُنْصِتُ وَأُكَرِّرُ مَعَ المُؤَذِّنِ": {
+      "src": "/sounds/preschool/ar/openai-v2-80f62ea039f73e1f.mp3",
+      "durationMs": 4150
+    },
+    "انْتَهَتِ الصَّلَاةُ. كَيْفَ أَخْرُجُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-cc8c4a4992af1314.mp3",
+      "durationMs": 3350
+    },
+    "أُسَلِّمُ بِهُدُوءٍ وَأَخْرُجُ دُونَ زَحْمَةٍ": {
+      "src": "/sounds/preschool/ar/openai-v2-2d021e110e2e1dae.mp3",
+      "durationMs": 5300
+    },
+    "اِتْبَعِ الخُطُوَاتِ السَّبْعَ بِالتَّرْتِيبِ، كَمَا فِي دَرْسِ السَّنَةِ الثَّانِيَةِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-ba848f9db0477a27.mp3",
+      "durationMs": 4850
+    },
+    "أَنْتَ الآنَ عَلَى طَهَارَةٍ. تَقَبَّلَ اللهُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-c7fa9e568120053d.mp3",
+      "durationMs": 5300
+    },
+    "تَعَرَّفْ عَلَى أَوْقَاتِ الصَّلَوَاتِ وَعَدَدِ رَكَعَاتِهَا، ثُمَّ مَثِّلْ رَكْعَةً.": {
+      "src": "/sounds/preschool/ar/openai-v2-083fd9db9cad6128.mp3",
+      "durationMs": 7250
+    },
+    "تَمَّتِ الرَّكْعَةُ. اللهُ أَكْبَرُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-7e2f8e45d19f6f02.mp3",
+      "durationMs": 3250
+    },
+    "تَعَلَّمْ قَوَاعِدَ المُرُورِ: الضَّوْءُ، النَّظَرُ يَسَاراً ثُمَّ يَمِيناً، وَعَدَمُ الجَرْيِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-5abf5e10f3dee805.mp3",
+      "durationMs": 7500
+    },
+    "أَنْظُرُ يَسَاراً": {
+      "src": "/sounds/preschool/ar/openai-v2-79bcc1904838ac94.mp3",
+      "durationMs": 2250
+    },
+    "أَنْظُرُ يَمِيناً": {
+      "src": "/sounds/preschool/ar/openai-v2-80ccdf80d119d34f.mp3",
+      "durationMs": 2000
+    },
+    "أَعْبُرُ الآنَ": {
+      "src": "/sounds/preschool/ar/openai-v2-ba042dd409671faa.mp3",
+      "durationMs": 1650
+    },
+    "عَبَرْتَ بِأَمَانٍ. شُكْراً.": {
+      "src": "/sounds/preschool/ar/openai-v2-fb06c91fc8c48cf1.mp3",
+      "durationMs": 2950
+    },
+    "اِمْشِ بَيْنَ الأَكْشَاكِ، اِشْتَرِ، وَاحْسُبِ البَاقِي بِالدِّينَارِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-e6d46bb05cbb9a75.mp3",
+      "durationMs": 6100
+    },
+    "اِكْتَشِفْ عَلَمَ الجَزَائِرِ وَبُلْدَانَ المَغْرِبِ وَالجِيرَانَ، مَعَ العَوَاصِمِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-e35f3e844e8c06f2.mp3",
+      "durationMs": 6100
+    },
+    "كَيْفَ نَدْخُلُ المَسْجِدَ، وَكَيْفَ نَجْلِسُ، وَكَيْفَ نَخْرُجُ بِهُدُوءٍ.": {
+      "src": "/sounds/preschool/ar/openai-v2-8f055af081b1a7dc.mp3",
+      "durationMs": 7500
+    },
+    "تَحْضِيرٌ لِلِانْتِقَالِ إِلَى المُتَوَسِّطَةِ: أَجِبْ أَوَّلاً، ثُمَّ قَارِنْ مَعَ التَّصْحِيحِ. لَيْسَ هَذَا امْتِحَاناً رَسْمِيّاً.": {
+      "src": "/sounds/preschool/ar/openai-v2-29232167078a8f3c.mp3",
+      "durationMs": 9050
+    },
+    "عطلة ودخول وأسبوع موجّه وتقييمات ومختبرات. تجد كراسات الكفاءات أيضاً أسفل المسارات.": {
+      "src": "/sounds/preschool/ar/openai-v2-5606ed3151dfd759.mp3",
+      "durationMs": 10200
+    },
     "اِسْحَبِ الفَنَكَ: بَيْت، تُفَّاحَة، سَلَام، هَدِيَّة، ثُمَّ المَسْجِد!": {
       "src": "/sounds/preschool/ar/values-mosque-path-prompt.mp3",
       "durationMs": 6441
@@ -3407,6 +4231,454 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/seasons-connect-success.mp3",
       "durationMs": 2711
     },
+    "Mains propres ! Raconte l’histoire à maman !": {
+      "src": "/sounds/preschool/fr/openai-v2-06543819b2bbbf11.mp3",
+      "durationMs": 2850
+    },
+    "Range les images : on se réveille, puis l’école, puis un câlin ! Ensuite raconte l’histoire !": {
+      "src": "/sounds/preschool/fr/openai-v2-4f0f20c94ea2ca3d.mp3",
+      "durationMs": 6950
+    },
+    "Belle histoire ! Raconte-la à papa !": {
+      "src": "/sounds/preschool/fr/openai-v2-b317cb3af10dd46f.mp3",
+      "durationMs": 3400
+    },
+    "Glisse le crayon : visage, soleil, fleur, maison, fennec, puis le couscous !": {
+      "src": "/sounds/preschool/fr/openai-v2-f5f68b56c0aaf09a.mp3",
+      "durationMs": 7050
+    },
+    "Le cahier de dessin est prêt ! Bravo !": {
+      "src": "/sounds/preschool/fr/openai-v2-3b6ea2a198fdacbc.mp3",
+      "durationMs": 3050
+    },
+    "Choisis une couleur et touche le visage, les yeux et la bouche !": {
+      "src": "/sounds/preschool/fr/openai-v2-b17db69abdb6c5a8.mp3",
+      "durationMs": 4650
+    },
+    "Un beau visage ! Tu es un artiste !": {
+      "src": "/sounds/preschool/fr/openai-v2-4ea0dadc9d429b5a.mp3",
+      "durationMs": 3200
+    },
+    "Colorie le soleil ! Touche le rond et les rayons !": {
+      "src": "/sounds/preschool/fr/openai-v2-b42491b6317d011c.mp3",
+      "durationMs": 4300
+    },
+    "Ton soleil brille ! Bravo !": {
+      "src": "/sounds/preschool/fr/openai-v2-784867911d47a90d.mp3",
+      "durationMs": 2900
+    },
+    "Colorie la fleur ! Les pétales, le cœur et la tige !": {
+      "src": "/sounds/preschool/fr/openai-v2-714dfecc716c2902.mp3",
+      "durationMs": 4100
+    },
+    "Quelle belle fleur !": {
+      "src": "/sounds/preschool/fr/openai-v2-f04ef5d5cbf2f440.mp3",
+      "durationMs": 2300
+    },
+    "Colorie la maison ! Le toit, le mur, la porte et la fenêtre !": {
+      "src": "/sounds/preschool/fr/openai-v2-3da6e317e4723334.mp3",
+      "durationMs": 5750
+    },
+    "Une belle maison !": {
+      "src": "/sounds/preschool/fr/openai-v2-c4e6cc1c7972ca9b.mp3",
+      "durationMs": 2200
+    },
+    "Colorie le fennec ! Grandes oreilles, le petit renard du Sahara !": {
+      "src": "/sounds/preschool/fr/openai-v2-c5ec4b0f7632bf74.mp3",
+      "durationMs": 5750
+    },
+    "Un superbe fennec !": {
+      "src": "/sounds/preschool/fr/openai-v2-a0e0c6f7ca0d05a0.mp3",
+      "durationMs": 2300
+    },
+    "Colorie le dromadaire ! Le vaisseau du désert et sa bosse !": {
+      "src": "/sounds/preschool/fr/openai-v2-b1673f4b2a7c76e6.mp3",
+      "durationMs": 5300
+    },
+    "Un dromadaire fort !": {
+      "src": "/sounds/preschool/fr/openai-v2-b133565de72e1747.mp3",
+      "durationMs": 2950
+    },
+    "Colorie le plat de couscous ! La marmite, le couvercle et le plat !": {
+      "src": "/sounds/preschool/fr/openai-v2-6bde9a7bbc75a0dd.mp3",
+      "durationMs": 5400
+    },
+    "Miam ! Ton plat est prêt !": {
+      "src": "/sounds/preschool/fr/openai-v2-183707f8560d21a6.mp3",
+      "durationMs": 2400
+    },
+    "Glisse : pomme, fourmi, poisson, ferme, puis abeille !": {
+      "src": "/sounds/preschool/fr/openai-v2-5c820efbc3223b48.mp3",
+      "durationMs": 5750
+    },
+    "On joue ! Bravo !": {
+      "src": "/sounds/preschool/fr/openai-v2-d4fea64dd0b9139f.mp3",
+      "durationMs": 1800
+    },
+    "Choisis une couleur et colorie la pomme ! Le fruit, la tige et la feuille !": {
+      "src": "/sounds/preschool/fr/openai-v2-88bb01ebbbfdb91a.mp3",
+      "durationMs": 6050
+    },
+    "Une belle pomme !": {
+      "src": "/sounds/preschool/fr/openai-v2-b82070d752929125.mp3",
+      "durationMs": 2050
+    },
+    "Glisse la fourmi jusqu'à la feuille verte !": {
+      "src": "/sounds/preschool/fr/openai-v2-5a46fe2a29beb17e.mp3",
+      "durationMs": 3500
+    },
+    "La fourmi est arrivée !": {
+      "src": "/sounds/preschool/fr/openai-v2-df855826e31e8faf.mp3",
+      "durationMs": 1850
+    },
+    "Glisse le poisson dans la mer jusqu'au coquillage !": {
+      "src": "/sounds/preschool/fr/openai-v2-d6483176ae6c3f86.mp3",
+      "durationMs": 3600
+    },
+    "Le poisson a trouvé son coquillage !": {
+      "src": "/sounds/preschool/fr/openai-v2-2aa199b92a96a379.mp3",
+      "durationMs": 3050
+    },
+    "Mets le soleil, l'arbre et la maison à leur place !": {
+      "src": "/sounds/preschool/fr/openai-v2-fdc5e5df4072f04a.mp3",
+      "durationMs": 4450
+    },
+    "La ferme est complète !": {
+      "src": "/sounds/preschool/fr/openai-v2-4db29130dbb40a01.mp3",
+      "durationMs": 2350
+    },
+    "Mets le soleil, le dromadaire, le fennec et le palmier à leur place !": {
+      "src": "/sounds/preschool/fr/openai-v2-2f9a4a49f856e21f.mp3",
+      "durationMs": 4900
+    },
+    "Une belle oasis !": {
+      "src": "/sounds/preschool/fr/openai-v2-c28159c7c06df94e.mp3",
+      "durationMs": 2000
+    },
+    "Glisse la voiture sur la route jusqu'à la maison !": {
+      "src": "/sounds/preschool/fr/openai-v2-06e92d36869b1308.mp3",
+      "durationMs": 3850
+    },
+    "La voiture est arrivée à la maison !": {
+      "src": "/sounds/preschool/fr/openai-v2-de886e05288cba95.mp3",
+      "durationMs": 2300
+    },
+    "Mets les abeilles avec le miel, et les papillons avec la fleur !": {
+      "src": "/sounds/preschool/fr/openai-v2-67d35492cd1aca15.mp3",
+      "durationMs": 4600
+    },
+    "Chacun à sa place !": {
+      "src": "/sounds/preschool/fr/openai-v2-e95257ca61a690b4.mp3",
+      "durationMs": 2750
+    },
+    "Touche trois emplacements pour planter trois graines.": {
+      "src": "/sounds/preschool/fr/openai-v2-25522df5e2cbf570.mp3",
+      "durationMs": 3500
+    },
+    "Didou a trois graines. Il en ajoute une. Combien de graines a-t-il maintenant ?": {
+      "src": "/sounds/preschool/fr/openai-v2-bb31834543461912.mp3",
+      "durationMs": 5450
+    },
+    "Donne un jeton d’eau à chaque pot.": {
+      "src": "/sounds/preschool/fr/openai-v2-974ae6f2532cbbbf.mp3",
+      "durationMs": 2450
+    },
+    "Que voit Didou après plusieurs jours ?": {
+      "src": "/sounds/preschool/fr/openai-v2-2ee7bc2b1dd6e144.mp3",
+      "durationMs": 3100
+    },
+    "Didou plante une graine. Il l’arrose. Après plusieurs jours, une petite plante apparaît.": {
+      "src": "/sounds/preschool/fr/openai-v2-8ef5e108efc871c5.mp3",
+      "durationMs": 6500
+    },
+    "Partage 3 tomates également entre 3 paniers.": {
+      "src": "/sounds/preschool/fr/openai-v2-22a826a7c4ed73c0.mp3",
+      "durationMs": 3800
+    },
+    "Raconte à un adulte comment tu as aidé Didou. Puis essaie avec de vrais objets.": {
+      "src": "/sounds/preschool/fr/openai-v2-59c868b8489cb71b.mp3",
+      "durationMs": 5750
+    },
+    "Prépare six emplacements dans le potager de Didou.": {
+      "src": "/sounds/preschool/fr/openai-v2-e608ef0f401498b4.mp3",
+      "durationMs": 3300
+    },
+    "Il faut six graines. Un sachet contient trois graines. Combien de sachets faut-il ?": {
+      "src": "/sounds/preschool/fr/openai-v2-6ef1001324d970dd.mp3",
+      "durationMs": 6100
+    },
+    "Donne deux jetons d’eau à chaque pot.": {
+      "src": "/sounds/preschool/fr/openai-v2-c4116acb006d4dd9.mp3",
+      "durationMs": 3150
+    },
+    "Qui apporte l’eau ?": {
+      "src": "/sounds/preschool/fr/openai-v2-5a7013131899722e.mp3",
+      "durationMs": 1650
+    },
+    "Lina sème les graines. Sami apporte l’eau. Ensemble, ils arrosent les pots.": {
+      "src": "/sounds/preschool/fr/openai-v2-58fea68f95969dc2.mp3",
+      "durationMs": 6150
+    },
+    "Partage 6 tomates également entre 2 paniers.": {
+      "src": "/sounds/preschool/fr/openai-v2-5601d195db539313.mp3",
+      "durationMs": 3650
+    },
+    "Plante quatre graines dans chacune des trois rangées.": {
+      "src": "/sounds/preschool/fr/openai-v2-1646d7d8f912d0cd.mp3",
+      "durationMs": 3400
+    },
+    "Un sachet contient quatre graines. Combien de sachets faut-il pour douze graines ?": {
+      "src": "/sounds/preschool/fr/openai-v2-45e737e30ff2a180.mp3",
+      "durationMs": 5950
+    },
+    "Donne trois jetons d’eau à chaque pot.": {
+      "src": "/sounds/preschool/fr/openai-v2-68e75db109b2ab2d.mp3",
+      "durationMs": 2850
+    },
+    "Pourquoi Lina met-elle des étiquettes ?": {
+      "src": "/sounds/preschool/fr/openai-v2-0ef6741f5191a92f.mp3",
+      "durationMs": 2800
+    },
+    "Lina sème des lentilles et du persil dans des pots. Elle place une étiquette avec le nom de chaque plante. Plus tard, elle retrouve facilement le pot de persil.": {
+      "src": "/sounds/preschool/fr/openai-v2-7acd48c144b8ff31.mp3",
+      "durationMs": 10200
+    },
+    "Partage 12 tomates également entre 3 paniers.": {
+      "src": "/sounds/preschool/fr/openai-v2-5cc0f11f0b180107.mp3",
+      "durationMs": 4100
+    },
+    "Dessine un potager rectangulaire de 12 cases, sans trou. Chaque case représente une unité d’aire.": {
+      "src": "/sounds/preschool/fr/openai-v2-bbca7223c281a1ea.mp3",
+      "durationMs": 7650
+    },
+    "Trois sachets coûtent 25 DA chacun. Quel est leur prix total ? Prix fictifs pour ce jeu.": {
+      "src": "/sounds/preschool/fr/openai-v2-3a1c6c275abbe8ca.mp3",
+      "durationMs": 7300
+    },
+    "Chaque dose représente 250 mL. Prépare 500 mL par pot. Ce sont des quantités fictives pour calculer.": {
+      "src": "/sounds/preschool/fr/openai-v2-4670ef11a62ddb10.mp3",
+      "durationMs": 9750
+    },
+    "Quel facteur Sami change-t-il ?": {
+      "src": "/sounds/preschool/fr/openai-v2-4c7198c0ea6199ef.mp3",
+      "durationMs": 2600
+    },
+    "Sami observe deux pots de lentilles, placés sous la même lumière. Les pots contiennent la même terre. Chaque jour, il donne moins d’eau au deuxième pot et note ses observations.": {
+      "src": "/sounds/preschool/fr/openai-v2-4bdc115e10039a0d.mp3",
+      "durationMs": 12100
+    },
+    "Partage 18 tomates également entre 3 paniers.": {
+      "src": "/sounds/preschool/fr/openai-v2-129f48d9a092fd02.mp3",
+      "durationMs": 3600
+    },
+    "Réserve la moitié des 12 cases égales aux graines de Didou.": {
+      "src": "/sounds/preschool/fr/openai-v2-a9743307cd227162.mp3",
+      "durationMs": 4100
+    },
+    "Didou achète trois sachets à 40 DA chacun et donne 200 DA. Combien reçoit-il de monnaie ? Prix fictifs.": {
+      "src": "/sounds/preschool/fr/openai-v2-3b6e5c0d3cf369e4.mp3",
+      "durationMs": 8500
+    },
+    "Que faire avant de conclure sur la croissance ?": {
+      "src": "/sounds/preschool/fr/openai-v2-447680a7677b2880.mp3",
+      "durationMs": 3700
+    },
+    "Deux groupes cultivent la même espèce, dans des pots identiques et sous la même lumière. Seule la quantité d’eau change. Le premier jour, rien ne permet de distinguer leur croissance. Les élèves poursuivent les observations pendant plusieurs jours.": {
+      "src": "/sounds/preschool/fr/openai-v2-187ce7fa16a1809b.mp3",
+      "durationMs": 15900
+    },
+    "Sur 12 tomates, donne la moitié à l’école, un quart à la maison et un quart aux amis.": {
+      "src": "/sounds/preschool/fr/openai-v2-c1a59822e274e73e.mp3",
+      "durationMs": 6750
+    },
+    "Réserve 3/4 de ce potager de 20 cases égales aux légumes.": {
+      "src": "/sounds/preschool/fr/openai-v2-c97b492907ed3dcd.mp3",
+      "durationMs": 4950
+    },
+    "Les légumes occupent 15 m². Les graines coûtent 12 DA par m². Quel est le coût total ? Prix fictifs.": {
+      "src": "/sounds/preschool/fr/openai-v2-904460cfb2105caf.mp3",
+      "durationMs": 8300
+    },
+    "Chaque dose représente 250 mL. Prépare 750 mL par pot. Ce sont des quantités fictives pour calculer.": {
+      "src": "/sounds/preschool/fr/openai-v2-d9ce0151ee9efee2.mp3",
+      "durationMs": 10000
+    },
+    "Quelle conclusion respecte les observations ?": {
+      "src": "/sounds/preschool/fr/openai-v2-bcd63984e0c4b61c.mp3",
+      "durationMs": 3350
+    },
+    "Les élèves comparent quatre pots de lentilles de même taille, avec la même terre et la même lumière. Deux pots reçoivent une dose d’eau et deux autres en reçoivent deux. Après plusieurs jours, les pots les plus arrosés ont davantage poussé dans cet essai. Ils gardent leurs mesures et proposent de répéter la comparaison.": {
+      "src": "/sounds/preschool/fr/openai-v2-a89218b0f262dabb.mp3",
+      "durationMs": 21850
+    },
+    "Sur 20 tomates, donne 25 % à l’école. Partage le reste également entre trois familles.": {
+      "src": "/sounds/preschool/fr/openai-v2-700d8bd8c5ffdf78.mp3",
+      "durationMs": 6650
+    },
+    "La suite du voyage de Didou est disponible pour les comptes Famille Premium. Demande à tes parents !": {
+      "src": "/sounds/preschool/fr/openai-v2-d72da43f29163c25.mp3",
+      "durationMs": 6600
+    },
+    "Bienvenue au Sahara, ma maison ! Ici on apprend à se repérer et les premiers nombres.": {
+      "src": "/sounds/preschool/fr/openai-v2-67e1edc6fcffbfed.mp3",
+      "durationMs": 7000
+    },
+    "Nous voilà dans la Casbah d'Alger ! Dans ses ruelles, on apprend les lettres et la politesse.": {
+      "src": "/sounds/preschool/fr/openai-v2-fcb2f3be44eadb75.mp3",
+      "durationMs": 6600
+    },
+    "Montons dans le bateau ! En mer, on apprend les voyelles et comment se déplacent les animaux.": {
+      "src": "/sounds/preschool/fr/openai-v2-511e34dff2db4c22.mp3",
+      "durationMs": 6800
+    },
+    "Voici Constantine, la ville des ponts ! Sur le pont, on compare les longueurs et les quantités.": {
+      "src": "/sounds/preschool/fr/openai-v2-151b0c6ad61717f4.mp3",
+      "durationMs": 6700
+    },
+    "Nous voici dans le Djurdjura ! On découvre nos sens, les plantes et les saisons.": {
+      "src": "/sounds/preschool/fr/openai-v2-49dcc9be33185229.mp3",
+      "durationMs": 6450
+    },
+    "Voici les ruines de Timgad, dans les Aurès ! Entre les colonnes, on apprend les formes, les nombres et les symboles de notre pays.": {
+      "src": "/sounds/preschool/fr/openai-v2-bb694acd605cd41b.mp3",
+      "durationMs": 8950
+    },
+    "Nous voici au Tassili ! Ses rochers portent des peintures vieilles de milliers d'années. Ici, on apprend de nouvelles lettres et les voyelles longues.": {
+      "src": "/sounds/preschool/fr/openai-v2-9e2f74c272f64bde.mp3",
+      "durationMs": 11000
+    },
+    "Décollage ! Dans l'espace, on apprend les nombres jusqu'à 99, la comparaison et la monnaie.": {
+      "src": "/sounds/preschool/fr/openai-v2-573eb62b8d360c47.mp3",
+      "durationMs": 7800
+    },
+    "Bienvenue au Sahara, champion ! En 2AP, on compte jusqu'à 49 et on pose les additions.": {
+      "src": "/sounds/preschool/fr/openai-v2-59cc9a42b1de447f.mp3",
+      "durationMs": 6950
+    },
+    "Dans les ruelles de la Casbah, on lit des textes sur l'école, on apprend la chadda et les symboles du pays.": {
+      "src": "/sounds/preschool/fr/openai-v2-6d7d2643e8e91198.mp3",
+      "durationMs": 8550
+    },
+    "En route vers la mer ! Avec l'eau on fait les ablutions et on prend soin du corps, et on apprend le madd et le tanwin.": {
+      "src": "/sounds/preschool/fr/openai-v2-c13fbd3da6a9447d.mp3",
+      "durationMs": 8150
+    },
+    "Sur les ponts de Constantine, on passe aux nombres jusqu'à 99 et à l'addition avec retenue.": {
+      "src": "/sounds/preschool/fr/openai-v2-9c0b56e219623bad.mp3",
+      "durationMs": 6600
+    },
+    "Dans le Djurdjura, on découvre les plantes autour de nous, les animaux domestiques et sauvages.": {
+      "src": "/sounds/preschool/fr/openai-v2-08657c823551542e.mp3",
+      "durationMs": 6450
+    },
+    "Entre les colonnes de Timgad, on reconnaît les formes, on atteint les centaines et on distingue le lam solaire et lunaire.": {
+      "src": "/sounds/preschool/fr/openai-v2-de4c905bfb7fcf29.mp3",
+      "durationMs": 8800
+    },
+    "Sur les rochers du Tassili, on lit les mots : nom, verbe ou lettre, masculin ou féminin.": {
+      "src": "/sounds/preschool/fr/openai-v2-a95a2bb2ebda7445.mp3",
+      "durationMs": 7600
+    },
+    "Décollage ! Dans l'espace, on apprend la multiplication, on lit l'heure et on achète en dinars.": {
+      "src": "/sounds/preschool/fr/openai-v2-02e93949eb9073b0.mp3",
+      "durationMs": 7350
+    },
+    "Bienvenue au Sahara ! En 3AP, on additionne et soustrait avec retenue, et on commence les tables.": {
+      "src": "/sounds/preschool/fr/openai-v2-abfea18d2e18fb18.mp3",
+      "durationMs": 7500
+    },
+    "Dans la Casbah, on construit des phrases, on conjugue et on visite les monuments du pays.": {
+      "src": "/sounds/preschool/fr/openai-v2-51964fe1768ad485.mp3",
+      "durationMs": 6350
+    },
+    "En bateau, on respire l'air de la mer : la respiration, le cœur, la pureté, et la frise du temps.": {
+      "src": "/sounds/preschool/fr/openai-v2-7d7d90dd990f28d7.mp3",
+      "durationMs": 7150
+    },
+    "Sur les ponts de Constantine, on atteint les milliers, on mesure et on trace des droites perpendiculaires.": {
+      "src": "/sounds/preschool/fr/openai-v2-8a2f5bdabd5637ca.mp3",
+      "durationMs": 7500
+    },
+    "Dans le Djurdjura, on sème des graines, on suit leur croissance et on découvre ce que mange chaque animal.": {
+      "src": "/sounds/preschool/fr/openai-v2-c6a4e60a2b546312.mp3",
+      "durationMs": 7000
+    },
+    "Entre les colonnes de Timgad : l'angle droit, les grands nombres et le complément du nom.": {
+      "src": "/sounds/preschool/fr/openai-v2-880d75f398b4d6bc.mp3",
+      "durationMs": 6950
+    },
+    "Sur les rochers du Tassili : qui fait l'action ? On pose des questions et on découvre la vie du Prophète ﷺ.": {
+      "src": "/sounds/preschool/fr/openai-v2-b18b4ea4ad6de1c5.mp3",
+      "durationMs": 8600
+    },
+    "Depuis la fusée, on voit l'Algérie d'en haut ! La division avec reste, les solides et le relief.": {
+      "src": "/sounds/preschool/fr/openai-v2-d5c5edfcc2297a46.mp3",
+      "durationMs": 7250
+    },
+    "Le Sahara est grand comme les grands nombres ! On lit, compare et calcule jusqu'à 100 000.": {
+      "src": "/sounds/preschool/fr/openai-v2-73bf2d2a3462c948.mp3",
+      "durationMs": 6600
+    },
+    "Dans la Casbah, on analyse le sujet et le complément, et on remonte au temps des royaumes numides.": {
+      "src": "/sounds/preschool/fr/openai-v2-0b74b44f1420bbb5.mp3",
+      "durationMs": 7400
+    },
+    "En bateau, on suit le trajet des aliments, on comprend notre besoin d'eau et on apprend deux sourates.": {
+      "src": "/sounds/preschool/fr/openai-v2-556154fe8f9f7768.mp3",
+      "durationMs": 6850
+    },
+    "Sur les ponts de Constantine, on partage, on convertit les mesures et on découvre les fractions.": {
+      "src": "/sounds/preschool/fr/openai-v2-545cd125bdb5e54e.mp3",
+      "durationMs": 6650
+    },
+    "Depuis les sommets du Djurdjura, on suit le cycle de l'eau, les oueds, le relief et le climat.": {
+      "src": "/sounds/preschool/fr/openai-v2-b9cb3f999d90872e.mp3",
+      "durationMs": 7250
+    },
+    "À Timgad, on décrit avec l'adjectif, on utilise les relatifs et on lit une carte et sa légende.": {
+      "src": "/sounds/preschool/fr/openai-v2-618aaab2c816b166.mp3",
+      "durationMs": 7250
+    },
+    "Sur les rochers du Tassili, on écrit la hamza juste, on rédige un paragraphe et on découvre la vie en Numidie.": {
+      "src": "/sounds/preschool/fr/openai-v2-69614b3fb348224d.mp3",
+      "durationMs": 8850
+    },
+    "Depuis l'espace, on voit la Terre tourner : jour et nuit ! On calcule des périmètres et des problèmes de proportionnalité.": {
+      "src": "/sounds/preschool/fr/openai-v2-5a349aad2e35aa8d.mp3",
+      "durationMs": 7850
+    },
+    "Ta dernière année du primaire commence ici ! Les nombres jusqu'au milliard, et l'Algérie, le plus grand pays d'Afrique.": {
+      "src": "/sounds/preschool/fr/openai-v2-f7f1b0b571e590e6.mp3",
+      "durationMs": 8150
+    },
+    "Dans la Casbah, on perce les secrets de la phrase et du passif, et on range les quatre époques de notre histoire.": {
+      "src": "/sounds/preschool/fr/openai-v2-d446997e5ffaf222.mp3",
+      "durationMs": 8650
+    },
+    "On navigue sur les traces des conquérants vers Kairouan, et on découvre la respiration et les propriétés de l'air.": {
+      "src": "/sounds/preschool/fr/openai-v2-c8f15f6f550fa636.mp3",
+      "durationMs": 7050
+    },
+    "Sur les ponts de Constantine : la division euclidienne, les fractions et le calcul des durées.": {
+      "src": "/sounds/preschool/fr/openai-v2-f11e3a6788608e03.mp3",
+      "durationMs": 6550
+    },
+    "Dans le Djurdjura, on monte un circuit électrique, on découvre la reproduction des plantes, le relief et le climat.": {
+      "src": "/sounds/preschool/fr/openai-v2-f28aad9d88b01fdc.mp3",
+      "durationMs": 8100
+    },
+    "Entre les colonnes de Timgad : les nawasikh, les compléments et le tamyiz, une grammaire solide pour l'examen de fin de primaire.": {
+      "src": "/sounds/preschool/fr/openai-v2-33fb9eaa06ea9252.mp3",
+      "durationMs": 10450
+    },
+    "Sur les rochers du Tassili, on garde la mémoire du peuple : les résistances et la glorieuse Révolution de Novembre, et on apprend le hâl.": {
+      "src": "/sounds/preschool/fr/openai-v2-c4e941cdd14bec3e.mp3",
+      "durationMs": 9750
+    },
+    "La dernière fusée avant le collège ! Les décimaux, les pourcentages et les aires.": {
+      "src": "/sounds/preschool/fr/openai-v2-73ce95a97a5ca967.mp3",
+      "durationMs": 6200
+    },
     "Glisse le fennec : maison, pomme, salam, cadeau, puis la mosquée !": {
       "src": "/sounds/preschool/fr/values-mosque-path-prompt.mp3",
       "durationMs": 5870
@@ -4904,6 +6176,330 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Wow! You know all the seasons!": {
       "src": "/sounds/preschool/en/seasons-connect-success.mp3",
       "durationMs": 2866
+    },
+    "Drag: long train, heavy stone, bird up high, house, light balloon, then the brain!": {
+      "src": "/sounds/preschool/en/openai-v2-bcc4367a4151b1f0.mp3",
+      "durationMs": 8600
+    },
+    "Your little mind is thinking! Bravo!": {
+      "src": "/sounds/preschool/en/openai-v2-7446cb3c866809a4.mp3",
+      "durationMs": 3900
+    },
+    "Touch the train! The train is long, the car is short!": {
+      "src": "/sounds/preschool/en/openai-v2-9c8e6dacc218886f.mp3",
+      "durationMs": 3950
+    },
+    "Well done! That is a long train!": {
+      "src": "/sounds/preschool/en/openai-v2-9f3d78e8ab69c625.mp3",
+      "durationMs": 2700
+    },
+    "Touch the stone! The stone is heavy, the balloon is light!": {
+      "src": "/sounds/preschool/en/openai-v2-beef893bcf2db32c.mp3",
+      "durationMs": 4950
+    },
+    "Yes! The stone is heavy!": {
+      "src": "/sounds/preschool/en/openai-v2-b19d1f954d3fb3cc.mp3",
+      "durationMs": 2100
+    },
+    "Touch the ball above the line! Same ball, two places.": {
+      "src": "/sounds/preschool/en/openai-v2-8091c7230aff8974.mp3",
+      "durationMs": 4200
+    },
+    "Yes! The ball is above!": {
+      "src": "/sounds/preschool/en/openai-v2-962b976e915395d1.mp3",
+      "durationMs": 2450
+    },
+    "Put the stone and the car with the elephant, the balloon and the leaf with the feather!": {
+      "src": "/sounds/preschool/en/openai-v2-dec06cc7e1faf4f1.mp3",
+      "durationMs": 5150
+    },
+    "You know heavy and light!": {
+      "src": "/sounds/preschool/en/openai-v2-289fe23d34c389fb.mp3",
+      "durationMs": 2100
+    },
+    "Touch the ball that is INSIDE the box! Same ball, two places!": {
+      "src": "/sounds/preschool/en/openai-v2-66856c50474d9c38.mp3",
+      "durationMs": 5950
+    },
+    "Yes! The ball is inside the box!": {
+      "src": "/sounds/preschool/en/openai-v2-3f6ce5e8465b36c1.mp3",
+      "durationMs": 2850
+    },
+    "Touch the bear that is IN FRONT of the box! Same bear, two different places!": {
+      "src": "/sounds/preschool/en/openai-v2-2dafdc329925f9e6.mp3",
+      "durationMs": 5550
+    },
+    "Yes! The bear is in front of the box!": {
+      "src": "/sounds/preschool/en/openai-v2-47b0460b41387c96.mp3",
+      "durationMs": 2950
+    },
+    "Touch the right hand! We eat and shake hands with it!": {
+      "src": "/sounds/preschool/en/openai-v2-9bc2d34b22723b67.mp3",
+      "durationMs": 3650
+    },
+    "That is the right hand! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-66e3be87ac3bbea9.mp3",
+      "durationMs": 2500
+    },
+    "Train, car, train, car, train… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-71b2ef8ecc8ecad5.mp3",
+      "durationMs": 4800
+    },
+    "The car comes after the train! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-53e3b5bfb6f8716b.mp3",
+      "durationMs": 3250
+    },
+    "Flip the cards! Say: train, elephant, bird!": {
+      "src": "/sounds/preschool/en/openai-v2-9479ccabb269c0ed.mp3",
+      "durationMs": 3850
+    },
+    "Your mind is strong!": {
+      "src": "/sounds/preschool/en/openai-v2-ad41560fef63a044.mp3",
+      "durationMs": 2100
+    },
+    "Red, blue, red, blue, red… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-0eea280611ba561b.mp3",
+      "durationMs": 4750
+    },
+    "Blue comes after red! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-4cc9bd0e31c9ed06.mp3",
+      "durationMs": 2400
+    },
+    "Cat, dog, cat, dog, cat… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-c29775765017f0c6.mp3",
+      "durationMs": 5200
+    },
+    "The dog comes after the cat! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-c87ffe28f169160e.mp3",
+      "durationMs": 3950
+    },
+    "Sun, moon, sun, moon, sun… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-595dcd819e68800a.mp3",
+      "durationMs": 4500
+    },
+    "The moon comes after the sun! Great!": {
+      "src": "/sounds/preschool/en/openai-v2-176202f21a5b879a.mp3",
+      "durationMs": 3000
+    },
+    "Apple, banana, apple, banana, apple… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-d1c9af69a9c188bc.mp3",
+      "durationMs": 4650
+    },
+    "Banana comes after the apple!": {
+      "src": "/sounds/preschool/en/openai-v2-6c9ddb0c5773e807.mp3",
+      "durationMs": 2500
+    },
+    "Elephant, mouse, elephant, mouse, elephant… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-5851e74d4e68b97d.mp3",
+      "durationMs": 4600
+    },
+    "The small mouse comes after the elephant!": {
+      "src": "/sounds/preschool/en/openai-v2-2dba3056fd6f0216.mp3",
+      "durationMs": 4300
+    },
+    "Car, bus, bus, car, bus… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-3243352fa88c5b54.mp3",
+      "durationMs": 4950
+    },
+    "A second bus! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-870ede3e4d3e38d6.mp3",
+      "durationMs": 2250
+    },
+    "Sun, cloud, rain, sun, cloud… what is next?": {
+      "src": "/sounds/preschool/en/openai-v2-3e214e0b245d93f9.mp3",
+      "durationMs": 4950
+    },
+    "Rain comes after the cloud! Genius!": {
+      "src": "/sounds/preschool/en/openai-v2-8e0438cce74eaa9f.mp3",
+      "durationMs": 3050
+    },
+    "One, two, three… which number is next?": {
+      "src": "/sounds/preschool/en/openai-v2-cf7464958ffc61f1.mp3",
+      "durationMs": 3350
+    },
+    "Four! Numbers champion!": {
+      "src": "/sounds/preschool/en/openai-v2-dd9d5c31450f3842.mp3",
+      "durationMs": 2450
+    },
+    "Put the pictures in order: Dido is hungry, then couscous, then he smiles! Then tell the story to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-0730dde5c07600e1.mp3",
+      "durationMs": 7700
+    },
+    "Well done! Now tell the story to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-b3a39a14b1b5d21c.mp3",
+      "durationMs": 3200
+    },
+    "Put the pictures in order: dirty hands, then soap, then clean hands! Then tell the story!": {
+      "src": "/sounds/preschool/en/openai-v2-54030282458a1782.mp3",
+      "durationMs": 6500
+    },
+    "Clean hands! Tell the story to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-4f6b13187a5081dd.mp3",
+      "durationMs": 3250
+    },
+    "Put the pictures in order: we wake up, then school, then a hug! Then tell the story!": {
+      "src": "/sounds/preschool/en/openai-v2-c5326c385fed086c.mp3",
+      "durationMs": 4650
+    },
+    "A lovely story! Tell it to a grown-up!": {
+      "src": "/sounds/preschool/en/openai-v2-e7c8bf8bcdde5b45.mp3",
+      "durationMs": 2550
+    },
+    "Drag the pencil: face, sun, flower, house, fennec, then couscous!": {
+      "src": "/sounds/preschool/en/openai-v2-72d96c2b4c7dbd16.mp3",
+      "durationMs": 5600
+    },
+    "The drawing book is ready! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-9b6f32755c5e14ac.mp3",
+      "durationMs": 3000
+    },
+    "Pick a color and tap the face, the eyes and the mouth!": {
+      "src": "/sounds/preschool/en/openai-v2-90d9cecdb139db77.mp3",
+      "durationMs": 4400
+    },
+    "A lovely face! You are an artist!": {
+      "src": "/sounds/preschool/en/openai-v2-3d374388119638d5.mp3",
+      "durationMs": 3250
+    },
+    "Color the sun! Tap the circle and the rays!": {
+      "src": "/sounds/preschool/en/openai-v2-a5217daa4f9d2877.mp3",
+      "durationMs": 4600
+    },
+    "Your sun shines! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-9c76256c961ea35a.mp3",
+      "durationMs": 2800
+    },
+    "Color the flower! The petals, the center and the stem!": {
+      "src": "/sounds/preschool/en/openai-v2-44c38cccd7199fa3.mp3",
+      "durationMs": 5000
+    },
+    "A wonderful flower!": {
+      "src": "/sounds/preschool/en/openai-v2-004a20c8e8789f47.mp3",
+      "durationMs": 1900
+    },
+    "Color the house! The roof, the wall, the door and the window!": {
+      "src": "/sounds/preschool/en/openai-v2-ca783998fc685ade.mp3",
+      "durationMs": 4550
+    },
+    "A beautiful house!": {
+      "src": "/sounds/preschool/en/openai-v2-d4abc2c1e484af08.mp3",
+      "durationMs": 2200
+    },
+    "Color the fennec! Big ears, the little fox of our Sahara!": {
+      "src": "/sounds/preschool/en/openai-v2-a3f3cd6e4dbc433c.mp3",
+      "durationMs": 4750
+    },
+    "A wonderful fennec!": {
+      "src": "/sounds/preschool/en/openai-v2-272a593545600ed8.mp3",
+      "durationMs": 2250
+    },
+    "Color the camel! The ship of the desert and its hump!": {
+      "src": "/sounds/preschool/en/openai-v2-f7c6b79d8c7f20c0.mp3",
+      "durationMs": 4650
+    },
+    "A strong camel!": {
+      "src": "/sounds/preschool/en/openai-v2-22f45209086b75bc.mp3",
+      "durationMs": 1700
+    },
+    "Color the couscous dish! The pot, the lid and the food!": {
+      "src": "/sounds/preschool/en/openai-v2-a5e0e8e3527674a0.mp3",
+      "durationMs": 4850
+    },
+    "Yum! Your dish is ready!": {
+      "src": "/sounds/preschool/en/openai-v2-72d75d77f641d055.mp3",
+      "durationMs": 2400
+    },
+    "Drag: apple, ant, fish, farm, then bee!": {
+      "src": "/sounds/preschool/en/openai-v2-076c402679dbbd65.mp3",
+      "durationMs": 4950
+    },
+    "Let's play! Well done!": {
+      "src": "/sounds/preschool/en/openai-v2-af5234b8f2bd2f16.mp3",
+      "durationMs": 2100
+    },
+    "Pick a color and color the apple! The fruit, the stem and the leaf!": {
+      "src": "/sounds/preschool/en/openai-v2-4d73d9c3f4b7d101.mp3",
+      "durationMs": 5000
+    },
+    "A beautiful apple!": {
+      "src": "/sounds/preschool/en/openai-v2-bc7af25aac0942ef.mp3",
+      "durationMs": 3250
+    },
+    "Drag the ant all the way to the green leaf!": {
+      "src": "/sounds/preschool/en/openai-v2-015b5aad561d62c8.mp3",
+      "durationMs": 3300
+    },
+    "The ant arrived!": {
+      "src": "/sounds/preschool/en/openai-v2-7a88d0e6e91cdac8.mp3",
+      "durationMs": 1700
+    },
+    "Drag the fish through the sea to the shell!": {
+      "src": "/sounds/preschool/en/openai-v2-726c6c7880076592.mp3",
+      "durationMs": 2950
+    },
+    "The fish found its shell!": {
+      "src": "/sounds/preschool/en/openai-v2-4d69592c0a03a4ad.mp3",
+      "durationMs": 2350
+    },
+    "Put the sun, the tree and the house in their place!": {
+      "src": "/sounds/preschool/en/openai-v2-157d376dffe44cf7.mp3",
+      "durationMs": 4200
+    },
+    "The farm is complete!": {
+      "src": "/sounds/preschool/en/openai-v2-aaef8430114301db.mp3",
+      "durationMs": 2050
+    },
+    "Put the sun, the camel, the fennec and the palm in their place!": {
+      "src": "/sounds/preschool/en/openai-v2-44945c1e0af78232.mp3",
+      "durationMs": 4900
+    },
+    "A beautiful oasis!": {
+      "src": "/sounds/preschool/en/openai-v2-0b941940898fb4b5.mp3",
+      "durationMs": 2500
+    },
+    "Drag the car along the road all the way home!": {
+      "src": "/sounds/preschool/en/openai-v2-a159169f6249d480.mp3",
+      "durationMs": 4050
+    },
+    "The car arrived home!": {
+      "src": "/sounds/preschool/en/openai-v2-2070acefd5008f15.mp3",
+      "durationMs": 1700
+    },
+    "Put the bees with the honey, and the butterflies with the flower!": {
+      "src": "/sounds/preschool/en/openai-v2-57d177de7c36bbcb.mp3",
+      "durationMs": 3700
+    },
+    "Everyone in their place!": {
+      "src": "/sounds/preschool/en/openai-v2-0f4dd57673cf6b07.mp3",
+      "durationMs": 2650
+    },
+    "Touch three spaces to plant three seeds.": {
+      "src": "/sounds/preschool/en/openai-v2-dc8a1dc9249b667f.mp3",
+      "durationMs": 3450
+    },
+    "Didou has three seeds. He adds one. How many seeds does he have now?": {
+      "src": "/sounds/preschool/en/openai-v2-57581d24d468ae29.mp3",
+      "durationMs": 5900
+    },
+    "Give each pot one water counter.": {
+      "src": "/sounds/preschool/en/openai-v2-be5ea7650625dcf6.mp3",
+      "durationMs": 3000
+    },
+    "What does Didou see after several days?": {
+      "src": "/sounds/preschool/en/openai-v2-5bb27f44bfaea98b.mp3",
+      "durationMs": 3150
+    },
+    "Didou plants a seed and waters it. After several days, a little plant appears.": {
+      "src": "/sounds/preschool/en/openai-v2-7dc5c9fde7f6e4cf.mp3",
+      "durationMs": 5300
+    },
+    "Share 3 tomatoes equally between 3 baskets.": {
+      "src": "/sounds/preschool/en/openai-v2-2450ddc3fa6c34c8.mp3",
+      "durationMs": 4100
+    },
+    "Tell a grown-up how you helped Didou. Then try with real objects.": {
+      "src": "/sounds/preschool/en/openai-v2-8751d0dc0004fa33.mp3",
+      "durationMs": 5150
     },
     "Drag the fennec: house, apple, salam, gift, then the mosque!": {
       "src": "/sounds/preschool/en/values-mosque-path-prompt.mp3",

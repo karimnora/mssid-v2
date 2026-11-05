@@ -1,3 +1,5 @@
+import { LabAtmosphere } from './world/LabAtmosphere';
+import { LabGuide } from './world/LabGuide';
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import type { PracticeResult } from '../utils/competenceProgress';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
@@ -137,7 +139,9 @@ export const ActiveWorkspace: React.FC<ActiveWorkspaceProps> = ({
         }}
         className={labOpen ? 'lab-interior kids-pole overflow-x-hidden overflow-y-visible rounded-[28px]' : undefined}
       >
+      {labOpen && <LabAtmosphere subject={selectedSubject} />}
       {labOpen && <div className="kids-hero-band" />}
+      {labOpen && <LabGuide subject={selectedSubject} />}
       {selectedSubject === 'algerian_market' ? (
         <AlgerianCurrencyMarket
           grade={grade}

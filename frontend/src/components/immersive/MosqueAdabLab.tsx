@@ -1,5 +1,7 @@
+import { LabQuizSession } from '../LabQuizSession';
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
+import mosqueArt from '../../assets/labs/salat/backdrop-landscape.webp';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
@@ -16,11 +18,12 @@ interface MosqueAdabLabProps {
 
 export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<MosqueChoice | null>(null);
   const [stars, setStars] = useState(0);
   const trace = useLabTrace('mosque_adab_lab', grade);
-  const scene = MOSQUE_SCENES[index];
+  const scene = MOSQUE_SCENES[Math.min(index, MOSQUE_SCENES.length - 1)];
 
   const choose = (choice: MosqueChoice) => {
     if (picked) return;
@@ -43,19 +46,16 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ grade = '2AP', onB
       badge={t('mosqueBadge')}
       title={t('mosqueTitle')}
       intro={t('mosqueIntro')}
+      guideText={scene.promptAr}
       tabs={[{ id: 'adab', label: t('mosqueTitle') }]}
       activeTab="adab"
       onTab={() => undefined}
       stars={stars}
       onBack={onBack}
     >
-      <section className="rounded-3xl border-2 border-[#E7E2D7] bg-white overflow-hidden">
-        <div className="h-36 bg-[linear-gradient(180deg,#1E3A5F_0%,#008751_70%,#FDE68A_100%)] relative">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-28 h-24 bg-white/95 rounded-t-[40px] border-x-4 border-t-4 border-[#E7E2D7]" />
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#008751]" />
-          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-2 h-8 bg-[#F59E0B]" />
-          <div className="absolute top-4 right-6 text-2xl" aria-hidden>🌙</div>
-        </div>
+      <LabQuizSession complete={index >= MOSQUE_SCENES.length} score={stars} total={MOSQUE_SCENES.length} onRestart={() => { setIndex(0); setStars(0); setPicked(null); }}>
+<section className="rounded-3xl border-2 border-[#E7E2D7] bg-white overflow-hidden">
+        <img src={mosqueArt} alt="" aria-hidden="true" className="w-full h-52 sm:h-72 object-cover" draggable={false} />
         <div className="p-4 space-y-3">
           <p className="text-xs font-extrabold text-[var(--brand-emerald)]">{scene.titleAr}</p>
           <p className="text-base font-extrabold text-[var(--kids-ink)] leading-relaxed">{scene.promptAr}</p>
@@ -74,7 +74,7 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ grade = '2AP', onB
                 <motion.button
                   key={option.id}
                   type="button"
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                   data-mosque-option={option.id}
                   data-quiz-option={!picked ? 'idle' : ok ? 'correct' : chosen ? 'retry' : 'muted'}
                   disabled={!!picked}
@@ -89,11 +89,11 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ grade = '2AP', onB
           {picked && (
             <motion.button
               type="button"
-              whileTap={{ scale: 0.95 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.95 }}
               data-primary-cta="lab-next"
               onClick={() => {
                 setPicked(null);
-                setIndex((n) => (n + 1) % MOSQUE_SCENES.length);
+                setIndex((n) => Math.min(n + 1, MOSQUE_SCENES.length));
               }}
               className="hit-target w-full rounded-2xl bg-[var(--brand-emerald)] text-white text-sm font-extrabold cursor-pointer"
             >
@@ -102,6 +102,7 @@ export const MosqueAdabLab: React.FC<MosqueAdabLabProps> = ({ grade = '2AP', onB
           )}
         </div>
       </section>
+</LabQuizSession>
     </ImmersiveLabShell>
   );
 };

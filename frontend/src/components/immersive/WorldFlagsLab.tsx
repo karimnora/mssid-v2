@@ -1,3 +1,4 @@
+import { LabQuizSession } from '../LabQuizSession';
 import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
@@ -60,7 +61,8 @@ export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ grade = '5AP', onB
 
   const order = useMemo(() => flagRoundOrder(), []);
   const [roundIndex, setRoundIndex] = useState(0);
-  const round = useMemo(() => flagRound(order[roundIndex % order.length]), [order, roundIndex]);
+  const [sessionScore, setSessionScore] = useState(0);
+  const round = useMemo(() => flagRound(order[Math.min(roundIndex, order.length - 1)]), [order, roundIndex]);
   const [missed, setMissed] = useState<string[]>([]);
   const [found, setFound] = useState(false);
 
@@ -105,13 +107,14 @@ export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ grade = '5AP', onB
     say(t('flagsDidouRight', { name: country.nameAr }), 'happy', 'ar');
     // A star only for a flag found at the first try: guessing all four earns nothing.
     if (missed.length === 0) {
+      setSessionScore(value => value + 1);
       setStars((n) => n + 1);
       onReward?.(5, 12);
     }
   };
 
   const nextRound = () => {
-    setRoundIndex((n) => n + 1);
+    setRoundIndex((n) => Math.min(n + 1, order.length));
     setMissed([]);
     setFound(false);
   };
@@ -124,6 +127,7 @@ export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ grade = '5AP', onB
       badge={t('flagsBadge')}
       title={t('flagsTitle')}
       intro={t('flagsIntro')}
+      showGuide={false}
       tabs={[
         { id: 'map', label: t('flagsTabMap') },
         { id: 'quiz', label: t('flagsTabQuiz') },
@@ -183,7 +187,8 @@ export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ grade = '5AP', onB
       )}
 
       {tab === 'quiz' && (
-        <section className="flags-quiz" data-flag-round={round.target.id}>
+        <LabQuizSession complete={roundIndex >= order.length} score={sessionScore} total={order.length} onRestart={() => { setRoundIndex(0); setSessionScore(0); setMissed([]); setFound(false); }}>
+<section className="flags-quiz" data-flag-round={round.target.id}>
           <p className="flags-quiz-question" dir="rtl">{t('flagsDidouFind', { name: round.target.nameAr })}</p>
           <div className="flags-quiz-grid">
             {round.options.map((country) => {
@@ -214,6 +219,7 @@ export const WorldFlagsLab: React.FC<WorldFlagsLabProps> = ({ grade = '5AP', onB
             </motion.button>
           )}
         </section>
+</LabQuizSession>
       )}
     </ImmersiveLabShell>
   );

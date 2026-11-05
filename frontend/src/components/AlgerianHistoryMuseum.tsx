@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
@@ -414,7 +415,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
     },
   ], []);
 
-  const currentQuiz = quizQuestions[quizIndex % quizQuestions.length];
+  const currentQuiz = quizQuestions[Math.min(quizIndex, quizQuestions.length - 1)];
 
   const handleAnswerQuiz = (chosen: string) => {
     if (isQuizAnswered) return;
@@ -441,7 +442,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
   };
 
   const handleNextQuiz = () => {
-    setQuizIndex((prev) => prev + 1);
+    setQuizIndex((prev) => Math.min(prev + 1, quizQuestions.length));
     setSelectedQuizOption(null);
     setIsQuizAnswered(false);
     setQuizFeedback(null);
@@ -878,7 +879,8 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
       {/* TAB 4: HISTORY DETECTIVE QUIZ                            */}
       {/* ======================================================== */}
       {activeTab === 'detective_quiz' && (
-        <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
+        <LabQuizSession complete={quizIndex >= quizQuestions.length} score={quizScore} total={quizQuestions.length} onRestart={() => { setQuizIndex(0); setQuizScore(0); setSelectedQuizOption(null); setIsQuizAnswered(false); setQuizFeedback(null); }}>
+<div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
           <div className="flex items-center justify-between pb-4 border-b border-[var(--app-card-border)]">
             <span className="text-xs font-black text-[var(--app-text-muted)]">
               {t('historyMuseumDetectiveQuestionLabel', { number: quizIndex + 1 })}
@@ -947,6 +949,7 @@ export const AlgerianHistoryMuseum: React.FC<AlgerianHistoryMuseumProps> = ({
             </div>
           )}
         </div>
+</LabQuizSession>
       )}
     </div>
   );

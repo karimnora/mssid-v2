@@ -1,0 +1,37 @@
+{
+  "errors": [],
+  "viewports": [
+    {
+      "width": 390,
+      "quizEnded": true,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "quizEnded": true,
+      "overflow": false
+    }
+  ],
+  "audio": [
+    {
+      "width": 390,
+      "url": "http://localhost:3002/sounds/preschool/ar/openai-v2-a67f1a86273d28e3.mp3",
+      "kind": "question"
+    },
+    {
+      "width": 390,
+      "url": "http://localhost:3002/sounds/preschool/ar/openai-v2-1111b5a0a72a793b.mp3",
+      "kind": "explanation"
+    },
+    {
+      "width": 1280,
+      "url": "http://localhost:3002/sounds/preschool/ar/openai-v2-a67f1a86273d28e3.mp3",
+      "kind": "question"
+    },
+    {
+      "width": 1280,
+      "url": "http://localhost:3002/sounds/preschool/ar/openai-v2-1111b5a0a72a793b.mp3",
+      "kind": "explanation"
+    }
+  ]
+}

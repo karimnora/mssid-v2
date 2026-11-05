@@ -362,3 +362,33 @@ Contrôle Chromium/Playwright en arabe, 390×844 et 1280×800, aperçu v2 sur 30
 ## Résultat — lot prêt à commiter (5 novembre 2026)
 
 Effet d’eau ajouté après un lavage réussi, uniquement transform/opacity, absent pour l’intention et le passage des mains sur la tête, désactivé avec prefers-reduced-motion. Progression et contenu inchangés. TypeScript réussi ; Vitest ciblé 14/14 ; suite complète 2 519/2 519 sur 247 fichiers. Captures finales arabes 390×844 et 1280×800 conservées ; effet d’eau et réduction du mouvement contrôlés. Aucun débordement horizontal ni chevauchement des cibles, aucun événement pageerror détecté sur les parcours ciblés. Prière et autres labos restent à intégrer, puis refonte globale des cours, préscolaire, examens et jeux. Commit et push autorisés sur v2 ; main reste hors intervention.
+
+## Résultat — ensemble du catalogue et guide Didou (5 novembre 2026)
+
+- **Prière** : sept sprites corrigés, échelle/sol communs, orientation arabe, mosquée cohérente, Didou suit la description courante. Postures à faire relire avant diffusion publique.
+- **Électricité** : composants et matériaux rendus, lampes/LED en couches superposables, corps du moteur et hélice séparés, vibration du buzzer ; schémas et règles conservés.
+- **Route** : rue peinte, feux, enfant, bus et accompagnateur séparés ; regard à gauche préservé indépendamment du RTL ; guide suit la question ou l’étape de traversée.
+- **Souk** : étals, produits et couffin rendus, guide dynamique sans doublon ; prix et monnaie toujours exacts et affichés par l’app.
+- **Mosquée** : décor peint partagé avec la prière, guide sur la situation courante.
+- **Autres labos** : six décors thématiques nouveaux et guide Didou commun, sans modifier les schémas précis, les cartes, les règles ou le contenu pédagogique. Inventaire exact : 38 labos, tous raccordés au décor et au guide.
+
+Détails et limites dans [le rapport du lot global](design/labos-lot-global/README.md). Les vérifications sont regroupées à la fin des intégrations, à la demande de Karim. Aucun nouveau test lancé pendant ce lot d’intégration.
+
+### Audio OpenAI — 5 novembre 2026
+- Générateur hors navigateur ajouté : `frontend/scripts/openai-tts-generate.ts` ; mode inventaire par défaut, génération explicite, reprise après interruption et contrôle WAV/SHA-256.
+- Clé lue depuis un fichier local ignoré par Git ; aucune clé ajoutée au code ni aux fichiers audio.
+- Inventaire du périmètre labos : 88 phrases sans enregistrement (guides, ablutions, prière, questions et explications).
+- Premier appel de génération refusé par OpenAI : HTTP 429, `credit_balance_exhausted`. Aucun nouveau fichier audio produit ni indexé.
+- Reste : activer/alimenter les crédits API, générer puis écouter et contrôler la prononciation avant intégration. Les enregistrements existants restent en place ; leur naturel ne peut pas être jugé par le seul inventaire.
+
+### Résultat — finition des quiz et voix OpenAI, 5 novembre 2026
+
+- Ablutions et prière : 12 questions chacune, explication après réponse, progression visible, résultat final et reprise volontaire. Les autres quiz de labos concernés ont une fin de session ; leurs banques et règles restent propres à chaque activité.
+- Ablutions, activité « أُرَتِّبُ » : une erreur conserve le préfixe correctement ordonné. Le passage piéton conserve aussi les étapes réussies.
+- Voix : 399 nouveaux enregistrements uniques (206 ar, 112 fr, 81 en), en complément des enregistrements existants. Aucun ancien audio remplacé sans défaut identifié. Sources : guides de labos, ablutions/prière, quiz associés, route/mosquée et listes de voix V2 déjà recensées. Les récitations coraniques existantes sont conservées.
+- Génération : phrases dédupliquées, reprise sur fichiers vérifiés, aucune synthèse payante à chaque écoute. Inventaire final : zéro manque dans les sources recensées ; cela ne signifie pas que toutes les phrases dynamiques de l'application sont couvertes.
+- Compression locale : 107 352 756 octets WAV vers 22 710 516 octets MP3 (environ 79 % de moins). Originaux archivés hors du dépôt. Contrôle du signal, durée, décodage et intégrité ; naturel et prononciation restent à écouter humainement.
+- Intégration : boutons d'écoute des questions et explications, arrêt au changement de question ou à la sortie du quiz, phrase commune pour les annonces de prière, langue du guide détectée à partir du texte.
+- Vérifications : TypeScript réussi ; suite complète 248 fichiers / 2 522 tests réussis, puis contrôle ciblé après indexation et derniers raccordements (9 fichiers / 38 tests réussis). Captures et scan en arabe : 38 labos × 390×844 et 1280×800, aucun débordement, erreur JS, image cassée ou guide manquant. Les 12 questions des ablutions et la lecture des MP3 ont été vérifiées dans le navigateur aux deux tailles.
+- Rapports : `docs/design/labos-lot-global/verification/`, `docs/audio-v2/openai-generation-audit.json`, `docs/audio-v2/OPENAI-V2.md`.
+- Reste : écoute humaine des voix, validation pédagogique des postures religieuses, puis amélioration de l'adaptation de difficulté et du bilan parent. La refonte complète des cours/examens/jeux ne doit pas être confondue avec ce lot de labos et de voix.

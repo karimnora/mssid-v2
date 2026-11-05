@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 /**
  * SpeedVelocityLab.tsx — مختبر السرعة والحركة «في المدينة» (2D / 3D)
  * Conçu pour les élèves de 1AP à 5AP avec adaptation pédagogique par niveau :
@@ -490,7 +491,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
     }
   }, [isEarlyGrade, isMiddleGrade]);
 
-  const currentQuiz = QUIZ_LIST[quizIndex % QUIZ_LIST.length];
+  const currentQuiz = QUIZ_LIST[Math.min(quizIndex, QUIZ_LIST.length - 1)];
 
   const handleAnswer = (idx: number) => {
     if (labQuizIsLocked(selectedOption ?? undefined, currentQuiz.correctIndex)) return;
@@ -509,7 +510,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
   const nextQuestion = () => {
     setSelectedOption(null);
     setQuizFeedback(null);
-    setQuizIndex((i) => (i + 1) % QUIZ_LIST.length);
+    setQuizIndex((i) => Math.min(i + 1, QUIZ_LIST.length));
   };
 
   // Sorting game validation for 1AP/2AP
@@ -1437,7 +1438,8 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
 
       {/* ── TAB 5 : QUIZ & CHALLENGES ── */}
       {activeTab === 'quiz' && (
-        <div className="w-full max-w-2xl flex flex-col gap-6">
+        <LabQuizSession complete={quizIndex >= QUIZ_LIST.length} score={quizScore} total={QUIZ_LIST.length * 10} onRestart={() => { setQuizIndex(0); setQuizScore(0); setSelectedOption(null); setQuizFeedback(null); }}>
+<div className="w-full max-w-2xl flex flex-col gap-6">
           <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-6">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div>
@@ -1508,6 +1510,7 @@ export const SpeedVelocityLab: React.FC<SpeedVelocityLabProps> = ({
             </div>
           </div>
         </div>
+</LabQuizSession>
       )}
     </div>
   );

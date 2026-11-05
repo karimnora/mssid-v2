@@ -1,5 +1,14 @@
+import { LabQuizSession } from '../LabQuizSession';
 import React, { useMemo, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
+import pedestrianRed from '../../assets/labs/road/pedestrian-red.webp';
+import pedestrianGreen from '../../assets/labs/road/pedestrian-green.webp';
+import childWalking from '../../assets/labs/road/child-walking.webp';
+import childLooking from '../../assets/labs/road/child-looking.webp';
+import busArt from '../../assets/labs/road/bus.webp';
+import guardArt from '../../assets/labs/road/guard.webp';
+import elderArt from '../../assets/labs/road/elder.webp';
+import './roadCodeLab.css';
 import { ImmersiveLabShell } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
@@ -21,14 +30,17 @@ interface RoadCodeLabProps {
 
 export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   const scenes = useMemo(() => roadScenesForGrade(grade), [grade]);
   const [tab, setTab] = useState('scenes');
   const [index, setIndex] = useState(0);
+  const [sceneScore, setSceneScore] = useState(0);
   const [picked, setPicked] = useState<RoadAction | null>(null);
   const [crossing, setCrossing] = useState<CrossingStep[]>([]);
+  const [crossMiss, setCrossMiss] = useState(false);
   const [stars, setStars] = useState(0);
   const trace = useLabTrace('road_code_lab', grade);
-  const scene = scenes[index] ?? scenes[0];
+  const scene = scenes[Math.min(index, scenes.length - 1)];
 
   const reward = () => {
     playSoftSuccess();
@@ -42,6 +54,7 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
     setPicked(action);
     if (ok) {
       trace.success('scenes');
+      setSceneScore(value => value + 1);
       speakArSafe(scene.options.find((option) => option.id === action)?.labelAr ?? '');
       reward();
     } else {
@@ -55,9 +68,10 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
     if (expected !== step) {
       playSoftMiss();
       trace.miss('cross');
-      setCrossing([]);
+      setCrossMiss(true);
       return;
     }
+    setCrossMiss(false);
     const next = [...crossing, step];
     setCrossing(next);
     if (nextCrossingStep(next) === 'done') {
@@ -72,6 +86,7 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
       badge={t('roadBadge')}
       title={t('roadTitle')}
       intro={t('roadIntro')}
+      guideText={tab === 'scenes' ? scene?.promptAr : nextCrossingStep(crossing) === 'left' ? t('roadLookLeft') : nextCrossingStep(crossing) === 'right' ? t('roadLookRight') : nextCrossingStep(crossing) === 'cross' ? t('roadCross') : t('roadCrossDone')}
       tabs={[
         { id: 'scenes', label: t('roadTabScenes') },
         { id: 'cross', label: t('roadTabCross') },
@@ -82,18 +97,16 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
       onBack={onBack}
     >
       {tab === 'scenes' && scene && (
-        <section className="rounded-3xl border-2 border-[#E7E2D7] bg-white overflow-hidden">
-          <div className="relative h-40 bg-[linear-gradient(180deg,#7DD3FC_0%,#FEF3C7_55%,#86EFAC_100%)]">
-            <div className="absolute bottom-8 inset-x-0 h-10 bg-[#64748B]" />
-            <div className="absolute bottom-[52px] inset-x-8 h-2 bg-[#FDE68A] opacity-80" />
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-24 h-3 bg-white" />
-            <div className="absolute top-4 right-6 w-8 rounded-lg bg-[#0f172a] p-1 space-y-1">
-              <span className={`block h-4 rounded-full ${scene.id === 'red' ? 'bg-[#C42A23]' : 'bg-[#7F1D1D]'}`} />
-              <span className="block h-4 rounded-full bg-[#854D0E]" />
-              <span className={`block h-4 rounded-full ${scene.id === 'green' ? 'bg-[#008751]' : 'bg-[#14532D]'}`} />
-            </div>
-            <div className="absolute bottom-16 left-8 text-3xl" aria-hidden>🚸</div>
-            <div className="absolute bottom-14 right-16 text-3xl" aria-hidden>🚕</div>
+        <LabQuizSession complete={index >= scenes.length} score={sceneScore} total={scenes.length} onRestart={() => { setIndex(0); setSceneScore(0); setPicked(null); }}>
+<section className="rounded-3xl border-2 border-[#E7E2D7] bg-white overflow-hidden">
+          <div className="road-art-scene" data-road-scene={scene.id} aria-hidden="true">
+            {(scene.id === 'red' || scene.id === 'green') && <div className="road-light">
+              <img src={pedestrianRed} alt="" className={scene.id === 'red' ? 'is-on' : ''} />
+              <img src={pedestrianGreen} alt="" className={scene.id === 'green' ? 'is-on' : ''} />
+            </div>}
+            <img src={scene.id === 'bus' ? elderArt : childLooking} alt="" className="road-child road-safety-look" />
+            {(scene.id === 'school' || scene.id === 'bus') && <img src={busArt} alt="" className="road-bus" />}
+            {scene.id === 'school' && <img src={guardArt} alt="" className="road-guard" />}
           </div>
           <div className="p-4 space-y-3">
             <p className="text-xs font-extrabold text-[var(--brand-emerald)]">{scene.titleAr}</p>
@@ -113,7 +126,7 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
                   <motion.button
                     key={option.id}
                     type="button"
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                     data-road-option={option.id}
                     disabled={!!picked}
                     onClick={() => choose(option.id)}
@@ -127,10 +140,10 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
             {picked && (
               <motion.button
                 type="button"
-                whileTap={{ scale: 0.95 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                 onClick={() => {
                   setPicked(null);
-                  setIndex((n) => (n + 1) % scenes.length);
+                  setIndex((n) => Math.min(n + 1, scenes.length));
                 }}
                 className="hit-target w-full rounded-2xl bg-[var(--brand-emerald)] text-white text-sm font-extrabold cursor-pointer"
               >
@@ -139,32 +152,28 @@ export const RoadCodeLab: React.FC<RoadCodeLabProps> = ({ grade = '2AP', onBack,
             )}
           </div>
         </section>
+</LabQuizSession>
       )}
 
       {tab === 'cross' && (
         <section className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-4 space-y-3">
-          <div className="h-32 rounded-2xl bg-[linear-gradient(180deg,#7DD3FC,#FEF3C7)] relative overflow-hidden">
-            <div className="absolute bottom-6 inset-x-0 h-8 bg-[#64748B]" />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-28 h-3 bg-white" />
-            <motion.div
-              className="absolute bottom-10 text-3xl"
-              animate={{ right: crossing.includes('cross') ? '18%' : '70%' }}
-              transition={{ type: 'spring', stiffness: 80 }}
-            >
-              🧒
+          <div className="road-art-scene road-cross-scene" aria-hidden="true">
+            <motion.div className="road-cross-child" animate={{ y: crossing.includes('cross') ? -90 : 0, opacity: crossing.includes('cross') ? .75 : 1 }} transition={{ duration: reduceMotion ? 0 : 1 }}>
+              <img src={crossing.includes('cross') ? childWalking : childLooking} alt="" />
             </motion.div>
           </div>
+          {crossMiss && <p role="status" className="rounded-2xl bg-amber-50 p-3 font-bold text-slate-800">{t('keepProgressRetry')}</p>}
           {nextCrossingStep(crossing) === 'done' ? (
             <p className="text-base font-extrabold text-[var(--brand-emerald)] text-center">{t('roadCrossDone')}</p>
           ) : (
             <div className="grid gap-2">
-              <motion.button type="button" whileTap={{ scale: 0.95 }} onClick={() => tapCross('left')} className="hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold cursor-pointer">
+              <motion.button type="button" whileTap={reduceMotion ? undefined : { scale: 0.95 }} onClick={() => tapCross('left')} className="hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold cursor-pointer">
                 {t('roadLookLeft')}
               </motion.button>
-              <motion.button type="button" whileTap={{ scale: 0.95 }} onClick={() => tapCross('right')} className="hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold cursor-pointer">
+              <motion.button type="button" whileTap={reduceMotion ? undefined : { scale: 0.95 }} onClick={() => tapCross('right')} className="hit-target rounded-2xl bg-white border-2 border-[#E7E2D7] text-sm font-extrabold cursor-pointer">
                 {t('roadLookRight')}
               </motion.button>
-              <motion.button type="button" whileTap={{ scale: 0.95 }} onClick={() => tapCross('cross')} className="hit-target rounded-2xl bg-[var(--brand-emerald)] text-white text-sm font-extrabold cursor-pointer">
+              <motion.button type="button" whileTap={reduceMotion ? undefined : { scale: 0.95 }} onClick={() => tapCross('cross')} className="hit-target rounded-2xl bg-[var(--brand-emerald)] text-white text-sm font-extrabold cursor-pointer">
                 {t('roadCross')}
               </motion.button>
             </div>

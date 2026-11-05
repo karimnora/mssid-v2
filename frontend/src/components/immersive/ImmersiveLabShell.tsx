@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useLocaleContext } from '../../context/LocaleContext';
 import { DidouPortrait } from '../world/DidouPortrait';
 import { DidouRibbon } from '../world/DidouRibbon';
 import { ConfettiBurst } from '../lessonViewer/ConfettiBurst';
+import { speakText } from '../../utils/speech';
 
 export interface ImmersiveTab {
   id: string;
@@ -16,6 +17,8 @@ interface ImmersiveLabShellProps {
   badge: string;
   title: string;
   intro: string;
+  guideText?: string;
+  showGuide?: boolean;
   tabs: ImmersiveTab[];
   activeTab: string;
   onTab: (id: string) => void;
@@ -28,6 +31,8 @@ export const ImmersiveLabShell: React.FC<ImmersiveLabShellProps> = ({
   badge,
   title,
   intro,
+  guideText,
+  showGuide = true,
   tabs,
   activeTab,
   onTab,
@@ -36,6 +41,7 @@ export const ImmersiveLabShell: React.FC<ImmersiveLabShellProps> = ({
   children,
 }) => {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   const { direction, locale } = useLocaleContext();
 
   // Didou cheers every time a new star is earned (« monde de jeu » design, docs/v2-design-monde.md).
@@ -84,16 +90,16 @@ export const ImmersiveLabShell: React.FC<ImmersiveLabShellProps> = ({
             <span dir="ltr">×{stars}</span>
           </div>
         </div>
-        <div className="world-only relative z-10 mt-4">
-          <DidouRibbon text={intro} lang={locale === 'fr' ? 'fr' : 'ar'} listenLabel={t('listenDidou')} />
-        </div>
+        {showGuide && <div className="world-only relative z-10 mt-4">
+          <DidouRibbon text={guideText ?? intro} lang={/[\u0600-\u06ff]/.test(guideText ?? intro) ? 'ar' : locale === 'fr' ? 'fr' : 'ar'} listenLabel={t('listenDidou')} />
+        </div>}
       </div>
 
       {cheer > 0 && (
         <div className="world-only world-lab-cheer" role="status" key={cheer}>
           <div className="world-lab-cheer-card">
             <span className="relative inline-block">
-              <DidouPortrait size={64} />
+              <DidouPortrait size={64} pose="cheer" />
               <ConfettiBurst />
             </span>
             <span>{t('starWon')} ⭐</span>
@@ -106,7 +112,7 @@ export const ImmersiveLabShell: React.FC<ImmersiveLabShellProps> = ({
           <motion.button
             key={tab.id}
             type="button"
-            whileTap={{ scale: 0.95 }}
+            whileTap={reduceMotion ? undefined : { scale: 0.95 }}
             data-lab-tab
             aria-current={activeTab === tab.id ? 'step' : undefined}
             onClick={() => onTab(tab.id)}
@@ -140,9 +146,10 @@ export function QuizBlock({
   onPick: (option: string, ok: boolean) => void;
 }) {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   return (
     <div className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-5 space-y-3" data-lab-quiz>
-      <p className="text-base font-extrabold text-[var(--kids-ink)] leading-relaxed">{questionAr}</p>
+      <div className="flex items-start gap-3"><p lang="ar" className="flex-1 text-base font-extrabold text-[var(--kids-ink)] leading-relaxed">{questionAr}</p><button type="button" data-quiz-listen className="hit-target min-h-[60px] min-w-[60px] rounded-2xl bg-amber-100 shrink-0" aria-label={t('listenDidou')} onClick={() => void speakText(questionAr, 'ar-SA').catch(() => {})}><span aria-hidden="true">🔊</span></button></div>
       <div className="grid gap-2">
         {optionsAr.map((option) => {
           const chosen = picked === option;
@@ -158,7 +165,7 @@ export function QuizBlock({
             <motion.button
               key={option}
               type="button"
-              whileTap={{ scale: 0.95 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.95 }}
               disabled={!!picked}
               data-quiz-option={!picked ? 'idle' : ok ? 'correct' : chosen ? 'retry' : 'muted'}
               onClick={() => onPick(option, ok)}

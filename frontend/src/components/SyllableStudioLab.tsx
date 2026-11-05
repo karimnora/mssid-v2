@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, Sparkles, Volume2 } from 'lucide-react';
 import { PrimaryGrade } from '../types';
@@ -52,7 +53,8 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
   const [speaking, setSpeaking] = useState<boolean>(false);
 
   const words = activeTab === 'arabic' ? ARABIC_WORDS : FRENCH_WORDS;
-  const currentWord = words[wordIdx % words.length];
+  const [sessionScore, setSessionScore] = useState(0);
+  const currentWord = words[Math.min(wordIdx, words.length - 1)];
 
   const playWord = () => {
     setSpeaking(true);
@@ -84,13 +86,14 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
   }, [showFrench, activeTab]);
 
   const handleGuess = (n: number) => {
+    if (revealed) return;
     setGuess(n);
     setRevealed(true);
-    if (n === currentWord.syllables.length) onReward?.(5, 15);
+    if (n === currentWord.syllables.length) { setSessionScore(value => value + 1); onReward?.(5, 15); }
   };
 
   const nextWord = () => {
-    setWordIdx((prev) => (prev + 1) % words.length);
+    setWordIdx((prev) => Math.min(prev + 1, words.length));
     setGuess(null);
     setRevealed(false);
   };
@@ -142,7 +145,8 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
         )}
       </div>
 
-      <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
+      <LabQuizSession complete={wordIdx >= words.length} score={sessionScore} total={words.length} onRestart={() => { setWordIdx(0); setSessionScore(0); setGuess(null); setRevealed(false); }}>
+<div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
         <p className="text-xs font-black text-[var(--app-text-muted)]">
           {activeTab === 'arabic' ? 'كَمْ مَقْطَعاً صَوْتِيّاً تَسْمَعُ فِي هَذِهِ الكَلِمَةِ؟' : 'Combien de syllabes entends-tu dans ce mot ?'}
         </p>
@@ -211,6 +215,7 @@ export const SyllableStudioLab: React.FC<SyllableStudioLabProps> = ({ grade = '2
           </div>
         )}
       </div>
+</LabQuizSession>
     </div>
   );
 };

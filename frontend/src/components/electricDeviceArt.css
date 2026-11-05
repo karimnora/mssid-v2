@@ -1,0 +1,15 @@
+.electric-device { position:relative;isolation:isolate;width:180px;height:180px;margin-inline:auto;pointer-events:none; }
+.electric-device-base,.electric-device-lit { position:absolute;inset:0;width:100%;height:100%;object-fit:contain; }
+.electric-device-lit { filter:brightness(1.5) saturate(1.25);opacity:0;transition:opacity .35s; }
+.electric-device-glow { position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgb(255 222 96 / .8),transparent 65%);opacity:0;transition:opacity .35s; }
+.electric-device[data-electric-device='diode'] .electric-device-glow { background:radial-gradient(ellipse at 50% 35%,rgb(255 57 49 / .8),transparent 65%); }
+.electric-device[data-powered='true'] .electric-device-lit,.electric-device[data-powered='true'] .electric-device-glow { opacity:1; }
+.electric-device-fan { position:absolute;left:12%;top:8%;width:76%;height:80%;object-fit:contain; }
+.electric-device[data-powered='true'] .electric-device-fan { animation:electric-fan-spin .65s linear infinite; }
+.electric-device[data-powered='true'][data-electric-device='buzzer'] .electric-device-base { animation:electric-buzzer-shake .12s linear infinite; }
+.electric-material-thumbnail { width:48px;height:48px;object-fit:contain; }
+.electricity-lab .electric-rendered-bench { background:#e7d3b5 url('../assets/labs/electricity/backdrop-landscape.webp') center/cover !important;border-color:#c3a475; }
+.electricity-lab .electric-rendered-bench > svg { background:rgb(2 6 23 / .9);border-radius:18px; }
+@keyframes electric-fan-spin { to { transform:rotate(360deg); } }
+@keyframes electric-buzzer-shake { 0%,100% { transform:translateX(-1px); } 50% { transform:translateX(1px); } }
+@media(prefers-reduced-motion:reduce) { .electric-device-fan,.electric-device-base { animation:none !important; }.electric-device-lit,.electric-device-glow { transition:none; }.electricity-lab .animate-spin,.electricity-lab .animate-pulse { animation:none !important; } }

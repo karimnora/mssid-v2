@@ -1,0 +1,195 @@
+{
+  "catalogCount": 38,
+  "labs": [
+    {
+      "id": "algerian_market",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "wilayas_map",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "history_museum",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "tamazight_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "tamazight_curriculum",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "touch_writing",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "science_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "arabic_conjugator",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "french_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "english_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "soroban",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "electricity",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "geometry",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "converter",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "educational_calculator",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "multiplication",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "primary_math_ops",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "primary_discovery",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "french_projects",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "english_audio_dialogues",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "human_anatomy",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "earth_cycles",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "fractions_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "area_grid",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "clock_trainer",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "syllable_studio",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "speed_reading",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "topography_map",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "speed_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "quran_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "wudu_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "salat_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "mosque_adab_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "road_code_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "souk_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "world_flags_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "cem_prep_lab",
+      "scenery": true,
+      "guide": true
+    },
+    {
+      "id": "cahiers_lab",
+      "scenery": true,
+      "guide": true
+    }
+  ]
+}

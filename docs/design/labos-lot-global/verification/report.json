@@ -1,0 +1,1142 @@
+[
+  {
+    "id": "algerian_market",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "wilayas_map",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/geography.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "history_museum",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/history.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "tamazight_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "tamazight_curriculum",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "touch_writing",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/creative.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "science_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "arabic_conjugator",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "french_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "english_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "soroban",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "electricity",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/electricity/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/electricity/led-off.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/electricity/led-off.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "geometry",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "converter",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "educational_calculator",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "multiplication",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "primary_math_ops",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "primary_discovery",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "french_projects",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "english_audio_dialogues",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "human_anatomy",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "earth_cycles",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "fractions_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "area_grid",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "clock_trainer",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "syllable_studio",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "speed_reading",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "topography_map",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/geography.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "speed_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/speed-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-city_bus.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-taxi.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/o-finish.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-city_bus.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/o-finish.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-taxi.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "quran_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "wudu_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/wudu/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/wudu/child-front.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "salat_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "mosque_adab_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "road_code_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/pedestrian-red.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/pedestrian-green.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/child-looking.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "souk_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/bread.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/bread.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/milk.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/dates.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/tomatoes.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/basket-empty.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "world_flags_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/geography.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "cem_prep_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/creative.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "cahiers_lab",
+    "width": 390,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/creative.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "algerian_market",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "wilayas_map",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/geography.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "history_museum",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/history.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "tamazight_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "tamazight_curriculum",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "touch_writing",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/creative.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "science_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "arabic_conjugator",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "french_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "english_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "soroban",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "electricity",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/electricity/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/electricity/led-off.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/electricity/led-off.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "geometry",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "converter",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "educational_calculator",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "multiplication",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "primary_math_ops",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "primary_discovery",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "french_projects",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "english_audio_dialogues",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "human_anatomy",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "earth_cycles",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/science.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "fractions_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "area_grid",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "clock_trainer",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/math.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "syllable_studio",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "speed_reading",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/language.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "topography_map",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/geography.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "speed_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/speed-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-city_bus.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-taxi.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/o-finish.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-city_bus.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/o-finish.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/speed/v-taxi.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "quran_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "wudu_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/wudu/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/wudu/child-front.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "salat_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "mosque_adab_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/salat/backdrop-landscape.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "road_code_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/pedestrian-red.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/pedestrian-green.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/road/child-looking.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "souk_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/backdrop-landscape.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/bread.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/bread.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/milk.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/dates.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/tomatoes.webp"
+      },
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/souk/basket-empty.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "world_flags_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/geography.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "cem_prep_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/creative.webp"
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "cahiers_lab",
+    "width": 1280,
+    "overflow": false,
+    "guide": true,
+    "images": [
+      {
+        "loaded": true,
+        "src": "/src/assets/labs/scenes/creative.webp"
+      }
+    ],
+    "errors": []
+  }
+]

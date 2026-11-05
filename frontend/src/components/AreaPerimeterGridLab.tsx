@@ -1,3 +1,5 @@
+import { LabQuizSession } from './LabQuizSession';
+import { useRef } from 'react';
 import React, { useState, useMemo } from 'react';
 import { ArrowLeft, ArrowRight, Sparkles, RotateCcw } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
@@ -25,7 +27,9 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
   const [challengeIdx, setChallengeIdx] = useState<number>(0);
   const [achieved, setAchieved] = useState<boolean>(false);
 
-  const challenge = CHALLENGES[challengeIdx];
+  const [sessionScore, setSessionScore] = useState(0);
+  const credited = useRef(new Set<number>());
+  const challenge = CHALLENGES[Math.min(challengeIdx, CHALLENGES.length - 1)];
 
   const toggleCell = (r: number, c: number) => {
     setCells((prev) => {
@@ -55,14 +59,14 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
   const checkChallenge = () => {
     if (area === challenge.area) {
       setAchieved(true);
-      onReward?.(5, 15);
+      if (!credited.current.has(challengeIdx)) { credited.current.add(challengeIdx); setSessionScore(value => value + 1); onReward?.(5, 15); }
     } else {
       setAchieved(false);
     }
   };
 
   const nextChallenge = () => {
-    setChallengeIdx((prev) => (prev + 1) % CHALLENGES.length);
+    setChallengeIdx((prev) => Math.min(prev + 1, CHALLENGES.length));
     setCells(new Set());
     setAchieved(false);
   };
@@ -144,7 +148,8 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
         </div>
       </div>
 
-      <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4 text-center">
+      <LabQuizSession complete={challengeIdx >= CHALLENGES.length} score={sessionScore} total={CHALLENGES.length} onRestart={() => { setChallengeIdx(0); setSessionScore(0); setCells(new Set()); setAchieved(false); credited.current.clear(); }}>
+<div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 shadow-sm space-y-4 text-center">
         <h3 className="text-sm font-black text-[var(--app-text)]">🎯 {t('areaPerimeterChallengePrefix')} {challenge.labelAr}</h3>
         {achieved && (
           <div className="text-sm font-black p-3 rounded-xl bg-emerald-100 text-emerald-900">
@@ -168,6 +173,7 @@ export const AreaPerimeterGridLab: React.FC<AreaPerimeterGridLabProps> = ({ onRe
           )}
         </div>
       </div>
+</LabQuizSession>
     </div>
   );
 };

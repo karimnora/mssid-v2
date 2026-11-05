@@ -1,0 +1,51 @@
+[
+  {
+    "id": "takbir",
+    "left": 202,
+    "top": 10,
+    "width": 137,
+    "height": 470
+  },
+  {
+    "id": "qiyam",
+    "left": 555,
+    "top": 10,
+    "width": 132,
+    "height": 470
+  },
+  {
+    "id": "ruku",
+    "left": 821,
+    "top": 109,
+    "width": 343,
+    "height": 371
+  },
+  {
+    "id": "raise",
+    "left": 1353,
+    "top": 10,
+    "width": 136,
+    "height": 470
+  },
+  {
+    "id": "sujud",
+    "left": 82,
+    "top": 693,
+    "width": 436,
+    "height": 192
+  },
+  {
+    "id": "jalsa",
+    "left": 677,
+    "top": 511,
+    "width": 238,
+    "height": 376
+  },
+  {
+    "id": "sujud2",
+    "left": 1115,
+    "top": 693,
+    "width": 436,
+    "height": 193
+  }
+]

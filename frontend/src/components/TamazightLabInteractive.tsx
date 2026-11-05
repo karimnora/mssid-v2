@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -123,13 +124,15 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
     },
   ];
 
-  const currentQuiz = QUIZ_ITEMS[quizIndex % QUIZ_ITEMS.length];
+  const [sessionScore, setSessionScore] = useState(0);
+  const currentQuiz = QUIZ_ITEMS[Math.min(quizIndex, QUIZ_ITEMS.length - 1)];
 
   const handleAnswerQuiz = (option: string) => {
     if (feedback) return;
     setSelectedAnswer(option);
     const isCorrect = option === currentQuiz.correct;
     if (isCorrect) {
+      setSessionScore(value => value + 1);
       setFeedback({ isCorrect: true, msg: `ممتاز! إجابة صحيحة: ${currentQuiz.explanation}` });
       AuthService.addScore(25);
       if (onReward) onReward(10, 25);
@@ -139,7 +142,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
   };
 
   const handleNextQuiz = () => {
-    setQuizIndex((p) => p + 1);
+    setQuizIndex((p) => Math.min(p + 1, QUIZ_ITEMS.length));
     setSelectedAnswer(null);
     setFeedback(null);
   };
@@ -328,9 +331,10 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
 
       {/* Tab 3: Quiz */}
       {activeTab === 'quiz' && (
-        <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-lg max-w-2xl mx-auto space-y-6">
+        <LabQuizSession complete={quizIndex >= QUIZ_ITEMS.length} score={sessionScore} total={QUIZ_ITEMS.length} onRestart={() => { setQuizIndex(0); setSessionScore(0); setSelectedAnswer(null); setFeedback(null); }}>
+<div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-lg max-w-2xl mx-auto space-y-6">
           <div className="flex justify-between items-center text-xs font-bold text-[var(--app-text-muted)] border-b border-[var(--app-card-border)] pb-3">
-            <span>السؤال {(quizIndex % QUIZ_ITEMS.length) + 1} من {QUIZ_ITEMS.length}</span>
+            <span>السؤال {quizIndex + 1} من {QUIZ_ITEMS.length}</span>
             <span className="text-amber-600 font-black">+25 XP لكل إجابة صحيحة</span>
           </div>
 
@@ -374,6 +378,7 @@ export const TamazightLabInteractive: React.FC<TamazightLabProps> = ({
             </div>
           )}
         </div>
+</LabQuizSession>
       )}
     </div>
   );

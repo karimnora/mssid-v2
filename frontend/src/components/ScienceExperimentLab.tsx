@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
@@ -200,7 +201,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
     },
   ];
 
-  const currentQuiz = SCIENCE_QUIZ[quizIndex % SCIENCE_QUIZ.length];
+  const currentQuiz = SCIENCE_QUIZ[Math.min(quizIndex, SCIENCE_QUIZ.length - 1)];
 
   const handleAnswerQuiz = (opt: string) => {
     if (isAnswered) return;
@@ -227,7 +228,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
   };
 
   const handleNextQuiz = () => {
-    setQuizIndex((p) => p + 1);
+    setQuizIndex((p) => Math.min(p + 1, SCIENCE_QUIZ.length));
     setSelectedOption(null);
     setIsAnswered(false);
     setFeedback(null);
@@ -927,7 +928,8 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
       {/* TAB 4: SCIENCE DETECTIVE QUIZ                            */}
       {/* ======================================================== */}
       {activeTab === 'quiz' && (
-        <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
+        <LabQuizSession complete={quizIndex >= SCIENCE_QUIZ.length} score={quizScore} total={SCIENCE_QUIZ.length} onRestart={() => { setQuizIndex(0); setQuizScore(0); setSelectedOption(null); setIsAnswered(false); setFeedback(null); }}>
+<div className="bg-[var(--app-card-bg)] rounded-3xl p-6 sm:p-8 border border-[var(--app-card-border)] shadow-md space-y-6 max-w-2xl mx-auto text-center">
           <div className="flex items-center justify-between pb-4 border-b border-[var(--app-card-border)]">
             <span className="text-xs font-black text-[var(--app-text-muted)]">
               اللغز العلمي رقم {quizIndex + 1}
@@ -996,6 +998,7 @@ export const ScienceExperimentLab: React.FC<ScienceExperimentLabProps> = ({
             </div>
           )}
         </div>
+</LabQuizSession>
       )}
     </div>
   );

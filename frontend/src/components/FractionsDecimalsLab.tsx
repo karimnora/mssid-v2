@@ -1,3 +1,5 @@
+import { LabQuizSession } from './LabQuizSession';
+import { useRef } from 'react';
 import React, { useEffect, useState, useMemo } from 'react';
 import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 import { PrimaryGrade } from '../types';
@@ -47,7 +49,9 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
   const [decimalPoint, setDecimalPoint] = useState<number>(0.5);
   const [decimalAnswers, setDecimalAnswers] = useState<Record<number, number>>({});
 
-  const currentQ = FRACTION_QUESTIONS[qIdx];
+  const [sessionScore, setSessionScore] = useState(0);
+  const credited = useRef(new Set<number>());
+  const currentQ = FRACTION_QUESTIONS[Math.min(qIdx, FRACTION_QUESTIONS.length - 1)];
   const slices = useMemo(() => Array.from({ length: currentQ.denom }, (_, i) => i), [currentQ]);
 
   const toggleSlice = (i: number) => {
@@ -58,11 +62,11 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
   const checkAnswer = () => {
     const ok = filled === currentQ.target;
     setChecked(ok);
-    if (ok) onReward?.(5, 15);
+    if (ok && !credited.current.has(qIdx)) { credited.current.add(qIdx); setSessionScore(value => value + 1); onReward?.(5, 15); }
   };
 
   const nextQuestion = () => {
-    setQIdx((prev) => (prev + 1) % FRACTION_QUESTIONS.length);
+    setQIdx((prev) => Math.min(prev + 1, FRACTION_QUESTIONS.length));
     setFilled(0);
     setChecked(null);
   };
@@ -127,7 +131,8 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
       </div>
 
       {activeTab === 'visual' && (
-        <div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
+        <LabQuizSession complete={qIdx >= FRACTION_QUESTIONS.length} score={sessionScore} total={FRACTION_QUESTIONS.length} onRestart={() => { setQIdx(0); setSessionScore(0); setFilled(0); setChecked(null); credited.current.clear(); }}>
+<div className="bg-[var(--app-card-bg)] border border-[var(--app-card-border)] rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-center">
           <h2 className="text-lg font-black text-[var(--app-text)]">{currentQ.qAr}</h2>
           <div className="flex justify-center gap-1.5 max-w-md mx-auto flex-wrap">
             {slices.map((i) => (
@@ -169,6 +174,7 @@ export const FractionsDecimalsLab: React.FC<FractionsDecimalsLabProps> = ({ grad
             )}
           </div>
         </div>
+</LabQuizSession>
       )}
 
       {activeTab === 'decimals' && (

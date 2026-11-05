@@ -1,3 +1,4 @@
+import { LabQuizSession } from './LabQuizSession';
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { speakText as speakTextShared } from '../utils/speech';
@@ -198,8 +199,8 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   const [selectedMathOption, setSelectedMathOption] = useState<number | null>(null);
   const [mathFeedback, setMathFeedback] = useState<{ success: boolean; text: string } | null>(null);
 
-  const currentScenario = GAME_SCENARIOS[gameScenarioIndex % GAME_SCENARIOS.length];
-  const currentMath = SPEED_MATH_CHALLENGES[mathIndex % SPEED_MATH_CHALLENGES.length];
+  const currentScenario = GAME_SCENARIOS[Math.min(gameScenarioIndex, GAME_SCENARIOS.length - 1)];
+  const currentMath = SPEED_MATH_CHALLENGES[Math.min(mathIndex, SPEED_MATH_CHALLENGES.length - 1)];
 
   // Delegates to the shared, feature-flag-gated implementation (see utils/speech.ts) so voiceReading
   // actually controls this like every other narration in the app.
@@ -286,6 +287,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   }, [gameGivenMoney]);
 
   const handleCheckChange = () => {
+    if (gameFeedback?.success) return;
     if (gameGivenTotal === currentScenario.expectedChange) {
       setGameFeedback({
         success: true,
@@ -309,7 +311,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   };
 
   const nextScenario = () => {
-    setGameScenarioIndex((prev) => prev + 1);
+    setGameScenarioIndex((prev) => Math.min(prev + 1, GAME_SCENARIOS.length));
     setGameGivenMoney([]);
     setGameFeedback(null);
   };
@@ -337,7 +339,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
   };
 
   const handleNextSpeedMath = () => {
-    setMathIndex((prev) => prev + 1);
+    setMathIndex((prev) => Math.min(prev + 1, SPEED_MATH_CHALLENGES.length));
     setSelectedMathOption(null);
     setMathFeedback(null);
   };
@@ -633,7 +635,8 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
       {/* TAB 2: CASHIER CHANGE-MAKING GAME                        */}
       {/* ======================================================== */}
       {activeTab === 'change_game' && (
-        <div className="space-y-6 max-w-4xl mx-auto">
+        <LabQuizSession complete={gameScenarioIndex >= GAME_SCENARIOS.length} score={gameScore} total={GAME_SCENARIOS.length} onRestart={() => { setGameScenarioIndex(0); setGameScore(0); setGameGivenMoney([]); setGameFeedback(null); }}>
+<div className="space-y-6 max-w-4xl mx-auto">
           <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-md space-y-6">
             {/* Customer scenario banner */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-amber-50 dark:bg-amber-950/40 p-4 rounded-2xl border border-amber-200 dark:border-amber-900">
@@ -779,13 +782,15 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
             )}
           </div>
         </div>
+</LabQuizSession>
       )}
 
       {/* ======================================================== */}
       {/* TAB 3: SPEED MATH CHALLENGE                              */}
       {/* ======================================================== */}
       {activeTab === 'speed_math' && (
-        <div className="space-y-6 max-w-3xl mx-auto">
+        <LabQuizSession complete={mathIndex >= SPEED_MATH_CHALLENGES.length} score={mathScore} total={SPEED_MATH_CHALLENGES.length} onRestart={() => { setMathIndex(0); setMathScore(0); setSelectedMathOption(null); setMathFeedback(null); }}>
+<div className="space-y-6 max-w-3xl mx-auto">
           <div className="bg-[var(--app-card-bg)] rounded-3xl p-6 border border-[var(--app-card-border)] shadow-md space-y-6">
             <div className="flex items-center justify-between border-b border-[var(--app-card-border)] pb-4">
               <div className="flex items-center gap-2">
@@ -873,6 +878,7 @@ export const AlgerianCurrencyMarket: React.FC<AlgerianCurrencyMarketProps> = ({
             )}
           </div>
         </div>
+</LabQuizSession>
       )}
     </div>
   );
