@@ -1,0 +1,1056 @@
+[
+  {
+    "source": "L05-enfant-fiche.png",
+    "file": "wudu/child-front.webp",
+    "crop": {
+      "left": 0,
+      "top": 5,
+      "right": 546,
+      "bottom": 929
+    },
+    "width": 284,
+    "height": 480,
+    "bytes": 21704,
+    "status": "prepared"
+  },
+  {
+    "source": "L05-enfant-fiche.png",
+    "file": "wudu/child-left.webp",
+    "crop": {
+      "left": 576,
+      "top": 11,
+      "right": 1090,
+      "bottom": 930
+    },
+    "width": 269,
+    "height": 480,
+    "bytes": 18790,
+    "status": "prepared"
+  },
+  {
+    "source": "L05-enfant-fiche.png",
+    "file": "wudu/child-back.webp",
+    "crop": {
+      "left": 1120,
+      "top": 11,
+      "right": 1665,
+      "bottom": 940
+    },
+    "width": 282,
+    "height": 480,
+    "bytes": 21004,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/intention.webp",
+    "crop": {
+      "left": 37,
+      "top": 8,
+      "right": 417,
+      "bottom": 462
+    },
+    "width": 381,
+    "height": 455,
+    "bytes": 26180,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/hands.webp",
+    "crop": {
+      "left": 419,
+      "top": 7,
+      "right": 841,
+      "bottom": 459
+    },
+    "width": 423,
+    "height": 453,
+    "bytes": 32460,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/mouth.webp",
+    "crop": {
+      "left": 842,
+      "top": 14,
+      "right": 1252,
+      "bottom": 459
+    },
+    "width": 411,
+    "height": 446,
+    "bytes": 28850,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/face.webp",
+    "crop": {
+      "left": 1253,
+      "top": 12,
+      "right": 1626,
+      "bottom": 462
+    },
+    "width": 374,
+    "height": 451,
+    "bytes": 28246,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/arms.webp",
+    "crop": {
+      "left": 31,
+      "top": 463,
+      "right": 545,
+      "bottom": 929
+    },
+    "width": 480,
+    "height": 435,
+    "bytes": 30534,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/head.webp",
+    "crop": {
+      "left": 566,
+      "top": 463,
+      "right": 1113,
+      "bottom": 930
+    },
+    "width": 480,
+    "height": 410,
+    "bytes": 25536,
+    "status": "prepared"
+  },
+  {
+    "source": "L08-ablutions-gestes-corrige.png",
+    "file": "wudu/feet.webp",
+    "crop": {
+      "left": 1114,
+      "top": 483,
+      "right": 1499,
+      "bottom": 928
+    },
+    "width": 386,
+    "height": 446,
+    "bytes": 35214,
+    "status": "prepared"
+  },
+  {
+    "source": "L09-eau-elements.png",
+    "file": "wudu/tap-off.webp",
+    "crop": {
+      "left": 0,
+      "top": 4,
+      "right": 620,
+      "bottom": 606
+    },
+    "width": 480,
+    "height": 466,
+    "bytes": 51006,
+    "status": "prepared"
+  },
+  {
+    "source": "L09-eau-elements.png",
+    "file": "wudu/tap-on.webp",
+    "crop": {
+      "left": 621,
+      "top": 5,
+      "right": 1247,
+      "bottom": 606
+    },
+    "width": 480,
+    "height": 461,
+    "bytes": 51764,
+    "status": "prepared"
+  },
+  {
+    "source": "L09-eau-elements.png",
+    "file": "wudu/splash.webp",
+    "crop": {
+      "left": 0,
+      "top": 607,
+      "right": 594,
+      "bottom": 1253
+    },
+    "width": 441,
+    "height": 480,
+    "bytes": 64754,
+    "status": "prepared"
+  },
+  {
+    "source": "L09-eau-elements.png",
+    "file": "wudu/drops.webp",
+    "crop": {
+      "left": 595,
+      "top": 607,
+      "right": 1243,
+      "bottom": 1253
+    },
+    "width": 480,
+    "height": 479,
+    "bytes": 49890,
+    "status": "prepared"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/takbir.webp",
+    "crop": {
+      "left": 201,
+      "top": 9,
+      "right": 339,
+      "bottom": 479
+    },
+    "width": 139,
+    "height": 471,
+    "bytes": 11102,
+    "status": "review-required"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/qiyam.webp",
+    "crop": {
+      "left": 554,
+      "top": 9,
+      "right": 686,
+      "bottom": 479
+    },
+    "width": 133,
+    "height": 471,
+    "bytes": 11212,
+    "status": "review-required"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/ruku.webp",
+    "crop": {
+      "left": 820,
+      "top": 107,
+      "right": 1164,
+      "bottom": 479
+    },
+    "width": 345,
+    "height": 373,
+    "bytes": 13478,
+    "status": "review-required"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/standing.webp",
+    "crop": {
+      "left": 1352,
+      "top": 9,
+      "right": 1489,
+      "bottom": 479
+    },
+    "width": 138,
+    "height": 471,
+    "bytes": 11452,
+    "status": "review-required"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/sujud.webp",
+    "crop": {
+      "left": 84,
+      "top": 692,
+      "right": 517,
+      "bottom": 886
+    },
+    "width": 434,
+    "height": 195,
+    "bytes": 14600,
+    "status": "review-required"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/sitting.webp",
+    "crop": {
+      "left": 675,
+      "top": 509,
+      "right": 915,
+      "bottom": 889
+    },
+    "width": 241,
+    "height": 381,
+    "bytes": 13774,
+    "status": "review-required"
+  },
+  {
+    "source": "L12-priere-positions-corrige.png",
+    "file": "review-salat/sujud-repeat.webp",
+    "crop": {
+      "left": 1115,
+      "top": 692,
+      "right": 1550,
+      "bottom": 887
+    },
+    "width": 436,
+    "height": 196,
+    "bytes": 14774,
+    "status": "review-required"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/battery.webp",
+    "crop": {
+      "left": 35,
+      "top": 6,
+      "right": 417,
+      "bottom": 326
+    },
+    "width": 383,
+    "height": 321,
+    "bytes": 21836,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/bulb-off.webp",
+    "crop": {
+      "left": 418,
+      "top": 0,
+      "right": 835,
+      "bottom": 326
+    },
+    "width": 418,
+    "height": 327,
+    "bytes": 28302,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/bulb-on.webp",
+    "crop": {
+      "left": 841,
+      "top": 0,
+      "right": 1259,
+      "bottom": 326
+    },
+    "width": 419,
+    "height": 327,
+    "bytes": 35058,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/switch-open.webp",
+    "crop": {
+      "left": 1260,
+      "top": 10,
+      "right": 1651,
+      "bottom": 326
+    },
+    "width": 392,
+    "height": 317,
+    "bytes": 26716,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/switch-closed.webp",
+    "crop": {
+      "left": 0,
+      "top": 327,
+      "right": 419,
+      "bottom": 592
+    },
+    "width": 420,
+    "height": 266,
+    "bytes": 23052,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/motor.webp",
+    "crop": {
+      "left": 420,
+      "top": 327,
+      "right": 835,
+      "bottom": 603
+    },
+    "width": 416,
+    "height": 277,
+    "bytes": 30840,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/buzzer.webp",
+    "crop": {
+      "left": 836,
+      "top": 327,
+      "right": 1251,
+      "bottom": 603
+    },
+    "width": 416,
+    "height": 277,
+    "bytes": 20366,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/led-off.webp",
+    "crop": {
+      "left": 1252,
+      "top": 327,
+      "right": 1637,
+      "bottom": 603
+    },
+    "width": 386,
+    "height": 277,
+    "bytes": 15630,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/led-on.webp",
+    "crop": {
+      "left": 53,
+      "top": 604,
+      "right": 415,
+      "bottom": 932
+    },
+    "width": 363,
+    "height": 329,
+    "bytes": 29844,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/resistor.webp",
+    "crop": {
+      "left": 416,
+      "top": 604,
+      "right": 833,
+      "bottom": 920
+    },
+    "width": 418,
+    "height": 317,
+    "bytes": 26278,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/wire-red.webp",
+    "crop": {
+      "left": 834,
+      "top": 624,
+      "right": 1253,
+      "bottom": 940
+    },
+    "width": 420,
+    "height": 317,
+    "bytes": 42546,
+    "status": "prepared"
+  },
+  {
+    "source": "L15-electricite-composants.png",
+    "file": "electricity/wire-black.webp",
+    "crop": {
+      "left": 1254,
+      "top": 604,
+      "right": 1645,
+      "bottom": 928
+    },
+    "width": 392,
+    "height": 325,
+    "bytes": 39910,
+    "status": "prepared"
+  },
+  {
+    "source": "L16-electricite-objets-test.png",
+    "file": "electricity/copper.webp",
+    "crop": {
+      "left": 0,
+      "top": 5,
+      "right": 564,
+      "bottom": 411
+    },
+    "width": 480,
+    "height": 346,
+    "bytes": 31682,
+    "status": "prepared"
+  },
+  {
+    "source": "L16-electricite-objets-test.png",
+    "file": "electricity/wood.webp",
+    "crop": {
+      "left": 565,
+      "top": 3,
+      "right": 1130,
+      "bottom": 411
+    },
+    "width": 480,
+    "height": 347,
+    "bytes": 54654,
+    "status": "prepared"
+  },
+  {
+    "source": "L16-electricite-objets-test.png",
+    "file": "electricity/rubber.webp",
+    "crop": {
+      "left": 1131,
+      "top": 0,
+      "right": 1671,
+      "bottom": 411
+    },
+    "width": 480,
+    "height": 366,
+    "bytes": 55466,
+    "status": "prepared"
+  },
+  {
+    "source": "L16-electricite-objets-test.png",
+    "file": "electricity/salt-water.webp",
+    "crop": {
+      "left": 0,
+      "top": 412,
+      "right": 630,
+      "bottom": 940
+    },
+    "width": 480,
+    "height": 402,
+    "bytes": 83350,
+    "status": "prepared"
+  },
+  {
+    "source": "L16-electricite-objets-test.png",
+    "file": "electricity/ruler.webp",
+    "crop": {
+      "left": 631,
+      "top": 412,
+      "right": 1138,
+      "bottom": 940
+    },
+    "width": 461,
+    "height": 480,
+    "bytes": 75154,
+    "status": "prepared"
+  },
+  {
+    "source": "L16-electricite-objets-test.png",
+    "file": "electricity/nail.webp",
+    "crop": {
+      "left": 1139,
+      "top": 412,
+      "right": 1671,
+      "bottom": 912
+    },
+    "width": 480,
+    "height": 451,
+    "bytes": 43218,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/pedestrian-red.webp",
+    "crop": {
+      "left": 0,
+      "top": 0,
+      "right": 387,
+      "bottom": 308
+    },
+    "width": 388,
+    "height": 309,
+    "bytes": 14848,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/pedestrian-green.webp",
+    "crop": {
+      "left": 439,
+      "top": 0,
+      "right": 829,
+      "bottom": 308
+    },
+    "width": 391,
+    "height": 309,
+    "bytes": 16506,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/traffic-red.webp",
+    "crop": {
+      "left": 830,
+      "top": 0,
+      "right": 1253,
+      "bottom": 308
+    },
+    "width": 424,
+    "height": 309,
+    "bytes": 17484,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/traffic-green.webp",
+    "crop": {
+      "left": 1254,
+      "top": 0,
+      "right": 1647,
+      "bottom": 308
+    },
+    "width": 394,
+    "height": 309,
+    "bytes": 18602,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/car.webp",
+    "crop": {
+      "left": 29,
+      "top": 309,
+      "right": 417,
+      "bottom": 549
+    },
+    "width": 389,
+    "height": 241,
+    "bytes": 21874,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/bus.webp",
+    "crop": {
+      "left": 427,
+      "top": 309,
+      "right": 841,
+      "bottom": 549
+    },
+    "width": 415,
+    "height": 241,
+    "bytes": 28024,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/tram.webp",
+    "crop": {
+      "left": 842,
+      "top": 309,
+      "right": 1303,
+      "bottom": 549
+    },
+    "width": 462,
+    "height": 241,
+    "bytes": 34022,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/pedestrian-sign.webp",
+    "crop": {
+      "left": 1305,
+      "top": 309,
+      "right": 1647,
+      "bottom": 549
+    },
+    "width": 343,
+    "height": 241,
+    "bytes": 13268,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/child-walking.webp",
+    "crop": {
+      "left": 0,
+      "top": 550,
+      "right": 405,
+      "bottom": 940
+    },
+    "width": 406,
+    "height": 391,
+    "bytes": 29388,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/child-looking.webp",
+    "crop": {
+      "left": 423,
+      "top": 557,
+      "right": 835,
+      "bottom": 940
+    },
+    "width": 413,
+    "height": 384,
+    "bytes": 24420,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/guard.webp",
+    "crop": {
+      "left": 836,
+      "top": 550,
+      "right": 1253,
+      "bottom": 940
+    },
+    "width": 418,
+    "height": 391,
+    "bytes": 38862,
+    "status": "prepared"
+  },
+  {
+    "source": "L19-route-elements.png",
+    "file": "road/elder.webp",
+    "crop": {
+      "left": 1254,
+      "top": 550,
+      "right": 1579,
+      "bottom": 940
+    },
+    "width": 326,
+    "height": 391,
+    "bytes": 33724,
+    "status": "prepared"
+  },
+  {
+    "source": "L22-souk-etals.png",
+    "file": "souk/stall-produce.webp",
+    "crop": {
+      "left": 28,
+      "top": 106,
+      "right": 463,
+      "bottom": 744
+    },
+    "width": 328,
+    "height": 480,
+    "bytes": 56024,
+    "status": "prepared"
+  },
+  {
+    "source": "L22-souk-etals.png",
+    "file": "souk/stall-bakery.webp",
+    "crop": {
+      "left": 491,
+      "top": 105,
+      "right": 907,
+      "bottom": 814
+    },
+    "width": 282,
+    "height": 480,
+    "bytes": 56512,
+    "status": "prepared"
+  },
+  {
+    "source": "L22-souk-etals.png",
+    "file": "souk/stall-grocery.webp",
+    "crop": {
+      "left": 947,
+      "top": 48,
+      "right": 1365,
+      "bottom": 745
+    },
+    "width": 288,
+    "height": 480,
+    "bytes": 37598,
+    "status": "prepared"
+  },
+  {
+    "source": "L22-souk-etals.png",
+    "file": "souk/stall-spices.webp",
+    "crop": {
+      "left": 1399,
+      "top": 35,
+      "right": 1831,
+      "bottom": 817
+    },
+    "width": 265,
+    "height": 480,
+    "bytes": 44476,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/tomatoes.webp",
+    "crop": {
+      "left": 11,
+      "top": 11,
+      "right": 413,
+      "bottom": 332
+    },
+    "width": 403,
+    "height": 322,
+    "bytes": 36484,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/potatoes.webp",
+    "crop": {
+      "left": 414,
+      "top": 23,
+      "right": 835,
+      "bottom": 332
+    },
+    "width": 422,
+    "height": 310,
+    "bytes": 34608,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/carrots.webp",
+    "crop": {
+      "left": 836,
+      "top": 0,
+      "right": 1249,
+      "bottom": 332
+    },
+    "width": 414,
+    "height": 333,
+    "bytes": 60878,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/onions.webp",
+    "crop": {
+      "left": 1263,
+      "top": 6,
+      "right": 1661,
+      "bottom": 332
+    },
+    "width": 399,
+    "height": 327,
+    "bytes": 40408,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/oranges.webp",
+    "crop": {
+      "left": 0,
+      "top": 333,
+      "right": 413,
+      "bottom": 630
+    },
+    "width": 414,
+    "height": 298,
+    "bytes": 42438,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/dates.webp",
+    "crop": {
+      "left": 418,
+      "top": 333,
+      "right": 807,
+      "bottom": 630
+    },
+    "width": 390,
+    "height": 298,
+    "bytes": 45184,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/apples.webp",
+    "crop": {
+      "left": 839,
+      "top": 333,
+      "right": 1251,
+      "bottom": 630
+    },
+    "width": 413,
+    "height": 298,
+    "bytes": 30632,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/bananas.webp",
+    "crop": {
+      "left": 1252,
+      "top": 333,
+      "right": 1657,
+      "bottom": 630
+    },
+    "width": 406,
+    "height": 298,
+    "bytes": 27298,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/bread.webp",
+    "crop": {
+      "left": 0,
+      "top": 631,
+      "right": 417,
+      "bottom": 940
+    },
+    "width": 418,
+    "height": 310,
+    "bytes": 51062,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/baguette.webp",
+    "crop": {
+      "left": 418,
+      "top": 631,
+      "right": 861,
+      "bottom": 933
+    },
+    "width": 444,
+    "height": 303,
+    "bytes": 37342,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/milk.webp",
+    "crop": {
+      "left": 873,
+      "top": 631,
+      "right": 1239,
+      "bottom": 940
+    },
+    "width": 367,
+    "height": 310,
+    "bytes": 21224,
+    "status": "prepared"
+  },
+  {
+    "source": "L23-souk-produits.png",
+    "file": "souk/oil.webp",
+    "crop": {
+      "left": 1254,
+      "top": 631,
+      "right": 1651,
+      "bottom": 940
+    },
+    "width": 398,
+    "height": 310,
+    "bytes": 26044,
+    "status": "prepared"
+  },
+  {
+    "source": "L24-souk-panier-caisse.png",
+    "file": "souk/basket-empty.webp",
+    "crop": {
+      "left": 13,
+      "top": 15,
+      "right": 602,
+      "bottom": 570
+    },
+    "width": 480,
+    "height": 452,
+    "bytes": 71470,
+    "status": "prepared"
+  },
+  {
+    "source": "L24-souk-panier-caisse.png",
+    "file": "souk/basket-full.webp",
+    "crop": {
+      "left": 603,
+      "top": 11,
+      "right": 1253,
+      "bottom": 576
+    },
+    "width": 480,
+    "height": 417,
+    "bytes": 81654,
+    "status": "prepared"
+  },
+  {
+    "source": "L24-souk-panier-caisse.png",
+    "file": "souk/counter.webp",
+    "crop": {
+      "left": 0,
+      "top": 577,
+      "right": 624,
+      "bottom": 1253
+    },
+    "width": 443,
+    "height": 480,
+    "bytes": 54034,
+    "status": "prepared"
+  },
+  {
+    "source": "L24-souk-panier-caisse.png",
+    "file": "souk/cashbox.webp",
+    "crop": {
+      "left": 625,
+      "top": 582,
+      "right": 1235,
+      "bottom": 1225
+    },
+    "width": 455,
+    "height": 480,
+    "bytes": 64728,
+    "status": "prepared"
+  },
+  {
+    "source": "L06-ablutions-decor-paysage.png",
+    "file": "wudu/backdrop-landscape.webp",
+    "bytes": 164168,
+    "status": "prepared"
+  },
+  {
+    "source": "L07-ablutions-decor-portrait.png",
+    "file": "wudu/backdrop-portrait.webp",
+    "bytes": 150324,
+    "status": "prepared"
+  },
+  {
+    "source": "L10-mosquee-decor-paysage.png",
+    "file": "review-salat/backdrop-landscape.webp",
+    "bytes": 171996,
+    "status": "prepared"
+  },
+  {
+    "source": "L11-mosquee-decor-portrait.png",
+    "file": "review-salat/backdrop-portrait.webp",
+    "bytes": 248146,
+    "status": "prepared"
+  },
+  {
+    "source": "L13-electricite-decor-paysage.png",
+    "file": "electricity/backdrop-landscape.webp",
+    "bytes": 86400,
+    "status": "prepared"
+  },
+  {
+    "source": "L14-electricite-decor-portrait.png",
+    "file": "electricity/backdrop-portrait.webp",
+    "bytes": 140454,
+    "status": "prepared"
+  },
+  {
+    "source": "L17-rue-decor-paysage.png",
+    "file": "road/backdrop-landscape.webp",
+    "bytes": 194262,
+    "status": "prepared"
+  },
+  {
+    "source": "L18-rue-decor-portrait.png",
+    "file": "road/backdrop-portrait.webp",
+    "bytes": 201794,
+    "status": "prepared"
+  },
+  {
+    "source": "L20-souk-decor-paysage.png",
+    "file": "souk/backdrop-landscape.webp",
+    "bytes": 239578,
+    "status": "prepared"
+  },
+  {
+    "source": "L21-souk-decor-portrait.png",
+    "file": "souk/backdrop-portrait.webp",
+    "bytes": 203504,
+    "status": "prepared"
+  }
+]

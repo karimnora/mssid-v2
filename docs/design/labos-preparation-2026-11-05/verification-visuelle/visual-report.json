@@ -1,0 +1,222 @@
+{
+  "errors": [],
+  "wudu": [
+    {
+      "width": 390,
+      "overflow": false,
+      "targets": [
+        {
+          "id": "niyyah",
+          "r": {
+            "x": 159,
+            "y": 185.328125,
+            "width": 72,
+            "height": 60,
+            "top": 185.328125,
+            "right": 231,
+            "bottom": 245.328125,
+            "left": 159
+          }
+        },
+        {
+          "id": "head",
+          "r": {
+            "x": 53.390625,
+            "y": 243.21875,
+            "width": 72,
+            "height": 60,
+            "top": 243.21875,
+            "right": 125.390625,
+            "bottom": 303.21875,
+            "left": 53.390625
+          }
+        },
+        {
+          "id": "face",
+          "r": {
+            "x": 264.59375,
+            "y": 292.828125,
+            "width": 72,
+            "height": 60,
+            "top": 292.828125,
+            "right": 336.59375,
+            "bottom": 352.828125,
+            "left": 264.59375
+          }
+        },
+        {
+          "id": "mouth",
+          "r": {
+            "x": 53.390625,
+            "y": 321.78125,
+            "width": 72,
+            "height": 60,
+            "top": 321.78125,
+            "right": 125.390625,
+            "bottom": 381.78125,
+            "left": 53.390625
+          }
+        },
+        {
+          "id": "hands",
+          "r": {
+            "x": 66.59375,
+            "y": 392.078125,
+            "width": 72,
+            "height": 60,
+            "top": 392.078125,
+            "right": 138.59375,
+            "bottom": 452.078125,
+            "left": 66.59375
+          }
+        },
+        {
+          "id": "arms",
+          "r": {
+            "x": 251.390625,
+            "y": 392.078125,
+            "width": 72,
+            "height": 60,
+            "top": 392.078125,
+            "right": 323.390625,
+            "bottom": 452.078125,
+            "left": 251.390625
+          }
+        },
+        {
+          "id": "feet",
+          "r": {
+            "x": 159,
+            "y": 516.125,
+            "width": 72,
+            "height": 60,
+            "top": 516.125,
+            "right": 231,
+            "bottom": 576.125,
+            "left": 159
+          }
+        }
+      ],
+      "overlaps": [],
+      "wrongPreservesStep": true,
+      "complete": true
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "targets": [
+        {
+          "id": "niyyah",
+          "r": {
+            "x": 604,
+            "y": 186.71875,
+            "width": 72,
+            "height": 60,
+            "top": 186.71875,
+            "right": 676,
+            "bottom": 246.71875,
+            "left": 604
+          }
+        },
+        {
+          "id": "head",
+          "r": {
+            "x": 419.671875,
+            "y": 247.0625,
+            "width": 72,
+            "height": 60,
+            "top": 247.0625,
+            "right": 491.671875,
+            "bottom": 307.0625,
+            "left": 419.671875
+          }
+        },
+        {
+          "id": "face",
+          "r": {
+            "x": 788.3125,
+            "y": 298.78125,
+            "width": 72,
+            "height": 60,
+            "top": 298.78125,
+            "right": 860.3125,
+            "bottom": 358.78125,
+            "left": 788.3125
+          }
+        },
+        {
+          "id": "mouth",
+          "r": {
+            "x": 419.671875,
+            "y": 328.953125,
+            "width": 72,
+            "height": 60,
+            "top": 328.953125,
+            "right": 491.671875,
+            "bottom": 388.953125,
+            "left": 419.671875
+          }
+        },
+        {
+          "id": "hands",
+          "r": {
+            "x": 442.71875,
+            "y": 402.21875,
+            "width": 72,
+            "height": 60,
+            "top": 402.21875,
+            "right": 514.71875,
+            "bottom": 462.21875,
+            "left": 442.71875
+          }
+        },
+        {
+          "id": "arms",
+          "r": {
+            "x": 765.265625,
+            "y": 402.21875,
+            "width": 72,
+            "height": 60,
+            "top": 402.21875,
+            "right": 837.265625,
+            "bottom": 462.21875,
+            "left": 765.265625
+          }
+        },
+        {
+          "id": "feet",
+          "r": {
+            "x": 604,
+            "y": 531.515625,
+            "width": 72,
+            "height": 60,
+            "top": 531.515625,
+            "right": 676,
+            "bottom": 591.515625,
+            "left": 604
+          }
+        }
+      ],
+      "overlaps": [],
+      "wrongPreservesStep": true,
+      "complete": true
+    }
+  ],
+  "farm": [
+    {
+      "width": 390,
+      "overflow": false,
+      "background": "url(\"http://localhost:3002/src/assets/games/memory-farm.webp\"), linear-gradient(160deg, rgb(253, 224, 71) 0%, rgb(74, 222, 128) 50%, rgb(21, 128, 61) 100%)"
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "background": "url(\"http://localhost:3002/src/assets/games/memory-farm.webp\"), linear-gradient(160deg, rgb(253, 224, 71) 0%, rgb(74, 222, 128) 50%, rgb(21, 128, 61) 100%)"
+    }
+  ],
+  "water": {
+    "animation": "wudu-water-fall",
+    "target": "hands",
+    "reducedDisplay": "none"
+  }
+}

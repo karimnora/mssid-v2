@@ -1,0 +1,2203 @@
+{
+  "note": "Structural inventory only. No browser visual review or image quality score inferred from file presence.",
+  "images": [
+    {
+      "file": "src/assets/games/maze-garden.webp",
+      "bytes": 258824
+    },
+    {
+      "file": "src/assets/games/maze-road.webp",
+      "bytes": 252968
+    },
+    {
+      "file": "src/assets/games/maze-train.webp",
+      "bytes": 265786
+    },
+    {
+      "file": "src/assets/games/memory-farm.webp",
+      "bytes": 165142
+    },
+    {
+      "file": "src/assets/games/stone-cracked.webp",
+      "bytes": 14548
+    },
+    {
+      "file": "src/assets/games/stone-fog.webp",
+      "bytes": 10542
+    },
+    {
+      "file": "src/assets/games/stone-goal.webp",
+      "bytes": 15772
+    },
+    {
+      "file": "src/assets/games/stone-idle.webp",
+      "bytes": 13142
+    },
+    {
+      "file": "src/assets/games/stone-reach.webp",
+      "bytes": 17434
+    },
+    {
+      "file": "src/assets/images/mssid_app_icon_1785931538897.jpg",
+      "bytes": 580259
+    },
+    {
+      "file": "src/assets/labs/speed/o-cone.webp",
+      "bytes": 6160
+    },
+    {
+      "file": "src/assets/labs/speed/o-dust.webp",
+      "bytes": 5812
+    },
+    {
+      "file": "src/assets/labs/speed/o-finish.webp",
+      "bytes": 9484
+    },
+    {
+      "file": "src/assets/labs/speed/o-marker.webp",
+      "bytes": 2776
+    },
+    {
+      "file": "src/assets/labs/speed/o-stopwatch.webp",
+      "bytes": 10618
+    },
+    {
+      "file": "src/assets/labs/speed/o-trophy.webp",
+      "bytes": 10586
+    },
+    {
+      "file": "src/assets/labs/speed/speed-landscape.webp",
+      "bytes": 63764
+    },
+    {
+      "file": "src/assets/labs/speed/speed-portrait.webp",
+      "bytes": 27732
+    },
+    {
+      "file": "src/assets/labs/speed/v-airplane.webp",
+      "bytes": 6940
+    },
+    {
+      "file": "src/assets/labs/speed/v-bike.webp",
+      "bytes": 10828
+    },
+    {
+      "file": "src/assets/labs/speed/v-city_bus.webp",
+      "bytes": 9778
+    },
+    {
+      "file": "src/assets/labs/speed/v-coradia_train.webp",
+      "bytes": 15068
+    },
+    {
+      "file": "src/assets/labs/speed/v-motorbike.webp",
+      "bytes": 11502
+    },
+    {
+      "file": "src/assets/labs/speed/v-pedestrian.webp",
+      "bytes": 7170
+    },
+    {
+      "file": "src/assets/labs/speed/v-scooter.webp",
+      "bytes": 7686
+    },
+    {
+      "file": "src/assets/labs/speed/v-sport_car.webp",
+      "bytes": 8738
+    },
+    {
+      "file": "src/assets/labs/speed/v-taxi.webp",
+      "bytes": 9238
+    },
+    {
+      "file": "src/assets/labs/wudu/arms.webp",
+      "bytes": 30534
+    },
+    {
+      "file": "src/assets/labs/wudu/backdrop-landscape.webp",
+      "bytes": 164168
+    },
+    {
+      "file": "src/assets/labs/wudu/backdrop-portrait.webp",
+      "bytes": 150324
+    },
+    {
+      "file": "src/assets/labs/wudu/child-front.webp",
+      "bytes": 21704
+    },
+    {
+      "file": "src/assets/labs/wudu/face.webp",
+      "bytes": 28246
+    },
+    {
+      "file": "src/assets/labs/wudu/feet.webp",
+      "bytes": 35214
+    },
+    {
+      "file": "src/assets/labs/wudu/hands.webp",
+      "bytes": 32460
+    },
+    {
+      "file": "src/assets/labs/wudu/head.webp",
+      "bytes": 25536
+    },
+    {
+      "file": "src/assets/labs/wudu/intention.webp",
+      "bytes": 26180
+    },
+    {
+      "file": "src/assets/labs/wudu/mouth.webp",
+      "bytes": 28850
+    },
+    {
+      "file": "src/assets/world/casbah/casbah-landscape.webp",
+      "bytes": 53104
+    },
+    {
+      "file": "src/assets/world/casbah/casbah-portrait.webp",
+      "bytes": 33310
+    },
+    {
+      "file": "src/assets/world/casbah/island-casbah.webp",
+      "bytes": 54748
+    },
+    {
+      "file": "src/assets/world/constantine/constantine-foreground.webp",
+      "bytes": 56520
+    },
+    {
+      "file": "src/assets/world/constantine/constantine-landscape.webp",
+      "bytes": 57844
+    },
+    {
+      "file": "src/assets/world/constantine/constantine-portrait.webp",
+      "bytes": 38570
+    },
+    {
+      "file": "src/assets/world/constantine/island-constantine.webp",
+      "bytes": 98180
+    },
+    {
+      "file": "src/assets/world/didou/didou-cheer.webp",
+      "bytes": 42808
+    },
+    {
+      "file": "src/assets/world/didou/didou-point.webp",
+      "bytes": 35828
+    },
+    {
+      "file": "src/assets/world/didou/didou-stand.webp",
+      "bytes": 34252
+    },
+    {
+      "file": "src/assets/world/didou/didou-talk.webp",
+      "bytes": 38202
+    },
+    {
+      "file": "src/assets/world/didou/didou-think.webp",
+      "bytes": 36236
+    },
+    {
+      "file": "src/assets/world/djurdjura/djurdjura-landscape.webp",
+      "bytes": 68316
+    },
+    {
+      "file": "src/assets/world/djurdjura/djurdjura-portrait.webp",
+      "bytes": 83990
+    },
+    {
+      "file": "src/assets/world/djurdjura/island-djurdjura.webp",
+      "bytes": 77988
+    },
+    {
+      "file": "src/assets/world/objects/obj-chest.webp",
+      "bytes": 13038
+    },
+    {
+      "file": "src/assets/world/objects/obj-lock.webp",
+      "bytes": 6610
+    },
+    {
+      "file": "src/assets/world/objects/obj-medal-constantine.webp",
+      "bytes": 9558
+    },
+    {
+      "file": "src/assets/world/objects/obj-star.webp",
+      "bytes": 7550
+    },
+    {
+      "file": "src/assets/world/objects/obj-watch.webp",
+      "bytes": 8714
+    },
+    {
+      "file": "src/assets/world/sahara/island-sahara.webp",
+      "bytes": 73712
+    },
+    {
+      "file": "src/assets/world/sahara/sahara-landscape.webp",
+      "bytes": 28450
+    },
+    {
+      "file": "src/assets/world/sahara/sahara-portrait.webp",
+      "bytes": 25506
+    },
+    {
+      "file": "src/assets/world/sea/island-sea.webp",
+      "bytes": 62814
+    },
+    {
+      "file": "src/assets/world/sea/sea-landscape.webp",
+      "bytes": 50876
+    },
+    {
+      "file": "src/assets/world/sea/sea-portrait.webp",
+      "bytes": 39052
+    },
+    {
+      "file": "src/assets/world/space/planet.webp",
+      "bytes": 77150
+    },
+    {
+      "file": "src/assets/world/space/space-landscape.webp",
+      "bytes": 20586
+    },
+    {
+      "file": "src/assets/world/space/space-portrait.webp",
+      "bytes": 19490
+    },
+    {
+      "file": "src/assets/world/space/space-world-portrait.webp",
+      "bytes": 50212
+    },
+    {
+      "file": "src/assets/world/tassili/island-tassili.webp",
+      "bytes": 50512
+    },
+    {
+      "file": "src/assets/world/tassili/tassili-landscape.webp",
+      "bytes": 41422
+    },
+    {
+      "file": "src/assets/world/tassili/tassili-portrait.webp",
+      "bytes": 54746
+    },
+    {
+      "file": "src/assets/world/timgad/island-timgad.webp",
+      "bytes": 93680
+    },
+    {
+      "file": "src/assets/world/timgad/timgad-landscape.webp",
+      "bytes": 73532
+    },
+    {
+      "file": "src/assets/world/timgad/timgad-portrait.webp",
+      "bytes": 39264
+    },
+    {
+      "file": "public/apple-touch-icon-180x180.png",
+      "bytes": 1722
+    },
+    {
+      "file": "public/maskable-icon-512x512.png",
+      "bytes": 7325
+    },
+    {
+      "file": "public/og-banner.jpg",
+      "bytes": 65461
+    },
+    {
+      "file": "public/pwa-192x192.png",
+      "bytes": 2707
+    },
+    {
+      "file": "public/pwa-512x512.png",
+      "bytes": 10090
+    },
+    {
+      "file": "public/pwa-64x64.png",
+      "bytes": 955
+    },
+    {
+      "file": "public/pwa-icon-source.svg",
+      "bytes": 2902
+    }
+  ],
+  "surfaces": [
+    {
+      "file": "src/components/ActivationCodeForm.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ActiveWorkspace.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/ActivationCodesModule.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/AdminConsoleNav.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/AdminConsoleView.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/AnalyticsModule.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/AnalyticsPeriod.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/AndroidReleaseSettings.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/ContactMessagesModule.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/ContentReviewModule.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/FeatureFlagsModule.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/TechnicalLogsModule.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/admin/UsersRolesModule.tsx",
+      "images": 1,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AiTutorModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AlgerianCurrencyMarket.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AlgerianHistoryMuseum.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AndroidUpdateBanner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AppModals.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AppRatingPrompt.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ArabicCanvasInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ArabicConjugator.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AreaPerimeterGridLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/art3d/Icon3d.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AssessSwitcher.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/AuthModal.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/BadgeUnlockToast.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/BrandWebsiteLink.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/cahiers/CahierQuotaNotice.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/cahiers/CompetenceCahierLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/cahiers/CompetenceCahierSheet.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/CardBlobBackdrop.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/CertificateModal.tsx",
+      "images": 2,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ChallengesArena.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ChildProfilePicker.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/CircuitBuilder.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/CivicsInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ClockTrainerLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ContactModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/CourseBreadcrumb.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/CourseSelectionView.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/Didou3DAvatar.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/DidouDressingRoomModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/DidouVirtualCompanion.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/EarthCyclesLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/EducationalCalculator.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ElectricityLabInteractive.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/EmailDeepLink.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/EmailVerificationPopup.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/EnglishAudioDialoguesLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/EnglishLanguageLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ErrorBoundary.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/examPlan/ExamCountdownBanner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "exams"
+    },
+    {
+      "file": "src/components/examPlan/ExamPlanPanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "exams"
+    },
+    {
+      "file": "src/components/ExamsViewer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "exams"
+    },
+    {
+      "file": "src/components/family/AdventureStage.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/family/EnrichmentLibrary.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/family/FamilyLearningStudio.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/family/FamilyParentSummary.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/family/FamilyTaskCard.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/family/MosaicWorkshop.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/family/PremiumLearningLabs.tsx",
+      "images": 0,
+      "svg": 3,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/FractionsDecimalsLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/FrenchLanguageLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/FrenchProjectsLabInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/games/ArcadeGamesSection.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/BossBattleGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/DiduRunner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/Galaxy3DGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/learning/boards.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/learning/LearningGameEntry.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/learning/LearningGamePlayer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/MathStarsGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/MemoryMatrixGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/NumberSortGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/SpeedMathDuelGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/SpellingChampGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/games/TowerStackGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "games"
+    },
+    {
+      "file": "src/components/garden/GardenArt.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/garden/GardenMission.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/GeometryVisualizer.tsx",
+      "images": 0,
+      "svg": 4,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/GuidedMathSupport.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/HistoryGeoInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/HomePoleIcons.tsx",
+      "images": 0,
+      "svg": 4,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/HomeView.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/HomeworkPinModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/HonorCertificatesStudioModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/HumanAnatomyLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/immersive/CemPrepLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/CountryFlag.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/DidouGuide.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/ImmersiveLabShell.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/MosqueAdabLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/RoadCodeLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/SalatLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/SoukArt.tsx",
+      "images": 0,
+      "svg": 6,
+      "usesSharedArt": true,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/SoukLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/WorldFlagsLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/immersive/WuduLab.tsx",
+      "images": 2,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "labs"
+    },
+    {
+      "file": "src/components/IslamicEducationInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/DidouJourneyArt.tsx",
+      "images": 0,
+      "svg": 3,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/GameStationSheet.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/JourneyGradeDecor.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/JourneyLessonStage.tsx",
+      "images": 3,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/journey/JourneyMap.tsx",
+      "images": 0,
+      "svg": 3,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/JourneyMapShortcut.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/JourneyRibbon.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/JourneyScenery.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/JourneyScreen.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/planetDistrictArt.tsx",
+      "images": 0,
+      "svg": 5,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/PlanetHub.tsx",
+      "images": 2,
+      "svg": 4,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/PlanetShelf.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/journey/planetShelfGroups.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/LanguageLabInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/LanguageSwitcher.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/LearningSyncNotice.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/LessonExplanationView.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/LessonIllustratedCard.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/ArabicReadingStoryPanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/ConfettiBurst.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/illustrations/arabic5ap.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/illustrations/historyGeo5ap.tsx",
+      "images": 0,
+      "svg": 3,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/illustrations/math5ap.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/illustrations/science5ap.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/illustrations/svgKit.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/IrabTable.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonContentPanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonDidou.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonEvaluationPanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonInteractiveTools.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonPracticePanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonQuizPanel.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/LessonStepFooter.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/MathWorkedExample.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "exams"
+    },
+    {
+      "file": "src/components/lessonViewer/MovementLabView.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/MultiplicationGroupsVisual.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/practiceBindings.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/TapSpeakButton.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/useLessonSpeech.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/lessonViewer/YoungLessonStory.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/LessonViewer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "courses"
+    },
+    {
+      "file": "src/components/LoadingFallback.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/market/MarketArt.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/market/MarketMission.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/MathExpression.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/MathInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/missions/MissionBanner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/missions/MissionPlayer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/missions/MissionQuest.tsx",
+      "images": 0,
+      "svg": 8,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/MobileBottomNav.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/MssidLogo.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/MultiplicationTableInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/musaidi/MusaidiPanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/NativeSubscriptionStatus.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/Navbar.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/OfflinePacksManagerModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/onboarding/FirstStepsModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ParentGateModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ParentNotebookModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PracticeExerciseCard.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PremiumOffer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/preschool/BalloonPopGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/CarMazeGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/DailyChallengeBanner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/DressDidoGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/FarmGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/FruitCatcherGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/GamesHub.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/LevelSelectScreen.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/LittleFisherGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolActivityPlayer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolApp.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolAsset.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolBadgeToast.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolBubblePop.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolColoring.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolConnectDots.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolDiscoveryArt.tsx",
+      "images": 0,
+      "svg": 3,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolDragDrop.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolFindPath.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolFlagMark.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolGardenMission.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/preschoolGarments.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolJigsaw.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolLanguagePicker.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolLineArt.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolListenTap.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolMagicBoard.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolMarketMission.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolMascot.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolMaze.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolMemoryCards.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolModuleCompleteOverlay.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolModulePicker.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolMuteButton.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolPaperPicture.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolParentBilan.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolPathView.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolPrintablesModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolQuranListen.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolSequence.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolShapeMark.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolSorting.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolSoundBox.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolStoryOrder.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolTapChoice.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolTrace.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolWordEcho.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolWorksheet.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PreschoolXylophone.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/PuzzleGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/SensoryTapGame.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/preschool/ShapeSorterGame.tsx",
+      "images": 0,
+      "svg": 6,
+      "usesSharedArt": false,
+      "scope": "preschool"
+    },
+    {
+      "file": "src/components/PrimaryDiscoveryLabInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PrimaryMathLabInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PrintableWorksheetsGeneratorModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PrivacyPolicyModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ProfileModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ProgressSyncStatus.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PronunciationPractice.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/prototype/PrototypeFlow.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/PwaInstallBanner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/QuickCheckQuiz.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/QuranLabInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/QuranMemorizePlayer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ReceiptStatus.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ReportErrorButton.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/RevisionSheetViewer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/science/DensityChottLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/science/FoggaraHydraulicLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/science/SolarOasisPumpLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ScienceExperimentLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ScienceLabSimulation.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ScientificInquiryFlow.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SeoHead.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SettingsModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/Shape3DViewer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SorobanInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SpeedReadingLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SpeedVelocityLab.tsx",
+      "images": 3,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/subjectArt3d.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SubjectIllustratedCard.tsx",
+      "images": 0,
+      "svg": 10,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SubscriptionPaywall.tsx",
+      "images": 1,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SubscriptionStatusPanel.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/SyllableStudioLab.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TamazightCurriculumViewer.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TamazightLabInteractive.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TashkeelToggle.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TayammumStepIllustration.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TermsOfServiceModal.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TextToSpeechButton.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ToolsHubView.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TopographyMapLab.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/TouchWritingStudio.tsx",
+      "images": 0,
+      "svg": 3,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ui/Badge.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ui/Button.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ui/Card.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ui/DesignSystemShowcase.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ui/ModalCloseButton.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/ui/XPProgressBar.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/UnitConverter.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/Vehicle3DModel.tsx",
+      "images": 2,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/VoiceEchoBar.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/VoiceUnavailableBanner.tsx",
+      "images": 0,
+      "svg": 0,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/WilayasExplorer.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/world/DesignModeSwitch.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": false,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/world/DidouPortrait.tsx",
+      "images": 0,
+      "svg": 2,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/world/DidouRibbon.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "shared"
+    },
+    {
+      "file": "src/components/world/WorldAmbience.tsx",
+      "images": 0,
+      "svg": 1,
+      "usesSharedArt": true,
+      "scope": "shared"
+    }
+  ]
+}

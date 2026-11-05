@@ -2,6 +2,7 @@ import type { GamePack, MazeCell, MemoryRound, OrderRound } from './types';
 import mazeGarden from '../../assets/games/maze-garden.webp';
 import mazeTrain from '../../assets/games/maze-train.webp';
 import mazeRoad from '../../assets/games/maze-road.webp';
+import memoryFarm from '../../assets/games/memory-farm.webp';
 
 /**
  * Preschool learning games (3-5 years, docs/v2-jeux-catalogue.md). « Zero text »: every card is a
@@ -43,7 +44,7 @@ export const GAME_PACKS_PRE: GamePack[] = [
     xp: 40,
     titleAr: 'ذَاكِرَةُ مَزْرَعَةِ جَدِّي',
     taglineAr: 'اِقْلِبِ البِطَاقَاتِ وَجِدِ الصُّوَرَ المُتَشَابِهَةَ!',
-    theme: { sky: 'linear-gradient(160deg, #fde047 0%, #4ade80 50%, #15803d 100%)', scenery: ['🌾', '🐄', '🌳', '🚜', '🐑', '🌻'], emoji: '🚜' },
+    theme: { backdrop: memoryFarm, sky: 'linear-gradient(160deg, #fde047 0%, #4ade80 50%, #15803d 100%)', scenery: ['🌾', '🐄', '🌳', '🚜', '🐑', '🌻'], emoji: '🚜' },
     storyAr: 'مَرْحَباً! أَنَا فِي مَزْرَعَةِ جَدِّي فِي سَهْلِ مِتِيجَةَ. الحَيَوَانَاتُ تَلْعَبُ مَعَنَا الغُمَّيْضَةَ تَحْتَ البِطَاقَاتِ! اُنْقُرْ بِطَاقَةً، ثُمَّ ابْحَثْ عَنْ أُخْتِهَا.',
     rounds: [
       {

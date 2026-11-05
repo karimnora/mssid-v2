@@ -1,0 +1,54 @@
+/* The scene changes presentation only; wudu.ts remains the source of truth. */
+.wudu-scene {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 580px;
+  aspect-ratio: 3 / 4;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 2px solid #e7e2d7;
+  background: #e9dfcc url('../../assets/labs/wudu/backdrop-portrait.webp') center / cover;
+}
+.wudu-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgb(255 251 240 / 65%) 100%);
+  pointer-events: none;
+}
+.wudu-child-frame { position: absolute; inset: 14% 24% 10%; pointer-events: none; }
+.wudu-child { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 8px rgb(69 49 24 / 18%)); }
+[dir='rtl'] .wudu-child { transform: scaleX(-1); }
+.wudu-scene [data-wudu-target] { z-index: 1; box-shadow: 0 4px 0 rgb(48 64 51 / 16%); }
+.wudu-scene [data-active='true'] { outline: 3px solid rgb(255 208 84 / 40%); outline-offset: 3px; animation: wudu-target-glow 1.8s ease-in-out infinite; }
+.wudu-order-art { width: 64px; height: 72px; object-fit: contain; flex-shrink: 0; }
+[dir='rtl'] .wudu-order-art { transform: scaleX(-1); }
+@keyframes wudu-target-glow { 0%, 100% { opacity: 1; } 50% { opacity: .82; } }
+@media (min-width: 640px) { .wudu-scene { aspect-ratio: 4 / 3; background-image: url('../../assets/labs/wudu/backdrop-landscape.webp'); } }
+@media (prefers-reduced-motion: reduce) { .wudu-scene [data-active='true'] { animation: none; } }
+/* Keep the activity visible before the fold on phones, without hiding instructions. */
+.wudu-lab [data-world-lab] { row-gap: 12px; }
+.wudu-lab [data-world-lab-hero] { padding: 12px !important; }
+.wudu-lab [data-world-lab-hero] h1 { font-size: 22px; }
+.wudu-lab [data-didou-ribbon] { min-height: 80px; padding: 8px; gap: 8px; }
+.wudu-lab .world-ribbon-didou { width: 60px !important; height: 60px !important; flex-basis: 60px; }
+.wudu-lab .world-ribbon-text { font-size: 14px; line-height: 1.6; }
+.wudu-lab .world-ribbon-listen { width: 60px; height: 60px; min-width: 60px; min-height: 60px; }
+.wudu-lab [data-world-lab-hero] > .mt-4 { margin-top: 8px; }
+@media (max-width: 639px) {
+  .wudu-lab [data-world-lab] > section { padding: 10px; }
+  .wudu-lab .wudu-scene { aspect-ratio: 4 / 5; }
+}
+/* Brief water feedback follows a successful wash; it never advances the lesson. */
+.wudu-water { position: absolute; left: 50%; top: 60%; width: 40px; height: 48px; pointer-events: none; animation: wudu-water-fall 900ms ease-out both; }
+.wudu-water[data-water-target='mouth'], .wudu-water[data-water-target='face'] { top: 34%; }
+.wudu-water[data-water-target='arms'] { left: 60%; top: 54%; }
+.wudu-water[data-water-target='feet'] { top: 80%; }
+.wudu-water i { position: absolute; width: 8px; height: 14px; border-radius: 65% 65% 60% 60%; background: #79d9ff; box-shadow: inset 2px 2px 0 #d9f6ff; }
+.wudu-water i:nth-child(1) { left: 0; top: 8px; }
+.wudu-water i:nth-child(2) { left: 16px; top: 0; }
+.wudu-water i:nth-child(3) { left: 30px; top: 14px; }
+@keyframes wudu-water-fall { 0% { transform: translate(-50%, -12px); opacity: 0; } 20% { opacity: 1; } 100% { transform: translate(-50%, 25px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .wudu-water { display: none; animation: none; } }

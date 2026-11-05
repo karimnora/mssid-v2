@@ -342,3 +342,23 @@ Les labos encore au design ancien, à refaire après celui-ci :
   - les éléments animés selon l'activité : les véhicules roulent à leur vraie vitesse relative, l'ampoule s'allume en fondu quand le circuit est fermé, l'eau coule du robinet à chaque étape, les feux changent d'état, les produits sautent dans le panier ;
   - Didou guide, avec ses poses (parle, bravo, réfléchit).
 - Les mécanismes et le contenu pédagogique existants des labos sont conservés.
+
+## Résultat de préparation des images (5 novembre 2026)
+
+L05 à L24 ont été générées avec image_gen (20 sources et deux variantes correctives), sans intégration dans les labos. Planche-contact numérotée, inventaire, contrôle sur damier et 81 exports WebP candidats : voir [le rapport de préparation](design/labos-preparation-2026-11-05/README.md). Tous les décors exportés sont sous 250 Ko. Les exports sont conservés dans docs/design, séparés des assets de production : des liserés verts, transparences contaminées, états à aligner et écarts pédagogiques restent à corriger. L08 initial et L12 initial refusés ; L12 corrigé reste en relecture. Aucun tsc, Vitest, e2e ni commit lancé.
+
+## Résultat — premier lot intégré (5 novembre 2026)
+
+WuduLab : dix WebP importés depuis assets/labs/wudu ; décor responsive, enfant 3D sur les mêmes cibles interactives, sept vignettes pour le classement, cibles portées à 60 px, miroir RTL, animation d’opacité et pression désactivées avec prefers-reduced-motion. Les handlers, textes, étapes, quiz et récompenses sont conservés. Le décor paysage ne contient plus de filet d’eau fixe. Pas encore d’animation d’eau synchronisée : à réaliser après vérification visuelle. Les gestes sont des illustrations complémentaires ; la description audio et écrite reste nécessaire pour le rinçage du nez.
+
+Préscolaire : nouveau décor de la ferme de Mitidja, sans Didou ni texte, branché uniquement sur game-pre-memory-farm via theme.backdrop. Aucune modification des cartes ni des règles.
+
+Corrections des images : nouvelles sources alpha pour L05, L08, L09, L15, L16, L19, L22, L23, L24 ; contours et transparences contrôlés sur damier. L19 montre maintenant le second enfant regardant à gauche de l’image. Exports corrigés et contrôle dans docs/design/labos-preparation-2026-11-05/corrections-02. Les états électriques et feux restent à aligner avant fondu. L09 présente un fragment d’eau à reprendre lors de la découpe, ne pas utiliser drops en l’état. Salat reste en attente de correction et relecture des postures. Aucun tsc, Vitest, e2e, build, commit ni push. Rendu navigateur non vérifié.
+
+## Résultat — contrôle visuel du premier lot (5 novembre 2026)
+
+Contrôle Chromium/Playwright en arabe, 390×844 et 1280×800, aperçu v2 sur 3002 et compte simulé. En-tête WuduLab compacté ; chevauchement bouche/mains corrigé. Au second passage : aucune erreur pageerror, aucun débordement horizontal ni chevauchement des sept cibles ; mauvais choix sans progression et sept étapes correctes jusqu’à la fin. Onglet d’ordre affiché. Ferme ouverte depuis le préscolaire, carte puis premier niveau de mémoire vérifiés aux deux formats. Captures et détails : [rapport visuel](design/labos-preparation-2026-11-05/verification-visuelle/README.md). Reste : eau synchronisée, repères anatomiques, panneau de bienvenue qui recouvre le haut de certaines captures, images des cartes encore en emoji. Pas de tsc, Vitest, suite e2e, commit ni push.
+
+## Résultat — lot prêt à commiter (5 novembre 2026)
+
+Effet d’eau ajouté après un lavage réussi, uniquement transform/opacity, absent pour l’intention et le passage des mains sur la tête, désactivé avec prefers-reduced-motion. Progression et contenu inchangés. TypeScript réussi ; Vitest ciblé 14/14 ; suite complète 2 519/2 519 sur 247 fichiers. Captures finales arabes 390×844 et 1280×800 conservées ; effet d’eau et réduction du mouvement contrôlés. Aucun débordement horizontal ni chevauchement des cibles, aucun événement pageerror détecté sur les parcours ciblés. Prière et autres labos restent à intégrer, puis refonte globale des cours, préscolaire, examens et jeux. Commit et push autorisés sur v2 ; main reste hors intervention.

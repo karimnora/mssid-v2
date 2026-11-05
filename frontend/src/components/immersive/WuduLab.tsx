@@ -1,11 +1,26 @@
 import React, { useMemo, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ImmersiveLabShell, QuizBlock } from './ImmersiveLabShell';
 import { useTranslation } from '../../hooks/useTranslation';
 import { playSoftMiss, playSoftSuccess, speakArSafe } from '../../utils/immersiveFeedback';
 import { useLabTrace } from '../../utils/labTrace';
 import type { PrimaryGrade } from '../../types';
 import { isWuduTargetCorrect, WUDU_QUIZ, WUDU_STEPS, wuduStepAt, type WuduStep } from '../../data/immersive/wudu';
+
+import childFront from '../../assets/labs/wudu/child-front.webp';
+import intentionArt from '../../assets/labs/wudu/intention.webp';
+import handsArt from '../../assets/labs/wudu/hands.webp';
+import mouthArt from '../../assets/labs/wudu/mouth.webp';
+import faceArt from '../../assets/labs/wudu/face.webp';
+import armsArt from '../../assets/labs/wudu/arms.webp';
+import headArt from '../../assets/labs/wudu/head.webp';
+import feetArt from '../../assets/labs/wudu/feet.webp';
+import './wuduLab.css';
+
+const STEP_ART: Record<WuduStep['target'], string> = {
+  niyyah: intentionArt, hands: handsArt, mouth: mouthArt,
+  face: faceArt, arms: armsArt, head: headArt, feet: feetArt,
+};
 
 interface WuduLabProps {
   /** The child's grade: the notebook keeps the observation in that year's summary. */
@@ -16,9 +31,9 @@ interface WuduLabProps {
 
 const TARGETS: { id: WuduStep['target']; cx: string; cy: string; label: string }[] = [
   { id: 'niyyah', cx: '50%', cy: '8%', label: 'بِسْمِ اللهِ' },
-  { id: 'head', cx: '50%', cy: '22%', label: 'الرَّأْسُ' },
-  { id: 'face', cx: '50%', cy: '34%', label: 'الوَجْهُ' },
-  { id: 'mouth', cx: '50%', cy: '44%', label: 'الفَمُ' },
+  { id: 'head', cx: '18%', cy: '22%', label: 'الرَّأْسُ' },
+  { id: 'face', cx: '82%', cy: '34%', label: 'الوَجْهُ' },
+  { id: 'mouth', cx: '18%', cy: '41%', label: 'الفَمُ' },
   { id: 'hands', cx: '22%', cy: '58%', label: 'الكَفَّانِ' },
   { id: 'arms', cx: '78%', cy: '58%', label: 'الذِّرَاعَانِ' },
   { id: 'feet', cx: '50%', cy: '88%', label: 'القَدَمَانِ' },
@@ -26,6 +41,7 @@ const TARGETS: { id: WuduStep['target']; cx: string; cy: string; label: string }
 
 export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onReward }) => {
   const t = useTranslation('labsImmersive');
+  const reduceMotion = useReducedMotion();
   const [tab, setTab] = useState('wash');
   const [done, setDone] = useState(0);
   const [miss, setMiss] = useState(false);
@@ -84,6 +100,7 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
   };
 
   return (
+    <div className="wudu-lab">
     <ImmersiveLabShell
       badge={t('wuduBadge')}
       title={t('wuduTitle')}
@@ -111,16 +128,15 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
             <p className="text-base font-extrabold text-[var(--brand-emerald)] text-center py-3">{t('wuduDone')}</p>
           )}
 
-          <div className="relative mx-auto w-full max-w-sm aspect-[3/4] rounded-[28px] bg-[linear-gradient(180deg,#E0F2FE_0%,#FFFBF0_45%,#D6F3E4_100%)] border-2 border-[#E7E2D7] overflow-hidden">
-            <svg viewBox="0 0 200 260" className="absolute inset-0 w-full h-full" aria-hidden>
-              <ellipse cx="100" cy="248" rx="54" ry="8" fill="#008751" opacity="0.15" />
-              <rect x="78" y="92" width="44" height="70" rx="18" fill="#FDE68A" />
-              <circle cx="100" cy="68" r="26" fill="#FDE68A" />
-              <rect x="58" y="100" width="18" height="52" rx="9" fill="#FDE68A" />
-              <rect x="124" y="100" width="18" height="52" rx="9" fill="#FDE68A" />
-              <rect x="82" y="158" width="16" height="58" rx="8" fill="#2563EB" />
-              <rect x="102" y="158" width="16" height="58" rx="8" fill="#2563EB" />
-            </svg>
+          <div className="wudu-scene" data-wudu-scene data-complete={!current}>
+            <div className="wudu-child-frame" aria-hidden="true">
+              <img src={childFront} alt="" className="wudu-child" draggable={false} />
+            </div>
+            {done > 1 && WUDU_STEPS[done - 1]?.target !== 'head' && (
+              <span key={done} className="wudu-water" data-water-target={WUDU_STEPS[done - 1]?.target} aria-hidden="true">
+                <i /><i /><i />
+              </span>
+            )}
             {TARGETS.map((spot) => {
               const washed = WUDU_STEPS.findIndex((step) => step.target === spot.id) < done;
               const active = current?.target === spot.id;
@@ -128,11 +144,13 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
                 <motion.button
                   key={spot.id}
                   type="button"
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                   data-wudu-target={spot.id}
+                  data-active={active}
+                  aria-current={active ? 'step' : undefined}
                   onClick={() => tapTarget(spot.id)}
                   style={{ left: spot.cx, top: spot.cy }}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 min-w-[72px] min-h-[56px] rounded-2xl px-2 text-[11px] font-extrabold cursor-pointer border-2 ${
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 min-w-[72px] min-h-[60px] rounded-2xl px-2 text-[11px] font-extrabold cursor-pointer border-2 ${
                     washed
                       ? 'bg-[#008751] text-white border-[#006B40]'
                       : active
@@ -167,15 +185,16 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
               <motion.button
                 key={step.id}
                 type="button"
-                whileTap={{ scale: 0.95 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.95 }}
                 onClick={() => tapOrder(step.id)}
-                className={`hit-target w-full rounded-2xl border-2 px-4 text-sm font-extrabold cursor-pointer ${
+                className={`hit-target w-full flex items-center gap-3 rounded-2xl border-2 px-4 py-2 text-sm font-extrabold cursor-pointer ${
                   orderPick.includes(step.id)
                     ? 'bg-[#ECFDF5] border-[#008751] text-[#065F46]'
                     : 'bg-[#FFFBF0] border-[#E7E2D7] text-[var(--kids-ink)]'
                 }`}
               >
-                {step.titleAr}
+                <img src={STEP_ART[step.target]} alt="" aria-hidden="true" className="wudu-order-art" loading="lazy" draggable={false} />
+                <span>{step.titleAr}</span>
               </motion.button>
             ))}
           </div>
@@ -203,5 +222,6 @@ export const WuduLab: React.FC<WuduLabProps> = ({ grade = '2AP', onBack, onRewar
         />
       )}
     </ImmersiveLabShell>
+    </div>
   );
 };
