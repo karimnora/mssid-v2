@@ -106,6 +106,7 @@ export const LearningGamePlayer: React.FC<{
   const missesRef = useRef(0);
   const skipNote = useRef('');
   const firstMap = useRef(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const stars = useMemo(() => {
     const merged: Record<string, number> = { ...best };
@@ -141,6 +142,12 @@ export const LearningGamePlayer: React.FC<{
       speak(MAP_LINE, 'talk');
     }
     firstMap.current = false;
+    // A new level starts at the top, with its board in view.
+    try {
+      scrollRef.current?.scrollTo({ top: 0 });
+    } catch {
+      /* jsdom */
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen, play]);
 
@@ -215,7 +222,7 @@ export const LearningGamePlayer: React.FC<{
 
   return createPortal(
     <div
-      className={`mission-player lg-player ${pack.young ? 'lg-young' : ''} ${pack.grade === 'PRE' ? 'lg-pre' : ''} fixed inset-0 z-[65] overflow-y-auto overflow-x-hidden`}
+      className={`mission-player lg-player ${pack.young ? 'lg-young' : ''} ${pack.grade === 'PRE' ? 'lg-pre' : ''} fixed inset-0 z-[65] flex flex-col overflow-hidden`}
       dir="rtl"
       style={{ background: pack.theme.sky }}
       role="dialog"
@@ -225,7 +232,9 @@ export const LearningGamePlayer: React.FC<{
     >
       <World pack={pack} />
 
-      <div className="relative max-w-xl mx-auto px-4 pt-4 pb-40 space-y-4">
+      {/* Only the game scrolls; the action bar below is its own band and never covers the board. */}
+      <div ref={scrollRef} className="lg-scroll relative flex-1 min-h-0 overflow-y-auto overflow-x-hidden" data-lg-scroll>
+      <div className="relative max-w-xl mx-auto px-4 pt-4 pb-6 space-y-4">
         <header className="flex items-center justify-between gap-3">
           <ModalCloseButton onClose={onExit} tone="dark" />
           <div className="min-w-0 text-center">
@@ -289,9 +298,11 @@ export const LearningGamePlayer: React.FC<{
         </AnimatePresence>
       </div>
 
+      </div>
+
       <Confetti n={party} />
 
-      <div className="fixed inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/55 to-transparent">
+      <div className="lg-actions relative flex-none px-4 pt-3" data-lg-actions>
         <div className="max-w-xl mx-auto flex gap-2">
           {screen.kind === 'map' && (
             <motion.button type="button" data-lg-next onClick={() => openLevel(suggested)} whileTap={{ scale: 0.95 }} className="mission-next flex-1">

@@ -88,6 +88,13 @@
 .lg-progress-fill { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 999px; background: linear-gradient(180deg, #4ade80, #16a34a); box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.35); }
 .lg-progress-text { position: relative; display: block; text-align: center; font-size: 12px; font-weight: 900; line-height: 22px; color: #0f172a; }
 
+.lg-scroll { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+/* Bottom band of the player: in the layout (not over the board), above the phone's home bar. */
+.lg-actions {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25));
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.25);
+}
 .lg-skip { font-size: 15px; }
 .lg-icon-btn { flex: none; width: 60px; font-size: 22px; }
 
