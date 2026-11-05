@@ -45,7 +45,8 @@ for (const locale of ['fr', 'ar'] as const) {
         await stage.locator('summary').click();
         await expect(stage.getByText(say('Réussi seul', 'نجح وحده'), { exact: true })).toHaveCount(3);
         await board.getByRole('button').first().click();
-        await studio.getByRole('button', { name: new RegExp(say('Le marché de Didou', 'سوق ديدو')) }).click();
+        // Anchored: in Arabic « مهمة سوق ديدو » (the market mission) would match too.
+        await studio.getByRole('button', { name: new RegExp('^' + say('Le marché de Didou', 'سوق ديدو')) }).click();
         await page.getByRole('dialog').getByRole('button', { name: say('Continuer', 'متابعة'), exact: true }).click();
         await expect(board.getByRole('button').first()).toHaveAttribute('aria-pressed', 'true');
     });

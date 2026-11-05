@@ -21,6 +21,8 @@ test.beforeEach(async ({ page }) => {
   // app bug, but it drowns out real console errors. Mock them like every other spec in this suite.
   await page.route('**/v1/feature-flags', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{}' }));
   await page.route('**/v1/users/me/progress', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{}' }));
+  // The family studio (cahiers_lab, cem_prep_lab) loads the child's synchronised observations.
+  await page.route('**/v1/learning/**', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{}' }));
 });
 
 // Vite's own HMR client (dev-server only, absent from the production build) tries to open a

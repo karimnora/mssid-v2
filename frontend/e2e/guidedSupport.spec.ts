@@ -10,8 +10,10 @@ for(const locale of ['fr','ar'])test(`free guided support on mobile in ${locale}
   return route.fulfill({json:{}});
  });
  await page.goto('/?g=1AP');await page.getByRole('button',{name:say('Accompagnement guidé','المرافقة الموجّهة'),exact:true}).click();
- const dialog=page.getByRole('dialog',{name:say('Mon accompagnement MSSID','مرافقتي مع مسيد')});await expect(dialog).toBeVisible();
- await dialog.getByRole('button',{name:'2AP',exact:true}).click();await dialog.getByRole('combobox').selectOption('math-2ap-c-addition-carry');
+ const dialog=page.getByRole('dialog',{name:say('Mon assistant MSSID','مساعدي')});await expect(dialog).toBeVisible();
+ // مساعدي opens on the year's questions; the guided method has its own tab.
+ await dialog.getByRole('button',{name:say('Méthode guidée','طريقة موجّهة'),exact:true}).click();
+ await dialog.getByRole('button',{name:'2AP',exact:true}).click();await dialog.getByRole('combobox',{name:say('Notion à travailler','الفكرة التي أعمل عليها')}).selectOption('math-2ap-c-addition-carry');
  await dialog.getByRole('button',{name:say('Un indice','مساعدة'),exact:true}).click();
  await dialog.getByRole('button',{name:say('Explique la méthode','اشرح الطريقة')}).click();
  await dialog.getByRole('button',{name:say('Un exemple similaire','مثال مشابه')}).click();

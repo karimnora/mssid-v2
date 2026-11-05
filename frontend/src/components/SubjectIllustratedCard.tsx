@@ -910,7 +910,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
           {totalLessons !== undefined && totalLessons > 0 && (
             <>
               <span className="text-slate-300 dark:text-slate-600">•</span>
-              <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${theme.badgeBg} ${theme.badgeText}`}>
+              <span data-subject-badge="" className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${theme.badgeBg} ${theme.badgeText}`}>
                 {locale === 'fr' ? `${totalLessons} leçons` : `${totalLessons} دروس`}
               </span>
             </>

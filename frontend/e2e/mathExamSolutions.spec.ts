@@ -19,8 +19,8 @@ for (const width of [320, 390, 1280]) {
     await page.getByText(exam.titleAr, { exact: true }).click();
     await page.getByRole('button', { name: /إظهار كافة الحلول/ }).click();
     const sheet = page.locator('.printable-sheet');
-    await expect(sheet).toContainText('45.95');
-    await expect(sheet).not.toContainText('46.95');
+    await expect(sheet).toContainText('45,95');
+    await expect(sheet).not.toContainText('46,95');
     const solutions = page.locator('[data-exam-two-col]');
     expect(await solutions.nth(1).textContent()).toContain('\u2066(120 × 3) ÷ 4 = 90\u2069');
     const columns = await solutions.nth(1).locator(':scope > div').all();
@@ -41,7 +41,7 @@ for (const width of [320, 390, 1280]) {
       const printedColumns = await solutions.nth(1).locator(':scope > div').all();
       expect((await printedColumns[0].boundingBox())!.y).toBeCloseTo((await printedColumns[1].boundingBox())!.y, 0);
       await page.pdf({ path: 'build/math-acquis-corrected.pdf', preferCSSPageSize: true, printBackground: true });
-      await expect(sheet).toContainText('45.95');
+      await expect(sheet).toContainText('45,95');
       expect(await solutions.nth(1).textContent()).toContain('\u2066(120 × 3) ÷ 4 = 90\u2069');
     }
   });

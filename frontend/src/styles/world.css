@@ -74,6 +74,8 @@ html[data-world] [data-subject-card] {
 }
 html[data-world] [data-subject-card] :is(h3, p, span) { color: #fff; }
 html[data-world] [data-subject-card] :is(.text-slate-500, .text-slate-600, .text-gray-500) { color: #cfd8ff !important; }
+/* The white text would vanish on the badge's pale chip: the chip turns into a dark glass pill (WCAG AA). */
+html[data-world] [data-subject-card] [data-subject-badge] { background: rgba(8, 14, 60, 0.55) !important; color: #fff !important; }
 
 /* Glossy button primitive (also used by the ribbon). */
 .world-gloss {

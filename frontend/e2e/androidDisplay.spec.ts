@@ -104,7 +104,7 @@ for (const scenario of cases) {
       const tutor = page.locator('[data-nav-compact] button.kids-nav-ai');
       if (scenario.width < 768) {
         await tutor.click();
-        const panel = page.getByRole('dialog', { name: /Mon accompagnement MSSID|مرافقتي مع مسيد/ });
+        const panel = page.getByRole('dialog', { name: /Mon assistant MSSID|مساعدي/ });
         await expect(panel).toBeVisible();
         await checkWidth(page);
         expect(await panel.evaluate(element => element.scrollWidth <= element.clientWidth + 1)).toBe(true);

@@ -17,7 +17,8 @@ for (const locale of ['ar', 'fr']) {
     const gate = () => page.getByRole('dialog', { name: locale === 'fr' ? 'Espace parents' : 'بوابة الوالدين' });
     await gate().getByRole('spinbutton').fill('20');
     await gate().getByRole('button', { name: locale === 'fr' ? 'Continuer' : 'متابعة' }).click();
-    await expect(page.getByRole('radio')).toHaveCount(3);
+    // Two offers since the 2026-11-03 decision: 3 months (900 DA) and 12 months (2 400 DA).
+    await expect(page.getByRole('radio')).toHaveCount(2);
     await page.getByRole('radio', { name: /^3 (mois|أشهر)/ }).check();
     await expect(page.locator('form input:disabled')).toHaveValue(locale === 'fr' ? '900 DA — abonnement de 3 mois' : '900 دج — اشتراك 3 أشهر');
     await page.locator('input[type="file"]').setInputFiles({ name: 'recu.png', mimeType: 'image/png', buffer: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a5j0AAAAASUVORK5CYII=', 'base64') });
