@@ -20,6 +20,47 @@ export function packsForLesson(lessonId: string): GamePack[] {
   return GAME_PACKS.filter((pack) => pack.rounds.some((round) => round.lessonId === lessonId));
 }
 
+export interface GameStationPlacement {
+  pack: GamePack;
+  worldIndex: number;
+}
+
+/**
+ * Where the grade's games sit on Didou's journey map, one station per pack, never two in one world.
+ * The free pack goes in the first world, so every account meets it early. Each other pack goes to
+ * the world whose three lessons it reviews the most (ties: the earlier world), else to the first
+ * world still without a game. Game stations are bonus stops: they never lock the lesson path.
+ */
+export function gameStationsForJourney(grade: GameGrade, worldLessonIds: ReadonlyArray<readonly string[]>): GameStationPlacement[] {
+  if (!worldLessonIds.length) return [];
+  const packs = packsForGrade(grade);
+  const taken = new Set<number>();
+  const placed: GameStationPlacement[] = [];
+  const free = packs.find((p) => p.free);
+  if (free) {
+    placed.push({ pack: free, worldIndex: 0 });
+    taken.add(0);
+  }
+  for (const pack of packs) {
+    if (pack === free) continue;
+    const lessons = new Set(pack.rounds.map((r) => r.lessonId));
+    let best = -1;
+    let bestHits = 0;
+    worldLessonIds.forEach((ids, k) => {
+      const hits = ids.filter((id) => lessons.has(id)).length;
+      if (!taken.has(k) && hits > bestHits) {
+        best = k;
+        bestHits = hits;
+      }
+    });
+    if (best === -1) best = worldLessonIds.findIndex((_, k) => !taken.has(k));
+    if (best === -1) break;
+    taken.add(best);
+    placed.push({ pack, worldIndex: best });
+  }
+  return placed.sort((a, b) => a.worldIndex - b.worldIndex);
+}
+
 /** Free accounts: the pack flagged `free`, one per grade (checked by a test). */
 export function canOpenPack(pack: GamePack, premium: boolean): boolean {
   return premium || Boolean(pack.free);

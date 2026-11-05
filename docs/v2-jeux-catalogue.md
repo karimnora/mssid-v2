@@ -7,6 +7,26 @@
 > - Le lot 1 contient les moteurs Memory, Classer, Ordonner et Labyrinthe, en commençant par la 5AP.
 > - Les jeux doivent être le plus immersifs et interactifs possible.
 >
+> **Stations-jeux sur la carte de Didou et finitions 3D, codées le 5 novembre 2026 (d'après les maquettes validées par Karim) :**
+> - **Une station-jeu par pack** sur la carte de chaque niveau (1AP → 5AP), entre la 2e et la 3e leçon d'un monde, au-dessus du chemin (`gameStationsForJourney`, `components/journey/GameStationSheet.tsx`).
+>   - Le pack gratuit est toujours dans le premier monde.
+>   - Chacun des autres packs va dans le monde dont il révise le plus de leçons, avec un seul jeu par monde.
+>   - Ces stations sont des bonus : elles ne bloquent jamais le chemin des leçons.
+> - **Aspect sur la carte** : station dorée avec le compteur d'étoiles (« ★ 12/30 », ou « مجاني » avant la première partie), ou station violette avec un cadenas pour un pack Premium sur un compte gratuit.
+> - **Fiche de la station**, qui s'ouvre par le bas :
+>   - les leçons révisées, les 10 niveaux avec leurs étoiles et la couronne sur le niveau 10 ;
+>   - le niveau suggéré, avec son palier et les XP ;
+>   - le bouton qui lance le lecteur 3D sur ce niveau.
+>   - Les étoiles sont les mêmes que dans l'étagère des Défis, et les XP sont donnés une seule fois, par le même circuit (`onGameXp` → `handleCompleteChallenge`).
+> - **Fiche Premium** :
+>   - un aperçu flou et un message neutre, sans prix (règle de l'app Android) ;
+>   - `PremiumOffer`, avec le contrôle parental ;
+>   - un bouton qui ramène au jeu gratuit.
+> - **Finitions 3D** :
+>   - le plateau du Memory est incliné ;
+>   - les pierres atteignables du labyrinthe pulsent, et le trésor brille ;
+>   - l'écran de victoire dit comment les étoiles ont été gagnées (« خطأ واحد فقط · ثلاث نجوم ») et confirme l'envoi au carnet du parent.
+>
 > **Lot 1 — 4AP, codé le 4 novembre 2026 (`data/games/packs4ap.ts`, 4 packs × 10 niveaux). Avec ce lot, tous les niveaux du préscolaire à la 5AP ont leurs 4 aventures :**
 > - `game-4ap-memory-tables` (gratuit) : ذاكرة مصنع حلوى البليدة. Niveaux : tables de 6 à 9, les produits difficiles, la division liée à la multiplication, × 10 et × 100, les fractions équivalentes, la division euclidienne (17 = 5 × 3 + 2), puis un final mixte.
 > - `game-4ap-sort-cirta` : خزانة مخطوطات سيرتا. Niveaux : كان/إن وأخواتهما، صحيح/معتل، الأسماء الموصولة، الهمزة المتوسطة، الفاعل/المفعول به، الصفة/الموصوف، حروف العطف/الجر، أقسام الكلام المتنكرة، اسم وخبر كان وإن, puis un final sur les 4 cas (مرفوع / منصوب / مجرور / مجزوم).

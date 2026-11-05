@@ -12,7 +12,10 @@ import {
   stationStates,
 } from '../../utils/journeyProgress';
 import { LessonViewer } from '../LessonViewer';
-import { JourneyMap, type JourneyMemoryState } from './JourneyMap';
+import { JourneyMap, type JourneyGameStation, type JourneyMemoryState } from './JourneyMap';
+import { GameStationSheet } from './GameStationSheet';
+import { canOpenPack, gameStationsForJourney, type GamePack } from '../../data/games';
+import { readPackLevels } from '../games/learning/LearningGameEntry';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
 import { useAuth } from '../../context/AuthContext';
@@ -45,6 +48,8 @@ export interface JourneyScreenProps {
   onQuizMiss: (lessonId: string, competenceId?: string) => void;
   onPracticeResult?: (lessonId: string, result: PracticeResult) => void;
   onReportError?: (contextLabel: string) => void;
+  /** XP of a learning game, given once when all its levels are solved (same rule as the Challenges shelf). */
+  onGameXp?: (packId: string, xp: number) => void;
 }
 
 const SOUND_KEY = 'mssid_journey_sound';
@@ -61,7 +66,7 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, onGameXp, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
@@ -173,6 +178,44 @@ export function JourneyScreen(props: JourneyScreenProps) {
     changeMemory({ ...memory, claimed: [...memory.claimed, id] });
   };
 
+  // Bonus game stops: one learning-game pack each, the free one in the first world.
+  const premiumGames = canAccess('learningGames', authUser?.role);
+  const gamePlacements = useMemo(() => (worlds ? gameStationsForJourney(grade, worlds.map((w) => w.lessonIds)) : []), [worlds, grade]);
+  const [openGame, setOpenGame] = useState<number | null>(null);
+  const [gameTick, setGameTick] = useState(0);
+  const gameStations = useMemo<JourneyGameStation[]>(
+    () =>
+      gamePlacements.map(({ pack, worldIndex }) => {
+        const levels = readPackLevels(pack.id);
+        return {
+          worldIndex,
+          emoji: pack.theme.emoji,
+          title: pack.titleAr,
+          open: canOpenPack(pack, premiumGames),
+          free: Boolean(pack.free),
+          stars: pack.rounds.reduce((sum, r) => sum + (levels[r.id] ?? 0), 0),
+          maxStars: pack.rounds.length * 3,
+        };
+      }),
+    // gameTick: re-read the stars kept on the device after a game sheet closes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [gamePlacements, premiumGames, gameTick],
+  );
+  const freeGame = gamePlacements.findIndex((g) => g.pack.free);
+  const openedGame: GamePack | undefined = openGame != null ? gamePlacements[openGame]?.pack : undefined;
+  const allTitles = useMemo(() => {
+    const titles: Record<string, string> = {};
+    lessonsById.forEach((l, id) => {
+      titles[id] = l.titleAr;
+    });
+    return titles;
+  }, [lessonsById]);
+  const closeGame = () => {
+    stopSpeech();
+    setOpenGame(null);
+    setGameTick((t) => t + 1);
+  };
+
   const lesson = lessonId ? lessonsById.get(lessonId) : undefined;
   const userName = userProfile.name || (locale === 'ar' ? 'بطل' : 'Champion');
 
@@ -230,10 +273,27 @@ export function JourneyScreen(props: JourneyScreenProps) {
             totalStars={totalStars}
             coins={userProfile.goldCoins ?? 0}
             premiumExtra={<PremiumOffer />}
+            gameStations={gameStations}
+            onOpenGame={setOpenGame}
           />
         ) : (
           <div className="journey-loading" role="status">{locale === 'ar' ? 'ديدو يحضّر الخريطة…' : 'Didou prépare la carte…'}</div>
         )
+      )}
+
+      {screen === 'map' && openedGame && (
+        <GameStationSheet
+          key={openedGame.id}
+          pack={openedGame}
+          open={canOpenPack(openedGame, premiumGames)}
+          lessonTitles={allTitles}
+          onClose={closeGame}
+          onPlayFree={freeGame >= 0 && freeGame !== openGame ? () => setOpenGame(freeGame) : undefined}
+          freeTitle={freeGame >= 0 ? gamePlacements[freeGame].pack.titleAr : undefined}
+          onPracticeResult={onPracticeResult}
+          onEarnXp={(pack, xp) => onGameXp?.(pack.id, xp)}
+          say={locale === 'ar' ? say : undefined}
+        />
       )}
 
       {screen === 'lesson' && lesson && (

@@ -3,6 +3,7 @@ import type { PrimaryGrade } from '../../types';
 import { GradeDecor } from './JourneyGradeDecor';
 import {
   JOURNEY_HEIGHT,
+  JOURNEY_STATION_XS,
   JOURNEY_WORLD_WIDTH,
   journeyWidth,
   pickText,
@@ -41,6 +42,27 @@ interface JourneyMapProps {
   coins: number;
   /** Parent-facing Premium entry (PremiumOffer) shown when a Premium world is tapped. */
   premiumExtra?: React.ReactNode;
+  /** Bonus game stops (one learning-game pack each), drawn above the trail; they never lock lessons. */
+  gameStations?: readonly JourneyGameStation[];
+  onOpenGame?: (index: number) => void;
+}
+
+export interface JourneyGameStation {
+  worldIndex: number;
+  emoji: string;
+  title: string;
+  /** False: Premium pack on a free account (purple, padlock). */
+  open: boolean;
+  free: boolean;
+  stars: number;
+  maxStars: number;
+}
+
+/** Where a world's game stop stands: between its 2nd and 3rd lessons, lifted above the trail. */
+export function gameStationPoint(world: JourneyWorld, left: number): { x: number; y: number; trailY: number } {
+  const x = left + (JOURNEY_STATION_XS[1] + JOURNEY_STATION_XS[2]) / 2;
+  const trailY = (world.ys[1] + world.ys[2]) / 2;
+  return { x, y: Math.min(world.ys[1], world.ys[2]) - 200, trailY };
 }
 
 const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
@@ -59,7 +81,7 @@ function trailPath(points: ReadonlyArray<readonly [number, number]>): string {
 }
 
 export function JourneyMap(props: JourneyMapProps) {
-  const { grade, worlds, stations, states, stars, lessonTitles, locale, memory, onMemoryChange, onStartLesson, onClaimTreasure, onBack, say, sfx, totalStars, coins, premiumExtra } = props;
+  const { grade, worlds, stations, states, stars, lessonTitles, locale, memory, onMemoryChange, onStartLesson, onClaimTreasure, onBack, say, sfx, totalStars, coins, premiumExtra, gameStations = [], onOpenGame } = props;
   const ar = locale === 'ar';
   const T = (arText: string, frText: string) => (ar ? arText : frText);
   const totalW = journeyWidth(worlds);
@@ -336,6 +358,13 @@ export function JourneyMap(props: JourneyMapProps) {
       return;
     }
     const target = e.target as Element;
+    const game = target.closest('[data-game-station]');
+    if (game) {
+      if (busyRef.current || ribbon) return;
+      sfx.pop();
+      onOpenGame?.(Number(game.getAttribute('data-game-station')));
+      return;
+    }
     const node = target.closest('[data-station]');
     if (node) {
       void openStation(Number(node.getAttribute('data-station')));
@@ -432,6 +461,55 @@ export function JourneyMap(props: JourneyMapProps) {
 
           <path d={d} fill="none" stroke="rgba(19,32,107,.35)" strokeWidth="40" strokeLinecap="round" />
           <path ref={pathRef} d={d} fill="none" stroke="#fff" strokeWidth="12" strokeDasharray="2 30" strokeLinecap="round" />
+
+          {gameStations.map((g, k) => {
+            const { x, y, trailY } = gameStationPoint(worlds[g.worldIndex], worldLeft(worlds, g.worldIndex));
+            const top = g.open ? '#ffe680' : '#c084fc';
+            const side = g.open ? '#b77900' : '#3b0764';
+            const label = `${T('لعبة', 'Jeu')}: ${g.title}${g.open ? (g.free ? T('، مجانية', ', gratuit') : '') : T('، للحسابات المميزة', ', Premium')}${g.stars ? ` — ${g.stars}/${g.maxStars}` : ''}`;
+            return (
+              <g
+                key={`game-${g.worldIndex}`}
+                className="j-game"
+                data-game-station={k}
+                data-open={g.open}
+                tabIndex={0}
+                role="button"
+                aria-label={label}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    sfx.pop();
+                    onOpenGame?.(k);
+                  }
+                }}
+              >
+                <path d={`M${x} ${trailY - 20} V${y + 76}`} stroke="#fff" strokeWidth="9" strokeDasharray="2 22" strokeLinecap="round" opacity=".85" />
+                <ellipse cx={x} cy={y + 86} rx="56" ry="13" fill="rgba(0,0,0,.25)" />
+                <circle className="j-g-hit" cx={x} cy={y + 10} r="92" fill="transparent" />
+                <g className="j-gb">
+                  <rect x={x - 62} y={y - 50} width="124" height="124" rx="34" fill={side} />
+                  <rect x={x - 62} y={y - 60} width="124" height="120" rx="34" fill={top} stroke="#fff" strokeWidth="7" />
+                  <path className="j-g-shine" d={`M${x - 40} ${y - 50} L${x - 6} ${y - 50} L${x - 44} ${y + 40} L${x - 56} ${y + 20}Z`} fill="#fff" opacity="0" />
+                  <text x={x} y={y + 22} textAnchor="middle" fontSize="64">{g.emoji}</text>
+                  {g.open ? (
+                    <g transform={`translate(${x} ${y + 80})`}>
+                      <rect x="-64" y="-22" width="128" height="40" rx="20" fill="#13206b" stroke="#fff" strokeWidth="4" />
+                      <text x="0" y="9" textAnchor="middle" fontFamily="Lalezar, Cairo, sans-serif" fontSize="28" fill="#ffd23f" direction="ltr">
+                        {g.free && !g.stars ? T('مجاني', 'Gratuit') : `★ ${g.stars}/${g.maxStars}`}
+                      </text>
+                    </g>
+                  ) : (
+                    <g transform={`translate(${x + 50} ${y + 46})`}>
+                      <circle r="28" fill="#6b21a8" stroke="#fff" strokeWidth="5" />
+                      <rect x="-12" y="-3" width="24" height="18" rx="4" fill="#fff" />
+                      <path d="M-7 -3 V-9 A7 7 0 0 1 7 -9 V-3" stroke="#fff" strokeWidth="5" fill="none" />
+                    </g>
+                  )}
+                </g>
+              </g>
+            );
+          })}
 
           {stations.map((s, i) => {
             const state = states[i];

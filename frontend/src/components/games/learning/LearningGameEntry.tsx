@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import type { GamePack, GameEngine, GameGrade } from '../../../data/games/types';
 import { canOpenPack, packsForGrade } from '../../../data/games';
@@ -40,6 +40,26 @@ export function recordLevel(pack: GamePack, progress: PackProgress | undefined, 
   return { progress: { levels, xpGiven: Boolean(progress?.xpGiven) || complete }, giveXp };
 }
 
+/** Best stars per level id of a pack, as kept on the device (journey map badges). */
+export function readPackLevels(packId: string): Record<string, number> {
+  return readStore()[packId]?.levels ?? {};
+}
+
+/** Best stars per level of a pack, kept on the device; `solveLevel` records one and gives the XP once. */
+export function usePackLevels(pack: GamePack, onEarnXp?: (pack: GamePack, xp: number) => void) {
+  const [levels, setLevels] = useState<Record<string, number>>(() => readStore()[pack.id]?.levels ?? {});
+  useEffect(() => setLevels(readStore()[pack.id]?.levels ?? {}), [pack.id]);
+  const solveLevel = (roundId: string, stars: number) => {
+    const store = readStore();
+    const { progress, giveXp } = recordLevel(pack, store[pack.id], roundId, stars);
+    store[pack.id] = progress;
+    writeStore(store);
+    setLevels(progress.levels ?? {});
+    if (giveXp) onEarnXp?.(pack, pack.xp);
+  };
+  return { levels, solveLevel };
+}
+
 export const ENGINE_LABEL_AR: Record<GameEngine, string> = {
   memory: '🃏 لُعْبَةُ الذَّاكِرَةِ',
   sort: '🧺 صَنِّفْ',
@@ -65,17 +85,8 @@ export const LearningGameEntry: React.FC<EntryProps> = ({ pack, onPracticeResult
   const open = canOpenPack(pack, canAccess('learningGames', authUser?.role));
   const [playing, setPlaying] = useState(false);
   const [locked, setLocked] = useState(false);
-  const [levels, setLevels] = useState<Record<string, number>>(() => readStore()[pack.id]?.levels ?? {});
+  const { levels, solveLevel } = usePackLevels(pack, onEarnXp);
   const focusLevel = focusLessonId ? pack.rounds.findIndex((r) => r.lessonId === focusLessonId) : -1;
-
-  const solveLevel = (roundId: string, stars: number) => {
-    const store = readStore();
-    const { progress, giveXp } = recordLevel(pack, store[pack.id], roundId, stars);
-    store[pack.id] = progress;
-    writeStore(store);
-    setLevels(progress.levels ?? {});
-    if (giveXp) onEarnXp?.(pack, pack.xp);
-  };
 
   const done = pack.rounds.filter((r) => levels[r.id]).length;
   const total = pack.rounds.reduce((sum, r) => sum + (levels[r.id] ?? 0), 0);
@@ -147,7 +158,7 @@ export const LearningGamesShelf: React.FC<{ grade: GameGrade } & Omit<EntryProps
     <section className="space-y-3" dir="rtl" data-learning-games-shelf={grade}>
       <div>
         <h2 className="text-lg font-black">🎮 أَلْعَابُ دِيدُو التَّعْلِيمِيَّةُ</h2>
-        <p className="text-xs font-bold text-[var(--app-text-muted)]">مُغَامَرَاتٌ فِي الجَزَائِرِ بِخَمْسَةِ مُسْتَوَيَاتٍ: دِيدُو يَشْرَحُ كُلَّ خَطَأٍ، وَالنَّتَائِجُ تَصِلُ إِلَى دَفْتَرِ الوَلِيِّ.</p>
+        <p className="text-xs font-bold text-[var(--app-text-muted)]">مُغَامَرَاتٌ فِي الجَزَائِرِ بِعَشَرَةِ مُسْتَوَيَاتٍ: دِيدُو يَشْرَحُ كُلَّ خَطَأٍ، وَالنَّتَائِجُ تَصِلُ إِلَى دَفْتَرِ الوَلِيِّ.</p>
       </div>
       <div className="grid gap-3 sm:grid-cols-2">
         {packs.map((pack) => <LearningGameEntry key={pack.id} pack={pack} {...entryProps} />)}

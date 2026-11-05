@@ -1031,6 +1031,7 @@ function AppContent() {
             onQuizFullyValidated={progress.handleQuizFullyValidated}
             onQuizMiss={progress.handleQuizMiss}
             onPracticeResult={progress.handlePracticeResult}
+            onGameXp={progress.handleCompleteChallenge}
             onReportError={modals.openErrorReport}
           />
         </Suspense>

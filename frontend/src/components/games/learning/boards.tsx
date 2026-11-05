@@ -176,6 +176,7 @@ export function MemoryBoard({ round, onMove, voice }: BoardProps<MemoryRound>) {
           </motion.p>
         )}
       </AnimatePresence>
+      <div className="lg-memory-stage">
       <div className={`lg-memory lg-3d ${cols}`}>
         {cards.map((card, i) => {
           const isMatched = matched.includes(card.pair);
@@ -213,6 +214,7 @@ export function MemoryBoard({ round, onMove, voice }: BoardProps<MemoryRound>) {
             </motion.button>
           );
         })}
+      </div>
       </div>
       <BoardProgress done={matched.length} total={round.pairs.length} />
     </div>
@@ -453,6 +455,7 @@ export function MazeBoard({ round, onMove, voice }: BoardProps<MazeRound>) {
                   type="button"
                   data-lg-cell={key}
                   data-state={state}
+                  data-goal={isGoal ? '' : undefined}
                   onClick={() => tap(r, c)}
                   initial={{ opacity: 0, y: -30, scale: 0.6 }}
                   animate={{ opacity: 1, scale: 1, x: shaking === key ? SHAKE : 0, y: state === 'reachable' ? -5 : state === 'cracked' ? 6 : 0 }}

@@ -75,7 +75,7 @@ type Screen = { kind: 'map' } | { kind: 'level'; index: number } | { kind: 'reca
 type Talk = { text: string; n: number };
 
 /**
- * « ألعاب ديدو التعليمية »: a full-screen 3D adventure. A map of five levels (easy → expert, all
+ * « ألعاب ديدو التعليمية »: a full-screen 3D adventure. A map of ten levels (easy → champion, all
  * open), each level played on its board, then a memo card. Didou speaks every line, explains every
  * wrong move, gives a hint from the second miss of a level and cheers streaks. The child may skip
  * any level and come back later; each level reports to the parent notebook through its lesson.
@@ -276,7 +276,7 @@ export const LearningGamePlayer: React.FC<{
                       {stars[round.id] ? <p className="lg-round-best" aria-label={`أَفْضَلُ نَتِيجَةٍ ${stars[round.id]} / 3`}>{'⭐'.repeat(stars[round.id])}</p> : null}
                     </div>
                     <RoundBoard key={`${round.id}-${play}`} round={round} assist={Boolean(round.easy) || levelMisses >= 2} onMove={onMove} voice={pack.cardLang ?? (pack.young ? 'ar' : undefined)} />
-                    <AnimatePresence>{solved && <LevelClear key={`clear-${play}`} stars={solvedStars} last={isLast} />}</AnimatePresence>
+                    <AnimatePresence>{solved && <LevelClear key={`clear-${play}`} stars={solvedStars} misses={levelMisses} last={isLast} reported={Boolean(onResult)} />}</AnimatePresence>
                   </div>
                 ) : screen.kind === 'recap' ? (
                   <Recap pack={pack} stars={stars} total={totalStars} onLevel={openLevel} />
@@ -398,7 +398,7 @@ function TiltStage({ jolt, children }: { jolt: number; children: React.ReactNode
   );
 }
 
-/** Map of the five levels: 3D platforms on a winding path, every level open. */
+/** Map of the levels: 3D platforms on a winding path, every level open. */
 function LevelMap({ pack, stars, suggested, onOpen }: { pack: GamePack; stars: Record<string, number>; suggested: number; onOpen: (i: number) => void }) {
   return (
     <div className="lg-map" data-lg-map-screen>
@@ -454,8 +454,16 @@ function LevelMap({ pack, stars, suggested, onOpen }: { pack: GamePack; stars: R
   );
 }
 
+/** « خَطَأٌ وَاحِدٌ فَقَطْ · ثَلَاثُ نُجُومٍ »: how the stars of a level were earned. */
+export function clearLineAr(misses: number, stars: number): string {
+  const mistakes =
+    misses === 0 ? 'بِلَا أَيِّ خَطَأٍ' : misses === 1 ? 'خَطَأٌ وَاحِدٌ فَقَطْ' : misses === 2 ? 'خَطَآنِ' : misses <= 10 ? `${misses} أَخْطَاءٍ` : `${misses} خَطَأً`;
+  const got = stars >= 3 ? 'ثَلَاثُ نُجُومٍ' : stars === 2 ? 'نَجْمَتَانِ' : 'نَجْمَةٌ وَاحِدَةٌ';
+  return `${mistakes} · ${got}`;
+}
+
 /** Pops over the board when a level is solved: its stars spin in, one by one. */
-function LevelClear({ stars, last }: { stars: number; last: boolean }) {
+function LevelClear({ stars, misses, last, reported }: { stars: number; misses: number; last: boolean; reported: boolean }) {
   return (
     <motion.div
       className="lg-clear"
@@ -480,6 +488,8 @@ function LevelClear({ stars, last }: { stars: number; last: boolean }) {
           </motion.span>
         ))}
       </div>
+      <p className="lg-clear-line">{clearLineAr(misses, stars)}</p>
+      {reported && <p className="lg-clear-chip">📒 وَصَلَ إِلَى دَفْتَرِ الوَلِيِّ</p>}
     </motion.div>
   );
 }
