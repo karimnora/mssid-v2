@@ -12,7 +12,7 @@ import {
 } from '../../data/journey/journeyWorlds';
 import { currentStationIndex, type JourneyStation, type StationState } from '../../utils/journeyProgress';
 import { DidouFull, DidouHead, StarIcon } from './DidouJourneyArt';
-import { OBJECT_ART, WORLD_DECOR } from '../world/worldArt';
+import { OBJECT_ART } from '../world/worldArt';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 import { JourneySceneryDefs, WORLD_SKY, WorldBackdrop } from './JourneyScenery';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
@@ -407,20 +407,12 @@ export function JourneyMap(props: JourneyMapProps) {
             <JourneySceneryDefs />
             {worlds.slice(1).map((next, k) => {
               const seam = worldLeft(worlds, k);
-              // A painted world's image already fills its whole height: its borrowed sky needs no bottom fade.
-              const h = WORLD_DECOR[next.id] ? JOURNEY_HEIGHT : WORLD_SKY[next.id].height;
               return (
                 <mask key={k} id={`jw-seam-${k}`} maskUnits="userSpaceOnUse" x={seam} y="0" width="420" height={JOURNEY_HEIGHT}>
                   <rect x={seam} y="0" width="420" height={JOURNEY_HEIGHT} fill="url(#jw-hfade)" />
-                  {/* Fade the bottom of the borrowed sky too, so it never ends on a hard horizontal line. */}
-                  {h < JOURNEY_HEIGHT && <rect x={seam} y={h - 180} width="420" height="180" fill="url(#jw-vfade-black)" />}
                 </mask>
               );
             })}
-            <linearGradient id="jw-vfade-black" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#000" stopOpacity="0" />
-              <stop offset="1" stopColor="#000" stopOpacity="1" />
-            </linearGradient>
             <radialGradient id="jw-mist">
               <stop offset="0" stopColor="#fff8ec" stopOpacity=".95" />
               <stop offset=".55" stopColor="#fff8ec" stopOpacity=".7" />
@@ -439,19 +431,14 @@ export function JourneyMap(props: JourneyMapProps) {
               {grade && <GradeDecor grade={grade} world={w.id} />}
             </g>
           ))}
-          {/* Soften each border: the next world's sky fades over the start of the previous one. */}
+          {/* Soften each border: the next world's sky fades over the start of the previous one, and a faint
+              mist hides where one ground ends and the next begins (night already blends into space). */}
           {worlds.slice(1).map((next, k) => {
             const seam = worldLeft(worlds, k);
-            const sky = WORLD_SKY[next.id];
             return (
               <g key={next.id}>
-                {/* Same height as the next world's own sky rect, so the gradient colours match exactly at the seam. */}
-                <rect x={seam} y="0" width="420" height={next.id === 'sea' && !WORLD_DECOR.sea ? 470 : JOURNEY_HEIGHT} fill={`url(#${sky.id})`} mask={`url(#jw-seam-${k})`} />
-                {/* A soft band of mist hides where one ground ends and the next begins (night already blends into space). */}
-                {/* Between two painted decors their faded edges already blend: the cream mist stays faint. */}
-                {next.id !== 'space' && (
-                  <ellipse cx={seam} cy="700" rx="260" ry="360" fill="url(#jw-mist)" opacity={WORLD_DECOR[next.id] && WORLD_DECOR[worlds[k].id] ? 0.4 : 1} />
-                )}
+                <rect x={seam} y="0" width="420" height={JOURNEY_HEIGHT} fill={`url(#${WORLD_SKY[next.id]})`} mask={`url(#jw-seam-${k})`} />
+                {next.id !== 'space' && <ellipse cx={seam} cy="700" rx="260" ry="360" fill="url(#jw-mist)" opacity="0.4" />}
               </g>
             );
           })}

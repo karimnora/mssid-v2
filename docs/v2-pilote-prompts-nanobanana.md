@@ -481,6 +481,25 @@ Ces 4 mondes sont intégrés comme le Sahara et la Casbah. Les stations sont pos
 
 À découper le jour où un écran en a besoin.
 
+### Compléments du lot 3 et mouvement (5 novembre 2026)
+
+- **Portraits reçus** : Mer, Djurdjura, Timgad, Tassili et Espace. Deux ont été recadrés :
+  - le Djurdjura était un îlot sur fond vert : seule la partie haute est gardée (montagne, village, prairie) ;
+  - la Mer était encadrée d'une bordure d'espace : seul l'intérieur est gardé.
+- **Nouvel îlot de la Casbah** : portes en bois sculpté, petites fenêtres, coupole blanche. Il remplace l'ancien, qui avait des volets bleus. Le décor de la Casbah sur la carte garde encore son style « Sidi Bou Saïd ».
+- **Espace** : il est peint lui aussi. Il reprend le fond d'espace de l'accueil pour la carte et le paysage, et le nouveau portrait sur les téléphones tenus droit. Il n'a pas encore d'îlot, donc son accueil s'affiche sans îlot. **Les 8 mondes sont peints** : `WORLD_DECOR` est complet et les décors vectoriels de la carte sont supprimés.
+- **Mouvement** (`components/world/WorldAmbience.tsx`) : une couche de vie sur chaque décor, sur la carte comme derrière les leçons :
+  - nuages qui dérivent, oiseaux qui traversent en battant des ailes ;
+  - reflets sur l'eau (Mer), étoiles qui scintillent (Tassili, Espace), sable qui s'envole (Sahara, Timgad, Tassili) ;
+  - rayons de lumière (Sahara, Constantine, Timgad) ;
+  - derrière la leçon, le décor « respire » en plus : un zoom très lent sur 40 s.
+
+  Ce ne sont que des transformations CSS, légères sur Android. Tout s'arrête avec `prefers-reduced-motion`.
+
+Reste à faire : l'îlot de l'Espace (sans drapeau), la retouche des médailles 4 et 7, et éventuellement un décor de la Casbah plus fidèle.
+
+**Pour aller plus loin dans le mouvement**, les animations intégrées à Gemini peuvent produire de courtes vidéos en boucle : vagues, palmiers, nuages. Elles serviraient de fond animé à l'accueil ou aux leçons, à condition de rester sous ~1 Mo par boucle en WebM et d'être chargées à la demande, hors cache hors ligne. C'est à valider avant de les produire.
+
 ## Ce que je fais une fois les images reçues
 
 - Détourage, conversion en WebP et déclinaisons en plusieurs tailles (téléphone, tablette).

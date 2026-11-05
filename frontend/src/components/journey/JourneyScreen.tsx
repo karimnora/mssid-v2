@@ -206,7 +206,6 @@ export function JourneyScreen(props: JourneyScreenProps) {
 
   const lesson = lessonId ? lessonsById.get(lessonId) : undefined;
   const lessonWorld = lesson && worlds ? worlds.find((w) => w.lessonIds.includes(lesson.id)) : undefined;
-  const lessonDecor = lessonWorld ? WORLD_DECOR[lessonWorld.id] : undefined;
   const userName = userProfile.name || (locale === 'ar' ? 'بطل' : 'Champion');
 
   return (
@@ -310,9 +309,9 @@ export function JourneyScreen(props: JourneyScreenProps) {
             onReportError={onReportError}
           />
         );
-        // Worlds with a painted decor (pilot: Constantine) frame the lesson; the others keep the cream page.
-        return lessonDecor ? (
-          <JourneyLessonStage key={lesson.id} decor={lessonDecor} locale={locale} lessonTitle={lesson.titleAr} say={say}>
+        // A journey lesson opens in its world's painted decor; the cream page stays for a lesson found outside the map.
+        return lessonWorld ? (
+          <JourneyLessonStage key={lesson.id} worldId={lessonWorld.id} decor={WORLD_DECOR[lessonWorld.id]} locale={locale} lessonTitle={lesson.titleAr} say={say}>
             {viewer}
           </JourneyLessonStage>
         ) : (

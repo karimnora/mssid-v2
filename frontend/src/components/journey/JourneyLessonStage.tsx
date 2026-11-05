@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import type { JourneyWorldId } from '../../data/journey/journeyWorlds';
 import { DIDOU_POSES, type WorldDecor } from '../world/worldArt';
+import { WorldAmbience, WorldAmbienceDefs } from '../world/WorldAmbience';
 import { SpeakerIcon } from './JourneyRibbon';
 
 interface JourneyLessonStageProps {
+  worldId: JourneyWorldId;
   decor: WorldDecor;
   locale: string;
   lessonTitle: string;
@@ -11,11 +14,12 @@ interface JourneyLessonStageProps {
 }
 
 /**
- * A journey lesson inside its world's painted decor (pilot: Constantine). The decor stays behind
- * the lesson's cream sheet, which keeps the reading surface of the app; the foreground layer moves
- * a little faster than the page for depth. Before the lesson appears, Didou welcomes the child.
+ * A journey lesson inside its world's painted decor. The decor stays behind the lesson's cream
+ * sheet, which keeps the reading surface of the app. It slowly breathes (a long zoom), its world's
+ * life plays over it (clouds, birds, glints…), and the foreground layer, when the world has one,
+ * moves a little faster than the page for depth. Before the lesson appears, Didou welcomes the child.
  */
-export function JourneyLessonStage({ decor, locale, lessonTitle, say, children }: JourneyLessonStageProps) {
+export function JourneyLessonStage({ worldId, decor, locale, lessonTitle, say, children }: JourneyLessonStageProps) {
   const ar = locale === 'ar';
   const intro = ar
     ? `هيّا نتعلّم معاً درس «${lessonTitle}». سأرافقك خطوة بخطوة!`
@@ -42,7 +46,14 @@ export function JourneyLessonStage({ decor, locale, lessonTitle, say, children }
       data-decor=""
       style={{ ['--decor-l' as string]: `url(${decor.landscape})`, ['--decor-p' as string]: `url(${decor.portrait})` }}
     >
-      <div className="jl-decor" aria-hidden="true" />
+      <div className="jl-decor" aria-hidden="true">
+        <svg className="jl-ambience" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <WorldAmbienceDefs />
+          </defs>
+          <WorldAmbience id={worldId} />
+        </svg>
+      </div>
       {decor.foreground && <img className="jl-fore" src={decor.foreground} alt="" aria-hidden="true" draggable={false} />}
       {/* The lesson mounts after Didou's welcome, so nothing shows through and its audio never talks over him. */}
       {!showIntro && (

@@ -265,10 +265,6 @@
 @keyframes j-bob { to { transform: translateY(-16px); } }
 @keyframes j-rock { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
 @keyframes j-flame { to { transform: scaleY(1.35) scaleX(.85); } }
-.journey-wave { animation: j-wave 3s ease-in-out infinite alternate; }
-@keyframes j-wave { to { transform: translateX(-40px); } }
-.journey-twinkle { animation: j-tw 2.6s ease-in-out infinite; }
-@keyframes j-tw { 50% { opacity: .25; } }
 
 /* ---------- Didou life ---------- */
 .journey-tail { transform-box: fill-box; transform-origin: 0% 100%; animation: j-wag 1.5s ease-in-out infinite; }
@@ -315,6 +311,10 @@
 /* Painted world decor around the lesson (JourneyLessonStage, pilot: Constantine). */
 .journey-lesson[data-decor] { overflow: hidden; background: #f3c9a0; }
 .jl-decor { position: absolute; inset: -3%; background: var(--decor-l) center / cover no-repeat; transform: translateY(calc(var(--sy, 0) * -0.04px)); }
+/* The decor slowly breathes (a long zoom, the `scale` property so it adds to the parallax transform). */
+.jl-decor { animation: jl-breathe 40s ease-in-out infinite alternate; }
+@keyframes jl-breathe { to { scale: 1.07; } }
+.jl-ambience { position: absolute; inset: 0; width: 100%; height: 100%; }
 .jl-fore { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transform: translateY(calc(min(var(--sy, 0), 600) * -0.25px)); }
 .jl-scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; }
 .journey-lesson[data-decor] .journey-lesson-inner {
