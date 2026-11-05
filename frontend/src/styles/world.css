@@ -608,3 +608,10 @@ html[data-world] .world-lab-cheer { display: flex; }
   20%, 82% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(20px) scale(0.9); opacity: 0; }
 }
+
+/* Home switch between Didou's world and the classic interface (DesignModeSwitch). */
+.design-mode-switch { box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18), 0 12px 22px rgba(8, 12, 52, 0.35); transition: transform .08s; }
+.design-mode-switch:active { transform: translateY(3px); }
+.design-mode-switch:focus-visible { outline: 4px solid #ffd23f; outline-offset: 3px; }
+.design-mode-switch[data-tone='classic'] { background: #fffbf0; color: #0f172a; }
+.design-mode-switch[data-tone='world'] { background: linear-gradient(180deg, #3aa8ff, #1263e0); color: #fff; }

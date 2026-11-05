@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { journeyForGrade } from './data/journey/journeyWorlds';
 import { JourneyMapShortcut } from './components/journey/JourneyMapShortcut';
+import { DesignModeSwitch } from './components/world/DesignModeSwitch';
+import { useDesignMode } from './utils/designMode';
 import { buildPlanetShelfGroups } from './components/journey/planetShelfGroups';
 import { ExamCountdownBanner } from './components/examPlan/ExamCountdownBanner';
 import { countdownDismissKey, examCountdown, inDaysAr, inDaysFr } from './utils/examCountdown';
@@ -110,9 +112,6 @@ export default function App() {
   return <ActivityExitProvider><AppContent /></ActivityExitProvider>;
 }
 
-/** sessionStorage: Premium families see the planet first, once per visit. */
-/** Set for the visit when a Premium child picks « الواجهة الكلاسيكية » on the planet. */
-const PLANET_CLASSIC_KEY = 'mssid_planet_classic_home';
 
 function AppContent() {
   const { requestLeave } = useActivityExit();
@@ -375,27 +374,13 @@ function AppContent() {
     setJourneyOpen(true);
   };
   // Family Premium: « كوكب ديدو » IS the home — every return to the home lands on the planet, which
-  // carries the whole classic home in its « كل الأنشطة » sheet. The planet's back button switches to
-  // the classic home for the rest of the visit. Free accounts keep the classic home, with the map
-  // shortcut in the corner (JourneyMapShortcut).
-  const premiumPlanetHome = journeyAvailable && isPremiumRole(authUser?.role);
-  const classicHomeChosen = () => {
-    try {
-      return window.sessionStorage.getItem(PLANET_CLASSIC_KEY) === '1';
-    } catch {
-      return false;
-    }
-  };
-  const chooseClassicHome = () => {
-    try {
-      window.sessionStorage.setItem(PLANET_CLASSIC_KEY, '1');
-    } catch {
-      /* private mode: the planet comes back on the next return home */
-    }
-  };
+  // carries the whole classic home in its « كل الأنشطة » sheet. Free accounts keep the classic home,
+  // with the map shortcut in the corner (JourneyMapShortcut). The family can switch to the classic
+  // interface and back at any time (utils/designMode.ts): the planet's back button, or the home switch.
+  const [designMode, setDesignMode] = useDesignMode();
+  const premiumPlanetHome = journeyAvailable && isPremiumRole(authUser?.role) && designMode === 'world';
   useEffect(() => {
     if (!premiumPlanetHome || journeyOpen || !nav.isHomeActive || window.location.pathname !== '/') return;
-    if (classicHomeChosen()) return;
     openJourney('hub');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [premiumPlanetHome, nav.isHomeActive]);
@@ -422,7 +407,7 @@ function AppContent() {
   }, [firstStepsFlag, authUser?.id, authUser?.gradeSet, authUser?.parentEmailSet, activeChildId]);
   // « monde de jeu » design: child screens only (home, subjects, lessons); parent screens keep the cream charter.
   const worldScreen =
-    worldDesignFlag && !nav.isPreschoolActive && !journeyOpen && (nav.isHomeActive || nav.mainCategory === 'courses' || nav.mainCategory === 'exams' || nav.mainCategory === 'challenges' || nav.mainCategory === 'labs');
+    worldDesignFlag && designMode === 'world' && !nav.isPreschoolActive && !journeyOpen && (nav.isHomeActive || nav.mainCategory === 'courses' || nav.mainCategory === 'exams' || nav.mainCategory === 'challenges' || nav.mainCategory === 'labs');
   useEffect(() => {
     const root = document.documentElement;
     if (worldScreen) root.setAttribute('data-world', '');
@@ -1009,7 +994,7 @@ function AppContent() {
             userProfile={progress.userProfile}
             startOn={journeyStart}
             onExit={() => {
-              if (premiumPlanetHome && journeyStart === 'hub') chooseClassicHome();
+              if (premiumPlanetHome && journeyStart === 'hub') setDesignMode('classic');
               closeJourney();
             }}
             exitLabel={premiumPlanetHome ? (locale === 'ar' ? 'الواجهة الكلاسيكية' : 'Accueil classique') : undefined}
@@ -1037,6 +1022,9 @@ function AppContent() {
         </Suspense>
       )}
 
+      {worldDesignFlag && !nav.isPreschoolActive && nav.isHomeActive && !journeyOpen && (
+        <DesignModeSwitch mode={designMode} locale={locale} onChange={setDesignMode} />
+      )}
       {journeyAvailable && !premiumPlanetHome && nav.isHomeActive && !journeyOpen && (
         <JourneyMapShortcut hasMap={journeyForGrade(nav.grade) !== null} onOpen={() => openJourney(journeyForGrade(nav.grade) ? 'map' : 'hub')} />
       )}

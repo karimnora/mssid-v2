@@ -42,7 +42,7 @@ export const subscription: typeof subscriptionAr = {
   planTotal: "{price} DA à payer",
   planMonthlyEquivalent: "Équivalent à {price} DA/mois — paiement en une fois",
   annualSaving: "Économie de 1 200 DA par rapport à quatre formules de 3 mois",
-  manualRenewal: "Activation après validation du reçu. Renouvellement volontaire, sans prélèvement automatique. Les jours restants sont conservés lors d’un renouvellement anticipé.",
+  manualRenewal: "Activation après validation du reçu. Renouvellement volontaire, sans prélèvement automatique. Les jours restants sont conservés lors d’un renouvellement anticipé. À la fin, le compte revient à l’offre gratuite et les progrès de l’enfant sont conservés.",
   selectedReceiptPlan: "Formule choisie : {months} mois · {price} DA",
   defaultTitle: "Votre enfant révise chaque semaine avec Didou, et vous savez où il progresse et où il bloque",
   loginRequiredError: 'Veuillez vous connecter d’abord pour envoyer le reçu de paiement',

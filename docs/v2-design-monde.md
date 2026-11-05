@@ -106,3 +106,14 @@
   - le certificat des wilayas.
 - Les fenêtres « Bravo » des jeux préscolaires se ferment seules au bout de 1,4 à 1,8 seconde.
 - Tests : `components/ui/ModalCloseButton.test.tsx`.
+
+## Choix de la famille : monde de Didou ou interface classique (5 novembre 2026)
+
+Décision de Karim : la version classique reste disponible, et on peut y revenir à tout moment.
+- **Un réglage mémorisé sur l'appareil** (`utils/designMode.ts`, clé `mssid_design_mode`) : `world`, la valeur par défaut, ou `classic`.
+- En mode classique, l'app garde la charte crème : pas de ciel de nuit, et pas de planète à l'accueil, même en Premium. La carte de Didou reste accessible par son raccourci.
+- On change de mode :
+  - par le bouton de l'accueil (`DesignModeSwitch`, en bas, côté opposé au raccourci de la carte), qui propose toujours l'autre interface ;
+  - par le bouton retour de la planète, qui fait passer à l'interface classique, désormais pour de bon et pas seulement pour la visite.
+- Le flag administrateur `worldDesign` décide toujours si le monde de jeu existe.
+- **Offre gratuite** : le paiement se fait en une fois, sans prélèvement automatique. À la fin de l'abonnement, le serveur repasse le compte en gratuit (`SubscriptionExpiryService`), et les progrès de l'enfant sont conservés. La phrase est ajoutée à l'offre (`manualRenewal`).
