@@ -42,6 +42,8 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    // Keep local and deployment checks within the shared 8 GB memory budget.
+    maxWorkers: 2,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     // Playwright's E2E specs (e2e/*.spec.ts) match vitest's default *.spec.ts glob but use

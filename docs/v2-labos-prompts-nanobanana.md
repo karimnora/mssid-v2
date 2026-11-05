@@ -392,3 +392,12 @@ Détails et limites dans [le rapport du lot global](design/labos-lot-global/READ
 - Vérifications : TypeScript réussi ; suite complète 248 fichiers / 2 522 tests réussis, puis contrôle ciblé après indexation et derniers raccordements (9 fichiers / 38 tests réussis). Captures et scan en arabe : 38 labos × 390×844 et 1280×800, aucun débordement, erreur JS, image cassée ou guide manquant. Les 12 questions des ablutions et la lecture des MP3 ont été vérifiées dans le navigateur aux deux tailles.
 - Rapports : `docs/design/labos-lot-global/verification/`, `docs/audio-v2/openai-generation-audit.json`, `docs/audio-v2/OPENAI-V2.md`.
 - Reste : écoute humaine des voix, validation pédagogique des postures religieuses, puis amélioration de l'adaptation de difficulté et du bilan parent. La refonte complète des cours/examens/jeux ne doit pas être confondue avec ce lot de labos et de voix.
+### Résultat — correctif du build Vercel (5 novembre 2026)
+
+Régression reproduite après l'indexation finale des nouvelles voix : le test `remainingAudio.test.ts` exigeait encore que 35 phrases françaises et 74 phrases anglaises n'aient pas d'enregistrement. Il valide maintenant leur raccordement aux activités, leur langue, leurs fichiers et les durées de réussite. Un cas séparé conserve le contrôle du secours vocal lorsqu'une phrase est réellement absente, sans emprunter un enregistrement arabe pour une activité française ni modifier le module source.
+
+La limite de deux processus est désormais dans `vitest.config.ts`, donc appliquée aussi à la commande Vercel existante. `dist` est exclu de TypeScript : les fichiers générés ne sont pas des sources à revérifier. Le périmètre conserve 913 entrées, dont les 248 fichiers de tests et 20 scripts.
+
+Validation après l'indexation : 14 tests ciblés réussis, puis suite complète de 248 fichiers / 2 523 tests réussis, contrôle TypeScript réussi et build Vite/PWA réussi (1 948 entrées précachées). Le contrôle complet précédent avait précédé l'indexation finale ; sa sélection audio ultérieure ne couvrait pas cet inventaire du préscolaire. Dorénavant, toute génération doit être suivie de l'indexation avant les vérifications finales et le build.
+
+Correction limitée aux tests et à la configuration des vérifications. Résultat du nouveau déploiement distant à confirmer sur Vercel ; aucune modification de main.

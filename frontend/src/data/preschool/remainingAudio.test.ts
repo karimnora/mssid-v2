@@ -27,7 +27,7 @@ describe('last preschool recordings and incomplete-language fallback', () => {
     }
   });
 
-  it('keeps missing French and English phrases available for synthesis with no foreign recording', () => {
+  it('attaches newly supplied French and English recordings to the remaining activities', () => {
     for (const language of ['fr', 'en'] as const) {
       const plan: Clip[] = JSON.parse(readFileSync(resolve(process.cwd(), `../docs/audio-v1/prochains/reste-a-generer/${language}-decoupage.json`), 'utf8'));
       const missing = language === 'fr' ? plan.slice(39) : plan;
@@ -35,12 +35,34 @@ describe('last preschool recordings and incomplete-language fallback', () => {
       for (const cue of missing) {
         const content = PRESCHOOL_MODULES.find(module => module.id === cue.moduleId)!.activities.find(item => item.id === cue.activiteId)!.i18n[language];
         expect(cue.type === 'prompt' ? content.promptAudio : content.successAudio).toBe(cue.texte);
-        expect(cue.type === 'prompt' ? content.promptAudioSrc : content.successAudioSrc).toBeUndefined();
-        expect(findRecordedSpeech(cue.texte, language)).toBeUndefined();
+        const recording = findRecordedSpeech(cue.texte, language);
+        expect(recording).toBeDefined();
+        expect(cue.type === 'prompt' ? content.promptAudioSrc : content.successAudioSrc).toBe(recording!.src);
+        expect(recording!.src).toMatch(new RegExp(`^/sounds/preschool/${language}/`));
+        expect(statSync(resolve(process.cwd(), 'public', recording!.src.slice(1))).size).toBeGreaterThan(1000);
+        if (cue.type === 'success') expect(content.successAudioDurationMs).toBe(recording!.durationMs);
       }
     }
   });
 
+  it('retains synthesis fallback for unavailable phrases without borrowing another language', () => {
+    const module = structuredClone(EMOTIONS_MODULE);
+    const arabicClip = metadata.ar.clips.find(clip => !findRecordedSpeech(clip.texte, 'fr'))!;
+    expect(findRecordedSpeech(arabicClip.texte, 'ar')).toBeDefined();
+    const content = module.activities[0].i18n.fr;
+    content.promptAudio = arabicClip.texte;
+    content.successAudio = 'Texte témoin non enregistré pour vérifier le secours vocal.';
+    delete content.promptAudioSrc;
+    delete content.successAudioSrc;
+    delete content.successAudioDurationMs;
+    const snapshot = structuredClone(module);
+    const attached = withRecordedAudio(module).activities[0].i18n.fr;
+    expect(attached.promptAudio).toBe(arabicClip.texte);
+    expect(attached.promptAudioSrc).toBeUndefined();
+    expect(attached.successAudioSrc).toBeUndefined();
+    expect(attached.successAudioDurationMs).toBeUndefined();
+    expect(module).toEqual(snapshot);
+  });
   it('preserves explicitly selected voices and durations without mutating the source module', () => {
     const existing = structuredClone(EMOTIONS_MODULE);
     existing.activities[0].i18n.fr.promptAudioSrc = '/custom-prompt.mp3';
