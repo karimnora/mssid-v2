@@ -296,6 +296,164 @@ Si la planche mélange les deux mondes, faire deux images séparées (`22a-premi
 - **Premiers plans (22)** : refusés. La moitié Casbah remplit tout l'écran au lieu d'encadrer seulement les bords. Les leçons du Sahara et de la Casbah s'affichent sans premier plan. À refaire si besoin en deux images séparées (`22a`, `22b`) sur le modèle du prompt 12.
 - **Style de la Casbah** : volets bleus et dômes blancs, elle évoque plus Sidi Bou Saïd ou Santorin que la Casbah d'Alger. Pour une version plus fidèle, ajouter aux prompts 19 à 21 : « narrow covered alleys, houses with small windows and carved wooden doors, ochre and white walls, no blue domes, Ketchaoua-style mosque ».
 
+## Lot 3 : les cinq derniers mondes et les médailles (5 novembre 2026)
+
+Déposer les fichiers dans `C:\Users\Karim\Downloads\didou-lot3\`, avec les mêmes règles que plus haut : bloc STYLE en tête, fond vert pur pour les éléments détourés, aucun texte, aucun drapeau. La règle des décors du lot 2 s'applique aussi, avec les adaptations notées pour chaque monde.
+
+Pour tous les décors, garder **le rendu 3D doux et lumineux de Constantine** (joindre `10-constantine-decor-paysage.png` comme référence de style), pas un dessin plat. Rester **fidèle au lieu algérien réel** : c'était le défaut de la Casbah.
+
+Pas de premier plan pour ces mondes : les leçons s'affichent avec le décor seul.
+
+### Mer (bateau : les stations sont posées sur l'eau)
+
+#### 23 — `23-ilot-mer.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island of the Algerian Mediterranean coast, seen in three-quarter top view: a chunk of land floating in the air with rocky edges underneath, half of its top is a turquoise sea bay with small waves, the other half a green rocky cape with a white and red lighthouse (inspired by Cap Carbon in Béjaïa), a small sandy beach, and two small white-and-blue wooden fishing boats on the water. A few seagulls. Small golden glowing dots tracing a sea route across the bay. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+#### 24 — `24-mer-decor-paysage.png` · ratio 16:9
+
+Joindre `10-constantine-decor-paysage.png` (référence de style).
+
+```
+[STYLE]
+In the same soft 3D rendering style as the attached reference image. Wide painted background for a children's game world, the Algerian Mediterranean coast on a bright morning: in the middle distance, a green rocky cape with a white and red lighthouse on one side, steep green hills and a small white coastal town far behind, a clear soft blue sky with a few soft clouds and seagulls. The whole lower 45% of the image is open calm turquoise sea with gentle small waves, running across the full width, at the same height on the left and right edges, with no boats, rocks or objects on it. Atmospheric perspective, slightly softened, calm. No characters, no text, no flags.
+```
+
+#### 25 — `25-mer-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 24.
+
+```
+[STYLE]
+Same artwork as the attached image (Algerian Mediterranean coast, lighthouse on a green cape, bright morning), recomposed for a vertical phone screen: sky and seagulls in the upper third, the cape and lighthouse in the middle third, calm open turquoise sea in the lower third. Same colors and lighting. No characters, no text, no flags.
+```
+
+### Djurdjura (à pied ; moutons et fleurs posés en bas)
+
+#### 26 — `26-ilot-djurdjura.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island of the Djurdjura mountains in Kabylie, Algeria, seen in three-quarter top view: a chunk of land floating in the air with grey rock underneath, a snowy limestone peak, dark green Atlas cedar trees, a small Kabyle village of stone houses with red tiled roofs clustered on a ridge, green meadows with a few white sheep, and a small stream. Small golden glowing path dots winding up the meadow. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+#### 27 — `27-djurdjura-decor-paysage.png` · ratio 16:9
+
+Joindre `10-constantine-decor-paysage.png` (référence de style).
+
+```
+[STYLE]
+In the same soft 3D rendering style as the attached reference image. Wide painted background for a children's game world, the Djurdjura mountains in Kabylie, Algeria, in spring: in the middle distance, a small Kabyle village of stone houses with red tiled roofs on a ridge, dark green Atlas cedar trees and olive trees on the slopes, snowy limestone peaks behind under a clear blue sky with a few soft clouds. The whole lower third of the image is a wide, gently rolling, calm green meadow with a few tiny wild flowers, running across the full width, at the same height on the left and right edges, with no trees, rocks or objects on it. Atmospheric perspective, slightly softened, calm. No characters, no animals, no text, no flags.
+```
+
+#### 28 — `28-djurdjura-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 27.
+
+```
+[STYLE]
+Same artwork as the attached image (Djurdjura, Kabyle village with red roofs, cedars, snowy peaks, spring), recomposed for a vertical phone screen: snowy peaks and sky in the upper third, the village and cedars in the middle third, a calm empty green meadow in the lower third. Same colors and lighting. No characters, no animals, no text, no flags.
+```
+
+### Timgad (à pied)
+
+#### 29 — `29-ilot-timgad.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island of the Roman ruins of Timgad, Algeria, seen in three-quarter top view: a chunk of land floating in the air with ochre rock underneath, the triumphal Arch of Trajan with its three arches in golden sandstone, a straight paved Roman street lined with standing columns, low ruined walls in a neat grid, a small semicircular theatre, dry golden grass. Small golden glowing path dots along the paved street. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+#### 30 — `30-timgad-decor-paysage.png` · ratio 16:9
+
+Joindre `10-constantine-decor-paysage.png` (référence de style).
+
+```
+[STYLE]
+In the same soft 3D rendering style as the attached reference image. Wide painted background for a children's game world, the Roman ruins of Timgad in the Aurès, Algeria, at golden late afternoon: in the middle distance, the triumphal Arch of Trajan with its three arches in golden sandstone, rows of standing Roman columns and low ruined walls in a neat grid, the blue-grey Aurès mountains far behind under a warm sky shifting from soft blue to apricot, a few soft clouds. The whole lower third of the image is a wide, calm, flat ancient paved Roman street and dry golden ground, running across the full width, at the same height on the left and right edges, with no columns, stones or objects on it. Atmospheric perspective, slightly softened, calm. No characters, no text, no inscriptions.
+```
+
+#### 31 — `31-timgad-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 30.
+
+```
+[STYLE]
+Same artwork as the attached image (Timgad, Arch of Trajan, Roman columns, Aurès mountains, golden afternoon), recomposed for a vertical phone screen: sky and mountains in the upper third, the arch and columns in the middle third, a calm empty paved Roman street in the lower third. Same colors and lighting. No characters, no text, no inscriptions.
+```
+
+### Tassili n'Ajjer (à pied)
+
+#### 32 — `32-ilot-tassili.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island of the Tassili n'Ajjer plateau in the Algerian Sahara, seen in three-quarter top view: a chunk of red-orange sandstone floating in the air, tall eroded sandstone towers and a natural rock arch like a stone forest, soft orange sand between them, a few small acacia trees, and simple prehistoric-style rock paintings of giraffes and cattle on one smooth rock wall (simple shapes, no letters). Small golden glowing path dots winding between the rocks. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+#### 33 — `33-tassili-decor-paysage.png` · ratio 16:9
+
+Joindre `10-constantine-decor-paysage.png` (référence de style).
+
+```
+[STYLE]
+In the same soft 3D rendering style as the attached reference image. Wide painted background for a children's game world, the Tassili n'Ajjer plateau in the Algerian Sahara at sunset: in the middle distance, a stone forest of tall eroded red-orange sandstone towers and a natural rock arch, a few small acacia trees, under a magical sky shifting from deep violet at the top to warm orange near the horizon, the first stars appearing. The whole lower third of the image is a wide, calm, flat soft orange sand ground running across the full width, at the same height on the left and right edges, with no rocks or objects on it. Atmospheric perspective, slightly softened, calm. No characters, no text, no letters.
+```
+
+#### 34 — `34-tassili-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 33.
+
+```
+[STYLE]
+Same artwork as the attached image (Tassili n'Ajjer, red sandstone towers and rock arch, violet-to-orange sunset sky), recomposed for a vertical phone screen: the violet sky and first stars in the upper third, the rock towers and arch in the middle third, calm empty orange sand in the lower third. Same colors and lighting. No characters, no text, no letters.
+```
+
+### Espace (fusée : les stations flottent au milieu de l'image)
+
+Ici, pas de sol : les stations sont dans la bande du milieu (y entre 340 et 560). Cette bande doit rester **calme et sans objet**. Les planètes et la nébuleuse vont en haut, en bas et sur les bords.
+
+#### 35 — `35-ilot-espace.png` · ratio 1:1 · fond vert
+
+```
+[STYLE]
+A floating miniature diorama island for a space world, seen in three-quarter top view: a small round chunk of grey moon-like rock with tiny craters floating in the air, a small white and red rocket standing on a launch pad with a metal tower, a white observatory dome with an open slit and a telescope, a small satellite dish. Small golden glowing dots tracing a curved flight path above the rocket. Plain flat pure green #00FF00 background, no shadow on the background.
+```
+
+#### 36 — `36-espace-decor-paysage.png` · ratio 16:9
+
+Joindre `07-espace-paysage.png` (même ciel que l'accueil).
+
+```
+[STYLE]
+In the same style and colors as the attached space background. Wide painted background for a children's game world in outer space: deep navy and violet space with soft nebula clouds, hundreds of tiny twinkling stars, a large ringed planet in the upper left corner, a small moon in the upper right, and the soft curved glowing edge of a blue planet along the very bottom of the image. The whole horizontal middle band of the image (from 35% to 65% of the height) is calm open space with only tiny stars, across the full width, with no planets or objects in it. Calm and magical. No characters, no rockets, no text.
+```
+
+#### 37 — `37-espace-decor-portrait.png` · ratio 9:16
+
+Joindre l'image 36.
+
+```
+[STYLE]
+Same artwork as the attached image (outer space, nebula, ringed planet, small moon, glowing blue planet edge at the bottom), recomposed for a vertical phone screen: the ringed planet and moon in the upper third, calm open starry space in the middle third, the glowing blue planet edge at the very bottom. Same colors and lighting. No characters, no rockets, no text.
+```
+
+### Médailles des 8 mondes
+
+#### 38 — `38-medailles.png` · ratio 16:9 · fond vert
+
+Je découpe chaque médaille. L'ordre compte : c'est l'ordre des mondes dans l'app.
+
+```
+[STYLE]
+A clean sheet of eight separate isolated 3D golden medals, each hanging from a short ribbon, evenly spaced in two rows of four with generous space between them, all on a plain flat pure green #00FF00 background, no shadows on the background. Same size and same shape for all eight; only the engraved relief and the ribbon colour change (no letters, no numbers):
+Top row, left to right: 1. a desert ksar with palm trees, orange ribbon. 2. a square minaret above stacked houses, blue ribbon. 3. a lighthouse above waves, turquoise ribbon. 4. a suspension bridge, red ribbon.
+Bottom row, left to right: 5. a cedar tree before mountain peaks, dark green ribbon. 6. a Roman triumphal arch with three arches, purple ribbon. 7. a natural rock arch, terracotta ribbon. 8. a rocket with a star, navy ribbon.
+```
+
 ## Ce que je fais une fois les images reçues
 
 - Détourage, conversion en WebP et déclinaisons en plusieurs tailles (téléphone, tablette).
