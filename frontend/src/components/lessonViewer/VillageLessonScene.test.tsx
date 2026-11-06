@@ -1,15 +1,15 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { expect, it, vi } from 'vitest';
 import { VillageLessonScene } from './VillageLessonScene';
 vi.mock('../../utils/speech', () => ({ stopSpeech: vi.fn() }));
-it('suspends only legacy surfaces and preserves arriving global messages', () => {
+it('suspends only legacy surfaces and preserves arriving global messages', async () => {
   const root = document.createElement('div');
   root.id = 'root';
   root.style.display = 'grid';
   document.body.append(root);
   const chrome = document.createElement('header');
-  chrome.setAttribute('data-app-header', '');
+  chrome.setAttribute('data-legacy-chrome', '');
   chrome.style.display = 'flex';
   chrome.setAttribute('aria-hidden', 'false');
   root.append(chrome);
@@ -32,7 +32,14 @@ it('suspends only legacy surfaces and preserves arriving global messages', () =>
   root.append(alert);
   expect(screen.getByRole('alert')).toBeVisible();
   expect(alert.closest('[inert], [aria-hidden="true"]')).toBeNull();
+  const replacement = document.createElement('nav');
+  replacement.setAttribute('data-legacy-chrome', '');
+  root.append(replacement);
+  await waitFor(() => expect(replacement.inert).toBe(true));
+  expect(replacement.style.display).toBe('none');
   view.unmount();
+  expect(replacement.inert).not.toBe(true);
+
   expect(chrome.style.display).toBe('flex');
   expect(chrome.inert).not.toBe(true);
   expect(chrome).toHaveAttribute('aria-hidden', 'false');

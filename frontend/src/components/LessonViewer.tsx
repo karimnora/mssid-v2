@@ -68,6 +68,7 @@ const ScienceLabSimulation = lazy(() =>
   }))
 );
 interface LessonViewerProps {
+  demo?: boolean;
   lesson: CourseLesson;
   allLessons?: CourseLesson[];
   onSelectLesson?: (lesson: CourseLesson) => void;
@@ -88,6 +89,7 @@ interface LessonViewerProps {
 }
 export const LessonViewer: React.FC<LessonViewerProps> = ({
   lesson: lessonProp,
+  demo = false,
   allLessons = [],
   onSelectLesson,
   onBack,
@@ -116,6 +118,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     onPracticeResult
   );
   const quiz = useLessonQuiz({
+    demo,
     lesson,
     quizAlreadyValidated,
     onCompleteQuiz,
@@ -400,6 +403,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       <VillageLessonLayout
         key={lesson.id}
         lesson={lesson}
+        onPracticeResult={demo ? undefined : onPracticeResult}
+        demo={demo}
         steps={villagePilotSteps(availableSteps)}
         active={activeTab}
         onTab={setActiveTab}
@@ -412,7 +417,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         onBack={() => guardLeave(onBack)}
         onFinish={finishAndContinue}
         canFinish={canCompleteLesson}
-        extras={
+        extras={demo ? undefined :
           <LessonExtras
             lesson={lesson}
             collapsible

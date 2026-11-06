@@ -89,6 +89,8 @@ describe('immersive guided fractions lesson', () => {
     fireEvent.click(within(active()).getByRole('button', { name: 'تحقق من الإجابة' }));
     expect(actions.onCompleteQuiz).not.toHaveBeenCalled();
     expect(actions.onPracticeResult).toHaveBeenCalledWith(lesson.id, expect.objectContaining({outcome:'fail'}));
+    expect(document.querySelector('[data-pilot-exercise] [data-practice-hint]')).toBeNull();
+    expect(document.querySelector('[data-pilot-exercise] [data-guided-support]')).toBeNull();
     expect(document.querySelector('[data-pilot-companion]')).toHaveTextContent(lesson.progressiveExercises![0].hintsAr[0]);
     fireEvent.click(within(active()).getByRole('button', { name: 'حاول مرة أخرى' }));
     fireEvent.click(document.querySelector('[data-pilot-help]')!);

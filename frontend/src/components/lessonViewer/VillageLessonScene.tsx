@@ -12,29 +12,30 @@ export function VillageLessonScene({
   const scene = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
     // Only the old workspace is suspended. Global alerts and app modals remain live.
-    const surfaces = Array.from(document.querySelectorAll<HTMLElement>(
-      '[data-app-header], [data-bottom-nav], [data-village-legacy-content], [data-village-legacy-footer], .journey-root'
-    )).map(element => ({
-      element,
-      display: element.style.display,
-      inert: element.inert,
-      aria: element.getAttribute('aria-hidden'),
-    }));
+    const surfaces = new Map<HTMLElement, { display: string; inert: boolean; aria: string | null }>();
+    const suspend = () => {
+      document.querySelectorAll<HTMLElement>('[data-legacy-chrome]').forEach(element => {
+        if (surfaces.has(element)) return;
+        surfaces.set(element, { display: element.style.display, inert: element.inert, aria: element.getAttribute('aria-hidden') });
+        element.style.display = 'none';
+        element.inert = true;
+        element.setAttribute('aria-hidden', 'true');
+      });
+    };
     const opener = document.activeElement as HTMLElement | null;
     const hadClass = document.body.classList.contains(
       'mssid-village-scene-active'
     );
     stopSpeech();
     scene.current?.focus();
-    for (const { element } of surfaces) {
-      element.style.display = 'none';
-      element.inert = true;
-      element.setAttribute('aria-hidden', 'true');
-    }
+    suspend();
+    const observer = new MutationObserver(suspend);
+    observer.observe(document.body, { childList: true, subtree: true });
     document.body.classList.add('mssid-village-scene-active');
     return () => {
       stopSpeech();
-      for (const { element, display, inert, aria } of surfaces) {
+      observer.disconnect();
+      for (const [element, { display, inert, aria }] of surfaces) {
         element.style.display = display;
         element.inert = inert;
         if (aria === null) element.removeAttribute('aria-hidden');

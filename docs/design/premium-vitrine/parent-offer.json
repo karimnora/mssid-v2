@@ -1,0 +1,28 @@
+[
+  {
+    "width": 390,
+    "freeHome": true,
+    "premiumLocks": true,
+    "parentGateBeforeOffer": true,
+    "realCaptures": 5,
+    "localAggregateCounts": {
+      "lock_open": 1,
+      "parent_interest": 1,
+      "offer_open": 1
+    },
+    "noOverflow": true
+  },
+  {
+    "width": 1280,
+    "freeHome": true,
+    "premiumLocks": true,
+    "parentGateBeforeOffer": true,
+    "realCaptures": 5,
+    "localAggregateCounts": {
+      "lock_open": 1,
+      "parent_interest": 1,
+      "offer_open": 1
+    },
+    "noOverflow": true
+  }
+]

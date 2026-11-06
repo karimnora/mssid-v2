@@ -205,6 +205,8 @@ public final class ProgressGuard {
             stat.put("attempts", Math.max(asInt(current.get("attempts")), asInt(next.get("attempts"))));
             stat.put("successes", Math.max(asInt(current.get("successes")), asInt(next.get("successes"))));
             stat.put("failures", Math.max(asInt(current.get("failures")), asInt(next.get("failures"))));
+            stat.put("alone", Math.max(asInt(current.get("alone")), asInt(next.get("alone"))));
+            stat.put("helped", Math.max(asInt(current.get("helped")), asInt(next.get("helped"))));
             String lastAt = laterIso(asString(current.get("lastAt")), asString(next.get("lastAt")));
             if (lastAt != null) {
                 stat.put("lastAt", lastAt);
@@ -224,6 +226,9 @@ public final class ProgressGuard {
             if ("success".equals(outcome) || "fail".equals(outcome)) {
                 stat.put("lastOutcome", outcome);
             }
+            Object missed = latest.get("missedExerciseIds");
+            if (missed instanceof List<?> ids) stat.put("missedExerciseIds", ids.stream()
+                    .filter(item -> item instanceof String text && isSafeId(text)).distinct().limit(6).toList());
             merged.put(id, stat);
         });
         return merged;
@@ -253,7 +258,14 @@ public final class ProgressGuard {
         }
         // Replaying an absolute snapshot is idempotent: do not duplicate the same session.
         java.util.Map<String,Map<String,Object>> unique=new java.util.LinkedHashMap<>();
-        for(var session:merged)unique.put(session.get("lessonId")+"|"+session.get("at")+"|"+session.get("outcome"),session);
+        for (var session : merged) {
+            Object summary = session.get("villageSummary");
+            String key = summary instanceof Map<?, ?> map
+                    ? session.get("lessonId") + "|summary|" + map.get("id")
+                    : session.get("lessonId") + "|" + session.get("at") + "|" + session.get("outcome");
+            Map<String, Object> old = unique.get(key);
+            if (old == null || String.valueOf(session.get("at")).compareTo(String.valueOf(old.get("at"))) >= 0) unique.put(key, session);
+        }
         merged.clear();
         merged.addAll(unique.values());
         merged.sort(java.util.Comparator.comparing(v -> String.valueOf(v.get("at"))));
@@ -288,6 +300,39 @@ public final class ProgressGuard {
         clean.put("lessonId", lessonId);
         clean.put("competenceIds", competenceIds);
         clean.put("outcome", outcome);
+        if (session.get("helped") instanceof Boolean value) clean.put("helped", value);
+        if (session.get("count") instanceof Number) clean.put("count", Math.max(1, asInt(session.get("count"))));
+        if (session.containsKey("villageSummary")) {
+            Map<String, Object> summary = cleanVillageSummary(session.get("villageSummary"));
+            if (summary == null) return null; // Never turn malformed observations into scored successes.
+            clean.put("villageSummary", summary);
+            clean.put("count", 0);
+            clean.put("competenceIds", List.of());
+        }
+        return clean;
+    }
+
+    private static Map<String, Object> cleanVillageSummary(Object raw) {
+        Map<String, Object> value = rawMapToObjectMap(raw);
+        String id = asString(value.get("id")), title = asString(value.get("title")), grade = asString(value.get("grade"));
+        String next = asString(value.get("next"));
+        if (!isSafeId(id) || title == null || title.length() > 300 || (grade == null || !ALLOWED_GRADES.contains(grade))
+                || (next == null || !List.of("interactive", "practice", "quiz").contains(next))) return null;
+        Map<String, Object> clean = new HashMap<>();
+        if (value.get("examples") instanceof List<?> examples) clean.put("examples", examples.stream()
+                .filter(item -> item instanceof String text && text.length() <= 500).limit(5).toList());
+        clean.put("id", id); clean.put("title", title); clean.put("grade", grade); clean.put("next", next);
+        for (String key : List.of("alone", "helped", "needs", "quizCorrect", "quizTotal")) clean.put(key, Math.min(100, asInt(value.get(key))));
+        for (String phase : List.of("learn", "transfer")) {
+            Map<String, Object> observations = rawMapToObjectMap(value.get(phase)), kept = new HashMap<>();
+            for (String key : List.of("decompose", "bound", "equivalent", "explain")) {
+                Map<String, Object> item = rawMapToObjectMap(observations.get(key));
+                if (item.get("completed") instanceof Boolean completed && item.get("helped") instanceof Boolean helped) {
+                    kept.put(key, Map.of("completed", completed, "helped", helped, "attempts", Math.max(1, Math.min(100, asInt(item.get("attempts"))))));
+                }
+            }
+            clean.put(phase, kept);
+        }
         return clean;
     }
 

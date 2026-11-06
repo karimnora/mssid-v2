@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   FRACTION_LINES,
   type FractionObservation,
@@ -30,6 +30,9 @@ export const FRACTION_STAGES = [
 export function useFractionJourney(
   onSpeak: (key: string, text: string) => void
 ) {
+  const voiceSequence = useRef(0);
+  const [variant, setVariant] = useState(0);
+  const problems = [[17, 5, 7, 3], [14, 4, 11, 4], [19, 6, 9, 4]][variant];
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, FractionAnswer>>({});
   const [results, setResults] = useState<
@@ -41,8 +44,8 @@ export function useFractionJourney(
   );
   const stage = FRACTION_STAGES[step];
   const answer = answers[step] ?? initialAnswer();
-  const numerator = stage.lab ? 7 : 17,
-    denominator = stage.lab ? 3 : 5;
+  const numerator = stage.lab ? problems[2] : problems[0],
+    denominator = stage.lab ? problems[3] : problems[1];
   const baseNumerator = stage.lab ? 2 : 1,
     baseDenominator = stage.lab ? 3 : 2,
     targetFactor = stage.lab ? 2 : 5;
@@ -116,7 +119,7 @@ export function useFractionJourney(
     }));
     setFeedback((prev) => ({ ...prev, [step]: correct ? 'success' : 'retry' }));
     onSpeak(
-      'fraction-feedback',
+      'fraction-feedback-' + ++voiceSequence.current,
       correct ? FRACTION_LINES.success : FRACTION_LINES.retry
     );
   };
@@ -153,6 +156,17 @@ export function useFractionJourney(
     step,
     stage,
     answer,
+    newChallenge: () => {
+      setVariant(v => (v + 1) % 3);
+      setStep(0); setAnswers({}); setResults({}); setHints({}); setFeedback({});
+      onSpeak('fraction-new-challenge', FRACTION_LINES.decompose);
+    },
+    examples: [
+      ...(results[0] || results[1] ? [problems[0] + '/' + problems[1]] : []),
+      ...(results[2] ? ['1/2 = 5/10'] : []),
+      ...(results[3] || results[4] ? [problems[2] + '/' + problems[3]] : []),
+      ...(results[5] || results[6] ? ['2/3 = 4/6'] : []),
+    ],
     numerator,
     denominator,
     baseNumerator,

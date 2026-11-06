@@ -12,12 +12,13 @@ import { shuffleOptions } from './shared';
 
 export function useLessonQuiz(options: {
   lesson: CourseLesson;
+  demo?: boolean;
   quizAlreadyValidated: boolean;
   onCompleteQuiz: (lessonId: string, score: number) => void;
   onQuizFullyValidated?: (lessonId: string) => void;
   onQuizMiss?: (lessonId: string, competenceId?: string) => void;
 }) {
-  const { lesson, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated, onQuizMiss } = options;
+  const { lesson, demo = false, quizAlreadyValidated, onCompleteQuiz, onQuizFullyValidated, onQuizMiss } = options;
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [shuffledQuiz, setShuffledQuiz] = useState<CourseLesson['quiz']>([]);
   const [awardedQuizIds, setAwardedQuizIds] = useState<Set<string>>(new Set());
@@ -45,13 +46,13 @@ export function useLessonQuiz(options: {
     setVisibleSolutions({});
     selectedAnswersRef.current = {};
     setSelectedAnswers({});
-    const storedAwards = new Set(loadAwardedQuestionIds(lesson.id));
+    const storedAwards = new Set(demo ? [] : loadAwardedQuestionIds(lesson.id));
     awardedQuizIdsRef.current = storedAwards;
     setAwardedQuizIds(storedAwards);
     missedQuizIdsRef.current = new Set();
     setRecentAnswerId(null);
     setGameAnswers({});
-    setGameXpAwarded(hasAwardedGameXp(lesson.id));
+    setGameXpAwarded(demo ? false : hasAwardedGameXp(lesson.id));
     initializeShuffledQuiz();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson.id]);
@@ -76,6 +77,7 @@ export function useLessonQuiz(options: {
     const isCorrect = !!correctOpt && correctOpt.id === optionId;
     setRecentAnswerId(questionId);
     if (isCorrect) playSuccessChime(); else playGentleNudge();
+    if (demo) return;
     if (!isCorrect) {
       if (!missedQuizIdsRef.current.has(questionId)) {
         missedQuizIdsRef.current.add(questionId);
@@ -111,7 +113,7 @@ export function useLessonQuiz(options: {
       const next = { ...prev, [itemIndex]: optionAr };
       if (!gameXpAwarded && game.items.every((item, i) => next[i] === item.correctAnswerAr)) {
         setGameXpAwarded(true);
-        persistGameXpAwarded(lesson.id);
+        if (!demo) persistGameXpAwarded(lesson.id);
         onCompleteQuiz(lesson.id, game.xpReward);
       }
       return next;

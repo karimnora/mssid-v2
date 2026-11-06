@@ -12,6 +12,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgressGuardTest {
 
     @Test
+    void savesWorkshopSummaryWithoutDuplicatesOrScoredCounts() {
+        Map<String, Object> summary = Map.of("id", "session-1", "title", "Fractions", "grade", "5AP", "next", "interactive",
+                "transfer", Map.of("decompose", Map.of("completed", true, "helped", true, "attempts", 2)));
+        Map<String, Object> entry = Map.of("at", "2026-11-06T18:00:00Z", "lessonId", "math-5ap-fractions", "outcome", "success", "villageSummary", summary);
+        var saved = ProgressGuard.mergeLessonSessions(List.of(), List.of(entry));
+        var replay = ProgressGuard.mergeLessonSessions(saved, List.of(entry));
+        assertEquals(1, replay.size());
+        assertEquals(0, replay.getFirst().get("count"));
+        assertTrue(replay.getFirst().get("villageSummary") instanceof Map);
+        assertEquals(List.of(), replay.getFirst().get("competenceIds"));
+    }
+
+    @Test
     @DisplayName("XP never decreases and a huge jump is capped per sync")
     void clampXp_ignoresDecreaseAndCapsGain() {
         assertEquals(400, ProgressGuard.clampXp(400, 10));

@@ -92,3 +92,8 @@ Les trois priorités visuelles sont intégrées : scène plein écran cohérente
 ## Fractions : découverte et alertes préservées — 6 novembre 2026
 
 La décomposition démarre avec des parts en vrac (17 puis 7) ; la réserve diminue pendant la manipulation et aucun entier prérempli ne donne la réponse. #root n’est plus masqué ni rendu inert : seules les surfaces V1 et le décor du parcours sont suspendus, avec restauration exacte à la sortie. La scène reste sous les fenêtres globales. Six parcours Chromium passent ; les vrais composants de badge et de connexion restent utilisables. Voir [le rapport et ses limites](design/v2-fractions-decouverte-et-alertes.md). Le bilan durable, l’aide unique et les finitions restantes ne font pas partie de cette correction. Commit local, aucun push.
+
+
+## Pilote clôturé et vitrine gratuite — 6 novembre 2026
+
+Le bilan des manipulations et exercices du cours fractions est désormais conservé dans le carnet du profil actif, avec exemples tentés et prochaine étape. Le serveur le nettoie et le déduplique ; il ne produit ni points ni fausses réussites hebdomadaires. Aide unique de Didou dans l’entraînement, compagnon agrandi, variantes explicites de fractions après le défi et annonces enregistrées réutilisées. Le village est ouvert aux comptes gratuits ; la démo fractions est rejouable et isolée de leur progression. L’offre parent présente cinq captures réelles de démonstration, derrière le défi parent, avec les deux tarifs existants. Aucun push ni déploiement. Voir [le rapport, les preuves et les limites](design/v2-pilote-cloture-vitrine.md).

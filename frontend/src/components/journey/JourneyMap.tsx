@@ -1,3 +1,4 @@
+import { recordPremiumEvent } from '../../utils/premiumFunnel';
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { PrimaryGrade } from '../../types';
 import { GradeDecor } from './JourneyGradeDecor';
@@ -12,7 +13,7 @@ import {
 } from '../../data/journey/journeyWorlds';
 import { currentStationIndex, type JourneyStation, type StationState } from '../../utils/journeyProgress';
 import { DidouFull, DidouHead, StarIcon } from './DidouJourneyArt';
-import { OBJECT_ART } from '../world/worldArt';
+import { OBJECT_ART, WORLD_DECOR } from '../world/worldArt';
 import { JourneyRibbon, SpeakerIcon, type JourneySfx, type RibbonContent } from './JourneyRibbon';
 import { JourneySceneryDefs, WORLD_SKY, WorldBackdrop } from './JourneyScenery';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
@@ -287,12 +288,13 @@ export function JourneyMap(props: JourneyMapProps) {
     const station = stations[i];
     const state = states[i];
     if (state === 'premium') {
+      recordPremiumEvent('lock_open');
       setShaking(i);
       window.setTimeout(() => setShaking(null), 450);
       sfx.soft();
       const text = ar ? NATIVE_OFFER_COPY.journeyPremium.ar : NATIVE_OFFER_COPY.journeyPremium.fr;
       say(text);
-      setRibbon({ text, extra: premiumExtra, buttons: [{ label: T('حسناً', "D'accord"), onClick: () => setRibbon(null) }] });
+      setRibbon({ text, extra: <div className="space-y-3"><div className="j-premium-preview-frame"><img className="j-premium-preview" src={WORLD_DECOR[worlds[station.worldIndex].id].landscape} alt={pickText(worlds[station.worldIndex].name, locale)} /></div>{premiumExtra}</div>, buttons: [{ label: T('حسناً', "D'accord"), onClick: () => setRibbon(null) }] });
       return;
     }
     if (state === 'locked' || state === 'missing') {

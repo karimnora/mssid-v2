@@ -1,0 +1,22 @@
+import { missionDoneToday } from './dailyMission';
+import { expect, it } from 'vitest';
+import { recordPracticeResult, buildParentNotebook } from './competenceProgress';
+import { mergeNotebookProgress } from './mergeNotebookProgress';
+import type { UserProfile } from '../types';
+import type { VillageSessionSummary } from './villageSession';
+it('persists and updates observations without fabricating mastery or weekly successes', () => {
+  const profile = { name: 'تجربة', grade: '5AP', competenceStats: {}, lessonSessions: [] } as unknown as UserProfile;
+  const summary: VillageSessionSummary = { id: 'session-1', title: 'الكسور', grade: '5AP', learn: {}, transfer: { decompose: { completed: true, helped: true, attempts: 2 } }, alone: 0, helped: 0, needs: 0, quizCorrect: 0, quizTotal: 2, next: 'interactive' };
+  const first = recordPracticeResult(profile, 'math-5ap-fractions', { outcome: 'success', villageSummary: summary });
+  const second = recordPracticeResult(first, 'math-5ap-fractions', { outcome: 'success', villageSummary: { ...summary, helped: 1 } });
+  const restored = JSON.parse(JSON.stringify(second)) as UserProfile;
+  expect(restored.lessonSessions).toHaveLength(1);
+  expect(restored.lessonSessions![0].villageSummary?.helped).toBe(1);
+  expect(restored.competenceStats).toEqual({});
+  expect(missionDoneToday(restored, 'math-5ap-fractions', false)).toBe(false);
+  expect(buildParentNotebook(restored).historySessions).toEqual([]);
+  const older = { ...restored, lessonSessions: restored.lessonSessions!.map(s => ({ ...s, at: '2026-01-01T00:00:00Z', villageSummary: { ...s.villageSummary!, helped: 0 } })) };
+  const merged = mergeNotebookProgress(restored, older);
+  expect(merged.lessonSessions).toHaveLength(1);
+  expect(merged.lessonSessions![0].villageSummary?.helped).toBe(1);
+});

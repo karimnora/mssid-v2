@@ -38,6 +38,15 @@ class WeeklyReportServiceTest {
     private ResendEmailService mail;
     private WeeklyReportService service;
 
+    @Test
+    void workshopObservationsNeverBecomeWeeklySuccesses() {
+        var week = WeeklyReportBuilder.childWeek("Demo", "5AP", Map.of(),
+                List.of(Map.of("at", NOW.toString(), "outcome", "success", "count", 0,
+                        "villageSummary", Map.of("id", "demo-session"))), NOW, LABELS);
+        assertThat(week.sessions()).isZero();
+        assertThat(week.active()).isFalse();
+    }
+
     @BeforeEach
     void setUp() {
         users = mock(UserRepository.class);

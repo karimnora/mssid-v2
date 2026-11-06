@@ -380,7 +380,7 @@ function AppContent() {
   // with the map shortcut in the corner (JourneyMapShortcut). The family can switch to the classic
   // interface and back at any time (utils/designMode.ts): the planet's back button, or the home switch.
   const [designMode, setDesignMode] = useDesignMode();
-  const premiumPlanetHome = journeyAvailable && isPremiumRole(authUser?.role) && designMode === 'world';
+  const premiumPlanetHome = journeyAvailable && designMode === 'world';
   useEffect(() => {
     if (!premiumPlanetHome || journeyOpen || !nav.isHomeActive || window.location.pathname !== '/') return;
     openJourney('hub');
@@ -738,7 +738,7 @@ function AppContent() {
       />
 
       {/* The free map shortcut floats above the bottom bar: keep the last home tile clear of it. */}
-      <main data-village-legacy-content className={`max-w-7xl mx-auto px-4 sm:px-6 pt-6 ${journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? 'pb-56 md:pb-40' : 'pb-28 md:pb-6'} space-y-6`} data-map-shortcut-space={journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? '' : undefined}>
+      <main data-legacy-chrome data-village-legacy-content className={`max-w-7xl mx-auto px-4 sm:px-6 pt-6 ${journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? 'pb-56 md:pb-40' : 'pb-28 md:pb-6'} space-y-6`} data-map-shortcut-space={journeyAvailable && !premiumPlanetHome && nav.isHomeActive ? '' : undefined}>
         {nav.isHomeActive ? (
           <>
           {countdown && !countdownDismissed && (
@@ -921,7 +921,7 @@ function AppContent() {
         )}
       </main>
 
-      <footer data-village-legacy-footer className="py-6 mt-12 transition-colors duration-300 bg-[var(--app-footer-bg)] border-t border-[var(--app-card-border)] text-[var(--app-text-muted)]">
+      <footer data-legacy-chrome data-village-legacy-footer className="py-6 mt-12 transition-colors duration-300 bg-[var(--app-footer-bg)] border-t border-[var(--app-card-border)] text-[var(--app-text-muted)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-[var(--app-text)]">{t('navigation', 'footerBrandName')}</span>

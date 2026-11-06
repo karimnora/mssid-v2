@@ -65,6 +65,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       dir={direction}
       data-lab-open={activeLabId}
       data-nav-compact="true"
+      data-legacy-chrome
       data-bottom-nav
     >
       {tabButton('home', <Home className="w-5 h-5" />, t('home'))}

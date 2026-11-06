@@ -84,6 +84,12 @@ describe('linear fraction journey', () => {
       completed: true,
       helped: true,
     });
+    act(() => result.current.newChallenge());
+    expect(result.current.numerator).toBe(14);
+    expect(result.current.denominator).toBe(4);
+    expect(result.current.step).toBe(0);
+    expect(result.current.answer.whole).toBe(0);
+    expect(result.current.transfer).toEqual({});
     expect(speak.mock.calls.some((c) => c[1].includes('مختبر'))).toBe(true);
   });
   it('offers direct touches and no dropdowns or parallel mission tabs', () => {

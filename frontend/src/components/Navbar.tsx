@@ -65,6 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       className="sticky top-0 z-40 pt-[env(safe-area-inset-top)] bg-[var(--app-header-bg)] border-b border-[var(--app-card-border)] text-[var(--app-text)] shadow-sm backdrop-blur-md"
       dir={direction}
       data-nav-child="true"
+      data-legacy-chrome
       data-app-header
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center gap-2 sm:gap-3">

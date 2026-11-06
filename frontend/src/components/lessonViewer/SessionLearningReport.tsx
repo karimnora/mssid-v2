@@ -17,6 +17,7 @@ const describe = (r?: FractionObservation) =>
     : "بحاجة إلى تدريب";
 export function SessionLearningReport({
   lesson,
+  demo = false,
   practice,
   quiz,
   learn,
@@ -24,6 +25,7 @@ export function SessionLearningReport({
   onContinue,
 }: {
   lesson: CourseLesson;
+  demo?: boolean;
   practice: PracticeBindings;
   quiz: ReturnType<typeof useLessonQuiz>;
   learn: FractionObservations;
@@ -54,8 +56,7 @@ export function SessionLearningReport({
       <h2 id="session-report-title">ملخص هذه الجلسة</h2>
       <p>{lesson.titleAr}</p>
       <p>
-        هذا وصف لما فعله الطفل في الجلسة الحالية، وليس شهادة إتقان أو سجلًا
-        محفوظًا بعد إغلاق الدرس.
+        {demo ? 'ملف تجريبي: هذه الملاحظات لا تُحفظ في ملف الطفل.' : 'هذا وصف لما فعله الطفل، وليس شهادة إتقان. تُحفظ الملاحظات في دفتر الولي على هذا الملف.'}
       </p>
       <h3>المهارات التي جرّبها</h3>
       <div className="session-table-wrap">

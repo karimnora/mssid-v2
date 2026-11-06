@@ -414,3 +414,8 @@ Le labo lié au cours 5AP est désormais la suite des trois découvertes, puis m
 ### Résultat — découverte des fractions sans réponse affichée, 6 novembre 2026
 
 Le dessin initial du labo fractions montre désormais 17 parts en vrac (7 au transfert). Il réagit aux touches : la réserve diminue et les unités se construisent au fil des regroupements ; défaire restitue les parts. Aucune unité préremplie ne fournit la réponse. Les alertes globales et la connexion restent accessibles au-dessus de la scène, sans masquer #root. Données pédagogiques et notation inchangées. Voir [le rapport](design/v2-fractions-decouverte-et-alertes.md). Le bilan de séance reste temporaire : son enregistrement durable dans le carnet est encore à faire.
+
+
+### Résultat — bilan durable du labo fractions et démo rejouable, 6 novembre 2026
+
+Le bilan des manipulations et exercices du cours fractions est désormais conservé dans le carnet du profil actif, avec exemples tentés et prochaine étape. Le serveur le nettoie et le déduplique ; il ne produit ni points ni fausses réussites hebdomadaires. Aide unique de Didou dans l’entraînement, compagnon agrandi, variantes explicites de fractions après le défi et annonces enregistrées réutilisées. Le village est ouvert aux comptes gratuits ; la démo fractions est rejouable et isolée de leur progression. L’offre parent présente cinq captures réelles de démonstration, derrière le défi parent, avec les deux tarifs existants. Aucun push ni déploiement. Voir [le rapport, les preuves et les limites](design/v2-pilote-cloture-vitrine.md).

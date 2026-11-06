@@ -13,10 +13,12 @@ export const BoundPracticeCard: React.FC<{
   playful?: boolean;
   leadAudio?: React.ReactNode;
   lesson?: CourseLesson;
-}> = ({ ex, practice, renderArabicText, playful = false, leadAudio, lesson }) => (
+  showHintButton?: boolean;
+}> = ({ ex, practice, renderArabicText, playful = false, leadAudio, lesson, showHintButton }) => (
   <>
   <PracticeExerciseCard
     ex={ex}
+    showHintButton={showHintButton}
     revealedHintCount={practice.revealedHints[ex.id] ?? 0}
     onRevealHint={() => practice.revealHint(ex)}
     renderArabicText={renderArabicText}

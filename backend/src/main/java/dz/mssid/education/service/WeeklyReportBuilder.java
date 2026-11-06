@@ -58,6 +58,7 @@ public final class WeeklyReportBuilder {
         List<Map<String, Object>> recent = new ArrayList<>(sessions == null ? List.of() : sessions);
         recent.sort(Comparator.comparing((Map<String, Object> s) -> String.valueOf(s.get("at"))).reversed());
         for (Map<String, Object> session : recent) {
+            if (session.containsKey("villageSummary")) continue; // Unscored workshop observations.
             Instant at = parse(session.get("at"));
             if (at == null || at.isBefore(weekAgo) || at.isAfter(now)) continue;
             int count = Math.max(1, intOf(session.get("count")));

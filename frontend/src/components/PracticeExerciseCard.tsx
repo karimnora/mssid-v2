@@ -34,6 +34,7 @@ interface PracticeExerciseCardProps {
   optionOrder?: string[];
   revealedHintCount?: number;
   onRevealHint?: () => void;
+  showHintButton?: boolean;
 }
 
 // A single practice/evaluation exercise, self-contained: renders the right interaction widget for
@@ -67,6 +68,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   leadAudio,
   optionOrder,
   revealedHintCount,
+  showHintButton = true,
   onRevealHint,
 }) => {
   const isGuided = isGuidedPractice(ex);
@@ -274,7 +276,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
               💡 {hasProgressiveHints ? renderArabicText(ex.progressiveHints![i].labelAr) : 'تلميح'}: {renderArabicText(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0])}
             </p>
           ))}
-          {hintsRevealed < maxHints && (
+          {showHintButton && hintsRevealed < maxHints && (
             <button
               data-practice-hint
               onClick={() => onRevealHint ? onRevealHint() : setHintsRevealed((n) => n + 1)}

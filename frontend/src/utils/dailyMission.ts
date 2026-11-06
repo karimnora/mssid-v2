@@ -86,7 +86,7 @@ export function missionDoneToday(profile: UserProfile, lessonId: string, complet
   if (!completedAtPick && (profile.completedLessonIds ?? []).includes(lessonId)) return true;
   const start = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
   return (profile.lessonSessions ?? []).some(
-    (s) => s.lessonId === lessonId && s.outcome === 'success' && new Date(s.at).getTime() >= start,
+    (s) => !s.villageSummary && s.lessonId === lessonId && s.outcome === 'success' && new Date(s.at).getTime() >= start,
   );
 }
 

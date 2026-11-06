@@ -150,7 +150,8 @@ export function PilotPractice({
         <div key={ex.id} hidden={i !== index} data-pilot-exercise={ex.id}>
           <BoundPracticeCard
             ex={ex}
-            lesson={lesson}
+            showHintButton={navigation}
+            lesson={navigation ? lesson : undefined}
             practice={practice}
             renderArabicText={renderText}
             leadAudio={

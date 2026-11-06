@@ -1,3 +1,4 @@
+import type { VillageSessionSummary } from './villageSession';
 import { PrimaryGrade, UserProfile } from '../types';
 import { COMPETENCES, getCompetence, getLessonCompetences, getLessonsForCompetence } from '../data/competences';
 
@@ -40,6 +41,7 @@ export interface PracticeResult {
   /** Success only: a hint was opened or the exercise had been missed before. */
   helped?: boolean;
   exerciseId?: string;
+  villageSummary?: VillageSessionSummary;
 }
 
 function emptyStat(at: string, lessonId: string, outcome: LessonOutcome): CompetenceStat {
@@ -131,6 +133,13 @@ export function recordPracticeResult(
   result: PracticeResult,
   at = new Date().toISOString(),
 ): UserProfile {
+  if (result.villageSummary) {
+    // Observation only: never raises mastery, scores, weekly successes or exercise counts.
+    const summary = result.villageSummary;
+    const sessions = (prev.lessonSessions ?? []).filter(s => s.villageSummary?.id !== summary.id);
+    sessions.push({ at, lessonId, competenceIds: [], outcome: 'success', count: 0, villageSummary: summary });
+    return { ...prev, lessonSessions: sessions.slice(-MAX_LESSON_SESSIONS) };
+  }
   return applyMappedOutcome(prev, lessonId, result.outcome, at, undefined, result);
 }
 
@@ -250,7 +259,7 @@ export function buildParentNotebook(profile: UserProfile, viewingGrade: PrimaryG
     };
   });
 
-  const historySessions = [...(profile.lessonSessions ?? [])].reverse().map(toNotebookSession);
+  const historySessions = [...(profile.lessonSessions ?? [])].filter(s => !s.villageSummary).reverse().map(toNotebookSession);
 
   return {
     childName: profile.name,

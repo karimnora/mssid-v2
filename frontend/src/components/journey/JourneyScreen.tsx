@@ -79,6 +79,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
   const { grade, courses, userProfile, onExit, onOpenCourses, onOpenStories, onOpenMath, onOpenLabs, onOpenGames, onOpenExams, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, onGameXp, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
+  const [demo, setDemo] = useState(false);
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
   const worlds = journeyForGrade(grade);
   const [screen, setScreen] = useState<'hub' | 'map' | 'lesson'>(startOn);
@@ -163,6 +164,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
       return;
     }
     stopSpeech();
+    setDemo(false);
     setLessonId(lesson.id);
     setScreen('lesson');
   };
@@ -217,7 +219,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
   const userName = userProfile.name || (locale === 'ar' ? 'بطل' : 'Champion');
 
   return (
-    <div className="journey-root" dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
+    <div data-legacy-chrome className="journey-root" dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
       {screen === 'hub' && (
         <div
           className="journey-space"
@@ -235,10 +237,11 @@ export function JourneyScreen(props: JourneyScreenProps) {
 
       {screen === 'hub' && locale === 'ar' && (
         <DidouVillageHome connection={{
+          pilotIsDemo: !allWorlds,
           grade, name: userName, sound, onToggleSound: toggleSound, onStopSpeech: stopSpeech,
           ...connectedHomeProgress(grade, courses, userProfile.quizFullyValidatedLessonIds),
           onExit, onOpenCourses, onOpenStories, onOpenMath, onOpenLabs, onOpenGames, onOpenExams,
-          onOpenPilot: grade === "5AP" && lessonsById.has(VILLAGE_MATH_PILOT) ? () => {const pilot=lessonsById.get(VILLAGE_MATH_PILOT)!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
+          onOpenPilot: grade === "5AP" && lessonsById.has(VILLAGE_MATH_PILOT) ? () => {const pilot=lessonsById.get(VILLAGE_MATH_PILOT)!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}setDemo(!allWorlds);stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
           onOpenMap: worlds ? () => setScreen('map') : null,
           onContinue: courses && worlds && states.includes('open') ? () => {
             const index = states.indexOf('open');
@@ -292,7 +295,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
             sfx={sfx}
             totalStars={totalStars}
             coins={userProfile.goldCoins ?? 0}
-            premiumExtra={<PremiumOffer />}
+            premiumExtra={<PremiumOffer label={locale === 'ar' ? 'أخبر أوليائي' : 'Demander à mes parents'} />}
             gameStations={gameStations}
             onOpenGame={setOpenGame}
           />
@@ -320,13 +323,14 @@ export function JourneyScreen(props: JourneyScreenProps) {
         const viewer = (
           <LessonViewer
             lesson={lesson}
-            onBack={() => setScreen('map')}
+            demo={demo}
+            onBack={() => setScreen(demo ? 'hub' : 'map')}
             onHomeClick={() => setScreen('map')}
-            onCompleteQuiz={onCompleteQuiz}
-            quizAlreadyValidated={userProfile.quizFullyValidatedLessonIds.includes(lesson.id)}
-            onQuizFullyValidated={onQuizFullyValidated}
-            onQuizMiss={onQuizMiss}
-            onPracticeResult={onPracticeResult}
+            onCompleteQuiz={demo ? () => {} : onCompleteQuiz}
+            quizAlreadyValidated={!demo && userProfile.quizFullyValidatedLessonIds.includes(lesson.id)}
+            onQuizFullyValidated={demo ? undefined : onQuizFullyValidated}
+            onQuizMiss={demo ? undefined : onQuizMiss}
+            onPracticeResult={demo ? undefined : onPracticeResult}
             grade={grade}
             subjectId={lesson.subject}
             tashkeelEnabled={userProfile.tashkeelEnabled ?? false}

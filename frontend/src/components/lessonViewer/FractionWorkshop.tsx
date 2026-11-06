@@ -94,7 +94,7 @@ export function FractionWorkshop({ journey: j }: { journey: FractionJourney }) {
             className="fraction-parts-tray"
             dir="ltr"
             style={{
-              gridTemplateColumns: 'repeat(' + d + ', minmax(60px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(60px, 1fr))',
             }}
             aria-label="أكوّن وحدة من الأجزاء"
           >
@@ -323,6 +323,7 @@ export function FractionWorkshop({ journey: j }: { journey: FractionJourney }) {
           )}
         </div>
       )}
+      {j.finished && <button type="button" data-new-fraction-challenge className="hit-target rounded-2xl border-2 border-[#207958] px-4 font-bold" onClick={j.newChallenge}>أجرّب كسورًا أخرى</button>}
       <p className="fraction-unscored">
         تدريب للفهم. نتيجة الدرس تعتمد على التمارين والاختبار.
       </p>

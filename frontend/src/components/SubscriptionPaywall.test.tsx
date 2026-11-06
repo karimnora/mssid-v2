@@ -46,6 +46,16 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     vi.restoreAllMocks();
   });
 
+  it('keeps the showcase and prices behind the actual parent challenge', () => {
+    renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
+    expect(document.querySelector('[data-premium-showcase]')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
+    expect(document.querySelector('[data-premium-showcase]')).toBeNull();
+    solveParentGate();
+    expect(document.querySelector('[data-premium-showcase]')).toBeVisible();
+    expect(document.querySelectorAll('[data-premium-showcase] img')).toHaveLength(5);
+  });
+
   it('shows the pending-review state only once the backend confirms the submission', async () => {
     const submitSpy = vi.spyOn(AuthService, 'submitReceiptAsync').mockResolvedValue({
       success: true,
@@ -65,6 +75,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
 
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
+    solveParentGate();
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     await attachReceipt();
@@ -90,6 +101,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
 
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
+    solveParentGate();
 
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     await attachReceipt();
@@ -105,6 +117,7 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
   it('displays the subscription price from the shared constant, not a separate hardcoded value', () => {
     renderPaywall(<SubscriptionPaywall user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: 'أنا ولي الأمر' }));
+    solveParentGate();
     expect(screen.getByText(/السعر: 2400 دج/)).toBeInTheDocument();
   });
   it.each([[3, 900, 'P3M'], [12, 2400, 'P12M']] as const)('sends the selected %s month plan and its canonical price', async (months, price, planId) => {

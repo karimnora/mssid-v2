@@ -1,0 +1,31 @@
+{
+  "captured": "2026-11-06",
+  "source": "Local v2 application, replayable demo profile, 390x844, Arabic, no real child data",
+  "files": [
+    {
+      "file": "frontend/src/assets/premium-showcase/home.webp",
+      "bytes": 21414,
+      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-home.png"
+    },
+    {
+      "file": "frontend/src/assets/premium-showcase/manipulation.webp",
+      "bytes": 20078,
+      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-manipulation.png"
+    },
+    {
+      "file": "frontend/src/assets/premium-showcase/report.webp",
+      "bytes": 26096,
+      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-report.png"
+    },
+    {
+      "file": "frontend/src/assets/premium-showcase/support.webp",
+      "bytes": 17478,
+      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-support.png"
+    },
+    {
+      "file": "frontend/src/assets/premium-showcase/voice.webp",
+      "bytes": 30948,
+      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-voice.png"
+    }
+  ]
+}

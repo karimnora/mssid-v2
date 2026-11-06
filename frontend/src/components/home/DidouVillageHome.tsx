@@ -93,6 +93,7 @@ export interface DidouHomeConnection {
   onOpenStories?: () => void;
   onOpenMath?: () => void;
   onOpenPilot?: () => void;
+  pilotIsDemo?: boolean;
   onOpenMap: (() => void) | null;
   onContinue: (() => void) | null;
   nextTitle: string | null;
@@ -562,7 +563,7 @@ export function DidouVillageHome({
               data-home-pilot
               onClick={() => leave(connection.onOpenPilot!)}
             >
-              أكتشف الكسور مع ديدو
+              {connection.pilotIsDemo ? 'أجرّب الكسور مجانًا · تجربة قابلة للإعادة' : 'أكتشف الكسور مع ديدو'}
             </VillageButton>
           )}
           {connection.examPlanCta && (

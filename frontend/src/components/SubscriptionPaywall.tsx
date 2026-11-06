@@ -1,8 +1,10 @@
+import { PremiumShowcase } from './PremiumShowcase';
+import { recordPremiumEvent } from '../utils/premiumFunnel';
 import { ReceiptStatus } from './ReceiptStatus';
 import { ActivationCodeForm } from './ActivationCodeForm';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
 import { SubscriptionStatusPanel } from './SubscriptionStatusPanel';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AuthUser, PaymentReceipt, PaymentMethod } from '../types/auth';
 import { AuthService } from '../services/authService';
 import { SUBSCRIPTION_PLANS, DEFAULT_SUBSCRIPTION_PLAN, type SubscriptionPlanId } from '../constants/pricing';
@@ -44,6 +46,10 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
   const [showParentGate, setShowParentGate] = useState(false);
   const [parentReady, setParentReady] = useState(parentVerified);
 
+  const offerCounted = useRef(false);
+  useEffect(() => {
+    if (parentReady && !offerCounted.current) { offerCounted.current = true; recordPremiumEvent('offer_open'); }
+  }, [parentReady]);
   const currentUser = user || AuthService.getCurrentUser();
   const [planId, setPlanId] = useState<SubscriptionPlanId>(DEFAULT_SUBSCRIPTION_PLAN.id);
   const selectedPlan = SUBSCRIPTION_PLANS.find(plan => plan.id === planId)!;
@@ -59,9 +65,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
     }
   };
 
-  // Parent Gate: a real financial action (submitting a payment receipt) — gated here rather than
-  // earlier in the flow (e.g. before browsing the pricing screen itself), matching Apple/Google
-  // guidance that the gate belongs right before the sensitive action, not before informational content.
+  // Prices require the parent challenge; a second challenge protects receipt submission.
   const handleSubmitReceipt = (e: React.FormEvent) => {
     e.preventDefault();
     setShowParentGate(true);
@@ -118,7 +122,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
         {!parentReady ? (
           <>
             <div className="h-3.5 w-full bg-[var(--brand-coral)]" />
-            <AskAdultScreen onAskAdult={() => setParentReady(true)} onClose={onClose} />
+            <AskAdultScreen onAskAdult={() => setShowParentGate(true)} onClose={onClose} />
           </>
         ) : (
         <>
@@ -147,6 +151,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
 
         {/* Main Body */}
         <div className="p-6 space-y-6">
+          <PremiumShowcase />
           {/* Comparison Cards: Free vs Premium */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
@@ -368,7 +373,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
     <ParentGateModal
       isOpen={showParentGate}
       onClose={() => setShowParentGate(false)}
-      onVerified={submitReceiptAfterParentGate}
+      onVerified={() => { if (!parentReady) { setShowParentGate(false); setParentReady(true); } else void submitReceiptAfterParentGate(); }}
     />
     </>
   );

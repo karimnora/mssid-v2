@@ -1,3 +1,6 @@
+import { recordPremiumEvent } from '../../utils/premiumFunnel';
+import type { PracticeResult } from '../../utils/competenceProgress';
+import { useVillageSessionReport } from './useVillageSessionReport';
 import { useActivityExitGuard } from '../../context/ActivityExitContext';
 import React, { useState, useRef, useEffect } from "react";
 import type { CourseLesson } from "../../types";
@@ -33,6 +36,7 @@ import { Volume2, VolumeX, ArrowRight } from 'lucide-react';
 import "./villageMathPilot.css";
 type Props = {
   lesson: CourseLesson;
+  demo?: boolean;
   steps: LessonStep[];
   active: TabId;
   onTab: (tab: TabId) => void;
@@ -46,9 +50,11 @@ type Props = {
   onFinish: () => void;
   canFinish: boolean;
   extras?: React.ReactNode;
+  onPracticeResult?: (id: string, result: PracticeResult) => void;
 };
 export function VillageLessonLayout({
   lesson,
+  demo = false,
   steps,
   active,
   onTab,
@@ -62,7 +68,12 @@ export function VillageLessonLayout({
   onFinish,
   canFinish,
   extras,
+  onPracticeResult,
 }: Props) {
+  const demoCounted = useRef(false);
+  useEffect(() => {
+    if (demo && canFinish && !demoCounted.current) { demoCounted.current = true; recordPremiumEvent('demo_complete'); }
+  }, [demo, canFinish]);
   const top = useRef<HTMLElement>(null);
   const [muted, setMuted] = useState(false);
   const pendingAnnouncement = useRef<{ key: string; text: string } | null>(null);
@@ -81,6 +92,7 @@ export function VillageLessonLayout({
   }, [announcementTick, muted, speech.speakSnippet]);
   const say = (key: string, text: string) => { if (!muted) speech.speakSnippet(key, text); };
   const journey = useFractionJourney(say);
+  useVillageSessionReport(lesson, journey.learn, journey.transfer, practice, quiz.selectedAnswers, onPracticeResult, journey.examples);
   useActivityExitGuard(journey.started && !journey.finished);
   const navigate = (tab: TabId) => {
     speech.stopSpeech();
@@ -156,7 +168,8 @@ export function VillageLessonLayout({
         data-village-math-pilot={lesson.id}
       >
         <div className="village-scene-bar"><button type="button" data-activity-navigation onClick={onBack} aria-label="أعود إلى دروسي"><ArrowRight/> دروسي</button><strong>مع ديدو</strong><button type="button" data-scene-sound aria-pressed={!muted} aria-label={muted ? 'أشغّل الصوت' : 'أكتم الصوت'} onClick={() => { speech.stopSpeech(); setMuted(value => !value); }}>{muted ? <VolumeX/> : <Volume2/>}</button></div>
-        <header ref={top} className="pilot-hero"><p>{lesson.grade} · مع ديدو</p><h1>{lesson.titleAr.split(':')[0]}</h1></header>
+        {demo && <p data-demo-profile className="rounded-2xl bg-[#f6e6ad] p-3 font-bold">تجربة مجانية قابلة للإعادة · ملف تجريبي · لا تغيّر تقدّم الطفل</p>}
+        <header ref={top} className="pilot-hero"><p>{lesson.grade}</p><h1>{lesson.titleAr.split(':')[0]}</h1></header>
         <ol className="village-scene-progress" aria-label="مراحل التعلّم">{['أكتشف','أجرّب','أفهم','أتدرّب','نتيجتي'].map((label, i) => <li key={label} data-pilot-phase={i} aria-current={phase === i ? 'step' : undefined}>{label}</li>)}</ol>
         <PilotCompanion
           lesson={lesson}
@@ -169,7 +182,7 @@ export function VillageLessonLayout({
               : "point"
           }
           reactionKey={
-            checked
+            active === 'interactive' ? '' : checked
               ? ex?.id + ":" + !!correct
               : selected
               ? question?.id + ":" + selected.id
@@ -178,7 +191,7 @@ export function VillageLessonLayout({
           onSpeak={(key, text) =>
             say(
               key,
-              text.startsWith("أحسنت!") ? FRACTION_LINES.success : text === "لنجرّب مرة أخرى. " + lesson.rulesAr?.[0] ? lesson.rulesAr![0] : text
+              active === 'interactive' ? text : text.startsWith('أحسنت!') ? lesson.rulesAr?.[0] ?? FRACTION_LINES.success : text.startsWith('لنجرّب مرة أخرى.') ? (active === 'practice' ? ex?.hintsAr?.[0] : question?.hintAr ?? lesson.rulesAr?.[0]) ?? FRACTION_LINES.retry : text
             )
           }
           speaking={!!speech.speakingKey}
@@ -308,6 +321,7 @@ export function VillageLessonLayout({
             onClose={() => setReport(false)}
           >
             <SessionLearningReport
+              demo={demo}
               lesson={lesson}
               practice={practice}
               quiz={quiz}

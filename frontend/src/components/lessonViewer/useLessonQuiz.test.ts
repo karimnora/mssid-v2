@@ -252,3 +252,17 @@ describe('useLessonQuiz mini-game', () => {
     expect(result.current.gameAnswers[0]).toBe('2');
   });
 });
+
+it('keeps a replayable demonstration out of the real rewards and notebook', () => {
+  const onCompleteQuiz = vi.fn(), onQuizFullyValidated = vi.fn(), onQuizMiss = vi.fn();
+  const { result } = renderHook(() => useLessonQuiz({ lesson, demo: true, quizAlreadyValidated: false, onCompleteQuiz, onQuizFullyValidated, onQuizMiss }));
+  const before = JSON.stringify({ ...localStorage });
+  act(() => result.current.handleSelectOption('q1', 'b'));
+  act(() => result.current.handleSelectOption('q1', 'a'));
+  act(() => result.current.handleSelectOption('q2', 'c'));
+  expect(result.current.selectedAnswers).toEqual({ q1: 'a', q2: 'c' });
+  expect(onCompleteQuiz).not.toHaveBeenCalled();
+  expect(onQuizFullyValidated).not.toHaveBeenCalled();
+  expect(onQuizMiss).not.toHaveBeenCalled();
+  expect(JSON.stringify({ ...localStorage })).toBe(before);
+});
