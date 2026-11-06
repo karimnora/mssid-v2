@@ -829,6 +829,7 @@ function AppContent() {
               <LoadingFallback label={t('navigation', 'loadingCourses')} minHeight="50vh" />
             ) : nav.mainCategory === 'courses' && !nav.selectedLesson ? (
               <CourseSelectionView
+                key={courseEntrySubject ?? "all-subjects"}
                 grade={nav.grade}
                 courseSubjects={visibleCourseSubjects}
                 allCourseLessons={publishableCourses}
@@ -1002,6 +1003,8 @@ function AppContent() {
             shelfGroups={planetShelfGroups}
             mission={planetMission}
             examPlanCta={countdown ? { label: locale === 'ar' ? `الاختبارات ${inDaysAr(countdown.daysLeft)}: خطة المراجعة` : `Compositions ${inDaysFr(countdown.daysLeft)} : plan de révision`, daysLeft: countdown.daysLeft, onOpen: openExamPlan } : null}
+            onOpenStories={() => closeJourney(() => { setCourseEntrySubject("arabic"); nav.handleSelectSubject("arabic"); })}
+            onOpenMath={() => closeJourney(() => { setCourseEntrySubject("math"); nav.handleSelectSubject("math"); })}
             onOpenCourses={() => closeJourney(() => {
               setCourseEntrySubject(null);
               nav.handleSelectPole('courses');

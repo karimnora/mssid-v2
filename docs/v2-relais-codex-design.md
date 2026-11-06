@@ -75,3 +75,7 @@ Le village approuvé remplace le hub arabe du parcours Didou. Il réutilise le p
 ## Consolidation du jardin et fondations — 6 novembre 2026
 
 Lots 1 et 2 du TODO de Karim : accueil définitif dans components/home/DidouVillageHome, contrôleur vocal et dialogues extraits, focus partagé avec PlanetShelf, CSS lisible et tokens de couleurs/formes/ombres/mouvement. Rendu approuvé conservé. Voir [les fondations et leur vérification](design/v2-fondations.md). Ce lot n'est pas la tranche 5AP maths ni l'ouverture du village aux comptes gratuits.
+
+## Accueil et leçon pilote — TODO 3 et 4, 6 novembre 2026
+
+Mission et progression réelle visibles à l’accueil, reprise directe, destinations arabe et maths explicites. Pilote arabe 5AP fractions en cinq phases avec manipulation non notée, Didou réactif, indices réels et 42 répliques Nova A réutilisables. Programme, exercices, quiz et règles de validation conservés. Voir [le rapport et les limites](design/v2-accueil-pilote-5ap.md).

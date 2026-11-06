@@ -230,6 +230,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
           return (
             <div
               key={q.id}
+              data-quiz-question={q.id}
               className={`p-3 sm:p-5 rounded-2xl border transition-colors space-y-4 min-w-0 ${
                 isAnswered
                   ? 'border-[var(--brand-emerald)]/40 bg-[var(--brand-emerald)]/5'
@@ -317,6 +318,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                         />
                       )}
                     <button
+                      data-quiz-option-id={opt.id}
                       onClick={() => onSelectOption(q.id, opt.id)}
                       disabled={isAnswered}
                       data-quiz-option={isAnswered ? (opt.isCorrect ? 'correct' : 'muted') : hasAttempted && isOptSelected ? 'retry' : 'idle'}

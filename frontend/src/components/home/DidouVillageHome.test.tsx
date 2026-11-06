@@ -181,7 +181,7 @@ describe("connected village navigation", () => {
     const connection = connected();
     render(<DidouVillageHome connection={connection} />);
     expect(document.querySelector("[data-home-progress]")).toHaveTextContent(
-      "4AP · 2 / 10"
+      "2 / 10"
     );
     fireEvent.click(document.querySelector("[data-home-lessons]")!);
     expect(document.querySelector("[role=dialog]")).toHaveTextContent("سارة");
@@ -285,5 +285,36 @@ describe("shared voice and dialog safeguards", () => {
       expect(document.querySelector("[role=dialog]")).not.toBeInTheDocument();
       expect(document.activeElement).toBe(opener);
     }
+  });
+});
+
+describe("visible mission and honest places", () => {
+  it("starts the real daily mission in one click without opening a window", () => {
+    const connection = connected();
+    render(<DidouVillageHome connection={connection} />);
+    expect(
+      document.querySelector("[data-home-learning-card]")
+    ).toHaveTextContent(connection.mission!.say);
+    fireEvent.click(document.querySelector("[data-home-resume]")!);
+    expect(connection.mission!.onStart).toHaveBeenCalledOnce();
+    expect(document.querySelector("[role=dialog]")).not.toBeInTheDocument();
+  });
+  it("opens Arabic for the story house, keeping the all-course destination separate", () => {
+    const connection = { ...connected(), onOpenStories: vi.fn() };
+    render(<DidouVillageHome connection={connection} />);
+    fireEvent.click(document.querySelector('[data-home-place="stories"]')!);
+    fireEvent.click(document.querySelector("[data-home-enter]")!);
+    expect(connection.onOpenStories).toHaveBeenCalledOnce();
+    expect(connection.onOpenCourses).not.toHaveBeenCalled();
+  });
+  it("offers the journey continuation when there is no daily mission and disables an unavailable target", () => {
+    const connection = { ...connected(), mission: null };
+    const view = render(<DidouVillageHome connection={connection} />);
+    fireEvent.click(document.querySelector("[data-home-resume]")!);
+    expect(connection.onContinue).toHaveBeenCalledOnce();
+    view.rerender(
+      <DidouVillageHome connection={{ ...connection, onContinue: null }} />
+    );
+    expect(document.querySelector("[data-home-resume]")).toBeDisabled();
   });
 });

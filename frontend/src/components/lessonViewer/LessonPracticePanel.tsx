@@ -15,6 +15,7 @@ interface LessonPracticePanelProps {
   onSelectGameOption: (itemIndex: number, optionAr: string) => void;
   onResetGame: () => void;
   playful?: boolean;
+  gameOnly?: boolean;
   speakingKey?: string | null;
   onSpeak?: (key: string, text: string) => void;
 }
@@ -27,11 +28,12 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
   onSelectGameOption,
   onResetGame,
   playful = false,
+  gameOnly = false,
   speakingKey = null,
   onSpeak,
 }) => (
   <div className="space-y-6">
-    {PRACTICE_TIERS.map((tier) => {
+    {!gameOnly && PRACTICE_TIERS.map((tier) => {
       const tierExercises = (lesson.progressiveExercises || []).filter((ex) => ex.level === tier.level);
       if (tierExercises.length === 0) return null;
       return (

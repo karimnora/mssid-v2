@@ -18,6 +18,7 @@ import { canOpenPack, gameStationsForJourney, type GamePack } from '../../data/g
 import { readPackLevels } from '../games/learning/LearningGameEntry';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
+import { pilotVoiceFor } from '../lessonViewer/villagePilotVoices';
 import { connectedHomeProgress } from '../home/connectedHomeProgress';
 import { DidouVillageHome } from '../home/DidouVillageHome';
 import { useAuth } from '../../context/AuthContext';
@@ -43,6 +44,8 @@ export interface JourneyScreenProps {
   mission?: { say: string; cta: string | null; onStart: () => void } | null;
   examPlanCta?: { label: string; daysLeft: number; onOpen: () => void } | null;
   onOpenCourses: () => void;
+  onOpenStories: () => void;
+  onOpenMath: () => void;
   onOpenLabs: () => void;
   onOpenGames: () => void;
   onOpenExams: () => void;
@@ -72,7 +75,7 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenGames, onOpenExams, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, onGameXp, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenStories, onOpenMath, onOpenLabs, onOpenGames, onOpenExams, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, onGameXp, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
@@ -100,7 +103,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
   const say = useCallback(
     (text: string) => {
       if (!soundRef.current) return;
-      void speakText(text, locale === 'ar' ? 'ar-SA' : 'fr-FR').catch(() => {});
+      void speakText(text, locale === 'ar' ? 'ar-SA' : 'fr-FR', .9, 1, {preferredRecording:locale === 'ar' ? pilotVoiceFor(text) : undefined}).catch(() => {});
     },
     [locale],
   );
@@ -233,7 +236,8 @@ export function JourneyScreen(props: JourneyScreenProps) {
         <DidouVillageHome connection={{
           grade, name: userName, sound, onToggleSound: toggleSound, onStopSpeech: stopSpeech,
           ...connectedHomeProgress(grade, courses, userProfile.quizFullyValidatedLessonIds),
-          onExit, onOpenCourses, onOpenLabs, onOpenGames, onOpenExams,
+          onExit, onOpenCourses, onOpenStories, onOpenMath, onOpenLabs, onOpenGames, onOpenExams,
+          onOpenPilot: grade === "5AP" && lessonsById.has("math-5ap-fractions") ? () => {const pilot=lessonsById.get("math-5ap-fractions")!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
           onOpenMap: worlds ? () => setScreen('map') : null,
           onContinue: courses && worlds && states.includes('open') ? () => {
             const index = states.indexOf('open');

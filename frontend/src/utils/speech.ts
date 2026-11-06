@@ -97,7 +97,7 @@ function stripNonSpokenSymbols(text: string): string {
 }
 
 export const speakText = async (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9, pitch: number = 1,
-  options: { skipRecordedLookup?: boolean; recordedRate?: number } = {}): Promise<void> => {
+  options: { skipRecordedLookup?: boolean; recordedRate?: number; preferredRecording?: string } = {}): Promise<void> => {
   if (!isFeatureEnabled('voiceReading')) {
     return Promise.resolve();
   }
@@ -109,7 +109,7 @@ export const speakText = async (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' 
 
   stopSpeech();
   const request = speechRequest;
-  const recording = options.skipRecordedLookup ? undefined : findRecordedSpeech(spokenText, lang);
+  const recording = options.skipRecordedLookup ? undefined : options.preferredRecording ? { src: options.preferredRecording } : findRecordedSpeech(spokenText, lang);
   if (recording) {
     const result = await playRecordedSpeech(recording.src, options.recordedRate ?? 1);
     if (result !== 'failed' || request !== speechRequest) return;

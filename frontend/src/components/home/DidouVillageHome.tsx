@@ -31,6 +31,8 @@ import {
   VillageCard,
   VillageProgress,
 } from "./VillagePrimitives";
+import { VillageLearningCard } from "./VillageLearningCard";
+import { speakText } from "../../utils/speech";
 import { DidouBubble } from "./DidouBubble";
 import { PlanetShelf, type PlanetShelfGroup } from "../journey/PlanetShelf";
 import type { PrimaryGrade } from "../../types";
@@ -88,6 +90,9 @@ export interface DidouHomeConnection {
   total: number | null;
   onExit: () => void;
   onOpenCourses: () => void;
+  onOpenStories?: () => void;
+  onOpenMath?: () => void;
+  onOpenPilot?: () => void;
   onOpenMap: (() => void) | null;
   onContinue: (() => void) | null;
   nextTitle: string | null;
@@ -217,7 +222,7 @@ export function DidouVillageHome({
         ? connection.onOpenLabs
         : selected === "games"
         ? connection.onOpenGames
-        : connection.onOpenCourses
+        : connection.onOpenStories ?? connection.onOpenCourses
     );
   };
   const pose = celebrating ? cheer : selected || hovered ? point : greet;
@@ -313,45 +318,50 @@ export function DidouVillageHome({
           <span />
         </p>
         <h1>
-          لنلعب <em>ونتعلّم!</em>
+          نتعلّم <em>ونلعب!</em>
         </h1>
         <span className="home-preview-kicker">حكايات، تجارب وألعاب تنتظرك</span>
       </section>
 
-      <a
-        className="home-preview-lessons"
-        data-home-lessons
-        href={
-          connection
-            ? `/courses?g=${connection.grade}`
-            : `/courses?g=${demoGrade}`
-        }
-        onClick={
-          connection
-            ? (event) => {
-                event.preventDefault();
-                cancelTour();
-                stop();
-                setLearning(true);
-              }
-            : undefined
-        }
-      >
-        <BookOpen size={24} />
-        <span>
-          دُرُوسِي
-          {connection && (
-            <small data-home-progress>
-              {connection.grade}
-              {" · "}
-              {connection.total === null
-                ? "جارٍ التحضير…"
-                : `${connection.completed} / ${connection.total} درسًا مكتملًا`}
-            </small>
-          )}
-        </span>
-        <ArrowLeft size={20} />
-      </a>
+      {connection ? (
+        <VillageLearningCard
+          connection={connection}
+          onDetails={() => {
+            cancelTour();
+            stop();
+            setLearning(true);
+          }}
+          onStart={() => {
+            const action = connection.mission?.cta
+              ? connection.mission.onStart
+              : connection.onContinue;
+            if (action) leave(action);
+          }}
+          onListen={() => {
+            cancelTour();
+            stop();
+            setMuted(false);
+            const text =
+              [
+                connection.mission?.say || connection.nextTitle,
+                connection.total === null
+                  ? ""
+                  : `الدروس المكتملة: ${connection.completed} من ${connection.total}.`,
+              ]
+                .filter(Boolean)
+                .join(" ") || "نحضّر دروسك. انتظر لحظة.";
+            void speakText(text, "ar-SA").catch(() => {});
+          }}
+        />
+      ) : (
+        <a
+          className="home-preview-lessons"
+          data-home-lessons
+          href={`/courses?g=${demoGrade}`}
+        >
+          <BookOpen size={24} /> دُرُوسِي <ArrowLeft size={20} />
+        </a>
+      )}
       <nav className="home-preview-places" aria-label="أماكن الاستكشاف">
         {PLACES.map(({ id, title, Icon, color }) => (
           <motion.button
@@ -545,6 +555,24 @@ export function DidouVillageHome({
           >
             <ClipboardCheck /> امتحاناتي
           </VillageButton>
+          {connection.onOpenMath && (
+            <VillageButton
+              variant="secondary"
+              data-home-math
+              onClick={() => leave(connection.onOpenMath!)}
+            >
+              دار الأرقام
+            </VillageButton>
+          )}
+          {connection.onOpenPilot && (
+            <VillageButton
+              variant="secondary"
+              data-home-pilot
+              onClick={() => leave(connection.onOpenPilot!)}
+            >
+              أكتشف الكسور مع ديدو
+            </VillageButton>
+          )}
           {connection.examPlanCta && (
             <VillageButton
               variant="secondary"

@@ -1120,3 +1120,152 @@
     padding-top: 72px;
   }
 }
+
+.village-learning-card {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  translate: -50% 0;
+  width: 450px;
+  max-width: calc(100% - 32px);
+  z-index: 5;
+  padding: 12px;
+  background: var(--v-surface);
+  border: 3px solid white;
+  border-radius: 24px;
+  box-shadow: 0 5px 0 #a78c54;
+  color: var(--v-ink);
+}
+.village-learning-next {
+  margin: 0 0 6px;
+  font-weight: 800;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.village-learning-progress {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.village-learning-progress progress {
+  flex: 1;
+  width: 50px;
+  min-width: 24px;
+  height: 10px;
+}
+.village-learning-actions {
+  display: flex;
+  gap: 8px;
+}
+.village-learning-actions .home-preview-play {
+  min-width: 0;
+  font-size: 20px;
+}
+.village-learning-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.village-learning-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 60px;
+  height: 60px;
+  border: 2px solid var(--v-secondary-border);
+  border-radius: 16px;
+  background: var(--v-secondary);
+  color: var(--v-ink-strong);
+}
+.village-learning-icon span {
+  font-size: 12px;
+  font-weight: 800;
+}
+@media (max-width: 680px) {
+  .village-learning-card {
+    top: 145px;
+    width: calc(100% - 32px);
+    padding: 9px;
+  }
+  .village-learning-next {
+    font-size: 15px;
+  }
+  .village-learning-progress {
+    font-size: 11px;
+    gap: 6px;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--stories {
+    top: 43%;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--workshop {
+    top: 55%;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--games {
+    top: 67%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--bird {
+    left: 85%;
+    top: 39%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--bee {
+    left: 10%;
+    top: 54%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--ladybug {
+    left: 50%;
+    top: 49%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--butterfly {
+    left: 55%;
+    top: 63%;
+  }
+}
+@media (max-width: 680px) and (max-height: 700px) {
+  .village-learning-card {
+    top: 129px;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--stories {
+    top: 46%;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--workshop {
+    top: 58%;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--games {
+    top: 72%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--bird {
+    top: 47%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--bee {
+    top: 59%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--ladybug {
+    top: 55%;
+  }
+  .home-preview[data-home-connected="true"] .home-garden-creature--butterfly {
+    top: 69%;
+  }
+}
+
+.village-learning-progress {
+  font-size: 16px;
+}
+@media (max-width: 680px) {
+  .village-learning-progress {
+    font-size: 16px;
+  }
+}
+@media (max-width: 680px) and (max-height: 700px) {
+  .home-preview[data-home-connected="true"] .home-preview-place--stories {
+    top: 48%;
+  }
+  .home-preview[data-home-connected="true"] .home-preview-place--games {
+    top: 68%;
+  }
+}

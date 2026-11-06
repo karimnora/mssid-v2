@@ -1,0 +1,311 @@
+.village-lesson {
+  font-family: var(--v-font);
+  background: var(--v-page);
+  border-radius: 28px;
+  padding: 16px;
+  color: var(--v-ink);
+  --app-card-bg: #fff9e6;
+  --app-card-border: #ded1a4;
+  --app-text: #173f37;
+  --app-text-muted: #365b49;
+}
+.village-lesson button {
+  min-height: 60px;
+  min-width: 60px;
+}
+.village-lesson button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.village-lesson button:focus-visible {
+  outline: 3px solid #176c57;
+  outline-offset: 3px;
+}
+.village-lesson :is(p, li, label, input, select) {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.village-lesson h1,
+.village-lesson h2,
+.village-lesson h3 {
+  font-family: var(--v-font);
+}
+.pilot-phases {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.pilot-phases button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 76px;
+  padding: 8px;
+  border: 2px solid #decda0;
+  border-radius: 18px;
+  background: #fff5d9;
+  color: #294c3c;
+  font-size: 15px;
+  font-weight: 800;
+}
+.pilot-phases button[aria-current] {
+  background: #267b5d;
+  color: white;
+  border-color: #b9efd1;
+}
+.pilot-phases span {
+  font-size: 12px;
+}
+.pilot-companion {
+  position: sticky;
+  top: 8px;
+  z-index: 4;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #fff9e6f7;
+  border: 2px solid #e8d5a4;
+  border-radius: 24px;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 5px 0 #c5b574;
+}
+.pilot-companion > img {
+  width: 96px;
+  height: 128px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.pilot-companion > div {
+  min-width: 0;
+  flex: 1;
+}
+.pilot-companion p {
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 700;
+}
+.pilot-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.pilot-row button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 2px solid #c8b46f;
+  border-radius: 16px;
+  background: #fff3cb;
+  color: #194c3c;
+  font-size: 16px;
+  font-weight: 800;
+}
+.pilot-discovery {
+  border: 3px solid #fff;
+  border-radius: 24px;
+  background: linear-gradient(#fff9e6f2, #fff9e6),
+    url("../../assets/design/home-v3/village-landscape.webp") center/cover;
+  padding: 20px;
+}
+.pilot-notion {
+  border: 2px solid #d8c595;
+  border-radius: 20px;
+  padding: 16px;
+  background: #fffdf3;
+  margin-top: 16px;
+}
+.pilot-notion h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1d7056;
+}
+.pilot-fraction {
+  padding: 20px;
+  border-radius: 24px;
+  border: 2px solid #decda0;
+  background: #f7edcc;
+  margin-bottom: 16px;
+}
+.pilot-parts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.pilot-parts button {
+  aspect-ratio: 1;
+  border: 3px solid #c9b77f;
+  border-radius: 18px;
+  background: #fff9e6;
+  color: #38684b;
+  font-size: 22px;
+  font-weight: 800;
+  box-shadow: 0 5px 0 #b6a06b;
+}
+.pilot-parts button[aria-pressed="true"] {
+  background: linear-gradient(#64c394, #24835b);
+  color: white;
+  border-color: #b2e9bf;
+  box-shadow: 0 5px 0 #185b42;
+}
+.pilot-fraction output {
+  font-size: 30px;
+  font-weight: 900;
+  color: #176847;
+}
+[data-pilot-practice] > [hidden] {
+  display: none !important;
+}
+[data-pilot-practice] > .pilot-row {
+  margin-bottom: 16px;
+}
+.village-lesson [data-lesson-steps] {
+  display: none;
+}
+.village-lesson .pilot-result-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+@media (max-width: 680px) {
+  .village-lesson {
+    padding: 10px;
+  }
+  .pilot-companion {
+    gap: 6px;
+    padding: 8px;
+    top: 4px;
+  }
+  .pilot-companion > img {
+    width: 60px;
+    height: 90px;
+  }
+  .pilot-companion p {
+    font-size: 15px;
+  }
+  .pilot-companion .pilot-row button {
+    padding: 6px;
+    min-width: 60px;
+    font-size: 13px;
+    gap: 4px;
+  }
+  .pilot-companion svg {
+    width: 18px;
+  }
+  .pilot-discovery,
+  .pilot-fraction {
+    padding: 12px;
+  }
+  .pilot-parts {
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .village-lesson * {
+    scroll-behavior: auto !important;
+  }
+  .pilot-companion > img {
+    transform: none !important;
+  }
+}
+
+.pilot-hero {
+  padding: 20px;
+  border-radius: 24px;
+  background: linear-gradient(90deg, #fff9e6f5, #fff9e6e0),
+    url("../../assets/design/home-v3/village-landscape.webp") center 45% / cover;
+  border: 3px solid white;
+  box-shadow: 0 5px 0 #c5b574;
+}
+.pilot-hero h1 {
+  font-size: clamp(23px, 3vw, 34px);
+  font-weight: 900;
+  line-height: 1.7;
+  color: #184d3c;
+}
+.pilot-hero p {
+  margin: 0;
+  color: #365b49;
+}
+.village-lesson summary {
+  min-height: 60px;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 800;
+}
+.village-lesson [hidden] {
+  display: none !important;
+}
+
+.village-lesson #lesson-active-step-container {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+@media (max-width: 680px) {
+  .pilot-phases {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(60px, 1fr));
+    gap: 6px;
+  }
+  .pilot-phases button {
+    min-width: 60px;
+    min-height: 60px;
+    flex-direction: row;
+    gap: 6px;
+    font-size: 14px;
+  }
+  .pilot-hero {
+    padding: 14px;
+  }
+  .pilot-hero h1 {
+    font-size: 24px;
+    line-height: 1.6;
+  }
+}
+.pilot-optional {
+  border: 1px solid #ddcda7;
+  border-radius: 18px;
+  margin-block: 12px;
+  background: #fff9e6;
+}
+.pilot-optional[open] {
+  padding: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .village-lesson button {
+    transform: none !important;
+  }
+  .village-lesson * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .pilot-companion p,
+  .pilot-companion .pilot-row button,
+  .pilot-phases button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  .pilot-parts { grid-template-columns: repeat(8, minmax(60px, 1fr)); }
+}

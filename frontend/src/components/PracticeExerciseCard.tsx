@@ -271,6 +271,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           ))}
           {hintsRevealed < maxHints && (
             <button
+              data-practice-hint
               onClick={() => setHintsRevealed((n) => n + 1)}
               className="flex items-center gap-1.5 text-xs font-bold text-indigo-600 hover:text-indigo-800 cursor-pointer"
             >

@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react';
+import { motionTokens } from './home/villageMotion';
+import { useMotionPreference } from '../hooks/useMotionPreference';
 import { MissionBanner } from './missions/MissionBanner';
 import { missionForLesson } from '../data/missions';
 import { LearningGameEntry } from './games/learning/LearningGameEntry';
 import { packsForLesson } from '../data/games';
 import type { PracticeResult } from '../utils/competenceProgress';
+import { VILLAGE_MATH_PILOT, villagePilotSteps, PilotPhases, PilotDiscovery, PilotFractionExplorer, PilotPractice, PilotCompanion, PilotContentFrame, PilotDiscoveryFrame, PilotOptional, PilotMotionFrame } from './lessonViewer/VillageMathPilot';
+import { didouLineForStep } from './lessonViewer/LessonDidou';
 import { LessonDidou } from './lessonViewer/LessonDidou';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -93,7 +97,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onReportError,
 }) => {
   const t = useTranslation('courses');
-  const { direction } = useLocaleContext();
+  const { direction, locale } = useLocaleContext();
+  const villagePilot = lessonProp.id === VILLAGE_MATH_PILOT && locale === "ar";
+  const reduceVillageMotion = useMotionPreference();
+  const [pilotExerciseIndex,setPilotExerciseIndex] = useState(0);
   const { lesson, premiumFetchState } = usePremiumLessonContent(lessonProp);
   const speech = useLessonSpeech(lesson, grade);
   const practice = useLessonPractice(lesson, onCompleteQuiz, onQuizMiss, onPracticeResult);
@@ -129,6 +136,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
   useEffect(() => {
     setActiveTab('explanation');
+    setPilotExerciseIndex(0);
     setSelectedExampleTier(1);
     setShowParentInfo(false);
     setShowRevisionSheet(false);
@@ -245,8 +253,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       });
     }
 
-    return steps;
-  }, [isPlayful1AP, showInteractive, lesson, practice.evaluationExercises.length, grade]);
+    return villagePilot ? villagePilotSteps(steps) : steps;
+  }, [isPlayful1AP, showInteractive, lesson, practice.evaluationExercises.length, grade, villagePilot]);
 
   const currentStepIndex = Math.max(0, availableSteps.findIndex((s) => s.id === activeTab));
   const isLastStep = currentStepIndex >= availableSteps.length - 1;
@@ -274,7 +282,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         const topEl = document.getElementById('lesson-active-step-container');
         // Optional chaining: jsdom (unit tests) doesn't implement scrollIntoView at all — every
         // real browser does, so this changes nothing for actual users.
-        topEl?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+        topEl?.scrollIntoView?.({ behavior: villagePilot && reduceVillageMotion ? 'auto' : 'smooth', block: 'start' });
       }, 50);
     }
   };
@@ -311,8 +319,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   }
 
   return (
-    <div className="space-y-4 sm:space-y-6 dir-rtl overflow-x-clip" dir="rtl">
-      <div className={isPlayful1AP ? 'hidden sm:block' : undefined}>
+    <PilotMotionFrame enabled={villagePilot}><div className={`space-y-4 sm:space-y-6 dir-rtl overflow-x-clip ${villagePilot ? "village-theme village-lesson" : ""}`} data-village-math-pilot={villagePilot ? lesson.id : undefined} dir="rtl">
+      <div hidden={villagePilot} className={isPlayful1AP ? 'hidden sm:block' : undefined}>
       <CourseBreadcrumb
         grade={grade}
         subjectId={subjectId}
@@ -402,7 +410,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       <VoiceUnavailableBanner visible={speech.isYoungGrade && speech.voiceAvailable === false} />
 
-      {isPlayful1AP ? (
+      {villagePilot ? <header className="pilot-hero"><p>مع ديدو · الرياضيات · 5AP</p><h1 title={lesson.titleAr}>{lesson.titleAr.split(":")[0]}</h1><p>{lesson.objectivesAr?.[0]}</p></header> : isPlayful1AP ? (
         <div className="rounded-3xl bg-emerald-50 border border-emerald-100 p-4 sm:p-8 space-y-3" data-lesson-hero="1ap">
           {titleSnippet && (
               <div className="flex items-center gap-3 min-w-0">
@@ -559,7 +567,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       </div>
       )}
 
-      {lesson.missionTitleAr && !isPlayful1AP && (
+      {lesson.missionTitleAr && !isPlayful1AP && !villagePilot && (
         <div className="bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl overflow-hidden">
           <div className="h-3.5 w-full bg-[var(--brand-blue)]" />
           <div className="p-5">
@@ -569,7 +577,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         </div>
       )}
 
-      {lesson.objectivesAr && lesson.objectivesAr.length > 0 && !isPlayful1AP && (
+      {lesson.objectivesAr && lesson.objectivesAr.length > 0 && !isPlayful1AP && !villagePilot && (
         <Card padding="none" className="p-5">
           <h3 className="font-extrabold text-sm text-[var(--app-text)] flex items-center gap-2 mb-2.5">
             <Target className="w-4 h-4 text-[var(--brand-blue)]" />
@@ -587,7 +595,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       )}
 
       <div id="lesson-active-step-container" className="scroll-mt-20 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl p-3.5 sm:p-4 shadow-sm space-y-3" data-lesson-layout={isCompactGrade ? 'compact' : 'full'}>
-        <div className="flex items-center justify-between flex-wrap gap-2">
+        <div hidden={villagePilot} className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2.5">
             <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-emerald-600 text-white flex items-center justify-center font-black text-sm shadow-xs">
               {currentStepIndex + 1}
@@ -616,7 +624,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </div>
         </div>
 
-        {!isCompactGrade && (
+        {!isCompactGrade && !villagePilot && (
         <div ref={stepRowRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1" data-lesson-steps data-lesson-step-count={availableSteps.length}>
           {availableSteps.map((step, idx) => {
             const isActive = step.id === activeTab;
@@ -652,25 +660,38 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         )}
       </div>
 
+      {villagePilot && <PilotPhases steps={availableSteps} active={activeTab} onSelect={goToStep}/>}
+      {villagePilot && (activeTab==='evaluation'||activeTab==='quiz') && <div className="pilot-result-tabs">{availableSteps.filter(step=>step.id==='evaluation'||step.id==='quiz').map(step=><button type="button" key={step.id} aria-pressed={activeTab===step.id} onClick={()=>setActiveTab(step.id)}>{step.labelAr}</button>)}</div>}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: villagePilot && reduceVillageMotion ? 0 : 14 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={tabTransition}
+          exit={{ opacity: 0, y: villagePilot && reduceVillageMotion ? 0 : -10 }}
+          transition={villagePilot && reduceVillageMotion ? {duration:motionTokens.feedback} : tabTransition}
           className="min-w-0"
         >
+          {!villagePilot && <>
           {!isPlayful1AP && activeTab === 'explanation' && missionForLesson(lesson.id) && (
-            <MissionBanner mission={missionForLesson(lesson.id)!} onPracticeResult={onPracticeResult} onCompleteQuiz={onCompleteQuiz} />
+            <PilotOptional enabled={villagePilot} label="مهمة إضافية للدرس"><MissionBanner mission={missionForLesson(lesson.id)!} onPracticeResult={onPracticeResult} onCompleteQuiz={onCompleteQuiz}/></PilotOptional>
           )}
           {/* Learning games are shown to every grade, 1AP included (young-reader packs read every card aloud). */}
           {activeTab === 'explanation' && packsForLesson(lesson.id).map((pack) => (
             <div key={pack.id} className="mb-4">
-              <LearningGameEntry pack={pack} focusLessonId={lesson.id} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)} />
+              <PilotOptional enabled={villagePilot} label={pack.titleAr}><LearningGameEntry pack={pack} focusLessonId={lesson.id} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)}/></PilotOptional>
             </div>
           ))}
-          {!isPlayful1AP && <LessonDidou lesson={lesson} tab={activeTab} />}
+          </>}
+          {villagePilot ? (()=>{
+            const ex=lesson.progressiveExercises?.[pilotExerciseIndex];
+            const checked=activeTab==='practice'&&ex&&practice.practiceChecked[ex.id];
+            const correct=checked&&ex&&practice.practiceCorrect[ex.id];
+            const question=activeTab==='quiz' ? lesson.quiz.find(q=>q.id===quiz.recentAnswerId) : undefined;
+            const selected=question?.options.find(o=>o.id===quiz.selectedAnswers[question.id]);
+            const line=checked ? correct ? `أحسنت! ${lesson.rulesAr?.[0]??lesson.summaryAr}` : `لنجرّب مرة أخرى. ${ex?.hintsAr?.[0]??lesson.rulesAr?.[0]??lesson.summaryAr}` : selected ? selected.isCorrect ? `أحسنت! ${lesson.rulesAr?.[0]??lesson.summaryAr}` : `لنجرّب مرة أخرى. ${question?.hintAr??lesson.rulesAr?.[0]??lesson.summaryAr}` : didouLineForStep(lesson,activeTab)??lesson.summaryAr;
+            return <PilotCompanion lesson={lesson} line={line} mood={correct||selected?.isCorrect?'cheer':activeTab==='explanation'?'greet':'point'} reactionKey={checked?`${ex?.id}:${!!correct}`:selected?`${question?.id}:${selected.id}`:''} onSpeak={speech.speakSnippet} speaking={!!speech.speakingKey} onStop={speech.stopSpeech}/>;
+          })() : !isPlayful1AP && <LessonDidou lesson={lesson} tab={activeTab}/>}
+
           {activeTab === 'explanation' && (
             isPlayful1AP ? (
               <YoungLessonStory
@@ -680,15 +701,15 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 onSpeak={speech.speakSnippet}
               />
             ) : (
-              <LessonExplanationView
+              <PilotDiscoveryFrame enabled={villagePilot} lesson={lesson} onSpeak={speech.speakSnippet}><LessonExplanationView
                 lesson={lesson}
                 tashkeelEnabled={tashkeelEnabled}
                 availableSteps={availableSteps}
                 activeStepId={activeTab}
                 onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
-                speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-                onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
-              />
+                speakingKey={(speech.isYoungGrade || villagePilot) ? speech.speakingKey : null}
+                onSpeak={(speech.isYoungGrade || villagePilot) ? speech.speakSnippet : undefined}
+              /></PilotDiscoveryFrame>
             )
           )}
 
@@ -699,7 +720,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           )}
 
           {activeTab === 'practice' && lesson.progressiveExercises && (
-            <LessonPracticePanel
+            villagePilot ? <PilotPractice lesson={lesson} practice={practice} index={pilotExerciseIndex} onIndex={index=>{speech.stopSpeech();setPilotExerciseIndex(index);}} gameAnswers={quiz.gameAnswers} onSelectGameOption={quiz.handleSelectGameOption} onResetGame={()=>quiz.setGameAnswers({})} renderText={renderArabicText} speakingKey={speech.speakingKey} onSpeak={speech.speakSnippet}/> : <LessonPracticePanel
               lesson={lesson}
               practice={practice}
               renderArabicText={renderArabicText}
@@ -707,17 +728,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onSelectGameOption={quiz.handleSelectGameOption}
               onResetGame={() => quiz.setGameAnswers({})}
               playful={isPlayful1AP}
-              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+              speakingKey={(speech.isYoungGrade || villagePilot) ? speech.speakingKey : null}
+              onSpeak={(speech.isYoungGrade || villagePilot) ? speech.speakSnippet : undefined}
             />
           )}
 
           {activeTab === 'content' && (
-            <LessonContentPanel
+            <PilotContentFrame enabled={villagePilot} lesson={lesson} onSpeak={speech.speakSnippet}><LessonContentPanel
               lesson={lesson}
               renderArabicText={renderArabicText}
-              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+              speakingKey={(speech.isYoungGrade || villagePilot) ? speech.speakingKey : null}
+              onSpeak={(speech.isYoungGrade || villagePilot) ? speech.speakSnippet : undefined}
               selectedExampleTier={selectedExampleTier}
               onSelectExampleTier={setSelectedExampleTier}
               visibleSolutions={quiz.visibleSolutions}
@@ -725,11 +746,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 quiz.setVisibleSolutions((prev) => ({ ...prev, [index]: !prev[index] }))
               }
               onGoToSimulation={() => setActiveTab('gameplay')}
-            />
+            /></PilotContentFrame>
           )}
 
           {activeTab === 'interactive' && showInteractive && (
-            <LessonInteractiveTools lesson={lesson} />
+            <>{villagePilot&&<PilotFractionExplorer lesson={lesson}/>}<LessonInteractiveTools lesson={lesson}/></>
           )}
 
           {activeTab === 'evaluation' && practice.evaluationExercises.length > 0 && (
@@ -751,12 +772,23 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onShuffle={quiz.initializeShuffledQuiz}
               onReset={quiz.handleResetQuiz}
               playful={isPlayful1AP}
-              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+              speakingKey={(speech.isYoungGrade || villagePilot) ? speech.speakingKey : null}
+              onSpeak={(speech.isYoungGrade || villagePilot) ? speech.speakSnippet : undefined}
               nextLessonTitle={isPlayful1AP && nextLesson ? renderArabicText(nextLesson.titleAr) : undefined}
               onContinueNext={isPlayful1AP && canCompleteLesson ? finishAndContinue : undefined}
             />
           )}
+          {villagePilot && <>
+          {!isPlayful1AP && activeTab === 'explanation' && missionForLesson(lesson.id) && (
+            <PilotOptional enabled={villagePilot} label="مهمة إضافية للدرس"><MissionBanner mission={missionForLesson(lesson.id)!} onPracticeResult={onPracticeResult} onCompleteQuiz={onCompleteQuiz}/></PilotOptional>
+          )}
+          {/* Learning games are shown to every grade, 1AP included (young-reader packs read every card aloud). */}
+          {activeTab === 'explanation' && packsForLesson(lesson.id).map((pack) => (
+            <div key={pack.id} className="mb-4">
+              <PilotOptional enabled={villagePilot} label={pack.titleAr}><LearningGameEntry pack={pack} focusLessonId={lesson.id} onPracticeResult={onPracticeResult} onEarnXp={(_, xp) => onCompleteQuiz?.(lesson.id, xp)}/></PilotOptional>
+            </div>
+          ))}
+          </>}
         </motion.div>
       </AnimatePresence>
 
@@ -768,7 +800,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         prevStep={prevStep}
         nextLesson={nextLesson}
         renderArabicText={renderArabicText}
-        compact={isCompactGrade}
+        compact={isCompactGrade || villagePilot}
         playful={isPlayful1AP}
         hasQuiz={hasQuiz}
         quizPassed={quizPassed}
@@ -777,6 +809,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       />
 
 
-    </div>
+    </div></PilotMotionFrame>
   );
 };
