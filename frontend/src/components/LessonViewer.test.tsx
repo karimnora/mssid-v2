@@ -142,7 +142,8 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
   // the question/options right after the tab-switch click can miss it entirely.
   const answerFirstQuestionCorrectly = async () => {
     fireEvent.click(screen.getByText('الاختبار التفاعلي (2)'));
-    await waitFor(() => expect(screen.getByText('كم يساوي 2+2؟')).toBeInTheDocument());
+    // This checks the exit guard, not animation speed: allow a cold panel mount on 2-core CI.
+    await screen.findByText('كم يساوي 2+2؟', {}, { timeout: 4000 });
     fireEvent.click(screen.getByText('4'));
   };
 

@@ -18,6 +18,8 @@ import { canOpenPack, gameStationsForJourney, type GamePack } from '../../data/g
 import { readPackLevels } from '../games/learning/LearningGameEntry';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
+import { connectedHomeProgress } from '../../design/connectedHomeProgress';
+import { DidouHomePreview } from '../../design/DidouHomePreview';
 import { useAuth } from '../../context/AuthContext';
 import { canAccess, FREE_JOURNEY_WORLDS } from '../../access/entitlements';
 import { PremiumOffer } from '../PremiumOffer';
@@ -42,6 +44,8 @@ export interface JourneyScreenProps {
   examPlanCta?: { label: string; daysLeft: number; onOpen: () => void } | null;
   onOpenCourses: () => void;
   onOpenLabs: () => void;
+  onOpenGames: () => void;
+  onOpenExams: () => void;
   onOpenParents: () => void;
   isLessonLocked: (lesson: CourseLesson) => boolean;
   onLessonLocked: (lesson: CourseLesson) => void;
@@ -68,7 +72,7 @@ const BACKGROUND_STARS = (() => {
  * behave exactly as in the courses section).
  */
 export function JourneyScreen(props: JourneyScreenProps) {
-  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, onGameXp, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
+  const { grade, courses, userProfile, onExit, onOpenCourses, onOpenLabs, onOpenGames, onOpenExams, onOpenParents, isLessonLocked, onLessonLocked, onCompleteQuiz, onQuizFullyValidated, onQuizMiss, onPracticeResult, onReportError, onGameXp, startOn = 'hub', shelfGroups, exitLabel, mission, examPlanCta } = props;
   const { locale } = useLocaleContext();
   const { authUser } = useAuth();
   const allWorlds = canAccess('journeyAllWorlds', authUser?.role);
@@ -225,7 +229,22 @@ export function JourneyScreen(props: JourneyScreenProps) {
         </svg>
       )}
 
-      {screen === 'hub' && (
+      {screen === 'hub' && locale === 'ar' && (
+        <DidouHomePreview connection={{
+          grade, name: userName, sound, onToggleSound: toggleSound, onStopSpeech: stopSpeech,
+          ...connectedHomeProgress(grade, courses, userProfile.quizFullyValidatedLessonIds),
+          onExit, onOpenCourses, onOpenLabs, onOpenGames, onOpenExams,
+          onOpenMap: worlds ? () => setScreen('map') : null,
+          onContinue: courses && worlds && states.includes('open') ? () => {
+            const index = states.indexOf('open');
+            if (stations[index]?.kind === 'lesson') startLesson(index);
+            else setScreen('map');
+          } : null,
+          nextTitle: courses && worlds ? lessonTitles[stations[states.indexOf('open')]?.lessonId ?? ''] || null : null,
+          shelfGroups: shelfGroups ?? [], mission, examPlanCta,
+        }}/>
+      )}
+      {screen === 'hub' && locale !== 'ar' && (
         <PlanetHub
           locale={locale}
           userName={userName}

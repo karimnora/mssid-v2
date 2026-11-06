@@ -65,3 +65,8 @@ Les prompts d'images sont dans `docs/v2-pilote-prompts-nanobanana.md` (mondes) e
   - pose `mssid_active_child_id=account` dans le localStorage ;
   - vérifie en arabe, en 390 × 844 et 1280 × 800.
 - Commits en anglais, préfixe `feat(v2):` ou `fix(v2):`, sur `v2`.
+
+
+## Accueil village connecté — 6 novembre 2026
+
+Le village approuvé remplace le hub arabe du parcours Didou. Il réutilise le profil actif, la classe, les leçons publiées, la validation complète des quiz, la prochaine station et la mission pédagogique existante. Cours, carte, labos, jeux, examens et carnet parent restent accessibles avec leurs gardes habituelles. La mission est isolée par identifiant d'enfant ; le parcours se remonte au changement de profil/classe pour arrêter la voix précédente. Le mode classique reste accessible ; français et préscolaire conservent leur interface. Voir [le rapport d'intégration](design/home-v3-preview/README.md).

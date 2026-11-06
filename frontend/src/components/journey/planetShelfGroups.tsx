@@ -55,7 +55,6 @@ export function buildPlanetShelfGroups(a: PlanetShelfActions): PlanetShelfGroup[
   }
 
   const practice: PlanetShelfItem[] = [
-    { id: 'exams', label: T('الامتحانات', 'Examens'), icon: icon('notebook'), onOpen: a.onOpenExams },
     { id: 'challenges', label: T('التحديات والألعاب', 'Défis et jeux'), icon: icon('trophy'), onOpen: a.onOpenChallenges },
     { id: 'labs', label: T('كل المختبرات والألعاب', 'Tous les ateliers et jeux'), icon: icon('puzzle'), onOpen: a.onOpenLabsCatalog },
   ];
@@ -81,7 +80,8 @@ export function buildPlanetShelfGroups(a: PlanetShelfActions): PlanetShelfGroup[
 
   return [
     { id: 'learn', title: T('أتعلّم', "J'apprends"), items: learn },
-    { id: 'practice', title: T('أتمرّن وأمتحن وألعب', "Je m'entraîne, je passe des examens, je joue"), items: practice },
+    { id: 'practice', title: T('ألعب وأتدرّب', "Je joue et je m'entraîne"), items: practice },
+    { id: 'exams', title: T('أقيّم تعلّمي', "J'évalue mes acquis"), items: [{ id: 'exams', label: T('الامتحانات', 'Examens'), icon: icon('notebook'), onOpen: a.onOpenExams }] },
     { id: 'discover', title: T('أكتشف', 'Je découvre'), items: discover },
     { id: 'me', title: T('أنا وديدو', 'Didou et moi'), items: me },
     { id: 'parents', title: T('ركن الأولياء', 'Le coin des parents'), items: parents },

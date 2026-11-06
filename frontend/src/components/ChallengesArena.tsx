@@ -73,7 +73,7 @@ const MODE_MATCH: Record<Exclude<ChallengeMode, 'all'>, (c: Challenge) => boolea
 };
 
 const MODE_CARDS: { id: Exclude<ChallengeMode, 'all'>; icon: string; titleAr: string; descAr: string; bandClass: string }[] = [
-  { id: 'quick', icon: '🎯', titleAr: 'اختبار سريع', descAr: '10 أسئلة خاطفة بدون وقت محدد', bandClass: 'kids-card-examens' },
+  { id: 'quick', icon: '🎯', titleAr: 'تحدٍّ سريع', descAr: '10 أسئلة خاطفة بدون وقت محدد', bandClass: 'kids-card-defis' },
   { id: 'chrono', icon: '⏱️', titleAr: 'تحدي الزمن', descAr: 'دقيقتان لحل أكبر عدد من الأسئلة', bandClass: 'kids-card-defis' },
   { id: 'boss', icon: '👑', titleAr: 'التحدي الكبير للفصل', descAr: 'تحدٍّ شامل وصعب — للأبطال فقط!', bandClass: 'kids-card-labs' },
 ];

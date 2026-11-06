@@ -529,7 +529,7 @@ function AppContent() {
           profile: progress.userProfile,
           lessons: publishableCourses,
           resume: resumeActivity,
-          storageKey: dailyMissionKey(`${authUser?.id ?? 'guest'}:${progress.userProfile.name}`, nav.grade),
+          storageKey: dailyMissionKey(`${authUser?.id ?? 'guest'}:${activeChildId ?? 'account'}`, nav.grade),
         }),
         locale,
         subjectName,
@@ -989,6 +989,7 @@ function AppContent() {
       {journeyOpen && journeyAvailable && (
         <Suspense fallback={<LoadingFallback label={locale === 'ar' ? 'ديدو يحضّر الكوكب…' : 'Didou prépare la planète…'} minHeight="100vh" />}>
           <JourneyScreen
+            key={`${authUser?.id ?? "guest"}:${activeChildId ?? "account"}:${nav.grade}`}
             grade={nav.grade}
             courses={coursesData ? publishableCourses : null}
             userProfile={progress.userProfile}
@@ -998,7 +999,7 @@ function AppContent() {
               closeJourney();
             }}
             exitLabel={premiumPlanetHome ? (locale === 'ar' ? 'الواجهة الكلاسيكية' : 'Accueil classique') : undefined}
-            shelfGroups={premiumPlanetHome ? planetShelfGroups : undefined}
+            shelfGroups={planetShelfGroups}
             mission={planetMission}
             examPlanCta={countdown ? { label: locale === 'ar' ? `الاختبارات ${inDaysAr(countdown.daysLeft)}: خطة المراجعة` : `Compositions ${inDaysFr(countdown.daysLeft)} : plan de révision`, daysLeft: countdown.daysLeft, onOpen: openExamPlan } : null}
             onOpenCourses={() => closeJourney(() => {
@@ -1009,6 +1010,8 @@ function AppContent() {
               nav.handleSelectPole('labs');
               openLabsCatalog();
             })}
+            onOpenGames={() => closeJourney(() => nav.handleSelectPole('challenges'))}
+            onOpenExams={() => closeJourney(() => nav.handleSelectPole('exams'))}
             onOpenParents={() => modals.setIsParentNotebookOpen(true)}
             isLessonLocked={isLessonLocked}
             onLessonLocked={onLessonLocked}
