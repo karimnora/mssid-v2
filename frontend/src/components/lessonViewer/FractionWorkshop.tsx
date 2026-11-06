@@ -75,7 +75,20 @@ export function FractionWorkshop({ journey: j }: { journey: FractionJourney }) {
             كل وحدة فيها {d} أجزاء متساوية. المس الأجزاء؛ عندما تكتمل الوحدة
             نجمعها.
           </p>
-          <FractionBars numerator={n} denominator={d} />
+          <div
+            className="fraction-loose-pool"
+            role="img"
+            aria-label={'أجزاء متاحة لم أجمعها: ' + remaining}
+            data-fraction-pool
+          >
+            {Array.from({ length: n }, (_, i) => (
+              <span
+                key={i}
+                data-loose-part={i < remaining ? 'available' : 'used'}
+                aria-hidden="true"
+              />
+            ))}
+          </div>
           <p aria-live="polite">أجزاء لم أجمعها بعد: {remaining}</p>
           <div
             className="fraction-parts-tray"

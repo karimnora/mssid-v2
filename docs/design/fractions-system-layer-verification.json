@@ -1,0 +1,16 @@
+[
+  {
+    "mode": "direct",
+    "realBadgeVisibleAndTouchable": true,
+    "realAuthModalVisibleAndEditable": true,
+    "rootAccessible": true,
+    "note": "Real components mounted in a test-only global host; not an end-to-end token expiry."
+  },
+  {
+    "mode": "journey",
+    "realBadgeVisibleAndTouchable": true,
+    "realAuthModalVisibleAndEditable": true,
+    "rootAccessible": true,
+    "note": "Real components mounted in a test-only global host; not an end-to-end token expiry."
+  }
+]

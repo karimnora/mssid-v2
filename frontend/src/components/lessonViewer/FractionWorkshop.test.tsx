@@ -94,7 +94,11 @@ describe('linear fraction journey', () => {
     const view = render(<Harness />);
     expect(view.container.querySelector('select')).toBeNull();
     expect(view.container.querySelector('[data-fraction-mission]')).toBeNull();
+    const available = () => view.container.querySelectorAll('[data-loose-part="available"]').length;
+    expect(available()).toBe(17);
+    expect(view.container.querySelectorAll('.fraction-whole')).toHaveLength(0);
     fireEvent.click(screen.getByRole('button', { name: 'جزء 5' }));
+    expect(available()).toBe(16);
     expect(
       view.container.querySelector('[data-fraction-part="4"]')
     ).toHaveAttribute('aria-pressed', 'true');
@@ -103,6 +107,10 @@ describe('linear fraction journey', () => {
     expect(view.container.querySelectorAll('[data-return-whole]')).toHaveLength(
       1
     );
+    expect(available()).toBe(12);
+    fireEvent.click(view.container.querySelector('[data-return-whole]')!);
+    expect(available()).toBe(17);
+    expect(view.container.querySelectorAll('.fraction-whole')).toHaveLength(0);
   });
 });
 

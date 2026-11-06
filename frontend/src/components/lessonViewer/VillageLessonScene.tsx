@@ -11,30 +11,34 @@ export function VillageLessonScene({
 }) {
   const scene = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
-    const root = document.getElementById('root');
-    const oldDisplay = root?.style.display ?? '';
-    const oldInert = root?.inert ?? false;
-    const oldAria = root?.getAttribute('aria-hidden');
+    // Only the old workspace is suspended. Global alerts and app modals remain live.
+    const surfaces = Array.from(document.querySelectorAll<HTMLElement>(
+      '[data-app-header], [data-bottom-nav], [data-village-legacy-content], [data-village-legacy-footer], .journey-root'
+    )).map(element => ({
+      element,
+      display: element.style.display,
+      inert: element.inert,
+      aria: element.getAttribute('aria-hidden'),
+    }));
     const opener = document.activeElement as HTMLElement | null;
     const hadClass = document.body.classList.contains(
       'mssid-village-scene-active'
     );
     stopSpeech();
     scene.current?.focus();
-    if (root) {
-      root.style.display = 'none';
-      root.inert = true;
-      root.setAttribute('aria-hidden', 'true');
+    for (const { element } of surfaces) {
+      element.style.display = 'none';
+      element.inert = true;
+      element.setAttribute('aria-hidden', 'true');
     }
     document.body.classList.add('mssid-village-scene-active');
     return () => {
       stopSpeech();
-      if (root) {
-        root.style.display = oldDisplay;
-        root.inert = oldInert;
-        if (oldAria === null || oldAria === undefined)
-          root.removeAttribute('aria-hidden');
-        else root.setAttribute('aria-hidden', oldAria);
+      for (const { element, display, inert, aria } of surfaces) {
+        element.style.display = display;
+        element.inert = inert;
+        if (aria === null) element.removeAttribute('aria-hidden');
+        else element.setAttribute('aria-hidden', aria);
       }
       if (!hadClass)
         document.body.classList.remove('mssid-village-scene-active');

@@ -87,3 +87,8 @@ Les quatre corrections demandées après revue sont intégrées : trois manipula
 ## Pilote fractions — scène jardin et parcours tactile, 6 novembre 2026
 
 Les trois priorités visuelles sont intégrées : scène plein écran cohérente depuis le lien direct et le jardin, parts touchables avec regroupement en unités et secours +/−, puis parcours linéaire sans sous-onglets (trois découvertes, trois transferts au labo, explication). Retour et son restent disponibles, les réponses ne sont pas remises à zéro après une erreur. Voir [le rapport et les limites](design/v2-fractions-scene-jardin.md). Le moteur pédagogique, les points et les questions restent ceux du cours existant. Commit local sur v2, aucun push.
+
+
+## Fractions : découverte et alertes préservées — 6 novembre 2026
+
+La décomposition démarre avec des parts en vrac (17 puis 7) ; la réserve diminue pendant la manipulation et aucun entier prérempli ne donne la réponse. #root n’est plus masqué ni rendu inert : seules les surfaces V1 et le décor du parcours sont suspendus, avec restauration exacte à la sortie. La scène reste sous les fenêtres globales. Six parcours Chromium passent ; les vrais composants de badge et de connexion restent utilisables. Voir [le rapport et ses limites](design/v2-fractions-decouverte-et-alertes.md). Le bilan durable, l’aide unique et les finitions restantes ne font pas partie de cette correction. Commit local, aucun push.

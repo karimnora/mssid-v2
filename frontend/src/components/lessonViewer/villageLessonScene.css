@@ -1,6 +1,6 @@
 /* Dedicated lesson scene. Legacy chrome is isolated by VillageLessonScene. */
 .mssid-village-scene-active { overflow: hidden !important; background: #FFFBF0 !important; }
-.village-lesson-scene { position: fixed; inset: 0; z-index: 70; overflow-y: auto; overscroll-behavior: contain; background: #FFFBF0; color: #184d3c; font-family: var(--v-font, 'Cairo', sans-serif); padding: 0 8px max(24px, env(safe-area-inset-bottom)); }
+.village-lesson-scene { position: fixed; inset: 0; z-index: 46; overflow-y: auto; overscroll-behavior: contain; background: #FFFBF0; color: #184d3c; font-family: var(--v-font, 'Cairo', sans-serif); padding: 0 8px max(24px, env(safe-area-inset-bottom)); }
 .village-lesson-scene > .village-lesson { width: min(100%, 980px); margin-inline: auto; padding-bottom: 116px; }
 .village-scene-bar { position: sticky; top: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 76px; background: #FFFBF0f5; border-bottom: 2px solid #e7d9b0; }
 .village-scene-bar button { min-width: 60px; min-height: 60px; display: flex; gap: 8px; align-items: center; justify-content: center; padding: 8px 12px; border: 2px solid #ddcda7; border-radius: 20px; background: #fff9e6; color: #184d3c; }
@@ -39,3 +39,12 @@
 .fraction-workshop > .fraction-bars .fraction-whole { margin: 0; height: 40px; }
 @keyframes fraction-unit-appears { from { opacity: .3; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .fraction-unit-tray button { animation: none; } }
+
+/* Loose supply never arranges pieces into denominator-sized groups or gives the answer.
+   Used slots stay in place so the child's repeated touches do not move. */
+.fraction-loose-pool { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; padding: 18px 12px; border: 2px dashed #c6b57f; border-radius: 20px; background: #fff9e6; }
+.fraction-loose-pool span { flex: 0 0 23px; height: 32px; background: #e9b64c; border: 2px solid #916311; border-radius: 6px; transform: rotate(-9deg); transition: opacity .18s ease, transform .18s ease; }
+.fraction-loose-pool span:nth-child(3n) { transform: rotate(12deg) translateY(4px); }
+.fraction-loose-pool span:nth-child(3n + 1) { transform: rotate(-15deg) translateY(-3px); }
+.fraction-loose-pool [data-loose-part='used'] { opacity: 0; transform: scale(.65); }
+@media (prefers-reduced-motion: reduce) { .fraction-loose-pool span { transition: none; } }

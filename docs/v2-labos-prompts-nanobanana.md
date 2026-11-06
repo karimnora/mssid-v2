@@ -409,3 +409,8 @@ Le cours `math-5ap-fractions` dispose maintenant d’un atelier de découverte (
 ### Résultat — scène tactile du labo fractions, 6 novembre 2026
 
 Le labo lié au cours 5AP est désormais la suite des trois découvertes, puis mène au défi d’explication. Les listes déroulantes ont été remplacées par des parties touchables qui se regroupent en unités, avec +/− accessibles. Les zones de geste restent stables ; les réponses et les indices sont conservés lors d’un retour. La scène jardin isole l’interface classique et Didou annonce chaque étape avec les fichiers Nova. Les données et les validations officielles du cours restent inchangées. Voir [le rapport](design/v2-fractions-scene-jardin.md).
+
+
+### Résultat — découverte des fractions sans réponse affichée, 6 novembre 2026
+
+Le dessin initial du labo fractions montre désormais 17 parts en vrac (7 au transfert). Il réagit aux touches : la réserve diminue et les unités se construisent au fil des regroupements ; défaire restitue les parts. Aucune unité préremplie ne fournit la réponse. Les alertes globales et la connexion restent accessibles au-dessus de la scène, sans masquer #root. Données pédagogiques et notation inchangées. Voir [le rapport](design/v2-fractions-decouverte-et-alertes.md). Le bilan de séance reste temporaire : son enregistrement durable dans le carnet est encore à faire.
