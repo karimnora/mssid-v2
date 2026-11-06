@@ -18,8 +18,8 @@ import { canOpenPack, gameStationsForJourney, type GamePack } from '../../data/g
 import { readPackLevels } from '../games/learning/LearningGameEntry';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
-import { connectedHomeProgress } from '../../design/connectedHomeProgress';
-import { DidouHomePreview } from '../../design/DidouHomePreview';
+import { connectedHomeProgress } from '../home/connectedHomeProgress';
+import { DidouVillageHome } from '../home/DidouVillageHome';
 import { useAuth } from '../../context/AuthContext';
 import { canAccess, FREE_JOURNEY_WORLDS } from '../../access/entitlements';
 import { PremiumOffer } from '../PremiumOffer';
@@ -230,7 +230,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
       )}
 
       {screen === 'hub' && locale === 'ar' && (
-        <DidouHomePreview connection={{
+        <DidouVillageHome connection={{
           grade, name: userName, sound, onToggleSound: toggleSound, onStopSpeech: stopSpeech,
           ...connectedHomeProgress(grade, courses, userProfile.quizFullyValidatedLessonIds),
           onExit, onOpenCourses, onOpenLabs, onOpenGames, onOpenExams,

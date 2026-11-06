@@ -1,0 +1,103 @@
+.village-theme,
+.home-preview {
+  --v-shadow-action: 0 5px 0 var(--v-action-base), inset 0 2px 0 #b4f3b64d;
+  --v-shadow-dialog: 0 12px 0 #ac9156, 0 25px 70px #133e4860;
+  --v-page: #fffbf0;
+  --v-font: "Cairo", sans-serif;
+  --v-touch: 60px;
+  --v-radius-button: 18px;
+  --v-radius-card: 16px;
+  --v-radius-dialog: 32px;
+  --v-text-body: 16px;
+  --v-text-label: 12px;
+  --v-surface: #fff9e6;
+  --v-ink: #173f37;
+  --v-ink-strong: #194c3c;
+  --v-ink-muted: #365b49;
+  --v-action: #237c5b;
+  --v-action-top: #389f79;
+  --v-action-base: #16533f;
+  --v-bubble: #fffcee;
+  --v-exam-surface: #eee7ff;
+  --v-exam-border: #ba9cdd;
+  --v-exam-ink: #47316c;
+  --v-courses: #3a94b2;
+  --v-labs: #278774;
+  --v-games: #d88734;
+  --v-gold: #c79822;
+  --v-bubble-shadow: #c5b574;
+  --v-secondary: #fff3cb;
+  --v-secondary-border: #c8b46f;
+  --v-sky: #b8e8e8;
+}
+.village-theme {
+  font-family: var(--v-font);
+  color: var(--v-ink);
+}
+.village-theme .village-button {
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  min-height: var(--v-touch);
+}
+.village-theme .village-button--primary {
+  border: 2px solid #c9ffe3;
+  border-radius: var(--v-radius-button);
+  padding: 8px 24px;
+  color: white;
+  background: linear-gradient(var(--v-action-top), var(--v-action));
+  box-shadow: 0 5px 0 var(--v-action-base);
+}
+.village-theme .village-button--secondary {
+  border: 2px solid var(--v-secondary-border);
+  border-radius: var(--v-radius-card);
+  padding: 10px;
+  color: var(--v-ink-strong);
+  background: var(--v-secondary);
+}
+.village-card {
+  border-radius: var(--v-radius-card);
+  background: var(--v-surface);
+}
+.village-progress {
+  width: 100%;
+  height: 16px;
+  accent-color: var(--v-action);
+}
+
+.village-premium-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid #d5ad48;
+  border-radius: 12px;
+  background: #fff1c7;
+  color: #644714;
+  font-size: 12px;
+  font-weight: 800;
+}
+.village-premium-icon {
+  display: inline-flex;
+  color: #9d6b00;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.village-theme .village-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  line-height: 1.4;
+}
+
+.village-theme .village-button--primary {
+  font-size: 21px;
+  box-shadow: var(--v-shadow-action);
+}
+@media (max-width: 680px) {
+  .village-theme .village-button--primary {
+    font-size: 16px;
+  }
+}

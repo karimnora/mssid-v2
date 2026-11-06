@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from "react";
+import { useFocusTrap } from "../../hooks/useFocusTrap";
 
 /**
  * « كل الأنشطة » on the planet home (V2 Premium): everything the classic home offers — subjects,
@@ -25,50 +26,77 @@ interface PlanetShelfProps {
   onPick: () => void;
 }
 
-export function PlanetShelf({ title, closeLabel, groups, onClose, onPick }: PlanetShelfProps) {
-  const closeRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    closeRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
+export function PlanetShelf({
+  title,
+  closeLabel,
+  groups,
+  onClose,
+  onPick,
+}: PlanetShelfProps) {
+  const root = useFocusTrap<HTMLDivElement>(true, onClose);
 
   return (
-    <div className="j-shelf" role="dialog" aria-modal="true" aria-labelledby="j-shelf-title" data-planet-shelf="">
+    <div
+      ref={root}
+      tabIndex={-1}
+      className="j-shelf"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="j-shelf-title"
+      data-planet-shelf=""
+    >
       <div className="j-shelf-head">
-        <h2 id="j-shelf-title" className="journey-outline">{title}</h2>
-        <button ref={closeRef} type="button" className="j-gloss j-round" data-tone="coral" onClick={onClose} aria-label={closeLabel}>
+        <h2 id="j-shelf-title" className="journey-outline">
+          {title}
+        </h2>
+        <button
+          type="button"
+          className="j-gloss j-round"
+          data-tone="coral"
+          onClick={onClose}
+          aria-label={closeLabel}
+        >
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 6l12 12M18 6L6 18" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" />
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              stroke="#fff"
+              strokeWidth="3.2"
+              strokeLinecap="round"
+            />
           </svg>
         </button>
       </div>
       <div className="j-shelf-body">
-        {groups.filter((g) => g.items.length > 0).map((group) => (
-          <section key={group.id} className="j-shelf-group" aria-label={group.title}>
-            <h3>{group.title}</h3>
-            <div className="j-shelf-grid">
-              {group.items.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className="j-shelf-tile"
-                  data-shelf-item={item.id}
-                  onClick={() => {
-                    onPick();
-                    item.onOpen();
-                  }}
-                >
-                  <span className="j-shelf-icon" aria-hidden="true">{item.icon}</span>
-                  <span className="j-shelf-label">{item.label}</span>
-                </button>
-              ))}
-            </div>
-          </section>
-        ))}
+        {groups
+          .filter((g) => g.items.length > 0)
+          .map((group) => (
+            <section
+              key={group.id}
+              className="j-shelf-group"
+              aria-label={group.title}
+            >
+              <h3>{group.title}</h3>
+              <div className="j-shelf-grid">
+                {group.items.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className="j-shelf-tile"
+                    data-shelf-item={item.id}
+                    onClick={() => {
+                      onPick();
+                      item.onOpen();
+                    }}
+                  >
+                    <span className="j-shelf-icon" aria-hidden="true">
+                      {item.icon}
+                    </span>
+                    <span className="j-shelf-label">{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          ))}
       </div>
     </div>
   );
@@ -85,7 +113,10 @@ export function ShelfButtonArt() {
       <path d="M40 20 L45 14 L29 7 L24 13Z" fill="#ffc21a" />
       <circle cx="18" cy="15" r="4.5" fill="#ff4d8d" />
       <circle cx="29" cy="14" r="3.6" fill="#3fb6ff" />
-      <path d="M23 9 l1.6 3.4 3.7.4 -2.8 2.4 .8 3.6 -3.3 -1.9 -3.3 1.9 .8 -3.6 -2.8 -2.4 3.7 -.4z" fill="#fff" />
+      <path
+        d="M23 9 l1.6 3.4 3.7.4 -2.8 2.4 .8 3.6 -3.3 -1.9 -3.3 1.9 .8 -3.6 -2.8 -2.4 3.7 -.4z"
+        fill="#fff"
+      />
     </svg>
   );
 }

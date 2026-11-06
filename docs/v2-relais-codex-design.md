@@ -70,3 +70,8 @@ Les prompts d'images sont dans `docs/v2-pilote-prompts-nanobanana.md` (mondes) e
 ## Accueil village connecté — 6 novembre 2026
 
 Le village approuvé remplace le hub arabe du parcours Didou. Il réutilise le profil actif, la classe, les leçons publiées, la validation complète des quiz, la prochaine station et la mission pédagogique existante. Cours, carte, labos, jeux, examens et carnet parent restent accessibles avec leurs gardes habituelles. La mission est isolée par identifiant d'enfant ; le parcours se remonte au changement de profil/classe pour arrêter la voix précédente. Le mode classique reste accessible ; français et préscolaire conservent leur interface. Voir [le rapport d'intégration](design/home-v3-preview/README.md).
+
+
+## Consolidation du jardin et fondations — 6 novembre 2026
+
+Lots 1 et 2 du TODO de Karim : accueil définitif dans components/home/DidouVillageHome, contrôleur vocal et dialogues extraits, focus partagé avec PlanetShelf, CSS lisible et tokens de couleurs/formes/ombres/mouvement. Rendu approuvé conservé. Voir [les fondations et leur vérification](design/v2-fondations.md). Ce lot n'est pas la tranche 5AP maths ni l'ouverture du village aux comptes gratuits.
