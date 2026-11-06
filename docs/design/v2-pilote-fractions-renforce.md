@@ -1,3 +1,5 @@
+> Rapport des commits b706ebd et 8f383f8. Pour la scène plein écran, les gestes et le parcours linéaire actuels, voir [le lot suivant](v2-fractions-scene-jardin.md).
+
 # Pilote fractions renforcé — les quatre corrections
 
 6 novembre 2026 · v2 · commits locaux uniquement, aucun push.

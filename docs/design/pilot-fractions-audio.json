@@ -223,7 +223,7 @@
     }
   ],
   "shared": {
-    "bytes": 333652,
+    "bytes": 351936,
     "clips": [
       {
         "id": "42f02365fc39ba70",
@@ -408,6 +408,14 @@
         "durationMs": 2200,
         "bytes": 9260,
         "sha256": "67cf8f2f7c1926c09514d4a6e5096d39630e28d3373052b94cc4451870bea909"
+      },
+      {
+        "id": "759b698a173dcabf",
+        "text": "الآن أشرح فكرتي. لماذا تبقى الكمية نفسها؟",
+        "voice": "nova",
+        "durationMs": 4450,
+        "bytes": 18284,
+        "sha256": "e18192d46fcaaa9401d28e593287ec3ac16d69e7f2ce5bb071fa49b83b27cf25"
       }
     ]
   }

@@ -1,4 +1,4 @@
-import { sharedVoiceFor } from './sharedDidouVoices';
+import { sharedVoiceFor, SHARED_DIDOU_VOICES } from './sharedDidouVoices';
 import voice0 from "../../assets/lessons/5ap-fractions/voice/5aaa84c562fc5e82.mp3";
 import voice1 from "../../assets/lessons/5ap-fractions/voice/bc171d56e200993b.mp3";
 import voice2 from "../../assets/lessons/5ap-fractions/voice/28839420805fc631.mp3";
@@ -60,6 +60,7 @@ const stripMarks = (text: string) => text.replace(/[\u064b-\u065f\u0670]/g, "");
 const recordings = new Map<string, string>(
   PILOT_VOICES.map((clip) => [normalize(clip.text), clip.src])
 );
+const sharedRecordings = new Map<string, string>(SHARED_DIDOU_VOICES.map(clip => [normalize(clip.text), clip.src]));
 const plain = new Map<string, string | null>();
 for (const clip of PILOT_VOICES) {
   const key = stripMarks(normalize(clip.text));
@@ -68,7 +69,7 @@ for (const clip of PILOT_VOICES) {
 export function pilotVoiceFor(text: string) {
   const key = normalize(text);
   return (
-    recordings.get(key) ??
+    recordings.get(key) ?? sharedRecordings.get(key) ??
     (key === stripMarks(key)
       ? plain.get(key) ?? sharedVoiceFor(text)?.src
       : undefined)

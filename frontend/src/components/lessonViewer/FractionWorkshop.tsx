@@ -1,29 +1,12 @@
-import React, { useState } from "react";
-import { MathWorkedExample } from "./MathWorkedExample";
-export type FractionObservation = {
-  completed: boolean;
-  helped: boolean;
-  attempts: number;
-};
-export type FractionObservations = Partial<
-  Record<"decompose" | "bound" | "equivalent" | "explain", FractionObservation>
->;
-type Props = {
-  transfer?: boolean;
-  onObserve: (
-    key: keyof FractionObservations,
-    result: FractionObservation
-  ) => void;
-  onSpeak: (key: string, text: string) => void;
-};
-export const FRACTION_LINES = {
-  decompose: "كوّن أعدادًا صحيحة، ثم عدّ الأجزاء الباقية.",
-  bound: "ضع الكسر بين عددين صحيحين متتاليين.",
-  equivalent: "قسّم كل جزء بالتساوي. تتغيّر الأعداد وتبقى المساحة نفسها.",
-  retry: "انظر إلى الرسم وجرّب مرة أخرى. يمكنك طلب تلميح.",
-  success: "أحسنت! الرسم والعملية يعبّران عن الكمية نفسها.",
-  lab: "في مختبر الحديقة، أطبّق ما تعلّمته على كسور جديدة.",
-} as const;
+import React from 'react';
+import { MathWorkedExample } from './MathWorkedExample';
+import type { FractionJourney } from './useFractionJourney';
+export {
+  FRACTION_LINES,
+  type FractionObservation,
+  type FractionObservations,
+} from './fractionJourneyContent';
+
 function FractionBars({
   numerator,
   denominator,
@@ -36,9 +19,7 @@ function FractionBars({
       className="fraction-bars"
       dir="ltr"
       role="img"
-      aria-label={
-        numerator + " أجزاء من أجزاء الواحد المقسّم إلى " + denominator
-      }
+      aria-label={'كسر بسطه ' + numerator + ' ومقامه ' + denominator}
     >
       {Array.from(
         { length: Math.max(1, Math.ceil(numerator / denominator)) },
@@ -46,13 +27,13 @@ function FractionBars({
           <div
             className="fraction-whole"
             key={whole}
-            style={{ gridTemplateColumns: "repeat(" + denominator + ", 1fr)" }}
+            style={{ gridTemplateColumns: 'repeat(' + denominator + ', 1fr)' }}
           >
             {Array.from({ length: denominator }, (_, part) => (
               <span
                 key={part}
                 className={
-                  whole * denominator + part < numerator ? "filled" : ""
+                  whole * denominator + part < numerator ? 'filled' : ''
                 }
               />
             ))}
@@ -62,346 +43,273 @@ function FractionBars({
     </div>
   );
 }
-export function FractionWorkshop({
-  transfer = false,
-  onObserve,
-  onSpeak,
-}: Props) {
-  const [explainAttempts, setExplainAttempts] = useState(0);
-  const [explain, setExplain] = useState<boolean | null>(null);
-  const [mission, setMission] = useState<0 | 1 | 2>(0);
-  const [whole, setWhole] = useState(0),
-    [remainder, setRemainder] = useState(0),
-    [lower, setLower] = useState<number | null>(null),
-    [factor, setFactor] = useState(1);
-  const [results, setResults] = useState<FractionObservations>({});
-  const [hinted, setHinted] = useState<
-    Partial<Record<keyof FractionObservations, boolean>>
-  >({});
-  const [feedback, setFeedback] = useState<"success" | "retry" | null>(null);
-  const numerator = transfer ? 7 : 17,
-    denominator = transfer ? 3 : 5;
-  const keys = ["decompose", "bound", "equivalent"] as const;
-  const key = keys[mission];
-  const helped = !!hinted[key];
-  const quotient = Math.floor(numerator / denominator),
-    rest = numerator % denominator;
-  const baseNumerator = transfer ? 2 : 1,
-    baseDenominator = transfer ? 3 : 2,
-    targetFactor = transfer ? 2 : 5;
-  const hint =
-    mission === 0
-      ? "اجمع كل " + denominator + " أجزاء في واحد صحيح."
-      : mission === 1
-      ? "عدّ الوحدات الكاملة في الرسم، ثم حدّد العدد الذي يليها."
-      : "اضرب البسط والمقام في العدد نفسه.";
-  const check = () => {
-    const correct =
-      mission === 0
-        ? whole === quotient && remainder === rest
-        : mission === 1
-        ? lower === quotient
-        : factor === targetFactor;
-    const result = {
-      completed: correct || !!results[key]?.completed,
-      helped:
-        helped ||
-        !!results[key]?.helped ||
-        (!!results[key]?.attempts && !results[key]?.completed),
-      attempts: (results[key]?.attempts ?? 0) + 1,
-    };
-    setResults((prev) => ({ ...prev, [key]: result }));
-    onObserve(key, result);
-    setFeedback(correct ? "success" : "retry");
-    onSpeak(
-      "fraction-feedback",
-      correct ? FRACTION_LINES.success : FRACTION_LINES.retry
-    );
-  };
-  const select = (index: 0 | 1 | 2) => {
-    setMission(index);
-    setFeedback(null);
-  };
+export function FractionWorkshop({ journey: j }: { journey: FractionJourney }) {
+  const { answer: a, stage, numerator: n, denominator: d } = j;
+  const quotient = Math.floor(n / d),
+    rest = n % d;
+  const remaining = n - a.whole * d - a.rest;
   return (
     <section
-      data-fraction-workshop={transfer ? "lab" : "learn"}
+      data-fraction-workshop={stage.lab ? 'lab' : 'learn'}
+      data-fraction-step={j.step}
       className="fraction-workshop"
     >
-      <h2>{transfer ? "مختبر حديقة الكسور" : "أبني الكسر وأفهمه"}</h2>
-      <p>
-        {transfer
-          ? FRACTION_LINES.lab
-          : "أجرّب ثلاث أفكار، ثم أطبّقها في المختبر."}
+      <p className="fraction-current-mission">
+        {j.step < 3 ? 'أكتشف وأجرّب' : 'مختبر الحديقة'} · {j.step + 1} / 7
       </p>
-      <div className="pilot-row" role="group" aria-label="مهمات الكسور">
-        {["أفكّك", "أحصر", "أكافئ"].map((label, index) => (
-          <button
-            type="button"
-            key={label}
-            data-fraction-mission={index}
-            aria-pressed={mission === index}
-            onClick={() => select(index as 0 | 1 | 2)}
-          >
-            {results[keys[index]]?.completed ? "✓ " : ""}
-            {label}
-          </button>
-        ))}
-      </div>
-      <p>{FRACTION_LINES[key]}</p>
-      <button
-        type="button"
-        onClick={() => onSpeak("fraction-instruction", FRACTION_LINES[key])}
-      >
-        اسمع التعليمات
-      </button>
-      {mission !== 2 ? (
+      <h2>
+        {stage.key === 'decompose'
+          ? 'أجمع الأجزاء في وحدات'
+          : stage.key === 'bound'
+          ? 'أجد مكان الكسر'
+          : stage.key === 'equivalent'
+          ? 'نفس الكمية، أجزاء أكثر'
+          : 'أشرح فكرتي'}
+      </h2>
+      {stage.key === 'decompose' && (
         <>
           <h3 dir="ltr">
-            {numerator} / {denominator}
+            {n} / {d}
           </h3>
-          <FractionBars numerator={numerator} denominator={denominator} />
-          {mission === 0 ? (
-            <>
-              <p>كم واحدًا صحيحًا؟ وكم جزءًا يبقى؟</p>
-              <div className="fraction-answer" dir="ltr">
-                <label>
-                  الأعداد الصحيحة{" "}
-                  <select
-                    data-fraction-whole
-                    aria-label="عدد الوحدات الكاملة"
-                    value={whole}
-                    onChange={(e) => {
-                      setWhole(Number(e.target.value));
-                      setFeedback(null);
-                    }}
-                  >
-                    {[0, 1, 2, 3, 4].map((n) => (
-                      <option key={n}>{n}</option>
-                    ))}
-                  </select>
-                </label>
-                <span>+</span>
-                <label>
-                  الأجزاء الباقية{" "}
-                  <select
-                    data-fraction-rest
-                    aria-label="عدد الأجزاء الباقية"
-                    value={remainder}
-                    onChange={(e) => {
-                      setRemainder(Number(e.target.value));
-                      setFeedback(null);
-                    }}
-                  >
-                    {Array.from({ length: denominator }, (_, n) => (
-                      <option key={n}>{n}</option>
-                    ))}
-                  </select>{" "}
-                  / {denominator}
-                </label>
+          <p>
+            كل وحدة فيها {d} أجزاء متساوية. المس الأجزاء؛ عندما تكتمل الوحدة
+            نجمعها.
+          </p>
+          <FractionBars numerator={n} denominator={d} />
+          <p aria-live="polite">أجزاء لم أجمعها بعد: {remaining}</p>
+          <div
+            className="fraction-parts-tray"
+            dir="ltr"
+            style={{
+              gridTemplateColumns: 'repeat(' + d + ', minmax(60px, 1fr))',
+            }}
+            aria-label="أكوّن وحدة من الأجزاء"
+          >
+            {Array.from({ length: d }, (_, i) => (
+              <button
+                type="button"
+                data-fraction-part={i}
+                key={i}
+                aria-label={'جزء ' + (i + 1)}
+                aria-pressed={a.parts.includes(i)}
+                disabled={remaining === 0 && !a.parts.includes(i)}
+                onClick={() => j.togglePart(i)}
+              >
+                {a.parts.includes(i) ? '✓' : '+'}
+                <small>1/{d}</small>
+              </button>
+            ))}
+          </div>
+          <div className="fraction-steppers">
+            <div>
+              <p>الوحدات</p>
+              <div className="fraction-stepper">
+                <button
+                  type="button"
+                  aria-label="أنقص وحدة"
+                  disabled={a.whole === 0}
+                  onClick={() => j.changeWhole(-1)}
+                >
+                  −
+                </button>
+                <output data-fraction-whole>{a.whole}</output>
+                <button
+                  type="button"
+                  aria-label="أضيف وحدة"
+                  disabled={remaining < d}
+                  onClick={() => j.changeWhole(1)}
+                >
+                  +
+                </button>
               </div>
-              <output dir="ltr">
-                {whole} + {remainder}/{denominator}
-              </output>
-              <p>الكسر الذي بنيته:</p>
-              <FractionBars
-                numerator={whole * denominator + remainder}
-                denominator={denominator}
-              />
-            </>
-          ) : (
-            <>
-              <p>المس بداية المجال الذي يحتوي الكسر.</p>
-              <div className="fraction-numberline" dir="ltr">
-                {[0, 1, 2, 3, 4].map((n) => (
-                  <button
-                    type="button"
-                    key={n}
-                    data-fraction-lower={n}
-                    aria-pressed={lower === n}
-                    onClick={() => {
-                      setLower(n);
-                      setFeedback(null);
-                    }}
-                  >
-                    {n} — {n + 1}
-                  </button>
-                ))}
+            </div>
+            <div>
+              <p>الأجزاء</p>
+              <div className="fraction-stepper">
+                <button
+                  type="button"
+                  aria-label="أنقص جزءًا"
+                  disabled={a.whole === 0 && a.rest === 0}
+                  onClick={() => j.takePart(-1)}
+                >
+                  −
+                </button>
+                <output data-fraction-rest>{a.rest}</output>
+                <button
+                  type="button"
+                  aria-label="أضيف جزءًا"
+                  disabled={remaining === 0}
+                  onClick={() => j.takePart(1)}
+                >
+                  +
+                </button>
               </div>
-              {lower !== null && (
-                <output dir="ltr">
-                  {lower} &lt; {numerator}/{denominator} &lt; {lower + 1}
-                </output>
-              )}
-            </>
+            </div>
+          </div>
+          <output
+            className="fraction-construction"
+            dir="ltr"
+            aria-live="polite"
+          >
+            {a.whole} + {a.rest}/{d}
+          </output>
+          <div className="fraction-unit-tray" aria-label="وحداتي الكاملة">
+            {Array.from({ length: a.whole }, (_, i) => (
+              <button
+                type="button"
+                data-return-whole
+                key={i}
+                aria-label="أفكّك وحدة كاملة"
+                onClick={() => j.changeWhole(-1)}
+              >
+                <strong>واحد صحيح</strong>
+                <FractionBars numerator={d} denominator={d} />
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+      {stage.key === 'bound' && (
+        <>
+          <h3 dir="ltr">
+            {n}/{d}
+          </h3>
+          <FractionBars numerator={n} denominator={d} />
+          <p>المس المجال الذي يحتوي الكسر.</p>
+          <div className="fraction-numberline" dir="ltr">
+            {[0, 1, 2, 3, 4].map((v) => (
+              <button
+                type="button"
+                data-fraction-lower={v}
+                key={v}
+                aria-pressed={a.lower === v}
+                onClick={() => j.update({ lower: v })}
+              >
+                {v} — {v + 1}
+              </button>
+            ))}
+          </div>
+          {a.lower !== null && (
+            <output dir="ltr">
+              {a.lower} &lt; {n}/{d} &lt; {a.lower + 1}
+            </output>
           )}
         </>
-      ) : (
+      )}
+      {stage.key === 'equivalent' && (
         <>
-          <p>أقسّم كل جزء لأحصل على مقام {baseDenominator * targetFactor}.</p>
+          <p>
+            أقسّم كل جزء لأحصل على مقام {j.baseDenominator * j.targetFactor}.
+          </p>
           <div className="fraction-equivalence">
             <div>
               <h3 dir="ltr">
-                {baseNumerator}/{baseDenominator}
+                {j.baseNumerator}/{j.baseDenominator}
               </h3>
               <FractionBars
-                numerator={baseNumerator}
-                denominator={baseDenominator}
+                numerator={j.baseNumerator}
+                denominator={j.baseDenominator}
               />
             </div>
             <span aria-hidden="true">=</span>
             <div>
               <h3 dir="ltr">
-                {baseNumerator * factor}/{baseDenominator * factor}
+                {j.baseNumerator * a.factor}/{j.baseDenominator * a.factor}
               </h3>
               <FractionBars
-                numerator={baseNumerator * factor}
-                denominator={baseDenominator * factor}
+                numerator={j.baseNumerator * a.factor}
+                denominator={j.baseDenominator * a.factor}
               />
             </div>
           </div>
-          <p>إلى كم جزءًا أقسّم كل جزء؟</p>
           <div className="pilot-row">
-            {[1, 2, 5].map((n) => (
+            {[1, 2, 5].map((v) => (
               <button
                 type="button"
-                key={n}
-                data-fraction-factor={n}
-                aria-pressed={factor === n}
-                onClick={() => {
-                  setFactor(n);
-                  setFeedback(null);
-                }}
+                data-fraction-factor={v}
+                key={v}
+                aria-pressed={a.factor === v}
+                onClick={() => j.update({ factor: v })}
               >
-                × {n}
+                × {v}
               </button>
             ))}
           </div>
         </>
       )}
-      <div className="pilot-row">
-        <button type="button" data-fraction-check onClick={check}>
+      {stage.key === 'explain' && (
+        <>
+          <p>لماذا يبقى الكسر المكافئ مساويًا للكسر الأول؟</p>
+          <div className="fraction-equivalence"><div><h3 dir="ltr">{j.baseNumerator}/{j.baseDenominator}</h3><FractionBars numerator={j.baseNumerator} denominator={j.baseDenominator}/></div><span aria-hidden="true">=</span><div><h3 dir="ltr">{j.baseNumerator * j.targetFactor}/{j.baseDenominator * j.targetFactor}</h3><FractionBars numerator={j.baseNumerator * j.targetFactor} denominator={j.baseDenominator * j.targetFactor}/></div></div>
+          {[
+            'قسّمنا الأجزاء بالتساوي، وضربنا البسط والمقام في العدد نفسه.',
+            'غيّرنا المقام وحده.',
+          ].map((text, i) => (
+            <button
+              type="button"
+              data-fraction-explain={i}
+              key={text}
+              onClick={() => j.explain(i === 0)}
+            >
+              {text}
+            </button>
+          ))}
+        </>
+      )}
+      {stage.key !== 'explain' && (
+        <button type="button" data-fraction-check onClick={j.check}>
           أتحقّق من فكرتي
         </button>
-        <button
-          type="button"
-          data-fraction-hint
-          onClick={() => {
-            setHinted((prev) => ({ ...prev, [key]: true }));
-            onSpeak("fraction-hint", FRACTION_LINES[key]);
-          }}
-        >
-          تلميح
-        </button>
-      </div>
-      {helped && <p className="fraction-feedback">{hint}</p>}
-      {feedback && (
+      )}
+      {j.helped && (
+        <p className="fraction-feedback">
+          {stage.key === 'decompose'
+            ? 'اجمع كل ' + d + ' أجزاء في واحد صحيح.'
+            : stage.key === 'bound'
+            ? 'عدّ الوحدات الكاملة، ثم حدّد العدد الذي يليها.'
+            : 'نضرب البسط والمقام في العدد نفسه.'}
+        </p>
+      )}
+      {j.feedback && (
         <div role="status" className="fraction-feedback">
-          {feedback === "success"
-            ? FRACTION_LINES.success
-            : FRACTION_LINES.retry}
-          {feedback === "success" && (
+          {j.feedback === 'success'
+            ? 'أحسنت! يمكنك متابعة الرحلة.'
+            : 'جرّب مرة أخرى. ديدو هنا ليساعدك.'}
+          {j.feedback === 'success' && stage.key !== 'explain' && (
             <MathWorkedExample
               tone="light"
               operationsAr={
-                mission === 2
-                  ? baseNumerator +
-                    " × " +
-                    factor +
-                    " = " +
-                    baseNumerator * factor +
-                    "\n" +
-                    baseDenominator +
-                    " × " +
-                    factor +
-                    " = " +
-                    baseDenominator * factor
-                  : numerator +
-                    " = " +
-                    denominator +
-                    " × " +
-                    quotient +
-                    " + " +
-                    rest
+                stage.key === 'equivalent'
+                  ? j.baseNumerator +
+                    ' × ' +
+                    a.factor +
+                    ' = ' +
+                    j.baseNumerator * a.factor +
+                    '\n' +
+                    j.baseDenominator +
+                    ' × ' +
+                    a.factor +
+                    ' = ' +
+                    j.baseDenominator * a.factor
+                  : n + ' = ' + d + ' × ' + quotient + ' + ' + rest
               }
               solution={
-                mission === 2
-                  ? baseNumerator +
-                    "/" +
-                    baseDenominator +
-                    " = " +
-                    baseNumerator * factor +
-                    "/" +
-                    baseDenominator * factor
-                  : mission === 0
-                  ? numerator +
-                    "/" +
-                    denominator +
-                    " = " +
-                    quotient +
-                    " + " +
-                    rest +
-                    "/" +
-                    denominator
-                  : quotient +
-                    " < " +
-                    numerator +
-                    "/" +
-                    denominator +
-                    " < " +
-                    (quotient + 1)
+                stage.key === 'equivalent'
+                  ? j.baseNumerator +
+                    '/' +
+                    j.baseDenominator +
+                    ' = ' +
+                    j.baseNumerator * a.factor +
+                    '/' +
+                    j.baseDenominator * a.factor
+                  : stage.key === 'decompose'
+                  ? n + '/' + d + ' = ' + quotient + ' + ' + rest + '/' + d
+                  : quotient + ' < ' + n + '/' + d + ' < ' + (quotient + 1)
               }
             />
           )}
         </div>
       )}
-      {Object.values(results).filter((r) => r.completed).length === 3 && (
-        <p role="status">
-          أنهيت المهمات الثلاث.{" "}
-          {transfer
-            ? "هل تستطيع شرح فكرتك لشخص آخر؟"
-            : "جرّب الآن مختبر الحديقة."}
-        </p>
-      )}
-      {transfer &&
-        Object.values(results).filter((r) => r.completed).length === 3 && (
-          <section className="fraction-feedback">
-            <h3>أشرح فكرتي</h3>
-            <p>لماذا يبقى الكسر المكافئ مساويًا للكسر الأول؟</p>
-            {[
-              "قسّمنا الأجزاء بالتساوي، وضربنا البسط والمقام في العدد نفسه.",
-              "غيّرنا المقام وحده.",
-            ].map((text, i) => (
-              <button
-                type="button"
-                key={text}
-                data-fraction-explain={i}
-                onClick={() => {
-                  const correct = i === 0;
-                  setExplain(correct);
-                  setExplainAttempts((n) => n + 1);
-                  onObserve("explain", {
-                    completed: correct,
-                    helped: explainAttempts > 0,
-                    attempts: explainAttempts + 1,
-                  });
-                  onSpeak(
-                    "fraction-explain",
-                    correct ? FRACTION_LINES.success : FRACTION_LINES.retry
-                  );
-                }}
-              >
-                {text}
-              </button>
-            ))}
-            {explain !== null && (
-              <p role="status">
-                {explain
-                  ? "صحيح: تغيّر عدد الأجزاء وحجمها، وبقيت المساحة نفسها."
-                  : "لنعد إلى الرسم: يجب أن نغيّر البسط والمقام معًا."}
-              </p>
-            )}
-          </section>
-        )}
       <p className="fraction-unscored">
         تدريب للفهم. نتيجة الدرس تعتمد على التمارين والاختبار.
       </p>

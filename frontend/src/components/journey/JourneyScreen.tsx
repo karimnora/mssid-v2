@@ -18,7 +18,7 @@ import { canOpenPack, gameStationsForJourney, type GamePack } from '../../data/g
 import { readPackLevels } from '../games/learning/LearningGameEntry';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
-import { VILLAGE_MATH_PILOT } from '../lessonViewer/villageLessonConfig';
+import { VILLAGE_MATH_PILOT, villageLessonConfig } from '../lessonViewer/villageLessonConfig';
 import { pilotVoiceFor } from '../lessonViewer/villagePilotVoices';
 import { connectedHomeProgress } from '../home/connectedHomeProgress';
 import { DidouVillageHome } from '../home/DidouVillageHome';
@@ -334,7 +334,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
           />
         );
         // A journey lesson opens in its world's painted decor; the cream page stays for a lesson found outside the map.
-        return lessonWorld ? (
+        return locale === 'ar' && villageLessonConfig(lesson) ? viewer : lessonWorld ? (
           <JourneyLessonStage key={lesson.id} worldId={lessonWorld.id} decor={WORLD_DECOR[lessonWorld.id]} locale={locale} lessonTitle={lesson.titleAr} say={say}>
             {viewer}
           </JourneyLessonStage>

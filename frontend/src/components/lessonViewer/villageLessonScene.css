@@ -1,0 +1,41 @@
+/* Dedicated lesson scene. Legacy chrome is isolated by VillageLessonScene. */
+.mssid-village-scene-active { overflow: hidden !important; background: #FFFBF0 !important; }
+.village-lesson-scene { position: fixed; inset: 0; z-index: 70; overflow-y: auto; overscroll-behavior: contain; background: #FFFBF0; color: #184d3c; font-family: var(--v-font, 'Cairo', sans-serif); padding: 0 8px max(24px, env(safe-area-inset-bottom)); }
+.village-lesson-scene > .village-lesson { width: min(100%, 980px); margin-inline: auto; padding-bottom: 116px; }
+.village-scene-bar { position: sticky; top: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 76px; background: #FFFBF0f5; border-bottom: 2px solid #e7d9b0; }
+.village-scene-bar button { min-width: 60px; min-height: 60px; display: flex; gap: 8px; align-items: center; justify-content: center; padding: 8px 12px; border: 2px solid #ddcda7; border-radius: 20px; background: #fff9e6; color: #184d3c; }
+.village-scene-bar strong { color: #184d3c; font-size: 18px; }
+.village-scene-progress { display: flex; justify-content: space-between; gap: 4px; padding: 0; margin: 12px 0; list-style: none; }
+.village-scene-progress li { flex: 1; padding: 8px 2px; text-align: center; border-bottom: 4px solid #dfd0a3; font-size: 16px; font-weight: 800; white-space: nowrap; }
+.village-scene-progress [aria-current='step'] { border-color: #207958; color: #207958; }
+.village-lesson-scene .pilot-hero { margin-top: 12px; scroll-margin-top: 88px; }
+.village-lesson-scene .pilot-companion { position: relative; top: auto; }
+.village-lesson-scene .pilot-companion p { display: block; overflow: visible; -webkit-line-clamp: unset; font-size: 16px; line-height: 1.8; }
+.village-lesson-scene :is(p, small, label) { font-size: 16px; }
+/* The only pedagogical navigation remains visible throughout the activity. */
+.village-linear-nav { position: fixed; bottom: 0; inset-inline: 8px; width: min(980px, calc(100% - 16px)); margin-inline: auto; z-index: 8; display: flex; justify-content: space-between; gap: 12px; background: #FFFBF0fa; border-top: 2px solid #ddcda7; padding: 8px 0 max(8px, env(safe-area-inset-bottom)); flex-wrap: nowrap; align-items: center; }
+.village-linear-nav button { min-width: 100px; min-height: 60px; font-size: 18px; border: 2px solid #ddcda7; border-radius: 18px; background: #fff9e6; color: #184d3c; padding: 8px 12px; }
+.village-linear-nav [data-linear-next] { background: #207958; color: white; border-color: #207958; box-shadow: 0 4px 0 #165a40; }
+.village-linear-nav [data-session-parent] { min-width: 60px; max-width: 80px; font-size: 16px; padding: 8px; }
+.village-lesson-scene .fraction-workshop { padding: 8px; }
+.fraction-parts-tray { display: grid; gap: 4px; width: 100%; padding: 8px 0; }
+.fraction-parts-tray button { min-width: 60px; min-height: 60px; padding: 4px; background: #fffdf4; border: 2px solid #a39156; border-radius: 12px; }
+.fraction-parts-tray button[aria-pressed='true'] { background: #207958; color: white; }
+.fraction-parts-tray small { display: block; }
+/* Groups appear below the controls, keeping the child's repeated taps stable. */
+.fraction-unit-tray { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.fraction-unit-tray button { flex: 0 0 calc((100% - 16px) / 3); min-height: 76px; padding: 8px; border: 2px solid #207958; border-radius: 16px; background: #e4f2dd; animation: fraction-unit-appears .2s ease-out; }
+.fraction-unit-tray .fraction-whole { height: 24px; margin: 4px 0; }
+.fraction-steppers { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 12px 0; }
+.fraction-stepper { display: flex; align-items: center; gap: 8px; }
+.fraction-stepper button { min-width: 60px; min-height: 60px; font-size: 24px; }
+.fraction-stepper output { min-width: 24px; text-align: center; font-size: 22px; }
+.fraction-stepper button, .fraction-numberline button { border: 2px solid #ddcda7; background: #fffdf4; border-radius: 16px; color: #184d3c; }
+.fraction-current-mission { padding: 10px; background: #f2e6be; border-radius: 14px; font-weight: 800; }
+.fraction-construction { display: block; font-size: 26px; font-weight: 900; text-align: center; margin: 12px 0; }
+.fraction-workshop [data-fraction-check] { display: block; width: 100%; min-height: 60px; border: 2px solid #207958; border-radius: 18px; background: #207958; color: white; font-size: 18px; font-weight: 800; margin: 16px 0; box-shadow: 0 4px 0 #165a40; }
+.fraction-workshop [data-fraction-explain] { display: block; width: 100%; padding: 16px; margin: 12px 0; border: 2px solid #cdbb80; border-radius: 18px; background: #fffdf4; text-align: start; }
+.fraction-workshop > .fraction-bars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-block: 12px; }
+.fraction-workshop > .fraction-bars .fraction-whole { margin: 0; height: 40px; }
+@keyframes fraction-unit-appears { from { opacity: .3; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .fraction-unit-tray button { animation: none; } }

@@ -39,47 +39,6 @@ export function villagePilotSteps(steps: LessonStep[]) {
     .sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id))
     .map((s) => ({ ...s, labelAr: LABELS[s.id] ?? s.labelAr }));
 }
-export function PilotPhases({
-  steps,
-  active,
-  onSelect,
-}: {
-  steps: LessonStep[];
-  active: TabId;
-  onSelect: (index: number) => void;
-}) {
-  const groups = [
-    ["explanation"],
-    ["interactive"],
-    ["content"],
-    ["practice", "gameplay"],
-    ["evaluation", "quiz"],
-  ] as const;
-  return (
-    <nav className="pilot-phases" aria-label="مراحل التعلّم">
-      {groups.map((ids, i) => {
-        const step = steps.findIndex((s) =>
-          (ids as readonly string[]).includes(s.id)
-        );
-        if (step < 0) return null;
-        return (
-          <button
-            type="button"
-            key={i}
-            data-pilot-phase={i}
-            aria-current={
-              (ids as readonly string[]).includes(active) ? "step" : undefined
-            }
-            onClick={() => onSelect(step)}
-          >
-            <span>{i + 1}</span>
-            {["أكتشف", "أجرّب", "أفهم", "أتدرّب", "نتيجتي"][i]}
-          </button>
-        );
-      })}
-    </nav>
-  );
-}
 export function PilotDiscovery({
   lesson,
   onSpeak,
@@ -95,6 +54,7 @@ export function PilotDiscovery({
     <section className="pilot-discovery" data-pilot-discovery>
       <h2>{lesson.missionTitleAr ?? lesson.titleAr}</h2>
       <p>{lesson.detailedCourse?.introAr ?? lesson.summaryAr}</p>
+      <details><summary>كلمات الدرس</summary>
       {item && (
         <article className="pilot-notion">
           <h3>{item.termAr}</h3>
@@ -132,12 +92,14 @@ export function PilotDiscovery({
           </small>
         </article>
       )}
+      </details>
     </section>
   );
 }
 export function PilotPractice({
   lesson,
   practice,
+  navigation = true,
   index,
   onIndex,
   renderText,
@@ -147,6 +109,7 @@ export function PilotPractice({
   onSelectGameOption,
   onResetGame,
 }: {
+  navigation?: boolean;
   gameAnswers: Record<number, string>;
   onSelectGameOption: (index: number, value: string) => void;
   onResetGame: () => void;
@@ -161,6 +124,7 @@ export function PilotPractice({
   const exercises = lesson.progressiveExercises ?? [];
   return (
     <section data-pilot-practice>
+      {navigation && (
       <div className="pilot-row">
         <button
           type="button"
@@ -180,6 +144,8 @@ export function PilotPractice({
           التالي <ArrowLeft />
         </button>
       </div>
+      )}
+      {!navigation && <p>تمرين {index + 1} من {exercises.length}</p>}
       {exercises.map((ex, i) => (
         <div key={ex.id} hidden={i !== index} data-pilot-exercise={ex.id}>
           <BoundPracticeCard

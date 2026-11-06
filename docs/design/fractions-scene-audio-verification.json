@@ -1,0 +1,22 @@
+[
+  {
+    "mode": "direct",
+    "width": 390,
+    "height": 844,
+    "fullscreen": true,
+    "rootRestored": true,
+    "directTouch": true,
+    "stableTouchTargets": true,
+    "exitCancelPreservesParts": true,
+    "targets60": true,
+    "linearSevenSteps": true,
+    "recordedSevenAnnouncements": true,
+    "realSevenPlayEvents": true,
+    "muteStopsAudio": true,
+    "protectedReport": true,
+    "originalQuiz": true,
+    "noOverflow": true,
+    "errors": [],
+    "realPhaseTransitions": true
+  }
+]

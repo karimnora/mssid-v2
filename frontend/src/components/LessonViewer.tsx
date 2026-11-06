@@ -402,9 +402,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         lesson={lesson}
         steps={villagePilotSteps(availableSteps)}
         active={activeTab}
-        onSelect={(index) =>
-          setActiveTab(villagePilotSteps(availableSteps)[index].id)
-        }
         onTab={setActiveTab}
         practice={practice}
         quiz={quiz}

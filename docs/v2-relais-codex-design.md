@@ -83,3 +83,7 @@ Mission et progression réelle visibles à l’accueil, reprise directe, destina
 ## Pilote fractions renforcé — 6 novembre 2026
 
 Les quatre corrections demandées après revue sont intégrées : trois manipulations et labo de transfert, présentation jardin extraite et configuration centrale, indices par callback partagé, banque vocale compacte et fragments d’accueil, bilan de séance protégé. Voir [le rapport de vérification et les limites](design/v2-pilote-fractions-renforce.md). Les résultats officiels restent ceux du moteur existant. Désormais : commit local sur v2, aucun push sans nouvel accord de Karim.
+
+## Pilote fractions — scène jardin et parcours tactile, 6 novembre 2026
+
+Les trois priorités visuelles sont intégrées : scène plein écran cohérente depuis le lien direct et le jardin, parts touchables avec regroupement en unités et secours +/−, puis parcours linéaire sans sous-onglets (trois découvertes, trois transferts au labo, explication). Retour et son restent disponibles, les réponses ne sont pas remises à zéro après une erreur. Voir [le rapport et les limites](design/v2-fractions-scene-jardin.md). Le moteur pédagogique, les points et les questions restent ceux du cours existant. Commit local sur v2, aucun push.

@@ -1,3 +1,4 @@
+import { villageLessonConfig } from './components/lessonViewer/villageLessonConfig';
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { journeyForGrade } from './data/journey/journeyWorlds';
 import { JourneyMapShortcut } from './components/journey/JourneyMapShortcut';
@@ -247,6 +248,7 @@ function AppContent() {
     isLabFreeForGuest,
     onGuestBlocked: () => modals.openAuth('login', 'هذا المحتوى (اختبار، تحدٍّ، أو أداة) مخصص للأعضاء المسجلين فقط. أنشئ حساباً مجانياً لفتحه! 🔓'),
   });
+  const villageLessonOpen = locale === 'ar' && !!nav.selectedLesson && !!villageLessonConfig(nav.selectedLesson);
 
   useEffect(() => {
     if (isAuthLoading) return;
@@ -887,7 +889,7 @@ function AppContent() {
                 just be visual noise (and the arena's own timed sub-games deserve the same focus as
                 an exam). Unmounting here also means its audio/timeout cleanup runs on every exit
                 instead of the companion silently running in the background on every other screen. */}
-            {nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
+            {!villageLessonOpen && !journeyOpen && nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
               <DidouVirtualCompanion
                 avatarConfig={progress.userProfile.avatarConfig || authUser?.avatarConfig}
                 goldCoins={progress.userProfile.goldCoins ?? 150}
@@ -904,7 +906,7 @@ function AppContent() {
                 MobileBottomNav, whose whole nav is `md:hidden`, so without this the AI tutor was
                 completely unreachable on a browser wide enough to hide that nav (any real desktop
                 visit, not just the Android app). Same exams/challenges exclusion as Didou above. */}
-            {enableAITutor && nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
+            {enableAITutor && !villageLessonOpen && !journeyOpen && nav.selectedSubject !== 'exams' && nav.selectedSubject !== 'challenges' && (
               <button
                 type="button"
                 onClick={openAiTutor}

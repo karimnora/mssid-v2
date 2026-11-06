@@ -405,3 +405,7 @@ Correction limitée aux tests et à la configuration des vérifications. Résult
 ### Résultat — labo de fractions lié au cours 5AP, 6 novembre 2026
 
 Le cours `math-5ap-fractions` dispose maintenant d’un atelier de découverte (décomposition, encadrement et équivalence), puis d’un labo de transfert sur 7/3 et 2/3 = 4/6 avec choix d’explication. Didou guide et lit les consignes enregistrées. Les dessins sont des barres de parts égales générées par l’interface, sans nouvelle image à détourer. Les manipulations ne donnent pas de points de maîtrise ; les exercices et le quiz originaux restent la validation officielle. Un bilan parent de la séance distingue autonomie, aide et non évalué. Voir [le rapport](design/v2-pilote-fractions-renforce.md). Ce labo est intégré au cours et ne remplace pas les autres labos de la liste.
+
+### Résultat — scène tactile du labo fractions, 6 novembre 2026
+
+Le labo lié au cours 5AP est désormais la suite des trois découvertes, puis mène au défi d’explication. Les listes déroulantes ont été remplacées par des parties touchables qui se regroupent en unités, avec +/− accessibles. Les zones de geste restent stables ; les réponses et les indices sont conservés lors d’un retour. La scène jardin isole l’interface classique et Didou annonce chaque étape avec les fichiers Nova. Les données et les validations officielles du cours restent inchangées. Voir [le rapport](design/v2-fractions-scene-jardin.md).

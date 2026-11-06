@@ -1,3 +1,4 @@
+import explain from "../../assets/audio/didou-shared/759b698a173dcabf.mp3";
 import voice0 from "../../assets/audio/didou-shared/42f02365fc39ba70.mp3";
 import voice1 from "../../assets/audio/didou-shared/5e512cbfd791540a.mp3";
 import voice2 from "../../assets/audio/didou-shared/26d41b7aaf308346.mp3";
@@ -22,6 +23,7 @@ import voice20 from "../../assets/audio/didou-shared/33449552969ea930.mp3";
 import voice21 from "../../assets/audio/didou-shared/ae8cdbf54ac034d9.mp3";
 import voice22 from "../../assets/audio/didou-shared/f133dc8d75e707fc.mp3";
 export const SHARED_DIDOU_VOICES = [
+  {text:"الآن أشرح فكرتي. لماذا تبقى الكمية نفسها؟",src:explain,durationMs:4450},
   {
     text: "كوّن أعدادًا صحيحة، ثم عدّ الأجزاء الباقية.",
     src: voice0,

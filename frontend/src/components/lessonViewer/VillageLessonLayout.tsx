@@ -1,22 +1,20 @@
-import React, { useState, useRef } from "react";
+import { useActivityExitGuard } from '../../context/ActivityExitContext';
+import React, { useState, useRef, useEffect } from "react";
 import type { CourseLesson } from "../../types";
 import type { LessonStep, TabId } from "./shared";
 import type { PracticeBindings } from "./practiceBindings";
 import type { useLessonQuiz } from "./useLessonQuiz";
 import type { useLessonSpeech } from "./useLessonSpeech";
 import {
-  PilotPhases,
   PilotCompanion,
   PilotDiscoveryFrame,
   PilotContentFrame,
   PilotPractice,
   PilotMotionFrame,
-  PilotOptional,
 } from "./VillageMathPilot";
 import {
   FRACTION_LINES,
   FractionWorkshop,
-  type FractionObservations,
 } from "./FractionWorkshop";
 import { LessonExplanationView } from "../LessonExplanationView";
 import { LessonContentPanel } from "./LessonContentPanel";
@@ -29,12 +27,14 @@ import { VillageDialog } from "../home/VillageDialog";
 import { villageLessonConfig } from "./villageLessonConfig";
 import { isGuidedPractice } from "./practiceAssessment";
 import { SessionLearningReport } from "./SessionLearningReport";
+import { VillageLessonScene } from './VillageLessonScene';
+import { useFractionJourney } from './useFractionJourney';
+import { Volume2, VolumeX, ArrowRight } from 'lucide-react';
 import "./villageMathPilot.css";
 type Props = {
   lesson: CourseLesson;
   steps: LessonStep[];
   active: TabId;
-  onSelect: (index: number) => void;
   onTab: (tab: TabId) => void;
   practice: PracticeBindings;
   quiz: ReturnType<typeof useLessonQuiz>;
@@ -51,7 +51,6 @@ export function VillageLessonLayout({
   lesson,
   steps,
   active,
-  onSelect,
   onTab,
   practice,
   quiz,
@@ -65,17 +64,37 @@ export function VillageLessonLayout({
   extras,
 }: Props) {
   const top = useRef<HTMLElement>(null);
+  const [muted, setMuted] = useState(false);
+  const pendingAnnouncement = useRef<{ key: string; text: string } | null>(null);
+  const [announcementTick, setAnnouncementTick] = useState(0);
+  useEffect(() => {
+    const pending = pendingAnnouncement.current;
+    if (!pending) return;
+    let cancelled = false;
+    // A microtask also lets StrictMode replay child cleanup before starting the new clip.
+    queueMicrotask(() => {
+      if (cancelled || pendingAnnouncement.current !== pending) return;
+      pendingAnnouncement.current = null;
+      if (!muted) speech.speakSnippet(pending.key, pending.text);
+    });
+    return () => { cancelled = true; };
+  }, [announcementTick, muted, speech.speakSnippet]);
+  const say = (key: string, text: string) => { if (!muted) speech.speakSnippet(key, text); };
+  const journey = useFractionJourney(say);
+  useActivityExitGuard(journey.started && !journey.finished);
   const navigate = (tab: TabId) => {
     speech.stopSpeech();
     onTab(tab);
+    const announcement = tab === 'interactive' ? journey.line : didouLineForStep(lesson, tab);
+    if (announcement) {
+      pendingAnnouncement.current = { key: 'phase-' + tab, text: announcement };
+      setAnnouncementTick(value => value + 1);
+    }
     top.current?.scrollIntoView?.({ behavior: "auto", block: "start" });
   };
   const [tier, setTier] = useState<1 | 2 | 3 | 4 | 5>(1),
     [gate, setGate] = useState(false),
-    [report, setReport] = useState(false),
-    [lab, setLab] = useState(false);
-  const [learn, setLearn] = useState<FractionObservations>({}),
-    [transfer, setTransfer] = useState<FractionObservations>({});
+    [report, setReport] = useState(false);
   const ex = lesson.progressiveExercises?.[exerciseIndex];
   const checked =
     active === "practice" && ex && practice.practiceChecked[ex.id];
@@ -87,7 +106,7 @@ export function VillageLessonLayout({
   const selected = question?.options.find(
     (o) => o.id === quiz.selectedAnswers[question.id]
   );
-  const line = active === "interactive" ? (lab ? FRACTION_LINES.lab : "جَرِّبْ بِيَدِكَ: اُنْقُرْ وَاكْتَشِفْ.") : checked
+  const line = active === "interactive" ? journey.feedback === "success" ? FRACTION_LINES.success : journey.feedback === "retry" ? FRACTION_LINES.retry : journey.line : checked
     ? correct
       ? "أحسنت! " + (lesson.rulesAr?.[0] ?? lesson.summaryAr)
       : "لنجرّب مرة أخرى. " + (ex?.hintsAr?.[0] ?? lesson.summaryAr)
@@ -97,9 +116,8 @@ export function VillageLessonLayout({
       : "لنجرّب مرة أخرى. " +
         (question?.hintAr ?? lesson.rulesAr?.[0] ?? lesson.summaryAr)
     : didouLineForStep(lesson, active) ?? lesson.summaryAr;
-  const index = steps.findIndex((s) => s.id === active);
   const config = villageLessonConfig(lesson);
-  const reveal =
+  const reveal = active === "interactive" ? journey.revealHint :
     active === "practice" &&
     ex &&
     !isGuidedPractice(ex) &&
@@ -109,35 +127,42 @@ export function VillageLessonLayout({
           const hint =
             ex.progressiveHints?.[practice.revealedHints[ex.id] ?? 0]
               ?.contentAr ?? ex.hintsAr[0];
-          if (hint) speech.speakSnippet("pilot-hint-" + ex.id, hint);
+          if (hint) say("pilot-hint-" + ex.id, hint);
         }
       : undefined;
-  const select = (i: number) => {
-    speech.stopSpeech();
-    onSelect(i);
-    top.current?.scrollIntoView?.({ behavior: "auto", block: "start" });
+  const phase = active === 'explanation' ? 0 : active === 'interactive' ? 1 : active === 'content' ? 2 : active === 'practice' || active === 'gameplay' ? 3 : 4;
+  const next = () => {
+    if (active === 'explanation') { navigate('interactive'); }
+    else if (active === 'interactive') { if (!journey.completed) return; if (journey.step < 6) { journey.next(); top.current?.scrollIntoView?.({ block: 'start' }); } else navigate('content'); }
+    else if (active === 'content') { navigate('practice'); }
+    else if (active === 'practice' && exerciseIndex < (lesson.progressiveExercises?.length ?? 0) - 1) { speech.stopSpeech(); onExerciseIndex(exerciseIndex + 1); top.current?.scrollIntoView?.({ block: 'start' }); }
+    else if (active === 'practice') navigate(steps.some(step => step.id === 'evaluation') ? 'evaluation' : 'quiz');
+    else if (active === 'evaluation') navigate('quiz');
+  };
+  const previous = () => {
+    if (active === 'interactive' && journey.step > 0) { journey.previous(); top.current?.scrollIntoView?.({ block: 'start' }); }
+    else if (active === 'interactive') navigate('explanation');
+    else if (active === 'content') navigate('interactive');
+    else if (active === 'practice' && exerciseIndex > 0) { speech.stopSpeech(); onExerciseIndex(exerciseIndex - 1); }
+    else if (active === 'practice') navigate('content');
+    else if (active === 'evaluation') navigate('practice');
+    else if (active === 'quiz') navigate(steps.some(step => step.id === 'evaluation') ? 'evaluation' : 'practice');
   };
   return (
-    <PilotMotionFrame enabled>
+    <VillageLessonScene><PilotMotionFrame enabled>
       <div
         className="village-theme village-lesson space-y-4"
         dir="rtl"
         data-village-math-pilot={lesson.id}
       >
-        <header ref={top} className="pilot-hero">
-          <button type="button" data-activity-navigation onClick={onBack}>
-            قائمة الدروس ←
-          </button>
-          <p>مع ديدو · {lesson.grade}</p>
-          <h1>{lesson.titleAr.split(":")[0]}</h1>
-          <p>{lesson.objectivesAr?.[0]}</p>
-        </header>
-        <PilotPhases steps={steps} active={active} onSelect={select} />
+        <div className="village-scene-bar"><button type="button" data-activity-navigation onClick={onBack} aria-label="أعود إلى دروسي"><ArrowRight/> دروسي</button><strong>مع ديدو</strong><button type="button" data-scene-sound aria-pressed={!muted} aria-label={muted ? 'أشغّل الصوت' : 'أكتم الصوت'} onClick={() => { speech.stopSpeech(); setMuted(value => !value); }}>{muted ? <VolumeX/> : <Volume2/>}</button></div>
+        <header ref={top} className="pilot-hero"><p>{lesson.grade} · مع ديدو</p><h1>{lesson.titleAr.split(':')[0]}</h1></header>
+        <ol className="village-scene-progress" aria-label="مراحل التعلّم">{['أكتشف','أجرّب','أفهم','أتدرّب','نتيجتي'].map((label, i) => <li key={label} data-pilot-phase={i} aria-current={phase === i ? 'step' : undefined}>{label}</li>)}</ol>
         <PilotCompanion
           lesson={lesson}
           line={line}
           mood={
-            correct || selected?.isCorrect
+            correct || selected?.isCorrect || (active === "interactive" && journey.feedback === "success")
               ? "cheer"
               : active === "explanation"
               ? "greet"
@@ -151,7 +176,7 @@ export function VillageLessonLayout({
               : ""
           }
           onSpeak={(key, text) =>
-            speech.speakSnippet(
+            say(
               key,
               text.startsWith("أحسنت!") ? FRACTION_LINES.success : text === "لنجرّب مرة أخرى. " + lesson.rulesAr?.[0] ? lesson.rulesAr![0] : text
             )
@@ -166,7 +191,7 @@ export function VillageLessonLayout({
               <PilotDiscoveryFrame
                 enabled
                 lesson={lesson}
-                onSpeak={speech.speakSnippet}
+                onSpeak={say}
               >
                 <LessonExplanationView
                   lesson={lesson}
@@ -175,66 +200,24 @@ export function VillageLessonLayout({
                   activeStepId={active}
                   onSelectStep={(id) => navigate(id as TabId)}
                   speakingKey={speech.speakingKey}
-                  onSpeak={speech.speakSnippet}
+                  onSpeak={say}
                 />
               </PilotDiscoveryFrame>
-              {extras}
+              <details className="pilot-optional"><summary>أنشطة إضافية</summary>{extras}</details>
             </>
           )}
-          <div hidden={active !== "interactive"}>
-            {config?.interaction === "fractions" ? (
-              <>
-                <div className="pilot-row">
-                  <button
-                    type="button"
-                    data-fraction-mode="learn"
-                    aria-pressed={!lab}
-                    onClick={() => setLab(false)}
-                  >
-                    أكتشف وأجرّب
-                  </button>
-                  <button
-                    type="button"
-                    data-fraction-mode="lab"
-                    aria-pressed={lab}
-                    onClick={() => setLab(true)}
-                  >
-                    مختبر الحديقة
-                  </button>
-                </div>
-                <div hidden={lab}>
-                  <FractionWorkshop
-                    onSpeak={speech.speakSnippet}
-                    onObserve={(key, result) =>
-                      setLearn((prev) => ({ ...prev, [key]: result }))
-                    }
-                  />
-                </div>
-                <div hidden={!lab}>
-                  <FractionWorkshop
-                    transfer
-                    onSpeak={speech.speakSnippet}
-                    onObserve={(key, result) =>
-                      setTransfer((prev) => ({ ...prev, [key]: result }))
-                    }
-                  />
-                </div>
-              </>
-            ) : (
-              <LessonInteractiveTools lesson={lesson} />
-            )}
-          </div>
+          <div hidden={active !== 'interactive'}>{config?.interaction === 'fractions' ? <FractionWorkshop journey={journey}/> : <LessonInteractiveTools lesson={lesson}/>}</div>
           {active === "content" && (
             <PilotContentFrame
               enabled
               lesson={lesson}
-              onSpeak={speech.speakSnippet}
+              onSpeak={say}
             >
               <LessonContentPanel
                 lesson={lesson}
                 renderArabicText={renderText}
                 speakingKey={speech.speakingKey}
-                onSpeak={speech.speakSnippet}
+                onSpeak={say}
                 selectedExampleTier={tier}
                 onSelectExampleTier={setTier}
                 visibleSolutions={quiz.visibleSolutions}
@@ -250,6 +233,7 @@ export function VillageLessonLayout({
           )}
           {active === "practice" && (
             <PilotPractice
+              navigation={false}
               lesson={lesson}
               practice={practice}
               index={exerciseIndex}
@@ -259,29 +243,11 @@ export function VillageLessonLayout({
               }}
               renderText={renderText}
               speakingKey={speech.speakingKey}
-              onSpeak={speech.speakSnippet}
+              onSpeak={say}
               gameAnswers={quiz.gameAnswers}
               onSelectGameOption={quiz.handleSelectGameOption}
               onResetGame={() => quiz.setGameAnswers({})}
             />
-          )}
-          {(active === "evaluation" || active === "quiz") && (
-            <div className="pilot-result-tabs">
-              <button
-                type="button"
-                aria-pressed={active === "evaluation"}
-                onClick={() => navigate("evaluation")}
-              >
-                أقيّم تعلّمي
-              </button>
-              <button
-                type="button"
-                aria-pressed={active === "quiz"}
-                onClick={() => navigate("quiz")}
-              >
-                نتيجتي
-              </button>
-            </div>
           )}
           {active === "evaluation" && (
             <LessonEvaluationPanel
@@ -301,24 +267,12 @@ export function VillageLessonLayout({
               onShuffle={quiz.initializeShuffledQuiz}
               onReset={quiz.handleResetQuiz}
               speakingKey={speech.speakingKey}
-              onSpeak={speech.speakSnippet}
+              onSpeak={say}
             />
           )}
         </div>
-        <footer className="pilot-row">
-          <button
-            type="button"
-            disabled={index <= 0}
-            onClick={() => select(index - 1)}
-          >
-            السابق
-          </button>
-          {index < steps.length - 1 && (
-            <button type="button" onClick={() => select(index + 1)}>
-              التالي
-            </button>
-          )}
-          {canFinish && (
+        <footer className="village-linear-nav"><button type="button" data-linear-previous disabled={active === 'explanation'} onClick={previous}>السابق</button>{active !== 'quiz' && <button type="button" data-linear-next disabled={active === 'interactive' && !journey.completed} onClick={next}>التالي ←</button>}
+          {active === "quiz" && canFinish && (
             <button
               type="button"
               data-primary-cta="finish-lesson"
@@ -330,12 +284,13 @@ export function VillageLessonLayout({
           <button
             type="button"
             data-session-parent
+            aria-label="ملخص الجلسة للولي"
             onClick={() => {
               speech.stopSpeech();
               setGate(true);
             }}
           >
-            ملخص الجلسة للولي
+            للولي
           </button>
         </footer>
         <ParentGateModal
@@ -356,17 +311,16 @@ export function VillageLessonLayout({
               lesson={lesson}
               practice={practice}
               quiz={quiz}
-              learn={learn}
-              transfer={transfer}
+              learn={journey.learn}
+              transfer={journey.transfer}
               onContinue={(target) => {
                 setReport(false);
                 navigate(target);
-                if (target === "interactive") setLab(true);
               }}
             />
           </VillageDialog>
         )}
       </div>
-    </PilotMotionFrame>
+    </PilotMotionFrame></VillageLessonScene>
   );
 }
