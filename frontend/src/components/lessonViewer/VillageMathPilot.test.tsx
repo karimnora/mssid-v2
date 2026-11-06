@@ -22,6 +22,7 @@ vi.mock("../../utils/speech", async (original) => ({
 }));
 const lesson = COURSES_DATA.find((l) => l.id === VILLAGE_MATH_PILOT)!;
 beforeEach(() => {
+  vi.clearAllMocks();
   localStorage.clear();
   localStorage.setItem("mssid_locale_preference", "ar");
 });
@@ -149,7 +150,7 @@ describe("pilot voice assets", () => {
     mount();
     fireEvent.click(document.querySelector("[data-pilot-listen]")!);
     await waitFor(() =>
-      expect(speakText).toHaveBeenCalledWith(
+      expect(speakText).toHaveBeenLastCalledWith(
         expect.any(String),
         "ar-SA",
         0.9,
@@ -204,3 +205,6 @@ it("builds the protected session report from a real helped exercise", async () =
     "لم يُقيّم بعد"
   );
 });
+
+it('has a recorded voice for every guide phase, including mission intro and takeaway',async()=>{for(const text of [lesson.missionIntroAr!,lesson.detailedCourse!.takeawayAr!,'هَيَّا نَتَدَرَّبُ! اِبْدَأْ بِالمُسْتَوَى الأَوَّلِ، ثُمَّ اصْعَدْ خُطْوَةً خُطْوَةً.','جَرِّبْ بِيَدِكَ: اُنْقُرْ وَاكْتَشِفْ.','حَانَ وَقْتُ التَّقْوِيمِ. اِقْرَأْ كُلَّ سُؤَالٍ بِهُدُوءٍ.','آخِرُ مَرْحَلَةٍ! أَجِبْ، وَإِنْ أَخْطَأْتَ أُسَاعِدُكَ.'])expect(pilotVoiceFor(text)).toEqual(expect.stringContaining('5ap-fractions'));
+mount();phase(4);fireEvent.click(within(document.querySelector<HTMLElement>('.pilot-result-tabs')!).getByRole('button',{name:'نتيجتي'}));const q=lesson.quiz[0],wrong=q.options.find(o=>!o.isCorrect)!;fireEvent.click(document.querySelector('[data-quiz-question="'+q.id+'"] [data-quiz-option-id="'+wrong.id+'"]')!);await waitFor(()=>expect(speakText).toHaveBeenLastCalledWith(lesson.rulesAr![0],'ar-SA',.9,1,expect.objectContaining({preferredRecording:pilotVoiceFor(lesson.rulesAr![0])})));});

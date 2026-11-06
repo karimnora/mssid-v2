@@ -153,7 +153,7 @@ export function VillageLessonLayout({
           onSpeak={(key, text) =>
             speech.speakSnippet(
               key,
-              text.startsWith("أحسنت!") ? FRACTION_LINES.success : text
+              text.startsWith("أحسنت!") ? FRACTION_LINES.success : text === "لنجرّب مرة أخرى. " + lesson.rulesAr?.[0] ? lesson.rulesAr![0] : text
             )
           }
           speaking={!!speech.speakingKey}
