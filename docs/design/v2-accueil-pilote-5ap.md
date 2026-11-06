@@ -1,3 +1,5 @@
+> Rapport historique du commit 7affd96. Le pilote a depuis été renforcé : voir [la version actuelle](v2-pilote-fractions-renforce.md), notamment pour les manipulations, le bilan et le budget audio.
+
 # TODO 3 et 4 — accueil connecté et leçon pilote 5AP
 
 6 novembre 2026. Branche v2. Ces numéros désignent le TODO de Karim, pas les tranches du document de recommandation.

@@ -4,7 +4,6 @@ import { motion, MotionConfig } from "motion/react";
 import { Volume2, Lightbulb, ArrowLeft, ArrowRight } from "lucide-react";
 import type { CourseLesson } from "../../types";
 import type { LessonStep, TabId } from "./shared";
-import { VillageButton } from "../home/VillagePrimitives";
 import { VillageDialog } from "../home/VillageDialog";
 import { GuidedMathSupport } from "../GuidedMathSupport";
 import { LessonPracticePanel } from "./LessonPracticePanel";
@@ -17,7 +16,7 @@ import greet from "../../assets/design/home-v3/didou-greet.webp";
 import point from "../../assets/design/home-v3/didou-point.webp";
 import cheer from "../../assets/design/home-v3/didou-cheer.webp";
 import "./villageMathPilot.css";
-export const VILLAGE_MATH_PILOT = "math-5ap-fractions";
+export { VILLAGE_MATH_PILOT } from "./villageLessonConfig";
 const ORDER: TabId[] = [
   "explanation",
   "interactive",
@@ -136,47 +135,6 @@ export function PilotDiscovery({
     </section>
   );
 }
-/** An unscored illustration of the fraction already present in the lesson; never awards mastery. */
-export function PilotFractionExplorer({ lesson }: { lesson: CourseLesson }) {
-  const display =
-    lesson.mathInteractive?.type === "number_cards"
-      ? lesson.mathInteractive.cards[0]?.valueDisplay
-      : "";
-  const match = display?.match(/^(\d+)\/(\d+)$/);
-  const denominator = Number(match?.[2]);
-  const [numerator, setNumerator] = useState(Number(match?.[1] ?? 0));
-  const reduced = useMotionPreference();
-  if (!match || denominator < 1 || denominator > 12) return null;
-  return (
-    <section className="pilot-fraction" data-pilot-explorer>
-      <h2>أجرّب بيدي</h2>
-      <p>المس الأجزاء لتغيّر الكسر.</p>
-      <div className="pilot-parts" dir="ltr">
-        {Array.from({ length: denominator }, (_, i) => (
-          <motion.button
-            key={i}
-            type="button"
-            aria-label={`أحدد ${i + 1} من ${denominator} أجزاء`}
-            aria-pressed={i < numerator}
-            onClick={() => setNumerator(i + 1)}
-            whileTap={reduced ? undefined : { scale: 0.95 }}
-            transition={{ duration: motionTokens.feedback }}
-          >
-            {i + 1}
-          </motion.button>
-        ))}
-      </div>
-      <div className="pilot-row">
-        <output aria-live="polite" dir="ltr">
-          {numerator} / {denominator}
-        </output>
-        <button type="button" onClick={() => setNumerator(0)}>
-          أفرغ الأجزاء
-        </button>
-      </div>
-    </section>
-  );
-}
 export function PilotPractice({
   lesson,
   practice,
@@ -263,6 +221,7 @@ export function PilotCompanion({
   onSpeak,
   speaking,
   onStop,
+  onRevealHint,
 }: {
   lesson: CourseLesson;
   line: string;
@@ -271,6 +230,7 @@ export function PilotCompanion({
   onSpeak: (key: string, text: string) => void;
   speaking: boolean;
   onStop: () => void;
+  onRevealHint?: () => void;
 }) {
   const [help, setHelp] = useState(false);
   const reduced = useMotionPreference();
@@ -283,20 +243,7 @@ export function PilotCompanion({
   }, [reactionKey]);
   useEffect(() => () => stopSpeech(), []);
   const ask = () => {
-    const active = document.querySelector(
-      "[data-pilot-practice] [data-pilot-exercise]:not([hidden])"
-    );
-    const hint = active?.querySelector<HTMLButtonElement>(
-      "[data-practice-hint]"
-    );
-    if (hint) {
-      hint.click();
-      hint.scrollIntoView?.({
-        block: "center",
-        behavior: reduced ? "auto" : "smooth",
-      });
-      return;
-    }
+    if (onRevealHint) { onRevealHint(); return; }
     setHelp(true);
   };
   return (

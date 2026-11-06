@@ -32,7 +32,7 @@ import {
   VillageProgress,
 } from "./VillagePrimitives";
 import { VillageLearningCard } from "./VillageLearningCard";
-import { speakText } from "../../utils/speech";
+import { sharedVoiceFor } from "../lessonViewer/sharedDidouVoices";
 import { DidouBubble } from "./DidouBubble";
 import { PlanetShelf, type PlanetShelfGroup } from "../journey/PlanetShelf";
 import type { PrimaryGrade } from "../../types";
@@ -100,7 +100,7 @@ export interface DidouHomeConnection {
   onOpenGames: () => void;
   onOpenExams: () => void;
   shelfGroups: PlanetShelfGroup[];
-  mission?: { say: string; cta: string | null; onStart: () => void } | null;
+  mission?: { voiceParts?: string[]; say: string; cta: string | null; onStart: () => void } | null;
   examPlanCta?: { label: string; onOpen: () => void } | null;
 }
 /** The same artwork drives both the isolated preview and the child's connected home. */
@@ -137,7 +137,7 @@ export function DidouVillageHome({
   };
   const place = PLACES.find((item) => item.id === selected);
 
-  const { voiceId, setVoiceId, phase, feedback, stop, prepare, say } =
+  const { voiceId, setVoiceId, phase, feedback, stop, prepare, say, sayParts } =
     useDidouVoice({
       muted,
       onError: cancelTour,
@@ -341,16 +341,8 @@ export function DidouVillageHome({
             cancelTour();
             stop();
             setMuted(false);
-            const text =
-              [
-                connection.mission?.say || connection.nextTitle,
-                connection.total === null
-                  ? ""
-                  : `الدروس المكتملة: ${connection.completed} من ${connection.total}.`,
-              ]
-                .filter(Boolean)
-                .join(" ") || "نحضّر دروسك. انتظر لحظة.";
-            void speakText(text, "ar-SA").catch(() => {});
+            const parts = connection.mission?.voiceParts ?? ['نحضّر دروسك. انتظر لحظة.'];
+            sayParts(parts.map(sharedVoiceFor).filter((clip): clip is NonNullable<typeof clip> => !!clip));
           }}
         />
       ) : (

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
+import { villageLessonConfig } from './villageLessonConfig';
 import { pilotVoiceFor } from './villagePilotVoices';
 import { isFeatureEnabled } from '../../featureFlags';
 import { speakText, speechLangForSubject, stopSpeech as stopSynth, useVoiceAvailable } from '../../utils/speech';
@@ -27,7 +28,7 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     }
     speakingKeyRef.current = key;
     setSpeakingKey(key);
-    void speakText(text, lang, snippetRate, 1, { preferredRecording: lesson.id === "math-5ap-fractions" ? pilotVoiceFor(text) : undefined }).then(() => {
+    void speakText(text, lang, snippetRate, 1, { preferredRecording: villageLessonConfig(lesson) ? pilotVoiceFor(text) : undefined }).then(() => {
       if (speakingKeyRef.current === key) {
         speakingKeyRef.current = null;
         setSpeakingKey(null);

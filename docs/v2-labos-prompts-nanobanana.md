@@ -401,3 +401,7 @@ La limite de deux processus est désormais dans `vitest.config.ts`, donc appliqu
 Validation après l'indexation : 14 tests ciblés réussis, puis suite complète de 248 fichiers / 2 523 tests réussis, contrôle TypeScript réussi et build Vite/PWA réussi (1 948 entrées précachées). Le contrôle complet précédent avait précédé l'indexation finale ; sa sélection audio ultérieure ne couvrait pas cet inventaire du préscolaire. Dorénavant, toute génération doit être suivie de l'indexation avant les vérifications finales et le build.
 
 Correction limitée aux tests et à la configuration des vérifications. Résultat du nouveau déploiement distant à confirmer sur Vercel ; aucune modification de main.
+
+### Résultat — labo de fractions lié au cours 5AP, 6 novembre 2026
+
+Le cours `math-5ap-fractions` dispose maintenant d’un atelier de découverte (décomposition, encadrement et équivalence), puis d’un labo de transfert sur 7/3 et 2/3 = 4/6 avec choix d’explication. Didou guide et lit les consignes enregistrées. Les dessins sont des barres de parts égales générées par l’interface, sans nouvelle image à détourer. Les manipulations ne donnent pas de points de maîtrise ; les exercices et le quiz originaux restent la validation officielle. Un bilan parent de la séance distingue autonomie, aide et non évalué. Voir [le rapport](design/v2-pilote-fractions-renforce.md). Ce labo est intégré au cours et ne remplace pas les autres labos de la liste.

@@ -79,3 +79,7 @@ Lots 1 et 2 du TODO de Karim : accueil définitif dans components/home/DidouVill
 ## Accueil et leçon pilote — TODO 3 et 4, 6 novembre 2026
 
 Mission et progression réelle visibles à l’accueil, reprise directe, destinations arabe et maths explicites. Pilote arabe 5AP fractions en cinq phases avec manipulation non notée, Didou réactif, indices réels et 42 répliques Nova A réutilisables. Programme, exercices, quiz et règles de validation conservés. Voir [le rapport et les limites](design/v2-accueil-pilote-5ap.md).
+
+## Pilote fractions renforcé — 6 novembre 2026
+
+Les quatre corrections demandées après revue sont intégrées : trois manipulations et labo de transfert, présentation jardin extraite et configuration centrale, indices par callback partagé, banque vocale compacte et fragments d’accueil, bilan de séance protégé. Voir [le rapport de vérification et les limites](design/v2-pilote-fractions-renforce.md). Les résultats officiels restent ceux du moteur existant. Désormais : commit local sur v2, aucun push sans nouvel accord de Karim.

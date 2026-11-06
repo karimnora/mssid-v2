@@ -307,5 +307,99 @@
 }
 
 @media (min-width: 900px) {
-  .pilot-parts { grid-template-columns: repeat(8, minmax(60px, 1fr)); }
+  .pilot-parts {
+    grid-template-columns: repeat(8, minmax(60px, 1fr));
+  }
+}
+
+.fraction-workshop {
+  padding: 16px;
+  border: 2px solid #ddcda7;
+  border-radius: 24px;
+  background: #fff9e6;
+}
+.fraction-whole {
+  display: grid;
+  gap: 3px;
+  border: 2px solid #255c49;
+  padding: 5px;
+  border-radius: 12px;
+  margin: 10px 0;
+  height: 48px;
+}
+.fraction-whole span {
+  background: #fff9e6;
+  border: 1px solid #61866d;
+}
+.fraction-whole .filled {
+  background: #24835b;
+}
+.fraction-answer,
+.fraction-equivalence {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.fraction-equivalence > div {
+  flex: 1;
+  min-width: 120px;
+}
+.fraction-answer label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.village-lesson select {
+  min-width: 60px;
+  min-height: 60px;
+  background: white;
+  border: 2px solid #255c49;
+  border-radius: 12px;
+  font-size: 20px;
+  color: #184d3c;
+}
+.fraction-numberline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fraction-numberline button {
+  flex: 1 1 70px;
+}
+.village-lesson button[aria-pressed="true"] {
+  background: #207958;
+  color: white;
+  border-color: #207958;
+}
+.fraction-feedback {
+  padding: 16px;
+  border: 2px solid #bfa15b;
+  border-radius: 16px;
+  background: #fffbf0;
+  margin: 12px 0;
+}
+.fraction-unscored {
+  color: #365b49;
+  font-size: 16px;
+}
+.session-table-wrap {
+  overflow-x: auto;
+}
+[data-session-report] table {
+  width: 100%;
+  border-collapse: collapse;
+}
+[data-session-report] td,
+[data-session-report] th {
+  padding: 12px;
+  border: 1px solid #b8aa82;
+  font-size: 16px;
+}
+[data-session-report] li {
+  padding: 12px;
+  border-bottom: 1px solid #ddcda7;
+  display: grid;
+  gap: 8px;
 }

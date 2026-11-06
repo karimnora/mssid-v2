@@ -1,0 +1,38 @@
+[
+  {
+    "width": 360,
+    "height": 640,
+    "sixMissions": true,
+    "explanation": true,
+    "helpedReport": true,
+    "parentGate": true,
+    "originalQuiz": true,
+    "columns": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "sixMissions": true,
+    "explanation": true,
+    "helpedReport": true,
+    "parentGate": true,
+    "originalQuiz": true,
+    "columns": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "sixMissions": true,
+    "explanation": true,
+    "helpedReport": true,
+    "parentGate": true,
+    "originalQuiz": true,
+    "columns": true,
+    "overflow": false,
+    "errors": []
+  }
+]

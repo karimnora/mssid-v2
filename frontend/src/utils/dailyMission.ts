@@ -163,17 +163,21 @@ export function dailyMissionCopy(
   locale: string,
   subjectName: (subject: string) => string,
   countdownPrefix = '',
-): { say: string; cta: string | null; target: DailyMission | null } | null {
+): { say: string; cta: string | null; target: DailyMission | null; voiceParts?: string[] } | null {
   const ar = locale === 'ar';
   const { mission, done, next } = state;
   if (!mission) return null;
   // Lesson titles can be long (« …: القراءة، التفكيك… »): Didou says the part before the colon.
   const title = (m: DailyMission) => m.lesson.titleAr.split(/[:：]/)[0].trim();
+  const voiceParts = (target: DailyMission | null, completed: boolean) => !ar ? undefined : [
+    completed ? 'أحسنت! أنجزت مهمّة اليوم.' : mission.kind === 'review' ? 'مهمّة اليوم: نراجع معًا.' : mission.kind === 'resume' ? 'مهمّة اليوم: نكمل من حيث توقّفنا.' : 'مهمّة اليوم: نكتشف درسًا جديدًا.',
+    ...(target ? [subjectName(target.lesson.subject), 'العنوان والتفاصيل في البطاقة. اضغط أكمل لنبدأ.'] : ['استرح قليلًا، أنت بطل!'])
+  ];
   if (done) {
     const say = ar
       ? `أحسنت! أنجزت مهمة اليوم. ${next ? `هل نواصل مع «${title(next)}»؟` : 'استرح قليلاً، أنت بطل!'}`
       : `Bravo ! Mission du jour accomplie. ${next ? `On continue avec « ${title(next)} » ?` : 'Repose-toi un peu, champion !'}`;
-    return { say: countdownPrefix + say, cta: next ? (ar ? 'مهمة أخرى' : 'Une autre mission') : null, target: next };
+    return { say: countdownPrefix + say, cta: next ? (ar ? 'مهمة أخرى' : 'Une autre mission') : null, target: next, voiceParts: voiceParts(next, true) };
   }
   let say: string;
   if (mission.kind === 'review') {
@@ -186,5 +190,5 @@ export function dailyMissionCopy(
       ? `مهمة اليوم في ${subjectName(mission.lesson.subject)}: «${title(mission)}».`
       : `Mission du jour en ${subjectName(mission.lesson.subject)} : « ${title(mission)} ».`;
   }
-  return { say: countdownPrefix + say, cta: ar ? 'ابدأ مهمة اليوم' : 'Commencer la mission', target: mission };
+  return { say: countdownPrefix + say, cta: ar ? 'ابدأ مهمة اليوم' : 'Commencer la mission', target: mission, voiceParts: voiceParts(mission, false) };
 }

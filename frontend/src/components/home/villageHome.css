@@ -1269,3 +1269,8 @@
     top: 68%;
   }
 }
+
+/* Long lesson dialogs must remain scrollable on small phones. */
+.home-preview-door { max-height: calc(100svh - 48px); overflow-y: auto; }
+.village-session-dialog { width: min(760px, 100%); text-align: start; align-items: stretch; }
+.village-session-dialog .session-table-wrap table { min-width: 520px; }

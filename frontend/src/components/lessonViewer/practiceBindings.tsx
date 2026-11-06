@@ -17,6 +17,8 @@ export const BoundPracticeCard: React.FC<{
   <>
   <PracticeExerciseCard
     ex={ex}
+    revealedHintCount={practice.revealedHints[ex.id] ?? 0}
+    onRevealHint={() => practice.revealHint(ex)}
     renderArabicText={renderArabicText}
     playful={playful}
     leadAudio={leadAudio}

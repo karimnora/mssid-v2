@@ -53,17 +53,19 @@ describe("5AP fractions reference lesson", () => {
     const actions = mount();
     expect(document.querySelectorAll("[data-pilot-phase]")).toHaveLength(5);
     phase(1);
-    await waitFor(
-      () =>
-        expect(
-          document.querySelector("[data-pilot-explorer]")
-        ).toBeInTheDocument(),
-      { timeout: 4000 }
+    const workshop = document.querySelector(
+      '[data-fraction-workshop="learn"]'
+    )!;
+    fireEvent.change(workshop.querySelector("[data-fraction-whole]")!, {
+      target: { value: "3" },
+    });
+    fireEvent.change(workshop.querySelector("[data-fraction-rest]")!, {
+      target: { value: "2" },
+    });
+    fireEvent.click(workshop.querySelector("[data-fraction-check]")!);
+    expect(workshop).toHaveTextContent(
+      "الرسم والعملية يعبّران عن الكمية نفسها"
     );
-    fireEvent.click(screen.getByRole("button", { name: "أحدد 3 من 8 أجزاء" }));
-    expect(
-      document.querySelector("[data-pilot-explorer] output")
-    ).toHaveTextContent("3 / 8");
     expect(actions.onCompleteQuiz).not.toHaveBeenCalled();
     expect(actions.onQuizFullyValidated).not.toHaveBeenCalled();
   });
@@ -172,4 +174,33 @@ describe("pilot voice assets", () => {
     expect(pilotVoiceFor(wrong)).toBeUndefined();
     expect(pilotVoiceFor("constructor")).toBeUndefined();
   });
+});
+
+it("builds the protected session report from a real helped exercise", async () => {
+  mount();
+  phase(3);
+  const active = document.querySelector<HTMLElement>(
+    "[data-pilot-exercise]:not([hidden])"
+  )!;
+  fireEvent.click(document.querySelector("[data-pilot-help]")!);
+  fireEvent.click(within(active).getByText("8"));
+  fireEvent.click(
+    within(active).getByRole("button", { name: "تحقق من الإجابة" })
+  );
+  fireEvent.click(document.querySelector("[data-session-parent]")!);
+  expect(document.querySelector("[data-session-report]")).toBeNull();
+  const gate = screen.getByRole("dialog");
+  const numbers = gate.textContent!.match(/(\d+)\s*\+\s*(\d+)\s*=/)!;
+  fireEvent.change(within(gate).getByRole("spinbutton"), {
+    target: { value: String(Number(numbers[1]) + Number(numbers[2])) },
+  });
+  fireEvent.submit(gate.querySelector("form")!);
+  await waitFor(() =>
+    expect(document.querySelector("[data-session-report]")).toHaveTextContent(
+      "نجح مع مساعدة أو بعد خطأ: 1"
+    )
+  );
+  expect(document.querySelector("[data-session-report]")).toHaveTextContent(
+    "لم يُقيّم بعد"
+  );
 });

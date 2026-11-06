@@ -18,10 +18,12 @@ export function useDidouVoice({
   const [feedback, setFeedback] = useState("");
   const audio = useRef<HTMLAudioElement | null>(null);
   const request = useRef(0);
+  const deadline = useRef<ReturnType<typeof setTimeout> | null>(null);
   const warm = useRef(new Map<VoiceId, HTMLAudioElement>());
   const stop = () => {
     onStopSpeech?.();
     request.current++;
+    if (deadline.current) clearTimeout(deadline.current);
     if (audio.current) {
       audio.current.onplaying =
         audio.current.onended =
@@ -31,6 +33,39 @@ export function useDidouVoice({
       audio.current = null;
     }
     setPhase("idle");
+  };
+  const sayParts = (parts: readonly { src: string }[]) => {
+    stop();
+    setFeedback("");
+    const token = request.current;
+    const play = (index: number) => {
+      if (token !== request.current) return;
+      if (index >= parts.length) {
+        setPhase("idle");
+        return;
+      }
+      const clip = new Audio(parts[index].src);
+      audio.current = clip;
+      setPhase("loading");
+      const fail = () => {
+        if (token !== request.current) return;
+        stop();
+        setFeedback("لم يعمل الصوت. اضغط على السماعة للمحاولة.");
+      };
+      deadline.current = setTimeout(fail, 60000);
+      clip.onplaying = () => {
+        if (token === request.current) setPhase("speaking");
+      };
+      clip.onerror = fail;
+      clip.onended = () => {
+        if (token !== request.current) return;
+        if (deadline.current) clearTimeout(deadline.current);
+        clip.onended = clip.onerror = clip.onplaying = null;
+        play(index + 1);
+      };
+      void clip.play().catch(fail);
+    };
+    play(0);
   };
   const prepare = (force = false) => {
     if (muted && !force) return;
@@ -95,5 +130,5 @@ export function useDidouVoice({
     },
     []
   );
-  return { voiceId, setVoiceId, phase, feedback, stop, prepare, say };
+  return { voiceId, setVoiceId, phase, feedback, stop, prepare, say, sayParts };
 }

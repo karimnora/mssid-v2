@@ -538,6 +538,7 @@ function AppContent() {
   const planetMission = missionCopy
     ? {
         say: missionCopy.say,
+        voiceParts: missionCopy.voiceParts,
         cta: missionCopy.cta,
         onStart: () => {
           const target = missionCopy.target;

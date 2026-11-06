@@ -318,3 +318,25 @@ describe("visible mission and honest places", () => {
     expect(document.querySelector("[data-home-resume]")).toBeDisabled();
   });
 });
+
+it("plays recorded mission fragments in sequence and cancels them when leaving", () => {
+  const connection = connected();
+  connection.mission = {
+    say: "مهمة اليوم",
+    cta: "ابدأ",
+    onStart: vi.fn(),
+    voiceParts: ["مهمّة اليوم: نكتشف درسًا جديدًا.", "الرياضيات"],
+  };
+  render(<DidouVillageHome connection={connection} />);
+  fireEvent.click(document.querySelector("[data-home-read-plan]")!);
+  const first = TestAudio.instances.at(-1)!;
+  expect(first.src).toContain("didou-shared");
+  expect(first.paused).toBe(false);
+  act(() => first.onended?.());
+  const second = TestAudio.instances.at(-1)!;
+  expect(second).not.toBe(first);
+  expect(second.paused).toBe(false);
+  fireEvent.click(document.querySelector("[data-home-resume]")!);
+  expect(second.pause).toHaveBeenCalled();
+  expect(second.onended).toBeNull();
+});

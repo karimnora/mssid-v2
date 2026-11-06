@@ -32,6 +32,8 @@ interface PracticeExerciseCardProps {
   playful?: boolean;
   leadAudio?: React.ReactNode;
   optionOrder?: string[];
+  revealedHintCount?: number;
+  onRevealHint?: () => void;
 }
 
 // A single practice/evaluation exercise, self-contained: renders the right interaction widget for
@@ -64,6 +66,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   playful = false,
   leadAudio,
   optionOrder,
+  revealedHintCount,
+  onRevealHint,
 }) => {
   const isGuided = isGuidedPractice(ex);
   const displayOptions = useMemo(() => {
@@ -80,7 +84,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   const connectMatching = (leftIdx: number, rightIdx: number) => onConnectMatching(ex.id, leftIdx, rightIdx);
   const disconnectMatching = (leftIdx: number) => onDisconnectMatching(ex.id, leftIdx);
   const toggleOrderingItem = (originalIdx: number) => onToggleOrderingItem(ex.id, originalIdx);
-  const [hintsRevealed, setHintsRevealed] = useState(0);
+  const [localHints, setHintsRevealed] = useState(0);
+  const hintsRevealed = revealedHintCount ?? localHints;
   const hasProgressiveHints = !!ex.progressiveHints && ex.progressiveHints.length > 0;
   const maxHints = hasProgressiveHints ? ex.progressiveHints!.length : ex.hintsAr.length > 0 ? 1 : 0;
 
@@ -272,7 +277,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           {hintsRevealed < maxHints && (
             <button
               data-practice-hint
-              onClick={() => setHintsRevealed((n) => n + 1)}
+              onClick={() => onRevealHint ? onRevealHint() : setHintsRevealed((n) => n + 1)}
               className="flex items-center gap-1.5 text-xs font-bold text-indigo-600 hover:text-indigo-800 cursor-pointer"
             >
               <HelpCircle className="w-3.5 h-3.5" />

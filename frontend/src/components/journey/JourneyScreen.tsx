@@ -18,6 +18,7 @@ import { canOpenPack, gameStationsForJourney, type GamePack } from '../../data/g
 import { readPackLevels } from '../games/learning/LearningGameEntry';
 import { createJourneySfx } from './JourneyRibbon';
 import { PlanetHub } from './PlanetHub';
+import { VILLAGE_MATH_PILOT } from '../lessonViewer/villageLessonConfig';
 import { pilotVoiceFor } from '../lessonViewer/villagePilotVoices';
 import { connectedHomeProgress } from '../home/connectedHomeProgress';
 import { DidouVillageHome } from '../home/DidouVillageHome';
@@ -41,7 +42,7 @@ export interface JourneyScreenProps {
   shelfGroups?: PlanetShelfGroup[];
   exitLabel?: string;
   /** « مهمة اليوم » and the J-15 plan button, shown under Didou's bubble on the planet. */
-  mission?: { say: string; cta: string | null; onStart: () => void } | null;
+  mission?: { voiceParts?: string[]; say: string; cta: string | null; onStart: () => void } | null;
   examPlanCta?: { label: string; daysLeft: number; onOpen: () => void } | null;
   onOpenCourses: () => void;
   onOpenStories: () => void;
@@ -237,7 +238,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
           grade, name: userName, sound, onToggleSound: toggleSound, onStopSpeech: stopSpeech,
           ...connectedHomeProgress(grade, courses, userProfile.quizFullyValidatedLessonIds),
           onExit, onOpenCourses, onOpenStories, onOpenMath, onOpenLabs, onOpenGames, onOpenExams,
-          onOpenPilot: grade === "5AP" && lessonsById.has("math-5ap-fractions") ? () => {const pilot=lessonsById.get("math-5ap-fractions")!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
+          onOpenPilot: grade === "5AP" && lessonsById.has(VILLAGE_MATH_PILOT) ? () => {const pilot=lessonsById.get(VILLAGE_MATH_PILOT)!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
           onOpenMap: worlds ? () => setScreen('map') : null,
           onContinue: courses && worlds && states.includes('open') ? () => {
             const index = states.indexOf('open');
