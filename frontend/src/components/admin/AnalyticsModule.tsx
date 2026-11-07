@@ -1,3 +1,4 @@
+import { PremiumFunnelPanel } from './PremiumFunnelPanel';
 import React, { useEffect, useRef, useState } from 'react';
 import { Users, TrendingUp, Award, Flame, BookOpenCheck, Trophy, Medal, CreditCard, UserPlus, RefreshCw, Activity, Repeat, Star, MapPin, Download, Mail, UserCheck, Moon, Percent } from 'lucide-react';
 import { springBootApi } from '../../services/springBootApi';
@@ -255,6 +256,7 @@ export const AnalyticsModule: React.FC = () => {
       </div>
 
       <AnalyticsPeriod />
+      <PremiumFunnelPanel />
       <div className="bg-slate-900 border border-slate-700 rounded-2xl p-4 text-xs text-slate-300 space-y-2">
         <p>نطاق الإحصائيات: الحسابات والتقدم المحفوظ على الخادم. الزوار بدون حساب والنشاط غير المتزامن لا يدخلان في هذه الأرقام. النشاط التعليمي يعتمد على آخر تحديث للتقدم، وليس مجرد فتح التطبيق. أيام النشاط محسوبة بتوقيت UTC.</p>
         <p>معدل العودة يقيس نشاط الحسابات القديمة خلال آخر 7 أو 30 يوماً، وليس الاحتفاظ الدقيق في اليوم السابع أو الثلاثين بعد التسجيل. فتح الدروس وتركها، استخدام التحضيري ومصدر الزيارات غير مسجّلة في هذا التقرير حالياً.</p>

@@ -175,6 +175,11 @@ public class User implements UserDetails {
     @Builder.Default
     private List<Map<String, Object>> lessonSessions = new ArrayList<>();
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "village_summaries", columnDefinition = "jsonb")
+    @Builder.Default
+    private List<Map<String, Object>> villageSummaries = new ArrayList<>();
+
     // =========================================================================
     // Méthodes requises par UserDetails (Spring Security)
     // =========================================================================

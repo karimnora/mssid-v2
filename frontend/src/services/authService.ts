@@ -472,20 +472,24 @@ static async loginWithGoogleAsync(idToken: string): Promise<{ user: AuthUser | n
   static syncCompetenceProgress(payload: {
     competenceStats?: AuthUser['competenceStats'];
     lessonSessions?: AuthUser['lessonSessions'];
+    villageSummaries?: AuthUser['villageSummaries'];
   }): void {
     const user = this.getCurrentUser();
     if (!user) return;
     if ((payload.competenceStats ?? user.competenceStats) === user.competenceStats
-      && (payload.lessonSessions ?? user.lessonSessions) === user.lessonSessions) return;
+      && (payload.lessonSessions ?? user.lessonSessions) === user.lessonSessions
+      && (payload.villageSummaries ?? user.villageSummaries) === user.villageSummaries) return;
     const updatedUser: AuthUser = {
       ...user,
       competenceStats: payload.competenceStats ?? user.competenceStats,
       lessonSessions: payload.lessonSessions ?? user.lessonSessions,
+      villageSummaries: payload.villageSummaries ?? user.villageSummaries,
     };
     this.setCurrentUser(updatedUser);
     queueProgressUpdate(updatedUser.id, {
       competenceStats: updatedUser.competenceStats ?? {},
       lessonSessions: updatedUser.lessonSessions ?? [],
+      villageSummaries: updatedUser.villageSummaries ?? [],
     }).catch((err) => console.error('Erreur de synchronisation du carnet:', err));
   }
 

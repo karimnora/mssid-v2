@@ -1,4 +1,4 @@
-import type { VillageSessionSummary } from './villageSession';
+import { separateVillageHistory, mergeVillageSummaries, type VillageSessionSummary } from './villageSession';
 import { PrimaryGrade, UserProfile } from '../types';
 import { COMPETENCES, getCompetence, getLessonCompetences, getLessonsForCompetence } from '../data/competences';
 
@@ -133,14 +133,14 @@ export function recordPracticeResult(
   result: PracticeResult,
   at = new Date().toISOString(),
 ): UserProfile {
+  const separated = separateVillageHistory(prev);
   if (result.villageSummary) {
-    // Observation only: never raises mastery, scores, weekly successes or exercise counts.
-    const summary = result.villageSummary;
-    const sessions = (prev.lessonSessions ?? []).filter(s => s.villageSummary?.id !== summary.id);
-    sessions.push({ at, lessonId, competenceIds: [], outcome: 'success', count: 0, villageSummary: summary });
-    return { ...prev, lessonSessions: sessions.slice(-MAX_LESSON_SESSIONS) };
+    return {
+      ...prev, ...separated,
+      villageSummaries: mergeVillageSummaries(separated.villageSummaries, [{ at, lessonId, villageSummary: result.villageSummary }]),
+    };
   }
-  return applyMappedOutcome(prev, lessonId, result.outcome, at, undefined, result);
+  return applyMappedOutcome({ ...prev, ...separated }, lessonId, result.outcome, at, undefined, result);
 }
 
 /** First full quiz success (or a replay) for a mapped lesson. Unmapped lessons are left unchanged. */

@@ -288,7 +288,7 @@ export function JourneyMap(props: JourneyMapProps) {
     const station = stations[i];
     const state = states[i];
     if (state === 'premium') {
-      recordPremiumEvent('lock_open');
+      recordPremiumEvent('lock_open', grade);
       setShaking(i);
       window.setTimeout(() => setShaking(null), 450);
       sfx.soft();

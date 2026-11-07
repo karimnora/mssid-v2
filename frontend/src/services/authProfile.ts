@@ -38,6 +38,7 @@ export function mapAuthProfile(value: unknown, defaults: Partial<AuthUser> = {})
     competenceStats: raw.competenceStats && typeof raw.competenceStats === 'object' && !Array.isArray(raw.competenceStats)
       ? raw.competenceStats as AuthUser['competenceStats'] : defaults.competenceStats,
     lessonSessions: Array.isArray(raw.lessonSessions) ? raw.lessonSessions as AuthUser['lessonSessions'] : defaults.lessonSessions,
+    villageSummaries: Array.isArray(raw.villageSummaries) ? raw.villageSummaries as AuthUser['villageSummaries'] : defaults.villageSummaries,
     createdAt: text(raw.createdAt, defaults.createdAt),
   };
 }

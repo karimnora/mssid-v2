@@ -15,4 +15,5 @@ import java.util.Map;
 public class ChildProgressRequest {
     private Map<String, Object> competenceStats;
     private List<Map<String, Object>> lessonSessions;
+    private List<Map<String, Object>> villageSummaries;
 }

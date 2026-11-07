@@ -344,3 +344,13 @@ describe('handleQuizMiss', () => {
     expect(result.current.userProfile.competenceStats['math-1ap-c-spatial-position']?.failures).toBe(1);
   });
 });
+
+it('does not overwrite a just-checked exercise when an XP update spreads stale auth notebook references', () => {
+  const account: AuthUser = { id: 7, nom: 'Test', email: 'test@example.test', role: 'ROLE_FREE', score: 0, competenceStats: {}, lessonSessions: [] };
+  const { result, rerender } = renderHook(({ authUser }) => useUserProgress({ authUser }), { initialProps: { authUser: account } });
+  act(() => result.current.handlePracticeResult('math-5ap-fractions', { outcome: 'success', exerciseId: 'math-5ap-fractions-ex1', helped: false }));
+  rerender({ authUser: { ...account, score: 10 } });
+  expect(result.current.userProfile.lessonSessions).toHaveLength(1);
+  expect(result.current.userProfile.lessonSessions![0].outcome).toBe('success');
+  expect(Object.values(result.current.userProfile.competenceStats ?? {})[0].alone).toBe(1);
+});

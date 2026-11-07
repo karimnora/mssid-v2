@@ -1,31 +1,49 @@
 {
-  "captured": "2026-11-06",
-  "source": "Local v2 application, replayable demo profile, 390x844, Arabic, no real child data",
+  "source": "Local v2, explicit separate demo, 390x844, Arabic; no real child data",
+  "capturedAtUtc": "2026-11-07T17:44:01.773793+00:00",
   "files": [
     {
       "file": "frontend/src/assets/premium-showcase/home.webp",
-      "bytes": 21414,
-      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-home.png"
+      "bytes": 22022,
+      "sha256": "3820c105621e090e56cd4306fe97aef76465a572d984b205f7f276c82dba0179"
     },
     {
       "file": "frontend/src/assets/premium-showcase/manipulation.webp",
       "bytes": 20078,
-      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-manipulation.png"
+      "sha256": "67275775df2e7bfc0c62036677efe6c5bf76da0cb438bb96397ad8798b30e38a"
     },
     {
       "file": "frontend/src/assets/premium-showcase/report.webp",
       "bytes": 26096,
-      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-report.png"
+      "sha256": "1ba99d27eeda7bc4fd331332cee3c01f66f1294baa48ec4c0e74d7028077317f"
     },
     {
       "file": "frontend/src/assets/premium-showcase/support.webp",
-      "bytes": 17478,
-      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-support.png"
+      "bytes": 17414,
+      "sha256": "d01c31aeb7f499e86e4e243645c53918d62dfc6ca89531cda238db97e79f1894"
     },
     {
       "file": "frontend/src/assets/premium-showcase/voice.webp",
       "bytes": 30948,
-      "sourceCapture": "C:/Users/Karim/.codex/visualizations/2026/11/05/01a1ac76-e238-7532-9072-bbec939fcfdb/offer-voice.png"
+      "sha256": "0826a54f5d72d8588b37aa9c01813337fc14bb8b5776d3676f73682b632d08e7"
+    }
+  ],
+  "sources": [
+    {
+      "file": "frontend/src/components/home/DidouVillageHome.tsx",
+      "sha256": "fb9c04f97c454b11b7a2fdc3cf5cea40f0f545d72546d305dfff92505fbd4f10"
+    },
+    {
+      "file": "frontend/src/components/lessonViewer/VillageLessonLayout.tsx",
+      "sha256": "43252bddbdb6e6c6b7861a754f514a8399d5d2572d7a657a9964d36204241ae0"
+    },
+    {
+      "file": "frontend/src/components/lessonViewer/SessionLearningReport.tsx",
+      "sha256": "948e3196162ecd871863033a6b21ea9bfc724aedd18c04c77692da4054b30d14"
+    },
+    {
+      "file": "frontend/src/components/lessonViewer/FractionWorkshop.tsx",
+      "sha256": "06165f4f979bee4c7a43d05aa84a795b2e1af24800625a1214464093d6b3c4fa"
     }
   ]
 }

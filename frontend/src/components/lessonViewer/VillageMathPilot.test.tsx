@@ -131,3 +131,5 @@ describe('immersive guided fractions lesson', () => {
     expect(pilotVoiceFor(wrong)).toBeUndefined();expect(pilotVoiceFor('constructor')).toBeUndefined();
   });
 });
+
+vi.mock('../../utils/premiumFunnel', () => ({ recordPremiumEvent: vi.fn() }));

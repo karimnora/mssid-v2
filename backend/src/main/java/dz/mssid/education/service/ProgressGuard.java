@@ -276,8 +276,33 @@ public final class ProgressGuard {
         return merged;
     }
 
+    /** Observations never share scored-history capacity. Day is calculated in Algeria. */
+    @SafeVarargs
+    public static List<Map<String, Object>> mergeVillageSummaries(List<Map<String, Object>>... groups) {
+        Map<String, Map<String, Object>> daily = new HashMap<>();
+        for (var group : groups) {
+            if (group == null) continue;
+            for (var entry : group) {
+                if (entry == null || !isSafeId(asString(entry.get("lessonId")))) continue;
+                Map<String, Object> summary = cleanVillageSummary(entry.get("villageSummary"));
+                if (summary == null) continue;
+                java.time.Instant at;
+                try { at = java.time.Instant.parse(asString(entry.get("at"))); }
+                catch (RuntimeException invalid) { continue; }
+                String day = at.atZone(java.time.ZoneId.of("Africa/Algiers")).toLocalDate().toString();
+                String key = entry.get("lessonId") + "|" + day;
+                Map<String, Object> clean = Map.of("at", at.toString(), "lessonId", entry.get("lessonId"), "villageSummary", summary);
+                var old = daily.get(key);
+                if (old == null || at.compareTo(java.time.Instant.parse((String) old.get("at"))) >= 0) daily.put(key, clean);
+            }
+        }
+        var sorted = new ArrayList<>(daily.values());
+        sorted.sort(java.util.Comparator.comparing(v -> java.time.Instant.parse((String) v.get("at"))));
+        return new ArrayList<>(sorted.subList(Math.max(0, sorted.size() - 6), sorted.size()));
+    }
+
     private static Map<String, Object> cleanSession(Map<String, Object> session) {
-        if (session == null) {
+        if (session == null || session.containsKey("villageSummary")) {
             return null;
         }
         String lessonId = asString(session.get("lessonId"));
@@ -302,13 +327,6 @@ public final class ProgressGuard {
         clean.put("outcome", outcome);
         if (session.get("helped") instanceof Boolean value) clean.put("helped", value);
         if (session.get("count") instanceof Number) clean.put("count", Math.max(1, asInt(session.get("count"))));
-        if (session.containsKey("villageSummary")) {
-            Map<String, Object> summary = cleanVillageSummary(session.get("villageSummary"));
-            if (summary == null) return null; // Never turn malformed observations into scored successes.
-            clean.put("villageSummary", summary);
-            clean.put("count", 0);
-            clean.put("competenceIds", List.of());
-        }
         return clean;
     }
 

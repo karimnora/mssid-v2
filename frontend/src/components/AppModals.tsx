@@ -339,6 +339,7 @@ export const AppModals: React.FC<AppModalsProps> = ({
 
     {lockedLesson && (
       <SubscriptionPaywall
+          grade={grade}
         user={authUser}
         title={t('openLockedLessonTitle', {
           trimesterLabel: lockedLesson.trimester === 3 ? t('trimesterThird') : t('trimesterSecond'),

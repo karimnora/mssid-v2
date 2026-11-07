@@ -22,6 +22,7 @@ public class ChildProfileDto {
     private LocalDateTime createdAt;
     private Map<String, Object> competenceStats;
     private List<Map<String, Object>> lessonSessions;
+    private List<Map<String, Object>> villageSummaries;
 
     public static ChildProfileDto from(ChildProfile profile) {
         return ChildProfileDto.builder()
@@ -32,6 +33,7 @@ public class ChildProfileDto {
                 .createdAt(profile.getCreatedAt())
                 .competenceStats(profile.getCompetenceStats())
                 .lessonSessions(profile.getLessonSessions())
+                .villageSummaries(profile.getVillageSummaries())
                 .build();
     }
 }

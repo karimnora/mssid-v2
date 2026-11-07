@@ -1037,7 +1037,7 @@ function AppContent() {
       {journeyAvailable && !premiumPlanetHome && nav.isHomeActive && !journeyOpen && (
         <JourneyMapShortcut hasMap={journeyForGrade(nav.grade) !== null} onOpen={() => openJourney(journeyForGrade(nav.grade) ? 'map' : 'hub')} />
       )}
-      <EmailDeepLink onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} />
+      <EmailDeepLink grade={nav.grade} onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} />
       <AppModals
         currentLesson={nav.selectedLesson}
         courses={coursesData ? publishableCourses : null}

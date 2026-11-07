@@ -1,0 +1,26 @@
+const fs=require('fs'),assert=require('assert');
+const root=require('path').resolve(__dirname,'../..');
+const reportPath=process.argv[3];
+const {PGlite}=require(process.argv[2] || '@electric-sql/pglite');
+(async()=>{const db=new PGlite();try{
+ await db.exec("CREATE TABLE users(id int PRIMARY KEY, lesson_sessions jsonb); CREATE TABLE child_profiles(id int PRIMARY KEY, lesson_sessions jsonb);");
+ const real=Array.from({length:40},(_,i)=>({at:new Date(Date.UTC(2026,9,1,10,i)).toISOString(),lessonId:'math-5ap-fractions',outcome:'success',competenceIds:['math-5ap-c-fractions']}));
+ const observation=at=>({at,lessonId:'math-5ap-fractions',outcome:'success',count:0,villageSummary:{id:at,title:'Fractions',grade:'5AP',next:'interactive'}});
+ const repeated=Array.from({length:100},(_,i)=>observation(new Date(Date.UTC(2026,10,7,10,0,i)).toISOString()));
+ await db.query('INSERT INTO users VALUES(1,$1)',[JSON.stringify([...real,...repeated])]);
+ const daily=Array.from({length:10},(_,i)=>observation(new Date(Date.UTC(2026,9,i+1,10)).toISOString()));
+ await db.query('INSERT INTO child_profiles VALUES(12,$1)',[JSON.stringify([...real,...daily])]);
+ const boundary=[observation('2026-11-06T22:30:00Z'),observation('2026-11-06T23:30:00Z'),observation('2026-11-07T10:00:00Z'),observation('invalid')];
+ await db.query('INSERT INTO users VALUES(2,$1)',[JSON.stringify(boundary)]);
+ await db.exec(fs.readFileSync(root+'/backend/src/main/resources/db/migration/V109__separate_village_summaries.sql','utf8'));
+ const account=(await db.query('SELECT * FROM users WHERE id=1')).rows[0];assert.deepEqual(account.lesson_sessions,real);assert.equal(account.village_summaries.length,1);
+ const child=(await db.query('SELECT * FROM child_profiles WHERE id=12')).rows[0];assert.deepEqual(child.lesson_sessions,real);assert.equal(child.village_summaries.length,6);
+ const edge=(await db.query('SELECT * FROM users WHERE id=2')).rows[0];assert.equal(edge.village_summaries.length,2);assert.equal(edge.lesson_sessions.length,0);
+ await db.exec(fs.readFileSync(root+'/backend/src/main/resources/db/migration/V110__add_premium_funnel_daily.sql','utf8'));
+ const sql='INSERT INTO premium_funnel_daily(event,grade,day,total) VALUES ($1,$2,$3,1) ON CONFLICT(event,grade,day) DO UPDATE SET total=LEAST(premium_funnel_daily.total+1,1000000000)';
+ await Promise.all(Array.from({length:50},()=>db.query(sql,['offer_open','5AP','2026-11-07'])));
+ assert.equal(Number((await db.query('SELECT total FROM premium_funnel_daily')).rows[0].total),50);
+ const columns=(await db.query("SELECT column_name FROM information_schema.columns WHERE table_name='premium_funnel_daily' ORDER BY ordinal_position")).rows.map(r=>r.column_name);assert.deepEqual(columns,['event','grade','day','total']);
+ const report={engine:(await db.query('select version()')).rows[0].version,migration109:true,fortyRealSessionsPreserved:true,accountSummaryDeduplicated:true,childSummariesCappedAtSix:true,algerianDayBoundary:true,invalidTimestampHandled:true,migration110:true,fiftyIncrements:50,columns};
+ if(reportPath)fs.writeFileSync(reportPath,JSON.stringify(report,null,2));console.log(report);
+}finally{await db.close();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

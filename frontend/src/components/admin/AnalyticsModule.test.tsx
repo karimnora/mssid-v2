@@ -53,6 +53,7 @@ const baseOverview = {
 
 describe('AnalyticsModule — active users, retention, and top lessons', () => {
   beforeEach(() => {
+    vi.spyOn(springBootApi, 'getPremiumFunnel').mockResolvedValue({ data: [] } as any);
     vi.spyOn(springBootApi, 'getAdminStatsPeriod').mockResolvedValue({ error: 'Period unavailable' } as any);
   });
   afterEach(() => {

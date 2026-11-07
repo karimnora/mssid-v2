@@ -1,3 +1,4 @@
+import type { VillageSummaryEntry } from '../utils/villageSession';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
 /**
  * Service API Client Spring Boot 3.x - Mssid DZ
@@ -622,16 +623,21 @@ public async request<T>(
     return this.request<void>(`/v1/children/${id}`, { method: 'DELETE' });
   }
 
+  public async getPremiumFunnel() {
+    return this.request<Array<{ event: string; grade: string; day: string; total: number }>>('/v1/admin/premium-funnel', { method: 'GET' });
+  }
+
   public async getChildProgress(id: number) {
     return this.request<{
       competenceStats?: Record<string, unknown>;
       lessonSessions?: Array<Record<string, unknown>>;
+      villageSummaries?: VillageSummaryEntry[];
     }>(`/v1/children/${id}/progress`, { method: 'GET' });
   }
 
   public async saveChildProgress(
     id: number,
-    payload: { competenceStats?: Record<string, unknown>; lessonSessions?: Array<Record<string, unknown>> },
+    payload: { competenceStats?: Record<string, unknown>; lessonSessions?: Array<Record<string, unknown>>; villageSummaries?: VillageSummaryEntry[] },
   ) {
     return this.request<void>(`/v1/children/${id}/progress`, {
       method: 'PUT',

@@ -41,6 +41,7 @@ public class UserMapper {
                 .avatarConfig(user.getAvatarConfig())
                 .competenceStats(user.getCompetenceStats())
                 .lessonSessions(user.getLessonSessions())
+                .villageSummaries(user.getVillageSummaries())
                 .build();
     }
 }

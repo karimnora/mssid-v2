@@ -66,6 +66,7 @@ public class SecurityConfig {
 
                         // "Nous contacter" — a guest/parent with no account must be able to send feedback.
                         .requestMatchers(HttpMethod.POST, "/api/v1/contact").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/analytics/premium-funnel").permitAll()
 
                         // Weekly report e-mail: the stop link is opened from a mail client, without a session.
                         // It is signed per user (WeeklyReportService.tokenFor).

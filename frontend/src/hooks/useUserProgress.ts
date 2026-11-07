@@ -1,3 +1,4 @@
+import { separateVillageHistory, mergeVillageSummaries } from '../utils/villageSession';
 import {mergeNotebookProgress} from '../utils/mergeNotebookProgress';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Badge as BadgeInfo, PrimaryGrade, UserProfile } from '../types';
@@ -86,7 +87,7 @@ function salvageUserProfile(raw: unknown, fallbackGrade: PrimaryGrade): UserProf
       ? o.avatarConfig as UserProfile['avatarConfig']
       : base.avatarConfig,
     competenceStats: o.competenceStats && typeof o.competenceStats === 'object' && !Array.isArray(o.competenceStats) ? o.competenceStats as UserProfile['competenceStats'] : {},
-    lessonSessions: Array.isArray(o.lessonSessions) ? o.lessonSessions as UserProfile['lessonSessions'] : [],
+    ...separateVillageHistory({ lessonSessions: Array.isArray(o.lessonSessions) ? o.lessonSessions as UserProfile['lessonSessions'] : [], villageSummaries: Array.isArray(o.villageSummaries) ? o.villageSummaries as UserProfile['villageSummaries'] : [] }),
   };
 }
 
@@ -192,6 +193,7 @@ export function markLessonQuizComplete(prev: UserProfile, lessonId: string): Use
 export function useUserProgress(options: { authUser: AuthUser | null; activeChildId?: number | null }) {
   const { authUser, activeChildId = null } = options;
   const hydratedOwnerRef = useRef<number | null>(null);
+  const notebookSourceRef = useRef<Pick<AuthUser, 'competenceStats' | 'lessonSessions'> | null>(null);
   const [localActivityOwner, setLocalActivityOwner] = useState<number | null>(null);
 
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
@@ -256,6 +258,11 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
     if (authUser && activeChildId == null) {
       const sameOwner = hydratedOwnerRef.current === authUser.id;
       hydratedOwnerRef.current = authUser.id;
+      // A local XP/badge update spreads the old auth notebook. It must not overwrite
+      // an exercise result which was just recorded in this profile in the same event.
+      const statsChanged = !sameOwner || notebookSourceRef.current?.competenceStats !== authUser.competenceStats;
+      const sessionsChanged = !sameOwner || notebookSourceRef.current?.lessonSessions !== authUser.lessonSessions;
+      notebookSourceRef.current = { competenceStats: authUser.competenceStats, lessonSessions: authUser.lessonSessions };
       const xp = authUser.score !== undefined ? authUser.score : (authUser.xp !== undefined ? authUser.xp : 0);
       const level = authUser.level !== undefined ? authUser.level : Math.floor(xp / 100) + 1;
       let localActivities: Pick<UserProfile, 'completedGameIds' | 'completedLabIds'> = { completedGameIds: [], completedLabIds: [] };
@@ -288,13 +295,15 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
           tashkeelEnabled: authUser.tashkeelEnabled ?? prev.tashkeelEnabled,
           goldCoins: authUser.goldCoins ?? prev.goldCoins,
           avatarConfig: authUser.avatarConfig ?? prev.avatarConfig,
-          competenceStats: authUser.competenceStats ?? prev.competenceStats,
-          lessonSessions: authUser.lessonSessions ?? prev.lessonSessions,
+          competenceStats: statsChanged ? authUser.competenceStats ?? prev.competenceStats : prev.competenceStats,
+          lessonSessions: sessionsChanged && authUser.lessonSessions ? separateVillageHistory(authUser).lessonSessions : prev.lessonSessions,
+          villageSummaries: mergeVillageSummaries(prev.villageSummaries ?? [], separateVillageHistory(authUser).villageSummaries),
         };
       });
       setLocalActivityOwner(authUser.id);
     } else {
       hydratedOwnerRef.current = null;
+      notebookSourceRef.current = null;
       setLocalActivityOwner(null);
     }
   }, [authUser, activeChildId]);
@@ -345,7 +354,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
         if (cancelled || res.error || !res.data) return;
         setUserProfile((prev) => ({
           ...prev,
-          ...mergeNotebookProgress(prev,{competenceStats:res.data.competenceStats as UserProfile['competenceStats'],lessonSessions:res.data.lessonSessions as UserProfile['lessonSessions']}),
+          ...mergeNotebookProgress(prev,{competenceStats:res.data.competenceStats as UserProfile['competenceStats'],lessonSessions:res.data.lessonSessions as UserProfile['lessonSessions'],villageSummaries:res.data.villageSummaries as UserProfile['villageSummaries']}),
         }));
       }),
     );
@@ -360,6 +369,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
       const payload = {
         competenceStats: userProfile.competenceStats ?? {},
         lessonSessions: userProfile.lessonSessions ?? [],
+        villageSummaries: userProfile.villageSummaries ?? [],
       };
       if (activeChildId != null) {
         void import('../services/springBootApi').then(({ springBootApi }) => {
@@ -370,7 +380,7 @@ export function useUserProgress(options: { authUser: AuthUser | null; activeChil
       AuthService.syncCompetenceProgress(payload);
     }, 800);
     return () => window.clearTimeout(timer);
-  }, [authUser, activeChildId, userProfile.competenceStats, userProfile.lessonSessions]);
+  }, [authUser, activeChildId, userProfile.competenceStats, userProfile.lessonSessions, userProfile.villageSummaries]);
 
   const handleQuizFullyValidated = (lessonId: string) => {
     AuthService.markLessonCompleted(lessonId);

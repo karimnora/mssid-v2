@@ -133,6 +133,8 @@ public class UserService {
         if (progressData.getCompetenceStats() != null) {
             user.setCompetenceStats(ProgressGuard.mergeCompetenceStats(user.getCompetenceStats(), progressData.getCompetenceStats()));
         }
+        user.setVillageSummaries(ProgressGuard.mergeVillageSummaries(user.getVillageSummaries(),
+                progressData.getVillageSummaries(), user.getLessonSessions(), progressData.getLessonSessions()));
         if (progressData.getLessonSessions() != null) {
             user.setLessonSessions(ProgressGuard.mergeLessonSessions(user.getLessonSessions(), progressData.getLessonSessions()));
         }

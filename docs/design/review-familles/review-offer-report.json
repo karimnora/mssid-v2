@@ -1,0 +1,64 @@
+[
+  {
+    "anonymousPosts": [
+      {
+        "event": "lock_open",
+        "grade": "5AP",
+        "day": "2026-11-07"
+      },
+      {
+        "event": "parent_interest",
+        "grade": "5AP",
+        "day": "2026-11-07"
+      },
+      {
+        "event": "offer_open",
+        "grade": "5AP",
+        "day": "2026-11-07"
+      }
+    ],
+    "threeAnonymousEvents": true,
+    "width": 390,
+    "freeHome": true,
+    "premiumLocks": true,
+    "parentGateBeforeOffer": true,
+    "realCaptures": 5,
+    "localAggregateCounts": {
+      "lock_open": 1,
+      "parent_interest": 1,
+      "offer_open": 1
+    },
+    "noOverflow": true
+  },
+  {
+    "anonymousPosts": [
+      {
+        "event": "lock_open",
+        "grade": "5AP",
+        "day": "2026-11-07"
+      },
+      {
+        "event": "parent_interest",
+        "grade": "5AP",
+        "day": "2026-11-07"
+      },
+      {
+        "event": "offer_open",
+        "grade": "5AP",
+        "day": "2026-11-07"
+      }
+    ],
+    "threeAnonymousEvents": true,
+    "width": 1280,
+    "freeHome": true,
+    "premiumLocks": true,
+    "parentGateBeforeOffer": true,
+    "realCaptures": 5,
+    "localAggregateCounts": {
+      "lock_open": 1,
+      "parent_interest": 1,
+      "offer_open": 1
+    },
+    "noOverflow": true
+  }
+]

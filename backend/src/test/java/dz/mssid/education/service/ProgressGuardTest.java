@@ -12,16 +12,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgressGuardTest {
 
     @Test
+    void manyWorkshopOpeningsNeverEvictAnyOfFortyRealSessions() {
+        var real = new java.util.ArrayList<Map<String, Object>>();
+        var summaries = new java.util.ArrayList<Map<String, Object>>();
+        for (int i = 0; i < 40; i++) real.add(Map.of("at", "2026-10-01T10:" + String.format("%02d", i) + ":00Z", "lessonId", "math-5ap-fractions", "outcome", "success"));
+        var summary = Map.of("id", "opening", "title", "Fractions", "grade", "5AP", "next", "interactive");
+        for (int i = 0; i < 100; i++) summaries.add(Map.of("at", java.time.Instant.parse("2026-11-07T10:00:00Z").plusSeconds(i).toString(), "lessonId", "math-5ap-fractions", "villageSummary", summary));
+        assertEquals(40, ProgressGuard.mergeLessonSessions(real, summaries).size());
+        assertEquals(1, ProgressGuard.mergeVillageSummaries(summaries).size());
+        var days = new java.util.ArrayList<Map<String, Object>>();
+        for (int i = 0; i < 10; i++) days.add(Map.of("at", java.time.Instant.parse("2026-10-01T10:00:00Z").plusSeconds(86400L*i).toString(), "lessonId", "math-5ap-fractions", "villageSummary", summary));
+        assertEquals(6, ProgressGuard.mergeVillageSummaries(days).size());
+    }
+
+    @Test
     void savesWorkshopSummaryWithoutDuplicatesOrScoredCounts() {
         Map<String, Object> summary = Map.of("id", "session-1", "title", "Fractions", "grade", "5AP", "next", "interactive",
                 "transfer", Map.of("decompose", Map.of("completed", true, "helped", true, "attempts", 2)));
         Map<String, Object> entry = Map.of("at", "2026-11-06T18:00:00Z", "lessonId", "math-5ap-fractions", "outcome", "success", "villageSummary", summary);
-        var saved = ProgressGuard.mergeLessonSessions(List.of(), List.of(entry));
-        var replay = ProgressGuard.mergeLessonSessions(saved, List.of(entry));
+        var saved = ProgressGuard.mergeVillageSummaries(List.of(), List.of(entry));
+        var replay = ProgressGuard.mergeVillageSummaries(saved, List.of(entry));
         assertEquals(1, replay.size());
-        assertEquals(0, replay.getFirst().get("count"));
+        assertFalse(replay.getFirst().containsKey("count"));
         assertTrue(replay.getFirst().get("villageSummary") instanceof Map);
-        assertEquals(List.of(), replay.getFirst().get("competenceIds"));
+        assertFalse(replay.getFirst().containsKey("competenceIds"));
+        assertTrue(ProgressGuard.mergeLessonSessions(List.of(), List.of(entry)).isEmpty());
     }
 
     @Test

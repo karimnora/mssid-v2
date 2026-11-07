@@ -1,0 +1,23 @@
+[
+  {
+    "mode": "journey",
+    "width": 390,
+    "height": 844,
+    "fullscreen": true,
+    "rootRestored": true,
+    "demoIsolated": true,
+    "demoCompletionCounted": true,
+    "rootRemainsAccessible": true,
+    "loosePartsReact": true,
+    "directTouch": true,
+    "stableTouchTargets": true,
+    "exitCancelPreservesParts": true,
+    "targets60": true,
+    "linearSevenSteps": true,
+    "recordedSevenAnnouncements": true,
+    "protectedReport": true,
+    "originalQuiz": true,
+    "noOverflow": true,
+    "errors": []
+  }
+]

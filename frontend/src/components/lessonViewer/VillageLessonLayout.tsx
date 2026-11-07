@@ -72,7 +72,7 @@ export function VillageLessonLayout({
 }: Props) {
   const demoCounted = useRef(false);
   useEffect(() => {
-    if (demo && canFinish && !demoCounted.current) { demoCounted.current = true; recordPremiumEvent('demo_complete'); }
+    if (demo && canFinish && !demoCounted.current) { demoCounted.current = true; recordPremiumEvent('demo_complete', lesson.grade); }
   }, [demo, canFinish]);
   const top = useRef<HTMLElement>(null);
   const [muted, setMuted] = useState(false);

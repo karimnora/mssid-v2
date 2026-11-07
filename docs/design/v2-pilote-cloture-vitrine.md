@@ -1,3 +1,5 @@
+> Évolution : les choix de stockage, de démo gratuite et de mesure décrits ici ont été corrigés. Voir [la revue familles](v2-corrections-revue-familles.md) pour le comportement actuel.
+
 # Pilote fractions clôturé et vitrine Premium accessible
 
 6 novembre 2026 — v2 seulement, commit local sans push.

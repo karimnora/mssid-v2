@@ -237,11 +237,11 @@ export function JourneyScreen(props: JourneyScreenProps) {
 
       {screen === 'hub' && locale === 'ar' && (
         <DidouVillageHome connection={{
-          pilotIsDemo: !allWorlds,
+          onOpenDemo: !allWorlds && grade === '5AP' && lessonsById.has(VILLAGE_MATH_PILOT) ? () => { stopSpeech(); setDemo(true); setLessonId(VILLAGE_MATH_PILOT); setScreen('lesson'); } : undefined,
           grade, name: userName, sound, onToggleSound: toggleSound, onStopSpeech: stopSpeech,
           ...connectedHomeProgress(grade, courses, userProfile.quizFullyValidatedLessonIds),
           onExit, onOpenCourses, onOpenStories, onOpenMath, onOpenLabs, onOpenGames, onOpenExams,
-          onOpenPilot: grade === "5AP" && lessonsById.has(VILLAGE_MATH_PILOT) ? () => {const pilot=lessonsById.get(VILLAGE_MATH_PILOT)!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}setDemo(!allWorlds);stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
+          onOpenPilot: grade === "5AP" && lessonsById.has(VILLAGE_MATH_PILOT) ? () => {const pilot=lessonsById.get(VILLAGE_MATH_PILOT)!;if(isLessonLocked(pilot)){onLessonLocked(pilot);return;}setDemo(false);stopSpeech();setLessonId(pilot.id);setScreen("lesson");} : undefined,
           onOpenMap: worlds ? () => setScreen('map') : null,
           onContinue: courses && worlds && states.includes('open') ? () => {
             const index = states.indexOf('open');
@@ -295,7 +295,7 @@ export function JourneyScreen(props: JourneyScreenProps) {
             sfx={sfx}
             totalStars={totalStars}
             coins={userProfile.goldCoins ?? 0}
-            premiumExtra={<PremiumOffer label={locale === 'ar' ? 'أخبر أوليائي' : 'Demander à mes parents'} />}
+            premiumExtra={<PremiumOffer grade={grade} label={locale === 'ar' ? 'أخبر أوليائي' : 'Demander à mes parents'} />}
             gameStations={gameStations}
             onOpenGame={setOpenGame}
           />

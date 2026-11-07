@@ -1,3 +1,4 @@
+import { villageDay } from '../utils/villageSession';
 import { AuthUser } from '../types/auth';
 import { springBootApi } from './springBootApi';
 
@@ -5,7 +6,7 @@ type Patch = Record<string, unknown>;
 export type ProgressSyncState = { status: 'local' | 'saving' | 'pending' | 'synced'; syncedAt?: string };
 const allowed = new Set(['score', 'xp', 'level', 'goldCoins', 'avatarConfig', 'avatar', 'grade', 'wilaya',
   'streakDays', 'quizzesCompleted', 'lastActiveDate', 'completedLessonIds', 'completedExamIds',
-  'completedChallengeIds', 'badges', 'badgeUnlockedAt', 'quizScores', 'competenceStats', 'lessonSessions']);
+  'completedChallengeIds', 'badges', 'badgeUnlockedAt', 'quizScores', 'competenceStats', 'lessonSessions', 'villageSummaries']);
 const numbers = new Set(['score', 'xp', 'level', 'goldCoins', 'streakDays', 'quizzesCompleted']);
 const ids = new Set(['completedLessonIds', 'completedExamIds', 'completedChallengeIds', 'badges']);
 const listeners = new Set<() => void>();
@@ -27,7 +28,7 @@ function cleanPatch(value: unknown): Patch {
       if (typeof entry === 'number' && Number.isFinite(entry) && entry >= 0) patch[field] = entry;
     } else if (ids.has(field)) {
       if (Array.isArray(entry)) patch[field] = entry.filter(item => typeof item === 'string');
-    } else if (field === 'lessonSessions') {
+    } else if (field === 'lessonSessions' || field === 'villageSummaries') {
       if (Array.isArray(entry)) patch[field] = entry;
     } else if (['avatarConfig', 'badgeUnlockedAt', 'quizScores', 'competenceStats'].includes(field)) {
       if (entry && typeof entry === 'object' && !Array.isArray(entry)) patch[field] = entry;
@@ -99,7 +100,11 @@ export function retryPendingProgress(): Promise<void> {
           const saved = actual[field]; const requested = snapshot[field];
           return Array.isArray(saved) && Array.isArray(requested) && requested.some(id => !saved.includes(id));
         });
-        if (capped || incompleteIds) { publish({ status: 'pending', syncedAt: state.syncedAt }); return; }
+        const requestedSummaries = snapshot.villageSummaries as Array<{ at: string; lessonId: string }> | undefined;
+        const savedSummaries = actual?.villageSummaries as Array<{ at: string; lessonId: string }> | undefined;
+        const incompleteSummaries = !!actual && !!requestedSummaries?.length && (!Array.isArray(savedSummaries) || requestedSummaries.some(requested =>
+          !savedSummaries.some(saved => saved.lessonId === requested.lessonId && villageDay(saved.at) === villageDay(requested.at) && Date.parse(saved.at) >= Date.parse(requested.at))));
+        if (capped || incompleteIds || incompleteSummaries) { publish({ status: 'pending', syncedAt: state.syncedAt }); return; }
         if (revision !== snapshotRevision) continue;
         pending = null; persist(activeOwner);
         publish({ status: 'synced', syncedAt: new Date().toISOString() }); return;

@@ -82,6 +82,8 @@ public class ChildProfileService {
         if (request.getCompetenceStats() != null) {
             profile.setCompetenceStats(ProgressGuard.mergeCompetenceStats(profile.getCompetenceStats(), request.getCompetenceStats()));
         }
+        profile.setVillageSummaries(ProgressGuard.mergeVillageSummaries(profile.getVillageSummaries(),
+                request.getVillageSummaries(), profile.getLessonSessions(), request.getLessonSessions()));
         if (request.getLessonSessions() != null) {
             profile.setLessonSessions(ProgressGuard.mergeLessonSessions(profile.getLessonSessions(), request.getLessonSessions()));
         }

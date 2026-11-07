@@ -37,6 +37,19 @@ class RateLimitFilterTest {
     }
 
     @Test
+    void aggregateEventsHaveTheirOwnLimitAndDoNotConsumeLessonApiQuota() throws Exception {
+        FilterChain chain = mock(FilterChain.class);
+        for (int i = 0; i < 30; i++) filter.doFilterInternal(postRequest("/api/v1/analytics/premium-funnel"), new MockHttpServletResponse(), chain);
+        var blocked = new MockHttpServletResponse();
+        filter.doFilterInternal(postRequest("/api/v1/analytics/premium-funnel"), blocked, chain);
+        assertEquals(429, blocked.getStatus());
+        var lesson = new MockHttpServletResponse();
+        filter.doFilterInternal(postRequest("/api/v1/some-lesson-api"), lesson, chain);
+        assertEquals(200, lesson.getStatus());
+        verify(chain, times(31)).doFilter(any(), any());
+    }
+
+    @Test
     @DisplayName("AI endpoints (/api/v1/ai/**, /api/gemini/**) are capped at 15 requests/minute per IP")
     void aiEndpoints_areLimitedTo15PerMinute() throws Exception {
         FilterChain chain = mock(FilterChain.class);

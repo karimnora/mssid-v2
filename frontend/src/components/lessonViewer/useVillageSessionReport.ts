@@ -3,10 +3,12 @@ import type { CourseLesson } from '../../types';
 import type { PracticeResult } from '../../utils/competenceProgress';
 import type { VillageSessionSummary } from '../../utils/villageSession';
 import type { FractionObservations } from './fractionJourneyContent';
+import { getActiveProgressOwner } from '../../utils/progressOwner';
+import { villageDay } from '../../utils/villageSession';
 import { isGuidedPractice } from './practiceAssessment';
 import type { PracticeBindings } from './practiceBindings';
 export function useVillageSessionReport(lesson: CourseLesson, learn: FractionObservations, transfer: FractionObservations, practice: PracticeBindings, selected: Record<string, string>, onResult?: (id: string, result: PracticeResult) => void, examples: string[] = []) {
-  const [id] = useState(() => crypto.randomUUID?.() ?? Date.now().toString(36) + '-' + Math.random().toString(36).slice(2));
+  const [id] = useState(() => lesson.id + ':' + villageDay(new Date().toISOString()));
   const callback = useRef(onResult);
   useEffect(() => { callback.current = onResult; }, [onResult]);
   const outcomes = Object.values(practice.sessionResults);
@@ -23,7 +25,33 @@ export function useVillageSessionReport(lesson: CourseLesson, learn: FractionObs
   };
   const serialized = JSON.stringify(snapshot);
   const observed = Object.keys(learn).length + Object.keys(transfer).length + outcomes.length + Object.keys(selected).length > 0;
+  const owner = useRef<string | null>(null);
+  const pending = useRef<{ serialized: string; callback: typeof onResult } | null>(null);
+  const flush = () => {
+    const next = pending.current;
+    pending.current = null;
+    if (next && getActiveProgressOwner() === owner.current) {
+      next.callback?.(lesson.id, { outcome: 'success', villageSummary: JSON.parse(next.serialized) });
+    }
+  };
+  const flushRef = useRef(flush);
+  flushRef.current = flush;
   useEffect(() => {
-    if (observed) callback.current?.(lesson.id, { outcome: 'success', villageSummary: JSON.parse(serialized) });
+    if (!observed) { flushRef.current(); return; }
+    owner.current ??= getActiveProgressOwner();
+    pending.current = { serialized, callback: callback.current };
+    const timer = window.setTimeout(() => flushRef.current(), 600);
+    return () => window.clearTimeout(timer);
   }, [serialized, observed, lesson.id]);
+  useEffect(() => {
+    const hide = () => { if (document.visibilityState === 'hidden') flushRef.current(); };
+    const leave = () => flushRef.current();
+    document.addEventListener('visibilitychange', hide);
+    window.addEventListener('pagehide', leave);
+    return () => {
+      document.removeEventListener('visibilitychange', hide);
+      window.removeEventListener('pagehide', leave);
+      flushRef.current();
+    };
+  }, [lesson.id]);
 }

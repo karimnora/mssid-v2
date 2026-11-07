@@ -1,4 +1,4 @@
-import type { VillageSessionSummary } from '../utils/villageSession';
+import type { VillageSessionSummary, VillageSummaryEntry } from '../utils/villageSession';
 import { DidouAvatarConfig } from './ecosystem';
 
 export type UserRole = 'ROLE_FREE' | 'ROLE_PREMIUM' | 'ROLE_ADMIN';
@@ -72,6 +72,7 @@ export interface AuthUser {
   goldCoins?: number;
   avatarConfig?: DidouAvatarConfig;
   competenceStats?: Record<string, { attempts: number; successes: number; failures?: number; lastAt: string; lastLessonId: string; lastOutcome?: 'success' | 'fail'; alone?: number; helped?: number; missedExerciseIds?: string[] }>;
+  villageSummaries?: VillageSummaryEntry[];
   lessonSessions?: Array<{ at: string; lessonId: string; competenceIds: string[]; outcome: 'success' | 'fail'; helped?: boolean; count?: number; villageSummary?: VillageSessionSummary }>;
 }
 

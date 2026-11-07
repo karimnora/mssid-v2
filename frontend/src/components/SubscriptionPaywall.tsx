@@ -1,3 +1,4 @@
+import type { PrimaryGrade } from '../types';
 import { PremiumShowcase } from './PremiumShowcase';
 import { recordPremiumEvent } from '../utils/premiumFunnel';
 import { ReceiptStatus } from './ReceiptStatus';
@@ -14,6 +15,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
 interface Props {
+  grade?: PrimaryGrade;
   user: AuthUser | null;
   onClose: () => void;
   onSuccessUpgrade: (upgradedUser: AuthUser) => void;
@@ -32,7 +34,8 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
   onClose,
   onSuccessUpgrade,
   title,
-  parentVerified = false
+  parentVerified = false,
+  grade,
 }) => {
   const t = useTranslation('subscription');
   const { direction } = useLocaleContext();
@@ -48,8 +51,8 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
 
   const offerCounted = useRef(false);
   useEffect(() => {
-    if (parentReady && !offerCounted.current) { offerCounted.current = true; recordPremiumEvent('offer_open'); }
-  }, [parentReady]);
+    if (parentReady && !offerCounted.current) { offerCounted.current = true; recordPremiumEvent('offer_open', grade); }
+  }, [parentReady, grade]);
   const currentUser = user || AuthService.getCurrentUser();
   const [planId, setPlanId] = useState<SubscriptionPlanId>(DEFAULT_SUBSCRIPTION_PLAN.id);
   const selectedPlan = SUBSCRIPTION_PLANS.find(plan => plan.id === planId)!;

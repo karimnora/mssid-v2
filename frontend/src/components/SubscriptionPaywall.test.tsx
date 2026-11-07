@@ -131,3 +131,5 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
   });
 
 });
+
+vi.mock('../utils/premiumFunnel', () => ({ recordPremiumEvent: vi.fn() }));

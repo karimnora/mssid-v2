@@ -46,4 +46,5 @@ public class UserProfileDto {
     private Map<String, Object> avatarConfig;
     private Map<String, Object> competenceStats;
     private List<Map<String, Object>> lessonSessions;
+    private List<Map<String, Object>> villageSummaries;
 }

@@ -1,3 +1,4 @@
+import type { PrimaryGrade } from '../types';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ParentGateModal } from './ParentGateModal';
@@ -19,7 +20,7 @@ export function readEmailDeepLink(search: string): EmailDeepLinkTarget | null {
  * WeeklyReportService). Both go through the Parent Gate, then open the notebook or the web offer.
  * The parameter is removed from the address so a reload or a shared link does not reopen it.
  */
-export const EmailDeepLink: React.FC<{ onOpenNotebook: () => void }> = ({ onOpenNotebook }) => {
+export const EmailDeepLink: React.FC<{ onOpenNotebook: () => void; grade?: PrimaryGrade }> = ({ onOpenNotebook, grade }) => {
   const { authUser } = useAuth();
   const [target] = useState<EmailDeepLinkTarget | null>(() => (typeof window === 'undefined' ? null : readEmailDeepLink(window.location.search)));
   const [gate, setGate] = useState(Boolean(target));
@@ -56,7 +57,7 @@ export const EmailDeepLink: React.FC<{ onOpenNotebook: () => void }> = ({ onOpen
       )}
       {offer && createPortal(
         <div className="relative z-[75]">
-          <SubscriptionPaywall parentVerified user={authUser} onClose={() => setOffer(false)} onSuccessUpgrade={(user) => { AuthService.setCurrentUser(user); setOffer(false); }} />
+          <SubscriptionPaywall grade={grade} parentVerified user={authUser} onClose={() => setOffer(false)} onSuccessUpgrade={(user) => { AuthService.setCurrentUser(user); setOffer(false); }} />
         </div>,
         document.body,
       )}

@@ -59,3 +59,6 @@ if (typeof window !== 'undefined') {
     },
   });
 }
+
+// UI/unit tests never emit real aggregate traffic; premiumFunnel.test explicitly tests the transport.
+vi.mock('../utils/premiumFunnel', () => ({ recordPremiumEvent: vi.fn() }));
