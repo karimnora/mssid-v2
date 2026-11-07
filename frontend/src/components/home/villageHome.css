@@ -1274,3 +1274,6 @@
 .home-preview-door { max-height: calc(100svh - 48px); overflow-y: auto; }
 .village-session-dialog { width: min(760px, 100%); text-align: start; align-items: stretch; }
 .village-session-dialog .session-table-wrap table { min-width: 520px; }
+
+/* Keep the explicit replay usable beside the main action on small phones. */
+.home-preview-replay { flex: 0 0 60px; min-width: 60px; min-height: 60px; flex-direction: column; gap: 2px; padding: 6px; font-size: 16px; line-height: 1.3; }

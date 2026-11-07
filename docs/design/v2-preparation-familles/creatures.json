@@ -1,0 +1,66 @@
+[
+  {
+    "file": "bee-1.webp",
+    "sourceSha256": "c8c85dd5896aff11e126e00cb946ffbc477330540a738612ba20edfe2e4aa3bd",
+    "sourceBytes": 42160,
+    "bytes": 17312,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "bee-2.webp",
+    "sourceSha256": "f3c661a60672309190cf17b660d7bc25e586ca9a3f73164d8880d9b8f47ef3b2",
+    "sourceBytes": 40194,
+    "bytes": 16182,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "bird-1.webp",
+    "sourceSha256": "bf611293c7f9339273559472e9022956220cf3e384d2be7dc4952b417fd0fe74",
+    "sourceBytes": 48130,
+    "bytes": 19616,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "bird-2.webp",
+    "sourceSha256": "85a529a79d5d2c0f6a84729e12e2f40f5c5b4af719b1e528ef1694bc04c28931",
+    "sourceBytes": 42854,
+    "bytes": 17376,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "butterfly-1.webp",
+    "sourceSha256": "d07dff5fb097f83728c0c58af11832f7b3c466ed4f9dc7f1aa8417f0106d3a91",
+    "sourceBytes": 43402,
+    "bytes": 18374,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "butterfly-2.webp",
+    "sourceSha256": "20bc864c7ba4f73fd0646c84d2165132c4877bb679550b9c976a345f71193b4e",
+    "sourceBytes": 40346,
+    "bytes": 16256,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "ladybug-1.webp",
+    "sourceSha256": "7b371033b0c112bd79599ffeb3a66d2d1f1e3bd93956d7c40eb6ae78fda6434f",
+    "sourceBytes": 29082,
+    "bytes": 12120,
+    "width": 192,
+    "height": 192
+  },
+  {
+    "file": "ladybug-2.webp",
+    "sourceSha256": "74301163de55904e2fafd67271984e6be1d02d1e0e7b15b9b95b24f60d26d7b6",
+    "sourceBytes": 27954,
+    "bytes": 11684,
+    "width": 192,
+    "height": 192
+  }
+]

@@ -76,8 +76,8 @@ class PaymentServiceTest {
                 .userEmail("yassine@mssid.dz")
                 .paymentMethod("BARIDIMOB")
                 .transactionRef("BM-12345")
-                .amountDzd(1500.0)
-                .planId("P6M")
+                .amountDzd(900.0)
+                .planId("P3M")
                 .receiptImageUrl("https://mssid.dz/proof.png")
                 .build();
 
@@ -214,7 +214,7 @@ class PaymentServiceTest {
         verify(adminAuditLogService).record(eq("admin@mssid.dz"), eq("RECEIPT_REJECTED"), eq("RECEIPT"), eq("50"), anyString());
     }
     @org.junit.jupiter.params.ParameterizedTest
-    @org.junit.jupiter.params.provider.CsvSource({"P3M,3,900", "P6M,6,1500", "P12M,12,2400"})
+    @org.junit.jupiter.params.provider.CsvSource({"P3M,3,900", "P12M,12,2400"})
     void chosenPlanStoresPriceAndActivatesCorrectDuration(String id, int months, double price) {
         when(userRepository.findByEmail(student.getEmail())).thenReturn(Optional.of(student));
         when(receiptRepository.save(any(PaymentReceipt.class))).thenAnswer(inv -> inv.getArgument(0));
@@ -264,4 +264,15 @@ class PaymentServiceTest {
         assertEquals(start, existing.getStartDate()); assertEquals(end.plusMonths(3), existing.getEndDate());
     }
 
+    @Test void approvesAnAlreadyFiledSixMonthReceiptWithoutSellingItAgain() {
+        var old = PaymentReceipt.builder().id(71L).user(student).planId("P6M").durationMonths(6).amountDzd(1500.0).status(PaymentReceipt.ReceiptStatus.PENDING_VERIFICATION).build();
+        when(receiptRepository.findForVerification(71L)).thenReturn(Optional.of(old));
+        when(roleRepository.findByName(Role.RoleName.ROLE_PREMIUM)).thenReturn(Optional.of(premiumRole));
+        when(subscriptionRepository.findByUser(student)).thenReturn(Optional.empty());
+        var request = new VerifyReceiptRequest(); request.setApprove(true);
+        paymentService.verifyReceipt(71L, request, "admin@test.invalid");
+        var saved = ArgumentCaptor.forClass(Subscription.class); verify(subscriptionRepository).save(saved.capture());
+        assertEquals(LocalDate.now().plusMonths(6), saved.getValue().getEndDate());
+        assertEquals("P6M", saved.getValue().getPlanId());
+    }
 }

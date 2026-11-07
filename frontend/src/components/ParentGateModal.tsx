@@ -22,7 +22,7 @@ export const AskAdultScreen: React.FC<AskAdultScreenProps> = ({ onAskAdult, onCl
     <div className="p-6 space-y-5 text-center">
       <div className="text-5xl" aria-hidden>🦊</div>
       <h2 className="text-xl font-black text-[var(--kids-ink)]">{t('askAdultTitle')}</h2>
-      <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">{t('askAdultBody')}</p>
+      <p className="text-base font-bold text-[var(--kids-muted)] leading-relaxed">{t('askAdultBody')}</p>
       <button
         type="button"
         onClick={onAskAdult}
@@ -33,7 +33,7 @@ export const AskAdultScreen: React.FC<AskAdultScreenProps> = ({ onAskAdult, onCl
       <button
         type="button"
         onClick={onClose}
-        className="text-sm font-extrabold text-[var(--kids-muted)] cursor-pointer min-h-12"
+        className="text-base font-extrabold text-[var(--kids-muted)] cursor-pointer min-h-[60px]"
       >
         {t('verifyNotNow')}
       </button>
@@ -98,7 +98,7 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
         </div>
 
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
-          <p className="text-sm font-bold text-[var(--kids-muted)] leading-relaxed">
+          <p className="text-base font-bold text-[var(--kids-muted)] leading-relaxed">
             {t('parentGateBody')}
           </p>
           <div className="bg-[#FFF8E7] border-2 border-[#E7E2D7] rounded-2xl p-4 text-center">
@@ -120,7 +120,7 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
             className="kids-input text-center text-lg font-bold"
           />
           {error && (
-            <p role="alert" className="text-xs font-bold text-center text-[var(--brand-coral)]">
+            <p role="alert" className="text-base font-bold text-center text-[var(--brand-coral)]">
               {t('parentGateError')}
             </p>
           )}

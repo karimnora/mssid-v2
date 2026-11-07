@@ -340,3 +340,25 @@ it("plays recorded mission fragments in sequence and cancels them when leaving",
   expect(second.pause).toHaveBeenCalled();
   expect(second.onended).toBeNull();
 });
+
+it("preloads at most the next presentation clip and stops immediately when hidden", () => {
+  render(<DidouVillageHome/>); fireEvent.click(document.querySelector("[data-home-start]")!);
+  expect(TestAudio.instances).toHaveLength(2);
+  Object.defineProperty(document,"visibilityState",{configurable:true,value:"hidden"});
+  fireEvent(document,new Event("visibilitychange"));
+  expect(TestAudio.instances.every(a=>a.paused)).toBe(true);
+  expect(main()).toHaveAttribute("data-home-tour","idle");
+  Object.defineProperty(document,"visibilityState",{configurable:true,value:"visible"});
+});
+it("offers an explicit replay after choosing a place",()=>{
+  render(<DidouVillageHome/>);fireEvent.click(document.querySelector('[data-home-place="stories"]')!);
+  const first=clip("stories");fireEvent.click(document.querySelector('[data-home-replay]')!);
+  expect(first.pause).toHaveBeenCalled();expect(first.play).toHaveBeenCalledTimes(2);
+});
+
+it("keeps Didou's existing image element while the next pose downloads",()=>{
+  render(<DidouVillageHome/>);
+  const image=document.querySelector('.home-preview-character img');
+  fireEvent.click(document.querySelector('[data-home-place="stories"]')!);
+  expect(document.querySelector('.home-preview-character img')).toBe(image);
+});

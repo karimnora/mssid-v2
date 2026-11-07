@@ -98,7 +98,7 @@ public class ActivationCodeService {
 
     @Transactional
     public List<String> generate(String planId, int count, int seats, String kind, String label, LocalDate validUntil, String actor) {
-        SubscriptionPlan plan = SubscriptionPlan.resolve(planId);
+        SubscriptionPlan plan = SubscriptionPlan.forNewPurchase(planId);
         if (count < 1 || count > MAX_BATCH) throw bad("Entre 1 et " + MAX_BATCH + " codes par lot.");
         if (seats < 1 || seats > MAX_SEATS) throw bad("Entre 1 et " + MAX_SEATS + " comptes par code.");
         if (!KINDS.contains(kind)) throw bad("Type de code inconnu.");

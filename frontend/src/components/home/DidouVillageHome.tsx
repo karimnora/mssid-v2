@@ -159,10 +159,10 @@ export function DidouVillageHome({
     setPanel(false);
     setTourActive(true);
     touring.current = true;
-    prepare(true);
     const present = (index: number) => {
       if (!touring.current) return;
       const id = PRESENTATION[index];
+      const next = PRESENTATION[index + 1];
       if (!id) {
         cancelTour();
         setSelected(null);
@@ -172,6 +172,7 @@ export function DidouVillageHome({
       setTourStep(index);
       setSelected(id === "welcome" ? null : id);
       say(id, () => present(index + 1), true);
+      if (next) prepare(true, [next]);
     };
     present(0);
   };
@@ -182,7 +183,6 @@ export function DidouVillageHome({
     setSelected(id);
     setPanel(false);
     say(id);
-    prepare();
   };
   const discover = (id: GardenCreatureId) => {
     cancelTour();
@@ -199,7 +199,6 @@ export function DidouVillageHome({
       motionTokens.reactionHold * 1000
     );
     say(id === "butterfly" ? "butterfly" : "discovery");
-    prepare();
   };
   const resetDiscoveries = () => {
     cancelTour();
@@ -242,7 +241,7 @@ export function DidouVillageHome({
     >
       <picture className="home-preview-world" aria-hidden="true">
         <source media="(max-width: 680px)" srcSet={portrait} />
-        <img src={landscape} alt="" draggable={false} />
+        <img src={landscape} alt="" draggable={false} fetchPriority="high" decoding="async" />
       </picture>
       <div className="home-preview-shade" aria-hidden="true" />
       <header className="home-preview-header">
@@ -408,7 +407,6 @@ export function DidouVillageHome({
             }
             cancelTour();
             say(voiceId);
-            prepare();
           }}
           animate={
             reduced
@@ -430,8 +428,9 @@ export function DidouVillageHome({
           whileTap={reduced ? undefined : { scale: 0.97 }}
         >
           <motion.img
-            key={pose}
+
             src={pose}
+            decoding="async"
             alt="ديدو، الفنك ذو الوشاح الأخضر والنجمة الحمراء"
             draggable={false}
             initial={false}
@@ -477,6 +476,7 @@ export function DidouVillageHome({
             {started ? "اسمع ديدو من جديد" : "اسمع ديدو"}
           </VillageButton>
         )}
+        {selected && !tourActive && <VillageButton variant="secondary" className="home-preview-replay" aria-label="أسمع ديدو من جديد" data-home-replay onClick={() => { cancelTour(); setMuted(false); say(voiceId, undefined, true); }}><Volume2 size={21} /> أسمع</VillageButton>}
       </DidouBubble>
 
       {connection && learning && (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { SubscriptionPaywall } from './SubscriptionPaywall';
 import { AuthService } from '../services/authService';
 import { AuthUser } from '../types/auth';
@@ -80,7 +80,6 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     await attachReceipt();
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ }));
-    solveParentGate();
 
     await waitFor(() => {
       expect(submitSpy).toHaveBeenCalledWith(
@@ -106,7 +105,6 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-2026-987456123' } });
     await attachReceipt();
     fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ }));
-    solveParentGate();
 
     await waitFor(() => {
       expect(screen.getByText("Le montant indiqué (1 DZD) ne correspond pas au tarif de l'abonnement (1500 DZD).")).toBeInTheDocument();
@@ -126,10 +124,19 @@ describe('SubscriptionPaywall — receipt submission (regression: no false "pend
     fireEvent.click(screen.getByRole('radio', { name: new RegExp(`^${months} أشهر`) }));
     fireEvent.change(screen.getByPlaceholderText('مثال: BM-2026-987456123'), { target: { value: 'BM-plan-test' } });
     await attachReceipt();
-    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ })); solveParentGate();
+    fireEvent.click(screen.getByRole('button', { name: /إرسال وصل الدفع/ }));
     await waitFor(() => expect(submitSpy).toHaveBeenCalledWith(expect.objectContaining({ amountDzd: price, planId })));
   });
 
 });
 
 vi.mock('../utils/premiumFunnel', () => ({ recordPremiumEvent: vi.fn() }));
+
+it('expires the parent authorisation after fifteen minutes instead of persisting it globally',()=>{
+  vi.useFakeTimers();
+  try { renderPaywall(<SubscriptionPaywall parentVerified user={testUser} onClose={vi.fn()} onSuccessUpgrade={vi.fn()}/>);
+    expect(document.querySelector('[data-premium-showcase]')).toBeVisible();
+    act(()=>vi.advanceTimersByTime(15*60_000));
+    expect(document.querySelector('[data-premium-showcase]')).toBeNull();
+  } finally { vi.useRealTimers(); }
+});

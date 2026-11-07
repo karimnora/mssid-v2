@@ -155,6 +155,7 @@ class ActivationCodeServiceTest {
         assertThatThrownBy(() -> service.generate("P3M", 10, 61, "CARD", "x", null, "a")).isInstanceOf(ResponseStatusException.class);
         assertThatThrownBy(() -> service.generate("P3M", 10, 1, "GIFT", "x", null, "a")).isInstanceOf(ResponseStatusException.class);
         assertThatThrownBy(() -> service.generate("P3M", 10, 1, "CARD", " ", null, "a")).isInstanceOf(ResponseStatusException.class);
+        assertThatThrownBy(() -> service.generate("P6M", 1, 1, "CARD", "x", null, "a")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> service.generate("P99", 10, 1, "CARD", "x", null, "a")).isInstanceOf(IllegalArgumentException.class);
     }
 }

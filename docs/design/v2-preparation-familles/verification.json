@@ -1,0 +1,24 @@
+{
+  "frontendFull": {
+    "files": 260,
+    "tests": 2578,
+    "scope": "Before final replay/image/decimal/parent typography refinements"
+  },
+  "frontendFinalTargeted": {
+    "files": 4,
+    "tests": 33
+  },
+  "backend": {
+    "tests": 266,
+    "excluded": "EducationApplicationTests: two integrations require local PostgreSQL"
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "precache": {
+    "entries": 143,
+    "kib": 12648.48
+  },
+  "physicalAndroid": "not tested",
+  "newRecordings": 0,
+  "paidApiCalls": 0
+}

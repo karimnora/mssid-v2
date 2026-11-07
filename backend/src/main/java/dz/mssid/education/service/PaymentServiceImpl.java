@@ -37,7 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé pour la soumission du reçu: " + userEmail));
 
-        SubscriptionPlan plan = SubscriptionPlan.resolve(request.getPlanId());
+        SubscriptionPlan plan = SubscriptionPlan.forNewPurchase(request.getPlanId());
         if (request.getPlanId() != null && !request.getPlanId().isBlank() && request.getAmountDzd() == null) {
             throw new IllegalArgumentException("Le montant de la formule choisie est obligatoire");
         }

@@ -1,0 +1,31 @@
+{
+  "source": "Arabic 390x844, explicit isolated demo, mocked APIs, deterministic fictitious profile and date; visually review before replacing assets",
+  "files": [
+    {
+      "file": "home.webp",
+      "bytes": 22828,
+      "sha256": "288448ba27d52da3d9a0e9d02f7f187c1a7db2bdb9e193b7a6b42d55d8834cd6"
+    },
+    {
+      "file": "voice.webp",
+      "bytes": 32162,
+      "sha256": "ebe861c62b15961bafba1e73bdac12694dd63e7bbf91bfecab614de256de890c"
+    },
+    {
+      "file": "manipulation.webp",
+      "bytes": 20960,
+      "sha256": "f15ed69452d8281b7663d2b9afbedd9c1ee9f93f8a470a52270ab38d27a2e183"
+    },
+    {
+      "file": "support.webp",
+      "bytes": 18230,
+      "sha256": "dcb23f59e29dcee41c80872c7bd7d8490a0935ad31501ed10e3c816060ab1f5d"
+    },
+    {
+      "file": "report.webp",
+      "bytes": 26898,
+      "sha256": "9f361d404f09f4db511a15e5b4691756402713b570bcf9fd823e505bd78887c5"
+    }
+  ],
+  "lessonHash": "f6af5373a348318e4ee388dc058e669d6535e1c27b7d880b58423eaadff328cf"
+}

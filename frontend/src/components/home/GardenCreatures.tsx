@@ -3,14 +3,14 @@ import { useMotionPreference } from "../../hooks/useMotionPreference";
 import { motionTokens } from "./villageMotion";
 import React, { useState } from "react";
 import { AnimatePresence, motion, useIsPresent } from "motion/react";
-import butterfly1 from "../../assets/design/home-v3/creatures/butterfly-1.webp";
-import butterfly2 from "../../assets/design/home-v3/creatures/butterfly-2.webp";
-import bee1 from "../../assets/design/home-v3/creatures/bee-1.webp";
-import bee2 from "../../assets/design/home-v3/creatures/bee-2.webp";
-import bird1 from "../../assets/design/home-v3/creatures/bird-1.webp";
-import bird2 from "../../assets/design/home-v3/creatures/bird-2.webp";
-import ladybug1 from "../../assets/design/home-v3/creatures/ladybug-1.webp";
-import ladybug2 from "../../assets/design/home-v3/creatures/ladybug-2.webp";
+import butterfly1 from "../../assets/design/home-v3/creatures/compact/butterfly-1.webp";
+import butterfly2 from "../../assets/design/home-v3/creatures/compact/butterfly-2.webp";
+import bee1 from "../../assets/design/home-v3/creatures/compact/bee-1.webp";
+import bee2 from "../../assets/design/home-v3/creatures/compact/bee-2.webp";
+import bird1 from "../../assets/design/home-v3/creatures/compact/bird-1.webp";
+import bird2 from "../../assets/design/home-v3/creatures/compact/bird-2.webp";
+import ladybug1 from "../../assets/design/home-v3/creatures/compact/ladybug-1.webp";
+import ladybug2 from "../../assets/design/home-v3/creatures/compact/ladybug-2.webp";
 
 export type GardenCreatureId = "butterfly" | "bee" | "bird" | "ladybug";
 
@@ -109,6 +109,8 @@ function Creature({
           <motion.img
             key={src}
             src={src}
+            decoding="async"
+            fetchPriority="low"
             alt=""
             draggable={false}
             initial={false}

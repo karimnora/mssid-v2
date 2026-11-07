@@ -45,10 +45,11 @@ export default defineConfig(({ mode }) => {
           ],
         },
         workbox: {
-          // Precaches every built JS/CSS/HTML/image asset (the app-shell + all lazy chunks —
+          // Precache app/course code (the app-shell + all lazy chunks —
           // course content is bundled into JS, not fetched as separate JSON at runtime, so this
-          // alone is what makes "review a lesson offline" work).
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}', 'sounds/preschool/{ar,fr,en}/*.mp3', 'sounds/box/*.{mp3,ogg}'],
+          // preserves course text offline; media is cached on demand after it has been used).
+          // Keep the application and course code offline, fetch pictures/fonts/sounds only when used.
+          globPatterns: ['**/*.{js,css,html,ico}', 'pwa-192x192.png'],
           // Without this, every previous deploy's precache stays in storage forever once a new SW
           // activates — pure waste, and one more place a stale asset could theoretically still be
           // served from if a runtime-caching rule ever matched it by accident.
@@ -60,6 +61,11 @@ export default defineConfig(({ mode }) => {
           maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
           navigateFallback: '/index.html',
           runtimeCaching: [
+            {
+              urlPattern: ({ url }: { url: URL }) => url.origin === self.location.origin && /\/(?:assets|sounds)\/[^?]+\.(?:webp|png|jpg|svg|woff2|mp3|ogg)$/.test(url.pathname),
+              handler: 'CacheFirst',
+              options: { cacheName: 'mssid-media-on-demand-v1', cacheableResponse: { statuses: [200] }, expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 30 } },
+            },
             {
               // Only the endpoints explicitly marked permitAll in SecurityConfig belong in a
               // URL-keyed cache. All account, admin, payment, AI and premium requests bypass the
@@ -94,6 +100,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       rollupOptions: {
+        input: { app: path.resolve(__dirname, "index.html"), manipulations: path.resolve(__dirname, "manipulations.html") },
         output: {
           // Phaser 4 is ~2 MiB minified. Without this it rides into index-*.js via
           // ChallengesArena → ArcadeGamesSection, and Workbox refuses to precache a 7+ MiB file.

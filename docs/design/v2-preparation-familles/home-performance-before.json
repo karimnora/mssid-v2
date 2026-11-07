@@ -1,0 +1,203 @@
+{
+  "model": "Chromium 390x844; CPU x4; 1.6Mbps; 300ms latency; local Vite preview (not production); APIs mocked; service worker blocked",
+  "interactiveMs": 7436,
+  "resources": [
+    {
+      "name": "index-ODfVoo4_.js",
+      "bytes": 771762,
+      "type": "script"
+    },
+    {
+      "name": "index-BXtq4HNE.css",
+      "bytes": 57589,
+      "type": "link"
+    },
+    {
+      "name": "registerSW.js",
+      "bytes": 134,
+      "type": "script"
+    },
+    {
+      "name": "pwa-icon-source.svg",
+      "bytes": 993,
+      "type": "other"
+    },
+    {
+      "name": "JourneyScreen-AN9LmzgY.js",
+      "bytes": 30497,
+      "type": "script"
+    },
+    {
+      "name": "map-eLRC24Bf.js",
+      "bytes": 598,
+      "type": "script"
+    },
+    {
+      "name": "JourneyScreen--FAywooN.css",
+      "bytes": 7089,
+      "type": "link"
+    },
+    {
+      "name": "ProfileModal-Cx7P4nom.js",
+      "bytes": 4935,
+      "type": "script"
+    },
+    {
+      "name": "badgeEngine-DTjmW_pr.js",
+      "bytes": 3177,
+      "type": "script"
+    },
+    {
+      "name": "shortSurahs-DZJBpngK.js",
+      "bytes": 11550,
+      "type": "script"
+    },
+    {
+      "name": "tamazight-Ch1hjAdn.js",
+      "bytes": 7691,
+      "type": "script"
+    },
+    {
+      "name": "database-Cc3ILUOy.js",
+      "bytes": 416,
+      "type": "script"
+    },
+    {
+      "name": "flame-BG5GLxDb.js",
+      "bytes": 372,
+      "type": "script"
+    },
+    {
+      "name": "refresh-cw-Cq1ZU4CB.js",
+      "bytes": 494,
+      "type": "script"
+    },
+    {
+      "name": "SettingsModal-DL1RF4x1.js",
+      "bytes": 2803,
+      "type": "script"
+    },
+    {
+      "name": "didou-talk-B2a8wNKd.webp",
+      "bytes": 38202,
+      "type": "image"
+    },
+    {
+      "name": "me",
+      "bytes": 0,
+      "type": "fetch"
+    },
+    {
+      "name": "feature-flags",
+      "bytes": 0,
+      "type": "fetch"
+    },
+    {
+      "name": "script.js",
+      "bytes": 0,
+      "type": "script"
+    },
+    {
+      "name": "favicon.ico",
+      "bytes": 0,
+      "type": "other"
+    },
+    {
+      "name": "village-portrait-CB8_y4Gq.webp",
+      "bytes": 248346,
+      "type": "img"
+    },
+    {
+      "name": "butterfly-1-CbQxAy2L.webp",
+      "bytes": 43402,
+      "type": "img"
+    },
+    {
+      "name": "butterfly-2-6htbbJVj.webp",
+      "bytes": 40346,
+      "type": "img"
+    },
+    {
+      "name": "bee-1-D-B9LcBE.webp",
+      "bytes": 42160,
+      "type": "img"
+    },
+    {
+      "name": "bee-2-Bz3Fh7cT.webp",
+      "bytes": 40194,
+      "type": "img"
+    },
+    {
+      "name": "bird-1-R5eb7omS.webp",
+      "bytes": 48130,
+      "type": "img"
+    },
+    {
+      "name": "bird-2-C_dcH1M2.webp",
+      "bytes": 42854,
+      "type": "img"
+    },
+    {
+      "name": "ladybug-1-BjKk9YgG.webp",
+      "bytes": 29082,
+      "type": "img"
+    },
+    {
+      "name": "ladybug-2-D9O36MMm.webp",
+      "bytes": 27954,
+      "type": "img"
+    },
+    {
+      "name": "didou-greet-fwH0gzu1.webp",
+      "bytes": 63750,
+      "type": "img"
+    },
+    {
+      "name": "space-portrait-CseDoEVl.webp",
+      "bytes": 19490,
+      "type": "css"
+    },
+    {
+      "name": "cairo-arabic-800-normal-G1qvPr6G.woff2",
+      "bytes": 13888,
+      "type": "css"
+    },
+    {
+      "name": "cairo-latin-700-normal-C3GYtKbV.woff2",
+      "bytes": 15284,
+      "type": "css"
+    },
+    {
+      "name": "cairo-latin-400-normal-Dh7otpdh.woff2",
+      "bytes": 15016,
+      "type": "css"
+    },
+    {
+      "name": "progress",
+      "bytes": 0,
+      "type": "fetch"
+    },
+    {
+      "name": "welcome-BvMGgy_K.mp3",
+      "bytes": 68444,
+      "type": "audio"
+    },
+    {
+      "name": "cairo-arabic-700-normal-D3nDedWX.woff2",
+      "bytes": 13952,
+      "type": "css"
+    },
+    {
+      "name": "pwa-icon-source.svg",
+      "bytes": 993,
+      "type": "other"
+    }
+  ],
+  "voices": [
+    {
+      "src": "http://127.0.0.1:3004/assets/welcome-BvMGgy_K.mp3",
+      "delayMs": 4750
+    }
+  ],
+  "errors": []
+}

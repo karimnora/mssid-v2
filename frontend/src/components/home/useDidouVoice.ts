@@ -52,9 +52,9 @@ export function useDidouVoice({
         stop();
         setFeedback("لم يعمل الصوت. اضغط على السماعة للمحاولة.");
       };
-      deadline.current = setTimeout(fail, 60000);
+      deadline.current = setTimeout(fail, 15000);
       clip.onplaying = () => {
-        if (token === request.current) setPhase("speaking");
+        if (token === request.current) { if (deadline.current) clearTimeout(deadline.current); setPhase("speaking"); }
       };
       clip.onerror = fail;
       clip.onended = () => {
@@ -67,15 +67,19 @@ export function useDidouVoice({
     };
     play(0);
   };
-  const prepare = (force = false) => {
+  const prepare = (force = false, ids: readonly VoiceId[] = ["welcome"]) => {
     if (muted && !force) return;
     if (typeof Audio === "undefined") return;
     const connection = (
-      navigator as Navigator & { connection?: { saveData?: boolean } }
+      navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }
     ).connection;
-    if (connection?.saveData) return;
-    for (const id of Object.keys(HOME_VOICES) as VoiceId[]) {
+    if (connection?.saveData || ["slow-2g", "2g", "3g"].includes(connection?.effectiveType ?? "")) return;
+    for (const id of ids.slice(0, 1)) {
       if (warm.current.has(id)) continue;
+      // Keep only the current clip and one likely next clip in memory.
+      for (const [key, cached] of warm.current) {
+        if (cached !== audio.current) { cached.removeAttribute("src"); warm.current.delete(key); }
+      }
       const clip = new Audio(HOME_VOICES[id].src);
       clip.preload = "auto";
       warm.current.set(id, clip);
@@ -94,7 +98,7 @@ export function useDidouVoice({
     clip.currentTime = 0;
     setPhase("loading");
     clip.onplaying = () => {
-      if (request.current === token) setPhase("speaking");
+      if (request.current === token) { if (deadline.current) clearTimeout(deadline.current); setPhase("speaking"); }
     };
     clip.onended = () => {
       if (request.current !== token) return;
@@ -103,15 +107,16 @@ export function useDidouVoice({
     };
     clip.onerror = () => {
       if (request.current !== token) return;
-      setPhase("idle");
+      stop();
       onError();
       setFeedback(
         "لَمْ يَعْمَلِ الصَّوْتُ. اِضْغَطْ عَلَى السَّمَّاعَةِ لِلْمُحَاوَلَةِ."
       );
     };
+    deadline.current = setTimeout(() => { if (request.current === token) { stop(); onError(); setFeedback("لم يعمل الصوت. اضغط على السماعة للمحاولة."); } }, 15000);
     void clip.play().catch(() => {
       if (request.current !== token) return;
-      setPhase("idle");
+      stop();
       onError();
       setFeedback("اِضْغَطْ عَلَى السَّمَّاعَةِ لِسَمَاعِ دِيدُو.");
     });
@@ -120,7 +125,8 @@ export function useDidouVoice({
   useEffect(
     () => () => {
       request.current++;
-      audio.current?.pause();
+      if (deadline.current) clearTimeout(deadline.current);
+      if (audio.current) { audio.current.onplaying = audio.current.onended = audio.current.onerror = null; audio.current.pause(); }
       for (const clip of warm.current.values()) {
         clip.onplaying = clip.onended = clip.onerror = null;
         clip.pause();
@@ -130,5 +136,11 @@ export function useDidouVoice({
     },
     []
   );
+  useEffect(() => { if (muted) stop(); }, [muted]);
+  useEffect(() => {
+    const hide = () => { if (document.visibilityState === "hidden") { stop(); onError(); } };
+    document.addEventListener("visibilitychange", hide);
+    return () => document.removeEventListener("visibilitychange", hide);
+  }, []);
   return { voiceId, setVoiceId, phase, feedback, stop, prepare, say, sayParts };
 }

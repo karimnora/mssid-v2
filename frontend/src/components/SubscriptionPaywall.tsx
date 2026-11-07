@@ -48,6 +48,12 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
   const [customError, setCustomError] = useState<string | null>(null);
   const [showParentGate, setShowParentGate] = useState(false);
   const [parentReady, setParentReady] = useState(parentVerified);
+  const [parentUntil, setParentUntil] = useState(parentVerified ? Date.now() + 15 * 60_000 : 0);
+  useEffect(() => {
+    if (!parentReady) return;
+    const timer = window.setTimeout(() => setParentReady(false), Math.max(0, parentUntil - Date.now()));
+    return () => window.clearTimeout(timer);
+  }, [parentReady, parentUntil]);
 
   const offerCounted = useRef(false);
   useEffect(() => {
@@ -68,10 +74,11 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
     }
   };
 
-  // Prices require the parent challenge; a second challenge protects receipt submission.
+  // One parent challenge for this continuous mounted payment flow; closing resets it.
   const handleSubmitReceipt = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowParentGate(true);
+    if (parentReady && Date.now() < parentUntil) void submitReceiptAfterParentGate();
+    else setShowParentGate(true);
   };
 
   const submitReceiptAfterParentGate = async () => {
@@ -141,13 +148,13 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
             <X className="w-5 h-5" />
           </button>
 
-          <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-xs font-bold mb-2">
+          <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-base font-bold mb-2">
             <Lock className="w-3.5 h-3.5" />
             <span>{t('exclusiveBadge')}</span>
           </div>
 
           <h2 className="text-xl sm:text-2xl font-black font-sans text-white">{modalTitle}</h2>
-          <p className="text-xs text-purple-200 mt-1 max-w-xl">
+          <p className="text-base text-purple-200 mt-1 max-w-xl">
             {t('headerSubtitle')}
           </p>
         </div>
@@ -158,8 +165,8 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
           {/* Comparison Cards: Free vs Premium */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <span className="text-xs font-extrabold text-slate-500 block">{t('freePlanTitle')}</span>
-              <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <span className="text-base font-extrabold text-slate-500 block">{t('freePlanTitle')}</span>
+              <ul className="text-base text-slate-600 space-y-1.5 list-disc list-inside">
                 <li className="text-emerald-700 font-bold">{t('freePlanFeature1')}</li>
                 <li className="text-emerald-700 font-bold">{t('freePlanFeature2')}</li>
                 <li className="text-emerald-700 font-bold">{t('freePlanFeature3')}</li>
@@ -168,17 +175,17 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
             </div>
 
             <div className="p-4 rounded-2xl bg-purple-50 border border-purple-200 space-y-2 relative overflow-hidden">
-              <span className="text-xs font-extrabold text-purple-800 block flex items-center gap-1">
+              <span className="text-base font-extrabold text-purple-800 block flex items-center gap-1">
                 <Sparkles className="w-4 h-4 text-amber-500" />
                 <span>{t('premiumPlanTitle')}</span>
               </span>
               {/* What the parent gets comes first; Didou's worlds and games are the child's bonus. */}
-              <ul className="text-sm text-purple-950 space-y-2" data-premium-promise="parent">
+              <ul className="text-base text-purple-950 space-y-2" data-premium-promise="parent">
                 <li className="font-extrabold leading-snug">{t('premiumPlanFeature1')}</li>
                 <li className="font-extrabold leading-snug">{t('premiumPlanFeature2')}</li>
                 <li className="font-extrabold leading-snug">{t('premiumPlanFeature3')}</li>
               </ul>
-              <ul className="text-xs text-purple-900 space-y-1.5 pt-2 border-t border-purple-200" data-premium-promise="child">
+              <ul className="text-base text-purple-900 space-y-1.5 pt-2 border-t border-purple-200" data-premium-promise="child">
                 <li className="font-bold">{t('premiumPlanFeature4')}</li>
                 <li className="font-bold">{t('premiumPlanFeature5')}</li>
                 <li className="font-extrabold text-amber-700">{t('premiumPlanPrice', { price: selectedPlan.priceDzd, months: selectedPlan.months })}</li>
@@ -188,17 +195,17 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
 
           {!submittedReceipt && <fieldset className="space-y-3" disabled={isSubmitting || showParentGate}>
             <legend className="font-extrabold">{t('chooseDuration')}</legend>
-            <p className="text-sm text-slate-600">{t('sameServices')}</p>
+            <p className="text-base text-slate-600">{t('sameServices')}</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {SUBSCRIPTION_PLANS.map(plan => <label key={plan.id} className={`rounded-2xl p-4 border-2 cursor-pointer space-y-2 ${planId === plan.id ? 'border-[#008751] bg-emerald-50' : 'border-slate-200 bg-white'}`}>
                 <input type="radio" name="subscription-plan" value={plan.id} checked={planId === plan.id} onChange={() => setPlanId(plan.id)} className="accent-[#008751]" />
                 <span className="font-extrabold ms-2">{t('planMonths', { months: plan.months })}</span>
                 <p className="text-xl font-extrabold">{t('planTotal', { price: plan.priceDzd })}</p>
-                <p className="text-xs">{t('planMonthlyEquivalent', { price: plan.monthlyDzd })}</p>
-                {plan.months === 12 && <p className="text-xs font-bold text-emerald-800">{t('annualSaving')}</p>}
+                <p className="text-base">{t('planMonthlyEquivalent', { price: plan.monthlyDzd })}</p>
+                {plan.months === 12 && <p className="text-base font-bold text-emerald-800">{t('annualSaving')}</p>}
               </label>)}
             </div>
-            <p className="text-xs text-slate-600">{t('manualRenewal')}</p>
+            <p className="text-base text-slate-600">{t('manualRenewal')}</p>
           </fieldset>}
 
           {!submittedReceipt && <ActivationCodeForm onRedeemed={onSuccessUpgrade} />}
@@ -209,9 +216,9 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
               <div className="flex items-center gap-3 text-amber-800">
                 <Clock className="w-6 h-6 text-amber-600 shrink-0" />
                 <div>
-                  <h4 className="font-extrabold text-sm">{t('receiptSubmittedTitle')}</h4>
-                  <p className="text-xs font-bold">{t('selectedReceiptPlan', { price: submittedReceipt.amountDzd, months: submittedReceipt.durationMonths ?? selectedPlan.months })}</p>
-                  <p className="text-xs text-amber-700">
+                  <h4 className="font-extrabold text-base">{t('receiptSubmittedTitle')}</h4>
+                  <p className="text-base font-bold">{t('selectedReceiptPlan', { price: submittedReceipt.amountDzd, months: submittedReceipt.durationMonths ?? selectedPlan.months })}</p>
+                  <p className="text-base text-amber-700">
                     {t('receiptNumberLabel')} <span className="font-mono font-bold">{submittedReceipt.transactionRef}</span> | {t('statusLabel')}
                     <span className="font-extrabold text-amber-800 bg-amber-200 px-2 py-0.5 rounded-md mx-1">
                       {t('pendingStatus')}
@@ -220,7 +227,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                 </div>
               </div>
 
-              <div className="p-4 bg-white rounded-2xl border border-amber-200 text-xs text-slate-700 space-y-2">
+              <div className="p-4 bg-white rounded-2xl border border-amber-200 text-base text-slate-700 space-y-2">
                 <p>
                   {t('verificationNotePrefix')} <strong>{t('verificationNoteBold')}</strong> {t('verificationNoteSuffix')}
                 </p>
@@ -235,7 +242,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                     <span className="font-bold text-slate-500">{t('devTestLabel')}</span>
                     <button
                       onClick={handleSimulateAdminApproval}
-                      className="px-3 py-1.5 bg-emerald-600 text-white font-extrabold text-xs rounded-xl hover:bg-emerald-700 transition-all cursor-pointer flex items-center gap-1"
+                      className="px-3 py-1.5 bg-emerald-600 text-white font-extrabold text-base rounded-xl hover:bg-emerald-700 transition-all cursor-pointer flex items-center gap-1"
                     >
                       <CheckCircle2 className="w-4 h-4" />
                       <span>{t('devApproveButton')}</span>
@@ -247,7 +254,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
           ) : (
             /* Submission Form */
             <form onSubmit={handleSubmitReceipt} className="space-y-5 bg-slate-50/80 p-5 rounded-3xl border border-slate-200">
-              <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+              <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
                 <Smartphone className="w-4 h-4 text-purple-700" />
                 <span>{t('formTitle')}</span>
               </h3>
@@ -257,7 +264,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('BARIDIMOB')}
-                  className={`p-3 rounded-2xl border text-xs font-bold transition-all text-center cursor-pointer ${
+                  className={`p-3 rounded-2xl border text-base font-bold transition-all text-center cursor-pointer ${
                     paymentMethod === 'BARIDIMOB'
                       ? 'bg-purple-700 text-white border-purple-800 shadow-sm'
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -269,7 +276,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('EDAHABIA')}
-                  className={`p-3 rounded-2xl border text-xs font-bold transition-all text-center cursor-pointer ${
+                  className={`p-3 rounded-2xl border text-base font-bold transition-all text-center cursor-pointer ${
                     paymentMethod === 'EDAHABIA'
                       ? 'bg-purple-700 text-white border-purple-800 shadow-sm'
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -281,7 +288,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('CCP_OFFICE')}
-                  className={`p-3 rounded-2xl border text-xs font-bold transition-all text-center cursor-pointer ${
+                  className={`p-3 rounded-2xl border text-base font-bold transition-all text-center cursor-pointer ${
                     paymentMethod === 'CCP_OFFICE'
                       ? 'bg-purple-700 text-white border-purple-800 shadow-sm'
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -292,45 +299,45 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
               </div>
 
               {/* Account details info card */}
-              <div className="p-4 bg-purple-900 text-white rounded-2xl text-xs space-y-1.5 shadow-inner">
+              <div className="p-4 bg-purple-900 text-white rounded-2xl text-base space-y-1.5 shadow-inner">
                 <div className="flex justify-between items-center font-bold text-amber-300">
                   <span>{t('accountInfoLabel', { price: selectedPlan.priceDzd, months: selectedPlan.months })}</span>
                   <span>mssid dz</span>
                 </div>
-                <p className="text-[11px] text-purple-100 leading-relaxed">{t('accountPendingNote')}</p>
-                <p className="text-[11px] text-purple-200 leading-relaxed">{t('edahabiaMethodNote')}</p>
-                <p className="text-[11px] text-purple-200 leading-relaxed">{t('ccpNotePrefix')}</p>
+                <p className="text-base text-purple-100 leading-relaxed">{t('accountPendingNote')}</p>
+                <p className="text-base text-purple-200 leading-relaxed">{t('edahabiaMethodNote')}</p>
+                <p className="text-base text-purple-200 leading-relaxed">{t('ccpNotePrefix')}</p>
               </div>
 
               {/* Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">{t('transactionRefLabel')}</label>
+                  <label className="block text-base font-bold text-slate-700 mb-1">{t('transactionRefLabel')}</label>
                   <input
                     type="text"
                     value={transactionRef}
                     onChange={(e) => setTransactionRef(e.target.value)}
                     placeholder={t('transactionRefPlaceholder')}
-                    className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none"
+                    className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-base font-bold focus:ring-2 focus:ring-purple-600 focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">{t('amountLabel')}</label>
+                  <label className="block text-base font-bold text-slate-700 mb-1">{t('amountLabel')}</label>
                   <input
                     type="text"
                     disabled
                     value={t('amountValue', { price: selectedPlan.priceDzd, months: selectedPlan.months })}
-                    className="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-purple-900 cursor-not-allowed"
+                    className="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-300 rounded-xl text-base font-bold text-purple-900 cursor-not-allowed"
                   />
                 </div>
               </div>
 
               {/* Upload Receipt Image */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">{t('receiptImageLabel')}</label>
+                <label className="block text-base font-bold text-slate-700 mb-1">{t('receiptImageLabel')}</label>
                 <div className="flex items-center gap-4">
-                  <label className="px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs font-bold text-purple-700 hover:bg-purple-50 cursor-pointer flex items-center gap-2 border-dashed border-2">
+                  <label className="px-4 py-2.5 bg-white border border-slate-300 rounded-xl text-base font-bold text-purple-700 hover:bg-purple-50 cursor-pointer flex items-center gap-2 border-dashed border-2">
                     <Upload className="w-4 h-4" />
                     <span>{t('uploadReceiptButton')}</span>
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
@@ -341,7 +348,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                     ) : (
                       <span className="w-12 h-12 rounded-lg border border-dashed border-slate-300 bg-white" />
                     )}
-                    <span className="text-[11px] text-slate-500 font-bold">
+                    <span className="text-base text-slate-500 font-bold">
                       {receiptImage ? t('receiptPreviewLabel') : t('receiptEmptyLabel')}
                     </span>
                   </div>
@@ -349,7 +356,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
               </div>
 
               {customError && (
-                <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold rounded-xl flex items-center gap-2">
+                <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 text-base font-bold rounded-xl flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{customError}</span>
                 </div>
@@ -360,7 +367,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting || !receiptImage}
-                  className="w-full py-3.5 bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white font-extrabold rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm disabled:opacity-60"
+                  className="w-full py-3.5 bg-[var(--brand-emerald)] hover:bg-[var(--brand-emerald-dark)] text-white font-extrabold rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-base disabled:opacity-60"
                 >
                   <ShieldCheck className="w-5 h-5 text-amber-400" />
                   <span>{isSubmitting ? t('submittingButton') : t('submitButton')}</span>
@@ -376,7 +383,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
     <ParentGateModal
       isOpen={showParentGate}
       onClose={() => setShowParentGate(false)}
-      onVerified={() => { if (!parentReady) { setShowParentGate(false); setParentReady(true); } else void submitReceiptAfterParentGate(); }}
+      onVerified={() => { setParentUntil(Date.now() + 15 * 60_000); if (!parentReady) { setShowParentGate(false); setParentReady(true); } else void submitReceiptAfterParentGate(); }}
     />
     </>
   );

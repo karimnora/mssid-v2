@@ -1,0 +1,24 @@
+[
+  {
+    "width": 390,
+    "height": 844,
+    "noApi": true,
+    "noProgressWrites": true,
+    "numericCarry": true,
+    "correctableProblem": true,
+    "officialColumns": true,
+    "targets60": true,
+    "noOverflow": true
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "noApi": true,
+    "noProgressWrites": true,
+    "numericCarry": true,
+    "correctableProblem": true,
+    "officialColumns": true,
+    "targets60": true,
+    "noOverflow": true
+  }
+]

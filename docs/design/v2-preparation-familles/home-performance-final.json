@@ -1,0 +1,225 @@
+{
+  "model": "Chromium 390x844; CPU x4; 1.6Mbps; 300ms latency; local Vite preview (not production); APIs mocked; service worker blocked",
+  "interactiveMs": 7341,
+  "interruption": {
+    "previousPaused": true,
+    "handlerMs": 4.0999999940395355
+  },
+  "resources": [
+    {
+      "name": "app-DhyDZ-cP.js",
+      "bytes": 710301,
+      "type": "script"
+    },
+    {
+      "name": "didou-greet-B1ueJt0W.js",
+      "bytes": 60887,
+      "type": "script"
+    },
+    {
+      "name": "app-DOVLz-A2.css",
+      "bytes": 57608,
+      "type": "link"
+    },
+    {
+      "name": "registerSW.js",
+      "bytes": 134,
+      "type": "script"
+    },
+    {
+      "name": "pwa-icon-source.svg",
+      "bytes": 993,
+      "type": "other"
+    },
+    {
+      "name": "JourneyScreen-CaldOZZ_.js",
+      "bytes": 30735,
+      "type": "script"
+    },
+    {
+      "name": "map-TmW3ZLsC.js",
+      "bytes": 596,
+      "type": "script"
+    },
+    {
+      "name": "JourneyScreen--FAywooN.css",
+      "bytes": 7089,
+      "type": "link"
+    },
+    {
+      "name": "ProfileModal-4NAwPN8G.js",
+      "bytes": 4949,
+      "type": "script"
+    },
+    {
+      "name": "badgeEngine-DTjmW_pr.js",
+      "bytes": 3177,
+      "type": "script"
+    },
+    {
+      "name": "shortSurahs-DZJBpngK.js",
+      "bytes": 11550,
+      "type": "script"
+    },
+    {
+      "name": "tamazight-Ch1hjAdn.js",
+      "bytes": 7691,
+      "type": "script"
+    },
+    {
+      "name": "database-CNGKfgP3.js",
+      "bytes": 414,
+      "type": "script"
+    },
+    {
+      "name": "flame-BxWgaYxN.js",
+      "bytes": 370,
+      "type": "script"
+    },
+    {
+      "name": "refresh-cw-DOPGiJyn.js",
+      "bytes": 492,
+      "type": "script"
+    },
+    {
+      "name": "SettingsModal-Bg9Q8oqF.js",
+      "bytes": 2818,
+      "type": "script"
+    },
+    {
+      "name": "didou-talk-B2a8wNKd.webp",
+      "bytes": 38202,
+      "type": "image"
+    },
+    {
+      "name": "me",
+      "bytes": 0,
+      "type": "fetch"
+    },
+    {
+      "name": "feature-flags",
+      "bytes": 0,
+      "type": "fetch"
+    },
+    {
+      "name": "script.js",
+      "bytes": 0,
+      "type": "script"
+    },
+    {
+      "name": "favicon.ico",
+      "bytes": 0,
+      "type": "other"
+    },
+    {
+      "name": "village-portrait-CB8_y4Gq.webp",
+      "bytes": 248346,
+      "type": "img"
+    },
+    {
+      "name": "butterfly-1-6IYqjSN0.webp",
+      "bytes": 18374,
+      "type": "img"
+    },
+    {
+      "name": "butterfly-2-C6N067wT.webp",
+      "bytes": 16256,
+      "type": "img"
+    },
+    {
+      "name": "bee-1-BnvJ90_-.webp",
+      "bytes": 17312,
+      "type": "img"
+    },
+    {
+      "name": "bee-2-DwCS3X6J.webp",
+      "bytes": 16182,
+      "type": "img"
+    },
+    {
+      "name": "bird-1-eaT1WcmZ.webp",
+      "bytes": 19616,
+      "type": "img"
+    },
+    {
+      "name": "bird-2-BvITRqTB.webp",
+      "bytes": 17376,
+      "type": "img"
+    },
+    {
+      "name": "ladybug-1-kY3Ekaxg.webp",
+      "bytes": 12120,
+      "type": "img"
+    },
+    {
+      "name": "ladybug-2-CN21ZIyT.webp",
+      "bytes": 11684,
+      "type": "img"
+    },
+    {
+      "name": "didou-greet-fwH0gzu1.webp",
+      "bytes": 63750,
+      "type": "img"
+    },
+    {
+      "name": "space-portrait-CseDoEVl.webp",
+      "bytes": 19490,
+      "type": "css"
+    },
+    {
+      "name": "cairo-arabic-800-normal-G1qvPr6G.woff2",
+      "bytes": 13888,
+      "type": "css"
+    },
+    {
+      "name": "cairo-latin-700-normal-C3GYtKbV.woff2",
+      "bytes": 15284,
+      "type": "css"
+    },
+    {
+      "name": "cairo-latin-400-normal-Dh7otpdh.woff2",
+      "bytes": 15016,
+      "type": "css"
+    },
+    {
+      "name": "progress",
+      "bytes": 0,
+      "type": "fetch"
+    },
+    {
+      "name": "welcome-BvMGgy_K.mp3",
+      "bytes": 68444,
+      "type": "audio"
+    },
+    {
+      "name": "stories-z-QeYZGz.mp3",
+      "bytes": 88844,
+      "type": "audio"
+    },
+    {
+      "name": "cairo-arabic-700-normal-D3nDedWX.woff2",
+      "bytes": 13952,
+      "type": "css"
+    },
+    {
+      "name": "pwa-icon-source.svg",
+      "bytes": 993,
+      "type": "other"
+    }
+  ],
+  "voices": [
+    {
+      "src": "http://127.0.0.1:3004/assets/welcome-BvMGgy_K.mp3",
+      "delayMs": 3625.5999999940395
+    },
+    {
+      "src": "http://127.0.0.1:3004/assets/stories-z-QeYZGz.mp3",
+      "delayMs": 68.59999999403954
+    },
+    {
+      "src": "http://127.0.0.1:3004/assets/stories-z-QeYZGz.mp3",
+      "delayMs": 47.400000005960464
+    }
+  ],
+  "errors": []
+}
