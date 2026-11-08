@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Livret du testeur – MSSID 5AP</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 14mm; }
+  :root { --ink:#1d2a24; --green:#1f6b4f; --soft:#eef6f1; --sand:#fbf3df; --line:#cfd8d2; --muted:#56635c; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: var(--ink); font-size: 11.5pt; line-height: 1.4; margin: 0; background: #fff; }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .kicker { color: var(--green); font-weight: 700; font-size: 10pt; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 4px; }
+  h1 { font-size: 22pt; margin: 0 0 6px; color: var(--green); }
+  h2 { font-size: 17pt; margin: 0 0 10px; color: var(--green); }
+  h3 { font-size: 12.5pt; margin: 11px 0 5px; }
+  p { margin: 0 0 8px; }
+  .lead { font-size: 12.5pt; }
+  .box { border: 1.5px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 10px 0; }
+  .green { background: var(--soft); border-color: #b9d8c7; }
+  .sand { background: var(--sand); border-color: #ead9a8; }
+  .rules { counter-reset: r; list-style: none; padding: 0; margin: 6px 0; }
+  .rules li { counter-increment: r; position: relative; padding: 4px 0 4px 40px; }
+  .rules li::before { content: counter(r); position: absolute; left: 0; top: 4px; width: 28px; height: 28px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 700; text-align: center; line-height: 28px; }
+  .ar { direction: rtl; text-align: right; font-family: "Segoe UI", Tahoma, Arial, sans-serif; font-size: 13pt; font-weight: 600; margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 10.8pt; }
+  th, td { border: 1px solid var(--line); padding: 5px 7px; vertical-align: top; text-align: left; }
+  th { background: var(--soft); font-weight: 700; }
+  .step { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+  .step:last-child { border-bottom: 0; }
+  .num { width: 30px; height: 30px; border-radius: 8px; background: var(--green); color: #fff; font-weight: 700; display: grid; place-items: center; }
+  .look { color: var(--muted); font-size: 11pt; }
+  .look b { color: var(--ink); }
+  .time { float: right; font-size: 10pt; color: var(--muted); font-weight: 600; }
+  .faces td { text-align: center; width: 9%; font-size: 10.5pt; }
+  .faces td:first-child { text-align: left; width: 30%; }
+  .faces td.note { width: 34%; }
+  .line { border-bottom: 1px solid #9aa59f; height: 24px; margin: 4px 0; }
+  .tick { display: inline-block; width: 13px; height: 13px; border: 1.5px solid var(--ink); border-radius: 3px; vertical-align: -2px; margin: 0 4px 0 10px; }
+  .small { font-size: 10pt; color: var(--muted); }
+  .ltr { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .footer { font-size: 9pt; color: var(--muted); margin-top: 14px; border-top: 1px solid var(--line); padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<section class="page">
+  <p class="kicker">MSSID · Test avec des familles · 5e année primaire</p>
+  <h1>Livret du testeur</h1>
+  <p class="lead">Merci de nous aider ! Vous allez regarder un enfant de <b>5AP</b> utiliser une nouvelle leçon de l'application MSSID sur les <b>fractions</b>, avec son parent. Vous n'avez besoin d'aucune connaissance technique.</p>
+
+  <div class="box green">
+    <h3 style="margin-top:0">Ce que l'on veut savoir</h3>
+    <p>1. L'enfant arrive-t-il à <b>apprendre seul</b> en touchant et en déplaçant les morceaux, avec l'aide de la mascotte <b>Didou</b> ?</p>
+    <p>2. Le parent <b>comprend-il</b> ce que son enfant a fait, et ce que propose la version payante ?</p>
+  </div>
+
+  <h3>Avant de commencer</h3>
+  <table>
+    <tr><th style="width:38%">Il vous faut</th><th>Donné par Karim</th></tr>
+    <tr><td>Un téléphone ou une tablette chargé, avec Internet</td><td>L'adresse du site de test</td></tr>
+    <tr><td>Ce livret et un stylo</td><td>Un compte de test (identifiant et mot de passe)</td></tr>
+    <tr><td>30 à 40 minutes au calme</td><td>Votre groupe : <b>Groupe 1</b> ou <b>Groupe 2</b> (voir page 3)</td></tr>
+  </table>
+
+  <h3>Les 5 règles d'or</h3>
+  <ol class="rules">
+    <li><b>Ce n'est pas un examen.</b> On teste l'application, pas l'enfant.</li>
+    <li><b>N'aidez pas l'enfant.</b> S'il bloque, attendez un peu, puis demandez « Tu sais quoi essayer ? ». Il peut demander de l'aide à Didou : c'est prévu.</li>
+    <li><b>Notez ce que vous voyez</b>, avec les mots de l'enfant et du parent. Pas votre avis sur l'enfant.</li>
+    <li><b>Aucun paiement.</b> Ne payez rien et n'envoyez aucun reçu, même si l'application le propose.</li>
+    <li><b>Aucun nom.</b> Écrivez seulement le code de la famille (F01, F02…). Arrêtez si l'enfant est fatigué.</li>
+  </ol>
+
+  <h3>Phrase à dire à l'enfant au début</h3>
+  <p class="ar">نحن نجرّب التطبيق، ولسنا نمتحنك. يمكنك أن تخطئ، ويمكنك أن تطلب المساعدة من ديدو. أرِنا ما تفهمه.</p>
+  <p class="small">(« On teste l'application, pas toi. Tu peux te tromper et demander de l'aide à Didou. Montre-nous ce que tu comprends. »)</p>
+
+  <p class="footer">Pages 2 et 3 : la séance pas à pas · Page 4 : la fiche à remplir · Page 5 : les réponses (pour vous seulement, ne pas montrer à l'enfant).</p>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+  <p class="kicker">Partie 1 · L'enfant · environ 20 minutes</p>
+  <h2>La séance avec l'enfant</h2>
+  <p>Donnez chaque consigne à voix haute, puis regardez. Le texte en gris vous dit <b>quoi observer</b>. L'application parle en arabe ; laissez Didou expliquer.</p>
+
+  <div class="step"><div class="num">1</div><div>
+    <b>« Trouve la leçon sur les fractions avec Didou. »</b> <span class="time">2 min</span>
+    <p class="ar">ابحث عن درس الكسور مع ديدو.</p>
+    <p class="look"><b>Regardez :</b> trouve-t-il tout seul ? A-t-il besoin de lire ou que vous montriez ?</p>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div>
+    <b>« Regarde les morceaux. À ton avis, que faut-il faire ? »</b> <span class="time">2 min</span>
+    <p class="look"><b>Regardez :</b> des morceaux de cinquièmes sont mélangés. L'enfant comprend-il qu'il doit les regrouper ?</p>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div>
+    <b>« Essaie de faire des unités entières avec les morceaux. »</b> <span class="time">4 min</span>
+    <p class="look"><b>Regardez :</b> il touche et déplace les morceaux ; une unité apparaît quand il en réunit 5. Les morceaux sont-ils faciles à toucher ?</p>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div>
+    <b>« Explique-moi comment tu as fait. »</b> <span class="time">2 min</span>
+    <p class="ar">اشرح لي كيف فعلت.</p>
+    <p class="look"><b>Regardez :</b> explique-t-il avec ses mots (« 5 morceaux font un entier… ») ou lit-il seulement le résultat ? <b>Notez sa phrase.</b></p>
+  </div></div>
+
+  <div class="step"><div class="num">5</div><div>
+    <b>« Entre quels nombres entiers se trouve cette fraction ? »</b> <span class="time">2 min</span>
+    <p class="look"><b>Regardez :</b> se sert-il de ce qu'il vient de construire pour répondre ?</p>
+  </div></div>
+
+  <div class="step"><div class="num">6</div><div>
+    <b>« Regarde les découpages. Qu'est-ce qui change ? Qu'est-ce qui reste pareil ? »</b> <span class="time">2 min</span>
+    <p class="look"><b>Regardez :</b> comprend-il que la quantité reste la même même si on coupe en plus de morceaux ?</p>
+  </div></div>
+
+  <div class="step"><div class="num">7</div><div>
+    <b>« Essaie maintenant avec de nouvelles fractions. »</b> <span class="time">3 min</span>
+    <p class="look"><b>Regardez :</b> refait-il le même raisonnement avec d'autres nombres, sans aide ?</p>
+  </div></div>
+
+  <div class="step"><div class="num">8</div><div>
+    <b>« Choisis la bonne explication, puis dis-moi pourquoi. »</b> <span class="time">2 min</span>
+    <p class="look"><b>Regardez :</b> fait-il le lien entre ce qu'il a manipulé et la règle ?</p>
+  </div></div>
+
+  <div class="two">
+    <div class="box sand"><b>S'il se trompe :</b> laissez l'application réagir, puis demandez « Tu sais quoi essayer maintenant ? ». Ne lui donnez pas la réponse.</div>
+    <div class="box sand"><b>S'il bloque :</b> attendez 30 secondes. Trouve-t-il le bouton d'aide de Didou ? L'aide lui suffit-elle ?</div>
+  </div>
+  <p class="small">Il n'est pas obligatoire de tout finir. Si l'enfant est fatigué, passez directement à la partie 2.</p>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+  <p class="kicker">Partie 1 (suite) · puis Partie 2 · Le parent · environ 15 minutes</p>
+  <h2>Exercices, questions sur la voix, puis le parent</h2>
+
+  <h3>Exercices rapides (5 min)</h3>
+  <p>Dans la même leçon, faites faire à l'enfant <b>2 ou 3 exercices</b> et le <b>petit quiz final</b> (2 questions). S'il manque de temps, faites seulement les deux premiers exercices. Ne le poussez pas à répondre au hasard.</p>
+
+  <h3>Deux questions sur la voix de Didou</h3>
+  <p>• « Didou parle trop vite, trop lentement, ou comme il faut ? »</p>
+  <p class="ar">هل يتكلّم ديدو بسرعة، ببطء، أم كما يجب؟</p>
+  <p>• « À quel moment sa voix t'a aidé ? »</p>
+  <p class="look">Notez aussi : un mot mal prononcé, une voix qui coupe, deux voix en même temps.</p>
+
+  <h3>Avec le parent : ce qui dépend de votre groupe</h3>
+  <table>
+    <tr><th style="width:50%">Groupe 1 · compte « payant » de test</th><th>Groupe 2 · compte gratuit</th></tr>
+    <tr>
+      <td>1. À la fin, laissez le parent ouvrir le <b>résumé pour les parents</b>. L'application lui pose d'abord un petit calcul (c'est normal : c'est la protection parent).<br>2. Fermez la leçon, puis demandez au parent de <b>retrouver ce résumé</b> dans le <b>carnet du parent</b>.</td>
+      <td>1. Sur la carte du village, faites toucher un <b>cadenas</b>. Vérifiez qu'<b>aucun prix</b> n'apparaît avant le petit calcul du parent.<br>2. Après le calcul, laissez le parent regarder l'offre : <span class="ltr">900 DA</span> pour 3 mois ou <span class="ltr">2 400 DA</span> pour 12 mois.<br>3. S'il reste du temps : le bouton « Essayer avec Didou – démonstration ».</td>
+    </tr>
+  </table>
+
+  <h3>Questions au parent (posez-les AVANT de lui expliquer quoi que ce soit)</h3>
+  <table>
+    <tr><th style="width:55%">Question</th><th>Sa réponse (ses mots)</th></tr>
+    <tr><td>Groupe 1 : D'après ce résumé, qu'a travaillé votre enfant ? Où a-t-il eu besoin d'aide ?</td><td></td></tr>
+    <tr><td>Groupe 2 : Quelle différence voyez-vous entre le gratuit et le payant ?</td><td></td></tr>
+    <tr><td>Qu'est-ce qui vous paraît le plus utile pour votre enfant ?</td><td></td></tr>
+    <tr><td>Qu'est-ce qui vous ferait hésiter à payer ?</td><td></td></tr>
+    <tr><td>Que faudrait-il améliorer pour que vous l'utilisiez souvent ?</td><td></td></tr>
+    <tr><td>Aimeriez-vous réessayer à la maison ? Pourquoi ?</td><td></td></tr>
+  </table>
+  <p class="small">Un parent qui dit « oui je paierais » n'est pas un abonné : notez simplement ses mots et ses hésitations.</p>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+  <p class="kicker">Une fiche par famille</p>
+  <h2>Fiche à remplir</h2>
+  <p>Famille : <b>F____</b> &nbsp;&nbsp; Date : ____________ &nbsp;&nbsp; Groupe : <span class="tick"></span>1 <span class="tick"></span>2 &nbsp;&nbsp; Durée : ______ min</p>
+  <p>Appareil : <span class="tick"></span>Téléphone <span class="tick"></span>Tablette <span class="tick"></span>Ordinateur &nbsp;&nbsp; Internet : <span class="tick"></span>Wi-Fi <span class="tick"></span>Données mobiles <span class="tick"></span>Lent</p>
+
+  <p class="small">Cochez une case par ligne. <b>Seul</b> = sans votre aide (l'aide de Didou compte comme « seul »). <b>Coup de pouce</b> = vous avez dû montrer ou expliquer. <b>Bloqué</b> = impossible d'avancer, ou l'application a mal marché. <b>Pas fait</b> = pas eu le temps.</p>
+  <table class="faces">
+    <tr><th>Étape</th><th>Seul</th><th>Coup de pouce</th><th>Bloqué</th><th>Pas fait</th><th style="width:34%">Ce que j'ai vu</th></tr>
+    <tr><td>1. Trouver la leçon</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>3–4. Faire des unités et expliquer</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>5–6. Encadrer / « ce qui reste pareil »</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>7. Nouvelles fractions</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>Aide et voix de Didou</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>Exercices et quiz</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>Parent : comprendre le résumé (G1) ou l'offre (G2)</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+    <tr><td>G1 : retrouver le résumé dans le carnet</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td class="note"></td></tr>
+  </table>
+
+  <p><b>L'enfant a expliqué son raisonnement :</b> <span class="tick"></span>clairement <span class="tick"></span>en partie <span class="tick"></span>pas vraiment</p>
+  <p><b>Une phrase de l'enfant :</b></p><div class="line"></div>
+  <p><b>Une phrase du parent :</b></p><div class="line"></div>
+  <p><b>Le plus gros problème</b> (que s'est-il passé, à quelle étape, sur quel écran) :</p><div class="line"></div><div class="line"></div>
+  <p><b>Gravité :</b> <span class="tick"></span>l'enfant ne pouvait plus continuer <span class="tick"></span>gênant <span class="tick"></span>petit détail</p>
+  <p class="small">Si possible, prenez une photo de l'écran au moment du problème (sans le visage de l'enfant) et envoyez-la à Karim.</p>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+  <p class="kicker">Pour vous seulement · Ne pas montrer à l'enfant</p>
+  <h2>Les bonnes réponses</h2>
+  <p>Pour vérifier si la réponse de l'enfant (ou de l'application !) est juste. Si l'application dit qu'une réponse juste est fausse, notez-le : c'est un problème grave.</p>
+
+  <h3>La leçon avec Didou</h3>
+  <table>
+    <tr><th style="width:45%">Ce qu'on demande</th><th>Bonne réponse</th></tr>
+    <tr><td>Faire des unités avec 17 cinquièmes</td><td><span class="ltr">17/5 = 3 + 2/5</span> (3 unités entières et 2 morceaux qui restent)</td></tr>
+    <tr><td>Entre quels entiers est 17/5 ?</td><td>Entre 3 et 4</td></tr>
+    <tr><td>Fraction égale à 1/2</td><td><span class="ltr">1/2 = 5/10</span> (on multiplie le haut et le bas par 5)</td></tr>
+    <tr><td>Nouvelle fraction : 7/3</td><td><span class="ltr">7/3 = 2 + 1/3</span>, entre 2 et 3</td></tr>
+    <tr><td>Fraction égale à 2/3</td><td><span class="ltr">2/3 = 4/6</span> (même quantité, on multiplie par 2)</td></tr>
+  </table>
+
+  <h3>Exercices</h3>
+  <table>
+    <tr><th style="width:55%">Question</th><th>Bonne réponse</th></tr>
+    <tr><td>Quel est le dénominateur (le nombre du bas) de 5/8 ?</td><td>8</td></tr>
+    <tr><td>9/4 est-il plus grand que 1 ?</td><td>Oui</td></tr>
+    <tr><td><span class="ltr">3/5 = ?/15</span> : quel nombre en haut ?</td><td>9</td></tr>
+    <tr><td>4/7, 6/6 et 9/4 : plus petit, égal ou plus grand que 1 ?</td><td>4/7 plus petit · 6/6 égal · 9/4 plus grand</td></tr>
+    <tr><td>Entre quels entiers est 17/5 ?</td><td>Entre 3 et 4</td></tr>
+    <tr><td>Ranger 1/8, 3/8, 5/8, 7/8</td><td><span class="ltr">1/8 &lt; 3/8 &lt; 5/8 &lt; 7/8</span></td></tr>
+    <tr><td>2/5 d'un terrain de <span class="ltr">750 m²</span></td><td><span class="ltr">300 m²</span></td></tr>
+  </table>
+
+  <h3>Quiz final</h3>
+  <table>
+    <tr><th style="width:55%">Question</th><th>Bonne réponse</th></tr>
+    <tr><td>Entre quels entiers est 23/5 ?</td><td>Entre 4 et 5 (<span class="ltr">23/5 = 4 + 3/5</span>)</td></tr>
+    <tr><td>Quelle fraction est égale à 1/2 : 4/8, 3/5 ou 2/5 ?</td><td>4/8</td></tr>
+  </table>
+
+  <div class="box green">
+    <b>À la fin :</b> remerciez l'enfant (« Tu nous as beaucoup aidés ! »), rendez le téléphone au parent, et envoyez la fiche (photo ou papier) à Karim le jour même.
+  </div>
+  <p class="footer">MSSID · Livret testeur simplifié · Leçon pilote « fractions » 5AP. Les contrôles techniques (sons, tailles d'écran, protection parent, séparation des profils) sont faits par Karim, à part.</p>
+</section>
+
+</body>
+</html>
