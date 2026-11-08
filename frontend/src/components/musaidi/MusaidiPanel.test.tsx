@@ -44,7 +44,17 @@ const courses = [
 ];
 const show = (props: Partial<React.ComponentProps<typeof MusaidiPanel>> = {}) =>
   render(<MusaidiPanel grade="1AP" courses={courses} onClose={vi.fn()} {...props} />, { wrapper: LocaleProvider });
-const openQuestion = (text: RegExp) => fireEvent.click(screen.getByRole('button', { name: text }));
+const openQuestion = (pattern: RegExp) => {
+  const text = new RegExp('^(?:Correction vue)?' + pattern.source);
+  if (!screen.queryByRole('button', { name: text })) {
+    if (screen.queryByRole('button', { name: 'Autres matières' })) fireEvent.click(screen.getByRole('button', { name: 'Autres matières' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Mathématiques' }));
+    const id = /[45]/.test(text.source) ? 'm2' : 'm1';
+    if (!screen.queryByRole('button', { name: `درس ${id}` })) fireEvent.click(screen.getByRole('button', { name: 'Autres leçons' }));
+    fireEvent.click(screen.getByRole('button', { name: `درس ${id}` }));
+  }
+  fireEvent.click(screen.getByRole('button', { name: text }));
+};
 const reveal = () => act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Voir la correction détaillée' })); });
 const back = () => fireEvent.click(screen.getByRole('button', { name: /Autres questions/ }));
 
@@ -60,15 +70,21 @@ afterEach(() => {
 });
 
 describe('« مساعدي » panel', () => {
-  it('filters by subject, trimester and lesson, and searches without harakat', () => {
+  it('offers a three tap path with no grade switch or selects', () => {
     show();
-    expect(screen.getAllByRole('button', { name: /كم يساوي/ })).toHaveLength(5);
-    fireEvent.change(screen.getByLabelText('Trimestre'), { target: { value: '2' } });
-    expect(screen.getAllByRole('button', { name: /كم يساوي/ })).toHaveLength(2);
-    fireEvent.change(screen.getByLabelText('Matière'), { target: { value: 'arabic' } });
-    fireEvent.change(screen.getByLabelText('Trimestre'), { target: { value: 'all' } });
-    fireEvent.change(screen.getByLabelText('Chercher une question'), { target: { value: 'بَيْت' } });
-    expect(screen.getByRole('button', { name: /الحرف الأول/ })).toBeInTheDocument();
+    expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '2AP' })).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Mathématiques' }));
+    fireEvent.click(screen.getByRole('button', { name: 'درس m1' }));
+    fireEvent.click(screen.getByRole('button', { name: /^كم يساوي 1/ }));
+    expect(screen.getByRole('button', { name: 'Un indice' })).toBeInTheDocument();
+    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
+  });
+
+  it('keeps a foreign grade lesson out of the active grade', () => {
+    show({ lesson: { ...courses[0], grade: '5AP' } });
+    expect(screen.queryByRole('button', { name: /^كم يساوي/ })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Mathématiques' })).toBeInTheDocument();
   });
 
   it('gives hint and rule for free, then counts 3 detailed corrections per day', async () => {
@@ -113,7 +129,7 @@ describe('« مساعدي » panel', () => {
   it('a signed-in free account follows the server count, even on a freshly reset phone', async () => {
     role = 'ROLE_FREE';
     server = { opened: ['m1:quiz:q1', 'm1:quiz:q2', 'm1:quiz:q3'] };
-    show();
+    show({ lesson: courses[1] });
     await waitFor(() => expect(screen.getByText(/0 correction\(s\) détaillée\(s\) restante\(s\)/)).toBeInTheDocument());
     openQuestion(/كم يساوي 4 \+/); await reveal();
     expect(screen.getByRole('alert')).toHaveTextContent('reviennent demain');
@@ -126,11 +142,23 @@ describe('« مساعدي » panel', () => {
   it('opens on the current lesson and links back to it', () => {
     const review = vi.fn(), close = vi.fn();
     show({ lesson: courses[1], onReviewLesson: review, onClose: close });
-    expect(screen.getByLabelText('Leçon')).toHaveValue('m2');
+    expect(screen.queryByRole('combobox')).not.toBeInTheDocument();
     openQuestion(/كم يساوي 4 \+/);
     fireEvent.click(screen.getByRole('button', { name: /Revoir la leçon/ }));
     expect(close).toHaveBeenCalledOnce();
     expect(review).toHaveBeenCalledWith('m2');
+  });
+
+  it('searches in 5AP and resets the open question when the grade changes', () => {
+    const older = courses.map(l => ({ ...l, grade: '5AP' as const }));
+    const view = show({ grade: '5AP', courses: older, lesson: older[2] });
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'بيت' } });
+    expect(screen.getByRole('button', {name:/^ما الحرف/})).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', {name:/^ما الحرف/}));
+    view.rerender(<MusaidiPanel grade="1AP" courses={courses} onClose={vi.fn()} />);
+    expect(screen.queryByRole('button', {name:'La règle'})).not.toBeInTheDocument();
+    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', {name:'Mathématiques'})).toBeInTheDocument();
   });
 
   it('waits for the catalog', () => {

@@ -10,9 +10,11 @@ import { canUseWebCheckout } from '../../utils/paymentPlatform';
 import { NATIVE_OFFER_COPY } from '../../constants/nativeOfferCopy';
 import { PremiumOffer } from '../PremiumOffer';
 import { canAccess } from '../../access/entitlements';
+import { SUBJECTS_LIST } from '../../data/subjectsData';
+import { guidedHelpForLesson } from '../../data/guidedMath';
+import { GuidedHelpCard } from '../GuidedMathSupport';
 import { speakText, stopSpeech } from '../../utils/speech';
 
-const GRADES: PrimaryGrade[] = ['1AP', '2AP', '3AP', '4AP', '5AP'];
 const SUBJECTS: Record<string, { fr: string; ar: string }> = {
   arabic: { fr: 'Arabe', ar: 'العربية' },
   math: { fr: 'Mathématiques', ar: 'الرياضيات' },
@@ -37,7 +39,10 @@ export interface MusaidiPanelProps {
 }
 
 /** « مساعدي »: pick any question of the school year and get its prepared, verified correction. */
-export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }: MusaidiPanelProps) {
+export function MusaidiPanel(props: MusaidiPanelProps) {
+  return <MusaidiPanelContent key={`${props.grade}:${props.lesson?.id ?? 'menu'}`} {...props} />;
+}
+function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }: MusaidiPanelProps) {
   const { locale } = useLocaleContext();
   const fr = locale === 'fr';
   const say = (a: string, b: string) => (fr ? a : b);
@@ -45,11 +50,12 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
   const premium = canAccess('musaidiCorrections', authUser?.role);
   const account = authUser ? `user:${authUser.id}` : 'guest';
 
-  const startGrade: PrimaryGrade = lesson?.grade && GRADES.includes(lesson.grade) ? lesson.grade : GRADES.includes(grade) ? grade : '1AP';
-  const [viewGrade, setViewGrade] = useState<PrimaryGrade>(startGrade);
-  const [subject, setSubject] = useState<string>(lesson?.subject ?? '');
-  const [trimester, setTrimester] = useState<string>('all');
-  const [lessonId, setLessonId] = useState<string>(lesson?.id ?? 'all');
+  const viewGrade = grade;
+  const contextLesson = lesson?.grade === grade ? lesson : null;
+  const [subject, setSubject] = useState(contextLesson?.subject ?? '');
+  const [lessonId, setLessonId] = useState(contextLesson?.id ?? '');
+  const [stage, setStage] = useState<'subject' | 'lesson' | 'question'>(contextLesson ? 'question' : 'subject');
+  const [otherTerms, setOtherTerms] = useState(false);
   const [query, setQuery] = useState('');
   const [limit, setLimit] = useState(PAGE);
   const [itemId, setItemId] = useState<string | null>(null);
@@ -76,22 +82,17 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
   const gradeLessons = useMemo(() => (courses ?? []).filter((l) => l.grade === viewGrade), [courses, viewGrade]);
   const bank = useMemo(() => buildMusaidiBank(gradeLessons), [gradeLessons]);
   const subjects = useMemo(() => Object.keys(SUBJECTS).filter((s) => bank.some((i) => i.subject === s)), [bank]);
-  const activeSubject = subjects.includes(subject) ? subject : subjects.includes('math') ? 'math' : subjects[0] ?? '';
-  const subjectLessons = gradeLessons.filter(
-    (l) => l.subject === activeSubject && (trimester === 'all' || String(l.trimester) === trimester) && bank.some((i) => i.lessonId === l.id),
-  );
-  const activeLessonId = lessonId !== 'all' && subjectLessons.some((l) => l.id === lessonId) ? lessonId : 'all';
-  const filtered = searchMusaidi(
-    bank.filter(
-      (i) =>
-        i.subject === activeSubject &&
-        (trimester === 'all' || String(i.trimester) === trimester) &&
-        (activeLessonId === 'all' || i.lessonId === activeLessonId),
-    ),
-    query,
-  );
+  const subjectLessons = gradeLessons.filter(l => l.subject === subject && bank.some(i => i.lessonId === l.id));
+  const month = new Date().getMonth() + 1;
+  const currentTerm = month >= 9 ? 1 : month <= 3 ? 2 : month <= 6 ? 3 : null;
+  const currentLessons = subjectLessons.filter(l => currentTerm === null || l.trimester === currentTerm);
+  const otherLessons = subjectLessons.filter(l => currentTerm !== null && l.trimester !== currentTerm);
+  const filtered = searchMusaidi(bank.filter(i => i.subject === subject && i.lessonId === lessonId), query);
   const item: MusaidiItem | undefined = itemId ? bank.find((i) => i.id === itemId) : undefined;
   const itemLesson = item ? gradeLessons.find((l) => l.id === item.lessonId) : undefined;
+  const sourceQuestion = item?.kind === 'quiz' ? itemLesson?.quiz?.find(q => item.id === `${itemLesson.id}:quiz:${q.id}`) : undefined;
+  const guides = itemLesson ? guidedHelpForLesson(itemLesson, sourceQuestion) : [];
+  const itemGuides = sourceQuestion?.competenceId || guides.length === 1 ? guides : [];
   const remaining = remainingCorrections(premium, opened);
   const alreadySeen = item ? opened.includes(item.id) : false;
 
@@ -129,76 +130,38 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
     return <p role="status" className="rounded-xl bg-emerald-50 text-slate-900 p-3">{say('Préparation des questions…', 'جارٍ تحضير الأسئلة…')}</p>;
   }
 
-  const selectClass = 'block w-full min-h-12 rounded-xl border border-emerald-300 bg-white px-3 mt-1';
+  const tileClass = 'min-w-[60px] min-h-[60px] rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-start font-bold text-base';
+  const earlyGrade = ['1AP', '2AP', '3AP'].includes(grade);
+  const voice = (text: string, subjectTile: boolean) => void speakText(text, subjectTile && fr ? 'fr-FR' : 'ar-SA').catch(() => {});
+  const tile = (id: string, label: string, select: () => void, subjectTile = false) => (
+    <li key={id} className="flex gap-2">
+      <button type="button" className={`${tileClass} flex-1 ${subjectTile ? SUBJECTS_LIST.find(s => s.id === id)?.bgLight ?? '' : ''}`} onClick={select}>
+        {subjectTile && <span aria-hidden className="me-2">{id === 'math' ? '🔢' : id === 'arabic' ? '📖' : id === 'science' ? '🌱' : '📚'}</span>}{label}
+      </button>
+      {earlyGrade && <button type="button" className={tileClass} aria-label={`${say('Écouter', 'استمع')}: ${label}`} onClick={() => voice(label, subjectTile)}><Volume2 aria-hidden /></button>}
+    </li>
+  );
+  const selectLesson = (id: string) => { stopSpeech(); setLessonId(id); setQuery(''); setLimit(PAGE); setStage('question'); };
   return (
-    <div className="space-y-4" data-musaidi>
-      <div className="flex flex-wrap gap-2" role="group" aria-label={say('Niveau', 'الصف')}>
-        {GRADES.map((g) => (
-          <button
-            key={g}
-            type="button"
-            aria-pressed={viewGrade === g}
-            onClick={() => {
-              setViewGrade(g);
-              setSubject('');
-              setLessonId('all');
-              setTrimester('all');
-              setLimit(PAGE);
-              resetItem();
-            }}
-            className={`min-h-12 min-w-14 rounded-xl px-4 font-bold border ${viewGrade === g ? 'bg-emerald-800 text-white border-emerald-800' : 'bg-white border-emerald-200'}`}
-          >
-            {g}
-          </button>
-        ))}
-      </div>
-
-      {subjects.length === 0 ? (
-        <p className="rounded-xl bg-amber-50 text-slate-900 p-3 text-sm">{say('Aucune question publiée pour ce niveau pour le moment.', 'لا توجد أسئلة منشورة لهذا الصف حالياً.')}</p>
-      ) : (
-        <>
-          <div className="grid gap-3 sm:grid-cols-3">
-            <label className="font-bold text-sm">
-              {say('Matière', 'المادة')}
-              <select className={selectClass} value={activeSubject} onChange={(e) => { setSubject(e.target.value); setLessonId('all'); setLimit(PAGE); resetItem(); }}>
-                {subjects.map((s) => (
-                  <option key={s} value={s}>{fr ? SUBJECTS[s].fr : SUBJECTS[s].ar}</option>
-                ))}
-              </select>
-            </label>
-            <label className="font-bold text-sm">
-              {say('Trimestre', 'الفصل')}
-              <select className={selectClass} value={trimester} onChange={(e) => { setTrimester(e.target.value); setLessonId('all'); setLimit(PAGE); resetItem(); }}>
-                <option value="all">{say('Toute l’année', 'السنة كلها')}</option>
-                <option value="1">{say('1er trimestre', 'الفصل الأول')}</option>
-                <option value="2">{say('2e trimestre', 'الفصل الثاني')}</option>
-                <option value="3">{say('3e trimestre', 'الفصل الثالث')}</option>
-              </select>
-            </label>
-            <label className="font-bold text-sm">
-              {say('Leçon', 'الدرس')}
-              <select className={selectClass} value={activeLessonId} onChange={(e) => { setLessonId(e.target.value); setLimit(PAGE); resetItem(); }}>
-                <option value="all">{say('Toutes les leçons', 'كل الدروس')}</option>
-                {subjectLessons.map((l) => (
-                  <option key={l.id} value={l.id}>{l.titleAr}</option>
-                ))}
-              </select>
-            </label>
-          </div>
-
-          <label className="block font-bold text-sm">
+    <div className="space-y-4 text-base" data-musaidi>
+      {stage !== 'subject' && <button type="button" className={tileClass} onClick={() => { resetItem(); setQuery(''); setLimit(PAGE); setStage(stage === 'question' ? 'lesson' : 'subject'); }}>{say('Retour', 'رجوع')}</button>}
+      {stage === 'question' && <button type="button" className={tileClass} onClick={() => { resetItem(); setQuery(''); setStage('subject'); }}>{say('Autres matières', 'مواد أخرى')}</button>}
+      {subjects.length === 0 ? <p role="status">{say('Aucune question publiée pour ce niveau pour le moment.', 'لا توجد أسئلة منشورة لهذا الصف حالياً.')}</p> : <>
+        {stage === 'subject' && <ul className="grid gap-3" aria-label={say('Matières', 'المواد')}>{subjects.map(s => tile(s, fr ? SUBJECTS[s].fr : SUBJECTS[s].ar, () => { stopSpeech(); setSubject(s); setOtherTerms(false); setStage('lesson'); }, true))}</ul>}
+        {stage === 'lesson' && <>
+          <h3 className="font-bold">{say('Choisis une leçon', 'اختر الدرس')}</h3>
+          <ul className="grid gap-3">{currentLessons.map(l => tile(l.id, l.titleAr, () => selectLesson(l.id)))}</ul>
+          {otherLessons.length > 0 && <>
+            <button type="button" className={tileClass} aria-expanded={otherTerms} onClick={() => setOtherTerms(!otherTerms)}>{say('Autres leçons', 'دروس أخرى')}</button>
+            {otherTerms && <ul className="grid gap-3">{otherLessons.map(l => tile(l.id, l.titleAr, () => selectLesson(l.id)))}</ul>}
+          </>}
+        </>}
+        {stage === 'question' && <>
+          {!earlyGrade && !item && <label className="block font-bold">
             <span className="inline-flex items-center gap-1"><Search size={16} aria-hidden />{say('Chercher une question', 'ابحث عن سؤال')}</span>
-            <input
-              type="search"
-              dir="rtl"
-              value={query}
-              onChange={(e) => { setQuery(e.target.value); setLimit(PAGE); }}
-              placeholder="مثال: الجمع بالاحتفاظ"
-              className="block w-full min-h-12 rounded-xl border border-emerald-300 bg-white text-slate-900 px-3 mt-1"
-            />
-          </label>
-
-          <p className="text-sm text-slate-600" role="status" data-musaidi-count>
+            <input type="search" dir="rtl" value={query} onChange={e => { setQuery(e.target.value); setLimit(PAGE); }} className="block w-full min-h-[60px] rounded-xl border border-emerald-300 px-3 mt-1" />
+          </label>}
+          <p className="text-base text-slate-600" role="status" data-musaidi-count>
             {say(`${filtered.length} question(s)`, `${filtered.length} سؤال`)}
             {remaining != null && ` · ${say(`${remaining} correction(s) détaillée(s) restante(s) aujourd’hui`, `بقي لك ${remaining} من التصحيحات المفصّلة اليوم`)}`}
           </p>
@@ -207,15 +170,16 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
             <ul className="space-y-2" aria-label={say('Questions', 'الأسئلة')}>
               {filtered.slice(0, limit).map((i) => (
                 <li key={i.id}>
-                  <button type="button" dir="rtl" data-musaidi-question onClick={() => choose(i.id)} className="w-full min-h-12 text-right rounded-xl border border-slate-200 bg-white px-3 py-2 hover:border-emerald-400">
+                  <button type="button" dir="rtl" data-musaidi-question onClick={() => choose(i.id)} className="w-full min-h-[60px] text-right rounded-xl border border-slate-200 bg-white px-3 py-2 hover:border-emerald-400">
                     {opened.includes(i.id) && <CheckCircle2 size={16} className="inline text-emerald-700 ml-1" aria-label={say('Correction vue', 'تمت مشاهدة التصحيح')} />}
                     {i.questionAr}
                   </button>
+                  {earlyGrade && <button type="button" className={tileClass} aria-label={`${say('Écouter', 'استمع')}: ${i.questionAr}`} onClick={() => listen(i.questionAr)}><Volume2 aria-hidden /></button>}
                 </li>
               ))}
               {filtered.length > limit && (
                 <li>
-                  <button type="button" onClick={() => setLimit(limit + PAGE)} className="min-h-12 px-4 rounded-xl border border-emerald-300 font-bold">
+                  <button type="button" onClick={() => setLimit(limit + PAGE)} className="min-h-[60px] px-4 rounded-xl border border-emerald-300 font-bold">
                     {say('Voir plus de questions', 'أسئلة أخرى')}
                   </button>
                 </li>
@@ -225,29 +189,29 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
 
           {item && (
             <article className="musaidi-sheet rounded-2xl border border-emerald-200 bg-emerald-50/40 p-4 space-y-3" data-musaidi-item>
-              <button type="button" onClick={resetItem} className="min-h-12 px-3 rounded-xl border border-slate-300 font-bold text-sm">
+              <button type="button" onClick={resetItem} className="min-h-[60px] px-3 rounded-xl border border-slate-300 font-bold text-base">
                 {say('← Autres questions', 'أسئلة أخرى')}
               </button>
               <div className="flex items-start gap-2">
                 <p dir="rtl" className="flex-1 text-lg font-bold leading-relaxed">{item.questionAr}</p>
-                <button type="button" onClick={() => listen(item.questionAr)} aria-label={say('Écouter la question', 'استمع إلى السؤال')} className="min-h-12 min-w-12 rounded-xl border border-emerald-300 grid place-items-center">
+                <button type="button" onClick={() => listen(item.questionAr)} aria-label={say('Écouter la question', 'استمع إلى السؤال')} className="min-h-[60px] min-w-[60px] rounded-xl border border-emerald-300 grid place-items-center">
                   <Volume2 aria-hidden />
                 </button>
               </div>
 
               <div className="flex flex-wrap gap-2">
                 {hints < item.hintsAr.length && (
-                  <button type="button" onClick={() => setHints(hints + 1)} className="min-h-12 px-4 rounded-xl bg-white border border-amber-300 font-bold inline-flex items-center gap-2">
+                  <button type="button" onClick={() => setHints(hints + 1)} className="min-h-[60px] px-4 rounded-xl bg-white border border-amber-300 font-bold inline-flex items-center gap-2">
                     <Lightbulb size={18} aria-hidden />{say('Un indice', 'تلميح')}
                   </button>
                 )}
                 {itemLesson?.rulesAr?.length ? (
-                  <button type="button" aria-pressed={showRule} onClick={() => setShowRule(!showRule)} className="min-h-12 px-4 rounded-xl bg-white border border-sky-300 font-bold inline-flex items-center gap-2">
+                  <button type="button" aria-pressed={showRule} onClick={() => setShowRule(!showRule)} className="min-h-[60px] px-4 rounded-xl bg-white border border-sky-300 font-bold inline-flex items-center gap-2">
                     <ScrollText size={18} aria-hidden />{say('La règle', 'قاعدة الدرس')}
                   </button>
                 ) : null}
                 {!revealed && (
-                  <button type="button" onClick={() => void reveal()} disabled={opening} aria-busy={opening} data-musaidi-reveal className="min-h-12 px-4 rounded-xl bg-emerald-800 text-white font-bold">
+                  <button type="button" onClick={() => void reveal()} disabled={opening} aria-busy={opening} data-musaidi-reveal className="min-h-[60px] px-4 rounded-xl bg-emerald-800 text-white font-bold">
                     {say('Voir la correction détaillée', 'التصحيح المفصّل')}
                   </button>
                 )}
@@ -280,7 +244,7 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
                 <section className="rounded-xl bg-white border border-emerald-300 p-3 space-y-2" aria-label={say('Correction', 'التصحيح')}>
                   <div className="flex items-start gap-2">
                     <p dir="rtl" className="flex-1"><strong>{say('Réponse : ', 'الجواب: ')}</strong>{item.answerAr}</p>
-                    <button type="button" onClick={() => listen([item.answerAr, ...item.stepsAr].join('. '))} aria-label={say('Écouter la correction', 'استمع إلى التصحيح')} className="min-h-12 min-w-12 rounded-xl border border-emerald-300 grid place-items-center">
+                    <button type="button" onClick={() => listen([item.answerAr, ...item.stepsAr].join('. '))} aria-label={say('Écouter la correction', 'استمع إلى التصحيح')} className="min-h-[60px] min-w-[60px] rounded-xl border border-emerald-300 grid place-items-center">
                       <Volume2 aria-hidden />
                     </button>
                   </div>
@@ -290,30 +254,32 @@ export function MusaidiPanel({ grade, lesson, courses, onReviewLesson, onClose }
                     </ol>
                   )}
                   {item.operationsAr && (
-                    <div dir="rtl" className="grid grid-cols-2 gap-2 text-sm" data-two-columns>
+                    <div dir="rtl" className="grid grid-cols-2 gap-2 text-base" data-two-columns>
                       <div className="rounded-lg bg-slate-50 p-2"><strong>العمليات</strong><pre className="whitespace-pre-wrap font-sans">{item.operationsAr}</pre></div>
                       <div className="rounded-lg bg-slate-50 p-2"><strong>الحل</strong><p>{item.answerAr}</p></div>
                     </div>
                   )}
                   {item.irabTableAr && (
-                    <table dir="rtl" className="w-full text-sm border">
+                    <table dir="rtl" className="w-full text-base border">
                       <thead><tr><th className="border p-1">الكلمة</th><th className="border p-1">إعرابها</th></tr></thead>
                       <tbody>{item.irabTableAr.map((r, n) => <tr key={n}><td className="border p-1">{r.wordAr}</td><td className="border p-1">{r.analysisAr}</td></tr>)}</tbody>
                     </table>
                   )}
-                  {!premium && alreadySeen && <p className="text-xs text-slate-500">{say('Revoir une correction déjà ouverte aujourd’hui est gratuit.', 'إعادة مشاهدة تصحيح فُتح اليوم لا تُحتسب.')}</p>}
+                  {!premium && alreadySeen && <p className="text-base text-slate-500">{say('Revoir une correction déjà ouverte aujourd’hui est gratuit.', 'إعادة مشاهدة تصحيح فُتح اليوم لا تُحتسب.')}</p>}
                 </section>
               )}
 
+              {itemGuides.map(guide => <GuidedHelpCard key={`${item.id}:${guide.competenceId}`} guide={guide} />)}
               {onReviewLesson && itemLesson && (
-                <button type="button" onClick={() => { onClose(); onReviewLesson(itemLesson.id); }} className="min-h-12 rounded-xl border border-emerald-700 text-emerald-900 px-4 font-bold inline-flex gap-2 items-center">
+                <button type="button" onClick={() => { onClose(); onReviewLesson(itemLesson.id); }} className="min-h-[60px] rounded-xl border border-emerald-700 text-emerald-900 px-4 font-bold inline-flex gap-2 items-center">
                   <BookOpen size={18} aria-hidden />{say('Revoir la leçon', 'أراجع الدرس')} · <span dir="rtl">{itemLesson.titleAr}</span>
                 </button>
               )}
             </article>
           )}
+        </>}
         </>
-      )}
+      }
     </div>
   );
 }
