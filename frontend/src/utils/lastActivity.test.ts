@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { lastActivityTitle, readLastActivity, writeLastActivity } from './lastActivity';
+import { lastActivityTitle, readLastLessonActivity, readLastActivity, writeLastActivity } from './lastActivity';
 import { setActiveProgressOwner } from './progressOwner';
 
 describe('lastActivity', () => {
@@ -22,6 +22,16 @@ describe('lastActivity', () => {
     expect(stored && stored.kind === 'lesson' ? stored.lessonId : '').toBe('math-1ap-t1-spatial-relations');
     expect(lastActivityTitle(stored!, 'fr')).toBe('L’espace');
     expect(lastActivityTitle(stored!, 'ar')).toBe('الفضاء');
+  });
+
+  it('retains the last lesson after a lab, without sharing it with a sibling', () => {
+    setActiveProgressOwner(7,1);
+    writeLastActivity({kind:'lesson',lessonId:'math-5ap-fractions',subject:'math',grade:'5AP',titleAr:'الكسور'});
+    writeLastActivity({kind:'lab',toolId:'math',grade:'5AP',titleAr:'ورشة'});
+    expect(readLastActivity()?.kind).toBe('lab');
+    expect(readLastLessonActivity()?.lessonId).toBe('math-5ap-fractions');
+    setActiveProgressOwner(7,2);
+    expect(readLastLessonActivity()).toBeNull();
   });
 
   it('ignores a truncated or typed-wrong payload instead of crashing', () => {

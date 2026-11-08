@@ -1,10 +1,10 @@
 import { SPRING_BOOT_BASE_URL } from '../services/springBootApi';
 import type { PrimaryGrade } from '../types';
 import { villageDay } from './villageSession';
-export type PremiumEvent = 'lock_open' | 'parent_interest' | 'offer_open' | 'demo_complete';
+export type PremiumEvent = 'lock_open' | 'parent_interest' | 'offer_open' | 'demo_complete' | 'musaidi_suggestion' | 'musaidi_correction' | 'musaidi_twin' | 'musaidi_revision';
 /** Aggregate actions, not unique families. Never attach identity or authentication. */
 export function recordPremiumEvent(event: PremiumEvent, grade?: PrimaryGrade): void {
-  if (!['lock_open', 'parent_interest', 'offer_open', 'demo_complete'].includes(event)) return;
+  if (!['lock_open', 'parent_interest', 'offer_open', 'demo_complete', 'musaidi_suggestion', 'musaidi_correction', 'musaidi_twin', 'musaidi_revision'].includes(event)) return;
   const safeGrade = ['1AP','2AP','3AP','4AP','5AP'].includes(grade ?? '') ? grade : 'unknown';
   const payload = { event, grade: safeGrade, day: villageDay(new Date().toISOString()) };
   try {

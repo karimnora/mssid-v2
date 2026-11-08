@@ -5,6 +5,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useLocaleContext } from '../context/LocaleContext';
 
 interface ParentGateModalProps {
+  zIndex?: number;
   isOpen: boolean;
   onClose: () => void;
   onVerified: () => void;
@@ -42,7 +43,7 @@ export const AskAdultScreen: React.FC<AskAdultScreenProps> = ({ onAskAdult, onCl
 };
 
 // Friction step before sensitive actions (delete, store links, reset). Not a legal parental-consent flow.
-export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClose, onVerified }) => {
+export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClose, onVerified, zIndex }) => {
   const t = useTranslation('meta');
   const { direction } = useLocaleContext();
   const [a, setA] = useState(0);
@@ -73,6 +74,7 @@ export const ParentGateModal: React.FC<ParentGateModalProps> = ({ isOpen, onClos
 
   return createPortal(
     <div
+      style={{zIndex}}
       role="dialog"
       aria-modal="true"
       aria-label={t('parentGateTitle')}

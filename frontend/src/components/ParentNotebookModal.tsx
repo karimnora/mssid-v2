@@ -1,3 +1,4 @@
+import { MusaidiParentSummary } from './musaidi/MusaidiParentSummary';
 import { useProgressOwner } from '../utils/ownerStorage';
 import { ParentVillageReports } from './ParentVillageReports';
 import { FamilyParentSummary } from './family/FamilyParentSummary';
@@ -197,6 +198,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
 
         <div className="kids-modal-body p-5 space-y-5">
           {premium && <ParentVillageReports profile={userProfile} grade={viewingGrade ?? userProfile.grade} onReview={handleReview} />}
+          {premium && <MusaidiParentSummary grade={viewingGrade ?? userProfile.grade} courses={COURSES_DATA} onReview={handleReview} />}
           <FamilyParentSummary grade={viewingGrade ?? userProfile.grade} name={notebook.childName}/>
           <section className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-4 space-y-3">
             <p className="text-[11px] font-extrabold text-[var(--kids-muted)]">{premium ? t('parentNotebookWeekTitle') : offerT('nextFreeRevision')}</p>

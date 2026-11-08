@@ -20,3 +20,11 @@ export function TwoColumnProblem({ problem }: {
     {checked && <p role="status">{Number(answer) === expected ? 'أحسنت! النتيجة صحيحة. اشرح كيف حسبت.' : 'جرّب من جديد. راجع الآحاد ثم العشرات؛ إجابتك باقية لتصححها.'}</p>}
   </section>;
 }
+
+/** Prepared corrections share the official left-solution / right-operations layout. */
+export function TwoColumnCorrection({ solution, operations }: { solution: React.ReactNode; operations: string }) {
+  return <div className="grid grid-cols-2 gap-2 text-base" dir="ltr" data-two-columns>
+    <section dir="rtl" className="min-w-0 rounded-lg bg-slate-50 p-2 break-words"><h4 className="font-bold">الحل</h4>{solution}</section>
+    <section dir="rtl" className="min-w-0 rounded-lg bg-slate-50 p-2"><h4 className="font-bold">العمليات</h4><pre dir="ltr" className="whitespace-pre-wrap break-words font-sans">{operations}</pre></section>
+  </div>;
+}

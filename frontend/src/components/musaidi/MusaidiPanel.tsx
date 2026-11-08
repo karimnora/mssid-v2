@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { MusaidiText } from './MusaidiText';
+import React, { useEffect, useMemo, useState, useSyncExternalStore, useRef } from 'react';
 import { BookOpen, Lightbulb, ScrollText, Search, Volume2, CheckCircle2 } from 'lucide-react';
-import type { CourseLesson, PrimaryGrade } from '../../types';
+import type { CourseLesson, PrimaryGrade, UserProfile } from '../../types';
 import { useLocaleContext } from '../../context/LocaleContext';
 import { useAuth } from '../../context/AuthContext';
 import { buildMusaidiBank, searchMusaidi, type MusaidiItem } from '../../data/musaidiBank';
@@ -14,6 +15,17 @@ import { SUBJECTS_LIST } from '../../data/subjectsData';
 import { guidedHelpForLesson } from '../../data/guidedMath';
 import { GuidedHelpCard } from '../GuidedMathSupport';
 import { speakText, stopSpeech } from '../../utils/speech';
+
+import type { PracticeResult } from '../../utils/competenceProgress';
+import type { ExamCountdown } from '../../utils/examCountdown';
+import { getActiveProgressOwner, subscribeProgressOwner } from '../../utils/progressOwner';
+import { readLastLessonActivity } from '../../utils/lastActivity';
+import { musaidiSuggestions } from '../../utils/musaidiPersonalization';
+import { recordPremiumEvent } from '../../utils/premiumFunnel';
+import { recordMusaidiHelp } from '../../utils/musaidiHistory';
+import { VillagePremiumMark } from '../home/VillagePremiumMark';
+import { MusaidiCorrection } from './MusaidiCorrection';
+import { MusaidiTwin, findMusaidiTwin } from './MusaidiTwin';
 
 const SUBJECTS: Record<string, { fr: string; ar: string }> = {
   arabic: { fr: 'Arabe', ar: 'العربية' },
@@ -31,6 +43,9 @@ const PAGE = 20;
 
 export interface MusaidiPanelProps {
   grade: PrimaryGrade;
+  userProfile?: UserProfile;
+  countdown?: ExamCountdown | null;
+  onPracticeResult?: (lessonId:string, result:PracticeResult)=>void;
   lesson?: CourseLesson | null;
   /** Published catalog; null while it loads. */
   courses: CourseLesson[] | null;
@@ -40,9 +55,10 @@ export interface MusaidiPanelProps {
 
 /** « مساعدي »: pick any question of the school year and get its prepared, verified correction. */
 export function MusaidiPanel(props: MusaidiPanelProps) {
-  return <MusaidiPanelContent key={`${props.grade}:${props.lesson?.id ?? 'menu'}`} {...props} />;
+  const owner = useSyncExternalStore(subscribeProgressOwner, getActiveProgressOwner, () => 'guest');
+  return <MusaidiPanelContent key={`${owner}:${props.grade}:${props.lesson?.id ?? 'menu'}`} {...props} owner={owner} />;
 }
-function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }: MusaidiPanelProps) {
+function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose, userProfile, countdown, onPracticeResult, owner }: MusaidiPanelProps & {owner:string}) {
   const { locale } = useLocaleContext();
   const fr = locale === 'fr';
   const say = (a: string, b: string) => (fr ? a : b);
@@ -65,6 +81,10 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
   const [opened, setOpened] = useState<string[]>(() => readOpenedToday(account));
   const [blocked, setBlocked] = useState(false);
   const [opening, setOpening] = useState(false);
+  const [correctionComplete,setCorrectionComplete] = useState(false);
+  const helpRecorded = useRef(false);
+  const requestVersion = useRef(0);
+  useEffect(()=>()=>{ requestVersion.current += 1; },[]);
 
   const signedIn = !!authUser;
   useEffect(() => {
@@ -93,11 +113,26 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
   const sourceQuestion = item?.kind === 'quiz' ? itemLesson?.quiz?.find(q => item.id === `${itemLesson.id}:quiz:${q.id}`) : undefined;
   const guides = itemLesson ? guidedHelpForLesson(itemLesson, sourceQuestion) : [];
   const itemGuides = sourceQuestion?.competenceId || guides.length === 1 ? guides : [];
+  const suggestions = useMemo(()=>musaidiSuggestions(bank,userProfile?.competenceStats),[bank,userProfile?.competenceStats]);
+  const revision = countdown ? musaidiSuggestions(bank.filter(i=>i.trimester===countdown.trimester),userProfile?.competenceStats,new Date(),10) : [];
+  const lastActivity = readLastLessonActivity();
+  const fallbackLessonId = contextLesson?.id ?? (lastActivity?.kind === 'lesson' && lastActivity.grade === grade ? lastActivity.lessonId : undefined);
+  const freeSuggestions = bank.filter(i=>i.lessonId===fallbackLessonId).slice(0,3);
+  const twin = item ? findMusaidiTwin(item,bank,gradeLessons) : undefined;
+  const recordHelp = () => {
+    if(!item || helpRecorded.current)return;
+    helpRecorded.current=true;
+    recordMusaidiHelp(owner,{lessonId:item.lessonId,competenceId:item.competenceId,grade});
+  };
   const remaining = remainingCorrections(premium, opened);
   const alreadySeen = item ? opened.includes(item.id) : false;
 
   const resetItem = () => {
     stopSpeech();
+    requestVersion.current += 1;
+    setOpening(false);
+    helpRecorded.current=false;
+    setCorrectionComplete(false);
     setItemId(null);
     setHints(0);
     setShowRule(false);
@@ -112,16 +147,20 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
   const reveal = async () => {
     if (!item || opening) return;
     setOpening(true);
+    const version = requestVersion.current;
     try {
       const next = await openCorrectionSynced(account, premium, item.id, signedIn ? springBootApi : null);
+      if(version !== requestVersion.current || getActiveProgressOwner() !== owner)return;
       if (!next) {
         setBlocked(true);
         return;
       }
+      recordHelp();
+      if(premium)recordPremiumEvent('musaidi_correction',grade);
       setOpened(next);
       setRevealed(true);
     } finally {
-      setOpening(false);
+      if(version === requestVersion.current)setOpening(false);
     }
   };
   const listen = (text: string) => void speakText(text, 'ar-SA').catch(() => {});
@@ -144,6 +183,19 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
   const selectLesson = (id: string) => { stopSpeech(); setLessonId(id); setQuery(''); setLimit(PAGE); setStage('question'); };
   return (
     <div className="space-y-4 text-base" data-musaidi>
+      {!item && (premium ? suggestions.length > 0 : freeSuggestions.length > 0) && <section className="rounded-2xl border border-emerald-200 p-3 space-y-3" aria-label={say('Didou te propose','ديدو يقترح عليك')}>
+        <h3 className="font-bold">{say('Didou te propose','ديدو يقترح عليك')}</h3>
+        {premium && <VillagePremiumMark />}
+        {(premium ? suggestions : freeSuggestions.map(item=>({item,reasonFr:'Ta leçon en cours ou la dernière leçon ouverte.',reasonAr:'درسك الحالي أو آخر درس فتحته.'}))).map(s=><div key={s.item.id}>
+          <button type="button" aria-label={`${say('Travailler : ','أتدرّب: ')}${s.item.questionAr}`} className={tileClass} onClick={()=>{if(premium)recordPremiumEvent('musaidi_suggestion',grade);setSubject(s.item.subject);setLessonId(s.item.lessonId);setStage('question');choose(s.item.id);}}><MusaidiText text={s.item.questionAr} /></button>
+          <p>{fr?s.reasonFr:s.reasonAr}</p>
+        </div>)}
+      </section>}
+      {premium && !item && revision.length>0 && <section className="rounded-2xl border border-amber-300 p-3 space-y-3" aria-label={say('Révision avant les compositions','مراجعة قبل الاختبارات')}>
+        <h3 className="font-bold">{say('Révision avant les compositions','مراجعة قبل الاختبارات')}</h3><VillagePremiumMark />
+        <p>{say('Une série du trimestre, construite sur tes erreurs.','سلسلة من دروس الفصل مبنية على أخطائك.')}</p>
+        {revision.map((s,n)=><div key={s.item.id}><button type="button" aria-label={`${say('Réviser : ','أراجع: ')}${s.item.questionAr}`} className={tileClass} onClick={()=>{recordPremiumEvent('musaidi_revision',grade);setSubject(s.item.subject);setLessonId(s.item.lessonId);setStage('question');choose(s.item.id);}}><bdi dir="ltr">{n+1}</bdi> · <MusaidiText text={s.item.questionAr} /></button><p>{fr?s.reasonFr:s.reasonAr}</p></div>)}
+      </section>}
       {stage !== 'subject' && <button type="button" className={tileClass} onClick={() => { resetItem(); setQuery(''); setLimit(PAGE); setStage(stage === 'question' ? 'lesson' : 'subject'); }}>{say('Retour', 'رجوع')}</button>}
       {stage === 'question' && <button type="button" className={tileClass} onClick={() => { resetItem(); setQuery(''); setStage('subject'); }}>{say('Autres matières', 'مواد أخرى')}</button>}
       {subjects.length === 0 ? <p role="status">{say('Aucune question publiée pour ce niveau pour le moment.', 'لا توجد أسئلة منشورة لهذا الصف حالياً.')}</p> : <>
@@ -162,8 +214,8 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
             <input type="search" dir="rtl" value={query} onChange={e => { setQuery(e.target.value); setLimit(PAGE); }} className="block w-full min-h-[60px] rounded-xl border border-emerald-300 px-3 mt-1" />
           </label>}
           <p className="text-base text-slate-600" role="status" data-musaidi-count>
-            {say(`${filtered.length} question(s)`, `${filtered.length} سؤال`)}
-            {remaining != null && ` · ${say(`${remaining} correction(s) détaillée(s) restante(s) aujourd’hui`, `بقي لك ${remaining} من التصحيحات المفصّلة اليوم`)}`}
+            <MusaidiText text={say(`${filtered.length} question(s)`, `${filtered.length} سؤال`)} />
+            {remaining != null && <MusaidiText text={` · ${say(`${remaining} correction(s) détaillée(s) restante(s) aujourd’hui`, `بقي لك ${remaining} من التصحيحات المفصّلة اليوم`)}`} />}
           </p>
 
           {!item && (
@@ -172,7 +224,7 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
                 <li key={i.id}>
                   <button type="button" dir="rtl" data-musaidi-question onClick={() => choose(i.id)} className="w-full min-h-[60px] text-right rounded-xl border border-slate-200 bg-white px-3 py-2 hover:border-emerald-400">
                     {opened.includes(i.id) && <CheckCircle2 size={16} className="inline text-emerald-700 ml-1" aria-label={say('Correction vue', 'تمت مشاهدة التصحيح')} />}
-                    {i.questionAr}
+                    <MusaidiText text={i.questionAr} />
                   </button>
                   {earlyGrade && <button type="button" className={tileClass} aria-label={`${say('Écouter', 'استمع')}: ${i.questionAr}`} onClick={() => listen(i.questionAr)}><Volume2 aria-hidden /></button>}
                 </li>
@@ -193,7 +245,7 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
                 {say('← Autres questions', 'أسئلة أخرى')}
               </button>
               <div className="flex items-start gap-2">
-                <p dir="rtl" className="flex-1 text-lg font-bold leading-relaxed">{item.questionAr}</p>
+                <p dir="rtl" className="flex-1 text-lg font-bold leading-relaxed"><MusaidiText text={item.questionAr} /></p>
                 <button type="button" onClick={() => listen(item.questionAr)} aria-label={say('Écouter la question', 'استمع إلى السؤال')} className="min-h-[60px] min-w-[60px] rounded-xl border border-emerald-300 grid place-items-center">
                   <Volume2 aria-hidden />
                 </button>
@@ -201,12 +253,12 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
 
               <div className="flex flex-wrap gap-2">
                 {hints < item.hintsAr.length && (
-                  <button type="button" onClick={() => setHints(hints + 1)} className="min-h-[60px] px-4 rounded-xl bg-white border border-amber-300 font-bold inline-flex items-center gap-2">
+                  <button type="button" onClick={() => {recordHelp();setHints(hints + 1);}} className="min-h-[60px] px-4 rounded-xl bg-white border border-amber-300 font-bold inline-flex items-center gap-2">
                     <Lightbulb size={18} aria-hidden />{say('Un indice', 'تلميح')}
                   </button>
                 )}
                 {itemLesson?.rulesAr?.length ? (
-                  <button type="button" aria-pressed={showRule} onClick={() => setShowRule(!showRule)} className="min-h-[60px] px-4 rounded-xl bg-white border border-sky-300 font-bold inline-flex items-center gap-2">
+                  <button type="button" aria-pressed={showRule} onClick={() => {if(!showRule)recordHelp();setShowRule(!showRule);}} className="min-h-[60px] px-4 rounded-xl bg-white border border-sky-300 font-bold inline-flex items-center gap-2">
                     <ScrollText size={18} aria-hidden />{say('La règle', 'قاعدة الدرس')}
                   </button>
                 ) : null}
@@ -236,40 +288,17 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose }
                         )
                       : say(NATIVE_OFFER_COPY.musaidiLimit.fr, NATIVE_OFFER_COPY.musaidiLimit.ar)}
                   </p>
-                  <PremiumOffer />
+                  <VillagePremiumMark locked /><PremiumOffer grade={grade} layer={130} />
                 </div>
               )}
 
-              {revealed && (
-                <section className="rounded-xl bg-white border border-emerald-300 p-3 space-y-2" aria-label={say('Correction', 'التصحيح')}>
-                  <div className="flex items-start gap-2">
-                    <p dir="rtl" className="flex-1"><strong>{say('Réponse : ', 'الجواب: ')}</strong>{item.answerAr}</p>
-                    <button type="button" onClick={() => listen([item.answerAr, ...item.stepsAr].join('. '))} aria-label={say('Écouter la correction', 'استمع إلى التصحيح')} className="min-h-[60px] min-w-[60px] rounded-xl border border-emerald-300 grid place-items-center">
-                      <Volume2 aria-hidden />
-                    </button>
-                  </div>
-                  {item.stepsAr.length > 0 && (
-                    <ol dir="rtl" className="list-decimal pr-5 space-y-1">
-                      {item.stepsAr.map((s, n) => <li key={n}>{s}</li>)}
-                    </ol>
-                  )}
-                  {item.operationsAr && (
-                    <div dir="rtl" className="grid grid-cols-2 gap-2 text-base" data-two-columns>
-                      <div className="rounded-lg bg-slate-50 p-2"><strong>العمليات</strong><pre className="whitespace-pre-wrap font-sans">{item.operationsAr}</pre></div>
-                      <div className="rounded-lg bg-slate-50 p-2"><strong>الحل</strong><p>{item.answerAr}</p></div>
-                    </div>
-                  )}
-                  {item.irabTableAr && (
-                    <table dir="rtl" className="w-full text-base border">
-                      <thead><tr><th className="border p-1">الكلمة</th><th className="border p-1">إعرابها</th></tr></thead>
-                      <tbody>{item.irabTableAr.map((r, n) => <tr key={n}><td className="border p-1">{r.wordAr}</td><td className="border p-1">{r.analysisAr}</td></tr>)}</tbody>
-                    </table>
-                  )}
-                  {!premium && alreadySeen && <p className="text-base text-slate-500">{say('Revoir une correction déjà ouverte aujourd’hui est gratuit.', 'إعادة مشاهدة تصحيح فُتح اليوم لا تُحتسب.')}</p>}
-                </section>
-              )}
+              {revealed && <>
+                <MusaidiCorrection key={item.id} item={item} interactive={premium} onComplete={()=>setCorrectionComplete(true)} />
+                {!premium && alreadySeen && <p>{say('Revoir une correction déjà ouverte aujourd’hui est gratuit.','إعادة مشاهدة تصحيح فُتح اليوم لا تُحتسب.')}</p>}
+                {premium && correctionComplete && twin && onPracticeResult && <MusaidiTwin key={twin.id} item={twin} courses={gradeLessons} onPracticeResult={(id,result)=>{if(result.outcome==='success')recordPremiumEvent('musaidi_twin',grade);onPracticeResult(id,result);}} />}
+              </>}
 
-              {itemGuides.map(guide => <GuidedHelpCard key={`${item.id}:${guide.competenceId}`} guide={guide} />)}
+              {itemGuides.map(guide => <GuidedHelpCard key={`${item.id}:${guide.competenceId}`} guide={guide} onHelp={recordHelp} />)}
               {onReviewLesson && itemLesson && (
                 <button type="button" onClick={() => { onClose(); onReviewLesson(itemLesson.id); }} className="min-h-[60px] rounded-xl border border-emerald-700 text-emerald-900 px-4 font-bold inline-flex gap-2 items-center">
                   <BookOpen size={18} aria-hidden />{say('Revoir la leçon', 'أراجع الدرس')} · <span dir="rtl">{itemLesson.titleAr}</span>

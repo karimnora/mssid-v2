@@ -17,3 +17,10 @@ it('does not block the child or retry an ambiguous failed request', async () => 
   expect(() => recordPremiumEvent('lock_open', '4AP')).not.toThrow();
   await Promise.resolve(); expect(fetcher).toHaveBeenCalledTimes(1);
 });
+
+it('sends tutor action counts without child identity or exercise content', () => {
+ const fetcher=vi.fn().mockResolvedValue({status:204});vi.stubGlobal('fetch',fetcher);
+ recordPremiumEvent('musaidi_twin','5AP');
+ expect(Object.keys(JSON.parse(fetcher.mock.calls[0][1].body)).sort()).toEqual(['day','event','grade']);
+ expect(JSON.parse(fetcher.mock.calls[0][1].body).event).toBe('musaidi_twin');
+});

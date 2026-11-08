@@ -16,6 +16,12 @@ class PremiumFunnelServiceTest {
         verify(jdbc).update(contains("ON CONFLICT"), eq("offer_open"), eq("5AP"), eq(LocalDate.of(2026,11,7)));
         verifyNoMoreInteractions(jdbc);
     }
+    @Test void acceptsAnonymousMusaidiEvents() {
+        for (String event : List.of("musaidi_suggestion", "musaidi_correction", "musaidi_twin", "musaidi_revision")) {
+            service.record(Map.of("event", event, "grade", "5AP", "day", "2026-11-07"));
+            verify(jdbc).update(contains("ON CONFLICT"), eq(event), eq("5AP"), eq(LocalDate.of(2026,11,7)));
+        }
+    }
     @Test void rejectsIdentityExtraFieldsInvalidGradesAndUnboundedDates() {
         assertThrows(ResponseStatusException.class, () -> service.record(Map.of("event","offer_open","grade","5AP","day","2026-11-07","childId",7)));
         assertThrows(ResponseStatusException.class, () -> service.record(Map.of("event","offer_open","grade","user-7","day","2026-11-07")));

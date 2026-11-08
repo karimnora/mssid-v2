@@ -37,6 +37,8 @@ export interface LessonSession {
 
 /** What an exercise check tells the notebook. */
 export interface PracticeResult {
+  /** Optional exact mapped skill for a targeted exercise. */
+  competenceId?: string;
   outcome: LessonOutcome;
   /** Success only: a hint was opened or the exercise had been missed before. */
   helped?: boolean;
@@ -140,7 +142,7 @@ export function recordPracticeResult(
       villageSummaries: mergeVillageSummaries(separated.villageSummaries, [{ at, lessonId, villageSummary: result.villageSummary }]),
     };
   }
-  return applyMappedOutcome({ ...prev, ...separated }, lessonId, result.outcome, at, undefined, result);
+  return applyMappedOutcome({ ...prev, ...separated }, lessonId, result.outcome, at, result.competenceId, result);
 }
 
 /** First full quiz success (or a replay) for a mapped lesson. Unmapped lessons are left unchanged. */

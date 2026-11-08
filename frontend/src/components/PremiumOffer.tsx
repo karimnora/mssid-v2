@@ -10,7 +10,7 @@ import { SubscriptionPaywall } from './SubscriptionPaywall';
 import { ParentGateModal } from './ParentGateModal';
 import { AuthService } from '../services/authService';
 
-export function PremiumOffer({ label, grade }: { label?: string; grade?: PrimaryGrade } = {}) {
+export function PremiumOffer({ label, grade, layer }: { label?: string; grade?: PrimaryGrade; layer?: number } = {}) {
   const { authUser } = useAuth();
   const t = useTranslation('subscription');
   const [gate, setGate] = useState(false);
@@ -19,8 +19,8 @@ export function PremiumOffer({ label, grade }: { label?: string; grade?: Primary
     <button type="button" data-premium-offer-entry onClick={() => { recordPremiumEvent('parent_interest', grade); setGate(true); }} className="hit-target rounded-2xl px-4 py-2 bg-[#008751] text-white font-extrabold">
       {label ?? t(canUseWebCheckout() ? 'discoverPremium' : 'mySubscription')}
     </button>
-    {gate && createPortal(<div className="relative z-[90]"><ParentGateModal isOpen onClose={() => setGate(false)} onVerified={() => { setGate(false); if(canUseWebCheckout())setOffer(true);else window.dispatchEvent(new Event(OPEN_SUBSCRIPTION_STATUS)); }} /></div>, document.body)}
-    {offer && createPortal(<div className="relative z-[75]"><SubscriptionPaywall grade={grade} parentVerified user={authUser} onClose={() => setOffer(false)} onSuccessUpgrade={user => { AuthService.setCurrentUser(user); setOffer(false); }} /></div>, document.body)}
+    {gate && createPortal(<div data-premium-offer-overlay className="relative z-[90]" style={{zIndex:layer}}><ParentGateModal zIndex={layer} isOpen onClose={() => setGate(false)} onVerified={() => { setGate(false); if(canUseWebCheckout())setOffer(true);else window.dispatchEvent(new Event(OPEN_SUBSCRIPTION_STATUS)); }} /></div>, document.body)}
+    {offer && createPortal(<div data-premium-offer-overlay className="relative z-[75]" style={{zIndex:layer}}><SubscriptionPaywall grade={grade} parentVerified user={authUser} onClose={() => setOffer(false)} onSuccessUpgrade={user => { AuthService.setCurrentUser(user); setOffer(false); }} /></div>, document.body)}
   </>;
 }
 

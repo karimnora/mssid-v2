@@ -11,7 +11,7 @@ import java.util.*;
 
 @Service
 public class PremiumFunnelService {
-    private static final Set<String> EVENTS = Set.of("lock_open", "parent_interest", "offer_open", "demo_complete");
+    private static final Set<String> EVENTS = Set.of("lock_open", "parent_interest", "offer_open", "demo_complete", "musaidi_suggestion", "musaidi_correction", "musaidi_twin", "musaidi_revision");
     private static final Set<String> GRADES = Set.of("1AP", "2AP", "3AP", "4AP", "5AP", "unknown");
     private final JdbcTemplate jdbc;
     private final Clock clock;

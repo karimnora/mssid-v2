@@ -1,6 +1,8 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, cleanup, within, act, waitFor } from '@testing-library/react';
+import { setActiveProgressOwner } from '../../utils/progressOwner';
+import { readMusaidiHelp } from '../../utils/musaidiHistory';
 import { Capacitor } from '@capacitor/core';
 import { MusaidiPanel } from './MusaidiPanel';
 import { LocaleProvider } from '../../context/LocaleContext';
@@ -59,6 +61,7 @@ const reveal = () => act(async () => { fireEvent.click(screen.getByRole('button'
 const back = () => fireEvent.click(screen.getByRole('button', { name: /Autres questions/ }));
 
 beforeEach(() => {
+  setActiveProgressOwner();
   localStorage.clear();
   setStoredLocale('fr');
   role = undefined;
@@ -66,6 +69,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   cleanup();
+  setActiveProgressOwner();
   vi.restoreAllMocks();
 });
 
@@ -100,7 +104,7 @@ describe('« مساعدي » panel', () => {
     back();
     openQuestion(/كم يساوي 2 \+/); await reveal(); back();
     openQuestion(/كم يساوي 3 \+/); await reveal(); back();
-    expect(screen.getByText(/0 correction\(s\) détaillée\(s\) restante\(s\)/)).toBeInTheDocument();
+    expect(screen.getByRole('status')).toHaveTextContent(/0 correction\(s\) détaillée\(s\) restante\(s\)/);
     openQuestion(/كم يساوي 4 \+/); await reveal();
     expect(screen.getByRole('alert')).toHaveTextContent('reviennent demain');
     expect(screen.queryByRole('region', { name: 'Correction' })).not.toBeInTheDocument();
@@ -130,7 +134,7 @@ describe('« مساعدي » panel', () => {
     role = 'ROLE_FREE';
     server = { opened: ['m1:quiz:q1', 'm1:quiz:q2', 'm1:quiz:q3'] };
     show({ lesson: courses[1] });
-    await waitFor(() => expect(screen.getByText(/0 correction\(s\) détaillée\(s\) restante\(s\)/)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent(/0 correction\(s\) détaillée\(s\) restante\(s\)/));
     openQuestion(/كم يساوي 4 \+/); await reveal();
     expect(screen.getByRole('alert')).toHaveTextContent('reviennent demain');
     back();
@@ -159,6 +163,49 @@ describe('« مساعدي » panel', () => {
     expect(screen.queryByRole('button', {name:'La règle'})).not.toBeInTheDocument();
     expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
     expect(screen.getByRole('button', {name:'Mathématiques'})).toBeInTheDocument();
+  });
+
+  it('reveals Premium corrections by step, then records the twin with help', async () => {
+    role='ROLE_PREMIUM';
+    const actual = {...courses[0],id:'math-1ap-t2-addition-concept'};
+    const result=vi.fn();
+    show({courses:[actual],lesson:actual,onPracticeResult:result});
+    openQuestion(/كم يساوي 1 \+/);await reveal();
+    expect(screen.queryByText('1 + 1 = 2')).not.toBeInTheDocument();
+    expect(screen.queryByRole('region',{name:'Question jumelle'})).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button',{name:'Essayer l’étape suivante'}));
+    expect(screen.getByRole('textbox',{name:/Ton essai/})).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button',{name:'Révéler l’étape'}));
+    expect(screen.getByText('1 + 1 = 2')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button',{name:'Révéler l’étape'}));
+    const twin=screen.getByRole('region',{name:'Question jumelle'});
+    fireEvent.click(within(twin).getByRole('button',{name:'3'}));
+    expect(result).toHaveBeenCalledWith(actual.id,expect.objectContaining({outcome:'success',helped:true,competenceId:'math-1ap-c-addition'}));
+  });
+
+  it('counts help once per question opening and clears the view across sibling profiles', () => {
+    setActiveProgressOwner(5,1);
+    const view=show({lesson:courses[0]});openQuestion(/كم يساوي 1 \+/);
+    fireEvent.click(screen.getByRole('button',{name:'Un indice'}));
+    fireEvent.click(screen.getByRole('button',{name:'La règle'}));
+    expect(readMusaidiHelp('user:5:child:1')[0].count).toBe(1);
+    act(()=>setActiveProgressOwner(5,2));
+    view.rerender(<MusaidiPanel grade="1AP" courses={courses} lesson={courses[0]} onClose={vi.fn()} />);
+    expect(screen.queryByText(/ابدأ من 1/)).not.toBeInTheDocument();
+    expect(readMusaidiHelp('user:5:child:2')).toEqual([]);
+  });
+
+  it('shows only real Premium difficulties and revisions from the requested trimester', () => {
+    role='ROLE_PREMIUM';
+    const actual={...courses[0],id:'math-5ap-fractions',grade:'5AP' as const};
+    const profile={grade:'5AP',competenceStats:{'math-5ap-c-fractions':{attempts:1,successes:0,lastOutcome:'fail',lastAt:new Date().toISOString(),lastLessonId:actual.id}}} as unknown as import('../../types').UserProfile;
+    const view=show({grade:'5AP',courses:[actual],userProfile:profile,countdown:{trimester:2,daysLeft:5,examDate:'2026-12-01'}});
+    expect(screen.getByRole('region',{name:'Didou te propose'})).toHaveTextContent(/Une erreur à retravailler/);
+    expect(screen.queryByRole('region',{name:'Révision avant les compositions'})).not.toBeInTheDocument();
+    view.rerender(<MusaidiPanel grade="5AP" courses={[actual]} userProfile={profile} countdown={{trimester:1,daysLeft:5,examDate:'2026-12-01'}} onClose={vi.fn()}/>);
+    expect(screen.getByRole('region',{name:'Révision avant les compositions'})).toBeInTheDocument();
+    view.rerender(<MusaidiPanel grade="5AP" courses={[actual]} userProfile={{...profile,competenceStats:{}}} onClose={vi.fn()}/>);
+    expect(screen.queryByRole('region',{name:'Didou te propose'})).not.toBeInTheDocument();
   });
 
   it('waits for the catalog', () => {

@@ -1,3 +1,4 @@
+import { getLessonCompetences } from './competences';
 import type { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 
 /**
@@ -6,6 +7,8 @@ import type { CourseLesson, PrimaryGrade, SubjectId } from '../types';
  */
 export interface MusaidiItem {
   id: string;
+  sourceId?: string;
+  competenceId?: string;
   lessonId: string;
   grade: PrimaryGrade;
   subject: SubjectId;
@@ -32,7 +35,9 @@ const splitSteps = (text: string) =>
 export function buildMusaidiBank(lessons: CourseLesson[]): MusaidiItem[] {
   const items: MusaidiItem[] = [];
   for (const lesson of lessons) {
-    const base = { lessonId: lesson.id, grade: lesson.grade, subject: lesson.subject, trimester: lesson.trimester };
+    const mapped = getLessonCompetences(lesson.id);
+    const competenceId = mapped.length === 1 ? mapped[0].id : undefined;
+    const base = { lessonId: lesson.id, grade: lesson.grade, subject: lesson.subject, trimester: lesson.trimester, competenceId };
     for (const q of lesson.quiz ?? []) {
       const correct = q.options.find((o) => o.isCorrect);
       if (!clean(q.questionAr) || !correct || !clean(correct.textAr)) continue;
@@ -40,6 +45,8 @@ export function buildMusaidiBank(lessons: CourseLesson[]): MusaidiItem[] {
         ...base,
         id: `${lesson.id}:quiz:${q.id}`,
         kind: 'quiz',
+        sourceId: q.id,
+        competenceId: mapped.some(c => c.id === q.competenceId) ? q.competenceId : competenceId,
         questionAr: clean(q.questionAr),
         hintsAr: clean(q.hintAr) ? [clean(q.hintAr)] : [],
         answerAr: clean(correct.textAr),
@@ -56,6 +63,7 @@ export function buildMusaidiBank(lessons: CourseLesson[]): MusaidiItem[] {
         ...base,
         id: `${lesson.id}:exercise:${ex.id}`,
         kind: 'exercise',
+        sourceId: ex.id,
         questionAr: clean(ex.problemAr),
         hintsAr: hints.filter((h) => h && h !== answer).slice(0, 2),
         answerAr: answer,

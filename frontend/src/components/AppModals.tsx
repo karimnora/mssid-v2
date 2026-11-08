@@ -1,3 +1,5 @@
+import type { PracticeResult } from '../utils/competenceProgress';
+import type { ExamCountdown } from '../utils/examCountdown';
 import { NativeSubscriptionStatus } from './NativeSubscriptionStatus';
 import React, { Suspense, lazy, useState } from 'react';
 import { CourseLesson, PrimaryGrade, UserProfile } from '../types';
@@ -34,6 +36,8 @@ type Modals = ReturnType<typeof useAppModals>;
 
 interface AppModalsProps {
   modals: Modals;
+  countdown?: ExamCountdown | null;
+  onPracticeResult?: (lessonId:string,result:PracticeResult)=>void;
   grade: PrimaryGrade;
   currentLesson?: CourseLesson | null;
   /** Published catalog for the « مساعدي » question bank; null while it loads. */
@@ -74,6 +78,8 @@ interface AppModalsProps {
 
 export const AppModals: React.FC<AppModalsProps> = ({
   modals,
+  countdown,
+  onPracticeResult,
   grade,
   currentLesson,
   courses = null,
@@ -116,6 +122,9 @@ export const AppModals: React.FC<AppModalsProps> = ({
   <>
     <NativeSubscriptionStatus/>
     <AiTutorModal
+      userProfile={userProfile}
+      onPracticeResult={onPracticeResult}
+      countdown={countdown}
       isOpen={modals.isAiModalOpen}
       onClose={() => modals.setIsAiModalOpen(false)}
       grade={grade}

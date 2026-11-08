@@ -1039,6 +1039,8 @@ function AppContent() {
       )}
       <EmailDeepLink grade={nav.grade} onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} />
       <AppModals
+        countdown={countdown}
+        onPracticeResult={progress.handlePracticeResult}
         currentLesson={nav.selectedLesson}
         courses={coursesData ? publishableCourses : null}
         modals={modals}
