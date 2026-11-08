@@ -35,7 +35,7 @@ export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = (
               onClick={() => setPending(lang)}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.95 }}
-              className="min-h-[60px] min-w-[60px] min-h-32 rounded-[2rem] bg-white shadow-lg border-4 border-amber-200 hover:border-amber-400 flex flex-col items-center justify-center gap-2 py-6 cursor-pointer transition-colors"
+              className="min-w-[60px] min-h-32 rounded-[2rem] bg-white shadow-lg border-4 border-amber-200 hover:border-amber-400 flex flex-col items-center justify-center gap-2 py-6 cursor-pointer transition-colors"
             >
               <PreschoolFlagMark asset={info.flag} size={64} />
               <span className="text-xl font-black text-orange-900" dir={info.dir}>{info.nativeLabel}</span>

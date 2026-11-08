@@ -496,7 +496,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => requestLeave(onExit)}
-            className="min-h-[60px] min-w-[60px] min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
             aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
             {language === 'ar' ? '▶' : '◀'}
@@ -533,7 +533,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
         {mode !== 'magic' && (
           <button
             onClick={downloadDrawing}
-            className="min-h-[60px] min-w-[60px] order-4 sm:order-none w-full sm:w-auto min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
+            className="min-h-[60px] min-w-[60px] order-4 sm:order-none w-full sm:w-auto px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
           >
             <span>{labels.save}</span>
           </button>
@@ -739,11 +739,11 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                   setIsRainbow(true);
                   setActiveStamp(null);
                 }}
-                className={`min-h-[60px] min-w-[60px] min-h-9 rounded-xl shadow-xs text-sm font-black transition-all cursor-pointer flex items-center justify-center border-2 ${
-                  isRainbow
-                    ? 'border-orange-500 scale-110 shadow-md ring-2 ring-orange-400'
-                    : 'border-slate-200 hover:scale-105'
-                }`}
+                className={`min-h-[60px] min-w-[60px] rounded-xl shadow-xs text-sm font-black transition-all cursor-pointer flex items-center justify-center border-2 ${
+ isRainbow
+ ? 'border-orange-500 scale-110 shadow-md ring-2 ring-orange-400'
+ : 'border-slate-200 hover:scale-105'
+ }`}
                 style={{
                   background: 'linear-gradient(135deg, #ef4444, #eab308, #22c55e, #3b82f6, #a855f7)',
                 }}
@@ -763,11 +763,11 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                       setActiveStamp(null);
                       playBubblePop();
                     }}
-                    className={`min-h-[60px] min-w-[60px] min-h-9 rounded-xl shadow-xs transition-all cursor-pointer border-2 ${
-                      isSelected
-                        ? 'border-orange-600 scale-115 shadow-md ring-2 ring-orange-400'
-                        : 'border-slate-200 hover:scale-105'
-                    }`}
+                    className={`min-h-[60px] min-w-[60px] rounded-xl shadow-xs transition-all cursor-pointer border-2 ${
+ isSelected
+ ? 'border-orange-600 scale-115 shadow-md ring-2 ring-orange-400'
+ : 'border-slate-200 hover:scale-105'
+ }`}
                     style={{ backgroundColor: p.color }}
                     title={language === 'ar' ? p.labelAr : language === 'fr' ? p.labelFr : p.labelEn}
                   />
@@ -788,11 +788,11 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                 <button
                   key={b.size}
                   onClick={() => setBrushSize(b.size)}
-                  className={`min-h-[60px] min-w-[60px] flex-1 min-h-10 rounded-xl flex flex-col items-center justify-center text-xs font-black transition-all cursor-pointer border ${
-                    brushSize === b.size
-                      ? 'bg-amber-400 text-amber-950 border-amber-500 shadow-xs'
-                      : 'bg-amber-50/60 text-slate-700 hover:bg-amber-100/60 border-amber-200'
-                  }`}
+                  className={`min-h-[60px] min-w-[60px] flex-1 rounded-xl flex flex-col items-center justify-center text-xs font-black transition-all cursor-pointer border ${
+ brushSize === b.size
+ ? 'bg-amber-400 text-amber-950 border-amber-500 shadow-xs'
+ : 'bg-amber-50/60 text-slate-700 hover:bg-amber-100/60 border-amber-200'
+ }`}
                 >
                   <span className={`rounded-full bg-slate-800 ${b.iconSize}`} />
                 </button>
@@ -821,11 +821,11 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                     setActiveStamp(s);
                     playBubblePop();
                   }}
-                  className={`min-h-[60px] min-w-[60px] min-h-8 rounded-xl text-base flex items-center justify-center transition-all cursor-pointer border ${
-                    activeStamp === s
-                      ? 'bg-amber-300 border-amber-500 scale-115 shadow-md ring-2 ring-amber-400'
-                      : 'bg-white hover:bg-amber-50 border-slate-200 hover:scale-105'
-                  }`}
+                  className={`min-h-[60px] min-w-[60px] rounded-xl text-base flex items-center justify-center transition-all cursor-pointer border ${
+ activeStamp === s
+ ? 'bg-amber-300 border-amber-500 scale-115 shadow-md ring-2 ring-amber-400'
+ : 'bg-white hover:bg-amber-50 border-slate-200 hover:scale-105'
+ }`}
                 >
                   {s}
                 </button>

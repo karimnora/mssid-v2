@@ -194,13 +194,13 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
               transition={isWrong ? { duration: 0.4 } : spring}
               disabled={solved}
               aria-label={caption ?? frame.asset}
-              className={`min-h-[60px] min-w-[60px] min-h-28 rounded-3xl flex flex-col items-center justify-center gap-1
-                          shadow-md border-4 cursor-pointer select-none px-1 py-2
-                          ${isPicked
-                            ? 'bg-emerald-100 border-emerald-400'
-                            : isWrong
-                              ? 'bg-rose-100 border-rose-400'
-                              : 'bg-white border-amber-200'}`}
+              className={`min-w-[60px] min-h-28 rounded-3xl flex flex-col items-center justify-center gap-1
+ shadow-md border-4 cursor-pointer select-none px-1 py-2
+ ${isPicked
+ ? 'bg-emerald-100 border-emerald-400'
+ : isWrong
+ ? 'bg-rose-100 border-rose-400'
+ : 'bg-white border-amber-200'}`}
             >
               <PreschoolAsset asset={frame.asset} size={52} textClassName="text-4xl leading-none" />
               {caption && (

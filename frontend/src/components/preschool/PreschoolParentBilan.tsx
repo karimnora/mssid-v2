@@ -140,7 +140,7 @@ export function ParentGateButton({
             <button
               type="submit"
               disabled={!answer}
-              className="min-h-[60px] min-w-[60px] w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              className="min-h-[60px] min-w-[60px] w-full rounded-2xl bg-[#008751] text-white font-black cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {t('مُتَابَعَة', 'Continuer', 'Continue')}
             </button>
@@ -216,7 +216,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
               />
               <button
                 type="button"
-                className="min-h-[60px] min-w-[60px] min-h-12 px-4 rounded-2xl bg-[#008751] text-white font-black cursor-pointer"
+                className="min-h-[60px] min-w-[60px] px-4 rounded-2xl bg-[#008751] text-white font-black cursor-pointer"
                 onClick={() => {
                   onSaveName(draft);
                   setEditing(false);
@@ -260,7 +260,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
           <button
             type="button"
             onClick={onPlayNext}
-            className="min-h-[60px] min-w-[60px] w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer px-4"
+            className="min-h-[60px] min-w-[60px] w-full rounded-2xl bg-[#008751] text-white font-black cursor-pointer px-4"
           >
             {t('الْآتِي:', 'Ensuite :', 'Next:')} {nextStep.title}
           </button>

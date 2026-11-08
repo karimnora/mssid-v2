@@ -126,8 +126,8 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                       whileHover={{ scale: 1.04, translateY: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setActiveGame(g.id)}
-                      className={`min-h-[60px] min-w-[60px] rounded-3xl bg-gradient-to-br ${g.gradient} p-5 text-white shadow-xl border-2 ${g.border}
-                                  flex flex-col gap-3 cursor-pointer relative overflow-hidden text-start min-h-36`}
+                      className={`min-w-[60px] rounded-3xl bg-gradient-to-br ${g.gradient} p-5 text-white shadow-xl border-2 ${g.border}
+ flex flex-col gap-3 cursor-pointer relative overflow-hidden text-start min-h-36`}
                     >
                       {/* Decorative circle */}
                       <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10" />

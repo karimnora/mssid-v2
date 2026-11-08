@@ -366,9 +366,9 @@ const DressBoard: React.FC<{
             animate={wrongId === g.id ? { x: [0, -8, 8, -8, 0] } : { x: 0 }}
             data-garment-kind={g.kind}
             aria-label={t(g.labelAr, g.labelFr, g.labelEn)}
-            className="min-h-[60px] min-w-[60px] min-w-[72px] min-h-[72px] px-2 py-1.5 rounded-2xl bg-[#F8F9FA] border-2 border-orange-200
-                       shadow-md cursor-grab active:cursor-grabbing select-none touch-none
-                       flex flex-col items-center justify-center gap-0.5"
+            className="min-w-[72px] min-h-[72px] px-2 py-1.5 rounded-2xl bg-[#F8F9FA] border-2 border-orange-200
+ shadow-md cursor-grab active:cursor-grabbing select-none touch-none
+ flex flex-col items-center justify-center gap-0.5"
           >
             <GarmentGlyph kind={g.kind} size={40} />
             <span className="text-[10px] font-black text-slate-700 leading-tight text-center">

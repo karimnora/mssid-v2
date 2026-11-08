@@ -349,8 +349,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={spring}
-                className={`min-h-[60px] min-w-[60px] min-h-32 rounded-3xl bg-gradient-to-br ${tool.gradient} p-6 text-white shadow-md border-2 ${tool.border}
-                            flex items-center gap-5 cursor-pointer text-start`}
+                className={`min-w-[60px] min-h-32 rounded-3xl bg-gradient-to-br ${tool.gradient} p-6 text-white shadow-md border-2 ${tool.border}
+ flex items-center gap-5 cursor-pointer text-start`}
               >
                 <span className="text-5xl">{tool.icon}</span>
                 <div className="space-y-1">
@@ -378,8 +378,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={spring}
-                  className={`min-h-[60px] min-w-[60px] min-h-36 rounded-3xl bg-gradient-to-br ${meta.gradient} p-6 text-white shadow-md
-                              flex flex-col justify-between cursor-pointer text-start`}
+                  className={`min-w-[60px] min-h-36 rounded-3xl bg-gradient-to-br ${meta.gradient} p-6 text-white shadow-md
+ flex flex-col justify-between cursor-pointer text-start`}
                 >
                   <span className="text-5xl">
                     {isFlagEmoji(meta.icon)
@@ -411,8 +411,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={spring}
-                  className="min-h-[60px] min-w-[60px] min-h-24 rounded-3xl bg-white shadow-md border-2 border-amber-200 hover:border-amber-400
-                             flex items-center gap-4 px-5 py-4 cursor-pointer text-start"
+                  className="min-w-[60px] min-h-24 rounded-3xl bg-white shadow-md border-2 border-amber-200 hover:border-amber-400
+ flex items-center gap-4 px-5 py-4 cursor-pointer text-start"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0">
                     <PreschoolAsset asset={mod.icon} size={40} />
@@ -466,8 +466,8 @@ const DoorCard: React.FC<{
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     transition={spring}
-    className={`min-h-[60px] min-w-[60px] min-h-40 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white shadow-md
-                flex flex-col justify-between cursor-pointer text-start`}
+    className={`min-w-[60px] min-h-40 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white shadow-md
+ flex flex-col justify-between cursor-pointer text-start`}
   >
     <span className="text-5xl">{icon}</span>
     <div className="mt-6 space-y-1">

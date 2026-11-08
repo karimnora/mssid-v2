@@ -278,8 +278,8 @@ const PuzzleBoard: React.FC<{
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => requestLeave(onExit)}
-          className="min-h-[60px] min-w-[60px] min-w-12 min-h-12 flex items-center justify-center rounded-2xl
-                     bg-white shadow-md text-2xl border-2 border-amber-200 cursor-pointer"
+          className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl
+ bg-white shadow-md text-2xl border-2 border-amber-200 cursor-pointer"
         >
           🚪
         </motion.button>

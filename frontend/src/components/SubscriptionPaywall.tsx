@@ -196,7 +196,7 @@ const WebSubscriptionPaywall: React.FC<Props> = ({
           {!submittedReceipt && <fieldset className="space-y-3" disabled={isSubmitting || showParentGate}>
             <legend className="font-extrabold">{t('chooseDuration')}</legend>
             <p className="text-base text-slate-600">{t('sameServices')}</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SUBSCRIPTION_PLANS.map(plan => <label key={plan.id} className={`rounded-2xl p-4 border-2 cursor-pointer space-y-2 ${planId === plan.id ? 'border-[#008751] bg-emerald-50' : 'border-slate-200 bg-white'}`}>
                 <input type="radio" name="subscription-plan" value={plan.id} checked={planId === plan.id} onChange={() => setPlanId(plan.id)} className="accent-[#008751]" />
                 <span className="font-extrabold ms-2">{t('planMonths', { months: plan.months })}</span>

@@ -137,7 +137,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
               type="button"
               onClick={() => returnToTray(it.id)}
               aria-label={`${it.asset} basket`}
-              className="min-h-[60px] min-w-[60px] text-2xl leading-none cursor-pointer min-h-12 min-w-12"
+              className="min-h-[60px] min-w-[60px] text-2xl leading-none cursor-pointer "
             >
               {it.asset}
             </button>
@@ -182,8 +182,8 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
         aria-label={DONE[language]}
         whileTap={{ scale: 0.95 }}
         onClick={handleDone}
-        className="min-h-[60px] min-w-[60px] w-full max-w-sm min-h-[72px] rounded-3xl px-4 text-lg font-black cursor-pointer
-                   bg-[#008751] text-white border-2 border-emerald-300"
+        className="min-w-[60px] w-full max-w-sm min-h-[72px] rounded-3xl px-4 text-lg font-black cursor-pointer
+ bg-[#008751] text-white border-2 border-emerald-300"
       >
         {DONE[language]}
       </motion.button>

@@ -263,7 +263,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onExit}
-            className="min-h-[60px] min-w-[60px] min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
             aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
             {language === 'ar' ? '▶' : '◀'}
@@ -677,9 +677,9 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                   onClick={() => handlePercussionPress(pad)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.92 }}
-                  className={`min-h-[60px] min-w-[60px] min-h-48 rounded-3xl bg-gradient-to-b ${pad.color} p-4 text-white shadow-xl border-4 border-white/60 flex flex-col items-center justify-between text-center cursor-pointer transition-all ${
-                    isPressed ? 'ring-4 ring-yellow-400 scale-105 brightness-125' : ''
-                  }`}
+                  className={`min-w-[60px] min-h-48 rounded-3xl bg-gradient-to-b ${pad.color} p-4 text-white shadow-xl border-4 border-white/60 flex flex-col items-center justify-between text-center cursor-pointer transition-all ${
+ isPressed ? 'ring-4 ring-yellow-400 scale-105 brightness-125' : ''
+ }`}
                 >
                   <span className="text-5xl sm:text-6xl drop-shadow-md">{pad.icon}</span>
                   <div className="space-y-1">

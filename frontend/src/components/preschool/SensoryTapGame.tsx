@@ -111,8 +111,8 @@ export const SensoryTapGame: React.FC<SensoryTapGameProps> = ({ onExit, language
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="min-h-[60px] min-w-[60px] pointer-events-auto min-w-12 min-h-12 flex items-center justify-center rounded-2xl
-                       bg-white shadow-md border-2 border-pink-200 text-lg font-black cursor-pointer"
+            className="min-h-[60px] min-w-[60px] pointer-events-auto flex items-center justify-center rounded-2xl
+ bg-white shadow-md border-2 border-pink-200 text-lg font-black cursor-pointer"
             onClick={onExit}
           >
             🚪

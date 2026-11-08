@@ -93,13 +93,13 @@ export const PreschoolMemoryCards: React.FC<PreschoolMemoryCardsProps> = ({ acti
             onClick={() => handleFlip(card)}
             whileTap={{ scale: 0.94 }}
             animate={matchedPairIds.includes(card.pairId) ? { scale: [1, 1.1, 1] } : {}}
-            className={`min-h-[60px] min-w-[60px] min-h-24 min-w-24 w-24 h-24 rounded-2xl text-4xl flex items-center justify-center shadow-md border-4 cursor-pointer transition-colors ${
-              matchedPairIds.includes(card.pairId)
-                ? 'bg-emerald-300 border-emerald-500'
-                : isFaceUp
-                ? 'bg-white border-amber-400'
-                : 'bg-amber-300 border-amber-500'
-            }`}
+            className={`min-h-24 min-w-24 w-24 h-24 rounded-2xl text-4xl flex items-center justify-center shadow-md border-4 cursor-pointer transition-colors ${
+ matchedPairIds.includes(card.pairId)
+ ? 'bg-emerald-300 border-emerald-500'
+ : isFaceUp
+ ? 'bg-white border-amber-400'
+ : 'bg-amber-300 border-amber-500'
+ }`}
           >
             {isFaceUp
               ? <PreschoolAsset asset={card.asset} size={48} textClassName="text-4xl leading-none" />

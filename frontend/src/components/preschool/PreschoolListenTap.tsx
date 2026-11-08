@@ -90,13 +90,13 @@ export const PreschoolListenTap: React.FC<PreschoolListenTapProps> = ({
             transition={isWrong ? { duration: 0.4 } : spring}
             disabled={solved}
             aria-label={name}
-            className={`min-h-[60px] min-w-[60px] min-h-24 rounded-3xl flex flex-col items-center justify-center gap-1
-                        shadow-md border-4 cursor-pointer select-none px-2 py-3
-                        ${isWin || heard
-                          ? 'bg-emerald-100 border-emerald-400'
-                          : isWrong
-                            ? 'bg-rose-100 border-rose-400'
-                            : 'bg-white border-amber-200 hover:border-amber-400'}`}
+            className={`min-w-[60px] min-h-24 rounded-3xl flex flex-col items-center justify-center gap-1
+ shadow-md border-4 cursor-pointer select-none px-2 py-3
+ ${isWin || heard
+ ? 'bg-emerald-100 border-emerald-400'
+ : isWrong
+ ? 'bg-rose-100 border-rose-400'
+ : 'bg-white border-amber-200 hover:border-amber-400'}`}
           >
             <span className="text-3xl sm:text-4xl leading-none" aria-hidden="true">{card.asset}</span>
             {!quiz && (
