@@ -438,7 +438,7 @@ const GameBoard: React.FC<{
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => requestLeave(onExit)}
-          className="bg-white shadow-md border-2 border-violet-200 text-slate-800 text-sm px-4 py-2 rounded-2xl font-black cursor-pointer"
+          className="min-h-[60px] min-w-[60px] bg-white shadow-md border-2 border-violet-200 text-slate-800 text-sm px-4 py-2 rounded-2xl font-black cursor-pointer"
         >
           🚪 {t('خروج', 'Retour', 'Back')}
         </motion.button>
@@ -447,7 +447,7 @@ const GameBoard: React.FC<{
             {cfg.emoji} {t('رَتِّبِ الْأَشْكَال', 'Range les formes', 'Sort the shapes')}
           </span>
           <span className="text-xs text-slate-500 font-bold">
-            {doneCount} / {pieces.length} {t('تم', 'triés', 'sorted')}
+            <bdi dir="ltr">{doneCount} / {pieces.length}</bdi> {t('تم', 'triés', 'sorted')}
           </span>
         </div>
         {cfg.hasTimer ? (
@@ -466,7 +466,7 @@ const GameBoard: React.FC<{
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { resumeTownAudio(); speak(mission); }}
-          className="min-h-12 min-w-12 shrink-0 rounded-2xl bg-white shadow-md border-2 border-violet-200 text-2xl cursor-pointer"
+          className="min-h-[60px] min-w-[60px] shrink-0 rounded-2xl bg-white shadow-md border-2 border-violet-200 text-2xl cursor-pointer"
           aria-label={t('استمع', 'Écouter', 'Listen')}
         >
           🔊

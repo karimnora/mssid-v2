@@ -496,7 +496,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => requestLeave(onExit)}
-            className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            className="min-h-[60px] min-w-[60px] min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
             aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
             {language === 'ar' ? '▶' : '◀'}
@@ -516,7 +516,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
               onClick={() => {
                 if (onSelectLanguage && l !== language) requestLeave(() => onSelectLanguage(l));
               }}
-              className={`px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+              className={`min-h-[60px] min-w-[60px] px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 language === l
                   ? 'bg-orange-500 text-white shadow-xs'
                   : 'text-orange-950 hover:bg-orange-100'
@@ -533,7 +533,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
         {mode !== 'magic' && (
           <button
             onClick={downloadDrawing}
-            className="order-4 sm:order-none w-full sm:w-auto min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
+            className="min-h-[60px] min-w-[60px] order-4 sm:order-none w-full sm:w-auto min-h-11 px-3 sm:px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer border border-emerald-500"
           >
             <span>{labels.save}</span>
           </button>
@@ -561,7 +561,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
               setMode(m.id as BoardMode);
               playBubblePop();
             }}
-            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-xs ${
+            className={`min-h-[60px] min-w-[60px] px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-xs ${
               mode === m.id
                 ? 'bg-orange-500 text-white shadow-md scale-105 border-2 border-orange-300 ring-2 ring-orange-400'
                 : 'bg-white text-orange-950 hover:bg-orange-50 border border-orange-200'
@@ -589,7 +589,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                   }
                   playBubblePop();
                 }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-black shrink-0 cursor-pointer transition-all ${
+                className={`min-h-[60px] min-w-[60px] px-3 py-1.5 rounded-xl text-xs font-black shrink-0 cursor-pointer transition-all ${
                   activeTraceCategory === cat
                     ? 'bg-orange-500 text-white shadow-md'
                     : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
@@ -611,7 +611,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                   const hint = language === 'ar' ? t.hintAr : language === 'fr' ? t.hintFr : t.hintEn;
                   speak(hint);
                 }}
-                className={`w-9 h-9 rounded-xl font-black text-base shrink-0 flex items-center justify-center cursor-pointer transition-all ${
+                className={`min-h-[60px] min-w-[60px] w-9 h-9 rounded-xl font-black text-base shrink-0 flex items-center justify-center cursor-pointer transition-all ${
                   activeTrace.id === t.id
                     ? 'bg-orange-500 text-white shadow-md scale-110'
                     : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
@@ -639,7 +639,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                   const name = language === 'ar' ? c.nameAr : language === 'fr' ? c.nameFr : c.nameEn;
                   speak(name);
                 }}
-                className={`px-3 py-1.5 rounded-xl font-black text-xs shrink-0 flex items-center gap-1.5 cursor-pointer transition-all ${
+                className={`min-h-[60px] min-w-[60px] px-3 py-1.5 rounded-xl font-black text-xs shrink-0 flex items-center gap-1.5 cursor-pointer transition-all ${
                   activeColoring.id === c.id
                     ? 'bg-orange-500 text-white shadow-md scale-105'
                     : 'bg-orange-50 text-orange-950 hover:bg-orange-100 border border-orange-200'
@@ -721,7 +721,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
           {/* Clear board button inside corner */}
           <button
             onClick={() => clearCanvas(true)}
-            className="absolute bottom-3 left-3 bg-rose-500 hover:bg-rose-600 text-white font-black text-xs px-3 py-2 rounded-2xl shadow-md active:scale-95 transition-all flex items-center gap-1 cursor-pointer border border-rose-400"
+            className="min-h-[60px] min-w-[60px] absolute bottom-3 left-3 bg-rose-500 hover:bg-rose-600 text-white font-black text-xs px-3 py-2 rounded-2xl shadow-md active:scale-95 transition-all flex items-center gap-1 cursor-pointer border border-rose-400"
           >
             <span>{labels.clear}</span>
           </button>
@@ -732,14 +732,14 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
           {/* Colors Palette */}
           <div className="space-y-1.5">
             <label className="text-xs font-black text-orange-950 block">{labels.colors}</label>
-            <div className="grid grid-cols-6 md:grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-4 gap-1.5">
               {/* Rainbow Brush Button */}
               <button
                 onClick={() => {
                   setIsRainbow(true);
                   setActiveStamp(null);
                 }}
-                className={`min-h-9 rounded-xl shadow-xs text-sm font-black transition-all cursor-pointer flex items-center justify-center border-2 ${
+                className={`min-h-[60px] min-w-[60px] min-h-9 rounded-xl shadow-xs text-sm font-black transition-all cursor-pointer flex items-center justify-center border-2 ${
                   isRainbow
                     ? 'border-orange-500 scale-110 shadow-md ring-2 ring-orange-400'
                     : 'border-slate-200 hover:scale-105'
@@ -763,7 +763,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                       setActiveStamp(null);
                       playBubblePop();
                     }}
-                    className={`min-h-9 rounded-xl shadow-xs transition-all cursor-pointer border-2 ${
+                    className={`min-h-[60px] min-w-[60px] min-h-9 rounded-xl shadow-xs transition-all cursor-pointer border-2 ${
                       isSelected
                         ? 'border-orange-600 scale-115 shadow-md ring-2 ring-orange-400'
                         : 'border-slate-200 hover:scale-105'
@@ -788,7 +788,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                 <button
                   key={b.size}
                   onClick={() => setBrushSize(b.size)}
-                  className={`flex-1 min-h-10 rounded-xl flex flex-col items-center justify-center text-xs font-black transition-all cursor-pointer border ${
+                  className={`min-h-[60px] min-w-[60px] flex-1 min-h-10 rounded-xl flex flex-col items-center justify-center text-xs font-black transition-all cursor-pointer border ${
                     brushSize === b.size
                       ? 'bg-amber-400 text-amber-950 border-amber-500 shadow-xs'
                       : 'bg-amber-50/60 text-slate-700 hover:bg-amber-100/60 border-amber-200'
@@ -807,13 +807,13 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
               {activeStamp && (
                 <button
                   onClick={() => setActiveStamp(null)}
-                  className="text-[10px] text-rose-600 font-bold hover:underline"
+                  className="min-h-[60px] min-w-[60px] text-[10px] text-rose-600 font-bold hover:underline"
                 >
                   {labels.cancelStamp}
                 </button>
               )}
             </div>
-            <div className="grid grid-cols-6 md:grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-4 gap-1.5">
               {STAMPS.map((s) => (
                 <button
                   key={s}
@@ -821,7 +821,7 @@ export const PreschoolMagicBoard: React.FC<PreschoolMagicBoardProps> = ({
                     setActiveStamp(s);
                     playBubblePop();
                   }}
-                  className={`min-h-8 rounded-xl text-base flex items-center justify-center transition-all cursor-pointer border ${
+                  className={`min-h-[60px] min-w-[60px] min-h-8 rounded-xl text-base flex items-center justify-center transition-all cursor-pointer border ${
                     activeStamp === s
                       ? 'bg-amber-300 border-amber-500 scale-115 shadow-md ring-2 ring-amber-400'
                       : 'bg-white hover:bg-amber-50 border-slate-200 hover:scale-105'

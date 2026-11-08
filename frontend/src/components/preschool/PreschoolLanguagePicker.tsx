@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ParentGateModal } from '../ParentGateModal';
 import { motion } from 'motion/react';
 import { PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
 import { PreschoolMascot } from './PreschoolMascot';
@@ -13,6 +14,7 @@ interface PreschoolLanguagePickerProps {
 // read "Français" or "العربية"), so this step assumes an adult is present, which matches the
 // "co-play" design principle for this age band (never leave a toddler to navigate settings alone).
 export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = ({ onSelect }) => {
+  const [pending, setPending] = useState<PreschoolLanguage | null>(null);
   const languages: PreschoolLanguage[] = ['ar', 'fr', 'en'];
 
   return (
@@ -30,10 +32,10 @@ export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = (
           return (
             <motion.button
               key={lang}
-              onClick={() => onSelect(lang)}
+              onClick={() => setPending(lang)}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.95 }}
-              className="min-h-32 rounded-[2rem] bg-white shadow-lg border-4 border-amber-200 hover:border-amber-400 flex flex-col items-center justify-center gap-2 py-6 cursor-pointer transition-colors"
+              className="min-h-[60px] min-w-[60px] min-h-32 rounded-[2rem] bg-white shadow-lg border-4 border-amber-200 hover:border-amber-400 flex flex-col items-center justify-center gap-2 py-6 cursor-pointer transition-colors"
             >
               <PreschoolFlagMark asset={info.flag} size={64} />
               <span className="text-xl font-black text-orange-900" dir={info.dir}>{info.nativeLabel}</span>
@@ -41,6 +43,7 @@ export const PreschoolLanguagePicker: React.FC<PreschoolLanguagePickerProps> = (
           );
         })}
       </div>
+      {pending !== null && <ParentGateModal isOpen onClose={() => setPending(null)} onVerified={() => { onSelect(pending); setPending(null); }} />}
     </div>
   );
 };

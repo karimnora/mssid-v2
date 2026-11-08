@@ -60,7 +60,7 @@ export const LevelSelectScreen: React.FC<LevelSelectScreenProps> = ({
       <div className="w-full max-w-2xl flex items-center justify-between">
         <motion.button
           whileTap={{ scale: 0.92 }} onClick={onExit}
-          className="bg-white/10 hover:bg-white/20 text-white font-black px-4 py-2.5 rounded-2xl border border-white/20 cursor-pointer text-sm transition-colors"
+          className="min-h-[60px] min-w-[60px] bg-white/10 hover:bg-white/20 text-white font-black px-4 py-2.5 rounded-2xl border border-white/20 cursor-pointer text-sm transition-colors"
         >
           🚪 {backLabel}
         </motion.button>
@@ -100,7 +100,7 @@ export const LevelSelectScreen: React.FC<LevelSelectScreenProps> = ({
                 whileHover={lvl.unlocked ? { scale: 1.04, translateY: -2 } : {}}
                 whileTap={lvl.unlocked ? { scale: 0.95 } : {}}
                 onClick={() => lvl.unlocked && onSelectLevel(lvl.level)}
-                className={`w-full rounded-3xl p-4 flex flex-col gap-2 text-center cursor-pointer border-2 transition-all relative overflow-hidden
+                className={`min-h-[60px] min-w-[60px] w-full rounded-3xl p-4 flex flex-col gap-2 text-center cursor-pointer border-2 transition-all relative overflow-hidden
                   ${lvl.unlocked
                     ? `bg-gradient-to-br ${lvl.gradient} border-white/30 shadow-xl`
                     : 'bg-slate-800/60 border-slate-700 cursor-not-allowed opacity-60'
@@ -157,7 +157,7 @@ export const LevelSelectScreen: React.FC<LevelSelectScreenProps> = ({
       <div className="bg-white/10 rounded-2xl px-6 py-3 flex items-center gap-2 border border-white/20">
         <span className="text-amber-400 font-black text-lg">★</span>
         <span className="text-white font-bold text-sm">
-          {bestLabel}: {levels.reduce((a, l) => a + l.earnedStars, 0)} / {levels.length * 3}
+          {bestLabel}: <bdi dir="ltr">{levels.reduce((a, l) => a + l.earnedStars, 0)} / {levels.length * 3}</bdi>
         </span>
       </div>
     </div>

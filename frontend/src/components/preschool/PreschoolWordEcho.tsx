@@ -44,7 +44,7 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
             : t('قُلِ الكَلِمَةَ بِصَوْتٍ عَالٍ!', 'Dis le mot tout fort !', 'Say the word out loud!')}
         </p>
         {echo.phase === 'denied' && <button type="button" onClick={() => { stop(); void echo.start(); }}
-          className={`${hit} rounded-3xl px-4 cursor-pointer bg-white text-[#0f172a] border-2 border-amber-300`}>
+          className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer bg-white text-[#0f172a] border-2 border-amber-300`}>
           {t('أَعِدْ مُحَاوَلَةَ المِيكْرُوفُون', 'Réessayer le micro', 'Retry microphone')}
         </button>}
         </>
@@ -55,7 +55,7 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
           aria-label={t('سَجِّلْ صَوْتَك', 'Enregistre ta voix', 'Record your voice')}
           whileTap={{ scale: 0.95 }}
           onClick={() => { stop(); void echo.start(); }}
-          className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
+          className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
         >
           <Mic className="w-7 h-7 shrink-0 text-[#C42A23]" />
           {t('🎤 أَنَا أَقُول', '🎤 Je dis le mot', '🎤 I say the word')}
@@ -67,7 +67,7 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
           aria-label={t('تَوَقَّفْ', 'Stop', 'Stop')}
           whileTap={{ scale: 0.95 }}
           onClick={() => echo.stop()}
-          className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#C42A23] text-white`}
+          className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#C42A23] text-white`}
         >
           <Square className="w-6 h-6 shrink-0" />
           {t('⏹ تَوَقَّفْ', '⏹ Stop', '⏹ Stop')}
@@ -81,7 +81,7 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
           aria-label={t('اِسْمَعْ صَوْتَك', 'Écoute ta voix', 'Hear your voice')}
           whileTap={{ scale: 0.95 }}
           onClick={() => { stop(); echo.play(); }}
-          className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white`}
+          className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white`}
         >
           <Volume2 className="w-7 h-7 shrink-0" />
           {t('👂 صَوْتِي', '👂 Ma voix', '👂 My voice')}
@@ -99,7 +99,7 @@ export const PreschoolWordEcho: React.FC<PreschoolWordEchoProps> = ({
         data-preschool-echo="done"
         whileTap={{ scale: 0.95 }}
         onClick={onDone}
-        className={`${hit} rounded-3xl px-4 cursor-pointer bg-[#008751] text-white border-2 border-emerald-300`}
+        className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer bg-[#008751] text-white border-2 border-emerald-300`}
       >
         {t('بَعْد!', 'C\'est dit !', 'I said it!')}
       </motion.button>

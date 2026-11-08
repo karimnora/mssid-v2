@@ -24,7 +24,6 @@ import { PreschoolModuleCompleteOverlay } from './PreschoolModuleCompleteOverlay
 import { playModuleCompleteFanfare } from './usePreschoolAudio';
 import { PreschoolParentBilan } from './PreschoolParentBilan';
 import {
-  adoptGuestProgressIfEmpty,
   appendEvent,
   challengeStorageKey,
   firstNameOf,
@@ -131,7 +130,10 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
   }, [language]);
 
   useEffect(() => {
-    if (authUser?.id && !cloudOwner.includes(':child:')) adoptGuestProgressIfEmpty(authUser.id);
+    setActiveActivityId(null);
+    setActiveModuleId(null);
+    setActiveSpecialTool(null);
+    // Unknown guest work is never silently assigned to a signed-in family.
     skipSaveRef.current = true;
     setCompletedActivityIds(loadProgress(ownerId));
     setPlayEvents(loadEvents(ownerId));
@@ -225,6 +227,7 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
           activity={activeActivity}
           language={language}
           onAttempt={quality => {
+            if (getActiveProgressOwner() !== cloudOwner) return;
             setPlayEvents(appendEvent(ownerId, {
               activityId: activeActivity.id,
               date: localDateKey(),
@@ -247,8 +250,11 @@ export const PreschoolApp: React.FC<PreschoolAppProps> = ({
             setActiveActivityId(nextActivity ? nextActivity.id : null);
           }}
           onComplete={(quality?: PreschoolPlayQuality) => {
+            if (getActiveProgressOwner() !== cloudOwner) return;
             const resolved = quality ?? 'done';
-            cloud.save(recordGardenResult(cloud.results,activeActivity.id,resolved==='helped'?'helped':isPlaySuccess(resolved)?'independent':'review'));
+            const observations = recordGardenResult(cloud.results, activeActivity.id, resolved === 'done_helped' || resolved === 'helped' ? 'helped' : resolved === 'done' ? 'independent' : 'review');
+            if (isPlaySuccess(resolved)) observations[activeActivity.id].completedAt ??= new Date().toISOString();
+            cloud.save(observations);
             setPlayEvents(appendEvent(ownerId, {
               activityId: activeActivity.id,
               date: localDateKey(),

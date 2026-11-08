@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity } from '../../data/preschool/types';
@@ -28,6 +29,7 @@ export const PreschoolJigsaw: React.FC<PreschoolJigsawProps> = ({ activity, onCo
   const slots = activity.visualAssets.jigsawSlots || [];
   const pieces = activity.visualAssets.jigsawPieces || [];
   const slotRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const reportEvidence = usePreschoolEvidence();
   const [items, setItems] = useState<PieceState[]>(
     pieces.map((p) => ({ id: p.id, asset: p.asset, correctSlotId: p.correctSlotId, placedSlotId: null, offset: { x: 0, y: 0 } }))
   );
@@ -83,7 +85,7 @@ export const PreschoolJigsaw: React.FC<PreschoolJigsawProps> = ({ activity, onCo
         return next;
       }
 
-      if (slotId) playGentleNudge(); // dropped on a slot, but the wrong one
+      if (slotId) { reportEvidence(); playGentleNudge(); } // dropped on a slot, but the wrong one
       return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it)); // snap back
     });
   };

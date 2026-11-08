@@ -1,0 +1,484 @@
+{
+  "status": "Human listening pending; technical decoding passed.",
+  "voice": "nova",
+  "model": "gpt-4o-mini-tts",
+  "synthetic": true,
+  "phrases": 29,
+  "characters": 1874,
+  "bytes": 1577836,
+  "clips": [
+    {
+      "texte": "كَمْ زَهْرَةً تَرَى؟ اِلْمَسِ الْعَدَدَ الصَّحِيحَ.",
+      "fichier": "openai-v2-6622804d8fc0ba95.mp3",
+      "duration": 4.55,
+      "sha256": "69ab8387ee53db1b253f4401eb207eeb1eb1c0cc79993935a5b661372a72b2e8",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:01.540Z",
+      "uses": [
+        "preschool:discovery-garden-count:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "ecc41240069144a9d5d1587ee4a13bfbbb9348a6e65a74ca13fcf650696e56b1"
+    },
+    {
+      "texte": "أَحْسَنْتَ! احْكِ مَا وَجَدْتَ.",
+      "fichier": "openai-v2-9c83ad9ffbb13b4a.mp3",
+      "duration": 2.4,
+      "sha256": "6995046239f81a66ef65416a8fd27c7937b9efad49f79964bcf78083b9fc4159",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:02.707Z",
+      "uses": [
+        "preschool:discovery-garden-count:success",
+        "preschool:discovery-garden-pattern:success",
+        "preschool:discovery-garden-pairs:success",
+        "preschool:discovery-garden-story:success",
+        "preschool:discovery-picnic-count:success",
+        "preschool:discovery-picnic-pattern:success",
+        "preschool:discovery-picnic-pairs:success",
+        "preschool:discovery-picnic-story:success",
+        "preschool:discovery-tiles-count:success",
+        "preschool:discovery-tiles-pattern:success",
+        "preschool:discovery-tiles-pairs:success",
+        "preschool:discovery-tiles-story:success"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "d2bf86677e6d4d04a73f946b73b673f1a4140589a4d2e077dfbb099c1b0c4b06"
+    },
+    {
+      "texte": "وَرَقَةٌ، زَهْرَةٌ، وَرَقَةٌ، زَهْرَةٌ، وَرَقَةٌ. مَاذَا يَأْتِي بَعْدُ؟",
+      "fichier": "openai-v2-a60719eb7ea57c22.mp3",
+      "duration": 6.05,
+      "sha256": "38574f622634d405854858c1dca13820ef254c12c1596a39dbd125240e55dcce",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:04.149Z",
+      "uses": [
+        "preschool:discovery-garden-pattern:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "97f746b9e839c229e50b94cd7e24d161eec9f1e7df77dbab66448082ad5d21fe"
+    },
+    {
+      "texte": "اِلْمَسْ صُورَةً ثُمَّ ابْحَثْ عَنْ مِثْلِهَا فِي الْجِهَةِ الْأُخْرَى.",
+      "fichier": "openai-v2-8ebb1a14f6a6ab90.mp3",
+      "duration": 4.7,
+      "sha256": "a13c0c693b7c09e8bf30cfc0f04ca89499d394ef3feaf4459cd51fa6a19250ad",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:05.667Z",
+      "uses": [
+        "preschool:discovery-garden-pairs:prompt",
+        "preschool:discovery-picnic-pairs:prompt",
+        "preschool:discovery-tiles-pairs:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "7e0f5937b29b878917a4b318cd9813616a1ad436ee71445acca7ebedf1b6b365"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّوَرَ بِالتَّرْتِيبِ: أَزْرَعُ الْبَذْرَةَ، أَسْقِيهَا، ثُمَّ تَنْبُتُ النَّبْتَةُ.",
+      "fichier": "openai-v2-b5115a6f7d06f849.mp3",
+      "duration": 6.4,
+      "sha256": "eaba7f23d24abcf01f0b2760aadda672f3a9b0a5de25ecb945db3d42e44c8e42",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:07.679Z",
+      "uses": [
+        "preschool:discovery-garden-story:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "65b75d76ab772002f9abdd805dac1ff34b46e9694c57a4b3f8f8c345efc55304"
+    },
+    {
+      "texte": "عُدَّ التُّفَّاحَاتِ. اِلْمَسْ عَدَدَهَا.",
+      "fichier": "openai-v2-bb75def222adb4b7.mp3",
+      "duration": 3.7,
+      "sha256": "2f332007765aeb3794bb25449f553e3e1fedcf0f0bb3f2644a56889d9d86ca76",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:08.797Z",
+      "uses": [
+        "preschool:discovery-picnic-count:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "98f90bf170aeb15028895283f05e532c7b110a7bf38e822ea35269f468b1fe97"
+    },
+    {
+      "texte": "تُفَّاحَةٌ، إِجَّاصَةٌ، إِجَّاصَةٌ. تُفَّاحَةٌ، إِجَّاصَةٌ... أَيُّ ثَمَرَةٍ تَنْقُصُ؟",
+      "fichier": "openai-v2-27f398e4d96a966a.mp3",
+      "duration": 8.15,
+      "sha256": "dcd5dbff42376e3444bf86df807404ee28018e7a1f181a9768fe46907bb514ae",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:11.703Z",
+      "uses": [
+        "preschool:discovery-picnic-pattern:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "bb9db99a70c72dc9a816e361b606fed9c438d3c23d92cbb1fdd3ad246d0dbc08"
+    },
+    {
+      "texte": "أَوَّلاً آخُذُ تُفَّاحَةً، ثُمَّ أَغْسِلُهَا، وَأَخِيراً آكُلُهَا. رَتِّبِ الصُّوَرَ.",
+      "fichier": "openai-v2-065ac63feb87579f.mp3",
+      "duration": 7.25,
+      "sha256": "2bf1ba40743733372e478c901b0b1037ae64002879e44875ebcccf685f111d4f",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:13.479Z",
+      "uses": [
+        "preschool:discovery-picnic-story:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "da55f5ed906dfb2865bbf0b05613be5762cf3d6edc66bfe381d73f4659af9662"
+    },
+    {
+      "texte": "كَمْ بَلَاطَةً زَرْقَاءَ تَرَى؟ اِلْمَسِ الْعَدَدَ الصَّحِيحَ.",
+      "fichier": "openai-v2-5c0c6332af1f19f1.mp3",
+      "duration": 4.9,
+      "sha256": "df24ae2c6d6c9dd042fd9266772a38f59af5bc125d9a01ab35add9bc74431f4e",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:14.503Z",
+      "uses": [
+        "preschool:discovery-tiles-count:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "b8d73efbb6655d1a11dc44cf9667f30a2d89d3c20fa21e0522516bec992868ad"
+    },
+    {
+      "texte": "أَزْرَقُ، أَزْرَقُ، بُرْتُقَالِيٌّ. أَزْرَقُ، أَزْرَقُ... مَا اللَّوْنُ التَّالِي؟",
+      "fichier": "openai-v2-109f3e8a38d82f5d.mp3",
+      "duration": 6.95,
+      "sha256": "d38b63490a4b099041d64511c58f537b3eec1266b22d50e54553de9e7c470734",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:16.120Z",
+      "uses": [
+        "preschool:discovery-tiles-pattern:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "8f24665196936423d284f6d661fc4c679755e0c2fbb72afdb119d291423d9a13"
+    },
+    {
+      "texte": "يَأْخُذُ الْحِرَفِيُّ طِيناً، وَيَصْنَعُ بَلَاطَةً، ثُمَّ يُرَكِّبُ فُسَيْفَسَاءَ. رَتِّبِ الصُّوَرَ الثَّلَاثَ.",
+      "fichier": "openai-v2-83cdb124020f69f9.mp3",
+      "duration": 9.5,
+      "sha256": "10ef5b75bf909e2455225cfa75cde1518a06cf090a6430328aa4b97f9af6f1af",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:17.885Z",
+      "uses": [
+        "preschool:discovery-tiles-story:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "c238a5f7a2951ec5e8181a7185e5fb3c88ce55e5de3c31a887d20b32769d3806"
+    },
+    {
+      "texte": "اِلْمَسْ كُلَّ صُورَةٍ لِتَسْمَعَ اسْمَهَا.",
+      "fichier": "openai-v2-bf8ea023aa224a3b.mp3",
+      "duration": 3.4,
+      "sha256": "fd757d49528928a7aae88493341aa0dbce9b669729b34bf4f6560db4e7d975c3",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:19.039Z",
+      "uses": [
+        "preschool:explore-school-1:prompt",
+        "preschool:explore-home-1:prompt",
+        "preschool:explore-transport-1:prompt",
+        "preschool:explore-nature-1:prompt",
+        "preschool:explore-shapes-1:prompt",
+        "preschool:explore-feelings-1:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "b753aa5735050c53ab00962e2343c49acfd0db2d7c93428b56ac9bafd017be22"
+    },
+    {
+      "texte": "أَحْسَنْتَ!",
+      "fichier": "openai-v2-4236e64ac1116130.mp3",
+      "duration": 1.4,
+      "sha256": "ba560d43e84a91db07b5cc7f03b29570ddb786bc31988a32837d64e7d8155283",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:19.627Z",
+      "uses": [
+        "preschool:explore-school-1:success",
+        "preschool:explore-school-2:success",
+        "preschool:explore-school-3:success",
+        "preschool:explore-school-4:success",
+        "preschool:explore-school-5:success",
+        "preschool:explore-school-6:success",
+        "preschool:explore-home-1:success",
+        "preschool:explore-home-2:success",
+        "preschool:explore-home-3:success",
+        "preschool:explore-home-4:success",
+        "preschool:explore-home-5:success",
+        "preschool:explore-home-6:success",
+        "preschool:explore-transport-1:success",
+        "preschool:explore-transport-2:success",
+        "preschool:explore-transport-3:success",
+        "preschool:explore-transport-4:success",
+        "preschool:explore-transport-5:success",
+        "preschool:explore-transport-6:success",
+        "preschool:explore-nature-1:success",
+        "preschool:explore-nature-2:success",
+        "preschool:explore-nature-3:success",
+        "preschool:explore-nature-4:success",
+        "preschool:explore-nature-5:success",
+        "preschool:explore-nature-6:success",
+        "preschool:explore-shapes-1:success",
+        "preschool:explore-shapes-2:success",
+        "preschool:explore-shapes-3:success",
+        "preschool:explore-shapes-4:success",
+        "preschool:explore-shapes-5:success",
+        "preschool:explore-shapes-6:success",
+        "preschool:explore-feelings-1:success",
+        "preschool:explore-feelings-2:success",
+        "preschool:explore-feelings-3:success",
+        "preschool:explore-feelings-4:success",
+        "preschool:explore-feelings-5:success",
+        "preschool:explore-feelings-6:success"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "f6ef6a6171e0d3eea6591d017716f04a3f3e1d14c878cc54d8328935fc44d2b2"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّورَةَ: حَقِيبَة.",
+      "fichier": "openai-v2-eecbfff7fbc25d3c.mp3",
+      "duration": 2.7,
+      "sha256": "2ca41cd447280f10228e45e0c9516e24b84e39afc50b8a88e77036e330d9f8ce",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:20.403Z",
+      "uses": [
+        "preschool:explore-school-2:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "bf4b062915c5dd13c34d5fff1a34440049203743cc1fefb622caf9c3465ce94c"
+    },
+    {
+      "texte": "صِلْ كُلَّ صُورَةٍ بِالصُّورَةِ الْمُمَاثِلَةِ.",
+      "fichier": "openai-v2-2b6ecd5a7fbc25d3.mp3",
+      "duration": 3.8,
+      "sha256": "a07cf9e132441f2e470de7f458b3e306afa041ad116a57014c853c4cba8e85e0",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:21.548Z",
+      "uses": [
+        "preschool:explore-school-3:prompt",
+        "preschool:explore-transport-3:prompt",
+        "preschool:explore-shapes-3:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "fe500fedecaede6e1913991e4b2d7cdf92cff2e182916bed9701ec383eae6240"
+    },
+    {
+      "texte": "اِسْحَبْ كُلَّ صُورَةٍ إِلَى صُنْدُوقِ مَجْمُوعَتِهَا.",
+      "fichier": "openai-v2-6b588218db44897c.mp3",
+      "duration": 4.25,
+      "sha256": "1fa73fbd6425b0e0e92abee45dd101a7ed8fd48a6dd481ddf0372e41351f324f",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:22.988Z",
+      "uses": [
+        "preschool:explore-school-4:prompt",
+        "preschool:explore-home-4:prompt",
+        "preschool:explore-transport-4:prompt",
+        "preschool:explore-nature-4:prompt",
+        "preschool:explore-shapes-4:prompt",
+        "preschool:explore-feelings-4:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "5ac867740f2dc6691c08a6ba7d57445a83c973d20d4d7b13da1825fb2bb52795"
+    },
+    {
+      "texte": "اُنْظُرْ إِلَى الْمَجْمُوعَةِ الْمُتَكَرِّرَةِ. أَيُّ صُورَةٍ تَأْتِي بَعْدَهَا؟",
+      "fichier": "openai-v2-f1005dff9534be9a.mp3",
+      "duration": 5.4,
+      "sha256": "2ff7cd1c5f4e15d86e4d7358becd1027f143c439d108620a2440cd4397020f63",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:24.390Z",
+      "uses": [
+        "preschool:explore-school-5:prompt",
+        "preschool:explore-home-5:prompt",
+        "preschool:explore-transport-5:prompt",
+        "preschool:explore-nature-5:prompt",
+        "preschool:explore-shapes-5:prompt",
+        "preschool:explore-feelings-5:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "7a122b5e470b9895a1f3e6f333399d77e7ec921a9d210775d130b6374bfe26b2"
+    },
+    {
+      "texte": "رَتِّبْ قِصَّتَنَا: خُذْ وَرَقَةً ثُمَّ ارْسُمْ عَلَيْهَا ثُمَّ اعْرِضْ رَسْمَكَ.",
+      "fichier": "openai-v2-05e439dd3dc865c5.mp3",
+      "duration": 7.05,
+      "sha256": "4d6c336b4ee9db9da3098eaef888f449350b6dfa04f16db0a45447f29c77444e",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:25.968Z",
+      "uses": [
+        "preschool:explore-school-6:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "117113eee4bb7f83f178f06b5faaf2bccf12a7291bd5b0dfeeeb768c5854c8f7"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّورَةَ: مِفْتَاح.",
+      "fichier": "openai-v2-95d65129e3962125.mp3",
+      "duration": 2.95,
+      "sha256": "736acabffaafd757e5ca0f8638fe27146e53701db1ae15b5d2ac9dba37e2ec28",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:27.078Z",
+      "uses": [
+        "preschool:explore-home-2:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "0fde4adebb93da2f86cb721ea030efb0f28c66c6b36b075176345d07d5496a59"
+    },
+    {
+      "texte": "اِقْلِبِ الْبِطَاقَاتِ وَاجْمَعِ الْأَزْوَاجَ.",
+      "fichier": "openai-v2-ec5b6bef86c976ad.mp3",
+      "duration": 3.7,
+      "sha256": "9a92ae168c6c3a6738899983c335d774cb018243ff7b073b4ee38c5e5ebafdd1",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:27.992Z",
+      "uses": [
+        "preschool:explore-home-3:prompt",
+        "preschool:explore-nature-3:prompt",
+        "preschool:explore-feelings-3:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "12dd9f264845ca0cf528778aa08f533a71b175094eccb99aab1aba2e3d6ed5b5"
+    },
+    {
+      "texte": "فِي قِصَّتِنَا يَأْخُذُ الْبَالِغُ الْمِفْتَاحَ وَيَفْتَحُ الْبَابَ ثُمَّ نَدْخُلُ. رَتِّبِ الصُّوَرَ.",
+      "fichier": "openai-v2-a3cda01b381534b2.mp3",
+      "duration": 6.45,
+      "sha256": "dc783597edaf0a83e4039b32f5e79c6fafc4b879f909ef42018418086d2fc022",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:29.677Z",
+      "uses": [
+        "preschool:explore-home-6:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "5290e60673231689d6a60368d7e451628aba1e8967abc9727ba6864997364bcc"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّورَةَ: طَائِرَة.",
+      "fichier": "openai-v2-33c2b0d3d665dfbc.mp3",
+      "duration": 2.8,
+      "sha256": "f65ba2bdad0c7daa0896bf9e8d68bd83dc322aa8e846cfbff65958d8ef8fbc55",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:30.759Z",
+      "uses": [
+        "preschool:explore-transport-2:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "992e9b21bbc722838719eb864db5880092c9716f0c4ebd4622b80f7321e31448"
+    },
+    {
+      "texte": "يَصِلُ الْقِطَارُ ثُمَّ يَرْكَبُ دِيدُو مَعَ بَالِغٍ ثُمَّ يَنْطَلِقُ الْقِطَارُ. رَتِّبِ الصُّوَرَ.",
+      "fichier": "openai-v2-d1e500550c77467c.mp3",
+      "duration": 6.7,
+      "sha256": "e336e11fff19717830997374bc795a7f1c634a58206505b15b791f45e6bcabe9",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:32.346Z",
+      "uses": [
+        "preschool:explore-transport-6:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "4873b529f88156cfb1b50fdaafa2a2cf3e239872e907ebf9adafab248c19b49a"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّورَةَ: زَهْرَة.",
+      "fichier": "openai-v2-fe1b1a8df42cbbef.mp3",
+      "duration": 3.6,
+      "sha256": "8c5106561699030c14314ff4d8ff9dcdb59cde1f5dc2c76f677875eaecac73bf",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:33.323Z",
+      "uses": [
+        "preschool:explore-nature-2:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "a1ad93df424df9b2e1bfc9598c1d00e3ce684854323608b1ccf11bb362ad4ea8"
+    },
+    {
+      "texte": "فِي هَذِهِ الْقِصَّةِ يَنْزِلُ الْمَطَرُ وَتَتَكَوَّنُ بِرْكَةٌ صَغِيرَةٌ ثُمَّ يَتَوَقَّفُ الْمَطَرُ وَتَعُودُ الشَّمْسُ.",
+      "fichier": "openai-v2-8a1e284fb5d81d89.mp3",
+      "duration": 9.2,
+      "sha256": "ba40e7a7a79d2b4745578985562f652608626bcbc317171aa5580e852a80d232",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:35.109Z",
+      "uses": [
+        "preschool:explore-nature-6:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "aafd5f398813dfac4be615df444a8713ca5219edb3b4fb68269862efd6f896ce"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّورَةَ: مُثَلَّث.",
+      "fichier": "openai-v2-553f926796215680.mp3",
+      "duration": 3.1,
+      "sha256": "92a43cf863199ddac7fc0f98b899f03988a512a5c67e3da86665083066baf99d",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:36.227Z",
+      "uses": [
+        "preschool:explore-shapes-2:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "fb59705a8914c52dc0350e00297bdb676690f7969380502bf5266c55688301a5"
+    },
+    {
+      "texte": "اُرْسُمْ دَائِرَةً ثُمَّ لَوِّنْهَا ثُمَّ اعْرِضْ رَسْمَكَ. هَذَا تَرْتِيبُ قِصَّتِنَا.",
+      "fichier": "openai-v2-41c2a55ffd157af6.mp3",
+      "duration": 7.7,
+      "sha256": "bf167fa0131c54090067020e09536b6c70efd944261b36d28904ac9a48d425f6",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:37.809Z",
+      "uses": [
+        "preschool:explore-shapes-6:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "1ce937b081ac6ed4994104b324228f7b2f9b5b0adbc7fb7a0d9751e6ec012f46"
+    },
+    {
+      "texte": "اِلْمَسِ الصُّورَةَ: فَرِح.",
+      "fichier": "openai-v2-78481d583781f9cc.mp3",
+      "duration": 2.95,
+      "sha256": "7b5b728db4656e9d7b041c2670daf71a4c6aed0608187339ae14844f78878f19",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:38.726Z",
+      "uses": [
+        "preschool:explore-feelings-2:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "4fcb5451934254256413b2d3d5f7e4192c48f83ac85da43f6cc55f6658832105"
+    },
+    {
+      "texte": "اِسْتَمِعْ لِلْقِصَّةِ: نُورٌ حَزِينَةٌ وَسَامِي يَسْتَمِعُ إِلَيْهَا ثُمَّ تُقَرِّرُ نُورٌ أَنْ تَلْعَبَ مُجَدَّدًا. رَتِّبِ الصُّوَرَ.",
+      "fichier": "openai-v2-8dc57e03b9aaa948.mp3",
+      "duration": 13.55,
+      "sha256": "dd941ffd0b7895b76eaa62f5480072fe4b6f4d1d7572cb27dbbaf32bcd13c16e",
+      "voice": "nova",
+      "model": "gpt-4o-mini-tts",
+      "generatedAt": "2026-11-08T15:19:41.166Z",
+      "uses": [
+        "preschool:explore-feelings-6:prompt"
+      ],
+      "synthetic": true,
+      "sourceWavSha256": "835fbde7840e1c260f3a15d13b3f77d77d55c29b26c53b053524094a600cdc9d"
+    }
+  ]
+}

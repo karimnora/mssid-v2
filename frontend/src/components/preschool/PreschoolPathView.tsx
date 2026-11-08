@@ -36,7 +36,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={onExit}
-              className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl
+              className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl
                          hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
               aria-label={t('رُجُوع', 'Retour', 'Back')}
             >
@@ -58,7 +58,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs font-bold text-orange-700/80 px-1">
             <span>{t('التَّقَدُّم', 'Progression', 'Progress')}</span>
-            <span>{done} / {total} ⭐</span>
+            <span><bdi dir="ltr">{done} / {total} ⭐</bdi></span>
           </div>
           <div className="h-3 bg-amber-100 rounded-full overflow-hidden shadow-inner">
             <motion.div
@@ -113,7 +113,7 @@ export const PreschoolPathView: React.FC<PreschoolPathViewProps> = ({
                   onClick={() => onSelectStep(activity.id)}
                   whileTap={{ scale: 0.88 }}
                   whileHover={{ scale: 1.1 }}
-                  className={`relative w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg border-4
+                  className={`min-h-[60px] min-w-[60px] relative w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg border-4
                               transition-all cursor-pointer select-none
                               ${isCompleted
                                 ? 'bg-emerald-400 border-emerald-600 shadow-emerald-200'

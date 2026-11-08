@@ -61,6 +61,17 @@ async function main() {
     }
   }
   if (opt('--scope') !== 'labs') jobs.push(...collectJobs());
+  if (opt('--scope') === 'preschool-safety') {
+    jobs.length = 0;
+    const audit = JSON.parse(readFileSync(resolve(root, 'docs/design/audit-prescolaire/inventory.json'), 'utf8'));
+    for (const row of audit.audio.ar.textsToReview) {
+      if (!row.references.every((ref: { activityId: string }) => /^(discovery|explore)-/.test(ref.activityId))) throw new Error('Unexpected module in safety audio batch');
+      const plain = row.text.normalize('NFD').replace(/[\u064B-\u065F\u0670]/g, '');
+      if (/بسم الله|الحمد لله|الفاتحة|الاخلاص|قرآن|سورة/.test(plain)) throw new Error('Religious text is forbidden in this synthetic batch');
+      jobs.push({ language: 'ar', voice: 'didou', text: row.text, uses: row.references.map((ref: { activityId: string; field: string }) => `preschool:${ref.activityId}:${ref.field}`) });
+    }
+    if (jobs.length !== 29) throw new Error('Expected exactly 29 reviewed nonreligious phrases');
+  }
   const unique = new Map<string, VoiceJob>();
   for (const job of jobs) {
     const key = `${job.language}:${recordedSpeechKey(job.text)}`;
@@ -80,14 +91,14 @@ async function main() {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error('OPENAI_API_KEY is not configured');
   const model = process.env.OPENAI_TTS_MODEL ?? 'gpt-4o-mini-tts';
-  const voice = process.env.OPENAI_TTS_VOICE ?? 'cedar';
+  const voice = opt('--scope') === 'preschool-safety' ? 'nova' : process.env.OPENAI_TTS_VOICE ?? 'cedar';
   for (const job of selected) {
     const language = job.language === 'ar' ? 'Modern Standard Arabic (fusha), accurate Arabic vowels and consonants, no dialect' : job.language === 'fr' ? 'clear natural French' : 'clear natural English';
     for (let attempt = 0; ; attempt++) {
     const response = await fetch('https://api.openai.com/v1/audio/speech', {
       method: 'POST', signal: AbortSignal.timeout(120000),
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, voice, input: job.text, response_format: 'wav', instructions: `Read exactly the provided text in ${language}. You are Didou, a warm, patient educational guide for primary school children. Sound natural and expressive, with calm encouragement, gentle pauses and a moderate pace. No exaggerated cartoon voice, singing, music, extra words or sound effects.` }),
+      body: JSON.stringify({ model, voice, input: job.text, response_format: 'wav', instructions: `Read exactly the provided text in ${language}. You are Didou, a warm, patient educational guide for primary school children. Sound natural and expressive, with cheerful energy, warm encouragement, gentle pauses and a clear pace suitable for young children. No exaggerated cartoon voice, singing, music, extra words or sound effects.` }),
     });
     // Never print provider response bodies: a proxy could echo credentials.
     if (!response.ok) {

@@ -428,3 +428,10 @@ Les observations du village disposent de `villageSummaries` (six bilans, dernier
 ### Résultat — préparation familles et moteurs isolés — 7 novembre 2026
 
 Préchargement PWA réduit d’environ 87 %, médias à la demande et petits sprites dérivés avec originaux conservés. Didou ne précharge qu’une réplique probable, s’arrête à l’interruption et propose une réécoute visible ; image conservée pendant le changement de pose. Audit reproductible de 107 cours 5AP, dix futures extensions validées par Karim ; comparaison officielle encore partielle, références et incohérences explicites. Droite numérique, numération jusqu’au milliard avec décimaux et problème à deux colonnes dans `/manipulations.html`, sans connexion aux cours ni progression. Un seul défi parent par parcours de paiement (quinze minutes), textes de 16 px, nouvelles ventes P6M refusées avec maintien des anciens reçus. Script des cinq captures réelles fictives, à relire avant remplacement. Voir [les preuves, commandes et limites](design/v2-preparation-familles/README.md). Commit local uniquement ; aucun push sans nouvel accord.
+
+
+## Résultat — sécurité du préscolaire et voix Didou (8 novembre 2026)
+
+Suite de l’audit préscolaire validé : sauvegardes des jeux, missions, expéditions et compteurs séparées par profil ; reprise des archives anonymes sous choix et défi parent ; autonomie distinguée de l’aide et de l’exploration sur les quinze mécaniques. Commandes préscolaires de 60 px minimum, ratios RTL isolés et mouvement réduit de la mascotte.
+
+29 phrases arabes non religieuses générées avec Didou Nova et réutilisées dans 48 activités. Écoute humaine encore requise. Basmala/Hamdala historiques synthétiques bloquées ; liste exacte d’enregistrements humains préparée à la demande de Karim. Voir `docs/design/audit-prescolaire/correctifs-securite.md` et `enregistrements-humains-a-preparer.md`. La priorité reste le test familles 5AP ; la nouvelle illustration de Didou et la refonte préscolaire sont différées. Aucun push.

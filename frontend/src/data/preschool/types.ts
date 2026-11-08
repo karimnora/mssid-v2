@@ -9,11 +9,11 @@ export type PreschoolDomain = 'numbers' | 'letters' | 'colors' | 'shapes' | 'ani
 
 export type PreschoolLanguage = 'ar' | 'fr' | 'en';
 
-export type PreschoolPlayQuality = 'done' | 'tried' | 'wrote' | 'helped' | 'skipped';
+export type PreschoolPlayQuality = 'done' | 'done_helped' | 'explored' | 'tried' | 'wrote' | 'helped' | 'skipped';
 
-/** Real mastery only — never a failed try, a skip, or adult help. */
+/** Completed activity; this does not certify mastery or independent success. */
 export function isPlaySuccess(quality: PreschoolPlayQuality): boolean {
-  return quality === 'done' || quality === 'wrote';
+  return quality === 'done' || quality === 'wrote' || quality === 'done_helped' || quality === 'explored';
 }
 
 export type PreschoolInteractionType =

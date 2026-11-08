@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Mic, Square, Volume2 } from 'lucide-react';
@@ -28,6 +29,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
   activity, language, onComplete,
 }) => {
   const frames = activity.visualAssets.storyFrames ?? [];
+  const reportEvidence = usePreschoolEvidence();
   const [order, setOrder] = useState<PreschoolStoryFrame[]>([]);
   const [picked, setPicked] = useState<string[]>([]);
   const [wrongId, setWrongId] = useState<string | null>(null);
@@ -64,6 +66,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
     const nextIndex = picked.length + 1;
     if (frame.order !== nextIndex) {
       playGentleNudge();
+      reportEvidence();
       setWrongId(frame.id);
       setTimeout(() => {
         setWrongId(null);
@@ -114,7 +117,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
             aria-label={t('سَجِّلْ صَوْتَك', 'Enregistre ta voix', 'Record your voice')}
             whileTap={{ scale: 0.95 }}
             onClick={() => void echo.start()}
-            className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
+            className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-white text-[#0f172a] border-2 border-[#E7E2D7]`}
           >
             <Mic className="w-7 h-7 shrink-0 text-[#C42A23]" />
             {t('🎤 أَنَا أَحْكِي', '🎤 Je raconte', '🎤 I tell it')}
@@ -127,7 +130,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
             aria-label={t('تَوَقَّفْ', 'Stop', 'Stop')}
             whileTap={{ scale: 0.95 }}
             onClick={() => echo.stop()}
-            className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#C42A23] text-white`}
+            className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#C42A23] text-white`}
           >
             <Square className="w-6 h-6 shrink-0" />
             {t('⏹ تَوَقَّفْ', '⏹ Stop', '⏹ Stop')}
@@ -141,7 +144,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
             aria-label={t('اِسْمَعْ صَوْتَك', 'Écoute ta voix', 'Hear your voice')}
             whileTap={{ scale: 0.95 }}
             onClick={() => echo.play()}
-            className={`${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white`}
+            className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white`}
           >
             <Volume2 className="w-7 h-7 shrink-0" />
             {t('👂 صَوْتِي', '👂 Ma voix', '👂 My voice')}
@@ -154,7 +157,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
           aria-label={t('قُلْتُهَا', "C'est dit !", 'I told it')}
           whileTap={{ scale: 0.95 }}
           onClick={onComplete}
-          className={`${hit} rounded-3xl px-4 cursor-pointer bg-[#008751] text-white border-2 border-emerald-300`}
+          className={`min-h-[60px] min-w-[60px] ${hit} rounded-3xl px-4 cursor-pointer bg-[#008751] text-white border-2 border-emerald-300`}
         >
           {t('قُلْتُهَا', "C'est dit !", 'I told it')}
         </motion.button>
@@ -191,7 +194,7 @@ export const PreschoolStoryOrder: React.FC<PreschoolStoryOrderProps> = ({
               transition={isWrong ? { duration: 0.4 } : spring}
               disabled={solved}
               aria-label={caption ?? frame.asset}
-              className={`min-h-28 rounded-3xl flex flex-col items-center justify-center gap-1
+              className={`min-h-[60px] min-w-[60px] min-h-28 rounded-3xl flex flex-col items-center justify-center gap-1
                           shadow-md border-4 cursor-pointer select-none px-1 py-2
                           ${isPicked
                             ? 'bg-emerald-100 border-emerald-400'

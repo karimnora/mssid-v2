@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { useMotionPreference } from '../../hooks/useMotionPreference';
 
 export type MascotMood = 'idle' | 'happy' | 'encourage' | 'celebrate';
 
@@ -11,6 +12,7 @@ interface PreschoolMascotProps {
 // "أمين الفنك" / Amine the Fennec — reacts to the child's actions. Kept to pure CSS/motion (a big
 // emoji + spring animations), no image/lottie asset pipeline needed for the MVP.
 export const PreschoolMascot: React.FC<PreschoolMascotProps> = ({ mood, size = 'lg' }) => {
+  const reducedMotion = useMotionPreference();
   const dimension = size === 'lg' ? 'text-7xl sm:text-8xl' : 'text-5xl';
 
   const animationByMood: Record<MascotMood, { animate: Record<string, number[]>; transition: Record<string, unknown> }> = {
@@ -37,8 +39,8 @@ export const PreschoolMascot: React.FC<PreschoolMascotProps> = ({ mood, size = '
   return (
     <motion.div
       key={mood}
-      animate={config.animate}
-      transition={config.transition}
+      animate={reducedMotion ? { x: 0, y: 0, rotate: 0, scale: 1 } : config.animate}
+      transition={reducedMotion ? { duration: 0 } : config.transition}
       className={`select-none ${dimension} drop-shadow-lg`}
       role="img"
       aria-label="Amine the Fennec mascot"

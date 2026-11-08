@@ -111,7 +111,7 @@ export const SensoryTapGame: React.FC<SensoryTapGameProps> = ({ onExit, language
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="pointer-events-auto min-w-12 min-h-12 flex items-center justify-center rounded-2xl
+            className="min-h-[60px] min-w-[60px] pointer-events-auto min-w-12 min-h-12 flex items-center justify-center rounded-2xl
                        bg-white shadow-md border-2 border-pink-200 text-lg font-black cursor-pointer"
             onClick={onExit}
           >
@@ -135,7 +135,7 @@ export const SensoryTapGame: React.FC<SensoryTapGameProps> = ({ onExit, language
               key={w.id}
               whileTap={{ scale: 0.95 }}
               onClick={() => setWorldId(w.id)}
-              className={`shrink-0 px-3 py-2 rounded-2xl text-xs font-black border-2 cursor-pointer
+              className={`min-h-[60px] min-w-[60px] shrink-0 px-3 py-2 rounded-2xl text-xs font-black border-2 cursor-pointer
                 ${on ? 'bg-white border-pink-400 text-slate-800 shadow-md' : 'bg-white/70 border-white text-slate-600'}`}
             >
               {w.emoji} {label}

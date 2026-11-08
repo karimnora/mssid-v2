@@ -233,14 +233,14 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
       <div className="flex flex-wrap items-center justify-center gap-3">
         <button
           onClick={() => setStrokes([])}
-          className="min-h-14 min-w-14 px-4 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-black text-sm cursor-pointer transition-colors"
+          className="min-h-[60px] min-w-[60px] min-h-14 min-w-14 px-4 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-black text-sm cursor-pointer transition-colors"
           aria-label={language === 'ar' ? 'أَعِد' : language === 'fr' ? 'Recommencer' : 'Start over'}
         >
           🔄
         </button>
         <button
           onClick={handleTried}
-          className={`min-h-14 px-5 rounded-2xl font-black text-sm shadow-md cursor-pointer border-2 ${
+          className={`min-h-[60px] min-w-[60px] min-h-14 px-5 rounded-2xl font-black text-sm shadow-md cursor-pointer border-2 ${
             canTry
               ? 'bg-amber-100 text-amber-900 border-amber-400'
               : 'bg-slate-100 text-slate-400 border-slate-200'
@@ -250,7 +250,7 @@ export const PreschoolTrace: React.FC<PreschoolTraceProps> = ({ activity, langua
         </button>
         <button
           onClick={handleWrote}
-          className={`min-h-14 px-5 rounded-2xl font-black text-sm shadow-lg cursor-pointer text-white ${
+          className={`min-h-[60px] min-w-[60px] min-h-14 px-5 rounded-2xl font-black text-sm shadow-lg cursor-pointer text-white ${
             wroteIt ? 'bg-emerald-500 hover:bg-emerald-600' : 'bg-emerald-300'
           } ${nudge && canTry && !wroteIt ? 'animate-bounce' : ''}`}
         >

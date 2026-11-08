@@ -317,7 +317,7 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onExit}
-            className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            className="min-h-[60px] min-w-[60px] min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
             aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
             {language === 'ar' ? '▶' : '◀'}
@@ -334,7 +334,7 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
             <button
               key={l}
               onClick={() => onSelectLanguage?.(l)}
-              className={`px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+              className={`min-h-[60px] min-w-[60px] px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 language === l
                   ? 'bg-amber-500 text-white shadow-xs'
                   : 'text-amber-900 hover:bg-amber-100'
@@ -350,7 +350,7 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
 
         <button
           onClick={() => setIsQuizMode(!isQuizMode)}
-          className={`min-h-11 px-3 sm:px-4 rounded-2xl text-xs sm:text-sm font-black shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer border ${
+          className={`min-h-[60px] min-w-[60px] min-h-11 px-3 sm:px-4 rounded-2xl text-xs sm:text-sm font-black shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer border ${
             isQuizMode
               ? 'bg-amber-400 text-amber-950 border-amber-500 ring-2 ring-amber-300'
               : 'bg-teal-600 text-white border-teal-500'
@@ -374,7 +374,7 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
 
           <button
             onClick={() => playSoundBoxClip(quizTarget.soundKey)}
-            className="px-6 py-3 rounded-2xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-sm shadow-md active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer border border-amber-500"
+            className="min-h-[60px] min-w-[60px] px-6 py-3 rounded-2xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-sm shadow-md active:scale-95 transition-all inline-flex items-center gap-2 cursor-pointer border border-amber-500"
           >
             <span>{labels.replaySound}</span>
           </button>
@@ -394,7 +394,7 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id as SoundCategory | 'all')}
-              className={`px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-xs ${
+              className={`min-h-[60px] min-w-[60px] px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-xs ${
                 activeCategory === cat.id
                   ? 'bg-amber-500 text-white shadow-md scale-105 border-2 border-amber-300 ring-2 ring-amber-400'
                   : 'bg-white text-amber-950 hover:bg-amber-50 border border-amber-200'
@@ -423,7 +423,7 @@ export const PreschoolSoundBox: React.FC<PreschoolSoundBoxProps> = ({
                 onClick={() => handleCardClick(item)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`min-h-32 sm:min-h-40 rounded-3xl bg-gradient-to-b ${item.color} shadow-lg border-4 border-white/80 p-3 sm:p-4 flex flex-col items-center justify-between text-white transition-all select-none cursor-pointer ${
+                className={`min-h-[60px] min-w-[60px] min-h-32 sm:min-h-40 rounded-3xl bg-gradient-to-b ${item.color} shadow-lg border-4 border-white/80 p-3 sm:p-4 flex flex-col items-center justify-between text-white transition-all select-none cursor-pointer ${
                   isTargetEffect ? 'ring-4 ring-yellow-400 scale-105 brightness-110' : ''
                 }`}
               >

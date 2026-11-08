@@ -1,3 +1,4 @@
+import { progressStorage } from './ownerStorage';
 // Client-side "objectif du jour" (daily objective) tracker.
 // Simple and local-only by design: counts exercises/quizzes completed today, resetting at midnight.
 // Not a substitute for server-authoritative gamification (see Phase 7 report — streak/XP validation
@@ -16,7 +17,7 @@ const todayKey = (): string => new Date().toISOString().slice(0, 10);
 const readState = (): DailyObjectiveState => {
   if (typeof window === 'undefined') return { date: todayKey(), count: 0 };
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const raw = progressStorage().getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw) as DailyObjectiveState;
       if (parsed.date === todayKey()) return parsed;
@@ -33,7 +34,7 @@ export const incrementDailyObjective = (): DailyObjectiveState => {
   const state = readState();
   const next = { date: todayKey(), count: state.count + 1 };
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    progressStorage().setItem(STORAGE_KEY, JSON.stringify(next));
   }
   return next;
 };

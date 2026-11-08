@@ -39,15 +39,15 @@ function writeJsonRecord(key: string, value: Record<string, unknown>): void {
 function isOwnerScoped(record: Record<string, unknown>): boolean {
   const keys = Object.keys(record);
   if (keys.length === 0) return true;
-  return keys.every((key) => isProgressOwnerKey(key));
+  return keys.every((key) => isProgressOwnerKey(key) || key === 'legacy-unassigned');
 }
 
 function readOwnerBucket(key: string, ownerId: string): Record<string, unknown> {
   const record = readJsonRecord(key);
   if (!isOwnerScoped(record)) {
-    const scoped: Record<string, unknown> = { [getActiveProgressOwner()]: record };
+    const scoped: Record<string, unknown> = { 'legacy-unassigned': record };
     writeJsonRecord(key, scoped);
-    return getActiveProgressOwner() === ownerId ? record : {};
+    return {};
   }
   const bucket = record[ownerId];
   if (!bucket || typeof bucket !== 'object' || Array.isArray(bucket)) return {};
@@ -56,7 +56,7 @@ function readOwnerBucket(key: string, ownerId: string): Record<string, unknown> 
 
 function writeOwnerBucket(key: string, ownerId: string, bucket: Record<string, unknown>): void {
   const record = readJsonRecord(key);
-  const scoped = isOwnerScoped(record) ? { ...record } : { [getActiveProgressOwner()]: record };
+  const scoped = isOwnerScoped(record) ? { ...record } : { 'legacy-unassigned': record };
   scoped[ownerId] = bucket;
   writeJsonRecord(key, scoped);
 }
@@ -64,7 +64,7 @@ function writeOwnerBucket(key: string, ownerId: string, bucket: Record<string, u
 function clearOwnerBucket(key: string, ownerId: string): void {
   const record = readJsonRecord(key);
   if (!isOwnerScoped(record)) {
-    if (getActiveProgressOwner() === ownerId) writeJsonRecord(key, {});
+    // Keep the unassigned legacy record intact.
     return;
   }
   const next = { ...record };

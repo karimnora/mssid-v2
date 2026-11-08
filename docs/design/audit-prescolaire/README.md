@@ -149,3 +149,7 @@ Maintenir la priorité de développement 5AP déjà décidée. Le préscolaire p
 - Sources principales : `data/preschool/index.ts`, `types.ts`, `withRecordedAudio.ts`, `gamesHubCatalog.ts`, tableaux `LEVEL_DEFS`, `printablesData.ts`, `PreschoolAsset.tsx`, `PreschoolMascot.tsx`, `PreschoolActivityPlayer.tsx`, `PreschoolTapChoice.tsx`, `PreschoolApp.tsx`, `useLevelProgress.ts`, `preschoolProgress.ts`, `featureFlags.ts` et les accès jardin/marché.
 - Contrôles structurels exécutés : 248 ID distincts, totaux cohérents, consignes localisées non vides, une bonne réponse dans les choix contrôlés ; aucune anomalie dans ce périmètre. Présence des fichiers audio contrôlée ; fichiers de récitation non validés à l’écoute.
 - Échantillon visuel local : accueil et sélection des domaines en arabe, profil fictif, API simulée. Pas une revue complète des 248 activités ni un test avec enfants. Pas de nouvelle suite de tests, d’appel audio payant, de modification de gameplay ou de push.
+
+## Suite du verdict validé (8 novembre 2026)
+
+L’audit ci-dessus reste la photographie initiale. Voir [les correctifs et limites actuelles](correctifs-securite.md), [l’inventaire des accès au stockage](storage-inventory.json), [le lot Didou à écouter](ecoute-didou.html) et [les enregistrements humains à préparer](enregistrements-humains-a-preparer.md).

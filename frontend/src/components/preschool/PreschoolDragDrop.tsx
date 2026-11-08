@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
@@ -36,6 +37,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
 }) => {
   const dropZoneRef = useRef<HTMLDivElement>(null);
   const dragItems = activity.visualAssets.dragItems || [];
+  const reportEvidence = usePreschoolEvidence();
   const [items, setItems] = useState<ItemState[]>(
     dragItems.map((item) => ({ id: item.id, asset: item.asset, dropped: false, offset: { x: 0, y: 0 } }))
   );
@@ -107,6 +109,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
     const droppedCount = items.filter((it) => it.dropped).length;
     const enough = hasExtras ? droppedCount === target : droppedCount >= target;
     if (!enough) {
+      reportEvidence();
       playGentleNudge();
       speak(TOO_SOON[language]);
       setTooSoon(true);
@@ -134,14 +137,14 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
               type="button"
               onClick={() => returnToTray(it.id)}
               aria-label={`${it.asset} basket`}
-              className="text-2xl leading-none cursor-pointer min-h-12 min-w-12"
+              className="min-h-[60px] min-w-[60px] text-2xl leading-none cursor-pointer min-h-12 min-w-12"
             >
               {it.asset}
             </button>
           ))}
         </div>
         <span className="absolute -bottom-3 bg-emerald-500 text-white text-sm font-black px-3 py-1 rounded-full shadow">
-          {droppedCount} / {target}
+          <bdi dir="ltr">{droppedCount} / {target}</bdi>
         </span>
       </div>
 
@@ -179,7 +182,7 @@ export const PreschoolDragDrop: React.FC<PreschoolDragDropProps> = ({
         aria-label={DONE[language]}
         whileTap={{ scale: 0.95 }}
         onClick={handleDone}
-        className="w-full max-w-sm min-h-[72px] rounded-3xl px-4 text-lg font-black cursor-pointer
+        className="min-h-[60px] min-w-[60px] w-full max-w-sm min-h-[72px] rounded-3xl px-4 text-lg font-black cursor-pointer
                    bg-[#008751] text-white border-2 border-emerald-300"
       >
         {DONE[language]}

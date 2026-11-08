@@ -224,8 +224,8 @@ export function summarizeBilan(
 
   const rows: BilanRow[] = [];
   for (const [activityId, list] of byActivity) {
-    const successes = list.filter((e) => isPlaySuccess(e.quality));
-    const helped = list.some((e) => e.quality === 'helped');
+    const successes = list.filter((e) => e.quality === 'done');
+    const helped = list.some((e) => e.quality === 'helped' || e.quality === 'done_helped');
     const tried = list.some((e) => e.quality === 'tried');
     const skipped = list.some((e) => e.quality === 'skipped');
     const last = list[list.length - 1];
@@ -234,6 +234,7 @@ export function summarizeBilan(
     if (successes.length >= 2) status = 'several';
     else if (successes.length === 1) status = 'discovered';
     else if (helped) status = 'helped';
+    else if (list.some((e) => e.quality === 'explored' || e.quality === 'wrote')) status = 'discovered';
     else if (tried) status = 'tried';
     else if (skipped) status = 'skipped';
     if (!status) continue;

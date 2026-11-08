@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
@@ -40,6 +41,7 @@ function itemsFromActivity(activity: PreschoolActivity, language: PreschoolLangu
 export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, language, onComplete }) => {
   const bins = activity.i18n[language].sortBins ?? activity.visualAssets.sortBins ?? [];
   const binRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const reportEvidence = usePreschoolEvidence();
   const [items, setItems] = useState<ItemState[]>(() => itemsFromActivity(activity, language));
   const draggingId = useRef<string | null>(null);
   const startPos = useRef({ x: 0, y: 0 });
@@ -98,7 +100,7 @@ export const PreschoolSorting: React.FC<PreschoolSortingProps> = ({ activity, la
         return next;
       }
 
-      if (binId) playGentleNudge();
+      if (binId) { reportEvidence(); playGentleNudge(); }
       return prev.map((it) => (it.id === id ? { ...it, offset: { x: 0, y: 0 } } : it));
     });
   };

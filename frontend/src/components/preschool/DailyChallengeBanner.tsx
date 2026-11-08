@@ -92,7 +92,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
                 whileTap={{ scale: 0.9 }}
                 onClick={() => !isDone && onNavigateToActivity(item.moduleId, item.activityId)}
                 disabled={isDone}
-                className={`flex-1 flex flex-col items-center gap-1 py-2 px-1 rounded-2xl transition-all cursor-pointer
+                className={`min-h-[60px] min-w-[60px] flex-1 flex flex-col items-center gap-1 py-2 px-1 rounded-2xl transition-all cursor-pointer
                   ${isDone
                     ? 'bg-white/30 opacity-80'
                     : 'bg-white/20 hover:bg-white/30 active:bg-white/40'}`}
@@ -125,7 +125,7 @@ export const DailyChallengeBanner: React.FC<DailyChallengeBannerProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => onNavigateToActivity(nextItem.moduleId, nextItem.activityId)}
-              className="bg-white rounded-2xl px-3 py-1.5 text-orange-800 font-black text-xs shadow-sm cursor-pointer shrink-0"
+              className="min-h-[60px] min-w-[60px] bg-white rounded-2xl px-3 py-1.5 text-orange-800 font-black text-xs shadow-sm cursor-pointer shrink-0"
             >
               {L.go}
             </motion.button>

@@ -1,3 +1,4 @@
+import { useProgressOwner } from '../utils/ownerStorage';
 import { ParentVillageReports } from './ParentVillageReports';
 import { FamilyParentSummary } from './family/FamilyParentSummary';
 import React, { useEffect, useMemo, useState } from 'react';
@@ -104,6 +105,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   onReviewLesson,
   onOpenExam,
 }) => {
+  const progressOwner = useProgressOwner();
   const t = useTranslation('meta');
   const offerT = useTranslation('subscription');
   const { authUser } = useAuth();
@@ -276,7 +278,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
 
           <ExamPlanPanel
             notebook={notebook}
-            storageKey={`mssid_exam_plan_v1:${authUser?.id ?? 'guest'}:${notebook.childName}:${notebook.grade}`}
+            storageKey={`mssid_exam_plan_v1:${progressOwner}:${notebook.grade}`}
             locale={locale === 'fr' ? 'fr' : 'ar'}
             premium={canAccess('examPlan', authUser?.role)}
             onReviewLesson={handleReview}

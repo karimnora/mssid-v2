@@ -1,7 +1,7 @@
 {
-  "clips": 399,
-  "originalBytes": 107352756,
-  "compressedBytes": 22710516,
+  "clips": 428,
+  "originalBytes": 114806032,
+  "compressedBytes": 24288352,
   "checks": "PCM nonempty, non-silent, WAV duration, MP3 decode, SHA-256. Pronunciation requires listening.",
   "files": [
     {
@@ -3594,6 +3594,267 @@
       "rms": 0.0668,
       "originalBytes": 297644,
       "compressedBytes": 62924
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-6622804d8fc0ba95.mp3",
+      "durationSeconds": 4.55,
+      "peak": 0.6981,
+      "rms": 0.1091,
+      "originalBytes": 218444,
+      "compressedBytes": 46364
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-9c83ad9ffbb13b4a.mp3",
+      "durationSeconds": 2.4,
+      "peak": 0.8027,
+      "rms": 0.0686,
+      "originalBytes": 115244,
+      "compressedBytes": 24764
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-a60719eb7ea57c22.mp3",
+      "durationSeconds": 6.05,
+      "peak": 0.7319,
+      "rms": 0.114,
+      "originalBytes": 290444,
+      "compressedBytes": 61484
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-8ebb1a14f6a6ab90.mp3",
+      "durationSeconds": 4.7,
+      "peak": 0.5442,
+      "rms": 0.1023,
+      "originalBytes": 225644,
+      "compressedBytes": 47804
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-b5115a6f7d06f849.mp3",
+      "durationSeconds": 6.4,
+      "peak": 0.6424,
+      "rms": 0.1108,
+      "originalBytes": 307244,
+      "compressedBytes": 64844
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-bb75def222adb4b7.mp3",
+      "durationSeconds": 3.7,
+      "peak": 0.9009,
+      "rms": 0.1059,
+      "originalBytes": 177644,
+      "compressedBytes": 37964
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-27f398e4d96a966a.mp3",
+      "durationSeconds": 8.15,
+      "peak": 0.827,
+      "rms": 0.1149,
+      "originalBytes": 391244,
+      "compressedBytes": 82364
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-065ac63feb87579f.mp3",
+      "durationSeconds": 7.25,
+      "peak": 0.7102,
+      "rms": 0.1128,
+      "originalBytes": 348044,
+      "compressedBytes": 73484
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-5c0c6332af1f19f1.mp3",
+      "durationSeconds": 4.9,
+      "peak": 0.7181,
+      "rms": 0.1144,
+      "originalBytes": 235244,
+      "compressedBytes": 49964
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-109f3e8a38d82f5d.mp3",
+      "durationSeconds": 6.95,
+      "peak": 0.6884,
+      "rms": 0.1142,
+      "originalBytes": 333644,
+      "compressedBytes": 70364
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-83cdb124020f69f9.mp3",
+      "durationSeconds": 9.5,
+      "peak": 0.6854,
+      "rms": 0.1169,
+      "originalBytes": 456044,
+      "compressedBytes": 95804
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-bf8ea023aa224a3b.mp3",
+      "durationSeconds": 3.4,
+      "peak": 0.5681,
+      "rms": 0.1061,
+      "originalBytes": 163244,
+      "compressedBytes": 34844
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-4236e64ac1116130.mp3",
+      "durationSeconds": 1.4,
+      "peak": 0.7047,
+      "rms": 0.0783,
+      "originalBytes": 67244,
+      "compressedBytes": 14924
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-eecbfff7fbc25d3c.mp3",
+      "durationSeconds": 2.7,
+      "peak": 0.658,
+      "rms": 0.1128,
+      "originalBytes": 129644,
+      "compressedBytes": 27884
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-2b6ecd5a7fbc25d3.mp3",
+      "durationSeconds": 3.8,
+      "peak": 0.7415,
+      "rms": 0.1261,
+      "originalBytes": 182444,
+      "compressedBytes": 38924
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-6b588218db44897c.mp3",
+      "durationSeconds": 4.25,
+      "peak": 0.5102,
+      "rms": 0.0939,
+      "originalBytes": 204044,
+      "compressedBytes": 43484
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-f1005dff9534be9a.mp3",
+      "durationSeconds": 5.4,
+      "peak": 0.6099,
+      "rms": 0.0994,
+      "originalBytes": 259244,
+      "compressedBytes": 54764
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-05e439dd3dc865c5.mp3",
+      "durationSeconds": 7.05,
+      "peak": 0.6739,
+      "rms": 0.0894,
+      "originalBytes": 338444,
+      "compressedBytes": 71324
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-95d65129e3962125.mp3",
+      "durationSeconds": 2.95,
+      "peak": 0.6236,
+      "rms": 0.1039,
+      "originalBytes": 141644,
+      "compressedBytes": 30284
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-ec5b6bef86c976ad.mp3",
+      "durationSeconds": 3.7,
+      "peak": 0.7784,
+      "rms": 0.1105,
+      "originalBytes": 177644,
+      "compressedBytes": 37964
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-a3cda01b381534b2.mp3",
+      "durationSeconds": 6.45,
+      "peak": 0.6409,
+      "rms": 0.1252,
+      "originalBytes": 309644,
+      "compressedBytes": 65324
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-33c2b0d3d665dfbc.mp3",
+      "durationSeconds": 2.8,
+      "peak": 0.7894,
+      "rms": 0.1232,
+      "originalBytes": 134444,
+      "compressedBytes": 28844
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-d1e500550c77467c.mp3",
+      "durationSeconds": 6.7,
+      "peak": 0.5991,
+      "rms": 0.1327,
+      "originalBytes": 321644,
+      "compressedBytes": 67964
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-fe1b1a8df42cbbef.mp3",
+      "durationSeconds": 3.6,
+      "peak": 0.5231,
+      "rms": 0.0762,
+      "originalBytes": 172844,
+      "compressedBytes": 36764
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-8a1e284fb5d81d89.mp3",
+      "durationSeconds": 9.2,
+      "peak": 0.5138,
+      "rms": 0.1006,
+      "originalBytes": 441644,
+      "compressedBytes": 92924
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-553f926796215680.mp3",
+      "durationSeconds": 3.1,
+      "peak": 0.5265,
+      "rms": 0.1055,
+      "originalBytes": 148844,
+      "compressedBytes": 31964
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-41c2a55ffd157af6.mp3",
+      "durationSeconds": 7.7,
+      "peak": 0.7617,
+      "rms": 0.1209,
+      "originalBytes": 369644,
+      "compressedBytes": 77804
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-78481d583781f9cc.mp3",
+      "durationSeconds": 2.95,
+      "peak": 0.5186,
+      "rms": 0.084,
+      "originalBytes": 141644,
+      "compressedBytes": 30284
+    },
+    {
+      "language": "ar",
+      "file": "openai-v2-8dc57e03b9aaa948.mp3",
+      "durationSeconds": 13.55,
+      "peak": 0.7379,
+      "rms": 0.1265,
+      "originalBytes": 650444,
+      "compressedBytes": 136364
     }
   ]
 }

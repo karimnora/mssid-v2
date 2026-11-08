@@ -52,7 +52,7 @@ export const PreschoolBubblePop: React.FC<PreschoolBubblePopProps> = ({ activity
     <div className="relative w-full max-w-sm h-72 sm:h-80 rounded-[2rem] bg-gradient-to-b from-sky-200 to-sky-50 border-4 border-sky-300 overflow-hidden">
       <div className="absolute top-2 inset-x-0 flex justify-center">
         <span className="bg-white/90 text-sky-700 text-sm font-black px-3 py-1 rounded-full shadow">
-          {poppedIds.length} / {bubbles.length}
+          <bdi dir="ltr">{poppedIds.length} / {bubbles.length}</bdi>
         </span>
       </div>
 
@@ -67,7 +67,7 @@ export const PreschoolBubblePop: React.FC<PreschoolBubblePopProps> = ({ activity
             transition={{ y: { duration: 2, repeat: Infinity, ease: 'easeInOut', delay: bubble.delay }, default: { duration: 0.3, delay: bubble.delay } }}
             whileTap={{ scale: 1.3 }}
             style={{ left: `${bubble.x}%`, top: `${bubble.y}%` }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/60 border-2 border-white shadow-lg flex items-center justify-center text-3xl cursor-pointer select-none"
+            className="min-h-[60px] min-w-[60px] absolute -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/60 border-2 border-white shadow-lg flex items-center justify-center text-3xl cursor-pointer select-none"
             aria-label={asset}
           >
             {asset}

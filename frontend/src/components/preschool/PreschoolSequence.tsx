@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolChoice, PreschoolLanguage } from '../../data/preschool/types';
@@ -28,6 +29,7 @@ const spring = { type: 'spring' as const, stiffness: 420, damping: 22 };
 export const PreschoolSequence: React.FC<PreschoolSequenceProps> = ({
   activity, language = 'fr', onComplete,
 }) => {
+  const reportEvidence = usePreschoolEvidence();
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
   const [choices, setChoices] = useState<PreschoolChoice[]>([]);
@@ -49,6 +51,7 @@ export const PreschoolSequence: React.FC<PreschoolSequenceProps> = ({
       setTimeout(onComplete, 900);
     } else {
       playGentleNudge();
+      reportEvidence();
       setWrongId(choiceId);
       setTimeout(() => setWrongId(null), 500);
     }
@@ -106,7 +109,7 @@ export const PreschoolSequence: React.FC<PreschoolSequenceProps> = ({
             whileHover={solved ? undefined : { scale: 1.05 }}
             whileTap={solved ? undefined : { scale: 0.95 }}
             disabled={solved}
-            className={`w-24 h-24 sm:w-28 sm:h-28 rounded-3xl text-4xl sm:text-5xl font-black
+            className={`min-h-[60px] min-w-[60px] w-24 h-24 sm:w-28 sm:h-28 rounded-3xl text-4xl sm:text-5xl font-black
                         flex items-center justify-center shadow-lg border-4 cursor-pointer
                         select-none
                         ${solved && choice.isCorrect

@@ -3,7 +3,10 @@
  * Hook partagé pour sauvegarder la progression par niveaux de chaque jeu.
  * Stockage : localStorage sous la clé "mssid_game_levels".
  */
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+
+import { progressStorage, useProgressOwner } from '../../utils/ownerStorage';
+import { getActiveProgressOwner } from '../../utils/progressOwner';
 
 const STORAGE_KEY = 'mssid_game_levels';
 
@@ -16,21 +19,30 @@ interface GameProgress {
 
 type AllProgress = Record<string, GameProgress>;
 
-function load(): AllProgress {
+function load(owner?: string): AllProgress {
   if (typeof window === 'undefined') return {};
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    const value = JSON.parse(progressStorage(owner).getItem(STORAGE_KEY) || '{}');
+    return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
   } catch {
     return {};
   }
 }
 
-function save(data: AllProgress) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (_) {}
+function save(data: AllProgress, owner: string) {
+  try { progressStorage(owner).setItem(STORAGE_KEY, JSON.stringify(data)); } catch (_) {}
 }
 
 export function useLevelProgress(gameId: string, totalLevels = 4) {
-  const [all, setAll] = useState<AllProgress>(load);
+  const owner = useProgressOwner();
+  const [snapshot, setSnapshot] = useState(() => ({ owner, data: load(owner) }));
+  const all = snapshot.owner === owner ? snapshot.data : load(owner);
+  const setAll = useCallback((update: (prev: AllProgress) => AllProgress) => {
+    if (getActiveProgressOwner() !== owner) return;
+    const data = update(load(owner));
+    setSnapshot({ owner, data });
+  }, [owner]);
+  useEffect(() => { setSnapshot({ owner, data: load(owner) }); }, [owner]);
 
   const game: GameProgress = all[gameId] ?? { maxUnlocked: 1, stars: {} };
   const { maxUnlocked, stars } = game;
@@ -51,19 +63,19 @@ export function useLevelProgress(gameId: string, totalLevels = 4) {
         },
       };
       const updated = { ...prev, [gameId]: next };
-      save(updated);
+      save(updated, owner);
       return updated;
     });
-  }, [gameId, totalLevels]);
+  }, [gameId, totalLevels, owner, setAll]);
 
   /** Réinitialise la progression d'un jeu (debug / replay). */
   const resetProgress = useCallback(() => {
     setAll(prev => {
       const updated = { ...prev, [gameId]: { maxUnlocked: 1, stars: {} } };
-      save(updated);
+      save(updated, owner);
       return updated;
     });
-  }, [gameId]);
+  }, [gameId, owner, setAll]);
 
   /** Étoiles totales gagnées dans ce jeu. */
   const totalStars = Object.values(stars).reduce((a, b) => a + b, 0);

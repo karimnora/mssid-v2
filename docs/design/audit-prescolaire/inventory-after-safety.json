@@ -1,0 +1,1660 @@
+{
+  "catalogHash": "a5808f1dbc3fb539126cb9e4ac1302827f6aea7917859aa88ae610847a357fea",
+  "scope": "Published catalog definitions, explicit files plus runtime exact-lookup audio fallback. Not a clinical or learning-efficacy evaluation.",
+  "moduleCount": 32,
+  "activityCount": 248,
+  "uniqueActivityIds": 248,
+  "modules": [
+    {
+      "id": "preschool-letters",
+      "title": "Mes premières lettres",
+      "domain": "letters",
+      "activities": 14,
+      "interactions": {
+        "tap_choice": 8,
+        "trace": 4,
+        "sorting": 1,
+        "connect_dots": 1
+      }
+    },
+    {
+      "id": "preschool-letters-2",
+      "title": "Encore des lettres",
+      "domain": "letters",
+      "activities": 28,
+      "interactions": {
+        "tap_choice": 20,
+        "trace": 5,
+        "sorting": 1,
+        "connect_dots": 1,
+        "listen_tap": 1
+      }
+    },
+    {
+      "id": "preschool-numbers-0-5",
+      "title": "De 0 à 5",
+      "domain": "numbers",
+      "activities": 6,
+      "interactions": {
+        "tap_choice": 3,
+        "drag_drop": 3
+      }
+    },
+    {
+      "id": "preschool-numbers-6-10",
+      "title": "De 6 à 10",
+      "domain": "numbers",
+      "activities": 8,
+      "interactions": {
+        "drag_drop": 5,
+        "trace": 3
+      }
+    },
+    {
+      "id": "preschool-shapes",
+      "title": "Mes Petites Formes",
+      "domain": "shapes",
+      "activities": 10,
+      "interactions": {
+        "tap_choice": 6,
+        "trace": 1,
+        "sorting": 1,
+        "connect_dots": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-colors",
+      "title": "Mes couleurs",
+      "domain": "colors",
+      "activities": 10,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 6,
+        "sorting": 1,
+        "creative_extra": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-animals",
+      "title": "Mes Animaux",
+      "domain": "animals",
+      "activities": 10,
+      "interactions": {
+        "tap_choice": 6,
+        "sorting": 1,
+        "connect_dots": 1,
+        "creative_extra": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-body",
+      "title": "Mon Corps Merveilleux",
+      "domain": "world",
+      "activities": 8,
+      "interactions": {
+        "find_path": 2,
+        "tap_choice": 3,
+        "connect_dots": 1,
+        "sorting": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-seasons",
+      "title": "Les Quatre Saisons",
+      "domain": "world",
+      "activities": 7,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 4,
+        "sorting": 1,
+        "connect_dots": 1
+      }
+    },
+    {
+      "id": "preschool-calendar",
+      "title": "Jours et mois",
+      "domain": "world",
+      "activities": 4,
+      "interactions": {
+        "listen_tap": 3,
+        "sorting": 1
+      }
+    },
+    {
+      "id": "preschool-food",
+      "title": "Les aliments sains",
+      "domain": "world",
+      "activities": 7,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 3,
+        "sorting": 1,
+        "connect_dots": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-world",
+      "title": "Mon Petit Monde",
+      "domain": "world",
+      "activities": 7,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 2,
+        "connect_dots": 1,
+        "sorting": 2,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-family",
+      "title": "Ma Chère Famille",
+      "domain": "values",
+      "activities": 6,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 2,
+        "listen_tap": 1,
+        "connect_dots": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-algeria",
+      "title": "Mon Algérie",
+      "domain": "values",
+      "activities": 8,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 4,
+        "connect_dots": 1,
+        "sorting": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-islamic-values",
+      "title": "Mes valeurs et ma foi",
+      "domain": "values",
+      "activities": 7,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 4,
+        "sorting": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-short-surahs",
+      "title": "Mes petites sourates",
+      "domain": "values",
+      "activities": 7,
+      "interactions": {
+        "quran_listen": 7
+      }
+    },
+    {
+      "id": "preschool-emotions",
+      "title": "Nos Émotions",
+      "domain": "values",
+      "activities": 8,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 4,
+        "sorting": 1,
+        "connect_dots": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-pre-writing",
+      "title": "Mes Petits Tracés",
+      "domain": "writing",
+      "activities": 8,
+      "interactions": {
+        "find_path": 1,
+        "trace": 6,
+        "maze": 1
+      }
+    },
+    {
+      "id": "preschool-logic-spatial",
+      "title": "Logique et espace",
+      "domain": "shapes",
+      "activities": 10,
+      "interactions": {
+        "find_path": 1,
+        "tap_choice": 6,
+        "sorting": 1,
+        "sequence": 1,
+        "memory_cards": 1
+      }
+    },
+    {
+      "id": "preschool-sequences",
+      "title": "Qu’est-ce qui vient après ?",
+      "domain": "creative",
+      "activities": 8,
+      "interactions": {
+        "sequence": 8
+      }
+    },
+    {
+      "id": "preschool-stories",
+      "title": "Petites histoires",
+      "domain": "creative",
+      "activities": 3,
+      "interactions": {
+        "story_order": 3
+      }
+    },
+    {
+      "id": "preschool-art-drawing",
+      "title": "Mes dessins",
+      "domain": "creative",
+      "activities": 8,
+      "interactions": {
+        "find_path": 1,
+        "coloring": 7
+      }
+    },
+    {
+      "id": "preschool-creative-games",
+      "title": "Mes Jeux Créatifs",
+      "domain": "creative",
+      "activities": 8,
+      "interactions": {
+        "find_path": 1,
+        "coloring": 1,
+        "maze": 3,
+        "jigsaw": 2,
+        "sorting": 1
+      }
+    },
+    {
+      "id": "preschool-discovery-garden",
+      "title": "Le petit jardin de Didou",
+      "domain": "creative",
+      "activities": 4,
+      "interactions": {
+        "tap_choice": 1,
+        "sequence": 1,
+        "connect_dots": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-discovery-picnic",
+      "title": "Le pique-nique des amis",
+      "domain": "creative",
+      "activities": 4,
+      "interactions": {
+        "tap_choice": 1,
+        "sequence": 1,
+        "connect_dots": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-discovery-tiles",
+      "title": "L’atelier des petits artisans",
+      "domain": "creative",
+      "activities": 4,
+      "interactions": {
+        "tap_choice": 1,
+        "sequence": 1,
+        "connect_dots": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-explore-school",
+      "title": "Mon cartable malin",
+      "domain": "world",
+      "activities": 6,
+      "interactions": {
+        "listen_tap": 1,
+        "tap_choice": 1,
+        "connect_dots": 1,
+        "sorting": 1,
+        "sequence": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-explore-home",
+      "title": "Les objets de la maison",
+      "domain": "world",
+      "activities": 6,
+      "interactions": {
+        "listen_tap": 1,
+        "tap_choice": 1,
+        "memory_cards": 1,
+        "sorting": 1,
+        "sequence": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-explore-transport",
+      "title": "Les voyages de Didou",
+      "domain": "world",
+      "activities": 6,
+      "interactions": {
+        "listen_tap": 1,
+        "tap_choice": 1,
+        "connect_dots": 1,
+        "sorting": 1,
+        "sequence": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-explore-nature",
+      "title": "J’observe la nature",
+      "domain": "world",
+      "activities": 6,
+      "interactions": {
+        "listen_tap": 1,
+        "tap_choice": 1,
+        "memory_cards": 1,
+        "sorting": 1,
+        "sequence": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-explore-shapes",
+      "title": "Les motifs des bâtisseurs",
+      "domain": "shapes",
+      "activities": 6,
+      "interactions": {
+        "listen_tap": 1,
+        "tap_choice": 1,
+        "connect_dots": 1,
+        "sorting": 1,
+        "sequence": 1,
+        "story_order": 1
+      }
+    },
+    {
+      "id": "preschool-explore-feelings",
+      "title": "Les visages et les histoires",
+      "domain": "values",
+      "activities": 6,
+      "interactions": {
+        "listen_tap": 1,
+        "tap_choice": 1,
+        "memory_cards": 1,
+        "sorting": 1,
+        "sequence": 1,
+        "story_order": 1
+      }
+    }
+  ],
+  "interactions": {
+    "tap_choice": 90,
+    "trace": 19,
+    "sorting": 22,
+    "connect_dots": 17,
+    "listen_tap": 11,
+    "drag_drop": 8,
+    "memory_cards": 14,
+    "find_path": 14,
+    "creative_extra": 2,
+    "quran_listen": 7,
+    "maze": 4,
+    "sequence": 18,
+    "story_order": 12,
+    "coloring": 8,
+    "jigsaw": 2
+  },
+  "domains": {
+    "letters": 42,
+    "numbers": 17,
+    "shapes": 26,
+    "colors": 10,
+    "animals": 13,
+    "world": 54,
+    "values": 42,
+    "writing": 8,
+    "creative": 36
+  },
+  "games": [
+    {
+      "id": "car_maze",
+      "title": "En ville",
+      "declaredLevels": 10
+    },
+    {
+      "id": "farm",
+      "title": "À la ferme",
+      "declaredLevels": 14
+    },
+    {
+      "id": "balloon_pop",
+      "title": "Éclate les ballons",
+      "declaredLevels": 8
+    },
+    {
+      "id": "fruit_catcher",
+      "title": "Le panier gourmand",
+      "declaredLevels": 8
+    },
+    {
+      "id": "shape_sorter",
+      "title": "Range les formes",
+      "declaredLevels": 8
+    },
+    {
+      "id": "dress_dido",
+      "title": "Habille Dido",
+      "declaredLevels": 8
+    },
+    {
+      "id": "little_fisher",
+      "title": "Le petit pêcheur",
+      "declaredLevels": 8
+    },
+    {
+      "id": "puzzle",
+      "title": "Le puzzle de Dido",
+      "declaredLevels": 4
+    }
+  ],
+  "totalDeclaredGameLevels": 68,
+  "printables": {
+    "ar": {
+      "count": 83,
+      "categories": {
+        "graphisme": 8,
+        "lettres": 28,
+        "chiffres": 16,
+        "logique": 16,
+        "motricite": 3,
+        "coloriage": 12
+      }
+    },
+    "fr": {
+      "count": 83,
+      "categories": {
+        "graphisme": 8,
+        "chiffres": 16,
+        "logique": 16,
+        "motricite": 3,
+        "coloriage": 12,
+        "lettres": 28
+      }
+    },
+    "en": {
+      "count": 83,
+      "categories": {
+        "graphisme": 8,
+        "chiffres": 16,
+        "logique": 16,
+        "motricite": 3,
+        "coloriage": 12,
+        "lettres": 28
+      }
+    }
+  },
+  "audio": {
+    "ar": {
+      "prompts": {
+        "present": 248
+      },
+      "successes": {
+        "present": 248
+      },
+      "uniqueTextsToReview": 0,
+      "textsToReview": []
+    },
+    "fr": {
+      "prompts": {
+        "present": 200,
+        "synthesis": 48
+      },
+      "successes": {
+        "present": 200,
+        "synthesis": 48
+      },
+      "uniqueTextsToReview": 29,
+      "textsToReview": [
+        {
+          "text": "Combien de fleurs vois-tu ? Touche le bon nombre.",
+          "references": [
+            {
+              "activityId": "discovery-garden-count",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Bravo ! Raconte ce que tu as trouvé.",
+          "references": [
+            {
+              "activityId": "discovery-garden-count",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-garden-pattern",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-garden-pairs",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-garden-story",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-count",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-pattern",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-pairs",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-story",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-count",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-pattern",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-pairs",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-story",
+              "field": "success"
+            }
+          ]
+        },
+        {
+          "text": "Feuille, fleur, feuille, fleur, feuille. Que vient-il ensuite ?",
+          "references": [
+            {
+              "activityId": "discovery-garden-pattern",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche une image, puis retrouve la même de l’autre côté.",
+          "references": [
+            {
+              "activityId": "discovery-garden-pairs",
+              "field": "prompt"
+            },
+            {
+              "activityId": "discovery-picnic-pairs",
+              "field": "prompt"
+            },
+            {
+              "activityId": "discovery-tiles-pairs",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche les images dans l’ordre : planter la graine, arroser, puis voir la plante pousser.",
+          "references": [
+            {
+              "activityId": "discovery-garden-story",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Compte les pommes. Touche le nombre de pommes.",
+          "references": [
+            {
+              "activityId": "discovery-picnic-count",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Pomme, poire, poire. Pomme, poire... quel fruit manque ?",
+          "references": [
+            {
+              "activityId": "discovery-picnic-pattern",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "D’abord, je prends une pomme. Puis je la lave. Enfin, je la mange. Remets les images dans cet ordre.",
+          "references": [
+            {
+              "activityId": "discovery-picnic-story",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Combien de carreaux bleus vois-tu ? Touche le bon nombre.",
+          "references": [
+            {
+              "activityId": "discovery-tiles-count",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Bleu, bleu, orange. Bleu, bleu... quel carreau vient ensuite ?",
+          "references": [
+            {
+              "activityId": "discovery-tiles-pattern",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "L’artisan prend de la terre. Il fabrique un carreau. Puis il assemble une mosaïque. Range les trois images.",
+          "references": [
+            {
+              "activityId": "discovery-tiles-story",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche chaque image pour écouter son nom.",
+          "references": [
+            {
+              "activityId": "explore-school-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-home-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-1",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Bravo !",
+          "references": [
+            {
+              "activityId": "explore-school-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-6",
+              "field": "success"
+            }
+          ]
+        },
+        {
+          "text": "Touche l’image : Cartable.",
+          "references": [
+            {
+              "activityId": "explore-school-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Relie chaque image à la même image.",
+          "references": [
+            {
+              "activityId": "explore-school-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-3",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Fais glisser chaque image dans la boîte de sa famille.",
+          "references": [
+            {
+              "activityId": "explore-school-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-home-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-4",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Regarde le groupe qui se répète. Quelle image vient ensuite ?",
+          "references": [
+            {
+              "activityId": "explore-school-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-home-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-5",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Remets notre histoire dans l’ordre : prends une feuille, dessine dessus, puis affiche ton dessin.",
+          "references": [
+            {
+              "activityId": "explore-school-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche l’image : Clé.",
+          "references": [
+            {
+              "activityId": "explore-home-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Retourne les cartes et retrouve les paires.",
+          "references": [
+            {
+              "activityId": "explore-home-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-3",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Dans notre histoire, l’adulte prend la clé, ouvre la porte, puis nous entrons. Remets les images dans cet ordre.",
+          "references": [
+            {
+              "activityId": "explore-home-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche l’image : Avion.",
+          "references": [
+            {
+              "activityId": "explore-transport-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Le train arrive, Didou monte avec un adulte, puis le train part. Retrouve cet ordre.",
+          "references": [
+            {
+              "activityId": "explore-transport-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche l’image : Fleur.",
+          "references": [
+            {
+              "activityId": "explore-nature-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Dans cette histoire, la pluie tombe, une flaque se forme, puis la pluie cesse et le soleil revient.",
+          "references": [
+            {
+              "activityId": "explore-nature-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche l’image : Triangle.",
+          "references": [
+            {
+              "activityId": "explore-shapes-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Trace un rond, colorie-le, puis affiche ton dessin. Dans notre histoire, c’est cet ordre.",
+          "references": [
+            {
+              "activityId": "explore-shapes-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touche l’image : Content.",
+          "references": [
+            {
+              "activityId": "explore-feelings-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Écoute cette histoire : Nour est triste, Sami l’écoute, puis Nour décide de rejouer. Retrouve les images.",
+          "references": [
+            {
+              "activityId": "explore-feelings-6",
+              "field": "prompt"
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "prompts": {
+        "present": 200,
+        "synthesis": 48
+      },
+      "successes": {
+        "present": 200,
+        "synthesis": 48
+      },
+      "uniqueTextsToReview": 29,
+      "textsToReview": [
+        {
+          "text": "How many flowers can you see? Touch the right number.",
+          "references": [
+            {
+              "activityId": "discovery-garden-count",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Well done! Tell someone what you found.",
+          "references": [
+            {
+              "activityId": "discovery-garden-count",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-garden-pattern",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-garden-pairs",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-garden-story",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-count",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-pattern",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-pairs",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-picnic-story",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-count",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-pattern",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-pairs",
+              "field": "success"
+            },
+            {
+              "activityId": "discovery-tiles-story",
+              "field": "success"
+            }
+          ]
+        },
+        {
+          "text": "Leaf, flower, leaf, flower, leaf. What comes next?",
+          "references": [
+            {
+              "activityId": "discovery-garden-pattern",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch a picture, then find the same picture on the other side.",
+          "references": [
+            {
+              "activityId": "discovery-garden-pairs",
+              "field": "prompt"
+            },
+            {
+              "activityId": "discovery-picnic-pairs",
+              "field": "prompt"
+            },
+            {
+              "activityId": "discovery-tiles-pairs",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch the pictures in order: plant the seed, water it, then see the plant grow.",
+          "references": [
+            {
+              "activityId": "discovery-garden-story",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Count the apples. Touch the number of apples.",
+          "references": [
+            {
+              "activityId": "discovery-picnic-count",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Apple, pear, pear. Apple, pear... which fruit is missing?",
+          "references": [
+            {
+              "activityId": "discovery-picnic-pattern",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "First, I take an apple. Next, I wash it. Finally, I eat it. Put the pictures in this order.",
+          "references": [
+            {
+              "activityId": "discovery-picnic-story",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "How many blue tiles can you see? Touch the right number.",
+          "references": [
+            {
+              "activityId": "discovery-tiles-count",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Blue, blue, orange. Blue, blue... which tile comes next?",
+          "references": [
+            {
+              "activityId": "discovery-tiles-pattern",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "The maker takes clay. He makes a tile. Then he puts tiles together in a mosaic. Put the three pictures in order.",
+          "references": [
+            {
+              "activityId": "discovery-tiles-story",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch each picture to hear its name.",
+          "references": [
+            {
+              "activityId": "explore-school-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-home-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-1",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-1",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Well done!",
+          "references": [
+            {
+              "activityId": "explore-school-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-school-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-home-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-transport-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-nature-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-shapes-6",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-1",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-2",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-3",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-4",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-5",
+              "field": "success"
+            },
+            {
+              "activityId": "explore-feelings-6",
+              "field": "success"
+            }
+          ]
+        },
+        {
+          "text": "Touch the picture: School bag.",
+          "references": [
+            {
+              "activityId": "explore-school-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Match each picture to the same picture.",
+          "references": [
+            {
+              "activityId": "explore-school-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-3",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Drag each picture into the box for its group.",
+          "references": [
+            {
+              "activityId": "explore-school-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-home-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-4",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-4",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Look at the repeating group. Which picture comes next?",
+          "references": [
+            {
+              "activityId": "explore-school-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-home-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-transport-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-shapes-5",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-5",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Put our story in order: take some paper, draw on it, then display your drawing.",
+          "references": [
+            {
+              "activityId": "explore-school-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch the picture: Key.",
+          "references": [
+            {
+              "activityId": "explore-home-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Turn the cards over and find the pairs.",
+          "references": [
+            {
+              "activityId": "explore-home-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-nature-3",
+              "field": "prompt"
+            },
+            {
+              "activityId": "explore-feelings-3",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "In our story, the grown-up takes the key, opens the door, then we enter. Put the pictures in that order.",
+          "references": [
+            {
+              "activityId": "explore-home-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch the picture: Plane.",
+          "references": [
+            {
+              "activityId": "explore-transport-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "The train arrives, Didou gets on with a grown-up, then the train leaves. Find this order.",
+          "references": [
+            {
+              "activityId": "explore-transport-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch the picture: Flower.",
+          "references": [
+            {
+              "activityId": "explore-nature-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "In this story, rain falls, a puddle forms, then the rain stops and the sun returns.",
+          "references": [
+            {
+              "activityId": "explore-nature-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch the picture: Triangle.",
+          "references": [
+            {
+              "activityId": "explore-shapes-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Draw a circle, colour it, then display your drawing. That is the order in our story.",
+          "references": [
+            {
+              "activityId": "explore-shapes-6",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Touch the picture: Happy.",
+          "references": [
+            {
+              "activityId": "explore-feelings-2",
+              "field": "prompt"
+            }
+          ]
+        },
+        {
+          "text": "Listen to this story: Nour is sad, Sami listens, then Nour decides to play again. Find the pictures in order.",
+          "references": [
+            {
+              "activityId": "explore-feelings-6",
+              "field": "prompt"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "staticArrays": {
+    "CarMazeGame": {
+      "LEVELS": 10,
+      "LEVEL_DEFS": 10
+    },
+    "FarmGame": {
+      "LEVELS": 14,
+      "LEVEL_DEFS": 14
+    },
+    "BalloonPopGame": {
+      "LEVELS": 8,
+      "LEVEL_DEFS": 8,
+      "COLORS": 8
+    },
+    "FruitCatcherGame": {
+      "LEVELS": 8,
+      "LEVEL_DEFS": 8
+    },
+    "ShapeSorterGame": {
+      "ALL_LEVELS": 8,
+      "LEVEL_DEFS": 8
+    },
+    "DressDidoGame": {
+      "DRESS_DIDO_LEVELS": 8,
+      "LEVEL_DEFS": 8,
+      "next": 2
+    },
+    "LittleFisherGame": {
+      "LEVELS": 8,
+      "LEVEL_DEFS": 8
+    },
+    "PuzzleGame": {
+      "ALL_LEVELS": 4,
+      "LEVEL_DEFS": 4,
+      "a": 1
+    },
+    "PreschoolMagicBoard": {
+      "TRACE_TEMPLATES": 70,
+      "COLOR_PALETTE": 11,
+      "STAMPS": 12
+    },
+    "PreschoolXylophone": {
+      "MUSICAL_KEYS": 8,
+      "PIANO_BLACK_KEYS": 5,
+      "PERCUSSION_PADS": 4,
+      "ALGERIAN_NURSERY_SONGS": 9,
+      "INSTRUMENTS": 6
+    },
+    "PreschoolSoundBox": {
+      "SOUND_ITEMS": 25
+    }
+  },
+  "structuralChecks": [],
+  "limits": [
+    "Translations are not additional unique activities.",
+    "Catalog activities, game levels, drawing templates and paper worksheets overlap and must not be added as a unique activity total.",
+    "File presence does not establish pronunciation quality.",
+    "No game was played by a real child for this audit."
+  ]
+}

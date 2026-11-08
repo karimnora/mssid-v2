@@ -1,3 +1,4 @@
+import { progressStorage } from '../../utils/ownerStorage';
 import type { ParentNotebookRow } from '../../utils/competenceProgress';
 
 export interface CemCheck {
@@ -43,7 +44,7 @@ const CEM_REWARD_KEY = 'mssid.cemRewarded';
 export function loadCemRewarded(): string[] {
   if (typeof localStorage === 'undefined') return [];
   try {
-    const raw = localStorage.getItem(CEM_REWARD_KEY);
+    const raw = progressStorage().getItem(CEM_REWARD_KEY);
     const parsed = raw ? JSON.parse(raw) : [];
     return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === 'string') : [];
   } catch {
@@ -56,7 +57,7 @@ export function markCemRewarded(key: string): boolean {
   const prev = loadCemRewarded();
   if (prev.includes(key)) return false;
   if (typeof localStorage !== 'undefined') {
-    localStorage.setItem(CEM_REWARD_KEY, JSON.stringify([...prev, key]));
+    progressStorage().setItem(CEM_REWARD_KEY, JSON.stringify([...prev, key]));
   }
   return true;
 }

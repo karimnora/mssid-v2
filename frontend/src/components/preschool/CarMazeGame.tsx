@@ -889,7 +889,7 @@ export const CarMazeGame: React.FC<CarMazeGameProps> = ({ onExit, language = 'fr
     <motion.button
       key={dir}
       whileTap={{ scale: 0.9 }}
-      className="w-16 h-16 rounded-2xl bg-indigo-800/90 hover:bg-indigo-700 active:bg-indigo-600
+      className="min-h-[60px] min-w-[60px] w-16 h-16 rounded-2xl bg-indigo-800/90 hover:bg-indigo-700 active:bg-indigo-600
                  text-3xl flex items-center justify-center select-none border-2 border-indigo-500/50
                  shadow-lg shadow-indigo-900/50 cursor-pointer touch-none"
       onPointerDown={e => { e.preventDefault(); resumeTownAudio(); ctrl.current[dir] = true; }}
@@ -923,7 +923,7 @@ export const CarMazeGame: React.FC<CarMazeGameProps> = ({ onExit, language = 'fr
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => requestLeave(() => setPhase('select'))}
-        className="absolute top-4 start-4 z-10 bg-white/90 hover:bg-white text-slate-900 font-black
+        className="min-h-[60px] min-w-[60px] absolute top-4 start-4 z-10 bg-white/90 hover:bg-white text-slate-900 font-black
                    px-4 py-2 rounded-2xl shadow-lg border-2 border-amber-300 cursor-pointer
                    flex items-center gap-2 text-sm"
       >

@@ -1,3 +1,5 @@
+import { useProgressOwner } from '../../utils/ownerStorage';
+import { getActiveProgressOwner } from '../../utils/progressOwner';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { GAME_PACKS, type GamePack } from '../../data/games';
@@ -33,8 +35,10 @@ interface GameStationSheetProps {
  * stars and the suggested one, then the 3D player. Arabic only, like the games themselves.
  */
 export function GameStationSheet({ pack, open, lessonTitles, onClose, onPlayFree, freeTitle, onPracticeResult, onEarnXp, say }: GameStationSheetProps) {
+  const owner = useProgressOwner();
   const { levels, solveLevel } = usePackLevels(pack, onEarnXp);
   const [playing, setPlaying] = useState<number | null>(null);
+  useEffect(() => { setPlaying(null); }, [owner]);
   const suggested = suggestedLevel(pack, levels);
   const got = pack.rounds.reduce((sum, r) => sum + (levels[r.id] ?? 0), 0);
   // Catalog titles often carry pictures (« أ ب ت ث 🍍… »): the sheet keeps only their words.
@@ -163,7 +167,7 @@ export function GameStationSheet({ pack, open, lessonTitles, onClose, onPlayFree
           best={levels}
           startLevel={playing}
           onExit={() => setPlaying(null)}
-          onResult={(lessonId, result) => onPracticeResult?.(lessonId, result)}
+          onResult={(lessonId, result) => { if (getActiveProgressOwner() === owner) onPracticeResult?.(lessonId, result); }}
           onLevelSolved={solveLevel}
         />
       )}

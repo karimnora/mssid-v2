@@ -1,3 +1,5 @@
+import { progressStorage, useProgressOwner } from '../utils/ownerStorage';
+import { getActiveProgressOwner } from '../utils/progressOwner';
 import { LabQuizSession } from './LabQuizSession';
 import React, { useState, useMemo, useRef } from 'react';
 import { ModalCloseButton } from './ui/ModalCloseButton';
@@ -177,7 +179,7 @@ const getAdventureRank = (count: number) => {
   };
 };
 
-export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
+const OwnedWilayasExplorer: React.FC<WilayasExplorerProps> = ({
   onBack,
   onReward,
 }) => {
@@ -186,6 +188,11 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   const tCommon = useTranslation('common');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
+  const owner = useProgressOwner();
+  const storage = progressStorage(owner);
+  const rewardForOwner = (coins: number, xp: number) => {
+    if (getActiveProgressOwner() === owner) onReward?.(coins, xp);
+  };
   const [selectedWilaya, setSelectedWilaya] = useState<WilayaInfo>(WILAYAS_LIST[15]); // Alger (16)
   const [activeTab, setActiveTab] = useState<
     'map_list' | 'expeditions' | 'detective' | 'quiz' | 'passport'
@@ -206,7 +213,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   // Visited / Discovered wilayas for the passport
   const [discoveredCodes, setDiscoveredCodes] = useState<number[]>(() => {
     try {
-      const saved = localStorage.getItem('mssid_discovered_wilayas');
+      const saved = storage.getItem('mssid_discovered_wilayas');
       return saved ? JSON.parse(saved) : [16, 31, 25, 5, 47, 1];
     } catch {
       return [16, 31, 25, 5, 47, 1];
@@ -216,7 +223,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
   // Completed Expeditions
   const [completedExpeditions, setCompletedExpeditions] = useState<string[]>(() => {
     try {
-      const saved = localStorage.getItem('mssid_completed_expeditions');
+      const saved = storage.getItem('mssid_completed_expeditions');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -239,12 +246,12 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
       const updated = [...discoveredCodes, w.code];
       setDiscoveredCodes(updated);
       try {
-        localStorage.setItem('mssid_discovered_wilayas', JSON.stringify(updated));
+        if (getActiveProgressOwner() === owner) storage.setItem('mssid_discovered_wilayas', JSON.stringify(updated));
       } catch (e) {
         console.error(e);
       }
       if (onReward) {
-        onReward(10, 20);
+        rewardForOwner(10, 20);
       }
     }
   };
@@ -295,12 +302,12 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
     const updated = [...completedExpeditions, exp.id];
     setCompletedExpeditions(updated);
     try {
-      localStorage.setItem('mssid_completed_expeditions', JSON.stringify(updated));
+      if (getActiveProgressOwner() === owner) storage.setItem('mssid_completed_expeditions', JSON.stringify(updated));
     } catch (e) {
       console.error(e);
     }
     if (onReward) {
-      onReward(exp.rewardCoins, exp.rewardXp);
+      rewardForOwner(exp.rewardCoins, exp.rewardXp);
     }
     speakText(`تهانينا! لقد أتممت ${exp.titleAr} بنجاح وحصلت على وسام الرحلة!`);
   };
@@ -404,7 +411,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
         message: `عبقري! إجابة صحيحة! الولاية السرية هي ${chosen.nameAr} (${chosen.codeStr})! نلت ${bonusCoins} قطعة ذهبية! 🌟`,
       });
       speakText(`ممتاز! إجابة صحيحة. الولاية هي ${chosen.nameAr}.`);
-      if (onReward) onReward(bonusCoins, bonusXp);
+      if (onReward) rewardForOwner(bonusCoins, bonusXp);
     } else {
       setDetectiveFeedback({
         isCorrect: false,
@@ -459,7 +466,7 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
       });
       speakText(`ممتاز! إجابة صحيحة. ولاية ${currentQuizTarget.nameAr}.`);
       AuthService.addScore(earnedXp);
-      if (onReward) onReward(earnedCoins, earnedXp);
+      if (onReward) rewardForOwner(earnedCoins, earnedXp);
     } else {
       setQuizStreak(0);
       setQuizFeedback({
@@ -1534,4 +1541,10 @@ export const WilayasExplorer: React.FC<WilayasExplorerProps> = ({
       </AnimatePresence>
     </div>
   );
+};
+
+/** Remount transient expedition state when the selected child changes. */
+export const WilayasExplorer: React.FC<WilayasExplorerProps> = (props) => {
+  const owner = useProgressOwner();
+  return <OwnedWilayasExplorer key={owner} {...props} />;
 };

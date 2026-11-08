@@ -992,7 +992,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
     <motion.button
       key={dir}
       whileTap={{ scale: 0.9 }}
-      className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-2xl bg-lime-500 hover:bg-lime-400 active:bg-lime-600
+      className="min-h-[60px] min-w-[60px] w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-2xl bg-lime-500 hover:bg-lime-400 active:bg-lime-600
                  text-3xl flex items-center justify-center select-none border-2 border-lime-300
                  shadow-md shadow-lime-700/20 cursor-pointer touch-none"
       onPointerDown={e => { e.preventDefault(); resumeTownAudio(); ctrl.current[dir] = true; }}
@@ -1029,7 +1029,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => requestLeave(() => setPhase('select'))}
-        className="absolute top-4 start-4 z-10 bg-white hover:bg-amber-50 text-slate-800 font-black
+        className="min-h-[60px] min-w-[60px] absolute top-4 start-4 z-10 bg-white hover:bg-amber-50 text-slate-800 font-black
                    px-4 py-2 rounded-2xl shadow-md border-2 border-amber-200 cursor-pointer
                    flex items-center gap-2 text-sm"
       >
@@ -1042,7 +1042,7 @@ export const FarmGame: React.FC<FarmGameProps> = ({ onExit, language = 'fr' }) =
         <motion.button
           whileTap={{ scale: 0.92 }}
           onClick={() => { resumeTownAudio(); speak(mission); }}
-          className="min-h-12 min-w-12 shrink-0 rounded-2xl bg-white shadow-md border-2 border-lime-300 text-2xl"
+          className="min-h-[60px] min-w-[60px] shrink-0 rounded-2xl bg-white shadow-md border-2 border-lime-300 text-2xl"
           aria-label={t('استمع', 'Écouter', 'Listen')}
         >
           🔊

@@ -77,3 +77,6 @@
 .garden-top>div { flex:1; min-width:0; }
 .garden-top h3,.garden-intro,.garden-footnote { overflow-wrap:anywhere; }
 .garden-intro,.garden-footnote { padding-inline:2px; }
+
+/* Preschool touch targets, including secondary actions. */
+.garden-mission[data-garden-mission="preschool"] button, .garden-mission[data-garden-mission="preschool"] summary { min-height:60px; min-width:60px; }

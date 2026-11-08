@@ -1,3 +1,4 @@
+import { PreschoolEvidence, resolvedPlayQuality } from './preschoolEvidence';
 import { PreschoolDiscoveryScene } from './PreschoolDiscoveryArt';
 import React, { useEffect, useRef, useState } from 'react';
 import { useActivityExitGuard } from '../../context/ActivityExitContext';
@@ -65,6 +66,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const missingVoice = !hasVoice && !content.promptAudioSrc;
   const interactedRef = useRef(false);
   const replayUsedRef = useRef(false);
+  const assistedRef = useRef(false);
+  const mistakeReportedRef = useRef(false);
   const qualityRef = useRef<PreschoolPlayQuality>('done');
   const completionTimerRef = useRef<number | undefined>(undefined);
   const mountedRef = useRef(true);
@@ -86,6 +89,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
     completionRequestedRef.current = false;
     completionPublishedRef.current = false;
     qualityRef.current = 'done';
+    assistedRef.current = false;
+    mistakeReportedRef.current = false;
     setMood('idle');
     setShowSuccess(false);
     setShowEcho(false);
@@ -120,6 +125,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   const handleInteractionComplete = (quality: PreschoolPlayQuality = 'done') => {
     if (!isCurrentActivity() || completionRequestedRef.current) return;
     interactedRef.current = true;
+    if (!isPlaySuccess(quality)) assistedRef.current = true;
+    quality = resolvedPlayQuality(activity, quality, assistedRef.current);
     qualityRef.current = quality;
     if (!isPlaySuccess(quality)) {
       setMood('idle');
@@ -151,15 +158,25 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
     completionTimerRef.current = window.setTimeout(() => finishActivity(quality), Math.max(1400, recordedRewardDelay));
   };
 
+  const reportMistake = () => {
+    assistedRef.current = true;
+    if (mistakeReportedRef.current) return;
+    mistakeReportedRef.current = true;
+    // Some mechanics detect a drop inside a state updater. Publish after that render finishes.
+    queueMicrotask(() => { if (isCurrentActivity()) onAttempt?.('tried'); });
+  };
+
   const replayPrompt = () => speak(content.promptAudio, content.promptAudioSrc);
 
   return (
+    <PreschoolEvidence.Provider value={reportMistake}>
     <div dir={dir} className="preschool-safe-top min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-sky-100 px-4 py-6 flex flex-col">
+      {['values-bismillah', 'values-alhamdulillah'].includes(activity.id) && <p role="status" className="max-w-lg mx-auto text-base font-bold text-orange-900 mb-3">{t('التسجيل البشري لهذا النشاط قيد الإعداد. رافق طفلك في النطق.', 'L’enregistrement humain de cette activité est en préparation. Accompagnez votre enfant à l’oral.', 'The human recording is being prepared. Please guide your child aloud.')}</p>}
       <div className="flex items-center justify-between max-w-lg w-full mx-auto mb-4">
         <div className="flex items-center gap-2">
           <button
             onClick={() => requestLeave(onExit)}
-            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
+            className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100"
             aria-label={t('رُجُوع', 'Retour', 'Back')}
             title={t('رُجُوع', 'Retour', 'Back')}
           >
@@ -171,7 +188,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         <div className="flex items-center gap-2">
           <button
             onClick={replayPrompt}
-            className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100 text-orange-700"
+            className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-100 text-orange-700"
             aria-label={missingVoice ? t('لا يوجد صوت', 'Pas de voix', 'No voice') : t('إعادة الاستماع', 'Réécouter', 'Replay')}
             title={missingVoice ? t('لا يوجد صوت على هذا الجهاز، اضغط على "نصيحة لولي الأمر"', 'Pas de voix sur cet appareil — voir « Astuce pour le parent »', 'No voice on this device — see "Tip for the grown-up"') : t('استمع للصوت', 'Écouter à nouveau', 'Listen again')}
           >
@@ -181,7 +198,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
           {/* Skip never blocks — but it must not count as a success (badges / défi / path stars). */}
           <button
             onClick={() => hasNext ? onSkip() : requestLeave(onSkip)}
-            className="px-4 py-2.5 rounded-2xl bg-white hover:bg-orange-50 active:scale-95 text-orange-800 shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-orange-200"
+            className="min-h-[60px] min-w-[60px] px-4 py-2.5 rounded-2xl bg-white hover:bg-orange-50 active:scale-95 text-orange-800 shadow-md text-sm font-black flex items-center gap-2 cursor-pointer transition-all border border-orange-200"
             title={hasNext ? t('تخطي', 'Passer', 'Skip') : t('خروج', 'Quitter', 'Leave')}
           >
             <span>{hasNext ? t('تخطي', 'Passer', 'Skip') : t('خروج', 'Quitter', 'Leave')}</span>
@@ -203,8 +220,8 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         {(content.promptText || missingVoice) && (
           <div className="flex flex-col items-center gap-1.5">
             <button
-              onClick={() => setShowParentTip((v) => !v)}
-              className="text-[11px] font-bold text-orange-700/60 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
+              onClick={() => { assistedRef.current = true; if (!showParentTip) onAttempt?.('helped'); setShowParentTip((v) => !v); }}
+              className="min-h-[60px] min-w-[60px] text-[11px] font-bold text-orange-700/60 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
             >
               <span>ℹ️</span>
               <span>{t('نصيحة لولي الأمر', 'Astuce pour le parent', 'Tip for the grown-up')}</span>
@@ -328,5 +345,6 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
         )}
       </AnimatePresence>
     </div>
+    </PreschoolEvidence.Provider>
   );
 };

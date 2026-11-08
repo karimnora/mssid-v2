@@ -1,3 +1,4 @@
+import { LegacyProgressRecovery } from './LegacyProgressRecovery';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
 import { OPEN_SUBSCRIPTION_STATUS } from './NativeSubscriptionStatus';
 import React, { useState, useEffect } from 'react';
@@ -322,7 +323,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           </div>
 
           {/* Avatar Picker Card */}
-          <ProgressSyncStatus authenticated={Boolean(authUser)} />
+          <LegacyProgressRecovery name={userProfile.name} arabic={direction === 'rtl'} />
+              <ProgressSyncStatus authenticated={Boolean(authUser)} />
           {refreshError && <p role="alert" className="text-xs font-bold text-red-800">
             {direction === 'rtl' ? 'تعذر تحديث الملف. تقدمك المحلي محفوظ، حاول لاحقاً.' : 'Impossible d’actualiser le profil. Tes progrès locaux sont conservés ; réessaie plus tard.'}
           </p>}

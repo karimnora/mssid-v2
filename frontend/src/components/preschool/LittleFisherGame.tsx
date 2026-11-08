@@ -312,7 +312,7 @@ export const LittleFisherGame: React.FC<LittleFisherGameProps> = ({ onExit, lang
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => requestLeave(() => setPhase('select'))}
-        className="absolute top-4 start-4 z-10 bg-white hover:bg-sky-50 text-slate-800 font-black
+        className="min-h-[60px] min-w-[60px] absolute top-4 start-4 z-10 bg-white hover:bg-sky-50 text-slate-800 font-black
                    px-4 py-2 rounded-2xl shadow-md border-2 border-sky-200 cursor-pointer
                    flex items-center gap-2 text-sm"
       >
@@ -325,7 +325,7 @@ export const LittleFisherGame: React.FC<LittleFisherGameProps> = ({ onExit, lang
         <motion.button
           whileTap={{ scale: 0.92 }}
           onClick={() => { resumeTownAudio(); speak(mission); }}
-          className="min-h-12 min-w-12 shrink-0 rounded-2xl bg-white shadow-md border-2 border-sky-300 text-2xl"
+          className="min-h-[60px] min-w-[60px] shrink-0 rounded-2xl bg-white shadow-md border-2 border-sky-300 text-2xl"
           aria-label={t('استمع', 'Écouter', 'Listen')}
         >
           🔊

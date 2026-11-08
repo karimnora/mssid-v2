@@ -1,0 +1,1031 @@
+{
+  "scope": "Runtime frontend/src; excludes tests. Dynamic expressions retained for manual review; localStorage aliases and progressStorage included.",
+  "calls": 128,
+  "files": 41,
+  "entries": [
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 136,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_theme_manual",
+      "expression": "THEME_MANUAL_KEY"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 140,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_theme",
+      "expression": "THEME_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 141,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_theme_manual",
+      "expression": "THEME_MANUAL_KEY"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 155,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_theme",
+      "expression": "THEME_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 171,
+      "operation": "removeItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_theme_manual",
+      "expression": "THEME_MANUAL_KEY"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 270,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 284,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 497,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "countdownDismissKey()"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 505,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "countdownDismissKey()"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 627,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "profileStorageKey(activeChildId)"
+    },
+    {
+      "file": "frontend/src/App.tsx",
+      "line": 1090,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_theme_manual",
+      "expression": "THEME_MANUAL_KEY"
+    },
+    {
+      "file": "frontend/src/components/AndroidUpdateBanner.tsx",
+      "line": 28,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": "mssid_android_update_dismissed_time",
+      "expression": "DISMISSED_KEY"
+    },
+    {
+      "file": "frontend/src/components/AndroidUpdateBanner.tsx",
+      "line": 50,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": "mssid_android_update_dismissed_time",
+      "expression": "DISMISSED_KEY"
+    },
+    {
+      "file": "frontend/src/components/AppRatingPrompt.tsx",
+      "line": 39,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": "mssid_rating_prompt_status",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/AppRatingPrompt.tsx",
+      "line": 47,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": "mssid_rating_prompt_status",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/examPlan/ExamPlanPanel.tsx",
+      "line": 22,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/components/examPlan/ExamPlanPanel.tsx",
+      "line": 33,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/components/games/learning/LearningGameEntry.tsx",
+      "line": 24,
+      "operation": "getItem",
+      "receiver": "progressStorage(owner)",
+      "key": "mssid_learning_games_v1",
+      "expression": "STORE_KEY"
+    },
+    {
+      "file": "frontend/src/components/games/learning/LearningGameEntry.tsx",
+      "line": 32,
+      "operation": "setItem",
+      "receiver": "progressStorage(owner)",
+      "key": "mssid_learning_games_v1",
+      "expression": "STORE_KEY"
+    },
+    {
+      "file": "frontend/src/components/journey/JourneyScreen.tsx",
+      "line": 90,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_journey_sound",
+      "expression": "SOUND_KEY"
+    },
+    {
+      "file": "frontend/src/components/journey/JourneyScreen.tsx",
+      "line": 125,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_journey_sound",
+      "expression": "SOUND_KEY"
+    },
+    {
+      "file": "frontend/src/components/missions/MissionBanner.tsx",
+      "line": 19,
+      "operation": "getItem",
+      "receiver": "progressStorage(owner)",
+      "key": "mssid_missions_v1",
+      "expression": "STORE_KEY"
+    },
+    {
+      "file": "frontend/src/components/missions/MissionBanner.tsx",
+      "line": 27,
+      "operation": "setItem",
+      "receiver": "progressStorage(owner)",
+      "key": "mssid_missions_v1",
+      "expression": "STORE_KEY"
+    },
+    {
+      "file": "frontend/src/components/onboarding/FirstStepsModal.tsx",
+      "line": 31,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "keyFor(userId)"
+    },
+    {
+      "file": "frontend/src/components/onboarding/FirstStepsModal.tsx",
+      "line": 39,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "keyFor(userId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/PreschoolApp.tsx",
+      "line": 56,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_language",
+      "expression": "LANGUAGE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/PreschoolApp.tsx",
+      "line": 84,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "snapshotKey"
+    },
+    {
+      "file": "frontend/src/components/preschool/PreschoolApp.tsx",
+      "line": 129,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_language",
+      "expression": "LANGUAGE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 41,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 51,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 88,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "childNameKey(ownerId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 94,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "childNameKey(ownerId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 110,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "challengeStorageKey(dest)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 111,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "challengeStorageKey(GUEST_OWNER_ID)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 113,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "challengeStorageKey(dest)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 115,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "badgeStorageKey(dest)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 116,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "badgeStorageKey(GUEST_OWNER_ID)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 117,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_badges",
+      "expression": "LEGACY_BADGES_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 119,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "badgeStorageKey(dest)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 126,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "progressKey(childId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 127,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_progress",
+      "expression": "LEGACY_PROGRESS_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 128,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "progressKey(childId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 130,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "challengeStorageKey(childId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 131,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_daily_challenge",
+      "expression": "LEGACY_CHALLENGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 132,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "challengeStorageKey(childId)"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 152,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_active_child",
+      "expression": "ACTIVE_CHILD_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/preschoolProgress.ts",
+      "line": 159,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_active_child",
+      "expression": "ACTIVE_CHILD_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/useDailyChallenge.ts",
+      "line": 113,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "storageKey"
+    },
+    {
+      "file": "frontend/src/components/preschool/useDailyChallenge.ts",
+      "line": 127,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "storageKey"
+    },
+    {
+      "file": "frontend/src/components/preschool/useLevelProgress.ts",
+      "line": 25,
+      "operation": "getItem",
+      "receiver": "progressStorage(owner)",
+      "key": "mssid_game_levels",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/useLevelProgress.ts",
+      "line": 33,
+      "operation": "setItem",
+      "receiver": "progressStorage(owner)",
+      "key": "mssid_game_levels",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/usePreschoolAudio.ts",
+      "line": 14,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_muted",
+      "expression": "MUTE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/usePreschoolAudio.ts",
+      "line": 41,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_preschool_muted",
+      "expression": "MUTE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/usePreschoolBadges.ts",
+      "line": 21,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/components/preschool/usePreschoolBadges.ts",
+      "line": 24,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "LEGACY_BADGES_KEY"
+    },
+    {
+      "file": "frontend/src/components/preschool/usePreschoolBadges.ts",
+      "line": 26,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/components/preschool/usePreschoolBadges.ts",
+      "line": 35,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "badgeStorageKey(ownerId)"
+    },
+    {
+      "file": "frontend/src/components/ProfileModal.tsx",
+      "line": 123,
+      "operation": "removeItem",
+      "receiver": "localStorage",
+      "key": "mssid_user_profile",
+      "expression": "'mssid_user_profile'"
+    },
+    {
+      "file": "frontend/src/components/PwaInstallBanner.tsx",
+      "line": 29,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": "mssid_pwa_dismissed_time",
+      "expression": "DISMISSED_KEY"
+    },
+    {
+      "file": "frontend/src/components/PwaInstallBanner.tsx",
+      "line": 62,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": "mssid_pwa_dismissed_time",
+      "expression": "DISMISSED_KEY"
+    },
+    {
+      "file": "frontend/src/components/WilayasExplorer.tsx",
+      "line": 216,
+      "operation": "getItem",
+      "receiver": "storage",
+      "key": "mssid_discovered_wilayas",
+      "expression": "'mssid_discovered_wilayas'"
+    },
+    {
+      "file": "frontend/src/components/WilayasExplorer.tsx",
+      "line": 226,
+      "operation": "getItem",
+      "receiver": "storage",
+      "key": "mssid_completed_expeditions",
+      "expression": "'mssid_completed_expeditions'"
+    },
+    {
+      "file": "frontend/src/components/WilayasExplorer.tsx",
+      "line": 249,
+      "operation": "setItem",
+      "receiver": "storage",
+      "key": "mssid_discovered_wilayas",
+      "expression": "'mssid_discovered_wilayas'"
+    },
+    {
+      "file": "frontend/src/components/WilayasExplorer.tsx",
+      "line": 305,
+      "operation": "setItem",
+      "receiver": "storage",
+      "key": "mssid_completed_expeditions",
+      "expression": "'mssid_completed_expeditions'"
+    },
+    {
+      "file": "frontend/src/data/immersive/cemPrep.ts",
+      "line": 47,
+      "operation": "getItem",
+      "receiver": "progressStorage()",
+      "key": "mssid.cemRewarded",
+      "expression": "CEM_REWARD_KEY"
+    },
+    {
+      "file": "frontend/src/data/immersive/cemPrep.ts",
+      "line": 60,
+      "operation": "setItem",
+      "receiver": "progressStorage()",
+      "key": "mssid.cemRewarded",
+      "expression": "CEM_REWARD_KEY"
+    },
+    {
+      "file": "frontend/src/featureFlags.ts",
+      "line": 57,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_feature_flag_overrides",
+      "expression": "OVERRIDES_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/featureFlags.ts",
+      "line": 72,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_feature_flag_overrides",
+      "expression": "OVERRIDES_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/hooks/useLearningSnapshot.ts",
+      "line": 25,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/hooks/useLearningSnapshot.ts",
+      "line": 64,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 200,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "profileStorageKey(activeChildId)"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 207,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_user_profile_backup",
+      "expression": "'mssid_user_profile_backup'"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 273,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "`mssid_local_activities_v1_${authUser.id}`"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 317,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 337,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "profileStorageKey(activeChildId)"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 343,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "`mssid_local_activities_v1_${authUser.id}`"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 473,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "profileStorageKey(activeChildId)"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 486,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "profileStorageKey(activeChildId)"
+    },
+    {
+      "file": "frontend/src/hooks/useUserProgress.ts",
+      "line": 502,
+      "operation": "removeItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "profileStorageKey(activeChildId)"
+    },
+    {
+      "file": "frontend/src/localePreference.ts",
+      "line": 9,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_locale_preference",
+      "expression": "LOCALE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/localePreference.ts",
+      "line": 28,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_locale_preference",
+      "expression": "LOCALE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/navigation/appLocation.ts",
+      "line": 12,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_grade",
+      "expression": "GRADE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/navigation/appLocation.ts",
+      "line": 22,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_grade",
+      "expression": "GRADE_STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/services/authService.ts",
+      "line": 655,
+      "operation": "removeItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "`mssid_local_activities_v1_${user.id}`"
+    },
+    {
+      "file": "frontend/src/services/authService.ts",
+      "line": 667,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "STORAGE_KEYS.RECEIPTS"
+    },
+    {
+      "file": "frontend/src/services/authService.ts",
+      "line": 669,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "STORAGE_KEYS.RECEIPTS"
+    },
+    {
+      "file": "frontend/src/services/authService.ts",
+      "line": 704,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "STORAGE_KEYS.RECEIPTS"
+    },
+    {
+      "file": "frontend/src/services/authService.ts",
+      "line": 776,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "STORAGE_KEYS.RECEIPTS"
+    },
+    {
+      "file": "frontend/src/services/progressSync.ts",
+      "line": 54,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key(id)"
+    },
+    {
+      "file": "frontend/src/services/progressSync.ts",
+      "line": 60,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key(id)"
+    },
+    {
+      "file": "frontend/src/services/progressSync.ts",
+      "line": 61,
+      "operation": "removeItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key(id)"
+    },
+    {
+      "file": "frontend/src/services/progressSync.ts",
+      "line": 131,
+      "operation": "removeItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key(id)"
+    },
+    {
+      "file": "frontend/src/services/springBootApi.ts",
+      "line": 108,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_had_session",
+      "expression": "HAD_SESSION_KEY"
+    },
+    {
+      "file": "frontend/src/services/springBootApi.ts",
+      "line": 111,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_had_session",
+      "expression": "HAD_SESSION_KEY"
+    },
+    {
+      "file": "frontend/src/services/springBootApi.ts",
+      "line": 114,
+      "operation": "removeItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_had_session",
+      "expression": "HAD_SESSION_KEY"
+    },
+    {
+      "file": "frontend/src/utils/childProfileStorage.ts",
+      "line": 35,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_active_child_id",
+      "expression": "ACTIVE_CHILD_KEY"
+    },
+    {
+      "file": "frontend/src/utils/childProfileStorage.ts",
+      "line": 49,
+      "operation": "removeItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_active_child_id",
+      "expression": "ACTIVE_CHILD_KEY"
+    },
+    {
+      "file": "frontend/src/utils/childProfileStorage.ts",
+      "line": 52,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_active_child_id",
+      "expression": "ACTIVE_CHILD_KEY"
+    },
+    {
+      "file": "frontend/src/utils/dailyMission.ts",
+      "line": 115,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/dailyMission.ts",
+      "line": 125,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/dailyObjective.ts",
+      "line": 20,
+      "operation": "getItem",
+      "receiver": "progressStorage()",
+      "key": "mssid_daily_objective",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/utils/dailyObjective.ts",
+      "line": 37,
+      "operation": "setItem",
+      "receiver": "progressStorage()",
+      "key": "mssid_daily_objective",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/utils/designMode.ts",
+      "line": 16,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_design_mode",
+      "expression": "KEY"
+    },
+    {
+      "file": "frontend/src/utils/designMode.ts",
+      "line": 24,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_design_mode",
+      "expression": "KEY"
+    },
+    {
+      "file": "frontend/src/utils/familyLearning.ts",
+      "line": 18,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/gardenMissionProgress.ts",
+      "line": 7,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/journeyProgress.ts",
+      "line": 110,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "journeyStorageKey(grade)"
+    },
+    {
+      "file": "frontend/src/utils/journeyProgress.ts",
+      "line": 125,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "journeyStorageKey(grade)"
+    },
+    {
+      "file": "frontend/src/utils/labTrace.ts",
+      "line": 23,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/labTrace.ts",
+      "line": 28,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/lastActivity.ts",
+      "line": 56,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_last_activity",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/utils/lastActivity.ts",
+      "line": 69,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": "mssid_last_activity",
+      "expression": "STORAGE_KEY"
+    },
+    {
+      "file": "frontend/src/utils/legacyProgressRecovery.ts",
+      "line": 9,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/legacyProgressRecovery.ts",
+      "line": 41,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": "mssid_legacy_progress_claims_v1",
+      "expression": "CLAIMS"
+    },
+    {
+      "file": "frontend/src/utils/legacyProgressRecovery.ts",
+      "line": 44,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "target"
+    },
+    {
+      "file": "frontend/src/utils/legacyProgressRecovery.ts",
+      "line": 45,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "target"
+    },
+    {
+      "file": "frontend/src/utils/legacyProgressRecovery.ts",
+      "line": 49,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": "mssid_legacy_progress_claims_v1",
+      "expression": "CLAIMS"
+    },
+    {
+      "file": "frontend/src/utils/marketMissionProgress.ts",
+      "line": 14,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/musaidiQuota.ts",
+      "line": 19,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "keyFor(account, now)"
+    },
+    {
+      "file": "frontend/src/utils/musaidiQuota.ts",
+      "line": 38,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "keyFor(account, now)"
+    },
+    {
+      "file": "frontend/src/utils/musaidiQuota.ts",
+      "line": 70,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "keyFor(account, now)"
+    },
+    {
+      "file": "frontend/src/utils/ownerStorage.ts",
+      "line": 13,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "ownerStorageKey(key, owner)"
+    },
+    {
+      "file": "frontend/src/utils/ownerStorage.ts",
+      "line": 14,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "ownerStorageKey(key, owner)"
+    },
+    {
+      "file": "frontend/src/utils/ownerStorage.ts",
+      "line": 15,
+      "operation": "removeItem",
+      "receiver": "localStorage",
+      "key": null,
+      "expression": "ownerStorageKey(key, owner)"
+    },
+    {
+      "file": "frontend/src/utils/premiumFunnel.ts",
+      "line": 12,
+      "operation": "getItem",
+      "receiver": "localStorage",
+      "key": "mssid_premium_funnel_counts_v1",
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/premiumFunnel.ts",
+      "line": 14,
+      "operation": "setItem",
+      "receiver": "localStorage",
+      "key": "mssid_premium_funnel_counts_v1",
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/quizRewards.ts",
+      "line": 19,
+      "operation": "getItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    },
+    {
+      "file": "frontend/src/utils/quizRewards.ts",
+      "line": 33,
+      "operation": "setItem",
+      "receiver": "window.localStorage",
+      "key": null,
+      "expression": "key"
+    }
+  ]
+}

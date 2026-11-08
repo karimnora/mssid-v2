@@ -1,3 +1,5 @@
+import { progressStorage, useProgressOwner } from '../../../utils/ownerStorage';
+import { getActiveProgressOwner } from '../../../utils/progressOwner';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import type { GamePack, GameEngine, GameGrade } from '../../../data/games/types';
@@ -17,16 +19,17 @@ const STORE_KEY = 'mssid_learning_games_v1';
 type PackProgress = { levels?: Record<string, number>; xpGiven?: boolean; stars?: number };
 type Store = Record<string, PackProgress>;
 
-function readStore(): Store {
+function readStore(owner?: string): Store {
   try {
-    return JSON.parse(window.localStorage.getItem(STORE_KEY) ?? '{}') as Store;
+    const value = JSON.parse(progressStorage(owner).getItem(STORE_KEY) ?? '{}');
+    return value && typeof value === 'object' && !Array.isArray(value) ? value as Store : {};
   } catch {
     return {};
   }
 }
-function writeStore(store: Store) {
+function writeStore(store: Store, owner: string) {
   try {
-    window.localStorage.setItem(STORE_KEY, JSON.stringify(store));
+    progressStorage(owner).setItem(STORE_KEY, JSON.stringify(store));
   } catch {
     /* private mode */
   }
@@ -47,13 +50,15 @@ export function readPackLevels(packId: string): Record<string, number> {
 
 /** Best stars per level of a pack, kept on the device; `solveLevel` records one and gives the XP once. */
 export function usePackLevels(pack: GamePack, onEarnXp?: (pack: GamePack, xp: number) => void) {
+  const owner = useProgressOwner();
   const [levels, setLevels] = useState<Record<string, number>>(() => readStore()[pack.id]?.levels ?? {});
-  useEffect(() => setLevels(readStore()[pack.id]?.levels ?? {}), [pack.id]);
+  useEffect(() => setLevels(readStore()[pack.id]?.levels ?? {}), [pack.id, owner]);
   const solveLevel = (roundId: string, stars: number) => {
-    const store = readStore();
+    if (getActiveProgressOwner() !== owner) return;
+    const store = readStore(owner);
     const { progress, giveXp } = recordLevel(pack, store[pack.id], roundId, stars);
     store[pack.id] = progress;
-    writeStore(store);
+    writeStore(store, owner);
     setLevels(progress.levels ?? {});
     if (giveXp) onEarnXp?.(pack, pack.xp);
   };
@@ -86,6 +91,8 @@ export const LearningGameEntry: React.FC<EntryProps> = ({ pack, onPracticeResult
   const [playing, setPlaying] = useState(false);
   const [locked, setLocked] = useState(false);
   const { levels, solveLevel } = usePackLevels(pack, onEarnXp);
+  const owner = useProgressOwner();
+  useEffect(() => { setPlaying(false); }, [owner]);
   const focusLevel = focusLessonId ? pack.rounds.findIndex((r) => r.lessonId === focusLessonId) : -1;
 
   const done = pack.rounds.filter((r) => levels[r.id]).length;
@@ -142,7 +149,7 @@ export const LearningGameEntry: React.FC<EntryProps> = ({ pack, onPracticeResult
           best={levels}
           startLevel={focusLevel >= 0 ? focusLevel : undefined}
           onExit={() => setPlaying(false)}
-          onResult={(lessonId, result) => onPracticeResult?.(lessonId, result)}
+          onResult={(lessonId, result) => { if (getActiveProgressOwner() === owner) onPracticeResult?.(lessonId, result); }}
           onLevelSolved={solveLevel}
         />
       )}

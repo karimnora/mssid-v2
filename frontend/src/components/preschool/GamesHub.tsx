@@ -91,7 +91,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                   {onExit && (
                     <button onClick={onExit}
                       aria-label={t('العودة إلى الاستقبال', 'Retour à l’accueil', 'Back to home')}
-                      className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-indigo-50 cursor-pointer border border-indigo-200 transition-all active:scale-95"
+                      className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-indigo-50 cursor-pointer border border-indigo-200 transition-all active:scale-95"
                     >{language === 'ar' ? '▶' : '◀'}</button>
                   )}
                   <PreschoolMuteButton language={language} className="border-indigo-200 text-indigo-800 hover:bg-indigo-50" />
@@ -126,7 +126,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({ language = 'fr', onExit }) =
                       whileHover={{ scale: 1.04, translateY: -3 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setActiveGame(g.id)}
-                      className={`rounded-3xl bg-gradient-to-br ${g.gradient} p-5 text-white shadow-xl border-2 ${g.border}
+                      className={`min-h-[60px] min-w-[60px] rounded-3xl bg-gradient-to-br ${g.gradient} p-5 text-white shadow-xl border-2 ${g.border}
                                   flex flex-col gap-3 cursor-pointer relative overflow-hidden text-start min-h-36`}
                     >
                       {/* Decorative circle */}

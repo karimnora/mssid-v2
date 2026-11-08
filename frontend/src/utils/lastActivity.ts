@@ -76,36 +76,42 @@ function isOwnerScoped(store: Record<string, unknown>): boolean {
   const keys = Object.keys(store);
   if (keys.length === 0) return true;
   if (store.kind === 'lesson' || store.kind === 'lab') return false;
-  return keys.every((key) => isProgressOwnerKey(key));
+  return keys.every((key) => isProgressOwnerKey(key) || key === 'legacy-unassigned');
 }
 
 export function readLastActivity(): LastActivity | null {
   const store = readStore();
   if (!isOwnerScoped(store)) {
     const legacy = parseActivity(store);
-    if (legacy) writeStore({ [getActiveProgressOwner()]: legacy });
-    return legacy;
+    if (legacy) writeStore({ 'legacy-unassigned': legacy });
+    return null;
   }
   return parseActivity(store[getActiveProgressOwner()]);
 }
 
+/** Last opened lesson survives a subsequent lab visit, within the same owner record. */
+export function readLastLessonActivity(): Extract<LastActivity, {kind:'lesson'}> | null {
+  const store = readStore();
+  if (!isOwnerScoped(store)) return null;
+  const record = store[getActiveProgressOwner()];
+  const current = parseActivity(record);
+  if (current?.kind === 'lesson') return current;
+  const previous = record && typeof record === 'object' ? parseActivity((record as Record<string,unknown>).lastLesson) : null;
+  return previous?.kind === 'lesson' ? previous : null;
+}
+
 export function writeLastActivity(activity: LastActivity): void {
   const store = readStore();
-  const scoped = isOwnerScoped(store) ? { ...store } : { [getActiveProgressOwner()]: parseActivity(store) };
-  scoped[getActiveProgressOwner()] = activity;
+  const scoped = isOwnerScoped(store) ? { ...store } : { 'legacy-unassigned': parseActivity(store) };
+  const lastLesson = readLastLessonActivity();
+  scoped[getActiveProgressOwner()] = activity.kind === 'lab' && lastLesson ? {...activity, lastLesson} : activity;
   writeStore(scoped);
 }
 
 export function clearOwnerLastActivity(ownerId: string): void {
   const store = readStore();
   if (!isOwnerScoped(store)) {
-    if (getActiveProgressOwner() === ownerId) {
-      try {
-        window.localStorage.removeItem(STORAGE_KEY);
-      } catch {
-        // ignore
-      }
-    }
+    // Do not erase data whose owner is unknown.
     return;
   }
   const next = { ...store };
@@ -121,7 +127,7 @@ export function migrateGuestLastActivityToUser(userId: number): void {
   const store = readStore();
   const scoped = isOwnerScoped(store)
     ? { ...store }
-    : { [GUEST_PROGRESS_OWNER]: parseActivity(store) };
+    : { 'legacy-unassigned': parseActivity(store) };
   const userOwner = progressOwnerId(userId);
   if (!parseActivity(scoped[userOwner]) && parseActivity(scoped[GUEST_PROGRESS_OWNER])) {
     scoped[userOwner] = scoped[GUEST_PROGRESS_OWNER];

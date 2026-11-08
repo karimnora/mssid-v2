@@ -112,7 +112,7 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     fireEvent.click(screen.getByText('J’ai écrit'));
     act(() => vi.advanceTimersByTime(10_000));
     expect(onComplete).toHaveBeenCalledTimes(1);
-    expect(onComplete).toHaveBeenCalledWith('wrote');
+    expect(onComplete).toHaveBeenCalledWith('explored');
     vi.useRealTimers();
   });
 
@@ -131,4 +131,22 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     expect(onComplete).not.toHaveBeenCalled();
     vi.useRealTimers();
   });
+  it('reports helped after an incorrect choice followed by the right answer', async () => {
+    vi.useFakeTimers();
+    const onComplete = vi.fn();
+    const onAttempt = vi.fn();
+    const item = { ...activity, echoWord: undefined };
+    render(<PreschoolActivityPlayer activity={item} language="fr" hasNext onComplete={onComplete} onAttempt={onAttempt} onSkip={vi.fn()} onExit={vi.fn()} />);
+    const choices = item.visualAssets.choices!;
+    const label = (correct: boolean) => choices.find(choice => choice.isCorrect === correct)!.asset;
+    fireEvent.click(screen.getByRole('button', { name: label(false) }));
+    await act(async () => { await Promise.resolve(); });
+    expect(onAttempt).toHaveBeenCalledWith('tried');
+    act(() => vi.advanceTimersByTime(600));
+    fireEvent.click(screen.getByRole('button', { name: label(true) }));
+    act(() => vi.advanceTimersByTime(20000));
+    expect(onComplete).toHaveBeenCalledWith('done_helped');
+    vi.useRealTimers();
+  });
+
 });

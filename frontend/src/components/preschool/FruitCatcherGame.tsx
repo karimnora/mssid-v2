@@ -362,7 +362,7 @@ export const FruitCatcherGame: React.FC<FruitCatcherGameProps> = ({ onExit, lang
   const DBtn: React.FC<{ dir: 'left' | 'right'; label: string }> = ({ dir, label }) => (
     <motion.button
       whileTap={{ scale: 0.9 }}
-      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-lime-500 text-3xl font-black shadow-md
+      className="min-h-[60px] min-w-[60px] w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-lime-500 text-3xl font-black shadow-md
                  border-2 border-lime-300 active:bg-lime-600 cursor-pointer select-none touch-none"
       onPointerDown={(e) => { e.preventDefault(); resumeTownAudio(); ctrl[dir] = true; }}
       onPointerUp={(e) => { e.preventDefault(); ctrl[dir] = false; }}
@@ -381,7 +381,7 @@ export const FruitCatcherGame: React.FC<FruitCatcherGameProps> = ({ onExit, lang
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => requestLeave(() => setPhase('select'))}
-        className="absolute top-4 start-4 z-10 bg-white hover:bg-lime-50 text-slate-800 font-black
+        className="min-h-[60px] min-w-[60px] absolute top-4 start-4 z-10 bg-white hover:bg-lime-50 text-slate-800 font-black
                    px-4 py-2 rounded-2xl shadow-md border-2 border-lime-200 cursor-pointer
                    flex items-center gap-2 text-sm"
       >
@@ -394,7 +394,7 @@ export const FruitCatcherGame: React.FC<FruitCatcherGameProps> = ({ onExit, lang
         <motion.button
           whileTap={{ scale: 0.92 }}
           onClick={() => { resumeTownAudio(); speak(mission); }}
-          className="min-h-12 min-w-12 shrink-0 rounded-2xl bg-white shadow-md border-2 border-lime-300 text-2xl"
+          className="min-h-[60px] min-w-[60px] shrink-0 rounded-2xl bg-white shadow-md border-2 border-lime-300 text-2xl"
           aria-label={t('استمع', 'Écouter', 'Listen')}
         >
           🔊

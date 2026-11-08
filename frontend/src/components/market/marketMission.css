@@ -315,3 +315,6 @@
 .market-mission .market-progress progress {
   width: 40%;
 }
+
+/* Preschool touch targets, including secondary actions. */
+.market-mission[data-market-mission="preschool"] button, .market-mission[data-market-mission="preschool"] summary { min-height:60px; min-width:60px; }

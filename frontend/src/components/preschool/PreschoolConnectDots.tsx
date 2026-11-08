@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity, PreschoolLanguage } from '../../data/preschool/types';
@@ -31,6 +32,7 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
   );
   const shuffledRight = useMemo(() => shuffle(pairs), [activity.id, language, pairs]);
 
+  const reportEvidence = usePreschoolEvidence();
   const [selected, setSelected] = useState<NodeSel | null>(null);
   const [matchedIds, setMatchedIds] = useState<string[]>([]);
   const [wrongPulseId, setWrongPulseId] = useState<string | null>(null);
@@ -103,6 +105,7 @@ export const PreschoolConnectDots: React.FC<PreschoolConnectDotsProps> = ({ acti
       // overlay adds its own (longer) pause before advancing, so this no longer needs to.
       if (next.length === pairs.length) setTimeout(onComplete, 350);
     } else {
+      reportEvidence();
       setWrongPulseId(idB);
       playGentleNudge();
       setTimeout(() => {
@@ -285,7 +288,7 @@ const PairNode: React.FC<{
       transition={{ type: 'spring', stiffness: 400, damping: 22 }}
       animate={wrong ? { x: [0, -8, 8, -8, 0] } : { x: 0 }}
       disabled={matched}
-      className={`relative min-h-[5.5rem] min-w-[5.5rem] w-[5.5rem] rounded-3xl flex flex-col items-center justify-center gap-0.5 px-1 py-2
+      className={`min-h-[60px] min-w-[60px] relative min-h-[5.5rem] min-w-[5.5rem] w-[5.5rem] rounded-3xl flex flex-col items-center justify-center gap-0.5 px-1 py-2
                   shadow-md border-4 cursor-pointer select-none touch-none
                   ${matched
                     ? 'bg-emerald-100 border-emerald-500'

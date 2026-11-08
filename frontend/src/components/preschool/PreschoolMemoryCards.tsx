@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolActivity } from '../../data/preschool/types';
@@ -39,6 +40,7 @@ export const PreschoolMemoryCards: React.FC<PreschoolMemoryCardsProps> = ({ acti
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activity.id]);
 
+  const reportEvidence = usePreschoolEvidence();
   const [flippedIds, setFlippedIds] = useState<string[]>([]);
   const [matchedPairIds, setMatchedPairIds] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
@@ -69,6 +71,7 @@ export const PreschoolMemoryCards: React.FC<PreschoolMemoryCardsProps> = ({ acti
           if (nextMatched.length === pairs.length) setTimeout(onComplete, 350);
         }, 500);
       } else {
+        reportEvidence();
         playGentleNudge();
         setTimeout(() => {
           setFlippedIds([]);
@@ -90,7 +93,7 @@ export const PreschoolMemoryCards: React.FC<PreschoolMemoryCardsProps> = ({ acti
             onClick={() => handleFlip(card)}
             whileTap={{ scale: 0.94 }}
             animate={matchedPairIds.includes(card.pairId) ? { scale: [1, 1.1, 1] } : {}}
-            className={`min-h-24 min-w-24 w-24 h-24 rounded-2xl text-4xl flex items-center justify-center shadow-md border-4 cursor-pointer transition-colors ${
+            className={`min-h-[60px] min-w-[60px] min-h-24 min-w-24 w-24 h-24 rounded-2xl text-4xl flex items-center justify-center shadow-md border-4 cursor-pointer transition-colors ${
               matchedPairIds.includes(card.pairId)
                 ? 'bg-emerald-300 border-emerald-500'
                 : isFaceUp

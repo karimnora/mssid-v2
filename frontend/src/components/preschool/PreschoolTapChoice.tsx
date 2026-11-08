@@ -1,3 +1,4 @@
+import { usePreschoolEvidence } from './preschoolEvidence';
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import {
@@ -153,6 +154,7 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({
   language,
   onComplete,
 }) => {
+  const reportEvidence = usePreschoolEvidence();
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [solved, setSolved] = useState(false);
   const [choices, setChoices] = useState<PreschoolChoice[]>([]);
@@ -176,6 +178,7 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({
       setTimeout(onComplete, 350);
     } else {
       playGentleNudge();
+      reportEvidence();
       setWrongId(choiceId);
       setTimeout(() => setWrongId(null), 500);
     }
@@ -227,7 +230,7 @@ export const PreschoolTapChoice: React.FC<PreschoolTapChoiceProps> = ({
               whileTap={solved ? undefined : { scale: 0.95 }}
               disabled={solved}
               aria-label={caption ?? glyph}
-              className={`${
+              className={`min-h-[60px] min-w-[60px] ${
                 choice.scene
                   ? "min-h-[8.5rem] min-w-[9.5rem] w-[9.5rem] py-2 flex-col gap-0.5"
                   : caption

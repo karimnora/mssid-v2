@@ -278,7 +278,7 @@ const PuzzleBoard: React.FC<{
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => requestLeave(onExit)}
-          className="min-w-12 min-h-12 flex items-center justify-center rounded-2xl
+          className="min-h-[60px] min-w-[60px] min-w-12 min-h-12 flex items-center justify-center rounded-2xl
                      bg-white shadow-md text-2xl border-2 border-amber-200 cursor-pointer"
         >
           🚪
@@ -299,7 +299,7 @@ const PuzzleBoard: React.FC<{
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => { resumeTownAudio(); speak(mission); }}
-          className="min-h-12 min-w-12 shrink-0 rounded-2xl bg-white shadow-md border-2 border-amber-200 text-2xl cursor-pointer"
+          className="min-h-[60px] min-w-[60px] shrink-0 rounded-2xl bg-white shadow-md border-2 border-amber-200 text-2xl cursor-pointer"
           aria-label={t('استمع', 'Écouter', 'Listen')}
         >
           🔊

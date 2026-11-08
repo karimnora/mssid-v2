@@ -108,7 +108,7 @@ export const PreschoolColoring: React.FC<PreschoolColoringProps> = ({ activity, 
             key={color}
             onClick={() => setSelectedColor(color)}
             style={{ backgroundColor: color }}
-            className={`min-h-12 min-w-12 w-12 h-12 rounded-full shadow-md cursor-pointer transition-transform ${
+            className={`min-h-[60px] min-w-[60px] w-12 h-12 rounded-full shadow-md cursor-pointer transition-transform ${
               selectedColor === color ? 'scale-125 ring-4 ring-offset-2 ring-amber-400' : 'hover:scale-110'
             }`}
             aria-label={color}

@@ -1,3 +1,4 @@
+import { progressStorage } from '../../utils/ownerStorage';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
@@ -56,11 +57,18 @@ describe('GameStationSheet', () => {
   });
 
   it('shows the stars kept on the device and suggests the first unsolved level', () => {
-    window.localStorage.setItem('mssid_learning_games_v1', JSON.stringify({ [freePack.id]: { levels: { [freePack.rounds[0].id]: 3, [freePack.rounds[1].id]: 2 } } }));
+    progressStorage().setItem('mssid_learning_games_v1', JSON.stringify({ [freePack.id]: { levels: { [freePack.rounds[0].id]: 3, [freePack.rounds[1].id]: 2 } } }));
     render(<GameStationSheet pack={freePack} open lessonTitles={{}} onClose={vi.fn()} />);
     expect(document.querySelector('[data-gs-level="0"]')?.getAttribute('data-state')).toBe('done');
     expect(document.querySelector('[data-gs-level="2"]')?.getAttribute('data-state')).toBe('now');
     expect(document.querySelector('[data-gs-play]')?.textContent).toContain('3');
+  });
+
+  it('does not attribute anonymous legacy stars to the active child', () => {
+    window.localStorage.setItem('mssid_learning_games_v1', JSON.stringify({ [freePack.id]: { levels: { [freePack.rounds[0].id]: 3 } } }));
+    render(<GameStationSheet pack={freePack} open lessonTitles={{}} onClose={vi.fn()} />);
+    expect(document.querySelector('[data-gs-level="0"]')?.getAttribute('data-state')).toBe('now');
+    expect(window.localStorage.getItem('mssid_learning_games_v1')).toContain('3');
   });
 
   it('Premium pack on a free account: neutral message, no price, a way back to the free game', () => {

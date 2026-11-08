@@ -88,17 +88,17 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
           <div className="flex items-center gap-2">
             <button
               onClick={() => void handlePrint()}
-              className="hit-target px-4 bg-orange-500 hover:bg-orange-600 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer"
+              className="min-h-[60px] min-w-[60px] hit-target px-4 bg-orange-500 hover:bg-orange-600 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer"
             >
               <span>🖨️</span>
               <span>{t.print}</span>
             </button>
-            <button onClick={() => void handlePrint(true)} className="hit-target px-3 rounded-xl border border-orange-300 text-orange-900 font-bold text-xs cursor-pointer">
+            <button onClick={() => void handlePrint(true)} className="min-h-[60px] min-w-[60px] hit-target px-3 rounded-xl border border-orange-300 text-orange-900 font-bold text-xs cursor-pointer">
               {language === 'ar' ? 'طباعة الدفتر' : language === 'fr' ? 'Imprimer le cahier' : 'Print booklet'} ({sheetsInCategory.length})
             </button>
             <button
               onClick={onExit}
-              className="hit-target w-12 rounded-xl bg-white hover:bg-orange-100 text-orange-700 border border-orange-200 flex items-center justify-center transition-colors cursor-pointer"
+              className="min-h-[60px] min-w-[60px] hit-target w-12 rounded-xl bg-white hover:bg-orange-100 text-orange-700 border border-orange-200 flex items-center justify-center transition-colors cursor-pointer"
               aria-label="خروج / Fermer / Close"
             >
               ✕
@@ -112,7 +112,7 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
             <button
               key={cat}
               onClick={() => handleSelectCategory(cat)}
-              className={`shrink-0 px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer ${
+              className={`min-h-[60px] min-w-[60px] shrink-0 px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer ${
                 activeCategory === cat
                   ? 'bg-orange-500 text-white shadow-xs'
                   : 'bg-white text-orange-800 border border-orange-200 hover:bg-orange-100'
@@ -130,7 +130,7 @@ export const PreschoolPrintablesModal: React.FC<PreschoolPrintablesModalProps> =
               <button
                 key={sheet.id}
                 onClick={() => setActiveSheetId(sheet.id)}
-                className={`shrink-0 sm:shrink text-start p-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
+                className={`min-h-[60px] min-w-[60px] shrink-0 sm:shrink text-start p-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
                   activeSheet?.id === sheet.id
                     ? 'bg-orange-100 border-orange-400 text-orange-950'
                     : 'bg-white border-slate-200 text-slate-600 hover:bg-orange-50'

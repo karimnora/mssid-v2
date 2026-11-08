@@ -34,7 +34,7 @@ export const PreschoolMuteButton: React.FC<PreschoolMuteButtonProps> = ({
       aria-pressed={muted}
       data-preschool-mute={muted ? 'on' : 'off'}
       className={[
-        'min-h-12 min-w-12 shrink-0 flex items-center justify-center rounded-2xl shadow-md border-2 cursor-pointer transition-colors',
+        'min-h-[60px] min-w-[60px] shrink-0 flex items-center justify-center rounded-2xl shadow-md border-2 cursor-pointer transition-colors',
         muted
           ? 'bg-rose-500 border-rose-600 text-white'
           : 'bg-white border-orange-200 text-orange-800 hover:bg-orange-50',

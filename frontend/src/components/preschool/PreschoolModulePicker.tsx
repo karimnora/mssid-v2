@@ -1,3 +1,4 @@
+import { ParentGateModal } from '../ParentGateModal';
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { PreschoolModule, PreschoolLanguage, PRESCHOOL_LANGUAGE_LABELS } from '../../data/preschool/types';
@@ -95,6 +96,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
   onLearnGroupChange,
   onOpenParentBilan,
 }) => {
+  const [pendingLanguage, setPendingLanguage] = useState<PreschoolLanguage | null>(null);
   const dir = language === 'ar' ? 'rtl' : 'ltr';
   const [showPrintables, setShowPrintables] = useState(false);
   const parentBilanEnabled = useFeatureFlag('preschoolParentBilan');
@@ -232,11 +234,11 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
   return (
     <div dir={dir} className="preschool-safe-top min-h-screen bg-[#F8F9FA] px-4 py-6 sm:py-8">
       <div className="max-w-3xl mx-auto space-y-8">
-        <div className="flex items-center justify-between gap-2 flex-wrap">
+        <div className="flex flex-wrap gap-3 items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2">
             <button
               onClick={goBack}
-              className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+              className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
               aria-label={view === 'home' ? 'خروج / Quitter / Exit' : 'رجوع / Retour / Back'}
             >
               {view === 'home' ? '🚪' : dir === 'rtl' ? '▶' : '◀'}
@@ -251,8 +253,8 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
             {(['ar', 'fr', 'en'] as PreschoolLanguage[]).map((l) => (
               <button
                 key={l}
-                onClick={() => onSelectLanguage?.(l)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                onClick={() => { if (l !== language) setPendingLanguage(l); }}
+                className={`min-h-[60px] min-w-[60px] px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                   language === l ? 'bg-orange-700 text-white' : 'text-[#1E293B] hover:bg-orange-100'
                 }`}
               >
@@ -266,7 +268,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
 
           <button
             onClick={() => setShowPrintables(true)}
-            className="bg-white border border-orange-300 text-orange-800 hover:bg-orange-50 font-black text-xs px-3.5 py-2 rounded-full shadow-xs transition-colors cursor-pointer"
+            className="min-h-[60px] min-w-[60px] bg-white border border-orange-300 text-orange-800 hover:bg-orange-50 font-black text-xs px-3.5 py-2 rounded-full shadow-xs transition-colors cursor-pointer"
           >
             {labels.printables}
           </button>
@@ -301,7 +303,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
             transition={{ type: 'spring', stiffness: 200, damping: 24 }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full rounded-3xl shadow-md border border-sky-300 bg-gradient-to-r from-sky-700 to-cyan-800 px-4 py-3.5 flex items-center gap-3 cursor-pointer text-start"
+            className="min-h-[60px] min-w-[60px] w-full rounded-3xl shadow-md border border-sky-300 bg-gradient-to-r from-sky-700 to-cyan-800 px-4 py-3.5 flex items-center gap-3 cursor-pointer text-start"
           >
             <span className="text-3xl shrink-0">🖨️</span>
             <div className="flex-1 min-w-0">
@@ -347,7 +349,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={spring}
-                className={`min-h-32 rounded-3xl bg-gradient-to-br ${tool.gradient} p-6 text-white shadow-md border-2 ${tool.border}
+                className={`min-h-[60px] min-w-[60px] min-h-32 rounded-3xl bg-gradient-to-br ${tool.gradient} p-6 text-white shadow-md border-2 ${tool.border}
                             flex items-center gap-5 cursor-pointer text-start`}
               >
                 <span className="text-5xl">{tool.icon}</span>
@@ -376,7 +378,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={spring}
-                  className={`min-h-36 rounded-3xl bg-gradient-to-br ${meta.gradient} p-6 text-white shadow-md
+                  className={`min-h-[60px] min-w-[60px] min-h-36 rounded-3xl bg-gradient-to-br ${meta.gradient} p-6 text-white shadow-md
                               flex flex-col justify-between cursor-pointer text-start`}
                 >
                   <span className="text-5xl">
@@ -387,7 +389,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   <div className="mt-4 space-y-1">
                     <p className="text-xl font-black">{meta.title}</p>
                     <p className="text-sm font-bold text-white/85">
-                      {done} / {total} ⭐
+                      <bdi dir="ltr">{done} / {total} ⭐</bdi>
                     </p>
                   </div>
                 </motion.button>
@@ -409,7 +411,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={spring}
-                  className="min-h-24 rounded-3xl bg-white shadow-md border-2 border-amber-200 hover:border-amber-400
+                  className="min-h-[60px] min-w-[60px] min-h-24 rounded-3xl bg-white shadow-md border-2 border-amber-200 hover:border-amber-400
                              flex items-center gap-4 px-5 py-4 cursor-pointer text-start"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl shrink-0">
@@ -427,7 +429,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
                     </div>
                     <div className="flex items-center gap-2 mt-1.5">
                       <span className="text-xs font-bold text-slate-600">
-                        {done} / {total} ⭐
+                        <bdi dir="ltr">{done} / {total} ⭐</bdi>
                       </span>
                       {isAllDone && (
                         <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2 py-0.5 rounded-full">
@@ -444,6 +446,7 @@ export const PreschoolModulePicker: React.FC<PreschoolModulePickerProps> = ({
         )}
       </div>
 
+      {pendingLanguage !== null && <ParentGateModal isOpen onClose={() => setPendingLanguage(null)} onVerified={() => { if (pendingLanguage) onSelectLanguage?.(pendingLanguage); setPendingLanguage(null); }} />}
       {showPrintables && (
         <PreschoolPrintablesModal language={language} onExit={() => setShowPrintables(false)} />
       )}
@@ -463,7 +466,7 @@ const DoorCard: React.FC<{
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
     transition={spring}
-    className={`min-h-40 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white shadow-md
+    className={`min-h-[60px] min-w-[60px] min-h-40 rounded-3xl bg-gradient-to-br ${gradient} p-6 text-white shadow-md
                 flex flex-col justify-between cursor-pointer text-start`}
   >
     <span className="text-5xl">{icon}</span>

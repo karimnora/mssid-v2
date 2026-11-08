@@ -75,7 +75,7 @@ export function ParentGateButton({
         type="button"
         onClick={openGate}
         aria-label={t('لِلأَبِ وَالأُمّ', 'Espace parent', 'For grown-ups')}
-        className="min-h-12 min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md
+        className="min-h-[60px] min-w-[60px] flex items-center justify-center rounded-2xl bg-white shadow-md
                     text-2xl cursor-pointer border border-orange-200 hover:bg-orange-50 active:scale-95
                     transition-all select-none"
       >
@@ -100,7 +100,7 @@ export function ParentGateButton({
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="min-h-12 min-w-12 rounded-2xl bg-white border border-[#E7E2D7] text-xl cursor-pointer"
+                className="min-h-[60px] min-w-[60px] rounded-2xl bg-white border border-[#E7E2D7] text-xl cursor-pointer"
                 aria-label={t('إِغْلَاق', 'Fermer', 'Close')}
               >
                 ✕
@@ -140,7 +140,7 @@ export function ParentGateButton({
             <button
               type="submit"
               disabled={!answer}
-              className="w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+              className="min-h-[60px] min-w-[60px] w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {t('مُتَابَعَة', 'Continuer', 'Continue')}
             </button>
@@ -192,7 +192,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="min-h-12 min-w-12 rounded-2xl bg-white border border-[#E7E2D7] text-xl cursor-pointer"
+            className="min-h-[60px] min-w-[60px] rounded-2xl bg-white border border-[#E7E2D7] text-xl cursor-pointer"
             aria-label={t('إِغْلَاق', 'Fermer', 'Close')}
           >
             ✕
@@ -216,7 +216,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
               />
               <button
                 type="button"
-                className="min-h-12 px-4 rounded-2xl bg-[#008751] text-white font-black cursor-pointer"
+                className="min-h-[60px] min-w-[60px] min-h-12 px-4 rounded-2xl bg-[#008751] text-white font-black cursor-pointer"
                 onClick={() => {
                   onSaveName(draft);
                   setEditing(false);
@@ -228,7 +228,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
           ) : (
             <button
               type="button"
-              className="text-sm font-bold text-[#2563EB] cursor-pointer"
+              className="min-h-[60px] min-w-[60px] text-sm font-bold text-[#2563EB] cursor-pointer"
               onClick={() => {
                 setDraft(childName);
                 setEditing(true);
@@ -242,7 +242,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
         <div className="grid grid-cols-3 gap-2">
           <Stat label={t('اليَوْم', 'Aujourd’hui', 'Today')} value={todayCount} />
           <Stat label={t('الأَيَّامُ تِبَاعًا', 'Série', 'Streak')} value={streak} />
-          <Stat label={t('أَنْجَزَ', 'Réussi', 'Done')} value={completedCount} />
+          <Stat label={t('أَنْجَزَ', 'Activités terminées', 'Activities completed')} value={completedCount} />
         </div>
 
         {modules.length > 0 && (
@@ -250,7 +250,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
             {modules.map((mod) => (
               <li key={mod.title} className="rounded-2xl bg-white border border-[#E7E2D7] px-4 py-3">
                 <p className="font-black text-sm text-[#0f172a] truncate">{mod.title}</p>
-                <p className="text-xs font-bold text-slate-500">{mod.done} / {mod.total}</p>
+                <p className="text-xs font-bold text-slate-500"><bdi dir="ltr">{mod.done} / {mod.total}</bdi></p>
               </li>
             ))}
           </ul>
@@ -260,7 +260,7 @@ export const PreschoolParentBilan: React.FC<PreschoolParentBilanProps> = ({
           <button
             type="button"
             onClick={onPlayNext}
-            className="w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer px-4"
+            className="min-h-[60px] min-w-[60px] w-full min-h-12 rounded-2xl bg-[#008751] text-white font-black cursor-pointer px-4"
           >
             {t('الْآتِي:', 'Ensuite :', 'Next:')} {nextStep.title}
           </button>

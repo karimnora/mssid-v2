@@ -91,7 +91,7 @@ export const PreschoolBadgeToast: React.FC<PreschoolBadgeToastProps> = ({
                 {/* Dismiss tap */}
                 <button
                   onClick={onDismiss}
-                  className="shrink-0 w-7 h-7 rounded-full bg-white/25 hover:bg-white/40 flex items-center justify-center cursor-pointer text-white font-black text-lg transition-colors"
+                  className="min-h-[60px] min-w-[60px] shrink-0 w-7 h-7 rounded-full bg-white/25 hover:bg-white/40 flex items-center justify-center cursor-pointer text-white font-black text-lg transition-colors"
                   aria-label="Fermer"
                 >
                   ✕

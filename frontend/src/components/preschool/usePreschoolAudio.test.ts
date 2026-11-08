@@ -109,4 +109,14 @@ describe('usePreschoolSpeech', () => {
     const { result } = renderHook(() => usePreschoolSpeech('fr'));
     expect(result.current.hasVoice).toBe(false);
   });
+  it('never plays synthetic Basmala/Hamdala or falls back to device synthesis for these formulas', () => {
+    const AudioMock = vi.fn();
+    vi.stubGlobal('Audio', AudioMock);
+    const { result } = renderHook(() => usePreschoolSpeech('ar'));
+    act(() => result.current.speak('بِسْمِ اللَّهِ!', '/sounds/preschool/ar/values-bismillah-success.mp3'));
+    act(() => result.current.speak('الْحَمْدُ لِلَّهِ!'));
+    expect(AudioMock).not.toHaveBeenCalled();
+    expect(speakTextMock).not.toHaveBeenCalled();
+  });
+
 });

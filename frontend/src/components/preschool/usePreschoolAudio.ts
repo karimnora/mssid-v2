@@ -1,3 +1,4 @@
+import { requiresHumanPreschoolRecording } from '../../utils/humanOnlyPreschoolSpeech';
 import { useCallback, useEffect, useState } from 'react';
 import { PreschoolLanguage } from '../../data/preschool/types';
 import { speakText, stopSpeech, useVoiceAvailable } from '../../utils/speech';
@@ -127,7 +128,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
   const hasVoice = voiceAvailable !== false;
 
   const speakTts = useCallback((text: string) => {
-    if (isPreschoolMuted() || !text) return;
+    if (isPreschoolMuted() || !text || requiresHumanPreschoolRecording(text)) return;
     // speakText() already swallows and logs its own errors on both the native and web paths.
     void speakText(text, lang, 0.9, 1.1, { skipRecordedLookup: true });
   }, [lang]);
@@ -145,6 +146,8 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
     stopRecordedClip();
     stopSpeech();
     const source = recordedSrc ?? findRecordedSpeech(text, lang)?.src;
+    // The legacy Basmala/Hamdala files were synthetic. Await approved human replacements.
+    if (requiresHumanPreschoolRecording(text, source)) return;
     if (source) {
       playRecordedClip(source, () => speakTts(text));
       return;

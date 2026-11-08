@@ -263,7 +263,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onExit}
-            className="min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
+            className="min-h-[60px] min-w-[60px] min-h-11 min-w-11 sm:min-h-12 sm:min-w-12 flex items-center justify-center rounded-2xl bg-white shadow-md text-2xl hover:bg-orange-50 active:scale-95 transition-all cursor-pointer border border-orange-200"
             aria-label={language === 'ar' ? 'العودة إلى الورشات' : language === 'fr' ? 'Retour aux ateliers' : 'Back to workshops'}
           >
             {language === 'ar' ? '▶' : '◀'}
@@ -283,7 +283,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
               onClick={() => {
                 if (onSelectLanguage) onSelectLanguage(l);
               }}
-              className={`px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+              className={`min-h-[60px] min-w-[60px] px-2.5 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 language === l
                   ? 'bg-purple-600 text-white shadow-xs'
                   : 'text-purple-900 hover:bg-purple-100'
@@ -308,7 +308,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
               playMusicalNote(440, inst.id as InstrumentType);
               speak(inst.label);
             }}
-            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
+            className={`min-h-[60px] min-w-[60px] px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
               instrument === inst.id
                 ? 'bg-purple-600 text-white shadow-md scale-105 border-2 border-purple-300 ring-2 ring-purple-400'
                 : 'bg-white text-purple-950 hover:bg-purple-50 border border-purple-200'
@@ -330,7 +330,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                 setActiveSong(null);
                 setSongStepIndex(0);
               }}
-              className="text-xs text-rose-600 font-black hover:underline cursor-pointer bg-rose-50 px-2.5 py-1 rounded-xl"
+              className="min-h-[60px] min-w-[60px] text-xs text-rose-600 font-black hover:underline cursor-pointer bg-rose-50 px-2.5 py-1 rounded-xl"
             >
               ❌ {labels.freePlay}
             </button>
@@ -354,7 +354,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                       : `Let's play ${song.titleEn.replace(/[^\p{L}\p{N}\s'’.\-()]/gu, ' ').replace(/\s+/g, ' ').trim()}`
                   );
                 }}
-                className={`px-3 py-2 rounded-2xl text-xs font-black shrink-0 flex items-center gap-2 transition-all cursor-pointer shadow-xs ${
+                className={`min-h-[60px] min-w-[60px] px-3 py-2 rounded-2xl text-xs font-black shrink-0 flex items-center gap-2 transition-all cursor-pointer shadow-xs ${
                   isPlaying
                     ? 'bg-amber-400 text-amber-950 border-2 border-amber-500 scale-105 shadow-md ring-2 ring-amber-300'
                     : 'bg-purple-50 text-purple-900 hover:bg-purple-100 border border-purple-200'
@@ -404,7 +404,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                       onClick={() => handleKeyPress(key)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.96 }}
-                      className={`flex-1 h-56 sm:h-64 rounded-b-2xl bg-gradient-to-b from-white via-neutral-100 to-neutral-200 border-2 border-neutral-300 shadow-md flex flex-col justify-end items-center pb-4 cursor-pointer relative select-none ${
+                      className={`min-h-[60px] min-w-[60px] flex-1 h-56 sm:h-64 rounded-b-2xl bg-gradient-to-b from-white via-neutral-100 to-neutral-200 border-2 border-neutral-300 shadow-md flex flex-col justify-end items-center pb-4 cursor-pointer relative select-none ${
                         isTarget ? 'ring-4 ring-yellow-400 bg-yellow-100 animate-pulse' : ''
                       } ${isPressed ? 'bg-amber-100 translate-y-1 shadow-xs' : ''}`}
                     >
@@ -456,7 +456,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     }
                     whileTap={{ scale: 0.95 }}
                     style={{ left: bk.leftPercent }}
-                    className={`absolute top-2 w-9 sm:w-12 h-32 sm:h-38 rounded-b-xl bg-gradient-to-b from-neutral-800 via-neutral-900 to-black border-2 border-neutral-700 shadow-xl z-20 flex flex-col justify-end items-center pb-2 cursor-pointer ${
+                    className={`min-h-[60px] min-w-[60px] absolute top-2 w-9 sm:w-12 h-32 sm:h-38 rounded-b-xl bg-gradient-to-b from-neutral-800 via-neutral-900 to-black border-2 border-neutral-700 shadow-xl z-20 flex flex-col justify-end items-center pb-2 cursor-pointer ${
                       isPressed ? 'bg-amber-900 translate-y-1 ring-2 ring-yellow-400' : ''
                     }`}
                   >
@@ -472,7 +472,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
 
         {/* 2. XYLOPHONE VIEW */}
         {instrument === 'xylophone' && (
-          <div className="w-full flex items-end justify-center gap-2 sm:gap-3 px-2">
+          <div className="w-full flex items-end justify-start overflow-x-auto max-w-full pb-3 gap-2 sm:gap-3 px-2">
             {MUSICAL_KEYS.map((key) => {
               const isTarget = targetSongKeyId === key.id;
               const isPressed = activeKeyEffect === key.id;
@@ -483,7 +483,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                   onClick={() => handleKeyPress(key)}
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.94 }}
-                  className={`relative flex-1 ${key.heightClass} rounded-3xl bg-gradient-to-b ${key.color} shadow-xl border-4 ${
+                  className={`min-h-[60px] min-w-[60px] relative flex-1 ${key.heightClass} rounded-3xl bg-gradient-to-b ${key.color} shadow-xl border-4 ${
                     isTarget
                       ? 'border-yellow-300 ring-4 ring-yellow-400 animate-bounce'
                       : 'border-white/50'
@@ -532,7 +532,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
         {/* 3. MARIMBA VIEW */}
         {instrument === 'marimba' && (
           <div className="w-full bg-amber-950/30 p-4 sm:p-6 rounded-[2.5rem] border-4 border-amber-800 shadow-xl">
-            <div className="flex items-end justify-center gap-2 sm:gap-3">
+            <div className="flex items-end justify-start overflow-x-auto max-w-full pb-3 gap-2 sm:gap-3">
               {MUSICAL_KEYS.map((key) => {
                 const isTarget = targetSongKeyId === key.id;
                 const isPressed = activeKeyEffect === key.id;
@@ -543,7 +543,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     onClick={() => handleKeyPress(key)}
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.94 }}
-                    className={`relative flex-1 ${key.heightClass} rounded-2xl shadow-xl border-3 ${
+                    className={`min-h-[60px] min-w-[60px] relative flex-1 ${key.heightClass} rounded-2xl shadow-xl border-3 ${
                       isTarget
                         ? 'border-yellow-300 ring-4 ring-yellow-400 animate-bounce'
                         : 'border-amber-600'
@@ -593,7 +593,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     onClick={() => handleKeyPress(key)}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.9 }}
-                    className={`w-11 h-11 sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center font-black cursor-pointer transition-all shadow-md ${
+                    className={`min-h-[60px] min-w-[60px] w-11 h-11 sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center font-black cursor-pointer transition-all shadow-md ${
                       isTarget
                         ? 'bg-yellow-400 text-yellow-950 ring-4 ring-yellow-300 animate-bounce'
                         : isPressed
@@ -637,7 +637,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                     onClick={() => handleKeyPress(key)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`flex-1 h-48 sm:h-56 rounded-xl bg-amber-900/60 border border-amber-700/60 flex flex-col items-center justify-between py-3 cursor-pointer relative ${
+                    className={`min-h-[60px] min-w-[60px] flex-1 h-48 sm:h-56 rounded-xl bg-amber-900/60 border border-amber-700/60 flex flex-col items-center justify-between py-3 cursor-pointer relative ${
                       isTarget ? 'ring-4 ring-yellow-400 bg-amber-800' : ''
                     } ${isPressed ? 'bg-amber-700' : ''}`}
                   >
@@ -677,7 +677,7 @@ export const PreschoolXylophone: React.FC<PreschoolXylophoneProps> = ({
                   onClick={() => handlePercussionPress(pad)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.92 }}
-                  className={`min-h-48 rounded-3xl bg-gradient-to-b ${pad.color} p-4 text-white shadow-xl border-4 border-white/60 flex flex-col items-center justify-between text-center cursor-pointer transition-all ${
+                  className={`min-h-[60px] min-w-[60px] min-h-48 rounded-3xl bg-gradient-to-b ${pad.color} p-4 text-white shadow-xl border-4 border-white/60 flex flex-col items-center justify-between text-center cursor-pointer transition-all ${
                     isPressed ? 'ring-4 ring-yellow-400 scale-105 brightness-125' : ''
                   }`}
                 >

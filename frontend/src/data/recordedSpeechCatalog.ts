@@ -2585,6 +2585,122 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/openai-v2-5606ed3151dfd759.mp3",
       "durationMs": 10200
     },
+    "كَمْ زَهْرَةً تَرَى؟ اِلْمَسِ الْعَدَدَ الصَّحِيحَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-6622804d8fc0ba95.mp3",
+      "durationMs": 4550
+    },
+    "أَحْسَنْتَ! احْكِ مَا وَجَدْتَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-9c83ad9ffbb13b4a.mp3",
+      "durationMs": 2400
+    },
+    "وَرَقَةٌ، زَهْرَةٌ، وَرَقَةٌ، زَهْرَةٌ، وَرَقَةٌ. مَاذَا يَأْتِي بَعْدُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-a60719eb7ea57c22.mp3",
+      "durationMs": 6050
+    },
+    "اِلْمَسْ صُورَةً ثُمَّ ابْحَثْ عَنْ مِثْلِهَا فِي الْجِهَةِ الْأُخْرَى.": {
+      "src": "/sounds/preschool/ar/openai-v2-8ebb1a14f6a6ab90.mp3",
+      "durationMs": 4700
+    },
+    "اِلْمَسِ الصُّوَرَ بِالتَّرْتِيبِ: أَزْرَعُ الْبَذْرَةَ، أَسْقِيهَا، ثُمَّ تَنْبُتُ النَّبْتَةُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-b5115a6f7d06f849.mp3",
+      "durationMs": 6400
+    },
+    "عُدَّ التُّفَّاحَاتِ. اِلْمَسْ عَدَدَهَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-bb75def222adb4b7.mp3",
+      "durationMs": 3700
+    },
+    "تُفَّاحَةٌ، إِجَّاصَةٌ، إِجَّاصَةٌ. تُفَّاحَةٌ، إِجَّاصَةٌ... أَيُّ ثَمَرَةٍ تَنْقُصُ؟": {
+      "src": "/sounds/preschool/ar/openai-v2-27f398e4d96a966a.mp3",
+      "durationMs": 8150
+    },
+    "أَوَّلاً آخُذُ تُفَّاحَةً، ثُمَّ أَغْسِلُهَا، وَأَخِيراً آكُلُهَا. رَتِّبِ الصُّوَرَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-065ac63feb87579f.mp3",
+      "durationMs": 7250
+    },
+    "كَمْ بَلَاطَةً زَرْقَاءَ تَرَى؟ اِلْمَسِ الْعَدَدَ الصَّحِيحَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-5c0c6332af1f19f1.mp3",
+      "durationMs": 4900
+    },
+    "أَزْرَقُ، أَزْرَقُ، بُرْتُقَالِيٌّ. أَزْرَقُ، أَزْرَقُ... مَا اللَّوْنُ التَّالِي؟": {
+      "src": "/sounds/preschool/ar/openai-v2-109f3e8a38d82f5d.mp3",
+      "durationMs": 6950
+    },
+    "يَأْخُذُ الْحِرَفِيُّ طِيناً، وَيَصْنَعُ بَلَاطَةً، ثُمَّ يُرَكِّبُ فُسَيْفَسَاءَ. رَتِّبِ الصُّوَرَ الثَّلَاثَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-83cdb124020f69f9.mp3",
+      "durationMs": 9500
+    },
+    "اِلْمَسْ كُلَّ صُورَةٍ لِتَسْمَعَ اسْمَهَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-bf8ea023aa224a3b.mp3",
+      "durationMs": 3400
+    },
+    "أَحْسَنْتَ!": {
+      "src": "/sounds/preschool/ar/openai-v2-4236e64ac1116130.mp3",
+      "durationMs": 1400
+    },
+    "اِلْمَسِ الصُّورَةَ: حَقِيبَة.": {
+      "src": "/sounds/preschool/ar/openai-v2-eecbfff7fbc25d3c.mp3",
+      "durationMs": 2700
+    },
+    "صِلْ كُلَّ صُورَةٍ بِالصُّورَةِ الْمُمَاثِلَةِ.": {
+      "src": "/sounds/preschool/ar/openai-v2-2b6ecd5a7fbc25d3.mp3",
+      "durationMs": 3800
+    },
+    "اِسْحَبْ كُلَّ صُورَةٍ إِلَى صُنْدُوقِ مَجْمُوعَتِهَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-6b588218db44897c.mp3",
+      "durationMs": 4250
+    },
+    "اُنْظُرْ إِلَى الْمَجْمُوعَةِ الْمُتَكَرِّرَةِ. أَيُّ صُورَةٍ تَأْتِي بَعْدَهَا؟": {
+      "src": "/sounds/preschool/ar/openai-v2-f1005dff9534be9a.mp3",
+      "durationMs": 5400
+    },
+    "رَتِّبْ قِصَّتَنَا: خُذْ وَرَقَةً ثُمَّ ارْسُمْ عَلَيْهَا ثُمَّ اعْرِضْ رَسْمَكَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-05e439dd3dc865c5.mp3",
+      "durationMs": 7050
+    },
+    "اِلْمَسِ الصُّورَةَ: مِفْتَاح.": {
+      "src": "/sounds/preschool/ar/openai-v2-95d65129e3962125.mp3",
+      "durationMs": 2950
+    },
+    "اِقْلِبِ الْبِطَاقَاتِ وَاجْمَعِ الْأَزْوَاجَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-ec5b6bef86c976ad.mp3",
+      "durationMs": 3700
+    },
+    "فِي قِصَّتِنَا يَأْخُذُ الْبَالِغُ الْمِفْتَاحَ وَيَفْتَحُ الْبَابَ ثُمَّ نَدْخُلُ. رَتِّبِ الصُّوَرَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-a3cda01b381534b2.mp3",
+      "durationMs": 6450
+    },
+    "اِلْمَسِ الصُّورَةَ: طَائِرَة.": {
+      "src": "/sounds/preschool/ar/openai-v2-33c2b0d3d665dfbc.mp3",
+      "durationMs": 2800
+    },
+    "يَصِلُ الْقِطَارُ ثُمَّ يَرْكَبُ دِيدُو مَعَ بَالِغٍ ثُمَّ يَنْطَلِقُ الْقِطَارُ. رَتِّبِ الصُّوَرَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-d1e500550c77467c.mp3",
+      "durationMs": 6700
+    },
+    "اِلْمَسِ الصُّورَةَ: زَهْرَة.": {
+      "src": "/sounds/preschool/ar/openai-v2-fe1b1a8df42cbbef.mp3",
+      "durationMs": 3600
+    },
+    "فِي هَذِهِ الْقِصَّةِ يَنْزِلُ الْمَطَرُ وَتَتَكَوَّنُ بِرْكَةٌ صَغِيرَةٌ ثُمَّ يَتَوَقَّفُ الْمَطَرُ وَتَعُودُ الشَّمْسُ.": {
+      "src": "/sounds/preschool/ar/openai-v2-8a1e284fb5d81d89.mp3",
+      "durationMs": 9200
+    },
+    "اِلْمَسِ الصُّورَةَ: مُثَلَّث.": {
+      "src": "/sounds/preschool/ar/openai-v2-553f926796215680.mp3",
+      "durationMs": 3100
+    },
+    "اُرْسُمْ دَائِرَةً ثُمَّ لَوِّنْهَا ثُمَّ اعْرِضْ رَسْمَكَ. هَذَا تَرْتِيبُ قِصَّتِنَا.": {
+      "src": "/sounds/preschool/ar/openai-v2-41c2a55ffd157af6.mp3",
+      "durationMs": 7700
+    },
+    "اِلْمَسِ الصُّورَةَ: فَرِح.": {
+      "src": "/sounds/preschool/ar/openai-v2-78481d583781f9cc.mp3",
+      "durationMs": 2950
+    },
+    "اِسْتَمِعْ لِلْقِصَّةِ: نُورٌ حَزِينَةٌ وَسَامِي يَسْتَمِعُ إِلَيْهَا ثُمَّ تُقَرِّرُ نُورٌ أَنْ تَلْعَبَ مُجَدَّدًا. رَتِّبِ الصُّوَرَ.": {
+      "src": "/sounds/preschool/ar/openai-v2-8dc57e03b9aaa948.mp3",
+      "durationMs": 13550
+    },
     "اِسْحَبِ الفَنَكَ: بَيْت، تُفَّاحَة، سَلَام، هَدِيَّة، ثُمَّ المَسْجِد!": {
       "src": "/sounds/preschool/ar/values-mosque-path-prompt.mp3",
       "durationMs": 6441

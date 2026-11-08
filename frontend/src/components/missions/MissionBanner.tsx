@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { progressStorage, useProgressOwner } from '../../utils/ownerStorage';
+import { getActiveProgressOwner } from '../../utils/progressOwner';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import type { Mission } from '../../data/missions/types';
 import { canOpenMission } from '../../data/missions';
@@ -12,16 +14,17 @@ import { DidouPortrait } from '../world/DidouPortrait';
 const STORE_KEY = 'mssid_missions_v1';
 type Store = Record<string, { stars: number; xpGiven: boolean }>;
 
-function readStore(): Store {
+function readStore(owner?: string): Store {
   try {
-    return JSON.parse(window.localStorage.getItem(STORE_KEY) ?? '{}') as Store;
+    const value = JSON.parse(progressStorage(owner).getItem(STORE_KEY) ?? '{}');
+    return value && typeof value === 'object' && !Array.isArray(value) ? value as Store : {};
   } catch {
     return {};
   }
 }
-function writeStore(store: Store) {
+function writeStore(store: Store, owner: string) {
   try {
-    window.localStorage.setItem(STORE_KEY, JSON.stringify(store));
+    progressStorage(owner).setItem(STORE_KEY, JSON.stringify(store));
   } catch {
     /* private mode */
   }
@@ -36,18 +39,22 @@ export const MissionBanner: React.FC<{
   onPracticeResult?: (lessonId: string, result: PracticeResult) => void;
   onCompleteQuiz?: (lessonId: string, xp: number) => void;
 }> = ({ mission, onPracticeResult, onCompleteQuiz }) => {
+  const owner = useProgressOwner();
   const { authUser } = useAuth();
   const open = canOpenMission(mission, canAccess('immersiveMissions', authUser?.role));
   const [playing, setPlaying] = useState(false);
   const [locked, setLocked] = useState(false);
   const [best, setBest] = useState(() => readStore()[mission.id]?.stars ?? 0);
 
+  useEffect(() => { setBest(readStore(owner)[mission.id]?.stars ?? 0); setPlaying(false); }, [owner, mission.id]);
+
   const finish = (stars: number) => {
-    const store = readStore();
+    if (getActiveProgressOwner() !== owner) return;
+    const store = readStore(owner);
     const entry = store[mission.id] ?? { stars: 0, xpGiven: false };
     if (!entry.xpGiven) onCompleteQuiz?.(mission.lessonId, mission.xp);
     store[mission.id] = { stars: Math.max(entry.stars, stars), xpGiven: true };
-    writeStore(store);
+    writeStore(store, owner);
     setBest(store[mission.id].stars);
   };
 
@@ -88,7 +95,7 @@ export const MissionBanner: React.FC<{
         <MissionPlayer
           mission={mission}
           onExit={() => setPlaying(false)}
-          onResult={(result) => onPracticeResult?.(mission.lessonId, result)}
+          onResult={(result) => { if (getActiveProgressOwner() === owner) onPracticeResult?.(mission.lessonId, result); }}
           onFinish={finish}
         />
       )}
