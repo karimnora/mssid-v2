@@ -208,6 +208,25 @@ describe('« مساعدي » panel', () => {
     expect(screen.queryByRole('region',{name:'Didou te propose'})).not.toBeInTheDocument();
   });
 
+  it('keeps suggestions on the help home and off another lesson being browsed', () => {
+    role='ROLE_PREMIUM';
+    const actual={...courses[0],id:'math-5ap-fractions',grade:'5AP' as const};
+    const profile={grade:'5AP',competenceStats:{'math-5ap-c-fractions':{attempts:1,successes:0,lastOutcome:'fail',lastAt:new Date().toISOString(),lastLessonId:actual.id}}} as unknown as import('../../types').UserProfile;
+    const view=show({grade:'5AP',courses:[actual],userProfile:profile});
+    expect(screen.getByRole('region',{name:'Didou te propose'})).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button',{name:'Mathématiques'}));
+    expect(screen.queryByRole('region',{name:'Didou te propose'})).not.toBeInTheDocument();
+    view.unmount();
+    show({grade:'5AP',courses:[actual],userProfile:profile,lesson:actual});
+    expect(screen.getByRole('region',{name:'Didou te propose'})).toBeInTheDocument();
+  });
+
+  it('does not repeat the free lesson list as suggestions when opened from that lesson', () => {
+    show({lesson:courses[0]});
+    expect(screen.queryByRole('region',{name:'Didou te propose'})).not.toBeInTheDocument();
+    expect(screen.getAllByRole('button',{name:/^كم يساوي 1 \+/})).toHaveLength(1);
+  });
+
   it('waits for the catalog', () => {
     show({ courses: null });
     expect(screen.getByRole('status')).toHaveTextContent('Préparation des questions');

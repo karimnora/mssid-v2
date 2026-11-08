@@ -181,9 +181,13 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose, 
     </li>
   );
   const selectLesson = (id: string) => { stopSpeech(); setLessonId(id); setQuery(''); setLimit(PAGE); setStage('question'); };
+  // Suggestions open the help; they are not repeated while the child browses another lesson.
+  // On entry from a lesson, free suggestions would duplicate that lesson's list, so only Premium shows them.
+  const atEntry = !!contextLesson && stage === 'question' && lessonId === contextLesson.id;
+  const showSuggestions = !item && (stage === 'subject' || (premium && atEntry));
   return (
     <div className="space-y-4 text-base" data-musaidi>
-      {!item && (premium ? suggestions.length > 0 : freeSuggestions.length > 0) && <section className="rounded-2xl border border-emerald-200 p-3 space-y-3" aria-label={say('Didou te propose','ديدو يقترح عليك')}>
+      {showSuggestions && (premium ? suggestions.length > 0 : freeSuggestions.length > 0) && <section className="rounded-2xl border border-emerald-200 p-3 space-y-3" aria-label={say('Didou te propose','ديدو يقترح عليك')}>
         <h3 className="font-bold">{say('Didou te propose','ديدو يقترح عليك')}</h3>
         {premium && <VillagePremiumMark />}
         {(premium ? suggestions : freeSuggestions.map(item=>({item,reasonFr:'Ta leçon en cours ou la dernière leçon ouverte.',reasonAr:'درسك الحالي أو آخر درس فتحته.'}))).map(s=><div key={s.item.id}>
@@ -191,7 +195,7 @@ function MusaidiPanelContent({ grade, lesson, courses, onReviewLesson, onClose, 
           <p>{fr?s.reasonFr:s.reasonAr}</p>
         </div>)}
       </section>}
-      {premium && !item && revision.length>0 && <section className="rounded-2xl border border-amber-300 p-3 space-y-3" aria-label={say('Révision avant les compositions','مراجعة قبل الاختبارات')}>
+      {premium && showSuggestions && revision.length>0 && <section className="rounded-2xl border border-amber-300 p-3 space-y-3" aria-label={say('Révision avant les compositions','مراجعة قبل الاختبارات')}>
         <h3 className="font-bold">{say('Révision avant les compositions','مراجعة قبل الاختبارات')}</h3><VillagePremiumMark />
         <p>{say('Une série du trimestre, construite sur tes erreurs.','سلسلة من دروس الفصل مبنية على أخطائك.')}</p>
         {revision.map((s,n)=><div key={s.item.id}><button type="button" aria-label={`${say('Réviser : ','أراجع: ')}${s.item.questionAr}`} className={tileClass} onClick={()=>{recordPremiumEvent('musaidi_revision',grade);setSubject(s.item.subject);setLessonId(s.item.lessonId);setStage('question');choose(s.item.id);}}><bdi dir="ltr">{n+1}</bdi> · <MusaidiText text={s.item.questionAr} /></button><p>{fr?s.reasonFr:s.reasonAr}</p></div>)}
