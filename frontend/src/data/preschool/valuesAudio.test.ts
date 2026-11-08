@@ -3,6 +3,7 @@ import { readFileSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { ISLAMIC_VALUES_MODULE } from './islamicValuesModule';
 import { ALGERIA_AUDIO_CLIPS } from './algeriaAudio';
+import { APPROVED_VALUES_RECORDINGS } from './approvedValuesAudio';
 
 type Clip = { fichier: string; texte: string; duration: number };
 type Metadata = Record<'ar' | 'fr' | 'en', { clips: Clip[] }>;
@@ -20,6 +21,8 @@ describe('recorded preschool values', () => {
         ['prompt', content.promptAudioSrc, content.promptAudio],
         ['success', content.successAudioSrc, content.successAudio],
       ] as const) {
+        // Basmala/Hamdala use the user-approved replacements, verified in approvedValuesAudio.test.ts.
+        if (APPROVED_VALUES_RECORDINGS.some(clip => clip.language === language && clip.activityId === activity.id && clip.kind === type)) continue;
         const reused = activity.id === 'values-mosque-tap' && type === 'success';
         const filename = reused ? 'algeria-mosque-success.mp3' : `${activity.id}-${type}.mp3`;
         expect(src).toBe(`/sounds/preschool/${language}/${filename}`);

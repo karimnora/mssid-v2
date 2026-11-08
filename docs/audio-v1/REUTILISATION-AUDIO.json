@@ -1,6 +1,6 @@
 {
   "summary": {
-    "sourceRecordings": 1679,
+    "sourceRecordings": 1691,
     "uniqueRecordedPhrases": 1666,
     "reusablePlanEntries": 1138,
     "pendingPlanEntries": 0,
@@ -3848,29 +3848,29 @@
       "target": "13-islamic-values/ar/values-bismillah-prompt.mp3",
       "language": "ar",
       "text": "سَنَأْكُلُ! نَقُولُ بِسْمِ اللَّهِ. اِلْمَسِ التُّفَّاحَة!",
-      "src": "/sounds/preschool/ar/values-bismillah-prompt.mp3",
-      "durationMs": 3784
+      "src": "/sounds/preschool/ar/values-bismillah-approved-prompt-4d4945869703.mp3",
+      "durationMs": 4284
     },
     {
       "target": "13-islamic-values/ar/values-bismillah-success.mp3",
       "language": "ar",
       "text": "بِسْمِ اللَّهِ! أَحْسَنْت!",
-      "src": "/sounds/preschool/ar/values-bismillah-success.mp3",
-      "durationMs": 2255
+      "src": "/sounds/preschool/ar/values-bismillah-approved-success-d3c251b8f2e8.mp3",
+      "durationMs": 2273
     },
     {
       "target": "13-islamic-values/ar/values-alhamdulillah-prompt.mp3",
       "language": "ar",
       "text": "انْتَهَيْنَا مِنَ الأَكْل! نَقُولُ الحَمْدُ لِلَّهِ. اِلْمَسِ اليَدَيْن!",
-      "src": "/sounds/preschool/ar/values-alhamdulillah-prompt.mp3",
-      "durationMs": 4726
+      "src": "/sounds/preschool/ar/values-alhamdulillah-approved-prompt-386e72892ab7.mp3",
+      "durationMs": 5068
     },
     {
       "target": "13-islamic-values/ar/values-alhamdulillah-success.mp3",
       "language": "ar",
       "text": "الحَمْدُ لِلَّهِ! شُكْراً!",
-      "src": "/sounds/preschool/ar/values-alhamdulillah-success.mp3",
-      "durationMs": 2195
+      "src": "/sounds/preschool/ar/values-alhamdulillah-approved-success-97a011396abb.mp3",
+      "durationMs": 2429
     },
     {
       "target": "13-islamic-values/ar/values-salam-prompt.mp3",
@@ -3946,29 +3946,29 @@
       "target": "13-islamic-values/fr/values-bismillah-prompt.mp3",
       "language": "fr",
       "text": "On va manger ! On dit Bismillah. Touche la pomme !",
-      "src": "/sounds/preschool/fr/values-bismillah-prompt.mp3",
-      "durationMs": 3855
+      "src": "/sounds/preschool/fr/values-bismillah-approved-prompt-e3761dcce64c.mp3",
+      "durationMs": 3631
     },
     {
       "target": "13-islamic-values/fr/values-bismillah-success.mp3",
       "language": "fr",
       "text": "Bismillah ! Bravo !",
-      "src": "/sounds/preschool/fr/values-bismillah-success.mp3",
-      "durationMs": 2099
+      "src": "/sounds/preschool/fr/values-bismillah-approved-success-bbcec19644b2.mp3",
+      "durationMs": 1959
     },
     {
       "target": "13-islamic-values/fr/values-alhamdulillah-prompt.mp3",
       "language": "fr",
       "text": "On a fini de manger ! On dit Alhamdulillah. Touche les deux mains !",
-      "src": "/sounds/preschool/fr/values-alhamdulillah-prompt.mp3",
-      "durationMs": 4430
+      "src": "/sounds/preschool/fr/values-alhamdulillah-approved-prompt-5dc0c0e4105a.mp3",
+      "durationMs": 4598
     },
     {
       "target": "13-islamic-values/fr/values-alhamdulillah-success.mp3",
       "language": "fr",
       "text": "Alhamdulillah ! Merci !",
-      "src": "/sounds/preschool/fr/values-alhamdulillah-success.mp3",
-      "durationMs": 2311
+      "src": "/sounds/preschool/fr/values-alhamdulillah-approved-success-ebfb520a4fae.mp3",
+      "durationMs": 2116
     },
     {
       "target": "13-islamic-values/fr/values-salam-prompt.mp3",
@@ -4044,29 +4044,29 @@
       "target": "13-islamic-values/en/values-bismillah-prompt.mp3",
       "language": "en",
       "text": "We are going to eat! We say Bismillah. Touch the apple!",
-      "src": "/sounds/preschool/en/values-bismillah-prompt.mp3",
-      "durationMs": 4672
+      "src": "/sounds/preschool/en/values-bismillah-approved-prompt-ec48cfb2e081.mp3",
+      "durationMs": 4362
     },
     {
       "target": "13-islamic-values/en/values-bismillah-success.mp3",
       "language": "en",
       "text": "Bismillah! Well done!",
-      "src": "/sounds/preschool/en/values-bismillah-success.mp3",
-      "durationMs": 2334
+      "src": "/sounds/preschool/en/values-bismillah-approved-success-293cd4bf81ea.mp3",
+      "durationMs": 2586
     },
     {
       "target": "13-islamic-values/en/values-alhamdulillah-prompt.mp3",
       "language": "en",
       "text": "We finished eating! We say Alhamdulillah. Touch the two hands!",
-      "src": "/sounds/preschool/en/values-alhamdulillah-prompt.mp3",
-      "durationMs": 5056
+      "src": "/sounds/preschool/en/values-alhamdulillah-approved-prompt-993895a3e816.mp3",
+      "durationMs": 4676
     },
     {
       "target": "13-islamic-values/en/values-alhamdulillah-success.mp3",
       "language": "en",
       "text": "Alhamdulillah! Thank you!",
-      "src": "/sounds/preschool/en/values-alhamdulillah-success.mp3",
-      "durationMs": 2368
+      "src": "/sounds/preschool/en/values-alhamdulillah-approved-success-b3c39f892a9e.mp3",
+      "durationMs": 2429
     },
     {
       "target": "13-islamic-values/en/values-salam-prompt.mp3",

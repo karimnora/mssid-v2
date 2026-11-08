@@ -1,3 +1,4 @@
+import { requiresHumanPreschoolRecording } from '../../utils/humanOnlyPreschoolSpeech';
 import { PreschoolEvidence, resolvedPlayQuality } from './preschoolEvidence';
 import { PreschoolDiscoveryScene } from './PreschoolDiscoveryArt';
 import React, { useEffect, useRef, useState } from 'react';
@@ -171,7 +172,7 @@ export const PreschoolActivityPlayer: React.FC<PreschoolActivityPlayerProps> = (
   return (
     <PreschoolEvidence.Provider value={reportMistake}>
     <div dir={dir} className="preschool-safe-top min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-sky-100 px-4 py-6 flex flex-col">
-      {['values-bismillah', 'values-alhamdulillah'].includes(activity.id) && <p role="status" className="max-w-lg mx-auto text-base font-bold text-orange-900 mb-3">{t('التسجيل البشري لهذا النشاط قيد الإعداد. رافق طفلك في النطق.', 'L’enregistrement humain de cette activité est en préparation. Accompagnez votre enfant à l’oral.', 'The human recording is being prepared. Please guide your child aloud.')}</p>}
+      {['values-bismillah', 'values-alhamdulillah'].includes(activity.id) && (requiresHumanPreschoolRecording(content.promptAudio, content.promptAudioSrc) || requiresHumanPreschoolRecording(content.successAudio ?? '', content.successAudioSrc)) && <p role="status" className="max-w-lg mx-auto text-base font-bold text-orange-900 mb-3">{t('التسجيل المعتمد لهذا النشاط غير متاح بعد. رافق طفلك في النطق.', 'L’enregistrement validé de cette activité n’est pas encore disponible. Accompagnez votre enfant à l’oral.', 'The approved recording is not available yet. Please guide your child aloud.')}</p>}
       <div className="flex items-center justify-between max-w-lg w-full mx-auto mb-4">
         <div className="flex items-center gap-2">
           <button

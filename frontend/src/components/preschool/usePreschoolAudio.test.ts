@@ -1,3 +1,4 @@
+import { APPROVED_VALUES_RECORDINGS } from '../../data/preschool/approvedValuesAudio';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { usePreschoolSpeech, setPreschoolMuted } from './usePreschoolAudio';
@@ -109,13 +110,24 @@ describe('usePreschoolSpeech', () => {
     const { result } = renderHook(() => usePreschoolSpeech('fr'));
     expect(result.current.hasVoice).toBe(false);
   });
-  it('never plays synthetic Basmala/Hamdala or falls back to device synthesis for these formulas', () => {
+  it('never plays unapproved Basmala/Hamdala or falls back to device synthesis for these formulas', () => {
     const AudioMock = vi.fn();
     vi.stubGlobal('Audio', AudioMock);
     const { result } = renderHook(() => usePreschoolSpeech('ar'));
     act(() => result.current.speak('بِسْمِ اللَّهِ!', '/sounds/preschool/ar/values-bismillah-success.mp3'));
     act(() => result.current.speak('الْحَمْدُ لِلَّهِ!'));
     expect(AudioMock).not.toHaveBeenCalled();
+    expect(speakTextMock).not.toHaveBeenCalled();
+  });
+
+  it('plays the approved file, but never switches to device synthesis if that file fails', async () => {
+    const clip = APPROVED_VALUES_RECORDINGS[0];
+    const audio = { play: vi.fn().mockRejectedValue(new Error('offline')), pause: vi.fn(), removeAttribute: vi.fn(), onended: null, onerror: null };
+    const AudioMock = vi.fn(function () { return audio; });
+    vi.stubGlobal('Audio', AudioMock);
+    const { result } = renderHook(() => usePreschoolSpeech(clip.language));
+    await act(async () => result.current.speak(clip.text, clip.src));
+    expect(AudioMock).toHaveBeenCalledWith(clip.src);
     expect(speakTextMock).not.toHaveBeenCalled();
   });
 

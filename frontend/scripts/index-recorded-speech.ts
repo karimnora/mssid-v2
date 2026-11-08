@@ -1,3 +1,4 @@
+import { isApprovedValuesRecording } from '../src/utils/humanOnlyPreschoolSpeech';
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve, dirname } from 'node:path';
@@ -21,7 +22,8 @@ for (const file of readdirSync(docs).filter(name => /^enregistrements-.*\.json$/
       if (digest !== clip.sha256) throw new Error(`Recording integrity mismatch: ${src}`);
       if (!(clip.duration > 0)) throw new Error(`Missing duration: ${src}`);
       const key = recordedSpeechKey(clip.texte);
-      catalog[language][key] ??= { src, durationMs: Math.round(clip.duration * 1000) };
+      if (isApprovedValuesRecording(clip.texte, src)) catalog[language][key] = { src, durationMs: Math.round(clip.duration * 1000) };
+      else catalog[language][key] ??= { src, durationMs: Math.round(clip.duration * 1000) };
       sources.add(src);
     }
   }

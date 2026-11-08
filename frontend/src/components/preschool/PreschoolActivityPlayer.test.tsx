@@ -1,3 +1,4 @@
+import { ISLAMIC_VALUES_MODULE } from '../../data/preschool/islamicValuesModule';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
@@ -147,6 +148,12 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     act(() => vi.advanceTimersByTime(20000));
     expect(onComplete).toHaveBeenCalledWith('done_helped');
     vi.useRealTimers();
+  });
+
+  it('removes the pending-recording notice when both approved Arabic files are available', () => {
+    const activity = ISLAMIC_VALUES_MODULE.activities.find(activity => activity.id === 'values-bismillah')!;
+    render(<PreschoolActivityPlayer activity={activity} language="ar" hasNext onComplete={vi.fn()} onSkip={vi.fn()} onExit={vi.fn()} />);
+    expect(screen.queryByText(/التسجيل المعتمد لهذا النشاط/)).not.toBeInTheDocument();
   });
 
 });

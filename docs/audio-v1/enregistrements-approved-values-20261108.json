@@ -1,0 +1,278 @@
+{
+  "ar": {
+    "clips": [
+      {
+        "texte": "سَنَأْكُلُ! نَقُولُ بِسْمِ اللَّهِ. اِلْمَسِ التُّفَّاحَة!",
+        "fichier": "values-bismillah-approved-prompt-4d4945869703.mp3",
+        "duration": 4.284083333333333,
+        "sha256": "4d49458697035e9a60a637d3856e18ebba700acbecc4215310e45bcd47c65261",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Asmaa",
+        "sourceFilename": "`values-bismillah-prompt.mp3.mp3",
+        "sourceFolder": "arabe",
+        "activityId": "values-bismillah",
+        "kind": "prompt",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 85482,
+          "peak": 0.580810546875,
+          "rms": 0.07958510676253361
+        }
+      },
+      {
+        "texte": "بِسْمِ اللَّهِ! أَحْسَنْت!",
+        "fichier": "values-bismillah-approved-success-d3c251b8f2e8.mp3",
+        "duration": 2.272666666666667,
+        "sha256": "d3c251b8f2e8c3639f538e9aa949b775465a145155ccd47b6d9c7ed30de05869",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Asmaa",
+        "sourceFilename": "`values-bismillah-success.mp3`.mp3",
+        "sourceFolder": "arabe",
+        "activityId": "values-bismillah",
+        "kind": "success",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 53299,
+          "peak": 0.615020751953125,
+          "rms": 0.07510229630902084
+        }
+      },
+      {
+        "texte": "انْتَهَيْنَا مِنَ الأَكْل! نَقُولُ الحَمْدُ لِلَّهِ. اِلْمَسِ اليَدَيْن!",
+        "fichier": "values-alhamdulillah-approved-prompt-386e72892ab7.mp3",
+        "duration": 5.06775,
+        "sha256": "386e72892ab7994af05d7af99cc10a9a424197eccb5f61869b0ba8e4b8ee4636",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Asmaa",
+        "sourceFilename": "`values-alhamdulillah-prompt.mp3.mp3",
+        "sourceFolder": "arabe",
+        "activityId": "values-alhamdulillah",
+        "kind": "prompt",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 98021,
+          "peak": 0.502777099609375,
+          "rms": 0.09343090669677037
+        }
+      },
+      {
+        "texte": "الحَمْدُ لِلَّهِ! شُكْراً!",
+        "fichier": "values-alhamdulillah-approved-success-97a011396abb.mp3",
+        "duration": 2.429375,
+        "sha256": "97a011396abb6a5f7cc4dd9dd0099189912e990e6e83d24ab35f2855b1f9b477",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Asmaa",
+        "sourceFilename": "values-alhamdulillah-success.mp3.mp3",
+        "sourceFolder": "arabe",
+        "activityId": "values-alhamdulillah",
+        "kind": "success",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 55807,
+          "peak": 0.39892578125,
+          "rms": 0.0744530137113796
+        }
+      }
+    ]
+  },
+  "fr": {
+    "clips": [
+      {
+        "texte": "On va manger ! On dit Bismillah. Touche la pomme !",
+        "fichier": "values-bismillah-approved-prompt-e3761dcce64c.mp3",
+        "duration": 3.6310416666666665,
+        "sha256": "e3761dcce64c31e4618ff25d8f8c851403e68f1d89428ff7cd3fd44439615fee",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Hugo",
+        "sourceFilename": "`values-bismillah-prompt.mp3.mp3",
+        "sourceFolder": "fr",
+        "activityId": "values-bismillah",
+        "kind": "prompt",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 75033,
+          "peak": 0.5968017578125,
+          "rms": 0.09616040416221219
+        }
+      },
+      {
+        "texte": "Bismillah ! Bravo !",
+        "fichier": "values-bismillah-approved-success-bbcec19644b2.mp3",
+        "duration": 1.9592083333333334,
+        "sha256": "bbcec19644b2333898dd6735f0ee49b8a141414231b2e0aeebdcd79f634e4bdf",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Hugo",
+        "sourceFilename": "values-bismillah-success.mp3.mp3",
+        "sourceFolder": "fr",
+        "activityId": "values-bismillah",
+        "kind": "success",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 48283,
+          "peak": 0.6048583984375,
+          "rms": 0.10574779767800156
+        }
+      },
+      {
+        "texte": "On a fini de manger ! On dit Alhamdulillah. Touche les deux mains !",
+        "fichier": "values-alhamdulillah-approved-prompt-5dc0c0e4105a.mp3",
+        "duration": 4.597541666666666,
+        "sha256": "5dc0c0e4105aff17e9c76cfb66431a93025667c48319bf95972c6985ec038d99",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Hugo",
+        "sourceFilename": "values-alhamdulillah-prompt.mp3.mp3",
+        "sourceFolder": "fr",
+        "activityId": "values-alhamdulillah",
+        "kind": "prompt",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 90497,
+          "peak": 0.5673828125,
+          "rms": 0.10154087233598481
+        }
+      },
+      {
+        "texte": "Alhamdulillah ! Merci !",
+        "fichier": "values-alhamdulillah-approved-success-ebfb520a4fae.mp3",
+        "duration": 2.1159166666666667,
+        "sha256": "ebfb520a4faed8e3bdf885886cd0d39b97304dd7df6ea30d2b59a5135911b977",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Hugo",
+        "sourceFilename": "`values-alhamdulillah-success.mp3.mp3",
+        "sourceFolder": "fr",
+        "activityId": "values-alhamdulillah",
+        "kind": "success",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 50791,
+          "peak": 0.559906005859375,
+          "rms": 0.10140858396409687
+        }
+      }
+    ]
+  },
+  "en": {
+    "clips": [
+      {
+        "texte": "We are going to eat! We say Bismillah. Touch the apple!",
+        "fichier": "values-bismillah-approved-prompt-ec48cfb2e081.mp3",
+        "duration": 4.3624583333333335,
+        "sha256": "ec48cfb2e081129d3776ce020364734c2a298691dda07364afe8e72ba54fc870",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Quentin",
+        "sourceFilename": "values-bismillah-prompt.mp3.mp3",
+        "sourceFolder": "en",
+        "activityId": "values-bismillah",
+        "kind": "prompt",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 86736,
+          "peak": 0.594268798828125,
+          "rms": 0.09873479560024767
+        }
+      },
+      {
+        "texte": "Bismillah! Well done!",
+        "fichier": "values-bismillah-approved-success-293cd4bf81ea.mp3",
+        "duration": 2.586125,
+        "sha256": "293cd4bf81ea49db39cfcc8a9ae0c448d8e638cf5d5c7747824bd57951ab766d",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Quentin",
+        "sourceFilename": "values-bismillah-success.mp3.mp3",
+        "sourceFolder": "en",
+        "activityId": "values-bismillah",
+        "kind": "success",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 58314,
+          "peak": 0.503997802734375,
+          "rms": 0.10122184146684772
+        }
+      },
+      {
+        "texte": "We finished eating! We say Alhamdulillah. Touch the two hands!",
+        "fichier": "values-alhamdulillah-approved-prompt-993895a3e816.mp3",
+        "duration": 4.675916666666667,
+        "sha256": "993895a3e8164cfd1964030318cc2746af54e0578cfff1f1407f15fd2fb3f432",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Quentin",
+        "sourceFilename": "values-alhamdulillah-prompt.mp3.mp3",
+        "sourceFolder": "en",
+        "activityId": "values-alhamdulillah",
+        "kind": "prompt",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 91751,
+          "peak": 0.501556396484375,
+          "rms": 0.09176639150196501
+        }
+      },
+      {
+        "texte": "Alhamdulillah! Thank you!",
+        "fichier": "values-alhamdulillah-approved-success-b3c39f892a9e.mp3",
+        "duration": 2.429375,
+        "sha256": "b3c39f892a9eec75e44aacae7efb90047ccef95bb596b26ee10dcc6c87ee0913",
+        "synthetic": true,
+        "provider": "ElevenLabs",
+        "voice": "Quentin",
+        "sourceFilename": "values-alhamdulillah-success.mp3.mp3",
+        "sourceFolder": "en",
+        "activityId": "values-alhamdulillah",
+        "kind": "success",
+        "userApproved": true,
+        "approvalDate": "2026-11-08",
+        "approvalScope": "Explicit user exception for Basmala and Hamdala only; not human recordings or Quran recitations.",
+        "mapping": "User-confirmed filenames in Downloads/arabe, Downloads/fr and Downloads/en",
+        "technical": {
+          "bytes": 55807,
+          "peak": 0.49737548828125,
+          "rms": 0.09600725916974673
+        }
+      }
+    ]
+  }
+}

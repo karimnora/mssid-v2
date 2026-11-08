@@ -146,7 +146,7 @@ export function usePreschoolSpeech(language: PreschoolLanguage) {
     stopRecordedClip();
     stopSpeech();
     const source = recordedSrc ?? findRecordedSpeech(text, lang)?.src;
-    // The legacy Basmala/Hamdala files were synthetic. Await approved human replacements.
+    // Only the exact user-approved recordings bypass the formula block; device TTS never does.
     if (requiresHumanPreschoolRecording(text, source)) return;
     if (source) {
       playRecordedClip(source, () => speakTts(text));

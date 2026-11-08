@@ -201,6 +201,22 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/animals-memory-farm-success.mp3",
       "durationMs": 3317
     },
+    "سَنَأْكُلُ! نَقُولُ بِسْمِ اللَّهِ. اِلْمَسِ التُّفَّاحَة!": {
+      "src": "/sounds/preschool/ar/values-bismillah-approved-prompt-4d4945869703.mp3",
+      "durationMs": 4284
+    },
+    "بِسْمِ اللَّهِ! أَحْسَنْت!": {
+      "src": "/sounds/preschool/ar/values-bismillah-approved-success-d3c251b8f2e8.mp3",
+      "durationMs": 2273
+    },
+    "انْتَهَيْنَا مِنَ الأَكْل! نَقُولُ الحَمْدُ لِلَّهِ. اِلْمَسِ اليَدَيْن!": {
+      "src": "/sounds/preschool/ar/values-alhamdulillah-approved-prompt-386e72892ab7.mp3",
+      "durationMs": 5068
+    },
+    "الحَمْدُ لِلَّهِ! شُكْراً!": {
+      "src": "/sounds/preschool/ar/values-alhamdulillah-approved-success-97a011396abb.mp3",
+      "durationMs": 2429
+    },
     "اِلْمَسْ كُلَّ يَوْمٍ لِتَسْمَعَ اسْمَه! نَبْدَأُ مِنَ الأَحَد!": {
       "src": "/sounds/preschool/ar/calendar-days-prompt.mp3",
       "durationMs": 3992
@@ -2709,22 +2725,6 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/values-mosque-path-success.mp3",
       "durationMs": 2796
     },
-    "سَنَأْكُلُ! نَقُولُ بِسْمِ اللَّهِ. اِلْمَسِ التُّفَّاحَة!": {
-      "src": "/sounds/preschool/ar/values-bismillah-prompt.mp3",
-      "durationMs": 3784
-    },
-    "بِسْمِ اللَّهِ! أَحْسَنْت!": {
-      "src": "/sounds/preschool/ar/values-bismillah-success.mp3",
-      "durationMs": 2255
-    },
-    "انْتَهَيْنَا مِنَ الأَكْل! نَقُولُ الحَمْدُ لِلَّهِ. اِلْمَسِ اليَدَيْن!": {
-      "src": "/sounds/preschool/ar/values-alhamdulillah-prompt.mp3",
-      "durationMs": 4726
-    },
-    "الحَمْدُ لِلَّهِ! شُكْراً!": {
-      "src": "/sounds/preschool/ar/values-alhamdulillah-success.mp3",
-      "durationMs": 2195
-    },
     "نَرَى صَدِيقاً! نَقُولُ السَّلَامُ عَلَيْكُمْ. اِلْمَسِ اليَدَيْن!": {
       "src": "/sounds/preschool/ar/values-salam-prompt.mp3",
       "durationMs": 4554
@@ -2954,6 +2954,22 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Quelle mémoire formidable ! Félicitations !": {
       "src": "/sounds/preschool/fr/animals-memory-farm-success.mp3",
       "durationMs": 3051
+    },
+    "On va manger ! On dit Bismillah. Touche la pomme !": {
+      "src": "/sounds/preschool/fr/values-bismillah-approved-prompt-e3761dcce64c.mp3",
+      "durationMs": 3631
+    },
+    "Bismillah ! Bravo !": {
+      "src": "/sounds/preschool/fr/values-bismillah-approved-success-bbcec19644b2.mp3",
+      "durationMs": 1959
+    },
+    "On a fini de manger ! On dit Alhamdulillah. Touche les deux mains !": {
+      "src": "/sounds/preschool/fr/values-alhamdulillah-approved-prompt-5dc0c0e4105a.mp3",
+      "durationMs": 4598
+    },
+    "Alhamdulillah ! Merci !": {
+      "src": "/sounds/preschool/fr/values-alhamdulillah-approved-success-ebfb520a4fae.mp3",
+      "durationMs": 2116
     },
     "Touche chaque jour pour entendre son nom ! On commence par dimanche !": {
       "src": "/sounds/preschool/fr/calendar-days-prompt.mp3",
@@ -4803,22 +4819,6 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/values-mosque-path-success.mp3",
       "durationMs": 2496
     },
-    "On va manger ! On dit Bismillah. Touche la pomme !": {
-      "src": "/sounds/preschool/fr/values-bismillah-prompt.mp3",
-      "durationMs": 3855
-    },
-    "Bismillah ! Bravo !": {
-      "src": "/sounds/preschool/fr/values-bismillah-success.mp3",
-      "durationMs": 2099
-    },
-    "On a fini de manger ! On dit Alhamdulillah. Touche les deux mains !": {
-      "src": "/sounds/preschool/fr/values-alhamdulillah-prompt.mp3",
-      "durationMs": 4430
-    },
-    "Alhamdulillah ! Merci !": {
-      "src": "/sounds/preschool/fr/values-alhamdulillah-success.mp3",
-      "durationMs": 2311
-    },
     "On voit un ami ! On dit As-salamu alaykum. Touche les mains !": {
       "src": "/sounds/preschool/fr/values-salam-prompt.mp3",
       "durationMs": 4174
@@ -5048,6 +5048,22 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Super memory! Great job!": {
       "src": "/sounds/preschool/en/animals-memory-farm-success.mp3",
       "durationMs": 2668
+    },
+    "We are going to eat! We say Bismillah. Touch the apple!": {
+      "src": "/sounds/preschool/en/values-bismillah-approved-prompt-ec48cfb2e081.mp3",
+      "durationMs": 4362
+    },
+    "Bismillah! Well done!": {
+      "src": "/sounds/preschool/en/values-bismillah-approved-success-293cd4bf81ea.mp3",
+      "durationMs": 2586
+    },
+    "We finished eating! We say Alhamdulillah. Touch the two hands!": {
+      "src": "/sounds/preschool/en/values-alhamdulillah-approved-prompt-993895a3e816.mp3",
+      "durationMs": 4676
+    },
+    "Alhamdulillah! Thank you!": {
+      "src": "/sounds/preschool/en/values-alhamdulillah-approved-success-b3c39f892a9e.mp3",
+      "durationMs": 2429
     },
     "Touch each day to hear its name! We start with Sunday!": {
       "src": "/sounds/preschool/en/calendar-days-prompt.mp3",
@@ -6624,22 +6640,6 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "We reached the mosque! Well done!": {
       "src": "/sounds/preschool/en/values-mosque-path-success.mp3",
       "durationMs": 2859
-    },
-    "We are going to eat! We say Bismillah. Touch the apple!": {
-      "src": "/sounds/preschool/en/values-bismillah-prompt.mp3",
-      "durationMs": 4672
-    },
-    "Bismillah! Well done!": {
-      "src": "/sounds/preschool/en/values-bismillah-success.mp3",
-      "durationMs": 2334
-    },
-    "We finished eating! We say Alhamdulillah. Touch the two hands!": {
-      "src": "/sounds/preschool/en/values-alhamdulillah-prompt.mp3",
-      "durationMs": 5056
-    },
-    "Alhamdulillah! Thank you!": {
-      "src": "/sounds/preschool/en/values-alhamdulillah-success.mp3",
-      "durationMs": 2368
     },
     "We see a friend! We say As-salamu alaykum. Touch the hands!": {
       "src": "/sounds/preschool/en/values-salam-prompt.mp3",

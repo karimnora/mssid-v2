@@ -1,3 +1,4 @@
+import { APPROVED_VALUES_RECORDINGS } from './approvedValuesAudio';
 import type { PreschoolLanguage } from './types';
 
 // Supplied Arabic, French and English recordings aligned with the values activities.
@@ -9,14 +10,14 @@ export const VALUES_AUDIO_CLIPS: Partial<Record<PreschoolLanguage, Record<string
       "successDurationMs": 2796
     },
     "values-bismillah": {
-      "prompt": "/sounds/preschool/ar/values-bismillah-prompt.mp3",
-      "success": "/sounds/preschool/ar/values-bismillah-success.mp3",
-      "successDurationMs": 2255
+      "prompt": "/sounds/preschool/ar/values-bismillah-approved-prompt-4d4945869703.mp3",
+      "success": "/sounds/preschool/ar/values-bismillah-approved-success-d3c251b8f2e8.mp3",
+      "successDurationMs": 2273
     },
     "values-alhamdulillah": {
-      "prompt": "/sounds/preschool/ar/values-alhamdulillah-prompt.mp3",
-      "success": "/sounds/preschool/ar/values-alhamdulillah-success.mp3",
-      "successDurationMs": 2195
+      "prompt": "/sounds/preschool/ar/values-alhamdulillah-approved-prompt-386e72892ab7.mp3",
+      "success": "/sounds/preschool/ar/values-alhamdulillah-approved-success-97a011396abb.mp3",
+      "successDurationMs": 2429
     },
     "values-salam": {
       "prompt": "/sounds/preschool/ar/values-salam-prompt.mp3",
@@ -46,14 +47,14 @@ export const VALUES_AUDIO_CLIPS: Partial<Record<PreschoolLanguage, Record<string
       "successDurationMs": 2496
     },
     "values-bismillah": {
-      "prompt": "/sounds/preschool/fr/values-bismillah-prompt.mp3",
-      "success": "/sounds/preschool/fr/values-bismillah-success.mp3",
-      "successDurationMs": 2099
+      "prompt": "/sounds/preschool/fr/values-bismillah-approved-prompt-e3761dcce64c.mp3",
+      "success": "/sounds/preschool/fr/values-bismillah-approved-success-bbcec19644b2.mp3",
+      "successDurationMs": 1959
     },
     "values-alhamdulillah": {
-      "prompt": "/sounds/preschool/fr/values-alhamdulillah-prompt.mp3",
-      "success": "/sounds/preschool/fr/values-alhamdulillah-success.mp3",
-      "successDurationMs": 2311
+      "prompt": "/sounds/preschool/fr/values-alhamdulillah-approved-prompt-5dc0c0e4105a.mp3",
+      "success": "/sounds/preschool/fr/values-alhamdulillah-approved-success-ebfb520a4fae.mp3",
+      "successDurationMs": 2116
     },
     "values-salam": {
       "prompt": "/sounds/preschool/fr/values-salam-prompt.mp3",
@@ -83,14 +84,14 @@ export const VALUES_AUDIO_CLIPS: Partial<Record<PreschoolLanguage, Record<string
       "successDurationMs": 2859
     },
     "values-bismillah": {
-      "prompt": "/sounds/preschool/en/values-bismillah-prompt.mp3",
-      "success": "/sounds/preschool/en/values-bismillah-success.mp3",
-      "successDurationMs": 2334
+      "prompt": "/sounds/preschool/en/values-bismillah-approved-prompt-ec48cfb2e081.mp3",
+      "success": "/sounds/preschool/en/values-bismillah-approved-success-293cd4bf81ea.mp3",
+      "successDurationMs": 2586
     },
     "values-alhamdulillah": {
-      "prompt": "/sounds/preschool/en/values-alhamdulillah-prompt.mp3",
-      "success": "/sounds/preschool/en/values-alhamdulillah-success.mp3",
-      "successDurationMs": 2368
+      "prompt": "/sounds/preschool/en/values-alhamdulillah-approved-prompt-993895a3e816.mp3",
+      "success": "/sounds/preschool/en/values-alhamdulillah-approved-success-b3c39f892a9e.mp3",
+      "successDurationMs": 2429
     },
     "values-salam": {
       "prompt": "/sounds/preschool/en/values-salam-prompt.mp3",
@@ -114,3 +115,11 @@ export const VALUES_AUDIO_CLIPS: Partial<Record<PreschoolLanguage, Record<string
     }
   }
 };
+
+// Consistency guard: approved clips (already written above) must match an existing activity.
+for (const clip of APPROVED_VALUES_RECORDINGS) {
+  const entry = VALUES_AUDIO_CLIPS[clip.language]?.[clip.activityId];
+  if (!entry) throw new Error('Approved values recording has no activity');
+  if (clip.kind === 'prompt') entry.prompt = clip.src;
+  else { entry.success = clip.src; entry.successDurationMs = clip.durationMs; }
+}
