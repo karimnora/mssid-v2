@@ -141,7 +141,7 @@ describe('LessonViewer — quiz-in-progress exit guard', () => {
   // The step strip's AnimatePresence (mode="wait") mounts the quiz panel asynchronously — reading
   // the question/options right after the tab-switch click can miss it entirely.
   const answerFirstQuestionCorrectly = async () => {
-    fireEvent.click(screen.getByText('الاختبار التفاعلي (2)'));
+    fireEvent.click(screen.getByRole('button', { name: /أختبر نفسي \(2\)/ }));
     await waitFor(() => expect(screen.getByText('كم يساوي 2+2؟')).toBeInTheDocument());
     fireEvent.click(screen.getByText('4'));
   };

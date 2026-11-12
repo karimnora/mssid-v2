@@ -20,7 +20,7 @@ export const PDI = '\u2069';
 // \n): this runs after the newline-insertion passes above, and a run must never bridge across an
 // already-inserted line break \u2014 otherwise an unrelated genuine list marker on the next line (e.g.
 // "2)") gets swallowed into the previous line's math isolate.
-const MATH_RUN = /(?:\([ \t]*)*[0-9٠-٩][0-9٠-٩.,٫٬%\u00B0+x*\-\u2212\u00D7\u00F7/=<>≤≥() \t]*[0-9٠-٩%\u00B0)]/g;
+const MATH_RUN = /(?:\([ \t]*)*[0-9٠-٩][0-9٠-٩.,٫٬\u00A0\u202F%\u00B0+x*\-\u2212\u00D7\u00F7/=<>≤≥() \t]*[0-9٠-٩%\u00B0)]/g;
 // A lone number ("142,800") has no bidi-reordering risk by itself \u2014 only wrap runs that actually
 // combine multiple terms with an operator/comparison symbol.
 const HAS_OPERATOR = /[+x*\-\u2212\u00D7\u00F7/=<>≤≥]/;

@@ -3,8 +3,8 @@ import type { home as homeAr } from '../ar/home';
 // HomeView.tsx — typed against the Arabic namespace so a missing/extra key is a compile error.
 export const home: typeof homeAr = {
   systemBadge: 'Le système éducatif algérien 🇩🇿',
-  welcomeGuest: 'Bienvenue, champion, sur Mssid Algérie 👋',
-  welcomeUser: 'Bienvenue {name} sur Mssid 👋',
+  welcomeGuest: 'Bienvenue, champion ! 👋',
+  welcomeUser: 'Bonjour {name} ! 👋',
   guestFallbackName: 'champion',
   platformTagline: 'Du préscolaire jusqu’à la 5ème année primaire',
   preschoolCtaTitle: 'Préscolaire et éveil (3 à 5 ans)',

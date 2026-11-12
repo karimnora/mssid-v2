@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { CourseLesson } from '../../types';
 import { shuffleOptions } from './shared';
 import { playGentleNudge, playSuccessChime } from '../preschool/usePreschoolAudio';
-import { isGuidedPractice, isMatchingPairCorrect } from './practiceAssessment';
+import { isFillBlankCorrect, isGuidedPractice, isMatchingPairCorrect } from './practiceAssessment';
 
 type Exercise = NonNullable<CourseLesson['progressiveExercises']>[number];
 
@@ -75,8 +75,7 @@ export function useLessonPractice(lesson: CourseLesson, onCompleteQuiz: (lessonI
       const opt = ex.options?.find((o) => o.id === answer);
       isCorrect = !!opt?.isCorrect;
     } else if (ex.type === 'fill_blank') {
-      const expected = (ex.fillBlankAnswerAr || '').trim();
-      isCorrect = String(answer ?? '').trim() === expected;
+      isCorrect = isFillBlankCorrect(ex, String(answer ?? ''));
     } else if (ex.type === 'calculation') {
       isCorrect = answer !== undefined && answer !== '' && Number(answer) === ex.calculationAnswer;
     } else if (ex.type === 'matching' && ex.matchingPairsAr) {

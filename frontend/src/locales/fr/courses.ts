@@ -13,9 +13,20 @@ export const courses: typeof coursesAr = {
 
   // CourseSelectionView.tsx
   chooseSubjectHeading: 'Choisis la matière que tu veux réviser — {grade}',
-  trimester1Label: 'الفصل الأول (Trimestre 1)',
-  trimester2Label: 'الفصل الثاني (Trimestre 2)',
-  trimester3Label: 'الفصل الثالث (Trimestre 3)',
+  catalogHeading: "Qu’as-tu envie d’apprendre ?",
+  catalogSubtitle: 'Choisis une matière, puis un cours. Didou t’accompagne pas à pas.',
+  subjectsCountLabel: '{count} matières',
+  completedLessonsLabel: '{count} cours terminés sur {total}',
+  courseProgressLabel: 'Progression des cours de ce trimestre',
+  chooseTrimesterLabel: 'Choisir le trimestre',
+  chooseLessonStepLabel: 'Choisir une étape du cours',
+  suggestedLessonLabel: 'Ton prochain cours',
+  openLessonAction: 'Commencer',
+  reviewLessonAction: 'Revoir',
+  lessonLockedLabel: 'Verrouillé',
+  trimester1Label: 'Trimestre 1',
+  trimester2Label: 'Trimestre 2',
+  trimester3Label: 'Trimestre 3',
   premiumBadge: 'Pour les parents',
   completedBadge: '✓ Terminé',
   quizCountLabel: '{count} questions',
@@ -117,13 +128,13 @@ export const courses: typeof coursesAr = {
   stepPrefixLabel: 'Étape',
 
   // LessonViewer.tsx — step tab labels
-  stepExplanationLabel: 'Explication du cours et applications',
-  stepContentLabel: 'Résumé et règles',
-  stepInteractiveLabel: "L'outil interactif dédié",
+  stepExplanationLabel: 'Je comprends',
+  stepContentLabel: 'Je retiens la règle',
+  stepInteractiveLabel: 'J’essaie',
   stepPracticeLabel: "Je m'entraîne ({count})",
-  stepGameplayLabel: 'Jeu de simulation interactif',
-  stepEvaluationLabel: 'Évaluation finale ({count})',
-  stepQuizLabel: 'Quiz interactif ({count})',
+  stepGameplayLabel: 'Je joue',
+  stepEvaluationLabel: 'Je résous seul ({count})',
+  stepQuizLabel: 'Je me teste ({count})',
 
   // LessonViewer.tsx — practice tab mini-game
   challengeLabel: '🏆 Défi :',

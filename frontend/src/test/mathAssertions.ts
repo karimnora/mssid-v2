@@ -31,6 +31,8 @@ function evaluate(text: string): number {
 }
 export function numericAssertions(text: string) {
   const assertions: { expression: string; valid: boolean }[] = [];
+  // Catalogue notation: thousands are grouped with U+202F ("1 200"), decimals use a comma ("12,5").
+  text = text.replace(/(?<=\d) (?=\d{3}(?!\d))/g, '').replace(/(?<=\d),(?=\d{1,2}(?!\d))/g, '.');
   for (let candidate of text.split(/[^0-9.,()+×÷−\-/=<>≤≥ \t]+/).flatMap(part => part.split(/\.(?!\d)/))) {
     candidate = candidate.trim().replace(/^\d{1,2}\)[ \t]+/, '').replace(/^[=<>≤≥]+\s*/, '').replace(/[, ]+$/, '');
     while (candidate.endsWith(')') && (candidate.match(/\)/g)?.length ?? 0) > (candidate.match(/\(/g)?.length ?? 0)) candidate = candidate.slice(0, -1);

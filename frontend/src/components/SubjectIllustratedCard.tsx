@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { SubjectId, PrimaryGrade } from '../types';
 import { useLocaleContext } from '../context/LocaleContext';
 import { CheckCircle2, ChevronLeft, ChevronRight, Lock } from 'lucide-react';
@@ -752,6 +752,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
   grade,
 }) => {
   const { direction, locale } = useLocaleContext();
+  const reduceMotion = useReducedMotion();
   const theme = SUBJECT_THEMES[id] || SUBJECT_THEMES.french;
   const isRtl = direction === 'rtl';
 
@@ -772,7 +773,8 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
   return (
     <motion.div
       data-subject-card={dataSubjectCard ?? id}
-      whileHover={{ y: -3, transition: { duration: 0.18 } }}
+      whileHover={reduceMotion ? undefined : { y: -3, transition: { duration: 0.18 } }}
+      style={{ '--subject-accent': theme.blobColor } as React.CSSProperties}
       className={`group relative overflow-hidden rounded-[22px] bg-white dark:bg-slate-900 border-2 border-[#EFE9DF] dark:border-slate-800 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md ${theme.hoverBorder} transition-all duration-200 flex items-stretch min-h-[96px] sm:min-h-[110px] ${className}`}
     >
       {/* Top accent line matching LessonIllustratedCard */}
@@ -795,7 +797,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
       <motion.button
         type="button"
         onClick={onClick}
-        whileTap={{ scale: 0.98 }}
+        whileTap={reduceMotion ? undefined : { scale: 0.98 }}
         className="relative flex w-full items-stretch min-w-0 text-start cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-blue-600"
       >
       {/* TEXT SIDE */}
@@ -806,7 +808,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
         }`}
       >
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="text-base sm:text-lg font-black text-slate-800 dark:text-slate-100 tracking-tight leading-snug truncate">
+          <h3 className="text-base sm:text-lg font-black text-slate-800 dark:text-slate-100 tracking-tight leading-snug break-words">
             {displayName}
           </h3>
 
@@ -843,7 +845,7 @@ export const SubjectIllustratedCard: React.FC<SubjectIllustratedCardProps> = ({
           <div className="w-full max-w-[160px] sm:max-w-[200px] mt-0.5">
             <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
               <div
-                className={`h-full bg-gradient-to-r ${theme.primaryGradient} transition-all duration-300 rounded-full`}
+                className={`h-full bg-gradient-to-r ${theme.primaryGradient} transition-[width] duration-300 rounded-full`}
                 style={{ width: `${progressPercent}%` }}
               />
             </div>

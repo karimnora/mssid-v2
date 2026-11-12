@@ -406,7 +406,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div data-companion-layout className="flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* LEFT / AVATAR WITH STAGES & MOOD */}
         <div className="flex items-center gap-4 min-w-0 w-full">
           <div className="relative">
@@ -458,7 +458,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
             </p>
 
             {/* ENERGY BAR */}
-            <div className="flex items-center gap-2 pt-1">
+            <div data-companion-energy className="flex items-center gap-2 pt-1">
               <span className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
                 ⚡ {isFrench ? 'Énergie :' : 'الطاقة :'}
               </span>
@@ -480,7 +480,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
         </div>
 
         {/* RIGHT / ACTION BUTTONS */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div data-companion-actions className="flex items-center gap-2 flex-wrap">
           {/* Pet / Talk Button */}
           <button
             onClick={triggerRandomDialogue}
@@ -530,7 +530,7 @@ export const DidouVirtualCompanion: React.FC<DidouVirtualCompanionProps> = ({
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-2">
+            <div data-companion-treats className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-2">
               {DIDOU_TREATS_LIST.map((treat) => (
                 <button
                   key={treat.id}

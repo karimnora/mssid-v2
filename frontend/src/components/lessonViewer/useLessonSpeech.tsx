@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
-import { isFeatureEnabled } from '../../featureFlags';
+import { useFeatureFlag } from '../../hooks/useFeatureFlag';
 import { speakText, speechLangForSubject, stopSpeech as stopSynth, useVoiceAvailable } from '../../utils/speech';
 
 export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
@@ -14,10 +14,14 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   // Tamazight content is mostly Tifinagh/Latin-script amazigh — no TTS voice can read it correctly,
   // so the arabic fallback voice would just mispronounce it. Report unavailable instead of guessing.
   const isTamazight = lesson.subject === 'tamazight';
+  const voiceReading = useFeatureFlag('voiceReading');
+  const voiceReadingEnabled = voiceReading && !isTamazight;
+  // Early-grade recordings keep their existing path; upper grades need an installed TTS voice.
+  const canReadAloud = voiceReadingEnabled && (isYoungGrade || rawVoiceAvailable === true);
   const voiceAvailable = isTamazight ? false : rawVoiceAvailable;
 
   const speakSnippet = (key: string, text: string) => {
-    if (!isFeatureEnabled('voiceReading') || !text || isTamazight) return;
+    if (!canReadAloud || !text) return;
     if (speakingKeyRef.current === key) {
       stopSynth();
       speakingKeyRef.current = null;
@@ -50,6 +54,8 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
 
   return {
     isYoungGrade,
+    canReadAloud,
+    voiceReadingEnabled,
     isPlayful1AP,
     speakingKey,
     speakSnippet,

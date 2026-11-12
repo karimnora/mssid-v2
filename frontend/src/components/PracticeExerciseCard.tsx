@@ -31,6 +31,8 @@ interface PracticeExerciseCardProps {
   playful?: boolean;
   leadAudio?: React.ReactNode;
   optionOrder?: string[];
+  /** Guided missions: a first wrong answer gets a hint and a retry; the full correction waits for the second miss. */
+  retryFirst?: boolean;
 }
 
 // A single practice/evaluation exercise, self-contained: renders the right interaction widget for
@@ -63,6 +65,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   playful = false,
   leadAudio,
   optionOrder,
+  retryFirst = false,
 }) => {
   const isGuided = isGuidedPractice(ex);
   const displayOptions = useMemo(() => {
@@ -74,14 +77,24 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
     }
     return shuffleOptions(options);
   }, [ex.options, ex.type, optionOrder]);
+  // Grammar choices can differ only by their vowel marks (المُعَلِّمَاتِ / المُعَلِّمَاتَ). With vocalisation
+  // switched off they would collapse into identical buttons, so those options always keep their marks.
+  const optionsNeedMarks = useMemo(() => {
+    const options = ex.options || [];
+    return new Set(options.map((option) => renderArabicText(option.textAr))).size !== options.length;
+  }, [ex.options, renderArabicText]);
   const setAnswer = (value: string | number) => onAnswerChange(ex.id, value);
   const setMatchingSelectedLeft = (leftIdx: number | null) => onMatchingSelectLeft(ex.id, leftIdx);
   const connectMatching = (leftIdx: number, rightIdx: number) => onConnectMatching(ex.id, leftIdx, rightIdx);
   const disconnectMatching = (leftIdx: number) => onDisconnectMatching(ex.id, leftIdx);
   const toggleOrderingItem = (originalIdx: number) => onToggleOrderingItem(ex.id, originalIdx);
   const [hintsRevealed, setHintsRevealed] = useState(0);
+  const [failedTries, setFailedTries] = useState(0);
   const hasProgressiveHints = !!ex.progressiveHints && ex.progressiveHints.length > 0;
   const maxHints = hasProgressiveHints ? ex.progressiveHints!.length : ex.hintsAr.length > 0 ? 1 : 0;
+  // Showing the answer after one slip lets a child copy it; hold it back once, then explain fully.
+  const holdCorrection = retryFirst && !isGuided && isChecked && !isCorrect && failedTries === 0;
+  const misconception = ex.misconceptionsAr?.find((item) => answer !== '' && Number(answer) === item.answer);
 
   // A number/operator expression (e.g. "630 ÷ 10") has no Arabic anchor character, so inside an
   // RTL container the bidi algorithm can visually reorder its tokens (630÷10 → renders as 10÷630) —
@@ -121,7 +134,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
             const isSelected = answer === opt.id;
             let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
             if (isChecked) {
-              if (opt.isCorrect) style = 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-bold';
+              if (opt.isCorrect && !holdCorrection) style = 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-bold';
               else if (isSelected) style = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)]';
               else style = 'bg-slate-50 border-slate-100 text-slate-600';
             } else if (isSelected) {
@@ -134,8 +147,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
                 onClick={() => setAnswer(opt.id)}
                 className={`text-right p-3 min-h-[var(--hit)] rounded-xl border type-quiz transition-all cursor-pointer flex items-center justify-between gap-2 min-w-0 ${style}`}
               >
-                <span className="min-w-0 break-words">{renderTextWithMath(renderArabicText(opt.textAr))}</span>
-                {isChecked && opt.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
+                <span className="min-w-0 break-words">{renderTextWithMath(optionsNeedMarks ? opt.textAr : renderArabicText(opt.textAr))}</span>
+                {isChecked && opt.isCorrect && !holdCorrection && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
                 {isChecked && isSelected && !opt.isCorrect && <XCircle className="w-4 h-4 text-[var(--brand-coral)] shrink-0" />}
               </button>
             );
@@ -147,11 +160,12 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {ex.type === 'fill_blank' && (
         <input
           type="text"
+          aria-label={renderArabicText(ex.problemAr)}
           disabled={isChecked}
           value={String(answer ?? '')}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="اكتب إجابتك هنا..."
-          className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold text-slate-900 disabled:bg-slate-50"
+          className="w-full min-h-[52px] rounded-xl border border-slate-300 px-3 py-2.5 text-base font-bold text-slate-900 disabled:bg-slate-50"
         />
       )}
 
@@ -159,11 +173,13 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {ex.type === 'calculation' && (
         <input
           type="number"
+          aria-label={renderArabicText(ex.problemAr)}
           disabled={isChecked}
           value={answer ?? ''}
           onChange={(e) => setAnswer(e.target.value === '' ? '' : Number(e.target.value))}
           placeholder="اكتب الناتج..."
-          className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold text-slate-900 disabled:bg-slate-50"
+          inputMode="numeric"
+          className="w-full min-h-[52px] rounded-xl border border-slate-300 px-3 py-2.5 text-lg font-bold text-slate-900 disabled:bg-slate-50"
           dir="ltr"
         />
       )}
@@ -265,7 +281,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
         <div className="space-y-1.5">
           {Array.from({ length: hintsRevealed }).map((_, i) => (
             <p key={i} className="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
-              💡 {hasProgressiveHints ? renderArabicText(ex.progressiveHints![i].labelAr) : 'تلميح'}: {renderArabicText(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0])}
+              💡 {hasProgressiveHints ? renderArabicText(ex.progressiveHints![i].labelAr) : 'تلميح'}: {renderTextWithMath(renderArabicText(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0]))}
             </p>
           ))}
           {hintsRevealed < maxHints && (
@@ -280,7 +296,16 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
         </div>
       )}
 
-      {isChecked && (
+      {holdCorrection && (
+        <p role="status" className="text-sm font-bold p-3 rounded-xl border leading-relaxed bg-amber-50 border-amber-200 text-amber-900">
+          🤔 {misconception
+            ? renderTextWithMath(renderArabicText(misconception.feedbackAr))
+            : 'ليست هذه بعد. لا بأس!'}{' '}
+          اضغط «حاول مرة أخرى»: سأعطيك مساعدة صغيرة.
+        </p>
+      )}
+
+      {isChecked && !holdCorrection && (
         <div
           className={`text-sm p-3 rounded-xl border leading-relaxed ${
             isGuided ? 'bg-sky-50 border-sky-200 text-sky-900' : isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
@@ -318,12 +343,17 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       ) : (
         <button
           onClick={() => {
-            setHintsRevealed(0);
+            const missed = !isGuided && !isCorrect;
+            if (missed) setFailedTries((n) => n + 1);
+            // In a guided mission the next hint appears by itself, so the retry is never a blind guess.
+            setHintsRevealed(retryFirst && missed ? Math.min(failedTries + 1, maxHints) : 0);
             onReset(ex);
           }}
-          className="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all"
+          className={!isGuided && !isCorrect
+            ? 'hit-target w-full sm:w-auto bg-amber-200 hover:bg-amber-300 text-amber-950 text-base font-extrabold px-5 rounded-2xl cursor-pointer'
+            : 'bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl cursor-pointer transition-all'}
         >
-          {isGuided ? 'أفكّر من جديد' : 'حاول مرة أخرى'}
+          {isGuided ? 'أفكّر من جديد' : isCorrect ? 'أعيد التمرين' : 'حاول مرة أخرى'}
         </button>
       )}
     </div>

@@ -11,12 +11,14 @@ export const BoundPracticeCard: React.FC<{
   renderArabicText: (text: string | undefined | null) => string;
   playful?: boolean;
   leadAudio?: React.ReactNode;
-}> = ({ ex, practice, renderArabicText, playful = false, leadAudio }) => (
+  retryFirst?: boolean;
+}> = ({ ex, practice, renderArabicText, playful = false, leadAudio, retryFirst = false }) => (
   <PracticeExerciseCard
     ex={ex}
     renderArabicText={renderArabicText}
     playful={playful}
     leadAudio={leadAudio}
+    retryFirst={retryFirst}
     optionOrder={practice.practiceOptionOrder[ex.id]}
     answer={practice.practiceAnswers[ex.id]}
     onAnswerChange={practice.handlePracticeAnswerChange}

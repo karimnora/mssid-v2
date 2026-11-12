@@ -65,6 +65,30 @@ const mockLessons: CourseLesson[] = [
 ];
 
 describe('CourseSelectionView Trimester Animations & Display', () => {
+  it('suggests the first unfinished accessible lesson, without changing completion', () => {
+    const onSelectLesson = vi.fn();
+    render(<LocaleProvider><CourseSelectionView grade="5AP" courseSubjects={mockSubjects}
+      allCourseLessons={mockLessons} completedLessonIds={['math-t1-1']} onSelectLesson={onSelectLesson}
+      onGoHome={vi.fn()} initialSubjectId="math" /></LocaleProvider>);
+    fireEvent.click(screen.getByRole('button', { name: /الفصل الأول/ })!);
+    fireEvent.click(document.querySelector('[data-course-start]')!);
+    expect(onSelectLesson).toHaveBeenCalledWith(mockLessons[1]);
+    expect(document.querySelector('[data-suggested] [data-lesson-id="math-t1-2"]')).toBeTruthy();
+    expect(document.querySelectorAll('[data-completed]')).toHaveLength(1);
+  });
+
+  it('keeps an unavailable lesson out of the suggestion while its existing opening action remains usable', () => {
+    const onSelectLesson = vi.fn();
+    render(<LocaleProvider><CourseSelectionView grade="5AP" courseSubjects={mockSubjects}
+      allCourseLessons={mockLessons} completedLessonIds={[]} onSelectLesson={onSelectLesson}
+      isLessonLocked={lesson => lesson.id === 'math-t1-1'} onGoHome={vi.fn()} initialSubjectId="math" /></LocaleProvider>);
+    fireEvent.click(screen.getByRole('button', { name: /الفصل الأول/ })!);
+    fireEvent.click(document.querySelector('[data-course-start]')!);
+    expect(onSelectLesson).toHaveBeenLastCalledWith(mockLessons[1]);
+    fireEvent.click(screen.getByRole('button', { name: 'الأعداد الطبيعية 1' }));
+    expect(onSelectLesson).toHaveBeenLastCalledWith(mockLessons[0]);
+  });
+
   it('lets the header back button return from a subject to the subject list', () => {
     const backRef: { current: (() => void) | null } = { current: null };
     render(
@@ -109,32 +133,32 @@ describe('CourseSelectionView Trimester Animations & Display', () => {
     expect(screen.getAllByText(/الفصل الثالث/).length).toBeGreaterThan(0);
 
     // Click Trimester 1 tab button
-    const t1Btn = screen.getByText(/Trimestre 1/).closest('button');
+    const t1Btn = screen.getByRole('button', { name: /الفصل الأول/ });
     expect(t1Btn).toBeTruthy();
     if (t1Btn) fireEvent.click(t1Btn);
 
     // Verify Trimester 1 lessons are shown
-    expect(screen.getByText('الأعداد الطبيعية 1')).toBeInTheDocument();
-    expect(screen.getByText('الجمع والطرح')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'الأعداد الطبيعية 1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'الجمع والطرح' })).toBeInTheDocument();
 
     // Switch to Trimester 2
-    const t2Btn = screen.getByText(/Trimestre 2/).closest('button');
+    const t2Btn = screen.getByRole('button', { name: /الفصل الثاني/ });
     expect(t2Btn).toBeTruthy();
     if (t2Btn) fireEvent.click(t2Btn);
 
     // Verify Trimester 2 lesson is displayed
     await waitFor(() => {
-      expect(screen.getByText('الكسور 1')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'الكسور 1' })).toBeInTheDocument();
     });
 
     // Switch to Trimester 3
-    const t3Btn = screen.getByText(/Trimestre 3/).closest('button');
+    const t3Btn = screen.getByRole('button', { name: /الفصل الثالث/ });
     expect(t3Btn).toBeTruthy();
     if (t3Btn) fireEvent.click(t3Btn);
 
     // Verify Trimester 3 lesson is displayed
     await waitFor(() => {
-      expect(screen.getByText('التناسبية والنسب المئوية')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'التناسبية والنسب المئوية' })).toBeInTheDocument();
     });
   });
 });

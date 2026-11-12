@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, MotionConfig, useReducedMotion } from 'motion/react';
 import { AuthUser } from '../types/auth';
 import { PrimaryGrade, SubjectId, SubjectInfo } from '../types';
 import { DidouAvatarConfig } from '../types/ecosystem';
@@ -14,6 +14,7 @@ import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { DidouVirtualCompanion } from './DidouVirtualCompanion';
 import { SubjectIllustratedCard } from './SubjectIllustratedCard';
 import { CardBlobBackdrop } from './CardBlobBackdrop';
+import didouGreeting from '../assets/v2-reused/didou-greet.webp';
 
 export type HomePoleId = 'courses' | 'labs' | 'exams' | 'challenges';
 
@@ -146,6 +147,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const t = useTranslation('home');
   const tNav = useTranslation('navigation');
   const { direction, locale } = useLocaleContext();
+  const reduceMotion = useReducedMotion();
 
   const activeSpecies = avatarConfig?.species || 'fennec';
   const activeOutfitId = avatarConfig?.activeOutfit || 'default';
@@ -179,7 +181,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
       (subject) => isToolAvailableForGrade(subject, grade) && !subject.featureFlag,
     );
     return [...source].sort(
-      (a, b) => SUBJECT_ORDER.indexOf(a.id) - SUBJECT_ORDER.indexOf(b.id),
+      (a, b) => {
+        const aIndex = SUBJECT_ORDER.indexOf(a.id);
+        const bIndex = SUBJECT_ORDER.indexOf(b.id);
+        return (aIndex < 0 ? SUBJECT_ORDER.length : aIndex) - (bIndex < 0 ? SUBJECT_ORDER.length : bIndex);
+      },
     );
   }, [courseSubjects, grade]);
 
@@ -217,7 +223,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
   };
 
   return (
-    <div className="space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
+    <MotionConfig reducedMotion="user">
+    <div className="home-learning-space space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
       <VoiceUnavailableBanner visible={showAudio && voiceAvailable === false} />
       <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-x-8 lg:py-4">
         <div className="min-w-0">
@@ -225,7 +232,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="flex-1 min-w-0">
             <p className="text-[12.5px] font-bold text-white/90">{t('systemBadge')}</p>
             <div className="flex items-center gap-2 mt-0.5">
-              <h1 className="text-[22px] font-black leading-snug">
+              <h1 className="home-welcome-title text-[22px] font-black leading-snug">
                 {isGuest ? t('welcomeGuest') : t('welcomeUser', { name: userName || t('guestFallbackName') })}
               </h1>
               {showAudio && (
@@ -246,11 +253,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
             type="button"
             onClick={onOpenDressingRoom}
             disabled={!onOpenDressingRoom}
-            className="w-16 h-16 rounded-[20px] bg-white/20 hover:bg-white/30 flex items-center justify-center text-3xl shrink-0 disabled:cursor-default relative group cursor-pointer transition-transform active:scale-95"
+            className="home-avatar-button w-16 h-16 rounded-[20px] bg-white/20 hover:bg-white/30 flex items-center justify-center text-3xl shrink-0 disabled:cursor-default relative group cursor-pointer transition-transform active:scale-95"
             aria-label={t('dressingRoomLabel')}
+            data-didou-greeting={activeSpecies === 'fennec' && activeOutfitId === 'default' ? 'true' : undefined}
             title="خزانة وتخصيص ديدو"
           >
-            <span>{petEmoji}</span>
+            {activeSpecies === 'fennec' && activeOutfitId === 'default'
+              ? <img src={didouGreeting} alt="" width={80} height={96} decoding="async" className="home-didou-greeting" />
+              : <span>{petEmoji}</span>}
             <span className="absolute bottom-1 end-1 text-sm bg-black/40 rounded-lg px-1">
               {activeOutfit.icon}
             </span>
@@ -258,14 +268,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
 
         <div className="flex flex-wrap gap-2 justify-start mt-3.5">
-          <span className="inline-flex items-center gap-1.5 rounded-2xl px-3.5 py-2 text-[13px] font-extrabold bg-white/20">
+          <span className="home-stat inline-flex items-center gap-1.5 rounded-2xl px-3.5 py-2 text-[13px] font-extrabold bg-white/20">
             ⭐ {t('levelPill', { level: displayLevel })}
           </span>
           <button
             type="button"
             onClick={onOpenDressingRoom}
             disabled={!onOpenDressingRoom}
-            className="hit-target inline-flex items-center gap-1.5 rounded-2xl px-3.5 text-[13px] font-extrabold bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 disabled:cursor-default"
+            className="home-stat hit-target inline-flex items-center gap-1.5 rounded-2xl px-3.5 text-[13px] font-extrabold bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)] text-amber-950 disabled:cursor-default"
           >
             🪙 {goldCoins} {t('coinsLabel')}
           </button>
@@ -277,23 +287,23 @@ export const HomeView: React.FC<HomeViewProps> = ({
           type="button"
           data-pole="courses"
           data-home-resume={lastActivityTitle && onResumeActivity ? 'true' : undefined}
-          whileTap={{ scale: 0.95 }}
+          whileTap={reduceMotion ? undefined : { scale: 0.95 }}
           transition={spring}
           onClick={() => {
             if (lastActivityTitle && onResumeActivity) onResumeActivity();
             else openSubject('math');
           }}
-          className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-emerald-700 font-extrabold text-[14.5px] flex items-center justify-center gap-2"
+          className="kids-pop hit-target mt-3.5 lg:mt-0 w-full rounded-[18px] bg-white text-emerald-700 font-extrabold text-[14.5px] flex items-center justify-center gap-2 px-4"
         >
           <span data-pole-icon="courses" hidden />
-          {lastActivityTitle && onResumeActivity
+          <span className="min-w-0">{lastActivityTitle && onResumeActivity
             ? t('heroResumeCta', { title: lastActivityTitle })
-            : t('heroContinueCta')}
+            : t('heroContinueCta')}</span>
         </motion.button>
 
-        <div className="mt-3.5 h-2 rounded-full bg-white/20 overflow-hidden">
+        <div className="mt-3.5 h-2 rounded-full bg-white/20 overflow-hidden" role="progressbar" aria-label={t('heroProgressLabel', { percent: progressPercent })} aria-valuemin={0} aria-valuemax={100} aria-valuenow={progressPercent}>
           <div
-            className="h-full rounded-full bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)]"
+            className="home-progress-fill h-full rounded-full bg-gradient-to-l from-[var(--kids-sun-1)] to-[var(--kids-sun-2)]"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -313,18 +323,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
       />
 
       {isGuest && (
-        <div className="rounded-[20px] p-3.5 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-subtle)] kids-pop-soft flex items-center justify-between gap-3">
-          <p className="text-xs font-medium text-[var(--app-text-muted)] leading-relaxed">
-            {t('guestBannerSubtitle')}
-          </p>
+        <div className="home-guest-banner rounded-[20px] p-3.5 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-subtle)] kids-pop-soft flex items-center justify-between gap-3">
+          <p className="text-xs font-medium text-[var(--app-text-muted)] leading-relaxed">{t('guestBannerSubtitle')}</p>
           {onOpenAuthModal && (
-            <motion.button
-              type="button"
-              whileTap={{ scale: 0.95 }}
-              transition={spring}
-              onClick={onOpenAuthModal}
-              className="hit-target shrink-0 bg-emerald-700 text-white px-4 rounded-[14px] font-extrabold text-xs sm:text-sm"
-            >
+            <motion.button type="button" whileTap={reduceMotion ? undefined : { scale: 0.95 }} transition={spring} onClick={onOpenAuthModal} className="hit-target shrink-0 bg-emerald-700 text-white px-4 rounded-[14px] font-extrabold text-xs sm:text-sm">
               {t('guestSignupCta')}
             </motion.button>
           )}
@@ -333,12 +335,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {isYoung && preschoolBlock}
 
-      <section>
-        <div className="flex items-center justify-between mb-3">
+      <section className="min-w-0" aria-labelledby="home-subjects-heading">
+        <div className="flex items-center justify-between gap-3 mb-3">
           <button
             type="button"
             onClick={() => onSelectPole('courses')}
-            className="hit-target text-[12.5px] font-bold text-[var(--app-text)]"
+            className="hit-target text-[12.5px] font-bold text-[var(--app-text)] shrink-0"
           >
             {t('sectionViewAll')}
           </button>
@@ -351,13 +353,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 onSpeak={handleSpeak}
               />
             )}
-            <h2 className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
+            <h2 id="home-subjects-heading" className="text-[17px] font-extrabold text-[var(--app-text)]">{t('poleCoursesTitle')} 📚</h2>
           </div>
         </div>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 gap-3"
           variants={homeSubjectGridVariants}
-          initial="hidden"
+          initial={reduceMotion ? false : 'hidden'}
           animate="show"
         >
           {visibleSubjects.map((subject) => (
@@ -461,5 +463,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {!isYoung && preschoolBlock}
     </div>
+    </MotionConfig>
   );
 };

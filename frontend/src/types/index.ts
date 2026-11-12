@@ -251,8 +251,12 @@ export interface ProgressiveExercise {
   options?: { id: string; textAr: string; isCorrect: boolean }[]; // qcm / true_false
   matchingPairsAr?: { leftAr: string; rightAr: string }[]; // matching
   orderedItemsAr?: string[]; // ordering — correct order, top to bottom
-  fillBlankAnswerAr?: string; // fill_blank — expected text answer (compared loosely, trimmed)
+  fillBlankAnswerAr?: string; // fill_blank — expected text, NFC-normalised and trimmed
+  /** Opt in only when case, apostrophe style and final punctuation are not the assessed skill. */
+  fillBlankComparison?: 'exact' | 'latin_sentence';
   calculationAnswer?: number; // calculation — exact numeric expected answer
+  /** calculation — a predictable wrong answer and the one-line nudge that names the confusion without giving the result. */
+  misconceptionsAr?: { answer: number; feedbackAr: string }[];
   solutionAr: string;
   detailedCorrectionAr: string;
   /** Math only: posed operations for the official two-column correction (العمليات | الحل). */
@@ -320,6 +324,42 @@ export interface ProgressiveWorkedExample {
   /** Math only: posed operations for the official two-column layout. */
   operationsAr?: string;
   isRealLife?: boolean; // marks the "situation concrète du quotidien" example (tier 4 by convention)
+}
+
+export type LearningPathVisual =
+  | { type: 'place_value'; columnsAr: string[]; digits: number[]; captionAr: string }
+  | {
+      type: 'equal_shares'; groups: number; perGroup: number; captionAr: string;
+      /** Omit when nothing is left over and the remainder is not the point of the lesson. */
+      remainder?: number;
+      /** Defaults keep the original pencil-sharing picture. */
+      itemEmoji?: string; itemLabelAr?: string; groupLabelAr?: string;
+    }
+  | { type: 'fraction_bar'; parts: number; shaded: number; captionAr: string }
+  /** Grammar: tap each word of a sentence to see its kind and the clue that reveals it. */
+  | { type: 'sentence_parts'; words: { textAr: string; kindAr: string; clueAr: string }[]; captionAr: string };
+
+export type LearningPathStep =
+  | {
+      kind: 'observe' | 'model';
+      titleAr: string;
+      textAr: string;
+      visual?: LearningPathVisual;
+      workedExample?: { solution: string; operationsAr: string };
+      /** Grammar method shown in the official two-column table (الكلمة | إعرابها). */
+      irabTable?: { wordAr: string; analysisAr: string }[];
+    }
+  | {
+      kind: 'guided' | 'independent' | 'transfer';
+      titleAr: string;
+      textAr: string;
+      exerciseId: string;
+    };
+
+export interface LearningPath {
+  titleAr: string;
+  prerequisiteAr: string;
+  steps: LearningPathStep[];
 }
 
 // Démarche scientifique expérimentale (sciences 5AP+): question → observation → hypothèse →
@@ -821,6 +861,8 @@ export interface CourseLesson {
   objectivesAr?: string[]; // "À la fin de cette leçon, je sais : ..." — shown at the start AND revisited as a self-check after the evaluation
   missionTitleAr?: string; // creative narrative wrapper, e.g. "🏰 مهمة كنز الأعداد" — presentation only, never implies a new official notion
   missionIntroAr?: string; // short in-character framing text for the mission/scenario
+  /** Authored, optional child walkthrough; ordinary lesson rules and practice remain available. */
+  learningPath?: LearningPath;
   detailedCourse?: DetailedCourse;
   progressiveWorkedExamples?: ProgressiveWorkedExample[]; // the 5-tier example progression
   evaluationExercises?: ProgressiveExercise[]; // richer final "évaluation" (mixed types, reuses the exercise engine) — shown alongside/instead of the plain `quiz`

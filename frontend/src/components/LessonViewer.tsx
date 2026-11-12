@@ -1,9 +1,10 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { useActivityExitGuard } from '../context/ActivityExitContext';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { CourseLesson, PrimaryGrade, SubjectId } from '../types';
 import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { LessonExplanationView } from './LessonExplanationView';
+import { AutonomyLessonPath } from './lessonViewer/AutonomyLessonPath';
 import { RevisionSheetViewer } from './RevisionSheetViewer';
 import { ReportErrorButton } from './ReportErrorButton';
 import { LoadingFallback } from './LoadingFallback';
@@ -83,7 +84,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onReportError,
 }) => {
   const t = useTranslation('courses');
-  const { direction } = useLocaleContext();
+  const reduceMotion = useReducedMotion();
+  const { direction, locale } = useLocaleContext();
   const { lesson, premiumFetchState } = usePremiumLessonContent(lessonProp);
   const speech = useLessonSpeech(lesson, grade);
   const practice = useLessonPractice(lesson, onCompleteQuiz);
@@ -157,18 +159,18 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
     // 2AP keeps the same tabs as 3AP-5AP (nothing is dropped) but with short child verbs instead of
     // adult-register labels — a 7-year-old scans "أَتَعَلَّمُ" faster than "شرح الدرس والتطبيقات".
-    const short2AP = grade === '2AP';
+    const short2AP = grade === '2AP' && locale === 'ar';
     const steps: LessonStep[] = [
       {
         id: 'explanation',
-        labelAr: short2AP ? 'أَتَعَلَّمُ' : 'شرح الدرس والتطبيقات',
+        labelAr: short2AP ? 'أَتَعَلَّمُ' : t('stepExplanationLabel'),
         icon: <Glasses className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-blue-400',
         badgeColor: 'from-blue-600 to-blue-700',
       },
       {
         id: 'content',
-        labelAr: short2AP ? 'القَوَاعِدُ' : 'الملخص والقواعد',
+        labelAr: short2AP ? 'القَوَاعِدُ' : t('stepContentLabel'),
         icon: <BookOpen className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-emerald)] text-white ring-2 ring-emerald-400',
         badgeColor: 'from-emerald-600 to-teal-700',
@@ -178,7 +180,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     if (showInteractive) {
       steps.push({
         id: 'interactive',
-        labelAr: short2AP ? 'أُجَرِّبُ' : 'الأداة التفاعلية المخصصة',
+        labelAr: short2AP ? 'أُجَرِّبُ' : t('stepInteractiveLabel'),
         icon: <Sparkles className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-amber)] text-slate-950 ring-2 ring-amber-400',
         badgeColor: 'from-amber-500 to-orange-600',
@@ -188,7 +190,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     if (lesson.progressiveExercises && lesson.progressiveExercises.length > 0) {
       steps.push({
         id: 'practice',
-        labelAr: short2AP ? `أَتَدَرَّبُ (${lesson.progressiveExercises.length})` : `أتدرب (${lesson.progressiveExercises.length})`,
+        labelAr: short2AP ? `أَتَدَرَّبُ (${lesson.progressiveExercises.length})` : t('stepPracticeLabel', { count: lesson.progressiveExercises.length }),
         icon: <Award className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-amber)] text-slate-950 ring-2 ring-amber-400',
         badgeColor: 'from-amber-500 to-yellow-600',
@@ -198,7 +200,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     if (lesson.gameplay_simulation) {
       steps.push({
         id: 'gameplay',
-        labelAr: short2AP ? 'أَلْعَبُ' : 'لعبة المحاكاة التفاعلية',
+        labelAr: short2AP ? 'أَلْعَبُ' : t('stepGameplayLabel'),
         icon: <Gamepad2 className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-blue)] text-white ring-2 ring-sky-400',
         badgeColor: 'from-blue-600 to-blue-700',
@@ -208,7 +210,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     if (practice.evaluationExercises.length > 0) {
       steps.push({
         id: 'evaluation',
-        labelAr: short2AP ? `تَقْيِيمِي (${practice.evaluationExercises.length})` : `التقييم النهائي (${practice.evaluationExercises.length})`,
+        labelAr: short2AP ? `تَقْيِيمِي (${practice.evaluationExercises.length})` : t('stepEvaluationLabel', { count: practice.evaluationExercises.length }),
         icon: <ClipboardCheck className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-coral)] text-white ring-2 ring-rose-400',
         badgeColor: 'from-amber-500 to-orange-600',
@@ -218,7 +220,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     if (lesson.quiz.length > 0) {
       steps.push({
         id: 'quiz',
-        labelAr: short2AP ? `أُجِيبُ (${lesson.quiz.length})` : `الاختبار التفاعلي (${lesson.quiz.length})`,
+        labelAr: short2AP ? `أُجِيبُ (${lesson.quiz.length})` : t('stepQuizLabel', { count: lesson.quiz.length }),
         icon: <Trophy className="w-4 h-4" />,
         activeClass: 'bg-[var(--brand-emerald)] text-white ring-2 ring-emerald-400',
         badgeColor: 'from-emerald-500 to-teal-600',
@@ -226,7 +228,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     }
 
     return steps;
-  }, [isPlayful1AP, showInteractive, lesson, practice.evaluationExercises.length, grade]);
+  }, [isPlayful1AP, showInteractive, lesson, practice.evaluationExercises.length, grade, locale, t]);
 
   const currentStepIndex = Math.max(0, availableSteps.findIndex((s) => s.id === activeTab));
   const isLastStep = currentStepIndex >= availableSteps.length - 1;
@@ -291,7 +293,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   }
 
   return (
-    <div className="space-y-4 sm:space-y-6 dir-rtl overflow-x-clip" dir="rtl">
+    <div className="lesson-learning-space space-y-4 sm:space-y-6 dir-rtl overflow-x-clip" dir="rtl">
       <div className={isPlayful1AP ? 'hidden sm:block' : undefined}>
       <CourseBreadcrumb
         grade={grade}
@@ -306,11 +308,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       />
       </div>
 
-      <Card padding="none" className="flex items-center justify-between flex-wrap gap-3 p-3.5">
+      <Card padding="none" dir={direction} className="lesson-toolbar flex items-center justify-between flex-wrap gap-3 p-3.5">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />} onClick={() => guardLeave(onBack)}>
             <span className={isPlayful1AP ? 'sm:hidden' : 'hidden'}>الدروس</span>
-            <span className={isPlayful1AP ? 'hidden sm:inline' : undefined}>قائمة الدروس</span>
+            <span className={isPlayful1AP ? 'hidden sm:inline' : undefined}>{t('lessonsListButton')}</span>
           </Button>
 
           {allLessons.length > 0 && currentIndex >= 0 && (
@@ -331,7 +333,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               title="فيشة مراجعة قابلة للطباعة"
               data-lesson-print="true"
             >
-              <span className="hidden sm:inline">فيشة المراجعة</span>
+              <span className="hidden sm:inline">{t('revisionSheetButtonLong')}</span>
               <span className="sm:hidden">📄</span>
             </Button>
           )}
@@ -346,8 +348,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                   onClick={() => previousLesson && guardLeave(() => onSelectLesson?.(previousLesson))}
                   title={previousLesson ? `الدرس السابق: ${renderArabicText(previousLesson.titleAr)}` : 'لا يوجد درس سابق'}
                 >
-                  <span className="hidden sm:inline">الدرس السابق</span>
-                  <span className="sm:hidden">السابق</span>
+                  <span className="hidden sm:inline">{t('previousLessonButton')}</span>
+                  <span className="sm:hidden">{t('previousLessonButtonShort')}</span>
                 </Button>
 
                 <Button
@@ -368,8 +370,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                       : 'لا يوجد درس تالي'
                   }
                 >
-                  <span className="hidden sm:inline">الدرس التالي</span>
-                  <span className="sm:hidden">التالي</span>
+                  <span className="hidden sm:inline">{t('nextLessonButton')}</span>
+                  <span className="sm:hidden">{t('nextLessonButtonShort')}</span>
                 </Button>
               </>
           )}
@@ -380,7 +382,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <RevisionSheetViewer lesson={lesson} onClose={() => setShowRevisionSheet(false)} tashkeelEnabled={tashkeelEnabled} />
       )}
 
-      <VoiceUnavailableBanner visible={speech.isYoungGrade && speech.voiceAvailable === false} />
+      <VoiceUnavailableBanner visible={speech.voiceReadingEnabled && speech.voiceAvailable === false} />
 
       {isPlayful1AP ? (
         <div className="rounded-3xl bg-emerald-50 border border-emerald-100 p-4 sm:p-8 space-y-3" data-lesson-hero="1ap">
@@ -460,19 +462,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </AnimatePresence>
         </div>
       ) : (
-      <div className="bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl overflow-hidden relative">
+      <div className="lesson-reading-heading bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl overflow-hidden relative">
         <div className="kids-hero-band" />
         <div className="relative z-10 p-6">
           <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
-            <div className="flex items-center gap-2 text-xs font-bold text-emerald-700">
-              <BookOpen className="w-4 h-4" />
-              {lesson.contentSource === 'official_verified' && <span>✅ محتوى مطابق لبرنامج رسمي موثّق</span>}
-              {lesson.contentSource === 'corroborated' && <span className="text-sky-700">🔎 محتوى مُرجَّح (تمت مقارنته بمصدر ثانوي غير رسمي)</span>}
-              {lesson.contentSource === 'complementary' && <span className="text-amber-700">✨ محتوى تربوي تكميلي أصلي (مسيد DZ)</span>}
-              {(lesson.contentSource === 'needs_verification' || !lesson.contentSource) && (
-                <span className="text-slate-500">⚠️ محتوى بحاجة إلى تحقق (المصدر غير مؤكد بعد)</span>
-              )}
-            </div>
             {lesson.difficultyTier && (
               <Badge variant="xp">
                 {'⭐'.repeat(lesson.difficultyTier)} {lesson.difficultyTier === 1 ? 'سهل' : lesson.difficultyTier === 2 ? 'متوسط' : 'متقدم'}
@@ -485,7 +478,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             )}
           </div>
           <div className="flex items-start gap-3 mb-3">
-            {speech.isYoungGrade && (
+            {speech.canReadAloud && (
               <TapSpeakButton
                 snippetKey="title"
                 text={renderArabicText(lesson.titleAr)}
@@ -550,12 +543,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       )}
 
       {lesson.objectivesAr && lesson.objectivesAr.length > 0 && !isPlayful1AP && (
-        <Card padding="none" className="p-5">
-          <h3 className="font-extrabold text-sm text-[var(--app-text)] flex items-center gap-2 mb-2.5">
-            <Target className="w-4 h-4 text-[var(--brand-blue)]" />
-            <span>في نهاية هذا الدرس، سأكون قادراً على:</span>
-          </h3>
-          <ul className="space-y-1.5">
+        <details className="lesson-objectives rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-bg)] p-3.5">
+          <summary className="font-extrabold text-sm text-[var(--app-text)] cursor-pointer">
+            <span>{t('lessonObjectivesLabel')}</span>
+          </summary>
+          <ul className="space-y-1.5 mt-3">
             {lesson.objectivesAr.map((obj, i) => (
               <li key={i} className="text-xs sm:text-sm text-[var(--app-text-muted)] flex items-start gap-2">
                 <span className="text-[var(--brand-blue)] shrink-0">◆</span>
@@ -563,7 +555,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               </li>
             ))}
           </ul>
-        </Card>
+        </details>
       )}
 
       <div id="lesson-active-step-container" className="scroll-mt-20 bg-[var(--app-card-bg)] border-2 border-[var(--app-card-border)] rounded-3xl p-3.5 sm:p-4 shadow-sm space-y-3" data-lesson-layout={isCompactGrade ? 'compact' : 'full'}>
@@ -580,30 +572,41 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               ) : (
                 <>
                   <span className="text-[10px] sm:text-xs font-bold text-[var(--app-text-muted)] block">
-                    مراحل الدرس خطوة بخطوة 🎯
+                    {t('stepByStepLabel')}
                   </span>
                   <h2 className="text-xs sm:text-sm font-black text-[var(--app-text)]">
-                    {availableSteps[currentStepIndex]?.labelAr || 'مرحلة الدرس'}
+                    {availableSteps[currentStepIndex]?.labelAr || t('stepFallbackLabel')}
                   </h2>
                 </>
               )}
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
+            <span className="lesson-step-counter text-xs font-black text-[var(--brand-emerald-dark)] bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 rounded-full">
               الخطوة <span dir="ltr">{currentStepIndex + 1}</span> من <span dir="ltr">{availableSteps.length}</span>
             </span>
           </div>
         </div>
 
         {!isCompactGrade && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1" data-lesson-step-count={availableSteps.length}>
+        <>
+        <label className="lesson-mobile-step-picker sm:hidden flex items-center gap-3" dir={direction}>
+          <span className="sr-only">{t('chooseLessonStepLabel')}</span>
+          <select aria-label={t('chooseLessonStepLabel')} value={currentStepIndex} onChange={event => goToStep(Number(event.target.value))}
+            className="min-h-[60px] w-full rounded-2xl border border-[var(--app-card-border)] bg-[var(--app-card-subtle)] text-[var(--app-text)] px-3 font-bold text-sm">
+            {availableSteps.map((step, index) => <option key={step.id} value={index}>{index + 1}. {step.labelAr}</option>)}
+          </select>
+        </label>
+        <div dir={direction} className="lesson-stage-picker hidden sm:grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex lg:flex-wrap items-center gap-2 pt-1" data-lesson-step-count={availableSteps.length}>
           {availableSteps.map((step, idx) => {
             const isActive = step.id === activeTab;
             const isCompleted = idx < currentStepIndex;
             return (
               <button
                 key={step.id}
+                type="button"
+                aria-current={isActive ? 'step' : undefined}
+                data-visited={isCompleted || undefined}
                 onClick={() => goToStep(idx)}
                 className={`flex items-center justify-between gap-2 min-h-12 px-3 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer border ${
                   isActive
@@ -613,9 +616,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     : 'bg-[var(--app-card-subtle)] border-[var(--app-card-border)] text-[var(--app-text-muted)] hover:text-[var(--app-text)]'
                 }`}
               >
-                <div className="flex items-center gap-1.5 truncate">
-                  <span className="shrink-0">{isCompleted ? '✅' : step.icon}</span>
-                  <span className="truncate">{step.labelAr}</span>
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="shrink-0">{step.icon}</span>
+                  <span className="whitespace-normal leading-relaxed">{step.labelAr}</span>
                 </div>
                 <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
                   isActive ? 'bg-white/25 text-white' : isCompleted ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300' : 'bg-black/5 dark:bg-white/10'
@@ -626,16 +629,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             );
           })}
         </div>
+        </>
         )}
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0, y: 14 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={tabTransition}
+          exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
+          transition={reduceMotion ? { duration: 0 } : tabTransition}
           className="min-w-0"
         >
           {activeTab === 'explanation' && (
@@ -646,6 +650,18 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 speakingKey={speech.speakingKey}
                 onSpeak={speech.speakSnippet}
               />
+            ) : lesson.learningPath ? (
+              <AutonomyLessonPath
+                key={lesson.id}
+                lesson={lesson}
+                path={lesson.learningPath}
+                practice={practice}
+                onStopSpeech={speech.stopSpeech}
+                renderArabicText={renderArabicText}
+                onGoToPractice={() => setActiveTab('practice')}
+                speakingKey={speech.canReadAloud ? speech.speakingKey : null}
+                onSpeak={speech.canReadAloud ? speech.speakSnippet : undefined}
+              />
             ) : (
               <LessonExplanationView
                 lesson={lesson}
@@ -653,8 +669,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 availableSteps={availableSteps}
                 activeStepId={activeTab}
                 onSelectStep={(stepId) => setActiveTab(stepId as TabId)}
-                speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-                onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+                speakingKey={speech.canReadAloud ? speech.speakingKey : null}
+                onSpeak={speech.canReadAloud ? speech.speakSnippet : undefined}
               />
             )
           )}
@@ -674,8 +690,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onSelectGameOption={quiz.handleSelectGameOption}
               onResetGame={() => quiz.setGameAnswers({})}
               playful={isPlayful1AP}
-              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+              speakingKey={speech.canReadAloud ? speech.speakingKey : null}
+              onSpeak={speech.canReadAloud ? speech.speakSnippet : undefined}
             />
           )}
 
@@ -683,8 +699,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <LessonContentPanel
               lesson={lesson}
               renderArabicText={renderArabicText}
-              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+              speakingKey={speech.canReadAloud ? speech.speakingKey : null}
+              onSpeak={speech.canReadAloud ? speech.speakSnippet : undefined}
               selectedExampleTier={selectedExampleTier}
               onSelectExampleTier={setSelectedExampleTier}
               visibleSolutions={quiz.visibleSolutions}
@@ -718,8 +734,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               onShuffle={quiz.initializeShuffledQuiz}
               onReset={quiz.handleResetQuiz}
               playful={isPlayful1AP}
-              speakingKey={speech.isYoungGrade ? speech.speakingKey : null}
-              onSpeak={speech.isYoungGrade ? speech.speakSnippet : undefined}
+              speakingKey={speech.canReadAloud ? speech.speakingKey : null}
+              onSpeak={speech.canReadAloud ? speech.speakSnippet : undefined}
               nextLessonTitle={isPlayful1AP && nextLesson ? renderArabicText(nextLesson.titleAr) : undefined}
               onContinueNext={isPlayful1AP && canCompleteLesson ? finishAndContinue : undefined}
             />

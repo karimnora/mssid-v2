@@ -17,6 +17,13 @@ const baseEx: ProgressiveExercise = {
   xpReward: 15,
 };
 
+it('isolates subtraction in an Arabic hint so its operands cannot reverse', () => {
+  const ex: ProgressiveExercise = { ...baseEx, hintsAr: ['أحسب 23 − 20 = 3، ثم أتحقق.'] };
+  render(<PracticeExerciseCard {...cardProps} ex={ex} isChecked={false} />);
+  fireEvent.click(screen.getByRole('button', { name: /أحتاج مساعدة/ }));
+  expect(screen.getByText(/أحسب/).textContent).toContain('\u206623 − 20 = 3\u2069');
+});
+
 const cardProps = {
   renderArabicText: (t: string | undefined | null) => t || '',
   answer: 48 as string | number | undefined,

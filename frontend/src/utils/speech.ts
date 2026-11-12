@@ -31,6 +31,7 @@ export function useVoiceAvailable(lang: string): boolean | null {
 
   useEffect(() => {
     let cancelled = false;
+    setAvailable(null);
     const prefix = lang.split('-')[0].toLowerCase();
 
     if (isNative()) {
@@ -51,6 +52,7 @@ export function useVoiceAvailable(lang: string): boolean | null {
       return;
     }
     let attempts = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
 
     const check = (): boolean => {
       const voices = window.speechSynthesis.getVoices();
@@ -62,15 +64,21 @@ export function useVoiceAvailable(lang: string): boolean | null {
     // Chrome commonly reports zero voices on the very first synchronous getVoices() call; poll for
     // up to ~2s as a fallback in case onvoiceschanged never fires (unreliable on some WebViews).
     const poll = () => {
-      if (cancelled || check() || attempts >= 20) return;
+      if (cancelled || check()) return;
+      if (attempts >= 20) {
+        setAvailable(false);
+        return;
+      }
       attempts += 1;
-      setTimeout(poll, 100);
+      timer = setTimeout(poll, 100);
     };
     poll();
 
-    window.speechSynthesis.onvoiceschanged = check;
+    window.speechSynthesis.addEventListener?.('voiceschanged', check);
     return () => {
       cancelled = true;
+      clearTimeout(timer);
+      window.speechSynthesis.removeEventListener?.('voiceschanged', check);
     };
   }, [lang]);
 
