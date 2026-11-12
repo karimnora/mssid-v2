@@ -112,3 +112,26 @@ describe.each([['french', 'fr'], ['english', 'en']] as const)('guided %s mission
     }
   });
 });
+
+describe('science missions 3AP–5AP', () => {
+  const lessons = COURSES_DATA.filter(lesson => lesson.subject === 'science' && ['3AP', '4AP', '5AP'].includes(lesson.grade));
+  it('connects all 36 lessons, with the expected coverage by grade', () => {
+    expect(['3AP', '4AP', '5AP'].map(grade => lessons.filter(lesson => lesson.grade === grade).length)).toEqual([9, 12, 15]);
+    expect(lessons.filter(lesson => !lesson.learningPath).map(lesson => lesson.id)).toEqual([]);
+  });
+  it.each(lessons.map(lesson => [lesson.id, lesson] as const))('%s has an example and four answerable practice steps', (_id, lesson) => {
+    const path = lesson.learningPath!;
+    expect(path.steps.map(step => step.kind)).toEqual(['observe', 'model', 'guided', 'independent', 'independent', 'transfer']);
+    const exercises = exercisesOf(lesson);
+    for (const step of path.steps) {
+      if (!('exerciseId' in step)) continue;
+      const matches = exercises.filter(ex => ex.id === step.exerciseId);
+      expect(matches).toHaveLength(1);
+      const ex = matches[0];
+      expect(ex.options?.filter(option => option.isCorrect)).toHaveLength(1);
+      expect(new Set(ex.options?.map(option => option.textAr)).size).toBe(ex.options?.length);
+      expect(ex.progressiveHints?.length).toBeGreaterThanOrEqual(2);
+      expect(ex.detailedCorrectionAr?.length).toBeGreaterThan(10);
+    }
+  });
+});

@@ -379,7 +379,7 @@ const MISSIONS: Omit<MissionSpec, 'lang'>[] = [
     recallAr: 'I know verbs: play, draw, read, swim.',
     observe: {
       titleAr: 'I discover the ending « -ing »',
-      textAr: 'After « I like », the action word ends with « -ing ».\nTap each sentence.',
+      textAr: 'In this mission, we practise « I like » + an action ending in « -ing ».\nTap each sentence.',
       visual: {
         type: 'sentence_parts',
         words: [
@@ -408,16 +408,16 @@ const MISSIONS: Omit<MissionSpec, 'lang'>[] = [
       choice('I like ... books.',
         [['reading', true], ['read', false], ['reads', false]],
         'read + ing: I like reading books.',
-        [['أتذكر', 'بعد I like، الفعل ينتهي بـ ing.'], ['أختار', 'لا نضيف الحرف s وحده إلى الفعل هنا.']]),
+        [['أتذكر', 'في صيغة هذه المهمة نستعمل I like مع فعل ينتهي بـ ing.'], ['أختار', 'لا نضيف الحرف s وحده إلى الفعل هنا.']]),
       choice('Which sentence is correct?',
         [['My favourite hobby is drawing.', true], ['My favourite hobby is draw.', false], ['My favourite hobby is drawings.', false]],
-        'A hobby is an action with « ing »: drawing.',
+        'Here, the action used as a hobby name is drawing.',
         [['أتذكر', 'اسم الهواية ينتهي بـ ing.'], ['أتحقق', 'لا نضيف شيئا بعد ing.']]),
     ],
     transfer: { ...choice('Yacine rides his bicycle every Friday. He loves it. He says:',
       [['I like riding my bicycle.', true], ['I like ride my bicycle.', false], ['I like rides my bicycle.', false]],
       'ride + ing = riding: I like riding my bicycle.',
-      [['أتذكر', 'بعد I like، الفعل ينتهي بـ ing.'], ['أنتبه', 'الفعل ride ينتهي بالحرف e: نحذفه ثم نضيف ing.']]), stepTitleAr: 'A verb ending with « e »' },
+      [['أتذكر', 'في صيغة هذه المهمة نستعمل I like مع فعل ينتهي بـ ing.'], ['أنتبه', 'الفعل ride ينتهي بالحرف e: نحذفه ثم نضيف ing.']]), stepTitleAr: 'A verb ending with « e »' },
   },
   {
     lessonId: 'english-4ap-unit6-daily-routines-review',
