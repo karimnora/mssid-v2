@@ -74,11 +74,12 @@ describe('guided maths missions 3AP–5AP', () => {
   });
 });
 
-describe('guided French missions 3AP–5AP', () => {
-  const frenchLessons = COURSES_DATA.filter(lesson => lesson.subject === 'french' && ['3AP', '4AP', '5AP'].includes(lesson.grade));
+describe.each([['french', 'fr'], ['english', 'en']] as const)('guided %s missions 3AP–5AP', (subject, lang) => {
+  const frenchLessons = COURSES_DATA.filter(lesson => lesson.subject === subject && ['3AP', '4AP', '5AP'].includes(lesson.grade));
 
-  it('gives every French lesson a mission written for the French voice', () => {
-    expect(frenchLessons.filter(lesson => lesson.learningPath?.lang !== 'fr').map(lesson => lesson.id)).toEqual([]);
+  it('gives every lesson a mission written for the voice of its language', () => {
+    expect(frenchLessons.length).toBeGreaterThan(20);
+    expect(frenchLessons.filter(lesson => lesson.learningPath?.lang !== lang).map(lesson => lesson.id)).toEqual([]);
   });
 
   it.each(frenchLessons.map(lesson => [lesson.id, lesson] as const))('%s is a complete choice-only mission', (_id, lesson) => {
@@ -89,7 +90,7 @@ describe('guided French missions 3AP–5AP', () => {
     expect(kinds.slice(3, -1).every(kind => kind === 'independent')).toBe(true);
     const exercises = exercisesOf(lesson);
     for (const step of path.steps) {
-      // Spoken text (titles, instructions, questions) must start in French: the voice is fr-FR.
+      // Spoken text (titles, instructions, questions) must start in the lesson language, never in Arabic.
       expect(/^[A-Za-zÀ-ÿ«]/.test(step.titleAr), step.titleAr).toBe(true);
       if (!('exerciseId' in step)) {
         if (step.kind === 'observe') expect(step.visual?.type).toBe('sentence_parts');

@@ -25,10 +25,12 @@ export interface ChoiceExercise extends BaseExercise {
 }
 export type MissionExercise = CalcExercise | ChoiceExercise;
 
+export type MissionLang = 'fr' | 'en';
+
 export interface MissionSpec {
   lessonId: string;
-  /** French lessons: step titles and instructions are French so the French voice can read them. */
-  lang?: 'fr';
+  /** French and English lessons: step titles and instructions are in that language so its voice can read them. */
+  lang?: MissionLang;
   titleAr: string;
   recallAr: string;
   observe: { titleAr: string; textAr: string; visual?: LearningPathVisual };
@@ -61,9 +63,19 @@ const STEP_DEFAULTS_FR = {
   independent: { titleAr: "J'essaie tout seul", textAr: "Cette fois, je travaille tout seul. Si je bloque, Didou m'aide.", levelLabelAr: 'Tout seul', level: 2, xp: 15 },
   transfer: { titleAr: 'Une nouvelle situation', textAr: "J'utilise ce que j'ai appris dans une nouvelle situation. Je lis bien la question.", levelLabelAr: 'Nouvelle situation', level: 3, xp: 20 },
 } as const;
-const defaultsFor = (lang?: 'fr') => (lang === 'fr' ? STEP_DEFAULTS_FR : STEP_DEFAULTS);
+const STEP_DEFAULTS_EN = {
+  guided: { titleAr: 'I complete with Didou', textAr: 'Part of the answer is given. Choose, then check your answer.', levelLabelAr: 'With Didou', level: 1, xp: 10 },
+  independent: { titleAr: 'I try alone', textAr: 'This time, I work alone. If I am stuck, Didou helps me.', levelLabelAr: 'Alone', level: 2, xp: 15 },
+  transfer: { titleAr: 'A new situation', textAr: 'I use what I learned in a new situation. I read the question well.', levelLabelAr: 'New situation', level: 3, xp: 20 },
+} as const;
+const AGAIN = {
+  fr: { titleAr: "J'essaie encore tout seul", textAr: 'La même méthode avec un nouvel exemple.' },
+  en: { titleAr: 'I try alone again', textAr: 'The same method with a new example.' },
+  ar: { titleAr: 'أحاول وحدي مرة ثانية', textAr: 'نفس الطريقة مع مثال جديد.' },
+} as const;
+const defaultsFor = (lang?: MissionLang) => (lang === 'fr' ? STEP_DEFAULTS_FR : lang === 'en' ? STEP_DEFAULTS_EN : STEP_DEFAULTS);
 
-function toExercise(id: string, kind: keyof typeof STEP_DEFAULTS, ex: MissionExercise, lang?: 'fr'): ProgressiveExercise {
+function toExercise(id: string, kind: keyof typeof STEP_DEFAULTS, ex: MissionExercise, lang?: MissionLang): ProgressiveExercise {
   const defaults = defaultsFor(lang)[kind];
   const base = {
     id,
@@ -115,8 +127,8 @@ export function buildMission(spec: MissionSpec): BuiltMission {
     { kind: 'guided', titleAr: spec.guided.stepTitleAr ?? D.guided.titleAr, textAr: D.guided.textAr, exerciseId: guided.id },
     ...solos.map((ex, index): LearningPathStep => ({
       kind: 'independent',
-      titleAr: spec.solo[index].stepTitleAr ?? (index === 0 ? D.independent.titleAr : spec.lang === 'fr' ? "J'essaie encore tout seul" : 'أحاول وحدي مرة ثانية'),
-      textAr: index === 0 ? D.independent.textAr : spec.lang === 'fr' ? 'La même méthode avec un nouvel exemple.' : 'نفس الطريقة مع مثال جديد.',
+      titleAr: spec.solo[index].stepTitleAr ?? (index === 0 ? D.independent.titleAr : AGAIN[spec.lang ?? 'ar'].titleAr),
+      textAr: index === 0 ? D.independent.textAr : AGAIN[spec.lang ?? 'ar'].textAr,
       exerciseId: ex.id,
     })),
     { kind: 'transfer', titleAr: spec.transfer.stepTitleAr ?? D.transfer.titleAr, textAr: D.transfer.textAr, exerciseId: transfer.id },

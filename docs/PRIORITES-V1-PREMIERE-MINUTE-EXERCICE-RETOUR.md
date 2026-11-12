@@ -16,7 +16,7 @@
 
 - [x] Deux pilotes structurés avec modèle, entraînement guidé, réponse autonome et transfert.
 - [ ] Tester la compréhension d'un écran d'exercice à la fois et le retour après erreur avec des enfants.
-- [ ] Généraliser l'indice avant corrigé seulement après cette validation, avec une aide propre à la notion.
+- [x] Après validation des deux références par Karim, étendre le réessai guidé à l'entraînement interactif avec indices ; conserver le corrigé accessible sans indice. La relecture des aides de chaque notion reste à poursuivre.
 - [ ] Réutiliser les poses de Didou pour un retour discret et compréhensible ; aucun effet obligatoire ou animation permanente.
 - [ ] Tester d'abord une manipulation utile sur chaque pilote : tableau de numération et partage d'objets. Conserver un contrôle au toucher ou au clavier accessible ; un glisser-déposer seul ne suffit pas.
 - [ ] Définir les courtes consignes à enregistrer et obtenir de vrais enregistrements adaptés. Aucune voix synthétique n'est présentée comme un enregistrement humain.

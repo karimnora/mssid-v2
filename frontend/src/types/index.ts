@@ -360,7 +360,7 @@ export type LearningPathStep =
 
 export interface LearningPath {
   /** Language of the lesson content when it is not Arabic: texts read left to right, French voice. */
-  lang?: 'fr';
+  lang?: 'fr' | 'en';
   titleAr: string;
   prerequisiteAr: string;
   steps: LearningPathStep[];

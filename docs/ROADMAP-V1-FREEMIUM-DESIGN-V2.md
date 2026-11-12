@@ -6,7 +6,7 @@ Date : 12 novembre 2026.
 
 **Priorité de travail actualisée : première minute, boucle d'exercice, retour le lendemain.** La [séquence ciblée](PRIORITES-V1-PREMIERE-MINUTE-EXERCICE-RETOUR.md) reprend la recommandation transmise par Karim : réutiliser les briques existantes et viser dix notions difficiles, avec quatre mesures bien définies. Les fonctions décrites comme à faire ne sont pas annoncées comme livrées.
 
-Les [correctifs du lecteur enfant](audits/2026-11-12-correctifs-ecran-enfant.md) retirent le statut de vérification, harmonisent les milliers en espace fine insécable, replient les objectifs et compactent les étapes mobiles. Le réessai guidé global reste conditionné à la validation des pilotes.
+Les [correctifs du lecteur enfant](audits/2026-11-12-correctifs-ecran-enfant.md) retirent le statut de vérification, harmonisent les milliers en espace fine insécable, replient les objectifs et compactent les étapes mobiles. Après validation des deux cours de référence par Karim, le [réessai guidé est étendu à l'entraînement](audits/2026-11-12-reessai-guide-entrainement.md), avec une exception lorsqu'aucun indice exploitable n'est disponible.
 
 Améliorer l'attractivité de MSSID et faciliter le démarrage, la compréhension et la reprise des activités. Réutiliser les éléments pertinents du design V2 dans la V1 gratuite, avec une adaptation aux enfants de 1AP à 5AP et aux téléphones Android.
 

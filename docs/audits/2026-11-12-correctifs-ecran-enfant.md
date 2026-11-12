@@ -14,7 +14,7 @@ Le script démarre en mode aperçu sans `--write`. Il reconnaît la notation de 
 
 ## Réessai guidé
 
-La généralisation à l'onglet « أتدرب » reste **en attente de validation des pilotes par Karim avec un enfant**, conformément à la condition formulée. Le mécanisme existe dans les deux pilotes ; il n'est pas activé globalement par ce lot. La suite devra couvrir calcul, choix multiple, appariement, remise en ordre et saisie, avec une aide utile même lorsque les anciens exercices n'ont aucun indice.
+Karim a ensuite **validé les deux cours de référence 4AP–5AP**. Le réessai guidé a été étendu à l'onglet « أتدرب », avec correction directement accessible lorsqu'aucun indice exploitable n'existe. Voir le [compte rendu de cette extension](2026-11-12-reessai-guide-entrainement.md). Cette validation de référence ne constitue pas à elle seule une observation de l'autonomie d'enfants.
 
 ## Vérification
 

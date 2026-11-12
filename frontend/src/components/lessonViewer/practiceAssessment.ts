@@ -2,6 +2,17 @@ import { ProgressiveExercise } from '../../types';
 
 export const isGuidedPractice = (ex: ProgressiveExercise) => !ex.type || ex.type === 'short_answer';
 
+const GENERIC_HINTS = new Set(['فكر جيدا قبل الاجابة', 'فكر جيدا قبل الإجابة', 'حاول بنفسك', 'راجع الدرس', 'تذكر القاعدة']);
+
+export function getPracticeHints(ex: Pick<ProgressiveExercise, 'hintsAr' | 'progressiveHints'>) {
+  const useful = (text: string) => {
+    const plain = text.normalize('NFC').replace(/[\u064b-\u065f\u0670]/g, '').replace(/[.!؟?،؛:]/g, '').replace(/\s+/g, ' ').trim();
+    return plain.length > 0 && !GENERIC_HINTS.has(plain);
+  };
+  const progressive = (ex.progressiveHints ?? []).filter(hint => useful(hint.contentAr));
+  return progressive.length ? progressive : (ex.hintsAr ?? []).filter(useful).map(contentAr => ({ labelAr: 'تلميح', contentAr }));
+}
+
 export function isFillBlankCorrect(
   ex: Pick<ProgressiveExercise, 'fillBlankAnswerAr' | 'fillBlankComparison'>,
   answer: string,

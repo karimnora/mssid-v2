@@ -49,6 +49,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                 practice={practice}
                 renderArabicText={renderArabicText}
                 playful={playful}
+                retryFirst
                 leadAudio={
                   onSpeak ? (
                     <TapSpeakButton

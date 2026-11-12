@@ -79,3 +79,9 @@ Thumbs.db
 
 # Local Claude project instructions, not shared via the repo
 CLAUDE.md
+
+# Local review artifacts, attachments and temporary scripts
+/.codex-remote-attachments/
+/output/
+/tmp/
+/lot2-contact.jpg

@@ -7,7 +7,7 @@ import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
 import { formatEducationalText, latinTextDir } from '../utils/textFormatter';
 import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 import { shuffleOptions } from './lessonViewer/shared';
-import { isGuidedPractice, isMatchingPairCorrect } from './lessonViewer/practiceAssessment';
+import { getPracticeHints, isGuidedPractice, isMatchingPairCorrect } from './lessonViewer/practiceAssessment';
 
 interface PracticeExerciseCardProps {
   ex: ProgressiveExercise;
@@ -31,7 +31,7 @@ interface PracticeExerciseCardProps {
   playful?: boolean;
   leadAudio?: React.ReactNode;
   optionOrder?: string[];
-  /** Guided missions: a first wrong answer gets a hint and a retry; the full correction waits for the second miss. */
+  /** With a concrete hint, a first miss offers a retry before the complete correction. */
   retryFirst?: boolean;
 }
 
@@ -90,10 +90,11 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
   const toggleOrderingItem = (originalIdx: number) => onToggleOrderingItem(ex.id, originalIdx);
   const [hintsRevealed, setHintsRevealed] = useState(0);
   const [failedTries, setFailedTries] = useState(0);
-  const hasProgressiveHints = !!ex.progressiveHints && ex.progressiveHints.length > 0;
-  const maxHints = hasProgressiveHints ? ex.progressiveHints!.length : ex.hintsAr.length > 0 ? 1 : 0;
+  const hints = getPracticeHints(ex);
+  const maxHints = hints.length;
   // Showing the answer after one slip lets a child copy it; hold it back once, then explain fully.
-  const holdCorrection = retryFirst && !isGuided && isChecked && !isCorrect && failedTries === 0;
+  const holdCorrection = retryFirst && maxHints > 0 && !isGuided && isChecked && !isCorrect && failedTries === 0;
+  const showAssessment = isChecked && !holdCorrection;
   const misconception = ex.misconceptionsAr?.find((item) => answer !== '' && Number(answer) === item.answer);
 
   // A number/operator expression (e.g. "630 ÷ 10") has no Arabic anchor character, so inside an
@@ -133,7 +134,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
           {displayOptions.map((opt) => {
             const isSelected = answer === opt.id;
             let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
-            if (isChecked) {
+            if (showAssessment) {
               if (opt.isCorrect && !holdCorrection) style = 'bg-[var(--brand-emerald)]/15 border-[var(--brand-emerald)] text-[var(--brand-emerald-dark)] font-bold';
               else if (isSelected) style = 'bg-[var(--brand-coral)]/15 border-[var(--brand-coral)] text-[var(--brand-coral-dark)]';
               else style = 'bg-slate-50 border-slate-100 text-slate-600';
@@ -194,10 +195,10 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
               {ex.matchingPairsAr.map((pair, leftIdx) => {
                 const isConnected = matchingConnections[leftIdx] !== undefined;
                 const isSelected = matchingSelectedLeft === leftIdx;
-                const isRight = isChecked && isMatchingPairCorrect(ex, leftIdx, matchingConnections[leftIdx]);
-                const isWrong = isChecked && isConnected && !isRight;
+                const isRight = showAssessment && isMatchingPairCorrect(ex, leftIdx, matchingConnections[leftIdx]);
+                const isWrong = showAssessment && isConnected && !isRight;
                 let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
-                if (isChecked) style = isRight ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrong ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
+                if (showAssessment) style = isRight ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrong ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
                 else if (isSelected) style = 'bg-indigo-100 border-indigo-500 text-indigo-900 font-bold';
                 else if (isConnected) style = 'bg-emerald-50 border-emerald-300 text-emerald-800';
                 return (
@@ -247,10 +248,10 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
             {(orderingShuffled.length ? orderingShuffled : ex.orderedItemsAr.map((_, i) => i)).map((originalIdx) => {
               const position = orderingSelection.indexOf(originalIdx);
               const isSelected = position !== -1;
-              const isRightPlace = isChecked && position === originalIdx;
-              const isWrongPlace = isChecked && isSelected && position !== originalIdx;
+              const isRightPlace = showAssessment && position === originalIdx;
+              const isWrongPlace = showAssessment && isSelected && position !== originalIdx;
               let style = 'bg-slate-50 border-slate-200 text-slate-800 hover:bg-slate-100';
-              if (isChecked) style = isRightPlace ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrongPlace ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
+              if (showAssessment) style = isRightPlace ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : isWrongPlace ? 'bg-rose-50 border-rose-400 text-rose-900' : 'bg-slate-50 border-slate-100 text-slate-600';
               else if (isSelected) style = 'bg-indigo-600 border-indigo-700 text-white font-bold';
               return (
                 <button
@@ -281,8 +282,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {!isChecked && maxHints > 0 && (
         <div className="space-y-1.5">
           {Array.from({ length: hintsRevealed }).map((_, i) => (
-            <p key={i} dir={latinTextDir(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0])} className="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
-              💡 {hasProgressiveHints ? renderArabicText(ex.progressiveHints![i].labelAr) : 'تلميح'}: {renderTextWithMath(renderArabicText(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0]))}
+            <p key={i} dir={latinTextDir(hints[i].contentAr)} className="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
+              💡 {renderArabicText(hints[i].labelAr)}: {renderTextWithMath(renderArabicText(hints[i].contentAr))}
             </p>
           ))}
           {hintsRevealed < maxHints && (

@@ -170,8 +170,8 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
   const canContinue = !isExerciseStep || !!(exercise && practice.practiceCorrect[exercise.id]);
   const isLast = stepIndex === path.steps.length - 1;
   const displayText = (text: string) => isolateMathRuns(renderArabicText(text));
-  // The French voice reads French only: Arabic glosses stay on screen but are not spoken.
-  const spoken = (text: string) => (path.lang === 'fr' ? stripArabicGlosses(text) : text);
+  // A French or English voice reads its own language only: Arabic glosses stay on screen but are not spoken.
+  const spoken = (text: string) => (path.lang ? stripArabicGlosses(text) : text);
   const stepSpeech = spoken(renderArabicText([
     step.titleAr, step.textAr,
     !isExerciseStep ? step.visual?.captionAr : undefined,
@@ -236,7 +236,7 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
             // 3AP names a word's role; case analysis (iʿrāb) starts in 4AP.
             analysisLabelAr={step.irabTableLabels?.[1] ?? (lesson.grade === '3AP' ? renderArabicText('دَوْرُهَا فِي الجُمْلَةِ') : undefined)}
             wordLabelAr={step.irabTableLabels?.[0]}
-            dir={path.lang === 'fr' ? 'ltr' : 'rtl'}
+            dir={path.lang ? 'ltr' : 'rtl'}
           />
         )}
         {isExerciseStep && exercise && (
