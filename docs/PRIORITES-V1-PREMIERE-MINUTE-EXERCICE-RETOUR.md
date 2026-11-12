@@ -2,6 +2,8 @@
 
 12 novembre 2026. Recommandation transmise par Karim, intégrée à la roadmap. Ce document fixe la prochaine séquence ; il ne décrit pas des fonctions déjà implémentées.
 
+Point au 13 novembre : [état des lieux actualisé](audits/2026-11-13-etat-des-lieux-v1.md). Le compagnon Didou est refondu et 170 cours disposent désormais d'une mission guidée. La première minute, la séance quotidienne, la révision à J+2 et la mesure des retours restent des objectifs à réaliser et valider.
+
 ## 1. Réussir la première minute
 
 - [ ] Observer un enfant qui ouvre l'application, choisit son niveau et commence sans aide.
@@ -21,7 +23,7 @@
 - [ ] Tester d'abord une manipulation utile sur chaque pilote : tableau de numération et partage d'objets. Conserver un contrôle au toucher ou au clavier accessible ; un glisser-déposer seul ne suffit pas.
 - [ ] Définir les courtes consignes à enregistrer et obtenir de vrais enregistrements adaptés. Aucune voix synthétique n'est présentée comme un enregistrement humain.
 
-État du code : le réessai guidé est optionnel dans `PracticeExerciseCard` et actif dans les pilotes. Les échecs de l'entraînement restent surtout dans l'état React de la leçon ; `useLessonPractice` appelle le callback de récompense sur une bonne réponse. Une reprise automatique des erreurs à J+2 nécessite un historique fiable, elle ne peut pas être déduite de l'XP.
+État du code actualisé : le réessai guidé est actif dans les missions et l'entraînement interactif ; sans indice rédigé, le corrigé reste accessible. Les échecs de l'entraînement restent surtout dans l'état React de la leçon ; `useLessonPractice` appelle le callback de récompense sur une bonne réponse. Une reprise automatique des erreurs à J+2 nécessite un historique fiable, elle ne peut pas être déduite de l'XP.
 
 ## 3. Donner une raison simple de revenir
 

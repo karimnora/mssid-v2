@@ -2,6 +2,8 @@
 
 Date : 12 novembre 2026.
 
+Mise à jour du 13 novembre : l'[état des lieux V1](audits/2026-11-13-etat-des-lieux-v1.md) récapitule la couverture actuelle (170 missions sur 389 cours), les derniers commits Didou/sciences/écoute, les vérifications et la recette restante. Les descriptions datées du 12 ci-dessous conservent le contexte de départ.
+
 ## Objectif
 
 **Priorité de travail actualisée : première minute, boucle d'exercice, retour le lendemain.** La [séquence ciblée](PRIORITES-V1-PREMIERE-MINUTE-EXERCICE-RETOUR.md) reprend la recommandation transmise par Karim : réutiliser les briques existantes et viser dix notions difficiles, avec quatre mesures bien définies. Les fonctions décrites comme à faire ne sont pas annoncées comme livrées.
