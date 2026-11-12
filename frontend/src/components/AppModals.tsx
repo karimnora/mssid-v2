@@ -31,6 +31,7 @@ const OfflinePacksManagerModal = lazy(() => import('./OfflinePacksManagerModal')
 const ProfileModal = lazy(() => import('./ProfileModal').then((m) => ({ default: m.ProfileModal })));
 const SettingsModal = lazy(() => import('./SettingsModal').then((m) => ({ default: m.SettingsModal })));
 const ParentNotebookModal = lazy(() => import('./ParentNotebookModal').then((m) => ({ default: m.ParentNotebookModal })));
+const DiagnosticModal = lazy(() => import('./diagnostic/DiagnosticModal').then((m) => ({ default: m.DiagnosticModal })));
 
 type Modals = ReturnType<typeof useAppModals>;
 
@@ -334,6 +335,10 @@ export const AppModals: React.FC<AppModalsProps> = ({
           onClose={() => modals.setIsParentNotebookOpen(false)}
           userProfile={userProfile}
           viewingGrade={grade}
+          onOpenDiagnostic={() => {
+            modals.setIsParentNotebookOpen(false);
+            modals.setIsDiagnosticOpen(true);
+          }}
           onReviewLesson={(lessonId) => {
             modals.setIsParentNotebookOpen(false);
             onReviewLesson(lessonId);
@@ -342,6 +347,20 @@ export const AppModals: React.FC<AppModalsProps> = ({
             modals.setIsParentNotebookOpen(false);
             onOpenExam(examId);
           } : undefined}
+        />
+      )}
+
+      {modals.isDiagnosticOpen && (
+        <DiagnosticModal
+          isOpen={modals.isDiagnosticOpen}
+          onClose={() => modals.setIsDiagnosticOpen(false)}
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+          grade={grade}
+          onReviewLesson={(lessonId) => {
+            modals.setIsDiagnosticOpen(false);
+            onReviewLesson(lessonId);
+          }}
         />
       )}
     </Suspense>

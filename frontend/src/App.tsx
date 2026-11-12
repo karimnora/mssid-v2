@@ -1037,7 +1037,7 @@ function AppContent() {
       {journeyAvailable && !premiumPlanetHome && nav.isHomeActive && !journeyOpen && (
         <JourneyMapShortcut hasMap={journeyForGrade(nav.grade) !== null} onOpen={() => openJourney(journeyForGrade(nav.grade) ? 'map' : 'hub')} />
       )}
-      <EmailDeepLink grade={nav.grade} onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} />
+      <EmailDeepLink grade={nav.grade} onOpenNotebook={() => modals.setIsParentNotebookOpen(true)} onOpenDiagnostic={() => modals.setIsDiagnosticOpen(true)} />
       <AppModals
         countdown={countdown}
         onPracticeResult={progress.handlePracticeResult}

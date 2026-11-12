@@ -35,6 +35,7 @@ import java.util.Map;
  * Weekly report e-mail to the parent (« حصيلة الأسبوع »), every Thursday evening in Algiers — the
  * end of the school week, before the Friday-Saturday weekend. One e-mail per family, listing each
  * child who worked this week; families with no activity get nothing (and cost no e-mail quota).
+ * Free families receive the short report, Family Premium the detailed one (WeeklyReportBuilder.html).
  *
  * Runs only when {@code app.weekly-report.enabled=true}, sends at most {@code max-per-run} e-mails
  * (Resend free plan: 100 per day), and records the send so a restart never repeats it.
@@ -105,7 +106,9 @@ public class WeeklyReportService {
             if (sent >= maxPerRun) break;
             List<WeeklyReportBuilder.ChildWeek> weeks = weeksFor(user, now);
             if (weeks.isEmpty()) continue;
-            String html = WeeklyReportBuilder.html(weeks, notebookUrl(), isPremium(user) ? null : offerUrl(), unsubscribeUrl(user));
+            // Premium families get the detailed report; every other family the short one, with the web offer.
+            boolean premium = isPremium(user);
+            String html = WeeklyReportBuilder.html(weeks, notebookUrl(), premium ? null : offerUrl(), unsubscribeUrl(user), premium);
             if (mail.sendHtmlEmail(user.getParentEmail(), WeeklyReportBuilder.subject(weeks), html)) {
                 user.setWeeklyReportLastSentAt(LocalDateTime.ofInstant(now, ALGIERS));
                 users.save(user);

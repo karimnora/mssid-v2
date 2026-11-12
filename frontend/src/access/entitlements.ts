@@ -44,6 +44,8 @@ export const ENTITLEMENTS = {
   musaidiHints: { tier: 'free', labelFr: '« مساعدي » : toutes les questions, indices et règle de la leçon', labelAr: 'مساعدي: كل الأسئلة والتلميحات وقاعدة الدرس', enforcedBy: 'client', gates: [] },
   guidedMethod: { tier: 'free', labelFr: 'Méthode guidée (maths 1AP–2AP)', labelAr: 'الطريقة الموجّهة (رياضيات 1AP–2AP)', enforcedBy: 'client', gates: [] },
   parentNotebookBasic: { tier: 'free', labelFr: 'Carnet parent : résumé et prochaine révision', labelAr: 'دفتر الولي: ملخص والمراجعة التالية', enforcedBy: 'client', gates: [] },
+  levelDiagnostic: { tier: 'free', labelFr: 'Diagnostic de niveau (maths 5AP) avec bilan pour le parent', labelAr: 'تشخيص المستوى (رياضيات 5AP) مع حصيلة للولي', enforcedBy: 'client', gates: [] },
+  weeklyReportLight: { tier: 'free', labelFr: 'Bilan de la semaine court : partage WhatsApp et e-mail du jeudi', labelAr: 'حصيلة الأسبوع المختصرة: مشاركة وبريد الخميس', enforcedBy: 'client+server', gates: ['components/ParentNotebookModal.tsx', 'backend WeeklyReportBuilder'] },
   firstSteps: { tier: 'free', labelFr: 'Démarrage guidé et e-mail du parent', labelAr: 'خطوتان للبدء', enforcedBy: 'client', gates: [] },
 
   // ——— Free with a limit ———
@@ -53,7 +55,7 @@ export const ENTITLEMENTS = {
   // ——— Family Premium ———
   journeyAllWorlds: { tier: 'premium', labelFr: `Carte de Didou : mondes ${FREE_JOURNEY_WORLDS + 1} à 8 et leurs médailles`, labelAr: 'خريطة ديدو: العوالم من 3 إلى 8', enforcedBy: 'client', gates: ['components/journey/JourneyScreen.tsx', 'utils/journeyProgress.ts'] },
   parentNotebookDetail: { tier: 'premium', labelFr: 'Carnet parent détaillé : compétences, historique, plan de la semaine', labelAr: 'دفتر الولي المفصّل', freeAllowance: 'résumé et prochaine révision', enforcedBy: 'client', gates: ['components/ParentNotebookModal.tsx'] },
-  weeklyReportShare: { tier: 'premium', labelFr: 'Bilan de la semaine partageable (WhatsApp)', labelAr: 'حصيلة الأسبوع للمشاركة', enforcedBy: 'client', gates: ['components/ParentNotebookModal.tsx'] },
+  weeklyReportShare: { tier: 'premium', labelFr: 'Bilan de la semaine détaillé : seul / avec indice, toutes les compétences, cahier de rattrapage', labelAr: 'حصيلة الأسبوع المفصّلة', freeAllowance: 'bilan court', enforcedBy: 'client+server', gates: ['components/ParentNotebookModal.tsx', 'backend WeeklyReportBuilder'] },
   cemPrep: { tier: 'premium', labelFr: 'Préparation au collège (5AP)', labelAr: 'التحضير للمتوسطة', freeAllowance: 'premier exercice du premier sujet', enforcedBy: 'client', gates: ['components/immersive/CemPrepLab.tsx'] },
   familyStudio: { tier: 'premium', labelFr: 'Studio famille : vacances, rentrée, révisions avant évaluation', labelAr: 'استوديو العائلة', freeAllowance: 'un exercice par séance', enforcedBy: 'client', gates: ['components/family/FamilyLearningStudio.tsx (droit Premium lu sur le serveur, contenu livré dans l’app)'] },
   familyWorkshops: { tier: 'premium', labelFr: 'Ateliers et laboratoires Premium (mosaïque, aventures, labos)', labelAr: 'ورشات ومختبرات Premium', freeAllowance: 'première mission de chaque atelier', enforcedBy: 'client', gates: ['components/family/*', 'components/garden/GardenMission.tsx', 'components/market/MarketMission.tsx'] },

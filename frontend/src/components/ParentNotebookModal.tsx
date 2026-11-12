@@ -2,14 +2,15 @@ import { MusaidiParentSummary } from './musaidi/MusaidiParentSummary';
 import { useProgressOwner } from '../utils/ownerStorage';
 import { ParentVillageReports } from './ParentVillageReports';
 import { FamilyParentSummary } from './family/FamilyParentSummary';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { BookOpen, Printer, X } from 'lucide-react';
 import { CourseLesson, UserProfile } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { useTranslation } from '../hooks/useTranslation';
 import { canUseWebCheckout } from '../utils/paymentPlatform';
-import { buildWeeklyReport, drawWeeklyReportCard, formatWeeklyReportText } from '../utils/weeklyReport';
+import { buildWeeklyReport, drawWeeklyReportCard, formatWeeklyReportText, lightWeeklyReport } from '../utils/weeklyReport';
+import { getDiagnosticSet } from '../data/diagnostic';
 import { shareImageBlob, sharePlainText } from '../utils/shareContent';
 import { useLocaleContext } from '../context/LocaleContext';
 import { buildParentNotebook, buildWeeklyPlan, formatWeeklyRecap, ParentNotebookRow } from '../utils/competenceProgress';
@@ -32,6 +33,8 @@ interface ParentNotebookModalProps {
   onReviewLesson: (lessonId: string) => void;
   /** Opens a mock paper of the exam bank (plan « avant la composition »). */
   onOpenExam?: (examId: string) => void;
+  /** Starts the free level check (the notebook closes first). */
+  onOpenDiagnostic?: () => void;
 }
 
 function sessionDay(iso: string): string {
@@ -105,6 +108,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   viewingGrade,
   onReviewLesson,
   onOpenExam,
+  onOpenDiagnostic,
 }) => {
   const progressOwner = useProgressOwner();
   const t = useTranslation('meta');
@@ -123,12 +127,14 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
   const [recapCopied, setRecapCopied] = useState(false);
   const [reportState, setReportState] = useState<'idle' | 'busy' | 'shared' | 'error'>('idle');
 
+  // Discard a pending export when this notebook closes or changes child/grade.
+  const exportGeneration = useRef(0);
   useEffect(() => {
-    if (!isOpen) {
-      setRecapCopied(false);
-      setReportState('idle');
-    }
-  }, [isOpen]);
+    exportGeneration.current += 1;
+    setRecapCopied(false);
+    setReportState('idle');
+    return () => { exportGeneration.current += 1; };
+  }, [isOpen, progressOwner, notebook.grade, notebook.childName]);
 
   if (!isOpen) return null;
 
@@ -197,6 +203,21 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
         </div>
 
         <div className="kids-modal-body p-5 space-y-5">
+          {onOpenDiagnostic && getDiagnosticSet(viewingGrade ?? userProfile.grade) && (
+            <section data-notebook-diagnostic className="rounded-3xl border-2 border-[#E7E2D7] bg-white p-4 space-y-2">
+              <p className="text-sm font-extrabold text-[var(--kids-ink)] leading-relaxed">
+                {locale === 'fr' ? 'Diagnostic de maths : où en est votre enfant ?' : 'تشخيص الرياضيات: أين وصل طفلكم؟'}
+              </p>
+              <p className="text-xs font-bold text-[var(--kids-muted)] leading-relaxed">
+                {locale === 'fr'
+                  ? 'Quelques questions que l’enfant fait seul, puis un bilan pour vous : réussi, à consolider, par quoi commencer.'
+                  : 'بعض الأسئلة يجيب عنها الطفل وحده، ثم حصيلة لكم: ما نجح فيه، ما يحتاج إلى تثبيت، وبماذا نبدأ.'}
+              </p>
+              <motion.button type="button" whileTap={{ scale: 0.95 }} onClick={onOpenDiagnostic} className="hit-target w-full rounded-2xl px-4 bg-[var(--brand-emerald)] text-white text-sm font-extrabold cursor-pointer">
+                {locale === 'fr' ? 'Lancer le diagnostic' : 'ابدأ التشخيص'}
+              </motion.button>
+            </section>
+          )}
           {premium && <ParentVillageReports profile={userProfile} grade={viewingGrade ?? userProfile.grade} onReview={handleReview} />}
           {premium && <MusaidiParentSummary grade={viewingGrade ?? userProfile.grade} courses={COURSES_DATA} onReview={handleReview} />}
           <FamilyParentSummary grade={viewingGrade ?? userProfile.grade} name={notebook.childName}/>
@@ -248,23 +269,27 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
             >
               {recapCopied ? t('parentNotebookCopied') : t('parentNotebookCopyRecap')}
             </motion.button>}
-            {canShareReport && <motion.button
+            <motion.button
               type="button"
               whileTap={{ scale: 0.95 }}
               disabled={reportState === 'busy'}
               data-share-weekly-report
               onClick={async () => {
+                const generation = exportGeneration.current;
                 setReportState('busy');
-                const report = buildWeeklyReport(notebook, plan);
+                // Free families share the short report; the detailed one is `weeklyReportShare`.
+                const full = buildWeeklyReport(notebook, plan);
+                const report = canShareReport ? full : lightWeeklyReport(full);
                 const text = formatWeeklyReportText(report, locale);
                 try {
                   const blob = await drawWeeklyReportCard(report, locale);
+                  if (generation !== exportGeneration.current) return;
                   const outcome = blob
                     ? await shareImageBlob(blob, `bilan-${report.toDate}.png`, text)
                     : await sharePlainText(text);
-                  setReportState(outcome === 'cancelled' ? 'idle' : 'shared');
+                  if (generation === exportGeneration.current) setReportState(outcome === 'cancelled' ? 'idle' : 'shared');
                 } catch {
-                  setReportState('error');
+                  if (generation === exportGeneration.current) setReportState('error');
                 }
               }}
               className="hit-target w-full rounded-2xl px-4 bg-[#25D366] text-[#073B1F] text-sm font-extrabold cursor-pointer disabled:opacity-60"
@@ -274,7 +299,7 @@ export const ParentNotebookModal: React.FC<ParentNotebookModalProps> = ({
                 : reportState === 'shared'
                   ? (locale === 'fr' ? 'Bilan partagé ✓' : 'تمت مشاركة الحصيلة ✓')
                   : (locale === 'fr' ? 'Partager le bilan de la semaine (WhatsApp)' : 'شارك حصيلة الأسبوع (واتساب)')}
-            </motion.button>}
+            </motion.button>
             {reportState === 'error' && <p role="alert" className="text-sm font-bold text-[var(--kids-ink)]">{locale === 'fr' ? 'Partage impossible pour le moment. Utilisez « copier » ci-dessus.' : 'تعذّرت المشاركة الآن. استعمل زر النسخ أعلاه.'}</p>}
           </section>
 

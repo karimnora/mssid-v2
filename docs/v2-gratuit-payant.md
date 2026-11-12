@@ -13,12 +13,14 @@ Ce tableau est **généré** depuis `frontend/src/access/entitlements.ts`, la se
 | « مساعدي » : toutes les questions, indices et règle de la leçon | Gratuit | sans limite | app | `musaidiHints` |
 | Méthode guidée (maths 1AP–2AP) | Gratuit | sans limite | app | `guidedMethod` |
 | Carnet parent : résumé et prochaine révision | Gratuit | sans limite | app | `parentNotebookBasic` |
+| Diagnostic de niveau (maths 5AP) avec bilan pour le parent | Gratuit | sans limite | app | `levelDiagnostic` |
+| Bilan de la semaine court : partage WhatsApp et e-mail du jeudi | Gratuit | sans limite | app + serveur | `weeklyReportLight` |
 | Démarrage guidé et e-mail du parent | Gratuit | sans limite | app | `firstSteps` |
 | « مساعدي » : corrections détaillées pas à pas | Gratuit avec limite | 3 par jour et par compte | app + serveur | `musaidiCorrections` |
 | Cahiers de compétence V2 (recto, corrigé) | Gratuit avec limite | 3 nouveaux cahiers par semaine pour la famille ; aperçu d’un exercice | app + serveur | `competenceCahiers` |
 | Carte de Didou : mondes 3 à 8 et leurs médailles | Premium Famille | — | app | `journeyAllWorlds` |
 | Carnet parent détaillé : compétences, historique, plan de la semaine | Premium Famille | résumé et prochaine révision | app | `parentNotebookDetail` |
-| Bilan de la semaine partageable (WhatsApp) | Premium Famille | — | app | `weeklyReportShare` |
+| Bilan de la semaine détaillé : seul / avec indice, toutes les compétences, cahier de rattrapage | Premium Famille | bilan court | app + serveur | `weeklyReportShare` |
 | Préparation au collège (5AP) | Premium Famille | premier exercice du premier sujet | app | `cemPrep` |
 | Studio famille : vacances, rentrée, révisions avant évaluation | Premium Famille | un exercice par séance | app | `familyStudio` |
 | Ateliers et laboratoires Premium (mosaïque, aventures, labos) | Premium Famille | première mission de chaque atelier | app | `familyWorkshops` |

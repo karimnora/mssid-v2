@@ -110,9 +110,16 @@ class WeeklyReportServiceTest {
 
         ArgumentCaptor<String> html = ArgumentCaptor.forClass(String.class);
         verify(mail).sendHtmlEmail(eq("parent1@test.invalid"), contains("أمين"), html.capture());
-        assertThat(html.getValue()).contains("2</strong> بمفرده").contains("?open=offer").contains("?open=parent-notebook")
+        // Free family: short report — counts, one point to review, the rest left to the detailed report.
+        assertThat(html.getValue()).contains("<strong>4</strong> حصة").contains("أُمَيِّزُ التَّمْيِيزَ وَأُعْرِبُهُ")
+                .contains("الحصيلة المفصّلة").doesNotContain("بمفرده").doesNotContain("كراس الاستدراك")
+                .doesNotContain("<li>الكُسُورُ</li>")
+                .contains("?open=offer").contains("?open=parent-notebook")
                 .contains("/api/v1/reports/unsubscribe?u=1&amp;t=" + service.tokenFor(1));
-        verify(mail).sendHtmlEmail(eq("parent2@test.invalid"), anyString(), argThat(body -> !body.contains("?open=offer")));
+        // Premium family: detailed report, no offer link.
+        verify(mail).sendHtmlEmail(eq("parent2@test.invalid"), anyString(), argThat(body -> !body.contains("?open=offer")
+                && body.contains("2</strong> بمفرده") && body.contains("كراس الاستدراك") && body.contains("<li>الكُسُورُ</li>")
+                && !body.contains("الحصيلة المفصّلة")));
         assertThat(free.getWeeklyReportLastSentAt()).isEqualTo(LocalDateTime.of(2026, 11, 5, 19, 0));
         verify(users, times(2)).save(any(User.class));
     }

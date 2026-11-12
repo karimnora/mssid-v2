@@ -296,10 +296,19 @@ export interface WeeklyPlan {
   weekHelped: number;
 }
 
+/** Filter the same finite, bounded time window for the on-screen and exported summaries. */
+export function weeklySessions(notebook: ParentNotebook, now = new Date()): ParentNotebookSession[] {
+  const until = now.getTime();
+  const since = until - WEEK_MS;
+  return notebook.historySessions.filter(session => {
+    const at = Date.parse(session.at);
+    return Number.isFinite(at) && at >= since && at <= until;
+  }).sort((a, b) => Date.parse(b.at) - Date.parse(a.at));
+}
+
 /** Week counts use the full history. reviewCount is the current carnet state, not this week only. */
 export function buildWeeklyPlan(notebook: ParentNotebook, now = new Date()): WeeklyPlan {
-  const weekAgo = new Date(now.getTime() - WEEK_MS).toISOString();
-  const weekSessions = notebook.historySessions.filter((session) => session.at >= weekAgo);
+  const weekSessions = weeklySessions(notebook, now);
   const successes = weekSessions.filter((session) => session.outcome === 'success');
   const sum = (list: ParentNotebookSession[]) => list.reduce((total, session) => total + (session.count ?? 1), 0);
   // The most missed competence first: that is where tomorrow's 12 minutes help most.

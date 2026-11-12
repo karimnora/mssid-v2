@@ -37,6 +37,7 @@ export interface ExamPlan {
   trimester: 1 | 2 | 3;
   daysLeft: number;
   days: ExamPlanDay[];
+  unavailableReason?: 'invalid_date' | 'no_resources';
 }
 
 const SUBJECT_AR: Record<ExamPlanSubject, string> = { math: 'الرِّيَاضِيَّاتُ', arabic: 'اللُّغَةُ العَرَبِيَّةُ' };
@@ -49,14 +50,24 @@ export function toDay(date: Date): string {
   return `${y}-${m}-${d}`;
 }
 
-function parseDay(day: string): Date {
+function parseDay(day: string): Date | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return null;
   const [y, m, d] = day.split('-').map(Number);
-  return new Date(y, (m ?? 1) - 1, d ?? 1);
+  const date = new Date(0);
+  date.setFullYear(y, m - 1, d);
+  date.setHours(0, 0, 0, 0);
+  return date.getFullYear() === y && date.getMonth() === m - 1 && date.getDate() === d ? date : null;
+}
+
+export function isValidExamDate(day: string): boolean {
+  return parseDay(day) !== null;
 }
 
 export function daysBetween(from: Date, toDayString: string): number {
-  const start = parseDay(toDay(from));
-  return Math.round((parseDay(toDayString).getTime() - start.getTime()) / DAY_MS);
+  const end = parseDay(toDayString);
+  if (!end || !Number.isFinite(from.getTime())) return 0;
+  const ordinal = (date: Date) => Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+  return Math.round((ordinal(end) - ordinal(from)) / DAY_MS);
 }
 
 /**
@@ -69,13 +80,14 @@ export function suggestExamDate(now: Date): { date: string; trimester: 1 | 2 | 3
     { date: new Date(year, 11, 1), trimester: 1 },
     { date: new Date(year + 1, 2, 8), trimester: 2 },
     { date: new Date(year + 1, 4, 17), trimester: 3 },
+    { date: new Date(year + 1, 11, 1), trimester: 1 },
   ];
   const next = windows.find((w) => daysBetween(now, toDay(w.date)) >= 1) ?? windows[0];
   return { date: toDay(next.date), trimester: next.trimester };
 }
 
 export function trimesterForDate(day: string): 1 | 2 | 3 {
-  const month = parseDay(day).getMonth();
+  const month = parseDay(day)?.getMonth() ?? 8;
   if (month >= 8 && month <= 11) return 1;
   if (month <= 2) return 2;
   return 3;
@@ -98,10 +110,11 @@ function subjectOfCompetence(row: ParentNotebookRow): ExamPlanSubject | null {
 
 /** Most useful first: missed and not redone alone, then « avec aide » more than « seul », then not started this trimester. */
 function targetsFrom(notebook: ParentNotebook, lessons: CourseLesson[], trimester: 1 | 2 | 3): Target[] {
+  const availableLessons = new Set(lessons.map(l => l.id));
   const inTrimester = new Set(lessons.filter((l) => l.trimester === trimester).map((l) => l.id));
   const fromRow = (row: ParentNotebookRow, reason: Target['reason']): Target | null => {
     const subject = subjectOfCompetence(row);
-    if (!subject) return null;
+    if (!subject || !row.reviewLessonId || !availableLessons.has(row.reviewLessonId)) return null;
     return { subject, competenceId: row.competenceId, lessonId: row.reviewLessonId, labelAr: row.labelAr, labelFr: row.labelFr, reason };
   };
   const missed = [...notebook.review]
@@ -159,11 +172,19 @@ export function buildExamPlan(input: {
   const now = input.now ?? new Date();
   const grade = input.notebook.grade;
   const trimester = input.trimester ?? trimesterForDate(input.examDate);
+  const examDay = parseDay(input.examDate);
+  if (!examDay || !Number.isFinite(now.getTime())) {
+    return { examDate: input.examDate, trimester, daysLeft: 0, days: [], unavailableReason: 'invalid_date' };
+  }
   const daysLeft = daysBetween(now, input.examDate);
   const count = Math.max(0, Math.min(EXAM_PLAN_MAX_DAYS, daysLeft));
-  const start = parseDay(input.examDate).getTime() - count * DAY_MS;
+  const start = new Date(examDay);
+  start.setDate(start.getDate() - count);
   const gradeLessons = input.lessons.filter((l) => l.grade === grade);
   const queue = interleave(targetsFrom(input.notebook, gradeLessons, trimester));
+  if (!queue.length && !input.exams.some(e => e.grade === grade && e.trimester === trimester && (e.subject === 'math' || e.subject === 'arabic'))) {
+    return { examDate: input.examDate, trimester, daysLeft, days: [], unavailableReason: 'no_resources' };
+  }
   const usedPapers = new Set<string>();
   const pickPaper = (subject: ExamPlanSubject, prefer: 'devoir' | 'composition') => {
     const { devoirs, compositions } = papersFor(input.exams, grade, subject, trimester);
@@ -177,30 +198,41 @@ export function buildExamPlan(input: {
   let focusIndex = 0;
   let mockSubject: ExamPlanSubject = 'math';
   for (let i = 0; i < count; i++) {
-    const date = toDay(new Date(start + i * DAY_MS));
+    const calendarDay = new Date(start);
+    calendarDay.setDate(start.getDate() + i);
+    const date = toDay(calendarDay);
     const isLast = i === count - 1;
     if (isLast && count >= 2) {
       const papers = (['math', 'arabic'] as ExamPlanSubject[]).map((s) => pickPaper(s, 'composition')).filter((p): p is OfficialExam => Boolean(p));
-      days.push({
-        index: i, date, kind: 'full-mock', subject: 'math', minutes: 60, examIds: papers.map((p) => p.id), reason: 'mock',
-        titleAr: 'اخْتِبَارٌ تَجْرِيبِيٌّ كَامِلٌ فِي ظُرُوفِ القِسْمِ، ثُمَّ نَوْمٌ مُبَكِّرٌ',
-        titleFr: 'Composition blanche complète en conditions réelles, puis coucher tôt',
-      });
-      continue;
+      if (papers.length) {
+        days.push({
+          index: i, date, kind: 'full-mock', subject: 'math', minutes: 60, examIds: papers.map((p) => p.id), reason: 'mock',
+          titleAr: 'اخْتِبَارٌ تَجْرِيبِيٌّ كَامِلٌ فِي ظُرُوفِ القِسْمِ، ثُمَّ نَوْمٌ مُبَكِّرٌ',
+          titleFr: 'Composition blanche complète en conditions réelles, puis coucher tôt',
+        });
+        continue;
+      }
     }
     if (i % 3 === 2) {
       const paper = pickPaper(mockSubject, 'devoir');
-      days.push({
-        index: i, date, kind: 'mock', subject: mockSubject, minutes: 30, examIds: paper ? [paper.id] : [], reason: 'mock',
-        titleAr: `فَرْضٌ تَجْرِيبِيٌّ فِي ${SUBJECT_AR[mockSubject]} (30 دَقِيقَةً)`,
-        titleFr: `Devoir blanc de ${SUBJECT_FR[mockSubject]} (30 min)`,
-      });
-      mockSubject = mockSubject === 'math' ? 'arabic' : 'math';
-      continue;
+      if (paper) {
+        days.push({
+          index: i, date, kind: 'mock', subject: mockSubject, minutes: 30, examIds: [paper.id], reason: 'mock',
+          titleAr: `فَرْضٌ تَجْرِيبِيٌّ فِي ${SUBJECT_AR[mockSubject]} (30 دَقِيقَةً)`,
+          titleFr: `Devoir blanc de ${SUBJECT_FR[mockSubject]} (30 min)`,
+        });
+        mockSubject = mockSubject === 'math' ? 'arabic' : 'math';
+        continue;
+      }
     }
     const target = queue.length ? queue[focusIndex % queue.length] : undefined;
     focusIndex++;
     const subject = target?.subject ?? (i % 2 === 0 ? 'math' : 'arabic');
+    if (!target) {
+      const paper = pickPaper(subject, 'devoir');
+      if (paper) days.push({ index: i, date, kind: 'mock', subject, minutes: 30, examIds: [paper.id], reason: 'mock', titleAr: paper.titleAr, titleFr: paper.titleAr });
+      continue;
+    }
     days.push({
       index: i, date, kind: 'focus', subject, minutes: 20, examIds: [],
       competenceId: target?.competenceId, lessonId: target?.lessonId, reason: target?.reason ?? 'lesson',

@@ -108,6 +108,17 @@ public final class WeeklyReportBuilder {
      * shows prices; the e-mail may point to the web offer). {@code unsubscribeUrl} may be null.
      */
     public static String html(List<ChildWeek> children, String notebookUrl, String offerUrl, String unsubscribeUrl) {
+        return html(children, notebookUrl, offerUrl, unsubscribeUrl, true);
+    }
+
+    /**
+     * {@code detailed} is the Family Premium report. The short report, sent to every other family,
+     * keeps the week's counts, one success, one point to review and tomorrow's advice; the
+     * alone / with-a-hint split, the full lists and the catch-up cahier are left to the detailed one
+     * (same rule as the app: frontend utils/weeklyReport.ts, lightWeeklyReport).
+     */
+    public static String html(List<ChildWeek> children, String notebookUrl, String offerUrl, String unsubscribeUrl,
+                              boolean detailed) {
         StringBuilder out = new StringBuilder();
         out.append("<div dir=\"rtl\" lang=\"ar\" style=\"font-family:Tahoma,Arial,sans-serif;max-width:560px;margin:auto;color:#0f172a\">");
         out.append("<div style=\"background:#0B6B4F;color:#fff;padding:18px 20px;border-radius:16px 16px 0 0\">")
@@ -119,18 +130,21 @@ public final class WeeklyReportBuilder {
                     .append(" <span style=\"color:#64748b;font-size:13px\">(").append(esc(child.grade())).append(")</span></h2>");
             out.append("<p style=\"margin:4px 0\">✅ <strong>").append(child.sessions()).append("</strong> حصة، منها <strong>")
                     .append(child.successes()).append("</strong> ناجحة.</p>");
-            if (child.alone() + child.helped() > 0) {
+            List<String> succeeded = detailed ? child.succeeded() : child.succeeded().stream().limit(1).toList();
+            List<String> toReview = detailed ? child.toReview() : child.toReview().stream().limit(1).toList();
+            int left = child.succeeded().size() - succeeded.size() + child.toReview().size() - toReview.size();
+            if (detailed && child.alone() + child.helped() > 0) {
                 out.append("<p style=\"margin:4px 0\">💪 التمارين: <strong>").append(child.alone()).append("</strong> بمفرده، <strong>")
                         .append(child.helped()).append("</strong> بمساعدة تلميح.</p>");
             }
-            if (!child.succeeded().isEmpty()) {
-                out.append("<p style=\"margin:10px 0 4px;color:#0B6B4F;font-weight:bold\">نجح في:</p>").append(list(child.succeeded()));
+            if (!succeeded.isEmpty()) {
+                out.append("<p style=\"margin:10px 0 4px;color:#0B6B4F;font-weight:bold\">نجح في:</p>").append(list(succeeded));
             }
             if (child.toReview().isEmpty()) {
                 out.append("<p style=\"margin:10px 0 4px\">🔁 لا شيء للمراجعة حالياً.</p>");
             } else {
-                out.append("<p style=\"margin:10px 0 4px;color:#A86B00;font-weight:bold\">🔁 للمراجعة:</p>").append(list(child.toReview()));
-                if (child.missedToRedo() > 0) {
+                out.append("<p style=\"margin:10px 0 4px;color:#A86B00;font-weight:bold\">🔁 للمراجعة:</p>").append(list(toReview));
+                if (detailed && child.missedToRedo() > 0) {
                     out.append("<p style=\"margin:4px 0;font-size:13px\">📄 ").append(child.missedToRedo())
                             .append(" تمرين أخطأ فيه جاهز في كراس الاستدراك (دفتر الولي).</p>");
                 }
@@ -138,6 +152,10 @@ public final class WeeklyReportBuilder {
             if (child.nextAr() != null) {
                 out.append("<p style=\"margin:10px 0 0;background:#EEF4FF;border-radius:12px;padding:10px\">👉 نصيحة الغد: <strong>")
                         .append(SESSION_MINUTES).append(" دقيقة</strong> حول «").append(esc(child.nextAr())).append("».</p>");
+            }
+            if (left > 0) {
+                out.append("<p style=\"margin:10px 0 0;color:#64748b;font-size:13px\">+ ").append(left)
+                        .append(" سطر آخر في الحصيلة المفصّلة.</p>");
             }
             out.append("</div>");
         }
