@@ -17,7 +17,8 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const voiceReading = useFeatureFlag('voiceReading');
   const voiceReadingEnabled = voiceReading && !isTamazight;
   // Early-grade recordings keep their existing path; upper grades need an installed TTS voice.
-  const canReadAloud = voiceReadingEnabled && (isYoungGrade || rawVoiceAvailable === true);
+  const hasEarlyGradeRecordings = grade === '1AP' || grade === '2AP';
+  const canReadAloud = voiceReadingEnabled && (hasEarlyGradeRecordings || rawVoiceAvailable === true);
   const voiceAvailable = isTamazight ? false : rawVoiceAvailable;
 
   const speakSnippet = (key: string, text: string) => {

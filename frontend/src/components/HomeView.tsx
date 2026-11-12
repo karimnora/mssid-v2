@@ -6,6 +6,7 @@ import { DidouAvatarConfig } from '../types/ecosystem';
 import { COURSE_SUBJECTS_LIST, isToolAvailableForGrade } from '../data/subjectsData';
 import { DIDOU_OUTFITS_LIST } from '../data/outfitsData';
 import { useTranslation } from '../hooks/useTranslation';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { useLocaleContext } from '../context/LocaleContext';
 import { LabsPoleIcon } from './HomePoleIcons';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
@@ -156,19 +157,24 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
   // 1AP-3AP: same audio guidance level as CourseSelectionView — this is the very first screen a
   // fragile reader lands on, so it needs a listen button at least as much as the screens after it.
-  const showAudio = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const audioGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const voiceReading = useFeatureFlag('voiceReading');
   const [speakingKey, setSpeakingKey] = useState<string | null>(null);
   const speechLang = locale === 'fr' ? 'fr-FR' : 'ar-SA';
   const voiceAvailable = useVoiceAvailable(speechLang);
+  const arabicVoiceAvailable = useVoiceAvailable('ar-SA');
+  const showAudio = audioGrade && voiceReading && (grade !== '3AP' || voiceAvailable === true);
+  const showSubjectAudio = audioGrade && voiceReading && (grade !== '3AP' || arabicVoiceAvailable === true);
   useEffect(() => stopSpeech, []);
   const handleSpeak = (key: string, text: string) => {
+    if (!voiceReading) return;
     if (speakingKey === key) {
       stopSpeech();
       setSpeakingKey(null);
       return;
     }
     setSpeakingKey(key);
-    void speakText(text, speechLang, 0.85).then(() => {
+    void speakText(text, key.startsWith('subject-') ? 'ar-SA' : speechLang, 0.85).then(() => {
       setSpeakingKey((prev) => (prev === key ? null : prev));
     });
   };
@@ -225,7 +231,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   return (
     <MotionConfig reducedMotion="user">
     <div className="home-learning-space space-y-5" dir={direction} data-home-layout="full" data-home-grade={grade} data-home-poles="kids">
-      <VoiceUnavailableBanner visible={showAudio && voiceAvailable === false} />
+      <VoiceUnavailableBanner visible={audioGrade && voiceReading && (voiceAvailable === false || arabicVoiceAvailable === false)} />
       <section className="kids-hero kids-pop-soft relative overflow-hidden rounded-[30px] p-5 text-white lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-x-8 lg:py-4">
         <div className="min-w-0">
         <div className="flex items-start justify-between gap-3">
@@ -370,7 +376,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 nameFr={subject.nameFr}
                 data-subject-card={subject.id}
                 onClick={() => openSubject(subject.id)}
-                showAudio={showAudio}
+                showAudio={showSubjectAudio}
                 speakingKey={speakingKey}
                 onSpeak={handleSpeak}
               />

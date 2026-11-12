@@ -15,7 +15,7 @@ vi.mock('../utils/speech', async (importOriginal) => {
 });
 
 const renderHome = (
-  grade: '1AP' | '2AP' | '5AP',
+  grade: '1AP' | '2AP' | '3AP' | '5AP',
   extras?: Partial<React.ComponentProps<typeof HomeView>>,
 ) =>
   render(
@@ -33,6 +33,11 @@ const renderHome = (
   );
 
 describe('HomeView', () => {
+  it.each([false, null])('hides unavailable 3AP listening buttons (%s)', available => {
+    voiceAvailable.value = available;
+    renderHome('3AP');
+    expect(document.querySelectorAll('[data-tap-speak]')).toHaveLength(0);
+  });
   beforeEach(() => {
     setStoredLocale('ar');
     voiceAvailable.value = true;

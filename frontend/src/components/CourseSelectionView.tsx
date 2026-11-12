@@ -6,9 +6,10 @@ import { CourseBreadcrumb } from './CourseBreadcrumb';
 import { Card } from './ui';
 import { BookOpen, Lock } from 'lucide-react';
 import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
-import { speakText, stopSpeech, useVoiceAvailable } from '../utils/speech';
+import { speakText, speechLangForSubject, stopSpeech, useVoiceAvailable } from '../utils/speech';
 import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { useTranslation } from '../hooks/useTranslation';
+import { useFeatureFlag } from '../hooks/useFeatureFlag';
 import { SubjectIllustratedCard, SubjectVectorIllustration } from './SubjectIllustratedCard';
 import { LessonIllustratedCard } from './LessonIllustratedCard';
 import { useLocaleContext } from '../context/LocaleContext';
@@ -112,18 +113,27 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   // 1AP-3AP: these readers are still fragile, so every screen (not just lesson content) gets a
   // listen button on its instructions and subject names — matching the audio guidance level inside
   // a lesson instead of leaving the child alone with plain text until they've picked a subject.
-  const showAudio = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const audioGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
+  const voiceReading = useFeatureFlag('voiceReading');
   const [speakingKey, setSpeakingKey] = useState<string | null>(null);
   const voiceAvailable = useVoiceAvailable(locale === 'fr' ? 'fr-FR' : 'ar-SA');
+  const arabicVoiceAvailable = useVoiceAvailable('ar-SA');
+  const lessonLang = speechLangForSubject(selectedSubject ?? 'math');
+  const lessonVoiceAvailable = useVoiceAvailable(lessonLang);
+  const showAudio = audioGrade && voiceReading && (grade !== '3AP' || voiceAvailable === true);
+  const showSubjectAudio = audioGrade && voiceReading && (grade !== '3AP' || arabicVoiceAvailable === true);
+  const showLessonAudio = audioGrade && voiceReading && selectedSubject !== 'tamazight' && (grade !== '3AP' || lessonVoiceAvailable === true);
   useEffect(() => stopSpeech, []);
   const handleSpeak = (key: string, text: string) => {
+    if (!voiceReading) return;
     if (speakingKey === key) {
       stopSpeech();
       setSpeakingKey(null);
       return;
     }
     setSpeakingKey(key);
-    void speakText(text, /[\u0600-\u06ff]/u.test(text) ? 'ar-SA' : 'fr-FR', 0.85).then(() => {
+    const lang = key.startsWith('lesson-') ? lessonLang : /[\u0600-\u06ff]/u.test(text) ? 'ar-SA' : 'fr-FR';
+    void speakText(text, lang, 0.85).then(() => {
       setSpeakingKey((prev) => (prev === key ? null : prev));
     });
   };
@@ -134,7 +144,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   if (!selectedSubject) {
     return (
       <div className="course-browser space-y-5" dir={direction} data-course-browser="subjects">
-        {showAudio && <VoiceUnavailableBanner visible={voiceAvailable === false} />}
+        <VoiceUnavailableBanner visible={audioGrade && voiceReading && (voiceAvailable === false || arabicVoiceAvailable === false)} />
         <header className="course-catalog-heading flex items-center gap-4">
           <img src={didouGuide} alt="" width={64} height={92} decoding="async" className="w-16 h-[92px] object-contain shrink-0" />
           <div className="min-w-0 flex-1 space-y-2">
@@ -170,7 +180,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                   totalLessons={subjectLessons.length}
                   completedLessons={completedCount}
                   onClick={() => setSelectedSubject(subj.id)}
-                  showAudio={showAudio}
+                  showAudio={showSubjectAudio}
                   speakingKey={speakingKey}
                   onSpeak={handleSpeak}
                 />
@@ -232,7 +242,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
   // trimesters shown together, matching "ne jamais afficher les 3 trimestres en même temps".
   return (
     <div className="course-browser space-y-4 sm:space-y-5" dir={direction} data-course-browser="lessons">
-      {showAudio && <VoiceUnavailableBanner visible={voiceAvailable === false} />}
+      <VoiceUnavailableBanner visible={audioGrade && voiceReading && (voiceAvailable === false || lessonVoiceAvailable === false)} />
       <CourseBreadcrumb
         grade={grade}
         subjectId={selectedSubject}
@@ -304,7 +314,7 @@ export const CourseSelectionView: React.FC<CourseSelectionViewProps> = ({
                     isSuggested={!allTermDone && suggestedLesson?.id === lesson.id}
                     grade={grade}
                     onClick={() => onSelectLesson(lesson)}
-                    showAudio={showAudio}
+                    showAudio={showLessonAudio}
                     speakingKey={speakingKey}
                     onSpeak={handleSpeak}
                   />
