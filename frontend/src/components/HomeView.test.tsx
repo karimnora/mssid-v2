@@ -121,7 +121,7 @@ describe('HomeView', () => {
   it('wraps the bar at 100 XP without sounding like school progress dropped', () => {
     renderHome('5AP', { xp: 100, level: 2 });
     expect(screen.getByText('نحو المستوى التالي: 0٪')).toBeInTheDocument();
-    expect(screen.getByText(/المستوى 2/)).toBeInTheDocument();
+    expect(screen.getByText(/المستوى 2/, { selector: '.home-stat' })).toBeInTheDocument();
   });
 
   it('offers resume of the last activity without hiding subject cards', () => {
