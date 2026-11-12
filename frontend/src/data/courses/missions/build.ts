@@ -27,10 +27,12 @@ export type MissionExercise = CalcExercise | ChoiceExercise;
 
 export interface MissionSpec {
   lessonId: string;
+  /** French lessons: step titles and instructions are French so the French voice can read them. */
+  lang?: 'fr';
   titleAr: string;
   recallAr: string;
   observe: { titleAr: string; textAr: string; visual?: LearningPathVisual };
-  model: { titleAr: string; textAr: string; operationsAr?: string; solutionAr?: string; irabRows?: { wordAr: string; analysisAr: string }[] };
+  model: { titleAr: string; textAr: string; operationsAr?: string; solutionAr?: string; irabRows?: { wordAr: string; analysisAr: string }[]; tableLabels?: [word: string, analysis: string] };
   guided: MissionExercise;
   solo: MissionExercise[];
   transfer: MissionExercise;
@@ -54,8 +56,15 @@ const STEP_DEFAULTS = {
   transfer: { titleAr: 'وضعية جديدة', textAr: 'أطبق ما تعلمته في وضعية جديدة. أقرأ السؤال جيداً قبل أن أجيب.', levelLabelAr: 'وضعية جديدة', level: 3, xp: 20 },
 } as const;
 
-function toExercise(id: string, kind: keyof typeof STEP_DEFAULTS, ex: MissionExercise): ProgressiveExercise {
-  const defaults = STEP_DEFAULTS[kind];
+const STEP_DEFAULTS_FR = {
+  guided: { titleAr: 'Je complète avec Didou', textAr: 'Une partie de la réponse est donnée. Choisis, puis vérifie ta réponse.', levelLabelAr: 'Avec Didou', level: 1, xp: 10 },
+  independent: { titleAr: "J'essaie tout seul", textAr: "Cette fois, je travaille tout seul. Si je bloque, Didou m'aide.", levelLabelAr: 'Tout seul', level: 2, xp: 15 },
+  transfer: { titleAr: 'Une nouvelle situation', textAr: "J'utilise ce que j'ai appris dans une nouvelle situation. Je lis bien la question.", levelLabelAr: 'Nouvelle situation', level: 3, xp: 20 },
+} as const;
+const defaultsFor = (lang?: 'fr') => (lang === 'fr' ? STEP_DEFAULTS_FR : STEP_DEFAULTS);
+
+function toExercise(id: string, kind: keyof typeof STEP_DEFAULTS, ex: MissionExercise, lang?: 'fr'): ProgressiveExercise {
+  const defaults = defaultsFor(lang)[kind];
   const base = {
     id,
     level: defaults.level,
@@ -88,9 +97,10 @@ export interface BuiltMission {
 }
 
 export function buildMission(spec: MissionSpec): BuiltMission {
-  const guided = toExercise(`${spec.lessonId}-m-guided`, 'guided', spec.guided);
-  const solos = spec.solo.map((ex, index) => toExercise(`${spec.lessonId}-m-solo${index + 1}`, 'independent', ex));
-  const transfer = toExercise(`${spec.lessonId}-m-transfer`, 'transfer', spec.transfer);
+  const D = defaultsFor(spec.lang);
+  const guided = toExercise(`${spec.lessonId}-m-guided`, 'guided', spec.guided, spec.lang);
+  const solos = spec.solo.map((ex, index) => toExercise(`${spec.lessonId}-m-solo${index + 1}`, 'independent', ex, spec.lang));
+  const transfer = toExercise(`${spec.lessonId}-m-transfer`, 'transfer', spec.transfer, spec.lang);
   const visual = spec.observe.visual && { ...spec.observe.visual, captionAr: groupDigits(spec.observe.visual.captionAr) };
   const steps: LearningPathStep[] = [
     { kind: 'observe', titleAr: spec.observe.titleAr, textAr: groupDigits(spec.observe.textAr), visual },
@@ -100,19 +110,20 @@ export function buildMission(spec: MissionSpec): BuiltMission {
         ? { operationsAr: groupDigits(spec.model.operationsAr), solution: groupDigits(spec.model.solutionAr) }
         : undefined,
       irabTable: spec.model.irabRows,
+      irabTableLabels: spec.model.tableLabels,
     },
-    { kind: 'guided', titleAr: spec.guided.stepTitleAr ?? STEP_DEFAULTS.guided.titleAr, textAr: STEP_DEFAULTS.guided.textAr, exerciseId: guided.id },
+    { kind: 'guided', titleAr: spec.guided.stepTitleAr ?? D.guided.titleAr, textAr: D.guided.textAr, exerciseId: guided.id },
     ...solos.map((ex, index): LearningPathStep => ({
       kind: 'independent',
-      titleAr: spec.solo[index].stepTitleAr ?? (index === 0 ? STEP_DEFAULTS.independent.titleAr : 'أحاول وحدي مرة ثانية'),
-      textAr: index === 0 ? STEP_DEFAULTS.independent.textAr : 'نفس الطريقة مع مثال جديد.',
+      titleAr: spec.solo[index].stepTitleAr ?? (index === 0 ? D.independent.titleAr : spec.lang === 'fr' ? "J'essaie encore tout seul" : 'أحاول وحدي مرة ثانية'),
+      textAr: index === 0 ? D.independent.textAr : spec.lang === 'fr' ? 'La même méthode avec un nouvel exemple.' : 'نفس الطريقة مع مثال جديد.',
       exerciseId: ex.id,
     })),
-    { kind: 'transfer', titleAr: spec.transfer.stepTitleAr ?? STEP_DEFAULTS.transfer.titleAr, textAr: STEP_DEFAULTS.transfer.textAr, exerciseId: transfer.id },
+    { kind: 'transfer', titleAr: spec.transfer.stepTitleAr ?? D.transfer.titleAr, textAr: D.transfer.textAr, exerciseId: transfer.id },
   ];
   return {
     lessonId: spec.lessonId,
-    learningPath: { titleAr: spec.titleAr, prerequisiteAr: groupDigits(spec.recallAr), steps },
+    learningPath: { lang: spec.lang, titleAr: spec.titleAr, prerequisiteAr: groupDigits(spec.recallAr), steps },
     practiceExercises: [guided, ...solos],
     transferExercise: transfer,
   };

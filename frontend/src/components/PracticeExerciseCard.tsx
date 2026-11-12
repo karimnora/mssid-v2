@@ -4,7 +4,7 @@ import { ProgressiveExercise } from '../types';
 import { renderTextWithMath } from './MathExpression';
 import { IrabTable } from './lessonViewer/IrabTable';
 import { MathWorkedExample } from './lessonViewer/MathWorkedExample';
-import { formatEducationalText } from '../utils/textFormatter';
+import { formatEducationalText, latinTextDir } from '../utils/textFormatter';
 import { MultiplicationGroupsVisual } from './lessonViewer/MultiplicationGroupsVisual';
 import { shuffleOptions } from './lessonViewer/shared';
 import { isGuidedPractice, isMatchingPairCorrect } from './lessonViewer/practiceAssessment';
@@ -118,7 +118,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
 
       <div className="flex items-start gap-2 type-quiz text-slate-900">
         {leadAudio}
-        <p className={`whitespace-pre-line min-w-0 ${playful ? 'text-lg font-black leading-snug' : ''}`}>
+        <p dir={latinTextDir(ex.problemAr)} className={`whitespace-pre-line min-w-0 flex-1 ${playful ? 'text-lg font-black leading-snug' : ''}`}>
           {renderTextWithMath(renderArabicText(ex.problemAr))}
         </p>
       </div>
@@ -145,7 +145,8 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
                 key={opt.id}
                 disabled={isChecked}
                 onClick={() => setAnswer(opt.id)}
-                className={`text-right p-3 min-h-[var(--hit)] rounded-xl border type-quiz transition-all cursor-pointer flex items-center justify-between gap-2 min-w-0 ${style}`}
+                dir={latinTextDir(opt.textAr)}
+                className={`text-start p-3 min-h-[var(--hit)] rounded-xl border type-quiz transition-all cursor-pointer flex items-center justify-between gap-2 min-w-0 ${style}`}
               >
                 <span className="min-w-0 break-words">{renderTextWithMath(optionsNeedMarks ? opt.textAr : renderArabicText(opt.textAr))}</span>
                 {isChecked && opt.isCorrect && !holdCorrection && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />}
@@ -280,7 +281,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
       {!isChecked && maxHints > 0 && (
         <div className="space-y-1.5">
           {Array.from({ length: hintsRevealed }).map((_, i) => (
-            <p key={i} className="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
+            <p key={i} dir={latinTextDir(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0])} className="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-xl p-2.5">
               💡 {hasProgressiveHints ? renderArabicText(ex.progressiveHints![i].labelAr) : 'تلميح'}: {renderTextWithMath(renderArabicText(hasProgressiveHints ? ex.progressiveHints![i].contentAr : ex.hintsAr[0]))}
             </p>
           ))}
@@ -327,7 +328,7 @@ export const PracticeExerciseCard: React.FC<PracticeExerciseCardProps> = React.m
               tone="light"
             />
           ) : (
-            <span className="whitespace-pre-line">{formatEducationalText(renderArabicText(ex.detailedCorrectionAr))}</span>
+            <span dir={latinTextDir(ex.detailedCorrectionAr)} className="block whitespace-pre-line">{formatEducationalText(renderArabicText(ex.detailedCorrectionAr))}</span>
           )}
         </div>
       )}

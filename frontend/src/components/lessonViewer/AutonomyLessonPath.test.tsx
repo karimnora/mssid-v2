@@ -74,4 +74,35 @@ describe('child authored learning path', () => {
     fireEvent.click(screen.getByRole('button', { name: 'أنتقل إلى التدريبات' }));
     expect(onPractice).toHaveBeenCalledTimes(1);
   });
+
+  it('lays a French mission out left to right and never sends Arabic glosses to the French voice', () => {
+    const lesson = COURSES_DATA.find(l => l.id === 'french-3ap-p2-seq3-home-sounds')!;
+    const onSpeak = vi.fn();
+    function Harness() {
+      const practice = useLessonPractice(lesson, vi.fn());
+      return <AutonomyLessonPath lesson={lesson} path={lesson.learningPath!} practice={practice} renderArabicText={t => t ?? ''} onGoToPractice={vi.fn()} speakingKey={null} onSpeak={onSpeak} />;
+    }
+    render(<Harness />);
+    expect(screen.getByRole('heading', { level: 3 })).toHaveAttribute('dir', 'ltr');
+    // Tapping a preposition shows its meaning, Arabic gloss included, on screen.
+    fireEvent.click(screen.getByRole('button', { name: 'sous' }));
+    expect(document.querySelector('[data-sentence-part-result]')?.textContent).toContain('تحت');
+    fireEvent.click(screen.getByRole('button', { name: 'أتابع' }));
+    expect(screen.getByRole('columnheader', { name: 'La phrase' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'أتابع' }));
+    // Guided question: "… à l’intérieur de la cuisine (في)." The gloss is displayed but not spoken.
+    expect(screen.getByText(/à l’intérieur de la cuisine \(في\)/)).toHaveAttribute('dir', 'ltr');
+    screen.getAllByRole('button', { name: 'استمع' }).forEach(button => fireEvent.click(button));
+    const spokenTexts = onSpeak.mock.calls.map(call => call[1] as string);
+    expect(spokenTexts.length).toBeGreaterThan(0);
+    expect(spokenTexts.every(text => !/[\u0600-\u06FF]/.test(text))).toBe(true);
+    // One wrong try keeps the answer hidden, then the right choice unlocks the next step.
+    fireEvent.click(screen.getByRole('button', { name: 'sur' }));
+    fireEvent.click(screen.getByRole('button', { name: /تحقق من الإجابة/ }));
+    expect(screen.getByRole('button', { name: 'أتابع' })).toBeDisabled();
+    fireEvent.click(screen.getByRole('button', { name: /حاول مرة أخرى/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'dans' }));
+    fireEvent.click(screen.getByRole('button', { name: /تحقق من الإجابة/ }));
+    expect(screen.getByRole('button', { name: 'أتابع' })).toBeEnabled();
+  });
 });

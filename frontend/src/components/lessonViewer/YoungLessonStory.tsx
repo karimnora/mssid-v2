@@ -125,7 +125,12 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
 
       {example && (() => {
         const problemSnippet = parsePlayfulSnippet(show(example.problem), 6, themeEmoji);
-        const siblingEmoji = problemSnippet.letterVisual ? undefined : problemSnippet.emoji;
+        // "كم عدد التفاحات؟ 🍎🍎🍎" → "3 تفاحات": the answer shows the same three apples only when its
+        // number matches the picture; otherwise a single picture, never a wrong quantity.
+        const problemPictures = problemSnippet.emoji.match(/\p{Extended_Pictographic}\uFE0F?/gu) ?? [];
+        const answerNumber = Number(show(example.solution).match(/\d+/)?.[0]);
+        const sameQuantity = problemPictures.length > 1 && problemPictures.length === answerNumber && !problemSnippet.emoji.includes(' ');
+        const siblingEmoji = problemSnippet.letterVisual ? undefined : sameQuantity ? problemSnippet.emoji : problemPictures[0] ?? problemSnippet.emoji;
         const solutionSnippet = parsePlayfulSnippet(show(example.solution), 7, siblingEmoji);
         return (
           <div className="space-y-3">
@@ -231,6 +236,8 @@ const PlayfulSpeakCard: React.FC<{
       : stripArabicTashkeel(snippet.whisper)
     : '';
   const visual = snippet.letterVisual ?? snippet.emoji;
+  // Several pictures to count (🍎🍎🍎🍎🍎) must stay on screen: smaller, and allowed to wrap.
+  const manyPictures = (visual.match(/\p{Extended_Pictographic}/gu) ?? []).length > 2;
 
   return (
     <motion.div
@@ -252,7 +259,7 @@ const PlayfulSpeakCard: React.FC<{
           No onClick here: a duplicate tap zone doing the same thing as the button made a child
           reasonably wonder whether tapping the picture/text was a selectable answer. */}
       <div className="flex-1 flex flex-col items-center justify-center gap-1 text-center min-w-0">
-        <span className="text-4xl sm:text-5xl leading-tight font-black text-slate-800 dark:text-white inline-block py-0.5 select-none" aria-hidden="true">
+        <span data-playful-visual className={`${manyPictures ? 'text-2xl sm:text-3xl tracking-wide break-words max-w-full' : 'text-4xl sm:text-5xl'} leading-tight font-black text-slate-800 dark:text-white inline-block py-0.5 select-none`} aria-hidden="true">
           {visual}
         </span>
         <p className="text-xl sm:text-2xl font-black text-[#1E293B] leading-snug break-words">{headline}</p>

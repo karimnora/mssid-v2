@@ -123,3 +123,20 @@ export function formatEducationalText(text: string | undefined | null, options?:
 
   return formatted.trim();
 }
+
+/**
+ * French/English content lives inside an RTL page. A paragraph that is mostly Latin letters must be
+ * laid out left to right, otherwise its final punctuation jumps to the wrong side ("? Qui parle").
+ * Returns undefined for Arabic (or digit-only) text so the surrounding direction applies.
+ */
+export function latinTextDir(text: string | undefined | null): 'ltr' | undefined {
+  if (!text) return undefined;
+  const latin = text.match(/[A-Za-zÀ-ÖØ-öø-ÿŒœ]/g)?.length ?? 0;
+  const arabic = text.match(/[\u0600-\u06FF]/g)?.length ?? 0;
+  return latin > arabic && latin >= 2 ? 'ltr' : undefined;
+}
+
+/** A French voice cannot read Arabic glosses: drop "(…عربي…)" groups and any remaining Arabic run. */
+export function stripArabicGlosses(text: string): string {
+  return text.replace(/\s*\([^()]*[\u0600-\u06FF][^()]*\)/g, '').replace(/[\u0600-\u06FF][\u0600-\u06FF\s]*/g, ' ').replace(/[ \t]{2,}/g, ' ').trim();
+}

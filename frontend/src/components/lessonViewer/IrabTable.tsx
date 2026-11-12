@@ -12,6 +12,8 @@ interface IrabTableProps {
   wordLabelAr?: string;
   /** Default إعرابها. Pass دَوْرُهَا فِي الجُمْلَةِ for 3AP (no case marks). */
   analysisLabelAr?: string;
+  /** French grammar tables read left to right. */
+  dir?: 'rtl' | 'ltr';
 }
 
 /**
@@ -22,21 +24,22 @@ export const IrabTable: React.FC<IrabTableProps> = ({
   rows,
   wordLabelAr = 'الكَلِمَةُ',
   analysisLabelAr = 'إِعْرَابُهَا',
+  dir = 'rtl',
 }) => {
   if (rows.length === 0) return null;
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-amber-200/80 bg-amber-50/60 p-1" dir="rtl">
-      <table className="w-full min-w-[280px] border-collapse text-right" data-irab-table>
+    <div className="overflow-x-auto rounded-2xl border border-amber-200/80 bg-amber-50/60 p-1" dir={dir}>
+      <table className="w-full min-w-[280px] border-collapse text-start" data-irab-table>
         <caption className="sr-only">
           {wordLabelAr} و{analysisLabelAr}
         </caption>
         <thead>
           <tr className="bg-amber-100 text-slate-900">
-            <th scope="col" className="px-4 py-3 text-xs font-black rounded-tr-2xl">
+            <th scope="col" className="px-4 py-3 text-xs font-black rounded-ss-2xl">
               {wordLabelAr}
             </th>
-            <th scope="col" className="px-4 py-3 text-xs font-black rounded-tl-2xl">
+            <th scope="col" className="px-4 py-3 text-xs font-black rounded-se-2xl">
               {analysisLabelAr}
             </th>
           </tr>

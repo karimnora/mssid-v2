@@ -4,7 +4,7 @@ import { BoundPracticeCard, type PracticeBindings } from './practiceBindings';
 import { MathWorkedExample } from './MathWorkedExample';
 import { IrabTable } from './IrabTable';
 import { TapSpeakButton } from './TapSpeakButton';
-import { isolateMathRuns } from '../../utils/textFormatter';
+import { isolateMathRuns, latinTextDir, stripArabicGlosses } from '../../utils/textFormatter';
 import didouGuide from '../../assets/v2-reused/didou-point.webp';
 
 interface Props {
@@ -85,7 +85,7 @@ function SentenceParts({ visual, renderText }: { visual: Extract<LearningPathVis
   const word = selected === null ? null : visual.words[selected];
   return (
     <figure className="space-y-3" data-sentence-parts>
-      <div className="flex flex-wrap gap-2" dir="rtl">
+      <div className="flex flex-wrap gap-2" dir={latinTextDir(visual.words.map(item => item.textAr).join(' ')) ?? 'rtl'}>
         {visual.words.map((item, index) => (
           <button
             key={index}
@@ -104,12 +104,12 @@ function SentenceParts({ visual, renderText }: { visual: Extract<LearningPathVis
           </button>
         ))}
       </div>
-      <p role="status" data-sentence-part-result className="min-h-[60px] rounded-2xl bg-amber-100 p-3 text-base font-bold leading-relaxed text-amber-950">
+      <p role="status" data-sentence-part-result dir={word ? latinTextDir(`${word.textAr} ${word.kindAr} ${word.clueAr}`) : undefined} className="min-h-[60px] rounded-2xl bg-amber-100 p-3 text-base font-bold leading-relaxed text-amber-950">
         {word
           ? <>«{renderText(word.textAr)}»: <span className="font-black">{renderText(word.kindAr)}</span>. {renderText(word.clueAr)}</>
           : '👆 اضغط على كلمة من الجملة.'}
       </p>
-      {seen.size === visual.words.length && <figcaption className="text-sm font-bold text-[var(--app-text)]">🌟 {renderText(visual.captionAr)}</figcaption>}
+      {seen.size === visual.words.length && <figcaption dir={latinTextDir(visual.captionAr)} className="text-sm font-bold text-[var(--app-text)]">🌟 {renderText(visual.captionAr)}</figcaption>}
     </figure>
   );
 }
@@ -170,11 +170,13 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
   const canContinue = !isExerciseStep || !!(exercise && practice.practiceCorrect[exercise.id]);
   const isLast = stepIndex === path.steps.length - 1;
   const displayText = (text: string) => isolateMathRuns(renderArabicText(text));
-  const stepSpeech = renderArabicText([
+  // The French voice reads French only: Arabic glosses stay on screen but are not spoken.
+  const spoken = (text: string) => (path.lang === 'fr' ? stripArabicGlosses(text) : text);
+  const stepSpeech = spoken(renderArabicText([
     step.titleAr, step.textAr,
     !isExerciseStep ? step.visual?.captionAr : undefined,
     !isExerciseStep ? step.workedExample?.solution : undefined,
-  ].filter(Boolean).join('. '));
+  ].filter(Boolean).join('. ')));
   const moveToStep = (index: number) => {
     onStopSpeech?.();
     setStepIndex(index);
@@ -185,11 +187,11 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
       <div className="space-y-2">
         <div className="flex items-center gap-3">
           <img src={didouGuide} alt="" width={56} height={80} loading="lazy" decoding="async" className="w-14 h-20 shrink-0 object-contain" />
-          <h2 className="text-lg font-black text-[var(--app-text)]">{renderArabicText(path.titleAr)}</h2>
+          <h2 dir={latinTextDir(path.titleAr)} className="min-w-0 flex-1 text-lg font-black text-[var(--app-text)]">{renderArabicText(path.titleAr)}</h2>
         </div>
         <div className="flex items-start gap-2 rounded-2xl bg-[var(--app-card-subtle)] p-4 text-sm text-[var(--app-text)]">
-          {onSpeak && <TapSpeakButton snippetKey="path-prerequisite" text={renderArabicText(path.prerequisiteAr)} speakingKey={speakingKey} onSpeak={onSpeak} />}
-          <p className="leading-relaxed"><strong>أتذكر أولاً: </strong>{displayText(path.prerequisiteAr)}</p>
+          {onSpeak && <TapSpeakButton snippetKey="path-prerequisite" text={spoken(renderArabicText(path.prerequisiteAr))} speakingKey={speakingKey} onSpeak={onSpeak} />}
+          <p className="min-w-0 flex-1 leading-relaxed"><strong>أتذكر أولاً: </strong><bdi>{displayText(path.prerequisiteAr)}</bdi></p>
         </div>
         <div className="space-y-2" data-path-progress>
           <ol className="flex items-center gap-1.5" aria-hidden="true">
@@ -218,9 +220,9 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
       <div className="space-y-4 rounded-3xl border border-[var(--app-card-border)] bg-[var(--app-card-bg)] p-4 sm:p-6" data-learning-step={step.kind}>
         <div className="flex items-start gap-2">
           {onSpeak && <TapSpeakButton snippetKey={`path-step-${stepIndex}`} text={stepSpeech} speakingKey={speakingKey} onSpeak={onSpeak} />}
-          <div className="min-w-0 space-y-2">
-            <h3 ref={headingRef} tabIndex={-1} className="text-lg font-extrabold text-[var(--app-text)] focus-visible:outline-2 focus-visible:outline-emerald-600">{renderArabicText(step.titleAr)}</h3>
-            <p className="text-base leading-relaxed text-[var(--app-text)] whitespace-pre-line">{displayText(step.textAr)}</p>
+          <div className="min-w-0 flex-1 space-y-2">
+            <h3 ref={headingRef} tabIndex={-1} dir={latinTextDir(step.titleAr)} className="text-lg font-extrabold text-[var(--app-text)] focus-visible:outline-2 focus-visible:outline-emerald-600">{renderArabicText(step.titleAr)}</h3>
+            <p dir={latinTextDir(step.textAr)} className="text-base leading-relaxed text-[var(--app-text)] whitespace-pre-line">{displayText(step.textAr)}</p>
           </div>
         </div>
 
@@ -232,13 +234,15 @@ export function AutonomyLessonPath({ lesson, path, practice, renderArabicText, o
           <IrabTable
             rows={step.irabTable.map(row => ({ wordAr: renderArabicText(row.wordAr), analysisAr: renderArabicText(row.analysisAr) }))}
             // 3AP names a word's role; case analysis (iʿrāb) starts in 4AP.
-            analysisLabelAr={lesson.grade === '3AP' ? renderArabicText('دَوْرُهَا فِي الجُمْلَةِ') : undefined}
+            analysisLabelAr={step.irabTableLabels?.[1] ?? (lesson.grade === '3AP' ? renderArabicText('دَوْرُهَا فِي الجُمْلَةِ') : undefined)}
+            wordLabelAr={step.irabTableLabels?.[0]}
+            dir={path.lang === 'fr' ? 'ltr' : 'rtl'}
           />
         )}
         {isExerciseStep && exercise && (
           <BoundPracticeCard
             key={exercise.id} ex={exercise} practice={practice} renderArabicText={renderArabicText} retryFirst
-            leadAudio={onSpeak ? <TapSpeakButton snippetKey={`path-exercise-${exercise.id}`} text={renderArabicText(exercise.problemAr)} speakingKey={speakingKey} onSpeak={onSpeak} /> : undefined}
+            leadAudio={onSpeak ? <TapSpeakButton snippetKey={`path-exercise-${exercise.id}`} text={spoken(renderArabicText(exercise.problemAr))} speakingKey={speakingKey} onSpeak={onSpeak} /> : undefined}
           />
         )}
         {isExerciseStep && !exercise && <p role="alert">تعذّر عرض التمرين. يمكنك فتح قسم «أتدرب» من خطوات الدرس.</p>}

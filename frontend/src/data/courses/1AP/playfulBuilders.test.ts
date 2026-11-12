@@ -39,4 +39,35 @@ describe('1AP tap builders', () => {
     });
     expect(offenders).toEqual([]);
   });
+
+  it('never glues the digits of a multi-number answer into a fake number', () => {
+    // "اِثْنَا عَشَرَ. 10 + 2" used to become "103".
+    expect(oppositeChoice('اِثْنَا عَشَرَ. 10 + 2', ['10 + 4'])).toBe('10 + 4');
+    expect(oppositeChoice('58 > 45', [])).toBe('لَيْسَ هَذَا');
+  });
+
+  it('does not offer the same answer twice when two solutions differ only by vowel marks', () => {
+    expect(oppositeChoice('ز', ['زْ', 'ر'])).toBe('ر');
+  });
+});
+
+describe('1AP maths tap exercises', () => {
+  it('always offer a wrong answer of the same kind as the right one', () => {
+    const lessons = COURSES_1AP.filter(lesson => lesson.subject === 'math');
+    for (const lesson of lessons) {
+      const solutions = (lesson.progressiveExercises ?? []).map(ex => ex.solutionAr);
+      for (const ex of lesson.progressiveExercises ?? []) {
+        if (ex.type !== 'qcm') continue;
+        const wrong = ex.options!.filter(option => !option.isCorrect).map(option => option.textAr);
+        for (const text of wrong) {
+          // A full-sentence answer must not be paired with a bare number or another question's sentence.
+          if (/\s/.test(ex.solutionAr) && /[^\d\s<>+−=]/.test(ex.solutionAr)) {
+            expect(/^\d+$/.test(text), `${ex.id}: ${text}`).toBe(false);
+            expect(solutions.filter(solution => solution !== ex.solutionAr && /\s/.test(solution)).includes(text) && lesson.id !== 'math-1ap-t2-compare-quantities', `${ex.id}: ${text}`).toBe(false);
+          }
+          if (/^\d+$/.test(text)) expect(Number(text), `${ex.id}: ${text}`).toBeLessThan(100);
+        }
+      }
+    }
+  });
 });

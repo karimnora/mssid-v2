@@ -122,7 +122,7 @@ export const MATH_1AP_COMPARE: CourseLesson[] = [
     quiz: [
       {
         id: 'q1-math1ap-compare',
-        questionAr: '5 تَمْرَاتٍ و 2 تَمْرَتَانِ. 5 … 2',
+        questionAr: '5 تَمْرَاتٍ وَتَمْرَتَانِ. 5 … 2',
         options: [
           { id: 'a', textAr: 'أَكْثَرَ مِنْ', isCorrect: true, explanationAr: '5 أكبر من 2.' },
           { id: 'b', textAr: 'أَقَلَّ مِنْ', isCorrect: false },

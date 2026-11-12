@@ -9,10 +9,11 @@ import { ISLAMIC_2AP } from './islamic';
 import { ISLAMIC_2AP_GAPS } from './islamic-gaps';
 import { CIVICS_2AP } from './civics';
 import { CIVICS_2AP_GAPS } from './civics-gaps';
+import { withCheckedMathAnswers } from './mathAnswerChecks';
 
 export const COURSES_2AP: CourseLesson[] = [
-  ...MATH_2AP,
-  ...MATH_2AP_GAPS,
+  ...withCheckedMathAnswers(MATH_2AP),
+  ...withCheckedMathAnswers(MATH_2AP_GAPS),
   ...ARABIC_2AP,
   ...ARABIC_2AP_GAPS,
   ...SCIENCE_2AP,

@@ -73,3 +73,41 @@ describe('guided maths missions 3AP–5AP', () => {
     expect(duplicated).toEqual([]);
   });
 });
+
+describe('guided French missions 3AP–5AP', () => {
+  const frenchLessons = COURSES_DATA.filter(lesson => lesson.subject === 'french' && ['3AP', '4AP', '5AP'].includes(lesson.grade));
+
+  it('gives every French lesson a mission written for the French voice', () => {
+    expect(frenchLessons.filter(lesson => lesson.learningPath?.lang !== 'fr').map(lesson => lesson.id)).toEqual([]);
+  });
+
+  it.each(frenchLessons.map(lesson => [lesson.id, lesson] as const))('%s is a complete choice-only mission', (_id, lesson) => {
+    const path = lesson.learningPath!;
+    const kinds = path.steps.map(step => step.kind);
+    expect(kinds.slice(0, 3)).toEqual(['observe', 'model', 'guided']);
+    expect(kinds.at(-1)).toBe('transfer');
+    expect(kinds.slice(3, -1).every(kind => kind === 'independent')).toBe(true);
+    const exercises = exercisesOf(lesson);
+    for (const step of path.steps) {
+      // Spoken text (titles, instructions, questions) must start in French: the voice is fr-FR.
+      expect(/^[A-Za-zÀ-ÿ«]/.test(step.titleAr), step.titleAr).toBe(true);
+      if (!('exerciseId' in step)) {
+        if (step.kind === 'observe') expect(step.visual?.type).toBe('sentence_parts');
+        if (step.kind === 'model') expect(step.irabTable?.length ?? 0).toBeGreaterThanOrEqual(2);
+        continue;
+      }
+      const matches = exercises.filter(ex => ex.id === step.exerciseId);
+      expect(matches, step.exerciseId).toHaveLength(1);
+      const ex = matches[0];
+      expect(ex.type, ex.id).toBe('qcm');
+      const correct = ex.options!.filter(option => option.isCorrect);
+      expect(correct, ex.id).toHaveLength(1);
+      expect(new Set(ex.options!.map(option => option.textAr)).size, ex.id).toBe(ex.options!.length);
+      expect(ex.progressiveHints?.length ?? 0, ex.id).toBeGreaterThanOrEqual(2);
+      // A hint may guide, never hand over the answer word for word.
+      if (correct[0].textAr.length > 3) {
+        for (const hint of ex.progressiveHints ?? []) expect(hint.contentAr.includes(correct[0].textAr), `${ex.id}: ${hint.contentAr}`).toBe(false);
+      }
+    }
+  });
+});

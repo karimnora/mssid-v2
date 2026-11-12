@@ -348,6 +348,8 @@ export type LearningPathStep =
       workedExample?: { solution: string; operationsAr: string };
       /** Grammar method shown in the official two-column table (الكلمة | إعرابها). */
       irabTable?: { wordAr: string; analysisAr: string }[];
+      /** Column headings when the table is not Arabic iʿrāb (e.g. French: « Le mot » | « Sa nature »). */
+      irabTableLabels?: [word: string, analysis: string];
     }
   | {
       kind: 'guided' | 'independent' | 'transfer';
@@ -357,6 +359,8 @@ export type LearningPathStep =
     };
 
 export interface LearningPath {
+  /** Language of the lesson content when it is not Arabic: texts read left to right, French voice. */
+  lang?: 'fr';
   titleAr: string;
   prerequisiteAr: string;
   steps: LearningPathStep[];
