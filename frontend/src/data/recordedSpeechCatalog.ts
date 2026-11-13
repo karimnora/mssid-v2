@@ -7193,6 +7193,1070 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-1c33a69135b80def.mp3",
       "durationMs": 1950
     },
+    "كَيْفَ تَنْمُو النَّبْتَةُ الخَضْرَاءُ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e1444ee9df927848.mp3",
+      "durationMs": 3350
+    },
+    "أَتَعَرَّفُ عَلَى أَعْضَاءِ جِسْمِي وَحَرَكَتِي": {
+      "src": "/sounds/preschool/ar/course-cedar-4f8abb629ba7ecf0.mp3",
+      "durationMs": 4450
+    },
+    "أَتَحَرَّكُ وَأَرْتَاحُ: مَشْيٌ، جَرْيٌ، قَفْزٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-529ddada1dadf908.mp3",
+      "durationMs": 5200
+    },
+    "حَوَاسِّي الخَمْسُ وَنَظَافَتِي": {
+      "src": "/sounds/preschool/ar/course-cedar-40cfb42a8d214c86.mp3",
+      "durationMs": 3150
+    },
+    "فُصُولُ السَّنَةِ الأَرْبَعَةُ وَحَالَةُ الطَّقْسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-7b2817ca9478961d.mp3",
+      "durationMs": 4000
+    },
+    "النَّظَافَةُ الغِذَائِيَّةُ وَأَكْلِي الصِّحِّيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-9c5b48f592e6d495.mp3",
+      "durationMs": 5800
+    },
+    "وبأي عضو تتذوق تفاحة لذيذة ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-338d9f78fbac7b6f.mp3",
+      "durationMs": 4000
+    },
+    "أغمض عينيك وشمّ رائحة وردة فواحة — بأي عضو تشمّها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c9e9af941bb223b9.mp3",
+      "durationMs": 5050
+    },
+    "بِأَنْفِي أَشُمُّ الرَّوَائِحَ الزَّكِيَّةَ (حَاسَّةُ الشَّمِّ).": {
+      "src": "/sounds/preschool/ar/course-cedar-46e8c17c0fb779f6.mp3",
+      "durationMs": 4100
+    },
+    "بِأُذُنَيَّ أَسْمَعُ أَصْوَاتَ الطُّيُورِ وَالأَنَاشِيدِ (حَاسَّةُ السَّمْعِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-ccf16a87ffb21c1d.mp3",
+      "durationMs": 7150
+    },
+    "بِلِسَانِي أَتَذَوَّقُ الحُلْوَ وَالمَالِحَ (حَاسَّةُ الذَّوْقِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-55c6788a8c11c679.mp3",
+      "durationMs": 3950
+    },
+    "بِعَيْنَيَّ أَرَى الأَلْوَانَ وَالأَشْكَالَ وَالجَمَالَ (حَاسَّةُ البَصَرِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-ab2c1d4fff9b45bc.mp3",
+      "durationMs": 6950
+    },
+    "الحَاسَّةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-9e87fe184c34f561.mp3",
+      "durationMs": 1450
+    },
+    "النَّظَافَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-433d477a08429445.mp3",
+      "durationMs": 2100
+    },
+    "بِجِلْدِي أُحِسُّ بِالنَّاعِمِ وَالخَشِنِ وَالحَارِّ وَالبَارِدِ (حَاسَّةُ اللَّمْسِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-34c41706e72a2352.mp3",
+      "durationMs": 8900
+    },
+    "بأي عضو نستمع لنداء المعلم أو الأذان؟": {
+      "src": "/sounds/preschool/ar/course-cedar-6556e76107ad22f5.mp3",
+      "durationMs": 7600
+    },
+    "بِالأُذُنَيْنِ (حَاسَّةُ السَّمْعِ).": {
+      "src": "/sounds/preschool/ar/course-cedar-cda3f19e34a3ffac.mp3",
+      "durationMs": 3150
+    },
+    "العب مع الطفل لعبة \"المستكشف الذكي\": أغمض عينيه ودعه يخمن الأشياء بحاسة الشم أو اللمس فقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-202993c0c684ed3c.mp3",
+      "durationMs": 10050
+    },
+    "بأي عضو أرى الألوان الجميلة في لوحتي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-093ecff39a6a926f.mp3",
+      "durationMs": 5200
+    },
+    "متى يجب أن نغسل أيدينا بالماء والصابون؟": {
+      "src": "/sounds/preschool/ar/course-cedar-f93e8f21081655dd.mp3",
+      "durationMs": 4550
+    },
+    "العين ترى، الأذن تسمع، الأنف يشم، اللسان يتذوق، واليد تلمس. النظافة تحمي حواسي وجسمي.": {
+      "src": "/sounds/preschool/ar/course-cedar-3e8da9d988a8bc31.mp3",
+      "durationMs": 12600
+    },
+    "ارْبِطْ الحَاسَّةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-0a34b9feb4010d5f.mp3",
+      "durationMs": 1950
+    },
+    "بأي عضو أتذوق طعم العسل اللذيذ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b8ab21290fa13123.mp3",
+      "durationMs": 3850
+    },
+    "اللِّسَانُ (حَاسَّةُ الذَّوْقِ)": {
+      "src": "/sounds/preschool/ar/course-cedar-e0ac681bb8d932af.mp3",
+      "durationMs": 2750
+    },
+    "نغسل اليدين ب": {
+      "src": "/sounds/preschool/ar/course-cedar-4f98d20c7419af34.mp3",
+      "durationMs": 2250
+    },
+    "الأَنْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-04f12354d0fa13e2.mp3",
+      "durationMs": 1750
+    },
+    "مَاءٍ وَصَابُونٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-1ec59654f5731209.mp3",
+      "durationMs": 3150
+    },
+    "الأُذُنُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f3f58047f04d1469.mp3",
+      "durationMs": 1900
+    },
+    "تُرَابٍ": {
+      "src": "/sounds/preschool/ar/course-cedar-d8214c1e85288558.mp3",
+      "durationMs": 3050
+    },
+    "الزهرة أشمها ب": {
+      "src": "/sounds/preschool/ar/course-cedar-10e032d89eec2989.mp3",
+      "durationMs": 3200
+    },
+    "الأَنْفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-f2cde3036ea82835.mp3",
+      "durationMs": 1300
+    },
+    "الأُذُنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ad94ab8003a7c671.mp3",
+      "durationMs": 1350
+    },
+    "أغسل أسناني": {
+      "src": "/sounds/preschool/ar/course-cedar-639d1a336ec64ec6.mp3",
+      "durationMs": 1650
+    },
+    "مَرَّةً فِي السَّنَةِ": {
+      "src": "/sounds/preschool/ar/course-cedar-cb7b06ba9e61fc9d.mp3",
+      "durationMs": 1850
+    },
+    "صَبَاحًا وَمَسَاءً": {
+      "src": "/sounds/preschool/ar/course-cedar-7253717f122a6139.mp3",
+      "durationMs": 2350
+    },
+    "اربط كل عضو بالدور المناسب له!": {
+      "src": "/sounds/preschool/ar/course-cedar-1f59554d00289d51.mp3",
+      "durationMs": 4050
+    },
+    "الشَّمُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-8ff71daf9440ba98.mp3",
+      "durationMs": 1250
+    },
+    "السَّمْعُ": {
+      "src": "/sounds/preschool/ar/course-cedar-53b223617b4669c5.mp3",
+      "durationMs": 2200
+    },
+    "الرُّؤْيَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-10d1648eb0ef0df1.mp3",
+      "durationMs": 1650
+    },
+    "الذَّوْقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-f558df8ec5216720.mp3",
+      "durationMs": 2550
+    },
+    "اللَّمْسُ": {
+      "src": "/sounds/preschool/ar/course-cedar-946e6d22d64b6bef.mp3",
+      "durationMs": 1900
+    },
+    "اللِّسَانُ": {
+      "src": "/sounds/preschool/ar/course-cedar-70c7e7ed35083261.mp3",
+      "durationMs": 1700
+    },
+    "البَصَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-41ae58ba08c1c59d.mp3",
+      "durationMs": 1700
+    },
+    "اليد تحس ب": {
+      "src": "/sounds/preschool/ar/course-cedar-204b74612f72f505.mp3",
+      "durationMs": 1750
+    },
+    "اللَّمْسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-940ff17398165bd5.mp3",
+      "durationMs": 1800
+    },
+    "الذَّوْقِ": {
+      "src": "/sounds/preschool/ar/course-cedar-436dee2411d95624.mp3",
+      "durationMs": 1100
+    },
+    "العصفور يطير في السماء، والسمكة تسبح في الماء. لماذا لا تسبح السمكة في السماء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9ca3e40a7d72b013.mp3",
+      "durationMs": 8750
+    },
+    "الطُّيُورُ تَطِيرُ بِأَجْنِحَتِهَا فِي السَّمَاءِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-be46db4d87b731e4.mp3",
+      "durationMs": 3850
+    },
+    "الأَسْمَاكُ تَسْبَحُ فِي المَاءِ بِزَعَانِفِهَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-dfea44659e8b762c.mp3",
+      "durationMs": 4600
+    },
+    "كَثِيرٌ مِنَ الحَيَوَانَاتِ كَالكَلْبِ وَالقِطِّ تَمْشِي عَلَى أَرْجُلِهَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-e318affb9d65ecad.mp3",
+      "durationMs": 6300
+    },
+    "الأَرْنَبُ يَقْفِزُ بِرِجْلَيْهِ الخَلْفِيَّتَيْنِ القَوِيَّتَيْنِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-c4ece23e20821dd4.mp3",
+      "durationMs": 5350
+    },
+    "الأَفْعَى لَيْسَ لَهَا أَرْجُلٌ فَهِيَ تَزْحَفُ عَلَى بَطْنِهَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-57a0da9e355fb2ab.mp3",
+      "durationMs": 7300
+    },
+    "التَّنَقُّلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-559ebf5c7945412d.mp3",
+      "durationMs": 1600
+    },
+    "الزَّحْفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-89fb7538388682f7.mp3",
+      "durationMs": 2300
+    },
+    "كيف تتنقل السمكة في الماء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a14b0248e1f78570.mp3",
+      "durationMs": 2800
+    },
+    "تَسْبَحُ بِزَعَانِفِهَا .": {
+      "src": "/sounds/preschool/ar/course-cedar-08615db913aa5472.mp3",
+      "durationMs": 2950
+    },
+    "لماذا تزحف الأفعى على بطنها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-212759fe0a91da08.mp3",
+      "durationMs": 3050
+    },
+    "كيف يتنقل العصفور في السماء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1187fff8a3660ca0.mp3",
+      "durationMs": 4000
+    },
+    "العب مع الطفل تقليد حركة كل حيوان: طيران بالذراعين، سباحة، قفز كالأرنب، وزحف على الأرض.": {
+      "src": "/sounds/preschool/ar/course-cedar-6cbfc7f881c31e9b.mp3",
+      "durationMs": 9900
+    },
+    "الطيور تطير، الأسماك تسبح، أغلب الحيوانات تمشي، الأرنب يقفز، والأفعى تزحف.": {
+      "src": "/sounds/preschool/ar/course-cedar-136ce295749a5acd.mp3",
+      "durationMs": 9100
+    },
+    "بِزَعَانِفِهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-368e6219572c16af.mp3",
+      "durationMs": 2400
+    },
+    "بماذا تسبح السمكة في الماء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-9add6d965b46bd2a.mp3",
+      "durationMs": 3750
+    },
+    "بِأَجْنِحَتِهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-0fccc7b565bb097f.mp3",
+      "durationMs": 2850
+    },
+    "الجَنَاحَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-78927e38b024a903.mp3",
+      "durationMs": 1700
+    },
+    "بِرِجْلَيْهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-6de367c5b4be27f5.mp3",
+      "durationMs": 2200
+    },
+    "الزَّعَانِفِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1a30f1d5e441b172.mp3",
+      "durationMs": 1400
+    },
+    "العصفور يتنقل ب": {
+      "src": "/sounds/preschool/ar/course-cedar-606e17c6d1392b0d.mp3",
+      "durationMs": 2950
+    },
+    "يَقْفِزُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3358d1f80a774375.mp3",
+      "durationMs": 1050
+    },
+    "الأرنب": {
+      "src": "/sounds/preschool/ar/course-cedar-208cdb2f78cd44ca.mp3",
+      "durationMs": 1700
+    },
+    "يَسْبَحُ كَالسَّمَكِ": {
+      "src": "/sounds/preschool/ar/course-cedar-359c3868d401104a.mp3",
+      "durationMs": 2300
+    },
+    "السمك في": {
+      "src": "/sounds/preschool/ar/course-cedar-2b8652a40a80e165.mp3",
+      "durationMs": 1750
+    },
+    "المَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-40e175664d608364.mp3",
+      "durationMs": 1750
+    },
+    "السَّمَكَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-44786e0a73592694.mp3",
+      "durationMs": 1400
+    },
+    "السَّمَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-de7e83d2627e46e2.mp3",
+      "durationMs": 2100
+    },
+    "السِّبَاحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-3804f864c6eac43d.mp3",
+      "durationMs": 1600
+    },
+    "اختر طريقة التنقل الصحيحة لكل حيوان!": {
+      "src": "/sounds/preschool/ar/course-cedar-1d43f9f02006a789.mp3",
+      "durationMs": 4550
+    },
+    "الطَّيَرَانُ": {
+      "src": "/sounds/preschool/ar/course-cedar-824e52e06ca2bb51.mp3",
+      "durationMs": 1750
+    },
+    "القَفْزُ": {
+      "src": "/sounds/preschool/ar/course-cedar-36ff8004b44b63ee.mp3",
+      "durationMs": 1650
+    },
+    "الأَرْنَبُ": {
+      "src": "/sounds/preschool/ar/course-cedar-2aa970403e6cf1c8.mp3",
+      "durationMs": 1600
+    },
+    "الثعبان": {
+      "src": "/sounds/preschool/ar/course-cedar-4099d2aecc0ec07a.mp3",
+      "durationMs": 1600
+    },
+    "يَطِيرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-12fbaf4b67acc709.mp3",
+      "durationMs": 1450
+    },
+    "يَزْحَفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-87b6e87f67da5f49.mp3",
+      "durationMs": 1150
+    },
+    "يَرْكُضُ": {
+      "src": "/sounds/preschool/ar/course-cedar-d3c44de46b800811.mp3",
+      "durationMs": 1200
+    },
+    "الحصان": {
+      "src": "/sounds/preschool/ar/course-cedar-b6c218ef27f24e44.mp3",
+      "durationMs": 2200
+    },
+    "رَأْسِي فِي الأَعْلَى، وَفِيهِ عَيْنَايَ وَأَنْفِي وَأُذُنَايَ وَفَمِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-d179d7a6fc1c47da.mp3",
+      "durationMs": 6750
+    },
+    "جِذْعِي يَحْمِي بَطْنِي وَصَدْرِي وَظَهْرِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-ba079f0693680793.mp3",
+      "durationMs": 4350
+    },
+    "يَدَايَ أَسْتَعْمِلُهُمَا لِلْكِتَابَةِ وَالرَّسْمِ وَالأَكْلِ وَاللَّعِبِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-966f857daba21452.mp3",
+      "durationMs": 8600
+    },
+    "ضع يدك على رأسك ، ثم على بطنك، ثم حرك ركبتيك . كيف يساعدنا جسمنا على اللعب والقفز؟": {
+      "src": "/sounds/preschool/ar/course-cedar-31e49ad28e8ff084.mp3",
+      "durationMs": 8850
+    },
+    "العُضْوُ": {
+      "src": "/sounds/preschool/ar/course-cedar-9b0f9b4e7eab534a.mp3",
+      "durationMs": 1450
+    },
+    "المَفْصِلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-bf09dbf3ab2aad66.mp3",
+      "durationMs": 1450
+    },
+    "رِجْلاَيَ أَسْتَعْمِلُهُمَا لِلْمَشْيِ وَالجَرْيِ وَالقَفْزِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-cfee20127db1e192.mp3",
+      "durationMs": 6800
+    },
+    "بأي طرف من أطرافي أركض وألعب بالكرة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-56535ba92b1ef399.mp3",
+      "durationMs": 4200
+    },
+    "بِالرِّجْلَيْنِ .": {
+      "src": "/sounds/preschool/ar/course-cedar-104ced2f794890ee.mp3",
+      "durationMs": 2300
+    },
+    "بأي عضو أمسك قلمي لأكتب وأرسم لوحاتي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b47b7335090269c4.mp3",
+      "durationMs": 4850
+    },
+    "العب لعبة سريعة: \"المس الكتف، المس الركبة، المس الأنف!\" لتثبيت أسماء الأعضاء بالحركة والمرح.": {
+      "src": "/sounds/preschool/ar/course-cedar-a55f5db7ff1eea0e.mp3",
+      "durationMs": 9750
+    },
+    "رأسي في الأعلى، جذعي في الوسط، وأطرافي (يداي ورجلاي) للحركة والعمل. أحافظ على صحتي بالغذاء والنوم.": {
+      "src": "/sounds/preschool/ar/course-cedar-deef4090d19c06cc.mp3",
+      "durationMs": 10200
+    },
+    "فِي الأَعْلَى": {
+      "src": "/sounds/preschool/ar/course-cedar-ecdc164d2f68a42d.mp3",
+      "durationMs": 1850
+    },
+    "أين يوجد الرأس بالنسبة لباقي أجزاء الجسم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-212edcb02a3c15cc.mp3",
+      "durationMs": 5200
+    },
+    "فِي الأَسْفَلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-06e199faeb1b5bdf.mp3",
+      "durationMs": 1750
+    },
+    "ما هو المشروب الصحي الذي يقوي عظامي وأسناني في الصباح؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d26209a219c360d9.mp3",
+      "durationMs": 5100
+    },
+    "نمشي ب": {
+      "src": "/sounds/preschool/ar/course-cedar-63a7aa05f362305f.mp3",
+      "durationMs": 1300
+    },
+    "في الجانب": {
+      "src": "/sounds/preschool/ar/course-cedar-3c27136903407138.mp3",
+      "durationMs": 2200
+    },
+    "الأُذُنَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-82ce8fe9b999358d.mp3",
+      "durationMs": 1750
+    },
+    "الرِّجْلَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-58875057a87cceae.mp3",
+      "durationMs": 3150
+    },
+    "القَفَصُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b84d2c11f36b04ed.mp3",
+      "durationMs": 1450
+    },
+    "القلب يحميه": {
+      "src": "/sounds/preschool/ar/course-cedar-61408bcef64d4dd1.mp3",
+      "durationMs": 2250
+    },
+    "القَدَمُ": {
+      "src": "/sounds/preschool/ar/course-cedar-58b77162ee656176.mp3",
+      "durationMs": 1050
+    },
+    "الرياضة للجسم": {
+      "src": "/sounds/preschool/ar/course-cedar-c041b4827e9077c2.mp3",
+      "durationMs": 2100
+    },
+    "مُفِيدَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-00b5e0b2a2ab370e.mp3",
+      "durationMs": 1700
+    },
+    "مُضِرَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-8d2a9a10ce76baab.mp3",
+      "durationMs": 1300
+    },
+    "اختر العضو المناسب لكل حركة!": {
+      "src": "/sounds/preschool/ar/course-cedar-fde84da2866db71a.mp3",
+      "durationMs": 3850
+    },
+    "الرِّجْلاَنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-d03299c51f6edb52.mp3",
+      "durationMs": 1600
+    },
+    "اليَدَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ddee1b0d615bf77b.mp3",
+      "durationMs": 1350
+    },
+    "عضو نستعمله للجري وركل الكرة في الملعب": {
+      "src": "/sounds/preschool/ar/course-cedar-def8c504a2a499cb.mp3",
+      "durationMs": 4400
+    },
+    "أين توجد عيناي وأنفي وفمي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2fdea92d1e40fe7a.mp3",
+      "durationMs": 4000
+    },
+    "فِي الرَّأْسِ": {
+      "src": "/sounds/preschool/ar/course-cedar-fa550d53dfa942dc.mp3",
+      "durationMs": 1450
+    },
+    "في البطن": {
+      "src": "/sounds/preschool/ar/course-cedar-33261dbfbd62b2fe.mp3",
+      "durationMs": 1600
+    },
+    "الرأس مكانه": {
+      "src": "/sounds/preschool/ar/course-cedar-0162e3ed158d9950.mp3",
+      "durationMs": 1650
+    },
+    "الأَعْلَى": {
+      "src": "/sounds/preschool/ar/course-cedar-a9860bff6ee8d119.mp3",
+      "durationMs": 1250
+    },
+    "الأَسْفَلِ": {
+      "src": "/sounds/preschool/ar/course-cedar-cbc44febe9b26b80.mp3",
+      "durationMs": 1800
+    },
+    "اليَدِ": {
+      "src": "/sounds/preschool/ar/course-cedar-1545bcfccaa9d348.mp3",
+      "durationMs": 1300
+    },
+    "تجلس وتشرب ماء وتستريح.": {
+      "src": "/sounds/preschool/ar/course-cedar-945db70cfc52c1c1.mp3",
+      "durationMs": 3300
+    },
+    "بعد لعب كرة في الساحة تشعر بقلبك سريعاً وتتعب. ماذا تفعل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-85b97768b226019d.mp3",
+      "durationMs": 6150
+    },
+    "المَشْيُ حَرَكَةٌ هَادِئَةٌ: نَضَعُ قَدَماً تِلْوَ الأُخْرَى.": {
+      "src": "/sounds/preschool/ar/course-cedar-8347e1f5b073f008.mp3",
+      "durationMs": 6350
+    },
+    "الجَرْيُ حَرَكَةٌ سَرِيعَةٌ: قَدَمَانِ تَتَبَادَلَانِ بِسُرْعَةٍ.": {
+      "src": "/sounds/preschool/ar/course-cedar-af639c4974e250a9.mp3",
+      "durationMs": 5050
+    },
+    "القَفْزُ نَرْتَفِعُ عَنِ الأَرْضِ ثُمَّ نَهْبِطُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-e42bcb4f8d358c26.mp3",
+      "durationMs": 4500
+    },
+    "النَّوْمُ يُعِيدُ القُوَّةَ لِجِسْمِي.": {
+      "src": "/sounds/preschool/ar/course-cedar-3d468a7c6b6fbf21.mp3",
+      "durationMs": 4100
+    },
+    "بَعْدَ الجُهْدِ نَشْعُرُ بِالتَّعَبِ: نَجْلِسُ، نَشْرَبُ مَاءً، نَرْتَاحُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-f0dfa170f050d4f2.mp3",
+      "durationMs": 6150
+    },
+    "الحَرَكَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-91dcf0853f9b8e62.mp3",
+      "durationMs": 1700
+    },
+    "الجُهْدُ": {
+      "src": "/sounds/preschool/ar/course-cedar-c5371cf2501c5cd9.mp3",
+      "durationMs": 1650
+    },
+    "الرَّاحَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-99ebe64f4111e6f4.mp3",
+      "durationMs": 1750
+    },
+    "ماذا نفعل بعد الجري الطويل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b3023a7ffd35fafb.mp3",
+      "durationMs": 3250
+    },
+    "نَجْلِسُ وَنَشْرَبُ مَاءً وَنَرْتَاحُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-78c1ce2b5537c80d.mp3",
+      "durationMs": 4550
+    },
+    "أمشي، أجري، أقفز — ثم أرتاح وأشرب ماء وأنام.": {
+      "src": "/sounds/preschool/ar/course-cedar-a8cf33a1175cda06.mp3",
+      "durationMs": 6750
+    },
+    "قف: امشِ في المكان، ثم اجري، ثم اقفز — لاحظ الفرق. بعدها اجلس وخذ نفساً عميقاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-855c4bcdcde9753b.mp3",
+      "durationMs": 9500
+    },
+    "بعد لعب طويل في الساحة، ماذا يحتاج جسمي؟": {
+      "src": "/sounds/preschool/ar/course-cedar-45138bf1297444f8.mp3",
+      "durationMs": 5200
+    },
+    "ارْبِطْ الحَرَكَةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-0117236300680f34.mp3",
+      "durationMs": 1750
+    },
+    "الجري أسرع من:": {
+      "src": "/sounds/preschool/ar/course-cedar-5b0801e5d72ec689.mp3",
+      "durationMs": 2400
+    },
+    "المَشْيِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ecfd92f592b95fc6.mp3",
+      "durationMs": 1650
+    },
+    "جَرْيٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-719b29e8a141b59f.mp3",
+      "durationMs": 1700
+    },
+    "في الساحة بسرعة": {
+      "src": "/sounds/preschool/ar/course-cedar-bf4f614a514e2806.mp3",
+      "durationMs": 2150
+    },
+    "بعد التعب نشرب": {
+      "src": "/sounds/preschool/ar/course-cedar-0596c596d08e3947.mp3",
+      "durationMs": 2300
+    },
+    "النوم": {
+      "src": "/sounds/preschool/ar/course-cedar-2b058f9626890531.mp3",
+      "durationMs": 2200
+    },
+    "أي حركة نستخدمها للذهاب بهدوء إلى القسم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-644983c3ac6f0efe.mp3",
+      "durationMs": 4900
+    },
+    "بعد التعب": {
+      "src": "/sounds/preschool/ar/course-cedar-57098aacd8408a38.mp3",
+      "durationMs": 1400
+    },
+    "رَاحَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-949ce8f95455b29f.mp3",
+      "durationMs": 1250
+    },
+    "يَمْنَعُ النُّمُوَّ": {
+      "src": "/sounds/preschool/ar/course-cedar-389652432db7954b.mp3",
+      "durationMs": 2000
+    },
+    "يُعِيدُ القُوَّةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-8d32907eed5cd080.mp3",
+      "durationMs": 2700
+    },
+    "قَفْزٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-ab30a8cc9b526313.mp3",
+      "durationMs": 1300
+    },
+    "بعد اللعب الطويل": {
+      "src": "/sounds/preschool/ar/course-cedar-f5240e531ad82cdd.mp3",
+      "durationMs": 2200
+    },
+    "نَرْتَاحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b0fe27e5152f7ace.mp3",
+      "durationMs": 1600
+    },
+    "نَجْرِي أَكْثَرَ": {
+      "src": "/sounds/preschool/ar/course-cedar-6467a6cb5001f3bb.mp3",
+      "durationMs": 2400
+    },
+    "الجري": {
+      "src": "/sounds/preschool/ar/course-cedar-10509354d426e643.mp3",
+      "durationMs": 1050
+    },
+    "أَبْطَأُ": {
+      "src": "/sounds/preschool/ar/course-cedar-b927fae26d4b2b36.mp3",
+      "durationMs": 1850
+    },
+    "أَسْرَعُ مِنَ المَشْيِ": {
+      "src": "/sounds/preschool/ar/course-cedar-b7a4454b5839ac8b.mp3",
+      "durationMs": 2450
+    },
+    "ضع بذرة صغيرة في التراب واسقها كل يوم. ماذا سيحدث لها بعد أيام؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ebad8cc6047bc8e7.mp3",
+      "durationMs": 8000
+    },
+    "نَزْرَعُ البَذْرَةَ فِي التُّرَابِ وَنَسْقِيهَا بِالمَاءِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-02c340e7bbc82899.mp3",
+      "durationMs": 4650
+    },
+    "تَكْبُرُ النَّبْتَةُ شَيْئاً فَشَيْئاً وَتُخْرِجُ أَوْرَاقاً خَضْرَاءَ .": {
+      "src": "/sounds/preschool/ar/course-cedar-0c68020ba22fe761.mp3",
+      "durationMs": 5400
+    },
+    "تَنْبُتُ البَذْرَةُ وَيَظْهَرُ مِنْهَا جِذْرٌ صَغِيرٌ وَسَاقٌ خَضْرَاءُ .": {
+      "src": "/sounds/preschool/ar/course-cedar-7c182ec4ec2e488b.mp3",
+      "durationMs": 6700
+    },
+    "البَذْرَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-306fbedaa99e7f0d.mp3",
+      "durationMs": 1300
+    },
+    "الجِذْرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-551215e130b9eaba.mp3",
+      "durationMs": 1300
+    },
+    "تَحْتَاجُ النَّبْتَةُ إِلَى الشَّمْسِ وَالمَاءِ وَالتُّرَابِ لِتَنْمُوَ وَتُصْبِحَ قَوِيَّةً.": {
+      "src": "/sounds/preschool/ar/course-cedar-0af1b2ed55bfcbe5.mp3",
+      "durationMs": 6650
+    },
+    "ماذا تحتاج البذرة كي تنبت وتصبح نبتة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-02af98d8daa2857f.mp3",
+      "durationMs": 4600
+    },
+    "تَحْتَاجُ إِلَى المَاءِ وَالتُّرَابِ وَالشَّمْسِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-6b92104e4571964c.mp3",
+      "durationMs": 3950
+    },
+    "البذرة تحتاج ماءً وتراباً وشمساً لتنبت وتصبح نبتة خضراء كاملة.": {
+      "src": "/sounds/preschool/ar/course-cedar-ad5d6ad156d0713f.mp3",
+      "durationMs": 8050
+    },
+    "أين نزرع البذرة كي تنبت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c2004a26bf30587b.mp3",
+      "durationMs": 4200
+    },
+    "ماذا يحدث للنبتة إذا نسينا سقيها لأيام كثيرة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-656f489dedd83692.mp3",
+      "durationMs": 6000
+    },
+    "ازرع مع الطفل بذرة فول في كوب شفاف ومتابعة نموها يوماً بعد يوم — تجربة حقيقية تثبّت الدرس أكثر من أي شرح.": {
+      "src": "/sounds/preschool/ar/course-cedar-773588eba5cd66a7.mp3",
+      "durationMs": 13100
+    },
+    "زَهْرَةٌ كَامِلَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-d9f998d7756d5568.mp3",
+      "durationMs": 2200
+    },
+    "ارْتِبْ النُّمُوَّ": {
+      "src": "/sounds/preschool/ar/course-cedar-37882538fb71ac0f.mp3",
+      "durationMs": 3200
+    },
+    "جِذْرٌ صَغِيرٌ وَسَاقٌ خَضْرَاءُ": {
+      "src": "/sounds/preschool/ar/course-cedar-11031730fbceb0e0.mp3",
+      "durationMs": 4200
+    },
+    "ما أول جزء يظهر من البذرة بعد أن تنبت؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e8f8fb5508217c55.mp3",
+      "durationMs": 4650
+    },
+    "أول ما يظهر غالباً": {
+      "src": "/sounds/preschool/ar/course-cedar-9cd7387f722cc359.mp3",
+      "durationMs": 2300
+    },
+    "تَذْبُلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0cae499ec25b4080.mp3",
+      "durationMs": 1050
+    },
+    "جِذْرٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-bc2ba04eadacf896.mp3",
+      "durationMs": 1100
+    },
+    "بدون ماء النبتة": {
+      "src": "/sounds/preschool/ar/course-cedar-3655655c951a1218.mp3",
+      "durationMs": 2500
+    },
+    "تَضْحَكُ": {
+      "src": "/sounds/preschool/ar/course-cedar-38868c5075c82a71.mp3",
+      "durationMs": 1100
+    },
+    "أَخْضَرُ": {
+      "src": "/sounds/preschool/ar/course-cedar-0f5c5dd40defa8c9.mp3",
+      "durationMs": 1150
+    },
+    "الأوراق لونها غالباً": {
+      "src": "/sounds/preschool/ar/course-cedar-6d1e290bbd3b1380.mp3",
+      "durationMs": 3200
+    },
+    "أَزْرَقُ": {
+      "src": "/sounds/preschool/ar/course-cedar-90b9ca5274d1b081.mp3",
+      "durationMs": 1500
+    },
+    "اختر ما تحتاجه النبتة لتنمو بشكل سليم!": {
+      "src": "/sounds/preschool/ar/course-cedar-6279cee215e57032.mp3",
+      "durationMs": 3950
+    },
+    "كي تنبت البذرة وتكبر تحتاج إلى...": {
+      "src": "/sounds/preschool/ar/course-cedar-4c3f3180d417a499.mp3",
+      "durationMs": 4500
+    },
+    "حَجَرٌ وَثَلْجٌ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-4f5c28a607e52d2d.mp3",
+      "durationMs": 3100
+    },
+    "مَاءٌ وَشَمْسٌ وَتُرَابٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-f6dc99888b7d90c0.mp3",
+      "durationMs": 3300
+    },
+    "النبتة تحتاج": {
+      "src": "/sounds/preschool/ar/course-cedar-31fd8798172c3463.mp3",
+      "durationMs": 2450
+    },
+    "مَاءً وَضَوْءًا": {
+      "src": "/sounds/preschool/ar/course-cedar-1f498e92ed46a8f6.mp3",
+      "durationMs": 1800
+    },
+    "ظَلَامًا جَافًّا": {
+      "src": "/sounds/preschool/ar/course-cedar-716e1021971dfc7d.mp3",
+      "durationMs": 3100
+    },
+    "البذرة تُزرع في": {
+      "src": "/sounds/preschool/ar/course-cedar-516b4534161435fd.mp3",
+      "durationMs": 2550
+    },
+    "الثَّلْجِ": {
+      "src": "/sounds/preschool/ar/course-cedar-2cf3924c51c3ce94.mp3",
+      "durationMs": 1450
+    },
+    "التُّرَابِ": {
+      "src": "/sounds/preschool/ar/course-cedar-64a859caae9121a3.mp3",
+      "durationMs": 1800
+    },
+    "الورقة الخضراء": {
+      "src": "/sounds/preschool/ar/course-cedar-534e615cf4031a47.mp3",
+      "durationMs": 2750
+    },
+    "تَصْنَعُ الغِذَاءَ": {
+      "src": "/sounds/preschool/ar/course-cedar-52675796d28a2bde.mp3",
+      "durationMs": 2250
+    },
+    "تَمْشِي": {
+      "src": "/sounds/preschool/ar/course-cedar-80fafbc4527f6092.mp3",
+      "durationMs": 900
+    },
+    "وفي أي فصل نذهب إلى الشاطئ الجميل ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ae47aa995383d70c.mp3",
+      "durationMs": 4550
+    },
+    "في أي فصل تتساقط الثلوج ونلبس معطفاً دافئاً ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a740f75ec3954972.mp3",
+      "durationMs": 5950
+    },
+    "الرَّبِيعُ : الجو معتدل وجميل، وتتفتح الأزهار وتخضر الأشجار.": {
+      "src": "/sounds/preschool/ar/course-cedar-0c7c7585ab1837f2.mp3",
+      "durationMs": 8000
+    },
+    "الفَصْلُ": {
+      "src": "/sounds/preschool/ar/course-cedar-779882e27c614b2c.mp3",
+      "durationMs": 1600
+    },
+    "الصَّيْفُ : الجو حار وممتع، نلبس ملابس خفيفة ونذهب للعطلة.": {
+      "src": "/sounds/preschool/ar/course-cedar-3923c6c4de62d574.mp3",
+      "durationMs": 7950
+    },
+    "الخَرِيفُ : الجو متقلب، وتصفر أوراق الأشجار وتتساقط.": {
+      "src": "/sounds/preschool/ar/course-cedar-0e17f995ebff15e7.mp3",
+      "durationMs": 6400
+    },
+    "الشِّتَاءُ : الجو بارد وممطر، تتساقط الثلوج ونرتدي معاطف سميكة.": {
+      "src": "/sounds/preschool/ar/course-cedar-bc5008a60d12ba39.mp3",
+      "durationMs": 8450
+    },
+    "الطَّقْسُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a4d74b8f7ddae31a.mp3",
+      "durationMs": 1150
+    },
+    "في أي فصل تتفتح الأزهار الملونة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a77aa994935cea91.mp3",
+      "durationMs": 3800
+    },
+    "فِي فَصْلِ الرَّبِيعِ .": {
+      "src": "/sounds/preschool/ar/course-cedar-ddfdc49726d6e6d1.mp3",
+      "durationMs": 2350
+    },
+    "في أي فصل نذهب للسباحة في شاطئ البحر الجميل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fae4a8978706970f.mp3",
+      "durationMs": 5000
+    },
+    "ما هو اللباس المناسب عند نزول الأمطار والثلوج في الشتاء؟": {
+      "src": "/sounds/preschool/ar/course-cedar-55aab7a6ae4eff9d.mp3",
+      "durationMs": 6450
+    },
+    "ارسم دائرة الفصول الأربعة مع الطفل ولوّنوا الربيع بالوردي والأخضر، الصيف بالأصفر، الخريف بالبرتقالي، والشتاء بالأزرق والأبيض.": {
+      "src": "/sounds/preschool/ar/course-cedar-d9a82b5fdc965963.mp3",
+      "durationMs": 13250
+    },
+    "4 فصول في السنة: ربيع مزهر، صيف حار، خريف تتساقط أوراقه، وشتاء بارد ممطر. ألبس اللباس المناسب للطقس.": {
+      "src": "/sounds/preschool/ar/course-cedar-dfb29199d495e295.mp3",
+      "durationMs": 12850
+    },
+    "كم عدد فصول السنة في الطبيعة؟": {
+      "src": "/sounds/preschool/ar/course-cedar-1197100732b52767.mp3",
+      "durationMs": 2750
+    },
+    "4 فُصُولٍ (الرَّبِيعُ، الصَّيْفُ، الخَرِيفُ، وَالشِّتَاءُ)": {
+      "src": "/sounds/preschool/ar/course-cedar-fef4864bacab5ae0.mp3",
+      "durationMs": 6350
+    },
+    "فصلان فقط": {
+      "src": "/sounds/preschool/ar/course-cedar-3f20265e5d1d2545.mp3",
+      "durationMs": 1850
+    },
+    "6 فصول": {
+      "src": "/sounds/preschool/ar/course-cedar-8f1efb234b004354.mp3",
+      "durationMs": 2250
+    },
+    "كم فصلاً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-62e3be27ad9966f2.mp3",
+      "durationMs": 2350
+    },
+    "في الصيف نلبس": {
+      "src": "/sounds/preschool/ar/course-cedar-6ac969c2f74e8374.mp3",
+      "durationMs": 2350
+    },
+    "خَفِيفًا": {
+      "src": "/sounds/preschool/ar/course-cedar-0275bdc9be788b74.mp3",
+      "durationMs": 1300
+    },
+    "مِعْطَفًا ثَقِيلًا": {
+      "src": "/sounds/preschool/ar/course-cedar-0becd87cdf7e1673.mp3",
+      "durationMs": 2350
+    },
+    "المطر أكثر في": {
+      "src": "/sounds/preschool/ar/course-cedar-a48c931ee1ed3242.mp3",
+      "durationMs": 3000
+    },
+    "الشِّتَاءِ": {
+      "src": "/sounds/preschool/ar/course-cedar-ecbe2697b09ba0fe.mp3",
+      "durationMs": 2450
+    },
+    "فَصْلُ الشِّتَاءِ البَارِدِ": {
+      "src": "/sounds/preschool/ar/course-cedar-9d44f871dcb808b9.mp3",
+      "durationMs": 2450
+    },
+    "الصَّيْفِ الحَارِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-91ca930e2a857428.mp3",
+      "durationMs": 2150
+    },
+    "اختر اللباس المناسب لكل فصل!": {
+      "src": "/sounds/preschool/ar/course-cedar-e886cc95670dbadb.mp3",
+      "durationMs": 3200
+    },
+    "فَصْلُ الصَّيْفِ الحَارِّ": {
+      "src": "/sounds/preschool/ar/course-cedar-f345307c98d6be40.mp3",
+      "durationMs": 2300
+    },
+    "لِبَاسُ السِّبَاحَةِ الخَفِيفُ": {
+      "src": "/sounds/preschool/ar/course-cedar-c703442d4927e1cb.mp3",
+      "durationMs": 2650
+    },
+    "مِعْطَفٌ صُوفِيٌّ دَافِئٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-26c005b16ac210a1.mp3",
+      "durationMs": 3100
+    },
+    "قُبَّعَةٌ قَشِّيَّةٌ وَمَلاَبِسُ قُطْنِيَّةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-dcfa3734b692b637.mp3",
+      "durationMs": 4600
+    },
+    "الخريف أوراق": {
+      "src": "/sounds/preschool/ar/course-cedar-203fc863a468ac36.mp3",
+      "durationMs": 3050
+    },
+    "معطف ثلجي سميك": {
+      "src": "/sounds/preschool/ar/course-cedar-763297c35933d6c2.mp3",
+      "durationMs": 2650
+    },
+    "تَسْقُطُ": {
+      "src": "/sounds/preschool/ar/course-cedar-06a130b6a4341947.mp3",
+      "durationMs": 2250
+    },
+    "تَزْهُو كُلُّهَا": {
+      "src": "/sounds/preschool/ar/course-cedar-534bdc137319da6b.mp3",
+      "durationMs": 2250
+    },
+    "تَتَفَتَّحُ": {
+      "src": "/sounds/preschool/ar/course-cedar-fece67e9e306aa1d.mp3",
+      "durationMs": 1150
+    },
+    "الربيع أزهار": {
+      "src": "/sounds/preschool/ar/course-cedar-fab7b57a37295346.mp3",
+      "durationMs": 2250
+    },
+    "ثَلْجٌ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-0337c91e8d97b4e6.mp3",
+      "durationMs": 2150
+    },
+    "وجدت تفاحة مغطاة بالتراب. هل تأكلها مباشرة أم تغسلها أولاً؟": {
+      "src": "/sounds/preschool/ar/course-cedar-95ddf68b79a6b1bb.mp3",
+      "durationMs": 7750
+    },
+    "الأَطْعِمَةُ الصِّحِّيَّةُ : الفواكه والخضر والحليب واللحم والبيض، تقوي جسمي.": {
+      "src": "/sounds/preschool/ar/course-cedar-43475f239f1d1bee.mp3",
+      "durationMs": 7800
+    },
+    "الأَطْعِمَةُ الضَّارَّةُ إِذَا أَكْثَرْنَا مِنْهَا : الحلوى الكثيرة والمشروبات الغازية والوجبات المقلية.": {
+      "src": "/sounds/preschool/ar/course-cedar-e472d0a1f35ba0f8.mp3",
+      "durationMs": 8700
+    },
+    "أَغْسِلُ أَسْنَانِي بَعْدَ الأَكْلِ خَاصَّةً بَعْدَ الحَلْوَى .": {
+      "src": "/sounds/preschool/ar/course-cedar-2b191b30c266f788.mp3",
+      "durationMs": 5500
+    },
+    "أَغْسِلُ الفَوَاكِهَ وَالخُضَرَ بِالمَاءِ دَائِماً قَبْلَ أَكْلِهَا لِإِزَالَةِ الأَتْرِبَةِ وَالجَرَاثِيمِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-a647599761569be0.mp3",
+      "durationMs": 8600
+    },
+    "الغِذَاءُ الصِّحِّيُّ": {
+      "src": "/sounds/preschool/ar/course-cedar-3887dd0a264fe273.mp3",
+      "durationMs": 2350
+    },
+    "الجُرْثُومَةُ": {
+      "src": "/sounds/preschool/ar/course-cedar-e81db5a8834a2349.mp3",
+      "durationMs": 1900
+    },
+    "ماذا نفعل بالفاكهة قبل أكلها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-aef96d2ba4ebde08.mp3",
+      "durationMs": 3950
+    },
+    "نَغْسِلُهَا جَيِّداً بِالمَاءِ .": {
+      "src": "/sounds/preschool/ar/course-cedar-684c705e8f42ad2d.mp3",
+      "durationMs": 3050
+    },
+    "ماذا يحدث لأسناني إذا أكلت حلوى كثيرة كل يوم؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a5a5e11f80986620.mp3",
+      "durationMs": 4900
+    },
+    "ماذا أفعل بالخضر والفواكه قبل أكلها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-b987242345c85d7b.mp3",
+      "durationMs": 3650
+    },
+    "رتب مع الطفل صورا لأطعمة مختلفة في مجموعتين: \"آكلها دائماً\" و\"آكلها قليلاً فقط\".": {
+      "src": "/sounds/preschool/ar/course-cedar-f1fa79b28991fc81.mp3",
+      "durationMs": 9550
+    },
+    "آكل الفواكه والخضر واللبن يومياً وأغسلها قبل الأكل، وأقلل من الحلوى والمشروبات الغازية.": {
+      "src": "/sounds/preschool/ar/course-cedar-e899d0a8a38ec532.mp3",
+      "durationMs": 9100
+    },
+    "التفاحة قبل الأكل؟": {
+      "src": "/sounds/preschool/ar/course-cedar-bba4388f456dbfde.mp3",
+      "durationMs": 2050
+    },
+    "لماذا أغسل الفواكه والخضر قبل أكلها؟": {
+      "src": "/sounds/preschool/ar/course-cedar-fa01754a4243e14e.mp3",
+      "durationMs": 5650
+    },
+    "الخضر": {
+      "src": "/sounds/preschool/ar/course-cedar-555b9b476b439568.mp3",
+      "durationMs": 1100
+    },
+    "لِإِزَالَةِ الأَتْرِبَةِ وَالجَرَاثِيمِ": {
+      "src": "/sounds/preschool/ar/course-cedar-38fca821d9d8983c.mp3",
+      "durationMs": 3350
+    },
+    "لِتَصْبِحَ أَحْلَى مَذَاقاً": {
+      "src": "/sounds/preschool/ar/course-cedar-9b0e83938b97f676.mp3",
+      "durationMs": 2700
+    },
+    "مَمْنُوعَةٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-bc9d7d28c0baf392.mp3",
+      "durationMs": 1850
+    },
+    "نَشْرَبُهُ": {
+      "src": "/sounds/preschool/ar/course-cedar-a317e2287c623d5a.mp3",
+      "durationMs": 1650
+    },
+    "نَرْفُضُهُ دَائِمًا": {
+      "src": "/sounds/preschool/ar/course-cedar-135189d0194e10e0.mp3",
+      "durationMs": 1700
+    },
+    "الماء النظيف": {
+      "src": "/sounds/preschool/ar/course-cedar-b5414ae7ada758c6.mp3",
+      "durationMs": 1800
+    },
+    "الأكل على الأرض الوسخة": {
+      "src": "/sounds/preschool/ar/course-cedar-79caee5c56330bed.mp3",
+      "durationMs": 2150
+    },
+    "اختر ما يجب أن أضعه في سلة غذائي الصحي!": {
+      "src": "/sounds/preschool/ar/course-cedar-cf9cadffe0bd721d.mp3",
+      "durationMs": 4400
+    },
+    "فَوَاكِهُ وَخُضَرٌ وَحَلِيبٌ": {
+      "src": "/sounds/preschool/ar/course-cedar-8e5b16a255bf0cc3.mp3",
+      "durationMs": 3650
+    },
+    "حَلْوَى وَشُوكُولاَ فَقَطْ": {
+      "src": "/sounds/preschool/ar/course-cedar-472fe9b202491271.mp3",
+      "durationMs": 2850
+    },
+    "أريد وجبة تقوي جسمي": {
+      "src": "/sounds/preschool/ar/course-cedar-d06cd3279c970d92.mp3",
+      "durationMs": 4050
+    },
+    "طعام صحي": {
+      "src": "/sounds/preschool/ar/course-cedar-aa6f706d8b26ec32.mp3",
+      "durationMs": 2450
+    },
+    "بعد الحمام": {
+      "src": "/sounds/preschool/ar/course-cedar-44cfdd0c51f0ba1c.mp3",
+      "durationMs": 1750
+    },
+    "حلويات فقط كل يوم": {
+      "src": "/sounds/preschool/ar/course-cedar-f8c7349c13729cbf.mp3",
+      "durationMs": 4350
+    },
+    "نَدَانٌ نَظِيفَتَانِ": {
+      "src": "/sounds/preschool/ar/course-cedar-44bb91d32ebef38d.mp3",
+      "durationMs": 4350
+    },
+    "قبل الأكل": {
+      "src": "/sounds/preschool/ar/course-cedar-183a595c661db7e8.mp3",
+      "durationMs": 1500
+    },
+    "نَلْمَسُ القَمَامَةَ": {
+      "src": "/sounds/preschool/ar/course-cedar-986088e450325b4b.mp3",
+      "durationMs": 2550
+    },
+    "نَغْسِلُ اليَدَيْنِ": {
+      "src": "/sounds/preschool/ar/course-cedar-716158389535a8a0.mp3",
+      "durationMs": 1900
+    },
+    "نَلْعَبُ بِالتُّرَابِ": {
+      "src": "/sounds/preschool/ar/course-cedar-5f5048a2cf0418d6.mp3",
+      "durationMs": 2450
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

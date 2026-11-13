@@ -25926,6 +25926,4011 @@
           "course:math-1ap-t3-ruler-align:game-3-opt-1",
           "course:science-2ap-t3-air:game-1-opt-0"
         ]
+      },
+      {
+        "texte": "كَيْفَ تَنْمُو النَّبْتَةُ الخَضْرَاءُ؟",
+        "fichier": "course-cedar-e1444ee9df927848.mp3",
+        "duration": 3.35,
+        "sha256": "0f41ca9bd13c36ef081d779d868bc664a61af0b892673d6a3e5a8c8535779078",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:22.575Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "171edba0ef0d87896c45573bafe6e809cddd25d52b7e5b4e353d6cca0ddbf424",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:title"
+        ]
+      },
+      {
+        "texte": "أَتَعَرَّفُ عَلَى أَعْضَاءِ جِسْمِي وَحَرَكَتِي",
+        "fichier": "course-cedar-4f8abb629ba7ecf0.mp3",
+        "duration": 4.45,
+        "sha256": "e784278197c1f60829aa82e4c2ad002c7bbc51558809933edd703269bd8a098f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:22.736Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "037c1a5ccfe423b6289416ee93846e96afe3ce1ae96396fbf979b076437352a1",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:title"
+        ]
+      },
+      {
+        "texte": "أَتَحَرَّكُ وَأَرْتَاحُ: مَشْيٌ، جَرْيٌ، قَفْزٌ",
+        "fichier": "course-cedar-529ddada1dadf908.mp3",
+        "duration": 5.2,
+        "sha256": "5c50065be8349bbc3e129fbc27ddd6e5e67b20bd84a8f5ad917485e4b6085ada",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:22.773Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a4349bea54ff442de4d1b6d8aa4fab67aa4ba17e5515816e8cec5791514aa26e",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:title"
+        ]
+      },
+      {
+        "texte": "حَوَاسِّي الخَمْسُ وَنَظَافَتِي",
+        "fichier": "course-cedar-40cfb42a8d214c86.mp3",
+        "duration": 3.15,
+        "sha256": "b86fdacba48d176b55b31886c8c6724b08b0ff594dd87a52bb4d6a314289616c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:22.839Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "90cdb1d9a3ac8242312b5cba3ec9897fa44ecc2e6e6b8f50774fa77c4c14c5f0",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:title"
+        ]
+      },
+      {
+        "texte": "فُصُولُ السَّنَةِ الأَرْبَعَةُ وَحَالَةُ الطَّقْسِ",
+        "fichier": "course-cedar-7b2817ca9478961d.mp3",
+        "duration": 4,
+        "sha256": "fc3973544d90f4b459674bbc2ad5d7b8e638b46f82a37bb81be1673d93aa3135",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:24.170Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cb8d16008d3de0055bd20cf5a1e3b79918464a19551dbaa643f6410837774e0c",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:title"
+        ]
+      },
+      {
+        "texte": "النَّظَافَةُ الغِذَائِيَّةُ وَأَكْلِي الصِّحِّيُّ",
+        "fichier": "course-cedar-9c5b48f592e6d495.mp3",
+        "duration": 5.8,
+        "sha256": "51280620e6162d0f5d6b20d2eaff2b17ddaee4b8b4a7d3cf4903d4992cf100ce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:24.628Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a078a1d0f17730440737b56810d01e6b904bad3e1a13dda2c8edd3127231399b",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:title"
+        ]
+      },
+      {
+        "texte": "وبأي عضو تتذوق تفاحة لذيذة ؟",
+        "fichier": "course-cedar-338d9f78fbac7b6f.mp3",
+        "duration": 4,
+        "sha256": "633b7b296d11e55595d2c05c0ddd8c6f6700173dc9c59afb5dc712ee9396ee93",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:24.877Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ee50893bfd752347549568b5c12de2c4cf5fa5ca4c7a9fa3a32d4398cf90a206",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:discovery-1"
+        ]
+      },
+      {
+        "texte": "أغمض عينيك وشمّ رائحة وردة فواحة — بأي عضو تشمّها؟",
+        "fichier": "course-cedar-c9e9af941bb223b9.mp3",
+        "duration": 5.05,
+        "sha256": "f0dcb260a0f58ed7d27b59fb96df93a92b350e49ac2ebed9c52659004886b2ad",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:24.954Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3f57461433abe6a7064bac14845cead373164e4cb45a5cabcd6decc112b884a9",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:discovery-0"
+        ]
+      },
+      {
+        "texte": "بِأَنْفِي أَشُمُّ الرَّوَائِحَ الزَّكِيَّةَ (حَاسَّةُ الشَّمِّ).",
+        "fichier": "course-cedar-46e8c17c0fb779f6.mp3",
+        "duration": 4.1,
+        "sha256": "2869c277692afcfcdb9b1635d14a48a2163562826c069833817a6c940f541219",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:26.745Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8467c0afead1c4f8a7f3dc380e4797657551452f4762f5232ce037e3725d303a",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:rule-2"
+        ]
+      },
+      {
+        "texte": "بِأُذُنَيَّ أَسْمَعُ أَصْوَاتَ الطُّيُورِ وَالأَنَاشِيدِ (حَاسَّةُ السَّمْعِ).",
+        "fichier": "course-cedar-ccf16a87ffb21c1d.mp3",
+        "duration": 7.15,
+        "sha256": "93a0823a6953ef0d4de0f9eb0e1c32201204290ff631a8bdc0acb4fc0af9a937",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:26.919Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f28f3eb6fa0dde0b54f4d658cb457d7e12dab1169e01216775f114c290a4c9ea",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:rule-1"
+        ]
+      },
+      {
+        "texte": "بِلِسَانِي أَتَذَوَّقُ الحُلْوَ وَالمَالِحَ (حَاسَّةُ الذَّوْقِ).",
+        "fichier": "course-cedar-55c6788a8c11c679.mp3",
+        "duration": 3.95,
+        "sha256": "5d4db8dc9064afda7df7fd47a364d0d607acbf27a7b221ecb0634fbdccb4d6ef",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:26.961Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "076f6c175a4fe45c8af4c3c693dcac822a4fbbc62f5cffa8e8f073a59d8a565e",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:rule-3"
+        ]
+      },
+      {
+        "texte": "بِعَيْنَيَّ أَرَى الأَلْوَانَ وَالأَشْكَالَ وَالجَمَالَ (حَاسَّةُ البَصَرِ).",
+        "fichier": "course-cedar-ab2c1d4fff9b45bc.mp3",
+        "duration": 6.95,
+        "sha256": "56acc5d5caf9208cef4b30a3cf687ed0b72f2d47b14b7adf06dce87a17a658f8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:27.209Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "498f428ddfd4987471649c0effa4150031f7f134584b9899dfbff5aa7c4a07b1",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:rule-0"
+        ]
+      },
+      {
+        "texte": "الحَاسَّةُ",
+        "fichier": "course-cedar-9e87fe184c34f561.mp3",
+        "duration": 1.45,
+        "sha256": "737e300e94f1b0e6f6d360b48206ceca74c1ad60883cbfd7f1707e14cff384c5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:28.024Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "54ad3ee5d0c2db3d7a4f4498d7a933385feec29cc8168b04335fd05a122c48c5",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:vocab-0"
+        ]
+      },
+      {
+        "texte": "النَّظَافَةُ",
+        "fichier": "course-cedar-433d477a08429445.mp3",
+        "duration": 2.1,
+        "sha256": "57ca0bafbf15ef24c1a45e2d457474197a1b68b8c21aef0db2080b9590b06123",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:28.321Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b899c22a830e8a17a20bd6e95d572c6c05fc84115eb2c7ab93cc1a5312366720",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:vocab-1"
+        ]
+      },
+      {
+        "texte": "بِجِلْدِي أُحِسُّ بِالنَّاعِمِ وَالخَشِنِ وَالحَارِّ وَالبَارِدِ (حَاسَّةُ اللَّمْسِ).",
+        "fichier": "course-cedar-34c41706e72a2352.mp3",
+        "duration": 8.9,
+        "sha256": "4bdafeaed9628d1da69bc8ee9722f569cc2662a1d5be803cdd25bb6adcce5ede",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:28.810Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "01fdb6733c0ad4088483b9a6c229077c503159d2b691ef292c0a39aced11b409",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:rule-4"
+        ]
+      },
+      {
+        "texte": "بأي عضو نستمع لنداء المعلم أو الأذان؟",
+        "fichier": "course-cedar-6556e76107ad22f5.mp3",
+        "duration": 7.6,
+        "sha256": "5ebd2bf0d94b3d8296c8262f293a309ca560e72fe7b57c1fbeae7e475618bd60",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:28.862Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aafb682aa712b45e10c66b5345822001a8a911f7a1a1af8137e6985f1b45de73",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:example-problem"
+        ]
+      },
+      {
+        "texte": "بِالأُذُنَيْنِ (حَاسَّةُ السَّمْعِ).",
+        "fichier": "course-cedar-cda3f19e34a3ffac.mp3",
+        "duration": 3.15,
+        "sha256": "873fa6ccba94219846ad8281c5ab329e5c1b81fc60f3872a8668652501daeced",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:29.423Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c2208c83347962feadcee5ca1813cb0c91a97b29e059887d577e51a33a67d7cc",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:example-solution"
+        ]
+      },
+      {
+        "texte": "العب مع الطفل لعبة \"المستكشف الذكي\": أغمض عينيه ودعه يخمن الأشياء بحاسة الشم أو اللمس فقط.",
+        "fichier": "course-cedar-202993c0c684ed3c.mp3",
+        "duration": 10.05,
+        "sha256": "fb03fea55aa566ec74879b7406f2fea1aa48638ea4cd83f7d78215c0f292b836",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:30.565Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5c1b8a6cf4c7fd848dd8fc81b0e242a9fd6d67421983cb79e840b6ef66e9c4fd",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:home-activity"
+        ]
+      },
+      {
+        "texte": "بأي عضو أرى الألوان الجميلة في لوحتي؟",
+        "fichier": "course-cedar-093ecff39a6a926f.mp3",
+        "duration": 5.2,
+        "sha256": "e4c6169df721172463984390767ffbf0d38d876d3e7625936d3ad6060d4805d7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:30.703Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "26d5a6c80301dd2d6a24801dfbeb82833e2bbc58dbb7e8fa528db02b378acd28",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:practice-ex1-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "متى يجب أن نغسل أيدينا بالماء والصابون؟",
+        "fichier": "course-cedar-f93e8f21081655dd.mp3",
+        "duration": 4.55,
+        "sha256": "0f77d4b1001096fb948c9c4419b4bdd140aa1e8df55a42a2e0256c4ee7cafc65",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:31.082Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "913fccee29234cdc8e539e1af3943107cf3664feab373bd43aa7f985cc8d6050",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:practice-ex2-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "العين ترى، الأذن تسمع، الأنف يشم، اللسان يتذوق، واليد تلمس. النظافة تحمي حواسي وجسمي.",
+        "fichier": "course-cedar-3e8da9d988a8bc31.mp3",
+        "duration": 12.6,
+        "sha256": "9a6bbc4d5c5cfdba69bd9bacb4ade161fa6f0b0167d27aac4a097bea3a097a8f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:31.339Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7b7f3b894b440e306b07350844b1fb402f677071ec10d5682ca19b6ee55d2dba",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:takeaway"
+        ]
+      },
+      {
+        "texte": "ارْبِطْ الحَاسَّةَ",
+        "fichier": "course-cedar-0a34b9feb4010d5f.mp3",
+        "duration": 1.95,
+        "sha256": "1598adf2f24edd48a67d598697ecb73fea3dacd24914405d1e7fdd5a7226d244",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:32.533Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9d247d30c24b0a1e888b19b547aba28e3b4115901a15052ac034df9fef0f8def",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:practice-ex3-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "بأي عضو أتذوق طعم العسل اللذيذ؟",
+        "fichier": "course-cedar-b8ab21290fa13123.mp3",
+        "duration": 3.85,
+        "sha256": "566e45a8a6d4e1d6a4e125ee80dc4c24d13b9965fff6bc3d0470fec89737f913",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:32.618Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0194f8c355625745f352ff13f2d846085726f9941bbc4473d3cbb22b7707fd33",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q1-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "اللِّسَانُ (حَاسَّةُ الذَّوْقِ)",
+        "fichier": "course-cedar-e0ac681bb8d932af.mp3",
+        "duration": 2.75,
+        "sha256": "fa2c85938be080f7088acd03a0f5351642eeb29cae2d423780bd4c0b7904b9db",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:32.798Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e3934d0717897ce1cbed3c6cac9a1a2a1389cb2f0514aa55814ecb3083813c6a",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q1-sc1ap-senses-opt-a"
+        ]
+      },
+      {
+        "texte": "نغسل اليدين بـ",
+        "fichier": "course-cedar-4f98d20c7419af34.mp3",
+        "duration": 2.25,
+        "sha256": "e90ba139305f0a71ea86f7a23af299632342633aa24981165104d594754f2f66",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:33.932Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cd440cb6223a19c2ca753050c60d2b08b31b7b27efc1572ee12f35013fd6078b",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q2-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "الأَنْفُ",
+        "fichier": "course-cedar-04f12354d0fa13e2.mp3",
+        "duration": 1.75,
+        "sha256": "0604237cd780700343f1ca2304a81decee0883b41cdff8977b1f0b68f87c1e31",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:34.080Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6a7954f235c0c88cebcfc66e008d5a2b9d38e1013c5fa97f494a288ff456e626",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q1-sc1ap-senses-opt-b",
+          "course:science-1ap-t1-five-senses-hygiene:game-0"
+        ]
+      },
+      {
+        "texte": "مَاءٍ وَصَابُونٍ",
+        "fichier": "course-cedar-1ec59654f5731209.mp3",
+        "duration": 3.15,
+        "sha256": "cece8b6280c6b178a64fe4dd8c1d1abbc204c2304556872409d1e6d5e14fa021",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:34.276Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b2a3388b6ee09875b31954aa9fc3b9a724aaaf3b4a96f5fb20ccc52d276a9f15",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q2-sc1ap-senses-opt-a"
+        ]
+      },
+      {
+        "texte": "الأُذُنُ",
+        "fichier": "course-cedar-f3f58047f04d1469.mp3",
+        "duration": 1.9,
+        "sha256": "7bed83f2ee4b4f4aaac036aec7df3eb487065fe2130662b4cfcfc22b03c5af13",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:34.366Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5c9076041e8a37f2a69af767b6e926c9ac0f8cafccb088cad73150edd40e9e53",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q1-sc1ap-senses-opt-c",
+          "course:science-1ap-t1-five-senses-hygiene:game-1"
+        ]
+      },
+      {
+        "texte": "تُرَابٍ",
+        "fichier": "course-cedar-d8214c1e85288558.mp3",
+        "duration": 3.05,
+        "sha256": "0f95b048eb704960c3b25965be7fbceb7e5091213d33cb12a779e5b17c67a003",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:35.268Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ab66ce854c5cbc2600b613407a77c568ef7a88d0f53ab20a9b3cb99605478a4b",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q2-sc1ap-senses-opt-b"
+        ]
+      },
+      {
+        "texte": "الزهرة أشمها بـ",
+        "fichier": "course-cedar-10e032d89eec2989.mp3",
+        "duration": 3.2,
+        "sha256": "118d2f0121f8c3f3401edcc32b0d456581da6d5b42b7093d58d42502cd3f88dc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:35.298Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4a4a4d69b374aa9bba065518f27db956901605ef9246814e02d2e549188c3669",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q3-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "الأَنْفِ",
+        "fichier": "course-cedar-f2cde3036ea82835.mp3",
+        "duration": 1.3,
+        "sha256": "d66716e3c8b955821741416521e8d6382a7a23c4bf444c3028ac94288ddf2258",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:35.326Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "19b56742dcb1ed1239570dbced6174e1f2934dff64a5633c58ab5429ddb8c109",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q3-sc1ap-senses-opt-a"
+        ]
+      },
+      {
+        "texte": "الأُذُنِ",
+        "fichier": "course-cedar-ad94ab8003a7c671.mp3",
+        "duration": 1.35,
+        "sha256": "26e57ac5b187cc70a2c4ed55a56af93865e8790e3c221f5517726d4aed0cb406",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:35.352Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e8096cc12583f54593ad046d784ae3613ce14041698e864a1c6773e6cca78e9e",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q3-sc1ap-senses-opt-b"
+        ]
+      },
+      {
+        "texte": "أغسل أسناني",
+        "fichier": "course-cedar-639d1a336ec64ec6.mp3",
+        "duration": 1.65,
+        "sha256": "c181ecb3a7d345a73387b34e3aeb1bf73d2be6f0687eafd2e5cfc920baf50e00",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:36.338Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "81b42464448231a58a1e991f4f7fea2ef8070c153113344b736d84b05f8dc0f4",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q4-sc1ap-senses"
+        ]
+      },
+      {
+        "texte": "مَرَّةً فِي السَّنَةِ",
+        "fichier": "course-cedar-cb7b06ba9e61fc9d.mp3",
+        "duration": 1.85,
+        "sha256": "74e197b476cad8930d6d4a903f8cdaf5fa3dfc787603b9a05ab40e65743b6b9f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:36.536Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b3a856dd9639a6fc94ede186895650413a27a199236bd2dec2dd1cc3380cf881",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q4-sc1ap-senses-opt-b"
+        ]
+      },
+      {
+        "texte": "صَبَاحًا وَمَسَاءً",
+        "fichier": "course-cedar-7253717f122a6139.mp3",
+        "duration": 2.35,
+        "sha256": "1b13be2cc02370e73ce9b7357b105e5fdc59b667e85716c4a3c683fd39e77770",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:36.655Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ff7e02f215d48e4071a5ab4985e7418185ab84ab17bbf98691a5a130143e8fa6",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:quiz-q4-sc1ap-senses-opt-a"
+        ]
+      },
+      {
+        "texte": "اربط كل عضو بالدور المناسب له!",
+        "fichier": "course-cedar-1f59554d00289d51.mp3",
+        "duration": 4.05,
+        "sha256": "aba0139fcea43f469d36b7619b0090d5e4ad7bd0a6bca14a77409e0300491600",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:36.984Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4fadb94b3daed8478573bbba74fda79dd88dcbc67c60bdd9fb11679bc0e8903b",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-instructions"
+        ]
+      },
+      {
+        "texte": "الشَّمُّ",
+        "fichier": "course-cedar-8ff71daf9440ba98.mp3",
+        "duration": 1.25,
+        "sha256": "6c3fad0484a02dfb7c16737560a51534aa0ac4469b5c3156c9c4e7870ead2631",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:37.172Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "91db4d3f1953a017393185bbb61e88cd1ad0b274ce14faca2a7f6b5e25ac60d6",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-0-opt-0",
+          "course:science-1ap-t1-five-senses-hygiene:game-2-opt-2"
+        ]
+      },
+      {
+        "texte": "السَّمْعُ",
+        "fichier": "course-cedar-53b223617b4669c5.mp3",
+        "duration": 2.2,
+        "sha256": "b880ce50238ee5076ad059da9ba413b799be0f601bafdb1b8515c40444c0efcc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:37.736Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "964f4f287411632cd838304e41899b28f531215afb28005c1ed6816dee95b945",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-0-opt-1",
+          "course:science-1ap-t1-five-senses-hygiene:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "الرُّؤْيَةُ",
+        "fichier": "course-cedar-10d1648eb0ef0df1.mp3",
+        "duration": 1.65,
+        "sha256": "a6a1011f7233af4d0431de6ece48e8a4916407661a988f7acc1cdcbbb85cddea",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:37.822Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b74f1c2aca7ecfecec39f5ddbefc76a69ce01650d3a94fe6acbead624bbbc774",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-0-opt-2"
+        ]
+      },
+      {
+        "texte": "الذَّوْقُ",
+        "fichier": "course-cedar-f558df8ec5216720.mp3",
+        "duration": 2.55,
+        "sha256": "fda8351423735b0b1c13e518afb2975874ff59e78b5fc95a54cb52d91ca4be22",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:38.360Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dfbad8112b462efa85ac2fb12daaddfeac0ef6b85ba3ccaef75099e38465aeab",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-1-opt-1",
+          "course:science-1ap-t1-five-senses-hygiene:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "اللَّمْسُ",
+        "fichier": "course-cedar-946e6d22d64b6bef.mp3",
+        "duration": 1.9,
+        "sha256": "465d8219f5b6f5c7fd62e567447739d3ea6578bf08fbecc75b01698f5094662e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:38.458Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "49b94e6adf05b8f02b90dfaf6f737344367b08e3791aabca0c4c8c853c4e38e7",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-1-opt-2"
+        ]
+      },
+      {
+        "texte": "اللِّسَانُ",
+        "fichier": "course-cedar-70c7e7ed35083261.mp3",
+        "duration": 1.7,
+        "sha256": "893eb02c0a33eb5cdbc2f41852faa9c8077ce890fc4991e21f218cbc3cd871c2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:38.955Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "978443321c3ce38c5db56b733e84e3e678160ed6728e7edc673cb13e0aed0414",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-2"
+        ]
+      },
+      {
+        "texte": "البَصَرُ",
+        "fichier": "course-cedar-41ae58ba08c1c59d.mp3",
+        "duration": 1.7,
+        "sha256": "3258b8bc06a2663ffffde8faf254571aec0903612ab25c289443255483bed3db",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:39.020Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "69e4450f3f3916f8c782600a513b7b5a29c751d12a493ef1023bd3eedf8240b7",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "اليد تحس بـ",
+        "fichier": "course-cedar-204b74612f72f505.mp3",
+        "duration": 1.75,
+        "sha256": "7084c6b0630ee7e00469d8032e999b6a0c5301f4fbb1254dd7c934f4d23bda3f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:39.680Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8d7373e59ff2b58917f451add919939bd956c2f460da8529c05a0c69481cc350",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-3"
+        ]
+      },
+      {
+        "texte": "اللَّمْسِ",
+        "fichier": "course-cedar-940ff17398165bd5.mp3",
+        "duration": 1.8,
+        "sha256": "969d6c959f4da7662cfdeea99f53ae497081012e2914d661ae119d8dc6e43169",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:39.825Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5ffb3cadfabacca73c3976f04d96861d5d06dc8a0b9e76e32b47c3693606fc48",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "الذَّوْقِ",
+        "fichier": "course-cedar-436dee2411d95624.mp3",
+        "duration": 1.1,
+        "sha256": "fceee77424388d430bd6173551d73844c5eec18992be753ab079a95509781ec3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:40.160Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "404b6e41446c99204b612be403bf630630812cb272f7867251eab966670fa288",
+        "uses": [
+          "course:science-1ap-t1-five-senses-hygiene:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "العصفور يطير في السماء، والسمكة تسبح في الماء. لماذا لا تسبح السمكة في السماء؟",
+        "fichier": "course-cedar-9ca3e40a7d72b013.mp3",
+        "duration": 8.75,
+        "sha256": "0af9d8255b7217030a5a8315fd7b3a0d25c75759439a9b8a22ccb62094e09960",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:40.947Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0a51f9a3a0aba9834de738fd9c5918d0eca02c3cfcf2db5cc6384fe98815129b",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:discovery-0"
+        ]
+      },
+      {
+        "texte": "الطُّيُورُ تَطِيرُ بِأَجْنِحَتِهَا فِي السَّمَاءِ.",
+        "fichier": "course-cedar-be46db4d87b731e4.mp3",
+        "duration": 3.85,
+        "sha256": "00167d5412d6747252ef1a11bea829cbce0a2b8016be34dcb2f1486a02a55906",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:41.097Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cc161189f6042f9025c6931c2bbbd6d349b8514a2e6e972b066899e95a65c504",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:rule-0"
+        ]
+      },
+      {
+        "texte": "الأَسْمَاكُ تَسْبَحُ فِي المَاءِ بِزَعَانِفِهَا.",
+        "fichier": "course-cedar-dfea44659e8b762c.mp3",
+        "duration": 4.6,
+        "sha256": "ee0c9377bbf5b95d11ab17e91ea2fde4ddc0dc4a6a857375252a996d0b37d279",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:42.705Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1146dbcb93da3ba6e490c6d4773834eac9f259a965d46206172d342301d66a05",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:rule-1"
+        ]
+      },
+      {
+        "texte": "كَثِيرٌ مِنَ الحَيَوَانَاتِ كَالكَلْبِ وَالقِطِّ تَمْشِي عَلَى أَرْجُلِهَا.",
+        "fichier": "course-cedar-e318affb9d65ecad.mp3",
+        "duration": 6.3,
+        "sha256": "5b7a5a0d13282f1bd7ab34ddc8d97f9864ae16bde0e81bde228a8429e5f9f2ef",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:43.102Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "58847daa80b53cb860306c73946639cb4f9b5298341f721595ad67171c876163",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:rule-2"
+        ]
+      },
+      {
+        "texte": "الأَرْنَبُ يَقْفِزُ بِرِجْلَيْهِ الخَلْفِيَّتَيْنِ القَوِيَّتَيْنِ.",
+        "fichier": "course-cedar-c4ece23e20821dd4.mp3",
+        "duration": 5.35,
+        "sha256": "eb30cae1261afc6b5e1d414146764adbe5a47a60d73aa01fe804b9448b6aa1da",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:43.170Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "26674af23d6accc286f12230d8a641adb8b8e739e5b15fdf369c93bec74861ba",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:rule-3"
+        ]
+      },
+      {
+        "texte": "الأَفْعَى لَيْسَ لَهَا أَرْجُلٌ فَهِيَ تَزْحَفُ عَلَى بَطْنِهَا.",
+        "fichier": "course-cedar-57a0da9e355fb2ab.mp3",
+        "duration": 7.3,
+        "sha256": "15e722ae945edff3210605fb101b0ea224b969940bbd5f9b4fadae9878ed6004",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:43.198Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "782afa5d54e109d30b9b3999920f8de0f83369bf631427c91c9c2a2aa5f7e4ea",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:rule-4"
+        ]
+      },
+      {
+        "texte": "التَّنَقُّلُ",
+        "fichier": "course-cedar-559ebf5c7945412d.mp3",
+        "duration": 1.6,
+        "sha256": "0914973421bf7506c1a21e002d9c5254544e79d2b0fbe1881a6c7fb4219085ce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:44.110Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d10ed5fbe1a632499095dca3f722ba50c1c164b1f9280eb0f69553dc5f98d0e1",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:vocab-0"
+        ]
+      },
+      {
+        "texte": "الزَّحْفُ",
+        "fichier": "course-cedar-89fb7538388682f7.mp3",
+        "duration": 2.3,
+        "sha256": "4f8d50369e29471950266a8c00b0ded808705b52cb48fb77f452019dc658e9e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:44.643Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "71c7b4b5592801e5970c28506d5907454a639fdfe9b02ddc048649f4d19866a0",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:vocab-1",
+          "course:science-1ap-t1-animal-locomotion:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "كيف تتنقل السمكة في الماء؟",
+        "fichier": "course-cedar-a14b0248e1f78570.mp3",
+        "duration": 2.8,
+        "sha256": "c56906c1e7122ff5bf737189634a073796ee2d3ed93120498bdda4140175dc31",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:44.695Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a345a6af5a517e2ae654d9a625d2267c15a6c363df961c4d6fe68f569d6aaee8",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:example-problem"
+        ]
+      },
+      {
+        "texte": "تَسْبَحُ بِزَعَانِفِهَا .",
+        "fichier": "course-cedar-08615db913aa5472.mp3",
+        "duration": 2.95,
+        "sha256": "10b86f7df4d6231ece28dfe00a598eca46cdd0c4c9f666e4d92290394b221c35",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:44.749Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a0f9253939fc1e0d9e7c9d84dc06aaa86f0110c0d49cc146a72c5b577bb0b788",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:example-solution"
+        ]
+      },
+      {
+        "texte": "لماذا تزحف الأفعى على بطنها؟",
+        "fichier": "course-cedar-212759fe0a91da08.mp3",
+        "duration": 3.05,
+        "sha256": "8e9217c4114322b7956f38d763d8fbd35e8e162493b7651785be4fced4d0ef10",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:46.108Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7499b46d17867419d3272d337db810b4c9102558347b2413c59da1536395e2d7",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:practice-ex2-sc1ap-locomotion"
+        ]
+      },
+      {
+        "texte": "كيف يتنقل العصفور في السماء؟",
+        "fichier": "course-cedar-1187fff8a3660ca0.mp3",
+        "duration": 4,
+        "sha256": "9f31fa731e09526ca5b12e253fb4320b48a274eb8a0a144699749c915ca160eb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:46.150Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0a0ce99fe5bfd598a842914bfa5d65673c4aa9fbd950828b6f0421e6a665f12e",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:practice-ex1-sc1ap-locomotion"
+        ]
+      },
+      {
+        "texte": "العب مع الطفل تقليد حركة كل حيوان: طيران بالذراعين، سباحة، قفز كالأرنب، وزحف على الأرض.",
+        "fichier": "course-cedar-6cbfc7f881c31e9b.mp3",
+        "duration": 9.9,
+        "sha256": "9771682209dec29930923666a6544c24c8af4f4f1382267681015db0c41f3410",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:46.364Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f0423c9c6ca068de9848378a45c4d4bfc76d32aef6cc1c5a1c853df531333221",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:home-activity"
+        ]
+      },
+      {
+        "texte": "الطيور تطير، الأسماك تسبح، أغلب الحيوانات تمشي، الأرنب يقفز، والأفعى تزحف.",
+        "fichier": "course-cedar-136ce295749a5acd.mp3",
+        "duration": 9.1,
+        "sha256": "40df5ca4ba052870e90f490dafd9d7c2567790cf894ca1f9f2a274339b310980",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:47.268Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "25c1ca52b2e49f886e1825d0104e3692a3c159e5d0d1046c4123a35cfdde420e",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:takeaway"
+        ]
+      },
+      {
+        "texte": "بِزَعَانِفِهَا",
+        "fichier": "course-cedar-368e6219572c16af.mp3",
+        "duration": 2.4,
+        "sha256": "5bc5ee22763ff15d73e668bd9d68fb87205f4e7a594bd2f853566a33884342c6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:47.451Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "35878b572e476ac26bdac6bb8e784e6b246f4e8c52ca7cf889f4aff2f4376c4a",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q1-sc1ap-locomotion-opt-a"
+        ]
+      },
+      {
+        "texte": "بماذا تسبح السمكة في الماء؟",
+        "fichier": "course-cedar-9add6d965b46bd2a.mp3",
+        "duration": 3.75,
+        "sha256": "ba53f26dd7df0e14fb627ecdb88214bd5eacf64beda9da1c443264e3b9da792d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:47.552Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d53aca697878df0105913c18575ebd2fdd2ed5df0c5f275d0c2304493338b80d",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q1-sc1ap-locomotion"
+        ]
+      },
+      {
+        "texte": "بِأَجْنِحَتِهَا",
+        "fichier": "course-cedar-0fccc7b565bb097f.mp3",
+        "duration": 2.85,
+        "sha256": "9af1995648711dc5673522bbf384872e61f511b6befaad10a01ce81aff2640b6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:47.800Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6de7113d964e4d28d963d053d4872dd401dcd8635a89a5bf91b5fdaf6f6f666b",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q1-sc1ap-locomotion-opt-b"
+        ]
+      },
+      {
+        "texte": "الجَنَاحَيْنِ",
+        "fichier": "course-cedar-78927e38b024a903.mp3",
+        "duration": 1.7,
+        "sha256": "6df65dffa446eca4fd06efbdd83ce2daa4de69b28873333468b24b68bafd106c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:48.608Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "64fa5be8595122e5e76158a3d04247799f25ed52e7a172c1d37422368eac9981",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q2-sc1ap-locomotion-opt-a"
+        ]
+      },
+      {
+        "texte": "بِرِجْلَيْهَا",
+        "fichier": "course-cedar-6de367c5b4be27f5.mp3",
+        "duration": 2.2,
+        "sha256": "46e9e5a55420bdef1cfb4f2d6128e7541a87a593255921ba081d16211f543c45",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:48.642Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4bd535fc669139a875c72b7e5c57970d498f5e4660d279bc14a2c0c073cfca3d",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q1-sc1ap-locomotion-opt-c"
+        ]
+      },
+      {
+        "texte": "الزَّعَانِفِ",
+        "fichier": "course-cedar-1a30f1d5e441b172.mp3",
+        "duration": 1.4,
+        "sha256": "55fe20c0c0d62d51c2a6a5d907f02785bb5add74dbb128744cf7c204a9abfbd9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:48.831Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ddcc47a5f710e6f525e513c30c4a9be6321dd8f8bc0e31bde2a0dd8a85e84b1f",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q2-sc1ap-locomotion-opt-b"
+        ]
+      },
+      {
+        "texte": "العصفور يتنقل بـ",
+        "fichier": "course-cedar-606e17c6d1392b0d.mp3",
+        "duration": 2.95,
+        "sha256": "2c6f3f3fbac23e34b6ba07e893b91b2447de87a5f2cc7fefdd604006ae3e10da",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:49.206Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0463f815337534522389d49bac19bb91d1a56d3db6222b0d7001078cb2630257",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q2-sc1ap-locomotion"
+        ]
+      },
+      {
+        "texte": "يَقْفِزُ",
+        "fichier": "course-cedar-3358d1f80a774375.mp3",
+        "duration": 1.05,
+        "sha256": "3bdf67b32a705d738d4eb6cd93e8e59c1311b4d22430e6f77f618bc6ca6d316f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:49.725Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "62103bde8d37c22315959d8407d9bb8a1c596857d261966b52b148efa5f64251",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q3-sc1ap-locomotion-opt-a"
+        ]
+      },
+      {
+        "texte": "الأرنب",
+        "fichier": "course-cedar-208cdb2f78cd44ca.mp3",
+        "duration": 1.7,
+        "sha256": "4ae0cb50077a0c1f4f185672b8ce69a571d30c443524bacf0f1676d4349d2aed",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:49.777Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8bf658d5f73bfb658541b6f3a7842c0eaf1f0c65a8fa695051923465ddbe0678",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q3-sc1ap-locomotion"
+        ]
+      },
+      {
+        "texte": "يَسْبَحُ كَالسَّمَكِ",
+        "fichier": "course-cedar-359c3868d401104a.mp3",
+        "duration": 2.3,
+        "sha256": "6a9b5d268d79ad4600c05fa36fcf1fb50e61aa25b5d56f8fe449398d350a4285",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:50.169Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2f7af4d50539f75595009ff62c85835fa7e546395dfd9e33f1ec94f6515fa042",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q3-sc1ap-locomotion-opt-b"
+        ]
+      },
+      {
+        "texte": "السمك في",
+        "fichier": "course-cedar-2b8652a40a80e165.mp3",
+        "duration": 1.75,
+        "sha256": "04f118cbc37e5c504dd258a259273264655aa41683d47e520417b96fef10af46",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:51.080Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "031c2c2f3db286dc1c7e333df2c2bbd11ab31d51cbdcadaab8dbb7e3c4b4584f",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q4-sc1ap-locomotion"
+        ]
+      },
+      {
+        "texte": "المَاءِ",
+        "fichier": "course-cedar-40e175664d608364.mp3",
+        "duration": 1.75,
+        "sha256": "ade5cbe4e183475a0480d6156e1e5496b2fa459bda8b50ae1813a1aff79b669f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:51.181Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5b7bab43aa244b4f10a2a5627c432501ae1d79c7780e4aa961cf42b470252169",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q4-sc1ap-locomotion-opt-a"
+        ]
+      },
+      {
+        "texte": "السَّمَكَةُ",
+        "fichier": "course-cedar-44786e0a73592694.mp3",
+        "duration": 1.4,
+        "sha256": "78e2a2ccdb3725a701f487dcc6fbeafaf962fb420a0c31858e819c4fad4eca8c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:52.523Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7c661f24e9663b87e434b2c4f28603f2920ea24458e8663db716d7d5f61ba223",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-0"
+        ]
+      },
+      {
+        "texte": "السَّمَاءِ",
+        "fichier": "course-cedar-de7e83d2627e46e2.mp3",
+        "duration": 2.1,
+        "sha256": "3bc7aae74e33788a5da0fbec7f325563f3bdb8adb74246311739ba5873ac1b8b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:52.788Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "37a319720b938e137ab35980ac4bd45cf69f472a9a9978bd26acc6d6e6924b6a",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:quiz-q4-sc1ap-locomotion-opt-b"
+        ]
+      },
+      {
+        "texte": "السِّبَاحَةُ",
+        "fichier": "course-cedar-3804f864c6eac43d.mp3",
+        "duration": 1.6,
+        "sha256": "bd0a203f1482b2cf860b37652c50c41110084cfc61bb553e08f23bb9b5cbb34e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:52.837Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e76179967c7a87e5da3392b5b9795663733ea17562d04c40443a57530f0322af",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-0-opt-0",
+          "course:science-1ap-t1-animal-locomotion:game-1-opt-2"
+        ]
+      },
+      {
+        "texte": "اختر طريقة التنقل الصحيحة لكل حيوان!",
+        "fichier": "course-cedar-1d43f9f02006a789.mp3",
+        "duration": 4.55,
+        "sha256": "bf0dbf312c7d09138cfd598268c338eae9a4f88e23ae667b398fd1f2dbf24444",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:53.048Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9139e619fadb11da3882cb9be65ccf1f77988e0a853c5bf4dd400b13b1f20124",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-instructions"
+        ]
+      },
+      {
+        "texte": "الطَّيَرَانُ",
+        "fichier": "course-cedar-824e52e06ca2bb51.mp3",
+        "duration": 1.75,
+        "sha256": "eb609937533a92a3bc8a390bc84d493798c756a7ae1c4d0a89f20d63cda2f177",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:53.932Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "56f1368d07d6ff74b428a12dea0e2cc3404b1fe37bbfb95fc68be3e59504b7b3",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "القَفْزُ",
+        "fichier": "course-cedar-36ff8004b44b63ee.mp3",
+        "duration": 1.65,
+        "sha256": "85f9614c8bf0c3d776ad8c98f1aeccd64d8ffb33eb3e4a9e992f5966e82e9e92",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:54.117Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "36bd3b8c505ace762545d0b14eaf8ad63779aacd54c80996ff62867244bc9d8e",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-0-opt-2",
+          "course:science-1ap-t1-animal-locomotion:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "الأَرْنَبُ",
+        "fichier": "course-cedar-2aa970403e6cf1c8.mp3",
+        "duration": 1.6,
+        "sha256": "1da4d14552e8ee7d185a52239e1ffbe734c9fb7740ce4a7d24b641670e8fc3e7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:54.221Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b560f743deeddb8e8cb1e2117bf0f93189577a21926ceb6245302385f25d4113",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-1"
+        ]
+      },
+      {
+        "texte": "الثعبان",
+        "fichier": "course-cedar-4099d2aecc0ec07a.mp3",
+        "duration": 1.6,
+        "sha256": "2ed23874943bdaf56ea4bd4e84261ab9d5a816b9469c697dd03dfdd621d471e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:54.285Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f32faec5323c5594f20cf27c9c7ca52a46e719852c842c20d57f46baaef787e3",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-2"
+        ]
+      },
+      {
+        "texte": "يَطِيرُ",
+        "fichier": "course-cedar-12fbaf4b67acc709.mp3",
+        "duration": 1.45,
+        "sha256": "1357c092af7334c733b56999cfe3272a96c28f3c9a694339d526dc62c7148b25",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:55.187Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ba9b0fe8f559569e24efe5c9b05ddb27a6692807e5c358e54c334db3a340e033",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-2-opt-1",
+          "course:science-1ap-t1-animal-locomotion:game-3-opt-1",
+          "course:science-2ap-t2-animal-movement:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "يَزْحَفُ",
+        "fichier": "course-cedar-87b6e87f67da5f49.mp3",
+        "duration": 1.15,
+        "sha256": "f92484c9719d2b1721cd614efc08134203b169ec01611c0d69891ef9cdc359d4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:55.267Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "34f54ac020c8c4ca773f427030d8b3bace396d4f1daaacf4b8c5ad3182d8bb3c",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "يَرْكُضُ",
+        "fichier": "course-cedar-d3c44de46b800811.mp3",
+        "duration": 1.2,
+        "sha256": "de553f7d8603d50648ac2018fd17f991700db39f3f8ee49864fd57c64267e442",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:55.353Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "670415aa4fbd31cf476df5b116803f727ce48c98170b4490bd2faaddcc95a4cc",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "الحصان",
+        "fichier": "course-cedar-b6c218ef27f24e44.mp3",
+        "duration": 2.2,
+        "sha256": "966b4a4dcb55197b047291e1b9d1bdf7ef1c9bb6d9cd70f058d279bb7938e570",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:55.442Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0ce89a294a0f61a05e308334cb1697deb95a57f70af8040dde08c353a898a938",
+        "uses": [
+          "course:science-1ap-t1-animal-locomotion:game-3"
+        ]
+      },
+      {
+        "texte": "رَأْسِي فِي الأَعْلَى، وَفِيهِ عَيْنَايَ وَأَنْفِي وَأُذُنَايَ وَفَمِي.",
+        "fichier": "course-cedar-d179d7a6fc1c47da.mp3",
+        "duration": 6.75,
+        "sha256": "52118106d4a389e5738a1b9e7c398bfa10fa7ae4575d2919163c08b41541034b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:57.225Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d50b17edfebde8ca7d7c9c318dc2a82964497d16a5906ac2915a8017fc67b3e9",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:rule-0"
+        ]
+      },
+      {
+        "texte": "جِذْعِي يَحْمِي بَطْنِي وَصَدْرِي وَظَهْرِي.",
+        "fichier": "course-cedar-ba079f0693680793.mp3",
+        "duration": 4.35,
+        "sha256": "29a4ef19adcad5e72d4cae61a4b73ac7842bf10855d8b5843b3d7f499fb0434c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:57.254Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f877c5bf569ccd1fcda9d7873491b6fabd072507c5e0faeb510cc585e98af5a8",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:rule-1"
+        ]
+      },
+      {
+        "texte": "يَدَايَ أَسْتَعْمِلُهُمَا لِلْكِتَابَةِ وَالرَّسْمِ وَالأَكْلِ وَاللَّعِبِ.",
+        "fichier": "course-cedar-966f857daba21452.mp3",
+        "duration": 8.6,
+        "sha256": "484b89303c0562ad96d59cb39efb59b1f25ddb4d911dee21a84d1db40c889715",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:57.507Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9b27b48ba745aa0019c64d450d15c70d677bae45099ef9886d23b246860799c4",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:rule-2"
+        ]
+      },
+      {
+        "texte": "ضع يدك على رأسك ، ثم على بطنك، ثم حرك ركبتيك . كيف يساعدنا جسمنا على اللعب والقفز؟",
+        "fichier": "course-cedar-31e49ad28e8ff084.mp3",
+        "duration": 8.85,
+        "sha256": "bad0b7074ab8abc5b752cc85e62e99532c4eb7a28b647434190e040d7b71a95f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:57.787Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "96b41847f6775057c64679360e5de4e6acf40aad7cd2006e07af3274de5625b7",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:discovery-0"
+        ]
+      },
+      {
+        "texte": "العُضْوُ",
+        "fichier": "course-cedar-9b0f9b4e7eab534a.mp3",
+        "duration": 1.45,
+        "sha256": "ae9c02423b4323bf51e59e2930cfb1bbd96397f08d3222b64a695503144b6cdc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:58.240Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d45fbbe22b2cef51376ce2cb8db8059bf1c89b91422f9f7adc2252c8bfc1ff59",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:vocab-0"
+        ]
+      },
+      {
+        "texte": "المَفْصِلُ",
+        "fichier": "course-cedar-bf09dbf3ab2aad66.mp3",
+        "duration": 1.45,
+        "sha256": "4e62925699b3a69f9221a0d9802504d582399d18795538c3aee260c5d81c2e7d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:59.167Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4b364abac1ea2c6b2d4d9a801b2bf3621c4998c4dfd55eae1ab17d2d5e69028c",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:vocab-1"
+        ]
+      },
+      {
+        "texte": "رِجْلاَيَ أَسْتَعْمِلُهُمَا لِلْمَشْيِ وَالجَرْيِ وَالقَفْزِ.",
+        "fichier": "course-cedar-cfee20127db1e192.mp3",
+        "duration": 6.8,
+        "sha256": "554ea9e5974833db0e6b11c6d2b414c63b2a296724c12b6b89cae079d58ab726",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:59.241Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a910dd815fce11a55acb3e869ce2477af2b633c5be79dd3c163d7ad08e7b93c5",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:rule-3"
+        ]
+      },
+      {
+        "texte": "بأي طرف من أطرافي أركض وألعب بالكرة؟",
+        "fichier": "course-cedar-56535ba92b1ef399.mp3",
+        "duration": 4.2,
+        "sha256": "8dcb466a288366b9847e71bb90185e9df5208a10b6799cc0d8d6f387d6e75f5c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:59.332Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b09d40608db843b9779d0e5952ec723ebf1ae5d9ad3f9c6e9372c27cf5df0535",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:example-problem"
+        ]
+      },
+      {
+        "texte": "بِالرِّجْلَيْنِ .",
+        "fichier": "course-cedar-104ced2f794890ee.mp3",
+        "duration": 2.3,
+        "sha256": "2bb5de054090b17e3b068a1fcdf4208f31271ae1df881d62dc26aad52a25ee92",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:54:59.404Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b3ce8d02db86b1bdad73f9e7392d9d6181422d25418f41e982c9656b82e4c260",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:example-solution"
+        ]
+      },
+      {
+        "texte": "بأي عضو أمسك قلمي لأكتب وأرسم لوحاتي؟",
+        "fichier": "course-cedar-b47b7335090269c4.mp3",
+        "duration": 4.85,
+        "sha256": "0a81344165cb1804640b900450c3129628874ce19462ced880cd09a2b0ffc0b2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:01.035Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1ddc99770d2b8eb57c4d379b38642b8bdc1e8e8a8456b0e70802aaf1dc5cb80",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:practice-ex1-sc1ap-bodyparts"
+        ]
+      },
+      {
+        "texte": "العب لعبة سريعة: \"المس الكتف، المس الركبة، المس الأنف!\" لتثبيت أسماء الأعضاء بالحركة والمرح.",
+        "fichier": "course-cedar-a55f5db7ff1eea0e.mp3",
+        "duration": 9.75,
+        "sha256": "685cb3acf26c05f7f881b2d1c2ed30c7e1a45dfa3186a5fe5427709a5159ce12",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:01.241Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "81500189c813e72a3470d8d7be8f3a14577cf4937de974ca89680292bcfbfa37",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:home-activity"
+        ]
+      },
+      {
+        "texte": "رأسي في الأعلى، جذعي في الوسط، وأطرافي (يداي ورجلاي) للحركة والعمل. أحافظ على صحتي بالغذاء والنوم.",
+        "fichier": "course-cedar-deef4090d19c06cc.mp3",
+        "duration": 10.2,
+        "sha256": "901ef2d3261fc5857549561dc34320bed913b88209cbc46b6c65d7f83e97372d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:01.855Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f6b98b84545a36e178520c7161d79f78c8d1fa34543a2e607b7ed29411e70a71",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:takeaway"
+        ]
+      },
+      {
+        "texte": "فِي الأَعْلَى",
+        "fichier": "course-cedar-ecdc164d2f68a42d.mp3",
+        "duration": 1.85,
+        "sha256": "a4c1a270eede32df72d495980a31ac5deb8261146a7b71ebba6bfb6ee5d3c781",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:03.071Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "468e30392ecb73fb073f89aea6d0ebf6e0ec6b0d1fa7697275ec00fffb98e239",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q1-sc1ap-bodyparts-opt-a"
+        ]
+      },
+      {
+        "texte": "أين يوجد الرأس بالنسبة لباقي أجزاء الجسم؟",
+        "fichier": "course-cedar-212edcb02a3c15cc.mp3",
+        "duration": 5.2,
+        "sha256": "e9e31fc144c8f06871083b53025d35f54d862692fbec21ef2223732d088fe47a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:03.344Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f2cac67f1561b116996b050c5806eadf53a744b950435b7ed9fe4456db5cd2cb",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q1-sc1ap-bodyparts"
+        ]
+      },
+      {
+        "texte": "فِي الأَسْفَلِ",
+        "fichier": "course-cedar-06e199faeb1b5bdf.mp3",
+        "duration": 1.75,
+        "sha256": "9962f557014027efa53f44a5ba2b673ad91d624a6785e301b662a7e11198bbac",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:03.396Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "feb2840ad07ed2606c1b41087f875094263a32a14b90499a7874ae45331bafdb",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q1-sc1ap-bodyparts-opt-b"
+        ]
+      },
+      {
+        "texte": "ما هو المشروب الصحي الذي يقوي عظامي وأسناني في الصباح؟",
+        "fichier": "course-cedar-d26209a219c360d9.mp3",
+        "duration": 5.1,
+        "sha256": "7e87bc08a11b4765e6026fd8bff8bb84b0e56b7acd5443d879b2e0765c64288b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:03.495Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cf384ee137ed179fb4a8b6ae561fdbcc22795cc7598d44d1804965f5933ac953",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:practice-ex2-sc1ap-bodyparts"
+        ]
+      },
+      {
+        "texte": "نمشي بـ",
+        "fichier": "course-cedar-63a7aa05f362305f.mp3",
+        "duration": 1.3,
+        "sha256": "ca3b4c25b0b3c6190e6549d822cd4fb363d8e053991f59a1b01020d3e454d6ff",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:04.411Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "88f08adf52a0ef0d46817431dd0c038948ce58de1ffdd7b868bb667f50483cb4",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q2-sc1ap-bodyparts"
+        ]
+      },
+      {
+        "texte": "في الجانب",
+        "fichier": "course-cedar-3c27136903407138.mp3",
+        "duration": 2.2,
+        "sha256": "f9bb5a65f54142f9e5024373cfb39db7f063b0a3b6864889f9f6a389ab6a87f1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:04.443Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d6c14a67bb9331c2c24b6f881029d75c0f9227aeb800be1938b243c87b3eefaf",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q1-sc1ap-bodyparts-opt-c"
+        ]
+      },
+      {
+        "texte": "الأُذُنَيْنِ",
+        "fichier": "course-cedar-82ce8fe9b999358d.mp3",
+        "duration": 1.75,
+        "sha256": "1206c0b5071fee9bc9ab2073cd0bb603e93848a904208454704170f2b95773c1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:04.508Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "12dc57bbca528e7610c8ef81c7d28cf539564fabb3c079ac4e835294dbd9c640",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q2-sc1ap-bodyparts-opt-b"
+        ]
+      },
+      {
+        "texte": "الرِّجْلَيْنِ",
+        "fichier": "course-cedar-58875057a87cceae.mp3",
+        "duration": 3.15,
+        "sha256": "a658ced4eb24b2ea0d32fc6e8e95f303b0fa0ad4915b16842640dd7d093823b8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:04.823Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e0d3f8040a2dfae654836358e5ebc17f9eb48bdcfaf5b2f53ab9bc4f65c73514",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q2-sc1ap-bodyparts-opt-a"
+        ]
+      },
+      {
+        "texte": "القَفَصُ",
+        "fichier": "course-cedar-b84d2c11f36b04ed.mp3",
+        "duration": 1.45,
+        "sha256": "70298450059bed480170d8af5ef4b2af5f65d544791b9fc01ce91184f6a05259",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:05.448Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0e93b7b3e090a1222333e445a186c0df10f44a7980b73b9758bde7e6eeb71d8f",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q3-sc1ap-bodyparts-opt-a"
+        ]
+      },
+      {
+        "texte": "القلب يحميه",
+        "fichier": "course-cedar-61408bcef64d4dd1.mp3",
+        "duration": 2.25,
+        "sha256": "7d13ac32dbeace4dbf255d8c9c2c387f6fd7fdd307e51da06ac011d7d0c1fd78",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:05.719Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8eacc1797f3f0c2034138fc64a65eee60e612832bd6171669c15cf1327317f59",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q3-sc1ap-bodyparts"
+        ]
+      },
+      {
+        "texte": "القَدَمُ",
+        "fichier": "course-cedar-58b77162ee656176.mp3",
+        "duration": 1.05,
+        "sha256": "9a5325313b5e3011def308f9457a51b478fda296f2daa64e7d502bbe964a10ff",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:05.877Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7b0660984b7f9fb10e92365630bc2b86fe33b15a0d6e99f8e1df12e0d663a758",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q3-sc1ap-bodyparts-opt-b"
+        ]
+      },
+      {
+        "texte": "الرياضة للجسم",
+        "fichier": "course-cedar-c041b4827e9077c2.mp3",
+        "duration": 2.1,
+        "sha256": "b05a766cd954299e8b7a55190d08e5a3003d4be553d90b6b3a8a70d444e4e946",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:06.508Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3274508d1c5d9ea192b020a50d3625a4cd5c4df149520c006b919c104533f2eb",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q4-sc1ap-bodyparts"
+        ]
+      },
+      {
+        "texte": "مُفِيدَةٌ",
+        "fichier": "course-cedar-00b5e0b2a2ab370e.mp3",
+        "duration": 1.7,
+        "sha256": "9c256b4a3cd9595ac5d5b5bb170fc1ecc0b9df6f9eaf9d3216c1a04e79305548",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:06.539Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f7fec32a66f3283176e433fbd831638e345918cbfeded83eb8933dd196745bda",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q4-sc1ap-bodyparts-opt-a",
+          "course:science-1ap-t3-food-hygiene:quiz-q2-sc1ap-foodhygiene-opt-a"
+        ]
+      },
+      {
+        "texte": "مُضِرَّةٌ",
+        "fichier": "course-cedar-8d2a9a10ce76baab.mp3",
+        "duration": 1.3,
+        "sha256": "c9dc6767cd7d957a4dfdbe529910e1899f661624ad1d8b1292ecea882a4cc66d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:06.714Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "eb53ae6c3f0b034e6963fa27d34906ef6a8a8973cf48b7e7987676c72c0538a6",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:quiz-q4-sc1ap-bodyparts-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر العضو المناسب لكل حركة!",
+        "fichier": "course-cedar-fde84da2866db71a.mp3",
+        "duration": 3.85,
+        "sha256": "e909b459d9f42fef4bfbdd75a11da63ebc7dc850c9539b455afef04842bee98d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:07.268Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "716481e66fa1982db5e9083255e13dbadcc48bea83c9d53c3c36c721afece6b9",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-instructions"
+        ]
+      },
+      {
+        "texte": "الرِّجْلاَنِ",
+        "fichier": "course-cedar-d03299c51f6edb52.mp3",
+        "duration": 1.6,
+        "sha256": "6c751c3fb4ad541bc12d86c4447764ce9b6829f0237dc8b9ae73da927d8a7c21",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:07.802Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d11714afd68a18a7e0f23aa6e804f80fdf5c2635654898b929311e7a4460a756",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "اليَدَانِ",
+        "fichier": "course-cedar-ddee1b0d615bf77b.mp3",
+        "duration": 1.35,
+        "sha256": "8370dbbad4db4c14d3d7dba888e871cce9c7c6dcec111fba2f0a294fc97e61b2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:08.013Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6d9ab3f34e2603c340c58733636926b208dce843fc9bf19c13609325ca8f6170",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "عضو نستعمله للجري وركل الكرة في الملعب",
+        "fichier": "course-cedar-def8c504a2a499cb.mp3",
+        "duration": 4.4,
+        "sha256": "a3a8992a7f29cb45fe92a8bc1580e12a724a099db3a409997f5091fb81457e48",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:08.109Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6bc87970f87e8bbfe16f476556ea794fd75b1159698ef7ac4b06cd88bd8fe3a7",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-0"
+        ]
+      },
+      {
+        "texte": "أين توجد عيناي وأنفي وفمي؟",
+        "fichier": "course-cedar-2fdea92d1e40fe7a.mp3",
+        "duration": 4,
+        "sha256": "700aea16eccd7615c0aef06bf5429d5f4f7e2939d7fc8bb59e85deda5172d83f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:09.150Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "308e8b1662a6b1fc1e1ca9d5062e3a419bc10a64e7ade734f197a3b666507123",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-1"
+        ]
+      },
+      {
+        "texte": "فِي الرَّأْسِ",
+        "fichier": "course-cedar-fa550d53dfa942dc.mp3",
+        "duration": 1.45,
+        "sha256": "2e07c27352d502621bdd700ab59495f76d3dbbbf9098782002a3c4e5ef4651ad",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:09.189Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "144086e76135f3f72b088237ff0d4c3b26c8d4d38893db1b2eb7faa28a8610dd",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "في البطن",
+        "fichier": "course-cedar-33261dbfbd62b2fe.mp3",
+        "duration": 1.6,
+        "sha256": "e7e196cf2eb0a3386d4c45fda9bd3e68c8b798ec0d2fda90ada581a0019c2a6c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:09.247Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0139c974a8e531e900df5f6c2854b00fb6996aa0dde50f7a230cedd334c16298",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "الرأس مكانه",
+        "fichier": "course-cedar-0162e3ed158d9950.mp3",
+        "duration": 1.65,
+        "sha256": "2a9885a9b64951b920d5a94b80b2bf769b51ad4b732f1669b91d306ddd6dd1f3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:09.598Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a140c2e906b36306c965caec0e369830f5e93c25189922e4d5fa93674bd0b6c5",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-2"
+        ]
+      },
+      {
+        "texte": "الأَعْلَى",
+        "fichier": "course-cedar-a9860bff6ee8d119.mp3",
+        "duration": 1.25,
+        "sha256": "9ef34dbeb1ff78ccb83626b80cf314babf0c5d4f9777c2272378beb809d6d158",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:10.380Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4eadfd1e3da50c9b7c2de8020c4df068bc4817bced86fa716b8818011be7b1b7",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "الأَسْفَلِ",
+        "fichier": "course-cedar-cbc44febe9b26b80.mp3",
+        "duration": 1.8,
+        "sha256": "f27db03135b545afb51a83eb3f69b5b248b45c0b0cc23f9f651038da62e002f2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:10.523Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d00e732466ca00bbaa296eac07a6b912fbefc439a8352ebdbee6f3269276f4d3",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "اليَدِ",
+        "fichier": "course-cedar-1545bcfccaa9d348.mp3",
+        "duration": 1.3,
+        "sha256": "3d89f007696e7af1e598c8088ad87e667dbbab0d28bcb92f862b57106a5cb2df",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:11.336Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "21a5682461ad1edc7ea6aa7604107c01b65813d00a2cd4a27e8c83ca085aa72f",
+        "uses": [
+          "course:science-1ap-t2-my-body-parts:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "تجلس وتشرب ماء وتستريح.",
+        "fichier": "course-cedar-945db70cfc52c1c1.mp3",
+        "duration": 3.3,
+        "sha256": "b7152e9149e7bae3532e954206492d2aa447ad0e183b95b138f7bd91e4b884ee",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:11.810Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6ce399cfdc4a78db08c87f673e0c46ed9576f82c67ec5fdfa3f98f723cbc73d2",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:discovery-1"
+        ]
+      },
+      {
+        "texte": "بعد لعب كرة في الساحة تشعر بقلبك سريعاً وتتعب. ماذا تفعل؟",
+        "fichier": "course-cedar-85b97768b226019d.mp3",
+        "duration": 6.15,
+        "sha256": "7f67787335c2a0981c5057bc46beb4dbc52dc9e1c7942084867437caf91b5036",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:12.466Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d6bc93ae1626bdaa19df2b90c1f7ab7e80078ecdf015271c7762ccfca5fcfbd5",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:discovery-0"
+        ]
+      },
+      {
+        "texte": "المَشْيُ حَرَكَةٌ هَادِئَةٌ: نَضَعُ قَدَماً تِلْوَ الأُخْرَى.",
+        "fichier": "course-cedar-8347e1f5b073f008.mp3",
+        "duration": 6.35,
+        "sha256": "c8141f494a7bc24e2a54a16b7f7f5f674b64becabddffd6d4d8fb5d94850c6c7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:12.522Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cf0cb4be377371aff1cefd6f4a25156da116048fe3399dbf71c04ce3b341f3b8",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:rule-0"
+        ]
+      },
+      {
+        "texte": "الجَرْيُ حَرَكَةٌ سَرِيعَةٌ: قَدَمَانِ تَتَبَادَلَانِ بِسُرْعَةٍ.",
+        "fichier": "course-cedar-af639c4974e250a9.mp3",
+        "duration": 5.05,
+        "sha256": "6024850b5278c782691014e4fe2b08f7c2da16e6454ed3f9202686445a3d2ef7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:13.021Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d907acaaae377ea3c235780be346b4e9ba2236be1c9368707ab7fd7e4b4483c3",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:rule-1"
+        ]
+      },
+      {
+        "texte": "القَفْزُ نَرْتَفِعُ عَنِ الأَرْضِ ثُمَّ نَهْبِطُ.",
+        "fichier": "course-cedar-e42bcb4f8d358c26.mp3",
+        "duration": 4.5,
+        "sha256": "11432e3982b320075473d7612e8e346adc914bfb857b4eed57ee97cb0351adf8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:13.504Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "09cfcaa037cdd5c3500dc94b0686324e6506f0da459f26710b70101e011c0a9d",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:rule-2"
+        ]
+      },
+      {
+        "texte": "النَّوْمُ يُعِيدُ القُوَّةَ لِجِسْمِي.",
+        "fichier": "course-cedar-3d468a7c6b6fbf21.mp3",
+        "duration": 4.1,
+        "sha256": "379d74f24a20563f13ad1e920b44cda14e75b507a7019b5c4b241d573517381c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:13.954Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fc2769d3c6d5f85de247a1264388594c087a34b29dc46ea0a2031d4611a9f1e3",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:rule-4"
+        ]
+      },
+      {
+        "texte": "بَعْدَ الجُهْدِ نَشْعُرُ بِالتَّعَبِ: نَجْلِسُ، نَشْرَبُ مَاءً، نَرْتَاحُ.",
+        "fichier": "course-cedar-f0dfa170f050d4f2.mp3",
+        "duration": 6.15,
+        "sha256": "a96aaba93b926417e88fe7c3e68e4efacfc1af29aa634b1278cdd51dd50063fa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:14.228Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ee427ac0f1f4029a21a0eaa49dafe2a77a39d7bfddce3dde615578e2208f450c",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:rule-3"
+        ]
+      },
+      {
+        "texte": "الحَرَكَةُ",
+        "fichier": "course-cedar-91dcf0853f9b8e62.mp3",
+        "duration": 1.7,
+        "sha256": "26b7173a6a40e13f9158355327487c228072dd37549ba065e30abccbf7ec9518",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:14.257Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1f8602d17388279bd58fc88d9c09fa8ce4a395267871a8dd1432aae2749f517",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:vocab-0"
+        ]
+      },
+      {
+        "texte": "الجُهْدُ",
+        "fichier": "course-cedar-c5371cf2501c5cd9.mp3",
+        "duration": 1.65,
+        "sha256": "d4c580146095bddf1b04eac9994cf58cb2843bf9012c523b49796c33a1154e47",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:14.543Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "da2fd47e3cf22815a09f69a28b18780582da9457a8831bd126e5fdcdc5abee54",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:vocab-1"
+        ]
+      },
+      {
+        "texte": "الرَّاحَةُ",
+        "fichier": "course-cedar-99ebe64f4111e6f4.mp3",
+        "duration": 1.75,
+        "sha256": "220ca4cb433f853fc47f3f1ef59e1d705b47e0ba4af77cc260daad7bfffcd1e8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:15.171Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aa2baf257e79a99e0ff47558d785811a9d8ba6745559a1ed9e1e063bffc9f694",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:vocab-2"
+        ]
+      },
+      {
+        "texte": "ماذا نفعل بعد الجري الطويل؟",
+        "fichier": "course-cedar-b3023a7ffd35fafb.mp3",
+        "duration": 3.25,
+        "sha256": "40787bcf55cb67605e6d6ed92f12086acef7962c27856ee46bdd87992466d27a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:15.737Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6ca10f3bae8f52337b390221948e4ba9118a1a0e5181c7b0b2c1e5b990ca75da",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:example-problem"
+        ]
+      },
+      {
+        "texte": "نَجْلِسُ وَنَشْرَبُ مَاءً وَنَرْتَاحُ.",
+        "fichier": "course-cedar-78c1ce2b5537c80d.mp3",
+        "duration": 4.55,
+        "sha256": "a846d4b9b00aedb41926bf133264f22e502cbf1321262b5ce61aae5a7ff436c0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:15.996Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "95eafe29aed3b97f2634d629cff684b5bf3a224a8c6a832e1a2fce50c77116de",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:example-solution"
+        ]
+      },
+      {
+        "texte": "أمشي، أجري، أقفز — ثم أرتاح وأشرب ماء وأنام.",
+        "fichier": "course-cedar-a8cf33a1175cda06.mp3",
+        "duration": 6.75,
+        "sha256": "5b85511ccf3cbe029f344a0f579ae92c3e6e5b37a6616bc9c1462bcbe6e9ba52",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:16.832Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c088422ff5e08a3f58640b271a5fbc6a36604da8713c6d990d3b95f3feb1ac30",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:takeaway"
+        ]
+      },
+      {
+        "texte": "قف: امشِ في المكان، ثم اجري، ثم اقفز — لاحظ الفرق. بعدها اجلس وخذ نفساً عميقاً.",
+        "fichier": "course-cedar-855c4bcdcde9753b.mp3",
+        "duration": 9.5,
+        "sha256": "3de521be0e6bc2bfcee36e4207f9137c68ab714e8b4f20aab65167fe92926c7a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:17.014Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ddc162782804a151a071729dc638394bf2444abdb1c7aca618ee89406bcd0a0f",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:home-activity"
+        ]
+      },
+      {
+        "texte": "بعد لعب طويل في الساحة، ماذا يحتاج جسمي؟",
+        "fichier": "course-cedar-45138bf1297444f8.mp3",
+        "duration": 5.2,
+        "sha256": "454a92a66a752a994a9f06854de2b2fe936ae6c7a3488e753dc903a7f30124f1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:17.474Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a8ea673480bb36afdb7ecf954d4b3bda6f1ba845c55d1480fe00fb1fa5881ff6",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:practice-ex2-sc1ap-movement"
+        ]
+      },
+      {
+        "texte": "ارْبِطْ الحَرَكَةَ",
+        "fichier": "course-cedar-0117236300680f34.mp3",
+        "duration": 1.75,
+        "sha256": "b31d193f133d55d089ebe268bd768fd5d80a617bc63d013e7737e0af63d221fd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:18.228Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3ca322ebd8baa8006cabd9256795bed042673c905f8e5fecfb71b744960d2c03",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:practice-ex3-sc1ap-movement"
+        ]
+      },
+      {
+        "texte": "الجري أسرع من:",
+        "fichier": "course-cedar-5b0801e5d72ec689.mp3",
+        "duration": 2.4,
+        "sha256": "51867f1f91d7bc5d6bc9dba58960c9cbed71549e6b2f581da2f3a4d3882fb697",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:18.413Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8fc23cc024cf7939f5fd868fd15ec16e53c9a9af28fdebe648c0fc5e0ee84c32",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q1-sc1ap-movement"
+        ]
+      },
+      {
+        "texte": "المَشْيِ",
+        "fichier": "course-cedar-ecfd92f592b95fc6.mp3",
+        "duration": 1.65,
+        "sha256": "78afb3fba39807ecf040b7a3ba4b5ec569de1c125f200a87d0ccede21208ce90",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:18.495Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b7f6b9f732d53be2403eeb23c461f9581dca79ff8a46bb2b03784d6f38c2509f",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q1-sc1ap-movement-opt-a"
+        ]
+      },
+      {
+        "texte": "جَرْيٌ",
+        "fichier": "course-cedar-719b29e8a141b59f.mp3",
+        "duration": 1.7,
+        "sha256": "6a03458e823c6bc6f8a079afd81cc623ddee6d0f32e7e23f7883ca7c56109b5d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:19.578Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6c8767ec5abfdc7cabe245f5488531d14091b472db20f3c56001d9835207d263",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q2-sc1ap-movement-opt-a",
+          "course:science-1ap-t2-movement-effort:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "في الساحة بسرعة",
+        "fichier": "course-cedar-bf4f614a514e2806.mp3",
+        "duration": 2.15,
+        "sha256": "e96ecb08e1bec9a3084bad045d8e4a61eab80b2d03551ea18978755b24bdca75",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:19.613Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7124f061f5975bf0468fd7b1ed77434275cefe893796e1e6c7814bb54a357bfc",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q2-sc1ap-movement",
+          "course:science-1ap-t2-movement-effort:game-0"
+        ]
+      },
+      {
+        "texte": "بعد التعب نشرب",
+        "fichier": "course-cedar-0596c596d08e3947.mp3",
+        "duration": 2.3,
+        "sha256": "690d85cfaa5437615039ff61327ebfd54048034926e8c9a2c5bcc4ce0938afa4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:19.797Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "64180dc40d0010feaacf0829e2e657ef2c6232c05996fb77fda17ab2fe9468a8",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q3-sc1ap-movement"
+        ]
+      },
+      {
+        "texte": "النوم",
+        "fichier": "course-cedar-2b058f9626890531.mp3",
+        "duration": 2.2,
+        "sha256": "430d4ad3f49a207d6e831a50fc376d23bf7235a497219be9dd6d3e284e74b7e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:20.599Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2324ee2358e5d8db8e8cd34f454011cb08bd50a9f405ff7549b87a08f249e90e",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q4-sc1ap-movement"
+        ]
+      },
+      {
+        "texte": "أي حركة نستخدمها للذهاب بهدوء إلى القسم؟",
+        "fichier": "course-cedar-644983c3ac6f0efe.mp3",
+        "duration": 4.9,
+        "sha256": "0b7c544c9bec190b9d336583188977ef7a3b0b80fbe37666cf25da851af02cfd",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:35.440Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "541e28ca9257217a7047ba5052ddfa2a4a81897d183d1634aefd7c73eb6c352e",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:practice-ex1-sc1ap-movement"
+        ]
+      },
+      {
+        "texte": "بعد التعب",
+        "fichier": "course-cedar-57098aacd8408a38.mp3",
+        "duration": 1.4,
+        "sha256": "09ee4e4868dc708c00cf04360e8f6a1d96a6df309973baa4ce90021c90275f80",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:36.388Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "685bb310df546b5aa3fae82973cc9cb03ac2ddfeae0ec6d1ac1077227ecc8c7d",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-1"
+        ]
+      },
+      {
+        "texte": "رَاحَةٌ",
+        "fichier": "course-cedar-949ce8f95455b29f.mp3",
+        "duration": 1.25,
+        "sha256": "9f2feb84507acd388cec8cf01edb3e578f75bfad0380c1c310f6d367830952f4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:36.427Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "004e059040d8ecda5e5fac5c51cd6fcfcbadaa278990d69476f7288c0293a6d1",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "يَمْنَعُ النُّمُوَّ",
+        "fichier": "course-cedar-389652432db7954b.mp3",
+        "duration": 2,
+        "sha256": "c7206cf2a4c7f5ec731ee010d3548d428220bebbe3cb33d2ab1813f29179b961",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:36.633Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dfb158e7b1001f658902030ccab5308617b3bad60c67b2661e7b34f43411045e",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q4-sc1ap-movement-opt-b"
+        ]
+      },
+      {
+        "texte": "يُعِيدُ القُوَّةَ",
+        "fichier": "course-cedar-8d32907eed5cd080.mp3",
+        "duration": 2.7,
+        "sha256": "ec68cc7fda8fed6434e1ca0ce772ec4c06b9c312e84c5c3e67126f75c2bffaf6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:36.930Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d5c5a0bd96ccebfff511f7eb42a6c1efde0855bd377615f58d5d8dee24f6f860",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:quiz-q4-sc1ap-movement-opt-a"
+        ]
+      },
+      {
+        "texte": "قَفْزٌ",
+        "fichier": "course-cedar-ab30a8cc9b526313.mp3",
+        "duration": 1.3,
+        "sha256": "9d1c2342b20b1621f88cf86793fd4504906e73f8d87c149c946b86800569491e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:37.456Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dc48f00d736f4acef74e2aef46e6ed56088689a273ffd011b682d510c85db6e0",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "بعد اللعب الطويل",
+        "fichier": "course-cedar-f5240e531ad82cdd.mp3",
+        "duration": 2.2,
+        "sha256": "d6489e573a4820ea0b678eb440853e31efa466a0042570814222d5d409c3f983",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:37.618Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d2f67e755adfa9566635d73b49be37a8ea7e7d90ce8e1682376a9704531b8b7",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-2"
+        ]
+      },
+      {
+        "texte": "نَرْتَاحُ",
+        "fichier": "course-cedar-b0fe27e5152f7ace.mp3",
+        "duration": 1.6,
+        "sha256": "5f1edf72690877419e9593800637266919add52b6d5d57feed355276423c9eb0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:37.810Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "18ef4854a5d8364f9fd14e4a41ddffc00c91654cd2d12bfa480764f57e237d7b",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "نَجْرِي أَكْثَرَ",
+        "fichier": "course-cedar-6467a6cb5001f3bb.mp3",
+        "duration": 2.4,
+        "sha256": "514149545f9f97a873c518a051d9912f16b49b8b8cfe723a4aa79c70d79980a4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:38.071Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d7ed2a8eef1fd8fdca9441d6b1b7b44c688f798f3570d3828f8e6ecfda3fead4",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "الجري",
+        "fichier": "course-cedar-10509354d426e643.mp3",
+        "duration": 1.05,
+        "sha256": "c21ce6b508301d7c9ec43f87707cb4fdd090cbd90c830dc6b3097bd0037170d4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:38.524Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "708fe39ed01d72970fb479c3303a1b834c39619933a09655db705942b4fe4692",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-3"
+        ]
+      },
+      {
+        "texte": "أَبْطَأُ",
+        "fichier": "course-cedar-b927fae26d4b2b36.mp3",
+        "duration": 1.85,
+        "sha256": "b01805ebdca2eae739ba63aab86cd2ec5d5ad243abdc05cf5a3a2b8c8cc2aab1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:38.928Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "849dd7736444da63c08ddc4e62bb43cc6299043c98c6e2c7ec57b984da3484e2",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "أَسْرَعُ مِنَ المَشْيِ",
+        "fichier": "course-cedar-b7a4454b5839ac8b.mp3",
+        "duration": 2.45,
+        "sha256": "1d341d1537a600166829e99f34f6ad30791ce00d54d83764ba9437a8a0f28eb7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:39.000Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a208011e65b0e0af9dc3d4cc8921c359a9d617533277f4bafa4f415abe5fbae2",
+        "uses": [
+          "course:science-1ap-t2-movement-effort:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "ضع بذرة صغيرة في التراب واسقها كل يوم. ماذا سيحدث لها بعد أيام؟",
+        "fichier": "course-cedar-ebad8cc6047bc8e7.mp3",
+        "duration": 8,
+        "sha256": "a6e73c3ab5619173fbf2900c619ec00650bc63260693cd7cd63999e2774925a8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:40.031Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "24e99db8a51cfb9738a094cf9207e1163e45b881a004f9a6dd92cf90c850e07e",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:discovery-0"
+        ]
+      },
+      {
+        "texte": "نَزْرَعُ البَذْرَةَ فِي التُّرَابِ وَنَسْقِيهَا بِالمَاءِ.",
+        "fichier": "course-cedar-02c340e7bbc82899.mp3",
+        "duration": 4.65,
+        "sha256": "c270344841069a5115c137869be4279b057e20c8924a5dd7906dad006ad47bbf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:40.311Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6b7e4c87e88e24252d8ff764aa6f20cae7f98d9dd17d3f4789f7318cf3098408",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:rule-0"
+        ]
+      },
+      {
+        "texte": "تَكْبُرُ النَّبْتَةُ شَيْئاً فَشَيْئاً وَتُخْرِجُ أَوْرَاقاً خَضْرَاءَ .",
+        "fichier": "course-cedar-0c68020ba22fe761.mp3",
+        "duration": 5.4,
+        "sha256": "6c4a341017237e6b285d236b43520a7a11cbaa41d646de3249c753535256c528",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:40.900Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "de21470596c576311cf592d920df8fc958b3e771510001afb80699b9d9239e81",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:rule-2"
+        ]
+      },
+      {
+        "texte": "تَنْبُتُ البَذْرَةُ وَيَظْهَرُ مِنْهَا جِذْرٌ صَغِيرٌ وَسَاقٌ خَضْرَاءُ .",
+        "fichier": "course-cedar-7c182ec4ec2e488b.mp3",
+        "duration": 6.7,
+        "sha256": "571cbe5852ac5790390e0c305d0942be690eddfa92e2c309d99168dc1182087d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:40.977Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "183e8b37098baf92778631ad57f24a51e4bf7076eb522badbc8fe355f3cf3f3b",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:rule-1"
+        ]
+      },
+      {
+        "texte": "البَذْرَةُ",
+        "fichier": "course-cedar-306fbedaa99e7f0d.mp3",
+        "duration": 1.3,
+        "sha256": "33b1eb428caea1e8a439023a09325087cd7ac02795be40a23274a80b39152b5f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:41.368Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3784d5db90ed1a5970d5e64baf6c89e665bc828023ead65c35fec2e5b0fb4926",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:vocab-0",
+          "course:science-2ap-t2-plants-around-us:vocab-0"
+        ]
+      },
+      {
+        "texte": "الجِذْرُ",
+        "fichier": "course-cedar-551215e130b9eaba.mp3",
+        "duration": 1.3,
+        "sha256": "1fc57b02a43d9624181e0e27a8592274cfcf39da6b9e7818462b4c76419a4c8d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:41.977Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3a46728430745203765e9b74c49466d9ba6235d46dd398b9c257404a4e19d4d5",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:vocab-1"
+        ]
+      },
+      {
+        "texte": "تَحْتَاجُ النَّبْتَةُ إِلَى الشَّمْسِ وَالمَاءِ وَالتُّرَابِ لِتَنْمُوَ وَتُصْبِحَ قَوِيَّةً.",
+        "fichier": "course-cedar-0af1b2ed55bfcbe5.mp3",
+        "duration": 6.65,
+        "sha256": "b3063445eeee1bc35b4c30656710d1b80bf90016ae3bdcc7414d105d9af376d7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:42.044Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "38ed4fc6909ec07ab68e02ff171c6f22e931c98511161fa0f58368d503b22f8b",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:rule-3"
+        ]
+      },
+      {
+        "texte": "ماذا تحتاج البذرة كي تنبت وتصبح نبتة؟",
+        "fichier": "course-cedar-02af98d8daa2857f.mp3",
+        "duration": 4.6,
+        "sha256": "1d2e7f5a6c52ef99f4a2dd4794f761d4f3351676602be919b9eca2bb01ab6b73",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:42.701Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0ece9f2fcd8634f83e177d0831b35377007e120d23deaaf06496f2b0ad54c58a",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:example-problem"
+        ]
+      },
+      {
+        "texte": "تَحْتَاجُ إِلَى المَاءِ وَالتُّرَابِ وَالشَّمْسِ.",
+        "fichier": "course-cedar-6b92104e4571964c.mp3",
+        "duration": 3.95,
+        "sha256": "7cdf719420cb56ba39e0777a8e13fbc4e09810764ae1df43321173a58439ed02",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:42.947Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4fc15072272beec47e17a7b779a992fb82413060b475fee8646822dbdfede7bb",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:example-solution"
+        ]
+      },
+      {
+        "texte": "البذرة تحتاج ماءً وتراباً وشمساً لتنبت وتصبح نبتة خضراء كاملة.",
+        "fichier": "course-cedar-ad5d6ad156d0713f.mp3",
+        "duration": 8.05,
+        "sha256": "78a327a4a30b66ca0af732c7e31dfb7f3195410f613e7828eb4762143aaeb7d2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:44.045Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a6185a348d6e7130e4032445939cf3c9401386c9c7e293ecb23f6ffee68ede4a",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:takeaway"
+        ]
+      },
+      {
+        "texte": "أين نزرع البذرة كي تنبت؟",
+        "fichier": "course-cedar-c2004a26bf30587b.mp3",
+        "duration": 4.2,
+        "sha256": "1888df0c012dcb17935dc1e1769c012ad8f1b2bc382c15a8770f603d7baca1c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:44.078Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7d09a5c0fb200ef42692ea10c07f084e13fe4cc40df1b3c7019781c7753b5bdb",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:practice-ex1-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث للنبتة إذا نسينا سقيها لأيام كثيرة؟",
+        "fichier": "course-cedar-656f489dedd83692.mp3",
+        "duration": 6,
+        "sha256": "78dc7b4c844f9d5fe4ef139d456de00266039ab8b097e3e63fe2decff3631112",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:44.758Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "81dbbf81cde926f0ee5cc12dc5f2f1b125887068afcd2fdfeb73f20e80f0ca9a",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:practice-ex2-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "ازرع مع الطفل بذرة فول في كوب شفاف ومتابعة نموها يوماً بعد يوم — تجربة حقيقية تثبّت الدرس أكثر من أي شرح.",
+        "fichier": "course-cedar-773588eba5cd66a7.mp3",
+        "duration": 13.1,
+        "sha256": "af3712374a89ff7e70b255e75d904a5a0f8672a99bdf85791c2bc08dead612e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:45.192Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "642551e1720f14d72c4978c59125a3a50ec24160f0380a35b0b14f0bde9fc36c",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:home-activity"
+        ]
+      },
+      {
+        "texte": "زَهْرَةٌ كَامِلَةٌ",
+        "fichier": "course-cedar-d9f998d7756d5568.mp3",
+        "duration": 2.2,
+        "sha256": "769626430aebd4b3810bd7c1bfa3bb5a5573dc3fb9f6f8fbd875f8af573102c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:46.244Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d4da62e2abee681c509249116ad38942c8e106e9303b6aa8371c3cc1734f60b1",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q1-sc1ap-plant-opt-b",
+          "course:science-1ap-t2-plant-growth:quiz-q2-sc1ap-plant-opt-b"
+        ]
+      },
+      {
+        "texte": "ارْتِبْ النُّمُوَّ",
+        "fichier": "course-cedar-37882538fb71ac0f.mp3",
+        "duration": 3.2,
+        "sha256": "bafb7f4de2e36224d160ddaa974e88ac88d8af105569e283ee4a0de2763e0f20",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:46.816Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "860283c4d75348c8e7f3707b5c3f00118866f1587e7360e9751865ec32fc11dd",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:practice-ex3-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "جِذْرٌ صَغِيرٌ وَسَاقٌ خَضْرَاءُ",
+        "fichier": "course-cedar-11031730fbceb0e0.mp3",
+        "duration": 4.2,
+        "sha256": "617dab3ef2581ab8690845dffd39500a4427f275e53a3d51d8447a61fd809285",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:46.871Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "035d5b9583590b482cec1e78e819826d95fb0dabab96c5a0a8ae0a6ca940a6c9",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q1-sc1ap-plant-opt-a"
+        ]
+      },
+      {
+        "texte": "ما أول جزء يظهر من البذرة بعد أن تنبت؟",
+        "fichier": "course-cedar-e8f8fb5508217c55.mp3",
+        "duration": 4.65,
+        "sha256": "38204d2c3912d0655d2871ea2c5152997e679cc48958b430c8b16075a724c12e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:46.936Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9a970128ffae7a7359059a4b220f67c6341530b7ff29da7cf073a3fb64953f47",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q1-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "أول ما يظهر غالباً",
+        "fichier": "course-cedar-9cd7387f722cc359.mp3",
+        "duration": 2.3,
+        "sha256": "b7069145eb65772aef0ae60a41d3764cbee758e1b6523894a171525f58fab057",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:47.684Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fa8dde5017a6af714d869c7748d1c9d8fad03efaf244bd6671f960d4671f12af",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q2-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "تَذْبُلُ",
+        "fichier": "course-cedar-0cae499ec25b4080.mp3",
+        "duration": 1.05,
+        "sha256": "79e404ecc5e4516721f0a6035d122ee49b2782ecdc313b4940dac86a890ec087",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:47.997Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "57e5e8d0a0ce533f2be9948ebaca661162acf34b7380ca75f062b322ec3117f5",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q3-sc1ap-plant-opt-a"
+        ]
+      },
+      {
+        "texte": "جِذْرٌ",
+        "fichier": "course-cedar-bc2ba04eadacf896.mp3",
+        "duration": 1.1,
+        "sha256": "15ad36df5ec5b45025e17202ab77e1e0c9fccffbef01534aa68e7531e76a2f45",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:48.047Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "403ce6c7b3f4be35091d16c4e76778103c554594a6f86a2d8f0a8b8081af233f",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q2-sc1ap-plant-opt-a"
+        ]
+      },
+      {
+        "texte": "بدون ماء النبتة",
+        "fichier": "course-cedar-3655655c951a1218.mp3",
+        "duration": 2.5,
+        "sha256": "fbfd26c87a2d8d0aa04b0eea6b1c2b50b30c36ffb0859d89d1b432b84dadfe09",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:48.473Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "632c302e0e184be3ce52c1611dd6ab5229397b881a0496f9c6e514ffbf1ebf3c",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q3-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "تَضْحَكُ",
+        "fichier": "course-cedar-38868c5075c82a71.mp3",
+        "duration": 1.1,
+        "sha256": "84d01572da499584b44aadc9f588a8f8aa30bb3e89bb7981c72052dbb1b0af8f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:48.738Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fd9b7a9327f4838843c5ae3982758b764edcc1e1635e8775c0191a0c55a396f1",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q3-sc1ap-plant-opt-b"
+        ]
+      },
+      {
+        "texte": "أَخْضَرُ",
+        "fichier": "course-cedar-0f5c5dd40defa8c9.mp3",
+        "duration": 1.15,
+        "sha256": "09fd0eceed81d0adadfc8a09215fa89155ef89fca81c35187bab60dc92ecb671",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:49.291Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d8a703f1f2ea4b6e41f4aa839dba28205151a6c982af5d846884a69f866a0bad",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q4-sc1ap-plant-opt-a"
+        ]
+      },
+      {
+        "texte": "الأوراق لونها غالباً",
+        "fichier": "course-cedar-6d1e290bbd3b1380.mp3",
+        "duration": 3.2,
+        "sha256": "d06b12616e119d813e13e5fb883eb5d39642a72095062ab80cc9d0fd63214020",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:49.492Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3effbc462770618a51ddbc78309846b7f6bcba04d2c13f17ff770df005567a10",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q4-sc1ap-plant"
+        ]
+      },
+      {
+        "texte": "أَزْرَقُ",
+        "fichier": "course-cedar-90b9ca5274d1b081.mp3",
+        "duration": 1.5,
+        "sha256": "6673c138043dd99818803573bb1280cbae930c097d92bc9680de64d2adc3e8a3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:49.578Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "386468823b8d4e8502646c0e20e1fcce8e0ac18e537e61363e4e2ef1ebf26230",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:quiz-q4-sc1ap-plant-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر ما تحتاجه النبتة لتنمو بشكل سليم!",
+        "fichier": "course-cedar-6279cee215e57032.mp3",
+        "duration": 3.95,
+        "sha256": "38c1dff6289d9e253271e965cb3fa23fe8553b613e5adaa44a2c053b09076515",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:50.206Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "72a9068ac620646e2bcb59c67a7975da6518a4a2e9fb24c6f91e213a5959d5dc",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-instructions"
+        ]
+      },
+      {
+        "texte": "كي تنبت البذرة وتكبر تحتاج إلى...",
+        "fichier": "course-cedar-4c3f3180d417a499.mp3",
+        "duration": 4.5,
+        "sha256": "7a211c9949d75e166a58dfe98903ffb456af5e1ea4c92dea311a333960d4fabc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:50.657Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "07cb42d2062ef17ece158e01d3f71daef89cf5aa673f98acd8269e7cdc4950e8",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-0"
+        ]
+      },
+      {
+        "texte": "حَجَرٌ وَثَلْجٌ فَقَطْ",
+        "fichier": "course-cedar-4f5c28a607e52d2d.mp3",
+        "duration": 3.1,
+        "sha256": "b4bbbf1570f37d420ac1ceddc676b997406a2d551a87a92e1725e30d7afe105e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:50.935Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5689633fd370e2f47ff49488b15cf608e5558cd57940063cab43767bac4135c5",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "مَاءٌ وَشَمْسٌ وَتُرَابٌ",
+        "fichier": "course-cedar-f6dc99888b7d90c0.mp3",
+        "duration": 3.3,
+        "sha256": "08fa656afdce15cdfc0316df3ddfb9f5b220595468c76e8d5dc085ea18792a46",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:51.290Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "919cb97ee73adc1dc1fcd222d940ecd931186b4b704df76b35c1de1da2f40c80",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "النبتة تحتاج",
+        "fichier": "course-cedar-31fd8798172c3463.mp3",
+        "duration": 2.45,
+        "sha256": "3b08b05f30be9c1a6eed83c38bbde460216959c820db11280656e4070131acc1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:52.041Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ca5957ee84120856c75171930da3ca21006994c36f24fc769a2fe17014d68a8e",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-1"
+        ]
+      },
+      {
+        "texte": "مَاءً وَضَوْءًا",
+        "fichier": "course-cedar-1f498e92ed46a8f6.mp3",
+        "duration": 1.8,
+        "sha256": "aced0712d489ee1d4686158eab06f5aafe9cd4ea10d5631450c12d3ce8d6cc34",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:52.073Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6a89f801eba742e1576fb26934e80625cd2148b7b6c8bdebc0d536e7a02d88de",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "ظَلَامًا جَافًّا",
+        "fichier": "course-cedar-716e1021971dfc7d.mp3",
+        "duration": 3.1,
+        "sha256": "730fbb15a7417580d1b18b98e390ee094277f29a202229a6a5a7a509bd67196c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:52.352Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "30cb32af5fcc94aee49b2c9b333471c8519acfde4ccc7f8f3b9884c2e6d20c55",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "البذرة تُزرع في",
+        "fichier": "course-cedar-516b4534161435fd.mp3",
+        "duration": 2.55,
+        "sha256": "925de3f547397d79a9c31fc2d3cd4b88c35e1b4a23532a3537cd61447fb7787a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:52.579Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d89d922696d06efbe523185c94360f71c658f0640f41e7e6c83373826f88c01",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-2"
+        ]
+      },
+      {
+        "texte": "الثَّلْجِ",
+        "fichier": "course-cedar-2cf3924c51c3ce94.mp3",
+        "duration": 1.45,
+        "sha256": "cc354774ba45c3e3df9a9c0f3859a73ebd8d3b7a26e896f5cf3177b4d109193c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:52.943Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9b871ba1bac9433cc260a30951ac471cee1444500782cf8d21e4743aa7669cc1",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "التُّرَابِ",
+        "fichier": "course-cedar-64a859caae9121a3.mp3",
+        "duration": 1.8,
+        "sha256": "f1a50ca15df8bff50c40d15dee621077e8c26ad5f786ee287653ab9d93906410",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:53.422Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5dc2b4f6e3a55c0f8e622d3fda7c578f832bd327891a119eb1a56345378f6b92",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "الورقة الخضراء",
+        "fichier": "course-cedar-534e615cf4031a47.mp3",
+        "duration": 2.75,
+        "sha256": "8fcfc08823107ab1a06cd9315287cdcb785eef50d3ce28b0320c1b5cae4e4bf3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:53.668Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "42aca109ee96fc872bedf3538d5df9c4fdc8ed93ae571ed3c964a9ce2a993538",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-3"
+        ]
+      },
+      {
+        "texte": "تَصْنَعُ الغِذَاءَ",
+        "fichier": "course-cedar-52675796d28a2bde.mp3",
+        "duration": 2.25,
+        "sha256": "cfc1d2564b2b03fbf8cd78b2ca61fed1148a7f1d7498669d18f28a929ba45426",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:53.764Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "60ddab757c130faab2c138fbe9c865a78e8f7ac27ff84c22114dcca6f3e50bd1",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "تَمْشِي",
+        "fichier": "course-cedar-80fafbc4527f6092.mp3",
+        "duration": 0.9,
+        "sha256": "21c12059045c3fb4d66aee0c9113b8049ea3fa304c31cebcf7ea2a012d101680",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:54.878Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8cd1b064f0e65863655e3ca30ecbadbd672e6101639866eb224960726ba81c0a",
+        "uses": [
+          "course:science-1ap-t2-plant-growth:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "وفي أي فصل نذهب إلى الشاطئ الجميل ؟",
+        "fichier": "course-cedar-ae47aa995383d70c.mp3",
+        "duration": 4.55,
+        "sha256": "2288508e4affa60c8084af534ed4f499ea19490f89392cf17aefe029416c462e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:55.372Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e409a0af83e11a80f4cb9e021b4718b2d6e29086f6ac2254d41e15a17ae55f17",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:discovery-1"
+        ]
+      },
+      {
+        "texte": "في أي فصل تتساقط الثلوج ونلبس معطفاً دافئاً ؟",
+        "fichier": "course-cedar-a740f75ec3954972.mp3",
+        "duration": 5.95,
+        "sha256": "0beb2b666569f18fa89020567059284dbfeb4d19f503197b91265bb95f002ceb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:55.779Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9e6e89f52fe1e034e6101cd0ca1abbf4ac91618213a8e935ea337a92e8470e07",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:discovery-0"
+        ]
+      },
+      {
+        "texte": "الرَّبِيعُ : الجو معتدل وجميل، وتتفتح الأزهار وتخضر الأشجار.",
+        "fichier": "course-cedar-0c7c7585ab1837f2.mp3",
+        "duration": 8,
+        "sha256": "6267ebb1f7ce3f50bc46150bf5e54a7ea246dcc9bea91590777eca1d64cc9649",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:55.843Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "85c7ad9c64a820d2a9545a2dc88bc936ccb3f86139fce197fb9fe50f3ba3145d",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:rule-0"
+        ]
+      },
+      {
+        "texte": "الفَصْلُ",
+        "fichier": "course-cedar-779882e27c614b2c.mp3",
+        "duration": 1.6,
+        "sha256": "1b83211df9295d1eac03c169c266c000b373499f56778a83cb0ba4fad08af0f6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:56.943Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c6667422bdb3ea4ef6a3a4e790d1a965932e315c0c5b3fdb93848d06e49adfa9",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:vocab-0"
+        ]
+      },
+      {
+        "texte": "الصَّيْفُ : الجو حار وممتع، نلبس ملابس خفيفة ونذهب للعطلة.",
+        "fichier": "course-cedar-3923c6c4de62d574.mp3",
+        "duration": 7.95,
+        "sha256": "114181f9e5bfb4d8246c23d2adb8fb84a2ebb5ea4ba2960499b0f9a7ae870e60",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:56.973Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f168cedf57758cc2e0f50b89f1c47be41560e7bd8fe90571b953602194e095bf",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:rule-1"
+        ]
+      },
+      {
+        "texte": "الخَرِيفُ : الجو متقلب، وتصفر أوراق الأشجار وتتساقط.",
+        "fichier": "course-cedar-0e17f995ebff15e7.mp3",
+        "duration": 6.4,
+        "sha256": "a5f602775463354a5e843eebe1eb8f8e433710ab88331ded3ed1125efd607b17",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:57.203Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "704355a1e69a5bdd4f342dca189e164e52e3fffa94f407143b12928da6180bb3",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:rule-2"
+        ]
+      },
+      {
+        "texte": "الشِّتَاءُ : الجو بارد وممطر، تتساقط الثلوج ونرتدي معاطف سميكة.",
+        "fichier": "course-cedar-bc5008a60d12ba39.mp3",
+        "duration": 8.45,
+        "sha256": "c44f6282da57bec83f0af8c2f00060e924f45444ca029cb9dccc5cf52bcac419",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:57.689Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ba3c84be2c35706055ac62a9482ad09edbd0cfd8906d9df32b1e382d6c38a535",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:rule-3"
+        ]
+      },
+      {
+        "texte": "الطَّقْسُ",
+        "fichier": "course-cedar-a4d74b8f7ddae31a.mp3",
+        "duration": 1.15,
+        "sha256": "b55fb61abfbe8003a30b2c83ffbae036e3beb4fe19d994d3a811fe37b23654f8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:58.038Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e9cad0fc2641837f3aaf0bd810f1e7eb364112d9f01e04a36590ced201263a98",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:vocab-1"
+        ]
+      },
+      {
+        "texte": "في أي فصل تتفتح الأزهار الملونة؟",
+        "fichier": "course-cedar-a77aa994935cea91.mp3",
+        "duration": 3.8,
+        "sha256": "3455246fb4c753806a20dfc7ec131579b4f12d96b0f76a956a3bf03022ed332b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:58.391Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a2e2fa53d99d8f7e705723d9fef4c2f8fb2fec6cef54e534d4bc3526d9d60452",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:example-problem"
+        ]
+      },
+      {
+        "texte": "فِي فَصْلِ الرَّبِيعِ .",
+        "fichier": "course-cedar-ddfdc49726d6e6d1.mp3",
+        "duration": 2.35,
+        "sha256": "27bab7ba1fa764d16c797ad97a6610f141b3c05d16d12c9556a1da29b28837a1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:58.428Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "522542986022997207e8cf24af288fa4d935ae8900259abaae8f6b07652b7053",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:example-solution"
+        ]
+      },
+      {
+        "texte": "في أي فصل نذهب للسباحة في شاطئ البحر الجميل؟",
+        "fichier": "course-cedar-fae4a8978706970f.mp3",
+        "duration": 5,
+        "sha256": "1f45248f1deebb31e6106d197df940844988e1338a09c3389ac5a9a8a5b4d250",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:55:59.916Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d00ccf57de370985f450aa1c2455f165ce3d1f8b13f744a50dbad5e3ee21dea7",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:practice-ex1-sc1ap-seasons"
+        ]
+      },
+      {
+        "texte": "ما هو اللباس المناسب عند نزول الأمطار والثلوج في الشتاء؟",
+        "fichier": "course-cedar-55aab7a6ae4eff9d.mp3",
+        "duration": 6.45,
+        "sha256": "cec7a5fe5683bb27e7ddc4b832ddb3ce28c34de74def6807554525f0596d3dcf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:00.042Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "91853f876bbf0f58c2a7cec6418d560c5dae2a0f8fbb05ffcaf066fa99f6e169",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:practice-ex2-sc1ap-seasons"
+        ]
+      },
+      {
+        "texte": "ارسم دائرة الفصول الأربعة مع الطفل ولوّنوا الربيع بالوردي والأخضر، الصيف بالأصفر، الخريف بالبرتقالي، والشتاء بالأزرق والأبيض.",
+        "fichier": "course-cedar-d9a82b5fdc965963.mp3",
+        "duration": 13.25,
+        "sha256": "79cd1a074ecda943cb830cc233f79e286f56fa3643ffe9ffddb8e0f59a8b7db0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:00.926Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a5dd9ce10b210a1b978bc822689c95f12efc653cea1fd534f44a8dc777388b28",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:home-activity"
+        ]
+      },
+      {
+        "texte": "4 فصول في السنة: ربيع مزهر، صيف حار، خريف تتساقط أوراقه، وشتاء بارد ممطر. ألبس اللباس المناسب للطقس.",
+        "fichier": "course-cedar-dfb29199d495e295.mp3",
+        "duration": 12.85,
+        "sha256": "bd951682f2dc8d13d2db49490656d724e5c8937be51f6c6cd998601e78c99db5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:01.471Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cbd76d9283b76e0a0128566d627e4cd254863e39afffe87acca536828cd8326c",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:takeaway"
+        ]
+      },
+      {
+        "texte": "كم عدد فصول السنة في الطبيعة؟",
+        "fichier": "course-cedar-1197100732b52767.mp3",
+        "duration": 2.75,
+        "sha256": "57019c770a7df86f64293e8b23465ef78e3eca9a86b4608bc3c6031434658dfa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:01.816Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "019cf592a85b4656683f1f33abe4d96b8cf844342ca5680ecce48554ed544cfb",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q1-sc1ap-seasons"
+        ]
+      },
+      {
+        "texte": "4 فُصُولٍ (الرَّبِيعُ، الصَّيْفُ، الخَرِيفُ، وَالشِّتَاءُ)",
+        "fichier": "course-cedar-fef4864bacab5ae0.mp3",
+        "duration": 6.35,
+        "sha256": "1086cf9a47bdee25a0ba3e377b7d1c1614abdc32aa35eab6b3eaa259d43d39f4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:02.178Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "de9f355d595e372806b79d2f4da171a35a003430dbfc1242b19fddfbc91663d2",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q1-sc1ap-seasons-opt-a"
+        ]
+      },
+      {
+        "texte": "فصلان فقط",
+        "fichier": "course-cedar-3f20265e5d1d2545.mp3",
+        "duration": 1.85,
+        "sha256": "d470416173ad07664cabfceab9335de2b5f4c8035a0374959dad9cb49bdf6264",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:02.354Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6057c306e4bd32ab069ae97644c00cd34fffd52cbe56cdda2b11e88b65586ebc",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q1-sc1ap-seasons-opt-b"
+        ]
+      },
+      {
+        "texte": "6 فصول",
+        "fichier": "course-cedar-8f1efb234b004354.mp3",
+        "duration": 2.25,
+        "sha256": "fd88f279db03ef358a9eca53281ba06c53292b9849a16cf98e5ae73e5af4b56f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:03.378Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ebe7e0d74f5e60610c081eda92b78ff8da34d2df41f50b9b441064a0c9ae169d",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q1-sc1ap-seasons-opt-c"
+        ]
+      },
+      {
+        "texte": "كم فصلاً؟",
+        "fichier": "course-cedar-62e3be27ad9966f2.mp3",
+        "duration": 2.35,
+        "sha256": "de592eead4cbb87adc4eaa6ada3aedf42a4f1c36e3f77832b28fad330ac74584",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:03.546Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "85d81a60835bfe4f517cb05f19703e0126b031360be323f7cfc2f0239da3bab9",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q2-sc1ap-seasons"
+        ]
+      },
+      {
+        "texte": "في الصيف نلبس",
+        "fichier": "course-cedar-6ac969c2f74e8374.mp3",
+        "duration": 2.35,
+        "sha256": "00a12e39eaf66d7af42c678362e8f59f55cbc9e70f1e85476e47a516dd1dfa21",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:03.707Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6f3e54b11a1850640cff00b6545811f8605e5128beb96781216b405e6962c760",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q3-sc1ap-seasons"
+        ]
+      },
+      {
+        "texte": "خَفِيفًا",
+        "fichier": "course-cedar-0275bdc9be788b74.mp3",
+        "duration": 1.3,
+        "sha256": "6b78a1e309213f93e719817a5e1c39ecc752fc47d3b7b88ae6350c83d732a6bf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:03.771Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "13282e74f412967fc64881e9f79dd60707b01b002006b56f26fc3e009a323231",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q3-sc1ap-seasons-opt-a"
+        ]
+      },
+      {
+        "texte": "مِعْطَفًا ثَقِيلًا",
+        "fichier": "course-cedar-0becd87cdf7e1673.mp3",
+        "duration": 2.35,
+        "sha256": "62a8704ce06b20ffa2b33e811f64c0576863ba1b28634a3e675cef25c83ff8aa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:04.716Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9aa67e1bcb5a8c84c834b5610e6702574f84a9beb8c6856a5da82dfb74ecbe6b",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q3-sc1ap-seasons-opt-b"
+        ]
+      },
+      {
+        "texte": "المطر أكثر في",
+        "fichier": "course-cedar-a48c931ee1ed3242.mp3",
+        "duration": 3,
+        "sha256": "9ef316e628a5f1a88703508bd0c17b9994a7151bd1484681c2c5065b75b10e0d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:04.926Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "56687461c8f8d2eb08ca49da1be5bebb6a1fb57b3104431437d89d63d3b46c59",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q4-sc1ap-seasons"
+        ]
+      },
+      {
+        "texte": "الشِّتَاءِ",
+        "fichier": "course-cedar-ecbe2697b09ba0fe.mp3",
+        "duration": 2.45,
+        "sha256": "e16750384da759ecb5f68fc85efd8c19eba10151ea2dc2baae86c50ed554dc8f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:06.315Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9be7452a59d190edbf5c7f83ff43fc01997ae8a5100199a5c07a010795d85d7e",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q4-sc1ap-seasons-opt-a"
+        ]
+      },
+      {
+        "texte": "فَصْلُ الشِّتَاءِ البَارِدِ",
+        "fichier": "course-cedar-9d44f871dcb808b9.mp3",
+        "duration": 2.45,
+        "sha256": "da9645dae75941b3be468184050e3dd504bd0b06783098ecb4c2e1ee2f59d71e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:06.393Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "73fdb20f25b10ca5964e5d19c6ae40cea6f1c6bae3e85ffe6d6dbacf9cfc75f2",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-0"
+        ]
+      },
+      {
+        "texte": "الصَّيْفِ الحَارِّ",
+        "fichier": "course-cedar-91ca930e2a857428.mp3",
+        "duration": 2.15,
+        "sha256": "d16b279f4c23fb67efd379f3232c12701e5fc1b76da79ae976ca5f101ad7a559",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:06.422Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "11417ad872a0e55759ee5849748975081adcdbb6b49573e99aac7d2fd4289006",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:quiz-q4-sc1ap-seasons-opt-b"
+        ]
+      },
+      {
+        "texte": "اختر اللباس المناسب لكل فصل!",
+        "fichier": "course-cedar-e886cc95670dbadb.mp3",
+        "duration": 3.2,
+        "sha256": "e59e313f8b324a314053ede6a0343320623799be18c3b2c3614a4e1c33222ed2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:06.510Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b7649c01cd282b981417fb04767ad02dee3b1048a9e6984fd46edf38bb5c0e28",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-instructions"
+        ]
+      },
+      {
+        "texte": "فَصْلُ الصَّيْفِ الحَارِّ",
+        "fichier": "course-cedar-f345307c98d6be40.mp3",
+        "duration": 2.3,
+        "sha256": "971665c459f3aa599a1060dab961383e6e4695595eca00defc294540d387d1fa",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:07.819Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "be4906196716a20de87f7af743ee1ca6dfa080fbca2c64955c16477ab18d6e8a",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-1"
+        ]
+      },
+      {
+        "texte": "لِبَاسُ السِّبَاحَةِ الخَفِيفُ",
+        "fichier": "course-cedar-c703442d4927e1cb.mp3",
+        "duration": 2.65,
+        "sha256": "18126904df3803d520cc1b512682201abfc170d915256e1070b7574ec8dc0f99",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:07.904Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "60d77adf5eefbe0089e90020a1231301b906a16c2b731de7312c0406226143bf",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "مِعْطَفٌ صُوفِيٌّ دَافِئٌ",
+        "fichier": "course-cedar-26c005b16ac210a1.mp3",
+        "duration": 3.1,
+        "sha256": "658e1579a6588b840e719818feb6913288fbfeaa1aac84573cd348be320794d0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:07.937Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c1cd8f50b5f4f08ffba6598f2a13335ea45a2387294fdb63175e843f1b5b67ca",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "قُبَّعَةٌ قَشِّيَّةٌ وَمَلاَبِسُ قُطْنِيَّةٌ",
+        "fichier": "course-cedar-dcfa3734b692b637.mp3",
+        "duration": 4.6,
+        "sha256": "ce5cf045d26caab6598535f0825119d7e8568eb75bc001a55cb0d1b451fcda4a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:08.036Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "85a2686238b5aec98c7d1559db101323a627b6fb0f8aaaa5aa69824efe49ab3e",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-1-opt-0"
+        ]
+      },
+      {
+        "texte": "الخريف أوراق",
+        "fichier": "course-cedar-203fc863a468ac36.mp3",
+        "duration": 3.05,
+        "sha256": "cf6a2fb0587cf815619c45fe708d8d69d7fd96cb77f09c3d1846f7cafb98a8ad",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:09.166Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c43853ce12817348cba9cdf65adf9b7e946cbf40ebc5a6eca01cbb64b4913482",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-2"
+        ]
+      },
+      {
+        "texte": "معطف ثلجي سميك",
+        "fichier": "course-cedar-763297c35933d6c2.mp3",
+        "duration": 2.65,
+        "sha256": "7438a5e229c92ce46f04030cf1500114c77a5d3ae11482aecc63848f7533995d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:09.304Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "944b704aa1831ede8e54670cacbb7e9072127130171733480a93b8373da20bd8",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "تَسْقُطُ",
+        "fichier": "course-cedar-06a130b6a4341947.mp3",
+        "duration": 2.25,
+        "sha256": "104fd2e6e17055e22d284db263daa8dbaf4d132565341c51411a823a71841936",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:09.341Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "18c88c46299b501d13da45bd62050b639ee54d4a33365f2968b7592798740064",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "تَزْهُو كُلُّهَا",
+        "fichier": "course-cedar-534bdc137319da6b.mp3",
+        "duration": 2.25,
+        "sha256": "eee285fd73aac7bc9c2dce66c4a3ecf1323c2e76a1dfb5e75e25e1b88ce272e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:09.425Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "74d1cd23b990b83b1fa4ab9e4d445250af1b0791b959e7aa2b7cb486883b491e",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "تَتَفَتَّحُ",
+        "fichier": "course-cedar-fece67e9e306aa1d.mp3",
+        "duration": 1.15,
+        "sha256": "05106dd008832a4d2620523dfc7a64eb95fb011ea0bb6efec5bd727798413dd4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:10.641Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "23b49e49de20db3066e10b071645439f85da47baa1d7d67cf79660b982058533",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "الربيع أزهار",
+        "fichier": "course-cedar-fab7b57a37295346.mp3",
+        "duration": 2.25,
+        "sha256": "c147de695ff476603b9bce60e15977d000ecf1792ec71eeafc1d106eb60ed299",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:10.674Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f3982d64e98e158e4dfc3ea26bc82b9c284647a2c089c4f9e8f45c6a99e9a928",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-3"
+        ]
+      },
+      {
+        "texte": "ثَلْجٌ فَقَطْ",
+        "fichier": "course-cedar-0337c91e8d97b4e6.mp3",
+        "duration": 2.15,
+        "sha256": "10cb0bdc07408c7fd75d63c9f3ce1d618ff8ccdbd4925ebcf0b641dbd49ba610",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:10.707Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "47f56c6544259039fe89c3f5fe0df64ca83c28372b187ea9389128599ac00914",
+        "uses": [
+          "course:science-1ap-t3-seasons-weather:game-3-opt-1"
+        ]
+      },
+      {
+        "texte": "وجدت تفاحة مغطاة بالتراب. هل تأكلها مباشرة أم تغسلها أولاً؟",
+        "fichier": "course-cedar-95ddf68b79a6b1bb.mp3",
+        "duration": 7.75,
+        "sha256": "1ca26016d70aa81e23fbcb439289f4d69ff9bc3c1d494e1bf99af350f7070fc7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:11.326Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9fa8fc6b6d4517f89afb3a139933187c95c313eb8c600f7b8db265213d3e9a03",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:discovery-0"
+        ]
+      },
+      {
+        "texte": "الأَطْعِمَةُ الصِّحِّيَّةُ : الفواكه والخضر والحليب واللحم والبيض، تقوي جسمي.",
+        "fichier": "course-cedar-43475f239f1d1bee.mp3",
+        "duration": 7.8,
+        "sha256": "a83c1e1167d216fbb102738f88cee5852d30042d31074e49231f926534773d31",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:12.730Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1b998a7e79edac024d3d078d8afe7900f898e7d10e8eec2b952c40389465aefe",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:rule-0"
+        ]
+      },
+      {
+        "texte": "الأَطْعِمَةُ الضَّارَّةُ إِذَا أَكْثَرْنَا مِنْهَا : الحلوى الكثيرة والمشروبات الغازية والوجبات المقلية.",
+        "fichier": "course-cedar-e472d0a1f35ba0f8.mp3",
+        "duration": 8.7,
+        "sha256": "9709ab93821e3618573ce9be77bf1dae918e4c4274ddeecb8f3a6ee799e8cf28",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:13.028Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b7acbf96b4ab36624d75276df63b3b9e0708b8cfd48f05bd2b259219fd8672da",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:rule-1"
+        ]
+      },
+      {
+        "texte": "أَغْسِلُ أَسْنَانِي بَعْدَ الأَكْلِ خَاصَّةً بَعْدَ الحَلْوَى .",
+        "fichier": "course-cedar-2b191b30c266f788.mp3",
+        "duration": 5.5,
+        "sha256": "599ba3e3ce4c532006907e1b8bc3b505ba20ec1af03dd48bc6619d0a165881a7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:13.130Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "3318cec7fb561873d5e2b8ee77334cc8be48c93adac55a2faae6011ad061868d",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:rule-3"
+        ]
+      },
+      {
+        "texte": "أَغْسِلُ الفَوَاكِهَ وَالخُضَرَ بِالمَاءِ دَائِماً قَبْلَ أَكْلِهَا لِإِزَالَةِ الأَتْرِبَةِ وَالجَرَاثِيمِ.",
+        "fichier": "course-cedar-a647599761569be0.mp3",
+        "duration": 8.6,
+        "sha256": "97db6e8f876c37544741d94f1fa9e7633b688c60234c186ac5996011799ccc9b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:13.292Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6132f5cad75e8c523e90b69e7a72958b215425bb4e9e83dd29d1e473368a686a",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:rule-2"
+        ]
+      },
+      {
+        "texte": "الغِذَاءُ الصِّحِّيُّ",
+        "fichier": "course-cedar-3887dd0a264fe273.mp3",
+        "duration": 2.35,
+        "sha256": "455245da23a8704cf032597ddec7382095f9567e109f80ac5191b9c6a2672733",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:14.398Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "57ab23dbe8c1144434659a49ef0c4fa6e142c76198b2f3974fd4cfd319ade979",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:vocab-0"
+        ]
+      },
+      {
+        "texte": "الجُرْثُومَةُ",
+        "fichier": "course-cedar-e81db5a8834a2349.mp3",
+        "duration": 1.9,
+        "sha256": "de1efb776c0c28f2c5e025f74d868c56e5fa9f83da1cee5f6515d255ab00d938",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:14.682Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "25e06c95ab899e7180fe00be82630587fab6e5c73638ca0642d7c83a129f257c",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:vocab-1"
+        ]
+      },
+      {
+        "texte": "ماذا نفعل بالفاكهة قبل أكلها؟",
+        "fichier": "course-cedar-aef96d2ba4ebde08.mp3",
+        "duration": 3.95,
+        "sha256": "f75079afa2ec3509f669445f1c4bf35ce6e3f4d03611d0c41e56d66494a53517",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:14.709Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b398d0b88e36e4fbe336d873e906778e3c6b55d8f7e16a1e33766b6bbbb31fad",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:example-problem"
+        ]
+      },
+      {
+        "texte": "نَغْسِلُهَا جَيِّداً بِالمَاءِ .",
+        "fichier": "course-cedar-684c705e8f42ad2d.mp3",
+        "duration": 3.05,
+        "sha256": "9f19fbf49feba29e858e6309b1aa83fdb73691a5ba7a61c2532915bbc964150a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:14.801Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b230dc6383bc6854ef8b160a5ae4bd977450b4e0103b31eee30c9784cc4cfd2f",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:example-solution"
+        ]
+      },
+      {
+        "texte": "ماذا يحدث لأسناني إذا أكلت حلوى كثيرة كل يوم؟",
+        "fichier": "course-cedar-a5a5e11f80986620.mp3",
+        "duration": 4.9,
+        "sha256": "9ab30e4a3ab82f410e4f17f51b7233a1e44ec842dcda707f450a9cb02b5f990d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:16.213Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "366c1b6638a0ac0c97c4e430cc0180ddb5cdcd96e0fb250e42b91538ffd88e4a",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:practice-ex2-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "ماذا أفعل بالخضر والفواكه قبل أكلها؟",
+        "fichier": "course-cedar-b987242345c85d7b.mp3",
+        "duration": 3.65,
+        "sha256": "aa3f0030cfc0f944835e229b323659f2fdeac71db2ec57f07cd2d81671c25499",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:16.412Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f96a74361b4fb3a4a251548d6c23e3731876ac42b84f004f4be35db0b6176d02",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:practice-ex1-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "رتب مع الطفل صورا لأطعمة مختلفة في مجموعتين: \"آكلها دائماً\" و\"آكلها قليلاً فقط\".",
+        "fichier": "course-cedar-f1fa79b28991fc81.mp3",
+        "duration": 9.55,
+        "sha256": "fd322d169b084da6828e35a05944e6dffc2d00d2b0b6cce628310191536828eb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:17.014Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "28d28cb9565cc74d7973d7098c75eea49cef94eb2f381930fe39ed25b6e91872",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:home-activity"
+        ]
+      },
+      {
+        "texte": "آكل الفواكه والخضر واللبن يومياً وأغسلها قبل الأكل، وأقلل من الحلوى والمشروبات الغازية.",
+        "fichier": "course-cedar-e899d0a8a38ec532.mp3",
+        "duration": 9.1,
+        "sha256": "5358b35253d1823e5395103fb91f194a8679037b149fe2a2e421883cd4181f8a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:17.096Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "6fac256131537b9bb9464e135d16a787eb3e868b0882ad6c9e64aad5158126cf",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:takeaway"
+        ]
+      },
+      {
+        "texte": "التفاحة قبل الأكل؟",
+        "fichier": "course-cedar-bba4388f456dbfde.mp3",
+        "duration": 2.05,
+        "sha256": "9aa47c7501444cf3898648ece7eaf2b859276c91045deb753114022b05cff01c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:17.507Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0ede7c41c4c726b314eb953158d84fd17c05698d5b2f616f15bd40e8a3909d06",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:practice-ex3-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "لماذا أغسل الفواكه والخضر قبل أكلها؟",
+        "fichier": "course-cedar-fa01754a4243e14e.mp3",
+        "duration": 5.65,
+        "sha256": "e78b55f595e6e89ebf54ae6294795dcb317c8f69fc226172f3a0f4d1a70de921",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:17.930Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f7bcaf8a1bdc0faa989e60cbd0b07f007e6a9635e47cf6d34cd7c666d2b79565",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q1-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "الخضر",
+        "fichier": "course-cedar-555b9b476b439568.mp3",
+        "duration": 1.1,
+        "sha256": "b489b582aaf4793b55ee2c580b498b61763a7f5783c32ee85dfbf397409844f7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:18.485Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f620938e51e4db47ac2e120c558667f42df0a44d579dfb3bd813cab9c0075f90",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q2-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "لِإِزَالَةِ الأَتْرِبَةِ وَالجَرَاثِيمِ",
+        "fichier": "course-cedar-38fca821d9d8983c.mp3",
+        "duration": 3.35,
+        "sha256": "6a9eb5d91b0ce832090a2f24cd7197bada2d143e568e59ade68f3cac7acf6aa4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:18.587Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1ea92ca324ba3e3d4db471ee246f31ce75fac472be7142037f91ee174544c33",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q1-sc1ap-foodhygiene-opt-a"
+        ]
+      },
+      {
+        "texte": "لِتَصْبِحَ أَحْلَى مَذَاقاً",
+        "fichier": "course-cedar-9b0e83938b97f676.mp3",
+        "duration": 2.7,
+        "sha256": "ee405518d79647cd5273ef8e130db43c1186355152a2662b51873af0a9cd0472",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:18.764Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "139cd62325255c87762205a8ee0f3f11f0870ec48e7886e842dea68e1c33de10",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q1-sc1ap-foodhygiene-opt-b"
+        ]
+      },
+      {
+        "texte": "مَمْنُوعَةٌ",
+        "fichier": "course-cedar-bc9d7d28c0baf392.mp3",
+        "duration": 1.85,
+        "sha256": "685253392dcdd98a63ea7d112dfb8a55ca880430b37b2f4f10f89dd4fde532ef",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:19.421Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "25ceac4fbfcc102ecc8ecec5b3691bc791408abbd10ba8a0006accc6b699c7ca",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q2-sc1ap-foodhygiene-opt-b"
+        ]
+      },
+      {
+        "texte": "نَشْرَبُهُ",
+        "fichier": "course-cedar-a317e2287c623d5a.mp3",
+        "duration": 1.65,
+        "sha256": "2b9b468343db201eee67bea338f59a9cf20890663c652e595b0637d8b0e49941",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:19.674Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "866e527f0ca3c85e9a698e8ead3749440f3737b3d1899bd67e40e67716fa9e82",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q3-sc1ap-foodhygiene-opt-a"
+        ]
+      },
+      {
+        "texte": "نَرْفُضُهُ دَائِمًا",
+        "fichier": "course-cedar-135189d0194e10e0.mp3",
+        "duration": 1.7,
+        "sha256": "13ef64da5de1830500a11203705afecbc44413399d4036ed8fb14b6fd2b4e956",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:19.952Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "975d26feb9bc5ac22ad74905a13293f0f324323508cbd4674d519fee41aadb58",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q3-sc1ap-foodhygiene-opt-b"
+        ]
+      },
+      {
+        "texte": "الماء النظيف",
+        "fichier": "course-cedar-b5414ae7ada758c6.mp3",
+        "duration": 1.8,
+        "sha256": "fbe757afa9cc5b9110b6ca8a8f5f9cad327bacec5201ab120228980922908e7d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:20.261Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "906b969bee62814db2e113fae455c1b67616aac3bfa5357a2fc2ebec9a86d264",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q3-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "الأكل على الأرض الوسخة",
+        "fichier": "course-cedar-79caee5c56330bed.mp3",
+        "duration": 2.15,
+        "sha256": "447303f7d8d8d0b78dad84c69048b955ef7dbc383afd400d03efff72cdb4c859",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:20.682Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0cef3464b9f01beb7dcf16054643215776592fc212dddb40955ccccdd3878b44",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:quiz-q4-sc1ap-foodhygiene"
+        ]
+      },
+      {
+        "texte": "اختر ما يجب أن أضعه في سلة غذائي الصحي!",
+        "fichier": "course-cedar-cf9cadffe0bd721d.mp3",
+        "duration": 4.4,
+        "sha256": "f9705506387441e6b102e9472a1ef231eeaad03423f666ed7b011560ed3b06c8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:21.828Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "44c611d0daee9fc4148fe2d8acbd5812d40eb7fb1573e2e625efaa63d214ac16",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-instructions"
+        ]
+      },
+      {
+        "texte": "فَوَاكِهُ وَخُضَرٌ وَحَلِيبٌ",
+        "fichier": "course-cedar-8e5b16a255bf0cc3.mp3",
+        "duration": 3.65,
+        "sha256": "fe863e1726bc50554c1c5e19fbcfa38a6d3a1a4b191f4e1fcd369315c90164e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:21.910Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "653d2555e71b905f95882174d14b1fe2cefc796c44aff3f4cab84ad474403ffb",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-0-opt-0"
+        ]
+      },
+      {
+        "texte": "حَلْوَى وَشُوكُولاَ فَقَطْ",
+        "fichier": "course-cedar-472fe9b202491271.mp3",
+        "duration": 2.85,
+        "sha256": "826202ce35f87790c5761e03a3b22337c7f8601319ab92587e5e762367d769e7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:22.005Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f7671d2e58ebc9d47980764da48d50826f14f5dd103f1354da3a12e370898f5a",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-0-opt-1"
+        ]
+      },
+      {
+        "texte": "أريد وجبة تقوي جسمي",
+        "fichier": "course-cedar-d06cd3279c970d92.mp3",
+        "duration": 4.05,
+        "sha256": "35a1f311a3840ecc425ede9842589500aa0628dcd52051cb451df840eda89284",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:22.077Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "57da40a3e12ac40db59bcb73924d41325d5db12fe281e208b0503ea57883e082",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-0"
+        ]
+      },
+      {
+        "texte": "طعام صحي",
+        "fichier": "course-cedar-aa6f706d8b26ec32.mp3",
+        "duration": 2.45,
+        "sha256": "4dc85165fb7f1f277e8ffb8251341e1934bd28a88eb4b05aea27b8b3344e035e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:23.324Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0cb2bfb3a5301883526d32f6d975fbd19430984b5e96df881ca101282c5a8b7c",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-1"
+        ]
+      },
+      {
+        "texte": "بعد الحمام",
+        "fichier": "course-cedar-44cfdd0c51f0ba1c.mp3",
+        "duration": 1.75,
+        "sha256": "42d4d8bcee760ee58edd38ded23568e9857e6eef53e97cc7e2025bec870c5d02",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:23.361Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "84eaf8f55889ab3b8ccddfcee80064a1e5e02ad1b8fb999dadb8c8059dedb175",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-2"
+        ]
+      },
+      {
+        "texte": "حلويات فقط كل يوم",
+        "fichier": "course-cedar-f8c7349c13729cbf.mp3",
+        "duration": 4.35,
+        "sha256": "c310beff9e1cd44906e7b2309b7b3b2dd31a7921beb52033d1fd0ab42c65f84f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:23.402Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8ffc59b96dad3962fa440abf8ae8a20e14a799eb34616b6274f4d3b42ca5ec5f",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-1-opt-1"
+        ]
+      },
+      {
+        "texte": "نَدَانٌ نَظِيفَتَانِ",
+        "fichier": "course-cedar-44bb91d32ebef38d.mp3",
+        "duration": 4.35,
+        "sha256": "cc3399b64d08636f26640a3cffd43e7abd2345d84bcd7da570475a5898538e5c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:24.020Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9c91ae3938230e4e6c9f32b2f99498e99fa0e90b7a4aac1e911707bb7646c54a",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-2-opt-0"
+        ]
+      },
+      {
+        "texte": "قبل الأكل",
+        "fichier": "course-cedar-183a595c661db7e8.mp3",
+        "duration": 1.5,
+        "sha256": "d52e3b6578929348dd79683a81261e7a6b5d264fc1f086633106a2a2a8e9c866",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:24.594Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "08caeb205efd2ad14db7b83aabfe17c3722d880df3629052f8076df5dc06adb1",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-3"
+        ]
+      },
+      {
+        "texte": "نَلْمَسُ القَمَامَةَ",
+        "fichier": "course-cedar-986088e450325b4b.mp3",
+        "duration": 2.55,
+        "sha256": "8012e547717340b00b9c9c0878af6fa6f95d106aa4a203ccdeb3a9b0b708c528",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:24.719Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "987b7d356a53c735f7b31d0a0985eaf3e82b4a576e10b9813ea28b007f3c3743",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-2-opt-1"
+        ]
+      },
+      {
+        "texte": "نَغْسِلُ اليَدَيْنِ",
+        "fichier": "course-cedar-716158389535a8a0.mp3",
+        "duration": 1.9,
+        "sha256": "e040daf6ed85874a84be2aaff01861fe008f0ebb26fdd20695dc41b923cb0caf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:25.990Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9e9d7de20d8b75f3f6c7fe4c2d5978246b9c7af6806e667f3c870ce0c1b18df0",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-3-opt-0"
+        ]
+      },
+      {
+        "texte": "نَلْعَبُ بِالتُّرَابِ",
+        "fichier": "course-cedar-5f5048a2cf0418d6.mp3",
+        "duration": 2.45,
+        "sha256": "38a48b11d2382337e97861c33c22880e37dd027f7c5dfe5c303711f2a6c0c9e1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T13:56:26.029Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "36997eecef7e4881f647fc69f00250aa5b9c4ebab80fabfae68e097dca151604",
+        "uses": [
+          "course:science-1ap-t3-food-hygiene:game-3-opt-1"
+        ]
       }
     ]
   },
