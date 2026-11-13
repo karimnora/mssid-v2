@@ -150,7 +150,7 @@ export const DEVOIR_EXTRA_5AP: OfficialExam[] = [
         points: 3,
         relatedLessonId: 'math-5ap-lengths-masses-capacities',
         contentAr: 'حوّل: 4 km إلى m، ثم 250 cm إلى m.',
-        solutionAr: '4 km = 4,000 m. 250 cm = 2.5 m.',
+        solutionAr: '4 km = 4 000 m. 250 cm = 2.5 m.',
         operationsAr: '4 × 1000 = 4000\n250 ÷ 100 = 2.5',
       },
       {

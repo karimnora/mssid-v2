@@ -111,10 +111,10 @@ export const DEVOIR_EXTRA_4AP: OfficialExam[] = [
     sourceNoteAr: note,
     relatedLessonIds: ['math-4ap-compare-order-100k', 'math-4ap-geometry-lines-polygons'],
     exercises: [
-      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'قارن باستعمال < أو > أو =: 58,340 ..... 58,430. ثم رتّب تصاعدياً: 12,600 — 21,600 — 12,060.', solutionAr: '58,340 < 58,430. الترتيب: 12,060 < 12,600 < 21,600.', operationsAr: '58,340\n58,430\n\n12,600\n21,600\n12,060' },
+      { titleAr: 'التمرين الأول (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'قارن باستعمال < أو > أو =: 58 340 ..... 58 430. ثم رتّب تصاعدياً: 12 600 — 21 600 — 12 060.', solutionAr: '58 340 < 58 430. الترتيب: 12 060 < 12 600 < 21 600.', operationsAr: '58 340\n58 430\n\n12 600\n21 600\n12 060' },
       { titleAr: 'التمرين الثاني (3 نقاط)', points: 3, relatedLessonId: 'math-4ap-geometry-lines-polygons', contentAr: 'مستقيمان متقاطعان. كم زاوية ينتجان؟ وما نوع هذه الزوايا إذا كانا متعامدين؟', solutionAr: 'ينتجان 4 زوايا؛ إذا كانا متعامدين فكل الزوايا قائمة (90°).' },
     ],
-    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'احصر العدد 47,250 بين ألفين متتاليتين، ثم بين عشرتي آلاف متتاليتين.', solutionAr: '47,000 < 47,250 < 48,000. و 40,000 < 47,250 < 50,000.' },
+    problemExercise: { titleAr: 'وضعية قصيرة (4 نقاط)', points: 4, relatedLessonId: 'math-4ap-compare-order-100k', contentAr: 'احصر العدد 47 250 بين ألفين متتاليتين، ثم بين عشرتي آلاف متتاليتين.', solutionAr: '47 000 < 47 250 < 48 000. و 40 000 < 47 250 < 50 000.' },
   },
   {
     id: 'homework-4ap-math-t2b-2026',

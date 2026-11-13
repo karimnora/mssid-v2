@@ -10,11 +10,15 @@ function normalizeThousands(text) {
     value => value.replace(/[, \u00a0\u202f]/g, '\u202f'));
 }
 
-function run(write) {
+function run(write, banksOnly = false) {
   const changes = [];
+  function scanFileBank() {
+    for (const name of ['examsData.ts', 'challengesData.ts']) scan(path.resolve(__dirname, '../src/data', name));
+  }
   function scan(dir) {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const file = path.join(dir, entry.name);
+    const isFile = fs.statSync(dir).isFile();
+    for (const entry of isFile ? [{ name: path.basename(dir), isDirectory: () => false }] : fs.readdirSync(dir, { withFileTypes: true })) {
+      const file = isFile ? dir : path.join(dir, entry.name);
       if (entry.isDirectory()) scan(file);
       else if (file.endsWith('.ts') && !file.endsWith('.test.ts')) {
         const source = fs.readFileSync(file, 'utf8');
@@ -41,9 +45,11 @@ function run(write) {
       }
     }
   }
-  scan(path.resolve(__dirname, '../src/data/courses'));
+  for (const directory of banksOnly ? ['exams', 'challenges'] : ['courses']) scan(path.resolve(__dirname, '../src/data', directory));
+  // Standalone banks use the same token-only transformation.
+  if (banksOnly) scanFileBank();
   console.log(JSON.stringify({ applied: write, files: changes.length, strings: changes.reduce((sum, file) => sum + file.strings, 0), changes }, null, 2));
 }
 
 module.exports = { normalizeThousands };
-if (require.main === module) run(process.argv.includes('--write'));
+if (require.main === module) run(process.argv.includes('--write'), process.argv.includes('--banks'));

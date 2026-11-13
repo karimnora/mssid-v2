@@ -933,7 +933,7 @@ export const MATH_3AP: CourseLesson[] = [
       titleAr: '🎮 ميزان التحويلات والقياسات',
       instructionsAr: 'طابق المقدار بالوحدة المناسبة له قياسياً!',
       items: [
-        { questionOrPromptAr: 'وزن كيس تفاح', correctAnswerAr: 'الكيلوغرام (kg)', optionsAr: ['الكيلوغرام (kg)', 'السنتيمتر (cm)'], explanationAr: 'الوزن والكتلة يقاسان بالكيلوغرام والغرام.' },
+        { questionOrPromptAr: 'كتلة كيس تفاح', correctAnswerAr: 'الكيلوغرام (kg)', optionsAr: ['الكيلوغرام (kg)', 'السنتيمتر (cm)'], explanationAr: 'نقيس كتلة كيس التفاح بالكيلوغرام، وكتلة الأشياء الخفيفة بالغرام.' },
         { questionOrPromptAr: 'طول السبورة', correctAnswerAr: 'المتر (m)', optionsAr: ['المتر (m)', 'الغرام (g)'], explanationAr: 'طول السبورة يقاس بالمتر.' },
         { questionOrPromptAr: 'كمية الماء في القارورة', correctAnswerAr: 'اللتر (L)', optionsAr: ['اللتر (L)', 'الكيلوغرام (kg)'], explanationAr: 'كمية السوائل تُقاس باللتر.' }
       ],

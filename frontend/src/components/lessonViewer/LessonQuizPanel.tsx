@@ -171,6 +171,8 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
       <div className="space-y-6">
         {activeQuiz.map((q, qIdx) => {
           const selected = selectedAnswers[q.id];
+          const labels = q.options.map(o => renderArabicText(o.textAr));
+          const keepMarks = labels.some(label => !label.trim()) || new Set(labels).size !== labels.length;
           const correctOpt = q.options.find((o) => o.isCorrect);
           const isUserCorrect = !!selected && !!correctOpt && selected === correctOpt.id;
           // "Answered" now means "answered correctly" (locked, XP awarded) — a wrong guess is a
@@ -288,7 +290,7 @@ export const LessonQuizPanel: React.FC<LessonQuizPanelProps> = ({
                         >
                           {optionLetters[optIdx] || optIdx + 1}
                         </span>
-                        <span dir={latinTextDir(opt.textAr)} className="min-w-0 break-words">{renderArabicText(opt.textAr)}</span>
+                        <span dir={latinTextDir(opt.textAr)} className="min-w-0 break-words">{keepMarks ? opt.textAr : renderArabicText(opt.textAr)}</span>
                       </div>
 
                       {isAnswered && opt.isCorrect && (

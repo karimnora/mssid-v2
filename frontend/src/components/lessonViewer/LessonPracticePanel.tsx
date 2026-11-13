@@ -97,6 +97,8 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
         </p>
         <div className="space-y-2">
           {lesson.educationalGame.items.map((item, i) => {
+            const labels = (item.optionsAr ?? []).map(renderArabicText);
+            const keepMarks = labels.some(label => !label.trim()) || new Set(labels).size !== labels.length;
             const selected = gameAnswers[i];
             const isAnswered = selected !== undefined;
             const isCorrect = selected === item.correctAnswerAr;
@@ -153,7 +155,7 @@ export const LessonPracticePanel: React.FC<LessonPracticePanelProps> = ({
                           onClick={() => onSelectGameOption(i, optAr)}
                           className={`px-3 py-2 rounded-2xl transition-colors min-h-12 ${style}`}
                         >
-                          {renderArabicText(optAr)}
+                          {keepMarks ? optAr : renderArabicText(optAr)}
                         </button>
                         </div>
                       );
