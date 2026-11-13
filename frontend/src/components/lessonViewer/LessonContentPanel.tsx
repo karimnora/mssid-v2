@@ -39,7 +39,7 @@ export const LessonContentPanel: React.FC<LessonContentPanelProps> = ({
     onSpeak && text ? (
       <TapSpeakButton
         snippetKey={key}
-        text={renderArabicText(text)}
+        text={text}
         speakingKey={speakingKey}
         onSpeak={onSpeak}
       />

@@ -28,7 +28,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
     return stripLatinGlosses(withMarks);
   };
 
-  const discoveryLines = lesson.discoveryAr ? splitPlayfulLines(show(lesson.discoveryAr)) : [];
+  const discoveryLines = lesson.discoveryAr ? splitPlayfulLines(lesson.discoveryAr) : [];
   const cards = (lesson.rulesAr || []).slice(0, 8);
   const example = lesson.examplesAr?.[0];
   const vocabulary = (lesson.detailedCourse?.vocabulary || []).slice(0, 6);
@@ -67,7 +67,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
       {cards.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
           {cards.map((rule, i) => {
-            const snippet = parsePlayfulSnippet(show(rule), i + 2, themeEmoji);
+            const snippet = parsePlayfulSnippet(rule, i + 2, themeEmoji);
             const key = `rule-${i}`;
             return (
               <PlayfulSpeakCard
@@ -91,7 +91,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
             {vocabulary.map((entry, i) => {
               const termShown = show(entry.termAr);
               const defShown = show(entry.definitionAr);
-              const snippet = parsePlayfulSnippet(termShown, i + 10, themeEmoji);
+              const snippet = parsePlayfulSnippet(entry.termAr, i + 10, themeEmoji);
               const key = `vocab-${i}`;
               return (
                 <motion.div
@@ -112,7 +112,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
                       {snippet.letterVisual ?? snippet.emoji}
                     </span>
                     <p className="text-lg sm:text-xl font-black text-[#1E293B] leading-snug break-words">
-                      {snippet.headline}
+                      {show(snippet.headline)}
                     </p>
                     <p className="text-xs sm:text-sm font-bold text-slate-500 leading-snug line-clamp-2">{defShown}</p>
                   </div>
@@ -124,14 +124,14 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
       )}
 
       {example && (() => {
-        const problemSnippet = parsePlayfulSnippet(show(example.problem), 6, themeEmoji);
+        const problemSnippet = parsePlayfulSnippet(example.problem, 6, themeEmoji);
         // "كم عدد التفاحات؟ 🍎🍎🍎" → "3 تفاحات": the answer shows the same three apples only when its
         // number matches the picture; otherwise a single picture, never a wrong quantity.
         const problemPictures = problemSnippet.emoji.match(/\p{Extended_Pictographic}\uFE0F?/gu) ?? [];
         const answerNumber = Number(show(example.solution).match(/\d+/)?.[0]);
         const sameQuantity = problemPictures.length > 1 && problemPictures.length === answerNumber && !problemSnippet.emoji.includes(' ');
         const siblingEmoji = problemSnippet.letterVisual ? undefined : sameQuantity ? problemSnippet.emoji : problemPictures[0] ?? problemSnippet.emoji;
-        const solutionSnippet = parsePlayfulSnippet(show(example.solution), 7, siblingEmoji);
+        const solutionSnippet = parsePlayfulSnippet(example.solution, 7, siblingEmoji);
         return (
           <div className="space-y-3">
             <PlayfulSpeakCard
@@ -177,7 +177,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
                 <div className="flex items-start gap-3 px-4 pb-4 border-t border-[#F5D98A]/60 pt-3">
                   <TapSpeakButton
                     snippetKey="home-activity"
-                    text={show(homeHint)}
+                    text={stripLatinGlosses(homeHint)}
                     speakingKey={speakingKey}
                     onSpeak={onSpeak}
                     size="lg"
@@ -199,7 +199,7 @@ export const YoungLessonStory: React.FC<YoungLessonStoryProps> = ({
         >
           <TapSpeakButton
             snippetKey="takeaway"
-            text={show(takeaway)}
+            text={stripLatinGlosses(takeaway)}
             speakingKey={speakingKey}
             onSpeak={onSpeak}
             size="lg"

@@ -9,10 +9,19 @@ vi.mock('../../hooks/useFeatureFlag', () => ({ useFeatureFlag: () => voiceFlag.e
 vi.mock('../../utils/speech', () => ({
   speakText: vi.fn().mockResolvedValue(undefined), stopSpeech: vi.fn(), useVoiceAvailable: () => voiceFlag.available,
   speechLangForSubject: (subject: string) => subject === 'french' ? 'fr-FR' : subject === 'english' ? 'en-US' : 'ar-SA',
+  stripNonSpokenSymbols: (text: string) => text,
 }));
 const lesson: CourseLesson = { id: 'speech-test', grade: '5AP', subject: 'math', categoryAr: '', titleAr: '', summaryAr: '', rulesAr: [], quiz: [] };
 
 describe('optional lesson reading', () => {
+  it('offers early-grade recordings without an installed voice, but rejects unrecorded text', () => {
+    voiceFlag.enabled = true;
+    voiceFlag.available = false;
+    const { result } = renderHook(() => useLessonSpeech({ ...lesson, grade: '1AP' }, '1AP'));
+    expect(result.current.canSpeakText('هَذَا كِتَابٌ.')).toBe(true);
+    expect(result.current.canSpeakText('نص غير مسجل إطلاقا')).toBe(false);
+    voiceFlag.available = true;
+  });
   it.each([false, null])('hides 3AP and upper-grade speakers when the voice availability is %s', available => {
     voiceFlag.enabled = true;
     voiceFlag.available = available;

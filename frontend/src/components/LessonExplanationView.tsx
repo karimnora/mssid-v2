@@ -244,7 +244,7 @@ export const LessonExplanationView: React.FC<LessonExplanationViewProps> = ({
     onSpeak && text ? (
       <TapSpeakButton
         snippetKey={key}
-        text={renderArabicText(text)}
+        text={text}
         speakingKey={speakingKey}
         onSpeak={onSpeak}
       />

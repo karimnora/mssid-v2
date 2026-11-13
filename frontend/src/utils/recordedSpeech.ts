@@ -8,6 +8,19 @@ export function findRecordedSpeech(text: string, language: string) {
   return catalog && Object.hasOwn(catalog, key) ? catalog[key] : undefined;
 }
 
+/** Reuse whole recorded sentences only when every part is covered. Never splice phonemes. */
+export function findRecordedSpeechSequence(text: string, language: string) {
+  const exact = findRecordedSpeech(text, language);
+  if (exact) return [{ text, ...exact }];
+  const sentences = text.trim().split(/(?<=[.!?؟])\s+/u);
+  if (sentences.length < 2) return undefined;
+  const sequence = sentences.map(sentence => {
+    const clip = findRecordedSpeech(sentence, language);
+    return clip ? { text: sentence, ...clip } : undefined;
+  });
+  return sequence.every(clip => clip !== undefined) ? sequence : undefined;
+}
+
 type PlaybackResult = 'played' | 'failed' | 'cancelled';
 let active: { audio: HTMLAudioElement; finish: (result: PlaybackResult) => void } | null = null;
 

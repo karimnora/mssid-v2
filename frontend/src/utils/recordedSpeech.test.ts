@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { findRecordedSpeech, playRecordedSpeech, stopRecordedSpeech } from './recordedSpeech';
+import { findRecordedSpeech, findRecordedSpeechSequence, playRecordedSpeech, stopRecordedSpeech } from './recordedSpeech';
 import { recordedSpeechKey } from './recordedSpeechKey';
 
 function fakeAudio() {
@@ -10,6 +10,15 @@ function fakeAudio() {
 afterEach(() => { stopRecordedSpeech(); vi.unstubAllGlobals(); });
 
 describe('reusing existing recordings safely', () => {
+  it('reuses complete Arabic sentences without matching a different vowel ending or a partial passage', () => {
+    const clips = findRecordedSpeechSequence('هَذَا كِتَابٌ. هَذَا قَلَمٌ.', 'ar-SA');
+    expect(clips?.map(clip => clip.src)).toEqual([
+      '/sounds/preschool/ar/reading-first-school-book.mp3', '/sounds/preschool/ar/reading-first-school-pen.mp3',
+    ]);
+    expect(findRecordedSpeechSequence('هَذَا كِتَابًا.', 'ar-SA')).toBeUndefined();
+    expect(findRecordedSpeechSequence('هَذَا كِتَابٌ. جُمْلَةٌ غَيْرُ مُسَجَّلَةٍ.', 'ar-SA')).toBeUndefined();
+    expect(findRecordedSpeechSequence('هَذَا كِتَابٌ.', 'fr-FR')).toBeUndefined();
+  });
   it('reuses the same French recording for whitespace variants but never another language', () => {
     const clip = findRecordedSpeech('Bravo ! Voici une pomme !', 'fr-FR');
     expect(clip?.src).toMatch(/^\/sounds\/preschool\/fr\//);

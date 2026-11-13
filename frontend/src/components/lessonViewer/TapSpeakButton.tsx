@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import { motion } from 'motion/react';
 
 const spring = { type: 'spring' as const, stiffness: 400, damping: 22 };
+export const LessonSpeechAvailabilityContext = createContext<((text: string) => boolean) | null>(null);
 
 interface TapSpeakButtonProps {
   snippetKey: string;
@@ -21,7 +22,8 @@ export const TapSpeakButton: React.FC<TapSpeakButtonProps> = ({
   size = 'md',
   label = 'استمع',
 }) => {
-  if (!text) return null;
+  const canSpeak = useContext(LessonSpeechAvailabilityContext);
+  if (!text || (canSpeak && !canSpeak(text))) return null;
   const active = speakingKey === snippetKey;
   const dim = size === 'lg' ? 'w-14 h-14 text-2xl' : 'w-12 h-12 text-xl';
 

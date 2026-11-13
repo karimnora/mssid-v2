@@ -62,6 +62,14 @@ const math2ap: CourseLesson = {
 };
 
 describe('1AP playful lesson layout', () => {
+  it('keeps the full vocalized Arabic audio when the visual text is shortened or its vowels are hidden', () => {
+    const text = 'هَذَا كِتَابٌ. أَقْرَأُ مَعَ أَبِي كُلَّ يَوْمٍ وَأَتَعَلَّمُ كَلِمَاتٍ جَدِيدَةً.';
+    const onSpeak = vi.fn();
+    render(<YoungLessonStory lesson={{ ...spatial, discoveryAr: text, rulesAr: [] }} tashkeelEnabled={false} onSpeak={onSpeak} />);
+    fireEvent.click(document.querySelector('[data-tap-speak="discovery-0"]')!);
+    expect(onSpeak).toHaveBeenCalledWith('discovery-0', text);
+    expect(screen.getByText('هذا كتاب')).toBeInTheDocument();
+  });
   it('isolates 1AP from 2AP and older grades', () => {
     expect(isPlayful1AP('1AP')).toBe(true);
     expect(isPlayful1AP('2AP')).toBe(false);

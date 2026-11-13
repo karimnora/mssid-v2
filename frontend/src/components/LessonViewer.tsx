@@ -44,7 +44,7 @@ import { LessonQuizPanel } from './lessonViewer/LessonQuizPanel';
 import { LessonContentPanel } from './lessonViewer/LessonContentPanel';
 import { LessonStepFooter } from './lessonViewer/LessonStepFooter';
 import { YoungLessonStory } from './lessonViewer/YoungLessonStory';
-import { TapSpeakButton } from './lessonViewer/TapSpeakButton';
+import { LessonSpeechAvailabilityContext, TapSpeakButton } from './lessonViewer/TapSpeakButton';
 import { VoiceUnavailableBanner } from './VoiceUnavailableBanner';
 import { buildPlayful1APSteps, isPlayful1AP as isPlayful1APGrade, parsePlayfulSnippet } from './lessonViewer/youngLessonLayout';
 
@@ -138,7 +138,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
   const isPlayful1AP = isPlayful1APGrade(grade);
   const isCompactGrade = grade === '1AP' || grade === '2AP';
-  const titleSnippet = isPlayful1AP ? parsePlayfulSnippet(renderArabicText(lesson.titleAr), 0) : null;
+  const titleSnippet = isPlayful1AP ? parsePlayfulSnippet(lesson.titleAr, 0) : null;
 
   const availableSteps = React.useMemo(() => {
     if (isPlayful1AP) {
@@ -293,6 +293,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   }
 
   return (
+    <LessonSpeechAvailabilityContext.Provider value={speech.canSpeakText}>
     <div className="lesson-learning-space space-y-4 sm:space-y-6 dir-rtl overflow-x-clip" dir="rtl">
       <div className={isPlayful1AP ? 'hidden sm:block' : undefined}>
       <CourseBreadcrumb
@@ -400,7 +401,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                     {titleSnippet.letterVisual ?? titleSnippet.emoji}
                   </span>
                   <h1 className="text-xl sm:text-3xl font-black text-[#1E293B] leading-snug text-center px-1 break-words">
-                    {titleSnippet.headline}
+                    {renderArabicText(titleSnippet.headline)}
                   </h1>
                 </div>
               </div>
@@ -481,7 +482,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             {speech.canReadAloud && (
               <TapSpeakButton
                 snippetKey="title"
-                text={renderArabicText(lesson.titleAr)}
+                text={lesson.titleAr}
                 speakingKey={speech.speakingKey}
                 onSpeak={speech.speakSnippet}
                 size={grade === '2AP' ? 'lg' : 'md'}
@@ -761,5 +762,6 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
 
     </div>
+    </LessonSpeechAvailabilityContext.Provider>
   );
 };

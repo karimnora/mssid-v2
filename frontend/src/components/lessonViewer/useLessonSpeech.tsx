@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { CourseLesson, PrimaryGrade } from '../../types';
 import { useFeatureFlag } from '../../hooks/useFeatureFlag';
-import { speakText, speechLangForSubject, stopSpeech as stopSynth, useVoiceAvailable } from '../../utils/speech';
+import { speakText, speechLangForSubject, stopSpeech as stopSynth, stripNonSpokenSymbols, useVoiceAvailable } from '../../utils/speech';
+import { findRecordedSpeechSequence } from '../../utils/recordedSpeech';
 
 export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const isYoungGrade = grade === '1AP' || grade === '2AP' || grade === '3AP';
@@ -20,9 +21,12 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   const hasEarlyGradeRecordings = grade === '1AP' || grade === '2AP';
   const canReadAloud = voiceReadingEnabled && (hasEarlyGradeRecordings || rawVoiceAvailable === true);
   const voiceAvailable = isTamazight ? false : rawVoiceAvailable;
+  const canSpeakText = (text: string) => voiceReadingEnabled && (
+    rawVoiceAvailable === true || (hasEarlyGradeRecordings && !!findRecordedSpeechSequence(stripNonSpokenSymbols(text), lang))
+  );
 
   const speakSnippet = (key: string, text: string) => {
-    if (!canReadAloud || !text) return;
+    if (!canReadAloud || !text || !canSpeakText(text)) return;
     if (speakingKeyRef.current === key) {
       stopSynth();
       speakingKeyRef.current = null;
@@ -31,7 +35,10 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
     }
     speakingKeyRef.current = key;
     setSpeakingKey(key);
-    void speakText(text, lang, snippetRate).then(() => {
+    const reading = hasEarlyGradeRecordings && rawVoiceAvailable !== true
+      ? speakText(text, lang, snippetRate, 1, { recordedOnly: true })
+      : speakText(text, lang, snippetRate);
+    void reading.then(() => {
       if (speakingKeyRef.current === key) {
         speakingKeyRef.current = null;
         setSpeakingKey(null);
@@ -56,6 +63,7 @@ export function useLessonSpeech(lesson: CourseLesson, grade: PrimaryGrade) {
   return {
     isYoungGrade,
     canReadAloud,
+    canSpeakText,
     voiceReadingEnabled,
     isPlayful1AP,
     speakingKey,

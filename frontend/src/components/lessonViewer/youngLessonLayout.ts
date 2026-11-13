@@ -288,7 +288,9 @@ export function parsePlayfulSnippet(raw: string, fallbackIndex = 0, siblingEmoji
     emoji = mapped?.[1] ?? siblingEmoji ?? DEFAULT_TILES[fallbackIndex % DEFAULT_TILES.length];
   }
 
-  const speak = [headline, whisper].filter(Boolean).join('. ');
+  // Visual captions may be shortened; the audio must keep the authored sentence,
+  // vowel marks and punctuation so an existing recording can still match it.
+  const speak = withoutEmoji;
   return { emoji, headline, whisper, speak, letterVisual };
 }
 

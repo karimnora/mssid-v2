@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { isFeatureEnabled } from '../featureFlags';
-import { findRecordedSpeech, playRecordedSpeech, stopRecordedSpeech,
+import { findRecordedSpeechSequence, playRecordedSpeech, stopRecordedSpeech,
   pauseRecordedSpeech, resumeRecordedSpeech } from './recordedSpeech';
 
 const isNative = () => Capacitor.isNativePlatform();
@@ -100,28 +100,39 @@ const NON_SPOKEN_SYMBOLS_REGEX = new RegExp(
   'gu'
 );
 
-function stripNonSpokenSymbols(text: string): string {
+export function stripNonSpokenSymbols(text: string): string {
   return text.replace(NON_SPOKEN_SYMBOLS_REGEX, ' ').replace(/\s+/g, ' ').trim();
 }
 
 export const speakText = async (text: string, lang: 'fr-FR' | 'en-US' | 'ar-SA' = 'fr-FR', rate: number = 0.9, pitch: number = 1,
-  options: { skipRecordedLookup?: boolean; recordedRate?: number } = {}): Promise<void> => {
+  options: { skipRecordedLookup?: boolean; recordedRate?: number; recordedOnly?: boolean } = {}): Promise<void> => {
   if (!isFeatureEnabled('voiceReading')) {
     return Promise.resolve();
   }
 
-  const spokenText = stripNonSpokenSymbols(text);
+  let spokenText = stripNonSpokenSymbols(text);
   if (!spokenText) {
     return Promise.resolve();
   }
 
   stopSpeech();
   const request = speechRequest;
-  const recording = options.skipRecordedLookup ? undefined : findRecordedSpeech(spokenText, lang);
-  if (recording) {
-    const result = await playRecordedSpeech(recording.src, options.recordedRate ?? 1);
-    if (result !== 'failed' || request !== speechRequest) return;
+  const recordings = options.skipRecordedLookup ? undefined : findRecordedSpeechSequence(spokenText, lang);
+  if (recordings) {
+    for (const [index, recording] of recordings.entries()) {
+      if (request !== speechRequest) return;
+      const result = await playRecordedSpeech(recording.src, options.recordedRate ?? 1);
+      if (result === 'cancelled' || request !== speechRequest) return;
+      if (result === 'failed') {
+        // Don't repeat sentences already heard if a later file fails.
+        spokenText = recordings.slice(index).map(clip => clip.text).join(' ');
+        break;
+      }
+      if (index === recordings.length - 1) return;
+    }
   }
+
+  if (options.recordedOnly) return;
 
   if (isNative()) {
     await nativeStop;
