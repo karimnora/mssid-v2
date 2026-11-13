@@ -44,7 +44,7 @@ describe('PreschoolApp navigation', () => {
     fireEvent.click(screen.getByText('Lettres, chiffres et formes'));
     fireEvent.click(screen.getByText('De 0 à 5'));
     // Both steps stay selectable; directly succeeding at the ordinary one also masters its preparation.
-    fireEvent.click(screen.getAllByRole('button', { name: 'Trois', exact: true }).at(-1)!);
+    fireEvent.click(screen.getAllByRole('button', { name: 'Trois' }).at(-1)!);
     fireEvent.click(screen.getByRole('button', { name: 'Réussir cette activité' }));
     const done = JSON.parse(localStorage.getItem('mssid_preschool_progress:child-1') ?? '[]');
     expect(done).toEqual(expect.arrayContaining(['num-3', 'num-3-guided']));

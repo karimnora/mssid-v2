@@ -65,3 +65,6 @@ Moyenne : 4/5. Priorités suivantes : test réel sur téléphone, observation de
 Les deux corrections sont conservées : progression acquise reconnue et véritable comptage sans aide. Complément de Codex : appliquer aussi les étapes guidées implicites immédiatement lors d’une réussite, et tester leur sauvegarde dans le parcours de l’application. Le délai explicite du premier chargement navigateur et les sélecteurs des tests de cours/mobile sont relus et validés avant commit. Aucun audio ni texte enregistré n’est modifié.
 
 Validation de la revue : 917 tests préscolaires réussis dans 46 fichiers ; les 3 tests de navigation/intégration, dont le nouveau cas de réussite immédiate, passent également en exécution ciblée. Typage complet réussi. Les 13 scénarios navigateur distincts passent après reprise isolée des trois cas de maths : le premier passage concurrent avait dépassé les 60 secondes sur le premier cas, avec réponse et explication présentes dans la capture. Aucun changement du code produit pour contourner cet échec de durée.
+
+
+Mise à jour du lot suivant : les neuf nouveaux récits et leurs questions sont maintenant ajoutés avec leurs enregistrements dans les trois langues. Voir [le bilan des histoires](../../audio-v1/histoires-prescolaire/README.md). Le module d’hygiène séparé reste hors de ce lot.

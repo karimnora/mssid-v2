@@ -13721,6 +13721,214 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-4a0485f90e85ea5a.mp3",
       "durationMs": 2300
     },
+    "تُفَّاح": {
+      "src": "/sounds/preschool/ar/course-cedar-7ca4cc91a0480831.mp3",
+      "durationMs": 2500
+    },
+    "مَاذَا اشْتَرَى دِيدُو مَعَ أُمِّهِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cde57400cca72c40.mp3",
+      "durationMs": 3100
+    },
+    "سَلَّة": {
+      "src": "/sounds/preschool/ar/course-cedar-2d5479d7f7f8adc9.mp3",
+      "durationMs": 1200
+    },
+    "أَيْنَ وَضَعَ دِيدُو التُّفَّاحَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-84727bc4b22021a2.mp3",
+      "durationMs": 2450
+    },
+    "السَّرِير": {
+      "src": "/sounds/preschool/ar/course-cedar-4b3bcd869df6b433.mp3",
+      "durationMs": 1450
+    },
+    "ذَهَبَ دِيدُو مَعَ أُمِّهِ إِلَى سُوقِ الْحَيِّ. رَأَى تُفَّاحاً أَحْمَرَ. اِخْتَارَتْ أُمُّهُ التُّفَّاحَ، وَوَضَعَهُ دِيدُو فِي السَّلَّةِ. شَكَرَا الْبَائِعَ وَعَادَا إِلَى الْبَيْتِ. هُنَاكَ غَسَلَا التُّفَّاحَ قَبْلَ أَكْلِهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-fa52ce572a64d756.mp3",
+      "durationMs": 19050
+    },
+    "مَنْ زَارَ دِيدُو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-2ac0c03d5a22d0ff.mp3",
+      "durationMs": 2000
+    },
+    "الْجَدَّة": {
+      "src": "/sounds/preschool/ar/course-cedar-723c97aeb27d0902.mp3",
+      "durationMs": 1450
+    },
+    "الْمُعَلِّمَة": {
+      "src": "/sounds/preschool/ar/course-cedar-2caa1a3f73d4fa2e.mp3",
+      "durationMs": 1850
+    },
+    "زَارَ دِيدُو جَدَّتَهُ مَعَ أَبِيهِ. قَالَ لَهَا: السَّلَامُ عَلَيْكِ يَا جَدَّتِي! فَرِحَتْ بِهِ وَقَدَّمَتْ لَهُ تَمْراً. تَقَاسَمَ دِيدُو التَّمْرَ مَعَ أَبِيهِ. ثُمَّ جَلَسَا يَسْتَمِعَانِ إِلَى قِصَّةٍ تَحْكِيهَا الْجَدَّةُ.": {
+      "src": "/sounds/preschool/ar/course-cedar-0006d03c97e941d9.mp3",
+      "durationMs": 20000
+    },
+    "مَاذَا قَدَّمَتِ الْجَدَّةُ لِدِيدُو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-96491b7a5df1b068.mp3",
+      "durationMs": 2650
+    },
+    "تَمْر": {
+      "src": "/sounds/preschool/ar/course-cedar-a8bb1d7e7a5c592a.mp3",
+      "durationMs": 900
+    },
+    "كُرَة": {
+      "src": "/sounds/preschool/ar/course-cedar-64addcdd52026383.mp3",
+      "durationMs": 1750
+    },
+    "أَيْنَ لَعِبَ دِيدُو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-8915d56c818d2dba.mp3",
+      "durationMs": 2800
+    },
+    "الشَّاطِئ": {
+      "src": "/sounds/preschool/ar/course-cedar-b733d54ce5765d6b.mp3",
+      "durationMs": 1500
+    },
+    "الْغَابَة": {
+      "src": "/sounds/preschool/ar/course-cedar-dba5ac03f495727f.mp3",
+      "durationMs": 2300
+    },
+    "مَاذَا أَخَذَ دِيدُو مَعَهُ عِنْدَ الْعَوْدَةِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-30e719431c766910.mp3",
+      "durationMs": 5200
+    },
+    "ذَهَبَ دِيدُو إِلَى الشَّاطِئِ مَعَ أَبِيهِ. جَلَسَا عَلَى الرَّمْلِ. مَلَأَ دِيدُو دَلْوَهُ بِالرَّمْلِ وَبَنَى قَصْراً صَغِيراً. ظَلَّ قُرْبَ أَبِيهِ. عِنْدَ الْعَوْدَةِ، أَخَذَ دَلْوَهُ وَتَرَكَ الْمَكَانَ نَظِيفاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-6e013e9cd090244b.mp3",
+      "durationMs": 18150
+    },
+    "دَلْوَه": {
+      "src": "/sounds/preschool/ar/course-cedar-d6c3247a8018d1f7.mp3",
+      "durationMs": 1050
+    },
+    "سَمَكَة": {
+      "src": "/sounds/preschool/ar/course-cedar-b05e2a7f6fbc4dce.mp3",
+      "durationMs": 2250
+    },
+    "مَاذَا لَبِسَ دِيدُو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-01f587e056861dc0.mp3",
+      "durationMs": 2400
+    },
+    "قَمِيصَه": {
+      "src": "/sounds/preschool/ar/course-cedar-06aa63aaf154ca40.mp3",
+      "durationMs": 1700
+    },
+    "قُفَّازَيْن": {
+      "src": "/sounds/preschool/ar/course-cedar-b845f0f2871f53dc.mp3",
+      "durationMs": 2300
+    },
+    "فِي صَبَاحِ الْعِيدِ، لَبِسَ دِيدُو قَمِيصَهُ النَّظِيفَ. قَالَ لِعَائِلَتِهِ: عِيدٌ مُبَارَكٌ! وَضَعَتْ أُمُّهُ حَلْوَى فِي طَبَقٍ. حَمَلَ دِيدُو الطَّبَقَ مَعَ أَبِيهِ إِلَى الْجَارَةِ. فَرِحَتِ الْجَارَةُ وَشَكَرَتْهُمَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-e60de1a88fcdbf30.mp3",
+      "durationMs": 19500
+    },
+    "مَاذَا وَضَعَ دِيدُو فِي التُّرْبَةِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-07d43c9260efb646.mp3",
+      "durationMs": 3650
+    },
+    "مَاذَا قَدَّمَ دِيدُو لِلْجَارَةِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-39ff384799878211.mp3",
+      "durationMs": 2750
+    },
+    "بَذْرَة": {
+      "src": "/sounds/preschool/ar/course-cedar-531e54722fd551ae.mp3",
+      "durationMs": 1950
+    },
+    "بِمَاذَا سَقَى دِيدُو الْبَذْرَةَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-973058068b41f735.mp3",
+      "durationMs": 3450
+    },
+    "وَضَعَ دِيدُو بَذْرَةً فِي تُرْبَةِ الْحَدِيقَةِ مَعَ جَدِّهِ. غَطَّيَاهَا بِقَلِيلٍ مِنَ التُّرَابِ. سَقَاهَا دِيدُو بِقَلِيلٍ مِنَ الْمَاءِ. بَعْدَ أَيَّامٍ، ظَهَرَتْ نَبْتَةٌ صَغِيرَةٌ. فَرِحَ دِيدُو وَاسْتَمَرَّ فِي الْعِنَايَةِ بِهَا.": {
+      "src": "/sounds/preschool/ar/course-cedar-35eec1e899b4ba87.mp3",
+      "durationMs": 17850
+    },
+    "مَاء": {
+      "src": "/sounds/preschool/ar/course-cedar-e632fa6905ba72ad.mp3",
+      "durationMs": 1850
+    },
+    "مَاذَا جَمَعَ دِيدُو مَعَ جَدِّهِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-a662070b665f3fdd.mp3",
+      "durationMs": 3150
+    },
+    "زَيْتُون": {
+      "src": "/sounds/preschool/ar/course-cedar-c0d8d739c370481b.mp3",
+      "durationMs": 1450
+    },
+    "أَيْنَ وَضَعَ دِيدُو الزَّيْتُونَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-38b64f4f045fc434.mp3",
+      "durationMs": 3700
+    },
+    "زَارَ دِيدُو بُسْتَانَ زَيْتُونٍ مَعَ جَدِّهِ. بَسَطَ الْجَدُّ غِطَاءً تَحْتَ شَجَرَةٍ. جَمَعَا حَبَّاتِ الزَّيْتُونِ الَّتِي سَقَطَتْ عَلَيْهِ. وَضَعَ دِيدُو الزَّيْتُونَ فِي سَلَّةٍ. ثُمَّ عَادَا إِلَى الْبَيْتِ مَعاً.": {
+      "src": "/sounds/preschool/ar/course-cedar-3122c1170c1b8e5d.mp3",
+      "durationMs": 17100
+    },
+    "حِذَاء": {
+      "src": "/sounds/preschool/ar/course-cedar-5b407e89ea6dd446.mp3",
+      "durationMs": 1750
+    },
+    "ذَهَبَ دِيدُو مَعَ عَائِلَتِهِ لِرُؤْيَةِ كُثْبَانِ الصَّحْرَاءِ. لَبِسَ قُبَّعَتَهُ وَمَشَى قُرْبَ أَبِيهِ. رَأَى الرَّمْلَ يَلْمَعُ فِي الشَّمْسِ. عِنْدَمَا عَطِشَ، أَعْطَاهُ أَبُوهُ مَاءً. جَلَسُوا مَعاً فِي الظِّلِّ لِلرَّاحَةِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-4c278e8febed9145.mp3",
+      "durationMs": 19500
+    },
+    "قُبَّعَة": {
+      "src": "/sounds/preschool/ar/course-cedar-cf6c3155c9d3733a.mp3",
+      "durationMs": 1450
+    },
+    "مَاذَا لَبِسَ دِيدُو عَلَى رَأْسِهِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cd5176ff8c34c91f.mp3",
+      "durationMs": 3000
+    },
+    "مَاذَا شَرِبَ دِيدُو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-d5054810f0c8aeb4.mp3",
+      "durationMs": 2400
+    },
+    "مِظَلَّة": {
+      "src": "/sounds/preschool/ar/course-cedar-a2e2067d3754d64a.mp3",
+      "durationMs": 1600
+    },
+    "مَاذَا اسْتَعْمَلَ دِيدُو وَأُمُّهُ تَحْتَ الْمَطَرِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-ff80e0fa3009eede.mp3",
+      "durationMs": 4050
+    },
+    "مَاذَا عَلَّقَ دِيدُو لِيَجِفَّ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-cbcca1f5dfc72006.mp3",
+      "durationMs": 3350
+    },
+    "نَظَرَ دِيدُو مِنَ النَّافِذَةِ. كَانَ الْمَطَرُ يَنْزِلُ. لَبِسَ مِعْطَفَهُ وَخَرَجَ مَعَ أُمِّهِ تَحْتَ مِظَلَّةٍ. سَمِعَ صَوْتَ الْقَطَرَاتِ عَلَيْهَا. عِنْدَمَا عَادَا، عَلَّقَ دِيدُو مِعْطَفَهُ لِيَجِفَّ.": {
+      "src": "/sounds/preschool/ar/course-cedar-28f4fbd3a65af982.mp3",
+      "durationMs": 19200
+    },
+    "مِعْطَفَه": {
+      "src": "/sounds/preschool/ar/course-cedar-a36f29e6eba150e1.mp3",
+      "durationMs": 1300
+    },
+    "مَاذَا اخْتَارَ دِيدُو فِي الْمَكْتَبَةِ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-e425a8937917bd64.mp3",
+      "durationMs": 3450
+    },
+    "أَيْنَ أَعَادَ دِيدُو الْكِتَابَ؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c853feb0b4ace202.mp3",
+      "durationMs": 2850
+    },
+    "عَلَى الرَّفّ": {
+      "src": "/sounds/preschool/ar/course-cedar-7ac8909b6b0b6475.mp3",
+      "durationMs": 1750
+    },
+    "ذَهَبَ دِيدُو مَعَ أُمِّهِ إِلَى مَكْتَبَةِ الْحَيِّ. اِخْتَارَ كِتَاباً فِيهِ صُوَرُ حَيَوَانَاتٍ. قَلَّبَ الصَّفَحَاتِ بِرِفْقٍ، وَتَحَدَّثَ بِصَوْتٍ هَادِئٍ. بَعْدَ الْقِرَاءَةِ، أَعَادَ الْكِتَابَ إِلَى الرَّفِّ بِمُسَاعَدَةِ أُمِّهِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-2e2c52f2dc128655.mp3",
+      "durationMs": 19700
+    },
+    "فِي السَّلَّة": {
+      "src": "/sounds/preschool/ar/course-cedar-62ac4b695544bfbe.mp3",
+      "durationMs": 2150
+    },
+    "لِنُحَاوِلْ مَرَّةً أُخْرَى. اِسْتَمِعْ إِلَى السُّؤَالِ.": {
+      "src": "/sounds/preschool/ar/course-cedar-57fdb5d61d284bed.mp3",
+      "durationMs": 3950
+    },
+    "اِحْكِ القِصَّةَ بِكَلِمَاتِكَ لِشَخْصٍ مِنْ عَائِلَتِكَ.": {
+      "src": "/sounds/preschool/ar/course-cedar-8fdc9ea09801f51c.mp3",
+      "durationMs": 4500
+    },
+    "أَحْسَنْتَ!": {
+      "src": "/sounds/preschool/ar/course-cedar-84c929739a4098b0.mp3",
+      "durationMs": 1450
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325
@@ -15651,6 +15859,226 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/fr/course-cedar-25a07e1aeccd1b5f.mp3",
       "durationMs": 1350
     },
+    "Qu’achètent Didou et sa maman ?": {
+      "src": "/sounds/preschool/fr/course-cedar-e25ba46d446214f5.mp3",
+      "durationMs": 3050
+    },
+    "Des pommes": {
+      "src": "/sounds/preschool/fr/course-cedar-15a17ed7160dbab5.mp3",
+      "durationMs": 2000
+    },
+    "Didou va au marché du quartier avec sa maman. Il voit des pommes rouges. Maman choisit les pommes et Didou les met dans le panier. Ils remercient le marchand et rentrent à la maison. Ils lavent les pommes avant de les manger.": {
+      "src": "/sounds/preschool/fr/course-cedar-4c52e89313d9054b.mp3",
+      "durationMs": 14650
+    },
+    "Un livre": {
+      "src": "/sounds/preschool/fr/course-cedar-569bc2bae779fc4c.mp3",
+      "durationMs": 1350
+    },
+    "Où Didou met-il les pommes ?": {
+      "src": "/sounds/preschool/fr/course-cedar-22562f4b3a6db2cd.mp3",
+      "durationMs": 2250
+    },
+    "Un panier": {
+      "src": "/sounds/preschool/fr/course-cedar-6ea420f2e4de0959.mp3",
+      "durationMs": 1050
+    },
+    "Le lit": {
+      "src": "/sounds/preschool/fr/course-cedar-e87105a88cbcfca5.mp3",
+      "durationMs": 2100
+    },
+    "Didou rend visite à sa grand-mère avec son papa. Il lui dit bonjour. Grand-mère est contente et lui offre des dattes. Didou partage les dattes avec son papa. Puis ils écoutent une histoire racontée par grand-mère.": {
+      "src": "/sounds/preschool/fr/course-cedar-e7af9a8706ee7a6a.mp3",
+      "durationMs": 15550
+    },
+    "Sa maîtresse": {
+      "src": "/sounds/preschool/fr/course-cedar-8df63256431b4b62.mp3",
+      "durationMs": 1600
+    },
+    "Sa grand-mère": {
+      "src": "/sounds/preschool/fr/course-cedar-00d03c8fa466c113.mp3",
+      "durationMs": 1350
+    },
+    "À qui Didou rend-il visite ?": {
+      "src": "/sounds/preschool/fr/course-cedar-1f81bae5d07e0251.mp3",
+      "durationMs": 2450
+    },
+    "Des dattes": {
+      "src": "/sounds/preschool/fr/course-cedar-0107587a59d77d1d.mp3",
+      "durationMs": 1200
+    },
+    "Un ballon": {
+      "src": "/sounds/preschool/fr/course-cedar-430b9c1fbdada112.mp3",
+      "durationMs": 1150
+    },
+    "Que lui offre grand-mère ?": {
+      "src": "/sounds/preschool/fr/course-cedar-6c7515f48ff86a43.mp3",
+      "durationMs": 2350
+    },
+    "Où Didou joue-t-il ?": {
+      "src": "/sounds/preschool/fr/course-cedar-8621ce547b628ba7.mp3",
+      "durationMs": 2100
+    },
+    "La plage": {
+      "src": "/sounds/preschool/fr/course-cedar-7a6f612425eb2784.mp3",
+      "durationMs": 1250
+    },
+    "La forêt": {
+      "src": "/sounds/preschool/fr/course-cedar-f215e19955d747f7.mp3",
+      "durationMs": 1650
+    },
+    "Que reprend Didou en partant ?": {
+      "src": "/sounds/preschool/fr/course-cedar-072dd8f2912ffabd.mp3",
+      "durationMs": 3200
+    },
+    "Didou va à la plage avec son papa. Ils s’installent sur le sable. Didou remplit son seau de sable et construit un petit château. Il reste près de son papa. En partant, il reprend son seau et laisse la plage propre.": {
+      "src": "/sounds/preschool/fr/course-cedar-9f779fc88fc9535c.mp3",
+      "durationMs": 14750
+    },
+    "Son seau": {
+      "src": "/sounds/preschool/fr/course-cedar-4b9c4104b97210a3.mp3",
+      "durationMs": 1400
+    },
+    "Que met Didou ?": {
+      "src": "/sounds/preschool/fr/course-cedar-96789d3c41fadea6.mp3",
+      "durationMs": 2400
+    },
+    "Un poisson": {
+      "src": "/sounds/preschool/fr/course-cedar-acfffc4cc47bea7f.mp3",
+      "durationMs": 1650
+    },
+    "Le matin de l’Aïd, Didou met sa chemise propre. Il souhaite une bonne fête à sa famille. Maman pose des gâteaux sur une assiette. Avec son papa, Didou apporte l’assiette à leur voisine. Elle sourit et les remercie.": {
+      "src": "/sounds/preschool/fr/course-cedar-7440599f3c147713.mp3",
+      "durationMs": 15350
+    },
+    "Des gants": {
+      "src": "/sounds/preschool/fr/course-cedar-17bb70f6c3faddae.mp3",
+      "durationMs": 800
+    },
+    "Sa chemise": {
+      "src": "/sounds/preschool/fr/course-cedar-db1439111d58e5c0.mp3",
+      "durationMs": 2400
+    },
+    "Des gâteaux": {
+      "src": "/sounds/preschool/fr/course-cedar-5c5acb465059f49e.mp3",
+      "durationMs": 1800
+    },
+    "Qu’apporte Didou à la voisine ?": {
+      "src": "/sounds/preschool/fr/course-cedar-bdfa09b7aa5c302f.mp3",
+      "durationMs": 2450
+    },
+    "Une graine": {
+      "src": "/sounds/preschool/fr/course-cedar-2d6339befa7f94a4.mp3",
+      "durationMs": 1700
+    },
+    "Que met Didou dans la terre ?": {
+      "src": "/sounds/preschool/fr/course-cedar-4d0eda4d417bfed4.mp3",
+      "durationMs": 2700
+    },
+    "Avec son grand-père, Didou met une graine dans la terre du jardin. Ils la recouvrent d’un peu de terre. Didou verse un peu d’eau. Après plusieurs jours, une petite pousse apparaît. Didou est content et continue à prendre soin de sa plante.": {
+      "src": "/sounds/preschool/fr/course-cedar-225f51b80b3d9337.mp3",
+      "durationMs": 18450
+    },
+    "De l’eau": {
+      "src": "/sounds/preschool/fr/course-cedar-538a4bff10e6c870.mp3",
+      "durationMs": 1750
+    },
+    "Avec quoi Didou arrose-t-il la graine ?": {
+      "src": "/sounds/preschool/fr/course-cedar-6d0972936f4fca66.mp3",
+      "durationMs": 3650
+    },
+    "Du lait": {
+      "src": "/sounds/preschool/fr/course-cedar-b6be1774fc724440.mp3",
+      "durationMs": 1250
+    },
+    "Que ramassent Didou et son grand-père ?": {
+      "src": "/sounds/preschool/fr/course-cedar-b437cc1771e16ef0.mp3",
+      "durationMs": 3000
+    },
+    "Des olives": {
+      "src": "/sounds/preschool/fr/course-cedar-8a112dcbb209e14d.mp3",
+      "durationMs": 1150
+    },
+    "Didou visite un verger d’oliviers avec son grand-père. Grand-père étale une toile sous un arbre. Ils ramassent les olives tombées sur la toile. Didou les met dans un panier. Puis ils rentrent ensemble à la maison.": {
+      "src": "/sounds/preschool/fr/course-cedar-dc1a343f3ef2e490.mp3",
+      "durationMs": 14700
+    },
+    "Où Didou met-il les olives ?": {
+      "src": "/sounds/preschool/fr/course-cedar-730c2898ff43aa4d.mp3",
+      "durationMs": 3200
+    },
+    "Une chaussure": {
+      "src": "/sounds/preschool/fr/course-cedar-deffc1cdf15c0545.mp3",
+      "durationMs": 1650
+    },
+    "Que porte Didou sur la tête ?": {
+      "src": "/sounds/preschool/fr/course-cedar-aaf493e37b7ff70c.mp3",
+      "durationMs": 2800
+    },
+    "Un chapeau": {
+      "src": "/sounds/preschool/fr/course-cedar-0ac0c916c98bd8b4.mp3",
+      "durationMs": 1550
+    },
+    "Que boit Didou ?": {
+      "src": "/sounds/preschool/fr/course-cedar-f9cadd85c3a409ae.mp3",
+      "durationMs": 2600
+    },
+    "Didou découvre les dunes du Sahara avec sa famille. Il porte son chapeau et marche près de son papa. Le sable brille au soleil. Quand Didou a soif, son papa lui donne de l’eau. Ils se reposent ensemble à l’ombre.": {
+      "src": "/sounds/preschool/fr/course-cedar-87c39dbb6a8b5e1f.mp3",
+      "durationMs": 15300
+    },
+    "Qu’utilisent Didou et sa maman sous la pluie ?": {
+      "src": "/sounds/preschool/fr/course-cedar-3a27a22aa9532c8c.mp3",
+      "durationMs": 3450
+    },
+    "Didou regarde par la fenêtre. Il pleut. Il met son manteau et sort avec sa maman sous un parapluie. Il écoute les gouttes qui tapent dessus. En rentrant, Didou suspend son manteau pour le faire sécher.": {
+      "src": "/sounds/preschool/fr/course-cedar-fcae1a9448fa40c1.mp3",
+      "durationMs": 14050
+    },
+    "Un parapluie": {
+      "src": "/sounds/preschool/fr/course-cedar-15e7f85ec6af8bee.mp3",
+      "durationMs": 1550
+    },
+    "Son manteau": {
+      "src": "/sounds/preschool/fr/course-cedar-66978d617ee48064.mp3",
+      "durationMs": 1850
+    },
+    "Que suspend Didou pour le faire sécher ?": {
+      "src": "/sounds/preschool/fr/course-cedar-d6d9361e21552443.mp3",
+      "durationMs": 2950
+    },
+    "Que choisit Didou à la bibliothèque ?": {
+      "src": "/sounds/preschool/fr/course-cedar-3bbf773f17bebc5b.mp3",
+      "durationMs": 2800
+    },
+    "Où Didou remet-il le livre ?": {
+      "src": "/sounds/preschool/fr/course-cedar-0e7bb1e8c5bcdbb2.mp3",
+      "durationMs": 2600
+    },
+    "Sur l’étagère": {
+      "src": "/sounds/preschool/fr/course-cedar-da29879e76388044.mp3",
+      "durationMs": 1800
+    },
+    "Didou va à la bibliothèque du quartier avec sa maman. Il choisit un livre avec des images d’animaux. Il tourne doucement les pages et parle à voix basse. Après la lecture, il remet le livre sur l’étagère avec l’aide de sa maman.": {
+      "src": "/sounds/preschool/fr/course-cedar-f35aa32e59992237.mp3",
+      "durationMs": 15550
+    },
+    "Dans un panier": {
+      "src": "/sounds/preschool/fr/course-cedar-ea51176714012ff0.mp3",
+      "durationMs": 1500
+    },
+    "Essayons encore. Écoute la question.": {
+      "src": "/sounds/preschool/fr/course-cedar-e62a83ae4c2483a7.mp3",
+      "durationMs": 2850
+    },
+    "Bravo !": {
+      "src": "/sounds/preschool/fr/course-cedar-55ea22f01b09d915.mp3",
+      "durationMs": 850
+    },
+    "Raconte l’histoire avec tes mots à une personne de ta famille.": {
+      "src": "/sounds/preschool/fr/course-cedar-86cb7b62ecb25da0.mp3",
+      "durationMs": 5000
+    },
     "L’école": {
       "src": "/sounds/preschool/fr/language-next-fr-1.mp3",
       "durationMs": 900
@@ -17488,6 +17916,226 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
     "Go backward": {
       "src": "/sounds/preschool/en/course-cedar-de1e62abc48f6cb2.mp3",
       "durationMs": 1250
+    },
+    "Didou goes to the neighbourhood market with Mum. He sees red apples. Mum chooses the apples and Didou puts them in the basket. They thank the seller and go home. They wash the apples before eating them.": {
+      "src": "/sounds/preschool/en/course-cedar-bb01b013b407c7d8.mp3",
+      "durationMs": 12600
+    },
+    "Apples": {
+      "src": "/sounds/preschool/en/course-cedar-2df59d0e218f4141.mp3",
+      "durationMs": 1050
+    },
+    "A book": {
+      "src": "/sounds/preschool/en/course-cedar-1b3a98291beaa3a4.mp3",
+      "durationMs": 950
+    },
+    "What do Didou and Mum buy?": {
+      "src": "/sounds/preschool/en/course-cedar-fd8a8772ecd87b09.mp3",
+      "durationMs": 2500
+    },
+    "A basket": {
+      "src": "/sounds/preschool/en/course-cedar-cfd33195944f900f.mp3",
+      "durationMs": 1350
+    },
+    "The bed": {
+      "src": "/sounds/preschool/en/course-cedar-a04da28687973eb0.mp3",
+      "durationMs": 1450
+    },
+    "Where does Didou put the apples?": {
+      "src": "/sounds/preschool/en/course-cedar-7f24b71f58ddcffb.mp3",
+      "durationMs": 3000
+    },
+    "His grandmother": {
+      "src": "/sounds/preschool/en/course-cedar-981ccbd42acfd084.mp3",
+      "durationMs": 1700
+    },
+    "Who does Didou visit?": {
+      "src": "/sounds/preschool/en/course-cedar-a2814e7d3c27580a.mp3",
+      "durationMs": 2100
+    },
+    "Didou visits Grandma with Dad. He says hello to her. Grandma is happy and offers him some dates. Didou shares the dates with Dad. Then they listen to Grandma telling a story.": {
+      "src": "/sounds/preschool/en/course-cedar-5c968e5d91d8b10b.mp3",
+      "durationMs": 11650
+    },
+    "His teacher": {
+      "src": "/sounds/preschool/en/course-cedar-43c6fe601bbce438.mp3",
+      "durationMs": 1350
+    },
+    "What does Grandma offer him?": {
+      "src": "/sounds/preschool/en/course-cedar-4edc652df67c5355.mp3",
+      "durationMs": 2050
+    },
+    "Dates": {
+      "src": "/sounds/preschool/en/course-cedar-0612aefba5ae62be.mp3",
+      "durationMs": 900
+    },
+    "A ball": {
+      "src": "/sounds/preschool/en/course-cedar-9b39393808ae9c21.mp3",
+      "durationMs": 1050
+    },
+    "Where does Didou play?": {
+      "src": "/sounds/preschool/en/course-cedar-beee834d2ff389f0.mp3",
+      "durationMs": 1850
+    },
+    "The beach": {
+      "src": "/sounds/preschool/en/course-cedar-c80c180c0dd53837.mp3",
+      "durationMs": 1450
+    },
+    "The forest": {
+      "src": "/sounds/preschool/en/course-cedar-d6435de6086f84b2.mp3",
+      "durationMs": 1150
+    },
+    "Didou goes to the beach with Dad. They sit on the sand. Didou fills his bucket with sand and builds a little castle. He stays near Dad. When they leave, he takes his bucket and leaves the beach clean.": {
+      "src": "/sounds/preschool/en/course-cedar-9ead9f53e7de33bd.mp3",
+      "durationMs": 12850
+    },
+    "His bucket": {
+      "src": "/sounds/preschool/en/course-cedar-c35ec24b9b1f946f.mp3",
+      "durationMs": 1550
+    },
+    "What does Didou take when leaving?": {
+      "src": "/sounds/preschool/en/course-cedar-e8e9a7b27e501981.mp3",
+      "durationMs": 2250
+    },
+    "A fish": {
+      "src": "/sounds/preschool/en/course-cedar-9d388a4f4e4cb8bb.mp3",
+      "durationMs": 1300
+    },
+    "What does Didou put on?": {
+      "src": "/sounds/preschool/en/course-cedar-0244d554296d50b1.mp3",
+      "durationMs": 1950
+    },
+    "His shirt": {
+      "src": "/sounds/preschool/en/course-cedar-68bd16f273d1a8e0.mp3",
+      "durationMs": 2750
+    },
+    "Gloves": {
+      "src": "/sounds/preschool/en/course-cedar-8de5edb33883ba28.mp3",
+      "durationMs": 800
+    },
+    "On Eid morning, Didou puts on his clean shirt. He wishes his family a happy Eid. Mum puts cakes on a plate. Didou and Dad take the plate to their neighbour. She smiles and thanks them.": {
+      "src": "/sounds/preschool/en/course-cedar-d6e08784d391073c.mp3",
+      "durationMs": 11400
+    },
+    "Cakes": {
+      "src": "/sounds/preschool/en/course-cedar-bcf890f945b3383a.mp3",
+      "durationMs": 1000
+    },
+    "What does Didou bring the neighbour?": {
+      "src": "/sounds/preschool/en/course-cedar-1f7b75214974024c.mp3",
+      "durationMs": 3200
+    },
+    "With Grandpa, Didou puts a seed in the garden soil. They cover it with a little soil. Didou adds a little water. After several days, a small shoot appears. Didou is happy and keeps looking after his plant.": {
+      "src": "/sounds/preschool/en/course-cedar-74b4597eac0cd6f0.mp3",
+      "durationMs": 14000
+    },
+    "What does Didou put in the soil?": {
+      "src": "/sounds/preschool/en/course-cedar-ea682c537e2d4529.mp3",
+      "durationMs": 3100
+    },
+    "A seed": {
+      "src": "/sounds/preschool/en/course-cedar-ff294751a2ddbcb9.mp3",
+      "durationMs": 1600
+    },
+    "What does Didou give the seed?": {
+      "src": "/sounds/preschool/en/course-cedar-ca17f392a761612d.mp3",
+      "durationMs": 2700
+    },
+    "Water": {
+      "src": "/sounds/preschool/en/course-cedar-cacc5a18137892a7.mp3",
+      "durationMs": 900
+    },
+    "Milk": {
+      "src": "/sounds/preschool/en/course-cedar-aa09164a1b02c41a.mp3",
+      "durationMs": 900
+    },
+    "What do Didou and Grandpa collect?": {
+      "src": "/sounds/preschool/en/course-cedar-b36e024fd2daf523.mp3",
+      "durationMs": 3000
+    },
+    "Olives": {
+      "src": "/sounds/preschool/en/course-cedar-b7b786171175c5c5.mp3",
+      "durationMs": 1000
+    },
+    "Didou visits an olive grove with Grandpa. Grandpa spreads a cloth under a tree. They collect olives that have fallen onto the cloth. Didou puts them in a basket. Then they go home together.": {
+      "src": "/sounds/preschool/en/course-cedar-59586a145899a049.mp3",
+      "durationMs": 11850
+    },
+    "Where does Didou put the olives?": {
+      "src": "/sounds/preschool/en/course-cedar-c97e15e9350db458.mp3",
+      "durationMs": 2250
+    },
+    "What does Didou wear on his head?": {
+      "src": "/sounds/preschool/en/course-cedar-c94cde16e298469b.mp3",
+      "durationMs": 2200
+    },
+    "A shoe": {
+      "src": "/sounds/preschool/en/course-cedar-27d3d0d4dd8c12df.mp3",
+      "durationMs": 1850
+    },
+    "A hat": {
+      "src": "/sounds/preschool/en/course-cedar-4039e55407a3b499.mp3",
+      "durationMs": 900
+    },
+    "What does Didou drink?": {
+      "src": "/sounds/preschool/en/course-cedar-ade437ce374847e1.mp3",
+      "durationMs": 2450
+    },
+    "Didou visits the Sahara dunes with his family. He wears his hat and walks near Dad. The sand shines in the sun. When Didou is thirsty, Dad gives him water. They rest together in the shade.": {
+      "src": "/sounds/preschool/en/course-cedar-e9bc1aad4e067b2b.mp3",
+      "durationMs": 13900
+    },
+    "What do Didou and Mum use in the rain?": {
+      "src": "/sounds/preschool/en/course-cedar-6d6a4fb8ad4733e9.mp3",
+      "durationMs": 3350
+    },
+    "An umbrella": {
+      "src": "/sounds/preschool/en/course-cedar-c947471417cc31ca.mp3",
+      "durationMs": 1750
+    },
+    "Didou looks out of the window. It is raining. He puts on his coat and goes out with Mum under an umbrella. He listens to the drops tapping on it. Back home, Didou hangs up his coat to dry.": {
+      "src": "/sounds/preschool/en/course-cedar-b878753fdef001dc.mp3",
+      "durationMs": 12600
+    },
+    "What does Didou hang up to dry?": {
+      "src": "/sounds/preschool/en/course-cedar-b810a0caddae8558.mp3",
+      "durationMs": 3100
+    },
+    "His coat": {
+      "src": "/sounds/preschool/en/course-cedar-db92c73d375b8518.mp3",
+      "durationMs": 1450
+    },
+    "Didou goes to the neighbourhood library with Mum. He chooses a book with animal pictures. He turns the pages gently and speaks quietly. After reading, he puts the book back on the shelf with Mum’s help.": {
+      "src": "/sounds/preschool/en/course-cedar-f3f59cbaeb30822b.mp3",
+      "durationMs": 14100
+    },
+    "What does Didou choose at the library?": {
+      "src": "/sounds/preschool/en/course-cedar-407bf79aba1fbaf7.mp3",
+      "durationMs": 2900
+    },
+    "In a basket": {
+      "src": "/sounds/preschool/en/course-cedar-e978e39209615cd3.mp3",
+      "durationMs": 2000
+    },
+    "Where does Didou put the book back?": {
+      "src": "/sounds/preschool/en/course-cedar-591833698dc99e16.mp3",
+      "durationMs": 3150
+    },
+    "On the shelf": {
+      "src": "/sounds/preschool/en/course-cedar-0b9a12e0f47a209b.mp3",
+      "durationMs": 1800
+    },
+    "Let’s try again. Listen to the question.": {
+      "src": "/sounds/preschool/en/course-cedar-5ccf8146428cd2aa.mp3",
+      "durationMs": 2800
+    },
+    "Well done!": {
+      "src": "/sounds/preschool/en/course-cedar-5695b2e6f9523a09.mp3",
+      "durationMs": 2350
+    },
+    "Tell the story in your own words to someone in your family.": {
+      "src": "/sounds/preschool/en/course-cedar-ab685b0e657089b9.mp3",
+      "durationMs": 3700
     },
     "Hello! My name is Amine. What is your name?": {
       "src": "/sounds/preschool/en/language-next-en-1.mp3",

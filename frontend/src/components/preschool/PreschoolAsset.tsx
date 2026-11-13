@@ -19,6 +19,12 @@ export const PreschoolAsset: React.FC<PreschoolAssetProps> = ({
   className = '',
   textClassName,
 }) => {
+  if (asset === 'story:dates') return <svg width={size} height={size} viewBox="0 0 80 80" aria-hidden="true" className={className}>
+    <ellipse cx="40" cy="61" rx="33" ry="9" fill="#f5dfb3" />
+    {[[-15, 0, -20], [4, -7, 12], [18, 7, 35]].map(([x, y, angle], i) => <g key={i} transform={`translate(${40 + x} ${40 + y}) rotate(${angle})`}>
+      <ellipse rx="12" ry="23" fill="#8b451f" /><path d="M0 -16 Q-6 0 0 17" stroke="#c68145" strokeWidth="3" fill="none" />
+    </g>)}
+  </svg>;
   if (asset.startsWith('art:') && asset.slice(4) in COLORING_ART) {
     return <PreschoolLineArt id={asset.slice(4) as ColoringArtId} size={size} className={`shrink-0 ${className}`} />;
   }

@@ -540,9 +540,9 @@ describe('Preschool (Mode Éveil) data integrity', () => {
     expect(ballPlaces.find((c) => c.id === 'outside')?.scene?.kind).toBe('outside');
   });
 
-  it('has three 3-picture stories and does not claim the whole alphabet on match-words-2', () => {
+  it('has twelve 3-picture stories and does not claim the whole alphabet on match-words-2', () => {
     const stories = PRESCHOOL_MODULES.find((m) => m.id === 'preschool-stories');
-    expect(stories?.totalSteps).toBe(3);
+    expect(stories?.totalSteps).toBe(12);
     expect(stories?.activities.every((a) => a.interactionType === 'story_order')).toBe(true);
     const match = PRESCHOOL_MODULES
       .find((m) => m.id === 'preschool-letters-2')

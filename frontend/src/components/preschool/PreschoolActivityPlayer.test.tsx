@@ -1,3 +1,4 @@
+import { NARRATED_STORIES } from '../../data/preschool/narratedStories';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
@@ -42,6 +43,15 @@ describe('PreschoolActivityPlayer — skip vs complete', () => {
     fireEvent.click(screen.getByText('Passer'));
     expect(onSkip).toHaveBeenCalledTimes(1);
     expect(onComplete).not.toHaveBeenCalled();
+  });
+
+  it('does not interrupt a long story with the eight-second idle replay', () => {
+    vi.useFakeTimers();
+    speak.mockClear();
+    render(<PreschoolActivityPlayer activity={NARRATED_STORIES[0]} language="fr" hasNext onComplete={vi.fn()} onSkip={vi.fn()} onExit={vi.fn()} />);
+    act(() => vi.advanceTimersByTime(9000));
+    expect(speak.mock.calls.filter(([line]) => line === NARRATED_STORIES[0].i18n.fr.promptAudio)).toHaveLength(1);
+    vi.useRealTimers();
   });
 
   it('replays the prompt once if the child has not touched anything', () => {

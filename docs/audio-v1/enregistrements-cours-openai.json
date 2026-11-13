@@ -50451,6 +50451,794 @@
         "uses": [
           "authorized-quality-retry"
         ]
+      },
+      {
+        "texte": "تُفَّاح",
+        "fichier": "course-cedar-7ca4cc91a0480831.mp3",
+        "duration": 2.5,
+        "sha256": "66501f39a5c60f14134927ae86955e3844317c55cd23c6c19524bda60b445adf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:09:57.330Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2f319acfd2f842f17a07fae0f773c849b0b43cd8603543cc263480bfcd5e594a",
+        "uses": [
+          "story-market:choice",
+          "story-olives:choice",
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا اشْتَرَى دِيدُو مَعَ أُمِّهِ؟",
+        "fichier": "course-cedar-cde57400cca72c40.mp3",
+        "duration": 3.1,
+        "sha256": "ea554569ed37e5cc8399694aad51e92e50a9d9263c4fb42e22ccfc2d7bc0c815",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:09:57.399Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a80cf1e4304f41660f623655659feb00f7349f9d0bbcc42464db5942b50ddaf6",
+        "uses": [
+          "story-market:market-q1"
+        ]
+      },
+      {
+        "texte": "سَلَّة",
+        "fichier": "course-cedar-2d5479d7f7f8adc9.mp3",
+        "duration": 1.2,
+        "sha256": "816a21028aa0851f7b3ce9fe68d3710833f29360692316469c7b6786257f90d1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:09:58.615Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "06d9e53bf65f8dcccd3adc7c5c4c05f43a2114bac94cc38c0a9357f1bbb8463a",
+        "uses": [
+          "story-market:choice",
+          "story-olives:choice"
+        ]
+      },
+      {
+        "texte": "أَيْنَ وَضَعَ دِيدُو التُّفَّاحَ؟",
+        "fichier": "course-cedar-84727bc4b22021a2.mp3",
+        "duration": 2.45,
+        "sha256": "b522f8175622c86d98219c9166c69b8b00d8bb37fdae25235254b54699837f69",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:09:59.197Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a9a3308c68dd6acb7094b50a91493e22af5ba3b475d0d77e5a1f385c51b506ce",
+        "uses": [
+          "story-market:market-q2"
+        ]
+      },
+      {
+        "texte": "السَّرِير",
+        "fichier": "course-cedar-4b3bcd869df6b433.mp3",
+        "duration": 1.45,
+        "sha256": "75e335c2eb54da0e3e47e3ec231c38e90deb5955799f82699e4fad578519b6b8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:00.662Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0df683575759b4972acc0db9a225bfa17c1abade2a66a4f20092e040db079946",
+        "uses": [
+          "story-market:choice"
+        ]
+      },
+      {
+        "texte": "ذَهَبَ دِيدُو مَعَ أُمِّهِ إِلَى سُوقِ الْحَيِّ. رَأَى تُفَّاحاً أَحْمَرَ. اِخْتَارَتْ أُمُّهُ التُّفَّاحَ، وَوَضَعَهُ دِيدُو فِي السَّلَّةِ. شَكَرَا الْبَائِعَ وَعَادَا إِلَى الْبَيْتِ. هُنَاكَ غَسَلَا التُّفَّاحَ قَبْلَ أَكْلِهِ.",
+        "fichier": "course-cedar-fa52ce572a64d756.mp3",
+        "duration": 19.05,
+        "sha256": "27d7aaeb42045fedddf977f820f257f584cc936b8eb83afb1111c449bd40cc9d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:01.369Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f630aaefdd090db5cb601540577565443e7c521373eee0ad72757d1f7beff1bc",
+        "uses": [
+          "story-market:narration"
+        ]
+      },
+      {
+        "texte": "مَنْ زَارَ دِيدُو؟",
+        "fichier": "course-cedar-2ac0c03d5a22d0ff.mp3",
+        "duration": 2,
+        "sha256": "8a07f4154a1ba9213b636942d11b29f0676be7581dc3f2db31537990e00a6b0c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:02.675Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9de999a55a12e3bb62a2e6b173c134ea9f1d3ff53408622f0d684fe3f139c14c",
+        "uses": [
+          "story-grandma:grandma-q1"
+        ]
+      },
+      {
+        "texte": "الْجَدَّة",
+        "fichier": "course-cedar-723c97aeb27d0902.mp3",
+        "duration": 1.45,
+        "sha256": "0ce84b17e11e475dabdbf0786c191ec0f0a8bfa00e4ef36f0c7be7e92fa70a1e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:02.751Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9ffa90c708c6ef399dd8bda90d09f3c544ebb0492e84ea868a02ed346cd6c1e9",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "الْمُعَلِّمَة",
+        "fichier": "course-cedar-2caa1a3f73d4fa2e.mp3",
+        "duration": 1.85,
+        "sha256": "462c819664ec9385e30a138ecddcbf886716366665c7f6526d1cab952efe38b2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:04.128Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7648c270f952fbcd96dca6c7a6d444e6d6de33edac79ddb7ac99f28412092b86",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "زَارَ دِيدُو جَدَّتَهُ مَعَ أَبِيهِ. قَالَ لَهَا: السَّلَامُ عَلَيْكِ يَا جَدَّتِي! فَرِحَتْ بِهِ وَقَدَّمَتْ لَهُ تَمْراً. تَقَاسَمَ دِيدُو التَّمْرَ مَعَ أَبِيهِ. ثُمَّ جَلَسَا يَسْتَمِعَانِ إِلَى قِصَّةٍ تَحْكِيهَا الْجَدَّةُ.",
+        "fichier": "course-cedar-0006d03c97e941d9.mp3",
+        "duration": 20,
+        "sha256": "1c5446e8dac7316d859f5af5fbf490ab6ecd7f6f4fe3f98860dad889a1aa163c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:04.309Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8b95840507415f2b852d5f5d323f3a20ebd8b3f6aeabbc81d36467779786390d",
+        "uses": [
+          "story-grandma:narration"
+        ]
+      },
+      {
+        "texte": "مَاذَا قَدَّمَتِ الْجَدَّةُ لِدِيدُو؟",
+        "fichier": "course-cedar-96491b7a5df1b068.mp3",
+        "duration": 2.65,
+        "sha256": "e92acce717b490fa93c8f6e544bb713f05d615b7b9963ef5d08f83ac08e1d705",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:04.875Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "adefd68b5ee28703bbf736934a1462dcd8a3694c4da0fb37ff0b12f0477d249c",
+        "uses": [
+          "story-grandma:grandma-q2"
+        ]
+      },
+      {
+        "texte": "تَمْر",
+        "fichier": "course-cedar-a8bb1d7e7a5c592a.mp3",
+        "duration": 0.9,
+        "sha256": "549cbe3f04a434bcb8451b9f11a40db7ab32fac1d8f4c4b9640a99335d85e94b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:05.545Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9fc04e0640358eb733a05334be72c605d412b26ed040b297da899c347e7e3d6f",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "كُرَة",
+        "fichier": "course-cedar-64addcdd52026383.mp3",
+        "duration": 1.75,
+        "sha256": "e4bbcd2b28240424d858d8b9d25abe65e39009b78435f0584570073c19283205",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:07.285Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fcf670b5f46c3e069e6a07670b4b376a176bc2daedd0a0dd9d13749c34f187d5",
+        "uses": [
+          "story-grandma:choice",
+          "story-eid:choice",
+          "story-garden:choice",
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "أَيْنَ لَعِبَ دِيدُو؟",
+        "fichier": "course-cedar-8915d56c818d2dba.mp3",
+        "duration": 2.8,
+        "sha256": "0888ea12a42b566b243acf617c7b2b83cd6e3faa6371c80c027d10a348c2b8cf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:07.616Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8ed085d5e7c2865028dcbca51087c2d19eeb69d272352bd5ff505bec830a8514",
+        "uses": [
+          "story-beach:beach-q1"
+        ]
+      },
+      {
+        "texte": "الشَّاطِئ",
+        "fichier": "course-cedar-b733d54ce5765d6b.mp3",
+        "duration": 1.5,
+        "sha256": "6aa14cad53b4f32e78fa235d8c1716869eaa5743d6968111ad5e2a4ea8cf1c83",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:09.090Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "27fae28777159f34db4f0bdd7e4011c559e373529572cdae06c75a4d5c3cb6cd",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "الْغَابَة",
+        "fichier": "course-cedar-dba5ac03f495727f.mp3",
+        "duration": 2.3,
+        "sha256": "1d05cd989f5898ab068fbc9a30212b3c768bbfdb9a2f62046416299fef07a1ed",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:10.277Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a80147fcd87e772135b937a547d9bb43de4ea0d64afac5c14bf9a752675cf22a",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا أَخَذَ دِيدُو مَعَهُ عِنْدَ الْعَوْدَةِ؟",
+        "fichier": "course-cedar-30e719431c766910.mp3",
+        "duration": 5.2,
+        "sha256": "6f13c05807d04f6f9063d3bad1964826ca34e0edbe794253415a7f334fb697be",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:11.167Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ea86a9bb8ba5940682e104408f09d0ab3d36f035f3097e53c2bd48e332b9f5cb",
+        "uses": [
+          "story-beach:beach-q2"
+        ]
+      },
+      {
+        "texte": "ذَهَبَ دِيدُو إِلَى الشَّاطِئِ مَعَ أَبِيهِ. جَلَسَا عَلَى الرَّمْلِ. مَلَأَ دِيدُو دَلْوَهُ بِالرَّمْلِ وَبَنَى قَصْراً صَغِيراً. ظَلَّ قُرْبَ أَبِيهِ. عِنْدَ الْعَوْدَةِ، أَخَذَ دَلْوَهُ وَتَرَكَ الْمَكَانَ نَظِيفاً.",
+        "fichier": "course-cedar-6e013e9cd090244b.mp3",
+        "duration": 18.15,
+        "sha256": "6783125f3c7e457ead50b3d519ab457a26125aec4f86e4dcda5797d98c7f452a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:11.254Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "580c5cb7d89cd2047ca5543f36e944a72e2c286d2835bb0331006d7f274a84ee",
+        "uses": [
+          "story-beach:narration"
+        ]
+      },
+      {
+        "texte": "دَلْوَه",
+        "fichier": "course-cedar-d6c3247a8018d1f7.mp3",
+        "duration": 1.05,
+        "sha256": "5e20f7affe03b9f5cccfb7639eadd152f4eec9003d65ecc052be93988d8ea567",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:11.619Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a01c6ffb3f9aa5799053e182cce2fc52ab2a782afb7ea93b2508f9178c782751",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "سَمَكَة",
+        "fichier": "course-cedar-b05e2a7f6fbc4dce.mp3",
+        "duration": 2.25,
+        "sha256": "382bce48caf7619c686665d70aa1decf27deea769afae6785b6a6651d5793111",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:13.102Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "59ba6c518cbaa4299444e67300e514cebe149599313bdf4bf1a22fc1d8c000e5",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا لَبِسَ دِيدُو؟",
+        "fichier": "course-cedar-01f587e056861dc0.mp3",
+        "duration": 2.4,
+        "sha256": "8d512e5d38ee74ab1177440704d6cdf0155272deb668cd79495b2ee3f2aa81fb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:13.296Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f8f14a373d0844d9288798a13d48f978d2deec1b49eb3b7e65194fc8d1b59f65",
+        "uses": [
+          "story-eid:eid-q1"
+        ]
+      },
+      {
+        "texte": "قَمِيصَه",
+        "fichier": "course-cedar-06aa63aaf154ca40.mp3",
+        "duration": 1.7,
+        "sha256": "ef1a763cc17b487d6ca97626e72e6c3aef622765e7f142221c69540dcce7e374",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:19.182Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8ba54c2c9edbd2201463e3a1865e50db759482ad7f7e85802fef516c092d375b",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "قُفَّازَيْن",
+        "fichier": "course-cedar-b845f0f2871f53dc.mp3",
+        "duration": 2.3,
+        "sha256": "8b632cf7571ac8563af0946b612df0b39729aee96974c66280fff4f933f454f2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:19.381Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "54b57e4d18f6b8e5c56a0c3eb51bfc697f792e2c05b494792ab55ee7aea6252f",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "فِي صَبَاحِ الْعِيدِ، لَبِسَ دِيدُو قَمِيصَهُ النَّظِيفَ. قَالَ لِعَائِلَتِهِ: عِيدٌ مُبَارَكٌ! وَضَعَتْ أُمُّهُ حَلْوَى فِي طَبَقٍ. حَمَلَ دِيدُو الطَّبَقَ مَعَ أَبِيهِ إِلَى الْجَارَةِ. فَرِحَتِ الْجَارَةُ وَشَكَرَتْهُمَا.",
+        "fichier": "course-cedar-e60de1a88fcdbf30.mp3",
+        "duration": 19.5,
+        "sha256": "68125b4355d7c8cd498d313658d2937e64a7dfd42702eceb709c8affb8746b3a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:20.428Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4265b3ddbb162b855e4490a7fcc3b03f6628f34453488973cbd511350cb31f85",
+        "uses": [
+          "story-eid:narration"
+        ]
+      },
+      {
+        "texte": "مَاذَا وَضَعَ دِيدُو فِي التُّرْبَةِ؟",
+        "fichier": "course-cedar-07d43c9260efb646.mp3",
+        "duration": 3.65,
+        "sha256": "151b98ca64539bd36860e2d647d955cade8e1cd5ce6a2cadbca99c90dd8dd58c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:22.834Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a111339ab105f236f07727bb10d0b3235b867e68d42d72ff5fd0b370a13c5c4f",
+        "uses": [
+          "story-garden:garden-q1"
+        ]
+      },
+      {
+        "texte": "مَاذَا قَدَّمَ دِيدُو لِلْجَارَةِ؟",
+        "fichier": "course-cedar-39ff384799878211.mp3",
+        "duration": 2.75,
+        "sha256": "96a4e36cf2a5768cbf85d05d419686b2a0a3712eeb8bd271a23f94a105c93ebf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:23.043Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bace44b0057396f4d09a358a529681c6a429a30ce470902edd38519db28105a4",
+        "uses": [
+          "story-eid:eid-q2"
+        ]
+      },
+      {
+        "texte": "بَذْرَة",
+        "fichier": "course-cedar-531e54722fd551ae.mp3",
+        "duration": 1.95,
+        "sha256": "b1decb9f6e10550bbe37025dc21a47809b2483b0ff6c32e3060ab24321e02e2c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:25.289Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "373b88c33284ae15ede4d7aa356566e9612c2597bc941bd71083a7ed6b16498e",
+        "uses": [
+          "story-garden:choice"
+        ]
+      },
+      {
+        "texte": "بِمَاذَا سَقَى دِيدُو الْبَذْرَةَ؟",
+        "fichier": "course-cedar-973058068b41f735.mp3",
+        "duration": 3.45,
+        "sha256": "227d5f157db22afa59b74dd684e85bd90e785fa11b7f8367d883643f7cf63b1f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:25.802Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b88eb866fda78744a5789ed90b629c6ac4ddf6eee237f63cf60b8d5a89241721",
+        "uses": [
+          "story-garden:garden-q2"
+        ]
+      },
+      {
+        "texte": "وَضَعَ دِيدُو بَذْرَةً فِي تُرْبَةِ الْحَدِيقَةِ مَعَ جَدِّهِ. غَطَّيَاهَا بِقَلِيلٍ مِنَ التُّرَابِ. سَقَاهَا دِيدُو بِقَلِيلٍ مِنَ الْمَاءِ. بَعْدَ أَيَّامٍ، ظَهَرَتْ نَبْتَةٌ صَغِيرَةٌ. فَرِحَ دِيدُو وَاسْتَمَرَّ فِي الْعِنَايَةِ بِهَا.",
+        "fichier": "course-cedar-35eec1e899b4ba87.mp3",
+        "duration": 17.85,
+        "sha256": "f7d293803bcf3bc8a7653abf6e45dee846f5b005581145bf67b435e8ab9e6d20",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:26.045Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5bdf83f3969e2bc10bf4c1d2a2669b8aed3a5efb37585b9771af585d7678258c",
+        "uses": [
+          "story-garden:narration"
+        ]
+      },
+      {
+        "texte": "مَاء",
+        "fichier": "course-cedar-e632fa6905ba72ad.mp3",
+        "duration": 1.85,
+        "sha256": "f4c531edf38c27ce01f595460cffa095a77025ccfe282a81e03fd15fd8ac0e18",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:27.240Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5c396aaaaf62ccc777805d2525e9238659d0a9329f6405b8676c30e8d1d85736",
+        "uses": [
+          "story-garden:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا جَمَعَ دِيدُو مَعَ جَدِّهِ؟",
+        "fichier": "course-cedar-a662070b665f3fdd.mp3",
+        "duration": 3.15,
+        "sha256": "411020d001801a1e2491eb606ce8dca4fcb8e70582f7bb3c296419da54b4f3ec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:28.455Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ac568489b00f8703143419e0af2d76d0096f9ad69b0db1653a90f0d4e8b9659f",
+        "uses": [
+          "story-olives:olives-q1"
+        ]
+      },
+      {
+        "texte": "زَيْتُون",
+        "fichier": "course-cedar-c0d8d739c370481b.mp3",
+        "duration": 1.45,
+        "sha256": "e589e48602b84a123137bf5df149964b488a24ed15eb44079221ddcb2bb43166",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:29.238Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7ac49d7406068dcfcda33598f54235d805d7f12a17f797c33ccd00c5492e3f34",
+        "uses": [
+          "story-olives:choice"
+        ]
+      },
+      {
+        "texte": "أَيْنَ وَضَعَ دِيدُو الزَّيْتُونَ؟",
+        "fichier": "course-cedar-38b64f4f045fc434.mp3",
+        "duration": 3.7,
+        "sha256": "d3cb8ac38c48773f0c368c3a40fce6fa43df1591df502043d19ddf0b71618f0b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:30.897Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9e1ccc34e5af64ed437e3a15585dc39dc2faf70f144eac00b9b036099f6ab9bd",
+        "uses": [
+          "story-olives:olives-q2"
+        ]
+      },
+      {
+        "texte": "زَارَ دِيدُو بُسْتَانَ زَيْتُونٍ مَعَ جَدِّهِ. بَسَطَ الْجَدُّ غِطَاءً تَحْتَ شَجَرَةٍ. جَمَعَا حَبَّاتِ الزَّيْتُونِ الَّتِي سَقَطَتْ عَلَيْهِ. وَضَعَ دِيدُو الزَّيْتُونَ فِي سَلَّةٍ. ثُمَّ عَادَا إِلَى الْبَيْتِ مَعاً.",
+        "fichier": "course-cedar-3122c1170c1b8e5d.mp3",
+        "duration": 17.1,
+        "sha256": "1217d223f9f0397a2a0d505e96e4bc111153eb6aaa56f05d11fbc889e412133e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:31.083Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "4d5a6db9188d0cdc9268e793cee0a53447b3460b299de0da75c804e020c8f67b",
+        "uses": [
+          "story-olives:narration"
+        ]
+      },
+      {
+        "texte": "حِذَاء",
+        "fichier": "course-cedar-5b407e89ea6dd446.mp3",
+        "duration": 1.75,
+        "sha256": "dd996a0d8f502112b352a31ad60c1c7568c37d03fee40438885830aef2ff5fb5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:31.490Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0635dd7d98cc44816982d4d436fc56a391671571254fffda23d7289c4e7014e9",
+        "uses": [
+          "story-olives:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "ذَهَبَ دِيدُو مَعَ عَائِلَتِهِ لِرُؤْيَةِ كُثْبَانِ الصَّحْرَاءِ. لَبِسَ قُبَّعَتَهُ وَمَشَى قُرْبَ أَبِيهِ. رَأَى الرَّمْلَ يَلْمَعُ فِي الشَّمْسِ. عِنْدَمَا عَطِشَ، أَعْطَاهُ أَبُوهُ مَاءً. جَلَسُوا مَعاً فِي الظِّلِّ لِلرَّاحَةِ.",
+        "fichier": "course-cedar-4c278e8febed9145.mp3",
+        "duration": 19.5,
+        "sha256": "32acf2706494e310a5d097ccc307f0eba1387727a48011edc392cbe1bf17ec95",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:36.017Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "131142a494ed8eccdb98c7aae84d94166132b5be7f213426924e2fd8bdc0830b",
+        "uses": [
+          "story-sahara:narration"
+        ]
+      },
+      {
+        "texte": "قُبَّعَة",
+        "fichier": "course-cedar-cf6c3155c9d3733a.mp3",
+        "duration": 1.45,
+        "sha256": "16c8c9154059b206bfe8be057594a25095071f3003e48c0cd3b9602e126c538f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:37.713Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a9696184bdcd944f60151b590b37df5ebf8b23ddbe24686b389b6e413b4ee1f9",
+        "uses": [
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا لَبِسَ دِيدُو عَلَى رَأْسِهِ؟",
+        "fichier": "course-cedar-cd5176ff8c34c91f.mp3",
+        "duration": 3,
+        "sha256": "d7df3f433b8647df089ecc9fa9ac1493954e80541ad063a0ff16ec71bb45a72f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:37.871Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dbf54397f60e0734bd3c763361fdd48cdec4a7ae407bde3c10b8b89b508191a1",
+        "uses": [
+          "story-sahara:sahara-q1"
+        ]
+      },
+      {
+        "texte": "مَاذَا شَرِبَ دِيدُو؟",
+        "fichier": "course-cedar-d5054810f0c8aeb4.mp3",
+        "duration": 2.4,
+        "sha256": "95298291d866de1917c55eaa9c3fc311c423522b35e128c3afdd3f0e0b2f61fc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:38.000Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7c83505b78454e04c3404b7bb8f7d52613dfd5723149a925d235791041cada25",
+        "uses": [
+          "story-sahara:sahara-q2"
+        ]
+      },
+      {
+        "texte": "مِظَلَّة",
+        "fichier": "course-cedar-a2e2067d3754d64a.mp3",
+        "duration": 1.6,
+        "sha256": "a66b9dddea7b0e2767b3d7af303d2cc00b87865c07a6b4e9fb5db01aa62114f4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:39.194Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5fbfddf5f515856d8ab57a4383b2adeb78d88bc07dc5d7ca0065a51874e94919",
+        "uses": [
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا اسْتَعْمَلَ دِيدُو وَأُمُّهُ تَحْتَ الْمَطَرِ؟",
+        "fichier": "course-cedar-ff80e0fa3009eede.mp3",
+        "duration": 4.05,
+        "sha256": "0820dc31253802b4425b037424f31ad4ee8ac6200a62b5240cbb31a4fd035684",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:45.021Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2ef6a244723999b54ed85b3f6b3c756f41f8be8e1f03676b7d6b3ec20e2027b7",
+        "uses": [
+          "story-rain:rain-q1"
+        ]
+      },
+      {
+        "texte": "مَاذَا عَلَّقَ دِيدُو لِيَجِفَّ؟",
+        "fichier": "course-cedar-cbcca1f5dfc72006.mp3",
+        "duration": 3.35,
+        "sha256": "465c19a33ebbefe7dc948a30738cf5800db2d3b23f1bbe34a013d8b2b41030f1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:45.266Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a608f0b488e28aea858157e4e136baee1904fe3b9b59f6a1b7aadf651e487d6f",
+        "uses": [
+          "story-rain:rain-q2"
+        ]
+      },
+      {
+        "texte": "نَظَرَ دِيدُو مِنَ النَّافِذَةِ. كَانَ الْمَطَرُ يَنْزِلُ. لَبِسَ مِعْطَفَهُ وَخَرَجَ مَعَ أُمِّهِ تَحْتَ مِظَلَّةٍ. سَمِعَ صَوْتَ الْقَطَرَاتِ عَلَيْهَا. عِنْدَمَا عَادَا، عَلَّقَ دِيدُو مِعْطَفَهُ لِيَجِفَّ.",
+        "fichier": "course-cedar-28f4fbd3a65af982.mp3",
+        "duration": 19.2,
+        "sha256": "7fc2f9f3ca0581b7d53075a31f0c8ee93b879ab2c5803c9ecacbc43053177056",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:45.636Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dd93a209f31805a2382dcd933f5f4f7f82952453751bbe49f2ca64043fcfab7c",
+        "uses": [
+          "story-rain:narration"
+        ]
+      },
+      {
+        "texte": "مِعْطَفَه",
+        "fichier": "course-cedar-a36f29e6eba150e1.mp3",
+        "duration": 1.3,
+        "sha256": "981f33b1de7b434a66cb8f4bfa21008501b3562c39121247a0a86a1f269fb97c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:46.682Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "93076097f26bab056b0cf0b86f14bd9fa05a114090c882c92b3cd143490efa82",
+        "uses": [
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "مَاذَا اخْتَارَ دِيدُو فِي الْمَكْتَبَةِ؟",
+        "fichier": "course-cedar-e425a8937917bd64.mp3",
+        "duration": 3.45,
+        "sha256": "6d50265a1c74262d787899f52819ec5421c9a0fde1ac3e3c37eb473a8b37ae23",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:47.514Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d2eaedee67b42a9a4f3215aa3598b12df4a41ddcb834b86806f94c8f7edfea6",
+        "uses": [
+          "story-library:library-q1"
+        ]
+      },
+      {
+        "texte": "أَيْنَ أَعَادَ دِيدُو الْكِتَابَ؟",
+        "fichier": "course-cedar-c853feb0b4ace202.mp3",
+        "duration": 2.85,
+        "sha256": "7004fce8a2379f96799142dcd8d3da7ea369a86b42618ffbf627d695ade75755",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:48.210Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9448f678d05f5341b86b3cdb49b8aad57ac82d8284ef981d969c9cc50829285a",
+        "uses": [
+          "story-library:library-q2"
+        ]
+      },
+      {
+        "texte": "عَلَى الرَّفّ",
+        "fichier": "course-cedar-7ac8909b6b0b6475.mp3",
+        "duration": 1.75,
+        "sha256": "252a06df286a4fc23b8af0517b1964dbb746f57e01bc666b0c82ce4ffc632d77",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:49.229Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "45f9f670e3c793d521919e0ece3366bfaa2964adeeb512e0dbb6dbcb875ed137",
+        "uses": [
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "ذَهَبَ دِيدُو مَعَ أُمِّهِ إِلَى مَكْتَبَةِ الْحَيِّ. اِخْتَارَ كِتَاباً فِيهِ صُوَرُ حَيَوَانَاتٍ. قَلَّبَ الصَّفَحَاتِ بِرِفْقٍ، وَتَحَدَّثَ بِصَوْتٍ هَادِئٍ. بَعْدَ الْقِرَاءَةِ، أَعَادَ الْكِتَابَ إِلَى الرَّفِّ بِمُسَاعَدَةِ أُمِّهِ.",
+        "fichier": "course-cedar-2e2c52f2dc128655.mp3",
+        "duration": 19.7,
+        "sha256": "ac02a4468f3d27d356f02d4ffe4b613d9519cbfa11912f6b73ee3bce8dab8d15",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:50.871Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0ca51895b8c1256501f3bd2960da14d76050813f50a2d849d63bb882dc6745e0",
+        "uses": [
+          "story-library:narration"
+        ]
+      },
+      {
+        "texte": "فِي السَّلَّة",
+        "fichier": "course-cedar-62ac4b695544bfbe.mp3",
+        "duration": 2.15,
+        "sha256": "199ead04101994bcc25d78eee6a280ea4eb02e11a202de643dee75325a774ee4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:52.295Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7ad9132078ddfd29953ec6ebb56e9892427ba79892ade8177365fe69b47bcbab",
+        "uses": [
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "لِنُحَاوِلْ مَرَّةً أُخْرَى. اِسْتَمِعْ إِلَى السُّؤَالِ.",
+        "fichier": "course-cedar-57fdb5d61d284bed.mp3",
+        "duration": 3.95,
+        "sha256": "b19e8ddd5922b5cbc03b6e641eb74ef900fc805f31ce8ffb18f1fe8df7612296",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:52.851Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c2f7062e0e66c92999fbe826fb133807950feb9f6ad049b030e1849b96f2aa77",
+        "uses": [
+          "story-common:retry"
+        ]
+      },
+      {
+        "texte": "اِحْكِ القِصَّةَ بِكَلِمَاتِكَ لِشَخْصٍ مِنْ عَائِلَتِكَ.",
+        "fichier": "course-cedar-8fdc9ea09801f51c.mp3",
+        "duration": 4.5,
+        "sha256": "0b0e726349b0b29685c73bd15089782c63400292acef64f5f1e2c57e863f0d1a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:53.173Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "85f67e094b8f8117511ed56e1965342a38339bf74ea66d59c2d158270df3a39a",
+        "uses": [
+          "story-common:retell"
+        ]
+      },
+      {
+        "texte": "أَحْسَنْتَ!",
+        "fichier": "course-cedar-84c929739a4098b0.mp3",
+        "duration": 1.45,
+        "sha256": "f292bf518df544b2b2530d1625253d5695de417685043a2e8329a6f796f63f9d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:54.078Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fe024646464d6d7079ee72d8856587d5afa809fe4af2411c912b018df8eebc8e",
+        "uses": [
+          "story-common:success"
+        ]
       }
     ]
   },
@@ -50905,6 +51693,842 @@
         "uses": [
           "frontend\\src\\components\\FrenchProjectsLabInteractive.tsx:232"
         ]
+      },
+      {
+        "texte": "Qu’achètent Didou et sa maman ?",
+        "fichier": "course-cedar-e25ba46d446214f5.mp3",
+        "duration": 3.05,
+        "sha256": "3ce898e49a910863789f91d9b6d3298b166841338a0b0dbd2e464bd9d4c8f63b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:55.463Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "73f8248e9eb3b994b526eb659d0b7b10ae71492161a4c3ef2be5fd68366253d2",
+        "uses": [
+          "story-market:market-q1"
+        ]
+      },
+      {
+        "texte": "Des pommes",
+        "fichier": "course-cedar-15a17ed7160dbab5.mp3",
+        "duration": 2,
+        "sha256": "eccb521b7559b9ec7a2739397c2a96bf61a36f32630eb3532ab9db50b088dbaf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:55.766Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1668698da81de6b396dad826e2cc281d348d63c13f0ed514ba914b828ced5b80",
+        "uses": [
+          "story-market:choice",
+          "story-olives:choice",
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "Didou va au marché du quartier avec sa maman. Il voit des pommes rouges. Maman choisit les pommes et Didou les met dans le panier. Ils remercient le marchand et rentrent à la maison. Ils lavent les pommes avant de les manger.",
+        "fichier": "course-cedar-4c52e89313d9054b.mp3",
+        "duration": 14.65,
+        "sha256": "30ceb07ef707b8f1ca3cf22870edc63731f6148117543cccb7bf71c3ba62c6d5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:56.384Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e5f38f79e952d752e9a88199cbd607e1abfe139ac586f18cc2a61e5b00f4897e",
+        "uses": [
+          "story-market:narration"
+        ]
+      },
+      {
+        "texte": "Un livre",
+        "fichier": "course-cedar-569bc2bae779fc4c.mp3",
+        "duration": 1.35,
+        "sha256": "d259581e2b9158f9b35245d676b696028e19db280adf9b48623cd96365e127d4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:56.999Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "784ace73855c2d22535cffb5724386b477974df739a81010842178621829e826",
+        "uses": [
+          "story-market:choice",
+          "story-rain:choice",
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "Où Didou met-il les pommes ?",
+        "fichier": "course-cedar-22562f4b3a6db2cd.mp3",
+        "duration": 2.25,
+        "sha256": "8b46c9fbf2bc3bcb936fc3904fd2e12a594e1c364ec6326defc401f6a219943c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:57.563Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "72c5b6777cc171b504fb88c3b8f8086b53dde5d44b898be8bf66c4738ece39bf",
+        "uses": [
+          "story-market:market-q2"
+        ]
+      },
+      {
+        "texte": "Un panier",
+        "fichier": "course-cedar-6ea420f2e4de0959.mp3",
+        "duration": 1.05,
+        "sha256": "caa51095b4860ab989310d728be9b39bf7a0445f29f37e7fb05426a15321807c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:58.028Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "64945b6b67111af261ce9b11c8e957952c922079126fd31fec127fe312fb1f48",
+        "uses": [
+          "story-market:choice",
+          "story-olives:choice"
+        ]
+      },
+      {
+        "texte": "Le lit",
+        "fichier": "course-cedar-e87105a88cbcfca5.mp3",
+        "duration": 2.1,
+        "sha256": "62c35b2c5d27da8a4aac8493f52b9ae08265d6142fa42dad4f6af29079a68680",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:10:59.372Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8c5ce2d3eade0378dfaf8b7d557b44a01fda616d0a543aca513d29dcb3a47eeb",
+        "uses": [
+          "story-market:choice"
+        ]
+      },
+      {
+        "texte": "Didou rend visite à sa grand-mère avec son papa. Il lui dit bonjour. Grand-mère est contente et lui offre des dattes. Didou partage les dattes avec son papa. Puis ils écoutent une histoire racontée par grand-mère.",
+        "fichier": "course-cedar-e7af9a8706ee7a6a.mp3",
+        "duration": 15.55,
+        "sha256": "c71103c4f8835951197b07a72cf47f4c858fec9b28b81b28f882eee89bae4683",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:04.186Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8301287908871f25ec54b19279b58c2865a6618d27993768d6e1ba5b8b11a100",
+        "uses": [
+          "story-grandma:narration"
+        ]
+      },
+      {
+        "texte": "Sa maîtresse",
+        "fichier": "course-cedar-8df63256431b4b62.mp3",
+        "duration": 1.6,
+        "sha256": "bc4d4f501a5190a8062315fa6f23c228868221d4d5d9c202bf8936a71b8d25e6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:05.834Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d4118cb7e7e20337e194beadc8eb51225795e301e672bb166438cac981d8e2b1",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "Sa grand-mère",
+        "fichier": "course-cedar-00d03c8fa466c113.mp3",
+        "duration": 1.35,
+        "sha256": "91cbe037ff3d7f791bbe4ea67c312900d21492a86139350d12b729ad444df79d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:06.040Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "20567f8ca01622762a77f8b15b6f08bf22b450bfd25838d39fde387924ad1c48",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "À qui Didou rend-il visite ?",
+        "fichier": "course-cedar-1f81bae5d07e0251.mp3",
+        "duration": 2.45,
+        "sha256": "6d98d440b980ba188e23cc07c02f6b9124dcc08275990114b58c9336b1865d89",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:06.109Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "92f1314047053551a78483bda1de43867ffe4893772d4693908b5c69a0339ea4",
+        "uses": [
+          "story-grandma:grandma-q1"
+        ]
+      },
+      {
+        "texte": "Des dattes",
+        "fichier": "course-cedar-0107587a59d77d1d.mp3",
+        "duration": 1.2,
+        "sha256": "b82db8c78c4aa8b65237161897d43d6f9cc91b8aa2b182afc80e29d5e97e919a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:08.496Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bf68688908d62a9e616ced9d8406f2bd4478eaca5b23b7f0c1e5c56bf679e6fc",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "Un ballon",
+        "fichier": "course-cedar-430b9c1fbdada112.mp3",
+        "duration": 1.15,
+        "sha256": "61b249689b005980484de50d91d02810abdbfd03fafaf1c6961a89a5bd395e7a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:09.081Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "80bb8d7ae552d2072efa3373a5007936191ad16474a41e12336a12a87302f18c",
+        "uses": [
+          "story-grandma:choice",
+          "story-eid:choice",
+          "story-garden:choice",
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "Que lui offre grand-mère ?",
+        "fichier": "course-cedar-6c7515f48ff86a43.mp3",
+        "duration": 2.35,
+        "sha256": "eed9a64214ce9360c51ca0db347e367dc06a5b4e359582c0615d075fa68acbf0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:09.439Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "762ab562da73f0ebe5f003fff6eb7b2bdbd81c1a6bbcf938aae6d66ebaa40b50",
+        "uses": [
+          "story-grandma:grandma-q2"
+        ]
+      },
+      {
+        "texte": "Où Didou joue-t-il ?",
+        "fichier": "course-cedar-8621ce547b628ba7.mp3",
+        "duration": 2.1,
+        "sha256": "89024a5de8af073686e1d9d86f464673b02c1b24ffabaee36ee42b48ac67006d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:10.550Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "14c4bb0e69e01cf614670c4bc80c406b5984a6fc67780da0fe17d84fe95ebf6e",
+        "uses": [
+          "story-beach:beach-q1"
+        ]
+      },
+      {
+        "texte": "La plage",
+        "fichier": "course-cedar-7a6f612425eb2784.mp3",
+        "duration": 1.25,
+        "sha256": "3e54e49a2db86cd434cec95a6a221351b8644fd5299d65c107445fd5b8dc1eb1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:10.663Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dc93c820b85433b68b6d4e1170f35c9643480ae5abbefff251eaf48ad092a654",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "La forêt",
+        "fichier": "course-cedar-f215e19955d747f7.mp3",
+        "duration": 1.65,
+        "sha256": "af688ab33a1a2040ad8d986f646f09cb86a46c4d8da47b2395ddd01106893b1b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:12.678Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a6c6fc3f7a4ef089550c3c154681b2e53ac51bf12f186a91ccf1d5e826b1e7da",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "Que reprend Didou en partant ?",
+        "fichier": "course-cedar-072dd8f2912ffabd.mp3",
+        "duration": 3.2,
+        "sha256": "f46e2b2583188c7f38b8299daabe70811976b8f965c50b420e490b788758fff5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:13.727Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "efb2c196b71d354979bcec40393595c45cbf454102bfef4c32012061a8c55407",
+        "uses": [
+          "story-beach:beach-q2"
+        ]
+      },
+      {
+        "texte": "Didou va à la plage avec son papa. Ils s’installent sur le sable. Didou remplit son seau de sable et construit un petit château. Il reste près de son papa. En partant, il reprend son seau et laisse la plage propre.",
+        "fichier": "course-cedar-9f779fc88fc9535c.mp3",
+        "duration": 14.75,
+        "sha256": "ee55bc4fbdbf01ba3b589f0ae546cd321fa26e637071cd8fc1446e187a256c44",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:14.277Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ccc0fb6ffd6bc4eb1f417ffe7ee4b01fd5b694d9cc6113d895967a740eb36fc1",
+        "uses": [
+          "story-beach:narration"
+        ]
+      },
+      {
+        "texte": "Son seau",
+        "fichier": "course-cedar-4b9c4104b97210a3.mp3",
+        "duration": 1.4,
+        "sha256": "e83bf6994758a43c3088049ac85eca8be9c6c75b939cf2d7f4a9106e41e29572",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:14.575Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "31111b245ee88dc3866528e29c1bccbae83eba7971a39e37e97f33c8234bc295",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "Que met Didou ?",
+        "fichier": "course-cedar-96789d3c41fadea6.mp3",
+        "duration": 2.4,
+        "sha256": "27d7e2f948bd4ee5013a6803db4f743cf02757fa1ea25c9491aa5f4c42c58c04",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:16.338Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ee4132b731977e7142b2b786592a69de7c8fb568453c96d5a631ade873b32cf4",
+        "uses": [
+          "story-eid:eid-q1"
+        ]
+      },
+      {
+        "texte": "Un poisson",
+        "fichier": "course-cedar-acfffc4cc47bea7f.mp3",
+        "duration": 1.65,
+        "sha256": "83ca73bd9c688fe80d4b3355230c773b4cc2820451ba2975ec0a24f0721b3c5f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:16.760Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1bd10af6ff48220b7795a6d71d2ee3527977638e3ab7f3143c88b975ea45ccc",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "Le matin de l’Aïd, Didou met sa chemise propre. Il souhaite une bonne fête à sa famille. Maman pose des gâteaux sur une assiette. Avec son papa, Didou apporte l’assiette à leur voisine. Elle sourit et les remercie.",
+        "fichier": "course-cedar-7440599f3c147713.mp3",
+        "duration": 15.35,
+        "sha256": "80b7e96829b9d108e71116dfad8b7ad5f8db1a5ea0f2e331fe2c21c897262ddc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:20.521Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a15c98f52e62c5f6b4c52e61faaa72ccf349beef9d704480b3fffbcc1d902e86",
+        "uses": [
+          "story-eid:narration"
+        ]
+      },
+      {
+        "texte": "Des gants",
+        "fichier": "course-cedar-17bb70f6c3faddae.mp3",
+        "duration": 0.8,
+        "sha256": "4c0305fc68673ce8bb93b782171d7f8a3b6d0a559a7f3422e0a411275174a609",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:20.617Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c49c3dac149e517f2fcaceb785633f0f69e716ab5dbe97a7abec4963d79af9c2",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "Sa chemise",
+        "fichier": "course-cedar-db1439111d58e5c0.mp3",
+        "duration": 2.4,
+        "sha256": "ee4e9b979b84cd16fa45349df1d8a334e2313ae097b81553f263e5e119823c75",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:20.686Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "80d84462ee20db6528cd1288740548df98f2560466821250114cb8cbbc2597fc",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "Des gâteaux",
+        "fichier": "course-cedar-5c5acb465059f49e.mp3",
+        "duration": 1.8,
+        "sha256": "83ecddc40be5db17c2bfb956c8e363ff9957bfe98f3cb0178110e8ca9619c170",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:22.296Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "babd098a8515490d33c33dd67d5fb4197b4749d532817ed8e418d9bd40b2ac68",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "Qu’apporte Didou à la voisine ?",
+        "fichier": "course-cedar-bdfa09b7aa5c302f.mp3",
+        "duration": 2.45,
+        "sha256": "4323a052690cab5bbbae3d3390d9ab3a266f403a9d395ceddc4e949a859654e2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:22.503Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d7f4d61ae0a22b4806c7f5fed80d90f6cd98df7f9b4ea3d9b162b0eb4695e729",
+        "uses": [
+          "story-eid:eid-q2"
+        ]
+      },
+      {
+        "texte": "Une graine",
+        "fichier": "course-cedar-2d6339befa7f94a4.mp3",
+        "duration": 1.7,
+        "sha256": "9dfbbc5ddecfa430293f81ef05b38c3f2b3463a88d777d10336752c7fed5f783",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:24.709Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "607ddeb784d09a195f68e2e48bda07a69bed28638a8020df966be964fc9d8688",
+        "uses": [
+          "story-garden:choice"
+        ]
+      },
+      {
+        "texte": "Que met Didou dans la terre ?",
+        "fichier": "course-cedar-4d0eda4d417bfed4.mp3",
+        "duration": 2.7,
+        "sha256": "52bd350a59c21000e6ea6b34ec2f9a8b2c6c3ad6b812727aee05c8281216bf1c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:24.838Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e1e4093d6df10333c92ed5c465eab16fb016ce5fcb507410461391d07d41089e",
+        "uses": [
+          "story-garden:garden-q1"
+        ]
+      },
+      {
+        "texte": "Avec son grand-père, Didou met une graine dans la terre du jardin. Ils la recouvrent d’un peu de terre. Didou verse un peu d’eau. Après plusieurs jours, une petite pousse apparaît. Didou est content et continue à prendre soin de sa plante.",
+        "fichier": "course-cedar-225f51b80b3d9337.mp3",
+        "duration": 18.45,
+        "sha256": "a1b0ab1a0365eadb39b4071d4966d007c2c1e71b9fb8af875481ba8787545c0b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:26.126Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e12a7e30fe7e05dc62d8f4cae7bbc037108b51d12c83527a8e1310c9c5cce184",
+        "uses": [
+          "story-garden:narration"
+        ]
+      },
+      {
+        "texte": "De l’eau",
+        "fichier": "course-cedar-538a4bff10e6c870.mp3",
+        "duration": 1.75,
+        "sha256": "cba57b3b5f0d33c3086fc25384aeee8bada2fe2debd0491a256863d595181c70",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:26.788Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0422a6d912e20448466f64b56702762b25ad4e3dfc8df61d1c071aab179a400c",
+        "uses": [
+          "story-garden:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "Avec quoi Didou arrose-t-il la graine ?",
+        "fichier": "course-cedar-6d0972936f4fca66.mp3",
+        "duration": 3.65,
+        "sha256": "cfb3cb0982f9effc28f4800a800ece530e287909971ac31247fd1f09bc3c01d6",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:27.090Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "871dd9ccf5c47a8d1b302d481e2c7cfefacd73f83447d6ade0fb8c97ae0af2c7",
+        "uses": [
+          "story-garden:garden-q2"
+        ]
+      },
+      {
+        "texte": "Du lait",
+        "fichier": "course-cedar-b6be1774fc724440.mp3",
+        "duration": 1.25,
+        "sha256": "bb7ad96c79b72f0a220591d6f120d2dc58cab10653e328fc7e75d94c8fa565fe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:28.698Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "19db8663a91a555008c1f51557831076e1468ca1d312608b9f6b6ce8f2a094ad",
+        "uses": [
+          "story-garden:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "Que ramassent Didou et son grand-père ?",
+        "fichier": "course-cedar-b437cc1771e16ef0.mp3",
+        "duration": 3,
+        "sha256": "5734f26234263e3cc30b839e7c4442715f89908e94fe2a84529281de7f4399da",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:29.786Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "193d12b07ae4c7e860dc0bafab284fec5ee3ab2ffb26982526e5ef37b8cf4414",
+        "uses": [
+          "story-olives:olives-q1"
+        ]
+      },
+      {
+        "texte": "Des olives",
+        "fichier": "course-cedar-8a112dcbb209e14d.mp3",
+        "duration": 1.15,
+        "sha256": "abee191ad33173aec602ccc64ee1c94059f1d8bd16f1db79ee377bfa44c10cfe",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:31.049Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "65e02c89d0abf1133ebeb9a4856f16f3b3c40abbc103d6dbf498ae368ee2085c",
+        "uses": [
+          "story-olives:choice"
+        ]
+      },
+      {
+        "texte": "Didou visite un verger d’oliviers avec son grand-père. Grand-père étale une toile sous un arbre. Ils ramassent les olives tombées sur la toile. Didou les met dans un panier. Puis ils rentrent ensemble à la maison.",
+        "fichier": "course-cedar-dc1a343f3ef2e490.mp3",
+        "duration": 14.7,
+        "sha256": "f7840567420c3a6bf63edcbee8566f2f12023e369b804ffa12ad0335fde16cc7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:31.636Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b9a3f183cbd355ca5f1f3402b04d2480a0b211fb418ee1761981939e3d8858a2",
+        "uses": [
+          "story-olives:narration"
+        ]
+      },
+      {
+        "texte": "Où Didou met-il les olives ?",
+        "fichier": "course-cedar-730c2898ff43aa4d.mp3",
+        "duration": 3.2,
+        "sha256": "aef62c5c9ad9cfb50f2e78596bd2a6c8d7f724c29cce25f790b658cee144eb59",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:31.716Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ddc62155fb6d0be551a88691c15709fa3ba7afd921b53765dec426843c271bfe",
+        "uses": [
+          "story-olives:olives-q2"
+        ]
+      },
+      {
+        "texte": "Une chaussure",
+        "fichier": "course-cedar-deffc1cdf15c0545.mp3",
+        "duration": 1.65,
+        "sha256": "07b2255470b8411314f5926e2801e001698638420167051c157bc16bb0717d58",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:32.887Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "06e5c28781a8ed9d6f6d3b4e0ee4d0dcc573b1e7f940a2e4038c423b42e7707b",
+        "uses": [
+          "story-olives:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "Que porte Didou sur la tête ?",
+        "fichier": "course-cedar-aaf493e37b7ff70c.mp3",
+        "duration": 2.8,
+        "sha256": "9985fa25b5ffb2673df010bfadcb52ca1cd392a1897291f8ce09a66dae1211ec",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:34.019Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "47d5d3104d4bc29aced9a01f8abb72491a31b1b742bee685f0235e86d0b4b23a",
+        "uses": [
+          "story-sahara:sahara-q1"
+        ]
+      },
+      {
+        "texte": "Un chapeau",
+        "fichier": "course-cedar-0ac0c916c98bd8b4.mp3",
+        "duration": 1.55,
+        "sha256": "73d36959bfaef43cf469bc156f14c1504061ef08220bc8b2b768651ee28c9034",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:34.817Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "88061115314c917a82b63279b457d396433e78c4385a21641f2eb7abcbfb065f",
+        "uses": [
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "Que boit Didou ?",
+        "fichier": "course-cedar-f9cadd85c3a409ae.mp3",
+        "duration": 2.6,
+        "sha256": "d7fd6d4fc2ac90dd2f06b27257529fee801b9410605940b7076d120988537b26",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:36.086Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a108cfc85f8e35714fad24f289ce8f0a507fb9603efdeaf4f8ca98ae826772ca",
+        "uses": [
+          "story-sahara:sahara-q2"
+        ]
+      },
+      {
+        "texte": "Didou découvre les dunes du Sahara avec sa famille. Il porte son chapeau et marche près de son papa. Le sable brille au soleil. Quand Didou a soif, son papa lui donne de l’eau. Ils se reposent ensemble à l’ombre.",
+        "fichier": "course-cedar-87c39dbb6a8b5e1f.mp3",
+        "duration": 15.3,
+        "sha256": "aad92d40fffab3b09313e271b62e77805a87ebf80470f91944c0d755661da552",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:36.253Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "38a0daa67b4cfeb7a7ffc9f72500eba15a3632247fc55d2623011a6c535bbed8",
+        "uses": [
+          "story-sahara:narration"
+        ]
+      },
+      {
+        "texte": "Qu’utilisent Didou et sa maman sous la pluie ?",
+        "fichier": "course-cedar-3a27a22aa9532c8c.mp3",
+        "duration": 3.45,
+        "sha256": "f9d90ead39f50a5fa70288361f8298c362f5ac1f0d1288774e34753e8aa9806d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:37.922Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cfa58bf0afc4be987564f1b4c1a94f1f404df6edc8a39f3ce020bb72af8e17e1",
+        "uses": [
+          "story-rain:rain-q1"
+        ]
+      },
+      {
+        "texte": "Didou regarde par la fenêtre. Il pleut. Il met son manteau et sort avec sa maman sous un parapluie. Il écoute les gouttes qui tapent dessus. En rentrant, Didou suspend son manteau pour le faire sécher.",
+        "fichier": "course-cedar-fcae1a9448fa40c1.mp3",
+        "duration": 14.05,
+        "sha256": "d2279ee9c6f0f5b3a53be68af61bc7ebfabc87dbb8b79dfdd0a7cc117bf0f276",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:38.073Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d93234b9f3c6103e52c61939d7c818bb22333cb874d63ccffa0d19ac97c6f76f",
+        "uses": [
+          "story-rain:narration"
+        ]
+      },
+      {
+        "texte": "Un parapluie",
+        "fichier": "course-cedar-15e7f85ec6af8bee.mp3",
+        "duration": 1.55,
+        "sha256": "0200100992fc0e58a79615a1fa99eeccfd4ecc99e062696c95a2433ff3334582",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:43.035Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7a564bf187ea47ce0b34f7eb4564ead8586a6e4ada2fb9a172b3c386aa7fd968",
+        "uses": [
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "Son manteau",
+        "fichier": "course-cedar-66978d617ee48064.mp3",
+        "duration": 1.85,
+        "sha256": "42ed835580c2f76a6ad1fac7bf6151c32b1062fd38b64697f33115502ea7e2c3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:43.398Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9707da871509866d1869c56dd2becfc936fcbcdfcf41a353dd7df94deab82a21",
+        "uses": [
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "Que suspend Didou pour le faire sécher ?",
+        "fichier": "course-cedar-d6d9361e21552443.mp3",
+        "duration": 2.95,
+        "sha256": "c02d8bb44f4eeb99b6003e93e85d56bfafefacc9f16702a50972e63b59e7523c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:43.549Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9ec501572be97d06e8dabed0fbd978c2935aa3ff9959b0453a22f01876c100b8",
+        "uses": [
+          "story-rain:rain-q2"
+        ]
+      },
+      {
+        "texte": "Que choisit Didou à la bibliothèque ?",
+        "fichier": "course-cedar-3bbf773f17bebc5b.mp3",
+        "duration": 2.8,
+        "sha256": "3e5975a20a1e04b7f9b9a1c51ab645654bc410fa7c7490df8e70f27d8c4e9b0e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:45.547Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "aa1e2a84aa842f21d4d718f285918256ba242e94c3a8e8f10fd9e58af17e573d",
+        "uses": [
+          "story-library:library-q1"
+        ]
+      },
+      {
+        "texte": "Où Didou remet-il le livre ?",
+        "fichier": "course-cedar-0e7bb1e8c5bcdbb2.mp3",
+        "duration": 2.6,
+        "sha256": "ecbceb6b59bd1f9fcbef3f52e743ce6372374705d9788e771263c33c09986c18",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:46.054Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c034be32885035fab60fb293cba83f9fe3edb3b8aa2344c165c95de1764e99a6",
+        "uses": [
+          "story-library:library-q2"
+        ]
+      },
+      {
+        "texte": "Sur l’étagère",
+        "fichier": "course-cedar-da29879e76388044.mp3",
+        "duration": 1.8,
+        "sha256": "38c14daa540ee00230f117222e70b672d8a56138dd47209690889d3443322914",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:47.969Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "24b37c5b4c3dc990d787ec78d8748d8f43eeb254c44d7a62e0a6dc4af5a39fb0",
+        "uses": [
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "Didou va à la bibliothèque du quartier avec sa maman. Il choisit un livre avec des images d’animaux. Il tourne doucement les pages et parle à voix basse. Après la lecture, il remet le livre sur l’étagère avec l’aide de sa maman.",
+        "fichier": "course-cedar-f35aa32e59992237.mp3",
+        "duration": 15.55,
+        "sha256": "6047c2638c15d0860772bd31c11facd1a8b889644eceeedb029a68b9660c7aa0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:48.116Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "227106848d98f2035b47ea1990885710aff7f18057a3a9dd22607f5ae5e83cff",
+        "uses": [
+          "story-library:narration"
+        ]
+      },
+      {
+        "texte": "Dans un panier",
+        "fichier": "course-cedar-ea51176714012ff0.mp3",
+        "duration": 1.5,
+        "sha256": "2fa870401db5e46d742fc309b3179231dddcedb3eddd841f6537b77be3748470",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:48.378Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "225f073fe223c5d7bc1a71ab7c97b8c6308d631f199fc325ca94ce89ed673adb",
+        "uses": [
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "Essayons encore. Écoute la question.",
+        "fichier": "course-cedar-e62a83ae4c2483a7.mp3",
+        "duration": 2.85,
+        "sha256": "2245a77822849ec40565c8fdfa805ee4b452897dc840ffdc0fc0e929eebe8232",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:51.126Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e8a567500e3a2d52fd8ed3481c674dc6aa3cc51b72e7700ae43de95570f28117",
+        "uses": [
+          "story-common:retry"
+        ]
+      },
+      {
+        "texte": "Bravo !",
+        "fichier": "course-cedar-55ea22f01b09d915.mp3",
+        "duration": 0.85,
+        "sha256": "e07040d473d32a17d50a7b710c83426ca6cad241c813690f1c450b6b244b1653",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:51.272Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2cb3850fb245eae23f71e1e0ada6e3223e042f25edb1b7ce82a702657c9c2619",
+        "uses": [
+          "story-common:success"
+        ]
+      },
+      {
+        "texte": "Raconte l’histoire avec tes mots à une personne de ta famille.",
+        "fichier": "course-cedar-86cb7b62ecb25da0.mp3",
+        "duration": 5,
+        "sha256": "8d9a9ca2c4595f7df2fff914b1426a5cb8089efb0cc9e5fdcd31443cee3674e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:51.994Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7647f29dbe1d7b4000dabb5471024279127be81d38b8907ae8bfa3f13351785f",
+        "uses": [
+          "story-common:retell"
+        ]
       }
     ]
   },
@@ -51103,6 +52727,842 @@
         "sourceWavSha256": "774a132fdcff517b7f43dc75a84b40f3ff56751a9e353cbcdd511e47f114eec5",
         "uses": [
           "frontend\\src\\components\\EnglishAudioDialoguesLab.tsx:114"
+        ]
+      },
+      {
+        "texte": "Didou goes to the neighbourhood market with Mum. He sees red apples. Mum chooses the apples and Didou puts them in the basket. They thank the seller and go home. They wash the apples before eating them.",
+        "fichier": "course-cedar-bb01b013b407c7d8.mp3",
+        "duration": 12.6,
+        "sha256": "5a4c58e5a31acfc6ed97db4e262d66ccdbbbe6a21aac164104cdfd0dd1502697",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:11:54.472Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1fadc666caaaa2c8c5993558d1d8aafaf101ffd4420cd4e0c6303c59d5b04879",
+        "uses": [
+          "story-market:narration"
+        ]
+      },
+      {
+        "texte": "Apples",
+        "fichier": "course-cedar-2df59d0e218f4141.mp3",
+        "duration": 1.05,
+        "sha256": "6d162f54a78c58f4c9627dc7e9d0a4d72f7b646a1a7b8fda25d78e85e60f6e91",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:00.903Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "fca006f04e737a6e75cf80cf54c28760ec6d2dca15f2d3186a2729054d410a0e",
+        "uses": [
+          "story-market:choice",
+          "story-olives:choice",
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "A book",
+        "fichier": "course-cedar-1b3a98291beaa3a4.mp3",
+        "duration": 0.95,
+        "sha256": "da0dbc8aa52393af381a6b4cd7fb8912bcd534a91cffd6502dfc86055769d8c1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:01.450Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b0b41dc194a750845e8b003292415a428bd0fda33cbc5f8f6aa4d6659706b7cb",
+        "uses": [
+          "story-market:choice",
+          "story-rain:choice",
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "What do Didou and Mum buy?",
+        "fichier": "course-cedar-fd8a8772ecd87b09.mp3",
+        "duration": 2.5,
+        "sha256": "3dfd8f6778e52da3b0123a39256e4c412451e9c1765b1f543bbed2b35d59b409",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:01.557Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e40eb32cebcd9c56754989ad90e6c95f6bf8e9bd27a86301f538e67c87824955",
+        "uses": [
+          "story-market:market-q1"
+        ]
+      },
+      {
+        "texte": "A basket",
+        "fichier": "course-cedar-cfd33195944f900f.mp3",
+        "duration": 1.35,
+        "sha256": "4f4ea3da874e397f941099d66e1cbfabcc530f9322766f80b97994669fdd2618",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:03.116Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "32231562e60623c5d325457ac26e881187201d80b11674acd55c6fe62259c60c",
+        "uses": [
+          "story-market:choice",
+          "story-olives:choice"
+        ]
+      },
+      {
+        "texte": "The bed",
+        "fichier": "course-cedar-a04da28687973eb0.mp3",
+        "duration": 1.45,
+        "sha256": "1d1dd5646bf189e6d2672ecf4efdeae6280158081ba380021138fb950776312b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:03.249Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "bd500b81584255d59758f3f2b15b624d2c30616715320a02d5d14d49031a2d8b",
+        "uses": [
+          "story-market:choice"
+        ]
+      },
+      {
+        "texte": "Where does Didou put the apples?",
+        "fichier": "course-cedar-7f24b71f58ddcffb.mp3",
+        "duration": 3,
+        "sha256": "c4353136d8b498e008e682448b2c01a5f4b0790058978ea086602f9c75f9c796",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:03.390Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "cec5e059dd4499506117e14c130da32c2b2e0d428ab9382d3bc7be7373758c3a",
+        "uses": [
+          "story-market:market-q2"
+        ]
+      },
+      {
+        "texte": "His grandmother",
+        "fichier": "course-cedar-981ccbd42acfd084.mp3",
+        "duration": 1.7,
+        "sha256": "35b2dcb2d7ea1411e73e643d4548ad673cbd4d7cfbf29c0c8cd3ef8a089ac0d1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:05.129Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5494dfdfd99b636a9c74d6fb56f6380391fd90dd8ba1571162cf8995e9407728",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "Who does Didou visit?",
+        "fichier": "course-cedar-a2814e7d3c27580a.mp3",
+        "duration": 2.1,
+        "sha256": "c105c6102872b00264d08e69f04ff0bf89fb38374dd09492f0f9c264ec24c580",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:05.677Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "61a9abe64aede2e12ab1c7b08e18359738b7b5af5930ed2131cc22a4b063c6d6",
+        "uses": [
+          "story-grandma:grandma-q1"
+        ]
+      },
+      {
+        "texte": "Didou visits Grandma with Dad. He says hello to her. Grandma is happy and offers him some dates. Didou shares the dates with Dad. Then they listen to Grandma telling a story.",
+        "fichier": "course-cedar-5c968e5d91d8b10b.mp3",
+        "duration": 11.65,
+        "sha256": "8e0a4661dd3946956a0f0001a066af304d1d278905f1079ce017ba2e123e00e8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:08.947Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9c9d543102f697c4d806055f764fc2d80fe9da11123e23ede0f71d4e7a67fb3b",
+        "uses": [
+          "story-grandma:narration"
+        ]
+      },
+      {
+        "texte": "His teacher",
+        "fichier": "course-cedar-43c6fe601bbce438.mp3",
+        "duration": 1.35,
+        "sha256": "630441845012ee33886a988f65b94bd5bbcd13095f2c9d65e85c0ef2aec89789",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:09.250Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "a4b678b1d11b0a06f0595d4ecfa39d0936fc1942043c025686075e131279cd22",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "What does Grandma offer him?",
+        "fichier": "course-cedar-4edc652df67c5355.mp3",
+        "duration": 2.05,
+        "sha256": "94de1468d4b4a8e78ed6d85ddb216b23e4b8dda8ad401ea7126c398fe0b94cb8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:09.591Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "096e0314c577314f5cef9adf9c66700fc39d71fe58fb90eb40e54a3b17b2406d",
+        "uses": [
+          "story-grandma:grandma-q2"
+        ]
+      },
+      {
+        "texte": "Dates",
+        "fichier": "course-cedar-0612aefba5ae62be.mp3",
+        "duration": 0.9,
+        "sha256": "c84517cd2cf6db65eee03027aa92bb17974e15356d370fade3b08b0372f4e85c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:10.336Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0b73e38848f7bb25d91f1a011a5e7470d1bd37e00a0ba1cacdd83ffc6bbd3dec",
+        "uses": [
+          "story-grandma:choice"
+        ]
+      },
+      {
+        "texte": "A ball",
+        "fichier": "course-cedar-9b39393808ae9c21.mp3",
+        "duration": 1.05,
+        "sha256": "8daf0e11bc8ad3543d68ca1903d3a68cf1d00609dce1440e772d87c812643b99",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:11.741Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0fece92fb88426ca748dcb8fa2ffd99599e601c3e9bbe1049b703fc04137f4b4",
+        "uses": [
+          "story-grandma:choice",
+          "story-eid:choice",
+          "story-garden:choice",
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "Where does Didou play?",
+        "fichier": "course-cedar-beee834d2ff389f0.mp3",
+        "duration": 1.85,
+        "sha256": "ee4c002299aa994b7e957faee57b7167cd573ecb8df233267c1621c79c7cfa9b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:11.886Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "533a4f92e66454b49c725014867f959441497133eae985181bde48b7b8170807",
+        "uses": [
+          "story-beach:beach-q1"
+        ]
+      },
+      {
+        "texte": "The beach",
+        "fichier": "course-cedar-c80c180c0dd53837.mp3",
+        "duration": 1.45,
+        "sha256": "5bdc1908a7adc15864f23cbfc2faec360edf6722b14a51399b3a3f2091ccf4c8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:13.437Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8c7cff29b94017aeb77afdb26ad8ee8fe569adefc579488da2f51742c148c10f",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "The forest",
+        "fichier": "course-cedar-d6435de6086f84b2.mp3",
+        "duration": 1.15,
+        "sha256": "3c58387e75ebbe6b5e7b780d697fda6dd39fbc29f528f3624ae4ea100d199509",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:13.545Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "611e717ccb85901a3544d9142e33c548dbfd3e5cb3bfd530c9ed67d8b0059fe3",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "Didou goes to the beach with Dad. They sit on the sand. Didou fills his bucket with sand and builds a little castle. He stays near Dad. When they leave, he takes his bucket and leaves the beach clean.",
+        "fichier": "course-cedar-9ead9f53e7de33bd.mp3",
+        "duration": 12.85,
+        "sha256": "4942fef8d127fa3fc40bdb86f6c292e60dde684e871e483be0075a293ba277ea",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:14.059Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9acfc3f27f1a74094ee122a52499cfc27e85b26d8342a08baa173e9f8991d974",
+        "uses": [
+          "story-beach:narration"
+        ]
+      },
+      {
+        "texte": "His bucket",
+        "fichier": "course-cedar-c35ec24b9b1f946f.mp3",
+        "duration": 1.55,
+        "sha256": "e2300451ed1ecff9f2f261a015e856fc55a66017044b63b26936920bb42f2535",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:15.230Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0d14131b6c214a9d1477de330502078e79402ad27ba034ec25743d78098928b5",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "What does Didou take when leaving?",
+        "fichier": "course-cedar-e8e9a7b27e501981.mp3",
+        "duration": 2.25,
+        "sha256": "46404420d79646032f494162fb6e7c9eabbeda74fc8c11a2ae0b5bbcdae44cce",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:15.475Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "855e74f14f438a8999062323a3029e43b302d791c8d2a5ffe2d786c19058ea0f",
+        "uses": [
+          "story-beach:beach-q2"
+        ]
+      },
+      {
+        "texte": "A fish",
+        "fichier": "course-cedar-9d388a4f4e4cb8bb.mp3",
+        "duration": 1.3,
+        "sha256": "c2bada19345d007d291567ec3cd6ab2bce7761b5877abda82d7379988dacd04d",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:15.937Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e7f53067987957fcc7e80b1ca11a66241895850c4030f4c348520a7bbab7af1d",
+        "uses": [
+          "story-beach:choice"
+        ]
+      },
+      {
+        "texte": "What does Didou put on?",
+        "fichier": "course-cedar-0244d554296d50b1.mp3",
+        "duration": 1.95,
+        "sha256": "1571f7aaac8dafaf89973fe04074ac6161bbba171b6897dbc2dda31396f151ab",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:16.929Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "9f6106e6865e5075b7a4480ab97ba5520bffa55a40f6f5a478e5e2008169d5ac",
+        "uses": [
+          "story-eid:eid-q1"
+        ]
+      },
+      {
+        "texte": "His shirt",
+        "fichier": "course-cedar-68bd16f273d1a8e0.mp3",
+        "duration": 2.75,
+        "sha256": "a5c0180537c9b3d798969246be29a1420f295dccbeac0fe3bf3d02a29084182b",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:23.620Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "adae9e1abf7a8ede259c2526282d45a3bb732342e7cd8c69e1d89f8215e212e7",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "Gloves",
+        "fichier": "course-cedar-8de5edb33883ba28.mp3",
+        "duration": 0.8,
+        "sha256": "42a1c4251b0a70c9ad3600e341b0ee2a01ff5c8fea15758b80d9476fc13c2edf",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:23.900Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7f0a9bb80e6ea8ca17d41e3999c0febbf1b17cdf140be4ccf1b1a9c0b2d2c509",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "On Eid morning, Didou puts on his clean shirt. He wishes his family a happy Eid. Mum puts cakes on a plate. Didou and Dad take the plate to their neighbour. She smiles and thanks them.",
+        "fichier": "course-cedar-d6e08784d391073c.mp3",
+        "duration": 11.4,
+        "sha256": "70162adc3b312e77b35d7907baeacd23c6b841bbd55f261ff93245df080a3d1a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:23.983Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e2c7fb005b2eadc854dce9598dc041c705cb1cdfadeb549fbeb6c67924fcbd9d",
+        "uses": [
+          "story-eid:narration"
+        ]
+      },
+      {
+        "texte": "Cakes",
+        "fichier": "course-cedar-bcf890f945b3383a.mp3",
+        "duration": 1,
+        "sha256": "0748343bd779924ec2f98aee5ad0cce528f0d85f4c3edf0c3f287756e3663b9e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:25.836Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e89b6ad426ed9833d4048feb27f885009b890373dae3f27f9223bcad78fbb147",
+        "uses": [
+          "story-eid:choice"
+        ]
+      },
+      {
+        "texte": "What does Didou bring the neighbour?",
+        "fichier": "course-cedar-1f7b75214974024c.mp3",
+        "duration": 3.2,
+        "sha256": "209463690263a2baa473d007109bdc288b9f07ef62106932c63b1998d7950469",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:26.668Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "ea4d30fb32df362e3e613903819b16a2e3659d5817b345c9179e716160b83fb8",
+        "uses": [
+          "story-eid:eid-q2"
+        ]
+      },
+      {
+        "texte": "With Grandpa, Didou puts a seed in the garden soil. They cover it with a little soil. Didou adds a little water. After several days, a small shoot appears. Didou is happy and keeps looking after his plant.",
+        "fichier": "course-cedar-74b4597eac0cd6f0.mp3",
+        "duration": 14,
+        "sha256": "b05f0fc6577fe6752d3284c125e065cf4f782030a1db73677ea92da8221c0bd8",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:27.394Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "84f8473d99be8ab86709fc0dec77e5b7c8cfee19692a77bfeecdb0b95379f747",
+        "uses": [
+          "story-garden:narration"
+        ]
+      },
+      {
+        "texte": "What does Didou put in the soil?",
+        "fichier": "course-cedar-ea682c537e2d4529.mp3",
+        "duration": 3.1,
+        "sha256": "c9648ddf5f4f4df1b2f993a908e94536f14eca65002ead93fe9159e67ba63efc",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:27.637Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d8c2c49b48ee7da904f4481524ec0848c7504f628e35aade2ce5427ebe436f9a",
+        "uses": [
+          "story-garden:garden-q1"
+        ]
+      },
+      {
+        "texte": "A seed",
+        "fichier": "course-cedar-ff294751a2ddbcb9.mp3",
+        "duration": 1.6,
+        "sha256": "1bd11440d5bbddea5838334f52ed64262eeab549ed40dc16fb35fd85e01c66e4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:31.449Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2fbb186a7be504b59ffa445d1e0c7fb6d4067187966070610bac5243a3087acb",
+        "uses": [
+          "story-garden:choice"
+        ]
+      },
+      {
+        "texte": "What does Didou give the seed?",
+        "fichier": "course-cedar-ca17f392a761612d.mp3",
+        "duration": 2.7,
+        "sha256": "a895dc94a5e5730fc3290728d3c101f59dd6c4a372e7bd1cda268577a795439c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:32.039Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "dd01bd6496cb60aab7691d10b28863d8aad4072a026277287774a093de0d972c",
+        "uses": [
+          "story-garden:garden-q2"
+        ]
+      },
+      {
+        "texte": "Water",
+        "fichier": "course-cedar-cacc5a18137892a7.mp3",
+        "duration": 0.9,
+        "sha256": "9ea1886db5dba2a1802929f956546bfd9b95f115b5e4fc7fd3b757e6a3c00cb2",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:32.381Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "7c3f83d94da1b366adc5634ae33ac21050b75fc11592a0eaffe749a68ec43dcf",
+        "uses": [
+          "story-garden:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "Milk",
+        "fichier": "course-cedar-aa09164a1b02c41a.mp3",
+        "duration": 0.9,
+        "sha256": "51a5e77036012edfbfec0a3b742660aaab1c3b2a69f3b5f33e4d041c8ea529b9",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:32.831Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "78bac6d259e425ab16603384da507900e9e4f8835340fb5a7c49dbf6032f4af8",
+        "uses": [
+          "story-garden:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "What do Didou and Grandpa collect?",
+        "fichier": "course-cedar-b36e024fd2daf523.mp3",
+        "duration": 3,
+        "sha256": "4e26dfa2a8ef9dafe7cb5295e294e87344a4ba4fed5a9ce9e0f68a67bf19b79e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:33.886Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "f97d898cafb6b1e16e19449100c66e4f8ccba5d02beb9aa432494bcc5b486cdf",
+        "uses": [
+          "story-olives:olives-q1"
+        ]
+      },
+      {
+        "texte": "Olives",
+        "fichier": "course-cedar-b7b786171175c5c5.mp3",
+        "duration": 1,
+        "sha256": "d574eb71344bc74b00237b99d102b99aaba6dfe18657519914cba325fadafeae",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:34.599Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "0c19f40071d629ec2d8dba46947db254bb3d12473940c02d50fb6f7a0fef028c",
+        "uses": [
+          "story-olives:choice"
+        ]
+      },
+      {
+        "texte": "Didou visits an olive grove with Grandpa. Grandpa spreads a cloth under a tree. They collect olives that have fallen onto the cloth. Didou puts them in a basket. Then they go home together.",
+        "fichier": "course-cedar-59586a145899a049.mp3",
+        "duration": 11.85,
+        "sha256": "87e3942aa73b18a3ca37682d967fa63f8762df1646650a78112142c752d015a3",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:35.330Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d895e8def456fa773fbed45780c5360be5ac1272df680e644d195ce5111a550e",
+        "uses": [
+          "story-olives:narration"
+        ]
+      },
+      {
+        "texte": "Where does Didou put the olives?",
+        "fichier": "course-cedar-c97e15e9350db458.mp3",
+        "duration": 2.25,
+        "sha256": "0537b1a4dac3f467d4aa52424e79639e27d71cc1e0f94b11446f64e5c67e90b0",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:35.442Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "76172ccd3689edb23d3a552251e674e3d94aa63f51d6d7dbf4b4568c9447f942",
+        "uses": [
+          "story-olives:olives-q2"
+        ]
+      },
+      {
+        "texte": "What does Didou wear on his head?",
+        "fichier": "course-cedar-c94cde16e298469b.mp3",
+        "duration": 2.2,
+        "sha256": "30f3506914ab5f6577d1c5092c05540e5d737255160900dfc725f74eef1a84e5",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:36.841Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "97085374392482a6dbcddf7c92d691759b225ca6a80488189d8eed1964e324ea",
+        "uses": [
+          "story-sahara:sahara-q1"
+        ]
+      },
+      {
+        "texte": "A shoe",
+        "fichier": "course-cedar-27d3d0d4dd8c12df.mp3",
+        "duration": 1.85,
+        "sha256": "b190ff816d0276837ff206cf8acd86611501e58e561a532920e646001a1f1b1e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:36.955Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d8c102cf20e2c6076c23a6ae9f502e10caaaa7df8e1e933868c51c160c611e48",
+        "uses": [
+          "story-olives:choice",
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "A hat",
+        "fichier": "course-cedar-4039e55407a3b499.mp3",
+        "duration": 0.9,
+        "sha256": "2404bb5d19d8ef9be12f93bb542bc5301f8a07e08a24f89d00e30146e9b938b4",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:38.491Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "929556f0c4d9fc6f70da6d0671fd07577c29614cc492700e3afd3194dead5009",
+        "uses": [
+          "story-sahara:choice"
+        ]
+      },
+      {
+        "texte": "What does Didou drink?",
+        "fichier": "course-cedar-ade437ce374847e1.mp3",
+        "duration": 2.45,
+        "sha256": "36e996ded484b87b9acaa00f090f5468ea4f861718060a6aabd4aab7e2302170",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:39.018Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "49525bd1608bc700de9ccdafa5f42cd18a0956d5275418b8ae0b934c156e90c4",
+        "uses": [
+          "story-sahara:sahara-q2"
+        ]
+      },
+      {
+        "texte": "Didou visits the Sahara dunes with his family. He wears his hat and walks near Dad. The sand shines in the sun. When Didou is thirsty, Dad gives him water. They rest together in the shade.",
+        "fichier": "course-cedar-e9bc1aad4e067b2b.mp3",
+        "duration": 13.9,
+        "sha256": "9bc0a031823ab3f70b89e8ed2523bf814494164312c91a67f1830c64da0d4174",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:39.142Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "db02829d87d9f53c06ad108a8fdfc93b043489866af582b39d578d68a23abf66",
+        "uses": [
+          "story-sahara:narration"
+        ]
+      },
+      {
+        "texte": "What do Didou and Mum use in the rain?",
+        "fichier": "course-cedar-6d6a4fb8ad4733e9.mp3",
+        "duration": 3.35,
+        "sha256": "0c8a8a050f93e3954929e564ccc8f600712f88f95a98c66702c7c2af3180f922",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:40.852Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "b6a577f302f2501cde638e9389d57f7a62bbaff862bd7d88917ade2c9dea8187",
+        "uses": [
+          "story-rain:rain-q1"
+        ]
+      },
+      {
+        "texte": "An umbrella",
+        "fichier": "course-cedar-c947471417cc31ca.mp3",
+        "duration": 1.75,
+        "sha256": "ef7e7fbfeda28e620db48899ed105e3bc7ff0f42e02e6ae62dc02d7275c9692f",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:40.913Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "c55598ad1c4089748518122d28d7bc7f237196094aa43afd257223408953587a",
+        "uses": [
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "Didou looks out of the window. It is raining. He puts on his coat and goes out with Mum under an umbrella. He listens to the drops tapping on it. Back home, Didou hangs up his coat to dry.",
+        "fichier": "course-cedar-b878753fdef001dc.mp3",
+        "duration": 12.6,
+        "sha256": "a8a84fe707a7ac457b386e51e0c81f2b99f244200477fa476bb687d6fe0b17eb",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:41.405Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "d4fba5579b7cb756cf647f57f6df4597f3012110d35886c962dca167ac8750d7",
+        "uses": [
+          "story-rain:narration"
+        ]
+      },
+      {
+        "texte": "What does Didou hang up to dry?",
+        "fichier": "course-cedar-b810a0caddae8558.mp3",
+        "duration": 3.1,
+        "sha256": "59b609e831c1567017b5d5afad10a4c1627d77716e6226d1577f91bddc05595e",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:43.280Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "637e4c0dc8c0ef8a6dbf1970d65f0687a69dd353f3782f0eb450cdc6246d9262",
+        "uses": [
+          "story-rain:rain-q2"
+        ]
+      },
+      {
+        "texte": "His coat",
+        "fichier": "course-cedar-db92c73d375b8518.mp3",
+        "duration": 1.45,
+        "sha256": "0e45a03982dc0ab30f3884a62351ea819df7c7d5e385ebaa9c16ee4270528ce1",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:43.870Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1c17bc7ab6d049f38d06797e92d572f3b984be3e2cf837392e696b5ce920f09c",
+        "uses": [
+          "story-rain:choice"
+        ]
+      },
+      {
+        "texte": "Didou goes to the neighbourhood library with Mum. He chooses a book with animal pictures. He turns the pages gently and speaks quietly. After reading, he puts the book back on the shelf with Mum’s help.",
+        "fichier": "course-cedar-f3f59cbaeb30822b.mp3",
+        "duration": 14.1,
+        "sha256": "e05dfdbbd3bb72de75d84d9e7de23475df9fad7d6c39a32da9d28658bf8fa8ff",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:44.557Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "1bcb5cc44a6f2a4d3940913e3b3f374f43340637db9e665ebf00452bfc53a4e3",
+        "uses": [
+          "story-library:narration"
+        ]
+      },
+      {
+        "texte": "What does Didou choose at the library?",
+        "fichier": "course-cedar-407bf79aba1fbaf7.mp3",
+        "duration": 2.9,
+        "sha256": "f7510dca1493219d7251cbe49d983bb573db0a0eeed4facae99613e203c56f9a",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:44.883Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "12f4547e020e74e68ce039762e695bb4396fc3b3dfdf8770c91e88cfae0fb2fc",
+        "uses": [
+          "story-library:library-q1"
+        ]
+      },
+      {
+        "texte": "In a basket",
+        "fichier": "course-cedar-e978e39209615cd3.mp3",
+        "duration": 2,
+        "sha256": "e3558803a10ec056824f180c61544779f0526920bd501b7790ff05edfc9618f7",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:49.145Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "256aaecca24a57badd4f97661176c6b0dc7203ec9fb9821308e8ca6d21b09286",
+        "uses": [
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "Where does Didou put the book back?",
+        "fichier": "course-cedar-591833698dc99e16.mp3",
+        "duration": 3.15,
+        "sha256": "d63bb87e1a53104395bf109b656a7e54f0712b79371de660457cdbca0736a089",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:49.797Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "af21a8051499d526bc86568e140c7cb57643ca97f1307714ac28e46dac0813a2",
+        "uses": [
+          "story-library:library-q2"
+        ]
+      },
+      {
+        "texte": "On the shelf",
+        "fichier": "course-cedar-0b9a12e0f47a209b.mp3",
+        "duration": 1.8,
+        "sha256": "f100253ce3dd5ef1b007dcc2acb85567596380d53e42549634a56d2aeb422e90",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:49.869Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "27457590c61fbd173c85d951201e777612702ab753914647d045ebf73fd8bfbf",
+        "uses": [
+          "story-library:choice"
+        ]
+      },
+      {
+        "texte": "Let’s try again. Listen to the question.",
+        "fichier": "course-cedar-5ccf8146428cd2aa.mp3",
+        "duration": 2.8,
+        "sha256": "78d7d75a68f03f80435376261517fc55563dea5d84d1481fc096bf71a2468a16",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:50.770Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "e4381878beff0f254ce5450983aa03a300e1e068c256737a483d4298d6c56009",
+        "uses": [
+          "story-common:retry"
+        ]
+      },
+      {
+        "texte": "Well done!",
+        "fichier": "course-cedar-5695b2e6f9523a09.mp3",
+        "duration": 2.35,
+        "sha256": "cb2dc3e892b0d3d32737b5fd03468e5663d869b57250ac25af961237216bc192",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:51.216Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "8232ba57ec7656b56dc410f6b27ac962332b9a60cca2a0a37ed11c332143a962",
+        "uses": [
+          "story-common:success"
+        ]
+      },
+      {
+        "texte": "Tell the story in your own words to someone in your family.",
+        "fichier": "course-cedar-ab685b0e657089b9.mp3",
+        "duration": 3.7,
+        "sha256": "327d3e8908d6cd53232f0cfed5131c8cf31832db57301adab0b09acfa4e3d09c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T19:12:51.344Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "2c2864c18b3351715a0bc3089cdd7c319d9d64046c6d0925cf280ed9b7fa2c9c",
+        "uses": [
+          "story-common:retell"
         ]
       }
     ]
