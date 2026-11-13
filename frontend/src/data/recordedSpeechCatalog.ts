@@ -13929,6 +13929,10 @@ export const RECORDED_SPEECH_CATALOG: Record<string, Record<string, { src: strin
       "src": "/sounds/preschool/ar/course-cedar-84c929739a4098b0.mp3",
       "durationMs": 1450
     },
+    "عِنْدَ مَنْ ذَهَبَ دِيدُو؟": {
+      "src": "/sounds/preschool/ar/course-cedar-c87fa7f2f9c5c6e4.mp3",
+      "durationMs": 3350
+    },
     "سَمِّ الأَشْيَاءَ فِي مَدْرَسَتِي: مُعَلِّمٌ، قِسْمٌ، كِتَابٌ.": {
       "src": "/sounds/preschool/ar/language-next-ar-1.mp3",
       "durationMs": 5325

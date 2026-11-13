@@ -50,7 +50,7 @@ export const NARRATED_STORIES: PreschoolActivity[] = [
       'Didou rend visite à sa grand-mère avec son papa. Il lui dit bonjour. Grand-mère est contente et lui offre des dattes. Didou partage les dattes avec son papa. Puis ils écoutent une histoire racontée par grand-mère.',
       'Didou visits Grandma with Dad. He says hello to her. Grandma is happy and offers him some dates. Didou shares the dates with Dad. Then they listen to Grandma telling a story.'),
     [grandma, dates, book],
-    [[text('مَنْ زَارَ دِيدُو؟', 'À qui Didou rend-il visite ?', 'Who does Didou visit?'), grandma, ['👩‍🏫', text('الْمُعَلِّمَة', 'Sa maîtresse', 'His teacher')]],
+    [[text('عِنْدَ مَنْ ذَهَبَ دِيدُو؟', 'À qui Didou rend-il visite ?', 'Who does Didou visit?'), grandma, ['👩‍🏫', text('الْمُعَلِّمَة', 'Sa maîtresse', 'His teacher')]],
       [text('مَاذَا قَدَّمَتِ الْجَدَّةُ لِدِيدُو؟', 'Que lui offre grand-mère ?', 'What does Grandma offer him?'), dates, cake]]),
   story('beach', text('يَوْمٌ عَلَى الشَّاطِئِ', 'Une journée à la plage', 'A day at the beach'),
     text('ذَهَبَ دِيدُو إِلَى الشَّاطِئِ مَعَ أَبِيهِ. جَلَسَا عَلَى الرَّمْلِ. مَلَأَ دِيدُو دَلْوَهُ بِالرَّمْلِ وَبَنَى قَصْراً صَغِيراً. ظَلَّ قُرْبَ أَبِيهِ. عِنْدَ الْعَوْدَةِ، أَخَذَ دَلْوَهُ وَتَرَكَ الْمَكَانَ نَظِيفاً.',

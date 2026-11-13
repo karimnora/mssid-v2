@@ -48,3 +48,8 @@ Ces deux commandes ne génèrent aucun audio payant. L’index a été reconstru
 ## Relecture du lot
 
 Exactitude : 4/5, correspondances audio et parcours vérifiés mais écoute humaine encore nécessaire. Complétude : 4/5, neuf nouveaux récits complets, illustrations par pictogrammes plutôt que scènes dessinées sur mesure. Clarté : 4/5, étapes explicites, à observer avec de jeunes enfants. Action possible : 4/5, module local testable, validation téléphone/famille avant publication. Concision : 4/5, détails conservés dans ce document. Moyenne : 4/5.
+
+
+## Correction de la question arabe de « Chez grand-mère »
+
+La première question est désormais « عِنْدَ مَنْ ذَهَبَ دِيدُو؟ ». Après recherche V1/V2 sans correspondance, une seule nouvelle prise cedar a été produite : `course-cedar-c87fa7f2f9c5c6e4.mp3`, 3,35 secondes. Le texte affiché, le plan et l’index audio utilisent cette même phrase. L’ancien enregistrement est conservé. Aucun push.

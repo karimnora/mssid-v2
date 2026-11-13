@@ -51239,6 +51239,21 @@
         "uses": [
           "story-common:success"
         ]
+      },
+      {
+        "texte": "عِنْدَ مَنْ ذَهَبَ دِيدُو؟",
+        "fichier": "course-cedar-c87fa7f2f9c5c6e4.mp3",
+        "duration": 3.35,
+        "sha256": "e9fa08daef768316a9337e78e30186162297cf2e77ad89ef718781507d1ba12c",
+        "voice": "cedar",
+        "model": "gpt-4o-mini-tts",
+        "generatedAt": "2026-11-13T20:02:13.002Z",
+        "synthetic": true,
+        "reviewStatus": "listening-required",
+        "sourceWavSha256": "5a6587d20b9d0597241d2a3b6563cd519ba5590555fca538968a0ef2df080f9f",
+        "uses": [
+          "story-grandma:grandma-q1:corrected-question"
+        ]
       }
     ]
   },

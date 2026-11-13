@@ -31,6 +31,12 @@ describe('preschool narrated story catalogue', () => {
     }
     for (const activity of STORIES_MODULE.activities.filter(a => a.narratedStory)) expect(activity.i18n[language].promptAudioSrc).toBeTruthy();
   });
+  it('asks unambiguously whom Didou visited in the Arabic grandmother story', () => {
+    const question = NARRATED_STORIES.find(a => a.id === 'story-grandma')!.narratedStory!.questions[0];
+    expect(question.prompt.ar).toBe('عِنْدَ مَنْ ذَهَبَ دِيدُو؟');
+    expect(question.choices.find(c => c.id === question.correctId)?.label.ar).toBe('الْجَدَّة');
+    expect(findRecordedSpeechSequence(question.prompt.ar, 'ar')?.[0].src).toBe('/sounds/preschool/ar/course-cedar-c87fa7f2f9c5c6e4.mp3');
+  });
   it('never answers a question with an object that has nothing to do with the story', () => {
     // A ball or a bed among the choices lets the child answer without listening to the story.
     const unrelated = new Set(['⚽', '🛏️']);
